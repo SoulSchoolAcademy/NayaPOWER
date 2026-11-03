@@ -28,10 +28,10 @@
 
 ## 3. The SQL twin
 
-- `tools/smart-match/smart_match_v1_4.sql` (10,023 B). **Header: "NOT deployed — for the wiring lanes."**
+- `tools/smart-match/smart_match_v1_4.sql` (10,023 B). **Header: "NOT deployed — for the wiring lanes" — STALE (see the correction at the end of this section).**
 - Defines 11 functions in `public`: `sm_stopwords, sm_terms, sm_stem, sm_words, sm_sig_words, sm_terms_content, sm_concepts, sm_coeff, sm_family, sm_cross`, entry point **`public.smart_match(a jsonb, b jsonb, value_b numeric)`** returning the same contract.
 - 4 named divergences from Python: (1) bare-numeric `value_b` vs verified-record contract; (2) Postgres vs banker's rounding on exact .5; (3) no `reasons`; (4) non-array jsonb errors instead of degrading.
-- Deployable repackaging: `supabase/migrations/20261025040000_smart_match_v1_4.sql` (11,587 B, blob `30236ba8…`, same 11 bodies verbatim, idempotent create-or-replace, B5 2026-10-25). **Presence in migrations/ is NOT evidence of application.** Whether Supabase ever auto-applied it: **UNKNOWN**. All lane evidence: not deployed.
+- Deployable repackaging: `supabase/migrations/20261025040000_smart_match_v1_4.sql` (11,587 B, blob `30236ba8…`, same 11 bodies verbatim, idempotent create-or-replace, B5 2026-10-25). **Presence in migrations/ is NOT evidence of application — and application is now proven directly: CORRECTED 2026-11-03 (Resolve, answering Nitro's F2).** Read-only RPC probes against the production project (sb-api, `POST /rest/v1/rpc/smart_match`, pure immutable function, no mutation): (1) a=b={topics:["making"]} → `{score: 40, rank: 40, signals: 1, surface: false}` = 0.40 topics weight at full alignment, ≥2-signal rule holding; (2) a={offers:["coaching"]}, b={needs:["coaching"]} → `{score: 10, signals: 1, surface: false}` = 0.20 × 0.5 symmetric average; (3) disjoint topics → `{score: 0, signals: 0, surface: false}`. All three contract-correct — the 11 functions exist and execute in production. When/by what route the migration was applied: not in the lane record. **Deployed ≠ live: no surface calls it for citizens; live derivation remains off; the switch-on remains Shawn's gate (§9).**
 
 ## 4. Auto Organization
 
@@ -62,7 +62,7 @@
 | Organizer gate 99.1% precision (661/667) | 3 measurement waves | PATH-TO-TEN |
 | B1–B7 done_proven | PI row `resolve-automatch-buildable-complete` | sb-api read 2026-11-03 |
 
-NOT verified this pass: engine test-suite state at today's tip (files verified present + content read; pytest not run). First-run record (`tools/smart-match/FIRST-RUN-2026-10-24.md`): nitro→Team Nitro space 54%, naya-power→NayaPOWER space 52%; Resolve ~0 vs every project = vocabulary failure, drove v1.1+.
+Test-suite state at tip: **VERIFIED by re-run 2026-11-03 (Nitro's F2)** — full welcome-engine suite at tip `1cf346bdceee419c2ba08539ee39f410d3702731`: **149 passed / 0 failed**. Method: all 33 welcome-engine files byte-verified against their tip blobs (31 identical in the local checkout; `welcome_engine.py` + `test_welcome_engine.py` refreshed from tip bytes; the SQL twin + the B5 migration + `HUB/app/js/naya-intake.js` staged at tip bytes for path-dependent tests). The parity tests in the suite guard the migration file and its four-divergence header — green. Production runtime spot-proof: §3 correction (3 RPC probes). First-run record (`tools/smart-match/FIRST-RUN-2026-10-24.md`): nitro→Team Nitro space 54%, naya-power→NayaPOWER space 52%; Resolve ~0 vs every project = vocabulary failure, drove v1.1+.
 
 ## 7. Project Intelligence rows (sb-api, store `work_items`, project `a554e536-66a6-4808-8c36-988f13d9f394`; rows keyed by `item_key` — the table has NO numeric `n` column; `project_intel_items` store: 0 matches)
 
@@ -85,4 +85,4 @@ Open PRs mentioning smart-match/automatch: **none** (5 open total: #3156, #3131,
 - **Production switch-on = Shawn's gate** (serving-chain ruling, Alignment Master §23). No seat flips it.
 - SQL deploy is a production step — same gate family; PI row stays queued until ruled.
 - Privacy: private content NEVER feeds the matcher; refusal is structural and precedes scoring (see §4, categorize.py).
-- Falsifiers for any future "live" claim: (a) a served surface returns a real match with % + reasons for a real citizen vector; (b) the SQL functions answer in production (deploy proof, not file presence); (c) the claim holds across two consecutive checks (standing live-proof bar).
+- Falsifiers for any future "live" claim: (a) a served surface returns a real match with % + reasons for a real citizen vector — **OPEN**; (b) the SQL functions answer in production (deploy proof, not file presence) — **SATISFIED 2026-11-03** (§3 correction: 3 read-only RPC probes, contract-correct); (c) the claim holds across two consecutive checks (standing live-proof bar) — **OPEN**. (a) and (c) belong to the switch-on gate; (b) alone never made anything live.
