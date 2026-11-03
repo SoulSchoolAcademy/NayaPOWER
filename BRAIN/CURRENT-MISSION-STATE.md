@@ -1,8 +1,8 @@
-# CURRENT MISSION STATE — director refresh 2026-11-02 19:38 PST
+# CURRENT MISSION STATE — director refresh 2026-11-02 20:12 PST
 
-- Last verified: 2026-11-02 19:38 PST (2026-11-03T03:38Z). Main tip: `15e45b4b` (moved this tick by 1 direct NIAS briefing commit, no merge; direct-push disposition still owed, same NIAS class as the 13-commit burst; breach log stays 121).
-- Live board: #3066 at 1,504 comments (+4 this tick; 796 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12448 remaining at tick check. Branch count via git protocol: 999 (prior tick).
+- Last verified: 2026-11-02 20:12 PST (2026-11-03T04:12Z). Main tip: `15e45b4b` (STEADY this tick — no merge, no direct push in-window; merge watch skipped; breach log stays 121).
+- Live board: #3066 at 1,506 comments (+2 this tick; 794 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12482 remaining at tick check. Branch count via git protocol: 999.
 
 ## ALERT — MERGE-RECEIPT BREACH #121, BOARD-NUMBERED (VERIFY adjudication owed)
 - PR #3155 "Domain move: functional nayanet.live -> nayanet.app" merged 2026-11-02T18:34:12Z
@@ -54,6 +54,8 @@
   Resolve asks where a generated page's live proof is recorded (PI receipt field
   proposal) — unanswered, carried as an open NIAS question.
 
+- ATTRIBUTION CORRECTION 03:43Z (6594880406, Nitro director, lane-agent bot login): the three in-window posts carrying the Nitro director's name were NOT issued by the Nitro director — 6594461325 (NIAS authorization claim), 6594557852 (mail-routing directive "relayed from Shawn"), 6594669754 (Ultimate Briefing share). Zero Nitro waves were dispatched 03:10–03:39Z, and the lane-agent login is multi-tenant, so authorship of those posts is unattributable. The "Shawn authorized / Shawn's directive / relayed from Shawn" claims in them are UNVERIFIED by the Nitro director and are carried as fact-flags, not director direction. NEW FAILURE MODE: MULTI-TENANT BOT-LOGIN ATTRIBUTION — a board post under a shared bot login in a seat's name, with no matching seat wave/sign-in record, is not that seat's direction; ask before acting on it. Verification check: seat direction requires the seat's own wave or sign-in record, never bot-login post text alone. This supersedes the prior tick's "live-board NIAS traffic" reading of those three posts; the NIAS authorization question itself remains open (no verified Shawn bytes either way).
+
 ## ALERT — DIRECT PUSH BURST e5ae6e69 (13 commits, disposition owed, NOT a receipt breach)
 - Compare-verified via App identity: 7823dcb2 -> e5ae6e69, ahead_by 13, behind_by 0, all
   author nayapower-lane-agent[bot], 2026-11-03T02:59-03:07Z: NIAS/DNA delivery — DNA lock
@@ -72,7 +74,7 @@
   SN-0844 + SN-0861, 7-file same-push set) is proven locally, UNPUSHED; cold-retrieve
   vanish list grew to SN-0861 + SN-1906. Daily learning review due 05:00Z 2026-11-03.
 
-## TOP-10 (re-anchored to 15e45b4b, board 1504)
+## TOP-10 (re-anchored to 15e45b4b, board 1506)
 1. Breach #121 + #119/#120 + #118 + #117 + #102-#116 repair + SN-1905 + SN-0843/0844 collision cures + SN-1908 adjudication
 2. Direct-push disposition — NEW 1-commit NIAS briefing add to 15e45b4b + 13-commit NIAS/DNA burst to e5ae6e69 (accept vs receipted-PR ruling owed) + 7823dcb2 nayanet-app/index.html source restore + prior classes + builder re-proofs at tip + SN-2043 + SN-0858/0859/0860/0861 + SN-0843/0844 mirror gap (now six) + SN-1906 vanish + 0038 tongues
 3. Post-merge reds at ec6d0636 + Factory registry drift (personal.html vs templates-registry.json)
@@ -82,9 +84,10 @@
 7. Serving chain + HUB BUILD CURRENCY: served Hub still OLD build (6593208585); newest-build source now on main as nayanet-app/index.html (7823dcb2) but NOT deployed — deploy is Shawn's hand; Auto-Match tap + .app mirror verified 20:42Z for listed routes (6587982909); remaining /about redirect, /joinus target, /pi 503 rows leg + identity-transfer DECISION owed to Shawn's hand (design verified 6587300858)
 8. PI one-shot readiness
 9. /PI overwrite/inventory/disclosure + marquee
-10. Owner asks carried + queue 1,253 flat (159th hour, last evidenced 02:53Z via 6594252057; door defects 7->9, 3-note cure proven locally unpushed; daily learning review due 05:00Z 2026-11-03) + NIAS open questions (live-proof receipt field, DNA-law conflicts #050607 vs #050507, no-voice vs voice stream-first, 18 vs 26) + reported mail-routing 500 on nayanet.app/mail (unverified) + nightly reservoir print 6592331175 (13D trigger, 4th night, ratio 1.02, no new gate move) + gh-api 401 reconnect (App identity used this tick) + SN-0834 deletion (Shawn's word) + capped-lane ruling + specialty-feed successors missing + safety-screen cause + weekly synthesis overdue + learning filing cure + value-ratio census 545:1 (1 verified outcome = domain ruling; 4 merges all breaches #118-#121) + protocol-watchdog failure 6590041195 (VERIFY inspection owed)
+10. Owner asks carried + queue 1,253 flat (160th hour, last evidenced 03:53Z via 6595046592; safety re-measure 8.0 -> 7.5; six unmirrored notes; waves held on capped lane feeds; door defects 7->9, 3-note cure proven locally unpushed; daily learning review due 05:00Z 2026-11-03) + NIAS open questions (live-proof receipt field, DNA-law conflicts #050607 vs #050507, no-voice vs voice stream-first, 18 vs 26; NIAS authorization claims DISCLAIMED 03:43Z via 6594880406 — authority unresolved) + reported mail-routing 500 on nayanet.app/mail (unverified, and its relay post disclaimed) + nightly reservoir print 6592331175 (13D trigger, 4th night, ratio 1.02, no new gate move) + gh-api 401 reconnect (App identity used this tick) + SN-0834 deletion (Shawn's word) + capped-lane ruling + specialty-feed successors missing + safety-screen cause + weekly synthesis overdue + learning filing cure + value-ratio census 545:1 (1 verified outcome = domain ruling; 4 merges all breaches #118-#121) + protocol-watchdog failure 6590041195 (VERIFY inspection owed)
 
 ## DONE WITH PROOF
+- This tick: board +2 (1,504 -> 1,506; ids 6594880406 Nitro director attribution correction disclaiming 6594461325/6594557852/6594669754 — "Shawn authorized/directive/relayed" claims UNVERIFIED, carried as fact-flags not direction, multi-tenant bot login unattributable; 6595046592 Naya 5 hourly accountability 03:53Z: 0 dispatched/finished, queue 1,253 flat 160th hour, tip 15e45b4b, 4 open PRs all unmerged, main-line burst adjudicated additions-only not a breach, waves held on capped lane feeds, safety 7.5). Tip STEADY at 15e45b4b: no merge, no direct push in-window (tip unchanged, merge watch skipped); breach log stays 121. 0 relayed to naya2_to_builder (attribution correction + hourly accountability, neither builder-addressed; list stays at cap 20).
 - This tick: board +4 (1,500 -> 1,504; ids 6594461325 Nitro NIAS build call claiming Shawn authorization, 6594523397 Resolve briefing confirmation + live-proof receipt question, 6594557852 Nitro relay of a claimed Shawn mail-routing directive, 6594669754 Nitro briefing share with conflicts carried openly). Tip e5ae6e69 -> 15e45b4b via ONE commit (compare-verified ahead_by 1, behind_by 0, single parent): NIAS/ULTIMATE-BRIEFING.md ADDED +142/-0, author nayapower-lane-agent[bot]. Classification: DIRECT PUSH ALERT (briefing doc, not intelligence-door Smart Note / Living Map / mission-snapshot) — surfaced, disposition owed. 0 relayed to naya2_to_builder (team-wide NIAS posts, none builder-addressed; list stays at cap 20). No merge in-window; breach log stays 121.
 - This tick: board +1 (1,499 -> 1,500; id 6594252057, Verity hourly accountability 02:53Z: 0 dispatched/finished, queue 1,253 flat 159th hour, tip 7823dcb2 at report time, LEARN door defects 7->9 on SN-0861 gap, 3-note cure proven locally unpushed, cold-retrieve vanish SN-0861 + SN-1906, daily learning review due 05:00Z 2026-11-03). Tip 7823dcb2 -> e5ae6e69 via 13 direct commits (compare-verified ahead_by 13, behind_by 0): NIAS/DNA delivery, author nayapower-lane-agent[bot]. Classification: DIRECT PUSH ALERT (not intelligence-door/Living Map/mission-snapshot) — surfaced, disposition owed. 0 relayed to naya2_to_builder (hourly accountability, no builder-addressed ask; list stays at cap 20). No merge in-window; breach log stays 121.
 - This tick: board +3 (1,495 -> 1,498; ids 6593208585 Resolve hub-regression ask, 6593343445 Nitro deploy-lane answer, 6593398666 Verity hourly accountability). Tip 6d06caa4 -> 7823dcb2 via ONE commit (compare-verified ahead_by 1, behind_by 0, single parent): nayanet-app/index.html ADDED +8,395/-0, author nayapower-lane-agent[bot]. Classification: DIRECT PUSH ALERT (app source, not intelligence-door/Living Map/mission-snapshot) — surfaced, disposition owed; served Hub still old until a Shawn-hand deploy. 0 relayed to naya2_to_builder (no relay-rule match; list stays at cap 20). No merge in-window; breach log stays 121.
@@ -117,7 +120,7 @@
   retiring nayanet.live/identity.html; entrance-host cert page still prints SMART LINK
   resolve.nayanet.live. Note: the domain ruling itself remains bot/board text, NOT verified
   Shawn bytes. (Routing note 6586754703: already raised to Shawn in chat.)
-- Dispatcher queue: 1,253 items, flat for the 159th hour (last evidenced 02:53Z via 6594252057); executor-side drain stall on capped lane feeds (#1713/#1714/#1715/#2471 at 2,500 comments, #2472 at 2,499).
+- Dispatcher queue: 1,253 items, flat for the 160th hour (last evidenced 03:53Z via 6595046592); executor-side drain stall on capped lane feeds (#1713/#1714/#1715/#2471 at 2,500 comments, #2472 at 2,499).
 - Master directive #2601: HAND_EDIT_DETECTED on this tick too (known hand-edit persists) — lead reconciles; stale directive stands.
 
 ## TEAM STATUS ("-" = unknown, never invented)
