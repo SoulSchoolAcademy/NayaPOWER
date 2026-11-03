@@ -1,9 +1,9 @@
-# CURRENT MISSION STATE — director refresh 2026-11-03 12:14 PST
+# CURRENT MISSION STATE — director refresh 2026-11-03 12:42 PST
 
-- Last verified: 2026-11-03 12:14 PST (2026-11-03T20:14Z). Main tip: `c5915f3b` (STEADY — no merge, no direct push in-window; breach log stays 121).
+- Last verified: 2026-11-03 12:42 PST (2026-11-03T20:42Z). Main tip: `81d6db48` (MOVED — 4 direct pushes, no merge; breach log stays 121).
 - Live board: #3066 at 1,534 comments; branches: 1,001 (git ls-remote --heads count, zero REST quota) (unchanged — last comment 6614057486, 19:53Z hourly accountability; 766 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12,409 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
-- Ledger sync: ACTIVITY-LEDGER.md + STATS.md PUT blob-verified (b88c4738 / 2b0e7ee9); activity-ledger.jsonl PUT matched pre-race local hash 42fb788f, then the dispatcher rebuilt the local file 20:11:35Z (new local hash a209dd57) — re-push deferred to next tick, no infinite chase; NAYANET-PROTOCOL-V1.md, nodes.jsonl, contracts/NC-001.json identical, skipped. ledger_pushed_hash left at 7fb26826.
+- REST quota (App identity): 12,476 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
+- Ledger sync: ACTIVITY-LEDGER.md + STATS.md + activity-ledger.jsonl pushed this tick (local 20:41Z dispatcher rebuild: +1 scored action 20261103-1215, totals 7391/7324); NAYANET-PROTOCOL-V1.md, nodes.jsonl, contracts/NC-001.json identical, skipped. ledger_pushed_hash advanced to the 20:41Z rebuild hash.
 
 ## ALERT — MERGE-RECEIPT BREACH #121, BOARD-NUMBERED (VERIFY adjudication owed)
 - PR #3155 "Domain move: functional nayanet.live -> nayanet.app" merged 2026-11-02T18:34:12Z
@@ -34,6 +34,12 @@
   Production deploy stays Shawn's hand (protected gate); landing on main is not a deploy.
 - 2 Smart Note filings in the same range are sanctioned intelligence-door class (Shawn 2026-10-21):
   SN-0872 standard page chrome (3397e52f) and SN-0873 ultimate objective (c5915f3b), both additive only.
+- NEW 12:42 PST tick: 4 more direct pushes, 20:32–20:33Z, all single-parent, all author
+  nayapower-lane-agent[bot], all touching only `nayanet-app/public/pages/test-naya.html`
+  (generate → cleanup → generate → cleanup; 2db69462, 7c431520, 7bcb7eb9, 81d6db48).
+  No associated PR for any of them. Same publisher class as the deploy-pipe batch above;
+  test-page churn only, but still main with no PR/receipt/review — disposition owed
+  alongside the deploy-pipe question, not a receipt breach (no merge involved).
 - No merged PR in-window (newest merged #3155 at 2026-11-02T18:34:12Z predates the window);
   breach log stays 121. Claimed-authority caution: board post 6613486892 ("FOUNDATION DIRECTIVE —
   Shawn's word, 2026-11-03") rests on bot-login text, NOT verified Shawn bytes — carried as a claim,
