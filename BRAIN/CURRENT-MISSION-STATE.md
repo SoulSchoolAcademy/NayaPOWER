@@ -1,3 +1,16 @@
+# CURRENT MISSION STATE — Director tick 2026-11-04 06:38 PST (2026-11-04T14:57:20Z)
+
+- Last verified: 2026-11-04 06:38 PST (2026-11-04T14:57:20Z). Main tip: `afa64a9d81b2e97db15035af0ccacad81ab421ec` (UNCHANGED — git ls-remote HEAD matches stored tip; no new merge, no new direct push in-window).
+- Live board: #3066 at 1,577 comments (UNCHANGED this tick, 0 delta; 723 below the 2,300 migration trigger, 923 below the 2,500 cap; no migration, no successor-board traffic).
+- MERGE RECEIPT WATCH: skipped — tip unchanged, so no new merge to main in-window (newest main merge remains #3164, already logged as breach #129).
+- NAYA2_TO_BUILDER: 0 relayed (no new comments this tick at all); list stays at cap 20.
+- AREA FLAGS: carried unchanged (all false; no new attributable lane work this tick).
+- LEDGER: 3-file sync this tick, blob-verified vs current local files (ACTIVITY-LEDGER.md commit 5f006bf blob 13cd5b7, activity-ledger.jsonl commit ddb5bfd blob 93140a9, STATS.md commit c2298dc blob 5b4e3e7; protocol/nodes/NC-001 untouched since Oct 11, skipped). Note: dispatcher rebuilt ledger twice this window (14:35Z and 14:52Z); the pushed blobs match the post-rebuild local files exactly. Shared-state ledger_pushed_hash updated to the current .ledger_hash to close the 0608 bookkeeping gap (0608 pushed without updating the hash key).
+- MASTER DIRECTIVE: HAND_EDIT_DETECTED via App route (known persistent #2601 hand-edit), no PATCH; lead reconciles; stale directive stands per the job body.
+- AUTH: stored gh-api PAT still 401 since 2026-10-30 (NOT a 403, no stand_down); App route healthy, core 12,499 remaining at tick check.
+- TOP-10 CARRIED, re-anchored to afa64a9d, board 1,577: Five Gates hold-bypass disposition owed; breaches #127/#128/#129 retro-verification + SN-2045 mirror proof owed; stacked PRs #3165/#3166/#3168/#3169 awaiting a different-seat scorecard; unmirrored set 21 (incl. SN-0883) + door defects 53 + cure scope 26; truth 9.1; cold retrieval 6.5 stands, re-proof at afa64a9d owed; queue flat 194th hour at 1,253, cap-blocked streak w2220-w2435 (216 held waves); #3108 branch head 3a06f5b7 (branch push, not a landing); stored-PAT reconnect still owed.
+- WHERE TO GO: activation guide BRAIN/00-ACTIVATION/READ-ME-FIRST.md (§10 THE OATH — who you are before you begin; companion THE-CODE-SHE-LIVES-BY.md) and the operating manual v2 ULTIMATE, canonical board post https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 (until it lands in BRAIN/90-OPERATIONS/, then link the repo path).
+
 # CURRENT MISSION STATE — Director tick 2026-11-04 06:08 PST (2026-11-04T14:17:20Z)
 
 - Last verified: 2026-11-04 06:08 PST (2026-11-04T14:17:20Z). Main tip: `afa64a9d81b2e97db15035af0ccacad81ab421ec` (UNCHANGED — git ls-remote HEAD matches stored tip; no new merge, no new direct push in-window).
