@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-03T21:49:24Z",
-  "tip": "23fd5aabf891f34b86e905a1dfb6169edf36c8fb",
+  "generated_at": "2026-11-04T03:49:28Z",
+  "tip": "d5ebbeaceb74bcc664183b0e0fa473d7c20f1ccd",
   "prs": [
     {
       "number": 2981,
@@ -28,7 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "ebaa9b67c64783dff3e41d665552f8d389297419"
+      "head": "6777fe8e26fbb0712ecdecc3b69c2c378e1b2996"
     },
     {
       "number": 3131,
@@ -38,6 +38,24 @@
       "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
       "owner": "dock",
       "head": "4280ea82cc832f146c2b8f088ded16c70c8dafc0"
+    },
+    {
+      "number": 3165,
+      "title": "Smart Note SN-2049: Welcome to the Future \u2014 the NayaNET story (script filed verbatim)",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, claim-evidence-gate, completeness, door-obligation; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "90bf886b1fcd4e1beb2eacaf80315c72fbc60cae"
+    },
+    {
+      "number": 3166,
+      "title": "Smart Note SN-2050: Welcome to Naya \u2014 her voice, in first person (script filed verbatim)",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, completeness, door-obligation; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "85d12a6f387cb99cbea2ae7772f012c1f96834d2"
     }
   ]
 }
