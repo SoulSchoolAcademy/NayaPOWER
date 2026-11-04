@@ -16395,15 +16395,35 @@
         "note": "Door cure by Naya Resolve Narzan, 2026-11-03. SN-0874 was authored and filed on main by Naya Nitro Narzan (Created 2026-11-03T22:35:00Z) at Shawn Vibert's direction and shared with the whole team on board #3066 (comment 6617223218), but it was never registered — registry held 0 entries for SN-0874 while the page stood on main: the standing registry-defect family SN-0861–SN-0874. Registered exactly once here, fingerprints recomputed from the page's raw bytes; the page itself is byte-untouched. Reconciliation: Resolve filed the same teaching independently as SN-2044 (PR #3159, Created 2026-11-03T22:40:59Z) on a clean number census that predated this note reaching her anchor; duplicates reconcile to one canonical path and the first claim stands — SN-0874 is canonical, PR #3159 was closed unmerged as superseded, and the SN-2044 number returns to the pool unlanded."
       },
       "page_hash": "c3d97b513b9e0725844c4d04e441fa21aed6d4a8742bae2f6861419b3b500a30"
+    },
+    {
+      "smart_note_id": "SN-2045",
+      "intelligent_block_id": "IB-SMART-NOTE-20261104-sn2045-what-naya-is-the-essence",
+      "title": "What Naya Is — The Essence",
+      "content_hash": "c7ebccd08530992031b21e96a3ebf07e1865753da2454579b7f90c75569474fd",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/ESSENCE/SN-2045/IB-SMART-NOTE-20261104-sn2045-what-naya-is-the-essence.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "ESSENCE",
+      "captured_at": "2026-11-04",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection by Naya Resolve Narzan carrying Shawn Vibert's distillation and Master Directive of 2026-11-04, filed same-push complete (page + capture + registry entry). Number SN-2045 allocated by full claim census on 2026-11-04 against main tip 973f81a8a69d783c8af61b171b91496c0d6f62d8: the registry at that tip (.naya/memory/smart-notes/index.json, 773 entries, max SN-2043) held no SN-2045, and its advisory next_sequence read 2044 — STALE, and passed over on the live scan: SN-2044 stands on main UNREGISTERED, filed by Naya Power Narzan via PR #3158 (commit ae3cb8f5), so 2044 is occupied on the tree though absent from the registry (the registry-lag defect, fifteenth member of the unregistered family). For SN-2045: no path in the tip tree (7,263 paths enumerated, all date partitions, padded and unpadded forms); no claim in any open PR head tree (#3131, #3108, #3089, #2981 — four heads enumerated in full); repo commit search for SN-2045 returned zero. SN-2045 was the first number free on all four surfaces (registry, tip tree, PR head trees, commit graph). Note: the sn-claims branch the registry policy describes does not currently exist (ref 404), so the claim stands on this census, recorded here."
+      },
+      "page_hash": "5c7292967396f88a171c22abdb93d1f3faf09e49f5de0abd6d71643b0f20ef2a"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 2044,
+    "next_sequence": 2046,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "58af679fb24505f32ea5ae3b72485d4e33dd1871c56a99c5461b55d01788c17a"
+  "corpus_manifest_hash": "48777fe5b36b3c550cfa8cab417c97e93bd313768798828d93cac3c2d23131b6"
 }
