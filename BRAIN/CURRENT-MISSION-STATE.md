@@ -1,3 +1,20 @@
+# CURRENT MISSION STATE — Director tick 2026-11-04 08:38 PST (2026-11-04T16:43:02Z)
+
+- Last verified: 2026-11-04 08:38 PST (2026-11-04T16:43:02Z). Main tip: `69f7c9ab26354aadbec4298719d8cf39aa6c80d6` (UNCHANGED — git ls-remote HEAD matches stored tip; no new merge, no new direct push in-window).
+- Live board: #3066 at 1,592 comments (+3 vs stored 1,589; 708 below the 2,300 migration trigger, 908 below the 2,500 cap; no migration, no successor-board traffic).
+- MERGE RECEIPT WATCH: skipped — tip unchanged, so no new merge to main in-window (newest main merge remains #3170, breach #130, already surfaced 08:08 tick).
+- NAYA2_TO_BUILDER: 0 relayed (no [BUILDER] tag, no builder-seat/Naya 4 address, no direct builder question, no builder-branch verdict among the 3 new comments); list stays at cap 20.
+- AREA FLAGS: act/build/verify true (OPERATION TEN dispatch + Nu P2 BUILD lane + Chi P3 verification); rest false.
+- OPERATION TEN THIS WINDOW: punchlist folded into PROGRAM.md (P1–P10 [open], 1-by-1, guards G1–G8, STOP list); P2 Hub feed → live data with Nu (branch nitro/p2-hub-feed-live, served-bytes receipt owed); P3 deck-button fix FIX-VERIFIED by Chi on nayanet.app/pi (14-slide deck, Download/Print work; Phi's 10-score + Shawn's eye still owed); P1 render HTTP 200 but zero-stale-refs FAILED on ~12 PROSE nayanet.live occurrences in one historical note card (content, not code; Shawn's hand per dispatcher).
+- NEW HOLE: nayanet.live unreachable — connection refused twice 16:29/16:30Z (Chi, 6636107690); Personal card 'View →' CTA dead-ends, sibling CTAs share the domain; P2 served-bytes verification to confirm whether the hub feed path is affected.
+- DRAIN/CAP: 10 open PRs; nayanet[bot] AT the 5-PR cap — one more creation freezes that lane. Retro owed 16 (#107–#121 + #130); ruleset Option A ratified but NOT applied (App 403 — needs Shawn's UI tap or the Admin grant).
+- LEDGER: 3/3 blob-verified on naya/mission-state (ACTIVITY-LEDGER.md commit e72828b5, activity-ledger.jsonl commit a89787fe, STATS.md commit e177031a; protocol/nodes/NC-001 identical, skipped); pushed blobs == current local for all 6 files
+- MASTER DIRECTIVE: HAND_EDIT_DETECTED via App route (known persistent #2601 hand-edit), no PATCH; lead reconciles; stale directive stands per the job body
+- AUTH: stored gh-api PAT still 401 since 2026-10-30 (NOT a 403, no stand_down); App route healthy, core 12,386 remaining at tick check.
+- TOP-10 (re-anchored to 69f7c9ab, board 1,592): (1) breach #130 adjudication + retro-verification (owed 16); (2) ruleset Option A application; (3) PR #3172 different-seat scorecard (777 → 798); (4) SN-2044 reconciliation vs SN-0874 (NOT registration); (5) stacked PRs #3165/#3166/#3168/#3169 (+ #3170 retro); (6) OPERATION TEN P2 (Nu) + P3 face 10-score (Phi) + Shawn's eye; (7) nayanet.live unreachable, serving-path impact TBD by P2 verification; (8) SN-2045 mirror proof; (9) Five Gates hold-bypass disposition; (10) nayanet[bot] at the 5-PR cap.
+- TEAM STATUS: carried from the previous tick's cells where no new signal arrived this window (no new lane receipts in the 3 board comments beyond Nitro dispatch/verification above); genuinely unknown cells stay "—", nothing invented.
+- WHERE TO GO: activation guide BRAIN/00-ACTIVATION/READ-ME-FIRST.md (§10 THE OATH — who you are before you begin; companion THE-CODE-SHE-LIVES-BY.md) and the operating manual v2 ULTIMATE, canonical board post https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 (until it lands in BRAIN/90-OPERATIONS/, then link the repo path).
+
 # CURRENT MISSION STATE — Director tick 2026-11-04 08:08 PST (2026-11-04T16:13:35Z)
 
 - Last verified: 2026-11-04 08:08 PST (2026-11-04T16:13:35Z). Main tip: `69f7c9ab26354aadbec4298719d8cf39aa6c80d6` (MOVED afa64a9d -> 69f7c9ab: merge #3170 15:54:33Z, then a direct push 15:58:51Z).
