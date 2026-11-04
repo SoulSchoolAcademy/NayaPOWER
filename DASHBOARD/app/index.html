@@ -7384,106 +7384,11 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
 <!-- 2026-11-01 — Shawn: JOURNEY REMOVED from dashboard. The funnel belongs
      INSIDE the orb details (click INVITES → see Invite→Join→Sale), not as a
      separate section. Dashboard is clean: gauge + 8 orbs, nothing else. -->
-<div class="ph-card os-points-board" id="os-points-board" style="--ac:#e84fff;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#e84fff">★</span> Your points <span class="os-src-chip live">● COUNTING</span></h3>
-<!-- V9.7 (Framework): descriptive text removed. The visual IS the explanation. -->
-<p class="os-note" style="display:none;">Everything you create that brings value earns points — notes, posts, messages, invites, clicks, joins, and everything else you give. This is where they gather. <button type="button" class="os-ledger-link" data-goto-ledger="1">View in ledger ⌗</button></p>
-<div class="os-ld" id="os-ld" data-momentum="calm">
-<div class="os-ld-ambient" id="os-ld-ambient"></div>
-<canvas class="os-ld-flow" id="os-ld-flow1" aria-hidden="true"></canvas>
-<canvas class="os-ld-flow" id="os-ld-flow2" aria-hidden="true"></canvas>
-<div class="os-ld-mom" id="os-ld-mom">
-<span class="os-ld-mom-lab">Momentum</span>
-<span class="os-ld-mom-state" id="os-ld-mom-label">reading…</span>
-<span class="os-ld-mom-live" title="Driven by your live activity, never simulated"><i></i>live</span>
-</div>
-<div class="os-ld-countline" id="os-ld-countline"></div>
-<div class="os-uchart" id="os-uchart">
-  <!-- SCREEN-2 REBUILD 2026-11-01 — 4 chrome layers collapsed to 1.
-       Was: WHEN pills + title row + STAT tabs + VIEW tabs (4 rows of
-       chrome before the chart). Now: one bar, every control, then the
-       chart is the hero. Redundant labels ("When"/"Stat"/"View") cut —
-       the pills speak for themselves. All IDs preserved for the JS. -->
-  <div class="os-uchart-bar" id="os-uchart-bar">
-    <div class="os-uchart-title"><span class="os-uchart-statname" id="os-uchart-statname">Smart Score</span><span class="os-uchart-total" id="os-uchart-total">…</span></div>
-    <div class="os-uchart-pills" id="os-uchart-pills" role="tablist" aria-label="Chart stat"></div>
-    <div class="os-time-switch" id="os-time-switch" role="tablist" aria-label="Time window"><button data-tw="hourly" role="tab" type="button" style="--pc:#3fb8ff;">Hourly</button><button data-tw="daily" role="tab" type="button" style="--pc:#a06bff;">Daily</button><button data-tw="weekly" role="tab" type="button" style="--pc:#2fe89e;">Weekly</button><button data-tw="monthly" role="tab" type="button" style="--pc:#ffbf3d;">Monthly</button><button data-tw="all" role="tab" type="button" style="--pc:#e84fff;" class="on">All time</button></div>
-    <div class="os-uchart-viewseg" id="os-uchart-viewseg" role="tablist" aria-label="Chart view"><button data-view="flow" role="tab" type="button" style="--vc:#3fb8ff;">Flow</button><button data-view="bars" role="tab" type="button" style="--vc:#a06bff;">Bars</button><button data-view="table" role="tab" type="button" style="--vc:#ffbf3d;">Table</button><button data-view="funnel" role="tab" type="button" style="--vc:#ff9a5a;">Funnel</button></div>
-    <button class="os-uchart-comparebtn" id="os-uchart-compare" type="button" aria-pressed="false">Compare</button>
-    <button class="os-uchart-sharebtn" id="os-uchart-share" type="button">Share</button>
-  </div>
-  <!-- V6: the one next action — computed prescription, above the charts -->
-  <div class="os-v6-next" id="os-v6-next" hidden></div>
-  <!-- V6: pace as a living element — pts/day, arrival at the next band, what pulls it closer -->
-  <div class="os-v6-pace" id="os-v6-pace" hidden></div>
-  <div class="os-uchart-story" id="os-uchart-story"></div>
-  <div class="os-uchart-body" id="os-uchart-body">
-    <svg class="os-uchart-svg" id="os-uchart-svg" viewBox="0 0 900 506" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Living chart"></svg>
-    <div class="os-uchart-zero" id="os-uchart-zero" hidden></div>
-    <div class="os-uchart-tip" id="os-uchart-tip"></div>
-    <div class="os-uchart-tablewrap" id="os-uchart-tablewrap" hidden></div>
-  </div>
-  <div class="os-uchart-daydetail" id="os-uchart-daydetail"></div>
-  <div class="os-uchart-breakdown" id="os-uchart-breakdown"></div>
-  <!-- V6: legend cut — "Color shows how big. Truth is shown in the sentence." said nothing. -->
-  <div class="os-uchart-prov"><span class="os-uchart-dot"></span><span id="os-uchart-provtext">Live — ledger synced.</span></div>
-</div>
-<!-- V6: derivation sheet — every number proves itself behind the tap -->
-<div class="os-v6-sheet" id="os-v6-sheet" hidden>
-  <div class="os-v6-sheetcard" role="dialog" aria-modal="true" aria-label="Number derivation">
-    <button class="os-v6-x" id="os-v6-x" type="button" aria-label="Close derivation">✕</button>
-    <div id="os-v6-sheetbody"></div>
-  </div>
-</div>
-<!-- SCREEN-3 REBUILD 2026-11-01 — 3 blocks merged to 1 proof feed.
-     Was: "Live" feed + "Naya reads it back" story + (duplicate) narrator
-     section below. The story text duplicated tn-voice-narr; now the ONE
-     proof feed is Live events + trajectory chips. No voids. -->
-<div class="os-ld-duo os-ld-proof">
-<div class="os-ld-stream"><h5><span class="os-ld-livedot"></span>Live — your proof</h5><div id="os-ld-events"><div class="os-ld-ev-empty">Listening for your actions…</div></div></div>
-<div class="os-ld-trajwrap"><h5>Trajectory</h5><div class="os-traj" id="os-traj"></div></div>
-</div>
-<div class="os-milestones" id="os-milestones"></div>
-<p class="os-note" id="os-points-note"><span class="os-skel-line" style="width:50%"></span></p>
-<p class="os-note" id="os-pending-strip" style="margin:8px 18px 0;"></p>
-
-</div>
-
-</div>
-<section class="tn-voice-narr" aria-label="Naya reads it back">
-<p data-tn-voice="since"></p>
-<p data-tn-voice="because"></p>
-<p data-tn-voice="mix"></p>
-<p data-tn-voice="funnel"></p>
-<p data-tn-voice="pending"></p>
-<p data-tn-voice="quiet"></p>
-<p class="tn-voice-sig" data-tn-voice="sig"></p>
-</section>
 <!-- SCREEN-3 REBUILD 2026-11-01 — "Where your score comes from" gets its
      own viewport: a full screen for the math, not a card squeezed between. -->
-<div class="ph-card os-viewport-card" id="os-composition-card" style="--ac:#a06bff;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#e84fff">◈</span> Where your score comes from</h3>
-<p class="os-note">Every point has a source — the math, drawn instead of listed. Birth is canon; creating and smart notes are ruled values; nothing else claims points.</p>
-<div class="os-comp-flow" id="os-comp-flow"><div class="os-skel"></div></div>
-<p class="os-note os-comp-note" id="os-comp-note"></p>
-</div>
 <!-- SCREEN-4 REBUILD 2026-11-01 — the "Your intelligence, outward" void
      is killed (hidden, not deleted — restore with one CSS change if the
      compounding data proves its worth). Smart Links IS the screen now. -->
-<div class="ph-card" id="os-compounding-card" style="--ac:#2fe89e;">
-<!-- 2026-11-01 — Shawn: UNHIDDEN. The four boxes were "dead blocks" — now they
-     live: each box gets its own identity color, elevation, and breathing room. -->
-<h3><span class="os-jewel os-jewel-h" style="--jc:#2fe89e">◎</span> Your intelligence, outward</h3>
-<p class="os-note">What you give comes back — the compounding only this system can draw.</p>
-<div class="os-compound" id="os-compound"><div class="os-skel"></div></div>
-<p class="os-note" id="os-compound-note"></p>
-</div>
-<div class="ph-card" style="--ac:#3fb8ff;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">◉</span> Your pages, measured</h3>
-<p class="os-note">Every page you own, every number that matters — one place. Pick a page to see its world.</p>
-<div class="os-period" data-pagescope="1"><button type="button" class="on" data-page="all" style="--pc:#e84fff;">All pages</button><button type="button" data-page="personal" style="--pc:#a06bff;">Personal</button><button type="button" data-page="business" style="--pc:#3fb8ff;">Business</button><button type="button" data-page="space" style="--pc:#2fe89e;">Space</button><button type="button" data-page="membership" style="--pc:#ffbf3d;">Membership</button></div>
-<div id="os-pages-body"><div class="os-skel"></div></div>
-</div>
 <!-- 2026-11-01 — Shawn: REMOVED. "Plugged into this world" is noise, not signal.
      15+ sections competing. Water finds one channel. -->
 <!-- V8-CUT 2026-11-01: 'The rooms this world opens' removed — navigation duplicated the bottom bar; its one-number signals did not earn the page. Restorable by un-commenting. -->
@@ -13232,7 +13137,7 @@ function uchartRender(){
       var share = S.total>0 ? Math.round(v/S.total*100) : 0;
       h='<b>'+esc(fd)+'</b> — <b>'+v.toLocaleString()+'</b> '+unit+' · '+share+'% of the total in view.';
     }
-    h+=' <a href="#os-points-board">Trace in the ledger &#9000;</a>';
+    
     dd.innerHTML=h; dd.classList.add('show');
   }
 
@@ -17654,7 +17559,7 @@ function loadPagesBoard(_t){
     tile(dashFixN(d.noteTimes&&d.noteTimes.length),'SMART NOTES',null,tileSpark(sparkSVG(spark14(d.noteTimes),'#e84fff')))+
     tile(dashFixN(d.msgTimes&&d.msgTimes.length),'MESSAGES',null,tileSpark(sparkSVG(spark14(d.msgTimes),'#3fb8ff')))+
     tile(dashFixN(d.invTimes&&d.invTimes.length),'INVITES',null,tileSpark(sparkSVG(spark14(d.invTimes),'#ff9a5a')))+'</div>'+
-    '<p class="os-note" style="margin-top:10px">The whole network, one glance. Page visits, click sources, sales and income join this grid the moment those doors connect — until then, every number here is real. <a class="os-xlink" href="#os-points-board">How they become points \u2191</a></p>';
+    '<p class="os-note" style="margin-top:10px">The whole network, one glance. Page visits, click sources, sales and income join this grid the moment those doors connect — until then, every number here is real.</p>';
   function invite(name,color,href){
     return '<div class="os-page-invite"><p class="os-note" style="color:#fff;font-size:14px"><span class="os-jewel os-jewel-sm" style="--jc:'+color+'">\u25c9</span> <b>'+name+'</b> — visits, clicks, sales and income start counting here the moment this page is linked.</p>'+
     '<p class="os-note">What you will see: visits over time, where every click came from, every sale and where it came from, income, and the package each buyer chose.</p>'+
