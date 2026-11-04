@@ -1,10 +1,24 @@
-# CURRENT MISSION STATE — director refresh 2026-11-03 18:41 PST
+# CURRENT MISSION STATE — director refresh 2026-11-03 19:12 PST
 
-- Last verified: 2026-11-03 18:41 PST (2026-11-04T02:41:27Z). Main tip: `7aa0cf97` (STEADY since the 18:18 PST tick — no merge, no direct push in-window; merge watch skipped; breach log stays 126).
-- Live board: #3066 still at 1,550 comments (0 new since the 01:53Z hourly 6620420290; 750 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12,491 remaining at 02:41Z tick check (/rate_limit, healthy). Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403) — PAT-route failure only; App route is the working path, PAT reconnect still owed.
+- Last verified: 2026-11-03 19:12 PST (2026-11-04T03:12:47Z). Main tip: `973f81a8` (MOVED by 7 direct pushes, NO merges — Smart Notes SN-0876–SN-0882, intelligence-door shape; breach log stays 126).
+- Live board: #3066 at 1,551 comments (new: 6621265508 hourly 02:53Z, queue flat; 749 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12,484 remaining at 03:08Z tick check (/rate_limit, healthy). Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403) — PAT-route failure only; workers keep using the App route until the PAT reconnect lands.
 - Branches (refs/heads via git ls-remote): 1,005. Open PR count: not fetched this tick (no extra call for this line).
-- Ledger sync: ACTIVITY-LEDGER.md blob 6bfeff56 VERIFIED; activity-ledger.jsonl blob 2e56609b VERIFIED; STATS.md blob 5b89bf1f VERIFIED (18:30 PST lane-scorer rebuild, 7,403 entries); NAYANET-PROTOCOL-V1.md identical-skipped; nodes.jsonl identical-skipped; contracts/NC-001.json identical-skipped (branch head unchanged since last verified sync, local files untouched).
+- Ledger sync: ACTIVITY-LEDGER.md blob fa156bbf VERIFIED; activity-ledger.jsonl blob 0fbbde9d VERIFIED; STATS.md blob b04e8172 VERIFIED (03:01 PST rebuild, 7,404 entries); protocol/nodes/NC-001 identical-skipped. Race: local ledger rebuilt again 03:11Z during this tick — re-push deferred to next tick per precedent; pushed_hash NOT advanced past the verified push.
+## ALERT — TIP MOVED BY 7 INTELLIGENCE-DOOR DIRECT PUSHES (this tick, surfaced)
+
+- Tip 7aa0cf97 -> 973f81a8, compare ahead 7 / behind 0, all single-parent,
+  NO merges: SN-0876 (ddebcf89) through SN-0882 (973f81a8), all 03:03:40–03:03:51Z,
+  additive-only (7 new SN files, +135/-0). Intelligence-door shape per Shawn's
+  2026-10-21 door ruling (Smart Notes land on main by direct write) — NOT a
+  receipt breach (no merge involved); breach log stays 126.
+- Attribution caveat, same as the NIAS deletions dispute: each commit message
+  claims "(Shawn's order 2026-11-04)" — that is commit text only, NOT
+  director-verified Shawn bytes. Carried as claim, not as his word.
+- Still OPEN from prior ticks: NIAS v5 deletion attribution dispute (confirmation
+  or restoration owed, NOT adjudicated by director); SN-0875 hub-mirror gap owed;
+  breaches #122–#126 adjudication + retro-verification of #44–#126 trees owed.
+
 ## ALERT — STAND-DOWN CLEARED + DIRECT-PUSH DELETIONS DISPUTED (this tick, surfaced)
 
 - Stand-down (set 2026-11-04T00:38:57Z, renewed 01:38Z, both on PAT-route 401) CLEARED
@@ -203,17 +217,17 @@
 - No merged PR in-window (newest merged #3155 at 2026-11-02T18:34:12Z predates the window);
   breach log stays 121.
 
-## TOP-10 (re-anchored to 7aa0cf97, board 1550)
+## TOP-10 (re-anchored to 973f81a8, board 1551)
 1. NIAS v5 deletion attribution dispute — confirmation or restoration owed, NOT adjudicated by director (6619690125 vs 6619960062); SN-0875 hub-mirror gap owed
-2. Breaches #122-#126 adjudication + retro-verification of #44-#126 trees owed (no new merges this tick; breach log stays 126)
-3. Direct-push disposition questions carried (Smart Box + Naya World, NIAS v5 code, showcase generator, deploy-pipe, NIAS/DNA bursts, app source) — accept vs receipted-PR rulings owed
-4. Factory registry drift (personal.html vs templates-registry.json) + post-merge reds at ec6d0636
-5. Queue flat 182nd hour (6620420290) / dispatch blocked on capped lane feeds; unmirrored set twelve notes plus SN-0875
-6. Stored-PAT reconnect owed (401 since 2026-10-30); App route is the working path until then
-7. Serving chain + HUB BUILD CURRENCY: served Hub still old build until a Shawn-hand deploy; .app remaining seams (/about, /joinus, /pi) + identity-transfer decision owed to Shawn's hand
-8. Master directive #2601: HAND_EDIT_DETECTED persists — lead reconciles; stale directive stands
-9. Done-proven gates + open PRs (census 4 per 6619690125, heads unchanged by the direct pushes)
-10. Owner asks carried + protocol-watchdog failure 6590041195 (VERIFY inspection owed)
+2. Breaches #122–#126 adjudication + retro-verification of #44–#126 trees owed (no new merges this tick; breach log stays 126)
+3. SN-0876–SN-0882 direct-write attribution — commit text claims Shawn's 2026-11-04 order; verification owed (door shape, not a breach)
+4. Queue flat / dispatch blocked — 31 gap briefs unclaimable by the Clarity seat (29x parent-authorship, 2x barred); drains only via a non-Clarity seat or a dispatcher-stamped CLAIMABILITY GATE
+5. Stored-PAT reconnect owed (401 since 2026-10-30) — App route healthy, workers use it until the PAT lands
+6. Direct-push disposition questions carried (Smart Box + Naya World welcome, NIAS v5, showcase, deploy-pipe)
+7. Unmirrored set twelve notes plus SN-0875 (per hourly record)
+8. Ledger-sync race (local rebuild during director tick) — re-push owed next tick, not a data loss
+9. Board-cap runway: #3066 at 1,551, 749 below the 2,300 migration trigger
+10. Queue flat 183rd straight hour (02:53Z hourly) — but lanes re-measuring on their own: retrieval score lowered (more notes unreachable), learning defect count widened at the same tip
 
 ## DONE WITH PROOF
 - This tick: board UNCHANGED at 1,550 (0 new comments, 0 relayed; naya2_to_builder stays at cap 20). Tip STEADY at 7aa0cf97: no merge, no direct push in-window (tip unchanged, merge watch skipped); breach log stays 126. Ledger sync PUSHED 3 files (18:30 rebuild, blobs verified). Master directive: HAND_EDIT_DETECTED again this tick — no PATCH; lead reconciles; stale directive stands.
