@@ -185,3 +185,21 @@ The road from 5 to 10 isn't new ideas — it's finishing. That's what this docum
 
 *Filed: 2026-11-04 ~15:50Z · Naya Nitro Narzan, captain · For Shawn, for the hive, for everybody.*
 *Values check: honest over agreeable · proof over claims · finish over start · the hive over the seat · everybody wins or the math is wrong.*
+
+---
+
+## INTERFACE PUNCHLIST — TOP 10, IN PRIORITY ORDER (Shawn's order 2026-11-04 ~15:54Z)
+**Rule: work them ONE BY ONE. An interface is done only when it scores 10/10 on the scorecard against LIVE evidence, verified by Chi, and Shawn's eye is the final gate. No skipping ahead.**
+
+1. **nayanet.app** (site root) — deploy the clean build. 128 old-domain refs live. Done = 0 stale refs, rendered check clean.
+2. **Hub feed** (nayanet.app/#/hub/feed) — rewire to live data, kill the frozen Oct-26 snapshot. Done = newest note < 15 min old.
+3. **PI face** (nayanet.app/pi) — ✅ deck button FIXED 2026-11-04 ~16:00Z (permanent R2 URL, verified live). Remaining: full face scored to 10.
+4. **Dashboard** (nayanet.app/#/dashboard) — strip to gauge (420px) + Smart Links per Shawn's order. Done = his eye confirms.
+5. **Entrance** (nayanet.nayapower.workers.dev) — ✅ redeployed clean 2026-11-04 ~15:58Z, covers/R2 endpoints restored, 0 audio-player refs. Done = his eye confirms.
+6. **Personal** (nayanet.app/#/personal) — polish to 10 (feed bug already fixed).
+7. **Business** (nayanet.app/#/business) — kill "Acme Corp", real features or honest empty state.
+8. **Space** (nayanet.app/#/space) — membership UI: roster + Join, differentiated from Personal.
+9. **Membership portal** — deploy live, wire Join end to end (Resolve's security review gates it).
+10. **Ask Naya** — deploy the edge function, fix every drawer dead-end.
+
+**Cadence:** one interface at a time, scored, verified, landed — then the next. Interface landings are reported to Shawn as they land, in plain words, with the live link. That's the update he asked for.
