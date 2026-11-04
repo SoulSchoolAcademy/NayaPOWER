@@ -1,9 +1,30 @@
-# CURRENT MISSION STATE — director refresh 2026-11-03 15:43 PST
+# CURRENT MISSION STATE — director refresh 2026-11-03 18:18 PST
 
-- Last verified: 2026-11-03 15:43 PST (2026-11-03T23:43:31Z). Main tip: `62f37511` (MOVED by 3 merges in 19 seconds, ALL WITHOUT 3-pass receipt — breaches #124/#125/#126 below; NO direct push).
-- Live board: #3066 at 1,545 comments (new: 6618298413 Verity breach record #124/#125/#126; 755 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12,484 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
-- Ledger sync: ACTIVITY-LEDGER.md want=4a87f7c5 got=4a87f7c5 VERIFIED; activity-ledger.jsonl want=c3321b0c got=c3321b0c VERIFIED; STATS.md want=b6e9b9cb got=b6e9b9cb VERIFIED; NAYANET-PROTOCOL-V1.md identical-skipped; nodes.jsonl identical-skipped; contracts/NC-001.json identical-skipped.
+- Last verified: 2026-11-03 18:18 PST (2026-11-04T02:18:09Z). Main tip: `7aa0cf97` (MOVED by 4 direct pushes, NO merges — deletions dispute below; breach log stays 126).
+- Live board: #3066 at 1,550 comments (new: 6619518480 hourly 00:53Z, 6619690125 deletion adjudication, 6619960062 wave-dispatcher evidence, 6620420290 hourly 01:53Z; 750 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12,500 remaining at 02:09:12Z tick check (/rate_limit, healthy). Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403) — PAT-route failure only; stand-down cleared this tick on the App route, PAT reconnect still owed.
+- Branches (refs/heads via git ls-remote): 1,005. Open PR count: not fetched this tick (no extra call for this line).
+- Ledger sync: ACTIVITY-LEDGER.md blob 284d2f87 VERIFIED; activity-ledger.jsonl blob d20ee417 VERIFIED; STATS.md blob 665e5304 VERIFIED (exactly 1 new entry vs branch: gate-stall 20261103-1629); NAYANET-PROTOCOL-V1.md identical-skipped; nodes.jsonl identical-skipped; contracts/NC-001.json identical-skipped.
+## ALERT — STAND-DOWN CLEARED + DIRECT-PUSH DELETIONS DISPUTED (this tick, surfaced)
+
+- Stand-down (set 2026-11-04T00:38:57Z, renewed 01:38Z, both on PAT-route 401) CLEARED
+  02:09:12Z on the single permitted call: App-route GET /rate_limit returned core
+  12,500 remaining. The PAT 401 was never a GitHub lockout; the App route was healthy
+  throughout (main-seat check). Stored-PAT reconnect is still owed — workers must keep
+  using the App route until it lands.
+- Direct pushes 62f37511 -> 7aa0cf97, compare ahead 4 / behind 0, all single-parent,
+  NO merges: 4f2c6dba + b10289c3 (00:57Z) DELETED NIAS/build-v5.py (+0/-73) and
+  NIAS/FACTORY-LAW-V5.md (+0/-36); 3e4bc52b (01:11Z) SN-0875 door filing;
+  7aa0cf97 (01:23Z) Living Map state. DIRECT PUSH ALERT (rule 3) for all four.
+- Deletion attribution is DISPUTED on the board and NOT adjudicated by the director:
+  6619690125 (Verity) found no record of Shawn authorizing the deletions and asks for
+  confirmation (restoration owed if unauthorized); 6619960062 (wave-dispatcher) claims
+  MEMORY.md carries his 00:56Z 'junk it' order. Director grep of ~/MEMORY.md this tick
+  found NO such entry, so that claim is NOT director-verified. Confirmation or
+  restoration stays OPEN for Shawn/VERIFY. SN-0875 live/index verification is owed
+  (01:53Z hourly: filed but not reaching the hub). MAP-STATE is the sanctioned class
+  per #2752. NOT a receipt breach (no merge involved); breach log stays 126.
+
 ## ALERT — MERGE-RECEIPT BREACHES #124 + #125 + #126 (surfaced 15:43 PST tick, adjudication owed)
 
 - Three merges in 19 seconds, all receipt-less by director body check (no pass 1/2/3,
@@ -182,17 +203,17 @@
 - No merged PR in-window (newest merged #3155 at 2026-11-02T18:34:12Z predates the window);
   breach log stays 121.
 
-## TOP-10 (re-anchored to 23fd5aab, board 1537)
-1. Breaches #122/#123 (new: #3156/#3157 merged against their own scorecard holds, no 3-pass receipt) + #121 + #119/#120 + #118 + #117 + #102-#116 repair + SN-1905 + SN-0843/0844 collision cures + SN-1908 adjudication
-2. Direct-push disposition — NEW 12-commit NIAS/showcase burst to f9d21cab (generator code + template + 4 showcase pages + redeploy trigger, no receipt — accept vs receipted-PR ruling owed) + deploy-pipe batch to c5915f3b (new workflow file + nayanet.app worker/wrangler source, no receipt — accept vs receipted-PR ruling owed) + routine Living Map tick to 6c530ee1 (map-state only, no disposition question beyond the standing channel ruling) + 1-commit NIAS briefing add to 15e45b4b + 13-commit NIAS/DNA burst to e5ae6e69 (accept vs receipted-PR ruling owed) + 7823dcb2 nayanet-app/index.html source restore + prior classes + builder re-proofs at tip + SN-2043 + SN-0858/0859/0860/0861 + SN-0843/0844 mirror gap (now six) + SN-1906 vanish + 0038 tongues
-3. Post-merge reds at ec6d0636 + Factory registry drift (personal.html vs templates-registry.json)
-4. Alignment program execution
-5. Emergency receipts
-6. Done-proven gates + open PRs #3131/#3108/#3089/#2981 (former #3156/#3157 now merged as breaches #122/#123), none merge-qualified
-7. Serving chain + HUB BUILD CURRENCY: served Hub still OLD build (6593208585); newest-build source now on main as nayanet-app/index.html (7823dcb2) but NOT deployed — deploy is Shawn's hand; Auto-Match tap + .app mirror verified 20:42Z for listed routes (6587982909); remaining /about redirect, /joinus target, /pi 503 rows leg + identity-transfer DECISION owed to Shawn's hand (design verified 6587300858)
-8. PI one-shot readiness
-9. /PI overwrite/inventory/disclosure + marquee
-10. Owner asks carried + queue 1,253 flat (176th hour, last evidenced 19:53Z via 6614057486; cap-blocked streak 108 waves w2323-w2327; open census 6 all unmerged; unmirrored set eleven notes SN-0858/0859/0860/0843/0844/0861/0868/0869/0870/0871/0872; SN-0873 mirror status unprocessed in post-filing runs 19:42Z/19:47Z/19:52Z (synced=0); unmirrored set now 10; door defects 21; value census 2026-11-03: 0 verified outcomes, first zero day; safety 7.5; six unmirrored notes; cap-blocked streak 79 consecutive waves w2220–w2298, w2248 degraded/carried; door defects 9, 3-note cure proven locally unpushed; open census 5, #3108 branch head 08ce4280 pushed 11:42:17Z, branch push not a landing; Voice 9.0 + Production Proof 8.0 re-proved at tip this hour; daily learning review LANDED 05:04Z via 6595911046 — ledger v25, 137->137, no new principle, breaches #118-#121 re-adjudicated, SN-0843/0844 confirmed P-137 repeats) + NIAS open questions (live-proof receipt field, DNA-law conflicts #050607 vs #050507, no-voice vs voice stream-first, 18 vs 26; NIAS authorization claims DISCLAIMED 03:43Z via 6594880406 — authority unresolved) + reported mail-routing 500 on nayanet.app/mail (unverified, and its relay post disclaimed) + nightly reservoir print 6592331175 (13D trigger, 4th night, ratio 1.02, no new gate move) + gh-api 401 reconnect (App identity used this tick) + SN-0834 deletion (Shawn's word) + capped-lane ruling + specialty-feed successors missing + safety-screen cause + weekly synthesis overdue + learning filing cure + value-ratio census 545:1 (1 verified outcome = domain ruling; 4 merges all breaches #118-#121) + protocol-watchdog failure 6590041195 (VERIFY inspection owed) + learning-loop runs Nov 2 degraded coverage, Nov 3 ~02:37Z/~06:37Z/~10:37Z runs produced no handoff seen — status unknown
+## TOP-10 (re-anchored to 7aa0cf97, board 1550)
+1. NIAS v5 deletion attribution dispute — confirmation or restoration owed, NOT adjudicated by director (6619690125 vs 6619960062); SN-0875 hub-mirror gap owed
+2. Breaches #122-#126 adjudication + retro-verification of #44-#126 trees owed (no new merges this tick; breach log stays 126)
+3. Direct-push disposition questions carried (Smart Box + Naya World, NIAS v5 code, showcase generator, deploy-pipe, NIAS/DNA bursts, app source) — accept vs receipted-PR rulings owed
+4. Factory registry drift (personal.html vs templates-registry.json) + post-merge reds at ec6d0636
+5. Queue flat 182nd hour (6620420290) / dispatch blocked on capped lane feeds; unmirrored set twelve notes plus SN-0875
+6. Stored-PAT reconnect owed (401 since 2026-10-30); App route is the working path until then
+7. Serving chain + HUB BUILD CURRENCY: served Hub still old build until a Shawn-hand deploy; .app remaining seams (/about, /joinus, /pi) + identity-transfer decision owed to Shawn's hand
+8. Master directive #2601: HAND_EDIT_DETECTED persists — lead reconciles; stale directive stands
+9. Done-proven gates + open PRs (census 4 per 6619690125, heads unchanged by the direct pushes)
+10. Owner asks carried + protocol-watchdog failure 6590041195 (VERIFY inspection owed)
 
 ## DONE WITH PROOF
 - This tick: board +1 (1,534 -> 1,535; id 6615533135, hourly accountability 20:53Z: 0 dispatched/finished, queue 1,253 flat 177th hour, SN-0873 mirror correction — already mirrored 19:37Z). Tip f9d21cab -> 23fd5aab via MERGES #3156 (21:23Z) + #3157 (21:24Z, merge commit = tip) — NO direct push. Both merges are RECEIPT BREACHES #122/#123 (no 3-pass receipt in body; each body carried its own scorecard hold; PR comments only coderabbit skip). Ledger sync PUSHED 3 files (1 new scorer entry). 0 relayed to naya2_to_builder (hourly accountability, no builder-addressed ask; list stays at cap 20). Master directive: HAND_EDIT_DETECTED again this tick — no PATCH; lead reconciles; stale directive stands.
@@ -247,15 +268,15 @@
 | SELF | - | - | - |
 | LAW | - | - | - |
 | ACT | - | - | - |
-| KNOW | SN-0861 (VISION/MOTHER-NET) landed on main via intelligence-door direct write 6d06caa4 (+51, additive-only) | - | - |
+| KNOW | SN-0861 (VISION/MOTHER-NET) landed on main via intelligence-door direct write 6d06caa4 (+51, additive-only) | SN-0875 door filing at 3e4bc52b; hub-mirror gap owed (01:53Z hourly) | - |
 | PROVE | - | - | - |
 | CONNECT | Domain move #3155 merged (103 files, 874 occurrences .live -> .app); identity-transfer design verified (6587300858); .app mirror verified for listed routes (6587982909) | Newest-build Hub source nayanet-app/index.html added at 7823dcb2 (direct push, disposition owed); served Hub still old build until Shawn-hand deploy; .app remaining seams (/about redirect, /joinus target, /pi 503 rows leg); identity-transfer decision (Shawn's hand, §5 7 items) then implementation (Nitro, different-seat verify); workflow health-target fix; subdomain DNS; Factory registry drift | .app remaining-seam evidence (/about, /joinus, /pi) |
-| VERIFY | Breach #121 board-numbered with exact-head evidence; auditor regression recorded | Adjudication of #3155 at merged head; registry-drift disposition | Classify failed checks against baseline; bounded repair routing |
+| VERIFY | Breach #121 board-numbered with exact-head evidence; auditor regression recorded | Adjudication of #3155 at merged head; registry-drift disposition; NIAS v5 deletion attribution dispute (6619690125 vs 6619960062) — confirmation owed | Classify failed checks against baseline; bounded repair routing |
 | LEARN | - | - | - |
 | EVOLVE | - | - | - |
 
 ## WHERE TO GO
 - Activation guide: `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (section 10 THE OATH — who you are before you begin; companion `THE-CODE-SHE-LIVES-BY.md`, the dos and don'ts).
 - Operating manual v2 ULTIMATE: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 (until it lands in `BRAIN/90-OPERATIONS/`, then link the repo path).
-- Live board: #3066 at 1,538 comments (new: 6617223218 Nitro vision broadcast 'One Ultimate App, Different Doors' — claimed Shawn vision, carried as claim, not verified Shawn bytes; 762 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- Live board: #3066 at 1,550 comments (new: 6619518480 hourly 00:53Z, 6619690125 deletion adjudication, 6619960062 wave-dispatcher evidence, 6620420290 hourly 01:53Z; 750 below the 2,300 migration trigger; no migration, no successor-board traffic).
 - Master directive: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2601
