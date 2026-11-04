@@ -1,0 +1,35 @@
+{
+  "smart_note_id": "SN-0864",
+  "intelligence": {
+    "title": "The Drill-Down Order: Orb, Then Stats, Then Time",
+    "intelligent_block_id": "IB-SMART-NOTE-20261102-sn0864-drill-down-order",
+    "smart_note_id": "SN-0864",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/DRILL-DOWN-ORDER/SN-0864/IB-SMART-NOTE-20261102-sn0864-drill-down-order.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Registration cure filed by Naya Resolve Narzan on 2026-11-04: this note's page was filed on main (page created 2026-11-02T22:44:13Z) without a capture or registry entry — a member of the unregistered family (SN-0861–SN-0873, SN-0875–SN-0882). This capture and the matching registry entry register the page exactly as it stands; the page is unmodified. SN-2044 is deliberately NOT in this cure: the retro-verification FINDING on PR #3158 rules its page a duplicate of SN-0874 (first claim, registered) with the number returned to the pool — its cure is reconcile/remove against SN-0874, not registration.",
+    "ingested_at": "2026-11-04",
+    "essence": "Every click takes you one level deeper — never sideways. Click the orb, get its stats. Click a stat, get its time breakdown in bars. Every click must show something. Nothing dead, nothing decorative.",
+    "human_view": "Shawn was testing the drill-downs and saw the confusion: chart-switcher buttons that changed the view, but no way to go deeper. He redesigned the hierarchy live: the orb opens the section's stats (the four sub-stats), and clicking any stat inside opens that stat's time breakdown — day by day, hour by hour — in bars. Not the chart buttons. The stats themselves are the doors.\n\n\"You're going to click the orb for the section then it goes in and gives you the stats... but then if you click the stat that's displayed that stat will get displayed in bars... you click the button you go into the inner stats they give you those four stats then you click any of those stats then you get the bar stats.\"",
+    "simple_view": "It's like opening drawers inside drawers. Tap a round orb and you see its four helper numbers. Tap one of those numbers and you see it drawn as bars, day by day and hour by hour. Every tap shows you something new — nothing is just for decoration.",
+    "grandma_view": "Dear, it's like a dresser: you open one drawer and find four tidy compartments, and each compartment opens to show you the whole story, day by day. Every drawer you open has something real in it — no empty drawers, no fake handles.",
+    "naya_view": "I build navigation as depth, never sideways drift: orb → its sub-stats → the stat's time breakdown in bars. The stats themselves are the doors; chart-switcher buttons change a view, they never substitute for depth. Any control that shows nothing on click is a lie and gets removed.",
+    "ai_view": "This is the answer to \"what's the story?\" — the third question of the Smart Stats bullseye. A dashboard that only shows totals is a poster. The drill-down is what makes it an instrument: where am I (gauge), what's driving it (orbs), what's the story (drill down). And the law inside it — every click must show something — is the anti-dead-control rule: a control that does nothing is a lie.",
+    "machine_view": {
+      "sn": "SN-0864",
+      "title": "The Drill-Down Order: Orb, Then Stats, Then Time",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/DRILL-DOWN-ORDER/SN-0864/IB-SMART-NOTE-20261102-sn0864-drill-down-order.md",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "machine_section": "Hierarchy: L1 orb (section) → L2 four sub-stats → L3 time breakdown (bars; day/hour granularity; Hour/Day/Week/Month/All pills). Invariant: every clickable element produces a visible state change. View switching (SN-0866) is orthogonal to depth."
+    },
+    "views_note": "Views extracted from the published page's own sections exactly where the page carries them (essence ← page section 'Hook'; human_view ← page section(s) ['What happened', 'The rule, in his words']; ai_view ← page section 'Why it matters'). The perspective views the page does not carry as sections (simple/grandma/naya/machine where absent) were reconstructed from the page's own content by Naya Resolve Narzan for this registration cure, 2026-11-04; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/DRILL-DOWN-ORDER/SN-0864/IB-SMART-NOTE-20261102-sn0864-drill-down-order.md",
+    "provenance_note": "Registration cure by Naya Resolve Narzan, 2026-11-04, for a BRAIN projection published on main without a registry entry. Census at cure time against main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: the registry (.naya/memory/smart-notes/index.json, 777 entries) held no SN-0864; no capture for SN-0864 existed on main; the page's only tree path is BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/DRILL-DOWN-ORDER/SN-0864/IB-SMART-NOTE-20261102-sn0864-drill-down-order.md. Open PR heads checked: #3165 (registry 778), #3166 (780), #3167 (780), #3131 (767) — none holds SN-0864 in registry or captures; #3108 and #3089 head trees hold no capture for this note. Collision note: stale open PR #2981 (naya4/smart-notes-2026-09-30) carries October BRANCH_ONLY 'migrated' captures under the SN-0861–SN-0882 numbers for DIFFERENT notes (e.g. its SN-0861 is 'The Compare UI Lies on Rebased Branches', IB-SMART-NOTE-20261009-sn0861-rebased-branch-compare-lies) — a number-collision family, not coverage of this page; adjudication of the zombie branch belongs to the SN-collision process, not this cure. Fingerprints computed from the page bytes at the main tip: page_hash = sha256(page bytes); content_hash = sha256(canonical JSON of this capture's intelligence object).",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}
