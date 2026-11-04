@@ -328,7 +328,7 @@ textarea:focus, input[type="text"]:focus{outline:none; border-color:var(--white)
   </div>
   <div class="nb-chrome"><div class="demo-board" style="--c:#40d3bb">
     <label class="flabel" for="addrname">Page name</label>
-    <div class="addrwrap"><span class="prefix">nayanet.live/</span><input id="addrname" type="text" value="your-name" autocomplete="off" spellcheck="false"></div>
+    <div class="addrwrap"><span class="prefix">nayanet.app/</span><input id="addrname" type="text" value="your-name" autocomplete="off" spellcheck="false"></div>
     <p id="addrwarn" class="fine" style="color:var(--white); margin-top:8px; border-left:3px solid var(--sp-red); padding-left:10px;" hidden>No spaces &mdash; letters and numbers only.</p>
   </div></div>
 </section>
@@ -493,7 +493,7 @@ function renderContract(){
     crow("Intent", "<b>" + esc(intent) + "</b>") +
     crow("Templates", temps.length ? temps.map(esc).join(", ") : "all twelve — one Smart World") +
     crow("Features", feats.length + " standard features on") +
-    crow("Address", "nayanet.live/<b>" + esc(addrName()) + "</b>") +
+    crow("Address", "nayanet.app/<b>" + esc(addrName()) + "</b>") +
     crow("Privacy", esc(vis ? vis.getAttribute("data-vis") : "private") + " — your dial") +
     crow("Edits", editLog.length ? editLog.length + " applied" : "none yet");
 }
@@ -691,7 +691,7 @@ function collectState(){
       pasted: document.getElementById("specnote").value,
       dictated: document.getElementById("dicttext").value
     },
-    address: "nayanet.live/" + addrName(),
+    address: "nayanet.app/" + addrName(),
     templates: selectedTemplates(),
     edits: editLog.slice(),
     features: feats,

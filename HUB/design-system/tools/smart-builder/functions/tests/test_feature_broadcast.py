@@ -42,8 +42,8 @@ BC_DECL = {
     "authorized": True,
     "audience": "everyone following the bakery page",
     "channels": ["smart_mail", "spaces"],
-    "compose_endpoint": "https://mail.nayanet.live/morning-crumb/broadcast",
-    "receipts_endpoint": "https://mail.nayanet.live/morning-crumb/receipts",
+    "compose_endpoint": "https://mail.nayanet.app/morning-crumb/broadcast",
+    "receipts_endpoint": "https://mail.nayanet.app/morning-crumb/receipts",
 }
 
 
@@ -144,7 +144,7 @@ class FeatureBroadcastAcceptance(unittest.TestCase):
         self.assertIn('<span class="bcast-chip">smart_mail</span>', card)
         self.assertIn('<span class="bcast-chip">spaces</span>', card)
         self.assertIn('data-channels="smart_mail,spaces"', card)
-        self.assertIn('action="https://mail.nayanet.live/morning-crumb/broadcast"',
+        self.assertIn('action="https://mail.nayanet.app/morning-crumb/broadcast"',
                       card)
         self.assertIn('name="subject"', card)
         self.assertIn('name="body"', card)
@@ -161,7 +161,7 @@ class FeatureBroadcastAcceptance(unittest.TestCase):
         card = card_html(page)
         self.assertIn("Delivery receipts", card)
         self.assertIn('data-receipts-endpoint='
-                      '"https://mail.nayanet.live/morning-crumb/receipts"', card)
+                      '"https://mail.nayanet.app/morning-crumb/receipts"', card)
 
     # ---- unauthorized_broadcast_denied: THE gate ----
     def test_unauthorized_broadcast_refused(self):

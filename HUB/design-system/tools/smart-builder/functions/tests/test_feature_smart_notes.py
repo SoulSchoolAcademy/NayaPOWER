@@ -28,8 +28,8 @@ SMOKE = os.path.join(SB_DIR, "contracts", "smoke-test-v1.json")
 
 SN_DECL = {
     "enabled": True,
-    "link_base": "https://nayanet.live",
-    "page_address": "nayanet.live/morning-crumb",
+    "link_base": "https://nayanet.app",
+    "page_address": "nayanet.app/morning-crumb",
     "notes": [
         {"title": "Sourdough at 6am",
          "body": "The crumb sings.\nSecond line here.",
@@ -132,7 +132,7 @@ class FeatureSmartNotesAcceptance(unittest.TestCase):
         self.assertEqual(len(created), 2)
         self.assertEqual(len(minted), 2)
         for e in minted:
-            self.assertTrue(e["link"].startswith("https://nayanet.live/sn/"))
+            self.assertTrue(e["link"].startswith("https://nayanet.app/sn/"))
             self.assertEqual(e["link_state"], "minted-unresolved")
             self.assertIn(e["link"], page)
 
@@ -143,13 +143,13 @@ class FeatureSmartNotesAcceptance(unittest.TestCase):
             from feature_smart_notes import mint_note_id, mint_link
         finally:
             sys.path.pop(0)
-        a = mint_note_id("nayanet.live/x", 0, "T", "B")
-        b = mint_note_id("nayanet.live/x", 0, "T", "B")
+        a = mint_note_id("nayanet.app/x", 0, "T", "B")
+        b = mint_note_id("nayanet.app/x", 0, "T", "B")
         self.assertEqual(a, b)
         self.assertEqual(len(a), 12)
-        self.assertNotEqual(a, mint_note_id("nayanet.live/x", 1, "T", "B"))
-        self.assertEqual(mint_link("https://nayanet.live", a),
-                         "https://nayanet.live/sn/" + a)
+        self.assertNotEqual(a, mint_note_id("nayanet.app/x", 1, "T", "B"))
+        self.assertEqual(mint_link("https://nayanet.app", a),
+                         "https://nayanet.app/sn/" + a)
 
     # ---- gate: the page refuses to render notes it was not given ----
     def test_refusal_when_not_declared(self):
@@ -241,7 +241,7 @@ class FeatureSmartNotesAcceptance(unittest.TestCase):
         self.assertIn("not connected", page)
         self.assertIn("connect the NayaNET bridge to enable link resolution", page)
         # no anchor pretends the link is live: links render as copyable chips
-        self.assertNotIn('href="https://nayanet.live/sn/', page)
+        self.assertNotIn('href="https://nayanet.app/sn/', page)
 
     # ---- every interactive control binds to DOM that exists (L-2026-10-17-004)
     def test_controls_bind_to_existing_dom(self):

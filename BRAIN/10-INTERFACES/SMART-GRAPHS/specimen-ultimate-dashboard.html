@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My World — Reports · Ultimate Smart Stats specimen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-0:#0B0D12; --bg-1:#12151D; --bg-2:#171B25; --bg-3:#252B39;
+  --alive:#55e39a; --extra:#e8b64c; --alarm:#ff5a6e;
+  --sig:#a06bff; --sig-soft:#9d75ff; --human:#d86cff; --know:#55b9ee;
+  --ink:#F5F7FB; --ink-2:rgba(245,247,251,.62); --ink-3:rgba(245,247,251,.40);
+  --line:rgba(255,255,255,.08);
+  --ease:cubic-bezier(.16,.84,.22,1); --snap:cubic-bezier(.32,.72,0,1);
+  --shadow:0 1px 0 rgba(255,255,255,.05) inset,0 -12px 24px rgba(0,0,0,.35) inset,0 18px 40px rgba(0,0,0,.45);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:18px}
+body{background:var(--bg-0);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.5;
+  background-image:radial-gradient(1100px 480px at 18% -8%,rgba(160,107,255,.14),transparent 60%),
+                   radial-gradient(900px 420px at 88% -10%,rgba(85,185,238,.08),transparent 60%);}
+.wrap{max-width:1240px;margin:0 auto;padding:28px 22px 56px}
+h1,h2,.num{font-family:Sora,Inter,sans-serif}
+a{color:var(--know);text-decoration:none}
+
+/* ── chrome ─────────────────────────── */
+.chrome{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.mark{width:46px;height:46px;border-radius:14px;background:linear-gradient(145deg,var(--sig),#6d3fd4);
+  box-shadow:0 0 22px rgba(160,107,255,.5),var(--shadow);display:grid;place-items:center;font-family:Sora;font-weight:800;font-size:1.15rem}
+.chrome h1{font-size:1.45rem;font-weight:800;letter-spacing:.2px}
+.chrome .sub{color:var(--ink-2);font-size:.78rem}
+.live-dot{width:10px;height:10px;border-radius:50%;background:var(--alive);box-shadow:0 0 0 0 rgba(85,227,154,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(85,227,154,.55)}70%{box-shadow:0 0 0 9px rgba(85,227,154,0)}100%{box-shadow:0 0 0 0 rgba(85,227,154,0)}}
+.live-txt{color:var(--alive);font-size:.78rem;font-weight:600}
+.sample-tag{font-size:.66rem;font-weight:700;letter-spacing:.14em;color:var(--extra);border:1px solid rgba(232,182,76,.5);
+  padding:4px 10px;border-radius:999px;background:rgba(232,182,76,.08)}
+.periods{margin-left:auto;display:flex;gap:6px;background:var(--bg-1);border:1px solid var(--line);border-radius:999px;padding:4px}
+.periods button{border:0;background:transparent;color:var(--ink-2);font:600 .78rem Inter;padding:7px 14px;border-radius:999px;cursor:pointer;transition:all .25s var(--snap)}
+.periods button.on{background:var(--bg-3);color:var(--ink);box-shadow:0 0 12px rgba(160,107,255,.25)}
+
+/* ── block shell ────────────────────── */
+.block{background:var(--bg-2);border:1px solid var(--line);border-top:1px solid rgba(255,255,255,.07);border-radius:20px;
+  box-shadow:var(--shadow);padding:20px 22px;transition:transform .3s var(--snap),box-shadow .3s var(--snap)}
+.block:hover{transform:translateY(-4px);box-shadow:var(--shadow),0 0 26px rgba(160,107,255,.14)}
+.block h2{font-size:.95rem;font-weight:700;display:flex;align-items:center;gap:9px}
+.block h2 .go{margin-left:auto;color:var(--ink-3);font-size:1rem}
+.block .subline{color:var(--ink-3);font-size:.7rem;margin:3px 0 14px}
+.dot8{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+/* ── pulse strip ────────────────────── */
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px}
+.kpi{position:relative;overflow:hidden}
+.kpi .ghost{position:absolute;right:-8px;top:-16px;font-family:Sora;font-weight:800;font-size:4.6rem;opacity:.055;pointer-events:none}
+.kpi .lbl{color:var(--ink-2);font-size:.78rem;font-weight:600;display:flex;align-items:center;gap:8px}
+.kpi .num{font-size:2.35rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.15;margin:6px 0 2px}
+.kpi .row{display:flex;align-items:center;gap:10px}
+.kpi .sent{color:var(--ink-2);font-size:.74rem;margin-top:8px}
+.kpi svg.spark{margin-left:auto}
+.chip{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:999px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.chip.up{color:var(--alive);background:rgba(85,227,154,.12)}
+.chip.down{color:var(--alarm);background:rgba(255,90,110,.12)}
+.chip.gold{color:var(--extra);background:rgba(232,182,76,.14)}
+.spark path{fill:none;stroke-width:2.4;stroke-linecap:round}
+.flash{animation:flash .8s var(--ease)}
+@keyframes flash{0%{color:var(--extra)}100%{}}
+
+/* ── layout grids ───────────────────── */
+.gridA{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:16px}
+.gridB{display:grid;grid-template-columns:1.25fr 1.15fr .85fr;gap:16px;margin-bottom:16px}
+.gridC{display:grid;grid-template-columns:1fr 1.6fr;gap:16px}
+@media(max-width:980px){.strip{grid-template-columns:repeat(2,1fr)}.gridA,.gridB,.gridC{grid-template-columns:1fr}}
+
+/* ── trend panel ────────────────────── */
+.legend{display:flex;gap:18px;color:var(--ink-2);font-size:.72rem;margin-bottom:6px}
+.legend b{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+/* ── mix donut ──────────────────────── */
+.donut-flex{display:flex;gap:18px;align-items:center}
+.donut-wrap{position:relative;width:158px;height:158px;flex:none}
+.donut-center{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.donut-center .num{font-size:1.5rem;font-weight:800;font-variant-numeric:tabular-nums}
+.donut-center .cap{color:var(--ink-3);font-size:.64rem}
+.legend-rows{flex:1;display:grid;gap:9px}
+.legend-rows .lr{display:flex;align-items:center;gap:9px;font-size:.76rem}
+.legend-rows .lr b{margin-left:auto;font-variant-numeric:tabular-nums}
+.legend-rows .lr .sh{color:var(--ink-3);font-size:.68rem;width:38px;text-align:right}
+
+/* ── journey funnel ─────────────────── */
+.fstage{margin-bottom:10px}
+.fbar{height:44px;border-radius:11px;display:flex;align-items:center;padding:0 14px;gap:10px;
+  box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 10px 22px rgba(0,0,0,.35);transform-origin:left;animation:grow 1s var(--ease) both}
+@keyframes grow{from{transform:scaleX(.2);opacity:0}to{transform:scaleX(1);opacity:1}}
+.fbar .fl{font-size:.76rem;font-weight:600}
+.fbar .fv{margin-left:auto;font-family:Sora;font-weight:800;font-variant-numeric:tabular-nums}
+.fconv{display:flex;align-items:center;gap:8px;color:var(--ink-3);font-size:.68rem;margin:0 0 10px 6px}
+.fconv .leak{color:var(--alarm);font-weight:700;text-shadow:0 0 12px rgba(255,90,110,.6)}
+.fconv .ok{color:var(--alive);font-weight:700}
+
+/* ── heat & streaks ─────────────────── */
+.heat{display:grid;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;gap:3.5px;margin-bottom:16px}
+.cell{width:100%;aspect-ratio:1;border-radius:3.5px;background:var(--sig);opacity:.07;animation:bloom .7s var(--ease) both}
+@keyframes bloom{from{transform:scale(.3);opacity:0}to{transform:scale(1)}}
+.streaks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.well{background:var(--bg-1);border:1px solid var(--line);border-radius:14px;padding:12px 13px;text-align:center}
+.well .flame{font-size:1.05rem;filter:drop-shadow(0 0 8px rgba(232,182,76,.55))}
+.well .num{font-size:1.3rem;font-weight:800;font-variant-numeric:tabular-nums}
+.well .cap{color:var(--ink-3);font-size:.64rem}
+
+/* ── health gauge ───────────────────── */
+.gauge-wrap{display:grid;justify-items:center}
+.gauge-num{font-family:Sora;font-size:2rem;font-weight:800;margin-top:-52px;font-variant-numeric:tabular-nums}
+.gauge-cap{color:var(--ink-3);font-size:.66rem;margin-bottom:12px}
+.ing{width:100%;display:grid;gap:8px}
+.ing .ir{display:flex;align-items:center;gap:10px;font-size:.72rem;color:var(--ink-2)}
+.ing .track{flex:1;height:7px;background:var(--bg-1);border-radius:99px;overflow:hidden}
+.ing .fill{height:100%;border-radius:99px;animation:grow 1.1s var(--ease) both}
+.ing b{font-variant-numeric:tabular-nums;color:var(--ink);width:26px;text-align:right}
+
+/* ── faces board ────────────────────── */
+.face{display:flex;align-items:center;gap:13px;padding:10px 4px;border-bottom:1px solid var(--line)}
+.face:last-child{border-bottom:0}
+.avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:Sora;font-weight:800;font-size:.85rem;color:#0B0D12;position:relative;flex:none}
+.avatar .pres{position:absolute;right:-1px;bottom:-1px;width:12px;height:12px;border-radius:50%;border:2.5px solid var(--bg-2)}
+.pres.live{background:var(--alive);animation:pulse 2s infinite}
+.pres.recent{background:var(--extra)} .pres.away{background:var(--ink-3)}
+.face .fn{font-weight:600;font-size:.84rem}
+.face .ff{color:var(--ink-3);font-size:.7rem}
+.msgbtn{margin-left:auto;border:1px solid rgba(160,107,255,.45);background:rgba(160,107,255,.1);color:var(--sig);
+  font:600 .72rem Inter;padding:8px 14px;border-radius:999px;cursor:pointer;transition:all .25s var(--snap)}
+.msgbtn:hover{background:rgba(160,107,255,.24);box-shadow:0 0 14px rgba(160,107,255,.35);color:var(--ink)}
+
+/* ── insight feed ───────────────────── */
+.insight{display:flex;gap:14px;background:var(--bg-1);border:1px solid var(--line);border-left:4px solid var(--sig);
+  border-radius:14px;padding:15px 17px;margin-bottom:11px;animation:slidein .8s var(--ease) both}
+@keyframes slidein{from{transform:translateY(10px);opacity:0}to{transform:none;opacity:1}}
+.insight.alarm{border-left-color:var(--alarm);box-shadow:-6px 0 18px -8px rgba(255,90,110,.55)}
+.insight.extra{border-left-color:var(--extra);box-shadow:-6px 0 18px -8px rgba(232,182,76,.5)}
+.insight.alive{border-left-color:var(--alive)}
+.insight .sent{font-size:.86rem;font-weight:600;line-height:1.45}
+.insight .ev{color:var(--ink-2);font-size:.72rem;margin-top:5px;display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.insight .act{margin-left:auto;align-self:center;flex:none;border:0;font:700 .74rem Inter;padding:10px 16px;border-radius:999px;cursor:pointer;
+  background:linear-gradient(145deg,var(--sig),#6d3fd4);color:#fff;box-shadow:0 6px 18px rgba(160,107,255,.35);transition:all .25s var(--snap)}
+.insight .act:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(160,107,255,.5)}
+footer{margin-top:26px;color:var(--ink-3);font-size:.7rem;display:flex;gap:14px;flex-wrap:wrap}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <!-- ═══ CHROME ═══ -->
+  <div class="chrome">
+    <div class="mark">N</div>
+    <div>
+      <h1>My World — Reports</h1>
+      <div class="sub">Smart Personal · the Living Data System, specimen</div>
+    </div>
+    <span class="live-dot"></span><span class="live-txt">Live</span>
+    <span class="sub" id="updated">updated just now</span>
+    <span class="sample-tag">SAMPLE DATA</span>
+    <div class="periods" id="periods">
+      <button data-p="today">Today</button>
+      <button data-p="7d" class="on">7 days</button>
+      <button data-p="30d">30 days</button>
+      <button data-p="all">All</button>
+    </div>
+  </div>
+
+  <!-- ═══ 1 · PULSE STRIP ═══ -->
+  <div style="display:flex;align-items:center;gap:9px;margin:2px 2px 10px">
+    <span class="dot8" style="background:var(--sig)"></span>
+    <span style="font-family:Sora;font-weight:700;font-size:.95rem">Pulse Strip</span>
+    <span style="color:var(--ink-3);font-size:.7rem">headline numbers · magnitude + shape + direction + a micro-sentence (SN-0822)</span>
+  </div>
+  <div class="strip" id="strip"></div>
+
+  <div class="gridA">
+    <!-- ═══ 2 · TREND PANEL ═══ -->
+    <section class="block">
+      <h2><span class="dot8" style="background:var(--sig)"></span>Trend Panel<span class="go">↗</span></h2>
+      <div class="subline">Posts (volume) · Views (rate riding on it) · <span id="trendWin">last 7 days</span></div>
+      <div class="legend">
+        <span><b style="background:var(--sig)"></b>Posts per day</span>
+        <span><b style="background:var(--know);border-radius:50%"></b>Views</span>
+      </div>
+      <svg id="trendSvg" viewBox="0 0 560 218" width="100%" role="img" aria-label="Posts and views trend"></svg>
+    </section>
+
+    <!-- ═══ 3 · MIX DONUT ═══ -->
+    <section class="block">
+      <h2><span class="dot8" style="background:var(--know)"></span>Mix Donut<span class="go">↗</span></h2>
+      <div class="subline">What this week's activity is made of</div>
+      <div class="donut-flex">
+        <div class="donut-wrap">
+          <svg id="donutSvg" viewBox="0 0 160 160" width="158" height="158"></svg>
+          <div class="donut-center"><div class="num" id="donutTotal">0</div><div class="cap">actions</div></div>
+        </div>
+        <div class="legend-rows" id="donutLegend"></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="gridB">
+    <!-- ═══ 4 · JOURNEY FUNNEL ═══ -->
+    <section class="block">
+      <h2><span class="dot8" style="background:var(--extra)"></span>Journey Funnel<span class="go">↗</span></h2>
+      <div class="subline">The invite journey · sent → opened → joined → active</div>
+      <div id="funnel"></div>
+    </section>
+
+    <!-- ═══ 5 · HEAT & STREAKS ═══ -->
+    <section class="block">
+      <h2><span class="dot8" style="background:var(--sig-soft)"></span>Heat &amp; Streaks<span class="go">↗</span></h2>
+      <div class="subline">Activity intensity · last 18 weeks · brighter = more alive</div>
+      <div class="heat" id="heat"></div>
+      <div class="streaks">
+        <div class="well"><div class="flame">🔥</div><div class="num" data-count="12">0</div><div class="cap">day posting streak</div></div>
+        <div class="well"><div class="flame">🔥</div><div class="num" data-count="8">0</div><div class="cap">day response streak</div></div>
+        <div class="well"><div class="flame">🔥</div><div class="num" data-count="21">0</div><div class="cap">active days · 30</div></div>
+      </div>
+    </section>
+
+    <!-- ═══ 6 · HEALTH GAUGE ═══ -->
+    <section class="block">
+      <h2><span class="dot8" style="background:var(--alive)"></span>Health Gauge<span class="go">↗</span></h2>
+      <div class="subline">Vitality /100 · response · activity · growth · completeness</div>
+      <div class="gauge-wrap">
+        <svg viewBox="0 0 220 122" width="220">
+          <path d="M 20 112 A 90 90 0 0 1 200 112" fill="none" stroke="#252B39" stroke-width="15" stroke-linecap="round"/>
+          <path id="gaugeArc" d="M 20 112 A 90 90 0 0 1 200 112" fill="none" stroke="url(#gg)" stroke-width="15" stroke-linecap="round"
+                stroke-dasharray="282.7" stroke-dashoffset="282.7" style="transition:stroke-dashoffset 1.6s cubic-bezier(.16,.84,.22,1);filter:drop-shadow(0 0 10px rgba(85,227,154,.45))"/>
+          <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#a06bff"/><stop offset="1" stop-color="#55e39a"/></linearGradient></defs>
+        </svg>
+        <div class="gauge-num"><span id="gaugeNum">0</span><span style="color:var(--ink-3);font-size:1rem">/100</span></div>
+        <div class="gauge-cap">healthy — above the 70 floor</div>
+        <div class="ing" id="ingredients"></div>
+      </div>
+    </section>
+  </div>
+  <div class="gridC">
+    <!-- ═══ 7 · FACES BOARD ═══ -->
+    <section class="block">
+      <h2><span class="dot8" style="background:var(--human)"></span>Faces Board<span class="go">↗</span></h2>
+      <div class="subline">Newest + most active · one fact, one tap</div>
+      <div id="faces"></div>
+    </section>
+
+    <!-- ═══ 8 · INSIGHT FEED ═══ -->
+    <section class="block">
+      <h2><span class="dot8" style="background:var(--sig)"></span>Insight Feed<span class="go">↗</span></h2>
+      <div class="subline">Naya reads the numbers — what changed · why it matters · what to do</div>
+      <div id="insights"></div>
+    </section>
+  </div>
+
+  <footer>
+    <span>Ultimate Smart Stats specimen · Nitro's Living Data System (analysis of record) rendered on the Smart Graphs instruments · SN-0822: magnitude + shape + direction + a human sentence — or it doesn't ship.</span>
+    <span style="margin-left:auto">Sample data throughout — honestly labeled, never fixture-live.</span>
+  </footer>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const ease = t => 1 - Math.pow(1 - t, 3);
+function countUp(el, target, dur = 1400, fmt = n => Math.round(n).toLocaleString('en-US')) {
+  const t0 = performance.now();
+  (function step(t) {
+    const p = Math.min(1, (t - t0) / dur);
+    el.textContent = fmt(target * ease(p));
+    if (p < 1) requestAnimationFrame(step);
+  })(t0);
+}
+
+/* ── 1 · PULSE STRIP ─────────────────────────── */
+const kpis = [
+  { id:'views', label:'Profile Views', ghost:'◉', color:'var(--sig)',  value:12847, delta:'▲ 12.4%', cls:'up',
+    sent:'Your best week yet', spark:[42,55,48,70,66,84,92], sc:'#a06bff' },
+  { id:'conn', label:'Connections', ghost:'⬢', color:'var(--human)', value:3866, delta:'▲ 3.1%', cls:'up',
+    sent:'Growing steadily', spark:[60,63,61,68,72,70,76], sc:'#d86cff' },
+  { id:'joined', label:'Invites Joined', ghost:'➤', color:'var(--extra)', value:148, delta:'▲ 38.2%', cls:'gold',
+    sent:'Invites are converting well', spark:[20,26,24,38,44,52,66], sc:'#e8b64c' },
+  { id:'plays', label:'Voice Plays', ghost:'♪', color:'var(--know)', value:9312, delta:'▲ 8.7%', cls:'up',
+    sent:'Your notes are being heard', spark:[48,52,50,61,58,72,80], sc:'#55b9ee' },
+];
+$('#strip').innerHTML = kpis.map(k => `
+  <section class="block kpi">
+    <div class="ghost" style="color:${k.color}">${k.ghost}</div>
+    <div class="lbl"><span class="dot8" style="background:${k.color}"></span>${k.label}<span style="margin-left:auto;color:var(--ink-3)">↗</span></div>
+    <div class="num" id="kpi-${k.id}" data-val="${k.value}">0</div>
+    <div class="row"><span class="chip ${k.cls}">${k.delta}</span><span style="color:var(--ink-3);font-size:.66rem">vs last week</span>
+      <svg class="spark" width="86" height="30" viewBox="0 0 86 30"><path stroke="${k.sc}"/></svg></div>
+    <div class="sent">${k.sent}</div>
+  </section>`).join('');
+document.querySelectorAll('#strip .spark path').forEach((p, i) => {
+  const pts = kpis[i].spark, max = Math.max(...pts);
+  p.setAttribute('d', pts.map((v, j) => `${j ? 'L' : 'M'}${(j * 86 / (pts.length - 1)).toFixed(1)},${(27 - v / max * 23).toFixed(1)}`).join(' '));
+  const len = p.getTotalLength();
+  p.style.strokeDasharray = len; p.style.strokeDashoffset = len;
+  p.style.transition = `stroke-dashoffset 1.4s cubic-bezier(.16,.84,.22,1) ${.15 + i * .12}s`;
+  requestAnimationFrame(() => p.style.strokeDashoffset = 0);
+});
+kpis.forEach((k, i) => setTimeout(() => countUp(document.getElementById('kpi-' + k.id), k.value), i * 110));
+
+/* ── 2 · TREND PANEL ─────────────────────────── */
+const trendData = {
+  '7d':  { bars:[8,11,9,13,12,15,14], line:[520,610,580,760,720,910,980], win:'last 7 days' },
+  '30d': { bars:[6,9,7,11,8,12,10,13,9,14,12,15,13,16], line:[380,470,430,560,520,640,600,720,660,810,760,900,860,990], win:'last 30 days' },
+  'today':{ bars:[2,3,2,4,3], line:[120,180,150,240,310], win:'today' },
+  'all': { bars:[4,6,5,8,7,10,9,12,11,13,12,15,14,16], line:[200,300,270,420,390,540,500,660,610,780,730,890,850,990], win:'all time' },
+};
+function drawTrend(key) {
+  const d = trendData[key] || trendData['7d'], svg = $('#trendSvg');
+  const W = 560, H = 218, base = 188, bw = Math.min(30, (W - 50) / d.bars.length * .52);
+  const bMax = Math.max(...d.bars), lMax = Math.max(...d.line) * 1.15;
+  let s = `<line x1="8" y1="${base}" x2="${W - 8}" y2="${base}" stroke="rgba(255,255,255,.1)"/>`;
+  d.bars.forEach((v, i) => {
+    const x = 26 + i * (W - 52) / (d.bars.length - 1 || 1), h = v / bMax * 118;
+    s += `<rect x="${(x - bw / 2).toFixed(1)}" y="${base}" width="${bw}" height="0" rx="5" fill="url(#tg)" opacity=".92">
+            <animate attributeName="height" to="${h.toFixed(1)}" dur="0.9s" begin="${i * 0.05}s" fill="freeze" calcMode="spline" keySplines="0.16 0.84 0.22 1"/>
+            <animate attributeName="y" to="${(base - h).toFixed(1)}" dur="0.9s" begin="${i * 0.05}s" fill="freeze" calcMode="spline" keySplines="0.16 0.84 0.22 1"/></rect>`;
+  });
+  const pts = d.line.map((v, i) => `${(26 + i * (W - 52) / (d.line.length - 1 || 1)).toFixed(1)},${(base - v / lMax * 150).toFixed(1)}`);
+  s += `<defs><linearGradient id="tg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a06bff"/><stop offset="1" stop-color="#5b2fb8"/></linearGradient></defs>
+        <polyline id="trendLine" points="${pts.join(' ')}" fill="none" stroke="#55b9ee" stroke-width="2.6" stroke-linecap="round"
+          style="filter:drop-shadow(0 0 7px rgba(85,185,238,.5))"/>
+        <circle r="4.5" cx="${pts[pts.length - 1].split(',')[0]}" cy="${pts[pts.length - 1].split(',')[1]}" fill="#55b9ee">
+          <animate attributeName="r" values="4.5;7;4.5" dur="2s" repeatCount="indefinite"/></circle>`;
+  svg.innerHTML = s;
+  const line = $('#trendLine'), len = line.getTotalLength();
+  line.style.strokeDasharray = len; line.style.strokeDashoffset = len;
+  line.style.transition = 'stroke-dashoffset 1.5s cubic-bezier(.16,.84,.22,1) .25s';
+  requestAnimationFrame(() => line.style.strokeDashoffset = 0);
+  $('#trendWin').textContent = d.win;
+}
+drawTrend('7d');
+$('#periods').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('#periods button').forEach(x => x.classList.toggle('on', x === b));
+  drawTrend(b.dataset.p);
+});
+
+/* ── 3 · MIX DONUT ───────────────────────────── */
+const mix = [
+  { label:'Notes',    value:412, color:'#a06bff', delta:'▲ 9%' },
+  { label:'Messages', value:286, color:'#d86cff', delta:'▲ 4%' },
+  { label:'Voice',    value:174, color:'#55b9ee', delta:'▲ 38%' },
+  { label:'Shares',   value:96,  color:'#55e39a', delta:'▲ 12%' },
+];
+(function donut() {
+  const total = mix.reduce((a, m) => a + m.value, 0), C = 2 * Math.PI * 62;
+  let off = 0, s = `<circle cx="80" cy="80" r="62" fill="none" stroke="#252B39" stroke-width="17"/>`;
+  mix.forEach(m => {
+    const frac = m.value / total;
+    s += `<circle cx="80" cy="80" r="62" fill="none" stroke="${m.color}" stroke-width="17" stroke-linecap="butt"
+      stroke-dasharray="0 ${C}" stroke-dashoffset="${(-off * C).toFixed(1)}" transform="rotate(-90 80 80)"
+      data-target="${(frac * C).toFixed(1)}" class="seg" style="filter:drop-shadow(0 0 6px ${m.color}66)"/>`;
+    off += frac;
+  });
+  $('#donutSvg').innerHTML = s;
+  document.querySelectorAll('.seg').forEach((c, i) => {
+    c.style.transition = `stroke-dasharray 1.2s cubic-bezier(.16,.84,.22,1) ${i * 0.15}s`;
+    requestAnimationFrame(() => c.setAttribute('stroke-dasharray', `${c.dataset.target} ${C}`));
+  });
+  countUp($('#donutTotal'), total, 1500);
+  $('#donutLegend').innerHTML = mix.map(m => `
+    <div class="lr"><span class="dot8" style="background:${m.color}"></span>${m.label}
+      <span class="sh">${Math.round(m.value / total * 100)}%</span><b>${m.value}</b>
+      <span class="chip up" style="font-size:.6rem;padding:2px 7px">${m.delta}</span></div>`).join('');
+})();
+
+/* ── 4 · JOURNEY FUNNEL ──────────────────────── */
+const stages = [
+  { label:'Invites sent',    value:420, color:'linear-gradient(90deg,#7a4fe0,#a06bff)' },
+  { label:'Opened',          value:261, color:'linear-gradient(90deg,#4f8fd4,#55b9ee)' },
+  { label:'Joined',          value:148, color:'linear-gradient(90deg,#2f9e6e,#55e39a)' },
+  { label:'Active members',  value:121, color:'linear-gradient(90deg,#c1912f,#e8b64c)' },
+];
+$('#funnel').innerHTML = stages.map((st, i) => {
+  const w = 42 + (st.value / stages[0].value) * 58;
+  let conv = '';
+  if (i > 0) {
+    const pct = Math.round(st.value / stages[i - 1].value * 100), drop = 100 - pct;
+    conv = `<div class="fconv">↓ <span class="${drop > 40 ? 'leak' : 'ok'}">${pct}% continue${drop > 40 ? ' — the leak glows here' : ''}</span></div>`;
+  }
+  return `${conv}<div class="fstage"><div class="fbar" style="width:${w}%;background:${st.color};animation-delay:${i * .14}s">
+    <span class="fl">${st.label}</span><span class="fv">${st.value.toLocaleString('en-US')}</span></div></div>`;
+}).join('') + `<div class="subline" style="margin:10px 0 0">Overall: 29% of invites become active members</div>`;
+
+/* ── 5 · HEAT & STREAKS ──────────────────────── */
+(function heat() {
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  let html = '';
+  for (let c = 0; c < 18 * 7; c++) {
+    const v = Math.pow(rnd(), 1.6), wk = Math.floor(c / 7);
+    const grow = .55 + wk / 18 * .6, val = Math.min(1, v * grow);
+    const glow = val > .82 ? 'box-shadow:0 0 7px rgba(157,117,255,.8);' : '';
+    html += `<div class="cell" style="opacity:${(0.07 + val * 0.93).toFixed(2)};animation-delay:${(c % 18) * 28 + Math.floor(c / 18) * 12}ms;${glow}"></div>`;
+  }
+  $('#heat').innerHTML = html;
+})();
+document.querySelectorAll('.well .num').forEach(el => countUp(el, +el.dataset.count, 1200));
+
+/* ── 6 · HEALTH GAUGE ────────────────────────── */
+const HEALTH = 87;
+setTimeout(() => { $('#gaugeArc').style.strokeDashoffset = (282.7 * (1 - HEALTH / 100)).toFixed(1); countUp($('#gaugeNum'), HEALTH, 1600); }, 250);
+const ings = [
+  { label:'Response time', value:92, color:'#55e39a' }, { label:'Activity', value:84, color:'#a06bff' },
+  { label:'Growth', value:78, color:'#e8b64c' }, { label:'Completeness', value:95, color:'#55b9ee' },
+];
+$('#ingredients').innerHTML = ings.map(g => `
+  <div class="ir"><span style="width:96px">${g.label}</span>
+    <span class="track"><span class="fill" style="width:${g.value}%;background:${g.color};box-shadow:0 0 8px ${g.color}88"></span></span>
+    <b>${g.value}</b></div>`).join('');
+
+/* ── 7 · FACES BOARD ─────────────────────────── */
+const faces = [
+  { n:'Maya Chen',  ini:'MC', c:'#d86cff', pres:'live',   fact:'Joined Tue · 14 posts this week' },
+  { n:'Jordan Lee', ini:'JL', c:'#55b9ee', pres:'live',   fact:'Replied in 4 min · voice note fan' },
+  { n:'Sam Ortiz',  ini:'SO', c:'#55e39a', pres:'recent', fact:'Shared your note · 212 reached' },
+  { n:'Priya Nair', ini:'PN', c:'#e8b64c', pres:'recent', fact:'Joined via invite · day 6 streak' },
+  { n:'Alex Ford',  ini:'AF', c:'#a06bff', pres:'away',   fact:'New connection · from Growth room' },
+];
+$('#faces').innerHTML = faces.map(f => `
+  <div class="face">
+    <div class="avatar" style="background:linear-gradient(145deg,${f.c},#ffffff33);box-shadow:0 0 14px ${f.c}55">${f.ini}
+      <span class="pres ${f.pres}"></span></div>
+    <div><div class="fn">${f.n}</div><div class="ff">${f.fact}</div></div>
+    <button class="msgbtn" onclick="this.textContent='Opening…';setTimeout(()=>this.textContent='Message',900)">Message</button>
+  </div>`).join('');
+
+/* ── 8 · INSIGHT FEED ────────────────────────── */
+const insights = [
+  { job:'alarm', sent:'3 invites opened, none joined in two days — the join step is leaking.',
+    ev:'Opened 261 → Joined 148 · <span class="chip down">▼ 43% at this joint</span>', act:'Send the nudge' },
+  { job:'extra', sent:'Voice plays jumped after Tuesday\u2019s note — your spoken notes are landing.',
+    ev:'Voice plays 9,312 · <span class="chip gold">▲ 38.2%</span>', act:'Pin the note' },
+  { job:'alive', sent:'Replies land in 22 minutes — fastest of all your worlds. Protect the streak.',
+    ev:'Median response 22 min · <span class="chip up">streak: 8 days</span>', act:'View messages' },
+];
+$('#insights').innerHTML = insights.map((x, i) => `
+  <div class="insight ${x.job}" style="animation-delay:${.2 + i * .18}s">
+    <div><div class="sent">${x.sent}</div><div class="ev">${x.ev}</div></div>
+    <button class="act" onclick="this.textContent='Done ✓';this.style.background='linear-gradient(145deg,#2f9e6e,#55e39a)'">${x.act}</button>
+  </div>`).join('');
+
+/* ── LIVE TICKER ─────────────────────────────── */
+let secs = 0;
+setInterval(() => {
+  secs += 5; $('#updated').textContent = 'updated just now';
+  const v = document.getElementById('kpi-views'); kpis[0].value += 1 + Math.floor(Math.random() * 4);
+  v.textContent = kpis[0].value.toLocaleString('en-US'); v.classList.remove('flash'); void v.offsetWidth; v.classList.add('flash');
+  if (Math.random() > .55) { const c = document.getElementById('kpi-conn'); kpis[1].value += 1; c.textContent = kpis[1].value.toLocaleString('en-US'); }
+}, 5000);
+</script>
+</body>
+</html>

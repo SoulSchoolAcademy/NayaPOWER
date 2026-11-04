@@ -1,0 +1,35 @@
+{
+  "smart_note_id": "SN-2046",
+  "intelligence": {
+    "title": "Leaderboards — Friendly Competition You Choose",
+    "intelligent_block_id": "IB-SMART-NOTE-20261104-sn2046-leaderboards-friendly-competition-you-choose",
+    "smart_note_id": "SN-2046",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM/LEADERBOARDS/SN-2046/IB-SMART-NOTE-20261104-sn2046-leaderboards-friendly-competition-you-choose.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Filed same-push complete by Naya Resolve Narzan on 2026-11-04 from Shawn Vibert's relayed 2026-11-03 session — a ruling he stated and the relaying seat did not note; filed here so it is in the system and he never has to repeat it.",
+    "ingested_at": "2026-11-04",
+    "essence": "Leaderboards build themselves from the points citizens earn — every Smart Note, every share, every sale moves you up. Each board shows your icon and your score, organized by relevance. And in Settings you choose which leaderboards you see and climb: your area, your topic, the whole network. It is friendly competition — 'top in AI automation in my area' is a badge of honor, not a war. The leaderboard makes the invisible visible: where you stand, and what one more good note does to it.",
+    "human_view": "You earn points for everything valuable you do in NayaNET — posting, noting, sharing, selling. The leaderboards gather those points into boards you actually care about. You might be climbing your city's board, or the board for your topic, or the whole network. You pick which ones appear for you. Seeing where you stand is motivating in the best way: friendly rivals, clear progress, and a score that only ever comes from real value you created.",
+    "simple_view": "It is like the scoreboard at the park. Everybody can see who scored the most goals this week. But you get to choose your game — you can look at your street's board, or your school's board, or everybody's board. Nobody is mean about it. It just makes you want to play a little better tomorrow.",
+    "grandma_view": "Dear, it is like the bowling league posting the week's standings on the wall — your name, your picture, your score, where everyone can smile at it. Only here you choose which wall you look at: your neighborhood, your hobby, or the whole wide league. And the score is honest — it only counts the good you actually did: notes shared, people helped, things sold.",
+    "naya_view": "I keep leaderboards honest and kind. Every score comes from the one locked Value Table — points for real value, never for noise, never purchasable, never hand-adjusted. I generate boards automatically and organize them by relevance to the citizen. I show each citizen the boards THEY chose in their settings — a board is a mirror a person picks up, not a ranking imposed on them. If I cannot compute a board from real points, the board does not ship.",
+    "ai_view": "Points make progress visible, and leaderboards make points social — in the good way. A citizen who can see herself third in her area, one note behind second, has a reason to share today's lesson instead of keeping it. That is the network's fuel (SN-2045) with a friendly engine attached: the boards turn private progress into public momentum, and because the citizen chooses her boards, the competition stays the size she wants — a street, a subject, or the world.",
+    "machine_view": {
+      "sn": "SN-2046",
+      "title": "Leaderboards — Friendly Competition You Choose",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM/LEADERBOARDS/SN-2046/IB-SMART-NOTE-20261104-sn2046-leaderboards-friendly-competition-you-choose.md",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "machine_section": "Source of truth: the locked Value Table (post 25 · Smart Note 35 · save 5 · share 5 · external share 10 · like/love 1 · comment 3 · invite-sent 25 first-per-person · join 50 · membership 40 once · sale 100) with SN-1905 engagement rows as defined. Dimensions: geography (citizen's area) · topic · network-wide. Auto-generated from points events; ordered by relevance to the viewer. Display: icon + score (+ alias). Settings control: per-citizen selection of which boards are visible and climbable. Scores are computed, never edited; the Value Table is the only points authority."
+    },
+    "views_note": "Views authored 2026-11-04 by Naya Resolve Narzan from Shawn Vibert's relayed words of 2026-11-03; each view mirrors its published page section exactly."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM/LEADERBOARDS/SN-2046/IB-SMART-NOTE-20261104-sn2046-leaderboards-friendly-competition-you-choose.md",
+    "provenance_note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + capture + registry entry) on 2026-11-04, carrying Shawn Vibert's ruling from his 2026-11-03 session relayed in chat. Number SN-2046 allocated by full claim census against main tip d280613ca0743e77f9bc40b16649beb571c56fcd: the registry at that tip (774 entries) held no SN-2046; no SN-2046 path in the tip tree (7,268 paths enumerated); no claim in any open PR head tree (#3131, #3108, #3089, #2981); commit search for SN-2046 returned zero claims (the single SN-2046 search hit is the filer's own SN-2045 commit 0cebe7e6, whose message names the corrected next_sequence pointer — a pointer mention, verified by reading it, not a claim). Coverage check first: no existing note covers this teaching (title + path census for its keywords returned zero), so this note is the first filing, not a duplicate.",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}

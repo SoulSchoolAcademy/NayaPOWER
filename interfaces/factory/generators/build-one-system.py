@@ -227,7 +227,7 @@ def cure_personal(html):
                1, "plus doc guard")
     html = rep(html,
                "onNavigate:function(u){var t=document.querySelector(u);if(t)t.scrollIntoView({behavior:'smooth'});}",
-               "onNavigate:function(u){var map={'#today':'today','#feed':'notes','#people':'people','#lists':'lists','#library':'about','#mail':'inbox','#connections':'people','#reports':'reports','#settings':'settings','#about':'about','#growth':'growth','#message':'message','#dashboard':'dashboard','#home':'home'};if(window.osShowView&&map[u]){window.osShowView(map[u]);return;}var ext={'#ledger':'https://nayanet.live/#/hub/ledger','#spaces':'https://nayanet.live/#/hub/spaces','#connect':'https://nayanet.live/#/hub/connect'};if(ext[u]){window.open(ext[u],'_blank');return;}var t=document.querySelector(u);if(t)t.scrollIntoView({behavior:'smooth'});}",
+               "onNavigate:function(u){var map={'#today':'today','#feed':'notes','#people':'people','#lists':'lists','#library':'about','#mail':'inbox','#connections':'people','#reports':'reports','#settings':'settings','#about':'about','#growth':'growth','#message':'message','#dashboard':'dashboard','#home':'home'};if(window.osShowView&&map[u]){window.osShowView(map[u]);return;}var ext={'#ledger':'https://nayanet.app/#/hub/ledger','#spaces':'https://nayanet.app/#/hub/spaces','#connect':'https://nayanet.app/#/hub/connect'};if(ext[u]){window.open(ext[u],'_blank');return;}var t=document.querySelector(u);if(t)t.scrollIntoView({behavior:'smooth'});}",
                1, "smarttabs route via the one navigation")
     # Smart Tabs seed labels speak the one vocabulary (#25): Smart Notes,
     # Connections — and no phantom "Feed"/"People" view names.

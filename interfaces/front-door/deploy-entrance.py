@@ -8,7 +8,7 @@ mechanics). Differences:
   - Also serves /enter — the NAYA GUEST GUARD v1 gate page: hub-bound
     links on OUTSIDE pages (other origins, which cannot read this
     origin's localStorage) point here; the gate checks this origin's
-    stored Smart Identity and forwards members to nayanet.live and
+    stored Smart Identity and forwards members to nayanet.app and
     guests back to the welcome door (/).
   - Gates on deploy.py's css_brace_check for BOTH pages and `node --check`
     on every <script> block of both pages before building.
@@ -151,9 +151,9 @@ function __guardTarget() {
   var to = null;
   try { to = new URLSearchParams(location.search).get('to'); } catch (e) {}
   if (to && to.charAt(0) === '/' && to.charAt(1) !== '/') {
-    return 'https://nayanet.live' + to;
+    return 'https://nayanet.app' + to;
   }
-  return 'https://nayanet.live/';
+  return 'https://nayanet.app/';
 }
 location.replace(__guardTarget());
 </script>
@@ -238,7 +238,7 @@ export default {
     const p = url.pathname;
     if (p === "/hub" || p.startsWith("/hub/")) {
       return Response.redirect(
-        "https://nayanet.live" + url.pathname + url.search, 302);
+        "https://nayanet.app" + url.pathname + url.search, 302);
     }
     if (p === "/enter") {
       /* NAYA GUEST GUARD v1 — see GATE_HTML in deploy-entrance.py. */

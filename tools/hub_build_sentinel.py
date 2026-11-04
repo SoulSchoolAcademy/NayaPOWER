@@ -5,7 +5,7 @@ WHY THIS EXISTS
 ---------------
 On 2026-10-22 the GitHub auto-deploy (deploy-hub-cloudflare.yml, created
 2026-10-21 via PR #2738) fired on PR #2961's merge and overwrote the live
-Hub at nayanet.live with the repo's stale `HUB/app` monolith. Every step
+Hub at nayanet.app with the repo's stale `HUB/app` monolith. Every step
 reported SUCCESS — the deploy's health check only asserts HTTP 200, and a
 wrong-but-live build returns 200. The site served an October-2-era shell
 (10 baked note cards, no Smart Factory room, no Smart Note wall) for ~25

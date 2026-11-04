@@ -44,7 +44,7 @@ test('rankResults: one merged set across types, score then recency', () => {
     row('naya_note', 'n1', 'Maria note', 40, '2026-10-22T10:00:00Z', 'open_room', 'lists'),
     row('person', 'p1', 'Maria Jones', 100, '2026-10-20T10:00:00Z', 'open_person', 'p1'),
     row('mail_thread', 't1', 'Maria — pricing', 60, '2026-10-21T10:00:00Z', 'open_room', 'mail'),
-    row('smart_link', 'l1', 'maria', 80, '2026-10-19T10:00:00Z', 'open_url', 'https://nayanet.live/maria'),
+    row('smart_link', 'l1', 'maria', 80, '2026-10-19T10:00:00Z', 'open_url', 'https://nayanet.app/maria'),
     row('smart_note', '', 'Maria posted…', 40, '2026-10-22T11:00:00Z', 'open_room', 'feed'),
   ];
   const out = NS.rankResults(rows, 20);
@@ -85,7 +85,7 @@ test('normalizeResult: unknown types dropped; missing actions derived', () => {
 
 test('groupByType: canonical order, only present types', () => {
   const out = NS.rankResults([
-    row('smart_link', 'l1', 'a', 10, null, 'open_url', 'https://nayanet.live/a'),
+    row('smart_link', 'l1', 'a', 10, null, 'open_url', 'https://nayanet.app/a'),
     row('person', 'p1', 'b', 20, null, 'open_person', 'p1'),
   ]);
   const groups = NS.groupByType(out);
@@ -101,9 +101,9 @@ test('defaultAction: rooms route in the Hub, links open, nothing fakes', () => {
   const note = NS.normalizeResult(row('naya_note', 'n1', 'x', 10, null, 'open_room', 'lists'));
   assert.equal(NS.defaultAction(note, env).via, 'open_room');
   assert.equal(env.location.hash, '#/hub/lists');
-  const link = NS.normalizeResult(row('smart_link', 'l1', 'go', 10, null, 'open_url', 'https://nayanet.live/go'));
+  const link = NS.normalizeResult(row('smart_link', 'l1', 'go', 10, null, 'open_url', 'https://nayanet.app/go'));
   assert.equal(NS.defaultAction(link, env).via, 'open_url');
-  assert.deepEqual(env.opened, ['https://nayanet.live/go', '_blank', 'noopener']);
+  assert.deepEqual(env.opened, ['https://nayanet.app/go', '_blank', 'noopener']);
   assert.equal(NS.defaultAction(null, env).acted, false);
 });
 

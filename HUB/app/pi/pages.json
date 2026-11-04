@@ -52,7 +52,7 @@
    "still_needed": [],
    "link": {
     "kind": "live_route",
-    "href": "https://nayanet.live/",
+    "href": "https://nayanet.app/",
     "label": "Open Home — the Hub door"
    }
   },
@@ -428,19 +428,19 @@
      "key": "resolve-sn1865-choose-whats-best",
      "title": "SN-1865 Ten-Star Service Is Choosing What's Best — filed + registered + live",
      "state": "verifying",
-     "evidence_url": "https://nayanet.live/s/sn1865"
+     "evidence_url": "https://nayanet.app/s/sn1865"
     },
     {
      "key": "resolve-sn1866-finish-and-connect",
      "title": "SN-1866 Nothing Has Value Until It Works — filed + registered + live",
      "state": "verifying",
-     "evidence_url": "https://nayanet.live/s/sn1866"
+     "evidence_url": "https://nayanet.app/s/sn1866"
     },
     {
      "key": "resolve-sn1867-alignment-is-the-trump",
      "title": "SN-1867 Whatever It Takes Means Aligned — filed + registered + live",
      "state": "verifying",
-     "evidence_url": "https://nayanet.live/s/sn1867"
+     "evidence_url": "https://nayanet.app/s/sn1867"
     },
     {
      "key": "smart-notes-file-to-live-proof-20261026",
@@ -545,7 +545,7 @@
    "still_needed": [],
    "link": {
     "kind": "live_route",
-    "href": "https://nayanet.live/rooms/today",
+    "href": "https://nayanet.app/rooms/today",
     "label": "Open Intel Today"
    }
   },
@@ -570,7 +570,7 @@
    "still_needed": [],
    "link": {
     "kind": "live_route",
-    "href": "https://nayanet.live/rooms/growth",
+    "href": "https://nayanet.app/rooms/growth",
     "label": "Open Growth"
    }
   },
@@ -710,7 +710,7 @@
    ],
    "link": {
     "kind": "live_route",
-    "href": "https://nayanet.live/rooms/connections",
+    "href": "https://nayanet.app/rooms/connections",
     "label": "Open Connections"
    }
   },
@@ -822,7 +822,7 @@
    ],
    "link": {
     "kind": "live_route",
-    "href": "https://nayanet.live/rooms/mail",
+    "href": "https://nayanet.app/rooms/mail",
     "label": "Open Smart Mail"
    }
   },
@@ -872,7 +872,7 @@
    "still_needed": [],
    "link": {
     "kind": "live_route",
-    "href": "https://nayanet.live/rooms/reports",
+    "href": "https://nayanet.app/rooms/reports",
     "label": "Open Reports"
    }
   },
@@ -989,7 +989,7 @@
    "still_needed": [],
    "link": {
     "kind": "live_route",
-    "href": "https://nayanet.live/rooms/library",
+    "href": "https://nayanet.app/rooms/library",
     "label": "Open Library"
    }
   },
@@ -1559,7 +1559,7 @@
    ],
    "link": {
     "kind": "live_route",
-    "href": "https://nayanet.live/projects",
+    "href": "https://nayanet.app/projects",
     "label": "Open Projects"
    }
   },
@@ -1686,7 +1686,7 @@
    ],
    "link": {
     "kind": "live_route",
-    "href": "https://nayanet.live/welcome",
+    "href": "https://nayanet.app/welcome",
     "label": "Open Welcome walk"
    }
   },
@@ -1712,7 +1712,7 @@
    "still_needed": [],
    "link": {
     "kind": "live_route",
-    "href": "https://nayanet.live/s/sn1884",
+    "href": "https://nayanet.app/s/sn1884",
     "label": "Open a live Smart Note (SN-1884)"
    }
   },

@@ -31,8 +31,8 @@ SMOKE = os.path.join(SB_DIR, "contracts", "smoke-test-v1.json")
 
 COVER_DECL = {
     "enabled": True,
-    "photo_url": "https://images.nayanet.live/morning-crumb/owner.jpg",
-    "cover_url": "https://images.nayanet.live/morning-crumb/cover.jpg",
+    "photo_url": "https://images.nayanet.app/morning-crumb/owner.jpg",
+    "cover_url": "https://images.nayanet.app/morning-crumb/cover.jpg",
     "name": "Morning Crumb",
     "tagline": "Warm bread · order ahead",
 }
@@ -78,8 +78,8 @@ class FeatureCoverAcceptance(unittest.TestCase):
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         self.assertIn('data-feature="cover"', page)
         self.assertIn('data-cover-status="built"', page)
-        self.assertIn("https://images.nayanet.live/morning-crumb/owner.jpg", page)
-        self.assertIn("https://images.nayanet.live/morning-crumb/cover.jpg", page)
+        self.assertIn("https://images.nayanet.app/morning-crumb/owner.jpg", page)
+        self.assertIn("https://images.nayanet.app/morning-crumb/cover.jpg", page)
         self.assertIn("Morning Crumb", page)
         self.assertIn("Warm bread · order ahead", page)
         self.assertIn('alt="Portrait of Morning Crumb"', page)

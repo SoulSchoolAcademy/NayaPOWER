@@ -1,25 +1,26 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-30",
-  "receipt_basis_commit": "e6450eede629bdc113e3f59f7728b3ece442ccc0",
-  "inventory_file_count": 1809,
+  "generated_at": "2026-11-02",
+  "receipt_basis_commit": "e05d913cda6c1ed7607c0e724029828fc5860ec7",
+  "inventory_file_count": 1851,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 16,
-    "01-GOVERNANCE": 99,
+    "01-GOVERNANCE": 100,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 906,
+    "05-MEMORY": 915,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 524,
+    "10-INTERFACES": 550,
+    "11-FACTORY": 3,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 26,
-    "90-OPERATIONS": 109,
+    "90-OPERATIONS": 112,
     "99-ARCHIVE": 2,
     "ROOT": 7
   },
@@ -656,6 +657,11 @@
       "size": 1107
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0038-WHAT-NAYA-STANDS-FOR.human.md",
+      "blob_sha": "4596772886746320dad78ca759e1ca58602a4dcf",
+      "size": 8227
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.human.md",
       "blob_sha": "2af14cb71410e4dadcd533e8cac7377b3c521bda",
       "size": 88406
@@ -1184,6 +1190,16 @@
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-29-LEARNING-EVENT.md",
       "blob_sha": "f91e49d984e5de91b8f8509f0b587cc4c9c2234c",
       "size": 22430
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-30-LEARNING-EVENT.md",
+      "blob_sha": "63b6d964ca01602caaf2a05b97b4f3a6a8e40015",
+      "size": 21997
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-31-LEARNING-EVENT.md",
+      "blob_sha": "f7bfded8e60a1ffacb58a2820eeed45a5215415a",
+      "size": 25119
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md",
@@ -5076,9 +5092,44 @@
       "size": 8062
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1905/SN-1905-CANON-AMENDMENT-2026-10-31.md",
+      "blob_sha": "189c4d835e5f8d33ea76b98667fe13fd59e14efe",
+      "size": 2633
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1906/IB-SMART-NOTE-20261030-sn1906-the-related-bar-law.md",
       "blob_sha": "b11563dff30609f0ec5314f360da08023b93d505",
       "size": 2135
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1907/IB-SMART-NOTE-20261030-sn1907-one-mind-named-naya.md",
+      "blob_sha": "b8307c37c1c697f13d67038747292b989ba35903",
+      "size": 1259
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/31/SYSTEM/smart-notes/SN-1908/IB-SMART-NOTE-20261031-sn1908-the-full-circle.md",
+      "blob_sha": "20acbfb7cae163b8b2d095d1677a2743e5c6c452",
+      "size": 2035
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/01/DESIGN/real-object-law/SN-0859/IB-SMART-NOTE-20261101-sn0859-the-real-object-law.md",
+      "blob_sha": "c04ad862eededd1f4a6050ec8b0484aef7f6b994",
+      "size": 2207
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/01/DESIGN/viewport-optimization-law/SN-0858/IB-SMART-NOTE-20261101-sn0858-viewport-optimization-law.md",
+      "blob_sha": "45ac03ea0f24913ecf5ee9b6128189530b19b8a9",
+      "size": 2640
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/01/NAYA/canon/SN-0860/IB-SMART-NOTE-20261101-sn0860-the-naya-canon.md",
+      "blob_sha": "d0f045280b1075a9ee384a266c4b61384110550e",
+      "size": 2254
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/01/SYSTEM/smart-notes/SN-2043/IB-SMART-NOTE-20261101-sn2043-how-to-do-a-smart-note-every-time-and-why-we-do-three-a-day.md",
+      "blob_sha": "0e794de4e0d9f92c7b878f78fb092a903735c549",
+      "size": 7261
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
@@ -7866,6 +7917,26 @@
       "size": 51035
     },
     {
+      "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-of-naya-design.ai.md",
+      "blob_sha": "64eee3d379fc13d1a55ac1d220edb869126f6168",
+      "size": 13420
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-of-naya-design.human.md",
+      "blob_sha": "cafd7bae6d8c9dc20740ae1b08b11a86a3ddad27",
+      "size": 19464
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-of-naya-design.machine.json",
+      "blob_sha": "a2a1981e6615ba28038d4f1f8d1e7bc1cd664787",
+      "size": 12309
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-spec-power-20261031.md",
+      "blob_sha": "88adf7c06af386ce68d6ccbb2865876c063e0d89",
+      "size": 45241
+    },
+    {
       "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md",
       "blob_sha": "7e1e336df17b2f81c6f4235b243c12ae8ac72933",
       "size": 8020
@@ -7881,14 +7952,29 @@
       "size": 6546
     },
     {
+      "path": "BRAIN/10-INTERFACES/NAYA-ULTRA-INTELLIGENT-EXPERIENCE-PROPOSAL-V1.md",
+      "blob_sha": "d6da51d0d135da62f19759f2e174fe6a61616df7",
+      "size": 9471
+    },
+    {
       "path": "BRAIN/10-INTERFACES/PARTS-REGISTRY-V1.json",
-      "blob_sha": "5d371c0cb091cf86e0eb0ac3f08bb99c31abcf3c",
-      "size": 687429
+      "blob_sha": "b1718a66a282dbd0ae52f721a067660b4ae6dca8",
+      "size": 151516
     },
     {
       "path": "BRAIN/10-INTERFACES/README.md",
       "blob_sha": "7093bf121d662cb6f8e88a0952e814a96dcb7cba",
       "size": 1226
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/AI-INTERFACE-EXPERIENCE-OPERATING-DETAILS-V1.PROPOSAL.md",
+      "blob_sha": "bf55ad87291087076921c088afe10d5d8dcdc474",
+      "size": 30579
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/AI-RECIPE-ASSEMBLY-LANGUAGE-V1.PROPOSAL.md",
+      "blob_sha": "473b1dcfdec2bc092f0f091f3add3d6ecdb9f5b0",
+      "size": 8552
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.json",
@@ -7966,6 +8052,11 @@
       "size": 10496
     },
     {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/app_recipe_contract_v1.proposal.json",
+      "blob_sha": "0246e1ba80ed59157270e394f153ca114c61e3da",
+      "size": 3799
+    },
+    {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build-api.py",
       "blob_sha": "1d7674c116e60e819f6f14797cc8aab1775c6c41",
       "size": 7140
@@ -8031,6 +8122,11 @@
       "size": 478
     },
     {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/examples/smart_lists_recipe_v1.sample.json",
+      "blob_sha": "37f4f7010e29d4d11e16f55f6767cef8c4ec650f",
+      "size": 4798
+    },
+    {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/factory-page-presentation.json",
       "blob_sha": "1809dd174f0d85ca4e98592c40d44f2e8e4c5331",
       "size": 39969
@@ -8074,6 +8170,11 @@
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/pwa-assets/hub/sw.js",
       "blob_sha": "6e6077330368ff0cb7a115ff71001523333ddaab",
       "size": 1454
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/recipe_preflight_v1.py",
+      "blob_sha": "ee53469417a57502c9b7d92ca5c7dfe857cb24f4",
+      "size": 10249
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/sync-smart-notes.py",
@@ -8146,6 +8247,11 @@
       "size": 229469
     },
     {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/tests/test_recipe_preflight_v1.py",
+      "blob_sha": "9c11b112fff1fd793f9aa9c3241e071ec53bfe7a",
+      "size": 4887
+    },
+    {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/factory-page.generated.html",
       "blob_sha": "71f4541bbfbf60e0b837d50e937814ccae63dccf",
       "size": 640660
@@ -8216,6 +8322,11 @@
       "size": 14220
     },
     {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/ADDENDUM-2026-10-22-layer-and-community.md",
+      "blob_sha": "ecc62eca8a07037c3cac30aabf833ce4b6707533",
+      "size": 1927
+    },
+    {
       "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/README.md",
       "blob_sha": "aeaa4f0b92555adf4cd8ea2e311ab17664fb94e6",
       "size": 2224
@@ -8231,9 +8342,34 @@
       "size": 7631
     },
     {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/SMART-STATS-BUILD-SPEC-2026-10-31.human.md",
+      "blob_sha": "0f98667ec43b9489acd1475566ec35d6e8688a83",
+      "size": 10124
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/ULTIMATE-SMART-STATS.ai.md",
+      "blob_sha": "cd29b6d7ddca263dbce6debd83810b2ced497848",
+      "size": 21154
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/ULTIMATE-SMART-STATS.human.md",
+      "blob_sha": "c4dd59b2bf29f93b3fd41291a951e5a2e18788e7",
+      "size": 12890
+    },
+    {
       "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/smart-graphs-spec.machine.json",
       "blob_sha": "2bb90a0d4b6d4835e37b554ae94b7e9624654c7d",
       "size": 4566
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/smart-stats-build-2026-10-31.machine.json",
+      "blob_sha": "df75bd616047539fa00ee9feb2cfc9e1b4281b73",
+      "size": 5588
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/specimen-ultimate-dashboard.html",
+      "blob_sha": "a367d6b771974b15fee1025596d8100f576692fa",
+      "size": 29709
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/01-pulse-orb.html",
@@ -8276,6 +8412,51 @@
       "size": 2792
     },
     {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/ultimate-smart-stats.machine.json",
+      "blob_sha": "4138a7c61ee263752e14ab98f01038fe1933b618",
+      "size": 15514
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/BLESSING.md",
+      "blob_sha": "b11d047421c4471e7888e36856bf34c27156b233",
+      "size": 7138
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/build-specimen.py",
+      "blob_sha": "1509e98799bd01fdbac36574cace3db6c6273885",
+      "size": 6914
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/evidence/gate-output.txt",
+      "blob_sha": "2394d7d289eb3267f04dfa67a4b04641c4261a44",
+      "size": 2937
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/evidence/nj-ev-hover.png",
+      "blob_sha": "964f6dacee5e824b7fa994d262118c018f354831",
+      "size": 10316
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/evidence/specimen-1440.png",
+      "blob_sha": "16926f7c75e9055a01a3dd55895433c3aa81ab5d",
+      "size": 249042
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/evidence/specimen-390.png",
+      "blob_sha": "5b602ee6e25fb610422cfe27fe7ea443beeabbc6",
+      "size": 224728
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/nj-briefing-strip.html",
+      "blob_sha": "1ce2c92b8753de7083b07c7c096be09809c780ca",
+      "size": 6779
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/specimen.html",
+      "blob_sha": "0de2c92b6f9b20eb2a0c3227e42abfaaeb91fbbb",
+      "size": 12537
+    },
+    {
       "path": "BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-01-mail.md",
       "blob_sha": "f9932e649ac67b8b4047c2558ba7b630fa1066aa",
       "size": 6897
@@ -8314,6 +8495,21 @@
       "path": "BRAIN/10-INTERFACES/naya-voice-sample-v1.mp3",
       "blob_sha": "569dd0afe7c278940dd82970e6118862c9c5b643",
       "size": 33837
+    },
+    {
+      "path": "BRAIN/11-FACTORY/the-nayanet-blueprint-v1.ai.md",
+      "blob_sha": "b84140abdc0f33a6955b3cf2c682202b871077e0",
+      "size": 25729
+    },
+    {
+      "path": "BRAIN/11-FACTORY/the-nayanet-blueprint-v1.human.md",
+      "blob_sha": "3c8b562d97ea5605d78f2a425bbe4c52ebf13eff",
+      "size": 26542
+    },
+    {
+      "path": "BRAIN/11-FACTORY/the-nayanet-blueprint-v1.machine.json",
+      "blob_sha": "70bd5ac5cdbcd0de5e1c731519f33cf70c0ff009",
+      "size": 21543
     },
     {
       "path": "BRAIN/11-KNOWLEDGE/00-CONCEPT-CORPUS-REGISTER.md",
@@ -8629,6 +8825,21 @@
       "path": "BRAIN/90-OPERATIONS/2026-10-26-10-10-REPORT.md",
       "blob_sha": "6537281ef185d74a3f78b804ea53e0e155213cc7",
       "size": 14258
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-31-THE-ULTIMATE-ASSESSMENT.ai.md",
+      "blob_sha": "59d21efb39fb8e1e3acb6fa12803cc4d923a0605",
+      "size": 23770
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-31-THE-ULTIMATE-ASSESSMENT.human.md",
+      "blob_sha": "18cdc07c761f540eff2b22d5d283ff8d57facbb0",
+      "size": 27911
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-31-the-ultimate-assessment.machine.json",
+      "blob_sha": "f29fc07d085857deaeecb61ad6f0b5fdfbcda882",
+      "size": 13323
     },
     {
       "path": "BRAIN/90-OPERATIONS/GOVERNED-WORK-FLOW-TIERS-V1.md",

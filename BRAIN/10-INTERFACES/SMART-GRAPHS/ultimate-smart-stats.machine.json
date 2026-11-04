@@ -1,0 +1,501 @@
+{
+ "alive_layer": [
+  {
+   "behavior": "enter",
+   "detail": "count-ups, bars grow, donut sweeps, line draws, cells bloom, gauge sweeps"
+  },
+  {
+   "behavior": "idle",
+   "detail": "breathing pulse on live marks; pulsing dot where streaming"
+  },
+  {
+   "behavior": "change",
+   "detail": "threshold crossing re-jobs glow (gold/red); live ticks tween values in place, no layout shift"
+  },
+  {
+   "behavior": "touch",
+   "detail": "hover lift + jewel glow; corner arrow = one tap to detail"
+  },
+  {
+   "behavior": "stream",
+   "detail": "new people/insights prepend with slide+fade; no reload"
+  }
+ ],
+ "block_states": [
+  "live",
+  "sample",
+  "loading",
+  "empty",
+  "error"
+ ],
+ "blocks_canonical": [
+  {
+   "binding": "living-counter + delta-chip + spark-trace",
+   "contract": "{items[3-4]: {metric_id, label, value, unit, delta_pct, period_label, spark[>=2], sentence(<=6 words)}}",
+   "harvest": "KPI anatomy (Xintra Projects, Trackify Analytics, Preadmin Admin)",
+   "name": "Pulse Strip"
+  },
+  {
+   "binding": "combo-stage (new instrument: jewel-pillar bars + svg line)",
+   "contract": "{bars[{label, value}], line[{label, value}], bar_metric, line_metric, periods[today, 7d, 30d, all]}",
+   "harvest": "bar+line combo (Xintra Audience/Project Statistics)",
+   "name": "Trend Panel"
+  },
+  {
+   "binding": "composition instrument (spectrum-flow sibling); center = living-counter",
+   "contract": "{segments[<=5+Other]: {label, value, metric_id}, total}",
+   "harvest": "donut with a heart (Xintra, Preadmin, Trackify)",
+   "legend": "count + share + delta per row",
+   "name": "Mix Donut"
+  },
+  {
+   "binding": "funnel-descent (new block form)",
+   "contract": "{stages[>=2]: {label, value, metric_id}, leak_threshold default 0.40}",
+   "harvest": "funnels (Preadmin Deals, Recruitment)",
+   "leak_rule": "stage drop > leak_threshold -> joint glows alarm + insight candidate",
+   "name": "Journey Funnel"
+  },
+  {
+   "binding": "mini-orb presence marks; jewel initial disc when no photo",
+   "contract": "{people[default 5]: {person_id, name, avatar_ref|initials, presence: live|recent|away, fact, action: message}}",
+   "harvest": "people first (Xintra, Preadmin Clock-In/Out)",
+   "name": "Faces Board",
+   "template_relabel": {
+    "Smart Business": "Customers"
+   }
+  },
+  {
+   "binding": "insight-card atoms in pulse-stream frame",
+   "contract": "{insights: {id, job: alarm|extra|alive, sentence, evidence{metric_id, value, delta_chip}, action{label, target}, ts}}",
+   "harvest": "Trackify AI Insights Recommendations",
+   "home_rule": "top 3 on Home; alarm item pins under Pulse Strip; full feed one tap away",
+   "name": "Insight Feed",
+   "rule": "action.target must resolve; dead button fails the block"
+  },
+  {
+   "binding": "heat-grid (new block form) + living-counter streak wells",
+   "contract": "{cells[{x, y, value}], x_labels, y_labels, streaks[{label, days, state: active_today|pending_today|broken}]}",
+   "harvest": "heat grid (mining, Preadmin Leads) + streaks (Trackify Habits)",
+   "name": "Heat & Streaks"
+  },
+  {
+   "binding": "orbit-dial instrument, /100 vitality scale",
+   "contract": "{score_100, ingredients[{label, value_100}]}",
+   "harvest": "single-score gauge (Preadmin Attendance, NPS)",
+   "ingredients": [
+    "response time",
+    "activity",
+    "growth",
+    "completeness"
+   ],
+   "name": "Health Gauge",
+   "rule": "weights are per-door config, declared in sub-line; undeclared weights must not render"
+  }
+ ],
+ "chart_matrix": [
+  {
+   "block": "Pulse Strip",
+   "question": "Headline numbers, right now?",
+   "why": "magnitude + direction + micro-sentence at a glance"
+  },
+  {
+   "block": "Trend Panel",
+   "question": "Volume and its rate, over time?",
+   "why": "bars = volume, line = the rate that rides on it; two truths, one picture"
+  },
+  {
+   "block": "Mix Donut",
+   "question": "What is it made of?",
+   "why": "part-to-whole; center carries the living total"
+  },
+  {
+   "block": "Journey Funnel",
+   "question": "Where does the journey leak?",
+   "why": "stage loss is spatial; the leak joint glows"
+  },
+  {
+   "block": "Faces Board",
+   "question": "Who is here / who matters now?",
+   "why": "faces beat rows; presence + one fact + one action"
+  },
+  {
+   "block": "Insight Feed",
+   "question": "What does it mean, what do I do?",
+   "why": "sentence + evidence + action, urgency ordered"
+  },
+  {
+   "block": "Heat & Streaks",
+   "question": "When does it happen / am I consistent?",
+   "why": "intensity pattern + streak wells; consistency made visible"
+  },
+  {
+   "block": "Health Gauge",
+   "question": "How healthy is the whole thing?",
+   "why": "one honest score, ingredients declared"
+  },
+  {
+   "block": "balance-radar (Hub only)",
+   "question": "How balanced are my worlds/dimensions?",
+   "why": "multi-dimensional shape; reserved for Hub rollup"
+  },
+  {
+   "block": "constellation (instrument)",
+   "question": "How are things connected?",
+   "why": "network structure is the datum"
+  },
+  {
+   "block": "rank-board (atom, inside blocks)",
+   "question": "Who/what ranks highest?",
+   "why": "name + spectrum bar + value; fastest leaderboard"
+  },
+  {
+   "block": "nl-table (existing)",
+   "question": "Exact values / audit?",
+   "why": "tables are for lookup, never the hero"
+  }
+ ],
+ "composition_rules": [
+  "cover first: world chrome only above the Pulse Strip; install lives in Settings",
+  "home light: above the fold = chrome + Pulse Strip + top of Trend Panel",
+  "standing order: Pulse Strip -> alarm Insight pin -> Trend Panel -> Mix Donut + Journey Funnel -> Heat & Streaks + Health Gauge -> Faces Board -> Insight Feed",
+  "period is global: Today / 7d / 30d / All re-frames every block together",
+  "add-block: owners may add atoms and rearrange within the skeleton; no new visual design",
+  "honest sparse states: new apps render blocks empty with story-starts copy; fixtures posing as life = contract failure",
+  "identical skeleton in every app (Display Law 7)",
+  "blocks in every door: non-Dashboard doors compose a subset in the same relative order per door config, lead blocks promoted; simplicity law: surface = value + shape + micro-sentence, depth one tap away"
+ ],
+ "data_model": {
+  "hub_rollup": {
+   "blocks": [
+    "per-app Health Gauge",
+    "balance-radar"
+   ],
+   "metrics": [
+    "total_reach",
+    "total_activity",
+    "per_app_health[]"
+   ],
+   "note": "NayaNET's own team gauges (dock, queue, alignment) render through the same blocks"
+  },
+  "source": "Nitro, The Living Data System, Part 4 (canonical)",
+  "universal_core": [
+   {
+    "color_job": "#a06bff",
+    "id": "views"
+   },
+   {
+    "color_job": "#a06bff",
+    "id": "visitors"
+   },
+   {
+    "color_job": "#d86cff",
+    "id": "posts"
+   },
+   {
+    "color_job": "#d86cff",
+    "id": "messages_received"
+   },
+   {
+    "color_job": "#d86cff",
+    "id": "messages_replied"
+   },
+   {
+    "color_job": "#55e39a",
+    "id": "response_time_median",
+    "inverse": true
+   },
+   {
+    "color_job": "#d86cff",
+    "id": "connections"
+   },
+   {
+    "color_job": "#a06bff",
+    "id": "invites_sent"
+   },
+   {
+    "color_job": "#a06bff",
+    "id": "invites_opened"
+   },
+   {
+    "color_job": "#a06bff",
+    "id": "invites_joined"
+   },
+   {
+    "color_job": "#55b9ee",
+    "id": "content_published"
+   },
+   {
+    "color_job": "#55b9ee",
+    "id": "voice_plays"
+   },
+   {
+    "color_job": "#55b9ee",
+    "id": "saves"
+   },
+   {
+    "color_job": "#d86cff",
+    "id": "shares"
+   },
+   {
+    "color_job": "#9d75ff (intensity scale)",
+    "id": "activity_heat"
+   },
+   {
+    "color_job": "#e8b64c",
+    "id": "streaks[]"
+   },
+   {
+    "color_job": "score-driven",
+    "id": "health_score"
+   }
+  ],
+  "per_door_additions": {
+   "Smart Business": [
+    "leads",
+    "deals_funnel[]",
+    "deals_value",
+    "orders",
+    "revenue",
+    "repeat_customer_rate",
+    "response_vs_promise",
+    "top_customers"
+   ],
+   "Smart Personal": [
+    "profile_views",
+    "note_reach (plays/saves/shares per note)",
+    "connection_growth_rate",
+    "top_connections"
+   ],
+   "Smart Space": [
+    "member_growth",
+    "joins (invite funnel)",
+    "posts_per_member",
+    "top_contributors",
+    "event_rsvps"
+   ]
+  }
+ },
+ "date": "2026-10-22",
+ "disagreements_with_nitro": [
+  {
+   "point": "scale split",
+   "position": "Health Gauge /100 = vitality (adopted); judgment scores (Calculator, scorecards) remain /10 on orbit-dial; scale declared in sub-line",
+   "reason": "one dial with two meanings corrupts both scales"
+  },
+  {
+   "point": "Pulse Strip sentence length",
+   "position": "micro-sentence <=6 words on the Strip; full sentence + evidence + action in the Insight Feed",
+   "reason": "SN-0822 must ship, but Composition Law keeps home light and glanceable"
+  },
+  {
+   "point": "constellation vs radar",
+   "position": "radar = Hub balance across dimensions (adopted as Hub-only); constellation instrument retained for connection-structure questions",
+   "reason": "different data contracts: {dimensions[]} vs {nodes[], edges[]}"
+  },
+  {
+   "point": "plug-in order",
+   "position": "native app tables = source zero (Nitro adopted over this lane's connector-first draft); connectors deepen the same metric IDs",
+   "reason": "works-right-away is only true if the block is born reading the app's own tables"
+  }
+ ],
+ "display_laws": {
+  "nitro_part5": [
+   "spectrum identity: blocks take spectrum colors in order, purple opens",
+   "motion is proof of life: count-ups, growth, sweeps, soft pulse on new data; reduced-motion = fully lit static, never broken",
+   "honest sparse states: blocks present and truly empty, never fixtures",
+   "period is one tap: Today / 7 days / 30 days / All, all blocks re-frame together",
+   "faces over rows, sentences over labels, journeys over totals",
+   "one system in every app: same blocks, same order logic, same grammar"
+  ],
+  "sn_0822": "No naked numbers: every metric carries magnitude + shape + direction + a human sentence — or it doesn't ship"
+ },
+ "extends": [
+  "Nitro LIVING-DATA-SYSTEM-2026-10-22 (human analysis of record)",
+  "BRAIN/10-INTERFACES/SMART-GRAPHS/smart-graphs-spec.machine.json",
+  "DESIGN-BLOCKS blocks/index.json"
+ ],
+ "grammar_inherited": [
+  "G1 living always",
+  "G2 magnitude = light",
+  "G3 spectrum order",
+  "G4 number is hero",
+  "G5 one accent per stat",
+  "G6 truth in every state",
+  "G7 card is the contract"
+ ],
+ "insight_generation": {
+  "anatomy": [
+   "sentence (plain words; correlation labeled as correlation)",
+   "evidence (metric value + delta-chip)",
+   "action (button -> real route/block)"
+  ],
+  "caps": {
+   "alive_cards_surfaced": 1
+  },
+  "inputs": [
+   "deltas vs prior window",
+   "threshold crossings",
+   "funnel leak joints",
+   "health floor crossings",
+   "cross-domain lag correlation",
+   "streak breaks and milestones",
+   "unanswered-message aging vs response promise"
+  ],
+  "regenerate_on": [
+   "period change",
+   "alarm crossing",
+   "promise-aging event"
+  ],
+  "suppression": "dismissed card does not repeat within the same window"
+ },
+ "instruments_bound": [
+  "living-counter",
+  "pulse-orb",
+  "jewel-pillar",
+  "spectrum-flow",
+  "constellation",
+  "pulse-rings",
+  "orbit-dial",
+  "nl-table",
+  "state-badge",
+  "mini-orb"
+ ],
+ "landing": [
+  {
+   "step": 1,
+   "what": "Nu's flagship Reports build (Nitro's lane, in flight) — Pulse Strip + Trend Panel + Mix Donut + Insight Feed sentences first; Journey Funnel / Health Gauge / Heat & Streaks ride TEN-STAR-SCORECARD-2026-10-22 items 3-10"
+  },
+  {
+   "step": 2,
+   "what": "8 blocks minted as official Factory pieces in DESIGN-BLOCKS/blocks/graphs/ (named, dual-labeled); per-block exact-predicate Factory contracts written against Nu's proven prototype"
+  },
+  {
+   "step": 3,
+   "what": "every template ships the blocks as a standard feature; Hub rooms adopt them (Reports room first, Mirror B8); Hub rollup + balance-radar"
+  }
+ ],
+ "plugin_model": {
+  "connector_declaration": [
+   "auth_kind",
+   "metric_ids[]",
+   "refresh",
+   "identity{name, mark}"
+  ],
+  "flow": [
+   "source zero: app's own Supabase tables instrument the universal core at build time",
+   "connect external source -> declared map resolves fields to metric IDs",
+   "added sources deepen the same blocks (extra rows/series); block shape never changes",
+   "create-a-world with native/manual metrics is a valid world"
+  ],
+  "rules": [
+   "unmapped source data is dropped, never guessed",
+   "zero mapped metrics = connect fails with honest error",
+   "contributions render SAMPLE until first successful sync",
+   "failed sync errors only its own contributions, with remedy",
+   "data older than 2x refresh interval shows exact age in gold in the sub-line"
+  ]
+ },
+ "reserved": [
+  {
+   "name": "balance-radar",
+   "scope": "Hub-level only: balance across worlds/dimensions; never inside a single app's Reports"
+  }
+ ],
+ "schema": "nayanet-ultimate-smart-stats/v2",
+ "specimen": "specimen-ultimate-dashboard.html",
+ "status": "CANDIDATE",
+ "supporting_atoms": [
+  {
+   "contract": "{delta_pct|delta_abs, direction, job}",
+   "job_rule": ">=0 alive; <0 alarm; inverse inverts; |delta|>=extraordinary_threshold -> extra",
+   "name": "delta-chip"
+  },
+  {
+   "contract": "{points[>=2], job}",
+   "name": "spark-trace",
+   "rule": "hand-rolled SVG; draws on entry; <2 points -> omitted"
+  },
+  {
+   "contract": "{job, sentence, evidence, action}",
+   "name": "insight-card"
+  },
+  {
+   "contract": "{rows[{label, value, sub?}]}",
+   "name": "rank-board"
+  },
+  {
+   "contract": "{segments[{label, value}]}",
+   "name": "segmented-bar"
+  }
+ ],
+ "tokens": {
+  "easings": {
+   "entry": "cubic-bezier(.16,.84,.22,1)",
+   "snap": "cubic-bezier(.32,.72,0,1)"
+  },
+  "max_series": 5,
+  "radii": {
+   "block": 20,
+   "chip": 13
+  },
+  "reduced_motion": "fully lit static; no count-up, no pulse; never blank",
+  "series_order": [
+   "#a06bff",
+   "#55b9ee",
+   "#55e39a",
+   "#e8b64c",
+   "#d86cff"
+  ],
+  "spectrum_jobs": {
+   "alarm_red": "#ff5a6e",
+   "alive_emerald": "#55e39a",
+   "extraordinary_gold": "#e8b64c",
+   "human_magenta": "#d86cff",
+   "knowledge_sapphire": "#55b9ee",
+   "signature_purple_scored": "#a06bff",
+   "signature_purple_soft": "#9d75ff"
+  },
+  "surfaces": {
+   "bg_0_page": "#0B0D12",
+   "bg_1_sunken": "#12151D",
+   "bg_2_card": "#171B25",
+   "bg_3_raised": "#252B39"
+  },
+  "type": {
+   "body_px": 18,
+   "ink": "#F5F7FB",
+   "kpi_numeral_px": [
+    40,
+    56
+   ],
+   "secondary": "rgba(245,247,251,.62)",
+   "tabular_nums": true,
+   "tertiary": "rgba(245,247,251,.40)"
+  }
+ },
+ "architecture": {
+  "doctrine": "One Universal App — Many Front Doors (Shawn, 2026-10-22, standing)",
+  "doors": [
+   "personal",
+   "smart-lists",
+   "business",
+   "booking",
+   "product",
+   "events",
+   "community",
+   "profile",
+   "menu",
+   "sign-up",
+   "dashboard"
+  ],
+  "door_definition": "entrance + main-page focus into the one interconnected app; a door config = cover + leading blocks + per-door data additions",
+  "dashboard_door": "the door whose focus is the Living Data System itself",
+  "blocks_in_every_door": "the 8 canonical blocks are a default property of the app in every door; door config declares which blocks lead; grammar/order/contracts never change between doors",
+  "simplicity_law": "simplified-beautiful for an average person / child / grandma: simple in presentation, never shallow in substance; depth one tap away on every block",
+  "door_configurations_not_apps": [
+   "Smart Personal",
+   "Smart Business",
+   "Smart Space"
+  ]
+ }
+}

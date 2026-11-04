@@ -142,7 +142,7 @@ pre .c{color:#6f6a80}pre .k{color:#e455f4}pre .s{color:#34d38a}pre .p{color:#8d6
       <label for="demo-email">Email address <span class="req">*</span></label>
       <div class="nl-well">
         <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7l9 6 9-6"/></svg>
-        <input id="demo-email" type="email" placeholder="you@nayanet.live" autocomplete="email">
+        <input id="demo-email" type="email" placeholder="you@nayanet.app" autocomplete="email">
       </div>
       <div class="nl-msg" id="demo-email-msg">We'll only use this to reach you about your app.</div>
     </div>
@@ -724,7 +724,7 @@ pre .c{color:#6f6a80}pre .k{color:#e455f4}pre .s{color:#34d38a}pre .p{color:#8d6
           <button class="nl-shareopt" style="--sc:var(--blue)"><span class="s-orb"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7l9 6 9-6"/></svg></span>Email</button>
           <button class="nl-shareopt" style="--sc:var(--green)"><span class="s-orb"><svg class="icon" viewBox="0 0 24 24"><path d="M10 14a5 5 0 007 0l3-3a5 5 0 00-7-7l-1.5 1.5"/><path d="M14 10a5 5 0 00-7 0l-3 3a5 5 0 007 7l1.5-1.5"/></svg></span>Copy link</button>
         </div>
-        <button class="nl-copylink" id="demo-copylink"><code>nayanet.live/shawn/community-hub</code><span id="demo-copy-label">Copy</span></button>
+        <button class="nl-copylink" id="demo-copylink"><code>nayanet.app/shawn/community-hub</code><span id="demo-copy-label">Copy</span></button>
       </div>
     </div>
   </div>
@@ -1061,7 +1061,7 @@ if(charts&&'IntersectionObserver' in window){
 var copylink=$('#demo-copylink');
 if(copylink){
   copylink.addEventListener('click',function(){
-    var url='https://nayanet.live/shawn/community-hub';
+    var url='https://nayanet.app/shawn/community-hub';
     function ok(){copylink.classList.add('copied');$('#demo-copy-label').textContent='Copied ✓';
       setTimeout(function(){copylink.classList.remove('copied');$('#demo-copy-label').textContent='Copy'},1800)}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(ok).catch(ok)}else{ok()}

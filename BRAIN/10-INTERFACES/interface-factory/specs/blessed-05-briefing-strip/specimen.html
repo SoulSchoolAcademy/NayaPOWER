@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blessed 05 — Briefing Strip · Specimen</title>
+<style>
+
+/* ---- NJ-BRIEFING-STRIP v1.0.0 · tokens are verbatim (Law 9) ---- */
+.nj-brief{
+  --nj-c:#a06bff; --nj-c-rgb:160,107,255; /* own ignition color — override per instance */
+  display:flex; align-items:center; flex-wrap:wrap;
+  gap:6px 10px; width:100%; box-sizing:border-box;
+  min-height:60px; padding:14px 22px;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:#ffffff; text-decoration:none;
+  /* L2 base: sharp obsidian face — NO white top-wash (Shawn's eye, 2026-10-31) */
+  background:linear-gradient(180deg,#17171e,#0a0a0f 70%,#050507);
+  /* L3 rim: visible white at rest, 1.5px+ (Law 6) */
+  border:2px solid rgba(255,255,255,.3); border-radius:18px;
+  /* L1 seating shadow + L4 hairline top edge light (DNA: "top edge light") */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 -1px 0 rgba(0,0,0,.55),
+    0 2px 5px rgba(0,0,0,.7),
+    0 12px 28px rgba(0,0,0,.55);
+  cursor:pointer; user-select:none; -webkit-user-select:none;
+  -webkit-tap-highlight-color:transparent; touch-action:manipulation;
+  transition:transform .18s cubic-bezier(.2,.9,.25,1),
+             box-shadow .25s ease-out, border-color .2s ease-out;
+}
+/* WHAT — the fact. Bold, largest. White, always. */
+.nj-brief-what{
+  font-size:16px; font-weight:800; letter-spacing:.01em; line-height:1.35;
+  color:#ffffff; white-space:nowrap;
+}
+/* separators — quiet chrome, never colored */
+.nj-brief-sep, .nj-brief-dot{
+  color:#ffffff; opacity:.55; font-weight:400; flex:none;
+}
+/* WHY — why it matters. Regular weight, one step down in size. White, always. */
+.nj-brief-why{
+  font-size:15px; font-weight:500; line-height:1.35; color:#ffffff;
+}
+/* VERB — the one action. Bold, own-color arrow that nudges on touch. */
+.nj-brief-verb{
+  display:inline-flex; align-items:center; gap:6px; flex:none;
+  margin-left:auto; padding-left:10px;
+  font-size:15px; font-weight:800; letter-spacing:.01em; color:#ffffff;
+  white-space:nowrap;
+}
+.nj-brief-arrow{
+  display:inline-block; color:var(--nj-c); font-weight:800;
+  transition:transform .18s cubic-bezier(.2,.9,.25,1);
+}
+/* L3 ALIVE — hover/touch: lifts, rim ignites in OWN color, arrow nudges.
+   Text stays white. (Law 6: ignition on touch ONLY.) */
+.nj-brief:hover, .nj-brief.nj-demo-hover{
+  transform:translateY(-2px);
+  border-color:var(--nj-c);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 -1px 0 rgba(0,0,0,.55),
+    0 4px 8px rgba(0,0,0,.6),
+    0 16px 32px rgba(0,0,0,.55),
+    0 0 22px -4px rgba(var(--nj-c-rgb),.6);
+}
+.nj-brief:hover .nj-brief-arrow, .nj-brief.nj-demo-hover .nj-brief-arrow{
+  transform:translateX(4px);
+}
+/* PRESS — sinks toward the page, shadow shortens */
+.nj-brief:active, .nj-brief.nj-demo-press, .nj-brief.nj-is-pressed{
+  transform:translateY(1px);
+  transition:transform .1s cubic-bezier(.3,0,.8,.4), box-shadow .12s ease-out;
+  box-shadow:
+    inset 0 3px 10px rgba(0,0,0,.55),
+    0 1px 3px rgba(0,0,0,.6);
+}
+/* FOCUS — always visible: rim thickens + own-color ring */
+.nj-brief:focus{ outline:none; }
+.nj-brief:focus-visible, .nj-brief.nj-demo-focus{
+  border-color:var(--nj-c);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 -1px 0 rgba(0,0,0,.55),
+    0 2px 5px rgba(0,0,0,.7),
+    0 12px 28px rgba(0,0,0,.55),
+    0 0 0 3px rgba(var(--nj-c-rgb),.4),
+    0 0 24px -2px rgba(var(--nj-c-rgb),.5);
+}
+/* PHONE — wraps gracefully: the line becomes two, the verb keeps its own
+   line and stays tappable. Never clipped, never ellipsized into silence. */
+@media (max-width:560px){
+  .nj-brief{ padding:12px 16px; border-radius:16px; }
+  .nj-brief-what{ font-size:15px; white-space:normal; }
+  .nj-brief-why{ font-size:14px; }
+  /* separators retire on phone — the wrapped lines read clean without them */
+  .nj-brief-sep, .nj-brief-dot{ display:none; }
+  .nj-brief-verb{ margin-left:0; padding-left:0; width:100%; }
+}
+/* Reduced motion: states change instantly, still visible */
+@media (prefers-reduced-motion:reduce){
+  .nj-brief{ transition:none; }
+  .nj-brief:hover, .nj-brief:active{ transform:none; }
+  .nj-brief-arrow{ transition:none; }
+}
+
+</style>
+<style>
+
+/* ---- specimen page chrome (NOT part of the blessed part) ---- */
+html,body{margin:0;padding:0;background:#050507;color:#fff;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;}
+.nj-spec{max-width:1060px;margin:0 auto;padding:40px 24px 80px;}
+.nj-spec-head{margin-bottom:36px;}
+.nj-spec-kicker{font-size:12px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:#fff;opacity:.65;margin-bottom:10px;}
+.nj-spec-head h1{margin:0;font-size:34px;font-weight:800;color:#fff;}
+.nj-spec-head p{margin:8px 0 0;color:#fff;opacity:.7;font-size:15px;max-width:640px;line-height:1.6;}
+.nj-spec-block{background:#0a0a0f;border:1.5px solid rgba(255,255,255,.12);
+  border-radius:20px;padding:28px;margin-bottom:24px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 18px 44px rgba(0,0,0,.5);}
+.nj-spec-block h2{margin:0 0 6px;font-size:20px;color:#fff;}
+.nj-spec-note{margin:0 0 20px;color:#fff;opacity:.6;font-size:13.5px;line-height:1.6;}
+.nj-spec-stack{display:flex;flex-direction:column;gap:16px;}
+.nj-spec-lab{font-size:11px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:#fff;opacity:.5;margin:0;}
+.nj-spec-foot{margin-top:36px;color:#fff;opacity:.55;font-size:13px;line-height:1.6;}
+.nj-spec-foot b{color:#fff;}
+@media(max-width:700px){ .nj-spec{padding:24px 16px 60px;} .nj-spec-head h1{font-size:26px;}
+  .nj-spec-block{padding:20px 16px;} }
+
+</style>
+</head>
+<body>
+<div class="nj-spec">
+<div class="nj-spec-head"><div class="nj-spec-kicker">Blessed 05 · v1.0.0 · Specimen</div><h1>Briefing Strip</h1><p>The Tell-Me-My-Stats strip. One line: WHAT + WHY + ONE VERB. Obsidian at rest with a white rim — it ignites in its own color on touch only. The whole strip is one control. Factory gap #1: Dashboard · Intel Today · Reports.</p></div>
+<div class="nj-spec-block"><h2>At rest — the spectrum walk</h2><p class="nj-spec-note">Each strip owns one spectrum color (Law 5 — one board, one color). Adjacent strips never share a hue (Law 4). All text is white — hierarchy from size and weight, never color (Law 1).</p><div class="nj-spec-stack"><a class="nj-brief" style="--nj-c:#a06bff;--nj-c-rgb:160,107,255" href="#dashboard"><span class="nj-brief-what">825 points to go</span><span class="nj-brief-sep" aria-hidden="true">—</span><span class="nj-brief-why">about 33 wall posts at your pace</span><span class="nj-brief-dot" aria-hidden="true">·</span><span class="nj-brief-verb">See how<span class="nj-brief-arrow" aria-hidden="true">→</span></span></a><a class="nj-brief" style="--nj-c:#3fb8ff;--nj-c-rgb:63,184,255" href="#today"><span class="nj-brief-what">3 briefings ready</span><span class="nj-brief-sep" aria-hidden="true">—</span><span class="nj-brief-why">today’s intel, scored and waiting</span><span class="nj-brief-dot" aria-hidden="true">·</span><span class="nj-brief-verb">Read now<span class="nj-brief-arrow" aria-hidden="true">→</span></span></a><a class="nj-brief" style="--nj-c:#2fe89e;--nj-c-rgb:47,232,158" href="#reports"><span class="nj-brief-what">40 link clicks</span><span class="nj-brief-sep" aria-hidden="true">—</span><span class="nj-brief-why">busiest day was Friday</span><span class="nj-brief-dot" aria-hidden="true">·</span><span class="nj-brief-verb">View report<span class="nj-brief-arrow" aria-hidden="true">→</span></span></a><button class="nj-brief" style="--nj-c:#ffbf3d;--nj-c-rgb:255,191,61" type="button"><span class="nj-brief-what">1,240 points earned</span><span class="nj-brief-sep" aria-hidden="true">—</span><span class="nj-brief-why">your best week yet</span><span class="nj-brief-dot" aria-hidden="true">·</span><span class="nj-brief-verb">Keep going<span class="nj-brief-arrow" aria-hidden="true">→</span></span></button></div></div>
+<div class="nj-spec-block"><h2>States</h2><p class="nj-spec-note">Rest · hover-touch (rim ignites in own color, arrow nudges) · press (sinks) · focus-visible (own-color ring). Text stays white in every state.</p><div class="nj-spec-stack"><p class="nj-spec-lab">Rest</p><a class="nj-brief" style="--nj-c:#ff9a5a;--nj-c-rgb:255,154,90" href="#invite"><span class="nj-brief-what">12 invites sent</span><span class="nj-brief-sep" aria-hidden="true">—</span><span class="nj-brief-why">2 joined — the river is moving</span><span class="nj-brief-dot" aria-hidden="true">·</span><span class="nj-brief-verb">Invite more<span class="nj-brief-arrow" aria-hidden="true">→</span></span></a><p class="nj-spec-lab">Hover / touch-ignited</p><a class="nj-brief nj-demo-hover" style="--nj-c:#ff9a5a;--nj-c-rgb:255,154,90" href="#invite"><span class="nj-brief-what">12 invites sent</span><span class="nj-brief-sep" aria-hidden="true">—</span><span class="nj-brief-why">2 joined — the river is moving</span><span class="nj-brief-dot" aria-hidden="true">·</span><span class="nj-brief-verb">Invite more<span class="nj-brief-arrow" aria-hidden="true">→</span></span></a><p class="nj-spec-lab">Pressed</p><a class="nj-brief nj-demo-press" style="--nj-c:#ff9a5a;--nj-c-rgb:255,154,90" href="#invite"><span class="nj-brief-what">12 invites sent</span><span class="nj-brief-sep" aria-hidden="true">—</span><span class="nj-brief-why">2 joined — the river is moving</span><span class="nj-brief-dot" aria-hidden="true">·</span><span class="nj-brief-verb">Invite more<span class="nj-brief-arrow" aria-hidden="true">→</span></span></a><p class="nj-spec-lab">Focus-visible (keyboard)</p><a class="nj-brief nj-demo-focus" style="--nj-c:#ff9a5a;--nj-c-rgb:255,154,90" href="#invite"><span class="nj-brief-what">12 invites sent</span><span class="nj-brief-sep" aria-hidden="true">—</span><span class="nj-brief-why">2 joined — the river is moving</span><span class="nj-brief-dot" aria-hidden="true">·</span><span class="nj-brief-verb">Invite more<span class="nj-brief-arrow" aria-hidden="true">→</span></span></a></div></div>
+<div class="nj-spec-block"><h2>One board, one color — ignition</h2><p class="nj-spec-note">The strip below owns red. Touch it and only its rim and arrow ignite — the face stays obsidian, the text stays white. (Law 6: alive = responsive, not lit at rest.)</p><div class="nj-spec-stack"><a class="nj-brief" style="--nj-c:#ff5e6c;--nj-c-rgb:255,94,108" href="#streak"><span class="nj-brief-what">Streak at 6 days</span><span class="nj-brief-sep" aria-hidden="true">—</span><span class="nj-brief-why">one more day beats your best</span><span class="nj-brief-dot" aria-hidden="true">·</span><span class="nj-brief-verb">Protect it<span class="nj-brief-arrow" aria-hidden="true">→</span></span></a><a class="nj-brief" style="--nj-c:#e84fff;--nj-c-rgb:232,79,255" href="#notes"><span class="nj-brief-what">2 Smart notes today</span><span class="nj-brief-sep" aria-hidden="true">—</span><span class="nj-brief-why">your thinking, compounded</span><span class="nj-brief-dot" aria-hidden="true">·</span><span class="nj-brief-verb">Review<span class="nj-brief-arrow" aria-hidden="true">→</span></span></a></div></div>
+<div class="nj-spec-foot">Blessed 05 · Briefing Strip · v1.0.0<br>Law: the Anatomy of Naya Design, ratified 2026-10-31. Tokens verbatim. Every control works or it does not ship. Import, never copy.</div>
+</div>
+<script>
+
+/* ---- NJ-BRIEFING-STRIP v1.0.0 · behavior (idempotent) ---- */
+(function(){
+  if (window.NayaBrief) return;
+  /* Touch press state: :active is unreliable on mobile Safari without a
+     touch handler — this makes the press sink real on every phone. */
+  document.addEventListener("touchstart", function(e){
+    var b = e.target && e.target.closest ? e.target.closest(".nj-brief") : null;
+    if (b) b.classList.add("nj-is-pressed");
+  }, {passive:true});
+  document.addEventListener("touchend", function(){
+    var ps = document.querySelectorAll(".nj-brief.nj-is-pressed");
+    for (var i = 0; i < ps.length; i++) ps[i].classList.remove("nj-is-pressed");
+  }, {passive:true});
+  document.addEventListener("touchcancel", function(){
+    var ps = document.querySelectorAll(".nj-brief.nj-is-pressed");
+    for (var i = 0; i < ps.length; i++) ps[i].classList.remove("nj-is-pressed");
+  }, {passive:true});
+  window.NayaBrief = { version: "1.0.0" };
+})();
+
+</script>
+</body>
+</html>

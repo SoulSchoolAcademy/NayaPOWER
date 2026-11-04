@@ -33,7 +33,7 @@ import urllib.error
 OWNER = "SoulSchoolAcademy"
 REPO = "NayaPOWER"
 API = "https://api.github.com"
-HUB_HOST = "https://nayanet.live"
+HUB_HOST = "https://nayanet.app"
 
 EXPECTED_FEEDS = [
     "feed", "today", "lists", "spaces", "reports", "library",

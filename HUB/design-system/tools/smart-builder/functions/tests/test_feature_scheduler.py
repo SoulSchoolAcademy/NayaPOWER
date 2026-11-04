@@ -49,7 +49,7 @@ SCHED_DECL = {
     "time": "08:00",
     "timezone": "America/New_York",
     "topic": "daily intelligence",
-    "manage_endpoint": "https://sched.nayanet.live/morning-crumb",
+    "manage_endpoint": "https://sched.nayanet.app/morning-crumb",
 }
 
 
@@ -164,7 +164,7 @@ class FeatureSchedulerAcceptance(unittest.TestCase):
         self.assertEqual(spec["feature"], "feature.scheduler")
         self.assertEqual(spec["version"], "1.0.0")
         self.assertEqual(spec["manage_endpoint"],
-                         "https://sched.nayanet.live/morning-crumb")
+                         "https://sched.nayanet.app/morning-crumb")
         self.assertRegex(spec["job_id"], r"^[0-9a-f]{16}$")
         machine = json.loads(re.search(
             r'<pre id="machinejson">(.*?)</pre>', page, re.S).group(1))
@@ -180,7 +180,7 @@ class FeatureSchedulerAcceptance(unittest.TestCase):
             sched_contract(self.tmp, dict(SCHED_DECL)), self.workdir, self.tree)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         card = card_html(page)
-        self.assertIn('action="https://sched.nayanet.live/morning-crumb/cancel"',
+        self.assertIn('action="https://sched.nayanet.app/morning-crumb/cancel"',
                       card)
         self.assertIn('name="job_id"', card)
         self.assertIn("Cancel schedule", card)

@@ -1,0 +1,44 @@
+== width 1440px — file:///home/hatch/workspace/team-nitro/interface-factory/specs/blessed-05-briefing-strip/specimen.html ==
+  [PASS] No white/light backgrounds
+  [PASS] Law 6 — no spectrum-color button/control background at rest
+  [PASS] Law 1/3 — no spectrum-colored text (gold = manual review)
+  [PASS] Light text on dark surfaces (contrast >= 3.0)
+  [PASS] Spectrum walk — ordered accents, never twice in a row
+  [PASS] Rectangles not squares (major cards aspect > 1.2)
+  [PASS] Living depth — major surfaces carry box-shadow
+  [PASS] Search below the bar, never inside it
+  [PASS] Dashboard button present
+  [PASS] No horizontal overflow
+  [PASS] Chart controls in labeled full-width rows (not a flat cluster)
+  [PASS] Reconciliation — displayed score == value-table formula over displayed counts (tolerance 0)
+  [PASS] Spectrum per category — WHAT categories wear their locked colors
+  [PASS] Honesty — real numbers or honest frames; no SAMPLE outside specimens, no 'awaiting ruling'
+  [PASS] SN-0822 — every number: magnitude + shape + direction + a human sentence
+  [PASS] Family — stats blocks match the factory's blessed parts (import, not redraw)
+  [PASS] No dead chrome — no SOON pills, no unlabeled disabled controls
+  [PASS] Motion truth — every infinite animation backed by ledger events (approximation)
+  [PASS] Provenance — each stats surface states its truth in one line
+  [PASS] Zero JS errors (0)
+== width 390px — file:///home/hatch/workspace/team-nitro/interface-factory/specs/blessed-05-briefing-strip/specimen.html ==
+  [PASS] No white/light backgrounds
+  [PASS] Law 6 — no spectrum-color button/control background at rest
+  [PASS] Law 1/3 — no spectrum-colored text (gold = manual review)
+  [PASS] Light text on dark surfaces (contrast >= 3.0)
+  [PASS] Spectrum walk — ordered accents, never twice in a row
+  [PASS] Rectangles not squares (major cards aspect > 1.2)
+  [PASS] Living depth — major surfaces carry box-shadow
+  [PASS] Search below the bar, never inside it
+  [PASS] Dashboard button present
+  [PASS] No horizontal overflow
+  [PASS] Chart controls in labeled full-width rows (not a flat cluster)
+  [PASS] Reconciliation — displayed score == value-table formula over displayed counts (tolerance 0)
+  [PASS] Spectrum per category — WHAT categories wear their locked colors
+  [PASS] Honesty — real numbers or honest frames; no SAMPLE outside specimens, no 'awaiting ruling'
+  [PASS] SN-0822 — every number: magnitude + shape + direction + a human sentence
+  [PASS] Family — stats blocks match the factory's blessed parts (import, not redraw)
+  [PASS] No dead chrome — no SOON pills, no unlabeled disabled controls
+  [PASS] Motion truth — every infinite animation backed by ledger events (approximation)
+  [PASS] Provenance — each stats surface states its truth in one line
+  [PASS] Zero JS errors (0)
+
+GATE PASSED — all checks green at 1440px, 390px.

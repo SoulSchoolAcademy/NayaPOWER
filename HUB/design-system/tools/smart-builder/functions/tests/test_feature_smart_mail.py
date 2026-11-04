@@ -245,7 +245,7 @@ class FeatureSmartMailAcceptance(unittest.TestCase):
         c = json.load(open(SMOKE))
         c["features"] = {"smart_mail": dict(
             MAIL_DECL, broadcast=True,
-            broadcast_url="https://hub.nayanet.live/broadcast/morning-crumb")}
+            broadcast_url="https://hub.nayanet.app/broadcast/morning-crumb")}
         c["connections"] = {"muse": False, "github": False,
                             "network": False, "nayanet": True}
         p = os.path.join(self.tmp, "contract.json")
@@ -253,7 +253,7 @@ class FeatureSmartMailAcceptance(unittest.TestCase):
         r, page, manifest = run_assemble(p, self.tmp)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         sec = mail_section(page)
-        self.assertIn('action="https://hub.nayanet.live/broadcast/morning-crumb"',
+        self.assertIn('action="https://hub.nayanet.app/broadcast/morning-crumb"',
                       sec)
         self.assertIn("Broadcast to the network", sec)
         # the grant is real, so "connected" is accurate here — and mirrored

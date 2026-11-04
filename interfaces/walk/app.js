@@ -160,10 +160,10 @@ async function completeWalk(enterNote){
 function renderEnd(){
   var alias = ID.alias || 'yourname';
   var linkFace = document.getElementById('linkFace');
-  var real = (S.reveal && S.reveal.ambassador_link) || ('https://nayanet.live/joinus?ref=' + alias);
-  linkFace.setAttribute('data-branded', 'nayanet.live/' + alias);
+  var real = (S.reveal && S.reveal.ambassador_link) || ('https://nayanet.app/joinus?ref=' + alias);
+  linkFace.setAttribute('data-branded', 'nayanet.app/' + alias);
   linkFace.setAttribute('data-real', real);
-  linkFace.textContent = 'nayanet.live/' + alias;
+  linkFace.textContent = 'nayanet.app/' + alias;
   linkFace.setAttribute('aria-label', 'Show your real affiliate link');
 }
 
@@ -182,7 +182,7 @@ function renderEnd(){
     var personal = P.personal || ('/world/' + alias);
     var business = P.business || ('/world/' + alias + '/business');
     var space = P.space || ('/world/' + alias + '/space');
-    var urls = { Dashboard: personal + '#dashboard', Personal: personal, Business: business, Space: space, Hub: 'https://nayanet.live/' };
+    var urls = { Dashboard: personal + '#dashboard', Personal: personal, Business: business, Space: space, Hub: 'https://nayanet.app/' };
     if (urls[d]) window.location.href = urls[d];
   });
   var linkFace = document.getElementById('linkFace');

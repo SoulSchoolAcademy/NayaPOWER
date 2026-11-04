@@ -208,7 +208,7 @@ class SurfaceReadinessTests(unittest.TestCase):
             headers = {}
             def __enter__(self): return self
             def __exit__(self, *args): pass
-            def geturl(self): return "https://nayanet.live/s/sn0840"
+            def geturl(self): return "https://nayanet.app/s/sn0840"
         methods = []
         def special(req,timeout):
             methods.append(req.get_method())

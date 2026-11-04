@@ -619,7 +619,7 @@ def generate_share_assets(note):
         os.unlink(img_path)  # Clean up temp image
 
         if '"ok":true' in up.stdout:
-            print(f"  ✓ Share assets ready for {sn_id}: nayanet.live/s/{sn_id}")
+            print(f"  ✓ Share assets ready for {sn_id}: nayanet.app/s/{sn_id}")
             return True
         else:
             print(f"  ⚠ Manifest update failed for {sn_id}")

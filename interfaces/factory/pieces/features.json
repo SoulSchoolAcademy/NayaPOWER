@@ -181,7 +181,7 @@
   ]
  },
  "twin_plus": {
-  "behavior": "rooms-plus opens drawer with the Hub's 14 rooms (Start Here, Smart Feed, Smart Factory, Ask Naya, Smart Spaces, Today's Intel, Smart Growth, Your Reports, Intelligent Library, Smart Ledger, Your Connections, Smart Lists, Smart Mail, Settings) linking nayanet.live/#/hub/<id>; eco-plus opens the Hub's 12 ECO_LINKS verbatim (labels + URLs + colors)",
+  "behavior": "rooms-plus opens drawer with the Hub's 14 rooms (Start Here, Smart Feed, Smart Factory, Ask Naya, Smart Spaces, Today's Intel, Smart Growth, Your Reports, Intelligent Library, Smart Ledger, Your Connections, Smart Lists, Smart Mail, Settings) linking nayanet.app/#/hub/<id>; eco-plus opens the Hub's 12 ECO_LINKS verbatim (labels + URLs + colors)",
   "css_required": [
    ".rooms-plus",
    ".eco-plus",

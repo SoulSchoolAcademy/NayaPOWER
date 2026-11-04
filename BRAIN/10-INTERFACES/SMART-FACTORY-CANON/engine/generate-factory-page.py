@@ -12,7 +12,7 @@ drift from it. Sources (the canonical set, MANIFEST.md):
                                    this index says so.
   * engine/factory-page-shell.html -- the current live page, harvested
                                    byte-for-byte (the Make It Yours build,
-                                   nayanet.live/smartfactory). It is the
+                                   nayanet.app/smartfactory). It is the
                                    DESIGN AUTHORITY: everything outside the
                                    parts shelf is carried over byte-identical;
                                    inside the shelf, every rail wrapper and
