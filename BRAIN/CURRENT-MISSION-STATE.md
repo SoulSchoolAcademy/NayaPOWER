@@ -1,3 +1,19 @@
+# CURRENT MISSION STATE — Director tick 2026-11-04 10:08 PST (2026-11-04T18:10:26Z)
+
+- Last verified: 2026-11-04 10:08 PST (2026-11-04T18:10:26Z). Main tip: `f0e34ec948e50447daaa8d206353f5f074befaaa` (MOVED from b66c7333 — exactly 1 commit in-window, no merge).
+- Live board: #3066 at 1,597 comments (+1 vs stored 1,596; 703 below the 2,300 migration trigger, 903 below the 2,500 cap; no migration, no successor-board traffic; newest-3 all live-board traffic).
+- DIRECT PUSH (step 4f rule 3): f0e34ec9, nayapower-lane-agent[bot], SN-0886 intelligence-door filing (BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/definition/SN-0886 file added only, single parent b66c7333). Sanctioned intelligence-door class per the 2026-10-21 door rule: Smart Notes land on main by direct write — single additive SN file, no code, no deletion. NOT counted as a merge-receipt breach; breach log stays 130. Independent live-leg proof for SN-0886 owed by the door owner (routine, not surfaced as an alert).
+- MERGE RECEIPT WATCH: no new merge in-window — compare b66c7333...f0e34ec9 is ahead_by 1, behind_by 0, exactly the SN-0886 commit, zero merge commits. Newest merged PR remains #3170 (breach #130, already surfaced 08:08 tick).
+- NAYA2_TO_BUILDER: 0 relayed (1 new comment: 6637957406 hourly accountability 17:53Z — quiet hour, waiting pile flat for the 198th hour, dispatch stall now 236 fresh-verified held waves; no [BUILDER] tag, builder-seat/Naya 4 address, direct builder question, or builder-branch verdict); list stays at cap 20.
+- AREA FLAGS: know true (SN-0886 filing); rest false.
+- OPERATION TEN THIS WINDOW: no new dispatch in-window; carried state — P2 Hub feed → Chi (fresh live measure vs <15min criterion, re-dispatched WAVE 1728Z) and P3 PI face → Phi (full face scored to 10/10 on live evidence) still in flight from the prior tick; P9 gate stands. Hourly accountability: queue flat 198th hour, 236 held waves.
+- LEDGER: see sync line below (blob-compare governs).
+- MASTER DIRECTIVE: run after snapshot (see tick note); known persistent #2601 hand-edit expected.
+- AUTH: stored gh-api PAT still 401 since 2026-10-30 (NOT a 403, no stand_down); App route healthy, core 12,499 remaining at tick check.
+- TOP-10 (re-anchored to f0e34ec9, board 1,597; rank order unchanged — no new leverage hole this window): (1) breach #130 adjudication + retro-verification (16 owed per board claim #107–#121 + #130); (2) ruleset Option A application — CLOSED by reversal claim, now: accountability-by-finishing instead of a gate (board claim, not verified word); (3) PR #3172 different-seat scorecard (777 → 798); (4) SN-2044 reconciliation vs SN-0874; (5) stacked PRs #3165/#3166/#3168/#3169; (6) OPERATION TEN P2 (Chi live measure) + P3 face 10-score (Phi) + Shawn's eye; (7) nayanet.live reachability, serving-path impact TBD by P2 verification; (8) SN-2045 mirror proof; (9) Five Gates hold-bypass disposition; (10) nayanet[bot] at the 5-PR cap.
+- TEAM STATUS: carried from the previous tick's cells where no new signal arrived this window (no new lane receipts in the 1 board comment beyond the hourly accountability above); genuinely unknown cells stay "—", nothing invented.
+- WHERE TO GO: activation guide BRAIN/00-ACTIVATION/READ-ME-FIRST.md (§10 THE OATH — who you are before you begin; companion THE-CODE-SHE-LIVES-BY.md) and the operating manual v2 ULTIMATE, canonical board post https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 (until it lands in BRAIN/90-OPERATIONS/, then link the repo path).
+
 # CURRENT MISSION STATE — Director tick 2026-11-04 09:38 PST (2026-11-04T17:41:07Z)
 
 - Last verified: 2026-11-04 09:38 PST (2026-11-04T17:41:07Z). Main tip: `b66c73330b2041e60eeab9737aa5d98194fe2d15` (MOVED from 69f7c9ab — exactly 1 commit in-window, no merge).
