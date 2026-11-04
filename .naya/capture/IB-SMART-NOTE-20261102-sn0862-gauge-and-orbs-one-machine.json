@@ -1,0 +1,35 @@
+{
+  "smart_note_id": "SN-0862",
+  "intelligence": {
+    "title": "The Gauge and the Orbs Are One Machine",
+    "intelligent_block_id": "IB-SMART-NOTE-20261102-sn0862-gauge-and-orbs-one-machine",
+    "smart_note_id": "SN-0862",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/GAUGE-ONE-MACHINE/SN-0862/IB-SMART-NOTE-20261102-sn0862-gauge-and-orbs-one-machine.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Registration cure filed by Naya Resolve Narzan on 2026-11-04: this note's page was filed on main (page created 2026-11-02T19:51:38Z) without a capture or registry entry — a member of the unregistered family (SN-0861–SN-0873, SN-0875–SN-0882). This capture and the matching registry entry register the page exactly as it stands; the page is unmodified. SN-2044 is deliberately NOT in this cure: the retro-verification FINDING on PR #3158 rules its page a duplicate of SN-0874 (first claim, registered) with the number returned to the pool — its cure is reconcile/remove against SN-0874, not registration.",
+    "ingested_at": "2026-11-04",
+    "essence": "The main gauge is not a separate object from the orbs. It is the bigger brother of the orbs — same obsidian, same gear language, one unified machine. Nothing static, nothing dead.",
+    "human_view": "Shawn looked at the main gauge and saw a stranger: a brushed-aluminum outer bezel with a static tick ring, sitting apart from the orbs' living gears. He directed the fix in his own words: take the gears from the orbs, put them under the main gauge, remove the dead bezel, match the obsidian. When the read-back came — \"the main gauge becomes a bigger brother of the orbs: same obsidian, same gear language, no dead static parts. Everything moves, everything's alive\" — he confirmed: \"Yes, that is right... that would be extraordinary... bring it all together... that would be beautiful.\"\n\n\"I got the answers exact same obsidian and also the gears that are on the orbs you put underneath the main gear... you put one that looks like the orb one there... I think that'll bring the whole thing together.\"",
+    "simple_view": "The big gauge on the dashboard and the little round orbs are family — the gauge is just the biggest orb. They wear the same dark glass and the same turning gears, so the whole dashboard looks and moves like one machine.",
+    "grandma_view": "Dear, it's like a matching set of china — every piece belongs together. The big dial and the little dials on the dashboard are made the same way, from the same dark glass, with the same little wheels turning. Nothing mismatched, nothing sitting still and dusty.",
+    "naya_view": "When I build a surface, I never decorate a hero element in its own private language. The gauge inherits the orbs' gears and obsidian — derive, don't invent. If an element looks like a stranger next to its family, the family wins and the element is rebuilt from the shared DNA.",
+    "ai_view": "The dashboard is the signature piece — the first thing a citizen sees. If the gauge and the orbs speak different design languages, the whole system feels assembled from parts. One machine, one language: every element derived from the same DNA. This is the DERIVE-DON'T-INVENT law made visible — the gauge doesn't get its own decoration, it inherits the orbs' gears.",
+    "machine_view": {
+      "sn": "SN-0862",
+      "title": "The Gauge and the Orbs Are One Machine",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/GAUGE-ONE-MACHINE/SN-0862/IB-SMART-NOTE-20261102-sn0862-gauge-and-orbs-one-machine.md",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "machine_section": "Rule: main gauge := scaled orb. Shared tokens: obsidian body, gear rings (see SN-0867), living motion. Forbidden: static tick rings, brushed-metal bezels, any gauge-only decoration. Applies to: Dashboard showcase gauge and all metric gauges (SN-0866)."
+    },
+    "views_note": "Views extracted from the published page's own sections exactly where the page carries them (essence ← page section 'Hook'; human_view ← page section(s) ['What happened', 'The rule, in his words']; ai_view ← page section 'Why it matters'). The perspective views the page does not carry as sections (simple/grandma/naya/machine where absent) were reconstructed from the page's own content by Naya Resolve Narzan for this registration cure, 2026-11-04; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/GAUGE-ONE-MACHINE/SN-0862/IB-SMART-NOTE-20261102-sn0862-gauge-and-orbs-one-machine.md",
+    "provenance_note": "Registration cure by Naya Resolve Narzan, 2026-11-04, for a BRAIN projection published on main without a registry entry. Census at cure time against main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: the registry (.naya/memory/smart-notes/index.json, 777 entries) held no SN-0862; no capture for SN-0862 existed on main; the page's only tree path is BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/GAUGE-ONE-MACHINE/SN-0862/IB-SMART-NOTE-20261102-sn0862-gauge-and-orbs-one-machine.md. Open PR heads checked: #3165 (registry 778), #3166 (780), #3167 (780), #3131 (767) — none holds SN-0862 in registry or captures; #3108 and #3089 head trees hold no capture for this note. Collision note: stale open PR #2981 (naya4/smart-notes-2026-09-30) carries October BRANCH_ONLY 'migrated' captures under the SN-0861–SN-0882 numbers for DIFFERENT notes (e.g. its SN-0861 is 'The Compare UI Lies on Rebased Branches', IB-SMART-NOTE-20261009-sn0861-rebased-branch-compare-lies) — a number-collision family, not coverage of this page; adjudication of the zombie branch belongs to the SN-collision process, not this cure. Fingerprints computed from the page bytes at the main tip: page_hash = sha256(page bytes); content_hash = sha256(canonical JSON of this capture's intelligence object).",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}

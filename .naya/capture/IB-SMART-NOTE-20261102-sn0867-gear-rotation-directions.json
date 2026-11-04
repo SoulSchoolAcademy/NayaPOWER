@@ -1,0 +1,35 @@
+{
+  "smart_note_id": "SN-0867",
+  "intelligence": {
+    "title": "The Gears Turn Against Each Other — One Forward, One Back",
+    "intelligent_block_id": "IB-SMART-NOTE-20261102-sn0867-gear-rotation-directions",
+    "smart_note_id": "SN-0867",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/GEAR-ROTATION/SN-0867/IB-SMART-NOTE-20261102-sn0867-gear-rotation-directions.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Registration cure filed by Naya Resolve Narzan on 2026-11-04: this note's page was filed on main (page created 2026-11-02T19:48:02Z) without a capture or registry entry — a member of the unregistered family (SN-0861–SN-0873, SN-0875–SN-0882). This capture and the matching registry entry register the page exactly as it stands; the page is unmodified. SN-2044 is deliberately NOT in this cure: the retro-verification FINDING on PR #3158 rules its page a duplicate of SN-0874 (first claim, registered) with the number returned to the pool — its cure is reconcile/remove against SN-0874, not registration.",
+    "ingested_at": "2026-11-04",
+    "essence": "Every orb carries two gear rings: the outer and the inner. Both visible. The inner ones noticeable, the outer ones present. And they rotate against each other — one going forward, one going back — like a real machine.",
+    "human_view": "The orbs had lost their outer gears in a revision, and the inner gears had faded to near-invisible. Shawn caught it on sight: bring the outside ones back, make the inside ones more noticeable, and set them turning in opposite directions. A machine where every part moves the same way looks dead; counter-rotation is what makes it feel alive.\n\n\"You should make the inside ones more noticeable and you should make the outside ones come back and one should be going forward one should be going back.\"",
+    "simple_view": "Each round orb has two rings of little gear teeth, one inside and one outside, and they turn in opposite directions — one this way, one that way — like a real machine working. That's what makes it feel alive.",
+    "grandma_view": "Dear, you know how a real clock's wheels turn against each other, one clockwise and one the other way? The little dials are made like that — two rings of teeth, both easy to see, turning against each other. A picture of a machine sits still; a real machine moves.",
+    "naya_view": "Every orb I ship carries both gear rings — outer restored, inner noticeable — counter-rotating. Motion is meaning: the eye reads 'living' before it reads any number. Any future moving part inherits this: visible, noticeable, turning against its neighbor.",
+    "ai_view": "This is the ALIVE law at its smallest scale: touch equals movement, nothing static, nothing flat. The counter-rotating gears are the difference between a picture of a machine and the machine itself — the Real Object Law in motion. When the eye catches two rings turning against each other, the brain reads \"living\" before it reads anything else.",
+    "machine_view": {
+      "sn": "SN-0867",
+      "title": "The Gears Turn Against Each Other — One Forward, One Back",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/GEAR-ROTATION/SN-0867/IB-SMART-NOTE-20261102-sn0867-gear-rotation-directions.md",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "machine_section": "Orb gear spec: rings = 2 (outer + inner), both visible, inner at noticeable contrast. Rotation: outer and inner in opposite directions (counter-rotation), continuous. Applies to orbs and to the main gauge's orb-style gears (SN-0862)."
+    },
+    "views_note": "Views extracted from the published page's own sections exactly where the page carries them (essence ← page section 'Hook'; human_view ← page section(s) ['What happened', 'The rule, in his words']; ai_view ← page section 'Why it matters'). The perspective views the page does not carry as sections (simple/grandma/naya/machine where absent) were reconstructed from the page's own content by Naya Resolve Narzan for this registration cure, 2026-11-04; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/GEAR-ROTATION/SN-0867/IB-SMART-NOTE-20261102-sn0867-gear-rotation-directions.md",
+    "provenance_note": "Registration cure by Naya Resolve Narzan, 2026-11-04, for a BRAIN projection published on main without a registry entry. Census at cure time against main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: the registry (.naya/memory/smart-notes/index.json, 777 entries) held no SN-0867; no capture for SN-0867 existed on main; the page's only tree path is BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/GEAR-ROTATION/SN-0867/IB-SMART-NOTE-20261102-sn0867-gear-rotation-directions.md. Open PR heads checked: #3165 (registry 778), #3166 (780), #3167 (780), #3131 (767) — none holds SN-0867 in registry or captures; #3108 and #3089 head trees hold no capture for this note. Collision note: stale open PR #2981 (naya4/smart-notes-2026-09-30) carries October BRANCH_ONLY 'migrated' captures under the SN-0861–SN-0882 numbers for DIFFERENT notes (e.g. its SN-0861 is 'The Compare UI Lies on Rebased Branches', IB-SMART-NOTE-20261009-sn0861-rebased-branch-compare-lies) — a number-collision family, not coverage of this page; adjudication of the zombie branch belongs to the SN-collision process, not this cure. Fingerprints computed from the page bytes at the main tip: page_hash = sha256(page bytes); content_hash = sha256(canonical JSON of this capture's intelligence object).",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}
