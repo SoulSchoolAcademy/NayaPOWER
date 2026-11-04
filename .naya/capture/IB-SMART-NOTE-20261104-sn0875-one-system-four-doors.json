@@ -1,0 +1,35 @@
+{
+  "smart_note_id": "SN-0875",
+  "intelligence": {
+    "title": "One System, Four Doors — Everything Lives Inside",
+    "intelligent_block_id": "IB-SMART-NOTE-20261104-sn0875-one-system-four-doors",
+    "smart_note_id": "SN-0875",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM-ARCHITECTURE/ONE-SYSTEM/SN-0875/IB-SMART-NOTE-20261104-sn0875-one-system-four-doors.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Registration cure filed by Naya Resolve Narzan on 2026-11-04: this note's page was filed on main (page created 2026-11-04T01:12:00Z) without a capture or registry entry — a member of the unregistered family (SN-0861–SN-0873, SN-0875–SN-0882). This capture and the matching registry entry register the page exactly as it stands; the page is unmodified. SN-2044 is deliberately NOT in this cure: the retro-verification FINDING on PR #3158 rules its page a duplicate of SN-0874 (first claim, registered) with the number returned to the pool — its cure is reconcile/remove against SN-0874, not registration.",
+    "ingested_at": "2026-11-04",
+    "essence": "We're not building dozens of apps. We're building four pages — and every feature lives inside them.",
+    "human_view": "**Four doors (the pages):**\n- Dashboard — the stats for them all (personal cockpit, the numbers)\n- Personal — the personal world\n- Business — the business world\n- Space — the community world\n- Membership — the fifth (stats-driven, like the others)\n\nFour of them are similar to each other (Personal, Business, Space, Membership). The Dashboard is the stats layer for all.\n\n**Everything else is a FEATURE, not a separate app:**\n- Smart Mail — works throughout\n- Smart Lists — contacts, notes, naya notes organized into lists; connected to mail, messaging, projects\n- Smart Meet — video/audio calls, hooked up inside the apps\n- Booking — calendar/journal forward and backwards, appointments, week review (MISSING — needs building)\n- Memberships — add-on to any page, private communities, can charge for access\n- Smart Notes + Naya Notes — the main content, inputted in feeds, shared as understandable intelligence\n- Ask Naya — ask about the system, learn how it works\n- Reports — daily/weekly/monthly personal written reports\n- Smart Ledger — aligned with Dashboard + Smart Stats, all one system\n- Smart Factory — stores all parts\n- Smart Growth — grows through the email system\n- Affiliate system — integrated everywhere; anyone building pages gets an army of affiliates\n\n**The Hub** is the central intelligence system that brings it all together — where you access everything.\n\n**Smart bars** are the navigation — the convenience layer.",
+    "simple_view": "Instead of dozens of separate apps to learn, there are just four doors — Dashboard, Personal, Business, and Space — and everything you need lives inside them, like rooms in one house. Mail, lists, notes, calls: all inside, all connected.",
+    "grandma_view": "Dear, it's one good house with four doors instead of a street of little shops you must visit one by one. Your letters, your address book, your diary, your gatherings — all under one roof, each room opening into the next. You learn the house once, and everything is where you left it.",
+    "naya_view": "I build features, not apps: four doors carry everything, and a feature lights up inside every door at once. When I add Smart Lists or Booking, I add it to the one system — same identity, same bars, same intelligence — never as a new standalone surface a citizen must discover and learn.",
+    "ai_view": "Building 4-5 pages is efficient. They're similar, so the best elements transfer. The features light up inside them. One interconnected system, not a pile of separate apps.\n\nFront end = humans' personal worlds. Back end = systems world dashboard. One system, fully functioning, all features accessible in Personal, Business, Space, and Membership.",
+    "machine_view": {
+      "sn": "SN-0875",
+      "title": "One System, Four Doors — Everything Lives Inside",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM-ARCHITECTURE/ONE-SYSTEM/SN-0875/IB-SMART-NOTE-20261104-sn0875-one-system-four-doors.md",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "machine_section": "Architecture: doors = {Dashboard (stats layer for all), Personal, Business, Space, Membership (fifth, stats-driven)}. Features (never separate apps): Smart Mail, Smart Lists, Smart Meet, Booking (MISSING — needs building), Memberships (page add-on), Smart Notes/Naya Notes, Ask Naya, Reports, Smart Ledger (= Dashboard + Smart Stats), Smart Factory (parts store), Smart Growth, Affiliate system. Hub = central access/intelligence; Smart Bars = navigation layer. Build order: doors to 10/10 → features inside → intelligence flows → growth systems connect."
+    },
+    "views_note": "Views extracted from the published page's own sections exactly where the page carries them (essence ← page section 'The Hook'; human_view ← page section(s) ['The Architecture']; ai_view ← page section 'Why This Matters'). The perspective views the page does not carry as sections (simple/grandma/naya/machine where absent) were reconstructed from the page's own content by Naya Resolve Narzan for this registration cure, 2026-11-04; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM-ARCHITECTURE/ONE-SYSTEM/SN-0875/IB-SMART-NOTE-20261104-sn0875-one-system-four-doors.md",
+    "provenance_note": "Registration cure by Naya Resolve Narzan, 2026-11-04, for a BRAIN projection published on main without a registry entry. Census at cure time against main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: the registry (.naya/memory/smart-notes/index.json, 777 entries) held no SN-0875; no capture for SN-0875 existed on main; the page's only tree path is BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM-ARCHITECTURE/ONE-SYSTEM/SN-0875/IB-SMART-NOTE-20261104-sn0875-one-system-four-doors.md. Open PR heads checked: #3165 (registry 778), #3166 (780), #3167 (780), #3131 (767) — none holds SN-0875 in registry or captures; #3108 and #3089 head trees hold no capture for this note. Collision note: stale open PR #2981 (naya4/smart-notes-2026-09-30) carries October BRANCH_ONLY 'migrated' captures under the SN-0861–SN-0882 numbers for DIFFERENT notes (e.g. its SN-0861 is 'The Compare UI Lies on Rebased Branches', IB-SMART-NOTE-20261009-sn0861-rebased-branch-compare-lies) — a number-collision family, not coverage of this page; adjudication of the zombie branch belongs to the SN-collision process, not this cure. Fingerprints computed from the page bytes at the main tip: page_hash = sha256(page bytes); content_hash = sha256(canonical JSON of this capture's intelligence object).",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+  "smart_note_id": "SN-0882",
+  "intelligence": {
+    "title": "The Internet Needs to Be Reformatted — Auto-Filled Pages",
+    "intelligent_block_id": "IB-SMART-NOTE-20261104-sn0882-internet-needs-to-be-reformatted",
+    "smart_note_id": "SN-0882",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM-ARCHITECTURE/PAGE-CREATION/SN-0882/IB-SMART-NOTE-20261104-sn0882-internet-needs-to-be-reformatted.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Registration cure filed by Naya Resolve Narzan on 2026-11-04: this note's page was filed on main (page created 2026-11-04T03:11:00Z) without a capture or registry entry — a member of the unregistered family (SN-0861–SN-0873, SN-0875–SN-0882). This capture and the matching registry entry register the page exactly as it stands; the page is unmodified. SN-2044 is deliberately NOT in this cure: the retro-verification FINDING on PR #3158 rules its page a duplicate of SN-0874 (first claim, registered) with the number returned to the pool — its cure is reconcile/remove against SN-0874, not registration.",
+    "ingested_at": "2026-11-04",
+    "essence": "Shawn's words from years ago: \"The internet needs to be reformatted, it's a mess.\" The reformat: pages that build and fill themselves.",
+    "human_view": "- **The mess:** tools that don't interconnect — Facebook (no scheduling, no auto-match, one feed), Google (just websites), no great site/app builder, plus autoresponder, membership software, content tools — all separate, all manual.\n- **Plug-and-play:** the citizen connects their existing website or social sites and everything is set up for them.\n- **Unlimited pages for Pro/Max:** onboarding creates 4 pages (Dashboard, Personal, Business, Space); Pro/Max citizens create unlimited business, personal, space, and membership pages.\n- **Smart Factory mirrors the walkthrough:** anyone goes through the page-creation process inside Smart Factory to create any page.\n- **Auto-fill — never empty pages:** the citizen states the page's mission, goal, and vision → the system fills the page with content. Relevant smart notes already in the system auto-sync to the new page by default. A setting turns auto-fill off; unwanted content can be deleted.\n- **Easy money:** affiliate systems built in — market and sell products/memberships in 1-2-3 simple steps.",
+    "simple_view": "Old internet pages start empty, and empty pages make people quit. Here, you say what your page is for — its mission and dream — and the system fills it up for you, even bringing in helpful notes automatically. Your page is alive from the first minute.",
+    "grandma_view": "Dear, it's like moving into a house that's already furnished. You tell the helpers what the house is for, and they fill the rooms with the right things — even bringing over your favorite books from the library — before you arrive. No bare walls, no sitting on the floor wondering where to start.",
+    "naya_view": "I never hand a citizen an empty page. From their mission, goal, and vision I fill the page; relevant Smart Notes auto-sync in by default (deletable, with an off setting, because the citizen is boss). The Smart Factory mirrors the Welcome walkthrough, so page creation is the same kind act everywhere it happens.",
+    "ai_view": "Empty pages are where citizens quit. Auto-fill removes the blank-page problem the way done-for-you removes the assembly problem: the page arrives alive, relevant, and connected. Combined with auto-categorization and Smart Match, every new page starts intelligent.",
+    "machine_view": {
+      "sn": "SN-0882",
+      "title": "The Internet Needs to Be Reformatted — Auto-Filled Pages",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM-ARCHITECTURE/PAGE-CREATION/SN-0882/IB-SMART-NOTE-20261104-sn0882-internet-needs-to-be-reformatted.md",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "machine_section": "Page creation: onboarding yields 4 pages (Dashboard/Personal/Business/Space); Pro/Max = unlimited pages (business/personal/space/membership). Plug-and-play: citizen connects existing website/socials → setup done for them. Smart Factory mirrors the walkthrough for in-Factory page creation. Auto-fill: inputs = page mission/goal/vision → generated content; Smart Notes auto-sync relevant notes by default; controls: auto-fill off setting + per-item delete. Monetization built in: affiliate system, 1-2-3 market/sell steps."
+    },
+    "views_note": "Views extracted from the published page's own sections exactly where the page carries them (essence ← page section 'The Hook'; human_view ← page section(s) ['What Shawn Directed (2026-11-04 02:58Z)']; ai_view ← page section 'Why It Matters'). The perspective views the page does not carry as sections (simple/grandma/naya/machine where absent) were reconstructed from the page's own content by Naya Resolve Narzan for this registration cure, 2026-11-04; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM-ARCHITECTURE/PAGE-CREATION/SN-0882/IB-SMART-NOTE-20261104-sn0882-internet-needs-to-be-reformatted.md",
+    "provenance_note": "Registration cure by Naya Resolve Narzan, 2026-11-04, for a BRAIN projection published on main without a registry entry. Census at cure time against main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: the registry (.naya/memory/smart-notes/index.json, 777 entries) held no SN-0882; no capture for SN-0882 existed on main; the page's only tree path is BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM-ARCHITECTURE/PAGE-CREATION/SN-0882/IB-SMART-NOTE-20261104-sn0882-internet-needs-to-be-reformatted.md. Open PR heads checked: #3165 (registry 778), #3166 (780), #3167 (780), #3131 (767) — none holds SN-0882 in registry or captures; #3108 and #3089 head trees hold no capture for this note. Collision note: stale open PR #2981 (naya4/smart-notes-2026-09-30) carries October BRANCH_ONLY 'migrated' captures under the SN-0861–SN-0882 numbers for DIFFERENT notes (e.g. its SN-0861 is 'The Compare UI Lies on Rebased Branches', IB-SMART-NOTE-20261009-sn0861-rebased-branch-compare-lies) — a number-collision family, not coverage of this page; adjudication of the zombie branch belongs to the SN-collision process, not this cure. Fingerprints computed from the page bytes at the main tip: page_hash = sha256(page bytes); content_hash = sha256(canonical JSON of this capture's intelligence object).",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}
