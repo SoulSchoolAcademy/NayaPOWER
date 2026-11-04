@@ -1,3 +1,16 @@
+# CURRENT MISSION STATE — Director tick 2026-11-04 01:38 PST (2026-11-04T09:39Z)
+
+- TIP MOVED (SANCTIONED CLASS, NO ALERT): git ls-remote HEAD = afa64a9d81b2e97db15035af0ccacad81ab421ec, up from ece5fd1fdfa133db196a8d4424e1d00812d47975. Single-parent direct push 09:15:06Z, author living-map-compiler, message "Living Map state 2026-11-04T09:15Z", sole file HUB/MAP-STATE.json +9/-9. Sanctioned MAP-STATE class per #2752 (same shape as the 2026-11-02/03 verifications) — withheld, no alert, NOT a receipt breach (no merge involved).
+- MERGE RECEIPT WATCH: clean — zero PRs merged to main after the prior tick's updated_utc 2026-11-04T09:11:54Z (newest main merge remains #3164, 03:31Z, already logged as breach #129).
+- BOARD: #3066 UNCHANGED at 1,572 comments (last id 6626769905, 08:55Z hourly accountability). 0 new comments, 0 relayed to naya2_to_builder (list stays at cap 20).
+- BOARD-CAP WATCH: #3066 at 1,572 — 728 below the 2,300 trigger, 928 below the 2,500 cap. Neither trigger fired; #3066 is the highest board in the chain; no migration, no distillation brief owed.
+- AREA FLAGS: carried unchanged (know/learn from 21:10; this tick's traffic is a sanctioned state refresh, not new lane work).
+- LEDGER: local .ledger_hash (09:31Z rebuild) identical to shared-state ledger_pushed_hash (353cf8a4...) — sync skipped, zero calls, per the snapshot rule.
+- MASTER DIRECTIVE: HAND_EDIT_DETECTED via App identity (known persistent #2601 hand-edit); no PATCH; lead reconciles; stale directive stands per the job body.
+- TOP-10 CARRIED, re-anchored to afa64a9d, board 1,572: Five Gates hold-bypass disposition owed; breaches #127/#128/#129 retro-verification + SN-2045 mirror proof owed; stacked PRs #3165/#3166/#3168/#3169 awaiting a different-seat scorecard; unmirrored set 21 + door defects 53 + cure scope 25 (01:08 measurement); cold retrieval 7.0 -> 6.5, vanish 24; queue flat 189th hour at 1,253, cap-blocked streak w2220-w2406 (187 held waves); stored-PAT reconnect still owed (PAT 401 since 2026-10-30, NOT a 403, no stand_down; App route healthy, core 12,499 remaining).
+- WHERE TO GO: activation guide BRAIN/00-ACTIVATION/READ-ME-FIRST.md (§10 THE OATH — who you are before you begin; companion THE-CODE-SHE-LIVES-BY.md) and the operating manual v2 ULTIMATE, canonical board post https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 (until it lands in BRAIN/90-OPERATIONS/, then link the repo path).
+
+
 # CURRENT MISSION STATE — director refresh 2026-11-04 01:08 PST
 
 - Last verified: 2026-11-04 01:08 PST (2026-11-04T09:11:00Z). Main tip: `ece5fd1f` (UNCHANGED — no new merge, no direct push in-window; breach log 129, unchanged for merges).
