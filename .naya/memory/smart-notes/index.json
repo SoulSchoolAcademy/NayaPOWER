@@ -16915,6 +16915,26 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T03:11:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0882; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "3541c7c58fc793f4bcf3d740a95bf055d50b5ccceed35cf6cc7a0a25581cfa0d"
+  },
+  {
+   "smart_note_id": "SN-1906",
+   "intelligent_block_id": "IB-SMART-NOTE-20261030-sn1906-the-related-bar-law",
+   "title": "THE RELATED BAR LAW \u2014 the bar knows where you'd go next (Shawn + Power, 2026-10-30)",
+   "content_hash": "940cbc800702b7d8471fd750b887b03b2087d9f223934f3571c3c98da9abb390",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1906/IB-SMART-NOTE-20261030-sn1906-the-related-bar-law.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "SMART_NOTES",
+   "captured_at": "2026-10-30",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit fba34a004f331073f04a242ef8449d2c55152aad ('docs(notes): SN-1906 the related bar law \u2014 canon smart note (Shawn 2026-10-30)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-30 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "ddfdbba01d90a1fce591151435395c04528673cdbc438f9ff26c6328bf5dc550"
   }
  ],
  "sequence_policy": {
