@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-04T03:49:28Z",
-  "tip": "d5ebbeaceb74bcc664183b0e0fa473d7c20f1ccd",
+  "generated_at": "2026-11-04T09:54:00Z",
+  "tip": "afa64a9d81b2e97db15035af0ccacad81ab421ec",
   "prs": [
     {
       "number": 2981,
@@ -28,7 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "6777fe8e26fbb0712ecdecc3b69c2c378e1b2996"
+      "head": "387d7ea1f92f7d2c76b79f7730a5fdaf46eb7061"
     },
     {
       "number": 3131,
@@ -55,7 +55,25 @@
       "action": "CURE",
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness, completeness, door-obligation; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "85d12a6f387cb99cbea2ae7772f012c1f96834d2"
+      "head": "2ed84e2bd466156eecf714cd96416c03e1bb56c5"
+    },
+    {
+      "number": 3168,
+      "title": "docs(brain): learning event 2026-11-03",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "309e7724ec091e69af74a7587207eb72845c413c"
+    },
+    {
+      "number": 3169,
+      "title": "Daily Intelligence Report 2026-11-03 \u2014 filed edition (V2 skeleton)",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "739006fdac49a3ea9558256243bc28b7b3efba18"
     }
   ]
 }
