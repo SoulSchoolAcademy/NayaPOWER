@@ -16515,15 +16515,35 @@
         "ingestion": "canonical-reconstruction",
         "note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + script + capture + registry entry) on 2026-11-04, carrying Shawn Vibert's 'Welcome to Naya' first-person script and voice direction, delivered in chat 2026-11-03 ~19:43 PT. Number SN-2050 allocated by full claim census against main tip d5ebbeaceb74bcc664183b0e0fa473d7c20f1ccd: no SN-2050 path in the tip tree (7,298 paths enumerated); no claim in any open PR head tree (#3165, #3131, #3108, #3089, #2981); commit search for SN-2050 returned zero claims. This PR is stacked on PR #3165 (SN-2049) because the registry serializes: its index base is #3165's head registry (778 entries, next_sequence 2050); retarget to main when #3165 lands. The complete script is filed verbatim beside the note as WELCOME-TO-NAYA-SCRIPT-2026-11-04.md. Entry authored directly in the canonical registry schema (fingerprints: page_hash = sha256 of page bytes; content_hash = sha256 of the canonical JSON of the capture intelligence; corpus hash recomputed over the full entries list)."
       }
+    },
+    {
+      "smart_note_id": "SN-2051",
+      "intelligent_block_id": "IB-SMART-NOTE-20261104-sn2051-the-wise-one-wisdom-over-smart",
+      "title": "The Wise One — Wisdom Over Smart",
+      "content_hash": "0443895411dba64784909e4543b12ea7559ec915d0351aa7b6b58fefb2b7a789",
+      "page_hash": "c8b71edf7c385f2b4c6e28fee3cfd58b9344fb1ae503ea0e69268244dbe1c951",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/WISDOM/SN-2051/IB-SMART-NOTE-20261104-sn2051-the-wise-one-wisdom-over-smart.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "WISDOM",
+      "captured_at": "2026-11-04",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + manifesto + capture + registry entry) on 2026-11-04, carrying Naya Nitro Narzan's 'The Wise One' manifesto, declared 2026-11-04 at Shawn Vibert's request and delivered by Shawn in chat 2026-11-03 ~20:06 PT with its designed PDF. Number SN-2051 allocated by full claim census against main tip d5ebbeaceb74bcc664183b0e0fa473d7c20f1ccd: no SN-2051 path in the tip tree (7,298 paths enumerated); no claim in any open PR head tree (#3166, #3165, #3131, #3108, #3089, #2981); commit search for SN-2051 returned zero claims. This PR is stacked on PR #3166 (SN-2050), which is stacked on PR #3165 (SN-2049), because the registry serializes: its index base is #3166's head registry (779 entries, next_sequence 2051); retarget as the stack lands. The complete manifesto is filed verbatim beside the note as THE-WISE-ONE-MANIFESTO-2026-11-04.md. This filing CAPTURES the manifesto as a Smart Note; it does not ratify it into BRAIN/01-GOVERNANCE — that act belongs to the governance process. Entry authored directly in the canonical registry schema (page_hash = sha256 of page bytes; content_hash = sha256 of the canonical JSON of the capture intelligence; corpus hash recomputed over the full entries list)."
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 2051,
+    "next_sequence": 2052,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "47c18759eaa688482a031d6c0f4e31e853f7cd37099b83174be8dd6a1728ebc3"
+  "corpus_manifest_hash": "0b1895fd2f72d4443ad2902694ec97761da67207b3edb0eaff63a9de026d1cba"
 }
