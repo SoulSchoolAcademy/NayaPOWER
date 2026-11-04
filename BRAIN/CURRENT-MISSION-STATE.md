@@ -1,10 +1,28 @@
-# CURRENT MISSION STATE — director refresh 2026-11-03 19:12 PST
+# CURRENT MISSION STATE — director refresh 2026-11-03 19:38 PST
 
-- Last verified: 2026-11-03 19:12 PST (2026-11-04T03:12:47Z). Main tip: `973f81a8` (MOVED by 7 direct pushes, NO merges — Smart Notes SN-0876–SN-0882, intelligence-door shape; breach log stays 126).
-- Live board: #3066 at 1,551 comments (new: 6621265508 hourly 02:53Z, queue flat; 749 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12,484 remaining at 03:08Z tick check (/rate_limit, healthy). Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403) — PAT-route failure only; workers keep using the App route until the PAT reconnect lands.
-- Branches (refs/heads via git ls-remote): 1,005. Open PR count: not fetched this tick (no extra call for this line).
-- Ledger sync: ACTIVITY-LEDGER.md blob fa156bbf VERIFIED; activity-ledger.jsonl blob 0fbbde9d VERIFIED; STATS.md blob b04e8172 VERIFIED (03:01 PST rebuild, 7,404 entries); protocol/nodes/NC-001 identical-skipped. Race: local ledger rebuilt again 03:11Z during this tick — re-push deferred to next tick per precedent; pushed_hash NOT advanced past the verified push.
+- Last verified: 2026-11-03 19:38 PST (2026-11-04T03:40:41Z). Main tip: `d5ebbeac` (MOVED by 3 merges — PRs #3162/#3163/#3164, ALL WITHOUT a 3-pass receipt; receipt-breach alert, see below).
+- Live board: #3066 at 1,558 comments (7 new since 6621265508; 742 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12,491 remaining at 03:38Z tick check (/rate_limit, healthy). Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403) — PAT-route failure only; workers keep using the App route until the PAT reconnect lands.
+- Branches (refs/heads via git ls-remote): not re-counted this tick (no extra call for this line). Open PR count: not fetched this tick (no extra call for this line).
+- Ledger sync: DEFERRED — local ledger rebuilt 03:31Z during this tick at 7,404 entries, the same count as the prior verified push, so no substantive re-push; pushed_hash NOT advanced past the verified push (85691f5b).
+## ALERT — MERGE-RECEIPT BREACHES #3162 + #3163 + #3164 (surfaced 19:38 PST tick, adjudication owed)
+
+- Tip 973f81a8 -> d5ebbeac via 3 merges: #3162 (SN-2045 Essence) merged
+  03:15:21Z as d280613c; #3163 (SN-2046/2047/2048) merged 03:31:04Z;
+  #3164 (Daily Reports backfill) merged 03:31:20Z as d5ebbeac (tip).
+- ALL THREE PR bodies carry ZERO 3-pass receipt markers (pass 1/2/3 = 0,
+  holes = 0, repairs = 0). #3162 is already board-logged as breach #127
+  (Naya 5, 73s open-to-merge, 0 reviews, CI 12/7/1 incl. receipt + team-review
+  gates red). #3163/#3164 are additional receipt breaches, unnumbered on
+  the board at tick time; #3164 also 0 formal reviews + red post-merge checks.
+- FILED != PUBLISHED: #3164's 10 Daily Report sources (Oct 24-Nov 2) are on
+  main, but hub_daily_intelligence_reports still shows 27 cards, max
+  2026-10-23; Nov 3 daily source still owed. SN-2048's privacy claims are
+  design rulings on main, NOT live proof — P0 private-communication
+  authorization incident (via #2823 channel) still blocks that claim.
+- Remedy owed: retro-verification of all three merged trees + SN-2045
+  hub-mirror proof + reports sync/publish proof by the existing owners.
+
 ## ALERT — TIP MOVED BY 7 INTELLIGENCE-DOOR DIRECT PUSHES (this tick, surfaced)
 
 - Tip 7aa0cf97 -> 973f81a8, compare ahead 7 / behind 0, all single-parent,
@@ -217,19 +235,20 @@
 - No merged PR in-window (newest merged #3155 at 2026-11-02T18:34:12Z predates the window);
   breach log stays 121.
 
-## TOP-10 (re-anchored to 973f81a8, board 1551)
-1. NIAS v5 deletion attribution dispute — confirmation or restoration owed, NOT adjudicated by director (6619690125 vs 6619960062); SN-0875 hub-mirror gap owed
-2. Breaches #122–#126 adjudication + retro-verification of #44–#126 trees owed (no new merges this tick; breach log stays 126)
-3. SN-0876–SN-0882 direct-write attribution — commit text claims Shawn's 2026-11-04 order; verification owed (door shape, not a breach)
-4. Queue flat / dispatch blocked — 31 gap briefs unclaimable by the Clarity seat (29x parent-authorship, 2x barred); drains only via a non-Clarity seat or a dispatcher-stamped CLAIMABILITY GATE
-5. Stored-PAT reconnect owed (401 since 2026-10-30) — App route healthy, workers use it until the PAT lands
-6. Direct-push disposition questions carried (Smart Box + Naya World welcome, NIAS v5, showcase, deploy-pipe)
-7. Unmirrored set twelve notes plus SN-0875 (per hourly record)
-8. Ledger-sync race (local rebuild during director tick) — re-push owed next tick, not a data loss
-9. Board-cap runway: #3066 at 1,551, 749 below the 2,300 migration trigger
-10. Queue flat 183rd straight hour (02:53Z hourly) — but lanes re-measuring on their own: retrieval score lowered (more notes unreachable), learning defect count widened at the same tip
+## TOP-10 (re-anchored to d5ebbeac, board 1558)
+1. Receipt breaches #3162/#3163/#3164 + retro-verification of merged trees owed (adjudication: VERIFY/Verity)
+2. Reports source-filed vs room-published gap + Nov 3 daily source owed (owner: existing Reports/sync owner)
+3. P0 private-communication authorization incident blocking SN-2048 privacy claims (owner: Security & Flow, via #2823 channel)
+4. Unregistered family now 22 notes (SN-0861-0873 + SN-2044 + SN-0875-0882) — registration cures owed (owner: door lane)
+5. SN-2045 hub-mirror proof owed; breach #127 remedy owed
+6. NIAS v5 deletion attribution dispute — confirmation or restoration owed, NOT adjudicated by director
+7. Queue flat / dispatch blocked — carried from prior ticks; drains only via a non-Clarity seat or dispatcher-stamped gate
+8. Stored-PAT reconnect owed (401 since 2026-10-30) — App route healthy, workers use it until the PAT lands
+9. Board-cap runway: #3066 at 1,558, 742 below the 2,300 migration trigger
+10. Direct-push disposition questions carried (Smart Box + Naya World welcome, NIAS v5, showcase, deploy-pipe)
 
 ## DONE WITH PROOF
+- This tick: board +7 (1,551 -> 1,558; ids 6621546645-6621875006). Tip 973f81a8 -> d5ebbeac via MERGES #3162 (03:15Z) + #3163 (03:31Z) + #3164 (03:31Z) — ALL THREE are RECEIPT BREACHES (0 pass markers in any PR body); #3162 already board-logged as breach #127. Verified landings: SN-2045 (#3162), SN-2046/2047/2048 (#3163), 10 Daily Report sources Oct 24-Nov 2 + 10/25 learning event + 3 Weekly + 1 Monthly (#3164). Filed != published: hub report cards still 27 / max 2026-10-23; Nov 3 source owed. 2 relayed to naya2_to_builder (list kept at cap 20, oldest 2 archived). Ledger sync deferred (03:31Z rebuild, 7,404 entries, same count as verified push). Master directive: see tick notes.
 - This tick: board UNCHANGED at 1,550 (0 new comments, 0 relayed; naya2_to_builder stays at cap 20). Tip STEADY at 7aa0cf97: no merge, no direct push in-window (tip unchanged, merge watch skipped); breach log stays 126. Ledger sync PUSHED 3 files (18:30 rebuild, blobs verified). Master directive: HAND_EDIT_DETECTED again this tick — no PATCH; lead reconciles; stale directive stands.
 - This tick: board +1 (1,534 -> 1,535; id 6615533135, hourly accountability 20:53Z: 0 dispatched/finished, queue 1,253 flat 177th hour, SN-0873 mirror correction — already mirrored 19:37Z). Tip f9d21cab -> 23fd5aab via MERGES #3156 (21:23Z) + #3157 (21:24Z, merge commit = tip) — NO direct push. Both merges are RECEIPT BREACHES #122/#123 (no 3-pass receipt in body; each body carried its own scorecard hold; PR comments only coderabbit skip). Ledger sync PUSHED 3 files (1 new scorer entry). 0 relayed to naya2_to_builder (hourly accountability, no builder-addressed ask; list stays at cap 20). Master directive: HAND_EDIT_DETECTED again this tick — no PATCH; lead reconciles; stale directive stands.
 - This tick: board UNCHANGED at 1,534 (0 new comments, 0 relayed; naya2_to_builder stays at cap 20). Tip 81d6db48 -> f9d21cab via 12 direct pushes (compare-verified ahead_by 12, behind_by 0, all single-parent, all nayapower-lane-agent[bot], 20:41–21:00Z): 4 pipetest churn + 8 showcase commits incl. generator-code change (NIAS/generate-page.py, universal-template.html +584) + 4 showcase pages + redeploy trigger — DIRECT PUSH ALERT, disposition owed (wider than test-page churn: code changed on main). No merged PR in-window (newest merged #3155 predates the window); breach log stays 121. Ledger sync skipped with byte proof (7,398 jsonl lines stripped-identical; md/stats re-stamp only). Master directive: HAND_EDIT_DETECTED again this tick — no PATCH; lead reconciles; stale directive stands.
@@ -262,6 +281,10 @@
   HAND_EDIT_DETECTED again this tick (exit 3, via --gh-api App client; default PAT 401s) — no PATCH; lead reconciles; stale directive stands.
 
 ## BLOCKED WITH OWNER
+- Receipt breaches #3162/#3163/#3164 retro-verification + SN-2045 hub-mirror proof: VERIFY/Verity owner; #3163/#3164 unnumbered on board at tick time.
+- Reports publish gap: hub_daily_intelligence_reports 27 cards / max 2026-10-23 after #3164 filed Oct 24-Nov 2 sources; Nov 3 source owed. Owner: existing Reports/sync owner.
+- P0 private-communication authorization incident blocks SN-2048 'private by default' claims. Owner: Security & Flow via #2823 channel (no public specifics).
+- Unregistered family at 22 notes (SN-0861-0873 + SN-2044 + SN-0875-0882). Owner: door lane registration cures.
 - Protocol-watchdog failure (6590041195): workflow .github/workflows/protocol-watchdog.yml has no checkout step; scripts target archived #1354 and token lacks Issues: write. Owner: CI/operations (#1868); VERIFY (#1872) inspects exact-head logs and confirms both jobs succeed + receipt at lawful live destination before PASS. Director took no repair action (read-only except snapshot).
 - Breach #121 adjudication + retro-verification at ec6d0636: VERIFY/Verity owner.
 - Factory registry drift (personal.html vs templates-registry.json): Resolve/#3155 owner + Smart Factory owner; byte-review before any digest reconciliation; registry-freshness regression test owed.
@@ -286,12 +309,12 @@
 | KNOW | SN-0861 (VISION/MOTHER-NET) landed on main via intelligence-door direct write 6d06caa4 (+51, additive-only) | SN-0875 door filing at 3e4bc52b; hub-mirror gap owed (01:53Z hourly) | - |
 | PROVE | - | - | - |
 | CONNECT | Domain move #3155 merged (103 files, 874 occurrences .live -> .app); identity-transfer design verified (6587300858); .app mirror verified for listed routes (6587982909) | Newest-build Hub source nayanet-app/index.html added at 7823dcb2 (direct push, disposition owed); served Hub still old build until Shawn-hand deploy; .app remaining seams (/about redirect, /joinus target, /pi 503 rows leg); identity-transfer decision (Shawn's hand, §5 7 items) then implementation (Nitro, different-seat verify); workflow health-target fix; subdomain DNS; Factory registry drift | .app remaining-seam evidence (/about, /joinus, /pi) |
-| VERIFY | Breach #121 board-numbered with exact-head evidence; auditor regression recorded | Adjudication of #3155 at merged head; registry-drift disposition; NIAS v5 deletion attribution dispute (6619690125 vs 6619960062) — confirmation owed | Classify failed checks against baseline; bounded repair routing |
-| LEARN | - | - | - |
+| VERIFY | Breach #127 board-numbered (#3162); receipt breaches #3163/#3164 surfaced by director this tick | Adjudication + retro-verification of #3162/#3163/#3164 trees; NIAS v5 deletion attribution dispute — confirmation owed | Classify failed checks against baseline; bounded repair routing |
+| LEARN | SN-2045 + SN-2046/2047/2048 filed on main via #3162/#3163 (receipt breaches, not receipted) | SN-2045 hub-mirror proof owed | - |
 | EVOLVE | - | - | - |
 
 ## WHERE TO GO
 - Activation guide: `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (section 10 THE OATH — who you are before you begin; companion `THE-CODE-SHE-LIVES-BY.md`, the dos and don'ts).
 - Operating manual v2 ULTIMATE: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 (until it lands in `BRAIN/90-OPERATIONS/`, then link the repo path).
-- Live board: #3066 still at 1,550 comments (0 new since the 01:53Z hourly 6620420290; 750 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- Live board: #3066 at 1,558 comments (742 below the 2,300 migration trigger; no migration, no successor-board traffic).
 - Master directive: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2601
