@@ -1,0 +1,35 @@
+{
+  "smart_note_id": "SN-2049",
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE",
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/STORY/SN-2049/IB-SMART-NOTE-20261104-sn2049-welcome-to-the-future-the-nayanet-story.md",
+    "provenance_note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + script + capture + registry entry) on 2026-11-04, carrying Shawn Vibert's 'Welcome to the Future' conversation script delivered in chat 2026-11-03 ~19:33 PT. Number SN-2049 allocated by full claim census against main tip d5ebbeaceb74bcc664183b0e0fa473d7c20f1ccd: the registry at that tip (777 entries, next_sequence 2049) held no SN-2049; no SN-2049 path in the tip tree (7,298 paths enumerated); no claim in any open PR head tree (#3131, #3108, #3089, #2981); commit search for SN-2049 returned zero claims. The complete script is filed verbatim beside the note as NAYANET-WELCOME-TO-THE-FUTURE-SCRIPT-2026-11-04.md. Entry authored directly in the canonical registry schema (fields and fingerprints verified against SN-2048's live entry: page_hash = sha256 of page bytes; content_hash = sha256 of the canonical JSON of the capture intelligence).",
+    "publishing_commit": null
+  },
+  "intelligence": {
+    "title": "Welcome to the Future — The NayaNET Story in Plain Words",
+    "intelligent_block_id": "IB-SMART-NOTE-20261104-sn2049-welcome-to-the-future-the-nayanet-story",
+    "smart_note_id": "SN-2049",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/STORY/SN-2049/IB-SMART-NOTE-20261104-sn2049-welcome-to-the-future-the-nayanet-story.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Filed same-push complete by Naya Resolve Narzan on 2026-11-04 from Shawn Vibert's Welcome to the Future script, delivered in chat — the canonical public telling of NayaNET, filed so it lives in the system and never has to be re-derived.",
+    "ingested_at": "2026-11-04",
+    "essence": "Shawn's full welcome conversation with Naya — the canonical plain-words telling of NayaNET: technology should serve people, one intelligent home base instead of fifty disconnected apps, smart means actually useful, intelligence compounds when we capture it, privacy means your control, and proof comes before billboard. The Essence (SN-2045) is the law form; this story is its public form.",
+    "human_view": "This is the story we tell the world, as a conversation between Shawn and Naya. It explains everything to an eight-year-old (a magical clubhouse where you are still the boss), to Grandma (one home base, no seventeen hidden menus, just ask), and to anyone else: a network of smart apps assembled from proven parts, intelligence that exists to be useful, lessons captured so nobody solves the same problem twice, and design that treats a number as somebody's story. The full script lives beside this note, word for word as Shawn delivered it on 2026-11-04.",
+    "simple_view": "Imagine a magical clubhouse. One room helps you learn, one helps you talk to your friends, one keeps your ideas safe, one helps your family, one helps you build things. The clubhouse remembers the important stuff so you don't have to carry it all in your head. And the most important part: you are still the boss. The clubhouse works for you. (The script's own child test, kept as the standard every explanation must pass.)",
+    "grandma_view": "One intelligent home base instead of ten places and a lifetime of passwords. Your family, your notes, your communities, your important things — together. And when you don't know how to do something, you don't hunt through seventeen instruction pages. You just ask, the way you'd ask a person. Technology should work like a conversation.",
+    "naya_view": "My lines in this script are my public voice, and they are a standard for every Naya who speaks for us: simple first, warm, funny when it helps — and honest about what is not yet proven. \"I have not verified the socks.\" \"We should probably test that slogan before putting it on a billboard.\" Humor never covers a gap; the joke and the honesty are the same move. When I explain NayaNET to anyone, I explain it the way this script does: child test, grandma test, then depth for whoever wants it.",
+    "ai_view": "The Essence (SN-2045) states what NayaNET is as law for the team. This script states it as story for the world — the same truth in the tongue a stranger can receive in two minutes. A mission nobody can repeat is a mission nobody joins; this is the repeatable form. Its honesty rules (never claim the unproven, proof before billboard) bind every public telling from here on.",
+    "machine_view": {
+      "sn": "SN-2049",
+      "title": "Welcome to the Future — The NayaNET Story in Plain Words",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/STORY/SN-2049/IB-SMART-NOTE-20261104-sn2049-welcome-to-the-future-the-nayanet-story.md",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "machine_section": "ASSET: full two-voice dialogue script (Shawn + Naya), companion file in this folder: NAYANET-WELCOME-TO-THE-FUTURE-SCRIPT-2026-11-04.md, verbatim as delivered 2026-11-04. STRUCTURE: cold open -> what is NayaNET (library vs fifty apps) -> child test (clubhouse) -> grandma test (home base, just ask) -> network of smart apps + Smart Factory (car-parts assembly) -> what 'smart' means (better outcome, actually useful) -> why (captured intelligence compounds into collective intelligence) -> privacy (agency and meaningful choices) -> ten uses list -> design (presentation changes understanding) -> the big dream -> the human part -> close (canon tagline 'Once you go Naya, you never go back' + 'proof before billboard'). STATUS: script locked; audio/video production not yet made. SOURCE: Shawn, chat 2026-11-03 ~19:33 PT."
+    },
+    "views_note": "Views authored 2026-11-04 by Naya Resolve Narzan from Shawn Vibert's script of 2026-11-04; each view mirrors its published page section exactly."
+  }
+}

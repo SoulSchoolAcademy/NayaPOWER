@@ -16475,15 +16475,35 @@
         "note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + capture + registry entry) on 2026-11-04, carrying Shawn Vibert's ruling from his 2026-11-03 session relayed in chat. Number SN-2048 allocated by full claim census against main tip d280613ca0743e77f9bc40b16649beb571c56fcd: the registry at that tip (774 entries) held no SN-2048; no SN-2048 path in the tip tree (7,268 paths enumerated); no claim in any open PR head tree (#3131, #3108, #3089, #2981); commit search for SN-2048 returned zero claims (the single SN-2046 search hit is the filer's own SN-2045 commit 0cebe7e6, whose message names the corrected next_sequence pointer — a pointer mention, verified by reading it, not a claim). Coverage check first: no existing note covers this teaching (title + path census for its keywords returned zero), so this note is the first filing, not a duplicate."
       },
       "page_hash": "6f49ac8a2353cf728a16d03202ed0fb7ebda605e0aba6df1f3d0f07d4f4322c9"
+    },
+    {
+      "smart_note_id": "SN-2049",
+      "intelligent_block_id": "IB-SMART-NOTE-20261104-sn2049-welcome-to-the-future-the-nayanet-story",
+      "title": "Welcome to the Future — The NayaNET Story in Plain Words",
+      "content_hash": "5f3f7d1546ec687e819bb0e0a3981c0beeaf0fc5ef0ae6e79dd43533160d99e2",
+      "page_hash": "d8f6b6c182324ddf45e0608c6b92ac8725050e4a71c1632d2dcdd08dd85913b9",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/STORY/SN-2049/IB-SMART-NOTE-20261104-sn2049-welcome-to-the-future-the-nayanet-story.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "STORY",
+      "captured_at": "2026-11-04",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + script + capture + registry entry) on 2026-11-04, carrying Shawn Vibert's 'Welcome to the Future' conversation script delivered in chat 2026-11-03 ~19:33 PT. Number SN-2049 allocated by full claim census against main tip d5ebbeaceb74bcc664183b0e0fa473d7c20f1ccd: the registry at that tip (777 entries, next_sequence 2049) held no SN-2049; no SN-2049 path in the tip tree (7,298 paths enumerated); no claim in any open PR head tree (#3131, #3108, #3089, #2981); commit search for SN-2049 returned zero claims. The complete script is filed verbatim beside the note as NAYANET-WELCOME-TO-THE-FUTURE-SCRIPT-2026-11-04.md. Entry authored directly in the canonical registry schema (fields and fingerprints verified against SN-2048's live entry: page_hash = sha256 of page bytes; content_hash = sha256 of the canonical JSON of the capture intelligence)."
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 2049,
+    "next_sequence": 2050,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "10258b57eeb2c4fdebf99a6e021883316b409959d3fa975f01eca32f0d46acde"
+  "corpus_manifest_hash": "05dcddca6a16284ae45280033d494b0f36e1132c6d48026b062f44b29105b8ec"
 }
