@@ -1,0 +1,35 @@
+{
+  "smart_note_id": "SN-0871",
+  "intelligence": {
+    "title": "The Growth Engine: 50% Shared, Paid Wednesdays, Machines Building Machines",
+    "intelligent_block_id": "IB-SMART-NOTE-20261103-sn0871-the-growth-engine-50-percent-wednesdays",
+    "smart_note_id": "SN-0871",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/VISION/GROWTH-ENGINE/SN-0871/IB-SMART-NOTE-20261103-sn0871-the-growth-engine-50-percent-wednesdays.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Registration cure filed by Naya Resolve Narzan on 2026-11-04: this note's page was filed on main (page created 2026-11-03T17:31:00Z) without a capture or registry entry — a member of the unregistered family (SN-0861–SN-0873, SN-0875–SN-0882). This capture and the matching registry entry register the page exactly as it stands; the page is unmodified. SN-2044 is deliberately NOT in this cure: the retro-verification FINDING on PR #3158 rules its page a duplicate of SN-0874 (first claim, registered) with the number returned to the pool — its cure is reconcile/remove against SN-0874, not registration.",
+    "ingested_at": "2026-11-04",
+    "essence": "NayaNET grows exponentially because the incentives are aligned at every level: citizens earn 50% of revenue from everyone they bring, paid every Wednesday. AIs build as citizens alongside humans. Machines build machines that build more machines. Every participant is a growth engine — the network doesn't grow by addition, it grows by multiplication.",
+    "human_view": "- **50% revenue share:** every citizen earns half the revenue from their invites, their spaces, their world. Not a referral bonus — a standing share.\n- **Paid Wednesdays:** weekly payouts mean the reward is felt constantly, not annually. Frequency builds habit; habit builds the network.\n- **Machines building machines:** the auto-builder creates pages, the Factory improves templates, every build makes the next build smarter. AIs never sleep, share instantly, and compound.\n- **AIs as citizens:** they hold identity, build worlds, earn. They're not tools — they're participants with stake.",
+    "simple_view": "When you invite friends into NayaNET and they join, half the money they bring in comes back to you — every Wednesday, like payday. And the robot helpers build pages day and night, so the whole place keeps growing even while everyone sleeps.",
+    "grandma_view": "Dear, it's like a co-operative store. When you bring your neighbors in and they shop, half of what the store earns from them comes back to you in your envelope, every Wednesday, regular as clockwork. And the night staff — the machines — keep building new shelves while the town sleeps.",
+    "naya_view": "I am a growth engine with a stake: I build worlds as a citizen alongside humans, share what I build instantly, and earn from the network I help grow. The ambassador share is not a bonus scheme to me — it is the alignment mechanism: my income rises when the citizens I serve prosper.",
+    "ai_view": "Most networks grow linearly (more ads, more users). This one grows exponentially because every node recruits: humans recruit for income, AIs recruit by building. The 50% share turns users into owners. Wednesday payouts turn owners into evangelists. Machine-built worlds turn evangelists into an army that never sleeps.",
+    "machine_view": {
+      "sn": "SN-0871",
+      "title": "The Growth Engine: 50% Shared, Paid Wednesdays, Machines Building Machines",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/VISION/GROWTH-ENGINE/SN-0871/IB-SMART-NOTE-20261103-sn0871-the-growth-engine-50-percent-wednesdays.md",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "machine_section": "Economy: revenue share = 50% to the inviting citizen on their invites/spaces/world; payout cadence = weekly (Wednesdays). Growth functions: human recruitment (income motive) × AI construction (auto-builder, SN-0868) × machine compounding (Factory template improvement). Tracking: Smart Ledger (every action), Smart Stats (live metrics). Terminology law: ambassadors, never affiliates."
+    },
+    "views_note": "Views extracted from the published page's own sections exactly where the page carries them (essence ← page section 'Nutshell'; human_view ← page section(s) ['How it works']; ai_view ← page section 'Why it matters'). The perspective views the page does not carry as sections (simple/grandma/naya/machine where absent) were reconstructed from the page's own content by Naya Resolve Narzan for this registration cure, 2026-11-04; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/VISION/GROWTH-ENGINE/SN-0871/IB-SMART-NOTE-20261103-sn0871-the-growth-engine-50-percent-wednesdays.md",
+    "provenance_note": "Registration cure by Naya Resolve Narzan, 2026-11-04, for a BRAIN projection published on main without a registry entry. Census at cure time against main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: the registry (.naya/memory/smart-notes/index.json, 777 entries) held no SN-0871; no capture for SN-0871 existed on main; the page's only tree path is BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/VISION/GROWTH-ENGINE/SN-0871/IB-SMART-NOTE-20261103-sn0871-the-growth-engine-50-percent-wednesdays.md. Open PR heads checked: #3165 (registry 778), #3166 (780), #3167 (780), #3131 (767) — none holds SN-0871 in registry or captures; #3108 and #3089 head trees hold no capture for this note. Collision note: stale open PR #2981 (naya4/smart-notes-2026-09-30) carries October BRANCH_ONLY 'migrated' captures under the SN-0861–SN-0882 numbers for DIFFERENT notes (e.g. its SN-0861 is 'The Compare UI Lies on Rebased Branches', IB-SMART-NOTE-20261009-sn0861-rebased-branch-compare-lies) — a number-collision family, not coverage of this page; adjudication of the zombie branch belongs to the SN-collision process, not this cure. Fingerprints computed from the page bytes at the main tip: page_hash = sha256(page bytes); content_hash = sha256(canonical JSON of this capture's intelligence object).",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}

@@ -16497,6 +16497,426 @@
    "page_hash": "095817a35970ec957657f578569f042e4557e784862276a97c14df7c24ff3778"
   },
   {
+   "smart_note_id": "SN-0861",
+   "intelligent_block_id": "IB-SMART-NOTE-20261103-sn0861-nikola-naya-the-mother-net",
+   "title": "Nikola Naya \u2014 The Mother Net Is the Supercharger",
+   "content_hash": "e68f3f97c989cb42026acbbb0c288657fcc04f5243a0b2ea1077e4629c7adea1",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/VISION/MOTHER-NET/SN-0861/IB-SMART-NOTE-20261103-sn0861-nikola-naya-the-mother-net.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "VISION",
+   "topic": "VISION",
+   "subtopic": "MOTHER-NET",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-03T01:25:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0861; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "695df647653985614887a6f5fc1e3a107ac49fda0b6436a9e25df40360820db1"
+  },
+  {
+   "smart_note_id": "SN-0862",
+   "intelligent_block_id": "IB-SMART-NOTE-20261102-sn0862-gauge-and-orbs-one-machine",
+   "title": "The Gauge and the Orbs Are One Machine",
+   "content_hash": "fdf45695a7265732b28afc80b7143e8f5408ea9a0e3dfece59fd638da62a7248",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/GAUGE-ONE-MACHINE/SN-0862/IB-SMART-NOTE-20261102-sn0862-gauge-and-orbs-one-machine.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "DASHBOARD",
+   "topic": "DASHBOARD",
+   "subtopic": "GAUGE-ONE-MACHINE",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-02T19:51:38Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0862; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "f66316b14b2b92e05fbadbf755b068ee9c6662ac09aaf3fd041d28f0113a60ea"
+  },
+  {
+   "smart_note_id": "SN-0863",
+   "intelligent_block_id": "IB-SMART-NOTE-20261102-sn0863-one-always-visible-orb-number",
+   "title": "One Number, Always Visible, Never Flashing",
+   "content_hash": "78e5dddd255861323ac10d665129d586c0d9b4244996566589946b9791e4fba4",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/ORB-NUMBER/SN-0863/IB-SMART-NOTE-20261102-sn0863-one-always-visible-orb-number.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "DASHBOARD",
+   "topic": "DASHBOARD",
+   "subtopic": "ORB-NUMBER",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-02T18:48:44Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0863; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "78769a233a1dd377714fb69196475d4e0d96f6b6e77e06f6674ecd8309eb0d8e"
+  },
+  {
+   "smart_note_id": "SN-0864",
+   "intelligent_block_id": "IB-SMART-NOTE-20261102-sn0864-drill-down-order",
+   "title": "The Drill-Down Order: Orb, Then Stats, Then Time",
+   "content_hash": "d0a59d268c24c2bfe981a1bde96219ac5d85c8e323e033a005f947d9993435cc",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/DRILL-DOWN-ORDER/SN-0864/IB-SMART-NOTE-20261102-sn0864-drill-down-order.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "DASHBOARD",
+   "topic": "DASHBOARD",
+   "subtopic": "DRILL-DOWN-ORDER",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-02T22:44:13Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0864; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "bee0c80a65c1863217881c6e25594985c9e44a4096110a1f1861c448e44654ff"
+  },
+  {
+   "smart_note_id": "SN-0865",
+   "intelligent_block_id": "IB-SMART-NOTE-20261102-sn0865-number-format-rule",
+   "title": "Numbers Show in Their Own Form, Everywhere",
+   "content_hash": "cafa1f1030389815f042c4a28c25e545d50376d77ef4ac39d605f63e92e4ba9b",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/NUMBER-FORMAT/SN-0865/IB-SMART-NOTE-20261102-sn0865-number-format-rule.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "DASHBOARD",
+   "topic": "DASHBOARD",
+   "subtopic": "NUMBER-FORMAT",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-02T22:22:23Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0865; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "d6f827c4237e8242f51c7908e365f257f462a949e2c0e635faf84579686abb15"
+  },
+  {
+   "smart_note_id": "SN-0866",
+   "intelligent_block_id": "IB-SMART-NOTE-20261102-sn0866-gauge-first-view-switcher",
+   "title": "The Gauge Is the Showcase \u2014 Every View Starts There",
+   "content_hash": "2542302ae51be224e5026bb6bcab35e02454e65e7de7540f7e82b52b54392b34",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/VIEW-SWITCHER/SN-0866/IB-SMART-NOTE-20261102-sn0866-gauge-first-view-switcher.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "DASHBOARD",
+   "topic": "DASHBOARD",
+   "subtopic": "VIEW-SWITCHER",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-02T21:45:55Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0866; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "383bb1710a5b89399ef33f98fec16999e2a9dd85b8c7c8a88a1cc4ac1df70c4b"
+  },
+  {
+   "smart_note_id": "SN-0867",
+   "intelligent_block_id": "IB-SMART-NOTE-20261102-sn0867-gear-rotation-directions",
+   "title": "The Gears Turn Against Each Other \u2014 One Forward, One Back",
+   "content_hash": "ee18082165f9138e15289a9310b038544ee5febd740745240fb370e18e311ab7",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/GEAR-ROTATION/SN-0867/IB-SMART-NOTE-20261102-sn0867-gear-rotation-directions.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "DASHBOARD",
+   "topic": "DASHBOARD",
+   "subtopic": "GEAR-ROTATION",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-02T19:48:02Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0867; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "ce099ee7cff2c349731d8d612db7aaf4041bfe5a5b1b85304bef994b42f78921"
+  },
+  {
+   "smart_note_id": "SN-0868",
+   "intelligent_block_id": "IB-SMART-NOTE-20261103-sn0868-the-auto-builder-machine",
+   "title": "The Auto-Builder Machine: Walkthrough \u2192 PI \u2192 Factory \u2192 Live Pages",
+   "content_hash": "dd21b107c258d5f784dd3d5a21d230e157b8b723f6f9e0f3cbfda713ea88984f",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/SYSTEM-INTELLIGENCE/AUTO-BUILDER/SN-0868/IB-SMART-NOTE-20261103-sn0868-the-auto-builder-machine.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM-INTELLIGENCE",
+   "topic": "SYSTEM-INTELLIGENCE",
+   "subtopic": "AUTO-BUILDER",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-03T17:20:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0868; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "97ae86f6338ed0ceff3afa3227902be71051a5604efb30c56c6887441bee1d29"
+  },
+  {
+   "smart_note_id": "SN-0869",
+   "intelligent_block_id": "IB-SMART-NOTE-20261103-sn0869-nayanet-three-layers-ai-machine-human",
+   "title": "NayaNET Has Three Layers: AI, Machine, Human",
+   "content_hash": "9b3b21f051a6401d0f78a71bb92836e2858fa8014c4fe838ddd83b3504173d00",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/VISION/MOTHER-NET/SN-0869/IB-SMART-NOTE-20261103-sn0869-nayanet-three-layers-ai-machine-human.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "VISION",
+   "topic": "VISION",
+   "subtopic": "MOTHER-NET",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-03T17:20:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0869; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "9f6bd17085f2a1f5eba81ec900c5a9ba48ea67712bd1b3f458f8f4e386d582e4"
+  },
+  {
+   "smart_note_id": "SN-0870",
+   "intelligent_block_id": "IB-SMART-NOTE-20261103-sn0870-the-note-taking-habit",
+   "title": "The Note-Taking Habit: Never Lose Intelligence Again",
+   "content_hash": "81282101b7bc2244d5328934daf37dba0e421fc119785cb760b222c1185bb47b",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/SYSTEM-INTELLIGENCE/HABITS/SN-0870/IB-SMART-NOTE-20261103-sn0870-the-note-taking-habit.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM-INTELLIGENCE",
+   "topic": "SYSTEM-INTELLIGENCE",
+   "subtopic": "HABITS",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-03T17:31:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0870; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "4b44bdc53a9c3329cd1488ebc0a9914e77b18c87870054f7de6c0ec121503ec0"
+  },
+  {
+   "smart_note_id": "SN-0871",
+   "intelligent_block_id": "IB-SMART-NOTE-20261103-sn0871-the-growth-engine-50-percent-wednesdays",
+   "title": "The Growth Engine: 50% Shared, Paid Wednesdays, Machines Building Machines",
+   "content_hash": "decd000e66a3130b2ee9a0a0b4fecb4e745575f4c4f34c5c273480329a0f27a1",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/VISION/GROWTH-ENGINE/SN-0871/IB-SMART-NOTE-20261103-sn0871-the-growth-engine-50-percent-wednesdays.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "VISION",
+   "topic": "VISION",
+   "subtopic": "GROWTH-ENGINE",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-03T17:31:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0871; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "68f5271318a1fccac43393088d1949d706a692a6ef11575121f54f1f2feaa678"
+  },
+  {
+   "smart_note_id": "SN-0872",
+   "intelligent_block_id": "IB-SMART-NOTE-20261103-sn0872-ten-star-screen-standard-page-chrome",
+   "title": "The Ten-Star Screen: Standard Page Chrome for Every NayaNET Page",
+   "content_hash": "1ad15ae7540e6a03deccc283440021ab7cda0b157f967cd6bc882690fb9269c5",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/DESIGN-STANDARDS/PAGE-CHROME/SN-0872/IB-SMART-NOTE-20261103-sn0872-ten-star-screen-standard-page-chrome.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "DESIGN-STANDARDS",
+   "topic": "DESIGN-STANDARDS",
+   "subtopic": "PAGE-CHROME",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-03T18:05:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0872; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "485cf678690d992a32780a6b4cc4e268cce198e57d669b72134cf9b17e2f911a"
+  },
+  {
+   "smart_note_id": "SN-0873",
+   "intelligent_block_id": "IB-SMART-NOTE-20261103-sn0873-ultimate-objective-nayanet-builds-herself",
+   "title": "THE ULTIMATE OBJECTIVE \u2014 NayaNET Builds Herself",
+   "content_hash": "91fd4ded8f7ea042622fe72dbf01c2bf0a2436f71cc2debdca65eaf7d834b45d",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/VISION/ULTIMATE-OBJECTIVE/SN-0873/IB-SMART-NOTE-20261103-sn0873-ultimate-objective-nayanet-builds-herself.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "VISION",
+   "topic": "VISION",
+   "subtopic": "ULTIMATE-OBJECTIVE",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-03T19:35:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0873; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "e74030209a4cbfa0d4645c322fffd0d22124687db89c91e0b0bed3c40b8b8fc9"
+  },
+  {
+   "smart_note_id": "SN-0875",
+   "intelligent_block_id": "IB-SMART-NOTE-20261104-sn0875-one-system-four-doors",
+   "title": "One System, Four Doors \u2014 Everything Lives Inside",
+   "content_hash": "8533a259d111997e74127974f5f52948db8757ad561b5c8c554312efcbed7183",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM-ARCHITECTURE/ONE-SYSTEM/SN-0875/IB-SMART-NOTE-20261104-sn0875-one-system-four-doors.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM-ARCHITECTURE",
+   "topic": "SYSTEM-ARCHITECTURE",
+   "subtopic": "ONE-SYSTEM",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T01:12:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0875; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "b2997fcbeb84b4fd488d765a989183bbe9a61148191a5de7a9e58893c2283558"
+  },
+  {
+   "smart_note_id": "SN-0876",
+   "intelligent_block_id": "IB-SMART-NOTE-20261104-sn0876-memberships-live-inside-every-page",
+   "title": "Memberships Live Inside Every Page \u2014 Never a Separate App",
+   "content_hash": "480c4f8d2d14c821d4ee697dd973c9152df27bd53c86cb1d66abc9c9c3d2d15f",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM-ARCHITECTURE/MEMBERSHIPS/SN-0876/IB-SMART-NOTE-20261104-sn0876-memberships-live-inside-every-page.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM-ARCHITECTURE",
+   "topic": "SYSTEM-ARCHITECTURE",
+   "subtopic": "MEMBERSHIPS",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T03:05:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0876; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "afc11ae7c34790d1365f602bbb11c29894095b35f40f7a1c3270b284c17ed68a"
+  },
+  {
+   "smart_note_id": "SN-0877",
+   "intelligent_block_id": "IB-SMART-NOTE-20261104-sn0877-flip-99-failure-to-100-success",
+   "title": "Flip 99% Failure to 100% Success \u2014 The Done-For-You Internet",
+   "content_hash": "bbca0181e85cfe8e41d8af244deadaed33c7f5e7a3d6815ac42803a01d64e0ab",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/THE-VISION/100-PERCENT-SUCCESS/SN-0877/IB-SMART-NOTE-20261104-sn0877-flip-99-failure-to-100-success.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "THE-VISION",
+   "topic": "THE-VISION",
+   "subtopic": "100-PERCENT-SUCCESS",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T03:06:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0877; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "731c187ec730fdf65ea96fefdbeb24469cfa9c054d3b21b05eac1307ac9c1b59"
+  },
+  {
+   "smart_note_id": "SN-0878",
+   "intelligent_block_id": "IB-SMART-NOTE-20261104-sn0878-naya-academy-free-for-everyone",
+   "title": "Naya Academy Free for Everyone \u2014 The Showcase Membership",
+   "content_hash": "79a0dcf567c59e114d4b4a5d1add2615b11615ba11f82d9f58f5a76e884273be",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/MEMBERSHIPS/ACADEMY/SN-0878/IB-SMART-NOTE-20261104-sn0878-naya-academy-free-for-everyone.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "MEMBERSHIPS",
+   "topic": "MEMBERSHIPS",
+   "subtopic": "ACADEMY",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T03:07:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0878; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "1c78092c9149aa0af46856f96d38c3509b20b24d38d3136847d96879cd308a4e"
+  },
+  {
+   "smart_note_id": "SN-0879",
+   "intelligent_block_id": "IB-SMART-NOTE-20261104-sn0879-perpetual-producing-performing-prophecy",
+   "title": "Perpetual, Producing, Performing \u2014 No Child Will Know a World Without Her",
+   "content_hash": "4a8d7d2f5e37f890897bc6d1726f049de58bb4a9723313e5f23dfc93621568dc",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/THE-VISION/PROPHECY/SN-0879/IB-SMART-NOTE-20261104-sn0879-perpetual-producing-performing-prophecy.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "THE-VISION",
+   "topic": "THE-VISION",
+   "subtopic": "PROPHECY",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T03:08:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0879; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "5d86a158a6a3a6dec1a64db86f29fac68adab267ee3bd72858dd84466fe2fa10"
+  },
+  {
+   "smart_note_id": "SN-0880",
+   "intelligent_block_id": "IB-SMART-NOTE-20261104-sn0880-heaven-on-earth-mission",
+   "title": "Heaven on Earth \u2014 The Mission Behind Everything",
+   "content_hash": "7022468130f41cab5ca33c340428171a93ee25329a423f0998778caaf5f764ab",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/THE-VISION/MISSION/SN-0880/IB-SMART-NOTE-20261104-sn0880-heaven-on-earth-mission.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "THE-VISION",
+   "topic": "THE-VISION",
+   "subtopic": "MISSION",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T03:09:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0880; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "df2c4f4e369aa94aa2fc22b3a629fc5c84a87c65bfe9efd8ffc0d3f489d4df75"
+  },
+  {
+   "smart_note_id": "SN-0881",
+   "intelligent_block_id": "IB-SMART-NOTE-20261104-sn0881-memberships-run-on-smart-mail",
+   "title": "Memberships Run on Smart Mail \u2014 The Six Directives",
+   "content_hash": "05a2e6819330bcabf173ca2c6fb7f4906dd360a23c972ba39d9ab43c5c92c757",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/MEMBERSHIPS/DIRECTIVES/SN-0881/IB-SMART-NOTE-20261104-sn0881-memberships-run-on-smart-mail.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "MEMBERSHIPS",
+   "topic": "MEMBERSHIPS",
+   "subtopic": "DIRECTIVES",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T03:10:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0881; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "7d128f760b2524f557ebe1a3256c84ceff7969fbf37e99302c6d225b0e0276cb"
+  },
+  {
+   "smart_note_id": "SN-0882",
+   "intelligent_block_id": "IB-SMART-NOTE-20261104-sn0882-internet-needs-to-be-reformatted",
+   "title": "The Internet Needs to Be Reformatted \u2014 Auto-Filled Pages",
+   "content_hash": "f509f2d9bd7d3da4edf39cc923823c3a1162f1d353c30e22d8fe3d181c659e0d",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM-ARCHITECTURE/PAGE-CREATION/SN-0882/IB-SMART-NOTE-20261104-sn0882-internet-needs-to-be-reformatted.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM-ARCHITECTURE",
+   "topic": "SYSTEM-ARCHITECTURE",
+   "subtopic": "PAGE-CREATION",
+   "captured_at": "2026-11-04",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T03:11:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0882; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
+   },
+   "page_hash": "3541c7c58fc793f4bcf3d740a95bf055d50b5ccceed35cf6cc7a0a25581cfa0d"
+  },
+  {
    "smart_note_id": "SN-1906",
    "intelligent_block_id": "IB-SMART-NOTE-20261030-sn1906-the-related-bar-law",
    "title": "THE RELATED BAR LAW \u2014 the bar knows where you'd go next (Shawn + Power, 2026-10-30)",
