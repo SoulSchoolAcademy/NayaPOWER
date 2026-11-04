@@ -16415,15 +16415,75 @@
         "note": "published directly as a BRAIN projection by Naya Resolve Narzan carrying Shawn Vibert's distillation and Master Directive of 2026-11-04, filed same-push complete (page + capture + registry entry). Number SN-2045 allocated by full claim census on 2026-11-04 against main tip 973f81a8a69d783c8af61b171b91496c0d6f62d8: the registry at that tip (.naya/memory/smart-notes/index.json, 773 entries, max SN-2043) held no SN-2045, and its advisory next_sequence read 2044 — STALE, and passed over on the live scan: SN-2044 stands on main UNREGISTERED, filed by Naya Power Narzan via PR #3158 (commit ae3cb8f5), so 2044 is occupied on the tree though absent from the registry (the registry-lag defect, fifteenth member of the unregistered family). For SN-2045: no path in the tip tree (7,263 paths enumerated, all date partitions, padded and unpadded forms); no claim in any open PR head tree (#3131, #3108, #3089, #2981 — four heads enumerated in full); repo commit search for SN-2045 returned zero. SN-2045 was the first number free on all four surfaces (registry, tip tree, PR head trees, commit graph). Note: the sn-claims branch the registry policy describes does not currently exist (ref 404), so the claim stands on this census, recorded here."
       },
       "page_hash": "5c7292967396f88a171c22abdb93d1f3faf09e49f5de0abd6d71643b0f20ef2a"
+    },
+    {
+      "smart_note_id": "SN-2046",
+      "intelligent_block_id": "IB-SMART-NOTE-20261104-sn2046-leaderboards-friendly-competition-you-choose",
+      "title": "Leaderboards — Friendly Competition You Choose",
+      "content_hash": "aa1478cb85fc0eaddc4f2c060b14014cb8ba6deebb3c4dafd55f2009a2eee14d",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM/LEADERBOARDS/SN-2046/IB-SMART-NOTE-20261104-sn2046-leaderboards-friendly-competition-you-choose.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "LEADERBOARDS",
+      "captured_at": "2026-11-04",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + capture + registry entry) on 2026-11-04, carrying Shawn Vibert's ruling from his 2026-11-03 session relayed in chat. Number SN-2046 allocated by full claim census against main tip d280613ca0743e77f9bc40b16649beb571c56fcd: the registry at that tip (774 entries) held no SN-2046; no SN-2046 path in the tip tree (7,268 paths enumerated); no claim in any open PR head tree (#3131, #3108, #3089, #2981); commit search for SN-2046 returned zero claims (the single SN-2046 search hit is the filer's own SN-2045 commit 0cebe7e6, whose message names the corrected next_sequence pointer — a pointer mention, verified by reading it, not a claim). Coverage check first: no existing note covers this teaching (title + path census for its keywords returned zero), so this note is the first filing, not a duplicate."
+      },
+      "page_hash": "7de249a9d6a51bb57c1fe1db1437952b917887fb053dd71f2ad5093f071f5e26"
+    },
+    {
+      "smart_note_id": "SN-2047",
+      "intelligent_block_id": "IB-SMART-NOTE-20261104-sn2047-payments-the-simple-way-paste-a-link",
+      "title": "Payments the Simple Way — Paste a Link, We Track the Rest",
+      "content_hash": "a233c5de73e57e5c4b9d3362887bd083c6cb21ecfe14a4af312bc5fc8717bbef",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM/PAYMENTS/SN-2047/IB-SMART-NOTE-20261104-sn2047-payments-the-simple-way-paste-a-link.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "PAYMENTS",
+      "captured_at": "2026-11-04",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + capture + registry entry) on 2026-11-04, carrying Shawn Vibert's ruling from his 2026-11-03 session relayed in chat. Number SN-2047 allocated by full claim census against main tip d280613ca0743e77f9bc40b16649beb571c56fcd: the registry at that tip (774 entries) held no SN-2047; no SN-2047 path in the tip tree (7,268 paths enumerated); no claim in any open PR head tree (#3131, #3108, #3089, #2981); commit search for SN-2047 returned zero claims (the single SN-2046 search hit is the filer's own SN-2045 commit 0cebe7e6, whose message names the corrected next_sequence pointer — a pointer mention, verified by reading it, not a claim). Coverage check first: no existing note covers this teaching (title + path census for its keywords returned zero), so this note is the first filing, not a duplicate."
+      },
+      "page_hash": "855f76d4a6bff7cc40b5288a79cfedc580dd8a377bf31467213356e87315198c"
+    },
+    {
+      "smart_note_id": "SN-2048",
+      "intelligent_block_id": "IB-SMART-NOTE-20261104-sn2048-private-by-design-aliases-no-spying",
+      "title": "Private by Design — Aliases, No Spying, Everyone Learning",
+      "content_hash": "f84bec598a605f85e715b1625990e7401f7cfa0455b7504dfa152bbd6e6805a5",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/PRIVACY/SN-2048/IB-SMART-NOTE-20261104-sn2048-private-by-design-aliases-no-spying.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "PRIVACY",
+      "captured_at": "2026-11-04",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + capture + registry entry) on 2026-11-04, carrying Shawn Vibert's ruling from his 2026-11-03 session relayed in chat. Number SN-2048 allocated by full claim census against main tip d280613ca0743e77f9bc40b16649beb571c56fcd: the registry at that tip (774 entries) held no SN-2048; no SN-2048 path in the tip tree (7,268 paths enumerated); no claim in any open PR head tree (#3131, #3108, #3089, #2981); commit search for SN-2048 returned zero claims (the single SN-2046 search hit is the filer's own SN-2045 commit 0cebe7e6, whose message names the corrected next_sequence pointer — a pointer mention, verified by reading it, not a claim). Coverage check first: no existing note covers this teaching (title + path census for its keywords returned zero), so this note is the first filing, not a duplicate."
+      },
+      "page_hash": "6f49ac8a2353cf728a16d03202ed0fb7ebda605e0aba6df1f3d0f07d4f4322c9"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 2046,
+    "next_sequence": 2049,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "48777fe5b36b3c550cfa8cab417c97e93bd313768798828d93cac3c2d23131b6"
+  "corpus_manifest_hash": "10258b57eeb2c4fdebf99a6e021883316b409959d3fa975f01eca32f0d46acde"
 }
