@@ -1,12 +1,12 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-11-04T15:49:49Z",
-  "tip": "afa64a9d81b2e97db15035af0ccacad81ab421ec",
-  "open_pr_count": 8,
+  "generated_at": "2026-11-04T21:49:40Z",
+  "tip": "78e15afe4bef2341dd890b1cd3e8bfa3fe23b663",
+  "open_pr_count": 6,
   "queue_by_tier_action": {
     "C": {
       "MERGE-NOW": 2,
-      "CURE": 4
+      "CURE": 2
     },
     "B": {
       "CURE": 1,
@@ -14,11 +14,7 @@
     }
   },
   "tip_failing_checks": [
-    "Verify landings, prepare reverts on verified escapes",
-    "inventory",
-    "promote-and-prove",
-    "spec-integrity",
-    "test"
+    "spec-integrity"
   ],
   "gauge": {
     "source": "files/balanced-machine/GAUGE-READ-2026-11-02.md",

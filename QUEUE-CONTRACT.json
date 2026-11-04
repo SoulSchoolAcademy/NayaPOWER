@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-04T15:49:49Z",
-  "tip": "afa64a9d81b2e97db15035af0ccacad81ab421ec",
+  "generated_at": "2026-11-04T21:49:40Z",
+  "tip": "78e15afe4bef2341dd890b1cd3e8bfa3fe23b663",
   "prs": [
     {
       "number": 2981,
@@ -28,7 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "9e2633866f9a8e8a96fa3427a9b93aa2f55077b3"
+      "head": "aae7f4ae64ba09c0b37f0c64d0f10cd332e98f62"
     },
     {
       "number": 3131,
@@ -44,36 +44,18 @@
       "title": "Smart Note SN-2049: Welcome to the Future \u2014 the NayaNET story (script filed verbatim)",
       "tier": "C",
       "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, claim-evidence-gate, completeness, door-obligation; then re-derive at the new head.",
+      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "90bf886b1fcd4e1beb2eacaf80315c72fbc60cae"
+      "head": "0b5299af4a87f5601989cc5145661f7c12d1539c"
     },
     {
-      "number": 3166,
-      "title": "Smart Note SN-2050: Welcome to Naya \u2014 her voice, in first person (script filed verbatim)",
+      "number": 3172,
+      "title": "Registration cure: 21 unregistered Smart Notes (SN-0861\u20130873, SN-0875\u20130882)",
       "tier": "C",
       "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, completeness, door-obligation; then re-derive at the new head.",
+      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate, completeness; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "2ed84e2bd466156eecf714cd96416c03e1bb56c5"
-    },
-    {
-      "number": 3168,
-      "title": "docs(brain): learning event 2026-11-03",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "309e7724ec091e69af74a7587207eb72845c413c"
-    },
-    {
-      "number": 3169,
-      "title": "Daily Intelligence Report 2026-11-03 \u2014 filed edition (V2 skeleton)",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "739006fdac49a3ea9558256243bc28b7b3efba18"
+      "head": "0ce9e4be0d42d999dc836a9d233a530bcf4fa09b"
     }
   ]
 }
