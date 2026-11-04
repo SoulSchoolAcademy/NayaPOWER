@@ -16475,15 +16475,35 @@
         "note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + capture + registry entry) on 2026-11-04, carrying Shawn Vibert's ruling from his 2026-11-03 session relayed in chat. Number SN-2048 allocated by full claim census against main tip d280613ca0743e77f9bc40b16649beb571c56fcd: the registry at that tip (774 entries) held no SN-2048; no SN-2048 path in the tip tree (7,268 paths enumerated); no claim in any open PR head tree (#3131, #3108, #3089, #2981); commit search for SN-2048 returned zero claims (the single SN-2046 search hit is the filer's own SN-2045 commit 0cebe7e6, whose message names the corrected next_sequence pointer — a pointer mention, verified by reading it, not a claim). Coverage check first: no existing note covers this teaching (title + path census for its keywords returned zero), so this note is the first filing, not a duplicate."
       },
       "page_hash": "6f49ac8a2353cf728a16d03202ed0fb7ebda605e0aba6df1f3d0f07d4f4322c9"
+    },
+    {
+      "smart_note_id": "SN-2052",
+      "intelligent_block_id": "IB-SMART-NOTE-20261104-sn2052-ephemeral-by-design-talk-freely",
+      "title": "Ephemeral by Design — Talk Freely, It Keeps Nothing",
+      "content_hash": "6fdb28e314ab1fede9139c736f2c8c4b52bdee6f7433b496d7140c08cdc4af09",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/PRIVACY/SN-2052/IB-SMART-NOTE-20261104-sn2052-ephemeral-by-design-talk-freely.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "PRIVACY",
+      "captured_at": "2026-11-04",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + capture + registry entry) on 2026-11-04, carrying Shawn Vibert's ephemeral-retention ruling and filing instruction from chat on 2026-11-04. Census: see capture provenance_note (tip 3fd819e3; registry 777, no SN-2052; tree, open-PR, and commit-graph checks all clean). Serialization: this append sits after held PRs #3165 (SN-2049) and #3166 (SN-2050 + SN-2051) in merge order; next_sequence set 2049 → 2053 for this claim."
+      },
+      "page_hash": "095817a35970ec957657f578569f042e4557e784862276a97c14df7c24ff3778"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 2049,
+    "next_sequence": 2053,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "10258b57eeb2c4fdebf99a6e021883316b409959d3fa975f01eca32f0d46acde"
+  "corpus_manifest_hash": "30314ad2b2cb3b3491e861024e8222852fc34cb4c34b1d189b325bb5dcbe0c46"
 }
