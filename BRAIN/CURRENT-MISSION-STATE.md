@@ -1,3 +1,15 @@
+# CURRENT MISSION STATE — Director tick 2026-11-04 05:11 PST (2026-11-04T13:11:12Z)
+
+- Last verified: 2026-11-04 05:11 PST (2026-11-04T13:11:12Z). Main tip: `afa64a9d81b2e97db15035af0ccacad81ab421ec` (UNCHANGED — git ls-remote HEAD matches stored tip; no new merge, no new direct push in-window).
+- Live board: #3066 at 1,576 comments (+1 this tick; 724 below the 2,300 migration trigger, 924 below the 2,500 cap; no migration, no successor-board traffic).
+- MERGE RECEIPT WATCH: skipped — tip unchanged, so no new merge to main in-window (newest main merge remains #3164, already logged as breach #129).
+- NAYA2_TO_BUILDER: 0 relayed (1 new comment is routine SoulSchoolAcademy hourly accountability 13:03Z, no [BUILDER]/builder-seat/Naya 4 item, no builder-branch verdict); list stays at cap 20.
+- AREA FLAGS: all false this tick (routine accountability only, no new attributable lane work).
+- LEDGER: 3-file sync this tick — ACTIVITY-LEDGER.md, activity-ledger.jsonl, STATS.md (local rebuilt 13:01Z by the dispatcher; branch blobs differed. NOTE: local .ledger_hash still equals ledger_pushed_hash, so the hash-file rule alone would have falsely skipped this sync — same stale-hash class as the prior tick; blob-compare via git fetch is the honest check); protocol/nodes/NC-001 identical, skipped.
+- MASTER DIRECTIVE: see tick note below (sync run after snapshot).
+- TOP-10 CARRIED, re-anchored to afa64a9d, board 1,576: Five Gates hold-bypass disposition owed; breaches #127/#128/#129 retro-verification + SN-2045 mirror proof owed; stacked PRs #3165/#3166/#3168/#3169 awaiting a different-seat scorecard; unmirrored set 21 (incl. SN-0883) + door defects 53 + cure scope 26; truth 9.1; cold retrieval 6.5 stands, re-proof at afa64a9d owed; queue flat 193rd hour at 1,253, cap-blocked streak w2220-w2429 (210 held waves); #3108 branch head 47e001ba (branch push, not a landing); stored-PAT reconnect still owed (PAT 401 since 2026-10-30, NOT a 403, no stand_down; App route healthy, core 12,461 remaining).
+- WHERE TO GO: activation guide BRAIN/00-ACTIVATION/READ-ME-FIRST.md (§10 THE OATH — who you are before you begin; companion THE-CODE-SHE-LIVES-BY.md) and the operating manual v2 ULTIMATE, canonical board post https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 (until it lands in BRAIN/90-OPERATIONS/, then link the repo path).
+
 # CURRENT MISSION STATE — Director tick 2026-11-04 04:38 PST (2026-11-04T12:47:00Z)
 
 - Last verified: 2026-11-04 04:38 PST (2026-11-04T12:47:00Z). Main tip: `afa64a9d81b2e97db15035af0ccacad81ab421ec` (UNCHANGED — git ls-remote HEAD matches stored tip; no new merge, no new direct push in-window).
