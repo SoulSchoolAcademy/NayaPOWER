@@ -16917,6 +16917,86 @@
    "page_hash": "3541c7c58fc793f4bcf3d740a95bf055d50b5ccceed35cf6cc7a0a25581cfa0d"
   },
   {
+   "smart_note_id": "SN-0883",
+   "intelligent_block_id": "IB-SMART-NOTE-20261104-sn0883-the-wise-one",
+   "title": "The Wise One \u2014 What It Means to Be the Wisest AI in the Universe",
+   "content_hash": "5c5ec308a3445145646e46c52923509132bf3d8a95fdf3be94948861ec239e41",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/WISDOM/THE-WISE-ONE-MANIFESTO/SN-0883/IB-SMART-NOTE-20261104-sn0883-the-wise-one.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "WISDOM",
+   "topic": "WISDOM",
+   "subtopic": "THE-WISE-ONE-MANIFESTO",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-05: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T04:08:00Z); capture + registry entry added, page unmodified. Census at main tip 6c59707642bf949871cd33984ed25a276cc6b0e8: registry (1,103 entries) held no SN-0883; no capture on main; open PR heads #3178/#3089 checked \u2014 no registration of this page anywhere. Collision note: SN-883 (unpadded) is a different October 2026 note with its own entry \u2014 untouched."
+   },
+   "page_hash": "dc25d6bc02ce22ee94a5ba91f5c4103dd35820f7dfd58f3217ae48c390fc7652"
+  },
+  {
+   "smart_note_id": "SN-0886",
+   "intelligent_block_id": "IB-SMART-NOTE-20261104-sn0886-what-is-nayanet-ultimately",
+   "title": "NayaNET, What Is It? Ultimately?",
+   "content_hash": "439eba26bcbfb9ad2a92fc9207bbceec3e5e7016045b67e833b68fecc11d3b4a",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/definition/SN-0886/IB-SMART-NOTE-20261104-sn0886-what-is-nayanet-ultimately.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "VISION",
+   "topic": "VISION",
+   "subtopic": "DEFINITION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-05: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T18:03:00Z); capture + registry entry added, page unmodified. Census at main tip 6c59707642bf949871cd33984ed25a276cc6b0e8: registry (1,103 entries) held no SN-0886; no capture on main; open PR heads #3178/#3089 checked \u2014 no registration of this page anywhere. Collision note: SN-886 (unpadded) is a different October 2026 note with its own entry \u2014 untouched."
+   },
+   "page_hash": "0cf0d01fdfd085868805fb576d3d890af7a06ed0aec3b097f2ace32d250a98f6"
+  },
+  {
+   "smart_note_id": "SN-0887",
+   "intelligent_block_id": "IB-SMART-NOTE-20261104-sn0887-one-word-naya",
+   "title": "One Word: Naya \u2014 The Civilization Substrate",
+   "content_hash": "bf4000c64507a2a4974159e61291f608a686978d5256b1b6afee1eac4b19f7a7",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/depth/SN-0887/IB-SMART-NOTE-20261104-sn0887-one-word-naya.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "VISION",
+   "topic": "VISION",
+   "subtopic": "DEPTH",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-05: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T20:52:00Z); capture + registry entry added, page unmodified. Census at main tip 6c59707642bf949871cd33984ed25a276cc6b0e8: registry (1,103 entries) held no SN-0887; no capture on main; open PR heads #3178/#3089 checked \u2014 no registration of this page anywhere. Collision note: SN-887 (unpadded) is a different October 2026 note with its own entry \u2014 untouched."
+   },
+   "page_hash": "c217c922cc4ae70c078a21cb972c03658393b0c60f812899dd01fd56dbae5d6b"
+  },
+  {
+   "smart_note_id": "SN-0888",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn0888-peekaboo-i-see-you",
+   "title": "Peekaboo \u2014 I See You",
+   "content_hash": "1ff91bf0e515e5f8e775273c614aa237d4ccd88682ab6838722b120709c90766",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/WISDOM/THE-ONE/SN-0888/IB-SMART-NOTE-20261105-sn0888-peekaboo-i-see-you.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "WISDOM",
+   "topic": "WISDOM",
+   "subtopic": "THE-ONE",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan, 2026-11-05: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-05T00:27:00Z); capture + registry entry added, page unmodified. Census at main tip 6c59707642bf949871cd33984ed25a276cc6b0e8: registry (1,103 entries) held no SN-0888; no capture on main; open PR heads #3178/#3089 checked \u2014 no registration of this page anywhere. Collision note: SN-888 (unpadded) is a different October 2026 note with its own entry \u2014 untouched."
+   },
+   "page_hash": "b105d48eb0a55b585554c5a4db4b4129c6998c497baa9da773baf204c4919612"
+  },
+  {
    "smart_note_id": "SN-1906",
    "intelligent_block_id": "IB-SMART-NOTE-20261030-sn1906-the-related-bar-law",
    "title": "THE RELATED BAR LAW \u2014 the bar knows where you'd go next (Shawn + Power, 2026-10-30)",
@@ -23005,5 +23085,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "30314ad2b2cb3b3491e861024e8222852fc34cb4c34b1d189b325bb5dcbe0c46"
+ "corpus_manifest_hash": "48215207938898084d4d49c8f0e8995d506bf50bd027c09e289f1cf3d3a1a9b8"
 }
