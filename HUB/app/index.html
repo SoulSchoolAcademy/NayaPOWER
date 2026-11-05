@@ -3823,14 +3823,29 @@ window.NayaContent = {
    re-point the global every consumer already reads. If the fetch fails,
    the bake still serves — nothing breaks. Preserve this block across
    rebakes; it is what keeps the feed fresh forever. */
-fetch('/feed-live.json').then(function(r){ return r.json(); }).then(function(d){
-  if(!d || !Array.isArray(d.notes) || !d.notes.length) return;
-  window.NayaFeedIntelligence = { notes: d.notes, ref: 'live-registry' };
-  try {
-    if (window.NayaRouter && location.hash.indexOf('/hub/feed') > -1) { window.NayaRouter.navigate('/hub/feed'); }
-    window.dispatchEvent(new HashChangeEvent('hashchange'));
-  } catch(e){}
-}).catch(function(){});
+(function(){
+  var tries=0;
+  function tryLive(){
+    tries++;
+    var ctl=null, timer=null;
+    try{ ctl=new AbortController(); }catch(e){}
+    if(ctl){ timer=setTimeout(function(){ try{ ctl.abort(); }catch(e){} }, 15000); }
+    var p=ctl?fetch('/feed-live.json',{signal:ctl.signal}):fetch('/feed-live.json');
+    p.then(function(r){ if(!r.ok) throw new Error('live fetch '+r.status); return r.json(); }).then(function(d){
+      if(timer) clearTimeout(timer);
+      if(!d || !Array.isArray(d.notes) || !d.notes.length) throw new Error('live feed empty');
+      window.NayaFeedIntelligence = { notes: d.notes, ref: 'live-registry' };
+      try {
+        if (window.NayaRouter && location.hash.indexOf('/hub/feed') > -1) { window.NayaRouter.navigate('/hub/feed'); }
+        window.dispatchEvent(new HashChangeEvent('hashchange'));
+      } catch(e){}
+    }).catch(function(){
+      if(timer) clearTimeout(timer);
+      if(tries<3){ setTimeout(tryLive, 5000); }
+    });
+  }
+  tryLive();
+})();
 </script>
 <script>
 /* Live feed override v2 face rules (Resolve, 2026-11-05): companion to the
@@ -3846,9 +3861,11 @@ fetch('/feed-live.json').then(function(r){ return r.json(); }).then(function(d){
     var st=document.createElement('style'); st.id=STYLE_ID;
     st.textContent=[
       '.intel-board .ib-subtitle{font-size:20px !important;background:#050607;border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:14px 18px;box-shadow:inset 0 1px rgba(255,255,255,.18),0 10px 26px rgba(0,0,0,.65);line-height:1.5}',
+      '.intel-board .ib-nutshell{font-size:20px !important;background:#050607 !important;color:#fff}',
+      '.intel-board .ib-nutshell p{font-size:20px !important;color:#fff}',
       '.sh-nutshell{font-size:20px !important;line-height:1.55}',
-      '.intel-board{opacity:.84;transition:opacity .7s ease,box-shadow .7s ease}',
-      '.intel-board.rv-lit{opacity:1;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff)}'
+      '.intel-board{opacity:.84;transition:opacity .7s ease,box-shadow .25s,transform .25s cubic-bezier(.16,.84,.22,1)}',
+      '.intel-board.rv-lit{opacity:1;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff)}'
     ].join('\n');
     (document.head||document.documentElement).appendChild(st);
   }
@@ -3864,11 +3881,11 @@ fetch('/feed-live.json').then(function(r){ return r.json(); }).then(function(d){
     try{
       if(window.NayaContent && window.NayaContent.meta && newest){ window.NayaContent.meta.as_of=newest; }
       var line=document.getElementById('feed-provenance-line');
-      if(line && /not live/i.test(line.textContent||'')){
-        var d=newest?new Date(newest):new Date();
-        var when=isNaN(d.getTime())?'today':d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
-        line.textContent='Intelligence live \u2014 '+count+' Smart Notes \u00b7 updated '+when;
-      }
+      if(!line) return;
+      var d=newest?new Date(newest):new Date();
+      var when=isNaN(d.getTime())?'today':d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
+      var want='Intelligence live \u2014 '+count+' Smart Notes \u00b7 updated '+when;
+      if(line.textContent!==want){ line.textContent=want; }
     }catch(e){}
   }
   var liveCount=0, liveNewest=null, mo=null;
@@ -3880,7 +3897,8 @@ fetch('/feed-live.json').then(function(r){ return r.json(); }).then(function(d){
       tries++; currentNotes();
       var f=document.getElementById('hubFeed');
       var done=f && f.getAttribute('aria-busy')==='false' && f.querySelector('.intel-board');
-      if(done || tries>=60){ clearInterval(iv); fixProvenance(liveCount, liveNewest); armAlive(); }
+      if(done){ fixProvenance(liveCount, liveNewest); armAlive(); }
+      if(tries>=60){ clearInterval(iv); }
     }, 400);
   }
   face(); watch();
