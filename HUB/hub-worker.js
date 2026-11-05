@@ -62,6 +62,9 @@ function mapItem(r) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname === "/resolve-serving-probe") {
+      return new Response("RESOLVE-PROBE-20261105", { status: 200, headers: { "Content-Type": "text/plain", "Cache-Control": "no-store" } });
+    }
     if (url.pathname === "/pi/api/items" || url.pathname === "/pi/api/items/") {
       return handleItems(request, env, url);
     }
