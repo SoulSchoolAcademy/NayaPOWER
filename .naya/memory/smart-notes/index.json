@@ -23415,7 +23415,16 @@
     "Design",
     "Governance",
     "Learning"
-   ]
+   ],
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2066-never-rebuild-below-the-current-grade",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-never-rebuild-below-the-current-grade.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "GOVERNANCE",
+   "topic": "DESIGN",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE"
   }
  ],
  "sequence_policy": {
@@ -23426,5 +23435,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "229b3352387b079298c01e1cf245e85247b04adf7c0792bd8cad9d9ae9b16af5"
+ "corpus_manifest_hash": "4de480f716a11fb083590c5e5a762bf9561846f29fe089af3b5bad754e798ae2"
 }
