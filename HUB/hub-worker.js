@@ -140,6 +140,10 @@ async function serveNote(request, env, rawSlug) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if ((url.pathname === "/note" || url.pathname === "/smart-notes") && request.method === "GET") {
+      const q = url.searchParams.get("n");
+      if (q) return serveNote(request, env, q);
+    }
     const noteMatch = url.pathname.match(/^\/(?:s|notes|smart-notes|note)\/([^/]+)\/?$/);
     if (noteMatch && request.method === "GET") {
       return serveNote(request, env, decodeURIComponent(noteMatch[1]));
