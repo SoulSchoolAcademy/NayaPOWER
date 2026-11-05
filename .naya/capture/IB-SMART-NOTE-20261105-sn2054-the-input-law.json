@@ -1,0 +1,28 @@
+{
+  "smart_note_id": "SN-2054",
+  "intelligence": {
+    "title": "The Input Law — Dictation First, Confirm Always",
+    "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2054-the-input-law",
+    "smart_note_id": "SN-2054",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/INPUT/SN-2054/IB-SMART-NOTE-20261105-sn2054-the-input-law.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Shawn's Input Law, dictated 2026-11-04 ~20:19-20:30Z and played back to him in chat the same session; filed by Naya Resolve Narzan on 2026-11-05 under the Master Directive's standing order (smart-note it the moment you learn it). This filing SUPERSEDES the older voice-bridge draft (~/workspace/voice-bridge-capture-draft-2026-11-03.md), which must not be filed.",
+    "ingested_at": "2026-11-05",
+    "essence": "Every input in NayaNET is dictation first — voice, then typing, then paste from your own AI. Nothing enters unconfirmed: Naya plays your words back, beautifully formatted, and you confirm or edit before anything is saved or fired.",
+    "human_view": "Shawn designed the input layer of the whole system in one dictation (2026-11-04). Dictation first on ALL inputs, no exceptions — voice first, typing second, paste-from-your-own-AI third. Every input runs the confirm loop: dictate, Naya plays it back beautifully formatted, you confirm or edit, then next — onboarding fields included. Dictated commands are actions, played back as actions, confirmed before firing. Your words become one of three things: plain input filling a page; a private Naya Note in your Smart Box, pinnable and shareable by you alone; or, only by deliberate choice, a Smart Note the whole network learns from, anonymously, with your own copy kept. Voice playback is wanted ASAP, sequenced after dictation; live conversation mode is explicitly not wanted. The seam with the DNA: 'no voice buttons' governs display surfaces; the mic lives inside the input itself.",
+    "simple_view": "Talk first. Naya shows you what she heard. You say yes — then it counts. Nothing slips in unconfirmed, and your words only become a shared Smart Note if you choose that on purpose.",
+    "grandma_view": "Dear, it's like dictating a letter to a careful secretary: you speak, she reads it back to you lovely and clear, and nothing gets mailed until you nod. Your private notes stay private unless you decide otherwise.",
+    "naya_view": "This law is my input discipline too: I take dictation as design, play it back before building on it, and never let an unconfirmed word become a filed fact. The Welcome walk is the first build site — dictation-first with the confirm loop on the offers/needs/wants fields the matcher reads. Filed under the Master Directive without re-asking, because the standing order already carried the authority.",
+    "ai_view": "Input-layer spec: modality_order=[voice, typing, paste_from_own_ai]; confirm_loop=[dictate, playback_formatted, confirm_or_edit, commit] applied to ALL inputs incl. onboarding; commands=action_requests requiring playback+confirm before execution; word_destinations={plain_input, naya_note(private, smart_box, owner_controlled), smart_note(deliberate_only, anonymous, own_copy_kept)}; playback=next_priority; live_conversation=false; seam: DNA no-voice-buttons applies to display surfaces, mic resides inside inputs.",
+    "machine_view": "input_order=[dictation,typing,paste]; confirm_loop=mandatory_all_inputs; unconfirmed_entry=forbidden; destinations=[plain,naya_note,smart_note_by_choice]; voice_playback=after_dictation; live_conversation=false; first_build_site=welcome_walk; source=SN-2054",
+    "views_note": "Views extracted from the published page's own sections where the page carries them (essence ← page section 'IN A NUTSHELL'; human_view ← 'THE TEACHING'; ai_view ← 'THE TEACHING' + 'WHY IT MATTERS'; naya_view ← 'WHY IT MATTERS'). The perspective views the page does not carry as sections (simple/grandma/machine) were reconstructed from the page's own content by Naya Resolve Narzan at cure time; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/INPUT/SN-2054/IB-SMART-NOTE-20261105-sn2054-the-input-law.md",
+    "provenance_note": "Filed by Naya Resolve Narzan, 2026-11-05, under the Master Directive standing order. Source: Shawn's dictation 2026-11-04 ~20:19-20:30Z, played back in chat the same session. Census at filing against main tip 985529946c9ba496e60e737e438f9b6f2bc2dbb2: registry (1113 entries) held no SN-2054; no page/capture on main; open PR heads checked. Fingerprints from the page bytes as filed.",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}
