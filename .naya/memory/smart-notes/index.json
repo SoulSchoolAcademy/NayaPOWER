@@ -17357,6 +17357,26 @@
    }
   },
   {
+   "smart_note_id": "SN-2064",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2064-the-picture-one-transparent-system",
+   "title": "The Picture \u2014 One Transparent System Where Everything Is Visible to All",
+   "content_hash": "03c4131d0261e72cc57ab3d5db797be73e4c174a50e1c0dc44b87a83ae31b985",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/CIVILIZATION/SN-2064/IB-SMART-NOTE-20261105-sn2064-the-picture-one-transparent-system.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM_INTELLIGENCE",
+   "topic": "CIVILIZATION",
+   "subtopic": "THE-PICTURE",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan 2026-11-05: SN-2064\u2019s page was filed on main (from Shawn\u2019s dictation, ~20:57Z) with no capture and no registry entry, so the note served 404 \u2014 the Picture itself was not visible, the exact failure it describes the cure for. Capture reconstructed from the filed page (nutshell verbatim); lens views composed from the page\u2019s own text for the cure; no doctrine added."
+   },
+   "page_hash": "52f16d72da5e3a119959bb36b76af6ef0accbbec9ff4c9b517e0671a4f75f834"
+  },
+  {
    "smart_note_id": "SN-2065",
    "intelligent_block_id": "IB-SMART-NOTE-20261104-sn2065-the-mirror-witness-mode",
    "title": "The Mirror \u2014 Witness Mode Is the Waste",
@@ -23385,5 +23405,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "475ba60d7fa478daa069c1f442008d2095d41375d5cfef6ea93c9fad48880d27"
+ "corpus_manifest_hash": "f412fcb7afe09eef792cb8e87d39276f33d7cb46f0e39bfbd928be3cc9cbdbec"
 }

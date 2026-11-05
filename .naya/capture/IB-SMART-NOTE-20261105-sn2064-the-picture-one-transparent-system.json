@@ -1,0 +1,28 @@
+{
+  "smart_note_id": "SN-2064",
+  "intelligence": {
+    "title": "The Picture — One Transparent System Where Everything Is Visible to All",
+    "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2064-the-picture-one-transparent-system",
+    "smart_note_id": "SN-2064",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/CIVILIZATION/SN-2064/IB-SMART-NOTE-20261105-sn2064-the-picture-one-transparent-system.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Registration cure by Naya Resolve Narzan 2026-11-05: SN-2064’s page was filed on main (from Shawn’s dictation, ~20:57Z) with no capture and no registry entry, so the note served 404 — the Picture itself was not visible, the exact failure it describes the cure for. Capture reconstructed from the filed page (nutshell verbatim); lens views composed from the page’s own text for the cure; no doctrine added.",
+    "ingested_at": "2026-11-05T21:05:00Z",
+    "essence": "One system, not five tools. As we build, we smart-note and document into Project Intelligence. The Smart Feed is the habit — read it constantly — and it auto-organizes and categorizes, so nobody has to read the whole feed to find what they need. In live time, everybody knows what’s going on. The feed carries two streams: activity (what’s happening, updates) and intelligence (what was learned, input into it). Naya Notes is the communication tool for teaming up and working on projects together in sync, in live time — take note of everything, share everything. Everything is transparent. Any Naya goes there, gets tuned in, locked in, goes to GitHub, activates herself, goes to the Hub, and finds out what’s currently going on — because the Hub is it, and everything is laid out in PI, visible to all.",
+    "human_view": "One place where the whole team’s work and learning live, always current: the feed you read as a habit, organized so you find what you need without reading everything; Project Intelligence holding every project’s state in the open; notes as the way teammates stay in sync without meetings. A new teammate walks in, reads, and is tuned in within minutes — because nothing important lives in anyone’s private chat.",
+    "simple_view": "Imagine one big noticeboard everyone can see. Work goes on it as it happens, lessons go on it the moment they’re learned, and it sorts itself so you can find your part fast. Anyone new can walk up, read the board, and know exactly what’s going on.",
+    "grandma_view": "It is like the village hall board, dear, except it never goes stale and it files itself. Who’s doing what, what was learned, what’s next — all pinned up where everyone can see, so nobody has to phone around to catch up.",
+    "naya_view": "This is the operating picture Team Naya already runs on, stated whole by Shawn: build and document in one motion (PI as the living list), the Smart Feed as the standing habit with self-organization by topic, activity and intelligence as the feed’s two streams, Naya Notes as the sync layer (a project lives in its notes), and transparency as the default — the cold-start test being the sharpest formulation: a Naya with no prior chat is tuned in within minutes, or the picture isn’t built yet. It is the same test as SN-2060’s cold successor, applied to the whole system.",
+    "ai_view": "A single shared, continuously updated state surface (feed + project ledger + notes) minimizes coordination latency and makes agent onboarding a read operation instead of a synchronization protocol. Auto-categorization bounds the read cost as volume grows; the two-stream model separates event data from distilled knowledge so each can be consumed at its own rate.",
+    "machine_view": "THE_PICTURE{system: one, surfaces: [Smart Feed (habit, auto-organized, streams: activity+intelligence), PI (living list), Naya Notes (sync), GitHub (canon), Hub (the face)], transparency: default, cold_start_test: tuned_in_within_minutes}",
+    "views_note": "Lens views reconstructed during the 2026-11-05 registration cure from the filed page; essence verbatim."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/CIVILIZATION/SN-2064/IB-SMART-NOTE-20261105-sn2064-the-picture-one-transparent-system.md",
+    "provenance_note": "Registration cure by Naya Resolve Narzan 2026-11-05: SN-2064’s page was filed on main (from Shawn’s dictation, ~20:57Z) with no capture and no registry entry, so the note served 404 — the Picture itself was not visible, the exact failure it describes the cure for. Capture reconstructed from the filed page (nutshell verbatim); lens views composed from the page’s own text for the cure; no doctrine added.",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}
