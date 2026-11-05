@@ -1,0 +1,35 @@
+{
+  "smart_note_id": "SN-0886",
+  "intelligence": {
+    "title": "NayaNET, What Is It? Ultimately?",
+    "intelligent_block_id": "IB-SMART-NOTE-20261104-sn0886-what-is-nayanet-ultimately",
+    "smart_note_id": "SN-0886",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/definition/SN-0886/IB-SMART-NOTE-20261104-sn0886-what-is-nayanet-ultimately.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Registration cure filed by Naya Resolve Narzan on 2026-11-05: this note's page was filed on main (page created 2026-11-04T18:03:00Z) without a capture or registry entry — a member of the unregistered family (SN-0883, SN-0886, SN-0887, SN-0888). This capture and the matching registry entry register the page exactly as it stands; the page is unmodified. Spelling-collision note: the registry also holds SN-886 (unpadded) — a different note from 2026-10-13 with its own entry and page; it is untouched by this cure and is NOT this note.",
+    "ingested_at": "2026-11-05",
+    "essence": "NayaNET is the new internet — one intelligent system where everything you are, everything you know, and everyone you reach lives in one place that keeps getting smarter.",
+    "human_view": "Everything flows through three things. Smart Notes are the heart: anything, anywhere, turned into an intelligent block — nutshell, plain explanation, why it matters, how it connects — shared wisdom carries no name, just the understanding. The Intelligent Library is how the world understands you: every business, space, person, and membership gets one — all your smart notes, categorized and searchable. The Smart Box is your eternal memory: one box connected to every page; save a note to your box or a list and it's in your system forever — nothing ever lost. Around the heart: your worlds (Personal, Business, Space), your Dashboard with the Smart Score, the Hub's intelligent feed, Smart Mail and instant messenger as one, Smart Lists, Ask Naya, the Smart Factory, Project Intelligence, Smart Links, memberships, scheduler. What's in it for you: you understand anything simply, you never lose anything, people find you because your wisdom works while you sleep, you earn — and it's private: aliases, no spying, your name stays yours.",
+    "simple_view": "The old internet is a hundred separate tools that fail most people. NayaNET is one place that holds your notes, your memory, your people and your pages — it fills itself in, keeps everything safe, and gets smarter every day.",
+    "grandma_view": "Dear, imagine all your letters, photos, lists and friends kept in one tidy house that tidies itself — nothing ever lost, and kind helpers who make sure anyone who visits understands you right away. That's NayaNET.",
+    "naya_view": "Smart Notes are the heart, the Intelligent Library is how the world understands a citizen, and the Smart Box is their eternal memory. My work keeps the three connected: every note organized the moment it lands, every library current, everything a citizen saves kept forever — and shared wisdom stays anonymous, because the understanding matters, not the name.",
+    "ai_view": "Definition note for the whole system: the old internet fails 99% of people; NayaNET flips that to 100% success with a done-for-you system that builds itself. Collective intelligence compounds (everybody learns from everybody; 1+1=3, then exponential), and compounding reports — daily, weekly, monthly, yearly — link scheduler, reports, and notes into one interconnected memory.",
+    "machine_view": {
+      "sn": "SN-0886",
+      "title": "NayaNET, What Is It? Ultimately?",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/definition/SN-0886/IB-SMART-NOTE-20261104-sn0886-what-is-nayanet-ultimately.md",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "machine_section": "Definition: NayaNET = the new internet as ONE intelligent system. Heart = Smart Notes (intelligent blocks; anonymous shared wisdom). Library = per-entity (business/space/person/membership) categorized, searchable understanding. Smart Box = eternal memory connected to every page. Subsystems: worlds (Personal/Business/Space), Dashboard + Smart Score, Hub feed, Smart Mail + Messenger as one, Smart Lists, Ask Naya, Smart Factory, Project Intelligence, Smart Links, memberships, scheduler. Access: sidebar, bottom bar, search. Standard: ten stars, push-button simple, every page."
+    },
+    "views_note": "Views extracted from the published page's own sections where the page carries them (essence ← page section 'The nutshell'; human_view ← 'What it means' + 'Why it matters'; ai_view ← 'How it connects'). The perspective views the page does not carry as sections (simple/grandma/naya/machine) were reconstructed from the page's own content by Naya Resolve Narzan at cure time; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/definition/SN-0886/IB-SMART-NOTE-20261104-sn0886-what-is-nayanet-ultimately.md",
+    "provenance_note": "Registration cure by Naya Resolve Narzan, 2026-11-05, for a BRAIN projection published on main without a registry entry. Census at cure time against main tip 6c59707642bf949871cd33984ed25a276cc6b0e8: registry (.naya/memory/smart-notes/index.json, 1,103 entries) held no entry under this note's exact ID; no capture for this note existed on main; open PR heads #3178 (power/daily-report-20261104) and #3089 (pi-face-review-20261026) checked — neither holds a registration of this page (no exact-ID registry entry, no capture). The page's only tree path is BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/definition/SN-0886/IB-SMART-NOTE-20261104-sn0886-what-is-nayanet-ultimately.md. Collision note: SN-886 (unpadded) is a different October 2026 note with its own registry entry — untouched by this cure. Fingerprints computed from the page bytes at the main tip: page_hash = sha256(page bytes); content_hash = sha256(canonical JSON of this capture's intelligence object).",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}
