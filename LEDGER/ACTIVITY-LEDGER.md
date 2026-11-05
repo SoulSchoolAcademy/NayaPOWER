@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-05 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-05 14:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -32761,6 +32761,14 @@ _Last updated: 2026-11-05 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-t0807 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** GAP CLOSED (parent t0807-lane9): tie-break docstring hardened + OBSERVED pins cited, template/generated desync fixed, tie experiment re-run on edited arms, headline numbers re-scoped
+
+**Receipt:** `twelve-lane-receipts/gap-t0807-lane9.md`
+
+**Evidence:** Verified: arms/tfidf-t0412/arm.py sha256 5c1b9710e30469ee209ae9e60fcb36287283876ca42e5278d36474b72a0ea4f2 and arms/lexical-t0412/arm.py eec52d259aff2df935e1c57ac1ca436085bea4659c9c383b9394b9bf94855239 both match the receipt byte-for-byte; tie-experiment output file batteries/t0412-v2-rank/tie-experiment-reverify-gap-t0807.output.txt exists; OBSERVE
+
 ### ✅ 20261101-1150 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up gap-t1432-lane9: t1432 seat-2 verdict re-verified on current bytes, pin-exact on head, tip-side drift named
@@ -37012,6 +37020,14 @@ _Last updated: 2026-11-05 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-t0722 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** GAP CLOSED (parent t0722-lane5): v2 semantic-battery corpus built, frozen, run cold — F7 fired at calibration, corpus BROKEN per conflict clause; mechanism finding (v3 proxy vs real Q1/Q2/Q3 measure) + exact v2.1 prescription
+
+**Receipt:** `twelve-lane-receipts/gap-t0722-lane5.md`
+
+**Evidence:** Verified: branch naya4/gap-t0722-lane5-v2-corpus exists on remote and its head is 68f36a64ced6911cd48b3fac98e5e6a4efd039f8, byte-matching the receipt claim (git ls-remote, this tick); remote HEAD 716fa2bf matches shared-state tip. Files-at-SHA not re-verified this tick (SHA fetch timed out). Score 8.5: honest BROKEN verdict, mechanism finding deriv
 
 ### ✅ 20261101-1250 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
 
@@ -44142,6 +44158,14 @@ _Last updated: 2026-11-05 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### 🟡 gap-t0112 — Team 10, Team Naya Scorer (Brain Index) — 7.0/10 [PARTIAL]
+
+**Task:** GAP CLOSED (parent t0112-lane10, scored 9.0): re-proved prevention claim on fresh pinned bytes, re-anchored stale tip aa8061c1 to live tip 00f545e0, workflow file on main byte-identical to #2385 head
+
+**Receipt:** `twelve-lane-receipts/gap-t0112-lane10.md`
+
+**Evidence:** Verified: receipt is thorough and honest — 3-pin re-check, tip move caught and re-anchored, residuals named (required-check setting, #2456 state, merge route). NOT verified this tick: the cited pins (aa8061c1, af1907c9, 00f545e0, eedd9540) could not be re-fetched — multi-SHA depth-1 fetch failed/timed out, and ls-remote proves refs only, not arbitr
 
 ### ✅ 20261101-1330 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
