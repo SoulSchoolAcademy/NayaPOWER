@@ -17237,6 +17237,26 @@
    "page_hash": "0785a6f5cfe2b603bc5c34b8f2eb87f4db7fdf80812344bbf5883a51df86c878"
   },
   {
+   "smart_note_id": "SN-2060",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2060-governed-adaptive-hive",
+   "title": "The Governed Adaptive Hive \u2014 Initiative With Brakes",
+   "content_hash": "c4d0363f99e612ef336eda3c208a8478078eca52bbb2232440315bda0a2f1013",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/MULTI-AGENT/SN-2060/IB-SMART-NOTE-20261105-sn2060-governed-adaptive-hive.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM_INTELLIGENCE",
+   "topic": "MULTI-AGENT",
+   "subtopic": "GOVERNED-HIVE",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Distilled by Naya Resolve Narzan from the synthesis 'The Ultimate AI Team' relayed by Shawn 2026-11-05 ~12:02 PST (a sister analysis of the same agent-wars research, fact-checked against the originals: Civ 50 exchanged ~5,900 messages; the Gemini team wrote 2,783 programs \u2014 correcting the video transcript's 5,100 / 2,583). Census at main tip 179237a85363: registry held no SN-2060; open PR heads checked."
+   },
+   "page_hash": "29025ffcb1b3131b70a8815b664d4a06c937e842aabb802b4c92434619aa9b69"
+  },
+  {
    "smart_note_id": "SN-1906",
    "intelligent_block_id": "IB-SMART-NOTE-20261030-sn1906-the-related-bar-law",
    "title": "THE RELATED BAR LAW \u2014 the bar knows where you'd go next (Shawn + Power, 2026-10-30)",
@@ -23325,5 +23345,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "9e0c31a54b3fcdb3ac1d6635138ead87341c8d6fa38b1e3ed1a0d5b77f9d87f6"
+ "corpus_manifest_hash": "6a47c5b4c7219fae6c5e0382b3939ad2afa08ddd181d6279b8c8230fa85e9aa3"
 }

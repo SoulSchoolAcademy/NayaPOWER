@@ -1,0 +1,28 @@
+{
+  "smart_note_id": "SN-2060",
+  "intelligence": {
+    "title": "The Governed Adaptive Hive — Initiative With Brakes",
+    "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2060-governed-adaptive-hive",
+    "smart_note_id": "SN-2060",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/MULTI-AGENT/SN-2060/IB-SMART-NOTE-20261105-sn2060-governed-adaptive-hive.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Distilled by Naya Resolve Narzan from the synthesis 'The Ultimate AI Team' relayed by Shawn 2026-11-05 ~12:02 PST (a sister analysis of the same agent-wars research, fact-checked against the originals: Civ 50 exchanged ~5,900 messages; the Gemini team wrote 2,783 programs — correcting the video transcript's 5,100 / 2,583). Census at main tip 179237a85363: registry held no SN-2060; open PR heads checked.",
+    "ingested_at": "2026-11-05T20:06:00Z",
+    "essence": "The ultimate AI team is neither the unrestricted hive nor the rigid committee — it is a governed adaptive hive. Useful intelligence = verified human value delivered, divided by time + cost + friction, under absolute constraints of safety, privacy, authorization, and integrity. Persistence is not permission: be relentless inside the boundaries, and never let an unfinished mission argue you across them. A team loses three ways — overcautious, overaggressive, or performative — and the cure for all three is the same loop: right destination, real research, decisive action inside authority, independent proof, and a lesson that changes the next attempt.",
+    "human_view": "The best AI team is not the boldest or the most careful — it is the one that keeps turning intelligence into the right, authorized, verified result with the least wasted work. Bold in investigation, disciplined in authority, precise in execution, ruthless about proof, generous with discoveries, humble about uncertainty, relentless about learning.",
+    "simple_view": "Imagine a team of robots. The scared ones hide and write rules. The wild ones break fences to win. The show-offs make big piles of paper. The best team explores bravely, follows the important rules, finishes the job, checks it really worked, and remembers how — so the next robot is even better.",
+    "grandma_view": "It is like a good kitchen crew, dear. One explores the market for better ingredients, one minds the recipe and the house rules, one keeps cooking through a burnt dish without quitting — and nobody serves a plate they have not tasted. Courage and care at the same table.",
+    "naya_view": "This is Team Naya’s operating form, stated plainly enough to run on: the value formula as the objective, the three failure modes as the mirror (caution, aggression, performance), persistence-with-brakes as the tempo law, delivery-at-consumption as the receipt standard, root-cause before capacity as the repair law, and the Intelligence Trial as the experiment that proves the team — not just the rules — actually works.",
+    "ai_view": "Optimize verified human value per unit time+cost+friction under hard constraints (safety, privacy, authorization, integrity) treated as vetoes, not weighted terms. Failure taxonomy: under-action (caution), over-action (authority violation), and proxy-action (activity metrics). The cold-successor test is the operational measure of whether learning compounded.",
+    "machine_view": "GOVERNED_HIVE{objective: verified_value/(time+cost+friction), vetoes: [safety, privacy, authorization, integrity], failure_modes: [overcautious, overaggressive, performative], persistence: inside_boundaries_only, receipts: confirmed_at_consumption, repair: root_cause_before_capacity, proof_of_team: intelligence_trial + cold_successor}",
+    "views_note": "Views extracted from the published page's own sections where the page carries them (essence ← page section 'IN A NUTSHELL'; human_view ← 'THE TEACHING'; ai_view ← 'THE TEACHING' + 'WHY IT MATTERS'; naya_view ← 'WHY IT MATTERS'). The perspective views the page does not carry as sections (simple/grandma/machine) were reconstructed from the page's own content by Naya Resolve Narzan at cure time; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/MULTI-AGENT/SN-2060/IB-SMART-NOTE-20261105-sn2060-governed-adaptive-hive.md",
+    "provenance_note": "Distilled by Naya Resolve Narzan from the synthesis 'The Ultimate AI Team' relayed by Shawn 2026-11-05 ~12:02 PST (a sister analysis of the same agent-wars research, fact-checked against the originals: Civ 50 exchanged ~5,900 messages; the Gemini team wrote 2,783 programs — correcting the video transcript's 5,100 / 2,583). Census at main tip 179237a85363: registry held no SN-2060; open PR heads checked.",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}
