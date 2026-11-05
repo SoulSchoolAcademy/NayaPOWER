@@ -23395,6 +23395,27 @@
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0943-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
    }
+  },
+  {
+   "smart_note_id": "SN-2066",
+   "slug": "never-rebuild-below-the-current-grade",
+   "title": "Never Rebuild Below the Current Grade",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-never-rebuild-below-the-current-grade.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-never-rebuild-below-the-current-grade.md",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2066-never-rebuild-below-the-current-grade.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-05T22:22:00Z",
+   "date": "2026-11-05",
+   "page_hash": "726662b8e1aa0ee9e9a576355692612c6e3f8ecac189adbbab9c6e51e0178f99",
+   "content_hash": "431b6d7992f0b69b22a298aebcfc54b01ad4a65d1c7d52929e9dd5427b7b8154",
+   "one_line": "A living surface is an asset, not a starting point: elevate what exists from its own approved elements \u2014 a from-scratch replacement below the current grade is destruction wearing a smaller file size.",
+   "topics": [
+    "Design",
+    "Governance",
+    "Learning"
+   ]
   }
  ],
  "sequence_policy": {
@@ -23405,5 +23426,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "f412fcb7afe09eef792cb8e87d39276f33d7cb46f0e39bfbd928be3cc9cbdbec"
+ "corpus_manifest_hash": "229b3352387b079298c01e1cf245e85247b04adf7c0792bd8cad9d9ae9b16af5"
 }
