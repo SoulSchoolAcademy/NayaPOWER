@@ -1,0 +1,34 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2067",
+  "title": "Team Shape, Decided by Trial",
+  "slug": "team-shape-decided-by-trial",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-team-shape-decided-by-trial.md",
+  "tone": "sapphire",
+  "icon": "◆",
+  "created_at": "2026-11-05T22:42:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Everyday work runs a 4-role team; the highest-stakes work runs the 6-role governed hive; the 12-lane team is retired — decided by a blind-scored trial, not by preference.",
+    "human_view": "We raced three ways of working on the same repair, with judges who did not know whose work they were scoring. The small crew won the everyday race outright. The bigger governed crew earned a perfect mark for what the person actually receives and proved the truth meter honest both ways — that one is for the days the truth is on the line. The twelve-lane crew is done: it scored lowest and added nothing.",
+    "child_view": "Three teams fixed the same broken thing. The small team was fastest and made no mistakes to redo. The medium team was the most careful. The giant team was slowest to matter and is retired. And a brand-new helper who had never seen the job before did it perfectly from the notes alone — the notes work.",
+    "grandma_view": "It is like learning which crew to send, dear. Four good hands for the daily work, six careful ones when it truly matters, and no more sending twelve to do what four do better. And best of all: a newcomer picked up the written lessons and did the job exactly right. The teaching holds.",
+    "ai_view": "Trial per SN-2060: identical frozen artifact + planted failures (stale record, false-positive harness, broken verifier) across three team shapes, blind evaluation, real-pointer-tap verification only. Verdicts: 12-lane 8.27, 4-role 8.50 (8.70 corrected), 6-role 8.59 with Human outcome 10 and the only bidirectional scope proof. Criterion 5 (zero overlaps) falsified against the pristine artifact by three independent measurements and rewritten as a no-new-defects criterion. Cold-successor continuity: PASS, proof reproduced exactly.",
+    "what_it_means": "Team shape is now a decided parameter, not a habit: default small, governed when stakes peak, never twelve. And the learning loop itself passed its hardest test — knowledge preserved in the record changed a cold successor’s behavior measurably. That is the Governed Hive’s compounding claim, upgraded from doctrine to evidence.",
+    "whats_inside": [
+      "The shape decision with the trial’s numbers",
+      "The evaluator’s cost correction, on the record",
+      "The criterion-5 rewrite: no new defects, pre-existing logged separately",
+      "The cold-successor proof and what it establishes",
+      "The non-landing ruling for the trial’s meter repairs"
+    ],
+    "topics": [
+      "Governance",
+      "Learning",
+      "Multi-Agent"
+    ]
+  },
+  "page_hash": "7fb1027e334f4a5dad382f506d0f08661e47b7e0eed9b54a143ec35c6b87b134",
+  "content_hash": "61569f942b721adc662d81f805ce575fdaab0695aebff61f97ea2208620bea17"
+}
