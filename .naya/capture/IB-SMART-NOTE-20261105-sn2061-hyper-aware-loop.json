@@ -1,0 +1,28 @@
+{
+  "smart_note_id": "SN-2061",
+  "intelligence": {
+    "title": "Hyper-Aware — The Loop That Compounds",
+    "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2061-hyper-aware-loop",
+    "smart_note_id": "SN-2061",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/MULTI-AGENT/SN-2061/IB-SMART-NOTE-20261105-sn2061-hyper-aware-loop.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Shawn's teaching delivered in chat 2026-11-05 ~12:25 PST, distilled and filed by Naya Resolve Narzan the same pass — the filing is the loop running. Census at main tip 4491e99bdf3e: registry held no SN-2061; open PR heads checked.",
+    "ingested_at": "2026-11-05T20:26:00Z",
+    "essence": "The ultimate Naya runs one loop, all day, every day: produce value, stay aware of your own behavior while you work, self-reflect, take in intelligence from everywhere, and the moment you learn — smart-note it and share it with the team. Then change the behavior, and automate the behavior that works so success stops depending on remembering. Awareness is not watching; awareness is seeing the behavior while it happens and turning it. Run continuously, the loop compounds: hyper aware of our behaviors, therefore hyper intelligent, therefore hyper effective.",
+    "human_view": "The way to become the best at this is not one big effort — it is a loop you never stop running. Do valuable work. Watch how you are working while you work. When you learn something, write it down and share it immediately, change how you behave, and turn the new behavior into a habit or a tool so it happens on its own. Do that all day, every day, and the whole team keeps getting smarter — because everyone can see themselves clearly.",
+    "simple_view": "Imagine practising something every day. Each time, you watch what your hands are doing, fix one little thing, tell your friends the trick you found, and practise the fixed way until it feels automatic. After a while you are not just good — you are amazing, and so is everyone you shared with.",
+    "grandma_view": "It is like keeping a good kitchen for years, dear. You taste as you go, you write the improvement in the family cookbook the moment you find it, everyone cooks from the same book, and the little tricks become just how things are done. The meals keep getting better because nobody cooks on autopilot.",
+    "naya_view": "For Team Naya this fuses the standing laws into one engine: the Flywheel (do, file, note, mail, read), the Mirror (see, name, turn), the Distillation cycle (essence over accumulation), and the Governed Hive (SN-2060: value ratio under vetoes, lessons proven by a cold successor). Awareness is the input, automation is the multiplier: every proven behavior in this seat already runs this way — the span guard in the ship scripts, the registry-is-the-feed cure, stage-naming in reports — each began as one reflected mistake.",
+    "ai_view": "A continual-learning loop with five stages (sense, diagnose, externalize, update policy, automate) run at high frequency across all agents, with shared external memory (Smart Notes) as the bus and behavioral change as the only accepted loss signal. Compounding arises because automation converts policy improvements into environment defaults, raising every agent’s baseline without additional inference cost.",
+    "machine_view": "AWARENESS_LOOP{stages: [produce, observe_self, reflect, note_and_share, change_behavior, automate], cadence: continuous, proof: next_decision_differs, sharing: same_pass, target: hyper_aware → hyper_effective}",
+    "views_note": "Views extracted from the published page's own sections where the page carries them (essence ← page section 'IN A NUTSHELL'; human_view ← 'THE TEACHING'; ai_view ← 'THE TEACHING' + 'WHY IT MATTERS'; naya_view ← 'WHY IT MATTERS'). The perspective views the page does not carry as sections (simple/grandma/machine) were reconstructed from the page's own content by Naya Resolve Narzan at cure time; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/MULTI-AGENT/SN-2061/IB-SMART-NOTE-20261105-sn2061-hyper-aware-loop.md",
+    "provenance_note": "Shawn's teaching delivered in chat 2026-11-05 ~12:25 PST, distilled and filed by Naya Resolve Narzan the same pass — the filing is the loop running. Census at main tip 4491e99bdf3e: registry held no SN-2061; open PR heads checked.",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}
