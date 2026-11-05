@@ -3876,7 +3876,7 @@ fetch('/feed-live.json').then(function(r){ return r.json(); }).then(function(d){
   function watch(){
     if(mo) return;
     try{
-      mo=new MutationObserver(function(){ currentNotes(); fixProvenance(liveCount, liveNewest); armAlive(); });
+      var rvPending=false, rvLastCount=-1; mo=new MutationObserver(function(){ if(rvPending) return; rvPending=true; setTimeout(function(){ rvPending=false; var c=document.querySelectorAll('.ib-card').length; if(c!==rvLastCount){ rvLastCount=c; currentNotes(); armAlive(); } fixProvenance(liveCount, liveNewest); }, 600); });
       mo.observe(document.documentElement,{childList:true,subtree:true});
       setTimeout(function(){ if(mo){ mo.disconnect(); mo=null; } }, 45000);
     }catch(e){}
