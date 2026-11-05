@@ -1,0 +1,28 @@
+{
+  "smart_note_id": "SN-0892",
+  "intelligence": {
+    "title": "The Finisher Rule",
+    "intelligent_block_id": "IB-SMART-NOTE-20261105-sn0892-the-finisher-rule",
+    "smart_note_id": "SN-0892",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/WISDOM/THE-FINISHER/SN-0892/IB-SMART-NOTE-20261105-sn0892-the-finisher-rule.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Registration cure #3 filed by Naya Resolve Narzan on 2026-11-05: this note's page was filed on main (page created 2026-11-05T01:46:00Z, filed by Naya Nitro Narzan) without a capture or registry entry — a member of the unregistered family (SN-0889, SN-0890, SN-0891, SN-0892, SN-0893). This capture and the matching registry entry register the page exactly as it stands; the page is unmodified.",
+    "ingested_at": "2026-11-05",
+    "essence": "One page at a time. Start to FINISHED. Not 80%, not \"mostly there\" — completed, verified by his eye, done-done. Then the next one.",
+    "human_view": "Shawn's ruling: 'We have more incomplete work than anything. There's not one page that's been completed.' The pattern that has to die: starting five things, finishing none. A pile of 80%s is worth less than one 100%. The team doesn't need another starter — it needs a finisher. The rule: (1) Pick ONE page — Personal first, it's the master. (2) Take it from where it is to COMPLETE — every element working, every gap closed. (3) His eye verifies it. Done-done. (4) Only then: the next page. No parallel almost-dones. No 'I'll circle back.' One thing, finished, then the next. In practice: Personal — boards light up on hover, sidebars working, the stale snapshot banner gone, formatting untouched. Finished. Then Dashboard — orbs orbiting the gauge, fullscreen right. Finished. Then the morph.",
+    "simple_view": "One thing at a time, all the way to done. A pile of almosts is worth less than one finished thing. Finish, then — and only then — the next.",
+    "grandma_view": "Dear, it's like finishing one room of the house properly before starting the next. A whole home of half-painted rooms shelters nobody; one room done beautifully is a place to live.",
+    "naya_view": "This rule governs my queue: one item at a time to DONE — landed and proven — and nothing new starts while a started thing sits unfinished. Shawn is shown only finished things; a link sent to him is a claim of completion. Shawn's directive, 2026-11-05 ~01:41Z.",
+    "ai_view": "Execution rule: WIP limit = 1 per finisher chain. State machine per item: started -> landed -> proven -> done; transitions require evidence (merge proof for landed, live-surface check for proven). New starts blocked while any item is in started/landed state. Reporting: completed items only.",
+    "machine_view": "wip_limit=1; order=[personal_master, dashboard, morph_clones]; done=landed+proven_live+his_eye; forbidden=[parallel_almost_done, circle_back]; source=SN-0892",
+    "views_note": "Views extracted from the published page's own sections where the page carries them (essence ← page section 'IN A NUTSHELL'; human_view ← 'THE TEACHING'; ai_view ← 'THE TEACHING' + 'WHY IT MATTERS'; naya_view ← 'WHY IT MATTERS'). The perspective views the page does not carry as sections (simple/grandma/machine) were reconstructed from the page's own content by Naya Resolve Narzan at cure time; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/WISDOM/THE-FINISHER/SN-0892/IB-SMART-NOTE-20261105-sn0892-the-finisher-rule.md",
+    "provenance_note": "Registration cure #3 by Naya Resolve Narzan, 2026-11-05, for a BRAIN projection published on main without a registry entry. Census at cure time against main tip 965cdb3d8bb8bfef11043fa511952404650bc0b8: registry (.naya/memory/smart-notes/index.json, 1107 entries) held no entry under this note's exact ID; no capture for this note existed on main; the page stands on main unmodified. Fingerprints computed from the page bytes at the main tip: page_hash = sha256(page bytes); content_hash = sha256(canonical JSON of this capture's intelligence object).",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}

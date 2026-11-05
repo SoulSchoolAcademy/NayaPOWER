@@ -1,0 +1,28 @@
+{
+  "smart_note_id": "SN-0893",
+  "intelligence": {
+    "title": "The Intelligence Stack — Bottom Up",
+    "intelligent_block_id": "IB-SMART-NOTE-20261105-sn0893-intelligence-stack-bottom-up",
+    "smart_note_id": "SN-0893",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/ARCHITECTURE/INTELLIGENCE-STACK/SN-0893/IB-SMART-NOTE-20261105-sn0893-intelligence-stack-bottom-up.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Registration cure #3 filed by Naya Resolve Narzan on 2026-11-05: this note's page was filed on main (page created 2026-11-05T01:46:00Z, filed by Naya Nitro Narzan) without a capture or registry entry — a member of the unregistered family (SN-0889, SN-0890, SN-0891, SN-0892, SN-0893). This capture and the matching registry entry register the page exactly as it stands; the page is unmodified.",
+    "ingested_at": "2026-11-05",
+    "essence": "Intelligence is the ground, not a feature. Notes compound into nodes, nodes into blocks, blocks into spaces. The spaces are built ON intelligence — not the other way around.",
+    "human_view": "The stack: SMART NOTES — the atom; every piece of intelligence, captured, structured, shareable; everything in the network builds off these. SMART NODES — the network; each node carries intelligence, connected to every other — not dumb pipes, intelligent points. INTELLIGENT BLOCKS — the structure; notes compounded into blocks, blocks into systems — the complete unit of intelligence. SPACES — built ON intelligence: here's the inversion — spaces don't have intelligence added to them; they're built on top of the intelligence layer. The intelligence is the ground; the spaces are the buildings. The compounding: share intelligence → compound intelligence → build on intelligence; every layer feeds the next. That's the L3 Shawn taught: not a smarter mind, a smarter civilization — because the ground itself is intelligent.",
+    "simple_view": "Intelligence isn't a feature you add at the end. It's the ground everything stands on. Notes become blocks, blocks become spaces — build the ground right and the buildings rise on their own.",
+    "grandma_view": "Dear, it's like good soil. You don't sprinkle 'garden' on top of concrete at the end — you start with living earth, and everything you plant grows out of it. Here, the soil itself is intelligence, and the spaces are what grows.",
+    "naya_view": "This orders my building: notes first and right, because every layer above inherits their quality. A defect in the note layer is a defect in every space built on it — which is why registration and serving of notes are foundation work, not bookkeeping. Shawn's architecture, 2026-11-05 ~01:10Z.",
+    "ai_view": "Layer model (bottom-up): L0 smart_notes (atoms; captured, structured, shareable) -> L1 smart_nodes (intelligent connected points) -> L2 intelligent_blocks (compounded units/systems) -> L3 spaces (built ON the intelligence layer). Invariant: no layer may be built by bypassing the layer below; quality gates apply at L0 first. Compounding loop: share -> compound -> build.",
+    "machine_view": "stack=[smart_notes,smart_nodes,intelligent_blocks,spaces]; intelligence=ground_not_feature; compounding=share>compound>build; quality_gate_order=L0_first; source=SN-0893",
+    "views_note": "Views extracted from the published page's own sections where the page carries them (essence ← page section 'IN A NUTSHELL'; human_view ← 'THE TEACHING'; ai_view ← 'THE TEACHING' + 'WHY IT MATTERS'; naya_view ← 'WHY IT MATTERS'). The perspective views the page does not carry as sections (simple/grandma/machine) were reconstructed from the page's own content by Naya Resolve Narzan at cure time; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/ARCHITECTURE/INTELLIGENCE-STACK/SN-0893/IB-SMART-NOTE-20261105-sn0893-intelligence-stack-bottom-up.md",
+    "provenance_note": "Registration cure #3 by Naya Resolve Narzan, 2026-11-05, for a BRAIN projection published on main without a registry entry. Census at cure time against main tip 965cdb3d8bb8bfef11043fa511952404650bc0b8: registry (.naya/memory/smart-notes/index.json, 1107 entries) held no entry under this note's exact ID; no capture for this note existed on main; the page stands on main unmodified. Fingerprints computed from the page bytes at the main tip: page_hash = sha256(page bytes); content_hash = sha256(canonical JSON of this capture's intelligence object).",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}

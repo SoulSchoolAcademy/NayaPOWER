@@ -1,0 +1,28 @@
+{
+  "smart_note_id": "SN-0890",
+  "intelligence": {
+    "title": "One Ultimate App That Morphs",
+    "intelligent_block_id": "IB-SMART-NOTE-20261105-sn0890-one-ultimate-app-that-morphs",
+    "smart_note_id": "SN-0890",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/ARCHITECTURE/THE-MORPH/SN-0890/IB-SMART-NOTE-20261105-sn0890-one-ultimate-app-that-morphs.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Registration cure #3 filed by Naya Resolve Narzan on 2026-11-05: this note's page was filed on main (page created 2026-11-05T01:46:00Z, filed by Naya Nitro Narzan) without a capture or registry entry — a member of the unregistered family (SN-0889, SN-0890, SN-0891, SN-0892, SN-0893). This capture and the matching registry entry register the page exactly as it stands; the page is unmodified.",
+    "ingested_at": "2026-11-05",
+    "essence": "We're not building four apps. We're building ONE ultimate app that morphs — same heart, different identity. One thing to perfect, then it puts on faces.",
+    "human_view": "Shawn's teaching: 'You're just making one ultimate app — full featured — that can morph into different functions or titles or identities.' The mental shift that kills the complexity: stop thinking 'the business app and the space app and the membership app.' There is one app. It walks through different doors — Personal, Business, Space, Membership — and takes the shape of whichever room it's in. Four apps means four builds, four codebases, four drifts, four ways to be 80% done. One app means one thing to perfect, one thing to test, one thing to make utterly awesome. Then it morphs. Build Personal first, complete; then the same bones wear the Business label, the Space label, the Membership label with the login as its front door.",
+    "simple_view": "One app, many faces. Perfect the one thing, then let it put on whichever face the moment needs — Personal, Business, Space, Membership. Never four separate builds.",
+    "grandma_view": "Dear, it's like one good house with four doors. You don't build four houses — you build one beautiful house, and each door opens into the room you need. Same heart, different room.",
+    "naya_view": "This is the One-App doctrine in its sharpest form (SN-0874's lock, restated by Shawn 2026-11-05 ~01:31Z): my build target is never 'an app' — it is the one morphing master. Personal is the master I finish first; every other door is a label and a lens on the same bones, all synced.",
+    "ai_view": "Architecture constraint: single application core with door-scoped presentation/identity layers (personal|business|space|membership). Forbidden: per-door codebases or divergent feature sets. Build order: master (personal) to complete, then clone-by-label. Sync invariant: a change in one door is true in all doors.",
+    "machine_view": "apps=1; doors=[personal,business,space,membership]; master=personal; membership_front_door=login; sync=all_doors; forbidden=per_door_codebase; source=SN-0890",
+    "views_note": "Views extracted from the published page's own sections where the page carries them (essence ← page section 'IN A NUTSHELL'; human_view ← 'THE TEACHING'; ai_view ← 'THE TEACHING' + 'WHY IT MATTERS'; naya_view ← 'WHY IT MATTERS'). The perspective views the page does not carry as sections (simple/grandma/machine) were reconstructed from the page's own content by Naya Resolve Narzan at cure time; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/ARCHITECTURE/THE-MORPH/SN-0890/IB-SMART-NOTE-20261105-sn0890-one-ultimate-app-that-morphs.md",
+    "provenance_note": "Registration cure #3 by Naya Resolve Narzan, 2026-11-05, for a BRAIN projection published on main without a registry entry. Census at cure time against main tip 965cdb3d8bb8bfef11043fa511952404650bc0b8: registry (.naya/memory/smart-notes/index.json, 1107 entries) held no entry under this note's exact ID; no capture for this note existed on main; the page stands on main unmodified. Fingerprints computed from the page bytes at the main tip: page_hash = sha256(page bytes); content_hash = sha256(canonical JSON of this capture's intelligence object).",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}
