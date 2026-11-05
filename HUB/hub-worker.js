@@ -66,20 +66,45 @@ function mapItem(r) {
 // + captures). Live today at /notes/<slug>. The same handler answers
 // /s/<slug> the moment the /s/* route points at this worker.
 const SPECTRUM = ["#9d75ff", "#6f8dff", "#3ddc97", "#ffd34d", "#ff9f43", "#ff5d5d", "#ff5dd2"];
-let FEED_CACHE = null;
-function esc(s) {
-  return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-}
-async function loadFeed(request, env) {
-  if (FEED_CACHE) return FEED_CACHE;
+let REG_CACHE = null;
+const RAW_BASE = "https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/main/";
+async function loadRegistry() {
+  if (REG_CACHE) return REG_CACHE;
   try {
-    const u = new URL(request.url);
-    u.pathname = "/notes-feed.json";
-    u.search = "";
-    const res = await env.ASSETS.fetch(new Request(u.toString(), { method: "GET" }));
-    if (res.ok) { FEED_CACHE = await res.json(); return FEED_CACHE; }
-  } catch (e) { /* fall through to null */ }
+    const res = await fetch(RAW_BASE + ".naya/memory/smart-notes/index.json");
+    if (res.ok) {
+      const idx = await res.json();
+      const map = {};
+      for (const e of idx.entries || []) {
+        if (e && e.smart_note_id) map[String(e.smart_note_id).toLowerCase()] = e;
+      }
+      REG_CACHE = map;
+      return REG_CACHE;
+    }
+  } catch (e) { /* fall through */ }
   return null;
+}
+const CAP_CACHE = {};
+async function loadCapture(ib) {
+  if (!ib) return null;
+  if (CAP_CACHE[ib]) return CAP_CACHE[ib];
+  try {
+    const res = await fetch(RAW_BASE + ".naya/capture/" + ib + ".json");
+    if (res.ok) { const c = await res.json(); CAP_CACHE[ib] = c; return c; }
+  } catch (e) { /* fall through */ }
+  return null;
+}
+async function loadPageNutshell(projectionPath) {
+  if (!projectionPath) return "";
+  try {
+    const res = await fetch(RAW_BASE + projectionPath);
+    if (res.ok) {
+      const md = await res.text();
+      const m = md.match(/##\s*In A Nutshell\s*\n+([\s\S]+?)(?:\n##|$)/i);
+      if (m) return m[1].replace(/\s+/g, " ").trim().slice(0, 600);
+    }
+  } catch (e) { /* fall through */ }
+  return "";
 }
 function slugCandidates(rawSlug) {
   const s = String(rawSlug || "").toLowerCase();
@@ -127,27 +152,34 @@ function renderNote(rec) {
     '</main></body></html>';
 }
 async function serveNote(request, env, rawSlug) {
-  const feed = await loadFeed(request, env);
-  const notes = feed && feed.notes ? feed.notes : {};
-  let rec = null;
-  for (const c of slugCandidates(rawSlug)) { if (notes[c]) { rec = notes[c]; break; } }
-  if (!rec) {
+  const reg = await loadRegistry();
+  let entry = null;
+  if (reg) {
+    for (const c of slugCandidates(rawSlug)) { if (reg[c]) { entry = reg[c]; break; } }
+  }
+  if (!entry) {
     return new Response("Note not found", { status: 404, headers: { "Content-Type": "text/plain;charset=UTF-8", "Cache-Control": "no-store" } });
   }
+  const rec = { id: entry.smart_note_id, title: entry.title || entry.smart_note_id, category: entry.category || "", topic: entry.topic || "", subtopic: entry.subtopic || "", essence: "", human: "", simple: "", grandma: "", naya: "", ai: "", machine: "" };
+  const cap = await loadCapture(entry.intelligent_block_id);
+  if (cap && cap.intelligence) {
+    const i = cap.intelligence;
+    rec.title = i.title || rec.title;
+    rec.essence = i.essence || "";
+    rec.human = i.human_view || "";
+    rec.simple = i.simple_view || "";
+    rec.grandma = i.grandma_view || "";
+    rec.naya = i.naya_view || "";
+    rec.ai = i.ai_view || "";
+    rec.machine = i.machine_view || "";
+  }
+  if (!rec.essence) rec.essence = await loadPageNutshell(entry.projection_path);
   return new Response(renderNote(rec), { status: 200, headers: { "Content-Type": "text/html;charset=UTF-8", "Cache-Control": "no-store" } });
 }
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    if (url.pathname === "/resolve-echo") {
-      const feed = await loadFeed(request, env);
-      const notes = feed && feed.notes ? feed.notes : {};
-      const probeSlug = url.searchParams.get("slug") || "";
-      let found = false;
-      for (const c of slugCandidates(probeSlug)) { if (notes[c]) { found = true; break; } }
-      return new Response(JSON.stringify({ echo: "RESOLVE-ECHO-20261105", feedCount: Object.keys(notes).length, probeSlug: probeSlug, found: found }), { status: 200, headers: { "Content-Type": "application/json", "Cache-Control": "no-store" } });
-    }
     if ((url.pathname === "/note" || url.pathname === "/smart-notes") && request.method === "GET") {
       const q = url.searchParams.get("n");
       if (q) return serveNote(request, env, q);
