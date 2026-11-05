@@ -17117,6 +17117,26 @@
    "page_hash": "9faa8131d77613e8438647f1691c61a597c2b39b495e1ea46e966d331b594a3b"
   },
   {
+   "smart_note_id": "SN-2054",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2054-the-input-law",
+   "title": "The Input Law \u2014 Dictation First, Confirm Always",
+   "content_hash": "0e4f832cfbde731378f248b92a356c46b55a63c26ae4b2dd2d6ea9da873fc7b9",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/INPUT/SN-2054/IB-SMART-NOTE-20261105-sn2054-the-input-law.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM_INTELLIGENCE",
+   "topic": "INPUT",
+   "subtopic": "DICTATION-FIRST",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Shawn's Input Law (dictated 2026-11-04), filed by Naya Resolve Narzan 2026-11-05 under the Master Directive. Supersedes the 2026-11-03 voice-bridge draft. Census at main tip 985529946c9ba496e60e737e438f9b6f2bc2dbb2: SN-2054 free everywhere."
+   },
+   "page_hash": "2bfea4b9c2db06eb7d83c9e78425f2b2b29f1245c515b8115936b9d7e9e64254"
+  },
+  {
    "smart_note_id": "SN-1906",
    "intelligent_block_id": "IB-SMART-NOTE-20261030-sn1906-the-related-bar-law",
    "title": "THE RELATED BAR LAW \u2014 the bar knows where you'd go next (Shawn + Power, 2026-10-30)",
@@ -23205,5 +23225,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "88bb69b3a44dec9cbade652519bc749fc8d4dd0be946949465546255e54ea3c0"
+ "corpus_manifest_hash": "9bbd00512631c1cc2cc90dc7c3fb2e03ddc7a5298119f24d6fad3587e9f4e8fe"
 }
