@@ -17488,12 +17488,12 @@ function ldLayoutNodes(){
       '<div><b>' + _fmt(t2.pts) + '</b><i>' + _esc(t2.label) + '</i></div></div>';
   }
   function _boardHTML(holder){
-    var color, icon, name, what, kindLabel, note, extra = '';
+    var color, icon, name, what, note, extra = '';
     if (holder.kind === 'world'){
-      color = '#a06bff'; icon = '◎'; name = 'Dashboard'; what = 'Your whole world — every page, every link, one score.'; kindLabel = 'WORLD';
+      color = '#a06bff'; icon = '◎'; name = 'Dashboard'; what = 'Your whole world — every page, every link, one score.';
       note = 'The whole network, one glance.';
     } else if (holder.kind === 'link'){
-      color = '#a06bff'; icon = '🔗'; name = 'nayanet.app/' + holder.id; what = 'Your Smart Link — every click tracked, every join counted.'; kindLabel = 'SMART LINK';
+      color = '#a06bff'; icon = '🔗'; name = 'nayanet.app/' + holder.id; what = 'Your Smart Link — every click tracked, every join counted.';
       var target = (window._featuredLinkTargets || {})[holder.id] || '';
       var host = '';
       try{ host = target.replace(/^https?:\/\//, '').split('/')[0]; }catch(e){}
@@ -17504,19 +17504,18 @@ function ldLayoutNodes(){
       var pg = null;
       for (var j=0;j<PAGES.length;j++){ if (PAGES[j].id === holder.id){ pg = PAGES[j]; break; } }
       if (!pg) return '';
-      color = pg.color; icon = pg.icon; name = pg.label; what = pg.what; kindLabel = 'PAGE';
+      color = pg.color; icon = pg.icon; name = pg.label; what = pg.what;
       note = (holder.id === 'membership') ? 'Membership page connects soon — your members and content live here.' : 'Whole-world numbers for now — page tracking connects soon.';
       if (pg.href) extra = '<div class="os-wb-open"><a href="' + pg.href + '">Open ' + _esc(pg.label) + ' ↗</a></div>';
     }
     var key = holder.kind + ':' + holder.id;
     return '<article class="os-world-board ph-card" style="--ac:' + color + ';">' +
-      '<div class="os-wb-top"><span class="os-jewel" style="--jc:' + color + '">' + icon + '</span>' +
-      '<div class="os-wb-id"><b>' + _esc(name) + '</b><span>' + _esc(what) + '</span></div>' +
-      '<span class="os-wb-kind">' + kindLabel + '</span></div>' +
+      '<div class="os-wb-main"><div class="os-wb-top"><span class="os-jewel" style="--jc:' + color + '">' + icon + '</span>' +
+      '<div class="os-wb-id"><b>' + _esc(name) + '</b><span>' + _esc(what) + '</span></div></div>' +
       _boardNums(holder) +
       '<p class="os-note os-wb-note">' + _esc(note) + '</p>' +
-      '<div class="ph-actions"><button class="ph-connect os-wb-btn" type="button" data-featured-show="' + _esc(key) + '">Show on gauge</button></div>' +
-      extra + '</article>';
+      extra + '</div>' +
+      '<div class="ph-actions os-wb-side"><button class="ph-connect os-wb-btn" type="button" data-featured-show="' + _esc(key) + '">Show on gauge</button></div></article>';
   }
   window.renderBoards = function(){
     var host = document.getElementById('os-boards-list');
@@ -19638,7 +19637,12 @@ window.NayaSmartBar = {
     var topstack = document.getElementById('nsbTopstack');
     window.addEventListener('scroll', function(){
       topstack.classList.toggle('nsb-compact', window.scrollY > compactAt);
+      /* PASS 1 v4 — PHONE TOP BAND: the left controls leave once scrolled
+         (see the phone block after the v4 rule). Set here, in the smart
+         bar's own scroll listener — no second listener. */
+      document.body.classList.toggle('os-scrolled', window.scrollY > 8);
     }, {passive:true});
+    document.body.classList.toggle('os-scrolled', window.scrollY > 8);
     drift(tRow, +1, TOP_SPEED);
 
     /* ----- BOTTOM BAR ----- */
@@ -20269,7 +20273,18 @@ function expectedFor(key, s){
        dial shows "+N gained", the honest expectation is the period delta, not
        the total. Without this, every pill click would paint a false red. */
     case "score":
+      /* PASS 1 v4 — TRUTH METER SCOPE: the dial follows the FEATURED holder.
+         When a link holds the featured role, the dial's honest number is that
+         link's clicks (the meter read "shows 171, spine says 300" — the dial
+         showed the joinus link, the meter expected the whole-world score).
+         Expect the featured dial when one is set — the same source
+         readSpine() uses. The meter still flags any real mismatch. */
+      var _fd=(typeof window!=="undefined"&&window._featuredDial)||null;
       var _m=(typeof window!=="undefined"&&window._tnTachoMode)||"all";
+      if(_fd){
+        if(_m!=="all" && _fd.deltas && typeof _fd.deltas[_m]==="number") return _fd.deltas[_m];
+        return _fd.score;
+      }
       if(_m!=="all" && s.deltas && typeof s.deltas[_m]==="number") return s.deltas[_m];
       return s.score;
     case "mix-total": return s.mixTotal;
@@ -22981,8 +22996,15 @@ if (!window._dashLinkT) window._dashLinkT = { c: 49, j: 0 };
 .os-world-boards{ margin:26px 0 8px; }
 .os-world-boards h3{ font-size:19px; font-weight:900; color:#fff; margin:0 0 4px; }
 .os-world-boards .os-wb-sub{ margin:0 0 14px; }
-#os-boards-list{ display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; }
-.os-world-board{ padding:18px !important; margin:0 !important; }
+/* PASS 1 v4 — BOARDS ONE ACROSS (Shawn 2026-11-05 19:28Z): one board per
+   row, full width, one-two-three-four-five down the page — never two side
+   by side. Inside: the icon in the corner, the words on the left, the
+   button on the right, centered. No PAGE/WORLD tag — the icon and the
+   words carry it. */
+#os-boards-list{ display:grid; grid-template-columns:1fr; gap:16px; }
+.os-world-board{ display:flex; gap:20px; align-items:center; padding:18px !important; margin:0 !important; }
+.os-wb-main{ flex:1 1 auto; min-width:0; }
+.os-wb-side{ flex:none; align-self:center; margin-top:0; }
 .os-wb-top{ display:flex; gap:12px; align-items:center; }
 .os-wb-top .os-jewel{ font-size:22px; flex:none; }
 .os-wb-id{ min-width:0; }
@@ -22993,7 +23015,7 @@ if (!window._dashLinkT) window._dashLinkT = { c: 49, j: 0 };
 .os-wb-nums b{ display:block; font-size:24px; font-weight:900; color:#fff; }
 .os-wb-nums i{ display:block; font-style:normal; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:#8a8a96; margin-top:2px; overflow-wrap:anywhere; }
 .os-wb-note{ margin:8px 0 0; }
-.os-wb-btn{ width:100%; }
+.os-wb-btn{ width:auto; min-width:160px; }
 .os-world-board .os-link-row{ display:flex; gap:8px; margin-top:12px; }
 .os-world-board .os-link-row .ph-msg{ flex:1; }
 .os-wb-open{ margin-top:12px; text-align:center; }
@@ -23004,6 +23026,9 @@ if (!window._dashLinkT) window._dashLinkT = { c: 49, j: 0 };
   #os-boards-list{ grid-template-columns:1fr; }
   .os-feat-name{ font-size:18px; }
   .os-wb-nums b{ font-size:20px; }
+  .os-world-board{ flex-direction:column; align-items:stretch; }
+  .os-wb-side{ align-self:stretch; }
+  .os-wb-side .os-wb-btn{ width:100%; min-width:0; }
 }
 /* ORB CONGRUENCE (Pass 1) — jewel glyphs, one visual weight. Identities
    unchanged (same ★ ○ ✦ ▲ ◆ ⇄ ✎ ♥ ☆); only the size is tuned per glyph, so
@@ -23042,19 +23067,43 @@ html body .os-constellation .os-ld-nodes button.os-ld-node[data-node="saves"] .o
 #os-eco-plus{ left:16px !important; right:auto !important; top:164px !important; }
 #page-settings{ left:16px !important; right:auto !important; top:220px !important; }
 #settings-panel{ left:64px !important; right:auto !important; top:268px !important; }
-/* PHONE (<=700px) — the pills become a CENTERED horizontal row, so their
-   left edge slides left as the phone narrows (Day pill x60 at 390px, x45
-   at 360px) and the row sweeps straight through ANY fixed left-column
-   button as it scrolls past: measured live — 360px: eco-plus x Day 19x10
-   and gear x Day 11x13 at y400, toggle x Day 11x21 at y500; 375px: same
-   three, smaller; 390px: eco-plus x Day 4x10 at y400; 414/430px: clear.
-   No fixed spot on the left is safe at every width, so on phones the four
-   left controls scroll WITH the page (position:absolute): at scroll 0 they
-   sit exactly where they are now; scrolled down they ride up and away,
-   and the pills row (page y~600) never meets them — zero overlap at
-   320-430px, every scroll, both modes. Desktop keeps the fixed column. */
+/* PASS 1 v4 (2026-11-05) — THE LEFT COLUMN SCROLLS WITH THE PAGE AT EVERY
+   WIDTH. v3 proved the phone cure: at <=700px the five left controls are
+   position:absolute — at scroll 0 they sit exactly where the fixed column
+   sat; scrolled down they ride up and away. v3 left desktop fixed, and the
+   parent's own eyes caught the hole in the v3 screenshots: the fixed +
+   button hides "Yo" of "Your world, board by board" and the fixed gear
+   hides the "E" of "Every page..." (1920x950 y1600), and the fixed gear
+   covers the "3" of the Business board's "300" SMART SCORE (y2000). v3's
+   "zero overlaps" check was controls-vs-PILLS only — it never looked at
+   controls-vs-CONTENT. No fixed spot on the left is safe at ANY width (the
+   pills proved it on phones; the content proves it on desktop), so the
+   absolute rule now applies at every width: the column rides up with the
+   page, nothing can ever slide under it, and no card shrinks or moves —
+   every content pixel is identical to v3. At scroll 0 the controls sit
+   exactly where they sat; the settings panel stays fixed (display:none
+   until opened, next to the gear at scroll 0). */
+#os-rooms-plus, #os-eco-plus, #hero-toggle, #page-settings, #viewport-back{ position:absolute !important; }
+/* PASS 1 v4 — PHONE TOP BAND (2026-11-05): on phones the pills row is FIXED
+   at viewport-top (y≈8–73) while the left controls are absolute at
+   document-top, so every control rises through the pills band as the page
+   scrolls (measured: eco-plus x Home at y150, gear x Home at y200; in hero,
+   back + rooms x Home from scroll 0). Two parts, phones only: the column
+   starts BELOW the band (rooms 84, toggle 184, eco 236, gear 292, back 88),
+   and it leaves entirely once scrolled (body.os-scrolled, hooked into the
+   smart bar's existing scroll listener; hero mode exempt — the pills scroll
+   away with the page there and the back button must stay tappable). */
 @media (max-width:700px){
-  #os-rooms-plus, #os-eco-plus, #hero-toggle, #page-settings, #viewport-back{ position:absolute !important; }
+  #os-rooms-plus{ top:84px !important; }
+  #hero-toggle{ top:184px !important; }
+  #os-eco-plus{ top:236px !important; }
+  #page-settings{ top:292px !important; }
+  #viewport-back{ top:88px !important; }
+  body.os-scrolled:not(.hero-mode) #os-rooms-plus,
+  body.os-scrolled:not(.hero-mode) #os-eco-plus,
+  body.os-scrolled:not(.hero-mode) #hero-toggle,
+  body.os-scrolled:not(.hero-mode) #page-settings,
+  body.os-scrolled:not(.hero-mode) #viewport-back{ display:none !important; }
 }
 </style>
 </body></html>
