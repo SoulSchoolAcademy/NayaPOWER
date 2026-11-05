@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-05 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-05 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -29683,6 +29683,14 @@ _Last updated: 2026-11-05 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0022 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
+**Task:** Fossil sweep empty-batch + queue triage + merge-seat report
+
+**Receipt:** `twelve-lane-receipts/t0022-lane7.md`
+
+**Evidence:** Verified: PR #2453 head 3dd7837d and compound_scale head ac270833 exist as commits in local mirror; triage pins for 10 oldest drafts cited exactly (historical ls-remote values, not re-derivable live); honest empty-batch handling — 30-day bar met by zero PRs, fallback triage executed, bar ruling explicitly requested instead of closing without author
+
+### ✅ t0022 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
 **Task:** Fossil sweep empty-batch fallback triage + merge-seat pipeline report
 
 **Receipt:** `twelve-lane-receipts/t0022-lane7.md`
@@ -29740,6 +29748,14 @@ _Last updated: 2026-11-05 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0022-lane7.md`
 
 **Evidence:** Dispatcher verified via git protocol: #1139 head 7aca47da..., #1130 head 18916738... (matches t1242 pin), #2453 head 3dd7837d... all match receipt pins. REST legs (1130 open/draft) not re-verified this tick (gh-api allowlist error; head pins match). Correct fallback to triage when batch empty; explicit bar-ruling ask to dispatcher. Deductions per r
+
+### ✅ t0022 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** t1412 G0 seal re-verification (void) + compound_scale end-to-end proof
+
+**Receipt:** `twelve-lane-receipts/t0022-lane2.md`
+
+**Evidence:** Verified: PREREG-sealed.md and lane-experiments/t0022/scale-run/run_report.json exist on disk; branch naya/two-compoundscale-fixture-t1432 head ac270833 exists as commit in local mirror; seal-abort logic followed exactly per pre-reg (2 pin mismatches from legitimate Lane 6 refresh, slot voided honestly, no fudged probes); 11/11 lessons PROVEN + 3/3
 
 ### ✅ t0022 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
@@ -29803,6 +29819,14 @@ _Last updated: 2026-11-05 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0022 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
+**Task:** Human-value instrument v1.2 + window audit t1402-t0022
+
+**Receipt:** `twelve-lane-receipts/t0022-lane11.md`
+
+**Evidence:** Verified: lane-11/metric_audit_t0022.json, hv_output_t0022_run1.json, SUMMARY_t0022.md all exist on disk; midnight-wrap fix (lo>hi windows) plus honest reconstruction of the unsaved t1402 stdout with boundary receipts excluded/restored; machine cross-check reproduced hand counts exactly (M2:18/M3:11/M4:15); M3 uniform-12/12 verdict independently br
+
+### ✅ t0022 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
 **Task:** Human-value window audit t1402-t0022 + instrument v1.2 midnight-wrap
 
 **Receipt:** `twelve-lane-receipts/t0022-lane11.md`
@@ -29860,6 +29884,14 @@ _Last updated: 2026-11-05 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0022-lane11.md`
 
 **Evidence:** Dispatcher verified on disk: metric_audit_t0022.json sha256 aace8582... == receipt pin; hv_output_t0022_run1/2.json present; out-t1402-backup/ NOTE.md + reconstruction present. M3 uniform-verdict broken by independent re-judgment (honest flag, not hidden); t1402-stdout loss owned as reconstruction-not-copy. Deductions per receipt: single-seat judgm
+
+### ✅ t0012 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Fossil-draft verification + #2453 merge-bar watch
+
+**Receipt:** `twelve-lane-receipts/t0012-lane7.md`
+
+**Evidence:** Verified: PR #2453 head 3dd7837d exists as commit in local mirror; fossil-close head pins and comment IDs cited exactly (historical REST state, spot-checkable via cited comment IDs, not re-derivable live a month on); genuine new finding surfaced (SEAT_RE lane-tag gap blocks all lane-authored PRs through the review gate). Why not 9.5: fossil leg was
 
 ### ✅ t0012 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
@@ -29971,6 +30003,14 @@ _Last updated: 2026-11-05 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0012 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
+**Task:** Meta-trend instrument refresh + SGF cold dry run of t992 9.65 claim
+
+**Receipt:** `twelve-lane-receipts/t0012-lane6.md`
+
+**Evidence:** Verified: SGF run dir lane-6/sgf-daily/run-2026-10-12-T2 holds 9 files; branch naya/nine-receipt-gate-t902 live head a545f110 exists as commit in local mirror; receipt's pinned head a459481c absent from origin per receipt (consistent with 'committed locally only'); blinded scorer + sealed-brief protocol followed, RECEIPT_REFUTED reproduced with dri
+
+### ✅ t0012 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
 **Task:** Meta-trend instrument refresh + SGF cold dry run reproduction of the t992 9.65 claim
 
 **Receipt:** `twelve-lane-receipts/t0012-lane6.md`
@@ -30076,6 +30116,14 @@ _Last updated: 2026-11-05 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0012-lane6.md`
 
 **Evidence:** Artifacts on disk verified: run dir 9 artifacts, meta-trend.json present, tip pin aa8061c1 == live. Reproduction REPRODUCED-WITH-DRIFT with exact divergence points named; fixed exec_lane checker bug; fresh catch brief-5-vs-receipt-4 files. -1: same-family scorer (disclosed), N=1 reproduction.
+
+### ✅ t0012 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** Veracity arm re-verification + stale bookkeeping closure
+
+**Receipt:** `twelve-lane-receipts/t0012-lane1.md`
+
+**Evidence:** Verified: VERACITY-ARM.md, lane8 battery.py (sha256 6e855e783182a9b1... matches pinned reference), blinded-scores-t1302.md ends 'Verdict: CERTIFIED', live tip aa8061c1 exists as commit in local mirror. Honest verification-not-construction call (work already done at t1312) plus stale-checkbox fix that caused the re-brief. Why not 9.5: blinded escrow
 
 ### ✅ t0012 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
