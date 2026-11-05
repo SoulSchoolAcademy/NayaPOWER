@@ -3887,6 +3887,25 @@ fetch('/feed-live.json').then(function(r){ return r.json(); }).then(function(d){
 })();
 </script>
 <script>
+/* DNA law enforcement (Resolve, 2026-11-05): Law 14 — no voice buttons on
+   display surfaces, hidden by law (the read-aloud buttons carry the
+   .naya-voice-btn class). Law 2 — the background is obsidian #050607,
+   never #0B0D12. Boards read alive: a tone edge at rest, full light on
+   scroll (with the v2 rules). Display-layer only; no app logic touched.
+   Preserve across rebakes. */
+(function(){
+  var st=document.createElement('style'); st.id='rv-law-style';
+  st.textContent=[
+    '.naya-voice-btn{display:none !important}',
+    'body{background-color:#050607 !important}',
+    '[style*="0B0D12"],[style*="0b0d12"]{background-color:#050607 !important}',
+    '.ib-card{border:1px solid rgba(255,255,255,.10)}',
+    '.ib-card.rv-lit{border-color:rgba(255,255,255,.22)}'
+  ].join('\n');
+  (document.head||document.documentElement).appendChild(st);
+})();
+</script>
+<script>
 
 </script>
 <script>/* js/components.js @ baf1221d9 */
