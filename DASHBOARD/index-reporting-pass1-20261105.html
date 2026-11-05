@@ -16950,7 +16950,22 @@ function ldCloseDrawer(){
 /* Back button restores the full viewport */
 document.addEventListener('DOMContentLoaded', function(){
   var back = document.getElementById('viewport-back');
-  if (back) back.addEventListener('click', function(){ ldCloseDrawer(); });
+  /* PASS 1 v5 (2026-11-05) — BACK BUTTON EXITS HERO TOO. The button shows
+     in hero mode AND viewport-focus mode ("Back to full view"), but
+     ldCloseDrawer() only removes viewport-focus — in hero mode the tap did
+     nothing (proven by a real pointer tap: the button top at its center,
+     hero still active after). The full view is neither hero nor focused,
+     so the back button leaves both — and syncs the hero-toggle label the
+     way the settings panel's nav action does, plus re-lays out the orbs
+     the way the toggle does. ldCloseDrawer() itself is untouched (Escape
+     and the drawer's own close button keep their drawer-only meaning). */
+  if (back) back.addEventListener('click', function(){
+    ldCloseDrawer();
+    document.body.classList.remove('hero-mode');
+    var ht = document.getElementById('hero-toggle');
+    if (ht){ ht.textContent = '✕'; ht.title = 'Back to hero view'; }
+    if (typeof ldLayoutNodes === 'function') ldLayoutNodes();
+  });
   /* 2026-11-01 — Shawn: FOCUS MODE. Click a major element → front and center.
      The object matrix: whatever you tap becomes the viewpoint. */
   function initFocusMode(){
@@ -18799,7 +18814,16 @@ function osWireDonutLegend(){
   padding-top:env(safe-area-inset-top);
   font-family:Inter,system-ui,sans-serif;}
 /* SEARCH-BELOW-BAR law: bar is fixed, search flows in normal document flow below it */
-.nsb-topstack .nsb-top{position:fixed;top:0;left:0;right:0;z-index:901;}
+/* PASS 1 v5 (2026-11-05) — THE TOP BAR SCROLLS WITH THE PAGE. The fixed
+   pills bar clipped board text at every settled scroll stop (measured:
+   24 clips at 1920x950, 18 at 390x844 — any scroll stop with board text
+   in the top 104/102px band hid it; the live browser's "cleared with a
+   little more scrolling" was one passing instance of a systematic defect).
+   Same cure as v4's left column: the bar is absolute, not fixed — at
+   scroll 0 it sits exactly where it sat; scrolled down it rides up and
+   away, so nothing can ever slide under it. The bottom bar stays fixed
+   as the always-there nav. */
+.nsb-topstack .nsb-top{position:absolute;top:0;left:0;right:0;z-index:901;}
 .nsb-topstack .nsb-searchlevel{position:static;margin-top:64px;
   /* 2026-11-01 — Shawn: squeeze flush. 12px was still a gap. 4px — the search
      sits against the tabs, no black void. */
@@ -23104,6 +23128,75 @@ html body .os-constellation .os-ld-nodes button.os-ld-node[data-node="saves"] .o
   body.os-scrolled:not(.hero-mode) #hero-toggle,
   body.os-scrolled:not(.hero-mode) #page-settings,
   body.os-scrolled:not(.hero-mode) #viewport-back{ display:none !important; }
+}
+/* PASS 1 v5 (2026-11-05) — THE TRUTH METER IS VISIBLE AND TAPPABLE.
+   DIAGNOSIS (measured live, diag-pass1-v5 + diag2 + diag3 + diag4): the
+   meter is the first child of #os-dash at document y24 (desktop) / y16
+   (phone) — directly UNDER the fixed top bar (viewport y0-104 desktop,
+   y0-102 phone) — and display:none whenever the ledger agrees (Shawn's
+   2026-11-01 ruling: the bar only appears when numbers disagree). So it
+   was visible NOWHERE: under the bar when disagreeing, silent by design
+   when live. The v4 probe read it from the DOM without proving it
+   visible — a display:none element still has textContent.
+   FIX: the meter leaves the flow (position:absolute, anchored to #os-dash,
+   which gains position:relative) and sits in the empty band between the
+   top bar and the constellation — desktop y120-152 (bar ends 104, toggle
+   ends 117, constellation starts 155), phone y134-166 (bar ends 102,
+   rooms ends 132, constellation starts 168). #os-dash gains padding-top
+   46px — exactly the meter's old flow slot (32px bar + 14px gap) — so
+   every content pixel stays where it was and the layout no longer jumps
+   when the meter appears or disappears. The meter is a bar again (left +
+   right set, full width minus the left column on desktop, full width on
+   phones so its one-line text, 331px measured, fits in 358px),
+   z-index 950, above the constellation and below the popover (9000).
+   In hero / viewport-focus the top bar is faded, so the meter takes the
+   top of the viewport instead (centered on desktop, full width on
+   phones). The tick and staleness logic is untouched — the meter still
+   flags any real mismatch, and live/stale/partial stay silent by design. */
+#os-dash{ position:relative; padding-top:46px; }
+.tn-truth-meter{
+  position:absolute; z-index:950;
+  top:96px; left:72px; right:24px;
+  width:auto;
+}
+.tn-truth-meter.tn-truth-m-loading{ width:auto; }
+/* Hero / viewport-focus: the top bar is faded, so the meter takes the top
+   of the viewport, centered, clear of the left column and the back button. */
+body.hero-mode .tn-truth-meter,
+body.viewport-focus .tn-truth-meter{
+  top:0; left:50%; right:auto; transform:translateX(-50%);
+  width:max-content; max-width:640px;
+}
+/* PASS 1 v5 — BACK BUTTON (2026-11-05): in hero mode it sat at top-left
+   (16,16), exactly under the rooms "+" button (12,12, z-index 900 vs the
+   back button's 100) — the rooms button's "+" SVG intercepted every tap
+   (measured: elementFromPoint at the back button's center returns the
+   rooms SVG, both widths, hero mode). The 2026-11-01 "top-LEFT, paired
+   with the toggle top-right" direction predates v4 moving the toggle into
+   the left column; the pair is now one control each side. The back button
+   takes the free top-right corner in hero / viewport-focus (z-index 1200,
+   above every chrome SVG). On phones it drops below the hero meter
+   (top:64px) so the two never meet. */
+body.hero-mode #viewport-back,
+body.viewport-focus #viewport-back{
+  left:auto !important; right:16px !important; top:16px !important;
+  z-index:1200 !important;
+}
+@media (max-width:700px){
+  /* PASS 1 v5 — PHONES: the empty band is y134-166 (bar ends 102, rooms
+     ends 132, constellation starts 168); the meter is full width so its
+     one-line text (331px) fits in 358px. In hero the meter takes the top
+     of the viewport, full width; the back button drops below it. */
+  .tn-truth-meter{ top:118px; left:0; right:0; }
+  body.hero-mode .tn-truth-meter,
+  body.viewport-focus .tn-truth-meter{
+    top:0; left:0; right:0; transform:none;
+    width:auto; max-width:none;
+  }
+  body.hero-mode #viewport-back,
+  body.viewport-focus #viewport-back{
+    top:64px !important;
+  }
 }
 </style>
 </body></html>
