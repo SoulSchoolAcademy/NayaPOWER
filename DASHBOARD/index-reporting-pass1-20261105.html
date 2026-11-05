@@ -23025,5 +23025,22 @@ html body .os-constellation .os-ld-nodes button.os-ld-node[data-node="saves"] .o
    10x32px on the Month pill). Left side, under the back button, is clear in
    every mode and every scroll position. */
 #hero-toggle{ left:16px !important; right:auto !important; }
+/* FULLSCREEN SCROLL REVAMP, CONT. (Pass 1 fix-up 2026-11-05 ~19:05Z) — the
+   OTHER two fixed top-right buttons sat in the pills' path too. Measured
+   live (Playwright, 1920x950): hero — #os-eco-plus overlaps the Day pill
+   12x36px, #page-settings overlaps the Week pill 8x31px; normal scrolled —
+   eco-plus overlaps Day 12x17px at y300 (Week 12x15 + Month 12x23 at y400),
+   gear overlaps Day 8x16 + Week 8x14 at y300 (Month + All at y400). Same
+   cure as the toggle: join the left column, under the hero-toggle
+   (back y16-60, toggle y112-156, eco-plus y164-212, gear y220-260 — 8px
+   gaps, nothing overlaps). The settings panel travels with its gear
+   (was top:112 right:64 under the old spot; now left:64 top:268). The eco
+   menu already opens top-left (x12 y72, under rooms-plus), independent of
+   its trigger, so it needs no move. Side benefit: at 1920x950 the top
+   smart-bar row covered eco-plus, so it was unclickable there — on the
+   left, below the bar, it can be tapped. */
+#os-eco-plus{ left:16px !important; right:auto !important; top:164px !important; }
+#page-settings{ left:16px !important; right:auto !important; top:220px !important; }
+#settings-panel{ left:64px !important; right:auto !important; top:268px !important; }
 </style>
 </body></html>
