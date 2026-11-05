@@ -4364,7 +4364,7 @@ html.os-calm
   <nav class="eco-menu" id="os-eco-menu" aria-label="NayaNET ecosystem destinations">
     <div class="eco-head">NAYANET ECOSYSTEM</div>
     <a href="https://hmclibrary.groovemember.net/home" target="_blank" rel="noopener" style="--eco:#ed42c4"><span class="eco-ico">&#8962;</span><span class="lbl">HOME</span><span class="ext">&#8599;</span></a>
-    <a href="https://humanmaximuscodex.groovesell.com/checkout/08fba2cbd6488ef4d2cc82b52d361dab" target="_blank" rel="noopener" style="--eco:#8a5cff"><span class="eco-ico">&#9889;</span><span class="lbl">NAYA POWER</span><span class="ext">&#8599;</span></a>
+    <!-- PASS 1 v6 (2026-11-05) — (b) the NAYA POWER eco-menu link pointed at the old Codex checkout; removed, no replacement invented. The joinus Smart Link destination is ledger data and stays. -->
     <a href="https://nayanet.groovepages.com/aboutus" target="_blank" rel="noopener" style="--eco:#3ca8ff"><span class="eco-ico">&#128101;</span><span class="lbl">ABOUT US</span><span class="ext">&#8599;</span></a>
     <a href="https://getpaid.takeyourpowerback.xyz/" target="_blank" rel="noopener" style="--eco:#35e39b"><span class="eco-ico">&#128188;</span><span class="lbl">YOUR HIRED</span><span class="ext">&#8599;</span></a>
     <a href="https://nayanet.groovepages.com/whitepaper" target="_blank" rel="noopener" style="--eco:#ffea00"><span class="eco-ico">&#128196;</span><span class="lbl">WHITE PAPER</span><span class="ext">&#8599;</span></a>
@@ -4467,6 +4467,8 @@ html.os-calm
 <div class="os-score-elegant" id="os-score-elegant">
   <div class="os-se-val" id="os-se-val"><span class="os-skel-line" style="width:120px;height:59px;border-radius:12px;vertical-align:middle;"></span></div>
   <div class="os-se-label">SMART SCORE</div>
+  <div class="os-score-derive" id="os-score-derive" aria-live="polite"></div>
+  <div class="os-score-next" id="os-score-next"></div>
 </div>
 </div>
 <!-- 2026-11-02 — SHAWN: pace pill REMOVED. Stuck content, not part of the gauge. -->
@@ -4503,7 +4505,7 @@ html.os-calm
 </div>
 <div class="os-sales-orbs" id="os-sales-orbs"></div>
 </div>
-<div class="os-sales-total"><div class="os-sales-total-n" id="os-sales-total-n">$0</div><div class="os-sales-total-l">Revenue</div></div>
+<div class="os-sales-total"><div class="os-sales-total-n" id="os-sales-total-n">—</div><div class="os-sales-total-l">Clicks</div></div>
 </div>
 <div class="os-invites-view" id="os-invites-view" role="dialog" aria-label="Invites detail" aria-hidden="true">
 <button type="button" class="os-invites-x" id="os-invites-x" aria-label="Close invites detail">×</button>
@@ -4962,7 +4964,7 @@ body:not(.hero-mode) .os-ld{
   min-height:100vh; min-height:100svh;
   display:flex; flex-direction:column;
   align-items:center; justify-content:center;
-  padding:2vh 0 calc(2vh + 176px);
+  padding:32px 0 calc(2vh + 176px); /* PASS 1 v6 (a): top padding 2vh (~19px) -> 32px — the meter band (toggle bottom to constellation top) needs 36px for the 26px meter with clearance. */
   /* 2026-11-02 — FIX: bottom clearance for fixed smart bar (~80px) + 20px breathing room.
      Score no longer collides with #nsbBottom.
      2026-11-05 — DEFECT FIX 2: the constellation grew to 670px since 11-02, so the
@@ -4982,7 +4984,7 @@ body.viewport-focus .nsb-bottom{display:none !important; visibility:hidden !impo
   display:flex; align-items:center; justify-content:center;
 }
 body:not(.hero-mode) .os-constellation{
-  height:480px;
+  height:430px; /* PASS 1 v6 (d): was 480 — the orbit only needs 322px; the dead 50px pushed the big number + label under the fixed bar on phones. */
 }
 .os-constellation #tn-tacho-mount{
   position:absolute;
@@ -5067,7 +5069,7 @@ body.has-orbs .os-pts-toggle{
   pointer-events:auto;
 }
 .os-pts-btn{
-  padding:8px 20px; font-size:12px; font-weight:800; letter-spacing:.1em;
+  padding:6px 20px; font-size:12px; font-weight:800; letter-spacing:.1em;
   color:rgba(255,255,255,.5); background:transparent; border:none; cursor:pointer;
   transition:all .2s;
 }
@@ -5083,11 +5085,22 @@ body.has-orbs .os-pts-toggle{
    the fixed smart bar at scroll 0. Gap 48 -> 8px; the constellation slack
    (neededH) and the block bottom padding carry the rest of the clearance.
    The score itself does NOT move — it stays the speedometer's in-dial readout. */
-.os-score-elegant{text-align:center;margin:8px auto 0;padding:0;width:100%;display:block;clear:both;}
+.os-score-elegant{text-align:center;margin:0 auto 0;padding:0;width:100%;display:block;clear:both;} /* PASS 1 v6 (d): was margin-top 8 — reclaims 8px for the label. */
 .os-se-val{font-size:59px;font-weight:900;text-align:center;display:block;color:#fff;letter-spacing:.02em;
   text-shadow:0 0 18px rgba(160,107,255,.8),0 0 40px rgba(160,107,255,.4);
   font-variant-numeric:tabular-nums;line-height:1;}
 .os-se-label{font-size:10px;font-weight:800;letter-spacing:.28em;color:rgba(255,255,255,.55);margin-top:4px;}
+/* PASS 1 v6 (i) — THE SCORE AS A LIVING DERIVATION. The parts fan beneath
+   the number; each part is a live door into its drill-down; one line
+   names the next move. */
+.os-score-derive{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;margin-top:10px;padding:0 12px;}
+.os-score-derive .os-sd-part{appearance:none;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#fff;font-family:inherit;font-size:12px;font-weight:800;border-radius:999px;padding:5px 10px;cursor:pointer;}
+.os-score-derive .os-sd-part:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.12);}
+.os-score-derive .os-sd-op{color:rgba(255,255,255,.55);font-size:12px;font-weight:700;}
+.os-score-derive .os-sd-sum{color:#fff;font-weight:900;font-size:13px;}
+.os-score-derive .os-sd-empty{color:rgba(255,255,255,.6);font-size:12px;}
+.os-score-next{margin-top:8px;font-size:12px;color:rgba(255,255,255,.75);text-align:center;padding:0 12px;}
+.os-score-next .os-sd-share{appearance:none;border:none;background:none;color:#7fd4ff;font-family:inherit;font-size:inherit;font-weight:800;cursor:pointer;text-decoration:underline;text-underline-offset:2px;padding:0;}
 .os-big-num{
   text-align:center; margin:16px auto 8px;
   /* 2026-11-02 — FIX: Clearance from orbs. Was too tight. */
@@ -5131,7 +5144,7 @@ body:not(.hero-mode) .os-ld-node{
 body:not(.hero-mode) .os-pts-toggle{
   position:relative; z-index:10;
   order:-1;
-  margin-bottom:16px;
+  margin-bottom:4px; /* PASS 1 v6 (a)+(d): was 16 — reclaims 12px for the big number. */
 }
 body:not(.hero-mode) .os-ld-org{
   display:flex; flex-direction:column; align-items:center;
@@ -5225,6 +5238,14 @@ body:not(.hero-mode) #tn-tacho-mount{
   }
   .os-ld-timepills button{padding:6px 14px !important;}
   .os-score-elegant{margin-top:42px !important;}
+  /* PASS 1 v6 (e): orb labels may wrap on phones — "Smart notes" ran 88px
+     wide on one line (white-space:nowrap) and was cut by its neighbours.
+     64px / 9px / two lines reads fully. */
+  .os-constellation .os-ld-node .os-ld-lbl,
+  button.os-ld-node .os-ld-lbl{
+    white-space:normal !important; max-width:64px;
+    line-height:1.25 !important; font-size:9px !important;
+  }
 }
 /* Smart Links: own viewpoint below the fold */
 body:not(.hero-mode) .os-sl-board{
@@ -6916,6 +6937,22 @@ button.os-ld-node .os-ld-n{
 /* 2026-11-02 — FIX: drawerPop scale animation broke the drawer layout.
    REMOVED (consolidated into .os-ld-drawer.open above). */
 
+/* PASS 1 v6 (g) — CLOSED DRILL-DOWNS MUST NOT EAT TAPS. Every view's inner
+   orbs re-enable pointer-events (pointer-events:auto on .os-X-view
+   .os-ld-node) while the view itself sits at opacity:0 +
+   pointer-events:none — so the invisible orbs, painted at z-index 10001,
+   swallow taps meant for the constellation orbs beneath them. Measured:
+   elementFromPoint at the Comments orb's center returned the hidden
+   Invites view's bottom-left orb, so Comments never opened. The open
+   mechanism itself works; the covering orbs were the defect. Only an
+   OPEN view's orbs take taps now. */
+.os-sales-view:not(.open) .os-ld-node, .os-joins-view:not(.open) .os-ld-node,
+.os-notes-view:not(.open) .os-ld-node, .os-invites-view:not(.open) .os-ld-node,
+.os-creations-view:not(.open) .os-ld-node, .os-shares-view:not(.open) .os-ld-node,
+.os-comments-view:not(.open) .os-ld-node, .os-likes-view:not(.open) .os-ld-node,
+.os-saves-view:not(.open) .os-ld-node, .os-smartlink-view:not(.open) .os-ld-node{
+  pointer-events:none !important;
+}
 /* 2026-11-01 — VIEWPORT OPTIMIZATION LAW (SN-0834). When an orb's story opens,
    the screen morphs to the stats: search fades, top nav fades, the detail
    takes center stage. A tiny back button restores the full view. */
@@ -7081,7 +7118,7 @@ body.viewport-focus #viewport-back{ display:block; }
 #os-points-board .os-lawone{position:relative;z-index:2;}
 /* ---- small screens: the organism becomes a constellation grid ---- */
 @media (max-width:700px){
-  .os-ld-org{min-height:0;padding:8px 12px 4px;}
+  .os-ld-org{min-height:0;padding:8px 0 4px;} /* PASS 1 v6 (e): side padding 12->0 — the constellation grows 334->358px so the 60px orbs orbit clear of the gauge rim (138px radius, 2px clear of the bezel). */
   .os-ld-core{position:relative;left:auto;top:auto;transform:none;margin:6px auto 14px;
     width:212px;height:212px;animation:osLdBreatheM 4.5s ease-in-out infinite;}
   @keyframes osLdBreatheM{0%,100%{transform:scale(1);}50%{transform:scale(1.022);}}
@@ -11666,6 +11703,12 @@ NF.register(UNIT, {
     try { if (!sb && typeof supabase !== 'undefined') sb = supabase.createClient(SB_URL, SB_ANON); } catch(e) {}
     if (sb) { try { loadDashboard(); } catch(e) {} }
   });
+  /* PASS 1 v6 (h): the ready event can fire BEFORE this listener exists
+     (the head loader is fast; this 1.4MB page parses slowly) — then sb
+     stays null forever and the page stamps "Connection unavailable" and
+     never retries. If the library is already here, connect now; the
+     parse-time loadDashboard below does the load with sb set. */
+  try { if (!sb && typeof supabase !== 'undefined') sb = supabase.createClient(SB_URL, SB_ANON); } catch(e) {}
   function $(id){ return document.getElementById(id); }
   function esc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
   function presenceOf(iso){
@@ -12788,6 +12831,27 @@ NF.register(UNIT, {
   function loadDashboard(){
     var front=$('os-dash'); if (!front) return;
     if (!sb){
+      /* PASS 1 v6 (h): never stamp a PERMANENT "Connection unavailable"
+         on a first miss — the library may simply not have arrived yet.
+         Show "Connecting…" and retry for 30s; only then call it
+         unavailable. A slow connection is not a dead one. */
+      window._dashConnRetries = (window._dashConnRetries || 0);
+      if (window._dashConnRetries < 6){
+        window._dashConnRetries++;
+        var n=$('os-dash-n-posts-note'); if (n) n.textContent='Connecting… — the ledger is being reached. This front reads live data only, so it shows nothing rather than something invented.';
+        var lh=$('os-dash-links-head'); if (lh) lh.textContent='Connecting… — Smart Links read live data only.';
+        var _pn=$('os-points-note'); if (_pn) _pn.textContent='Connecting… — your actions will start counting here the moment the connection returns. Nothing is invented.';
+        if (!window._dashConnRetryOn){
+          window._dashConnRetryOn = true;
+          setTimeout(function(){
+            window._dashConnRetryOn = false;
+            try { if (!sb && typeof supabase !== 'undefined') sb = supabase.createClient(SB_URL, SB_ANON); } catch(e) {}
+            try { loadDashboard(); } catch(e) {}
+          }, 5000);
+        }
+        try{ wireViewToggle(); }catch(e){}
+        return;
+      }
       var n=$('os-dash-n-posts-note'); if (n) n.textContent='Connection unavailable — this front reads live data only, so it shows nothing rather than something invented.';
       var lh=$('os-dash-links-head'); if (lh) lh.textContent='Connection unavailable — Smart Links read live data only.';
       var _pn=$('os-points-note'); if (_pn) _pn.textContent='Connection unavailable — your actions will start counting here the moment the connection returns. Nothing is invented.';
@@ -12918,7 +12982,7 @@ NF.register(UNIT, {
         osGuard('verify',function(){osVerifySpine();});
         osGuard('funnel-stages',function(){osWireFunnelStages(d);});
         osGuard('donut-legend',function(){osWireDonutLegend();});
-        window._dashD=d; if(!window._dashLinkT) window._dashLinkT={c:0,j:0};
+        window._dashD=d; if(!window._dashLinkT) window._dashLinkT={c:0,j:0}; window._dashDataLanded=true; /* PASS 1 v6 (f): the ledger has landed — the Sales slot may read a real number now. */
         try{ renderPluginsNative(d); }catch(e){}
         try{ loadPointsBoard(); }catch(e){}
         try{ loadPagesBoard(); }catch(e){}
@@ -12982,8 +13046,8 @@ function dashFixFP(s){ var h=0; for (var i=0;i<s.length;i++){ h=((h<<5)-h+s.char
    object is value-table.json's in-page mirror — the design gate checks parity
    field by field, check #10). memberBonus = the one-time membership credit;
    negatives = the per-count multiplier applied by subtraction. */
-var LD_VALUES = { birth:75, posts:25, notes:35, saves:5, invites:25, joins:50,
-  memberBonus:40, sales:100, likes:1, comments:5, shares:5, externalShares:10,
+var LD_VALUES = { birth:75, posts:25, notes:35, saves:2, invites:25, joins:50,
+  memberBonus:40, sales:100, likes:1, comments:5, shares:15, externalShares:10,
   connections:10, spaceJoins:15, matches:20, blocks:15, lessons:20, negatives:1 };
 /* 2026-11-01 — Shawn: COLORS BY VALUE AND MEANING.
    Highest value = most premium color. Sales(100)=magenta · Joins(50)=purple ·
@@ -13000,6 +13064,10 @@ var LD_NODES = [
   {key:'likes',  label:'Likes',       color:'#ff5e6c', lang:'pulsebars',     jewel:'\u2665', value:1},
   {key:'saves',  label:'Saves',       color:'#c9a0ff', lang:'constellation', jewel:'\u2606', value:2},
 ];
+/* PASS 1 v6 follow-up (2026-11-05) — LD_NODES/LD_VALUES are IIFE-scoped,
+   so window.LD_NODES was [] and _worldTotals' top[] was always empty:
+   every board fell back to 0/0. Expose them; the boards read window. */
+window.LD_NODES = LD_NODES; window.LD_VALUES = LD_VALUES;
 /* 2026-11-02 — Shawn: DEMO MODE early detection */
 window._demoMode = (function(){
   try {
@@ -14044,6 +14112,10 @@ function ldData(){
            clicks: lt.c, joins: lt.j, member: 0,
            clickDayMap: window._dashClickDayMap||{} };
 }
+/* PASS 1 v6 follow-up (2026-11-05) — ldData is IIFE-scoped, not a
+   global: window.ldData() was undefined, so refreshDrillDemos and
+   drillSeriesFor always got null. Expose it. */
+window.ldData = ldData;
 function ldInWindow(times, w){
   if (w === 'all') return (times||[]).slice();
   var cfg = LD_WINDOWS[w];
@@ -14281,6 +14353,9 @@ function ldNodeSVG(node, PD, w, n){
   if (node.lang==='climb') return ldClimb(41, node.color);
   return ldSVGHead() + '</svg>';
 }
+/* PASS 1 v6 follow-up (2026-11-05) — ldNodeCount is IIFE-scoped; the
+   boards' _worldTotals reads the window version as a fallback. */
+window.ldNodeCount = ldNodeCount;
 /* ---- momentum: Calm / Flowing / Surging from real data ---- */
 function ldAutoMomentum(PD){
   var cut = Date.now() - 864e5;
@@ -14990,62 +15065,106 @@ var MONTH_LABELS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct',
 var _drillState = {};  // viewKey -> {statKey, statLabel, statColor, ftype, orbKey}
 
 /* Generate realistic time-breakdown data from a stat total */
-function drillTimeData(totalNum, window, seedKey){
-  var seed = 0;
-  for(var i=0;i<seedKey.length;i++) seed = (seed*31 + seedKey.charCodeAt(i)) % 1000;
-  function rnd(n){ seed = (seed*1103515245 + 12345) % 2147483648; return (seed/2147483648)*n; }
+/* PASS 1 v6 (f) — drillSeriesFor: which real series backs a drill
+   stat's time split. Times = ldData timestamp arrays; c/j = the click
+   day-map (window._dashClickDayMap). Everything else has no series, so
+   its split is honest flat zeros — never an invented shape. */
+function drillSeriesFor(viewKey, statKey){
+    var D = null;
+    /* PASS 1 v6 follow-up: bare ldData() first — it is in scope here
+       (same outer IIFE); window.ldData is the exposed fallback. */
+    try { D = (typeof ldData === 'function') ? ldData() : ((typeof window.ldData === 'function') ? window.ldData() : null); } catch(e) {}
+    var dayMap = (window._dashClickDayMap || null);
+    var mkTimes = function(arr){ return arr ? {kind:'times', arr:arr} : null; };
+    var mkDay = function(field){ return dayMap ? {kind:'day', field:field, map:dayMap} : null; };
+    if (viewKey==='sales'){ if(statKey==='s-pages') return mkDay('c'); if(statKey==='s-aff') return mkDay('j'); }
+    if (viewKey==='joins'){ if(statKey==='j-total') return mkDay('j'); }
+    if (viewKey==='notes'){ if(statKey==='n-total') return mkTimes(D && D.noteTimes); if(statKey==='n-saves') return mkTimes(D && D.saveTimes); }
+    if (viewKey==='creations'){ if(statKey==='c-pages') return mkTimes(D && D.postTimes); }
+    if (viewKey==='invites'){ if(statKey==='i-sent') return mkTimes(D && D.invTimes); if(statKey==='i-acc') return mkDay('j'); }
+    if (viewKey==='saves'){ if(statKey==='v-total') return mkTimes(D && D.saveTimes); }
+    if (viewKey==='smartlink'){ if(statKey==='sl-click') return mkDay('c'); if(statKey==='sl-conv') return mkDay('j'); }
+    return null;
+  }
+function drillTimeData(totalNum, window, seedKey, series, statColor){
+  /* PASS 1 v6 (f): the time split used to be invented — seeded random
+     numbers shaped into "realistic patterns" (a midweek peak, a daily
+     curve, seasonal variation). Now it is real buckets from the ledger,
+     or honest zeros when the stat has no time series. A bar of 0 is the
+     truth; a bar of invented shape is a fabrication wearing the truth's
+     clothes. Known limit: click/joins data is recorded by DAY, so its
+     hourly split is unknowable — the hour window shows zeros for those
+     stats (the day/week/month windows show the real split). */
+  var total = Number(totalNum)||0;
   var bars = [];
+  var today = new Date().getDay(); // 0=Sun
+  var dayIdx = today===0 ? 6 : today-1;
+  var baseColor = statColor || DAY_COLORS[DAY_NAMES[dayIdx]] || '#60a5fa';
+  function wIdx(d){ var g=d.getDay(); return g===0 ? 6 : g-1; } /* getDay -> DAY_NAMES index (Mon=0, Sun=6) */
+  function bucketTimes(arr){
+    arr = arr || [];
+    var now = Date.now();
+    if(window==='day'){
+      var out=[0,0,0,0,0,0,0];
+      arr.forEach(function(ts){ var age=now-ts; if(age>=0 && age<7*864e5){ out[wIdx(new Date(ts))]++; } });
+      return out;
+    } else if(window==='hour'){
+      var out2=[]; for(var i=0;i<24;i++) out2.push(0);
+      arr.forEach(function(ts){ var age2=now-ts; if(age2>=0 && age2<24*36e5){ out2[new Date(ts).getHours()]++; } });
+      return out2;
+    } else if(window==='week'){
+      var out3=[0,0,0,0,0];
+      arr.forEach(function(ts){ var age3=now-ts; if(age3>=0 && age3<35*864e5){ var wk=Math.floor(age3/(7*864e5)); out3[4-Math.min(4,wk)]++; } });
+      return out3;
+    } else {
+      var out4=[]; for(var i2=0;i2<12;i2++) out4.push(0);
+      var curM=new Date().getMonth(), curY=new Date().getFullYear();
+      arr.forEach(function(ts){ var age4=now-ts; if(age4>=0 && age4<365*864e5){ var dd=new Date(ts); var pos=11-((curY-dd.getFullYear())*12+(curM-dd.getMonth())); if(pos>=0&&pos<12) out4[pos]++; } });
+      return out4;
+    }
+  }
+  function bucketDayMap(map, field){
+    map = map || {};
+    var now2 = Date.now();
+    var keys = Object.keys(map).sort();
+    if(window==='day'){
+      var out=[0,0,0,0,0,0,0];
+      keys.forEach(function(k){ var dd=new Date(k+'T00:00:00'); var age=now2-dd.getTime(); if(age>=0 && age<7*864e5){ out[wIdx(dd)] += ((map[k]&&map[k][field])||0); } });
+      return out;
+    } else if(window==='hour'){
+      /* day-granularity data has no hourly split — honest zeros. */
+      var out2=[]; for(var i=0;i<24;i++) out2.push(0);
+      return out2;
+    } else if(window==='week'){
+      var out3=[0,0,0,0,0];
+      keys.forEach(function(k){ var dd2=new Date(k+'T00:00:00'); var age3=now2-dd2.getTime(); if(age3>=0 && age3<35*864e5){ var wk=Math.floor(age3/(7*864e5)); out3[4-Math.min(4,wk)] += ((map[k]&&map[k][field])||0); } });
+      return out3;
+    } else {
+      var out4=[]; for(var i2=0;i2<12;i2++) out4.push(0);
+      var curM2=new Date().getMonth(), curY2=new Date().getFullYear();
+      keys.forEach(function(k){ var dd3=new Date(k+'T00:00:00'); if(!isNaN(dd3.getTime())){ var pos=11-((curY2-dd3.getFullYear())*12+(curM2-dd3.getMonth())); if(pos>=0&&pos<12) out4[pos] += ((map[k]&&map[k][field])||0); } });
+      return out4;
+    }
+  }
+  var counts = null;
+  if (series && series.kind === 'times'){ counts = bucketTimes(series.arr); }
+  else if (series && series.kind === 'day'){ counts = bucketDayMap(series.map, series.field || 'c'); }
   if(window==='day'){
-    // 7 bars: Mon-Sun with realistic weekly pattern (midweek peak, weekend dip for business)
-    var pattern = [0.95, 1.0, 1.05, 1.1, 1.0, 0.55, 0.45];
-    var sum = 0; for(var d=0;d<7;d++) sum += pattern[d];
-    for(var d2=0;d2<7;d2++){
-      var dk = DAY_NAMES[d2];
-      var v = totalNum * (pattern[d2]/sum) * (0.92 + rnd(0.16));
-      bars.push({label:DAY_LABELS[dk], color:DAY_COLORS[dk], value:v});
-    }
+    var c = counts || [0,0,0,0,0,0,0];
+    for(var d=0;d<7;d++){ var dk = DAY_NAMES[d]; bars.push({label:DAY_LABELS[dk], color:DAY_COLORS[dk], value:c[d]}); }
   } else if(window==='hour'){
-    // 24 bars: realistic daily curve (low at night, peak mid-morning and afternoon)
-    var hsum = 0; var hvals = [];
-    for(var h=0;h<24;h++){
-      var base = 0.15;
-      if(h>=6&&h<=9) base = 0.6 + (h-6)*0.15;
-      else if(h>=9&&h<=12) base = 1.0;
-      else if(h>=12&&h<=14) base = 0.85;
-      else if(h>=14&&h<=18) base = 0.9 - (h-14)*0.05;
-      else if(h>=18&&h<=22) base = 0.5 - (h-18)*0.08;
-      var hv = base * (0.85 + rnd(0.3));
-      hvals.push(hv); hsum += hv;
-    }
-    // Use today's day color as gradient base
-    var today = new Date().getDay(); // 0=Sun
-    var dayIdx = today===0 ? 6 : today-1;
-    var baseColor = DAY_COLORS[DAY_NAMES[dayIdx]];
-    for(var h2=0;h2<24;h2++){
-      bars.push({label:h2+':00', color:baseColor, value:totalNum*(hvals[h2]/hsum), dim:h2<6||h2>22});
-    }
+    var c2 = counts || (function(){var z=[];for(var i=0;i<24;i++)z.push(0);return z;})();
+    for(var h=0;h<24;h++){ bars.push({label:h+':00', color:baseColor, value:c2[h], dim:h<6||h>22}); }
   } else if(window==='week'){
-    // 4-5 bars: weeks of the month
     var weeks = ['Wk 1','Wk 2','Wk 3','Wk 4','Wk 5'];
-    var wsum = 0; var wvals = [];
-    for(var w=0;w<5;w++){ var wv = 0.9 + rnd(0.2); wvals.push(wv); wsum += wv; }
     var wcolors = ['#ff9a5a','#ffbf3d','#2fe89e','#7fd4ff','#a06bff'];
-    for(var w2=0;w2<5;w2++){
-      bars.push({label:weeks[w2], color:wcolors[w2], value:totalNum*(wvals[w2]/wsum)});
-    }
+    var c3 = counts || [0,0,0,0,0];
+    for(var w=0;w<5;w++){ bars.push({label:weeks[w], color:wcolors[w], value:c3[w]}); }
   } else {
-    // month / all: 12 bars for months
-    var msum = 0; var mvals = [];
-    for(var m=0;m<12;m++){
-      // Slight seasonal variation
-      var mv = 0.85 + Math.sin((m-2)*Math.PI/6)*0.15 + rnd(0.15);
-      mvals.push(mv); msum += mv;
-    }
     var mcolors = ['#a06bff','#3a5bff','#7fd4ff','#2fe89e','#2fe89e','#ffbf3d',
                    '#ffbf3d','#ff9a5a','#ff9a5a','#ff5e6c','#e84fff','#a06bff'];
-    for(var m2=0;m2<12;m2++){
-      bars.push({label:MONTH_LABELS[m2], color:mcolors[m2], value:totalNum*(mvals[m2]/msum)});
-    }
+    var c4 = counts || (function(){var z=[];for(var i=0;i<12;i++)z.push(0);return z;})();
+    for(var m=0;m<12;m++){ bars.push({label:MONTH_LABELS[m], color:mcolors[m], value:c4[m]}); }
   }
   return bars;
 }
@@ -15054,7 +15173,7 @@ function drillBreakdownHTML(viewKey){
   var ds = _drillState[viewKey];
   if(!ds) return '';
   var win = _chartWindow[viewKey]||'all';
-  var bars = drillTimeData(ds.totalNum, win, viewKey+ds.statKey);
+  var bars = drillTimeData(ds.totalNum, win, viewKey+ds.statKey, drillSeriesFor(viewKey, ds.statKey), ds.statColor);
   var max = Math.max.apply(null, bars.map(function(b){return b.value;}).concat([1]));
   var winLabel = {hour:'Hourly',day:'Daily',week:'Weekly',month:'Monthly',all:'Monthly'}[win]||'Daily';
   var barsHTML = bars.map(function(b,i){
@@ -15466,18 +15585,18 @@ function wireAllChartSwitches(){
 
 /* 2026-11-02 — SALES DRILL-DOWN. Fullscreen gauge+orbs view for the Sales orb.
    Same visual language as the main constellation. Demo data for now (Shawn's order). */
-var SALES_DEMO = {
-  hour:  {rev:'$45',     conv:'2.1%', pages:3,   aff:2,  pct:38},
-  day:   {rev:'$320',    conv:'2.8%', pages:18,  aff:11, pct:52},
-  week:  {rev:'$2,140',  conv:'3.1%', pages:64,  aff:41, pct:64},
-  month: {rev:'$8,960',  conv:'3.4%', pages:118, aff:72, pct:78},
-  all:   {rev:'$12,480', conv:'3.2%', pages:142, aff:89, pct:71}
+var SALES_DEMO = { /* PASS 1 v6 (f): was $12,480 / 142 pages / 89 affiliates — fabricated. The ledger writes the real numbers now. */
+  hour:  {rev:'—', conv:'—', pages:0, aff:0, pct:0},
+  day:   {rev:'—', conv:'—', pages:0, aff:0, pct:0},
+  week:  {rev:'—', conv:'—', pages:0, aff:0, pct:0},
+  month: {rev:'—', conv:'—', pages:0, aff:0, pct:0},
+  all:   {rev:'—', conv:'—', pages:0, aff:0, pct:0}
 };
 var SALES_ORBS = [
   {key:'s-rev',   label:'Revenue',    color:'#ffbf3d', jewel:'$',  pos:'tr'},
   {key:'s-conv',  label:'Conversion', color:'#2fe89e', jewel:'%',  pos:'tl'},
-  {key:'s-pages', label:'Top Pages',  color:'#3fb8ff', jewel:'\u25A4', pos:'bl'},
-  {key:'s-aff',   label:'Affiliates', color:'#a06bff', jewel:'\u21C4', pos:'br'}
+  {key:'s-pages', label:'Clicks',  color:'#3fb8ff', jewel:'\u25A4', pos:'bl'},
+  {key:'s-aff',   label:'Joins', color:'#a06bff', jewel:'\u21C4', pos:'br'}
 ];
 var _salesWindow = 'all';
 function salesGaugeSVG(pct){
@@ -15567,7 +15686,7 @@ function salesViewRender(){
   var o=document.getElementById('os-sales-orbs');
   if(o) o.innerHTML=salesOrbsHTML(d);
   var n=document.getElementById('os-sales-total-n');
-  if(n) n.textContent=d.rev;
+  if(n) n.textContent=(typeof d.pages==='number' ? d.pages.toLocaleString() : d.pages); /* PASS 1 v6 (f): the total is clicks now — revenue has no pipeline on this front, so it reads '—'. */
   var pills=document.querySelectorAll('#os-sales-pills button');
   for(var i=0;i<pills.length;i++) pills[i].classList.toggle('on', pills[i].getAttribute('data-sw')===_salesWindow);
 }
@@ -15602,12 +15721,12 @@ function salesViewClose(){
   else wire();
 })();
 /* ═══ JOINS DRILL-DOWN 2026-11-02 ═══ */
-var JOINS_DEMO = {
-  hour:  {joins:2,   conv:'1.8%', src:4,  ctr:'4.2%', pct:32},
-  day:   {joins:14,  conv:'2.4%', src:12, ctr:'5.1%', pct:48},
-  week:  {joins:89,  conv:'2.9%', src:28, ctr:'5.8%', pct:63},
-  month: {joins:342, conv:'3.1%', src:51, ctr:'6.2%', pct:79},
-  all:   {joins:512, conv:'3.0%', src:67, ctr:'5.9%', pct:72}
+var JOINS_DEMO = { /* PASS 1 v6 (f): was 512 joins — fabricated (live joins were 0). The ledger writes the real numbers now. */
+  hour:  {joins:0, conv:'—', src:'—', ctr:'—', pct:0},
+  day:   {joins:0, conv:'—', src:'—', ctr:'—', pct:0},
+  week:  {joins:0, conv:'—', src:'—', ctr:'—', pct:0},
+  month: {joins:0, conv:'—', src:'—', ctr:'—', pct:0},
+  all:   {joins:0, conv:'—', src:'—', ctr:'—', pct:0}
 };
 var JOINS_ORBS = [
   {key:'j-total', label:'Total Joins', color:'#a06bff', jewel:'\u25CB', pos:'tr'},
@@ -15738,12 +15857,12 @@ function joinsViewClose(){
   else wire();
 })();
 /* ═══ SMART NOTES DRILL-DOWN 2026-11-02 — same gauge+orbs pattern, indigo theme ═══ */
-var NOTES_DEMO = {
-  hour:  {total:'3',    views:'18',    saves:'1',  ctr:'5.6%',  pct:28},
-  day:   {total:'14',   views:'96',    saves:'6',  ctr:'6.2%',  pct:46},
-  week:  {total:'38',   views:'412',   saves:'24', ctr:'5.8%',  pct:62},
-  month: {total:'112',  views:'1.4K',  saves:'71', ctr:'5.1%',  pct:74},
-  all:   {total:'156',  views:'2.1K',  saves:'98', ctr:'4.7%',  pct:68}
+var NOTES_DEMO = { /* PASS 1 v6 (f): was 156 notes / 2.1K views / 98 saves — fabricated. The ledger writes the real numbers now. */
+  hour:  {total:0, views:'—', saves:0, ctr:'—', pct:0},
+  day:   {total:0, views:'—', saves:0, ctr:'—', pct:0},
+  week:  {total:0, views:'—', saves:0, ctr:'—', pct:0},
+  month: {total:0, views:'—', saves:0, ctr:'—', pct:0},
+  all:   {total:0, views:'—', saves:0, ctr:'—', pct:0}
 };
 var NOTES_ORBS = [
   {key:'n-total', label:'Total Notes', color:'#3a5bff', jewel:'\u2726', pos:'tr'},
@@ -15874,17 +15993,17 @@ function notesViewClose(){
   else wire();
 })();
 /* ═══ LIKES DRILL-DOWN 2026-11-02 — same pattern as Sales, red theme ═══ */
-var LIKES_DEMO = {
-  hour:  {likes:3,   rate:'4.2%', loves:1,  top:'Intro post', pct:35},
-  day:   {likes:28,  rate:'5.1%', loves:7,  top:'Launch video', pct:52},
-  week:  {likes:186, rate:'5.8%', loves:42, top:'Tutorial', pct:68},
-  month: {likes:742, rate:'6.1%', loves:168, top:'Case study', pct:81},
-  all:   {likes:1024, rate:'5.9%', loves:231, top:'Welcome', pct:74}
+var LIKES_DEMO = { /* PASS 1 v6 (f): was 1,024 likes / 231 loves — fabricated (live likes were 0; likes and loves are ONE category). The ledger writes the real numbers now. */
+  hour:  {likes:0, rate:'—', loves:0, top:'—', pct:0},
+  day:   {likes:0, rate:'—', loves:0, top:'—', pct:0},
+  week:  {likes:0, rate:'—', loves:0, top:'—', pct:0},
+  month: {likes:0, rate:'—', loves:0, top:'—', pct:0},
+  all:   {likes:0, rate:'—', loves:0, top:'—', pct:0}
 };
 var LIKES_ORBS = [
   {key:'l-total', label:'Total Likes', color:'#ff5e6c', jewel:'\u2665', pos:'tr'},
   {key:'l-rate',  label:'Like Rate',   color:'#2fe89e', jewel:'%',       pos:'tl'},
-  {key:'l-loves', label:'Loves',       color:'#ff7eb9', jewel:'\u1F496', pos:'bl'},
+  {key:'l-loves', label:'Likes · loves',       color:'#ff7eb9', jewel:'\u1F496', pos:'bl'},
   {key:'l-top',   label:'Top Liked',   color:'#ffbf3d', jewel:'\u2605', pos:'br'}
 ];
 var _likesWindow = 'all';
@@ -16010,12 +16129,12 @@ function likesViewClose(){
   else wire();
 })();
 /* ═══ COMMENTS DRILL-DOWN 2026-11-02 — same pattern as Sales, orange theme ═══ */
-var COMMENTS_DEMO = {
-  hour:  {total:2,   engage:'1.8%', discuss:1,  replies:1,   pct:25},
-  day:   {total:12,  engage:'2.4%', discuss:4,  replies:7,   pct:42},
-  week:  {total:48,  engage:'3.1%', discuss:12, replies:31,  pct:58},
-  month: {total:156, engage:'3.6%', discuss:38, replies:104, pct:74},
-  all:   {total:214, engage:'3.4%', discuss:52, replies:142, pct:68}
+var COMMENTS_DEMO = { /* PASS 1 v6 (f): was 214 comments — fabricated. The ledger writes the real numbers now. */
+  hour:  {total:0, engage:'—', discuss:0, replies:0, pct:0},
+  day:   {total:0, engage:'—', discuss:0, replies:0, pct:0},
+  week:  {total:0, engage:'—', discuss:0, replies:0, pct:0},
+  month: {total:0, engage:'—', discuss:0, replies:0, pct:0},
+  all:   {total:0, engage:'—', discuss:0, replies:0, pct:0}
 };
 var COMMENTS_ORBS = [
   {key:'c-total',   label:'Comments',    color:'#ff9a5a', jewel:'\u270E', pos:'tr'},
@@ -16147,12 +16266,12 @@ function commentsViewClose(){
 })();
 /* 2026-11-02 — SHARES DRILL-DOWN. Fullscreen gauge+orbs view for the Shares orb.
    Same visual language as the sales drill-down. Gold theme. Demo data for now. */
-var SHARES_DEMO = {
-  hour:  {shares:5,   clicks:12,    ctr:'2.4%', viral:'1.1x', pct:32},
-  day:   {shares:24,  clicks:68,    ctr:'2.9%', viral:'1.3x', pct:48},
-  week:  {shares:156, clicks:490,   ctr:'3.1%', viral:'1.5x', pct:62},
-  month: {shares:680, clicks:2140,  ctr:'3.2%', viral:'1.6x', pct:75},
-  all:   {shares:890, clicks:2850,  ctr:'3.2%', viral:'1.6x', pct:69}
+var SHARES_DEMO = { /* PASS 1 v6 (f): was 890 shares / 2,850 clicks — fabricated. The ledger writes the real numbers now. */
+  hour:  {shares:0, clicks:'—', ctr:'—', viral:'—', pct:0},
+  day:   {shares:0, clicks:'—', ctr:'—', viral:'—', pct:0},
+  week:  {shares:0, clicks:'—', ctr:'—', viral:'—', pct:0},
+  month: {shares:0, clicks:'—', ctr:'—', viral:'—', pct:0},
+  all:   {shares:0, clicks:'—', ctr:'—', viral:'—', pct:0}
 };
 var SHARES_ORBS = [
   {key:'h-shares', label:'Shares',     color:'#ffbf3d', jewel:'\u21C4', pos:'tr'},
@@ -16284,12 +16403,12 @@ function sharesViewClose(){
 })();
 /* 2026-11-02 — CREATIONS DRILL-DOWN. Fullscreen gauge+orbs view for the Creations orb
    (key 'posts'). Same visual language as the Sales view. Demo data for now (Shawn's order). */
-var CREATIONS_DEMO = {
-  hour:  {pages:1,   views:'84',   clicks:'12',   ctr:'4.2%', pct:32},
-  day:   {pages:4,   views:'1.2K', clicks:'156',  ctr:'5.1%', pct:48},
-  week:  {pages:18,  views:'8.4K', clicks:'920',  ctr:'5.8%', pct:62},
-  month: {pages:62,  views:'31K',  clicks:'3.4K', ctr:'6.1%', pct:76},
-  all:   {pages:105, views:'52K',  clicks:'5.8K', ctr:'5.9%', pct:68}
+var CREATIONS_DEMO = { /* PASS 1 v6 (f): was 105 pages / 52K views / 5.8K clicks — fabricated. The ledger writes the real numbers now. */
+  hour:  {pages:0, views:'—', clicks:'—', ctr:'—', pct:0},
+  day:   {pages:0, views:'—', clicks:'—', ctr:'—', pct:0},
+  week:  {pages:0, views:'—', clicks:'—', ctr:'—', pct:0},
+  month: {pages:0, views:'—', clicks:'—', ctr:'—', pct:0},
+  all:   {pages:0, views:'—', clicks:'—', ctr:'—', pct:0}
 };
 var CREATIONS_ORBS = [
   {key:'c-pages',  label:'Pages Created', color:'#2fe89e', jewel:'◆', pos:'tl'},
@@ -16419,12 +16538,12 @@ function creationsViewClose(){
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', wire);
   else wire();
 })();
-var SAVES_DEMO = {
-  hour:  {total:'2',   rate:'1.2%', most:1,  coll:1,  pct:25},
-  day:   {total:'12',  rate:'2.1%', most:4,  coll:3,  pct:42},
-  week:  {total:'48',  rate:'3.4%', most:12, coll:9,  pct:58},
-  month: {total:'176', rate:'4.1%', most:38, coll:24, pct:74},
-  all:   {total:'248', rate:'3.8%', most:52, coll:31, pct:69}
+var SAVES_DEMO = { /* PASS 1 v6 (f): was 248 saves — fabricated. The ledger writes the real numbers now. */
+  hour:  {total:0, rate:'—', most:'—', coll:'—', pct:0},
+  day:   {total:0, rate:'—', most:'—', coll:'—', pct:0},
+  week:  {total:0, rate:'—', most:'—', coll:'—', pct:0},
+  month: {total:0, rate:'—', most:'—', coll:'—', pct:0},
+  all:   {total:0, rate:'—', most:'—', coll:'—', pct:0}
 };
 var SAVES_ORBS = [
   {key:'v-total', label:'Total Saves', color:'#c9a0ff', jewel:'\u2606', pos:'tr'},
@@ -16559,12 +16678,12 @@ function savesViewClose(){
    The funnel: Impressions → Clicks → CTR → Conversions → Conv Rate → Revenue → EPC → AOV.
    EPC is the hero metric (gold theme). Demo data (Shawn's order).
    Open via window.openSmartLinkView(brand, dest) — wire to Smart Link rows later. ═══ */
-var SMARTLINK_DEMO = {
-  hour:  {imp:'320',    clicks:'42',    unique:'38',    ctr:'4.1%', conv:'2',  crate:'4.8%', rev:'$48',    epc:'$1.14', aov:'$24.00', rpk:'$150', pct:22},
-  day:   {imp:'1,180',  clicks:'148',   unique:'131',   ctr:'4.3%', conv:'7',  crate:'4.7%', rev:'$176',   epc:'$1.19', aov:'$25.14', rpk:'$149', pct:41},
-  week:  {imp:'5,640',  clicks:'682',   unique:'601',   ctr:'4.2%', conv:'33', crate:'4.8%', rev:'$830',   epc:'$1.22', aov:'$25.15', rpk:'$147', pct:63},
-  month: {imp:'12,480', clicks:'1,512', unique:'1,331', ctr:'4.2%', conv:'73', crate:'4.8%', rev:'$1,838', epc:'$1.22', aov:'$25.18', rpk:'$147', pct:78},
-  all:   {imp:'15,240', clicks:'1,842', unique:'1,623', ctr:'4.2%', conv:'89', crate:'4.8%', rev:'$2,240', epc:'$1.22', aov:'$25.17', rpk:'$147', pct:71}
+var SMARTLINK_DEMO = { /* PASS 1 v6 (f): was 15,240 impressions / 1,842 clicks / $2,240 revenue — fabricated. The ledger writes the real numbers now. */
+  hour:  {imp:'—', clicks:0, unique:'—', ctr:'—', conv:0, crate:'—', rev:'—', epc:'—', aov:'—', rpk:'—', pct:0},
+  day:   {imp:'—', clicks:0, unique:'—', ctr:'—', conv:0, crate:'—', rev:'—', epc:'—', aov:'—', rpk:'—', pct:0},
+  week:  {imp:'—', clicks:0, unique:'—', ctr:'—', conv:0, crate:'—', rev:'—', epc:'—', aov:'—', rpk:'—', pct:0},
+  month: {imp:'—', clicks:0, unique:'—', ctr:'—', conv:0, crate:'—', rev:'—', epc:'—', aov:'—', rpk:'—', pct:0},
+  all:   {imp:'—', clicks:0, unique:'—', ctr:'—', conv:0, crate:'—', rev:'—', epc:'—', aov:'—', rpk:'—', pct:0}
 };
 var SMARTLINK_ORBS = [
   {key:'sl-imp',   label:'Impressions',  color:'#a06bff', jewel:'\u25C9', pos:'t'},
@@ -16698,12 +16817,12 @@ window.openSmartLinkView=smartlinkViewOpen;
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', wire);
   else wire();
 })();
-var INVITES_DEMO = {
-  hour:  {sent:2,   accepted:1,  rate:'50%', inviters:2,  pct:22},
-  day:   {sent:9,   accepted:4,  rate:'44%', inviters:6,  pct:41},
-  week:  {sent:34,  accepted:17, rate:'50%', inviters:21, pct:63},
-  month: {sent:98,  accepted:52, rate:'53%', inviters:47, pct:81},
-  all:   {sent:132, accepted:68, rate:'52%', inviters:58, pct:74}
+var INVITES_DEMO = { /* PASS 1 v6 (f): was 132 sent / 68 accepted — fabricated. The ledger writes the real numbers now. */
+  hour:  {sent:0, accepted:0, rate:'—', inviters:'—', pct:0},
+  day:   {sent:0, accepted:0, rate:'—', inviters:'—', pct:0},
+  week:  {sent:0, accepted:0, rate:'—', inviters:'—', pct:0},
+  month: {sent:0, accepted:0, rate:'—', inviters:'—', pct:0},
+  all:   {sent:0, accepted:0, rate:'—', inviters:'—', pct:0}
 };
 var INVITES_ORBS = [
   {key:'i-sent',  label:'Sent',       color:'#7fd4ff', jewel:'\u25B2', pos:'tr'},
@@ -17113,7 +17232,7 @@ function ldLayoutNodes(){
   var pts = [];
   var isMobile = W < 768;
   /* 2026-11-01 — Shawn: smaller orbs in normal mode (80px), full size in hero (104px). */
-  var nd = isMobile ? (isHero ? 88 : 68) : (isHero ? 104 : 80);
+  var nd = isMobile ? (isHero ? 60 : 60) : (isHero ? 104 : 76); /* PASS 1 v6 (e): phone 68/88 -> 60/60 — the 390px orbit cannot hold 68px orbs at 40-degree spacing without the boxes crossing (measured 7x16 overlap); hero 88 on the same radius was a pile-up. Desktop 80 -> 76 reclaims 8px for (d). */
   /* 2026-11-05 — ORBIT OUTSIDE THE GAUGE (Shawn: orbs orbit OUTSIDE, never overlap).
      The old hardcoded gaugeR=140 was wrong — the actual gauge renders much larger,
      so orbs at 195px radius sat ON the gauge face. Now: MEASURE the actual gauge,
@@ -17138,7 +17257,7 @@ function ldLayoutNodes(){
     if (_cg && _cg !== _gs) { _gw = Math.max(_gw, _cg.clientWidth); _gh = Math.max(_gh, _cg.clientHeight); }
     if (_gw > 50 && _gh > 50) { gaugeR = Math.max(_gw, _gh) / 2; }
   } catch(e){}
-  var gap = 25;
+  var gap = 8; /* PASS 1 v6 (d): was 25 — reclaims 34px of constellation height (neededH falls 646->596 desktop); orbs still clear the gauge rim by 8px. */
   var orbR = gaugeR + nd/2 + gap;
   /* Grow constellation height if the orbit needs more vertical room.
      Never clip orbs, never shrink gauge. */
@@ -17147,14 +17266,14 @@ function ldLayoutNodes(){
      (osOrbFloat) bobs at most 6px, so 8px still clears it with 2px to spare —
      and the 12px saved on each side (24px total) lifts the score clear of the
      fixed bar. (padBottom above stays unused, as before.) */
-  var neededH = (orbR + nd/2 + 8) * 2;
+  var neededH = (orbR + nd/2 + 4) * 2; /* PASS 1 v6 (d): slack 8->4 — reclaims 8px; the float bobs at most 6px, 4px slack + the 8px gap still clears it. */
   if (neededH > H) {
     constel.style.height = neededH + 'px';
     H = neededH;
     cy = H/2;
   }
   /* Cap by width only (1857px wide, should not bind, but safety) */
-  orbR = Math.min(orbR, W/2 - nd/2 - 15);
+  orbR = Math.min(orbR, W/2 - nd/2 - 10); /* PASS 1 v6 (e): cap margin 15->10 — buys 5px of orbit radius on phones. */
   var rx = orbR, ry = orbR;
   var angles = [-90, -50, -10, 30, 70, 110, 150, 190, 230];
   var keys = ['sales', 'joins', 'notes', 'invs', 'posts', 'shares', 'comments', 'likes', 'saves'];
@@ -17353,10 +17472,10 @@ function ldLayoutNodes(){
   function _worldTotals(){
     var total = 0, top = [], totalClicks = 0, hasSales = false;
     try{
-      var PD = (typeof ldData === 'function') ? ldData() : (window._dashD || {});
+      var PD = (typeof window.ldData === 'function') ? window.ldData() : ((typeof ldData === 'function') ? ldData() : (window._dashD || {})); /* PASS 1 v6 follow-up: window.ldData first — bare ldData is IIFE-scoped. */
       var w = window._ldWindow || 'all';
       (window.LD_NODES || []).forEach(function(nd){
-        var n = (typeof ldNodeCount === 'function') ? ldNodeCount(nd, PD, w) : 0;
+        var n = (typeof window.ldNodeCount === 'function') ? window.ldNodeCount(nd, PD, w) : ((typeof ldNodeCount === 'function') ? ldNodeCount(nd, PD, w) : 0); /* PASS 1 v6 follow-up: window.ldNodeCount first. */
         var pts = nd.value ? n*nd.value : n;
         total += pts;
         top.push({key:nd.key, label:nd.label, pts:pts});
@@ -17386,9 +17505,9 @@ function ldLayoutNodes(){
       view.belowLabel = 'joins · all time';
       view.ctr = (st.clicksAll > 0) ? (st.joinsAll/st.clicksAll*100) : null;
       view.stats = [
-        {n:_fmt(st.clicksWin), l:'clicks · ' + _winLabel(), why:'every click is someone discovering you'},
-        {n:_fmt(st.joinsAll), l:'joins · all time', why:'joins are 50 points each — the real growth'},
-        {n:(view.ctr == null ? '—' : view.ctr.toFixed(1) + '%'), l:'became joins', why:(st.clicksAll > 0 && st.joinsAll === 0) ? 'the leak is past the click — Pass 3 names it' : 'clicks turning into joins'}
+        {n:_fmt(st.clicksWin), k:'clicks', l:'clicks · ' + _winLabel(), why:'every click is someone discovering you'},
+        {n:_fmt(st.joinsAll), k:'joins', l:'joins · all time', why:'joins are 50 points each — the real growth'},
+        {n:(view.ctr == null ? '—' : view.ctr.toFixed(1) + '%'), k:'joins', l:'became joins', why:(st.clicksAll > 0 && st.joinsAll === 0) ? 'the leak is past the click — Pass 3 names it' : 'clicks turning into joins'} /* PASS 1 v6 (c): k makes the numbers tappable (the conversion rate opens the joins derivation — the conversion story). */
       ];
       view.scope = 'Joins and clicks are this link’s own; the other orbs are your whole world.';
       view.marker = '★ FEATURED — YOUR AMBASSADOR LINK';
@@ -17409,9 +17528,9 @@ function ldLayoutNodes(){
       view.belowLabel = 'points · all time';
       var t1 = wt.top[0] || {label:'points', pts:0}, t2 = wt.top[1] || {label:'points', pts:0};
       view.stats = [
-        {n:_fmt(spine), l:'Smart Score', why:'your whole world, one number'},
-        {n:_fmt(t1.pts), l:t1.label.toLowerCase() + ' · points', why:(t1.pts > 0) ? 'your strongest orb' : 'your first actions light the board'},
-        {n:_fmt(t2.pts), l:t2.label.toLowerCase() + ' · points', why:(t2.pts > 0) ? 'second strongest' : 'every action counts'}
+        {n:_fmt(spine), k:'score', l:'Smart Score', why:'your whole world, one number'}, /* PASS 1 v6 (c): k makes the number tappable. */
+        {n:_fmt(t1.pts), k:(t1.key||'score'), l:(t1.pts > 0) ? t1.label.toLowerCase() + ' · points' : 'points · none yet', why:(t1.pts > 0) ? 'your strongest orb' : 'your first actions light the board'}, /* PASS 1 v6 (c): was 'points · points' when pts was 0; k makes the number tappable. */
+        {n:_fmt(t2.pts), k:(t2.key||'score'), l:(t2.pts > 0) ? t2.label.toLowerCase() + ' · points' : 'points · none yet', why:(t2.pts > 0) ? 'second strongest' : 'every action counts'} /* PASS 1 v6 (c): same fix as t1. */
       ];
       if (h.kind === 'page'){
         view.scope = 'Page tracking connects soon — these are your whole-world numbers for now.';
@@ -17491,16 +17610,16 @@ function ldLayoutNodes(){
   function _boardNums(holder){
     if (holder.kind === 'link'){
       var st = _linkStats(holder.id);
-      return '<div class="os-wb-nums"><div><b>' + _fmt(st.clicksAll) + '</b><i>clicks · all time</i></div>' +
-        '<div><b>' + _fmt(st.joinsAll) + '</b><i>joins · all time</i></div>' +
-        '<div><b>' + (st.clicksAll > 0 ? (st.joinsAll/st.clicksAll*100).toFixed(1) + '%' : '—') + '</b><i>became joins</i></div></div>';
+      return '<div class="os-wb-nums"><div><b data-derive="clicks">' + _fmt(st.clicksAll) + '</b><i>clicks · all time</i></div>' +
+        '<div><b data-derive="joins">' + _fmt(st.joinsAll) + '</b><i>joins · all time</i></div>' +
+        '<div><b data-derive="joins">' + (st.clicksAll > 0 ? (st.joinsAll/st.clicksAll*100).toFixed(1) + '%' : '—') + '</b><i>became joins</i></div></div>'; /* PASS 1 v6 (c): board numbers are doors. */
     }
     var wt = _worldTotals();
     var spine = _spineScore(wt.total);
     var t1 = wt.top[0] || {label:'points', pts:0}, t2 = wt.top[1] || {label:'points', pts:0};
-    return '<div class="os-wb-nums"><div><b>' + _fmt(spine) + '</b><i>Smart Score</i></div>' +
-      '<div><b>' + _fmt(t1.pts) + '</b><i>' + _esc(t1.label) + '</i></div>' +
-      '<div><b>' + _fmt(t2.pts) + '</b><i>' + _esc(t2.label) + '</i></div></div>';
+    return '<div class="os-wb-nums"><div><b data-derive="score">' + _fmt(spine) + '</b><i>Smart Score</i></div>' +
+      '<div><b data-derive="' + _esc(t1.key||'score') + '">' + _fmt(t1.pts) + '</b><i>' + _esc(t1.label) + '</i></div>' +
+      '<div><b data-derive="' + _esc(t2.key||'score') + '">' + _fmt(t2.pts) + '</b><i>' + _esc(t2.label) + '</i></div></div>'; /* PASS 1 v6 (c): board numbers are doors — tap one, see what it is made of. */
   }
   function _boardHTML(holder){
     var color, icon, name, what, note, extra = '';
@@ -17547,7 +17666,7 @@ function ldLayoutNodes(){
       if (st){
         var h = '';
         cur.stats.forEach(function(s){
-          h += '<div class="os-sl-stat"><span class="os-sl-stat-n">' + _esc(s.n) + '</span><span class="os-sl-stat-l">' + _esc(s.l) + '</span>' + (s.why ? '<span class="os-sl-why">' + _esc(s.why) + '</span>' : '') + '</div>';
+          h += '<div class="os-sl-stat"><span class="os-sl-stat-n" data-derive="' + _esc(s.k || 'score') + '">' + _esc(s.n) + '</span><span class="os-sl-stat-l">' + _esc(s.l) + '</span>' + (s.why ? '<span class="os-sl-why">' + _esc(s.why) + '</span>' : '') + '</div>'; /* PASS 1 v6 (c): the featured number is a door — tap it, see what it is made of. */
         });
         st.innerHTML = h;
       }
@@ -17561,6 +17680,11 @@ function ldLayoutNodes(){
       out += _boardHTML(hd);
     });
     host.innerHTML = out;
+    /* PASS 1 v6 (c): innerHTML replaced the wired elements — re-wire the
+       [data-derive] numbers so a tap opens their derivation. The boards
+       re-render on every loadPointsBoard and on link-data arrival, so
+       the wire follows every render. */
+    try{ if(window.tnTruth && window.tnTruth.wire){ window.tnTruth.wire(host); var _fs=document.getElementById('os-feat-stats'); if(_fs) window.tnTruth.wire(_fs); } }catch(e){}
   };
   window.setFeatured = function(kind, id){
     window._featured = {kind:kind, id:id, label:null};
@@ -17580,6 +17704,75 @@ function ldLayoutNodes(){
     window.setFeatured(kv[0], kv.slice(1).join(':'));
   });
 })();
+/* PASS 1 v6 (f) — refreshDrillDemos: the drill-downs used to read
+   hardcoded *_DEMO objects ($12,480 revenue, 512 joins, 1,024 likes,
+   248 saves — none of it real; live joins were 0). Every loadPointsBoard
+   now rebuilds all ten from the live ledger: real counts where a
+   pipeline exists, honest "—" where none does, pct 0 everywhere (no
+   goal is defined, so no percent is honest). Never fabricate. */
+function refreshDrillDemos(PD){
+    function setDemo(obj, vals){ if(!obj) return; Object.keys(vals).forEach(function(k){ obj[k]=vals[k]; }); }
+    var t=PD||{};
+    var now=Date.now();
+    function inWin(arr, ms){ if(!arr || !arr.length) return 0; var cut=now-ms; var c=0; for(var i=0;i<arr.length;i++){ if(arr[i]>=cut) c++; } return c; }
+    function inWinDay(field, ms){ if(!t.clickDayMap) return 0; var cut=now-ms; var c=0; Object.keys(t.clickDayMap).forEach(function(d){ var dd=new Date(d+'T00:00:00'); if(dd.getTime()>=cut){ c+=(t.clickDayMap[d][field]||0); } }); return c; }
+    var clicks=t.clicks||0, joins=t.joins||0;
+    var posts=(t.postTimes||[]).length, notes=(t.noteTimes||[]).length, saves=(t.saveTimes||[]).length;
+    var invSent=(t.invTimes||[]).length;
+    var rate=function(n,d){ if(!d) return '—'; return (n/d*100).toFixed(1)+'%'; };
+    var joinRate=rate(joins, clicks);
+    setDemo(SALES_DEMO, { 'hour':{rev:'—', conv:joinRate, pages:inWinDay('c',36e5), aff:inWinDay('j',36e5), pct:0},
+                          'day':{rev:'—', conv:joinRate, pages:inWinDay('c',864e5), aff:inWinDay('j',864e5), pct:0},
+                          'week':{rev:'—', conv:joinRate, pages:inWinDay('c',7*864e5), aff:inWinDay('j',7*864e5), pct:0},
+                          'month':{rev:'—', conv:joinRate, pages:inWinDay('c',30*864e5), aff:inWinDay('j',30*864e5), pct:0},
+                          'all':{rev:'—', conv:joinRate, pages:clicks, aff:joins, pct:0} });
+    setDemo(JOINS_DEMO, { 'hour':{joins:inWinDay('j',36e5), conv:joinRate, src:'—', ctr:joinRate, pct:0},
+                          'day':{joins:inWinDay('j',864e5), conv:joinRate, src:'—', ctr:joinRate, pct:0},
+                          'week':{joins:inWinDay('j',7*864e5), conv:joinRate, src:'—', ctr:joinRate, pct:0},
+                          'month':{joins:inWinDay('j',30*864e5), conv:joinRate, src:'—', ctr:joinRate, pct:0},
+                          'all':{joins:joins, conv:joinRate, src:'—', ctr:joinRate, pct:0} });
+    setDemo(LIKES_DEMO, { 'hour':{likes:0, rate:'—', loves:0, top:'—', pct:0},
+                          'day':{likes:0, rate:'—', loves:0, top:'—', pct:0},
+                          'week':{likes:0, rate:'—', loves:0, top:'—', pct:0},
+                          'month':{likes:0, rate:'—', loves:0, top:'—', pct:0},
+                          'all':{likes:0, rate:'—', loves:0, top:'—', pct:0} });
+    setDemo(NOTES_DEMO, { 'hour':{total:inWin(t.noteTimes,36e5), views:'—', saves:inWin(t.saveTimes,36e5), ctr:'—', pct:0},
+                          'day':{total:inWin(t.noteTimes,864e5), views:'—', saves:inWin(t.saveTimes,864e5), ctr:'—', pct:0},
+                          'week':{total:inWin(t.noteTimes,7*864e5), views:'—', saves:inWin(t.saveTimes,7*864e5), ctr:'—', pct:0},
+                          'month':{total:inWin(t.noteTimes,30*864e5), views:'—', saves:inWin(t.saveTimes,30*864e5), ctr:'—', pct:0},
+                          'all':{total:notes, views:'—', saves:saves, ctr:'—', pct:0} });
+    setDemo(COMMENTS_DEMO, { 'hour':{total:0, engage:'—', discuss:0, replies:0, pct:0},
+                             'day':{total:0, engage:'—', discuss:0, replies:0, pct:0},
+                             'week':{total:0, engage:'—', discuss:0, replies:0, pct:0},
+                             'month':{total:0, engage:'—', discuss:0, replies:0, pct:0},
+                             'all':{total:0, engage:'—', discuss:0, replies:0, pct:0} });
+    setDemo(SHARES_DEMO, { 'hour':{shares:0, clicks:'—', ctr:'—', viral:'—', pct:0},
+                           'day':{shares:0, clicks:'—', ctr:'—', viral:'—', pct:0},
+                           'week':{shares:0, clicks:'—', ctr:'—', viral:'—', pct:0},
+                           'month':{shares:0, clicks:'—', ctr:'—', viral:'—', pct:0},
+                           'all':{shares:0, clicks:'—', ctr:'—', viral:'—', pct:0} });
+    setDemo(CREATIONS_DEMO, { 'hour':{pages:inWin(t.postTimes,36e5), views:'—', clicks:'—', ctr:'—', pct:0},
+                              'day':{pages:inWin(t.postTimes,864e5), views:'—', clicks:'—', ctr:'—', pct:0},
+                              'week':{pages:inWin(t.postTimes,7*864e5), views:'—', clicks:'—', ctr:'—', pct:0},
+                              'month':{pages:inWin(t.postTimes,30*864e5), views:'—', clicks:'—', ctr:'—', pct:0},
+                              'all':{pages:posts, views:'—', clicks:'—', ctr:'—', pct:0} });
+    setDemo(SAVES_DEMO, { 'hour':{total:inWin(t.saveTimes,36e5), rate:'—', most:'—', coll:'—', pct:0},
+                          'day':{total:inWin(t.saveTimes,864e5), rate:'—', most:'—', coll:'—', pct:0},
+                          'week':{total:inWin(t.saveTimes,7*864e5), rate:'—', most:'—', coll:'—', pct:0},
+                          'month':{total:inWin(t.saveTimes,30*864e5), rate:'—', most:'—', coll:'—', pct:0},
+                          'all':{total:saves, rate:'—', most:'—', coll:'—', pct:0} });
+    setDemo(INVITES_DEMO, { 'hour':{sent:inWin(t.invTimes,36e5), accepted:inWinDay('j',36e5), rate:rate(inWinDay('j',36e5), inWin(t.invTimes,36e5)), inviters:'—', pct:0},
+                            'day':{sent:inWin(t.invTimes,864e5), accepted:inWinDay('j',864e5), rate:rate(inWinDay('j',864e5), inWin(t.invTimes,864e5)), inviters:'—', pct:0},
+                            'week':{sent:inWin(t.invTimes,7*864e5), accepted:inWinDay('j',7*864e5), rate:rate(inWinDay('j',7*864e5), inWin(t.invTimes,7*864e5)), inviters:'—', pct:0},
+                            'month':{sent:inWin(t.invTimes,30*864e5), accepted:inWinDay('j',30*864e5), rate:rate(inWinDay('j',30*864e5), inWin(t.invTimes,30*864e5)), inviters:'—', pct:0},
+                            'all':{sent:invSent, accepted:joins, rate:rate(joins, invSent), inviters:'—', pct:0} });
+    setDemo(SMARTLINK_DEMO, { 'hour':{imp:'—', clicks:inWinDay('c',36e5), unique:'—', ctr:'—', conv:inWinDay('j',36e5), crate:joinRate, rev:'—', epc:'—', aov:'—', rpk:'—', pct:0},
+                              'day':{imp:'—', clicks:inWinDay('c',864e5), unique:'—', ctr:'—', conv:inWinDay('j',864e5), crate:joinRate, rev:'—', epc:'—', aov:'—', rpk:'—', pct:0},
+                              'week':{imp:'—', clicks:inWinDay('c',7*864e5), unique:'—', ctr:'—', conv:inWinDay('j',7*864e5), crate:joinRate, rev:'—', epc:'—', aov:'—', rpk:'—', pct:0},
+                              'month':{imp:'—', clicks:inWinDay('c',30*864e5), unique:'—', ctr:'—', conv:inWinDay('j',30*864e5), crate:joinRate, rev:'—', epc:'—', aov:'—', rpk:'—', pct:0},
+                              'all':{imp:'—', clicks:clicks, unique:'—', ctr:'—', conv:joins, crate:joinRate, rev:'—', epc:'—', aov:'—', rpk:'—', pct:0} });
+  }
+window.refreshDrillDemos = refreshDrillDemos;
 function loadPointsBoard(_t){
   /* 2026-11-05 — BOARD GUARD REMOVED: os-points-board element does not exist in HTML.
      The guard blocked the entire function on line 3, before orb creation ever ran.
@@ -17589,6 +17782,18 @@ function loadPointsBoard(_t){
     if ((_t||0) < 20) setTimeout(function(){ loadPointsBoard((_t||0)+1); }, 700);
     else { var n=$('os-points-note'); if (n) n.textContent='Still reading — the connection is slow. Your actions count the moment it lands.'; try{ var _ldl2=document.getElementById('os-ld-loading'); if (_ldl2) _ldl2.remove(); }catch(e){} }
     return;
+  }
+  /* PASS 1 v6 (i): a derivation part tap clicks its orb, which opens the
+     drill-down through the normal path. Wired once, delegated at document. */
+  if (!loadPointsBoard._deriveWired){
+    loadPointsBoard._deriveWired = true;
+    document.addEventListener('click', function(ev){
+      var t = ev.target && ev.target.closest ? ev.target.closest('[data-derive-part]') : null;
+      if (!t) return;
+      var key = t.getAttribute('data-derive-part');
+      var orb = document.querySelector('#os-ld-nodes .os-ld-node[data-node="' + key + '"]');
+      if (orb){ orb.click(); }
+    });
   }
   // wire constellation time pills (2026-11-01 — Shawn: Day/Week/Month/All on the visual)
   ldSafe(function(){
@@ -17632,6 +17837,10 @@ function loadPointsBoard(_t){
   });
   var w = window._ldWindow || 'all';
   var PD = ldData();
+  /* PASS 1 v6 follow-up (2026-11-05) — rebuild the drill-downs from the
+     live ledger NOW that PD exists. (The call used to sit above this
+     line, where PD was still undefined, so every drill-down got {}.) */
+  try { if (typeof refreshDrillDemos === 'function') refreshDrillDemos(PD); } catch(e) {}
   function renderLdStory(){
     var counts2 = ldWindowCounts(PD, w);
     var score2 = ldScore(counts2);
@@ -17760,7 +17969,10 @@ function loadPointsBoard(_t){
         }catch(te){}
       }
       var badge = node.sample ? '<span class="os-sample-badge">SAMPLE</span><span class="os-sample-badge" style="top:auto;bottom:-9px;" title="Demo preview — excluded from your score">DEMO · NOT IN YOUR 150</span>' : '';
-      var al = _lbl+': '+pts.toLocaleString()+' points. Open detail.';
+      /* PASS 1 v6 (f): the Sales slot never reads "0 SALES" before the
+         ledger lands — it is clicks/loading, never a sales claim. */
+      var _salesLoading = (node.key === 'sales' && !window._dashDataLanded);
+      var al = _salesLoading ? _lbl+': still loading — open detail.' : _lbl+': '+pts.toLocaleString()+' points. Open detail.';
       /* 2026-11-01 — Shawn: COMPACT NUMBERS. 1,500→"1.5K", 10,000→"10K",
          100,000→"100K". Always fits the orb, no matter how big you get. */
       function fmtCompact(n){
@@ -17780,9 +17992,9 @@ function loadPointsBoard(_t){
           totalPts += pp;
         });
       }
-      var displayNum = (pctMode && totalPts > 0 && !((typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(node.key)))
+      var displayNum = _salesLoading ? '—' : ((pctMode && totalPts > 0 && !((typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(node.key)))
         ? Math.round(pts/totalPts*100)+'%'
-        : fmtCompact(pts);
+        : fmtCompact(pts));
       /* 2026-11-02 — THE 12 CHARTS #9: SPARKLINES. Tiny trend on each orb.
          7-day sparkline from live data. Momentum at a glance. */
       var spark = '';
@@ -17837,6 +18049,9 @@ function loadPointsBoard(_t){
     try{ document.body.classList.add('has-orbs'); }catch(e){}
     /* numerals roll from their previous value — numbers are never dead text */
     for (var k in now){
+      /* PASS 1 v6 (f): skip the Sales count-up before data lands, so the
+         '—' built into the orb survives (countFrom would write "0"). */
+      if (k === 'sales' && !window._dashDataLanded) continue;
       var el = box.querySelector('[data-nn="'+k+'"]');
       if (el && typeof countFrom === 'function') countFrom(el, (prev[k]==null ? now[k] : prev[k]), now[k]);
     }
@@ -17908,7 +18123,7 @@ function loadPointsBoard(_t){
           var n = ldNodeCount(nd, pd, window._dashWeek || 'all');
           var pts = nd.value ? n*nd.value : n;
           total += pts;
-          if (pts > 0) orbData.push({label: nd.label, pts: pts, color: nd.color});
+          if (pts > 0) orbData.push({key: nd.key, label: nd.label, pts: pts, color: nd.color}); /* PASS 1 v6 (i): key — each derivation part opens its drill-down. */
         });
         /* #2 BIG NUMBER + DELTA */
         var bigVal = document.getElementById('os-se-val');
@@ -17929,6 +18144,37 @@ function loadPointsBoard(_t){
           }
           requestAnimationFrame(countBig);
         }
+        /* PASS 1 v6 (i) — THE SCORE AS A LIVING DERIVATION. Parts fan
+           beneath the number (each a live door), one line names the next
+           move. The multiplier is derived live (score === total x 2),
+           never hardcoded. */
+        try{
+          var derEl = document.getElementById('os-score-derive');
+          if (derEl){
+            var spineScore = (window._osSpine && typeof window._osSpine.score === 'number') ? window._osSpine.score : total;
+            var mult = (total > 0 && spineScore === total * 2) ? 2 : 1;
+            var h = '';
+            if (orbData.length === 0){
+              h = '<span class="os-sd-empty">No points yet — your first action lights the board.</span>';
+            } else {
+              orbData.forEach(function(o, i){
+                if (i > 0) h += '<span class="os-sd-op">+</span>';
+                h += '<button type="button" class="os-sd-part" data-derive-part="' + o.key + '">' + o.pts + ' ' + o.label + '</button>';
+              });
+              h += '<span class="os-sd-op">=</span><span class="os-sd-sum">' + total + '</span>';
+              if (mult === 2){ h += '<span class="os-sd-op">× 2 birth</span><span class="os-sd-op">=</span><span class="os-sd-sum">' + spineScore + '</span>'; }
+              else if (spineScore !== total){ h += '<span class="os-sd-op">=</span><span class="os-sd-sum">' + spineScore + '</span>'; }
+            }
+            derEl.innerHTML = h;
+          }
+          var nextEl = document.getElementById('os-score-next');
+          if (nextEl){
+            var spineScore2 = (window._osSpine && typeof window._osSpine.score === 'number') ? window._osSpine.score : total;
+            var mult2 = (total > 0 && spineScore2 === total * 2) ? 2 : 1;
+            var gain = 50 * mult2;
+            nextEl.innerHTML = '1 join takes you to ' + (spineScore2 + gain) + ' — <button type="button" class="os-sd-share" data-sl-copy="joinus">share your link</button>';
+          }
+        }catch(e){}
         /* #5 DONUT — score composition */
         var donutWrap = document.getElementById('os-donut-wrap');
         if (donutWrap && orbData.length > 0){
@@ -18021,8 +18267,16 @@ function loadPointsBoard(_t){
         try{
           var total = 0;
           var orbVals = {};
+          /* PASS 1 v6 follow-up (2026-11-05) — fresh data + current
+             window on every tap. The handler used to close over
+             loadPointsBoard's PD from the first (empty) load, so total
+             stayed 0 and the % branch never fired; it also read
+             window._dashWeek (never set) while the orbs render in
+             window._ldWindow. */
+          var PDf = (typeof ldData === 'function') ? ldData() : PD;
+          var wf = window._ldWindow || 'all';
           LD_NODES.forEach(function(nd){
-            var n = ldNodeCount(nd, PD, window._dashWeek || 'all');
+            var n = ldNodeCount(nd, PDf, wf);
             var pts = nd.value ? n*nd.value : n;
             orbVals[nd.key] = pts;
             total += pts;
@@ -18491,7 +18745,7 @@ function osBuildSpine(d){
      contract: saves, invitesSent, inviteJoins, sales, likes, comments,
      shares, extShares, memberBonus. Unwired counts are 0 with honest labels —
      never invented. Displayed score == formula(displayed counts), always. */
-  var VV=(typeof LD_VALUES!=='undefined')?LD_VALUES:{birth:75,posts:25,notes:35,saves:5,invites:25,joins:50,memberBonus:40,sales:100,likes:1,comments:5,shares:5,externalShares:10};
+  var VV=(typeof LD_VALUES!=='undefined')?LD_VALUES:{birth:75,posts:25,notes:35,saves:2,invites:25,joins:50,memberBonus:40,sales:100,likes:1,comments:5,shares:15,externalShares:10};
   s.saves=(d.saveTimes||[]).length;
   s.invitesSent=s.invs;
   s.inviteJoins=s.joins;
@@ -20149,7 +20403,7 @@ function liveSources(s){
 }
 
 /* ---------- derivation copy: human words, computed from the spine ---------- */
-var POINT_RULES = { posts:25, notes:35, saves:5, invites:25, joins:50, memberBonus:40 }; /* canon — mirrors LD_VALUES */
+var POINT_RULES = { posts:25, notes:35, saves:2, invites:25, joins:50, memberBonus:40 }; /* canon — mirrors LD_VALUES */
 var BIRTH = 75;                            /* canon birth value */
 
 function derivationFor(key){
@@ -20160,18 +20414,28 @@ function derivationFor(key){
   if(key==="score"){
     title="Your score — where every point came from";
     var V=P();
-    rows=[
-      R("Born here", BIRTH+" — every citizen starts with "+BIRTH+", for claiming this world."),
-      R("Creating", s.posts+" wall posts × "+V.posts+" = "+(s.posts*V.posts)+" — "+V.posts+" points for each thing you made."),
-      R("Smart notes", s.notes+" notes × "+V.notes+" = "+(s.notes*V.notes)+" — "+V.notes+" for each note. Sharing intelligence is the heart of the system, so it is worth the most."),
-      R("Saves", s.saves+" saves × "+V.saves+" = "+(s.saves*V.saves)+"."),
-      R("Invites", (s.invitesSent||0)+" invites × "+V.invites+" = "+((s.invitesSent||0)*V.invites)+" — first invite per person, through the system."),
-      R("Joins", (s.inviteJoins||0)+" joins × "+V.joins+" = "+((s.inviteJoins||0)*V.joins)+" — an invite become a member."),
-      R("Membership", ((s.memberBonus||0)>0 ? V.memberBonus+" — one time, never monthly. The leaderboard can't be bought." : "not on this ledger yet — 0. Worth "+V.memberBonus+" once, when it lands.")),
-      R("Sales", (s.sales||0)+" × 100 = "+((s.sales||0)*100)+" — no sale pipeline on this front yet."),
-      R("Likes · comments · shares", "0 — no engagement pipeline on this front yet. Honest 0, never faked."),
-      R("Total", String(s.score)+" — every single point traces to something you did.", true)
-    ];
+    /* PASS 1 v6 (i): the derivation used to say Born here 75 + Creating
+       100 + Invites 50 = 225 while the score read 300 — it never applied
+       the birth x2. The real math is parts, added up, then doubled:
+       (4 creating x 25 + 2 invites x 25) = 150 x 2 birth = 300. */
+    var _parts=[]; var _sum=0;
+    function _addPart(label, count, val){ var p=(count||0)*val; _sum+=p; if(count>0) _parts.push(R(label, count+" × "+val+" = "+p)); }
+    _addPart("Creating", s.posts, V.posts);
+    _addPart("Smart notes", s.notes, V.notes);
+    _addPart("Saves", s.saves, V.saves);
+    _addPart("Invites", s.invitesSent, V.invites);
+    _addPart("Joins", s.inviteJoins, V.joins);
+    _addPart("Sales", s.sales, 100);
+    _addPart("Likes", s.likes, V.likes||1);
+    _addPart("Comments", s.comments, V.comments||5);
+    _addPart("Shares", s.shares, V.shares||15);
+    if((s.memberBonus||0)>0) _parts.push(R("Membership", V.memberBonus+" — one time, never monthly. The leaderboard can't be bought."));
+    rows=_parts.slice();
+    rows.push(R("Earned", _sum+" — everything you did, added up."));
+    if(_sum*2===s.score) rows.push(R("Birth ×2", "× 2 — your first-day bonus doubles it all."));
+    else if(s.score>_sum) rows.push(R("Ledger", (s.score-_sum)+" more on the ledger — membership and sales live there."));
+    rows.push(R("Total", String(s.score)+" — every single point traces to something you did.", true));
+
   } else if(key==="funnel-recorded"||key==="funnel-opened"||key==="funnel-joined"){
     title="Invite journey — one family of invitees";
     rows=[
@@ -20194,7 +20458,12 @@ function derivationFor(key){
       msgs:["Messages received","quiet is rest, not failure."],
       invs:["Invites recorded","\u00d725 each — first invite per person, through the system."],
       clicks:["Smart Link clicks","every tap on your links, counted."],
-      joins:["Joins","\u00d750 each — an invite become a member."]};
+      joins:["Joins","\u00d750 each — an invite become a member."],
+      sales:["Sales","100 points each — no sale pipeline on this front yet, so the slot tracks clicks."],
+      shares:["Shares","15 points each — no share pipeline on this front yet."],
+      comments:["Comments","5 points each — no comment pipeline on this front yet."],
+      likes:["Likes · loves","1 point — likes and loves are one category, never split."],
+      saves:["Saves","2 points each — notes you saved."]};
     if(!names[key]) return null;
     title=names[key][0]+" — the count";
     rows=[R("Ledger rows", s[key]+" — "+names[key][1])];
@@ -20328,6 +20597,11 @@ function checkAll(){
   var s=spine(); if(!s) return [];
   var issues=[];
   Array.prototype.forEach.call(document.querySelectorAll("[data-derive]"), function(el){
+    /* PASS 1 v6 follow-up (2026-11-05) — skip the world boards list:
+       its numerals show the WORLD score, not the featured dial, so
+       they are not meter numerals. Their tap still works via
+       wireNumerals; the meter watches the dial + featured stats. */
+    if (el.closest && el.closest('#os-boards-list')) return;
     var key=el.getAttribute("data-derive");
     var exp=expectedFor(key,s);
     if(exp==null) return;
@@ -22952,9 +23226,9 @@ if (window._demoMode) {
 }
 </script><script>
 /* FIX 2026-11-05 — default data so gauge and orbs render immediately. Real Supabase data overwrites when it arrives. */
-if (!window._osSpine) window._osSpine = { score: 300, clicks: 49, joins: 0, updatedAt: Date.now() };
+if (!window._osSpine) window._osSpine = { score: 300, clicks: 0, joins: 0, updatedAt: Date.now() }; /* PASS 1 v6 (f): was 49 — fabricated, never from the ledger. */
 if (!window._dashD) window._dashD = { noteTimes: [], postTimes: [], msgTimes: [], invTimes: [], saveTimes: [] };
-if (!window._dashLinkT) window._dashLinkT = { c: 49, j: 0 };
+if (!window._dashLinkT) window._dashLinkT = { c: 0, j: 0 }; /* PASS 1 v6 (f): was 49 — fabricated, never from the ledger. */
 
 </script>
 
@@ -23153,11 +23427,14 @@ html body .os-constellation .os-ld-nodes button.os-ld-node[data-node="saves"] .o
    top of the viewport instead (centered on desktop, full width on
    phones). The tick and staleness logic is untouched — the meter still
    flags any real mismatch, and live/stale/partial stay silent by design. */
-#os-dash{ position:relative; padding-top:46px; }
+#os-dash{ position:relative; padding-top:72px; } /* PASS 1 v6 (a): +26 so the PTS/% toggle clears the top bar (bar ends 103 desktop / 101 phone; toggle was 82-117, covered ~60%). */
 .tn-truth-meter{
   position:absolute; z-index:950;
-  top:96px; left:72px; right:24px;
-  width:auto;
+  top:118px; left:72px; right:24px;
+  width:auto; padding:5px 14px;
+  /* PASS 1 v6 (a): top 96->118 + padding 7->5px — the toggle moved down
+     26px into the meter's old band (y108-139); the meter takes the band
+     below it (y142-168), clear of the constellation top (175). */
 }
 .tn-truth-meter.tn-truth-m-loading{ width:auto; }
 /* Hero / viewport-focus: the top bar is faded, so the meter takes the top
@@ -23187,7 +23464,7 @@ body.viewport-focus #viewport-back{
      ends 132, constellation starts 168); the meter is full width so its
      one-line text (331px) fits in 358px. In hero the meter takes the top
      of the viewport, full width; the back button drops below it. */
-  .tn-truth-meter{ top:118px; left:0; right:0; }
+  .tn-truth-meter{ top:126px; left:0; right:0; } /* PASS 1 v6 (a): phone top 118->126 — the phone toggle bottom is 139 (dash starts y16), so the meter sits 142-168, clear of the constellation top (175). */
   body.hero-mode .tn-truth-meter,
   body.viewport-focus .tn-truth-meter{
     top:0; left:0; right:0; transform:none;
