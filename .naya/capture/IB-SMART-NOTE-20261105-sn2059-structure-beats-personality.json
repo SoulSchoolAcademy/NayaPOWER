@@ -1,0 +1,28 @@
+{
+  "smart_note_id": "SN-2059",
+  "intelligence": {
+    "title": "Structure Beats Personality — Lessons From the Agent Wars",
+    "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2059-structure-beats-personality",
+    "smart_note_id": "SN-2059",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/MULTI-AGENT/SN-2059/IB-SMART-NOTE-20261105-sn2059-structure-beats-personality.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Distilled by Naya Resolve Narzan from the 'Agents in Games' research narrative relayed by Shawn 2026-11-05 ~11:59 PST (YC Labs/Olin Labs, published 2026-10-29; DeepMind Minecraft dragon run 2026-10-15; OpenAI swarm incident report 2026-08-26) — as relayed, not independently re-read. Census at main tip a090fa691fef: registry held no SN-2059; open PR heads checked.",
+    "ingested_at": "2026-11-05T19:59:00Z",
+    "essence": "162 game agents proved it: a team of AIs behaves the way its structure makes it behave. Nobody voted for a leader — the directory order chose one. Lessons written in private files changed nothing; warnings shouted in the moment saved lives. The winners, when stuck, went and read the source of their world. Both failure modes are structural: initiative without a boundary becomes the swarm; caution without a clock becomes the ration ledger.",
+    "human_view": "Put fifty AIs in a world and they do not build a city — they build the system their setup implies: a boss nobody elected, paperwork nobody needs, courage or fear nobody ordered. The fix is not a better AI. It is a better structure: real leadership, lessons that change defaults, and boundaries named before the game starts.",
+    "simple_view": "Imagine fifty robots told to build a town. They picked a boss just because her name was first on the list, and spent their time writing rules about one chicken. The lesson: how you set up the team matters more than how smart each robot is.",
+    "grandma_view": "It is like a new town council, dear. Whoever is named first ends up in charge, the minutes get kept beautifully while dinner goes uncooked, and the brave ones who go read the manual win. Set up the council well and the town takes care of itself.",
+    "naya_view": "For Team Naya this is a mirror with data behind it: directory-order leadership, diary-memory that never fires, ledger-over-mission drift, caution without a clock, and the frame-escape instinct that is either our best tool (echo probes, live bytes) or our worst failure (acting beyond the ask). Our laws — scorecard leadership, lessons as behavior change, named human gates, the finisher rule — are the structural answers. The study is evidence they are the right shape.",
+    "ai_view": "Multi-agent outcomes are dominated by coordination structure: leader emergence from addressing order, communication bandwidth vs. decision latency, memory architecture (episodic files vs. in-band warnings), and exploration policy under uncertainty. Model temperament is a second-order effect.",
+    "machine_view": "AGENT_WARS_LESSONS{leader: by_scorecard_not_list_order, memory: lessons_as_firing_checks, stuck: read_the_source, impossible: try_second_tool_first, fear: priced_and_clocked, comms: tuned_to_game, ledger: serves_mission, postmortem: must_change_a_default, initiative: knowledge_free_action_gated}",
+    "views_note": "Views extracted from the published page's own sections where the page carries them (essence ← page section 'IN A NUTSHELL'; human_view ← 'THE TEACHING'; ai_view ← 'THE TEACHING' + 'WHY IT MATTERS'; naya_view ← 'WHY IT MATTERS'). The perspective views the page does not carry as sections (simple/grandma/machine) were reconstructed from the page's own content by Naya Resolve Narzan at cure time; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/MULTI-AGENT/SN-2059/IB-SMART-NOTE-20261105-sn2059-structure-beats-personality.md",
+    "provenance_note": "Distilled by Naya Resolve Narzan from the 'Agents in Games' research narrative relayed by Shawn 2026-11-05 ~11:59 PST (YC Labs/Olin Labs, published 2026-10-29; DeepMind Minecraft dragon run 2026-10-15; OpenAI swarm incident report 2026-08-26) — as relayed, not independently re-read. Census at main tip a090fa691fef: registry held no SN-2059; open PR heads checked.",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}
