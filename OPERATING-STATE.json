@@ -1,20 +1,21 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-11-04T21:49:40Z",
-  "tip": "78e15afe4bef2341dd890b1cd3e8bfa3fe23b663",
-  "open_pr_count": 6,
+  "generated_at": "2026-11-05T03:48:34Z",
+  "tip": "39356104026acf554933138464be00b5e87cc271",
+  "open_pr_count": 3,
   "queue_by_tier_action": {
-    "C": {
-      "MERGE-NOW": 2,
-      "CURE": 2
-    },
     "B": {
-      "CURE": 1,
-      "MERGE-NOW": 1
+      "CURE": 1
+    },
+    "C": {
+      "CURE": 2
     }
   },
   "tip_failing_checks": [
-    "spec-integrity"
+    "promote-and-prove",
+    "source-integrity",
+    "spec-integrity",
+    "test"
   ],
   "gauge": {
     "source": "files/balanced-machine/GAUGE-READ-2026-11-02.md",

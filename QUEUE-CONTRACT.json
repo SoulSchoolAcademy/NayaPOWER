@@ -1,17 +1,8 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-04T21:49:40Z",
-  "tip": "78e15afe4bef2341dd890b1cd3e8bfa3fe23b663",
+  "generated_at": "2026-11-05T03:48:34Z",
+  "tip": "39356104026acf554933138464be00b5e87cc271",
   "prs": [
-    {
-      "number": 2981,
-      "title": "Naya4/smart notes 2026 09 30",
-      "tier": "C",
-      "action": "MERGE-NOW",
-      "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
-      "owner": "dock",
-      "head": "d639718a1df3f3bf4517dcf9880aea6c2dad2ee9"
-    },
     {
       "number": 3089,
       "title": "[DRAFT \u2014 DO NOT MERGE] PI face review draft: human-first Project Intelligence face + build record",
@@ -22,40 +13,22 @@
       "head": "2523ef3d5de2875b4dd539808ab747d0c1bfaaca"
     },
     {
-      "number": 3108,
-      "title": "Naya/mission state",
-      "tier": "B",
-      "action": "MERGE-NOW",
-      "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
-      "owner": "dock",
-      "head": "aae7f4ae64ba09c0b37f0c64d0f10cd332e98f62"
-    },
-    {
-      "number": 3131,
-      "title": "Door cure: SN-1906 capture + registry entry + index regen",
-      "tier": "C",
-      "action": "MERGE-NOW",
-      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
-      "owner": "dock",
-      "head": "4280ea82cc832f146c2b8f088ded16c70c8dafc0"
-    },
-    {
-      "number": 3165,
-      "title": "Smart Note SN-2049: Welcome to the Future \u2014 the NayaNET story (script filed verbatim)",
+      "number": 3178,
+      "title": "Power Daily Intelligence Report \u2014 2026-11-04",
       "tier": "C",
       "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "0b5299af4a87f5601989cc5145661f7c12d1539c"
+      "head": "1679fbdb7a7e1b87def5afbd4dc88dfe47274b9c"
     },
     {
-      "number": 3172,
-      "title": "Registration cure: 21 unregistered Smart Notes (SN-0861\u20130873, SN-0875\u20130882)",
+      "number": 3179,
+      "title": "Registry cure: SN-0883, SN-0886, SN-0887, SN-0888 \u2014 entries + captures for pages already on main",
       "tier": "C",
       "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate, completeness; then re-derive at the new head.",
+      "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "0ce9e4be0d42d999dc836a9d233a530bcf4fa09b"
+      "head": "530cec78ceeb46ffafd6807d8d0616af2f90e229"
     }
   ]
 }
