@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-05T15:48:44Z",
-  "tip": "15946f80a177febfad70dcb4f8b44b55acf35b87",
+  "generated_at": "2026-11-05T21:48:30Z",
+  "tip": "0cd79b45ec86b27f2ebe3d776baaa0809f0789bd",
   "prs": [
     {
       "number": 3089,
@@ -20,33 +20,6 @@
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
       "head": "1679fbdb7a7e1b87def5afbd4dc88dfe47274b9c"
-    },
-    {
-      "number": 3179,
-      "title": "Registry cure: SN-0883, SN-0886, SN-0887, SN-0888 \u2014 entries + captures for pages already on main",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "530cec78ceeb46ffafd6807d8d0616af2f90e229"
-    },
-    {
-      "number": 3180,
-      "title": "docs(brain): learning event 2026-11-04",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, claim-evidence-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "3c65607e4715a213c6456bf64f2be6d3747dad8d"
-    },
-    {
-      "number": 3181,
-      "title": "Daily Intelligence Report 2026-11-04 \u2014 filed edition (V2 skeleton)",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, claim-evidence-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "e743b0b8afccf3dfeca4fc35e8b2e5bfea85748f"
     }
   ]
 }
