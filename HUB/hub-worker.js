@@ -182,6 +182,15 @@ async function serveNote(request, env, rawSlug) {
 
 export default {
   async fetch(request, env) {
+    async function tagShell(res) {
+      try {
+        const ct = res.headers.get("Content-Type") || "";
+        if (!ct.includes("text/html")) return res;
+        const h = new Headers(res.headers);
+        h.set("x-resolve-probe", "shell-1");
+        return new Response(res.body, { status: res.status, statusText: res.statusText, headers: h });
+      } catch (e) { return res; }
+    }
     const url = new URL(request.url);
     if ((url.pathname === "/note" || url.pathname === "/smart-notes") && request.method === "GET") {
       const q = url.searchParams.get("n");
@@ -217,7 +226,7 @@ export default {
       headers.set("Pragma", "no-cache");
       return new Response(faceRes.body, { status: faceRes.status, headers: headers });
     }
-    return env.ASSETS.fetch(request);
+    return tagShell(await env.ASSETS.fetch(request));
   },
 };
 
