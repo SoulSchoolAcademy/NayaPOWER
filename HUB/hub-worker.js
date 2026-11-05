@@ -66,6 +66,9 @@ function mapItem(r) {
 // + captures). Live today at /notes/<slug>. The same handler answers
 // /s/<slug> the moment the /s/* route points at this worker.
 const SPECTRUM = ["#9d75ff", "#6f8dff", "#3ddc97", "#ffd34d", "#ff9f43", "#ff5d5d", "#ff5dd2"];
+function esc(s) {
+  return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
 let REG_CACHE = null;
 const RAW_BASE = "https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/main/";
 async function loadRegistry() {
