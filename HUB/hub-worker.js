@@ -140,6 +140,14 @@ async function serveNote(request, env, rawSlug) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname === "/resolve-echo") {
+      const feed = await loadFeed(request, env);
+      const notes = feed && feed.notes ? feed.notes : {};
+      const probeSlug = url.searchParams.get("slug") || "";
+      let found = false;
+      for (const c of slugCandidates(probeSlug)) { if (notes[c]) { found = true; break; } }
+      return new Response(JSON.stringify({ echo: "RESOLVE-ECHO-20261105", feedCount: Object.keys(notes).length, probeSlug: probeSlug, found: found }), { status: 200, headers: { "Content-Type": "application/json", "Cache-Control": "no-store" } });
+    }
     if ((url.pathname === "/note" || url.pathname === "/smart-notes") && request.method === "GET") {
       const q = url.searchParams.get("n");
       if (q) return serveNote(request, env, q);
