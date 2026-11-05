@@ -23042,5 +23042,19 @@ html body .os-constellation .os-ld-nodes button.os-ld-node[data-node="saves"] .o
 #os-eco-plus{ left:16px !important; right:auto !important; top:164px !important; }
 #page-settings{ left:16px !important; right:auto !important; top:220px !important; }
 #settings-panel{ left:64px !important; right:auto !important; top:268px !important; }
+/* PHONE (<=700px) — the pills become a CENTERED horizontal row, so their
+   left edge slides left as the phone narrows (Day pill x60 at 390px, x45
+   at 360px) and the row sweeps straight through ANY fixed left-column
+   button as it scrolls past: measured live — 360px: eco-plus x Day 19x10
+   and gear x Day 11x13 at y400, toggle x Day 11x21 at y500; 375px: same
+   three, smaller; 390px: eco-plus x Day 4x10 at y400; 414/430px: clear.
+   No fixed spot on the left is safe at every width, so on phones the four
+   left controls scroll WITH the page (position:absolute): at scroll 0 they
+   sit exactly where they are now; scrolled down they ride up and away,
+   and the pills row (page y~600) never meets them — zero overlap at
+   320-430px, every scroll, both modes. Desktop keeps the fixed column. */
+@media (max-width:700px){
+  #os-rooms-plus, #os-eco-plus, #hero-toggle, #page-settings, #viewport-back{ position:absolute !important; }
+}
 </style>
 </body></html>
