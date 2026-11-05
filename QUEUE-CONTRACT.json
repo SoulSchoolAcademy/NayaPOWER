@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-05T03:48:34Z",
-  "tip": "39356104026acf554933138464be00b5e87cc271",
+  "generated_at": "2026-11-05T09:49:03Z",
+  "tip": "716fa2bfacd42fd386a1921afcd8abb74756a0b1",
   "prs": [
     {
       "number": 3089,
@@ -29,6 +29,24 @@
       "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
       "owner": "author lane",
       "head": "530cec78ceeb46ffafd6807d8d0616af2f90e229"
+    },
+    {
+      "number": 3180,
+      "title": "docs(brain): learning event 2026-11-04",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, claim-evidence-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "3c65607e4715a213c6456bf64f2be6d3747dad8d"
+    },
+    {
+      "number": 3181,
+      "title": "Daily Intelligence Report 2026-11-04 \u2014 filed edition (V2 skeleton)",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, claim-evidence-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "e743b0b8afccf3dfeca4fc35e8b2e5bfea85748f"
     }
   ]
 }
