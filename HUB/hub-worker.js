@@ -140,11 +140,7 @@ async function serveNote(request, env, rawSlug) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const probeMatch = url.pathname.match(/^\/(n|note|read|ib|smart-notes)\/resolve-probe$/);
-    if (probeMatch) {
-      return new Response("RESOLVE-PATH-" + probeMatch[1].toUpperCase(), { status: 200, headers: { "Content-Type": "text/plain", "Cache-Control": "no-store" } });
-    }
-    const noteMatch = url.pathname.match(/^\/(?:s|notes)\/([^/]+)\/?$/);
+    const noteMatch = url.pathname.match(/^\/(?:s|notes|smart-notes|note)\/([^/]+)\/?$/);
     if (noteMatch && request.method === "GET") {
       return serveNote(request, env, decodeURIComponent(noteMatch[1]));
     }
