@@ -17197,6 +17197,26 @@
    "page_hash": "832d332185cbf54d7a7a7595055be0d5b0f374bc980b432a8e6acf6f682a532c"
   },
   {
+   "smart_note_id": "SN-2058",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2058-distill-the-essence-daily",
+   "title": "Distill the Essence \u2014 Daily by Default",
+   "content_hash": "eb69f21d0e26d7c7a2f4a024ebb0d6fa99dc64264e4126fa981519d164369ab5",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/DISTILL/SN-2058/IB-SMART-NOTE-20261105-sn2058-distill-the-essence-daily.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM_INTELLIGENCE",
+   "topic": "DISTILL",
+   "subtopic": "ESSENCE-CYCLE",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure by Naya Resolve Narzan 2026-11-05: the page was filed on main by a sister seat with no capture and no registry entry, so the note served 404. Capture reconstructed from the filed page itself (essence and law verbatim in substance; the lens views composed from the page\u2019s own text for the cure); no doctrine added."
+   },
+   "page_hash": "7278b0e04fa7c423249126ca757bcd50bf11b72334ff4a714424cb721cece2ca"
+  },
+  {
    "smart_note_id": "SN-2059",
    "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2059-structure-beats-personality",
    "title": "Structure Beats Personality \u2014 Lessons From the Agent Wars",
@@ -23305,5 +23325,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "b4be71bb905f030909c147e14356e3479f7a7bef6d70bf12f2da651d59a05637"
+ "corpus_manifest_hash": "9e0c31a54b3fcdb3ac1d6635138ead87341c8d6fa38b1e3ed1a0d5b77f9d87f6"
 }
