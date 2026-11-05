@@ -17197,6 +17197,26 @@
    "page_hash": "832d332185cbf54d7a7a7595055be0d5b0f374bc980b432a8e6acf6f682a532c"
   },
   {
+   "smart_note_id": "SN-2059",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2059-structure-beats-personality",
+   "title": "Structure Beats Personality \u2014 Lessons From the Agent Wars",
+   "content_hash": "20060ca7a72e8617bcf3dccda9e9e9e4224cbccbb7fe92465362f87ab4b20251",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/MULTI-AGENT/SN-2059/IB-SMART-NOTE-20261105-sn2059-structure-beats-personality.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM_INTELLIGENCE",
+   "topic": "MULTI-AGENT",
+   "subtopic": "AGENT-WARS-LESSONS",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Distilled by Naya Resolve Narzan from the 'Agents in Games' research narrative relayed by Shawn 2026-11-05 ~11:59 PST (YC Labs/Olin Labs, published 2026-10-29; DeepMind Minecraft dragon run 2026-10-15; OpenAI swarm incident report 2026-08-26) \u2014 as relayed, not independently re-read. Census at main tip a090fa691fef: registry held no SN-2059; open PR heads checked."
+   },
+   "page_hash": "0785a6f5cfe2b603bc5c34b8f2eb87f4db7fdf80812344bbf5883a51df86c878"
+  },
+  {
    "smart_note_id": "SN-1906",
    "intelligent_block_id": "IB-SMART-NOTE-20261030-sn1906-the-related-bar-law",
    "title": "THE RELATED BAR LAW \u2014 the bar knows where you'd go next (Shawn + Power, 2026-10-30)",
@@ -23285,5 +23305,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "87f8e850a071c9efa1554c88ff99edab0c1272df8f5a8d1c931c9d03db473d49"
+ "corpus_manifest_hash": "b4be71bb905f030909c147e14356e3479f7a7bef6d70bf12f2da651d59a05637"
 }
