@@ -1,7 +1,7 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-11-05T09:49:03Z",
-  "tip": "716fa2bfacd42fd386a1921afcd8abb74756a0b1",
+  "generated_at": "2026-11-05T15:48:44Z",
+  "tip": "15946f80a177febfad70dcb4f8b44b55acf35b87",
   "open_pr_count": 5,
   "queue_by_tier_action": {
     "B": {
@@ -12,9 +12,7 @@
     }
   },
   "tip_failing_checks": [
-    "promote-and-prove",
-    "spec-integrity",
-    "test"
+    "spec-integrity"
   ],
   "gauge": {
     "source": "files/balanced-machine/GAUGE-READ-2026-11-02.md",
