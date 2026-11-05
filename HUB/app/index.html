@@ -5914,8 +5914,25 @@ window.NayaJewels = (() => {
         feedEl.appendChild(el('div', 'empty-instrument',
           '<strong>' + emptyTitle + '</strong><p>' + emptyBody + '</p>'));
       }
-      list.forEach((n, i) => feedEl.appendChild(intelBoard(n, i, stream)));
-      if (window.NayaJewels) window.NayaJewels.enhanceBullets(feedEl);
+      /* Chunked render (Resolve, PI sw-44): the first slice paints now and the
+         rest append in batches, so the main thread breathes between slices.
+         Building the whole stream in one synchronous pass is what hung the
+         feed (1,100 boards, one forEach). Same boards, same order, same
+         final DOM — only the pacing changes. A generation token stops a
+         stale fill when the room re-renders. */
+      const RV_CHUNK = 24;
+      const rvGen = (feedEl._rvGen = (feedEl._rvGen || 0) + 1);
+      let rvIdx = 0;
+      feedEl.setAttribute('aria-busy', 'true');
+      const rvStep = () => {
+        if (feedEl._rvGen !== rvGen || !feedEl.isConnected) return;
+        const end = Math.min(rvIdx + RV_CHUNK, list.length);
+        for (; rvIdx < end; rvIdx++) feedEl.appendChild(intelBoard(list[rvIdx], rvIdx, stream));
+        if (rvIdx < list.length) { setTimeout(rvStep, 0); return; }
+        feedEl.setAttribute('aria-busy', 'false');
+        if (window.NayaJewels) window.NayaJewels.enhanceBullets(feedEl);
+      };
+      rvStep();
     }
 
     /* Provenance line: live cards rewrite the banner to the live truth —
