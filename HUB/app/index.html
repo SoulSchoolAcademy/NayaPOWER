@@ -3897,10 +3897,12 @@ window.NayaContent = {
     var tries=0;
     var iv=setInterval(function(){
       tries++; currentNotes();
-      var f=document.getElementById('hubFeed');
-      var done=f && f.getAttribute('aria-busy')==='false' && f.querySelector('.intel-board');
-      if(done){ fixProvenance(liveCount, liveNewest); armAlive(); }
-      if(tries>=60){ clearInterval(iv); }
+      var boards=document.querySelectorAll('.intel-board').length;
+      var liveNow=window.NayaFeedIntelligence && window.NayaFeedIntelligence.ref==='live-registry';
+      if(boards){ fixProvenance(liveCount, liveNewest); armAlive(); }
+      var line=document.getElementById('feed-provenance-line');
+      var shown=line && liveCount && line.textContent.indexOf(String(liveCount))>-1;
+      if((liveNow && shown) || tries>=150){ clearInterval(iv); }
     }, 400);
   }
   face(); watch();
