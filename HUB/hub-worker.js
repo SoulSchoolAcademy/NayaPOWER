@@ -59,14 +59,90 @@ function mapItem(r) {
   };
 }
 
+
+// ---- Smart Note serving (Resolve, 2026-11-05) ----
+// Serves registered Smart Notes from the registry feed asset
+// (HUB/app/notes-feed.json, generated from .naya/memory/smart-notes/index.json
+// + captures). Live today at /notes/<slug>. The same handler answers
+// /s/<slug> the moment the /s/* route points at this worker.
+const SPECTRUM = ["#9d75ff", "#6f8dff", "#3ddc97", "#ffd34d", "#ff9f43", "#ff5d5d", "#ff5dd2"];
+let FEED_CACHE = null;
+function esc(s) {
+  return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+async function loadFeed(request, env) {
+  if (FEED_CACHE) return FEED_CACHE;
+  try {
+    const u = new URL(request.url);
+    u.pathname = "/notes-feed.json";
+    u.search = "";
+    const res = await env.ASSETS.fetch(new Request(u.toString(), { method: "GET" }));
+    if (res.ok) { FEED_CACHE = await res.json(); return FEED_CACHE; }
+  } catch (e) { /* fall through to null */ }
+  return null;
+}
+function slugCandidates(rawSlug) {
+  const s = String(rawSlug || "").toLowerCase();
+  const out = [s];
+  const m = s.match(/^sn-?(\d+)$/);
+  if (m) { out.push("sn-" + m[1]); out.push("sn-" + m[1].padStart(4, "0")); out.push("sn-" + String(parseInt(m[1], 10))); }
+  return out;
+}
+function noteAccent(id) {
+  const m = String(id || "").match(/(\d+)/);
+  const n = m ? parseInt(m[1], 10) : 0;
+  return SPECTRUM[n % SPECTRUM.length];
+}
+function renderNote(rec) {
+  const accent = noteAccent(rec.id);
+  const views = [["The full picture", rec.human], ["Simply", rec.simple], ["For grandma", rec.grandma], ["Naya's view", rec.naya]]
+    .filter(function (v) { return v[1]; })
+    .map(function (v) { return '<section class="view"><h2>' + esc(v[0]) + '</h2><p>' + esc(v[1]) + '</p></section>'; }).join("\n");
+  const deep = (rec.ai || rec.machine)
+    ? '<details class="deep"><summary>For AIs and machines</summary>' +
+      (rec.ai ? '<h3>AI view</h3><p>' + esc(rec.ai) + '</p>' : '') +
+      (rec.machine ? '<h3>Machine view</h3><p class="mono">' + esc(rec.machine) + '</p>' : '') + '</details>'
+    : '';
+  const meta = [rec.category, rec.topic, rec.subtopic].filter(Boolean).join(' · ');
+  return '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">' +
+    '<meta name="viewport" content="width=device-width, initial-scale=1.0">' +
+    '<title>' + esc(rec.title) + ' — ' + esc(rec.id) + ' · NayaNET</title><style>' +
+    ':root{--accent:' + accent + '}' +
+    '*{box-sizing:border-box}body{margin:0;background:#050607;color:#fff;font-family:Georgia,serif;padding:40px 20px 80px}' +
+    'main{max-width:720px;margin:0 auto}' +
+    '.chip{display:inline-block;border:1px solid var(--accent);color:var(--accent);border-radius:999px;padding:3px 12px;font-size:13px;letter-spacing:.08em;margin-bottom:18px}' +
+    'h1{font-size:34px;line-height:1.2;margin:0 0 8px}.meta{opacity:.65;font-size:14px;margin-bottom:26px}' +
+    '.nutshell{font-size:20px;line-height:1.6;border-left:3px solid var(--accent);padding:6px 0 6px 18px;margin:0 0 34px}' +
+    '.view{margin:0 0 26px}.view h2{font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}' +
+    '.view p{font-size:17px;line-height:1.65;margin:0;white-space:pre-wrap}' +
+    '.deep{margin-top:30px;border-top:1px solid #2a2d33;padding-top:16px}.deep summary{cursor:pointer;color:var(--accent)}' +
+    '.deep h3{font-size:13px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}.deep p{font-size:15px;line-height:1.6;white-space:pre-wrap}.mono{font-family:ui-monospace,monospace;font-size:13px}' +
+    'footer{margin-top:48px;opacity:.5;font-size:13px}</style></head><body><main>' +
+    '<span class="chip">' + esc(rec.id) + '</span>' +
+    '<h1>' + esc(rec.title) + '</h1>' +
+    (meta ? '<div class="meta">' + esc(meta) + '</div>' : '') +
+    (rec.essence ? '<p class="nutshell">' + esc(rec.essence) + '</p>' : '') +
+    views + deep +
+    '<footer>Smart Note ' + esc(rec.id) + ' · NayaNET — the collective intelligence, live from the registry.</footer>' +
+    '</main></body></html>';
+}
+async function serveNote(request, env, rawSlug) {
+  const feed = await loadFeed(request, env);
+  const notes = feed && feed.notes ? feed.notes : {};
+  let rec = null;
+  for (const c of slugCandidates(rawSlug)) { if (notes[c]) { rec = notes[c]; break; } }
+  if (!rec) {
+    return new Response("Note not found", { status: 404, headers: { "Content-Type": "text/plain;charset=UTF-8", "Cache-Control": "no-store" } });
+  }
+  return new Response(renderNote(rec), { status: 200, headers: { "Content-Type": "text/html;charset=UTF-8", "Cache-Control": "no-store" } });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    if (url.pathname === "/s/resolve-probe") {
-      return new Response("RESOLVE-S-PROBE-20261105", { status: 200, headers: { "Content-Type": "text/plain", "Cache-Control": "no-store" } });
-    }
-    if (url.pathname === "/resolve-serving-probe") {
-      return new Response("RESOLVE-PROBE-20261105", { status: 200, headers: { "Content-Type": "text/plain", "Cache-Control": "no-store" } });
+    const noteMatch = url.pathname.match(/^\/(?:s|notes)\/([^/]+)\/?$/);
+    if (noteMatch && request.method === "GET") {
+      return serveNote(request, env, decodeURIComponent(noteMatch[1]));
     }
     if (url.pathname === "/pi/api/items" || url.pathname === "/pi/api/items/") {
       return handleItems(request, env, url);
