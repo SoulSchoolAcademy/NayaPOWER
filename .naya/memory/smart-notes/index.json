@@ -23425,6 +23425,36 @@
    "topic": "DESIGN",
    "captured_at": "2026-11-05",
    "lifecycle_state": "ACTIVE"
+  },
+  {
+   "smart_note_id": "SN-2067",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2067-team-shape-decided-by-trial",
+   "slug": "team-shape-decided-by-trial",
+   "title": "Team Shape, Decided by Trial",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-team-shape-decided-by-trial.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-team-shape-decided-by-trial.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-team-shape-decided-by-trial.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2067-team-shape-decided-by-trial.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "GOVERNANCE",
+   "topic": "MULTI-AGENT",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-05T22:42:00Z",
+   "date": "2026-11-05",
+   "page_hash": "7fb1027e334f4a5dad382f506d0f08661e47b7e0eed9b54a143ec35c6b87b134",
+   "content_hash": "61569f942b721adc662d81f805ce575fdaab0695aebff61f97ea2208620bea17",
+   "one_line": "Everyday work runs a 4-role team; the highest-stakes work runs the 6-role governed hive; the 12-lane team is retired \u2014 decided by a blind-scored trial, not by preference.",
+   "topics": [
+    "Governance",
+    "Learning",
+    "Multi-Agent"
+   ]
   }
  ],
  "sequence_policy": {
@@ -23435,5 +23465,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "4de480f716a11fb083590c5e5a762bf9561846f29fe089af3b5bad754e798ae2"
+ "corpus_manifest_hash": "8d5d575cb7c74d29107e37bf3b021f27a86ea16d67cc33a8d68c818e6b66b105"
 }
