@@ -17257,6 +17257,26 @@
    "page_hash": "29025ffcb1b3131b70a8815b664d4a06c937e842aabb802b4c92434619aa9b69"
   },
   {
+   "smart_note_id": "SN-2061",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2061-hyper-aware-loop",
+   "title": "Hyper-Aware \u2014 The Loop That Compounds",
+   "content_hash": "0295182bdc3278177e519b7a86ec5230cedc9b9fdf8f382f2370f3258b065903",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/MULTI-AGENT/SN-2061/IB-SMART-NOTE-20261105-sn2061-hyper-aware-loop.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM_INTELLIGENCE",
+   "topic": "MULTI-AGENT",
+   "subtopic": "AWARENESS-LOOP",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Shawn's teaching delivered in chat 2026-11-05 ~12:25 PST, distilled and filed by Naya Resolve Narzan the same pass \u2014 the filing is the loop running. Census at main tip 4491e99bdf3e: registry held no SN-2061; open PR heads checked."
+   },
+   "page_hash": "45e65c44a6d9eee0343162036e606cdd4ae0977103031c401dd05813c63efe28"
+  },
+  {
    "smart_note_id": "SN-1906",
    "intelligent_block_id": "IB-SMART-NOTE-20261030-sn1906-the-related-bar-law",
    "title": "THE RELATED BAR LAW \u2014 the bar knows where you'd go next (Shawn + Power, 2026-10-30)",
@@ -23345,5 +23365,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "cf32960206a47fb4e27b4e144e90a1a40bcce3285fa311b5363b67a9e9475521"
+ "corpus_manifest_hash": "1643d35f0171ec905e3785528606f23399cfd3c072e59cdc33bd20a06c805a24"
 }
