@@ -2908,8 +2908,8 @@ button:hover{
    constellation centre, in the house skeleton language (real structure that
    pulses — 2026-11-01). loadPointsBoard removes it the moment the orbs render.
    Slow rotation, like the rest of the machine. */
-.os-ld-loading{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;pointer-events:none;}
-.os-ld-loading-ring{width:min(300px,80%);aspect-ratio:1/1;border-radius:50%;border:1.5px solid rgba(255,255,255,.12);border-top-color:rgba(255,255,255,.65);animation:ldSpin 2.4s linear infinite;}
+.os-ld-loading{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;pointer-events:none;width:min(300px,80%);aspect-ratio:1/1;}
+.os-ld-loading-ring{width:100%;height:100%;border-radius:50%;border:1.5px solid rgba(255,255,255,.12);border-top-color:rgba(255,255,255,.65);animation:ldSpin 2.4s linear infinite;}
 @keyframes ldSpin{to{transform:rotate(360deg);}}
 
 /* --- band edge labels on the dial: the current band's range, always labeled --- */
