@@ -17097,6 +17097,26 @@
    "page_hash": "06795eaa8aa71219f86afcaf276fef070673e69c9998e2fddd2e817b3e736673"
   },
   {
+   "smart_note_id": "SN-2053",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2053-registered-is-not-served",
+   "title": "Registered Is Not Served \u2014 The Registry Is the Feed",
+   "content_hash": "a63a7a42fc029ae29ffd8fe3ba873d4acfaa24be765476f28ca8a5aabfa04b77",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/SERVING/SN-2053/IB-SMART-NOTE-20261105-sn2053-registered-is-not-served.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM_INTELLIGENCE",
+   "topic": "SERVING",
+   "subtopic": "REGISTRY-FEED",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Filed by Naya Resolve Narzan, 2026-11-05: the serving-cure lesson, filed with its page + capture in one PR and verified serving live in the same pass. Census at main tip 816a4e3350525fca7a5d86ec198256f17d1ae346: no SN-2053 anywhere (registry, tree, captures, open PR heads, recent commits)."
+   },
+   "page_hash": "9faa8131d77613e8438647f1691c61a597c2b39b495e1ea46e966d331b594a3b"
+  },
+  {
    "smart_note_id": "SN-1906",
    "intelligent_block_id": "IB-SMART-NOTE-20261030-sn1906-the-related-bar-law",
    "title": "THE RELATED BAR LAW \u2014 the bar knows where you'd go next (Shawn + Power, 2026-10-30)",
@@ -23185,5 +23205,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "2bfeea0e447f7ff97660c046d7633106691f1b72a644bed39dea1072ade51dc8"
+ "corpus_manifest_hash": "88bb69b3a44dec9cbade652519bc749fc8d4dd0be946949465546255e54ea3c0"
 }
