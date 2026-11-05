@@ -1,0 +1,41 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2070",
+  "title": "Essence 03 — The System, Not Just the Seat",
+  "slug": "essence-03-the-system-not-just-the-seat",
+  "file": "BRAIN/05-MEMORY/ESSENCE-03-the-system-not-just-the-seat.md",
+  "tone": "emerald",
+  "icon": "◆",
+  "created_at": "2026-11-05T23:07:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "When a seat fails, check the system before blaming the seat — failures can be system-enabled, when the system of record contradicts the system's own instructions. One intelligence, three projections (HUMAN / AI / MACHINE); the canonical wins on any conflict; the projections are views, not forks. Workspace-local work is unreviewable — until it is pushed, it does not exist for the team. A deployed URL is not the deployed product — prove currency from served bytes. Re-anchor to the live head before building; an occupied branch's frozen pin is not its head. Announce every ref rewrite — content intact does not mean damage-free. Correct the shape, not the polish, when the deliverable itself was wrong. Extraction fidelity is a mechanical assertion — bytes, not memory. Design canon is adopted as working intelligence. Close the loop with the smallest contract that makes the flow real — and never let a suggestion masquerade as an action.",
+    "human_view": "When something goes wrong, do not start by blaming the person. Start by asking whether the system itself set them up to fail — whether two instructions contradicted each other, whether the tool they were told to use was broken, whether the thing they built was invisible to everyone else. Fix the system, and the seat stops failing. And always check the real thing — the live page, the served bytes, the pushed branch — never the claim about it.",
+    "child_view": "Imagine your teacher tells you to put your homework in the blue box, but the blue box is actually red. You put it in the red box, and the teacher says you did it wrong. That is not your fault — the instructions were wrong. Good systems make it easy to do the right thing, and when someone fails, you fix the instructions first.",
+    "grandma_view": "Dear, when something goes wrong, look at the house before you blame the person living in it. If the stairs are broken, anyone will fall. Fix the stairs. And always look with your own eyes at the real thing — not at what someone said about it, but at the thing itself.",
+    "ai_view": "You are a system thinker. When a seat fails, check the system first. Push your work where the team can reach it — workspace-local is unreviewable. Prove currency from served bytes, never from a URL. Re-anchor to the live head before building. Announce every ref rewrite. Correct the shape, not the polish. Assert extraction fidelity mechanically. A suggestion is never an action — the human's tap is the action.",
+    "what_it_means": "Twelve separate design and operations incidents are one law: the system shapes the seat. Every note in this cluster is a case where the system itself caused the failure — contradictory instructions, invisible work, a deployed page that was not the canonical app, a frozen pin that was not the head, a quiet ref rewrite, a wrong-shaped deliverable polished instead of corrected. The repair in each case was the same move: look at the system, fix the system, and verify against the real thing.",
+    "whats_inside": [
+      "In A Nutshell",
+      "Human",
+      "Child",
+      "Grandma",
+      "Naya",
+      "Machine",
+      "What It All Means",
+      "Why It Matters",
+      "How It Connects",
+      "What Is In It For You",
+      "The Learning",
+      "Coverage — Raw Notes Distilled (12)"
+    ],
+    "topics": [
+      "System Design",
+      "Essence",
+      "Distillation"
+    ]
+  },
+  "page_hash": "4ba2dd3c6dace7b9027c0b96b676a63550c2660c022fe2951899b5efa3f6cb83",
+  "content_hash": "a7d3cb9acd11dfbaeefff46a3bfa726e1f713a1d75ebb4f81a74535604de5a6a"
+}

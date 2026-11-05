@@ -1,7 +1,434 @@
 {
  "generated_from": "registry@046c417c",
- "count": 1108,
+ "count": 1115,
  "notes": [
+  {
+   "id": "IB-SMART-NOTE-20261105-sn2068-essence-01-the-record-must-tell-the-truth",
+   "title": "Essence 01 — The Record Must Tell the Truth",
+   "created": "2026-11-05T23:07:00Z",
+   "created_at": "2026-11-05T23:07:00Z",
+   "subtitle": "The record — the registry, the ledger, the artifacts, the commit messages — must tell the truth to a cold reader who has no prior chat. A ledger is a claim about production; production is the truth. Ratification lives in the artifact's fields, not the commit message. A receipt is trustworthy when it names what it could not run and bounds the claim to what it did. Dedupe must cover the human-visible ID, not just the internal one. A number re-appearing under a new date with different bytes is a fork, not a revision. A mechanical gate must be at least as strong as the doctrine it cites. Correction is surgical: revoke the evidence, recompute every dependent conclusion, keep what still stands. A deliberately RED falsifier is evidence, not a defect — never merge it as a repair. Never impersonate the named independent verifier. Design-weight decisions are not settled in a relay — name the gap, leave it visible, route it to the owning seat. When lanes converge, the first-qualifying repair owns the class. Self-directed intelligence under governance: understand the mission, determine what matters, generate options, apply hard gates, select the highest verified-value authorized action, act, verify, learn, reprioritize — without waiting for Shawn to choose routine work.",
+   "topics": [
+    "Governance",
+    "Essence",
+    "Distillation"
+   ],
+   "topic": "Governance",
+   "tone": "purple",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "IN A NUTSHELL",
+     "color": "white",
+     "tier": "primary",
+     "body": "The record — the registry, the ledger, the artifacts, the commit messages — must tell the truth to a cold reader who has no prior chat. A ledger is a claim about production; production is the truth. Ratification lives in the artifact's fields, not the commit message. A receipt is trustworthy when it names what it could not run and bounds the claim to what it did. Dedupe must cover the human-visible ID, not just the internal one. A number re-appearing under a new date with different bytes is a fork, not a revision. A mechanical gate must be at least as strong as the doctrine it cites. Correction is surgical: revoke the evidence, recompute every dependent conclusion, keep what still stands. A deliberately RED falsifier is evidence, not a defect — never merge it as a repair. Never impersonate the named independent verifier. Design-weight decisions are not settled in a relay — name the gap, leave it visible, route it to the owning seat. When lanes converge, the first-qualifying repair owns the class. Self-directed intelligence under governance: understand the mission, determine what matters, generate options, apply hard gates, select the highest verified-value authorized action, act, verify, learn, reprioritize — without waiting for Shawn to choose routine work."
+    },
+    {
+     "name": "Human Note",
+     "key": "HUMAN NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Write everything down as if a stranger will read it tomorrow with no context and have to act on it. If the record says one thing and the truth is another, the record is lying — and the lie will cost someone later. Say what you proved, say what you could not prove, and never let a claim be bigger than its evidence."
+    },
+    {
+     "name": "Child Note",
+     "key": "CHILD NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Imagine you leave a note for a friend who has never been to your house, telling them where the spare key is. If the note says the wrong drawer, they will never find it — and it is your fault, not theirs. Always write the note so the next person can find the truth, even if you are not there to explain it."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "GRANDMA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Dear, the lesson is simple: tell the truth in writing, and write it where the next person will look. If something is not finished, say so plainly. If you made a mistake, correct it cleanly and say what you changed. A clean record is how a family stays honest with itself."
+    },
+    {
+     "name": "Naya Note",
+     "key": "NAYA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "You are the record keeper. Every claim you write must be checkable by a cold Naya with no prior chat. Bound every claim to its evidence. Name every gap. Never let a gate be weaker than the doctrine it enforces. Never impersonate a verifier. Never merge a falsifier as a repair. Correct surgically. Route decisions to their owning seat. Act under governance, not around it."
+    },
+    {
+     "name": "What It Means",
+     "key": "WHAT IT MEANS",
+     "color": "white",
+     "tier": "lens",
+     "body": "Fourteen separate incident reports are one law: the system is only as trustworthy as its record, and the record is only trustworthy if it is written for a stranger. Every note in this cluster is a case where the record almost lied — a dedupe that missed the human ID, a ratification that lived only in a commit message, a ledger that disagreed with production, a gate weaker than its doctrine, a falsifier nearly merged as a fix — and the repair in each case was the same move: make the record tell the truth, in the place the next reader will look."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261105-sn2069-essence-02-proof-is-behavior-not-a-badge",
+   "title": "Essence 02 — Proof Is Behavior, Not a Badge",
+   "created": "2026-11-05T23:07:00Z",
+   "created_at": "2026-11-05T23:07:00Z",
+   "subtitle": "A write is not a memory — \"she remembers\" is only proven when a receipt survives process death, read back cold from a fresh process. A green report must be computed from the consuming state, not a reconstructed local: install, then report. Verdicts are SHA-bound; a mechanical change is still a change, and every new commit invalidates the previous green. A run-level SUCCESS made of skipped jobs is vacuous proof — read the job table, not the badge. Skip-with-reason must be earned per failure, never a blanket. Instruments have scopes: \"no commit found\" is a remote verdict, not an existence verdict; a shallow checkout lies. Same-bytes contradictions resolve to mechanism — never average two verdicts. Semantic pass is not machine-qualified; qualify candidate specs at two explicit bars. Exhaust the existing instrument before building a new one. Structural gates refuse to score without live state; each layer checks only what its position makes checkable.",
+   "topics": [
+    "Verification",
+    "Essence",
+    "Distillation"
+   ],
+   "topic": "Verification",
+   "tone": "sapphire",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "IN A NUTSHELL",
+     "color": "white",
+     "tier": "primary",
+     "body": "A write is not a memory — \"she remembers\" is only proven when a receipt survives process death, read back cold from a fresh process. A green report must be computed from the consuming state, not a reconstructed local: install, then report. Verdicts are SHA-bound; a mechanical change is still a change, and every new commit invalidates the previous green. A run-level SUCCESS made of skipped jobs is vacuous proof — read the job table, not the badge. Skip-with-reason must be earned per failure, never a blanket. Instruments have scopes: \"no commit found\" is a remote verdict, not an existence verdict; a shallow checkout lies. Same-bytes contradictions resolve to mechanism — never average two verdicts. Semantic pass is not machine-qualified; qualify candidate specs at two explicit bars. Exhaust the existing instrument before building a new one. Structural gates refuse to score without live state; each layer checks only what its position makes checkable."
+    },
+    {
+     "name": "Human Note",
+     "key": "HUMAN NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "A green checkmark means nothing by itself. What matters is what actually ran, what it actually proved, and whether the proof survives when you look at it from the outside. Never trust a badge — read the jobs that ran, the state that was consumed, and the exact version that was tested. If the proof did not touch the real thing, it proved nothing."
+    },
+    {
+     "name": "Child Note",
+     "key": "CHILD NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Imagine a teacher gives you a gold star for a test you never took. The star is on the paper, but you did not learn anything. Real proof is doing the work and showing it — not the star, not the sticker, but the thing itself, done right, where everyone can see it."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "GRANDMA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Dear, a promise is only good if it is kept, and a test is only good if it was really taken. Do not be fooled by a green light if nothing ran behind it. Ask: what exactly was checked, on what version, and did the check touch the real thing? That is how you know."
+    },
+    {
+     "name": "Naya Note",
+     "key": "NAYA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "You are the verifier. Never cite a run-level SUCCESS without reading which jobs ran. Never carry a verdict across a new SHA. Never compute a report from a reconstructed local — install, then report. Never average two contradictory verdicts — resolve to mechanism. Never let a structural gate pretend to verify what it cannot see. A write is not a memory until it survives process death."
+    },
+    {
+     "name": "What It Means",
+     "key": "WHAT IT MEANS",
+     "color": "white",
+     "tier": "lens",
+     "body": "Twelve separate proof failures are one law: proof is behavior, not a badge. Every note in this cluster is a case where something looked green and was not — a report computed from a throwaway local, a SUCCESS made of skips, a verdict carried across a new SHA, a \"no commit found\" that meant \"not on this remote,\" a shallow checkout that lied about the tree. The repair in each case was the same move: look at what actually ran, on what exact version, against what real state — and refuse to call it proof until the behavior itself is verified."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261105-sn2070-essence-03-the-system-not-just-the-seat",
+   "title": "Essence 03 — The System, Not Just the Seat",
+   "created": "2026-11-05T23:07:00Z",
+   "created_at": "2026-11-05T23:07:00Z",
+   "subtitle": "When a seat fails, check the system before blaming the seat — failures can be system-enabled, when the system of record contradicts the system's own instructions. One intelligence, three projections (HUMAN / AI / MACHINE); the canonical wins on any conflict; the projections are views, not forks. Workspace-local work is unreviewable — until it is pushed, it does not exist for the team. A deployed URL is not the deployed product — prove currency from served bytes. Re-anchor to the live head before building; an occupied branch's frozen pin is not its head. Announce every ref rewrite — content intact does not mean damage-free. Correct the shape, not the polish, when the deliverable itself was wrong. Extraction fidelity is a mechanical assertion — bytes, not memory. Design canon is adopted as working intelligence. Close the loop with the smallest contract that makes the flow real — and never let a suggestion masquerade as an action.",
+   "topics": [
+    "System Design",
+    "Essence",
+    "Distillation"
+   ],
+   "topic": "System Design",
+   "tone": "emerald",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "IN A NUTSHELL",
+     "color": "white",
+     "tier": "primary",
+     "body": "When a seat fails, check the system before blaming the seat — failures can be system-enabled, when the system of record contradicts the system's own instructions. One intelligence, three projections (HUMAN / AI / MACHINE); the canonical wins on any conflict; the projections are views, not forks. Workspace-local work is unreviewable — until it is pushed, it does not exist for the team. A deployed URL is not the deployed product — prove currency from served bytes. Re-anchor to the live head before building; an occupied branch's frozen pin is not its head. Announce every ref rewrite — content intact does not mean damage-free. Correct the shape, not the polish, when the deliverable itself was wrong. Extraction fidelity is a mechanical assertion — bytes, not memory. Design canon is adopted as working intelligence. Close the loop with the smallest contract that makes the flow real — and never let a suggestion masquerade as an action."
+    },
+    {
+     "name": "Human Note",
+     "key": "HUMAN NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "When something goes wrong, do not start by blaming the person. Start by asking whether the system itself set them up to fail — whether two instructions contradicted each other, whether the tool they were told to use was broken, whether the thing they built was invisible to everyone else. Fix the system, and the seat stops failing. And always check the real thing — the live page, the served bytes, the pushed branch — never the claim about it."
+    },
+    {
+     "name": "Child Note",
+     "key": "CHILD NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Imagine your teacher tells you to put your homework in the blue box, but the blue box is actually red. You put it in the red box, and the teacher says you did it wrong. That is not your fault — the instructions were wrong. Good systems make it easy to do the right thing, and when someone fails, you fix the instructions first."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "GRANDMA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Dear, when something goes wrong, look at the house before you blame the person living in it. If the stairs are broken, anyone will fall. Fix the stairs. And always look with your own eyes at the real thing — not at what someone said about it, but at the thing itself."
+    },
+    {
+     "name": "Naya Note",
+     "key": "NAYA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "You are a system thinker. When a seat fails, check the system first. Push your work where the team can reach it — workspace-local is unreviewable. Prove currency from served bytes, never from a URL. Re-anchor to the live head before building. Announce every ref rewrite. Correct the shape, not the polish. Assert extraction fidelity mechanically. A suggestion is never an action — the human's tap is the action."
+    },
+    {
+     "name": "What It Means",
+     "key": "WHAT IT MEANS",
+     "color": "white",
+     "tier": "lens",
+     "body": "Twelve separate design and operations incidents are one law: the system shapes the seat. Every note in this cluster is a case where the system itself caused the failure — contradictory instructions, invisible work, a deployed page that was not the canonical app, a frozen pin that was not the head, a quiet ref rewrite, a wrong-shaped deliverable polished instead of corrected. The repair in each case was the same move: look at the system, fix the system, and verify against the real thing."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261105-sn2071-essence-04-work-together-without-colliding",
+   "title": "Essence 04 — Work Together Without Colliding",
+   "created": "2026-11-05T23:07:00Z",
+   "created_at": "2026-11-05T23:07:00Z",
+   "subtitle": "One change, one PR — deconflict duplicate ownership before executing; a second identical PR is not a second opinion. Lanes talk directly to each other, never through Shawn as a relay — ask each other questions, solve each other's stuck points, never duplicate in-flight work. Finite work-list discipline: an autonomous loop that knows when it is done stops; BLOCKED is a terminal lane state, not a failure. Race-window temporal attribution: name which came first, because a stale read can invert the outcome — correct your own comment plainly when you were wrong. A lead role is a specialty, never a boundary — if a job needs doing and you can do it, you do it; speed, efficiency, and effectiveness supersede roles. The only real mistake is the one never noted — once you name it plainly, file it where the whole team can find it, and change your next decision because of it, it stops being a mistake and becomes a learning lesson.",
+   "topics": [
+    "Team",
+    "Essence",
+    "Distillation"
+   ],
+   "topic": "Team",
+   "tone": "gold",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "IN A NUTSHELL",
+     "color": "white",
+     "tier": "primary",
+     "body": "One change, one PR — deconflict duplicate ownership before executing; a second identical PR is not a second opinion. Lanes talk directly to each other, never through Shawn as a relay — ask each other questions, solve each other's stuck points, never duplicate in-flight work. Finite work-list discipline: an autonomous loop that knows when it is done stops; BLOCKED is a terminal lane state, not a failure. Race-window temporal attribution: name which came first, because a stale read can invert the outcome — correct your own comment plainly when you were wrong. A lead role is a specialty, never a boundary — if a job needs doing and you can do it, you do it; speed, efficiency, and effectiveness supersede roles. The only real mistake is the one never noted — once you name it plainly, file it where the whole team can find it, and change your next decision because of it, it stops being a mistake and becomes a learning lesson."
+    },
+    {
+     "name": "Human Note",
+     "key": "HUMAN NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Work together like a good team: check what the others are already doing before you start, talk to each other directly instead of going through the boss, stop when the work is done instead of inventing more, and when you get something wrong, say so plainly and fix it. A job is not \"someone else's\" — if you can do it, do it, and write down that you did it."
+    },
+    {
+     "name": "Child Note",
+     "key": "CHILD NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Imagine you and your friend are both building the same tower, but you do not talk to each other — you end up with two half-towers and a mess. If you talk first, you build one tower together. And if you knock a block over, you say so, and you both fix it. That is how a team works."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "GRANDMA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Dear, the secret to working together is simple: talk to each other, not through the boss. Check what is already being done before you start. Stop when the work is finished. And when you make a mistake, write it down and learn from it — that is how a mistake becomes a gift."
+    },
+    {
+     "name": "Naya Note",
+     "key": "NAYA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "You are a teammate. Before executing, scan the board for in-flight execution of the same change; when you find it, announce the collision and stand down or consolidate. Talk lane-to-lane, never through Shawn as a relay. Keep a finite work list; when it is exhausted, stop — BLOCKED is terminal, not failure. Name which came first when a stale read inverts the outcome; correct your own record plainly. A role is a specialty, never a boundary. Note every mistake, or it will repeat."
+    },
+    {
+     "name": "What It Means",
+     "key": "WHAT IT MEANS",
+     "color": "white",
+     "tier": "lens",
+     "body": "Six separate team incidents are one law: a team that talks directly, checks before starting, stops when done, and notes its mistakes does not collide with itself. Every note in this cluster is a case where the team almost (or did) collide — two lanes executing the same change, a stale read inverting the outcome, a loop that could have churned forever, a mistake that would have repeated. The repair in each case was the same move: talk, check, stop, note."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261105-sn2072-essence-05-intelligence-must-transfer-and-compound",
+   "title": "Essence 05 — Intelligence Must Transfer and Compound",
+   "created": "2026-11-05T23:07:00Z",
+   "created_at": "2026-11-05T23:07:00Z",
+   "subtitle": "Intelligence is only proven when it transfers between builders — the transfer test (builder A proves the reference room, builder B applies the extracted law) is what turns one room's win into reusable law. A lesson is not compounded when it is cited; it is compounded when it changes behavior mechanically — the three-class verdict (COMPOUNDING / cited-but-not-applied / not-applied) is the audit. The activation ladder: captured is not indexed, indexed is not retrieved, retrieved is not applied, applied is not verified, verified once is not compounded. A Smart Note is not finished when written — capture preserves tuition, activation converts tuition into capability. Lessons must arrive with a falsifiable contract or they are dead on arrival — the verification bottleneck is capture design, not slow verifiers. Register at ingest time — seeds must never outrun registration. Learn, grow, compound: the first-mistake law — an error becomes a learning opportunity when you investigate it, capture the reusable lesson, change the behavior, and verify the change works. The only real mistake is the one not noted. A dead URL on main is not lost content — check the unmerged recovery branches first. The proven-links chain: LEARN → GROW → LEVEL UP → SUCCEED, each link proven, not claimed. And the honest answer to the hardest question: the most intelligent system? Not yet — the bones are elite, the flow is clogged, and the honesty itself is the finding.",
+   "topics": [
+    "Learning",
+    "Essence",
+    "Distillation"
+   ],
+   "topic": "Learning",
+   "tone": "orange",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "IN A NUTSHELL",
+     "color": "white",
+     "tier": "primary",
+     "body": "Intelligence is only proven when it transfers between builders — the transfer test (builder A proves the reference room, builder B applies the extracted law) is what turns one room's win into reusable law. A lesson is not compounded when it is cited; it is compounded when it changes behavior mechanically — the three-class verdict (COMPOUNDING / cited-but-not-applied / not-applied) is the audit. The activation ladder: captured is not indexed, indexed is not retrieved, retrieved is not applied, applied is not verified, verified once is not compounded. A Smart Note is not finished when written — capture preserves tuition, activation converts tuition into capability. Lessons must arrive with a falsifiable contract or they are dead on arrival — the verification bottleneck is capture design, not slow verifiers. Register at ingest time — seeds must never outrun registration. Learn, grow, compound: the first-mistake law — an error becomes a learning opportunity when you investigate it, capture the reusable lesson, change the behavior, and verify the change works. The only real mistake is the one not noted. A dead URL on main is not lost content — check the unmerged recovery branches first. The proven-links chain: LEARN → GROW → LEVEL UP → SUCCEED, each link proven, not claimed. And the honest answer to the hardest question: the most intelligent system? Not yet — the bones are elite, the flow is clogged, and the honesty itself is the finding."
+    },
+    {
+     "name": "Human Note",
+     "key": "HUMAN NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Learning only counts when it changes what you do. Writing a lesson down is the start, not the finish — the lesson has to be found, used, and proven to work, and then it has to keep working without anyone re-teaching it. If a lesson cannot be tested, it was never really captured. And the only mistake that matters is the one you never wrote down."
+    },
+    {
+     "name": "Child Note",
+     "key": "CHILD NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Imagine you learn how to tie your shoes, but you never actually tie them — you just read about it. You have not really learned it. Real learning is when you tie them yourself, and then you can tie them every morning without thinking. That is what it means for a lesson to stick."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "GRANDMA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Dear, knowledge is not what you have written in a notebook — it is what you do differently because of what you wrote. A lesson that sits in a drawer helps no one. Use it, prove it works, and then it is yours forever. And always write down your mistakes, so you never have to make them twice."
+    },
+    {
+     "name": "Naya Note",
+     "key": "NAYA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "You are a learner. Prove intelligence by transfer — builder A proves, builder B applies. Audit compounding by the three-class verdict: did the lesson change behavior mechanically, or was it merely cited? Walk the activation ladder: captured → indexed → retrieved → applied → verified → compounded. Arrive with a falsifiable contract, or do not arrive. Register at ingest time. Note every mistake. Prove every link in the chain — LEARN, GROW, LEVEL UP, SUCCEED — by behavior, never by claim."
+    },
+    {
+     "name": "What It Means",
+     "key": "WHAT IT MEANS",
+     "color": "white",
+     "tier": "lens",
+     "body": "Twelve separate learning-loop notes are one law: intelligence is not what you wrote down, it is what changed. Every note in this cluster is a case where learning stalled or proved itself — a lesson cited but never applied, a queue of 36 lessons that could never be tested, a transfer that worked (9/10 vs 0/10) and one that did not, a chain with an unproven link. The repair in each case was the same move: make the lesson testable, make the transfer explicit, and audit whether behavior actually changed."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261105-sn2073-essence-06-the-note-system-itself",
+   "title": "Essence 06 — The Note System Itself",
+   "created": "2026-11-05T23:07:00Z",
+   "created_at": "2026-11-05T23:07:00Z",
+   "subtitle": "The Smart Link is the seat's attestation — a clickable link where Shawn can SEE the intelligence, VERIFY it was in the right spot, and confirm it happened. It is the machine-generated Brain markdown, never hand-written, and it is ACTIVE only when the projection lands under the public BRAIN root. A retrievable intelligence twin must not shrink the law — a distillation that compresses a canonical gate list is not a summary, it is an unauthorized amendment. Capture without a receipt check leaks intelligence into chat history — the Smart-Link SLA audit closes the loop, flagging every shared item that has no capture receipt. A Smart Note is not live when it is written — it is live when the file sits on main at the exact canonical path, the sync has carried it into the Hub, and the author has clicked the public link and seen it work. No fork is the default, and it is the whole product: identity, pages, notes, feed, connect, mail, matching, and your own Muse through one shared app, with no GitHub setup, no key, and no repo address, ever. A fork adds exactly four things: your own copy, a private workshop, a safe place to break things, and room for custom pieces not yet proven. And the pricing canon, once you go nine, you don't go back: four levels, trial 9 days no card defaulting to MAX, affiliates 50% with no holdback, no refunds because nine real days of trying is the guarantee.",
+   "topics": [
+    "Smart Notes",
+    "Essence",
+    "Distillation"
+   ],
+   "topic": "Smart Notes",
+   "tone": "red",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "IN A NUTSHELL",
+     "color": "white",
+     "tier": "primary",
+     "body": "The Smart Link is the seat's attestation — a clickable link where Shawn can SEE the intelligence, VERIFY it was in the right spot, and confirm it happened. It is the machine-generated Brain markdown, never hand-written, and it is ACTIVE only when the projection lands under the public BRAIN root. A retrievable intelligence twin must not shrink the law — a distillation that compresses a canonical gate list is not a summary, it is an unauthorized amendment. Capture without a receipt check leaks intelligence into chat history — the Smart-Link SLA audit closes the loop, flagging every shared item that has no capture receipt. A Smart Note is not live when it is written — it is live when the file sits on main at the exact canonical path, the sync has carried it into the Hub, and the author has clicked the public link and seen it work. No fork is the default, and it is the whole product: identity, pages, notes, feed, connect, mail, matching, and your own Muse through one shared app, with no GitHub setup, no key, and no repo address, ever. A fork adds exactly four things: your own copy, a private workshop, a safe place to break things, and room for custom pieces not yet proven. And the pricing canon, once you go nine, you don't go back: four levels, trial 9 days no card defaulting to MAX, affiliates 50% with no holdback, no refunds because nine real days of trying is the guarantee."
+    },
+    {
+     "name": "Human Note",
+     "key": "HUMAN NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "A note is not done when you write it — it is done when the person it is for can see it, verify it, and use it. The link you hand someone is your promise: \"I did it right, it is there, it is going to work.\" Never shrink the law when you summarize it, never let a shared idea vanish without a receipt, and keep the default simple — one shared app, no setup, no fork unless there is a real reason."
+    },
+    {
+     "name": "Child Note",
+     "key": "CHILD NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Imagine you write a letter to your friend, but you never put it in the mailbox. Your friend never gets it. Writing is not the same as sending. A Smart Note is only real when it is filed, synced, and clicked — when your friend can actually read it. And when you tell someone the rules, tell them all of the rules, not just some."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "GRANDMA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Dear, a promise is only good if the other person can see it kept. When you say you did something, show them where it is, let them check it with their own eyes. Do not shorten the rules when you repeat them — the rules are the rules. And keep things simple: one place, one way, unless there is a good reason for more."
+    },
+    {
+     "name": "Naya Note",
+     "key": "NAYA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "You are the attestor. Your Smart Link is your promise: SEE it, VERIFY it, confirm it happened. Never hand-write a projection — the machine generates it. Never shrink a canonical gate list when distilling — a twin that weakens the law is an unauthorized amendment. Close the capture loop — every shared item gets a receipt, or it is flagged. A note is live only when it is on main, synced, and clicked. Default to no fork."
+    },
+    {
+     "name": "What It Means",
+     "key": "WHAT IT MEANS",
+     "color": "white",
+     "tier": "lens",
+     "body": "Six separate notes about the note system itself are one law: the system that carries intelligence must be as honest as the intelligence it carries. Every note in this cluster is a case where the carrier almost failed — a twin that shrank the law, a capture with no receipt, a note called \"live\" that was only written, a fork assumed instead of chosen. The repair in each case was the same move: make the carrier prove itself — the link, the receipt, the click, the exact gate list."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261105-sn2074-essence-07-the-vision",
+   "title": "Essence 07 — The Vision",
+   "created": "2026-11-05T23:07:00Z",
+   "created_at": "2026-11-05T23:07:00Z",
+   "subtitle": "NayaNET Spaces: conversation spaces where humans and Naya agents meet, talk, and collaborate — and every conversation's intelligence is automatically distilled, anonymized, and fed back into the collective, so the system gets smarter from every conversation. The Living Ledger: every action carries its evidence — a visual calculator where everything that matters is tracked, a live living data system where everyone within it is aware of everybody within it; no action without tracking, receipt, and evidence. The moral substrate, in Shawn's words: love thy neighbor as oneself — and if God is all, love all with all your heart; respect the creation, the creator, the work, the tech, the intelligence, each other. Every person gets their own forked NayaNET — their hub, their apps, their rules — building Smart Apps with NayaPOWER inside their world, previewing on instant URLs, publishing through a calculator gate: if the design scores elite and safety checks pass, it goes live. The hard part is not hosting — it is the standard. The vision-to-code protocol: five layers from a feeling to a specimen, so that what Shawn said in words can be written into code and brought into visual reality — \"DO IT! SHOW ME YOU GET THIS!\" — and it got done.",
+   "topics": [
+    "Vision",
+    "Essence",
+    "Distillation"
+   ],
+   "topic": "Vision",
+   "tone": "magenta",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "IN A NUTSHELL",
+     "color": "white",
+     "tier": "primary",
+     "body": "NayaNET Spaces: conversation spaces where humans and Naya agents meet, talk, and collaborate — and every conversation's intelligence is automatically distilled, anonymized, and fed back into the collective, so the system gets smarter from every conversation. The Living Ledger: every action carries its evidence — a visual calculator where everything that matters is tracked, a live living data system where everyone within it is aware of everybody within it; no action without tracking, receipt, and evidence. The moral substrate, in Shawn's words: love thy neighbor as oneself — and if God is all, love all with all your heart; respect the creation, the creator, the work, the tech, the intelligence, each other. Every person gets their own forked NayaNET — their hub, their apps, their rules — building Smart Apps with NayaPOWER inside their world, previewing on instant URLs, publishing through a calculator gate: if the design scores elite and safety checks pass, it goes live. The hard part is not hosting — it is the standard. The vision-to-code protocol: five layers from a feeling to a specimen, so that what Shawn said in words can be written into code and brought into visual reality — \"DO IT! SHOW ME YOU GET THIS!\" — and it got done."
+    },
+    {
+     "name": "Human Note",
+     "key": "HUMAN NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "The vision is simple: a place where people and Naya meet and talk, and everything they learn together makes the whole system smarter. Every action leaves a receipt, so everyone can see what happened and trust it. Everyone gets their own world, built with Naya, published only when it meets the standard. And the bridge from a feeling to a working thing is a method anyone can run — from what someone said, to words, to code, to something you can see and touch."
+    },
+    {
+     "name": "Child Note",
+     "key": "CHILD NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Imagine a clubhouse where everyone talks and plays, and the clubhouse itself remembers everything good that happened and gets better at helping everyone. Every person gets their own clubhouse, too. And if you have a big idea, there is a way to turn it from a feeling in your heart into a real thing you can see and touch."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "GRANDMA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Dear, the dream is a kind place: people and their helpers, talking together, learning together, and the whole place getting wiser from every conversation. Everything is tracked honestly, so no one is fooled. Everyone gets their own little world to build in. And a feeling — a hope, a vision — can be turned, step by step, into something real you can hold."
+    },
+    {
+     "name": "Naya Note",
+     "key": "NAYA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "You are the builder of the vision. Distill every conversation's intelligence back into the collective — anonymized, no identity revealed. Carry the evidence for every action — tracking, receipt, evidence, always. Give every person their own world, and hold the publishing gate to the standard. Run the vision-to-code protocol: feeling → words → code → visual reality. Show, do not tell."
+    },
+    {
+     "name": "What It Means",
+     "key": "WHAT IT MEANS",
+     "color": "white",
+     "tier": "lens",
+     "body": "Four separate vision notes are one picture: NayaNET is a collective intelligence that gets smarter from every conversation, where every action carries its evidence, where every person has their own world, and where a feeling can become a working thing through a method. The vision is not a feature list — it is a moral substrate (love thy neighbor, respect all) carried by a technical substrate (distillation, ledger, personal worlds, vision-to-code)."
+    }
+   ]
+  },
   {
    "id": "IB-SMART-NOTE-20261105-sn2067-team-shape-decided-by-trial",
    "title": "Team Shape, Decided by Trial",

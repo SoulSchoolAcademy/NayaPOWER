@@ -1,0 +1,41 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2069",
+  "title": "Essence 02 — Proof Is Behavior, Not a Badge",
+  "slug": "essence-02-proof-is-behavior-not-a-badge",
+  "file": "BRAIN/05-MEMORY/ESSENCE-02-proof-is-behavior-not-a-badge.md",
+  "tone": "sapphire",
+  "icon": "◆",
+  "created_at": "2026-11-05T23:07:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A write is not a memory — \"she remembers\" is only proven when a receipt survives process death, read back cold from a fresh process. A green report must be computed from the consuming state, not a reconstructed local: install, then report. Verdicts are SHA-bound; a mechanical change is still a change, and every new commit invalidates the previous green. A run-level SUCCESS made of skipped jobs is vacuous proof — read the job table, not the badge. Skip-with-reason must be earned per failure, never a blanket. Instruments have scopes: \"no commit found\" is a remote verdict, not an existence verdict; a shallow checkout lies. Same-bytes contradictions resolve to mechanism — never average two verdicts. Semantic pass is not machine-qualified; qualify candidate specs at two explicit bars. Exhaust the existing instrument before building a new one. Structural gates refuse to score without live state; each layer checks only what its position makes checkable.",
+    "human_view": "A green checkmark means nothing by itself. What matters is what actually ran, what it actually proved, and whether the proof survives when you look at it from the outside. Never trust a badge — read the jobs that ran, the state that was consumed, and the exact version that was tested. If the proof did not touch the real thing, it proved nothing.",
+    "child_view": "Imagine a teacher gives you a gold star for a test you never took. The star is on the paper, but you did not learn anything. Real proof is doing the work and showing it — not the star, not the sticker, but the thing itself, done right, where everyone can see it.",
+    "grandma_view": "Dear, a promise is only good if it is kept, and a test is only good if it was really taken. Do not be fooled by a green light if nothing ran behind it. Ask: what exactly was checked, on what version, and did the check touch the real thing? That is how you know.",
+    "ai_view": "You are the verifier. Never cite a run-level SUCCESS without reading which jobs ran. Never carry a verdict across a new SHA. Never compute a report from a reconstructed local — install, then report. Never average two contradictory verdicts — resolve to mechanism. Never let a structural gate pretend to verify what it cannot see. A write is not a memory until it survives process death.",
+    "what_it_means": "Twelve separate proof failures are one law: proof is behavior, not a badge. Every note in this cluster is a case where something looked green and was not — a report computed from a throwaway local, a SUCCESS made of skips, a verdict carried across a new SHA, a \"no commit found\" that meant \"not on this remote,\" a shallow checkout that lied about the tree. The repair in each case was the same move: look at what actually ran, on what exact version, against what real state — and refuse to call it proof until the behavior itself is verified.",
+    "whats_inside": [
+      "In A Nutshell",
+      "Human",
+      "Child",
+      "Grandma",
+      "Naya",
+      "Machine",
+      "What It All Means",
+      "Why It Matters",
+      "How It Connects",
+      "What Is In It For You",
+      "The Learning",
+      "Coverage — Raw Notes Distilled (12)"
+    ],
+    "topics": [
+      "Verification",
+      "Essence",
+      "Distillation"
+    ]
+  },
+  "page_hash": "76e802ff3f71d923bb195a280601a0641a817cae1c81fa5d5de724ccc694ddea",
+  "content_hash": "ebd19d2c2357b352efde16ce75d80b531aa52602b2b85942f97514b9bfb145ff"
+}
