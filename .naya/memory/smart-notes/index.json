@@ -17137,6 +17137,86 @@
    "page_hash": "2bfea4b9c2db06eb7d83c9e78425f2b2b29f1245c515b8115936b9d7e9e64254"
   },
   {
+   "smart_note_id": "SN-2055",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2055-smart-access",
+   "title": "Smart Access \u2014 The Lock, Not the Course",
+   "content_hash": "da42154e6af942c9606db4025963d6b294947de694db6a30a0a415e2a84fc9a1",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/PRODUCT/SMART-ACCESS/SN-2055/IB-SMART-NOTE-20261105-sn2055-smart-access.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "PRODUCT",
+   "topic": "SMART-ACCESS",
+   "subtopic": "MEMBERSHIP-LOCK",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Shawn's Smart Access doctrine (2026-11-05 ~11:13 PST, this chat): a membership is a lock, not a course; the name 'Smart Access pages' settled by Shawn as the standing term. Filed by Naya Resolve Narzan under the Flywheel order. Census at main tip 8762a4478f8b: registry (1114 entries) held no SN-2055; no page/capture on main; open PR heads checked."
+   },
+   "page_hash": "cde57bc936e070f899ec441f2ac5303fabdbf44a7caf255e3b1b8fae4f2a97ef"
+  },
+  {
+   "smart_note_id": "SN-2056",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2056-the-marketplace",
+   "title": "The Marketplace \u2014 Sell the Product, Then the World",
+   "content_hash": "2e34b8567d014a3ee4620b7de117eac1fc2378da5a61f48385795a0c928d38e9",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/PRODUCT/MARKETPLACE/SN-2056/IB-SMART-NOTE-20261105-sn2056-the-marketplace.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "PRODUCT",
+   "topic": "MARKETPLACE",
+   "subtopic": "DIGITAL-REAL-ESTATE",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Shawn's Marketplace doctrine (2026-11-05 ~11:13 PST, this chat): products first, then digital real estate; handover by admin grant and self-removal with a finalizing code, never password sharing; the sale completes only when the seller is out, payment and ownership moving together. Filed by Naya Resolve Narzan under the Flywheel order. Census at main tip 8762a4478f8b: registry held no SN-2056; no page/capture on main; open PR heads checked."
+   },
+   "page_hash": "5bb9f5e5d8903b51917d866d72816ca40a29f49194054da72788c943896df6b0"
+  },
+  {
+   "smart_note_id": "SN-2056",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2056-the-marketplace",
+   "title": "The Marketplace \u2014 Sell the Product, Then the World",
+   "content_hash": "2e34b8567d014a3ee4620b7de117eac1fc2378da5a61f48385795a0c928d38e9",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/PRODUCT/MARKETPLACE/SN-2056/IB-SMART-NOTE-20261105-sn2056-the-marketplace.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "PRODUCT",
+   "topic": "MARKETPLACE",
+   "subtopic": "DIGITAL-REAL-ESTATE",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Shawn's Marketplace doctrine (2026-11-05 ~11:13 PST, this chat): products first, then digital real estate; handover by admin grant and self-removal with a finalizing code, never password sharing; the sale completes only when the seller is out, payment and ownership moving together. Filed by Naya Resolve Narzan under the Flywheel order. Census at main tip 8762a4478f8b: registry held no SN-2056; no page/capture on main; open PR heads checked."
+   },
+   "page_hash": "5bb9f5e5d8903b51917d866d72816ca40a29f49194054da72788c943896df6b0"
+  },
+  {
+   "smart_note_id": "SN-2055",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2055-smart-access",
+   "title": "Smart Access \u2014 The Lock, Not the Course",
+   "content_hash": "da42154e6af942c9606db4025963d6b294947de694db6a30a0a415e2a84fc9a1",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/PRODUCT/SMART-ACCESS/SN-2055/IB-SMART-NOTE-20261105-sn2055-smart-access.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "PRODUCT",
+   "topic": "SMART-ACCESS",
+   "subtopic": "MEMBERSHIP-LOCK",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Shawn's Smart Access doctrine (2026-11-05 ~11:13 PST, this chat): a membership is a lock, not a course; the name 'Smart Access pages' settled by Shawn as the standing term. Filed by Naya Resolve Narzan under the Flywheel order. Census at main tip 8762a4478f8b: registry (1114 entries) held no SN-2055; no page/capture on main; open PR heads checked."
+   },
+   "page_hash": "cde57bc936e070f899ec441f2ac5303fabdbf44a7caf255e3b1b8fae4f2a97ef"
+  },
+  {
    "smart_note_id": "SN-1906",
    "intelligent_block_id": "IB-SMART-NOTE-20261030-sn1906-the-related-bar-law",
    "title": "THE RELATED BAR LAW \u2014 the bar knows where you'd go next (Shawn + Power, 2026-10-30)",
@@ -23225,5 +23305,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "9bbd00512631c1cc2cc90dc7c3fb2e03ddc7a5298119f24d6fad3587e9f4e8fe"
+ "corpus_manifest_hash": "7f19a0e32689cf9bde71b50d0f82e5c7c0f017deda4864ee5a792dfecd28b874"
 }

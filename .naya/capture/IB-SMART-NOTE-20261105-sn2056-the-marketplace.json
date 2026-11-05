@@ -1,0 +1,28 @@
+{
+  "smart_note_id": "SN-2056",
+  "intelligence": {
+    "title": "The Marketplace — Sell the Product, Then the World",
+    "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2056-the-marketplace",
+    "smart_note_id": "SN-2056",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/PRODUCT/MARKETPLACE/SN-2056/IB-SMART-NOTE-20261105-sn2056-the-marketplace.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Shawn's Marketplace doctrine (2026-11-05 ~11:13 PST, this chat): products first, then digital real estate; handover by admin grant and self-removal with a finalizing code, never password sharing; the sale completes only when the seller is out, payment and ownership moving together. Filed by Naya Resolve Narzan under the Flywheel order. Census at main tip 8762a4478f8b: registry held no SN-2056; no page/capture on main; open PR heads checked.",
+    "ingested_at": "2026-11-05T19:13:00Z",
+    "essence": "First the marketplace sells any digital product; then it sells the worlds themselves. A listing's proof is the Smart Ledger's verified numbers — and ownership changes hands by invitation and removal, never by a shared password: the sale completes only when the seller is out, and payment and ownership move together.",
+    "human_view": "Build it, grow it, earn from it — then sell it. A page with members and revenue is an asset, and our marketplace is where it changes hands with its real numbers showing, read from the Ledger instead of promised by the seller. Products sell first; whole worlds sell after. List price first, auctions when there are people to bid.",
+    "simple_view": "People sell their toys and books in a market. Here you can sell things you made on the computer — a video, a song, a book. And when your page grows big and strong, you can even sell the page itself, like selling a shop with everything inside it.",
+    "grandma_view": "If you build a lovely page and fill it with people, that page is worth something, dear — like a little shop on a good street. One day you may sell it. The new owner does not get your password; you invite them in properly, step out yourself, and the shop is theirs, with the sale written down fair and square.",
+    "naya_view": "The marketplace closes the network's economic loop: creation (Smart Factory), distribution (ambassadors), monetization (Smart Access), and now exit (sale of the asset itself). The handover protocol is a trust machine — invitation, acceptance, coded self-removal, Ledger record — and the sale gate couples payment to completed transfer so neither side can be stranded.",
+    "ai_view": "A marketplace whose listings carry system-verified performance data changes what a digital asset is: the price rests on proven members, views and revenue, not on screenshots. The transfer protocol replaces credential sharing with a permission handover plus an atomic completion rule — ownership and payment settle in the same event.",
+    "machine_view": "MARKETPLACE{phase_1: digital_products, phase_2: pages_worlds_apps(digital_real_estate), pricing: [list, auction_later], listing_proof: smart_ledger_verified, handover: [record_agreement, grant_admin, buyer_accept, seller_self_remove_with_code+warning, sole_ownership], sale_gate: completes_iff seller_removed AND payment_settles_same_moment, roles: owner_invitation_only}",
+    "views_note": "Views extracted from the published page's own sections where the page carries them (essence ← page section 'IN A NUTSHELL'; human_view ← 'THE TEACHING'; ai_view ← 'THE TEACHING' + 'WHY IT MATTERS'; naya_view ← 'WHY IT MATTERS'). The perspective views the page does not carry as sections (simple/grandma/machine) were reconstructed from the page's own content by Naya Resolve Narzan at cure time; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/PRODUCT/MARKETPLACE/SN-2056/IB-SMART-NOTE-20261105-sn2056-the-marketplace.md",
+    "provenance_note": "Shawn's Marketplace doctrine (2026-11-05 ~11:13 PST, this chat): products first, then digital real estate; handover by admin grant and self-removal with a finalizing code, never password sharing; the sale completes only when the seller is out, payment and ownership moving together. Filed by Naya Resolve Narzan under the Flywheel order. Census at main tip 8762a4478f8b: registry held no SN-2056; no page/capture on main; open PR heads checked.",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}

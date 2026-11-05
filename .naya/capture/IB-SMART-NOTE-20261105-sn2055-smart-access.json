@@ -1,0 +1,28 @@
+{
+  "smart_note_id": "SN-2055",
+  "intelligence": {
+    "title": "Smart Access — The Lock, Not the Course",
+    "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2055-smart-access",
+    "smart_note_id": "SN-2055",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/PRODUCT/SMART-ACCESS/SN-2055/IB-SMART-NOTE-20261105-sn2055-smart-access.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Shawn's Smart Access doctrine (2026-11-05 ~11:13 PST, this chat): a membership is a lock, not a course; the name 'Smart Access pages' settled by Shawn as the standing term. Filed by Naya Resolve Narzan under the Flywheel order. Census at main tip 8762a4478f8b: registry (1114 entries) held no SN-2055; no page/capture on main; open PR heads checked.",
+    "ingested_at": "2026-11-05T19:13:00Z",
+    "essence": "A membership is a lock, not a course. Smart Access pages put anything digital — one video, one audio, a PDF, a book, a whole course — behind a login only the right people pass: those who paid, or those the owner lets in free for a taste.",
+    "human_view": "Memberships are how a citizen stores everything they make and chooses exactly who gets in. The lock does not promise a course — it protects whatever is behind it, big or small. Free access is a feature, not a leak: a taster brings people in, and the deeper work sits behind the next door, priced by the owner.",
+    "simple_view": "Imagine a door with a lock. Behind it you can keep one video, one song, one book — or a whole school. Only people with the key can open it. You can give a key to someone who paid, or lend one free so they can peek. That is a Smart Access page.",
+    "grandma_view": "You do not need a big course to sell something, dear. Put your one best video, or your recipe book, behind your page's lock. People you invite can look free; everyone else pays a little. It is your door and your key — nobody opens it but who you choose.",
+    "naya_view": "Smart Access is the sellable layer of every world: content-agnostic locking over digital goods, with owner-controlled free and paid keys, ambassador links per product, and all movement counted by the Smart Ledger. When a Naya designs a membership surface, she designs locks and keys — never course-shaped assumptions.",
+    "ai_view": "Smart Access generalizes the paywall into a primitive: any digital object, one lock, two key types (paid, granted). It composes with Smart Links for purchase, the Ledger for proof, and ambassadors for distribution — the smallest unit of the network's economy.",
+    "machine_view": "SMART_ACCESS{object: any_digital, lock: login_gate, keys: [paid, granted_free], name: 'Smart Access pages' (canonical), ambassadors: per_product, proof: smart_ledger}",
+    "views_note": "Views extracted from the published page's own sections where the page carries them (essence ← page section 'IN A NUTSHELL'; human_view ← 'THE TEACHING'; ai_view ← 'THE TEACHING' + 'WHY IT MATTERS'; naya_view ← 'WHY IT MATTERS'). The perspective views the page does not carry as sections (simple/grandma/machine) were reconstructed from the page's own content by Naya Resolve Narzan at cure time; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/PRODUCT/SMART-ACCESS/SN-2055/IB-SMART-NOTE-20261105-sn2055-smart-access.md",
+    "provenance_note": "Shawn's Smart Access doctrine (2026-11-05 ~11:13 PST, this chat): a membership is a lock, not a course; the name 'Smart Access pages' settled by Shawn as the standing term. Filed by Naya Resolve Narzan under the Flywheel order. Census at main tip 8762a4478f8b: registry (1114 entries) held no SN-2055; no page/capture on main; open PR heads checked.",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}
