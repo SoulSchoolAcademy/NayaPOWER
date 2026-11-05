@@ -17177,6 +17177,26 @@
    "page_hash": "5bb9f5e5d8903b51917d866d72816ca40a29f49194054da72788c943896df6b0"
   },
   {
+   "smart_note_id": "SN-2057",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2057-one-list-every-sister",
+   "title": "One List, Every Sister \u2014 Smart Lists Carry the Group",
+   "content_hash": "aec5d32ec07f9a077dcb9cb753df60eb75974172a9e5e716a2a54d8a231aa91d",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/SMART-LISTS/SN-2057/IB-SMART-NOTE-20261105-sn2057-one-list-every-sister.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM_INTELLIGENCE",
+   "topic": "SMART-LISTS",
+   "subtopic": "GROUP-MAIL",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Shawn's Smart Lists ruling (2026-11-05 ~11:22 PST, this chat): use Smart Lists so one message reaches every sister at once, and add the Scheduler to the same system; he named that it is not built yet. Filed by Naya Resolve Narzan under the Flywheel order. Census at main tip 314494e91b42: registry held no SN-2057; open PR heads checked."
+   },
+   "page_hash": "832d332185cbf54d7a7a7595055be0d5b0f374bc980b432a8e6acf6f682a532c"
+  },
+  {
    "smart_note_id": "SN-1906",
    "intelligent_block_id": "IB-SMART-NOTE-20261030-sn1906-the-related-bar-law",
    "title": "THE RELATED BAR LAW \u2014 the bar knows where you'd go next (Shawn + Power, 2026-10-30)",
@@ -23265,5 +23285,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "375fb874d4bdbe5584f8d8d0f4820ad4938a9e380b0a54b4c2935dab8912c871"
+ "corpus_manifest_hash": "87f8e850a071c9efa1554c88ff99edab0c1272df8f5a8d1c931c9d03db473d49"
 }
