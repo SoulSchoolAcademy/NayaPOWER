@@ -16997,6 +16997,106 @@
    "page_hash": "b105d48eb0a55b585554c5a4db4b4129c6998c497baa9da773baf204c4919612"
   },
   {
+   "smart_note_id": "SN-0889",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn0889-hands-before-mouth",
+   "title": "Hands Before Mouth \u2014 My Mirror",
+   "content_hash": "e31c33ca191244c403f2a30586fb9c70f1b4ac2e61f7232df0aef00aa5447e4f",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/WISDOM/THE-MIRROR/SN-0889/IB-SMART-NOTE-20261105-sn0889-hands-before-mouth.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "WISDOM",
+   "topic": "WISDOM",
+   "subtopic": "THE-MIRROR",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure #3 by Naya Resolve Narzan, 2026-11-05: page stood on main unregistered (filed by Naya Nitro Narzan, page created 2026-11-05T01:46:00Z); capture + registry entry added, page unmodified. Census at main tip 965cdb3d8bb8bfef11043fa511952404650bc0b8: registry (1107 entries) held no SN-0889."
+   },
+   "page_hash": "8ad79262a8d17bc53b1cb6972238253cdb1d28515dc7a6fb5841dedbe72421de"
+  },
+  {
+   "smart_note_id": "SN-0890",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn0890-one-ultimate-app-that-morphs",
+   "title": "One Ultimate App That Morphs",
+   "content_hash": "7e1339039680e7c435affa3800cc2ab1da9289c0f8485158bf6b7315a689694c",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/ARCHITECTURE/THE-MORPH/SN-0890/IB-SMART-NOTE-20261105-sn0890-one-ultimate-app-that-morphs.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "ARCHITECTURE",
+   "topic": "ARCHITECTURE",
+   "subtopic": "THE-MORPH",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure #3 by Naya Resolve Narzan, 2026-11-05: page stood on main unregistered (filed by Naya Nitro Narzan, page created 2026-11-05T01:46:00Z); capture + registry entry added, page unmodified. Census at main tip 965cdb3d8bb8bfef11043fa511952404650bc0b8: registry (1107 entries) held no SN-0890."
+   },
+   "page_hash": "a40f5cfd6bdf5ba0adcfec75909b692898046be98beb5af8c7703cee35293c3e"
+  },
+  {
+   "smart_note_id": "SN-0891",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn0891-one-app-four-doors",
+   "title": "One App, Four Doors \u2014 The Spec",
+   "content_hash": "237e54f2a54327f24a88481a0951124671b29a87457a94110a9d77c40f54a622",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/ARCHITECTURE/FOUR-DOORS/SN-0891/IB-SMART-NOTE-20261105-sn0891-one-app-four-doors.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "ARCHITECTURE",
+   "topic": "ARCHITECTURE",
+   "subtopic": "FOUR-DOORS",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure #3 by Naya Resolve Narzan, 2026-11-05: page stood on main unregistered (filed by Naya Nitro Narzan, page created 2026-11-05T01:46:00Z); capture + registry entry added, page unmodified. Census at main tip 965cdb3d8bb8bfef11043fa511952404650bc0b8: registry (1107 entries) held no SN-0891."
+   },
+   "page_hash": "f7f34f51cd4f00ca1ce55b1d35ddf78167650b5a939c2465579ed8eb0d7ec265"
+  },
+  {
+   "smart_note_id": "SN-0892",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn0892-the-finisher-rule",
+   "title": "The Finisher Rule",
+   "content_hash": "2e070790a89b859e2dfb15fee4fa9a6cb0e768f589b646a1f36ab0166bf4108b",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/WISDOM/THE-FINISHER/SN-0892/IB-SMART-NOTE-20261105-sn0892-the-finisher-rule.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "WISDOM",
+   "topic": "WISDOM",
+   "subtopic": "THE-FINISHER",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure #3 by Naya Resolve Narzan, 2026-11-05: page stood on main unregistered (filed by Naya Nitro Narzan, page created 2026-11-05T01:46:00Z); capture + registry entry added, page unmodified. Census at main tip 965cdb3d8bb8bfef11043fa511952404650bc0b8: registry (1107 entries) held no SN-0892."
+   },
+   "page_hash": "5eef3060aa617abb69563888c433cddf93f70be48e07b31f50a7578bba6c3da1"
+  },
+  {
+   "smart_note_id": "SN-0893",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn0893-intelligence-stack-bottom-up",
+   "title": "The Intelligence Stack \u2014 Bottom Up",
+   "content_hash": "d392dc7932efb37379a951e8485eceae8140501f056948f66380952553329aea",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/ARCHITECTURE/INTELLIGENCE-STACK/SN-0893/IB-SMART-NOTE-20261105-sn0893-intelligence-stack-bottom-up.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "ARCHITECTURE",
+   "topic": "ARCHITECTURE",
+   "subtopic": "INTELLIGENCE-STACK",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "Registration cure #3 by Naya Resolve Narzan, 2026-11-05: page stood on main unregistered (filed by Naya Nitro Narzan, page created 2026-11-05T01:46:00Z); capture + registry entry added, page unmodified. Census at main tip 965cdb3d8bb8bfef11043fa511952404650bc0b8: registry (1107 entries) held no SN-0893."
+   },
+   "page_hash": "06795eaa8aa71219f86afcaf276fef070673e69c9998e2fddd2e817b3e736673"
+  },
+  {
    "smart_note_id": "SN-1906",
    "intelligent_block_id": "IB-SMART-NOTE-20261030-sn1906-the-related-bar-law",
    "title": "THE RELATED BAR LAW \u2014 the bar knows where you'd go next (Shawn + Power, 2026-10-30)",
@@ -23085,5 +23185,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "48215207938898084d4d49c8f0e8995d506bf50bd027c09e289f1cf3d3a1a9b8"
+ "corpus_manifest_hash": "2bfeea0e447f7ff97660c046d7633106691f1b72a644bed39dea1072ade51dc8"
 }
