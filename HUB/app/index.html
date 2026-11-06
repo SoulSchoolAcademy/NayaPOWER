@@ -282,14 +282,17 @@ a { color: inherit; }
   flex-wrap: wrap;
 }
 .eco-bb-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  background: none; border: none; box-shadow: none;
+  color: #fff; cursor: pointer; text-decoration: none;
+  padding: 0; flex: 0 0 auto;
+}
+.eco-bb-ico {
   width: 46px; height: 46px; flex: 0 0 46px;
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,.3);
   background: radial-gradient(circle at 35% 30%, #2a2a32, #0a0a0e 70%);
-  color: #fff;
-  cursor: pointer;
   display: grid; place-items: center;
-  text-decoration: none;
   transition: all .22s cubic-bezier(.16,.84,.22,1);
   box-shadow:
     inset 0 1px rgba(255,255,255,.15),
@@ -297,12 +300,12 @@ a { color: inherit; }
     0 4px 10px rgba(0,0,0,.4);
   position: relative;
 }
-.eco-bb-btn svg {
+.eco-bb-ico svg {
   width: 20px; height: 20px;
   transition: transform .22s;
   filter: drop-shadow(0 0 3px rgba(255,255,255,.4));
 }
-.eco-bb-btn:hover {
+.eco-bb-btn:hover .eco-bb-ico {
   transform: translateY(-3px) scale(1.08);
   border-color: var(--eco);
   box-shadow:
@@ -310,7 +313,7 @@ a { color: inherit; }
     0 0 24px color-mix(in srgb, var(--eco) 55%, transparent),
     0 6px 16px rgba(0,0,0,.5);
 }
-.eco-bb-btn:hover svg {
+.eco-bb-btn:hover .eco-bb-ico svg {
   color: var(--eco);
   filter: drop-shadow(0 0 6px var(--eco));
 }
@@ -331,12 +334,17 @@ a { color: inherit; }
 .eco-bb-btn:hover::after {
   opacity: 1; transform: translateX(-50%) translateY(0);
 }
-/* Mobile: two rows, compact */
+/* Mobile: labelled dock — buttons are columns now (icon + label), so the
+   old icon-only 44px force no longer applies. Button takes its natural
+   height; label caps to its column and wraps between words, never mid-word;
+   page bottom gets room for the 3-row dock + notif bar. */
 @media (max-width: 640px) {
-  .main { padding-bottom: 140px; }
+  body .main { padding-bottom: 380px; }
   .eco-bottombar { gap: 8px; padding: 12px 12px; }
-  .eco-bb-btn { width: 44px; height: 44px; flex: 0 0 44px; }
-  .eco-bb-btn svg { width: 18px; height: 18px; }
+  .eco-bb-btn { width: auto; height: auto; flex: 0 0 auto; }
+  .eco-bb-ico { width: 44px; height: 44px; flex: 0 0 44px; }
+  .eco-bb-ico svg { width: 18px; height: 18px; }
+  .eco-bb-btn .notif-lbl { max-width: 72px; font-size: 10px; letter-spacing: .08em; line-height: 1.25; text-align: center; }
 }
 /* ——— Notifications bar (Shawn 2026-10-20): the very bottom edge ——— */
 .notif-bar {
@@ -401,7 +409,7 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
 .toast-stack { bottom: calc(122px + env(safe-area-inset-bottom, 0px)); }
 .main { padding-bottom: 186px; }
 @media (max-width: 640px) {
-  .main { padding-bottom: 250px; }
+  body .main { padding-bottom: 380px; }
 }
 
 
@@ -5281,7 +5289,7 @@ function HubView(params) {
       '<h2>' + esc(room.name) + '</h2>' +
       '<p>' + esc(roomDesc(room.id)) + '</p>';
     outlet.appendChild(head);
-    outlet.appendChild(searchWrap);
+    if (room.id !== 'settings') outlet.appendChild(searchWrap);
   }
   const body = el('div', 'room-body');
   body.style.setProperty('--room-accent', room.accent);
@@ -5342,7 +5350,7 @@ function HubView(params) {
       heart: '<path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/>',
       key: '<circle cx="8" cy="14" r="4.5"/><path d="M11 11l8-8M17 5l2.5 2.5"/>',
     };
-    a.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (iconPaths[l.icon] || iconPaths.star) + '</svg>';
+    a.innerHTML = '<span class="eco-bb-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (iconPaths[l.icon] || iconPaths.star) + '</svg></span><span class="notif-lbl">' + esc(l.label) + '</span>';
     bbBar.appendChild(a);
   });
   /* Mission quote — the promise, no dead buttons */
@@ -7763,50 +7771,329 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.connect=ConnectRoom;
 /* SETTINGS — THE CONTROL DECK.
    Human controls first; diagnostics are secondary and read from current artifacts. */
 function SettingsRoom(){
-  const {el,Board,Icons}=window.NayaUI,R=window.NayaRuntime;
+  const {el,Board,Icons,DoorCard}=window.NayaUI,R=window.NayaRuntime;
   const wrap=el('div','room-scene'), ACC='var(--accent-settings)';
   wrap.style.setProperty('--room-accent',ACC);
   function esc(x){return String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  function ls(k){try{return (localStorage.getItem(k)||'').trim();}catch(e){return '';}}
+  function pref(k,def){try{const v=localStorage.getItem(k);return v===null?def:v;}catch(e){return def;}}
+  function setPref(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+  const T=window.NayaUI.toast;
+  const INPUT_STYLE='background:linear-gradient(180deg,#050508,#0a0a10 55%,#050508);border:1.5px solid rgba(160,107,255,.55);border-radius:14px;padding:14px 16px;color:#fff;font-size:16px;width:100%;box-sizing:border-box;font-family:inherit;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -8px 16px rgba(0,0,0,.65),0 0 22px rgba(160,107,255,.32),0 14px 30px rgba(0,0,0,.6);outline:none';
+  const BTN_ON='background:#fff;color:#000;font-size:14px;font-weight:700;padding:10px 18px;border-radius:999px;border:1.5px solid #fff;cursor:pointer';
+  const BTN_OFF='background:none;color:var(--ink-dim);font-size:14px;font-weight:600;padding:10px 18px;border-radius:999px;border:1.5px solid rgba(255,255,255,.25);cursor:pointer';
+  const ROW_STYLE='display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)';
+  const LBL_STYLE='color:var(--ink-dim);font-size:15px;line-height:1.5';
+  const VAL_STYLE='color:#fff;font-size:15px;font-weight:600;text-align:right';
+  const MUTED_STYLE='color:var(--muted);font-size:14px;line-height:1.6';
+  function seg(options,current,onPick){
+    const row=document.createElement('div');
+    row.style.cssText='display:flex;gap:8px;flex-wrap:wrap';
+    options.forEach(function(opt){
+      const b=document.createElement('button');
+      b.type='button';b.textContent=opt.label;
+      b.style.cssText=String(opt.value)===String(current)?BTN_ON:BTN_OFF;
+      b.addEventListener('click',function(){onPick(opt.value);});
+      row.appendChild(b);
+    });
+    return row;
+  }
+  function applyTextSize(){
+    const s=pref('nayanet.pref.text_size','16');
+    try{document.documentElement.style.setProperty('--fs-body',s+'px');}catch(e){}
+  }
+  applyTextSize();
+  const HUES=['#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#ff9a5a','#ff5e6c','#e84fff','#6675ff','#40d3bb'];
+  function hueFor(name){let h=0;for(const ch of name)h=(h*31+ch.charCodeAt(0))>>>0;return HUES[h%HUES.length];}
+  const myName=ls('nayanet_smart_name'), myAlias=ls('nayanet_smart_alias');
 
-  /* — Your controls, in plain language. Nothing here pretends to do what it can't. — */
-  const cats=[
-    ['Identity','Who Naya understands you to be on this device.'],
-    ['Privacy','What stays private, what you choose to share.'],
-    ['Connections','The doors you have opened, and what each one may touch.'],
-    ['Notifications','How — and how often — Naya gets your attention.'],
-    ['Appearance','How the Hub looks and feels to you.'],
-  ];
-  const human=Board({accent:ACC,icon:'gear',title:'Your Hub, your rules',sub:'What you can change from here',lift:false});
-  human.body.innerHTML='<div class="domain-grid" style="margin-top:6px">'+cats.map(([t,d])=>
-    '<div class="domain"><strong>'+esc(t)+'</strong><p>'+esc(d)+'</p></div>').join('')+'</div>'+
-    '<p style="color:var(--muted);font-size:14px;margin-top:14px">These preferences live on this device. Anything that affects shared or governed intelligence will always ask first — and say exactly what it will do.</p>';
-  wrap.appendChild(human);
+  /* §1 — Account header FIRST: whose account this is under. */
+  (function(){
+    const head=document.createElement('div');
+    head.style.cssText='display:flex;align-items:center;gap:18px;padding:6px 4px 22px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:10px';
+    const av=el('div','intel-avatar');
+    av.textContent=myName?myName[0].toUpperCase():'?';
+    av.style.setProperty('--av-hue',hueFor(myName||'Naya'));
+    av.style.cssText+=';display:flex;align-items:center;justify-content:center;width:64px;height:64px;font-size:28px;flex:0 0 64px';
+    const info=document.createElement('div');
+    info.style.cssText='min-width:0';
+    if(myName){
+      info.innerHTML='<div style="font-size:28px;font-weight:800;color:#fff;line-height:1.2">'+esc(myName)+'</div>'+
+        (myAlias?'<div style="color:var(--ink-dim);font-size:15px;margin-top:6px">Smart Link: <strong style="color:#fff">'+esc(myAlias)+'.nayanet.app</strong></div><div style="color:var(--ink-dim);font-size:15px;margin-top:2px">Secure Smart Mail ID: <strong style="color:#fff">'+esc(myAlias)+'</strong></div>':'<div style="color:var(--ink-dim);font-size:15px;margin-top:6px">No Smart Link or Smart Mail ID claimed yet.</div>');
+    } else {
+      info.innerHTML='<div style="font-size:24px;font-weight:800;color:#fff;line-height:1.2">No name is claimed on this device yet</div>'+
+        '<div style="color:var(--ink-dim);font-size:15px;margin-top:6px">Your name is claimed once — at the <a href="https://nayanet.app/identity.html" style="color:#fff;text-decoration:underline;text-underline-offset:3px">identity page</a>, when you first enter the Hub.</div>';
+    }
+    head.appendChild(av);head.appendChild(info);
+    wrap.appendChild(head);
+  })();
 
-  /* — Ownership, plainly stated — */
-  const ownership=Board({accent:ACC,icon:'shield',title:'Your intelligence',sub:'Private by default · shared by choice · collective by consent',lift:false});
-  ownership.body.innerHTML='<div class="metric-ribbon">'+
-    '<div class="metric"><b>YOURS</b><span>INTELLIGENCE</span></div>'+
-    '<div class="metric"><b>CHOICE</b><span>SHARING</span></div>'+
-    '<div class="metric"><b>LAW</b><span>AUTHORITY</span></div>'+
-    '<div class="metric"><b>PROOF</b><span>CONSEQUENCE</span></div></div>'+
-    '<p style="color:var(--ink-dim);font-size:15px;line-height:1.6;margin-top:14px;max-width:680px">What you tell Naya is yours. Sharing is always your choice, never a default. And when intelligence leads to action, the proof travels with it.</p>';
-  wrap.appendChild(ownership);
+  /* §2 — Identity: the onboarding answers, read-only. Log out only here, only when a name is claimed. */
+  const ident=Board({accent:ACC,icon:'person',title:'Your identity on this device',sub:'How the Hub knows you — and how it forgets you',lift:false});
+  (function(){
+    function render(){
+      const name=ls('nayanet_smart_name');
+      const alias=ls('nayanet_smart_alias');
+      ident.body.innerHTML='<p style="color:var(--ink-dim);font-size:15px;line-height:1.7;max-width:680px">'+
+        (name?('The Hub greets you as <strong style="color:#fff">'+esc(name)+'</strong>. Your comments and activity carry this name on this device.')
+            :'No name is claimed on this device yet. Your name is claimed once — at the <a href="https://nayanet.app/identity.html" style="color:#fff;text-decoration:underline;text-underline-offset:3px">identity page</a>, when you first enter the Hub — and the Hub greets you by it from there.')+
+        '</p>';
+      const idBlock=document.createElement('div');
+      idBlock.style.cssText='margin-top:14px;max-width:680px;font-size:15px;line-height:1.7;color:var(--ink-dim)';
+      if(alias||name){
+        idBlock.innerHTML=(name?'<div>Name: <strong style="color:#fff">'+esc(name)+'</strong></div>':'')+(alias?'<div>Smart Link: <strong style="color:#fff">'+esc(alias)+'.nayanet.app</strong></div><div>Secure Smart Mail ID: <strong style="color:#fff">'+esc(alias)+'</strong></div>':'<div>No Smart Link or Smart Mail ID claimed yet — claim them at the <a href="https://nayanet.app/identity.html" style="color:#fff;text-decoration:underline;text-underline-offset:3px">identity page</a>.</div>');
+      } else {
+        idBlock.innerHTML='<p style="color:var(--ink-dim);font-size:15px;line-height:1.7">No Smart Identity claimed on this device yet. Claim yours at the <a href="https://nayanet.app/identity.html" style="color:#fff;text-decoration:underline;text-underline-offset:3px">identity page</a> — that is where your name, Smart Link and Smart Mail ID are created, once.</p>';
+      }
+      ident.body.appendChild(idBlock);
+      /* Onboarding answers, read-only: what the system believes about you, in your own words. No store exists for these in this file yet — they show as not yet captured, never invented. */
+      const rows=[['Age, in your own words','Not yet captured'],['Male or female','Not yet captured'],['Age range','Not yet captured'],['Where in the world you live','Not yet captured'],['Nationality / where you are from','Not yet captured'],['Main language','Not yet captured']];
+      const ob=document.createElement('div');
+      ob.style.cssText='margin-top:18px;max-width:680px';
+      ob.innerHTML='<div style="color:#fff;font-size:14px;font-weight:700;margin-bottom:4px">What you told Naya about yourself</div>';
+      rows.forEach(function(r){
+        const row=document.createElement('div');
+        row.style.cssText=ROW_STYLE;
+        row.innerHTML='<span style="'+LBL_STYLE+'">'+esc(r[0])+'</span><span style="color:var(--muted);font-size:15px;text-align:right">'+esc(r[1])+'</span>';
+        ob.appendChild(row);
+      });
+      const ch=document.createElement('div');
+      ch.style.cssText='margin-top:12px';
+      ch.innerHTML='<a href="https://nayanet.app/identity.html" style="color:#fff;font-size:14px;text-decoration:underline;text-underline-offset:3px">Change at the identity page</a>';
+      ob.appendChild(ch);
+      ident.body.appendChild(ob);
+      /* Identity is read-only here (Shawn 2026-10-21): a name is claimed once, at the identity page — never entered or edited in Settings. */
+      const wb=document.createElement('button');wb.textContent=name?'Back to the Welcome screen':'Log in — enter through the Welcome screen';
+      wb.style.cssText='display:block;margin-top:18px;background:none;border:1.5px solid rgba(255,255,255,.35);color:#fff;font-size:14px;font-weight:600;padding:11px 22px;border-radius:999px;cursor:pointer';
+      wb.addEventListener('click',function(){location.href='https://nayanet.nayapower.workers.dev/';});
+      ident.body.appendChild(wb);
+      if(name||alias){
+        const out=document.createElement('button');out.textContent='Log out of this device';
+        out.style.cssText='display:block;margin-top:16px;background:none;border:1.5px solid rgba(255,94,108,.55);color:#ff8b95;font-size:14px;font-weight:600;padding:11px 22px;border-radius:999px;cursor:pointer';
+        let armed=false;
+        out.addEventListener('click',function(){
+          if(!armed){armed=true;out.textContent='Tap again to log out — this device forgets your name, your personal app, and your GitHub connection';return;}
+          try{
+            ['nayanet_smart_name','nayanet_smart_alias','nayanet_vault_key','nayanet.github.installation','naya.activity','nayanet.notif.mail','nayanet.notif.spaces','nayanet.notif.seen.activity'].forEach(k=>localStorage.removeItem(k));
+            if(window.NayaPersonalApp&&window.NayaPersonalApp.KEY)localStorage.removeItem(window.NayaPersonalApp.KEY);
+          }catch(e){}
+          T('Logged out. This device no longer knows you.','#ff5e6c');
+          setTimeout(function(){location.href='https://nayanet.nayapower.workers.dev/';},900);
+        });
+        ident.body.appendChild(out);
+      }
+      const note=document.createElement('p');note.style.cssText='color:var(--muted);font-size:13px;line-height:1.6;margin-top:12px;max-width:680px';
+      note.textContent='Logging out only forgets who you are on THIS device. Your intelligence itself is never stored here — nothing is deleted anywhere else. Log back in any time through the Welcome screen.';
+      ident.body.appendChild(note);
+    }
+    render();
+  })();
+  wrap.appendChild(ident);
 
-  /* — Doors, from the Hub's own inventory (no network fetch, no 404s) — */
+  /* §3 — Membership: level, what you can build, upgrade. Read-only level; honest default Free. */
+  const memb=Board({accent:ACC,icon:'star',title:'Membership',sub:'Your level, what you can build, and how to grow',lift:false});
+  memb.body.innerHTML='<div style="max-width:680px">'+
+    '<div style="'+ROW_STYLE+'"><span style="'+LBL_STYLE+'">Your level</span><span style="'+VAL_STYLE+'">Free</span></div>'+
+    '<div style="'+ROW_STYLE+'"><span style="'+LBL_STYLE+'">Memberships you can build</span><span style="'+VAL_STYLE+'">Join — upgrade to build</span></div>'+
+    '<p style="'+MUTED_STYLE+';margin-top:14px">Memberships are an add-on to any page, never a separate app. Paid members build: Power builds 1 membership, Pro builds 5, Max builds unlimited. Free citizens join — they don\u2019t build.</p>'+
+    '<p style="'+MUTED_STYLE+';margin-top:8px">Upgrade to build memberships. Everybody gets 50% of the revenue — paid automatically the moment we\u2019re paid.</p></div>';
+  wrap.appendChild(memb);
+
+  /* §4 — Language + auto-translate. */
+  const lang=Board({accent:ACC,icon:'spark',title:'Language',sub:'The language Naya speaks to you — and translates for you',lift:false});
+  (function(){
+    function render(){
+      lang.body.innerHTML='<p style="color:var(--ink-dim);font-size:15px;line-height:1.7;max-width:680px">The network defaults to English, but you can have a private world of people who speak your language, from where you are from. Your main language, in your own words:</p>';
+      const wrap2=document.createElement('div');wrap2.style.cssText='display:flex;flex-direction:column;gap:10px;margin-top:14px;max-width:520px';
+      const inp=document.createElement('input');inp.type='text';inp.value=pref('nayanet.pref.language','English');inp.placeholder='Your main language';
+      inp.style.cssText=INPUT_STYLE;
+      inp.addEventListener('change',function(){const v=inp.value.trim()||'English';setPref('nayanet.pref.language',v);T('Language saved — '+v+'.','#3fb8ff');});
+      wrap2.appendChild(inp);
+      const lab=document.createElement('div');lab.style.cssText='color:var(--ink-dim);font-size:15px;margin-top:6px';lab.textContent='Auto-translate — pages and citizens\u2019 worlds translate into your language:';
+      wrap2.appendChild(lab);
+      const cur=pref('nayanet.pref.auto_translate','on');
+      wrap2.appendChild(seg([{label:'On',value:'on'},{label:'Off',value:'off'}],cur,function(v){setPref('nayanet.pref.auto_translate',v);T(v==='on'?'Auto-translate is on.':'Auto-translate is off.','#3fb8ff');render();}));
+      lang.body.appendChild(wrap2);
+    }
+    render();
+  })();
+  wrap.appendChild(lang);
+
+  /* §5 — Privacy: deletion by default. Absorbs the old "Your intelligence" board wholesale. */
+  const priv=Board({accent:ACC,icon:'shield',title:'Privacy',sub:'Private by default · shared by choice · collective by consent',lift:false});
+  (function(){
+    function render(){
+      priv.body.innerHTML='<div class="metric-ribbon">'+
+        '<div class="metric"><b>YOURS</b><span>INTELLIGENCE</span></div>'+
+        '<div class="metric"><b>CHOICE</b><span>SHARING</span></div>'+
+        '<div class="metric"><b>LAW</b><span>AUTHORITY</span></div>'+
+        '<div class="metric"><b>PROOF</b><span>CONSEQUENCE</span></div></div>'+
+        '<p style="color:var(--ink-dim);font-size:15px;line-height:1.6;margin-top:14px;max-width:680px">What you tell Naya is yours. Sharing is always your choice, never a default. And when intelligence leads to action, the proof travels with it.</p>'+
+        '<p style="color:var(--ink-dim);font-size:15px;line-height:1.7;margin-top:18px;max-width:680px">We do NOT view or record conversations — they are deleted by default. Choose how long they live before they are gone:</p>';
+      const cur=pref('nayanet.pref.retention','day');
+      const row=document.createElement('div');row.style.cssText='margin-top:12px';
+      row.appendChild(seg([{label:'A day',value:'day'},{label:'A week',value:'week'},{label:'A month',value:'month'}],cur,function(v){setPref('nayanet.pref.retention',v);T('Conversations are now deleted after '+(v==='day'?'a day':v==='week'?'a week':'a month')+'.','#ff5e6c');render();}));
+      priv.body.appendChild(row);
+      const note=document.createElement('p');note.style.cssText=MUTED_STYLE+';margin-top:12px;max-width:680px';
+      note.textContent='Deletion is not optional — the choice is only the window. We don\u2019t read, we don\u2019t keep.';
+      priv.body.appendChild(note);
+    }
+    render();
+  })();
+  wrap.appendChild(priv);
+
+  /* §6 — Notifications: one row per channel. */
+  const noti=Board({accent:ACC,icon:'mail',title:'Notifications',sub:'How — and how often — Naya gets your attention',lift:false});
+  (function(){
+    const chans=[['mail','Mail'],['activity','Activity'],['spaces','Spaces']];
+    function render(){
+      noti.body.innerHTML='';
+      chans.forEach(function(c){
+        const key=c[0], label=c[1];
+        const on=pref('nayanet.notif.pref.'+key,'1')==='1';
+        const fq=pref('nayanet.notif.freq.'+key,'as-it-happens');
+        const row=document.createElement('div');
+        row.style.cssText='padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);max-width:680px';
+        const head=document.createElement('div');
+        head.style.cssText='display:flex;justify-content:space-between;align-items:center;gap:16px';
+        head.innerHTML='<span style="'+LBL_STYLE+'">'+esc(label)+'</span>';
+        head.appendChild(seg([{label:'On',value:'1'},{label:'Off',value:'0'}],on?'1':'0',function(v){setPref('nayanet.notif.pref.'+key,v);render();}));
+        row.appendChild(head);
+        if(on){
+          const frow=document.createElement('div');
+          frow.style.cssText='margin-top:10px';
+          frow.appendChild(seg([{label:'As it happens',value:'as-it-happens'},{label:'Once a day',value:'daily'},{label:'Once a week',value:'weekly'}],fq,function(v){setPref('nayanet.notif.freq.'+key,v);render();}));
+          row.appendChild(frow);
+        }
+        noti.body.appendChild(row);
+      });
+      const note=document.createElement('p');note.style.cssText=MUTED_STYLE+';margin-top:12px;max-width:680px';
+      note.textContent='These set your preference only. The counts on the bar below are untouched — nothing already delivered is rewritten.';
+      noti.body.appendChild(note);
+    }
+    render();
+  })();
+  wrap.appendChild(noti);
+
+  /* §7 — Appearance: theme is Obsidian only; text size from the law's scale. */
+  const appear=Board({accent:ACC,icon:'gear',title:'Appearance',sub:'How the Hub looks and feels to you',lift:false});
+  (function(){
+    function render(){
+      appear.body.innerHTML='<div style="max-width:680px">'+
+        '<div style="'+ROW_STYLE+'"><span style="'+LBL_STYLE+'">Theme</span><span style="'+VAL_STYLE+'">Obsidian</span></div>'+
+        '<p style="'+MUTED_STYLE+';margin-top:10px">Obsidian is the Hub\u2019s look. Light surfaces are not offered — the design law forbids them.</p>'+
+        '<div style="color:var(--ink-dim);font-size:15px;margin-top:16px">Text size:</div></div>';
+      const cur=pref('nayanet.pref.text_size','16');
+      const row=document.createElement('div');row.style.cssText='margin-top:10px';
+      row.appendChild(seg([{label:'14',value:'14'},{label:'16',value:'16'},{label:'20',value:'20'}],cur,function(v){setPref('nayanet.pref.text_size',v);applyTextSize();render();}));
+      appear.body.appendChild(row);
+    }
+    render();
+  })();
+  wrap.appendChild(appear);
+
+  /* §8 — Your doors, rebuilt on DoorCard with a Connect/Manage action per door. */
   const doors=Board({accent:ACC,icon:'connect',title:'Your doors',sub:'How you and your systems reach the intelligence',lift:false});
-  const list=R.DOORS||[];
-  const live=list.filter(d=>d.status==='live').length;
-  doors.body.innerHTML='<div class="intelligence-list">'+list.map(d=>
-    '<div class="intel-row"><div class="intel-title">'+esc(d.name)+'</div>'+
-    '<div class="meta-row"><span>'+(d.status==='live'?'LIVE':'IN DESIGN')+'</span><span>'+esc(d.for||'')+'</span></div></div>'
-  ).join('')+'</div>'+
-  '<p style="color:var(--muted);font-size:14px;margin-top:12px">'+live+' of '+list.length+' doors are live. A door marked IN DESIGN is a real plan, not a working connection — it lights up when its time comes.</p>';
+  (function(){
+    const list=R.DOORS||[];
+    const live=list.filter(d=>d.status==='live').length;
+    const grid=document.createElement('div');
+    grid.style.cssText='display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:6px';
+    list.forEach(function(d){
+      const card=DoorCard(d,function(door){
+        const res=R.connectDoor?R.connectDoor(door.id):{ok:false,message:'No connect action available.'};
+        T(res.message,door.accent||'#a06bff');
+      });
+      if(d.status==='live'){
+        const foot=card.querySelector('.door-foot');
+        if(foot){
+          const mg=document.createElement('button');
+          mg.type='button';mg.textContent='Manage';
+          mg.className='btn btn-ghost';
+          mg.style.setProperty('--btn-accent',d.accent||'#a06bff');
+          mg.addEventListener('click',function(){
+            const res=R.connectDoor?R.connectDoor(d.id):{ok:false,message:'No connect action available.'};
+            T(res.message,d.accent||'#a06bff');
+          });
+          foot.appendChild(mg);
+        }
+      }
+      /* Keep each foot pill on one line (Defect 2: "IN USE" wrapped mid-pill
+         once the foot held LIVE + IN USE + Manage in a ~280px card). */
+      card.querySelectorAll('.door-foot .pill,.door-foot .state-badge').forEach(function(p){p.style.whiteSpace='nowrap';});
+      grid.appendChild(card);
+    });
+    doors.body.appendChild(grid);
+    const foot=document.createElement('p');
+    foot.style.cssText='color:var(--muted);font-size:14px;margin-top:12px';
+    foot.textContent=live+' of '+list.length+' doors are live. A door marked IN DESIGN is a real plan, not a working connection — it lights up when its time comes.';
+    doors.body.appendChild(foot);
+  })();
   wrap.appendChild(doors);
 
-  /* — My Personal App: who owns the sidebar's top spot — */
+  /* §9 — Smart Links + ambassador. */
+  const sl=Board({accent:ACC,icon:'bolt',title:'Smart Links',sub:'Your address on the network — and how you earn from it',lift:false});
+  (function(){
+    function copyText(txt,msg){
+      function done(){T(msg,'#ffbf3d');}
+      try{
+        if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){fallback();});return;}
+        fallback();
+      }catch(e){fallback();}
+      function fallback(){
+        try{
+          const ta=document.createElement('textarea');ta.value=txt;ta.style.cssText='position:fixed;opacity:0';
+          document.body.appendChild(ta);ta.select();
+          document.execCommand('copy');document.body.removeChild(ta);done();
+        }catch(e2){T('Copy didn\u2019t work — long-press the link to copy it.','#ffbf3d');}
+      }
+    }
+    sl.body.innerHTML='';
+    if(myAlias){
+      const link=myAlias+'.nayanet.app';
+      sl.body.innerHTML='<p style="color:var(--ink-dim);font-size:15px;line-height:1.7;max-width:680px">Your Smart Link is your address on the network. Every link you share is tracked, and credit flows — that is how ambassadors earn.</p>';
+      const f=document.createElement('div');f.style.cssText='display:flex;flex-direction:column;gap:10px;margin-top:14px;max-width:520px';
+      const inp=document.createElement('input');inp.type='text';inp.readOnly=true;inp.value='https://'+link;
+      inp.style.cssText=INPUT_STYLE;
+      f.appendChild(inp);
+      const cp=document.createElement('button');cp.type='button';cp.textContent='Copy my Smart Link';
+      cp.className='primo theme-purple elev-2';
+      cp.style.cssText='align-self:flex-start;margin-top:4px;font-size:15px;padding:14px 26px';
+      cp.addEventListener('click',function(){copyText('https://'+link,'Smart Link copied.');});
+      f.appendChild(cp);
+      sl.body.appendChild(f);
+      const amb=document.createElement('p');amb.style.cssText=MUTED_STYLE+';margin-top:14px;max-width:680px';
+      amb.textContent='Your ambassador link — the default Smart Link — arrives with Smart Link minting. It is the link you share to earn.';
+      sl.body.appendChild(amb);
+    } else {
+      sl.body.innerHTML='<p style="color:var(--ink-dim);font-size:15px;line-height:1.7;max-width:680px">No Smart Link claimed yet. Claim your name at the <a href="https://nayanet.app/identity.html" style="color:#fff;text-decoration:underline;text-underline-offset:3px">identity page</a> — that is where your Smart Link is created, once. Your ambassador link arrives with Smart Link minting.</p>';
+    }
+  })();
+  wrap.appendChild(sl);
+
+  /* §10 — Smart Box + distillation. */
+  const sb=Board({accent:ACC,icon:'db',title:'Smart Box',sub:'Your memory and organization — yours alone',lift:false});
+  (function(){
+    function render(){
+      sb.body.innerHTML='<p style="color:var(--ink-dim);font-size:15px;line-height:1.7;max-width:680px">The Smart Box is where everything you tell Naya lives — auto-organized, labeled, and stored for you. It is individualized per citizen, never pooled. Only your distilled wisdom is ever shared, and only with your permission.</p>'+
+        '<p style="color:var(--ink-dim);font-size:15px;line-height:1.7;margin-top:12px;max-width:680px">Your day, distilled — the Box keeps distilled wisdom, not raw capture, for anything shared.</p>'+
+        '<div style="color:var(--ink-dim);font-size:15px;margin-top:16px">Distillation:</div>';
+      const cur=pref('nayanet.pref.distillation','on');
+      const row=document.createElement('div');row.style.cssText='margin-top:10px';
+      row.appendChild(seg([{label:'On',value:'on'},{label:'Off',value:'off'}],cur,function(v){setPref('nayanet.pref.distillation',v);T(v==='on'?'Distillation is on — only distilled wisdom is ever shared.':'Distillation is off.','#2fe89e');render();}));
+      sb.body.appendChild(row);
+      const note=document.createElement('p');note.style.cssText=MUTED_STYLE+';margin-top:12px;max-width:680px';
+      note.textContent='The Box itself is not yet connected on this device — this page shows what it will do, never fake numbers about what is stored.';
+      sb.body.appendChild(note);
+    }
+    render();
+  })();
+  wrap.appendChild(sb);
+
+  /* §11 — My Personal App: who owns the sidebar's top spot. Behavior UNCHANGED, demoted to #11. */
   const mpa=Board({accent:'#a06bff',icon:'star',title:'My Personal App',sub:'The top spot in your sidebar',lift:false});
   (function(){
-    const PA=window.NayaPersonalApp, T=window.NayaUI.toast;
+    const PA=window.NayaPersonalApp, T2=window.NayaUI.toast;
     function render(){
       const mine=PA&&PA.get();
       if(!mine){
@@ -7816,7 +8103,7 @@ function SettingsRoom(){
         const n=document.createElement('input');n.type='text';n.placeholder='Sidebar name (optional)';n.style.cssText=u.style.cssText;
         const go=document.createElement('button');go.textContent='Make it my top spot';
         go.style.cssText='align-self:flex-start;background:#000;color:#fff;font-size:15px;font-weight:600;padding:14px 28px;border-radius:999px;border:1.5px solid rgba(248,247,251,.9);cursor:pointer;margin-top:4px';
-        go.addEventListener('click',function(){const s=PA.set(u.value,n.value);if(!s){T('That address doesn\u2019t look complete \u2014 paste the full address of your app.','#a06bff');return;}T('Done \u2014 the top spot in your sidebar is now yours.','#a06bff');render();});
+        go.addEventListener('click',function(){const s=PA.set(u.value,n.value);if(!s){T2('That address doesn\u2019t look complete \u2014 paste the full address of your app.','#a06bff');return;}T2('Done \u2014 the top spot in your sidebar is now yours.','#a06bff');render();});
         f.append(u);f.append(n);f.append(go);mpa.body.appendChild(f);return;
       }
       mpa.body.innerHTML='<p style="color:var(--ink-dim);font-size:15px;line-height:1.7;max-width:680px">The top spot in your sidebar opens <strong style="color:#fff">'+esc(mine.name)+'</strong>. Only on this device \u2014 the public Hub is unchanged.</p><div style="margin-top:8px;font-size:13.5px;color:#a06bff;word-break:break-all">'+esc(mine.url)+'</div>';
@@ -7824,68 +8111,22 @@ function SettingsRoom(){
       const ch=document.createElement('button');ch.textContent='Change address';ch.style.cssText='background:none;border:none;color:#a06bff;font-size:14px;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px';
       const back=document.createElement('button');back.textContent='Bring Start Here back';back.style.cssText=ch.style.cssText;
       ch.addEventListener('click',function(){try{localStorage.removeItem(PA.KEY);}catch(e){}mpa.body.innerHTML='';renderEmpty();});
-      back.addEventListener('click',function(){PA.clear();T('Start Here is back at the top of your sidebar.','#a06bff');render();});
+      back.addEventListener('click',function(){PA.clear();T2('Start Here is back at the top of your sidebar.','#a06bff');render();});
       row.append(ch);row.append(back);mpa.body.appendChild(row);
     }
     function renderEmpty(){mpa.body.innerHTML='<p style="color:var(--ink-dim);font-size:15px;line-height:1.7">Paste the new address for your personal app:</p>';
       const u=document.createElement('input');u.type='url';u.placeholder='Your personal app address';u.style.cssText='background:linear-gradient(180deg,#050508,#0a0a10 55%,#050508);border:1.5px solid rgba(160,107,255,.55);border-radius:14px;padding:14px 16px;color:#fff;font-size:16px;width:100%;box-sizing:border-box;font-family:inherit;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -8px 16px rgba(0,0,0,.65),0 0 22px rgba(160,107,255,.32),0 14px 30px rgba(0,0,0,.6);outline:none;margin-top:10px;max-width:520px';
       const go=document.createElement('button');go.textContent='Save';go.style.cssText='background:#000;color:#fff;font-size:15px;font-weight:600;padding:14px 28px;border-radius:999px;border:1.5px solid rgba(248,247,251,.9);cursor:pointer;margin-top:10px';
-      go.addEventListener('click',function(){const s=PA.set(u.value,'');if(!s){T('That address doesn\u2019t look complete \u2014 paste the full address of your app.','#a06bff');return;}T('Done \u2014 the top spot in your sidebar is now yours.','#a06bff');render();});
+      go.addEventListener('click',function(){const s=PA.set(u.value,'');if(!s){T2('That address doesn\u2019t look complete \u2014 paste the full address of your app.','#a06bff');return;}T2('Done \u2014 the top spot in your sidebar is now yours.','#a06bff');render();});
       mpa.body.appendChild(u);mpa.body.appendChild(go);}
     render();
   })();
   wrap.appendChild(mpa);
 
-  /* — Identity: your name + sign out of this device (Shawn 2026-10-20) — */
-  const ident=Board({accent:ACC,icon:'person',title:'Your identity on this device',sub:'How the Hub knows you — and how it forgets you',lift:false});
-  (function(){
-    const T=window.NayaUI.toast;
-    function cur(){try{return (localStorage.getItem('nayanet_smart_name')||'').trim();}catch(e){return '';}}
-    function render(){
-      const name=cur();
-      ident.body.innerHTML='<p style="color:var(--ink-dim);font-size:15px;line-height:1.7;max-width:680px">'+
-        (name?('The Hub greets you as <strong style="color:#fff">'+esc(name)+'</strong>. Your comments and activity carry this name on this device.')
-            :'No name is claimed on this device yet. Your name is claimed once — at the <a href="https://nayanet.app/identity.html" style="color:#fff;text-decoration:underline;text-underline-offset:3px">identity page</a>, when you first enter the Hub — and the Hub greets you by it from there.')+
-        '</p>';
-      const alias=(function(){try{return (localStorage.getItem('nayanet_smart_alias')||'').trim();}catch(e){return '';}})();
-      const idBlock=document.createElement('div');
-      idBlock.style.cssText='margin-top:14px;max-width:680px;font-size:15px;line-height:1.7;color:var(--ink-dim)';
-      if(alias||name){
-        idBlock.innerHTML=(name?'<div>Name: <strong style="color:#fff">'+esc(name)+'</strong></div>':'')+(alias?'<div>Smart Link: <strong style="color:#fff">'+esc(alias)+'.nayanet.app</strong></div><div>Secure Smart Mail ID: <strong style="color:#fff">'+esc(alias)+'</strong></div>':'<div>No Smart Link or Smart Mail ID claimed yet — claim them at the <a href="https://nayanet.app/identity.html" style="color:#fff;text-decoration:underline;text-underline-offset:3px">identity page</a>.</div>');
-      } else {
-        idBlock.innerHTML='<p style="color:var(--ink-dim);font-size:15px;line-height:1.7">No Smart Identity claimed on this device yet. Claim yours at the <a href="https://nayanet.app/identity.html" style="color:#fff;text-decoration:underline;text-underline-offset:3px">identity page</a> — that is where your name, Smart Link and Smart Mail ID are created, once.</p>';
-      }
-      ident.body.appendChild(idBlock);
-      /* Identity is read-only here (Shawn 2026-10-21): a name is claimed once, at the identity page — never entered or edited in Settings. */
-      const wb=document.createElement('button');wb.textContent=name?'Back to the Welcome screen':'Log in — enter through the Welcome screen';
-      wb.style.cssText='display:block;margin-top:18px;background:none;border:1.5px solid rgba(255,255,255,.35);color:#fff;font-size:14px;font-weight:600;padding:11px 22px;border-radius:999px;cursor:pointer';
-      wb.addEventListener('click',function(){location.href='https://nayanet.nayapower.workers.dev/';});
-      ident.body.appendChild(wb);
-      const out=document.createElement('button');out.textContent='Log out of this device';
-      out.style.cssText='display:block;margin-top:16px;background:none;border:1.5px solid rgba(255,94,108,.55);color:#ff8b95;font-size:14px;font-weight:600;padding:11px 22px;border-radius:999px;cursor:pointer';
-      let armed=false;
-      out.addEventListener('click',function(){
-        if(!armed){armed=true;out.textContent='Tap again to log out — this device forgets your name, your personal app, and your GitHub connection';return;}
-        try{
-          ['nayanet_smart_name','nayanet_smart_alias','nayanet_vault_key','nayanet.github.installation','naya.activity','nayanet.notif.mail','nayanet.notif.spaces','nayanet.notif.seen.activity'].forEach(k=>localStorage.removeItem(k));
-          if(window.NayaPersonalApp&&window.NayaPersonalApp.KEY)localStorage.removeItem(window.NayaPersonalApp.KEY);
-        }catch(e){}
-        T('Logged out. This device no longer knows you.','#ff5e6c');
-        setTimeout(function(){location.href='https://nayanet.nayapower.workers.dev/';},900);
-      });
-      ident.body.appendChild(out);
-      const note=document.createElement('p');note.style.cssText='color:var(--muted);font-size:13px;line-height:1.6;margin-top:12px;max-width:680px';
-      note.textContent='Logging out only forgets who you are on THIS device. Your intelligence itself is never stored here — nothing is deleted anywhere else. Log back in any time through the Welcome screen.';
-      ident.body.appendChild(note);
-    }
-    render();
-  })();
-  wrap.appendChild(ident);
-
-  /* — Install NayaNET as an app: always available here too (Shawn 2026-10-20) — */
+  /* §12 — Install NayaNET as an app: always available here too (Shawn 2026-10-20). Unchanged, demoted to #12. */
   const inst=Board({accent:'#ffbf3d',icon:'bolt',title:'Install NayaNET as an app',sub:'On your home screen — phone or laptop',lift:false});
   (function(){
-    const T=window.NayaUI.toast;
+    const T2=window.NayaUI.toast;
     const done=(function(){try{return (window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||window.navigator.standalone===true||localStorage.getItem('nayanet.installed')==='1';}catch(e){return false;}})();
     inst.body.innerHTML='<p style="color:var(--ink-dim);font-size:15px;line-height:1.7;max-width:680px">'+
       (done?('The Hub is installed as an app on this device — one tap and you&rsquo;re home, no login, ever.')
@@ -7901,10 +8142,46 @@ function SettingsRoom(){
   })();
   wrap.appendChild(inst);
 
-  /* — About this Hub — */
+  /* §13 — System Health: read-only diagnostics, read from current artifacts only. */
+  const health=Board({accent:ACC,icon:'core',title:'System Health',sub:'Is my Hub working — read from the artifacts, never guessed',lift:false});
+  (function(){
+    const list=R.DOORS||[];
+    const live=list.filter(d=>d.status==='live').length;
+    const installed=(function(){try{return (window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||window.navigator.standalone===true||localStorage.getItem('nayanet.installed')==='1';}catch(e){return false;}})();
+    const state=R.stateFor?R.stateFor('settings'):'not_verified';
+    const rows=[
+      ['Hub version',(R.version||'1.0.0')],
+      ['Build','6091168b'],
+      ['Doors live',live+' of '+list.length+' live'],
+      ['Runtime',state==='ready'?'Connected':'Not yet connected'],
+      ['Installed as an app',installed?'Yes — one tap and you\u2019re home':'No — install it from this page'],
+    ];
+    const box=document.createElement('div');box.style.cssText='max-width:680px';
+    rows.forEach(function(r){
+      const row=document.createElement('div');
+      row.style.cssText=ROW_STYLE;
+      row.innerHTML='<span style="'+LBL_STYLE+'">'+esc(r[0])+'</span><span style="'+VAL_STYLE+'">'+esc(r[1])+'</span>';
+      box.appendChild(row);
+    });
+    if(state!=='ready'){
+      const note=document.createElement('p');note.style.cssText=MUTED_STYLE+';margin-top:14px;max-width:680px';
+      note.textContent='Quiet here — honestly. There is nothing to show in this scope yet. This room will fill with real intelligence when there is something true to show — it never invents data to fill the silence.';
+      box.appendChild(note);
+    }
+    health.body.appendChild(box);
+  })();
+  wrap.appendChild(health);
+
+  /* §14 — About this Hub. Unchanged, demoted to last. */
   const about=Board({accent:ACC,icon:'core',title:'About this Hub',sub:'What you are looking at',lift:false});
   about.body.innerHTML='<p style="color:var(--ink-dim);font-size:15px;line-height:1.65;max-width:680px">The Intelligent Hub is the visual projection of your intelligence — what Naya retains, connects, and can prove, presented for a human. It shows; it doesn\u2019t store the canonical record and it never takes consequential action on its own.</p>';
   wrap.appendChild(about);
+
+  /* Footer line, moved from the removed Board 1: true of the whole page. */
+  const foot=document.createElement('p');
+  foot.style.cssText='color:var(--muted);font-size:13px;line-height:1.6;margin-top:18px;max-width:680px';
+  foot.textContent='These preferences live on this device. Anything that affects shared or governed intelligence will always ask first — and say exactly what it will do.';
+  wrap.appendChild(foot);
 
   return wrap;
 }
