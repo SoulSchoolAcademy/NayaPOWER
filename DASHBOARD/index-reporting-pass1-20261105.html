@@ -17911,13 +17911,24 @@ function ldLayoutNodes(){
         month: _sumDays(days, 30).c
       }};
     } else {
-      view.center = spine;
-      view.centerLabel = 'Smart Score';
+      /* 2026-11-06 — FIX F7: the world score follows the window. The big number,
+         the featured stats and the below-line all read the windowed total in a
+         period window (the same total the orbs + derivation sum); All keeps the
+         all-time spine. Labels name the window they read (pill words — Day /
+         Week / Month / Hour — because the board's chart windows are 14d / 84d /
+         360d buckets, not literal 'today' / 'last 7 days'; 'all time' only where
+         the number is all-time). Before: center was the spine in every window
+         with a bare 'Smart Score' label, and below was windowed but labelled
+         'all time'. */
+      var _ww = window._ldWindow || 'all';
+      var _wwWord = (_ww === 'hourly') ? 'Hour' : (_ww === 'daily') ? 'Day' : (_ww === 'weekly') ? 'Week' : (_ww === 'monthly') ? 'Month' : 'all time';
+      view.center = (_ww !== 'all') ? wt.total : spine;
+      view.centerLabel = 'Smart Score · ' + _wwWord;
       view.below = wt.total;
-      view.belowLabel = 'points · all time';
+      view.belowLabel = 'points · ' + _wwWord;
       var t1 = wt.top[0] || {label:'points', pts:0}, t2 = wt.top[1] || {label:'points', pts:0};
       view.stats = [
-        {n:_fmt(spine), k:'score', l:'Smart Score', why:'your whole world, one number'}, /* PASS 1 v6 (c): k makes the number tappable. */
+        {n:_fmt(view.center), k:'score', l:view.centerLabel, why:'your whole world, one number'}, /* PASS 1 v6 (c): k makes the number tappable. FIX F7: the featured score is the windowed score now, labelled with its window. */
         {n:_fmt(t1.pts), k:(t1.key||'score'), l:(t1.pts > 0) ? t1.label.toLowerCase() + ' · points' : 'points · none yet', why:(t1.pts > 0) ? 'your strongest orb' : 'your first actions light the board'}, /* PASS 1 v6 (c): was 'points · points' when pts was 0; k makes the number tappable. */
         {n:_fmt(t2.pts), k:(t2.key||'score'), l:(t2.pts > 0) ? t2.label.toLowerCase() + ' · points' : 'points · none yet', why:(t2.pts > 0) ? 'second strongest' : 'every action counts'} /* PASS 1 v6 (c): same fix as t1. */
       ];
@@ -18263,8 +18274,13 @@ window._renderScoreDerivation = function(totalArg, orbDataArg){
             h += '<button type="button" class="os-sd-part" data-derive-part="' + o.key + '">' + _part + '</button>';
           });
           h += '<span class="os-sd-op">=</span><span class="os-sd-sum">' + total + ' pts</span>';
-          if (mult === 2){ h += '<span class="os-sd-op">× 2 birth</span><span class="os-sd-op">=</span><span class="os-sd-sum">' + spineScore + ' pts</span>'; }
-          else if (spineScore !== total){ h += '<span class="os-sd-op">=</span><span class="os-sd-sum">' + spineScore + ' pts</span>'; }
+          /* FIX F7: in a period window the spine number differs from the big
+             number (which is now the windowed total), so it must say it is
+             all-time; in All it equals the big number — labelled ALL TIME
+             above — and stays as today. The 'x 2 birth' line is All-only. */
+          var _f7per = (window._ldWindow && window._ldWindow !== 'all');
+          if (mult === 2 && !_f7per){ h += '<span class="os-sd-op">× 2 birth</span><span class="os-sd-op">=</span><span class="os-sd-sum">' + spineScore + ' pts</span>'; }
+          else if (spineScore !== total){ h += '<span class="os-sd-op">=</span><span class="os-sd-sum">' + spineScore + ' pts' + (_f7per ? ' · all time' : '') + '</span>'; }
         }
         derEl.innerHTML = h;
       }
@@ -18272,7 +18288,13 @@ window._renderScoreDerivation = function(totalArg, orbDataArg){
         var spineScore2 = (window._osSpine && typeof window._osSpine.score === 'number') ? window._osSpine.score : total;
         var mult2 = (total > 0 && spineScore2 === total * 2) ? 2 : 1;
         var gain = 50 * mult2;
-        nextEl.innerHTML = '1 join takes you to ' + (spineScore2 + gain) + ' — <button type="button" class="os-sd-share" data-sl-copy="joinus">share your link</button>';
+        /* FIX F7: the next move follows the window too — in a period window the
+           number shown is the windowed total, so one join (+50 points) moves
+           THAT number; All keeps the all-time spine target. */
+        var _f7per2 = (window._ldWindow && window._ldWindow !== 'all');
+        var _nextBase = _f7per2 ? total : spineScore2;
+        var _nextGain = _f7per2 ? 50 : gain;
+        nextEl.innerHTML = '1 join takes you to ' + (_nextBase + _nextGain) + ' — <button type="button" class="os-sd-share" data-sl-copy="joinus">share your link</button>';
       }
     } else {
       /* ---- link: its own counts, never points, never x2 ----
