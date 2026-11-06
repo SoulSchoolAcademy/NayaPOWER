@@ -28,6 +28,9 @@ import re
 import sys
 import time
 import hashlib
+import importlib.util
+import subprocess
+import tempfile
 import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -42,7 +45,32 @@ ACCT = "b5e2a51b3e883f7722287c5f51b1196b"
 CF_BASE = "https://api.cloudflare.com/client/v4"
 REGISTRY_PATH = os.path.join(HERE, "templates-registry.json")
 BUILDS_DIR = os.path.join(HERE, "builds")
-PROCESSOR_TAG = "factory-r1-cured-v1 (R1 proposal — not yet swapped in)"
+PROCESSOR_TAG = "factory-r1-cured-v1 + GT-028 contract gate (canon standard-feature contracts govern builds)"
+
+# --- GT-028: canon standard-feature contracts -------------------------------
+# The canon contracts + checker live in the repo at
+# BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/ (PR #2888, certified by Chi,
+# R1-CERT-2888.md). At build time the gate reads them from the repo clone's
+# origin/main ref via `git show` (immune to the clone's working-tree state);
+# if that read fails it falls back to the vendored snapshot in canon/ beside
+# this file (see canon/PROVENANCE.json). If neither source loads, the build
+# FAILS HONESTLY — there is no unchecked deploy path.
+CANON_ENGINE_REL = "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine"
+REPO_CLONE = os.path.expanduser("~/workspace/nayapower-repo")
+CANON_SNAPSHOT_DIR = os.path.join(HERE, "canon")
+
+# GT-028 contract gate mode.
+# Advisory mode (STRICT=False): the gate scores every build and records the
+# full contract_check block in the receipt (pass and fail alike), but never
+# blocks deploy — the dialect-reconciliation canon PR (GT-028 half 2) is not
+# yet merged through the dock, and the live flagships' features are
+# dialect-mismatched, not defective. A gate that stops the flow is a defect
+# (Shawn's Balanced Machine law). Only when the reconciled canon PR has merged
+# through the dock AND the reconciled contracts make the live flagships score
+# 13/13 may this flip back to True: strict mode then fails the build honestly
+# (no deploy) on any failed feature. A gate that cannot run at all (canon
+# unavailable/invalid) always fails the build honestly, in either mode.
+CONTRACT_GATE_STRICT = True
 
 
 def sb_request(method, path, data=None):
@@ -62,6 +90,110 @@ def sb_request(method, path, data=None):
 def load_registry():
     with open(REGISTRY_PATH) as f:
         return json.load(f)
+
+
+def _load_canon():
+    """Load (checker_module, canon_registry, provenance) for the GT-028 gate.
+
+    Primary: repo clone origin/main via git show. Fallback: vendored snapshot
+    in CANON_SNAPSHOT_DIR. Raises RuntimeError if neither source loads — the
+    caller fails the build honestly rather than deploying unchecked.
+    """
+    checker_bytes = registry_bytes = None
+    provenance = {}
+    try:
+        ref = subprocess.run(['git', '-C', REPO_CLONE, 'rev-parse', 'origin/main'],
+                             capture_output=True, text=True, timeout=30)
+        if ref.returncode != 0:
+            raise RuntimeError(ref.stderr.strip() or 'rev-parse failed')
+        ref = ref.stdout.strip()
+        blobs = {}
+        for name in ('check_standard_features.py', 'templates-registry.json'):
+            r = subprocess.run(
+                ['git', '-C', REPO_CLONE, 'show',
+                 f'origin/main:{CANON_ENGINE_REL}/{name}'],
+                capture_output=True, timeout=30)
+            if r.returncode != 0:
+                raise RuntimeError(f'git show {name} failed')
+            blobs[name] = r.stdout
+        checker_bytes = blobs['check_standard_features.py']
+        registry_bytes = blobs['templates-registry.json']
+        provenance = {'source': 'repo clone origin/main (git show)',
+                      'canon_ref': ref}
+    except Exception:
+        checker_bytes = registry_bytes = None
+    if checker_bytes is None:
+        try:
+            with open(os.path.join(CANON_SNAPSHOT_DIR,
+                                   'check_standard_features.py'), 'rb') as f:
+                checker_bytes = f.read()
+            with open(os.path.join(CANON_SNAPSHOT_DIR,
+                                   'templates-registry.json'), 'rb') as f:
+                registry_bytes = f.read()
+            with open(os.path.join(CANON_SNAPSHOT_DIR,
+                                   'PROVENANCE.json')) as f:
+                snap = json.load(f)
+            provenance = {'source': 'vendored snapshot (factory-pipeline/canon)',
+                          'canon_ref': snap.get('canon_ref')}
+        except Exception as e:
+            raise RuntimeError(
+                f'canon contracts unavailable (git show and snapshot both '
+                f'failed): {e}')
+    provenance['checker_sha256'] = hashlib.sha256(checker_bytes).hexdigest()
+    provenance['registry_sha256'] = hashlib.sha256(registry_bytes).hexdigest()
+    tmp = tempfile.NamedTemporaryFile('wb', suffix='.py',
+                                      prefix='canon-checker-', delete=False)
+    try:
+        tmp.write(checker_bytes)
+        tmp.close()
+        spec = importlib.util.spec_from_file_location(
+            'canon_check_standard_features', tmp.name)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+    finally:
+        try:
+            os.unlink(tmp.name)
+        except OSError:
+            pass
+    registry = json.loads(registry_bytes.decode('utf-8'))
+    return module, registry, provenance
+
+
+def run_contract_gate(html, build_id):
+    """Score the built artifact against the canon standard-feature contracts.
+
+    Returns the receipt-ready gate block (per-feature PASS/FAIL + provenance).
+    Raises RuntimeError if the gate itself cannot run.
+    """
+    try:
+        checker, registry, provenance = _load_canon()
+        errors = checker.validate_contracts(registry)
+        if errors:
+            raise RuntimeError('canon contracts invalid: ' + '; '.join(errors))
+        report = checker.evaluate(
+            html.encode('utf-8'),
+            {'source': f'build_queue artifact {build_id}'}, registry)
+    except RuntimeError:
+        raise
+    except Exception as e:
+        raise RuntimeError(f'contract gate could not run: {e}')
+    gate = {
+        'contract_version': report.get('contract_version'),
+        'canon': provenance,
+        'score': report['score'],
+        'features': [{
+            'code': f['code'], 'id': f['id'], 'status': f['status'],
+            'failed_required_checks': f['failed_required_checks'],
+            'failed_any_groups': f['failed_any_groups'],
+        } for f in report['features']],
+    }
+    try:  # full per-check evidence beside the artifact
+        with open(os.path.join(BUILDS_DIR, f'{build_id}.contract.json'),
+                  'w') as fh:
+            json.dump(report, fh, indent=2)
+    except Exception:
+        pass
+    return gate
 
 
 def normalize_template(raw):
@@ -145,13 +277,42 @@ def process_build(build):
         # --- (d) worker name from the contract's slug -------------------
         handle = contract.get('handle') or slugify(contract.get('name'))
         handle = slugify(handle)
-        worker_name = f"naya-app-{handle}-{build_id[:8]}"
+        worker_name = f"naya-app-{handle}"
 
-        # --- evidence artifact + gated deploy ---------------------------
+        # --- evidence artifact ------------------------------------------
         os.makedirs(BUILDS_DIR, exist_ok=True)
         artifact = os.path.join(BUILDS_DIR, f"{build_id}.html")
         with open(artifact, 'w') as f:
             f.write(html)
+
+        # --- GT-028 contract gate ---------------------------------------
+        # Advisory mode (CONTRACT_GATE_STRICT=False): every build is scored
+        # against the canon contracts and the full contract_check block lands
+        # in the receipt, but the gate never blocks deploy. Strict mode
+        # (flag flips after the dialect-reconciliation canon PR merges and the
+        # live flagships score full) fails the build honestly here instead.
+        # A gate that cannot run at all always fails the build honestly —
+        # that path is handled by the outer except via fail_build. ---
+        gate = run_contract_gate(html, build_id)
+        if (CONTRACT_GATE_STRICT
+                and gate['score']['passed'] != gate['score']['total']):
+            failed = [f for f in gate['features'] if f['status'] != 'PASS']
+            names = "; ".join(
+                f"{f['code']} {f['id']} (failed: "
+                + ", ".join(f['failed_required_checks']
+                            + [f"any:{g}" for g in f['failed_any_groups']])
+                + ")" for f in failed)
+            fail_build(build_id, {
+                'error': (f"contract gate: {gate['score']['passed']}/"
+                          f"{gate['score']['total']} standard features "
+                          f"pass — {names}"),
+                'template': tkey,
+                'contract_check': gate,
+                'applied': [e for e in ledger if e['status'] == 'APPLIED'],
+                'not_applied': [e for e in ledger
+                                if e['status'] == 'NOT-APPLIED'],
+            })
+            return
 
         url = deploy(artifact, worker_name)   # deploy.py: CSS gate inside
         if not url:
@@ -177,6 +338,7 @@ def process_build(build):
             },
             'applied': [e for e in ledger if e['status'] == 'APPLIED'],
             'not_applied': [e for e in ledger if e['status'] == 'NOT-APPLIED'],
+            'contract_check': gate,
             'built_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
             'processor': PROCESSOR_TAG,
         }
