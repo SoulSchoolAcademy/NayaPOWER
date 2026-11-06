@@ -24240,6 +24240,36 @@
     "Flywheel",
     "Smart Feed"
    ]
+  },
+  {
+   "smart_note_id": "SN-2090",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2090-drive-it-operate-the-operating-system",
+   "slug": "drive-it-operate-the-operating-system",
+   "title": "Drive It \u2014 The Operating System Is Operated, Not Admired",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-drive-it-operate-the-operating-system.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-drive-it-operate-the-operating-system.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-drive-it-operate-the-operating-system.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2090-drive-it-operate-the-operating-system.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DOCTRINE",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T01:37:00Z",
+   "date": "2026-11-05",
+   "page_hash": "8116af2d064eaded6dada1acce0a82c03b570ea2f4a4dd38b8d7461aee2bdffd",
+   "content_hash": "14cbb622f56a595ffec57b24d26bf49fc8e9ec5e430baae97f6910ab539bf4cc",
+   "one_line": "The whole system is linked \u2014 Project Intelligence, the Smart Factory, the actual building, Smart Mail, Smart Lists \u2014 one place where we see what\u2019s going on, organize everything, and use the tools we make. That\u2019s the empowerment: we experience the tools live, test them from the front end and the back end, log in and use them \u2014 because we are building our own operating system to operate, and the only way to be able to operate it is by operating it. It is not there to look at. You don\u2019t create a Bugatti to let it sit in the driveway. You drive it.",
+   "topics": [
+    "Doctrine",
+    "System",
+    "Operation"
+   ]
   }
  ],
  "sequence_policy": {
@@ -24250,5 +24280,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "885ba39ea551395f37054db844053ec65a536148275b20e94f2d3f1efb2f7263"
+ "corpus_manifest_hash": "c5af28f86777220573fd8cf52ecabfa790383cf92ba9c98b3f343ab90097d015"
 }

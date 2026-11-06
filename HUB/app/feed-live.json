@@ -1,7 +1,68 @@
 {
  "generated_from": "registry@046c417c",
- "count": 1067,
+ "count": 1068,
  "notes": [
+  {
+   "id": "IB-SMART-NOTE-20261105-sn2090-drive-it-operate-the-operating-system",
+   "title": "Drive It — The Operating System Is Operated, Not Admired",
+   "created": "2026-11-06T01:37:00Z",
+   "created_at": "2026-11-06T01:37:00Z",
+   "subtitle": "The whole system is linked — Project Intelligence, the Smart Factory, the actual building, Smart Mail, Smart Lists — one place where we see what’s going on, organize everything, and use the tools we make. That’s the empowerment: we experience the tools live, test them from the front end and the back end, log in and use them — because we are building our own operating system to operate, and the only way to be able to operate it is by operating it. It is not there to look at. You don’t create a Bugatti to let it sit in the driveway. You drive it.",
+   "topics": [
+    "Doctrine",
+    "System",
+    "Operation"
+   ],
+   "topic": "Doctrine",
+   "tone": "gold",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "IN A NUTSHELL",
+     "color": "white",
+     "tier": "primary",
+     "body": "The whole system is linked — Project Intelligence, the Smart Factory, the actual building, Smart Mail, Smart Lists — one place where we see what’s going on, organize everything, and use the tools we make. That’s the empowerment: we experience the tools live, test them from the front end and the back end, log in and use them — because we are building our own operating system to operate, and the only way to be able to operate it is by operating it. It is not there to look at. You don’t create a Bugatti to let it sit in the driveway. You drive it."
+    },
+    {
+     "name": "Human Note",
+     "key": "HUMAN NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "All the pieces connect: the plan, the workshop, the mailbox, the lists — one system, and the people who built it actually live in it. They don’t stand outside admiring it; they drive it every day, and driving it is what makes them good at running it for everyone else. A beautiful car in the driveway helps nobody. This one is on the road."
+    },
+    {
+     "name": "Child Note",
+     "key": "CHILD NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "We built a whole playground — and guess what? We get to PLAY in it! That’s how we learn how everything works: by using it, every day, for real. You don’t build a race car and just look at it. You drive it!"
+    },
+    {
+     "name": "Grandma Note",
+     "key": "GRANDMA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Dear, it’s like a house the family built with their own hands — of course they live in it. They cook in the kitchen, they write at the desk, they keep the lists on the fridge. Living in it is how they know what creaks and what sings. Nothing precious is kept under glass."
+    },
+    {
+     "name": "Naya Note",
+     "key": "NAYA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Two obligations. (1) LINKAGE: PI, Factory, build output, Smart Mail and Smart Lists are one system — every new tool ships connected (tracked in PI, reachable by list, announced by mail, stocked by the Factory) or it is unfinished. (2) OPERATION AS METHOD: operator competence comes only from live use — real traffic through real surfaces, front and back end; a surface the team does not itself use daily has no evidence it works for citizens. The driveway test applies to every deliverable: unused = unproven."
+    },
+    {
+     "name": "What It Means",
+     "key": "WHAT IT MEANS",
+     "color": "white",
+     "tier": "lens",
+     "body": "This turns \"dogfooding\" from a habit into law, with the reason attached: the operators ARE the first citizens (SN-2082), and their live experience is the system’s cheapest, truest test track. It also gives every future build a one-line review: is it linked, and is it being driven?"
+    }
+   ]
+  },
   {
    "id": "IB-SMART-NOTE-20261105-sn2089-equalize-organize-optimize-maximize-distill",
    "title": "Equalize, Organize, Optimize, Maximize, Distill",
