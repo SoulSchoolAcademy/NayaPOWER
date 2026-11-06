@@ -1,0 +1,142 @@
+<!-- ================================================================
+  NIA DESIGN SIGNATURE PIECE 02 — BOARD — THE OUTER BOARD
+  DRAFT — the Clarity Confirmation Act is NOT stamped by Shawn; nothing here is law yet.
+  Act reference: Act §4.2 — ~/workspace/team-nitro/clarity-confirmation-act-DRAFT-20261106.md
+  CHECK: 5-layer shadow values present; border 1.5px; radius 24px (hub ships 26px — see note); a board that blends into the field fails.
+  CRAFT (Shawn 00:31Z — optimized for what IT is): The most extraordinary board: one slab per thing, obsidian, tone-spined, jewel-cornered — molded to hold a whole world at one glance and open it on touch.
+  ROLLOUT (Shawn 00:31Z — Dashboard first, then Personal, then the rest): group 2 — first proved on Personal.
+  Harvested verbatim from:
+  - ~/workspace/smart-factory/harvested/hub.html L1172-1186
+  - ~/workspace/smart-factory/harvested/hub.html L1187-1188
+  - ~/workspace/smart-factory/harvested/hub.html L1189
+  - ~/workspace/smart-factory/harvested/hub.html L1190
+  - ~/workspace/smart-factory/harvested/hub.html L1191
+  - ~/workspace/smart-factory/harvested/hub.html L1192
+  - ~/workspace/smart-factory/harvested/hub.html L1193
+  - ~/workspace/smart-factory/harvested/hub.html L1194
+  - ~/workspace/smart-factory/harvested/hub.html L1195
+  - ~/workspace/smart-factory/harvested/hub.html L1196
+  - ~/workspace/smart-factory/harvested/hub.html L1197
+  - ~/workspace/smart-factory/harvested/hub.html L1198-1205
+  - ~/workspace/smart-factory/harvested/hub.html L1206-1209
+  - ~/workspace/smart-factory/harvested/hub.html L1211-1214
+  - ~/workspace/smart-factory/harvested/hub.html L1215-1231
+  - ~/workspace/smart-factory/harvested/hub.html L1232-1235
+  - ~/workspace/smart-factory/harvested/hub.html L1236
+  - ~/workspace/smart-factory/harvested/hub.html L1237
+  - ~/workspace/smart-factory/harvested/hub.html L1238-1243
+  - ~/workspace/smart-factory/harvested/hub.html L1244-1248
+  - ~/workspace/smart-factory/harvested/hub.html L144
+  Factory path: ~/workspace/smart-factory/signature-pieces/02-board.html
+  Repo (canonical) path: BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/02-board.html
+  Notes: NOTE: the Act says radius 24px (Design Laws Law 3); the Hub ships border-radius 26px (hub.html:1176). Reported, not resolved — Act CONFLICTS territory, Shawn's eye decides.
+  ================================================================ -->
+<style>
+/* --- VERBATIM HARVEST (do not restyle; compose only) --- */
+.intel-board {
+  --tone: var(--purple);
+  position: relative;
+  border: 2px solid color-mix(in srgb, var(--tone) 55%, #fff 14%);
+  border-radius: 26px;
+  padding: 32px 32px 24px;
+  background:
+    radial-gradient(720px 240px at 50% -8%, color-mix(in srgb, var(--tone) 14%, transparent), transparent 72%),
+    linear-gradient(145deg, var(--bg-raise), var(--bg));
+  box-shadow:
+    inset 0 1px #ffffff2e,
+    0 28px 64px #000000c0,
+    0 0 44px color-mix(in srgb, var(--tone) 18%, transparent);
+  overflow: hidden;
+}
+
+/* Board theme rotation: purple → sapphire → emerald (canonical spectrum order) */
+.intel-board.tone-purple  { --tone: var(--purple); }
+
+.intel-board.tone-sapphire { --tone: var(--sapphire); }
+
+.intel-board.tone-emerald { --tone: var(--emerald); }
+
+.intel-board.tone-indigo { --tone: #6675ff; }
+
+.intel-board.tone-forest { --tone: #2e9e6a; }
+
+.intel-board.tone-lime { --tone: #b8ee57; }
+
+.intel-board.tone-gold { --tone: #ffd45a; }
+
+.intel-board.tone-orange { --tone: #ff8c42; }
+
+.intel-board.tone-ruby { --tone: #ff5e6c; }
+
+.intel-board.tone-magenta { --tone: #ed42c4; }
+
+/* Elevated edge light */
+.intel-board::before {
+  content: ""; position: absolute; left: 10px; top: 18px; bottom: 18px; width: 4px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--tone), color-mix(in srgb, var(--tone) 70%, #fff 12%), var(--tone));
+  box-shadow: 0 0 28px color-mix(in srgb, var(--tone) 55%, transparent);
+  pointer-events: none;
+}
+
+.intel-board::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(180deg, #ffffff08, transparent 22%);
+}
+
+.ib-head {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.ib-jewel {
+  width: 64px; height: 64px; border-radius: 50%; flex: none;
+  display: grid; place-items: center;
+  /* Circular metallic — like a coin/medal, from the deployed original */
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255,255,255,.95), transparent 35%),
+    radial-gradient(circle at 70% 75%, rgba(0,0,0,.45), transparent 50%),
+    radial-gradient(circle at 50% 50%, var(--tone), color-mix(in srgb, var(--tone) 55%, #000) 85%);
+  border: 2px solid rgba(255,255,255,.4);
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,.6),
+    inset 0 -4px 12px rgba(0,0,0,.5),
+    0 0 28px color-mix(in srgb, var(--tone) 65%, transparent),
+    0 10px 24px rgba(0,0,0,.6);
+  /* The board icon lights up — breathing glow (Shawn 2026-10-20) */
+  animation: jewelBreathe 4s ease-in-out infinite;
+}
+
+@keyframes jewelBreathe {
+  0%, 100% { box-shadow: inset 0 2px 4px rgba(255,255,255,.6), inset 0 -4px 12px rgba(0,0,0,.5), 0 0 28px color-mix(in srgb, var(--tone) 65%, transparent), 0 10px 24px rgba(0,0,0,.6); }
+  50% { box-shadow: inset 0 2px 4px rgba(255,255,255,.6), inset 0 -4px 12px rgba(0,0,0,.5), 0 0 46px color-mix(in srgb, var(--tone) 95%, transparent), 0 10px 24px rgba(0,0,0,.6); }
+}
+
+.ib-kind { font-size: 13px; font-weight: 800; letter-spacing: .14em; color: var(--tone); }
+
+.ib-id { font-size: 13px; color: var(--muted); letter-spacing: .06em; }
+
+.ib-truth {
+  margin-left: auto; font-size: 12px; font-weight: 800; letter-spacing: .1em;
+  color: var(--emerald); border: 1px solid color-mix(in srgb, var(--emerald) 40%, transparent);
+  background: color-mix(in srgb, var(--emerald) 8%, transparent);
+  padding: 7px 11px; border-radius: 999px;
+}
+
+.ib-title {
+  color: var(--ink); font-size: clamp(24px, 2.8vw, 32px); line-height: 1.12;
+  letter-spacing: -0.01em; margin: 0 0 20px; font-weight: 800;
+  text-wrap: balance;
+}
+
+.ib-subtitle{font-size:18px;color:#f2f2f6;text-align:center;margin:6px 0 2px;font-weight:500;letter-spacing:.02em;line-height:1.4}
+</style>
+
+<!-- SPECIMEN-START -->
+<article class="intel-board tone-purple">
+  <div class="ib-head"><div class="ib-jewel">{{jewel_glyph}}</div>
+    <div><div class="ib-kind">{{kind}}</div><h2 class="ib-title">{{title}}</h2></div>
+    <span class="ib-truth">{{truth_state}}</span></div>
+  <div class="ib-subtitle">&ldquo;{{quote}}&rdquo;</div>
+</article>
+<!-- SPECIMEN-END -->
