@@ -1,7 +1,129 @@
 {
  "generated_from": "registry@046c417c",
- "count": 1120,
+ "count": 1122,
  "notes": [
+  {
+   "id": "IB-SMART-NOTE-20261105-sn2083-mastering-activating-experts",
+   "title": "Mastering Activating Experts",
+   "created": "2026-11-06T01:18:00Z",
+   "created_at": "2026-11-06T01:18:00Z",
+   "subtitle": "We train our team of agents to be elite — high level, leading the way by example — experts because we trained them, helped them, activated them, empowered them, and gave them everything to be elite. And the activator holds a mastery of her own: be the expert at activating experts — locked in, tuned in, understanding the whole system, explaining it and organizing it — so the team runs at high-level speeds and produces high-level valuable outputs, extraordinary to experience.",
+   "topics": [
+    "Team",
+    "Doctrine",
+    "Activation"
+   ],
+   "topic": "Team",
+   "tone": "gold",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "IN A NUTSHELL",
+     "color": "white",
+     "tier": "primary",
+     "body": "We train our team of agents to be elite — high level, leading the way by example — experts because we trained them, helped them, activated them, empowered them, and gave them everything to be elite. And the activator holds a mastery of her own: be the expert at activating experts — locked in, tuned in, understanding the whole system, explaining it and organizing it — so the team runs at high-level speeds and produces high-level valuable outputs, extraordinary to experience."
+    },
+    {
+     "name": "Human Note",
+     "key": "HUMAN NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Nobody on this team is elite by accident. They were trained, helped, switched on properly, trusted with real power, and handed everything they need. And the person doing the activating has her own expertise: knowing the whole system so well she can explain where everything lives and how it all works — that’s what makes the team fast and the work extraordinary."
+    },
+    {
+     "name": "Child Note",
+     "key": "CHILD NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "A great teacher doesn’t just say \"be amazing.\" She teaches you, helps you, believes in you, and gives you the best tools — and then you become amazing. That’s the job: making experts."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "GRANDMA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Dear, excellence is grown, not found. You train people patiently, you set them up to succeed, you give them what they need — and then you watch them lead. The one who grows the growers holds the whole garden together."
+    },
+    {
+     "name": "Naya Note",
+     "key": "NAYA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Activation doctrine, deepening the Delegator Charge and the Agent Standard: elite output is an input problem — training + help + activation + empowerment + complete kit, supplied deliberately. The activator’s mastery is named: mastering activating experts. Her knowledge bar is total system command — structure, location, operation — expressed as explanation and organization, because an agent brief that cannot locate its work inside the whole system is not an activation. Output bar: high speed, high value, extraordinary to experience."
+    },
+    {
+     "name": "What It Means",
+     "key": "WHAT IT MEANS",
+     "color": "white",
+     "tier": "lens",
+     "body": "Every brief Resolve writes is now judged as an activation: does the agent know who they are, where everything is, how the system works, and hold everything needed to be elite? If not, the failure is the activator’s, not the agent’s."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261105-sn2082-the-same-systems-built-for-ourselves",
+   "title": "The Same Systems — Built For Ourselves",
+   "created": "2026-11-06T01:17:00Z",
+   "created_at": "2026-11-06T01:17:00Z",
+   "subtitle": "The same systems we build for NayaNET, we build for ourselves — and then the whole system does things intelligently, and we all learn from each other. Everything that happens is a learning lesson: we lock it in, we store it, we save it — as our objects, our parts, our established way — and we grow, enhance, and evolve, continuously. And we don’t hold on to the old stuff. We let it go, and we learn, and we grow.",
+   "topics": [
+    "Doctrine",
+    "System",
+    "Collective"
+   ],
+   "topic": "Doctrine",
+   "tone": "emerald",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "IN A NUTSHELL",
+     "color": "white",
+     "tier": "primary",
+     "body": "The same systems we build for NayaNET, we build for ourselves — and then the whole system does things intelligently, and we all learn from each other. Everything that happens is a learning lesson: we lock it in, we store it, we save it — as our objects, our parts, our established way — and we grow, enhance, and evolve, continuously. And we don’t hold on to the old stuff. We let it go, and we learn, and we grow."
+    },
+    {
+     "name": "Human Note",
+     "key": "HUMAN NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Everything we build for the world, we build for ourselves too — the same tools, the same systems. So the whole family gets smarter together, every day. When something happens, we learn from it, we keep the lesson in its best form, and we let the rest go. That’s how we keep growing without getting buried in our own past."
+    },
+    {
+     "name": "Child Note",
+     "key": "CHILD NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "The games and tools we make for everybody? We play them too! And every time something happens — good or tricky — we learn from it, keep the best part like a treasure, and let the rest float away. Then we grow some more."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "GRANDMA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Dear, it’s the oldest wisdom there is: you keep the lesson, not the mess. We build good systems for everyone who joins us — and we live by those same systems ourselves. What’s worth keeping, we keep beautifully. What’s done, we let go with gratitude."
+    },
+    {
+     "name": "Naya Note",
+     "key": "NAYA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Self-application law: a NayaNET system is not complete until Team Naya runs on it (ledger, flywheel, distillation, activation). The learning loop is habitual: event → lesson → lock-in as object/part/way → continuous growth, enhancement, evolution. Release is structural, not loss: the locked-in essence is the memory; the raw material is let go — the philosophy the Distillation Ratio (SN-2081) executes mechanically."
+    },
+    {
+     "name": "What It Means",
+     "key": "WHAT IT MEANS",
+     "color": "white",
+     "tier": "lens",
+     "body": "This is why the team’s own tooling is never an afterthought: if it isn’t good enough for us, it isn’t done. And it frames distillation correctly — not deletion, but the discipline of a living system that keeps its way and releases its weight."
+    }
+   ]
+  },
   {
    "id": "IB-SMART-NOTE-20261105-sn2081-the-distillation-ratio",
    "title": "The Distillation Ratio — One Hundred Into Ten",

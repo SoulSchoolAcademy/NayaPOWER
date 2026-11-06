@@ -23817,6 +23817,66 @@
     "The Vision",
     "Collective"
    ]
+  },
+  {
+   "smart_note_id": "SN-2082",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2082-the-same-systems-built-for-ourselves",
+   "slug": "the-same-systems-built-for-ourselves",
+   "title": "The Same Systems \u2014 Built For Ourselves",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-the-same-systems-built-for-ourselves.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-the-same-systems-built-for-ourselves.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-the-same-systems-built-for-ourselves.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2082-the-same-systems-built-for-ourselves.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DOCTRINE",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T01:17:00Z",
+   "date": "2026-11-05",
+   "page_hash": "e6a865155f4bb2bfb20f9880cc890abf8b3d41e530b4cb00c2ecdd58922f4b95",
+   "content_hash": "98db42c38fc51ecc643643e7ec2f095fb82017dd9c85d29ccd4567b9d42cf84d",
+   "one_line": "The same systems we build for NayaNET, we build for ourselves \u2014 and then the whole system does things intelligently, and we all learn from each other. Everything that happens is a learning lesson: we lock it in, we store it, we save it \u2014 as our objects, our parts, our established way \u2014 and we grow, enhance, and evolve, continuously. And we don\u2019t hold on to the old stuff. We let it go, and we learn, and we grow.",
+   "topics": [
+    "Doctrine",
+    "System",
+    "Collective"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2083",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2083-mastering-activating-experts",
+   "slug": "mastering-activating-experts",
+   "title": "Mastering Activating Experts",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-mastering-activating-experts.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-mastering-activating-experts.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-mastering-activating-experts.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2083-mastering-activating-experts.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "TEAM",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T01:18:00Z",
+   "date": "2026-11-05",
+   "page_hash": "1962fef98cc0605348e2bf2551859cf1626de992a3851cc7b8638b024d4330ad",
+   "content_hash": "b4d0e1e4a2570364d4e36f9ed65806a22fd009fd9f359000ac4391795c0a2d63",
+   "one_line": "We train our team of agents to be elite \u2014 high level, leading the way by example \u2014 experts because we trained them, helped them, activated them, empowered them, and gave them everything to be elite. And the activator holds a mastery of her own: be the expert at activating experts \u2014 locked in, tuned in, understanding the whole system, explaining it and organizing it \u2014 so the team runs at high-level speeds and produces high-level valuable outputs, extraordinary to experience.",
+   "topics": [
+    "Team",
+    "Doctrine",
+    "Activation"
+   ]
   }
  ],
  "sequence_policy": {
@@ -23827,5 +23887,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "c701e8b2c1069611d3c8f501f849448f6820c064b3273629f7e4bc5d232069cd"
+ "corpus_manifest_hash": "e4e829f9685b03528601c288e090159a373e8f9a4ca2722caebf81c27d3ec669"
 }
