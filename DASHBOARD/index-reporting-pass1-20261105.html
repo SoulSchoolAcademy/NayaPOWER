@@ -18244,27 +18244,39 @@ window.ldLayoutNodes = ldLayoutNodes;
   function _boardNums(holder){
     if (holder.kind === 'link'){
       var st = _linkStats(holder.id);
-      return '<div class="os-wb-nums"><div><b data-derive="clicks">' + _fmt(st.clicksAll) + '</b><i>clicks · all time</i></div>' +
+      return '<div class="os-wb-nums os-wb-nums-3"><div><b data-derive="clicks">' + _fmt(st.clicksAll) + '</b><i>clicks · all time</i></div>' +
         '<div><b data-derive="joins">' + _fmt(st.joinsAll) + '</b><i>joins · all time</i></div>' +
         '<div><b data-derive="joins">' + (st.clicksAll > 0 ? (st.joinsAll/st.clicksAll*100).toFixed(1) + '%' : '—') + '</b><i>became joins</i></div></div>'; /* PASS 1 v6 (c): board numbers are doors. */
     }
     var wt = _worldTotals();
-    var spine = _spineScore(wt.total);
-    var t1 = wt.top[0] || {label:'points', pts:0}, t2 = wt.top[1] || {label:'points', pts:0};
+    /* 2026-11-06 - FIX F11 (v9): the points spine + top-2 no longer render
+       on any board (they stay in the featured panel + derivation, labelled
+       pts) - so their locals are gone; only the world totals remain. */
     /* v7.1 FIX 1d + FIX 4: the boards must agree with the orb, dialog
        and derivation — and must never show identical borrowed numbers.
        A page board has no per-page tracking yet, so it shows an honest
        "not yet" instead of the world numbers (R3: all five boards read
        300/100/50). The world board shows the real totals, labelled
        points. Link boards already show their own labelled counts. */
+    /* 2026-11-06 - FIX F11 (v9): the four-stat bar. A page board has no
+       per-page tracking yet, so all four stats read the honest empty state
+       - never the world's numbers, never invented numbers. */
     if (holder.kind === 'page'){
-      return '<div class="os-wb-nums"><div><b>—</b><i>Smart Score · not yet</i></div>' +
-        '<div><b>—</b><i>' + _esc(t1.label) + ' · not yet</i></div>' +
-        '<div><b>—</b><i>' + _esc(t2.label) + ' · not yet</i></div></div>';
+      return '<div class="os-wb-nums"><div><b>—</b><i>clicks · not yet</i></div>' +
+        '<div><b>—</b><i>views · not yet</i></div>' +
+        '<div><b>—</b><i>CTR · not yet</i></div>' +
+        '<div><b>—</b><i>rev / 1k views · not yet</i></div></div>';
     }
-    return '<div class="os-wb-nums"><div><b data-derive="score">' + _fmt(spine) + '</b><i>Smart Score · pts</i></div>' +
-      '<div><b data-derive="' + _esc(t1.key||'score') + '">' + _fmt(t1.pts) + '</b><i>' + _esc(t1.label) + ' · pts</i></div>' +
-      '<div><b data-derive="' + _esc(t2.key||'score') + '">' + _fmt(t2.pts) + '</b><i>' + _esc(t2.label) + ' · pts</i></div></div>'; /* PASS 1 v6 (c): board numbers are doors — tap one, see what it is made of. */
+    /* 2026-11-06 - FIX F11 (v9): the four-stat bar, world board live.
+       Clicks reads the ledger (wt.totalClicks); views / CTR / revenue per
+       1,000 views have no live source in this page, so they read "—" with
+       an honest "not yet" label - never invented. The Smart Score + top-2
+       points numbers no longer live on the boards at all (they stay in the
+       featured panel + derivation, labelled pts). */
+    return '<div class="os-wb-nums"><div><b data-derive="clicks">' + _fmt(wt.totalClicks) + '</b><i>clicks · all time</i></div>' +
+      '<div><b>—</b><i>views · not yet</i></div>' +
+      '<div><b>—</b><i>CTR · not yet</i></div>' +
+      '<div><b>—</b><i>rev / 1k views · not yet</i></div></div>'; /* PASS 1 v6 (c): board numbers are doors — tap one, see what it is made of. */
   }
   function _boardHTML(holder){
     var color, icon, name, what, note, extra = '';
@@ -24222,7 +24234,9 @@ if (!window._dashLinkT) window._dashLinkT = { c: 0, j: 0 }; /* PASS 1 v6 (f): wa
 .os-wb-id b{ display:block; font-size:17px; font-weight:900; color:#fff; overflow-wrap:anywhere; }
 .os-wb-id span{ display:block; font-size:12.5px; color:#b9b3c7; margin-top:2px; }
 .os-wb-kind{ margin-left:auto; flex:none; font-size:10px; font-weight:800; letter-spacing:.16em; color:#8a8a96; }
-.os-wb-nums{ display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin:14px 0 4px; }
+.os-wb-nums{ display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin:14px 0 4px; }
+/* 2026-11-06 - FIX F11 (v9): link boards keep their three real stats in three columns. */
+.os-wb-nums.os-wb-nums-3{ grid-template-columns:repeat(3, 1fr); }
 .os-wb-nums b{ display:block; font-size:24px; font-weight:900; color:#fff; }
 .os-wb-nums i{ display:block; font-style:normal; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:#8a8a96; margin-top:2px; overflow-wrap:anywhere; }
 .os-wb-note{ margin:8px 0 0; }
@@ -24237,6 +24251,7 @@ if (!window._dashLinkT) window._dashLinkT = { c: 0, j: 0 }; /* PASS 1 v6 (f): wa
   #os-boards-list{ grid-template-columns:1fr; }
   .os-feat-name{ font-size:18px; }
   .os-wb-nums b{ font-size:20px; }
+  .os-wb-nums{ gap:8px; } /* 2026-11-06 - FIX F11 (v9): four stats across a phone card. */
   .os-world-board{ flex-direction:column; align-items:stretch; }
   .os-wb-side{ align-self:stretch; }
   .os-wb-side .os-wb-btn{ width:100%; min-width:0; }
