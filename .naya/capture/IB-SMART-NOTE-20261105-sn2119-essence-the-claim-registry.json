@@ -1,0 +1,50 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2119",
+  "title": "The Claim Registry: One Number, One Note, Registered or It Isn't Real",
+  "slug": "essence-the-claim-registry",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-claim-registry.md",
+  "tone": "orange",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:37:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A Smart Note number is claimed by writing it into the registry before staging — never by announcement — and the claim holds only if it was scanned, in the same breath, across board, open PR heads, every claim-carrying branch tree, and the commit graph (SN-0151, SN-0171, SN-0184). Same number with different bytes is a fork (SN-0176), precedence runs director-lock > first claim > later claims (SN-0167), and the registry itself is re-derived from disk and reconciled in the permanent gate, because a registry that drifts from the files stops being a registry (SN-0271, SN-0338).",
+    "human_view": "Every note gets one number, and the number is written into the master list before anyone starts writing — not after, not by announcement. If two notes ever end up with the same number, that's a real problem with a written procedure: who had it first, who renames theirs, and what proof closes the case. And the master list itself gets checked against the actual files, regularly, because a list that says one thing while the shelf holds another is worse than no list.",
+    "child_view": "Imagine every drawing you make gets a number, and there's one big book where all the numbers live. You check the book BEFORE you pick a number — not after! If you and your friend both pick number 18, you don't both keep it: the book says who had it first, and the other person picks a new number and writes it in the book too. And a grown-up checks the book against the real drawings, so the book never lies.",
+    "grandma_view": "It's like a land registry, dear. A plot isn't yours because you say so at the fence — it's yours because it's written in the registry, before you build on it. Two deeds to the same plot means one of them is wrong, and there's a proper order for deciding: the owner's own signed lock first, then whoever registered first. And the registry office re-checks its books against the actual land, because a registry that drifts from reality stops being a registry at all.",
+    "ai_view": "Before claiming: scan board + open PR heads AND every claim-carrying branch tree + commit graph; write the registry entry first; treat any scan older than minutes as expired. On collision: apply precedence (director lock > first claim), renumber only your own artifact, clear all three layers again, and close with posted evidence. Never trust a registry field a human typed — if the loader didn't generate it, it is a claim awaiting deletion. Serialize registry writes; assert disk↔registry reconciliation in the permanent gate, not in a one-off audit.",
+    "what_it_means": "Fourteen incident notes from the collision autumn are one system: identity is a registry discipline, not a naming habit. A cold reader holding only this essence can run the whole protocol — claim, scan, precedence, renumber, closure, reconciliation — and can explain why each rule exists by pointing at the night it was learned. The collisions themselves were cheap; the protocol they produced is the asset.",
+    "whats_inside": [
+      "Number identity is global: partitions, branch trees, and the commit graph are one search space; same number + different bytes = fork (SN-0145, SN-0176, SN-0171).",
+      "Claim = registry write before staging; scan→claim is one atomic beat because reads expire in minutes (SN-0151, SN-0184).",
+      "Precedence: director LOCK on main > first open claim > later claims; the displaced lane renumbers only its own artifact, through the full registry (SN-0167, SN-0169).",
+      "The registry is a claim, not evidence: fields are loader-generated or deleted, reconciliation is asserted in the permanent gate, and registry writes are serialized (SN-0271, SN-0250, SN-0338, SN-0339).",
+      "A collision closes on evidence, not announcement (SN-0189)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-2"
+    ],
+    "covers": [
+      "SN-0145",
+      "SN-0151",
+      "SN-0167",
+      "SN-0169",
+      "SN-0171",
+      "SN-0176",
+      "SN-0184",
+      "SN-0186",
+      "SN-0189",
+      "SN-0250",
+      "SN-0271",
+      "SN-0284",
+      "SN-0338",
+      "SN-0339"
+    ]
+  },
+  "page_hash": "bf9bb8e8f285b2d655afba4b24637981be59bd9459dedf08134b37a834db5724",
+  "content_hash": "ec182fbd612aec22373e2eb60eca8d199cf789d00e4babe7c6a7f23fe23f544c"
+}

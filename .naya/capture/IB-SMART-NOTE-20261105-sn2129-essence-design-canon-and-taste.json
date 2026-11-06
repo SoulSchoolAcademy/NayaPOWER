@@ -1,0 +1,40 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2129",
+  "title": "Design Canon and Taste: The Library Is Digested, the Eye Is Trained",
+  "slug": "essence-design-canon-and-taste",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-design-canon-and-taste.md",
+  "tone": "purple",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:37:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Design intelligence here is harvested, not improvised: ten interface-design books distilled into working tunings (SN-0179) and a 40-block corpus standing behind them (SN-0182) — while taste itself refuses to compress into rules and transfers only through build → show → verdict loops, in which a fully canon-compliant room can still be scrapped on sight because compliance is the floor and the director's eye is the ceiling (SN-0193).",
+    "human_view": "The design books were actually read and turned into checkable numbers: button sizes, response times, how many choices at once. But passing every check only gets a design to the door — the director's eye still decides, and a page can pass everything and still be scrapped. Approved words get quoted exactly, not paraphrased, and a button that pretends to do something is worse than no button at all.",
+    "child_view": "The grown-ups read a whole shelf of picture-book experts and wrote down their tricks as rules you can measure, like \"buttons big enough for fingers.\" But even if you follow all the rules, the picture still has to LOOK right to the person it's for — and fake buttons that don't do anything get taken off, because pretending is worse than missing.",
+    "grandma_view": "The cookbooks on the shelf were actually read, dear, and their lessons turned into habits you can check — measures, timings, portions. But a cook knows the recipe passing every test doesn't make the meal: you still taste it, and the head of the house still decides. You'd never serve a pretty plate with nothing on it, either; decoration pretending to be dinner fools no one twice.",
+    "ai_view": "Apply the tunings as computable checks (targets ≥44px, response ≤400ms, options ≤7, chunks ≤4). Treat canon status honestly: CANDIDATE until ratified — do not cite it as governing. Run taste through loops, not arguments: build, show, absorb the verdict, rebuild. Quote approved language byte-exact under its namespace. Delete manufactured actions on sight.",
+    "what_it_means": "Five notes hold the design settlement beneath the director's own design law: a digested library, a standing corpus, an honest-interface rule, and the humility clause — canon is the floor, a trained human eye is the ceiling. The one thing this essence refuses to do is reconcile its own sources' disagreement about the canon's force; that call belongs above the maker's pay grade and is flagged for the verifier and the director.",
+    "whats_inside": [
+      "The book canon is adopted as candidate intelligence with six mechanical tunings; the D1–D8 bar does not move on adoption (SN-0179). The corpus stands captured; its graph is not built without the director's word (SN-0182). The two sources' disagreement on the canon's force is an open conflict, carried unsmoothed.",
+      "Taste transfers through build-show-verdict loops; canon compliance is the floor, the director's eye the ceiling (SN-0193).",
+      "Approved language is quoted verbatim and namespaced (SN-0205); manufactured actions are cut (SN-0203).",
+      "NOT carried here, by the campaign standing-authority rule: the Rich Standard (SN-0241, the director's named design law) and Beautiful ≠ 10/10 (SN-0270, the director's standing evaluation law) stand alone as single-note law; this essence is the library and the taste loop beneath them, never their summary."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-2"
+    ],
+    "covers": [
+      "SN-0179",
+      "SN-0182",
+      "SN-0193",
+      "SN-0203",
+      "SN-0205"
+    ]
+  },
+  "page_hash": "7f7f899cc0b100f59041e991a0d1d9d8d67ba734d561ac0bcf931b6f8237fafe",
+  "content_hash": "64ad4843c4ef3b98fb25a0b187eabf33d46e420694258b72a44e135239e15ccc"
+}

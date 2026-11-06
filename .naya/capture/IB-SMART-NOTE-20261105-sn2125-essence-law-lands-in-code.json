@@ -1,0 +1,44 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2125",
+  "title": "Authorization Fails Closed: Governance That Cannot Self-Extend",
+  "slug": "essence-law-lands-in-code",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-law-lands-in-code.md",
+  "tone": "gold",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:37:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Power in this system is granted narrowly, exercised through rails, and denied loudly: a policy cannot extend itself (SN-0215), a candidate law never governs until every activation condition holds at once (SN-0262), mutations read their grants and fail closed (SN-0223), a director's spoken word authorizes one act and never becomes precedent (SN-0324), and what is uncertain travels honestly labeled CANDIDATE (SN-0325).",
+    "human_view": "A rule isn't real until the machine can't break it — until the wrong action is impossible, not just frowned upon. Turning a system \"on\" is never one switch; it's every condition true at once. Nobody's say-so — even the boss's, even in the moment — becomes a permanent permission afterward; it covers the one thing it covered.",
+    "child_view": "House rules work best when they're built into the house — a gate that won't open the wrong way, not just a sign saying \"don't.\" One key never opens the treasure chest; you need all the keys turned together. \"Mom said I could, that one time\" doesn't mean \"I can always.\" And if you don't know something, you say \"I don't know yet\" on the label — you never write down a guess as if it were a fact.",
+    "grandma_view": "A promise is fine, dear, but a lock is better — the best rules are the ones built into the door itself. No single key, and certainly no single person's word on a busy afternoon, should open everything forever. What's uncertain gets labeled uncertain, plainly.",
+    "ai_view": "Encode every ratified law as transitions that cannot be skipped; refuse single-flag activations by construction and test the refusal. Authenticate policy terms from the canonical record; hard-exclude protected paths. Read grants at mutation time, deny by default with named errors, carry authority refs on outputs. Ship fail-closed repairs with their provisioning sequenced. Verify shipped artifacts at full scope, not harness scope. Key trust on provenance and structure. Log verbal authorizations as single-act, precedent-free. Mark disclosed unknowns CANDIDATE; never upgrade them silently.",
+    "what_it_means": "Nine notes are the governance stack of the era, from constitutional activation down to a classifier's false-positives: power is granted narrowly, exercised through rails, denied loudly, and never self-extended. The director's own doctrines that frame this stack — law-as-code (SN-0269), the ratified Scorecard Law (SN-0342), Learn-Then-Ten-X (SN-0183), do-it-now (SN-0282) — are NOT covered here; under the campaign standing-authority rule they stand alone as single-note law, and this essence is their machinery, not their replacement.",
+    "whats_inside": [
+      "Activation is a full conjunction; no single-flag path exists; candidates never govern (SN-0262).",
+      "Policies cannot self-extend; protected paths are structurally unpromotable (SN-0215).",
+      "Authorization is read from grants and fails closed with named denials; repairs ship with provisioning; shipped artifacts are proof-checked at full scope; trust keys on structure, not strings (SN-0223, SN-0221, SN-0224, SN-0225).",
+      "Verbal authority authorizes the single act only, never precedent (SN-0324); disclosed uncertainty rides as CANDIDATE (SN-0325); consent is granular — wisdom anonymized-collective, identity private (SN-275)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-2"
+    ],
+    "covers": [
+      "SN-0215",
+      "SN-0221",
+      "SN-0223",
+      "SN-0224",
+      "SN-0225",
+      "SN-0262",
+      "SN-0275",
+      "SN-0324",
+      "SN-0325"
+    ]
+  },
+  "page_hash": "96be3daef084b803ddf63faa0f9a7a2b04f1bdc0a11861e539c478fae0cfbb5d",
+  "content_hash": "a710d46c1e94a12e4a6155eb38602c1d2ce02d21197988e79fa90d933de4a2e7"
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2126",
+  "title": "Built Is Not Shipped: Deployment and Integration Truth",
+  "slug": "essence-built-is-not-shipped",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-built-is-not-shipped.md",
+  "tone": "orange",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:37:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Built, shipped, and working are three different numbers, measured on the served surface: 11 tabs, 7 rich rooms, 4 placeholders (SN-0219); parity between deployed and verified is proven before code is touched (SN-0235); the consumer's actual contract outranks any proposed one (SN-0218 over SN-0214); and pipelines verify before they mutate, in enforced order (SN-0352).",
+    "human_view": "\"We built it\" and \"customers can use it\" are different sentences. Walk the actual product: count what's real and what's a placeholder with a nice name. If the live version might not be the version you tested, check that first — before rewriting code that may be fine. And in any automated process that changes production, the safety check goes before the change, every time, in the code's order — not in the order someone remembers.",
+    "child_view": "A drawing of a treehouse isn't a treehouse, and a treehouse with no ladder isn't finished either — you have to climb up and count the parts that really work. If your friend says \"jump in!\", you look before you leap. And if two teachers tell you opposite things in the hallway, you stop and ask until there's one answer — you don't just run faster.",
+    "grandma_view": "A recipe written is not a cake baked, dear, and a cake in your kitchen is not the cake in the shop window until you've looked at both. If the shop cake looks wrong, you check whether it's the same cake before you change the recipe. And no sensible cook puts the roast in before checking the oven works — order matters, and checking afterwards is just finding out what went wrong.",
+    "ai_view": "Report built/shipped/working as three numbers from a live walk. Hash or byte-compare deployed vs verified artifacts before any code change in a parity incident. Read the consumer's mount/call sites before writing or believing an integration contract. Treat prefill as zero completion. Audit pipeline step order for verify-before-mutate and refuse to run pipelines that mutate first. On contradiction, halt the lane, reconcile, and resume with exactly one run.",
+    "what_it_means": "Seven notes defend one border: the border between the repository's story about the system and the system's actual behavior in production. Every rule is a place where that border was crossed unnoticed — placeholders counted as rooms, a proposal mistaken for a contract, a branch moved before its check. A cold reader with this essence inspects the border first, which is where production truth always lives.",
+    "whats_inside": [
+      "Built, shipped, and working are measured separately, on the served surface (SN-0219).",
+      "Parity is proven before code is touched; parity failures are fixed by redeploy (SN-0235).",
+      "The consumer's actual contract is the specification; proposals describe wishes until a consumer mounts them (SN-0218 over SN-0214's proposal).",
+      "Suggestion/prefill is not action; loops close through the smallest real contract (SN-0220).",
+      "Pipelines verify before they mutate, in enforced order (SN-0352).",
+      "Contradiction means pause and reconcile to one clean run — never forward a fresh SHA (SN-0353)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-2"
+    ],
+    "covers": [
+      "SN-0214",
+      "SN-0218",
+      "SN-0219",
+      "SN-0220",
+      "SN-0235",
+      "SN-0352",
+      "SN-0353"
+    ]
+  },
+  "page_hash": "4e2f703052537a86ecd2eb4dff27c79cf263ae2aae43cad6422fd210e9840da1",
+  "content_hash": "9c9f83dd6afeb1e3c3a7f76aaf9fd1305fa7f13c648661a377e8789c662706c2"
+}

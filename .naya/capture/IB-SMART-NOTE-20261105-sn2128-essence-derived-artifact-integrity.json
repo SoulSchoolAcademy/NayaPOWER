@@ -1,0 +1,42 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2128",
+  "title": "Derived Artifacts: Recompute From the Tree, Verify at the Merge",
+  "slug": "essence-derived-artifact-integrity",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-derived-artifact-integrity.md",
+  "tone": "magenta",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:37:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Never verify a derived artifact against the change that produced it: recompute it from the live target tree at a named pin (SN-0238, SN-0216), compare semantically so a volatile timestamp is not a difference (SN-0217), generate only on a clean worktree at the exact committed tree the artifact must describe (SN-0327), and re-verify at the merge commit itself, because the merge creates a new tree that pre-merge proof does not transfer to (SN-0328).",
+    "human_view": "An index or a generated list is only as good as the last time someone rebuilt it from the real files and compared. You never check the list against the paperwork that created it — you recount from the shelf. If the only difference is a timestamp stamp, it's the same item, not a change. And you never take the count from a messy desk: clean tree first, then count.",
+    "child_view": "It's like counting your crayons. You don't trust yesterday's list — you dump the box and count again. And the counter only counts the crayons already in the box — if a new crayon is still in your pocket, the list misses it and still says \"all good.\" And if a crayon just has a new sticker on it, it's still the same crayon.",
+    "grandma_view": "A pantry inventory written from memory will always be wrong, dear. You open the cupboards and count what's actually there. A jar with a new label is still the same jar of jam. And the count only ever sees what's actually been put away — the counter reads the shelf, not the bags still on the floor — so a jar that hasn't been shelved yet never makes the list at all.",
+    "ai_view": "For any derived artifact: recompute from `git ls-tree`/contents at the target ref; exclude self-referential entries by design and say so; normalize volatile stamps before diffing; refuse to generate from a dirty worktree; after any merge touching the artifact, regenerate at the merge commit and compare. Show the check failing without the repair whenever you claim a repair — a one-directional proof is half a proof.",
+    "what_it_means": "Six notes, one principle with four working edges: recompute-at-target, semantic identity, clean-tree generation, merge-commit re-verification. Every stale-index incident in this family was the same failure wearing a different hat — somebody trusted a projection instead of the tree. The tree is the truth; everything derived is a claim about it that must be re-derivable on demand.",
+    "whats_inside": [
+      "Verification of a derived artifact recomputes it from the live target tree at a named pin; the producing change's own blobs are never the evidence (SN-0238, SN-0216).",
+      "Producers regenerate in their landing step; consumers never patch a derived number by hand (SN-0213).",
+      "Drift comparison is semantic: volatile provenance stamps are not differences (SN-0217).",
+      "Regeneration reads the committed tree: the worktree must be clean and HEAD the exact commit the artifact must describe, or the output is a check-green index of the wrong tree (SN-0327).",
+      "Merges touching derived artifacts re-verify at the merge commit — the merge is a new tree, and pre-merge proof does not transfer to it (SN-0328)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-2"
+    ],
+    "covers": [
+      "SN-0213",
+      "SN-0216",
+      "SN-0217",
+      "SN-0238",
+      "SN-0327",
+      "SN-0328"
+    ]
+  },
+  "page_hash": "bce896fd2fb329af95e12e032787a1cdf16222163e1e0cf847a11417d1113099",
+  "content_hash": "5d1ff4a3a66868d76b6f9c8f12f8f86bb8125a146cd48c40b892bd05154c2db5"
+}
