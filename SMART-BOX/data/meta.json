@@ -1,8 +1,10 @@
 {
  "harvested_at": "2026-11-06T02:09:12Z",
  "source": "~/workspace/nitro-smart-box/store/entries.jsonl",
- "sha256": "a805718911b682b3dd45171845aac14820b9c09406fcb653f148ca271cfdbd28",
+ "sha256": "888059e7a0fbc1d546f6021c94f5e333b3852c6ba937141ae3a459d295680a22",
  "count": 2086,
  "next_id": 2087,
- "note": "Snapshot copy only. Canonical data source is the harvested store. A scheduled harvest->KV refresh is owed."
+ "note": "Snapshot copy only. Canonical data source is the harvested store. A scheduled harvest->KV refresh is owed.",
+ "corrected_at": "2026-11-06T02:40:00Z",
+ "corrections": "SB-1941 date 2026-11-06 55:07Z -> 2026-11-06 00:55:07Z (source memory/2026-11-06.md:179 heading 'Act Revision 2 LANDED 00:55:07Z'; harvest dropped the '00:'); links added to 4 of the top-5 featured entries (SB-2079 SN-2089, SB-2007 SN-2077, SB-1954 SN-2084, SB-1941 Act draft); SB-0021 has no filed note. Harvest stamp unchanged; this is a correction, not a re-harvest."
 }
