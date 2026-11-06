@@ -30062,6 +30062,37 @@
     "Learning",
     "Daily Intelligence Report"
    ]
+  },
+  {
+   "smart_note_id": "SN-0027",
+   "intelligent_block_id": "IB-SMART-NOTE-20261106-sn0027-10-highest-value-intelligence-actions",
+   "slug": "10-highest-value-intelligence-actions",
+   "title": "NayaNET: The 10 Highest-Value Intelligence Actions",
+   "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/strategy/SN-0027/IB-SMART-NOTE-20261106-sn0027-10-highest-value-intelligence-actions.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/strategy/SN-0027/IB-SMART-NOTE-20261106-sn0027-10-highest-value-intelligence-actions.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/strategy/SN-0027/IB-SMART-NOTE-20261106-sn0027-10-highest-value-intelligence-actions.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn0027-10-highest-value-intelligence-actions.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DOCTRINE",
+   "captured_at": "2026-11-06",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-power",
+   "registered_at": "2026-11-06T19:48:45Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-06",
+   "page_hash": "53d54a9525962c4e4fa7b447e1a93523010fadfcdf74fe4487d40668eaacaa0d",
+   "content_hash": "22c332ba0f6655d06e9dc972027555b17f6bff8368f0f3f14f32c54833414674",
+   "one_line": "If we get only ten moves right now, which ten create the most real, compounding value for NayaNET and the collective? The answer is not ten random features. It is to strengthen the system that allows everything else to work together. (1) Define the One Grand Mission \u2014 NayaNET exists to help people build and connect their worlds, share and compound valuable intelligence, and create powerful, beautiful smart apps and spaces that make human life more capable, connected, organized, and free. (2) Make Project Intelligence the living building blueprint \u2014 a complete intelligence packet for every app, so a capable Naya can open one record and move the project forward without asking questions whose answers are already known. (3) Stop building isolated apps \u2014 build the shared Naya system: one truth, many projections, with shared identity, people, spaces, notes, projects, lists, mail, library, ledger, reports, and design language. (4) Build the Smart App Factory, not just smart apps \u2014 turn the design language into reusable elite parts with anatomy, states, rules, and verification, so no Naya has to reinvent a Mercedes. (5) Make Naya Design a language agents can actually speak \u2014 codify Elevated, Alive, Active Intelligence into observable decisions, so taste scales. (6) Connect the intelligence loop: capture, learn, use, prove \u2014 experience becomes a Smart Note, the note changes a future decision, and the system never bills the collective twice for the same lesson. (7) Replace waiting with intelligent flow \u2014 waiting is not a state; every open item is acting, verifying, blocked, needs human authority, or unknown with a next action to discover the answer. (8) Build the NayaNET Map \u2014 a living visual map of the mission, the network, the worlds, the apps, the flows, and the status, so no one optimizes one room while breaking the house. (9) Define what done means and make progress computed \u2014 planned is not built is not tested is not verified is not production-proven; the receipt comes before the report, and every score traces to evidence. (10) Build for the human's world, not for the software's features \u2014 organize around my world, my people, my intelligence, my work, my business, my spaces, my communications, my creations, my growth, my network. The order of execution: mission first, then the blueprint, then the factory and the design language, then the shared architecture and the learning loop, then the map and computed proof, then flow and human value continuously. The deepest lesson: the highest-value thing NayaNET can become is a living system for turning human intention into organized action, valuable intelligence, connection, creation, learning, and improvement. The highest-leverage move is number two, the Project Intelligence Packet, because it becomes the universal handoff between Shawn's vision and an army of Nayas capable of executing it.",
+   "topics": [
+    "System",
+    "Doctrine",
+    "Strategy"
+   ]
   }
  ],
  "sequence_policy": {
@@ -30072,5 +30103,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "a74381d500d79bbe71ce8777b70f3efd87b6ab04da396905bcb2b8f37d71dff0"
+ "corpus_manifest_hash": "4ff87a21d36c44fea358be1d221caca42f9f0038664a5d729ae0f7cd8d03c586"
 }
