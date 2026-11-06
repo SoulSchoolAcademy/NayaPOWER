@@ -30178,8 +30178,8 @@
    "registered_at": "2026-11-06T21:05:00Z",
    "directed_by": "Shawn Vibert",
    "date": "2026-11-06",
-   "page_hash": "afa8cea24d87d90235f330c70530d0e202007f82a9b9d4faf051dc0880c633f3",
-   "content_hash": "78a47ba2250337ef99cba7718f4b611a24f69e306bd021781ee4a5578b569681",
+   "page_hash": "52b71ceda33343f670443c006741e9c29dc5a00109360bf53ca5d258b19e1731",
+   "content_hash": "b0f9d7e2e0fb4fc14c4183d820c817fc3672bcfce7c788e21d5be1092d6b6515",
    "one_line": "The pricing page gets two banners, and they are not decoration \u2014 they are the map of NayaNET in one image, twice. Shawn proposed it on 2026-11-06 (12:58 PST), sharing four generated images of the civilization and asking for one beautiful banner that paints the whole picture \u2014 the digital civilization, the worlds, the apps, everything \u2014 with Naya presenting it, at the top and the bottom of the pricing page, so a visitor SEES what they are getting. Resolve described a first composition back; Shawn refined it at 13:02 PST into the locked spec this note files. Both banners are full-bleed on obsidian, from the same family as the banners done before \u2014 dimensional, lit like real objects. The TOP banner is the headline: the map of NayaNET as a living constellation \u2014 the Hub glowing at the heart, the four worlds (Personal, Business, Space, Dashboard) lit like planets and joined by threads of spectrum light, the nine orbs hanging above them like stars, the Smart Ledger running underneath as a thin golden chain, the eleven-color spectrum arc across the very top edge \u2014 and in the corner, Naya's portrait in a circular obsidian frame, her hand open toward the world, presenting it: this is it. The BOTTOM banner is the close: the same world, the same picture, set right above the three plan buttons, with the page copy beside it \u2014 \"this is yours. Pick your power.\" \u2014 then Power, Pro, Max, side by side. The chart between the banners is the logic; the banners are the feeling. Feeling first, logic second, feeling again right where the button is \u2014 because the eye remembers the first and the last thing it sees, so the world is both.",
    "topics": [
     "Design",
@@ -30258,5 +30258,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "b3ae795da34bd6829ad21ac4fa0b63425c86cee5b1cdab5b981ec4680a339b84"
+ "corpus_manifest_hash": "e8d4277ad1092e40f060e0606dfc6fef6d5cb552ef4466ca966a252a7d67ae9d"
 }
