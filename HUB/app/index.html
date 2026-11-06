@@ -3823,14 +3823,29 @@ window.NayaContent = {
    re-point the global every consumer already reads. If the fetch fails,
    the bake still serves — nothing breaks. Preserve this block across
    rebakes; it is what keeps the feed fresh forever. */
-fetch('/feed-live.json').then(function(r){ return r.json(); }).then(function(d){
-  if(!d || !Array.isArray(d.notes) || !d.notes.length) return;
-  window.NayaFeedIntelligence = { notes: d.notes, ref: 'live-registry' };
-  try {
-    if (window.NayaRouter && location.hash.indexOf('/hub/feed') > -1) { window.NayaRouter.navigate('/hub/feed'); }
-    window.dispatchEvent(new HashChangeEvent('hashchange'));
-  } catch(e){}
-}).catch(function(){});
+(function(){
+  var tries=0;
+  function tryLive(){
+    tries++;
+    var ctl=null, timer=null;
+    try{ ctl=new AbortController(); }catch(e){}
+    if(ctl){ timer=setTimeout(function(){ try{ ctl.abort(); }catch(e){} }, 15000); }
+    var p=ctl?fetch('/feed-live.json',{signal:ctl.signal}):fetch('/feed-live.json');
+    p.then(function(r){ if(!r.ok) throw new Error('live fetch '+r.status); return r.json(); }).then(function(d){
+      if(timer) clearTimeout(timer);
+      if(!d || !Array.isArray(d.notes) || !d.notes.length) throw new Error('live feed empty');
+      window.NayaFeedIntelligence = { notes: d.notes, ref: 'live-registry' };
+      try {
+        if (window.NayaRouter && location.hash.indexOf('/hub/feed') > -1) { window.NayaRouter.navigate('/hub/feed'); }
+        window.dispatchEvent(new HashChangeEvent('hashchange'));
+      } catch(e){}
+    }).catch(function(){
+      if(timer) clearTimeout(timer);
+      if(tries<3){ setTimeout(tryLive, 5000); }
+    });
+  }
+  tryLive();
+})();
 </script>
 <script>
 /* Live feed override v2 face rules (Resolve, 2026-11-05): companion to the
@@ -3845,10 +3860,14 @@ fetch('/feed-live.json').then(function(r){ return r.json(); }).then(function(d){
     if(document.getElementById(STYLE_ID)) return;
     var st=document.createElement('style'); st.id=STYLE_ID;
     st.textContent=[
-      '.intel-board .ib-subtitle{font-size:20px !important;background:#050607;border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:14px 18px;box-shadow:inset 0 1px rgba(255,255,255,.18),0 10px 26px rgba(0,0,0,.65);line-height:1.5}',
+      '.intel-board .ib-subtitle{font-size:20px !important;background:transparent !important;border:0 !important;box-shadow:none !important;color:#fff;padding:14px 18px;line-height:1.5}',
+      '.intel-board .ib-nutshell{font-size:20px !important;background:transparent !important;border:0 !important;border-left:0 !important;border-radius:0 !important;box-shadow:none !important;color:#fff}',
+      '.intel-board .ib-nutshell p{font-size:20px !important;color:#fff;background:transparent !important}',
+      '.intel-board .ib-layer{background:transparent !important;border:0 !important;box-shadow:none !important}',
       '.sh-nutshell{font-size:20px !important;line-height:1.55}',
-      '.intel-board{opacity:.84;transition:opacity .7s ease,box-shadow .7s ease}',
-      '.intel-board.rv-lit{opacity:1;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff)}'
+      '.intel-board{opacity:.84;background:#050607 !important;transition:opacity .7s ease,box-shadow .25s,transform .25s cubic-bezier(.16,.84,.22,1)}',
+      '.intel-board.rv-lit{opacity:1;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff)}',
+      '.intel-board:hover,.intel-board:active{opacity:1 !important;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff) !important}'
     ].join('\n');
     (document.head||document.documentElement).appendChild(st);
   }
@@ -3864,11 +3883,11 @@ fetch('/feed-live.json').then(function(r){ return r.json(); }).then(function(d){
     try{
       if(window.NayaContent && window.NayaContent.meta && newest){ window.NayaContent.meta.as_of=newest; }
       var line=document.getElementById('feed-provenance-line');
-      if(line && /not live/i.test(line.textContent||'')){
-        var d=newest?new Date(newest):new Date();
-        var when=isNaN(d.getTime())?'today':d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
-        line.textContent='Intelligence live \u2014 '+count+' Smart Notes \u00b7 updated '+when;
-      }
+      if(!line) return;
+      var d=newest?new Date(newest):new Date();
+      var when=isNaN(d.getTime())?'today':d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
+      var want='Intelligence live \u2014 '+count+' Smart Notes \u00b7 updated '+when;
+      if(line.textContent!==want){ line.textContent=want; }
     }catch(e){}
   }
   var liveCount=0, liveNewest=null, mo=null;
@@ -3878,9 +3897,12 @@ fetch('/feed-live.json').then(function(r){ return r.json(); }).then(function(d){
     var tries=0;
     var iv=setInterval(function(){
       tries++; currentNotes();
-      var f=document.getElementById('hubFeed');
-      var done=f && f.getAttribute('aria-busy')==='false' && f.querySelector('.intel-board');
-      if(done || tries>=60){ clearInterval(iv); fixProvenance(liveCount, liveNewest); armAlive(); }
+      var boards=document.querySelectorAll('.intel-board').length;
+      var liveNow=window.NayaFeedIntelligence && window.NayaFeedIntelligence.ref==='live-registry';
+      if(boards){ fixProvenance(liveCount, liveNewest); armAlive(); }
+      var line=document.getElementById('feed-provenance-line');
+      var shown=line && liveCount && line.textContent.indexOf(String(liveCount))>-1;
+      if((liveNow && shown) || tries>=150){ clearInterval(iv); }
     }, 400);
   }
   face(); watch();
@@ -4377,7 +4399,6 @@ window.BoardActions = (() => {
     wrap.setAttribute('aria-label', 'Board actions');
     const store = read();
     const defs = [
-      ['\u25B6 NAYA VOICE', 'naya-voice', 'Hear Naya read this intelligence'],
       ['\uFF0B CREATE SPACE', 'create-space', 'Create a smart space from this intelligence'],
       ['\u2605 FAVORITE', 'favorite', 'Mark as favorite'],
       ['SAVE', 'save', 'Save this intelligence'],
@@ -6361,8 +6382,7 @@ window.NayaJewels = (() => {
       lh.setAttribute('aria-expanded', L.tier === 'primary' ? 'true' : 'false');
       lh.innerHTML =
         layerJewel(L.name, layerColorFor(L.name)) +
-        '<b>' + esc(L.name) + '</b>' +
-        '<button class="ib-layer-play" data-layer-name="' + esc(L.name) + '" aria-label="Hear Naya read ' + esc(L.name) + '" title="Play in Naya\'s voice"><span>\u25B6</span></button>';
+        '<b>' + esc(L.name) + '</b>';
       const lb = el('div', 'ib-layer-body');
       lb.innerHTML = md(L.body);
       if (L.tier !== 'primary') lb.hidden = true;
