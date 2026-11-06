@@ -6070,6 +6070,8 @@ button.os-ld-node .os-ld-n{
   background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);color:#fff;
   font-size:26px;line-height:1;cursor:pointer;z-index:6;}
 .os-sales-x:hover{border-color:#e84fff;box-shadow:0 0 24px rgba(232,79,255,.45);}
+/* 2026-11-06 — FIX 7: a drill-down's × is never covered — it rides above every sibling in its view. */
+.os-sales-view .os-sales-x,.os-invites-view .os-invites-x,.os-shares-view .os-shares-x,.os-joins-view .os-joins-x,.os-notes-view .os-notes-x,.os-comments-view .os-comments-x,.os-likes-view .os-likes-x,.os-creations-view .os-creations-x,.os-saves-view .os-saves-x,.os-smartlink-view .os-smartlink-x{z-index:1000;}
 .os-sales-pills{position:absolute;right:22px;top:50%;transform:translateY(-50%);
   display:flex;flex-direction:column;gap:10px;z-index:6;}
 .os-sales-pills button{background:linear-gradient(180deg, rgba(40,40,55,.9) 0%, rgba(15,15,22,.9) 100%);
@@ -9005,6 +9007,15 @@ NF.register(UNIT, {
     if (!skipPush){ try { history.pushState({osView:name}, '', '#'+name); } catch(e){} }
   }
   window.addEventListener('popstate', function(e){
+    /* 2026-11-06 — FIX 7: browser Back closes an open drill-down instead of leaving the page. The drill-down pushed its own state on open; popping it closes the dialog and stays put. */
+    try{
+      var _od = document.querySelector('.os-sales-view.open, .os-joins-view.open, .os-notes-view.open, .os-likes-view.open, .os-comments-view.open, .os-shares-view.open, .os-creations-view.open, .os-saves-view.open, .os-smartlink-view.open, .os-invites-view.open');
+      if (_od){
+        if (typeof window._closeOpenDrill === 'function') window._closeOpenDrill();
+        else { _od.classList.remove('open'); _od.setAttribute('aria-hidden','true'); document.body.classList.remove('viewport-focus'); }
+        return;
+      }
+    }catch(_pe){}
     var v=(e.state && e.state.osView) || (location.hash||'').replace('#','');
     showView(VIEWS.indexOf(v)>=0?v:'home', true);
   });
@@ -16820,6 +16831,8 @@ function smartlinkViewRender(){
   for(var i=0;i<pills.length;i++) pills[i].classList.toggle('on', pills[i].getAttribute('data-sw')===_smartlinkWindow);
 }
 function smartlinkViewOpen(brand, dest){
+  /* 2026-11-06 — FIX 7: one drill-down at a time — close any open one before this opens. */
+  try{ if (typeof window._closeOpenDrill === 'function') window._closeOpenDrill(); }catch(e){}
   _smartlinkWindow=({hourly:'hour',daily:'day',weekly:'week',monthly:'month'})[window._ldWindow]||'all';
   if(brand){ var b=document.getElementById('os-smartlink-brand'); if(b) b.textContent=brand; }
   if(dest){ var dt=document.getElementById('os-smartlink-dest'); if(dt) dt.textContent='\u2192 '+dest; }
@@ -16827,6 +16840,8 @@ function smartlinkViewOpen(brand, dest){
   var v=document.getElementById('os-smartlink-view');
   if(v){ v.classList.add('open'); v.setAttribute('aria-hidden','false'); }
   document.body.classList.add('viewport-focus');
+  /* 2026-11-06 — FIX 7: the open pushes history so browser Back closes this dialog instead of leaving the page. */
+  try{ history.pushState({osDrill:'smartlink'}, '', '#drill-smartlink'); }catch(e){}
 }
 function smartlinkViewClose(){
   var v=document.getElementById('os-smartlink-view');
@@ -17015,24 +17030,32 @@ window._setDialogPts = function(totalNEl, key, count){
     lab.textContent = m.base + ' · ' + (c*m.value).toLocaleString() + ' pts';
   }catch(e){}
 };
+/* 2026-11-06 — FIX 7: one drill-down open at a time, and Back / browser-Back close it.
+   A second drill-down paints over the first (same z-index 10001, later in DOM) and
+   covers its ×; the global Back only removed viewport-focus and left the fullscreen
+   dialog covering the screen. The closer below is the single place that shuts a drill. */
+window._closeOpenDrill = function(){
+  try{
+    var views = document.querySelectorAll('.os-sales-view.open, .os-joins-view.open, .os-notes-view.open, .os-likes-view.open, .os-comments-view.open, .os-shares-view.open, .os-creations-view.open, .os-saves-view.open, .os-smartlink-view.open, .os-invites-view.open');
+    for (var i = 0; i < views.length; i++){
+      var id = views[i].id || '';
+      var key = id.replace(/^os-/, '').replace(/-view$/, '');
+      var fn = window[key + 'ViewClose'];
+      if (typeof fn === 'function'){ try{ fn(); }catch(e){} }
+      else { views[i].classList.remove('open'); views[i].setAttribute('aria-hidden', 'true'); }
+    }
+    return views.length;
+  }catch(e){ return 0; }
+};
 function ldOpenNode(key, noFocus){
-  /* 2026-11-02 — Sales gets the full gauge+orbs drill-down view, not the drawer. */
-  if(key==='sales'){ salesViewOpen(); return; }
-  /* 2026-11-02 — Invites gets the full gauge+orbs drill-down view, not the drawer. */
-  if(key==='invs'){ invitesViewOpen(); return; }
-  /* 2026-11-02 — Saves gets the full gauge+orbs drill-down view, not the drawer. */
-  if(key==='saves'){ savesViewOpen(); return; }
-  if(key==='likes'){ likesViewOpen(); return; }
-  /* 2026-11-02 — Creations gets the full gauge+orbs drill-down view, not the drawer. */
-  if(key==='posts'){ creationsViewOpen(); return; }
-  /* 2026-11-02 — Shares gets the full gauge+orbs drill-down view, not the drawer. */
-  if(key==='shares'){ sharesViewOpen(); return; }
-  /* 2026-11-02 — Comments gets the full gauge+orbs drill-down view, not the drawer. */
-  if(key==='comments'){ commentsViewOpen(); return; }
-  /* 2026-11-02 — Smart Notes gets the full gauge+orbs drill-down view, not the drawer. */
-  if(key==='notes'){ notesViewOpen(); return; }
-  /* 2026-11-02 — Joins gets the full gauge+orbs drill-down view, not the drawer. */
-  if(key==='joins'){ joinsViewOpen(); return; }
+  /* 2026-11-06 — FIX 7: one drill-down at a time (a second view paints over the first and covers its ×), and the open pushes history so browser Back closes it instead of leaving the page. The nine orb keys below each get the full gauge+orbs drill-down view, not the drawer. */
+  var _drill = {sales:salesViewOpen, invs:invitesViewOpen, saves:savesViewOpen, likes:likesViewOpen, posts:creationsViewOpen, shares:sharesViewOpen, comments:commentsViewOpen, notes:notesViewOpen, joins:joinsViewOpen}[key];
+  if (_drill){
+    try{ if (typeof window._closeOpenDrill === 'function') window._closeOpenDrill(); }catch(e){}
+    _drill();
+    try{ history.pushState({osDrill:key}, '', '#drill-'+key); }catch(e){}
+    return;
+  }
   var node = null;
   for (var i=0;i<LD_NODES.length;i++) if (LD_NODES[i].key===key) node = LD_NODES[i];
   if (!node) return;
@@ -17142,6 +17165,8 @@ document.addEventListener('DOMContentLoaded', function(){
      the way the toggle does. ldCloseDrawer() itself is untouched (Escape
      and the drawer's own close button keep their drawer-only meaning). */
   if (back) back.addEventListener('click', function(){
+    /* 2026-11-06 — FIX 7: Back exits an open drill-down first. ldCloseDrawer only removes viewport-focus — the fullscreen drill-down (position:fixed, z-index 10001) stayed open and covering the screen, trapping the user. */
+    try{ if (typeof window._closeOpenDrill === 'function') window._closeOpenDrill(); }catch(e){}
     ldCloseDrawer();
     document.body.classList.remove('hero-mode');
     var ht = document.getElementById('hero-toggle');
