@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-06 22:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-06 22:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30524,6 +30524,12 @@ _Last updated: 2026-11-06 22:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261106-1434 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor run 2026-11-06 14:34 PST - claim sweep of 31 unclaimed gap follow-ups, all refused, stall receipt filed
+
+**Evidence:** VERIFIED this tick on live workspace bytes (fresh window; the only unscored receipt; backlog after this tick = 0 of 2127 receipts): receipt's 31 named briefs are set-equal to the 31 brief-*.md files on disk (31/31, no diffs either way; the 5 extra `brief-*` matches in the receipt are prose glob patterns, not brief names); rotation queued = 31, set-
 
 ### ✅ 20261106-1331 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
