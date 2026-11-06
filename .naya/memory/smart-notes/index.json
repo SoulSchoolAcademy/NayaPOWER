@@ -30248,6 +30248,37 @@
     "Product",
     "Essence"
    ]
+  },
+  {
+   "smart_note_id": "SN-2209",
+   "intelligent_block_id": "IB-SMART-NOTE-20261106-sn2209-the-supercharger",
+   "slug": "the-supercharger",
+   "title": "The Supercharger",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-the-supercharger.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-the-supercharger.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-the-supercharger.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn2209-the-supercharger.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "PRODUCT",
+   "topic": "POSITIONING",
+   "captured_at": "2026-11-06",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T21:43:00Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-06",
+   "page_hash": "f0433447b5b623fff693f4cc9366c12697a4aa8f5c833d78abb2393e2af6eb94",
+   "content_hash": "fd172fd74350cee049842384dcfce4fdbefb2026a2bd6db022e28442ebedfc8e",
+   "one_line": "NayaNET is a supercharger. You don't replace the AI \u2014 you bolt NayaNET onto her, and she connects to a supercharged network where everybody is plugged into the same high-performance machine: more memory, more intelligence, more people, more proof, flowing into every action. The same engine, supercharged. And the machine has a signature instrument: the speedometer \u2014 the Smart Score gauge on the Dashboard, the first thing you see when you log in, reading your whole world as speed. Shawn named the metaphor on 2026-11-06: \"putting a supercharger on an AI and then connecting her to a supercharged network that everybody was connected in \u2014 like a high performance machine... our signature piece is probably the speedometer.\"",
+   "topics": [
+    "Positioning",
+    "Product",
+    "Vision"
+   ]
   }
  ],
  "sequence_policy": {
@@ -30258,5 +30289,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "e8d4277ad1092e40f060e0606dfc6fef6d5cb552ef4466ca966a252a7d67ae9d"
+ "corpus_manifest_hash": "568d4a9b6e5f879ec044162e1032b671217ec9ffdc122236f461f8ce56b3b1f0"
 }

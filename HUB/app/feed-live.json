@@ -1,6 +1,6 @@
 {
- "generated_from": "registry@e8d4277a",
- "count": 314,
+ "generated_from": "registry@568d4a9b",
+ "count": 315,
  "notes": [
   {
    "id": "IB-SMART-NOTE-20261106-sn0053-rebuilding-the-internet-itself",
@@ -16742,6 +16742,13 @@
    "created": "2026-11-06T21:26:00Z",
    "created_at": "2026-11-06T21:26:00Z",
    "subtitle": "NayaNET is not another app. It is people rebuilding the internet itself — smarter and better. Everything automated, done for you, beautiful, adaptable: the system optimizes itself around who you are, what you're into, and what your business is about. And the people in your world are right there with you, privately — collaborating, teaming up, video chatting, sharing a feed of intelligence you can save and capture, building mastermind groups, embedding intelligence into everything — or simply belonging to the collective network. The future is now."
+  },
+  {
+   "id": "IB-SMART-NOTE-20261106-sn2209-the-supercharger",
+   "title": "The Supercharger",
+   "created": "2026-11-06T21:43:00Z",
+   "created_at": "2026-11-06T21:43:00Z",
+   "subtitle": "NayaNET is a supercharger. You don't replace the AI — you bolt NayaNET onto her, and she connects to a supercharged network where everybody is plugged into the same high-performance machine: more memory, more intelligence, more people, more proof, flowing into every action. The same engine, supercharged. And the machine has a signature instrument: the speedometer — the Smart Score gauge on the Dashboard, the first thing you see when you log in, reading your whole world as speed. Shawn named the metaphor on 2026-11-06: \"putting a supercharger on an AI and then connecting her to a supercharged network that everybody was connected in — like a high performance machine... our signature piece is probably the speedometer.\""
   }
  ]
 }
