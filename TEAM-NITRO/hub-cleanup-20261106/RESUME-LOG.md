@@ -28,7 +28,7 @@ Defined done: blind Verifier PASS with screenshots + NEW PR open (link + branch 
 - Read-back verified: raw branch file sha256 `b6553004…`, byte-identical to `cleaned-index.html`. Compare main...branch: ahead 1, behind 0, 1 file, +1 / −57 — the patch is exactly the three deletions + the 1-line `mainShow` change.
 - **PR #3255 OPEN: https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3255** — state open, merged false, 1 commit, +1/−57, 1 file changed. No merge, no deploy (Shawn's hand).
 - Exec write path HEALTHY: the 7,335,402B PUT payload wrote and verified fine — the EPERM flake has healed.
-- GitHub-first: VERIFY-REPORT.md + this RESUME-LOG.md filed to `TEAM-NITRO/hub-cleanup-20261106/` on main (see below), read-back verified.
+- GitHub-first: VERIFY-REPORT.md filed to `TEAM-NITRO/hub-cleanup-20261106/` on main (commit `ac698bf1`, read-back verified sha256 `c6e22e8d…`) + this RESUME-LOG.md filed alongside it (commit `383d2826`, read-back verified sha256 `c5c15d84…`).
 
 ## DEFINED DONE — MET
 - ✅ Blind Verifier PASS with screenshots (24, `verify/`)
