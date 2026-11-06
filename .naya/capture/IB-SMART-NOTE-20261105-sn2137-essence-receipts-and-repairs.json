@@ -1,0 +1,54 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2137",
+  "title": "Receipts and Repairs: The Record Is the Work",
+  "slug": "essence-receipts-and-repairs",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-receipts-and-repairs.md",
+  "tone": "sapphire",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:45:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A write is complete at its receipt, not its save (SN-0588); a receipt is honest when it names what was measured, what was only cited, and what remains unknown (SN-0446); a repair is disciplined when it proves impossibility with exact numbers instead of fabricating a fix (SN-0357), re-pins tests to the new invariant instead of weakening the guard (SN-0359), and corrects the record by appending — never by silent overwrite (SN-0448, SN-0398). Every verdict carries two ledgers: defects, and the framing residuals that fence what the verdict may be cited as (SN-0532).",
+    "human_view": "This is the block's bookkeeping soul: how a fast team keeps a record it can still trust tomorrow. The pattern across all twelve notes is that the record is not paperwork after the work — the record IS the work's durable half. Receipts that say exactly what was measured and what wasn't, corrections appended instead of airbrushed, repairs that would rather declare impossibility than fabricate a hash, verdicts that fence themselves with their own limitations. A cold successor inherits not just conclusions but the means to re-derive them — or to see precisely where derivation stops.",
+    "child_view": "Imagine a class where every student keeps a lab notebook. The rules: when you finish an experiment, you get a stamped receipt — no stamp, it didn't happen. If you recount your marbles and get a different number, you write BOTH numbers and why (\"I counted the corner one this time\") — you never erase. If your friend checks your work, they don't just read your notebook; they look at the actual marbles and say exactly which pages they checked and which they didn't. And if the teacher's plant-watering chart has a blank day, that's a problem to fix that day — a diary with holes can't prove anything.",
+    "grandma_view": "Dear, it's the discipline of a good bookkeeper in a family business: every sale gets a receipt, every correction gets a new line with a reason — never an eraser — and the daily takings are written down daily, because a ledger reconstructed from memory next week is fiction. When the bank statement and the cabinet disagree, you note it for the bookkeeper; you don't sneak in and alter her books. And when a bill truly cannot be paid honestly, you say so with the figures shown, instead of cooking them.",
+    "ai_view": "On every receipt and repair: prove impossibility numerically before declaring it, and leave the bytes untouched when honesty forbids the fix (SN-0357); re-pin, never weaken (SN-0359); isolate batch failures per item and record them loudly (SN-0366); classify before closing anything in a cleanup (SN-0397); kill stale claims by live re-measurement in the same venue (SN-0398); treat hash hits as reread orders and name drift by class (SN-0424); write relay receipts that re-measure pins and declare the cited-not-rerun line (SN-0426, SN-0446); append corrections with causes (SN-0448); ship both ledgers with every verdict (SN-0532); feed trend instruments daily (SN-0577); and close every write at its receipt, repairing authority without widening it (SN-0588).",
+    "what_it_means": "Twelve notes make record-keeping a branch of engineering: receipts with declared scope, corrections with causes, verdicts with fences, repairs with proofs — including proofs that no honest repair exists. A cold reader holding only this essence can write a receipt the next seat can trust, repair without corrupting the record that proves the repair, and inherit any claim in this block knowing exactly how far its evidence reaches.",
+    "whats_inside": [
+      "Impossibility is proven with exact numbers and declared — never repaired by fabrication or baseline-bumping (SN-0357).",
+      "Repairs re-pin to the new invariant; weakening the guard is scored and rejected (SN-0359).",
+      "Batch pipelines isolate failures per item: one malformed input never shelves the batch (SN-0366).",
+      "Cleanup retires authority, not records; burdens route by lifecycle classification, never mass-close (SN-0397).",
+      "Stale external-state claims are killed by live re-measurement, publicly, in the same venue (SN-0398).",
+      "A hash hit earns a runtime reread; drift is named by class; heals are proven by failure shape (SN-0424).",
+      "Relay receipts re-measure pins, declare cited-not-rerun, and carry the gaps in the same breath (SN-0426, SN-0446).",
+      "Re-measurements append with their cause; records are never silently corrected (SN-0448).",
+      "Every verdict ships two ledgers: defects and framing residuals (SN-0532).",
+      "Trend instruments are fed daily or the gap is repaired same-day (SN-0577).",
+      "A write completes at its receipt; silent receipt paths are defects (SN-0588)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-3"
+    ],
+    "covers": [
+      "SN-0357",
+      "SN-0359",
+      "SN-0366",
+      "SN-0397",
+      "SN-0398",
+      "SN-0424",
+      "SN-0426",
+      "SN-0446",
+      "SN-0448",
+      "SN-0532",
+      "SN-0577",
+      "SN-0588"
+    ]
+  },
+  "page_hash": "4cee2f157ece3f0d39bd8c65bc04d46d0fc1d9a1522ce211c6cda54f16455308",
+  "content_hash": "0794be194c35b672c469457b6712571ac833c6844ae1edd4ce0268cb73550df3"
+}

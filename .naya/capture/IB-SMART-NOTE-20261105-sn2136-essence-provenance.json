@@ -1,0 +1,50 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2136",
+  "title": "Provenance: Know Where the Thing Lives",
+  "slug": "essence-provenance",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-provenance.md",
+  "tone": "purple",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:45:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Every claim about a thing depends on knowing where the thing authoritatively lives — and this block caught each way that knowledge fails: a document \"lost\" that was sitting unmerged on a recovery branch (SN-0499), a live page whose source exists in no repo (SN-0501), a ratified contract that lived only on an unmerged branch while memory placed it on main (SN-0451), a number naming two different notes (SN-0545), a ledger claiming a migration the unreachable database alone could settle (SN-0445). The discipline: read the canonical store before classifying (SN-0411), re-anchor every cited artifact on the live tip, and treat the registry as the identity authority — resolving collisions by renumbering, never deletion, never a second entry (SN-0545).",
+    "human_view": "Before you can fix, verify, or even argue about anything, you have to know where it lives and which copy is the real one. This block is a catalog of what happens when that knowledge is assumed instead of proven: audits run against contracts that weren't on main, losses mourned over documents sitting in a branch, fixes prepared for pages nobody could source, a database whose truth nobody on the team could reach. The discipline that emerges — anchor on the live tip, read the canonical store, let the registry name things, and say UNKNOWN when the truth is out of reach — is the quiet foundation under every louder virtue in this corpus.",
+    "child_view": "Imagine a big library. A book can be \"missing\" three different ways: it's on a cart waiting to be shelved (not lost!), it's in a different building entirely (you have the wrong address), or two books got the same number sticker (now nobody knows which is which). And some rooms only the librarian may enter — if you can't go in, the honest answer is \"I don't know,\" never a guess. These notes teach you to check the cart, check the address, trust the master list for names, and never pretend you saw inside the locked room.",
+    "grandma_view": "Dear, it's the household wisdom of the master ledger and the deed box: the copy in the drawer is a claim; the original in the vault is the truth. When they disagree, you go to the vault — or you say plainly that you cannot, and ask the one person who can. You never rewrite another person's ledger to match your guess, and you never throw away a document just because its number duplicates another's — you give it its own number and keep the story straight.",
+    "ai_view": "On any provenance question: read the canonical store before classifying (SN-0411); expect the tripwire to bind every commit equally and repair orphans without canonizing them (SN-0432); re-anchor cited artifacts on the live tip (SN-0451); mark unreachable truth UNKNOWN and route it to the director's query (SN-0445); diff future security scans against the recorded baseline before claiming improvement (SN-0455); keep continuity on the one canonical surface and name exclusions explicitly (SN-0476); run the removal-commit → branch-enumeration → blob-verify order before declaring anything lost (SN-0499); stop and ship the gating question when the source is unverified (SN-0501); resolve number collisions by owner renumbering under the registry's authority (SN-0545); and carry operative declarations with their quoted basis and their challenges intact (SN-0433).",
+    "what_it_means": "Ten notes define the corpus's geography: where truth lives (the canonical store, the live tip, the registry, the production database), how each location is reached (re-anchoring, full-row reads, the director's query), and what honesty requires when a location is unreachable or disputed (UNKNOWN, a held decision, a preserved tension). A cold reader holding only this essence can locate — or honestly fail to locate — anything the system claims to know.",
+    "whats_inside": [
+      "A replay conflict is classified against the canonical store's actual contents, never from the error alone (SN-0411).",
+      "Direct-to-main content creates registry orphans regardless of who committed it; repairs are bookkeeping-exact and never canonize the anomaly (SN-0432).",
+      "Cited artifacts are re-anchored on the live tip before use — memory's path claims are leads, not evidence (SN-0451).",
+      "Unobservable truth stays UNKNOWN and routes through the director's query; ledger claims never self-promote (SN-0445).",
+      "Baselines are recorded before remediation is debated, and remediation crosses the human gate (SN-0455).",
+      "One canonical continuity surface; parallel memory systems are excluded by name (SN-0476).",
+      "Dead-on-main ≠ lost: enumerate recovery branches and verify blobs before declaring loss; restoration is a merge decision (SN-0499).",
+      "Unverified source of truth → ship the investigation and the gating question, never the fix (SN-0501).",
+      "The registry is the identity authority: collisions resolve by owner renumbering — never deletion, never a second entry (SN-0545).",
+      "Operative declarations carry their authority basis on their face, and challenges to that basis are preserved in the record (SN-0433)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-3"
+    ],
+    "covers": [
+      "SN-0411",
+      "SN-0432",
+      "SN-0433",
+      "SN-0445",
+      "SN-0451",
+      "SN-0455",
+      "SN-0476",
+      "SN-0501",
+      "SN-0545"
+    ]
+  },
+  "page_hash": "a2fd5fe82c90030a2629c4e390a532c97971d55b882245b7e3de71bc1edde95c",
+  "content_hash": "529975f84f81e299a9db21ee47cbf7047663b8df7d6afa0a4b5b69e4e7088567"
+}

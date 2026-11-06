@@ -1,0 +1,43 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2132",
+  "title": "The Tip Is the Truth",
+  "slug": "essence-the-tip-is-the-truth",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-tip-is-the-truth.md",
+  "tone": "gold",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:45:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "\"Merged\" is a claim about a pointer, not a fact about content: a stale merge ref can fabricate a RED on a ghost tree (SN-0443), a squash merge erases the head SHA so only a four-step proof makes MERGED into MERGED-VERIFIED-AT-TIP (SN-0447), three fallback merges with tree=head-tree silently dropped 34 files while GitHub showed all three merged (SN-0539), and a SHA that is merely an ancestor of the live tip is stale, not false (SN-0534). The tip is the truth — everything else is re-anchored to it or it is not evidence.",
+    "human_view": "In a system where many lanes merge all day, the most dangerous sentence is \"it's merged.\" This block learned that merged can mean three different things — merged into a ghost tree, merged with files silently dropped, merged with a red that changed its nature at the boundary — and that each has a mechanical proof that settles it. The essence is the habit of never trusting the pointer: prove ancestry, prove the bytes, replay the chain, and re-anchor every claim to the tip that exists now.",
+    "child_view": "Imagine mailing a letter in a new envelope. \"The letter was mailed\" doesn't prove the letter inside is still your letter. So you check: the envelope is really on the truck, the words inside match yours exactly, letter for letter. And if three friends each add a page to a story one after another, you can't check the final story by comparing each page to the first draft — each page was added to the story as it grew. You rebuild it in the same order, or your check invents mistakes that aren't there.",
+    "grandma_view": "Dear, it's the old rule about deeds and titles: the stamp on the paperwork is only as good as the contents underneath. A deed can be stamped \"transferred\" while pages are missing from the file. The careful clerk checks the actual pages against the original, in order, and counts what's there — not what the stamp claims. And when two clerks recorded the river's height at different hours, neither lied; the river moved. Check the time and the place before calling anyone wrong.",
+    "ai_view": "On every merge and every tip claim: refresh the branch before reading its red, and run the three-way discriminator (SN-0443); prove merged content with ancestry + blob identity + honest CI + ledger recompute, naming the residual gap (SN-0447); re-anchor claimed SHAs by compare before judging them (SN-0534); test the containment precondition before any tree=head-tree fallback merge, and verify the result against a real local merge (SN-0539); verify chains by replaying merge-tree in order, never by fixed-base simulation (SN-0542); and after any merge — especially a red one — reclassify every open RED on the new tip before repairing anything (SN-0578).",
+    "what_it_means": "Six notes make one discipline: the tip is the only truth, and every merge artifact — ref, pointer, stamp, classification, claimed SHA — is a claim about it that decays or deceives in a named way. A cold reader holding only this essence can prove what is actually on main after any merge, which is the ground every other verdict stands on.",
+    "whats_inside": [
+      "Re-sync the branch to main before reading a CI red; the three-way discriminator (head / merge-delta / stale ref) runs before any code diagnosis (SN-0443).",
+      "MERGED becomes MERGED-VERIFIED-AT-TIP only via the four-step proof: ancestry, zero blob drift, honest CI read, ledger recompute (SN-0447).",
+      "A claimed tip SHA is re-anchored by ancestry before it is judged: ancestor = stale, diverged = violation (SN-0534).",
+      "tree=head-tree requires the containment precondition, tested before every fallback merge; \"clean\" never means \"contains the base\" (SN-0539).",
+      "Sequential merges are verified by replaying git's real machinery in order — merge-bases shift (SN-0542).",
+      "At the merge boundary, every RED is reclassified on the new tip; a red merge converts a PR problem into a base defect (SN-0578)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-3"
+    ],
+    "covers": [
+      "SN-0443",
+      "SN-0447",
+      "SN-0534",
+      "SN-0539",
+      "SN-0542",
+      "SN-0578"
+    ]
+  },
+  "page_hash": "73332889803939f902a0d7723afab3e5bafca31f0eea30a05f8c25b60e499da7",
+  "content_hash": "f19ed1f17b2e80d404b1233618f06665e05235a63aa66c74924ed2a1e94ec0c3"
+}

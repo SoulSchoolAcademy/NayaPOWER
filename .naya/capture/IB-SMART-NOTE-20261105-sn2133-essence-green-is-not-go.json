@@ -1,0 +1,53 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2133",
+  "title": "Green Is Not Go",
+  "slug": "essence-green-is-not-go",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-green-is-not-go.md",
+  "tone": "orange",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:45:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Proof and permission are two axes, and merging them is the defect: a fully green tip withholds deployment until the director's explicit dispatch (SN-0441), a 9.8/10 scorecard still returns DENY on a protected path (SN-0523), a scorecard decides what should happen but never permits who may do it (SN-0565), and an authorization is a (sha, scope, window) triple that lapses the moment the tip moves (SN-0475). Authority is human-rooted, scope-exact, and verified at action time — a self-declared grant is a claim (SN-0444), a name on a form is not an entitlement (SN-0464), and an author string is not provenance (SN-0409).",
+    "human_view": "This is the block's governance spine: the long, careful separation between \"we proved it\" and \"we may do it.\" Every failure here is a version of the same confusion — a green check treated as permission, a name treated as an entitlement, a document granting itself authority, a score treated as a signature. And every success is the separation held under pressure: at the greenest moment, at the highest score, with the director's own conditional words available as an excuse. The envelope held because the axes never merged.",
+    "child_view": "Imagine a clubhouse with two different locks. One lock is the scoreboard: it says how well you did on the quiz. The other lock is the permission slip: it says whether Mom said you may go. Winning the quiz doesn't open the permission lock — only Mom's actual words do. A note you wrote yourself saying \"Mom said yes\" is not Mom saying yes. And her yes was for Tuesday's trip: if the trip changes, you need a new yes. Scores are real, and permissions are real — they're just different things.",
+    "grandma_view": "Dear, it's the difference between the bank saying your check is good and the bank being allowed to cash it — both matter, and neither substitutes for the other. A signature line filled with any name at all is not an authorization; a glowing inspection report is not a building permit; and a permit for the old blueprints doesn't cover the new ones. The team's discipline is the clerk's discipline: check who actually granted it, what exactly it covers, and whether it's still the same job it was granted for.",
+    "ai_view": "On every consequential action: compute readiness and permission as separate outputs, permission second and independent (SN-0523, SN-0565); trace authority to its human root — the director's word, a ratified standing law, or an ACTIVE grant with scope and expiry (SN-0565); refuse self-declared grants and author-string provenance (SN-0444, SN-0409); bind promoters to the entitlement roster, never to a non-blank string (SN-0362, SN-0464); treat every authorization as a (sha, scope, window) triple and re-anchor before the window (SN-0475, SN-0574); replay the selection behind any receipt that drives an authority decision (SN-0556); forge coherently when you test a gate (SN-559); re-derive the classification at action time instead of trusting the narrative (SN-560); and classify a deny by scope before touching any matcher (SN-0566).",
+    "what_it_means": "Fourteen notes draw one bright line through everything the fleet does: evidence flows upward freely, authority flows from the human root only, and no mechanism — score, retrieval, learning, narrative, or self-declaration — mints permission. A cold reader holding only this essence can audit any \"authorized\" claim in the system and find either its human root or its defect.",
+    "whats_inside": [
+      "Two axes, always separate outputs: proven (score/CI) and permitted (authority) (SN-0441, SN-0523, SN-0565).",
+      "A grant comes from the director's explicit word, never from the artifact's own text, an author string, or a score (SN-0444, SN-0409, SN-0565).",
+      "Entitlement is a binding to a roster, scoped to the act — never a non-blank name (SN-0362, SN-0464).",
+      "Promotion is atomic with the pointer moving last; failure before the pointer means the pointer never moves (SN-0363).",
+      "Authorization is a (sha, scope, window) triple; it lapses when the tip moves; a failed dispatch is stale production, not partial progress (SN-0475, SN-0574).",
+      "Validate the selection, not just the artifact: replay canonical selection at the receipt's pinned inputs (SN-0556); test gates with coherent forgeries, not garbage (SN-559).",
+      "Re-derive the authority classification at action time; stale narrative loses to ratified law (SN-560).",
+      "A fail-closed deny on an out-of-scope target is the system working; widen scope only by a new human grant, never by loosening the matcher (SN-0566)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-3"
+    ],
+    "covers": [
+      "SN-0362",
+      "SN-0363",
+      "SN-0409",
+      "SN-0441",
+      "SN-0444",
+      "SN-0464",
+      "SN-0475",
+      "SN-0523",
+      "SN-0556",
+      "SN-559",
+      "SN-560",
+      "SN-0565",
+      "SN-0566",
+      "SN-0574"
+    ]
+  },
+  "page_hash": "add7f90babe2babd710d72ec7423eccde7b73680c25b45a62fd3d61d1567e0f4",
+  "content_hash": "55091e5f9749513dacc9874e3cd6b1dcf35559991428a2876d818be90a9656b2"
+}
