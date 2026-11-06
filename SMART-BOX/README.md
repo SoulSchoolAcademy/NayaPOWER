@@ -40,7 +40,23 @@ remain the canonical harvest source. This directory holds the live surface:
   never the ID alone.
 - The ten-section Smart Note format has no fields in the harvested store, so
   the page renders entries faithfully from what the harvest holds and never
-  invents sections. Full ten-section reading lives in the filed Smart Note.
+  invents sections. Full ten-section reading lives in the filed Smart Note:
+  4 of the 5 featured entries link to one (SB-2079 → SN-2089, SB-2007 →
+  SN-2077, SB-1954 → SN-2084, SB-1941 → the filed Act draft, not a Smart
+  Note); SB-0021 has no filed note yet. The linked notes were filed before
+  the no-machine ruling, so each still carries a Machine Note section, and
+  before the GOLD/RED layers — per-entry GOLD/RED on the page are quoted
+  from the entry's own words where the entry supports them (SB-2007 has no
+  RED layer, SB-1941 has neither). The full 2,086-entry link backfill is
+  owed as the reconcile job, not this surface.
+
+## Fix pass 2026-11-06 (PR #3237, same branch — Verifier defects D1/D3/D5/D4 + design law)
+
+- D1: footer/code/entry links wrap (`overflow-wrap:anywhere`) — no sideways scroll on a 390px phone.
+- D3: SB-1941 date corrected `55:07Z` → `00:55:07Z` (source memory/2026-11-06.md:179 heading; harvest dropped the `00:`) — fixed in the canonical store, the snapshot, and KV.
+- D5: sub-millisecond searches display `<1 ms`, never `0.0 ms`.
+- D4: after an add, the page polls `/smartbox/data` until the entry lands in the shared store, then refreshes the counts line itself; the copy no longer says "at once" for the shared store.
+- Design law: links + per-entry GOLD/RED above (4 of 2,086 entries linked so far).
 
 ## Deploy
 
