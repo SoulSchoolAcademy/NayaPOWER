@@ -2922,6 +2922,7 @@ button:hover{
 /* --- human words under the number: "175 of 1,000 — Stirring at 1,000" --- */
 .tn-tacho-bandline{
   display:block;
+  text-align:center;
   margin-top:8px;
   font-size:12.5px;
   font-weight:600;
@@ -21479,8 +21480,9 @@ else init();
           '<b class="tn-tacho-num">…</b>' +
           '<span class="tn-tacho-row"><span class="tn-tacho-label">YOUR SMART SCORE</span>' +
           '<span class="tn-tacho-livedot"></span></span>' +
-          '<span class="tn-tacho-bandline"></span>' +
         '</div>' +
+        /* 2026-11-06 — FIX 1e-iii: the bandline lived INSIDE .tn-tacho-readout (display:none by the 2026-11-01 NO OVERLAY TEXT ruling), so the caption "55 of 500 — Stirring at 1,000" never rendered in ANY window (Scout gaugeCap rect 0,0,0,0 in every settled capture). The number + label stay hidden — they live in the SVG dial + the static label. Only the caption moves out, to its own line under the dial. */
+        '<span class="tn-tacho-bandline"></span>' +
         '<div class="tn-tacho-cap" hidden></div>' +
         '<div class="tn-tacho-bands"><span class="tn-tacho-bandlo"></span><span class="tn-tacho-bandhi"></span><span class="tn-tacho-bands-label"></span></div>' +
         '<div class="tn-tacho-truth" hidden></div>' +
