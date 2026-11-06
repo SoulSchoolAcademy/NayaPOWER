@@ -1,0 +1,99 @@
+<!-- ================================================================
+  SHARED TOKENS — supporting file, NOT one of the 22 Act elements.
+  DRAFT — the Clarity Confirmation Act is NOT stamped by Shawn; nothing here is law yet.
+  The :root variables the signature pieces depend on (--tone, --ink,
+  --ease, --purple ...). Include FIRST when composing from inventory.
+  Harvested verbatim from:
+  - ~/workspace/smart-factory/harvested/hub.html L64-142
+  - ~/workspace/smart-factory/harvested/dashboard.html L1193-1227
+  Factory path: ~/workspace/smart-factory/signature-pieces/00-shared-tokens.html
+  ================================================================ -->
+<style>
+/* --- VERBATIM HARVEST (do not restyle; compose only) --- */
+:root {
+  /* ——— The obsidian stack — the only neutrals (Law v2 §2.2) ——— */
+  --bg:        #0B0D12;  /* World — the canvas. Everything sits on this. */
+  --bg-raise:  #12151D;  /* Raised — cards, panels, drawers. */
+  --bg-panel:  #12151D;  /* (alias of Raised) */
+  --bg-card:   #171B25;  /* Elevated — popovers, modals, the topmost layer. */
+  --bg-elev:   #171B25;  /* Elevated (explicit name). */
+  --edge:      #252B39;  /* Precision edge — 1px edges on raised surfaces. */
+  --ink:       #F5F7FB;  /* Primary text. Always. */
+  --ink-dim:   #F5F7FB;  /* (primary text, dimmed contexts — use --muted below it) */
+  --muted:     #AAB2BF;  /* Secondary text. Never for primary content. */
+  --muted-2:   #AAB2BF;
+  --faint:     #c9c3ce;
+  --line:      #ffffff18;
+  --line-soft: #ffffff0d;
+
+  /* ——— The semantic spectrum — one color, one job (Law v2 §2.3) ——— */
+  --purple:     #9d75ff;  /* Naya's signature. Primary actions, Naya presence. */
+  --indigo:     #6675ff;  /* Comprehension / depth / reports. */
+  --sapphire:   #55b9ee;  /* Knowledge. Calm, deep, at rest. */
+  --blue:       #55b9ee;  /* (alias of sapphire — the working blue) */
+  --teal:       #40d3bb;  /* Connection / flow. */
+  --emerald:    #55e39a;  /* Alive and well. Working, true, now. */
+  --green:      #55e39a;  /* (alias of emerald — the working green) */
+  --lime:       #b8ee57;  /* Learning / growth. */
+  --yellow:     #f1d75a;  /* Attention / signal. */
+  --gold:       #e8b64c;  /* Extraordinary. The rarest word. */
+  --orange:     #ff9a5a;  /* Action / movement. */
+  --rich-orange:#ff7a3d;  /* Transition / momentum. */
+  --red:        #ff5a6e;  /* Blocked / failed. The alarm. Never decorative. */
+  --magenta:    #d86cff;  /* Human significance. The human's own things. */
+
+  /* ——— Room accents (one distinct color per room — never two rooms alike) ——— */
+  --accent-feed:        #a06bff;            /* grape royal purple — the main page wears the soul color (Shawn 2026-10-20) */
+  --accent-today:       var(--magenta);     /* human significance */
+  --accent-reports:     var(--indigo);      /* comprehension / depth */
+  --accent-library:     var(--blue);        /* knowledge at rest */
+  --accent-connect:     var(--teal);        /* connection / flow */
+  --accent-ledger:      var(--gold);        /* value, extraordinary */
+  --accent-connections: var(--orange);      /* action / movement */
+  --accent-lists:       var(--purple);      /* Naya's signature */
+  --accent-mail:        var(--rich-orange); /* messages in motion */
+  --accent-spaces:      var(--lime);        /* learning / growth */
+  --accent-settings:    #e8eaf2;            /* clean silver / white */
+  --accent-growth:      var(--gold);            /* inviting gold */
+  --accent-factory:     var(--purple);          /* the flagship — Naya's signature */
+  --accent-ask:         var(--blue);            /* Ask Naya — sapphire clarity */
+
+  /* ——— Living depth (the material grammar) ——— */
+  --depth-hi:  inset 0 1px #fff6;
+  --depth-drop: 0 18px 42px #000b;
+  --depth-deep: 0 20px 48px #000d;
+  --radius-sm: 11px;
+  --radius-md: 13px;
+  --radius-lg: 17px;
+  --radius-xl: 22px;
+  --radius-pill: 999px;
+
+  /* ——— Motion ——— */
+  --ease: cubic-bezier(.16,.84,.22,1);
+  --dur-fast: .18s;
+  --dur-med:  .28s;
+  --dur-slow: .5s;
+
+  /* ——— Type ——— */
+  --font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fs-hero: clamp(38px, 5.4vw, 60px);
+  --fs-title: 23px;
+  --fs-head: 17px;
+  --fs-body: 16px;
+  --fs-small: 13px;
+  --fs-micro: 11.5px;
+
+  /* ——— The living field behind everything ——— */
+  --field:
+    radial-gradient(1000px 650px at 55% -12%, #6675ff18, transparent 68%),
+    radial-gradient(900px 700px at 100% 100%, #d86cff12, transparent 70%),
+    var(--bg);
+}
+
+:root{
+  --ease:cubic-bezier(.16,.84,.22,1);
+}
+
+/* ============ HUB ELEMENTS — verbatim from Shawn's 12 hub pages ============ */
+:root{--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.08);--ink:#F8F7FB;--ink-dim:rgba(248,247,251,.72);--muted:rgba(248,247,251,.55);--text-muted:rgba(248,247,251,.55);--green:#2fe89e;--emerald:#2fe89e;--purple:#a06bff;--magenta:#e84fff;--purple-glow:rgba(160,107,255,.5);--edge:rgba(255,255,255,.1);--radius-md:13px;--radius-pill:999px;--depth-hi:0 18px 50px rgba(0,0,0,.55);--btn-accent:#a06bff}
+</style>
