@@ -1,0 +1,86 @@
+<!-- ================================================================
+  NIA DESIGN SIGNATURE PIECE 05 — ORB — THE CONSTELLATION ORB
+  DRAFT — the Clarity Confirmation Act is NOT stamped by Shawn; nothing here is law yet.
+  Act reference: Act §4.5 — ~/workspace/team-nitro/clarity-confirmation-act-DRAFT-20261106.md
+  CHECK: color per category, fixed; hover lift 8px; tap opens the drill-down. Point values locked 2026-11-01.
+  CRAFT (Shawn 00:31Z — optimized for what IT is): The most extraordinary orb: a glass planet in its own color, orbiting the gauge — molded to be a number you can touch, a door into its drill-down.
+  ROLLOUT (Shawn 00:31Z — Dashboard first, then Personal, then the rest): group 1 — first proved on Dashboard.
+  Harvested verbatim from:
+  - ~/workspace/smart-factory/harvested/dashboard.html L196
+  - ~/workspace/smart-factory/harvested/dashboard.html L217
+  - ~/workspace/smart-factory/harvested/dashboard.html L222
+  - ~/workspace/smart-factory/harvested/dashboard.html L344-345
+  - ~/workspace/smart-factory/harvested/dashboard.html L346
+  - ~/workspace/smart-factory/harvested/dashboard.html L347
+  - ~/workspace/smart-factory/harvested/dashboard.html L348
+  - ~/workspace/smart-factory/harvested/dashboard.html L1207
+  - ~/workspace/smart-factory/harvested/hub.html L2605-2619
+  - ~/workspace/smart-factory/harvested/hub.html L2620-2627
+  - ~/workspace/smart-factory/harvested/hub.html L2628-2631
+  - ~/workspace/smart-factory/harvested/hub.html L2632
+  - ~/workspace/smart-factory/harvested/hub.html L2633
+  - ~/workspace/smart-factory/harvested/hub.html L2634
+  Factory path: ~/workspace/smart-factory/signature-pieces/05-orb.html
+  Repo (canonical) path: BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/05-orb.html
+  Notes: Orb colors/points per Act §4.5 (Playbook map; CONFLICTS #17: live dashboard rotates Creating/Shares/Comments — the Act flags it, Shawn decides). Hub .orb rules harvested from hub.html directly; the earlier parts/frontend/orb-hub.css extract is cross-checked against the same rules.
+  ================================================================ -->
+<style>
+/* --- VERBATIM HARVEST (do not restyle; compose only) --- */
+.phero .porb{width:72px;height:72px;border-radius:50%;margin:0 auto 12px;background:radial-gradient(circle at 32% 28%,#f3e8ff 0%,#a06bff 32%,#4a2a86 72%,#1a0f2e 100%);box-shadow:0 0 30px rgba(160,107,255,.5),inset 0 0 12px rgba(255,255,255,.3);animation:porb 5s ease-in-out infinite}
+
+.lnav-orb{width:30px;height:30px;border-radius:50%;flex:0 0 30px;background:radial-gradient(circle at 32% 28%,#fff 0%,var(--pv,#a06bff) 45%,#1a0f2e 100%);box-shadow:0 0 16px var(--pv,#a06bff)}
+
+.lorb{width:96px;height:96px;border-radius:50%;margin:0 auto 18px;background:radial-gradient(circle at 32% 28%,#ffffff 0%,var(--pv,#a06bff) 38%,#1a0f2e 100%);box-shadow:0 0 44px var(--pv,#a06bff),inset 0 0 16px rgba(255,255,255,.3);animation:porb 5s ease-in-out infinite}
+
+/* CIRCLE BOARDS: orbital layouts like the Maxis page */
+.orbital { position: relative; width: 280px; height: 280px; margin: 0 auto; }
+
+.orbital-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 110px; height: 110px; border-radius: 50%; background: #0a0a0f; border: 2px solid var(--bc); box-shadow: 0 0 30px var(--bc); display: flex; align-items: center; justify-content: center; font-size: 28px; }
+
+.orbital-sat { position: absolute; width: 56px; height: 56px; border-radius: 50%; background: #0a0a0f; border: 1.5px solid var(--sc); box-shadow: 0 0 16px var(--sc); display: flex; align-items: center; justify-content: center; font-size: 20px; color: #F8F7FB; }
+
+.orbital-ring { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); border: 1px solid rgba(248,247,251,.15); border-radius: 50%; pointer-events: none; }
+
+.mini-orb{--c:#3fb8ff;width:44px;height:44px;border-radius:50%;flex:none;background:radial-gradient(circle at 35% 27%,#fff 0%,var(--c) 38%,#0a0a10 82%);box-shadow:inset 0 2px 4px rgba(255,255,255,.6),inset 0 -6px 10px rgba(0,0,0,.5),0 0 20px var(--c),0 8px 18px rgba(0,0,0,.55);border:1.5px solid #F8F7FB;transition:transform .25s cubic-bezier(.16,.84,.22,1),box-shadow .25s}
+
+.orb { --oc: #a06bff; --oc-rgb: 160,107,255; position: relative; display: inline-block; width: 120px; height: 120px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 62%, #000) 56%, #040406 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255,255,255,.50),
+    inset 0 10px 18px rgba(255,255,255,.14),
+    inset 0 -12px 24px rgba(0,0,0,.62),
+    0 0 30px rgba(var(--oc-rgb),.55),
+    0 0 74px -10px rgba(var(--oc-rgb),.42),
+    0 24px 48px rgba(0,0,0,.65);
+  transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+  animation: orb-breathe 5s ease-in-out infinite;
+}
+
+.orb::before { /* the orbit — a ring of light circling the orb */
+  content: ""; position: absolute; inset: -14px; border-radius: 50%; z-index: 2;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 180deg, var(--oc) 270deg, #ffffff 320deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 10px;
+  animation: orb-spin 2.5s linear infinite; opacity: 1; pointer-events: none;
+  filter: drop-shadow(0 0 16px var(--oc)) drop-shadow(0 0 6px #fff);
+}
+
+.orb::after { /* light pool beneath */
+  content: ""; position: absolute; left: 16%; right: 16%; bottom: -30px; height: 24px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.42), transparent 70%); filter: blur(7px); z-index: -1; pointer-events: none;
+}
+
+.orb--sm { width: 56px; height: 56px; animation: none; }
+
+.orb--sm::before { inset: -10px; padding: 2px; animation-duration: 7s; }
+
+.orb--sm::after { bottom: -16px; height: 14px; }
+</style>
+
+<!-- SPECIMEN-START -->
+<div class="orb" style="--oc:#e84fff;--oc-rgb:232,79,255"><span>{{glyph}}</span></div>
+<div class="lorb" style="--pv:#a06bff">{{glyph}}</div>
+<!-- SPECIMEN-END -->
