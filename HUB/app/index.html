@@ -1614,45 +1614,6 @@ svg.jewel { display: block; }
   letter-spacing: .08em; font-weight: 700; white-space: nowrap;
 }
 .ib-layer-head .ib-chev { display: none; }
-/* Naya Voice — per-layer play buttons (presentation elegance) */
-.ib-layer-play {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
-  border-radius: 50%;
-  background: #050508;
-  border: 1px solid rgba(157, 117, 255, 0.55);
-  color: #fff;
-  font-size: 11px;
-  cursor: pointer;
-  margin-left: auto;
-  flex-shrink: 0;
-  padding: 0;
-  box-shadow: 0 0 12px rgba(157, 117, 255, 0.35), inset 0 0 8px rgba(157, 117, 255, 0.18);
-  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
-}
-.ib-layer-play span {
-  line-height: 1;
-  color: #fff;
-  text-shadow: 0 0 6px rgba(157, 117, 255, 0.85);
-}
-.ib-layer-play:hover {
-  border-color: #9d75ff;
-  transform: scale(1.08);
-  box-shadow: 0 0 20px rgba(157, 117, 255, 0.65), inset 0 0 10px rgba(157, 117, 255, 0.25);
-}
-.ib-layer-play.playing {
-  border-color: #9d75ff;
-  box-shadow: 0 0 22px rgba(157, 117, 255, 0.8), inset 0 0 10px rgba(157, 117, 255, 0.3);
-  animation: ib-play-glow 1.8s ease-in-out infinite;
-}
-@keyframes ib-play-glow {
-  0%, 100% { box-shadow: 0 0 14px rgba(157, 117, 255, 0.5), inset 0 0 8px rgba(157, 117, 255, 0.2); }
-  50% { box-shadow: 0 0 26px rgba(157, 117, 255, 0.9), inset 0 0 12px rgba(157, 117, 255, 0.35); }
-}
 .ib-layer-head {
   display: flex;
   align-items: center;
@@ -1668,7 +1629,7 @@ svg.jewel { display: block; }
 .ib-identity { display: flex; gap: 14px; min-width: 0; align-items: flex-start; }
 .ib-identity .ib-jewel { width: 64px; height: 64px; }
 .ib-title {
-  font-size: clamp(24px, 3vw, 38px); line-height: 1.05; letter-spacing: -.02em;
+  line-height: 1.05; letter-spacing: -.02em;
   margin: 0 0 8px; color: var(--ink); font-weight: 850;
 }
 .ib-meta {
@@ -2667,7 +2628,7 @@ button, .btn, .tab, .eco-btn, .activity-card {
   0%, 100% { transform: scale(1); box-shadow: inset 0 0 0 2px rgba(255,255,255,.55), inset 0 8px 16px rgba(255,255,255,.22), inset 0 -10px 20px rgba(0,0,0,.55), 0 0 22px rgba(var(--oc-rgb),.9), 0 0 55px -8px rgba(var(--oc-rgb),.6), 0 14px 30px rgba(0,0,0,.6); }
   50% { transform: scale(1.08); box-shadow: inset 0 0 0 2px rgba(255,255,255,.82), inset 0 8px 16px rgba(255,255,255,.34), inset 0 -10px 20px rgba(0,0,0,.55), 0 0 42px rgba(var(--oc-rgb),1), 0 0 88px -6px rgba(var(--oc-rgb),.92), 0 14px 30px rgba(0,0,0,.6); }
 }
-.ib-layer-play.reading, .board-top-actions .action.reading { animation: ib-play-glow 1.1s ease-in-out infinite; }
+.board-top-actions .action.reading { animation: ib-play-glow 1.1s ease-in-out infinite; }
 .ib-identity { gap: 26px; }
 
 /* ——— Dimensional hero (Naya 3 brand-frame effect, design language 2026-10-20):
@@ -3861,13 +3822,15 @@ window.NayaContent = {
     var st=document.createElement('style'); st.id=STYLE_ID;
     st.textContent=[
       '.intel-board .ib-subtitle{font-size:20px !important;background:transparent !important;border:0 !important;box-shadow:none !important;color:#fff;padding:14px 18px;line-height:1.5}',
-      '.intel-board .ib-nutshell{font-size:20px !important;background:transparent !important;border:0 !important;border-left:0 !important;border-radius:0 !important;box-shadow:none !important;color:#fff}',
+      '.intel-board .ib-nutshell{font-size:20px !important;background:transparent !important;border:2px solid color-mix(in srgb, #ffffff 42%, #fff 8%) !important;border-radius:18px !important;box-shadow:inset 0 1px #ffffff1c,0 14px 30px #00000090,0 0 20px color-mix(in srgb, #ffffff 10%, transparent) !important;color:#fff}',
       '.intel-board .ib-nutshell p{font-size:20px !important;color:#fff;background:transparent !important}',
-      '.intel-board .ib-layer{background:transparent !important;border:0 !important;box-shadow:none !important}',
       '.sh-nutshell{font-size:20px !important;line-height:1.55}',
-      '.intel-board{opacity:.84;background:#050607 !important;transition:opacity .7s ease,box-shadow .25s,transform .25s cubic-bezier(.16,.84,.22,1)}',
+      '.intel-board{opacity:.84;background:radial-gradient(720px 240px at 50% -8%, color-mix(in srgb, var(--tone) 14%, transparent), transparent 72%),linear-gradient(145deg, var(--bg-raise), var(--bg)) !important;border:2px solid color-mix(in srgb, var(--tone) 55%, #fff 14%) !important;border-radius:26px;transition:opacity .7s ease,box-shadow .25s,transform .25s cubic-bezier(.16,.84,.22,1)}',
       '.intel-board.rv-lit{opacity:1;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff)}',
-      '.intel-board:hover,.intel-board:active{opacity:1 !important;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff) !important}'
+      '.intel-board:hover,.intel-board:active{opacity:1 !important;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff) !important}',
+      '.intel-board.rv-lit .ib-layer{box-shadow:inset 0 1px #ffffff1c,0 14px 30px #00000090,0 0 20px color-mix(in srgb, var(--lc) 10%, transparent),0 0 34px -8px var(--lc)}',
+      '.intel-board.rv-lit .ib-nutshell{box-shadow:inset 0 1px #ffffff1c,0 14px 30px #00000090,0 0 20px color-mix(in srgb, #ffffff 10%, transparent),0 0 34px -8px #ffffff !important}',
+      '@media (max-width:640px){.intel-board{border-radius:20px !important}}'
     ].join('\n');
     (document.head||document.documentElement).appendChild(st);
   }
@@ -6378,6 +6341,7 @@ window.NayaJewels = (() => {
     (note.layers || []).forEach(L => {
       if (L === nutshellLayer) return;
       const layer = el('div', 'ib-layer layer-' + L.color + (L.tier === 'deeper' ? ' is-deeper' : ''));
+      layer.style.setProperty('--lc', layerColorFor(L.name)); // v5: layer light = its jewel colour
       const lh = el('button', 'ib-layer-head');
       lh.setAttribute('aria-expanded', L.tier === 'primary' ? 'true' : 'false');
       lh.innerHTML =
@@ -6388,40 +6352,6 @@ window.NayaJewels = (() => {
       if (L.tier !== 'primary') lb.hidden = true;
       else lh.classList.add('open');
       lh.addEventListener('click', (e) => {
-        // If the play button was clicked, don't toggle the layer
-        if (e.target.closest('.ib-layer-play')) {
-          e.stopPropagation();
-          const playBtn = e.target.closest('.ib-layer-play');
-          const layerBody = lb.textContent || '';
-          const layerName = L.name || '';
-          const speakText = layerName + '. ' + layerBody.trim().substring(0, 2000);
-          if (window.NayaVoice) {
-            if (playBtn.classList.contains('playing')) {
-              window.NayaVoice.stop();
-              playBtn.classList.remove('playing');
-              playBtn.querySelector('span').innerHTML = '\u25B6';
-            } else {
-              // Stop any other playing buttons
-              document.querySelectorAll('.ib-layer-play.playing').forEach(b => {
-                b.classList.remove('playing');
-                b.querySelector('span').innerHTML = '\u25B6';
-              });
-              playBtn.classList.add('playing');
-              playBtn.querySelector('span').innerHTML = '\u23F9';
-              const snM = String(note.id || '').match(/sn(\d+)/i);
-              window.NayaVoice.play(speakText, {
-                blockId: snM ? 'sn' + snM[1] : null,
-                section: true,
-                button: playBtn,
-                onEnd: () => {
-                  playBtn.classList.remove('playing');
-                  playBtn.querySelector('span').innerHTML = '\u25B6';
-                }
-              });
-            }
-          }
-          return;
-        }
         const open = lb.hidden;
         lb.hidden = !open;
         lh.classList.toggle('open', open);
