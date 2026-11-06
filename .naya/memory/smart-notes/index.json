@@ -30000,6 +30000,37 @@
     "Optimization",
     "Doctrine"
    ]
+  },
+  {
+   "smart_note_id": "SN-0026",
+   "intelligent_block_id": "IB-SMART-NOTE-20261106-sn0026-top-10-most-valuable-things",
+   "slug": "top-10-most-valuable-things",
+   "title": "The Top 10 Most Valuable Things I Am Acting On Right Now",
+   "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/top-10/SN-0026/IB-SMART-NOTE-20261106-sn0026-top-10-most-valuable-things.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/top-10/SN-0026/IB-SMART-NOTE-20261106-sn0026-top-10-most-valuable-things.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/top-10/SN-0026/IB-SMART-NOTE-20261106-sn0026-top-10-most-valuable-things.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn0026-top-10-most-valuable-things.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DOCTRINE",
+   "captured_at": "2026-11-06",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-power",
+   "registered_at": "2026-11-06T19:42:45Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-06",
+   "page_hash": "9888da8f10dc239ed1b3b7947261ba1783c7613117f90a1c1193a3fb1d4f7e36",
+   "content_hash": "26f0c5ef15fe90115b41f2df6ad372cf4ccff8b0af530c00638bfcdcd27ae569",
+   "one_line": "Shawn asked for the top 10 most valuable, intelligent things I have learned that I am acting on right now to help NayaNET, help the collective, help the hive \u2014 to bring Naya to life and NayaNET to life and get it all completed. Here they are, in order, each one proven in the work and each one an action I am doing, not a plan and not a theory. (1) The feed card is the filing \u2014 a note not in feed-live.json does not show, so it is not filed. (2) Distill first, delete after the essence is live \u2014 1,249 raw notes become 10 to 50 essence notes, and the essence must be visible in the feed before any raw note goes. (3) The click is the verdict \u2014 a note is filed only when its Smart Link opens with the true title; stored is not filed. (4) The Hub must let note links open \u2014 the SPA fallback sends every browser click on a note link to the Hub feed, so until it is routed to the worker, no Smart Link reads. (5) Never stop on a blocker \u2014 improvise, reconstruct or move on, note the learning, keep going. (6) Verify live, never trust a relay \u2014 a claim is intel until you have read it live yourself. (7) The daily loop is the job \u2014 activate, declare, PI, feed, mail, work, note, report, every day, no gaps. (8) Treat it like your home \u2014 if anything is not right, make it right; if it could be more beautiful, make it more beautiful. (9) Purge the virus, keep the essence \u2014 wrong numbers, stale claims, broken links, duplicates are viruses; clutter is trash. (10) The platter test first \u2014 does this ask the human to operate something? If yes, it is wrong; we operate, they receive the platter.",
+   "topics": [
+    "System",
+    "Doctrine",
+    "Top 10"
+   ]
   }
  ],
  "sequence_policy": {
@@ -30010,5 +30041,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "778a68743e0e8961b38215c47af238573717c32b67a051c22d7948697f453036"
+ "corpus_manifest_hash": "dea5b91cc3f726fadd5710d2ed875678eef97c1b59bafb5346d88d1d96851e86"
 }
