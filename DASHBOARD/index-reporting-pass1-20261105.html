@@ -570,7 +570,7 @@ body{background:#050507;color:#F8F7FB;font-family:Inter,system-ui,sans-serif;pad
 .plus-menu .pm-sec{padding:8px 14px 2px;font-size:10px;font-weight:800;letter-spacing:.16em;color:#a06bff}
 .plus-menu a{display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:12px;color:#F8F7FB;text-decoration:none;font-weight:700;font-size:14px;cursor:pointer}
 .plus-menu a:hover{background:rgba(160,107,255,.14)}
-.plus-menu a .jewel{width:14px;height:14px;flex:0 0 14px;transform:rotate(45deg);background:var(--eco,#a06bff);box-shadow:0 0 10px var(--eco,#a06bff);border:1px solid rgba(255,255,255,.7)}.steppill .sdot{width:8px;height:8px;border-radius:50%;background:#fff;flex:0 0 auto;transition:background .25s,box-shadow .25s}.steppill:hover{border-color:var(--sc);box-shadow:inset 0 1px rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.4),0 0 26px -2px var(--sc),0 10px 24px rgba(0,0,0,.6);transform:translateY(-2px)}.steppill:hover .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}.steppill.on{border-color:var(--sc);box-shadow:0 0 0 1px var(--sc),0 0 22px -4px var(--sc)}.steppill.on .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}#nayanet-nav{position:fixed;left:0;right:0;bottom:0;z-index:300;width:100%;max-width:none;padding:0}#nayanet-nav .naya-tabs{position:static;margin:0;max-width:none;width:100%;border-radius:0;border:0;border-top:2px solid #F8F7FB;background:linear-gradient(180deg,#14141b,#050507);box-shadow:0 -14px 34px rgba(0,0,0,.65),inset 0 1px rgba(255,255,255,.28);padding:12px 16px}body{padding-bottom:92px}
+.plus-menu a .jewel{width:14px;height:14px;flex:0 0 14px;transform:rotate(45deg);background:var(--eco,#a06bff);box-shadow:0 0 10px var(--eco,#a06bff);border:1px solid rgba(255,255,255,.7)}.steppill .sdot{width:8px;height:8px;border-radius:50%;background:#fff;flex:0 0 auto;transition:background .25s,box-shadow .25s}.steppill:hover{border-color:var(--sc);box-shadow:inset 0 1px rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.4),0 0 26px -2px var(--sc),0 10px 24px rgba(0,0,0,.6);transform:translateY(-2px)}.steppill:hover .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}.steppill.on{border-color:var(--sc);box-shadow:0 0 0 1px var(--sc),0 0 22px -4px var(--sc)}.steppill.on .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}#nayanet-nav{position:fixed;left:0;right:0;bottom:0;z-index:300;width:100%;max-width:none;padding:0}#nayanet-nav .naya-tabs{position:static;margin:0;max-width:none;width:100%;border-radius:0;border:0;border-top:2px solid #F8F7FB;background:linear-gradient(180deg,#14141b,#050507);box-shadow:0 -14px 34px rgba(0,0,0,.65),inset 0 1px rgba(255,255,255,.28);padding:12px 16px}/* 2026-11-06 — FIX 8: body bottom padding was a DOUBLED clearance — .ph-main already carries 120px for the fixed nav, so the body's 92px below it was ~92px of pure empty space at the page bottom. */body{padding-bottom:0}
 
 
 
@@ -1934,7 +1934,7 @@ section{margin:64px 0}
 .eco-bb-btn{width:46px;height:46px;flex:0 0 46px}
 /* ---- mobile breakpoints (intake JSON contract P2, Zeta w444): page claimed mobile-first with 0 @media queries ---- */
 @media (max-width:860px){.wrap{padding:0 16px}.topnav{gap:14px;font-size:10px;padding:14px 8px}h1{font-size:36px}section{margin:44px 0}.grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}.rail .pcard{flex:0 0 260px}}
-@media (max-width:560px){.topnav{flex-wrap:wrap;gap:10px;justify-content:flex-start}h1{font-size:30px}body{padding:0 0 92px}.rail .pcard{flex:0 0 230px}.smarttab{padding:8px 14px;font-size:12px}.lawrect{padding:14px}}
+@media (max-width:560px){.topnav{flex-wrap:wrap;gap:10px;justify-content:flex-start}h1{font-size:30px}/* 2026-11-06 — FIX 8: same doubled bottom clearance as desktop — .ph-main carries 160px on phone; the body's 92px was extra empty space. */body{padding:0 0 0}.rail .pcard{flex:0 0 230px}.smarttab{padding:8px 14px;font-size:12px}.lawrect{padding:14px}}
 
 /* V5: FULL SCREEN, no max-width, no wasted space */
 body{background:#050507;margin:0;overflow-x:hidden;font-family:Inter,system-ui,sans-serif;color:#fff;min-height:100vh;
@@ -4473,6 +4473,8 @@ html.os-calm
   <div class="os-score-derive" id="os-score-derive" aria-live="polite"></div>
   <div class="os-score-next" id="os-score-next"></div>
 </div>
+<!-- 2026-11-06 — FIX 8: "Since you looked" lives here now, directly under the derivation. It used to sit after the whole hero block, so the hero's 195px bottom padding (fixed-bar clearance, load-bearing) opened a ~195px empty band before it. -->
+<div class="os-since-visit" id="os-since-visit" style="display:none"></div>
 </div>
 <!-- 2026-11-02 — SHAWN: pace pill REMOVED. Stuck content, not part of the gauge. -->
 <!-- 2026-11-02 — THE 12 CHARTS #5: DONUT. "Where does it come from."
@@ -4728,7 +4730,6 @@ html.os-calm
 </div>
 <div class="os-smartlink-total"><div class="os-smartlink-total-n" id="os-smartlink-total-n">$1.22</div><div class="os-smartlink-total-l">Earnings Per Click</div></div>
 </div>
-<div class="os-since-visit" id="os-since-visit" style="display:none"></div>
 
 <style>
 /* ═══ DASHFIX 2026-10-30 — color language · aliveness · readability · points · pages · ledger ═══ */
