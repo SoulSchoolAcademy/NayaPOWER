@@ -1,0 +1,56 @@
+<!-- ================================================================
+  NIA DESIGN SIGNATURE PIECE 15 — OVERLAY — THE TOP LAYER
+  DRAFT — the Clarity Confirmation Act is NOT stamped by Shawn; nothing here is law yet.
+  Act reference: Act §4.15 — ~/workspace/team-nitro/clarity-confirmation-act-DRAFT-20261106.md
+  CHECK: rides visibly above the control it serves; folds away when dismissed.
+  CRAFT (Shawn 00:31Z — optimized for what IT is): The most extraordinary overlay: the top layer, a glass sheet riding above the board — molded to show the detail and fold away.
+  ROLLOUT (Shawn 00:31Z — Dashboard first, then Personal, then the rest): group 3 — first proved on Shared.
+  Harvested verbatim from:
+  - ~/workspace/smart-factory/harvested/dashboard.html L1478-1479
+  - ~/workspace/smart-factory/harvested/dashboard.html L1480
+  - ~/workspace/smart-factory/harvested/dashboard.html L1481
+  - ~/workspace/smart-factory/harvested/dashboard.html L1501-1502
+  - ~/workspace/smart-factory/harvested/dashboard.html L1503
+  - ~/workspace/smart-factory/harvested/dashboard.html L1504
+  - ~/workspace/smart-factory/harvested/dashboard.html L1505
+  - ~/workspace/smart-factory/harvested/hub.html L2557-2562
+  - ~/workspace/smart-factory/harvested/hub.html L2563
+  - ~/workspace/smart-factory/harvested/hub.html L2573
+  Factory path: ~/workspace/smart-factory/signature-pieces/15-overlay.html
+  Repo (canonical) path: BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/15-overlay.html
+  Notes: 
+  ================================================================ -->
+<style>
+/* --- VERBATIM HARVEST (do not restyle; compose only) --- */
+/* OVL-002 mini modal */
+.modal-mini{display:flex;gap:14px;align-items:center;padding:18px;border:1.5px solid #F8F7FB;border-radius:17px;background:linear-gradient(155deg,#0b0b10,#050507);box-shadow:inset 0 2px 3px rgba(255,255,255,.14),inset 0 -6px 14px rgba(0,0,0,.55),0 0 24px rgba(248,247,251,.28),0 16px 30px rgba(0,0,0,.68);width:100%}
+
+.modal-mini strong{display:block;font-size:14px;color:#fff}
+
+.modal-mini small{display:block;color:#F8F7FB;font-size:11px;margin-top:3px}
+
+/* OVL-005 notification drawer + shared avatar */
+.naya-drawer{border-radius:14px;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid var(--line);box-shadow:-30px 0 80px rgba(0,0,0,.7);display:flex;flex-direction:column;overflow:hidden;width:100%}
+
+.naya-drawer-head{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid var(--line-soft)}
+
+.naya-drawer-head h2{font-size:16px;font-weight:800;color:var(--ink);margin:0}
+
+.naya-drawer-list{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+
+.naya-install-overlay{
+  position:fixed; inset:0; z-index:3000; display:none;
+  align-items:center; justify-content:center; padding:22px;
+  background:rgba(3,3,6,.72); backdrop-filter:blur(9px); -webkit-backdrop-filter:blur(9px);
+  opacity:0; transition:opacity .26s ease;
+}
+
+.naya-install-overlay.show{ opacity:1; }
+
+.naya-install-overlay.show .naya-install-card{ transform:none; }
+</style>
+
+<!-- SPECIMEN-START -->
+<div class="modal-mini"><strong>{{title}}</strong><span>{{detail}}</span></div>
+<div class="naya-drawer"><div class="naya-drawer-head">{{head}}</div>{{body}}</div>
+<!-- SPECIMEN-END -->
