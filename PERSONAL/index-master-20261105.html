@@ -4437,7 +4437,8 @@ html.os-calm
    world's numbers: personal's own data spine (postTimes, noteTimes, msgTimes,
    invTimes, peopleAround) + its own Smart Link day stats. The engine below is
    verbatim from the dashboard — only the DATA is adapted, never the design.
-   Score follows the canon: birth 75 + wall posts×25 + smart notes×35;
+   Score follows the canon: 2x the value table over earned counts — birth
+   is the one-time 2x multiplier (Shawn-locked 2026-11-01), never a flat 75;
    per-period deltas windowed from the spine's own timestamps. */
 window.PAGE_ALIAS = 'flagship-personal';
 function osFeedPulseSpine(){
@@ -15317,7 +15318,11 @@ function liveSources(s){
 
 /* ---------- derivation copy: human words, computed from the spine ---------- */
 var POINT_RULES = { posts:25, notes:35, saves:5, invites:25, joins:50, memberBonus:40 }; /* canon — mirrors LD_VALUES */
-var BIRTH = 75;                            /* canon birth value */
+/* CANON (P2) — birth is NOT a flat 75. It is Shawn's locked 2026-11-01 one-time
+   2X multiplier on everything earned: score = 2 x earned. The derivation
+   lists each earned row, then the birth-day bonus row (the doubling amount —
+   the earned total once more), then the Total. Every non-total row sums to
+   the Total, by construction (bonus = score - earned). */
 
 function derivationFor(key){
   var s = spine(); if(!s) return null;
@@ -15327,16 +15332,26 @@ function derivationFor(key){
   if(key==="score"){
     title="Your score — where every point came from";
     var V=P();
+    /* P2 — the derivation IS the canonical formula: earned rows + the
+       birth-day doubling, summing to the Total. Each term mirrors ldScore()
+       term for term, so the popover can never drift from the gauge again. */
+    var earned = s.posts*V.posts + s.notes*V.notes + (s.saves||0)*V.saves
+      + (s.invitesSent||0)*V.invites + (s.inviteJoins||0)*V.joins
+      + ((s.memberBonus||0)>0 ? V.memberBonus : 0)
+      + (s.sales||0)*100 + (s.likes||0)*1 + (s.comments||0)*5
+      + (s.shares||0)*5 + (s.extShares||0)*10;
+    var bonus = s.score - earned; /* the birth-day doubling: earned once more */
+    var lcs = (s.likes||0)*1 + (s.comments||0)*5 + (s.shares||0)*5 + (s.extShares||0)*10;
     rows=[
-      R("Born here", BIRTH+" — every citizen starts with "+BIRTH+", for claiming this world."),
       R("Creating", s.posts+" wall posts × "+V.posts+" = "+(s.posts*V.posts)+" — "+V.posts+" points for each thing you made."),
       R("Smart notes", s.notes+" notes × "+V.notes+" = "+(s.notes*V.notes)+" — "+V.notes+" for each note. Sharing intelligence is the heart of the system, so it is worth the most."),
-      R("Saves", s.saves+" saves × "+V.saves+" = "+(s.saves*V.saves)+"."),
+      R("Saves", (s.saves||0)+" saves × "+V.saves+" = "+((s.saves||0)*V.saves)+"."),
       R("Invites", (s.invitesSent||0)+" invites × "+V.invites+" = "+((s.invitesSent||0)*V.invites)+" — first invite per person, through the system."),
       R("Joins", (s.inviteJoins||0)+" joins × "+V.joins+" = "+((s.inviteJoins||0)*V.joins)+" — an invite become a member."),
-      R("Membership", ((s.memberBonus||0)>0 ? V.memberBonus+" — one time, never monthly. The leaderboard can't be bought." : "not on this ledger yet — 0. Worth "+V.memberBonus+" once, when it lands.")),
+      R("Membership", ((s.memberBonus||0)>0 ? V.memberBonus+" — one time, never monthly. The leaderboard can't be bought." : "0 — not on this ledger yet. The one-time bonus lands with your first membership.")),
       R("Sales", (s.sales||0)+" × 100 = "+((s.sales||0)*100)+" — no sale pipeline on this front yet."),
-      R("Likes · comments · shares", "0 — no engagement pipeline on this front yet. Honest 0, never faked."),
+      R("Likes · comments · shares", (s.likes||0)+" likes × 1 + "+(s.comments||0)+" comments × 5 + "+(s.shares||0)+" shares × 5 = "+lcs+" — no engagement pipeline on this front yet. Honest 0, never faked."),
+      R("Birth-day bonus", bonus+" — your first day doubles every point you earned, so the "+earned+" you earned counts twice."),
       R("Total", String(s.score)+" — every single point traces to something you did.", true)
     ];
   } else if(key==="funnel-recorded"||key==="funnel-opened"||key==="funnel-joined"){
@@ -15464,18 +15479,12 @@ function expectedFor(key, s){
        dial shows "+N gained", the honest expectation is the period delta, not
        the total. Without this, every pill click would paint a false red. */
     case "score":
-      /* PASS 1 v4 — TRUTH METER SCOPE: the dial follows the FEATURED holder.
-         When a link holds the featured role, the dial's honest number is that
-         link's clicks (the meter read "shows 171, spine says 300" — the dial
-         showed the joinus link, the meter expected the whole-world score).
-         Expect the featured dial when one is set — the same source
-         readSpine() uses. The meter still flags any real mismatch. */
-      var _fd=(typeof window!=="undefined"&&window._featuredDial)||null;
+      /* P2 — the dial reads the canonical spine score (readSpine() is
+         spine-first now), so the meter expects the spine: the total in
+         'all' mode, the spine's own period delta when a time pill is on.
+         The featured link's clicks are link stats, never the score — the
+         meter no longer blesses them as the dial's number. */
       var _m=(typeof window!=="undefined"&&window._tnTachoMode)||"all";
-      if(_fd){
-        if(_m!=="all" && _fd.deltas && typeof _fd.deltas[_m]==="number") return _fd.deltas[_m];
-        return _fd.score;
-      }
       if(_m!=="all" && s.deltas && typeof s.deltas[_m]==="number") return s.deltas[_m];
       return s.score;
     case "mix-total": return s.mixTotal;
@@ -15675,10 +15684,18 @@ else init();
   }
 
   function readSpine(){
-    /* 2026-11-05 — PASS 1: the featured holder re-points the dial. When a link
-       (or page) holds the featured role, the dial sweeps to that holder's
-       number, not the world score. The world spine is untouched — this is a
-       view over the ledger; the dial reads window._featuredDial every frame. */
+    /* P2 — ONE number, ONE source: the dial reads the live spine's canonical
+       score (2x the value table over earned counts), never a holder's clicks.
+       The featured link's clicks live where they belong — the featured
+       panel's stats, the Clicks orb, the link's own board — not on the
+       score dial. window._featuredDial survives below ONLY as the pre-spine
+       fallback, so the dial still lights while the ledger loads; the moment
+       the spine lands, the spine wins and the dial re-targets to it. */
+    var _sp0 = (typeof window !== 'undefined') ? window._osSpine : null;
+    if (_sp0){
+      var _sc0 = spineGet(_sp0, 'score');
+      if (typeof _sc0 === 'number' && isFinite(_sc0)) return { state:'live', score:_sc0, s:_sp0 };
+    }
     if (typeof window !== 'undefined' && window._featuredDial){
       var _fd = window._featuredDial;
       var _sp = (typeof window !== 'undefined') ? window._osSpine : null;
@@ -16485,16 +16502,20 @@ function ldData(){
            clickDayMap: window._dashClickDayMap||{} };
 }
 function ldScore(counts){
-  /* CANON — the full value table over displayed counts (gate check #10
-     reconciles this exact math, tolerance 0). Unwired counts are 0 with
-     honest labels; the formula never invents. */
+  /* CANON (P2) — ONE score, ONE source: the live spine's formula
+     (osBuildSpine, same file, same value table). Birth is NOT a flat 75 —
+     it is Shawn's locked 2026-11-01 one-time 2X multiplier on everything
+     earned (his example: (4 creating x25 + join 50) = 150 x 2 = 300).
+     Score = 2x the value table over displayed counts. Unwired counts are 0
+     with honest labels; the formula never invents. Windowed counts give
+     the windowed score by the same rule. */
   var v = LD_VALUES, c = counts || {};
-  return v.birth
-    + (c.posts||0)*v.posts + (c.notes||0)*v.notes + (c.saves||0)*v.saves
+  return 2 * (
+      (c.posts||0)*v.posts + (c.notes||0)*v.notes + (c.saves||0)*v.saves
     + (c.invs||0)*v.invites + (c.joins||0)*v.joins
     + ((c.member||0) > 0 ? v.memberBonus : 0)
     + (c.sales||0)*v.sales + (c.likes||0)*v.likes + (c.comments||0)*v.comments
-    + (c.shares||0)*v.shares + (c.extShares||0)*v.externalShares;
+    + (c.shares||0)*v.shares + (c.extShares||0)*v.externalShares);
 }
 function ldWindowCounts(PD, w){
   var counts = { notes:0, posts:0, msgs:0, invs:0, clicks:0, joins:0, saves:0, member:0 };
@@ -16733,15 +16754,14 @@ function osBuildSpine(d){
   /* 2026-11-01 — Shawn LOCKED: Birth is NOT a flat 75. It's a one-time 2X
      multiplier on everything earned in the first 24h. Base score = 0,
      then add actual earned points, then DOUBLE (birth bonus).
-     His example: (4 creating ×25 + join 50) = 150 × 2 = 300. */
-  s.score=0
-    + s.posts*VV.posts + s.notes*VV.notes + s.saves*VV.saves
-    + s.invitesSent*VV.invites + s.inviteJoins*VV.joins
-    + (s.memberBonus>0 ? VV.memberBonus : 0)
-    + s.sales*VV.sales + s.likes*VV.likes + s.comments*VV.comments
-    + s.shares*VV.shares + s.extShares*VV.externalShares;
-  /* BIRTH DAY BONUS: 2X on everything (one-time, first 24h) */
-  s.score = s.score * 2;
+     His example: (4 creating ×25 + join 50) = 150 × 2 = 300.
+     P2 — ONE score, ONE source: the score below IS ldScore() (same file,
+     same value table, same 2X) over this spine's own counts — the spine
+     and the board can never disagree, because there is only one formula. */
+  s.score = ldScore({posts:s.posts, notes:s.notes, saves:s.saves,
+    invs:s.invitesSent, joins:s.inviteJoins,
+    member:(s.memberBonus>0 ? 1 : 0), sales:s.sales, likes:s.likes,
+    comments:s.comments, shares:s.shares, extShares:s.extShares});
   /* COMPLETENESS — honest per-period score deltas. Windowed from the spine's
      OWN timestamp arrays with the spine's OWN values. Joins window from the
      link day-buckets (day granularity — honest for day/week/month; the hour
@@ -17092,7 +17112,7 @@ function loadPointsBoard(_t){
     if (window._ldDrawerKey) ldOpenNode(window._ldDrawerKey, true);
     /* 2026-11-05 — PASS 1: the gauge re-pointed (or the window changed) —
        refresh the featured panel + world boards, keep the big number on the
-       featured holder, and record which holder the gauge is showing. */
+       canonical score, and record which holder the gauge is showing. */
     try{ if (typeof window.renderBoards === 'function') window.renderBoards(); }catch(_){}
     try{ if (typeof window._featuredSyncBig === 'function') window._featuredSyncBig(); }catch(_){}
     try{ if (typeof window._featuredKey === 'function') window._featuredApplied = window._featuredKey(); }catch(_){}
@@ -17155,7 +17175,10 @@ function loadPointsBoard(_t){
           /* 2026-11-02 — SHAWN: Big number counts 0 -> score on load. Dynamic, alive.
              2026-11-05 — DEFECT FIX: was hardcoded 300. Now reads the live score
              from the spine (the same live score the gauge shows); falls back to
-             the orb total if the spine is ever unavailable. */
+             the orb total if the spine is ever unavailable.
+             P2: _featuredCenter() IS that live spine score (total in 'all' mode,
+             the spine's period delta when a time pill is on) — the big number
+             sweeps to the canonical score, never the featured link's clicks. */
           var displayTotal = (typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total);
           var startTs = null;
           function countBig(ts){
@@ -17897,8 +17920,18 @@ window.osLoadPointsBoard = loadPointsBoard;
     var spine = _spineScore(wt.total);
     if (h.kind === 'link'){
       var st = _linkStats(h.id);
-      view.center = st.clicksWin;
-      view.centerLabel = 'clicks · ' + _winLabel();
+      /* P2 — the big number is the SMART SCORE (the canonical spine score),
+         never the link's clicks. The clicks live in the panel stats below,
+         the Clicks orb and the link's own board. While the spine has not
+         landed yet, the link's clicks are the honest loading readout. */
+      var _sp2 = window._osSpine;
+      if (_sp2 && typeof _sp2.score === 'number' && isFinite(_sp2.score)){
+        view.center = _sp2.score;
+        view.centerLabel = 'Smart Score';
+      } else {
+        view.center = st.clicksWin;
+        view.centerLabel = 'clicks · ' + _winLabel();
+      }
       view.below = st.joinsAll;
       view.belowLabel = 'joins · all time';
       view.ctr = (st.clicksAll > 0) ? (st.joinsAll/st.clicksAll*100) : null;
@@ -17950,6 +17983,16 @@ window.osLoadPointsBoard = loadPointsBoard;
   };
   window._featuredKey = function(){ var v = window._featuredDisplay(); return v.kind + ':' + v.id; };
   window._featuredCenter = function(fallbackTotal){
+    /* P2 — the big number is the canonical score: the spine total in 'all'
+       mode, the spine's own period delta when a time pill is on — the same
+       target the gauge sweeps to, so needle, numeral and big number land
+       together. Only before the spine lands does the featured center apply. */
+    var s = window._osSpine;
+    if (s && typeof s.score === 'number' && isFinite(s.score)){
+      var m = window._tnTachoMode || 'all';
+      if (m !== 'all' && s.deltas && typeof s.deltas[m] === 'number') return s.deltas[m];
+      return s.score;
+    }
     var v = window._featuredDisplay();
     return (typeof v.center === 'number' && isFinite(v.center)) ? v.center : fallbackTotal;
   };
@@ -17993,9 +18036,10 @@ window.osLoadPointsBoard = loadPointsBoard;
   };
   window._featuredSyncBig = function(){
     try{
-      var v = window._featuredDisplay();
+      /* P2 — sync through the canonical center (spine score / period delta),
+         never the featured holder's clicks. */
       var bigVal = document.getElementById('os-se-val');
-      if (bigVal) bigVal.textContent = _fmt(v.center);
+      if (bigVal) bigVal.textContent = _fmt((typeof window._featuredCenter === 'function') ? window._featuredCenter(0) : 0);
     }catch(e){}
   };
   /* ---- world boards: one shared component ---- */
