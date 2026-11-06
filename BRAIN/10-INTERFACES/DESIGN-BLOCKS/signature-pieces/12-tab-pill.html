@@ -1,0 +1,194 @@
+<!-- ================================================================
+  NIA DESIGN SIGNATURE PIECE 12 — TAB / PILL — THE QUIET ELEMENT
+  DRAFT — the Clarity Confirmation Act is NOT stamped by Shawn; nothing here is law yet.
+  Act reference: Act §4.12 — ~/workspace/team-nitro/clarity-confirmation-act-DRAFT-20261106.md
+  CHECK: glows on hover. An element that does nothing on hover fails.
+  CRAFT (Shawn 00:31Z — optimized for what IT is): The most extraordinary tab: the quiet element, dark at rest, glowing on hover without lifting — molded to switch a view without shouting.
+  ROLLOUT (Shawn 00:31Z — Dashboard first, then Personal, then the rest): group 1 — first proved on Dashboard.
+  Harvested verbatim from:
+  - ~/workspace/smart-factory/harvested/dashboard.html L53-65
+  - ~/workspace/smart-factory/harvested/dashboard.html L66
+  - ~/workspace/smart-factory/harvested/dashboard.html L67-71
+  - ~/workspace/smart-factory/harvested/dashboard.html L72-82
+  - ~/workspace/smart-factory/harvested/dashboard.html L83-91
+  - ~/workspace/smart-factory/harvested/dashboard.html L92-95
+  - ~/workspace/smart-factory/harvested/dashboard.html L96-100
+  - ~/workspace/smart-factory/harvested/dashboard.html L101-107
+  - ~/workspace/smart-factory/harvested/dashboard.html L108
+  - ~/workspace/smart-factory/harvested/dashboard.html L109
+  - ~/workspace/smart-factory/harvested/dashboard.html L110-117
+  - ~/workspace/smart-factory/harvested/dashboard.html L118
+  - ~/workspace/smart-factory/harvested/dashboard.html L119
+  - ~/workspace/smart-factory/harvested/dashboard.html L120
+  - ~/workspace/smart-factory/harvested/dashboard.html L121
+  - ~/workspace/smart-factory/harvested/dashboard.html L122-123
+  - ~/workspace/smart-factory/harvested/dashboard.html L124
+  - ~/workspace/smart-factory/harvested/dashboard.html L125
+  - ~/workspace/smart-factory/harvested/dashboard.html L126
+  - ~/workspace/smart-factory/harvested/dashboard.html L127-131
+  - ~/workspace/smart-factory/harvested/dashboard.html L132
+  - ~/workspace/smart-factory/harvested/dashboard.html L133
+  - ~/workspace/smart-factory/harvested/dashboard.html L134-141
+  - ~/workspace/smart-factory/harvested/dashboard.html L1128
+  - ~/workspace/smart-factory/harvested/dashboard.html L1130
+  - ~/workspace/smart-factory/harvested/dashboard.html L1132
+  - ~/workspace/smart-factory/harvested/dashboard.html L1134-1135
+  - ~/workspace/smart-factory/harvested/dashboard.html L1137-1141
+  - ~/workspace/smart-factory/harvested/dashboard.html L1143-1144
+  - ~/workspace/smart-factory/harvested/dashboard.html L1146
+  - ~/workspace/smart-factory/harvested/dashboard.html L1148-1151
+  - ~/workspace/smart-factory/harvested/dashboard.html L1153
+  - ~/workspace/smart-factory/harvested/dashboard.html L1155
+  Factory path: ~/workspace/smart-factory/signature-pieces/12-tab-pill.html
+  Repo (canonical) path: BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/12-tab-pill.html
+  Notes: 
+  ================================================================ -->
+<style>
+/* --- VERBATIM HARVEST (do not restyle; compose only) --- */
+.naya-tabs {
+  position: sticky; top: 10px; z-index: 120;
+  display: flex; gap: 8px; align-items: center;
+  justify-content: safe center; /* centered when they fit, left-flow when they overflow */
+  overflow-x: auto; overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 10px 12px; border-radius: 999px;
+  background: rgba(5,5,7,.82);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 12px 32px rgba(0,0,0,.55), 0 2px 8px rgba(0,0,0,.5);
+}
+
+.naya-tabs::-webkit-scrollbar { display: none; }
+
+/* + Add pins to the right edge of the bar, always in reach. */
+.naya-tabs .add-tab {
+  background: #0b0b11;
+  border-style: dashed;
+}
+
+.naya-tab {
+  flex: 0 0 auto; display: inline-flex; align-items: center; gap: 9px;
+  padding: 10px 16px; border-radius: 999px; cursor: pointer;
+  background: linear-gradient(180deg,#17171f,#0a0a0f); /* Law 15: zero flat */
+  border: 1.5px solid #F8F7FB; /* bright white at rest — never a dead button */
+  color: #F8F7FB; font-weight: 800; font-size: 14px; letter-spacing: .02em;
+  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+  user-select: none; -webkit-user-select: none;
+  box-shadow: inset 0 2px 3px rgba(255,255,255,.45), inset 0 -3px 8px rgba(0,0,0,.55),
+    0 0 22px rgba(248,247,251,.4), 0 12px 26px rgba(0,0,0,.65);
+}
+
+.naya-tab:hover, .naya-tab:focus-visible {
+  border-color: var(--tab-color, #a06bff);
+  box-shadow: inset 0 1px rgba(255,255,255,.5), inset 0 -2px 6px rgba(0,0,0,.4),
+              0 0 0 1.5px var(--tab-color, #a06bff),
+              0 0 28px color-mix(in srgb, var(--tab-color, #a06bff) 75%, transparent),
+              0 14px 30px rgba(0,0,0,.6);
+  transform: translateY(-3px);
+  outline: none;
+}
+
+.naya-tab:hover .tab-jewel, .naya-tab:focus-visible .tab-jewel {
+  transform: rotate(45deg) scale(1.35);
+  box-shadow: 0 0 14px var(--tab-color, #a06bff), 0 0 34px color-mix(in srgb, var(--tab-color, #a06bff) 65%, transparent);
+}
+
+.naya-tab.active {
+  border-color: var(--tab-color, #a06bff);
+  box-shadow: 0 0 0 1.5px var(--tab-color, #a06bff),
+              0 0 22px color-mix(in srgb, var(--tab-color, #a06bff) 65%, transparent);
+}
+
+.naya-tab .tab-jewel {
+  width: 9px; height: 9px; flex: 0 0 auto;
+  transform: rotate(45deg); border-radius: 2px;
+  background: var(--tab-color, #a06bff);
+  box-shadow: 0 0 8px var(--tab-color, #a06bff);
+  transition: transform .25s cubic-bezier(.16,.84,.22,1), box-shadow .25s;
+}
+
+.naya-tab .tab-label { white-space: nowrap; }
+
+.naya-tab .tab-state { font-size: 12px; opacity: .9; margin-left: 2px; }
+
+/* Quick heart/star: one tap marks the tab right there — no menu digging. */
+.naya-tab .qact {
+  appearance: none; border: 1px solid transparent; background: transparent;
+  color: rgba(248,247,251,.38); font-size: 15px; line-height: 1;
+  width: 30px; height: 30px; border-radius: 50%; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0; margin-left: 2px; transition: color .2s, box-shadow .2s, transform .15s;
+}
+
+.naya-tab .qact:hover { transform: scale(1.15); color: #F8F7FB; }
+
+.naya-tab .q-heart.on { color: #a06bff; text-shadow: 0 0 10px #a06bff; }
+
+.naya-tab .q-star.on { color: #ffd45a; text-shadow: 0 0 10px #ffd45a; }
+
+.naya-tab .qact:focus-visible { outline: 2px solid #F8F7FB; outline-offset: 1px; }
+
+/* Compact density: twelve worlds in one bar — smaller pills, same laws. */
+.naya-tabs.compact { gap: 6px; padding: 8px 10px; }
+
+.naya-tabs.compact .naya-tab { padding: 8px 12px; font-size: 12.5px; gap: 7px; }
+
+.naya-tabs.compact .naya-tab .qact { width: 24px; height: 24px; font-size: 12px; margin-left: 1px; }
+
+.naya-tabs.compact .naya-tab .tab-edit { padding: 4px 8px; font-size: 12px; }
+
+.naya-tab .tab-edit {
+  border: 0; background: rgba(255,255,255,.10); color: #F8F7FB;
+  border-radius: 8px; padding: 3px 8px; cursor: pointer; font-size: 13px;
+  line-height: 1;
+}
+
+.naya-tab .tab-edit:hover { background: rgba(255,255,255,.20); }
+
+.naya-tab.add-tab { border-style: dashed; opacity: .85; }
+
+/* anchored menu + editor popover */
+.naya-tabs-menu, .naya-tabs-pop {
+  position: fixed; z-index: 1000; display: none;
+  background: linear-gradient(180deg, #101018, #08080c);
+  border: 1px solid rgba(255,255,255,.16); border-radius: 14px;
+  box-shadow: 0 22px 60px rgba(0,0,0,.6), 0 0 24px rgba(160,107,255,.12);
+  color: #F8F7FB;
+}
+
+.tog-chip { --sc: #a06bff; padding: 11px 22px; border-radius: 999px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; color: rgba(255,255,255,.5); background: linear-gradient(180deg, #15151b, #09090d); border: 1px solid rgba(255,255,255,.1); box-shadow: inset 0 1px 0 rgba(255,255,255,.08), inset 0 -2px 6px rgba(0,0,0,.45), 0 8px 22px rgba(0,0,0,.5); transition: all .22s var(--ease); }
+
+.tog-chip:hover { color: rgba(255,255,255,.9); transform: translateY(-2px); border-color: rgba(255,255,255,.22); }
+
+.tog-chip.on { color: #fff; border-color: color-mix(in srgb, var(--sc) 65%, transparent); background: linear-gradient(180deg, #1d1528, #0c0812); box-shadow: inset 0 1px 0 rgba(255,255,255,.14), inset 0 -2px 8px rgba(0,0,0,.5), 0 0 24px -4px var(--sc), 0 8px 24px rgba(0,0,0,.55); }
+
+/* ============ ROOM CONTROLS — living upgrade: cursor sheen, proximity wake, pulse ============ */
+.seg-tab, .like-pill, .act-chip, .tog-chip, .day-dot, .send-cta { position: relative; }
+
+.seg-tab::before, .like-pill::before, .act-chip::before, .tog-chip::before, .day-dot::before, .send-cta::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none; opacity: 0; transition: opacity .28s var(--ease);
+  background: radial-gradient(110px 110px at var(--mx,50%) var(--my,50%), rgba(255,255,255,.14), rgba(255,255,255,.03) 45%, transparent 68%);
+}
+
+.seg-tab.lv-aware::before, .like-pill.lv-aware::before, .act-chip.lv-aware::before,
+.tog-chip.lv-aware::before, .day-dot.lv-aware::before, .send-cta.lv-aware::before { opacity: 1; }
+
+.seg-tab.lv-aware, .like-pill.lv-aware, .act-chip.lv-aware, .tog-chip.lv-aware, .day-dot.lv-aware { border-color: rgba(255,255,255,.22); }
+
+.seg-tab.on::after, .like-pill.on::after, .act-chip.on::after, .tog-chip.on::after, .day-dot.on::after {
+  content: ""; position: absolute; inset: -1px; border-radius: inherit; pointer-events: none;
+  box-shadow: 0 0 20px -2px var(--sc); opacity: .4; animation: ctrl-pulse 4s ease-in-out infinite;
+}
+
+  .seg-tab.on::after, .like-pill.on::after, .act-chip.on::after, .tog-chip.on::after, .day-dot.on::after { animation: none; opacity: .4; }
+
+  .seg-tab::before, .like-pill::before, .act-chip::before, .tog-chip::before, .day-dot::before, .send-cta::before { display: none; }
+</style>
+
+<!-- SPECIMEN-START -->
+<div class="naya-tabs"><button class="naya-tab"><span class="tab-jewel"></span>{{tab_label}}</button></div>
+<button class="seg-tab">{{label}}</button>
+<button class="tog-chip">{{label}}</button>
+<!-- SPECIMEN-END -->
