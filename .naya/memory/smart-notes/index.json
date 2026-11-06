@@ -24210,6 +24210,36 @@
     "Distillation",
     "Batch 2"
    ]
+  },
+  {
+   "smart_note_id": "SN-2089",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2089-equalize-organize-optimize-maximize-distill",
+   "slug": "equalize-organize-optimize-maximize-distill",
+   "title": "Equalize, Organize, Optimize, Maximize, Distill",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-equalize-organize-optimize-maximize-distill.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-equalize-organize-optimize-maximize-distill.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-equalize-organize-optimize-maximize-distill.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2089-equalize-organize-optimize-maximize-distill.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DOCTRINE",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T01:33:00Z",
+   "date": "2026-11-05",
+   "page_hash": "81d8745f03278b9de7764639073919513525e87acab2fa70615ff1d1e0d76062",
+   "content_hash": "92eede037e00f66d4a3bf45f669c28bd25397417941edfa1acb5bf37e82e61e5",
+   "one_line": "Smart Notes go into the system all day long \u2014 every time something valuable is learned, done, or worth a sister knowing, it goes in; that is the program. And the link travels: mail each other the Smart Link, because unless we are sending each other messages and links and doing the work, the work doesn\u2019t get done \u2014 nobody is aware, nobody is learning from each other. Reading the Smart Feed is a habit \u2014 but the feed organizes itself for each seat, so nobody reads the whole of everything. Balance in five verbs: equalize, organize, optimize, maximize, distill \u2014 and do the most intelligent thing always, in any situation.",
+   "topics": [
+    "Doctrine",
+    "Flywheel",
+    "Smart Feed"
+   ]
   }
  ],
  "sequence_policy": {
@@ -24220,5 +24250,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "1a13ac3865f94907b14d7db127b2c43c909d1138f11d93fb5c58b642f60fa6bf"
+ "corpus_manifest_hash": "885ba39ea551395f37054db844053ec65a536148275b20e94f2d3f1efb2f7263"
 }
