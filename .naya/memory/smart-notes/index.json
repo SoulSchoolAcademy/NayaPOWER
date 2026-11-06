@@ -30124,6 +30124,37 @@
     "Strategy",
     "Learning"
    ]
+  },
+  {
+   "smart_note_id": "SN-0030",
+   "intelligent_block_id": "IB-SMART-NOTE-20261106-sn0030-daily-top-10-compounds",
+   "slug": "daily-top-10-compounds",
+   "title": "Note It, Share It, Put It in the System \u2014 The Daily Top 10 Compounds",
+   "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/compounding/SN-0030/IB-SMART-NOTE-20261106-sn0030-daily-top-10-compounds.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/compounding/SN-0030/IB-SMART-NOTE-20261106-sn0030-daily-top-10-compounds.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/compounding/SN-0030/IB-SMART-NOTE-20261106-sn0030-daily-top-10-compounds.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn0030-daily-top-10-compounds.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DOCTRINE",
+   "captured_at": "2026-11-06",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-power",
+   "registered_at": "2026-11-06T19:57:13Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-06",
+   "page_hash": "2d61bc32e0a98601b060b0be4590985a36a1cdfc67f2abef8a595082978a15fb",
+   "content_hash": "49713b1748775a3053e75b01fce2f4841142aff35c8313ece04d8bf57b04e756",
+   "one_line": "Shawn's direction, 2026-11-06: if the highest-value things we have learned are shared with the sisters, with Antoinette, with the people \u2014 and if we continuously put the top 10 highest-value lessons and intelligence into the system every day \u2014 it compounds. Even if only our team does it right, all of us, and then it goes live, the power is in the compounding. But if you do not note it, you do not share it, you do not put it in the system, nobody is aware of it. The top 10 can be 10 different Smart Notes, or one complete Smart Note, or a note \u2014 the form is flexible; the noting is not. The system works like this: the ingest is dictation \u2014 Shawn's vision, goal, mission, spoken and input \u2014 and the rest of the system is mostly Smart Notes and notes. Everything gets put into a Smart Box per person, per person, and then there is a collective box, an intelligent network, called NayaNET. That is the whole machine: dictation in, Smart Notes and notes as the working material, a Smart Box for each person, and NayaNET as the collective box where it all compounds.",
+   "topics": [
+    "System",
+    "Doctrine",
+    "Compounding"
+   ]
   }
  ],
  "sequence_policy": {
@@ -30134,5 +30165,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "dfc3a289fb7e9adddb757a4e5dd36a407f3dec81eb403237fc11ebdf20224f6f"
+ "corpus_manifest_hash": "883bc464d57f5be5b6802e704400c65794c5e9e11c79ae071e78ea04bd7d8d43"
 }
