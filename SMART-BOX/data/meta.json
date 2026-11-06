@@ -1,10 +1,10 @@
 {
  "harvested_at": "2026-11-06T02:09:12Z",
  "source": "~/workspace/nitro-smart-box/store/entries.jsonl",
- "sha256": "888059e7a0fbc1d546f6021c94f5e333b3852c6ba937141ae3a459d295680a22",
+ "sha256": "d01fabdeb15056da777d355ccba55a51f60a586ca36906d5f77b747d4a529980",
  "count": 2086,
  "next_id": 2087,
  "note": "Snapshot copy only. Canonical data source is the harvested store. A scheduled harvest->KV refresh is owed.",
- "corrected_at": "2026-11-06T02:40:00Z",
- "corrections": "SB-1941 date 2026-11-06 55:07Z -> 2026-11-06 00:55:07Z (source memory/2026-11-06.md:179 heading 'Act Revision 2 LANDED 00:55:07Z'; harvest dropped the '00:'); links added to 4 of the top-5 featured entries (SB-2079 SN-2089, SB-2007 SN-2077, SB-1954 SN-2084, SB-1941 Act draft); SB-0021 has no filed note. Harvest stamp unchanged; this is a correction, not a re-harvest."
+ "corrected_at": "2026-11-06T02:30:16Z",
+ "corrections": "8 malformed dates corrected (harvest dropped the 'HH:' from the time; each correct value cited from the entry's own title / source heading): SB-1941 55:07Z -> 00:55:07Z; SB-0785 45:22Z -> 20:45:22Z; SB-0906 25:53Z -> 17:25:53Z; SB-0907 27:24Z -> 17:27:24Z; SB-0908 27:58Z -> 17:27:58Z; SB-0958 47:05Z -> 21:47:05Z; SB-1939 29:03Z -> 00:29:03Z; SB-1956 36:32Z -> 01:36:32Z. Links added to 4 of the top-5 featured entries (SB-2079 SN-2089, SB-2007 SN-2077, SB-1954 SN-2084, SB-1941 Act draft); SB-0021 has no filed note. SB-0847 '5:12Z' left as-is: the source heading itself writes '5:12Z'. Harvest stamp unchanged; this is a correction, not a re-harvest."
 }
