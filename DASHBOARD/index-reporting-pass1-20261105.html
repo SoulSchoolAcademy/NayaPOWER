@@ -18499,8 +18499,13 @@ function loadPointsBoard(_t){
           totalPts += pp;
         });
       }
-      var displayNum = _salesLoading ? '—' : ((pctMode && totalPts > 0 && !((typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(node.key)))
-        ? Math.round(pts/totalPts*100)+'%'
+      /* 2026-11-06 — v7.2 FIX F4: a zero windowed total is still % mode — a
+         points orb reads "0%", never a bare "0" under "% OF SCORE".
+         0 points is 0% of a zero total, the same reading a zero-point orb
+         already settles as when the total is > 0. Count-only orbs and the
+         '—' loading state are untouched. */
+      var displayNum = _salesLoading ? '—' : ((pctMode && !((typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(node.key)))
+        ? (totalPts > 0 ? Math.round(pts/totalPts*100)+'%' : '0%')
         : fmtCompact(pts));
       /* 2026-11-02 — THE 12 CHARTS #9: SPARKLINES. Tiny trend on each orb.
          7-day sparkline from live data. Momentum at a glance. */
@@ -18546,7 +18551,7 @@ function loadPointsBoard(_t){
         '<span class="os-ld-gear" aria-hidden="true"></span>'+
         badge + trend +
         '<span class="os-ld-icon">'+node.jewel+'</span>'+
-        '<span class="os-ld-n" data-nn="'+node.key+'" data-full="'+pts+'" data-pct="'+(pctMode && totalPts>0 ? Math.round(pts/totalPts*100) : '')+'">'+displayNum+'</span>'+
+        '<span class="os-ld-n" data-nn="'+node.key+'" data-full="'+pts+'" data-pct="'+(pctMode ? (totalPts>0 ? Math.round(pts/totalPts*100) : 0) : '')+'">'+displayNum+'</span>'+
         '<span class="os-ld-lbl">'+_lbl+'<span class="os-ld-unit">'+(_isCount ? 'COUNT' : (pctMode ? '% OF SCORE' : 'PTS'))+'</span></span>'+spark+'</button>'; /* 2026-11-02 — Shawn: proper label, well designed. v7.1 FIX 1b: the unit rides under the name. */
     });
     box.innerHTML = html;
@@ -18796,8 +18801,12 @@ function loadPointsBoard(_t){
           document.querySelectorAll('.os-ld-n').forEach(function(el){
             var key = el.getAttribute('data-nn');
             var pts = parseInt(el.getAttribute('data-full') || '0', 10);
-            if (isPct && total > 0 && !((typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(key))){
-              el.textContent = Math.round(pts/total*100) + '%';
+            /* 2026-11-06 — v7.2 FIX F4: same zero-total rule as the render —
+               a flip to % in a window with no points yet reads "0%", and
+               data-pct carries 0 so a later re-render's countFrom keeps it. */
+            if (isPct && !((typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(key))){
+              el.textContent = (total > 0 ? Math.round(pts/total*100) : 0) + '%';
+              try{ el.setAttribute('data-pct', String(total > 0 ? Math.round(pts/total*100) : 0)); }catch(e){}
             } else {
               try { el.textContent = pts.toLocaleString(); } catch(e) { el.textContent = pts; }
             }
