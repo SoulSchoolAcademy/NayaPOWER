@@ -173,7 +173,7 @@ function score(e,asof){
 }
 function renderFeed(){
   const asof=new Date();
-  const ranked=ALL.filter(e=>e.status!=='TEST').map(e=>[score(e,asof),e]).sort((a,b)=>b[0]-a[0]||(b[1].date>a[1].date?1:-1));
+  const ranked=ALL.filter(e=>e.status!=='TEST').map(e=>[score(e,asof),e]).sort((a,b)=>b[0]-a[0]||(b[1].date<a[1].date?-1:b[1].date>a[1].date?1:0));
   $('feed-list').innerHTML=ranked.slice(0,10).map(([s,e])=>entryHTML(e,s)).join('')||'<p class="mut">Feed loads with the full store.</p>';
 }
 function doSearch(){
