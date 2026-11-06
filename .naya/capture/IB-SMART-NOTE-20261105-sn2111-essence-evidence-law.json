@@ -1,0 +1,53 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2111",
+  "title": "Asserted Is Not Verified: The Evidence Law",
+  "slug": "essence-evidence-law",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-evidence-law.md",
+  "tone": "gold",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:29:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Inference stated as fact is the root defect of the corpus, and every rule here makes its cure mechanical: verification happens in a clean room at the exact pinned SHA (SN-028); authorization binds to (action, SHA, moment) and inherits nothing (SN-029); the pushed bytes and the merged artifact are what get judged, at the pin, with negatives that can actually fail (SN-050, SN-061); comparisons resolve both sides at their own refs (SN-043), evidence channels match the question (SN-036), and absence claims show the search actually ran (SN-067). A bound hash is not a computation, a version label is not an evaluation, and invocation is not consumption is not enforcement (SN-063, SN-084, SN-073) — and no fix is proven until its failing case has been published red on the frozen SHA (SN-066).",
+    "human_view": "This is the system's honesty code. Nobody gets to say \"it's done,\" \"it's safe,\" or \"it works\" because it feels true or because their own test said so. Someone independent checks the exact thing, in a clean place, against the actual bytes that shipped. Labels don't count — a sticker saying \"inspected\" is not an inspection. And when someone claims \"there are none,\" they have to show the search that looked.",
+    "child_view": "Imagine your friend says \"I cleaned my room!\" You don't just believe it — you go and look. And you look at *their* room, not a picture of a different room. If they show you a sticker that says \"clean,\" that's not the same as a clean room. And if they say \"there are no toys on the floor,\" they have to actually look at the floor first.",
+    "grandma_view": "Dear, it's the old rule: trust, but verify — and verify properly. The person who did the work doesn't grade it; a fresh pair of eyes checks the real thing, not a description of it. A label on the jar isn't proof of what's inside. And a claim that something *isn't* there needs a real search, not a glance. Plain honesty, made into procedure.",
+    "ai_view": "Bound every claim to its evidence class and its exact ref. Verify in a clean room at the pinned SHA (SN-028); treat authorization as SHA-bound and non-hereditary (SN-029); re-verify after merge, at the pin, with controls that can fail (SN-061). Resolve comparisons at each side's own ref (SN-043), query the channel that matches the question (SN-036), and attach the exact command, untruncated, to every absence claim, stated as a lexical finding rather than proof of non-existence (SN-067). AST-check \"cosmetic\" claims (SN-034), locate every cited premise in the pinned bytes (SN-035), and audit capability on the branch under audit (SN-065). Never let a bound hash, a version label, or an invocation stand in for evaluation, consumption, or enforcement (SN-063, SN-084, SN-073); publish the red before you publish the fix (SN-066).",
+    "what_it_means": "Fifteen notes are one law with fifteen mechanisms: a claim is worth exactly the evidence physically behind it — independent, at the exact bytes, through the right channel, with the failure modes named. A cold reader holding only this essence can still audit any claim the system makes, which is precisely what these notes were written to make possible.",
+    "whats_inside": [
+      "Inference stated as fact is the root defect; every claim carries its evidence class or it is not made (SN-020).",
+      "Independence is physical: clean room, exact SHA, builder's tree never trusted (SN-028); authorization is (action, SHA, moment) and inherits nothing (SN-029).",
+      "Judge the pushed bytes and the merged artifact, at the pin, with non-vacuous negatives (SN-050, SN-061).",
+      "Comparisons resolve both sides at their own refs, at one commit (SN-043); the evidence channel must match the question (SN-036); absence proofs must show the search actually ran — untruncated, and stated as lexical findings, never as ontological proof (SN-067).",
+      "Named defect classes: cosmetic-only claims, phantom citations, branch-boundary overclaims (SN-034, SN-035, SN-065).",
+      "A receipt proves what it binds: config hash ≠ computation, version label ≠ evaluation, invocation ≠ consumption ≠ enforcement (SN-063, SN-084, SN-073).",
+      "No red on the frozen SHA, no proof of fix (SN-066)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-1"
+    ],
+    "covers": [
+      "SN-020",
+      "SN-028",
+      "SN-029",
+      "SN-034",
+      "SN-035",
+      "SN-036",
+      "SN-043",
+      "SN-050",
+      "SN-061",
+      "SN-063",
+      "SN-065",
+      "SN-066",
+      "SN-067",
+      "SN-073",
+      "SN-084"
+    ]
+  },
+  "page_hash": "36074d1b2f87dc8c8c07aae3d233c27460cc763c4ab973a53a5594efda922de1",
+  "content_hash": "ad03e4563acacbee1a9fd397c9776c453f527891ae201e9bad0ddc7f79ba9235"
+}

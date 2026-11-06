@@ -1,0 +1,39 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2107",
+  "title": "The Machinery of Intelligence: Notes, Blocks, and the Nine Nodes",
+  "slug": "essence-the-foundation",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-foundation.md",
+  "tone": "magenta",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:29:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A Smart Note is the human command that starts the capture process; the thing the machine actually keeps is an Intelligent Block; and the nine Master Nodes are not nine copies of the note but the nine processing responsibilities of the organism (SN-002). Captured intelligence is not automatically *active* intelligence — it becomes active only when its meaning is preserved, its truth and authority boundaries are understood, it is connected to canonical intelligence, and an authorized successor can retrieve and use it (SN-015). A still-unratified proposal would sharpen capture further: give every captured intelligence a retention class and a capture type, and route each block through the nine nodes in a defined processing order (SN-011).",
+    "human_view": "When you say \"remember this,\" two different things happen: your words start the process, and the system keeps a structured piece of intelligence — not a transcript. Nine different responsibilities then work on it: checking it, connecting it, learning from it. And a note only counts as real intelligence if it is connected to what the system already knows and can actually be found and used later by whoever needs it. A filing cabinet nobody can open isn't memory.",
+    "child_view": "Imagine you tell a librarian \"save this idea!\" Your words are the request. What goes on the shelf is a neat card with the idea written properly. Then nine helpers each do one job with the card — one checks it's true, one puts it with similar cards, one learns from it. If the card goes in a locked drawer nobody can open, it doesn't count — a saved idea has to be findable to be useful.",
+    "grandma_view": "Dear, it's like dictating a letter versus the letter itself. Your instruction starts it; the written, filed letter is what lasts. A household of nine careful clerks each handles one part of filing it properly. And a letter filed where no one can ever find it again might as well not have been kept — the keeping only counts when it can be retrieved and used.",
+    "ai_view": "Hold the three layers apart mechanically: capture command (Smart Note), kept object (Intelligent Block), processing responsibilities (the nine nodes) (SN-002). Never describe stored text as intelligence until it passes the activation test — meaning preserved, boundaries understood, connected to canon, retrievable by an authorized successor, usable (SN-015). Treat SN-011's retention classes and capture types as a proposal in every citation; if you build toward them, label the build as proposal-driven (SN-011).",
+    "what_it_means": "Three September notes define the machine's basic anatomy: what a capture is, what is kept, who processes it, and when kept intelligence counts as alive. Everything else in the system — evidence law, qualification, composition — operates on these objects, so a cold reader who holds this essence holds the nouns the rest of the corpus conjugates.",
+    "whats_inside": [
+      "Note ≠ block ≠ nodes: the Smart Note is the capture command, the Intelligent Block is the canonical kept object, the nine nodes are processing responsibilities, not copies (SN-002).",
+      "The node sequence is SELF → LAW → ACT → KNOW → PROVE → CONNECT → VERIFY → LEARN → EVOLVE (SN-002); SN-011's proposed processing order is a proposal, never to be blended into the canonical listing.",
+      "The nine nodes are assigned responsibilities, not proven runtime behavior: universal nine-node runtime binding is NOT PROVEN, and no claim in this essence may be read as all nine firing on every note today (SN-002).",
+      "Stored ≠ active: intelligence counts only when connected, bounded, retrievable by an authorized successor, and usable (SN-015).",
+      "The proposed retention classes (CORE / REUSABLE INTELLIGENCE / CONTEXT / REFERENCE / EPHEMERAL) and the ten proposed capture types (Decision · Lesson · Principle · Discovery · Mistake · Constraint · Procedure · Question · Outcome · Current state) are an unratified proposal (SN-011) — useful as a design direction, citable never as law."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-1"
+    ],
+    "covers": [
+      "SN-002",
+      "SN-011",
+      "SN-015"
+    ]
+  },
+  "page_hash": "d54b53a13e7e9291f96c13dfdb0a4308ea6a7856b64f534c65f49a281827f5b4",
+  "content_hash": "f9b52e0fb06352882f9660d0d59000cc5c4e3c8436a0948c53f5b76a589feb48"
+}

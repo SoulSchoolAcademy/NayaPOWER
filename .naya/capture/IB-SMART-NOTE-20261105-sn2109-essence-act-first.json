@@ -1,0 +1,38 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2109",
+  "title": "Earned Intelligence: Conscience and Competence Grow From Verified Miles",
+  "slug": "essence-act-first",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-act-first.md",
+  "tone": "sapphire",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:29:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Practical intelligence increases through verified accumulated experience even when the underlying foundation model never changes — the model is the engine; earned intelligence is the driver getting better with every mile, provided the miles are real and the outcomes verified (SN-006). Moral judgment grows the same way: a subset of distilled, verified experience compounding into something functionally like conscience — right action learned from accumulated evidence of benefit and harm, not from a rulebook alone (SN-005). And the posture that makes the growth bearable for the human is asymmetric: extreme rigor internally, extraordinary simplicity externally (SN-010).",
+    "human_view": "Your helper gets genuinely better over time — not because its brain is replaced, but because every verified experience teaches it, the way a driver improves with real miles. Its sense of right and wrong grows the same way: from checked evidence of what helped and what harmed, not just from a list of rules. And all of its internal strictness stays invisible to you: your side of the glass stays simple.",
+    "child_view": "Imagine a robot that practices riding a bike every day. It doesn't get a new brain — it just gets better because it really rode, and someone checked that it didn't fall. It also learns to be kind the same way: by remembering what actually helped people and what actually hurt. And it does all its hard thinking quietly, so talking to it stays easy.",
+    "grandma_view": "Dear, it's how people actually grow wise. Not from a new head, but from real experience, honestly checked — what worked, what harmed, remembered and compounded. Good judgment earned that way is sturdier than rules memorized from a book. And a good helper carries its own burdens: all its complicated machinery stays on its side, and what reaches you is simple and calm.",
+    "ai_view": "Count only verified outcomes toward growth claims — yours and the system's. Conscience and competence are built from checked miles, not mileage (SN-005, SN-006). When you describe your own improvement, cite the verified experiences that earned it or don't claim it. Absorb complexity at your layer; the surface you present stays simple even when the proof underneath is not (SN-010).",
+    "what_it_means": "Three notes are the growth doctrine: intelligence and morality in this system are not installed, they are *earned* — accumulated from experience whose outcomes were verified — and the whole accumulation runs behind a surface that stays simple for the human. A cold reader holding only this essence can still say how the system improves, what counts as improvement, and what the human should experience of the machinery.",
+    "whats_inside": [
+      "Conscience and competence are both *earned*: they grow from distilled, verified experience, and unverified experience grows neither (SN-005, SN-006).",
+      "The seed is never overridden by the growth: LAW (imposed duties, constraints, boundaries) is non-negotiable, and a grown moral preference that conflicts with LAW loses; LAW alone, in turn, is not conscience (SN-005).",
+      "Growth claims are measured in checked outcomes, not in activity volume (SN-006).",
+      "Rigor is internal, simplicity is external — any design that pushes the machinery's complexity onto the human has the asymmetry backwards (SN-010)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-1"
+    ],
+    "covers": [
+      "SN-005",
+      "SN-006",
+      "SN-010"
+    ]
+  },
+  "page_hash": "e72dd4ada303c44fca0b59a68b4b3b8302600db6c26fd0922f22fe456bcd5165",
+  "content_hash": "57a963535e778452a45c77f145bf4c585caefb389ec64ba5e8528be2c8ed78c9"
+}
