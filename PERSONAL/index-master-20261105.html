@@ -11797,6 +11797,37 @@ html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
     0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--red);}
 .nsb-status{font-size:13px;color:#fff;opacity:.7;margin:8px 16px 10px;min-height:18px;}
+/* ============ P10 2026-11-06 — SHORT-VIEWPORT BAR SLIM (scorecard SN-2102) ============
+   At 638x444 / 390x444 the fixed bottom bar (142 px) covered the first-paint
+   hero buttons: row 1 (#myworldbtn/#joinbtn, doc 294-340) sat 38 px under it
+   and rows 2-3 were fully behind it. Body padding cannot fix first paint —
+   it only protects max scroll. So at short heights ONLY (max-height:500px;
+   desktop 1920x998, 638x844 and 390x844 are untouched) the bar slims:
+   (1) the .nsb-status line leaves the flow — it floats as a toast just above
+   the bar, hidden when empty. It MUST leave the flow rather than merely
+   collapse when empty: say() messages persist until the next say(), so an
+   in-flow collapse would let the bar re-grow 36 px on any tab action and
+   re-cover row 1, and body padding-bottom (set from offsetHeight by pad())
+   would go stale. As a toast the bar height is constant in every state and
+   the message is still shown. (2) pill-row padding 10/18 -> 6/8 (-14 px).
+   (3) inner padding 10/12 -> 6/8 (-8 px). Bar: 142 -> 84 px at 638 wide
+   (top 360 vs row-1 bottom 340: 20 px clear), 140 -> 82 px at 390 wide
+   (top 362 vs row-1 bottom 338: 24 px clear). Tabs keep their 44 px+
+   min-height / 55 px rendered height — touch targets untouched. Rows 2-4
+   of the hero actions still sit behind the bar at scroll 0 (they span doc
+   294-508 in a 444 px viewport — no bar of any height clears all four
+   rows at first paint); they clear after a 56-170 px scroll, as before.
+   Re-check if the quick-access prototype lands (it adds a hero button and
+   raises the phone cover band). */
+@media (max-height:500px){
+  .nsb-bottom .nsb-status{position:absolute;left:16px;right:16px;bottom:calc(100% + 6px);
+    margin:0;padding:6px 10px;min-height:0;
+    background:rgba(3,3,5,.94);border:1px solid rgba(255,255,255,.14);border-radius:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,.6);}
+  .nsb-bottom .nsb-status:empty{display:none;}
+  .nsb-bottom .nsb-row{padding:6px 24px 8px;}
+  .nsb-bottom-inner{padding:6px 16px 8px;}
+}
 /* ============ MOTION ============ */
 @media (prefers-reduced-motion: reduce){
   .nsb-tab,.nsb-search-btn{transition:none;}
