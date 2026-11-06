@@ -1,7 +1,68 @@
 {
  "generated_from": "registry@046c417c",
- "count": 1117,
+ "count": 1118,
  "notes": [
+  {
+   "id": "IB-SMART-NOTE-20261106-sn2077-the-intelligent-block-rules",
+   "title": "The Intelligent Block Rules — RATIFIED",
+   "created": "2026-11-06T00:58:49Z",
+   "created_at": "2026-11-06T00:58:49Z",
+   "subtitle": "What an intelligent block IS, section by section — harvested, not invented: one set of laws (real objects, one light, real shadow, own-color ignition, white text, physical touch, spectrum order) running through every button, board, icon and page — capped by the only test that finally matters: is it alive, is it layered, does it feel dimensional and real? RATIFIED by Shawn, 2026-11-05: \"Yes — ratify the Rules, distribution moves now.\"",
+   "topics": [
+    "Design",
+    "System",
+    "Intelligent Blocks"
+   ],
+   "topic": "Design",
+   "tone": "indigo",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "IN A NUTSHELL",
+     "color": "white",
+     "tier": "primary",
+     "body": "What an intelligent block IS, section by section — harvested, not invented: one set of laws (real objects, one light, real shadow, own-color ignition, white text, physical touch, spectrum order) running through every button, board, icon and page — capped by the only test that finally matters: is it alive, is it layered, does it feel dimensional and real? RATIFIED by Shawn, 2026-11-05: \"Yes — ratify the Rules, distribution moves now.\""
+    },
+    {
+     "name": "Human Note",
+     "key": "HUMAN NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "These are the rules for what an intelligent block is — every section, every color, every size — gathered from the designs that already exist, never invented. Follow them and the block always comes out beautifully: a real, layered, living object you can feel. Shawn ratified them on 2026-11-05; they are law now, and they live everywhere Naya is built."
+    },
+    {
+     "name": "Child Note",
+     "key": "CHILD NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "It is the recipe book for making the magical blocks — how big, what color, what each part says — written down so nobody has to guess. The most important rule of all: it has to feel alive, like a real thing you could touch."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "GRANDMA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Dear, somebody finally wrote down exactly how the beautiful things are made — every part, every color, every size — so the next person makes them just as beautifully. And the director said yes: it is the law of the house now."
+    },
+    {
+     "name": "Naya Note",
+     "key": "NAYA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Harvest-only specification: L1–L11 laws, denominators D1–D5 tested against sources, per-class application (buttons/boards/icons/inputs/gauges/apps), the block section-by-section (title/quote, date line, nutshell, Human/Child/Grandma/Naya layers, What It Means, layer board, jewel, voice prohibition, provenance). Conflicts C1–C10 and gaps G1–G11 stand as NAMED open items inside the ratified text; none was silently resolved. Ratification: Shawn Vibert, 2026-11-05 16:58 PST (\"1000% YES\" + explicit word). Distribution: this registration + the canon document header + board #3066 + seats’ standing law; ethics text, NIA design contract and Factory inventory proceed as the named program."
+    },
+    {
+     "name": "What It Means",
+     "key": "WHAT IT MEANS",
+     "color": "white",
+     "tier": "lens",
+     "body": "Ratification converts a faithful harvest into the law every builder is judged by. The capstone rules the rules: alive, layered, dimensional — or it is not done, however many sections it passes. The open conflicts and gaps are part of the law’s honesty: they are named, owned, and settled one by one under the director’s eye, starting with the v5 board edit."
+    }
+   ]
+  },
   {
    "id": "IB-SMART-NOTE-20261105-sn2078-the-body-of-the-internet-collective-change-technology",
    "title": "The Body of the Internet — Collective Change Technology",
