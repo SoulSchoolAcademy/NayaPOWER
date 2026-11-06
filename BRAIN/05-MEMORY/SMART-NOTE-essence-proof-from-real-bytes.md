@@ -1,0 +1,68 @@
+# SN-2145 — Proof from Real Bytes: Evidence Is Measured, Never Narrated
+
+**Status: VERIFIED ESSENCE — VERIFIED (verifier-oct-1).** Distilled from 15 raw notes by the oct-1 maker seat; independently verified by a different seat. Verified without correction (verifier-oct-1). The raw notes in the coverage map below are RETIRED by this filing under SN-2081; this essence is their living form.
+
+## Essence
+
+Evidence is a measurement taken from real bytes, never a story told about them. The universal verification method is fixed: measure before design; trace the canonical path — MAIN → PRs → BRANCHES → COMMITS → FILES → TESTS → RUNTIME → EVIDENCE — without stopping at the first plausible answer; separate substance from claim; attack the claim by asking what would make it false and then trying it; refuse unsupported certification; and name the state precisely from the eight-state vocabulary — PROVEN, DOCUMENTED, IMPLEMENTED, UNKNOWN, BLOCKED, CONFLICTED, STALE, FAILED (SN-0296). UNKNOWN is a successful verification outcome: a verifier who declines to certify has done the job, and one who upgrades UNKNOWN to PASS because the implementation looks right has failed it (SN-0296). The verifier is itself verified — defects are planted unknown to the verifier and detection is measured — because a checker that has learned which five tests earn green becomes ceremony (SN-0296). The system's health metric is not zero overclaims but mean time from overclaim to correction (SN-0296).
+
+Claims bind to artifacts, and artifacts bind to refs. Verify the asset itself, and when it is absent, record the absence as the finding — an absence honestly recorded is evidence; an absence silently skipped is a hole (SN-0272). Path presence is not content presence: a file existing at a path proves nothing about its bytes, so hash the bytes (SN-0278). A producer-computed string is not evidence — the acceptance sequence is mechanical: clean worktree, measure, commit, rev-parse, push, check the exit code, confirm remote-tip equality, then report (SN-0302). Measure before design at the claim level too: pin the base SHA, classify into the five evidence tiers, keep NOT_PROVEN visibly distinct from REJECTED, and state CAPTURE or NO_CAPTURE explicitly (SN-0304). When bytes are damaged, restore what is verifiable and mark the rest unverifiable; your own recomputation outranks another lane's count (SN-0286).
+
+Citations and registries are claims too. Every citation names the ref it resolves on — main SHA, branch, draft PR — and the artifact's truth state; substance that is real with a citation that does not resolve earns credit with correction, never conflation, because a link that works only on someone's draft branch is decoration, not provenance (SN-0297). A registry entry is metadata, and metadata is a claim, not proof: a registry-hash hit is never accepted as reusable until the live runtime body is independently content-hash verified, because the registry can advance while the runtime stays stale (SN-0417). The promoter chooses the evidence — an audit attests coherence, not truth, and independence is measured by gatherer diversity, not by counting attestations (SN-0368). One second-eyes pass, not two: the receipt layer may be any seat, but the verdict routes to the truth-holder, and duplicated review adds latency, not certainty (SN-0330).
+
+Instruments and timestamps obey the same realism. Regeneration reads the commit, not the worktree — the brain index enumerates `git ls-tree HEAD` — so the complete pre-regen rule is clean worktree AND HEAD equal to the target commit AND `git rev-parse HEAD` verified before regenerating (SN-0395). Never write "current" as a constant: a document merged to main that hardcodes the previous tip SHA as "current" self-invalidates at birth, because its own merge moves the tip; the only safe forms are a timestamped evidence snapshot or live resolution at decision time (SN-0402). A deploy stamp proves exactly one claim — source parity; deploys do not apply migrations, which remain PRODUCTION_APPLIED=UNKNOWN until database-application plus behavioral proof, and behavior itself needs its own run (SN-0350).
+
+Evidence has an economy and a failure etiquette. One exact-tip battery is enough: evidence attaches to the tip, not to the sweep, and re-running identical bytes duplicates a measurement instead of strengthening it — rigor is re-anchoring when the tip moves, not repetition (SN-0440). When a system answers with a deterministic rejection — an HTTP 400 that refuses the request's shape — the order is fixed: archive the log, read the response body (noting that `curl -f` discards it), name what shape was rejected, and only then decide; never re-dispatch blind, least of all where dispatch is a human-only action that a blind retry would burn for zero information (SN-0439).
+
+## What this settles
+
+- Verification is a method with a fixed path and an eight-state vocabulary; improvisation and badge-reading are not verification (SN-0296).
+- Existence claims are settled by hashed bytes at a named ref — never by paths, strings, registry rows or deploy stamps (SN-0278, SN-0302, SN-0350, SN-0417).
+- An honest UNKNOWN, absence or refusal outranks a manufactured PASS at every level, including the verifier's own (SN-0296, SN-0272).
+- Evidence expires with the tip it measured; re-verification is triggered by movement, not by anxiety (SN-0440, SN-0402).
+- Deterministic failures are read before they are retried; the response body is the first evidence, the retry is the last resort (SN-0439).
+
+## Intelligence views
+
+**Human:** Nobody here gets to say "trust me." Every claim is checked against the real thing — the actual file, the actual bytes, the actual running system — by a fixed method, and "we don't know yet" is a respected answer. Citations have to point somewhere real. A deployment proves the code arrived, nothing more. And nobody re-runs the same test on the same code just to feel safer; tests rerun when the code changes.
+
+**Child:** Imagine checking a friend's treasure box. You don't believe the label — you open the box and look. You follow the same steps every time, you say "I found it" only when you see it, and "I can't tell yet" is a perfectly good answer. If the box moved to a new shelf, you check again; if it didn't move, you don't need to.
+
+**Grandma:** Dear, it's the difference between a receipt and a rumor. The teams open the actual drawer and count the actual spoons, they write down where each fact came from, and they never let a shipping label stand in for "the furniture works." When they truly can't confirm something, they say so plainly — that's treated as honesty doing its job, not as failure.
+
+**Naya (AI):** Run the canonical trace in order and stop only at evidence (SN-0296). Hash bytes, name refs, pin SHAs; treat every string, registry row and stamp as a claim awaiting its measurement (SN-0278, SN-0302, SN-0417). Cite as ID @ ref (truth state), and give real substance with a broken citation its credit plus its correction (SN-0297). Before any battery, ask whether the tip moved; if not, cite the existing evidence by SHA (SN-0440). Before any re-dispatch, classify deterministic versus flaky and read the body first (SN-0439). And expect to be tested yourself: planted defects are how the system keeps your verification honest (SN-0296).
+
+**What it means:** Fifteen notes are one epistemology: reality is at the bytes, every pointer to reality is itself a claim, and disciplined not-knowing beats confident narration everywhere. A cold reader holding only this essence can still verify a claim, cite a source, read a deploy, and refuse a false proof — which is everything the covered notes exist to teach.
+
+## Why it matters
+
+Every claim in every other essence is only as good as the evidence discipline behind it. Systems rarely lie deliberately; they lie by narration — a green badge read instead of a job table, a registry row trusted instead of a body, a deploy stamp celebrated instead of a behavior (SN-0296, SN-0350, SN-0417). This essence matters because it makes lying expensive and honesty cheap: one canonical trace, hashed bytes, named refs, and an UNKNOWN that is always available and never punished (SN-0296).
+
+## How it connects
+
+This essence is the method layer for the whole block: the Gates That Mean It essence issues verdicts by it, the Repair Discipline essence's proof packets are built by it, and the Scorecard Way essence's recompute-don't-copy rule is its system-level form (SN-0345, in that essence). Its registry-drift class (SN-0417) pairs with the Note System's Mechanics bidirectional audits (SN-0378, in that essence), and its vacuous-proof twin — the skipped-producer chain — lives in the Red Classification essence (SN-0418). It operates under the ratified Scorecard Law (SN-0340), which stands alone.
+
+## What is in it for you
+
+Claims that survive hostile checking — including your own, months later, when you've forgotten making them. Apply the acceptance sequence to anything you ship (clean worktree, measure, commit, rev-parse, push, exit code, remote-tip equality, report) and cite sources as ID @ ref (truth state) (SN-0302, SN-0297). The benefit is a reputation — personal and systemic — for numbers that stay true after you leave the room.
+
+## The learning
+
+The durable lesson is that evidence is a measurement with an expiry, not a story with a moral: it attaches to bytes at a ref, and it lapses when the tip moves (SN-0440, SN-0402). The behavior that changes: verify the asset, record the absence, read the body before retrying, and let UNKNOWN stand where it belongs (SN-0272, SN-0439, SN-0296). What would falsify this essence is a covered note accepting a narrative, a stamp or a registry row as proof — none does (SN-0302, SN-0350, SN-0417).
+
+## Coverage map — raw notes this essence covers (15)
+
+SN-0272 · SN-0278 · SN-0286 · SN-0296 · SN-0297 · SN-0302 · SN-0304 · SN-0330 · SN-0350 · SN-0368 · SN-0395 · SN-0402 · SN-0417 · SN-0439 · SN-0440
+
+## Verification contract (for the verifying seat — falsify these)
+
+1. **Coverage integrity:** the coverage map lists exactly 15 IDs; each exists in the registry snapshot in the oct-1 block; no ID appears in any other oct-1 essence's coverage map or in the batch1-covered list.
+2. **Method completeness:** the six principles, the eight-step canonical trace order and the eight evidence states all match SN-0296's machine note arrays exactly; the mean-time-to-correction metric traces to the same page.
+3. **Acceptance sequence:** the eight-step acceptance sequence (clean worktree → measure → commit → rev-parse → push → exit code → remote-tip equality → report) traces to SN-0302 in order.
+4. **Citation law:** the cite-as-ID-@-ref rule and the credit-with-correction formula trace to SN-0297, including its incident (five citations resolving only on draft PR #1229).
+5. **Drift class:** REGISTRY_RUNTIME_CONTENT_DRIFT, the replay run number and the lineage-valid versus exact-content-failed distinction trace to SN-0417.
+6. **Deploy scope:** the one-claim rule, the five named migrations' PRODUCTION_APPLIED=UNKNOWN state and the parity numbers trace to SN-0350.
+7. **Evidence economy:** the tip-attachment doctrine and the 28-minute duplicate-battery incident trace to SN-0440; the 400-handling order and the `curl -f` body warning trace to SN-0439.
+8. **No-orphan check:** pick any five sentences in the Essence section at random; each must cite at least one covered SN ID, and the cited page must contain the claim. Any sentence failing this fails the draft.
+
+**Anatomy check (all essences):** the draft carries all ten Full Smart Note sections (nutshell/essence, Human, Child, Grandma, Naya, What It Means, Why It Matters, How It Connects, What Is In It For You, The Learning) and NO machine-view section; fail if a machine view appears anywhere.

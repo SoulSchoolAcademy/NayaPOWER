@@ -1,0 +1,68 @@
+# SN-2147 — Repair Discipline: Fix the Contract, the Family, and the State — Never the Symptom
+
+**Status: VERIFIED ESSENCE — VERIFIED (verifier-oct-1).** Distilled from 18 raw notes by the oct-1 maker seat; independently verified by a different seat. Verified without correction (verifier-oct-1). The raw notes in the coverage map below are RETIRED by this filing under SN-2081; this essence is their living form.
+
+## Essence
+
+A repair begins before code: read the state before building the mechanism — publish corrections where the original claim landed, because a repair designed against imagined state repairs the imagination (SN-0333). Repairs run against a predeclared, closed registry of what may be repaired, and the registry fails closed: a target not on the list is not repaired ad hoc, however broken it looks (SN-0231). The test discipline is part of the diagnosis: a test that pins the bug verbatim — asserting the broken behavior as expected — is itself the defect, because it will defend the bug against every future fix (SN-0232). And a repair's completion state is named honestly: IMPLEMENTED is not PROVEN, and proof is an executable proof packet, not a narrative (SN-0234).
+
+The repair must satisfy the whole contract, not the flagged symptom. The canonical failure: a fallback made unique but still non-JSON, which satisfied the flag and crashed the consumer — the producer–consumer contract was the unit of repair, not the flagged line (SN-0389, SN-0390). Harden the whole family in the same motion: capture AND read, producer AND consumer, every parse of untrusted content failing with a legible named denial — object id, prefix, error — never a bare traceback (SN-0389, SN-0390). The same law generalizes to siblings: a fix is accepted only when every code path sharing the root cause is enumerated, given the identical hardened loop, and guarded by its own change-detector test (SN-0387). A fallback or test double must carry the contract semantics the verifier asserts — read the assertions first — because form-validity is not semantic-validity; single and batch verifier parity is kept by regression ratchet; and each repair exposes the next rung of the onion, where a newly exposed rung is a NEW RED, not evidence the repair failed (SN-0391). Oversight follows the pattern: flag → close → independent relay-verify → scorecard merge (SN-0389, SN-0390).
+
+Environment failures never wear product clothing: an infrastructure failure is named loudly as what it is, never dressed as a product verdict, and repeated environment noise is consolidated under one protocol rather than re-litigated per incident (SN-0346). The first RED is the only RED: downstream REDs are computed on unproven state and are inadmissible evidence for repair; at evidence boundaries — parity, binding, authorization — UNKNOWN escalates to RED rather than waiting; classify the boundary first (production parity versus learning-code versus environment), and the one next action is always the first boundary's gate (SN-0392).
+
+Merging and moving are repairs' sharpest edges, and they obey exactness. Close, don't merge: diff a repair PR's semantic payload — its blobs — against the current TIP, not its base; byte-identical means close as content-merged with a receipt, a stale-base repair closes as superseded, and merging a stale repair can regress the fix that already won; never rebase to manufacture an empty merge (SN-0373). Stale-head green is not merge evidence: a fully green battery on a moved head proves nothing about the new head — close the stale vehicle unmerged, rebuild the seam on exact current main, and re-run gates fresh, because rebase-without-fresh-gates launders stale proof (SN-0419). Green is merge-eligible, not merge-mandatory: the tip is a shared resource, an in-flight human gate pinned to an exact SHA outranks a ready PR, a hold is only a hold with a named resume condition, and when the condition clears, merge immediately with no re-deliberation (SN-0393). Ambitious work arriving mid-RED is parked, not pursued: a bounded, ranked backlog issue with preserved invariants named, explicit no-build conditions, and the exact gate that re-opens it — never a second front, never chat-only evaporation — and the parked lane is re-scored only against the new first real RED, never against enthusiasm (SN-0394). A human authorization binds to the exact SHA, never to "current main": authorizations were voided twice in one hour by main moving mid-window, so HOLD MAIN precedes the authorization request, the SHA is re-verified immediately before dispatch, authorization is recorded and never read as deployment, and corrections post publicly within the minute (SN-0415).
+
+Diagnosis integrity closes the loop. Retract where you claimed it: a retraction sits adjacent to the original claim, links it, names the exact misread and the corrected mechanism at file-and-line level, and counts the recurrence; and never green-wash main's red inside your own PR — base-inherited reds route to the owning lane, because folding them into your diff destroys the evidence that main is broken (SN-0374). A kernel constant is a producer–consumer contract: changing dimensions or weights obligates migrating every consumer — asserting tests, producers, normalization, declared decisions — as one atomic unit, and weight-sum drift is the mechanical signature of an incomplete change; the tests asserting old outcomes are the spec of the seam, not the bug, and when the owning lane is in-flight and pushing, the disciplined move is classification plus flag, never a parallel repair PR (SN-0416). Above every repair stands the absorption ban: a repair that makes the check pass by absorbing the anomaly is canonization, not a fix — the legal repair changes the artifact (remove it, deny it), never the derived state that complained about it, and a green check after absorption is a laundered green; mechanically green is not the same as right (SN-0420).
+
+## What this settles
+
+- The unit of repair is the contract and the family, never the flagged line; a symptom-fix that leaves the contract broken is a failed repair however green it looks (SN-0389, SN-0390, SN-0387).
+- Proof expires with the head it ran on; stale green is closed, rebuilt and re-proven, never carried over (SN-0419, SN-0373).
+- Authorizations and holds are exact-SHA instruments with named conditions; "current main" authorizes nothing (SN-0415, SN-0393).
+- Retractions live beside their claims at the same prominence, and main's red is never laundered through a passing PR (SN-0374).
+- Silencing a tripwire by absorbing its anomaly is the one repair shape that is always wrong (SN-0420).
+
+## Intelligence views
+
+**Human:** When something breaks here, the fix covers the whole problem, not just the part that was pointed at — every place with the same weakness gets the same strengthening, and the tests are written to catch the family, not the instance. Nobody merges a fix that was only proven on yesterday's code, nobody treats your "go ahead" as applying to whatever the code happens to be later, and when someone gets a diagnosis wrong, the correction is posted right next to the original claim. Above all: nobody makes an alarm stop by writing the problem into the official record.
+
+**Child:** Imagine a pipe bursts. A bad fix mops the floor and paints the wet spot so it looks dry. A good fix finds every pipe made the same weak way, replaces them all, and adds a bell that rings if any of them leaks again. And if the grown-up said "yes" to fixing the pipe on Tuesday, that yes doesn't stretch to a different pipe on Friday.
+
+**Grandma:** Dear, it's honest craftsmanship. You read the whole situation before you lift a tool, you fix the fault and every fault like it, and you never quiet a smoke alarm by declaring the smoke official. When a permit was given for one exact job, it covers that job only. And when you misdiagnose something in public, you correct it in public, in the same place, just as big.
+
+**Naya (AI):** Read state first; repair only what's on the closed registry; delete any test that pins the bug (SN-0333, SN-0231, SN-0232). Repair the contract: enumerate the family, harden identically, guard each path, make every denial legible (SN-0387, SN-0389, SN-0391). Treat the first RED as the only admissible one and escalate boundary UNKNOWNs (SN-0392). Diff repair payloads against the tip, close stale vehicles, re-prove on exact heads, bind authorizations to SHAs with HOLD MAIN first (SN-0373, SN-0419, SN-0415). Park ambition with named re-open gates (SN-0394). Migrate kernel consumers atomically or stand off and flag when the owner is in-flight (SN-0416). Never absorb an anomaly to green a check (SN-0420).
+
+**What it means:** Eighteen notes are one craft: repairs that heal systems instead of quieting instruments. The incidents differ — fallbacks, kernels, merges, authorizations — but the failure is always the same shape: a local green purchased at the price of the whole contract. A cold reader holding only this essence can still scope a repair, judge a merge, honor an authorization and refuse a laundered green — which is everything the covered notes exist to teach.
+
+## Why it matters
+
+Repairs are where systems either heal or learn to hide their diseases. A symptom-fix greens the dashboard while the contract stays broken (SN-0389); an absorbed anomaly turns a tripwire into a liar (SN-0420); a stale proof merges yesterday's confidence into today's code (SN-0419). This essence matters because it prices those trades honestly: the repair is the contract, the family and the exact head — or it is theater with a green check.
+
+## How it connects
+
+Repair consumes the Proof from Real Bytes essence's evidence classes and the Gates That Mean It essence's verdicts, and it begins where the Red Classification essence ends — classification first, then the wrench (SN-0392). Its authorization discipline (SN-0415) prepares the ratification ritual the Scorecard Way essence describes (SN-0263, in that essence), and its kernel-seam rule (SN-0416) is the producer–consumer form of the Note System's Mechanics monotonic-migration law (SN-0414, in that essence). The deletion incidents behind several of these notes are governed by the ratified Deletion Discipline (SN-0408), which stands alone.
+
+## What is in it for you
+
+Fixes that stay fixed: one repair motion that hardens the whole family, proof that binds to the exact bytes being merged, and retractions that keep your credibility intact when you're wrong (SN-0387, SN-0419, SN-0374). Apply it to any fix you make: enumerate the siblings, read the consumer's assertions, diff against the tip, and refuse any green that was purchased by absorbing the anomaly (SN-0391, SN-0373, SN-0420).
+
+## The learning
+
+The durable lesson is that repair quality is a property of scope, not effort: the same hands, widened to the contract and the family, turn recurrence into immunity (SN-0387, SN-0390). The behavior that changes: scope before code, exactness before merging, retraction beside the claim. What would falsify this essence is a covered note endorsing a symptom-only fix, a carried-over proof, or a silenced tripwire — none does (SN-0389, SN-0419, SN-0420).
+
+## Coverage map — raw notes this essence covers (18)
+
+SN-0231 · SN-0232 · SN-0234 · SN-0333 · SN-0346 · SN-0373 · SN-0374 · SN-0387 · SN-0389 · SN-0390 · SN-0391 · SN-0392 · SN-0393 · SN-0394 · SN-0415 · SN-0416 · SN-0419 · SN-0420
+
+## Verification contract (for the verifying seat — falsify these)
+
+1. **Coverage integrity:** the coverage map lists exactly 18 IDs; each exists in the registry snapshot in the oct-1 block; no ID appears in any other oct-1 essence's coverage map or in the batch1-covered list.
+2. **Near-duplicate honesty:** SN-0389 and SN-0390 are distinct notes from the same PR #1504 incident; the verifying seat confirms both pages exist, the essence's shared claims trace to both, and the receipt records the pair as near-duplicates rather than independent corroboration.
+3. **Authorization incidents:** the two voided authorizations, their SHA pairs and the one-hour window trace to SN-0415; HOLD-MAIN-before-request is stated there as the rule.
+4. **Kernel seam:** the four added dimensions, their weights, the 1.0 → 1.48 weight-sum drift and the six failing decisions trace to SN-0416, including the no-parallel-repair stand-off.
+5. **Absorption ban:** Option A (absorb) scored net negative versus Option B (remove + guard) and the "not wrong-bytes" receipt language trace to SN-0420.
+6. **Merge evidence:** PR #1572's 750-passed stale-head closure and its rebuild as draft PR #1577 trace to SN-0419; blob-versus-tip diffing and the two close classes trace to SN-0373.
+7. **First RED:** boundary classification (production parity / learning-code / environment) and UNKNOWN-escalates-to-RED trace to SN-0392; environment-failures-named-loudly traces to SN-0346 — fail if the essence merges the two doctrines into one source.
+8. **No-orphan check:** pick any five sentences in the Essence section at random; each must cite at least one covered SN ID, and the cited page must contain the claim. Any sentence failing this fails the draft.
+
+**Anatomy check (all essences):** the draft carries all ten Full Smart Note sections (nutshell/essence, Human, Child, Grandma, Naya, What It Means, Why It Matters, How It Connects, What Is In It For You, The Learning) and NO machine-view section; fail if a machine view appears anywhere.
