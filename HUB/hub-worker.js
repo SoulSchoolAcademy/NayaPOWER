@@ -199,24 +199,36 @@ const REVEAL_SCRIPT = '<script>(function(){var bs=document.querySelectorAll(".bo
   'if(!("IntersectionObserver" in window)){for(var i=0;i<bs.length;i++)bs[i].classList.add("rv-lit");return;}' +
   'var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("rv-lit");io.unobserve(e.target);}})},{threshold:.12});' +
   'bs.forEach(function(b){io.observe(b)});})();</script>';
+// The hook (director's standard, 2026-11-06): the top of the block is the
+// headline plus a SHORT subheadline hook — one or two lines that make you
+// want to read — never the full nutshell paragraph, and never text that
+// repeats below. The .nutshell CSS class is kept as the styling slot, but
+// it now styles this hook, not the nutshell itself: the full nutshell
+// renders exactly once, as the first board.
+function hookText(rec, nut) {
+  const src = cleanSectionText(rec.oneLine || "") || cleanSectionText(nut || "");
+  if (!src) return "";
+  const flat = src.replace(/\s+/g, " ").trim();
+  const m = flat.match(/^[\s\S]*?[.!?](?=\s|$)/);
+  let s = m ? m[0] : flat;
+  if (s.length > 160) {
+    const cut = s.slice(0, 157);
+    const sp = cut.lastIndexOf(" ");
+    s = (sp > 80 ? cut.slice(0, sp) : cut).trim() + "…";
+  }
+  // A hook that IS the whole nutshell would double the board's text —
+  // in that case the board alone carries it and there is no separate hook.
+  if (nut && s === cleanSectionText(nut).replace(/\s+/g, " ").trim()) return "";
+  return s;
+}
 function renderNote(rec) {
   const accent = noteAccent(rec.id);
   const secs = rec.sections || {};
-  let hook = "";
   let boards = "";
   const nut = secs.nutshell || "";
-  if (nut) {
-    const paras = cleanSectionText(nut).split(/\n\s*\n/).filter(function (p) { return p.trim(); });
-    if (nut.length <= 1200 || paras.length <= 1) {
-      hook = '<div class="nutshell">' + renderParas(nut) + "</div>";
-    } else {
-      // A long nutshell (essence pages carry the whole distilled text as
-      // their Essence section): the first paragraph is the hook at the top,
-      // the full text still renders as the first board — nothing is cut.
-      hook = '<div class="nutshell">' + renderParas(paras[0]) + "</div>";
-      boards += boardHtml(SECTION_DEFS[0], nut);
-    }
-  }
+  const hookStr = hookText(rec, nut);
+  const hook = hookStr ? '<div class="nutshell">' + renderParas(hookStr) + "</div>" : "";
+  if (nut) boards += boardHtml(SECTION_DEFS[0], nut);
   for (const d of SECTION_DEFS.slice(1)) {
     if (secs[d.key]) boards += boardHtml(d, secs[d.key]);
   }
@@ -258,7 +270,7 @@ async function serveNote(request, env, rawSlug) {
   if (!entry) {
     return new Response("Note not found", { status: 404, headers: { "Content-Type": "text/plain;charset=UTF-8", "Cache-Control": "no-store" } });
   }
-  const rec = { id: entry.smart_note_id, title: entry.title || entry.smart_note_id, sections: {} };
+  const rec = { id: entry.smart_note_id, title: entry.title || entry.smart_note_id, oneLine: entry.one_line || "", sections: {} };
   const cap = await loadCapture(entry.intelligent_block_id);
   let intel = null;
   if (cap && cap.intelligence) {
