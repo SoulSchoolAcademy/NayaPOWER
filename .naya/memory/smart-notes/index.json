@@ -23725,6 +23725,38 @@
     "The Vision",
     "Collective"
    ]
+  },
+  {
+   "smart_note_id": "SN-2077",
+   "intelligent_block_id": "IB-SMART-NOTE-20261106-sn2077-the-intelligent-block-rules",
+   "slug": "the-intelligent-block-rules",
+   "title": "The Intelligent Block Rules",
+   "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/design/SN-2077/IB-SMART-NOTE-20261106-sn2077-the-intelligent-block-rules.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/design/SN-2077/IB-SMART-NOTE-20261106-sn2077-the-intelligent-block-rules.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/design/SN-2077/IB-SMART-NOTE-20261106-sn2077-the-intelligent-block-rules.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn2077-the-intelligent-block-rules.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "RATIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DESIGN",
+   "captured_at": "2026-11-06",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T01:00:00Z",
+   "ratified_by": "Shawn Vibert",
+   "ratified_at": "2026-11-06T00:58:49Z",
+   "date": "2026-11-06",
+   "page_hash": "4a985346a07746ab792d12dc501b8d39c26f66e0c76d463bced100f6ac03169c",
+   "content_hash": "e10804714ab4b567de621d5bf699eaf50d86634f3dc5703aef47b15d1c700dc4",
+   "one_line": "What an intelligent block IS, section by section \u2014 harvested, not invented: one set of laws (real objects, one light, real shadow, own-color ignition, white text, physical touch, spectrum order) running through every button, board, icon and page \u2014 capped by the only test that finally matters: is it alive, is it layered, does it feel dimensional and real? RATIFIED by Shawn, 2026-11-05: \"Yes \u2014 ratify the Rules, distribution moves now.\"",
+   "topics": [
+    "Design",
+    "System",
+    "Intelligent Blocks"
+   ]
   }
  ],
  "sequence_policy": {
@@ -23735,5 +23767,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "e2d4b0e8e19aec8dadde24abde810d008b79250e7a4f1f6495d6fdd6222b03cb"
+ "corpus_manifest_hash": "5b3a9a2284c3ffaec29a1321b15ef3d3d435451ed1e5ac08ed1a8e13d9dc9fa3"
 }
