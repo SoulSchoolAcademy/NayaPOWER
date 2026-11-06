@@ -23,8 +23,8 @@ Canonical links (live on main, SoulSchoolAcademy/NayaPOWER):
 
 - The Act (full text):
   `BRAIN/10-INTERFACES/CLARITY-CONFIRMATION-ACT-DRAFT-20261106.md`
-- The companion (intelligent block rules):
-  `BRAIN/10-INTERFACES/INTELLIGENT-BLOCK-RULES-DRAFT-20261106.md`
+- The companion (intelligent block rules, LAW — ratified 2026-11-06):
+  `BRAIN/10-INTERFACES/INTELLIGENT-BLOCK-RULES-LAW-20261106.md`
 - The Naya Design Contract V1 (canonical, ratified 2026-10-03):
   `BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md`
 - The NIA Code (DRAFT, created with this file):
