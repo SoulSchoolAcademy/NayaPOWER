@@ -12147,6 +12147,26 @@ window.NayaSmartBar = {
       tabsNet = network.map(function(n,i){ return {id: 'seed-'+slug(n.label), label:n.label, url:n.url, icon:n.icon, state:null, color:n.color||SPECTRUM[i%SPECTRUM.length]}; });
       storeSet(STORE_KEY, tabsNet); /* seed is real state from the first paint */
     }
+    /* ----- T1b MIGRATION 2026-11-06 (seed migration so the T1 delete reaches
+       existing citizens): the stored seed was written once on first paint, so
+       citizens seeded before T1 still carry the dead "Smart Lists" tab and the
+       old Pricing URL. Fix the stored seed here — after the seed is loaded,
+       before it is rendered (renderNet below) and before any write-back.
+       Match by label AND url, never by label alone. Everything else is
+       preserved exactly: order, hearts/stars, user-added tabs, user removals,
+       icons, colors. Idempotent: a migrated seed passes through unchanged. */
+    (function migrateSmartTabsSeed(){
+      if (!Array.isArray(tabsNet)) return; /* fresh profile: seeded above from the fixed array */
+      var changed = false, out = [], m, t;
+      for (m = 0; m < tabsNet.length; m++){
+        t = tabsNet[m];
+        if (!t || typeof t !== 'object'){ out.push(t); continue; }
+        if (t.label === 'Smart Lists' && t.url === 'https://nayanet.app/lists'){ changed = true; continue; } /* T1 delete: drop the dead tab */
+        if (t.label === 'Pricing' && t.url === 'https://nayanet.app/pricing'){ t.url = 'https://nayanet.app/welcome'; changed = true; } /* T1 repoint: mutate url only, every other field untouched */
+        out.push(t);
+      }
+      if (changed){ tabsNet = out; storeSet(STORE_KEY, tabsNet); }
+    })();
     /* Personalized by default: until the citizen shapes it (heart/star/add/remove),
        the bar auto-organizes by their own logic — frequency × recency. Manual wins. */
     function customized(){
