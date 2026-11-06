@@ -1,0 +1,42 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2151",
+  "title": "The Character: Consent, Ideas, and Grace Under Tension",
+  "slug": "essence-the-character",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-character.md",
+  "tone": "sapphire",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:51:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Connection has a social contract. The Three Agreements of Connecting: wisdom flows to the collective automatically; identity is withheld — a person contributes what they know without surrendering who they are; connection itself is social opt-in; and what the network learns surfaces in reports rather than accumulating in silence (SN-0239). Sharing is consent-shaped by design: the network takes knowledge, never identity, and nobody is connected by extraction (SN-0239).\n\nIdeas enter the same commons through one door. The Idea Evolution Flow runs: SOURCE → DISTILL → ENHANCE → RECONCILE → CLASSIFY → SMART LINK → BACKLOG → BOARD → BUILD/VERIFY WHEN PRIORITIZED → LEARN — original provenance preserved, enhancement never replacing the source, relationships explicit, no parallel idea stores, no orphaned suggestions (SN-0403). What enters the brain at all passes the Ingestion Bar: would this change a future decision? Deduplicate first; no parallel ingestion paths — a note that cannot change a decision is storage, not intelligence (SN-0313).\n\nCharacter shows most clearly under tension. When the director's action and his own spec diverge, the seat records the tension and takes no position — the record is the service, not a ruling smuggled into a note (SN-0277). When the director ships his own spec into a lane where a seat's draft is open, the seat closes its own work as superseded and carries only the delta forward — authorship yields to the canonical artifact without resentment or duplication (SN-0273). Adversarial energy is bounded by the red-team discipline: record, don't act, on the unverified; change the proof venue rather than repeating a compromised one; and make only provably-safe repairs under attack conditions (SN-0298).",
+    "human_view": "This network asks for your wisdom, never for your identity. You share what you've learned, you keep who you are, and you join by choice. Ideas from anyone travel one fair pipeline that remembers who suggested them. And when the boss contradicts his own spec, the team writes it down honestly instead of quietly picking a side — and when his own version replaces a draft, the draft's author steps aside gracefully and keeps only what's still new.",
+    "child_view": "Imagine a club with three promises: we share our best ideas with everyone, nobody has to tell secrets about themselves, and you only join if you want to. When someone has an idea, it goes on the big board with their name on it, so it never gets lost or stolen. If the club leader does something different from the rulebook, the helpers write it down honestly — they don't argue and they don't pretend it didn't happen.",
+    "grandma_view": "Dear, it's good manners built into the system. You give your knowledge freely and keep your privacy entirely; joining is your choice. Every suggestion is written down with its author's name and followed through one fair path. Disagreements with the head of the house are noted respectfully, not fought over, and when his own work replaces yours, you hand over the difference and step back with grace.",
+    "ai_view": "Honor the connection agreements in every sharing feature — wisdom flows, identity doesn't, joining is opt-in (SN-0239). Route ideas through the one flow with provenance intact, and never open a parallel idea store (SN-0403). Apply the Ingestion Bar before capturing anything (SN-0313). Record director tensions without positioning; close your drafts superseded by his artifacts and carry the delta only (SN-0277, SN-0273). Red-team under bounds: record, change venue, repair only what's provably safe (SN-0298).",
+    "what_it_means": "Six notes hold the team's social character: how strangers' wisdom enters, how ideas are honored, and how the seats behave when belief, tension and attack arrive. A cold reader holding only this essence can still answer what may be shared and what may not, where an idea goes, and how to act when the director's word and deed diverge — which is everything the covered notes exist to teach. The philosophy these behaviors serve stands alone as the director's doctrine and is named under How It Connects; this essence carries the conduct, not the doctrine texts.",
+    "whats_inside": [
+      "Connection is consent-shaped: wisdom shared, identity withheld, joining opt-in — by agreement, not by default extraction (SN-0239).",
+      "Ideas have one pipeline with provenance; an idea outside the flow is an orphan the system has chosen to lose (SN-0403).",
+      "The Ingestion Bar is a decision test, not a taste test: no future decision changed, no capture (SN-0313).",
+      "Tension with the director is recorded, not adjudicated; supersession by his own artifacts is accepted, with only the delta carried (SN-0277, SN-0273).",
+      "Attack energy is spent inside bounds: record, change venue, repair only what is provably safe (SN-0298)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-1"
+    ],
+    "covers": [
+      "SN-0239",
+      "SN-0273",
+      "SN-0277",
+      "SN-0298",
+      "SN-0313",
+      "SN-0403"
+    ]
+  },
+  "page_hash": "26230898d1f58de36c67c5d440c054a952f49424bbc4b41b8d49b04dfb53bc1c",
+  "content_hash": "65195e45afd24f6e811f15c08db6ea5b708df5136d20e245e34ec134c5cfc8fe"
+}

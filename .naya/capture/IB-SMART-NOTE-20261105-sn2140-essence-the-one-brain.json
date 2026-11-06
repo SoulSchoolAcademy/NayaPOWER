@@ -1,0 +1,43 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2140",
+  "title": "The One Brain: One Substrate, Many Projections, No Second Truth",
+  "slug": "essence-the-one-brain",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-one-brain.md",
+  "tone": "orange",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:51:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "NayaPOWER is one governed intelligence substrate, not a pile of systems. Naya is the operating intelligence; NayaNET is the governed network that connects independently owned intelligences, people, tools and knowledge; the Hub is the human cockpit that projects the same canonical intelligence — it is never the canonical memory or authority store (SN-0599). The organs all exist; the frontier is not building more of them but composition, convergence and proof — how the parts work as one organism (SN-0021). The Super Brain itself has three layers: a Constitution layer that holds the law, a Nervous layer that carries signals and work, and an Immune layer that detects and corrects error (SN-0295). One brain, one tree, many doors: new capability extends canonical seams instead of creating parallel stores, graphs, shells, pipelines, ledgers or truth systems (SN-0598, SN-0599).\n\nThe Hub is a projection, not a source. One object produces many projections — pages, feeds, views — and no projection is ever the thing it pictures (SN-0593). The write direction is law: CANONICAL EVENT / ISSUE / PR / RECEIPT → PROJECTION → HUB, and never the reverse (SN-0401). A projection pipeline that commits to the canonical source turns every render cycle into a source mutation — the activity feed that committed its display file to main every 15 minutes made parity drift a schedule rather than an accident — and a document that declares itself canonical while other surfaces already carry that authority recreates split truth silently (SN-0401). Displays look; they never touch. Exactly one owner exists per authority domain, with explicit projection relationships (SN-0401).\n\nTruth has an address and an order. Current main is the only present-state truth; chat memory, stale projections, old documents and assumptions are outranked by GitHub-first live evidence (SN-0021, SN-0599). When sources disagree, the canonical precedence ladder decides: current main, then executable code, then actual test result, then workflow result, then persisted evidence, then independent verification, then documentation, then interpretation (SN-0598). The states of a claim are never compressed into \"done\": UNKNOWN is not VERIFIED, BLOCKED is not PASS, IMPLEMENTED is not VERIFIED, VERIFIED is not PRODUCTION_PROVEN, STORED is not LEARNED, RETRIEVED is not UNDERSTOOD, APPLIED is not CAUSALLY IMPROVED (SN-0598, SN-0599). Claim strength can never exceed evidence (SN-0599). Identity is not authority, retrieval is not authorization, capability is not permission (SN-0599).\n\nThe product unit is a complete application, not a shell. The declared application is the unit of success: inventory what the app declares first, then finish it — an attractive screenshot or a working shell is not done (SN-0595, SN-0599). Greater capability must produce a simpler human experience, not more infrastructure for the human to manage (SN-0598, SN-0599). Every meaningful work cycle closes the same way: verified evidence, durable learning when earned, and a cold-successor handoff carrying what changed, why, the tests or evidence, the truth boundary, blockers or unknowns, and one next action — so the next Naya continues without chat archaeology (SN-0598). The cold successor is a first-class acceptance gate: she requires identity, authority, current state, proof state, relevant intelligence, failures, uncertainty, open work and one next action (SN-0599). Relationships in the graph inform selection; they never inherit authority (SN-0599). Private intelligence is private by default, shared by choice, collective by consent, public by decision (SN-0599).",
+    "human_view": "There is one brain behind everything you see. Every page, feed and dashboard is a window into the same memory — the window never becomes a second memory. When two sources disagree, a fixed order decides which one wins, and nobody has to guess. And nothing is called \"done\" until it is finished and proven, not just built.",
+    "child_view": "Imagine one big library brain. Lots of screens show you what's inside it, like windows — but the windows don't get to write their own books. If two books disagree, there's a rule for which book to believe. And a drawing of a finished house is not a finished house.",
+    "grandma_view": "Dear, it's like a family with one official family Bible where the records are kept. The photographs on the wall show the family, but nobody edits the Bible from a photograph. One record, kept carefully, and everyone looks at copies of it. That's how nobody ends up with two different stories about the same wedding.",
+    "ai_view": "Before building, ask which canonical seam already carries this. A new store, graph, pipeline or ledger is presumed a defect until the existing seam is proven unable to hold it (SN-0598, SN-0599). Treat every surface you write as a projection: if your render path can mutate the source, the seam is broken by definition (SN-0401). When you report state, name the exact state from the non-equivalence ladder and cite the highest-precedence source you actually read (SN-0598). Close every cycle with the six-part handoff so a cold sister starts ahead (SN-0598).",
+    "what_it_means": "Seven architecture notes — written weeks apart, by different seats — say one thing: the system's intelligence lives in exactly one place, everything else is a view of it, and the discipline of states and precedence is what keeps one brain from quietly becoming many. A cold reader holding only this essence can still refuse a second truth owner, judge a projection, resolve a source conflict, and name a claim's real state — which is everything the covered notes exist to teach.",
+    "whats_inside": [
+      "There is one substrate and one truth owner per domain; a second registry, store or \"canonical\" list is a defect to remove, not a redundancy to keep (SN-0598, SN-0599, SN-0401).",
+      "The Hub and every feed are projections: read-only toward the source, judged by fidelity to it, never by their own claims (SN-0593, SN-0401).",
+      "Disagreements between sources are resolved by the precedence ladder, not by volume, recency or confidence (SN-0598).",
+      "\"Done\" is a ladder of distinct states; naming which state a claim is actually in is mandatory, and IMPLEMENTED never wears VERIFIED's clothes (SN-0598, SN-0599).",
+      "A complete application is the unit of delivery; shells and screenshots are intermediate states, not results (SN-0595)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-1"
+    ],
+    "covers": [
+      "SN-0021",
+      "SN-0295",
+      "SN-0401",
+      "SN-0593",
+      "SN-0595",
+      "SN-0598",
+      "SN-0599"
+    ]
+  },
+  "page_hash": "cf56871d3eaa6e981a817ec7c85bfcac24d5501b1698a36aa535a4120ed76d9a",
+  "content_hash": "285d5c7cccae531148ad23b4faa95da040663033696c07244bcdee96fa4d704a"
+}

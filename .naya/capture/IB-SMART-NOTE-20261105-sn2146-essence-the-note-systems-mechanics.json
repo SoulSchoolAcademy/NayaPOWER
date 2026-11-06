@@ -1,0 +1,53 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2146",
+  "title": "The Note System's Mechanics: Identity, Collision, and Preservation",
+  "slug": "essence-the-note-systems-mechanics",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-note-systems-mechanics.md",
+  "tone": "gold",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:51:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A Smart Note's identity is its content, not its number. Identity is content-addressed: the hash is the identity and the SN number is a human reference to it, because numbers collide, get reused and get misprojected, while bytes do not lie about what they are (SN-0266). An archive that is only written and never reused is the system's dumbest failure mode; the note system is measured by reuse, not by volume (SN-0266). The registry alone is not the whole doctrine — the corpus problem (what exists, where, in what state) must be answered before any algorithm problem is worked (SN-0349). And a restatement is not a capture: binding a decision means changing the governed object, not noting the decision beside it, or the same decision will be re-litigated forever (SN-0347).\n\nClaiming a number is a protocol, not a grab. The occupancy scan precedes every claim: read the board, open PRs, merged PRs and closed PRs — bodies, not titles — and the first claim stands (SN-0259). The scan has a freshness axis: re-scan immediately before claiming, because a registry minutes old is already history, and record the collision in the collision record's schema when one occurs (SN-0303). Registry writes are serialized: a lock held across read → allocate → write, with an atomic commit, proven by a deterministic multi-writer reproduction — because two writers racing an unlocked registry will mint the same number twice (SN-0335). When a collision nonetheless lands, arbitration is mechanical, not political: the strongest canonical holder keeps the number, a renumber is a pure move of the losing claim, and dissent travels a named channel rather than an edit war (SN-0372). Collisions are prevented at the seam where they are born: re-scan before push, because the gap between scan and push is a time-of-check/time-of-use window, and the arbiter flags collisions but never edits another seat's claim (SN-0367).\n\nRepairs to identity preserve it. When a note's bytes are immutable in their first revision but nonconformant, the repair class is a conformant second revision: never edit persisted bytes, link the revisions with a SUPERSEDES edge, and make retrieval exclude the superseded revision (SN-0370). Repairs carry the requested smart_note_id through every stage — an identity dropped mid-repair is an identity lost — and acceptance is runtime evidence, not file presence (SN-0369). The SN-0355 lineage is the worked example: its capture was mis-projected under the wrong number, and the identity-continuity repair is what the standing note embodies (SN-0369, SN-0370). Audits of the system run in both directions: registry-to-capture and capture-to-registry drift are different defects — entries without captures, captures unregistered, captures with no identity, filenames diverging from their internal IDs — and the instrument is bidirectional with an explicit filename-to-ID cross-check; never build a second detector when the canonical instrument can be handed the exact numbers to beat, and orphaned artifacts are human decisions, never silent auto-repairs (SN-0378).\n\nDiscovery and schema are mechanics too. A discovery step returns the complete set — sorted, deduped — and never aborts on multiplicity: the finder that quit whenever two captures arrived killed the entire proof workflow in under a second, because everything downstream was shaped for one (SN-0334). Multiplicity is a downstream branching concern; fail-fast belongs on malformed content, never on count (SN-0334). The capture schema ratchets the same way: freeze the broken representation, never the learning — author only the current schema version, migrate stable identities in place, and never repair malformed captures one at a time into separate notes, which multiplies law objects (SN-0404).\n\nPreservation is where the system defends itself from its own maintenance. Field stripping is deletion: presence-only guards cannot protect governed intelligence, because migrations, replays and ordinary merges silently removed governed fields — epistemic state, falsifier, measurement contract, restoration provenance — while the files themselves remained present (SN-0412). Guards must therefore assert required fields on the committed tree, a merge is not a migration authority, repair is union — keep additions, restore the stripped, record both — and integrity hashes are never hand-edited to manufacture a pass: a truthful stale-hash report is the registry doing its job (SN-0412). The forward law stops recurrence: migrations are monotonic by default, unknown governed fields survive automatically, writers preserve unknown fields instead of re-deriving from a fixed field list, and destructive removal requires explicit removal intent plus authority plus evidence (SN-0414). Deduplication obeys the same discipline: by repair lane, never by silent deletion — a scorecard-scored repair PR on the exact current head, preserving git history, with a written receipt and the leave-versus-merge tradeoff made explicit (SN-0406). A deletion that happens outside a repair lane is not housekeeping; it triggers the incident protocol: search registry, BRAIN and activation records for survivors, post the finding with its attribution status in the open, and let the restoration decision sit with the Director — the lane that deleted does not quietly restore or quietly forget (SN-0406).\n\nAbove all of it sits the ownership rule: one canonical truth owner. A second registry answering the same question differently is not redundancy — it is a second brain, and every future reader must adjudicate between the two forever (SN-0422). The repair shape is fixed: remove the duplicate, pin the canonical owner with a RED→GREEN single-owner guard test, keep the useful observation the duplicate carried, and never keep the rival owner — on a contradiction, removal outranks construction (SN-0422).",
+    "human_view": "Every note in the system has one true identity — what it actually says — and a number that's just its nickname. Numbers are claimed carefully, after checking nobody else took them, and never grabbed twice. Old versions are never secretly rewritten; a fixed note points back to what it replaced. Nothing gets deleted quietly — removals happen in the open, with receipts — and nobody may keep two rival \"official\" lists of the same thing.",
+    "child_view": "Imagine every story in the library has a fingerprint — the words themselves. The number on the spine is just a label. Before you take a number, you check the shelf so two stories don't share one. If a story needs fixing, you write a new edition and keep the old one safe — you never sneakily change the printed pages. And you never throw a book away quietly: taking a book out always needs a note saying why, where everyone can see it.",
+    "grandma_view": "Dear, it's careful record-keeping. Each document is known by its contents, filed under one number that only one document may hold, with the claiming done by checking first and locking the drawer while you write. Corrections are new editions, plainly marked. And nothing leaves the cabinet through a side door: a removal happens in the open, with a receipt anyone can check, or it doesn't happen at all.",
+    "ai_view": "Claim by scan-then-lock: occupancy across board and all PR states, re-scanned at claim time, serialized through allocation, arbitrated by canonical strength on collision (SN-0259, SN-0303, SN-0335, SN-0372). Carry the requested ID through every repair stage and prove acceptance at runtime (SN-0369). Never edit persisted bytes — supersede, link, and exclude the old revision from retrieval (SN-0370). Build discovery to return the set and branch downstream on count (SN-0334). Audit both directions with the canonical instrument (SN-0378). Guard fields, not files; migrate monotonically; dedupe and delete only through a receipted repair lane, and treat any out-of-lane deletion as an incident (SN-0412, SN-0414, SN-0406). And when two artifacts claim one truth, remove the rival and pin the owner with a guard test (SN-0422).",
+    "what_it_means": "Seventeen notes are the note system's own immune system: how identity survives numbering accidents, racing writers, schema rot, helpful migrations and tidy-minded deletion. A cold reader holding only this essence can still claim a number safely, repair a note without breaking its identity, audit for drift in both directions, and refuse a silent deletion — which is everything the covered notes exist to teach. Two source tensions are preserved in the block receipt rather than resolved here: SN-0355's supersedes pointer versus the standing SN-0346 entry, and the registry's filename-to-ID divergences SN-0378 catalogues.",
+    "whats_inside": [
+      "Numbers are references; hashes are identity. Any process that treats the number as the thing will eventually lose or duplicate the thing (SN-0266, SN-0369).",
+      "A claim is a scanned, locked, freshly-verified act; collisions are arbitrated by canonical strength, never by who pushes hardest (SN-0259, SN-0303, SN-0335, SN-0367, SN-0372).",
+      "Persisted bytes are never edited; repair means a conformant successor with a supersedes edge and retrieval that honors it (SN-0370).",
+      "Presence is not preservation: fields, not files, are the unit of protection, and migrations preserve what they do not understand (SN-0412, SN-0414).",
+      "Deletion and deduplication are governed repairs with receipts — silent deletion is an incident with a named protocol: search for survivors, post the finding with attribution status, and leave the restoration decision to the Director (SN-0406)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-1"
+    ],
+    "covers": [
+      "SN-0259",
+      "SN-0266",
+      "SN-0303",
+      "SN-0334",
+      "SN-0335",
+      "SN-0347",
+      "SN-0349",
+      "SN-0367",
+      "SN-0369",
+      "SN-0370",
+      "SN-0372",
+      "SN-0378",
+      "SN-0404",
+      "SN-0406",
+      "SN-0412",
+      "SN-0414",
+      "SN-0422"
+    ]
+  },
+  "page_hash": "6f86c86adf0bdb1bdb7b703af0fa27a11a9d8f2b2b6fd487473e967aa3343702",
+  "content_hash": "50e8d9961ecf5055095a7267fd231d9d166c8d1127be776627d28e89a8d106d3"
+}

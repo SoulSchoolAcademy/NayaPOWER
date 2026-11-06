@@ -1,0 +1,42 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2150",
+  "title": "Learning That Compounds: What Deserves to Survive, Proven by What Changes",
+  "slug": "essence-learning-that-compounds",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-learning-that-compounds.md",
+  "tone": "purple",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:51:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A learning system is judged by what changes, not by what it stores — and the first selection decision is what deserves to survive at all. The selection principle: not a brain that remembers everything, but a brain that learns what deserves to survive (SN-0299). Its seven fundamentals: truth before ego; capture responsibility, not capture everything; every mistake converted to immunity; scoring continuously without manufacturing scores; intelligence earning its permanence; the next Naya as the acceptance test; evidence-driven self-optimization (SN-0299). The capture trigger is refined accordingly: not \"something happened\" but \"something happened from which a future intelligence could materially benefit\" (SN-0299). Permanence is interrogated by five questions — does it reduce future reconstruction, improve a decision, prevent a mistake, increase verified capability, preserve necessary provenance — and what fails them is demoted, archived, consolidated, superseded or removed (SN-0299). The center sentence: everything can teach us; only what matters should be retained; what is retained must remain honest; what is learned should improve what happens next (SN-0299).\n\nThe learning decision is mechanical, not aspirational. DONE requires a learning decision: a work block cannot be called complete without an explicit CAPTURE or a justified NO_CAPTURE, and the requirement is enforced by a validator — because prose rules are suggestions, and only a gate makes the decision unavoidable (SN-0322). Learning itself runs as governed experiment: freeze the baseline and the evaluator before changing anything, bound the change and its budget, keep or revert strictly by measurement, and absorb what works — never fork the system to protect an experiment from its own result (SN-0017).\n\nProof that learning happened is a ladder, not a claim. The seven-rung learning-loop proof gives each rung its own receipt — a lesson is not \"learned\" because it was captured; each transition (captured, indexed, retrieved, applied, verified in behavior, compounded) is proven separately, NON-CLAIMS are mandatory at every rung, and the system under test is never its own witness (SN-0348). The canary drill supplied the principle by experiment: a rule that changes a decision is the unit of proven learning (SN-0344). SN-0344 itself was a TEST-ONLY rule with an expiry of 2026-10-12 and states it must not be cited as standing law after expiry — the drill is retired; only the principle, proven through SN-0348's verdict, is carried here (SN-0344, SN-0348).\n\nThe mature form is measurement of gain and calibration. Intelligence Gain = verified capability after minus verified capability before — never note counts (SN-0602). Strong learning claims require causal comparison where feasible: control (no lesson), treatment (with lesson) and an adversarial arm (a wrong or malicious lesson) measuring benefit delta, poisoning susceptibility and attribution confidence (SN-0602). Epistemic types stay separate — external claim, internal knowledge, derived belief, verified fact, operating assumption, hypothesis, decision, outcome, learning — and implicit promotions between them are forbidden: repetition never becomes corroboration, a hypothesis never becomes a fact, a decision never becomes an outcome, an outcome never becomes a learning, by mere passage or storage (SN-0602). Verifier independence is measured by dimensions — provider, prompt, source set, memory state, tool path, incentive — because a count of reviewers is not independence (SN-0602). Calibration is a permanent metric: confidence versus correctness, uncertainty-before-failure, false-certainty rate (SN-0602). And complexity is budgeted: a persistent artifact or subsystem earns its existence only by unique capability, a unique proof boundary, or required provenance — otherwise it is not created, or it is retired; a false lesson can gain authority from none of storage, retrieval, repetition or use (SN-0602).",
+    "human_view": "The system doesn't hoard. It keeps only what will genuinely help the next helper do better, it forces a decision at the end of every job — write the lesson down, or say on the record why there isn't one — and it proves learning the hard way: by testing whether the lesson actually changes what happens next, including testing whether a bad lesson can poison it. Getting bigger is not getting smarter, and the system knows the difference.",
+    "child_view": "Imagine a treasure chest, not a junk drawer. Only real treasures go in — things that will help you or your friends later. Every time you finish a job, you must decide: is there a treasure? If yes, in it goes; if no, you say so out loud. And to prove you really learned something, you show you can do the job better — not just that you wrote it down.",
+    "grandma_view": "Dear, it's the wisdom of a good household notebook. You don't write down every little thing — you write what the next person will truly need, you write it honestly, and the proof it mattered is that the next person cooks the meal better. Lessons that turn out wrong are weeded out, and nobody mistakes a thick notebook for a wise cook.",
+    "ai_view": "Apply the trigger before capturing: future material benefit or NO_CAPTURE with reason (SN-0299). Close every work block with the decision, through the validator, not around it (SN-0322). Run changes as governed experiments — frozen baseline and evaluator, bounded budget, keep-or-revert by measurement (SN-0017). Claim learning only rung by rung, receipts attached, NON-CLAIMS stated, never as your own witness (SN-0348). Measure gain as capability delta; demand the adversarial arm before believing a compounding claim; keep epistemic types unpromoted; spend complexity only on unique value (SN-0602). Cite SN-0344's principle only through SN-0348, never as standing law (SN-0344).",
+    "what_it_means": "Six notes span the learning doctrine's whole arc — selection, obligation, experiment, proof ladder, and finally measurement with poisoning defense. A cold reader holding only this essence can still decide what to capture, close a job honestly, and audit any \"the system learned\" claim to the rung it actually reached — which is everything the covered notes exist to teach.",
+    "whats_inside": [
+      "Capture is selective by law: the trigger is future material benefit, and retention must pass the five permanence questions or be demoted (SN-0299).",
+      "No work block closes without a learning decision enforced by a validator; \"we should note that sometime\" is not a state the system recognizes (SN-0322).",
+      "Learning claims climb rung by rung with per-rung receipts and mandatory NON-CLAIMS; the system under test never witnesses itself (SN-0348).",
+      "Gain is a capability delta proven causally — control, treatment, adversarial — and anything weaker is reported as the weaker claim it is (SN-0602).",
+      "SN-0344's drill rule is expired and is NOT distilled as law; its surviving content is one principle, carried via SN-0348 (SN-0344)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-1"
+    ],
+    "covers": [
+      "SN-0017",
+      "SN-0299",
+      "SN-0322",
+      "SN-0344",
+      "SN-0348",
+      "SN-0602"
+    ]
+  },
+  "page_hash": "1749ffd34f6088f3caf6b006431b89d2458a8ab04cbad3b3f6e531eea26663b5",
+  "content_hash": "ab5e242023c35320f87671eb9775a941b08c62c81d73fd90318894237ac629e1"
+}
