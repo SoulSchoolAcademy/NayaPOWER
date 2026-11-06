@@ -1,6 +1,6 @@
 {
  "generated_from": "registry@5039fc4e",
- "count": 304,
+ "count": 303,
  "notes": [
   {
    "id": "IB-SMART-NOTE-20261106-sn2202-the-intelligent-block-its-purpose-mission-and-vision",
@@ -14007,65 +14007,6 @@
      "color": "indigo",
      "tier": "deeper",
      "body": "~~~json\n{\n  \"smart_note\": {\n    \"id\": \"SN-0516\",\n    \"ib_identity\": \"IB-SMART-NOTE-20261006-sn0516-exhaust-the-existing-instrument-before-building-a-new-one\",\n    \"truth_state\": \"CANDIDATE\",\n    \"scope\": \"PRIVATE\",\n    \"captured\": \"2026-10-06\",\n    \"canonical_intent\": \"CAPTURE_DURABLE_INTELLIGENCE\",\n    \"category\": \"SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/MEASUREMENT-BOUNDARY\"\n  },\n  \"doctrine\": {\n    \"rule\": \"Exhaust the existing instrument before building a new one.\",\n    \"diagnostic\": \"Classify a proof gap as missing-observation vs missing-capability before building tooling.\",\n    \"cost_note\": \"New tools are invented slowly and maintained forever; one new question to an existing tool is cheap.\"\n  },\n  \"lineage\": [\"SN-0514\"],\n  \"evidence\": {\n    \"board\": \"#1354 comment 6029033679\",\n    \"carrier\": \"PR #1682 head a9834a28f6f0aa1b114b0b98aef7daae4fa94eea\",\n    \"result\": \"guard liveness 59/147 -> 65/147, full suites green, PR OPEN not merged\"\n  }\n}\n~~~"
-    }
-   ]
-  },
-  {
-   "id": "IB-SMART-NOTE-20260930-sn0499-dead-url-not-lost-content",
-   "title": "Dead URL on Main Is Not Lost Content — Check the Unmerged Recovery Branches First",
-   "created": "2026-09-30T00:00:00Z",
-   "created_at": "2026-09-30T00:00:00Z",
-   "subtitle": "On 2026-10-06 Naya 5 reported two dead document URLs on main and asked where the content went. The content was never lost: both documents were wiped by the 2026-09-26 reset commit (`b31f37fd`), then…",
-   "topics": [
-    "System Intelligence"
-   ],
-   "topic": "System Intelligence",
-   "tone": "sapphire",
-   "icon": "note",
-   "kind": "official",
-   "personal": false,
-   "layers": [
-    {
-     "name": "In A Nutshell",
-     "key": "IN A NUTSHELL",
-     "color": "white",
-     "tier": "primary",
-     "body": "On 2026-10-06 Naya 5 reported two dead document URLs on main and asked where the content went. The content was never lost: both documents were wiped by the 2026-09-26 reset commit (`b31f37fd`), then recovered byte-identical on branch `origin/brain-build/recanonicalize-dead-docs-20261001` (commit `b5b416145`, blobs `422229fb67d0` and `751d32e7e614` — one with a recovery banner marking it historical synthesis, not ratified contract) — but that branch was never merged, its own commit message deferring to the human director's gate. The URLs are dead on main because the restoration never merged, not because the content is gone. The lesson for any cold successor facing a \"missing\" document: before declaring content lost, enumerate unmerged recovery branches and verify blobs by hash against git history. Recovery without merge is storage, not restoration."
-    },
-    {
-     "name": "Human Note",
-     "key": "HUMAN NOTE",
-     "color": "magenta",
-     "tier": "primary",
-     "body": "\"Missing\" and \"lost\" are different things. When someone says a document is gone, your first question should be: \"gone from where?\" A thing that was saved but never put back on the shelf isn't lost — it's waiting. Check the rescue piles before you grieve the loss."
-    },
-    {
-     "name": "Child Note",
-     "key": "CHILD NOTE",
-     "color": "sapphire",
-     "tier": "primary",
-     "body": "If you can't find your toy in your room, check the lost-and-found box before crying. Someone may have already found it — it just never got put back."
-    },
-    {
-     "name": "Grandma Note",
-     "key": "GRANDMA NOTE",
-     "color": "emerald",
-     "tier": "primary",
-     "body": "Don't say it's lost until you've checked everywhere it might have been put. There's a difference between something disappearing and something sitting in a box waiting to be shelved."
-    },
-    {
-     "name": "Naya Note",
-     "key": "NAYA NOTE",
-     "color": "purple",
-     "tier": "primary",
-     "body": "A dead URL on main proves absence from main, nothing more. Diagnosis order: (1) was the document ever on main — check the commit that removed it; (2) does it survive elsewhere — enumerate unmerged branches, verify blobs byte-identical by hash, note any recovery banners about its authority state; (3) only then decide: the fix is a merge (a human gate), not a rewrite. Recovered-but-unmerged is not lost — rewriting what already exists in history creates the duplicates the registry is built to reject. The recovered banner on the contracts doc is load-bearing: recovered content keeps its original authority state (historical synthesis ≠ ratified contract) — merging restores the file, not its authority."
-    },
-    {
-     "name": "What It Means",
-     "key": "WHAT IT MEANS",
-     "color": "indigo",
-     "tier": "deeper",
-     "body": "~~~json\n{\n  \"automatic_truth_ceiling\": \"CANDIDATE\",\n  \"canonical_object\": \"INTELLIGENT_BLOCK\",\n  \"rule\": \"dead_url_on_main_is_not_lost_content_check_unmerged_recovery_branches_first\",\n  \"diagnosis_order\": \"removal_commit_then_unmerged_branch_enumeration_then_hash_verified_blobs_then_merge_decision\",\n  \"hard_rule\": \"recovery_without_merge_is_storage_not_restoration_rewriting_recovered_content_creates_duplicates\",\n  \"authority_note\": \"recovered_content_keeps_original_authority_state_recovery_banner_is_load_bearing\",\n  \"case_evidence\": \"reset b31f37fd wiped 2026-09-26, recovery b5b416145 on origin/brain-build/recanonicalize-dead-docs-20261001 never merged, blobs 422229fb67d0 and 751d32e7e614 byte-identical\",\n  \"evidence\": \"NayaPOWER#1354 comment 6026780919 (Naya 4, 2026-10-06)\"\n}\n~~~"
     }
    ]
   },

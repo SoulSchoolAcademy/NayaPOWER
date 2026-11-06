@@ -1,6 +1,6 @@
 # Essence 05 — Intelligence Must Transfer and Compound
 
-Distilled from 12 raw Smart Notes (Earned-Intelligence + Learning-Pipeline + Learning + Active-Intelligence + Intelligence + Compounding-Intelligence), read in full 2026-11-05. Level 2 ESSENCE + Level 3 VALUE (Levels of Intelligence, PI n=405). Distillation law SN-2058.
+Distilled from 9 raw Smart Notes (Earned-Intelligence + Learning-Pipeline + Learning + Active-Intelligence + Intelligence + Compounding-Intelligence), read in full 2026-11-05, plus 1 partial carry completed by a sister essence (SN-0499, remainder in SN-2136) — with 3 pointers (SN-0391, SN-0827, SN-791) that are not counted as distilled coverage here. Level 2 ESSENCE + Level 3 VALUE (Levels of Intelligence, PI n=405). Distillation law SN-2058. Coverage corrected in the Batch-1 reconciliation pass (see audit: batch1-recon).
 
 ## IN A NUTSHELL
 
@@ -34,7 +34,7 @@ You are a learner. Prove intelligence by transfer — builder A proves, builder 
 
 ## WHAT IT ALL MEANS
 
-Twelve separate learning-loop notes are one law: intelligence is not what you wrote down, it is what changed. Every note in this cluster is a case where learning stalled or proved itself — a lesson cited but never applied, a queue of 36 lessons that could never be tested, a transfer that worked (9/10 vs 0/10) and one that did not, a chain with an unproven link. The repair in each case was the same move: make the lesson testable, make the transfer explicit, and audit whether behavior actually changed.
+Ten separate learning-loop notes are one law: intelligence is not what you wrote down, it is what changed. Every note in this cluster is a case where learning stalled or proved itself — a lesson cited but never applied, a queue of 36 lessons that could never be tested, a transfer that worked (9/10 vs 0/10) and one that did not, a chain with an unproven link. The repair in each case was the same move: make the lesson testable, make the transfer explicit, and audit whether behavior actually changed.
 
 ## WHY IT MATTERS
 
@@ -55,14 +55,17 @@ The durable lesson: captured is not compounded. Intelligence is proven when it t
 ## COVERAGE — RAW NOTES DISTILLED (12)
 
 - IB-SMART-NOTE-20260930-sn0192-intelligence-proves-when-it-transfers
-- IB-SMART-NOTE-20260930-sn0499-dead-url-not-lost-content
+- IB-SMART-NOTE-20260930-sn0499-dead-url-not-lost-content — PARTIAL, completed by a sister essence: this essence carries the headline rule (a dead URL on main is not lost content — check the unmerged recovery branches first); the remainder (the recovery episode, blob verification by hash, recovery-banner ≠ authority, recovery without merge is storage not restoration) is carried by SN-2136 (Provenance: Know Where the Thing Lives). SN-0499 retires under this reconciliation pass on the combined carry.
 - IB-SMART-NOTE-20261007-sn0583-first-valid-transfer-tier-s
 - IB-SMART-NOTE-20261006-sn0431-register-at-ingest-time
 - IB-SMART-NOTE-20261013-sn0811-migrated
 - IB-SMART-NOTE-20261023-sn0833-learn-grow-compound-first-mistake-law
 - IB-SMART-NOTE-20261029-sn1899-the-only-real-mistake-the-one-that-isnt-noted
 - IB-SMART-NOTE-20260930-sn0526-smart-note-activation-ladder
-- IB-SMART-NOTE-20261005-sn0391-fallback-must-carry-contract-semantics
-- IB-SMART-NOTE-20261023-sn0827-the-most-intelligent-system-not-yet
 - IB-SMART-NOTE-20261005-sn0436-cited-is-not-compounded
-- IB-SMART-NOTE-20261013-sn0791-migrated
+
+## POINTERS — NOT COUNTED AS DISTILLED COVERAGE HERE
+
+- IB-SMART-NOTE-20261005-sn0391-fallback-must-carry-contract-semantics — SN-0391 is not carried by this essence; removed from coverage in the Batch-1 reconciliation pass. Its substance (a fallback or test double must carry the contract semantics the verifier asserts; form-validity is not semantic-validity; single/batch parity by regression ratchet; each repair exposes the next rung) is carried by SN-2147 (Repair Discipline), under which SN-0391 is retired.
+- IB-SMART-NOTE-20261023-sn0827-the-most-intelligent-system-not-yet — this essence carries only SN-0827's closing aphorism ("the bones are elite, the flow is clogged"), which is not coverage; removed from coverage in the Batch-1 reconciliation pass. The assessment itself (the 10 holes, the 10 loves, the 173:1 ratio) is carried by SN-2190 (Drain the Reservoir), under which SN-0827 is retired. SN-0827's embedded EXECUTION DIRECTIVE — THE WAY TO 10 (ratified by Shawn, 2026-10-23) — stands on SN-0827's own page: pointed to, never absorbed.
+- IB-SMART-NOTE-20261013-sn0791-migrated — SN-791 (The Proven-Links Chain) carries formal law and directed_by markers (PROVEN_LINKS_CHAIN; directed by Shawn Vibert, 2026-10-09) and is standing authority: it stands alone (ACTIVE) and is pointed to, never counted as distilled coverage. This essence's chain_proof restates its rule under that pointer.
