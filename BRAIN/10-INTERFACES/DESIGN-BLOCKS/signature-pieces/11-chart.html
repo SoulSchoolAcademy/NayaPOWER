@@ -1,0 +1,75 @@
+<!-- ================================================================
+  NIA DESIGN SIGNATURE PIECE 11 — CHART — THE DATA DISPLAY
+  DRAFT — the Clarity Confirmation Act is NOT stamped by Shawn; nothing here is law yet.
+  Act reference: Act §4.11 — ~/workspace/team-nitro/clarity-confirmation-act-DRAFT-20261106.md
+  CHECK: same materials and light as the gauge; 2-second test passed.
+  CRAFT (Shawn 00:31Z — optimized for what IT is): The most extraordinary chart: the gauge’s other face, same materials, same light, same motion — molded to show the numbers so you understand your world in 2 seconds.
+  ROLLOUT (Shawn 00:31Z — Dashboard first, then Personal, then the rest): group 1 — first proved on Dashboard.
+  Harvested verbatim from:
+  - ~/workspace/smart-factory/harvested/dashboard.html L368-369
+  - ~/workspace/smart-factory/harvested/dashboard.html L370
+  - ~/workspace/smart-factory/harvested/dashboard.html L371
+  - ~/workspace/smart-factory/harvested/dashboard.html L372
+  - ~/workspace/smart-factory/harvested/dashboard.html L373
+  - ~/workspace/smart-factory/harvested/dashboard.html L374
+  - ~/workspace/smart-factory/harvested/dashboard.html L375
+  - ~/workspace/smart-factory/harvested/dashboard.html L376
+  - ~/workspace/smart-factory/harvested/dashboard.html L377
+  - ~/workspace/smart-factory/harvested/dashboard.html L378
+  - ~/workspace/smart-factory/harvested/dashboard.html L379
+  - ~/workspace/smart-factory/harvested/dashboard.html L380
+  - ~/workspace/smart-factory/harvested/dashboard.html L381
+  - ~/workspace/smart-factory/harvested/dashboard.html L382
+  - ~/workspace/smart-factory/harvested/dashboard.html L383
+  - ~/workspace/smart-factory/harvested/dashboard.html L384
+  - ~/workspace/smart-factory/harvested/dashboard.html L2322-2325
+  Factory path: ~/workspace/smart-factory/signature-pieces/11-chart.html
+  Repo (canonical) path: BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/11-chart.html
+  Notes: 
+  ================================================================ -->
+<style>
+/* --- VERBATIM HARVEST (do not restyle; compose only) --- */
+/* DATA VIZ: beautiful stats, graphs, charts */
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 16px; }
+
+.stat-card { background: #0d0d14; border: 1px solid rgba(248,247,251,.12); border-radius: 12px; padding: 14px; position: relative; overflow: hidden; }
+
+.stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--bc); box-shadow: 0 0 12px var(--bc); }
+
+.stat-value { font-size: 24px; font-weight: 800; color: #F8F7FB; margin-bottom: 4px; }
+
+.stat-label { font-size: 14px; color: #F8F7FB; opacity: .6; }
+
+.stat-trend { font-size: 14px; margin-top: 6px; }
+
+.stat-trend.up { color: #2fe89e; }
+
+.stat-trend.down { color: #ff5e6c; }
+
+.bar-chart { display: flex; align-items: flex-end; gap: 8px; height: 120px; padding: 16px; justify-content: center; }
+
+.bar { width: 28px; border-radius: 6px 6px 2px 2px; background: linear-gradient(180deg, var(--bc), transparent); border: 1px solid var(--bc); box-shadow: 0 0 16px var(--bc);  }
+
+.donut { width: 120px; height: 120px; border-radius: 50%; margin: 16px auto; position: relative; display: flex; align-items: center; justify-content: center; }
+
+.donut-center { font-size: 18px; font-weight: 700; color: #F8F7FB; }
+
+.data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+
+.data-table th { text-align: left; padding: 10px 12px; color: #F8F7FB; opacity: .5; font-weight: 600; border-bottom: 1px solid rgba(248,247,251,.1); }
+
+.data-table td { padding: 10px 12px; color: #F8F7FB; border-bottom: 1px solid rgba(248,247,251,.05); }
+
+.data-table tr:last-child td { border-bottom: none; }
+
+.os-sl-graph{
+  height:110px; margin:0 0 16px; position:relative;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+</style>
+
+<!-- SPECIMEN-START -->
+<div class="stat-grid"><div class="stat-card"><div class="stat-value">{{big_number}}</div><div class="stat-label">{{label}}</div><div class="stat-trend up">{{trend}}</div></div></div>
+<div class="bar-chart">{{bars}}</div>
+<div class="os-sl-graph">{{graph}}</div>
+<!-- SPECIMEN-END -->
