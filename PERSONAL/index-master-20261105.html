@@ -11825,8 +11825,34 @@ html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
     background:rgba(3,3,5,.94);border:1px solid rgba(255,255,255,.14);border-radius:10px;
     box-shadow:0 8px 24px rgba(0,0,0,.6);}
   .nsb-bottom .nsb-status:empty{display:none;}
-  .nsb-bottom .nsb-row{padding:6px 24px 8px;}
-  .nsb-bottom-inner{padding:6px 16px 8px;}
+  .nsb-bottom .nsb-row{padding:4px 24px 6px;}
+  .nsb-bottom-inner{padding:4px 16px 6px;}
+  /* P10 COMPLETION (filed): slim the bar further at short heights only.
+     Bar tabs: padding 12/11 -> 7px top/bottom, min-height 44px kept
+     (tabs 55 -> 45px @638, 47px @390). Bar: 84/82 -> 66px, top 378. */
+  .nsb-bottom .nsb-tab{padding-top:7px;padding-bottom:7px;}
+}
+/* P10 COMPLETION (filed): compact the hero at short viewports only
+   (max-height:500px AND max-width:760px; desktop + tall viewports
+   untouched). The hero stack is bottom-anchored to the cover, so cover
+   420 -> 326 moves every action row up 94px: row 3 bottom 452/450 ->
+   368/366 vs bar top 378 (10/12px clear). Buttons 46 -> 40px (padding
+   12 -> 9), row gap 10 -> 6, actions margin-top 14 -> 8. Row 4
+   (Share/Settings) rises with the stack -- its top lands ~374/372, in
+   view but behind the bar (~36/34px covered). Row 4 is EXEMPTED by the
+   parent's ruling (never visible at first paint on the baseline; clears
+   on ~40px scroll); no 74px gap, no rescale below the 40px Fix X floor.
+   Fix B (same pass): the cover shrink pulls the head up, so at 390 wide
+   the name (x146-306, y119-159) collides with the top-right Change-cover
+   button (x216-380, y108-156). At short heights only the button moves to
+   the cover's top-left corner, compacted (padding 8px 12px, font 12px)
+   so its right edge stays left of the name (x146). Label, function and
+   clickability unchanged. */
+@media (max-height:500px) and (max-width:760px){
+  .ph-cover{height:326px !important;}
+  .ph-actions-row{margin-top:8px;gap:6px;}
+  .up-act{padding:9px 14px;}
+  .ph-cover-btn{top:6px;left:10px;right:auto;padding:8px 12px;font-size:12px;}
 }
 /* ============ MOTION ============ */
 @media (prefers-reduced-motion: reduce){
