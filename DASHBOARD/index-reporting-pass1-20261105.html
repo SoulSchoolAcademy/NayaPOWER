@@ -17535,6 +17535,14 @@ function ldWireNodes(){
       }
       /* don't trigger on buttons */
       if (e.target.closest('button')) return;
+      /* 2026-11-06 — FIX F2: don't trigger on chart bars either. A bar tap
+         reads its day (the note handlers) — it is a chart interaction, not
+         a row click. Before this guard the bar click bubbled here and opened
+         the deep-dive drawer, swallowing every repeat tap until the drawer
+         was closed. Guarded here (the drawer's only call site) rather than
+         stopPropagation in the bar handlers: this one line protects both bar
+         handlers (per-render + delegated) and any future bar interaction. */
+      if (e.target.closest && e.target.closest('.bar')) return;
       var row = e.target.closest('.os-link-row');
       if (!row) return;
       var nameEl = row.querySelector('.os-link-name');
