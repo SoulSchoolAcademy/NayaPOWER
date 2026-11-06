@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-06T09:48:43Z",
-  "tip": "9004ce29611848ea234e631432d0e7d6ef2053e4",
+  "generated_at": "2026-11-06T15:48:41Z",
+  "tip": "67067ec5e234a1a85f7550ec644f0221573aa6c6",
   "prs": [
     {
       "number": 3089,
@@ -22,31 +22,22 @@
       "head": "1679fbdb7a7e1b87def5afbd4dc88dfe47274b9c"
     },
     {
-      "number": 3254,
-      "title": "Daily Intelligence Report 2026-11-05 - filed edition (V2 skeleton)",
-      "tier": "C",
+      "number": 3258,
+      "title": "Sync BRAIN/CURRENT-MISSION-STATE.md from naya/mission-state @ b087c9c (05:13 PST snapshot)",
+      "tier": "B",
       "action": "CURE",
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "f7d4b2785b74f4ac282df8450820db0e2c2ed93d"
+      "head": "1d37b67a8e1d8b5f88c3ef7c103c92d095d89653"
     },
     {
-      "number": 3255,
-      "title": "Hub cleanup: remove bottom Search pill + top Intelligence-live banner",
+      "number": 3259,
+      "title": "Settings: desktop max-scroll clearance \u2014 .main padding-bottom 80px \u2192 220px",
       "tier": "B",
       "action": "CURE",
       "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "8a319a59063500002948c6e69b8a806228c8e4c9"
-    },
-    {
-      "number": 3256,
-      "title": "Settings overhaul: account header first, 14 sections, real controls, System Health, labelled dock",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "d13656916efae157b340398047281e35363b6795"
+      "head": "0ae469533dce137b72c6ba914d081d3a1940dddf"
     }
   ]
 }
