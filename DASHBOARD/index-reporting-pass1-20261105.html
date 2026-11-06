@@ -5007,9 +5007,10 @@ body:not(.hero-mode) .os-constellation{
   pointer-events:auto;
 }
 /* 2026-11-02 — THE 12 CHARTS #9: SPARKLINES on orbs */
+/* 2026-11-06 — FIX 9: the sparkline sat at bottom:8px, directly across the orb's label ("CLICKS" etc.) — its node-colored polyline read as a line through the label (screenshot 51). It now rides behind the number (the disc's middle), faint, so it never crosses any text. */
 .os-ld-spark{
-  position:absolute; bottom:8px; left:50%; transform:translateX(-50%);
-  width:60px; height:20px; pointer-events:none; opacity:.8;
+  position:absolute; top:50%; bottom:auto; left:50%; transform:translate(-50%,-50%);
+  width:60px; height:14px; pointer-events:none; opacity:.25; z-index:0;
 }
 .os-ld-node{ position:relative; }
 /* 2026-11-02 — SHAWN: Orbs get the vortex treatment. A thin dashed ring inside,
@@ -5271,6 +5272,7 @@ body:not(.hero-mode) /* 2026-11-02 — Shawn: ICON ALWAYS VISIBLE. Bright white,
 .os-ld-nodes .os-ld-node .os-ld-icon,
 .os-constellation .os-ld-node .os-ld-icon,
 button.os-ld-node .os-ld-icon{
+  position:relative !important; z-index:1 !important;
   font-size:18px !important;
   color:#ffffff !important;
   text-shadow:0 0 12px var(--nc), 0 2px 4px rgba(0,0,0,.8) !important;
@@ -5426,13 +5428,15 @@ body:not(.hero-mode) .os-sl-board{
 }
 /* 2026-11-02 — Shawn: LABEL ALWAYS VISIBLE. Uppercase, white, bold.
    Like the hover state, permanently. */
+/* 2026-11-06 — FIX 9: the label fits its orb on one line (was 10px/.14em — SMART NOTES ≈ 81px > the 76px disc). 9px/.08em ≈ 67px. Positioned above the sparkline (which now rides behind the number) so no line can cross the text. */
 .os-ld-nodes .os-ld-node .os-ld-lbl,
 .os-constellation .os-ld-node .os-ld-lbl,
 button.os-ld-node .os-ld-lbl{
   display:block !important;
+  position:relative !important; z-index:1 !important;
   margin-top:5px !important;
-  font-size:10px !important; font-weight:800 !important;
-  letter-spacing:.14em !important; text-transform:uppercase !important;
+  font-size:9px !important; font-weight:800 !important;
+  letter-spacing:.08em !important; text-transform:uppercase !important;
   color:#ffffff !important;
   text-shadow:0 1px 3px rgba(0,0,0,.9), 0 0 10px var(--nc) !important;
   opacity:1 !important;
@@ -17346,7 +17350,7 @@ function ldLayoutNodes(){
     if (_cg && _cg !== _gs) { _gw = Math.max(_gw, _cg.clientWidth); _gh = Math.max(_gh, _cg.clientHeight); }
     if (_gw > 50 && _gh > 50) { gaugeR = Math.max(_gw, _gh) / 2; }
   } catch(e){}
-  var gap = 8; /* PASS 1 v6 (d): was 25 — reclaims 34px of constellation height (neededH falls 646->596 desktop); orbs still clear the gauge rim by 8px. */
+  var gap = 14; /* 2026-11-06 — FIX 9: was 8 — the disc's own ticks ring (7px outside the disc) sat 1px from the gauge's toothed rim, so the orb read as sitting ON the teeth. 14px clears the ring + the teeth. */
   var orbR = gaugeR + nd/2 + gap;
   /* Grow constellation height if the orbit needs more vertical room.
      Never clip orbs, never shrink gauge. */
