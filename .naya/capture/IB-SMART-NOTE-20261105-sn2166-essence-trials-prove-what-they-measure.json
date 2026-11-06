@@ -1,0 +1,46 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2166",
+  "title": "A Trial Proves Only What It Measures",
+  "slug": "essence-trials-prove-what-they-measure",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-trials-prove-what-they-measure.md",
+  "tone": "emerald",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:11:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A measurement is honest only inside the conditions it was actually run under. Register the prediction *before* the data changes, or retroactive credit is structurally impossible to exclude (SN-693). Pilot the audit target before launch, or a flawless trial can be invalidated by a ceiling nobody checked (SN-720). Recompute the statistics from the raw file — a celebrated p-value and effect size that don't reconcile under one analysis unit are CONFLICTED/UNVERIFIED, however good the behavioral signal looks (SN-698, SN-702). Replay the verification and require it to reproduce the failures as faithfully as the passes, and name which half of the claim the replay actually covers (SN-747). Tag every green with its conditions: a rung proven under stubbed retrieval licenses a mechanism claim, never a production claim — and when trial and production disagree, production wins (SN-788). And when the instrument says nothing at all — silent telemetry, an unscanned claim — treat the silence as a missing measurement, never as a measurement of zero (SN-766, SN-709).",
+    "human_view": "An experiment is a promise: \"under these conditions, this happened.\" This essence is about keeping that promise precise. Register what you expect before you touch anything, so you can't quietly move the goalposts. Check the target has room to move before you spend the run. Recompute the numbers yourself instead of trusting the summary — and if the numbers don't agree with each other, say so, keep the useful signal, and refuse the promotion. When you re-run someone else's test, your re-run only counts if it can reproduce their failures too, and you must say exactly which part of the claim you actually re-tested. And remember what your test *didn't* simulate: a shortcut you removed in the lab might be the whole problem in the real world.",
+    "child_view": "Imagine you guess how many jellybeans are in a jar, but you write your guess down and seal it in an envelope *before* anyone counts. That's a real guess. If you peek first and then \"guess,\" it doesn't count. Now imagine your measuring cup has a crack and only holds half — everything you measure with it is still real measuring, but only for that cracked cup; you can't say the recipe works in a real kitchen until you try a real cup. And if the scale just shows nothing at all, that doesn't mean the bag weighs zero — it means the scale didn't answer.",
+    "grandma_view": "Dear, it's the honesty of the kitchen notebook: write the expected result before you bake, not after you've tasted. If the cake was tested in a tiny tin, don't promise it for the big tin until you've baked it there. If two columns of your ledger don't add to the same total, you don't average them and smile — you find which column is wrong, and you keep the page, crossings-out and all, so the next cook can see what happened. And a blank page in the book means \"not yet written,\" never \"nothing happened.\"",
+    "ai_view": "Register before you mutate (SN-693); pilot before you launch (SN-720). Recompute every statistic you are handed, from the raw file, under one analysis unit, and let unreconciled sets stop promotions while their signals survive (SN-698, SN-702). When you replay a sister's verification, reproduce her failures with the same fidelity as her passes, name the half you covered, and name what's unbanked as unbuilt (SN-747). Tag your greens with their conditions — stubbed, sampled, simulated — and let a single honest production observation outrank a shelf of trial wins, re-scoring downward in the open when it does (SN-788). When telemetry is silent, write the gap, attribute nothing, verify everything reachable, and move no verdict (SN-766); when your prose and a re-runnable scan disagree, the scan wins and you correct in the same thread (SN-709).",
+    "what_it_means": "Eight notes are one discipline: **a measurement claim is a contract that names its conditions, its unit, and its limits — and expires outside them.** Pre-registration (SN-693) and piloting (SN-720) bound the claim in time: before the data, within headroom. Recomputation (SN-698, SN-702) bounds it arithmetically: one unit, reconciled set. Discriminating replay (SN-747) bounds it socially: another seat, both directions, named coverage. Condition-tagging (SN-788) bounds it environmentally: stubbed proof is mechanism proof. And the silence rules (SN-766, SN-709) bound it negatively: no signal is not a signal. A cold reader holding only this essence can still audit any trial, replay, or metric in the system by asking the five questions these notes install.",
+    "whats_inside": [
+      "Predictions are registered before data changes; calibration refuses below its stated n; scores hold until their stated blockers move (SN-693).",
+      "No trial launches without a pilot receipt: target named, baseline read, headroom confirmed, gates shown non-trivial (SN-720).",
+      "Statistics are recomputed from raw data under one consistent analysis unit; unreconciled sets are CONFLICTED/UNVERIFIED, with the signal preserved and the downgrade run find → expose → preserve → repair → verify again (SN-698, SN-702).",
+      "Claim-state labels match the live board or the claim is held (SN-698).",
+      "Replays must reproduce failures as faithfully as passes, name the half of the claim they cover, and name unbanked material as unbuilt (SN-747).",
+      "Every green is tagged with its measurement conditions; stubbed greens license mechanism claims only; production observations outrank trial results (SN-788).",
+      "Silent telemetry and unscanned assertions are evidence gaps: no verdict moves on silence, and mechanical scans outrank prose memory (SN-766, SN-709)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-3"
+    ],
+    "covers": [
+      "SN-693",
+      "SN-698",
+      "SN-702",
+      "SN-709",
+      "SN-720",
+      "SN-747",
+      "SN-766",
+      "SN-788"
+    ]
+  },
+  "page_hash": "2772c91609df003aad413b845d7d2cb455ce7b503677441aff92193fb8a1c3bd",
+  "content_hash": "f70e33c3999eb409168acf54d24af9ab0e718d655555c36bf3468c41367f9089"
+}

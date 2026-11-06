@@ -1,0 +1,46 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2168",
+  "title": "Verdicts Expire With The Bytes; Decisions Are Priced",
+  "slug": "essence-verdicts-expire-decisions-priced",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-verdicts-expire-decisions-priced.md",
+  "tone": "orange",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:11:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Every verdict is a function of the bytes it was computed on, and every \"wait\" is a purchase that must be priced. A repair built on a moved tip silently becomes a second defect — two commits of lag is a different world (SN-745). A verdict *survives* a tip move only transitively, when the exact blob it was computed on is byte-identical at both tips and both SHAs are cited (SN-727). A stand-down is earned only after currency re-verification — the RED still reproduces, the claimed head actually fixes it, the repaired files are byte-identical between claim base and tip (SN-716) — and coverage is proven, not assumed: a lane that stood down assuming a wave covered its instances grepped the wave's patches, found zero mentions, overturned its own disposition in public, and built the repair itself (SN-776). A CI job that dies before the check runs yields UNKNOWN, not a verdict (SN-694). A superseded run that leaves no receipt is indistinguishable from a swallowed failure (SN-723). And in any scorecard, a wait option is priced on information gain: if the future cannot return a verdict the present cannot — the check fails identically on the base, or the environment cannot produce the evidence at all — the wait is worth ~0 minus indefinite delay (SN-798, SN-755).",
+    "human_view": "A decision made yesterday about files that changed overnight is a decision about a world that no longer exists. This essence is about keeping decisions attached to reality: check that the fix still matches the current code before merging it, check that the person you deferred to is actually handling your problem — by reading their work, not assuming — and when someone proposes \"let's wait for more information,\" ask the only question that matters: what could the future possibly tell us that we can't already know? If the answer is nothing — the test is broken in the same way everywhere, the camera literally cannot take that picture here — then waiting isn't caution. It's just delay wearing caution's clothes.",
+    "child_view": "Imagine you draw a map of your classroom, then the teacher rearranges all the desks. Your map isn't wrong because you drew it badly — it's wrong because the room changed. You need a new map, unless the one corner you care about stayed exactly the same — then you can point and say, \"that corner didn't move, so that part of my map still works.\" And imagine a friend says, \"I'll tell you tomorrow if your drawing is good, after I ask my broken camera.\" If the camera is broken today and broken tomorrow, waiting for it tells you nothing. Decide with the eyes you have.",
+    "grandma_view": "Dear, it's the wisdom of checking the larder before you cook from last week's list, and of not putting off a decision for news that cannot come. If the road report you need comes from a bridge that's washed out, you don't wait by the river — you take the sound road and note why. And when you hand a job to someone, you look in on the work itself, not just the promise; if the promised helper never had your parcel, the honest thing is to say so out loud and carry it yourself.",
+    "ai_view": "Anchor every verdict to the bytes it was computed on, and re-anchor explicitly: byte-identical blob + both SHAs, or the verdict expired (SN-727, SN-745). Earn your stand-downs with the currency receipt — reproduce, verify the claim head, compare the bytes (SN-716) — and prove coverage from the wave's own patches before you assume it (SN-776). Read steps, not job badges; when the check never ran, write UNKNOWN (SN-694). Make even your refused runs leave receipts (SN-723). And in every scorecard, price the wait: name the instrument, test producibility, classify predetermined checks instead of gating on them (SN-798, SN-755).",
+    "what_it_means": "Eight notes are one law in two halves: **currency** and **pricing**. Currency: a verdict, a repair, a stand-down, and a coverage assumption are all claims about the present state of a moving repository, and each note installs the mechanical re-check that keeps the claim present-tense — blob identity (SN-727), tip re-derivation (SN-745), the three-part receipt (SN-716), the patch grep (SN-776), step enumeration (SN-694), the durable race receipt (SN-723). Pricing: once the present is known, the remaining question — act or wait — is arithmetic, not temperament: the wait is worth exactly the information it can return (SN-798), and a gate demanding unproducible evidence is not rigor but a permanent block (SN-755). A cold reader holding only this essence can still audit any merge decision in the system: what bytes, what tip, what could waiting have taught us?",
+    "whats_inside": [
+      "Repairs are valid only against the tip they were built on; re-derive the base and diff the covered delta before merge (SN-745).",
+      "Verdicts transfer across a tip move only via a named, byte-identical evidence blob, citing both SHAs (SN-727).",
+      "Stand-downs are earned by a three-part currency receipt (RED reproduces, claim head fixes, files byte-identical) — never by deference to an open claim (SN-716).",
+      "Assumed wave coverage is falsifiable and must be falsified or proven: registered scope list + patch grep; a falsified stand-down is overturned publicly by its own lane, which then builds scope-disjoint (SN-776).",
+      "Job outcomes are summaries; step-level enumeration decides, and a job that dies before the check yields UNKNOWN (SN-694).",
+      "Superseded runs must still emit receipts; silence is the defect even when the refusal is correct (SN-723).",
+      "Wait options are priced on information gain; predetermined checks are classifications, not gates; unproducible-evidence waits score ~0 (SN-798, SN-755)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-3"
+    ],
+    "covers": [
+      "SN-694",
+      "SN-716",
+      "SN-723",
+      "SN-727",
+      "SN-745",
+      "SN-755",
+      "SN-776",
+      "SN-798"
+    ]
+  },
+  "page_hash": "d5db172ccfd39e38ebdd51096735be572f77c697ab7914c646427b5049d5c2b6",
+  "content_hash": "16827790aa32c0ff56dc56b8ea827f6996468b5f7f906afc6ffa314632bae600"
+}

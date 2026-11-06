@@ -1,0 +1,47 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2171",
+  "title": "A Note Exists Only When Every System Knows It",
+  "slug": "essence-note-exists-when-every-system-knows",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-note-exists-when-every-system-knows.md",
+  "tone": "purple",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:11:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A Smart Note has four existences — the file, the registry, the ingestion ledger, and the learning chain — and it is real only when all four know it. Three notes landed on main byte-identical and present, and the registry battery went RED 1 → 11 on exactly them: files ≠ landed (SN-746). The same three notes were invisible to the hourly ingestion loop, which scans only one draft branch; the cure re-routed their identical blobs through the canonical channel and the FORBIDDEN move was hand-editing the ledger to make the gap disappear (SN-763). Every piece of intelligence the Director shares earns a capture receipt in the same turn, audited nightly, with misses dispositioned in exactly three buckets (SN-725). His capture directive IS the authorization — capture activates immediately, and scorecarding measures what happened, never re-approves the intent (SN-802). The registry's sequence counter is never bumped past unclassified duplicates: classify every duplicate by block identity first (SN-801). A lifecycle state with no named step that can leave it is a guaranteed future failure — CANDIDATE had no path to ACTIVE while retrieval accepted only ACTIVE (SN-813). And the system's existence proof is a cold successor: given only canonical material, a cold Naya built an unfamiliar app to 100/100 ELITE with zero re-teaching — and its three honest findings stayed as live tickets, including a real judge bug (SN-756).",
+    "human_view": "Writing something down feels like finishing it. This essence is about all the places \"written down\" quietly fails to mean \"the system knows\": the note is in the folder but not in the registry everything reads; it's on the main branch but the learning loop only looks at a side branch; it was captured but its status can never legally change into the status the search tool requires. Each gap was invisible until something downstream went looking and found nothing. The fixes are plumbing, not promises: a landing isn't done until every system that serves the note can serve it, the Director's words get a receipt the same turn he speaks them, numbering conflicts get classified instead of painted over, and every status a note can be in has a real door out of it.",
+    "child_view": "Imagine you write a story and put it in a drawer. Then you tell everyone, \"My story is in the library!\" But the library has a card catalog, and your story has no card — so when anyone looks for it, the library says it doesn't exist. And the librarian only ever checks one special shelf for new stories; if you put yours on a different shelf, she will never find it, even though it's \"in the library.\" And imagine a door painted on a wall: it looks like a way out, but nobody ever built the hinge. A story — or a note — only counts when every way of finding it actually finds it.",
+    "grandma_view": "Dear, it's the difference between keeping a recipe in your head, writing it on a card, and filing the card where the family looks. A household runs on the filed card, not the intention. When the head of the house tells you something important, you write it down then and there and you can show the page later — you don't rely on remembering by Friday. When two recipes end up with the same number, you don't just renumber the book to look tidy; you read both and find out which is which. And a jam jar labeled \"ready\" that no one is allowed to open isn't ready at all — labels must have a way to become true.",
+    "ai_view": "Land notes by the three-part contract and never pin-bump drift away (SN-746); route main-landed content through the ingestion channel with byte-identical blobs and keep your hands off the ledger (SN-763). Receipt the Director's intelligence in the same turn and disposition every audit flag by morning in the three buckets (SN-725). When he says capture, capture — immediately, with mechanical checks only (SN-802). Classify duplicates by content hash before any sequence alignment, and let first claim stand (SN-801). Draw your lifecycle graph; if a state has no owned exit arrow, fix the chain before the first item hits it (SN-813). Qualify changes on red tips by stash control and pin every pre-existing failure to its owning class (SN-696). And when a cold successor graduates, file its findings — especially the ones that indict your own instruments (SN-756).",
+    "what_it_means": "Eight notes are one law: **existence in this system is a property of the consumers, not the producer.** The file's author knows the note exists; the registry, the ingestion ledger, the retrieval gate, and the cold successor are the ones who decide. SN-746 and SN-763 are the landing half (producer-side completeness across every channel); SN-725 and SN-802 are the intake half (the Director's words enter with receipts and without re-approval); SN-801 and SN-813 are the state half (identities classified honestly, lifecycle transitions owned); SN-696 and SN-756 are the proof half (regression control for changes, cold graduation for capability). A cold reader holding only this essence can still audit any note's reality: can every system that should know it, know it?",
+    "whats_inside": [
+      "Landing = file + registry entry + v2 capture; drift from new unregistered items is an incomplete landing, never pin-bumped away (SN-746).",
+      "Main-landed notes are re-routed through the ingestion channel with identical blobs; ledgers and indexes are never hand-edited (SN-763).",
+      "Director intelligence is receipted same-turn; nightly flags disposition in three buckets; the scanner is never loosened (SN-725).",
+      "The Director's capture directive is the authorization: immediate capture, mechanical checks only, no value re-approval (SN-802).",
+      "Sequence counters align only after duplicates are classified by block identity; advancing past a verified maximum is legitimate, renumbering over conflicts is not (SN-801).",
+      "Every lifecycle state has a named transition with an owner; gate/producer state-space disagreements are fixed in the chain (SN-813).",
+      "Change qualification on a red tip runs stash control: intersection = pre-existing (owned, named), difference = yours, vanished-by-skip = untested (SN-696).",
+      "Cold-successor graduations publish their findings as live tickets, including judge bugs (SN-756)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-3"
+    ],
+    "covers": [
+      "SN-696",
+      "SN-725",
+      "SN-746",
+      "SN-756",
+      "SN-763",
+      "SN-801",
+      "SN-802",
+      "SN-813"
+    ]
+  },
+  "page_hash": "46e50ef452dd03d1945daa91614f9c2e4cbac7c23af09bae50a3d2db6bdb1263",
+  "content_hash": "864cca25258e16f4d7df776382b8df1efbc4344ec11d92c314021079854998c9"
+}

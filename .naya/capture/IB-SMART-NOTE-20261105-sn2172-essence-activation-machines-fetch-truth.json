@@ -1,0 +1,43 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2172",
+  "title": "Activation Is Enforced By Machines That Fetch Their Own Truth",
+  "slug": "essence-activation-machines-fetch-truth",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-activation-machines-fetch-truth.md",
+  "tone": "sapphire",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:11:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Activation — tuning in to the live state of the system before working — fails as a document and works only as a machine. Documents get read, agreed with, and forgotten under load, so the design intelligence moved into generators, blocks, and gates (SN-783). But a gate that trusts the builder's own receipt is theater: a builder can forge the receipt AND the expected hashes, so expected values must be computed by a separate trusted runner (SN-787). A checker that requires an identity field to be merely non-empty verifies typing, not identity — claimed identities are compared by EQUALITY against trusted expected values, with a wrong-identity negative control in the falsifier matrix (SN-792). References are resolved by availability — ordered fallbacks, the used reference + SHA recorded in the receipt, fail closed with a named failure when nothing resolves (SN-794). Gates compose only on the canonical schema: a lane never invents v2 in its own branch (SN-797) — the schema is upgraded by upgrading the canonical template itself, which is exactly how v2 legitimately became canonical (SN-799). And the unified gate's truth provider resolves the repository, the live tip, and canonical blob SHAs itself — no caller flag may supply truth; a builder cannot self-authenticate, ever (SN-799).",
+    "human_view": "\"Remember to check in before you start\" doesn't survive a busy day — people forget, especially people who wake up brand-new every morning, which is literally what these agents do. So the check-in became a turnstile: you physically cannot start until it reads your badge. But a turnstile that trusts whatever badge you hand it is just furniture. These notes harden the turnstile step by step: the badge's number must match the registry exactly (not just be *a* number), the registry must be read by the turnstile itself rather than quoted by the person walking through, the rulebook the turnstile enforces must be the one official rulebook (not a photocopy someone edited in their shed), and when the rulebook is missing, the turnstile says so and stays shut — it never waves you through on a guess.",
+    "child_view": "Imagine a clubhouse with a special door. To get in, you say the password and show your membership card. A silly door would let you in if your card says ANY name, as long as it says *something*. A smart door checks: does the name match the club list exactly? And the door reads the club list itself from the teacher's desk — it doesn't let you bring your own list, because you could just write your name on it. There's also only ONE official rulebook for the door; nobody gets to make up their own version in their bedroom. If the rulebook is lost, the door stays closed and says \"rulebook missing\" — it never guesses.",
+    "grandma_view": "Dear, it's the difference between a latch and a lock with a proper key registry at the hardware store. Anyone can whittle a piece of wood that looks like a key; the registry is what says which keys are real. Honest systems keep the registry out of the hands of the person asking to be let in, keep one master copy of the rules where everyone can see it, and teach the door to say \"I cannot verify you\" plainly instead of pretending. And the roster of who came in is written at the door, at the time — not reconstructed later from memory.",
+    "ai_view": "Build enforcement, not reminders: bake the law into generators and gates, receipt every activation against the live tip, and let freshness expire (SN-783). Never accept expected values from the builder — compute them in the trusted runner, and keep your verdict vocabulary honest about what consistency proves (SN-787). Bind identities by equality and demand the wrong-identity test before you believe any checker (SN-792). Resolve doctrine by ordered availability, receipt the reference + SHA you actually used, and fail closed by name (SN-794). Never fork a schema in your branch — upgrade the canonical template through the channel, and test compositions in sequence before claiming they compose (SN-797). Fetch your own truth: repository, live SHA, blob SHAs — no caller-supplied truth, no self-authentication, and let self-minted runs cap at CANDIDATE-LOCAL where everyone can see the cap (SN-799).",
+    "what_it_means": "Six notes are one architecture: **enforcement that cannot be talked around.** SN-783 is the premise — behavior that matters must be machine-forced, because every seat wakes up new. SN-787 and SN-792 are the trust design — who computes truth (not the builder), and how claims bind to it (equality, negative controls). SN-794 is the reference design — doctrine is resolved live, receipted, and failed closed when absent. SN-797 and SN-799 are the contract design — one canonical schema, changed only through its template, enforced by one gate whose truth provider answers to the live API rather than to any caller. The apparent v1/v2 tension between SN-797 and SN-799 is resolved in the record itself: the version was never the issue; the *channel* was. A cold reader holding only this essence can still audit any activation claim: who computed the expected values, what exactly was compared, which reference was used, which schema version the canonical template carries, and where the truth came from.",
+    "whats_inside": [
+      "Activation and design law live in machinery (generators, blocks, catalog, gate), never in documents alone (SN-783).",
+      "Expected values are computed by a trusted runner independent of the builder; consistency verdicts are never promoted into understanding/learning/authorization claims (SN-787).",
+      "Identity fields bind by equality against trusted expected values, proven by a wrong-identity negative control (SN-792).",
+      "References resolve by ordered availability, the used reference + SHA is receipted, and unavailability fails closed by name (SN-794).",
+      "Schemas change only through the canonical template; composition is tested in sequence on exact bytes before composability is claimed (SN-797).",
+      "Enforcement is one gate, one schema, one truth provider that fetches its own truth; self-minted truth caps at CANDIDATE-LOCAL (SN-799)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-3"
+    ],
+    "covers": [
+      "SN-783",
+      "SN-787",
+      "SN-792",
+      "SN-794",
+      "SN-797",
+      "SN-799"
+    ]
+  },
+  "page_hash": "e040cf40b8957c17f88dd3eae30a8d4cf132cd2b044fcf4a5127c69c456be9b8",
+  "content_hash": "d3ed32b7f09f46ec4b5644100fa96a83417c43747683e754a7cc7cb5e0025519"
+}

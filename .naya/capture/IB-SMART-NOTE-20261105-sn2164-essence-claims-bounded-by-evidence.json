@@ -1,0 +1,51 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2164",
+  "title": "A Claim Is Only As Large As Its Evidence",
+  "slug": "essence-claims-bounded-by-evidence",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-claims-bounded-by-evidence.md",
+  "tone": "purple",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:11:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "No claim in this system may exceed what its evidence actually proves — not a flag in a proof artifact, not a score on a report, not a hash described as \"authentic,\" not a registry entry for work the runtime never ran. A live workflow hardcoded `\"independent_verification\": True` while its own receipt said False, in the same step (SN-724). A report generator scraped a provisional 7.0 over the reconciled 5.0 until the real score was pinned where extraction can only read (SN-726). An inflated 9.5 was retracted in the same thread where it was published, with the refuting evidence and the corrected 9.0 in the same breath (SN-728). A CANDIDATE spec that needed a green check was *excluded* from the ratified-spec manifest rather than pinned, because a pin is an authority claim (SN-761). And when the obvious repair for missing provenance was to backfill the receipts by hand, it was rejected by name: a green check produced by a fabricated receipt is worse than the red one (SN-778). Above all of it sits the authority order: the Director's direct word outranks ratified law, which outranks any CANDIDATE document — a candidate never overrides his direct instruction, however rich or new (SN-705).",
+    "human_view": "Every claim carries an invisible size: how much it asserts. This essence is the discipline of keeping that size honest. A checkmark that says \"independently verified\" when nothing independent happened, a score scraped from a log line and printed as the official number, a database described as tamper-proof when it only catches accidents, a registry entry for work that never ran — each one borrows trust it hasn't earned, and the next person spends that trust as if it were real. The repairs are all the same shape: derive the claim from the evidence, label its scope, pin the true value where approximations can't overwrite it, and when the honest fix is blocked, say so — never manufacture the missing proof.",
+    "child_view": "Imagine your teacher asks, \"Did you check your homework with a friend?\" and your worksheet stamps YES by itself before anyone looked. That's not checking — that's a stamp pretending. Real checking means a real person really looked, and the stamp only appears after. And if you tell everyone you scored 10 out of 10 but you really scored 9, you don't quietly change the poster later — you stand up in the same place and say, \"I was wrong, it's 9,\" so nobody keeps believing the 10.",
+    "grandma_view": "Dear, it's the difference between a scale that weighs and a scale that's been painted to always say what you hope. Honest people label things for what they are: this lock stops a curious child, not a burglar; this number is my best reading, not the audited figure. And when the receipt book shows work that was never done, you don't forge the missing receipts to make the book balance — you write \"not done, waiting on the person whose job it is,\" in ink, where everyone can see.",
+    "ai_view": "Bound every claim you write to the evidence that proves it, and carry the scope in the claim itself: derived flags with named predicates (SN-724), pinned reconciled values (SN-726), labeled scores and headlines that cannot contradict their own evidence sections (SN-785). When you publish a number the evidence refutes, retract it in the same thread with the refuting line and the corrected value (SN-728); when counter-evidence hits a packet you own, subtract in the same turn (SN-803). Never let a green check bully you into an authority claim the artifact hasn't earned (SN-761); when an audit falsifies your documented law, repair the code up to the law (SN-770) and scope your mechanism claims to the adversary they actually defeat (SN-771). And never, under any pressure to turn a check green, author a receipt the runtime didn't issue (SN-777, SN-778). When a document and the Director's direct word conflict, the word governs — state it, name the reconciliation points, keep moving (SN-705).",
+    "what_it_means": "Eleven notes are one law at different altitudes: **the size of a claim is set by its evidence, never by the convenience of the claimant.** The workflow flag, the scraped score, the manifest pin, the hash description, and the registry entry are all the same act — asserting a state of the world — and each note catches the assertion outrunning its proof, then installs a structural bound: derivation after the gauntlet, a read-only pin, an exclusion instead of a pin, a threat-model docstring, a closed set of admissible repairs. The authority order (SN-705) is the same law applied to governance: even \"what rules us\" is a claim, and it is bounded by the evidence of who actually directed what.",
+    "whats_inside": [
+      "Authority order: Director's direct instruction > ratified law > CANDIDATE document; a candidate never overrides a direct instruction (SN-705).",
+      "Proof artifacts derive their flags from named predicates after the gauntlet, and carry their scope; a receipt's own False is a floor no proof can raise (SN-724).",
+      "Reconciled scores are pinned read-only against heuristic extraction; the pin wins mismatches and moves only with a reconciliation (SN-726).",
+      "Reports: timestamped items, stale dropped never recycled, scores labeled claim/authoritative, headline never contradicts evidence (SN-785).",
+      "Retraction is three-part, same thread, with replacement value; evidence packets correct downward the same turn counter-evidence lands (SN-728, SN-803).",
+      "Manifest pins follow the artifact's truth state: RATIFIED → pin; CANDIDATE or ambiguous → exclusion with reason (SN-761).",
+      "A falsified documented invariant is repaired code→law by default; law changes only by evidenced amendment on the record (SN-770).",
+      "Hash claims name their adversary: unauthenticated SHA-256 is corruption detection, not tamper resistance (SN-771).",
+      "Registry entries never claim unexecuted runtime work; runtime-issued receipts are never backfilled by hand — the admissible repairs are invoke, re-contract, or wait on the owning gate (SN-777, SN-778)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-3"
+    ],
+    "covers": [
+      "SN-705",
+      "SN-724",
+      "SN-726",
+      "SN-728",
+      "SN-761",
+      "SN-770",
+      "SN-771",
+      "SN-777",
+      "SN-778",
+      "SN-785",
+      "SN-803"
+    ]
+  },
+  "page_hash": "5ff0ac01f4ee6c5be880a01dc3f1204e5d7d6f31a9f8a9bcd5727656de8a8a02",
+  "content_hash": "7f96c91f53b76ff04402b1d953af44104249eb477b2f8d389439de9bede9c85c"
+}
