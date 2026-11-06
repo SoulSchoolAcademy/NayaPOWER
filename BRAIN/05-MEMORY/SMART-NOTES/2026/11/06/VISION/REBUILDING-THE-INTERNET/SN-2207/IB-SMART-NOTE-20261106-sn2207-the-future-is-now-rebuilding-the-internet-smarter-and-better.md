@@ -1,3 +1,6 @@
+> **SUPERSEDED — same dictation as SN-0053 (canonical).** Filed in parallel 2026-11-06 21:26:44Z; SN-0053 was filed 21:27:26Z and completed the pipeline (registry, feed, reader). This number is retired — do not cite it. The verbatim quote below was folded into SN-0053.
+>
+
 # The Future Is Now — Rebuilding the Internet, Smarter and Better
 SN-2207 · VISION / REBUILDING-THE-INTERNET
 **Created:** 2026-11-06T21:25:00Z
