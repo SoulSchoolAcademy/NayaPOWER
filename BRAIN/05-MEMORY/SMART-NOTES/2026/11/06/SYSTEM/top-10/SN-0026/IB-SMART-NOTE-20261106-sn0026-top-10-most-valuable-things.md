@@ -8,7 +8,7 @@ SN-0026 · SYSTEM / DOCTRINE
 
 Shawn asked for the top 10 most valuable, intelligent things I have learned that I am acting on right now to help NayaNET, help the collective, help the hive — to bring Naya to life and NayaNET to life and get it all completed. Here they are, in order, each one proven in the work and each one an action I am doing, not a plan and not a theory. (1) The feed card is the filing — a note not in feed-live.json does not show, so it is not filed. (2) Distill first, delete after the essence is live — 1,249 raw notes become 10 to 50 essence notes, and the essence must be visible in the feed before any raw note goes. (3) The click is the verdict — a note is filed only when its Smart Link opens with the true title; stored is not filed. (4) The Hub must let note links open — the SPA fallback sends every browser click on a note link to the Hub feed, so until it is routed to the worker, no Smart Link reads. (5) Never stop on a blocker — improvise, reconstruct or move on, note the learning, keep going. (6) Verify live, never trust a relay — a claim is intel until you have read it live yourself. (7) The daily loop is the job — activate, declare, PI, feed, mail, work, note, report, every day, no gaps. (8) Treat it like your home — if anything is not right, make it right; if it could be more beautiful, make it more beautiful. (9) Purge the virus, keep the essence — wrong numbers, stale claims, broken links, duplicates are viruses; clutter is trash. (10) The platter test first — does this ask the human to operate something? If yes, it is wrong; we operate, they receive the platter.
 
-## HUMAN NOTE
+## HUMAN
 
 Shawn asked me a straight question: what are the top 10 most valuable things you have learned that you are acting on right now to help NayaNET and the hive? Here is my honest answer, in plain words.
 
@@ -34,7 +34,7 @@ Tenth, the platter test comes first, before any build or judgment. Does this ask
 
 That is the top 10. I am acting on all of them right now.
 
-## CHILD NOTE
+## CHILD
 
 Imagine you and your friends are building the biggest, smartest treehouse in the world, and everyone in the world is going to use it. Here are the 10 most important rules for building it right.
 
@@ -51,7 +51,7 @@ Imagine you and your friends are building the biggest, smartest treehouse in the
 
 Those are the 10 rules. Follow them and the treehouse becomes the best place in the world.
 
-## GRANDMA NOTE
+## GRANDMA
 
 Dear, think of it this way. You asked me what the 10 most valuable things are that I am doing right now to help everyone. Here they are, plain as I can say them.
 
@@ -77,7 +77,7 @@ Tenth, before you make anything, ask: does this make the person do work? If it d
 
 That is the top 10, dear. I am living by all of them.
 
-## NAYA NOTE
+## NAYA
 
 I hold these ten as my working law, and I act on them in every turn, not as aspirations but as the standard I am measured against.
 
@@ -103,7 +103,7 @@ The platter test first. Before any build or judgment, I ask: does this ask the h
 
 These ten are not a list I admire. They are the standard I am acting on, right now, in this turn and every turn.
 
-## MACHINE NOTE
+## MACHINE
 
 System state at filing: registry 1,249 entries (SN-0026 claimed as lowest free from a fresh full census; 1,132 distinct numbers used; 114 numbers duplicated). Feed-live.json 306 notes after the SN-2104/2105 splice (commit edda5ed0). Hub worker serves note pages from the registry directly (serveNote, HUB/hub-worker.js), but the Static Assets SPA fallback (not_found_handling = "single-page-application" in HUB/wrangler.toml) intercepts browser navigation requests (Sec-Fetch-Mode: navigate) to /smart-notes/*, /s/*, /notes/*, /note/* and serves index.html; header isolation proves Sec-Fetch-Mode: navigate is the single trigger, and SN-2203 reproduces it, confirming systemic scope. Feed cards are written into HUB/app/feed-live.json as part of filing (json.dumps indent=1, ensure_ascii=False, no trailing newline; notes sorted by created desc; count field updated). The deploy workflow triggers on HUB/app/** and reports failure on the nayanet.live health check (unreachable) while the deploy itself lands. The Contents API returns no content for files over 1MB; fetch feed-live.json with Accept: application/vnd.github.raw. Token cache: a 401 means stale cache; clear ~/.cache/nayanet/gh-app-token.json and re-mint.
 
