@@ -30031,6 +30031,37 @@
     "Doctrine",
     "Top 10"
    ]
+  },
+  {
+   "smart_note_id": "SN-2204",
+   "intelligent_block_id": "IB-SMART-NOTE-20261106-sn2204-ten-learnings-in-action",
+   "slug": "ten-learnings-in-action",
+   "title": "Ten Learnings in Action",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-ten-learnings-in-action.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-ten-learnings-in-action.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-ten-learnings-in-action.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn2204-ten-learnings-in-action.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DOCTRINE",
+   "captured_at": "2026-11-06",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T19:43:00Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-06",
+   "page_hash": "c766438e1c6eef924755f5d8e1de20859976f848f2e736038608b56f4f371b69",
+   "content_hash": "133b5a98a7372a1b98b61b2c9d28afa52a6481d3e1fefc0ac52d8b855cdd5d54",
+   "one_line": "Ten learnings, each one already acting \u2014 not admired, acting. (1) The Daily Work Loop: the day is a sequence, and the Daily Intelligence Report asks \"what did I learn,\" not \"what did I do.\" (2) The Seed Law: when Shawn says something, he is assigning a problem, not making conversation. (3) Delivery is confirmed at consumption: sent is not delivered, delivered is not benefited. (4) Filed is not registered is not served: a note counts when its link is clicked and reads. (5) Name pieces by content, not by number \u2014 two seats counting two ways duplicated a whole re-send. (6) Distill to essences: a large note count is a failure; 1,054 became 287, and the distilled layer goes under 99. (7) The Platter Law: we operate the system for humans and serve it done. (8) The maker never checks her own work. (9) Root cause before capacity: fix the ammunition, not the number of turrets. (10) Three surfaces, three jobs: Project Intelligence is what's going on, the Smart Feed is the intelligence, the activity feed is the actions. Each learning below carries the action it changed and its state today \u2014 that pairing is the note.",
+   "topics": [
+    "Doctrine",
+    "Learning",
+    "Daily Intelligence Report"
+   ]
   }
  ],
  "sequence_policy": {
@@ -30041,5 +30072,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "dea5b91cc3f726fadd5710d2ed875678eef97c1b59bafb5346d88d1d96851e86"
+ "corpus_manifest_hash": "a74381d500d79bbe71ce8777b70f3efd87b6ab04da396905bcb2b8f37d71dff0"
 }

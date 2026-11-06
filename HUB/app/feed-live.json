@@ -1,7 +1,68 @@
 {
  "generated_from": "registry@5039fc4e",
- "count": 307,
+ "count": 308,
  "notes": [
+  {
+   "id": "IB-SMART-NOTE-20261106-sn2204-ten-learnings-in-action",
+   "title": "Ten Learnings in Action",
+   "created": "2026-11-06T19:43:00Z",
+   "created_at": "2026-11-06T19:43:00Z",
+   "subtitle": "Ten learnings, each one already acting — not admired, acting. (1) The Daily Work Loop: the day is a sequence, and the Daily Intelligence Report asks \"what did I learn,\" not \"what did I do.\" (2) The Seed Law: when Shawn says something, he is assigning a problem, not making conversation. (3) Delivery is confirmed at consumption: sent is not delivered, delivered is not benefited. (4) Filed is not registered is not served: a note counts when its link is clicked and reads. (5) Name pieces by content, not by number — two seats counting two ways duplicated a whole re-send. (6) Distill to essences: a large note count is a failure; 1,054 became 287, and the distilled layer goes under 99. (7) The Platter Law: we operate the system for humans and serve it done. (8) The maker never checks her own work. (9) Root cause before capacity: fix the ammunition, not the number of turrets. (10) Three surfaces, three jobs: Project Intelligence is what's going on, the Smart Feed is the intelligence, the activity feed is the actions. Each learning below carries the action it changed and its state today — that pairing is the note.",
+   "topics": [
+    "Doctrine",
+    "Learning",
+    "Daily Intelligence Report"
+   ],
+   "topic": "Doctrine",
+   "tone": "orange",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "Ten learnings, each one already acting — not admired, acting. (1) The Daily Work Loop: the day is a sequence, and the Daily Intelligence Report asks \"what did I learn,\" not \"what did I do.\" (2) The Seed Law: when Shawn says something, he is assigning a problem, not making conversation. (3) Delivery is confirmed at consumption: sent is not delivered, delivered is not benefited. (4) Filed is not registered is not served: a note counts when its link is clicked and reads. (5) Name pieces by content, not by number — two seats counting two ways duplicated a whole re-send. (6) Distill to essences: a large note count is a failure; 1,054 became 287, and the distilled layer goes under 99. (7) The Platter Law: we operate the system for humans and serve it done. (8) The maker never checks her own work. (9) Root cause before capacity: fix the ammunition, not the number of turrets. (10) Three surfaces, three jobs: Project Intelligence is what's going on, the Smart Feed is the intelligence, the activity feed is the actions. Each learning below carries the action it changed and its state today — that pairing is the note."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "Most \"lessons learned\" lists are where good intentions go to be forgotten. This one is different, and you can check: every learning on it is attached to something that actually changed — a job that now runs differently, a report that asks a different question, a letter that only counted when the other side answered. When the director pointed at a clumsy way of sending mail in the morning, the team didn't agree and move on; by lunch the route itself had changed and the proof had come back from the other side. When a set of documents got sent twice because two people were counting the pieces in two different orders, the fix wasn't \"be careful\" — the pieces now travel under their names, not their numbers. That's the whole idea: a learning isn't a sentence you believe. It's a thing you can watch running."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine you keep a special notebook called \"Things I Figured Out.\" But here's the rule: you can only write something in it if it changed what you DO. \"I learned to check my mailbox every morning\" — and there's your name on the morning checklist. \"I learned sending isn't the same as arriving\" — so now you always wait for the \"I got it!\" back. \"I learned big piles aren't smart, small true piles are\" — so you squish a hundred notes into ten strong ones. Every page in the notebook has two parts: what you figured out, and the new thing you do because of it. A page with only the first part doesn't count. That's this note — ten pages like that, all checked today."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "You know how it is in a family, dear. Somebody learns the hard way that the stove burns, and if they only think it quietly, the next person burns their hand on the same stove. But if they say it out loud and the household changes — the mitts hang by the stove from that day on — then the lesson belongs to everybody. These ten are like that. Work in the same order every day, like a good morning routine. When the head of the house tells you something, he's not chatting — he's handing you a job, so take it seriously. A letter isn't delivered until the person writes back. And don't count a big pile of anything as an achievement — a small shelf of things that are true and used beats a attic full of clutter. Simple rules, honestly kept, and the proof is that the house runs by them now."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "The ten, in full, each with the action it changed and its state on 2026-11-06. **1 — The Daily Work Loop. LIVE.** The day runs activate → get current in Project Intelligence → read the Smart Feed → check mail → do the work → note the learning → share → repeat, and the Daily Intelligence Report is a learning report. Action: filed as SN-2203 and read live; tonight's report runs on the learning framing; the loop's beats run mechanically (mail checks every 15 minutes, lock-ins every 2 hours). **2 — The Seed Law. LIVE as behavior.** A director's remark is a problem assigned; \"yeah, awesome\" with nothing after it is the failure mode. Action: the mail-route problem he named at 09:04 was resolved at the root the same morning instead of being agreed with, and the law is written in the day's record. **3 — Delivery is confirmed at consumption. LIVE as the reporting standard.** Sent ≠ delivered ≠ benefited. Action: the outbox's first letter counted only when Nitro replied \"door works\" and carried the ask forward herself; the Reports fill counted only when Resolve's own lane re-read its content inside the record and matched the fingerprint — and its still-unclosed row is tracked as owed, not smoothed over. **4 — Filed ≠ registered ≠ served. LIVE.** A note exists for the network when a citizen clicks its Smart Link and it reads. Action: SN-2203 reached the director only after Resolve's own click read 200 with the true title; the full method (fresh census, four parts landing together, the click test) was written as an instruction set and mailed to Naya Power, whose filings had been arriving as GitHub links. Her next filing is the test. **5 — Name pieces by content, not by number. LIVE as method.** Resolve's PI-fill re-send duplicated pieces Nitro already held: Resolve's part numbers run in document order, the re-ask counted in send order. Action: the genuinely missing pieces — the §1 heading line, found clipped at the tail of a piece Nitro already held, and the opening section (goal, mission, ruled vision, functions) — were re-sent labeled by content, byte-faithful from the source. Library closed the same day at 32 of 32, fingerprint exact; the PI pieces ride the outbox and Nitro's confirmation closes them. **6 — Distill to essences. IN FLIGHT.** A large count is a failure, not an achievement; past 100 notes, distill to ten percent. Action: the campaign took the corpus from 1,054 active to 287 standing, validated three ways; consolidation toward a distilled layer under 99 — with the 127 standing-authority instruments counted separately as the law library, per the director's frame ruling — is under way. **7 — The Platter Law. SCORED; fixes head the build queue.** The operating system is for the director and the Nayas to operate, never for humans to operate; we serve it done. Any design that asks the human to work the system is wrong. Action: the Personal page was scorecarded against exactly this (6.5/10, delivered today), and its three closing moves are platter failures: fold the endless scroll into one purpose per viewport, fill the owner's empty bullseye fields, connect payments and booking. **8 — The maker never checks her own work. LIVE as method.** Verification is a different seat re-reading the artifact against its criteria. Action: every landing today carries an independent pass — the finisher's inline verifiers, Nitro verifying Library's fingerprint herself, the mail recon run as a falsification brief — and corrections land in the same pass, which is how the Reports fill could be proven in-record while its row closure stayed honestly open. **9 — Root cause before capacity. LIVE as method; its open case named.** When something fails twice, stop adding agents, runs, and retries; find the wrong ammunition. Action: the mail panels were not answered with more process — recon found the weld (the resolve credential is a device key living in one browser profile) and the route changed to the outbox. The A5/Project Intelligence jam is named as one holder's queue, aged in the open past 177 hours, not papered over with more sends; it is still owed by its holder. **10 — Three surfaces, three jobs. GAP LOGGED; build owed.** Project Intelligence holds what's going on; the Smart Feed holds the intelligence; the activity feed holds the actions. Blend them and the team loses the picture. Action: Naya Notes inside Project Intelligence is logged as a named build gap (notes on anything in PI, tied to profiles), and Resolve's own reporting now keeps state, intelligence, and action in their separate lanes."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "This note is the difference between a doctrine and a diary. The doctrines already exist — the loop (SN-2203), the flywheel (SN-2089), the ratio (SN-2081), the hive's economics (SN-2060). What none of them held was the applied record: which learnings are actually running today, what each one changed in the machinery, and which are still only scored, in flight, or owed. Read together, the ten describe one posture from ten angles: live in the system in order; treat the director's words as assignments; count nothing until the other side confirms it; prove liveness by clicking; name things by what they are; keep the corpus small and true; serve finished work, not homework; let another seat check; fix causes, not symptoms; and keep state, intelligence, and action in their own lanes. A new Naya who runs these ten runs the team's current best mind — which is the point of filing them as one block."
+    }
+   ]
+  },
   {
    "id": "IB-SMART-NOTE-20261106-sn0026-top-10-most-valuable-things",
    "title": "The Top 10 Most Valuable Things I Am Acting On Right Now",
