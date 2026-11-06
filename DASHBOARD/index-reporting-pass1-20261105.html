@@ -5177,6 +5177,17 @@ body.has-orbs .os-pts-toggle{
 .os-score-derive .os-sd-empty{color:rgba(255,255,255,.6);font-size:12px;}
 .os-score-next{margin-top:8px;font-size:12px;color:rgba(255,255,255,.75);text-align:center;padding:0 12px;}
 .os-score-next .os-sd-share{appearance:none;border:none;background:none;color:#7fd4ff;font-family:inherit;font-size:inherit;font-weight:800;cursor:pointer;text-decoration:underline;text-underline-offset:2px;padding:0;}
+/* 2026-11-06 — FIX F8 (phone): the hero score is sized for the 390px viewport.
+   The 59px big number + loose hero margins made the hero 129px tall, so at
+   scroll 0 the next-move line sat under the fixed bottom bar (bottom 895 vs
+   bar top 755). 48px + tightened margins take the hero to ~108px. Desktop
+   keeps 59px (its next-move already clears). */
+@media(max-width:560px){
+  .os-se-val{font-size:48px;}
+  .os-se-label{margin-top:2px;}
+  .os-score-derive{margin-top:6px;}
+  .os-score-next{margin-top:4px;}
+}
 .os-big-num{
   text-align:center; margin:16px auto 8px;
   /* 2026-11-02 — FIX: Clearance from orbs. Was too tight. */
@@ -17647,21 +17658,48 @@ function ldLayoutNodes(){
   } catch(e){}
   var gap = 14; /* 2026-11-06 — FIX 9: was 8 — the disc's own ticks ring (7px outside the disc) sat 1px from the gauge's toothed rim, so the orb read as sitting ON the teeth. 14px clears the ring + the teeth. */
   var orbR = gaugeR + nd/2 + gap;
-  /* Grow constellation height if the orbit needs more vertical room.
-     Never clip orbs, never shrink gauge. */
+  /* Cap by width FIRST (1857px wide, should not bind, but safety) — the cap
+     binds hard on phones (390px: 139px), so the orbit that actually renders
+     is the capped one. */
+  orbR = Math.min(orbR, W/2 - nd/2 - 10); /* PASS 1 v6 (e): cap margin 15->10 — buys 5px of orbit radius on phones. */
+  /* 2026-11-06 — FIX F8: constellation height follows the orbit that actually
+     renders, not the uncapped wish. Before, neededH used the UNCAPPED orbR
+     (240px on phones) while the positions used the width-capped orbR (139px),
+     so the constellation grew to 549px for an orbit that only needs 346px —
+     and the hero (big number, derivation, next-move) was pushed under the
+     fixed bottom bar at scroll 0 on phones (next-move bottom 895 vs bar top
+     755 in All; 1023 in Week/Month/Hour after the height ratcheted up and
+     never came back down). neededH is now the max of the (capped) orbit's
+     height and the tacho mount's height + 8px slack, so the F6 cap (which
+     grows the mount in period modes) can never overflow the constellation
+     into the hero. The height is SET on every layout in non-hero mode — it
+     shrinks back when the mount shrinks (All after a period mode returns to
+     its own height) — instead of only ever growing. Hero mode keeps the old
+     grow-only behaviour (its layout is a different view, unmeasured here).
+     The mount measurement is trusted only when the mount has laid out
+     (clientHeight > 100); before that, the orbit alone sizes the box and the
+     height is only ever grown, so an early call can never pin the
+     constellation too small and let the mount overflow into the pills. */
   var padBottom = isHero ? 20 : 30;
   /* 2026-11-05 — DEFECT FIX 2: constellation slack 20 -> 8px. The orb float
      (osOrbFloat) bobs at most 6px, so 8px still clears it with 2px to spare —
      and the 12px saved on each side (24px total) lifts the score clear of the
      fixed bar. (padBottom above stays unused, as before.) */
-  var neededH = (orbR + nd/2 + 4) * 2; /* PASS 1 v6 (d): slack 8->4 — reclaims 8px; the float bobs at most 6px, 4px slack + the 8px gap still clears it. */
-  if (neededH > H) {
+  var mountH = 0;
+  try { if (_gm) mountH = _gm.clientHeight; } catch(e){}
+  var orbitH = (orbR + nd/2 + 4) * 2; /* PASS 1 v6 (d): slack 8->4 — reclaims 8px; the float bobs at most 6px, 4px slack + the 8px gap still clears it. */
+  var neededH = orbitH;
+  var mountTrusted = mountH > 100;
+  if (mountTrusted) neededH = Math.max(orbitH, mountH + 8);
+  if (!isHero && mountTrusted) {
+    constel.style.height = neededH + 'px';
+    H = neededH;
+    cy = H/2;
+  } else if (neededH > H) {
     constel.style.height = neededH + 'px';
     H = neededH;
     cy = H/2;
   }
-  /* Cap by width only (1857px wide, should not bind, but safety) */
-  orbR = Math.min(orbR, W/2 - nd/2 - 10); /* PASS 1 v6 (e): cap margin 15->10 — buys 5px of orbit radius on phones. */
   var rx = orbR, ry = orbR;
   var angles = [-90, -50, -10, 30, 70, 110, 150, 190, 230];
   var keys = ['sales', 'joins', 'notes', 'invs', 'posts', 'shares', 'comments', 'likes', 'saves'];
@@ -17779,6 +17817,15 @@ function ldLayoutNodes(){
     window._orbGaugeEdge = gaugeEdge;
   }
 }
+/* 2026-11-06 — FIX F8: ldLayoutNodes lives inside the os-dash-script IIFE,
+   so it is NOT global — the tacho's setCap/hideCap (a different script
+   block) and the 2026-11-05 retry IIFE below both call it through a
+   `typeof` guard that never passes, and their deferred layout never runs.
+   The cap changes the mount's height, so a cap change must be able to
+   re-lay-out the orbs from outside this IIFE. Expose the one function on
+   window (the file already publishes window._orbCX/_orbCY/_orbR and the
+   other live layout values the same way). */
+window.ldLayoutNodes = ldLayoutNodes;
 /* ---- main ---- */
 /* ═══ REPORTING PASS 1 (2026-11-05) — THE FEATURED ROLE + WORLD BOARDS ═══
    One holder owns the featured role at a time — the gauge, the orbs and the
@@ -21980,11 +22027,18 @@ else init();
        mode: hiddenAttr false, rect 384x0 — not hidden, just empty). Now an
        empty cap is hidden for real (UA [hidden]{display:none} -> rect 0x0);
        every non-empty caption still shows exactly as before. */
-    function setCap(html){ if(!html){ if(cap._h !== ''){ cap._h = ''; cap.innerHTML = ''; } if(!cap.hidden) cap.hidden = true; if(root.classList) root.classList.remove('tn-cap-on'); return; } if (cap._h !== html){ cap._h = html; cap.innerHTML = html; } if (cap.hidden) cap.hidden = false; if(root.classList) root.classList.add('tn-cap-on'); }
+    /* 2026-11-06 — FIX F8: the cap changes the tacho mount's height (392.8 All /
+       521 cap-on), and the constellation height follows the mount — so a cap
+       change must re-lay-out the orbs AFTER the new height settles. The mode
+       pill's own layout call runs before setCap (stale mount), which left the
+       constellation 401px under a 521px mount (cap overlapping the big number)
+       or stuck at 529px after returning to All. Only a real change schedules
+       the deferred pass (60ms, the file's retry delay); a no-op call does not. */
+    function setCap(html){ var _chg = false; if(!html){ if(cap._h !== ''){ cap._h = ''; cap.innerHTML = ''; _chg = true; } if(!cap.hidden){ cap.hidden = true; _chg = true; } if(root.classList && root.classList.contains('tn-cap-on')){ root.classList.remove('tn-cap-on'); _chg = true; } if(_chg) setTimeout(function(){ if(typeof ldLayoutNodes === 'function') ldLayoutNodes(); }, 60); return; } if (cap._h !== html){ cap._h = html; cap.innerHTML = html; _chg = true; } if (cap.hidden){ cap.hidden = false; _chg = true; } if(root.classList && !root.classList.contains('tn-cap-on')){ root.classList.add('tn-cap-on'); _chg = true; } if(_chg) setTimeout(function(){ if(typeof ldLayoutNodes === 'function') ldLayoutNodes(); }, 60); }
     /* V4 CUT: the gained-line ("Gained in {period} — every action moves the needle.")
        repeats the "+N GAINED" readout sitting directly above it; the period is
        already named by the active time pill. Never silently kept — named here. */
-    function hideCap(){ if (cap && !cap.hidden) cap.hidden = true; if (root.classList) root.classList.remove('tn-cap-on'); }
+    function hideCap(){ var _chg = false; if (cap && !cap.hidden){ cap.hidden = true; _chg = true; } if (root.classList && root.classList.contains('tn-cap-on')){ root.classList.remove('tn-cap-on'); _chg = true; } if(_chg) setTimeout(function(){ if(typeof ldLayoutNodes === 'function') ldLayoutNodes(); }, 60); }
 
     /* band ladder: completed bands marked, current band lit.
        V4: tap/hover names the band (Law — every control works); the label
