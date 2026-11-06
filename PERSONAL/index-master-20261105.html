@@ -7761,6 +7761,37 @@ function wallCard(j, iso, pid, idx){
   return '<div class="ph-card"><p>Renderer loading…</p></div>';
 }
 
+  /* P5 2026-11-06: fetchWall was called in 3 places (loadToday, loadFaces,
+     loadAbout) but never defined, so About / Connections threw
+     `fetchWall is not defined` and their loaders died before painting.
+     It is the data-only twin of loadWall below: the same wall rows as
+     values [{j, at, id}] — newest first (pinned first), limited to n —
+     for loaders that consume the wall instead of painting it. Mirrors
+     loadWall's fetch / filter / sort exactly; resolves [] when the notes
+     read is unavailable or fails, so a dead read never throws. */
+  function fetchWall(limit){
+    if(!window.osNotesRows) return Promise.resolve([]);
+    return window.osNotesRows().then(function(rows){
+      var now=Date.now();
+      var posts=rows.map(function(r){
+        var j; try{ j=JSON.parse(r.content); }catch(e){ j=null; }
+        if(!j || !j.k) j={k:'wall', a:'', b:r.content};
+        return {j:j, at:r.created_at, id:r.id};
+      }).filter(function(p){
+        if(p.j.k!=='wall') return false;
+        if(p.j.schedFor && Date.parse(p.j.schedFor) > now) return false;
+        if(p.j.scheduled && p.j.scheduled.ts && p.j.scheduled.ts > now) return false;
+        return true;
+      });
+      posts.sort(function(a,b){
+        var pa=a.j.pinned?1:0, pb=b.j.pinned?1:0;
+        if(pa!==pb) return pb-pa;
+        return new Date(b.at)-new Date(a.at);
+      });
+      return limit ? posts.slice(0, limit) : posts;
+    }, function(){ return []; });
+  }
+
   /* TRUE-BLOCK REPAIR 2026-10-31: the wall painter. loadWall was called in
      8 places but never defined, so the wall list could never paint.
      Reads this page's wall rows and paints each as a true smart-note block. */
