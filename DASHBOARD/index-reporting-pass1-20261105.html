@@ -2183,6 +2183,17 @@ button:hover{
 
 /* Bottom bar clearance: content never slides under */
 .ph-main{padding-bottom:120px !important;}
+/* 2026-11-06 — FIX 8 REWORK: restore the intended 160px phone clearance.
+   Lines 2009/2046 state .ph-main padding-bottom:160px, but the 120px
+   !important rule above (later in the cascade) overrode it on EVERY viewport,
+   so phones computed 120px, not 160px. One clearance source: .ph-main. */
+@media(max-width:768px){.ph-main{padding-bottom:160px !important;}}
+/* 2026-11-06 — FIX 8 REWORK: the dashboard section is the last visible
+   in-flow section — nothing follows it inside .ph-main — so its 40px bottom
+   margin is pure trailing dead space at the page bottom, on top of the
+   clearance. Zero it (attribute-scoped: ten other .ph-sec views follow it
+   in DOM; their spacing is untouched). */
+.ph-sec[data-os-view="dashboard"]{margin-bottom:0;}
 .ph-bottom{position:fixed !important;bottom:0 !important;left:0 !important;right:0 !important;z-index:200 !important;
   background:rgba(5,5,7,.95) !important;backdrop-filter:blur(20px) !important;
   border-top:1px solid rgba(255,255,255,.1) !important;padding:12px 0 !important;}
@@ -4978,6 +4989,16 @@ body:not(.hero-mode) .os-ld{
   box-sizing:border-box;
   scroll-snap-align:start;
 }
+/* 2026-11-06 — FIX 8 REWORK (check 2 phone): nudge, never cut. On phones the
+   derivation's bottom 5px clipped under the fixed bar at scroll 0 and the
+   next-move line sat fully under it. The gauge's bottom padding is
+   LOAD-BEARING (it re-centres content so the score clears the bar) — it is
+   only ever INCREASED here (+40px on phones): the centred content rises by
+   the available slack (~9px at 390x844), which un-clips the derivation.
+   It cannot lift the next-move line fully clear (that needs ~30px; the
+   padding nudge is slack-capped) — that remainder is a phone-hero layout
+   item, documented in BUILD-REPORT.md, not papered over. */
+@media(max-width:560px){.os-block-gauge{padding-bottom:calc(2vh + 216px);}}
 /* 2026-11-02 — Bullseye: Smart Stats. Hide smart bar in focused drill-down views. */
 body.viewport-focus #nsbBottom{display:none !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important;}
 body.viewport-focus .nsb-bottom{display:none !important; visibility:hidden !important;}
@@ -20688,11 +20709,16 @@ NayaSmartBar.mount({
 <script>
 /* SMART BAR v1.0 host wiring (host page, not the system) */
 (function(){
+  /* 2026-11-06 — FIX 8 REWORK: the bottom-padding line is REMOVED, not moved.
+     pad() used to set body padding-bottom to the bar height as an inline style,
+     which overrode fix 8's CSS body{padding-bottom:0} and DOUBLED the clearance
+     (.ph-main already carries it — 120px desktop / 160px phone). The inline
+     padding is redundant on this page: .ph-main is the last in-flow body child
+     and holds all visible content, so its padding is the single clearance
+     source. The top line stays: nothing else clears the fixed top stack. */
   function pad(){
     var t=document.getElementById('nsbTopstack')||document.getElementById('nsbTop');
-    var b2=document.getElementById('nsbBottom');
     if(t)document.body.style.paddingTop=t.offsetHeight+'px';
-    if(b2&&b2.style.display!=='none')document.body.style.paddingBottom=b2.offsetHeight+'px';
   }
   window.addEventListener('resize',pad); pad(); setTimeout(pad,800);
   var top=document.getElementById('nsbTop'); if(!top)return;
