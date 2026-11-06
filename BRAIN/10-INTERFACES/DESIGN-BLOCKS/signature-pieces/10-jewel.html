@@ -1,0 +1,71 @@
+<!-- ================================================================
+  NIA DESIGN SIGNATURE PIECE 10 — JEWEL — BULLETS ARE DIAMONDS
+  DRAFT — the Clarity Confirmation Act is NOT stamped by Shawn; nothing here is law yet.
+  Act reference: Act §4.10 — ~/workspace/team-nitro/clarity-confirmation-act-DRAFT-20261106.md
+  CHECK: bullets are rotated squares, not dots; no color twice in a row.
+  CRAFT (Shawn 00:31Z — optimized for what IT is): The most extraordinary jewel: bullets are diamonds, a cut stone that separates ideas — molded to be the color made physical, glowing even at rest.
+  ROLLOUT (Shawn 00:31Z — Dashboard first, then Personal, then the rest): group 2 — first proved on Personal.
+  Harvested verbatim from:
+  - ~/workspace/smart-factory/harvested/hub.html L460-478
+  - ~/workspace/smart-factory/harvested/dashboard.html L259
+  - ~/workspace/smart-factory/harvested/dashboard.html L260
+  - ~/workspace/smart-factory/harvested/hub.html L1215-1231
+  - ~/workspace/smart-factory/harvested/hub.html L1232-1235
+  Factory path: ~/workspace/smart-factory/signature-pieces/10-jewel.html
+  Repo (canonical) path: BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/10-jewel.html
+  Notes: Five-jewel cycle in law order (hub.html:1300-1302: nth-child(5n+1..3) hot pink #ed42c4, purple #8a5cff, blue #3ca8ff — the diamond-bullet rule itself lives in piece 03 (hub.html:1273-1310, .ib-layer-body ul li::before: rotated square, own-color glow). Faceted-gem geometry: .v10-icon (piece 04).
+  ================================================================ -->
+<style>
+/* --- VERBATIM HARVEST (do not restyle; compose only) --- */
+  --jewel: #ffea00;
+  width: 48px; height: 48px; flex: 0 0 48px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.35);
+  background:
+    radial-gradient(circle at 32% 22%, rgba(255,255,255,.85), transparent 42%),
+    radial-gradient(circle at 50% 55%, var(--jewel), color-mix(in srgb, var(--jewel) 45%, #000) 78%);
+  color: #fff; cursor: pointer;
+  display: grid; place-items: center;
+  text-shadow: 0 2px 8px rgba(0,0,0,.6);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.5),
+    inset 0 -3px 8px rgba(0,0,0,.4),
+    0 0 22px color-mix(in srgb, var(--jewel) 55%, transparent),
+    0 8px 20px rgba(0,0,0,.5);
+  transition: transform .18s cubic-bezier(.16,.84,.22,1), box-shadow .18s;
+}
+.eco-plus svg { width: 20px; height: 20px; }
+.eco-plus:hover { transform: translateY(-2px) scale(1.04); box-shadow: inset 0 1px rgba(255,255,255,.5), inset 0 -3px 8px rgba(0,0,0,.4), 0 0 32px color-mix(in srgb, var(--jewel) 75%, transparent), 0 12px 28px rgba(0,0,0,.6); }
+
+.im-jewel { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 14px; background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.25), transparent 50%), linear-gradient(145deg, #1a1a20, #050507); border: 1.5px solid rgba(255,255,255,.4); box-shadow: 0 4px 12px rgba(0,0,0,.6), inset 0 1px 2px rgba(255,255,255,.2), 0 0 16px rgba(160,107,255,.3); color: #a06bff; animation: jewel-breathe 3s ease-in-out infinite; }
+
+@keyframes jewel-breathe { 0%,100% { box-shadow: 0 4px 12px rgba(0,0,0,.6), inset 0 1px 2px rgba(255,255,255,.2), 0 0 12px rgba(160,107,255,.25); } 50% { box-shadow: 0 4px 16px rgba(0,0,0,.6), inset 0 1px 2px rgba(255,255,255,.3), 0 0 24px rgba(160,107,255,.5); } }
+
+.ib-jewel {
+  width: 64px; height: 64px; border-radius: 50%; flex: none;
+  display: grid; place-items: center;
+  /* Circular metallic — like a coin/medal, from the deployed original */
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255,255,255,.95), transparent 35%),
+    radial-gradient(circle at 70% 75%, rgba(0,0,0,.45), transparent 50%),
+    radial-gradient(circle at 50% 50%, var(--tone), color-mix(in srgb, var(--tone) 55%, #000) 85%);
+  border: 2px solid rgba(255,255,255,.4);
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,.6),
+    inset 0 -4px 12px rgba(0,0,0,.5),
+    0 0 28px color-mix(in srgb, var(--tone) 65%, transparent),
+    0 10px 24px rgba(0,0,0,.6);
+  /* The board icon lights up — breathing glow (Shawn 2026-10-20) */
+  animation: jewelBreathe 4s ease-in-out infinite;
+}
+
+@keyframes jewelBreathe {
+  0%, 100% { box-shadow: inset 0 2px 4px rgba(255,255,255,.6), inset 0 -4px 12px rgba(0,0,0,.5), 0 0 28px color-mix(in srgb, var(--tone) 65%, transparent), 0 10px 24px rgba(0,0,0,.6); }
+  50% { box-shadow: inset 0 2px 4px rgba(255,255,255,.6), inset 0 -4px 12px rgba(0,0,0,.5), 0 0 46px color-mix(in srgb, var(--tone) 95%, transparent), 0 10px 24px rgba(0,0,0,.6); }
+}
+</style>
+
+<!-- SPECIMEN-START -->
+<span class="im-jewel">{{glyph}}</span>
+<span class="ib-jewel">{{glyph}}</span>
+<!-- SPECIMEN-END -->
