@@ -23787,6 +23787,36 @@
     "The Vision",
     "Collective"
    ]
+  },
+  {
+   "smart_note_id": "SN-2081",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2081-the-distillation-ratio",
+   "slug": "the-distillation-ratio",
+   "title": "The Distillation Ratio \u2014 One Hundred Into Ten",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-the-distillation-ratio.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-the-distillation-ratio.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-the-distillation-ratio.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2081-the-distillation-ratio.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T00:54:00Z",
+   "date": "2026-11-05",
+   "page_hash": "c9c6bfd0fbe5ff8b10002310eea316c4be7b5f61958be35ba90ca47542b088f2",
+   "content_hash": "a3c2658ca316fdfefdfd00c7778ae2bfa0c5166968f5e896971e79564d081394",
+   "one_line": "A thousand Smart Notes is a problem, not an achievement \u2014 intelligence nobody has distilled is intelligence undigested. The law: once the corpus passes 100 notes, distill that hundred into 10, over and over \u2014 minimize to 10%, and fewer whenever everything needed still survives. When an essence verifies against its sources, the raw notes it covers retire automatically. The numbers that matter are essences standing and compression achieved \u2014 never raw notes filed.",
+   "topics": [
+    "Vision",
+    "The Vision",
+    "Collective"
+   ]
   }
  ],
  "sequence_policy": {
@@ -23797,5 +23827,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "b9b7bd40052cc3b81e82850d8034c51c0718224b97b7761facb195064224c9f7"
+ "corpus_manifest_hash": "c701e8b2c1069611d3c8f501f849448f6820c064b3273629f7e4bc5d232069cd"
 }
