@@ -2853,15 +2853,31 @@ button:hover{
 .tn-tacho[data-state="quiet"] .tn-tacho-num{ color:#6a6a76; }
 
 .tn-tacho-cap{
-  /* V4: moved down clear of the orb line fan — the small white text
-     used to collide with the connector lines and read through wiring. */
-  margin:30px 6px 0;
+  /* 2026-11-06 — FIX F6: the cap now lives BELOW the dial (after the bandline),
+     not inside the dialwrap. Its old home put it at the dial's top, behind the
+     opaque SVG face — only faint edge fragments showed. Margin 8px: one line
+     under the bandline. Layering mirrors the bandline (relative, z-index 6)
+     so it paints above the dialwrap overlays and the orbiting orbs. */
+  position:relative;
+  z-index:6;
+  margin:8px 6px 0;
   text-align:center;
   font-size:12.5px;
   line-height:1.5;
   color:#8a8a96;
 }
 .tn-tacho-cap b{ color:#fff; font-weight:600; }
+@media (max-width:560px){
+  /* 2026-11-06 — FIX F6b: phone clearance while the cap is on. A visible cap
+     grows .tn-tacho by 8+56px and the centred tachometer rides UP by half the
+     growth (~32px), carrying the bandline up into the stationary bottom orbs'
+     labels (measured gap +7.8 -> -24.4, sweep 7/11). Margin buys clearance at
+     half rate (1e-iii sweep: +40 margin = +20 clearance), so restoring the
+     proven +7.8 needs +64px of margin: 160 -> 224, ONLY while the cap shows
+     (.tn-cap-on, set by setCap). The 1e-iii 160px rule is untouched and All
+     mode (cap hidden) keeps its verified layout exactly. */
+  .tn-tacho.tn-cap-on .tn-tacho-bandline{ margin-top:224px; }
+}
 /* 2026-11-01 — Shawn: green flashing LIVE badge. The data is live from the
    ledger; the badge says so. */
 .tn-live-badge{
@@ -21881,12 +21897,18 @@ else init();
           '<span class="tn-tacho-livedot"></span></span>' +
         '</div>' +
         /* 2026-11-06 — FIX 1e-iii: the bandline lived INSIDE .tn-tacho-readout (display:none by the 2026-11-01 NO OVERLAY TEXT ruling), so the caption "55 of 500 — Stirring at 1,000" never rendered in ANY window (Scout gaugeCap rect 0,0,0,0 in every settled capture). The number + label stay hidden — they live in the SVG dial + the static label. REWORK: the first move put the span inside .tn-tacho-dialwrap in flow at the dial's TOP, under the dial face/gear (elementFromPoint hit the dial SVG 0/11) — so the span now lives AFTER the dialwrap close, as its own line genuinely BELOW the dial. */
-        '<div class="tn-tacho-cap" hidden></div>' +
         '<div class="tn-tacho-bands"><span class="tn-tacho-bandlo"></span><span class="tn-tacho-bandhi"></span><span class="tn-tacho-bands-label"></span></div>' +
         '<div class="tn-tacho-truth" hidden></div>' +
       '</div>' +
       /* 2026-11-06 — FIX 1e-iii REWORK: caption under the dial (see note above). A direct child of .tn-tacho, so paintBandChrome's root.querySelector still finds it and the text updates unchanged. */
       '<span class="tn-tacho-bandline"></span>' +
+      /* 2026-11-06 — FIX F6: the cap moves down here with the bandline. Inside
+         the dialwrap it sat at the dial's TOP, behind the opaque SVG dial face
+         (elementFromPoint 0/11, only edge fragments visible) — its legitimate
+         Day-mode text ("Period timing isn't on the ledger yet…") never read.
+         Below the bandline it is a clean second line under the dial; the
+         bandline's phone 160px margin already clears the bottom orbs for both. */
+      '<div class="tn-tacho-cap" hidden></div>' +
     '</div>';
   }
 
@@ -21931,11 +21953,16 @@ else init();
     var raf = 0;
     var dead = false;
 
-    function setCap(html){ if (cap._h !== html){ cap._h = html; cap.innerHTML = html; } if (cap.hidden) cap.hidden = false; }
+    /* 2026-11-06 — FIX F6: empty means hidden. setCap('') used to remove the
+       hidden attribute and leave an empty display:block div in the dial (All
+       mode: hiddenAttr false, rect 384x0 — not hidden, just empty). Now an
+       empty cap is hidden for real (UA [hidden]{display:none} -> rect 0x0);
+       every non-empty caption still shows exactly as before. */
+    function setCap(html){ if(!html){ if(cap._h !== ''){ cap._h = ''; cap.innerHTML = ''; } if(!cap.hidden) cap.hidden = true; if(root.classList) root.classList.remove('tn-cap-on'); return; } if (cap._h !== html){ cap._h = html; cap.innerHTML = html; } if (cap.hidden) cap.hidden = false; if(root.classList) root.classList.add('tn-cap-on'); }
     /* V4 CUT: the gained-line ("Gained in {period} — every action moves the needle.")
        repeats the "+N GAINED" readout sitting directly above it; the period is
        already named by the active time pill. Never silently kept — named here. */
-    function hideCap(){ if (cap && !cap.hidden) cap.hidden = true; }
+    function hideCap(){ if (cap && !cap.hidden) cap.hidden = true; if (root.classList) root.classList.remove('tn-cap-on'); }
 
     /* band ladder: completed bands marked, current band lit.
        V4: tap/hover names the band (Law — every control works); the label
