@@ -279,6 +279,10 @@ a { color: inherit; }
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-top: 1px solid rgba(255,255,255,.08);
+  /* Elevation (2026-11-06): the dock lifts over the notifications bar below
+     it, so the two read as one stacked unit with depth — the upper bar casts
+     its shadow down onto the lower bar. */
+  box-shadow: 0 10px 24px rgba(0,0,0,.55);
   flex-wrap: wrap;
 }
 .eco-bb-btn {
@@ -404,8 +408,13 @@ a { color: inherit; }
 /* The eco dock rides above the notifications bar — but ONLY when the bar is
    actually in the DOM (body.has-notif is set by NayaNotif.init). Without the
    bar, the dock sits at bottom: 0 (its base rule) and can never float over a
-   gap. (Shawn 2026-10-21: dock hovered mid-feed when the bar was absent.) */
-body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 0px)); }
+   gap. (Shawn 2026-10-21: dock hovered mid-feed when the bar was absent.)
+   DOUBLE-BAR STACK CURE (2026-11-06): the offset is the bar's MEASURED
+   height (--notif-h, set by NayaNotif.syncStack) minus a 2px overlap, so the
+   dock sits flush on the bar with no gap and no hairline. The old hardcoded
+   94px assumed a 98px bar (with labels); the bar ships label-less at 79px,
+   so the dock floated 15px above it and the feed showed through the gap. */
+body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 79px) - 2px + env(safe-area-inset-bottom, 0px)); }
 .toast-stack { bottom: calc(122px + env(safe-area-inset-bottom, 0px)); }
 .main { padding-bottom: 186px; }
 @media (max-width: 640px) {
@@ -2669,7 +2678,7 @@ button, .btn, .tab, .eco-btn, .activity-card {
 <style>
 /* ASK STACK CURE (2026-10-22): jewel 71 + notif 98 + dock, composed */
 body:has(.naya-ask-room) .notif-bar{bottom:calc(71px + env(safe-area-inset-bottom,0px))}
-body:has(.naya-ask-room) .eco-bottombar{bottom:calc(183px + env(safe-area-inset-bottom,0px))}
+body:has(.naya-ask-room) .eco-bottombar{bottom:calc(71px + var(--notif-h, 79px) - 2px + env(safe-area-inset-bottom,0px))}
 @media (max-width:760px){
   body:has(.naya-ask-room) .side-topics.side-right{bottom:calc(312px + env(safe-area-inset-bottom,0px))}
   body:has(.naya-ask-room) .side-topics.side-left{bottom:calc(382px + env(safe-area-inset-bottom,0px))}
@@ -5387,9 +5396,21 @@ function HubView(params) {
       else if (k === 'spaces') { this.set('spaces', 0); window.NayaRouter && window.NayaRouter.navigate('/hub/spaces'); }
       this.refresh();
     },
+    /* ——— Double-bar stack cure (2026-11-06): the dock rides on the
+       notifications bar's MEASURED height, never a hardcoded number.
+       The old 94px assumed a 98px bar (with labels); the bar ships
+       label-less at 79px, so the dock floated 15px above it and the
+       feed showed through the gap. Measuring the row (+1 border-top)
+       makes the stack flush forever, at any width. ——— */
+    syncStack() {
+      var bar = document.getElementById('naya-notif-bar'); if (!bar) return;
+      var row = bar.querySelector('.notif-row');
+      var h = (row ? row.offsetHeight : bar.offsetHeight) + 1;
+      document.documentElement.style.setProperty('--notif-h', h + 'px');
+    },
     init() {
       var bar = document.getElementById('naya-notif-bar');
-      if (bar) { document.body.classList.add('has-notif'); this.refresh(); return; }
+      if (bar) { document.body.classList.add('has-notif'); this.refresh(); this.syncStack(); return; }
       var self = this;
       var ICONS = {
         mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
@@ -5413,6 +5434,8 @@ function HubView(params) {
       document.body.classList.add('has-notif');
       window.addEventListener('storage', function () { self.refresh(); });
       this.refresh();
+      this.syncStack();
+      if (!window.__nayaNotifStackBound) { window.__nayaNotifStackBound = true; window.addEventListener('resize', function () { self.syncStack(); }); }
     }
   };
   window.NayaNotif.init();
