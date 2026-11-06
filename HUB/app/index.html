@@ -1175,9 +1175,7 @@ svg.jewel { display: block; }
   border: 2px solid color-mix(in srgb, var(--tone) 55%, #fff 14%);
   border-radius: 26px;
   padding: 32px 32px 24px;
-  background:
-    radial-gradient(720px 240px at 50% -8%, color-mix(in srgb, var(--tone) 14%, transparent), transparent 72%),
-    linear-gradient(145deg, var(--bg-raise), var(--bg));
+  background: #050607;
   box-shadow:
     inset 0 1px #ffffff2e,
     0 28px 64px #000000c0,
@@ -1205,7 +1203,7 @@ svg.jewel { display: block; }
 }
 .intel-board::after {
   content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-  background: linear-gradient(180deg, #ffffff08, transparent 22%);
+  background: none; /* v5.1: flat #050607 face — no white sheen wash */
 }
 
 .ib-head {
@@ -2594,7 +2592,7 @@ button, .btn, .tab, .eco-btn, .activity-card {
 .orb--sm::before { inset: -10px; padding: 2px; animation-duration: 7s; }
 .orb--sm::after { bottom: -16px; height: 14px; }
 @keyframes orb-spin { to { transform: rotate(360deg); } }
-@keyframes orb-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+@keyframes orb-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
 /* ——— Card-slot orb (Shawn 2026-10-20 ~04:08Z, reworked after his live read):
    42px — twice the 21px; left edge aligns with the Human Note layer icon below
    (layer head 16px padding + layer 2px border = 18px shift off the card edge);
@@ -2602,30 +2600,30 @@ button, .btn, .tab, .eco-btn, .activity-card {
 .ib-card-orb {
   width: 42px; height: 42px; flex: none; margin: 1px 0 0 18px;
   background:
-    radial-gradient(circle at 34% 26%, #ffffff 0%, rgba(255,255,255,.85) 10%, rgba(255,255,255,.28) 22%, transparent 38%),
+    radial-gradient(circle at 34% 26%, #ffffff 0%, rgba(255,255,255,.95) 14%, rgba(255,255,255,.38) 28%, transparent 44%),
     radial-gradient(circle at 50% 60%, rgba(255,255,255,.22) 0%, transparent 48%),
     radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 88%, #fff) 28%, color-mix(in srgb, var(--oc) 72%, #000) 68%, #050507 100%);
   box-shadow:
     inset 0 0 0 2px rgba(255,255,255,.55),
     inset 0 8px 16px rgba(255,255,255,.22),
     inset 0 -10px 20px rgba(0,0,0,.55),
-    0 0 22px rgba(var(--oc-rgb),.9),
-    0 0 55px -8px rgba(var(--oc-rgb),.6),
-    0 14px 30px rgba(0,0,0,.6);
+    0 0 32px rgba(var(--oc-rgb),1),
+    0 0 72px -6px rgba(var(--oc-rgb),.75),
+    0 18px 38px rgba(0,0,0,.65);
 }
 .ib-card-orb::before {
   inset: -4px; padding: 3px;
-  filter: drop-shadow(0 0 20px var(--oc)) drop-shadow(0 0 8px #fff);
+  filter: drop-shadow(0 0 28px var(--oc)) drop-shadow(0 0 12px #fff);
 }
 .ib-card-orb::after { bottom: -18px; height: 16px;
-  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.55), transparent 70%); }
+  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.7), transparent 70%); }
 /* — Playback states (NayaVoice contract, Shawn 2026-10-20): the orb flows
    while she prepares her reading and while she speaks. The !important
    animation beats the inline breathe the card sets at render. */
 .ib-card-orb.playing { animation: ib-orb-flow 1.6s ease-in-out infinite !important; }
 .ib-card-orb.reading { animation: ib-orb-flow 2.8s ease-in-out infinite !important; }
 @keyframes ib-orb-flow {
-  0%, 100% { transform: scale(1); box-shadow: inset 0 0 0 2px rgba(255,255,255,.55), inset 0 8px 16px rgba(255,255,255,.22), inset 0 -10px 20px rgba(0,0,0,.55), 0 0 22px rgba(var(--oc-rgb),.9), 0 0 55px -8px rgba(var(--oc-rgb),.6), 0 14px 30px rgba(0,0,0,.6); }
+  0%, 100% { transform: scale(1); box-shadow: inset 0 0 0 2px rgba(255,255,255,.55), inset 0 8px 16px rgba(255,255,255,.22), inset 0 -10px 20px rgba(0,0,0,.55), 0 0 32px rgba(var(--oc-rgb),1), 0 0 72px -6px rgba(var(--oc-rgb),.75), 0 18px 38px rgba(0,0,0,.65); }
   50% { transform: scale(1.08); box-shadow: inset 0 0 0 2px rgba(255,255,255,.82), inset 0 8px 16px rgba(255,255,255,.34), inset 0 -10px 20px rgba(0,0,0,.55), 0 0 42px rgba(var(--oc-rgb),1), 0 0 88px -6px rgba(var(--oc-rgb),.92), 0 14px 30px rgba(0,0,0,.6); }
 }
 .board-top-actions .action.reading { animation: ib-play-glow 1.1s ease-in-out infinite; }
@@ -3822,10 +3820,10 @@ window.NayaContent = {
     var st=document.createElement('style'); st.id=STYLE_ID;
     st.textContent=[
       '.intel-board .ib-subtitle{font-size:20px !important;background:transparent !important;border:0 !important;box-shadow:none !important;color:#fff;padding:14px 18px;line-height:1.5}',
-      '.intel-board .ib-nutshell{font-size:20px !important;background:transparent !important;border:2px solid color-mix(in srgb, #ffffff 42%, #fff 8%) !important;border-radius:18px !important;box-shadow:inset 0 1px #ffffff1c,0 14px 30px #00000090,0 0 20px color-mix(in srgb, #ffffff 10%, transparent) !important;color:#fff}',
+      '.intel-board .ib-nutshell{font-size:20px !important;background:#050607 !important;border:2px solid color-mix(in srgb, #ffffff 42%, #fff 8%) !important;border-radius:18px !important;box-shadow:inset 0 1px #ffffff1c,0 14px 30px #00000090,0 0 20px color-mix(in srgb, #ffffff 10%, transparent) !important;color:#fff}',
       '.intel-board .ib-nutshell p{font-size:20px !important;color:#fff;background:transparent !important}',
       '.sh-nutshell{font-size:20px !important;line-height:1.55}',
-      '.intel-board{opacity:.84;background:radial-gradient(720px 240px at 50% -8%, color-mix(in srgb, var(--tone) 14%, transparent), transparent 72%),linear-gradient(145deg, var(--bg-raise), var(--bg)) !important;border:2px solid color-mix(in srgb, var(--tone) 55%, #fff 14%) !important;border-radius:26px;transition:opacity .7s ease,box-shadow .25s,transform .25s cubic-bezier(.16,.84,.22,1)}',
+      '.intel-board{opacity:.84;background:#050607 !important;border:2px solid color-mix(in srgb, var(--tone) 55%, #fff 14%) !important;border-radius:26px;transition:opacity .7s ease,box-shadow .25s,transform .25s cubic-bezier(.16,.84,.22,1)}',
       '.intel-board.rv-lit{opacity:1;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff)}',
       '.intel-board:hover,.intel-board:active{opacity:1 !important;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff) !important}',
       '.intel-board.rv-lit .ib-layer{box-shadow:inset 0 1px #ffffff1c,0 14px 30px #00000090,0 0 20px color-mix(in srgb, var(--lc) 10%, transparent),0 0 34px -8px var(--lc)}',
@@ -4014,6 +4012,7 @@ const LAYER_MAP = [
   ['HOW TO USE', 'apply'],
   ['HOW TO APPLY', 'gold'],
   ["WHAT'S IN IT FOR YOU", 'value'],
+  ['WHY IT MATTERS', 'power'], // v5.1 RED: the star = the point (shared with KEY DECISIONS, which exists in no data)
   ['KEY DECISIONS', 'power'],
   ['LEARNING LESSON', 'learning'],
   ['HOW IT CONNECTS', 'cyan'],
@@ -4050,7 +4049,8 @@ function layerColorFor(name) {
   if (n.includes('WHAT IT MEANS')) return '#b8ee57';
   if (n.includes('HOW TO USE')) return '#ffea00';
   if (n.includes('HOW TO APPLY')) return '#d4a017';
-  if (n.includes("WHAT'S IN IT")) return '#ff8c42';
+  if (n.includes("WHAT'S IN IT")) return '#ffbf3d'; // v5.1 GOLD: the orb-walk gold (was #ff8c42 orange)
+  if (n.includes('WHY IT MATTERS')) return '#ff5e6c'; // v5.1 RED: why it matters (no such content in any data yet — wiring only)
   if (n.includes('KEY DECISIONS')) return '#ff5e6c';
   if (n.includes('LEARNING LESSON')) return '#e8c766';
   if (n.includes('HOW IT CONNECTS')) return '#22d3ee';
@@ -6282,6 +6282,22 @@ window.NayaJewels = (() => {
       || /^(intelligent block|smart note)\s*[:#—–-]?\s*((IB|SN)-?[\w-]*)?$/i.test(rawTitle);
     const titleIsId = genericTitle && !/^FEAT-/i.test(idStr);
     const sentencesOf = (txt) => (String(txt || '').replace(/\s+/g, ' ').match(/[^.!?]+[.!?]+["']?|[^.!?]+$/g) || []).map(s => s.trim()).filter(Boolean);
+    /* v5.1 HOOK (Shawn 01:23Z): the sub-headline under the title is a
+       SHORT hook, never the full nutshell text. Same derivation on
+       every board: cap at 60 chars (ellipsis included), cut at a
+       clean word boundary, strip markdown markers the esc() render
+       would print literally (the nutshell keeps md() + full text).
+       60 is the probe-measured cap: 110 chars is 1 line desk
+       but 7 lines phone (phone subtitle column is 228px); 60 is the
+       largest cap that holds <=4 lines phone on SN-2088/2083/2068. */
+    const shortHook = (txt) => {
+      const s = String(txt || '').replace(/\s+/g, ' ').replace(/[*`]/g, '').trim();
+      if (s.length <= 60) return s;
+      const cut = s.slice(0, 59);
+      const sp = cut.lastIndexOf(' ');
+      const head = (sp > 30 ? cut.slice(0, sp) : cut).replace(/[,;:\u2014\u2013-]+$/, '').trim();
+      return head + '\u2026';
+    };
     const nutLayerD = (note.layers || []).find(L => String(L.name || '').toUpperCase().includes('NUTSHELL'));
     const nutSentences = sentencesOf(nutLayerD ? nutLayerD.body : '');
     let headline = rawTitle, headlineDerived = false;
@@ -6292,8 +6308,9 @@ window.NayaJewels = (() => {
     let subtitle = String(note.subtitle || '').trim();
     if (!subtitle || /^live from supabase$/i.test(subtitle)) {
       const hook = headlineDerived ? (nutSentences[1] || '') : (nutSentences[0] || '');
-      subtitle = hook ? hook.slice(0, 160) : '';
+      subtitle = hook || '';
     }
+    subtitle = shortHook(subtitle); // v5.1: hook <= 60 chars, never the full nutshell text
     const title = el('h2', 'ib-title', esc(headline));
     titleWrap.append(title);
     /* — Headline + hook compose as ONE unit (Shawn 2026-10-20): the
@@ -6338,8 +6355,48 @@ window.NayaJewels = (() => {
 
     /* — Layers (excluding nutshell — already shown above) — */
     const layers = el('div', 'ib-layers');
+    /* v5.1 GOLD + RED (Shawn 01:52Z/01:54Z): board order is ... What It
+       Means, GOLD (What's In It For You, carrying How It Connects),
+       RED (Why It Matters) — spectrum order, gold #ffbf3d then red
+       #ff5e6c. The machine layer is NOT rendered anymore. Data order
+       is canonical (why-it-matters before what's-in-it-for-you), so
+       gold/red are pulled out and placed after What It Means;
+       everything else keeps data order. A section with no content in
+       the data simply does not render — nothing is invented. */
+    const isMachineLayer = (L) => /machine/i.test(String(L.name || ''));
+    const isGoldLayer = (L) => /WHAT'S IN IT/i.test(String(L.name || '').toUpperCase());
+    const isConnectLayer = (L) => /HOW IT CONNECTS/i.test(String(L.name || '').toUpperCase());
+    const isRedLayer = (L) => /WHY IT MATTERS/i.test(String(L.name || '').toUpperCase());
+    const isMeansLayer = (L) => /WHAT IT MEANS/i.test(String(L.name || '').toUpperCase());
+    let goldLayer = null, connectLayer = null, redLayer = null;
+    const otherLayers = [];
     (note.layers || []).forEach(L => {
-      if (L === nutshellLayer) return;
+      if (L === nutshellLayer || isMachineLayer(L)) return; // v5.1: no machine note anymore
+      if (isGoldLayer(L) && !goldLayer) { goldLayer = L; return; }
+      if (isConnectLayer(L) && !connectLayer) { connectLayer = L; return; }
+      if (isRedLayer(L) && !redLayer) { redLayer = L; return; }
+      otherLayers.push(L);
+    });
+    /* Gold carries how-it-connects: its body follows the benefits body
+       under its own name as a sub-label. A connects section with no
+       benefits section is not rendered on its own (it is gold's carried
+       content, never a separate layer) — a case that occurs in no data. */
+    let goldEntry = null;
+    if (goldLayer) {
+      let goldBody = goldLayer.body || '';
+      if (connectLayer && String(connectLayer.body || '').trim()) {
+        goldBody += '\n\n**How It Connects**\n\n' + connectLayer.body;
+      }
+      goldEntry = Object.assign({}, goldLayer, { body: goldBody });
+    }
+    const orderedLayers = otherLayers.slice();
+    const anchor = orderedLayers.findIndex(isMeansLayer);
+    const insertAt = anchor === -1 ? orderedLayers.length : anchor + 1;
+    const afterMeans = [];
+    if (goldEntry) afterMeans.push(goldEntry);
+    if (redLayer) afterMeans.push(redLayer);
+    orderedLayers.splice(insertAt, 0, ...afterMeans);
+    orderedLayers.forEach(L => {
       const layer = el('div', 'ib-layer layer-' + L.color + (L.tier === 'deeper' ? ' is-deeper' : ''));
       layer.style.setProperty('--lc', layerColorFor(L.name)); // v5: layer light = its jewel colour
       const lh = el('button', 'ib-layer-head');
