@@ -3566,6 +3566,11 @@ button:hover{
      Fixed the exit paths so you are never trapped. -->
 <!-- 2026-11-01 — Viewport Optimization Law: tiny back button restores full view -->
 <button id="viewport-back" aria-label="Back to full view" title="Back to full view">✕</button>
+<!-- 2026-11-06 — FIX 11 (11b): return chip for "Show on gauge". The jump to the
+     top loses the board's scroll position (measured 1553→0 desktop,
+     2076→0 phone) with no way back. This chip restores it. Hidden until a
+     Show-on-gauge jump; see setFeatured. -->
+<button id="os-feat-back" type="button" aria-label="Back to the board you came from" title="Back to the board you came from" style="display:none;">← Back to board</button>
 <!-- 2026-11-01 — Shawn: HERO MODE toggle. Fullscreen button, right side below settings. -->
 <button id="hero-toggle" aria-label="Toggle fullscreen" title="Toggle fullscreen">⛶</button>
 <!-- 2026-11-01 — Shawn: SETTINGS. Every page has one. Configures the page. -->
@@ -6732,6 +6737,39 @@ button.os-ld-node .os-ld-n{
 .os-creations-pos-tr{right:4%;top:4%;}
 .os-creations-pos-bl{left:4%;bottom:4%;}
 .os-creations-pos-br{right:4%;bottom:4%;}
+/* 2026-11-06 — FIX 11 (11d): phone Creations sub-labels read whole.
+   Measured on a 390px phone, two causes. (1) WIDTH: "Pages Created" 79px,
+   "Total Views" 67px, "Click-through" 84px inside a 60px-max-width nowrap
+   label (the fix-9 nowrap rule wins over the v6/v7 phone wrap rules for
+   drill orbs — their selectors need .os-constellation .os-ld-nodes, drill
+   orbs live in .os-creations-orbs). So labels wrap to two lines, the
+   9px/1.25 shape the main-board phone labels already use. (2) OVERLAP:
+   wrapping alone was NOT enough — the after-probe showed the second lines
+   still covered: the pills column (x300..380) sits on the right orbs'
+   labels ("VIEWS" under HOUR) and the chart switch (x84..306, y510..568)
+   sits on the bottom orbs' labels ("ks" of Clicks, "THROUGH" under the
+   switch + ALL pill). On desktop the pills ride far right of the 600px
+   stage, so this is phone-only: the pills become one horizontal row under
+   the title (top:132px, between the title at ~94px and the stage at
+   ~216px), and the switch rides fixed at the viewport bottom, clear of
+   the total (ends ~606px) and of every label. Desktop untouched. */
+@media (max-width:900px){
+  .os-creations-orbs .os-ld-node .os-ld-lbl{
+    white-space:normal !important; max-width:60px !important;
+    line-height:1.25 !important; font-size:9px !important;
+  }
+  .os-creations-pills{
+    left:50% !important; right:auto !important; top:132px !important;
+    transform:translateX(-50%) !important;
+    flex-direction:row !important; gap:6px !important;
+  }
+  .os-creations-pills button{
+    padding:8px 10px !important; font-size:10px !important;
+  }
+  #os-creations-switch{
+    position:fixed !important; bottom:20px !important; top:auto !important;
+  }
+}
 .os-creations-view .os-ld-node .os-ld-icon{color:#fff !important;font-size:15px !important;
   width:38px !important;height:38px !important;display:inline-flex !important;
   align-items:center !important;justify-content:center !important;border-radius:50% !important;
@@ -7042,6 +7080,21 @@ body.viewport-focus #os-ld-timepills{
 body.hero-mode #viewport-back{ display:block; }
 #viewport-back:hover{ transform:scale(1.1); border-color:#a06bff; }
 body.viewport-focus #viewport-back{ display:block; }
+/* 2026-11-06 — FIX 11 (11b): "Back to board" return chip. Fixed above the
+   bottom nav (bottom:112px clears the ~91px #nsbBottom), below drill views
+   (z-index 8500 < 10001) and the popover. Shown only after a Show-on-gauge
+   jump; the click restores the saved scroll position (see setFeatured). */
+#os-feat-back{
+  position:fixed; right:16px; bottom:112px; z-index:8500;
+  display:none; align-items:center; gap:8px;
+  padding:12px 18px; border-radius:999px; cursor:pointer;
+  font-size:13px; font-weight:800; letter-spacing:.04em; color:#fff;
+  background:linear-gradient(180deg, rgba(40,40,55,.95) 0%, rgba(15,15,22,.95) 100%);
+  border:1.5px solid #a06bff;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2), inset 0 -3px 6px rgba(0,0,0,.5),
+    0 0 18px rgba(160,107,255,.45), 0 8px 20px rgba(0,0,0,.6);
+}
+#os-feat-back:hover{ transform:translateY(-1px); box-shadow:inset 0 1px 0 rgba(255,255,255,.25), inset 0 -3px 6px rgba(0,0,0,.5), 0 0 24px rgba(160,107,255,.65), 0 10px 24px rgba(0,0,0,.65); }
 /* 2026-11-01 — REMOVED: old top-corner X (overrode the bottom X). Shawn: X goes at bottom. */
 .os-ld-drawer h6{margin:0 0 2px;font-size:13px;color:#fff;display:flex;align-items:center;gap:8px;}
 .os-ld-drawer .os-ld-dsub{font-size:11.5px;color:#b9b3c7;margin-bottom:10px;}
@@ -15978,7 +16031,7 @@ var NOTES_DEMO = { /* PASS 1 v6 (f): was 156 notes / 2.1K views / 98 saves — f
 };
 var NOTES_ORBS = [
   {key:'n-total', label:'Total Notes', color:'#3a5bff', jewel:'\u2726', pos:'tr'},
-  {key:'n-views', label:'Views',       color:'#7fd4ff', jewel:'\u0001f441', pos:'tl'},
+  {key:'n-views', label:'Views',       color:'#7fd4ff', jewel:'\uD83D\uDC41', pos:'tl'},
   {key:'n-saves', label:'Saves',       color:'#c9a0ff', jewel:'\u2606', pos:'bl'},
   {key:'n-ctr',   label:'Click Rate',  color:'#ffbf3d', jewel:'\u2197', pos:'br'}
 ];
@@ -16120,7 +16173,7 @@ var LIKES_DEMO = { /* PASS 1 v6 (f): was 1,024 likes / 231 loves — fabricated 
 var LIKES_ORBS = [
   {key:'l-total', label:'Total Likes', color:'#ff5e6c', jewel:'\u2665', pos:'tr'},
   {key:'l-rate',  label:'Like Rate',   color:'#2fe89e', jewel:'%',       pos:'tl'},
-  {key:'l-loves', label:'Likes · loves',       color:'#ff7eb9', jewel:'\u1F496', pos:'bl'},
+  {key:'l-loves', label:'Likes · loves',       color:'#ff7eb9', jewel:'\uD83D\uDC96', pos:'bl'},
   {key:'l-top',   label:'Top Liked',   color:'#ffbf3d', jewel:'\u2605', pos:'br'}
 ];
 var _likesWindow = 'all';
@@ -17942,11 +17995,18 @@ function ldLayoutNodes(){
   window.setFeatured = function(kind, id){
     window._featured = {kind:kind, id:id, label:null};
     try{ localStorage.setItem(LS_KEY, JSON.stringify({kind:kind, id:id})); }catch(e){}
+    /* 2026-11-06 — FIX 11 (11b): remember where the user came from BEFORE
+       the jump to the top. Measured on a real click: scrollY 1553→0
+       (desktop) / 2076→0 (phone) with no return affordance — the nav stays
+       visible (hero-mode is NOT set by the jump), the lost thing is the
+       board's scroll position. The chip offers it back. */
+    try{ window._featuredReturnY = window.scrollY || 0; }catch(e){ window._featuredReturnY = 0; }
     window._featuredDisplay();
     try{ if (typeof loadPointsBoard === 'function') loadPointsBoard(); }catch(e){}
     try{ window._featuredSyncBig(); }catch(e){}
     try{ window.renderBoards(); }catch(e){}
     try{ window.scrollTo(0, 0); }catch(e){}
+    try{ var _fb = document.getElementById('os-feat-back'); if (_fb && window._featuredReturnY > 120) _fb.style.display = 'flex'; }catch(e){}
   };
   document.addEventListener('click', function(e){
     var t = e.target && e.target.closest ? e.target : null;
@@ -17956,6 +18016,23 @@ function ldLayoutNodes(){
     if (kv.length < 2) return;
     window.setFeatured(kv[0], kv.slice(1).join(':'));
   });
+  /* 2026-11-06 — FIX 11 (11b): the return chip. A tap restores the saved
+     scroll position and hides the chip; it also hides itself once the user
+     has scrolled back near the saved position on their own. */
+  (function(){
+    var fb = document.getElementById('os-feat-back');
+    if (!fb) return;
+    fb.addEventListener('click', function(){
+      var y = (typeof window._featuredReturnY === 'number') ? window._featuredReturnY : 0;
+      fb.style.display = 'none';
+      try{ window.scrollTo(0, y); }catch(e){}
+    });
+    window.addEventListener('scroll', function(){
+      if (fb.style.display === 'none') return;
+      var y = (typeof window._featuredReturnY === 'number') ? window._featuredReturnY : 0;
+      try{ if (Math.abs(window.scrollY - y) < 120) fb.style.display = 'none'; }catch(e){}
+    }, {passive:true});
+  })();
 })();
 /* PASS 1 v6 (f) — refreshDrillDemos: the drill-downs used to read
    hardcoded *_DEMO objects ($12,480 revenue, 512 joins, 1,024 likes,
