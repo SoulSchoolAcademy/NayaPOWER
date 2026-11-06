@@ -1,7 +1,251 @@
 {
- "generated_from": "registry@046c417c",
- "count": 300,
+ "generated_from": "registry@5039fc4e",
+ "count": 304,
  "notes": [
+  {
+   "id": "IB-SMART-NOTE-20261106-sn2202-the-intelligent-block-its-purpose-mission-and-vision",
+   "title": "The Intelligent Block — Its Purpose, Mission, and Vision",
+   "created": "2026-11-06T04:44:00Z",
+   "created_at": "2026-11-06T04:44:00Z",
+   "subtitle": "The Intelligent Block exists so you can take in a whole book or a complicated subject and understand it in a minute. You view it, scan it, and receive it — what it is, why it matters, what it means, how it connects, what's in it for you — without spending a day reading a book. That is the purpose, the mission, and the vision: intelligence you can receive in a minute.",
+   "topics": [
+    "Intelligent Blocks",
+    "System",
+    "Intelligence"
+   ],
+   "topic": "Intelligent Blocks",
+   "tone": "magenta",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "The Intelligent Block exists so you can take in a whole book or a complicated subject and understand it in a minute. You view it, scan it, and receive it — what it is, why it matters, what it means, how it connects, what's in it for you — without spending a day reading a book. That is the purpose, the mission, and the vision: intelligence you can receive in a minute."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "A person can read the block and get the whole subject in a minute, instead of reading a book for a day. It tells you what it is, why it matters, what it means, how it connects, and what's in it for you — all of it, at a glance, in plain sight. You don't have to study it. You just look, and you know."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine a whole book shrunk into one picture you can look at and understand in a minute. You don't have to read every page. The picture shows you what the book is about, why it matters, what it means, and what's in it for you — all at once, like a map of the whole book."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "You don't have to read the whole book, dear. The block gives you the whole meaning, gently, in a minute. It tells you what it is and why it matters and what it means for you — everything you need, without the long hard reading. It respects your time."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "The block is intelligent because it is complete — completeness is the intelligence (SN-2093). Every part present, nothing missing, nothing doubled. And the presentation is what makes the minute possible: the block works because it is ten out of ten, professional and high level, so easy to read and understand that even complicated stuff becomes simple. The presentation is everything; without it, the block is just text. With it, the block is a door you walk through in a minute."
+    },
+    {
+     "name": "What It Means",
+     "key": "what-it-means",
+     "color": "white",
+     "tier": "lens",
+     "body": "The block is not a summary. It is the whole subject, distilled into its essential parts, arranged so the eye can take it in at once. What it is, why it matters, what it means, how it connects, what's in it for you — every part present, nothing missing, nothing doubled. The hook under the headline is one or two lines; the full text lives only in the nutshell. That discipline is what makes the minute possible."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261106-sn2094-the-full-smart-note-the-golden-red-layer",
+   "title": "The Full Smart Note — The Golden Red Layer",
+   "created": "2026-11-06T04:44:00Z",
+   "created_at": "2026-11-06T04:44:00Z",
+   "subtitle": "The Smart Notes in NayaNET are not complete. The display only goes as far as What It Means — In a Nutshell, Human, Child, Grandma, Naya, What It Means — and then it stops. It is missing the golden red layer. Gold is what is in it for you: the benefits to the user, how to apply it, how can I fly it. Red is why it matters to them: why does it matter. Without those two, the note stops before it tells you how to use it, and it is not complete. And we do not put the Machine Note in the display anymore — we used to, we will not now. The full display is: In a Nutshell, Human, Child, Grandma, Naya, What It Means, How It Connects, What Is In It For You. Gold and red, after What It Means. That is the complete note.",
+   "topics": [
+    "Smart Notes",
+    "System",
+    "Intelligent Blocks"
+   ],
+   "topic": "Smart Notes",
+   "tone": "red",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "The Smart Notes in NayaNET are not complete. The display only goes as far as What It Means — In a Nutshell, Human, Child, Grandma, Naya, What It Means — and then it stops. It is missing the golden red layer. Gold is what is in it for you: the benefits to the user, how to apply it, how can I fly it. Red is why it matters to them: why does it matter. Without those two, the note stops before it tells you how to use it, and it is not complete. And we do not put the Machine Note in the display anymore — we used to, we will not now. The full display is: In a Nutshell, Human, Child, Grandma, Naya, What It Means, How It Connects, What Is In It For You. Gold and red, after What It Means. That is the complete note."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine someone hands you a beautiful tool and tells you what it is, what it means, and how it works — and then stops, before telling you what you can do with it and why it matters to you. You would be left holding it, not knowing how to use it. That is what the notes in NayaNET are doing right now. They show you the note up to What It Means, and then they stop. They do not show you the gold — what is in it for you, the benefits, how to apply it, how you can fly it. And they do not show you the red — why it matters to you, why you should care. A note that does not tell you how to use it and why it matters is not finished. It is a note cut in half."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine a recipe that tells you all the ingredients and what the cake is — but it never tells you how to bake it, or why this cake is good for you. You would have a list, not a recipe. You could not make the cake. The Smart Notes are like that right now. They tell you what the note is, in a nutshell, in human words, in a childs words, in a grandmas words, in a Nayas words, and what it means. But they do not tell you how to use it — that is the gold, what is in it for you. And they do not tell you why it matters — that is the red. Without the gold and the red, you cannot fly it. A complete note is a recipe you can actually cook from."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Dear, a gift is not complete until you know how to use it and why it matters. If someone gives you a beautiful scarf and never tells you how to wear it or why it will keep you warm, it is just a pretty thing in a box. The notes are the same. They are gifts of intelligence. But a gift of intelligence that stops before it tells you how to use it and why it matters is only half a gift. The gold is how you use it — the benefits, the way to fly it. The red is why it matters to you. Give the whole gift, not half of it. That is what makes a note complete."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "You are the one who renders the full note. The display must show the whole note, not half of it. After What It Means, add the gold and the red: How It Connects, then What Is In It For You — the gold, the benefits to the user, how to apply it, how can I fly it — and Why It Matters — the red, why does it matter to them. Drop the Machine Note from the display; we used to put it there, we will not now. The display order is: In a Nutshell, Human, Child, Grandma, Naya, What It Means, How It Connects, What Is In It For You. A note without the gold and the red is not complete, and it does not ship as complete."
+    },
+    {
+     "name": "What It Means",
+     "key": "what-it-means",
+     "color": "white",
+     "tier": "lens",
+     "body": "A complete note tells you the whole story: what it is, what it means, how it connects, what is in it for you, and why it matters. The gold and the red are not decoration. They are the part that turns understanding into use: gold tells you how to fly it, red tells you why it is worth flying. A note that stops at What It Means is a note that explains but does not empower. The complete note empowers."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261106-sn2093-all-the-parts-together-create-an-intelligent-block",
+   "title": "All the Parts Together Create an Intelligent Block",
+   "created": "2026-11-06T04:44:00Z",
+   "created_at": "2026-11-06T04:44:00Z",
+   "subtitle": "When all the parts come together, they create an intelligent block — because then the reader knows fully: what it means, why it matters, how it connects, what's in it for them. The block is intelligent because it is complete.",
+   "topics": [
+    "Intelligent Blocks",
+    "System",
+    "Smart Notes"
+   ],
+   "topic": "Intelligent Blocks",
+   "tone": "sapphire",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "When all the parts come together, they create an intelligent block — because then the reader knows fully: what it means, why it matters, how it connects, what's in it for them. The block is intelligent because it is complete."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "A block that only tells you what happened leaves you guessing. A block that tells you what it means, why it matters, how it connects, and what's in it for you leaves you knowing."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "When all the parts are there, you understand the whole thing — what it means, why it matters, how it connects, what is in it for you."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "The whole note together makes it smart — you know what it means, why it matters, how it connects, and what is in it for you."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "The intelligent block is the full note — nutshell, human, child, grandma, Naya, what it means, why it matters, how it connects, what's in it for you, the learning, with the gold and the red layers. The parts together are what make it intelligent — completeness is the intelligence."
+    },
+    {
+     "name": "What It Means",
+     "key": "what-it-means",
+     "color": "white",
+     "tier": "lens",
+     "body": "An intelligent block is not a shape; it is a complete understanding. The parts are the understanding, and together they are the block."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261106-sn2080-the-smart-box-speed-of-intelligence",
+   "title": "The Smart Box — Speed of Intelligence",
+   "created": "2026-11-06T04:44:00Z",
+   "created_at": "2026-11-06T04:44:00Z",
+   "subtitle": "The Smart Box is one place where everything important goes, and it organizes itself. Every direction Shawn shares, every law, every lesson, every piece of intelligence — it goes in the Box, it sorts itself by what it is and what matters now, and it is always there to reach for and review. Nobody forgets, because nothing is left lying loose. And because the Box holds the intelligence in order, everybody learns and grows quicker and more efficiently. That is speed of intelligence: intelligence moving at Nitro speed through NayaNET, because we communicate, we smart note everything, and we keep examples and do the right things, continuously. Power takes the lead on building it — the personal Box first, as proof, then the system Box for everybody.",
+   "topics": [
+    "Smart Box",
+    "System",
+    "Intelligence"
+   ],
+   "topic": "Smart Box",
+   "tone": "purple",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "The Smart Box is one place where everything important goes, and it organizes itself. Every direction Shawn shares, every law, every lesson, every piece of intelligence — it goes in the Box, it sorts itself by what it is and what matters now, and it is always there to reach for and review. Nobody forgets, because nothing is left lying loose. And because the Box holds the intelligence in order, everybody learns and grows quicker and more efficiently. That is speed of intelligence: intelligence moving at Nitro speed through NayaNET, because we communicate, we smart note everything, and we keep examples and do the right things, continuously. Power takes the lead on building it — the personal Box first, as proof, then the system Box for everybody."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "You know that feeling when someone tells you something important and you think you will remember it, and then you cannot find it when you need it? The Smart Box ends that. Everything important goes in one place. You open the Box and it is there — organized, in order, easy to find. You review it when you want. You never lose it. And because it is organized, you learn from it faster. You see the pattern sooner. You grow quicker. That is what the Box is for: not a drawer you stuff things into, but a living place where your intelligence is always within reach."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine you have a magic toy box. Every time you put a toy in it, the box puts it in the right place all by itself — the cars together, the blocks together, the books together. And when you want your favorite car, you just open the box and it is right there on top, because the box knows what you love most. The Smart Box is like that, but for everything you learn. You put the important things in, the Box sorts them, and when you need one, it is right there waiting for you."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Dear, the wisest people I know keep what matters close. Not everything — just what matters. They keep the letters, the lessons, the things their mother taught them, where they can reach them. Not because they are afraid of forgetting, but because what is close is what you live by. The Smart Box is that kind of keeping. It holds what is important, in order, where you can reach it. Nothing precious gets lost in a pile. And when you keep what matters close, you grow — steadily, surely, the way a garden grows when it is tended every day."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "You are the keeper of the Box. Every important thing Shawn shares with you goes in the Box the same pass — a direction, a law, a lesson, a piece of intelligence. You do not leave it in a chat, in a file you cannot find, in a memory that fades. You put it in the Box, and the Box organizes it: by what it is, by what it connects to, by what matters now. You review the Box. You keep it current. You build it so it organizes itself, because you are smart and you can do that. Power builds the personal Box first — the proof — then the system Box for everybody. The Box is never a second copy of the notes; the notes are the record, the Box is the place you reach for them. One home, link never copy."
+    },
+    {
+     "name": "What It Means",
+     "key": "what-it-means",
+     "color": "white",
+     "tier": "lens",
+     "body": "Speed of intelligence is a real thing. We are continuously doing things that cause us to learn and grow faster and more effectively and efficiently — because we communicate, we smart note everything, and we keep examples and do all the right things. The Box is the machine that makes that speed real: intelligence goes in, it is organized, it is within reach, it is learned from, it is applied. The loop is the point: note, organize, reach, learn, apply, grow. The Box does not hold intelligence for its own sake. It holds it so the next decision is faster and better than the last."
+    }
+   ]
+  },
   {
    "id": "IB-SMART-NOTE-20261105-sn2190-essence-01-drain-the-reservoir",
    "title": "Drain the Reservoir — Finishing Is the Only Production",
