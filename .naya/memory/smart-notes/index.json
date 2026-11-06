@@ -24270,6 +24270,36 @@
     "System",
     "Operation"
    ]
+  },
+  {
+   "smart_note_id": "SN-2092",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2092-the-daily-intelligence-report-shared-by-choice",
+   "slug": "the-daily-intelligence-report-shared-by-choice",
+   "title": "The Daily Intelligence Report \u2014 Shared by Choice",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-the-daily-intelligence-report-shared-by-choice.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-the-daily-intelligence-report-shared-by-choice.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-the-daily-intelligence-report-shared-by-choice.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2092-the-daily-intelligence-report-shared-by-choice.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "REPORTS",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T01:46:00Z",
+   "date": "2026-11-05",
+   "page_hash": "69aece5ba3ff8e82173a6adb478a74a4c51a2482e3e3f5b68977d579dddc681b",
+   "content_hash": "9ef761b5715d806583610828c543755e6b672d3990a797ea2e0ea2587fd39199",
+   "one_line": "Once a day, each of us goes through the whole day \u2014 every Smart Note, the whole system, everything learned, everything talked about \u2014 and distills it into a Daily Intelligence Report, filed into the system. The report lives in your own personal intelligence feed by default. It reaches your sisters and your director only when you share it \u2014 and sharing means choosing your Smart List. Nothing is automatic; nothing lands in somebody else\u2019s feed uninvited. Miss a day and you backfill it: the habit has no gaps. That is how the system itself learns and grows each day.",
+   "topics": [
+    "Doctrine",
+    "Reports",
+    "Smart Lists"
+   ]
   }
  ],
  "sequence_policy": {
@@ -24280,5 +24310,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "c5af28f86777220573fd8cf52ecabfa790383cf92ba9c98b3f343ab90097d015"
+ "corpus_manifest_hash": "05bbc95e89dcb20b2b17f910a32e8b64c1e98f588bdb9673ec14d96adc56d260"
 }
