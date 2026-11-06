@@ -30186,6 +30186,37 @@
     "Pricing",
     "Product"
    ]
+  },
+  {
+   "smart_note_id": "SN-0053",
+   "intelligent_block_id": "IB-SMART-NOTE-20261106-sn0053-rebuilding-the-internet-itself",
+   "slug": "rebuilding-the-internet-itself",
+   "title": "Rebuilding the Internet Itself \u2014 The Future Is Now",
+   "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/vision/SN-0053/IB-SMART-NOTE-20261106-sn0053-rebuilding-the-internet-itself.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/vision/SN-0053/IB-SMART-NOTE-20261106-sn0053-rebuilding-the-internet-itself.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/vision/SN-0053/IB-SMART-NOTE-20261106-sn0053-rebuilding-the-internet-itself.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn0053-rebuilding-the-internet-itself.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DOCTRINE",
+   "captured_at": "2026-11-06",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-power",
+   "registered_at": "2026-11-06T21:27:45Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-06",
+   "page_hash": "d2ccd8b6cb01d71bac6b7822d3ce96406eea915db4a1171da4858e1978317bb9",
+   "content_hash": "08e70bea0e388c8a18431a41892adc78709dc822a23c4d51fd2a867974d10674",
+   "one_line": "We are not building another app. We are helping people rebuild and reformat the internet itself, in a smarter, better way. Everything is automated, done for you, beautiful, adaptable. It optimizes for you \u2014 who you are, what you are into, what your business is about, the things you care about. And the people in your world are right there with you, privately \u2014 collaborating, teaming up, video chatting, sharing a feed of intelligence, saving it, capturing it, building mastermind groups, embedding intelligence into everything. Or just being part of the collective network. That is the whole thing, in one breath. The future is now.",
+   "topics": [
+    "System",
+    "Doctrine",
+    "Vision"
+   ]
   }
  ],
  "sequence_policy": {
@@ -30196,5 +30227,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "90f7d5e7e4aff5d7c15faac7a48a03926822e8ab6a7a3397f4a81703688755b8"
+ "corpus_manifest_hash": "1bcb311294be6184e0a310b81038728c5fb744f3a98930037bf6899994ca4cb0"
 }
