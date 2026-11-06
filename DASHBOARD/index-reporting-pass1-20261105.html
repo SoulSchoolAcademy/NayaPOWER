@@ -17798,15 +17798,20 @@ window._renderScoreDerivation = function(totalArg, orbDataArg){
     var total = totalArg, orbData = orbDataArg;
     if (typeof total !== 'number' || !orbData){
       /* Recompute from live data (toggle / _featuredSyncBig paths).
-         window.* first — the bare names are IIFE-scoped (v6 lesson). */
+         window.* first — the bare names are IIFE-scoped (v6 lesson).
+         v7.1 FIX 1a: recompute in the CURRENT window (was hardcoded
+         'all', so a Day/Week/Month flip left the derivation on all-time
+         math), and carry each node's COUNT alongside its points — the
+         derivation must label points as points and counts as counts. */
       total = 0; orbData = [];
+      var _win = window._ldWindow || 'all';
       var PDx = (typeof window.ldData === 'function') ? window.ldData() : ((typeof ldData === 'function') ? ldData() : (window._dashD || {}));
       var NODESx = window.LD_NODES || ((typeof LD_NODES !== 'undefined') ? LD_NODES : []);
       NODESx.forEach(function(nd){
-        var nx = (typeof window.ldNodeCount === 'function') ? window.ldNodeCount(nd, PDx, 'all') : ((typeof ldNodeCount === 'function') ? ldNodeCount(nd, PDx, 'all') : 0);
+        var nx = (typeof window.ldNodeCount === 'function') ? window.ldNodeCount(nd, PDx, _win) : ((typeof ldNodeCount === 'function') ? ldNodeCount(nd, PDx, _win) : 0);
         var ptsx = nd.value ? nx*nd.value : nx;
         total += ptsx;
-        if (ptsx > 0) orbData.push({key: nd.key, label: nd.label, pts: ptsx, color: nd.color});
+        if (ptsx > 0) orbData.push({key: nd.key, label: nd.label, pts: ptsx, count: nx, color: nd.color});
       });
     }
     var view = (typeof window._featuredDisplay === 'function') ? window._featuredDisplay() : null;
@@ -17823,13 +17828,20 @@ window._renderScoreDerivation = function(totalArg, orbDataArg){
         if (orbData.length === 0){
           h = '<span class="os-sd-empty">No points yet — your first action lights the board.</span>';
         } else {
+          /* v7.1 FIX 1a: every part names its COUNT and its POINTS —
+             "Invites · 2 sent · 50 pts" — never a bare number a reader
+             will take for a count. Sums are labelled points too. */
+          var _cw = {sales:'sales', joins:'joins', notes:'notes', invs:'sent', posts:'pages', shares:'shares', comments:'comments', likes:'likes', saves:'saves'};
           orbData.forEach(function(o, i){
             if (i > 0) h += '<span class="os-sd-op">+</span>';
-            h += '<button type="button" class="os-sd-part" data-derive-part="' + o.key + '">' + o.pts + ' ' + o.label + '</button>';
+            var _oc = (typeof o.count === 'number') ? o.count : null;
+            var _ow = _cw[o.key] || o.label.toLowerCase();
+            var _part = (_oc == null) ? (o.label + ' · ' + o.pts + ' pts') : (o.label + ' · ' + _oc.toLocaleString() + ' ' + _ow + ' · ' + o.pts + ' pts');
+            h += '<button type="button" class="os-sd-part" data-derive-part="' + o.key + '">' + _part + '</button>';
           });
-          h += '<span class="os-sd-op">=</span><span class="os-sd-sum">' + total + '</span>';
-          if (mult === 2){ h += '<span class="os-sd-op">× 2 birth</span><span class="os-sd-op">=</span><span class="os-sd-sum">' + spineScore + '</span>'; }
-          else if (spineScore !== total){ h += '<span class="os-sd-op">=</span><span class="os-sd-sum">' + spineScore + '</span>'; }
+          h += '<span class="os-sd-op">=</span><span class="os-sd-sum">' + total + ' pts</span>';
+          if (mult === 2){ h += '<span class="os-sd-op">× 2 birth</span><span class="os-sd-op">=</span><span class="os-sd-sum">' + spineScore + ' pts</span>'; }
+          else if (spineScore !== total){ h += '<span class="os-sd-op">=</span><span class="os-sd-sum">' + spineScore + ' pts</span>'; }
         }
         derEl.innerHTML = h;
       }
@@ -17840,10 +17852,15 @@ window._renderScoreDerivation = function(totalArg, orbDataArg){
         nextEl.innerHTML = '1 join takes you to ' + (spineScore2 + gain) + ' — <button type="button" class="os-sd-share" data-sl-copy="joinus">share your link</button>';
       }
     } else {
-      /* ---- link: its own counts, never points, never x2 ---- */
+      /* ---- link: its own counts, never points, never x2 ----
+         v7.1 FIX 1a: joins + conversion read the SAME window as the
+         clicks (was all-time joins + all-time CTR under window clicks),
+         and the sum element no longer repeats the click count — it
+         names the window. "55 clicks · 0 joins · today · 0.0%". */
       var clicks = (typeof view.center === 'number' && isFinite(view.center)) ? view.center : 0;
-      var joins = (typeof view.below === 'number' && isFinite(view.below)) ? view.below : 0;
-      var ctr = (typeof view.ctr === 'number' && isFinite(view.ctr)) ? view.ctr : null;
+      var joins = (typeof view.joinsWin === 'number' && isFinite(view.joinsWin)) ? view.joinsWin : 0;
+      var ctr = (clicks > 0) ? (joins/clicks*100) : null;
+      var winTag = String(view.centerLabel || '').replace(/^clicks · /, '') || 'all time';
       var linkName = String(view.id || 'joinus').replace(/["'<>]/g, '');
       if (derEl){
         var h2 = '';
@@ -17854,7 +17871,7 @@ window._renderScoreDerivation = function(totalArg, orbDataArg){
           h2 += '<span class="os-sd-op">·</span>';
           h2 += '<button type="button" class="os-sd-part" data-derive-part="joins">' + joins.toLocaleString('en-US') + ' joins</button>';
           h2 += '<span class="os-sd-op">·</span>';
-          h2 += '<span class="os-sd-sum">' + clicks.toLocaleString('en-US') + ' ' + view.centerLabel + '</span>';
+          h2 += '<span class="os-sd-sum">' + winTag + '</span>';
           h2 += '<span class="os-sd-op">·</span>';
           h2 += '<span class="os-sd-sum">' + (ctr == null ? '—' : ctr.toFixed(1) + '% became joins') + '</span>';
         }
@@ -18219,10 +18236,10 @@ function loadPointsBoard(_t){
         var total = 0;
         var orbData = [];
         LD_NODES.forEach(function(nd){
-          var n = ldNodeCount(nd, pd, window._dashWeek || 'all');
+          var n = ldNodeCount(nd, pd, window._ldWindow || 'all'); /* v7.1 FIX 1a: was window._dashWeek (never set) — the derivation always read all-time math. Now the live window. */
           var pts = nd.value ? n*nd.value : n;
           total += pts;
-          if (pts > 0) orbData.push({key: nd.key, label: nd.label, pts: pts, color: nd.color}); /* PASS 1 v6 (i): key — each derivation part opens its drill-down. */
+          if (pts > 0) orbData.push({key: nd.key, label: nd.label, pts: pts, count: n, color: nd.color}); /* PASS 1 v6 (i): key — each derivation part opens its drill-down. v7.1 FIX 1a: count carried so the derivation can label it. */
         });
         /* #2 BIG NUMBER + DELTA */
         var bigVal = document.getElementById('os-se-val');
