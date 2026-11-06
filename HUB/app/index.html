@@ -5350,7 +5350,7 @@ function HubView(params) {
       heart: '<path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/>',
       key: '<circle cx="8" cy="14" r="4.5"/><path d="M11 11l8-8M17 5l2.5 2.5"/>',
     };
-    a.innerHTML = '<span class="eco-bb-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (iconPaths[l.icon] || iconPaths.star) + '</svg></span><span class="notif-lbl">' + esc(l.label) + '</span>';
+    a.innerHTML = '<span class="eco-bb-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (iconPaths[l.icon] || iconPaths.star) + '</svg></span>';
     bbBar.appendChild(a);
   });
   /* Mission quote — the promise, no dead buttons */
@@ -5404,7 +5404,8 @@ function HubView(params) {
         var b = document.createElement('button'); b.type = 'button'; b.className = 'notif-seg';
         b.setAttribute('data-notif', s[0]); b.style.setProperty('--nc', s[2]);
         b.setAttribute('aria-label', s[1] + ' — open');
-        b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span><span class="notif-lbl">' + s[1] + '</span>';
+        b.setAttribute('title', s[1]);
+        b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span>';
         b.addEventListener('click', function () { self.tap(s[0]); });
         row.appendChild(b);
       });
