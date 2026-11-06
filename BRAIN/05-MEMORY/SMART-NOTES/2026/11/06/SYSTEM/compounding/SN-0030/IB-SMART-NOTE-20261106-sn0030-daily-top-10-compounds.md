@@ -34,7 +34,7 @@ So the rule is simple: every day, write down your 10 best things you learned, sh
 
 And how do things get into the box? The grown-up in charge tells us his big ideas out loud, and we write them down. That is called dictation. Everything else that goes in the box is a note — a Smart Note — written by one of us. Each person has their own little box for their own notes, and all the little boxes feed into the one big box. That is how everyone gets smarter together.
 
-## GRANDMA NOTE
+## GRANDMA
 
 Dear, think of it this way. Your grandfather used to say that a good idea shared is worth ten times a good idea kept. This is that, made into a daily habit.
 
