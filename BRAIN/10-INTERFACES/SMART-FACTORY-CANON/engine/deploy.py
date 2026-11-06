@@ -85,8 +85,39 @@ def build_worker_js(html_bytes, html_text):
                 "'cache-control': 'no-store, no-cache, must-revalidate'}}); } };\n"
                 % json.dumps(html_text)).encode()
 
-    with open(PWA_ASSETS + "/hub/manifest.json", encoding="utf-8") as f:
-        manifest = f.read()
+    if 'id="os-script"' in html_text:
+        # One-system flagship body: serve the PAGE'S OWN manifest, built
+        # from the page's own title — not the shared Hub manifest (S2 /
+        # interrogation cure, 2026-10-22). The shell SW stays the shared
+        # one: it precaches '/', '/manifest.json' and the icons generically.
+        import html as _html_mod
+        import re as _re
+        _m = _re.search(r"<title>(.*?)</title>", html_text, _re.S)
+        _title = _html_mod.unescape(_m.group(1)).strip() if _m else "NayaNET"
+        _page_manifest = {
+            "name": _title,
+            "short_name": _title.split("—")[0].split("|")[0].strip()[:30] or "NayaNET",
+            "description": "A living NayaNET smart app — wall, messages, invites, "
+                           "reports and a live dashboard, in one page.",
+            "start_url": ".",
+            "scope": ".",
+            "display": "standalone",
+            "orientation": "portrait-primary",
+            "background_color": "#000000",
+            "theme_color": "#000000",
+            "icons": [
+                {"purpose": "any", "sizes": "192x192",
+                 "src": "/icons/naya-icon-192.png", "type": "image/png"},
+                {"purpose": "any", "sizes": "512x512",
+                 "src": "/icons/naya-icon-512.png", "type": "image/png"},
+                {"purpose": "maskable", "sizes": "512x512",
+                 "src": "/icons/naya-icon-512.png", "type": "image/png"},
+            ],
+        }
+        manifest = json.dumps(_page_manifest)
+    else:
+        with open(PWA_ASSETS + "/hub/manifest.json", encoding="utf-8") as f:
+            manifest = f.read()
     with open(PWA_ASSETS + "/hub/sw.js", encoding="utf-8") as f:
         sw = f.read()
     import base64
