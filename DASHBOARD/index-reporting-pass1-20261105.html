@@ -4019,6 +4019,26 @@ html.os-calm .os-orb.hot::after{animation:none!important}
 #cvr>img{height:100%}
 [data-block=cover] .ph-head{position:absolute;left:0;right:0;bottom:0;margin-top:0;padding:0 24px 20px;z-index:6}
 @media (max-width:640px){[data-block=cover] .ph-head{padding:0 16px 16px}}
+/* 2026-11-06 — v7.2 FIX F5: home-view header above the viewport at scroll 0.
+   With no cover image the V9.5 rule (.ph-cover:not(:has(img)){display:none})
+   collapses the cover to 0px, so the [data-block=cover] container is 0px tall
+   and the absolute header (bottom:0) hangs its whole height above the page —
+   measured #avv y=-160 desktop / -126 phone, unreachable by scrolling
+   (document height == viewport height). When the cover is empty, the header
+   goes back in-flow and the container clears the absolute Smart Bar
+   (#nsbTop, 102-104px at every measured width) with 120px of top padding,
+   so the header opens fully inside the viewport at scroll 0, below the bar.
+   The with-image composition is untouched: :has(.ph-cover img) succeeds
+   there, so :not(...) fails and the absolute overlay at the band's bottom
+   edge still applies. (Selector shape matters: :has() cannot be nested —
+   :has(.ph-cover:not(:has(...))) is an invalid selector and the parser drops
+   the whole rule. :not() OUTSIDE a single :has() is the valid form.)
+   Rail clearance: the fixed left-rail buttons (#hero-toggle, #os-eco-plus,
+   #page-settings) reach x=64 on both viewports, so the in-flow header gets
+   padding-left:72px — the avatar starts clear of the rail. Desktop keeps
+   the side-by-side header; phone wraps the info below the avatar. */
+[data-block=cover]:not(:has(.ph-cover img)){padding-top:120px}
+[data-block=cover]:not(:has(.ph-cover img)) .ph-head{position:relative;margin-top:0;padding-left:72px}
 .os-fieldwrap{position:relative;margin:0 0 10px}
 .os-fieldwrap .os-input,.os-fieldwrap .os-textarea,.os-fieldwrap textarea{margin-bottom:0}
 .os-fieldwrap input,.os-fieldwrap textarea{padding-right:54px}
