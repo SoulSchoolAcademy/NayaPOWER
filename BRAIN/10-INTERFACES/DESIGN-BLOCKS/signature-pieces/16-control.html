@@ -1,0 +1,65 @@
+<!-- ================================================================
+  NIA DESIGN SIGNATURE PIECE 16 — CONTROL — THE WORKING ELEMENT
+  DRAFT — the Clarity Confirmation Act is NOT stamped by Shawn; nothing here is law yet.
+  Act reference: Act §4.16 — ~/workspace/team-nitro/clarity-confirmation-act-DRAFT-20261106.md
+  CHECK: responds physically on touch; its state is visible.
+  CRAFT (Shawn 00:31Z — optimized for what IT is): The most extraordinary control: the working element, a switch you can operate, its state visible — molded to take a person’s choice and show it.
+  ROLLOUT (Shawn 00:31Z — Dashboard first, then Personal, then the rest): group 1 — first proved on Dashboard.
+  Harvested verbatim from:
+  - ~/workspace/smart-factory/harvested/dashboard.html L1128
+  - ~/workspace/smart-factory/harvested/dashboard.html L1130
+  - ~/workspace/smart-factory/harvested/dashboard.html L1132
+  - ~/workspace/smart-factory/harvested/dashboard.html L207
+  - ~/workspace/smart-factory/harvested/hub.html L408-422
+  - ~/workspace/smart-factory/harvested/hub.html L423-427
+  - ~/workspace/smart-factory/harvested/hub.html L428-435
+  Factory path: ~/workspace/smart-factory/signature-pieces/16-control.html
+  Repo (canonical) path: BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/16-control.html
+  Notes: 
+  ================================================================ -->
+<style>
+/* --- VERBATIM HARVEST (do not restyle; compose only) --- */
+.tog-chip { --sc: #a06bff; padding: 11px 22px; border-radius: 999px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; color: rgba(255,255,255,.5); background: linear-gradient(180deg, #15151b, #09090d); border: 1px solid rgba(255,255,255,.1); box-shadow: inset 0 1px 0 rgba(255,255,255,.08), inset 0 -2px 6px rgba(0,0,0,.45), 0 8px 22px rgba(0,0,0,.5); transition: all .22s var(--ease); }
+
+.tog-chip:hover { color: rgba(255,255,255,.9); transform: translateY(-2px); border-color: rgba(255,255,255,.22); }
+
+.tog-chip.on { color: #fff; border-color: color-mix(in srgb, var(--sc) 65%, transparent); background: linear-gradient(180deg, #1d1528, #0c0812); box-shadow: inset 0 1px 0 rgba(255,255,255,.14), inset 0 -2px 8px rgba(0,0,0,.5), 0 0 24px -4px var(--sc), 0 8px 24px rgba(0,0,0,.55); }
+
+.viewtoggle{display:flex;gap:10px;justify-content:center;margin-bottom:20px}
+
+/* ——— Sidebar toggles: black + elegant plus · white light idle · purple hover · alive ——— */
+.rail-toggle {
+  width: 48px; height: 48px; flex: 0 0 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.3);
+  background: radial-gradient(circle at 35% 30%, #2a2a32, #0a0a0e 70%);
+  color: #fff;
+  cursor: pointer;
+  display: grid; place-items: center;
+  transition: all .25s cubic-bezier(.16,.84,.22,1);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.15),
+    0 0 18px rgba(255,255,255,.12),
+    0 4px 12px rgba(0,0,0,.5);
+}
+
+.rail-toggle svg {
+  width: 26px; height: 26px;
+  transition: transform .25s cubic-bezier(.16,.84,.22,1);
+  filter: drop-shadow(0 0 5px rgba(255,255,255,.5));
+}
+
+.rail-toggle:hover {
+  transform: scale(1.1) rotate(90deg);
+  border-color: rgba(157,117,255,.7);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.2),
+    0 0 28px rgba(157,117,255,.55),
+    0 4px 16px rgba(0,0,0,.5);
+}
+</style>
+
+<!-- SPECIMEN-START -->
+<button class="tog-chip">{{label}}</button>
+<button class="rail-toggle" aria-label="{{label}}">{{glyph}}</button>
+<!-- SPECIMEN-END -->
