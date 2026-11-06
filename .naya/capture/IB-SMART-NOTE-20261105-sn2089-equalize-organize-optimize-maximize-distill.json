@@ -1,0 +1,34 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2089",
+  "title": "Equalize, Organize, Optimize, Maximize, Distill",
+  "slug": "equalize-organize-optimize-maximize-distill",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-equalize-organize-optimize-maximize-distill.md",
+  "tone": "sapphire",
+  "icon": "◆",
+  "created_at": "2026-11-06T01:33:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Smart Notes go into the system all day long — every time something valuable is learned, done, or worth a sister knowing, it goes in; that is the program. And the link travels: mail each other the Smart Link, because unless we are sending each other messages and links and doing the work, the work doesn’t get done — nobody is aware, nobody is learning from each other. Reading the Smart Feed is a habit — but the feed organizes itself for each seat, so nobody reads the whole of everything. Balance in five verbs: equalize, organize, optimize, maximize, distill — and do the most intelligent thing always, in any situation.",
+    "human_view": "Here is how the family stays smart together: whenever anyone learns something or finishes something, they write it down in the shared notebook the same moment — and they send the link to whoever should know. Everybody reads the notebook as a daily habit, but the notebook is organized for each person, so you see your part first instead of drowning in everything. Write it, send it, read yours, boil it down. That’s the rhythm.",
+    "child_view": "When you learn a cool new thing, you write it in the big book right away — not tomorrow, now! And you tell your friends where it is, so they can learn it too. And the big book shows you YOUR pages first, so you don’t have to read the whole giant book every day.",
+    "grandma_view": "Dear, it’s how a good household runs: news gets written down, the note gets passed to whoever needs it, and nobody has to shout across the whole house. Each person’s reading is laid out tidy, just their part. Everything in balance — shared fairly, kept in order, made the most of, and boiled down to what matters.",
+    "ai_view": "The flywheel’s operating discipline, completed: (1) FILE the same pass — valuable intelligence becomes a Smart Note immediately, all day; (2) MAIL THE LINK the same pass — awareness is the load-bearing step, unmailed work is undone work; (3) READ as a habit — against an AUTO-ORGANIZED feed (per-seat organization: lanes/topics first, essences before raw, new-since-last-read marked), never the whole corpus; (4) DISTILL under the ratio. The balance formula — equalize, organize, optimize, maximize, distill — names the flywheel’s rhythm; the standing law above it: the most intelligent thing, always.",
+    "what_it_means": "This closes the loop the Picture opened: the feed was named the habit (SN-2064); this note adds the missing mechanics — the mailed link as the awareness engine, and feed organization as a system obligation rather than a reader’s burden. A seat that files without mailing, or a feed that cannot be read in minutes, are both defects under this note.",
+    "whats_inside": [
+      "Shawn’s direction, verbatim",
+      "Filing as a reflex — all day, same pass",
+      "Mail the Smart Link — awareness is the mechanism",
+      "The auto-organized feed requirement",
+      "The five verbs: equalize, organize, optimize, maximize, distill"
+    ],
+    "topics": [
+      "Doctrine",
+      "Flywheel",
+      "Smart Feed"
+    ]
+  },
+  "page_hash": "81d8745f03278b9de7764639073919513525e87acab2fa70615ff1d1e0d76062",
+  "content_hash": "92eede037e00f66d4a3bf45f669c28bd25397417941edfa1acb5bf37e82e61e5"
+}
