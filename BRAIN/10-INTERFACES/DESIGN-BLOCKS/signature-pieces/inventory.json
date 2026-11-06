@@ -1,0 +1,2118 @@
+{
+  "status": "DRAFT \u2014 the Clarity Confirmation Act is NOT stamped by Shawn; nothing here is law yet.",
+  "act": "~/workspace/team-nitro/clarity-confirmation-act-DRAFT-20261106.md",
+  "act_bytes": 94301,
+  "factory": "~/workspace/smart-factory",
+  "canonical_repo_home": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/ (live on GitHub main, verified 2026-11-06; BRAIN/11-FACTORY holds only the NayaNET Blueprint, not the Factory)",
+  "shared_tokens": {
+    "path": "~/workspace/smart-factory/signature-pieces/00-shared-tokens.html",
+    "hub_root": "L64-142",
+    "dash_root": "L1193-1227"
+  },
+  "conflicts": [
+    {
+      "id": "C-ORB-17 (Act CONFLICTS #17)",
+      "text": "Orb colors ROTATE for Creating/Shares/Comments \u2014 Playbook map (Creating orange #ff9a5a, Shares green #2fe89e, Comments gold #ffbf3d) vs live dashboard code (CREATIONS green #2fe89e, SHARES gold #ffbf3d, COMMENTS orange #ff9a5a). Recorded, NOT resolved \u2014 Shawn\u2019s eye. Touches piece 05."
+    },
+    {
+      "id": "C-NOTES-HEX (parent correction 2026-11-06)",
+      "text": "Notes orb is #3fb8ff in BOTH the Playbook and the live code. The working record\u2019s #3a5bff appears in neither source as the ORB color \u2014 use #3fb8ff. Nuance found by this harvest: #3a5bff DOES appear in harvested/dashboard.html as the notes accent in the notes drill-down (L4470\u20134481, L6104\u20136160, L12881, L12903, L14856) \u2014 a later-build usage, not the orb. Do not use #3a5bff for the orb. Touches piece 05."
+    },
+    {
+      "id": "C-BOARD-RADIUS",
+      "text": "Act \u00a74.2 says board radius 24px (Design Laws Law 3); the Hub ships 26px (hub.html:1176). Unresolved \u2014 Shawn\u2019s eye. Touches piece 02."
+    },
+    {
+      "id": "C-CONTRACT-NAME",
+      "text": "Naya Design Contract V1 EXISTS, but no file says \u201cNIA Design Contract\u201d \u2014 whether V1 IS the document Shawn means is Shawn\u2019s word, not decided here. Touches distribution, not a piece."
+    }
+  ],
+  "pieces": [
+    {
+      "pid": "01",
+      "slug": "button",
+      "name": "Button \u2014 the one button",
+      "act_ref": "Act \u00a74.1",
+      "check": "CHECK: center #050505; white text + icon; border \u22651.5px white at rest; touch \u226544px (principal CTA \u226552px); focus + pressed states present. A flat button fails.",
+      "path": "~/workspace/smart-factory/signature-pieces/01-button.html",
+      "css_rules": 61,
+      "css_lines": 198,
+      "craft": "The most extraordinary button: one DNA, really black, white-rimmed at rest, igniting in its own color \u2014 molded to be the single action a person trusts without reading.",
+      "rollout_group": 1,
+      "rollout_first": "Dashboard",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/01-button.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          520,
+          521
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          523,
+          536
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          538,
+          538
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          540,
+          540
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          542,
+          542
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          544,
+          544
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          546,
+          551
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          553,
+          553
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          555,
+          555
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          557,
+          557
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          559,
+          559
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          561,
+          561
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          563,
+          563
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          565,
+          565
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          567,
+          567
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          569,
+          569
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          571,
+          571
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          572,
+          572
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          573,
+          573
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          589,
+          589
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          591,
+          615
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          617,
+          620
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          622,
+          625
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          627,
+          627
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          629,
+          629
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          631,
+          631
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          634,
+          648
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          650,
+          650
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          653,
+          665
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          667,
+          667
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          669,
+          669
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          671,
+          671
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          673,
+          681
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          683,
+          683
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          685,
+          688
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          690,
+          690
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          693,
+          694
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          696,
+          700
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          702,
+          707
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          709,
+          709
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          711,
+          711
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          713,
+          714
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          716,
+          718
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          720,
+          720
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          722,
+          722
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          724,
+          724
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          726,
+          726
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          728,
+          728
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          731,
+          744
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          746,
+          746
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          752,
+          758
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          760,
+          767
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          769,
+          769
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          771,
+          771
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          773,
+          773
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          775,
+          775
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          777,
+          783
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          784,
+          787
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          789,
+          792
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          793,
+          793
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          795,
+          795
+        ]
+      ],
+      "gaps": [],
+      "notes": "CSS verbatim; specimen is usage of the verbatim class names (dashboard button markup is JS-rendered, so no verbatim static markup exists to copy)."
+    },
+    {
+      "pid": "02",
+      "slug": "board",
+      "name": "Board \u2014 the outer board",
+      "act_ref": "Act \u00a74.2",
+      "check": "CHECK: 5-layer shadow values present; border 1.5px; radius 24px (hub ships 26px \u2014 see note); a board that blends into the field fails.",
+      "path": "~/workspace/smart-factory/signature-pieces/02-board.html",
+      "css_rules": 21,
+      "css_lines": 77,
+      "craft": "The most extraordinary board: one slab per thing, obsidian, tone-spined, jewel-cornered \u2014 molded to hold a whole world at one glance and open it on touch.",
+      "rollout_group": 2,
+      "rollout_first": "Personal",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/02-board.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1172,
+          1186
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1187,
+          1188
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1189,
+          1189
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1190,
+          1190
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1191,
+          1191
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1192,
+          1192
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1193,
+          1193
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1194,
+          1194
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1195,
+          1195
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1196,
+          1196
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1197,
+          1197
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1198,
+          1205
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1206,
+          1209
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1211,
+          1214
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1215,
+          1231
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1232,
+          1235
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1236,
+          1236
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1237,
+          1237
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1238,
+          1243
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1244,
+          1248
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          144,
+          144
+        ]
+      ],
+      "gaps": [],
+      "notes": "NOTE: the Act says radius 24px (Design Laws Law 3); the Hub ships border-radius 26px (hub.html:1176). Reported, not resolved \u2014 Act CONFLICTS territory, Shawn's eye decides."
+    },
+    {
+      "pid": "03",
+      "slug": "intelligent-block",
+      "name": "Intelligent block \u2014 the grand block",
+      "act_ref": "Act \u00a74.3 + \u00a75",
+      "check": "CHECK: each inner layer visibly lifted off the outer board; each lit in its own icon color; nutshell text 20px white; no voice; no flat lighter box. CHECK: his eye on whether it is the grand block.",
+      "path": "~/workspace/smart-factory/signature-pieces/03-intelligent-block.html",
+      "css_rules": 67,
+      "css_lines": 220,
+      "craft": "The most extraordinary block: the grand block, elevation upon elevation, every voice of one intelligence \u2014 molded to tell the truth so anyone understands it.",
+      "rollout_group": 2,
+      "rollout_first": "Personal",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/03-intelligent-block.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1172,
+          1186
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1187,
+          1188
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1189,
+          1189
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1190,
+          1190
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1191,
+          1191
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1192,
+          1192
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1193,
+          1193
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1194,
+          1194
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1195,
+          1195
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1196,
+          1196
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1197,
+          1197
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1198,
+          1205
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1206,
+          1209
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1211,
+          1214
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1215,
+          1231
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1236,
+          1236
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1237,
+          1237
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1238,
+          1243
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1244,
+          1248
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1259,
+          1259
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1267,
+          1268
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1273,
+          1276
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1277,
+          1281
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1284,
+          1298
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1299,
+          1300
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1301,
+          1301
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1302,
+          1302
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1303,
+          1303
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1304,
+          1304
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1368,
+          1372
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1373,
+          1376
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1377,
+          1380
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1413,
+          1415
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1425,
+          1434
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1435,
+          1442
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1596,
+          1602
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1603,
+          1606
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1607,
+          1610
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1703,
+          1703
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1704,
+          1712
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1713,
+          1714
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1715,
+          1715
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1716,
+          1716
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1717,
+          1717
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1718,
+          1718
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1719,
+          1719
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1720,
+          1720
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1721,
+          1721
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1722,
+          1722
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1723,
+          1723
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1724,
+          1724
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1725,
+          1725
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1726,
+          1726
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1728,
+          1732
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1733,
+          1737
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1738,
+          1738
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1739,
+          1742
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1743,
+          1743
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1744,
+          1744
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1745,
+          1745
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1746,
+          1746
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1747,
+          1747
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1748,
+          1748
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1749,
+          1749
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1750,
+          1753
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1754,
+          1755
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          5747,
+          5760
+        ]
+      ],
+      "gaps": [],
+      "notes": "Structure verbatim from the render code (hub.html:5747-5845: el() calls build exactly these classes; layer head is a <button> with aria-expanded; deeper tiers start closed/hidden). Layer jewel colors live in layerColorFor / LAYER_COLORS (JS, hub.html) \u2014 see companion draft \u00a75. The .ib-layer-play voice button exists in code but the law forbids voice on the board \u2014 it is NOT harvested here."
+    },
+    {
+      "pid": "04",
+      "slug": "icon",
+      "name": "Icon \u2014 drawn, not shrunk",
+      "act_ref": "Act \u00a74.4",
+      "check": "CHECK: readable at 16px; a beautiful but inert affordance fails. CHECK: his eye on whether the glyph keeps its promise.",
+      "path": "~/workspace/smart-factory/signature-pieces/04-icon.html",
+      "css_rules": 12,
+      "css_lines": 14,
+      "craft": "The most extraordinary icon: drawn, not shrunk, a faceted jewel readable at 16px \u2014 molded to say what a thing is and promise what it does.",
+      "rollout_group": 2,
+      "rollout_first": "Personal",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/04-icon.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1252,
+          1253
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1254,
+          1254
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1255,
+          1255
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1256,
+          1256
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1257,
+          1258
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          259,
+          259
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          260,
+          260
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          796,
+          796
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          797,
+          797
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          798,
+          798
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          799,
+          799
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          800,
+          800
+        ]
+      ],
+      "gaps": [],
+      "notes": "v10 faceted jewel icon: SVG with .core / .facet / .shade / .edge layers (hub.html:1252-1258)."
+    },
+    {
+      "pid": "05",
+      "slug": "orb",
+      "name": "Orb \u2014 the constellation orb",
+      "act_ref": "Act \u00a74.5",
+      "check": "CHECK: color per category, fixed; hover lift 8px; tap opens the drill-down. Point values locked 2026-11-01.",
+      "path": "~/workspace/smart-factory/signature-pieces/05-orb.html",
+      "css_rules": 14,
+      "css_lines": 39,
+      "craft": "The most extraordinary orb: a glass planet in its own color, orbiting the gauge \u2014 molded to be a number you can touch, a door into its drill-down.",
+      "rollout_group": 1,
+      "rollout_first": "Dashboard",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/05-orb.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          196,
+          196
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          217,
+          217
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          222,
+          222
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          344,
+          345
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          346,
+          346
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          347,
+          347
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          348,
+          348
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1207,
+          1207
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          2605,
+          2619
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          2620,
+          2627
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          2628,
+          2631
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          2632,
+          2632
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          2633,
+          2633
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          2634,
+          2634
+        ]
+      ],
+      "gaps": [],
+      "notes": "Orb colors/points per Act \u00a74.5 (Playbook map; CONFLICTS #17: live dashboard rotates Creating/Shares/Comments \u2014 the Act flags it, Shawn decides). Hub .orb rules harvested from hub.html directly; the earlier parts/frontend/orb-hub.css extract is cross-checked against the same rules."
+    },
+    {
+      "pid": "06",
+      "slug": "gauge",
+      "name": "Gauge \u2014 the instrument",
+      "act_ref": "Act \u00a74.6",
+      "check": "CHECK: numeral angles exact by formula angle = -135 + (value/500)*270; all six numerals present (none skipped); ambient rotation 60\u2013180s, active 18\u201325s, never under 12s; directions alternate; teeth, never solid rings.",
+      "path": "~/workspace/smart-factory/signature-pieces/06-gauge.html",
+      "css_rules": 37,
+      "css_lines": 224,
+      "craft": "The most extraordinary gauge: the Bugatti instrument, numerals by formula, needle sweeping like acceleration \u2014 molded to give your score in 2 seconds.",
+      "rollout_group": 1,
+      "rollout_first": "Dashboard",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/06-gauge.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2428,
+          2441
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2446,
+          2469
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2472,
+          2488
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2489,
+          2499
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2501,
+          2508
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2512,
+          2512
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2513,
+          2513
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2514,
+          2514
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2515,
+          2515
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2522,
+          2533
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2536,
+          2547
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2556,
+          2562
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2569,
+          2571
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2641,
+          2648
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2649,
+          2649
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2660,
+          2660
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2661,
+          2662
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2666,
+          2672
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2675,
+          2678
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2683,
+          2683
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2687,
+          2693
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2702,
+          2705
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2710,
+          2712
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2713,
+          2722
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2723,
+          2728
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2729,
+          2736
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2737,
+          2744
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2747,
+          2752
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2753,
+          2757
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2758,
+          2758
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2760,
+          2768
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2769,
+          2769
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2823,
+          2829
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2830,
+          2838
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2839,
+          2840
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2849,
+          2849
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2850,
+          2850
+        ]
+      ],
+      "gaps": [],
+      "notes": "The gauge markup is JS-rendered (dashboard.html:20153-20311 builds .tn-tacho > .tn-tacho-dialwrap > svg.tn-tacho-dial); the specimen above copies that structure verbatim, content filled at build time. Full CSS is the tn-tacho block harvested here."
+    },
+    {
+      "pid": "07",
+      "slug": "smart-app",
+      "name": "Smart app \u2014 the one app",
+      "act_ref": "Act \u00a74.7",
+      "check": "CHECK: no second dashboard, no second mail, no second notes system \u2014 a duplicate is a fail.",
+      "path": "~/workspace/smart-factory/signature-pieces/07-smart-app.html",
+      "css_rules": 0,
+      "css_lines": 0,
+      "craft": "The most extraordinary app: one app, many doors, the same dashboard behind every door \u2014 molded so you never leave the machine, you only open more of it.",
+      "rollout_group": 3,
+      "rollout_first": "Shared",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/07-smart-app.html",
+      "sources": [
+        [
+          "~/workspace/team-nitro/NAYA-PROTOCOL.md",
+          134,
+          134
+        ]
+      ],
+      "gaps": [],
+      "notes": "ARCHITECTURAL PIECE \u2014 no separate CSS exists to harvest: the one app IS the shared shell behind every door. Its code is templates/*.html (Personal, Business, Space, Membership, Dashboard, Hub) + harvested/hub.html. Doors: Personal, Business, Space, Membership (Smart Access), Dashboard, Hub."
+    },
+    {
+      "pid": "08",
+      "slug": "page",
+      "name": "Page \u2014 a door",
+      "act_ref": "Act \u00a74.8",
+      "check": "CHECK: one page at a time to finished; his eye verifies each before the next begins.",
+      "path": "~/workspace/smart-factory/signature-pieces/08-page.html",
+      "css_rules": 0,
+      "css_lines": 0,
+      "craft": "The most extraordinary page: one door, one viewpoint, one purpose \u2014 molded to be a whole world with the standard kit inside.",
+      "rollout_group": 3,
+      "rollout_first": "Shared",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/08-page.html",
+      "sources": [
+        [
+          "~/workspace/team-nitro/clarity-confirmation-act-DRAFT-20261106.md",
+          385,
+          385
+        ]
+      ],
+      "gaps": [],
+      "notes": "ARCHITECTURAL PIECE \u2014 the code is the template itself. Standard kit on every page (Act \u00a74.8): Smart Mail + Instant Messenger, Smart Lists, Scheduler/Booker, About, products/services."
+    },
+    {
+      "pid": "09",
+      "slug": "section",
+      "name": "Section \u2014 a themed zone",
+      "act_ref": "Act \u00a74.9",
+      "check": "CHECK: adjacent zones read as distinct (spectral order, never clumped).",
+      "path": "~/workspace/smart-factory/signature-pieces/09-section.html",
+      "css_rules": 9,
+      "css_lines": 9,
+      "craft": "The most extraordinary section: one themed zone, one color, distinct from its neighbors \u2014 molded to be a room inside the world.",
+      "rollout_group": 3,
+      "rollout_first": "Shared",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/09-section.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1772,
+          1772
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1773,
+          1773
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1774,
+          1774
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1775,
+          1775
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1776,
+          1776
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          2473,
+          2473
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          2474,
+          2474
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          2475,
+          2475
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          2476,
+          2476
+        ]
+      ],
+      "gaps": [],
+      "notes": "NOTE: the precise boundary between section, page, and board is not defined in the sources (Act GAP #16) \u2014 reported, not invented."
+    },
+    {
+      "pid": "10",
+      "slug": "jewel",
+      "name": "Jewel \u2014 bullets are diamonds",
+      "act_ref": "Act \u00a74.10",
+      "check": "CHECK: bullets are rotated squares, not dots; no color twice in a row.",
+      "path": "~/workspace/smart-factory/signature-pieces/10-jewel.html",
+      "css_rules": 5,
+      "css_lines": 42,
+      "craft": "The most extraordinary jewel: bullets are diamonds, a cut stone that separates ideas \u2014 molded to be the color made physical, glowing even at rest.",
+      "rollout_group": 2,
+      "rollout_first": "Personal",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/10-jewel.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          460,
+          478
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          259,
+          259
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          260,
+          260
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1215,
+          1231
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1232,
+          1235
+        ]
+      ],
+      "gaps": [],
+      "notes": "Five-jewel cycle in law order (hub.html:1300-1302: nth-child(5n+1..3) hot pink #ed42c4, purple #8a5cff, blue #3ca8ff \u2014 the diamond-bullet rule itself lives in piece 03 (hub.html:1273-1310, .ib-layer-body ul li::before: rotated square, own-color glow). Faceted-gem geometry: .v10-icon (piece 04)."
+    },
+    {
+      "pid": "11",
+      "slug": "chart",
+      "name": "Chart \u2014 the data display",
+      "act_ref": "Act \u00a74.11",
+      "check": "CHECK: same materials and light as the gauge; 2-second test passed.",
+      "path": "~/workspace/smart-factory/signature-pieces/11-chart.html",
+      "css_rules": 17,
+      "css_lines": 21,
+      "craft": "The most extraordinary chart: the gauge\u2019s other face, same materials, same light, same motion \u2014 molded to show the numbers so you understand your world in 2 seconds.",
+      "rollout_group": 1,
+      "rollout_first": "Dashboard",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/11-chart.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          368,
+          369
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          370,
+          370
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          371,
+          371
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          372,
+          372
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          373,
+          373
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          374,
+          374
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          375,
+          375
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          376,
+          376
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          377,
+          377
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          378,
+          378
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          379,
+          379
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          380,
+          380
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          381,
+          381
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          382,
+          382
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          383,
+          383
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          384,
+          384
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2322,
+          2325
+        ]
+      ],
+      "gaps": [],
+      "notes": ""
+    },
+    {
+      "pid": "12",
+      "slug": "tab-pill",
+      "name": "Tab / pill \u2014 the quiet element",
+      "act_ref": "Act \u00a74.12",
+      "check": "CHECK: glows on hover. An element that does nothing on hover fails.",
+      "path": "~/workspace/smart-factory/signature-pieces/12-tab-pill.html",
+      "css_rules": 33,
+      "css_lines": 108,
+      "craft": "The most extraordinary tab: the quiet element, dark at rest, glowing on hover without lifting \u2014 molded to switch a view without shouting.",
+      "rollout_group": 1,
+      "rollout_first": "Dashboard",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/12-tab-pill.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          53,
+          65
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          66,
+          66
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          67,
+          71
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          72,
+          82
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          83,
+          91
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          92,
+          95
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          96,
+          100
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          101,
+          107
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          108,
+          108
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          109,
+          109
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          110,
+          117
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          118,
+          118
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          119,
+          119
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          120,
+          120
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          121,
+          121
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          122,
+          123
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          124,
+          124
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          125,
+          125
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          126,
+          126
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          127,
+          131
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          132,
+          132
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          133,
+          133
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          134,
+          141
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1128,
+          1128
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1130,
+          1130
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1132,
+          1132
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1134,
+          1135
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1137,
+          1141
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1143,
+          1144
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1146,
+          1146
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1148,
+          1151
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1153,
+          1153
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1155,
+          1155
+        ]
+      ],
+      "gaps": [],
+      "notes": ""
+    },
+    {
+      "pid": "13",
+      "slug": "smart-link",
+      "name": "Smart Link \u2014 the attested link",
+      "act_ref": "Act \u00a74.13",
+      "check": "CHECK: a Smart Link carries its receipt (claim, verification, count).",
+      "path": "~/workspace/smart-factory/signature-pieces/13-smart-link.html",
+      "css_rules": 7,
+      "css_lines": 7,
+      "craft": "The most extraordinary link: a door with a receipt \u2014 SEE, VERIFY, confirm \u2014 molded to carry its claim, its verification, and its count.",
+      "rollout_group": 1,
+      "rollout_first": "Dashboard",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/13-smart-link.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1484,
+          1484
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1485,
+          1485
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1486,
+          1486
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1487,
+          1487
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2243,
+          2243
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2244,
+          2244
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2245,
+          2245
+        ]
+      ],
+      "gaps": [],
+      "notes": "NOTE: its visual spec is not in the canon docs (Act GAP #17) \u2014 this harvest is the live dashboard rule only; the receipt (claim/verification/count) is a data requirement, not a style."
+    },
+    {
+      "pid": "14",
+      "slug": "header",
+      "name": "Header \u2014 the warm front door",
+      "act_ref": "Act \u00a74.14",
+      "check": "CHECK: one clear line; full width.",
+      "path": "~/workspace/smart-factory/signature-pieces/14-header.html",
+      "css_rules": 6,
+      "css_lines": 34,
+      "craft": "The most extraordinary header: the warm front door, logo + living mark + warm voice + one clear line, full width \u2014 molded to welcome in one line.",
+      "rollout_group": 2,
+      "rollout_first": "Personal",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/14-header.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          195,
+          195
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          196,
+          196
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          198,
+          198
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          199,
+          199
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          480,
+          480
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          6857,
+          6885
+        ]
+      ],
+      "gaps": [],
+      "notes": "Hub hero CSS lives inside a JS template literal (hub.html:6853-6886, st.textContent) \u2014 harvested verbatim as CSS text (lines 6857-6885; the literal closes on 6886); the .sh-hero markup is JS-rendered (hub.html:6795-6823)."
+    },
+    {
+      "pid": "15",
+      "slug": "overlay",
+      "name": "Overlay \u2014 the top layer",
+      "act_ref": "Act \u00a74.15",
+      "check": "CHECK: rides visibly above the control it serves; folds away when dismissed.",
+      "path": "~/workspace/smart-factory/signature-pieces/15-overlay.html",
+      "css_rules": 10,
+      "css_lines": 17,
+      "craft": "The most extraordinary overlay: the top layer, a glass sheet riding above the board \u2014 molded to show the detail and fold away.",
+      "rollout_group": 3,
+      "rollout_first": "Shared",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/15-overlay.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1478,
+          1479
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1480,
+          1480
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1481,
+          1481
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1501,
+          1502
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1503,
+          1503
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1504,
+          1504
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1505,
+          1505
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          2557,
+          2562
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          2563,
+          2563
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          2573,
+          2573
+        ]
+      ],
+      "gaps": [],
+      "notes": ""
+    },
+    {
+      "pid": "16",
+      "slug": "control",
+      "name": "Control \u2014 the working element",
+      "act_ref": "Act \u00a74.16",
+      "check": "CHECK: responds physically on touch; its state is visible.",
+      "path": "~/workspace/smart-factory/signature-pieces/16-control.html",
+      "css_rules": 7,
+      "css_lines": 32,
+      "craft": "The most extraordinary control: the working element, a switch you can operate, its state visible \u2014 molded to take a person\u2019s choice and show it.",
+      "rollout_group": 1,
+      "rollout_first": "Dashboard",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/16-control.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1128,
+          1128
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1130,
+          1130
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          1132,
+          1132
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          207,
+          207
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          408,
+          422
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          423,
+          427
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          428,
+          435
+        ]
+      ],
+      "gaps": [],
+      "notes": ""
+    },
+    {
+      "pid": "17",
+      "slug": "input-well",
+      "name": "Input \u2014 the well",
+      "act_ref": "Act \u00a74.17",
+      "check": "CHECK: validation speaks plainly; nothing is saved when it shouldn't be; the well is recessed (inset shadow), not raised.",
+      "path": "~/workspace/smart-factory/signature-pieces/17-input-well.html",
+      "css_rules": 6,
+      "css_lines": 12,
+      "craft": "The most extraordinary input: the well, a dark recessed channel you press INTO \u2014 molded to receive a person\u2019s words and answer plainly.",
+      "rollout_group": 2,
+      "rollout_first": "Personal",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/17-input-well.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1842,
+          1842
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1843,
+          1849
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1850,
+          1850
+        ],
+        [
+          "~/workspace/smart-factory/harvested/hub.html",
+          1851,
+          1851
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          3621,
+          3621
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          3622,
+          3622
+        ]
+      ],
+      "gaps": [],
+      "notes": "Hub Ask Naya well: hub.html:4584 renders <input type=\"search\" id=\"chassisSearch\" placeholder=\"Search your intelligence\u2026\">; its well styling is the .activity-search rule harvested here. Search lives BELOW the bar, never inside it (Act \u00a74.17)."
+    },
+    {
+      "pid": "18",
+      "slug": "gauge-case",
+      "name": "Case \u2014 the gauge body",
+      "act_ref": "Act \u00a74.18",
+      "check": "CHECK: part of the gauge; the case is the housing everything else sits in. (Gauge CHECK \u00a74.6 applies to the whole instrument.)",
+      "path": "~/workspace/smart-factory/signature-pieces/18-gauge-case.html",
+      "css_rules": 2,
+      "css_lines": 25,
+      "craft": "The most extraordinary case: the housing everything sits in, obsidian, the body of the instrument \u2014 molded to hold the machine together.",
+      "rollout_group": 1,
+      "rollout_first": "Dashboard",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/18-gauge-case.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2428,
+          2441
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2489,
+          2499
+        ]
+      ],
+      "gaps": [],
+      "notes": "Sub-extract of the gauge (piece 06). Case = .tn-tacho housing + .tn-tacho-dialwrap."
+    },
+    {
+      "pid": "19",
+      "slug": "gauge-bezel",
+      "name": "Bezel \u2014 the machined edge",
+      "act_ref": "Act \u00a74.19",
+      "check": "CHECK: the bezel frames the center; finish the outside. (Gauge CHECK \u00a74.6 applies.)",
+      "path": "~/workspace/smart-factory/signature-pieces/19-gauge-bezel.html",
+      "css_rules": 2,
+      "css_lines": 3,
+      "craft": "The most extraordinary bezel: machined aluminum, the edge the eye hits first \u2014 molded to frame the center.",
+      "rollout_group": 1,
+      "rollout_first": "Dashboard",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/19-gauge-bezel.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2660,
+          2660
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2661,
+          2662
+        ]
+      ],
+      "gaps": [],
+      "notes": "Brushed metal, machined aluminum (dashboard.html:2470 comment, Shawn 2026-11-01). .tn-bezel is a faceted SVG group; screws are .tn-bezel-screw."
+    },
+    {
+      "pid": "20",
+      "slug": "gauge-dial",
+      "name": "Dial \u2014 the face",
+      "act_ref": "Act \u00a74.20",
+      "check": "CHECK: numerals engraved on the aluminum ring, not floating; shadow offset (0.8px, 0.8px). (Gauge CHECK \u00a74.6 applies.)",
+      "path": "~/workspace/smart-factory/signature-pieces/20-gauge-dial.html",
+      "css_rules": 2,
+      "css_lines": 23,
+      "craft": "The most extraordinary dial: the face, numerals engraved on aluminum, never floating \u2014 molded to be read at a glance.",
+      "rollout_group": 1,
+      "rollout_first": "Dashboard",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/20-gauge-dial.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2501,
+          2508
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2639,
+          2653
+        ]
+      ],
+      "gaps": [],
+      "notes": "Black obsidian dial (dashboard.html:2443 comment). Numerals: Bugatti-style, etched on the metal (dashboard.html:2639 comment + rules in range)."
+    },
+    {
+      "pid": "21",
+      "slug": "gauge-crystal",
+      "name": "Crystal \u2014 the glass",
+      "act_ref": "Act \u00a74.21",
+      "check": "CHECK: light catching the glass as the machine settles. (Gauge CHECK \u00a74.6 applies.)",
+      "path": "~/workspace/smart-factory/signature-pieces/21-gauge-crystal.html",
+      "css_rules": 1,
+      "css_lines": 10,
+      "craft": "The most extraordinary crystal: real glass over the dial, light catching it as the machine settles \u2014 molded to prove it is glass, not a picture.",
+      "rollout_group": 1,
+      "rollout_first": "Dashboard",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/21-gauge-crystal.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2490,
+          2499
+        ]
+      ],
+      "gaps": [],
+      "notes": "Real glass with a visible reflection arc across the top (dashboard.html:2491 comment)."
+    },
+    {
+      "pid": "22",
+      "slug": "gauge-needle",
+      "name": "Needle \u2014 the value",
+      "act_ref": "Act \u00a74.22",
+      "check": "CHECK: sweeps like acceleration; the number made physical. (Gauge CHECK \u00a74.6 applies.)",
+      "path": "~/workspace/smart-factory/signature-pieces/22-gauge-needle.html",
+      "css_rules": 2,
+      "css_lines": 22,
+      "craft": "The most extraordinary needle: the value made physical, sweeping like acceleration, casting its shadow \u2014 molded to be the number you feel.",
+      "rollout_group": 1,
+      "rollout_first": "Dashboard",
+      "repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/22-gauge-needle.html",
+      "sources": [
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2556,
+          2562
+        ],
+        [
+          "~/workspace/smart-factory/harvested/dashboard.html",
+          2621,
+          2635
+        ]
+      ],
+      "gaps": [],
+      "notes": "Frame-driven for sync, sweeps like acceleration; casts a shadow \u2014 a physical object above the dial (dashboard.html:2553-2562)."
+    }
+  ],
+  "templates": [
+    {
+      "name": "personal",
+      "path": "~/workspace/smart-factory/templates/personal.html",
+      "source": "assembled 2026-11-03 by assemble-templates.py / extract-components.py from harvested/hub.html + harvested/dashboard.html (verbatim style blocks, placeholders for text)",
+      "source_sha256": "a551b5c918feb066f3e585d728e1e323fe98f71e07f66b3eb62d3b5ad3667278",
+      "bytes": 220478,
+      "head": "<title>{{name}} \u2014 NayaNET</title>"
+    },
+    {
+      "name": "business",
+      "path": "~/workspace/smart-factory/templates/business.html",
+      "source": "assembled 2026-11-03 by assemble-templates.py / extract-components.py from harvested/hub.html + harvested/dashboard.html (verbatim style blocks, placeholders for text)",
+      "source_sha256": "bde684d97a665cd2eebc81450ae3f8b0bdb9534619951fc9946fc957b270de04",
+      "bytes": 517399,
+      "head": "<title>{{name}} \u2014 NayaNET</title>"
+    },
+    {
+      "name": "space",
+      "path": "~/workspace/smart-factory/templates/space.html",
+      "source": "assembled 2026-11-03 by assemble-templates.py / extract-components.py from harvested/hub.html + harvested/dashboard.html (verbatim style blocks, placeholders for text)",
+      "source_sha256": "34f6812c22136274e5bcfece7b6b36c2bd1a31463d5d91ed3b7a3efdd12645f0",
+      "bytes": 217227,
+      "head": "<title>{{name}} \u2014 NayaNET</title>"
+    },
+    {
+      "name": "membership",
+      "path": "~/workspace/smart-factory/templates/membership.html",
+      "source": "assembled 2026-11-03 by assemble-templates.py / extract-components.py from harvested/hub.html + harvested/dashboard.html (verbatim style blocks, placeholders for text)",
+      "source_sha256": "4a6b49e18e77524c06ad51749f3d403802405cab8d3c92caa6ca240198b8bc80",
+      "bytes": 217408,
+      "head": "<title>{{name}} \u2014 NayaNET</title>"
+    },
+    {
+      "name": "dashboard",
+      "path": "~/workspace/smart-factory/templates/dashboard.html",
+      "source": "~/workspace/smart-factory/harvested/dashboard.html",
+      "source_sha256": "f5dc7ee7eef8c112466c420030f92d5f19769c0401ea7f4e58f9e72ad27711d2",
+      "bytes": 1401908,
+      "fill_slots": [
+        "hero headline + score",
+        "gauge score + band",
+        "constellation orb values (9 orbs)",
+        "feed / stats / charts"
+      ]
+    },
+    {
+      "name": "hub",
+      "path": "~/workspace/smart-factory/templates/hub.html",
+      "source": "~/workspace/smart-factory/harvested/hub.html",
+      "source_sha256": "1cc8fc1e172fc3361d16950b98417a354d0ff7aa16225f1badfe567bb6b13dc7",
+      "bytes": 5733864,
+      "fill_slots": [
+        "hero kicker + title + quote",
+        "feed items (Smart Notes)",
+        "sidebar doors + tabs",
+        "search well placeholder"
+      ]
+    }
+  ],
+  "fixes": [
+    {
+      "file": "parts/frontend/board-hub.css",
+      "what": "was filler \"board\" text \u00d721 lines; now verbatim .intel-board rules, hub.html L1172-1211"
+    },
+    {
+      "file": "parts/frontend/hero-hub.css",
+      "what": "was filler \"hero\" text \u00d721 lines; now verbatim .sh-hero CSS, hub.html L6857-6885"
+    },
+    {
+      "file": "parts/frontend/orb-dash.css",
+      "what": "was CSS + leaked demo HTML/<style> fragment; now pure verbatim .orbital rules, dashboard.html L345-349"
+    }
+  ],
+  "gaps": []
+}
