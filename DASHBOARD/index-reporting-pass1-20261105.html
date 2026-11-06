@@ -15404,16 +15404,20 @@ function isDrilling(viewKey){
 }
 
 function renderDrillView(viewKey){
-  // Re-render the view (each view's render function checks drill state)
-  var fn = window[viewKey+'ViewRender'];
-  // Map aliases
-  var renderMap = {sales:'salesViewRender', joins:'joinsViewRender', notes:'notesViewRender',
-    invites:'invitesViewRender', creations:'creationsViewRender', shares:'sharesViewRender',
-    comments:'commentsViewRender', likes:'likesViewRender', saves:'savesViewRender',
-    smartlink:'smartlinkViewRender', invs:'invitesViewRender', posts:'creationsViewRender'};
-  var rfn = renderMap[viewKey] || window[viewKey+'ViewRender'];
+  /* 2026-11-06 — FIX F3: the old path resolved the render function through
+     a global-object lookup plus a map of name strings. Neither can ever
+     work: the render functions live in this script's IIFE scope, not on the
+     global object, so the lookup was always undefined — and a string is
+     never a function. The drill-into-stat click and the drill back button
+     therefore silently no-opped (the state changed, the view never
+     repainted). Same class as the fix-6 gauge and fix-7 close bugs, fixed
+     the same way: an in-scope map of REAL function references. Each view's
+     own render checks drill state first, so calling it repaints the
+     breakdown — or restores the normal view on back. Aliases invs/posts
+     included, as in the switch-chart map. */
+  var _renderMap = {sales:salesViewRender, joins:joinsViewRender, notes:notesViewRender, invites:invitesViewRender, creations:creationsViewRender, shares:sharesViewRender, comments:commentsViewRender, likes:likesViewRender, saves:savesViewRender, smartlink:smartlinkViewRender, invs:invitesViewRender, posts:creationsViewRender};
+  var rfn = _renderMap[viewKey];
   if(typeof rfn==='function') rfn();
-  else if(typeof fn==='function') fn();
 }
 /* ═══ DRILL WIRING 2026-11-02 — wire sub-orb clicks and back buttons ═══ */
 (function(){
