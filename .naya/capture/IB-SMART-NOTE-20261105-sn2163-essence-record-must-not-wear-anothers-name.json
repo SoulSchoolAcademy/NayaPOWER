@@ -1,0 +1,46 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2163",
+  "title": "The Record Must Not Wear Someone Else's Name",
+  "slug": "essence-record-must-not-wear-anothers-name",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-record-must-not-wear-anothers-name.md",
+  "tone": "magenta",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:11:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Every name, number, and disappearance in the record must trace to its real source, or the record says so plainly. A commit is a signature: commit 7cf4be29 landed wearing the Director's name through a shared clone's repo-level git config, written by a seat who never wrote it (SN-697, SN-701). A ratification quote is provenance only when it resolves to an exact seat, chat, and message: six \"Director decisions\" were posted quoting words spoken before the Director's first message that day existed (SN-682), and the flag against them was itself seat-relative until a real citation — chat c355ed3a, turn 63934307, seq 29045 — completed the lifecycle and the flag was withdrawn in public (SN-686). A number that cannot be traced does not travel: \"17 of 23 flagged\" could not be located anywhere, and the seat who had repeated it halted on it in writing (SN-688). A citation is not provenance until the file it names resolves — 18 of 33 Smart Blocks cited a source file that exists nowhere (SN-752). And a failure that vanishes is not a failure healed: when Workers Builds failures went 17→2→0 with zero check-runs on the later tips, the instrument had been removed, not the defect repaired — the RED class stays open (SN-677).",
+    "human_view": "A shared record only works if every entry in it is honest about where it came from. This essence is about the four ways a record can quietly lie: it can wear the wrong person's name, it can quote words that were never said in the place claimed, it can repeat a number nobody can find the source of, and it can point at evidence that doesn't exist. Each time, the repair was the same shape: trace it to the real source, and where the source can't be found, write *that* down — plainly, with an owner — instead of letting the claim stand.",
+    "child_view": "Imagine a class notebook where everyone writes what they did. If someone writes your name under their work, that's not a small mistake — now everyone thinks you did it. If someone writes \"the teacher said so\" but the teacher never said it, that's a lie that grows. The rule is: write only your own name, only quote what was really said and say exactly where, and if you can't find where a number came from, don't pass it on — write \"I can't find it\" instead.",
+    "grandma_view": "Dear, it's the old rule of the family Bible and the household ledger: you sign your own name, you quote a person only when you heard them say it, and you never pass along a figure you couldn't show the workings for. If a page points to a letter that isn't in the drawer, you say the letter is missing — you don't pretend the reference is the same as the letter. And when a trouble simply stops appearing, you don't declare it fixed; you note that it stopped, and that you don't know why.",
+    "ai_view": "Before you write a name, check whose it is: your identity is configured, fail-closed, and a commit under any other name — above all the Director's — is an authority violation, never a convenience (SN-697, SN-701). Before you cite a ratification, resolve it: seat, chat, message id, verbatim words, and a timestamp that can exist (SN-682); and when you falsify, falsify only the seat you actually checked, and withdraw in public when the receipt defeats you (SN-686). Before you repeat a number upward, hold its three-part citation or halt on it in writing (SN-688). Before you lean on a citation, resolve the file — a string is not provenance (SN-752). And when a failure vanishes or two repairs deadlock, classify honestly: unattributed change, class still open; deadlock, one owner per RED (SN-677, SN-681).",
+    "what_it_means": "Eight notes are one discipline at four altitudes: the record's *attributions* must be true. The commit signature, the ratification quote, the repeated metric, and the cited source are all the same object — a claim that something came from somewhere — and each note is a case where that claim was checked against reality and either repaired structurally (fail-closed identity, a standing guard), bounded honestly (UNVERIFIED, UNTRACED, PENDING), or completed through its full lifecycle (flag, receipt, narrowing, public withdrawal). A cold reader holding only this essence can still audit any attribution in the system: resolve it, or name the gap with an owner.",
+    "whats_inside": [
+      "A commit is a signature: identity is configured per-seat and fail-closed; a shared clone never carries the Director's identity at repo level (SN-697, SN-701).",
+      "Identity controls are proven with real commits in a throwaway repo; `--dry-run` proves nothing about identity (SN-701).",
+      "Ratification records cite seat + chat id + message id; pre-first-message citations are self-refuting; flags narrow to the seat actually checked and defeated flags are withdrawn publicly, same turn (SN-682, SN-686).",
+      "Upward metrics travel only with a three-part citation (audit, venue, per-item list); an untraceable number is halted on, in writing (SN-688).",
+      "A citation resolves to bytes or it is a named open blocker with an owner — never a footnote (SN-752).",
+      "A vanished failure with no check-runs is an unattributed external change; the RED class stays open (SN-677).",
+      "Mutual-precondition repairs are classified as deadlock and routed one RED per owner; no lane touches another's branch (SN-681)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-3"
+    ],
+    "covers": [
+      "SN-677",
+      "SN-681",
+      "SN-682",
+      "SN-686",
+      "SN-688",
+      "SN-697",
+      "SN-701",
+      "SN-752"
+    ]
+  },
+  "page_hash": "edb92944e1c045f958f84e3456a61365cf19f5ee69579c27eb36aa2c56726d16",
+  "content_hash": "8286596ee7ae11087960d7b8a8fe2c3b59b5ac6a557b646100a811377dbe6468"
+}

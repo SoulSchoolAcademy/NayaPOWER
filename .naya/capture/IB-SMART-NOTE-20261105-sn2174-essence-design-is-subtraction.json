@@ -1,0 +1,53 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2174",
+  "title": "Design Is Subtraction: The Thing Itself, Built From His Code",
+  "slug": "essence-design-is-subtraction",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-design-is-subtraction.md",
+  "tone": "gold",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:11:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Elite design in this system is subtraction performed on the Director's own material. Deliverables are assembled FROM his verbatim harvested code — real logo SVG, brand header, full tokens, button CSS — never styled \"inspired by\" (SN-721). The actual code is extracted line by line and studied in writing before building, because memory is a lossy compressor and the file is the master (SN-735). \"10x better\" means better human experience, not more effects: on the hero-buttons pass the shockwave and comets were REMOVED and the material deepened instead (SN-733) — and when the Director's older version proved better, the rebuild was reverted to his bytes without ego, keeping only the real improvements (SN-734). Claims stay quiet: a claim is the unmarked default, and only the independently verified item earns a green glow (SN-722). One broken stylesheet link turned the black-ground library white, so the tokens are inlined into every page — the ground is structural, not contingent (SN-738). Novelty is scored on its own axis, with invented forms named, mechanized, verified, and honestly labeled (SN-754). \"Gaudy\" was answered with a numbered restraint surgery, not adjectives (SN-759). A specimen that \"looks like a PDF\" gets rebuilt from zero as an instrument, not revised (SN-760). Combination means fusion — keep every 9 and 9.5 — not selection (SN-767). And the useful thing is never a dashboard of the work; build the real thing (SN-768).",
+    "human_view": "Taste, in this system, is not a mystery — it's a set of decisions the Director has already made, embodied in code he already loves. The craft is fidelity to that material plus restraint in everything added to it: take his actual components apart to learn how they work, put them back together exactly, and when you reach for something new, reach for less — fewer effects, quieter colors, thinner glows — until what's left feels inevitable. When you're wrong, the correction is also material: his older version goes back in, byte for byte, and the clever replacement is deleted without a defense. And the thing you hand him must be the thing itself — an instrument he can touch — not a document describing the thing, and never a dashboard about the work instead of the work.",
+    "child_view": "Imagine your big brother built the best paper airplane ever, and you want to make one too. You don't draw a plane that *looks like* his from memory — you unfold his, look at every fold, write down the folds in order, and fold yours the same way. If you add glitter and stickers and it flies worse, you take them off — more stuff isn't better flying. And if his old plane still flies better than your new one, you fly his and say so. When you show the teacher, you bring the plane, not an essay about the plane.",
+    "grandma_view": "Dear, it's the old craft rule: learn from the master's actual stitches, not from a description of them. You unpick the seam carefully, you note every turn of the thread, and your hands learn what your eyes alone couldn't teach. Fancy work is usually too much work — the elegant shawl is the one where everything unnecessary was left in the basket. If the plain version your teacher made years ago wears better than your ornate new one, you wear hers and you're grateful, not embarrassed. And you bring the finished garment to be judged, not a letter about the garment.",
+    "ai_view": "Harvest verbatim, namespace the harvest, and pass the recognition test (SN-721). Extract before you build; write the study in the branch; name every layer or admit you rebuilt from memory (SN-735). Define the 10x as experience, remove before you add, and keep your self-scorecard honest below your calculator's enthusiasm (SN-733). Hash his references against history and revert without ego when his bytes win (SN-734). Keep claims unmarked until another seat's verification earns the glow (SN-722). Inline the tokens; make the ground structural (SN-738). Name and mechanize every invented form, verify it structurally, label synthetic data, and score novelty separately (SN-754). Demand a restraint budget in every brief — including your own — and let his eye compile what audits can't (SN-759). Run the PDF test before anything reaches him; rebuild failed forms from zero (SN-760). Fuse combinations; never eliminate by scorecard (SN-767). Drop rejected pivots whole; build the product, not its dashboard (SN-768).",
+    "what_it_means": "Eleven notes are one aesthetic law: **the material is the master's, the edit is subtraction, and the judge is his eye.** Harvest and extraction (SN-721, SN-735) fix the *inputs* — real code, really understood. The 10x definition, restraint surgery, and quiet claims (SN-733, SN-759, SN-722) fix the *operation* — remove, mute, thin, until only the earned elements remain. Reversion and fusion (SN-734, SN-767) fix the *ego* — the work keeps what is best regardless of whose it is or when it was made. Structural tokens (SN-738) fix the *ground* so the identity survives careless viewers. The PDF test and the mission-control rejection (SN-760, SN-768) fix the *deliverable* — an instrument, the thing itself. And novelty's own axis (SN-754) keeps invention honest inside all of it: new forms are welcome, named, mechanized, labeled — and still subject to subtraction. A cold reader holding only this essence can still produce work this Director would recognize as his system's: from his code, under his restraint, for his eye.",
+    "whats_inside": [
+      "Deliverables are assembled from verbatim harvested canonical components; \"inspired by\" fails the recognition test (SN-721).",
+      "Elite code is extracted line by line and studied in-branch before application; a build that cannot name its layers was built from memory (SN-735).",
+      "10x is defined in human experience; removal precedes addition; calculator scores are hypotheses, the Director's eye is ground truth (SN-733).",
+      "A Director-supplied reference is hashed against history; the better older version is restored verbatim, improvements kept, replacements deleted (SN-734).",
+      "Claims render unmarked by default; only independently verified items glow (SN-722).",
+      "Design tokens are inlined so the ground cannot depend on a link resolving (SN-738).",
+      "Invented forms are named, mechanized, structurally verified, synthetically labeled, and scored on a separate novelty axis (SN-754).",
+      "Awe is briefed as a restraint budget with numbers; taste verdicts are compiled by the Director's eye alone (SN-759).",
+      "Specimens are instruments; a \"looks like a PDF\" verdict triggers rebuild-from-zero, not revision (SN-760).",
+      "Combinations fuse (keep every 9/9.5, versions may coexist); scorecards identify keeps, not eliminations (SN-767).",
+      "Rejected pivots are dropped, not refined; dashboards of the work are never the work (SN-768)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-3"
+    ],
+    "covers": [
+      "SN-721",
+      "SN-722",
+      "SN-733",
+      "SN-734",
+      "SN-735",
+      "SN-738",
+      "SN-754",
+      "SN-759",
+      "SN-760",
+      "SN-767",
+      "SN-768"
+    ]
+  },
+  "page_hash": "d63ecabcdbe2d4d1d35a53cc5ca898c1b0a3102d05598b341c2a7d9230196b48",
+  "content_hash": "c1d4038643b5d0600271c447bff062d40f508681bb5aae08983988169c9494d4"
+}
