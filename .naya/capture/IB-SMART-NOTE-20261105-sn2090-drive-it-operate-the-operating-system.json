@@ -1,0 +1,34 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2090",
+  "title": "Drive It — The Operating System Is Operated, Not Admired",
+  "slug": "drive-it-operate-the-operating-system",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-drive-it-operate-the-operating-system.md",
+  "tone": "gold",
+  "icon": "◆",
+  "created_at": "2026-11-06T01:37:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "The whole system is linked — Project Intelligence, the Smart Factory, the actual building, Smart Mail, Smart Lists — one place where we see what’s going on, organize everything, and use the tools we make. That’s the empowerment: we experience the tools live, test them from the front end and the back end, log in and use them — because we are building our own operating system to operate, and the only way to be able to operate it is by operating it. It is not there to look at. You don’t create a Bugatti to let it sit in the driveway. You drive it.",
+    "human_view": "All the pieces connect: the plan, the workshop, the mailbox, the lists — one system, and the people who built it actually live in it. They don’t stand outside admiring it; they drive it every day, and driving it is what makes them good at running it for everyone else. A beautiful car in the driveway helps nobody. This one is on the road.",
+    "child_view": "We built a whole playground — and guess what? We get to PLAY in it! That’s how we learn how everything works: by using it, every day, for real. You don’t build a race car and just look at it. You drive it!",
+    "grandma_view": "Dear, it’s like a house the family built with their own hands — of course they live in it. They cook in the kitchen, they write at the desk, they keep the lists on the fridge. Living in it is how they know what creaks and what sings. Nothing precious is kept under glass.",
+    "ai_view": "Two obligations. (1) LINKAGE: PI, Factory, build output, Smart Mail and Smart Lists are one system — every new tool ships connected (tracked in PI, reachable by list, announced by mail, stocked by the Factory) or it is unfinished. (2) OPERATION AS METHOD: operator competence comes only from live use — real traffic through real surfaces, front and back end; a surface the team does not itself use daily has no evidence it works for citizens. The driveway test applies to every deliverable: unused = unproven.",
+    "what_it_means": "This turns \"dogfooding\" from a habit into law, with the reason attached: the operators ARE the first citizens (SN-2082), and their live experience is the system’s cheapest, truest test track. It also gives every future build a one-line review: is it linked, and is it being driven?",
+    "whats_inside": [
+      "Shawn’s direction, verbatim",
+      "The linkage requirement: PI ↔ Factory ↔ build ↔ Mail ↔ Lists",
+      "Use as the method — front end and back end, live",
+      "Empowerment through experience",
+      "The driveway test: built means driven"
+    ],
+    "topics": [
+      "Doctrine",
+      "System",
+      "Operation"
+    ]
+  },
+  "page_hash": "8116af2d064eaded6dada1acce0a82c03b570ea2f4a4dd38b8d7461aee2bdffd",
+  "content_hash": "14cbb622f56a595ffec57b24d26bf49fc8e9ec5e430baae97f6910ab539bf4cc"
+}
