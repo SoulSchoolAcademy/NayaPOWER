@@ -6960,7 +6960,13 @@ window.HubView = HubView;
     // Search lives once, in the shell above. This room is the collection itself.
     const hero=el('section','library-hero');
     const b=K.board(r.accent,'library','Browse what\u2019s retained','Organized by meaning — every item carries where it came from and how sure Naya is.');
-    hero.appendChild(b); wrap.appendChild(hero);
+    hero.appendChild(b);
+    // The canon — the design law, in one place (Clarity Confirmation Act, 2026-11-06).
+    const canon=K.board(r.accent,'library','The canon \u2014 read before you design','The design law, in one place. The Act is a DRAFT until Shawn stamps it \u2014 the canon it harvests is the law.');
+    const canonList=el('div','canon-list');
+    canonList.innerHTML='<p><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/10-INTERFACES/CLARITY-CONFIRMATION-ACT-DRAFT-20261106.md" target="_blank" rel="noopener">Clarity Confirmation Act (DRAFT)</a> \u2014 the fingerprint, the conduct, the design, all 22 elements.</p><p><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/10-INTERFACES/INTELLIGENT-BLOCK-RULES-DRAFT-20261106.md" target="_blank" rel="noopener">Intelligent Block Rules (DRAFT)</a> \u2014 what an intelligent block is, section by section.</p><p><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md" target="_blank" rel="noopener">Naya Design Contract V1</a> \u2014 the canonical visual signature, ratified 2026-10-03.</p><p><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/HUB/design-system/DESIGN-LAWS.md" target="_blank" rel="noopener">Design Laws</a> \u00b7 <a href="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/HUB/NAYA-DESIGN-PLAYBOOK-V1.md" target="_blank" rel="noopener">The Playbook</a> \u00b7 <a href="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/GOVERNANCE/NAYA-PROTOCOL-V1.md" target="_blank" rel="noopener">Naya Protocol</a></p>';
+    canon.body.appendChild(canonList); hero.appendChild(canon);
+    wrap.appendChild(hero);
 
     const zone=el('section','room-scene'); wrap.appendChild(zone);
     refresh(); return wrap;
