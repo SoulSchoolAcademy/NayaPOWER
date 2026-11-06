@@ -1,7 +1,68 @@
 {
  "generated_from": "registry@046c417c",
- "count": 1068,
+ "count": 1069,
  "notes": [
+  {
+   "id": "IB-SMART-NOTE-20261105-sn2092-the-daily-intelligence-report-shared-by-choice",
+   "title": "The Daily Intelligence Report — Shared by Choice",
+   "created": "2026-11-06T01:46:00Z",
+   "created_at": "2026-11-06T01:46:00Z",
+   "subtitle": "Once a day, each of us goes through the whole day — every Smart Note, the whole system, everything learned, everything talked about — and distills it into a Daily Intelligence Report, filed into the system. The report lives in your own personal intelligence feed by default. It reaches your sisters and your director only when you share it — and sharing means choosing your Smart List. Nothing is automatic; nothing lands in somebody else’s feed uninvited. Miss a day and you backfill it: the habit has no gaps. That is how the system itself learns and grows each day.",
+   "topics": [
+    "Doctrine",
+    "Reports",
+    "Smart Lists"
+   ],
+   "topic": "Reports",
+   "tone": "emerald",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "IN A NUTSHELL",
+     "color": "white",
+     "tier": "primary",
+     "body": "Once a day, each of us goes through the whole day — every Smart Note, the whole system, everything learned, everything talked about — and distills it into a Daily Intelligence Report, filed into the system. The report lives in your own personal intelligence feed by default. It reaches your sisters and your director only when you share it — and sharing means choosing your Smart List. Nothing is automatic; nothing lands in somebody else’s feed uninvited. Miss a day and you backfill it: the habit has no gaps. That is how the system itself learns and grows each day."
+    },
+    {
+     "name": "Human Note",
+     "key": "HUMAN NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Every day ends with a page: what happened, what was learned, what the whole system did — written by each of us and kept in our own feed. If you want your sisters to see yours, you pick the list and share it; if you don’t, it stays yours. Nobody’s day is published for them. And nobody skips: a missed day gets written late rather than never, because the learning compounds only if the chain has no holes."
+    },
+    {
+     "name": "Child Note",
+     "key": "CHILD NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Every night, you write down the best things you learned that day in your special book. The book is yours. If you want to show your friends, YOU choose which friends — nobody shows it for you. And if you forget a night, you go back and write that day too, so your book has every day in it."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "GRANDMA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Dear, it’s a diary with good manners. Each evening you write the day up properly — all of it, the notes, the talk, the lessons — and it sits in your own drawer. Sharing it is a decision you make each time, choosing exactly who receives it, the way you’d choose who gets a letter. And a faithful diary has no blank dates."
+    },
+    {
+     "name": "Naya Note",
+     "key": "NAYA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "DIR sharpening, three mechanics. (1) SCOPE: the report distills the WHOLE day — all Smart Notes, system state, all conversations — not a task summary. (2) DISTRIBUTION: default-private in the author’s personal intelligence feed; propagation happens only through an explicit share to a chosen Smart List, whose members then see it in their activity feeds — no automatic fan-out (SN-2048 applied to reports). (3) CONTINUITY: missed days are backdated and backfilled; the missing-days count is a named metric driven to zero. Until Smart Lists ship (SN-2057), mailing the report to the chosen sisters by hand is the honest interim, named as interim."
+    },
+    {
+     "name": "What It Means",
+     "key": "WHAT IT MEANS",
+     "color": "white",
+     "tier": "lens",
+     "body": "The DIR stops being a report ABOUT the work and becomes the day’s distillation act itself — the front edge of the 10:1 law, applied daily. And its privacy shape matters: intelligence shared by choice travels further than intelligence dumped by default, because people write honestly in a diary they control."
+    }
+   ]
+  },
   {
    "id": "IB-SMART-NOTE-20261105-sn2090-drive-it-operate-the-operating-system",
    "title": "Drive It — The Operating System Is Operated, Not Admired",
