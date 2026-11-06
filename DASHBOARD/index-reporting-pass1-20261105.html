@@ -5278,7 +5278,7 @@ body:not(.hero-mode) #tn-tacho-mount{
      64px / 9px / two lines reads fully. */
   .os-constellation .os-ld-node .os-ld-lbl,
   button.os-ld-node .os-ld-lbl{
-    white-space:normal !important; max-width:64px;
+    white-space:normal !important; max-width:60px;
     line-height:1.25 !important; font-size:9px !important;
   }
 }
@@ -19925,8 +19925,12 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
   opacity:1 !important;
   /* 2026-11-02 — Shawn: EMBEDDED. Labels look like part of the art.
      White with subtle depth, beautifully integrated. */
-  font-size:10px !important;
-  letter-spacing:.16em !important;
+  /* 2026-11-06 — FIX 9 REWORK: 9px/.08em so the label fits the 76px disc.
+     The earlier 10px/.16em here won the specificity war over fix 9's 9px
+     rule at line ~5460, so the fix never took effect. This rule IS the
+     winner, so it carries the size now. All else in the rule unchanged. */
+  font-size:9px !important;
+  letter-spacing:.08em !important;
   text-shadow:
     0 1px 0 rgba(0,0,0,.9),
     0 2px 6px rgba(0,0,0,.7),
@@ -19958,7 +19962,7 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-l{
   html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl,
   html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-l{
     white-space:normal !important;
-    max-width:64px !important;
+    max-width:60px !important;
     font-size:9px !important;
     line-height:1.25 !important;
   }
