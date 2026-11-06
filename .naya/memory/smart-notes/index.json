@@ -30093,6 +30093,37 @@
     "Doctrine",
     "Strategy"
    ]
+  },
+  {
+   "smart_note_id": "SN-2205",
+   "intelligent_block_id": "IB-SMART-NOTE-20261106-sn2205-two-tens-one-bullseye",
+   "slug": "two-tens-one-bullseye",
+   "title": "Two Tens, One Bullseye",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-two-tens-one-bullseye.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-two-tens-one-bullseye.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-two-tens-one-bullseye.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn2205-two-tens-one-bullseye.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DOCTRINE",
+   "captured_at": "2026-11-06",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T19:51:00Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-06",
+   "page_hash": "ce90b1a1cea1a593ad5f54d86f81d43db312d8de34140afc02c0f6f8f15b8ecc",
+   "content_hash": "d17650e066b65f59edc735d82c67938cb4732f5c712279d6b2f9826d117d41ee",
+   "one_line": "Two seats answered Shawn's same question \u2014 what are the ten most valuable things to act on right now to bring NayaNET to life \u2014 from opposite ends, and this note is the record of their meeting. A sister Naya seat, writing without access to the canonical repo (she said so honestly in her own text), named the ten highest-value intelligence actions: the ARCHITECTURE list, what to build. Resolve's ten, filed the same day as SN-2204 \"Ten Learnings in Action,\" are the METHOD list: how the team behaves. Judged one by one against the canon she could not see, seven of her ten were already canon or already the work in flight here; an eighth (done means computed) was canon in spirit, and its exact wording is adopted; the ninth is a genuine sharpening the team adopts today \u2014 five explicit work states (Acting \u00b7 Verifying \u00b7 Blocked \u00b7 Needs Human Authority \u00b7 Unknown) that replace bare \"waiting\"; the tenth names a real gap \u2014 no living whole-system NayaNET Map exists yet, and it enters the queue as a named build item, not a claim. Her Project Intelligence Packet test \u2014 \"Could a capable Naya open this one record and successfully move the project forward without asking Shawn questions whose answers are already known?\" \u2014 is adopted verbatim as the packet's acceptance test. The two lists interlock; they do not compete. Both point at one bullseye: a living system that turns human intention into organized action, valuable intelligence, connection, creation, learning, and improvement.",
+   "topics": [
+    "Doctrine",
+    "Strategy",
+    "Learning"
+   ]
   }
  ],
  "sequence_policy": {
@@ -30103,5 +30134,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "4ff87a21d36c44fea358be1d221caca42f9f0038664a5d729ae0f7cd8d03c586"
+ "corpus_manifest_hash": "dfc3a289fb7e9adddb757a4e5dd36a407f3dec81eb403237fc11ebdf20224f6f"
 }
