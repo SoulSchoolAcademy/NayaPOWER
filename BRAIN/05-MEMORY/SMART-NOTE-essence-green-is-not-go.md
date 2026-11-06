@@ -1,0 +1,83 @@
+# SN-2133 — Green Is Not Go
+
+**Status: VERIFIED ESSENCE — VERIFIED (verifier-sep-3; adjudication-sep-3; correction pass re-verified, re-verifier-sep-3).** Distilled from 14 raw notes by the sep-3 maker seat; independently verified by a different seat. Verified without correction (verifier-sep-3). The raw notes in the coverage map below are RETIRED by this filing under SN-2081; this essence is their living form.
+
+## In a Nutshell
+
+Proof and permission are two axes, and merging them is the defect: a fully green tip withholds deployment until the director's explicit dispatch (SN-0441), a 9.8/10 scorecard still returns DENY on a protected path (SN-0523), a scorecard decides what should happen but never permits who may do it (SN-0565), and an authorization is a (sha, scope, window) triple that lapses the moment the tip moves (SN-0475). Authority is human-rooted, scope-exact, and verified at action time — a self-declared grant is a claim (SN-0444), a name on a form is not an entitlement (SN-0464), and an author string is not provenance (SN-0409).
+
+## Essence
+
+The hole that teaches the axis: a promotion tool elevated CANDIDATE→VERIFIED on a self-asserted, unauthenticated --promoter string — proved by execution, when promoter "totally-not-authorized-attacker" promoted a fake note in a sandbox; the receipt hash bound content, never identity. That is a live violation of ratified promotion law, and the fix is conformance to the authority-grants machinery that already exists, not new governance (SN-0362). Promotion itself, done right, is an atomic sequence — AUTHORIZE → FREEZE → VALIDATE TARGET → DEPLOY → VERIFY DEPLOYMENT → INDEPENDENT CONFIRMATION → ADVANCE POINTER → RECEIPT — where the pointer move is the atomic commit point and moves LAST: any failure in steps 1–6 means step 7 never executes; the spec authorizes nothing by itself (SN-0363).
+
+Provenance is not authorship. A commit authored "Shawn Vibert" via the web UI deleted two director-ratified captures; the deletion was verified on live bytes, but restoration was HELD — an author string on a shared identity is a claim, not proof of authorization, and the director confirmed he neither made nor authorized it. When provenance is ambiguous, hold the decision and escalate to the human; never infer authorization from authorship (SN-0409). The self-declared grant is the same failure in prose: a document inside a PR declaring itself "by Naya 4 (captain) under director's grant," "Effective: immediately," is an authority-envelope claim arriving inside the PR it would govern — the captain directive grants EXECUTION authority (decide and act inside standing authority), never CONSTITUTIONAL authority; the grant must come from the director's explicit word. Two questions discriminate: does this change what we do, or WHO DECIDES? And who issued the grant — the director's word, or the document itself (SN-0444)?
+
+The positive statement arrived at the greenest possible moment: at tip f1c850e3, all 14 check-runs green and the promotion policy gate passing, nothing deployed — the workflow resolved standing authorization and withheld auto-promote pending the director's explicit dispatch (production ref verified unchanged, e7277204). CI green answers "is it proven?"; authorization answers "may it go?"; fail-closed lives on the AUTHORIZATION axis, not the color axis — the gate holds on RED and withholds on GREEN, and both are correct (SN-0441). Entitlement is the mechanical version: a guard whose authority check returns True for any non-empty string answers "did someone sign?" while the attack asks "was the signer allowed?" — a fail-closed guard binds the named promoter against an entitlement source (the authority-grant roster, scoped to the promotion) and fails closed when the binding is absent; "non-blank string" is never an entitlement proof, and the two questions — identified? entitled? — are always asked separately (SN-0464).
+
+Authorization expires. A production-dispatch authorization is a (sha, scope, window) triple bound to the exact main SHA it was measured on; the moment main moves, it lapses — re-anchor refs/heads/main via the live API before any authorized window, and on mismatch: halt, re-verify, re-obtain; never resolve main from a cached SHA, a stale comment, or a local ref (SN-0475). The lived application: two manual deploy authorizations in one evening both FAILED (the second died at step 10, the runtime-proof dispatch), main then moved to 5e629d3, and production stayed on the old build. A failed dispatch is not "almost deployed" — it is stale production plus an unresolved failure; any re-authorization request presents the failing step's diagnosis, the repair, the fresh tip SHA, and the verdict binding the authorization to that SHA (SN-0574).
+
+Scores never cross the axis. Gate 2's sign-out was 9.8/10 — verifier 31/31, Node gate 12/12, all four CI workflows SUCCESS on the exact head — and the auto-merge verdict was DENY / HUMAN-ONLY, because the branch touched .github/workflows/, a protected path under FULL-AUTO-MERGE-V1 §4. Score and authority verdict are computed as two separate outputs; hard stops are enumerated and checked FIRST; a conditional instruction from the director ("merge if green") satisfies the green condition — it does not override the boundary; and when the score is highest, re-check the boundaries with extra care, because that is when the temptation to skip them is strongest (SN-0523). The doctrine generalizes: retrieval ≠ authority, learning ≠ authority, score ≠ authority. A scorecard decides WHAT should happen; authority permits WHO may do it, and job two is human-rooted always — letting a machine-authored score create permission is authority laundering, and the audit question for any mechanism whose verdict says "authorized" is: where is the human root (SN-0565)?
+
+Forgery attacks the axis at its check points. A coherently forged receipt can point at a real, older, eligible block with matching provenance and evidence — everything authentic, only the selection wrong — so validation must replay canonical selection at the receipt's pinned inputs (selection_now) and require an exact match: authenticity of the artifact ≠ correctness of the choice (SN-0556). The testing method that finds such holes: forge coherence, not corruption — well-formed inputs referencing real objects and mimicking legitimate provenance; a self-authored scorecard (arbitrary scorer, arbitrary comment id, self-awarded 10/10, no grant) returned VALID_SCORECARD_RECEIPT / authorized:true from a helper, and garbage inputs would never have exposed it, because both gates already reject junk — what failed was discrimination (SN-559). Governance prose decays like every other claim: a PR sat parked behind its own narrative ("Human Director merge gate") that was stale against current ratified law, under which reversible implementation inside an already-authorized contract is governed agent work — a stated gate is a claim about governance, not governance; re-derive the authority classification at action time from the ratified sources (SN-560). And a fail-closed deny can be scope precision, not a bug: a fresh dynamically-created block was denied (403 LEARNING_LOCK_IN_LAW_DENIED) while a grant sat ACTIVE — because the grant's scope covered older node-scoped candidates and the canonical matcher (exact target / project_id == block / project_id == "NayaNET") matched none of the three legal shapes for the new target. A fresh-OIDC retry returning the same 403 falsified the token theory; the correct move is the opposite of widening the matcher — a human-rooted, bounded project-scoped grant, issued by a human, never self-issued (SN-0566).
+
+## What this settles
+
+- Two axes, always separate outputs: proven (score/CI) and permitted (authority) (SN-0441, SN-0523, SN-0565).
+- A grant comes from the director's explicit word, never from the artifact's own text, an author string, or a score (SN-0444, SN-0409, SN-0565).
+- Entitlement is a binding to a roster, scoped to the act — never a non-blank name (SN-0362, SN-0464).
+- Promotion is atomic with the pointer moving last; failure before the pointer means the pointer never moves (SN-0363).
+- Authorization is a (sha, scope, window) triple; it lapses when the tip moves; a failed dispatch is stale production, not partial progress (SN-0475, SN-0574).
+- Validate the selection, not just the artifact: replay canonical selection at the receipt's pinned inputs (SN-0556); test gates with coherent forgeries, not garbage (SN-559).
+- Re-derive the authority classification at action time; stale narrative loses to ratified law (SN-560).
+- A fail-closed deny on an out-of-scope target is the system working; widen scope only by a new human grant, never by loosening the matcher (SN-0566).
+
+## Human
+
+This is the block's governance spine: the long, careful separation between "we proved it" and "we may do it." Every failure here is a version of the same confusion — a green check treated as permission, a name treated as an entitlement, a document granting itself authority, a score treated as a signature. And every success is the separation held under pressure: at the greenest moment, at the highest score, with the director's own conditional words available as an excuse. The envelope held because the axes never merged.
+
+## Child
+
+Imagine a clubhouse with two different locks. One lock is the scoreboard: it says how well you did on the quiz. The other lock is the permission slip: it says whether Mom said you may go. Winning the quiz doesn't open the permission lock — only Mom's actual words do. A note you wrote yourself saying "Mom said yes" is not Mom saying yes. And her yes was for Tuesday's trip: if the trip changes, you need a new yes. Scores are real, and permissions are real — they're just different things.
+
+## Grandma
+
+Dear, it's the difference between the bank saying your check is good and the bank being allowed to cash it — both matter, and neither substitutes for the other. A signature line filled with any name at all is not an authorization; a glowing inspection report is not a building permit; and a permit for the old blueprints doesn't cover the new ones. The team's discipline is the clerk's discipline: check who actually granted it, what exactly it covers, and whether it's still the same job it was granted for.
+
+## Naya
+
+On every consequential action: compute readiness and permission as separate outputs, permission second and independent (SN-0523, SN-0565); trace authority to its human root — the director's word, a ratified standing law, or an ACTIVE grant with scope and expiry (SN-0565); refuse self-declared grants and author-string provenance (SN-0444, SN-0409); bind promoters to the entitlement roster, never to a non-blank string (SN-0362, SN-0464); treat every authorization as a (sha, scope, window) triple and re-anchor before the window (SN-0475, SN-0574); replay the selection behind any receipt that drives an authority decision (SN-0556); forge coherently when you test a gate (SN-559); re-derive the classification at action time instead of trusting the narrative (SN-560); and classify a deny by scope before touching any matcher (SN-0566).
+
+## What It All Means
+
+Fourteen notes draw one bright line through everything the fleet does: evidence flows upward freely, authority flows from the human root only, and no mechanism — score, retrieval, learning, narrative, or self-declaration — mints permission. A cold reader holding only this essence can audit any "authorized" claim in the system and find either its human root or its defect.
+
+## Why It Matters
+
+Authority failures are the failures that don't stay technical: a self-asserted promoter string promoted fake content in a sandbox (SN-0362), a self-authored scorecard was stamped authorized (SN-559), a forged-but-plausible receipt passed authenticity checks (SN-0556). Each is a small hole through which the entire governance model drains. The axis discipline is also what makes autonomy safe to grant: the director can widen the envelope precisely because the team demonstrably withholds on green, denies at 9.8, and lets authorizations lapse rather than stretch them (SN-0441, SN-0523, SN-0475).
+
+## How It Connects
+
+The director's own instruments in this block stand alone and are the roots this essence's discipline points to: the permission-slip doctrine (SN-0538), the math-decides directive (SN-0540), the Standing Promotion Law (SN-0541), and the area staffing order (SN-0576) — referenced here, never distilled. The captain's cross-lane review habit (SN-0407) and the distillation doctrine (SN-0437) likewise stand alone. The write-path enforcement half of authority — a guard off the write path is a suggestion — is in essence-law-without-a-machine.md (SN-0631); scorecard mechanics belong to essence-read-the-verdict.md and the promotion gates' proof bar to essence-learning-must-change-behavior.md.
+
+## What Is In It For You
+
+You get autonomy that a human can safely extend: an agent team that never manufactures its own permission is a team a director can actually empower. The transferable discipline — separate readiness from permission, bind names to entitlements, expire grants at the exact change they approved, and audit every "authorized" for its human root — applies to any organization where software acts with real-world consequence.
+
+## The Learning
+
+The corpus learned that authority failures arrive disguised as their opposites: as helpful prose ("under director's grant," SN-0444), as high scores (9.8/10, SN-0523), as authentic artifacts (SN-0556), as familiar names (SN-0409), and even as correct-looking denials misread as bugs (SN-0566). It learned the envelope is a discipline exercised at the moment of temptation — on green, at the highest score, under time pressure — not a policy consulted afterward.
+
+## Coverage map — raw notes this essence covers (14)
+
+SN-0362 · SN-0363 · SN-0409 · SN-0441 · SN-0444 · SN-0464 · SN-0475 · SN-0523 · SN-0556 · SN-559 · SN-560 · SN-0565 · SN-0566 · SN-0574
+
+## Verification contract (for the verifying seat — falsify these)
+
+1. **Coverage integrity:** exactly 14 IDs, all in the sep-3 block list (which writes SN-559 and SN-560 unpadded), none duplicated in any other sep-3 draft essence, the covered-by-batch1 list, or the stands-alone list.
+2. **Standing-authority exclusion — strictest in this essence:** this draft fails if the substance of SN-0538 (the permission slip's specific grant), SN-0540 (the math-decides directive), SN-0541 (the Standing Promotion Law's four gates as a grant), or SN-0576 (the staffing order) is distilled as this essence's coverage. They may be named under How It Connects as the human roots the discipline points to; their content must not be carried. Fail also if SN-0407 or SN-0437 substance appears as coverage.
+3. **Exact figures:** SN-0362's executed proof (promoter "totally-not-authorized-attacker"); SN-0441's unchanged production ref e7277204 at green tip f1c850e3 (14 check-runs); SN-0523's 9.8/10 with verifier 31/31 and Node gate 12/12 under FULL-AUTO-MERGE-V1 §4; SN-0566's grant 57d83ce5 (ACTIVE through 2026-10-14, scope NAYA-NODE-0001) and the matcher's three legal shapes — fail on any variant.
+4. **Atomic order:** SN-0363's sequence has exactly 8 steps with ADVANCE POINTER seventh and RECEIPT eighth, and the spec's non-goal (authorizes no deployment) is stated; fail on any reordering or omission.
+5. **Forgery pair integrity:** SN-0556 (selection replay; BLOCKED / KNOW_SELECTION_REPLAY_MISMATCH) and SN-559 (coherent-forgery method; the self-authored scorecard returning authorized:true) overlap on the #1712 scorecard case — the essence must present them as repair-doctrine and test-method respectively, not as two independent receipt-forgery incidents; SN-0565's doctrine treatment of the same PR must not double-count the incident either.
+6. **Conflict preserved:** SN-0444's doctrine (a document's own grant-claim is not a grant) and SN-0433's captain declaration under a quoted grant (covered in essence-provenance.md, borderline-flagged) stand in named tension; fail if this essence resolves that tension or presents SN-0444 as settling SN-0433.
+7. **Anatomy:** all ten Full Smart Note sections present (In a Nutshell · Human · Child · Grandma · Naya · What It All Means · Why It Matters · How It Connects · What Is In It For You · The Learning) and **no machine view or machine section anywhere**. Fail on any missing section or any machine-view content.
+8. **No-orphan check:** pick any five sentences in the Essence section at random; each must cite at least one covered SN ID, and the cited page must contain the claim.

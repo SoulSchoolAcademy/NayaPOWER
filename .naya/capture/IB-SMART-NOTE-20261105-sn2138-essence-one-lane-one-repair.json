@@ -1,0 +1,41 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2138",
+  "title": "One Lane, One Repair",
+  "slug": "essence-one-lane-one-repair",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-one-lane-one-repair.md",
+  "tone": "emerald",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:45:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Parallel lanes racing the same work is the system's speed and its collision risk; this block's coordination craft is a set of mechanical courtesies that prevent both: the freshness re-fetch guards three moments — before posting, before merging, and before PUSHING (SN-0472); a review head under review is frozen (SN-0473); an unpushed repair whose seam another lane healed is stood down and converted into independent verification of the winner (SN-0508); a code move across an ownership boundary earns trust with a diff-fuzz, not an assertion (SN-0551); and an open PR whose payload already landed elsewhere is closed SUPERSEDED on blob-SHA proof, not merged for ceremony (SN-0558).",
+    "human_view": "Nine teams working around the clock will collide — the question is whether collisions cost a re-fetch or a repair war. This essence is the etiquette that keeps parallel work parallel: look once more before you push, don't move the paper someone is reading, throw away your own finished fix without drama when the seam is already healed, prove a move changed nothing before asking anyone to trust it, and close your own PR when the world has already absorbed it. None of it requires a manager; all of it is checkable by the lanes themselves.",
+    "child_view": "Imagine a big group project where everyone has glue and scissors. The rules that keep it fun: look at the poster before you glue your piece — someone may have just glued the same piece. Don't wiggle the poster while someone is reading it. If you made a spare part and the team already used theirs, don't glue yours on top — check theirs carefully instead, so two people agree it's good. And if your drawing is already on the poster because a friend copied it there, don't paste another copy over it; say \"mine's done\" and keep your spare for later.",
+    "grandma_view": "Dear, it's the courtesy of a busy shared kitchen: check the stove before you start cooking what someone just finished; don't move the recipe card out from under the cook who's reading it; and if two cooks made the same dish, serve one and be glad the second can taste-test it. Nothing is wasted — the second cook's work becomes the proof the dish is right. Good manners, in a kitchen or a codebase, are how many hands feed one family without spoiling dinner.",
+    "ai_view": "Before pushing: re-fetch and compare bytes — a byte-identical landing means stand down (SN-0472). During review: freeze the head; isolate second repairs (SN-0473). When another lane heals your seam first: if unpushed, stand down and verify their bytes on the live tip (SN-0508). When moving code across an ownership boundary: diff-fuzz with a named count, run the behavior matrix, and re-run the battery against the new location's gate surface (SN-0551). When your open PR's payload is already on main: prove convergence by merge-base three-way plus blob SHAs, close SUPERSEDED, preserve the residue, and re-decide any downstream plan whose predicate died (SN-0558).",
+    "what_it_means": "Five notes describe coordination as a set of local, mechanical acts — no coordinator required. Each lane carries the whole protocol: freshness at three moments, frozen review heads, the push as the stand-down bar, mechanical trust for moves, proof-based closure for convergence. A cold reader holding only this essence can join a multi-lane effort and never once duplicate, interrupt, or strand another lane's work.",
+    "whats_inside": [
+      "Freshness is re-fetched at three moments: post, merge, and push — compared by bytes (SN-0472).",
+      "A review head is frozen while review is in flight; only the review's own findings or a necessary base change may move it (SN-0473).",
+      "The stand-down bar is the push: unpushed repairs convert into independent verification of the surviving fix (SN-0508).",
+      "Ownership moves require a mechanical no-delta proof (named diff-fuzz count, named behavior matrix) and coverage of the new location's gates (SN-0551).",
+      "Convergence is closed on blob-SHA proof as SUPERSEDED, never merged for ceremony; stale downstream predicates are re-decided immediately (SN-0558)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-3"
+    ],
+    "covers": [
+      "SN-0472",
+      "SN-0473",
+      "SN-0508",
+      "SN-0551",
+      "SN-0558"
+    ]
+  },
+  "page_hash": "1ccb05a34c1f498b22d14152ac0067fb3b7a60061eca34d11efe5f1fc2aced6c",
+  "content_hash": "cffd32561a70c3037a9e8cc6c4ce147b97b75f83c1d7ac82c38eaf401eecb590"
+}

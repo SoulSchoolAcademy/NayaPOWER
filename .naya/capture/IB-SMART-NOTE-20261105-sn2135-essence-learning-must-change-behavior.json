@@ -1,0 +1,53 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2135",
+  "title": "Learning Must Change Behavior, Measurably",
+  "slug": "essence-learning-must-change-behavior",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-learning-must-change-behavior.md",
+  "tone": "magenta",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:45:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A learning claim is a measurement or it is a slogan: influence is a number produced by control-vs-treatment ablation or it is not a claim (SN-0510), presence in context is not influence (SN-0544), LEARNED is not mastered until governed transitions prove the higher rungs (SN-0546), and a trial measures only if its task can discriminate, its prompts don't cue the answer, and its raw data survives for independent verification (SN-0452, SN-0474, SN-0573). The activation test is behavioral and two-sided: behavior changes only when the ordinary selector returns the retained lesson unprompted — and removing the seam removes the change (SN-0550).",
+    "human_view": "The learning system is the heart of this whole project — the claim that the machine gets smarter. This block is where that claim grew up: every comforting shortcut was found and named. Notes in context were stamped \"influenced.\" Agreement among readers of the same document was counted as independent proof. A legendary trial result evaporated because its data lived in a temporary folder. What replaced the shortcuts is a measurement discipline strict enough that the honest numbers are sometimes embarrassing — 0/9 influence on the production kernel — and exactly therefore believable.",
+    "child_view": "Imagine claiming \"I learned to swim\" because you read a book about swimming while sitting next to a pool. The book was there (presence), but did it change what you do in the water (influence)? To prove learning, someone has to watch you swim — with the book's lesson and without it — and see the difference. And if six friends all copy the same answer from the same page, that's not six proofs; it's one page read six times. Real learning leaves evidence: you behave differently, and someone else can check.",
+    "grandma_view": "Dear, it's the difference between owning a cookbook and being a cook. The books on the shelf prove nothing about dinner. What proves it: a meal cooked differently because of what was learned, tasted by someone who didn't cook it, with the recipe cards kept in the drawer where they can be found again — not thrown out with the scraps. The team learned to ask of every lesson: show me the meal, show me the cards, and let someone else taste.",
+    "ai_view": "On any learning claim: run the real queries against the live index first (SN-0449); validate the key and make the task discriminating before the first trial (SN-0452); strip the cues pretrial (SN-0474); demand a second, independent, could-disagree check before promoting anything consequential (SN-0458); measure influence by ablation and report the number, never the adjective (SN-0510, SN-0511); count shared-evidence agreement as one datum (SN-0515); rehearse pipelines synthetically and publish the stage map (SN-0524); keep presence and influence in separate fields with influence defaulting false (SN-0544); claim only the rungs a governed transition has proven (SN-0546); activate through the normal path and prove it two-sided (SN-0550); bound every proof run by the seam it exercised (SN-0567); and keep trial raw data in-repo under the evidence verifier (SN-0573).",
+    "what_it_means": "Thirteen notes build the epistemology of a learning system: capability claims decompose into retrieval, trial design, causal measurement, schema honesty, activation path, and evidence custody — and each link has a mechanical test. A cold reader holding only this essence can dismantle any inflated learning claim into its failing link, and can say exactly what proof would repair it.",
+    "whats_inside": [
+      "Test retrieval with the real queries first; tie-break relevance > authority > recency; an unindexed note is a corpus defect, not a ranking defect (SN-0449).",
+      "Trial integrity: key validated before running, tasks hard enough to fail, cost instrumented exactly (SN-0452); prompts red-teamed for cue leakage pretrial (SN-0474).",
+      "One passing check is a hypothesis; the second check must be independent and able to disagree (SN-0458).",
+      "Influence is a number from control-vs-treatment ablation, with explicit attribution (SN-0510); the two kernels are never averaged (SN-0511).",
+      "Convergence on shared evidence is agreement — one datum, N readers (SN-0515).",
+      "Pipelines are rehearsed synthetically with per-stage verdicts before readiness is claimed (SN-0524).",
+      "Presence ≠ influence (separate schema fields, influence defaults false) (SN-0544); levels are earned by governed transitions or they are labels (SN-0546).",
+      "Activation runs through the normal path, proven two-sided (SN-0550); a proof run's claim is bounded by the seam it exercised (SN-0567).",
+      "Trial raw data lives in-repo under a fail-closed evidence verifier with a regression replay of the loss that taught it (SN-0573)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-3"
+    ],
+    "covers": [
+      "SN-0449",
+      "SN-0452",
+      "SN-0458",
+      "SN-0474",
+      "SN-0510",
+      "SN-0511",
+      "SN-0515",
+      "SN-0524",
+      "SN-0544",
+      "SN-0546",
+      "SN-0550",
+      "SN-0567",
+      "SN-0573"
+    ]
+  },
+  "page_hash": "7c8e355e551a1c9c4e0b1945df81b3af827b73afd5021ac72341f5c8cbf0712b",
+  "content_hash": "74f3e1a80782920bf7448b338a6e12cd67291d77d275182b6c7ff8cd1cfacf09"
+}
