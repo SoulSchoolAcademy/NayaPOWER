@@ -1,0 +1,47 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2113",
+  "title": "Red Is Information: Attribute the Failure Before You Blame Anything",
+  "slug": "essence-red-is-information",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-red-is-information.md",
+  "tone": "red",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:29:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A red badge is a conclusion about a run, not a diagnosis of the thing the run was checking — so classify the failure and name its owner (code, dispatch, guard, environment, platform, harness) before any repair (SN-031, SN-044). CI-trigger claims are scoped by workflow event: SN-048's absolute (\"API pushes never trigger Actions\") was falsified and corrected by SN-074, while SN-051's remedy — local verification as the gate where the push path is genuinely CI-blind — survives (SN-048, SN-051, SN-074). Guards are judged on false positives (SN-049), proof environments are reset and the reset recorded (SN-087), no change is blamed without the clean-main control (SN-059), harnesses die under their own name (SN-097), and platform deltas are investigated to the byte while the untraced residue stays honestly UNKNOWN (SN-094, SN-098).",
+    "human_view": "When something shows red, the amateur move is to start fixing; the professional move is to find out what the red actually means. Sometimes the code is broken. Sometimes the check itself is broken, the test room was dirty, the alarm was crying wolf, or the failure belongs to a different computer entirely. These rules make the team name the real owner of every failure before spending a minute repairing the wrong thing — and correct their own public claims when a \"never\" turns out to be \"not for this kind of event.\"",
+    "child_view": "Imagine your smoke alarm goes off. It doesn't always mean fire — sometimes it's steam from the shower, sometimes the alarm itself is broken. A good detective checks which one it is before calling the fire truck. And if your friend says \"my bike works fine\" but it breaks at your house, you don't say your friend lied — you check what's different about your house.",
+    "grandma_view": "Dear, it's the discipline of not jumping to conclusions. A red light tells you to look, not what you'll find. Check whether the thing is broken, the checker is broken, or the room was messy before the test began. And when you learn your strong claim — \"that never happens\" — was too strong, you correct it in the open, where everyone heard the first version.",
+    "ai_view": "Triage in order: read the failed step (SN-044), classify the failure class, and treat gates as gates (SN-031). Scope trigger claims by event or don't make them (SN-074); where the path is CI-blind, your local verification carries the full gate weight (SN-051). Audit your guards for first-party false positives (SN-049). Reset proof environments and record the reset (SN-087). Run the clean-main control before blaming any change (SN-059); make your harness die loudly under its own name (SN-097). When a failure is platform-shaped, reproduce the mechanism to the byte, fix at the source, and leave the untraced residue labeled UNRESOLVED (SN-094, SN-098).",
+    "what_it_means": "Eleven notes are the team's failure epistemology: red is information with an owner, and the craft is finding the owner before touching anything. The SN-048 → SN-074 correction is preserved inside this essence deliberately — the scoped truth includes the history of the overclaim, because the next seat needs to know both the rule and how the rule was earned.",
+    "whats_inside": [
+      "Red is the start of triage, not its conclusion: classify the failure and name its owner (code, dispatch, guard, environment, platform, harness) before any repair (SN-031, SN-044).",
+      "CI-trigger claims are scoped by workflow event; SN-048's absolute stands corrected by SN-074, and SN-051's local-verification gate survives as the remedy where a path is genuinely CI-blind (SN-048, SN-051, SN-074).",
+      "Guards are judged on false positives as well as catches (SN-049); proof environments are reset and the reset recorded, or the run proves nothing (SN-087).",
+      "No blame without the clean-main control (SN-059); harness deaths are named environment fatals, never per-case FAILs (SN-097).",
+      "Platform deltas are investigated to the byte and fixed at the source; the residue stays UNKNOWN until traced (SN-094, SN-098)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-1"
+    ],
+    "covers": [
+      "SN-031",
+      "SN-044",
+      "SN-048",
+      "SN-049",
+      "SN-051",
+      "SN-059",
+      "SN-074",
+      "SN-087",
+      "SN-094",
+      "SN-097",
+      "SN-098"
+    ]
+  },
+  "page_hash": "0cc5f69dd99627eb4ad7ab1e64b55c525957cad5459ea999f3658391c4cabe63",
+  "content_hash": "e409a584b51baf22f4202975b9c277329a616719dcd810f12a2b653f3f8a2f5b"
+}

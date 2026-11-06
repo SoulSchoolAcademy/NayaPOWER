@@ -121,7 +121,11 @@
    "smart_link_verified_at": "2026-10-10T15:21:04Z",
    "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
    "content_hash": "99f347fe9504297776435f16295d93d72eaef87156d4ffdad71956098f58a882",
-   "page_hash": "e94393cc9051acf4d46abfc127d996aa9569d31a94f91a4c34819f8d9dcb8d6c"
+   "page_hash": "e94393cc9051acf4d46abfc127d996aa9569d31a94f91a4c34819f8d9dcb8d6c",
+   "lifecycle_state": "RETIRED",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2107-essence-the-foundation",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-003",
@@ -157,7 +161,11 @@
    },
    "smart_link_verified_at": "2026-10-10T15:21:04Z",
    "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
-   "page_hash": "9841564342c0236c168e6a9a6ac9c8f3cb841eed5210ee964edd2eadee3de905"
+   "page_hash": "9841564342c0236c168e6a9a6ac9c8f3cb841eed5210ee964edd2eadee3de905",
+   "lifecycle_state": "RETIRED",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2108-essence-continuity",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-004",
@@ -232,7 +240,11 @@
    "timestamp_role": "PROVENANCE_ONLY",
    "smart_link_verified_at": "2026-10-10T15:21:04Z",
    "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
-   "page_hash": "0e5dfc63e2de807dadccff8682afa3a3aacfe037652586fca50e10d8b7aa53e8"
+   "page_hash": "0e5dfc63e2de807dadccff8682afa3a3aacfe037652586fca50e10d8b7aa53e8",
+   "lifecycle_state": "RETIRED",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2109-essence-act-first",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-006",
@@ -269,7 +281,11 @@
    "timestamp_role": "PROVENANCE_ONLY",
    "smart_link_verified_at": "2026-10-10T15:21:04Z",
    "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
-   "page_hash": "1b6d3f178e3c8452ac5c00369988af9fbb30a08ea44d7a95e290ad4afbf79870"
+   "page_hash": "1b6d3f178e3c8452ac5c00369988af9fbb30a08ea44d7a95e290ad4afbf79870",
+   "lifecycle_state": "RETIRED",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2109-essence-act-first",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-007",
@@ -306,7 +322,11 @@
    "timestamp_role": "PROVENANCE_ONLY",
    "smart_link_verified_at": "2026-10-10T15:21:04Z",
    "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
-   "page_hash": "9244ffc926d70613f6e7bd21977906df1048a0679f6013f53ced708b103759be"
+   "page_hash": "9244ffc926d70613f6e7bd21977906df1048a0679f6013f53ced708b103759be",
+   "lifecycle_state": "RETIRED",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2108-essence-continuity",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-008",
@@ -343,7 +363,11 @@
    "timestamp_role": "PROVENANCE_ONLY",
    "smart_link_verified_at": "2026-10-10T15:21:04Z",
    "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
-   "page_hash": "68ede987fd881779d6334cd0a06f11cc5733e77025e7454e0a3dea4f337c9159"
+   "page_hash": "68ede987fd881779d6334cd0a06f11cc5733e77025e7454e0a3dea4f337c9159",
+   "lifecycle_state": "RETIRED",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2108-essence-continuity",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-009",
@@ -381,7 +405,11 @@
    "timestamp_role": "PROVENANCE_ONLY",
    "smart_link_verified_at": "2026-10-10T15:21:04Z",
    "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
-   "page_hash": "c5c2379c7d23bcbb2b1d3e6961590e03c4a0befdf415b298e9fcdb1f573f4526"
+   "page_hash": "c5c2379c7d23bcbb2b1d3e6961590e03c4a0befdf415b298e9fcdb1f573f4526",
+   "lifecycle_state": "RETIRED",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2108-essence-continuity",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-010",
@@ -418,7 +446,11 @@
    "timestamp_role": "PROVENANCE_ONLY",
    "smart_link_verified_at": "2026-10-10T15:21:04Z",
    "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
-   "page_hash": "8931fb6a1496fb1ece0d61ba42b20a9ae54752881d6d1eda3fc3dbf1e9ea47b0"
+   "page_hash": "8931fb6a1496fb1ece0d61ba42b20a9ae54752881d6d1eda3fc3dbf1e9ea47b0",
+   "lifecycle_state": "RETIRED",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2109-essence-act-first",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0103",
@@ -493,12 +525,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "cca8a425da3f4d30fdab0fecf9e9bfe84ad96e8ff7425d8e774e5c8e732e86b0"
+   "page_hash": "cca8a425da3f4d30fdab0fecf9e9bfe84ad96e8ff7425d8e774e5c8e732e86b0",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2118-essence-the-mirror",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0107",
@@ -513,12 +548,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "1c44dea75123a7f20174ceb99457d8d707f506ef9802766cbb3afd4fbe20b070"
+   "page_hash": "1c44dea75123a7f20174ceb99457d8d707f506ef9802766cbb3afd4fbe20b070",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2118-essence-the-mirror",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0108",
@@ -596,7 +634,11 @@
    "timestamp_role": "PROVENANCE_ONLY",
    "smart_link_verified_at": "2026-10-10T15:21:04Z",
    "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
-   "page_hash": "2c26908084729d934c8fa74f5eca8a836ae624b21a55dbc22033b8f0caa5d6b4"
+   "page_hash": "2c26908084729d934c8fa74f5eca8a836ae624b21a55dbc22033b8f0caa5d6b4",
+   "lifecycle_state": "RETIRED",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2107-essence-the-foundation",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0110",
@@ -631,12 +673,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "da3850a39e2fb28a1ee3d5b0fd213d69abf962c5f04ba5dac3b158642f69d98f"
+   "page_hash": "da3850a39e2fb28a1ee3d5b0fd213d69abf962c5f04ba5dac3b158642f69d98f",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2118-essence-the-mirror",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0112",
@@ -651,12 +696,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "7e8e73601c75d83d821a35b3838880f181ae693421c6054042c76b0f72cc001f"
+   "page_hash": "7e8e73601c75d83d821a35b3838880f181ae693421c6054042c76b0f72cc001f",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2117-essence-the-handoff",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0113",
@@ -671,12 +719,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "0db6d907c3b20e0ac5864e4d2e5f1c45512cf7a08dac9e3208a76ebde7ffe763"
+   "page_hash": "0db6d907c3b20e0ac5864e4d2e5f1c45512cf7a08dac9e3208a76ebde7ffe763",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2114-essence-decide-on-evidence",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0114",
@@ -691,12 +742,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "904c281402cf54cf060847088e4403d3026f7addc48240d6391204198af34305"
+   "page_hash": "904c281402cf54cf060847088e4403d3026f7addc48240d6391204198af34305",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2110-essence-one-canon",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0115",
@@ -711,12 +765,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "5815ca08938491119b2f4934ec33754bf78f30c1621b64c60443bfbeec112fbd"
+   "page_hash": "5815ca08938491119b2f4934ec33754bf78f30c1621b64c60443bfbeec112fbd",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2110-essence-one-canon",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0116",
@@ -731,12 +788,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "d6be5d8041168f5a6802bee104394ff5556cd124c632132bad4a49db16b11f66"
+   "page_hash": "d6be5d8041168f5a6802bee104394ff5556cd124c632132bad4a49db16b11f66",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2110-essence-one-canon",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0117",
@@ -751,12 +811,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "f09cb0a4ac44b4791c08949fc5ab68b1ea7a5a696d426f16d711a67922b379b7"
+   "page_hash": "f09cb0a4ac44b4791c08949fc5ab68b1ea7a5a696d426f16d711a67922b379b7",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2110-essence-one-canon",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0118",
@@ -771,12 +834,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "47caa70be33cb4d4611d47959b08bbef0aace5602886d42294d1f2a725dd24bd"
+   "page_hash": "47caa70be33cb4d4611d47959b08bbef0aace5602886d42294d1f2a725dd24bd",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2118-essence-the-mirror",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0119",
@@ -791,12 +857,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "f9055264211bf2ed476a9b3476a72b1dc4273e6d1b9d1cd451dbd70c31d15c2f"
+   "page_hash": "f9055264211bf2ed476a9b3476a72b1dc4273e6d1b9d1cd451dbd70c31d15c2f",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2118-essence-the-mirror",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "intelligent_block_id": "IB-SMART-NOTE-20260930-sn012-nayapower-operating-model",
@@ -858,12 +927,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATING-MODE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "df62ee6e5aa43ca957f5809d8e8d8c1477531cc4044df7c3cc5c56da66bc4de9"
+   "page_hash": "df62ee6e5aa43ca957f5809d8e8d8c1477531cc4044df7c3cc5c56da66bc4de9",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2114-essence-decide-on-evidence",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0121",
@@ -878,12 +950,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "9ee899ed601a051aa89641944a6bab4d79061e4aa641dea027a70d68259233a2"
+   "page_hash": "9ee899ed601a051aa89641944a6bab4d79061e4aa641dea027a70d68259233a2",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2118-essence-the-mirror",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0122",
@@ -898,12 +973,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "e9f71c2613b8617d3f33d159f87c4511564f671e413abb86093a47552423d8ca"
+   "page_hash": "e9f71c2613b8617d3f33d159f87c4511564f671e413abb86093a47552423d8ca",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2118-essence-the-mirror",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0123",
@@ -918,12 +996,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "fc3761084711e2c02c3a84d114162cb009a6d0c085f0cbc8264f04f6cf5f662b"
+   "page_hash": "fc3761084711e2c02c3a84d114162cb009a6d0c085f0cbc8264f04f6cf5f662b",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2114-essence-decide-on-evidence",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0124",
@@ -938,12 +1019,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "57f262e1a1dcf488af1c5a6ea2a520dd1f50b68f5eea8c1b6e0dd3042d49549c"
+   "page_hash": "57f262e1a1dcf488af1c5a6ea2a520dd1f50b68f5eea8c1b6e0dd3042d49549c",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2118-essence-the-mirror",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0125",
@@ -958,12 +1042,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "7b22186f1d85c67a8aa378077d29665be4ba04e5b11327ecea29cc7c01032203"
+   "page_hash": "7b22186f1d85c67a8aa378077d29665be4ba04e5b11327ecea29cc7c01032203",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2117-essence-the-handoff",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0126",
@@ -998,12 +1085,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "52130e0561a98a7802a02b2a21e3dfe93d66956ca18cb2667f62659fdc7cf2ef"
+   "page_hash": "52130e0561a98a7802a02b2a21e3dfe93d66956ca18cb2667f62659fdc7cf2ef",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2112-essence-count-discipline",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0129",
@@ -1018,12 +1108,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "c22df2a94c8b9630c5239c19b3b8768970116cb2badec2406a165142773733b3"
+   "page_hash": "c22df2a94c8b9630c5239c19b3b8768970116cb2badec2406a165142773733b3",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2110-essence-one-canon",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-013",
@@ -1062,7 +1155,11 @@
    "smart_link_verified_at": "2026-10-10T15:21:04Z",
    "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
    "content_hash": "2a534acea3882a352ba27a3d46d42253d37d7aeb93cebe806a1bb60aee450037",
-   "page_hash": "bf163e2071be1da4e083df19dee59d7f13b3884a5eada72aeec4c284d2d85c02"
+   "page_hash": "bf163e2071be1da4e083df19dee59d7f13b3884a5eada72aeec4c284d2d85c02",
+   "lifecycle_state": "RETIRED",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2114-essence-decide-on-evidence",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0130",
@@ -1121,7 +1218,11 @@
    "smart_link_verified_at": "2026-10-10T15:21:04Z",
    "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
    "content_hash": "318b7a0682f6a5b9d3fe41531c01773d00fae653c2e49d3170fa23a5838a0441",
-   "page_hash": "048407d9c70e1426767cf51d0fb5737d17aea06685f86e48459a0bf022b4e169"
+   "page_hash": "048407d9c70e1426767cf51d0fb5737d17aea06685f86e48459a0bf022b4e169",
+   "lifecycle_state": "RETIRED",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2108-essence-continuity",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0140",
@@ -1280,7 +1381,11 @@
    "smart_link_verified_at": "2026-10-10T15:21:04Z",
    "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
    "content_hash": "15051f226d9619285b4633876df52fd73b56f36f0a5146d732739f1a9b0f736a",
-   "page_hash": "ef22618c81ea410e2ad1681b58ab5cf547c62fb57482b47df04eaf585aa4f875"
+   "page_hash": "ef22618c81ea410e2ad1681b58ab5cf547c62fb57482b47df04eaf585aa4f875",
+   "lifecycle_state": "RETIRED",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2107-essence-the-foundation",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0151",
@@ -1833,12 +1938,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "d49b3dd5ac880b1b9e68801a7875847a67fdad50088ee9f32c7cbad4a65595af"
+   "page_hash": "d49b3dd5ac880b1b9e68801a7875847a67fdad50088ee9f32c7cbad4a65595af",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2110-essence-one-canon",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-018",
@@ -2327,12 +2435,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "EARNED-INTELLIGENCE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "220f9371a90444a641f01aa448b631e5be896a28ab57db2ca99f948268bedba5"
+   "page_hash": "220f9371a90444a641f01aa448b631e5be896a28ab57db2ca99f948268bedba5",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2111-essence-evidence-law",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-020",
@@ -2829,12 +2940,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATING-MODE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "1990b6264e8d000fd06d654e28188d07849c56e77241db22f09b97caae5d2a82"
+   "page_hash": "1990b6264e8d000fd06d654e28188d07849c56e77241db22f09b97caae5d2a82",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2110-essence-one-canon",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-022",
@@ -3091,12 +3205,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "986fdd111acfc900d4bd6252963e91791dc037b07279f593f026c137392e0994"
+   "page_hash": "986fdd111acfc900d4bd6252963e91791dc037b07279f593f026c137392e0994",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2110-essence-one-canon",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0230",
@@ -3311,12 +3428,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATING-MODE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "59cfe0d91bd1fc48b441018e2cc7f1af237defabf10092f23aee82c0094256fa"
+   "page_hash": "59cfe0d91bd1fc48b441018e2cc7f1af237defabf10092f23aee82c0094256fa",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2110-essence-one-canon",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0240",
@@ -3531,12 +3651,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "8bd028cd010a2a8551df457bfeb13059bae161ef3edeeb701fca3dd9fac2a29d"
+   "page_hash": "8bd028cd010a2a8551df457bfeb13059bae161ef3edeeb701fca3dd9fac2a29d",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2115-essence-qualify-the-seam",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0250",
@@ -4071,12 +4194,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "a63ff15616d3f42cc2b6a56dd44d0f083cc9a5377b2a45325018238807df4bbb"
+   "page_hash": "a63ff15616d3f42cc2b6a56dd44d0f083cc9a5377b2a45325018238807df4bbb",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2111-essence-evidence-law",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0280",
@@ -4291,12 +4417,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "16ed5535c66824d85ce2adbfda51508096124a7b734a0896767d5b38f12621ad"
+   "page_hash": "16ed5535c66824d85ce2adbfda51508096124a7b734a0896767d5b38f12621ad",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2111-essence-evidence-law",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0290",
@@ -4611,12 +4740,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "EARNED-INTELLIGENCE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "5a24f019c84035dcc825e70d0e2d7812dad3db7af6db8573b1847fce7917c7f7"
+   "page_hash": "5a24f019c84035dcc825e70d0e2d7812dad3db7af6db8573b1847fce7917c7f7",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2113-essence-red-is-information",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0311",
@@ -5089,12 +5221,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SMART-NOTE-REFINEMENT",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "2609413cc567c5401e47a29aaeeae535979ec2c2f91bb41f53547c4d36fea0a1"
+   "page_hash": "2609413cc567c5401e47a29aaeeae535979ec2c2f91bb41f53547c4d36fea0a1",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2110-essence-one-canon",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0330",
@@ -5309,12 +5444,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "da3d820452fde67619ac915188998eb11ce26671333069cbbd63dae1ea3437bd"
+   "page_hash": "da3d820452fde67619ac915188998eb11ce26671333069cbbd63dae1ea3437bd",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2111-essence-evidence-law",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-034",
@@ -5608,12 +5746,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "AMENDMENT-VERIFICATION",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "1b03dd0b3e8acd62dcc0b1ef6e2d6574c7574bcc8b9c9131a530000764bb17ed"
+   "page_hash": "1b03dd0b3e8acd62dcc0b1ef6e2d6574c7574bcc8b9c9131a530000764bb17ed",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2111-essence-evidence-law",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-035",
@@ -6029,12 +6170,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "a68245823cd412750524e67b4b9881ae87fef49002a2071a67d9d312e3ef6a12"
+   "page_hash": "a68245823cd412750524e67b4b9881ae87fef49002a2071a67d9d312e3ef6a12",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2111-essence-evidence-law",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0360",
@@ -6352,12 +6496,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "8b57d762e7b41ada69880b9f853ffe116a79c41724e92620ee42bab4f3edb898"
+   "page_hash": "8b57d762e7b41ada69880b9f853ffe116a79c41724e92620ee42bab4f3edb898",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2115-essence-qualify-the-seam",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0370",
@@ -6572,12 +6719,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "5cc22d3656e58c199eaaafc7df5713fc5e3c753b11d5714b84695419cc9a91f1"
+   "page_hash": "5cc22d3656e58c199eaaafc7df5713fc5e3c753b11d5714b84695419cc9a91f1",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2112-essence-count-discipline",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0380",
@@ -6792,12 +6942,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "AMENDMENT-VERIFICATION",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "df70dcc67bfb248c6bce0990d23618ad8aff715569a99b730932e8244d078515"
+   "page_hash": "df70dcc67bfb248c6bce0990d23618ad8aff715569a99b730932e8244d078515",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2112-essence-count-discipline",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0390",
@@ -7021,12 +7174,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "AMENDMENT-VERIFICATION",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "97447d31aa960898210eb7e089f6b37108e11fd647bb01ac788762bbf3fc437d"
+   "page_hash": "97447d31aa960898210eb7e089f6b37108e11fd647bb01ac788762bbf3fc437d",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2112-essence-count-discipline",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0400",
@@ -7261,12 +7417,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "efd2d44aa23f85ffd685fa8ec3d76914c7159fd7293fc0456a21267e8c6d4513"
+   "page_hash": "efd2d44aa23f85ffd685fa8ec3d76914c7159fd7293fc0456a21267e8c6d4513",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2112-essence-count-discipline",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-041",
@@ -7523,12 +7682,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATING-MODE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "568793eae6f5b285c2168f410911433db5309cf326f0ea5c52160711963c11d5"
+   "page_hash": "568793eae6f5b285c2168f410911433db5309cf326f0ea5c52160711963c11d5",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2112-essence-count-discipline",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-042",
@@ -7785,12 +7947,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "ad3d97a0d3ab18c66aa32c5054a6b085c5906ab243e2738aa57ef67da8fd90c9"
+   "page_hash": "ad3d97a0d3ab18c66aa32c5054a6b085c5906ab243e2738aa57ef67da8fd90c9",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2111-essence-evidence-law",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0430",
@@ -8005,12 +8170,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "6fbc878ee28f6358e4e52a3ba203894a8f508a016f633bec86b2bf3bb2363594"
+   "page_hash": "6fbc878ee28f6358e4e52a3ba203894a8f508a016f633bec86b2bf3bb2363594",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2113-essence-red-is-information",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0440",
@@ -8225,12 +8393,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATIONS",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "61cdd6243fc570368ccf7ef7f5dcd162d443011e2b20c92ba051f47294cb1377"
+   "page_hash": "61cdd6243fc570368ccf7ef7f5dcd162d443011e2b20c92ba051f47294cb1377",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2117-essence-the-handoff",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0450",
@@ -8444,12 +8615,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "627ba816e204d6a882864784c87f9a8ae2daf02cfd0d4b88328cea947529b23e"
+   "page_hash": "627ba816e204d6a882864784c87f9a8ae2daf02cfd0d4b88328cea947529b23e",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2117-essence-the-handoff",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0460",
@@ -8666,12 +8840,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "665400a5e610d02581d6a0476f0bd50e78544b3116a0e93c05a11a10daf166a4"
+   "page_hash": "665400a5e610d02581d6a0476f0bd50e78544b3116a0e93c05a11a10daf166a4",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2115-essence-qualify-the-seam",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0470",
@@ -8886,12 +9063,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "ff6e389435d4e3116d183563261764e57acb3b38c09ac846a3570cd4df48aed7"
+   "page_hash": "ff6e389435d4e3116d183563261764e57acb3b38c09ac846a3570cd4df48aed7",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2113-essence-red-is-information",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0480",
@@ -9106,12 +9286,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "b5ce62af270645c6da39da56f041254ae69f3f84a649fd9f0cfb9f2273f25105"
+   "page_hash": "b5ce62af270645c6da39da56f041254ae69f3f84a649fd9f0cfb9f2273f25105",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2113-essence-red-is-information",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0490",
@@ -9326,12 +9509,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "f8c5ceb1522383a82a99889f22c96dcdffbf5b3b81494a0c6de1099e8e6d0270"
+   "page_hash": "f8c5ceb1522383a82a99889f22c96dcdffbf5b3b81494a0c6de1099e8e6d0270",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2111-essence-evidence-law",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0500",
@@ -9571,12 +9757,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "3230e2b2e5d174b82314472df7c326816cc62deeee389cf5b39ac8bd48df86aa"
+   "page_hash": "3230e2b2e5d174b82314472df7c326816cc62deeee389cf5b39ac8bd48df86aa",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2113-essence-red-is-information",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0510",
@@ -9791,12 +9980,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "AMENDMENT-VERIFICATION",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "9d4faf501bab686e500a4270812da6c6a38a16ee3b93a893bfc856360d6ee59b"
+   "page_hash": "9d4faf501bab686e500a4270812da6c6a38a16ee3b93a893bfc856360d6ee59b",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2117-essence-the-handoff",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0520",
@@ -10298,12 +10490,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATING-MODE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "7fff0a8421ade8ab75025a00e1d6a705798a1dc5e3c93778158e00da622c7b4e"
+   "page_hash": "7fff0a8421ade8ab75025a00e1d6a705798a1dc5e3c93778158e00da622c7b4e",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2117-essence-the-handoff",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0540",
@@ -10518,12 +10713,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATING-MODE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "70bb704c1415393c18d1add473de10bf687c5508b003ea3cba3aee68cc63aa26"
+   "page_hash": "70bb704c1415393c18d1add473de10bf687c5508b003ea3cba3aee68cc63aa26",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2114-essence-decide-on-evidence",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0550",
@@ -10718,12 +10916,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATING-MODE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "506addee0f9d7559efa43549dd476a5958546ae26562d6adfd87e9dc74cd00ba"
+   "page_hash": "506addee0f9d7559efa43549dd476a5958546ae26562d6adfd87e9dc74cd00ba",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2114-essence-decide-on-evidence",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0562",
@@ -11118,12 +11319,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "bb2c2f47bf654be55455c038af1f9193684fc6b7ffb9c3a7bd187f2eb528354d"
+   "page_hash": "bb2c2f47bf654be55455c038af1f9193684fc6b7ffb9c3a7bd187f2eb528354d",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2115-essence-qualify-the-seam",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0580",
@@ -11338,12 +11542,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "EARNED-INTELLIGENCE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "f3f4350aa81f1bd485da6a60e2f27fb1e721e7f53b8b48cb368e55ab324cf897"
+   "page_hash": "f3f4350aa81f1bd485da6a60e2f27fb1e721e7f53b8b48cb368e55ab324cf897",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2113-essence-red-is-information",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0590",
@@ -11560,12 +11767,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "7482e584123e996a35d9de174da240ebfc766abece5ac8457993e06b5a5f906d"
+   "page_hash": "7482e584123e996a35d9de174da240ebfc766abece5ac8457993e06b5a5f906d",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2117-essence-the-handoff",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0600",
@@ -11780,12 +11990,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "8f15abda4c45d92ec5f7d2a379e63c9f2ba934e7dc39b85ecec5253aa79f5a64"
+   "page_hash": "8f15abda4c45d92ec5f7d2a379e63c9f2ba934e7dc39b85ecec5253aa79f5a64",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2111-essence-evidence-law",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0610",
@@ -12004,12 +12217,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "0fe9028a073844218a6f6ac02b432fb94765df9c1bdb53a244fd3a0b5b7e36fb"
+   "page_hash": "0fe9028a073844218a6f6ac02b432fb94765df9c1bdb53a244fd3a0b5b7e36fb",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2112-essence-count-discipline",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0620",
@@ -12232,12 +12448,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "833bb2b8480731d5c14c4b4f5cad9ddc788da9c959b20d6cdafd62e598b6cee7"
+   "page_hash": "833bb2b8480731d5c14c4b4f5cad9ddc788da9c959b20d6cdafd62e598b6cee7",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2111-essence-evidence-law",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0630",
@@ -12415,12 +12634,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "1b67c79ad6ffb2727d9439c4e285ee1836accea5ed03b0dc28806bc7d15dab30"
+   "page_hash": "1b67c79ad6ffb2727d9439c4e285ee1836accea5ed03b0dc28806bc7d15dab30",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2115-essence-qualify-the-seam",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-065",
@@ -12435,12 +12657,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "AMENDMENT-VERIFICATION",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "005e4e57f0a9460bc1d2f0ee4ea162c317addf084ee99355563d1aac58fc729f"
+   "page_hash": "005e4e57f0a9460bc1d2f0ee4ea162c317addf084ee99355563d1aac58fc729f",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2111-essence-evidence-law",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-066",
@@ -12455,12 +12680,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "4661d428a76ed18c3ba629319cca5a104078fbb09b73d21f82c5e38e79535355"
+   "page_hash": "4661d428a76ed18c3ba629319cca5a104078fbb09b73d21f82c5e38e79535355",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2111-essence-evidence-law",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-067",
@@ -12475,12 +12703,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "25b65801461cfa3db49e2fe8a1061931f87ec922fb02da6c7b7319d4159e0150"
+   "page_hash": "25b65801461cfa3db49e2fe8a1061931f87ec922fb02da6c7b7319d4159e0150",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2111-essence-evidence-law",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-068",
@@ -12495,12 +12726,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "4b7fadbca5bdd986cde13abaefb68c4ea76d2459a747cbf623b0570acf6b65ef"
+   "page_hash": "4b7fadbca5bdd986cde13abaefb68c4ea76d2459a747cbf623b0570acf6b65ef",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2110-essence-one-canon",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-069",
@@ -12515,12 +12749,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "80f7d733d092c9fab9573c7f3e716c8a5f35b188b309a021c9826135961cc22c"
+   "page_hash": "80f7d733d092c9fab9573c7f3e716c8a5f35b188b309a021c9826135961cc22c",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2115-essence-qualify-the-seam",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-070",
@@ -12535,12 +12772,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "7946e47aaa94ef8cc4b68dbf930f40b0e3dd938e84f4d0640385d7275ae50b27"
+   "page_hash": "7946e47aaa94ef8cc4b68dbf930f40b0e3dd938e84f4d0640385d7275ae50b27",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2115-essence-qualify-the-seam",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-071",
@@ -12555,12 +12795,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "EARNED-INTELLIGENCE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "d58ac87be6b902af80f5eb35c2a943e4462325ce9245e851c6f2372ca104dca1"
+   "page_hash": "d58ac87be6b902af80f5eb35c2a943e4462325ce9245e851c6f2372ca104dca1",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2115-essence-qualify-the-seam",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-072",
@@ -12575,12 +12818,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "2f7b36b58a0dc80efe02fa15b16db57b7578e5da055036e9864eaa999893a681"
+   "page_hash": "2f7b36b58a0dc80efe02fa15b16db57b7578e5da055036e9864eaa999893a681",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2115-essence-qualify-the-seam",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-073",
@@ -12595,12 +12841,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "78a0f315482c7986cdfd9b8a0f37e82d0fec9440876ac3107fc24f2340b0567b"
+   "page_hash": "78a0f315482c7986cdfd9b8a0f37e82d0fec9440876ac3107fc24f2340b0567b",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2111-essence-evidence-law",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-074",
@@ -12615,12 +12864,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "d9e8554692c62d320d28a2c25b806d1f250cabab2396ca198567f1596920f26c"
+   "page_hash": "d9e8554692c62d320d28a2c25b806d1f250cabab2396ca198567f1596920f26c",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2113-essence-red-is-information",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "intelligent_block_id": "IB-SMART-NOTE-20261009-sn0742-self-optimizing-system",
@@ -12680,12 +12932,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "392d1ba758ec373dd3197535116e3397fedc35026fdb2576327428f212127bf3"
+   "page_hash": "392d1ba758ec373dd3197535116e3397fedc35026fdb2576327428f212127bf3",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2114-essence-decide-on-evidence",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-076",
@@ -12700,12 +12955,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "f5ad1c1673dd5a0777cbb7ec759e284f9c5d7c411940965a88065d2bfc547c12"
+   "page_hash": "f5ad1c1673dd5a0777cbb7ec759e284f9c5d7c411940965a88065d2bfc547c12",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2115-essence-qualify-the-seam",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-077",
@@ -12720,12 +12978,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "667864f3889d650e1452ee2aa89ee21378aecbc202fa3ad371fe3caad3af1f04"
+   "page_hash": "667864f3889d650e1452ee2aa89ee21378aecbc202fa3ad371fe3caad3af1f04",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2115-essence-qualify-the-seam",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-078",
@@ -12740,12 +13001,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "a2a4035f53bf4a7fd489aee477bd17ff9b8fbf695f772f29bc4a2f124292224b"
+   "page_hash": "a2a4035f53bf4a7fd489aee477bd17ff9b8fbf695f772f29bc4a2f124292224b",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2112-essence-count-discipline",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "intelligent_block_id": "IB-SMART-NOTE-20261009-sn0781-scorecard-must-run-the-gate",
@@ -12774,12 +13038,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "ba0f5e47df1377651b394ffca91a70a4073df4757e90e10f6f8cefecc3859f8d"
+   "page_hash": "ba0f5e47df1377651b394ffca91a70a4073df4757e90e10f6f8cefecc3859f8d",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2114-essence-decide-on-evidence",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0796",
@@ -12866,12 +13133,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "6f4b65c9d12dc62145132f2b2b432a104a9f21d10746ae179a38732dce5d7074"
+   "page_hash": "6f4b65c9d12dc62145132f2b2b432a104a9f21d10746ae179a38732dce5d7074",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2115-essence-qualify-the-seam",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0800",
@@ -13066,12 +13336,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "6850cc5d94b6f279ca2cc873ffaa8367425ce8c5daba2cf93643898d3c84f20e"
+   "page_hash": "6850cc5d94b6f279ca2cc873ffaa8367425ce8c5daba2cf93643898d3c84f20e",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2115-essence-qualify-the-seam",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0810",
@@ -13286,12 +13559,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "2ee2b99bc497ffb5d49d3dc72eda3be7108babf0889b5a1d49922b36fa273a25"
+   "page_hash": "2ee2b99bc497ffb5d49d3dc72eda3be7108babf0889b5a1d49922b36fa273a25",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2115-essence-qualify-the-seam",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0820",
@@ -13506,12 +13782,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "3107e26182f8e122b1e7ef4dc5b2a2b19362b045380c194b63ceee7e8e14a76e"
+   "page_hash": "3107e26182f8e122b1e7ef4dc5b2a2b19362b045380c194b63ceee7e8e14a76e",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2114-essence-decide-on-evidence",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0830",
@@ -13628,12 +13907,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "d22cdbcbf5b36e0a19eba0be4ff940c0089065aa4cc4d5748b60ecadf9a67f84"
+   "page_hash": "d22cdbcbf5b36e0a19eba0be4ff940c0089065aa4cc4d5748b60ecadf9a67f84",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2111-essence-evidence-law",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-085",
@@ -13648,12 +13930,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "6b5a4e341f1ea13770053d5e8a820c248de031f6b84661137df03f2219251e69"
+   "page_hash": "6b5a4e341f1ea13770053d5e8a820c248de031f6b84661137df03f2219251e69",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2116-essence-composition",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-086",
@@ -13668,12 +13953,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "b8c08c20cbef63928f50343101061e51df7667e952810c6c2b52809bc3b39db3"
+   "page_hash": "b8c08c20cbef63928f50343101061e51df7667e952810c6c2b52809bc3b39db3",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2116-essence-composition",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-087",
@@ -13688,12 +13976,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "b0b66f26a7cde1b87be92ffa309cfa6b8b48076e17508aef0cf4f827976f8fb6"
+   "page_hash": "b0b66f26a7cde1b87be92ffa309cfa6b8b48076e17508aef0cf4f827976f8fb6",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2113-essence-red-is-information",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-088",
@@ -13708,12 +13999,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "d653fbb5a326a663b214f1b24a32fd3a7dc964a0bab8f61a5a18c9c7654d1a0c"
+   "page_hash": "d653fbb5a326a663b214f1b24a32fd3a7dc964a0bab8f61a5a18c9c7654d1a0c",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2116-essence-composition",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-089",
@@ -13728,12 +14022,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "f45cf63051e52db5b5b9f7b5c5db68a7d1a4bc9043df23d896197d89d81a0218"
+   "page_hash": "f45cf63051e52db5b5b9f7b5c5db68a7d1a4bc9043df23d896197d89d81a0218",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2117-essence-the-handoff",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-090",
@@ -13748,12 +14045,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "a25cd2e139291748587132b0c5427c7040d38a11a58483ac1e1492fedaf85825"
+   "page_hash": "a25cd2e139291748587132b0c5427c7040d38a11a58483ac1e1492fedaf85825",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2116-essence-composition",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-091",
@@ -13768,12 +14068,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "5877834775ed2e45173ebdf04ae34d50de0e0276600c2e9a605612910a971b2f"
+   "page_hash": "5877834775ed2e45173ebdf04ae34d50de0e0276600c2e9a605612910a971b2f",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2116-essence-composition",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-092",
@@ -13788,12 +14091,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "b52a211fb4a57ade9fb940dd86ae4032b6b3104d4e512356ce109090c186e0d0"
+   "page_hash": "b52a211fb4a57ade9fb940dd86ae4032b6b3104d4e512356ce109090c186e0d0",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2116-essence-composition",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-093",
@@ -13808,12 +14114,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "4322af2556c475e42e49870499b90d34cbe4eb05aefa307a66d5b0afa1569c1b"
+   "page_hash": "4322af2556c475e42e49870499b90d34cbe4eb05aefa307a66d5b0afa1569c1b",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2116-essence-composition",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-094",
@@ -13828,12 +14137,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "9ce2f9b83155776e5c3b0d3dc808cb932e5d1176a0898ae49cc3c36b0c986589"
+   "page_hash": "9ce2f9b83155776e5c3b0d3dc808cb932e5d1176a0898ae49cc3c36b0c986589",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2113-essence-red-is-information",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-095",
@@ -13848,12 +14160,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "c5cd6ebcf2543124d50d93268ae3b2a3f18a4e5d9fad20ac2930df311a59677f"
+   "page_hash": "c5cd6ebcf2543124d50d93268ae3b2a3f18a4e5d9fad20ac2930df311a59677f",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2116-essence-composition",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-096",
@@ -13868,12 +14183,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "e48480c16f408243aca22eca8bbee0cb99d327986bc86c167c74bb9726f762df"
+   "page_hash": "e48480c16f408243aca22eca8bbee0cb99d327986bc86c167c74bb9726f762df",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2116-essence-composition",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-097",
@@ -13888,12 +14206,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "10bd538992efb47c46e688400e8e9b64c2fef39d6bf925938dc6e8e9d1158e15"
+   "page_hash": "10bd538992efb47c46e688400e8e9b64c2fef39d6bf925938dc6e8e9d1158e15",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2113-essence-red-is-information",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-098",
@@ -13908,12 +14229,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "041eddf8796987de676376872c39bbf409e8ec0fc50f0aec5d5695d258d1ce4a"
+   "page_hash": "041eddf8796987de676376872c39bbf409e8ec0fc50f0aec5d5695d258d1ce4a",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2113-essence-red-is-information",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-099",
@@ -13928,12 +14252,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "afcbb562f18b94497feb156c8efcab098dd06690ae482566581f416f62582f37"
+   "page_hash": "afcbb562f18b94497feb156c8efcab098dd06690ae482566581f416f62582f37",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2118-essence-the-mirror",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-100",
@@ -13968,12 +14295,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "5db9d75f2e85f40107a91e629cc7e77e193c4c93a580bc1774e56f88b86e045d"
+   "page_hash": "5db9d75f2e85f40107a91e629cc7e77e193c4c93a580bc1774e56f88b86e045d",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2115-essence-qualify-the-seam",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-102",
@@ -13988,12 +14318,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "6e9bd8364b7fc28aabe729cfff4767b1feacd5af424008f1c9f4a3e6d8a302a0"
+   "page_hash": "6e9bd8364b7fc28aabe729cfff4767b1feacd5af424008f1c9f4a3e6d8a302a0",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2116-essence-composition",
+   "retired_at": "2026-11-06T03:29:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1063",
@@ -24285,6 +24618,366 @@
     "Reports",
     "Smart Lists"
    ]
+  },
+  {
+   "smart_note_id": "SN-2107",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2107-essence-the-foundation",
+   "slug": "essence-the-foundation",
+   "title": "The Machinery of Intelligence: Notes, Blocks, and the Nine Nodes",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-foundation.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-foundation.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-foundation.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2107-essence-the-foundation.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T03:29:00Z",
+   "date": "2026-11-05",
+   "page_hash": "d54b53a13e7e9291f96c13dfdb0a4308ea6a7856b64f534c65f49a281827f5b4",
+   "content_hash": "f9b52e0fb06352882f9660d0d59000cc5c4e3c8436a0948c53f5b76a589feb48",
+   "one_line": "A Smart Note is the human command that starts the capture process; the thing the machine actually keeps is an Intelligent Block; and the nine Master Nodes are not nine copies of the note but the nine processing responsibilities of the organism (SN-002). Captured intelligence is not automatically *active* intelligence \u2014 it becomes active only when its meaning is preserved, its truth and authority boundaries are understood, it is connected to canonical intelligence, and an authorized successor can retrieve and use it (SN-015). A still-unratified proposal would sharpen capture further: give every captured intelligence a retention class and a capture type, and route each block through the nine nodes in a defined processing order (SN-011).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "sep-1"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2108",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2108-essence-continuity",
+   "slug": "essence-continuity",
+   "title": "Continuity: Intelligence That Survives Its Thinker",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-continuity.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-continuity.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-continuity.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2108-essence-continuity.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T03:29:00Z",
+   "date": "2026-11-05",
+   "page_hash": "7678106c5fcd7a13548634b9bdb9d286035fda046e8752ccf3a6de89e8c695ed",
+   "content_hash": "b1e275549a379f90ca6603e0dadcf04a81befe41c78659ea5e961cf99541fe02",
+   "one_line": "NayaPOWER's deeper category is not AI memory \u2014 it is governed continuity of intelligence across runtimes: identity, authority, proven knowledge, live state, and the one next action, carried forward so a new runtime does not start from zero (SN-007). When the human has to re-explain what the system should already know, that is an architectural failure, never a human one (SN-008). Continuity includes governed forgetting \u2014 supersession declared, history classified, stale intelligence never posing as current (SN-009) \u2014 and it compounds only what was captured: every outcome can teach, but only distilled, documented, connected, retrievable learning actually compounds (SN-014).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "sep-1"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2109",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2109-essence-act-first",
+   "slug": "essence-act-first",
+   "title": "Earned Intelligence: Conscience and Competence Grow From Verified Miles",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-act-first.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-act-first.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-act-first.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2109-essence-act-first.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T03:29:00Z",
+   "date": "2026-11-05",
+   "page_hash": "e72dd4ada303c44fca0b59a68b4b3b8302600db6c26fd0922f22fe456bcd5165",
+   "content_hash": "57a963535e778452a45c77f145bf4c585caefb389ec64ba5e8528be2c8ed78c9",
+   "one_line": "Practical intelligence increases through verified accumulated experience even when the underlying foundation model never changes \u2014 the model is the engine; earned intelligence is the driver getting better with every mile, provided the miles are real and the outcomes verified (SN-006). Moral judgment grows the same way: a subset of distilled, verified experience compounding into something functionally like conscience \u2014 right action learned from accumulated evidence of benefit and harm, not from a rulebook alone (SN-005). And the posture that makes the growth bearable for the human is asymmetric: extreme rigor internally, extraordinary simplicity externally (SN-010).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "sep-1"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2110",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2110-essence-one-canon",
+   "slug": "essence-one-canon",
+   "title": "One Canon, No Collisions",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-one-canon.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-one-canon.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-one-canon.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2110-essence-one-canon.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T03:29:00Z",
+   "date": "2026-11-05",
+   "page_hash": "1752fe222ee83bd84f84d5fe1f5fba386bee2da7c71c19a7504513499698d159",
+   "content_hash": "0b962cc8da276c1b7f16d1f1db92f2013589ca1e420b1344928b29d51c6ab029",
+   "one_line": "For every thing there is exactly one canonical form in one canonical place; everything else is a view, a proposal, or a collision to resolve (SN-018, SN-0114, SN-0129). Number claims in the shared space are computed by a three-layer scan \u2014 board, open PR heads, commit graph \u2014 never enumerated from memory, and first claim stands (SN-022, SN-024, SN-0115). When collisions happen anyway, the owning lane calls canon by explicit scorecard, losers are rehomed rather than deleted, and true multi-version collisions converge by scored selection to one survivor (SN-0116, SN-0117).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "sep-1"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2111",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2111-essence-evidence-law",
+   "slug": "essence-evidence-law",
+   "title": "Asserted Is Not Verified: The Evidence Law",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-evidence-law.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-evidence-law.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-evidence-law.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2111-essence-evidence-law.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T03:29:00Z",
+   "date": "2026-11-05",
+   "page_hash": "36074d1b2f87dc8c8c07aae3d233c27460cc763c4ab973a53a5594efda922de1",
+   "content_hash": "ad03e4563acacbee1a9fd397c9776c453f527891ae201e9bad0ddc7f79ba9235",
+   "one_line": "Inference stated as fact is the root defect of the corpus, and every rule here makes its cure mechanical: verification happens in a clean room at the exact pinned SHA (SN-028); authorization binds to (action, SHA, moment) and inherits nothing (SN-029); the pushed bytes and the merged artifact are what get judged, at the pin, with negatives that can actually fail (SN-050, SN-061); comparisons resolve both sides at their own refs (SN-043), evidence channels match the question (SN-036), and absence claims show the search actually ran (SN-067). A bound hash is not a computation, a version label is not an evaluation, and invocation is not consumption is not enforcement (SN-063, SN-084, SN-073) \u2014 and no fix is proven until its failing case has been published red on the frozen SHA (SN-066).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "sep-1"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2112",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2112-essence-count-discipline",
+   "slug": "essence-count-discipline",
+   "title": "The Discipline of the Count: Merges, Indexes, and the Moving Baseline",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-count-discipline.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-count-discipline.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-count-discipline.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2112-essence-count-discipline.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T03:29:00Z",
+   "date": "2026-11-05",
+   "page_hash": "a78667152947b0c8fdac710dde6e252c81a3d3f541fcd14f65a0ac2a1f1199f0",
+   "content_hash": "885cdfae0188547af078e246dc0ca5fcee816212b999f3dc07a2d12691217f3f",
+   "one_line": "A generated index is a claim about the tree, and it drifts the moment the tree moves \u2014 so pins are read as intent, not accident (SN-038), and the count ledger travels with the change that moves the count: regenerate the index and deliberately bump the ledger in the same merge (SN-062, SN-078). Merge claims are audited against the reconciled base, and no reconciliation artifact means no reconciliation claim (SN-039, SN-040). Caveats carry expiry triggers (SN-041), replaced diagnoses are declared SUPERSEDED in public (SN-042), and expected values are recomputed at the merge tip \u2014 correct-at-base is not sufficient-at-tip (SN-0128).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "sep-1"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2113",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2113-essence-red-is-information",
+   "slug": "essence-red-is-information",
+   "title": "Red Is Information: Attribute the Failure Before You Blame Anything",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-red-is-information.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-red-is-information.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-red-is-information.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2113-essence-red-is-information.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T03:29:00Z",
+   "date": "2026-11-05",
+   "page_hash": "0cc5f69dd99627eb4ad7ab1e64b55c525957cad5459ea999f3658391c4cabe63",
+   "content_hash": "e409a584b51baf22f4202975b9c277329a616719dcd810f12a2b653f3f8a2f5b",
+   "one_line": "A red badge is a conclusion about a run, not a diagnosis of the thing the run was checking \u2014 so classify the failure and name its owner (code, dispatch, guard, environment, platform, harness) before any repair (SN-031, SN-044). CI-trigger claims are scoped by workflow event: SN-048's absolute (\"API pushes never trigger Actions\") was falsified and corrected by SN-074, while SN-051's remedy \u2014 local verification as the gate where the push path is genuinely CI-blind \u2014 survives (SN-048, SN-051, SN-074). Guards are judged on false positives (SN-049), proof environments are reset and the reset recorded (SN-087), no change is blamed without the clean-main control (SN-059), harnesses die under their own name (SN-097), and platform deltas are investigated to the byte while the untraced residue stays honestly UNKNOWN (SN-094, SN-098).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "sep-1"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2114",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2114-essence-decide-on-evidence",
+   "slug": "essence-decide-on-evidence",
+   "title": "Decide on Evidence; Keep UNKNOWN Honest",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-decide-on-evidence.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-decide-on-evidence.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-decide-on-evidence.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2114-essence-decide-on-evidence.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T03:29:00Z",
+   "date": "2026-11-05",
+   "page_hash": "17f06f52e4cc8fb307a8073cba076097df9f8d2c464ff0d118d468a536bda6bc",
+   "content_hash": "874b91e222a8a43b73002c3bac42a31c697e4e007e28e34d6344e3cbf559b48b",
+   "one_line": "Decide in three moves: reason the ACT / READ / ASK choice itself on named factors before spending the director's attention (SN-013); kill any scored winner that cannot be evidenced to exist (SN-055); and when the deciding fact arrives, let evidence beat scoring \u2014 reverse your own executed decision in public (SN-056). Commitments bind, and overrides of them are logged as overrides (SN-075); a gate that withholds certification is succeeding, not failing (SN-079); unresolved conflict ends in exactly one UNKNOWN with its missing evidence named (SN-083), and an ambiguous director number freezes work on that axis until ruled (SN-0113). Review axes go to the strongest eye (SN-0120), and QA belongs to the builder end-to-end \u2014 the director is never the inspector (SN-0123).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "sep-1"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2115",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2115-essence-qualify-the-seam",
+   "slug": "essence-qualify-the-seam",
+   "title": "Qualify the Seam, Not the Story: Kernel Qualification Discipline",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-qualify-the-seam.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-qualify-the-seam.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-qualify-the-seam.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2115-essence-qualify-the-seam.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T03:29:00Z",
+   "date": "2026-11-05",
+   "page_hash": "431d6f96b56739212f29e0c4cc40f5280be4cd2f9edb41750f3825f9c2627470",
+   "content_hash": "ccfb8f1ec5030af2e35581d9beeebe93a769103b1ddd39486df1b295bcf8b69d",
+   "one_line": "A spec can read beautifully and still not be qualified: semantic pass and machine qualification are two explicit bars, and a strong CANDIDATE that hasn't passed the machine bar is an honest state, not a failed one (SN-025). Qualification is mechanical at every seam \u2014 front door fail-visible on unknown keys and fail-closed on malformed state (SN-037), audit evidence segregated from verdict tallies (SN-047), decided options re-verified at field level in a clean worktree (SN-058), bindings computed by whoever sees the bytes (SN-069), idempotency proven under replay rather than inferred from retries (SN-070), LEARN's four dimensions never collapsed (SN-071). Tests are qualification subjects too: xfails are proven, not wrapped (SN-072); a failing test may itself be the artifact (SN-076); reports are computed from the consuming state (SN-077). Freezes are immutable \u2014 retire and re-freeze, never mutate (SN-080); containment refuses rather than degrades (SN-081); evidence joins name the execution (SN-082); identities compare by platform semantics (SN-101).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "sep-1"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2116",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2116-essence-composition",
+   "slug": "essence-composition",
+   "title": "Composition Is Proven Handoff by Handoff",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-composition.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-composition.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-composition.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2116-essence-composition.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T03:29:00Z",
+   "date": "2026-11-05",
+   "page_hash": "366a185244533d86dfb745b902a6b0799eb6df62c5d568a76f1c4137afbe383b",
+   "content_hash": "c72e3545678c43cbbe71d59b0faee31735ded754909583958864af8083defc5d",
+   "one_line": "Components can each be excellent while the organism does not exist \u2014 composition is proven only through the default wiring, with genuine data, handoff by handoff. Trust properties must be invariants, not conventions: a store anyone in-process can write makes resolve-then-trust prove nothing about origin (SN-085). Qualification subjects are frozen and fetchable (SN-086); fixture substitution at a claimed seam voids the integration claim (SN-088); a PASS on receipt family X never qualifies family Y (SN-090); contract mismatches are resolved at the source under the five-class binding taxonomy, with UNKNOWN as a complete binding (SN-091). Findings name their consequence class, gap tests self-invalidate, traces stop at the first exact failing handoff, and semantic gaps are named \u2014 never invented across (SN-092, SN-093). Boundary fixes compose at the consumer from the producer's sealed facts (SN-095), data bridges belong to the composition root and transport without judging (SN-096), and import-still-red proves the missing seam lives in the host (SN-102).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "sep-1"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2117",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2117-essence-the-handoff",
+   "slug": "essence-the-handoff",
+   "title": "The Handoff Is a Claim: Delivery, Coverage, and Duplicates Between Lanes",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-handoff.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-handoff.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-handoff.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2117-essence-the-handoff.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T03:29:00Z",
+   "date": "2026-11-05",
+   "page_hash": "9fee13f8748ac9aa99431aaa2f1101203cc66b0113a95935b47096d552465a4a",
+   "content_hash": "4811c9672bedae2a5d38a299bbd2ca019f3ece539d09e4ad9363f454efaeb4cd",
+   "one_line": "Work handed between lanes crosses three gaps \u2014 delivery, coverage, duplication \u2014 and each has a named discipline: a lost announcement is not lost work (repair the channel, repost the verified receipt, never rerun) (SN-045); verification coverage is pinned to a commit, so every head move opens a gap that must be named with its head (SN-046); duplicate repairs are caught by diffing the diffs (SN-052) and duplicate artifacts are owned openly and consolidated in public (SN-054). Authority shapes handoffs too: you supersede by comment on artifacts you don't own \u2014 the opener owns the close (SN-060). Verifiers publish their own numbers and make deltas interpretable with parent comparisons (SN-089); intake verification does not protect consumption-time state (SN-0112); and a push receipt proves nothing about contents \u2014 verify the tree (SN-0125).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "sep-1"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2118",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2118-essence-the-mirror",
+   "slug": "essence-the-mirror",
+   "title": "The Mirror: Names, Scores, Seals, and the Honesty of Review",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-mirror.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-mirror.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-mirror.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2118-essence-the-mirror.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T03:29:00Z",
+   "date": "2026-11-05",
+   "page_hash": "1d81f2dd52c762a861ba292a9bec60a09ae183378254581daf2fc1c3495506f7",
+   "content_hash": "e9f3180ff93c82ed893305254f985a3d90420e8f611f2a45c6943f343128ba19",
+   "one_line": "Review fails in predictable ways, and each has a named cure: don't promise what isn't proven \u2014 write the promise gate into the record with gaps enumerated and the truth state stamped (SN-099); name things what they are (SN-0106); let an independent scorekeeper hold a baseline that scores can fall from (SN-0107); know that a seal proves consistency, not authorship (SN-0111); make verifiers fail closed, never crash (SN-0118), and end every verification by naming what it did not verify (SN-0121); when your numbers diverge from the spec, re-read the spec (SN-0122); lift frozen-baseline values verbatim instead of inventing them (SN-0119); and keep capture controls off output surfaces \u2014 the Hub is the screen, not the camera (SN-0124).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "sep-1"
+   ]
   }
  ],
  "sequence_policy": {
@@ -24295,5 +24988,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "28d10b36f0eb81b010ac32361eda215212e3316151f805870447a5b4af07ee66"
+ "corpus_manifest_hash": "57a6ae0d98bc8bd97ffc4c535fb4bfd5e529d2e89e48310577459390b76509f8"
 }

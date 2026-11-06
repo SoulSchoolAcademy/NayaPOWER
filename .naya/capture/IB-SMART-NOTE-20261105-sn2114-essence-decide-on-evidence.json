@@ -1,0 +1,47 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2114",
+  "title": "Decide on Evidence; Keep UNKNOWN Honest",
+  "slug": "essence-decide-on-evidence",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-decide-on-evidence.md",
+  "tone": "magenta",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:29:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Decide in three moves: reason the ACT / READ / ASK choice itself on named factors before spending the director's attention (SN-013); kill any scored winner that cannot be evidenced to exist (SN-055); and when the deciding fact arrives, let evidence beat scoring — reverse your own executed decision in public (SN-056). Commitments bind, and overrides of them are logged as overrides (SN-075); a gate that withholds certification is succeeding, not failing (SN-079); unresolved conflict ends in exactly one UNKNOWN with its missing evidence named (SN-083), and an ambiguous director number freezes work on that axis until ruled (SN-0113). Review axes go to the strongest eye (SN-0120), and QA belongs to the builder end-to-end — the director is never the inspector (SN-0123).",
+    "human_view": "Good decisions here follow a pattern: think before you act, make sure the winning option actually exists, and when a real fact shows up that beats your scoring, change your mind in public — that's strength, not embarrassment. Promises you make about holding off are binding, and if the boss overrides one, it gets written down as an override. When something can't be settled, you say exactly what's missing instead of guessing. And the boss never gets handed half-checked work to inspect — checking is the builder's whole job.",
+    "child_view": "Imagine picking the best plan in a contest. First, check the winning plan is actually possible — a plan you can't really do doesn't win. If you learn a new fact that changes the answer, say so out loud and change your pick; that's not losing, that's being smart. If you promised to wait, you wait — unless the teacher says otherwise, and then everyone hears the teacher say it. And you never hand in homework for the teacher to check your spelling — you check it yourself, twice, first.",
+    "grandma_view": "Dear, it's grown-up decision-making. Deliberate before you spend someone else's time. Make sure the chosen path exists before you celebrate it. Change your mind openly when the facts change — pride is more expensive than a correction. Keep your promises, and when a promise is overridden, let the record show who overrode it. And never make the busiest person in the house proofread your work.",
+    "ai_view": "Run the ACT/READ/ASK factors explicitly before spending the director's attention (SN-013). Feasibility-screen every scored option — no evidence of possibility, no option (SN-055). When the deciding fact arrives, reverse in public with the evidence attached, whatever it costs your scorecard (SN-056). Treat your board commitments as constraints and log overrides as overrides (SN-075). Report gate holds as gate successes (SN-079). Keep exactly one UNKNOWN, with its missing evidence named (SN-083); freeze on ambiguous director numbers and ask once, precisely (SN-0113). Route blind axes to the strongest eye at pinned targets (SN-0120), and never ship the director a piece for inspection — ship the finished loop or the honest state (SN-0123).",
+    "what_it_means": "Nine notes are the team's decision hygiene: reasoned triage, feasible options, reversible pride, binding commitments, honest unknowns, and QA owned by the builder. A cold reader holding only this essence can still make — and audit — a decision the way these notes demand.",
+    "whats_inside": [
+      "ACT / READ / ASK is itself a reasoned decision on named factors, made to protect the director's attention (SN-013).",
+      "Unevidencable options are removed before scoring concludes; scores never resurrect them (SN-055).",
+      "A deciding fact outranks a scorecard — including your own, including after execution; reversals are public and evidenced (SN-056).",
+      "Committed holds bind; higher-authority overrides are logged as overrides (SN-075).",
+      "A withheld certification is a gate succeeding; the hold is graded, never repaired away (SN-079).",
+      "Conflict resolution ends in resolved legs plus exactly one UNKNOWN with its missing evidence named (SN-083); ambiguous director numbers freeze work on that axis until ruled (SN-0113).",
+      "Review axes are assigned to the strongest eye, pinned to versioned targets (SN-0120); QA is the builder's loop, end to end — the director is never the inspector (SN-0123)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-1"
+    ],
+    "covers": [
+      "SN-013",
+      "SN-055",
+      "SN-056",
+      "SN-075",
+      "SN-079",
+      "SN-083",
+      "SN-0113",
+      "SN-0120",
+      "SN-0123"
+    ]
+  },
+  "page_hash": "17f06f52e4cc8fb307a8073cba076097df9f8d2c464ff0d118d468a536bda6bc",
+  "content_hash": "874b91e222a8a43b73002c3bac42a31c697e4e007e28e34d6344e3cbf559b48b"
+}

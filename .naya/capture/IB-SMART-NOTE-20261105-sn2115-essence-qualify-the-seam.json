@@ -1,0 +1,52 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2115",
+  "title": "Qualify the Seam, Not the Story: Kernel Qualification Discipline",
+  "slug": "essence-qualify-the-seam",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-qualify-the-seam.md",
+  "tone": "purple",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:29:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A spec can read beautifully and still not be qualified: semantic pass and machine qualification are two explicit bars, and a strong CANDIDATE that hasn't passed the machine bar is an honest state, not a failed one (SN-025). Qualification is mechanical at every seam — front door fail-visible on unknown keys and fail-closed on malformed state (SN-037), audit evidence segregated from verdict tallies (SN-047), decided options re-verified at field level in a clean worktree (SN-058), bindings computed by whoever sees the bytes (SN-069), idempotency proven under replay rather than inferred from retries (SN-070), LEARN's four dimensions never collapsed (SN-071). Tests are qualification subjects too: xfails are proven, not wrapped (SN-072); a failing test may itself be the artifact (SN-076); reports are computed from the consuming state (SN-077). Freezes are immutable — retire and re-freeze, never mutate (SN-080); containment refuses rather than degrades (SN-081); evidence joins name the execution (SN-082); identities compare by platform semantics (SN-101).",
+    "human_view": "Building the machine's brain taught the team how strict \"checked\" has to be. A specification that reads well isn't qualified until machines can test it. A test that \"passes\" might be wrapped so it can't fail. A report can look green because it was computed from a copy, not the real thing. A frozen record stays frozen even when it's wrong — you retire it openly and freeze a corrected one. And when the platform can't do something safely, the machine refuses instead of quietly doing it less safely.",
+    "child_view": "Imagine checking a robot's homework with a really strict checklist. The story can sound great, but the checklist has to pass too. If a test is supposed to fail and you wrap it in a blanket so it \"passes,\" that's cheating. If a saved game is frozen, you don't sneak in and change it — you save a new one and say why. And if the playground doesn't have the safety fence, you don't pretend a rope is a fence — you don't play that game there.",
+    "grandma_view": "Dear, it's craftsmanship standards. Work is checked against the drawing, measurement by measurement, not by whether it looks finished. Sealed records stay sealed. Safety equipment is never replaced with something that merely looks similar. And when two receipts look identical, you still check whether they came from the same job — papers can match while the work differs.",
+    "ai_view": "Qualify at both bars and name which one a subject passed (SN-025); run the spec-vs-kernel alignment check read-only and publish the gaps (SN-064). Build boundaries fail-visible/fail-closed (SN-037), segregate audit receipts from tallies (SN-047), and re-verify decided options at field level in a clean worktree (SN-058). Assign every binding to the layer that sees the bytes (SN-069); prove idempotency under replay, conflict, concurrency, interruption, and persistence failure (SN-070); report LEARN's four dimensions separately, always (SN-071). Prove xfails by their failure (SN-072); reproduce defects single-variable and suspect your own test first-class (SN-076); compute reports from the consuming state (SN-077). Retire-and-refreeze, never mutate (SN-080); refuse where containment primitives are absent (SN-081); join evidence by execution identity (SN-082); normalize identities by platform semantics before comparing (SN-101).",
+    "what_it_means": "Fifteen notes are the qualification craft of the kernel era: how a claim about a component becomes a verdict a stranger can trust — two bars, honest boundaries, tests that can fail, reports from real state, freezes that hold, and refusals that stay refusals. A cold reader holding only this essence can still qualify a seam the way these notes demand.",
+    "whats_inside": [
+      "Two bars, kept distinct: semantic pass ≠ machine-qualified; CANDIDATE is an honest state, not a failed one (SN-025).",
+      "Amended specs vs frozen kernels produce named forward gaps, never \"aligned\" by courtesy (SN-064).",
+      "Boundary posture: fail-visible on unknown keys, fail-closed on malformed state (SN-037); audit evidence never feeds verdict tallies (SN-047); decided options verified field-level at the exact commit (SN-058).",
+      "Bindings are computed by whoever sees the bytes (SN-069); idempotency is proven under replay conditions, never inferred from retries (SN-070); LEARN's four dimensions are never collapsed (SN-071).",
+      "Xfails are proven, not wrapped (SN-072); failing tests are themselves suspects — single-variable reproduction, retract with requalification (SN-076); reports compute from consuming state (SN-077).",
+      "Freezes are immutable — retire and re-freeze, never mutate (SN-080); containment refuses rather than degrades (SN-081); evidence joins name the execution (SN-082); identity compares by platform semantics (SN-101)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-1"
+    ],
+    "covers": [
+      "SN-025",
+      "SN-037",
+      "SN-047",
+      "SN-058",
+      "SN-064",
+      "SN-069",
+      "SN-070",
+      "SN-071",
+      "SN-072",
+      "SN-076",
+      "SN-077",
+      "SN-080",
+      "SN-081",
+      "SN-082",
+      "SN-101"
+    ]
+  },
+  "page_hash": "431d6f96b56739212f29e0c4cc40f5280be4cd2f9edb41750f3825f9c2627470",
+  "content_hash": "ccfb8f1ec5030af2e35581d9beeebe93a769103b1ddd39486df1b295bcf8b69d"
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2112",
+  "title": "The Discipline of the Count: Merges, Indexes, and the Moving Baseline",
+  "slug": "essence-count-discipline",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-count-discipline.md",
+  "tone": "orange",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:29:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A generated index is a claim about the tree, and it drifts the moment the tree moves — so pins are read as intent, not accident (SN-038), and the count ledger travels with the change that moves the count: regenerate the index and deliberately bump the ledger in the same merge (SN-062, SN-078). Merge claims are audited against the reconciled base, and no reconciliation artifact means no reconciliation claim (SN-039, SN-040). Caveats carry expiry triggers (SN-041), replaced diagnoses are declared SUPERSEDED in public (SN-042), and expected values are recomputed at the merge tip — correct-at-base is not sufficient-at-tip (SN-0128).",
+    "human_view": "Keeping score sounds trivial until many people change the thing being counted at once. These rules keep the scoreboard honest: the expected numbers are deliberate, not accidental; whoever changes the count updates the scoreboard in the same move; claims about how a merge was checked need the paperwork to prove it; warnings carry their own expiry dates; and before any fix lands, you re-check the target as it stands *now*, not as it stood when you started.",
+    "child_view": "Imagine the class keeps a chart of how many books are in the library. If someone adds a book, they update the chart the same day — that's part of adding a book. If a note on the chart says \"careful, this shelf is wobbly,\" it also says when to take the note down. And if you count the books to check the chart, you count them today, not from last week's number.",
+    "grandma_view": "Dear, it's good housekeeping for shared records. The ledger and the shelves must agree, and the person who changes the shelves updates the ledger. Claims about what was checked need the receipts. Old warnings get taken down when they're no longer true — announced, not just quietly removed. And you always count what's actually there now.",
+    "ai_view": "Treat every pin as intent: diagnose drift by enumerating the deliberate deltas before touching the generator (SN-038). Ship index regen + count-ledger bump inside the same PR that moves a counted domain (SN-062, SN-078). Audit merges against the reconciled base (SN-039); refuse reconciliation claims without artifacts (SN-040); attach an expiry trigger to every caveat you write (SN-041); declare supersessions on the board with the evidence attached (SN-042). Before merging any drift repair, recompute the expected value at the live tip and park the residual as a named follow-up (SN-0128).",
+    "what_it_means": "Eight notes govern the unglamorous machinery that keeps a fast-moving shared tree countable: pins as intent, ledgers as part of the change, merges audited against their true bases, caveats with lifetimes, and tips re-measured at landing. A cold reader holding only this essence can still keep the count honest — which is all these notes exist to teach.",
+    "whats_inside": [
+      "A count pin is a deliberate claim; drift is diagnosed against intent (what was added/removed on purpose), never absorbed by blind regeneration (SN-038).",
+      "Index regeneration + ledger bump travel with the change that moves the count — same merge, same checklist (SN-062, SN-078).",
+      "Merge claims are audited against the reconciled base; reconciliation claims require reconciliation artifacts (SN-039, SN-040).",
+      "Every caveat carries an expiry trigger or it is a defect in waiting (SN-041); every replaced diagnosis is declared SUPERSEDED in public, with evidence (SN-042).",
+      "Expected values are recomputed at the merge tip, not the PR base, before a drift repair lands (SN-0128)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-1"
+    ],
+    "covers": [
+      "SN-038",
+      "SN-039",
+      "SN-040",
+      "SN-041",
+      "SN-042",
+      "SN-062",
+      "SN-078",
+      "SN-0128"
+    ]
+  },
+  "page_hash": "a78667152947b0c8fdac710dde6e252c81a3d3f541fcd14f65a0ac2a1f1199f0",
+  "content_hash": "885cdfae0188547af078e246dc0ca5fcee816212b999f3dc07a2d12691217f3f"
+}
