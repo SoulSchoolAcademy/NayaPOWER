@@ -15613,14 +15613,29 @@ function switchChart(viewKey, chartType){
       else if(chartType === 'donut') html = chartDonutHTML(viewKey);
       else if(chartType === 'bignum') html = chartBigNumHTML(viewKey);
       else if(chartType === 'gauge'){
-        var cfg = CHART_CONFIGS[viewKey];
-        if(cfg){
-          var demo = window[cfg.demo];
-          var win = _chartWindow[viewKey] || 'all';
-          var d = (demo && (demo[win] || demo.all)) || {pct: 0};
-          var fn = window[cfg.gauge];
-          if(fn) html = fn(d.pct || 0);
-        }
+        /* 2026-11-06 — FIX 6 REWORK: the old path resolved the gauge
+           function via window[cfg.gauge], but every gauge/render
+           function lives in this script's IIFE scope, not on window —
+           window.salesGaugeSVG is undefined live, so fn was always
+           undefined, html stayed '', and the gauge + its readout never
+           came back after a switch (the || 0 fix sat in a dead path).
+           Same IIFE-scope class of bug as the fix-7 rework, fixed the
+           same way: an in-scope map of REAL function references (the
+           fix-7 _closeMap pattern, line ~17170). The gauge branch now
+           calls the view's own *ViewRender — the exact path the open
+           path uses — which rebuilds teeth + gauge SVG (pct 0, needle
+           at 0: no goal is defined, so no percent is fabricated) + the
+           "— No goal set yet" readout, plus orbs/total/pills. The
+           render fns read _chartType under the 'invs'/'posts' alias
+           keys for invites/creations, so sync the alias key too —
+           belt-and-braces against any stale alias value. */
+        var _renderMap = {sales:salesViewRender, joins:joinsViewRender, notes:notesViewRender, likes:likesViewRender, comments:commentsViewRender, shares:sharesViewRender, creations:creationsViewRender, saves:savesViewRender, smartlink:smartlinkViewRender, invites:invitesViewRender, invs:invitesViewRender, posts:creationsViewRender};
+        var _rk = (viewKey==='invites') ? 'invs' : (viewKey==='creations') ? 'posts' : viewKey;
+        _chartType[_rk] = 'gauge';
+        var _rfn = _renderMap[viewKey] || _renderMap[gk];
+        if(typeof _rfn === 'function'){ console.log('switchChart', viewKey, chartType, 'via render'); _rfn(); return; }
+        /* No render fn (should never happen): fall through with html ''
+           so the stale gauge is left untouched, never blanked. */
       }
     }catch(e){ console.error('chart render error:', e); html = '<div style="color:#fff">Error</div>'; }
     console.log('switchChart', viewKey, chartType, 'html length:', html.length, 'gaugeEl:', !!gaugeEl);
