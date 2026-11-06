@@ -1,6 +1,6 @@
 # SMART FACTORY — INVENTORY (signature pieces + ultimate page templates)
 
-**DRAFT — the Clarity Confirmation Act is NOT stamped by Shawn; nothing here is law yet.**
+**DRAFT — the Clarity Confirmation Act is NOT stamped by Shawn. The Intelligent Block Rules (§5 companion) are LAW, ratified 2026-11-06 by Shawn's "1000% YES!"; the rest of the Act remains DRAFT.**
 
 The NIA design official signature pieces and the ultimate template for each standard page, as ordered by Shawn 2026-11-06 00:21Z. Harvest-only: every placement below traces to a source file + line. If it has no source here, it is in GAPS, not in the inventory.
 
@@ -100,7 +100,7 @@ Canonical repo home (verified live on GitHub main 2026-11-06): `BRAIN/10-INTERFA
 
 ## Act / PI links (the circle)
 - Act draft: `~/workspace/team-nitro/clarity-confirmation-act-DRAFT-20261106.md`
-- Companion (intelligent block rules): `~/workspace/team-nitro/hub-board-edit/intelligent-block-rules-DRAFT-20261106.md`
+- Companion (intelligent block rules, LAW — ratified 2026-11-06): `~/workspace/team-nitro/hub-board-edit/intelligent-block-rules-LAW-20261106.md`
 - Design canon: `~/workspace/team-nitro/DESIGN-LAWS.md`, `THE-PLAYBOOK.md`, `DESIGN-INTELLIGENCE-REPORT.md`, `laws/THE-REAL-OBJECT-LAW.md`, `NAYA-PROTOCOL.md`
 - Project Intelligence: `~/workspace/project-intelligence/` — sync manifest: `PI-SYNC-MANIFEST-20261106.md` (exact state.json entry for the Builder to file; this Factory role does NOT write state.json).
 - Repo Factory catalog (exists, per Act §6): `BRAIN/10-INTERFACES/DESIGN-BLOCKS/` + `PARTS-REGISTRY-V1.json` + `SMART-FACTORY-CANON` in `~/workspace/nayapower-repo/`.

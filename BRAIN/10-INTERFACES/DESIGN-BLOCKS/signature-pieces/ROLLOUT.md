@@ -1,6 +1,6 @@
 # ACT ROLLOUT — every page, board, button, icon, tile, block
 
-**DRAFT — the Clarity Confirmation Act is NOT stamped by Shawn; nothing here is law yet.**
+**DRAFT — the Clarity Confirmation Act is NOT stamped by Shawn. The Intelligent Block Rules (§5 companion) are LAW, ratified 2026-11-06 by Shawn's "1000% YES!"; the rest of the Act remains DRAFT.**
 
 Shawn’s order, 2026-11-06 00:31Z: the same treatment goes to ALL of our pages, all of our boards, all our buttons — everything, all of our parts. Every page, board, button, icon, tile, block gets updated to the Act’s language. **ORDER: Dashboard first, then Personal, then the rest (Business, Space, and the others) — finish the first thing before moving to the next.**
 

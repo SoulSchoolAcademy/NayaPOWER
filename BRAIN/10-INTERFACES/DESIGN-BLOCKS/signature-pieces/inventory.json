@@ -1,5 +1,5 @@
 {
-  "status": "DRAFT \u2014 the Clarity Confirmation Act is NOT stamped by Shawn; nothing here is law yet.",
+  "status": "DRAFT — the Clarity Confirmation Act is NOT stamped by Shawn. The Intelligent Block Rules (§5 companion) are LAW, ratified 2026-11-06 by Shawn's \"1000% YES!\"; the rest of the Act remains DRAFT.",
   "act": "~/workspace/team-nitro/clarity-confirmation-act-DRAFT-20261106.md",
   "act_bytes": 94301,
   "factory": "~/workspace/smart-factory",
@@ -825,7 +825,7 @@
         ]
       ],
       "gaps": [],
-      "notes": "Structure verbatim from the render code (hub.html:5747-5845: el() calls build exactly these classes; layer head is a <button> with aria-expanded; deeper tiers start closed/hidden). Layer jewel colors live in layerColorFor / LAYER_COLORS (JS, hub.html) \u2014 see companion draft \u00a75. The .ib-layer-play voice button exists in code but the law forbids voice on the board \u2014 it is NOT harvested here."
+      "notes": "Structure verbatim from the render code (hub.html:5747-5845: el() calls build exactly these classes; layer head is a <button> with aria-expanded; deeper tiers start closed/hidden). Layer jewel colors live in layerColorFor / LAYER_COLORS (JS, hub.html) \u2014 see companion law \u00a75. The .ib-layer-play voice button exists in code but the law forbids voice on the board \u2014 it is NOT harvested here."
     },
     {
       "pid": "04",
