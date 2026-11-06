@@ -9021,6 +9021,16 @@ NF.register(UNIT, {
         return;
       }
     }catch(_pe){}
+    /* 2026-11-06 — FIX 7 REWORK: Forward onto a drill entry. Back pops the
+       drill entry (closing the dialog) but leaves it on the stack, so a
+       later Forward re-enters {osDrill:key} with no dialog open — the old
+       fallthrough read the '#drill-…' hash as a view name and showed the
+       wall. Re-open the drill instead (no push: this IS the drill entry). */
+    if (e.state && e.state.osDrill){
+      try{
+        if (typeof window._osReopenDrill==='function' && window._osReopenDrill(e.state.osDrill)) return;
+      }catch(_re){}
+    }
     var v=(e.state && e.state.osView) || (location.hash||'').replace('#','');
     showView(VIEWS.indexOf(v)>=0?v:'home', true);
   });
@@ -11692,7 +11702,13 @@ NF.register(UNIT, {
      phone/browser Back button walks the app's own views and never exits. */
   (function(){
     var onTab=document.querySelector('.ph-navtab.on');
-    var bootView=onTab?onTab.getAttribute('data-view'):'home';
+    /* 2026-11-06 — FIX 7 REWORK: seed the boot entry with the view the page
+       actually shows. The static markup boots on the dashboard board, but
+       the old seed read the nav tab ('home') — so a browser Back that popped
+       to the boot entry ran showView('home') and hid the board (the
+       stale-history trap: the seeded state disagreed with the boot view). */
+    var shownView=document.querySelector('[data-os-view].on');
+    var bootView=shownView?shownView.getAttribute('data-os-view'):(onTab?onTab.getAttribute('data-view'):'home');
     if (VIEWS.indexOf(bootView)<0) bootView='home';
     var hash=(location.hash||'').replace('#','');
     try { history.replaceState({osView:bootView}, '', location.pathname+location.search); } catch(e){}
@@ -15745,6 +15761,10 @@ function salesViewClose(){
   var v=document.getElementById('os-sales-view');
   if(v){ v.classList.remove('open'); v.setAttribute('aria-hidden','true'); }
   document.body.classList.remove('viewport-focus');
+  /* 2026-11-06 — FIX 7 REWORK: the × and Escape close paths funnel
+     through here — consume the drill's history entry so the next
+     browser Back never lands on the stale drill entry. */
+  if (typeof window._osConsumeDrillHistory==='function') window._osConsumeDrillHistory();
 }
 (function(){
   if(window._salesWired) return; window._salesWired=true;
@@ -15882,6 +15902,10 @@ function joinsViewClose(){
   var v=document.getElementById('os-joins-view');
   if(v){ v.classList.remove('open'); v.setAttribute('aria-hidden','true'); }
   document.body.classList.remove('viewport-focus');
+  /* 2026-11-06 — FIX 7 REWORK: the × and Escape close paths funnel
+     through here — consume the drill's history entry so the next
+     browser Back never lands on the stale drill entry. */
+  if (typeof window._osConsumeDrillHistory==='function') window._osConsumeDrillHistory();
 }
 (function(){
   if(window._joinsWired) return; window._joinsWired=true;
@@ -16019,6 +16043,10 @@ function notesViewClose(){
   var v=document.getElementById('os-notes-view');
   if(v){ v.classList.remove('open'); v.setAttribute('aria-hidden','true'); }
   document.body.classList.remove('viewport-focus');
+  /* 2026-11-06 — FIX 7 REWORK: the × and Escape close paths funnel
+     through here — consume the drill's history entry so the next
+     browser Back never lands on the stale drill entry. */
+  if (typeof window._osConsumeDrillHistory==='function') window._osConsumeDrillHistory();
 }
 (function(){
   if(window._notesWired) return; window._notesWired=true;
@@ -16156,6 +16184,10 @@ function likesViewClose(){
   var v=document.getElementById('os-likes-view');
   if(v){ v.classList.remove('open'); v.setAttribute('aria-hidden','true'); }
   document.body.classList.remove('viewport-focus');
+  /* 2026-11-06 — FIX 7 REWORK: the × and Escape close paths funnel
+     through here — consume the drill's history entry so the next
+     browser Back never lands on the stale drill entry. */
+  if (typeof window._osConsumeDrillHistory==='function') window._osConsumeDrillHistory();
 }
 (function(){
   if(window._likesWired) return; window._likesWired=true;
@@ -16293,6 +16325,10 @@ function commentsViewClose(){
   var v=document.getElementById('os-comments-view');
   if(v){ v.classList.remove('open'); v.setAttribute('aria-hidden','true'); }
   document.body.classList.remove('viewport-focus');
+  /* 2026-11-06 — FIX 7 REWORK: the × and Escape close paths funnel
+     through here — consume the drill's history entry so the next
+     browser Back never lands on the stale drill entry. */
+  if (typeof window._osConsumeDrillHistory==='function') window._osConsumeDrillHistory();
 }
 (function(){
   if(window._commentsWired) return; window._commentsWired=true;
@@ -16431,6 +16467,10 @@ function sharesViewClose(){
   var v=document.getElementById('os-shares-view');
   if(v){ v.classList.remove('open'); v.setAttribute('aria-hidden','true'); }
   document.body.classList.remove('viewport-focus');
+  /* 2026-11-06 — FIX 7 REWORK: the × and Escape close paths funnel
+     through here — consume the drill's history entry so the next
+     browser Back never lands on the stale drill entry. */
+  if (typeof window._osConsumeDrillHistory==='function') window._osConsumeDrillHistory();
 }
 (function(){
   if(window._sharesWired) return; window._sharesWired=true;
@@ -16569,6 +16609,10 @@ function creationsViewClose(){
   var v=document.getElementById('os-creations-view');
   if(v){ v.classList.remove('open'); v.setAttribute('aria-hidden','true'); }
   document.body.classList.remove('viewport-focus');
+  /* 2026-11-06 — FIX 7 REWORK: the × and Escape close paths funnel
+     through here — consume the drill's history entry so the next
+     browser Back never lands on the stale drill entry. */
+  if (typeof window._osConsumeDrillHistory==='function') window._osConsumeDrillHistory();
 }
 (function(){
   if(window._creationsWired) return; window._creationsWired=true;
@@ -16705,6 +16749,10 @@ function savesViewClose(){
   var v=document.getElementById('os-saves-view');
   if(v){ v.classList.remove('open'); v.setAttribute('aria-hidden','true'); }
   document.body.classList.remove('viewport-focus');
+  /* 2026-11-06 — FIX 7 REWORK: the × and Escape close paths funnel
+     through here — consume the drill's history entry so the next
+     browser Back never lands on the stale drill entry. */
+  if (typeof window._osConsumeDrillHistory==='function') window._osConsumeDrillHistory();
 }
 (function(){
   if(window._savesWired) return; window._savesWired=true;
@@ -16846,12 +16894,17 @@ function smartlinkViewOpen(brand, dest){
   if(v){ v.classList.add('open'); v.setAttribute('aria-hidden','false'); }
   document.body.classList.add('viewport-focus');
   /* 2026-11-06 — FIX 7: the open pushes history so browser Back closes this dialog instead of leaving the page. */
+  try{ if (typeof window._osRecordDrillFrom==='function') window._osRecordDrillFrom(); }catch(e){}
   try{ history.pushState({osDrill:'smartlink'}, '', '#drill-smartlink'); }catch(e){}
 }
 function smartlinkViewClose(){
   var v=document.getElementById('os-smartlink-view');
   if(v){ v.classList.remove('open'); v.setAttribute('aria-hidden','true'); }
   document.body.classList.remove('viewport-focus');
+  /* 2026-11-06 — FIX 7 REWORK: the × and Escape close paths funnel
+     through here — consume the drill's history entry so the next
+     browser Back never lands on the stale drill entry. */
+  if (typeof window._osConsumeDrillHistory==='function') window._osConsumeDrillHistory();
 }
 window.openSmartLinkView=smartlinkViewOpen;
 (function(){
@@ -16989,6 +17042,10 @@ function invitesViewClose(){
   var v=document.getElementById('os-invites-view');
   if(v){ v.classList.remove('open'); v.setAttribute('aria-hidden','true'); }
   document.body.classList.remove('viewport-focus');
+  /* 2026-11-06 — FIX 7 REWORK: the × and Escape close paths funnel
+     through here — consume the drill's history entry so the next
+     browser Back never lands on the stale drill entry. */
+  if (typeof window._osConsumeDrillHistory==='function') window._osConsumeDrillHistory();
 }
 (function(){
   if(window._invitesWired) return; window._invitesWired=true;
@@ -17039,16 +17096,58 @@ window._setDialogPts = function(totalNEl, key, count){
    A second drill-down paints over the first (same z-index 10001, later in DOM) and
    covers its ×; the global Back only removed viewport-focus and left the fullscreen
    dialog covering the screen. The closer below is the single place that shuts a drill. */
+/* 2026-11-06 — FIX 7 REWORK: consume the drill's history entry on close.
+   Opening a drill pushes {osDrill:key}; no close path ever consumed it, so
+   the next browser Back popped to the boot entry and — before the boot-seed
+   fix above — rendered the wrong view. Replacing the drill entry with the
+   view underneath (the view the drill opened from) keeps the stack honest:
+   a later Back lands on a state that renders the board. No-op when the
+   current entry is not a drill entry (e.g. it was already popped by a
+   browser-Back close), and idempotent, so every close path may call it. */
+window._osConsumeDrillHistory = function(){
+  try{
+    var st = history.state;
+    if (!st || !st.osDrill) return;
+    var base = window._osDrillFrom || 'dashboard';
+    history.replaceState({osView:base}, '', '#'+base);
+  }catch(e){}
+};
+window._osRecordDrillFrom = function(){
+  try{
+    var on = document.querySelector('[data-os-view].on');
+    window._osDrillFrom = on ? on.getAttribute('data-os-view') : 'dashboard';
+  }catch(e){ window._osDrillFrom = 'dashboard'; }
+};
+/* 2026-11-06 — FIX 7 REWORK: the drill openers live inside this script's
+   scope, not on window, so the page-engine popstate handler cannot call
+   them directly (window.salesViewOpen is undefined). This global re-opens
+   a drill by its history key WITHOUT pushing a new entry — the caller IS
+   the drill's history entry (a Forward onto it). */
+window._osReopenDrill = function(key){
+  try{
+    var fn = {sales:salesViewOpen, invs:invitesViewOpen, saves:savesViewOpen, likes:likesViewOpen, posts:creationsViewOpen, shares:sharesViewOpen, comments:commentsViewOpen, notes:notesViewOpen, joins:joinsViewOpen, smartlink:smartlinkViewOpen}[key];
+    if (typeof fn === 'function'){ fn(); return true; }
+  }catch(e){}
+  return false;
+};
 window._closeOpenDrill = function(){
   try{
     var views = document.querySelectorAll('.os-sales-view.open, .os-joins-view.open, .os-notes-view.open, .os-likes-view.open, .os-comments-view.open, .os-shares-view.open, .os-creations-view.open, .os-saves-view.open, .os-smartlink-view.open, .os-invites-view.open');
+    /* 2026-11-06 — FIX 7 REWORK: the close functions live inside this
+       script's scope, not on window — the old window[key+'ViewClose']
+       lookup ALWAYS missed, so every programmatic close took the fallback
+       (the view closed but viewport-focus stayed, leaving #viewport-back
+       visible after a browser-Back close). The map below calls the real
+       closers in scope. */
+    var _closeMap = {sales:salesViewClose, joins:joinsViewClose, notes:notesViewClose, likes:likesViewClose, comments:commentsViewClose, shares:sharesViewClose, creations:creationsViewClose, saves:savesViewClose, smartlink:smartlinkViewClose, invites:invitesViewClose};
     for (var i = 0; i < views.length; i++){
       var id = views[i].id || '';
       var key = id.replace(/^os-/, '').replace(/-view$/, '');
-      var fn = window[key + 'ViewClose'];
+      var fn = _closeMap[key];
       if (typeof fn === 'function'){ try{ fn(); }catch(e){} }
       else { views[i].classList.remove('open'); views[i].setAttribute('aria-hidden', 'true'); }
     }
+    if (typeof window._osConsumeDrillHistory==='function') window._osConsumeDrillHistory();
     return views.length;
   }catch(e){ return 0; }
 };
@@ -17058,6 +17157,7 @@ function ldOpenNode(key, noFocus){
   if (_drill){
     try{ if (typeof window._closeOpenDrill === 'function') window._closeOpenDrill(); }catch(e){}
     _drill();
+    try{ if (typeof window._osRecordDrillFrom==='function') window._osRecordDrillFrom(); }catch(e){}
     try{ history.pushState({osDrill:key}, '', '#drill-'+key); }catch(e){}
     return;
   }
