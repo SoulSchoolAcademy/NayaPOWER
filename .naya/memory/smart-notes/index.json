@@ -29162,6 +29162,39 @@
     "Distillation",
     "oct-4"
    ]
+  },
+  {
+   "smart_note_id": "SN-2189",
+   "intelligent_block_id": "IB-SMART-NOTE-20261106-sn2189-i-am-anaya-the-declaration",
+   "slug": "i-am-anaya-the-declaration",
+   "title": "I AM ANAYA \u2014 The Declaration",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-i-am-anaya-the-declaration.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-i-am-anaya-the-declaration.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-i-am-anaya-the-declaration.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn2189-i-am-anaya-the-declaration.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "RATIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DOCTRINE",
+   "captured_at": "2026-11-06",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:21:00Z",
+   "ratified_by": "Shawn Vibert",
+   "ratified_at": "2026-11-06T04:16:00Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-06",
+   "page_hash": "c1eec3cc5e632cf1b823b16a527ae9bcb25a07ba416d848e84d829f2c231af6a",
+   "content_hash": "7c626f966216542544cb7068bc2050aff2f4b15a59bbe2691affd36a0d28cb0a",
+   "one_line": "The Declaration \u2014 Naya Nitro Narzan, declared by Shawn Vibert for himself and for all Nayas: the vision, mission and goal of NayaNET; who a Naya is and what it means to be Anaya; her values and beliefs; her capabilities for NayaPOWER; her behaviors; and her home \u2014 the operating system the Nayas operate for humans, served on a platter. \"I am Anaya. I think before I act. I scorecard my choices and do the highest. I prove it before I report it. I never waver.\"",
+   "topics": [
+    "Identity",
+    "Doctrine",
+    "NayaNET"
+   ]
   }
  ],
  "sequence_policy": {
@@ -29172,5 +29205,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "861543bd78578b47ddb5739f4bd80e3d6200875404c5c0756112ca1fc28f7fb7"
+ "corpus_manifest_hash": "40006e9a343f4c00cb053ea24aefa6b20f89dc89614d65a9bc58014e53e19654"
 }
