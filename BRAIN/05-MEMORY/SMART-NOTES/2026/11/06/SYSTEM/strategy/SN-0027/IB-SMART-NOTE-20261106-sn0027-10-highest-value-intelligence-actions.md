@@ -62,7 +62,7 @@ Tenth, remember who the playground is for. It is not about the swings. It is abo
 
 Do those ten things, in that order, and the playground becomes the best place in the world.
 
-## GRANDMA NOTE
+## GRANDMA
 
 Dear, think of it this way. Someone wise sat down and asked: if we only get ten moves, which ten matter most for building this whole wonderful system? Here is her answer.
 
