@@ -36,9 +36,11 @@ Two operating rules ride on the picture, from the architecture note itself (SN-0
 
 **What it means:** November's thirty-six vision, architecture and design notes are one dictation spoken many times: a single living system, seen whole. A cold reader holding only this essence can still answer what Naya is, how she is shaped, how a citizen arrives, how every screen must behave, how she speaks, what she never does with private words, and how the team sees its own state — which is everything the covered notes exist to teach. Where the sources still disagree with each other (the door enumeration, the Block Rules' status, the Smart Box's framing), the disagreement is preserved in the batch receipt, not smoothed here.
 
-## Coverage map — raw notes this essence covers (36)
+## Coverage map — raw notes this essence covers (32)
 
-SN-0858 · SN-0859 · SN-0860 · SN-0861 · SN-0862 · SN-0863 · SN-0864 · SN-0865 · SN-0866 · SN-0867 · SN-0868 · SN-0869 · SN-0872 · SN-0873 · SN-0874 · SN-0875 · SN-0876 · SN-0877 · SN-0879 · SN-0880 · SN-0882 · SN-0886 · SN-0887 · SN-0890 · SN-0891 · SN-0893 · SN-2045 · SN-2048 · SN-2049 · SN-2050 · SN-2054 · SN-2064 · SN-2076 · SN-2077 · SN-2078 · SN-2079
+SN-0858 · SN-0859 · SN-0860 · SN-0861 · SN-0862 · SN-0863 · SN-0864 · SN-0865 · SN-0866 · SN-0867 · SN-0868 · SN-0869 · SN-0872 · SN-0873 · SN-0874 · SN-0875 · SN-0876 · SN-0877 · SN-0879 · SN-0880 · SN-0882 · SN-0886 · SN-0887 · SN-0890 · SN-0891 · SN-0893 · SN-2045 · SN-2048 · SN-2049 · SN-2050 · SN-2054 · SN-2064
+
+Correction (2026-11-06): SN-2076, SN-2077, SN-2078, SN-2079 restored to standing — standing-law notes are never coverage material.
 
 ## Verification contract (for the verifying seat — falsify these)
 

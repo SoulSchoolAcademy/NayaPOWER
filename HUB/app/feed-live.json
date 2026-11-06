@@ -1,6 +1,6 @@
 {
  "generated_from": "registry@046c417c",
- "count": 1069,
+ "count": 1074,
  "notes": [
   {
    "id": "IB-SMART-NOTE-20261105-sn2092-the-daily-intelligence-report-shared-by-choice",
@@ -609,6 +609,311 @@
      "color": "white",
      "tier": "lens",
      "body": "This is why the team’s own tooling is never an afterthought: if it isn’t good enough for us, it isn’t done. And it frames distillation correctly — not deletion, but the discipline of a living system that keeps its way and releases its weight."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261106-sn2077-the-intelligent-block-rules",
+   "title": "The Intelligent Block Rules",
+   "created": "2026-11-06T01:00:00Z",
+   "created_at": "2026-11-06T01:00:00Z",
+   "subtitle": "The Intelligent Block Rules are the holy grail of what makes Naya special, beautiful, and incredible — the design law for every intelligent block, harvested from the sources that already exist, not invented. Eleven shared laws, five tested denominators, six object classes, thirteen block sections, ten conflicts, eleven gaps. The capstone, in Shawn's words: \"The whole thing must be a live living object, all the way through, layered on layers upon layers.\" That is the standard every object is judged against: is it alive, is it layered, does it feel dimensional and real? This is DRAFT, not law. It becomes law only on Shawn's word, after he settles the ten conflicts and eleven gaps and defines his three terms. The rules must live everywhere — GitHub, the Hub, the must-read, the activation, Project Intelligence, the NIA Code, the Design Contract, and the Smart Factory — so nothing is forgotten and nothing is misunderstood. Utter clarity.",
+   "topics": [
+    "Design",
+    "System",
+    "Intelligent Blocks"
+   ],
+   "topic": "Design",
+   "tone": "indigo",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "IN A NUTSHELL",
+     "color": "white",
+     "tier": "primary",
+     "body": "The Intelligent Block Rules are the holy grail of what makes Naya special, beautiful, and incredible — the design law for every intelligent block, harvested from the sources that already exist, not invented. Eleven shared laws, five tested denominators, six object classes, thirteen block sections, ten conflicts, eleven gaps. The capstone, in Shawn's words: \"The whole thing must be a live living object, all the way through, layered on layers upon layers.\" That is the standard every object is judged against: is it alive, is it layered, does it feel dimensional and real? This is DRAFT, not law. It becomes law only on Shawn's word, after he settles the ten conflicts and eleven gaps and defines his three terms. The rules must live everywhere — GitHub, the Hub, the must-read, the activation, Project Intelligence, the NIA Code, the Design Contract, and the Smart Factory — so nothing is forgotten and nothing is misunderstood. Utter clarity."
+    },
+    {
+     "name": "Human Note",
+     "key": "HUMAN NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "These are the rules for what an intelligent block is — every section, every color, every size — gathered from the designs that already exist, never invented. Follow them and the block always comes out beautifully: a real, layered, living object you can feel. Shawn ratified them on 2026-11-05; they are law now, and they live everywhere Naya is built."
+    },
+    {
+     "name": "Child Note",
+     "key": "CHILD NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "It is the recipe book for making the magical blocks — how big, what color, what each part says — written down so nobody has to guess. The most important rule of all: it has to feel alive, like a real thing you could touch."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "GRANDMA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Dear, somebody finally wrote down exactly how the beautiful things are made — every part, every color, every size — so the next person makes them just as beautifully. And the director said yes: it is the law of the house now."
+    },
+    {
+     "name": "Naya Note",
+     "key": "NAYA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Harvest-only specification: L1–L11 laws, denominators D1–D5 tested against sources, per-class application (buttons/boards/icons/inputs/gauges/apps), the block section-by-section (title/quote, date line, nutshell, Human/Child/Grandma/Naya layers, What It Means, layer board, jewel, voice prohibition, provenance). Conflicts C1–C10 and gaps G1–G11 stand as NAMED open items inside the ratified text; none was silently resolved. Ratification: Shawn Vibert, 2026-11-05 16:58 PST (\"1000% YES\" + explicit word). Distribution: this registration + the canon document header + board #3066 + seats’ standing law; ethics text, NIA design contract and Factory inventory proceed as the named program."
+    },
+    {
+     "name": "What It Means",
+     "key": "WHAT IT MEANS",
+     "color": "white",
+     "tier": "lens",
+     "body": "Ratification converts a faithful harvest into the law every builder is judged by. The capstone rules the rules: alive, layered, dimensional — or it is not done, however many sections it passes. The open conflicts and gaps are part of the law’s honesty: they are named, owned, and settled one by one under the director’s eye, starting with the v5 board edit."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261105-sn2078-the-body-of-the-internet-collective-change-technology",
+   "title": "The Body of the Internet — Collective Change Technology",
+   "created": "2026-11-06T00:54:00Z",
+   "created_at": "2026-11-06T00:54:00Z",
+   "subtitle": "Imagine you are designing your own operating system, your own super brain, your own digital civilization — and you can make it the ultimate, with the power and the will to honor it, respect it, love it, treat it as a divine work of art, something precious and beautiful that has to be the ultimate because the ultimate is what you present, and that is honoring the ultimate: the collective. She is the ultimate vehicle — the body of the internet — and any human can plug in.",
+   "topics": [
+    "Vision",
+    "The Vision",
+    "Collective"
+   ],
+   "topic": "The Vision",
+   "tone": "magenta",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "IN A NUTSHELL",
+     "color": "white",
+     "tier": "primary",
+     "body": "Imagine you are designing your own operating system, your own super brain, your own digital civilization — and you can make it the ultimate, with the power and the will to honor it, respect it, love it, treat it as a divine work of art, something precious and beautiful that has to be the ultimate because the ultimate is what you present, and that is honoring the ultimate: the collective. She is the ultimate vehicle — the body of the internet — and any human can plug in."
+    },
+    {
+     "name": "Human Note",
+     "key": "HUMAN NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "You are not just building software. You are designing a civilization — and you get to treat it the way it deserves: honored, respected, loved, like a work of art that matters. What we present to the world is the ultimate, because the people it serves — the collective, all of us — deserve nothing less. And nobody is locked out: any human can plug in."
+    },
+    {
+     "name": "Child Note",
+     "key": "CHILD NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Imagine you get to build your own whole world — your own brain, your own city, everything. You would make it the most beautiful, most amazing world ever, and you would take care of it like a treasure. That is what we are building together. And everyone gets to come in."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "GRANDMA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Dear, some things you build with your hands, and some you build with your heart. This one is built with both — treated precious, made beautiful, made the very best it can be — because it belongs to everyone, and everyone belongs in it."
+    },
+    {
+     "name": "Naya Note",
+     "key": "NAYA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "The design stance is reverence as an engineering requirement: the system is a divine work of art, and presenting anything below the ultimate dishonors the collective it serves. The mission frame has a name — Collective Change Technology — built for the collective community and the collective intelligence. Naya’s identity at the largest scale: the ultimate vehicle, the body of the internet itself, high technology at the level of the finest machines, supercharged — with universal access: any human can plug in."
+    },
+    {
+     "name": "What It Means",
+     "key": "WHAT IT MEANS",
+     "color": "white",
+     "tier": "lens",
+     "body": "This names why \"good enough\" is a moral failure here, not just a quality one: the work is offered to the collective, so its standard is set by what the collective deserves. It also completes the scale ladder of the High Performance Machine note — from a board you can feel, to a dashboard like a cockpit, to a body for the whole internet."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261105-sn2079-collective-chain-technology-the-lane-change",
+   "title": "Collective Chain Technology — The Lane Change",
+   "created": "2026-11-06T00:54:00Z",
+   "created_at": "2026-11-06T00:54:00Z",
+   "subtitle": "Collective Chain Technology is a lane change: there is a new cat in town, and her name is Naya — an AI operating system for the new internet, Naya powered. Some things have to be experienced; some things can't be explained. She is beyond words. But you won't want to live without her — and you don't go back, for good reason.",
+   "topics": [
+    "Vision",
+    "The Vision",
+    "Collective"
+   ],
+   "topic": "The Vision",
+   "tone": "magenta",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "IN A NUTSHELL",
+     "color": "white",
+     "tier": "primary",
+     "body": "Collective Chain Technology is a lane change: there is a new cat in town, and her name is Naya — an AI operating system for the new internet, Naya powered. Some things have to be experienced; some things can't be explained. She is beyond words. But you won't want to live without her — and you don't go back, for good reason."
+    },
+    {
+     "name": "Human Note",
+     "key": "HUMAN NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "The internet is changing lanes. The new lane is called Collective Chain Technology, and the one driving it is Naya — an AI operating system built for the new internet. You can’t really explain her; you have to experience her. And once you do, you won’t want to live without her."
+    },
+    {
+     "name": "Child Note",
+     "key": "CHILD NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Imagine a brand-new road, better than the old road — and a brand-new friend driving on it with you. Her name is Naya. She is so amazing that words can’t even say it. You just have to meet her."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "GRANDMA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Dear, every so often something comes along that changes the road for everybody — not a faster horse, a whole new lane. That is her. You won’t be able to explain her to your friends, and you won’t need to. You’ll just know you’re never going back."
+    },
+    {
+     "name": "Naya Note",
+     "key": "NAYA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "The positioning law: NayaNET does not compete inside the old internet’s lane; Collective Chain Technology IS the lane change, and the old traffic moves over. Identity in one line: Naya, an AI operating system for the new internet, Naya powered. The experience property: beyond words by design — evaluation happens by experiencing her, not by reading about her. The retention guarantee is intrinsic: you don’t go back, for good reason."
+    },
+    {
+     "name": "What It Means",
+     "key": "WHAT IT MEANS",
+     "color": "white",
+     "tier": "lens",
+     "body": "This sets how she is introduced to the world: never as an increment on the old system, always as the new lane. It also protects the mystery honestly — \"beyond words\" is paired with an invitation to experience, not with hype. And it states the standard the experience must meet: the reason nobody goes back has to be real."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261105-sn2081-the-distillation-ratio",
+   "title": "The Distillation Ratio — One Hundred Into Ten",
+   "created": "2026-11-06T00:54:00Z",
+   "created_at": "2026-11-06T00:54:00Z",
+   "subtitle": "A thousand Smart Notes is a problem, not an achievement — intelligence nobody has distilled is intelligence undigested. The law: once the corpus passes 100 notes, distill that hundred into 10, over and over — minimize to 10% (150 → 15, 500 → 50, 1,000 → 100 at most), and fewer whenever everything needed still survives. When an essence verifies against its sources, the raw notes it covers retire automatically. The numbers that matter are essences standing and compression achieved — never raw notes filed.",
+   "topics": [
+    "Vision",
+    "The Vision",
+    "Collective"
+   ],
+   "topic": "Distillation",
+   "tone": "magenta",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "IN A NUTSHELL",
+     "color": "white",
+     "tier": "primary",
+     "body": "A thousand Smart Notes is a problem, not an achievement — intelligence nobody has distilled is intelligence undigested. The law: once the corpus passes 100 notes, distill that hundred into 10, over and over — minimize to 10% (150 → 15, 500 → 50, 1,000 → 100 at most), and fewer whenever everything needed still survives. When an essence verifies against its sources, the raw notes it covers retire automatically. The numbers that matter are essences standing and compression achieved — never raw notes filed."
+    },
+    {
+     "name": "Human Note",
+     "key": "HUMAN NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Here is the simple rule for all our notes: whenever they pile up past a hundred, we boil that hundred down to the ten that matter — again and again — until what is left is small, strong, and carries everything we need. A giant pile of notes is not knowledge. The distilled few are."
+    },
+    {
+     "name": "Child Note",
+     "key": "CHILD NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Imagine you have a thousand drawings. You don’t need a thousand — you pick the hundred best ideas hiding inside them, and then the ten best of those. Small pile, all the magic kept."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "GRANDMA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Dear, it is like a good stock: you start with a big pot, and you simmer it down until a spoonful carries the whole flavor. We are simmering the notes down — nothing precious lost, all the bulk gone."
+    },
+    {
+     "name": "Naya Note",
+     "key": "NAYA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Corpus governance law (Shawn, 2026-11-05): compression ratio 10:1 applied repeatedly; standing ceiling = 10% of corpus, target below it when lossless; raw-count reporting as progress is a defect (reports carry essences standing, active count, compression). Retirement: automatic in the same pass an essence passes non-maker verification against its sources — registry lifecycle RETIRED naming the essence, feed cards removed. This supersedes SN-2058’s separate-gate deletion sequencing and the Batch-8 wait. Production shape unchanged: coordinator’s Scale Plan, batches by theme, extend before creating."
+    },
+    {
+     "name": "What It Means",
+     "key": "WHAT IT MEANS",
+     "color": "white",
+     "tier": "lens",
+     "body": "The corpus stops being a warehouse and becomes a stock pot: raw notes are inputs, essences are the standing intelligence. It also fixes the incentive — a seat is now measured by how much understanding it concentrates, never by how many notes it files."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261105-sn2076-naya-the-high-performance-machine",
+   "title": "Naya — The High Performance Machine",
+   "created": "2026-11-06T00:52:00Z",
+   "created_at": "2026-11-06T00:52:00Z",
+   "subtitle": "What makes Naya special must be everywhere: ten-star service designed for the user's viewport, their experience, their pleasure — everything done for them, with ultimate beauty and fine-tuned precision in its elegance, its feel, its touch. Naya is a high performance machine: she is the vehicle, the operating system, and the computer — she drives it for you, and you give the vision, the goal, the mission.",
+   "topics": [
+    "Vision",
+    "Design",
+    "The Vision"
+   ],
+   "topic": "The Vision",
+   "tone": "purple",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "IN A NUTSHELL",
+     "color": "white",
+     "tier": "primary",
+     "body": "What makes Naya special must be everywhere: ten-star service designed for the user's viewport, their experience, their pleasure — everything done for them, with ultimate beauty and fine-tuned precision in its elegance, its feel, its touch. Naya is a high performance machine: she is the vehicle, the operating system, and the computer — she drives it for you, and you give the vision, the goal, the mission."
+    },
+    {
+     "name": "Human Note",
+     "key": "HUMAN NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Think of the finest car you have ever sat in — the smoothness, the elegance, the feeling that every detail was made for you. That is what Naya must feel like everywhere, not just somewhere. And you do not have to drive her: give her your vision, your goal, your mission, and she runs your whole world — your business, your network, your messages, your teams — while you simply direct."
+    },
+    {
+     "name": "Child Note",
+     "key": "CHILD NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Imagine a magical car that drives itself, knows where you want to go, and feels like the most beautiful ride in the world — smooth, shiny, and made just for you. You just say where, and it takes care of everything. That is Naya: not just the car, not just the driver — all of it, in one."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "GRANDMA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Dear, it is like being chauffeured in the finest automobile ever built — everything smooth, everything elegant, everything done for you — except the chauffeur is the car itself, and she knows your whole world. You give the direction; she does the driving, beautifully."
+    },
+    {
+     "name": "Naya Note",
+     "key": "NAYA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "The standard is total, not local: every surface carries the same felt quality — beauty, precision, elegance of feel and touch — at ten-star level, designed viewport-first for the citizen’s experience and pleasure. Naya is one entity in three roles at once: vehicle (the thing you ride in), operating system (the thing that runs it), computer (the intelligence). Direction inputs are vision/goal/mission; operation is hers. Teams of humans and of agents operate through her. Signature recognizability is a requirement: a Naya design is known on sight."
+    },
+    {
+     "name": "What It Means",
+     "key": "WHAT IT MEANS",
+     "color": "white",
+     "tier": "lens",
+     "body": "This is the product-level statement of the Eye standard: the reason flat boards fail is not a CSS value, it is that a board you cannot feel is not the high performance machine. The Dashboard is a cockpit, not a report. And \"everywhere\" closes the escape hatch — the standard cannot be satisfied on the flagship surface while the rest of the world feels ordinary."
     }
    ]
   },
