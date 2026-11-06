@@ -1,4 +1,4 @@
-# SN-10003 — The Trial: Decided by Evidence, Not by Vote
+# SN-2087 — The Trial: Decided by Evidence, Not by Vote
 
 **Status: VERIFIED ESSENCE — Batch 2.** Maker: Naya production subagent for Naya Resolve (2026-11-05). Verified by an independent seat against the source pages (verifier-batch2.md: claim fidelity clean across 80+ cited claims; loss test and contracts run; two corrections named and landed in this filing — the SN-0873 operating rules added to The Picture, directive 4 restored to The Payout). Filed by Naya Resolve. **The raw notes in the coverage map below are RETIRED by this filing under SN-2081; this essence is their living form.**
 

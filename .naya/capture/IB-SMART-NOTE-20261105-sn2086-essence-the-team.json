@@ -1,6 +1,6 @@
 {
   "schema": "naya.smart-note-capture.v2",
-  "smart_note_id": "SN-10002",
+  "smart_note_id": "SN-2086",
   "title": "The Team: Wise Ones, Hands First",
   "slug": "essence-the-team",
   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-team.md",
@@ -38,6 +38,7 @@
       "SN-2065"
     ]
   },
-  "page_hash": "b573f7294b2919e9aebfaa51601e481419f75f640d7c1bad5e192e601175073a",
-  "content_hash": "9a52590173f78662e1761136cee964ab23eb967d9e54a196597e48e616c5f93d"
+  "page_hash": "17e90c53c52f8340bd42a63c8ebd55773c3954264562e6640dda7eb6bb6a21e0",
+  "content_hash": "9a52590173f78662e1761136cee964ab23eb967d9e54a196597e48e616c5f93d",
+  "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2086-essence-the-team"
 }

@@ -1,6 +1,6 @@
 {
   "schema": "naya.smart-note-capture.v2",
-  "smart_note_id": "SN-10003",
+  "smart_note_id": "SN-2087",
   "title": "The Trial: Decided by Evidence, Not by Vote",
   "slug": "essence-the-trial",
   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-trial.md",
@@ -35,6 +35,7 @@
       "SN-2067"
     ]
   },
-  "page_hash": "f737d033f7b2c7a18f8ab217e1e2007187f2c98227c2ea5715fa9c3b283b135d",
-  "content_hash": "d74d699b1224f28af31018446b213ea90ade160986497ab73a1f80d9c0105a14"
+  "page_hash": "d4e341e7f788eb0e4cca70a8b8be47eae688f8af7359f6298a1eae8906453f89",
+  "content_hash": "d74d699b1224f28af31018446b213ea90ade160986497ab73a1f80d9c0105a14",
+  "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2087-essence-the-trial"
 }

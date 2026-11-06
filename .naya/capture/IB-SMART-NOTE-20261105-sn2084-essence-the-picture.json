@@ -1,6 +1,6 @@
 {
   "schema": "naya.smart-note-capture.v2",
-  "smart_note_id": "SN-10000",
+  "smart_note_id": "SN-2084",
   "title": "The Picture: One System, Seen Whole",
   "slug": "essence-the-picture",
   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-picture.md",
@@ -67,6 +67,7 @@
       "SN-2079"
     ]
   },
-  "page_hash": "502a3a7afd1d41f0b594418c309e93c025e3ac2c95f894193b3b558e64274d34",
-  "content_hash": "a64c982907b64be1f3e3053452e4fd5c11126e21813c7e7777f85c09924e5043"
+  "page_hash": "8d21408be861cfb11c5dcde32398419f2aef577fb9006a427885fcaf1525e56e",
+  "content_hash": "a64c982907b64be1f3e3053452e4fd5c11126e21813c7e7777f85c09924e5043",
+  "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture"
 }

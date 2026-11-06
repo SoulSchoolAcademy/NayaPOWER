@@ -1,6 +1,6 @@
 {
   "schema": "naya.smart-note-capture.v2",
-  "smart_note_id": "SN-10001",
+  "smart_note_id": "SN-2085",
   "title": "The Payout: Everybody Wins, In Writing",
   "slug": "essence-the-payout",
   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-payout.md",
@@ -38,6 +38,7 @@
       "SN-2056"
     ]
   },
-  "page_hash": "fe1448d3fb360401764138bb3f69e3862084ea97ab5c43d861d5a250997c43b9",
-  "content_hash": "b9618a11c0d6cd105a9d9593627556006b660f6c7aa98d1894baa183773052a9"
+  "page_hash": "47933add6a6a7bb0d51d3b906399c31179c6539c4c483a1324309c33165c38c0",
+  "content_hash": "b9618a11c0d6cd105a9d9593627556006b660f6c7aa98d1894baa183773052a9",
+  "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2085-essence-the-payout"
 }
