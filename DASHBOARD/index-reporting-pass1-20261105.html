@@ -6359,6 +6359,29 @@ button.os-ld-node .os-ld-n{
   margin-top:6px;text-transform:uppercase;}
 @media (max-width:640px){
   .os-sales-view .os-ld-node{width:88px;height:88px;}
+
+/* 2026-11-06 - FIX F9 (v9): phone drill-down pills + switch off the orbs.
+   Same remedy as FIX F1 (Notes/Likes/Creations, v7.2), harvested verbatim:
+   the pills column (x300..380) sat on the right orbs (top-right by
+   52.6x11.1px, bottom-right by 52.6x79.1px; Smart Link's 8-orb ring: three
+   right orbs by up to 50.7x76px) and the chart switch (x84..306, y510..568)
+   sat on both bottom orbs (41.1x36.3px each; Smart Link: three bottom orbs
+   by up to 76x50px). Phone-only: the pills become one horizontal row under
+   the title (top:132px), and the switch rides fixed at the viewport bottom,
+   clear of every orb. Desktop untouched. Labels NOT touched here - F12. */
+@media (max-width:900px){
+  .os-sales-pills{
+    left:50% !important; right:auto !important; top:132px !important;
+    transform:translateX(-50%) !important;
+    flex-direction:row !important; gap:6px !important;
+  }
+  .os-sales-pills button{
+    padding:8px 10px !important; font-size:10px !important;
+  }
+  #os-sales-switch{
+    position:fixed !important; bottom:20px !important; top:auto !important;
+  }
+}
   .os-sales-pills{right:10px;}
   .os-sales-total-n{font-size:40px;}
 }
@@ -6536,6 +6559,29 @@ button.os-ld-node .os-ld-n{
   margin-top:6px;text-transform:uppercase;}
 @media (max-width:640px){
   .os-comments-view .os-ld-node{width:88px;height:88px;}
+
+/* 2026-11-06 - FIX F9 (v9): phone drill-down pills + switch off the orbs.
+   Same remedy as FIX F1 (Notes/Likes/Creations, v7.2), harvested verbatim:
+   the pills column (x300..380) sat on the right orbs (top-right by
+   52.6x11.1px, bottom-right by 52.6x79.1px; Smart Link's 8-orb ring: three
+   right orbs by up to 50.7x76px) and the chart switch (x84..306, y510..568)
+   sat on both bottom orbs (41.1x36.3px each; Smart Link: three bottom orbs
+   by up to 76x50px). Phone-only: the pills become one horizontal row under
+   the title (top:132px), and the switch rides fixed at the viewport bottom,
+   clear of every orb. Desktop untouched. Labels NOT touched here - F12. */
+@media (max-width:900px){
+  .os-comments-pills{
+    left:50% !important; right:auto !important; top:132px !important;
+    transform:translateX(-50%) !important;
+    flex-direction:row !important; gap:6px !important;
+  }
+  .os-comments-pills button{
+    padding:8px 10px !important; font-size:10px !important;
+  }
+  #os-comments-switch{
+    position:fixed !important; bottom:20px !important; top:auto !important;
+  }
+}
   .os-comments-pills{right:10px;}
   .os-comments-total-n{font-size:40px;}
 }
@@ -6709,6 +6755,29 @@ button.os-ld-node .os-ld-n{
   margin-top:6px;text-transform:uppercase;}
 @media (max-width:640px){
   .os-joins-view .os-ld-node{width:88px;height:88px;}
+
+/* 2026-11-06 - FIX F9 (v9): phone drill-down pills + switch off the orbs.
+   Same remedy as FIX F1 (Notes/Likes/Creations, v7.2), harvested verbatim:
+   the pills column (x300..380) sat on the right orbs (top-right by
+   52.6x11.1px, bottom-right by 52.6x79.1px; Smart Link's 8-orb ring: three
+   right orbs by up to 50.7x76px) and the chart switch (x84..306, y510..568)
+   sat on both bottom orbs (41.1x36.3px each; Smart Link: three bottom orbs
+   by up to 76x50px). Phone-only: the pills become one horizontal row under
+   the title (top:132px), and the switch rides fixed at the viewport bottom,
+   clear of every orb. Desktop untouched. Labels NOT touched here - F12. */
+@media (max-width:900px){
+  .os-joins-pills{
+    left:50% !important; right:auto !important; top:132px !important;
+    transform:translateX(-50%) !important;
+    flex-direction:row !important; gap:6px !important;
+  }
+  .os-joins-pills button{
+    padding:8px 10px !important; font-size:10px !important;
+  }
+  #os-joins-switch{
+    position:fixed !important; bottom:20px !important; top:auto !important;
+  }
+}
   .os-joins-pills{right:10px;}
   .os-joins-total-n{font-size:40px;}
 }
@@ -6783,6 +6852,29 @@ button.os-ld-node .os-ld-n{
   margin-top:6px;text-transform:uppercase;}
 @media (max-width:640px){
   .os-shares-view .os-ld-node{width:88px;height:88px;}
+
+/* 2026-11-06 - FIX F9 (v9): phone drill-down pills + switch off the orbs.
+   Same remedy as FIX F1 (Notes/Likes/Creations, v7.2), harvested verbatim:
+   the pills column (x300..380) sat on the right orbs (top-right by
+   52.6x11.1px, bottom-right by 52.6x79.1px; Smart Link's 8-orb ring: three
+   right orbs by up to 50.7x76px) and the chart switch (x84..306, y510..568)
+   sat on both bottom orbs (41.1x36.3px each; Smart Link: three bottom orbs
+   by up to 76x50px). Phone-only: the pills become one horizontal row under
+   the title (top:132px), and the switch rides fixed at the viewport bottom,
+   clear of every orb. Desktop untouched. Labels NOT touched here - F12. */
+@media (max-width:900px){
+  .os-shares-pills{
+    left:50% !important; right:auto !important; top:132px !important;
+    transform:translateX(-50%) !important;
+    flex-direction:row !important; gap:6px !important;
+  }
+  .os-shares-pills button{
+    padding:8px 10px !important; font-size:10px !important;
+  }
+  #os-shares-switch{
+    position:fixed !important; bottom:20px !important; top:auto !important;
+  }
+}
   .os-shares-pills{right:10px;}
   .os-shares-total-n{font-size:40px;}
 }
@@ -6966,6 +7058,29 @@ button.os-ld-node .os-ld-n{
   margin-top:6px;text-transform:uppercase;}
 @media (max-width:640px){
   .os-saves-view .os-ld-node{width:88px;height:88px;}
+
+/* 2026-11-06 - FIX F9 (v9): phone drill-down pills + switch off the orbs.
+   Same remedy as FIX F1 (Notes/Likes/Creations, v7.2), harvested verbatim:
+   the pills column (x300..380) sat on the right orbs (top-right by
+   52.6x11.1px, bottom-right by 52.6x79.1px; Smart Link's 8-orb ring: three
+   right orbs by up to 50.7x76px) and the chart switch (x84..306, y510..568)
+   sat on both bottom orbs (41.1x36.3px each; Smart Link: three bottom orbs
+   by up to 76x50px). Phone-only: the pills become one horizontal row under
+   the title (top:132px), and the switch rides fixed at the viewport bottom,
+   clear of every orb. Desktop untouched. Labels NOT touched here - F12. */
+@media (max-width:900px){
+  .os-saves-pills{
+    left:50% !important; right:auto !important; top:132px !important;
+    transform:translateX(-50%) !important;
+    flex-direction:row !important; gap:6px !important;
+  }
+  .os-saves-pills button{
+    padding:8px 10px !important; font-size:10px !important;
+  }
+  #os-saves-switch{
+    position:fixed !important; bottom:20px !important; top:auto !important;
+  }
+}
   .os-saves-pills{right:10px;}
   .os-saves-total-n{font-size:40px;}
 }
@@ -7049,6 +7164,29 @@ button.os-ld-node .os-ld-n{
   margin-top:6px;text-transform:uppercase;}
 @media (max-width:640px){
   .os-smartlink-view .os-ld-node{width:76px;height:76px;}
+
+/* 2026-11-06 - FIX F9 (v9): phone drill-down pills + switch off the orbs.
+   Same remedy as FIX F1 (Notes/Likes/Creations, v7.2), harvested verbatim:
+   the pills column (x300..380) sat on the right orbs (top-right by
+   52.6x11.1px, bottom-right by 52.6x79.1px; Smart Link's 8-orb ring: three
+   right orbs by up to 50.7x76px) and the chart switch (x84..306, y510..568)
+   sat on both bottom orbs (41.1x36.3px each; Smart Link: three bottom orbs
+   by up to 76x50px). Phone-only: the pills become one horizontal row under
+   the title (top:132px), and the switch rides fixed at the viewport bottom,
+   clear of every orb. Desktop untouched. Labels NOT touched here - F12. */
+@media (max-width:900px){
+  .os-smartlink-pills{
+    left:50% !important; right:auto !important; top:132px !important;
+    transform:translateX(-50%) !important;
+    flex-direction:row !important; gap:6px !important;
+  }
+  .os-smartlink-pills button{
+    padding:8px 10px !important; font-size:10px !important;
+  }
+  #os-smartlink-switch{
+    position:fixed !important; bottom:20px !important; top:auto !important;
+  }
+}
   .os-smartlink-view .os-ld-node .os-ld-n{font-size:16px !important;}
   .os-smartlink-pills{right:10px;}
   .os-smartlink-total-n{font-size:36px;}
@@ -7124,6 +7262,29 @@ button.os-ld-node .os-ld-n{
   margin-top:6px;text-transform:uppercase;}
 @media (max-width:640px){
   .os-invites-view .os-ld-node{width:88px;height:88px;}
+
+/* 2026-11-06 - FIX F9 (v9): phone drill-down pills + switch off the orbs.
+   Same remedy as FIX F1 (Notes/Likes/Creations, v7.2), harvested verbatim:
+   the pills column (x300..380) sat on the right orbs (top-right by
+   52.6x11.1px, bottom-right by 52.6x79.1px; Smart Link's 8-orb ring: three
+   right orbs by up to 50.7x76px) and the chart switch (x84..306, y510..568)
+   sat on both bottom orbs (41.1x36.3px each; Smart Link: three bottom orbs
+   by up to 76x50px). Phone-only: the pills become one horizontal row under
+   the title (top:132px), and the switch rides fixed at the viewport bottom,
+   clear of every orb. Desktop untouched. Labels NOT touched here - F12. */
+@media (max-width:900px){
+  .os-invites-pills{
+    left:50% !important; right:auto !important; top:132px !important;
+    transform:translateX(-50%) !important;
+    flex-direction:row !important; gap:6px !important;
+  }
+  .os-invites-pills button{
+    padding:8px 10px !important; font-size:10px !important;
+  }
+  #os-invites-switch{
+    position:fixed !important; bottom:20px !important; top:auto !important;
+  }
+}
   .os-invites-pills{right:10px;}
   .os-invites-total-n{font-size:40px;}
 }
