@@ -1,0 +1,8 @@
+{
+ "harvested_at": "2026-11-06T02:09:12Z",
+ "source": "~/workspace/nitro-smart-box/store/entries.jsonl",
+ "sha256": "a805718911b682b3dd45171845aac14820b9c09406fcb653f148ca271cfdbd28",
+ "count": 2086,
+ "next_id": 2087,
+ "note": "Snapshot copy only. Canonical data source is the harvested store. A scheduled harvest->KV refresh is owed."
+}
