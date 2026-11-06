@@ -31,8 +31,13 @@ the piece exists.
 import json
 import os
 import re
+import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+# piece_registry lives next to this module; make the import robust to cwd.
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)
+from piece_registry import load_library  # registry adapter (cache + legacy fallback)
 PIECES_PATH = "/home/hatch/workspace/personal-app/pieces.json"
 
 # Demo strings baked into the personal-v5 lineage (from the live
@@ -190,8 +195,7 @@ def apply_contract(html, contract, base_identity):
     pieces = contract.get("pieces") or []
     if pieces:
         try:
-            with open(PIECES_PATH) as f:
-                library = json.load(f)
+            library = load_library()  # registry adapter; legacy pieces.json fallback inside
         except Exception:
             library = {}
         for piece in pieces:
