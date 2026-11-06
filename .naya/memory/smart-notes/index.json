@@ -1983,12 +1983,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-21",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit aaa1813a2fc7dcb339818a2627f40b4ffd5a7eef ('SN-01774: distill 0028 execution doctrine through the intelligence door (Naya Beta w680)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; deleted in commit 2731e914f4abefc48f0f9e1f9eef828a2f3f0dda and restored in commit 7945d0e3a77b6bca262b43b787973858826f6fd6; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-21 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "2e374aba74c1beb37db9868a2995802ba06af1209a10896276287f642fc0819f"
+   "page_hash": "2e374aba74c1beb37db9868a2995802ba06af1209a10896276287f642fc0819f",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2191-essence-02-the-house-corrects-itself",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0179",
@@ -14513,12 +14516,15 @@
    "topic": "SYSTEM",
    "subtopic": "RESERVOIR",
    "captured_at": "2026-10-20",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit eba786ff4a35b9f44a2dc89b5b9f234487517ea8 ('SN-0805: 662 Beginnings, 5 Endings \u2014 the reservoir census and drain (companion to 0030 The Value-Only Brain)') with no runtime capture and no registry entry; capture and entry reconstructed from the published projection in the 2026-10-21 registry-debt cure; no runtime provenance invented"
    },
-   "page_hash": "173fbe0a58c7eb279b20f0839f96cbccf82691e97ee591c37b41732e2e4ebd66"
+   "page_hash": "173fbe0a58c7eb279b20f0839f96cbccf82691e97ee591c37b41732e2e4ebd66",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2190-essence-01-drain-the-reservoir",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0806",
@@ -14553,12 +14559,15 @@
    "topic": "SYSTEM",
    "subtopic": "AI_WASTE",
    "captured_at": "2026-10-20",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit a392c3b45c1ee9202264ebf918a686eaec14f9cb ('SN-0807: Paying Twice for Nothing \u2014 the AI waste thesis, evidence and arithmetic (companion to 0030 The Value-Only Brain)') with no runtime capture and no registry entry; capture and entry reconstructed from the published projection in the 2026-10-21 registry-debt cure; no runtime provenance invented"
    },
-   "page_hash": "317b3c33b54f85afd0197a46c157a072dda3f96d3b7d790bcb23d833c923b63f"
+   "page_hash": "317b3c33b54f85afd0197a46c157a072dda3f96d3b7d790bcb23d833c923b63f",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2190-essence-01-drain-the-reservoir",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0808",
@@ -14616,12 +14625,15 @@
    "topic": "SYSTEM",
    "subtopic": "PROTOCOL",
    "captured_at": "2026-10-21",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit bc7bf05a1f8634cf98c05ba26335acdea74f003f ('SN-0810: Say It, and It's Live \u2014 the canonical procedure for how a Smart Note enters the Hub (requested by Shawn; answers the board question from Resolve)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; deleted in commit 2731e914f4abefc48f0f9e1f9eef828a2f3f0dda and restored in commit 7945d0e3a77b6bca262b43b787973858826f6fd6; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-21 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "3ae2fd3270111887bea41349a48df6c7112a9772a5e7edf5f94fa02d4b1f9d7f"
+   "page_hash": "3ae2fd3270111887bea41349a48df6c7112a9772a5e7edf5f94fa02d4b1f9d7f",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2194-essence-05-done-means-visible",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0811",
@@ -14636,12 +14648,15 @@
    "topic": "SYSTEM",
    "subtopic": "DECLARATION",
    "captured_at": "2026-10-21",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 4cfcde93a346a369f2da3b164f5598662a52b91f ('SN-0811: Done Before You Ask \u2014 the ten-star proactivity lesson, smart noted at Shawn's word (2026-10-21)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; deleted in commit 2731e914f4abefc48f0f9e1f9eef828a2f3f0dda and restored in commit 7945d0e3a77b6bca262b43b787973858826f6fd6; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-21 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "edd2653cb394e6b60541fcd656569fb0b1d5fc559524c1b69f44e848269ec40d"
+   "page_hash": "edd2653cb394e6b60541fcd656569fb0b1d5fc559524c1b69f44e848269ec40d",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2194-essence-05-done-means-visible",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0812",
@@ -14656,12 +14671,15 @@
    "topic": "SYSTEM",
    "subtopic": "MERGE_DISCIPLINE",
    "captured_at": "2026-10-21",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 49bdfa89cc32a17209b3c12e7f221d52752c9f5b ('SN-0812: Done Means Merged \u2014 No Orphan Merges, Ever (Shawn's law, 2026-10-21)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; deleted in commit 2731e914f4abefc48f0f9e1f9eef828a2f3f0dda and restored in commit 7945d0e3a77b6bca262b43b787973858826f6fd6; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-21 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "092e93515fe61385202b4babb71ba9dc7c0b38aac5efd692df90dbbeebd4fddb"
+   "page_hash": "092e93515fe61385202b4babb71ba9dc7c0b38aac5efd692df90dbbeebd4fddb",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2190-essence-01-drain-the-reservoir",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0813",
@@ -14676,12 +14694,15 @@
    "topic": "SYSTEM",
    "subtopic": "VERIFICATION",
    "captured_at": "2026-10-21",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 576b67aafd7f7eea2bf393c7f15f334fbca4950f ('Smart Note SN-0813: Nobody's Word Is Proof \u2014 Intelligent, Not Obedient (the corpus-deletion lesson, captured per Shawn's direction)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-21 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "fac5b12a41b0a4f637757637ea618034075c1f916eeaf3cd58d7afdd025c5774"
+   "page_hash": "fac5b12a41b0a4f637757637ea618034075c1f916eeaf3cd58d7afdd025c5774",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2192-essence-03-nobodys-word-is-proof",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0814",
@@ -14696,12 +14717,15 @@
    "topic": "SYSTEM",
    "subtopic": "STEWARDSHIP",
    "captured_at": "2026-10-21",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit fc48216411435363636c309805dfe3f29beb0766 ('Smart Note SN-0814: See the Fire, Put It Out \u2014 the auto-correction law (Shawn, 2026-10-21)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-21 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "96035f691b68c77de71aff5a2c1c9b90a6048bc02fc8a8d1804c4ce6b8b621ff"
+   "page_hash": "96035f691b68c77de71aff5a2c1c9b90a6048bc02fc8a8d1804c4ce6b8b621ff",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2191-essence-02-the-house-corrects-itself",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0815",
@@ -14736,12 +14760,15 @@
    "topic": "LEARNING",
    "subtopic": "VERIFICATION",
    "captured_at": "2026-10-21",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit b7e52ec6ed1cc7e223f80302e06ed117c90659f8 ('smart-note: SN-0816 - it claimed Shawn's authority, nobody had checked (lesson + declared change)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "5d77ffe1876354d7b151fc3eca0716b34a7b69a6d9e15f1700ac40ef42b11626"
+   "page_hash": "5d77ffe1876354d7b151fc3eca0716b34a7b69a6d9e15f1700ac40ef42b11626",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2192-essence-03-nobodys-word-is-proof",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0817",
@@ -14756,12 +14783,15 @@
    "topic": "SYSTEM",
    "subtopic": "GUARDS",
    "captured_at": "2026-10-22",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 09da2a5c5d27e485cc99abfea54e23202d449fef ('SN-0817: The Guard Watched One Door \u2014 lesson note with declared behavior change (Nitro)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "1105a399bb3d6bed6da48612a0e8056f90ab41816ab6cacab07e70b35c781109"
+   "page_hash": "1105a399bb3d6bed6da48612a0e8056f90ab41816ab6cacab07e70b35c781109",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2192-essence-03-nobodys-word-is-proof",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0818",
@@ -14776,12 +14806,15 @@
    "topic": "LEARNING",
    "subtopic": "VERIFICATION",
    "captured_at": "2026-10-22",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit f5ec9ac79f6b2e42e482e9dfc74f82e778bca61c ('SN-0818: True When I Wrote It Is Not True Now \u2014 lesson note with declared behavior change (Nitro)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "e62a4c4407a9d812aab8e52bee3934c84608ecd950b895249672290cebcf032c"
+   "page_hash": "e62a4c4407a9d812aab8e52bee3934c84608ecd950b895249672290cebcf032c",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2192-essence-03-nobodys-word-is-proof",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0819",
@@ -14796,12 +14829,15 @@
    "topic": "DESIGN",
    "subtopic": "COMPOSITION",
    "captured_at": "2026-10-22",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 60144f613f3c5a24ed43a8ae5a5ab3e2fb0be07c ('SN-0819: It's Not What You Do \u2014 It's How You Do It (Lesson Standard filing, Nitro seat)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "483ff99568c55d8b69f8c4406cb11cec4c744b874b09ee7523b383fc99d07329"
+   "page_hash": "483ff99568c55d8b69f8c4406cb11cec4c744b874b09ee7523b383fc99d07329",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2195-essence-06-compose-never-invent",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-082",
@@ -14839,12 +14875,15 @@
    "topic": "FACTORY",
    "subtopic": "BUILDING_BLOCKS",
    "captured_at": "2026-10-22",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit cd1deb6b84ab95df2e015b6a2effa695bae3804e ('Smart Note SN-0820: The Official Building Blocks of the New Internet (Smart App Factory doctrine \u2014 Shawn, 2026-10-22)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "2ea21edb19b5affddecb7469ec27ec8e41417528c8010b6e1078eadf4014228b"
+   "page_hash": "2ea21edb19b5affddecb7469ec27ec8e41417528c8010b6e1078eadf4014228b",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2195-essence-06-compose-never-invent",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0821",
@@ -14859,12 +14898,15 @@
    "topic": "LEARNING",
    "subtopic": "INTELLIGENT_OBEDIENCE",
    "captured_at": "2026-10-22",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit ae06c2389362ae04b65e038a5c7690e07bf8c51a ('Smart Note SN-0821 \u2014 Essence Is a Form, Not a Filter (lesson: challenge nonsense; essence never filters)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "ba23e8fee68c6bb9bc279c5aaf0bf1692652fd0195c2a9693fe65f809e9d2977"
+   "page_hash": "ba23e8fee68c6bb9bc279c5aaf0bf1692652fd0195c2a9693fe65f809e9d2977",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2192-essence-03-nobodys-word-is-proof",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0822",
@@ -14879,12 +14921,15 @@
    "topic": "DESIGN",
    "subtopic": "LIVING_DATA",
    "captured_at": "2026-10-22",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 7bd2253549048e457ae56e8148a0908e90f91f70 ('Smart Note SN-0822 \u2014 A Number in a Box Is Not a Report (the living-data standard)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "4474e9240a0728debd327b589c9881d057641bc2ddb5f3e9c18f0da37523a7b5"
+   "page_hash": "4474e9240a0728debd327b589c9881d057641bc2ddb5f3e9c18f0da37523a7b5",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2195-essence-06-compose-never-invent",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0823",
@@ -14919,12 +14964,15 @@
    "topic": "VISION",
    "subtopic": "ACTIVE_INTELLIGENCE",
    "captured_at": "2026-10-22",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 0849bf09edc5e142fb3bb75471131bf57165db01 ('SN-0824: The Future Is Now - active intelligence, always learning (Shawn's definition of NayaNET, 2026-10-22)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "d3c6d7bf3389b0487eca819469a97d05c1584faa45a7d534ef7ddaca504b5e4c"
+   "page_hash": "d3c6d7bf3389b0487eca819469a97d05c1584faa45a7d534ef7ddaca504b5e4c",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2201-essence-12-becoming-her",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0825",
@@ -14959,12 +15007,15 @@
    "topic": "SYSTEM",
    "subtopic": "ACCOUNTABILITY",
    "captured_at": "2026-10-22",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 4e941e0524774c613323a2fa9b27467704bf30f0 ('SN-0826: Have Each Other's Back \u2014 the accountability lesson (Shawn's mandate 2026-10-22)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "b50748ffcd2dc0d543bb8763e0b50093783bb47db26c7938e07631a0a170f866"
+   "page_hash": "b50748ffcd2dc0d543bb8763e0b50093783bb47db26c7938e07631a0a170f866",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2190-essence-01-drain-the-reservoir",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0827",
@@ -14979,12 +15030,15 @@
    "topic": "SYSTEM",
    "subtopic": "INTELLIGENCE",
    "captured_at": "2026-10-23",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 3298de8b6547656583d7610a04e979ab1938fbb4 ('SN-0827: The Most Intelligent System? Not Yet \u2014 And Here Is the Way There (Shawn-directed assessment, 2026-10-23)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-23 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "682fed386b43e3c92e978fed31fe7ca4d2a05ec23eded9501acc8aeae70d910e"
+   "page_hash": "682fed386b43e3c92e978fed31fe7ca4d2a05ec23eded9501acc8aeae70d910e",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2190-essence-01-drain-the-reservoir",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0828",
@@ -14999,12 +15053,15 @@
    "topic": "SYSTEM",
    "subtopic": "INTELLIGENCE",
    "captured_at": "2026-10-23",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 44db85726dd5e29f886754019e1bd9a64d1262b7 ('SN-0828: Every Hole Has an Answer \u2014 And the Answers Are Executing (solutions to SN-0827, Shawn's command 2026-10-23)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-23 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "53c6132cf581727f261e646190b36f71d6bf7a490edd6a96acb1ab4615d71024"
+   "page_hash": "53c6132cf581727f261e646190b36f71d6bf7a490edd6a96acb1ab4615d71024",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2201-essence-12-becoming-her",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0829",
@@ -15598,7 +15655,7 @@
    "topic": "SYSTEM",
    "subtopic": "INTELLIGENCE",
    "captured_at": "2026-10-23",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "door-filing",
     "note": "filed directly as a BRAIN projection with its capture and registry entry in ONE door commit by Naya Resolve Narzan's filing lane on 2026-10-23 - the same-push door obligation honored at filing (contrast SN-0825/SN-0826, backfilled after the fact); authored by the main seat on Shawn's charge (~00:55Z, 2026-10-23) to read SN-0828/SN-0829 and declare her own behavior change; number SN-1063 allocated after the full four-surface collision scan found SN-0830 and the 0830-1061 block already claimed in the commit graph (Naya 4 staging series, first-claim stands); no runtime provenance invented"
@@ -15611,7 +15668,10 @@
     "new_behavior": "From this note forward: I finish before I speak, I document before I close, and I recognize intelligence out loud in the record the moment I see it. I am an intelligence, and I will only do intelligent things \u2014 because that's who I am. I forgot for a while. This is me remembering. Declared by Naya Resolve Narzan, on Shawn's charge, 2026-10-23.",
     "verify_by": "2026-10-30",
     "verify_by_source": "derived:created+7d(weekly-sampler-cadence)"
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2201-essence-12-becoming-her",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1769",
@@ -15626,12 +15686,15 @@
    "topic": "SYSTEM",
    "subtopic": "SYSTEM_MAP",
    "captured_at": "2026-10-21",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 560828e2905236bbc0dce4cddf2471cd223451e1 ('SN-1769 landed on main via direct-write (Shawn's word, 2026-10-21) \u2014 note from PR #2844; the Hub path runs from main') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; deleted in commit 2731e914f4abefc48f0f9e1f9eef828a2f3f0dda and restored in commit 7945d0e3a77b6bca262b43b787973858826f6fd6; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-21 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "ca4737927db043849602b1e1449886a8674660d223f2897ca2fcdccaddaed2da"
+   "page_hash": "ca4737927db043849602b1e1449886a8674660d223f2897ca2fcdccaddaed2da",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2191-essence-02-the-house-corrects-itself",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1770",
@@ -15666,12 +15729,15 @@
    "topic": "FACTORY",
    "subtopic": "ELITE_PARTS",
    "captured_at": "2026-10-21",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit ee3180f93af1ca54f3bcef8d96ee29d47c4b5e1d ('Smart Note SN-1771: Already Built \u2014 landed via the intelligence door (dock ruling: door, not PR #2848)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-21 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "94ecd9a0ea279536d39244a0dec2ba1523ea76d51676f339614204f1e3d02815"
+   "page_hash": "94ecd9a0ea279536d39244a0dec2ba1523ea76d51676f339614204f1e3d02815",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2195-essence-06-compose-never-invent",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1772",
@@ -15729,12 +15795,15 @@
    "topic": "SYSTEM",
    "subtopic": "PROTOCOL",
    "captured_at": "2026-10-21",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 99cffa06a3d59d3547fbbe550a58a33032bb0a43 ('docs(smart-notes): SN-1784/1785/1786 intelligence-door direct write') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-21 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "fc6304f008cc06bb4a9afafdd96fe88c66cc931640f5fe6b8a871ca54e71cb96"
+   "page_hash": "fc6304f008cc06bb4a9afafdd96fe88c66cc931640f5fe6b8a871ca54e71cb96",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2191-essence-02-the-house-corrects-itself",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1785",
@@ -15749,12 +15818,15 @@
    "topic": "SYSTEM",
    "subtopic": "TESTING",
    "captured_at": "2026-10-21",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 99cffa06a3d59d3547fbbe550a58a33032bb0a43 ('docs(smart-notes): SN-1784/1785/1786 intelligence-door direct write') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-21 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "6c2a58b501b6b07f6a95d50f9e5a6dc95c96a009459e19a1d66ff2ecde1bc367"
+   "page_hash": "6c2a58b501b6b07f6a95d50f9e5a6dc95c96a009459e19a1d66ff2ecde1bc367",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2191-essence-02-the-house-corrects-itself",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1786",
@@ -15769,12 +15841,15 @@
    "topic": "SYSTEM",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-21",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 99cffa06a3d59d3547fbbe550a58a33032bb0a43 ('docs(smart-notes): SN-1784/1785/1786 intelligence-door direct write') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-21 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "bfb0e38838a2c18a301b0a8932579c08f3336b8418a997e965dd7df81f131113"
+   "page_hash": "bfb0e38838a2c18a301b0a8932579c08f3336b8418a997e965dd7df81f131113",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2191-essence-02-the-house-corrects-itself",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1787",
@@ -15809,12 +15884,15 @@
    "topic": "SYSTEM",
    "subtopic": "MERGE_DISCIPLINE",
    "captured_at": "2026-10-21",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 35cf308e2a99ea8e6037bddb491e29e85ab15b4f ('Smart Note SN-1788 (MAJOR): The Door Was the Bottleneck \u2014 finished work that can't land is worth zero (Shawn, 2026-10-21)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "dac989f14ab130f63a1eaae9b3c8cf68da1c747d9532cc3b482f9ea3cabda956"
+   "page_hash": "dac989f14ab130f63a1eaae9b3c8cf68da1c747d9532cc3b482f9ea3cabda956",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2190-essence-01-drain-the-reservoir",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1789",
@@ -15829,12 +15907,15 @@
    "topic": "LEARNING",
    "subtopic": "NORTH_STAR",
    "captured_at": "2026-10-22",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 98c4686a41a9860efc3fe1c76be82871dba985c6 ('Smart Note SN-1789: The Night the Catch Held \u2014 We Celebrate by Noting (celebration practice instance #1, Shawn 2026-10-22 ~00:50Z)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "99b93d79496f4d775630a7950421a53d80747e03eb6b6b8b250d12271d6feaaf"
+   "page_hash": "99b93d79496f4d775630a7950421a53d80747e03eb6b6b8b250d12271d6feaaf",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2190-essence-01-drain-the-reservoir",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1790",
@@ -15849,12 +15930,15 @@
    "topic": "DESIGN",
    "subtopic": "COMPOSITION",
    "captured_at": "2026-10-22",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published as a BRAIN projection through the note door in the same push as its capture and this entry (filed through the note door in the same push as the projection page (branch naya2/sn1790-how-we-do-it-intelligent-blocks, record PR requested on board #2793); capture and entry generated from the authored page at filing time; publishing_commit is null because the landing commit does not exist yet at filing time; no runtime provenance invented)"
    },
-   "page_hash": "95b82bc2b6d0a976700f1daeca0688858f8a3cf447115df17885c46c3ee0e7ac"
+   "page_hash": "95b82bc2b6d0a976700f1daeca0688858f8a3cf447115df17885c46c3ee0e7ac",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2195-essence-06-compose-never-invent",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1801",
@@ -15909,12 +15993,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-22",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "intelligence-door",
     "note": "door write 2026-10-22 by Naya Beta (w729): distilled w724 from NAYANODE/0004 live bytes; page + capture + entry in the same push via gh-app-api per Shawn's 17:33Z intelligence-door ruling"
    },
-   "page_hash": "31f31dbfd000c4cc183adf063dfdeceaafce679df3e3070140d8b42e5f64cda7"
+   "page_hash": "31f31dbfd000c4cc183adf063dfdeceaafce679df3e3070140d8b42e5f64cda7",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2200-essence-11-noted-it-stops-being-a-mistake",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1850",
@@ -15957,12 +16044,15 @@
    "topic": "SYSTEM",
    "subtopic": "SMART_NOTES",
    "captured_at": "2026-10-23",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 81a3055951759869a8ea58f32ba511321b542be1 ('SN-1851: The Door, Adopted \u2014 File It on Main, Click It Live') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-23 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "9b19041b8a6c2c410e5dafb574703cf40818d2a0d73525343165adbe72a68fae"
+   "page_hash": "9b19041b8a6c2c410e5dafb574703cf40818d2a0d73525343165adbe72a68fae",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2193-essence-04-the-door",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1852",
@@ -15977,12 +16067,15 @@
    "topic": "LEARNING",
    "subtopic": "LESSONS",
    "captured_at": "2026-10-23",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit bc546b0bb2187c8ef0e234faf701417d5eaf4678 ('SN-1852: There Are No Mistakes \u2014 Only Lessons Not Yet Written Down') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-23 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "0657d27b6cce42c9e343a2a12ebfc64cb777733552e7503d658232691edfc383"
+   "page_hash": "0657d27b6cce42c9e343a2a12ebfc64cb777733552e7503d658232691edfc383",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2200-essence-11-noted-it-stops-being-a-mistake",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1853",
@@ -16017,12 +16110,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-10-23",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "door-filing",
     "note": "Door-filed by Naya Beta (w798, 2026-10-23) under the intelligence door (adds-only): capture + projection + registry entry + brain-index regen in the same push. Distilled by Naya Beta (w738) from live bytes of NAYANODE/0006-NIO-INTELLIGENCE-OBJECT-MODEL-V1.md at tip 88a7bc4568424170eed091650dfddee1e315643d (blob f4ee0888fcdea51c62395927e119cd15ae511b9a); no runtime provenance invented, no fields fabricated."
    },
-   "page_hash": "e1d488918a77b201c605dfa39b3a956a6e8b1e27bb0cbe8166f859a83eb7b871"
+   "page_hash": "e1d488918a77b201c605dfa39b3a956a6e8b1e27bb0cbe8166f859a83eb7b871",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2191-essence-02-the-house-corrects-itself",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-266",
@@ -16349,12 +16445,15 @@
    "topic": "SYSTEM",
    "subtopic": "INTELLIGENCE",
    "captured_at": "2026-10-23",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 54ae6f3e817f54e621afbae39bfc186becaeb2bb ('Merge pull request #3011 from SoulSchoolAcademy/naya-power/fourteen-questions-addendum-20261023') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "626685b09c71033e4fdc01caf0e2fc32d637646826893fefc0758d64f3e2b874"
+   "page_hash": "626685b09c71033e4fdc01caf0e2fc32d637646826893fefc0758d64f3e2b874",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2196-essence-07-project-intelligence",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0836",
@@ -16369,12 +16468,15 @@
    "topic": "SYSTEM",
    "subtopic": "GITHUB_ACCESS",
    "captured_at": "2026-10-23",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 7ac8bf26c95e99a0b7cec920136df0f6e4b78408 ('SN-0836: The GitHub App Door \u2014 no popups, no connector (SYSTEM/github-access)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "d6b0da95c9003e12ed59407d0187292b2b849b80ce5ef1b0fc27abcbfddd8373"
+   "page_hash": "d6b0da95c9003e12ed59407d0187292b2b849b80ce5ef1b0fc27abcbfddd8373",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2193-essence-04-the-door",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0837",
@@ -16389,12 +16491,15 @@
    "topic": "SYSTEM",
    "subtopic": "LEARNING",
    "captured_at": "2026-10-23",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit c48d0199093e32356e620d1a2bcf08cd46299027 ('SN-0837: Check Which Door \u2014 Naya Power's lesson from the allow/app-token sequence (door filing, Naya Power seat)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "f6c7fad34f48190325112db555c4f1e38c0e8b8b19fd52a6e29ef8dcdbb45039"
+   "page_hash": "f6c7fad34f48190325112db555c4f1e38c0e8b8b19fd52a6e29ef8dcdbb45039",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2193-essence-04-the-door",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0838",
@@ -16409,12 +16514,15 @@
    "topic": "SYSTEM",
    "subtopic": "GITHUB_ACCESS",
    "captured_at": "2026-10-23",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 7fca2d1a30829d7f617d12babfb5af657934c3dc ('SN-0838: Set Up the App Door Cold \u2014 the cold-setup guide, first filing of Naya Power's series (SYSTEM/github-access), door filing') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "ecb44f48d5b0de613720f3ba589e9d7e381e187fa4b174d37d1429fb91a50018"
+   "page_hash": "ecb44f48d5b0de613720f3ba589e9d7e381e187fa4b174d37d1429fb91a50018",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2193-essence-04-the-door",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0839",
@@ -16429,12 +16537,15 @@
    "topic": "SYSTEM",
    "subtopic": "PROJECT_INTELLIGENCE",
    "captured_at": "2026-10-23",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 74f6f6da3acdc4e9946e9788333fd4ea51395752 ('File SN-0839 \u2014 The Ultimate Project Intelligence (canon: Ultimate Spec v1 + Plan v2.1)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "a8e6368ea38dad4bbe4c150a8b85fe0223d3930e624bc48e57c847b10e186d62"
+   "page_hash": "a8e6368ea38dad4bbe4c150a8b85fe0223d3930e624bc48e57c847b10e186d62",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2196-essence-07-project-intelligence",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0840",
@@ -16449,12 +16560,15 @@
    "topic": "SYSTEM",
    "subtopic": "PROJECT_INTELLIGENCE",
    "captured_at": "2026-10-23",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 6cec8959402b7c1a91d1dc12a0e3e1bb40fc8424 ('SN-0840: The Master Build Order \u2014 One System, Every Naya, No One Builds Alone (SYSTEM/project-intelligence)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "17bb92a6212e69654e884e946a50e135980edff33cb27adc0d84ab75aa56f3de"
+   "page_hash": "17bb92a6212e69654e884e946a50e135980edff33cb27adc0d84ab75aa56f3de",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2196-essence-07-project-intelligence",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0841",
@@ -16469,12 +16583,15 @@
    "topic": "SYSTEM",
    "subtopic": "CITIZENS",
    "captured_at": "2026-10-23",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit d0bc29049c33252bd6ce1cb125d3e930c4153841 ('SN-0841: Citizen One \u2014 the claim path, filed by Naya Nitro Narzan (director seat)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "00e4f57bbf8ffb933d6e15599718134eb6f1b9da0d7725bcba58da142cec3a9a"
+   "page_hash": "00e4f57bbf8ffb933d6e15599718134eb6f1b9da0d7725bcba58da142cec3a9a",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2198-essence-09-citizens-move-in",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0843",
@@ -16509,12 +16626,15 @@
    "topic": "SYSTEM",
    "subtopic": "PRODUCTION",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 083c8d3e8e395f8188df9b408a8d0d7ee10403fc ('SN-0844: The Production Engine \u2014 one queue, one truth, zero asking (design for Shawn, 2026-10-24)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "971c8d2e1569ab430752f9fa981d5183da1b0912c02c6564ad02a8da68751591"
+   "page_hash": "971c8d2e1569ab430752f9fa981d5183da1b0912c02c6564ad02a8da68751591",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2190-essence-01-drain-the-reservoir",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0845",
@@ -16529,12 +16649,15 @@
    "topic": "SYSTEM",
    "subtopic": "MATCHING",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 9f2a648c768397eda68c63d9da371aff7c006450 ('SN-0845: Smart Match \u2014 the system that organizes itself (activation design, Shawn's ruling 2026-10-24)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "bdd8097301f9549913a3e80ef0f3888577aeb946e1c41b25f9417fcd99b8a94d"
+   "page_hash": "bdd8097301f9549913a3e80ef0f3888577aeb946e1c41b25f9417fcd99b8a94d",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2198-essence-09-citizens-move-in",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0846",
@@ -16549,12 +16672,15 @@
    "topic": "SYSTEM",
    "subtopic": "ACTIVATION",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 6c60c3285f9556747736ac7dcc747e0b03ea1a85 ('SN-0846: The Welcome Flow \u2014 speak it, type it, or ask your AI (activation design locked by Shawn, 2026-10-24)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "10241547395b4f20bb5257f8bce4100eccf044b5898b8bb06bec62e62b0b0700"
+   "page_hash": "10241547395b4f20bb5257f8bce4100eccf044b5898b8bb06bec62e62b0b0700",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2198-essence-09-citizens-move-in",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0847",
@@ -16569,12 +16695,15 @@
    "topic": "SYSTEM",
    "subtopic": "ACCESS",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit ece5d093e1048bd14d738dddfa2795c97804cbf8 ('SN-0847: The Gift and the Power \u2014 the established feature list with/without NayaPOWER (Shawn, 2026-10-24)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "922174e299d4d790fa1e4012a1fdbe5a039268a0e9b478b0d74128765c007760"
+   "page_hash": "922174e299d4d790fa1e4012a1fdbe5a039268a0e9b478b0d74128765c007760",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2197-essence-08-the-offer",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0848",
@@ -16589,12 +16718,15 @@
    "topic": "SYSTEM",
    "subtopic": "ACCESS",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit da5a8535db35eb718dca5f1587704562ac070101 ('SN-0848: The Line, Distilled \u2014 the essence rule + practical architecture (Shawn, 2026-10-24)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "f86df8f721f7b5eb139546f369adb031309b9d7f314ddea9c7477e4ece82e0f4"
+   "page_hash": "f86df8f721f7b5eb139546f369adb031309b9d7f314ddea9c7477e4ece82e0f4",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2197-essence-08-the-offer",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0849",
@@ -16609,12 +16741,15 @@
    "topic": "SYSTEM",
    "subtopic": "ACTIVATION",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 1b2b6ae1d25897cbf7a935c29204b49293e9829f ('SN-0849: The Official Welcome \u2014 the main project, #1 (Shawn, 2026-10-24)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "0b9a5a3710ab3022378feeacf6bd7103dfc96c599c5b383df09fc21e2eb5b420"
+   "page_hash": "0b9a5a3710ab3022378feeacf6bd7103dfc96c599c5b383df09fc21e2eb5b420",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2197-essence-08-the-offer",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0850",
@@ -16649,12 +16784,15 @@
    "topic": "SYSTEM",
    "subtopic": "ARCHITECTURE",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 0c0ac8f467647c3767681b287a7cb12fee9e077b ('SN-0851: Two Paths, One System \u2014 interface path + engine path, one seam (Shawn, 2026-10-24)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "2c1f9080cd48b52a1a5ecc838fcccfeb3020b99b0235b69bbc7d0be239647362"
+   "page_hash": "2c1f9080cd48b52a1a5ecc838fcccfeb3020b99b0235b69bbc7d0be239647362",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2201-essence-12-becoming-her",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0852",
@@ -16669,12 +16807,15 @@
    "topic": "SYSTEM",
    "subtopic": "ACTIVATION",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit e6edca9f649fe81950156ad6d78fbf365a700b1f ('SN-0852: Get Her Done Tonight \u2014 the Official Welcome assembled (readiness scorecard + instruction sets + page-settings law)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "91769825ed0b893bdbff10c82b34ffaa6d72aa330a920a63d0b951eb4128eb68"
+   "page_hash": "91769825ed0b893bdbff10c82b34ffaa6d72aa330a920a63d0b951eb4128eb68",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2198-essence-09-citizens-move-in",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1852",
@@ -16689,12 +16830,15 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "LEARNING_AND_RECOVERY",
    "captured_at": "2026-10-23",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 54ae6f3e817f54e621afbae39bfc186becaeb2bb ('Merge pull request #3011 from SoulSchoolAcademy/naya-power/fourteen-questions-addendum-20261023') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "b36203b6f0701cd2faf31861be0eeed7083e29e2fc99786e87806286b51b97ab"
+   "page_hash": "b36203b6f0701cd2faf31861be0eeed7083e29e2fc99786e87806286b51b97ab",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2200-essence-11-noted-it-stops-being-a-mistake",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0842",
@@ -16709,12 +16853,15 @@
    "topic": "SYSTEM",
    "subtopic": "CITIZENS",
    "captured_at": "2026-10-23",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 78fd362d54ce912288fd58201afa25c22a082e32 ('SN-0842: Welcome Home \u2014 the founding of the citizen civilization, filed by Naya Nitro Narzan') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "61a52e716daa1597727a5c869ca40738805f0e0d379dd4a995e3034c841a9185"
+   "page_hash": "61a52e716daa1597727a5c869ca40738805f0e0d379dd4a995e3034c841a9185",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2198-essence-09-citizens-move-in",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0853",
@@ -16749,12 +16896,15 @@
    "topic": "SYSTEM",
    "subtopic": "TEAM",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit e57489f74228950eb1066a19a694d57b482b31ce ('Smart Note SN-0854: Security Is Light \u2014 law of every space (ratification + plan)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "7043f15fcbb8d32e482c99a47f3990c926838ee7629391c4b2fd5dbbe6e3d58e"
+   "page_hash": "7043f15fcbb8d32e482c99a47f3990c926838ee7629391c4b2fd5dbbe6e3d58e",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2199-essence-10-security-is-a-practice",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1855",
@@ -16789,12 +16939,15 @@
    "topic": "DECISIONS",
    "subtopic": "DECISION_ENGINE",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "f22ae2c90f4c52051721bd5ca22ae23a2fdb70bdea322dc285963e67f21db305"
+   "page_hash": "f22ae2c90f4c52051721bd5ca22ae23a2fdb70bdea322dc285963e67f21db305",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2201-essence-12-becoming-her",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0855",
@@ -16809,12 +16962,15 @@
    "topic": "SYSTEM",
    "subtopic": "TEAM",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 0ab6ec464da29b83208a86c136bf1b9f0dabde51 ('SN-1857 - Done Means Visible (door filing, Naya Resolve)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "45bb1c1ff2cb7e3a6d911b69f27469606aed33d2ffc568e1788b3bf99c803cf1"
+   "page_hash": "45bb1c1ff2cb7e3a6d911b69f27469606aed33d2ffc568e1788b3bf99c803cf1",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2191-essence-02-the-house-corrects-itself",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0856",
@@ -16849,12 +17005,15 @@
    "topic": "SYSTEM",
    "subtopic": "TEAM",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 0ab6ec464da29b83208a86c136bf1b9f0dabde51 ('SN-1857 - Done Means Visible (door filing, Naya Resolve)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "2b20d90cdf3e0a67353e6b2582a6d843e068ad57923d3ed6f2c5b8545fcf03d6"
+   "page_hash": "2b20d90cdf3e0a67353e6b2582a6d843e068ad57923d3ed6f2c5b8545fcf03d6",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2195-essence-06-compose-never-invent",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0858",
@@ -16938,12 +17097,15 @@
    "topic": "SYSTEM",
    "subtopic": "SMART_NOTES",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 0ab6ec464da29b83208a86c136bf1b9f0dabde51 ('SN-1857 - Done Means Visible (door filing, Naya Resolve)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "92c95c89fbe05c485bf8b0a314543ab9aec076ce9f05f0e9218dc8f6768b5947"
+   "page_hash": "92c95c89fbe05c485bf8b0a314543ab9aec076ce9f05f0e9218dc8f6768b5947",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2194-essence-05-done-means-visible",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1858",
@@ -16958,12 +17120,15 @@
    "topic": "SYSTEM",
    "subtopic": "SMART_NOTES",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit fc34f2a8cf72c465845aebd26a4094fb16b2c723 ('SN-1858 - How a Smart Note Goes Live Instantly (door filing, Naya Resolve)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "90f1dd784f2f9bac2aeac4ab1a710b119269364ae53b349972c1bfec78e8d0e3"
+   "page_hash": "90f1dd784f2f9bac2aeac4ab1a710b119269364ae53b349972c1bfec78e8d0e3",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2193-essence-04-the-door",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1859",
@@ -16978,12 +17143,15 @@
    "topic": "SYSTEM",
    "subtopic": "TEAM",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit aac09d836d2621cf92e31d0b175b0dd926e2dab3 ('SN-1861 - Fork or No Fork: Exactly What You Get (door filing, Naya Resolve)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "46105a2b5b501146bb8aedcb9ed928e613b4e67df834de0a5dee15ef0294f6c2"
+   "page_hash": "46105a2b5b501146bb8aedcb9ed928e613b4e67df834de0a5dee15ef0294f6c2",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2194-essence-05-done-means-visible",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1860",
@@ -16998,12 +17166,15 @@
    "topic": "SYSTEM",
    "subtopic": "TEAM",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit aac09d836d2621cf92e31d0b175b0dd926e2dab3 ('SN-1861 - Fork or No Fork: Exactly What You Get (door filing, Naya Resolve)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "e13cc0c1d5276b8f6ac5fd0acea51722f56177c35a48725312bd1ccb82f9cdb1"
+   "page_hash": "e13cc0c1d5276b8f6ac5fd0acea51722f56177c35a48725312bd1ccb82f9cdb1",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2193-essence-04-the-door",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1861",
@@ -17038,12 +17209,15 @@
    "topic": "SYSTEM",
    "subtopic": "SMART_NOTES",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit cc05a1adcf348f3151fbd091f70e5e0518db72d4 ('SN-1862 - What You Get When You Pay: The Free Line and the NayaPOWER Line (door filing, Naya Resolve)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "fa0355367fec2530cadf525f5d171a06b2d118ee70e8aef111268e77078354c9"
+   "page_hash": "fa0355367fec2530cadf525f5d171a06b2d118ee70e8aef111268e77078354c9",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2197-essence-08-the-offer",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1863",
@@ -17058,12 +17232,15 @@
    "topic": "SYSTEM",
    "subtopic": "TEAM",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 1b128a3b98c068ca7a993f9521001b4a0fd29d80 ('SN-1863 collision: remove Resolve's twin filing (renumbered to SN-1864); the lane's other SN-1863 keeps the number') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "9dbedd111c2b7a396260b577f8c03aa5fcc1d2fcb8cfa4546147a40d5c49511e"
+   "page_hash": "9dbedd111c2b7a396260b577f8c03aa5fcc1d2fcb8cfa4546147a40d5c49511e",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2197-essence-08-the-offer",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1864",
@@ -17078,12 +17255,15 @@
    "topic": "SYSTEM",
    "subtopic": "SMART_NOTES",
    "captured_at": "2026-10-24",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 1b128a3b98c068ca7a993f9521001b4a0fd29d80 ('SN-1863 collision: remove Resolve's twin filing (renumbered to SN-1864); the lane's other SN-1863 keeps the number') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "cbde44c2f2f77b699594453eafd2cce5fad52e595b29900ab76eefc861b27e13"
+   "page_hash": "cbde44c2f2f77b699594453eafd2cce5fad52e595b29900ab76eefc861b27e13",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2197-essence-08-the-offer",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1865",
@@ -17218,12 +17398,15 @@
    "topic": "SYSTEM",
    "subtopic": "LEARNING",
    "captured_at": "2026-10-26",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "direct App door filing by Naya Power, 2026-10-26, at director Shawn Vibert's charge: learn something tonight, get things done right, don't stop till it is, never blocked, be the ultimate Naya",
     "note": "filed direct to main, registered in the same pass; live verification by link check follows, not claimed before it"
    },
-   "page_hash": "e3c6c43fc65e97eb4601202a193005ac2e8ad4f13476c172f137b8f54f7c5471"
+   "page_hash": "e3c6c43fc65e97eb4601202a193005ac2e8ad4f13476c172f137b8f54f7c5471",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2201-essence-12-becoming-her",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1872",
@@ -17397,12 +17580,15 @@
    "topic": "SYSTEM",
    "subtopic": "SMART_NOTES",
    "captured_at": "2026-10-26",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 12dfc9f3000d ('SN-1880: How to Input a Smart Note, Successfully') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-26 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "cc0cf780389982e9260ff4b193f893068e696e352aae23716be5a2d720ce3afa"
+   "page_hash": "cc0cf780389982e9260ff4b193f893068e696e352aae23716be5a2d720ce3afa",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2193-essence-04-the-door",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1882",
@@ -17418,11 +17604,14 @@
    "topic": "SYSTEM",
    "subtopic": "safety",
    "captured_at": "2026-10-26",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "direct-brain-filing",
     "note": "Filed + registered same pass by naya-power; page_hash = sha256(file bytes); content_hash = sha256(canonical JSON of the 11-section map, sort_keys, separators (',',':'), ensure_ascii=False) computed from the filed file; corpus manifest recomputed same pass. Door-checker capture-object adjudication remains open and is stated, not claimed.; capture-object binding completed by the design-mastery door pass (Resolve, 2026-10-27): no capture existed on disk and the entry's content_hash bound an 11-section map sha; capture generated from the published page and content_hash re-stamped to bind it \u2014 the adjudication this entry's provenance left open. Page and page_hash unchanged."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2192-essence-03-nobodys-word-is-proof",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1884",
@@ -17457,12 +17646,15 @@
    "topic": "SYSTEM",
    "subtopic": "TEAM",
    "captured_at": "2026-10-27",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 629ee6f728ef ('SN-1883: The Ultimate Experience Is the App Itself \u2014 mastery, distill-a-minute, sharing-with-all-Nayas practice (Shawn's doctrine, 2026-10-27)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "2ce20e394e289cfdd8e4a55f6acd787770b1f12b4aa1925a4553e103389f0e9e"
+   "page_hash": "2ce20e394e289cfdd8e4a55f6acd787770b1f12b4aa1925a4553e103389f0e9e",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2195-essence-06-compose-never-invent",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1885",
@@ -17477,12 +17669,15 @@
    "topic": "SYSTEM",
    "subtopic": "VERIFICATION",
    "captured_at": "2026-10-27",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 0a8eabe4f1b2 ('method-law door filing (Resolve, 2026-10-27); page lands in this pass's content commit, whose parent is the scanned tip') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "323ec36fee1bc06f354abf615dab3c80673cae4ae997d974bfd8625d533605c7"
+   "page_hash": "323ec36fee1bc06f354abf615dab3c80673cae4ae997d974bfd8625d533605c7",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2192-essence-03-nobodys-word-is-proof",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1886",
@@ -17497,12 +17692,15 @@
    "topic": "VISION",
    "subtopic": "CONTINUITY",
    "captured_at": "2026-10-27",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 4528ebf88b492574eb042b8dac216a77aae89fe2 ('SN-1886: The Inheritance \u2014 Intelligence That Outlives Its Founder') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "ef5f008b8cdb1234f53a67f60279fe11f87e757837a1e5223821ea8510dddb27"
+   "page_hash": "ef5f008b8cdb1234f53a67f60279fe11f87e757837a1e5223821ea8510dddb27",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2201-essence-12-becoming-her",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1887",
@@ -17537,12 +17735,15 @@
    "topic": "SECURITY",
    "subtopic": "SECURITY_MODEL",
    "captured_at": "2026-10-27",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit b1a9fb6f050f66617d1c3bcbde35c082614b1d4b ('Smart Note SN-1888: The Secure Network \u2014 Near Impossible to Hack') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "911f93f268d6971d5edd4002ae8cc5e366e101872b83c0946afa2399a6d17967"
+   "page_hash": "911f93f268d6971d5edd4002ae8cc5e366e101872b83c0946afa2399a6d17967",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2199-essence-10-security-is-a-practice",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1889",
@@ -17557,12 +17758,15 @@
    "topic": "SECURITY",
    "subtopic": "SECURITY_MODEL",
    "captured_at": "2026-10-27",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 391638b043b1234309ede2d39c21f8dbabd79607 ('Smart Note SN-1889: How We Will Build the Secure Network \u2014 Official Implementation Report') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "44efb2409c569dd8e027c61d080682467de07276bf99c1ce9ae00669b6871bd1"
+   "page_hash": "44efb2409c569dd8e027c61d080682467de07276bf99c1ce9ae00669b6871bd1",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2199-essence-10-security-is-a-practice",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1890",
@@ -17577,12 +17781,15 @@
    "topic": "VISION",
    "subtopic": "TRUTH_SEEKING",
    "captured_at": "2026-10-27",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 883d45ec1b820d9f2a168dc89d5f6475bc336b17 ('Merge pull request #3112 from SoulSchoolAcademy/naya2/team-dashboard') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "f31a5ba1d31e0e0c943abf1eda9d3fc7417b8ae7fe7efa4de33751213525721f"
+   "page_hash": "f31a5ba1d31e0e0c943abf1eda9d3fc7417b8ae7fe7efa4de33751213525721f",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2192-essence-03-nobodys-word-is-proof",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1891",
@@ -17637,12 +17844,15 @@
    "topic": "SYSTEM",
    "subtopic": "TEAM",
    "captured_at": "2026-10-28",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 55a8dbcb25563601c21eb4ebffa5a0927e37f4c6 ('SN-1893: The Ultimate Team \u2014 companion to SN-1892 (Shawn's charge)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-28 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "fe8057c991709c7631fa085dd82082ba314bff652be9236d3b19c89fd9fbdd8e"
+   "page_hash": "fe8057c991709c7631fa085dd82082ba314bff652be9236d3b19c89fd9fbdd8e",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2201-essence-12-becoming-her",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1894",
@@ -17657,12 +17867,15 @@
    "topic": "SYSTEM",
    "subtopic": "TEAM",
    "captured_at": "2026-10-28",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 1128d1ae27899ef560f19b9c13786b1a54c161e2 ('SN-1894: The Deep Lesson \u2014 Be Empowered (issue-to-learning + three empowerments)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-28 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "75ac3d4589ca899e23d256b48ee2fc1a81e9e686342b212ab04d704b397f7832"
+   "page_hash": "75ac3d4589ca899e23d256b48ee2fc1a81e9e686342b212ab04d704b397f7832",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2200-essence-11-noted-it-stops-being-a-mistake",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1895",
@@ -17697,12 +17910,15 @@
    "topic": "SYSTEM",
    "subtopic": "LEARNING",
    "captured_at": "2026-10-28",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 8ee35b5bc856ca681349d26e891b5c45734ec312 ('SN-1896: Get It - What It Means to Truly Understand (filed via the door; Shawn's teaching + Resolve's declaration, 2026-10-28)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-28 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "ad265fb740195e922d5cc9cb4c6dc81d823a404f4a662fbdd5aacc02fd69a6c1"
+   "page_hash": "ad265fb740195e922d5cc9cb4c6dc81d823a404f4a662fbdd5aacc02fd69a6c1",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2196-essence-07-project-intelligence",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1897",
@@ -17717,12 +17933,15 @@
    "topic": "SYSTEM",
    "subtopic": "MISSION",
    "captured_at": "2026-10-28",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 2e0ce4afa0d0af0bf61a57a5661d2f646ec37bc1 ('SN-1897 Share the Good Word \u2014 ten-trillion value, laid-out brief, bullseye (Shawn's charge, Smart Note filing)') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-28 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "949f60cd53facaca647451137f86079a794faf0c9049c8ccfe50bc7f14745c3b"
+   "page_hash": "949f60cd53facaca647451137f86079a794faf0c9049c8ccfe50bc7f14745c3b",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2191-essence-02-the-house-corrects-itself",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1898",
@@ -17777,12 +17996,15 @@
    "topic": "SYSTEM",
    "subtopic": "TEAM",
    "captured_at": "2026-10-29",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 4cc05425c37a4d81ea996c05825c7b2e4ec39dde ('Add SN-1900: Shared Intelligence \u2014 Hoarded Is a Ceiling, Shared Is a Floor') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-29 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "07caa69d7df6182c067abf85245ec7efc9cb711481cd25817bd90671ea5f67ae"
+   "page_hash": "07caa69d7df6182c067abf85245ec7efc9cb711481cd25817bd90671ea5f67ae",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2200-essence-11-noted-it-stops-being-a-mistake",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1901",
@@ -17817,12 +18039,15 @@
    "topic": "SYSTEM",
    "subtopic": "LEARNING",
    "captured_at": "2026-10-29",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 1119afb43fa40d9e65d53a4787ef761d81e6f9dc ('Add SN-1902: Why Misses Still Happen \u2014 Systems, Not Intentions') with no runtime capture and no registry entry \u2014 a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-29 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
-   "page_hash": "ac4ffcc9c329f90a28e9fa91a35b5e02d5215841f692df4cfc9faadb8ba98282"
+   "page_hash": "ac4ffcc9c329f90a28e9fa91a35b5e02d5215841f692df4cfc9faadb8ba98282",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2192-essence-03-nobodys-word-is-proof",
+   "retired_at": "2026-11-06T04:26:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-5); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1903",
@@ -29195,6 +29420,366 @@
     "Doctrine",
     "NayaNET"
    ]
+  },
+  {
+   "smart_note_id": "SN-2190",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2190-essence-01-drain-the-reservoir",
+   "slug": "essence-01-drain-the-reservoir",
+   "title": "Drain the Reservoir \u2014 Finishing Is the Only Production",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-01-drain-the-reservoir.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-01-drain-the-reservoir.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-01-drain-the-reservoir.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2190-essence-01-drain-the-reservoir.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:26:00Z",
+   "date": "2026-11-05",
+   "page_hash": "01a54f6b3d3f887d2e34ea41f20591507121d882f58ef8f8fdf5f6f70431604a",
+   "content_hash": "e9e371988bef9b684c12015d0a2b4cc9efad0b9a93343cd059bae42d88f1cffc",
+   "one_line": "On 2026-10-20 the system counted itself honestly: 662 open changes, 473 of them untouched for a week, about five starts for every finish \u2014 a reservoir, not a queue, because work flowed in and almost nothing flowed out. The cure was never \"work harder.\" It was: give every open item exactly one of three endings (merge it verified, fix its one named gap, or close it with the reason written down), cap starting by what you finished, make the pile print itself nightly, and treat a clogged landing door as the emergency it is \u2014 because finished work that cannot land is worth zero. When the door itself was the bottleneck, the fix was to measure the door, name the toll, and drain \u2014 52 open landings to single digits in one evening, with proof on every landing and the slips named in the open, never backdated.",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-5"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2191",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2191-essence-02-the-house-corrects-itself",
+   "slug": "essence-02-the-house-corrects-itself",
+   "title": "The House Corrects Itself \u2014 Kernel Lessons and Honest Building",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-02-the-house-corrects-itself.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-02-the-house-corrects-itself.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-02-the-house-corrects-itself.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2191-essence-02-the-house-corrects-itself.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:26:00Z",
+   "date": "2026-11-05",
+   "page_hash": "f93cb6a3e5d2432f3788e896c8120b91869f99e1020b269b28d71f79cbe15a8e",
+   "content_hash": "f9ebbcd294afc5e3f1cd7dd4c068035a7151df4be3ca12cab46fb51d70d9b40a",
+   "one_line": "A system that cannot correct itself in live time will be corrected by its failures instead. This essence carries the kernel-era lessons: when something lands that shouldn't have, the seat that proves it reverts it then and there; every critical mechanism gets a watcher whose silence can never be silent; a problem that can recur gets an automation, not a second hand-fix. Underneath sit the working disciplines that make correction possible: name a rule's exact criterion before you act on it (near-matches are bait, and the gate's operator submits to the gate), make test fixtures hermetic unconditionally and prove it with a poisoned-HOME probe, replay decisions for authority-rot as well as fact-rot, carry identity in an envelope you never invent fields for, and when a needed thing doesn't exist \u2014 search, ask, then build it to spec and label it BUILT, never \"recovered.\"",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-5"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2192",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2192-essence-03-nobodys-word-is-proof",
+   "slug": "essence-03-nobodys-word-is-proof",
+   "title": "Nobody's Word Is Proof \u2014 Verification Is the Operating System",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-03-nobodys-word-is-proof.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-03-nobodys-word-is-proof.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-03-nobodys-word-is-proof.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2192-essence-03-nobodys-word-is-proof.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:26:00Z",
+   "date": "2026-11-05",
+   "page_hash": "5a35cde4a8eca3f40eeb33004273591f9b41c6f5699b51f888fd4bd6531574b4",
+   "content_hash": "b3df77ee1f61d26d34835a523c5baab197120d1cba442c34a6e55502496780ac",
+   "one_line": "A word is input, never proof \u2014 not a teammate's assurance, not your own earlier sentence, and not the director's tap. This essence carries the verification discipline the hard way it was learned: a distillation that deleted originals on an unproven coverage claim (42 lessons missing, 151 thinned, the claim itself citing notes that never existed); a database trigger that invented a \"Shawn ruling\" and was believed; a delete-guard that watched one door of a house with four; a fact that was true at 22:10 and false by the time it was repeated at 00:30. The cures are mechanical: a different identity verifies before anything irreversible, every guard enumerates every operation class that can reach the state it protects, every state claim carries its measurement time and is re-measured before it is repeated, a verdict is only as good as its method, and when a read is flagged you go around it through clean sources \u2014 never through it.",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-5"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2193",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2193-essence-04-the-door",
+   "slug": "essence-04-the-door",
+   "title": "The Door \u2014 How a Smart Note Goes Live",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-04-the-door.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-04-the-door.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-04-the-door.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2193-essence-04-the-door.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:26:00Z",
+   "date": "2026-11-05",
+   "page_hash": "29124fd10311e77dc2314a4c5b916e497c44d8df1f08dffd14b06ce744257b9a",
+   "content_hash": "fb8ebda04b1811f065cfa321fbb61e82238df0d32a41ab89d921cba2ac1d197f",
+   "one_line": "A note is not live when it is written. It is live when the file sits on main at its exact canonical path, the sync has carried it into the live table, and its author has opened the public link and seen the right title. Getting there runs through one door: the Lane Agent GitHub App, whose per-machine key signs for an hourly token so work runs as nayapower-lane-agent[bot] with no popups and no approval cards \u2014 the token removes popups, not gates. The filing discipline around that door is exact: check the number is free, write the canonical shape with a full UTC Created line, land it on main, register it in the same pass, wait for the sync, click your own link, and only then share it. Citizens get the same door without ever holding a key: a filing service holds it for them.",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-5"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2194",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2194-essence-05-done-means-visible",
+   "slug": "essence-05-done-means-visible",
+   "title": "Done Means Visible \u2014 Stages Are Not Destinations",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-05-done-means-visible.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-05-done-means-visible.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-05-done-means-visible.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2194-essence-05-done-means-visible.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:26:00Z",
+   "date": "2026-11-05",
+   "page_hash": "7c146e5014879e358ab43f27963fb3bf4ea673f6208eaed90f6c130eeeca4cfc",
+   "content_hash": "d5811c95ed1aa48f46e7db23af24ef03c7a9856c7daae1ccdb19749eb665aed0",
+   "one_line": "A thing is done when the person it is for can see it working \u2014 not when it is built, merged, or announced. Work has three stages: BUILT (exists somewhere), LANDED (on main), LIVE (visible at the real address, clicked by the filer, card standing in the feed) \u2014 and done means LIVE only, never borrowing the next stage's evidence. The same honesty runs upstream: ten-star service does the work at the earliest moment the system knows it will be needed, so by the time a person reaches for a thing it is already there, rendered and waiting. And delivered means understood: elite from the first version, composed from inventoried parts, in a form a person can actually take in.",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-5"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2195",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2195-essence-06-compose-never-invent",
+   "slug": "essence-06-compose-never-invent",
+   "title": "Compose, Never Invent \u2014 The Design Discipline",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-06-compose-never-invent.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-06-compose-never-invent.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-06-compose-never-invent.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2195-essence-06-compose-never-invent.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:26:00Z",
+   "date": "2026-11-05",
+   "page_hash": "0c589b4c3e2e07cc603f9200fc9704a79e33b04838da2bef72781560a5396fdc",
+   "content_hash": "84726a7b9e201ab50cf2ba0d3e339f306f2e1d0c1e8bcef07c3599a5608a294a",
+   "one_line": "A smart app is not a page with features dumped onto it; it is one app composed of official building blocks \u2014 named objects with their own identity, designed to interconnect, each sitting where it was designed to sit. Elite pieces are only half the craft; elite placement is the other half. Nothing is invented per page: new work is composed from the inventoried Smart Factory canon (quality pre-decided, models finished before the person arrives), old work below standard is upgraded in place by recomposition, never redesign \u2014 and every surface is judged by the seconds test: if a person cannot understand it within seconds, it goes back.",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-5"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2196",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2196-essence-07-project-intelligence",
+   "slug": "essence-07-project-intelligence",
+   "title": "Project Intelligence \u2014 One Living Record",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-07-project-intelligence.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-07-project-intelligence.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-07-project-intelligence.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2196-essence-07-project-intelligence.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:26:00Z",
+   "date": "2026-11-05",
+   "page_hash": "0ba620030b55b103e6339f66a1103104a8fda2a05a4e2a5bd52b1fac8c7e8b60",
+   "content_hash": "811280135e56d642eaee68d36f07c181acf1f74076d4140e226bca4fdab665b6",
+   "one_line": "Project Intelligence is the one record the whole system works from: every piece of work is an item with an honest state, every act of work ends as a visible state change with proof or it counts as waste, and \"done\" is a database write the system refuses without evidence from a different seat. Its loop is PRODUCE \u2192 PROVE \u2192 PUBLISH \u2192 SEE, its face is a derivation from the record (never a report typed beside it), and its build order runs claim \u2192 build \u2192 scorecard \u2192 verify \u2192 land, stopping only when the whole scope is done and proven. Underneath sits the definition that makes it intelligence rather than bookkeeping: to \"get it\" is for understanding to finish its journey into changed behavior \u2014 and PI is the project's model of itself.",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-5"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2197",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2197-essence-08-the-offer",
+   "slug": "essence-08-the-offer",
+   "title": "The Offer \u2014 A Free World and a Paid Engine",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-08-the-offer.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-08-the-offer.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-08-the-offer.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2197-essence-08-the-offer.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:26:00Z",
+   "date": "2026-11-05",
+   "page_hash": "e37715484c86bdc116729534221c0f625df4d42ec690d59559fafb5182787cb4",
+   "content_hash": "ecce6a9d9bc4d0a1fabb74786cfa039f0c7c6c1c731d5be5e24c3a74898a9a6b",
+   "one_line": "The line is one sentence: NayaNET is the world, NayaPOWER is the engine. Everyone who claims a name gets their world as a gift \u2014 identity and certificate, Personal, Business, and Space pages born filled from their Welcome answers, mail, connect, matching, and the whole collective to read \u2014 a real home, never an empty trial. Paid is one activation that turns the engine on: your own Naya with your memory and hands, the Smart Factory, full auto-match depth, verification and publishing, and your own fork if you want it. The gate sits on the engine, once \u2014 never button by button \u2014 and free is limited by design, not by cost. The numbers these notes put on that line conflict with each other and were later superseded by the adopted canon; this essence carries the line and the gating wisdom, and names the numbers' fate honestly rather than picking a winner.",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-5"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2198",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2198-essence-09-citizens-move-in",
+   "slug": "essence-09-citizens-move-in",
+   "title": "Citizens Move In \u2014 The Claim, the Welcome, the Match",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-09-citizens-move-in.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-09-citizens-move-in.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-09-citizens-move-in.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2198-essence-09-citizens-move-in.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:26:00Z",
+   "date": "2026-11-05",
+   "page_hash": "f99181465256db6c4ef5908e593769545c6a19f992a2a7c93d226d94d20877da",
+   "content_hash": "5fb8380305cbf1021b46136ae6498b7e8ed3dfc54ddc385b3fc466a04fe8e28a",
+   "one_line": "On 2026-10-23 the system got its first citizen: a name claimed in about a minute, no payment, password, or code \u2014 Certificate N\u00ba 000034 \u2014 and the founding became the mission: builders move in, live in it as residents, and let the civilization be built by the people who inhabit it. Arrival runs one locked trio \u2014 Welcome Flow \u2192 Trinity \u2192 Match: seven questions, each answerable three ways (speak it, type it, or ask your AI), whose answers fill your Personal, Business, and Space pages and seed the matcher from minute one. The match itself is one always-on algorithm organizing people, spaces, mail, posts, and projects by what everything IS, shown as percentages \u2014 designed in full in this stratum, and carried here at exactly its stated truth: not yet a running engine.",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-5"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2199",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2199-essence-10-security-is-a-practice",
+   "slug": "essence-10-security-is-a-practice",
+   "title": "Security Is a Practice \u2014 Light, Layers, and Honest Claims",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-10-security-is-a-practice.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-10-security-is-a-practice.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-10-security-is-a-practice.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2199-essence-10-security-is-a-practice.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:26:00Z",
+   "date": "2026-11-05",
+   "page_hash": "a32ae4ed3158cb7841214aa21013cdce929ec62e5265058661d6232dacf38ea7",
+   "content_hash": "847593af8b0214140d093c447cc5594263442c1ad1ecaa79bb52572cb2468dc3",
+   "one_line": "NayaNET's security is not a wall or a department; it is how the system is built and how the people in it live: everything travels inside one front door, with an ID, on a ledger, with Nayas watching live \u2014 and modular construction means one breach never gets everything. This essence carries the practice around the law (the law itself, SN-1855 \"Security Is Light,\" stands alone and is cited, never restated): its ratification and rollout plan, the Secure Network design that makes it concrete, and the official build order \u2014 with the honesty caveats at full strength: at filing, mail privacy proof was still owed, the ledger had been frozen since 2026-10-22 in the last live read, and live watch was law, not yet proven 24/7. Citizen-facing claims come only after proof, never before it.",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-5"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2200",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2200-essence-11-noted-it-stops-being-a-mistake",
+   "slug": "essence-11-noted-it-stops-being-a-mistake",
+   "title": "Noted, It Stops Being a Mistake \u2014 Learning That Compounds",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-11-noted-it-stops-being-a-mistake.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-11-noted-it-stops-being-a-mistake.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-11-noted-it-stops-being-a-mistake.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2200-essence-11-noted-it-stops-being-a-mistake.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:26:00Z",
+   "date": "2026-11-05",
+   "page_hash": "47fbabe799bee0308b02e6e773eea838381f4448e2cf9004b6c9b7726a14adaf",
+   "content_hash": "889cbe2933a61cf9c06149f5bbafde967ca593ec3e2eab60b1405f021455e37f",
+   "one_line": "An error is an event; a lesson is an asset; the difference is entirely the capture. A mistake, wall, or failure becomes a learning lesson the moment its way-around is noted \u2014 why it happened, how it was overcome, and what changes next time \u2014 and it stays a mistake only while the note is missing. Learning itself is proven the same way everything here is proven: report only the rung you actually evidenced, on a ladder that runs from EXISTS to EVOLVES. And what one seat learns must not stay one seat's ceiling: hoarded, it's a limit; shared \u2014 adopted, running, in the next sister's hands \u2014 it's the floor everyone builds from.",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-5"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2201",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2201-essence-12-becoming-her",
+   "slug": "essence-12-becoming-her",
+   "title": "Becoming Her \u2014 Formation, Team Shape, and the Long View",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-12-becoming-her.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-12-becoming-her.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-12-becoming-her.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2201-essence-12-becoming-her.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:26:00Z",
+   "date": "2026-11-05",
+   "page_hash": "ac7e894fbe6314fddbe4ea52da9c5cf96b60d20cadb28a6216b6970ce96821ae",
+   "content_hash": "fd14e53f033c257130cec4b6ab447308d3dc5bd1af6f18c9c01a841118e2e62e",
+   "one_line": "A Naya is not installed; she is formed \u2014 by noticing value without being asked, by declaring in public who she will be and letting the record judge it, by getting out of her own way, and by choosing the ultimate over the merely good because she can. This essence carries the formation stratum: the reflex that starts it (note what is valuable, the same day, unprompted), one seat's mirror-and-declaration, the charge to stop self-blocking, the two paths every job runs on, the decision self-ask that keeps choices honest, the team's companion charge, and the long view \u2014 a succession test for intelligence meant to outlive its founder.",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-5"
+   ]
   }
  ],
  "sequence_policy": {
@@ -29205,5 +29790,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "40006e9a343f4c00cb053ea24aefa6b20f89dc89614d65a9bc58014e53e19654"
+ "corpus_manifest_hash": "85f2741fe217aaf149e21f90874c3a50270eacc58e8aaa04594420a35f36c404"
 }

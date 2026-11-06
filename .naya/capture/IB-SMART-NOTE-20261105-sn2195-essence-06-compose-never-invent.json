@@ -1,0 +1,43 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2195",
+  "title": "Compose, Never Invent — The Design Discipline",
+  "slug": "essence-06-compose-never-invent",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-06-compose-never-invent.md",
+  "tone": "gold",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:26:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A smart app is not a page with features dumped onto it; it is one app composed of official building blocks — named objects with their own identity, designed to interconnect, each sitting where it was designed to sit. Elite pieces are only half the craft; elite placement is the other half. Nothing is invented per page: new work is composed from the inventoried Smart Factory canon (quality pre-decided, models finished before the person arrives), old work below standard is upgraded in place by recomposition, never redesign — and every surface is judged by the seconds test: if a person cannot understand it within seconds, it goes back.",
+    "human_view": "We kept building wonderful parts and stacking them in the wrong places — a whole second app sitting on top of the page, a live count sitting dead in a black box. This essence is the craft correction: the piece, its place, and the way it's done are one judgment, and the library — not the moment — decides what the pieces are.",
+    "child_view": "It's like building with Lego from the official box: every piece has a name and a place it belongs. You don't melt your own bricks, and you don't pile all the toys on the front step. The house looks right because each piece sits where it was made to sit — and a guest can see how it works the moment they walk in.",
+    "grandma_view": "A well-run home isn't full of more things; it's the right things in their right places, where anyone can find them in seconds. The parlor isn't the pantry. These notes are that tidiness turned into a system: a shelf of good pieces, each labeled, and a rule that you compose the room from the shelf instead of carving new furniture every time.",
+    "ai_view": "Before you build: inventory the shelf. Name each block, its identity, and the place it was designed for in your brief; verify placement alongside function. If a part isn't inventoried, it isn't used — inventory it first or pick another. Score data surfaces on shape + direction + meaning, by served bytes and a human-eye pass, never by code presence. For legacy surfaces: recompose in place, dead/flat first. And run the seconds test cold: name what the page is, what matters most, and what to do next — if any needs explanation, the page goes back.",
+    "what_it_means": "Design here is not decoration applied to function; it is the organization of intelligence into objects a person can live among. One library, one language, placement as law — that is what lets a system of hundreds of surfaces feel like one mind, and what lets quality compound instead of being re-litigated page by page.",
+    "whats_inside": [
+      "Presence is not placement: a build passes only when the feature is present, placed, in one system, with a light home.",
+      "Inventing chrome per page is a defect; composing from the official, inventoried set is the only route.",
+      "Quality is decided before the request arrives (canon + gate + finished models), not prompted into existence at build time.",
+      "A number is not a report: magnitude + shape/direction + a human sentence, or it fails.",
+      "Below-standard surfaces are recomposed in place, never redesigned and never left as \"the old version.\""
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-5"
+    ],
+    "covers": [
+      "SN-0819",
+      "SN-0820",
+      "SN-0822",
+      "SN-0857",
+      "SN-1771",
+      "SN-1790",
+      "SN-1883"
+    ]
+  },
+  "page_hash": "0c589b4c3e2e07cc603f9200fc9704a79e33b04838da2bef72781560a5396fdc",
+  "content_hash": "84726a7b9e201ab50cf2ba0d3e339f306f2e1d0c1e8bcef07c3599a5608a294a"
+}
