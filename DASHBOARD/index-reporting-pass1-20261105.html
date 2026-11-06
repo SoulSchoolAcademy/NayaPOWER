@@ -6362,6 +6362,31 @@ button.os-ld-node .os-ld-n{
 .os-notes-pos-tr{right:4%;top:4%;}
 .os-notes-pos-bl{left:4%;bottom:4%;}
 .os-notes-pos-br{right:4%;bottom:4%;}
+/* 2026-11-06 — FIX F1 (v7.2): phone Notes sub-labels read whole.
+   Same mechanism as fix 11d (Creations): nowrap + 60px max-width labels,
+   PLUS the pills column covering right labels ("Total Notes" under HOUR)
+   and the chart switch covering bottom labels ("Saves" / "Click Rate"
+   under the switch). Same remedy, Notes-scoped, phone-only: labels wrap
+   to two lines (9px/1.25, main-board pattern); pills become one row under
+   the title (top:132px); switch rides fixed at viewport bottom:20px.
+   Desktop untouched. */
+@media (max-width:900px){
+  .os-notes-orbs .os-ld-node .os-ld-lbl{
+    white-space:normal !important; max-width:60px !important;
+    line-height:1.25 !important; font-size:9px !important;
+  }
+  .os-notes-pills{
+    left:50% !important; right:auto !important; top:132px !important;
+    transform:translateX(-50%) !important;
+    flex-direction:row !important; gap:6px !important;
+  }
+  .os-notes-pills button{
+    padding:8px 10px !important; font-size:10px !important;
+  }
+  #os-notes-switch{
+    position:fixed !important; bottom:20px !important; top:auto !important;
+  }
+}
 .os-notes-view .os-ld-node .os-ld-icon{color:#fff !important;font-size:15px !important;
   width:38px !important;height:38px !important;display:inline-flex !important;
   align-items:center !important;justify-content:center !important;border-radius:50% !important;
@@ -6513,6 +6538,31 @@ button.os-ld-node .os-ld-n{
 .os-likes-pos-tr{position:absolute;right:4%;top:4%;}
 .os-likes-pos-bl{position:absolute;left:4%;bottom:4%;}
 .os-likes-pos-br{position:absolute;right:4%;bottom:4%;}
+/* 2026-11-06 — FIX F1 (v7.2): phone Likes sub-labels read whole.
+   Same mechanism as fix 11d (Creations): nowrap + 60px max-width labels,
+   PLUS the pills column covering right labels ("Total Likes" under HOUR)
+   and the chart switch covering bottom labels ("Likes · loves" / "Top
+   Liked" under the switch). Same remedy, Likes-scoped, phone-only: labels
+   wrap to two lines (9px/1.25, main-board pattern); pills become one row
+   under the title (top:132px); switch rides fixed at viewport bottom:20px.
+   Desktop untouched. */
+@media (max-width:900px){
+  .os-likes-orbs .os-ld-node .os-ld-lbl{
+    white-space:normal !important; max-width:60px !important;
+    line-height:1.25 !important; font-size:9px !important;
+  }
+  .os-likes-pills{
+    left:50% !important; right:auto !important; top:132px !important;
+    transform:translateX(-50%) !important;
+    flex-direction:row !important; gap:6px !important;
+  }
+  .os-likes-pills button{
+    padding:8px 10px !important; font-size:10px !important;
+  }
+  #os-likes-switch{
+    position:fixed !important; bottom:20px !important; top:auto !important;
+  }
+}
 .os-likes-view .os-ld-node .os-ld-icon{color:#fff !important;font-size:15px !important;
   width:38px !important;height:38px !important;display:inline-flex !important;
   align-items:center !important;justify-content:center !important;border-radius:50% !important;
