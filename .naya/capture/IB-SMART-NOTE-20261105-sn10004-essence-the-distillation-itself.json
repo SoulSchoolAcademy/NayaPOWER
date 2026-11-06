@@ -1,0 +1,43 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-10004",
+  "title": "The Distillation Itself: The Memory That Lets Go",
+  "slug": "essence-the-distillation-itself",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-distillation-itself.md",
+  "tone": "purple",
+  "icon": "◆",
+  "created_at": "2026-11-06T01:30:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A Smart Note is the whole intelligent block, never a nutshell only: eleven sections in order — in a nutshell, human, child, grandma, Naya, machine, what it all means, why it matters, how it connects, what is in it for you, and the learning — under an exact header: the real title as the first line, the SN line second, the Created stamp third in full ISO form (SN-2043). The number is verified free, never guessed; the note is filed and registered in the same pass; then you wait for the sync, click your own link, see your title, and only then share it (SN-2043). The habit underneath the craft: note the moment value lands — every two or three conversations, or the instant something intelligent arrives — because a lesson spoken in chat is lost in chat, and every time the director has to repeat himself, a missing note upstream is the cause (SN-0870, SN-2043). The cadence is part of the program, all day every day, with a future minimum of three notes a day per Naya (SN-2043).",
+    "human_view": "Your words are treated the way a good friend treats a conversation: listened to, learned from, and not filed away in a cabinet forever. What matters, you keep — save it and it becomes yours permanently, organized and findable. What was just talk stays talk, and it is gone when your chosen cycle turns, so you can speak freely. And the system's own memory works the same way at scale: everything it learns gets distilled into a small set of living essences, so what serves you tomorrow is the wisdom, not a warehouse of a thousand raw notes nobody re-reads.",
+    "child_view": "It's like a really good lunchbox and a really good memory at the same time. When you learn something important, you write the WHOLE thing down properly — not just the headline — and you put it in the big book so anyone can find it. Then, so the book doesn't get too fat to carry, you squeeze a hundred pages into ten super-pages that say everything the hundred said. And talking with friends? Talking just floats away like words in the park, unless you draw the important part on paper and keep the drawing.",
+    "grandma_view": "Dear, it is the shoebox and the bonfire, each in its proper place. A letter you chose to write and keep goes in the shoebox, kept forever, in order, with the date on it. Talk on the porch was never filed anywhere, and this system has gone back to the porch. The house's own notebook works the same way: every so often the housekeeper reads through the pile, writes down what it all meant in a few clear pages, and lets the pile go — because a house full of unopened mail is not a memory, dear, it's just a mess.",
+    "ai_view": "File the whole block or don't call it a Smart Note: eleven sections, header exact, number verified free, registration in the same pass, your own click before any share (SN-2043). Name your stage — filed, registered, served are different claims with different evidence (SN-2053). Treat every lesson as loop input: note it and share it the same pass, then prove it by a changed decision, then automate it (SN-2061). Respect the corpus ceiling in your own reporting: never present a raw count as progress; report essences standing and compression achieved (SN-2081). And build communication surfaces to the river law — cycle, save, pin, nothing else persists — while naming the recycling engine as owed until it ships (SN-2052).",
+    "what_it_means": "November taught the memory system its full lifecycle in one arc: how a note is made whole, how it becomes readable, how a thousand of them become a hundred essences without losing what they teach, how the learning loop keeps feeding the still, and how talk itself is honourably forgotten. This Batch 2 draft set is the law's first full application to the November cluster — and it stays a draft until a seat that did not make it verifies it, exactly as the law requires.",
+    "whats_inside": [
+      "The verified essence text (claims cited to source IDs)",
+      "What this settles",
+      "Intelligence views",
+      "The coverage map — 7 raw notes retired into this essence",
+      "The verification contract + the verifier’s record"
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "Batch 2"
+    ],
+    "covers": [
+      "SN-0870",
+      "SN-2043",
+      "SN-2052",
+      "SN-2053",
+      "SN-2058",
+      "SN-2061",
+      "SN-2081"
+    ]
+  },
+  "page_hash": "c5065aadedb509540614c87ebec08714e0feaee83e2cad09393a2b9638cc65a2",
+  "content_hash": "799109753f059e05a13d6e806af8fa1b07389cb65e2da30a50f9b34f9073e0d2"
+}
