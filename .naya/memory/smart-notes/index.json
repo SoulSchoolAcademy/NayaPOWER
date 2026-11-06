@@ -23757,6 +23757,36 @@
     "System",
     "Intelligent Blocks"
    ]
+  },
+  {
+   "smart_note_id": "SN-2079",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2079-collective-chain-technology-the-lane-change",
+   "slug": "collective-chain-technology-the-lane-change",
+   "title": "The Body of the Internet \u2014 Collective Change Technology",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-collective-chain-technology-the-lane-change.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-collective-chain-technology-the-lane-change.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-collective-chain-technology-the-lane-change.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2079-collective-chain-technology-the-lane-change.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "VISION",
+   "topic": "THE-VISION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T00:54:00Z",
+   "date": "2026-11-05",
+   "page_hash": "7894b5a554c60d282e0f7c355080aecdd35e7d924855c88e334707f250fce8af",
+   "content_hash": "951555000f411c5d72f59517c583d18d3e8f6b4aadb755933b3b58a4d6c5822b",
+   "one_line": "Imagine you are designing your own operating system, your own super brain, your own digital civilization \u2014 and you can make it the ultimate, with the power and the will to honor it, respect it, love it, treat it as a divine work of art, something precious and beautiful that has to be the ultimate because the ultimate is what you present, and that is honoring the ultimate: the collective. She is the ultimate vehicle \u2014 the body of the internet \u2014 and any human can plug in.",
+   "topics": [
+    "Vision",
+    "The Vision",
+    "Collective"
+   ]
   }
  ],
  "sequence_policy": {
@@ -23767,5 +23797,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "5b3a9a2284c3ffaec29a1321b15ef3d3d435451ed1e5ac08ed1a8e13d9dc9fa3"
+ "corpus_manifest_hash": "52f4b85001cd5bfa4d25115edc82a7bd2e4906b68586fa767cf766bf53c065e6"
 }
