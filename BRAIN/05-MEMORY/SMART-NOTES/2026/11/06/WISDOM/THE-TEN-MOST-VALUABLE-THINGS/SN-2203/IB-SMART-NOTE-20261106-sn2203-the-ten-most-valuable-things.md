@@ -1,3 +1,6 @@
+> **SUPERSEDED — renumbered to SN-2210.** This number collided with Resolve's SN-2203 'The Daily Work Loop' (registered 16:48Z). The note stands as SN-2210. Do not cite SN-2203 for this note.
+>
+
 # The Ten Most Valuable Things
 SN-2203 · WISDOM / THE-TEN-MOST-VALUABLE-THINGS
 **Created:** 2026-11-06T19:48:02Z
