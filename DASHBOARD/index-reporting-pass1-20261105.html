@@ -10384,14 +10384,10 @@ NF.register(UNIT, {
   function countUp(el, target){
     if (!el) return;
     if (!target) { el.textContent='0'; return; }
-    var t0=null;
-    function step(ts){
-      if (!t0) t0=ts;
-      var k=Math.min(1,(ts-t0)/900);
-      el.textContent=Math.round(target*(1-Math.pow(1-k,3)));
-      if (k<1) requestAnimationFrame(step); else el.textContent=target;
-    }
-    requestAnimationFrame(step);
+    /* 2026-11-06 — v7.1 FIX 10: instant — the final count is written at once
+       (was a 900ms eased rAF count). Signature + callers unchanged; the
+       settled value is identical (the old loop ended at target). */
+    el.textContent=target;
   }
   function weekSplit(times){
     var now=Date.now(), wk=0, pv=0;
@@ -11835,9 +11831,10 @@ NF.register(UNIT, {
   function countUp(el, target){
     if (!el) return;
     if (!target) { el.textContent='0'; return; }
-    var t0=null;
-    function step(ts){ if (!t0) t0=ts; var k=Math.min(1,(ts-t0)/900); el.textContent=Math.round(target*(1-Math.pow(1-k,3))); if (k<1) requestAnimationFrame(step); else el.textContent=target; }
-    requestAnimationFrame(step);
+    /* 2026-11-06 — v7.1 FIX 10: instant — the final count is written at once
+       (was a 900ms eased rAF count). Signature + callers unchanged; the
+       settled value is identical (the old loop ended at target). */
+    el.textContent=target;
   }
   function weekSplit(times){
     var now=Date.now(), wk=0, pv=0;
@@ -12129,13 +12126,20 @@ NF.register(UNIT, {
       if (n>=1000) return (n/1000).toFixed(n>=10000?0:1).replace(/\.0$/,'')+'K';
       return Math.round(n).toLocaleString();
     }
-    if (from===to){ el.textContent=fc(to); el.setAttribute('data-full', to); return; }
-    var t0=null;
-    function step(ts){ if(!t0) t0=ts; var k=Math.min(1,(ts-t0)/900); var e=1-Math.pow(1-k,3);
-      var v=Math.round(from+(to-from)*e);
-      el.textContent=fc(v);
-      if (k<1) requestAnimationFrame(step); else { el.textContent=fc(to); el.setAttribute('data-full', to); } }
-    requestAnimationFrame(step);
+    /* 2026-11-06 — v7.1 FIX 10: instant — the final value is written at once
+       (was a 900ms eased rAF count). The final text keeps the caller's format:
+       in % mode the orb render writes "33%" into the element and data-pct
+       carries the number, so a percent orb settles as "33%" — never the bare
+       "0" the old animation overwrote it with (fix-5 verifier finding,
+       14:19Z). Count-only orbs and the big score never carry a %, so fc(to)
+       is exact for them. data-full still carries the raw number. */
+    var _pct = el.getAttribute('data-pct');
+    if (_pct !== null && _pct !== '' && /%$/.test(el.textContent || '')){
+      el.textContent = _pct + '%';
+    } else {
+      el.textContent = fc(to);
+    }
+    el.setAttribute('data-full', to);
   }
   function renderTrendOverlay(){
     var wrap=$('os-dash-week'); if (!wrap) return;
@@ -12709,15 +12713,12 @@ NF.register(UNIT, {
   function slCountTo(el, from, to){
     if (!el) return;
     from = Number(from || 0); to = Number(to || 0);
-    if (from === to){ el.textContent = to; return; }
-    var t0 = null;
-    function step(ts){
-      if (!t0) t0 = ts;
-      var k = Math.min(1, (ts - t0) / 750);
-      el.textContent = Math.round(from + (to - from) * (1 - Math.pow(1 - k, 3)));
-      if (k < 1) requestAnimationFrame(step); else el.textContent = to;
-    }
-    requestAnimationFrame(step);
+    /* 2026-11-06 — v7.1 FIX 10: instant — the final count is written at once
+       (was a 750ms eased rAF count). Same defect class as countFrom/countUp:
+       the Smart Links board's per-link clicks/joins delayed a reliable
+       reading. Signature + caller unchanged; the settled value is identical
+       (the old loop ended at to). */
+    el.textContent = to;
   }
   function slDayBuckets(rows){
     var today = new Date(); today.setHours(0, 0, 0, 0);
@@ -18502,16 +18503,16 @@ function loadPointsBoard(_t){
              from the spine (the same live score the gauge shows); falls back to
              the orb total if the spine is ever unavailable. */
           var displayTotal = (typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total);
-          var startTs = null;
+          /* 2026-11-06 — v7.1 FIX 10: instant — the big number reads its final
+             value on first paint (was a 3s linear 0->score count, Shawn's
+             2026-11-02 "drama" order; the scorecards + fix list require numbers
+             true immediately — the needle keeps the motion, the numbers stop
+             lying mid-sweep). The settled value is unchanged: the old loop
+             ended at Math.round(displayTotal).toLocaleString(). */
           function countBig(ts){
-            if (!startTs) startTs = ts;
-            var k = Math.min(1, (ts - startTs) / 3000);
-            /* 2026-11-02 — Shawn: LINEAR count for drama — steady 0→300 over full 3s, not rushed. */
-            var e = k;
-            bigVal.textContent = Math.round(displayTotal * e).toLocaleString();
-            if (k < 1) requestAnimationFrame(countBig);
+            bigVal.textContent = Math.round(displayTotal).toLocaleString();
           }
-          requestAnimationFrame(countBig);
+          countBig();
         }
         /* PASS 1 v6 (i) — THE SCORE AS A LIVING DERIVATION. Parts fan
            beneath the number (each a live door), one line names the next
@@ -21824,7 +21825,15 @@ else init();
       if (truthEl._t !== t){ truthEl._t = t; truthEl.textContent = t; }
     }
 
-    function paintBandChrome(b){
+    function paintBandChrome(b, capScore){
+      /* 2026-11-06 — v7.1 FIX 10: the caption reads the TARGET (capScore),
+         not the swept `displayed` — the needle may keep sweeping (a needle in
+         transit is honest gauge behaviour) but the caption never reads a
+         mid-sweep value. The reduceMotion branch already did displayed =
+         target; this extends that honesty to the numbers for everyone. The
+         band chips + needle + fill still sweep with `displayed` (the
+         instrument's own state); only the caption text + its beat band
+         follow the target. */
       /* band edge labels on the dial */
       if (bandLoEl && bandLoEl._t !== b.lo){ bandLoEl._t = b.lo; bandLoEl.textContent = fmt(b.lo); }
       var hiT = isFinite(b.hi) ? fmt(b.hi) : '∞';
@@ -21833,10 +21842,10 @@ else init();
       /* human words under the number — V4: a responsive beat when the BAND
          changes (Law 6: alive = responsive). Number ticks don't beat; only
          the crossing does, so the sweep never strobes. */
-      var bl = bandLine(Math.round(displayed));
+      var bl = bandLine(Math.round(capScore));
       if (bandLineEl && bandLineEl._t !== bl){
         bandLineEl._t = bl; bandLineEl.textContent = bl;
-        var nbix = bandOf(Math.round(displayed)).ix;
+        var nbix = bandOf(Math.round(capScore)).ix;
         if (bandLineEl._bix !== nbix){
           bandLineEl._bix = nbix;
           bandLineEl.classList.remove('tn-bl-beat');
@@ -21880,7 +21889,7 @@ else init();
       /* Shawn 2026-11-01: NO flat color override — the spectrum gradient flows */
       var comet = root.querySelector('.tn-tacho-comet');
       if(comet) comet.style.strokeDashoffset = (ARC_LEN * (1 - frac)).toFixed(1);
-      paintBandChrome(b);
+      paintBandChrome(b, score);
 
       if (dm && !dm.noData){
         /* DELTA MODE: "+N gained in {period}" — needle, numeral, caption sweep as one. */
@@ -21930,7 +21939,7 @@ else init();
       fill.style.stroke = bandColor(0);
       var txt = state === 'quiet' ? '—' : '…';
       if (txt !== lastNumTxt){ lastNumTxt = txt; num.textContent = txt; if(svgnum) svgnum.textContent = txt; }
-      paintBandChrome(bandOf(0));
+      paintBandChrome(bandOf(0), 0);
       if (state === 'quiet'){
         setCap('Quiet — the first post, note or invite lights the needle.');
         root.setAttribute('aria-label', 'Score gauge — quiet, no score yet');
