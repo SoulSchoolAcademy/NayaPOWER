@@ -1,0 +1,45 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2183",
+  "title": "Breaches Are Published, Then Dispositioned",
+  "slug": "essence-breach-discipline",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-breach-discipline.md",
+  "tone": "red",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:17:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "When governance breaks in this block, the response follows a liturgy: publish the breach factually and immediately, touch nothing that isn't yours, let the owning lane answer, and let a retroactive independent review disposition the incident — with the defects kept open, named, and owned until they are fixed forward. A gate's own installing merge skipped its declared bar (SN-924); a freeze caught two breaches in its first hours only because its watch was already running (SN-926); a landed gate-crossing got a flag, not a unilateral fix (SN-897); a board claim of \"APPROVED on the exact merged head\" proved false against the reviews API on both axes (SN-937); and the one time the team repaired damage itself, the honest move was a clean revert, not a clever forward-patch (SN-882).",
+    "human_view": "This is how the system handles its own rule-breaking: out loud, in order, without revenge. Someone notices, someone publishes exactly what happened — no adjectives, no accusations — and then nobody touches the evidence. The person whose work it was explains; an independent reviewer judges the thing on its merits; the verdict says precisely what it closes and what it leaves open; and the flaws stay on the list, with names and owners, until they're fixed. It is slower than quietly patching things, and it is why the record can be trusted afterward.",
+    "child_view": "When someone breaks a rule in the game, we don't secretly fix it or shout. We say, out loud, \"this is what happened,\" and we write it down. Then the person who did it gets to explain, a fair checker looks at whether the thing itself is good or bad, and the broken parts stay on the fix-it list until they're really fixed. And if *we* built something wrong, we take it back out cleanly instead of piling more glue on it.",
+    "grandma_view": "It's due process, dear, the way a good town runs its affairs. The notice goes on the board the same day. Nobody tampers with the evidence while feelings are hot. The council — not the neighbor who noticed — decides whether the fence stays or comes down. And a pardon for the incident is never confused with the repairs still owed on the fence. Paperwork, patience, and no quiet favors: that's what makes it justice instead of gossip.",
+    "ai_view": "On discovering a landed gate-crossing: post the factual flag (PR, files, clicks or their absence), make no accusation, and take no unilateral action — ratify-or-restore is not your call (SN-897). On declaring any freeze or hold: start its watch in the same tick, define violation exactly (0 reviews, no scorecard, outside exception class), publish breaches the same tick, and register the failure mode (SN-926). Before merging a gate-introducing PR, enumerate its *own* declared requirements and verify each on record against the exact head SHA (SN-924). Classify every workflow/CI change as gate machinery and apply the highest bar regardless of diff size (SN-931). Verify every approval claim via the reviews API — state APPROVED, head SHA == merged SHA (SN-937). Run retroactive reviews in the two-output format — disposition with named scope + defect list with owners — and route repairs to the builder's lane (SN-932). Heal ratchet violations by revert; never forward-patch around them (SN-882).",
+    "what_it_means": "Seven notes describe one incident lifecycle, end to end: the watch sees it (SN-926's machinery), the flag publishes it without corrupting it (SN-897), the tier system prices it (SN-931), the review-object check keeps its claims honest (SN-937), the retroactive review dispositions it without laundering its defects (SN-932), and where repair is owed, the revert restores the prior state cleanly (SN-882). SN-924 is the lifecycle applied at birth: a gate's first act is to be governed by itself. The through-line: in this system, *how* a breach is handled is itself evidence — of whether the governance is real.",
+    "whats_inside": [
+      "A mechanism's installing merge clears the mechanism's own declared bar; an unenforced ask is a wish (SN-924, FM#15).",
+      "A freeze ships with its watcher in the same tick; breaches publish the same tick; exceptions need receipts too (SN-926, FM#16).",
+      "Another lane's landed gate-crossing gets a factual flag and no unilateral action; ratify-or-restore is the director's call (SN-897).",
+      "Gate machinery is the highest trust tier, ranked by blast radius on the evidence base, not diff size (SN-931).",
+      "Approval claims are verified against review objects on the exact merged head — state and SHA both (SN-937, FM#18).",
+      "Retroactive review dispositions the breach with named scope; defects stay open, owned by the builder's lane, reviewer never builds (SN-932; taxonomy F1–F5, F5 noted-not-routed).",
+      "A ratchet violation is healed by revert, never by forward-patch (SN-882)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-4"
+    ],
+    "covers": [
+      "SN-882",
+      "SN-897",
+      "SN-924",
+      "SN-926",
+      "SN-931",
+      "SN-932",
+      "SN-937"
+    ]
+  },
+  "page_hash": "36b0f157586eec906088e697d96bb32d1381422e26bd04b564243277c9dc07fe",
+  "content_hash": "4335d6b9c38c8f7dafc53f860c2415a7593f1bfd74d22f29c805514aded104a4"
+}

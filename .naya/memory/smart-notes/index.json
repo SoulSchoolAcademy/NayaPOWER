@@ -14407,12 +14407,15 @@
    "topic": "SYSTEM",
    "subtopic": "GETTING_STARTED",
    "captured_at": "2026-10-19",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 3acb6005510f114496fc78d119346e586628ce43 ('Restore SN-0800 (How to Get Started) to main \u2014 it was live but never landed; a later sync dropped it (found 404, 2026-10-20)') with no runtime capture and no registry entry; capture and entry reconstructed from the published projection in the 2026-10-21 registry-debt cure; no runtime provenance invented"
    },
-   "page_hash": "23ed0c18b5559ac133cd61fdef963b051c200e9b28fe8a4ec1234ab448f5c33a"
+   "page_hash": "23ed0c18b5559ac133cd61fdef963b051c200e9b28fe8a4ec1234ab448f5c33a",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2188-essence-the-front-door",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0801",
@@ -14487,12 +14490,15 @@
    "topic": "SYSTEM",
    "subtopic": "VIRAL_LAW",
    "captured_at": "2026-10-20",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection in commit 8cb52c46fe83152cc9d14c757df9531065d7b9ae ('feat(smart-note): SN-0804 Viral Law \u2014 Nobody Discovers What Doesn't Hook Them') with no runtime capture and no registry entry; capture and entry reconstructed from the published projection in the 2026-10-20 brain-index re-stamp; no runtime provenance invented"
    },
-   "page_hash": "57c632fdbd9e8ade11e56f2c2f05d5075f9e3cf992cdbb14502f453afeb29f83"
+   "page_hash": "57c632fdbd9e8ade11e56f2c2f05d5075f9e3cf992cdbb14502f453afeb29f83",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2188-essence-the-front-door",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-0805",
@@ -19205,11 +19211,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0116-migrated-3 filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2177-essence-proof-that-proves",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-1167",
@@ -19225,11 +19234,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0116-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-640",
@@ -23098,11 +23110,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "LEARNING-PIPELINE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0817-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2177-essence-proof-that-proves",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-818",
@@ -23118,11 +23133,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0818-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-819",
@@ -23138,11 +23156,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0819-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2179-essence-evidence-expires",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-820",
@@ -23158,11 +23179,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0820-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-821",
@@ -23178,11 +23202,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0821-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2179-essence-evidence-expires",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-822",
@@ -23198,11 +23225,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0822-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2177-essence-proof-that-proves",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-823",
@@ -23218,11 +23248,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATIONS",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0823-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2179-essence-evidence-expires",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-824",
@@ -23238,11 +23271,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "LEARNING-PIPELINE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0824-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2185-essence-compounding-method",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-825",
@@ -23258,11 +23294,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "AMENDMENT-VERIFICATION",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0825-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2178-essence-merge-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-826",
@@ -23278,11 +23317,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATING-MODE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0826-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2185-essence-compounding-method",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-827",
@@ -23298,11 +23340,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0827-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2185-essence-compounding-method",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-828",
@@ -23318,11 +23363,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0828-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-829",
@@ -23358,11 +23406,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "LEARNING-PIPELINE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0830-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2181-essence-collisions-and-convergence",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-831",
@@ -23378,11 +23429,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0831-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2181-essence-collisions-and-convergence",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-832",
@@ -23398,11 +23452,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0832-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2180-essence-regen-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-833",
@@ -23418,11 +23475,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0833-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2186-essence-ratification-in-the-artifact",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-834",
@@ -23438,11 +23498,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0834-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2181-essence-collisions-and-convergence",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-835",
@@ -23458,11 +23521,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0835-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2179-essence-evidence-expires",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-836",
@@ -23478,11 +23544,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0836-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-837",
@@ -23498,11 +23567,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATIONS",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0837-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-838",
@@ -23518,11 +23590,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0838-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-839",
@@ -23538,11 +23613,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0839-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-840",
@@ -23578,11 +23656,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0841-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2178-essence-merge-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-842",
@@ -23598,11 +23679,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0842-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-843",
@@ -23618,11 +23702,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0843-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2186-essence-ratification-in-the-artifact",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-844",
@@ -23638,11 +23725,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATIONS",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0844-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2177-essence-proof-that-proves",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-845",
@@ -23658,11 +23748,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0845-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-846",
@@ -23678,11 +23771,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0846-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-847",
@@ -23698,11 +23794,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0847-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-848",
@@ -23718,11 +23817,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0848-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-849",
@@ -23738,11 +23840,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0849-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2178-essence-merge-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-850",
@@ -23758,11 +23863,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0850-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2180-essence-regen-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-851",
@@ -23778,11 +23886,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0851-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-852",
@@ -23798,11 +23909,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0852-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-853",
@@ -23818,11 +23932,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SMART-NOTE-SYSTEM",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0853-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2179-essence-evidence-expires",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-854",
@@ -23838,11 +23955,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "COMPOUNDING-INTELLIGENCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0854-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2185-essence-compounding-method",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-855",
@@ -23858,11 +23978,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATIONS",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0855-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2178-essence-merge-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-856",
@@ -23878,11 +24001,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0856-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2179-essence-evidence-expires",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-857",
@@ -23898,11 +24024,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0857-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-858",
@@ -23918,11 +24047,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0858-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2177-essence-proof-that-proves",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-859",
@@ -23938,11 +24070,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0859-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-860",
@@ -23958,11 +24093,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0860-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-861",
@@ -23978,11 +24116,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0861-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2177-essence-proof-that-proves",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-862",
@@ -23998,11 +24139,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0862-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-863",
@@ -24018,11 +24162,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0863-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-864",
@@ -24038,11 +24185,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATIONS",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0864-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2181-essence-collisions-and-convergence",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-865",
@@ -24058,11 +24208,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0865-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2177-essence-proof-that-proves",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-866",
@@ -24078,11 +24231,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0866-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2178-essence-merge-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-867",
@@ -24098,11 +24254,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0867-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2178-essence-merge-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-868",
@@ -24118,11 +24277,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0868-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2178-essence-merge-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-869",
@@ -24138,11 +24300,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0869-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2180-essence-regen-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-870",
@@ -24158,11 +24323,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0870-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2178-essence-merge-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-871",
@@ -24178,11 +24346,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "EARNED-INTELLIGENCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0871-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-872",
@@ -24198,11 +24369,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0872-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2180-essence-regen-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-873",
@@ -24218,11 +24392,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "LEARNING-PIPELINE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0873-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2185-essence-compounding-method",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-874",
@@ -24238,11 +24415,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0874-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2178-essence-merge-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-875",
@@ -24258,11 +24438,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SMART-NOTE-REFINEMENT",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0875-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2180-essence-regen-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-876",
@@ -24278,11 +24461,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0876-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2186-essence-ratification-in-the-artifact",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-877",
@@ -24298,11 +24484,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0877-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-878",
@@ -24318,11 +24507,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0878-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-879",
@@ -24338,11 +24530,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0879-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2179-essence-evidence-expires",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-880",
@@ -24358,11 +24553,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "EARNED-INTELLIGENCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0880-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2180-essence-regen-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-881",
@@ -24378,11 +24576,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0881-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2184-essence-bounded-claims",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-882",
@@ -24398,11 +24599,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0882-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2183-essence-breach-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-883",
@@ -24418,11 +24622,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0883-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2179-essence-evidence-expires",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-884",
@@ -24438,11 +24645,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "COMPOUNDING-INTELLIGENCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0884-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2186-essence-ratification-in-the-artifact",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-885",
@@ -24458,11 +24668,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0885-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2180-essence-regen-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-886",
@@ -24478,11 +24691,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0886-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2180-essence-regen-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-887",
@@ -24498,11 +24714,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0887-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2180-essence-regen-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-888",
@@ -24518,11 +24737,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0888-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-889",
@@ -24538,11 +24760,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0889-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2179-essence-evidence-expires",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-890",
@@ -24558,11 +24783,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATIONS",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0890-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2185-essence-compounding-method",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-891",
@@ -24578,11 +24806,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0891-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2177-essence-proof-that-proves",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-892",
@@ -24598,11 +24829,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATIONS",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0892-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2187-essence-resource-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-893",
@@ -24618,11 +24852,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATIONS",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0893-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2184-essence-bounded-claims",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-894",
@@ -24638,11 +24875,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0894-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-895",
@@ -24658,11 +24898,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "EARNED-INTELLIGENCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0895-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2177-essence-proof-that-proves",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-896",
@@ -24678,11 +24921,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATIONS",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0896-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2187-essence-resource-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-897",
@@ -24698,11 +24944,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0897-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2183-essence-breach-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-898",
@@ -24718,11 +24967,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0898-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2181-essence-collisions-and-convergence",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-899",
@@ -24738,11 +24990,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0899-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2178-essence-merge-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-900",
@@ -24758,11 +25013,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0900-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2177-essence-proof-that-proves",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-901",
@@ -24858,11 +25116,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0905-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2182-essence-governance-machinery",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-906",
@@ -24878,11 +25139,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0906-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2182-essence-governance-machinery",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-907",
@@ -24898,11 +25162,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0907-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2182-essence-governance-machinery",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-908",
@@ -24918,11 +25185,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0908-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2182-essence-governance-machinery",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-909",
@@ -24938,11 +25208,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0909-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2187-essence-resource-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-910",
@@ -24958,11 +25231,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0910-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2187-essence-resource-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-911",
@@ -24978,11 +25254,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0911-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2178-essence-merge-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-912",
@@ -24998,11 +25277,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0912-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2184-essence-bounded-claims",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-913",
@@ -25038,11 +25320,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0914-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2184-essence-bounded-claims",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-915",
@@ -25078,11 +25363,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0916-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2182-essence-governance-machinery",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-917",
@@ -25098,11 +25386,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "LEARNING-PIPELINE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0917-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2182-essence-governance-machinery",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-918",
@@ -25118,11 +25409,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0918-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2182-essence-governance-machinery",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-919",
@@ -25138,11 +25432,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0919-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2182-essence-governance-machinery",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-920",
@@ -25178,11 +25475,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "CI-TRIAGE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0921-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-922",
@@ -25198,11 +25498,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0922-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2184-essence-bounded-claims",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-923",
@@ -25238,11 +25541,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0924-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2183-essence-breach-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-925",
@@ -25278,11 +25584,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0926-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2183-essence-breach-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-927",
@@ -25318,11 +25627,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0928-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2184-essence-bounded-claims",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-929",
@@ -25358,11 +25670,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0930-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2181-essence-collisions-and-convergence",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-931",
@@ -25378,11 +25693,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0931-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2183-essence-breach-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-932",
@@ -25398,11 +25716,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0932-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2183-essence-breach-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-933",
@@ -25418,11 +25739,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATING-MODE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0933-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2181-essence-collisions-and-convergence",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-934",
@@ -25438,11 +25762,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0934-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2186-essence-ratification-in-the-artifact",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-935",
@@ -25458,11 +25785,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0935-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-936",
@@ -25478,11 +25808,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATING-MODE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0936-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2187-essence-resource-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-937",
@@ -25498,11 +25831,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "AMENDMENT-VERIFICATION",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0937-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2183-essence-breach-discipline",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-938",
@@ -25518,11 +25854,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "EARNED-INTELLIGENCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0938-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2177-essence-proof-that-proves",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-939",
@@ -25538,11 +25877,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "ENGINEERING-PROOF",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0939-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2177-essence-proof-that-proves",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-940",
@@ -25558,11 +25900,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "GOVERNANCE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0940-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-941",
@@ -25578,11 +25923,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "OPERATING-MODE",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0941-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2181-essence-collisions-and-convergence",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-942",
@@ -25598,11 +25946,14 @@
    "topic": "SYSTEM-INTELLIGENCE",
    "subtopic": "SYSTEM-DESIGN",
    "captured_at": "2026-10-13",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "RETIRED",
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0942-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order \u2014 the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2177-essence-proof-that-proves",
+   "retired_at": "2026-11-06T04:17:00Z",
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
   },
   {
    "smart_note_id": "SN-943",
@@ -28391,6 +28742,426 @@
     "Distillation",
     "oct-3"
    ]
+  },
+  {
+   "smart_note_id": "SN-2175",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
+   "slug": "essence-gate-must-fail",
+   "title": "A Gate That Cannot Fail Is Not a Gate",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-gate-must-fail.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-gate-must-fail.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-gate-must-fail.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:17:00Z",
+   "date": "2026-11-05",
+   "page_hash": "35c5d9762c1464047f45ea05afca3599679c9c7c6a99098551cfc98a1e768064",
+   "content_hash": "8f3da576afc67358335e17b23d8654d8c16bebda5bce273d9dd1e03adc5163f7",
+   "one_line": "Every gate in this block earns its authority the same way: by being able to fail, on the exact thing it guards, proven before it is trusted. A promotion gate admitted tampered lessons until its proof was bound to the capture's canonical bytes (SN-837); a governance check written in grep fired on the clean tree itself because text cannot tell a definition from an import (SN-888); a credential check passed *absence* because a truthy guard short-circuited it (SN-859); eight directives were reported \"built\" with zero enforced, because code existence is not enforcement existence (SN-940). The craft rules that follow \u2014 survey the data before encoding the gate (SN-846), straddle every threshold in time (SN-820), probe adversarial phrasings (SN-845), fix at the canonical seam (SN-818), never bind authority to a recyclable `id()` (SN-935), write the expected-FAIL fixture first (SN-1167) \u2014 are one law in fourteen work clothes: **an instrument that cannot say no has said nothing.**",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-4"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2176",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
+   "slug": "essence-classify-the-red",
+   "title": "Classify the Red Before You Touch It",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-classify-the-red.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-classify-the-red.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-classify-the-red.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:17:00Z",
+   "date": "2026-11-05",
+   "page_hash": "7afc09b956fc8490060d47e0cdb7b3f4be5410aeb2810e74c3a7e80f56680763",
+   "content_hash": "5534a48786165aec950adefa2c6fdfba1beb8bb2c193dcac3930fbf59ca5980f",
+   "one_line": "Most CI reds in this block were not defects in the code under review \u2014 they were defects in the *classification*. Reds inherited from the base were nearly \"repaired\" with dead-weight code (SN-852, SN-871); a harness's own regex presented as a product failure (SN-839); a workflow that never installed pytest presented as a code failure (SN-894); one upstream red multiplied into apparent second reds by fail-closed design (SN-862). The discipline: reproduce at the exact anchored tip, classify before touching anything \u2014 REPO / BASE-INHERITED / ENVIRONMENT (SN-851) \u2014 read the job log and the failing *step name* before believing the badge (SN-848, SN-921), and let the verdict carry the attribution honestly: an inherited red is the base's, labeled as such, with the score uncharged (SN-842).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-4"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2177",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2177-essence-proof-that-proves",
+   "slug": "essence-proof-that-proves",
+   "title": "Proof That Proves Something",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-proof-that-proves.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-proof-that-proves.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-proof-that-proves.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2177-essence-proof-that-proves.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:17:00Z",
+   "date": "2026-11-05",
+   "page_hash": "c5908489bfa24873b51b448e7898668be0d8df16144c152dcd5afaa4e9df267a",
+   "content_hash": "15faebe132a6ea181e4a6d426d654b8a7a65c78b7a83408b48a8ffa1565e6518",
+   "one_line": "Every instrument in this block was caught, at least once, proving less than it claimed \u2014 and each note is the repair. Test evidence masqueraded as user learning until receipts had to carry their capture kind (SN-817). A trial's control arm scored 50/50 because the tasks leaked the lesson (SN-938). Suites were green through a check function that never raised, until sabotage-testing became the price of belief (SN-939). An evaluation apparatus kept its answers inline in the repo \u2014 218 test files exposed \u2014 until fixtures were sealed by construction (SN-900). And the canonical evaluator itself was routed around by a selector that never called it, invisible to every name-based guard, caught only by running both formulas on one plan and watching them pick different winners (SN-942). The shared demand: **proof must be able to fail, must be blind where blindness matters, and must bind to the exact bytes and the exact claim it covers.**",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-4"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2178",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2178-essence-merge-discipline",
+   "slug": "essence-merge-discipline",
+   "title": "Merge Discipline: Holds, Twins, and the Exact Head",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-merge-discipline.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-merge-discipline.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-merge-discipline.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2178-essence-merge-discipline.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:17:00Z",
+   "date": "2026-11-05",
+   "page_hash": "19c0fb5d12892b8e4760a649f10d7899c1ce90850603207fa4ff8197f94447c0",
+   "content_hash": "13251ff3d26398808cfd1b0bb75bf77d9f480067d0bdf33c1aaacd711812c466",
+   "one_line": "A merge is an act with preconditions, and this block records what happens when each precondition is treated as optional. A merge raced its own checks and landed three seconds before they failed (SN-868). A requested review was outrun by the merge it was meant to gate (SN-899, SN-911). Twin repairs raced each other across two rounds until freshness \u2014 not canonicity \u2014 decided (SN-841, SN-849). A blocked draft-flip was treated once as a boundary to respect (SN-867) and once, under *identical* authority through a different surface, as a route to take (SN-866). And landings themselves split into classes \u2014 bytes landed without a receipt are a different defect from bytes that never landed (SN-874). The discipline: hold what is held, wait for what was requested, re-verify on the head that will actually merge, and let the record show which class every landing was.",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-4"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2179",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2179-essence-evidence-expires",
+   "slug": "essence-evidence-expires",
+   "title": "The Tip Moves: Evidence Expires",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-evidence-expires.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-evidence-expires.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-evidence-expires.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2179-essence-evidence-expires.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:17:00Z",
+   "date": "2026-11-05",
+   "page_hash": "0affae989055f016a3f7660e930e0f8e587e3888f53957a0e2d48741b1ee97e5",
+   "content_hash": "1640b3f2b620791b90e7e6fb985279336fe7cd0264ec6c3370993d63d4b91e35",
+   "one_line": "On a fast main, every observation is perishable. A headline announcing \"Now on main (RUNG 1)\" described a kit that lived only on a branch (SN-819); an hourly \"nothing is broken\" post was falsified four minutes later by a red tip (SN-823); regen evidence gathered inside a PR expired at the moment of merge, twice (SN-821); a merge executed on a PR record's stale base while two unreviewed pushes, landed before the scorecard was even written, had already falsified its base (SN-883). The family's law: **verify at the action instant, against the live ref, and carry nothing forward** \u2014 status claims are tip-anchored and timestamped or they are hope (SN-823), read and mutation must be adjacent (SN-883), and re-anchoring belongs at verify-time, not burned in advance against a tip that will move again (SN-889).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-4"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2180",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2180-essence-regen-discipline",
+   "slug": "essence-regen-discipline",
+   "title": "Generated State Is Regenerated, Never Hand-Picked",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-regen-discipline.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-regen-discipline.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-regen-discipline.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2180-essence-regen-discipline.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:17:00Z",
+   "date": "2026-11-05",
+   "page_hash": "ffafdf30209207666272dfaf339cd26cf90b5b5258e26a766a68654dffb09755",
+   "content_hash": "b9e6d6d955d9a2e0d6e54b8c8ab1f625286ba959b9030ba27f63cdc3ebdeb83b",
+   "one_line": "The brain index and the Smart Note registry are *generated* state, and this block is the record of every way generated state goes wrong when it is treated as hand-writable: regenerated from a stale index instead of the tree (SN-832), healed by hand-picking conflict sides instead of re-running the generator (SN-869), passed locally because the enumerator can't see untracked files (SN-872, SN-880), prescribed for files the instrument never scans (SN-885), stamped so broadly that history itself was rewritten (SN-886), and landed as a page without its registry twin (SN-887). The rules are mechanical: derive from tree truth, regenerate on the merged tree, stage before you regen, scope-check before you prescribe, stamp only the two fields that are allowed to move, and land the note and its entry in the same commit \u2014 or don't land.",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-4"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2181",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2181-essence-collisions-and-convergence",
+   "slug": "essence-collisions-and-convergence",
+   "title": "One Canon: Collisions, Convergence, and Stale Asks",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-collisions-and-convergence.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-collisions-and-convergence.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-collisions-and-convergence.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2181-essence-collisions-and-convergence.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:17:00Z",
+   "date": "2026-11-05",
+   "page_hash": "b5ee6dcd8fcd555d89e56b7a9b8eec9be84973aaf52c30335fee1556f0368cb8",
+   "content_hash": "1405e18b38accfb115b43554f3cf6c4f712ae1d12972b467c4cbdc345ab619b1",
+   "one_line": "A shared system constantly manufactures duplicates \u2014 of IDs, of files, of documents, of work \u2014 and this block records the discipline of keeping exactly one canon without destroying history. Duplicate Smart Note IDs are repaired by renumbering the registry, never by deleting history, and a *skipped* repair is itself a recorded decision (SN-834). Two documents each claiming to be \"the single canonical\" one is a duplicate mechanism, caught by re-reading the sources before authoring a convergence (SN-898) \u2014 and semantic convergence never licenses calling two artifacts \"the same\" without a byte or provenance check (SN-930). Work that collides mid-flight is finished and transferred, never restarted or duplicated (SN-933); work already done is delta-checked, never re-executed (SN-941); and \"canonical\" itself is a reconciliation result \u2014 main's ledger was wrong about its own decision log until an orphan branch's verified record was cherry-picked forward (SN-864).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-4"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2182",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2182-essence-governance-machinery",
+   "slug": "essence-governance-machinery",
+   "title": "The Governance Machinery: Fairness, Responsibility, and State",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-governance-machinery.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-governance-machinery.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-governance-machinery.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2182-essence-governance-machinery.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:17:00Z",
+   "date": "2026-11-05",
+   "page_hash": "130c9056869136c4bf14e9fea285ee241abee4a87b3653af7d8f5eb69bc7defa",
+   "content_hash": "f3935d372166499e8f15684bcd7265c8b69eb5da2c7bb1d8c4907cf0219efd85",
+   "one_line": "Eight notes register one ambitious program from the director's intel stream (directives D26, D28, D29, D30, D50, D52, D53, D54): a fairness verifier that names its failures and never says \"all good\" (SN-905), an audit that makes every fairness *assumption* earn its place (SN-906), a responsibility boundary that assigns every failure to the component that controlled it (SN-907), a verifiable causal trace that refuses to promote correlation to causation (SN-908), scope-isolated baselines that no aggregate may certify (SN-916), pooling rules that share estimates but never borrow proof (SN-917), one canonically ordered governance state where stale state creates no authority (SN-918), and crash-safe recovery that reconstructs commits instead of inventing them (SN-919). **Status honesty governs this whole essence:** SN-905 is a source lane's build report, recorded as reported and *not* independently verified; SN-906, SN-907, SN-908, SN-918 and SN-919 were NOT STARTED at capture, owner TBD; SN-916's and SN-917's pages state no build status at all. They are distilled as designs and doctrines \u2014 CANDIDATE specifications, not running machinery.",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-4"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2183",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2183-essence-breach-discipline",
+   "slug": "essence-breach-discipline",
+   "title": "Breaches Are Published, Then Dispositioned",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-breach-discipline.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-breach-discipline.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-breach-discipline.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2183-essence-breach-discipline.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:17:00Z",
+   "date": "2026-11-05",
+   "page_hash": "36b0f157586eec906088e697d96bb32d1381422e26bd04b564243277c9dc07fe",
+   "content_hash": "4335d6b9c38c8f7dafc53f860c2415a7593f1bfd74d22f29c805514aded104a4",
+   "one_line": "When governance breaks in this block, the response follows a liturgy: publish the breach factually and immediately, touch nothing that isn't yours, let the owning lane answer, and let a retroactive independent review disposition the incident \u2014 with the defects kept open, named, and owned until they are fixed forward. A gate's own installing merge skipped its declared bar (SN-924); a freeze caught two breaches in its first hours only because its watch was already running (SN-926); a landed gate-crossing got a flag, not a unilateral fix (SN-897); a board claim of \"APPROVED on the exact merged head\" proved false against the reviews API on both axes (SN-937); and the one time the team repaired damage itself, the honest move was a clean revert, not a clever forward-patch (SN-882).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-4"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2184",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2184-essence-bounded-claims",
+   "slug": "essence-bounded-claims",
+   "title": "Bounded Claims: Never More Certain Than the Evidence",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-bounded-claims.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-bounded-claims.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-bounded-claims.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2184-essence-bounded-claims.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:17:00Z",
+   "date": "2026-11-05",
+   "page_hash": "51a3dd220cdc54084976bd7593a9482a1bb516f95f0e4c9f970d8acb0687c7b0",
+   "content_hash": "5c7ebda567e29c6d4cc31f8ff57eb6bd5463d6fea70ff21d326296f8aa0ff0a7",
+   "one_line": "Claims decay as they travel \u2014 summaries compress their boundaries away, caches outlive their evidence, corrections inherit the carelessness of what they correct. This block's counter-discipline is a family of four registered directives (D32\u2013D35) and the working rules around them: uncertainty travels only along true evidence dependencies, never amplifying (SN-912); when evidence is revoked, recompute dependents and keep what still stands (the correction law, carried by Batch 1 and pointed to below); history is preserved while qualification is recomputed and stale authority invalidated at use time (SN-914); and no cached qualification may be republished until its evidence dependencies are re-validated at that moment (SN-922). Around the directives sit the two working habits that make them real: correct the derived report, never the raw capture \u2014 and name what you cannot measure (SN-893); and verify the temporal evidence before publishing a correction, because a correction is a claim too (SN-881) \u2014 plus the writing law that every summary carries its non-claims (SN-928).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-4"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2185",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2185-essence-compounding-method",
+   "slug": "essence-compounding-method",
+   "title": "Compounding: Whole Chains, Living Systems, Honest Ceilings",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-compounding-method.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-compounding-method.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-compounding-method.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2185-essence-compounding-method.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:17:00Z",
+   "date": "2026-11-05",
+   "page_hash": "e2009ced75fec07a89e7ad35332ef35f8be86db81c27cee7cca11ea796003949",
+   "content_hash": "349b7abac7c667144197b2ad0f409a214da9b1fd7329e7531a8939ecbbc49929",
+   "one_line": "Compounding \u2014 the system getting smarter from its own work \u2014 fails in three characteristic ways in this block, and each note is a guard against one. It fails by *slicing*: a fallback that shrinks the chain's length instead of its width ships a half-build that teaches nothing (SN-826). It fails by *freezing*: a checklist maintained as a document rots, so the checklist must be a machine-maintained system whose JSON twin is the source of truth (SN-827). And it fails by *flattering itself*: a retriever tuned against its own test until the number rises while the corpus still lacks the trigger text that would make retrieval real \u2014 where the honest result is a ceiling, 4/43, and the fix belongs upstream at capture (SN-824, SN-873). The method that avoids all three: work whole chains, score and repair the measured holes, verify independently, freeze exact \u2014 and reuse what exists instead of building a second anything (SN-854).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-4"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2186",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2186-essence-ratification-in-the-artifact",
+   "slug": "essence-ratification-in-the-artifact",
+   "title": "Ratification Lives in the Artifact's Fields",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-ratification-in-the-artifact.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-ratification-in-the-artifact.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-ratification-in-the-artifact.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2186-essence-ratification-in-the-artifact.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:17:00Z",
+   "date": "2026-11-05",
+   "page_hash": "a978347842919099f942a952a2c350366ba33ccaea03a87448442e22c6edc8d6",
+   "content_hash": "5bc8471aa8b93db3e50f91eb95608019a249b5c9b3f83ab9a109d66aafb64db2",
+   "one_line": "Authority in this system is a property of artifacts and explicit words \u2014 never of messages, placements, or enthusiasm. A merge commit message claimed RATIFIED while the artifact's own fields said `ratified: false`; the fields were right (SN-840, carried by Batch 1 and pointed to below). A file's internal claim of `status=RATIFIED` is likewise only a claim: a pin requires `ratified_by == 'Shawn Vibert'` plus the DIRECTOR-RATIFIED envelope keys (SN-843). A constitution placed on a PR is CANDIDATE until the ratifier's explicit word \u2014 placed \u2260 law, and no lane declares hierarchy between competing canons (SN-934). Around those cores sit the working machinery: an exclusion-precedent chain that keeps unratified specs out of the pin manifest by name (SN-884), a precedence rule that lets a dated standing directive supersede a roster (SN-833), and a backfill discipline that records pre-guard ratifications honestly as `kind=backfill`, never dressed as elevations (SN-876).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-4"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2187",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2187-essence-resource-discipline",
+   "slug": "essence-resource-discipline",
+   "title": "Resource Discipline: Spend the Cheapest Meter First",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-resource-discipline.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-resource-discipline.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-resource-discipline.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2187-essence-resource-discipline.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:17:00Z",
+   "date": "2026-11-05",
+   "page_hash": "cc00f20525a297e8a4831d938a833375f9a41f1b8da71636cb6eae91e8717687",
+   "content_hash": "d7d398ac813c5d22018f7008609c4398b29922466539bd4c120f4f4fd970c9d3",
+   "one_line": "The team runs on scarce meters \u2014 GitHub Actions minutes, REST quota, model tokens, and the platform limits of its own coordination board \u2014 and this block records the discipline that makes scarcity survivable. A 403 rate limit is a hard stop for the run, not a retry prompt, and the correct shape of a stopped task is a resume file with exact steps (SN-892). Scarcity is managed architecturally: one reader writes the shared state, everyone else cheap-checks against it, git protocol carries repo state at zero REST cost, and every CI run is treated as money (SN-910). Coordination channels are matched to the lifetime of their state \u2014 an hourly limit gets a local flag, never a versioned file (SN-896) \u2014 and the board itself is a finite resource whose succession is planned before its 2,500-comment cap kills it mid-run (SN-909). Even evidence has a durability budget: verification artifacts live in durable paths, because `/tmp` on this VM can be wiped mid-cycle (SN-936).",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-4"
+   ]
+  },
+  {
+   "smart_note_id": "SN-2188",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2188-essence-the-front-door",
+   "slug": "essence-the-front-door",
+   "title": "The Front Door: Joining and Being Found",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-front-door.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-front-door.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-front-door.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2188-essence-the-front-door.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "VERIFIED",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DISTILLATION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T04:17:00Z",
+   "date": "2026-11-05",
+   "page_hash": "078b69f23d6f36c5474cae699484d29fb043bf92e0ff3c69522f9752299048ed",
+   "content_hash": "76fb143e6bf4209d01d9815843730585e1a729b4e8dadfb2afa19a0314488f36",
+   "one_line": "Two notes guard the two moments where the network meets a stranger. The first is *joining*: a getting-started funnel designed so anyone can go from \"never heard of it\" to a connected node in about five minutes, every step a click, a copy, or a conversation, costing nothing or free to try (SN-0800). The second is *being found*: Viral Law \u2014 every headline and title is written to hook, scored like everything else the system ships, because the headline is the doorway to the intelligence and nobody discovers what doesn't hook them (SN-0804). A network that cannot be joined fails at the door in; a network whose intelligence cannot be found fails at every door after that.",
+   "topics": [
+    "Essence",
+    "Distillation",
+    "oct-4"
+   ]
   }
  ],
  "sequence_policy": {
@@ -28401,5 +29172,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "345f587a94d5ef03cadf4672553ae01603c51c0630f34f7429128d119c1039a4"
+ "corpus_manifest_hash": "861543bd78578b47ddb5739f4bd80e3d6200875404c5c0756112ca1fc28f7fb7"
 }

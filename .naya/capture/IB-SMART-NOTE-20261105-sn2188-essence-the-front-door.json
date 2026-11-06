@@ -1,0 +1,37 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2188",
+  "title": "The Front Door: Joining and Being Found",
+  "slug": "essence-the-front-door",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-front-door.md",
+  "tone": "gold",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:17:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Two notes guard the two moments where the network meets a stranger. The first is *joining*: a getting-started funnel designed so anyone can go from \"never heard of it\" to a connected node in about five minutes, every step a click, a copy, or a conversation, costing nothing or free to try (SN-0800). The second is *being found*: Viral Law — every headline and title is written to hook, scored like everything else the system ships, because the headline is the doorway to the intelligence and nobody discovers what doesn't hook them (SN-0804). A network that cannot be joined fails at the door in; a network whose intelligence cannot be found fails at every door after that.",
+    "human_view": "A network lives or dies at its edges. These two notes work the edges. One makes arriving easy: five minutes, no expertise, no cost, your privacy intact — because every complicated step at the door is a person who quietly never joins. The other makes *arriving at the ideas* easy: every title is a doorway built for a human's one second of attention, because the finest intelligence ever filed under a number is, to a scrolling stranger, indistinguishable from nothing at all. Respect for the newcomer and respect for the reader are the same respect, engineered twice.",
+    "child_view": "Joining is like being invited to a clubhouse where the door is wide open and a friend walks you in, step by step — you don't need to know how anything works yet. And the signs on the clubhouse doors don't say \"Room 47\" — they say what's *fun* inside, in words that make you want to peek. A sign that only has a number is a door nobody opens.",
+    "grandma_view": "It's hospitality, dear. You don't make a guest fill out forms in triplicate on the doorstep; you welcome them in, show them around kindly, and let them use their nickname until they choose otherwise. And you label the pantry jars with what's actually in them, in words that make a person hungry — not with inventory codes. Nobody ever fell in love with a jar labeled \"contents, assorted.\" The label is part of the meal.",
+    "ai_view": "Walk newcomers through the funnel in order, jargon-free, at the asker's level; never skip the fork; keep alias the default in every explanation and example (SN-0800). For every title you write or review: draft the hook from the reader's side of the door, verify it states a truth the artifact contains, score it against the rubric, draft the subheadline by *selecting* the nutshell's sharpest sentence, and confirm the ID renders as metadata only. Treat ID-as-headline and boilerplate-as-subheadline as data defects, repaired at data → pipeline → render, in that order (SN-0804).",
+    "what_it_means": "The two notes are the network's outer surface stated as law: minimize the cost of entry (steps, money, expertise, identity exposure) and maximize the truthfulness-weighted pull of every surface a stranger meets. They also state the system's theory of discovery in one line — machines file by numbers; humans stop for hooks — which quietly explains why the rest of the campaign exists in the form it does: intelligence that compounds must first be *found*, and being found is an engineering discipline with a rubric, not a hope.",
+    "whats_inside": [
+      "Joining is an 8-step funnel, in order, free or free-to-try at every step; the fork is unskippable because it is the newcomer's own copy of the brain (SN-0800).",
+      "Privacy at the door is alias-by-default; identity moves only by explicit choice (SN-0800).",
+      "Every titled artifact carries HEADLINE (hook, never its ID, never a lie) + SUBHEADLINE (selected sharpest sentence, never boilerplate) + ID as small print only; renderers derive-and-flag rather than promote an ID (SN-0804).",
+      "Hooks are scored against the viral rubric like any other shipped work; downstream surfaces copy headline/subheadline verbatim (SN-0804)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-4"
+    ],
+    "covers": [
+      "SN-0800",
+      "SN-0804"
+    ]
+  },
+  "page_hash": "078b69f23d6f36c5474cae699484d29fb043bf92e0ff3c69522f9752299048ed",
+  "content_hash": "76fb143e6bf4209d01d9815843730585e1a729b4e8dadfb2afa19a0314488f36"
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2184",
+  "title": "Bounded Claims: Never More Certain Than the Evidence",
+  "slug": "essence-bounded-claims",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-bounded-claims.md",
+  "tone": "magenta",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:17:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Claims decay as they travel — summaries compress their boundaries away, caches outlive their evidence, corrections inherit the carelessness of what they correct. This block's counter-discipline is a family of four registered directives (D32–D35) and the working rules around them: uncertainty travels only along true evidence dependencies, never amplifying (SN-912); when evidence is revoked, recompute dependents and keep what still stands (the correction law, carried by Batch 1 and pointed to below); history is preserved while qualification is recomputed and stale authority invalidated at use time (SN-914); and no cached qualification may be republished until its evidence dependencies are re-validated at that moment (SN-922). Around the directives sit the two working habits that make them real: correct the derived report, never the raw capture — and name what you cannot measure (SN-893); and verify the temporal evidence before publishing a correction, because a correction is a claim too (SN-881) — plus the writing law that every summary carries its non-claims (SN-928).",
+    "human_view": "This is the system's etiquette for secondhand truth. Most of what anyone \"knows\" arrived through a chain — a measurement became a report, a report became a summary, a summary became a decision. Each link in that chain is a place where the claim can quietly grow: a little surer, a little broader, a little more causal than the evidence ever was. These notes install the opposite pressure at every link: claims may only shrink to fit their evidence, history may not be edited to make the chain look cleaner, and anything republished must be re-earned at the moment it's spoken again.",
+    "child_view": "It's the telephone game, played honestly. When you pass a message along, you may not make it *more sure* than when you heard it. If you heard \"I think I saw a cat,\" you can't pass on \"there IS a cat!\" If part of the message turns out wrong, you fix just that part — you don't throw away the whole message, and you don't scribble over the original note; you write the correction next to it, with the date. And when you retell anything, you also say what you are *not* saying.",
+    "grandma_view": "It's good bookkeeping and good manners, dear. The ledger's original entries are never erased — corrections go in the margin, dated and initialed, so anyone can see what was believed and when it changed. A certificate framed on the wall doesn't stay valid because it was valid once; you check it when you *use* it. And an honest shopkeeper writes \"we don't carry that\" on the sign instead of pretending the shelf is full. Precision about what you *don't* know is not weakness; it's the whole of trustworthiness.",
+    "ai_view": "For every downstream claim, enumerate its evidence dependencies and bound certainty/scope/causality to them; propagate hedges verbatim into summaries and receipts (SN-912). Audit your fill paths: any `eligible_*` field must filter for current eligibility + independence at fill time; keep retired rows preserved and barred (SN-914). Before publishing or reusing any qualification, re-validate its dependencies at that moment; treat the missing atomic boundary as an open gap, not a footnote (SN-922). On revocation, recompute — don't patch — and preserve what stands (SN-913 via SN-2068). Never edit raw captures; correct derived outputs with dated notes; write the honest-gaps section before inventing any proxy (SN-893). Read the created_at chain before publishing any correction (SN-881). Ship every summary with its non-claims section and its counting rule, re-anchoring numbers at write time (SN-928).",
+    "what_it_means": "The four directives are one lifecycle for a claim: D32 governs its *travel* (bounded by its evidence), D33 its *correction* (surgical recomputation), D34 its *storage* (history preserved, authority leased), D35 its *republication* (re-validated at the moment of use). The three working notes are the same lifecycle at human scale — a meter's report, a seat's correction, a summary's fine print. Together they define what this system means by a claim that deserves to travel: one whose confidence never exceeded its evidence at any hop, whose history shows every change, and whose current authority was checked *now*, not inherited from when it was first earned.",
+    "whats_inside": [
+      "Downstream claims never exceed their evidence in certainty, scope, or causal specificity; hedges travel with the claim (SN-912, D32).",
+      "History is append-only; qualification is recomputed on material change; stale authority is invalidated at use time; refresh touches only what changed (SN-914, D34).",
+      "Republication requires publication-time re-validation of evidence dependencies; the atomic publication boundary is named, unbuilt machinery — a gap, not a detail (SN-922, D35).",
+      "On revocation: recompute dependents, preserve the independently sufficient (SN-913, D33 — covered by Batch 1's SN-2068; pointed to, not double-counted).",
+      "Raw captures are immutable; derived reports are corrected with noted, dated corrections; unmeasurable quantities are named as gaps, never proxied (SN-893).",
+      "Corrections are verified against temporal evidence before publication (SN-881).",
+      "Every summary carries a \"What this does NOT claim\" section and its counting rule (SN-928)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-4"
+    ],
+    "covers": [
+      "SN-881",
+      "SN-893",
+      "SN-912",
+      "SN-914",
+      "SN-922",
+      "SN-928"
+    ]
+  },
+  "page_hash": "51a3dd220cdc54084976bd7593a9482a1bb516f95f0e4c9f970d8acb0687c7b0",
+  "content_hash": "5c7ebda567e29c6d4cc31f8ff57eb6bd5463d6fea70ff21d326296f8aa0ff0a7"
+}
