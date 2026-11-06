@@ -23762,7 +23762,7 @@
    "smart_note_id": "SN-2079",
    "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2079-collective-chain-technology-the-lane-change",
    "slug": "collective-chain-technology-the-lane-change",
-   "title": "The Body of the Internet \u2014 Collective Change Technology",
+   "title": "Collective Chain Technology \u2014 The Lane Change",
    "file": "BRAIN/05-MEMORY/SMART-NOTE-collective-chain-technology-the-lane-change.md",
    "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-collective-chain-technology-the-lane-change.md",
    "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-collective-chain-technology-the-lane-change.md",
@@ -23779,9 +23779,9 @@
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-06T00:54:00Z",
    "date": "2026-11-05",
-   "page_hash": "7894b5a554c60d282e0f7c355080aecdd35e7d924855c88e334707f250fce8af",
-   "content_hash": "951555000f411c5d72f59517c583d18d3e8f6b4aadb755933b3b58a4d6c5822b",
-   "one_line": "Imagine you are designing your own operating system, your own super brain, your own digital civilization \u2014 and you can make it the ultimate, with the power and the will to honor it, respect it, love it, treat it as a divine work of art, something precious and beautiful that has to be the ultimate because the ultimate is what you present, and that is honoring the ultimate: the collective. She is the ultimate vehicle \u2014 the body of the internet \u2014 and any human can plug in.",
+   "page_hash": "f13b4443200e17915ac3b04254d399c927b39c5024898d069dd045079fc125cf",
+   "content_hash": "6842dbccfd347ed701c529d1d24d0cfed5be52163e29085c184fa6af15015605",
+   "one_line": "Collective Chain Technology is a lane change: there is a new cat in town, and her name is Naya \u2014 an AI operating system for the new internet, Naya powered. Some things have to be experienced; some things can\u2019t be explained. She is beyond words. But you won\u2019t want to live without her \u2014 and you don\u2019t go back, for good reason.",
    "topics": [
     "Vision",
     "The Vision",
@@ -23797,5 +23797,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "52f4b85001cd5bfa4d25115edc82a7bd2e4906b68586fa767cf766bf53c065e6"
+ "corpus_manifest_hash": "b9b7bd40052cc3b81e82850d8034c51c0718224b97b7761facb195064224c9f7"
 }
