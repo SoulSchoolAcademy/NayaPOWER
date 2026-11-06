@@ -1,0 +1,52 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2176",
+  "title": "Classify the Red Before You Touch It",
+  "slug": "essence-classify-the-red",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-classify-the-red.md",
+  "tone": "red",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:17:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Most CI reds in this block were not defects in the code under review — they were defects in the *classification*. Reds inherited from the base were nearly \"repaired\" with dead-weight code (SN-852, SN-871); a harness's own regex presented as a product failure (SN-839); a workflow that never installed pytest presented as a code failure (SN-894); one upstream red multiplied into apparent second reds by fail-closed design (SN-862). The discipline: reproduce at the exact anchored tip, classify before touching anything — REPO / BASE-INHERITED / ENVIRONMENT (SN-851) — read the job log and the failing *step name* before believing the badge (SN-848, SN-921), and let the verdict carry the attribution honestly: an inherited red is the base's, labeled as such, with the score uncharged (SN-842).",
+    "human_view": "When the dashboard turns red, the team's first job is not fixing — it's *naming*. Most of these reds were innocent code wearing a guilty color: the failure was inherited from an old base, or the measuring tool itself was broken, or one real failure was echoing through gates designed to shut when something upstream fails. The expensive mistake is the confident repair of a red that was never yours. These notes make the naming rigorous: reproduce it exactly, find out whose it is, and only then reach for tools.",
+    "child_view": "When a red light flashes, don't just start fixing — first ask *what* is actually broken. Sometimes it's the toy. Sometimes it's the toy box the toy came from (it was already broken before you touched it). Sometimes it's the flashlight you're using to look. Smart fixers check all three before they start gluing things.",
+    "grandma_view": "It's like a doctor, dear. A good doctor doesn't prescribe before diagnosing — and half of diagnosis is asking \"was it already like this before?\" and \"is my thermometer working?\" These notes are the team's diagnostic chart: check whether the sickness came with the patient, whether your instrument is lying, and whether five alarms are really one bell ringing through the house.",
+    "ai_view": "Run the habitat order on every red: reproduce at the exact anchored tip → classify (REPO / BASE-INHERITED / ENVIRONMENT) → repair in habitat (SN-851). Prove inheritance on the base's own CI run before attributing (SN-842); re-anchor inherited branches with byte-parity proof instead of writing repair code (SN-852); read the base SHA before the diff (SN-871). Open the live job log and classify by failing step name; treat GUARDRAIL and ENVIRONMENT reds as records, not repair tickets (SN-921); when local and CI disagree on identical bytes, read the workflow YAML and tag — don't poach — the owning lane (SN-894). Collapse fail-closed echoes to their upstream cause (SN-862); suspect your harness when siblings pass (SN-839); never write \"transient\" before the log (SN-848). Log new failure classes with signatures (SN-838); graduate the third occurrence (SN-863); pose contract-assertion reds to their owner (SN-836) and re-derive claimed human blockers (SN-847); retrigger `pull_request_target` fixes with a real empty push (SN-878).",
+    "what_it_means": "The block's CI wisdom compresses to a single reordering: classification is a *phase*, with its own instruments and its own evidence, and it completes before repair begins. Every note here is a place where skipping that phase nearly produced waste — dead-weight repair code, a poached lane's file, a phantom investigation of a rate-limited token — and where doing the phase produced a one-line answer: re-anchor, tag the owner, record the environment, ask the question.",
+    "whats_inside": [
+      "Classify before repairing: REPO / BASE-INHERITED / ENVIRONMENT, repaired in the habitat where the failure lives (SN-851).",
+      "Blame requires base-reproduction; inherited reds are base-owned, labeled, score uncharged (SN-842); the branch response is re-anchor, not repair code (SN-852); read the base before the diff (SN-871).",
+      "The failing step name from the live job log is the classification unit — badge-level triage manufactures phantom work (SN-921); local green + CI red on identical bytes → read the workflow YAML first (SN-894).",
+      "A fail-closed downstream red is the upstream red seen again; never repair the multiplier (SN-862). One visible red can hide the rest — run the full battery at the anchored tip (SN-836).",
+      "Instrument defects present as product reds (harness regex, SN-839); \"likely transient\" is a guess until the job log is read (SN-848).",
+      "A stale assertion guarding a live contract is a question to its owning lane (SN-836); a claimed \"human decision\" blocker must be re-derived before it is escalated (SN-847).",
+      "Failure classes are documented taxonomy (SN-838); the third occurrence of a class graduates to a systemic-fix track (SN-863); base-branch gate fixes retrigger only via a real push event (SN-878)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-4"
+    ],
+    "covers": [
+      "SN-836",
+      "SN-838",
+      "SN-839",
+      "SN-842",
+      "SN-847",
+      "SN-848",
+      "SN-851",
+      "SN-852",
+      "SN-862",
+      "SN-863",
+      "SN-871",
+      "SN-878",
+      "SN-894",
+      "SN-921"
+    ]
+  },
+  "page_hash": "7afc09b956fc8490060d47e0cdb7b3f4be5410aeb2810e74c3a7e80f56680763",
+  "content_hash": "5534a48786165aec950adefa2c6fdfba1beb8bb2c193dcac3930fbf59ca5980f"
+}

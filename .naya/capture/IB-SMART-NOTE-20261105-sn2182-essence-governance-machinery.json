@@ -1,0 +1,47 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2182",
+  "title": "The Governance Machinery: Fairness, Responsibility, and State",
+  "slug": "essence-governance-machinery",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-governance-machinery.md",
+  "tone": "orange",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:17:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Eight notes register one ambitious program from the director's intel stream (directives D26, D28, D29, D30, D50, D52, D53, D54): a fairness verifier that names its failures and never says \"all good\" (SN-905), an audit that makes every fairness *assumption* earn its place (SN-906), a responsibility boundary that assigns every failure to the component that controlled it (SN-907), a verifiable causal trace that refuses to promote correlation to causation (SN-908), scope-isolated baselines that no aggregate may certify (SN-916), pooling rules that share estimates but never borrow proof (SN-917), one canonically ordered governance state where stale state creates no authority (SN-918), and crash-safe recovery that reconstructs commits instead of inventing them (SN-919). **Status honesty governs this whole essence:** SN-905 is a source lane's build report, recorded as reported and *not* independently verified; SN-906, SN-907, SN-908, SN-918 and SN-919 were NOT STARTED at capture, owner TBD; SN-916's and SN-917's pages state no build status at all. They are distilled as designs and doctrines — CANDIDATE specifications, not running machinery.",
+    "human_view": "This is the block's blueprint drawer: designs for a machine that could judge fairly, blame accurately, and remember safely. The fairness designs say a judge must name exactly how something failed and must never hide behind \"fine\"; the responsibility designs say blame belongs to whoever actually controlled the broken thing, proven by evidence both sides can't rewrite; the state designs say there is one official ledger of what's currently true, changes to it happen in one careful motion, and a crashed worker gets to *reconstruct* what happened — never to invent a convenient version. The honest label on the drawer matters as much as the blueprints: most of this was designed, not yet built.",
+    "child_view": "Imagine a playground with a referee. A good referee doesn't just say \"foul!\" — she says *which* rule broke. She doesn't let a player blame the wind when he was holding the ball. She keeps one official scorebook; nobody gets points from an old page of it; and if she drops the scorebook in a puddle, she dries it off and reads what it really says — she never makes up a score. These notes are the rulebook for building that referee.",
+    "grandma_view": "It's courtroom and county-clerk wisdom, dear, drawn up as engineering. Testimony is labeled testimony; evidence is labeled evidence; and the reason something happened is a third thing, proven its own way. The clerk keeps one ledger, enters changes in order with both signatures, and when the office floods, she reconstructs the records from the surviving copies — she does not invent deeds. And note the honesty stamped on the folder: most of these procedures were *designed* in this period, not yet put into practice. A blueprint is valuable. It is not a building.",
+    "ai_view": "Treat every inherited qualification as scoped: read its assumption set and audit record before trusting its verdict (SN-906). Classify failures from the control boundary and both sides' evidence; on conflict, return BOUNDARY_UNDETERMINED (SN-907). Build traces from canonical evidence events only — producer ≠ observer, logical clocks, hashes — and walk claims up the L0–L3 ladder by evidence, running the label-swap test on your own conclusions (SN-908). Carry per-scope breakdowns with every aggregate; refuse rollup-only certification (SN-916). In any design that pools, name which of the three operations it is and hold only that bar (SN-917). Route consequential governance changes through the six-step commit sequence and treat out-of-transaction version checks as no guarantee (SN-918). In recovery, classify the crash before choosing the move, and let COMMIT_OUTCOME_UNKNOWN stay unknown (SN-919). Re-run the lie detector's three broken fixtures before trusting it on new code (SN-905). And in all of it, keep the statuses straight: these are CANDIDATE designs — build them before citing them as machinery.",
+    "what_it_means": "The eight designs share one architecture of honesty: every powerful act — certifying fairness, assigning blame, granting authority, recovering state — is decomposed into evidence-bearing steps with named failure states, so that the powerful act can be *audited* rather than merely trusted. The recurring villains are the silent promotions: correlation into causation, estimates into certification, local correctness into system safety, a crash into either amnesia or invention. The recurring hero is the named, scoped, versioned verdict — a claim that carries its conditions on its face.",
+    "whats_inside": [
+      "Verifiers earn trust by naming failures precisely and scoping verdicts; \"all good\" is a defect in a verifier (SN-905 — reported, not independently verified).",
+      "Fairness assumptions pass four gates or are thrown out — justification, satisfiability, minimal sufficiency, non-circularity, no compensation (SN-906).",
+      "Responsibility follows control; no component assumes its own guarantee; conflicting traces yield BOUNDARY_UNDETERMINED, never blame-by-default (SN-907).",
+      "Logs claim, evidence establishes, verification explains why; correlation and ordering never silently become causation; the ladder is climbed by evidence only (SN-908).",
+      "Aggregates never certify scopes; sparse scopes stay UNPROVEN_IN_SCOPE (SN-916); pooling/merging/consolidation are three operations with three evidence bars, and statistics never confer authority (SN-917).",
+      "Governance changes commit atomically against one ordered state, re-verified inside the transaction; stale state creates no authority; rollback is a new revision (SN-918).",
+      "Recovery reconstructs the commit; ambiguity stays labeled ambiguity; stale replays and invented proposals are refused (SN-919).",
+      "All eight are CANDIDATE designs: SN-905 reported-not-verified; SN-906, SN-907, SN-908, SN-918 and SN-919 NOT STARTED at capture with owners TBD; SN-916 and SN-917 carry no build status on their pages — nothing here is claimed as running machinery."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-4"
+    ],
+    "covers": [
+      "SN-905",
+      "SN-906",
+      "SN-907",
+      "SN-908",
+      "SN-916",
+      "SN-917",
+      "SN-918",
+      "SN-919"
+    ]
+  },
+  "page_hash": "130c9056869136c4bf14e9fea285ee241abee4a87b3653af7d8f5eb69bc7defa",
+  "content_hash": "f3935d372166499e8f15684bcd7265c8b69eb5da2c7bb1d8c4907cf0219efd85"
+}

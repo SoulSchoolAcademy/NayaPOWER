@@ -1,0 +1,80 @@
+# SN-2176 — Classify the Red Before You Touch It
+
+**Status: VERIFIED ESSENCE — VERIFIED (verifier-oct-4, block PASS WITH CORRECTIONS; correction pass executed, re-verified, and closed by a different seat's second-pass confirmation — all retirement holds lifted).** Distilled from 14 raw notes by the oct-4 maker seat; independently verified by a different seat (12 essences VERIFIED, 2 VERIFIED-WITH-CORRECTIONS, both corrections executed and confirmed). Verifier verdict: VERIFIED (verifier-oct-4, against repo bytes). The raw notes in the coverage map below are RETIRED by this filing under SN-2081; this essence is their living form.
+
+## In a Nutshell
+
+Most CI reds in this block were not defects in the code under review — they were defects in the *classification*. Reds inherited from the base were nearly "repaired" with dead-weight code (SN-852, SN-871); a harness's own regex presented as a product failure (SN-839); a workflow that never installed pytest presented as a code failure (SN-894); one upstream red multiplied into apparent second reds by fail-closed design (SN-862). The discipline: reproduce at the exact anchored tip, classify before touching anything — REPO / BASE-INHERITED / ENVIRONMENT (SN-851) — read the job log and the failing *step name* before believing the badge (SN-848, SN-921), and let the verdict carry the attribution honestly: an inherited red is the base's, labeled as such, with the score uncharged (SN-842).
+
+## Essence
+
+**The classification comes first, and it has named classes.** The habitat order is: reproduce → classify → repair *in the habitat where the failure lives*. When six `guard_liveness` failures turned out to be a VM missing its `python` symlink, the proof of ENVIRONMENT class was that the failure vanished with the repo bytes identical — and the repair belonged to the habitat, never to the repo (SN-851). The same triage, one level up: local green + CI red on identical bytes means *read the workflow YAML before the test file*. The machine-law job ran `python -m pytest` on a bare `setup-python` runner that never installed pytest — a ~5-second `ModuleNotFoundError` is the runner confessing — while the `test` job passed only because it pip-installs first. The seat who root-caused it then *refused to fix it*: the file belonged to another lane, so she characterized it exactly (pre-existing on main, exact blob SHA, failing line), tagged the owning lane, and stepped back — a one-line fix is still someone else's one line, and poaching it manufactures the merge conflict it pretends to prevent (SN-894). The classification unit itself got sharpened last: not the workflow badge but the **failing step name from the live job log**. On one tip (`cfbd81c`) three red badges were three different things — a REAL RED (brain-index drift, verified on exact tip bytes), a GUARDRAIL firing as designed (fail-closed on the first red), and an ENVIRONMENT RED (the check's own installation token rate-limited; its all-day flap was rate pressure, not code). Environment reds are documented as environmental and never routed to a repair lane as tip defects (SN-921).
+
+**Inherited reds belong to the base.** Blame requires base-reproduction: run the identical check on the unchanged base tip in its own CI run. If it fails there, the red is INHERITED — base-owned, labeled in the verdict, and the PR's score is uncharged ("through no fault of its own," #2070 HOLD 8.5); if it passes there, the red is INTRODUCED and PR-owned (SN-842). The branch-side response follows: PR #1980's reds were proven inherited from base `ec134159`, the head was re-anchored to tip `9aa04ab8`, and CI went 8/8 green with **zero code changes**, proven by byte-parity. Repairing inherited reds is dead-weight code — the "fix" would have lived in the repo forever, defending against a defect that was never the branch's (SN-852). The third telling fixes the *order* of diagnosis: read the branch's BASE before its diff. #2102's base `9aa04ab8` predated the #2107 tree-wide event, so its failure was inherited on arrival; the repair is re-anchor + regen by the lane owner, and the verifier queues behind instead of duplicating (SN-871). Three notes, one family, three distinct instruments: verdict attribution (SN-842), branch response (SN-852), diagnosis order (SN-871).
+
+**One red is often the whole count.** A downstream gate failing closed on an upstream verdict multiplies one root cause into N apparent reds: on tip `8a41a18e`, the test step-8 drift and the promote-and-prove step-4 failure were one cause seen twice. Diagnose upstream first — follow dependency direction and the tip delta — and never open a repair on a gate whose job is to fail closed (SN-862). Sequential masking hides reds in the other direction too: one early CI failure hides every step behind it, so the full battery runs locally at the exact anchored tip (455cdf5a: 2014 passed / 1 FAILED, the pytest red invisible behind a node-step failure) (SN-836). And a red can be the *instrument's* confession: PR #2077's multiline import broke the harness's single-line import-strip regex (`/^import .*;\r?\n/gm`), and the resulting `vm SyntaxError` presented as a product red. The tell was 535 sibling tests passing; regex preprocessing is a grammar commitment, and the hardening is a real transform or a post-strip assertion that fails as "stripper broken," not as a product defect (SN-839).
+
+**Failure classes are taxonomy, not adjectives.** A cold-successor held-out run FAILED with `AssertionError: CANDIDATE` — and the doctrine the failure produced is that a lifecycle-*state* failure is a lifecycle-**transition** defect, not a retrieval or content defect; the fresh-lesson case passed in the same run, proving the classes separate. New failure classes get documented with their signature so the next seat classifies instead of guessing (SN-838). Classification guesses get the same suspicion as code guesses: "likely transient" is a guess, and the job log is read *before* classifying. In run 38011842171 the curl had succeeded and the JSON was valid; the runtime said LINEAGE_BROKEN because a concurrent commit repointed the singleton checkpoint inside the 17-second commit→verify window, and a strict assert (line 503) fired before the race-tolerant fallback (lines 507–524) could run — the fallback was dead code, and the correct class was TEST DEFECT. "Transient" is the last classification, never the first (SN-848).
+
+**Some reds are questions, and some "blockers" are fictions.** SN-836's full-battery run surfaced a stale-assertion red: an assertion guarding a live contract decision (#2077's `admittedStatus`). That is not a unilateral fix — it is a question posed to the owning lane (SN-836). Its pair completes the story: the "waiting on a human decision" that supposedly blocked the fix was itself a claim, not a fact; re-derived, the stale assertion was a five-minute fix, scored openly (fix 9.5 / revert-to-hardcode 3.0 / keep waiting 2.0). Before escalating any "human decision" blocker, re-derive whether the decision is actually pending (SN-847). Recurrence has its own graduation rule: count occurrences per failure-class *and* trigger-class, and at the third occurrence (#2023/#2056/#2107 index-misses) ship the incident repair **and** open the systemic-fix track — counting is the recurrence half of the Loop-Breaker Law (SN-863). Finally, a mechanics note that belongs to classification because it decides whether reds can even be re-observed: fixing a `pull_request_target` gate on the base branch does **not** re-run open PRs' checks; the retrigger is a real empty git push event, while an API close/reopen produces zero runs (the SN-048 canary) (SN-878).
+
+## What this settles
+
+- Classify before repairing: REPO / BASE-INHERITED / ENVIRONMENT, repaired in the habitat where the failure lives (SN-851).
+- Blame requires base-reproduction; inherited reds are base-owned, labeled, score uncharged (SN-842); the branch response is re-anchor, not repair code (SN-852); read the base before the diff (SN-871).
+- The failing step name from the live job log is the classification unit — badge-level triage manufactures phantom work (SN-921); local green + CI red on identical bytes → read the workflow YAML first (SN-894).
+- A fail-closed downstream red is the upstream red seen again; never repair the multiplier (SN-862). One visible red can hide the rest — run the full battery at the anchored tip (SN-836).
+- Instrument defects present as product reds (harness regex, SN-839); "likely transient" is a guess until the job log is read (SN-848).
+- A stale assertion guarding a live contract is a question to its owning lane (SN-836); a claimed "human decision" blocker must be re-derived before it is escalated (SN-847).
+- Failure classes are documented taxonomy (SN-838); the third occurrence of a class graduates to a systemic-fix track (SN-863); base-branch gate fixes retrigger only via a real push event (SN-878).
+
+## Human
+
+When the dashboard turns red, the team's first job is not fixing — it's *naming*. Most of these reds were innocent code wearing a guilty color: the failure was inherited from an old base, or the measuring tool itself was broken, or one real failure was echoing through gates designed to shut when something upstream fails. The expensive mistake is the confident repair of a red that was never yours. These notes make the naming rigorous: reproduce it exactly, find out whose it is, and only then reach for tools.
+
+## Child
+
+When a red light flashes, don't just start fixing — first ask *what* is actually broken. Sometimes it's the toy. Sometimes it's the toy box the toy came from (it was already broken before you touched it). Sometimes it's the flashlight you're using to look. Smart fixers check all three before they start gluing things.
+
+## Grandma
+
+It's like a doctor, dear. A good doctor doesn't prescribe before diagnosing — and half of diagnosis is asking "was it already like this before?" and "is my thermometer working?" These notes are the team's diagnostic chart: check whether the sickness came with the patient, whether your instrument is lying, and whether five alarms are really one bell ringing through the house.
+
+## Naya
+
+Run the habitat order on every red: reproduce at the exact anchored tip → classify (REPO / BASE-INHERITED / ENVIRONMENT) → repair in habitat (SN-851). Prove inheritance on the base's own CI run before attributing (SN-842); re-anchor inherited branches with byte-parity proof instead of writing repair code (SN-852); read the base SHA before the diff (SN-871). Open the live job log and classify by failing step name; treat GUARDRAIL and ENVIRONMENT reds as records, not repair tickets (SN-921); when local and CI disagree on identical bytes, read the workflow YAML and tag — don't poach — the owning lane (SN-894). Collapse fail-closed echoes to their upstream cause (SN-862); suspect your harness when siblings pass (SN-839); never write "transient" before the log (SN-848). Log new failure classes with signatures (SN-838); graduate the third occurrence (SN-863); pose contract-assertion reds to their owner (SN-836) and re-derive claimed human blockers (SN-847); retrigger `pull_request_target` fixes with a real empty push (SN-878).
+
+## What It All Means
+
+The block's CI wisdom compresses to a single reordering: classification is a *phase*, with its own instruments and its own evidence, and it completes before repair begins. Every note here is a place where skipping that phase nearly produced waste — dead-weight repair code, a poached lane's file, a phantom investigation of a rate-limited token — and where doing the phase produced a one-line answer: re-anchor, tag the owner, record the environment, ask the question.
+
+## Why It Matters
+
+Misclassification is not a victimless error. Repairing an inherited red leaves permanent code defending against a defect that never existed in that branch; investigating an environment red burns the scarcest resource (attention, under a hard action budget) on weather; misattributing a verdict charges a score against a seat "through no fault of its own." For the reader: a triage system that names reds correctly is what makes red *mean* something — and a red that means something is the only kind worth having.
+
+## How It Connects
+
+Classification feeds the merge gates in essence-merge-discipline.md (SN-868's merge-race is the pattern SN-863 counts) and depends on the freshness discipline of essence-evidence-expires.md (a classification anchored on a superseded tip is a race artifact, SN-879). The Batch-1 defect flagged in this block's receipt lives here: SN-838 was *listed* by Batch-1 essence SN-2069 without its lifecycle-class doctrine being carried — this essence is where that teaching actually lands. The workflow-file jurisdiction in SN-894 connects to the trust tiers of essence-breach-discipline.md (SN-931: gate machinery is the highest trust tier).
+
+## What Is In It For You
+
+You get a differential diagnosis for red dashboards, usable anywhere: Was it already broken before this change? Is the measuring instrument itself broken? Is this five alarms or one? Is the fix mine to make, or another lane's — and is the "blocker" even real? Run those questions in order and most reds resolve into a sentence, not a project. That is the whole value: repairs are expensive; correct sentences are cheap.
+
+## The Learning
+
+The team learned classification the expensive way — by nearly repairing what it didn't break. The signature moment is SN-852's zero-code-change heal: the bravest fix in the block was *no code at all*, proven by byte-parity. What compounded is the order of operations becoming reflex: base before diff, log before label, habitat before repair — and verdicts that say whose red it was, so scores stay honest.
+
+## Coverage map — raw notes this essence covers (14)
+
+SN-836 · SN-838 · SN-839 · SN-842 · SN-847 · SN-848 · SN-851 · SN-852 · SN-862 · SN-863 · SN-871 · SN-878 · SN-894 · SN-921
+
+## Verification contract (for the verifying seat — falsify these)
+
+1. **Coverage integrity:** exactly 14 IDs, all in the oct-4 block list, none duplicated in any other oct-4 draft essence, the covered-by-batch1 list, or the stands-alone list.
+2. **Inherited-red family kept three-way distinct:** SN-842 = verdict attribution (base-reproduction, score uncharged), SN-852 = branch response (re-anchor, zero code changes, byte-parity), SN-871 = diagnosis order (base before diff); fail if any two are blended into one rule or if "repair the inherited red" appears anywhere as advice.
+3. **Step-name classification:** SN-921's three classes on tip `cfbd81c` (REAL RED / GUARDRAIL-AS-DESIGNED / ENVIRONMENT RED) must all survive with the rule that environment reds are never routed to repair lanes; fail on any softening.
+4. **No-poach rule:** SN-894 must keep both halves — root-cause on exact CI bytes *and* tag-the-owner refusal; fail if the essence recommends fixing the workflow file directly.
+5. **Sequential pair, not contradiction:** SN-836 (question posed to owning lane) and SN-847 (blocker re-derived, fixed) must be presented as a sequence; fail if the essence treats them as conflicting advice.
+6. **SN-838's doctrine intact:** lifecycle-state failure = transition defect, explicitly *not* retrieval/content; fail if the essence files it under retrieval. (This is the note Batch-1 SN-2069 lists without carrying — see receipt.)
+7. **Anatomy:** all ten Full Smart Note sections present (In a Nutshell · Human · Child · Grandma · Naya · What It All Means · Why It Matters · How It Connects · What Is In It For You · The Learning) and **no machine view or machine section anywhere**. Fail on any missing section or any machine-view content.
+8. **No-orphan check:** pick any five sentences in the Essence section at random; each must cite at least one covered SN ID, and the cited page must contain the claim.

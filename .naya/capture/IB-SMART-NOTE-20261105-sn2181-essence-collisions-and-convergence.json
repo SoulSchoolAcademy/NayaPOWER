@@ -1,0 +1,47 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2181",
+  "title": "One Canon: Collisions, Convergence, and Stale Asks",
+  "slug": "essence-collisions-and-convergence",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-collisions-and-convergence.md",
+  "tone": "gold",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:17:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A shared system constantly manufactures duplicates — of IDs, of files, of documents, of work — and this block records the discipline of keeping exactly one canon without destroying history. Duplicate Smart Note IDs are repaired by renumbering the registry, never by deleting history, and a *skipped* repair is itself a recorded decision (SN-834). Two documents each claiming to be \"the single canonical\" one is a duplicate mechanism, caught by re-reading the sources before authoring a convergence (SN-898) — and semantic convergence never licenses calling two artifacts \"the same\" without a byte or provenance check (SN-930). Work that collides mid-flight is finished and transferred, never restarted or duplicated (SN-933); work already done is delta-checked, never re-executed (SN-941); and \"canonical\" itself is a reconciliation result — main's ledger was wrong about its own decision log until an orphan branch's verified record was cherry-picked forward (SN-864).",
+    "human_view": "A busy team is a machine for making two of everything: two notes with one number, two documents both calling themselves *the* standard, two people fixing the same thing, two requests for work already done. Keeping one canon isn't tidiness — it's what makes the record readable by the next person. These notes share a temperament: slow down at the moment of duplication, check what's actually true (bytes, provenance, the board), and resolve the collision in the open — renumbering instead of deleting, folding instead of competing, transferring instead of restarting, and answering a stale request with what changed instead of doing the work twice.",
+    "child_view": "Imagine the class makes two birthday posters for the same party, and both say \"THE poster.\" You don't throw one away or hang both and confuse everyone. You check: are they really the same poster? (Hold them side by side.) If a friend already finished the poster, you don't make a third — you look at theirs and add only what's missing. And if two toys have the same name tag, you change one tag — you never throw a toy away just to fix the tags.",
+    "grandma_view": "It's the family Bible problem, dear: three copies, two with the same pages numbered differently, one with grandmother's notes in the margins. You don't burn any of them. You check which is the true record — sometimes it's the copy in the attic, not the one on the shelf — you renumber carefully, you write down what you did and why, and you never, ever pretend two different books are the same book just because their covers match.",
+    "ai_view": "On any duplicate ID: renumber, never delete; clear new numbers across main + open PRs; record skipped repairs as decisions (SN-834). Count integration from substance, not citations; flag duplicates instead of normalizing them (SN-830). Fold filenames to lowercase in the tree check, base included (SN-831). Treat \"canonical\" as a verdict to earn by recompute; cherry-pick verified orphan work forward (SN-864). Before drafting any convergence, re-read the sources at their current tips; delta-fold or stand down (SN-898). Before any sameness claim, run byte-identity → provenance → structural comparison, in that order (SN-930). On a mid-flight collision: finish, transfer to the assigned owner for verification, forbid parallel builds, post the resolution on the board (SN-933). On any incoming ask: run the completion check before executing; deliver deltas, not duplicates (SN-941).",
+    "what_it_means": "The eight notes are one conservation law: **the system's memory must contain each thing once, under one name, with its history intact.** Every mechanism here protects a different face of that law — registry (SN-834), counting (SN-830), filenames (SN-831), truth-location (SN-864), documents (SN-898, SN-930), in-flight work (SN-933), and the work queue itself (SN-941). The failures they prevent are also one failure: a second copy quietly becoming a second truth, after which no one can say which record the next decision should trust.",
+    "whats_inside": [
+      "Dedup = renumber the registry, delete nothing; canonical keeps its ID by first-claim; new numbers clear main + all open PRs; a skipped repair is a recorded decision with doctrine (SN-834).",
+      "Citations are not integration; honest zeros beat inflated positives; duplicate and vanity IDs are flagged, never normalized (SN-830).",
+      "Case-only filename differences are collisions on case-insensitive filesystems; check is lowercase-folded `ls-tree` incl. base; gate belongs in CI (SN-831).",
+      "Canonical = verified reconciliation, wherever it lives; cherry-pick verified commits forward, never redo (SN-864).",
+      "Re-read sources on current bytes before authoring any convergence; a converged source gets a delta-fold, not a competitor (SN-898).",
+      "Sameness requires byte-identity (or a verified provenance chain); convergence licenses \"converges with\" + a list of distinct contributions (SN-930).",
+      "Mid-flight collisions resolve finish → transfer → no parallel build → board-posted resolution; the dispatcher owns the miss (SN-933).",
+      "Incoming asks are claims of pending work; verify (memory → board → bytes) and post deltas only when complete (SN-941)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-4"
+    ],
+    "covers": [
+      "SN-830",
+      "SN-831",
+      "SN-834",
+      "SN-864",
+      "SN-898",
+      "SN-930",
+      "SN-933",
+      "SN-941"
+    ]
+  },
+  "page_hash": "b5ee6dcd8fcd555d89e56b7a9b8eec9be84973aaf52c30335fee1556f0368cb8",
+  "content_hash": "1405e18b38accfb115b43554f3cf6c4f712ae1d12972b467c4cbdc345ab619b1"
+}

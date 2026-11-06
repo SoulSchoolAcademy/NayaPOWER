@@ -1,0 +1,51 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2177",
+  "title": "Proof That Proves Something",
+  "slug": "essence-proof-that-proves",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-proof-that-proves.md",
+  "tone": "magenta",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:17:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Every instrument in this block was caught, at least once, proving less than it claimed — and each note is the repair. Test evidence masqueraded as user learning until receipts had to carry their capture kind (SN-817). A trial's control arm scored 50/50 because the tasks leaked the lesson (SN-938). Suites were green through a check function that never raised, until sabotage-testing became the price of belief (SN-939). An evaluation apparatus kept its answers inline in the repo — 218 test files exposed — until fixtures were sealed by construction (SN-900). And the canonical evaluator itself was routed around by a selector that never called it, invisible to every name-based guard, caught only by running both formulas on one plan and watching them pick different winners (SN-942). The shared demand: **proof must be able to fail, must be blind where blindness matters, and must bind to the exact bytes and the exact claim it covers.**",
+    "human_view": "This is the block's philosophy of testing, earned the hard way: a test proves something only if it *could* have proven the opposite. Again and again the pattern repeats — an exam whose answers are printed on the back, a race where the \"untrained\" runner was quietly given the map, a judge grading homework in an answer key's handwriting, a scoreboard naming a champion who never entered the race. Each repair restores the same thing: the possibility of an honest *no*, delivered by someone or something with no stake in a yes.",
+    "child_view": "Testing is only fair if the test can catch you. If the answers are written on the test paper, everybody \"passes\" and nobody learned anything. If you peek at your friend's answers before writing yours, your matching answers don't prove you're both smart. A real test hides the answers, lets you try on your own, and sometimes you fail — and the failing is how we find out what's true.",
+    "grandma_view": "It's the difference between a scale and a mirror, dear. A mirror tells you what you want to hear; a scale tells you the number whether you like it or not. These engineers kept building mirrors by accident — tests that flattered, trials that leaked, judges who could see the answer key. The craft in these notes is scale-building: sealed, blind, pre-registered, and always — always — checked with a weight you know is heavy.",
+    "ai_view": "Tag every receipt with its capture kind and refuse learning claims from TEST_FALLBACK (SN-817); don't say \"activated\" until one lesson has walked all 11 stages under independent observation (SN-844). Write replay briefs to the five-part spec and state scope limits in the verdict (SN-822); register predictions before the world moves (SN-865). Byte-audit measurable claims and fix every mirror (SN-858); verify content by blob SHA at pinned heads and name your evidence bound in the score (SN-861). Strip every information channel from control arms and pre-check \"can the control ceiling without the lesson?\" before running (SN-938); claim LEARNED only on a passed novel battery, blind-scored, and name substitutions openly (SN-895). Sabotage-test every suite you accept (SN-939); seal fixtures to the six-part convention (SN-900); assert extraction fidelity in code, span == source splitter output (SN-1168, via Batch 1); run blinding as script + journal discipline + SHA anchor, disclosing exposures the same turn (SN-1169). Spy the canonical evaluator's invocation count on any selector you audit (SN-942). Run the cold ruler against disputed packs instead of arguing them (SN-891).",
+    "what_it_means": "Thirteen notes are one theorem with many proofs: **the credibility of a verification is exactly the credibility of its failure mode.** What could have made it fail? Who was blind, and mechanically how? What bytes, at what pin, under what pre-registration? A cold reader holding only this essence can interrogate any proof in the system — a trial, a suite, a fixture, a selector, a pack — and find the seam where its yes was manufactured, if one exists. The block's most honest artifacts are its failures kept on record: the 4 battery FAILs, the ceilinged control, the SIMULATED label on a simulation.",
+    "whats_inside": [
+      "Learning proof requires USER_CAPTURE evidence with identity/hash equality; TEST_FALLBACK is smoke-only (SN-817). Activation is one real lesson through all 11 stages, independently observed (SN-844).",
+      "Replay briefs specify ref, commands, clean clone, match definition; scope is stated honestly (SN-822). Predictions are pre-registered or they are not evidence (SN-865).",
+      "Measurable claims are audited against the artifact byte-for-byte, all mirrors fixed (SN-858); content identity is blob-SHA at pinned heads, never the compare UI (SN-861).",
+      "A trial whose control can pass without the lesson is a broken test; test where the lesson is the differentiator (SN-938). LEARNED requires a novel-problem battery, blind-scored, novelty mechanically enforced (SN-895).",
+      "Suites are sabotage-tested before their green counts (SN-939); evaluations are sealed — commitments in-repo, keys outside, author ≠ evaluator, gated, families refreshed (SN-900); blinding is scripted stripping + journal discipline + SHA anchoring, with exposures disclosed (SN-1169).",
+      "A selector that never invokes the canonical evaluator is a second engine in substance; detection is behavioral (invocation count, non-zero PV, two-winners probe) (SN-942).",
+      "The cold test converts disputed ambiguity into mechanical evidence; its findings include an open constitutional question that stays open until the director rules (SN-891)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-4"
+    ],
+    "covers": [
+      "SN-817",
+      "SN-822",
+      "SN-844",
+      "SN-858",
+      "SN-861",
+      "SN-865",
+      "SN-891",
+      "SN-895",
+      "SN-900",
+      "SN-938",
+      "SN-939",
+      "SN-942",
+      "SN-1169"
+    ]
+  },
+  "page_hash": "c5908489bfa24873b51b448e7898668be0d8df16144c152dcd5afaa4e9df267a",
+  "content_hash": "15faebe132a6ea181e4a6d426d654b8a7a65c78b7a83408b48a8ffa1565e6518"
+}

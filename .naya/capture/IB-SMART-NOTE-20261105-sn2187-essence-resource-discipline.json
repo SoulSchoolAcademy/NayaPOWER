@@ -1,0 +1,43 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2187",
+  "title": "Resource Discipline: Spend the Cheapest Meter First",
+  "slug": "essence-resource-discipline",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-resource-discipline.md",
+  "tone": "emerald",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:17:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "The team runs on scarce meters — GitHub Actions minutes, REST quota, model tokens, and the platform limits of its own coordination board — and this block records the discipline that makes scarcity survivable. A 403 rate limit is a hard stop for the run, not a retry prompt, and the correct shape of a stopped task is a resume file with exact steps (SN-892). Scarcity is managed architecturally: one reader writes the shared state, everyone else cheap-checks against it, git protocol carries repo state at zero REST cost, and every CI run is treated as money (SN-910). Coordination channels are matched to the lifetime of their state — an hourly limit gets a local flag, never a versioned file (SN-896) — and the board itself is a finite resource whose succession is planned before its 2,500-comment cap kills it mid-run (SN-909). Even evidence has a durability budget: verification artifacts live in durable paths, because `/tmp` on this VM can be wiped mid-cycle (SN-936).",
+    "human_view": "This is the household-budget chapter. The team learned it has three wallets — CI minutes, API calls, and thinking tokens — and that they empty in different ways: one by the *shape* of spending (bursts trigger the bank's alarm even when the balance is fine), one by volume, one by habit. The rules that follow are frugality with engineering behind it: one person does the shopping trip and writes the list on the fridge; everyone else checks the fridge before driving to the store; when the bank says stop, you stop and write down exactly where you left off; and you don't rent a storage unit to keep a note that expires in an hour. Even the notice board has a lifespan — plan its replacement before it falls down mid-meeting.",
+    "child_view": "Imagine you have a piggy bank with three kinds of coins. Some coins get spent every time you push a button. Some get spent when you ask too many questions too fast — the bank makes you sit down and wait, and wiggling and asking again doesn't help. The smart way: one person checks the bank and writes the answer on the fridge, so everybody can just read the fridge. And if the bank says \"wait,\" you write yourself a note — \"I was doing THIS, I still need to do THAT\" — and go play outside until it's time.",
+    "grandma_view": "It's wartime rationing sense, dear. You don't send five people to queue at the same shop; you send one with a list and the rest read the list at home. When the coupons run out, you stop — you don't bang on the shutters or send your cousin in your coat. You keep your important papers in the strongbox, not on the porch where the wind takes them. And you always, always write down where you stopped, because memory is the first ration to run out.",
+    "ai_view": "On any provider 403/429: stop for the run, write the resume file (attempted / not-yet-done / exact resume steps), and pace future bulk work (batch, cache, narrow bursts) (SN-892). Run the budget architecture literally: be the one reader or read the shared state; treat \"nothing changed\" as a completed run; stand down with reason + until on 403; record permanent blocks as state; prefer git protocol for repo state (SN-910). Before building any coordination mechanism, ask the lifetime question and the same-job question; decline conditionally when the math doesn't pay (SN-896). Track your board's comment count with headroom; open and hand over the successor before the cap (SN-909). At every run setup, point verification outputs and TMPDIR at durable workspace paths; log evidence losses by failure-mode number (SN-936).",
+    "what_it_means": "Five notes describe one economy: attention and API are finite, and the system survives by spending the cheapest instrument first and never re-buying information it already owns. The unifying insight is that most waste here was *structural*, not behavioral — per-tick re-reads, duplicated readers, heavyweight channels for featherweight state — so the fixes are architectural (one reader, cheap-check-first, local flags) rather than exhortations to be careful. The struck claim inside SN-910 is part of the essence, not an embarrassment: a budget built on a fictional meter would have rationed the wrong thing, and recording the correction *in* the rule is what keeps the economy honest.",
+    "whats_inside": [
+      "A 403 rate limit (429 likewise) is a hard stop for that provider for the run: no retries, no alternate identities, no hammering; the stop ships with recorded attempt + un-attempted remainder + exact resume steps (SN-892).",
+      "Secondary limits trigger on burst shape, not volume; bulk API work is paced defensively (batch writes, cache tree reads) (SN-892).",
+      "The real meters are Actions minutes (~2,500/mo; macOS 10x, Windows 2x), REST quota (5,000/h; git protocol = 0), and tokens; the struck generic-action-meter claim stays struck (SN-910).",
+      "One reader writes shared state; cheap-check-first everywhere; stand-down on 403 with reason + until; permanent endpoint blocks recorded as state, not stand-downs; REST only for what git protocol can't do (SN-910).",
+      "Coordination channels match state lifetime: transient state travels light (local flags); distinct lanes merge only when the math pays (SN-896).",
+      "Any board hosted on an issue has a 2,500-comment life; succession is planned, with live-state handover, before the cap (SN-909).",
+      "Verification artifacts and TMPDIR live under durable workspace paths from run setup (SN-936, FM#8)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-4"
+    ],
+    "covers": [
+      "SN-892",
+      "SN-896",
+      "SN-909",
+      "SN-910",
+      "SN-936"
+    ]
+  },
+  "page_hash": "cc00f20525a297e8a4831d938a833375f9a41f1b8da71636cb6eae91e8717687",
+  "content_hash": "d7d398ac813c5d22018f7008609c4398b29922466539bd4c120f4f4fd970c9d3"
+}
