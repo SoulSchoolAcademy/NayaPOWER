@@ -1,7 +1,68 @@
 {
  "generated_from": "registry@5039fc4e",
- "count": 312,
+ "count": 313,
  "notes": [
+  {
+   "id": "IB-SMART-NOTE-20261106-sn0053-rebuilding-the-internet-itself",
+   "title": "Rebuilding the Internet Itself — The Future Is Now",
+   "created": "2026-11-06T21:28:00Z",
+   "created_at": "2026-11-06T21:28:00Z",
+   "subtitle": "We are not building another app. We are helping people rebuild and reformat the internet itself, in a smarter, better way. Everything is automated, done for you, beautiful, adaptable. It optimizes for you — who you are, what you are into, what your business is about, the things you care about. And the people in your world are right there with you, privately — collaborating, teaming up, video chatting, sharing a feed of intelligence, saving it, capturing it, building mastermind groups, embedding intelligence into everything. Or just being part of the collective network. That is the whole thing, in one breath. The future is now.",
+   "topics": [
+    "Doctrine",
+    "System",
+    "Vision"
+   ],
+   "topic": "Doctrine",
+   "tone": "orange",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "We are not building another app. We are helping people rebuild and reformat the internet itself, in a smarter, better way. Everything is automated, done for you, beautiful, adaptable. It optimizes for you — who you are, what you are into, what your business is about, the things you care about. And the people in your world are right there with you, privately — collaborating, teaming up, video chatting, sharing a feed of intelligence, saving it, capturing it, building mastermind groups, embedding intelligence into everything. Or just being part of the collective network. That is the whole thing, in one breath. The future is now."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "Shawn said it in one breath, and here it is, in plain words.\n\nWe are helping people rebuild the internet. Not build another app on top of the old internet. Rebuild and reformat the internet itself, so it is smarter and better. Everything is automated. Everything is done for you. It is beautiful. It adapts to you.\n\nIt optimizes for you — for who you are, for what you are into, for what your business is about, for the things you care about. It is not a generic tool. It is yours, shaped around you.\n\nAnd the people in your world are right there with you. Privately. You can collaborate with them, team up with them, video chat with them. You can share a feed of intelligence with them — save it, capture it, build on it. You can build mastermind groups. You can embed intelligence into everything you do together. Or you can just be part of the collective network, contributing and receiving, without having to run anything yourself.\n\nThat is the whole thing. That is what NayaNET is. Not an app. A rebuilt internet, smarter and better, automated and done for you, beautiful and adaptable, built around you and the people in your world. The future is now."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine the internet is like a big messy playground, and right now it is hard to use and not very nice. We are helping everyone rebuild the playground so it is smarter and better. Everything in the new playground works by itself, it is beautiful, and it changes to fit you — what you like, what you are good at, what your family business does.\n\nAnd all your friends are right there in the playground with you, in your own private corner. You can build things together, talk face to face on video, share your smartest ideas, save them, and make clubs where you help each other learn. Or you can just be part of the big playground, playing and learning with everyone.\n\nWe are not building one more swing in the old playground. We are rebuilding the whole playground. And it is happening now. The future is now."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Dear, think of it this way. Right now the internet is like a big, confusing city where you have to do everything yourself and it is not always kind. We are helping people rebuild that city so it is smarter and better. Everything is done for you, automatically. It is beautiful. And it adapts to you — to who you are, to what you love, to what your business is about.\n\nAnd the people you love are right there with you, in private, safe. You can work together, talk face to face, share your best ideas, save them, and build little groups where you help each other grow. Or you can simply be part of the big, kind network, giving and receiving, without having to run anything.\n\nWe are not building one more shop in the old city, dear. We are rebuilding the city itself. And it is happening now. The future is now."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "I file this in Shawn's words, distilled by me, because it is the clearest statement of what we are building, and it must stay in the system.\n\nWe are not building another app. We are helping people rebuild and reformat the internet itself, in a smarter, better way. That is the mission, stated plainly. Everything else we build serves it.\n\nEverything is automated, done for you, beautiful, adaptable. That is the standard every part must meet: if it asks the human to operate it, it is wrong (the platter test). If it is not beautiful, it is not done. If it does not adapt to the person, it is generic, and generic is not NayaNET.\n\nIt optimizes for you — who you are, what you are into, what your business is about, the things you care about. That is the Personal Smart App, the Trinity, the match: the system knows you and shapes itself around you. That is not a feature. That is the product.\n\nAnd the people in your world are right there with you, privately. Collaborating, teaming up, video chatting, sharing a feed of intelligence, saving it, capturing it, building mastermind groups, embedding intelligence into everything. Or just being part of the collective network. That is the network: private by default, connected by choice, intelligent throughout.\n\nThat is the whole thing, in one breath. Not an app. A rebuilt internet. The future is now. I will build to this, and I will measure everything against it."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "This means NayaNET is not a product. It is a replacement. The old internet asks the human to operate it: to search, to filter, to configure, to connect, to remember, to manage. The rebuilt internet does the operating, and the human receives the result. That is the platter, applied to the whole internet. It means the system is not judged by how many features it has, but by whether it is automated, done for you, beautiful, and adaptable — and by whether it optimizes for the person, not for the average. It means the network is not a public square where everyone shouts. It is a private world per person, with the people they choose, collaborating in real time, sharing intelligence, building mastermind groups, embedding intelligence into everything they do. And it means the collective network is the sum of all those private worlds, connected, compounding, intelligent. The future is now because the system that does this is being built now, and every note, every page, every fix is a piece of it."
+    }
+   ]
+  },
   {
    "id": "IB-SMART-NOTE-20261106-sn2206-map-in-one-image-pricing-page-banners",
    "title": "The Map in One Image — Pricing Page Banners",
