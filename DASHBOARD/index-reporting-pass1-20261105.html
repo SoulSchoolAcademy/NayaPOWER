@@ -19352,10 +19352,10 @@ function osWireDonutLegend(){
 .nsb-honesty.proven{color:var(--green);} .nsb-honesty.stated{color:var(--blue);}
 .nsb-honesty.unknown{color:rgba(255,255,255,.4);box-shadow:none;}
 /* the scrolling pill row */
-.nsb-row{flex:1 1 auto;min-width:0;display:flex;gap:10px;overflow-x:auto;overflow-y:hidden;
-  padding:10px 28px 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 28px,#000 calc(100% - 28px),transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 28px,#000 calc(100% - 28px),transparent);}
+.nsb-row{flex:1 1 auto;min-width:0;display:flex;gap:8px;overflow-x:auto;overflow-y:hidden;
+  padding:10px 20px 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 20px,#000 calc(100% - 20px),transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 20px,#000 calc(100% - 20px),transparent);}
 .nsb-row::-webkit-scrollbar{display:none;}
 /* compact mode: sticky top collapses to pill row only */
 .nsb-topstack.nsb-compact .nsb-app-name{display:none;}
@@ -19363,7 +19363,7 @@ function osWireDonutLegend(){
 .nsb-topstack.nsb-compact .nsb-top .nsb-row{padding:8px 24px 14px;}
 /* ============ PILL DNA (harvested v1.1.4, elevated) ============ */
 .nsb-tab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;
-  padding:12px 20px;border-radius:999px;cursor:pointer;user-select:none;-webkit-user-select:none;
+  padding:12px 14px;border-radius:999px;cursor:pointer;user-select:none;-webkit-user-select:none;
   border:1px solid rgba(255,255,255,.16);
   background:
     linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.03) 38%, rgba(0,0,0,.14) 68%, rgba(0,0,0,.44)),
@@ -19411,7 +19411,7 @@ function osWireDonutLegend(){
 .nsb-tab.is-dead{opacity:.55;cursor:not-allowed;}
 .nsb-tab .nsb-more{border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:8px;
   background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.04));
-  padding:3px 9px;cursor:pointer;font-size:13px;line-height:1.5;font-family:inherit;
+  padding:3px 7px;cursor:pointer;font-size:13px;line-height:1.5;font-family:inherit;
   transition:all .2s;min-height:0;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.25), 0 3px 8px rgba(0,0,0,.4);}
 .nsb-tab .nsb-more:hover{background:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,.1));
@@ -19511,12 +19511,12 @@ function osWireDonutLegend(){
 @media (prefers-reduced-motion: reduce){ .nsb-tab.active{animation:none;} .nsb-tab.nsb-ripple{animation:none;} }
 html.nsb-calm .nsb-tab.active{animation:none;}
 html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
-.nsb-bottom .nsb-row{padding:10px 24px 2px;
+.nsb-bottom .nsb-row{padding:10px 20px 2px;
 /* 2026-11-01 — bar sits FLUSH with the viewport bottom. Was 18px, then 10px;
    Shawn's eye: the pills must touch the bottom edge, like the top bar
    touches the top. 2px is breathing room, not a gap. */
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);}
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 20px,#000 calc(100% - 20px),transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 20px,#000 calc(100% - 20px),transparent);}
 /* ============ SEARCH RESULTS (dropdown from the search level) ============ */
 .nsb-search-results{position:fixed;z-index:950;display:none;
   background:linear-gradient(180deg,#171e33,#0b0f1d 60%,#070a14);
@@ -19937,7 +19937,8 @@ function drift(row, dir, basePxPerSec){
     if (speed <= 0) return; /* still — theirs to stop */
     if (Date.now() - poke < 5000) return;
     measure();
-    if (max <= 4) return; /* fits — nothing to reveal, no motion needed */
+    if (max <= 4){ if (row.scrollLeft) row.scrollLeft = 0; return; } /* fits — nothing to reveal, no motion needed; parked at the start so every pill shows */
+    if (max > row.clientWidth) return; /* 2026-11-06 FIX 3: overflow wider than the viewport (phone) — a drift here is a marquee that hides the nav; the row stays at the start, hand-scrollable, and the drift never drags it away */
     var step = (basePxPerSec * speed) / 25; /* 25fps tick */
     var n = row.scrollLeft + d * step;
     if (n >= max){ n = max; d = -1; }
