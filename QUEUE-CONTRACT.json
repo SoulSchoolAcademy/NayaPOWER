@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-06T15:48:41Z",
-  "tip": "67067ec5e234a1a85f7550ec644f0221573aa6c6",
+  "generated_at": "2026-11-06T21:48:35Z",
+  "tip": "594a7b5404b7191b3ff118272f35c3724c321266",
   "prs": [
     {
       "number": 3089,
@@ -22,22 +22,13 @@
       "head": "1679fbdb7a7e1b87def5afbd4dc88dfe47274b9c"
     },
     {
-      "number": 3258,
-      "title": "Sync BRAIN/CURRENT-MISSION-STATE.md from naya/mission-state @ b087c9c (05:13 PST snapshot)",
+      "number": 3262,
+      "title": "Hub: migrate retired Groove links to our own systems (dead-link triage)",
       "tier": "B",
       "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate, delivery-gate; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "1d37b67a8e1d8b5f88c3ef7c103c92d095d89653"
-    },
-    {
-      "number": 3259,
-      "title": "Settings: desktop max-scroll clearance \u2014 .main padding-bottom 80px \u2192 220px",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "0ae469533dce137b72c6ba914d081d3a1940dddf"
+      "head": "639901eff44f543950dfb31d9a76913b0acc85c6"
     }
   ]
 }
