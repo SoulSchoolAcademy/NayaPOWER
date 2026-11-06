@@ -1,0 +1,30 @@
+<!-- ================================================================
+  NIA DESIGN SIGNATURE PIECE 21 — CRYSTAL — THE GLASS
+  DRAFT — the Clarity Confirmation Act is NOT stamped by Shawn; nothing here is law yet.
+  Act reference: Act §4.21 — ~/workspace/team-nitro/clarity-confirmation-act-DRAFT-20261106.md
+  CHECK: light catching the glass as the machine settles. (Gauge CHECK §4.6 applies.)
+  CRAFT (Shawn 00:31Z — optimized for what IT is): The most extraordinary crystal: real glass over the dial, light catching it as the machine settles — molded to prove it is glass, not a picture.
+  ROLLOUT (Shawn 00:31Z — Dashboard first, then Personal, then the rest): group 1 — first proved on Dashboard.
+  Harvested verbatim from:
+  - ~/workspace/smart-factory/harvested/dashboard.html L2490-2499
+  Factory path: ~/workspace/smart-factory/signature-pieces/21-gauge-crystal.html
+  Repo (canonical) path: BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/21-gauge-crystal.html
+  Notes: Real glass with a visible reflection arc across the top (dashboard.html:2491 comment).
+  ================================================================ -->
+<style>
+/* --- VERBATIM HARVEST (do not restyle; compose only) --- */
+.tn-tacho-dialwrap::before{
+  /* CRYSTAL: real glass with a visible reflection, like the Bugatti's sapphire crystal.
+     You see the reflection arc across the top — proof it's glass, not a flat image. */
+  content:''; position:absolute; inset:0; border-radius:50%; z-index:5;
+  background:
+    linear-gradient(115deg, rgba(255,255,255,.28) 0%, rgba(255,255,255,.10) 18%, transparent 38%),
+    linear-gradient(295deg, rgba(255,255,255,.08) 0%, transparent 25%),
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,.04) 0%, transparent 40%);
+  pointer-events:none;
+}
+</style>
+
+<!-- SPECIMEN-START -->
+<div class="tn-tacho-dialwrap">{{dial}}</div>
+<!-- SPECIMEN-END -->
