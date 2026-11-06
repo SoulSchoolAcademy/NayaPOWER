@@ -33,9 +33,11 @@ And the memory knows what never to keep. Mail and instant chat are a river, not 
 
 **What it means:** November taught the memory system its full lifecycle in one arc: how a note is made whole, how it becomes readable, how a thousand of them become a hundred essences without losing what they teach, how the learning loop keeps feeding the still, and how talk itself is honourably forgotten. This Batch 2 draft set is the law's first full application to the November cluster — and it stays a draft until a seat that did not make it verifies it, exactly as the law requires.
 
-## Coverage map — raw notes this essence covers (7)
+## Coverage map — raw notes this essence covers (6)
 
-SN-0870 · SN-2043 · SN-2052 · SN-2053 · SN-2058 · SN-2061 · SN-2081
+SN-0870 · SN-2043 · SN-2052 · SN-2053 · SN-2058 · SN-2061
+
+Correction (2026-11-06): SN-2081 restored to standing — standing-law notes are never coverage material.
 
 ## Verification contract (for the verifying seat — falsify these)
 

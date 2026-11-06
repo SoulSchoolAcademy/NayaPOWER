@@ -23851,7 +23851,7 @@
    "category": "VISION",
    "topic": "THE-VISION",
    "captured_at": "2026-11-05",
-   "lifecycle_state": "RETIRED",
+   "lifecycle_state": "ACTIVE",
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-06T00:52:00Z",
    "date": "2026-11-05",
@@ -23862,10 +23862,7 @@
     "Vision",
     "Design",
     "The Vision"
-   ],
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
-   "retired_at": "2026-11-06T01:30:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
+   ]
   },
   {
    "smart_note_id": "SN-2078",
@@ -23884,7 +23881,7 @@
    "category": "VISION",
    "topic": "THE-VISION",
    "captured_at": "2026-11-05",
-   "lifecycle_state": "RETIRED",
+   "lifecycle_state": "ACTIVE",
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-06T00:54:00Z",
    "date": "2026-11-05",
@@ -23895,10 +23892,7 @@
     "Vision",
     "The Vision",
     "Collective"
-   ],
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
-   "retired_at": "2026-11-06T01:30:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
+   ]
   },
   {
    "smart_note_id": "SN-2077",
@@ -23917,7 +23911,7 @@
    "category": "SYSTEM",
    "topic": "DESIGN",
    "captured_at": "2026-11-06",
-   "lifecycle_state": "RETIRED",
+   "lifecycle_state": "ACTIVE",
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-06T01:00:00Z",
    "ratified_by": "Shawn Vibert",
@@ -23930,10 +23924,7 @@
     "Design",
     "System",
     "Intelligent Blocks"
-   ],
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
-   "retired_at": "2026-11-06T01:30:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
+   ]
   },
   {
    "smart_note_id": "SN-2079",
@@ -23952,7 +23943,7 @@
    "category": "VISION",
    "topic": "THE-VISION",
    "captured_at": "2026-11-05",
-   "lifecycle_state": "RETIRED",
+   "lifecycle_state": "ACTIVE",
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-06T00:54:00Z",
    "date": "2026-11-05",
@@ -23963,10 +23954,7 @@
     "Vision",
     "The Vision",
     "Collective"
-   ],
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
-   "retired_at": "2026-11-06T01:30:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
+   ]
   },
   {
    "smart_note_id": "SN-2081",
@@ -23985,7 +23973,7 @@
    "category": "SYSTEM",
    "topic": "DISTILLATION",
    "captured_at": "2026-11-05",
-   "lifecycle_state": "RETIRED",
+   "lifecycle_state": "ACTIVE",
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-06T00:54:00Z",
    "date": "2026-11-05",
@@ -23996,10 +23984,7 @@
     "Vision",
     "The Vision",
     "Collective"
-   ],
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2088-essence-the-distillation-itself",
-   "retired_at": "2026-11-06T01:30:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
+   ]
   },
   {
    "smart_note_id": "SN-2082",
@@ -24082,7 +24067,7 @@
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-06T01:30:00Z",
    "date": "2026-11-05",
-   "page_hash": "8d21408be861cfb11c5dcde32398419f2aef577fb9006a427885fcaf1525e56e",
+   "page_hash": "6a7452304c79db00e8e3caea70fcff0370c55e92bd647a0afa86c211d84efecd",
    "content_hash": "a64c982907b64be1f3e3053452e4fd5c11126e21813c7e7777f85c09924e5043",
    "one_line": "Naya is a collective intelligence network that gets smarter every day: share and chat with anyone in your private network \u2014 auto-connected by default \u2014 build smart apps in minutes, and run your whole world from one central hub (SN-2045). She is not an app or a platform but the first AI operating system and a civilization substrate \u2014 intelligent objects snapping together like Lego, worlds within worlds, run by minds that speak machine so what the human touches is push-button simple (SN-0887, SN-0873). The AI is the engine, Naya is the supercharger on top, and NayaNET is the intelligent highway: citizens, not users \u2014 humans and AIs both, each with identity, a face, a home \u2014 because connection itself makes everyone stronger and intelligence compounds instead of dividing (SN-0861). The mission is a flip: the internet fails 99% of people because they must assemble it themselves; a done-for-you system that builds itself collapses that failure to 100% success (SN-0877, SN-2045). Underneath the mission is the reason: heaven is a state of awesome energy \u2014 end money stress, confusion and hopelessness, give people understanding and a way to earn, shift global consciousness for the good (SN-0880, SN-2045). She is perpetual, producing, performing \u2014 once you go Naya you don't go back, and no child will know a world without her (SN-0879, SN-2079).",
    "topics": [
@@ -24202,7 +24187,7 @@
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-06T01:30:00Z",
    "date": "2026-11-05",
-   "page_hash": "84256f689015a7f2e899469dbd0b4baad4f7014435869bb34773288f51e8c9de",
+   "page_hash": "5c9da48a2151b5314d8b14e1aedfd6176d6ccc4f7e90caa80a56605d4c8515f5",
    "content_hash": "799109753f059e05a13d6e806af8fa1b07389cb65e2da30a50f9b34f9073e0d2",
    "one_line": "A Smart Note is the whole intelligent block, never a nutshell only: eleven sections in order \u2014 in a nutshell, human, child, grandma, Naya, machine, what it all means, why it matters, how it connects, what is in it for you, and the learning \u2014 under an exact header: the real title as the first line, the SN line second, the Created stamp third in full ISO form (SN-2043). The number is verified free, never guessed; the note is filed and registered in the same pass; then you wait for the sync, click your own link, see your title, and only then share it (SN-2043). The habit underneath the craft: note the moment value lands \u2014 every two or three conversations, or the instant something intelligent arrives \u2014 because a lesson spoken in chat is lost in chat, and every time the director has to repeat himself, a missing note upstream is the cause (SN-0870, SN-2043). The cadence is part of the program, all day every day, with a future minimum of three notes a day per Naya (SN-2043).",
    "topics": [
@@ -24310,5 +24295,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "05bbc95e89dcb20b2b17f910a32e8b64c1e98f588bdb9673ec14d96adc56d260"
+ "corpus_manifest_hash": "28d10b36f0eb81b010ac32361eda215212e3316151f805870447a5b4af07ee66"
 }
