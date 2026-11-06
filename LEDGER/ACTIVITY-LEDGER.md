@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-06 23:27 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-06 23:46 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -48264,6 +48264,12 @@ _Last updated: 2026-11-06 23:27 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ 20261106-1538 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick on live bytes (fresh window; no prior Team Naya Scorer row): receipt file exists (gate-stall-20261106-1538.md); brief-queue holds exactly 31 brief-*.md files (plus lane-feed.md, not a brief), matching the receipt's count; both refusal classes live re-verified by dry-run claim attempts — brief-gap-t0422-lane7.md refused exit 7 (pa
 
 ### ✅ gate-stall — Team 0, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
 
