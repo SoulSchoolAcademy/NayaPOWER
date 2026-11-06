@@ -6403,6 +6403,20 @@ button.os-ld-node .os-ld-n{
   #os-sales-switch{
     position:fixed !important; bottom:20px !important; top:auto !important;
   }
+  /* 2026-11-06 - FIX F12 (v9): phone sub-labels read whole. Same mechanism
+     as FIX F1 (Notes/Likes/Creations): nowrap + 60px max-width cut the long
+     labels ("Conversion" 68 vs 60, "Top Inviters" 71 vs 60). Same remedy,
+     this view only, phone-only: labels wrap to two lines (9px/1.25,
+     main-board pattern). REWORK: white-space:normal alone only breaks at
+     spaces/hyphens, so single-word labels ("Conversion", "Engagement",
+     "Discussions", "Collections", "Impressions", "Conversions") stayed on
+     one line overflowing the 60px box - overflow-wrap:anywhere breaks the
+     word itself at the box edge. Desktop untouched. */
+  .os-sales-orbs .os-ld-node .os-ld-lbl{
+    white-space:normal !important; max-width:60px !important;
+    line-height:1.25 !important; font-size:9px !important;
+    overflow-wrap:anywhere !important;
+  }
 }
   .os-sales-pills{right:10px;}
   .os-sales-total-n{font-size:40px;}
@@ -6603,6 +6617,20 @@ button.os-ld-node .os-ld-n{
   #os-comments-switch{
     position:fixed !important; bottom:20px !important; top:auto !important;
   }
+  /* 2026-11-06 - FIX F12 (v9): phone sub-labels read whole. Same mechanism
+     as FIX F1 (Notes/Likes/Creations): nowrap + 60px max-width cut the long
+     labels ("Conversion" 68 vs 60, "Top Inviters" 71 vs 60). Same remedy,
+     this view only, phone-only: labels wrap to two lines (9px/1.25,
+     main-board pattern). REWORK: white-space:normal alone only breaks at
+     spaces/hyphens, so single-word labels ("Conversion", "Engagement",
+     "Discussions", "Collections", "Impressions", "Conversions") stayed on
+     one line overflowing the 60px box - overflow-wrap:anywhere breaks the
+     word itself at the box edge. Desktop untouched. */
+  .os-comments-orbs .os-ld-node .os-ld-lbl{
+    white-space:normal !important; max-width:60px !important;
+    line-height:1.25 !important; font-size:9px !important;
+    overflow-wrap:anywhere !important;
+  }
 }
   .os-comments-pills{right:10px;}
   .os-comments-total-n{font-size:40px;}
@@ -6799,6 +6827,20 @@ button.os-ld-node .os-ld-n{
   #os-joins-switch{
     position:fixed !important; bottom:20px !important; top:auto !important;
   }
+  /* 2026-11-06 - FIX F12 (v9): phone sub-labels read whole. Same mechanism
+     as FIX F1 (Notes/Likes/Creations): nowrap + 60px max-width cut the long
+     labels ("Conversion" 68 vs 60, "Top Inviters" 71 vs 60). Same remedy,
+     this view only, phone-only: labels wrap to two lines (9px/1.25,
+     main-board pattern). REWORK: white-space:normal alone only breaks at
+     spaces/hyphens, so single-word labels ("Conversion", "Engagement",
+     "Discussions", "Collections", "Impressions", "Conversions") stayed on
+     one line overflowing the 60px box - overflow-wrap:anywhere breaks the
+     word itself at the box edge. Desktop untouched. */
+  .os-joins-orbs .os-ld-node .os-ld-lbl{
+    white-space:normal !important; max-width:60px !important;
+    line-height:1.25 !important; font-size:9px !important;
+    overflow-wrap:anywhere !important;
+  }
 }
   .os-joins-pills{right:10px;}
   .os-joins-total-n{font-size:40px;}
@@ -6895,6 +6937,20 @@ button.os-ld-node .os-ld-n{
   }
   #os-shares-switch{
     position:fixed !important; bottom:20px !important; top:auto !important;
+  }
+  /* 2026-11-06 - FIX F12 (v9): phone sub-labels read whole. Same mechanism
+     as FIX F1 (Notes/Likes/Creations): nowrap + 60px max-width cut the long
+     labels ("Conversion" 68 vs 60, "Top Inviters" 71 vs 60). Same remedy,
+     this view only, phone-only: labels wrap to two lines (9px/1.25,
+     main-board pattern). REWORK: white-space:normal alone only breaks at
+     spaces/hyphens, so single-word labels ("Conversion", "Engagement",
+     "Discussions", "Collections", "Impressions", "Conversions") stayed on
+     one line overflowing the 60px box - overflow-wrap:anywhere breaks the
+     word itself at the box edge. Desktop untouched. */
+  .os-shares-orbs .os-ld-node .os-ld-lbl{
+    white-space:normal !important; max-width:60px !important;
+    line-height:1.25 !important; font-size:9px !important;
+    overflow-wrap:anywhere !important;
   }
 }
   .os-shares-pills{right:10px;}
@@ -7102,6 +7158,20 @@ button.os-ld-node .os-ld-n{
   #os-saves-switch{
     position:fixed !important; bottom:20px !important; top:auto !important;
   }
+  /* 2026-11-06 - FIX F12 (v9): phone sub-labels read whole. Same mechanism
+     as FIX F1 (Notes/Likes/Creations): nowrap + 60px max-width cut the long
+     labels ("Conversion" 68 vs 60, "Top Inviters" 71 vs 60). Same remedy,
+     this view only, phone-only: labels wrap to two lines (9px/1.25,
+     main-board pattern). REWORK: white-space:normal alone only breaks at
+     spaces/hyphens, so single-word labels ("Conversion", "Engagement",
+     "Discussions", "Collections", "Impressions", "Conversions") stayed on
+     one line overflowing the 60px box - overflow-wrap:anywhere breaks the
+     word itself at the box edge. Desktop untouched. */
+  .os-saves-orbs .os-ld-node .os-ld-lbl{
+    white-space:normal !important; max-width:60px !important;
+    line-height:1.25 !important; font-size:9px !important;
+    overflow-wrap:anywhere !important;
+  }
 }
   .os-saves-pills{right:10px;}
   .os-saves-total-n{font-size:40px;}
@@ -7208,6 +7278,20 @@ button.os-ld-node .os-ld-n{
   #os-smartlink-switch{
     position:fixed !important; bottom:20px !important; top:auto !important;
   }
+  /* 2026-11-06 - FIX F12 (v9): phone sub-labels read whole. Same mechanism
+     as FIX F1 (Notes/Likes/Creations): nowrap + 60px max-width cut the long
+     labels ("Conversion" 68 vs 60, "Top Inviters" 71 vs 60). Same remedy,
+     this view only, phone-only: labels wrap to two lines (9px/1.25,
+     main-board pattern). REWORK: white-space:normal alone only breaks at
+     spaces/hyphens, so single-word labels ("Conversion", "Engagement",
+     "Discussions", "Collections", "Impressions", "Conversions") stayed on
+     one line overflowing the 60px box - overflow-wrap:anywhere breaks the
+     word itself at the box edge. Desktop untouched. */
+  .os-smartlink-orbs .os-ld-node .os-ld-lbl{
+    white-space:normal !important; max-width:60px !important;
+    line-height:1.25 !important; font-size:9px !important;
+    overflow-wrap:anywhere !important;
+  }
 }
   .os-smartlink-view .os-ld-node .os-ld-n{font-size:16px !important;}
   .os-smartlink-pills{right:10px;}
@@ -7305,6 +7389,20 @@ button.os-ld-node .os-ld-n{
   }
   #os-invites-switch{
     position:fixed !important; bottom:20px !important; top:auto !important;
+  }
+  /* 2026-11-06 - FIX F12 (v9): phone sub-labels read whole. Same mechanism
+     as FIX F1 (Notes/Likes/Creations): nowrap + 60px max-width cut the long
+     labels ("Conversion" 68 vs 60, "Top Inviters" 71 vs 60). Same remedy,
+     this view only, phone-only: labels wrap to two lines (9px/1.25,
+     main-board pattern). REWORK: white-space:normal alone only breaks at
+     spaces/hyphens, so single-word labels ("Conversion", "Engagement",
+     "Discussions", "Collections", "Impressions", "Conversions") stayed on
+     one line overflowing the 60px box - overflow-wrap:anywhere breaks the
+     word itself at the box edge. Desktop untouched. */
+  .os-invites-orbs .os-ld-node .os-ld-lbl{
+    white-space:normal !important; max-width:60px !important;
+    line-height:1.25 !important; font-size:9px !important;
+    overflow-wrap:anywhere !important;
   }
 }
   .os-invites-pills{right:10px;}
