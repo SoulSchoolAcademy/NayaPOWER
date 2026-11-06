@@ -2965,6 +2965,28 @@ button:hover{
 @media (max-width:560px){
   .tn-tacho-bandline{ margin-top:160px; }
 }
+/* 2026-11-06 - FIX F10 (v9): phone dial concentric with the orbit.
+   The dial sat at the mount's TOP while the orbit is centred on the mount,
+   so the dial was eccentric by (mountH-dialH)/2: 89px in All, 153px in
+   period modes (cap on). The top orb (Sales) landed 50px / 14px from the
+   dial centre - on the dial face, covering the needle hub in periods - and
+   Joins/Saves grazed the teeth by 4.5px (All) to 16.8px (periods).
+   The orbit radius (139px, width-capped) cannot grow and the dial cannot
+   shrink enough to clear Sales, so the dial itself moves down to the
+   mount's centre: padding-top on .tn-tacho (padding, never margin - the
+   tacho has padding:0/border:none, so a first-child margin would collapse
+   through it). The bandline margin shrinks by the same amount (160->71,
+   224->71 - the compensated value is 71.0 All / 70.9 periods, one rule
+   covers both), so the bandline + cap stay at their exact absolute
+   positions (F6 calibration + F8 anchor untouched) and the mount height
+   is unchanged (392.8 / 521). Phone only (max-width:560px, the F6
+   breakpoint); 635px already clears by +14px and desktop is untouched. */
+@media (max-width:560px){
+  .tn-tacho{ padding-top:89px; }
+  .tn-tacho.tn-cap-on{ padding-top:153px; }
+  .tn-tacho-bandline{ margin-top:71px; }
+  .tn-tacho.tn-cap-on .tn-tacho-bandline{ margin-top:71px; }
+}
 @keyframes tnBandlineBeat{ 0%{ transform:scale(1);} 30%{ transform:scale(1.14);} 100%{ transform:scale(1);} }
 /* --- band ladder: completed bands marked, current band lit.
        Lives INSIDE the dial's open bottom (absolute) so the gauge stays
