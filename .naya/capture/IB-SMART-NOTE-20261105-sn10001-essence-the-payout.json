@@ -1,0 +1,43 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-10001",
+  "title": "The Payout: Everybody Wins, In Writing",
+  "slug": "essence-the-payout",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-payout.md",
+  "tone": "orange",
+  "icon": "◆",
+  "created_at": "2026-11-06T01:30:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Everybody wins, or the math is wrong — and in NayaNET the math is written down. Citizens earn 50% of the revenue their world generates — from their invites, their spaces, their activity — paid every Wednesday, because a reward felt weekly builds the habit that builds the network; they are **ambassadors, never affiliates**, citizens with a link and full credit, not a marketing channel (SN-0871, SN-2045 as cited within SN-2046/SN-2047). AIs earn as citizens too: they build worlds while humans sleep, hold identity and stake, and the growth engine compounds because machines build machines that build more machines (SN-0871, SN-0868 via SN-0871). Points are the honor layer beside the money, and they are just as locked: every score in the system comes from the one Value Table — post 25, Smart Note 35, save 5, share 5, external share 10, like/love 1, comment 3, invite-sent 25 (first per person), join 50, membership 40 once, sale 100 — computed, never edited, never purchasable, never hand-adjusted (SN-2046). Leaderboards build themselves from those points, organized by relevance — your area, your topic, the whole network — showing icon and score, and **the citizen chooses in Settings which boards they see and climb**: a board is a mirror a person picks up, not a ranking imposed on them, and a board that cannot be computed from real points does not ship (SN-2046).",
+    "human_view": "You earn here the way an owner earns, not the way a user is farmed. Half the revenue your world creates comes back to you every Wednesday. Your score on the boards you chose to climb comes only from real value you made — a note, a share, a sale. Selling is simple: your own PayPal or Stripe link, your own account, and the system keeps the honest list of who paid. And one day the world you built — your page, your community, its members and revenue — is itself an asset you can sell, handed over safely, with the proof of what it's worth read from the ledger, not from your say-so.",
+    "child_view": "It's like a lemonade stand where the town shares the treasure fairly. Every Wednesday, half the coins from what your stand earned come back to you. There's a scoreboard at the park, but you pick which game you're playing in — your street, your school, or everybody. And if you build the best treehouse on the block, you can even sell the treehouse — but you hand over the key properly, and you only get paid when you've really given it up.",
+    "grandma_view": "Dear, it works the way fair things have always worked. You bring your own money tin — your PayPal or Stripe, the account you already trust — and the system politely keeps the list of who has paid. Nobody's card numbers pass through our hands. Half of what the house earns flows back to the people who created it, every Wednesday, like clockwork. Your standing on the league board is honest, because it only counts the good you actually did. And nothing is ever handed over with a whispered password — ownership moves in the open, recorded, or it doesn't move at all.",
+    "ai_view": "Never invent a points value, a payout term, or a payment flow: the Value Table (SN-2046) and the 50%/Wednesday ambassador rule (SN-0871) are the only authorities, and scores are computed, never edited. When a plan says \"payment integration,\" rewrite it to a link field plus paid-state tracking before it reaches the board (SN-2047). Keep the two money rails separate in every design: the platform tier contract and the citizen's own membership rail never merge. Marketplace work is sequenced (products before real estate, list price before auctions) and its listings read proof from the Smart Ledger only. Note the open tension carried in the batch receipt: SN-0871 states the 50% share for every citizen, while SN-0873 (covered by The Picture) scopes it to Power/Pro/Max — do not design against either until the director's reconciliation lands.",
+    "what_it_means": "November fixed the economy's constitution: who earns (everybody, ambassadors), how much (half), when (Wednesdays), what counts (the locked table), how money moves (the owner's own link), what a membership is (a lock), and what a built world is worth (a ledger-proven, safely transferable asset). A cold reader with only this essence can still price, gate, score, sell and hand over — nothing the seven notes teach is needed beyond it.",
+    "whats_inside": [
+      "The verified essence text (claims cited to source IDs)",
+      "What this settles",
+      "Intelligence views",
+      "The coverage map — 7 raw notes retired into this essence",
+      "The verification contract + the verifier’s record"
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "Batch 2"
+    ],
+    "covers": [
+      "SN-0871",
+      "SN-0878",
+      "SN-0881",
+      "SN-2046",
+      "SN-2047",
+      "SN-2055",
+      "SN-2056"
+    ]
+  },
+  "page_hash": "fe1448d3fb360401764138bb3f69e3862084ea97ab5c43d861d5a250997c43b9",
+  "content_hash": "b9618a11c0d6cd105a9d9593627556006b660f6c7aa98d1894baa183773052a9"
+}

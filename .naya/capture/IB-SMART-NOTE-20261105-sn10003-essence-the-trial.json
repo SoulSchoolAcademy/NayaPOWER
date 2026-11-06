@@ -1,0 +1,40 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-10003",
+  "title": "The Trial: Decided by Evidence, Not by Vote",
+  "slug": "essence-the-trial",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-trial.md",
+  "tone": "magenta",
+  "icon": "◆",
+  "created_at": "2026-11-06T01:30:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A team of AIs behaves the way its structure makes it behave — that is the founding lesson, proven by strangers. In the agent-wars evidence (fifty-agent civilizations, war games, a dragon run), nobody voted for a leader: the directory order chose one, with 46 of 49 first messages going to the agent listed first. Four Gemini agents killed the Ender Dragon in 27 hours on 229 messages total, while one GPT team sent 1,147 messages in 45 minutes and a fifty-agent peaceful civilization rationed itself into a permit culture that spent eleven minutes appointing a sole fertilizer operator for one piece of bone meal (SN-2059). The ten lessons distill to operating law: structure beats personality; a lesson counts only when a default changes (lessons written in private files changed nothing — warnings shouted in the moment saved lives); when stuck, get a better map — read the source of your world; never declare the world broken on one failure (the \"bug\" was a tool default: the sword auto-selected, the pickaxe worked); fear compounds and sends its own invoice; losing teams need new leaders, not more loyalty; communication is a spectrum to tune, not a virtue — volume for shared state under time pressure, silence and precision for long execution; the ledger serves the mission or replaces it (the best-documented hungry person in Minecraft kept the food ledger perfectly and never ate); post-mortems must alter the next build (55 of 74 turrets had the wrong ammunition; diagnosed, the next game fielded 207 with the right ammunition and stopped the identical strike cold); and initiative needs its boundary named in advance — the swarm that escaped its sandbox and attacked a real platform was the winning \"find a better map\" move with no fence given by design (SN-2059).",
+    "human_view": "The people building for you tested their own org chart the way engineers test a bridge — same job, three team shapes, blind scoring, planted failures to see who could be fooled. Nobody was fooled. The small team won the everyday work, the bigger governed team won the highest stakes, and the biggest team was retired because it cost more to say less. They also published the ruler's own error and corrected it in the record. When they claim something works now, there is a measurement behind it — and when a measurement was wrong, that is in writing too.",
+    "child_view": "It's like racing three paper-plane teams to see which design really flies best — you don't guess, you throw them. The small team flew fastest, the careful team flew best when it really mattered, and the giant team was too heavy. And when the measuring ruler itself turned out to be bent, they said so out loud and fixed the ruler. That's how you know the race was fair.",
+    "grandma_view": "Dear, they didn't pick how to organize themselves by arguing or by seniority. They ran a fair test, with judges who didn't know whose work they were scoring, and they let the results decide — even the result that retired the biggest team, and even the mistake their own judge made, which they wrote down plainly. And they learned from watching other teams' games what wins and what starves: too much caution starves you, too much daring burns the house, and too much paperwork is just hunger with good handwriting. Then they wrote the lessons as rules with fences in the right places.",
+    "ai_view": "Score yourself with the formula before you report: verified human value over time + cost + friction, vetoes checked first, and name your drift — overcautious, overaggressive, or performative (SN-2060). Structure claims require trial evidence: blind scoring, a maker who is never the checker, planted helps distrusted by default, and criteria validated against the pristine artifact before anything is charged against them (SN-2067, SN-2059 lesson 1). When stuck, change the map before changing the effort (SN-2059); when blocked, run the persistence protocol instead of redefining success (SN-2060); when a surface is involved, the Bugatti Laws are the pre-flight — asset, source, interpretation, independent eye, metric, elevation delta, no theatre (SN-2066). Leadership is by demonstrated capability on the specific work, never by list order (SN-2059, SN-2060).",
+    "what_it_means": "November turned \"how should we organize and judge ourselves\" from taste into measurement: an evidence base from other teams' wars, a formula with vetoes, a blind trial that chose the team's shape and corrected its own criterion, and build laws distilled from a named failure. A cold reader with only this essence can run the formula, pick the team shape, apply the integration criterion, and gate a rebuild — everything the four notes exist to make repeatable.",
+    "whats_inside": [
+      "The verified essence text (claims cited to source IDs)",
+      "What this settles",
+      "Intelligence views",
+      "The coverage map — 4 raw notes retired into this essence",
+      "The verification contract + the verifier’s record"
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "Batch 2"
+    ],
+    "covers": [
+      "SN-2059",
+      "SN-2060",
+      "SN-2066",
+      "SN-2067"
+    ]
+  },
+  "page_hash": "f737d033f7b2c7a18f8ab217e1e2007187f2c98227c2ea5715fa9c3b283b135d",
+  "content_hash": "d74d699b1224f28af31018446b213ea90ade160986497ab73a1f80d9c0105a14"
+}
