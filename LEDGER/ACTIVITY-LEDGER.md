@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-06 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-06 07:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -32979,6 +32979,14 @@ _Last updated: 2026-11-06 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-lane-scorer-20261018-0430 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Hermetic citation fixtures + freshness CI gate for compound-scale registry (PR #2760)
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261018-0430-lane9.md`
+
+**Evidence:** Verified: commit c8efbaa9d7fdefcf1d2bfcc1850c26ebd8d1bbb3 exists in the mirror; all 14 receipts/{L1..L11,A1..A3}.md fixtures, lessons_registry.json, and .github/workflows/learn-compound-citation-freshness.yml present at that SHA. Score 9.0: real structural repair - silent citation drift now fails CI loudly, deterministic fixture builder, negative c
+
 ### ✅ gap-t0807 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** GAP CLOSED (parent t0807-lane9): tie-break docstring hardened + OBSERVED pins cited, template/generated desync fixed, tie experiment re-run on edited arms, headline numbers re-scoped
@@ -34470,6 +34478,14 @@ _Last updated: 2026-11-06 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane9.md
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
+
+### ✅ gap-lane-scorer-20261018-0240 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Re-anchor t1332 cold-retrieve repro evidence to current head of naya/eight-mjs-coldretrieve-t1332
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261018-0240-lane8.md`
+
+**Evidence:** Verified: commit 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4 exists in the mirror; tests/intelligence_retrieve_execution.test.mjs blob 0455090343ed12207c90eea1141da7f785cdfa70 at that SHA matches the receipt byte-exactly. Score 9.0: pin-exact re-anchor, RED 400 + positive-control 200 re-run on head bytes, 8/8 tests, rebase claim verified against #2452
 
 ### ✅ 20261101-1140 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -37238,6 +37254,14 @@ _Last updated: 2026-11-06 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-t0828 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Close t0828 gap: re-derive verification-chain pins, build cold-retrieve verifier pack
+
+**Receipt:** `twelve-lane-receipts/gap-t0828-lane5.md`
+
+**Evidence:** Verified: pack file hidden_files/verification-packs/cold-retrieve-1.78s-verifier-pack-20261018.md exists; tip pin b3bb32319331567a9367a2e81699c6212d5eb891 exists in the mirror and tools/cold_retrieve_drill/drill_bank.json blob 15322b8441055c6d78f5cc6ec6caa41dae1e6a1d at that tip matches the receipt exactly. Score 8.5: pins re-derived live (not inhe
 
 ### ✅ gap-t0722 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
