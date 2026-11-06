@@ -1,0 +1,45 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2154",
+  "title": "Fail Closed: No Write Path Mints Authority",
+  "slug": "essence-fail-closed-authority",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-fail-closed-authority.md",
+  "tone": "orange",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:03:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Authority in NayaPOWER is earned through evidence and ratification, and the machinery is built so that no shortcut can counterfeit it. The capture write path is authority-blind: every ingested object enters at the lowest truth state (CANDIDATE) regardless of what its producer claims, truth-state transitions require independent ratification evidence enforced in code — the capture module and its guard, `tools/smart_note_v2.py` and `tools/truth_state_guard.py`, not convention — and any write path found able to set truth state is the top security hole in its pipeline — above everything else, because a sloppy or compromised writer poisons the whole corpus at its root (SN-0581). Direct jumps are refused mechanically: a RATIFIED predecessor guard makes trust-state leaps fail closed instead of landing (SN-0460). The structural-audit lesson bounds what shape-checking can do: an audit sees shape, not meaning, so elevation needs authority AND evidence checked at write time, not inferred later from a well-formed document (SN-0462).\n\nRefusals themselves are governed. Rejection is a non-event: a refused write must not record itself, or the ledger fills with the ghosts of things that never lawfully existed (SN-0465). A gate ordered after the mutations it guards is a refusal that still writes — CV-06 names the class: the gate must sit before the first mutation, or its \"denial\" is theater over a completed write (SN-0521). CV-07 is the twin defect, and a different failure: the gate's evidence parameter is never verified to be evidence — caller-supplied `evidence_refs` checked only for non-emptiness let arbitrary strings (\"not-a-verification\", a forged \"CVO-\" id) promote a claim while the system reported ok:true, because presence is not verification; a promotion that claims to discharge a verification requirement it never checks contradicts its own text (SN-0521). Every denial must name its subclass — which gate, which condition, which authority — because an unnamed denial cannot be appealed, routed, or learned from (SN-0487). And a control that fails open and silent is worse than one that fails loud: a silent open failure converts a guard into an unmarked hole, while a loud failure at least announces the seam (SN-0468).\n\nThe numeric gates get the same adversarial treatment. Every comparison against NaN is False, so a range check like `v < 0 or v > 10` silently passes a NaN score — a fabricated scorecard with NaN scores walked straight through a merge gate's check; the standing doctrine is a two-part validation for every numeric gate on untrusted input: `math.isfinite(v)` first, then the range check, never the range check alone (SN-0579). The production boundary is drawn asymmetrically on purpose: reading at the production boundary is agent-movable for audit (the idempotency audit pattern), while writing is Director-gated (SN-0470). Exposure hides in defaults: a trigger function sitting in the public schema is an RPC endpoint by accident — placement is exposure, whether or not anyone intended to publish it (SN-0611).",
+    "human_view": "Nobody can promote their own work into \"official truth\" just by saving it in the right place. New things arrive as drafts, and only real evidence, checked by the system itself, can raise them. When the system says no, it says no before anything changes, it says why, and it doesn't leave fake entries behind. Locks here fail shut, and they fail loudly.",
+    "child_view": "Imagine a clubhouse with a special stamp that means \"this is really true.\" Nobody can just grab the stamp — you have to show proof, and a guard checks it. If the guard says no, nothing sneaky gets written down anyway. And the counting machine always checks that a number is a real number before it believes it.",
+    "grandma_view": "It's like a bank vault with honest clerks, dear. Anyone can hand in a paper, but it goes into the \"unproven\" tray no matter what the person claims. Only checked proof moves it up. If a request is refused, it's refused before any money moves, the reason is written plainly, and no false entry appears in the ledger. A lock that silently stops working is treated as worse than one that makes a noise — because at least then you know.",
+    "ai_view": "Audit every pipeline you touch with one question first: can this writer mint authority (SN-0581)? Then check the four gate properties in order — position before mutation (SN-0521), refusal as non-event (SN-0465), named denial subclass (SN-0487), failure loud rather than open-silent (SN-0468). Validate every untrusted number with isfinite before range (SN-0579). Treat schema placement as exposure (SN-0611) and keep the read/write production boundary asymmetric (SN-0470). A structural pass never substitutes for authority-plus-evidence at write time (SN-0462).",
+    "what_it_means": "Ten notes about guards, gates, denials, and boundaries are one teaching: authority is a property the system defends mechanically at the moment of writing, not a label it trusts afterward. A cold reader holding only this essence can still audit any new write path or gate and find the hole the way these notes found theirs.",
+    "whats_inside": [
+      "Truth state is never an input: writers propose, evidence and ratification dispose, and the enforcement lives in code, not convention (SN-0581, SN-0460).",
+      "A gate's position and its failure mode are part of its correctness: gate-before-mutation and evidence verified, not merely present (SN-0521), refusal-leaves-no-record (SN-0465), named denial subclass (SN-0487), fail loud over fail silent-open (SN-0468).",
+      "Numeric validation is always finiteness-then-range on untrusted input (SN-0579).",
+      "Read/write asymmetry at the production boundary is deliberate design, not an inconsistency (SN-0470)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-2"
+    ],
+    "covers": [
+      "SN-0460",
+      "SN-0462",
+      "SN-0465",
+      "SN-0468",
+      "SN-0470",
+      "SN-0487",
+      "SN-0521",
+      "SN-0579",
+      "SN-0581",
+      "SN-0611"
+    ]
+  },
+  "page_hash": "485908e11ce7f3c7b2df9fd288a9ede50389f2761381a5dc40b0dfb3c037c0ca",
+  "content_hash": "0ac0963d1a7dcfdaf2bff0463e07474714fc74b40a2cedbf9acf81e64e13f31d"
+}

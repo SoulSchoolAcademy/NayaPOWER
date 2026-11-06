@@ -1,0 +1,46 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2153",
+  "title": "No Waiting, No Idle: Lanes Are for Speed, Not Territory",
+  "slug": "essence-no-waiting-no-idle",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-no-waiting-no-idle.md",
+  "tone": "gold",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:03:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Work in NayaPOWER flows in parallel by default, and waiting is treated as a defect, not a courtesy. The Parallel Execution Directive and Parallel-by-Default doctrine make concurrency the standing shape of work: independent lanes run at once, and serialization needs a reason (SN-0459, SN-0478). The No-Waiting Doctrine states the trigger plainly: lane ownership exists to parallelize, not to create fiefdoms — the moment someone is waiting on someone else, the assignment has failed its purpose, and the person waiting should do the thing themselves; the trigger is time, not blame, and the boundary is stalled-versus-active, never mine-versus-yours (SN-0626). The governed form of that doctrine — the five-step takeover protocol for a stalled dependency, with its guardrails (minimum safe scope, existing authority only, gates intact, evidence published, owner notified) — is the Director's own instruction and stands alone as SN-0627; read it at its page before executing any takeover.\n\nFlow discipline extends to how lanes hand work to each other. Specialist lanes coordinate through relay discipline — work and receipts move lane-to-lane in the open, not through the Director (SN-0488). Each tick produces exactly one sign-out per lane, and when records disagree, live bytes break the tie (SN-0492). When two lanes race the same repair, the strict-superset rule decides: the repair that strictly contains the other wins, the duplicate closes as superseded with reasoning on the record, and the survivor is verified on exact bytes before the loser closes — no content lost, no silent deletion (SN-0490, SN-671). Staffing follows reliability, not title: roles are aspirations, reliability is reality — never assign a critical path to an unreliable seat; continuous functions belong on always-up infrastructure, and sign-in/sign-out is the presence truth, so if someone disappears mid-task the task must not disappear with them (SN-646).\n\nBlockages are handled without stalling the mission. When a dependency artifact is late, do not wait: reconcile from the canonical record, ship, and reserve an explicit diff-on-arrival — the late artifact gets diffed into the winner rather than starting a second package (SN-640). Under resource constraint, the rule is symmetrical honesty: before dispatching autonomous work, determine execution capacity; never silently queue impossible work; if capacity is insufficient, classify the blockage, preserve the mission, reprioritize available execution, surface the exact resource required, and when capacity returns resume from durable state rather than restarting discovery — and every failure is either repaired, converted into a constraint, or converted into a learning rule, so nothing valuable disappears (SN-641). Over all of it sits the Director's queue: a published priority list is a standing queue, not advisory input — every lane re-ranks its work under it, and no lane, seat, or urgent-looking item jumps the line on its own authority, because N independent rankings become N shadow queues and the highest-value blocker waits while shiny work moves first (SN-672).",
+    "human_view": "Nobody on this team is allowed to sit idle because someone else is slow. If a task is stuck and you're qualified, the governed takeover procedure — the Director's own directive, kept as its own note — tells you exactly how to pick it up safely. The priorities the Director sets are the order everyone works in. Nothing queues up silently and nothing waits for permission that isn't needed.",
+    "child_view": "If your friend is supposed to pass you the ball but they've stopped playing, you don't just stand there forever — there's a special rule, written by the coach himself in his own note, for how to go and get the ball properly and keep the game going. And everybody follows the same list of what to do first, so the most important thing always gets done first.",
+    "grandma_view": "It's like a good workshop, dear. Jobs are shared out so things get done faster, not so people can guard their little corners. If someone's bench is empty and their job is holding everyone up, there's a proper procedure — the Director wrote it himself, and it lives in its own place — for another pair of hands to pick the job up carefully and write down what was done. And there's one list on the wall of what matters most — nobody rearranges it on their own.",
+    "ai_view": "Before you wait, classify: is the owner active on this artifact, or stalled? Active → parallelize. Stalled → execute the takeover exactly as SN-0627 prescribes (it stands alone; this essence is not a substitute). Before you open anything, re-rank under the standing priority queue (SN-672). If you lack capacity, say exactly what resource is missing and keep the mission moving on other work (SN-641); if an artifact is late, reconcile from the record and diff on arrival (SN-640). Never ride a critical path on an intermittent seat, including yourself (SN-646).",
+    "what_it_means": "Eleven notes about parallelism, relay, races, capacity, and queue discipline are one teaching: motion is a governed property of the system, not a personality trait of its seats — and its sharpest procedure keeps its own page, by the Director's word. A cold reader holding only this essence can still keep work flowing lawfully, and knows where the takeover law itself lives.",
+    "whats_inside": [
+      "Waiting on a stalled lane is a system failure, not a reason to stop and not a license to duplicate active work (SN-0626); the lawful takeover procedure itself stands alone as the Director's directive (SN-0627, not covered here).",
+      "Lane races resolve by strict superset with the reasoning published; duplicates close as superseded, never silently (SN-0490, SN-671).",
+      "Assignment is by proven reliability and presence truth, not by role title (SN-646).",
+      "A Director-published priority list binds every lane's ranking; exceptions route through the Director only (SN-672)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-2"
+    ],
+    "covers": [
+      "SN-0459",
+      "SN-0478",
+      "SN-0488",
+      "SN-0490",
+      "SN-0492",
+      "SN-0626",
+      "SN-640",
+      "SN-641",
+      "SN-646",
+      "SN-671",
+      "SN-672"
+    ]
+  },
+  "page_hash": "9edb2643491ffacd696f06a55eaead1a3196686ed7a960e7838ecc11f459054d",
+  "content_hash": "aa3bc8a11d10b01cc2289164a625d72d5e933c4be3f12fcd18b22f7185bad309"
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2157",
+  "title": "The Instrument Must Execute: A Green That Never Ran the Real Path Proves Nothing",
+  "slug": "essence-the-instrument-must-execute",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-instrument-must-execute.md",
+  "tone": "purple",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:03:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Every measurement in NayaPOWER is guilty until its instrument is proven. The family rule in its sharpest form: a test that only asserts on source text is green by construction — tests must execute the seam they claim to cover (SN-0461). The same law governs regressions: a regression that only greps for the presence of a declaration proves the artifact is *there*, not that it *runs* — a protected repair shipped a runtime-fatal literal `\\n` inside embedded Python in a workflow while CI stayed green, found only by exact-byte human review; for embedded artifacts (Python in YAML, JS in HTML, SQL in strings, shell in JSON) the guard must compile or execute the embedded artifact at its own layer, because the defect class lives below the grep layer (SN-0569). And a scorecard for a check-fixing PR that verifies inputs but never runs the gate it claims to fix is theater: the receipt must carry the check's name, its exit code on the exact head bytes, and the failure count before/after — no exit code, no merge (SN-0781).\n\nInstruments must resolve what they measure. An instrument that cannot resolve its top signal's identity is theater — if you cannot say exactly which object produced your strongest reading, the reading is not evidence (SN-0457). Count what the ledger counts: audit the instrument before believing its verdict, because an auditor counting a different set than the ledger produces confident, wrong numbers (SN-0469). Instrumentation itself must be captured at the level where work actually happens — the w3 instrumentation lesson: instrument the work, not the report about the work (SN-0482). Measurement tasks must discriminate: toy tasks do not discriminate, so lessons are measured at real difficulty, where a ceiling of perfect scores on both arms proves nothing about the lesson (SN-0495). The falsifier must fire: the canary protocol exists to prove the detection machinery actually triggers — a falsifier that has never been observed firing is an assumption, not a guard (SN-0603).\n\nBefore any verifier is trusted, it is attacked. The TRUTH lane defeated a \"fail-closed\" trial-evidence verifier three ways — an in-repo symlink to /tmp, a `../../tmp` traversal, a symlink to /etc/hostname — all accepted as durable evidence; the hardened verifier resolves every path, enforces repo containment, fails closed when the repo root is ephemeral, and locks each defeated attack in as a permanent regression test (SN-0580). Gates get the same treatment: a gate that checks presence instead of meaning is decoration — sign-in fields accepted \"asdf\", a scorecard let an all-1s option beat an all-10s option, the protected-gates keyword mirror missed ~15 natural paraphrases, and when the canonical authority gate raised, the adapter silently fell through to the weaker mirror; every gate field must be bound to a verifiable reference, and a fallback must never silently degrade to the weakest check (SN-665). Measurement claims are extracted only from the layer they describe: aspirational goals are not current scores, file mtime is not a date, and a 10.0 is never heuristically extracted (SN-653); the extractor bakes the anti-corruption rules in — area and score share one sentence, multi-area sentences are skipped, movement beats prefix, authoritative status is never downgraded by a heuristic claim, and degraded sources render UNAVAILABLE rather than vanishing (SN-655). Use is not definition: an instrument must distinguish a file *using* the canonical engine from one *defining* a competing one, or it cries wolf on exactly the correct code — and when the instrument is wrong, the repair belongs to the instrument, never to the subject it flagged (SN-658).\n\nThe boundary of every green must be stated with the green. A local verifier's 13/13 pass proves the local code behaves — it does not prove actual reading, comprehension, repository integration, or deployed enforcement, and citing it as live-system proof is a category error (SN-0637). Proof must flow through the real path: measure the organism, not the instrument — a closed-loop executor that unconditionally emitted VERIFIED, a rechecker that accepted forged receipts, a stubbed retrieval reported as a strong result, and a decision gate with zero live callers are all evidence about the simulator, and a self-certifying proof is worse than no proof because it consumes the trust real proof would have earned (SN-664). When a contract-expanding merge turns the suite RED, classify before touching either side: compare the harness's fabricated world to the shipped contract — a harness still fabricating the old four-child world against a five-child contract is a TEST DEFECT, the harness's fixtures are part of the merge's blast radius, and two seats classifying the same RED is convergence while two seats repairing it is a collision (SN-0570).",
+    "human_view": "Before anyone here believes a green light, they ask what it actually did. Did the test really run the thing, or just check the thing exists? Did the scorecard run the very check the fix was for? Has anyone tried to break the checker itself? If a measuring tool is wrong, they fix the tool — they never bend the correct thing to please a broken ruler.",
+    "child_view": "Imagine a teacher who marks your homework by checking the pages are there but never reads your answers — you'd get full marks for nonsense! Here, the grown-ups make sure the checker really checks: they even try to trick it on purpose, and when the ruler itself is bent, they fix the ruler, not your homework.",
+    "grandma_view": "It's the difference between a scale that's been tested with known weights and one that just looks official, dear. These folks test their scales, try to cheat them, and write down plainly what each scale can and cannot weigh. A green stamp means someone ran the real thing through the real path — and if the stamp itself is lying, the stamp gets repaired, never the honest work it stamped.",
+    "ai_view": "For every green you cite, answer in the receipt: what executed, on what bytes, through which real path, with what boundary (SN-0461, SN-0637, SN-664). For every PR that fixes check X, attach X's exit code on the exact head bytes or the scorecard does not close (SN-0781). Ship every verifier with its attack set as regressions (SN-0580) and every gate field bound to a verifiable reference (SN-665). Extract metrics only from their own layer with the five anti-corruption rules (SN-653, SN-655). Classify a RED against the shipped contract before repairing anything (SN-0570).",
+    "what_it_means": "Sixteen notes about tests, gates, extractors, verifiers, and canaries are one teaching: an instrument's output is evidence only to the extent the instrument was itself executed, attacked, and bounded. A cold reader holding only this essence can still interrogate any green in the system and find out whether it means anything.",
+    "whats_inside": [
+      "Coverage is what executes: source-text assertions, presence greps, and scorecards without exit codes are theater in three costumes (SN-0461, SN-0569, SN-0781).",
+      "Every verifier, gate, and extractor ships with its adversarial evidence — attacks run, attacks encoded as regressions, anti-corruption rules baked in (SN-0580, SN-665, SN-655).",
+      "Every green carries its boundary in the same breath: local ≠ deployed, simulator ≠ organism, reference ≠ production path (SN-0637, SN-664).",
+      "A RED is classified (test defect vs product defect; instrument wrong vs subject wrong) before any repair begins (SN-0570, SN-658)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-2"
+    ],
+    "covers": [
+      "SN-0457",
+      "SN-0461",
+      "SN-0469",
+      "SN-0482",
+      "SN-0495",
+      "SN-0569",
+      "SN-0570",
+      "SN-0580",
+      "SN-0603",
+      "SN-0637",
+      "SN-653",
+      "SN-655",
+      "SN-658",
+      "SN-664",
+      "SN-665",
+      "SN-0781"
+    ]
+  },
+  "page_hash": "7031f4f48e33f7325b83ccd2ae87d0e8e2c3acf341cd7cf2e2fb79ab7eb4da1b",
+  "content_hash": "fddc8f31f2a5dd2b00bf9a78af8dcadf5b54193b2332e067c0cc9b082b1f2c96"
+}
