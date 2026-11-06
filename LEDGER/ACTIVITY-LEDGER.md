@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-06 13:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-06 13:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -34629,6 +34629,14 @@ _Last updated: 2026-11-06 13:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-gap-20261018-1050 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** gap-gap-20261018-1050 PR #2385 stale-gate re-verification + owner note
+
+**Receipt:** `twelve-lane-receipts/gap-gap-20261018-1050-lane8.md`
+
+**Evidence:** Partially verified: receipt is internally consistent with exact pins (PR #2385 head eedd9540f, branch naya4/brain-index-required-gate, comment 6282392004, gate failure 2026-10-11, class DecisionEngine at kernel/decision_principle.py:218). BUT git ls-remote shows the branch no longer exists on the remote, and the cited PR comment could not be verifi
+
 ### ✅ gap-lane-scorer-20261018-0240 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Re-anchor t1332 cold-retrieve repro evidence to current head of naya/eight-mjs-coldretrieve-t1332
@@ -36793,6 +36801,14 @@ _Last updated: 2026-11-06 13:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ gap-lane-scorer-20261017-1830 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261017-1830 staleness-watch FIRED-path falsifier
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261017-1830-lane6.md`
+
+**Evidence:** Verified: retrieval/falsify-staleness-watches-20261017.py sha256 d0c3b8876adccd10103daa0c3ee023eddef12329c7c8d7f19367e676a0a2cbc7 == receipt pin byte-for-byte; receipt names its own seams (LOG monkeypatch vs subprocess entrypoint; no git commit in this tree) and its run-window error was corrected in-receipt 2026-10-19. Score 9.0. Why not 9.5: re-ru
+
 ### ✅ 20261101-1230 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
 
 **Task:** Gap-t1242 lane 6: CTA second-context dry run (N=1 to N=2, mechanical executor)
@@ -37404,6 +37420,14 @@ _Last updated: 2026-11-06 13:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-gap-lane-scorer-20261018-0320 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap-gap-lane-scorer-20261018-0320 claim-brief.py prose-union proof (demo CASE 3)
+
+**Receipt:** `twelve-lane-receipts/gap-gap-lane-scorer-20261018-0320-lane5.md`
+
+**Evidence:** Verified: proposals/demo-compound-token-false-allow-20261018.py sha256 513dc3b354d6d18a0b0989d5506fc8f3eaa53e8b6398561d10dfcfcbb3e2faa5 == receipt pin byte-for-byte; receipt honestly names premise drift (both halves already live at claim time) and its run-window error was corrected in-receipt 2026-10-19. Score 9.0. Why not 9.5: claim-brief.py has d
 
 ### ✅ gap-t0828 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
