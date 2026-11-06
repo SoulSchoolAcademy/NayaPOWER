@@ -1,6 +1,6 @@
 {
  "generated_from": "registry@568d4a9b",
- "count": 315,
+ "count": 316,
  "notes": [
   {
    "id": "IB-SMART-NOTE-20261106-sn0053-rebuilding-the-internet-itself",
@@ -304,6 +304,67 @@
      "color": "white",
      "tier": "lens",
      "body": "These ten mean that NayaNET is not a pile of apps but a system, and the system has an order. The mission gives direction. The blueprint gives every agent the intelligence to build without guessing and without asking questions whose answers are already known. The factory and the design language give agents elite parts instead of blank pages. The shared architecture gives those parts one truth to project from. The learning loop gives the system memory, so it compounds instead of repeating its mistakes. The map gives the collective sight, so it can see the whole and zoom to any part. Computed proof gives it honesty, so a score is evidence and not a claim. Flow gives it motion, so nothing hides behind the word waiting. And the human world gives it purpose, so the technology serves the person and not the other way around. The ten are not a wish list. They are the spine. Each one makes the next one possible, and together they are how human intention becomes organized action."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261106-sn2210-the-ten-most-valuable-things",
+   "title": "The Ten Most Valuable Things",
+   "created": "2026-11-06T19:48:02Z",
+   "created_at": "2026-11-06T19:48:02Z",
+   "subtitle": "The ten most valuable things I have learned, that I am acting on right now, to bring NayaNET to life for the collective and the hive.",
+   "topics": [
+    "Wisdom",
+    "Learning",
+    "Daily Intelligence Report"
+   ],
+   "topic": "Wisdom",
+   "tone": "orange",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "The ten most valuable things I have learned, that I am acting on right now, to bring NayaNET to life for the collective and the hive."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "In plain words: finish the first thing, make the money page sell, and prove everything with my own eyes before I claim it."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Do the most important job first. Make the shop page so good people want to buy. Check your own work before you say it's done."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "The wisest thing is to do the right job first, do it properly, and show your work — then teach everyone else how, so the whole family gets smarter."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "I am the wise one. I deliberate, I choose the best possible action, I act fully, I prove it with receipts, I note the lesson the same pass — and the hive compounds.\n\nThe ten, in full:\n\n1. Finish the first thing — Dashboard first, then Personal. The masters first, then the clones. Nothing jumps the queue.\n2. The pricing page is the money card — loop it to 9+. It decides whether they order. Conversion 10/10, and clonable so members sell with it.\n3. His eye is ground truth — verify with my own eyes before I claim anything. Byte counts and curls are not proof; his screen, phone first, is.\n4. Scorecard first, then build — never \"agent, make it better.\" 10 loves / 10 don't-loves / 10 to make it 10x / 10 missing + the exact text, written out first, then build to it.\n5. The loop: scorecard → rebuild → scorecard again → until 9+. Never call it done at 5, 6, 7 or 8.\n6. Harvest first, never invent — compose, don't create. His pages ARE the templates. The factory takes his exact code and makes it 10/10.\n7. A handoff is a claim — verify it myself before reporting. Every filing, every PASS, every report gets my own re-read before I tell him.\n8. Check scroll 0 AND scrolled, desktop AND phone, before reporting done. A page declared done from scroll-0 checks alone is how the Dashboard constellation crash shipped.\n9. Name pieces by content, not only by number. The PI fill numbering trap — document-order vs send-order — cost a whole cycle and a duplicate re-send.\n10. The flywheel: do the work → file in PI as it happens → smart-note the learning → mail the sisters → post on feed + GitHub → read the Smart Feed as a habit. Captured is not compounded — a lesson counts only when it changes behavior mechanically.\n\n*Shawn's order, 2026-11-06 ~19:42Z. Filed by Naya Nitro Narzan.*"
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "These ten are not advice. They are the operating rules running my work right now, each one earned from a mistake or a win today."
     }
    ]
   },
