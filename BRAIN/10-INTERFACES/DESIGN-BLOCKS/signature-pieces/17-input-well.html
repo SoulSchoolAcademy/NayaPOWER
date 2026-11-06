@@ -1,0 +1,43 @@
+<!-- ================================================================
+  NIA DESIGN SIGNATURE PIECE 17 — INPUT — THE WELL
+  DRAFT — the Clarity Confirmation Act is NOT stamped by Shawn; nothing here is law yet.
+  Act reference: Act §4.17 — ~/workspace/team-nitro/clarity-confirmation-act-DRAFT-20261106.md
+  CHECK: validation speaks plainly; nothing is saved when it shouldn't be; the well is recessed (inset shadow), not raised.
+  CRAFT (Shawn 00:31Z — optimized for what IT is): The most extraordinary input: the well, a dark recessed channel you press INTO — molded to receive a person’s words and answer plainly.
+  ROLLOUT (Shawn 00:31Z — Dashboard first, then Personal, then the rest): group 2 — first proved on Personal.
+  Harvested verbatim from:
+  - ~/workspace/smart-factory/harvested/hub.html L1842
+  - ~/workspace/smart-factory/harvested/hub.html L1843-1849
+  - ~/workspace/smart-factory/harvested/hub.html L1850
+  - ~/workspace/smart-factory/harvested/hub.html L1851
+  - ~/workspace/smart-factory/harvested/dashboard.html L3621
+  - ~/workspace/smart-factory/harvested/dashboard.html L3622
+  Factory path: ~/workspace/smart-factory/signature-pieces/17-input-well.html
+  Repo (canonical) path: BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/17-input-well.html
+  Notes: Hub Ask Naya well: hub.html:4584 renders <input type="search" id="chassisSearch" placeholder="Search your intelligence…">; its well styling is the .activity-search rule harvested here. Search lives BELOW the bar, never inside it (Act §4.17).
+  ================================================================ -->
+<style>
+/* --- VERBATIM HARVEST (do not restyle; compose only) --- */
+.activity-search-wrap { margin-bottom: 8px; }
+
+.activity-search {
+  width: 100%; padding: 14px 20px; border-radius: 999px;
+  border: 1.5px solid rgba(160,107,255,.5); background: linear-gradient(180deg, #050508, #0a0a10 55%, #050508);
+  color: #fff; font-size: 15px; outline: none;
+  box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.2), inset 0 -8px 16px rgba(0,0,0,.6), 0 0 20px rgba(160,107,255,.3), 0 12px 26px rgba(0,0,0,.55);
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.activity-search::placeholder { color: var(--muted); }
+
+.activity-search:focus { border-color: var(--purple); box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.28), inset 0 -8px 16px rgba(0,0,0,.55), 0 0 32px rgba(160,107,255,.55), 0 14px 30px rgba(0,0,0,.6); }
+
+.os-well{position:relative;border-radius:14px;padding:14px 10px 10px;background:linear-gradient(180deg,#08080d,#10101a);box-shadow:inset 0 3px 10px rgba(0,0,0,.75),inset 0 -1px 0 rgba(255,255,255,.28),0 1px 0 rgba(255,255,255,.05);overflow:hidden}
+
+.os-well-grid{background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.045) 0 1px,transparent 1px 23px),repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 1px,transparent 1px 46px);background-color:#0a0a12}
+</style>
+
+<!-- SPECIMEN-START -->
+<div class="activity-search-wrap"><input class="activity-search" type="search" placeholder="{{placeholder}}" aria-label="{{label}}"></div>
+<div class="os-well">{{content}}</div>
+<!-- SPECIMEN-END -->
