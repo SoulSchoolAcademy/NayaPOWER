@@ -1,6 +1,6 @@
 {
- "generated_from": "registry@5039fc4e",
- "count": 313,
+ "generated_from": "registry@b3ae795d",
+ "count": 314,
  "notes": [
   {
    "id": "IB-SMART-NOTE-20261106-sn0053-rebuilding-the-internet-itself",
@@ -16735,6 +16735,13 @@
      "body": "> **One intelligence. Multiple perspectives. One canonical Intelligent Block.**"
     }
    ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261106-sn2208-the-whole-thing-in-one-breath",
+   "title": "The Whole Thing in One Breath",
+   "created": "2026-11-06T21:26:00Z",
+   "created_at": "2026-11-06T21:26:00Z",
+   "subtitle": "NayaNET is not another app. It is people rebuilding the internet itself — smarter and better. Everything automated, done for you, beautiful, adaptable: the system optimizes itself around who you are, what you're into, and what your business is about. And the people in your world are right there with you, privately — collaborating, teaming up, video chatting, sharing a feed of intelligence you can save and capture, building mastermind groups, embedding intelligence into everything — or simply belonging to the collective network. The future is now."
   }
  ]
 }

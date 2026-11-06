@@ -30217,6 +30217,37 @@
     "Doctrine",
     "Vision"
    ]
+  },
+  {
+   "smart_note_id": "SN-2208",
+   "intelligent_block_id": "IB-SMART-NOTE-20261106-sn2208-the-whole-thing-in-one-breath",
+   "slug": "the-whole-thing-in-one-breath",
+   "title": "The Whole Thing in One Breath",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-the-whole-thing-in-one-breath.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-the-whole-thing-in-one-breath.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-the-whole-thing-in-one-breath.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn2208-the-whole-thing-in-one-breath.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "VISION",
+   "topic": "ESSENCE",
+   "captured_at": "2026-11-06",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T21:26:00Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-06",
+   "page_hash": "c2e8b8aa133e52d2fe306191a361413bf4214e6be01487436d272cf827504ad0",
+   "content_hash": "86d2bddfed56a4ebb022c4813b206851c0c1dc8a685dfd418817bdaf75585af2",
+   "one_line": "NayaNET is not another app. It is people rebuilding the internet itself \u2014 smarter and better. Everything automated, done for you, beautiful, adaptable: the system optimizes itself around who you are, what you're into, and what your business is about. And the people in your world are right there with you, privately \u2014 collaborating, teaming up, video chatting, sharing a feed of intelligence you can save and capture, building mastermind groups, embedding intelligence into everything \u2014 or simply belonging to the collective network. The future is now.",
+   "topics": [
+    "Vision",
+    "Product",
+    "Essence"
+   ]
   }
  ],
  "sequence_policy": {
@@ -30227,5 +30258,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "1bcb311294be6184e0a310b81038728c5fb744f3a98930037bf6899994ca4cb0"
+ "corpus_manifest_hash": "b3ae795da34bd6829ad21ac4fa0b63425c86cee5b1cdab5b981ec4680a339b84"
 }
