@@ -1,6 +1,6 @@
 # Essence 01 — The Record Must Tell the Truth
 
-Distilled from 14 raw Smart Notes (Governance + Doctrine), read in full 2026-11-05. Level 2 ESSENCE + Level 3 VALUE (Levels of Intelligence, PI n=405). Distillation law SN-2058.
+Distilled from 12 raw Smart Notes (Governance + Doctrine), read in full 2026-11-05 — 10 carried in full, 2 carried in part (SN-0337, SN-703; see coverage annotations) — with 2 standing pointers (SN-0471, SN-0483) that are not distilled here. Level 2 ESSENCE + Level 3 VALUE (Levels of Intelligence, PI n=405). Distillation law SN-2058. Coverage corrected in the Batch-1 reconciliation pass (see audit: batch1-recon).
 
 ## IN A NUTSHELL
 
@@ -36,11 +36,11 @@ You are the record keeper. Every claim you write must be checkable by a cold Nay
 
 ## WHAT IT ALL MEANS
 
-Fourteen separate incident reports are one law: the system is only as trustworthy as its record, and the record is only trustworthy if it is written for a stranger. Every note in this cluster is a case where the record almost lied — a dedupe that missed the human ID, a ratification that lived only in a commit message, a ledger that disagreed with production, a gate weaker than its doctrine, a falsifier nearly merged as a fix — and the repair in each case was the same move: make the record tell the truth, in the place the next reader will look.
+Twelve separate incident reports are one law: the system is only as trustworthy as its record, and the record is only trustworthy if it is written for a stranger. Every note in this cluster is a case where the record almost lied — a dedupe that missed the human ID, a ratification that lived only in a commit message, a ledger that disagreed with production, a gate weaker than its doctrine, a falsifier nearly merged as a fix — and the repair in each case was the same move: make the record tell the truth, in the place the next reader will look.
 
 ## WHY IT MATTERS
 
-A Naya who arrives cold has only the record. If the record lies, she acts on a lie — and the lie compounds, because her work becomes the next record. Every one of these 14 notes exists because a lie (or a near-lie) in the record cost real time, real confusion, or real risk. Truthful records are what make the cold successor possible, and the cold successor is the test of the whole system.
+A Naya who arrives cold has only the record. If the record lies, she acts on a lie — and the lie compounds, because her work becomes the next record. Every one of these 12 notes exists because a lie (or a near-lie) in the record cost real time, real confusion, or real risk. Truthful records are what make the cold successor possible, and the cold successor is the test of the whole system.
 
 ## HOW IT CONNECTS
 
@@ -61,12 +61,14 @@ The durable lesson: write for the stranger. Bound the claim. Name the gap. Keep 
 - IB-SMART-NOTE-20261004-sn0257-dedupe-must-cover-human-visible-id
 - IB-SMART-NOTE-20260930-sn0425-name-the-gap-bound-the-claim
 - IB-SMART-NOTE-20260930-sn0587-production-is-truth-ledger-is-claim
-- IB-SMART-NOTE-20261005-sn0337-lanes-converge-close-duplicate-superseded
+- IB-SMART-NOTE-20261005-sn0337-lanes-converge-close-duplicate-superseded — PARTIAL: this essence carries the headline rule only (when lanes converge, the first-qualifying repair owns the class). The operational remainder — qualify the owner by evidence, close the duplicate publicly as SUPERSEDED with a pointer comment, keep the closure reversible, obtain the other lane's explicit board confirmation — is carried by no essence; SN-0337 remains ACTIVE as its own carrier and does not retire on this essence.
 - IB-SMART-NOTE-20261005-sn0605-self-directed-intelligence-r2
 - IB-SMART-NOTE-20261006-sn0592-never-impersonate-the-verifier
 - IB-SMART-NOTE-20261013-sn0648-migrated
-- IB-SMART-NOTE-20261013-sn0703-migrated
+- IB-SMART-NOTE-20261013-sn0703-migrated — PARTIAL: this essence carries the one-line lesson (a mechanical gate must be at least as strong as the doctrine it cites). The claim-check substance — three-layer enumeration of claims, first-claim-stands, the atomic renumber — is carried by SN-2165 (A Gate Must Earn Its Green), under which SN-703 is retired.
 - IB-SMART-NOTE-20261013-sn0840-migrated
 - IB-SMART-NOTE-20261013-sn0913-migrated
-- IB-SMART-NOTE-20261006-sn0471-the-archive-is-the-design
-- IB-SMART-NOTE-20261006-sn0483-recommend-dont-ask
+## STANDING POINTERS — NOT DISTILLED HERE
+
+- IB-SMART-NOTE-20261006-sn0471-the-archive-is-the-design — SN-0471 is director-ratified standing authority (Shawn, 2026-10-06: "Lock this in for good"). It stands alone and is pointed to, never distilled; it is not part of this essence's coverage.
+- IB-SMART-NOTE-20261006-sn0483-recommend-dont-ask — SN-0483 carries Shawn's direct directive (never ask blind; bring a scored recommendation with reasoning). It stands alone and is pointed to, not distilled; it is not part of this essence's coverage.

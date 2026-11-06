@@ -1,6 +1,6 @@
 # Essence 02 — Proof Is Behavior, Not a Badge
 
-Distilled from 12 raw Smart Notes (Engineering-Proof + CI-Triage), read in full 2026-11-05. Level 2 ESSENCE + Level 3 VALUE (Levels of Intelligence, PI n=405). Distillation law SN-2058.
+Distilled from 11 raw Smart Notes (Engineering-Proof + CI-Triage), read in full 2026-11-05 — with 1 pointer (SN-838) that is not distilled here. Level 2 ESSENCE + Level 3 VALUE (Levels of Intelligence, PI n=405). Distillation law SN-2058. Coverage corrected in the Batch-1 reconciliation pass (see audit: batch1-recon).
 
 ## IN A NUTSHELL
 
@@ -36,11 +36,11 @@ You are the verifier. Never cite a run-level SUCCESS without reading which jobs 
 
 ## WHAT IT ALL MEANS
 
-Twelve separate proof failures are one law: proof is behavior, not a badge. Every note in this cluster is a case where something looked green and was not — a report computed from a throwaway local, a SUCCESS made of skips, a verdict carried across a new SHA, a "no commit found" that meant "not on this remote," a shallow checkout that lied about the tree. The repair in each case was the same move: look at what actually ran, on what exact version, against what real state — and refuse to call it proof until the behavior itself is verified.
+Eleven separate proof failures are one law: proof is behavior, not a badge. Every note in this cluster is a case where something looked green and was not — a report computed from a throwaway local, a SUCCESS made of skips, a verdict carried across a new SHA, a "no commit found" that meant "not on this remote," a shallow checkout that lied about the tree. The repair in each case was the same move: look at what actually ran, on what exact version, against what real state — and refuse to call it proof until the behavior itself is verified.
 
 ## WHY IT MATTERS
 
-False green is worse than red. Red tells you something is broken; false green tells you it is fine when it is not, and the team builds on the lie. Every one of these 12 notes exists because a false green cost real work — a fix built on a verdict that did not apply, a merge gated on a badge that proved nothing, a deletion justified by an API verdict that answered the wrong question. Proof discipline is what keeps the system honest.
+False green is worse than red. Red tells you something is broken; false green tells you it is fine when it is not, and the team builds on the lie. Every one of these 11 notes exists because a false green cost real work — a fix built on a verdict that did not apply, a merge gated on a badge that proved nothing, a deletion justified by an API verdict that answered the wrong question. Proof discipline is what keeps the system honest.
 
 ## HOW IT CONNECTS
 
@@ -67,4 +67,6 @@ The durable lesson: the badge is not the proof. The proof is the behavior — wh
 - IB-SMART-NOTE-20260930-sn100-bulk-sweep-verdict-sha-binding
 - IB-SMART-NOTE-20261005-sn0421-run-level-success-with-skipped-jobs-is-vacuous-proof
 - IB-SMART-NOTE-20261013-sn0714-migrated
-- IB-SMART-NOTE-20261013-sn0838-migrated
+## POINTER — NOT DISTILLED HERE
+
+- SN-838 (IB-SMART-NOTE-20261009-sn0838-cold-successor-held-out-candidate-lifecycle-failure) — not carried by this essence; removed from coverage in the Batch-1 reconciliation pass. Its substance — a cold-successor held-out failure on lifecycle_state is a lifecycle-transition defect, not a retrieval or content defect — is carried by SN-2176 (Classify the Red Before You Touch It), under which SN-838 is retired. (SN-838 is not SN-0838, "Set Up the App Door Cold," a different note retired under SN-2193.)

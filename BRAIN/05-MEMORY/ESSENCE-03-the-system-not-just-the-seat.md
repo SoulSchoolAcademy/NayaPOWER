@@ -59,7 +59,6 @@ The durable lesson: check the system before blaming the seat. Push your work whe
 - IB-SMART-NOTE-20260930-sn0110-one-intelligence-three-projections
 - IB-SMART-NOTE-20260930-sn0179-design-canon-adoption
 - IB-SMART-NOTE-20260930-sn0220-gather-around-entry-contract
-- IB-SMART-NOTE-20260930-sn0450-tap-feedback-repair-form
 - IB-SMART-NOTE-20261004-sn0260-check-the-system-not-just-the-seat
 - IB-SMART-NOTE-20261004-sn0316-local-until-pushed
 - IB-SMART-NOTE-20261013-sn0116-migrated-2
@@ -67,4 +66,8 @@ The durable lesson: check the system before blaming the seat. Push your work whe
 - IB-SMART-NOTE-20260930-sn0202-occupied-branch-reanchor-before-building
 - IB-SMART-NOTE-20261005-sn0388-prove-deployed-currency-from-served-bytes
 - IB-SMART-NOTE-20261013-sn0689-migrated
-- IB-SMART-NOTE-20261013-sn0808-migrated
+
+## POINTERS — NOT DISTILLED HERE
+
+- IB-SMART-NOTE-20260930-sn0450-tap-feedback-repair-form — SN-0450 is not carried by this essence; removed from coverage in the Batch-1 reconciliation pass. Its substance (tap-feedback repair form: press compression plus white indicator, never color) is carried by SN-2139 (Honest Surfaces), under which SN-0450 is retired.
+- IB-SMART-NOTE-20261013-sn0808-migrated — this entry is SN-808 (One Mission, One Lane Branch), not SN-0808. SN-808 is not carried by this essence; removed from coverage in the Batch-1 reconciliation pass. Its substance (claim before you commit; a second branch name halts both lanes; reconcile by unique work) is carried by SN-2170 (A Relay Hands Evidence, Never Authority), under which SN-808 is retired.
