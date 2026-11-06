@@ -13489,7 +13489,10 @@ NF.register(UNIT, {
         /* NINAYA: refresh the instruments on every spine rebuild. */
         try{ if(window.TN_VOICE) TN_VOICE.render(); }catch(_){}
         try{ if(window.TN_ROOMS) TN_ROOMS.init(); }catch(_){}
-        try{ if(window.tnTruth) tnTruth.tick(); }catch(_){}
+        /* 2026-11-06 — FIX F13 (v9): NO truth tick here. The board numerals
+           are still the old ones until loadPointsBoard() runs below; ticking
+           on the new spine now surfaces a stale-numeral false alarm on
+           every >=2-point score jump. The ticks moved to after the render. */
         osGuard('composition',function(){renderComposition(d);});
         osGuard('compounding',function(){renderCompounding(d);});
         osGuard('pending',function(){renderPendingStrip(d);});
@@ -13497,13 +13500,36 @@ NF.register(UNIT, {
         osGuard('notethis',function(){osWireNoteThis();});
         osGuard('derived',function(){ if(window.tnTruth){ try{tnTruth.wire(document);}catch(e){} } });
         osGuard('since',function(){osSinceVisit();});
-        osGuard('integrity',function(){ if(window.tnTruth){ try{tnTruth.tick();}catch(e){} } });
         osGuard('verify',function(){osVerifySpine();});
         osGuard('funnel-stages',function(){osWireFunnelStages(d);});
         osGuard('donut-legend',function(){osWireDonutLegend();});
         window._dashD=d; if(!window._dashLinkT) window._dashLinkT={c:0,j:0}; window._dashDataLanded=true; /* PASS 1 v6 (f): the ledger has landed — the Sales slot may read a real number now. */
         try{ renderPluginsNative(d); }catch(e){}
         try{ loadPointsBoard(); }catch(e){}
+        /* 2026-11-06 — FIX F13 (v9): the truth ticks run HERE, after the
+           board re-rendered — the numerals are fresh, so the meter compares
+           the new spine to the new surface. A real disagreement still
+           surfaces promptly (two back-to-back ticks = the stability gate's
+           two same-signature samples); a stale-numeral false alarm cannot
+           happen. AND one animation frame later: the dial's data-target is
+           stamped by its rAF loop, which has not run yet in this synchronous
+           block — ticking now would flag the dial on its stale target (a
+           <1-frame transient, the W1 run-5 class; proven by probe: after
+           render + tick with no frame, the dial row "shows 1800, spine says
+           1850" survives; after one frame it clears). One frame is enough —
+           the tacho loop was registered long before this callback, so it
+           stamps first. The setTimeout fallback keeps the ticks running if
+           rAF never fires. */
+        (function(){
+          var _f13done=false;
+          var _f13t=function(){
+            if(_f13done) return; _f13done=true;
+            try{ if(window.tnTruth) tnTruth.tick(); }catch(_){}
+            osGuard('integrity',function(){ if(window.tnTruth){ try{tnTruth.tick();}catch(e){} } });
+          };
+          if (window.requestAnimationFrame) window.requestAnimationFrame(_f13t);
+          setTimeout(_f13t, 250);
+        })();
         try{ loadPagesBoard(); }catch(e){}
         try{ wireViewToggle(); }catch(e){}
         dashCache=d;
@@ -21554,8 +21580,29 @@ function wireNumerals(root){
 }
 
 /* ---------- disagreement: rendered numbers vs the spine ---------- */
-function expectedFor(key, s){
+/* 2026-11-06 — FIX F13 (v9): the featured panel's numerals are verified
+   against the featured display that rendered them, not against the world
+   spine. el is the numeral being checked (may be null for old callers). */
+function expectedFor(key, s, el){
   if(!s) return null;
+  if (el && el.closest && el.closest('#os-feat-stats')){
+    try{
+      var _fv = (typeof window._featuredDisplay === 'function') ? window._featuredDisplay() : null;
+      if (_fv){
+        if (_fv.kind === 'link'){
+          /* the link's own numbers — what stats[0]/stats[1] show. The
+             mirror of derivationFor's link branch. */
+          if (key === 'clicks') return _fv.center;
+          if (key === 'joins') return _fv.below;
+        } else if (key === 'score' && typeof _fv.center === 'number'){
+          /* the world/page score — the windowed total in a period window,
+             the spine in All. The dial (not in feat-stats) keeps the delta
+             expectation in the switch below. */
+          return _fv.center;
+        }
+      }
+    }catch(e){}
+  }
   switch(key){
     /* COMPLETENESS — the tachometer's time pills re-target the dial. When the
        dial shows "+N gained", the honest expectation is the period delta, not
@@ -21585,7 +21632,11 @@ function expectedFor(key, s){
   }
 }
 function renderedInt(el){
-  var t=(el.textContent||"").replace(/[^0-9]/g,"");
+  var raw=(el.textContent||"");
+  /* 2026-11-06 — FIX F13 (v9): a rate is not a ledger count. Never parse
+     "3.9%" as 39 — return null and let checkAll skip it, never guess. */
+  if (raw.indexOf("%")>=0) return null;
+  var t=raw.replace(/[^0-9]/g,"");
   return t===""?null:parseInt(t,10);
 }
 function checkAll(){
@@ -21598,7 +21649,29 @@ function checkAll(){
        wireNumerals; the meter watches the dial + featured stats. */
     if (el.closest && el.closest('#os-boards-list')) return;
     var key=el.getAttribute("data-derive");
-    var exp=expectedFor(key,s);
+    /* 2026-11-06 — FIX F13 (v9): a numeral that shows POINTS (its sibling
+       label says "· points", e.g. "joins · points") is a derived display,
+       not a ledger count. In a period window the spine holds all-time
+       counts, so a windowed points numeral can never be verified against
+       it — skip it there, honestly. In All, verify it as count × value
+       (the same math the render uses: joins 15 × 50 = 750). */
+    var _isPts=false;
+    try{
+      var _pl = el.parentElement ? el.parentElement.querySelector('.os-sl-stat-l') : null;
+      _isPts = !!_pl && /points/i.test(_pl.textContent||'');
+    }catch(e){}
+    var exp;
+    if (_isPts){
+      if ((window._ldWindow || 'all') !== 'all') return;
+      var _vmap = {posts:'posts', notes:'notes', saves:'saves', invs:'invites', joins:'joins'};
+      var _vk = _vmap[key];
+      if (!_vk || typeof POINT_RULES[_vk] !== 'number') return;
+      var _cnt = s[key];
+      if (typeof _cnt !== 'number') return;
+      exp = _cnt * POINT_RULES[_vk];
+    } else {
+      exp=expectedFor(key,s,el);
+    }
     if(exp==null) return;
     /* COMPLETENESS — prefer the stamped target (the instrument's intent) over
        the eased text (the animation's current frame). Kills the count-up race. */
@@ -21611,7 +21684,7 @@ function checkAll(){
     if(key==="score" && Math.abs(got-exp)<=1) return;
     if(got!==exp) issues.push({ key:key,
       what:key.replace(/-/g," "),
-      detail:"shows "+got+", spine says "+exp });
+      detail:_isPts ? ("shows "+got+" pts, spine says "+exp+" pts") : ("shows "+got+", spine says "+exp) });
   });
   return issues;
 }
