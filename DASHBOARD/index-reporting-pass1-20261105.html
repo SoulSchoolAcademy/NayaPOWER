@@ -2933,6 +2933,9 @@ button:hover{
 /* --- human words under the number: "175 of 1,000 — Stirring at 1,000" --- */
 .tn-tacho-bandline{
   display:block;
+  /* 2026-11-06 — FIX 1e-iii REWORK: belt-and-braces layering — positioned above the dialwrap's own overlays (gear ring z 4, crystal z 5), so the caption paints and hit-tests above anything that reaches it. */
+  position:relative;
+  z-index:6;
   text-align:center;
   margin-top:8px;
   font-size:12.5px;
@@ -2942,6 +2945,10 @@ button:hover{
 }
 /* V4: responsive beat on band change — Law 6, alive = responsive, not lit at rest. */
 .tn-tacho-bandline.tn-bl-beat{ animation:tnBandlineBeat .6s ease-out 1; }
+/* 2026-11-06 — FIX 1e-iii REWORK (phone): on narrow screens the constellation's bottom orbs (Shares/Creations, 60px) orbit BELOW the dial and sit exactly on the caption line (measured on 390px: orb bottoms y 551 vs caption y 492) — the caption drops below the whole orbit, so nothing covers it. Margin measured empirically (inline-style sweep, same viewport): 80px → clearance −22, 5/11; 120px → −2, 5/11; 160px → +18, 11/11. The orbs chase the caption as the tachometer grows (orbit centre tracks the constellation box), so the margin must clear the chased position, not the original one. Desktop keeps the tight 8px. */
+@media (max-width:560px){
+  .tn-tacho-bandline{ margin-top:160px; }
+}
 @keyframes tnBandlineBeat{ 0%{ transform:scale(1);} 30%{ transform:scale(1.14);} 100%{ transform:scale(1);} }
 /* --- band ladder: completed bands marked, current band lit.
        Lives INSIDE the dial's open bottom (absolute) so the gauge stays
@@ -21680,12 +21687,13 @@ else init();
           '<span class="tn-tacho-row"><span class="tn-tacho-label">YOUR SMART SCORE</span>' +
           '<span class="tn-tacho-livedot"></span></span>' +
         '</div>' +
-        /* 2026-11-06 — FIX 1e-iii: the bandline lived INSIDE .tn-tacho-readout (display:none by the 2026-11-01 NO OVERLAY TEXT ruling), so the caption "55 of 500 — Stirring at 1,000" never rendered in ANY window (Scout gaugeCap rect 0,0,0,0 in every settled capture). The number + label stay hidden — they live in the SVG dial + the static label. Only the caption moves out, to its own line under the dial. */
-        '<span class="tn-tacho-bandline"></span>' +
+        /* 2026-11-06 — FIX 1e-iii: the bandline lived INSIDE .tn-tacho-readout (display:none by the 2026-11-01 NO OVERLAY TEXT ruling), so the caption "55 of 500 — Stirring at 1,000" never rendered in ANY window (Scout gaugeCap rect 0,0,0,0 in every settled capture). The number + label stay hidden — they live in the SVG dial + the static label. REWORK: the first move put the span inside .tn-tacho-dialwrap in flow at the dial's TOP, under the dial face/gear (elementFromPoint hit the dial SVG 0/11) — so the span now lives AFTER the dialwrap close, as its own line genuinely BELOW the dial. */
         '<div class="tn-tacho-cap" hidden></div>' +
         '<div class="tn-tacho-bands"><span class="tn-tacho-bandlo"></span><span class="tn-tacho-bandhi"></span><span class="tn-tacho-bands-label"></span></div>' +
         '<div class="tn-tacho-truth" hidden></div>' +
       '</div>' +
+      /* 2026-11-06 — FIX 1e-iii REWORK: caption under the dial (see note above). A direct child of .tn-tacho, so paintBandChrome's root.querySelector still finds it and the text updates unchanged. */
+      '<span class="tn-tacho-bandline"></span>' +
     '</div>';
   }
 
