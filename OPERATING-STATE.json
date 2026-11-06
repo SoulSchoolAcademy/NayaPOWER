@@ -1,22 +1,20 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-11-06T03:48:47Z",
-  "tip": "1afe8caf5b1a7b93d78b5857c213f3c2154232a3",
-  "open_pr_count": 3,
+  "generated_at": "2026-11-06T09:48:43Z",
+  "tip": "9004ce29611848ea234e631432d0e7d6ef2053e4",
+  "open_pr_count": 5,
   "queue_by_tier_action": {
     "B": {
-      "CURE": 2
+      "CURE": 3
     },
     "C": {
-      "CURE": 1
+      "CURE": 2
     }
   },
   "tip_failing_checks": [
-    "Deploy Hub worker",
-    "completeness",
-    "fresh-lesson",
-    "resolve-current-truth",
-    "spec-integrity"
+    "promote-and-prove",
+    "spec-integrity",
+    "test"
   ],
   "gauge": {
     "source": "files/balanced-machine/GAUGE-READ-2026-11-02.md",
