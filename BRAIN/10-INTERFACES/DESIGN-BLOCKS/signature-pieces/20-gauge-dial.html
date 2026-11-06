@@ -1,0 +1,45 @@
+<!-- ================================================================
+  NIA DESIGN SIGNATURE PIECE 20 — DIAL — THE FACE
+  DRAFT — the Clarity Confirmation Act is NOT stamped by Shawn; nothing here is law yet.
+  Act reference: Act §4.20 — ~/workspace/team-nitro/clarity-confirmation-act-DRAFT-20261106.md
+  CHECK: numerals engraved on the aluminum ring, not floating; shadow offset (0.8px, 0.8px). (Gauge CHECK §4.6 applies.)
+  CRAFT (Shawn 00:31Z — optimized for what IT is): The most extraordinary dial: the face, numerals engraved on aluminum, never floating — molded to be read at a glance.
+  ROLLOUT (Shawn 00:31Z — Dashboard first, then Personal, then the rest): group 1 — first proved on Dashboard.
+  Harvested verbatim from:
+  - ~/workspace/smart-factory/harvested/dashboard.html L2501-2508
+  - ~/workspace/smart-factory/harvested/dashboard.html L2639-2653
+  Factory path: ~/workspace/smart-factory/signature-pieces/20-gauge-dial.html
+  Repo (canonical) path: BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/20-gauge-dial.html
+  Notes: Black obsidian dial (dashboard.html:2443 comment). Numerals: Bugatti-style, etched on the metal (dashboard.html:2639 comment + rules in range).
+  ================================================================ -->
+<style>
+/* --- VERBATIM HARVEST (do not restyle; compose only) --- */
+/* 2026-11-02 — Shawn: SMART TAB BEZEL REMOVED. Replaced with orb teeth (rule above). */
+.tn-tacho-dial{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+/* 2026-11-01 — Shawn: Bugatti-style dial numerals. ETCHED on the metal.
+   Crisp, sharp, printed — not floating text. Part of the instrument. */
+.tn-tacho-dialnum{
+  font-size:9.5px; font-weight:800; fill:#f5f5f7;
+  font-family:inherit; font-variant-numeric:tabular-nums;
+  letter-spacing:.02em;
+  /* 2026-11-02 — BUGATTI ETCHED NUMERALS. Not printed — engraved.
+     Subtle inset shadow makes them look cut into the dial. */
+  paint-order:stroke; stroke:rgba(0,0,0,.6); stroke-width:.4;
+}
+.tn-tacho-ticks line{ /* stroke set inline per-tick: purple/white alternating */ }
+/* 2026-11-02 — BUGATTI DIAL SCREWS. 4 screws holding the dial.
+   Tiny details that sell the realism. */
+.tn-dial-screw{ fill:#3a3a45; stroke:#808090; stroke-width:.5; }
+.tn-dial-screw-slot{ stroke:#1a1a20; stroke-width:.8; }
+</style>
+
+<!-- SPECIMEN-START -->
+<svg class="tn-tacho-dial" viewBox="0 0 200 208">{{dial_svg}}</svg>
+<!-- SPECIMEN-END -->
