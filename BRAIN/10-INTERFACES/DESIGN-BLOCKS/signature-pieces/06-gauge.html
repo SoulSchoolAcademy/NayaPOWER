@@ -1,0 +1,321 @@
+<!-- ================================================================
+  NIA DESIGN SIGNATURE PIECE 06 — GAUGE — THE INSTRUMENT
+  DRAFT — the Clarity Confirmation Act is NOT stamped by Shawn; nothing here is law yet.
+  Act reference: Act §4.6 — ~/workspace/team-nitro/clarity-confirmation-act-DRAFT-20261106.md
+  CHECK: numeral angles exact by formula angle = -135 + (value/500)*270; all six numerals present (none skipped); ambient rotation 60–180s, active 18–25s, never under 12s; directions alternate; teeth, never solid rings.
+  CRAFT (Shawn 00:31Z — optimized for what IT is): The most extraordinary gauge: the Bugatti instrument, numerals by formula, needle sweeping like acceleration — molded to give your score in 2 seconds.
+  ROLLOUT (Shawn 00:31Z — Dashboard first, then Personal, then the rest): group 1 — first proved on Dashboard.
+  Harvested verbatim from:
+  - ~/workspace/smart-factory/harvested/dashboard.html L2428-2441
+  - ~/workspace/smart-factory/harvested/dashboard.html L2446-2469
+  - ~/workspace/smart-factory/harvested/dashboard.html L2472-2488
+  - ~/workspace/smart-factory/harvested/dashboard.html L2489-2499
+  - ~/workspace/smart-factory/harvested/dashboard.html L2501-2508
+  - ~/workspace/smart-factory/harvested/dashboard.html L2512
+  - ~/workspace/smart-factory/harvested/dashboard.html L2513
+  - ~/workspace/smart-factory/harvested/dashboard.html L2514
+  - ~/workspace/smart-factory/harvested/dashboard.html L2515
+  - ~/workspace/smart-factory/harvested/dashboard.html L2522-2533
+  - ~/workspace/smart-factory/harvested/dashboard.html L2536-2547
+  - ~/workspace/smart-factory/harvested/dashboard.html L2556-2562
+  - ~/workspace/smart-factory/harvested/dashboard.html L2569-2571
+  - ~/workspace/smart-factory/harvested/dashboard.html L2641-2648
+  - ~/workspace/smart-factory/harvested/dashboard.html L2649
+  - ~/workspace/smart-factory/harvested/dashboard.html L2660
+  - ~/workspace/smart-factory/harvested/dashboard.html L2661-2662
+  - ~/workspace/smart-factory/harvested/dashboard.html L2666-2672
+  - ~/workspace/smart-factory/harvested/dashboard.html L2675-2678
+  - ~/workspace/smart-factory/harvested/dashboard.html L2683
+  - ~/workspace/smart-factory/harvested/dashboard.html L2687-2693
+  - ~/workspace/smart-factory/harvested/dashboard.html L2702-2705
+  - ~/workspace/smart-factory/harvested/dashboard.html L2710-2712
+  - ~/workspace/smart-factory/harvested/dashboard.html L2713-2722
+  - ~/workspace/smart-factory/harvested/dashboard.html L2723-2728
+  - ~/workspace/smart-factory/harvested/dashboard.html L2729-2736
+  - ~/workspace/smart-factory/harvested/dashboard.html L2737-2744
+  - ~/workspace/smart-factory/harvested/dashboard.html L2747-2752
+  - ~/workspace/smart-factory/harvested/dashboard.html L2753-2757
+  - ~/workspace/smart-factory/harvested/dashboard.html L2758
+  - ~/workspace/smart-factory/harvested/dashboard.html L2760-2768
+  - ~/workspace/smart-factory/harvested/dashboard.html L2769
+  - ~/workspace/smart-factory/harvested/dashboard.html L2823-2829
+  - ~/workspace/smart-factory/harvested/dashboard.html L2830-2838
+  - ~/workspace/smart-factory/harvested/dashboard.html L2839-2840
+  - ~/workspace/smart-factory/harvested/dashboard.html L2849
+  - ~/workspace/smart-factory/harvested/dashboard.html L2850
+  Factory path: ~/workspace/smart-factory/signature-pieces/06-gauge.html
+  Repo (canonical) path: BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/06-gauge.html
+  Notes: The gauge markup is JS-rendered (dashboard.html:20153-20311 builds .tn-tacho > .tn-tacho-dialwrap > svg.tn-tacho-dial); the specimen above copies that structure verbatim, content filled at build time. Full CSS is the tn-tacho block harvested here.
+  ================================================================ -->
+<style>
+/* --- VERBATIM HARVEST (do not restyle; compose only) --- */
+.tn-tacho{
+  position:relative;
+  width:100%;
+  max-width:420px;
+  margin:0 auto;
+  background:transparent;
+  border:none;
+  border-radius:0;
+  padding:0;
+  box-shadow:none;
+  color:#fff;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+.tn-tacho-dialwrap{
+  position:relative;
+  width:100%;
+  aspect-ratio:1/1;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 50% 50%, #0c0c10 0%, #060608 70%, #020203 100%);
+  /* 2026-11-01 — Shawn: BUGATTI BEZEL. Machined aluminum, brushed metal.
+     Thick, physical, real. Not a thin border — a machined ring.
+     2026-11-02 — GRADE 12: The dial is RECESSED 12px into the housing.
+     Deep inner shadow = you see the depth, the dial is IN the metal. */
+  border:12px solid transparent; /* 2026-11-02 — Shawn: out further */
+  background-clip:padding-box;
+  box-shadow:
+    /* the recess: dial sits DEEP — shadow all around the inner edge */
+    inset 0 20px 60px rgba(0,0,0,1),
+    inset 0 -16px 40px rgba(0,0,0,.95),
+    inset 0 0 0 4px rgba(0,0,0,1),
+    /* subtle inner edge light — the metal lip catching light */
+    inset 0 0 0 5px rgba(255,255,255,.06),
+    /* outer: the housing has mass, sits on the page */
+    0 40px 100px rgba(0,0,0,.95),
+    0 8px 24px rgba(0,0,0,.8);
+}
+
+.tn-tacho-dialwrap::after{
+  content:''; position:absolute; inset:-12px; border-radius:50%; z-index:4; /* 2026-11-02 — Shawn: out further, black visible */
+  animation:orbVortex 50s linear infinite; /* 2026-11-02 — Shawn: outer ring spins CW, slightly faster than inner vortex */
+  background:
+    /* 2026-11-02 — Shawn: ORB GEARS on the main gauge. Dark, toothed, unified.
+       Same language as orbs. Tighter (14px, not 18px). */
+    /* 2026-11-02 — Shawn: SAME teeth as orbs, just bigger. One family. */
+    /* 2026-11-02 — Shawn: THIN teeth like orbs, black gaps visible. Ball effect. */
+    /* 2026-11-02 — Shawn: NO glow — clean black gaps all the way through. */
+    repeating-conic-gradient(from -90deg,
+      #d0d4de 0deg 1deg,
+      #7a7e88 1deg 1.8deg,
+      transparent 1.8deg 15deg);
+  -webkit-mask: radial-gradient(circle at 50% 50%, transparent 65%, black 65%, black 100%);
+  mask: radial-gradient(circle at 50% 50%, transparent 65%, black 65%, black 100%);
+  pointer-events:none;
+}
+
+/* 2026-11-01 — DIAL TEXTURE. Real dials have subtle grain, not flat black. */
+.tn-tacho-dialwrap::before{
+  /* CRYSTAL: real glass with a visible reflection, like the Bugatti's sapphire crystal.
+     You see the reflection arc across the top — proof it's glass, not a flat image. */
+  content:''; position:absolute; inset:0; border-radius:50%; z-index:5;
+  background:
+    linear-gradient(115deg, rgba(255,255,255,.28) 0%, rgba(255,255,255,.10) 18%, transparent 38%),
+    linear-gradient(295deg, rgba(255,255,255,.08) 0%, transparent 25%),
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,.04) 0%, transparent 40%);
+  pointer-events:none;
+}
+
+/* 2026-11-02 — Shawn: SMART TAB BEZEL REMOVED. Replaced with orb teeth (rule above). */
+.tn-tacho-dial{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.tn-tacho-track{ display:none; }
+
+.tn-tacho-fill{ display:none; }
+
+.tn-tacho-comet{ display:none; }
+
+.tn-tacho-famring{ animation:tnFamBreathe 4.5s ease-in-out infinite; }
+
+.tn-tacho-fill{
+  fill:none;
+  stroke:url(#tnLaser);
+  stroke-width:12;
+  stroke-linecap:round;
+  stroke-dasharray:377;
+  stroke-dashoffset:377;
+  filter:
+    drop-shadow(0 0 6px rgba(255,255,255,.9))
+    drop-shadow(0 0 18px rgba(160,200,255,.6))
+    drop-shadow(0 0 36px rgba(160,107,255,.4));
+}
+
+.tn-tacho-comet{
+  fill:none;
+  stroke:url(#tnCometFlow);
+  stroke-width:10;
+  stroke-linecap:round;
+  stroke-dasharray:377;
+  stroke-dashoffset:377;
+  filter:
+    drop-shadow(0 0 6px rgba(255,255,255,.9))
+    drop-shadow(0 0 16px rgba(255,255,255,.5));
+  mix-blend-mode:screen;
+}
+
+.tn-tacho-needle{
+  transform-origin:100px 104px;
+  /* the needle casts a shadow — it's a physical object above the dial */
+  filter:drop-shadow(0 3px 4px rgba(0,0,0,.8));
+  /* ACCELERATION: the needle sweeps, never jumps */
+  transition:transform 1.2s cubic-bezier(.15,.85,.25,1);
+}
+
+/* 2026-11-01 — RED ZONE. The danger zone, like the Bugatti. */
+.tn-tacho-redzone{ fill:none; stroke:#ff5e6c; stroke-width:4; opacity:.9;
+  filter:drop-shadow(0 0 4px rgba(255,94,108,.6)); }
+
+.tn-tacho-dialnum{
+  font-size:9.5px; font-weight:800; fill:#f5f5f7;
+  font-family:inherit; font-variant-numeric:tabular-nums;
+  letter-spacing:.02em;
+  /* 2026-11-02 — BUGATTI ETCHED NUMERALS. Not printed — engraved.
+     Subtle inset shadow makes them look cut into the dial. */
+  paint-order:stroke; stroke:rgba(0,0,0,.6); stroke-width:.4;
+}
+
+.tn-tacho-ticks line{ /* stroke set inline per-tick: purple/white alternating */ }
+
+.tn-bezel{ /* faceted bezel group */ }
+
+/* 2026-11-02 — REFERENCE BUILD. Bezel screws: larger, on the outer bezel. */
+.tn-bezel-screw{ fill:#4a4a55; stroke:#a0a0b0; stroke-width:.6; }
+
+/* 2026-11-01 — Shawn: display bezel — deep recess, PURPLE trim on obsidian. */
+.tn-display-bezel{
+  /* 2026-11-02 — REFERENCE BUILD. Recessed digital display like the luxury gauge.
+     Deep black, inset shadow — the numbers sit IN the dial. */
+  fill:#000;
+  stroke:#3a3a44; stroke-width:1;
+}
+
+.tn-tacho-svgsub{
+  font-size:7px; font-weight:700; fill:rgba(255,255,255,.6);
+  letter-spacing:.2em;
+}
+
+.tn-tacho-jewels{ display:none !important; }
+
+.tn-tacho-svgnum{
+  font-size:30px; font-weight:800; fill:#fff;
+  font-family:'Courier New', monospace; font-variant-numeric:tabular-nums;
+  letter-spacing:.08em;
+  filter:drop-shadow(0 0 10px rgba(160,107,255,.95)) drop-shadow(0 0 24px rgba(160,107,255,.45));
+  animation:tnDisplayFlicker 4s ease-in-out infinite;
+}
+
+.tn-tacho-svgsub{
+  font-size:7px; font-weight:600; fill:#6a6a76;
+  font-family:inherit; letter-spacing:.28em;
+}
+
+.tn-tacho-readout{
+  display:none;
+}
+
+.tn-tacho-num{
+  display:block;
+  font-size:48px;
+  font-weight:800;
+  letter-spacing:-.02em;
+  line-height:1;
+  color:#fff;
+  font-variant-numeric:tabular-nums;
+  text-shadow:0 2px 18px rgba(0,0,0,.6);
+}
+
+.tn-tacho-row{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:10px;
+}
+
+/* 2026-11-01 — Shawn: "YOUR SMART SCORE" must be readable. White, not gray. */
+.tn-tacho-label{
+  font-size:12px;
+  letter-spacing:.28em;
+  color:#fff;
+  font-weight:700;
+  text-shadow:0 1px 4px rgba(0,0,0,.8);
+}
+
+.tn-tacho-livedot{
+  display:inline-block;
+  width:9px; height:9px;
+  border-radius:50%;
+  background:#2fe89e;
+  box-shadow:0 0 10px 1px #2fe89e;
+  animation:tnTachoPulse 2.2s ease-in-out infinite;
+}
+
+/* --- states: honest, never invented --- */
+.tn-tacho[data-state="loading"] .tn-tacho-livedot{
+  background:#6a6a76;
+  box-shadow:none;
+  animation:tnTachoPulse 1.4s ease-in-out infinite;
+}
+
+.tn-tacho[data-state="quiet"] .tn-tacho-livedot{
+  background:#4a4a55;
+  box-shadow:none;
+  animation:none;
+}
+
+.tn-tacho[data-state="quiet"] .tn-tacho-num{ color:#6a6a76; }
+
+.tn-tacho-cap{
+  /* V4: moved down clear of the orb line fan — the small white text
+     used to collide with the connector lines and read through wiring. */
+  margin:30px 6px 0;
+  text-align:center;
+  font-size:12.5px;
+  line-height:1.5;
+  color:#8a8a96;
+}
+
+.tn-tacho-cap b{ color:#fff; font-weight:600; }
+
+/* --- band edge labels on the dial: the current band's range, always labeled --- */
+.tn-tacho-bandlo,.tn-tacho-bandhi{
+  font-size:9.5px;
+  font-weight:700;
+  fill:#777;
+  font-family:inherit;
+}
+
+/* --- human words under the number: "175 of 1,000 — Stirring at 1,000" --- */
+.tn-tacho-bandline{
+  display:block;
+  margin-top:8px;
+  font-size:12.5px;
+  font-weight:600;
+  letter-spacing:.02em;
+  color:#fff;
+}
+
+/* V4: responsive beat on band change — Law 6, alive = responsive, not lit at rest. */
+.tn-tacho-bandline.tn-bl-beat{ animation:tnBandlineBeat .6s ease-out 1; }
+
+.tn-tacho-bands{ display:none !important; }
+
+.tn-tacho-bands-label{ display:none !important; }
+</style>
+
+<!-- SPECIMEN-START -->
+<div class="tn-tacho" data-state="ready" role="img" aria-label="Score gauge — reading your actions">
+  <div class="tn-tacho-dialwrap">
+    <svg class="tn-tacho-dial" viewBox="0 0 200 208" aria-hidden="true">{{gauge_svg}}</svg>
+    <div class="tn-tacho-needle">{{needle_svg}}</div>
+  </div>
+</div>
+<!-- SPECIMEN-END -->
