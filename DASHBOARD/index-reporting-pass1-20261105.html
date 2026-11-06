@@ -4323,7 +4323,7 @@ html.os-calm
 .os-sl-board .os-link-row{transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease}
 .os-sl-board .os-link-row:hover{transform:translateY(-2px)}
 .os-sl-graph{flex:1 1 100%;margin-top:12px}
-.os-sl-graph .os-week{height:58px;padding:13px 2px 0}
+.os-sl-graph .os-week{height:110px;padding:13px 2px 0}
 .os-sl-graph .bar{flex:1;cursor:pointer}
 .os-sl-graph-days{display:flex;padding:0 2px;margin-top:5px}
 .os-sl-graph-days span{flex:1;text-align:center;font-size:9.5px;font-weight:700;letter-spacing:.02em;color:#fff}
@@ -8820,7 +8820,7 @@ NF.register(UNIT, {
      day-based bar wears its day's color. Sun purple · Mon orange ·
      Tue gold · Wed canyon blue · Thu forest green · Fri red · Sat indigo. */
   var DAY_COLORS=['#a06bff','#ff9a5a','#ffbf3d','#5b8fc9','#2e9e52','#ff5e6c','#5b6cff'];
-  function dayColor(d){ try { return DAY_COLORS[d.getDay()]; } catch(e){ return '#a06bff'; } }
+  function dayColor(d){ try { var g=d.getDay(); var v=DAY_COLORS[g]; if(v) return v; return DAY_COLORS[['sun','mon','tue','wed','thu','fri','sat'][g]]||'#a06bff'; } catch(e){ return '#a06bff'; } }
   var DAY_LEGEND_HTML=['Sunday|#a06bff|S','Monday|#ff9a5a|M','Tuesday|#ffbf3d|T','Wednesday|#5b8fc9|W','Thursday|#2e9e52|T','Friday|#ff5e6c|F','Saturday|#5b6cff|S'].map(function(x){ var p=x.split('|'); return '<span title="'+p[0]+'"><i style="--dc:'+p[1]+'">'+p[2]+'</i>'+p[0].slice(0,3)+'</span>'; }).join('');
   /* a WALL author's color is their identity (the canon contract's
      own words: 'a spectrum initial avatar per author (stable name
@@ -9053,6 +9053,9 @@ NF.register(UNIT, {
     if (pk){ slCurrent=pk.getAttribute('data-sl-pick'); renderLists(); return; }
     var snl=t.closest?t.closest('[data-sl-newlist]'):null;
     if (snl){ var snr=$('os-sl-newrow'); if (snr){ var snOpen=snr.style.display!=='flex'; snr.style.display=snOpen?'flex':'none'; if (snOpen){ var sni=$('os-sl-newname'); if (sni) sni.focus(); } } return; }
+    /* 2026-11-06 — FIX 2: Smart Links bar chart — tap a bar to read its day. The caption promises it; the bars had no click handler (renderBars wires it; slGraphHTML never did). Delegated: renderLinks re-renders every 30s, so a per-render listener would duplicate. */
+    var sgb=t.closest?t.closest('.os-sl-graph .bar'):null;
+    if (sgb){ var sg=sgb.closest?sgb.closest('.os-sl-graph'):null; var sgn=sg?sg.querySelector('.os-sl-graph-note'):null; if (sgn && sgb.getAttribute('data-note')) sgn.textContent=sgb.getAttribute('data-note'); return; }
     var sop=t.closest?t.closest('[data-sl-open]'):null;
     if (sop){
       /* 2026-11-05 — FIX_THIS_ONE (Smart Links): data-sl-open is shared by Smart
@@ -11749,7 +11752,7 @@ NF.register(UNIT, {
      day-based bar wears its day's color. Sun purple · Mon orange ·
      Tue gold · Wed canyon blue · Thu forest green · Fri red · Sat indigo. */
   var DAY_COLORS=['#a06bff','#ff9a5a','#ffbf3d','#5b8fc9','#2e9e52','#ff5e6c','#5b6cff'];
-  function dayColor(d){ try { return DAY_COLORS[d.getDay()]; } catch(e){ return '#a06bff'; } }
+  function dayColor(d){ try { var g=d.getDay(); var v=DAY_COLORS[g]; if(v) return v; return DAY_COLORS[['sun','mon','tue','wed','thu','fri','sat'][g]]||'#a06bff'; } catch(e){ return '#a06bff'; } }
   var DAY_LEGEND_HTML=['Sunday|#a06bff|S','Monday|#ff9a5a|M','Tuesday|#ffbf3d|T','Wednesday|#5b8fc9|W','Thursday|#2e9e52|T','Friday|#ff5e6c|F','Saturday|#5b6cff|S'].map(function(x){ var p=x.split('|'); return '<span title="'+p[0]+'"><i style="--dc:'+p[1]+'">'+p[2]+'</i>'+p[0].slice(0,3)+'</span>'; }).join('');
   /* a WALL author's color is their identity (the canon contract's
      own words: 'a spectrum initial avatar per author (stable name
@@ -12672,7 +12675,7 @@ NF.register(UNIT, {
     var bars = buckets.map(function(b, i){
       var h = b.n ? Math.max(12, Math.round(b.n / max * 100)) : 3;
       var hot = (i === bi && b.n > 0) ? ' hot' : '';
-      return '<div class="bar' + (b.today ? ' today' : '') + hot + '" style="height:' + h + '%;--barc:' + (b.n ? dayColor(new Date(b.key+'T12:00:00')) : '#3a3a46') + ';--i:' + i + '" data-note="' + esc(b.note) + '">' + (b.n ? '<span class="os-bar-pill">' + b.n + '</span>' : '') + '</div>';
+      return '<div class="bar' + (b.today ? ' today' : '') + hot + '" style="height:' + h + '%;--barc:' + (b.n ? dayColor(new Date(b.key+'T12:00:00')) : '#3a3a46') + ';--i:' + i + '" title="' + esc(b.note) + '" data-note="' + esc(b.note) + '">' + (b.n ? '<span class="os-bar-pill">' + b.n + '</span>' : '') + '</div>';
     }).join('');
     var days = buckets.map(function(b){ return '<span class="' + (b.today ? 'today' : '') + '">' + esc(b.lab) + '</span>'; }).join('');
     var note = total ? ('Busiest: ' + buckets[bi].note + ' Tap a bar to read its day.') : 'No clicks yet — this graph wakes with the first click.';
