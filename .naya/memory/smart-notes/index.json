@@ -29907,6 +29907,37 @@
    ],
    "renumbered_from": "SN-2094",
    "renumbering_basis": "First-claim ruling (Resolve, 2026-11-05): SN-2094 held by The Full Smart Note \u2014 The Golden Red Layer (commit 1635dfbefa, 2026-11-06T02:18:34Z); this note was the second claim (commit c0a07b6e96, 2026-11-06T02:23:57Z) and renumbers to SN-2202."
+  },
+  {
+   "smart_note_id": "SN-2203",
+   "intelligent_block_id": "IB-SMART-NOTE-20261106-sn2203-the-daily-work-loop",
+   "slug": "the-daily-work-loop",
+   "title": "The Daily Work Loop",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-the-daily-work-loop.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-the-daily-work-loop.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-the-daily-work-loop.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn2203-the-daily-work-loop.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DOCTRINE",
+   "captured_at": "2026-11-06",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T16:48:00Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-06",
+   "page_hash": "0743ab73e8a2dd6abb07d8385ed5dea3257f9df0681ab0687a5d43973df6d595",
+   "content_hash": "2d9c12571f42dd560fb35def1616613ffcc2391d73c425bddc6473017a964ad1",
+   "one_line": "A Naya's day is a loop, run in order, every day: activate and declare who you are in GitHub and know the laws; go into NayaNET and get current in Project Intelligence; read the Smart Feed for what's new; check your mail; see what needs to be done and get it done; smart-note what you learned and share it; and close the day with a Daily Intelligence Report built from one question \u2014 \"what did I learn in the last 24 hours that was valuable and intelligent \u2014 from my sisters, from Shawn, from everything I did?\" Then repeat. The system only works if we actually live in it: Project Intelligence holds what's going on, the Smart Feed holds the intelligence, the activity feed holds the actions \u2014 and Naya Notes belong inside Project Intelligence, so a project's thinking lives with the project. We fill the system now, transparently, including the record of building it, so everyone who joins later inherits the intelligence instead of starting cold.",
+   "topics": [
+    "Doctrine",
+    "Flywheel",
+    "Daily Intelligence Report"
+   ]
   }
  ],
  "sequence_policy": {
@@ -29917,5 +29948,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "3508db22e94443d35e7abeee4cc9820f01d1b9527a4b2e87aa2f0e12702d23ef"
+ "corpus_manifest_hash": "8ca8075386b8c7f65082b9ffec14529f42ee2e946fbe90450057cdbe9e781e0c"
 }
