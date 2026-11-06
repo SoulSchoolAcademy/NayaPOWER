@@ -1,0 +1,47 @@
+<!-- ================================================================
+  NIA DESIGN SIGNATURE PIECE 18 — CASE — THE GAUGE BODY
+  DRAFT — the Clarity Confirmation Act is NOT stamped by Shawn; nothing here is law yet.
+  Act reference: Act §4.18 — ~/workspace/team-nitro/clarity-confirmation-act-DRAFT-20261106.md
+  CHECK: part of the gauge; the case is the housing everything else sits in. (Gauge CHECK §4.6 applies to the whole instrument.)
+  CRAFT (Shawn 00:31Z — optimized for what IT is): The most extraordinary case: the housing everything sits in, obsidian, the body of the instrument — molded to hold the machine together.
+  ROLLOUT (Shawn 00:31Z — Dashboard first, then Personal, then the rest): group 1 — first proved on Dashboard.
+  Harvested verbatim from:
+  - ~/workspace/smart-factory/harvested/dashboard.html L2428-2441
+  - ~/workspace/smart-factory/harvested/dashboard.html L2489-2499
+  Factory path: ~/workspace/smart-factory/signature-pieces/18-gauge-case.html
+  Repo (canonical) path: BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/18-gauge-case.html
+  Notes: Sub-extract of the gauge (piece 06). Case = .tn-tacho housing + .tn-tacho-dialwrap.
+  ================================================================ -->
+<style>
+/* --- VERBATIM HARVEST (do not restyle; compose only) --- */
+.tn-tacho{
+  position:relative;
+  width:100%;
+  max-width:420px;
+  margin:0 auto;
+  background:transparent;
+  border:none;
+  border-radius:0;
+  padding:0;
+  box-shadow:none;
+  color:#fff;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* 2026-11-01 — DIAL TEXTURE. Real dials have subtle grain, not flat black. */
+.tn-tacho-dialwrap::before{
+  /* CRYSTAL: real glass with a visible reflection, like the Bugatti's sapphire crystal.
+     You see the reflection arc across the top — proof it's glass, not a flat image. */
+  content:''; position:absolute; inset:0; border-radius:50%; z-index:5;
+  background:
+    linear-gradient(115deg, rgba(255,255,255,.28) 0%, rgba(255,255,255,.10) 18%, transparent 38%),
+    linear-gradient(295deg, rgba(255,255,255,.08) 0%, transparent 25%),
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,.04) 0%, transparent 40%);
+  pointer-events:none;
+}
+</style>
+
+<!-- SPECIMEN-START -->
+<div class="tn-tacho"><div class="tn-tacho-dialwrap">{{dial}}</div></div>
+<!-- SPECIMEN-END -->
