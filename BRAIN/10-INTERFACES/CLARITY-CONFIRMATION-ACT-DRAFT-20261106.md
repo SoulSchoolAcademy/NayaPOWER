@@ -1,6 +1,6 @@
 # THE CLARITY CONFIRMATION ACT
 
-**DRAFT — not official. Official only on Shawn's word.**
+**LAW — ratified 2026-11-06 by Shawn's word ("Yes — the Act is law").**
 
 Ordered by Shawn, 2026-11-06 00:16Z: "write the language into the spec so it's official — what makes a designed object, app, or element Naya design; the innovation, her fingerprint, the essence of what makes it intelligent and beautiful; ALL the elements listed; the actions all Nayas follow BEFORE they act, the way they behave and operate; what the elements look like, the functionality, the objectality of NayaNET and NayaPOWER — what it is, how it looks, how it feels — the ultimate specs of what makes it Naya."
 
@@ -452,7 +452,7 @@ Every element below carries the same laws: real object, one light top-left, real
 
 The intelligent block rules are a companion document, drafted by a harvest researcher and now LAW: `~/workspace/team-nitro/hub-board-edit/intelligent-block-rules-LAW-20261106.md` (drafted 2026-11-06 ~00:20Z; ratified 2026-11-06 01:02Z by Shawn's "1000% YES!"; 11 shared laws, 5 tested denominators, 6 object classes, 13 block sections, 10 conflicts, 11 gaps). GitHub: `BRAIN/10-INTERFACES/INTELLIGENT-BLOCK-RULES-LAW-20261106.md`. Its rules are folded in here, sourced. The companion file itself remains the full detail — this section is the summary the Act carries, so the Act stands alone.
 
-**RATIFIED — LAW, 2026-11-06.** The Intelligent Block Rules are now LAW, ratified by Shawn's "1000% YES!" (2026-11-06 01:02Z). The companion's rules — the 11 shared laws, the 5 tested denominators, the 6 object classes, the 13 block sections — are no longer draft: they are the law every Naya follows. The Act as a whole remains DRAFT (official only on Shawn's word); only the companion is ratified.
+**RATIFIED — LAW, 2026-11-06.** The Intelligent Block Rules are now LAW, ratified by Shawn's "1000% YES!" (2026-11-06 01:02Z). The companion's rules — the 11 shared laws, the 5 tested denominators, the 6 object classes, the 13 block sections — are no longer draft: they are the law every Naya follows. The Act as a whole is now LAW, ratified 2026-11-06 by Shawn's word ("Yes — the Act is law"); the companion was ratified earlier the same day by his "1000% YES!".
 
 **The capstone** (Shawn's words, 00:14Z — the standard every object is judged against): "The whole thing must be a live living object, all the way through, layered on layers upon layers — because that gives the dimensional feel, the multi-dimensional in and out, the 3D real physical object effect." Is it alive, is it layered, does it feel dimensional and real? If any answer is no, the object is not done — no matter how many rules below it follows.
 
@@ -502,7 +502,7 @@ Shawn's words, 2026-11-06 00:21Z: as soon as the Act is written, it goes in GitH
 **What exists, what does not — verified 2026-11-06 00:24Z by file search (not assumed):**
 - **EXISTS — the Smart Factory catalog:** `BRAIN/10-INTERFACES/DESIGN-BLOCKS/` (manifest.json, blocks/, composition-recipes.md, SMART-BLOCKS.md, block-selection-guide.md, naya-5-beautiful-buttons, naya-5-epic-elements, naya-5-jewel-library) plus `PARTS-REGISTRY-V1.json`, `SMART-FACTORY-CANON`, and `interface-factory` in the same directory. Accessible by inventory and by code, as required.
 - **EXISTS — a design contract document:** the Naya Design Contract V1 — `BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md` and `~/workspace/user/files/NAYA-DESIGN-CONTRACT-V1.pdf`. **And the name now matches:** the NIA Design Contract DRAFT exists on GitHub main — `BRAIN/10-INTERFACES/NIA-DESIGN-CONTRACT-DRAFT-20261106.md` (28,442B, sha `fe4373c7`), filed after 00:24Z. Whether the V1 contract or the DRAFT is the document he means by "the NIA Design Contract" is for his word, not the drafter's. Do not rename either here.
-- **EXISTS — the NIA Code (closed 2026-11-06, see GAPS #19):** the NIA Code DRAFT exists on GitHub main — `BRAIN/10-INTERFACES/NIA-CODE-DRAFT-20261106.md` (15,779B, sha `c29e6c6b`). It was filed after 00:24Z; the 00:24Z search found no file by that name. Whether the DRAFT carries the Act as the design law inside the ethics is for his word — the Act remains DRAFT until he stamps it.
+- **EXISTS — the NIA Code (closed 2026-11-06, see GAPS #19):** the NIA Code DRAFT exists on GitHub main — `BRAIN/10-INTERFACES/NIA-CODE-DRAFT-20261106.md` (15,779B, sha `c29e6c6b`). It was filed after 00:24Z; the 00:24Z search found no file by that name. Whether the DRAFT carries the Act as the design law inside the ethics is for his word — the Act is now LAW, ratified 2026-11-06 by Shawn's word.
 - **EXISTS — the ultimate template for each standard page (closed 2026-11-06, see GAPS #20):** per-page templates exist in the working Factory: `~/workspace/smart-factory/templates/` (business, dashboard, hub, membership, personal, space + smart-box), recorded in `BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/INVENTORY.md`. (As verified 00:24Z they did not appear in the catalog listing; the Factory inventory work filed them after 00:24Z.)
 - **EXISTS — the signature-piece inventory (closed 2026-11-06, see GAPS #21):** the official list is `BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces/INVENTORY.md` + `inventory.json` (22 pieces with harvest sources, filed on GitHub main). (As verified 00:24Z no source defined the list; the Factory inventory work named it from the Act after 00:24Z.)
 - **EXISTS — the must-read and the activation as file locations (closed 2026-11-06, see GAPS #22):** both are found on GitHub main — the must-read is `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (19,545B, sha `a0e02942`); the activation is `BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md` (4,944B, sha `d2d4f267`). The 00:24Z search covered team-nitro and project-intelligence only, which is why they were missed. The Act is already linked in both — the must-read at Phase A step 4a, the activation at Step 1 — both labelled DRAFT until he stamps it.
@@ -588,9 +588,9 @@ Both sides reported. None resolved silently. (Companion conflicts C1–C10 folde
 
 ---
 
-## STATUS — what this draft is and what happens next
+## STATUS — what this law is and what happens next
 
-**This is a DRAFT.** It becomes official only on Shawn's word. Nothing in it is declared law by the drafter. It was compiled harvest-only from the sources above; every claim carries its source; gaps are listed, not filled; conflicts are reported, not resolved. One part is already law: the Intelligent Block Rules in §5 were ratified by Shawn's "1000% YES!" on 2026-11-06 — the rest of the Act is still draft until he stamps it.
+**This is LAW.** Ratified 2026-11-06 by Shawn's word: "Yes — the Act is law." Scope: the Act itself, not only §5/Rules. It was compiled harvest-only from the sources above; every claim carries its source; gaps are listed, not filled; conflicts are reported, not resolved. The Intelligent Block Rules in §5 were ratified by Shawn's "1000% YES!" on 2026-11-06; the Act as a whole is now LAW by his stamp.
 
 **What happens next, on his word:**
 1. He reads it and corrects it — his eye is the final compile step, and it outranks every line in this draft.
@@ -609,6 +609,8 @@ Both sides reported. None resolved silently. (Companion conflicts C1–C10 folde
 **Revision 4 — 2026-11-06 ~01:02Z (Shawn's dictation + ratification).** Collective chain technology: a lane change — there's a new cat in town, name's Naya, an AI operating system for the new internet, Naya powered; some things have to be experienced, some things can't be explained, she is beyond words; but you won't want to live without her; once you go, you don't go back, for good reason (§1, §3o). **Ratification:** the Intelligent Block Rules (§5, the companion) are now LAW, ratified by Shawn's "1000% YES!" — the Act as a whole remains DRAFT until he stamps it. No new gaps and no new conflicts were created by this revision — the new material extends what the Act already says (the collective in §1, the high-performance machine and the vehicle in §3o) and the feeling it names is judged by his eye, as the quality bar in §1 already provides.
 
 **Review pass — 2026-11-06 ~17:30Z.** Independent review against the 22 gaps + 17 conflicts (review document: `~/workspace/team-nitro/clarity-confirmation-act-REVIEW-20261106.md`; correction note for PR #3226 filed alongside). Corrections applied in this pass: companion citation → LAW file; Gaps #4, #19, #20, #21, #22 closed with evidence; live-file notes on Conflicts #7, #10, #11, #13; §6 existence bullets updated. No conflict resolved, no content invented. The Act remains DRAFT until Shawn stamps it.
+
+**Ratification — 2026-11-06 17:42Z.** Shawn's word: "Yes — the Act is law." The Act as a whole is now LAW. Scope: the Act itself, not only §5/Rules — his "1000% YES!" (01:02Z) ratified the companion rules; this stamp ratifies the Act. The letter to all NIAs went out the same day (sent letter filed alongside). No content changes were made by this ratification — status only.
 
 *Absolute clarity, forevermore — that is what this Act is for, and that is how it will be judged.*
 
