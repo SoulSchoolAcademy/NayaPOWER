@@ -4484,13 +4484,13 @@ html.os-calm
 <button type="button" class="os-ld-drawer-x" id="os-ld-drawer-x" aria-label="Close detail">×</button>
 <div id="os-ld-drawer-body"></div>
 </div>
-<!-- 2026-11-02 — SALES DRILL-DOWN. Fullscreen gauge+orbs view for the Sales orb.
+<!-- 2026-11-06 — CLICKS DRILL-DOWN (was SALES — the view IS the clicks detail: its total is clicks, revenue has no pipeline). Fullscreen gauge+orbs view for the Clicks orb.
      Same visual language as the main constellation: obsidian, thin metallic teeth,
      elite jewels, white numbers. Demo data for now. -->
-<div class="os-sales-view" id="os-sales-view" role="dialog" aria-label="Sales detail" aria-hidden="true">
-<button type="button" class="os-sales-x" id="os-sales-x" aria-label="Close sales detail">×</button>
+<div class="os-sales-view" id="os-sales-view" role="dialog" aria-label="Clicks detail" aria-hidden="true">
+<button type="button" class="os-sales-x" id="os-sales-x" aria-label="Close clicks detail">×</button>
 <button type="button" class="os-drill-back os-sales-back" id="os-sales-back" style="--sc:#e84fff;display:none;" aria-label="Back to stats"><span class="db-arrow">←</span> Back</button>
-<div class="os-view-title" style="--sc:#e84fff">SALES</div>
+<div class="os-view-title" style="--sc:#e84fff">CLICKS</div>
 <div class="os-sales-pills" id="os-sales-pills" role="tablist" aria-label="Time window">
 <button type="button" data-sw="hour">Hour</button>
 <button type="button" data-sw="day">Day</button>
@@ -4504,7 +4504,7 @@ html.os-calm
 <button type="button" data-chart="gauge" class="on" title="Gauge"><span class="ci ci-gauge"><i></i></span></button>
 <button type="button" data-chart="bars" title="Bars"><span class="ci ci-bars"><i></i><i></i><i></i></span></button>
 <button type="button" data-chart="donut" title="Donut"><span class="ci ci-donut"></span></button>
-<button type="button" data-chart="bignum" title="Big Number"><span class="ci ci-bignum">123</span></button>
+<button type="button" data-chart="bignum" title="Big Number" aria-label="Big number"><span class="ci ci-bignum" aria-hidden="true"><i></i><i></i><i></i></span></button>
 </div>
 <div class="os-sales-orbs" id="os-sales-orbs"></div>
 </div>
@@ -4527,7 +4527,7 @@ html.os-calm
 <button type="button" data-chart="gauge" class="on" title="Gauge"><span class="ci ci-gauge"><i></i></span></button>
 <button type="button" data-chart="bars" title="Bars"><span class="ci ci-bars"><i></i><i></i><i></i></span></button>
 <button type="button" data-chart="donut" title="Donut"><span class="ci ci-donut"></span></button>
-<button type="button" data-chart="bignum" title="Big Number"><span class="ci ci-bignum">123</span></button>
+<button type="button" data-chart="bignum" title="Big Number" aria-label="Big number"><span class="ci ci-bignum" aria-hidden="true"><i></i><i></i><i></i></span></button>
 </div>
 <div class="os-invites-orbs" id="os-invites-orbs"></div>
 </div>
@@ -4550,7 +4550,7 @@ html.os-calm
 <button type="button" data-chart="gauge" class="on" title="Gauge"><span class="ci ci-gauge"><i></i></span></button>
 <button type="button" data-chart="bars" title="Bars"><span class="ci ci-bars"><i></i><i></i><i></i></span></button>
 <button type="button" data-chart="donut" title="Donut"><span class="ci ci-donut"></span></button>
-<button type="button" data-chart="bignum" title="Big Number"><span class="ci ci-bignum">123</span></button>
+<button type="button" data-chart="bignum" title="Big Number" aria-label="Big number"><span class="ci ci-bignum" aria-hidden="true"><i></i><i></i><i></i></span></button>
 </div>
 <div class="os-shares-orbs" id="os-shares-orbs"></div>
 </div>
@@ -4573,7 +4573,7 @@ html.os-calm
 <button type="button" data-chart="gauge" class="on" title="Gauge"><span class="ci ci-gauge"><i></i></span></button>
 <button type="button" data-chart="bars" title="Bars"><span class="ci ci-bars"><i></i><i></i><i></i></span></button>
 <button type="button" data-chart="donut" title="Donut"><span class="ci ci-donut"></span></button>
-<button type="button" data-chart="bignum" title="Big Number"><span class="ci ci-bignum">123</span></button>
+<button type="button" data-chart="bignum" title="Big Number" aria-label="Big number"><span class="ci ci-bignum" aria-hidden="true"><i></i><i></i><i></i></span></button>
 </div>
 <div class="os-joins-orbs" id="os-joins-orbs"></div>
 </div>
@@ -4596,7 +4596,7 @@ html.os-calm
 <button type="button" data-chart="gauge" class="on" title="Gauge"><span class="ci ci-gauge"><i></i></span></button>
 <button type="button" data-chart="bars" title="Bars"><span class="ci ci-bars"><i></i><i></i><i></i></span></button>
 <button type="button" data-chart="donut" title="Donut"><span class="ci ci-donut"></span></button>
-<button type="button" data-chart="bignum" title="Big Number"><span class="ci ci-bignum">123</span></button>
+<button type="button" data-chart="bignum" title="Big Number" aria-label="Big number"><span class="ci ci-bignum" aria-hidden="true"><i></i><i></i><i></i></span></button>
 </div>
 <div class="os-notes-orbs" id="os-notes-orbs"></div>
 </div>
@@ -4620,7 +4620,7 @@ html.os-calm
 <button type="button" data-chart="gauge" class="on" title="Gauge"><span class="ci ci-gauge"><i></i></span></button>
 <button type="button" data-chart="bars" title="Bars"><span class="ci ci-bars"><i></i><i></i><i></i></span></button>
 <button type="button" data-chart="donut" title="Donut"><span class="ci ci-donut"></span></button>
-<button type="button" data-chart="bignum" title="Big Number"><span class="ci ci-bignum">123</span></button>
+<button type="button" data-chart="bignum" title="Big Number" aria-label="Big number"><span class="ci ci-bignum" aria-hidden="true"><i></i><i></i><i></i></span></button>
 </div>
 <div class="os-comments-orbs" id="os-comments-orbs"></div>
 </div>
@@ -4643,7 +4643,7 @@ html.os-calm
 <button type="button" data-chart="gauge" class="on" title="Gauge"><span class="ci ci-gauge"><i></i></span></button>
 <button type="button" data-chart="bars" title="Bars"><span class="ci ci-bars"><i></i><i></i><i></i></span></button>
 <button type="button" data-chart="donut" title="Donut"><span class="ci ci-donut"></span></button>
-<button type="button" data-chart="bignum" title="Big Number"><span class="ci ci-bignum">123</span></button>
+<button type="button" data-chart="bignum" title="Big Number" aria-label="Big number"><span class="ci ci-bignum" aria-hidden="true"><i></i><i></i><i></i></span></button>
 </div>
 <div class="os-likes-orbs" id="os-likes-orbs"></div>
 </div>
@@ -4669,7 +4669,7 @@ html.os-calm
 <button type="button" data-chart="gauge" class="on" title="Gauge"><span class="ci ci-gauge"><i></i></span></button>
 <button type="button" data-chart="bars" title="Bars"><span class="ci ci-bars"><i></i><i></i><i></i></span></button>
 <button type="button" data-chart="donut" title="Donut"><span class="ci ci-donut"></span></button>
-<button type="button" data-chart="bignum" title="Big Number"><span class="ci ci-bignum">123</span></button>
+<button type="button" data-chart="bignum" title="Big Number" aria-label="Big number"><span class="ci ci-bignum" aria-hidden="true"><i></i><i></i><i></i></span></button>
 </div>
 <div class="os-creations-orbs" id="os-creations-orbs"></div>
 </div>
@@ -4693,7 +4693,7 @@ html.os-calm
 <button type="button" data-chart="gauge" class="on" title="Gauge"><span class="ci ci-gauge"><i></i></span></button>
 <button type="button" data-chart="bars" title="Bars"><span class="ci ci-bars"><i></i><i></i><i></i></span></button>
 <button type="button" data-chart="donut" title="Donut"><span class="ci ci-donut"></span></button>
-<button type="button" data-chart="bignum" title="Big Number"><span class="ci ci-bignum">123</span></button>
+<button type="button" data-chart="bignum" title="Big Number" aria-label="Big number"><span class="ci ci-bignum" aria-hidden="true"><i></i><i></i><i></i></span></button>
 </div>
 <div class="os-saves-orbs" id="os-saves-orbs"></div>
 </div>
@@ -4722,7 +4722,7 @@ html.os-calm
 <button type="button" data-chart="gauge" class="on" title="Gauge"><span class="ci ci-gauge"><i></i></span></button>
 <button type="button" data-chart="bars" title="Bars"><span class="ci ci-bars"><i></i><i></i><i></i></span></button>
 <button type="button" data-chart="donut" title="Donut"><span class="ci ci-donut"></span></button>
-<button type="button" data-chart="bignum" title="Big Number"><span class="ci ci-bignum">123</span></button>
+<button type="button" data-chart="bignum" title="Big Number" aria-label="Big number"><span class="ci ci-bignum" aria-hidden="true"><i></i><i></i><i></i></span></button>
 </div>
 <div class="os-smartlink-orbs" id="os-smartlink-orbs"></div>
 </div>
@@ -6054,7 +6054,7 @@ button.os-ld-node .os-ld-n{
   border-color:#a06bff;
   box-shadow:0 4px 24px rgba(0,0,0,.5), 0 0 32px rgba(160,107,255,.4);
 }
-/* 2026-11-02 — SALES DRILL-DOWN VIEW. Gauge+orbs format, same family as the main
+/* 2026-11-06 — CLICKS DRILL-DOWN VIEW (was SALES). Gauge+orbs format, same family as the main
    constellation. Obsidian, thin metallic teeth, elite jewels, white numbers. */
 .os-sales-view{position:fixed !important;inset:0 !important;z-index:10001 !important;
   background:#050508 !important;display:flex !important;flex-direction:column !important;
@@ -6174,9 +6174,14 @@ button.os-ld-node .os-ld-n{
 .ci-donut{width:18px;height:18px;border:4px solid rgba(255,255,255,.85);border-radius:50%;
   background:transparent;
   box-shadow:inset 0 1px 2px rgba(0,0,0,.4), 0 1px 3px rgba(0,0,0,.5), inset 0 -1px 2px rgba(255,255,255,.15);}
-/* Big Number: 3D embossed 123 */
-.ci-bignum{font-size:11px;font-weight:900;letter-spacing:-.5px;color:#fff;
-  text-shadow:0 1px 0 rgba(255,255,255,.3), 0 -1px 0 rgba(0,0,0,.8), 0 2px 3px rgba(0,0,0,.6);}
+/* Big Number: three figure-lines (the view shows one big number + a delta line) — drawn, like its siblings, never a digit that reads as data */
+.ci-bignum{flex-direction:column;align-items:flex-start;gap:3px;}
+.ci-bignum i{display:block;height:3px;border-radius:2px;
+  background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.35));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5), 0 1px 2px rgba(0,0,0,.4);}
+.ci-bignum i:nth-child(1){width:16px;}
+.ci-bignum i:nth-child(2){width:11px;}
+.ci-bignum i:nth-child(3){width:14px;}
 
 /* 2026-11-02 — Elite: smooth fade+scale when switching chart types */
 .os-sales-gauge,.os-joins-gauge,.os-notes-gauge,.os-invites-gauge,.os-creations-gauge,
@@ -15552,9 +15557,9 @@ function switchChart(viewKey, chartType){
         if(cfg){
           var demo = window[cfg.demo];
           var win = _chartWindow[viewKey] || 'all';
-          var d = (demo && (demo[win] || demo.all)) || {pct: 50};
+          var d = (demo && (demo[win] || demo.all)) || {pct: 0};
           var fn = window[cfg.gauge];
-          if(fn) html = fn(d.pct || 50);
+          if(fn) html = fn(d.pct || 0);
         }
       }
     }catch(e){ console.error('chart render error:', e); html = '<div style="color:#fff">Error</div>'; }
@@ -15605,7 +15610,7 @@ function wireAllChartSwitches(){
   else init();
 })();
 
-/* 2026-11-02 — SALES DRILL-DOWN. Fullscreen gauge+orbs view for the Sales orb.
+/* 2026-11-06 — CLICKS DRILL-DOWN (was SALES). Fullscreen gauge+orbs view for the Clicks orb.
    Same visual language as the main constellation. Demo data for now (Shawn's order). */
 var SALES_DEMO = { /* PASS 1 v6 (f): was $12,480 / 142 pages / 89 affiliates — fabricated. The ledger writes the real numbers now. */
   hour:  {rev:'—', conv:'—', pages:0, aff:0, pct:0},
@@ -15698,7 +15703,7 @@ function salesViewRender(){
   if(g){
     if(ct==='gauge'){
       g.innerHTML='<div class="os-sales-teeth" aria-hidden="true"></div>'+salesGaugeSVG(d.pct)
-        +'<div class="os-sales-readout">'+d.pct+'<span>% of goal</span></div>';
+        +'<div class="os-sales-readout">—<span>No goal set yet</span></div>';
     }else{
       // Let switchChart handle non-gauge types
       switchChart('sales', ct);
@@ -15834,7 +15839,7 @@ function joinsViewRender(){
   if(g){
     if(ct==='gauge'){
       g.innerHTML='<div class="os-joins-teeth" aria-hidden="true"></div>'+joinsGaugeSVG(d.pct)
-        +'<div class="os-joins-readout">'+d.pct+'<span>% of goal</span></div>';
+        +'<div class="os-joins-readout">—<span>No goal set yet</span></div>';
     }else{
       // Let switchChart handle non-gauge types
       switchChart('joins', ct);
@@ -15971,7 +15976,7 @@ function notesViewRender(){
   if(g){
     if(ct==='gauge'){
       g.innerHTML='<div class="os-notes-teeth" aria-hidden="true"></div>'+notesGaugeSVG(d.pct)
-        +'<div class="os-notes-readout">'+d.pct+'<span>% of goal</span></div>';
+        +'<div class="os-notes-readout">—<span>No goal set yet</span></div>';
     }else{
       // Let switchChart handle non-gauge types
       switchChart('notes', ct);
@@ -16108,7 +16113,7 @@ function likesViewRender(){
   if(g){
     if(ct==='gauge'){
       g.innerHTML='<div class="os-likes-teeth" aria-hidden="true"></div>'+likesGaugeSVG(d.pct)
-        +'<div class="os-likes-readout">'+d.pct+'<span>% of goal</span></div>';
+        +'<div class="os-likes-readout">—<span>No goal set yet</span></div>';
     }else{
       // Let switchChart handle non-gauge types
       switchChart('likes', ct);
@@ -16245,7 +16250,7 @@ function commentsViewRender(){
   if(g){
     if(ct==='gauge'){
       g.innerHTML='<div class="os-comments-teeth" aria-hidden="true"></div>'+commentsGaugeSVG(d.pct)
-        +'<div class="os-comments-readout">'+d.pct+'<span>% of goal</span></div>';
+        +'<div class="os-comments-readout">—<span>No goal set yet</span></div>';
     }else{
       // Let switchChart handle non-gauge types
       switchChart('comments', ct);
@@ -16383,7 +16388,7 @@ function sharesViewRender(){
   if(g){
     if(ct==='gauge'){
       g.innerHTML='<div class="os-shares-teeth" aria-hidden="true"></div>'+sharesGaugeSVG(d.pct)
-        +'<div class="os-shares-readout">'+d.pct+'<span>% of goal</span></div>';
+        +'<div class="os-shares-readout">—<span>No goal set yet</span></div>';
     }else{
       // Let switchChart handle non-gauge types
       switchChart('shares', ct);
@@ -16521,7 +16526,7 @@ function creationsViewRender(){
   if(g){
     if(ct==='gauge'){
       g.innerHTML='<div class="os-creations-teeth" aria-hidden="true"></div>'+creationsGaugeSVG(d.pct)
-        +'<div class="os-creations-readout">'+d.pct+'<span>% of goal</span></div>';
+        +'<div class="os-creations-readout">—<span>No goal set yet</span></div>';
     }else{
       // Let switchChart handle non-gauge types
       switchChart('posts', ct);
@@ -16657,7 +16662,7 @@ function savesViewRender(){
   if(g){
     if(ct==='gauge'){
       g.innerHTML='<div class="os-saves-teeth" aria-hidden="true"></div>'+savesGaugeSVG(d.pct)
-        +'<div class="os-saves-readout">'+d.pct+'<span>% of goal</span></div>';
+        +'<div class="os-saves-readout">—<span>No goal set yet</span></div>';
     }else{
       // Let switchChart handle non-gauge types
       switchChart('saves', ct);
@@ -16750,7 +16755,7 @@ function smartlinkGaugeSVG(pct){
   h+='<circle cx="'+cx+'" cy="'+cy+'" r="3.5" fill="#ffbf3d"/>';
   var svg='<svg viewBox="0 0 200 208" style="width:100%;height:100%;display:block" aria-hidden="true">'+h+'</svg>';
   return '<div class="os-smartlink-teeth" aria-hidden="true"></div>'+svg
-    +'<div class="os-smartlink-readout">'+pct+'<span>% of goal</span></div>';
+    +'<div class="os-smartlink-readout">—<span>No goal set yet</span></div>';
 }
 function smartlinkOrbsHTML(d){
   var vals={'sl-imp':d.imp,'sl-click':d.clicks,'sl-ctr':d.ctr,'sl-conv':d.conv,
@@ -16937,7 +16942,7 @@ function invitesViewRender(){
   if(g){
     if(ct==='gauge'){
       g.innerHTML='<div class="os-invites-teeth" aria-hidden="true"></div>'+invitesGaugeSVG(d.pct)
-        +'<div class="os-invites-readout">'+d.pct+'<span>% of goal</span></div>';
+        +'<div class="os-invites-readout">—<span>No goal set yet</span></div>';
     }else{
       // Let switchChart handle non-gauge types
       switchChart('invs', ct);
