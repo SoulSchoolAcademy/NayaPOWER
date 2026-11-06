@@ -15837,6 +15837,7 @@ function joinsViewRender(){
   if(o) o.innerHTML=joinsOrbsHTML(d);
   var n=document.getElementById('os-joins-total-n');
   if(n) n.textContent=d.joins;
+  if(n && window._setDialogPts) window._setDialogPts(n, 'joins', d.joins);
   var pills=document.querySelectorAll('#os-joins-pills button');
   for(var i=0;i<pills.length;i++) pills[i].classList.toggle('on', pills[i].getAttribute('data-jw')===_joinsWindow);
 }
@@ -15973,6 +15974,7 @@ function notesViewRender(){
   if(o) o.innerHTML=notesOrbsHTML(d);
   var n=document.getElementById('os-notes-total-n');
   if(n) n.textContent=d.total;
+  if(n && window._setDialogPts) window._setDialogPts(n, 'notes', d.total);
   var pills=document.querySelectorAll('#os-notes-pills button');
   for(var i=0;i<pills.length;i++) pills[i].classList.toggle('on', pills[i].getAttribute('data-nw')===_notesWindow);
 }
@@ -16109,6 +16111,7 @@ function likesViewRender(){
   if(o) o.innerHTML=likesOrbsHTML(d);
   var n=document.getElementById('os-likes-total-n');
   if(n) n.textContent=d.likes.toLocaleString();
+  if(n && window._setDialogPts) window._setDialogPts(n, 'likes', d.likes);
   var pills=document.querySelectorAll('#os-likes-pills button');
   for(var i=0;i<pills.length;i++) pills[i].classList.toggle('on', pills[i].getAttribute('data-lw')===_likesWindow);
 }
@@ -16245,6 +16248,7 @@ function commentsViewRender(){
   if(o) o.innerHTML=commentsOrbsHTML(d);
   var n=document.getElementById('os-comments-total-n');
   if(n) n.textContent=d.total;
+  if(n && window._setDialogPts) window._setDialogPts(n, 'comments', d.total);
   var pills=document.querySelectorAll('#os-comments-pills button');
   for(var i=0;i<pills.length;i++) pills[i].classList.toggle('on', pills[i].getAttribute('data-cw')===_commentsWindow);
 }
@@ -16382,6 +16386,7 @@ function sharesViewRender(){
   if(o) o.innerHTML=sharesOrbsHTML(d);
   var n=document.getElementById('os-shares-total-n');
   if(n) n.textContent=d.shares;
+  if(n && window._setDialogPts) window._setDialogPts(n, 'shares', d.shares);
   var pills=document.querySelectorAll('#os-shares-pills button');
   for(var i=0;i<pills.length;i++) pills[i].classList.toggle('on', pills[i].getAttribute('data-sw')===_sharesWindow);
 }
@@ -16519,6 +16524,7 @@ function creationsViewRender(){
   if(o) o.innerHTML=creationsOrbsHTML(d);
   var n=document.getElementById('os-creations-total-n');
   if(n) n.textContent=d.pages;
+  if(n && window._setDialogPts) window._setDialogPts(n, 'posts', d.pages);
   var pills=document.querySelectorAll('#os-creations-pills button');
   for(var i=0;i<pills.length;i++) pills[i].classList.toggle('on', pills[i].getAttribute('data-cw')===_creationsWindow);
 }
@@ -16654,6 +16660,7 @@ function savesViewRender(){
   if(o) o.innerHTML=savesOrbsHTML(d);
   var n=document.getElementById('os-saves-total-n');
   if(n) n.textContent=d.total;
+  if(n && window._setDialogPts) window._setDialogPts(n, 'saves', d.total);
   var pills=document.querySelectorAll('#os-saves-pills button');
   for(var i=0;i<pills.length;i++) pills[i].classList.toggle('on', pills[i].getAttribute('data-sw')===_savesWindow);
 }
@@ -16933,6 +16940,7 @@ function invitesViewRender(){
   if(o) o.innerHTML=invitesOrbsHTML(d);
   var n=document.getElementById('os-invites-total-n');
   if(n) n.textContent=d.sent;
+  if(n && window._setDialogPts) window._setDialogPts(n, 'invs', d.sent);
   var pills=document.querySelectorAll('#os-invites-pills button');
   for(var i=0;i<pills.length;i++) pills[i].classList.toggle('on', pills[i].getAttribute('data-sw')===_invitesWindow);
 }
@@ -16966,6 +16974,34 @@ function invitesViewClose(){
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', wire);
   else wire();
 })();
+/* v7.1 FIX 1c: a drill-down dialog must agree with its orb — the orb
+   shows POINTS, the dialog's headline shows the COUNT. This writes the
+   points into the dialog's total label ("Invites Sent · 50 pts") on
+   every render, so both numbers sit side by side, both labelled.
+   Clicks earn no points, so the Sales / Smart Link dialogs keep their
+   plain count label ("Clicks") — honest as a count. Called from each
+   *ViewRender right after it sets the total number. */
+window._setDialogPts = function(totalNEl, key, count){
+  try{
+    if (!totalNEl || !totalNEl.parentNode) return;
+    var lab = totalNEl.parentNode.querySelector('div:last-child');
+    if (!lab) return;
+    var map = {
+      invs:{base:'Invites Sent', value:25},
+      posts:{base:'Pages Created', value:25},
+      notes:{base:'Smart Notes', value:35},
+      joins:{base:'Total Joins', value:50},
+      likes:{base:'Total Likes', value:1},
+      shares:{base:'Total Shares', value:15},
+      comments:{base:'Comments', value:5},
+      saves:{base:'Total Saves', value:2}
+    };
+    var m = map[key];
+    if (!m) return;
+    var c = (typeof count === 'number') ? count : 0;
+    lab.textContent = m.base + ' · ' + (c*m.value).toLocaleString() + ' pts';
+  }catch(e){}
+};
 function ldOpenNode(key, noFocus){
   /* 2026-11-02 — Sales gets the full gauge+orbs drill-down view, not the drawer. */
   if(key==='sales'){ salesViewOpen(); return; }
