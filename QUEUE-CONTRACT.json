@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-05T21:48:30Z",
-  "tip": "0cd79b45ec86b27f2ebe3d776baaa0809f0789bd",
+  "generated_at": "2026-11-06T03:48:47Z",
+  "tip": "1afe8caf5b1a7b93d78b5857c213f3c2154232a3",
   "prs": [
     {
       "number": 3089,
@@ -20,6 +20,15 @@
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
       "head": "1679fbdb7a7e1b87def5afbd4dc88dfe47274b9c"
+    },
+    {
+      "number": 3237,
+      "title": "Smart Box live surface: nayanet.app/smartbox (worker naya-smart-box, KV data, add-entry POST)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate, delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "ec1db0c0ca7bebeb00accbb1ac8959cea72259e8"
     }
   ]
 }
