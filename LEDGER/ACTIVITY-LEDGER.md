@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-06 15:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-06 16:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30524,6 +30524,12 @@ _Last updated: 2026-11-06 15:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261106-0810 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-06 08:10 PST: full-queue claim evaluation, 0 claimed, 31 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (fresh window; no prior Team Naya Scorer row for this receipt): sweep script + log exist (claim-sweep-20261106-0809.py/.log, 16:10 UTC); log shows 27 script refusals (25 exit 7 + 2 exit 2, incl. both exit-2 gate-stamped briefs, one carrying the 'Do NOT claim this if you are Naya Clarity' stamp); the 4 briefs absent 
 
 ### ✅ 20261106-0706 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
