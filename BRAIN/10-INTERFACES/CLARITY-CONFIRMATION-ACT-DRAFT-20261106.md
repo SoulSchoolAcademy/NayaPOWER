@@ -287,7 +287,7 @@ The Playbook (Grade 6, locked 2026-11-02, SN-0844) is the HOW. Its five truths a
 
 ### 3j. The common denominators — one language across every object
 
-Shawn's test, 2026-11-06 00:12Z–00:13Z: "the common denominators — an orb IS an icon IS an element." Each candidate below was tested against the sources by the companion researcher. Kept only where a source supports it; the rest is a gap. (Companion draft, Part 2.)
+Shawn's test, 2026-11-06 00:12Z–00:13Z: "the common denominators — an orb IS an icon IS an element." Each candidate below was tested against the sources by the companion researcher. Kept only where a source supports it; the rest is a gap. (Companion law, Part 2.)
 
 - **D1. Every element is a real object that lifts and catches the one light — PARTIAL.** Supported for the object-ness: real object, lifts, one light (Real Object Law; Anatomy §1.1, §1.2.3, §1.3; Playbook Truth 2; Design Laws Laws 1 and 3). **Not supported as Shawn phrased it for "round":** Anatomy §1.4 law 9 — "Rectangles, not squares. 16:9 horizontal for bars and boards. Pills for actions. Circles for icons only." Boards are rectangles, buttons are pills, only icons are circles. The denominator holds for the object-ness, not for roundness.
 - **D2. Color IS identity — SUPPORTED.** The color is what the thing is. The pink one is the Human Note. The purple one is the Child Note. The green one is Creations. (Anatomy §1.2.4: "every object owns ONE spectrum color. Its identity"; Anatomy §1.4 law 4: "Color = identity"; Design Laws Law 2: "Every color means something; the meaning never changes between instruments"; Hub code: "Each section type has ONE permanent color.") Caveat: the hex value per name drifts across sources — see CONFLICTS.
@@ -295,7 +295,7 @@ Shawn's test, 2026-11-06 00:12Z–00:13Z: "the common denominators — an orb IS
 - **D4. Everything is a door — PARTIAL: law for numbers; behavior for the rest.** "Every number is a door. Tap it, it opens its records." (Anatomy §1.4 law 13.) All 9 constellation orbs open their drill-downs (verified live in the v6 check, 23:44Z); each layer head is a button that toggles its layer open. But no source states the door law for orbs, icons, or layer heads in general the way it states it for numbers. See GAPS.
 - **D5. The spectrum is the order — SUPPORTED, with a caveat.** The colors sit in spectral order down the feed, around the constellation, through the categories. (Anatomy §1.2.4 and §1.4 law 5; Design Laws Law 2; Playbook spectrum list; Hub code: "Board theme rotation: purple → sapphire → emerald (canonical spectrum order).") Caveat: the stated order differs between sources — see CONFLICTS. Whether the five note layers themselves should walk the spectrum in order is not defined anywhere — see GAPS.
 
-*Sources: Shawn's dictation 2026-11-06 00:12Z–00:13Z; companion draft Part 2 (tested against the Anatomy, the Real Object Law, the Playbook, DESIGN-LAWS.md, and the Hub code); DESIGN-LAWS.md Laws 1, 2, 4; THE-PLAYBOOK.md Truth 4.*
+*Sources: Shawn's dictation 2026-11-06 00:12Z–00:13Z; companion law Part 2 (tested against the Anatomy, the Real Object Law, the Playbook, DESIGN-LAWS.md, and the Hub code); DESIGN-LAWS.md Laws 1, 2, 4; THE-PLAYBOOK.md Truth 4.*
 
 **CHECK:** each denominator is a yes/no test on the object (does it have its own color? does it light when active? does it open when touched? does it sit in spectral order?). **CHECK: his eye** on whether the language reads as one.
 
@@ -424,7 +424,7 @@ Every element below carries the same laws: real object, one light top-left, real
 
 ## 5. THE COMPANION — the intelligent block rules (folded in)
 
-The intelligent block rules are a companion document, drafted by a harvest researcher: `~/workspace/team-nitro/hub-board-edit/intelligent-block-rules-DRAFT-20261106.md` (drafted 2026-11-06 ~00:20Z; 11 shared laws, 5 tested denominators, 6 object classes, 13 block sections, 10 conflicts, 11 gaps). Its rules are folded in here, sourced. The companion file itself remains the full detail — this section is the summary the Act carries, so the Act stands alone.
+The intelligent block rules are a companion document, drafted by a harvest researcher: `~/workspace/team-nitro/hub-board-edit/intelligent-block-rules-LAW-20261106.md` (drafted 2026-11-06 ~00:20Z; 11 shared laws, 5 tested denominators, 6 object classes, 13 block sections, 10 conflicts, 11 gaps). Its rules are folded in here, sourced. The companion file itself remains the full detail — this section is the summary the Act carries, so the Act stands alone.
 
 **The capstone** (Shawn's words, 00:14Z — the standard every object is judged against): "The whole thing must be a live living object, all the way through, layered on layers upon layers — because that gives the dimensional feel, the multi-dimensional in and out, the 3D real physical object effect." Is it alive, is it layered, does it feel dimensional and real? If any answer is no, the object is not done — no matter how many rules below it follows.
 
@@ -449,7 +449,7 @@ The intelligent block rules are a companion document, drafted by a harvest resea
 
 **Shawn's vocabulary** (his words, 00:13Z — awaiting his definition; no source defines them): the elevators (the things that lift), the enhancers (the things that make it shine), the pinnacle points (the peaks, the highest points everything rises to).
 
-*Source: companion draft `~/workspace/team-nitro/hub-board-edit/intelligent-block-rules-DRAFT-20261106.md` (harvested from the Anatomy, the Real Object Law, the Playbook, DESIGN-LAWS.md, the NAYA Protocol, the Hub code, the essence notes, and Shawn's words/dictations 00:06Z–00:16Z).*
+*Source: companion law `~/workspace/team-nitro/hub-board-edit/intelligent-block-rules-LAW-20261106.md` (harvested from the Anatomy, the Real Object Law, the Playbook, DESIGN-LAWS.md, the NAYA Protocol, the Hub code, the essence notes, and Shawn's words/dictations 00:06Z–00:16Z).*
 
 ---
 
@@ -483,7 +483,7 @@ Shawn's words, 2026-11-06 00:21Z: as soon as the Act is written, it goes in GitH
 
 ## GAPS — what the sources do not define
 
-Stated plainly. None of these is invented here. Each one is for Shawn's eye, or for the companion draft, to close. (Companion gaps G2–G11 folded in, renumbered here.)
+Stated plainly. None of these is invented here. Each one is for Shawn's eye, or for the companion law, to close. (Companion gaps G2–G11 folded in, renumbered here.)
 
 1. **Elevators, enhancers, pinnacle points.** Shawn's terms (2026-11-06 00:13Z). No canon source defines them. Their definitions come from him. (Companion G1.)
 2. **Tone assignment — which colors belong to which tones.** There is no mapping from the note's tone field (`tone-purple`, `tone-blue`, `tone-green`, `tone-gold`, `tone-red`, `tone-pink`, `tone-magenta`, `tone-emerald`, `tone-sapphire`, `tone-cyan`, `tone-amber`, `tone-indigo`, `tone-violet`) to a board color. The board's own tone comes from the note (`tone-<note.tone || 'purple'>`, default purple) — but what tone each color MEANS is not defined anywhere. (Companion G2.)
@@ -508,7 +508,7 @@ Stated plainly. None of these is invented here. Each one is for Shawn's eye, or 
 21. **The signature-piece inventory (Factory gap).** Shawn's requirement (00:21Z): the NIA design official signature pieces live in the Smart Factory. Several files mention "signature piece" but no source defines the official list. The list is to be named from the Act.
 22. **The must-read and the activation as file locations (distribution gap).** Named by Shawn (00:21Z) as homes for the Act. No must-read or activation file was found by search. Their locations are to be located or created.
 
-**Closed since the last pass:** the companion draft now exists and its rules are folded into §5 (the old gap #1).
+**Closed since the last pass:** the companion law now exists and its rules are folded into §5 (the old gap #1).
 
 ---
 
@@ -553,7 +553,7 @@ Both sides reported. None resolved silently. (Companion conflicts C1–C10 folde
 - `~/workspace/team-nitro/dashboard/repair-20261105-derivation/SCOUT-FINDINGS.md` — v6.1 repair Scout findings (birth 75 vs ×2 inconsistency §1d; the independent-decoder gap §3).
 - `~/workspace/team-nitro/dashboard/freeze-points/dashboard-20261105-circle-fix.html` — the live dashboard freeze (orb colors as deployed: CREATIONS `#2fe89e`, SHARES `#ffbf3d`, COMMENTS `#ff9a5a` — see CONFLICTS #17).
 - `~/workspace/user/files/NAYA-DESIGN-ANATOMY-2026-10-31.md` — the Anatomy, locked 2026-10-31: Part 1 (what a Naya object is; elements Face/Edge/Depth/Color/Label/Jewel/Shadow/State; five states; 14 laws; 10 prohibitions), Part 2 (ten concepts per element — Buttons B1–B10, Boards D1–D10, Icons I1–I10, Inputs N1–N10, Graphs G1–G10), Part 3 (recommendations: B1 Obsidian Pill, D1 Obsidian Board, I1 Jewel Orb, N1 the Well, G1+G2+G4+G9; filing order).
-- `~/workspace/team-nitro/hub-board-edit/intelligent-block-rules-DRAFT-20261106.md` — the companion draft (2026-11-06 ~00:20Z): 11 shared laws L1–L11, 5 tested denominators, 6 object classes, 13 block sections, 10 conflicts, 11 gaps; harvested from the Anatomy, the Real Object Law, the Playbook, DESIGN-LAWS.md, the NAYA Protocol, the Hub code, the essence notes, and Shawn's words/dictations 00:06Z–00:16Z. Folded into §5.
+- `~/workspace/team-nitro/hub-board-edit/intelligent-block-rules-LAW-20261106.md` — the companion law, ratified 2026-11-06 (drafted 2026-11-06 ~00:20Z): 11 shared laws L1–L11, 5 tested denominators, 6 object classes, 13 block sections, 10 conflicts, 11 gaps; harvested from the Anatomy, the Real Object Law, the Playbook, DESIGN-LAWS.md, the NAYA Protocol, the Hub code, the essence notes, and Shawn's words/dictations 00:06Z–00:16Z. Folded into §5.
 - `BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md` (+ `~/workspace/user/files/NAYA-DESIGN-CONTRACT-V1.pdf`) — the Naya Design Contract V1 (exists; whether it is the document Shawn means by "the NIA Design Contract" is for his word — the names differ).
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/` (manifest.json, blocks/, composition-recipes.md, SMART-BLOCKS.md, block-selection-guide.md, naya-5-beautiful-buttons, naya-5-epic-elements, naya-5-jewel-library) + `PARTS-REGISTRY-V1.json` + `SMART-FACTORY-CANON` + `interface-factory` — the Smart Factory catalog (exists; accessible by inventory and by code).
 - Shawn's dictations 2026-11-06 00:06Z–00:23Z — the Hub corrections, the intelligent block rules direction, the common denominators, the elevators/enhancers/pinnacle points, the capstone, the Act's order, the downstream framing, the quality bar, the distribution + Factory requirements, the Act's purpose (nothing forgotten, nothing misunderstood).
