@@ -11,7 +11,13 @@
    Tries jsdelivr, falls back to unpkg, then gives up gracefully with a message. */
 (function(){
   var loaded = false;
-  function done(){ loaded = true; }
+  function done(){
+    if (loaded) return; /* one wake-up: jsdelivr AND unpkg can both fire onload */
+    loaded = true;
+    /* P1 (2026-11-06): a LATE bundle must wake the data clients — they are
+       created lazily now, and every loader re-runs on this event. */
+    try { window.__sbReady = true; window.dispatchEvent(new CustomEvent('supabase-ready')); } catch(e) {}
+  }
   function fail(){
     if (loaded) return;
     // Both CDNs failed — update the loading text so it's not stuck forever
@@ -4471,6 +4477,7 @@ var SB_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
 var LADDER=[[0,'Emerging'],[1000,'Stirring'],[3000,'Rising'],[6000,'Advancing'],[9000,'Radiant'],[12000,'Loved'],[15000,'Mastering'],[25000,'Legendary'],[50000,'Iconic'],[75000,'Ten Star']];
 var KINDL={posts:'wall posts',notes:'smart notes',msgs:'messages',invs:'invites',clicks:'link clicks',joins:'joins'};
 var liSB=null, liBriefing='', liBriefPlain='', liBusy=false, liAudio=null, liSession=0, liDismissed=false, liSig='', liPaceDetail='';
+var liT0=Date.now(); /* P1 (2026-11-06): watchdog clock — "Reading your world…" never sits past ~2 s. */
 function spine(){ return window._osSpine||null; }
 function sb(){ if(liSB) return liSB; try{ if(typeof supabase==='undefined') return null; liSB=supabase.createClient(SB_URL,SB_ANON); }catch(e){ liSB=null; } return liSB; }
 function palias(){ return window.PAGE_ALIAS||'flagship-personal'; }
@@ -4690,7 +4697,7 @@ function actMail(){
 /* ---- wire ---- */
 function wire(){
   var info=el('info'), det=el('detail');
-  if(info&&det&&!info.dataset.w){ info.dataset.w='1'; info.addEventListener('click',function(){ var s=spine(); if(det.hidden){ if(s)det.innerHTML=detailHTML(s); det.hidden=false; } else det.hidden=true; }); }
+  if(info&&det&&!info.dataset.w){ info.dataset.w='1'; info.addEventListener('click',function(){ var s=spine(); if(det.hidden){ det.innerHTML=s?detailHTML(s):'Still reading your world \u2014 the numbers have not arrived yet. Give it a moment, then tap again.'; det.hidden=false; } else det.hidden=true; }); }
   var br=el('brief'); if(br&&!br.dataset.w){ br.dataset.w='1'; br.addEventListener('click',briefMe); }
   var ix=el('insight-x'); if(ix&&!ix.dataset.w){ ix.dataset.w='1'; ix.addEventListener('click',function(){ liDismissed=true; var ins=el('insight'); if(ins)ins.hidden=true; }); }
   document.addEventListener('click',function(e){
@@ -4702,9 +4709,9 @@ function wire(){
   });
 }
 function sig(s){ return [s.score,s.posts,s.notes,s.msgs,s.invs,s.clicks,s.joins,s.people,(s.deltas&&s.deltas.week)||0].join('|'); }
-function tick(){ var s=spine(); if(!s) return; var g; try{ g=sig(s); }catch(e){ return; } if(g===liSig) return; liSig=g; try{ render(s); }catch(e){} }
+function tick(){ var s=spine(); if(!s){ /* P1: never sit on "Reading your world…" — after ~1.8 s with no spine, show the honest quiet-world line; the real reading replaces it the moment the spine lands. */ if(Date.now()-liT0>1800){ var ln=el('line'); if(ln&&ln.classList.contains('loading')){ ln.classList.remove('loading'); ln.innerHTML='Your world is quiet right now — <b>start creating</b> and watch this come alive.'; } } return; } var g; try{ g=sig(s); }catch(e){ return; } if(g===liSig) return; liSig=g; try{ render(s); }catch(e){} }
 wire();
-setInterval(tick,2000); setTimeout(tick,500);;
+setInterval(tick,2000); setTimeout(tick,500); setTimeout(tick,2000); /* P1: a tick near 2 s so the watchdog never waits for the 2.5 s tick. */
 })();
 </script>
 
@@ -7269,7 +7276,14 @@ NF.register(UNIT, {
       }
     } catch(e) { console.log('Auth init failed:', e); }
     
-    if (!sb) return;
+    if (!sb) {
+      /* P1 (2026-11-06): the CDN may still be loading — start auth when it
+         arrives, instead of never starting at all. */
+      if (typeof window !== 'undefined' && window.addEventListener) window.addEventListener('supabase-ready', function(){ if (window.NayaAuth && window.NayaAuth.client) return; try { if (typeof supabase === 'undefined') return; sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON); window.NayaAuth = { client: sb, user: null, session: null }; } catch(e) { return; } startAuth(); });
+      return;
+    }
+    startAuth();
+    function startAuth(){
     
     // Check for existing session
     sb.auth.getSession().then(function(res){
@@ -7375,6 +7389,7 @@ NF.register(UNIT, {
     } else {
       initAuthButton();
     }
+    } /* end startAuth — P1: the tail runs now, or when the bundle lands */
   })();
 
 </script><script id="os-script">
@@ -7393,7 +7408,13 @@ NF.register(UNIT, {
   var SB_URL = 'https://dahisasgpfvziswqvmvm.supabase.co';
   var SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGlzYXNncGZ2emlzd3F2bXZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2MjM3ODgsImV4cCI6MjEwMzE5OTc4OH0.zX2r3T23sKebUMBdNg-4Noxos8JFOHaK2rRwqAVXU_s';
   var sb = null;
-  try { if (typeof supabase !== 'undefined') sb = supabase.createClient(SB_URL, SB_ANON); } catch(e) {}
+  /* P1 (2026-11-06): the Supabase CDN loads async AFTER this script parses,
+     so a parse-time client is null forever when the bundle arrives late.
+     Create the client lazily, on first use; when the bundle lands late,
+     the home loaders re-run so the wall and profile fill. */
+  function getSb(){ if (sb) return sb; try { if (typeof supabase === 'undefined') return null; sb = supabase.createClient(SB_URL, SB_ANON); } catch(e) { sb = null; } return sb; }
+  try { getSb(); } catch(e) {}
+  if (typeof window !== 'undefined' && window.addEventListener) window.addEventListener('supabase-ready', function(){ if (getSb()){ try { loadProfile(); } catch(e) {} try { loadWall(); } catch(e) {} } });
   function $(id){ return document.getElementById(id); }
   function esc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
   function relLabel(iso){ var ms=Date.now()-new Date(iso).getTime(); if(ms<60000) return 'just now'; var m=Math.floor(ms/60000); if(m<60) return m+'m ago'; var h=Math.floor(m/60); if(h<24) return h+'h ago'; var d=Math.floor(h/24); return d+'d ago'; }
@@ -7543,6 +7564,9 @@ NF.register(UNIT, {
        Settings is a tab in the one navigation — reachable from every block. — */
   var VIEWS=['home','dashboard','about','today','notes','people','message','inbox','growth','lists','reports','settings','scheduler'];
   function showView(name, skipPush){
+    /* P1: every navigation re-resolves the client, so a view opened after a
+       late bundle still reads live data. */
+    sb = getSb();
     if (VIEWS.indexOf(name)<0) name='home';
     document.querySelectorAll('[data-os-view]').forEach(function(el){ el.classList.toggle('on', el.getAttribute('data-os-view')===name); });
     document.querySelectorAll('.ph-navtab').forEach(function(t){ t.classList.toggle('on', t.getAttribute('data-view')===name); });
@@ -10453,7 +10477,12 @@ function wallCard(j, iso, pid, idx){
   var SB_URL = 'https://dahisasgpfvziswqvmvm.supabase.co';
   var SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGlzYXNncGZ2emlzd3F2bXZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2MjM3ODgsImV4cCI6MjEwMzE5OTc4OH0.zX2r3T23sKebUMBdNg-4Noxos8JFOHaK2rRwqAVXU_s';
   var sb = null;
-  try { if (typeof supabase !== 'undefined') sb = supabase.createClient(SB_URL, SB_ANON); } catch(e) {}
+  /* P1 (2026-11-06): the Supabase CDN loads async AFTER this script parses,
+     so a parse-time client is null forever when the bundle arrives late.
+     Create the client lazily, on first use — loadDashboard() re-resolves it
+     on every call and retries while the bundle is still on its way. */
+  function getSb(){ if (sb) return sb; try { if (typeof supabase === 'undefined') return null; sb = supabase.createClient(SB_URL, SB_ANON); } catch(e) { sb = null; } return sb; }
+  if (typeof window !== 'undefined' && window.addEventListener) window.addEventListener('supabase-ready', function(){ if (loadDashboard._timer) { clearTimeout(loadDashboard._timer); loadDashboard._timer = null; } if (getSb()) loadDashboard(); });
   function $(id){ return document.getElementById(id); }
   function esc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
   function presenceOf(iso){
@@ -11185,7 +11214,7 @@ function wallCard(j, iso, pid, idx){
      re-renders — the numbers move, the graphs grow, nothing else
      on the page reloads. Same selector the quiet-refresh uses. — */
   function loadLinksOnly(){
-    if (!sb) return;
+    sb = getSb(); if (!sb) return;
     var linkErr={v:false};
     var linkP=sb.from('smart_links').select('id,name,target_url,created_at').eq('owner_alias', PAGE_ALIAS).eq('active', true).order('created_at',{ascending:true}).limit(100).then(function(r){ if (r.error) linkErr.v=true; return (r&&r.data)||[]; }, function(){ linkErr.v=true; return []; });
     var statsP=rowsOf(sb.from('smart_link_daily_stats').select('link_id,day,clicks,joins').eq('owner_alias', PAGE_ALIAS).limit(1000));
@@ -11200,11 +11229,24 @@ function wallCard(j, iso, pid, idx){
   }, 30000);
   function loadDashboard(){
     var front=$('os-dash'); if (!front) return;
+    sb = getSb();
     if (!sb){
+      /* P1: the bundle may still be on its way — retry once a second for
+         up to ~15 s. The "Connection unavailable" note is written only
+         once the retries are exhausted, never while the bundle is loading. */
+      if (!loadDashboard._since) loadDashboard._since = Date.now();
+      if (Date.now() - loadDashboard._since < 15000){
+        if (!loadDashboard._timer) loadDashboard._timer = setTimeout(function(){ loadDashboard._timer = null; loadDashboard(); }, 1000);
+        return;
+      }
       var n=$('os-dash-n-posts-note'); if (n) n.textContent='Connection unavailable — this front reads live data only, so it shows nothing rather than something invented.';
       var lh=$('os-dash-links-head'); if (lh) lh.textContent='Connection unavailable — Smart Links read live data only.';
       return;
     }
+    loadDashboard._since = 0;
+    /* P1: a pending retry timer is now redundant — clear it so the
+       event-driven load and the timer can never double-fetch. */
+    if (loadDashboard._timer) { clearTimeout(loadDashboard._timer); loadDashboard._timer = null; }
     var wallP=(window.osNotesRows ? window.osNotesRows() : rowsOf(sb.from('smart_notes').select('id,content,created_at').eq('owner_alias', PAGE_ALIAS).order('created_at',{ascending:false}).limit(500)));
     var thrP=rowsOf(sb.from('smart_mail_threads').select('id,subject,from_alias,preview,created_at').eq('to_alias', PAGE_ALIAS).order('created_at',{ascending:false}).limit(30));
     var invP=rowsOf(sb.from('invites').select('invitee_name,status,dry_run,created_at').eq('inviter_alias', PAGE_ALIAS).order('created_at',{ascending:false}).limit(200));
