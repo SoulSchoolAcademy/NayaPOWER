@@ -4466,7 +4466,7 @@ html.os-calm
 </div>
 <div class="os-score-elegant" id="os-score-elegant">
   <div class="os-se-val" id="os-se-val"><span class="os-skel-line" style="width:120px;height:59px;border-radius:12px;vertical-align:middle;"></span></div>
-  <div class="os-se-label">SMART SCORE</div>
+  <div class="os-se-label" id="os-se-label">SMART SCORE</div>
   <div class="os-score-derive" id="os-score-derive" aria-live="polite"></div>
   <div class="os-score-next" id="os-score-next"></div>
 </div>
@@ -17500,6 +17500,7 @@ function ldLayoutNodes(){
     if (h.kind === 'link'){
       var st = _linkStats(h.id);
       view.center = st.clicksWin;
+      view.clicksAll = st.clicksAll; view.joinsWin = st.joinsWin; /* PASS 1 v7 (2026-11-05): the derivation + popover need the link's all-time clicks and window joins — additive, no behaviour change. */
       view.centerLabel = 'clicks · ' + _winLabel();
       view.below = st.joinsAll;
       view.belowLabel = 'joins · all time';
@@ -17598,6 +17599,10 @@ function ldLayoutNodes(){
       var v = window._featuredDisplay();
       var bigVal = document.getElementById('os-se-val');
       if (bigVal) bigVal.textContent = _fmt(v.center);
+      /* PASS 1 v7 (2026-11-05) — the number moved; the derivation under
+         it moves with it, or a featured switch shows the new number
+         with the stale derivation. */
+      try{ if (typeof window._renderScoreDerivation === 'function') window._renderScoreDerivation(); }catch(e){}
     }catch(e){}
   };
   /* ---- world boards: one shared component ---- */
@@ -17773,6 +17778,100 @@ function refreshDrillDemos(PD){
                               'all':{imp:'—', clicks:clicks, unique:'—', ctr:'—', conv:joins, crate:joinRate, rev:'—', epc:'—', aov:'—', rpk:'—', pct:0} });
   }
 window.refreshDrillDemos = refreshDrillDemos;
+/* PASS 1 v7 (2026-11-05) — THE DERIVATION FOLLOWS THE BIG NUMBER.
+   Defect: the big number reads the FEATURED holder (a link's clicks
+   when a link is featured) while the derivation + next-move under it
+   always rendered the WORLD points math — 259 above, =300 below, on
+   the default view. This one shared render is the single writer for
+   both lines: it reads window._featuredDisplay() and branches on
+   view.kind. World/page keep the v6 derivation verbatim (points,
+   x2 birth, "1 join takes you to"); a link shows its own numbers
+   (clicks in window, joins all time, CTR — counts, never points, no
+   x2, no invented conversion) and a click milestone as its next move.
+   It also sets #os-se-label from view.centerLabel (was static
+   "SMART SCORE" even for link clicks). Called from loadPointsBoard
+   (with its total/orbData), from the PTS/% toggle, and from
+   _featuredSyncBig — so a featured switch or a mode flip can never
+   leave a stale derivation under a fresh number. */
+window._renderScoreDerivation = function(totalArg, orbDataArg){
+  try{
+    var total = totalArg, orbData = orbDataArg;
+    if (typeof total !== 'number' || !orbData){
+      /* Recompute from live data (toggle / _featuredSyncBig paths).
+         window.* first — the bare names are IIFE-scoped (v6 lesson). */
+      total = 0; orbData = [];
+      var PDx = (typeof window.ldData === 'function') ? window.ldData() : ((typeof ldData === 'function') ? ldData() : (window._dashD || {}));
+      var NODESx = window.LD_NODES || ((typeof LD_NODES !== 'undefined') ? LD_NODES : []);
+      NODESx.forEach(function(nd){
+        var nx = (typeof window.ldNodeCount === 'function') ? window.ldNodeCount(nd, PDx, 'all') : ((typeof ldNodeCount === 'function') ? ldNodeCount(nd, PDx, 'all') : 0);
+        var ptsx = nd.value ? nx*nd.value : nx;
+        total += ptsx;
+        if (ptsx > 0) orbData.push({key: nd.key, label: nd.label, pts: ptsx, color: nd.color});
+      });
+    }
+    var view = (typeof window._featuredDisplay === 'function') ? window._featuredDisplay() : null;
+    var labEl = document.getElementById('os-se-label');
+    if (labEl && view && view.centerLabel) labEl.textContent = String(view.centerLabel).toUpperCase();
+    var derEl = document.getElementById('os-score-derive');
+    var nextEl = document.getElementById('os-score-next');
+    if (!view || view.kind !== 'link'){
+      /* ---- world / page: the v6 derivation, verbatim ---- */
+      if (derEl){
+        var spineScore = (window._osSpine && typeof window._osSpine.score === 'number') ? window._osSpine.score : total;
+        var mult = (total > 0 && spineScore === total * 2) ? 2 : 1;
+        var h = '';
+        if (orbData.length === 0){
+          h = '<span class="os-sd-empty">No points yet — your first action lights the board.</span>';
+        } else {
+          orbData.forEach(function(o, i){
+            if (i > 0) h += '<span class="os-sd-op">+</span>';
+            h += '<button type="button" class="os-sd-part" data-derive-part="' + o.key + '">' + o.pts + ' ' + o.label + '</button>';
+          });
+          h += '<span class="os-sd-op">=</span><span class="os-sd-sum">' + total + '</span>';
+          if (mult === 2){ h += '<span class="os-sd-op">× 2 birth</span><span class="os-sd-op">=</span><span class="os-sd-sum">' + spineScore + '</span>'; }
+          else if (spineScore !== total){ h += '<span class="os-sd-op">=</span><span class="os-sd-sum">' + spineScore + '</span>'; }
+        }
+        derEl.innerHTML = h;
+      }
+      if (nextEl){
+        var spineScore2 = (window._osSpine && typeof window._osSpine.score === 'number') ? window._osSpine.score : total;
+        var mult2 = (total > 0 && spineScore2 === total * 2) ? 2 : 1;
+        var gain = 50 * mult2;
+        nextEl.innerHTML = '1 join takes you to ' + (spineScore2 + gain) + ' — <button type="button" class="os-sd-share" data-sl-copy="joinus">share your link</button>';
+      }
+    } else {
+      /* ---- link: its own counts, never points, never x2 ---- */
+      var clicks = (typeof view.center === 'number' && isFinite(view.center)) ? view.center : 0;
+      var joins = (typeof view.below === 'number' && isFinite(view.below)) ? view.below : 0;
+      var ctr = (typeof view.ctr === 'number' && isFinite(view.ctr)) ? view.ctr : null;
+      var linkName = String(view.id || 'joinus').replace(/["'<>]/g, '');
+      if (derEl){
+        var h2 = '';
+        if (!clicks){
+          h2 = '<span class="os-sd-empty">No clicks yet — share your link to light the board.</span>';
+        } else {
+          h2 += '<button type="button" class="os-sd-part" data-derive-part="sales">' + clicks.toLocaleString('en-US') + ' clicks</button>';
+          h2 += '<span class="os-sd-op">·</span>';
+          h2 += '<button type="button" class="os-sd-part" data-derive-part="joins">' + joins.toLocaleString('en-US') + ' joins</button>';
+          h2 += '<span class="os-sd-op">·</span>';
+          h2 += '<span class="os-sd-sum">' + clicks.toLocaleString('en-US') + ' ' + view.centerLabel + '</span>';
+          h2 += '<span class="os-sd-op">·</span>';
+          h2 += '<span class="os-sd-sum">' + (ctr == null ? '—' : ctr.toFixed(1) + '% became joins') + '</span>';
+        }
+        derEl.innerHTML = h2;
+      }
+      if (nextEl){
+        /* The number shown is clicks, so the next move is a click
+           milestone: the next multiple of 10 above the count. A join
+           does not move a click count — naming one here would repeat
+           the world-line error this repair fixes. */
+        var nextMs = (Math.floor(clicks / 10) + 1) * 10;
+        var need = nextMs - clicks;
+        nextEl.innerHTML = need + ' more click' + (need > 1 ? 's' : '') + ' takes you to ' + nextMs.toLocaleString('en-US') + ' — <button type="button" class="os-sd-share" data-sl-copy="' + linkName + '">share your link</button>';
+      }
+    }
+  }catch(e){}
+};
 function loadPointsBoard(_t){
   /* 2026-11-05 — BOARD GUARD REMOVED: os-points-board element does not exist in HTML.
      The guard blocked the entire function on line 3, before orb creation ever ran.
@@ -18148,33 +18247,12 @@ function loadPointsBoard(_t){
            beneath the number (each a live door), one line names the next
            move. The multiplier is derived live (score === total x 2),
            never hardcoded. */
-        try{
-          var derEl = document.getElementById('os-score-derive');
-          if (derEl){
-            var spineScore = (window._osSpine && typeof window._osSpine.score === 'number') ? window._osSpine.score : total;
-            var mult = (total > 0 && spineScore === total * 2) ? 2 : 1;
-            var h = '';
-            if (orbData.length === 0){
-              h = '<span class="os-sd-empty">No points yet — your first action lights the board.</span>';
-            } else {
-              orbData.forEach(function(o, i){
-                if (i > 0) h += '<span class="os-sd-op">+</span>';
-                h += '<button type="button" class="os-sd-part" data-derive-part="' + o.key + '">' + o.pts + ' ' + o.label + '</button>';
-              });
-              h += '<span class="os-sd-op">=</span><span class="os-sd-sum">' + total + '</span>';
-              if (mult === 2){ h += '<span class="os-sd-op">× 2 birth</span><span class="os-sd-op">=</span><span class="os-sd-sum">' + spineScore + '</span>'; }
-              else if (spineScore !== total){ h += '<span class="os-sd-op">=</span><span class="os-sd-sum">' + spineScore + '</span>'; }
-            }
-            derEl.innerHTML = h;
-          }
-          var nextEl = document.getElementById('os-score-next');
-          if (nextEl){
-            var spineScore2 = (window._osSpine && typeof window._osSpine.score === 'number') ? window._osSpine.score : total;
-            var mult2 = (total > 0 && spineScore2 === total * 2) ? 2 : 1;
-            var gain = 50 * mult2;
-            nextEl.innerHTML = '1 join takes you to ' + (spineScore2 + gain) + ' — <button type="button" class="os-sd-share" data-sl-copy="joinus">share your link</button>';
-          }
-        }catch(e){}
+        /* PASS 1 v7 (2026-11-05) — the derivation + next-move now render
+           from the FEATURED holder via window._renderScoreDerivation
+           (defined above loadPointsBoard). The old block always rendered
+           the world math, so a featured link read 259 above and =300
+           below. */
+        try{ if (typeof window._renderScoreDerivation === 'function') window._renderScoreDerivation(total, orbData); }catch(e){}
         /* #5 DONUT — score composition */
         var donutWrap = document.getElementById('os-donut-wrap');
         if (donutWrap && orbData.length > 0){
@@ -18293,6 +18371,8 @@ function loadPointsBoard(_t){
           /* update Big Number — 2026-11-05: live spine score, not hardcoded 300 */
           var bigVal = document.getElementById('os-se-val');
           if (bigVal) bigVal.textContent = ((typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total)).toLocaleString();
+          /* PASS 1 v7 (2026-11-05) — a PTS/% flip re-reads the live ledger; the derivation under the number re-renders with it. */
+          try{ if (typeof window._renderScoreDerivation === 'function') window._renderScoreDerivation(); }catch(e){}
         }catch(ue){}
       });
     })();
@@ -19555,6 +19635,22 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-l{
     0 2px 6px rgba(0,0,0,.7),
     0 0 14px var(--nc) !important;
 }
+/* PASS 1 v7 (2026-11-05) — (e2) orb labels wrap on phones. The v6 wrap
+   rule (F:5241) is dead: a later unconditional rule (F:5423) re-imposes
+   nowrap !important, and the F:19529 rule re-imposes 10px/.16em. This
+   rule sits AFTER both, with the same high specificity as F:19529,
+   inside the phone media query — so "SMART" / "NOTES" wraps on two
+   lines at 9px and the label no longer crosses the 390px edge.
+   Desktop keeps one-line labels. */
+@media (max-width:900px){
+  html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl,
+  html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-l{
+    white-space:normal !important;
+    max-width:64px !important;
+    font-size:9px !important;
+    line-height:1.25 !important;
+  }
+}
 /* 2026-11-02 — Shawn: ICONS ARE 3D OBJECTS. Jewel-like, dimensional.
    Color-coded, with depth, gloss, and weight. Like real objects. */
 html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-icon{
@@ -20408,6 +20504,36 @@ var BIRTH = 75;                            /* canon birth value */
 
 function derivationFor(key){
   var s = spine(); if(!s) return null;
+  /* PASS 1 v7 (2026-11-05) — when a Smart Link is featured, the taps
+     that open this popover ('clicks'/'joins' from the featured panel
+     and the link boards) are the LINK's numbers, not the world's.
+     'score' stays on the spine: the only 'score' taps are the world
+     board's number and the world featured stats — always the world
+     score, whatever is featured. */
+  if ((key === 'clicks' || key === 'joins') && typeof window._featuredDisplay === 'function'){
+    try{
+      var _fv = window._featuredDisplay();
+      if (_fv && _fv.kind === 'link'){
+        var _ctr = (_fv.ctr == null) ? '—' : _fv.ctr.toFixed(1) + '%';
+        if (key === 'clicks'){
+          return { title: 'Smart Link clicks — this link’s count',
+            rows: [
+              {k:'This window', v: _fv.center.toLocaleString('en-US') + ' — ' + _fv.centerLabel + '.'},
+              {k:'All time', v: _fv.clicksAll.toLocaleString('en-US') + ' clicks · all time.'},
+              {k:'Became joins', v: _ctr + ' — clicks turning into joins.'}
+            ],
+            foot: 'Counts from the ledger — the one true record. <a href="https://nayanet.app/rooms/ledger">Open the ledger ⌗</a>' };
+        }
+        return { title: 'Joins — this link’s count',
+          rows: [
+            {k:'Joins · all time', v: _fv.below.toLocaleString('en-US') + ' — joins through this link.'},
+            {k:'Clicks · all time', v: _fv.clicksAll.toLocaleString('en-US') + ' — the taps they came from.'},
+            {k:'Became joins', v: _ctr + ' — clicks turning into joins.'}
+          ],
+          foot: 'Counts from the ledger — the one true record. <a href="https://nayanet.app/rooms/ledger">Open the ledger ⌗</a>' };
+      }
+    }catch(e){}
+  }
   function R(k,v,total){ return {k:k, v:v, total:!!total}; }
   function P(){ return (typeof LD_VALUES!=='undefined')?LD_VALUES:POINT_RULES; }
   var rows=[], title="";
