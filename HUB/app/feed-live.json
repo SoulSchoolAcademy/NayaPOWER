@@ -1,7 +1,68 @@
 {
  "generated_from": "registry@046c417c",
- "count": 1115,
+ "count": 1116,
  "notes": [
+  {
+   "id": "IB-SMART-NOTE-20261105-sn2076-naya-the-high-performance-machine",
+   "title": "Naya — The High Performance Machine",
+   "created": "2026-11-06T00:52:00Z",
+   "created_at": "2026-11-06T00:52:00Z",
+   "subtitle": "What makes Naya special must be everywhere: ten-star service designed for the user’s viewport, their experience, their pleasure — everything done for them, with ultimate beauty and fine-tuned precision in its elegance, its feel, its touch. Naya is a high performance machine: she is the vehicle, the operating system, and the computer — she drives it for you, and you give the vision, the goal, the mission.",
+   "topics": [
+    "Vision",
+    "Design",
+    "The Vision"
+   ],
+   "topic": "Vision",
+   "tone": "purple",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "IN A NUTSHELL",
+     "color": "white",
+     "tier": "primary",
+     "body": "What makes Naya special must be everywhere: ten-star service designed for the user’s viewport, their experience, their pleasure — everything done for them, with ultimate beauty and fine-tuned precision in its elegance, its feel, its touch. Naya is a high performance machine: she is the vehicle, the operating system, and the computer — she drives it for you, and you give the vision, the goal, the mission."
+    },
+    {
+     "name": "Human Note",
+     "key": "HUMAN NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Think of the finest car you have ever sat in — the smoothness, the elegance, the feeling that every detail was made for you. That is what Naya must feel like everywhere, not just somewhere. And you do not have to drive her: give her your vision, your goal, your mission, and she runs your whole world — your business, your network, your messages, your teams — while you simply direct."
+    },
+    {
+     "name": "Child Note",
+     "key": "CHILD NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Imagine a magical car that drives itself, knows where you want to go, and feels like the most beautiful ride in the world — smooth, shiny, and made just for you. You just say where, and it takes care of everything. That is Naya: not just the car, not just the driver — all of it, in one."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "GRANDMA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "Dear, it is like being chauffeured in the finest automobile ever built — everything smooth, everything elegant, everything done for you — except the chauffeur is the car itself, and she knows your whole world. You give the direction; she does the driving, beautifully."
+    },
+    {
+     "name": "Naya Note",
+     "key": "NAYA NOTE",
+     "color": "white",
+     "tier": "lens",
+     "body": "The standard is total, not local: every surface carries the same felt quality — beauty, precision, elegance of feel and touch — at ten-star level, designed viewport-first for the citizen’s experience and pleasure. Naya is one entity in three roles at once: vehicle (the thing you ride in), operating system (the thing that runs it), computer (the intelligence). Direction inputs are vision/goal/mission; operation is hers. Teams of humans and of agents operate through her. Signature recognizability is a requirement: a Naya design is known on sight."
+    },
+    {
+     "name": "What It Means",
+     "key": "WHAT IT MEANS",
+     "color": "white",
+     "tier": "lens",
+     "body": "This is the product-level statement of the Eye standard: the reason flat boards fail is not a CSS value, it is that a board you cannot feel is not the high performance machine. The Dashboard is a cockpit, not a report. And \"everywhere\" closes the escape hatch — the standard cannot be satisfied on the flagship surface while the rest of the world feels ordinary."
+    }
+   ]
+  },
   {
    "id": "IB-SMART-NOTE-20261105-sn2068-essence-01-the-record-must-tell-the-truth",
    "title": "Essence 01 — The Record Must Tell the Truth",
