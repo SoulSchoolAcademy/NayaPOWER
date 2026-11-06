@@ -5012,6 +5012,10 @@ html body .os-constellation .os-ld-nodes button.os-ld-node[data-node="saves"] .o
   filter:drop-shadow(0 0 10px rgba(160,107,255,.95)) drop-shadow(0 0 24px rgba(160,107,255,.45));
   animation:tnDisplayFlicker 4s ease-in-out infinite;
 }
+/* P2 REWORK 2026-11-06 — gain sub-label on the dial face (see template). */.tn-tacho-svggain{
+  font-size:7px; font-weight:700; fill:rgba(255,255,255,.85);
+  font-family:inherit; letter-spacing:.24em;
+}
 /* v4 char 208248 — .tn-tacho-svgsub */.tn-tacho-svgsub{
   font-size:7px; font-weight:600; fill:#6a6a76;
   font-family:inherit; letter-spacing:.28em;
@@ -5247,6 +5251,7 @@ html body .os-constellation .os-ld-nodes button.os-ld-node[data-node="saves"] .o
   text-shadow:0 0 18px rgba(160,107,255,.8),0 0 40px rgba(160,107,255,.4);
   font-variant-numeric:tabular-nums;line-height:1;}
 /* v4 char 369470 — .os-se-label */.os-se-label{font-size:10px;font-weight:800;letter-spacing:.28em;color:rgba(255,255,255,.55);margin-top:4px;}
+/* P2 REWORK 2026-11-06 — total line under the big number, pill modes only: "TOTAL 300". */.os-se-total{font-size:10px;font-weight:800;letter-spacing:.22em;color:rgba(255,255,255,.75);margin-top:3px;}
 /* v4 char 370776 — body:not(.hero-mode) .os-ld-nodes */body:not(.hero-mode) .os-ld-nodes{
   pointer-events:none;
 }
@@ -5994,6 +5999,7 @@ button.os-ld-node .os-ld-n{
 <div class="os-score-elegant" id="os-score-elegant">
   <div class="os-se-val" id="os-se-val"><span class="os-skel-line" style="width:120px;height:59px;border-radius:12px;vertical-align:middle;"></span></div>
   <div class="os-se-label">SMART SCORE</div>
+  <div class="os-se-total" id="os-se-total" hidden></div>
 </div>
 </div>
 </div>
@@ -16158,6 +16164,12 @@ else init();
           '<rect x="87" y="173" width="26" height="3" rx="1.5" fill="rgba(0,0,0,.7)"/>' +
           '<rect x="87" y="182" width="26" height="1.5" rx=".75" fill="rgba(255,255,255,.08)"/>' +
           '<text class="tn-tacho-svgnum" x="100" y="183" text-anchor="middle" style="font-size:8px;font-family:Georgia,serif;">…</text>' +
+          /* P2 REWORK (2026-11-06, edit 8): gain sub-label, ON the dial face
+             under the numeral — empty in All mode (no All-mode change),
+             "GAINED · TOTAL 300" in pill modes. The HTML caption below the
+             dial sits behind the absolutely-positioned SVG, so the dial face
+             needs its own visible gain label. */
+          '<text class="tn-tacho-svggain" x="100" y="197" text-anchor="middle"></text>' +
           '' +
           /* === LAYER 9: PURPLE ACCENT ARC === */
           '<path d="M 148 130 A 56 56 0 0 1 152 142" stroke="#a06bff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/>' +
@@ -16189,6 +16201,7 @@ else init();
     var fill   = root.querySelector('.tn-tacho-fill');
     var num    = root.querySelector('.tn-tacho-num');
     var svgnum = root.querySelector('.tn-tacho-svgnum');
+    var svgGain = root.querySelector('.tn-tacho-svggain');
     var cap    = root.querySelector('.tn-tacho-cap');
     var label  = root.querySelector('.tn-tacho-label');
     var dialwrap = root.querySelector('.tn-tacho-dialwrap');
@@ -16224,7 +16237,10 @@ else init();
     function setCap(html){ if (cap._h !== html){ cap._h = html; cap.innerHTML = html; } if (cap.hidden) cap.hidden = false; }
     /* V4 CUT: the gained-line ("Gained in {period} — every action moves the needle.")
        repeats the "+N GAINED" readout sitting directly above it; the period is
-       already named by the active time pill. Never silently kept — named here. */
+       already named by the active time pill. Never silently kept — named here.
+       P2 REWORK (2026-11-06): the readout above is display:none, so the caption
+       is the ONLY visible gain label on the dial — in pill modes it now carries
+       "+N GAINED … Total 300" (see paintLive delta branch). */
     function hideCap(){ if (cap && !cap.hidden) cap.hidden = true; }
 
     /* band ladder: completed bands marked, current band lit.
@@ -16342,14 +16358,22 @@ else init();
       paintBandChrome(b);
 
       if (dm && !dm.noData){
-        /* DELTA MODE: "+N gained in {period}" — needle, numeral, caption sweep as one. */
+        /* DELTA MODE: "+N gained in {period}" — needle, numeral, caption sweep as one.
+           P2 REWORK (2026-11-06, coordinator #12, option b): the VISIBLE dial
+           numeral carries the '+' (the hidden <b> already did) and the caption
+           below the dial — the only visible GAINED text on the instrument —
+           names the gain AND the total, so a pill window can never read as a
+           second SMART SCORE beside the total. */
         var txt = '+' + fmt(displayed);
-        if (txt !== lastNumTxt){ lastNumTxt = txt; num.textContent = txt; if(svgnum) svgnum.textContent = fmtShort(displayed); }
+        if (txt !== lastNumTxt){ lastNumTxt = txt; num.textContent = txt; if(svgnum) svgnum.textContent = '+' + fmtShort(displayed); }
         if (label && label._t !== 'gained'){ label._t = 'gained'; label.textContent = 'GAINED'; }
+        var _tot = (s && typeof s.score === 'number' && isFinite(s.score)) ? fmt(s.score) : null;
+        var _g = (_tot == null) ? 'GAINED' : 'GAINED \u00B7 TOTAL ' + _tot;
+        if (svgGain && svgGain._t !== _g){ svgGain._t = _g; svgGain.textContent = _g; }
         if (dm.target > 0){
-          hideCap();
+          setCap(_tot == null ? '+' + fmt(dm.target) + ' GAINED in ' + dm.period + '.' : '<b>+' + fmt(dm.target) + ' GAINED</b> in ' + dm.period + ' · Total <b>' + _tot + '</b>');
         } else {
-          setCap('Nothing gained in ' + dm.period + ' — quiet is rest, not failure.');
+          setCap(_tot == null ? 'Nothing gained in ' + dm.period + ' — quiet is rest, not failure.' : 'Nothing gained in ' + dm.period + ' — quiet is rest, not failure. Total <b>' + _tot + '</b>');
         }
         root.setAttribute('aria-label', 'Score gauge — gained ' + fmt(dm.target) + ' in ' + dm.period);
         return;
@@ -16359,6 +16383,7 @@ else init();
         var txt0 = fmt(displayed);
         if (txt0 !== lastNumTxt){ lastNumTxt = txt0; num.textContent = txt0; if(svgnum) svgnum.textContent = fmtShort(displayed); }
         if (label && label._t !== 'score'){ label._t = 'score'; label.textContent = 'YOUR SMART SCORE'; }
+        if (svgGain && svgGain._t !== ''){ svgGain._t = ''; svgGain.textContent = ''; }
         setCap('Period timing isn\u2019t on the ledger yet \u2014 this pill reads the total for now.');
         root.setAttribute('aria-label', 'Score gauge — your live score is ' + fmt(score));
         return;
@@ -16366,6 +16391,7 @@ else init();
 
       var txt2 = fmt(displayed);
       if (txt2 !== lastNumTxt){ lastNumTxt = txt2; num.textContent = txt2; if(svgnum) svgnum.textContent = fmtShort(displayed); }
+      if (svgGain && svgGain._t !== ''){ svgGain._t = ''; svgGain.textContent = ''; }
       if (label && label._t !== 'score'){ label._t = 'score'; label.textContent = 'YOUR SMART SCORE'; }
 
       var acts = ['posts','notes','msgs','invs','clicks','joins'].reduce(function(a,k){
@@ -16389,6 +16415,7 @@ else init();
       fill.style.stroke = bandColor(0);
       var txt = state === 'quiet' ? '—' : '…';
       if (txt !== lastNumTxt){ lastNumTxt = txt; num.textContent = txt; if(svgnum) svgnum.textContent = txt; }
+      if (svgGain && svgGain._t !== ''){ svgGain._t = ''; svgGain.textContent = ''; }
       paintBandChrome(bandOf(0));
       if (state === 'quiet'){
         setCap('Quiet — the first post, note or invite lights the needle.');
@@ -17186,7 +17213,10 @@ function loadPointsBoard(_t){
             var k = Math.min(1, (ts - startTs) / 3000);
             /* 2026-11-02 — Shawn: LINEAR count for drama — steady 0→300 over full 3s, not rushed. */
             var e = k;
-            bigVal.textContent = Math.round(displayTotal * e).toLocaleString();
+            /* P2 REWORK (option b): a pill window sweeps a gain — '+N' under
+               the GAINED label (labels synced by _featuredSyncBig, same pass). */
+            var _pfx = (typeof window._bigPrefix === 'function') ? window._bigPrefix() : '';
+            bigVal.textContent = _pfx + Math.round(displayTotal * e).toLocaleString();
             if (k < 1) requestAnimationFrame(countBig);
           }
           requestAnimationFrame(countBig);
@@ -17300,7 +17330,7 @@ function loadPointsBoard(_t){
           });
           /* update Big Number — 2026-11-05: live spine score, not hardcoded 300 */
           var bigVal = document.getElementById('os-se-val');
-          if (bigVal) bigVal.textContent = ((typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total)).toLocaleString();
+          if (bigVal){ var _pfx2 = (typeof window._bigPrefix === 'function') ? window._bigPrefix() : ''; bigVal.textContent = _pfx2 + ((typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total)).toLocaleString(); if (typeof window._syncScoreLabels === 'function') window._syncScoreLabels(); }
         }catch(ue){}
       });
     })();
@@ -18034,12 +18064,42 @@ window.osLoadPointsBoard = loadPointsBoard;
     window._featuredLinkDays = map;
     window._featuredLinkTargets = targets;
   };
+  /* P2 REWORK (2026-11-06, coordinator #12, option b): a pill window shows a
+     GAIN, never a second SMART SCORE. One rule, read by every big-number
+     writer and the gauge caption: gain mode is on only when a pill is on AND
+     the spine has landed, so the loading fallback never wears a GAINED label.
+     The big number then reads "+N" under a "GAINED" label, with the total on
+     its own line — "TOTAL 300" — and the gauge caption does the same. The
+     total line carries no "SMART SCORE" words, so the pill-mode gauge/big
+     area contains zero "SMART SCORE" strings while the total stays visible. */
+  window._scoreGainMode = function(){
+    var m = window._tnTachoMode || 'all';
+    var s = window._osSpine;
+    return !!(m !== 'all' && s && typeof s.score === 'number' && isFinite(s.score) &&
+              s.deltas && typeof s.deltas[m] === 'number');
+  };
+  window._bigPrefix = function(){ return window._scoreGainMode() ? '+' : ''; };
+  window._syncScoreLabels = function(){
+    try{
+      var gain = window._scoreGainMode();
+      var lab = document.querySelector('.os-se-label');
+      if (lab) lab.textContent = gain ? 'GAINED' : 'SMART SCORE';
+      var tot = document.getElementById('os-se-total');
+      if (tot){
+        if (gain){ tot.hidden = false; tot.textContent = 'TOTAL ' + window._osSpine.score.toLocaleString(); }
+        else { tot.hidden = true; }
+      }
+    }catch(e){}
+  };
   window._featuredSyncBig = function(){
     try{
       /* P2 — sync through the canonical center (spine score / period delta),
-         never the featured holder's clicks. */
+         never the featured holder's clicks.
+         P2 REWORK (option b): in a pill window the big number is a gain —
+         '+' prefix, GAINED label, total line — never a second SMART SCORE. */
       var bigVal = document.getElementById('os-se-val');
-      if (bigVal) bigVal.textContent = _fmt((typeof window._featuredCenter === 'function') ? window._featuredCenter(0) : 0);
+      if (bigVal) bigVal.textContent = window._bigPrefix() + _fmt((typeof window._featuredCenter === 'function') ? window._featuredCenter(0) : 0);
+      window._syncScoreLabels();
     }catch(e){}
   };
   /* ---- world boards: one shared component ---- */
