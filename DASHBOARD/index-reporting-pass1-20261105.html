@@ -15799,14 +15799,19 @@ function renderDrillView(viewKey){
     if(!window._drillDocWired){
       window._drillDocWired = true;
       document.addEventListener('click', function(e){
-        var btn = e.target && e.target.closest ? e.target.closest('button[data-snode]') : null;
+        /* 2026-11-06 — FIX F14 (v9): match ALL SEVEN sub-orb attributes.
+           Only sales/shares/saves carry data-snode; joins/notes/likes/
+           comments/creations/smartlink/invites carry data-jnode /
+           data-nnode / data-lnode / data-cnode / data-slnode /
+           data-inode, so their clicks never reached drillIntoStat. */
+        var btn = e.target && e.target.closest ? e.target.closest('button[data-snode], button[data-jnode], button[data-nnode], button[data-lnode], button[data-cnode], button[data-slnode], button[data-inode]') : null;
         if(!btn) return;
         var orbsEl = btn.closest('[id^="os-"][id$="-orbs"]');
         if(!orbsEl) return;
         var viewKey = orbsEl.id.replace(/^os-/, '').replace(/-orbs$/, '');
         if(isDrilling(viewKey)) return;
         
-        var snode = btn.getAttribute('data-snode');
+        var snode = btn.getAttribute('data-snode') || btn.getAttribute('data-jnode') || btn.getAttribute('data-nnode') || btn.getAttribute('data-lnode') || btn.getAttribute('data-cnode') || btn.getAttribute('data-slnode') || btn.getAttribute('data-inode');
         var cfg2 = CHART_CONFIGS[viewKey];
         if(!cfg2) return;
         var orbsArr = ORBS_LOOKUP(cfg2.orbs);
@@ -15884,9 +15889,13 @@ function renderDrillView(viewKey){
         if(pillsEl && !pillsEl._drillSync){
           pillsEl._drillSync = true;
           pillsEl.addEventListener('click', function(e){
-            var b = e.target && e.target.closest ? e.target.closest('button[data-sw]') : null;
+            /* 2026-11-06 — FIX F14 (v9): match ALL FIVE pill attributes.
+               Only five views carry data-sw; joins/notes/comments/likes/
+               creations carry data-jw / data-nw / data-cw / data-lw, so
+               _chartWindow never synced there. */
+            var b = e.target && e.target.closest ? e.target.closest('button[data-sw], button[data-jw], button[data-nw], button[data-lw], button[data-cw]') : null;
             if(b){
-              var sw = b.getAttribute('data-sw');
+              var sw = b.getAttribute('data-sw') || b.getAttribute('data-jw') || b.getAttribute('data-nw') || b.getAttribute('data-lw') || b.getAttribute('data-cw');
               _chartWindow[vkey] = sw;
               // If drilling, re-render to update granularity
               if(isDrilling(vkey)){
@@ -15958,14 +15967,14 @@ function DEMO_LOOKUP(k){
   if(k==='NOTES_DEMO')return NOTES_DEMO; if(k==='INVITES_DEMO')return INVITES_DEMO;
   if(k==='CREATIONS_DEMO')return CREATIONS_DEMO; if(k==='SHARES_DEMO')return SHARES_DEMO;
   if(k==='COMMENTS_DEMO')return COMMENTS_DEMO; if(k==='LIKES_DEMO')return LIKES_DEMO;
-  if(k==='SAVES_DEMO')return SAVES_DEMO; return null;
+  if(k==='SAVES_DEMO')return SAVES_DEMO; if(k==='SMARTLINK_DEMO')return SMARTLINK_DEMO; return null;
 }
 function ORBS_LOOKUP(k){
   if(k==='SALES_ORBS')return SALES_ORBS; if(k==='JOINS_ORBS')return JOINS_ORBS;
   if(k==='NOTES_ORBS')return NOTES_ORBS; if(k==='INVITES_ORBS')return INVITES_ORBS;
   if(k==='CREATIONS_ORBS')return CREATIONS_ORBS; if(k==='SHARES_ORBS')return SHARES_ORBS;
   if(k==='COMMENTS_ORBS')return COMMENTS_ORBS; if(k==='LIKES_ORBS')return LIKES_ORBS;
-  if(k==='SAVES_ORBS')return SAVES_ORBS; return null;
+  if(k==='SAVES_ORBS')return SAVES_ORBS; if(k==='SMARTLINK_ORBS')return SMARTLINK_ORBS; return null;
 }
 function chartBarsHTML(viewKey){
   try{
@@ -16133,9 +16142,10 @@ function wireAllChartSwitches(){
       if(pills&&!pills._chartSync){
         pills._chartSync=true;
         pills.addEventListener('click', function(e){
-          var btn=e.target.closest('button[data-sw]');
+          /* 2026-11-06 — FIX F14 (v9): match ALL FIVE pill attributes (see hunk 2). */
+          var btn=e.target.closest('button[data-sw], button[data-jw], button[data-nw], button[data-lw], button[data-cw]');
           if(!btn) return;
-          _chartWindow[vk]=btn.getAttribute('data-sw');
+          _chartWindow[vk]=btn.getAttribute('data-sw') || btn.getAttribute('data-jw') || btn.getAttribute('data-nw') || btn.getAttribute('data-lw') || btn.getAttribute('data-cw');
           // Re-render current chart type with new window
           var ct=_chartType[vk]||'gauge';
           if(ct!=='gauge') switchChart(vk, ct);
@@ -16360,7 +16370,8 @@ function joinsViewRender(){
     // Update pills to reflect current window
     var _dp=document.querySelectorAll('#os-joins-pills button');
     var _dw=_chartWindow['joins']||window['_joinsWindow']||'all';
-    for(var _dpi=0;_dpi<_dp.length;_dpi++) _dp[_dpi].classList.toggle('on', _dp[_dpi].getAttribute('data-sw')===_dw);
+    /* 2026-11-06 — FIX F14 (v9): this view's pills carry data-jw, not data-sw. */
+    for(var _dpi=0;_dpi<_dp.length;_dpi++) _dp[_dpi].classList.toggle('on', _dp[_dpi].getAttribute('data-jw')===_dw);
     return;
   } else {
     // Not drilling: restore normal view elements
@@ -16501,7 +16512,8 @@ function notesViewRender(){
     // Update pills to reflect current window
     var _dp=document.querySelectorAll('#os-notes-pills button');
     var _dw=_chartWindow['notes']||window['_notesWindow']||'all';
-    for(var _dpi=0;_dpi<_dp.length;_dpi++) _dp[_dpi].classList.toggle('on', _dp[_dpi].getAttribute('data-sw')===_dw);
+    /* 2026-11-06 — FIX F14 (v9): this view's pills carry data-nw, not data-sw. */
+    for(var _dpi=0;_dpi<_dp.length;_dpi++) _dp[_dpi].classList.toggle('on', _dp[_dpi].getAttribute('data-nw')===_dw);
     return;
   } else {
     // Not drilling: restore normal view elements
@@ -16642,7 +16654,8 @@ function likesViewRender(){
     // Update pills to reflect current window
     var _dp=document.querySelectorAll('#os-likes-pills button');
     var _dw=_chartWindow['likes']||window['_likesWindow']||'all';
-    for(var _dpi=0;_dpi<_dp.length;_dpi++) _dp[_dpi].classList.toggle('on', _dp[_dpi].getAttribute('data-sw')===_dw);
+    /* 2026-11-06 — FIX F14 (v9): this view's pills carry data-lw, not data-sw. */
+    for(var _dpi=0;_dpi<_dp.length;_dpi++) _dp[_dpi].classList.toggle('on', _dp[_dpi].getAttribute('data-lw')===_dw);
     return;
   } else {
     // Not drilling: restore normal view elements
@@ -16783,7 +16796,8 @@ function commentsViewRender(){
     // Update pills to reflect current window
     var _dp=document.querySelectorAll('#os-comments-pills button');
     var _dw=_chartWindow['comments']||window['_commentsWindow']||'all';
-    for(var _dpi=0;_dpi<_dp.length;_dpi++) _dp[_dpi].classList.toggle('on', _dp[_dpi].getAttribute('data-sw')===_dw);
+    /* 2026-11-06 — FIX F14 (v9): this view's pills carry data-cw, not data-sw. */
+    for(var _dpi=0;_dpi<_dp.length;_dpi++) _dp[_dpi].classList.toggle('on', _dp[_dpi].getAttribute('data-cw')===_dw);
     return;
   } else {
     // Not drilling: restore normal view elements
@@ -17067,7 +17081,8 @@ function creationsViewRender(){
     // Update pills to reflect current window
     var _dp=document.querySelectorAll('#os-creations-pills button');
     var _dw=_chartWindow['creations']||window['_creationsWindow']||'all';
-    for(var _dpi=0;_dpi<_dp.length;_dpi++) _dp[_dpi].classList.toggle('on', _dp[_dpi].getAttribute('data-sw')===_dw);
+    /* 2026-11-06 — FIX F14 (v9): this view's pills carry data-cw, not data-sw. */
+    for(var _dpi=0;_dpi<_dp.length;_dpi++) _dp[_dpi].classList.toggle('on', _dp[_dpi].getAttribute('data-cw')===_dw);
     return;
   } else {
     // Not drilling: restore normal view elements
