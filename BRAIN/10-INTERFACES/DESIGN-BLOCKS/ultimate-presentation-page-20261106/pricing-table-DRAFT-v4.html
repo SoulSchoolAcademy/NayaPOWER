@@ -1,0 +1,1121 @@
+<!-- CONFIG — prices live ONCE, in the PRICING object in the script at the bottom. Change a price there; the tier cards, table header, button notes, bottom line and sticky bar all follow. No price is written twice. Trial 9 days, no card, everything free; payout 50% of revenue, paid to you the moment we're paid. -->
+<!-- HOW TO CLONE — top banner, how-it-works, payout proof, ladder, tiers, table, statement, calculator, nine systems, reasons, closing, nine-day journey, guarantee, fear-killers, bottom banner, FAQ. Replace the words marked EDIT THIS; don't touch the machinery. To reprice: edit the PRICING object only. To add a feature row: copy the ROW TEMPLATE above the table body. To re-point the buttons: edit the LINKS object only (monthly/annual Smart Links; quarterly links are minted for the paste-in flow and are not wired to buttons). An example clone (same skeleton, different product) ships alongside this file. -->
+<!-- BANNERS — Supercharger set, GitHub-first (PR #3271, merged 2026-11-06 22:17:46Z, merge commit fd97f4d9; HUB/app/banner-assets/; all five pulled from GitHub main and sha256-verified — see BUILD-REPORT-ROUND5.md). TOP: pricing-supercharger-alt-studio.webp (2240x1120, text-free — Naya inside the steel machine, the nine systems as real objects at the base; no DOM portrait, caption, labels or orbs — the art carries all of it; headline sits top-left in the empty sky above 1760px, stacked below at 1760px and under). BOTTOM: pricing-supercharger-bottom-naya-in-gauge-wide.webp (1920x800, cropped from pricing-supercharger-bottom-naya-in-gauge.webp — Naya inside the gauge, six orbiting orbs kept, the two oversized foreground orbs cropped out). SECTION IMAGES: pricing-supercharger-alt-cinema.webp beside the calculator; pricing-supercharger-alt-layers.webp above the nine systems. FALLBACKS: pricing-supercharger-top-orbs.webp (gauge + nine-orb row + Naya bottom-right) as the alternative top; the marriage finals (pricing-banner-top/bottom-marriage-FIXED.webp, PR #3269) only if Studio or the v2 bottom fails the self-check. NOTE: the local supercharger-top/bottom-v2.webp filenames are crossed vs their content — the GitHub names above are the true ones. Words appear only BESIDE the images as page copy, never baked in. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — NayaNET</title>
+<style>
+  :root{
+    --bg:#060608; --panel:#0c0c10; --panel2:#101014; --line:#1e1e26;
+    --txt:#f5f5f7; --dim:#a7a7b3; --faint:#a7a7b3;
+    --purple:#a06bff; --blue:#3fb8ff; --green:#2fe89e; --gold:#ffbf3d;
+    --orange:#ff9a5a; --red:#ff5e6c; --magenta:#e84fff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1240px; margin:0 auto; padding:40px 24px 80px;}
+  /* White text only — color lives on orbs and 2-3px edge bars, never in words. */
+  .kicker{font-size:12px; letter-spacing:.22em; font-weight:700; margin-bottom:8px; color:var(--txt);}
+  h1{font-size:clamp(28px,4.5vw,48px); font-weight:800; letter-spacing:-.01em; margin-bottom:8px;}
+  .sub{color:var(--dim); font-size:16px; max-width:760px; margin-bottom:32px;}
+  .sub b{color:var(--txt);}
+  /* Hero — kicker + H1 + sub. No invisible motion: motion nobody sees is worse than no motion. The motion that means something is the counting payout number below. */
+  .hero{position:relative;}
+  /* Hero CTA — the first button on the page, inside the first viewport on
+     desktop and phone alike. A buyer convinced by the headline acts here,
+     without hunting down the tiers. Same placeholder as every CTA until a
+     trial flow exists (see item 5: BLOCKED). */
+  .hero-cta{display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin:0 0 32px;}
+  .hero-cta-note{font-size:14px; color:var(--dim);}
+  /* Payout proof — a living proof element: the 50% orb beside it, the moment paid. */
+  .payout-proof{display:flex; align-items:center; gap:16px; margin-bottom:32px; padding:24px;
+    background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    border:1.5px solid rgba(255,255,255,.9); border-radius:16px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), inset 0 -2px 4px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.5);
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;}
+  .payout-proof:hover{transform:translateY(-6px); border-color:var(--gold);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), inset 0 -2px 4px rgba(0,0,0,.5), 0 14px 34px rgba(0,0,0,.6), 0 0 34px rgba(255,191,61,.28);}
+  .payout-proof:active{transform:scale(.97); transition:transform .1s ease;}
+  .payout-orb{flex:0 0 auto; width:48px; height:48px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #fff 0%, var(--gold) 32%, #7a5b00 78%, #0a0a0f 100%);
+    box-shadow:0 0 24px rgba(255,191,61,.55), 0 4px 12px rgba(0,0,0,.6);
+    display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:800; color:#fff; text-shadow:0 1px 2px rgba(0,0,0,.6);}
+  .payout-proof p{font-size:16px;}
+  .payout-proof p b{font-size:20px;}
+  /* Trial panel — obsidian glass. No ambient motion here: the motion that means something is the counting payout number. */
+  .trial{background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    border:1.5px solid rgba(255,255,255,.9); border-radius:16px;
+    padding:24px 32px; margin-bottom:32px; position:relative; overflow:hidden;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), inset 0 -2px 4px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.5);}
+  .trial::before{content:""; position:absolute; inset:0 0 auto 0; height:3px;
+    background:linear-gradient(90deg,var(--purple),var(--blue),var(--green),var(--gold),var(--orange),var(--red),var(--magenta));}
+  /* No invisible motion, no endless pulse, no text glow. L5: text NEVER lights up. A living number DOES something — it counts (see the payout example and the seat counter). The payout orb keeps its rest glow: the jewel is the one element allowed to glow at rest. */
+  .trial h2{font-size:28px; margin-bottom:8px;}
+  .trial p{color:var(--dim);}
+  .trial p b{color:var(--txt);}
+  .tiers{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:40px;}
+  @media(max-width:860px){.tiers{grid-template-columns:1fr;}}
+  /* Physical tier cards — real objects: obsidian glass at 135, white rim, top-left light, shadow down-right. */
+  .tier{background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    border:1.5px solid rgba(255,255,255,.9); border-radius:16px; padding:24px; position:relative;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), inset 0 -2px 4px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.5);
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;}
+  .tier.t-power{--tone:var(--purple); --glow:rgba(160,107,255,.32);}
+  .tier.t-pro{--tone:var(--blue); --glow:rgba(63,184,255,.32);}
+  .tier.t-max{--tone:var(--gold); --glow:rgba(255,191,61,.32);}
+  .tier:hover{transform:translateY(-6px); border-color:var(--tone);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), inset 0 -2px 4px rgba(0,0,0,.5), 0 14px 34px rgba(0,0,0,.6), 0 0 34px var(--glow);}
+  .tier:active{transform:scale(.97); transition:transform .1s ease;}
+  .tier.pro{border-color:var(--blue); box-shadow:0 0 34px rgba(63,184,255,.14), inset 0 1px 0 rgba(255,255,255,.06), 0 8px 24px rgba(0,0,0,.5);}
+  .tier.pro:hover{box-shadow:0 0 34px rgba(63,184,255,.28), inset 0 1px 0 rgba(255,255,255,.06), 0 14px 34px rgba(0,0,0,.6), 0 0 34px var(--glow);}
+  .tier .tname{font-size:12px; letter-spacing:.2em; font-weight:700; margin-bottom:8px; color:var(--txt);}
+  .tier .price{font-size:28px; font-weight:800; margin-bottom:0;}
+  .tier .per{color:var(--dim); font-size:14px; margin-bottom:8px;}
+  .tier .tvalue{color:var(--dim); font-size:14px; margin-bottom:16px;}
+  .tier ul{list-style:none; font-size:14px; color:var(--dim);}
+  .tier ul li{padding:8px 0; border-top:1px solid #16161c;}
+  .tier ul li b{color:var(--txt);}
+  .tag{display:inline-block; font-size:12px; font-weight:800; letter-spacing:.14em;
+    padding:8px 16px; border-radius:99px; margin-bottom:8px;}
+  .tag.hot{background:rgba(63,184,255,.14); color:var(--txt); border:1px solid var(--blue);}
+  .tag.new{background:rgba(47,232,158,.12); color:var(--txt); border:1px solid var(--green);}
+  /* STICKY HEADER MECHANISM — the thead lives in its own table inside
+     .table-head-sticky (position:sticky; top:0, and NO overflow ancestor above
+     it), so it sticks to the viewport while the table scrolls under it. The old
+     single-wrapper .table-scroll{overflow-x:auto} made the wrapper the scroll
+     container, which defeated viewport sticky. The body table scrolls
+     horizontally inside .table-scroll; JS keeps the header in step (syncHead).
+     The feature column is sticky left:0 in both tables, so the names stay
+     visible when paid leads on phone. */
+  .table-frame{margin-bottom:40px;}
+  .table-head-sticky{position:sticky; top:0; z-index:20;}
+  .table-head-clip{overflow:hidden; border:1px solid var(--line); border-bottom:none; border-radius:16px 16px 0 0;}
+  .table-scroll{overflow-x:auto; overflow-y:hidden; border:1px solid var(--line); border-top:none; border-radius:0 0 16px 16px;}
+  table.table-head, table.table-body{width:100%; border-collapse:separate; border-spacing:0; table-layout:fixed; min-width:880px; font-size:14px;}
+  thead th{padding:16px; text-align:left; background:var(--panel2);
+    border-bottom:1px solid var(--line); vertical-align:bottom; color:var(--txt);}
+  thead th:first-child{position:sticky; left:0; z-index:6;}
+  thead th .col-price{font-size:20px; font-weight:800; display:block; margin-top:8px;}
+  thead th .col-sub{font-size:12px; color:var(--faint); font-weight:400;}
+  thead th.hl{background:#0d1620;}
+  tbody td{padding:16px; border-bottom:1px solid #141419; vertical-align:top;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody td:first-child{font-weight:700; background:var(--panel); position:sticky; left:0; z-index:2;}
+  tbody td.hl{background:#0c141c;}
+  /* Living rows — at rest, obsidian and white. On hover and on scroll into view, the row ignites in its own color. */
+  tbody tr{transition:background-color .3s ease;}
+  tbody tr td{transition:background-color .3s ease, color .3s ease, box-shadow .3s ease;}
+  tbody tr:hover, tbody tr.lit{background:color-mix(in srgb, var(--row) 10%, transparent);}
+  tbody tr:hover td, tbody tr.lit td{color:#fff;}
+  tbody tr:hover td:first-child, tbody tr.lit td:first-child{
+    background:color-mix(in srgb, var(--row) 14%, var(--panel));
+    box-shadow:inset 3px 0 0 var(--row);}
+  tbody tr:hover td.hl, tbody tr.lit td.hl{background:color-mix(in srgb, var(--row) 12%, #0c141c);}
+  tbody tr:hover .vline, tbody tr.lit .vline{color:rgba(255,255,255,.85);}
+  .orb{display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:8px;
+    box-shadow:0 0 10px currentColor; transition:transform .3s ease, box-shadow .3s ease;}
+  /* Board orbs — 16px, on-grid, beside the living number on each tier and reason board. */
+  .orb.board-orb{width:16px; height:16px; flex:0 0 auto; margin-right:0;}
+  .price-row{display:flex; align-items:center; gap:8px;}
+  .reason-head{display:flex; align-items:center; gap:8px;}
+  .feat{display:flex; align-items:center;}
+  .vline{font-size:12px; color:var(--dim); font-weight:400; margin-top:8px; line-height:1.45; transition:color .3s ease;}
+  /* Sections rest at full strength — black face, white edge, never dimmed. Rest is 1.0, not 0.84. */
+  .lit-section{opacity:1;}
+  .reasons{margin-bottom:40px;}
+  .reasons h2{font-size:28px; font-weight:800; letter-spacing:-.01em; margin-bottom:32px;}
+  .reason-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media(max-width:860px){.reason-grid{grid-template-columns:1fr;}}
+  /* Physical reason cards — same object language as the tiers, each in its own spectrum color. */
+  .reason{background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    border:1.5px solid rgba(255,255,255,.9); border-top:2px solid var(--tone, var(--purple)); border-radius:16px; padding:24px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), inset 0 -2px 4px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.5);
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;}
+  .reason:hover{transform:translateY(-6px); border-color:var(--tone);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), inset 0 -2px 4px rgba(0,0,0,.5), 0 14px 34px rgba(0,0,0,.6), 0 0 34px var(--glow);}
+  .reason:active{transform:scale(.97); transition:transform .1s ease;}
+  .reason .reason-num{font-size:28px; font-weight:800; margin-bottom:8px;}
+  .reason h3{font-size:16px; margin-bottom:8px;}
+  .reason p{color:var(--dim); font-size:14px;}
+  .reason p.reason-more{margin-top:8px;}
+  /* Closing strip — the membership benefit, as its own board. */
+  .closing{margin-bottom:40px; padding:24px 32px; text-align:center; position:relative; overflow:hidden;
+    background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    border:1.5px solid rgba(255,255,255,.9); border-radius:16px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), inset 0 -2px 4px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.5);}
+  .closing::before{content:""; position:absolute; inset:0 0 auto 0; height:3px;
+    background:linear-gradient(90deg,var(--purple),var(--blue),var(--green),var(--gold),var(--orange),var(--red),var(--magenta));}
+  .closing p{font-size:20px; font-weight:700; line-height:1.4;}
+  /* BUY BUTTONS — Academy Supercharger Button construction, verbatim (harvested from NAYA_ACADEMY.md §§08–11): purple jewel border, dark obsidian face, glowing jewel star, deep shadow + purple halo, lifts −4px on hover. One button DNA for all 8 CTAs; tier identity is the hover glow (blue Pro / gold Max / purple Power). Sizing stays the page's 56px (8px grid, ≥48px touch target) — the Academy primary's 78–112px would push the 1920 hero headline into the PERSONAL pill. */
+  .btn{position:relative; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; text-decoration:none;
+    isolation:isolate; -webkit-tap-highlight-color:transparent;
+    min-height:56px; padding:2px; border-radius:clamp(18px, 1.55vw, 25px);
+    font-size:16px; font-weight:800; color:#fff !important; text-align:center;
+    background:linear-gradient(135deg, #fff6ff 0%, #e5baff 9%, #b565ff 23%, #7a32e5 42%, #42118d 63%, #8f42ee 82%, #e8c0ff 100%);
+    box-shadow:0 0 0 1px rgba(255,255,255,0.28), 0 8px 22px rgba(55,14,119,0.52), 0 20px 55px rgba(74,20,157,0.30), 0 0 65px rgba(150,69,255,0.28), inset 0 1px 1px rgba(255,255,255,0.82);
+    transition:transform 220ms cubic-bezier(.2,.8,.2,1), filter 220ms ease, box-shadow 220ms ease;}
+  .btn::before{content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; border-radius:clamp(16px, 1.4vw, 23px);
+    background:linear-gradient(145deg, #29222d 0%, #151117 27%, #09080b 58%, #030305 100%);
+    box-shadow:inset 0 1px 2px rgba(255,255,255,0.20), inset 0 -18px 30px rgba(0,0,0,0.60);}
+  .btn::after{content:""; position:absolute; top:2px; left:12%; width:76%; height:1px; pointer-events:none;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,0.75), transparent); opacity:0.78;}
+  .btn-inner{position:relative; display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:12px 22px;}
+  .btn-star{flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%;
+    background:radial-gradient(circle at 30% 20%, #ffffff 0%, #f4ddff 12%, #d28cff 29%, #9747ff 47%, #5518a7 68%, #22043f 100%);
+    border:1px solid rgba(241,217,255,0.98); color:#fff; font-size:14px; font-weight:900;
+    box-shadow:inset 0 2px 4px rgba(255,255,255,0.90), inset 0 -8px 13px rgba(37,4,77,0.72), 0 0 19px rgba(167,80,255,0.48), 0 5px 14px rgba(0,0,0,0.58);
+    text-shadow:0 2px 4px rgba(0,0,0,0.75);}
+  .btn:hover{transform:translateY(-4px); filter:brightness(1.07);
+    box-shadow:0 0 0 1px rgba(255,255,255,0.28), 0 8px 22px rgba(55,14,119,0.52), 0 20px 55px rgba(74,20,157,0.30), 0 0 65px rgba(150,69,255,0.28), inset 0 1px 1px rgba(255,255,255,0.82), 0 0 34px var(--glow,rgba(160,107,255,.32));}
+  .btn:active{transform:translateY(1px) scale(0.995);}
+  .btn:focus-visible{outline:3px solid rgba(222,190,255,0.96); outline-offset:5px;}
+  .btn-tier{width:100%; margin-top:16px;}
+  .btn-pro{--tone:var(--blue); --glow:rgba(63,184,255,.4);}
+  .btn-power{--tone:var(--purple); --glow:rgba(160,107,255,.4);}
+  .btn-max{--tone:var(--gold); --glow:rgba(255,191,61,.4);}
+  .btn-note{font-size:12px; color:var(--dim); text-align:center; margin-top:8px;}
+  /* Guarantee — under the tiers and beside the bottom CTA. */
+  .guarantee{margin:0 0 40px; padding:16px 24px; text-align:center; font-size:16px; font-weight:700;
+    border:1.5px solid rgba(255,255,255,.9); border-radius:16px;
+    background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 8px 24px rgba(0,0,0,.5);}
+  .guarantee span{color:var(--dim); font-weight:400; font-size:14px;}
+  /* Billing toggle — monthly / annual. Annual is half price: $150 / $300 / $600 a year. */
+  .bill-toggle{display:inline-flex; gap:8px; margin-top:16px; padding:8px; border-radius:99px;
+    border:1.5px solid rgba(255,255,255,.9); background:#0a0a0f;}
+  .bill-toggle button{min-height:56px; padding:8px 24px; border-radius:99px; border:1px solid transparent;
+    background:transparent; color:var(--dim); font-size:14px; font-weight:700; cursor:pointer;}
+  .bill-toggle button[aria-pressed="true"]{background:linear-gradient(135deg,#1e1e26,#0a0a0f); color:#fff; border-color:rgba(255,255,255,.9);}
+  /* Per-day line under each tier price — monthly price x 12 / 365, averaged over the year. */
+  .perday{color:var(--dim); font-size:14px; margin-top:8px;}
+  .perday b{color:var(--txt);}
+  /* Tier face — each tier its own jewel + its own top edge bar, so Pro differs from Power by more than a border. */
+  .tier::before{content:""; position:absolute; inset:0 0 auto 0; height:3px; border-radius:16px 16px 0 0; background:var(--tone);}
+  .tier-face{display:flex; align-items:center; gap:16px; margin-bottom:16px;}
+  .tier-face .tname{margin-bottom:0;}
+  /* Jewel icon — harvested from the Hub law (Intelligent Block Rules §4.10): black core, color ring, bold white glyph, depth not flat. The 12px dot is retired. */
+  .jewel{flex:0 0 auto; filter:drop-shadow(0 0 10px var(--jc,rgba(255,255,255,.25))) drop-shadow(0 2px 6px rgba(0,0,0,.6));}
+  .feat{gap:8px;}
+  /* Included strip — everything in every paid tier, so the table shows only what CHANGES. */
+  .included{margin-bottom:24px; padding:24px; border:1.5px solid rgba(255,255,255,.9); border-radius:16px;
+    background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 8px 24px rgba(0,0,0,.5);}
+  .included h3{font-size:16px; margin-bottom:16px;}
+  .included ul{list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:8px 24px; font-size:14px; color:var(--dim);}
+  @media(max-width:860px){.included ul{grid-template-columns:1fr;}}
+  .included li{display:flex; align-items:flex-start; gap:8px;}
+  .included li .jewel{margin-top:2px;}
+  /* Strip value line — the plan's distilled line: what it is, why it matters,
+     what's in it for you. Restored, not rewritten. */
+  .strip-line{display:block; font-size:12px; color:var(--dim); margin-top:4px; line-height:1.45;}
+  .included li b{color:var(--txt); font-weight:700;}
+  /* Worked payout example — proof under the payout line. Arithmetic: 10 x $25 = $250; 50% of $250 = $125. */
+  .worked{margin-bottom:32px; padding:24px; border:1.5px solid rgba(255,191,61,.9); border-radius:16px;
+    background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 8px 24px rgba(0,0,0,.5);}
+  .worked h3{font-size:16px; margin-bottom:8px;}
+  .worked p{color:var(--dim); font-size:14px;}
+  .worked p b{color:var(--txt);}
+  .worked .worked-num{font-size:28px; font-weight:800; color:#fff;}
+  /* Founding seats — 1,000 total, then closed forever. No taken count is claimed: none is verified. */
+  .seats{margin-bottom:32px; padding:24px; text-align:center; border:1.5px solid rgba(255,255,255,.9); border-radius:16px;
+    background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 8px 24px rgba(0,0,0,.5);}
+  .seats .seats-num{font-size:48px; font-weight:800;}
+  .seats p{color:var(--dim); font-size:14px;}
+  .seats p b{color:var(--txt);}
+  /* Hero product visual — a stylized miniature of your world: obsidian board, spectrum orbs, live bars. A visual, not a claimed screenshot. */
+  .hero-visual{margin:0 auto 32px; max-width:560px;}
+  /* Bottom CTA — last impression is the CTA. */
+  .bottom-cta{margin-bottom:40px; padding:32px; text-align:center; border:1.5px solid rgba(63,184,255,.9); border-radius:16px;
+    background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 8px 24px rgba(0,0,0,.5);}
+  .bottom-cta h2{font-size:28px; margin-bottom:8px;}
+  .bottom-cta p{color:var(--dim); font-size:14px; margin-bottom:24px;}
+  /* The close serves whoever scrolled here — one button per tier, not Pro only. */
+  .bottom-btns{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+  .bottom-cta .guarantee{margin:24px 0 0; border:none; background:none; box-shadow:none; padding:0;}
+  /* FAQ — three questions, distilled answers. */
+  .faq{margin-bottom:40px;}
+  .faq h2{font-size:28px; margin-bottom:16px;}
+  .faq details{margin-bottom:8px; padding:16px 24px; border:1.5px solid rgba(255,255,255,.9); border-radius:16px;
+    background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);}
+  .faq summary{font-size:16px; font-weight:700; cursor:pointer; min-height:44px; display:flex; align-items:center;}
+  .faq p{color:var(--dim); font-size:14px; margin-top:8px;}
+  .faq p b{color:var(--txt);}
+  /* Sticky CTA — phone only. Follows the scroll so the buyer never has to hunt for the button. */
+  .sticky-cta{display:none;}
+  @media(max-width:860px){
+    .sticky-cta{display:flex; align-items:center; justify-content:space-between; gap:16px;
+      position:fixed; left:16px; right:16px; bottom:16px; z-index:50;
+      padding:8px 8px 8px 24px; border-radius:99px;
+      background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+      border:1.5px solid var(--blue);
+      box-shadow:0 8px 24px rgba(0,0,0,.6), 0 0 24px rgba(63,184,255,.25);}
+    .sticky-cta .sticky-price{font-size:14px; font-weight:700;}
+    .sticky-cta .sticky-price span{color:var(--dim); font-weight:400; font-size:12px;}
+    .sticky-cta .btn{font-size:14px;}
+    .wrap{padding-bottom:120px;}
+  }
+  /* DOOR LAW — every number is a door. Tap it, it opens its records. The
+     record board is obsidian glass with the number's own color on its top edge. */
+  [data-door]{cursor:pointer;}
+  [data-door]:focus-visible{outline:2px solid var(--blue); outline-offset:4px;}
+  .price [data-door]{border-bottom:2px dotted var(--tone, rgba(255,255,255,.45));}
+  thead [data-door]{border-bottom:2px dotted rgba(255,255,255,.45);}
+  .door{position:fixed; inset:0; z-index:100; display:flex; align-items:center; justify-content:center; padding:24px;}
+  .door[hidden]{display:none;}
+  .door-backdrop{position:absolute; inset:0; background:rgba(0,0,0,.72);}
+  .door-board{position:relative; width:100%; max-width:480px; padding:32px;
+    background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    border:1.5px solid rgba(255,255,255,.9); border-top:3px solid var(--door-tone,#fff); border-radius:16px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 24px 64px rgba(0,0,0,.7);}
+  .door-kicker{font-size:12px; letter-spacing:.2em; font-weight:700; margin-bottom:8px;}
+  .door-board h3{font-size:28px; margin-bottom:16px;}
+  .door-board ul{list-style:none; font-size:14px; color:var(--dim);}
+  .door-board ul li{padding:8px 0; border-top:1px solid #16161c;}
+  .door-board ul li b{color:var(--txt);}
+  .door-x{position:absolute; top:16px; right:16px; width:44px; height:44px; border-radius:50%; border:1.5px solid rgba(255,255,255,.9); background:#0a0a0f; color:#fff; font-size:20px; cursor:pointer;}
+  /* Touch = physical response. Rows ignite on tap; cards lift under a thumb. Hover-only is mouse-only. */
+  tbody tr{cursor:pointer;}
+  tbody tr:active{transform:scale(.99);}
+  .c-purple{color:var(--purple);} .c-blue{color:var(--blue);} .c-green{color:var(--green);}
+  .c-gold{color:var(--gold);} .c-orange{color:var(--orange);} .c-red{color:var(--red);} .c-magenta{color:var(--magenta);}
+</style>
+<style>
+  /* ===== ROUND 4 — full-screen first: the wrap breathes to the edges. ===== */
+  .wrap{max-width:1760px; padding:40px 48px 80px;}
+  @media(max-width:860px){.wrap{padding:24px 16px 120px;}}
+  /* ===== BANNERS — luxury infographics FROM the Naya art (Smart Covers seed set). ===== */
+  .banner-top{position:relative; width:100%; overflow:hidden; background:#060608; border-bottom:1px solid var(--line);}
+  .banner-top .banner-img{width:100%; height:auto; display:block; animation:bannerBreathe 60s ease-in-out infinite alternate;}
+  @keyframes bannerBreathe{from{transform:scale(1);}to{transform:scale(1.025);}}
+  /* No shade on the Studio top: nothing dims the nine objects at the base. */
+  /* Studio top: no DOM portrait, caption or map labels — Naya and the nine systems live in the art. */
+  /* Studio top: the headline sits in the empty black sky top-left (max-width 480px clears the machine's left rim at ~549px @1920) — never over the nine objects at the base, and no shade dims them. */
+  .banner-head{position:absolute; z-index:3; left:48px; top:32px; max-width:480px;}
+  .banner-head h1{color:#fff; text-shadow:0 2px 18px rgba(0,0,0,.75);}
+  .banner-head .sub{color:#e8e8ee; text-shadow:0 1px 10px rgba(0,0,0,.8); max-width:880px;}
+  .banner-head .hero-cta-note{color:#e8e8ee; text-shadow:0 1px 8px rgba(0,0,0,.8);}
+  .banner-head .hero-guarantee{font-size:14px; color:#fff; margin-top:16px; text-shadow:0 1px 8px rgba(0,0,0,.8);}
+  .banner-head .hero-risk{font-size:14px; color:#fff; margin-top:8px; text-shadow:0 1px 8px rgba(0,0,0,.8);}
+  .scroll-cue{text-align:center; color:var(--faint); font-size:14px; margin:24px 0 0;}
+  /* Finals are 3:1 — below ~1728px the overlaid headline would sit on the pills. Stack it under the image (the established phone pattern), hide the NINE ORBS label (fixed-height pills collide with the SPACE pill below ~1590px). Phone rules below still win under 860px. */
+  @media(max-width:1760px){
+    .banner-head{position:static; left:auto; right:auto; top:auto; bottom:auto; max-width:none; padding:24px 48px 32px; background:#060608;}
+    .banner-head .sub{max-width:880px;}
+  }
+  @media(max-width:860px){
+    /* Phone: the banner image is short, the headline is tall — stack the
+       headline UNDER the image in normal flow instead of overlaying it,
+       or the H1 is pushed above the viewport and lost. */
+    .banner-head{position:static; left:auto; right:auto; top:auto; bottom:auto; max-width:none; padding:24px 16px 32px; background:#060608;}
+    .banner-head .sub{max-width:none;}
+    .banner-head h1{font-size:28px;}
+  }
+  /* Map labels live in the top band only: the headline block rises as the
+     banner shortens (1280), so anything below ~30% collides with the H1. */
+  .how{margin-bottom:32px; padding:24px 32px;}
+  .how h2{font-size:20px; margin-bottom:16px;}
+  .how ol{list-style:none; display:grid; grid-template-columns:repeat(4,1fr); gap:16px; counter-reset:how;}
+  @media(max-width:860px){.how ol{grid-template-columns:1fr;}}
+  .how li{font-size:14px; color:var(--dim); border-top:2px solid var(--tone,var(--purple)); padding-top:8px;}
+  .how li b{display:block; color:var(--txt); font-size:16px; margin-bottom:4px;}
+  /* Portal Grid pattern (part 2): each step a real object — its own color, its own glow, it lifts. */
+  .how li{transition:transform .25s ease, box-shadow .25s ease;}
+  .how li:hover{transform:translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,.5), 0 0 24px -6px var(--tone,var(--purple));}
+  /* ===== THE EYE — every feature opens its door. ===== */
+  .eye{cursor:pointer; margin-left:8px; font-size:14px; opacity:.8; flex:0 0 auto;}
+  .eye:hover{opacity:1;}
+  tbody tr.group td{background:#0c0c10 !important; font-size:12px; letter-spacing:.22em; font-weight:800; padding:16px; position:static !important; box-shadow:none !important;}
+  tbody tr.group:hover, tbody tr.group.lit{background:#0c0c10 !important;}
+  .check{color:var(--green); font-weight:800;}
+  /* ===== FEAR-KILLERS — safety net + up/down, beside the choice. ===== */
+  .fearkillers{margin-bottom:40px; padding:24px 32px;}
+  .fearkillers h2{font-size:28px; margin-bottom:8px;}
+  .fearkillers p{color:var(--dim); font-size:16px; margin-bottom:8px;}
+  .fearkillers p b{color:var(--txt);}
+  .fearkillers .updown{font-size:20px; font-weight:700; color:var(--txt); margin-top:16px;}
+  /* ===== AMBASSADOR CALCULATOR — the speedometer (SN-2076). Discrete block: remove this section + its CSS (.calc-*) + its script to take it out. ===== */
+  .calc{margin-bottom:40px; padding:32px; border:1.5px solid rgba(255,191,61,.9); border-radius:16px; position:relative; overflow:hidden;
+    background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 8px 24px rgba(0,0,0,.5);}
+  .calc::before{content:""; position:absolute; inset:0 0 auto 0; height:3px;
+    background:linear-gradient(90deg,var(--purple),var(--blue),var(--green),var(--gold),var(--orange),var(--red),var(--magenta));}
+  .calc-kicker{font-size:12px; font-weight:800; letter-spacing:.22em; color:var(--gold); margin-bottom:8px;}
+  .calc h2{font-size:28px; margin-bottom:8px;}
+  .calc-sub{color:var(--dim); font-size:16px; margin-bottom:24px; max-width:880px;}
+  .calc-sub b{color:var(--txt);}
+  .calc-body{display:flex; gap:32px; align-items:flex-start; flex-wrap:wrap;}
+  .calc-gauge{flex:0 0 360px; max-width:100%; text-align:center;}
+  .calc-gauge svg{width:100%; height:auto; display:block;}
+  #calc-needle{transform-origin:180px 178px; transition:transform .5s cubic-bezier(.2,.8,.2,1);}
+  .calc-readout{font-size:40px; font-weight:800; color:var(--gold); margin-top:8px; text-shadow:0 2px 14px rgba(0,0,0,.6);}
+  .calc-per{font-size:16px; color:var(--dim); font-weight:400; margin-left:8px;}
+  .calc-math{font-size:14px; color:var(--txt); margin-top:4px;}
+  .calc-controls{flex:1 1 320px;}
+  .calc-label{font-size:12px; font-weight:800; letter-spacing:.22em; color:var(--dim); margin:16px 0 8px;}
+  .calc-label:first-child{margin-top:0;}
+  .calc-plans{display:flex; gap:8px; flex-wrap:wrap;}
+  .calc-plan{flex:1 1 100px; padding:12px 8px; border-radius:12px; border:1.5px solid rgba(255,255,255,.35); background:#0a0a0f; color:#fff; font-size:14px; font-weight:800; cursor:pointer; text-align:center;}
+  .calc-plan span{display:block; font-size:11px; font-weight:400; color:var(--dim); margin-top:4px;}
+  .calc-plan.is-on{border-color:var(--gold); box-shadow:0 0 16px rgba(255,191,61,.35);}
+  .calc-pace{display:flex; align-items:center; gap:16px;}
+  .calc-step{width:48px; height:48px; border-radius:50%; border:1.5px solid rgba(255,255,255,.7); background:#0a0a0f; color:#fff; font-size:24px; cursor:pointer; flex:0 0 auto;}
+  .calc-pace-num{font-size:16px;}
+  .calc-unit{display:flex; gap:8px; margin-top:12px;}
+  .calc-unit-btn{padding:8px 16px; border-radius:99px; border:1.5px solid rgba(255,255,255,.35); background:#0a0a0f; color:#fff; font-size:14px; cursor:pointer;}
+  .calc-unit-btn.is-on{border-color:var(--gold); box-shadow:0 0 12px rgba(255,191,61,.3);}
+  .calc-examples{display:flex; gap:8px; flex-wrap:wrap;}
+  .calc-ex{padding:8px 12px; border-radius:99px; border:1px solid rgba(255,255,255,.35); background:transparent; color:#e8e8ee; font-size:13px; cursor:pointer;}
+  .calc-ex:hover{border-color:var(--gold);}
+  .calc-not{font-size:20px; font-weight:800; text-align:center; margin:32px 0 8px;}
+  .calc-lines{color:var(--dim); font-size:16px; text-align:center; max-width:880px; margin:0 auto 8px;}
+  .calc-lines b{color:var(--txt);}
+  .calc-proof{font-size:16px; font-weight:700; text-align:center; margin:16px 0 8px;}
+  .calc-disc{font-size:12px; color:var(--dim); text-align:center;}
+  @media(max-width:860px){
+    .calc{padding:24px 16px;}
+    .calc-gauge{flex:1 1 100%;}
+    .calc-readout{font-size:32px;}
+  }
+  /* ===== BOTTOM BANNER — the close. ===== */
+  .banner-bottom{position:relative; overflow:hidden; border-radius:0; border:1.5px solid rgba(255,255,255,.9); border-left:none; border-right:none; margin-bottom:40px; box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 8px 24px rgba(0,0,0,.5);}
+  .banner-bottom img{width:100%; height:auto; display:block;}
+  .banner-bottom .close-words{position:absolute; left:0; right:0; bottom:0; padding:32px; text-align:center; background:linear-gradient(180deg, rgba(6,6,8,0), rgba(6,6,8,.88) 70%);}
+  .banner-bottom .close-words h2{font-size:28px; text-shadow:0 2px 14px rgba(0,0,0,.8);}
+  .banner-bottom .close-words p{color:#e8e8ee; font-size:14px; text-shadow:0 1px 8px rgba(0,0,0,.8);}
+  /* ===== ROUND 5 COMPLETION — Studio top (text-free, nine objects in the art) + v2 bottom-wide. No DOM portrait, labels or orbs on the top: the nine systems are real objects at the machine's base, countable in the image. ===== */
+  .banner-map{position:relative;}
+  /* Full-bleed bottom banner (item 9): the wrap ends above it and restarts below it. */
+  .wrap--end{padding-bottom:0;}
+  .wrap--start{padding-top:0;}
+  /* ===== THE STATEMENT PIECE — the plaque between the chart and the calculator. Modelled on the Factory's Membership Plaque (Academy harvest #3): glass plaque, top light line, diamond divider, serif title + italic sub. ===== */
+  .statement{margin-bottom:40px; padding:32px; text-align:center; position:relative; overflow:hidden;
+    background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    border:1.5px solid rgba(255,255,255,.9); border-radius:16px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), inset 0 -2px 4px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.5);}
+  .statement::before{content:""; position:absolute; inset:0 0 auto 0; height:3px;
+    background:linear-gradient(90deg,var(--purple),var(--blue),var(--green),var(--gold),var(--orange),var(--red),var(--magenta));}
+  .statement-kicker{font-size:12px; font-weight:800; letter-spacing:.22em; margin-bottom:8px;}
+  .statement-title{font-family:Georgia,"Times New Roman",serif; font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-.01em; margin-bottom:8px;}
+  .statement-divider{color:var(--gold); font-size:16px; margin-bottom:16px;}
+  .statement-sub{font-size:20px; color:var(--txt); margin-bottom:16px;}
+  .statement-body{color:var(--dim); font-size:16px; max-width:880px; margin:0 auto 16px;}
+  .statement-body b{color:var(--txt);}
+  .statement-rhythm{font-size:20px; font-weight:700; color:var(--txt); margin-bottom:16px;}
+  /* ===== THE DIFFERENCE — free vs power, one line (Academy harvest #6 / part 6). ===== */
+  .diff{margin-bottom:40px; padding:24px 32px; border:1.5px solid rgba(255,255,255,.9); border-radius:16px;
+    background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), inset 0 -2px 4px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.5);}
+  .diff-head{font-size:16px; font-weight:800; letter-spacing:.06em; text-align:center; margin-bottom:16px;}
+  .diff-cols{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media(max-width:860px){.diff-cols{grid-template-columns:1fr;}}
+  .diff-col{padding:16px; border-radius:12px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12);}
+  .diff-col b{display:block; font-size:14px; letter-spacing:.12em; margin-bottom:6px;}
+  .diff-col span{color:var(--dim); font-size:14px;}
+  /* ===== THE NINE SYSTEMS — one intelligence, nine activated systems (Academy harvest #5). ===== */
+  .systems{margin-bottom:40px;}
+  .systems-img{margin-bottom:24px; border-radius:16px; overflow:hidden; border:1.5px solid rgba(255,255,255,.9);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 8px 24px rgba(0,0,0,.5);}
+  .systems-img img{width:100%; height:auto; display:block;}
+  .systems h2{font-size:28px; font-weight:800; letter-spacing:-.01em; margin-bottom:8px;}
+  .systems-sub{color:var(--dim); font-size:16px; margin-bottom:24px; max-width:880px;}
+  .systems-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  @media(max-width:860px){.systems-grid{grid-template-columns:1fr;}}
+  .system{background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    border:1.5px solid rgba(255,255,255,.9); border-top:2px solid var(--tone, var(--purple)); border-radius:16px; padding:24px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), inset 0 -2px 4px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.5);}
+  .system-num{font-size:28px; font-weight:800; color:var(--tone, var(--purple)); margin-bottom:8px;}
+  .system h3{font-size:16px; margin-bottom:8px;}
+  .system p{color:var(--dim); font-size:14px;}
+  /* ===== THE CALCULATOR — Cinema beside it. ===== */
+  .calc-cinema{margin:0 0 24px; border-radius:16px; overflow:hidden; border:1.5px solid rgba(255,255,255,.9);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 8px 24px rgba(0,0,0,.5);}
+  .calc-cinema img{width:100%; height:auto; display:block;}
+  /* ===== THE NINE-DAY JOURNEY — Academy Days (harvest #9): five jewel lesson boards, five-color spectrum; days 6–9 continue the spectrum. ===== */
+  .journey{margin-bottom:40px;}
+  .journey h2{font-size:28px; font-weight:800; letter-spacing:-.01em; margin-bottom:8px;}
+  .journey-sub{color:var(--dim); font-size:16px; margin-bottom:24px; max-width:880px;}
+  .journey-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:24px;}
+  @media(max-width:860px){.journey-grid{grid-template-columns:1fr;}}
+  .day{background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    border:1.5px solid rgba(255,255,255,.9); border-top:2px solid var(--tone, var(--purple)); border-radius:16px; padding:24px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), inset 0 -2px 4px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.5);}
+  .day-num{font-size:12px; font-weight:800; letter-spacing:.22em; color:var(--tone, var(--purple)); margin-bottom:8px;}
+  .day h3{font-size:16px; margin-bottom:8px;}
+  .day p{color:var(--dim); font-size:14px;}
+  .journey-foot{text-align:center; font-size:20px; font-weight:700; color:var(--txt);}
+  /* ===== THE CLOSE — the final line before the three Supercharger Buttons. ===== */
+  .close-line{font-size:20px; font-weight:700; color:var(--txt); margin-bottom:24px;}
+
+  .foot{margin-top:32px; color:var(--faint); font-size:12px; text-align:center;}
+  .reason-ex{margin-top:8px; font-size:14px;}
+  .reason-ex b{color:var(--txt);}
+  .lit-section{transition:border-color .6s ease;}
+  .lit-section.in-view{border-color:rgba(255,255,255,.45);}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><radialGradient id="jewel-core" cx="35%" cy="30%" r="80%"><stop offset="0%" stop-color="#2a2a33"/><stop offset="35%" stop-color="#141419"/><stop offset="100%" stop-color="#0a0a0e"/></radialGradient></defs></svg>
+
+<!-- ★ EDIT THIS — top banner: the headline. Full-bleed, edge to edge. Studio top — Naya inside the supercharger, the nine systems as real objects at the base. Text-free: no DOM portrait, caption, labels or orbs — the art carries all of it. -->
+<section class="banner-top" aria-label="The supercharger — Naya inside the machine">
+  <div class="banner-map">
+  <img class="banner-img" src="../../verify-pricing-v6/banner-assets/pricing-supercharger-alt-studio.webp" alt="Naya inside the supercharger — a polished steel machine, the nine systems as real objects on the floor around its base: envelope, chain, gear, book, checklist, brain, scales, drafting tools, crystal cube.">
+  </div>
+  <div class="banner-head">
+    <div class="kicker">9 DAYS FREE — NO CARD</div>
+    <h1>Feel the whole thing first. Then decide.</h1>
+    <p class="sub">Nine days. Everything. Free. You get to drive the Bugatti before you buy. Try her for nine days — you love her, keep her. Power is being plugged into the net. Free is unplugged — your Naya, with no power, no AI automation, disconnected from the net. NayaNET is a supercharger — bolt it onto your AI, plug into the supercharged network, and she runs at full power.</p>
+    <div class="hero-cta">
+      <a class="btn btn-pro" href="https://nayanet.app/pro-monthly" data-link-tier="pro"><span class="btn-inner"><span class="btn-star" aria-hidden="true">★</span>Start 9 days free — Pro</span></a>
+      <span class="hero-cta-note">No card. Nine days, everything, free — then pick one to keep.</span>
+    </div>
+    <p class="hero-guarantee"><b>No refunds — the trial is the guarantee.</b></p>
+    <p class="hero-risk">Where's the risk? It costs you nothing. Zero cost to try.</p>
+  </div>
+</section>
+
+  <p class="scroll-cue">Nine systems. One Naya. Scroll when you're ready to see what each one changes for you.</p>
+
+<div class="wrap wrap--end">
+
+  <!-- EDIT THIS — how it works: the logic sequence. -->
+  <div class="how trial lit-section">
+    <h2>How it works — four steps, each one removes a reason to say no</h2>
+    <ol>
+      <li style="--tone:var(--purple)"><b>1 · Join free</b>Your home is yours — Personal, Business, Space and Dashboard, free, forever.</li>
+      <li style="--tone:var(--blue)"><b>2 · Nine days, everything, free</b>You start with Max Power — everything, all of it. Feel the whole thing for nine days, then pick the level to keep.</li>
+      <li style="--tone:var(--green)"><b>3 · Your first payout can land inside the trial</b>Invite friends, and your first payout can land before you ever pay — when someone you invited pays at once.</li>
+      <li style="--tone:var(--gold)"><b>4 · Pick the level that fits</b>Choose one to keep — and change it any time, up or down, one click, no penalty.</li>
+    </ol>
+  </div>
+
+  <div class="payout-proof lit-section" data-door="payout" tabindex="0" role="button" title="Tap to see the record">
+    <div class="payout-orb">50%</div>
+    <p><b>"We're the only one in the world to give you 50% of the revenue, and you get paid" — 50% of revenue, paid to you the moment we're paid.</b> Month 1 you can be paid up to $100 a day. Then it grows — $200, $300, $400, $500, up to $1,000 a day at the top. The longer you're with us, and the more you do, the higher it goes. Amounts over $500 in a day pay the following day.</p>
+  </div>
+
+  <!-- EDIT THIS — the proof: one worked example, real arithmetic. -->
+  <div class="worked lit-section">
+    <h3>How the payout works — one example</h3>
+    <p>Invite <b>10 friends</b>. Each joins on Power at <b>$25 a month</b>. That's <b>10 &times; $25 = $250</b> a month coming in. You keep half — <span class="worked-num" data-count="125" data-prefix="$" data-door="payout" tabindex="0" role="button" title="Tap to see the record">$125</span> — paid to you as soon as we're paid. The first one lands 10 days after they join, when their 9-day trial ends — and once your cycle is going, you can get paid every day.</p>
+  </div>
+
+  <div class="seats lit-section" data-door="seats" tabindex="0" role="button" title="Tap to see the record">
+    <div class="seats-num"><span>1,000</span></div>
+    <p><b>Founding lifetime seats.</b> 1,000 members, then closed forever. When they're gone, they're gone.</p>
+  </div>
+
+  <div class="trial lit-section">
+    <div class="kicker">THE LADDER</div>
+    <h2>$25 &nbsp;→&nbsp; $50 &nbsp;→&nbsp; $100</h2>
+    <p>Every step exactly double. Annual is half price on every tier. One price per level — <b>everything in that level included</b>, nothing sold separately. Quarterly is 3 months for the price of 2 — $50 / $100 / $200.</p>
+    <div class="bill-toggle" role="group" aria-label="Billing period">
+      <button type="button" data-bill="monthly" aria-pressed="true">Monthly</button>
+      <button type="button" data-bill="annual" aria-pressed="false">Annual — half price</button>
+    </div>
+  </div>
+
+  <!-- EDIT THIS — tiers: name, price, value line, lines, button. Names and prices read from the PRICING object in the script; change them there, not here. -->
+  <div class="tiers lit-section" id="tiers">
+    <div class="tier t-power">
+      <div class="tier-face">
+        <svg class="jewel" viewBox="0 0 32 32" width="56" height="56" aria-hidden="true" style="--jc:#a06bff"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#a06bff" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#a06bff" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="26" font-weight="800" fill="#fff">&#9733;</text></svg>
+        <div>
+          <div class="tname" data-tier="power" data-field="name">NAYA POWER</div>
+          <div class="price-row"><div class="price"><span data-tier="power" data-field="price" data-door="power" tabindex="0" role="button" title="Tap to see the record">$25</span><span style="font-size:16px; color:var(--faint)">/mo</span></div></div>
+        </div>
+      </div>
+      <div class="per">The whole living system.</div>
+      <div class="tvalue">Your world, built and run for you — pages, mail, notes, all in one place.</div>
+      <div class="perday">&asymp; <b data-tier="power" data-field="perday">$0.82</b> a day</div>
+      <ul>
+        <li><b>$50</b> for 3 months — 3 for the price of 2</li>
+        <li><b>$150</b> a year — saves you $150</li>
+        <li><b>$300 lifetime</b>, founding only — 1,000 members, then closed forever</li>
+        <li>Build <b>1 membership site</b>.</li>
+      </ul>
+      <a class="btn btn-tier btn-power" href="https://nayanet.app/power-monthly" data-link-tier="power"><span class="btn-inner"><span class="btn-star" aria-hidden="true">★</span>Start 9 days free — Power</span></a>
+      <div class="btn-note" data-tier="power" data-field="btnnote">No card. $25 a month after your trial.</div>
+    </div>
+    <div class="tier pro t-pro">
+      <span class="tag hot">MOST CHOSEN</span>
+      <div class="tier-face">
+        <svg class="jewel" viewBox="0 0 32 32" width="56" height="56" aria-hidden="true" style="--jc:#3fb8ff"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#3fb8ff" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#3fb8ff" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="26" font-weight="800" fill="#fff">&#9638;</text></svg>
+        <div>
+          <div class="tname" data-tier="pro" data-field="name">NAYA PRO</div>
+          <div class="price-row"><div class="price"><span data-tier="pro" data-field="price" data-door="pro" tabindex="0" role="button" title="Tap to see the record">$50</span><span style="font-size:16px; color:var(--faint)">/mo</span></div></div>
+        </div>
+      </div>
+      <div class="per">For builders — box, sites, reach.</div>
+      <div class="tvalue">Five worlds growing at once — more room, more reach, more to sell.</div>
+      <div class="perday">&asymp; <b data-tier="pro" data-field="perday">$1.64</b> a day — less than a coffee</div>
+      <ul>
+        <li><b>$300</b> a year — annual is half price</li>
+        <li><b>$100</b> for 3 months — 3 for the price of 2</li>
+        <li><b>Smart Box</b> — storage that organizes itself</li>
+        <li>Build <b>5 membership sites</b>.</li>
+        <li>Smart Mail up to <b>100,000</b>/mo</li>
+      </ul>
+      <a class="btn btn-tier btn-pro" href="https://nayanet.app/pro-monthly" data-link-tier="pro"><span class="btn-inner"><span class="btn-star" aria-hidden="true">★</span>Start 9 days free — Pro</span></a>
+      <div class="btn-note" data-tier="pro" data-field="btnnote">No card. $50 a month after your trial.</div>
+    </div>
+    <div class="tier t-max">
+      <div class="tier-face">
+        <svg class="jewel" viewBox="0 0 32 32" width="56" height="56" aria-hidden="true" style="--jc:#ffbf3d"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#ffbf3d" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#ffbf3d" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="26" font-weight="800" fill="#fff">&#9819;</text></svg>
+        <div>
+          <div class="tname" data-tier="max" data-field="name">NAYA MAX</div>
+          <div class="price-row"><div class="price"><span data-tier="max" data-field="price" data-door="max" tabindex="0" role="button" title="Tap to see the record">$100</span><span style="font-size:16px; color:var(--faint)">/mo</span></div></div>
+        </div>
+      </div>
+      <div class="per">For sellers — more of everything.</div>
+      <div class="tvalue">No ceiling — every idea live, and affiliates selling your products for you.</div>
+      <div class="perday">&asymp; <b data-tier="max" data-field="perday">$3.29</b> a day</div>
+      <ul>
+        <li><b>$600</b> a year — annual is half price</li>
+        <li><b>$200</b> for 3 months — 3 for the price of 2</li>
+        <li>Build <b>unlimited membership sites</b>.</li>
+        <li><b>Affiliate system</b> for your own products</li>
+        <li>300 smart apps a month</li>
+      </ul>
+      <a class="btn btn-tier btn-max" href="https://nayanet.app/max-monthly" data-link-tier="max"><span class="btn-inner"><span class="btn-star" aria-hidden="true">★</span>Start 9 days free — Max</span></a>
+      <div class="btn-note" data-tier="max" data-field="btnnote">No card. $100 a month after your trial.</div>
+    </div>
+  </div>
+
+  
+
+  <!-- EDIT THIS — the difference: free vs power, named in one line. The Academy's Difference Block (harvest #6 / part 6), mirrored for free vs power. -->
+  <section class="diff lit-section" aria-label="The difference — free is unplugged, power is plugged in">
+    <p class="diff-head">THE DIFFERENCE — free is unplugged, power is plugged in.</p>
+    <div class="diff-cols">
+      <div class="diff-col"><b>NO POWER — FREE</b><span>Your Naya, with no power, no AI automation, disconnected from the net.</span></div>
+      <div class="diff-col"><b>POWER / PRO / MAX</b><span>Your Naya, plugged into the net — AI automation on, connected to the network.</span></div>
+    </div>
+  </section>
+
+  <div class="kicker" style="margin-bottom:16px;">WHAT THE MONEY BUYS — AT A GLANCE</div>
+  <div class="table-frame lit-section">
+  <div class="table-head-sticky">
+    <div class="table-head-clip" id="headClip">
+  <table class="table-head">
+    <colgroup><col style="width:24%"><col style="width:16%"><col style="width:20%"><col style="width:20%"><col style="width:20%"></colgroup>
+    <thead>
+      <tr>
+        <th></th>
+        <th><span style="font-size:12px; letter-spacing:.18em;">NO POWER</span><span class="col-price">$0</span><span class="col-sub">free, forever</span></th>
+        <th><span style="font-size:12px; letter-spacing:.18em;" data-tier="power" data-field="name">NAYA POWER</span><span class="col-price"><span data-tier="power" data-field="price" data-door="power" tabindex="0" role="button" title="Tap to see the record">$25</span><span style="font-size:14px;color:var(--faint)">/mo</span></span><span class="col-sub" data-tier="power" data-field="colsub">$50 / 3 mo · $150 / yr · $300 lifetime</span></th>
+        <th class="hl" id="th-pro"><span style="font-size:12px; letter-spacing:.18em;" data-tier="pro" data-field="name">NAYA PRO</span><span class="col-price"><span data-tier="pro" data-field="price" data-door="pro" tabindex="0" role="button" title="Tap to see the record">$50</span><span style="font-size:14px;color:var(--faint)">/mo</span></span><span class="col-sub" data-tier="pro" data-field="colsub">$300 / yr</span></th>
+        <th><span style="font-size:12px; letter-spacing:.18em;" data-tier="max" data-field="name">NAYA MAX</span><span class="col-price"><span data-tier="max" data-field="price" data-door="max" tabindex="0" role="button" title="Tap to see the record">$100</span><span style="font-size:14px;color:var(--faint)">/mo</span></span><span class="col-sub" data-tier="max" data-field="colsub">$600 / yr</span></th>
+      </tr>
+    </thead>
+  </table>
+    </div>
+  </div>
+  <div class="table-scroll" id="bodyScroll">
+  <table class="table-body">
+    <colgroup><col style="width:24%"><col style="width:16%"><col style="width:20%"><col style="width:20%"><col style="width:20%"></colgroup>
+    <!-- ROW TEMPLATE — copy this block to add a feature row. Pick the next spectrum color for --row (order: purple, blue, green, gold, orange, red, magenta). Keep the .vline: it says what the number lets the buyer do. Paste a jewel svg from a row above for the icon. Add the eye span to open its door.
+    <tr style="--row:var(--gold)"><td><span class="feat">[jewel svg]Feature name<span class="eye" data-door="feat-feature-name" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you">[eye svg]</span></span><div class="vline">What it lets you do.</div></td><td>FREE value</td><td>Power value</td><td class="hl">Pro value</td><td>Max value</td></tr>
+    -->
+    <tbody>
+      <tr class="group"><td colspan="5">CORE — YOUR WORLD, EVERY DAY</td></tr>
+      <tr style="--row:var(--purple)"><td><span class="feat"><svg class="jewel" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" style="--jc:#a06bff"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#a06bff" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#a06bff" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">&#9733;</text></svg>Smart apps<span class="eye" data-door="feat-smart-apps" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span></span><div class="vline">Your pages, built for you — new ones every month.</div></td><td><span class="check">✓</span> 4 — Personal, Business, Space, Dashboard</td><td><span class="check">✓</span> 100 new a month</td><td class="hl"><span class="check">✓</span> 100 new a month</td><td><span class="check">✓</span> 300 new a month</td></tr>
+      <tr style="--row:var(--blue)"><td><span class="feat"><svg class="jewel" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" style="--jc:#3fb8ff"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#3fb8ff" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#3fb8ff" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">&#9646;</text></svg>Smart spaces<span class="eye" data-door="feat-smart-spaces" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span></span><div class="vline">Rooms for every project, no limit.</div></td><td><span class="check">✓</span> 3 smart spaces</td><td><span class="check">✓</span> Unlimited smart spaces</td><td class="hl"><span class="check">✓</span> Unlimited smart spaces</td><td><span class="check">✓</span> Unlimited smart spaces</td></tr>
+      <tr style="--row:var(--green)"><td><span class="feat"><svg class="jewel" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" style="--jc:#2fe89e"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#2fe89e" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#2fe89e" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">&#9993;</text></svg>Smart Mail<span class="eye" data-door="feat-smart-mail" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span></span><div class="vline">Reach everyone who matters, in one inbox.</div></td><td><span class="check">✓</span> 100 people a month</td><td><span class="check">✓</span> Up to 10,000 a month</td><td class="hl"><span class="check">✓</span> Up to 100,000 a month</td><td><span class="check">✓</span> Up to 250,000 a month</td></tr>
+      <tr style="--row:var(--gold)"><td><span class="feat"><svg class="jewel" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" style="--jc:#ffbf3d"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#ffbf3d" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#ffbf3d" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">&#9998;</text></svg>Smart Notes<span class="eye" data-door="feat-smart-notes" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span></span><div class="vline">Your knowledge, saved and shared.</div></td><td><span class="check">✓</span> 10 a month</td><td><span class="check">✓</span> 100 a month</td><td class="hl"><span class="check">✓</span> 100 a month</td><td><span class="check">✓</span> 100 a month</td></tr>
+      <tr style="--row:var(--orange)"><td><span class="feat"><svg class="jewel" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" style="--jc:#ff9a5a"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#ff9a5a" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#ff9a5a" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">&#9680;</text></svg>Intelligent reports<span class="eye" data-door="feat-intelligent-reports" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span></span><div class="vline">See your world every day, and know what to do next.</div></td><td><span class="check">✓</span> Monthly only</td><td><span class="check">✓</span> Daily, weekly, monthly</td><td class="hl"><span class="check">✓</span> Daily, weekly, monthly</td><td><span class="check">✓</span> Daily, weekly, monthly</td></tr>
+      <tr style="--row:var(--red)"><td><span class="feat"><svg class="jewel" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" style="--jc:#ff5e6c"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#ff5e6c" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#ff5e6c" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">&#9776;</text></svg>Smart Lists<span class="eye" data-door="feat-smart-lists" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span></span><div class="vline">Everything organized, one tap away.</div></td><td><span class="check">✓</span> 3 lists</td><td><span class="check">✓</span> Unlimited lists</td><td class="hl"><span class="check">✓</span> Unlimited lists</td><td><span class="check">✓</span> Unlimited lists</td></tr>
+      <tr style="--row:var(--magenta)"><td><span class="feat"><svg class="jewel" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" style="--jc:#e84fff"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#e84fff" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#e84fff" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">&#9678;</text></svg>Smart Links<span class="eye" data-door="feat-smart-links" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span></span><div class="vline">Every link tracked, every click counted.</div></td><td><span class="check">✓</span> 1 — your own Smart Link</td><td><span class="check">✓</span> Unlimited Smart Links</td><td class="hl"><span class="check">✓</span> Unlimited Smart Links</td><td><span class="check">✓</span> Unlimited Smart Links</td></tr>
+      <tr style="--row:var(--purple)"><td><span class="feat"><svg class="jewel" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" style="--jc:#a06bff"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#a06bff" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#a06bff" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">&#10022;</text></svg>Your projects<span class="eye" data-door="feat-your-projects" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span></span><div class="vline">As many as you can dream.</div></td><td><span class="check">✓</span> 3 of your projects</td><td><span class="check">✓</span> Your projects, unlimited</td><td class="hl"><span class="check">✓</span> Your projects, unlimited</td><td><span class="check">✓</span> Your projects, unlimited</td></tr>
+      <tr class="group"><td colspan="5">GROWTH — REACH FURTHER</td></tr>
+      <tr style="--row:var(--blue)"><td><span class="feat"><svg class="jewel" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" style="--jc:#3fb8ff"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#3fb8ff" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#3fb8ff" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">&#9728;</text></svg>Daily highlights / Intel<span class="eye" data-door="feat-daily-highlights-intel" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span></span><div class="vline">The best of the network, every morning.</div></td><td><span class="check">✓</span> Top 3 a day</td><td><span class="check">✓</span> Full Intel feed, unlimited</td><td class="hl"><span class="check">✓</span> Full Intel feed, unlimited</td><td><span class="check">✓</span> Full Intel feed, unlimited</td></tr>
+      <tr style="--row:var(--green)"><td><span class="feat"><svg class="jewel" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" style="--jc:#2fe89e"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#2fe89e" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#2fe89e" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">&#9742;</text></svg>Audio calls<span class="eye" data-door="feat-audio-calls" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span></span><div class="vline">Talk to your people, up to 10 at once.</div></td><td>Not in free</td><td><span class="check">✓</span> Audio up to 10 people</td><td class="hl"><span class="check">✓</span> Audio up to 10 people</td><td><span class="check">✓</span> Audio up to 10 people</td></tr>
+      <tr style="--row:var(--gold)"><td><span class="feat"><svg class="jewel" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" style="--jc:#ffbf3d"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#ffbf3d" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#ffbf3d" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">&#9673;</text></svg>Video calls<span class="eye" data-door="feat-video-calls" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span></span><div class="vline">Face to face, up to 6 at once.</div></td><td>Not in free</td><td><span class="check">✓</span> Video up to 6 people</td><td class="hl"><span class="check">✓</span> Video up to 6 people</td><td><span class="check">✓</span> Video up to 6 people</td></tr>
+      <tr style="--row:var(--orange)"><td><span class="feat"><svg class="jewel" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" style="--jc:#ff9a5a"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#ff9a5a" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#ff9a5a" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">&#9834;</text></svg>Media — voice &amp; video notes<span class="eye" data-door="feat-media-voice-video-notes" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span></span><div class="vline">Your voice and video, ready to share.</div></td><td><span class="check">✓</span> 60 minutes a month</td><td><span class="check">✓</span> 600 minutes a month</td><td class="hl"><span class="check">✓</span> 600 minutes a month</td><td><span class="check">✓</span> 600 minutes a month</td></tr>
+      <tr style="--row:var(--red)"><td><span class="feat"><svg class="jewel" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" style="--jc:#ff5e6c"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#ff5e6c" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#ff5e6c" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">&#9672;</text></svg>Your own AI<span class="eye" data-door="feat-your-own-ai" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span></span><div class="vline">Your Naya, plugged into the network.</div></td><td>Not included</td><td><span class="check">✓</span> Plugged into the network</td><td class="hl"><span class="check">✓</span> Plugged into the network</td><td><span class="check">✓</span> Plugged into the network</td></tr>
+      <tr style="--row:var(--magenta)"><td><span class="feat"><svg class="jewel" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" style="--jc:#e84fff"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#e84fff" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#e84fff" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">&#8853;</text></svg>Fork<span class="eye" data-door="feat-fork" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span></span><div class="vline">Your own copy — your AI in your own repo.</div></td><td>Not included</td><td><span class="check">✓</span> Your own copy — your AI in your own repo</td><td class="hl"><span class="check">✓</span> Your own copy — your AI in your own repo</td><td><span class="check">✓</span> Your own copy — your AI in your own repo</td></tr>
+      <tr style="--row:var(--purple)"><td><span class="feat"><svg class="jewel" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" style="--jc:#a06bff"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#a06bff" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#a06bff" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">&#9638;</text></svg>Smart Box <span class="tag new" style="margin:0 0 0 8px;">NEW</span><span class="eye" data-door="feat-smart-box" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span></span><div class="vline">Storage that organizes itself.</div></td><td>Not included</td><td>Not included</td><td class="hl"><span class="check">✓</span> 100 GB — organizes itself</td><td><span class="check">✓</span> 500 GB — organizes itself</td></tr>
+      <tr class="group"><td colspan="5">MONEY — EARN FROM IT</td></tr>
+      <tr style="--row:var(--blue)"><td><span class="feat"><svg class="jewel" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" style="--jc:#3fb8ff"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#3fb8ff" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#3fb8ff" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">&#8962;</text></svg>Membership sites <span class="tag new" style="margin:0 0 0 8px;">NEW</span><span class="eye" data-door="feat-membership-sites" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span></span><div class="vline">Your own paid worlds, paying you.</div></td><td>Not included</td><td><span class="check">✓</span> 1 membership site</td><td class="hl"><span class="check">✓</span> 5 membership sites</td><td><span class="check">✓</span> Unlimited membership sites</td></tr>
+      <tr style="--row:var(--green)"><td><span class="feat"><svg class="jewel" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" style="--jc:#2fe89e"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#2fe89e" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#2fe89e" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">&#8599;</text></svg>Affiliate system <span class="tag new" style="margin:0 0 0 8px;">NEW</span><span class="eye" data-door="feat-affiliate-system" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span></span><div class="vline">Others sell your products, you earn.</div></td><td>Not included</td><td>Not included</td><td class="hl">Not included</td><td><span class="check">✓</span> Run affiliates on your own products</td></tr>
+      <tr style="--row:var(--gold)"><td><span class="feat"><svg class="jewel" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" style="--jc:#ffbf3d"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#ffbf3d" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#ffbf3d" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">$</text></svg>Ambassador payouts<span class="eye" data-door="feat-ambassador-payouts" tabindex="0" role="button" title="Tap to see what it is, what it does, what's in it for you"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span></span><div class="vline">50% of revenue — paid to you the moment we're paid.</div></td><td>Not included</td><td><span class="check">✓</span> 50% of revenue — paid to you the moment we're paid.</td><td class="hl"><span class="check">✓</span> 50% of revenue — paid to you the moment we're paid.</td><td><span class="check">✓</span> 50% of revenue — paid to you the moment we're paid.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+
+  <!-- EDIT THIS — the statement piece: the plaque between the chart and the calculator. The bridge. Modelled on the Factory's Membership Plaque (Academy harvest #3): glass plaque, top light line, diamond divider, serif title + italic sub. -->
+  <section class="statement lit-section" aria-label="Congratulations — you're hired">
+    <p class="statement-kicker">Congratulations, you're hired.</p>
+    <h2 class="statement-title">You get paid WHEN WE GET PAID.</h2>
+    <div class="statement-divider" aria-hidden="true">◆</div>
+    <p class="statement-sub"><i>They say AI is taking jobs from everyone — well, we decided to hire everyone.</i></p>
+    <p class="statement-body">Congratulations, you got the job. You get paid every 10 days if you wish — eventually every day if you get a flow going. Get paid in 10 days, get a flow going, get paid every day.</p>
+    <p class="statement-rhythm">Nine-day trial. Get paid day 10. Get a flow going, get paid every day.</p>
+    <p class="statement-body">Imagine getting paid from a high-tech intelligence company — not having to apply for the job, you automatically get the job. Something truly extraordinary — absolutely solid and beautiful and effective and useful. <b>50% of the revenue straight up. No games, no catch, no bullshit. Money in your account.</b> Everybody gets a trial for free.</p>
+    <p class="statement-body">We're creating a monumental massive money machine for the masses. We're going to save them from themselves. But it's not just a money machine. It's an intelligence system.</p>
+  </section>
+
+  <!-- EDIT THIS — the ambassador calculator: pick your package, see your potential. The speedometer is the signature piece (SN-2076); the needle moves as the reader plays. Discrete block — remove this section, its CSS (.calc-*) and its script to take it out. -->
+  <section class="calc lit-section" id="calculator" aria-label="Ambassador calculator — pick your package, see your potential">
+    <p class="calc-kicker">PICK YOUR PACKAGE — SHOW YOUR POTENTIAL</p>
+    <h2>Calculate your income.</h2>
+    <p class="calc-sub">Nine days. Everything. Free. Days 1–5 you train in the Academy; days 6–9 we show you how to actually operate. Anaya is hiring everybody in the world — we are a new high-tech internet company, and you are like a salesperson: tell everybody how awesome she is, tell them they can try her for free, and if they happen to upgrade — boom, you get paid. End of story.</p>
+    <figure class="calc-cinema"><img src="../../verify-pricing-v6/banner-assets/pricing-supercharger-alt-cinema.webp" alt="The supercharger: a turbine machine with a gauge face, Naya leaning on it, the nine systems on pedestals behind."></figure>
+    <div class="calc-body">
+      <div class="calc-gauge">
+        <svg viewBox="0 0 360 205" width="360" height="205" role="img" aria-label="Speedometer gauge showing your potential monthly recurring earnings">
+          <defs>
+            <radialGradient id="calc-dial" cx="50%" cy="55%" r="75%">
+              <stop offset="0%" stop-color="#23232e"/><stop offset="60%" stop-color="#101014"/><stop offset="100%" stop-color="#060608"/>
+            </radialGradient>
+            <linearGradient id="calc-gold" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffbf3d"/><stop offset="50%" stop-color="#fff2c4"/><stop offset="100%" stop-color="#ffbf3d"/>
+            </linearGradient>
+          </defs>
+          <path d="M 20 178 A 160 160 0 0 1 340 178 Z" fill="url(#calc-dial)" stroke="url(#calc-gold)" stroke-width="3"/>
+          <path d="M 32 178 A 148 148 0 0 1 328 178" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1"/>
+          <path d="M 48.0 178.0 A 132 132 0 0 1 53.3 140.8" fill="none" stroke="#ff4d4d" stroke-width="10"/>
+          <path d="M 53.3 140.8 A 132 132 0 0 1 69.0 106.6" fill="none" stroke="#ff9a3d" stroke-width="10"/>
+          <path d="M 69.0 106.6 A 132 132 0 0 1 93.6 78.2" fill="none" stroke="#ffcc33" stroke-width="10"/>
+          <path d="M 93.6 78.2 A 132 132 0 0 1 125.2 57.9" fill="none" stroke="#b8e62e" stroke-width="10"/>
+          <path d="M 125.2 57.9 A 132 132 0 0 1 161.2 47.3" fill="none" stroke="#2fe89e" stroke-width="10"/>
+          <path d="M 161.2 47.3 A 132 132 0 0 1 198.8 47.3" fill="none" stroke="#2fd4c4" stroke-width="10"/>
+          <path d="M 198.8 47.3 A 132 132 0 0 1 234.8 57.9" fill="none" stroke="#3fb8ff" stroke-width="10"/>
+          <path d="M 234.8 57.9 A 132 132 0 0 1 266.4 78.2" fill="none" stroke="#6a7cff" stroke-width="10"/>
+          <path d="M 266.4 78.2 A 132 132 0 0 1 291.0 106.6" fill="none" stroke="#a06bff" stroke-width="10"/>
+          <path d="M 291.0 106.6 A 132 132 0 0 1 306.7 140.8" fill="none" stroke="#e84fff" stroke-width="10"/>
+          <path d="M 306.7 140.8 A 132 132 0 0 1 312.0 178.0" fill="none" stroke="#ff5ea8" stroke-width="10"/>
+          <line x1="48.0" y1="178.0" x2="62.0" y2="178.0" stroke="rgba(255,255,255,.6)" stroke-width="2"/>
+          <text x="80.0" y="196.0" text-anchor="middle" font-size="11" fill="#e8e8ee">$0</text>
+          <line x1="86.7" y1="84.7" x2="96.6" y2="94.6" stroke="rgba(255,255,255,.6)" stroke-width="2"/>
+          <text x="109.3" y="111.3" text-anchor="middle" font-size="11" fill="#e8e8ee">$1,250</text>
+          <line x1="180.0" y1="46.0" x2="180.0" y2="60.0" stroke="rgba(255,255,255,.6)" stroke-width="2"/>
+          <text x="180.0" y="82.0" text-anchor="middle" font-size="11" fill="#e8e8ee">$2,500</text>
+          <line x1="273.3" y1="84.7" x2="263.4" y2="94.6" stroke="rgba(255,255,255,.6)" stroke-width="2"/>
+          <text x="250.7" y="111.3" text-anchor="middle" font-size="11" fill="#e8e8ee">$3,750</text>
+          <line x1="312.0" y1="178.0" x2="298.0" y2="178.0" stroke="rgba(255,255,255,.6)" stroke-width="2"/>
+          <text x="280.0" y="196.0" text-anchor="middle" font-size="11" fill="#e8e8ee">$5,000</text>
+          <g id="calc-needle">
+            <polygon points="180,66 174,178 186,178" fill="#ffbf3d" stroke="#fff2c4" stroke-width="1"/>
+          </g>
+          <circle cx="180" cy="178" r="13" fill="url(#calc-dial)" stroke="#ffbf3d" stroke-width="2"/>
+          <circle cx="180" cy="178" r="4" fill="#ffbf3d"/>
+        </svg>
+        <div class="calc-readout"><span id="calc-amount">$750</span><span class="calc-per">/ month, recurring</span></div>
+        <p class="calc-math" id="calc-math">1 Pro sale a day × $25 × 30 days = $750 a month ($9,000 a year)</p>
+      </div>
+      <div class="calc-controls">
+        <p class="calc-label">Your package</p>
+        <div class="calc-plans" role="group" aria-label="Pick your package">
+          <button type="button" class="calc-plan" data-share="12.5" data-plan="Power">POWER<span>$25/mo · $12.50 a sale</span></button>
+          <button type="button" class="calc-plan is-on" data-share="25" data-plan="Pro">PRO<span>$50/mo · $25 a sale</span></button>
+          <button type="button" class="calc-plan" data-share="50" data-plan="Max">MAX<span>$100/mo · $50 a sale</span></button>
+        </div>
+        <p class="calc-label">Your pace</p>
+        <div class="calc-pace">
+          <button type="button" class="calc-step" id="calc-minus" aria-label="Fewer sales">−</button>
+          <span class="calc-pace-num"><b id="calc-pace">1</b> sale<span id="calc-pace-s"></span> a <span id="calc-pace-unit">day</span></span>
+          <button type="button" class="calc-step" id="calc-plus" aria-label="More sales">+</button>
+        </div>
+        <div class="calc-unit" role="group" aria-label="Per day or per month">
+          <button type="button" class="calc-unit-btn is-on" data-unit="day">Per day</button>
+          <button type="button" class="calc-unit-btn" data-unit="month">Per month</button>
+        </div>
+        <p class="calc-label">Try it — the worked examples</p>
+        <div class="calc-examples">
+          <button type="button" class="calc-ex" data-plan="Max" data-share="50" data-pace="3" data-unit="day">3 Max a day → $4,500/mo</button>
+          <button type="button" class="calc-ex" data-plan="Pro" data-share="25" data-pace="1" data-unit="day">1 Pro a day → $750/mo</button>
+          <button type="button" class="calc-ex" data-plan="Max" data-share="50" data-pace="3" data-unit="month">3 Max a month → $150/mo</button>
+        </div>
+      </div>
+    </div>
+    <p class="calc-not">NOT network marketing.</p>
+    <p class="calc-lines">No downline, no upline — just the potential to get paid every day. Imagine working for Mercedes — a high-end, high-tech company, epic products, solid, amazing — and you get a commission for promoting them. But instead of 5% or 10%, you are getting <b>50% of the revenue — not the profit, straight up.</b></p>
+    <p class="calc-lines"><b>As soon as we get paid, you get paid. No hold back. No games.</b></p>
+    <p class="calc-proof">You know it is solid because you tried her for nine days. You cannot say it is not good — it is good, it is more than good, it is awesome.</p>
+    <p class="calc-lines"><b>Try the new Bugatti of the internet — name's Naya.</b> She is everything the whole of everything the internet is — smart mail, social networking, intelligence, everything all in one — an AI operating system for the internet, the new layer, the new intelligence layer. And you get paid for referring everybody to it — <b>and you get to use it, which is the greatest gift.</b></p>
+    <p class="calc-lines">Imagine getting paid from a high-tech intelligence company — not having to apply for the job, you automatically get the job. Something truly extraordinary — absolutely solid and beautiful and effective and useful. <b>50% of the revenue straight up. No games, no catch, no bullshit. Money in your account.</b> Everybody gets a trial for free.</p>
+    <p class="calc-disc">Potential, not a promise. Computed from your inputs — plan price × 50%, recurring monthly. Nothing here is promised earnings.</p>
+  </section>
+  <script>
+  (function(){
+    var plan='Pro', share=25, pace=1, unit='day';
+    var amount=document.getElementById('calc-amount'),
+        math=document.getElementById('calc-math'),
+        needle=document.getElementById('calc-needle'),
+        paceEl=document.getElementById('calc-pace'),
+        paceS=document.getElementById('calc-pace-s'),
+        paceUnit=document.getElementById('calc-pace-unit');
+    if(!amount||!needle) return;
+    function fmt(n){ return n%1===0 ? String(n) : n.toFixed(2); }
+    function money(n){ return '$'+Math.round(n).toLocaleString('en-US'); }
+    function update(){
+      var mult = unit==='day' ? 30 : 1;
+      var monthly = share*pace*mult;
+      amount.textContent = money(monthly);
+      var s = pace>1 ? 's' : '';
+      paceEl.textContent = pace; paceS.textContent = s; paceUnit.textContent = unit;
+      var m = pace+' '+plan+' sale'+s+' a '+unit+' × $'+fmt(share);
+      if(unit==='day'){ m += ' × 30 days'; }
+      m += ' = '+money(monthly)+' a month ('+money(monthly*12)+' a year)';
+      if(monthly>5000){ m += ' — off the dial; the needle is pegged at $5,000.'; }
+      math.textContent = m;
+      var ang = -90 + Math.min(monthly,5000)/5000*180;
+      needle.style.transform = 'rotate('+ang+'deg)';
+    }
+    document.querySelectorAll('.calc-plan').forEach(function(b){
+      b.addEventListener('click', function(){
+        document.querySelectorAll('.calc-plan').forEach(function(x){x.classList.remove('is-on');});
+        b.classList.add('is-on');
+        plan=b.getAttribute('data-plan'); share=parseFloat(b.getAttribute('data-share')); update();
+      });
+    });
+    document.getElementById('calc-minus').addEventListener('click', function(){ if(pace>1){pace--; update();} });
+    document.getElementById('calc-plus').addEventListener('click', function(){ if(pace<10){pace++; update();} });
+    document.querySelectorAll('.calc-unit-btn').forEach(function(b){
+      b.addEventListener('click', function(){
+        document.querySelectorAll('.calc-unit-btn').forEach(function(x){x.classList.remove('is-on');});
+        b.classList.add('is-on'); unit=b.getAttribute('data-unit'); update();
+      });
+    });
+    document.querySelectorAll('.calc-ex').forEach(function(b){
+      b.addEventListener('click', function(){
+        plan=b.getAttribute('data-plan'); share=parseFloat(b.getAttribute('data-share'));
+        pace=parseInt(b.getAttribute('data-pace'),10); unit=b.getAttribute('data-unit');
+        document.querySelectorAll('.calc-plan').forEach(function(x){x.classList.toggle('is-on', x.getAttribute('data-plan')===plan);});
+        document.querySelectorAll('.calc-unit-btn').forEach(function(x){x.classList.toggle('is-on', x.getAttribute('data-unit')===unit);});
+        update();
+      });
+    });
+    update();
+  })();
+  </script>
+
+  <!-- EDIT THIS — the nine systems: one intelligence, nine activated systems. The nine orbs are the nine systems — same nine, same names (Academy harvest #5). Image: Layers — Naya in the turbine ring, the nine on pedestals. -->
+  <section class="systems lit-section" aria-label="The nine systems">
+    <figure class="systems-img"><img src="../../verify-pricing-v6/banner-assets/pricing-supercharger-alt-layers.webp" alt="Naya inside the turbine ring, light beams reaching the nine systems on pedestals around her."></figure>
+    <p class="kicker">ONE INTELLIGENCE — NINE ACTIVATED SYSTEMS</p>
+    <h2>What each system changes for you.</h2>
+    <p class="systems-sub">The nine orbs are the nine systems — same nine, same names. One intelligence, nine activated systems, working together around your relationship with her.</p>
+    <div class="systems-grid">
+      <div class="system" style="--tone:var(--purple)"><div class="system-num">01</div><h3>Personality</h3><p>Work with an AI personality tuned to how you want the relationship to feel.</p></div>
+      <div class="system" style="--tone:var(--blue)"><div class="system-num">02</div><h3>Brain</h3><p>Give AI a richer foundation so it can reason from more than the latest sentence.</p></div>
+      <div class="system" style="--tone:var(--green)"><div class="system-num">03</div><h3>Notes</h3><p>Keep the ideas, decisions and context that should not disappear when the conversation ends.</p></div>
+      <div class="system" style="--tone:var(--gold)"><div class="system-num">04</div><h3>Lead Mode</h3><p>Stop making yourself the project manager of your AI. Tell Naya the destination and let her help drive the work.</p></div>
+      <div class="system" style="--tone:var(--orange)"><div class="system-num">05</div><h3>Law</h3><p>Set the standards Naya must protect instead of hoping she guesses what “good” means to you.</p></div>
+      <div class="system" style="--tone:var(--red)"><div class="system-num">06</div><h3>Scorecarding</h3><p>Stop accepting “looks good.” Build a habit of knowing what strong work actually is.</p></div>
+      <div class="system" style="--tone:var(--magenta)"><div class="system-num">07</div><h3>Language</h3><p>Define the words that matter so AI understands what you actually mean instead of choosing its own interpretation.</p></div>
+      <div class="system" style="--tone:var(--purple)"><div class="system-num">08</div><h3>Design</h3><p>Give Naya a master designer’s eye so the work is not merely functional — it is clear, beautiful, intentional and easy to use.</p></div>
+      <div class="system" style="--tone:var(--blue)"><div class="system-num">09</div><h3>Coder</h3><p>Give Naya a master coder’s standard so the code is built to be correct, maintainable, resilient, accessible and ready for real users.</p></div>
+    </div>
+  </section>
+
+  <div class="reasons lit-section">
+    <div class="kicker">WHAT'S IN IT FOR YOU</div>
+    <h2>What's in it for you — why should you care</h2>
+    <div class="reason-grid">
+      <div class="reason" style="--tone:var(--purple); --glow:rgba(160,107,255,.32);" data-door="reason-01" tabindex="0" role="button" title="Tap to see the record"><div class="reason-head"><svg class="jewel" viewBox="0 0 32 32" width="48" height="48" aria-hidden="true" style="--jc:#a06bff"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#a06bff" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#a06bff" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">01</text></svg></div><h3>Ten-star experience</h3><p>Naya builds your world and runs it for you — so you never touch a setting, and your world just works.</p><p class="reason-ex"><b>Example: your Personal, Business, Space and Dashboard — four apps — built and run for you, in one place.</b></p></div>
+      <div class="reason" style="--tone:var(--blue); --glow:rgba(63,184,255,.32);" data-door="reason-02" tabindex="0" role="button" title="Tap to see the record"><div class="reason-head"><svg class="jewel" viewBox="0 0 32 32" width="48" height="48" aria-hidden="true" style="--jc:#3fb8ff"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#3fb8ff" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#3fb8ff" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">02</text></svg></div><h3>The intelligence network</h3><p>Learn from everybody — so you get smarter every day, without studying.</p><p class="reason-ex"><b>Example: the full Intel feed, unlimited — the best of the network, every morning.</b></p></div>
+      <div class="reason" style="--tone:var(--green); --glow:rgba(47,232,158,.32);" data-door="reason-03" tabindex="0" role="button" title="Tap to see the record"><div class="reason-head"><svg class="jewel" viewBox="0 0 32 32" width="48" height="48" aria-hidden="true" style="--jc:#2fe89e"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#2fe89e" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#2fe89e" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">03</text></svg></div><h3>The new internet, all in one</h3><p>Everything the internet is, connected — so you stop juggling ten apps.</p><p class="reason-ex"><b>Example: Smart Mail, Smart Lists, Smart Notes, calls and payouts — one inbox, one place, instead of ten apps.</b></p></div>
+      <div class="reason" style="--tone:var(--gold); --glow:rgba(255,191,61,.32);" data-door="reason-04" tabindex="0" role="button" title="Tap to see the record"><div class="reason-head"><svg class="jewel" viewBox="0 0 32 32" width="48" height="48" aria-hidden="true" style="--jc:#ffbf3d"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#ffbf3d" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#ffbf3d" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">04</text></svg></div><h3>A team of Nias and humans</h3><p>Nias with their own profiles, mail and messages — so you're never building alone.</p><p class="reason-ex"><b>Example: your own Naya, plugged into the network — beside people like you, building together.</b></p></div>
+      <div class="reason" style="--tone:var(--orange); --glow:rgba(255,154,90,.32);" data-door="reason-05" tabindex="0" role="button" title="Tap to see the record"><div class="reason-head"><svg class="jewel" viewBox="0 0 32 32" width="48" height="48" aria-hidden="true" style="--jc:#ff9a5a"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#ff9a5a" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#ff9a5a" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">05</text></svg></div><h3>Naya remembers everything</h3><p>Your notes, your days, your reports — so you never lose what matters.</p><p class="reason-ex"><b>Example: 100 smart notes a month, saved — plus daily, weekly and monthly reports that show them back to you.</b></p></div>
+      <div class="reason" style="--tone:var(--red); --glow:rgba(255,94,108,.32);" data-door="reason-06" tabindex="0" role="button" title="Tap to see the record"><div class="reason-head"><svg class="jewel" viewBox="0 0 32 32" width="48" height="48" aria-hidden="true" style="--jc:#ff5e6c"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#ff5e6c" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#ff5e6c" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">06</text></svg></div><h3>Smart Ledger, collective chain</h3><p>Everything recorded, everything has a value — so nothing is hidden, and trust is built in.</p><p class="reason-ex"><b>Example: every action recorded, every value shown — the ledger is the receipt.</b></p></div>
+      <div class="reason" style="--tone:var(--magenta); --glow:rgba(232,79,255,.32);" data-door="reason-07" tabindex="0" role="button" title="Tap to see the record"><div class="reason-head"><svg class="jewel" viewBox="0 0 32 32" width="48" height="48" aria-hidden="true" style="--jc:#e84fff"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#e84fff" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#e84fff" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">07</text></svg></div><h3>Private by design</h3><p>We never read your mail, deleted by default — so your conversations are yours.</p><p class="reason-ex"><b>Example: deleted by default — a day, a week, or a month, your choice. Aliases, not real names.</b></p></div>
+      <div class="reason" style="--tone:var(--purple); --glow:rgba(160,107,255,.32);" data-door="reason-08" tabindex="0" role="button" title="Tap to see the record"><div class="reason-head"><svg class="jewel" viewBox="0 0 32 32" width="48" height="48" aria-hidden="true" style="--jc:#a06bff"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#a06bff" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#a06bff" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">08</text></svg></div><h3>Smart Mail and Smart Search</h3><p>Find anyone by topic or location — so you connect with like minds, fast.</p><p class="reason-ex"><b>Example: connect with like minds, fast — and choose exactly who can reach you.</b></p></div>
+      <div class="reason" style="--tone:var(--blue); --glow:rgba(63,184,255,.32);" data-door="reason-09" tabindex="0" role="button" title="Tap to see the record"><div class="reason-head"><svg class="jewel" viewBox="0 0 32 32" width="48" height="48" aria-hidden="true" style="--jc:#3fb8ff"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#3fb8ff" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#3fb8ff" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">09</text></svg></div><h3>Smart Access</h3><p>Any product behind a pay door — so you earn from what you already made.</p><p class="reason-ex"><b>Example: a membership site at $25 a month — 10 members is $250 a month coming in, and you keep half.</b></p></div>
+      <div class="reason" style="--tone:var(--green); --glow:rgba(47,232,158,.32);" data-door="reason-10" tabindex="0" role="button" title="Tap to see the record"><div class="reason-head"><svg class="jewel" viewBox="0 0 32 32" width="48" height="48" aria-hidden="true" style="--jc:#2fe89e"><circle cx="16" cy="16" r="14" fill="url(#jewel-core)"/><circle cx="16" cy="16" r="14" fill="none" stroke="#2fe89e" stroke-width="2.5"/><circle cx="16" cy="16" r="11" fill="none" stroke="#2fe89e" stroke-width="1" opacity=".4"/><polygon points="9,11 14,7 17,10 12,14" fill="#fff" opacity=".48"/><text x="16" y="21.5" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">10</text></svg></div><h3>Free to join</h3><p>9 days free, zero cost — so you try the Bugatti before you buy it.</p><p class="reason-ex"><b>Example: invite 10 friends on Power at $25 a month — that's $250 coming in, you keep $125, and your first payout can land before you ever pay when someone pays at once.</b></p></div>
+    </div>
+  </div>
+
+  <div class="closing lit-section">
+    <p>Included with your membership: pricing pages like this one — your own elite page, built for you.</p>
+  </div>
+
+  <!-- EDIT THIS — the nine-day journey: days 1–5 train in the Academy, days 6–9 we show you how to operate. The trial and the training are the SAME nine days (Academy harvest #9, five jewel lesson boards, five-color spectrum; days 6–9 continue the spectrum). -->
+  <section class="journey lit-section" aria-label="Your nine days">
+    <p class="kicker">NINE DAYS — THE JOURNEY</p>
+    <h2>Your nine days — train, then operate.</h2>
+    <p class="journey-sub">The trial and the training are the SAME nine days. Days 1–5 you train in the Academy; days 6–9 we show you how to actually operate.</p>
+    <div class="journey-grid">
+      <div class="day" style="--tone:var(--magenta)"><div class="day-num">DAY 1</div><h3>Activate / Experience</h3><p>Meet Naya. Activate the relationship. Feel the difference immediately by letting Naya understand who you are, what matters to you, and where you want to go.</p></div>
+      <div class="day" style="--tone:var(--purple)"><div class="day-num">DAY 2</div><h3>Remember / Compound</h3><p>Stop starting over. Turn useful experience into intelligence that can be remembered, retrieved, reviewed and carried forward.</p></div>
+      <div class="day" style="--tone:var(--blue)"><div class="day-num">DAY 3</div><h3>Learn / Master</h3><p>Learn meaningful AI and Human Maximus subjects with Naya, then prove what you know and discover exactly where you can improve.</p></div>
+      <div class="day" style="--tone:var(--green)"><div class="day-num">DAY 4</div><h3>Create / Execute</h3><p>Turn intelligence into extraordinary work. Think with Naya, create with Naya, review with Naya, score it, improve it and execute.</p></div>
+      <div class="day" style="--tone:var(--gold)"><div class="day-num">DAY 5</div><h3>Become / Compound</h3><p>This is not simply the end of five lessons. It is the beginning of a new way to operate: learn, remember, create, reflect, improve and compound.</p></div>
+      <div class="day" style="--tone:var(--orange)"><div class="day-num">DAY 6</div><h3>Operate</h3><p>Run your world with her — your pages, your mail, your notes, all in one place, working for you.</p></div>
+      <div class="day" style="--tone:var(--red)"><div class="day-num">DAY 7</div><h3>Invite</h3><p>Tell everybody how awesome she is — they try her free.</p></div>
+      <div class="day" style="--tone:var(--magenta)"><div class="day-num">DAY 8</div><h3>Earn</h3><p>They upgrade, you get paid — 50% of the revenue, paid to you the moment we're paid.</p></div>
+      <div class="day" style="--tone:var(--purple)"><div class="day-num">DAY 9</div><h3>Decide</h3><p>Pick one to keep — Power, Pro or Max — and change it any time, up or down, one click, no penalty.</p></div>
+    </div>
+    <p class="journey-foot">Get paid in 10 days, get a flow going, get paid every day.</p>
+  </section>
+
+  <div class="guarantee lit-section"><b>No refunds — the trial is the guarantee.</b> <span>9 days free, no card. You decide before you pay a cent.</span></div>
+
+  <!-- EDIT THIS — fear-killers: the safety net + up/down, beside the choice. -->
+  <div class="fearkillers trial lit-section">
+    <h2>You can't lose. Either you keep her, or you keep your account.</h2>
+    <p>After nine days, if you don't buy, you still continue — you keep your account, keep your profile, connect with people and get intelligence. Most of your power goes away: no AI automation, disconnected from the net. Your free home stays yours either way.</p>
+    <p>Power is being plugged into the net. Free is unplugged — your Naya is yours, but with no power.</p>
+    <p class="updown">Pick any level. Change it any time — up or down, one click, no penalty. Your world stays yours.</p>
+  </div>
+</div>
+
+  <!-- EDIT THIS — the close: the bottom banner, the words, the buttons. -->
+  <section class="banner-bottom lit-section" aria-label="This is yours. Pick your power.">
+    <img src="../../verify-pricing-v6/banner-assets/pricing-supercharger-bottom-naya-in-gauge-wide.webp" alt="Naya inside the gauge — the supercharger dial, the nine systems orbiting, her hand open.">
+    <div class="close-words">
+      <h2>This is yours. Pick your power.</h2>
+      <p>Same AI. Different operating system. The same world, the same Naya, the same N — yours to keep.</p>
+    </div>
+  </section>
+  <div class="wrap wrap--start">
+
+  <div class="bottom-cta lit-section" id="start">
+    <h2>Start free. Decide in 9 days.</h2>
+    <p><span id="bottomPrices">Power $25 · Pro $50 · Max $100 a month</span> — 9 days free, no card, everything included. Pick one to keep.</p>
+    <p class="close-line">Once you go Naya, you don't go back — once you've experienced Naya Power, there's nothing like her.</p>
+    <div class="bottom-btns">
+      <a class="btn btn-power" href="https://nayanet.app/power-monthly" data-link-tier="power"><span class="btn-inner"><span class="btn-star" aria-hidden="true">★</span>Start 9 days free — Power</span></a>
+      <a class="btn btn-pro" href="https://nayanet.app/pro-monthly" data-link-tier="pro"><span class="btn-inner"><span class="btn-star" aria-hidden="true">★</span>Start 9 days free — Pro</span></a>
+      <a class="btn btn-max" href="https://nayanet.app/max-monthly" data-link-tier="max"><span class="btn-inner"><span class="btn-star" aria-hidden="true">★</span>Start 9 days free — Max</span></a>
+    </div>
+    <p style="color:var(--dim); font-size:14px; margin-top:16px;">Pick any level. Change it any time — up or down, one click, no penalty. Your world stays yours.</p>
+  </div>
+
+  <div class="faq lit-section">
+    <h2>Three questions, answered straight</h2>
+    <details open>
+      <summary>What if I want my money back?</summary>
+      <p><b>No refunds — the trial is the guarantee.</b> You get 9 days free, no card, everything included. Try the whole thing, and only pay if you want to keep it.</p>
+    </details>
+    <details>
+      <summary>What happens after 9 days?</summary>
+      <p>Pay and keep everything alive — your world, your sites, your payouts. Or don't pay, and keep your free home: your account, your profile, connecting with people, getting intelligence — but no AI automation, disconnected from the net. You can't lose. Either you keep her, or you keep your account.</p>
+    </details>
+    <details>
+      <summary>What if I pick the wrong level?</summary>
+      <p>Pick any level. Change it any time — up or down, one click, no penalty. Your world stays yours. The trial shows you the whole thing first, so you choose from experience, not from a chart.</p>
+    </details>
+  </div>
+
+  <div class="sticky-cta">
+    <div class="sticky-price"><span id="stickyPrice">Pro — $50</span><span>/mo · 9 days free</span></div>
+    <a class="btn btn-pro" href="https://nayanet.app/pro-monthly" data-link-tier="pro"><span class="btn-inner"><span class="btn-star" aria-hidden="true">★</span>Start free — Pro</span></a>
+  </div>
+
+  <p class="foot">NayaNET — Pricing. Nine days free, no card. Pick one to keep.</p>
+
+</div>
+
+  <!-- DOOR LAW — every number is a door. Tap a price, a feature eye, the payout, or the seats and its record opens: what it is, what it does, what's in it for you. -->
+  <div class="door" id="door" hidden>
+    <div class="door-backdrop" data-close></div>
+    <div class="door-board" role="dialog" aria-modal="true" aria-labelledby="doorTitle">
+      <button class="door-x" type="button" data-close aria-label="Close">×</button>
+      <div class="door-kicker" id="doorKicker"></div>
+      <h3 id="doorTitle"></h3>
+      <ul id="doorRows"></ul>
+    </div>
+  </div>
+
+<script>
+  // One row lit at a time: the row nearest the viewport center. The rest return to obsidian rest.
+  // Tap a row to light it (touch = physical response). Count-up number: the payout counts on scroll-in — a number that changes is alive. The seats total is a fixed fact (1,000), shown, not performed.
+  (function(){
+    var rows = Array.prototype.slice.call(document.querySelectorAll('tbody tr:not(.group)'));
+    var ticking = false;
+    function nearestRow(){
+      var center = window.innerHeight / 2, best = null, bestD = 1e9;
+      rows.forEach(function(r){
+        var b = r.getBoundingClientRect();
+        if(b.bottom < 0 || b.top > window.innerHeight) return;
+        var d = Math.abs((b.top + b.bottom) / 2 - center);
+        if(d < bestD){ bestD = d; best = r; }
+      });
+      return best;
+    }
+    function lightNearest(){
+      ticking = false;
+      var best = nearestRow();
+      rows.forEach(function(r){ r.classList.toggle('lit', r === best); });
+    }
+    function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(lightNearest); } }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    lightNearest();
+    rows.forEach(function(r){
+      r.addEventListener('click', function(){
+        rows.forEach(function(x){ x.classList.remove('lit'); });
+        r.classList.add('lit');
+      });
+    });
+    function countUp(el){
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      var prefix = el.getAttribute('data-prefix') || '';
+      var start = null, dur = 1200;
+      function fmt(n){ return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+      function step(ts){
+        if(!start) start = ts;
+        var p = Math.min((ts - start) / dur, 1);
+        el.textContent = prefix + fmt(Math.round(target * p));
+        if(p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    if('IntersectionObserver' in window){
+      var cio = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ countUp(e.target); cio.unobserve(e.target); }
+        });
+      }, {threshold: 0.5});
+      document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
+      // Scroll-lit sections: each section wakes as it enters the viewport.
+      var sio = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('in-view'); });
+      }, {threshold: 0.12});
+      document.querySelectorAll('.lit-section').forEach(function(el){ sio.observe(el); });
+    }
+    // PRICING — the single source of truth. Change a price here; the tier cards,
+    // table header, button notes, bottom line and sticky bar all follow, because
+    // one renderPrices() writes every price-bearing node. No price is written
+    // twice on the page. (Cloners: this object + the row template are the whole
+    // config.)
+    var PRICING = {
+      trialDays: 9,
+      tiers: {
+        power: {name: 'NAYA POWER', monthly: 25, annual: 12.50, perDayM: '0.82', perDayA: '0.41',
+                colSubM: '$50 / 3 mo · $150 / yr · $300 lifetime', colSubA: '$150 a year — saves you $150',
+                noteM: 'No card. $25 a month after your trial.', noteA: 'No card. $12.50 a month after your trial, billed annually.'},
+        pro: {name: 'NAYA PRO', monthly: 50, annual: 25, perDayM: '1.64', perDayA: '0.82',
+              colSubM: '$300 / yr', colSubA: '$300 a year — annual is half price',
+              noteM: 'No card. $50 a month after your trial.', noteA: 'No card. $25 a month after your trial, billed annually.'},
+        max: {name: 'NAYA MAX', monthly: 100, annual: 50, perDayM: '3.29', perDayA: '1.64',
+              colSubM: '$600 / yr', colSubA: '$600 a year — annual is half price',
+              noteM: 'No card. $100 a month after your trial.', noteA: 'No card. $50 a month after your trial, billed annually.'}
+      }
+    };
+    // LINKS — every button points at a minted Smart Link (nayanet.app/<name>),
+    // never straight at PayPal. Monthly toggle -> monthly link; annual -> yearly
+    // link. Quarterly links are minted for the paste-in flow and are NOT wired
+    // to page buttons: power-quarterly, pro-quarterly, max-quarterly.
+    var LINKS = {
+      power: {monthly: 'https://nayanet.app/power-monthly', yearly: 'https://nayanet.app/power-yearly'},
+      pro: {monthly: 'https://nayanet.app/pro-monthly', yearly: 'https://nayanet.app/pro-yearly'},
+      max: {monthly: 'https://nayanet.app/max-monthly', yearly: 'https://nayanet.app/max-yearly'}
+    };
+    var annualBilling = false;
+    function money(n){ return '$' + (n % 1 === 0 ? n : n.toFixed(2)); }
+    function renderPrices(annual){
+      document.querySelectorAll('[data-tier][data-field]').forEach(function(el){
+        var t = PRICING.tiers[el.getAttribute('data-tier')];
+        var f = el.getAttribute('data-field');
+        if(!t) return;
+        if(f === 'name') el.textContent = t.name;
+        else if(f === 'price') el.textContent = money(annual ? t.annual : t.monthly);
+        else if(f === 'perday') el.textContent = '$' + (annual ? t.perDayA : t.perDayM);
+        else if(f === 'colsub') el.textContent = annual ? t.colSubA : t.colSubM;
+        else if(f === 'btnnote') el.textContent = annual ? t.noteA : t.noteM;
+      });
+      var bp = document.getElementById('bottomPrices');
+      if(bp){
+        var p = PRICING.tiers.power, r = PRICING.tiers.pro, m = PRICING.tiers.max;
+        bp.textContent = annual
+          ? 'Power ' + money(p.annual) + ' · Pro ' + money(r.annual) + ' · Max ' + money(m.annual) + ' a month, billed annually'
+          : 'Power ' + money(p.monthly) + ' · Pro ' + money(r.monthly) + ' · Max ' + money(m.monthly) + ' a month';
+      }
+      var sp = document.getElementById('stickyPrice');
+      if(sp) sp.textContent = 'Pro — ' + money(annual ? PRICING.tiers.pro.annual : PRICING.tiers.pro.monthly);
+      document.querySelectorAll('[data-link-tier]').forEach(function(a){
+        var l = LINKS[a.getAttribute('data-link-tier')];
+        if(l) a.href = annual ? l.yearly : l.monthly;
+      });
+    }
+    var btns = document.querySelectorAll('.bill-toggle button');
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){
+        annualBilling = b.getAttribute('data-bill') === 'annual';
+        btns.forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+        renderPrices(annualBilling);
+      });
+    });
+    renderPrices(false);
+    // Sticky header, split-table mechanism: the thead lives in its own table inside
+    // .table-head-sticky, so it sticks to the viewport. The body table scrolls
+    // horizontally inside .table-scroll; the header is kept in step by syncing
+    // scrollLeft. The feature column is sticky left:0 in both tables, so the names stay
+    // visible when paid leads on phone.
+    var headClip = document.getElementById('headClip');
+    var bodyScroll = document.getElementById('bodyScroll');
+    function syncHead(){ if(headClip && bodyScroll) headClip.scrollLeft = bodyScroll.scrollLeft; }
+    if(bodyScroll) bodyScroll.addEventListener('scroll', syncHead, {passive:true});
+    function leadWithPaid(){
+      var ts = bodyScroll;
+      var proCell = document.querySelector('.table-body tbody tr td:nth-child(4)');
+      var featCell = document.querySelector('.table-body tbody tr td:first-child');
+      var bodyTable = document.querySelector('.table-body');
+      if(!ts || !proCell || !featCell || !bodyTable) return;
+      if(window.innerWidth <= 860){
+        var proX = proCell.getBoundingClientRect().left - bodyTable.getBoundingClientRect().left;
+        ts.scrollLeft = Math.max(0, proX - featCell.getBoundingClientRect().width - 16);
+      }
+      else { ts.scrollLeft = 0; }
+      syncHead();
+    }
+    window.addEventListener('load', leadWithPaid);
+    window.addEventListener('resize', leadWithPaid);
+    leadWithPaid();
+    // DOOR LAW — every feature is a door. Tap a price, a feature eye, a reason,
+    // the payout, or the seats and its record opens: what it is, what it does,
+    // what's in it for you. Nothing invented; every line below already appears
+    // on this page.
+    var RECORDS = {"power": {"tone": "#a06bff", "kicker": "NAYA POWER \u2014 THE RECORD", "rows": ["WHAT IT IS \u2014 Naya Power: the whole living system \u2014 your world, built and run for you.", "WHAT IT DOES \u2014 $25 a month ($12.50 a month on annual); 1 membership site; 100 new smart apps a month; Smart Mail up to 10,000 a month.", "WHAT'S IN IT FOR YOU \u2014 Your world, built and run for you \u2014 pages, mail, notes, all in one place.", "$12.50 a month on annual \u2014 half price", "$150 a year \u2014 saves you $150", "\u2248 $0.82 a day", "Build 1 membership site", "100 new smart apps a month", "Smart Mail up to 10,000 a month"]}, "pro": {"tone": "#3fb8ff", "kicker": "NAYA PRO \u2014 THE RECORD", "rows": ["WHAT IT IS \u2014 Naya Pro: for builders \u2014 box, sites, reach.", "WHAT IT DOES \u2014 $50 a month ($25 a month on annual); 5 membership sites; Smart Box \u2014 100 GB, storage that organizes itself; Smart Mail up to 100,000 a month.", "WHAT'S IN IT FOR YOU \u2014 Five worlds growing at once \u2014 more room, more reach, more to sell.", "$25 a month on annual \u2014 half price", "$300 a year \u2014 annual is half price", "\u2248 $1.64 a day \u2014 less than a coffee", "Build 5 membership sites", "Smart Box \u2014 100 GB, storage that organizes itself", "Smart Mail up to 100,000 a month"]}, "max": {"tone": "#ffbf3d", "kicker": "NAYA MAX \u2014 THE RECORD", "rows": ["WHAT IT IS \u2014 Naya Max: for sellers \u2014 more of everything.", "WHAT IT DOES \u2014 $100 a month ($50 a month on annual); unlimited membership sites; Smart Box \u2014 500 GB, storage that organizes itself; affiliate system for your own products; 300 new smart apps a month.", "WHAT'S IN IT FOR YOU \u2014 No ceiling \u2014 every idea live, and affiliates selling your products for you.", "$50 a month on annual \u2014 half price", "$600 a year \u2014 annual is half price", "\u2248 $3.29 a day", "Build unlimited membership sites", "Smart Box \u2014 500 GB, storage that organizes itself", "Affiliate system for your own products", "300 new smart apps a month"]}, "payout": {"tone": "#ffbf3d", "kicker": "THE PAYOUT \u2014 THE RECORD", "title": "50% of revenue \u2014 paid to you the moment we're paid", "rows": ["WHAT IT IS \u2014 Ambassador payouts: 50% of revenue \u2014 paid to you the moment we\u2019re paid.", "WHAT IT DOES \u2014 Example: 10 friends \u00d7 $25 = $250 \u2014 you keep $125; the first one lands 10 days after they join; once your cycle is going, you can get paid every day.", "WHAT'S IN IT FOR YOU \u2014 You keep half of what your invites bring in \u2014 paid to you as soon as we\u2019re paid.", "Example: 10 friends \u00d7 $25 = $250 \u2014 you keep $125", "The first one lands 10 days after they join, when their 9-day trial ends", "Once your cycle is going, you can get paid every day", "Month 1 you can be paid up to $100 a day \u2014 then it grows \u2014 $200, $300, $400, $500, up to $1,000 a day at the top", "Your first payout can land before you ever pay \u2014 when someone you invited pays at once"]}, "seats": {"tone": "#a06bff", "kicker": "FOUNDING SEATS \u2014 THE RECORD", "title": "1,000 seats", "rows": ["WHAT IT IS \u2014 Founding lifetime seats: $300 lifetime, founding only \u2014 1,000 members, then closed forever.", "WHAT IT DOES \u2014 1,000 seats; when they\u2019re gone, they\u2019re gone; no taken count is shown \u2014 none is verified.", "WHAT'S IN IT FOR YOU \u2014 A founding seat for $300, once \u2014 then closed forever.", "$300 lifetime, founding only", "1,000 members, then closed forever", "When they're gone, they're gone", "No taken count is shown \u2014 none is verified"]}, "feat-smart-apps": {"tone": "#a06bff", "kicker": "SMART APPS \u2014 THE RECORD", "title": "Smart apps", "rows": ["WHAT IT IS \u2014 Smart apps: Your four apps \u2014 Personal, Business, Space, Dashboard \u2014 plus new ones built for you every month.", "WHAT IT DOES \u2014 Power: 100 new a month \u00b7 Pro: 100 new a month \u00b7 Max: 300 new a month", "WHAT'S IN IT FOR YOU \u2014 Your pages, built for you \u2014 new ones every month."]}, "feat-smart-spaces": {"tone": "#3fb8ff", "kicker": "SMART SPACES \u2014 THE RECORD", "title": "Smart spaces", "rows": ["WHAT IT IS \u2014 Smart spaces: Rooms for every project you run.", "WHAT IT DOES \u2014 Unlimited smart spaces", "WHAT'S IN IT FOR YOU \u2014 Rooms for every project, no limit."]}, "feat-smart-mail": {"tone": "#2fe89e", "kicker": "SMART MAIL \u2014 THE RECORD", "title": "Smart Mail", "rows": ["WHAT IT IS \u2014 Smart Mail: Your mail and messenger, in one inbox.", "WHAT IT DOES \u2014 Power: Up to 10,000 a month \u00b7 Pro: Up to 100,000 a month \u00b7 Max: Up to 250,000 a month", "WHAT'S IN IT FOR YOU \u2014 Reach everyone who matters, in one inbox."]}, "feat-smart-notes": {"tone": "#ffbf3d", "kicker": "SMART NOTES \u2014 THE RECORD", "title": "Smart Notes", "rows": ["WHAT IT IS \u2014 Smart Notes: Your knowledge, saved and shared.", "WHAT IT DOES \u2014 100 a month", "WHAT'S IN IT FOR YOU \u2014 Your knowledge, saved and shared."]}, "feat-intelligent-reports": {"tone": "#ff9a5a", "kicker": "INTELLIGENT REPORTS \u2014 THE RECORD", "title": "Intelligent reports", "rows": ["WHAT IT IS \u2014 Intelligent reports: Daily, weekly and monthly reports on your world.", "WHAT IT DOES \u2014 Daily, weekly, monthly", "WHAT'S IN IT FOR YOU \u2014 See your world every day, and know what to do next."]}, "feat-smart-lists": {"tone": "#ff5e6c", "kicker": "SMART LISTS \u2014 THE RECORD", "title": "Smart Lists", "rows": ["WHAT IT IS \u2014 Smart Lists: Everything organized, one tap away.", "WHAT IT DOES \u2014 Unlimited lists", "WHAT'S IN IT FOR YOU \u2014 Everything organized, one tap away."]}, "feat-smart-links": {"tone": "#e84fff", "kicker": "SMART LINKS \u2014 THE RECORD", "title": "Smart Links", "rows": ["WHAT IT IS \u2014 Smart Links: Every link tracked, every click counted.", "WHAT IT DOES \u2014 Unlimited Smart Links", "WHAT'S IN IT FOR YOU \u2014 Every link tracked, every click counted."]}, "feat-your-projects": {"tone": "#a06bff", "kicker": "YOUR PROJECTS \u2014 THE RECORD", "title": "Your projects", "rows": ["WHAT IT IS \u2014 Your projects: Your projects, as many as you can dream.", "WHAT IT DOES \u2014 Your projects, unlimited", "WHAT'S IN IT FOR YOU \u2014 As many as you can dream."]}, "feat-daily-highlights-intel": {"tone": "#3fb8ff", "kicker": "DAILY HIGHLIGHTS / INTEL \u2014 THE RECORD", "title": "Daily highlights / Intel", "rows": ["WHAT IT IS \u2014 Daily highlights / Intel: The best of the network, every morning.", "WHAT IT DOES \u2014 Full Intel feed, unlimited", "WHAT'S IN IT FOR YOU \u2014 The best of the network, every morning."]}, "feat-audio-calls": {"tone": "#2fe89e", "kicker": "AUDIO CALLS \u2014 THE RECORD", "title": "Audio calls", "rows": ["WHAT IT IS \u2014 Audio calls: Talk to your people, up to 10 at once.", "WHAT IT DOES \u2014 Audio up to 10 people", "WHAT'S IN IT FOR YOU \u2014 Talk to your people, up to 10 at once."]}, "feat-video-calls": {"tone": "#ffbf3d", "kicker": "VIDEO CALLS \u2014 THE RECORD", "title": "Video calls", "rows": ["WHAT IT IS \u2014 Video calls: Face to face, up to 6 at once.", "WHAT IT DOES \u2014 Video up to 6 people", "WHAT'S IN IT FOR YOU \u2014 Face to face, up to 6 at once."]}, "feat-media-voice-video-notes": {"tone": "#ff9a5a", "kicker": "MEDIA \u2014 VOICE & VIDEO NOTES \u2014 THE RECORD", "title": "Media \u2014 voice & video notes", "rows": ["WHAT IT IS \u2014 Media \u2014 voice & video notes: Your voice and video notes, ready to share.", "WHAT IT DOES \u2014 600 minutes a month", "WHAT'S IN IT FOR YOU \u2014 Your voice and video, ready to share."]}, "feat-your-own-ai": {"tone": "#ff5e6c", "kicker": "YOUR OWN AI \u2014 THE RECORD", "title": "Your own AI", "rows": ["WHAT IT IS \u2014 Your own AI: Your Naya, plugged into the network.", "WHAT IT DOES \u2014 Plugged into the network", "WHAT'S IN IT FOR YOU \u2014 Your Naya, plugged into the network."]}, "feat-fork": {"tone": "#e84fff", "kicker": "FORK \u2014 THE RECORD", "title": "Fork", "rows": ["WHAT IT IS \u2014 Fork: Your own copy \u2014 your AI in your own repo.", "WHAT IT DOES \u2014 Your own copy \u2014 your AI in your own repo", "WHAT'S IN IT FOR YOU \u2014 Your own copy \u2014 your AI in your own repo."]}, "feat-smart-box": {"tone": "#a06bff", "kicker": "SMART BOX \u2014 THE RECORD", "title": "Smart Box", "rows": ["WHAT IT IS \u2014 Smart Box: Storage that organizes itself.", "WHAT IT DOES \u2014 Power: Not included \u00b7 Pro: 100 GB \u2014 organizes itself \u00b7 Max: 500 GB \u2014 organizes itself", "WHAT'S IN IT FOR YOU \u2014 Storage that organizes itself."]}, "feat-membership-sites": {"tone": "#3fb8ff", "kicker": "MEMBERSHIP SITES \u2014 THE RECORD", "title": "Membership sites", "rows": ["WHAT IT IS \u2014 Membership sites: Your own paid worlds, paying you.", "WHAT IT DOES \u2014 Power: 1 membership site \u00b7 Pro: 5 membership sites \u00b7 Max: Unlimited membership sites", "WHAT'S IN IT FOR YOU \u2014 Your own paid worlds, paying you."]}, "feat-affiliate-system": {"tone": "#2fe89e", "kicker": "AFFILIATE SYSTEM \u2014 THE RECORD", "title": "Affiliate system", "rows": ["WHAT IT IS \u2014 Affiliate system: Others sell your products, you earn.", "WHAT IT DOES \u2014 Power: Not included \u00b7 Pro: Not included \u00b7 Max: Run affiliates on your own products", "WHAT'S IN IT FOR YOU \u2014 Others sell your products, you earn."]}, "feat-ambassador-payouts": {"tone": "#ffbf3d", "kicker": "AMBASSADOR PAYOUTS \u2014 THE RECORD", "title": "Ambassador payouts", "rows": ["WHAT IT IS \u2014 Ambassador payouts: 50% of revenue, paid to you the moment we're paid.", "WHAT IT DOES \u2014 50% of revenue \u2014 paid to you the moment we're paid.", "WHAT'S IN IT FOR YOU \u2014 50% of revenue \u2014 paid to you the moment we're paid."]}, "reason-01": {"tone": "#a06bff", "kicker": "TEN-STAR EXPERIENCE \u2014 THE RECORD", "title": "Ten-star experience", "rows": ["WHAT IT IS \u2014 Ten-star experience", "WHAT IT DOES \u2014 your Personal, Business, Space and Dashboard \u2014 four apps \u2014 built and run for you, in one place.", "WHAT'S IN IT FOR YOU \u2014 Naya builds your world and runs it for you \u2014 so you never touch a setting, and your world just works."]}, "reason-02": {"tone": "#3fb8ff", "kicker": "THE INTELLIGENCE NETWORK \u2014 THE RECORD", "title": "The intelligence network", "rows": ["WHAT IT IS \u2014 The intelligence network", "WHAT IT DOES \u2014 the full Intel feed, unlimited \u2014 the best of the network, every morning, without studying.", "WHAT'S IN IT FOR YOU \u2014 Learn from everybody \u2014 so you get smarter every day, without studying."]}, "reason-03": {"tone": "#2fe89e", "kicker": "THE NEW INTERNET, ALL IN ONE \u2014 THE RECORD", "title": "The new internet, all in one", "rows": ["WHAT IT IS \u2014 The new internet, all in one", "WHAT IT DOES \u2014 Smart Mail, Smart Lists, Smart Notes, calls and payouts \u2014 one inbox, one place, instead of ten apps.", "WHAT'S IN IT FOR YOU \u2014 Everything the internet is, connected \u2014 so you stop juggling ten apps."]}, "reason-04": {"tone": "#ffbf3d", "kicker": "A TEAM OF NIAS AND HUMANS \u2014 THE RECORD", "title": "A team of Nias and humans", "rows": ["WHAT IT IS \u2014 A team of Nias and humans", "WHAT IT DOES \u2014 your own Naya, plugged into the network, with her own profile, mail and messages \u2014 beside people like you.", "WHAT'S IN IT FOR YOU \u2014 Nias with their own profiles, mail and messages \u2014 so you're never building alone."]}, "reason-05": {"tone": "#ff9a5a", "kicker": "NAYA REMEMBERS EVERYTHING \u2014 THE RECORD", "title": "Naya remembers everything", "rows": ["WHAT IT IS \u2014 Naya remembers everything", "WHAT IT DOES \u2014 100 smart notes a month, saved \u2014 plus daily, weekly and monthly reports that show them back to you.", "WHAT'S IN IT FOR YOU \u2014 Your notes, your days, your reports \u2014 so you never lose what matters."]}, "reason-06": {"tone": "#ff5e6c", "kicker": "SMART LEDGER, COLLECTIVE CHAIN \u2014 THE RECORD", "title": "Smart Ledger, collective chain", "rows": ["WHAT IT IS \u2014 Smart Ledger, collective chain", "WHAT IT DOES \u2014 every action recorded, every value shown \u2014 the ledger is the receipt.", "WHAT'S IN IT FOR YOU \u2014 Everything recorded, everything has a value \u2014 so nothing is hidden, and trust is built in."]}, "reason-07": {"tone": "#e84fff", "kicker": "PRIVATE BY DESIGN \u2014 THE RECORD", "title": "Private by design", "rows": ["WHAT IT IS \u2014 Private by design", "WHAT IT DOES \u2014 deleted by default \u2014 a day, a week, or a month, your choice. Aliases, not real names.", "WHAT'S IN IT FOR YOU \u2014 We never read your mail, deleted by default \u2014 so your conversations are yours."]}, "reason-08": {"tone": "#a06bff", "kicker": "SMART MAIL AND SMART SEARCH \u2014 THE RECORD", "title": "Smart Mail and Smart Search", "rows": ["WHAT IT IS \u2014 Smart Mail and Smart Search", "WHAT IT DOES \u2014 find anyone by topic or location \u2014 and choose exactly who can reach you.", "WHAT'S IN IT FOR YOU \u2014 Find anyone by topic or location \u2014 so you connect with like minds, fast."]}, "reason-09": {"tone": "#3fb8ff", "kicker": "SMART ACCESS \u2014 THE RECORD", "title": "Smart Access", "rows": ["WHAT IT IS \u2014 Smart Access", "WHAT IT DOES \u2014 a membership site at $25 a month \u2014 10 members is $250 a month coming in, and you keep half.", "WHAT'S IN IT FOR YOU \u2014 Any product behind a pay door \u2014 so you earn from what you already made."]}, "reason-10": {"tone": "#2fe89e", "kicker": "FREE TO JOIN \u2014 THE RECORD", "title": "Free to join", "rows": ["WHAT IT IS \u2014 Free to join", "WHAT IT DOES \u2014 invite 10 friends on Power at $25 a month \u2014 that's $250 coming in, you keep $125, and your first payout can land before you ever pay when someone pays at once.", "WHAT'S IN IT FOR YOU \u2014 9 days free, zero cost \u2014 so you try the Bugatti before you buy it."]}};
+    var door = document.getElementById('door');
+    var doorKicker = document.getElementById('doorKicker');
+    var doorTitle = document.getElementById('doorTitle');
+    var doorRows = document.getElementById('doorRows');
+    var doorBoard = door ? door.querySelector('.door-board') : null;
+    function openDoor(key){
+      var rec = RECORDS[key];
+      if(!rec || !door) return;
+      var title = rec.title;
+      if(PRICING.tiers[key]){
+        var tt = PRICING.tiers[key];
+        title = money(annualBilling ? tt.annual : tt.monthly) + ' a month' + (annualBilling ? ' — billed annually' : '');
+      }
+      doorKicker.textContent = rec.kicker;
+      doorTitle.textContent = title;
+      if(doorBoard) doorBoard.style.setProperty('--door-tone', rec.tone);
+      doorRows.innerHTML = '';
+      rec.rows.forEach(function(r){
+        var li = document.createElement('li');
+        li.textContent = r;
+        doorRows.appendChild(li);
+      });
+      door.hidden = false;
+    }
+    function closeDoor(){ if(door) door.hidden = true; }
+    document.querySelectorAll('[data-door]').forEach(function(el){
+      el.addEventListener('click', function(){ openDoor(el.getAttribute('data-door')); });
+      el.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openDoor(el.getAttribute('data-door')); }
+      });
+    });
+    document.querySelectorAll('[data-close]').forEach(function(el){
+      el.addEventListener('click', closeDoor);
+    });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeDoor(); });
+  })();
+</script>
+</body>
+</html>
