@@ -19635,7 +19635,9 @@ function osWireDonutLegend(){
     0 -16px 44px rgba(0,0,0,.68);}
 .nsb-bottom.nsb-kb-hidden{transform:translateY(110%);transition:transform .3s;}
 .nsb-bottom{transition:transform .3s;}
-.nsb-bottom-inner{display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:10px 16px 12px;}
+.nsb-bottom-inner{display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:10px 12px 12px;}
+/* 2026-11-06 FIX 3 REWORK (option A): inner side padding 16→12px widens the bottom
+   row by 8px at 1920 (gear is display:none, so nothing else in the inner moves). */
 /* network anchor: the persistent connection, one touch away */
 .nsb-net{display:flex;align-items:center;gap:7px;flex:0 0 auto;padding-right:4px;
   color:#fff;font-size:12px;font-weight:800;white-space:nowrap;opacity:.85;}
@@ -19708,12 +19710,15 @@ function osWireDonutLegend(){
 @media (prefers-reduced-motion: reduce){ .nsb-tab.active{animation:none;} .nsb-tab.nsb-ripple{animation:none;} }
 html.nsb-calm .nsb-tab.active{animation:none;}
 html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
-.nsb-bottom .nsb-row{padding:10px 20px 2px;
+.nsb-bottom .nsb-row{padding:10px 16px 2px;gap:7px;
+/* 2026-11-06 FIX 3 REWORK (option A, bottom row only): row side padding 20→16px
+   + gap 8→7px saves ~18px of scrollWidth so the bottom row fits at 1920 and the
+   drift park rule (max≤4) stands it down like the top. Top row untouched. */
 /* 2026-11-01 — bar sits FLUSH with the viewport bottom. Was 18px, then 10px;
    Shawn's eye: the pills must touch the bottom edge, like the top bar
    touches the top. 2px is breathing room, not a gap. */
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 20px,#000 calc(100% - 20px),transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 20px,#000 calc(100% - 20px),transparent);}
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 16px,#000 calc(100% - 16px),transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 16px,#000 calc(100% - 16px),transparent);}
 /* ============ SEARCH RESULTS (dropdown from the search level) ============ */
 .nsb-search-results{position:fixed;z-index:950;display:none;
   background:linear-gradient(180deg,#171e33,#0b0f1d 60%,#070a14);
