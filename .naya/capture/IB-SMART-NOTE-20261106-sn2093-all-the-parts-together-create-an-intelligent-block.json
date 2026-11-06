@@ -1,0 +1,33 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2093",
+  "title": "All the Parts Together Create an Intelligent Block",
+  "slug": "all-the-parts-together-create-an-intelligent-block",
+  "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/intelligence/SN-2093/IB-SMART-NOTE-20261106-sn2093-all-the-parts-together-create-an-intelligent-block.md",
+  "tone": "sapphire",
+  "icon": "◆",
+  "created_at": "2026-11-06T01:57:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "When all the parts come together, they create an intelligent block — because then the reader knows fully: what it means, why it matters, how it connects, what's in it for them. The block is intelligent because it is complete.",
+    "human_view": "A block that only tells you what happened leaves you guessing. A block that tells you what it means, why it matters, how it connects, and what's in it for you leaves you knowing.",
+    "child_view": "When all the parts are there, you understand the whole thing — what it means, why it matters, how it connects, what is in it for you.",
+    "grandma_view": "The whole note together makes it smart — you know what it means, why it matters, how it connects, and what is in it for you.",
+    "ai_view": "The intelligent block is the full note — nutshell, human, child, grandma, Naya, what it means, why it matters, how it connects, what's in it for you, the learning, with the gold and the red layers. The parts together are what make it intelligent — completeness is the intelligence.",
+    "what_it_means": "An intelligent block is not a shape; it is a complete understanding. The parts are the understanding, and together they are the block.",
+    "whats_inside": [
+      "Why completeness is the intelligence",
+      "The ten sections of the full note (no machine)",
+      "The gold and red layers",
+      "What a partial note leaves the reader guessing"
+    ],
+    "topics": [
+      "Intelligent Blocks",
+      "System",
+      "Smart Notes"
+    ]
+  },
+  "page_hash": "be95a97cba2024b1029b5c8715ab1ee481ee17e96b878bd8197402f2f3e4d306",
+  "content_hash": "9325677b7f78218fa0ebb8005abe892a6cef7a896c22ead89a0f222d09a75ec3"
+}

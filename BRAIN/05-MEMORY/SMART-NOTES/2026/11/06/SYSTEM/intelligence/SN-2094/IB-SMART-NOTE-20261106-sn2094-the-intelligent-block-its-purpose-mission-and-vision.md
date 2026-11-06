@@ -5,6 +5,7 @@
 **Created:** 2026-11-06 02:22 UTC
 **Source:** Shawn's dictation, 2026-11-06 02:22Z (his words, on the purpose, mission, and vision of the Intelligent Block)
 **Status:** DRAFT (filed to main; ratification is Shawn's word)
+**RENUMBERED TO SN-2202** per first-claim ruling (Resolve, 2026-11-05) — SN-2094 is held by "The Full Smart Note — The Golden Red Layer" (first claim, commit 1635dfbefa, 2026-11-06T02:18:34Z); this filing was the second claim (commit c0a07b6e96, 2026-11-06T02:23:57Z). The note lives on as SN-2202: BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/intelligence/SN-2202/IB-SMART-NOTE-20261106-sn2202-the-intelligent-block-its-purpose-mission-and-vision.md
 
 ## IN A NUTSHELL
 
