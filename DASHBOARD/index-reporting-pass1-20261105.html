@@ -17672,9 +17672,20 @@ function ldLayoutNodes(){
     var wt = _worldTotals();
     var spine = _spineScore(wt.total);
     var t1 = wt.top[0] || {label:'points', pts:0}, t2 = wt.top[1] || {label:'points', pts:0};
-    return '<div class="os-wb-nums"><div><b data-derive="score">' + _fmt(spine) + '</b><i>Smart Score</i></div>' +
-      '<div><b data-derive="' + _esc(t1.key||'score') + '">' + _fmt(t1.pts) + '</b><i>' + _esc(t1.label) + '</i></div>' +
-      '<div><b data-derive="' + _esc(t2.key||'score') + '">' + _fmt(t2.pts) + '</b><i>' + _esc(t2.label) + '</i></div></div>'; /* PASS 1 v6 (c): board numbers are doors — tap one, see what it is made of. */
+    /* v7.1 FIX 1d + FIX 4: the boards must agree with the orb, dialog
+       and derivation — and must never show identical borrowed numbers.
+       A page board has no per-page tracking yet, so it shows an honest
+       "not yet" instead of the world numbers (R3: all five boards read
+       300/100/50). The world board shows the real totals, labelled
+       points. Link boards already show their own labelled counts. */
+    if (holder.kind === 'page'){
+      return '<div class="os-wb-nums"><div><b>—</b><i>Smart Score · not yet</i></div>' +
+        '<div><b>—</b><i>' + _esc(t1.label) + ' · not yet</i></div>' +
+        '<div><b>—</b><i>' + _esc(t2.label) + ' · not yet</i></div></div>';
+    }
+    return '<div class="os-wb-nums"><div><b data-derive="score">' + _fmt(spine) + '</b><i>Smart Score · pts</i></div>' +
+      '<div><b data-derive="' + _esc(t1.key||'score') + '">' + _fmt(t1.pts) + '</b><i>' + _esc(t1.label) + ' · pts</i></div>' +
+      '<div><b data-derive="' + _esc(t2.key||'score') + '">' + _fmt(t2.pts) + '</b><i>' + _esc(t2.label) + ' · pts</i></div></div>'; /* PASS 1 v6 (c): board numbers are doors — tap one, see what it is made of. */
   }
   function _boardHTML(holder){
     var color, icon, name, what, note, extra = '';
@@ -17694,7 +17705,7 @@ function ldLayoutNodes(){
       for (var j=0;j<PAGES.length;j++){ if (PAGES[j].id === holder.id){ pg = PAGES[j]; break; } }
       if (!pg) return '';
       color = pg.color; icon = pg.icon; name = pg.label; what = pg.what;
-      note = (holder.id === 'membership') ? 'Membership page connects soon — your members and content live here.' : 'Whole-world numbers for now — page tracking connects soon.';
+      note = (holder.id === 'membership') ? 'Membership page connects soon — your members and content live here.' : 'Page tracking connects soon — numbers not yet.';
       if (pg.href) extra = '<div class="os-wb-open"><a href="' + pg.href + '">Open ' + _esc(pg.label) + ' ↗</a></div>';
     }
     var key = holder.kind + ':' + holder.id;
