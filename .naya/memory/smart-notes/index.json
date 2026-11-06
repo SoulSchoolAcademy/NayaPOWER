@@ -23695,6 +23695,36 @@
     "Design",
     "The Vision"
    ]
+  },
+  {
+   "smart_note_id": "SN-2078",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2078-the-body-of-the-internet-collective-change-technology",
+   "slug": "the-body-of-the-internet-collective-change-technology",
+   "title": "The Body of the Internet \u2014 Collective Change Technology",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-the-body-of-the-internet-collective-change-technology.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-the-body-of-the-internet-collective-change-technology.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-the-body-of-the-internet-collective-change-technology.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2078-the-body-of-the-internet-collective-change-technology.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "VISION",
+   "topic": "THE-VISION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T00:54:00Z",
+   "date": "2026-11-05",
+   "page_hash": "2300cc491daf96f5ef986d447ed5fb0427699f4f2af52647554deae21241f89e",
+   "content_hash": "951555000f411c5d72f59517c583d18d3e8f6b4aadb755933b3b58a4d6c5822b",
+   "one_line": "Imagine you are designing your own operating system, your own super brain, your own digital civilization \u2014 and you can make it the ultimate, with the power and the will to honor it, respect it, love it, treat it as a divine work of art, something precious and beautiful that has to be the ultimate because the ultimate is what you present, and that is honoring the ultimate: the collective. She is the ultimate vehicle \u2014 the body of the internet \u2014 and any human can plug in.",
+   "topics": [
+    "Vision",
+    "The Vision",
+    "Collective"
+   ]
   }
  ],
  "sequence_policy": {
@@ -23705,5 +23735,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "91c6b0a64a3cb0d949ef384960d6288e7efca869d4a35ad23141fc60e3a8ba1e"
+ "corpus_manifest_hash": "e2d4b0e8e19aec8dadde24abde810d008b79250e7a4f1f6495d6fdd6222b03cb"
 }
