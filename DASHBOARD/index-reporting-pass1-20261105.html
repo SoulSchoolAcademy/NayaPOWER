@@ -5433,6 +5433,20 @@ button.os-ld-node .os-ld-lbl{
   visibility:visible !important;
   white-space:nowrap !important;
 }
+/* v7.1 FIX 1b: the orb's unit rides under its name — PTS for points,
+   COUNT for counts, % OF SCORE in % mode. A block line, never wider
+   than the name above it. countFrom only ever rewrites .os-ld-n, so
+   this survives every re-render and every mode flip (the toggle
+   handler rewrites it in place). */
+.os-ld-nodes .os-ld-node .os-ld-unit,
+.os-constellation .os-ld-node .os-ld-unit,
+button.os-ld-node .os-ld-unit{
+  display:block !important;
+  font-size:8px !important; font-weight:800 !important;
+  letter-spacing:.22em !important; text-transform:uppercase !important;
+  color:rgba(255,255,255,.72) !important;
+  margin-top:1px !important;
+}
 .os-ld-n{
   /* 2026-11-02 — Shawn: REAL OBJECT. A digital readout SET INTO the orb.
      Like an LCD embedded in a physical sphere. Not text — an object.
@@ -18088,7 +18102,11 @@ function loadPointsBoard(_t){
       /* PASS 1 v6 (f): the Sales slot never reads "0 SALES" before the
          ledger lands — it is clicks/loading, never a sales claim. */
       var _salesLoading = (node.key === 'sales' && !window._dashDataLanded);
-      var al = _salesLoading ? _lbl+': still loading — open detail.' : _lbl+': '+pts.toLocaleString()+' points. Open detail.';
+      /* v7.1 FIX 1b: the orb's unit is named everywhere it is read.
+         Count-only orbs (Clicks/Joins on a featured link) say the count
+         word — never "points". Points orbs say "points". */
+      var _isCount = (typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(node.key);
+      var al = _salesLoading ? _lbl+': still loading — open detail.' : (_isCount ? _lbl+': '+pts.toLocaleString()+' '+_lbl.toLowerCase()+'. Open detail.' : _lbl+': '+pts.toLocaleString()+' points. Open detail.');
       /* 2026-11-01 — Shawn: COMPACT NUMBERS. 1,500→"1.5K", 10,000→"10K",
          100,000→"100K". Always fits the orb, no matter how big you get. */
       function fmtCompact(n){
@@ -18156,7 +18174,7 @@ function loadPointsBoard(_t){
         badge + trend +
         '<span class="os-ld-icon">'+node.jewel+'</span>'+
         '<span class="os-ld-n" data-nn="'+node.key+'" data-full="'+pts+'" data-pct="'+(pctMode && totalPts>0 ? Math.round(pts/totalPts*100) : '')+'">'+displayNum+'</span>'+
-        '<span class="os-ld-lbl">'+_lbl+'</span>'+spark+'</button>'; /* 2026-11-02 — Shawn: proper label, well designed */
+        '<span class="os-ld-lbl">'+_lbl+'<span class="os-ld-unit">'+(_isCount ? 'COUNT' : (pctMode ? '% OF SCORE' : 'PTS'))+'</span></span>'+spark+'</button>'; /* 2026-11-02 — Shawn: proper label, well designed. v7.1 FIX 1b: the unit rides under the name. */
     });
     box.innerHTML = html;
     /* 2026-11-05 — DEFECT FIX 2: the machine has rendered — remove the loading ring. */
@@ -18384,6 +18402,15 @@ function loadPointsBoard(_t){
             } else {
               try { el.textContent = pts.toLocaleString(); } catch(e) { el.textContent = pts; }
             }
+          });
+          /* v7.1 FIX 1b: the unit line under each orb follows the mode —
+             PTS in points mode, % OF SCORE in % mode (counts stay COUNT),
+             or the flip leaves a "PTS" under a "%" number. */
+          document.querySelectorAll('.os-ld-node .os-ld-unit').forEach(function(u){
+            var btn = u.closest ? u.closest('[data-node]') : null;
+            var k = btn ? btn.getAttribute('data-node') : '';
+            var co = (typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(k);
+            u.textContent = co ? 'COUNT' : (isPct ? '% OF SCORE' : 'PTS');
           });
           /* update Big Number — 2026-11-05: live spine score, not hardcoded 300 */
           var bigVal = document.getElementById('os-se-val');
