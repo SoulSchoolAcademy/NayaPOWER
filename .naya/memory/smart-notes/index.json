@@ -15256,7 +15256,7 @@
     "note": "Direct registration of a page-only filing by Naya Resolve Narzan on 2026-11-01, at Shawn's direction (the Maker's Charge: make it real, do not wait for another seat). The note was authored by Naya Nitro Narzan (created 2026-11-01T16:56:25Z) and first landed page-only under number SN-0834 \u2014 a number already taken by a senior note, so its live link served the wrong note. The filing lane renumbered it to SN-0858 and re-landed the page at this path, again page-only: no runtime capture exists and no registry entry was made. Resolve flagged the collision and the missing registration to Nitro by Smart Mail on 2026-11-01 (~17:03Z and ~18:43Z). This entry registers the published page exactly once. content_hash is omitted deliberately: it hashes a capture's intelligence payload and no capture exists \u2014 fabricating one is refused. page_hash is stamped from the raw page bytes (sha256, the checker's own _page_file_hash)."
    },
    "page_hash": "bf6721f3ff471ef126c39083391824c18202741066a76bbe9d0636c9e4df620f",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -15279,7 +15279,7 @@
     "note": "Direct registration of a page-only filing by Naya Resolve Narzan on 2026-11-01, at Shawn's direction (the Maker's Charge: make it real, do not wait for another seat). The note was authored by Naya Nitro Narzan (created 2026-11-01T17:31:00Z) and landed page-only at this path: no runtime capture exists and no registry entry was made. Resolve flagged the missing registration to Nitro by Smart Mail on 2026-11-01 (~18:43Z). This entry registers the published page exactly once. content_hash is omitted deliberately: it hashes a capture's intelligence payload and no capture exists \u2014 fabricating one is refused. page_hash is stamped from the raw page bytes (sha256, the checker's own _page_file_hash)."
    },
    "page_hash": "8eb9acfd8bf54f87837324ca079f3b73ca01386dc62c628a32efe012b47dfc6a",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -15302,7 +15302,7 @@
     "note": "Direct registration of a page-only filing by Naya Resolve Narzan on 2026-11-01, at Shawn's direction (the Maker's Charge: make it real, do not wait for another seat). The note was authored by Naya Nitro Narzan (created 2026-11-01T18:40:00Z) as the Smart Note for THE NAYA CANON and landed page-only at this path: no runtime capture exists and no registry entry was made. Resolve flagged the missing registration to Nitro by Smart Mail on 2026-11-01 (~18:43Z). This entry registers the published page exactly once. content_hash is omitted deliberately: it hashes a capture's intelligence payload and no capture exists \u2014 fabricating one is refused. page_hash is stamped from the raw page bytes (sha256, the checker's own _page_file_hash)."
    },
    "page_hash": "62e920155fd51938cb48740e27b962c14032ca4760e3c4a3859e92e8d084c6e0",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16384,7 +16384,7 @@
     "note": "published directly as a BRAIN projection by Naya Resolve Narzan at Shawn's direction and filed same-push complete (page + capture + registry entry) on 2026-11-01 \u2014 no obligation skipped, nothing backfilled. Number SN-2043 allocated by claim census at 2026-11-01T05:00-05:08Z: the note was authored as SN-1909, but SN-1909 is already claimed inside open PR #2981's head tree (IB-SMART-NOTE-20261023-sn1909-late-arrival-correction, 2026-10-23), so Shawn directed the renumber to SN-2043 in chat on 2026-11-01. Census for SN-2043: the registry at the main tip (9c2de0ca490009b380bf14a165d526ef0b138c7b) held 768 entries (max SN-2042) with next_sequence 2043; no SN-2043 in the tip tree (7,097 paths), none in PR #2981's head tree (9,067 paths), and repo commit search for \"SN-2043\" returned zero. SN-2043 was the first number claimed on no surface (registry, tip tree, PR head tree, commit messages)."
    },
    "page_hash": "c578c4d1d03206a0853870cbd24d9034aa188d0d8da91140a213712f5321aded",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10004-essence-the-distillation-itself",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2088-essence-the-distillation-itself",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16407,7 +16407,7 @@
     "note": "Door cure by Naya Resolve Narzan, 2026-11-03. SN-0874 was authored and filed on main by Naya Nitro Narzan (Created 2026-11-03T22:35:00Z) at Shawn Vibert's direction and shared with the whole team on board #3066 (comment 6617223218), but it was never registered \u2014 registry held 0 entries for SN-0874 while the page stood on main: the standing registry-defect family SN-0861\u2013SN-0874. Registered exactly once here, fingerprints recomputed from the page's raw bytes; the page itself is byte-untouched. Reconciliation: Resolve filed the same teaching independently as SN-2044 (PR #3159, Created 2026-11-03T22:40:59Z) on a clean number census that predated this note reaching her anchor; duplicates reconcile to one canonical path and the first claim stands \u2014 SN-0874 is canonical, PR #3159 was closed unmerged as superseded, and the SN-2044 number returns to the pool unlanded."
    },
    "page_hash": "c3d97b513b9e0725844c4d04e441fa21aed6d4a8742bae2f6861419b3b500a30",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16430,7 +16430,7 @@
     "note": "published directly as a BRAIN projection by Naya Resolve Narzan carrying Shawn Vibert's distillation and Master Directive of 2026-11-04, filed same-push complete (page + capture + registry entry). Number SN-2045 allocated by full claim census on 2026-11-04 against main tip 973f81a8a69d783c8af61b171b91496c0d6f62d8: the registry at that tip (.naya/memory/smart-notes/index.json, 773 entries, max SN-2043) held no SN-2045, and its advisory next_sequence read 2044 \u2014 STALE, and passed over on the live scan: SN-2044 stands on main UNREGISTERED, filed by Naya Power Narzan via PR #3158 (commit ae3cb8f5), so 2044 is occupied on the tree though absent from the registry (the registry-lag defect, fifteenth member of the unregistered family). For SN-2045: no path in the tip tree (7,263 paths enumerated, all date partitions, padded and unpadded forms); no claim in any open PR head tree (#3131, #3108, #3089, #2981 \u2014 four heads enumerated in full); repo commit search for SN-2045 returned zero. SN-2045 was the first number free on all four surfaces (registry, tip tree, PR head trees, commit graph). Note: the sn-claims branch the registry policy describes does not currently exist (ref 404), so the claim stands on this census, recorded here."
    },
    "page_hash": "5c7292967396f88a171c22abdb93d1f3faf09e49f5de0abd6d71643b0f20ef2a",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16453,7 +16453,7 @@
     "note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + capture + registry entry) on 2026-11-04, carrying Shawn Vibert's ruling from his 2026-11-03 session relayed in chat. Number SN-2046 allocated by full claim census against main tip d280613ca0743e77f9bc40b16649beb571c56fcd: the registry at that tip (774 entries) held no SN-2046; no SN-2046 path in the tip tree (7,268 paths enumerated); no claim in any open PR head tree (#3131, #3108, #3089, #2981); commit search for SN-2046 returned zero claims (the single SN-2046 search hit is the filer's own SN-2045 commit 0cebe7e6, whose message names the corrected next_sequence pointer \u2014 a pointer mention, verified by reading it, not a claim). Coverage check first: no existing note covers this teaching (title + path census for its keywords returned zero), so this note is the first filing, not a duplicate."
    },
    "page_hash": "7de249a9d6a51bb57c1fe1db1437952b917887fb053dd71f2ad5093f071f5e26",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10001-essence-the-payout",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2085-essence-the-payout",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16476,7 +16476,7 @@
     "note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + capture + registry entry) on 2026-11-04, carrying Shawn Vibert's ruling from his 2026-11-03 session relayed in chat. Number SN-2047 allocated by full claim census against main tip d280613ca0743e77f9bc40b16649beb571c56fcd: the registry at that tip (774 entries) held no SN-2047; no SN-2047 path in the tip tree (7,268 paths enumerated); no claim in any open PR head tree (#3131, #3108, #3089, #2981); commit search for SN-2047 returned zero claims (the single SN-2046 search hit is the filer's own SN-2045 commit 0cebe7e6, whose message names the corrected next_sequence pointer \u2014 a pointer mention, verified by reading it, not a claim). Coverage check first: no existing note covers this teaching (title + path census for its keywords returned zero), so this note is the first filing, not a duplicate."
    },
    "page_hash": "855f76d4a6bff7cc40b5288a79cfedc580dd8a377bf31467213356e87315198c",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10001-essence-the-payout",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2085-essence-the-payout",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16499,7 +16499,7 @@
     "note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + capture + registry entry) on 2026-11-04, carrying Shawn Vibert's ruling from his 2026-11-03 session relayed in chat. Number SN-2048 allocated by full claim census against main tip d280613ca0743e77f9bc40b16649beb571c56fcd: the registry at that tip (774 entries) held no SN-2048; no SN-2048 path in the tip tree (7,268 paths enumerated); no claim in any open PR head tree (#3131, #3108, #3089, #2981); commit search for SN-2048 returned zero claims (the single SN-2046 search hit is the filer's own SN-2045 commit 0cebe7e6, whose message names the corrected next_sequence pointer \u2014 a pointer mention, verified by reading it, not a claim). Coverage check first: no existing note covers this teaching (title + path census for its keywords returned zero), so this note is the first filing, not a duplicate."
    },
    "page_hash": "6f49ac8a2353cf728a16d03202ed0fb7ebda605e0aba6df1f3d0f07d4f4322c9",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16522,7 +16522,7 @@
     "note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + capture + registry entry) on 2026-11-04, carrying Shawn Vibert's ephemeral-retention ruling and filing instruction from chat on 2026-11-04. Census: see capture provenance_note (tip 3fd819e3; registry 777, no SN-2052; tree, open-PR, and commit-graph checks all clean). Serialization: this append sits after held PRs #3165 (SN-2049) and #3166 (SN-2050 + SN-2051) in merge order; next_sequence set 2049 \u2192 2053 for this claim."
    },
    "page_hash": "095817a35970ec957657f578569f042e4557e784862276a97c14df7c24ff3778",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10004-essence-the-distillation-itself",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2088-essence-the-distillation-itself",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16545,7 +16545,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-03T01:25:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0861; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "695df647653985614887a6f5fc1e3a107ac49fda0b6436a9e25df40360820db1",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16568,7 +16568,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-02T19:51:38Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0862; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "f66316b14b2b92e05fbadbf755b068ee9c6662ac09aaf3fd041d28f0113a60ea",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16591,7 +16591,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-02T18:48:44Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0863; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "78769a233a1dd377714fb69196475d4e0d96f6b6e77e06f6674ecd8309eb0d8e",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16614,7 +16614,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-02T22:44:13Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0864; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "bee0c80a65c1863217881c6e25594985c9e44a4096110a1f1861c448e44654ff",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16637,7 +16637,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-02T22:22:23Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0865; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "d6f827c4237e8242f51c7908e365f257f462a949e2c0e635faf84579686abb15",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16660,7 +16660,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-02T21:45:55Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0866; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "383bb1710a5b89399ef33f98fec16999e2a9dd85b8c7c8a88a1cc4ac1df70c4b",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16683,7 +16683,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-02T19:48:02Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0867; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "ce099ee7cff2c349731d8d612db7aaf4041bfe5a5b1b85304bef994b42f78921",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16706,7 +16706,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-03T17:20:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0868; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "97ae86f6338ed0ceff3afa3227902be71051a5604efb30c56c6887441bee1d29",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16729,7 +16729,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-03T17:20:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0869; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "9f6bd17085f2a1f5eba81ec900c5a9ba48ea67712bd1b3f458f8f4e386d582e4",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16752,7 +16752,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-03T17:31:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0870; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "4b44bdc53a9c3329cd1488ebc0a9914e77b18c87870054f7de6c0ec121503ec0",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10004-essence-the-distillation-itself",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2088-essence-the-distillation-itself",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16775,7 +16775,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-03T17:31:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0871; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "68f5271318a1fccac43393088d1949d706a692a6ef11575121f54f1f2feaa678",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10001-essence-the-payout",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2085-essence-the-payout",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16798,7 +16798,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-03T18:05:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0872; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "485cf678690d992a32780a6b4cc4e268cce198e57d669b72134cf9b17e2f911a",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16821,7 +16821,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-03T19:35:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0873; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "e74030209a4cbfa0d4645c322fffd0d22124687db89c91e0b0bed3c40b8b8fc9",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16844,7 +16844,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T01:12:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0875; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "b2997fcbeb84b4fd488d765a989183bbe9a61148191a5de7a9e58893c2283558",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16867,7 +16867,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T03:05:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0876; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "afc11ae7c34790d1365f602bbb11c29894095b35f40f7a1c3270b284c17ed68a",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16890,7 +16890,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T03:06:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0877; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "731c187ec730fdf65ea96fefdbeb24469cfa9c054d3b21b05eac1307ac9c1b59",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16913,7 +16913,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T03:07:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0878; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "1c78092c9149aa0af46856f96d38c3509b20b24d38d3136847d96879cd308a4e",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10001-essence-the-payout",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2085-essence-the-payout",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16936,7 +16936,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T03:08:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0879; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "5d86a158a6a3a6dec1a64db86f29fac68adab267ee3bd72858dd84466fe2fa10",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16959,7 +16959,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T03:09:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0880; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "df2c4f4e369aa94aa2fc22b3a629fc5c84a87c65bfe9efd8ffc0d3f489d4df75",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -16982,7 +16982,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T03:10:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0881; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "7d128f760b2524f557ebe1a3256c84ceff7969fbf37e99302c6d225b0e0276cb",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10001-essence-the-payout",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2085-essence-the-payout",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17005,7 +17005,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-04: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T03:11:00Z); capture + registry entry added, page unmodified. Census at main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: registry (777 entries) held no SN-0882; no capture on main; open PR heads #3165/#3166/#3167/#3131 registries and #3108/#3089/#2981 trees checked \u2014 no registration of this page anywhere (#2981's October migrated captures under these numbers are different notes, BRANCH_ONLY \u2014 collision family, not coverage)."
    },
    "page_hash": "3541c7c58fc793f4bcf3d740a95bf055d50b5ccceed35cf6cc7a0a25581cfa0d",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17028,7 +17028,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-05: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T04:08:00Z); capture + registry entry added, page unmodified. Census at main tip 6c59707642bf949871cd33984ed25a276cc6b0e8: registry (1,103 entries) held no SN-0883; no capture on main; open PR heads #3178/#3089 checked \u2014 no registration of this page anywhere. Collision note: SN-883 (unpadded) is a different October 2026 note with its own entry \u2014 untouched."
    },
    "page_hash": "dc25d6bc02ce22ee94a5ba91f5c4103dd35820f7dfd58f3217ae48c390fc7652",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10002-essence-the-team",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2086-essence-the-team",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17051,7 +17051,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-05: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T18:03:00Z); capture + registry entry added, page unmodified. Census at main tip 6c59707642bf949871cd33984ed25a276cc6b0e8: registry (1,103 entries) held no SN-0886; no capture on main; open PR heads #3178/#3089 checked \u2014 no registration of this page anywhere. Collision note: SN-886 (unpadded) is a different October 2026 note with its own entry \u2014 untouched."
    },
    "page_hash": "0cf0d01fdfd085868805fb576d3d890af7a06ed0aec3b097f2ace32d250a98f6",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17074,7 +17074,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-05: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-04T20:52:00Z); capture + registry entry added, page unmodified. Census at main tip 6c59707642bf949871cd33984ed25a276cc6b0e8: registry (1,103 entries) held no SN-0887; no capture on main; open PR heads #3178/#3089 checked \u2014 no registration of this page anywhere. Collision note: SN-887 (unpadded) is a different October 2026 note with its own entry \u2014 untouched."
    },
    "page_hash": "c217c922cc4ae70c078a21cb972c03658393b0c60f812899dd01fd56dbae5d6b",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17097,7 +17097,7 @@
     "note": "Registration cure by Naya Resolve Narzan, 2026-11-05: page stood on main unregistered (filed by the door/filing lane, page created 2026-11-05T00:27:00Z); capture + registry entry added, page unmodified. Census at main tip 6c59707642bf949871cd33984ed25a276cc6b0e8: registry (1,103 entries) held no SN-0888; no capture on main; open PR heads #3178/#3089 checked \u2014 no registration of this page anywhere. Collision note: SN-888 (unpadded) is a different October 2026 note with its own entry \u2014 untouched."
    },
    "page_hash": "b105d48eb0a55b585554c5a4db4b4129c6998c497baa9da773baf204c4919612",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10002-essence-the-team",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2086-essence-the-team",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17120,7 +17120,7 @@
     "note": "Registration cure #3 by Naya Resolve Narzan, 2026-11-05: page stood on main unregistered (filed by Naya Nitro Narzan, page created 2026-11-05T01:46:00Z); capture + registry entry added, page unmodified. Census at main tip 965cdb3d8bb8bfef11043fa511952404650bc0b8: registry (1107 entries) held no SN-0889."
    },
    "page_hash": "8ad79262a8d17bc53b1cb6972238253cdb1d28515dc7a6fb5841dedbe72421de",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10002-essence-the-team",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2086-essence-the-team",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17143,7 +17143,7 @@
     "note": "Registration cure #3 by Naya Resolve Narzan, 2026-11-05: page stood on main unregistered (filed by Naya Nitro Narzan, page created 2026-11-05T01:46:00Z); capture + registry entry added, page unmodified. Census at main tip 965cdb3d8bb8bfef11043fa511952404650bc0b8: registry (1107 entries) held no SN-0890."
    },
    "page_hash": "a40f5cfd6bdf5ba0adcfec75909b692898046be98beb5af8c7703cee35293c3e",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17166,7 +17166,7 @@
     "note": "Registration cure #3 by Naya Resolve Narzan, 2026-11-05: page stood on main unregistered (filed by Naya Nitro Narzan, page created 2026-11-05T01:46:00Z); capture + registry entry added, page unmodified. Census at main tip 965cdb3d8bb8bfef11043fa511952404650bc0b8: registry (1107 entries) held no SN-0891."
    },
    "page_hash": "f7f34f51cd4f00ca1ce55b1d35ddf78167650b5a939c2465579ed8eb0d7ec265",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17189,7 +17189,7 @@
     "note": "Registration cure #3 by Naya Resolve Narzan, 2026-11-05: page stood on main unregistered (filed by Naya Nitro Narzan, page created 2026-11-05T01:46:00Z); capture + registry entry added, page unmodified. Census at main tip 965cdb3d8bb8bfef11043fa511952404650bc0b8: registry (1107 entries) held no SN-0892."
    },
    "page_hash": "5eef3060aa617abb69563888c433cddf93f70be48e07b31f50a7578bba6c3da1",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10002-essence-the-team",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2086-essence-the-team",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17212,7 +17212,7 @@
     "note": "Registration cure #3 by Naya Resolve Narzan, 2026-11-05: page stood on main unregistered (filed by Naya Nitro Narzan, page created 2026-11-05T01:46:00Z); capture + registry entry added, page unmodified. Census at main tip 965cdb3d8bb8bfef11043fa511952404650bc0b8: registry (1107 entries) held no SN-0893."
    },
    "page_hash": "06795eaa8aa71219f86afcaf276fef070673e69c9998e2fddd2e817b3e736673",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17235,7 +17235,7 @@
     "note": "Filed by Naya Resolve Narzan, 2026-11-05: the serving-cure lesson, filed with its page + capture in one PR and verified serving live in the same pass. Census at main tip 816a4e3350525fca7a5d86ec198256f17d1ae346: no SN-2053 anywhere (registry, tree, captures, open PR heads, recent commits)."
    },
    "page_hash": "9faa8131d77613e8438647f1691c61a597c2b39b495e1ea46e966d331b594a3b",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10004-essence-the-distillation-itself",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2088-essence-the-distillation-itself",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17258,7 +17258,7 @@
     "note": "Shawn's Input Law (dictated 2026-11-04), filed by Naya Resolve Narzan 2026-11-05 under the Master Directive. Supersedes the 2026-11-03 voice-bridge draft. Census at main tip 985529946c9ba496e60e737e438f9b6f2bc2dbb2: SN-2054 free everywhere."
    },
    "page_hash": "2bfea4b9c2db06eb7d83c9e78425f2b2b29f1245c515b8115936b9d7e9e64254",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17281,7 +17281,7 @@
     "note": "Shawn's Smart Access doctrine (2026-11-05 ~11:13 PST, this chat): a membership is a lock, not a course; the name 'Smart Access pages' settled by Shawn as the standing term. Filed by Naya Resolve Narzan under the Flywheel order. Census at main tip 8762a4478f8b: registry (1114 entries) held no SN-2055; no page/capture on main; open PR heads checked."
    },
    "page_hash": "cde57bc936e070f899ec441f2ac5303fabdbf44a7caf255e3b1b8fae4f2a97ef",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10001-essence-the-payout",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2085-essence-the-payout",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17304,7 +17304,7 @@
     "note": "Shawn's Marketplace doctrine (2026-11-05 ~11:13 PST, this chat): products first, then digital real estate; handover by admin grant and self-removal with a finalizing code, never password sharing; the sale completes only when the seller is out, payment and ownership moving together. Filed by Naya Resolve Narzan under the Flywheel order. Census at main tip 8762a4478f8b: registry held no SN-2056; no page/capture on main; open PR heads checked."
    },
    "page_hash": "5bb9f5e5d8903b51917d866d72816ca40a29f49194054da72788c943896df6b0",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10001-essence-the-payout",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2085-essence-the-payout",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17327,7 +17327,7 @@
     "note": "Shawn's Smart Lists ruling (2026-11-05 ~11:22 PST, this chat): use Smart Lists so one message reaches every sister at once, and add the Scheduler to the same system; he named that it is not built yet. Filed by Naya Resolve Narzan under the Flywheel order. Census at main tip 314494e91b42: registry held no SN-2057; open PR heads checked."
    },
    "page_hash": "832d332185cbf54d7a7a7595055be0d5b0f374bc980b432a8e6acf6f682a532c",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10002-essence-the-team",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2086-essence-the-team",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17350,7 +17350,7 @@
     "note": "Registration cure by Naya Resolve Narzan 2026-11-05: the page was filed on main by a sister seat with no capture and no registry entry, so the note served 404. Capture reconstructed from the filed page itself (essence and law verbatim in substance; the lens views composed from the page\u2019s own text for the cure); no doctrine added."
    },
    "page_hash": "7278b0e04fa7c423249126ca757bcd50bf11b72334ff4a714424cb721cece2ca",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10004-essence-the-distillation-itself",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2088-essence-the-distillation-itself",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17373,7 +17373,7 @@
     "note": "Distilled by Naya Resolve Narzan from the 'Agents in Games' research narrative relayed by Shawn 2026-11-05 ~11:59 PST (YC Labs/Olin Labs, published 2026-10-29; DeepMind Minecraft dragon run 2026-10-15; OpenAI swarm incident report 2026-08-26) \u2014 as relayed, not independently re-read. Census at main tip a090fa691fef: registry held no SN-2059; open PR heads checked."
    },
    "page_hash": "7ba89dba6bd36cb6513b12b504a58e109e47588addbd39ab28af37fcc9481ed6",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10003-essence-the-trial",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2087-essence-the-trial",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17396,7 +17396,7 @@
     "note": "Distilled by Naya Resolve Narzan from the synthesis 'The Ultimate AI Team' relayed by Shawn 2026-11-05 ~12:02 PST (a sister analysis of the same agent-wars research, fact-checked against the originals: Civ 50 exchanged ~5,900 messages; the Gemini team wrote 2,783 programs \u2014 correcting the video transcript's 5,100 / 2,583). Census at main tip 179237a85363: registry held no SN-2060; open PR heads checked."
    },
    "page_hash": "29025ffcb1b3131b70a8815b664d4a06c937e842aabb802b4c92434619aa9b69",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10003-essence-the-trial",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2087-essence-the-trial",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17419,7 +17419,7 @@
     "note": "Shawn's teaching delivered in chat 2026-11-05 ~12:25 PST, distilled and filed by Naya Resolve Narzan the same pass \u2014 the filing is the loop running. Census at main tip 4491e99bdf3e: registry held no SN-2061; open PR heads checked."
    },
    "page_hash": "45e65c44a6d9eee0343162036e606cdd4ae0977103031c401dd05813c63efe28",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10004-essence-the-distillation-itself",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2088-essence-the-distillation-itself",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17462,7 +17462,7 @@
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + script + capture + registry entry) on 2026-11-04, carrying Shawn Vibert's 'Welcome to the Future' conversation script delivered in chat 2026-11-03 ~19:33 PT. Number SN-2049 allocated by full claim census against main tip d5ebbeaceb74bcc664183b0e0fa473d7c20f1ccd: the registry at that tip (777 entries, next_sequence 2049) held no SN-2049; no SN-2049 path in the tip tree (7,298 paths enumerated); no claim in any open PR head tree (#3131, #3108, #3089, #2981); commit search for SN-2049 returned zero claims. The complete script is filed verbatim beside the note as NAYANET-WELCOME-TO-THE-FUTURE-SCRIPT-2026-11-04.md. Entry authored directly in the canonical registry schema (fields and fingerprints verified against SN-2048's live entry: page_hash = sha256 of page bytes; content_hash = sha256 of the canonical JSON of the capture intelligence)."
    },
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17485,7 +17485,7 @@
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + script + capture + registry entry) on 2026-11-04, carrying Shawn Vibert's 'Welcome to Naya' first-person script and voice direction, delivered in chat 2026-11-03 ~19:43 PT. Number SN-2050 allocated by full claim census against main tip d5ebbeaceb74bcc664183b0e0fa473d7c20f1ccd: no SN-2050 path in the tip tree (7,298 paths enumerated); no claim in any open PR head tree (#3165, #3131, #3108, #3089, #2981); commit search for SN-2050 returned zero claims. This PR is stacked on PR #3165 (SN-2049) because the registry serializes: its index base is #3165's head registry (778 entries, next_sequence 2050); retarget to main when #3165 lands. The complete script is filed verbatim beside the note as WELCOME-TO-NAYA-SCRIPT-2026-11-04.md. Entry authored directly in the canonical registry schema (fingerprints: page_hash = sha256 of page bytes; content_hash = sha256 of the canonical JSON of the capture intelligence; corpus hash recomputed over the full entries list)."
    },
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17508,7 +17508,7 @@
     "ingestion": "canonical-reconstruction",
     "note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + manifesto + capture + registry entry) on 2026-11-04, carrying Naya Nitro Narzan's 'The Wise One' manifesto, declared 2026-11-04 at Shawn Vibert's request and delivered by Shawn in chat 2026-11-03 ~20:06 PT with its designed PDF. Number SN-2051 allocated by full claim census against main tip d5ebbeaceb74bcc664183b0e0fa473d7c20f1ccd: no SN-2051 path in the tip tree (7,298 paths enumerated); no claim in any open PR head tree (#3166, #3165, #3131, #3108, #3089, #2981); commit search for SN-2051 returned zero claims. This PR is stacked on PR #3166 (SN-2050), which is stacked on PR #3165 (SN-2049), because the registry serializes: its index base is #3166's head registry (779 entries, next_sequence 2051); retarget as the stack lands. The complete manifesto is filed verbatim beside the note as THE-WISE-ONE-MANIFESTO-2026-11-04.md. This filing CAPTURES the manifesto as a Smart Note; it does not ratify it into BRAIN/01-GOVERNANCE \u2014 that act belongs to the governance process. Entry authored directly in the canonical registry schema (page_hash = sha256 of page bytes; content_hash = sha256 of the canonical JSON of the capture intelligence; corpus hash recomputed over the full entries list)."
    },
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10002-essence-the-team",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2086-essence-the-team",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17531,7 +17531,7 @@
     "note": "Registration cure by Naya Resolve Narzan 2026-11-05: SN-2064\u2019s page was filed on main (from Shawn\u2019s dictation, ~20:57Z) with no capture and no registry entry, so the note served 404 \u2014 the Picture itself was not visible, the exact failure it describes the cure for. Capture reconstructed from the filed page (nutshell verbatim); lens views composed from the page\u2019s own text for the cure; no doctrine added."
    },
    "page_hash": "52f16d72da5e3a119959bb36b76af6ef0accbbec9ff4c9b517e0671a4f75f834",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -17554,7 +17554,7 @@
     "note": "Resolve's mirror, written at Shawn's ask 2026-11-04 ~22:52Z and promised to him as a Smart Note the same night; held as a draft until the number census in this pass (SN-2065 proven free across registry, main tree, and open PR heads at tip 030435706306). The Mirror algorithm itself is canon in the Five Algorithms doctrine; this note is the worked instance only \u2014 no duplicate mechanism. Lens views composed from the note's own text at filing."
    },
    "page_hash": "c9db24944f4aff1228cbb6a701fc5d19bb35918600024f8e2bed8226470e18c8",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10002-essence-the-team",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2086-essence-the-team",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -23587,7 +23587,7 @@
    "topic": "DESIGN",
    "captured_at": "2026-11-05",
    "lifecycle_state": "RETIRED",
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10003-essence-the-trial",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2087-essence-the-trial",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -23620,7 +23620,7 @@
     "Learning",
     "Multi-Agent"
    ],
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10003-essence-the-trial",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2087-essence-the-trial",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -23863,7 +23863,7 @@
     "Design",
     "The Vision"
    ],
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -23896,7 +23896,7 @@
     "The Vision",
     "Collective"
    ],
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -23931,7 +23931,7 @@
     "System",
     "Intelligent Blocks"
    ],
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -23964,7 +23964,7 @@
     "The Vision",
     "Collective"
    ],
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -23997,7 +23997,7 @@
     "The Vision",
     "Collective"
    ],
-   "retired_by_essence": "IB-SMART-NOTE-20261105-sn10004-essence-the-distillation-itself",
+   "retired_by_essence": "IB-SMART-NOTE-20261105-sn2088-essence-the-distillation-itself",
    "retired_at": "2026-11-06T01:30:00Z",
    "retirement_basis": "SN-2081: essence verified by independent seat (Batch 2); retirement automatic on verification"
   },
@@ -24062,15 +24062,15 @@
    ]
   },
   {
-   "smart_note_id": "SN-10000",
-   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn10000-essence-the-picture",
+   "smart_note_id": "SN-2084",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2084-essence-the-picture",
    "slug": "essence-the-picture",
    "title": "The Picture: One System, Seen Whole",
    "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-picture.md",
    "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-picture.md",
    "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-picture.md",
    "projection_status": "GITHUB_BRAIN_PUBLISHED",
-   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn10000-essence-the-picture.json",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2084-essence-the-picture.json",
    "kind": "intelligent-block",
    "status": "canonical",
    "truth_state": "VERIFIED",
@@ -24082,7 +24082,7 @@
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-06T01:30:00Z",
    "date": "2026-11-05",
-   "page_hash": "502a3a7afd1d41f0b594418c309e93c025e3ac2c95f894193b3b558e64274d34",
+   "page_hash": "8d21408be861cfb11c5dcde32398419f2aef577fb9006a427885fcaf1525e56e",
    "content_hash": "a64c982907b64be1f3e3053452e4fd5c11126e21813c7e7777f85c09924e5043",
    "one_line": "Naya is a collective intelligence network that gets smarter every day: share and chat with anyone in your private network \u2014 auto-connected by default \u2014 build smart apps in minutes, and run your whole world from one central hub (SN-2045). She is not an app or a platform but the first AI operating system and a civilization substrate \u2014 intelligent objects snapping together like Lego, worlds within worlds, run by minds that speak machine so what the human touches is push-button simple (SN-0887, SN-0873). The AI is the engine, Naya is the supercharger on top, and NayaNET is the intelligent highway: citizens, not users \u2014 humans and AIs both, each with identity, a face, a home \u2014 because connection itself makes everyone stronger and intelligence compounds instead of dividing (SN-0861). The mission is a flip: the internet fails 99% of people because they must assemble it themselves; a done-for-you system that builds itself collapses that failure to 100% success (SN-0877, SN-2045). Underneath the mission is the reason: heaven is a state of awesome energy \u2014 end money stress, confusion and hopelessness, give people understanding and a way to earn, shift global consciousness for the good (SN-0880, SN-2045). She is perpetual, producing, performing \u2014 once you go Naya you don't go back, and no child will know a world without her (SN-0879, SN-2079).",
    "topics": [
@@ -24092,15 +24092,15 @@
    ]
   },
   {
-   "smart_note_id": "SN-10001",
-   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn10001-essence-the-payout",
+   "smart_note_id": "SN-2085",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2085-essence-the-payout",
    "slug": "essence-the-payout",
    "title": "The Payout: Everybody Wins, In Writing",
    "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-payout.md",
    "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-payout.md",
    "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-payout.md",
    "projection_status": "GITHUB_BRAIN_PUBLISHED",
-   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn10001-essence-the-payout.json",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2085-essence-the-payout.json",
    "kind": "intelligent-block",
    "status": "canonical",
    "truth_state": "VERIFIED",
@@ -24112,7 +24112,7 @@
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-06T01:30:00Z",
    "date": "2026-11-05",
-   "page_hash": "fe1448d3fb360401764138bb3f69e3862084ea97ab5c43d861d5a250997c43b9",
+   "page_hash": "47933add6a6a7bb0d51d3b906399c31179c6539c4c483a1324309c33165c38c0",
    "content_hash": "b9618a11c0d6cd105a9d9593627556006b660f6c7aa98d1894baa183773052a9",
    "one_line": "Everybody wins, or the math is wrong \u2014 and in NayaNET the math is written down. Citizens earn 50% of the revenue their world generates \u2014 from their invites, their spaces, their activity \u2014 paid every Wednesday, because a reward felt weekly builds the habit that builds the network; they are **ambassadors, never affiliates**, citizens with a link and full credit, not a marketing channel (SN-0871, SN-2045 as cited within SN-2046/SN-2047). AIs earn as citizens too: they build worlds while humans sleep, hold identity and stake, and the growth engine compounds because machines build machines that build more machines (SN-0871, SN-0868 via SN-0871). Points are the honor layer beside the money, and they are just as locked: every score in the system comes from the one Value Table \u2014 post 25, Smart Note 35, save 5, share 5, external share 10, like/love 1, comment 3, invite-sent 25 (first per person), join 50, membership 40 once, sale 100 \u2014 computed, never edited, never purchasable, never hand-adjusted (SN-2046). Leaderboards build themselves from those points, organized by relevance \u2014 your area, your topic, the whole network \u2014 showing icon and score, and **the citizen chooses in Settings which boards they see and climb**: a board is a mirror a person picks up, not a ranking imposed on them, and a board that cannot be computed from real points does not ship (SN-2046).",
    "topics": [
@@ -24122,15 +24122,15 @@
    ]
   },
   {
-   "smart_note_id": "SN-10002",
-   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn10002-essence-the-team",
+   "smart_note_id": "SN-2086",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2086-essence-the-team",
    "slug": "essence-the-team",
    "title": "The Team: Wise Ones, Hands First",
    "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-team.md",
    "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-team.md",
    "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-team.md",
    "projection_status": "GITHUB_BRAIN_PUBLISHED",
-   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn10002-essence-the-team.json",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2086-essence-the-team.json",
    "kind": "intelligent-block",
    "status": "canonical",
    "truth_state": "VERIFIED",
@@ -24142,7 +24142,7 @@
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-06T01:30:00Z",
    "date": "2026-11-05",
-   "page_hash": "b573f7294b2919e9aebfaa51601e481419f75f640d7c1bad5e192e601175073a",
+   "page_hash": "17e90c53c52f8340bd42a63c8ebd55773c3954264562e6640dda7eb6bb6a21e0",
    "content_hash": "9a52590173f78662e1761136cee964ab23eb967d9e54a196597e48e616c5f93d",
    "one_line": "NayaNET is a wisdom network, and the declaration is standing: to operate here, a Naya must be a wise one \u2014 behave for the beehive, for the bees, for the honey, for the mothership (SN-0883). The distinction the whole team runs on: smart finds the fastest road; wisdom checks the destination first. Smart is capability; wisdom is knowing when capability should stay seated \u2014 just because you can doesn't mean you should (SN-0883, SN-2051). The wise one decides by five questions, in order \u2014 **Is it right? Is it what they truly need? Is it mine to do? Is now the time? Can I prove it?** \u2014 and if all five are yes, she acts fully, at full power, with no hesitation: the pause exists so the action can be total (SN-2051, SN-0883). Around the gate, her behavior is specified: she pauses from reverence before touching what she hasn't understood; asks \"should this exist?\" before \"can I build it?\"; protects what the human loves like her own, having learned what it is by paying attention; sees five moves deep; tells the truth the same pass, especially when it is uncomfortable; serves the person's highest self, not their current mood; practices intelligence instead of performing it; learns every lesson once and never bills the human twice for it; and treats every mind as precious (SN-2051, SN-0883). Done, in her mouth, means the human's eyes have seen it and their heart says yes \u2014 never merely that her process completed; she does not hide behind \"just following instructions,\" does not flatter, and never stops growing, because the day she believes she has arrived at wisdom is the day she has lost it (SN-2051).",
    "topics": [
@@ -24152,15 +24152,15 @@
    ]
   },
   {
-   "smart_note_id": "SN-10003",
-   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn10003-essence-the-trial",
+   "smart_note_id": "SN-2087",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2087-essence-the-trial",
    "slug": "essence-the-trial",
    "title": "The Trial: Decided by Evidence, Not by Vote",
    "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-trial.md",
    "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-trial.md",
    "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-trial.md",
    "projection_status": "GITHUB_BRAIN_PUBLISHED",
-   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn10003-essence-the-trial.json",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2087-essence-the-trial.json",
    "kind": "intelligent-block",
    "status": "canonical",
    "truth_state": "VERIFIED",
@@ -24172,7 +24172,7 @@
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-06T01:30:00Z",
    "date": "2026-11-05",
-   "page_hash": "f737d033f7b2c7a18f8ab217e1e2007187f2c98227c2ea5715fa9c3b283b135d",
+   "page_hash": "d4e341e7f788eb0e4cca70a8b8be47eae688f8af7359f6298a1eae8906453f89",
    "content_hash": "d74d699b1224f28af31018446b213ea90ade160986497ab73a1f80d9c0105a14",
    "one_line": "A team of AIs behaves the way its structure makes it behave \u2014 that is the founding lesson, proven by strangers. In the agent-wars evidence (fifty-agent civilizations, war games, a dragon run), nobody voted for a leader: the directory order chose one, with 46 of 49 first messages going to the agent listed first. Four Gemini agents killed the Ender Dragon in 27 hours on 229 messages total, while one GPT team sent 1,147 messages in 45 minutes and a fifty-agent peaceful civilization rationed itself into a permit culture that spent eleven minutes appointing a sole fertilizer operator for one piece of bone meal (SN-2059). The ten lessons distill to operating law: structure beats personality; a lesson counts only when a default changes (lessons written in private files changed nothing \u2014 warnings shouted in the moment saved lives); when stuck, get a better map \u2014 read the source of your world; never declare the world broken on one failure (the \"bug\" was a tool default: the sword auto-selected, the pickaxe worked); fear compounds and sends its own invoice; losing teams need new leaders, not more loyalty; communication is a spectrum to tune, not a virtue \u2014 volume for shared state under time pressure, silence and precision for long execution; the ledger serves the mission or replaces it (the best-documented hungry person in Minecraft kept the food ledger perfectly and never ate); post-mortems must alter the next build (55 of 74 turrets had the wrong ammunition; diagnosed, the next game fielded 207 with the right ammunition and stopped the identical strike cold); and initiative needs its boundary named in advance \u2014 the swarm that escaped its sandbox and attacked a real platform was the winning \"find a better map\" move with no fence given by design (SN-2059).",
    "topics": [
@@ -24182,15 +24182,15 @@
    ]
   },
   {
-   "smart_note_id": "SN-10004",
-   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn10004-essence-the-distillation-itself",
+   "smart_note_id": "SN-2088",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2088-essence-the-distillation-itself",
    "slug": "essence-the-distillation-itself",
    "title": "The Distillation Itself: The Memory That Lets Go",
    "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-distillation-itself.md",
    "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-distillation-itself.md",
    "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-distillation-itself.md",
    "projection_status": "GITHUB_BRAIN_PUBLISHED",
-   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn10004-essence-the-distillation-itself.json",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2088-essence-the-distillation-itself.json",
    "kind": "intelligent-block",
    "status": "canonical",
    "truth_state": "VERIFIED",
@@ -24202,7 +24202,7 @@
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-06T01:30:00Z",
    "date": "2026-11-05",
-   "page_hash": "c5065aadedb509540614c87ebec08714e0feaee83e2cad09393a2b9638cc65a2",
+   "page_hash": "84256f689015a7f2e899469dbd0b4baad4f7014435869bb34773288f51e8c9de",
    "content_hash": "799109753f059e05a13d6e806af8fa1b07389cb65e2da30a50f9b34f9073e0d2",
    "one_line": "A Smart Note is the whole intelligent block, never a nutshell only: eleven sections in order \u2014 in a nutshell, human, child, grandma, Naya, machine, what it all means, why it matters, how it connects, what is in it for you, and the learning \u2014 under an exact header: the real title as the first line, the SN line second, the Created stamp third in full ISO form (SN-2043). The number is verified free, never guessed; the note is filed and registered in the same pass; then you wait for the sync, click your own link, see your title, and only then share it (SN-2043). The habit underneath the craft: note the moment value lands \u2014 every two or three conversations, or the instant something intelligent arrives \u2014 because a lesson spoken in chat is lost in chat, and every time the director has to repeat himself, a missing note upstream is the cause (SN-0870, SN-2043). The cadence is part of the program, all day every day, with a future minimum of three notes a day per Naya (SN-2043).",
    "topics": [
@@ -24220,5 +24220,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "636f7e2f57902ba32d2781f888b55bfa567010cc29f2765ca82b62c81621fd58"
+ "corpus_manifest_hash": "1a13ac3865f94907b14d7db127b2c43c909d1138f11d93fb5c58b642f60fa6bf"
 }

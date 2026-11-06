@@ -1,6 +1,6 @@
 {
   "schema": "naya.smart-note-capture.v2",
-  "smart_note_id": "SN-10004",
+  "smart_note_id": "SN-2088",
   "title": "The Distillation Itself: The Memory That Lets Go",
   "slug": "essence-the-distillation-itself",
   "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-distillation-itself.md",
@@ -38,6 +38,7 @@
       "SN-2081"
     ]
   },
-  "page_hash": "c5065aadedb509540614c87ebec08714e0feaee83e2cad09393a2b9638cc65a2",
-  "content_hash": "799109753f059e05a13d6e806af8fa1b07389cb65e2da30a50f9b34f9073e0d2"
+  "page_hash": "84256f689015a7f2e899469dbd0b4baad4f7014435869bb34773288f51e8c9de",
+  "content_hash": "799109753f059e05a13d6e806af8fa1b07389cb65e2da30a50f9b34f9073e0d2",
+  "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2088-essence-the-distillation-itself"
 }
