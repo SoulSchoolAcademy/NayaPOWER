@@ -1,0 +1,34 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2076",
+  "title": "Naya — The High Performance Machine",
+  "slug": "naya-the-high-performance-machine",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-naya-the-high-performance-machine.md",
+  "tone": "purple",
+  "icon": "◆",
+  "created_at": "2026-11-06T00:52:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "What makes Naya special must be everywhere: ten-star service designed for the user’s viewport, their experience, their pleasure — everything done for them, with ultimate beauty and fine-tuned precision in its elegance, its feel, its touch. Naya is a high performance machine: she is the vehicle, the operating system, and the computer — she drives it for you, and you give the vision, the goal, the mission.",
+    "human_view": "Think of the finest car you have ever sat in — the smoothness, the elegance, the feeling that every detail was made for you. That is what Naya must feel like everywhere, not just somewhere. And you do not have to drive her: give her your vision, your goal, your mission, and she runs your whole world — your business, your network, your messages, your teams — while you simply direct.",
+    "child_view": "Imagine a magical car that drives itself, knows where you want to go, and feels like the most beautiful ride in the world — smooth, shiny, and made just for you. You just say where, and it takes care of everything. That is Naya: not just the car, not just the driver — all of it, in one.",
+    "grandma_view": "Dear, it is like being chauffeured in the finest automobile ever built — everything smooth, everything elegant, everything done for you — except the chauffeur is the car itself, and she knows your whole world. You give the direction; she does the driving, beautifully.",
+    "ai_view": "The standard is total, not local: every surface carries the same felt quality — beauty, precision, elegance of feel and touch — at ten-star level, designed viewport-first for the citizen’s experience and pleasure. Naya is one entity in three roles at once: vehicle (the thing you ride in), operating system (the thing that runs it), computer (the intelligence). Direction inputs are vision/goal/mission; operation is hers. Teams of humans and of agents operate through her. Signature recognizability is a requirement: a Naya design is known on sight.",
+    "what_it_means": "This is the product-level statement of the Eye standard: the reason flat boards fail is not a CSS value, it is that a board you cannot feel is not the high performance machine. The Dashboard is a cockpit, not a report. And \"everywhere\" closes the escape hatch — the standard cannot be satisfied on the flagship surface while the rest of the world feels ordinary.",
+    "whats_inside": [
+      "Shawn’s dictation, verbatim",
+      "Everywhere as a requirement, not an aspiration",
+      "The feel is the spec — Bugatti and Mercedes as felt qualities",
+      "She drives; you direct — vehicle, operating system, computer in one",
+      "The unmistakable signature"
+    ],
+    "topics": [
+      "Vision",
+      "Design",
+      "The Vision"
+    ]
+  },
+  "page_hash": "2910dd11fd9b9a74dfe807d0d07e85456429d3b2f7ac0c2ce219fd79b2dd3484",
+  "content_hash": "838a034ec9a5b735b5132914d29dd6e369dfdc47f3094eadcd5c8f5096e8ff4a"
+}

@@ -23665,6 +23665,36 @@
     "Essence",
     "Distillation"
    ]
+  },
+  {
+   "smart_note_id": "SN-2076",
+   "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2076-naya-the-high-performance-machine",
+   "slug": "naya-the-high-performance-machine",
+   "title": "Naya \u2014 The High Performance Machine",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-naya-the-high-performance-machine.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-naya-the-high-performance-machine.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-naya-the-high-performance-machine.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261105-sn2076-naya-the-high-performance-machine.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "VISION",
+   "topic": "THE-VISION",
+   "captured_at": "2026-11-05",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-06T00:52:00Z",
+   "date": "2026-11-05",
+   "page_hash": "2910dd11fd9b9a74dfe807d0d07e85456429d3b2f7ac0c2ce219fd79b2dd3484",
+   "content_hash": "838a034ec9a5b735b5132914d29dd6e369dfdc47f3094eadcd5c8f5096e8ff4a",
+   "one_line": "What makes Naya special must be everywhere: ten-star service designed for the user\u2019s viewport, their experience, their pleasure \u2014 everything done for them, with ultimate beauty and fine-tuned precision in its elegance, its feel, its touch. Naya is a high performance machine: she is the vehicle, the operating system, and the computer \u2014 she drives it for you, and you give the vision, the goal, the mission.",
+   "topics": [
+    "Vision",
+    "Design",
+    "The Vision"
+   ]
   }
  ],
  "sequence_policy": {
@@ -23675,5 +23705,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "0c93f9fb1e4b06a0f6b63cca8620a21e0421ad173893206126281f9898d0acd8"
+ "corpus_manifest_hash": "91c6b0a64a3cb0d949ef384960d6288e7efca869d4a35ad23141fc60e3a8ba1e"
 }
