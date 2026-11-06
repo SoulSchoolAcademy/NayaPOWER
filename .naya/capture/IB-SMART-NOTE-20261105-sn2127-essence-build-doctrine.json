@@ -1,0 +1,42 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2127",
+  "title": "Build Doctrine: Blueprint Before Build, Contract Before Done",
+  "slug": "essence-build-doctrine",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-build-doctrine.md",
+  "tone": "red",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:37:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Draw it before you build it, write down what \"finished\" means before you start, and stop when that definition is met — the loop is intent → spec → blueprint → machine contract → build → verification → freeze (SN-0140), a freeze is a baseline with an honest public thaw rather than a coffin (SN-0141), rooms are modules under one contract rather than apps (SN-0142), and when two options both lose half the picture, the choice itself is false and gets dissolved, not picked from (SN-0207).",
+    "human_view": "Draw it before you build it, write down what \"finished\" means before you start, and stop when that definition is met — not when you're tired, not after a round number of tries. Once something is approved, protect it from casual changes, but keep an honest, public way to fix it when it's genuinely wrong. And when you're offered two options that both lose half the picture, refuse the choice and describe the whole.",
+    "child_view": "You plan the treehouse on paper first — and the plan says what \"done\" looks like. You stop when it looks like the plan, not after you've hammered a hundred nails. If a board breaks later, you can fix it — you just tell everyone and write the fix on the plan.",
+    "grandma_view": "A dress is cut from a pattern, dear, and finished when it matches the pattern — not when the thread runs out. A pattern put away in the drawer isn't sacred; if the dress tears, you mend it properly and note the alteration. What you don't do is quietly let the seams out and pretend it was always that size.",
+    "ai_view": "Refuse build tasks without a blueprint and an acceptance contract; report completion only against the contract. Run thaws as the five-step public sequence. Register modules under the single contract and route foundation needs upward. Freeze the rendered visual alongside the spec. When handed a binary, test whether it's false before choosing.",
+    "what_it_means": "Six notes form the build constitution of the Hub era: plan first, define done, freeze honestly, thaw publicly, modularize, dissolve false choices. Every rule answers a specific failure — builds that iterated without closing, freezes that blocked repair, prose frozen instead of the image approved. Two standing texts that bordered this family — the executor's personal binding oath (SN-0199 — one seat's own oath, derivative and non-competing, not a director text) and the director's fix-or-remove directive (SN-0251) — stand alone under the campaign rule and are not carried here. Hold this essence and the loop runs without re-deriving it per project.",
+    "whats_inside": [
+      "The loop is intent → spec → blueprint → machine contract → build → verification → freeze; the acceptance contract closes builds, iteration counts never do (SN-0140, SN-0153).",
+      "Freeze = baseline with a public thaw protocol (failing test → amendment → fix → re-prove → new baseline), never immunity from repair (SN-0141).",
+      "Rooms are modules under one mounting contract; foundation changes are foundation conversations (SN-0142).",
+      "The approved visual is the lock artifact of a design freeze (SN-0147).",
+      "False choices are named and dissolved into the integrated model (SN-0207)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-2"
+    ],
+    "covers": [
+      "SN-0140",
+      "SN-0141",
+      "SN-0142",
+      "SN-0147",
+      "SN-0153",
+      "SN-0207"
+    ]
+  },
+  "page_hash": "501d4ab18c4e315e18706e7dfa915c72d7c236d915e221a7a722bb955f3df109",
+  "content_hash": "f5acfa20f43241e1bfdfc728745d47b3aebd46c04c3052cd085be3d791d6e3be"
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2123",
+  "title": "The Note Is the Deliverable: Lifecycle, Format, and the Returned Link",
+  "slug": "essence-the-note-is-the-deliverable",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-note-is-the-deliverable.md",
+  "tone": "sapphire",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:37:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A note is a lifecycle, not a save — TRIGGER → DISTILL → STRUCTURE → COMMIT → INTELLIGENT EVENT → LEARN → PROJECT (SN-0242) — authored once in one canonical place with every other surface derived from it (SN-0248), and the deliverable is never the note alone: it is the note plus its Smart Link, returned by a real mechanism, at authoring time (SN-0258, SN-0255).",
+    "human_view": "When you say \"note this down,\" a whole pipeline should fire: capture it, structure it, file it in exactly one proper place, and hand back a link that works. The note has one original; every copy elsewhere is printed from that original, never retyped — that's how versions stop disagreeing.",
+    "child_view": "When you tell the notebook \"remember this!\", it should write it in the right section, with the right heading, and give you a bookmark that actually opens to the page. There's one real notebook — copies are photocopies, not new notebooks. If the example page in the front of the notebook has a mistake, you fix the example first, because everyone copies the example.",
+    "grandma_view": "It's proper filing, dear. A document goes in one folder, under one name, and the index card points to it. Copies are made from the original, never from memory. The sample form pinned above the desk must itself be filled in perfectly — it's the one everyone imitates. And when someone says \"it's filed,\" they hand you the reference slip; \"it's in a pile somewhere, trust me\" is not filing.",
+    "ai_view": "Run the seven-leg lifecycle and report leg status honestly. Author the single source artifact; generate projections; never hand-edit a projection. Validate the specimen against the gate in CI. Resolve paths from the projection code's canonical function only. Ship note + link + verification pair; treat a missing return mechanism as a defect in the protocol, not a gap in the report. Keep law-status and document-status as separate fields everywhere. Sweep canon for placeholders at the exact ref before any graduation claim, and verify content from live bytes, never from search.",
+    "what_it_means": "Ten notes describe the note system learning to be a system: a lifecycle with named legs, a single source with derived views, a specimen held to its own standard, and a delivery that includes its own proof. The SN-0244→SN-0248 supersession is preserved inside the essence on purpose — a distillation that hides its own corrections teaches the next reader to trust a tidier history than the one that happened.",
+    "whats_inside": [
+      "The capture lifecycle has seven named legs; claims state which legs are implemented (SN-0242).",
+      "Author once, derive the rest (SN-0248) supersedes hand-maintained three-artifact authoring (SN-0244); the one-format-one-spot invariant and the byte-exact specimen survive.",
+      "The specimen must pass its own gate (SN-0249); placement is defined by code and wrong locations are made unexpressible (SN-0256).",
+      "The deliverable is note + Smart Link, never a PR number; the return rung is a mechanism, not a promise (SN-0258, SN-0255).",
+      "Ratified law ≠ frozen document; the two statuses travel separately (SN-0261).",
+      "Canon requires a zero-hit placeholder sweep at the exact ref; search results are discovery, never content proof (SN-0190, SN-0188).",
+      "NOT carried here, by the campaign standing-authority rule: the Smart Link's canonical definition (SN-0254, from the director) and the freeze-point demo doctrine (SN-0191, director-directed) stand alone; this essence is the machinery that operates under them."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-2"
+    ],
+    "covers": [
+      "SN-0188",
+      "SN-0190",
+      "SN-0242",
+      "SN-0244",
+      "SN-0248",
+      "SN-0249",
+      "SN-0255",
+      "SN-0256",
+      "SN-0258",
+      "SN-0261"
+    ]
+  },
+  "page_hash": "607f41bbbf60afe755049f332fdea106cc3b8ac734fda9bfe2aa33b807ae2442",
+  "content_hash": "50c2ce0fd537209414d73e94728a3e80c876caabad67358fc0b704dac9810025"
+}

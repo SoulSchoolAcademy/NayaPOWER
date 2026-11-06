@@ -1,0 +1,51 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2120",
+  "title": "Proof Discipline: Name the Instrument, Bound the Claim",
+  "slug": "essence-proof-discipline",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-proof-discipline.md",
+  "tone": "red",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:37:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "No instrument, no verdict: name the measuring instrument before any score, mark what it cannot reach NOT_VERIFIED (SN-0161, SN-0146), build claims only from fixed key lists (SN-0181), reproduce failures before repairing them (SN-0245), qualify every tool against known-broken and known-green inputs (SN-0283), and remember the harness itself can manufacture the defects it reports (SN-0341).",
+    "human_view": "Before anyone gives you a score, ask: measured with what? A number without an instrument is an opinion wearing a lab coat. When something breaks, the first job is to make it break again on purpose, in the real environment, and to check that your measuring tools actually work — feed them something known-broken and something known-good. And when two versions both fail, compare *which* tests fail: if it's the same list, the room is on fire, not your change.",
+    "child_view": "If you say \"my jump rope trick works!\", show me — on the playground, not just in your head. And check your stopwatch first: press it on something slow and something fast, so you know it isn't stuck on \"fast!\" forever. If the game breaks, make it break again the same way before you fix it, so you know you fixed the real break.",
+    "grandma_view": "A scale that reads the same for a feather and a sack of potatoes isn't a scale, dear — test it with something whose weight you know. A cake isn't done because the timer sang; it's done when the skewer comes out clean. And if the oven in a strange kitchen burns everything, you blame the oven, not your recipe — check where you're cooking before you change how you cook.",
+    "ai_view": "State the instrument and its ceiling in every verdict; mark what the instrument cannot reach NOT_VERIFIED. Build claims from allow-listed keys only. Sequence failure work as: qualify the tool → reproduce in the target environment → measure the failing line → test the causal hypothesis with an experiment that can actually run → then encode the cure. Compare failing sets across heads before attributing. Cite file:line in every critique. Treat harness resource limits (disk, memory, /tmp) as suspects in every phantom failure.",
+    "what_it_means": "Fourteen notes converge on one posture: evidence is engineered, not collected. Each rule was bought by a specific embarrassment — an 8/8 rejection streak that was really a blind instrument, a retracted diagnosis, a harness that invented defects. A cold reader with this essence runs the same discipline without needing to repeat the embarrassments.",
+    "whats_inside": [
+      "No instrument, no predicate; the instrument is named before any score, and unverifiable means NOT_VERIFIED (SN-0146, SN-0161, SN-0152).",
+      "Proof terminates at comprehension by a cold successor, not at passing mechanics (SN-0174).",
+      "Claims are constructed from fixed key lists; proof emits SUPPORTED, never VERIFIED (SN-0181).",
+      "Reproduce before repair; measure the failing line; prove the cause before encoding the cure (SN-0245, SN-0246, SN-0247).",
+      "Tools and environments are qualified before they are believed — known-broken/known-green checks, target-environment reproduction, harness resource audit (SN-0283, SN-0329, SN-0341).",
+      "Failing-set deltas, not failing sets, are what a change owns (SN-0237); critique is byte-cited or it is not review (SN-0198)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-2"
+    ],
+    "covers": [
+      "SN-0146",
+      "SN-0152",
+      "SN-0161",
+      "SN-0168",
+      "SN-0174",
+      "SN-0181",
+      "SN-0198",
+      "SN-0237",
+      "SN-0245",
+      "SN-0246",
+      "SN-0247",
+      "SN-0283",
+      "SN-0329",
+      "SN-0341"
+    ]
+  },
+  "page_hash": "3ee5e2baaf59d949e6d8788fafa05e97925c7d04af970bdaad08f6803b5978a2",
+  "content_hash": "46f2b4a7fda63d5445b2de8ea83f8d0c70f1631914cc27f8b937e27aac6d2570"
+}

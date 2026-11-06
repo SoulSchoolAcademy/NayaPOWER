@@ -1,0 +1,48 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2122",
+  "title": "Correct the Record in the Open: Reversals, Attribution, Conflicts",
+  "slug": "essence-correct-the-record",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-correct-the-record.md",
+  "tone": "purple",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:37:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Errors in the shared record are repaired in public, where they were made: reversals posted and credited (SN-0160), contradictions sent to a register for the director rather than quietly resolved (SN-0196), ledgered artifacts never edited — corrected by new artifacts (SN-0208) — and check-vs-evidence contradictions reconciled before either side is declared broken (SN-0354).",
+    "human_view": "When you're wrong in writing, fix it in writing, where everyone saw the mistake — and say who got it right. When two rulebooks disagree, don't quietly pick your favorite: write the disagreement down in a list for the person in charge to settle. Never edit history to make it look tidy; add a new page. And before you repeat a claim — \"these two are in sync,\" \"this is missing\" — check both sides, at the exact version, because the thing itself beats everyone's memory of it.",
+    "child_view": "If you told the class something wrong, you stand up and say \"I was wrong, here's the right one — and Mia had it right.\" If two rule sheets for the game disagree, you don't secretly choose — you write both rules on the board for the teacher to pick. You never erase your notebook; you cross out once and write the fix next to it, so everyone can see what changed.",
+    "grandma_view": "A family story gets corrected at the same table where it was told wrong, dear, with credit to whoever remembered it right. A ledger book is never erased — you rule a line, write the correction beneath, and initial it. And when two people remember a name differently, you don't argue: you open the christening record. The paper that was actually filed settles what talk cannot.",
+    "ai_view": "Post reversals in the venue of the original claim, with links both ways. Narrate platform-mechanical transitions with exact refs and explicit non-actions. Verify authorship from branch/PR metadata before routing any question. Keep capture and enactment as separate states in every contract you touch; route contradictions to the register, never resolve them solo. Mark preserved conflicts honored/accepted distinctly; close them only from the director's latest source record. Treat ledgered artifacts as append-only. Re-verify gaps at their pin, read both sides of any sync claim, and open the shipped artifact to settle naming disputes.",
+    "what_it_means": "Twelve notes describe one ethic under twelve pressures: the record belongs to everyone who will ever rely on it, so it is corrected the way it was made — in the open, with receipts. The SN-0354 self-falsification is the family's emblem: even the note that accused the check of lying carries its own correction, and that is precisely why the record can be trusted.",
+    "whats_inside": [
+      "Reversals are public, linked, and credit the better analysis (SN-0160); mechanical state changes are narrated with what was NOT done (SN-0163); attribution is verified before questions are posed (SN-0164).",
+      "Verbatim capture ≠ enactment; contracts get reconciliation passes (SN-0195). Contradictions go to a register; the consolidator proposes, the director disposes; zero-contradiction consolidations are suspect (SN-0196).",
+      "Authority conflicts are preserved in the artifact (HOLD freezes mutation, not the question) and closed by restoring the director's latest source record (SN-0209, SN-0211).",
+      "Ledgered artifacts are immutable; corrections are new artifacts (SN-0208).",
+      "Gaps are re-verified at the pin, sync verdicts read both sides, shipped artifacts arbitrate disputes, and check-vs-evidence contradictions are reconciled before either side is declared broken (SN-0226, SN-0227, SN-0228, SN-0354)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-2"
+    ],
+    "covers": [
+      "SN-0160",
+      "SN-0163",
+      "SN-0164",
+      "SN-0195",
+      "SN-0196",
+      "SN-0208",
+      "SN-0209",
+      "SN-0211",
+      "SN-0226",
+      "SN-0227",
+      "SN-0228",
+      "SN-0354"
+    ]
+  },
+  "page_hash": "bf0914555f4cba9c01ff68be3b8e230dc791589dc78a27525ccedc92624c3ff6",
+  "content_hash": "a09ae10c43bb0483441a85f3d5139fc1316899c057ef297b20e289e42b0311bf"
+}

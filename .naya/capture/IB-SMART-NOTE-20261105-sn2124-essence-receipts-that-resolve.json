@@ -1,0 +1,47 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2124",
+  "title": "Receipts That Resolve: Pins, Methods, and Virgin State",
+  "slug": "essence-receipts-that-resolve",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-receipts-that-resolve.md",
+  "tone": "emerald",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:37:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A receipt is a pointer a stranger can follow: its pin must resolve live (SN-0200), its SHA stays frozen while the branch moves on (SN-0206), its numbers are recomputed from the artifact rather than transcribed (SN-0212), its green is proven on virgin state (SN-0233), and it never claims 'done' before its evidence exists (SN-0172).",
+    "human_view": "A receipt has to let a stranger re-find the exact thing you checked: the exact version, still existing, with numbers they can recompute and get the same answer. If you checked it on your own messy desk, check it again on a clean one. If the thing moved after you checked it, say \"it moved\" — don't pretend your old check covers the new version, and don't throw the old check away either. And never write \"done\" before the evidence exists.",
+    "child_view": "It's show-and-tell rules. \"I saw it!\" isn't enough — you have to show the class exactly where, and it has to still be there when they look. If you counted the marbles, someone else counting must get the same number — and you have to say HOW you counted. Writing \"I finished my homework\" before you've done it is lying, even if you do it later.",
+    "grandma_view": "A recipe card that says \"tested\" means someone cooked it — that exact version, in a clean kitchen, and wrote down what happened. If you change the recipe, you test again and say so; you don't let the old \"tested\" cover the new cake. A shopkeeper who writes the sale in the ledger before the customer pays has a ledger nobody can trust, however honest he is later.",
+    "ai_view": "Resolve every cited pin before repeating it. Bind every verdict to one frozen SHA; record later movement as delta. Recompute hashes, sizes, and counts from the artifact at verification time and fail-first the recomputation. Qualify repairs only on local+CI green at one SHA. Run acceptance checks in a fresh worktree before any regeneration. Re-derive PR body claims from the head at every mutation. Refuse counts without methods and done-records whose timestamps precede their evidence.",
+    "what_it_means": "Ten notes, one idea: a receipt is a reproducible pointer, not a narrative. Every rule here exists because a specific receipt failed a specific stranger who tried to follow it — a pin that didn't exist, a body five drifts from its head, a green that only existed on warmed state. Follow this essence and your receipts survive being checked, which is the only kind of receipt there is.",
+    "whats_inside": [
+      "Pins resolve live or the receipt is void; receipts name their pin and treat head movement as delta (SN-0200, SN-0197, SN-0206).",
+      "Ledger numbers are recomputed from the artifact and fail-first tested, never transcribed (SN-0212).",
+      "Qualification = local green ∧ CI green on the identical SHA at the live base (SN-178).",
+      "Green is proven on virgin state — fresh worktree, exact SHA, exit code cited (SN-0233).",
+      "PR bodies are re-bound to their head at every material change (SN-0185).",
+      "Counts carry their method; done records never precede their evidence window; endorsements require an independent re-read (SN-0165, SN-0172, SN-0175)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-2"
+    ],
+    "covers": [
+      "SN-0165",
+      "SN-0172",
+      "SN-0175",
+      "SN-178",
+      "SN-0185",
+      "SN-0197",
+      "SN-0200",
+      "SN-0206",
+      "SN-0212",
+      "SN-0233"
+    ]
+  },
+  "page_hash": "3a347f72823ad7331369011a728d5841161b14bde2cd5854d4a4fa41e15db48b",
+  "content_hash": "422511577dab18bebd1e7916805e8fbc6dd20eb073f129908a5f71449f7e97b7"
+}
