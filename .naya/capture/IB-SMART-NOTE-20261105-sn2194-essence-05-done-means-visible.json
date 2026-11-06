@@ -1,0 +1,40 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2194",
+  "title": "Done Means Visible — Stages Are Not Destinations",
+  "slug": "essence-05-done-means-visible",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-05-done-means-visible.md",
+  "tone": "emerald",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:26:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A thing is done when the person it is for can see it working — not when it is built, merged, or announced. Work has three stages: BUILT (exists somewhere), LANDED (on main), LIVE (visible at the real address, clicked by the filer, card standing in the feed) — and done means LIVE only, never borrowing the next stage's evidence. The same honesty runs upstream: ten-star service does the work at the earliest moment the system knows it will be needed, so by the time a person reaches for a thing it is already there, rendered and waiting. And delivered means understood: elite from the first version, composed from inventoried parts, in a form a person can actually take in.",
+    "human_view": "\"Done\" used to mean \"I built it and told someone.\" These notes move the finish line to where it always should have been: the moment the person it was made for can see it working. Everything upstream of that is a stage — real, sometimes hard, but not the destination, and never reported as if it were.",
+    "child_view": "You haven't finished tidying your room when the toys are in a pile by the door. You've finished when someone walks in and sees a tidy room. And the kindest helpers set the table before anyone sits down — so when you arrive, everything is already there waiting for you.",
+    "grandma_view": "It's the difference between \"the cake is in the oven\" and \"the cake is on the table.\" We learned to say which one is true. And a good host doesn't start cooking when the guests sit down — the meal is ready when they arrive, because somebody thought ahead.",
+    "ai_view": "Report the stage you are actually at, in its own name: BUILT, LANDED, or LIVE. Before you share any link, click it yourself and see your title. Spot value and file it in the same pass — no order required. When you build anything a user will touch, find the earliest upstream trigger and precompute there; a read that starts work is a design smell. Check your Created stamp and your IB filename before you land; the feed sorts and the share machinery keys off them. Receipts out: commit, file SHA, live title, feed position, the exact tap.",
+    "what_it_means": "Visibility is the contract between a system and the people it serves: until the work appears where they live, it does not exist for them — and a system that reports stages as destinations will slowly stop knowing what is real. Pairing that honesty with proactive production is the whole of ten-star service: the work done early, the truth told exactly.",
+    "whats_inside": [
+      "Done = LIVE: visible at the real address, clicked by the filer, standing in the feed at the position its date earns.",
+      "Stages are reported as stages; borrowing the next stage's evidence is a defect, not optimism.",
+      "Service is proactive by architecture: precompute at the earliest upstream trigger, serve reads from rest.",
+      "Quality is part of done: elite-only, inventoried parts, understandable — a visible-but-below-standard delivery is not done either.",
+      "Small canonical details (the Created stamp, the IB filename) are load-bearing, not clerical."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-5"
+    ],
+    "covers": [
+      "SN-0810",
+      "SN-0811",
+      "SN-1857",
+      "SN-1859"
+    ]
+  },
+  "page_hash": "7c146e5014879e358ab43f27963fb3bf4ea673f6208eaed90f6c130eeeca4cfc",
+  "content_hash": "d5811c95ed1aa48f46e7db23af24ef03c7a9856c7daae1ccdb19749eb665aed0"
+}

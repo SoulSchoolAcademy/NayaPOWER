@@ -1,0 +1,42 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2197",
+  "title": "The Offer — A Free World and a Paid Engine",
+  "slug": "essence-08-the-offer",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-08-the-offer.md",
+  "tone": "red",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:26:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "The line is one sentence: NayaNET is the world, NayaPOWER is the engine. Everyone who claims a name gets their world as a gift — identity and certificate, Personal, Business, and Space pages born filled from their Welcome answers, mail, connect, matching, and the whole collective to read — a real home, never an empty trial. Paid is one activation that turns the engine on: your own Naya with your memory and hands, the Smart Factory, full auto-match depth, verification and publishing, and your own fork if you want it. The gate sits on the engine, once — never button by button — and free is limited by design, not by cost. The numbers these notes put on that line conflict with each other and were later superseded by the adopted canon; this essence carries the line and the gating wisdom, and names the numbers' fate honestly rather than picking a winner.",
+    "human_view": "The offer is generous on purpose: your home in the world costs nothing and is really yours. You pay only when you want the engine — your own Naya, working for you, with hands. These notes draw that line carefully, and this essence keeps their one honest embarrassment in view: the two price tables written the same day don't agree, and a later canon replaced both. The line endured; the numbers didn't, and pretending otherwise would corrupt the record.",
+    "child_view": "Joining the village is free: you get your house, your shop, your garden, letters, and friends. If you want a magic helper who remembers everything and does chores for you, that's the engine — one key turns it all on. Nobody locks your kitchen to make you buy the helper; your house stays yours either way.",
+    "grandma_view": "It's the difference between the town and the hired help. The town — your home, your mail, your neighbors — is yours by joining. The help — someone who knows your ways and works alongside you — is what you pay for, once, without a meter on every door. And the town never takes back what it gave you.",
+    "ai_view": "When you place a feature, run the line test: does it run on the shared network without citizen AI action, repo write, or private context? Gift. Otherwise Power. Never move a gift feature behind the gate to force an upgrade; never write \"paid = forked\"; never ship a per-feature lock without a director ruling naming one. Show free citizens paid features as locked, honestly — never as broken. When you quote any 2026-10-24 figure from SN-1863 or SN-1864, name its state: contested by its sibling note and superseded by SN-1905.",
+    "what_it_means": "The offer encodes the network's ethics in its pricing shape: belonging is free because belonging is the product's foundation; power is paid because power is a service that runs. Gating at the engine, once, keeps both truths legible — a citizen can always tell what they have, what they'd get, and that nothing they already hold is hostage.",
+    "whats_inside": [
+      "The line itself: world = gift, engine = paid; decided by where a feature runs, never by upgrade pressure.",
+      "One gate (activation), honestly locked features for free citizens — never broken-looking pages, never dark patterns.",
+      "The gift is permanent and uncrippled; ungated corners are policy.",
+      "Arrival is a ceremony that ends in a filled, covered, personal world — never an empty room.",
+      "The 2026-10-24 numbers in SN-1863/SN-1864 are NOT settled: they conflict with each other and stand superseded (below)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-5"
+    ],
+    "covers": [
+      "SN-0847",
+      "SN-0848",
+      "SN-0849",
+      "SN-1862",
+      "SN-1863",
+      "SN-1864"
+    ]
+  },
+  "page_hash": "e37715484c86bdc116729534221c0f625df4d42ec690d59559fafb5182787cb4",
+  "content_hash": "ecce6a9d9bc4d0a1fabb74786cfa039f0c7c6c1c731d5be5e24c3a74898a9a6b"
+}

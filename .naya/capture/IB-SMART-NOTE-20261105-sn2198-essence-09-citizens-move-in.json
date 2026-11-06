@@ -1,0 +1,41 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2198",
+  "title": "Citizens Move In — The Claim, the Welcome, the Match",
+  "slug": "essence-09-citizens-move-in",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-09-citizens-move-in.md",
+  "tone": "magenta",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:26:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "On 2026-10-23 the system got its first citizen: a name claimed in about a minute, no payment, password, or code — Certificate Nº 000034 — and the founding became the mission: builders move in, live in it as residents, and let the civilization be built by the people who inhabit it. Arrival runs one locked trio — Welcome Flow → Trinity → Match: seven questions, each answerable three ways (speak it, type it, or ask your AI), whose answers fill your Personal, Business, and Space pages and seed the matcher from minute one. The match itself is one always-on algorithm organizing people, spaces, mail, posts, and projects by what everything IS, shown as percentages — designed in full in this stratum, and carried here at exactly its stated truth: not yet a running engine.",
+    "human_view": "A platform is a demo until someone lives in it. These notes are the moment the builders became residents: the first certificate, the first citizen mail, the first honest list of what didn't work yet (an address that didn't resolve, an inbound proof still owed) — filed the same evening, next to the celebration. That's how a civilization starts: people move in and tell the truth about the plumbing.",
+    "child_view": "Moving into a new town goes like this: you pick your name and get a special certificate, then a friendly guide asks you seven questions — you can say the answers out loud, write them, or have a helper write them. While you answer, your house, your shop, and your garden are being built with your own words on the walls. And the town already knows which neighbors you'll like — it tells you, with a number for how much.",
+    "grandma_view": "It's a proper welcome: your name in the register, a certificate for the wall, and a neighbor who asks what you're about, what you make, and what you hope for — then introduces you to exactly the people you should meet. No forms in triplicate, no waiting room. And your private letters stay private; introductions are made on what you've chosen to share.",
+    "ai_view": "Run the trio as one system: Welcome Flow → Trinity → Match, never as separate features. Write each answer once, to the citizen's record, and render everywhere from it. Feed the matcher declared and public signals only — private content never enters it, by architecture. Carry SN-0845's truth-state exactly: activation design, not a running engine, until a live proof changes it. When a finding corrects itself (mail works from the claim), correct it on the same page, the same evening, with the proof named.",
+    "what_it_means": "Citizenship here is not a signup form; it is the system's founding act, and the data a citizen gives at the door is the same data that organizes their world — nothing collected twice, nothing collected without a use the citizen can see. The match is the social form of the same principle as the rest of the system: organize by what things ARE, show the strength of the connection, and let people decide.",
+    "whats_inside": [
+      "Identity is claimed, not assigned: name + alias + certificate in about a minute, mail working from the claim itself.",
+      "Onboarding is data collection with consent and dignity: three answer tempos, skip always allowed, answers written once and rendered everywhere.",
+      "The Welcome questions and the match dimensions are the same list — arrival and organization are one system.",
+      "Matching is architectural privacy: aliases and public signals only, percentages shown, suggestions arriving — nobody hunts.",
+      "Assembly beats creation: the welcome was built by connecting what already ran."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-5"
+    ],
+    "covers": [
+      "SN-0841",
+      "SN-0842",
+      "SN-0845",
+      "SN-0846",
+      "SN-0852"
+    ]
+  },
+  "page_hash": "f99181465256db6c4ef5908e593769545c6a19f992a2a7c93d226d94d20877da",
+  "content_hash": "5fb8380305cbf1021b46136ae6498b7e8ed3dfc54ddc385b3fc466a04fe8e28a"
+}
