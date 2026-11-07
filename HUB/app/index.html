@@ -9372,8 +9372,11 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
    click on a card did nothing at all (click-walk 2026-11-07, twice).
    This delegated listener closes that last inch: a click anywhere on
    a note board that is not already an interactive control opens the
-   note inside the Hub. Boards carry their note id in
-   data-intelligence-id="smart-note-<slug>". */
+   note inside the Hub. Boards carry their id in
+   data-intelligence-id="smart-note-<IB capture id>" - the SN number
+   rides inside it (e.g. ...-sn0131-...), so the slug is extracted,
+   never assumed to be the whole value (v1 assumed exactly that and
+   matched nothing - click-walk 2026-11-07, step 3). */
 (function () {
   'use strict';
   var style = document.createElement('style');
@@ -9384,9 +9387,9 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
     var board = e.target.closest('article.intel-board');
     if (!board) return;
     var iid = board.getAttribute('data-intelligence-id') || '';
-    var m = iid.match(/^smart-note-(sn-?\d+)$/i);
-    if (!m) return;
-    var target = '#/smart-notes/' + m[1].toLowerCase();
+    var m = iid.match(/sn-?\d+/i);
+    if (!m || iid.indexOf('smart-note-') !== 0) return;
+    var target = '#/smart-notes/' + m[0].toLowerCase().replace('-', '');
     if (location.hash !== target) location.hash = target;
   });
 })();
