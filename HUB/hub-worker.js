@@ -221,9 +221,33 @@ function hookText(rec, nut) {
   if (nut && s === cleanSectionText(nut).replace(/\s+/g, " ").trim()) return "";
   return s;
 }
+// ---- Superseded banner (Resolve, 2026-11-06) ----
+// A note whose registry lifecycle_state is SUPERSEDED still renders (the
+// record is preserved), but it must SAY so at the top and point at the
+// canonical note. The registry names the successor by capture id in
+// superseded_by_capture_id (with a .json suffix the block id lacks).
+function supersededTarget(reg, entry) {
+  if (!entry || entry.lifecycle_state !== "SUPERSEDED" || !entry.superseded_by_capture_id) return null;
+  const targetIb = String(entry.superseded_by_capture_id).replace(/\.json$/i, "");
+  for (const k of Object.keys(reg)) {
+    const e = reg[k];
+    if (e && e.intelligent_block_id === targetIb) {
+      const digits = String(e.smart_note_id || "").replace(/[^0-9]/g, "");
+      if (!digits) return null;
+      return { id: e.smart_note_id, title: e.title || e.smart_note_id, url: "/smart-notes/sn" + digits };
+    }
+  }
+  return null;
+}
+
 function renderNote(rec) {
   const accent = noteAccent(rec.id);
   const secs = rec.sections || {};
+  const supBanner = rec.superseded
+    ? '<div class="superseded" role="note"><strong>This note has been superseded.</strong> ' +
+      'Read the canonical note: <a href="' + esc(rec.superseded.url) + '">' +
+      esc(rec.superseded.id) + " — " + esc(rec.superseded.title) + "</a></div>"
+    : "";
   let boards = "";
   const nut = secs.nutshell || "";
   const hookStr = hookText(rec, nut);
@@ -250,9 +274,12 @@ function renderNote(rec) {
     '.board-head h2{font-size:18px;letter-spacing:.07em;margin:0;color:#fff}' +
     '.jewel{width:32px;height:32px;flex:0 0 32px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.85) 0 10%,rgba(255,255,255,0) 42%),radial-gradient(circle,#0a0a0e 0 52%,var(--lc) 57% 78%,#0a0a0e 84%);box-shadow:0 0 10px var(--lc),0 2px 6px rgba(0,0,0,.6)}' +
     '.board-body{padding:8px 24px 24px;overflow-wrap:break-word}' +
+    '.superseded{border:2px solid #ff5e6c;background:#2a0d11;border-radius:14px;padding:14px 18px;margin:0 0 22px;font-size:16px;line-height:1.55}' +
+    '.superseded a{color:#ffd34d}' +
     '.board-body p{font-size:17px;line-height:1.7;margin:0 0 12px;white-space:pre-wrap}' +
     '.board-body p:last-child{margin-bottom:0}' +
     'footer{margin-top:48px;opacity:.5;font-size:13px}</style></head><body><main>' +
+    supBanner +
     '<span class="chip">' + esc(rec.id) + '</span>' +
     '<h1>' + esc(rec.title) + '</h1>' +
     hook +
@@ -271,6 +298,7 @@ async function serveNote(request, env, rawSlug) {
     return new Response("Note not found", { status: 404, headers: { "Content-Type": "text/plain;charset=UTF-8", "Cache-Control": "no-store" } });
   }
   const rec = { id: entry.smart_note_id, title: entry.title || entry.smart_note_id, oneLine: entry.one_line || "", sections: {} };
+  rec.superseded = supersededTarget(reg, entry);
   const cap = await loadCapture(entry.intelligent_block_id);
   let intel = null;
   if (cap && cap.intelligence) {
@@ -296,9 +324,47 @@ async function serveNote(request, env, rawSlug) {
   return new Response(renderNote(rec), { status: 200, headers: { "Content-Type": "text/html;charset=UTF-8", "Cache-Control": "no-store" } });
 }
 
+// ---- Service-worker cure (Resolve, 2026-11-06) ----
+// WHY THIS ROUTE EXISTS: the reader above answers /smart-notes/* correctly
+// at the server (verified by direct fetch), yet a returning, signed-in
+// browser lands on the Hub shell instead (click-walk 2026-11-06: the URL
+// gains "#/hub" and the feed renders). The only layer that can substitute
+// the shell for a server-correct response in one profile while fresh
+// fetches pass is a stale service worker in that profile: the repo's own
+// history documents a v1 Hub worker that "served a stale Hub shell to
+// returning visitors" cache-first (interfaces/hub/sw.js header, CURE
+// 2026-10-25). But that cure never reached this worker: hub-worker.js had
+// no /sw.js route and HUB/app ships no sw.js asset, so /sw.js fell through
+// to the SPA fallback HTML — and a service-worker update check that
+// receives HTML fails, leaving the old worker installed permanently.
+// This route serves a valid, self-retiring worker at the standard paths:
+// on activation it deletes every cache, unregisters itself, and reloads
+// open windows, so the next navigation is answered by the network — and
+// therefore by the handlers above. It intercepts nothing (no fetch
+// handler). If a real service worker is ever wanted again, it ships by
+// replacing this cure deliberately, in this file.
+const SW_CURE_JS = [
+  "// NayaNET service-worker cure — self-retiring. See hub-worker.js.",
+  "self.addEventListener('install', function () { self.skipWaiting(); });",
+  "self.addEventListener('activate', function (e) {",
+  "  e.waitUntil((async function () {",
+  "    try { var keys = await caches.keys(); await Promise.all(keys.map(function (k) { return caches.delete(k); })); } catch (err) {}",
+  "    try { await self.registration.unregister(); } catch (err) {}",
+  "    try { var cs = await self.clients.matchAll({ type: 'window' }); cs.forEach(function (c) { c.navigate(c.url); }); } catch (err) {}",
+  "  })());",
+  "});",
+  "",
+].join("\n");
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if ((url.pathname === "/sw.js" || url.pathname === "/service-worker.js") && request.method === "GET") {
+      return new Response(SW_CURE_JS, {
+        status: 200,
+        headers: { "Content-Type": "text/javascript;charset=UTF-8", "Cache-Control": "no-store" },
+      });
+    }
     if ((url.pathname === "/note" || url.pathname === "/smart-notes") && request.method === "GET") {
       const q = url.searchParams.get("n");
       if (q) return serveNote(request, env, q);
