@@ -49,6 +49,22 @@
   .recipe { color: #9d9d9d; font-size: 15px; line-height: 1.7; max-width: 760px; margin: 0 auto; }
   .recipe b { color: #e8e8e8; }
 
+  /* The color key — the chakra colors, one per number */
+  .colorkey { display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: center; margin-top: 24px; }
+  .key { display: flex; align-items: center; gap: 8px; color: #b9b9b9; font-size: 13.5px; }
+  .sw { width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 900; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.6); box-shadow: 0 2px 8px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.35); flex: none; }
+  .sw.d0 { background: #f5f5f5; color: #111; text-shadow: none; }
+  .sw.d1 { background: radial-gradient(circle at 35% 30%, #ff7a7a, #e60000); }
+  .sw.d2 { background: radial-gradient(circle at 35% 30%, #ffb347, #ff7f00); }
+  .sw.d3 { background: radial-gradient(circle at 35% 30%, #ffe98a, #d4a017); color: #3a2c00; }
+  .sw.d4 { background: radial-gradient(circle at 35% 30%, #4ade80, #009444); }
+  .sw.d5 { background: radial-gradient(circle at 35% 30%, #7dd3fc, #0284c7); }
+  .sw.d6 { background: radial-gradient(circle at 35% 30%, #818cf8, #283593); }
+  .sw.d7 { background: radial-gradient(circle at 35% 30%, #c084fc, #7b1fa2); }
+  .sw.d8 { background: radial-gradient(circle at 35% 30%, #d8b4fe, #9d6bc4); color: #2a1245; }
+  .sw.d9 { background: radial-gradient(circle at 35% 30%, #ff7ac0, #ff1493); }
+  .keynote { margin-top: 16px; color: #8a8a8a; font-size: 13.5px; font-style: italic; }
+
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
   @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } h1 { font-size: 32px; } }
   .card {
@@ -79,37 +95,33 @@
   .desc { color: #9d9d9d; font-size: 14.5px; line-height: 1.55; }
   .desc b { color: #cfcfcf; }
 
-  /* THE ULTIMATE NUMBER — the best of all eleven, layered into one object.
-     Body: platinum relief (raised, cast, weight, real shadow).
-     Face: liquid gloss + diamond facets (hard light breaks).
-     Edge: gold (two-tone — gold is what matters).
-     Base: engraved into obsidian (the cut the number rises out of).
-     Depths: a whisper of sapphire (the jewel, in the shadows).
-     Mid-tones: brushed steel (machined honesty).
-     Light: lit from within (the machine is awake). */
-  .ultimate { font-size: 168px;
-    background:
-      repeating-linear-gradient(180deg, rgba(255,255,255,.05) 0 1px, transparent 1px 3px),
-      linear-gradient(155deg,
-        #ffffff 0%, #ececec 18%,
-        #b5b5b5 32%, #8a8a8a 42%,
-        #232c4e 48%, #4a5a9a 52%, #8f8f8f 58%,
-        #ffffff 60%, #d5d5d5 60% 68%, #ffffff 68%,
-        #e8e8e8 78%, #a8a8a8 88%, #dcdcdc 100%);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-    -webkit-text-stroke: 2px #d4af37;
-    text-shadow:
-      0 -1px 0 rgba(255,255,255,.7),
-      0 1px 1px rgba(0,0,0,.6),
-      0 12px 22px rgba(0,0,0,.9),
-      0 0 28px rgba(255,220,120,.45),
-      0 0 64px rgba(255,200,80,.22);
-  }
+  /* THE ULTIMATE NUMBER — the reels.
+     At rest: obsidian black in the middle, white light around it.
+     Counting: each reel scrolls upward, bottom to top, and every number
+     it passes flickers to its own color — the chakra colors.
+     Landed: 7 royal purple, 2 orange, 5 cyan. */
+  .ultimate { font-size: 168px; line-height: 1; }
   .ultimate.landed { animation: landBig 1.4s ease-out; }
   @keyframes landBig {
     0% { filter: brightness(1.9) drop-shadow(0 0 44px rgba(255,220,120,.85)); }
     100% { filter: brightness(1); }
   }
+  .reel { display: inline-block; height: 168px; overflow: hidden; vertical-align: top; }
+  .strip { display: block; transition: transform .28s ease-out; will-change: transform; }
+  .rd { display: block; height: 168px; line-height: 168px; text-align: center; font-weight: 900; }
+  /* rest state — obsidian black middle, white light around it */
+  .reel.rest .rd { background: none !important; color: #060607 !important; -webkit-text-fill-color: #060607 !important; -webkit-text-stroke: 2.5px rgba(255,255,255,.92); text-shadow: 0 0 22px rgba(255,255,255,.6), 0 0 48px rgba(255,255,255,.28), 0 10px 20px rgba(0,0,0,.85) !important; }
+  /* the chakra colors — the richest ones */
+  .rd.d0 { color: #ffffff; text-shadow: 0 0 20px rgba(255,255,255,.75), 0 0 44px rgba(255,255,255,.3), 0 10px 20px rgba(0,0,0,.85); }
+  .rd.d1 { background: linear-gradient(180deg,#ff8a8a,#e60000 55%,#ff6b6b); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 26px rgba(255,42,42,.6), 0 10px 20px rgba(0,0,0,.85); }
+  .rd.d2 { background: linear-gradient(180deg,#ffc27a,#ff8c00 55%,#ffab4a); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 26px rgba(255,140,0,.6), 0 10px 20px rgba(0,0,0,.85); }
+  .rd.d3 { background: linear-gradient(180deg,#fff3a0,#f5d76e 45%,#c9930a 75%,#ffe98a); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 26px rgba(245,215,110,.65), 0 10px 20px rgba(0,0,0,.85); }
+  .rd.d4 { background: linear-gradient(180deg,#6ee7a0,#00a86b 55%,#34d399); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 26px rgba(0,168,107,.6), 0 10px 20px rgba(0,0,0,.85); }
+  .rd.d5 { background: linear-gradient(180deg,#a5e3ff,#29b6f6 55%,#7dd3fc); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 26px rgba(41,182,246,.6), 0 10px 20px rgba(0,0,0,.85); }
+  .rd.d6 { background: linear-gradient(180deg,#9aa5ff,#3f51b5 55%,#5c6bc0); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 26px rgba(63,81,181,.65), 0 10px 20px rgba(0,0,0,.85); }
+  .rd.d7 { background: linear-gradient(180deg,#d8a0ff,#8e24aa 55%,#b06fd6); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 26px rgba(142,36,170,.65), 0 10px 20px rgba(0,0,0,.85); }
+  .rd.d8 { background: linear-gradient(180deg,#e9d5ff,#b388ff 55%,#d8b4fe); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 26px rgba(179,136,255,.6), 0 10px 20px rgba(0,0,0,.85); }
+  .rd.d9 { background: linear-gradient(180deg,#ff9ed2,#ff1493 55%,#ff6eb4); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 26px rgba(255,20,147,.6), 0 10px 20px rgba(0,0,0,.85); }
 
   /* 1 — Platinum Engraved: cut INTO the obsidian, platinum in the cut */
   .c1 { font-family: Georgia, "Times New Roman", serif;
@@ -170,8 +182,8 @@
     <div class="kicker">The Score &middot; The Concepts</div>
     <h1>The number, as <em>real objects.</em></h1>
     <p class="sub">The score is <b>725</b> in every one. Only the object changes.<br>
-    The ultimate is first &mdash; every concept distilled into one object.<br>
-    Then the eleven, so you can see what went into it. Every number scrolls up to 725 and unveils &mdash; the million-dollar moment.</p>
+    The ultimate is first &mdash; every concept distilled into one object, and now it lights up in the colors of the numbers themselves.<br>
+    Then the eleven, so you can see what went into it.</p>
   </header>
 
   <section class="hero">
@@ -179,11 +191,24 @@
     <h2>The ultimate number.</h2>
     <div class="hero-well">
       <div style="display:flex;flex-direction:column;align-items:center;">
-        <div class="num ultimate" data-dur="2400">725</div>
+        <div class="num ultimate" data-dur="2600"><span class="reel rest" data-div="100" data-max="7"><span class="strip"><span class="rd d7">7</span></span></span><span class="reel rest" data-div="10" data-max="72"><span class="strip"><span class="rd d2">2</span></span></span><span class="reel rest" data-div="1" data-max="725"><span class="strip"><span class="rd d5">5</span></span></span></div>
         <div class="platter big"></div>
       </div>
     </div>
-    <p class="recipe"><b>Platinum relief</b> for the body &middot; <b>liquid gloss and diamond facets</b> for the face &middot; <b>gold</b> for the edge &middot; <b>engraved into obsidian</b> at the base &middot; a whisper of <b>sapphire</b> in the depths &middot; <b>brushed steel</b> in the mid-tones &middot; <b>lit from within</b> &middot; served on the <b>silver platter</b> &middot; unveiling as it counts up.</p>
+    <p class="recipe">At rest, the number is <b>obsidian black in the middle with white light around it</b>. When it wakes, it counts up from the <b>bottom to the top</b> &mdash; and every number it passes <b>flickers to its own color</b>. One is red, two is orange, three is gold, four is emerald, five is cyan, six is indigo, seven is royal purple, eight is lavender, nine is hot pink, the crown chakra. It lands on the final number &mdash; <b>seven purple, two orange, five cyan</b> &mdash; each digit carrying its own color.</p>
+    <div class="colorkey">
+      <div class="key"><span class="sw d0">0</span>White</div>
+      <div class="key"><span class="sw d1">1</span>Red</div>
+      <div class="key"><span class="sw d2">2</span>Orange</div>
+      <div class="key"><span class="sw d3">3</span>Gold</div>
+      <div class="key"><span class="sw d4">4</span>Emerald</div>
+      <div class="key"><span class="sw d5">5</span>Cyan</div>
+      <div class="key"><span class="sw d6">6</span>Indigo</div>
+      <div class="key"><span class="sw d7">7</span>Royal Purple</div>
+      <div class="key"><span class="sw d8">8</span>Lavender</div>
+      <div class="key"><span class="sw d9">9</span>Hot Pink</div>
+    </div>
+    <p class="keynote">Nine is the crown chakra. The colors are the chakras &mdash; each number lights in its own color, so the score is never just a number.</p>
   </section>
 
   <div class="grid">
@@ -227,23 +252,79 @@
 <script>
 /* The reveal: every number scrolls up to 725 and unveils — the million-dollar moment. */
 (function(){
-  var TARGET = 725;
-  function reveal(el){
-    var dur = parseInt(el.getAttribute('data-dur') || '1700', 10);
+  var TARGET = 725, H = 168; /* H = one digit height in px */
+  var io;
+
+  /* --- the ultimate: three reels, bottom to top, chakra colors --- */
+  function buildReels(el){
+    el.querySelectorAll('.reel').forEach(function(reel){
+      var div = parseInt(reel.getAttribute('data-div'), 10);
+      var max = parseInt(reel.getAttribute('data-max'), 10);
+      var strip = reel.querySelector('.strip');
+      var html = '';
+      for (var i = 0; i <= max; i++) {
+        var d = i % 10;
+        html += '<span class="rd d' + d + '">' + d + '</span>';
+      }
+      strip.innerHTML = html;
+      /* park on the final digit, in rest style (obsidian + white light) */
+      var finalCount = Math.floor(TARGET / div);
+      strip.style.transform = 'translateY(' + (-finalCount * H) + 'px)';
+    });
+  }
+  function revealUltimate(el){
+    var dur = parseInt(el.getAttribute('data-dur') || '2600', 10);
+    var reels = [];
+    el.querySelectorAll('.reel').forEach(function(reel){
+      reels.push({ strip: reel.querySelector('.strip'), div: parseInt(reel.getAttribute('data-div'), 10) });
+    });
+    /* snap to 0 with no transition, drop the rest style, all in one frame */
+    reels.forEach(function(o){
+      o.strip.style.transition = 'none';
+      o.strip.style.transform = 'translateY(0px)';
+    });
+    el.querySelectorAll('.reel').forEach(function(r){ r.classList.remove('rest'); });
+    void el.offsetWidth;
+    reels.forEach(function(o){ o.strip.style.transition = ''; });
     var start = null;
     function tick(ts){
       if (start === null) start = ts;
       var p = Math.min((ts - start) / dur, 1);
       var eased = 1 - Math.pow(1 - p, 3); /* ease-out: fast climb, slow landing */
+      var val = Math.round(TARGET * eased);
+      reels.forEach(function(o){
+        var count = Math.floor(val / o.div);
+        o.strip.style.transform = 'translateY(' + (-count * H) + 'px)';
+      });
+      if (p < 1) requestAnimationFrame(tick);
+      else { el.classList.add('landed'); }
+    }
+    requestAnimationFrame(tick);
+  }
+
+  /* --- the eleven: plain count-up --- */
+  function revealPlain(el){
+    var dur = parseInt(el.getAttribute('data-dur') || '1700', 10);
+    var start = null;
+    function tick(ts){
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
       el.textContent = Math.round(TARGET * eased);
       if (p < 1) requestAnimationFrame(tick);
       else { el.textContent = TARGET; el.classList.add('landed'); }
     }
     requestAnimationFrame(tick);
   }
-  var io = new IntersectionObserver(function(entries){
+
+  var ult = document.querySelector('.num.ultimate');
+  if (ult) buildReels(ult);
+  io = new IntersectionObserver(function(entries){
     entries.forEach(function(en){
-      if (en.isIntersecting) { reveal(en.target); io.unobserve(en.target); }
+      if (!en.isIntersecting) return;
+      var el = en.target;
+      io.unobserve(el);
+      if (el.querySelector('.reel')) revealUltimate(el); else revealPlain(el);
     });
   }, { threshold: 0.4 });
   document.querySelectorAll('.num').forEach(function(el){ io.observe(el); });
