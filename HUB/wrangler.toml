@@ -8,6 +8,13 @@ compatibility_date = "2026-10-17"
 # Static assets: the Hub page lives in HUB/app/ (index.html + js/).
 [assets]
 directory = "./app"
+# The ASSETS binding is what hub-worker.js reads (env.ASSETS.fetch in
+# serveHubShell and the /pi rewrite). WITHOUT this line wrangler deploys
+# the assets for routing but creates NO env.ASSETS binding, and every
+# env.ASSETS.fetch throws (proven on the real edge 2026-11-07: the live
+# note route 500'd with TypeError reading 'fetch' from the moment #3280
+# deployed). Never remove this line.
+binding = "ASSETS"
 not_found_handling = "single-page-application"
 # Worker-first for every route hub-worker.js answers itself (the note
 # reader and the /sw.js cure). Without this, the assets layer answers
