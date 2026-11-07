@@ -4406,13 +4406,18 @@ html.os-calm
 .os-dash .os-sl-board .os-link-num b{color:#fff;text-shadow:0 0 12px var(--ac,#ff9a5a),0 0 28px -6px var(--ac,#ff9a5a)}
 .os-sl-board .os-link-row{transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease}
 .os-sl-board .os-link-row:hover{transform:translateY(-2px)}
-.os-sl-graph{flex:1 1 100%;margin-top:12px}
-.os-sl-graph .os-week{height:110px;padding:13px 2px 0}
-.os-sl-graph .bar{flex:1;cursor:pointer}
-.os-sl-graph-days{display:flex;padding:0 2px;margin-top:5px}
-.os-sl-graph-days span{flex:1;text-align:center;font-size:9.5px;font-weight:700;letter-spacing:.02em;color:#fff}
-.os-sl-graph-days span.today{font-weight:900}
-.os-sl-graph-note{font-size:12px;line-height:1.45;margin:7px 0 1px;color:#fff}
+/* FIXROUND2 LANE 3 (Defect 3, 2026-11-07): the four-gauge bar that replaces
+   each removed per-link 14-day chart. ONE bar, FOUR gauges, that board's own
+   real stats — clicks live, views / CTR / revenue-per-1,000-views honest
+   empty until a live source exists (never invented). Mini-gauge grammar
+   harvested from the orb drill's .os-mini-gauge (same arc, ticks, needle). */
+.os-sl-gauges{display:flex;gap:10px;flex:1 1 100%;margin-top:12px;padding:12px 4px 4px;border-top:1px solid rgba(255,255,255,.08)}
+.os-sl-gauge{flex:1 1 0;min-width:0;text-align:center}
+.os-sl-gauge-dial .os-mini-gauge{width:100%;max-width:150px;height:auto;margin:0 auto}
+.os-sl-gauge-num{font-size:20px;font-weight:900;color:#fff;line-height:1.1;font-variant-numeric:tabular-nums}
+.os-sl-gauge-lab{font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:3px}
+.os-sl-gauge-sub{font-size:10px;color:rgba(255,255,255,.45);margin-top:2px}
+@media (max-width:480px){.os-sl-gauges{gap:6px}.os-sl-gauge-num{font-size:16px}.os-sl-gauge-dial .os-mini-gauge{max-width:84px}.os-sl-gauge-lab{font-size:8.5px}.os-sl-gauge-sub{font-size:9px}}
 /* plug-ins: horizontal rectangles — one full-width row per source,
    its working door riding on the right */
 .os-dash-plugins{display:flex;flex-direction:column;gap:12px}
@@ -4552,13 +4557,16 @@ html.os-calm
 <div id="os-ld-loading" class="os-ld-loading" aria-hidden="true"><div class="os-ld-loading-ring"></div></div>
 </div>
 <div class="os-score-elegant" id="os-score-elegant">
-  <div class="os-se-val" id="os-se-val"><span class="os-skel-line" style="width:120px;height:59px;border-radius:12px;vertical-align:middle;"></span></div>
-  <div class="os-se-label" id="os-se-label">SMART SCORE</div>
-  <div class="os-score-derive" id="os-score-derive" aria-live="polite"></div>
-  <div class="os-score-next" id="os-score-next"></div>
+  <div class="os-se-val" id="os-se-val"><span class="os-se-num" id="os-se-num"><span class="os-skel-line" style="width:120px;height:59px;border-radius:12px;vertical-align:middle;"></span></span></div>
 </div>
-<!-- 2026-11-06 — FIX 8: "Since you looked" lives here now, directly under the derivation. It used to sit after the whole hero block, so the hero's 195px bottom padding (fixed-bar clearance, load-bearing) opened a ~195px empty band before it. -->
-<div class="os-since-visit" id="os-since-visit" style="display:none"></div>
+<!-- 2026-11-07 — FIXE2-lane1 (Defect 1b + refinements, Shawn's eye 15:21Z/15:25Z):
+     the whole bunched stack under the number is GONE — the "CLICKS · ALL TIME"
+     label (#os-se-label), the pills derivation (#os-score-derive), the
+     next-move line (#os-score-next) and "Since you looked" (#os-since-visit).
+     The number stands alone as the feature number. All four JS writers guard
+     null (labEl/derEl/nextEl in _renderScoreDerivation, box in osSinceVisit),
+     so no JS change was needed. Nothing is kept below the number, so there is
+     nothing bunched up against it. -->
 </div>
 <!-- 2026-11-02 — SHAWN: pace pill REMOVED. Stuck content, not part of the gauge. -->
 <!-- 2026-11-02 — THE 12 CHARTS #5: DONUT. "Where does it come from."
@@ -5187,9 +5195,25 @@ body.has-orbs .os-pts-toggle{
    (neededH) and the block bottom padding carry the rest of the clearance.
    The score itself does NOT move — it stays the speedometer's in-dial readout. */
 .os-score-elegant{text-align:center;margin:0 auto 0;padding:0;width:100%;display:block;clear:both;} /* PASS 1 v6 (d): was margin-top 8 — reclaims 8px for the label. */
-.os-se-val{font-size:59px;font-weight:900;text-align:center;display:block;color:#fff;letter-spacing:.02em;
-  text-shadow:0 0 18px rgba(160,107,255,.8),0 0 40px rgba(160,107,255,.4);
-  font-variant-numeric:tabular-nums;line-height:1;}
+.os-se-val{display:inline-block;font-size:59px;font-weight:900;text-align:center;color:#fff;letter-spacing:.02em;
+  font-variant-numeric:tabular-nums;line-height:1;
+  /* 2026-11-07 — CLOSER (Addition 1, Shawn 16:26Z): the royal score — ENGRAVED GOLD ON OBSIDIAN.
+     The pink neon is gone and the plain white numeral with it. The digits are gold cut into a dark
+     jewel plate: a gold gradient (pale gold at the top edge where the light catches, deep gold at
+     the base), a thin gold rim on the plate, the light living INSIDE the material (a warm inset
+     glow), no neon, no halo. A child sees a treasure, a grandma sees a jewel, a billionaire sees
+     a watch. The numerals live in #os-se-num (the gradient needs background-clip:text); the plate
+     stays here. Fallback: solid gold + text-shadow where background-clip:text is unsupported. */
+  padding:16px 32px;border-radius:16px;
+  background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+  border:1.5px solid rgba(212,175,55,.8);
+  box-shadow:inset 0 1px 0 rgba(255,240,190,.22),inset 0 -2px 4px rgba(0,0,0,.5),inset 0 0 28px rgba(212,175,55,.07),0 8px 24px rgba(0,0,0,.5);
+  text-shadow:0.8px 0.8px 0 rgba(0,0,0,.55);}
+.os-se-val.is-metric{cursor:pointer;}
+.os-se-num{display:inline-block;color:#e6c25a;text-shadow:0 -1px 0 rgba(255,246,200,.5),1px 2px 2px rgba(0,0,0,.8),0 6px 12px rgba(0,0,0,.45);}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .os-se-num{background:linear-gradient(180deg,#fff6c8 0%,#f7e08a 22%,#e6c25a 45%,#c9a227 68%,#8f6f14 88%,#d9b64a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;text-shadow:none;filter:drop-shadow(0 -1px 0 rgba(255,246,200,.55)) drop-shadow(1px 2px 2px rgba(0,0,0,.85)) drop-shadow(0 6px 12px rgba(0,0,0,.45));}
+}
 .os-se-label{font-size:10px;font-weight:800;letter-spacing:.28em;color:rgba(255,255,255,.55);margin-top:4px;}
 /* PASS 1 v6 (i) — THE SCORE AS A LIVING DERIVATION. The parts fan beneath
    the number; each part is a live door into its drill-down; one line
@@ -5208,7 +5232,7 @@ body.has-orbs .os-pts-toggle{
    bar top 755). 48px + tightened margins take the hero to ~108px. Desktop
    keeps 59px (its next-move already clears). */
 @media(max-width:560px){
-  .os-se-val{font-size:48px;}
+  .os-se-val{font-size:48px;padding:12px 20px;}
   .os-se-label{margin-top:2px;}
   .os-score-derive{margin-top:6px;}
   .os-score-next{margin-top:4px;}
@@ -8022,20 +8046,6 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
      and one block per Smart Link. Click "Show on gauge" and that holder MOVES
      UP into this featured role; the previous holder becomes a board below.
      Click-in for inner stats is a door only (Pass 2/3) — not built. -->
-<section class="ph-card os-viewport-card os-featured-panel" id="os-featured" style="--ac:#a06bff;">
-<div class="os-feat-top"><span class="os-feat-marker" id="os-feat-marker">★ FEATURED</span><span class="os-feat-name" id="os-feat-name">Your ambassador link</span></div>
-<div class="os-feat-stats" id="os-feat-stats"></div>
-<p class="os-note os-feat-scope" id="os-feat-scope">Reading your world…</p>
-<div class="os-feat-creator" id="os-feat-creator"><div class="os-feat-creator-label">Add a Smart Link — any URL becomes a tracked link</div>
-<div class="os-sl-add-top">
-<div class="os-fieldwrap"><input class="os-input" id="os-dl-url" type="url" placeholder="Paste your website, Facebook, YouTube, X, TikTok, or Instagram URL…" autocomplete="off"></div>
-<div class="os-fieldwrap"><input class="os-input" id="os-dl-name" type="text" placeholder="Pick your name — for example: yourname" autocomplete="off"></div>
-<div class="os-status" id="os-dl-verdict">Your link becomes nayanet.app/<i>yourname</i> — we track every click.</div>
-<div class="ph-actions"><button class="ph-connect" id="os-dl-claim" type="button">Claim this name</button></div>
-<div class="os-status" id="os-dl-status"></div>
-</div>
-</div>
-</section>
 <section class="os-world-boards" id="os-world-boards">
 <h3>Your world, board by board</h3>
 <p class="os-note os-wb-sub">Every page and every link, one board each. Click “Show on gauge” and that board moves up into the featured role — the gauge follows it.</p>
@@ -9447,9 +9457,17 @@ NF.register(UNIT, {
   var VIEWS=['home','dashboard','about','today','notes','people','message','inbox','growth','lists','reports','settings'];
   function showView(name, skipPush){
     if (VIEWS.indexOf(name)<0) name='home';
-    document.querySelectorAll('[data-os-view]').forEach(function(el){ el.classList.toggle('on', el.getAttribute('data-os-view')===name); });
+    var _target = null;
+    document.querySelectorAll('[data-os-view]').forEach(function(el){ var _on = el.getAttribute('data-os-view')===name; el.classList.toggle('on', _on); if (_on) _target = el; });
+    /* 2026-11-07 — CLOSER (Job 2a): the sub-views (growth, reports, settings, ...)
+       are NESTED inside the dashboard section, and .os-view is display:none unless
+       .on — so showing a sub-view turned the dashboard OFF and hid the sub-view
+       inside it. The whole in-page view system was unreachable. Keep every ancestor
+       view .on, and scroll to the shown section (top-level views still go to top). */
+    if (_target){ var _p = _target.parentElement; while (_p){ if (_p.hasAttribute && _p.hasAttribute('data-os-view')) _p.classList.add('on'); _p = _p.parentElement; } }
     document.querySelectorAll('.ph-navtab').forEach(function(t){ t.classList.toggle('on', t.getAttribute('data-view')===name); });
-    window.scrollTo({top:0, behavior:'smooth'});
+    if (_target && name !== 'home' && name !== 'dashboard'){ try{ _target.scrollIntoView({behavior:'smooth', block:'start'}); }catch(e){ window.scrollTo({top:0, behavior:'smooth'}); } }
+    else window.scrollTo({top:0, behavior:'smooth'});
     if (name==='home') loadWall();
     /* 2026-11-05 — FIX_THIS_ONE (Smart Links): the 'My Smart Links' list below
        only loaded on the Growth view. The dashboard shows it too, so load it here. */
@@ -13127,14 +13145,16 @@ NF.register(UNIT, {
     var when=dim.first===dim.last?('on '+dim.first):('from '+dim.first+' to '+dim.last);
     return '<div class="os-link-dim" data-dim-for="'+esc(r.name)+'" hidden><p class="os-note">Every counted click on this link, '+when+' — where it came from, what it arrived on, and where in the world it was.</p>'+dimGroup('Came from', dim.from, 'referrer')+dimGroup('Arrived on', dim.on, 'device')+dimGroup('From', dim.country, 'country')+'</div>';
   }
-  /* — LIVING NUMBERS + PER-LINK GRAPHS (Flagship Pass, 2026-10-23):
+  /* — LIVING NUMBERS + PER-LINK GAUGES (Flagship Pass, 2026-10-23;
+       FIXROUND2 LANE 3, 2026-11-07 — the 14-day bar chart is gone):
        the board's counted numbers animate to their real values —
        from the value last shown, so a quiet re-read visibly MOVES
-       them — and every link carries its own graph: real clicks per
-       day for the last fourteen days, lit bars in a recessed well
-       (the Trend Panel's .os-week bar grammar, DESIGN-LANGUAGE
-       §7.3/§7.4). A link with no clicks shows the flat honest
-       baseline and says so — activity is never invented. — */
+       them — and every remaining link carries ONE bar with FOUR
+       gauges of its own real stats (slGaugesHTML): clicks live,
+       views / CTR / revenue-per-1,000-views honest empty until a
+       live source exists. A link with no clicks shows 0 and says
+       so — activity is never invented. The nine PayPal boards are filtered out before renderLinks runs (Lane 2),
+       so no chart survives anywhere — the gauge bar is the only per-link viz. — */
   var slPrevNums = {};
   function slCountTo(el, from, to){
     if (!el) return;
@@ -13146,36 +13166,54 @@ NF.register(UNIT, {
        (the old loop ended at to). */
     el.textContent = to;
   }
-  function slDayBuckets(rows){
-    var today = new Date(); today.setHours(0, 0, 0, 0);
-    var out = [], i;
-    for (i = 13; i >= 0; i--){
-      var d = new Date(today.getTime() - i * 864e5);
-      out.push({ key: d.toISOString().slice(0, 10), n: 0, j: 0, today: i === 0,
-        lab: d.toLocaleDateString('en-US', { weekday: 'short' }),
-        note: d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) });
+  /* — FIXROUND2 LANE 3 (Defect 3, 2026-11-07 — Shawn: "four gauges on one
+       bar, you don't need to put pages of stats"): the per-link 14-day bar
+       chart is gone; each remaining board carries ONE bar with FOUR gauges
+       showing THAT board's own real stats — total clicks (live, from
+       smart_link_daily_stats), total views, CTR, revenue per 1,000 views.
+       Views / CTR / revenue have NO live source for a link in this file, so
+       those three gauges read an honest empty ("—" + "not counted" / "needs
+       views") — never an invented number. The clicks gauge also carries the
+       live conversion (joins ÷ clicks). Needle = this board's share of all
+       counted link clicks; an empty gauge has no needle at all (no data is
+       not zero). Mini-gauge SVG harvested from the orb drill's .os-mini-gauge
+       grammar (arc track + fill + ticks + needle + hub, viewBox 120×74).
+       Integrated (FIXE2): the nine PayPal boards are filtered out before
+       renderLinks runs (Lane 2), so slGraphHTML / slDayBuckets are deleted
+       and the gauge bar is the only per-link viz. — */
+  function slMiniGauge(share, color){
+    var ticks='', i, a, x1, y1, x2, y2;
+    for (i=0;i<=10;i++){
+      a=Math.PI-i*Math.PI/10;
+      x1=60+43*Math.cos(a); y1=60-43*Math.sin(a);
+      x2=60+50*Math.cos(a); y2=60-50*Math.sin(a);
+      ticks+='<line x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+'" stroke="rgba(255,255,255,.55)" stroke-width="'+(i%5===0?'2':'1')+'"/>';
     }
-    var byKey = {};
-    out.forEach(function(b){ byKey[b.key] = b; });
-    (rows || []).forEach(function(r){
-      var b = byKey[r.day]; if (!b) return;
-      b.n += Number(r.clicks || 0); b.j += Number(r.joins || 0);
-    });
-    out.forEach(function(b){ b.note += ': ' + b.n + (b.n === 1 ? ' click' : ' clicks') + (b.j ? ', ' + b.j + (b.j === 1 ? ' join' : ' joins') : '') + '.'; });
-    return out;
+    var fill='', needle='';
+    if (share!==null && share!==undefined){
+      var s=Math.max(0,Math.min(1,Number(share)||0));
+      var ea=Math.PI*(1-s);
+      var ex=60+50*Math.cos(ea), ey=60-50*Math.sin(ea);
+      var large=s>0.5?1:0;
+      if (s>0.002) fill='<path d="M 10 60 A 50 50 0 '+large+' 1 '+ex.toFixed(1)+' '+ey.toFixed(1)+'" stroke="'+color+'" stroke-width="6" fill="none" stroke-linecap="round"/>';
+      var nx=60+40*Math.cos(ea), ny=60-40*Math.sin(ea);
+      needle='<line x1="60" y1="60" x2="'+nx.toFixed(1)+'" y2="'+ny.toFixed(1)+'" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><circle cx="60" cy="60" r="5" fill="'+color+'" stroke="rgba(255,255,255,.5)" stroke-width="1"/>';
+    }
+    return '<svg viewBox="0 0 120 74" class="os-mini-gauge" aria-hidden="true"><path d="M 10 60 A 50 50 0 0 1 110 60" stroke="rgba(255,255,255,.12)" stroke-width="6" fill="none" stroke-linecap="round"/>'+fill+ticks+needle+'</svg>';
   }
-  function slGraphHTML(buckets, c){
-    var max = 1; buckets.forEach(function(b){ if (b.n > max) max = b.n; });
-    var total = 0; buckets.forEach(function(b){ total += b.n; });
-    var bi = 0; buckets.forEach(function(b, k){ if (b.n > buckets[bi].n) bi = k; });
-    var bars = buckets.map(function(b, i){
-      var h = b.n ? Math.max(12, Math.round(b.n / max * 100)) : 3;
-      var hot = (i === bi && b.n > 0) ? ' hot' : '';
-      return '<div class="bar' + (b.today ? ' today' : '') + hot + '" style="height:' + h + '%;--barc:' + (b.n ? dayColor(new Date(b.key+'T12:00:00')) : '#3a3a46') + ';--i:' + i + '" title="' + esc(b.note) + '" data-note="' + esc(b.note) + '">' + (b.n ? '<span class="os-bar-pill">' + b.n + '</span>' : '') + '</div>';
-    }).join('');
-    var days = buckets.map(function(b){ return '<span class="' + (b.today ? 'today' : '') + '">' + esc(b.lab) + '</span>'; }).join('');
-    var note = total ? ('Busiest: ' + buckets[bi].note + ' Tap a bar to read its day.') : 'No clicks yet — this graph wakes with the first click.';
-    return '<div class="os-sl-graph os-spark-wrap"><div class="os-week">' + bars + '</div><div class="os-sl-graph-days">' + days + '</div><p class="os-sl-graph-note">' + esc(note) + '</p></div>';
+  function slGaugesHTML(r, tc, c){
+    var clicks=Number(r.clicks||0), joins=Number(r.joins||0);
+    var share=tc>0?clicks/tc:0;
+    var conv=clicks>0?Math.round(joins/clicks*100):null;
+    function cell(gauge, num, lab, sub){
+      return '<div class="os-sl-gauge"><div class="os-sl-gauge-dial">'+gauge+'</div><div class="os-sl-gauge-num">'+num+'</div><div class="os-sl-gauge-lab">'+lab+'</div><div class="os-sl-gauge-sub">'+sub+'</div></div>';
+    }
+    return '<div class="os-sl-gauges" role="group" aria-label="Link stats">'
+      +cell(slMiniGauge(share, c), esc(String(clicks)), 'Total clicks', conv===null?'no clicks yet':conv+'% became joins')
+      +cell(slMiniGauge(null, c), '&mdash;', 'Total views', 'not counted')
+      +cell(slMiniGauge(null, c), '&mdash;', 'CTR', 'needs views')
+      +cell(slMiniGauge(null, c), '&mdash;', 'Revenue / 1,000 views', 'needs views')
+      +'</div>';
   }
   function renderLinks(links, stats, linksErr, dims){
     var head=$('os-dash-links-head'), box=$('os-dash-links'); if (!box) return;
@@ -13196,6 +13234,18 @@ NF.register(UNIT, {
     Object.keys(byDay).forEach(function(lid){ byDay[lid].forEach(function(s){ var b=_ckm[s.day]=_ckm[s.day]||{c:0,j:0}; b.c+=Number(s.clicks||0); b.j+=Number(s.joins||0); }); });
     window._dashClickDayMap=_ckm;
     var rows=(links||[]).map(function(l){ var a=byId[l.id]||{clicks:0, joins:0}; return {id:l.id, name:l.name, url:l.target_url, clicks:a.clicks, joins:a.joins}; });
+    /* 2026-11-07 — FIX ROUND 2, DEFECT 2 (Shawn: "PayPal don't go in the
+       [dashboard] — they go in the checkout"). The nine PayPal plan Smart
+       Links get NO board: filter them out of the board list HERE, the one
+       place every board surface reads from — the #os-dash-links rows below
+       AND the #os-boards-list world boards (via window._dashLinkRows, read
+       by _linkRows()/renderBoards) AND the featured-holder list (a filtered
+       holder falls back in _resolveHolder, never a PayPal board). The links
+       themselves stay live and tracked: the Supabase fetch, the claim flow,
+       the redirect and the stats collection are untouched — they simply
+       render no board. Removal only; no replacement, no checkout area. */
+    var _PAYPAL_BOARDLESS={'power-monthly':1,'power-quarterly':1,'power-yearly':1,'pro-monthly':1,'pro-quarterly':1,'pro-yearly':1,'max-monthly':1,'max-quarterly':1,'max-yearly':1};
+    rows=rows.filter(function(r){ return !_PAYPAL_BOARDLESS[String(r.name||'').toLowerCase()]; });
     rows.sort(function(a, b){ return (b.clicks-a.clicks)||(b.joins-a.joins)||(a.name<b.name?-1:1); });
     var tc=0, tj=0; rows.forEach(function(r){ tc+=r.clicks; tj+=r.joins; }); window._dashLinkT={c:tc,j:tj};
     /* 2026-11-01 — Shawn: PER-LINK DEEP DIVE. Store link data globally so
@@ -13276,7 +13326,7 @@ NF.register(UNIT, {
       var c=SPECTRUM[ix%SPECTRUM.length];
       var host=r.url; try { host=new URL(r.url).hostname; } catch(e){}
       var dim=dimFor(r, dims);
-      return '<div class="os-link-row os-litobj" style="--ac:'+c+'"><div class="os-link-main"><span class="os-link-name">nayanet.app/'+esc(r.name)+'</span><span class="os-link-host">'+esc(host)+'</span></div><div class="os-link-side"><span class="os-link-nums"><span class="os-link-num"><b data-sl-num="'+esc(r.name)+':clicks">0</b><i>clicks</i></span><span class="os-link-num"><b data-sl-num="'+esc(r.name)+':joins">0</b><i>joins</i></span></span><span class="os-link-btns"><button class="ph-msg" type="button" data-sl-copy="'+esc(r.name)+'">Copy the link</button><button class="ph-msg" type="button" data-sl-open="'+esc(r.name)+'">Open it</button>'+(dim?'<button class="ph-msg" type="button" data-sl-dim="'+esc(r.name)+'">Breakdown</button>':'')+'</span></div>'+slGraphHTML(slDayBuckets(byDay[r.id]), c)+'</div>'+dimPanel(r, dim);
+      return '<div class="os-link-row os-litobj" style="--ac:'+c+'"><div class="os-link-main"><span class="os-link-name">nayanet.app/'+esc(r.name)+'</span><span class="os-link-host">'+esc(host)+'</span></div><div class="os-link-side"><span class="os-link-nums"><span class="os-link-num"><b data-sl-num="'+esc(r.name)+':clicks">0</b><i>clicks</i></span><span class="os-link-num"><b data-sl-num="'+esc(r.name)+':joins">0</b><i>joins</i></span></span><span class="os-link-btns"><button class="ph-msg" type="button" data-sl-copy="'+esc(r.name)+'">Copy the link</button><button class="ph-msg" type="button" data-sl-open="'+esc(r.name)+'">Open it</button>'+(dim?'<button class="ph-msg" type="button" data-sl-dim="'+esc(r.name)+'">Breakdown</button>':'')+'</span></div>'+slGaugesHTML(r, tc, c)+'</div>'+dimPanel(r, dim);
     }).join('');
     /* 2026-11-01 — Shawn: the "Clicked → Joined" paragraph was extra text.
        The numbers (40 CLICKS, 0 JOINS) already tell the story. Gone. */
@@ -17752,6 +17802,12 @@ window._closeOpenDrill = function(){
 };
 function ldOpenNode(key, noFocus){
   /* 2026-11-06 — FIX 7: one drill-down at a time (a second view paints over the first and covers its ×), and the open pushes history so browser Back closes it instead of leaving the page. The nine orb keys below each get the full gauge+orbs drill-down view, not the drawer. */
+  /* 2026-11-07 — CLOSER (Addition 2, Shawn 16:26Z): the FIRST click on an orb shows that
+     orb's number in the gauge; a SECOND click on the same orb opens its detail (the drill
+     below). The gauge is the answer to "what's this orb's number" — the drill is the deeper look. */
+  var _showing = !!(window._featuredMetric && window._featuredMetric.key === key);
+  if (!_showing && typeof window._setFeaturedMetric === 'function' && window._setFeaturedMetric(key)) return;
+  /* already showing this orb (or the metric couldn't be set) — open its detail */
   var _drill = {sales:salesViewOpen, invs:invitesViewOpen, saves:savesViewOpen, likes:likesViewOpen, posts:creationsViewOpen, shares:sharesViewOpen, comments:commentsViewOpen, notes:notesViewOpen, joins:joinsViewOpen}[key];
   if (_drill){
     try{ if (typeof window._closeOpenDrill === 'function') window._closeOpenDrill(); }catch(e){}
@@ -18285,7 +18341,7 @@ window.ldLayoutNodes = ldLayoutNodes;
       return {kind:'link', id:found.name, label:found.name};
     }
     if (f.kind === 'page'){
-      var pages = {personal:'Personal', business:'Business', space:'Space', membership:'Membership'};
+      var pages = {personal:'Personal', business:'Business', space:'Space'};
       if (!pages[f.id]) return {kind:'world', id:'dashboard', label:'Dashboard'};
       return {kind:'page', id:f.id, label:pages[f.id]};
     }
@@ -18329,6 +18385,48 @@ window.ldLayoutNodes = ldLayoutNodes;
     return fallback;
   }
   /* the featured view: everything the three outputs + the panel + the boards need */
+  /* 2026-11-07 — CLOSER (Addition 2, Shawn 16:26Z): ORB CLICKS SHOW THE ORB'S NUMBER.
+     Clicking an orb puts that orb's number in the gauge — the plate AND the dial follow
+     it, because both read _featuredDisplay(). A second click on the same orb opens its
+     detail (the old behaviour); tapping the big number returns to the score; choosing a
+     holder ("Show on gauge") returns to that holder's number. The value is the orb's
+     EXACT number (its data-full), never the compact "1K" the orb abbreviates — numbers
+     don't lie. Clicks earn no points, so the score stays the score; the gauge is just
+     showing the orb you asked for. */
+  window._featuredMetric = null;
+  window._setFeaturedMetric = function(key){
+    try{
+      var node = document.querySelector('.os-ld-node[data-node="'+key+'"]');
+      var numEl = node ? node.querySelector('.os-ld-n') : null;
+      if (!numEl) return false;
+      /* 2026-11-07 — CLOSER: no number before the ledger answers. An unanswered orb
+         reads "—" and its data-full is a placeholder 0 — showing 0 would be a false
+         number. The click falls through to the drill (the old behaviour). */
+      if (!window._dashDataLanded) return false;
+      var v = parseFloat(numEl.getAttribute('data-full'));
+      if (!isFinite(v)) return false;
+      var lblEl = node.querySelector('.os-ld-lbl');
+      var unitEl = node.querySelector('.os-ld-unit');
+      var label = key;
+      if (lblEl && lblEl.childNodes && lblEl.childNodes[0] && lblEl.childNodes[0].nodeType === 3) label = lblEl.childNodes[0].textContent.trim() || key;
+      window._featuredMetric = {key:key, value:v, label:label, unit: unitEl ? unitEl.textContent.trim() : ''};
+      document.querySelectorAll('.os-ld-node.on, .os-ld-node.os-ld-active').forEach(function(n){ n.classList.remove('on'); n.classList.remove('os-ld-active'); });
+      node.classList.add('on'); node.classList.add('os-ld-active');
+      var plate = document.getElementById('os-se-val');
+      if (plate){ plate.classList.add('is-metric'); plate.setAttribute('title', 'Tap to return to your score'); }
+      if (typeof window._featuredSyncBig === 'function') window._featuredSyncBig();
+      return true;
+    }catch(e){ return false; }
+  };
+  window._clearFeaturedMetric = function(){
+    window._featuredMetric = null;
+    try{
+      document.querySelectorAll('.os-ld-node.on, .os-ld-node.os-ld-active').forEach(function(n){ n.classList.remove('on'); n.classList.remove('os-ld-active'); });
+      var plate = document.getElementById('os-se-val');
+      if (plate){ plate.classList.remove('is-metric'); plate.removeAttribute('title'); }
+      if (typeof window._featuredSyncBig === 'function') window._featuredSyncBig();
+    }catch(e){}
+  };
   window._featuredDisplay = function(){
     var h = _resolveHolder();
     var wt = _worldTotals();
@@ -18396,6 +18494,15 @@ window.ldLayoutNodes = ldLayoutNodes;
         view.countOnly.sales = true;
       }
     }
+    /* 2026-11-07 — CLOSER (Addition 2): an orb the user asked for outranks the holder —
+       the plate (view.center) AND the dial (view.dial) both show the orb's number. The
+       orbs themselves don't change; only the featured number. */
+    var _om = window._featuredMetric;
+    if (_om && typeof _om.value === 'number' && isFinite(_om.value)){
+      view.center = _om.value;
+      view.centerLabel = String(_om.label || _om.key).toLowerCase() + ' \u00b7 ' + String(_om.unit || 'points').toLowerCase();
+      view.dial = {score: _om.value, deltas:{}};
+    }
     window._featuredDial = view.dial;
     return view;
   };
@@ -18445,7 +18552,7 @@ window.ldLayoutNodes = ldLayoutNodes;
   window._featuredSyncBig = function(){
     try{
       var v = window._featuredDisplay();
-      var bigVal = document.getElementById('os-se-val');
+      var bigVal = document.getElementById('os-se-num') || document.getElementById('os-se-val');
       /* FIXB 2026-11-07 (Fix 5): no big number before the ledger answers. */
       if (bigVal) bigVal.textContent = (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) ? '—' : _fmt(v.center);
       /* PASS 1 v7 (2026-11-05) — the number moved; the derivation under
@@ -18458,8 +18565,7 @@ window.ldLayoutNodes = ldLayoutNodes;
   var PAGES = [
     {id:'personal', label:'Personal', color:'#3fb8ff', icon:'⌂', href:'https://nayanet.app/personal', what:'Your home page — who you are, what you stand for, your links.'},
     {id:'business', label:'Business', color:'#2fe89e', icon:'▤', href:'https://nayanet.app/business', what:'Your business page — what you offer, your products and services.'},
-    {id:'space', label:'Space', color:'#ffbf3d', icon:'△', href:'https://nayanet.app/space', what:'Your gathering place — the room your people meet in.'},
-    {id:'membership', label:'Membership', color:'#e84fff', icon:'♡', href:null, what:'Your private community — members, content, and connection.'}
+    {id:'space', label:'Space', color:'#ffbf3d', icon:'△', href:'https://nayanet.app/space', what:'Your gathering place — the room your people meet in.'}
   ];
   function _boardNums(holder){
     if (holder.kind === 'link'){
@@ -18487,7 +18593,7 @@ window.ldLayoutNodes = ldLayoutNodes;
       var _pg2 = null;
       for (var _pj=0; _pj<PAGES.length; _pj++){ if (PAGES[_pj].id === holder.id){ _pg2 = PAGES[_pj]; break; } }
       var _plabel = _pg2 ? _pg2.label : holder.id;
-      var _pwait = (holder.id === 'membership') ? 'the membership page connects soon — members and content live here' : 'page tracking connects soon — views, clicks and conversions are not measured yet';
+      var _pwait = 'page tracking connects soon — views, clicks and conversions are not measured yet';
       return '<div class="os-wb-empty">' + _esc(_plabel) + ' stats — ' + _esc(_pwait) + '. No numbers yet — nothing invented.</div>';
     }
     /* FIXB 2026-11-07 (Fix 11, BOARDS LAW): the world board's OWN specs —
@@ -18532,7 +18638,7 @@ window.ldLayoutNodes = ldLayoutNodes;
       for (var j=0;j<PAGES.length;j++){ if (PAGES[j].id === holder.id){ pg = PAGES[j]; break; } }
       if (!pg) return '';
       color = pg.color; icon = pg.icon; name = pg.label; what = pg.what;
-      note = (holder.id === 'membership') ? 'Membership page connects soon — your members and content live here.' : 'Page tracking connects soon — numbers not yet.';
+      note = 'Page tracking connects soon — numbers not yet.';
       if (pg.href) extra = '<div class="os-wb-open"><a href="' + pg.href + '">Open ' + _esc(pg.label) + ' ↗</a></div>';
     }
     var key = holder.kind + ':' + holder.id;
@@ -18592,6 +18698,10 @@ window.ldLayoutNodes = ldLayoutNodes;
   };
   window.setFeatured = function(kind, id){
     window._featured = {kind:kind, id:id, label:null};
+    /* 2026-11-07 — CLOSER (Addition 2): choosing a holder returns the gauge to that
+       holder's number — the orb override ends. */
+    window._featuredMetric = null;
+    try{ var _pl = document.getElementById('os-se-val'); if (_pl){ _pl.classList.remove('is-metric'); _pl.removeAttribute('title'); } }catch(e){}
     try{ localStorage.setItem(LS_KEY, JSON.stringify({kind:kind, id:id})); }catch(e){}
     /* 2026-11-06 — FIX 11 (11b): remember where the user came from BEFORE
        the jump to the top. Measured on a real click: scrollY 1553→0
@@ -18614,6 +18724,16 @@ window.ldLayoutNodes = ldLayoutNodes;
     if (kv.length < 2) return;
     window.setFeatured(kv[0], kv.slice(1).join(':'));
   });
+  /* 2026-11-07 — CLOSER (Addition 2): tapping the big number returns the gauge to the
+     score — the way back from an orb's number. */
+  (function(){
+    var _pl = document.getElementById('os-se-val');
+    if (!_pl || _pl._metricResetWired) return;
+    _pl._metricResetWired = true;
+    _pl.addEventListener('click', function(){
+      if (window._featuredMetric && typeof window._clearFeaturedMetric === 'function') window._clearFeaturedMetric();
+    });
+  })();
   /* 2026-11-06 — FIX 11 (11b): the return chip. A tap restores the saved
      scroll position and hides the chip; it also hides itself once the user
      has scrolled back near the saved position on their own. */
@@ -19031,7 +19151,8 @@ function loadPointsBoard(_t){
          Count-only orbs (Clicks/Joins on a featured link) say the count
          word — never "points". Points orbs say "points". */
       var _isCount = (typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(node.key);
-      var al = _orbUnanswered ? _lbl+': still loading — open detail.' : (_isCount ? _lbl+': '+pts.toLocaleString()+' '+_lbl.toLowerCase()+'. Open detail.' : _lbl+': '+pts.toLocaleString()+' points. Open detail.');
+      var _alAct = (window._featuredMetric && window._featuredMetric.key===node.key) ? 'Open detail.' : 'Show in gauge.';
+      var al = _orbUnanswered ? _lbl+': still loading — open detail.' : (_isCount ? _lbl+': '+pts.toLocaleString()+' '+_lbl.toLowerCase()+'. '+_alAct : _lbl+': '+pts.toLocaleString()+' points. '+_alAct);
       /* 2026-11-01 — Shawn: COMPACT NUMBERS. 1,500→"1.5K", 10,000→"10K",
          100,000→"100K". Always fits the orb, no matter how big you get. */
       function fmtCompact(n){
@@ -19097,7 +19218,7 @@ function loadPointsBoard(_t){
         spark = '<svg class="os-ld-spark" viewBox="0 0 100 100" preserveAspectRatio="none">' +
                 '<polyline points="'+spts+'" fill="none" stroke="'+node.color+'" stroke-width="3" vector-effect="non-scaling-stroke" opacity="'+(_sparkHas ? '.7' : '.25')+'"/></svg>';
       }catch(spe){}
-      html += '<button type="button" class="os-ld-node'+(node.sample?' is-sample':'')+'" style="--nc:'+node.color+';animation-delay:'+(idx*0.12)+'s" data-node="'+node.key+'" aria-label="'+al+'">'+
+      html += '<button type="button" class="os-ld-node'+(node.sample?' is-sample':'')+((window._featuredMetric && window._featuredMetric.key===node.key)?' on os-ld-active':'')+'" style="--nc:'+node.color+';animation-delay:'+(idx*0.12)+'s" data-node="'+node.key+'" aria-label="'+al+'">'+
         '<span class="os-ld-vortex" aria-hidden="true"></span>'+
         '<span class="os-ld-ticks" aria-hidden="true"></span>'+
         '<span class="os-ld-gear" aria-hidden="true"></span>'+
@@ -19192,7 +19313,7 @@ function loadPointsBoard(_t){
           if (pts > 0) orbData.push({key: nd.key, label: nd.label, pts: pts, count: n, color: nd.color}); /* PASS 1 v6 (i): key — each derivation part opens its drill-down. v7.1 FIX 1a: count carried so the derivation can label it. */
         });
         /* #2 BIG NUMBER + DELTA */
-        var bigVal = document.getElementById('os-se-val');
+        var bigVal = document.getElementById('os-se-num') || document.getElementById('os-se-val');
         if (bigVal){
           /* 2026-11-02 — SHAWN: Big number counts 0 -> score on load. Dynamic, alive.
              2026-11-05 — DEFECT FIX: was hardcoded 300. Now reads the live score
@@ -19398,7 +19519,7 @@ function loadPointsBoard(_t){
           /* 2026-11-06 — FIX 5: the mode note follows every flip. */
           try{ if (typeof window._refreshPtsNote === 'function') window._refreshPtsNote(); }catch(ue2){}
           /* update Big Number — 2026-11-05: live spine score, not hardcoded 300 */
-          var bigVal = document.getElementById('os-se-val');
+          var bigVal = document.getElementById('os-se-num') || document.getElementById('os-se-val');
           if (bigVal) bigVal.textContent = (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) ? '—' : ((typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total)).toLocaleString(); /* FIXB (Fix 5): no big number before the ledger answers. */
           /* PASS 1 v7 (2026-11-05) — a PTS/% flip re-reads the live ledger; the derivation under the number re-renders with it. */
           try{ if (typeof window._renderScoreDerivation === 'function') window._renderScoreDerivation(); }catch(e){}
@@ -19528,8 +19649,7 @@ function loadPagesBoard(_t){
   var bodies={all:all,
     personal:invite('Personal','#a06bff','https://nayanet.app/personal'),
     business:invite('Business','#3fb8ff','https://nayanet.app/business'),
-    space:invite('Space','#2fe89e','https://nayanet.app/space'),
-    membership:invite('Membership','#ffbf3d',null)};
+    space:invite('Space','#2fe89e','https://nayanet.app/space')};
   function show(k){
     body.innerHTML=bodies[k]||bodies.all;
     if (k==='all'&&!show._counted){ show._counted=true;
@@ -20886,8 +21006,13 @@ function drift(row, dir, basePxPerSec){
     if (max > row.clientWidth) return; /* 2026-11-06 FIX 3: overflow wider than the viewport (phone) — a drift here is a marquee that hides the nav; the row stays at the start, hand-scrollable, and the drift never drags it away */
     var step = (basePxPerSec * speed) / 25; /* 25fps tick */
     var n = row.scrollLeft + d * step;
-    if (n >= max){ n = max; d = -1; }
-    else if (n <= 0){ n = 0; d = 1; }
+    /* LANE 5 FIXE2 2026-11-07 — one-way wrap, never ping-pong. The old
+       code flipped direction at both ends, so the ribbon flowed back and
+       forth (Shawn 15:43Z: "they flow back and forth, they're kind of
+       glitchy"). Now it wraps past the end and re-enters from the start —
+       the file's own law: "a gentle marquee, never ping-ponging back". */
+    if (d > 0 && n >= max){ n -= max; }
+    else if (d < 0 && n <= 0){ n += max; }
     row.scrollLeft = n;
   }
   timer = setInterval(tick, 40);
@@ -22574,8 +22699,12 @@ else init();
         '<div class="tn-tacho-bands"><span class="tn-tacho-bandlo"></span><span class="tn-tacho-bandhi"></span><span class="tn-tacho-bands-label"></span></div>' +
         '<div class="tn-tacho-truth" hidden></div>' +
       '</div>' +
-      /* 2026-11-06 — FIX 1e-iii REWORK: caption under the dial (see note above). A direct child of .tn-tacho, so paintBandChrome's root.querySelector still finds it and the text updates unchanged. */
-      '<span class="tn-tacho-bandline"></span>' +
+      /* 2026-11-07 — FIXE2-lane1 (Defect 1a, Shawn's eye 15:21Z): the bandline
+         span is GONE. It rendered "44 of 500 — Stirring at 1,000" at the
+         gauge's lower rim, blocking the gauge presentation. paintBandChrome
+         still runs but its bandLineEl lookup now returns null and it writes
+         nothing (guarded). The milestone logic (bandLine/RUNGS) stays —
+         it feeds nothing else in the gauge view. */
       /* 2026-11-06 — FIX F6: the cap moves down here with the bandline. Inside
          the dialwrap it sat at the dial's TOP, behind the opaque SVG dial face
          (elementFromPoint 0/11, only edge fragments visible) — its legitimate
@@ -23487,9 +23616,9 @@ document.addEventListener('click', function(e){
   SOURCES.forEach(function(s){ if (s.id===id) src = s; });
   window._plugConnect = { id:id };
   var board = document.querySelector('.os-sl-board');
-  var nameInput = document.getElementById('os-dl-name'),
-      urlInput = document.getElementById('os-dl-url'),
-      verdict = document.getElementById('os-dl-verdict');
+  var nameInput = document.getElementById('os-sl-name'),
+      urlInput = document.getElementById('os-sl-url'),
+      verdict = document.getElementById('os-sl-verdict');
   if (nameInput){
     nameInput.value = id;
     try { nameInput.dispatchEvent(new Event('input', {bubbles:true})); } catch(_){}
@@ -24852,5 +24981,5 @@ body.viewport-focus #viewport-back{
   }
 }
 </style>
-<div class="os-v6-stamp">Dashboard v9 · FIXE · 2026-11-07</div>
+<div class="os-v6-stamp">Dashboard v9 · FIXE2 · 2026-11-07</div>
 </body></html>
