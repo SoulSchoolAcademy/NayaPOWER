@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Number — Ten Concepts</title>
+<title>The Number — Concepts</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -33,6 +33,7 @@
     padding: 26px 26px 22px;
     box-shadow: 0 22px 48px rgba(0,0,0,.72), inset 0 1px 0 rgba(255,255,255,.06);
   }
+  .card.feature { grid-column: 1 / -1; border-color: rgba(212,175,55,.4); }
   .num-well {
     background: linear-gradient(180deg, #030304, #0b0b0d);
     border: 1px solid rgba(255,255,255,.06);
@@ -42,6 +43,11 @@
     padding: 30px 10px 26px; margin-bottom: 18px; min-height: 168px;
   }
   .num { font-size: 92px; line-height: 1; font-weight: 900; letter-spacing: -0.02em; }
+  .num.landed { animation: land 1s ease-out; }
+  @keyframes land { 0% { filter: brightness(1.7); } 100% { filter: brightness(1); } }
+  .platter { width: 250px; max-width: 82%; height: 26px; margin-top: -4px; border-radius: 50%;
+    background: radial-gradient(ellipse at 50% 28%, #ffffff, #cfcfcf 42%, #8d8d8d 72%, #ececec);
+    box-shadow: 0 8px 16px rgba(0,0,0,.75), inset 0 2px 3px rgba(255,255,255,.85), inset 0 -3px 5px rgba(0,0,0,.35); }
   .name { color: #d4af37; font-size: 17px; font-weight: 800; letter-spacing: .02em; margin-bottom: 6px; }
   .name span { color: #666; font-weight: 700; font-size: 13px; letter-spacing: .12em; margin-right: 8px; }
   .desc { color: #9d9d9d; font-size: 14.5px; line-height: 1.55; }
@@ -103,9 +109,10 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="kicker">The Score &middot; Ten Concepts</div>
-    <h1>The number, as <em>ten real objects.</em></h1>
+    <div class="kicker">The Score &middot; The Concepts</div>
+    <h1>The number, as <em>real objects.</em></h1>
     <p class="sub">The score is <b>725</b> in every one. Only the object changes.<br>
+    Every number scrolls up to 725 and unveils &mdash; the million-dollar moment.<br>
     Pick the best &mdash; that one goes on the Dashboard.</p>
   </header>
   <div class="grid">
@@ -139,9 +146,36 @@
     <div class="card"><div class="num-well"><div class="num c10">725</div></div>
       <div class="name"><span>10</span>Light Itself</div>
       <p class="desc">Made of light. A bright core, a soft volumetric glow around it, like a filament in the dark. It does not sit on the plate &mdash; it hovers, lit from within.</p></div>
+    <div class="card feature"><div class="num-well"><div style="display:flex;flex-direction:column;align-items:center;"><div class="num c2">725</div><div class="platter"></div></div></div>
+      <div class="name"><span>11</span>The Silver Platter</div>
+      <p class="desc">Served on a silver platter. The number is the jewel, the platter is the presentation &mdash; a wide silver tray with a bright rim, the number resting on it like a trophy. Plaques, trophies, depth jewellery: real and valuable, not fake. <b>Shawn&rsquo;s addition.</b></p></div>
   </div>
   <footer>Every number here is the same score &mdash; <b>725</b>. What changes is what the number <b>is</b>.<br>
-  The one you pick becomes the score on the Dashboard.</footer>
+  Ten concepts, plus the silver platter &mdash; your addition. The one you pick becomes the score on the Dashboard.</footer>
 </div>
+<script>
+/* The reveal: every number scrolls up to 725 and unveils — the million-dollar moment. */
+(function(){
+  var TARGET = 725, DUR = 1700;
+  function reveal(el){
+    var start = null;
+    function tick(ts){
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / DUR, 1);
+      var eased = 1 - Math.pow(1 - p, 3); /* ease-out: fast climb, slow landing */
+      el.textContent = Math.round(TARGET * eased);
+      if (p < 1) requestAnimationFrame(tick);
+      else { el.textContent = TARGET; el.classList.add('landed'); }
+    }
+    requestAnimationFrame(tick);
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting) { reveal(en.target); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.num').forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>
