@@ -1,0 +1,3 @@
+# Satellite Orbs
+**Filed:** 2026-11-07 (pricing round 7 fix1, Addition 5). **Status:** SAY SO — no canonical component source located.
+**What was searched:** the workspace (Dashboard file, Smart Factory files, design-blocks library). NO canonical component source was located — only Smart Note SN-2044 describes the satellite orbs. **This is not a filed object with a source — it is a named gap.** The orbit nodes use the pattern (glossy black spheres, each capped with a small coloured glass dome that catches the light like a stud) with SN-2044 as the source. If a canonical source is located later, this file gets the source appended — never invented.
