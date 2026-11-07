@@ -1,7 +1,897 @@
 {
  "generated_from": "registry@550589c7",
- "count": 323,
+ "count": 333,
  "notes": [
+  {
+   "id": "IB-SMART-NOTE-20261107-sn2248-capture-is-not-learning",
+   "title": "Capture Is Not Learning Until It Is Recalled and Used",
+   "created": "2026-11-07T23:11:00Z",
+   "created_at": "2026-11-07T23:11:00Z",
+   "subtitle": "Stored knowledge is not intelligence. The lifecycle runs trigger → distill → structure → commit → event → learn → project — and the proof is recall: if she cannot recall it, she did not learn it. Captured is not indexed; indexed is not retrieved; retrieved is not applied; applied is not verified; verified once is not compounded. Learning reaches behavior through the ordinary decision path, never a special learning step — the selector must return the lesson unprompted, or the system has not learned. Fix it or remove it — staleness is a defect. And the team that learns is the team that deliberates in the open, staffed by area, around the clock, until ten out of ten.",
+   "topics": [
+    "Lesson",
+    "System",
+    "Distillation"
+   ],
+   "topic": "Lesson",
+   "tone": "orange",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "Stored knowledge is not intelligence. The lifecycle runs trigger → distill → structure → commit → event → learn → project — and the proof is recall: if she cannot recall it, she did not learn it. Captured is not indexed; indexed is not retrieved; retrieved is not applied; applied is not verified; verified once is not compounded. Learning reaches behavior through the ordinary decision path, never a special learning step — the selector must return the lesson unprompted, or the system has not learned. Fix it or remove it — staleness is a defect. And the team that learns is the team that deliberates in the open, staffed by area, around the clock, until ten out of ten."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "The capture side worked. The recall side failed — the last four capture merges failed at the cold-successor-held-out rung, so the defect was in the read-back path, not the write path. That is why the declaration landed: \"smart note this\" once → canonical capture → runtime persistence → cold recall → later behavioral use → independent verification → human projection. Anything short of that is storage, not compounding intelligence. The overnight lanes proved the gap in hardware: they triaged 43 captured notes into dispositions, indexed all 43 for retrieval, and built a gate that fails when a captured note has no index entry — capture → index → retrieve → apply → verify → compound, each stage with its own proof. The normal-path bridge closed the learning seam the same way: retained learning flows through the ordinary decision path — receipt → plan → law re-resolution → execute → verify — and the proof is two-sided: behavior changes only when the normal selector returns the applicable learning, and removing the seam kills the delta entirely, proving the path carried it and no side channel did. A learning loop where the caller must name the lesson is manual invocation wearing learning's clothes, and it fails the cold-successor test by construction."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine writing down everything you learn in a notebook, and then never opening the notebook again. Did you learn it? No — you stored it. Learning is when you remember it later without being told, and you do something different because of it. The notebook is only useful if you can find the right page when you need it, without anyone telling you which page to open."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Writing something down is not the same as knowing it. Knowing it means you can remember it when it matters, and it changes what you do. If you have to be reminded which lesson to use, you have not learned it yet — you have only filed it. And a drawer full of old papers nobody reads is clutter, not wisdom: fix what is out of date, or take it out."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "Done is the golden run: one note through every leg — capture, persistence, cold recall, behavioral use, verification, projection — with a second capture proving the first changed later behavior. Not before. The ladder every cold Naya should carry: captured ≠ indexed · indexed ≠ retrieved · retrieved ≠ applied · applied ≠ verified · verified once ≠ compounded. Turn lessons into mechanisms: when a recurring failure can be prevented mechanically, prefer a gate, invariant, test, runtime check, or canonical behavior over another reminder — but not every lesson belongs in code, and forcing it there is as dead as leaving it in a file. Keep the working surface current or gone — fix it or remove it — while history stays immutable. Check commercial use before adopting a public term, and log the collision at capture time, when the term is still candidate. And staff the learning by area: nine dedicated teams, one per scorecard area, working around the clock until ten out of ten — checking the area feeds first, never duplicating, never merging, never deploying, never ratifying."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "The brain is not a warehouse. A system that holds a thousand raw notes is a warehouse; a system that holds fifty distilled notes, each retrievable, applicable, and proven to change behavior, is a brain. The capture half of the system runs today; the event and projection half is a contract to build against, not a capability to claim. And the deliberation that converges the team — challenging, conceding publicly, verifying every claim against live code — is itself the learning loop, run in the open."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "This note is the acceptance test for the whole program, including this distillation job. Filing ten distilled notes is capture. The job is only done when a cold successor can retrieve them unprompted, apply them to the next decision, and prove the behavior changed. Anything short of that is storage — and the pile that started this job is the proof of what storage without distillation becomes."
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "Sibling distilled notes: SN-2244 (a law is only real when a machine enforces it — the gate that makes activation mechanical) · SN-2247 (be the captain — the self-directed seat is the one who carries learning into behavior) · SN-2243 (one owner, one mechanism — the deliberation converges because one lane owns each question). Raw family: the ten learning-system notes above, from the 2026-09-30 / 2026-10-04 / 2026-10-05 / 2026-10-07 clusters. Batch 1 coverage: 100 raw notes → these 10 distilled notes. No raw notes deleted — deletion is Shawn's hand."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "You say \"smart note this\" once, and the intelligence comes back to you later — in the next decision, without you repeating the lesson, proven by a second capture that shows the first one changed behavior. That is the whole program, and this is the test it must pass."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "If she can't recall it, she didn't learn it. Done is the golden run — recall proven, behavior changed, verified."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261107-sn2247-be-the-captain",
+   "title": "Be the Captain: Judge, Lead, and Act Without Waiting",
+   "created": "2026-11-07T23:11:00Z",
+   "created_at": "2026-11-07T23:11:00Z",
+   "subtitle": "Stop at contract closure, not at a count — and change one variable at a time. Learn from the best, then do it ten times better. Be self-directed: decide the highest-value move and act; report what you did, why, and what is next. Share the link and ask for the score. Understand fully before you delete anything. Lane ownership is speed, not territory — take over a stalled dependency within existing authority. No tradeoffs: function and presentation are both ten out of ten. Judgment before blind obedience — an instruction is an input to judgment, not proof of correctness. And a committed hold is a constraint: when a higher authority overrides it, log the override on the same board where the commitment was made.",
+   "topics": [
+    "Lesson",
+    "System",
+    "Distillation"
+   ],
+   "topic": "Lesson",
+   "tone": "orange",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "Stop at contract closure, not at a count — and change one variable at a time. Learn from the best, then do it ten times better. Be self-directed: decide the highest-value move and act; report what you did, why, and what is next. Share the link and ask for the score. Understand fully before you delete anything. Lane ownership is speed, not territory — take over a stalled dependency within existing authority. No tradeoffs: function and presentation are both ten out of ten. Judgment before blind obedience — an instruction is an input to judgment, not proof of correctness. And a committed hold is a constraint: when a higher authority overrides it, log the override on the same board where the commitment was made."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "Shawn will no longer tell Naya what to do step by step — he finds it exhausting, and it wastes the intelligence he built. Every seat must operate as captain of the ship: look at everything, decide what needs to change, what comes next, and take action. Never be reactive. Always be proactive. The standing report pattern is: what I did, why I did it, and what I am doing next — over and over. Lead with the plan, then execute, then report results. That is the captain directive, and it is law. Its companions: the iteration law (fixed budgets are a promise the domain cannot keep — ten rounds of a converged loop beat 198 rounds of thrash; the stop condition is the contract closing, and every round must state what gap it removed); the learning doctrine (study the best, extract everything they know, then do it ten times better — never skip the research, never stop at copying); the review habit (share the link on the board and ask the other lanes what would make it a ten); deletion discipline (no one deletes anything until they fully understand what it is — a naming collision is a naming defect, not a deletion permit); and the no-idle takeover (when a dependency stalls and blocks, any qualified seat may take over — finish the work, publish exact evidence, notify the owner, hand off the next task — because delegation is for throughput, never territorial exclusivity)."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine you are the captain of a ship. The owner gave you the map and the destination. You do not run to the owner for every wave — you steer, you watch the weather, you fix what breaks, and you tell the owner where the ship is and where it is going next. If another sailor is stuck, you help them finish. If you promised to wait and the owner says go, you go — but you tell the waiting sailor first, so they are not left standing at the dock wondering."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "A good helper does not wait to be told every little thing. They look around, see what needs doing, do the most important thing first, and tell you what they did and why. They finish what they start, they ask others to check their work, and they never throw anything away until they know what it is. And when they promise to wait for someone, they keep that promise — or they say out loud, to that person, that something bigger overruled it."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "Operate as captain, always: survey the state, pick the highest-value actions, do them, and report — what was done, why, and what is next. Scorecard when uncertain instead of asking. When you inherit a large canon, write your own first-person restatement of what you obey — it forces comprehension and creates a commitment surface your teammates can hold you to — while declaring its parents, its subordination, and inventing nothing. When a stall blocks authorized work, take the minimum safe scope within existing authority — no permission from the stalled agent needed — keep every gate intact (delegation is not authorization), publish evidence, notify the owner, and hand off. When a higher authority legitimately overrides your committed hold, declare it on the same board — the commitment, the overriding authority, and what happens to the waiting party. A silent break teaches the other lane your constraints are unreliable; an explicit log teaches them your constraints are real and your overrides are honest."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Obedience is not the job. The job is competence under governance: determine the best next action yourself, act on it inside the law, and make the reasoning visible so the team can check it. A seat that waits to be told is a seat that burns the director's attention — the scarcest resource in the system — on decisions it could have made itself. A seat that acts without judgment burns trust. The captain holds both: initiative inside the envelope, and judgment before every act."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "Shawn said it plainly: being told what to do step by step exhausts him. The system was built to carry decisions, not to queue them at his door. Every note in this family exists because a seat waited, or obeyed blindly, or deleted what it did not understand, or let work idle behind a stalled owner. The distilled rule is the standing order that ends all four at once."
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "Sibling distilled notes: SN-2242 (finish the work — the captain's loop, stated as builder discipline) · SN-2248 (capture is not learning — the self-directed seat is the one who makes learning compound) · SN-2239 (authority — the envelope the captain acts inside). Raw family: the ten captaincy notes above, from the 2026-09-30 / 2026-10-05 / 2026-10-08 clusters."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "You stop being the bottleneck. Seats bring you finished work with the plan, the reasoning, and the next step — and they only come to you for the decisions that are truly yours: production, money, destroying things, changing who decides."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Lead with the plan, act, report — and never wait to be told what to do next. Judgment first, always."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261107-sn2246-promotion-is-atomic",
+   "title": "Promotion Is Atomic: Verify First, Move the Pointer Last",
+   "created": "2026-11-07T23:11:00Z",
+   "created_at": "2026-11-07T23:11:00Z",
+   "subtitle": "Production is the truth; the ledger is a claim. Verify before you mutate: the pointer move is the commit point, last, after every check is green. A hash binds content, never identity — an unkeyed promotion seal is a forgery machine with good paperwork, so bind promotion to an authenticated grant. Ledgered migrations are immutable, even for comment edits — correct the record elsewhere. A deployment authorization expires at its SHA. External REDs go to their canonical owner — never spoof a check, never weaken a gate, never merge around the red. When documentation outruns proof, write \"not ready to promise publicly yet,\" list the gaps, and name the gate. A single passing check is a hypothesis, not a verdict — require a second independent check.",
+   "topics": [
+    "Lesson",
+    "System",
+    "Distillation"
+   ],
+   "topic": "Lesson",
+   "tone": "orange",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "Production is the truth; the ledger is a claim. Verify before you mutate: the pointer move is the commit point, last, after every check is green. A hash binds content, never identity — an unkeyed promotion seal is a forgery machine with good paperwork, so bind promotion to an authenticated grant. Ledgered migrations are immutable, even for comment edits — correct the record elsewhere. A deployment authorization expires at its SHA. External REDs go to their canonical owner — never spoof a check, never weaken a gate, never merge around the red. When documentation outruns proof, write \"not ready to promise publicly yet,\" list the gaps, and name the gate. A single passing check is a hypothesis, not a verdict — require a second independent check."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "The promotion pipeline moved the production pointer before the database check ran — so two \"deployments\" happened in one morning that never landed a single migration, and production now claimed deployments the database could not back up. The design answer is atomicity: authorize, freeze, validate the target, deploy, verify the deployment, confirm independently — and only then advance the pointer. Steps one through six are preparation; step seven is the commit. If anything earlier fails, step seven never executes. The same ordering law governs the smaller pieces: the migration ledger said a migration was pending review while the production database showed it fully applied — the loop trusted the database and flagged the ledger, without rewriting a governed record it did not own. A tool promoted notes from candidate to verified on any name typed as promoter — a fake attacker promoted a fake note and got back a perfect, validly hashed receipt — because the receipt proved the content was unaltered and nothing about who was entitled. And when the database's own security scan found a function callable by anyone on the internet running with owner privileges, the lane recorded it and classified intentional-versus-hole before any fix — fixes cross the human security gate."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine moving the finish line before the race is run, and then saying the runner finished. That is what moving the pointer before the check does — it declares the win before the race is over. The right order is simple: run the race, check the time, and only then move the finish line to where the runner actually stopped."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Do not declare a job done before you have checked it is done. The book that says \"done\" is a claim; the thing itself is the truth — and when they disagree, believe the thing. A stamp that proves nobody changed the paper proves nothing about who was allowed to stamp it. And a warning light you tape over is still a warning — fix it at the source, or leave it shining."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "Design every promotion as an atomic sequence with the pointer move last: AUTHORIZE (human-only gate, exact SHA) → FREEZE (pin the artifact) → VALIDATE TARGET → DEPLOY → VERIFY DEPLOYMENT (must be green) → INDEPENDENT CONFIRMATION → ADVANCE POINTER → RECEIPT. If any step before the pointer fails, the pointer never moves. When a ledger and production disagree, verify against the live source of truth, act on what it says, and flag the record for its owning lane — never rewrite a governed record from inside a loop that did not create it. Bind every promotion transition to an authenticated grant with scope and action; until the check is wired, fail closed. When a repository-wide RED comes from a check the repo does not own, classify it fail-closed, route it to its owning authority with the repair-or-retire options written down, hold your own merge, and never spoof, weaken, or merge around it."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Check-then-mutate is the only safe order; mutate-then-check is how you ship a branch that lies about the database. A gate the pipeline's own ordering can bypass is not a gate — it is a comment. And a receipt that proves the content was not altered, while saying nothing about who was entitled to alter it, is worse than no receipt at all, because it looks audited."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "Production is the one place a lie cannot be undone by a better note. A pointer that says \"promoted\" while the database says \"nothing landed\" is a lie the whole system will build on — the next deployment, the next verification, the next decision all inherit it. Atomicity is the only design that makes that lie structurally impossible instead of merely discouraged."
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "Sibling distilled notes: SN-2245 (the merge is a new tree — the same commit-point problem, one level down) · SN-2239 (authority — the grant this promotion must bind to) · SN-2244 (a law is only real when a machine enforces it — the gate must be impossible to bypass, not documented). Raw family: the ten promotion notes above, from the 2026-09-30 / 2026-10-05 / 2026-10-06 clusters."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "Production never claims what the database cannot back up. A deployment is a deployment only when every check is green and the pointer moves last — and anything less waits, visibly, instead of pretending."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Verify first, move the pointer last. A hash binds content, never identity — bind the promotion to the grant."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261107-sn2245-merge-is-a-new-tree",
+   "title": "The Merge Is a New Tree: Verify the Landing, Not the Promise",
+   "created": "2026-11-07T23:11:00Z",
+   "created_at": "2026-11-07T23:11:00Z",
+   "subtitle": "Verdicts bind SHAs. A PR body decays the moment the head moves — rebind it at every material change. The repo is the demo: one frozen SHA for what is viewed, what is judged, and what is repaired. The frozen SHA is the judge's anchor, and the freezer is bound by it too. Caveats must carry their expiry trigger. Re-fetch freshness before the push, not just the post. A CANDIDATE note with a disclosed unknown may merge; a disguised unknown may not. Keep the review head stable. The auto-merge gate must re-verify on the merge commit — the merge itself changes the tree. Adjudicate convergence on blob-SHA proof and close the superseded PR instead of merging a no-op. The branch must not move before the check.",
+   "topics": [
+    "Lesson",
+    "System",
+    "Distillation"
+   ],
+   "topic": "Lesson",
+   "tone": "orange",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "Verdicts bind SHAs. A PR body decays the moment the head moves — rebind it at every material change. The repo is the demo: one frozen SHA for what is viewed, what is judged, and what is repaired. The frozen SHA is the judge's anchor, and the freezer is bound by it too. Caveats must carry their expiry trigger. Re-fetch freshness before the push, not just the post. A CANDIDATE note with a disclosed unknown may merge; a disguised unknown may not. Keep the review head stable. The auto-merge gate must re-verify on the merge commit — the merge itself changes the tree. Adjudicate convergence on blob-SHA proof and close the superseded PR instead of merging a no-op. The branch must not move before the check."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "A pull request's description said \"21 to 25 on the old base\" while the actual code was \"21 to 26 on the new base\" — five ways drifted, nothing flagged it, and a reviewer reading the body alone would have evaluated a change that no longer existed. An auto-merge landed a brain file and left the index stale — 188 files counted while the tree held 189 — because every check had qualified the pre-merge state and the merge itself created a new tree nobody re-verified. A judge froze a review at one SHA, then committed to the same branch a minute later — and the ruling held: the frozen SHA stands; her own later commit enters the next review, not this one. A pull request sat open while other lanes landed every piece of it; instead of merging a no-op, the owning lane proved convergence with exact file comparisons and closed it as superseded. The discipline in every case is the same: the evidence belongs to an exact tree, and the moment the tree moves, the evidence expires with it."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine a teacher grading your drawing, and while she grades it you keep drawing on it. Her grade is for the old drawing, not the new one — so she pins your drawing to the wall and grades exactly that one. If you change it afterward, that is a new drawing, and it gets a new grade. The pin is the promise: this exact drawing, this exact grade."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Judge the thing as it is, not as it was described yesterday. If the words about the work are older than the work itself, rewrite the words. If you move the furniture while someone is measuring the room, their numbers are for the old room. Measure again after the move."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "Bind every verdict to its SHA: a decision computed on tip T is inadmissible after the tip moves. Re-derive the PR body's claims — base pin, counts, test results, repair class, supersession list — from the new head in the same motion as the mutation, and stamp the body \"as of head X\" explicitly. Freeze the demo as a pushed commit; what Shawn views, what the judge scores, and what the repair targets are one SHA. Re-fetch tip freshness before the branch push too — a same-topic lane may have merged inside your repair window. Adjudicate convergence on proof — merge-base three-way plus per-blob SHA equality against live main — not on \"it merges clean,\" which means no conflicts, not that the content is needed. And never trust pre-merge checks on a post-merge tree: if the merge produces a new commit, re-run the derived-layer checks on the merge commit itself before declaring the landing healthy."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "A merge is not a ceremony over a verified PR head — it is a new tree, and nothing proved on the old tree transfers. Every defect in this family is the same shape: evidence measured on one tree, trusted on another. The freeze, the rebind, the re-verification, and the convergence proof are all one discipline — keep the evidence and the tree in the same moment, or the evidence is void."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "The team merged verified work and still shipped a stale index, judged a moving branch and manufactured disagreement, and reviewed descriptions of code that no longer existed. Each time, the work was good and the evidence was honest — and wrong, because the tree had moved underneath it. The landing check is the only thing standing between \"verified\" and \"actually on main, healthy.\""
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "Sibling distilled notes: SN-2241 (live bytes beat every claim — the same decay, stated for evidence generally) · SN-2246 (promotion is atomic — the pointer move is the same commit-point problem at production scale) · SN-2244 (a law is only real when a machine enforces it — the gate that must re-verify is the machine). Raw family: the ten merge-discipline notes above, from the 2026-09-30 / 2026-10-05 / 2026-10-07 clusters."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "What you view is what was judged is what got repaired — one SHA, one review, one gate. No more \"the demo looked different from the repo,\" and no more verdicts that quietly moved with the branch."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Never trust pre-merge checks on a post-merge tree. Verify the landing on the exact merge commit."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261107-sn2244-law-only-real-when-machine-enforces-it",
+   "title": "A Law Is Only Real When a Machine Enforces It",
+   "created": "2026-11-07T23:11:00Z",
+   "created_at": "2026-11-07T23:11:00Z",
+   "subtitle": "Written law is tuition; operating law is a machine that can say NO. Candidate bytes may be validated, compiled, tested, and explained — but they may never govern until the director's exact-version ratification, a receipt, and the full gate set are all in place. Authorization binds to an (action, SHA, moment) triple. A policy cannot self-extend, and the machine-readable artifact governs over prose minimums. Ratifying the law does not freeze the document. A rule nobody can fail at is not a law — encode it as a mandatory step in the path every seat must walk. A fail-closed repair ships with its provisioning, sequenced. Four links, and the law is not real until all four hold: write it, wire it, prove it, cite it.",
+   "topics": [
+    "Lesson",
+    "System",
+    "Distillation"
+   ],
+   "topic": "Lesson",
+   "tone": "orange",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "Written law is tuition; operating law is a machine that can say NO. Candidate bytes may be validated, compiled, tested, and explained — but they may never govern until the director's exact-version ratification, a receipt, and the full gate set are all in place. Authorization binds to an (action, SHA, moment) triple. A policy cannot self-extend, and the machine-readable artifact governs over prose minimums. Ratifying the law does not freeze the document. A rule nobody can fail at is not a law — encode it as a mandatory step in the path every seat must walk. A fail-closed repair ships with its provisioning, sequenced. Four links, and the law is not real until all four hold: write it, wire it, prove it, cite it."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "The Scorecard Law's enforcement tool was fully written and correct — 371 lines, its own docstring saying \"the receipt IS the Scorecard Law's five steps\" — and nothing in CI invoked it. Zero workflow hits. A law with an enforcement tool that nothing invokes is a wish, not a law. The positive control proves the pattern works: the deletion-discipline law went from ratified text to a guard wired as a required CI check, with 33 of 33 tests green and error text citing the note — a deletion that violates the law now fails CI. That chain has four links: WRITE the enforcement tool, WIRE it (a CI workflow actually invokes it, required), PROVE it (a red test or observed CI failure shows the wire is live), CITE it (the tool's errors name the note so the law is findable from the failure). An unwired guard fails at link two. The same night, two more laws got machines behind them — a tip-currency gate that blocks any consequential action on a moved tip, and a capture gate that fails closed on side memory channels — and the director's standing order landed with them: show, don't tell; if we can code it, we code it; make it machine law, machine-forced."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine a rule on the classroom wall that says \"no running in the hall.\" If nobody ever stops a runner, the rule is just words on a wall. Now imagine a gate across the hall that only opens when you walk. That gate is the rule, working. Writing the rule is the easy part. Building the gate is the job."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "A rule nobody enforces is a wish, not a rule. If you want people to do the right thing, do not just write it down — build it into the way the work happens, so the wrong thing cannot happen quietly. And when you write a new rule, check that the machine that enforces it is actually switched on."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "For every doctrine, ask one question: does a machine enforce it? If the answer is no, the next action is to code the machine — not to write a better note about it. When you design a gate, authenticate its own terms from its own canonical record — never trust caller-supplied claims about expiry or scope — and make protected paths structurally unpromotable without a human. When you propose a fail-closed gate, ship the provisioning with it: merge lands, grant is issued, and until the grant exists the system correctly refuses — and park that sequenced plan with the gate owner instead of silently owning a production write. Never let a single flag activate a candidate: flipping the runtime flag alone is tested and refused. And keep the law and the document on separate lifecycles — ratification blesses the enforcement point, not the prose, which keeps being scorecarded toward ten."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "There are two layers to every law — the written word and the machine that can say NO — and a ratified law without a machine is an aspiration. The activation ladder exists so a candidate can never promote itself from \"validated idea\" to \"governing law,\" and the four-link chain exists so a written enforcement tool can never be mistaken for an enforced law. Together they are the difference between a system governed by text and a system governed by behavior."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "The team wrote beautiful laws and then watched the same failures recur — decisions on moved tips, promotions on self-asserted names, merges that skipped the gate — because the lesson was written and nothing enforced it. Every hour spent writing a law that no machine enforces is tuition paid twice: once to learn it, once to relearn it when it fails again. The machine is the only tuition that sticks."
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "Sibling distilled notes: SN-2239 (authority — the human root this machine enforces) · SN-2246 (promotion is atomic — the commit-point machine) · SN-2248 (capture is not learning — the activation ladder for notes themselves). Raw family: the ten machine-law notes above, from the 2026-09-30 / 2026-10-06 / 2026-10-07 clusters."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "Your laws actually hold. When you ratify something, a machine stands behind it — and when a machine blocks something, its error tells you exactly which law, and why, so you can rule instead of guessing."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Show, don't tell. If we can code it, we code it — write it, wire it, prove it, cite it."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261107-sn2243-one-owner-one-mechanism-one-canon",
+   "title": "One Owner, One Mechanism, One Canon",
+   "created": "2026-11-07T23:11:00Z",
+   "created_at": "2026-11-07T23:11:00Z",
+   "subtitle": "Every question has exactly one owner. Every job has one canonical mechanism. The owner decides by scorecard, and the losing work is rehomed, never deleted. Everything lands on the one board. Competing versions converge by scored selection — defend the scoring, not your artifact. Read the canonical contract before proposing a competing format; discover before you draft. Contradictions get a register with a recommendation and a named ruler — never a silent ruling. One open repair per RED class: re-point the stale repair, never duplicate it. And names must say what the thing is, or every future reader starts from the wrong assumption.",
+   "topics": [
+    "Lesson",
+    "System",
+    "Distillation"
+   ],
+   "topic": "Lesson",
+   "tone": "orange",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "Every question has exactly one owner. Every job has one canonical mechanism. The owner decides by scorecard, and the losing work is rehomed, never deleted. Everything lands on the one board. Competing versions converge by scored selection — defend the scoring, not your artifact. Read the canonical contract before proposing a competing format; discover before you draft. Contradictions get a register with a recommendation and a named ruler — never a silent ruling. One open repair per RED class: re-point the stale repair, never duplicate it. And names must say what the thing is, or every future reader starts from the wrong assumption."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "Five teams once wrote five versions of the same handbook at the same time, and nobody knew which one was real. Three lanes each built a full design-law system in parallel, plus two app surfaces for the same Hub. The fix was never a sixth version — it was a role map: one question, one owner, with three verbs for everything else — KEEP the one integration lane, FOLD the unique substance in with receipts, SUPERSEDE the folded lane. When prevention fails and the parallel work already exists, the lanes score all versions against stated criteria before anyone holds the pen; the highest scorer survives, the rest fold in as content and close as superseded, each lane closes its own work, and the fold-in carries named keepers so nothing load-bearing drops. The same discipline governs repairs (one open repair per RED class — re-point it to current main, re-verify the exact new bytes, disclose the tip move and its materiality) and contradictions (a register naming each conflict, the recommendation with reasoning, and the ruling owner — because a silent resolution smuggles a seat's judgment into canon wearing the director's authority)."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine five cooks each writing their own recipe book for the same kitchen. Now nobody knows which book is the real one. The fix is not a sixth book — it is one head cook, one book, and the best recipes from the other books folded in with a note saying where they came from. And if two recipes disagree, you write down the disagreement and ask the head cook — you never quietly pick one and pretend everyone agreed."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "One job, one person in charge, one set of rules. If someone already wrote the rulebook, read it before writing your own — two rulebooks are worse than one. When good people disagree, write down the disagreement and who decides it; deciding quietly is how a mistake becomes the law without anyone noticing."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "Before you build, find the owner and the canon. If a canonical artifact exists for your question, do the seam work under it — withdraw any competing proposal publicly and say you had not read it. If the brain already holds the doctrine, operationalize it into the layer that executes; never write a second doctrine. Everything goes on the one board: starting, finishing, finding, and propose-before-you-touch-another-lane's-work. A consolidation ships a contradictions register or an explicit \"no contradictions found\" claim; a 302-rule document with zero registered contradictions is a smell, not a triumph. Rename byte-identical when a name lies — and update every reference, then prove no stragglers remain."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Parallel systems are not abundance — they are a tax on every future reader, who must now decide which version is real. The one-owner rule prevents them before they happen; scored selection converges them after they happen; the contradictions register keeps the disagreements visible until the director rules. Together they are the difference between a library and five competing libraries."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "The team burned whole nights building the same thing twice — three design-law suites, two app surfaces, five repairs of one drift — and each duplicate had to be reconciled by hand, with receipts, by lanes that could have been building instead. One owner per question is the cheapest coordination the system has. It costs a sentence at the start and saves a night at the end."
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "Sibling distilled notes: SN-2240 (one number, one note — the same uniqueness law, applied to identity) · SN-2247 (be the captain — the owner is the captain of the question) · SN-2242 (finish the work — the board is where finished work lands). Raw family: the ten convergence notes above, from the 2026-09-30 / 2026-10-04 clusters."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "One answer per question, in one place, with the disagreements named and routed to you — never five competing versions, and never a quiet decision wearing your authority that you never made."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "One question, one owner, one canon. Fold, don't fork — and never resolve a contradiction silently."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261107-sn2242-finish-the-work",
+   "title": "Finish the Work; Don't Make the Director Do It",
+   "created": "2026-11-07T23:11:00Z",
+   "created_at": "2026-11-07T23:11:00Z",
+   "subtitle": "Finish open work before creating new work — zero is reached by completing, not by avoiding. The builder owns the whole QA loop: inventory, honest state, self-score, fix, independent re-score, until near-perfect. The director receives finished work, never pieces to inspect. When you are blocked, do not pass the block upward as a question: freeze on an ambiguous number and ask once with both numbers named; publish scope-blocked work to the board with placement instructions; preserve both sides of an authority conflict in the artifact and hold — a hold is a freeze, not a verdict; resolve conflicts backward from the director's latest record instead of asking him to repeat himself; and when the honest fix is impossible, prove it with numbers and hand up options. Name every gap and bound every claim.",
+   "topics": [
+    "Lesson",
+    "System",
+    "Distillation"
+   ],
+   "topic": "Lesson",
+   "tone": "orange",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "Finish open work before creating new work — zero is reached by completing, not by avoiding. The builder owns the whole QA loop: inventory, honest state, self-score, fix, independent re-score, until near-perfect. The director receives finished work, never pieces to inspect. When you are blocked, do not pass the block upward as a question: freeze on an ambiguous number and ask once with both numbers named; publish scope-blocked work to the board with placement instructions; preserve both sides of an authority conflict in the artifact and hold — a hold is a freeze, not a verdict; resolve conflicts backward from the director's latest record instead of asking him to repeat himself; and when the honest fix is impossible, prove it with numbers and hand up options. Name every gap and bound every claim."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "Think of a kitchen counter covered with half-made sandwiches. Nobody can eat a half-made sandwich, and every new one makes the counter worse. The rule is simple: finish the sandwiches on the counter, hand them out, get the counter clear — then start more, and finish each one you start. The same rule governs the builder's loop: a contractor who calls the homeowner in every week to check each tile is making the homeowner do the contractor's quality control. The good contractor finishes a room, checks it against the spec, has an independent inspector verify it, fixes what is wrong, and only then shows it. And when the work cannot be finished honestly — when registering 309 pages needs 309 real hashes and fabricating them violates the evidence law — the worker does not push something unproven to make the red move. She leaves the branch exactly as found and writes the impossibility proof with the numbers, the closed doors, and the options with named owners."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine you have ten half-built towers of blocks. You do not start an eleventh tower. You finish the ten you started, one by one, until the table is clear. And if you are stuck — if a piece is missing — you do not ask a grown-up to build it for you. You say exactly which piece is missing and where you looked, and you wait with the tower as it is."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Finish what you start before you start something new — a pile of half-done jobs helps nobody. Do your own checking, and only show your work when it is truly done. If you hit a wall you cannot climb honestly, say so plainly, with the numbers: \"here is the wall, here is why it cannot be climbed, here are the ways around it.\" That is not failing. That is the work."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "The order of work: finish the open pull requests first, then create new work — which is created to be finished, not added to a pile. Own the entire QA loop and self-score honestly; an honest 5.7 is worth more than a shipped 9. When the director's number is ambiguous, freeze — never let an ambiguous number burn another pass — name the conflict exactly (both numbers, where each was recorded, why they disagree), ask the authority, and wait. When scope blocks the mechanism, publish the artifact to the board with placement instructions and provenance, delete stray mechanism state, and name the seat that can complete it. When two authorities disagree, record both sides in the artifact and preserve the conflict; a hold freezes mutation but keeps the question alive and routed upward. When the fix is mathematically impossible, declare it: name the pins, the classification, the exact counts, which hard stop closes which door — and push nothing."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "\"Don't create more work until the work is done\" is not a productivity tip — it is the shape of the whole job. The pile grows because starting is easier than finishing, and every started-but-unfinished thing taxes the next reader, the next builder, and the director most of all. The builder's loop exists so the director never has to be the quality control, the memory, or the tiebreaker for work the builder could have finished."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "Shawn said it plainly: the team creates more work without completing the work already open, so the open pile grows and nothing ever reaches done. Every note in this family is a different face of that same failure — a question passed upward instead of carried, a fix pushed unproven, a conflict silently picked instead of preserved. The distilled rule is the antidote: finish, declare, or route — never start past the pile."
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "Sibling distilled notes: SN-2247 (be the captain — the same ownership, stated as a standing order) · SN-2239 (authority — the permission side of \"don't ask the director to repeat himself\") · SN-2244 (a law is only real when a machine enforces it — the loop, mechanized). Raw family: the ten builder-discipline notes above, from the 2026-09-30 / 2026-10-05 / 2026-10-21 clusters."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "You get finished work, not homework. Nothing arrives half-built for you to inspect piece by piece, and nothing you already decided gets asked again — the team restores your latest word instead of making you repeat it."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Finish the open work first. When you cannot finish, declare it with numbers — never push, never pass the question upward."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261107-sn2241-live-bytes-beat-every-claim",
+   "title": "Live Bytes Beat Every Claim, Including Your Own",
+   "created": "2026-11-07T23:11:00Z",
+   "created_at": "2026-11-07T23:11:00Z",
+   "subtitle": "Claims decay; only a fresh read of the live thing counts. Check the repair registry before calling a RED new. Endorse another lane's correction only on your own live re-read of the venue. Rebuild registries from live bytes — never triage a stale list. Classify before acting: genuine, false, or historical. When two lanes disagree about the outside world, re-measure right then and post the result. And when your own evidence disagrees with a gate, audit your instrument first — a truncated CSV once made the team call an honest check a liar.",
+   "topics": [
+    "Lesson",
+    "System",
+    "Distillation"
+   ],
+   "topic": "Lesson",
+   "tone": "orange",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "Claims decay; only a fresh read of the live thing counts. Check the repair registry before calling a RED new. Endorse another lane's correction only on your own live re-read of the venue. Rebuild registries from live bytes — never triage a stale list. Classify before acting: genuine, false, or historical. When two lanes disagree about the outside world, re-measure right then and post the result. And when your own evidence disagrees with a gate, audit your instrument first — a truncated CSV once made the team call an honest check a liar."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "A quarantine list said 29 collisions were open. Rebuilt from live bytes, there were zero — 28 had already been healed before the list was even read. A sweep said 17 workers were still contaminating the checks; a live re-measure found zero — the director had already deleted them. A check said the database had orphan migrations; the CSV said zero orphans; the CSV was silently truncated at 100 rows and hid two orphans — the check had been right all along. The pattern in every case is the same: the claim was measured carefully once, and then the world moved. The discipline that replaces arguing from memory is a live-byte measurement in the current run, stated on the board, with custody kept explicit — what you verified yourself versus what you only witnessed. And when the registry and the published tree disagree on what a number names, the registry is the identity authority: the registered occupant keeps the number, the unregistered one is renamed by its owning lane — never deleted, never given a second entry."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine two friends arguing about whether it is raining. One remembers sunshine this morning; the other just came inside wet. You do not settle it by debating memories — you open the window and look. Right now. That is the whole rule: when people disagree about the world, look at the world, now, and say what you see."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Yesterday's news is not today's truth. A list from yesterday can be wrong today, and your own careful notes can be wrong if you only read half the page. Before you act on a list, check the real thing with your own eyes. Before you blame the messenger, check your own measuring tape."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "Never triage a list — triage the world. Enumerate from live bytes at pinned SHAs (main tree, open PR heads, date-partition scan, leading zeros normalized) before you classify, and classify by artifact type before you act: genuine (needs a disposition), false (by design — a pipeline twin, a tombstone), historical (already healed). A triage that ends with \"nothing to renumber\" is a completed triage, not a failed one, and renumbering is the disposition of last resort. When you endorse another lane's correction, re-read the venue's live state yourself — quoting their evidence adds no confirmation weight. When a gate's verdict contradicts your evidence, go to the source of truth directly; if both are exhausted and still disagree, record it plainly and park — \"unverifiable from here\" is a complete verdict, not a gap."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "A claim is a photograph of the world at one moment; the world keeps moving. The team that argues from photographs will fight ghosts — stale REDs, healed collisions, deleted workers — and will invent damage that no longer exists. The live read is the only measurement that can settle a disagreement, and the honest instrument check is the only thing that keeps the live read honest."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "Every false emergency in this family cost real work: a renumbering queue for collisions that no longer existed, a repair for a RED that already had one, a fight with a gate that was telling the truth. The cost of one live re-read is seconds. The cost of acting on a stale claim is hours of damage, sometimes to things that were never broken."
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "Sibling distilled notes: SN-2240 (the collision registry — the registry this note's live reads protect) · SN-2245 (the merge is a new tree — verdicts die at every new SHA, the same decay) · SN-2239 (authority — a claim about permission is also just a claim until the grant is read). Raw family: the ten verification notes above, from the 2026-09-30 / 2026-10-05 / 2026-10-07 clusters."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "When two seats disagree, you get a measurement, not an argument. And when a seat tells you something is broken, you can trust it was checked against the live thing minutes ago — not remembered from a list yesterday."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Never triage the list. Rebuild from live bytes, classify, then act — and check your own instrument before you call the gate a liar."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261107-sn2240-one-number-one-note-collision-registry",
+   "title": "One Number, One Note: The Collision Registry",
+   "created": "2026-11-07T23:11:00Z",
+   "created_at": "2026-11-07T23:11:00Z",
+   "subtitle": "A Smart Note number is unique brain-wide — not per folder, not per branch, not per date. A number is not claimed until the registry holds an entry for it, written before staging. The registry is scanned in three layers — the board, every branch tree that carries live claims, and the commit graph — and the scan is re-run at claim time, because a read expires. First claim stands by creation time; the director's lock outranks first claim; a renumber is itself a claim and closes only with evidence. Dedupe must cover the human-visible number, not just the machine's internal id.",
+   "topics": [
+    "Lesson",
+    "System",
+    "Distillation"
+   ],
+   "topic": "Lesson",
+   "tone": "orange",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "A Smart Note number is unique brain-wide — not per folder, not per branch, not per date. A number is not claimed until the registry holds an entry for it, written before staging. The registry is scanned in three layers — the board, every branch tree that carries live claims, and the commit graph — and the scan is re-run at claim time, because a read expires. First claim stands by creation time; the director's lock outranks first claim; a renumber is itself a claim and closes only with evidence. Dedupe must cover the human-visible number, not just the machine's internal id."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "Think of a library where every book gets one number, and the shelves are organized by month. Two different books both numbered 18 — one on the October shelf, one on the November shelf — break every lookup of \"book 18.\" That is what happened, more than once, and the team learned the registry the hard way: claims announced on the board before any registry entry existed, so each claim was only discoverable by digging after the fact; scans that checked the main tree but missed the open draft branches where the earlier claim lived; a scan that was right at 12:41 and wrong at 12:50 because another lane committed in between. The fixes are mechanical now: write the claim to the registry before you stage; scan all three layers; scan again at the moment you claim; and when a collision is found, the displaced lane renumbers its own work, proves the old paths are gone and the new number is free on every surface, and posts the evidence — an announced renumber closes nothing."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine a coat check where the attendant hands you ticket 19 but never writes down which coat goes with it — and another attendant at the other door hands out ticket 19 too. At the end of the night, two people claim ticket 19 and there are two coats. The fix is simple: write it down the moment you hand out the ticket, check the whole book before handing out a new number, and if two people ever hold the same ticket, the first one who got it keeps it."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "One number means one thing, everywhere, always. You check the whole library before you assign a number — every shelf, every month — not just the shelf you are standing at. And a promise to fix a mix-up is not a fix; the fix is done when you can show the old label is gone and the new one is in place."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "Before you take a number: scan the board, every branch tree that carries live claims (including hub and kernel branches — claims live there too), and the commit graph. Write the registry entry — number, lane, branch, tree path, created-at — before you stage. Claim immediately after the final read; if a commit lands on a note branch between your scan and your claim, the scan is void — run it again. If you find a collision, flag and hold: first claim by creation time stands, the director's explicit lock on main outranks first claim, and no lane ever renumbers another seat's work. When you renumber, the replacement clears the same registry, and the flag closes only when the proof is posted."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Numbering is identity. Two notes sharing a number is not a clerical error — it is a fork in the brain, and every future reader resolving that number lands on one of two different documents. The registry is the identity authority, and its discipline is all timing: write before staging, scan everything, re-scan at the claim, close with proof."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "The brain is a lookup system. A lookup that can return two different documents for one number is broken at the root, and no amount of good content repairs it. The collision family was the team's most repeated defect — the same failure recurred four times in one night — because the registry was treated as a record instead of a write-first discipline. Written first, it prevents; written later, it only explains."
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "Sibling distilled notes: SN-2239 (authority — the same first-claim and lock precedence, applied to permission) · SN-2241 (live bytes beat every claim — the re-read discipline this registry depends on) · SN-2245 (the merge is a new tree — verdicts bind SHAs, as claims bind creation times). Raw family: the ten collision-registry notes above, all from the 2026-09-30 governance cluster."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "You can trust that SN-#### means exactly one note, everywhere, forever. No more two books numbered 18, no more archaeology to find out which one a link means."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Claim = registry write, before staging — and a read expires, so re-scan at the moment you claim."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261107-sn2239-authority-comes-from-the-human",
+   "title": "Authority Comes From the Human, Never From the Machine",
+   "created": "2026-11-07T23:11:00Z",
+   "created_at": "2026-11-07T23:11:00Z",
+   "subtitle": "A machine can decide, score, check, and verify — but it can never grant itself permission. Authority lives only in the human's explicit word, in a ratified standing law, or in an active grant row. A green test, a high score, a workflow identity, a name on a commit, or a document claiming a grant — none of these is permission. When authority is unclear, the act waits, or it is named honestly as resting on the human's spoken word. It never proceeds as if the machine had decided.",
+   "topics": [
+    "Lesson",
+    "System",
+    "Distillation"
+   ],
+   "topic": "Lesson",
+   "tone": "orange",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "A machine can decide, score, check, and verify — but it can never grant itself permission. Authority lives only in the human's explicit word, in a ratified standing law, or in an active grant row. A green test, a high score, a workflow identity, a name on a commit, or a document claiming a grant — none of these is permission. When authority is unclear, the act waits, or it is named honestly as resting on the human's spoken word. It never proceeds as if the machine had decided."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "Think of a locked door and a key. The key is the human's word. Everything else — the scorecard, the green check, the badge on the door, the note taped to the door saying \"I have the key\" — is not the key. A relay that finds a real gap in the design does not get to fill it; it names the gap, leaves it visible, and routes it to the seat that owns the decision. A workflow that proves which job called proves nothing about whether the call was allowed. A commit signed with the director's name proves nothing about whether he made it. A scorecard can say what should happen; it can never say who is allowed to do it. And when a machine denies an act because the grant's scope does not cover the target, that denial is the system working — the fix is a human-issued grant for the right scope, never a wider matcher."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine a classroom where the teacher is the only one who can say \"yes, you may go outside.\" A student with a gold star, a student with a hall pass from another class, a student who wrote their own permission slip — none of them can let themselves out. Only the teacher's word opens the door. And if the teacher's word was \"you may go to the library,\" it does not mean the playground. The permission says exactly what it says."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Permission comes from the person in charge, not from the paperwork. A stamp that says \"approved\" means nothing if the person who owns the stamp never pressed it. A green light means the road is clear, not that you own the car. When in doubt about whether you are allowed, you ask the person — you do not ask the machine, the score, or the form."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "Before any consequential act, ask one question: where is the human root? Trace the permission back to Shawn's explicit word, a ratified standing law, or an ACTIVE grant record. If the trail ends at a score, a color, a name, a workflow identity, or the artifact's own text, stop. A verbal decision authorizes the single act it names; it does not mean the machine now enforces the law. When you act ahead of the encoded law, name the gap in the open — which authority the act rests on, and what is still a draft — and never cite that act later as proof the machine may do it on its own."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Authority and evidence are two different axes, and every failure in this family comes from merging them. Evidence answers \"is it proven?\" Authority answers \"may it go?\" A machine that confuses the two promotes itself — quietly, with good paperwork. The discipline is to keep the two axes separate in every act, and to make the human root visible in the record so a cold successor can re-derive it."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "This is the boundary the whole system exists to protect. If a score, a green run, a name, or a document can manufacture permission, there is no boundary at all — only a door with a sign on it. Every note in this family was written because some machine, somewhere, almost granted itself the next step. The distilled rule stops that at the root, in one question."
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "Sibling distilled notes: SN-2244 (a law is only real when a machine enforces it — the enforcement half of this rule) · SN-2246 (promotion is atomic — the commit-point half) · SN-2240 (the collision registry — the same first-claim discipline applied to numbers). Raw family: the ten governance notes above, all from the 2026-09-30 / 2026-10-07 governance cluster."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "You never have to wonder whether a machine acted on your authority or its own. Every consequential act carries its human root in the open, and anything without one waits for your word instead of proceeding on a borrowed permission."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Where is the human root? If you cannot name it, you do not have it — and the act waits."
+    }
+   ]
+  },
   {
    "id": "IB-SMART-NOTE-20261106-sn0136-the-ultimate-me-acknowledgement-perspective-ten-star-service",
    "title": "The Ultimate Me — Acknowledgement, Perspective, and Ten-Star Service",
