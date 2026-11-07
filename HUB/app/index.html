@@ -4211,7 +4211,7 @@ const Router = (() => {
         handler = routes['hub/:room'];
         params = { room: segs[1] };
         key = 'hub/:room';
-      } else if ((segs[0] === 'smart-notes' || segs[0] === 'notes' || segs[0] === 'note') && segs[1]) {
+      } else if ((segs[0] === 'smart-notes' || segs[0] === 'notes' || segs[0] === 'note' || segs[0] === 's') && segs[1]) {
         handler = routes['smart-notes/:slug'];
         params = { slug: segs[1] };
         key = 'smart-notes/:slug';
@@ -8319,7 +8319,7 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
   // /note/<slug>, /note?n=<slug>): the worker serves the Hub shell there, so
   // carry the slug into the hash and open the note INSIDE the Hub.
   if (!location.hash) {
-    var notePath = location.pathname.match(/^\/(?:smart-notes|notes|note)\/([^/]+)\/?$/);
+    var notePath = location.pathname.match(/^\/(?:s|smart-notes|notes|note)\/([^/]+)\/?$/);
     var noteQuery = null;
     if (!notePath && (location.pathname === '/smart-notes' || location.pathname === '/note')) {
       try { noteQuery = new URLSearchParams(location.search).get('n'); } catch (e) {}
