@@ -9363,5 +9363,33 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
 })();
 </script>
 
+<script>
+/* - Card to Note wiring (Resolve, 2026-11-07) -
+   The Hub router has always known #/smart-notes/<slug> (HubView
+   noteView renders the complete block inside the Hub), and clean
+   /smart-notes/<slug> URLs now 302 into that address at the worker.
+   What was missing: the feed cards themselves never navigated - a
+   click on a card did nothing at all (click-walk 2026-11-07, twice).
+   This delegated listener closes that last inch: a click anywhere on
+   a note board that is not already an interactive control opens the
+   note inside the Hub. Boards carry their note id in
+   data-intelligence-id="smart-note-<slug>". */
+(function () {
+  'use strict';
+  var style = document.createElement('style');
+  style.textContent = 'article.intel-board{cursor:pointer}';
+  document.head.appendChild(style);
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('a, button, input, textarea, select, [role="button"], .ib-layer-play, .board-top-actions, .naya-voice-btn')) return;
+    var board = e.target.closest('article.intel-board');
+    if (!board) return;
+    var iid = board.getAttribute('data-intelligence-id') || '';
+    var m = iid.match(/^smart-note-(sn-?\d+)$/i);
+    if (!m) return;
+    var target = '#/smart-notes/' + m[1].toLowerCase();
+    if (location.hash !== target) location.hash = target;
+  });
+})();
+</script>
 </body>
 </html>
