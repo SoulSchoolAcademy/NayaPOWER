@@ -309,8 +309,11 @@
   /* --- the ultimate: three reels, bottom to top, chakra colors --- */
   function buildReel(reel, target){
     var div = parseInt(reel.getAttribute('data-div'), 10);
-    /* the strip length comes from the TARGET, not the old data-max —
-       a strip rebuilt with the old length is still too short for the bigger count */
+    /* the strip is a fixed 10-digit cycle (0-9), never as long as the count —
+       a strip built to the target is 12 million nodes for an 8-digit number
+       and freezes the page the moment it scrolls into view. The reel shows
+       one digit at a time, and that digit is count % 10, so 10 spans are all
+       it ever needs; the translation wraps (see setReel) instead of running away. */
     var max = Math.floor(target / div);
     reel.setAttribute('data-max', String(max));
     var strip = reel.querySelector('.strip');
@@ -322,14 +325,13 @@
       var win = document.createElement('span'); win.className = 'window'; reel.insertBefore(win, strip); win.appendChild(strip);
     }
     var html = '';
-    for (var i = 0; i <= max; i++) {
-      var d = i % 10;
-      html += '<span class="rd">' + d + '</span>';
+    for (var i = 0; i < 10; i++) {
+      html += '<span class="rd">' + i + '</span>';
     }
     strip.innerHTML = html;
     /* park on the final digit, in rest style (obsidian + white light) */
     var finalCount = Math.floor(target / div);
-    strip.style.transform = 'translateY(' + (-finalCount * H) + 'px)';
+    strip.style.transform = 'translateY(' + (-(finalCount % 10) * H) + 'px)';
   }
   function buildReels(el, target){
     target = target || TARGET;
@@ -347,14 +349,27 @@
   function reelObjs(el){
     var out = [];
     el.querySelectorAll('.reel').forEach(function(reel){
-      out.push({ reel: reel, strip: reel.querySelector('.strip'), div: parseInt(reel.getAttribute('data-div'), 10), last: null, lastFlash: 0 });
+      out.push({ reel: reel, strip: reel.querySelector('.strip'), div: parseInt(reel.getAttribute('data-div'), 10), last: null, lastFlash: 0, y: null });
     });
     return out;
   }
   function easeOutQuint(p){ return 1 - Math.pow(1 - p, 5); } /* slow-mo: long slow finish */
   /* one frame of a reel: park the strip on the count, follow the colour, flash the tile */
   function setReel(o, count, ts){
-    o.strip.style.transform = 'translateY(' + (-count * H) + 'px)';
+    /* the translation wraps every 10 counts (the strip is a 0-9 cycle), so it
+       stays bounded no matter how big the number is. When the wrap would jump
+       the strip backwards, snap it with the transition off — invisible, because
+       the strip repeats every 10 digits — so the roll never scrolls the wrong way. */
+    var y = -((count % 10) * H);
+    if (o.y !== undefined && o.y !== null && y > o.y) {
+      o.strip.style.transition = 'none';
+      o.strip.style.transform = 'translateY(' + y + 'px)';
+      void o.strip.offsetWidth;
+      o.strip.style.transition = '';
+    } else {
+      o.strip.style.transform = 'translateY(' + y + 'px)';
+    }
+    o.y = y;
     var cur = count % 10;
     if (cur !== o.last) {
       o.reel.classList.remove('rest');
@@ -372,8 +387,10 @@
   }
   function snapStrips(reels, val){
     reels.forEach(function(o){
+      var y = -((Math.floor(val / o.div) % 10) * H);
       o.strip.style.transition = 'none';
-      o.strip.style.transform = 'translateY(' + (-Math.floor(val / o.div) * H) + 'px)';
+      o.strip.style.transform = 'translateY(' + y + 'px)';
+      o.y = y;
     });
   }
   function restoreStrips(reels, el){
