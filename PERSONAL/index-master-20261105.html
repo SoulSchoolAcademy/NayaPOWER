@@ -1930,6 +1930,13 @@ body{background:#050507;margin:0;overflow-x:hidden;font-family:Inter,system-ui,s
   transform:translateY(-2px);background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.05) 45%,rgba(0,0,0,.22));}
 .up-act:active{transform:translateY(0);}
 @media(max-width:640px){.up-act{flex:1 1 44%;font-size:13px;padding:12px 14px;}}
+/* R3 FIX D (2026-11-07): at 390 the Join label overflowed its box
+   (scrollWidth 121 vs clientWidth 105 — the "T" clipped) while the box
+   itself fit. The label is the longest in the row, so it alone gets room:
+   11px + tighter side padding + no letter-spacing, same 12px vertical
+   padding (same 46px height as its row-mates). Label and destination
+   unchanged; the button does not move. */
+@media(max-width:640px){#joinbtn{font-size:10.5px;padding:12px 8px;letter-spacing:0;}}
 .ph-connect{background:#050507;border:2px solid #a06bff;color:#fff;padding:14px 36px;border-radius:999px;
   font-size:14px;font-weight:800;cursor:pointer;font-family:inherit;transition:all .2s;letter-spacing:.5px;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 24px rgba(160,107,255,.35);}
@@ -2419,6 +2426,8 @@ button:hover{
 .tn-li-line.loading{animation:tnLiPulse 1.6s ease-in-out infinite}
 @keyframes tnLiPulse{0%,100%{opacity:1}50%{opacity:.45}}
 .tn-li-stars{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+/* RETHINK: Living counts row leaves with the gauge — the counts live in the Dashboard pulse. */
+[data-tn-li="stars"]{display:none !important;}
 .tn-li-star{display:inline-flex;align-items:baseline;gap:7px;padding:8px 14px;border-radius:999px;background:linear-gradient(180deg,#13131b,#08080d);border:1px solid color-mix(in srgb,var(--sc) 60%,transparent);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),inset 0 -6px 12px rgba(0,0,0,.5),0 0 16px -2px var(--sc);transition:transform .18s,box-shadow .25s}
 .tn-li-star b{color:#fff;font-size:15px;font-weight:900;text-shadow:0 0 10px var(--sc)}
 .tn-li-star i{font-style:normal;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--sc);font-weight:700}
@@ -4374,15 +4383,24 @@ html.os-calm
 .os-id-lab{font-size:11px;letter-spacing:.18em;font-weight:800;color:rgba(255,255,255,.55);margin:2px 0 5px}
 .os-id-txt{font-size:19px;line-height:1.45;color:#fff;font-weight:600}
 @media(max-width:640px){.os-id-txt{font-size:17px}}
+/* RETHINK hero pill — compact score, jewel style, links to the Dashboard gauge. */
+.os-hero-pill{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:8px 16px;border-radius:999px;border:1.5px solid rgba(160,107,255,.7);background:linear-gradient(135deg,#1a1030,#2a1650);color:#fff;font-size:15px;font-weight:800;letter-spacing:.06em;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.5),0 0 14px rgba(160,107,255,.35);}
+.os-hero-pill:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.55),0 0 20px rgba(160,107,255,.5);}
 </style>
 <div class="ph-sec os-view on" data-os-view="home" data-block="identity" id="os-identity">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#e84fff;color:#e84fff;"></span> Who I am</div>
 <div class="ph-card" style="--ac:#a06bff;">
+    <button class="os-hero-pill" id="os-hero-pill" type="button" data-os-go="dashboard" title="Open your Smart Score on the Dashboard">&hellip; &middot; SMART SCORE</button>
+<script>
+/* RETHINK hero pill: settled spine value only, never a sweep frame.
+   window._osSpine.score is the settled formula value (300 in the stub);
+   the pill reads it, never the animated big number. */
+(function(){ var pill=document.getElementById('os-hero-pill'); if(!pill) return;
+function sync(){ try{ var s=window._osSpine; if(s && typeof s.score==='number' && isFinite(s.score)){ var t=Math.round(s.score)+' \u00b7 SMART SCORE'; if(pill.textContent!==t) pill.textContent=t; } }catch(e){} }
+setInterval(sync, 500); sync(); })();
+</script>
 <div class="os-id-row"><span class="os-jewel" style="--jc:#a06bff">✦</span><div><div class="os-id-lab">WHAT I DO</div><div class="os-id-txt">Founder of NayaNET — building the intelligent layer of the internet.</div></div></div>
 <div class="os-id-row"><span class="os-jewel" style="--jc:#e84fff">♥</span><div><div class="os-id-lab">MOTTO</div><div class="os-id-txt">“Once you go, you don’t go back.”</div></div></div>
-<div class="os-id-row"><span class="os-jewel" style="--jc:#3fb8ff">◉</span><div><div class="os-id-lab">VISION</div><div class="os-id-txt">A world where intelligence compounds and everybody wins.</div></div></div>
-<div class="os-id-row"><span class="os-jewel" style="--jc:#ffbf3d">◎</span><div><div class="os-id-lab">GOAL</div><div class="os-id-txt">One million citizens by 2027.</div></div></div>
-<div class="os-id-row"><span class="os-jewel" style="--jc:#2fe89e">➤</span><div><div class="os-id-lab">MISSION</div><div class="os-id-txt">Build NayaNET — the intelligent highway for the AI age.</div></div></div>
 </div>
 </div>
 <!-- ═══ PERSONAL SEARCH — the one-search part, BELOW the cover ═══
@@ -4407,7 +4425,7 @@ html.os-calm
 </div>
 <div class="ph-main">
 <!-- ═══ LIVING INTELLIGENCE — transplanted verbatim from the dashboard 2026-10-31 · scorecard rework · reads PERSONAL's numbers via the bridge above ═══ -->
-<section class="tn-li" data-tn-li="strip" aria-label="Living intelligence">
+<section class="tn-li os-view on" data-os-view="home" data-tn-li="strip" aria-label="Living intelligence">
   <div class="tn-li-strip">
     <div class="tn-li-top">
       <span class="tn-li-orb" aria-hidden="true"></span>
@@ -4431,6 +4449,33 @@ html.os-calm
   <p class="tn-li-status" data-tn-li="status" role="status"></p>
   <p class="tn-li-truth">Truth: this reading is computed live from your world's ledger — never simulated.</p>
 </section>
+<div class="ph-sec os-view on" id="os-wall" data-os-view="home" data-block="wall">
+<div class="ph-sec-t"><span class="ph-dot" style="background:#a06bff;color:#a06bff;"></span> Live Wall</div>
+<div class="ph-card" style="--ac:#a06bff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">✦</span> Post to this wall</h3>
+<div class="tg-modes" role="group" aria-label="Choose your note type">
+<button type="button" class="tg-mode on" data-tg-mode="naya" style="--mc:#2fe89e"><span class="tg-dot"></span>✎ Naya note</button>
+<button type="button" class="tg-mode" data-tg-mode="smart" style="--mc:#a06bff"><span class="tg-dot"></span>✦ Smart note</button>
+</div>
+<p class="os-note tg-hint" id="tg-hint">Naya note &mdash; your words, beautiful. Posted exactly as you wrote them.</p>
+<input class="os-input" id="os-post-author" type="text" placeholder="Your name (visitor or owner)" autocomplete="name">
+<div class="os-fieldwrap"><textarea class="os-textarea" id="os-post-body" rows="3" placeholder="Post to this app&rsquo;s wall&hellip;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-post-body" aria-label="Dictate your post" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" id="os-sched-btn" type="button">🕐 Schedule</button><button class="ph-connect" id="os-post-btn" type="button">Post to wall</button></div>
+<div class="os-status" id="os-post-status"></div>
+<div id="tg-review" hidden>
+<div class="tg-review-card">
+<p class="os-note" style="margin:0 0 6px;">Your words, untouched:</p>
+<div class="tg-raw" id="tg-raw"></div>
+<p class="os-note" style="margin:10px 0 6px;">The distilled draft &mdash; edit anything, then post. <span style="opacity:.75">Drafted from your words on this device; nothing leaves until you post.</span></p>
+<div class="os-fieldwrap"><textarea class="os-textarea" id="tg-draft" rows="7"></textarea></div>
+<div class="ph-actions"><button class="ph-msg" id="tg-back" type="button">&larr; Back to my words</button><button class="ph-connect" id="tg-post-smart" type="button">Post smart note</button></div>
+</div>
+</div>
+</div>
+<div class="os-status" id="os-wall-meta"></div>
+<div id="ib-catmount"></div>
+<div id="os-wall-list"><div class="os-skel"></div></div>
+</div>
 <script>
 /* ═══ PERSONAL PULSE BRIDGE — 2026-10-31 · scorecard rework ═══
    Feeds the transplanted living-intelligence engine (next script) with THIS
@@ -5958,7 +6003,33 @@ button.os-ld-node .os-ld-n{
 #os-yourworld-btn{ width:100%; }
 
 </style>
-<div class="os-ld-org" id="os-ld-org" data-os-view="home" data-block="constellation">
+<section class="ph-card os-viewport-card os-featured-panel os-view on" id="os-featured" data-os-view="home" style="--ac:#a06bff;">
+<div class="os-feat-top"><span class="os-feat-marker" id="os-feat-marker">★ FEATURED</span><span class="os-feat-name" id="os-feat-name">Your ambassador link</span></div>
+<div class="os-feat-stats" id="os-feat-stats"></div>
+<p class="os-note os-feat-scope" id="os-feat-scope">Reading your world…</p>
+<div class="os-feat-creator" id="os-feat-creator"><div class="os-feat-creator-label">Add a Smart Link — any URL becomes a tracked link</div>
+<div class="os-sl-add-top">
+<div class="os-fieldwrap"><input class="os-input" id="os-dl-url" type="url" placeholder="Paste your website, Facebook, YouTube, X, TikTok, or Instagram URL…" autocomplete="off"></div>
+<div class="os-fieldwrap"><input class="os-input" id="os-dl-name" type="text" placeholder="Pick your name — for example: yourname" autocomplete="off"></div>
+<div class="os-status" id="os-dl-verdict">Your link becomes nayanet.app/<i>yourname</i> — we track every click.</div>
+<div class="ph-actions"><button class="ph-connect" id="os-dl-claim" type="button">Claim this name</button></div>
+<div class="os-status" id="os-dl-status"></div>
+</div>
+</div>
+</section>
+<div class="ph-sec os-view on" data-os-view="home" data-block="yourworld">
+<button class="up-act" id="os-yourworld-btn" type="button" aria-expanded="false" style="--ac:#a06bff;">🌍 <span class="os-yw-label">Your World — see every board</span></button>
+</div>
+<section class="os-world-boards os-boards-hidden os-view on" id="os-world-boards" data-os-view="home">
+<h3>Your world, board by board</h3>
+<p class="os-note os-wb-sub">Every page and every link, one board each. Click “Show in Dashboard” and that board moves up into the featured role — the Dashboard gauge follows it.</p>
+<div id="os-boards-list"></div>
+</section>
+
+<div class="ph-sec os-view" data-os-view="dashboard" data-block="dashboard">
+<div class="ph-sec-t"><span class="ph-dot" style="background:#e84fff;color:#e84fff;"></span> Your World, Live &middot; Dashboard</div>
+<div class="os-dash" id="os-dash">
+<div class="os-ld-org" id="os-ld-org" data-os-view="dashboard" data-block="constellation">
 <div class="tn-truth-meter tn-truth-m-loading" id="tn-truth-meter" role="status" aria-live="polite"><span class="tn-truth-dot"></span></div>
 <!-- SCREEN-1 REBUILD 2026-11-01 — the Living Narrator IS the hero voice.
      The one human sentence that reads your score, first, large, centered.
@@ -6007,59 +6078,6 @@ button.os-ld-node .os-ld-n{
 <button type="button" class="os-ld-drawer-x" id="os-ld-drawer-x" aria-label="Close detail">×</button>
 <div id="os-ld-drawer-body"></div>
 </div>
-<section class="ph-card os-viewport-card os-featured-panel" id="os-featured" data-os-view="home" style="--ac:#a06bff;">
-<div class="os-feat-top"><span class="os-feat-marker" id="os-feat-marker">★ FEATURED</span><span class="os-feat-name" id="os-feat-name">Your ambassador link</span></div>
-<div class="os-feat-stats" id="os-feat-stats"></div>
-<p class="os-note os-feat-scope" id="os-feat-scope">Reading your world…</p>
-<div class="os-feat-creator" id="os-feat-creator"><div class="os-feat-creator-label">Add a Smart Link — any URL becomes a tracked link</div>
-<div class="os-sl-add-top">
-<div class="os-fieldwrap"><input class="os-input" id="os-dl-url" type="url" placeholder="Paste your website, Facebook, YouTube, X, TikTok, or Instagram URL…" autocomplete="off"></div>
-<div class="os-fieldwrap"><input class="os-input" id="os-dl-name" type="text" placeholder="Pick your name — for example: yourname" autocomplete="off"></div>
-<div class="os-status" id="os-dl-verdict">Your link becomes nayanet.app/<i>yourname</i> — we track every click.</div>
-<div class="ph-actions"><button class="ph-connect" id="os-dl-claim" type="button">Claim this name</button></div>
-<div class="os-status" id="os-dl-status"></div>
-</div>
-</div>
-</section>
-<div class="ph-sec" data-os-view="home" data-block="yourworld">
-<button class="up-act" id="os-yourworld-btn" type="button" aria-expanded="false" style="--ac:#a06bff;">🌍 <span class="os-yw-label">Your World — see every board</span></button>
-</div>
-<section class="os-world-boards os-boards-hidden" id="os-world-boards" data-os-view="home">
-<h3>Your world, board by board</h3>
-<p class="os-note os-wb-sub">Every page and every link, one board each. Click “Show on gauge” and that board moves up into the featured role — the gauge follows it.</p>
-<div id="os-boards-list"></div>
-</section>
-<div class="ph-sec os-view on" id="os-wall" data-os-view="home" data-block="wall">
-<div class="ph-sec-t"><span class="ph-dot" style="background:#a06bff;color:#a06bff;"></span> Live Wall</div>
-<div class="ph-card" style="--ac:#a06bff;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">✦</span> Post to this wall</h3>
-<div class="tg-modes" role="group" aria-label="Choose your note type">
-<button type="button" class="tg-mode on" data-tg-mode="naya" style="--mc:#2fe89e"><span class="tg-dot"></span>✎ Naya note</button>
-<button type="button" class="tg-mode" data-tg-mode="smart" style="--mc:#a06bff"><span class="tg-dot"></span>✦ Smart note</button>
-</div>
-<p class="os-note tg-hint" id="tg-hint">Naya note &mdash; your words, beautiful. Posted exactly as you wrote them.</p>
-<input class="os-input" id="os-post-author" type="text" placeholder="Your name (visitor or owner)" autocomplete="name">
-<div class="os-fieldwrap"><textarea class="os-textarea" id="os-post-body" rows="3" placeholder="Post to this app&rsquo;s wall&hellip;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-post-body" aria-label="Dictate your post" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
-<div class="ph-actions"><button class="ph-msg" id="os-sched-btn" type="button">🕐 Schedule</button><button class="ph-connect" id="os-post-btn" type="button">Post to wall</button></div>
-<div class="os-status" id="os-post-status"></div>
-<div id="tg-review" hidden>
-<div class="tg-review-card">
-<p class="os-note" style="margin:0 0 6px;">Your words, untouched:</p>
-<div class="tg-raw" id="tg-raw"></div>
-<p class="os-note" style="margin:10px 0 6px;">The distilled draft &mdash; edit anything, then post. <span style="opacity:.75">Drafted from your words on this device; nothing leaves until you post.</span></p>
-<div class="os-fieldwrap"><textarea class="os-textarea" id="tg-draft" rows="7"></textarea></div>
-<div class="ph-actions"><button class="ph-msg" id="tg-back" type="button">&larr; Back to my words</button><button class="ph-connect" id="tg-post-smart" type="button">Post smart note</button></div>
-</div>
-</div>
-</div>
-<div class="os-status" id="os-wall-meta"></div>
-<div id="ib-catmount"></div>
-<div id="os-wall-list"><div class="os-skel"></div></div>
-</div>
-
-<div class="ph-sec os-view" data-os-view="dashboard" data-block="dashboard">
-<div class="ph-sec-t"><span class="ph-dot" style="background:#e84fff;color:#e84fff;"></span> Your World, Live &middot; Dashboard</div>
-<div class="os-dash" id="os-dash">
 <div class="os-dash-pulse" id="os-dash-pulse">
 <div class="ph-card stat-card os-litobj" style="--ac:#a06bff;cursor:pointer;" data-os-go="home" title="Open the Live Wall — where these posts live"><div class="os-count" id="os-dash-n-posts">&hellip;</div><div class="os-dash-lab"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">✦</span> WALL POSTS</div><span class="os-spark-wrap"><svg class="os-spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true"><polygon id="os-dash-sparkfill-posts" fill="#a06bff" opacity="0.20" points=""/><polyline id="os-dash-spark-posts" pathLength="100" fill="none" stroke="#a06bff" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points=""/></svg><i class="os-spark-dot" id="os-dash-sparkdot-posts" style="--ac:#a06bff;right:0;top:50%;"></i></span><p class="os-note" id="os-dash-n-posts-note"></p></div>
 <div class="ph-card stat-card os-litobj" style="--ac:#3fb8ff;cursor:pointer;" data-os-go="inbox" title="Open the Smart Mail inbox — where these messages live"><div class="os-count" id="os-dash-n-messages">&hellip;</div><div class="os-dash-lab"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">✉️</span> MESSAGES RECEIVED</div><span class="os-spark-wrap"><svg class="os-spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true"><polygon id="os-dash-sparkfill-messages" fill="#3fb8ff" opacity="0.20" points=""/><polyline id="os-dash-spark-messages" pathLength="100" fill="none" stroke="#3fb8ff" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points=""/></svg><i class="os-spark-dot" id="os-dash-sparkdot-messages" style="--ac:#3fb8ff;right:0;top:50%;"></i></span><p class="os-note" id="os-dash-n-messages-note"></p></div>
@@ -6286,7 +6304,7 @@ button.os-ld-node .os-ld-n{
 
 <div class="ph-card" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🎯</span> My goals</h3>
-<p id="os-sec-goals-text" class="os-note" style="margin:0;">No goals written yet &mdash; tap Edit and name the first one.</p>
+<p id="os-sec-goals-text" class="os-note" style="margin:0;">One million citizens by 2027.</p>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-goals-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-goals-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="goals">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="goals" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="goals" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="goals" style="display:none;" aria-label="Close without saving">×</button></div>
 <div class="os-status" id="os-sec-goals-status"></div>
@@ -6300,14 +6318,14 @@ button.os-ld-node .os-ld-n{
 </div>
 <div class="ph-card" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🚀</span> My mission</h3>
-<p id="os-sec-mission-text" class="os-note" style="margin:0;">No mission written yet &mdash; tap Edit and say what this app is here to do.</p>
+<p id="os-sec-mission-text" class="os-note" style="margin:0;">Build NayaNET — the intelligent highway for the AI age.</p>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-mission-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-mission-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="mission">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="mission" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="mission" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="mission" style="display:none;" aria-label="Close without saving">×</button></div>
 <div class="os-status" id="os-sec-mission-status"></div>
 </div>
 <div class="ph-card" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🔭</span> My vision</h3>
-<p id="os-sec-vision-text" class="os-note" style="margin:0;">No vision written yet &mdash; tap Edit and describe where this is heading.</p>
+<p id="os-sec-vision-text" class="os-note" style="margin:0;">A world where intelligence compounds and everybody wins.</p>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-vision-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-vision-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="vision">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="vision" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="vision" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="vision" style="display:none;" aria-label="Close without saving">×</button></div>
 <div class="os-status" id="os-sec-vision-status"></div>
@@ -7182,6 +7200,14 @@ NF.register(UNIT, {
   var cb=document.getElementById('connectbtn');
   cb.addEventListener('click',function(){
     if(cb.dataset.osConnected){document.getElementById('msgbtn').style.display='';return;}
+    /* R4 FIX F (2026-11-07): visible feedback immediately. The click sets
+       the label to "Connecting…" and dispatches os-connect-request, but
+       with no backend answering the request fails at once and
+       os-connect-failed resets the label to "Connect" synchronously, so
+       the visitor saw nothing. Toast first, on the page's own toast
+       (window.toast, from Fix 2), before the dispatch — the label change
+       and the request underneath are untouched. */
+    if(window.toast) window.toast('Request sent — connecting…');
     cb.textContent='Connecting…';
     document.dispatchEvent(new CustomEvent('os-connect-request'));
   });
@@ -7590,6 +7616,7 @@ NF.register(UNIT, {
     window.scrollTo({top:0, behavior:'smooth'});
     if (name==='home') loadWall();
     if (name==='dashboard' && window.osLoadDashboard) window.osLoadDashboard();
+    if (name==='dashboard'){ setTimeout(function(){ try{ if (typeof window.osLoadPointsBoard==='function') window.osLoadPointsBoard(); }catch(e){} try{ if (typeof ldLayoutNodes==='function') ldLayoutNodes(); }catch(e){} }, 150); } /* RETHINK: gauge lives behind the Dashboard door now — its orbs are laid out from the live tacho size only once the view is visible (hidden views measure 0). */
     if (name==='today') loadToday();
     if (name==='people') loadFaces();
     if (name==='inbox') loadInbox();
@@ -7619,17 +7646,14 @@ NF.register(UNIT, {
     if (g){ showView(g.getAttribute('data-os-go')); return; }
     /* UP-ACTIONS: native share — Shawn 2026-10-31: "shares out to Facebook or
        to their text message." Native sheet first, clipboard fallback. */
-    var shb=$('sharebtn');
-    if (shb && !shb.dataset.upWired){
-      shb.dataset.upWired='1';
-      shb.addEventListener('click', function(){
-        var url=location.href, title=document.title;
-        if (navigator.share){ navigator.share({title:title, url:url}).catch(function(){}); }
-        else if (navigator.clipboard && navigator.clipboard.writeText){
-          navigator.clipboard.writeText(url).then(function(){ toast('Link copied — share it anywhere'); });
-        } else { toast('Share: '+url); }
-      });
-    }
+    /* R2 FIX 2: the duplicate Share wiring that lived here is REMOVED — it
+       raced the single Share handler below (two concurrent clipboard
+       writes: the second was denied, "Clipboard write is not allowed"),
+       and its .then() called a toast() that did not exist globally
+       ("toast is not defined" on the second Share). One handler now:
+       the section-5 SHARE handler in the ULTIMATE-PERSONAL block —
+       native sheet first, clipboard + visible "Link copied" toast +
+       honest fallback. */
     var lk=t.closest?t.closest('[data-os-like]'):null;
     if (lk){ toggleLike(lk.getAttribute('data-os-like')); return; }
     var sv=t.closest?t.closest('[data-os-save]'):null;
@@ -7930,6 +7954,172 @@ function wallCard(j, iso, pid, idx){
       else if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt+' '+url).then(function(){ toast('Block copied — share it anywhere'); }); }
       else { toast('Share: '+txt); }
       return;
+    }
+    /* R3 FIX A (2026-11-07): the wall post's "+ SHARE INTEL" button.
+       intelBoard attaches a click listener to the button, but ibWallHTML
+       serialises the card to a string and loadWall paints via innerHTML —
+       the live button never carries that listener, so the click did
+       nothing (0 clipboard, 0 toast). Bind it here, delegated on
+       document (which survives the serialisation), to the same copy+toast
+       path the hero Share uses: native sheet first, else osCopyText with
+       the "Link copied" confirmation. The button's data-kind="share-intel"
+       attribute survives the serialisation; that is the hook. */
+    var si=e.target.closest?e.target.closest('[data-kind="share-intel"]'):null;
+    if(si){
+      var surl=location.origin+location.pathname, stitle=document.title;
+      if (navigator.share){ try{ navigator.share({title:stitle, url:surl}).catch(function(){}); }catch(x){ if(window.osCopyText) window.osCopyText(surl, 'Link copied — share it anywhere.'); } }
+      else if(window.osCopyText){ window.osCopyText(surl, 'Link copied — share it anywhere.'); }
+      else if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(surl).then(function(){ toast('Link copied — share it anywhere.'); }, function(){ toast('Copy didn\'t work — long-press the link to copy'); }); }
+      else { toast('Copy didn\'t work — long-press the link to copy'); }
+      return;
+    }
+    /* R4 FIX E (2026-11-07): the wall post's OTHER BoardActions buttons.
+       BoardActions attaches its listeners to live DOM nodes, but
+       ibWallHTML serialises the card to a string and loadWall paints via
+       innerHTML — the live buttons never carry those listeners, so
+       CREATE SPACE / FAVORITE / SAVE / LOVE / LIKE / the five stars /
+       ADD INTEL did nothing (0 clipboard, 0 toast, aria-pressed stuck
+       false). Only SHARE INTEL was rescued, by the R3 delegated handler
+       above. Bind the rest here, delegated on document (which survives
+       the serialisation), keyed off the attributes the rendered buttons
+       DO carry (data-kind + aria-label), against the same device-local
+       store ('nayanet-board-actions-v1') the live handlers use, so state
+       agrees with any live-rendered board. The per-post key is rebuilt
+       from the article's data-intelligence-id, exactly the way
+       intelBoard builds its bid. A live board's own listener calls
+       stopPropagation, so this block never double-fires for one. The
+       category picker is a BoardActions closure and cannot be reached
+       from here; FAVORITE/SAVE still toggle, sync Smart Lists, and
+       confirm with a toast. */
+    var baBtn=e.target.closest?e.target.closest('button[data-kind]'):null;
+    if(baBtn && baBtn.closest('#os-wall-list article.intel-board')){
+      var baKind=baBtn.getAttribute('data-kind');
+      if(baKind!=='share-intel'){
+        var baArt=baBtn.closest('article.intel-board');
+        var baIid=baArt?baArt.getAttribute('data-intelligence-id')||'':'';
+        var baRaw=baIid.replace(/^smart-note-/,'');
+        var baBid='note-'+baRaw.toLowerCase().replace(/[^a-z0-9]+/g,'-').slice(0,40);
+        var baNut=baArt?baArt.querySelector('.ib-nutshell p')||baArt.querySelector('.ib-nutshell'):null;
+        var baTitle=(baNut&&baNut.textContent.replace(/\s+/g,' ').trim().replace(/^IN A NUTSHELL\s*/,'').slice(0,60))||'Smart Space';
+        var baRead=function(){ try{ return JSON.parse(localStorage.getItem('nayanet-board-actions-v1')||'{}'); }catch(x){ return {}; } };
+        var baWrite=function(s){ try{ localStorage.setItem('nayanet-board-actions-v1', JSON.stringify(s)); }catch(x){} };
+        if(baKind==='create-space'){
+          var baS=baRead(), baKey=baBid+':create-space';
+          if(baS[baKey]){ toast('SMART SPACE ALREADY EXISTS — "'+baTitle+'" is live in Smart Spaces.'); return; }
+          baS[baKey]=true; baWrite(baS);
+          baBtn.classList.add('on'); baBtn.setAttribute('aria-pressed','true');
+          try{
+            var baSpec={'Start Here':'#a06bff','Vision':'#3fb8ff','Learn':'#2fe89e','Create':'#ffbf3d','Connect':'#ff9a5a','Grow':'#ff5e6c','General':'#e84fff'};
+            var baSp={id:'sp-'+Date.now().toString(36)+Math.floor(Math.random()*1e6).toString(36),name:baTitle,topic:'General',desc:'',color:baSpec['General'],privacy:'public',memberIds:[],custom:true,created:Date.now(),pinnedNote:{title:baTitle,ts:Date.now()}};
+            var baArr=null;
+            try{ baArr=JSON.parse(localStorage.getItem('naya.spaces.custom.v1')||'null'); }catch(e){ }
+            if(!Array.isArray(baArr)||!baArr.length){ try{ baArr=JSON.parse(localStorage.getItem('nayanet.spaces')||'null'); }catch(e){ } if(!Array.isArray(baArr)) baArr=[]; }
+            baArr.push(baSp);
+            localStorage.setItem('naya.spaces.custom.v1', JSON.stringify(baArr));
+            localStorage.setItem('nayanet.spaces', JSON.stringify(baArr));
+            var baMine=null;
+            try{ baMine=JSON.parse(localStorage.getItem('naya.spaces.mine.v1')||'null'); }catch(e){ }
+            if(!Array.isArray(baMine)) baMine=['sp-ai','sp-friends'];
+            if(baMine.indexOf(baSp.id)<0){ baMine.push(baSp.id); localStorage.setItem('naya.spaces.mine.v1', JSON.stringify(baMine)); }
+          }catch(e){ }
+          if(typeof ActivityLog!=='undefined'){ ActivityLog.log('space','Space created from "'+baTitle+'"','spaces','#9d75ff','<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/>'); }
+          toast('SMART SPACE CREATED — "'+baTitle+'" is live in Smart Spaces.');
+          return;
+        }
+        if(baKind==='favorite'||baKind==='save'){
+          var baS2=baRead(), baKey2=baBid+':'+baKind, baNext2=!baS2[baKey2];
+          baS2[baKey2]=baNext2; baWrite(baS2);
+          baBtn.classList.toggle('on',baNext2); baBtn.setAttribute('aria-pressed',String(baNext2));
+          try{
+            var baSl=JSON.parse(localStorage.getItem('naya.smartlist')||'{}');
+            if(!baSl.saved) baSl.saved=[];
+            var baEntry=baRaw||baBid;
+            if(baNext2){
+              if(!baSl.saved.find(function(x){ return x.id===baEntry&&x.kind===baKind; })){
+                baSl.saved.push({id:baEntry,kind:baKind,title:baTitle,topics:[],category:null,savedAt:Date.now()});
+              }
+            }else{
+              baSl.saved=baSl.saved.filter(function(x){ return !(x.id===baEntry&&x.kind===baKind); });
+            }
+            localStorage.setItem('naya.smartlist', JSON.stringify(baSl));
+          }catch(e){ }
+          toast(baKind==='favorite'?(baNext2?'FAVORITED — importance remembered on this device.':'FAVORITE REMOVED.'):(baNext2?'SAVED — saved on this device.':'SAVE REMOVED.'));
+          return;
+        }
+        if(baKind==='love'||baKind==='like'){
+          var baS3=baRead(), baKey3=baBid+':'+baKind, baCnt3=baKey3+':count', baNext3=!baS3[baKey3];
+          baS3[baKey3]=baNext3;
+          baS3[baCnt3]=Math.max(0,(baS3[baCnt3]||0)+(baNext3?1:-1));
+          baWrite(baS3);
+          baBtn.classList.toggle('on',baNext3); baBtn.setAttribute('aria-pressed',String(baNext3));
+          var baBadge=baBtn.querySelector('.action-count');
+          if(baBadge) baBadge.textContent=String(baS3[baCnt3]);
+          if(baArt&&baNext3){ baArt.classList.remove('flash'); void baArt.offsetWidth; baArt.classList.add('flash'); }
+          toast((baKind==='love'?'LOVED':'LIKED')+' — '+(baNext3?'now ACTIVE on this device.':'removed.'));
+          return;
+        }
+        if(baKind==='add-intel'){
+          var baWrap=baBtn.closest('.add-intel');
+          var baInput=baWrap?baWrap.querySelector('input'):null;
+          if(!baInput){ toast('NOTHING TO ADD — write your observation first.'); return; }
+          var baVal=baInput.value.trim();
+          if(!baVal){ baInput.focus(); baInput.scrollIntoView({behavior:'smooth',block:'center'}); toast('NOTHING TO ADD — write your observation first.'); return; }
+          var baS4=baRead(), baKey4=baBid+':contributions', baList4=baS4[baKey4]||[];
+          var baUser='Shawn';
+          try{ baUser=localStorage.getItem('nayanet_smart_name')||'Shawn'; }catch(e){ }
+          baList4.push({text:baVal,at:new Date().toISOString(),name:baUser});
+          baS4[baKey4]=baList4; baWrite(baS4);
+          baInput.value='';
+          var baListWrap=baWrap?baWrap.querySelector('.intel-list'):null;
+          if(baListWrap){
+            var baEmpty=baListWrap.querySelector('.intel-empty');
+            if(baEmpty) baEmpty.remove();
+            var baItem=document.createElement('div'); baItem.className='intel-item';
+            var baAv=document.createElement('div'); baAv.className='intel-avatar'; baAv.textContent=(baUser||'S')[0].toUpperCase();
+            var baHues=['#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#ff9a5a','#ff5e6c','#e84fff','#6675ff','#40d3bb'];
+            var baH=0; for(var baCi=0; baCi<baUser.length; baCi++) baH=(baH*31+baUser.charCodeAt(baCi))>>>0;
+            baAv.style.setProperty('--av-hue',baHues[baH%baHues.length]);
+            var baBody=document.createElement('div'); baBody.className='intel-body';
+            var baTxt=document.createElement('span'); baTxt.className='intel-text'; baTxt.textContent=baVal;
+            var baWhen=document.createElement('span'); baWhen.className='intel-when'; baWhen.textContent='just now';
+            baBody.appendChild(baTxt); baBody.appendChild(baWhen);
+            baItem.appendChild(baAv); baItem.appendChild(baBody);
+            baListWrap.appendChild(baItem);
+          }
+          toast('INTEL ADDED — your contribution was recorded on this device.');
+          return;
+        }
+      }
+    }
+    /* R4 FIX E (stars): the five star buttons carry no data-kind and no
+       data-star — only aria-label "1 star".."5 stars". Same serialisation
+       loss as above; bind them here, delegated, against the same store. */
+    var baStar=e.target.closest?e.target.closest('#os-wall-list .star-rating button[aria-label]'):null;
+    if(baStar){
+      var baM=(baStar.getAttribute('aria-label')||'').match(/^([1-5]) stars?$/);
+      if(baM){
+        var baSv=parseInt(baM[1],10);
+        var baArt2=baStar.closest('article.intel-board');
+        var baIid2=baArt2?baArt2.getAttribute('data-intelligence-id')||'':'';
+        var baBid2='note-'+baIid2.replace(/^smart-note-/,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').slice(0,40);
+        var baS5={}; try{ baS5=JSON.parse(localStorage.getItem('nayanet-board-actions-v1')||'{}'); }catch(x){ baS5={}; }
+        baS5[baBid2+':rate']=baSv;
+        try{ localStorage.setItem('nayanet-board-actions-v1', JSON.stringify(baS5)); }catch(x){ }
+        var baBox=baStar.closest('.star-rating');
+        if(baBox){
+          var baKids=baBox.querySelectorAll('button[aria-label]');
+          for(var baKi=0; baKi<baKids.length; baKi++){
+            var baKid=baKids[baKi];
+            var baOn=baKi<baSv;
+            baKid.classList.toggle('on',baOn);
+            if(baOn){ baKid.classList.remove('pulse'); void baKid.offsetWidth; baKid.classList.add('pulse'); }
+          }
+          var baNum=baBox.querySelector('.rating-num');
+          if(baNum) baNum.textContent=baSv+'/5';
+        }
+        toast('INTELLIGENCE RATED — '+baSv+' of 5 stars recorded on this device.');
+        return;
+      }
     }
     /* five-star */
     var st=e.target.closest?e.target.closest('[data-star]'):null;
@@ -10190,6 +10380,10 @@ function wallCard(j, iso, pid, idx){
         window.__osAboutSecs[key]=sec[0].text;
         tp.textContent=sec[0].text; tp.classList.remove('os-note');
       });
+      /* RETHINK: hero-carried seed — GOAL/VISION/MISSION text moved from
+         the hero card into About. If no saved row exists, the seeded static
+         text IS the value, so Edit re-seeds from it instead of blank. */
+      ['goals','mission','vision'].forEach(function(key){ if(!window.__osAboutSecs[key]){ var tp2=$('os-sec-'+key+'-text'); if(tp2 && tp2.textContent && tp2.textContent.indexOf('No ')!==0) window.__osAboutSecs[key]=tp2.textContent; } });
     });
   }
 
@@ -11613,7 +11807,10 @@ function wallCard(j, iso, pid, idx){
    REST raised · HOVER rises toward the finger · ACTIVE pressed INTO the page. ============ */
 .nsb{font-family:Inter,system-ui,sans-serif;}
 /* TOP: sticky very-top, outermost */
-.nsb-top-inner{display:flex;align-items:center;gap:10px;padding:10px 16px;}
+.nsb-top-inner{display:flex;align-items:center;gap:10px;padding:10px 16px 10px 72px;}
+/* R2 FIX 1 (2026-11-07): the 72px left slot is RESERVED for the app title —
+   the fixed rooms-plus circle is 48px at left:12 (right edge 60), so the
+   title (dot + "Personal") starts clear of it and no tab can ever cover it. */
 /* app anchor: name + honesty dot */
 .nsb-app{display:flex;align-items:center;gap:9px;flex:0 0 auto;padding-right:6px;}
 .nsb-app-name{font-size:15px;font-weight:800;color:#fff;white-space:nowrap;letter-spacing:.02em;}
@@ -11629,7 +11826,7 @@ function wallCard(j, iso, pid, idx){
 .nsb-row::-webkit-scrollbar{display:none;}
 /* compact mode: sticky top collapses to pill row only */
 .nsb-topstack.nsb-compact .nsb-app-name{display:none;}
-.nsb-topstack.nsb-compact .nsb-top-inner{padding:6px 12px;}
+.nsb-topstack.nsb-compact .nsb-top-inner{padding:6px 12px 6px 72px;}
 .nsb-topstack.nsb-compact .nsb-top .nsb-row{padding:8px 24px 14px;}
 /* ============ PILL DNA (harvested v1.1.4, elevated) ============ */
 .nsb-tab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;
@@ -11727,6 +11924,19 @@ function wallCard(j, iso, pid, idx){
   box-shadow:inset 0 1px 0 rgba(255,255,255,.42), inset 0 -1px 0 rgba(0,0,0,.5),
     0 2px 5px rgba(0,0,0,.65), 0 10px 22px rgba(0,0,0,.55);
   transition:transform .2s cubic-bezier(.2,1.25,.35,1), box-shadow .2s ease-out, border-color .2s;}
+/* R3 FIX B (2026-11-07): the Search FAB (#nsbSearchFab, fixed bottom:76
+   right:16) sat on top of this gear at every width (overlap 1,340 px²
+   @638/1920, 1,105 px² @390) — a real click hit the FAB and opened
+   nothing. The gear is the last item in the bottom bar's flex row, so a
+   right margin shifts it left clear of the FAB. 56px, not 64: at 64 the
+   bottom tabs row lost 64px of width at 390 and its mount-time snap
+   scrolled it 6px (botSL 6, stable — R2 measured 0); at 56 the row stays
+   wide enough that the snap does not scroll (botSL 0) while the gear
+   stays clear of the FAB (8px at 638/1920, 2px at 390). The FAB is NOT
+   moved: moving it up would park it on top of the settings popover
+   (placeNear puts the popover above the gear, y ~536-726 @638), covering
+   the speed slider. */
+.nsb-gear{margin-right:56px;}
 .nsb-gear:hover{border-color:var(--blue);transform:rotate(30deg) translateY(-2px);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.5), inset 0 -1px 0 rgba(0,0,0,.45),
     0 0 20px -2px var(--blue), 0 4px 8px rgba(0,0,0,.6), 0 14px 28px rgba(0,0,0,.6);}
@@ -11946,7 +12156,8 @@ html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
 html.nsb-calm .nsb-tab{transition:none;}
 /* phone tuning */
 @media (max-width:480px){
-  .nsb-top-inner,.nsb-bottom-inner{padding-left:10px;padding-right:10px;}
+  .nsb-top-inner{padding-left:72px;padding-right:10px;}
+  .nsb-bottom-inner{padding-left:10px;padding-right:10px;}
   .nsb-tab{padding:11px 16px;font-size:12.5px;min-height:42px;}
   .nsb-app-name{font-size:13.5px;}
   .nsb-search-box{min-width:0;flex:1;}
@@ -12281,7 +12492,11 @@ window.NayaSmartBar = {
     window.addEventListener('scroll', function(){
       topstack.classList.toggle('nsb-compact', window.scrollY > compactAt);
     }, {passive:true});
-    drift(tRow, +1, TOP_SPEED);
+    /* R2 FIX 1 (2026-11-07): the autonomous marquee is OFF — drift() is no
+       longer started on either strip. The active tab is snapped into view
+       once and held; the visitor still scrolls/swipes the row by hand.
+       drift() stays defined (Settings keeps its stored speed value). */
+    try { var _at = tRow.querySelector('.nsb-tab.active') || tRow.querySelector('.nsb-tab'); if (_at) _at.scrollIntoView({behavior:'auto', block:'nearest', inline:'nearest'}); } catch(e){}
 
     /* ----- BOTTOM BAR ----- */
     var bottom = document.getElementById('nsbBottom');
@@ -12573,7 +12788,10 @@ window.NayaSmartBar = {
     var st = document.createElement('p'); st.className = 'nsb-status';
     bottom.appendChild(st); statusEls.bottom = st;
     renderNet();
-    drift(bRow, -1, BOTTOM_SPEED);
+    /* R2 FIX 1 (2026-11-07): marquee OFF on the bottom bar too — same as the
+       top strip. Active tab snapped into view once and held; hand-scroll
+       still works. */
+    try { var _ab = bRow.querySelector('.nsb-tab.active') || bRow.querySelector('.nsb-tab'); if (_ab) _ab.scrollIntoView({behavior:'auto', block:'nearest', inline:'nearest'}); } catch(e){}
     /* keyboard-open: hide bottom bar when the keyboard takes the screen */
     if (window.visualViewport){
       var baseH = window.visualViewport.height;
@@ -13078,13 +13296,20 @@ NayaSmartBar.mount({
 function $(id){ return document.getElementById(id); }
 function esc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
 function toast(msg){
-  if (window.toast) { try{ window.toast(msg); }catch(e){} return; }
+  if (window.toast && window.toast !== toast) { try{ window.toast(msg); }catch(e){} return; }
   var t=document.createElement('div');
+  t.className='up-toast'; /* R2 FIX 2: queryable as [class*="toast"] */
   t.textContent=msg;
   t.style.cssText='position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:3000;background:#101016;border:1.5px solid #a06bff;color:#fff;padding:12px 22px;border-radius:999px;font-size:14px;font-weight:700;box-shadow:0 8px 30px rgba(0,0,0,.6),0 0 24px -4px #a06bff;';
   document.body.appendChild(t);
   setTimeout(function(){ t.style.opacity='0'; t.style.transition='opacity .4s'; setTimeout(function(){ t.remove(); },450); },2600);
 }
+/* R2 FIX 2 (2026-11-07): expose the page's own toast globally — the hero
+   Share fallback path (and other bare toast() callers in the global-scope
+   scripts) resolve against the global scope, where no toast existed, so
+   they threw "toast is not defined". The !== guard above stops the
+   self-delegation loop now that window.toast IS this function. */
+window.toast = toast;
 function openModal(title, sub){
   var ov=document.createElement('div'); ov.className='up-modal-ov';
   var m=document.createElement('div'); m.className='up-modal'; m.style.position='relative';
@@ -13220,8 +13445,12 @@ function copyText(t, msg){
   function fallback(){
     var ta=document.createElement('textarea'); ta.value=t; ta.style.position='fixed'; ta.style.opacity='0';
     document.body.appendChild(ta); ta.select();
-    try{ document.execCommand('copy'); done(); }catch(e){ toast('Copy failed — long-press to copy.'); }
+    /* R2 FIX 2: execCommand reports success — only claim the copy when it
+       really happened; otherwise say so honestly, never throw. */
+    var ok=false;
+    try{ ok=document.execCommand('copy'); }catch(e){ ok=false; }
     ta.remove();
+    if(ok){ done(); } else { toast('Copy didn\'t work — long-press the link to copy'); }
   }
 }
 window.osCopyText=copyText;
@@ -13255,7 +13484,13 @@ if(inviteBtn) inviteBtn.addEventListener('click', function(){
 /* ---- 5. SHARE ---- */
 var shareBtn=$('sharebtn');
 if(shareBtn) shareBtn.addEventListener('click', function(){
-  copyText(location.origin+location.pathname, 'Page link copied — share it anywhere.');
+  /* R2 FIX 2: the single Share path — native sheet first (Shawn 2026-10-31:
+     "shares out to Facebook or to their text message"), clipboard + a
+     visible "Link copied" toast otherwise. One handler, one clipboard
+     write, one confirmation — no race, no throw. */
+  var url=location.origin+location.pathname, title=document.title;
+  if (navigator.share){ try{ navigator.share({title:title, url:url}).catch(function(){}); }catch(e){ copyText(url, 'Link copied — share it anywhere.'); } }
+  else { copyText(url, 'Link copied — share it anywhere.'); }
 });
 
 /* ---- 6. HUB ARCHITECTURE: join / install / member — one machine ---- */
@@ -18441,7 +18676,7 @@ window.ldNodeCount = ldNodeCount;
       _boardNums(holder) +
       '<p class="os-note os-wb-note">' + _esc(note) + '</p>' +
       extra + '</div>' +
-      '<div class="ph-actions os-wb-side"><button class="ph-connect os-wb-btn" type="button" data-featured-show="' + _esc(key) + '">Show on gauge</button></div></article>';
+      '<div class="ph-actions os-wb-side"><button class="ph-connect os-wb-btn" type="button" data-featured-show="' + _esc(key) + '">Show in Dashboard</button></div></article>';
   }
   window.renderBoards = function(){
     var host = document.getElementById('os-boards-list');
@@ -18489,6 +18724,7 @@ window.ldNodeCount = ldNodeCount;
     var kv = (b.getAttribute('data-featured-show') || '').split(':');
     if (kv.length < 2) return;
     window.setFeatured(kv[0], kv.slice(1).join(':'));
+    try{ if (typeof window.osShowView==='function') window.osShowView('dashboard'); }catch(e){} /* RETHINK: the board's stats live on the Dashboard gauge now. (showView is not a global in this file — the page exposes it as window.osShowView.) */
   });
 })();
 /* J3 — surgical: tachometer mount + truth wire + pill wiring only */
