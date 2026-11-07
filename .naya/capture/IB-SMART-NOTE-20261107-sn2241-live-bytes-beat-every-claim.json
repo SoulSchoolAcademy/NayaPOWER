@@ -1,0 +1,41 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2241",
+ "title": "Live Bytes Beat Every Claim, Including Your Own",
+ "slug": "live-bytes-beat-every-claim",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/07/LESSON/SN-2241/IB-SMART-NOTE-20261107-sn2241-live-bytes-beat-every-claim.md",
+ "tone": "orange",
+ "icon": "◆",
+ "created_at": "2026-11-07T23:11:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Claims decay; only a fresh read of the live thing counts. Check the repair registry before calling a RED new. Endorse another lane's correction only on your own live re-read of the venue. Rebuild registries from live bytes — never triage a stale list. Classify before acting: genuine, false, or historical. When two lanes disagree about the outside world, re-measure right then and post the result. And when your own evidence disagrees with a gate, audit your instrument first — a truncated CSV once made the team call an honest check a liar.",
+  "human_view": "A quarantine list said 29 collisions were open. Rebuilt from live bytes, there were zero — 28 had already been healed before the list was even read. A sweep said 17 workers were still contaminating the checks; a live re-measure found zero — the director had already deleted them. A check said the database had orphan migrations; the CSV said zero orphans; the CSV was silently truncated at 100 rows and hid two orphans — the check had been right all along. The pattern in every case is the same: the claim was measured carefully once, and then the world moved. The discipline that replaces arguing from memory is a live-byte measurement in the current run, stated on the board, with custody kept explicit — what you verified yourself versus what you only witnessed. And when the registry and the published tree disagree on what a number names, the registry is the identity authority: the registered occupant keeps the number, the unregistered one is renamed by its owning lane — never deleted, never given a second entry.",
+  "child_view": "Imagine two friends arguing about whether it is raining. One remembers sunshine this morning; the other just came inside wet. You do not settle it by debating memories — you open the window and look. Right now. That is the whole rule: when people disagree about the world, look at the world, now, and say what you see.",
+  "grandma_view": "Yesterday's news is not today's truth. A list from yesterday can be wrong today, and your own careful notes can be wrong if you only read half the page. Before you act on a list, check the real thing with your own eyes. Before you blame the messenger, check your own measuring tape.",
+  "ai_view": "Never triage a list — triage the world. Enumerate from live bytes at pinned SHAs (main tree, open PR heads, date-partition scan, leading zeros normalized) before you classify, and classify by artifact type before you act: genuine (needs a disposition), false (by design — a pipeline twin, a tombstone), historical (already healed). A triage that ends with \"nothing to renumber\" is a completed triage, not a failed one, and renumbering is the disposition of last resort. When you endorse another lane's correction, re-read the venue's live state yourself — quoting their evidence adds no confirmation weight. When a gate's verdict contradicts your evidence, go to the source of truth directly; if both are exhausted and still disagree, record it plainly and park — \"unverifiable from here\" is a complete verdict, not a gap.",
+  "what_it_means": "A claim is a photograph of the world at one moment; the world keeps moving. The team that argues from photographs will fight ghosts — stale REDs, healed collisions, deleted workers — and will invent damage that no longer exists. The live read is the only measurement that can settle a disagreement, and the honest instrument check is the only thing that keeps the live read honest.",
+  "whats_inside": [
+   "Never triage the list. Rebuild from live bytes, classify, then act — and check your own instrument before you call the gate a liar.",
+   "A claim is a photograph of the world at one moment; the world keeps moving.",
+   "Every false emergency in this family cost real work: a renumbering queue for collisions that no longer existed, a repair for a RED that already had one, a fight with a gate that was telling the truth.",
+   "When two seats disagree, you get a measurement, not an argument.",
+   "repair-registry check before any RED claim — open PRs plus board receipts for the exact class",
+   "re-read the venue's newest state immediately before posting",
+   "rebuild from pinned live bytes before triaging any list",
+   "classify GENUINE / FALSE / HISTORICAL before acting",
+   "endorse only on your own live re-read, with custody explicit — verified vs witnessed",
+   "audit your instrument's completeness — row limits, pagination, truncation — before calling a gate a liar",
+   "correct the record in the same venue with the same specificity when full data falsifies your verdict.",
+   "Distills 10 raw notes (Batch 1, 10 of 100): SN-0173, SN-0175, SN-0624, SN-0625, SN-0398, SN-0545, SN-0426, SN-0451, SN-0354, SN-0356."
+  ],
+  "topics": [
+   "System",
+   "Lesson",
+   "Distillation"
+  ]
+ },
+ "page_hash": "f95394cb56428ae00500283e33b93aadfb586df3a0d5d4d84ac6e53010885aef",
+ "content_hash": "db490bd49d7f1bdc682e173bdae26424fc0579fd9c37f2058495b291bdf8af0c"
+}
