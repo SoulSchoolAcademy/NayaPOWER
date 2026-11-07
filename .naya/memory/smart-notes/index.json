@@ -30467,6 +30467,39 @@
     "Doctrine",
     "Synthesis"
    ]
+  },
+  {
+   "smart_note_id": "SN-2213",
+   "intelligent_block_id": "IB-SMART-NOTE-20261106-sn2213-solid-ground-the-pinnacle-standard-and-the-land",
+   "slug": "solid-ground-the-pinnacle-standard-and-the-land",
+   "title": "Solid Ground — The Pinnacle Standard and the Land",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-solid-ground-the-pinnacle-standard-and-the-land.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-solid-ground-the-pinnacle-standard-and-the-land.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-solid-ground-the-pinnacle-standard-and-the-land.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn2213-solid-ground-the-pinnacle-standard-and-the-land.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "VISION",
+   "topic": "CAMPAIGN",
+   "captured_at": "2026-11-06",
+   "lifecycle_state": "ACTIVE",
+   "author": "shawn",
+   "filed_by": "resolve",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-07T02:34:57Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-06",
+   "page_hash": "8ecea820fc40151b6a187c4a449c47c7644efd524d2e37836938adf00f329352",
+   "content_hash": "eab9b1fcbec154549405ec224c8b555fe90a909f734cb5ff87584896183ff0ca",
+   "one_line": "Shawn's second layer on the campaign, spoken 2026-11-06 — four beats that extend SN-2212's chain without restating it. First: relentless persistence to a 10-star pinnacle — the pricing page is built to become the standard that technologists and marketers look at and want to use; no shipping a 9. Second: the template recursion — the page sells the page: it works so well on the visitor that they realize they can use the same structure and template for their own membership sites and product pages, so entering NayaNET now is the intelligent move. Third: the land — digital real estate is cheap right now; we are giving away the land, building the building, getting it all working, and inviting people to move in free — and it will not stay cheap, because a high-end digital real estate marketplace is coming where people value their digital property and want to build in; the founding thousand is the real scarcity now. Fourth: solid ground — the new internet, the new world, the digital civilization for Nayas and humans, where the land is valuable, the properties are great, and the factory is amazing. The old internet is rented land on shaky ground — you don't own it, the rules change under you, your reach gets throttled, your data gets sold. NayaNET is solid ground you own. Build here.",
+   "topics": [
+    "Campaign",
+    "Vision",
+    "Digital Real Estate"
+   ]
   }
  ],
  "sequence_policy": {
@@ -30477,5 +30510,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "5234b9f9850c37ca472a03facd5c0f39a35e290007e41c5b50198b0f831e06ca"
+ "corpus_manifest_hash": "7c2c211e4f4f3f03db2ec2a779b11f35a7e63eba440baafb0416f3b1ca41d391"
 }
