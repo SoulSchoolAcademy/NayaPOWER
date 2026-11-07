@@ -1,19 +1,19 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-11-07T09:48:42Z",
-  "tip": "9ba647b6121984ec2647ced5d8e590c0eb1b6612",
-  "open_pr_count": 5,
+  "generated_at": "2026-11-07T15:48:51Z",
+  "tip": "2ab6fcc474dfac27f12e55ea161b39ed8943fbc7",
+  "open_pr_count": 3,
   "queue_by_tier_action": {
     "B": {
-      "CURE": 2
+      "CURE": 1
     },
     "C": {
-      "CURE": 3
+      "CURE": 2
     }
   },
   "tip_failing_checks": [
-    "Deploy Hub worker",
     "promote-and-prove",
+    "resolve-current-truth",
     "spec-integrity",
     "test"
   ],

@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-07T09:48:42Z",
-  "tip": "9ba647b6121984ec2647ced5d8e590c0eb1b6612",
+  "generated_at": "2026-11-07T15:48:51Z",
+  "tip": "2ab6fcc474dfac27f12e55ea161b39ed8943fbc7",
   "prs": [
     {
       "number": 3089,
@@ -29,24 +29,6 @@
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
       "head": "42fd78aa2d10d01fd480daae8540e55dbfab52ce"
-    },
-    {
-      "number": 3280,
-      "title": "Hub: Smart Notes open inside the Hub, never standalone",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "0a605c957004fc1bf5af1da598ac59cad6b7cb6b"
-    },
-    {
-      "number": 3281,
-      "title": "Daily Intelligence Report 2026-11-06 - filed edition (V2 skeleton)",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "ec2625321a53147b48a3236698ad079b73d3d17c"
     }
   ]
 }
