@@ -7761,6 +7761,28 @@ function wallCard(j, iso, pid, idx){
   return '<div class="ph-card"><p>Renderer loading…</p></div>';
 }
 
+  /* P6 2026-11-07: verification posts never render on the wall. The live
+     smart_notes rows include posts written by verification runs, not by
+     citizens — a CHI-VERIFY-WALL probe, a PostgREST proof post, and the
+     [[fm-auto]] auto-welcome — and the wall is a citizen's front door.
+     Rows are NOT deleted (destructive, outside this page); they are
+     filtered at render, in loadWall AND fetchWall (its mirror), so no
+     surface that reads the wall can show them. Markers are the distinctive
+     verification tokens/phrases only: a citizen post that merely mentions
+     "PostgREST" or "verification" in passing does NOT match — the PostgREST
+     rule needs the full phrase "PostgREST proof post", and the other two
+     are machine tokens no citizen post carries. Body text only (b + raw);
+     author is never filtered. */
+  function upIsVerificationPost(j){
+    var b=(j && j.b) || '';
+    var raw=(j && j.raw) || '';
+    var txt=b+'\n'+raw;
+    if(txt.indexOf('[[fm-auto]]')>=0) return true;
+    if(txt.indexOf('CHI-VERIFY-WALL')>=0) return true;
+    if(txt.indexOf('PostgREST proof post')>=0) return true;
+    return false;
+  }
+
   /* P5 2026-11-06: fetchWall was called in 3 places (loadToday, loadFaces,
      loadAbout) but never defined, so About / Connections threw
      `fetchWall is not defined` and their loaders died before painting.
@@ -7779,6 +7801,7 @@ function wallCard(j, iso, pid, idx){
         return {j:j, at:r.created_at, id:r.id};
       }).filter(function(p){
         if(p.j.k!=='wall') return false;
+        if(upIsVerificationPost(p.j)) return false; /* P6: verification posts never render */
         if(p.j.schedFor && Date.parse(p.j.schedFor) > now) return false;
         if(p.j.scheduled && p.j.scheduled.ts && p.j.scheduled.ts > now) return false;
         return true;
@@ -7806,6 +7829,7 @@ function wallCard(j, iso, pid, idx){
         return {j:j, at:r.created_at, id:r.id};
       }).filter(function(p){
         if(p.j.k!=='wall') return false;
+        if(upIsVerificationPost(p.j)) return false; /* P6: verification posts never render */
         if(p.j.schedFor && Date.parse(p.j.schedFor) > now) return false;
         if(p.j.scheduled && p.j.scheduled.ts && p.j.scheduled.ts > now) return false;
         return true;
@@ -8038,16 +8062,17 @@ function wallCard(j, iso, pid, idx){
     });
   });
 
-  /* — Automated posting: a programmatic welcome post, fired ONCE per page.
-       Guard: the [[fm-auto]] marker — the token already stored in this page's
-       live rows; if a marked row exists, never again. (Stored-data token,
-       kept verbatim on purpose: renaming it would re-fire the welcome post.) — */
+  /* P6 2026-11-07: osAnnounce NEUTRALIZED — it was test scaffolding, not a
+     designed welcome (see verify-6/BUILD-NOTE.md: the "welcome" it wrote
+     rendered the raw [[fm-auto]] machine token to citizens, its copy was a
+     liveness proof, and the live row's text matches no current code). The
+     page must never write verification-marked rows into a citizen's wall.
+     Signature kept so the boot call site and its .then(loadWall) are
+     untouched; a genuine first-run welcome is a design decision for Shawn,
+     not invented here. The render filter above also hides legacy
+     [[fm-auto]] rows already in the table. — */
   window.osAnnounce = function(text){
-    if (!sb) return Promise.resolve(false);
-    return sb.from('smart_notes').select('id').eq('owner_alias', PAGE_ALIAS).ilike('content','%[[fm-auto]]%').limit(1).then(function(res){
-      if (res.data && res.data.length) return false;
-      return sb.from('smart_notes').insert({owner_alias:PAGE_ALIAS, content:JSON.stringify({k:'wall', a:'This page', b:'[[fm-auto]] '+text})}).then(function(r){ osBustNotes(); return !r.error; });
-    });
+    return Promise.resolve(false);
   };
 
   /* — Message block: visitor → smart_mail_threads + smart_mail_messages — */
