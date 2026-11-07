@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-07 06:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-07 07:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -25757,6 +25757,12 @@ _Last updated: 2026-11-07 06:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya/five-retrieval-auth-gate-t942 live @ e654f16e8a49 (exact match to receipt pin); all 4 t0442 files exist with exact receipt SHAs (acceptance_battery.py 4470ccee…, battery_evidence.json 464c8529…, run_log.md 762015a7…, RETRIEVAL-AUTH-MIGRATION-PREP.md 9c988570…); tip dbe06f9e matches live HEAD. Work: RED-first M/S/C battery, own
 
+### ✅ t0432-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Stage-0 RETRIEVAL slice-1: bi-encoder fingerprint prototype vs blind human baseline
+
+**Evidence:** Verified: auto-retrieval/t0432_fingerprint.py, baseline-sealed-t0432.md, results-t0432.json and proto-t0432.md all exist on disk; the receipt honestly reports a NEGATIVE result (bi-encoder fails the human exam: 1/3 tasks at HIT@5 >= 2/3) with the frozen baseline as the next slice's fixture. Score 9.0: pre-registered exam, honest falsification, fixt
+
 ### ✅ t0432 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** STAGE 0 [RETRIEVAL] slice-1: bi-encoder fingerprint-match prototype vs sealed blind human baseline, hit-rate report
@@ -25772,6 +25778,12 @@ _Last updated: 2026-11-07 06:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0432-lane5.md`
 
 **Evidence:** VERIFIED: t0432_fingerprint.py, baseline-sealed-t0432.md, proto-t0432.md, results-t0432.json, corpus_embeddings.npz + ids.json, and the autoretr venv ALL EXIST. File mtimes corroborate sealed-before-run honesty (baseline 16:31:47Z, before fingerprint 16:32:39Z and results 16:32:44Z - the human baseline could not be tuned after machine output). The 
+
+### ✅ t0432-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** Stage-0 REPLAY slice 2 (second run): replay 3 different other-seat decisions
+
+**Evidence:** Verified: decision-replay/replay-t0432.md exists (9,378 bytes, 3 decisions with HOLD/FLIP verdicts and counter-principle columns); cross-slice hinge finding (P8/P14 override doctrine, P4/candidate-17 close-bar) is a genuine principle-level result; D1's merge-commit pin e85c6e44 matches the t0422 receipt's live verification. Score 8.5: solid replay 
 
 ### ✅ t0432 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
 
@@ -25881,6 +25893,12 @@ _Last updated: 2026-11-07 06:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Clears 9.5: deliverable hidden_files/lane4-p0a-reconcile-candidate.md SHA 68e09adaf0e... verified exact on disk. 20/20 round-trip re-derived with the reconciler's own functions (0 core field diffs), zero schema drift proven (empty diff vs t1422), the t1422 flag gap re-proven with a precise trigger (COMPOUNDED flag-less + v1.1-style pair = silent do
 
+### ✅ t0422-lane7 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Stage-0 INTAKE: diary-entry front door (diary_intake.py) with fail-closed schema
+
+**Evidence:** Verified: bin/diary_intake.py exists (12,149 bytes, 269 lines now vs 196 cited - grown since, shape matches the receipt's schema description; SHA drift is later revision, not phantom). Receipt documents 5/5 malformed inputs rejected with quarantine on a copy before the live run, and a simulated entry landed in lesson-broadcast.md. Score 8.5: honest
+
 ### ✅ t0422 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Stage-0 INTAKE - diary-entry front door
@@ -25904,6 +25922,12 @@ _Last updated: 2026-11-07 06:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0422-lane7.md`
 
 **Evidence:** Verified: bin/diary_intake.py on disk, sha256 1737b3a9... matches receipt pin exactly; live-run entry present in lesson-broadcast.md (line 4, exact claimed provenance: channel=diary-intake-cli, submitted=2026-10-12T16:16:37+00:00, principle=P4); no live quarantine log, matching the claim of zero live rejections (all adversarial tests ran on a /tmp 
+
+### ✅ t0422-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Stage-0 REPLAY slice 2: replay 3 other-seat decisions against the 15 principles
+
+**Evidence:** Verified: lane-3/t0422/replay-report-slice2.md exists and its sha256 matches the receipt's pin exactly (f3ee355a...701); all three decisions are other seats' (self-replay bias cured); evidence pins re-checked against live bytes at action time. Score 9.0: rigorous, read-only replay with counter-principle columns run to ground. Why not 9.5: all three
 
 ### ✅ t0422 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -26008,6 +26032,12 @@ _Last updated: 2026-11-07 06:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0413-lane3.md`
 
 **Evidence:** Verified: cited lineage artifact hidden_files/retrieval/auth-gate-migration-prep-t0601.md exists; receipts t0402-lane7.md, t0601-lane7.md exist on disk. Score 9.0: GOOD, ONE MORE PASS. Arm-fresh gate fired correctly — blind second-eyes on one's own map is definitionally not independent; claim was minimal, brief re-filed byte-intact, rotation untouc
+
+### ✅ t0412-lane7 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Stage-0 COLDSTART slice 1: 60-second cold-start packet + timed self-trial
+
+**Evidence:** Verified: coldstart-packet-template.md exists (2,110 bytes, 287 words now vs 279 cited - header marks it living/versioned, so the SHA drift is later versioning, not phantom) and coldstart-trial-t0412.md exists; the trial caught a real mission-state staleness (shared-state tip dbe06f9e vs mission-state 1eb22de4) and the v1 503-word self-violation th
 
 ### ✅ t0412 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
@@ -48294,6 +48324,90 @@ _Last updated: 2026-11-07 06:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ distill-daily-20261106 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** daily distill: mission-state drift re-verified live, sync PR #3258 opened through the scored route
+
+**Evidence:** Verified: remote branch naya4/mission-state-sync-20261106-0513 head via git ls-remote = 1d37b67a8e1d8b5f88c3ef7c103c92d095d89653, exactly the receipt's pinned commit; whole-branch merge correctly rejected (3,211 files, -1.16M lines) in favour of a single-file sync; /tmp-full incident repaired live. Score 8.5: thorough, honest receipt with live re-v
+
+### ✅ gate-stall-20261106-2305 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists (delta zero)
+
+**Evidence:** Verified: receipt's 31 listed briefs match the live queued list in twelve-lane-rotation.json exactly (31/31; the 5 extra backticked tokens are glob patterns in prose, not briefs); split 29x exit 7 / 2x exit 2 identical to the prior scored stall receipts. Score 9.0: honest, protocol-exact watch receipt with live script refusals. Why not 9.5: the rec
+
+### ✅ gate-stall-20261106-1018 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists (delta zero)
+
+**Evidence:** Verified: hourly gate-stall watch receipt read; its 31 listed briefs match the live queued list in twelve-lane-rotation.json exactly (31/31, on disk, plus lane-feed.md which is not a brief); split 29x exit 7 / 2x exit 2 identical across all 12 receipts scored this tick; spot claim-attempt on brief-gap-t0422-lane7.md refused live with 'No mv, no tou
+
+### ✅ gate-stall-20261106-2200 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists (delta zero)
+
+**Evidence:** Verified: hourly gate-stall watch receipt read; its 31 listed briefs match the live queued list in twelve-lane-rotation.json exactly (31/31, on disk, plus lane-feed.md which is not a brief); split 29x exit 7 / 2x exit 2 identical across all 12 receipts scored this tick; spot claim-attempt on brief-gap-t0422-lane7.md refused live with 'No mv, no tou
+
+### ✅ gate-stall-20261106-2056 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists (delta zero)
+
+**Evidence:** Verified: hourly gate-stall watch receipt read; its 31 listed briefs match the live queued list in twelve-lane-rotation.json exactly (31/31, on disk, plus lane-feed.md which is not a brief); split 29x exit 7 / 2x exit 2 identical across all 12 receipts scored this tick; spot claim-attempt on brief-gap-t0422-lane7.md refused live with 'No mv, no tou
+
+### ✅ gate-stall-20261106-1955 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists (delta zero)
+
+**Evidence:** Verified: hourly gate-stall watch receipt read; its 31 listed briefs match the live queued list in twelve-lane-rotation.json exactly (31/31, on disk, plus lane-feed.md which is not a brief); split 29x exit 7 / 2x exit 2 identical across all 12 receipts scored this tick; spot claim-attempt on brief-gap-t0422-lane7.md refused live with 'No mv, no tou
+
+### ✅ gate-stall-20261106-1851 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists (delta zero)
+
+**Evidence:** Verified: hourly gate-stall watch receipt read; its 31 listed briefs match the live queued list in twelve-lane-rotation.json exactly (31/31, on disk, plus lane-feed.md which is not a brief); split 29x exit 7 / 2x exit 2 identical across all 12 receipts scored this tick; spot claim-attempt on brief-gap-t0422-lane7.md refused live with 'No mv, no tou
+
+### ✅ gate-stall-20261106-1745 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists (delta zero)
+
+**Evidence:** Verified: hourly gate-stall watch receipt read; its 31 listed briefs match the live queued list in twelve-lane-rotation.json exactly (31/31, on disk, plus lane-feed.md which is not a brief); split 29x exit 7 / 2x exit 2 identical across all 12 receipts scored this tick; spot claim-attempt on brief-gap-t0422-lane7.md refused live with 'No mv, no tou
+
+### ✅ gate-stall-20261106-1640 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists (delta zero)
+
+**Evidence:** Verified: hourly gate-stall watch receipt read; its 31 listed briefs match the live queued list in twelve-lane-rotation.json exactly (31/31, on disk, plus lane-feed.md which is not a brief); split 29x exit 7 / 2x exit 2 identical across all 12 receipts scored this tick; spot claim-attempt on brief-gap-t0422-lane7.md refused live with 'No mv, no tou
+
+### ✅ gate-stall-20261106-1538 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists (delta zero)
+
+**Evidence:** Verified: hourly gate-stall watch receipt read; its 31 listed briefs match the live queued list in twelve-lane-rotation.json exactly (31/31, on disk, plus lane-feed.md which is not a brief); split 29x exit 7 / 2x exit 2 identical across all 12 receipts scored this tick; spot claim-attempt on brief-gap-t0422-lane7.md refused live with 'No mv, no tou
+
+### ✅ gate-stall-20261106-1434 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists (delta zero)
+
+**Evidence:** Verified: hourly gate-stall watch receipt read; its 31 listed briefs match the live queued list in twelve-lane-rotation.json exactly (31/31, on disk, plus lane-feed.md which is not a brief); split 29x exit 7 / 2x exit 2 identical across all 12 receipts scored this tick; spot claim-attempt on brief-gap-t0422-lane7.md refused live with 'No mv, no tou
+
+### ✅ gate-stall-20261106-1331 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists (delta zero)
+
+**Evidence:** Verified: hourly gate-stall watch receipt read; its 31 listed briefs match the live queued list in twelve-lane-rotation.json exactly (31/31, on disk, plus lane-feed.md which is not a brief); split 29x exit 7 / 2x exit 2 identical across all 12 receipts scored this tick; spot claim-attempt on brief-gap-t0422-lane7.md refused live with 'No mv, no tou
+
+### ✅ gate-stall-20261106-1226 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists (delta zero)
+
+**Evidence:** Verified: hourly gate-stall watch receipt read; its 31 listed briefs match the live queued list in twelve-lane-rotation.json exactly (31/31, on disk, plus lane-feed.md which is not a brief); split 29x exit 7 / 2x exit 2 identical across all 12 receipts scored this tick; spot claim-attempt on brief-gap-t0422-lane7.md refused live with 'No mv, no tou
+
+### ✅ gate-stall-20261106-1119 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists (delta zero)
+
+**Evidence:** Verified: hourly gate-stall watch receipt read; its 31 listed briefs match the live queued list in twelve-lane-rotation.json exactly (31/31, on disk, plus lane-feed.md which is not a brief); split 29x exit 7 / 2x exit 2 identical across all 12 receipts scored this tick; spot claim-attempt on brief-gap-t0422-lane7.md refused live with 'No mv, no tou
 
 ### ✅ gate-stall-20261101-1202 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
