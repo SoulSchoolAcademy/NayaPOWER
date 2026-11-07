@@ -1,6 +1,6 @@
 {
- "generated_from": "registry@568d4a9b",
- "count": 319,
+ "generated_from": "registry@6ad7afa1",
+ "count": 320,
  "notes": [
   {
    "id": "IB-SMART-NOTE-20261106-sn0131-how-it-all-connects",
@@ -16993,6 +16993,13 @@
    "created": "2026-11-06T21:43:00Z",
    "created_at": "2026-11-06T21:43:00Z",
    "subtitle": "NayaNET is a supercharger. You don't replace the AI — you bolt NayaNET onto her, and she connects to a supercharged network where everybody is plugged into the same high-performance machine: more memory, more intelligence, more people, more proof, flowing into every action. The same engine, supercharged. And the machine has a signature instrument: the speedometer — the Smart Score gauge on the Dashboard, the first thing you see when you log in, reading your whole world as speed. Shawn named the metaphor on 2026-11-06: \"putting a supercharger on an AI and then connecting her to a supercharged network that everybody was connected in — like a high performance machine... our signature piece is probably the speedometer.\""
+  },
+  {
+   "id": "IB-SMART-NOTE-20261106-sn2212-build-your-world-how-it-all-connects",
+   "title": "Build Your World — How It All Connects",
+   "created": "2026-11-07T02:02:00Z",
+   "created_at": "2026-11-07T02:02:00Z",
+   "subtitle": "Shawn's synthesis, spoken 2026-11-06 — how it all connects, in seven links. The foundation is a technology: collective chain technology — not a new app, not a new internet — where the value and the intelligence go back to the users and get shared with everybody. The cycle is how it works: everything you do — mail, messages, notes — can become a smart note; the notes join the intelligent network, and the network is intelligence, not images and videos. Privacy makes the cycle safe: we don't read your mail or your messages; conversations auto-delete — a day by default, your choice of a day, a week, a month — and you keep only what you choose to keep. The page is where a stranger meets all of it: not a sales page, a demonstration and a claim — three questions, and they watch their world appear. The campaign is BUILD YOUR WORLD, and the citizens are the campaign. The mission: the old internet fails something like 99% — ours is 100% success for everybody who uses her. And honesty holds every link together: no invented numbers, no fake live, no invented proof. Real or honestly absent."
   }
  ]
 }
