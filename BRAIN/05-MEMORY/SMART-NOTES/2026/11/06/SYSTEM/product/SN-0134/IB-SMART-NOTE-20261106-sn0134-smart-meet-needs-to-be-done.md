@@ -4,6 +4,8 @@ SN-0134 · SYSTEM / PRODUCT
 
 **Created:** 2026-11-07T04:05:00Z
 
+> **SUPERSEDED by SN-0135 — Smart Meet Is Member-to-Member.** This note said Smart Meet is video or chat with Naya. That is wrong. Smart Meet is member-to-member only: video, screen share, and audio conference between members. You do not video or audio-call Naya; you talk to Naya by dictation and text. See SN-0135: https://nayanet.app/smart-notes/sn0135
+
 **Source:** Shawn's words, 2026-11-06 — make sure this does not get forgotten. Smart Meet needs to be done. Filed by Power the same pass so it stays, and the build brief goes to Nitro the same pass so it starts.
 
 ## IN A NUTSHELL
