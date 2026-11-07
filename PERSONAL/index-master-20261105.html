@@ -18084,6 +18084,15 @@ function ldOpenNode(key, noFocus){
 }
 window.osBuildSpine = osBuildSpine;
 window.osLoadPointsBoard = loadPointsBoard;
+/* P7 (2026-11-07) — the world boards' _worldTotals() (J4 IIFE) reads LD_NODES /
+   ldData / ldNodeCount as globals; they were IIFE-local, so every board's
+   top-2 cells read 0 ("0 points"). Expose exactly the three names _worldTotals()
+   already guards for — same window-exposure pattern as the two lines above.
+   Side effect in the same direction: _featuredOrbPts() (same file, J4) can now
+   read ldData() for the Clicks orb's sparkline instead of an empty map. */
+window.LD_NODES = LD_NODES;
+window.ldData = ldData;
+window.ldNodeCount = ldNodeCount;
 })();
 /* J4 — featured panel + world boards (self-contained; sets window.renderBoards) */
 /* ═══ REPORTING PASS 1 (2026-11-05) — THE FEATURED ROLE + WORLD BOARDS ═══
