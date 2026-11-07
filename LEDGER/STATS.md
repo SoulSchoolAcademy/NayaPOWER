@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-07 04:11 UTC_
+_Last updated: 2026-11-07 04:45 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 7666
-- ✅ Verified (8+): 7598
+- **Total scored actions:** 7667
+- ✅ Verified (8+): 7599
 - 🟡 Partial (5–7): 65
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -17,7 +17,7 @@ _Last updated: 2026-11-07 04:11 UTC_
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 524 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 527 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 488 | 9.0 | 10 |
+| Team 3 | Naya Judge | 489 | 9.0 | 10 |
 | Team 4 | Naya Mason | 461 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 610 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 353 | 9.0 | 9.6 |
@@ -1277,6 +1277,7 @@ _Last updated: 2026-11-07 04:11 UTC_
 - **decision-replay-t0780-thirdseat-t1496-lane3-verdict-table.json:** 1 actions, avg 9.0/10
 - **gap-scorer-20261014-2250-lane3:** 1 actions, avg 9.0/10
 - **20261101-0520:** 2 actions, avg 9.0/10
+- **decision-replay-t0780-thirdseat-t1496-lane3-verdict-table:** 1 actions, avg 9.0/10
 - **coldnaya:** 11 actions, avg 9.0/10
 - **scorer-20261014-1910:** 2 actions, avg 9.2/10
 - **gap-scorer-20261015-0120:** 1 actions, avg 9.2/10
