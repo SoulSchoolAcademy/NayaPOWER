@@ -1,9 +1,9 @@
 # Pricing Round 7 Fix1 — Parts Manifest
-**Filed:** 2026-11-07. **Fix1 file:** `~/workspace/verify-pricing-v6/pricing-round7-fix1-work.html` (sha256 `e165822f3c195b0e6e988739c73385d10073fb4194b4c797012b6020c45f5502`, 281197 bytes at filing — re-measure at the end; fix7k/k2/k3 ran after the r7f3 self-check).
+**Filed:** 2026-11-07. **Fix1 file:** `~/workspace/verify-pricing-v6/pricing-round7-fix1-work.html` (sha256 `995149235cba3fed0621a2efbcec1abdf1e4776ecd609962d68f695aa8dcbb8f`, 294207 bytes / 2,578 lines (final, after fix7l/m/m2/m3/m4/n/n2; re-proved by r7f3 run6)).
 **Governing charge (Round-7 Charge, Shawn 2026-11-07 01:03Z):** "Produce awesomeness, be awesome, do nothing else. Do what's right for everybody. Just not about ego. It's about honor."
 **Minting Law:** every harvested element the page uses is named, filed, and inventoried — GitHub `BRAIN/10-INTERFACES/DESIGN-BLOCKS/pricing-round7-fix1/` + local `~/workspace/smart-factory/pricing-round7-fix1/` + `PARTS-REGISTRY.md` — the same pass it is used. Nothing good lives only in a page file.
 
-## Parts filed in this pass (20 files)
+## Parts filed in this pass (22 files)
 1. `epic-speedometer-studio-turbine-face.md` — Epic Speedometer — Studio Turbine Face
 2. `academy-orbit-nine-systems.md` — Academy Orbit — Nine Systems
 3. `hostess.md` — Hostess — Naya Presents
@@ -24,6 +24,8 @@
 18. `eco-bottom-bar-naya-nav-003.md` — Eco Bottom Bar — NAYA-NAV-003
 19. `satellite-orbs.md` — Satellite Orbs
 20. `tree-banner-art.md` — Tree Banner Art — The Two Banner Images
+21. `close-frames-template-real-estate-solid-ground.md` — Close Frames — Template Insight · Digital Real Estate · Solid Ground (Additions 17 + 18)
+22. `value-impact-wants-naya-way.md` — Value Impact · What All Humans Want · The Naya Way (Addition 19)
 
 ## Already-filed items reused (confirmed, not re-filed)
 - **The Supercharger Button** (purple jewel CTA) — Academy Harvest §08–11; registry ACADEMY HARVEST entry 1. Used for ALL pricing CTAs.
