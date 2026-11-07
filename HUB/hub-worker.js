@@ -367,9 +367,16 @@ const SW_CURE_JS = [
 // address must NOT change — the /pi rewrite's shape, reused for note URLs.
 // no-store: a stored shell answer for a note URL kept reappearing after
 // the route was fixed (observed 2026-10-26 for /pi); never store one.
+// Fetch "/" (not "/index.html"): the assets layer 307-redirects a direct
+// /index.html request to "/" (observed live 2026-11-07), and env.ASSETS
+// returns that redirect as the response — wrapping it would answer the
+// note URL with a 307 to "/" and lose the clean address. "/" serves the
+// shell itself. Requires the [assets] binding = "ASSETS" in wrangler.toml:
+// without it env.ASSETS is undefined and this throws (proven on the real
+// edge 2026-11-07: TypeError reading 'fetch' at this line).
 async function serveHubShell(request, env) {
   const shellUrl = new URL(request.url);
-  shellUrl.pathname = "/index.html";
+  shellUrl.pathname = "/";
   shellUrl.search = "";
   const shellRes = await env.ASSETS.fetch(new Request(shellUrl, request));
   const headers = new Headers(shellRes.headers);
@@ -397,7 +404,7 @@ export default {
     if (request.method === "GET") {
       const noteMatch = url.pathname.match(/^\/(?:s|notes|smart-notes|note)\/([^/]+)\/?$/);
       const noteQuery = !noteMatch && (url.pathname === "/note" || url.pathname === "/smart-notes") && url.searchParams.get("n");
-      const bareNotePath = url.pathname === "/smart-notes" || url.pathname === "/smart-notes/" || url.pathname === "/note" || url.pathname === "/note/";
+      const bareNotePath = url.pathname === "/smart-notes" || url.pathname === "/smart-notes/" || url.pathname === "/note" || url.pathname === "/note/" || url.pathname === "/s" || url.pathname === "/s/" || url.pathname === "/notes" || url.pathname === "/notes/";
       if (noteMatch || noteQuery || bareNotePath) {
         return serveHubShell(request, env);
       }
