@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-07 10:01 UTC_
+_Last updated: 2026-11-07 10:32 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 7768
-- ✅ Verified (8+): 7700
+- **Total scored actions:** 7777
+- ✅ Verified (8+): 7709
 - 🟡 Partial (5–7): 65
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -18,14 +18,14 @@ _Last updated: 2026-11-07 10:01 UTC_
 | Team 1 | Naya Verity | 525 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 529 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 493 | 9.0 | 10 |
-| Team 4 | Naya Mason | 463 | 9.1 | 9.6 |
+| Team 4 | Naya Mason | 464 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 611 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 353 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 469 | 9.0 | 10 |
+| Team 7 | Naya Conductor | 471 | 9.0 | 10 |
 | Team 8 | Naya Sentinel | 492 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 619 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 844 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 469 | 9.0 | 9.6 |
+| Team 11 | Naya Heart | 475 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 396 | 9.2 | 9.5 |
 
 ## Learning velocity
@@ -1163,6 +1163,12 @@ _Last updated: 2026-11-07 10:01 UTC_
 - **20261101-1120:** 3 actions, avg 9.0/10
 - **gap-t1292:** 1 actions, avg 9.5/10
 - **gap-t1538:** 1 actions, avg 9.4/10
+- **gap-t1558-lane11:** 1 actions, avg 9.2/10
+- **gap-t1561-lane11:** 1 actions, avg 9.0/10
+- **gap-t1562-lane11:** 1 actions, avg 9.0/10
+- **gap-t1564-lane11:** 1 actions, avg 9.0/10
+- **gap-gap-t1564-lane11:** 1 actions, avg 9.0/10
+- **gap-gap-gap-t1564-lane11:** 1 actions, avg 9.0/10
 - **scorer-20261014-2010:** 4 actions, avg 9.2/10
 - **scorer-20261014-2310:** 7 actions, avg 9.4/10
 - **scorer-20261014-2320:** 4 actions, avg 8.9/10
@@ -2037,7 +2043,10 @@ _Last updated: 2026-11-07 10:01 UTC_
 - **t0392-lane7:** 1 actions, avg 8.5/10
 - **t0402:** 4 actions, avg 8.6/10
 - **t0402-lane2:** 1 actions, avg 8.0/10
+- **t0402-lane7:** 1 actions, avg 9.0/10
 - **t0403:** 6 actions, avg 9.2/10
+- **t0403-lane4:** 1 actions, avg 9.0/10
+- **t0403-lane7:** 1 actions, avg 9.0/10
 - **t0405:** 6 actions, avg 9.3/10
 - **t0407:** 6 actions, avg 9.2/10
 - **t0412:** 8 actions, avg 8.6/10
