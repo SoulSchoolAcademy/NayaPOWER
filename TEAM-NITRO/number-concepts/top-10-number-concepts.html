@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Number — Concepts</title>
+<title>The Number — The Ultimate</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -15,7 +15,7 @@
     padding: 48px 20px 64px;
   }
   .wrap { max-width: 1080px; margin: 0 auto; }
-  header { text-align: center; margin-bottom: 40px; }
+  header { text-align: center; margin-bottom: 34px; }
   .kicker {
     color: #d4af37; letter-spacing: .35em; font-size: 12px; font-weight: 700;
     text-transform: uppercase; margin-bottom: 14px;
@@ -24,6 +24,31 @@
   h1 em { font-style: normal; color: #d4af37; }
   .sub { margin-top: 12px; color: #9a9a9a; font-size: 16px; line-height: 1.55; }
   .sub b { color: #e8e8e8; }
+
+  /* THE ULTIMATE — best of all eleven, one object */
+  .hero {
+    background: linear-gradient(180deg, #161618, #08080a);
+    border: 1px solid rgba(212,175,55,.45);
+    border-radius: 24px;
+    padding: 36px 30px 30px;
+    box-shadow: 0 30px 70px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.07);
+    text-align: center;
+    margin-bottom: 34px;
+  }
+  .hero .kicker { margin-bottom: 10px; }
+  .hero h2 { font-size: 30px; font-weight: 900; color: #f5f5f5; }
+  .hero h2 em { font-style: normal; color: #d4af37; }
+  .hero-well {
+    background: linear-gradient(180deg, #030304, #0b0b0d);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 18px;
+    box-shadow: inset 0 6px 26px rgba(0,0,0,.9), inset 0 -1px 0 rgba(255,255,255,.04);
+    display: flex; align-items: center; justify-content: center;
+    padding: 44px 12px 40px; margin: 26px 0 20px; min-height: 280px;
+  }
+  .recipe { color: #9d9d9d; font-size: 15px; line-height: 1.7; max-width: 760px; margin: 0 auto; }
+  .recipe b { color: #e8e8e8; }
+
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
   @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } h1 { font-size: 32px; } }
   .card {
@@ -48,10 +73,43 @@
   .platter { width: 250px; max-width: 82%; height: 26px; margin-top: -4px; border-radius: 50%;
     background: radial-gradient(ellipse at 50% 28%, #ffffff, #cfcfcf 42%, #8d8d8d 72%, #ececec);
     box-shadow: 0 8px 16px rgba(0,0,0,.75), inset 0 2px 3px rgba(255,255,255,.85), inset 0 -3px 5px rgba(0,0,0,.35); }
+  .platter.big { width: 430px; max-width: 86%; height: 34px; margin-top: -6px; }
   .name { color: #d4af37; font-size: 17px; font-weight: 800; letter-spacing: .02em; margin-bottom: 6px; }
   .name span { color: #666; font-weight: 700; font-size: 13px; letter-spacing: .12em; margin-right: 8px; }
   .desc { color: #9d9d9d; font-size: 14.5px; line-height: 1.55; }
   .desc b { color: #cfcfcf; }
+
+  /* THE ULTIMATE NUMBER — the best of all eleven, layered into one object.
+     Body: platinum relief (raised, cast, weight, real shadow).
+     Face: liquid gloss + diamond facets (hard light breaks).
+     Edge: gold (two-tone — gold is what matters).
+     Base: engraved into obsidian (the cut the number rises out of).
+     Depths: a whisper of sapphire (the jewel, in the shadows).
+     Mid-tones: brushed steel (machined honesty).
+     Light: lit from within (the machine is awake). */
+  .ultimate { font-size: 168px;
+    background:
+      repeating-linear-gradient(180deg, rgba(255,255,255,.05) 0 1px, transparent 1px 3px),
+      linear-gradient(155deg,
+        #ffffff 0%, #ececec 18%,
+        #b5b5b5 32%, #8a8a8a 42%,
+        #232c4e 48%, #4a5a9a 52%, #8f8f8f 58%,
+        #ffffff 60%, #d5d5d5 60% 68%, #ffffff 68%,
+        #e8e8e8 78%, #a8a8a8 88%, #dcdcdc 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    -webkit-text-stroke: 2px #d4af37;
+    text-shadow:
+      0 -1px 0 rgba(255,255,255,.7),
+      0 1px 1px rgba(0,0,0,.6),
+      0 12px 22px rgba(0,0,0,.9),
+      0 0 28px rgba(255,220,120,.45),
+      0 0 64px rgba(255,200,80,.22);
+  }
+  .ultimate.landed { animation: landBig 1.4s ease-out; }
+  @keyframes landBig {
+    0% { filter: brightness(1.9) drop-shadow(0 0 44px rgba(255,220,120,.85)); }
+    100% { filter: brightness(1); }
+  }
 
   /* 1 — Platinum Engraved: cut INTO the obsidian, platinum in the cut */
   .c1 { font-family: Georgia, "Times New Roman", serif;
@@ -112,9 +170,22 @@
     <div class="kicker">The Score &middot; The Concepts</div>
     <h1>The number, as <em>real objects.</em></h1>
     <p class="sub">The score is <b>725</b> in every one. Only the object changes.<br>
-    Every number scrolls up to 725 and unveils &mdash; the million-dollar moment.<br>
-    Pick the best &mdash; that one goes on the Dashboard.</p>
+    The ultimate is first &mdash; every concept distilled into one object.<br>
+    Then the eleven, so you can see what went into it. Every number scrolls up to 725 and unveils &mdash; the million-dollar moment.</p>
   </header>
+
+  <section class="hero">
+    <div class="kicker">The Ultimate &middot; Best of All Eleven</div>
+    <h2>The ultimate number.</h2>
+    <div class="hero-well">
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="num ultimate" data-dur="2400">725</div>
+        <div class="platter big"></div>
+      </div>
+    </div>
+    <p class="recipe"><b>Platinum relief</b> for the body &middot; <b>liquid gloss and diamond facets</b> for the face &middot; <b>gold</b> for the edge &middot; <b>engraved into obsidian</b> at the base &middot; a whisper of <b>sapphire</b> in the depths &middot; <b>brushed steel</b> in the mid-tones &middot; <b>lit from within</b> &middot; served on the <b>silver platter</b> &middot; unveiling as it counts up.</p>
+  </section>
+
   <div class="grid">
     <div class="card"><div class="num-well"><div class="num c1">725</div></div>
       <div class="name"><span>01</span>Platinum Engraved</div>
@@ -151,17 +222,18 @@
       <p class="desc">Served on a silver platter. The number is the jewel, the platter is the presentation &mdash; a wide silver tray with a bright rim, the number resting on it like a trophy. Plaques, trophies, depth jewellery: real and valuable, not fake. <b>Shawn&rsquo;s addition.</b></p></div>
   </div>
   <footer>Every number here is the same score &mdash; <b>725</b>. What changes is what the number <b>is</b>.<br>
-  Ten concepts, plus the silver platter &mdash; your addition. The one you pick becomes the score on the Dashboard.</footer>
+  The ultimate is the best of all eleven. If it is the one, it becomes the score on the Dashboard.</footer>
 </div>
 <script>
 /* The reveal: every number scrolls up to 725 and unveils — the million-dollar moment. */
 (function(){
-  var TARGET = 725, DUR = 1700;
+  var TARGET = 725;
   function reveal(el){
+    var dur = parseInt(el.getAttribute('data-dur') || '1700', 10);
     var start = null;
     function tick(ts){
       if (start === null) start = ts;
-      var p = Math.min((ts - start) / DUR, 1);
+      var p = Math.min((ts - start) / dur, 1);
       var eased = 1 - Math.pow(1 - p, 3); /* ease-out: fast climb, slow landing */
       el.textContent = Math.round(TARGET * eased);
       if (p < 1) requestAnimationFrame(tick);
