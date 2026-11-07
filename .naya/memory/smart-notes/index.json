@@ -30341,6 +30341,37 @@
     "The Money Machine",
     "Ambassador"
    ]
+  },
+  {
+   "smart_note_id": "SN-0127",
+   "intelligent_block_id": "IB-SMART-NOTE-20261106-sn0127-page-that-closes-the-deal",
+   "slug": "page-that-closes-the-deal",
+   "title": "The Page That Closes the Deal — The Top 10 Viral Marketing Concepts for NayaNET",
+   "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/marketing/SN-0127/IB-SMART-NOTE-20261106-sn0127-page-that-closes-the-deal.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/marketing/SN-0127/IB-SMART-NOTE-20261106-sn0127-page-that-closes-the-deal.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/marketing/SN-0127/IB-SMART-NOTE-20261106-sn0127-page-that-closes-the-deal.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn0127-page-that-closes-the-deal.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DOCTRINE",
+   "captured_at": "2026-11-06",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-power",
+   "registered_at": "2026-11-07T01:37:10Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-06",
+   "page_hash": "e36c5245a5be2eebedb8dbb31083ec62549714be11aeedcf7872bb15463b27fe",
+   "content_hash": "69a8e98a3be1df33a0979c9a4c187ff0dc58e05c83225aa1c7d2234a808f153a",
+   "one_line": "The page is not a sales page. It is a demonstration and a claim. The visitor does not read about NayaNET — they watch it build their world, and they claim their name. The close is the demo. The viral engine is the invite, the affiliate, and the shareable intelligence, working in five layers. The ten concepts below are the strongest hooks, in order, and they are all true: the internet rebuilt; you do not operate anything; claim your name; your people are already here; watch it morph; private by default, connected by choice; a feed that makes you smarter; get paid for bringing your world; the future is now; and the internet called, it wants its wasted hours back. Use them all, but lead with the demo, because a claim is never as strong as a thing seen happening.",
+   "topics": [
+    "System",
+    "Doctrine",
+    "Marketing"
+   ]
   }
  ],
  "sequence_policy": {
@@ -30351,5 +30382,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "568d4a9b6e5f879ec044162e1032b671217ec9ffdc122236f461f8ce56b3b1f0"
+ "corpus_manifest_hash": "696bbff74a4de2b8c6887de5fb122a7848ad6fffa340bf0b56ee7346c346f656"
 }
