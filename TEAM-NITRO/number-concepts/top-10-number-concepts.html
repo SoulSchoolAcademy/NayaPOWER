@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Number — Ten Concepts</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #050506;
+    background-image: radial-gradient(1200px 700px at 18% -10%, rgba(255,255,255,.07), transparent 60%),
+                      radial-gradient(900px 600px at 85% 110%, rgba(212,175,55,.05), transparent 60%);
+    color: #e8e8e8;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 48px 20px 64px;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 40px; }
+  .kicker {
+    color: #d4af37; letter-spacing: .35em; font-size: 12px; font-weight: 700;
+    text-transform: uppercase; margin-bottom: 14px;
+  }
+  h1 { font-size: 42px; font-weight: 900; letter-spacing: -.01em; color: #f5f5f5; }
+  h1 em { font-style: normal; color: #d4af37; }
+  .sub { margin-top: 12px; color: #9a9a9a; font-size: 16px; line-height: 1.55; }
+  .sub b { color: #e8e8e8; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } h1 { font-size: 32px; } }
+  .card {
+    background: linear-gradient(180deg, #121214, #08080a);
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 20px;
+    padding: 26px 26px 22px;
+    box-shadow: 0 22px 48px rgba(0,0,0,.72), inset 0 1px 0 rgba(255,255,255,.06);
+  }
+  .num-well {
+    background: linear-gradient(180deg, #030304, #0b0b0d);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 14px;
+    box-shadow: inset 0 4px 18px rgba(0,0,0,.85), inset 0 -1px 0 rgba(255,255,255,.04);
+    display: flex; align-items: center; justify-content: center;
+    padding: 30px 10px 26px; margin-bottom: 18px; min-height: 168px;
+  }
+  .num { font-size: 92px; line-height: 1; font-weight: 900; letter-spacing: -0.02em; }
+  .name { color: #d4af37; font-size: 17px; font-weight: 800; letter-spacing: .02em; margin-bottom: 6px; }
+  .name span { color: #666; font-weight: 700; font-size: 13px; letter-spacing: .12em; margin-right: 8px; }
+  .desc { color: #9d9d9d; font-size: 14.5px; line-height: 1.55; }
+  .desc b { color: #cfcfcf; }
+
+  /* 1 — Platinum Engraved: cut INTO the obsidian, platinum in the cut */
+  .c1 { font-family: Georgia, "Times New Roman", serif;
+    background: linear-gradient(180deg, #f4f4f4, #b9b9b9 55%, #e9e9e9);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 -1px 1px rgba(0,0,0,.85), 0 1px 0 rgba(255,255,255,.22), 0 3px 6px rgba(0,0,0,.55); }
+  /* 2 — Platinum Relief: cast badge, raised, real shadow */
+  .c2 {
+    background: linear-gradient(180deg, #ffffff, #d2d2d2 38%, #8e8e8e 72%, #ececec);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 -1px 0 rgba(255,255,255,.65), 0 8px 14px rgba(0,0,0,.9), 0 3px 4px rgba(0,0,0,.55); }
+  /* 3 — Liquid Platinum: poured, mirror-bright, one specular band */
+  .c3 {
+    background: linear-gradient(155deg, #ffffff 0%, #e6e6e6 24%, #969696 48%, #fafafa 60%, #767676 78%, #dcdcdc 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 0 20px rgba(255,255,255,.35), 0 5px 12px rgba(0,0,0,.6); }
+  /* 4 — Diamond-Cut: flat facets, hard light breaks */
+  .c4 {
+    background: linear-gradient(135deg, #e9e9e9 0 16%, #ffffff 16% 30%, #a6a6a6 30% 48%, #f2f2f2 48% 62%, #8a8a8a 62% 80%, #e4e4e4 80%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 2px 6px rgba(0,0,0,.7), 0 0 14px rgba(255,255,255,.28); }
+  /* 5 — Gold on Obsidian: the standard, engraved gold */
+  .c5 { font-family: Georgia, "Times New Roman", serif;
+    background: linear-gradient(180deg, #fff4c2, #f5d76e 35%, #b8860b 65%, #ffe98a 92%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 1px 0 rgba(255,255,255,.3), 0 -1px 2px rgba(0,0,0,.85), 0 4px 10px rgba(0,0,0,.6); }
+  /* 6 — Two-Tone: platinum face, gold edge */
+  .c6 {
+    background: linear-gradient(180deg, #fdfdfd, #c6c6c6 52%, #f2f2f2);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    -webkit-text-stroke: 1.5px #d4af37;
+    text-shadow: 0 0 16px rgba(212,175,55,.35), 0 5px 10px rgba(0,0,0,.6); }
+  /* 7 — Obsidian Glass: see-through, light in the edges */
+  .c7 {
+    background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(205,215,235,.6) 55%, rgba(240,244,255,.85));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 0 3px rgba(255,255,255,.75), 0 0 22px rgba(175,200,255,.4), 0 5px 14px rgba(0,0,0,.8); }
+  /* 8 — Sapphire Jewel: deep blue, white facet flashes */
+  .c8 {
+    background: linear-gradient(160deg, #a9bdff, #2b4acb 42%, #0e1e6e 72%, #82a4ff);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 -1px 0 rgba(255,255,255,.55), 0 0 18px rgba(80,120,255,.5), 0 5px 12px rgba(0,0,0,.7); }
+  /* 9 — Brushed Steel: machined, fine horizontal brush */
+  .c9 {
+    background: repeating-linear-gradient(180deg, #c9c9c9 0 2px, #989898 2px 4px, #d6d6d6 4px 5px, #a8a8a8 5px 7px);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 2px 5px rgba(0,0,0,.55), 0 -1px 0 rgba(255,255,255,.35); }
+  /* 10 — Light Itself: the number is lit from within */
+  .c10 { color: #fffbe8;
+    text-shadow: 0 0 8px rgba(255,244,200,.95), 0 0 32px rgba(255,220,120,.55), 0 0 64px rgba(255,200,80,.32), 0 2px 6px rgba(0,0,0,.5); }
+  footer { text-align: center; margin-top: 40px; color: #777; font-size: 14px; line-height: 1.6; }
+  footer b { color: #d4af37; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">The Score &middot; Ten Concepts</div>
+    <h1>The number, as <em>ten real objects.</em></h1>
+    <p class="sub">The score is <b>725</b> in every one. Only the object changes.<br>
+    Pick the best &mdash; that one goes on the Dashboard.</p>
+  </header>
+  <div class="grid">
+    <div class="card"><div class="num-well"><div class="num c1">725</div></div>
+      <div class="name"><span>01</span>Platinum Engraved</div>
+      <p class="desc">Carved <b>into</b> the obsidian, the cut filled with platinum. You read it by the light catching the bevel. Deep, quiet, permanent &mdash; like an engraving on a watch caseback.</p></div>
+    <div class="card"><div class="num-well"><div class="num c2">725</div></div>
+      <div class="name"><span>02</span>Platinum Relief</div>
+      <p class="desc">Cast as a solid piece of platinum and set <b>on</b> the plate, raised, with a real shadow falling away from it. It has weight. You can almost feel its edge.</p></div>
+    <div class="card"><div class="num-well"><div class="num c3">725</div></div>
+      <div class="name"><span>03</span>Liquid Platinum</div>
+      <p class="desc">Poured, molten, frozen mid-flow. Mirror-bright on top, dark underneath, one bright streak across it. It looks wet and alive &mdash; like it is still moving.</p></div>
+    <div class="card"><div class="num-well"><div class="num c4">725</div></div>
+      <div class="name"><span>04</span>Diamond-Cut</div>
+      <p class="desc">Cut like a gemstone. Flat facets, sharp angles, each facet a different shade of platinum catching the light differently. It sparkles when you move.</p></div>
+    <div class="card"><div class="num-well"><div class="num c5">725</div></div>
+      <div class="name"><span>05</span>Gold on Obsidian</div>
+      <p class="desc">The standard &mdash; engraved gold on black obsidian. Warm, rich, the classic. Gold is what matters; black is the night it shines against.</p></div>
+    <div class="card"><div class="num-well"><div class="num c6">725</div></div>
+      <div class="name"><span>06</span>Two-Tone &middot; Platinum + Gold</div>
+      <p class="desc">Platinum face, gold edge. The body is platinum, the rim is a thin line of gold light. Two metals together &mdash; it looks like a piece of jewellery, not a readout.</p></div>
+    <div class="card"><div class="num-well"><div class="num c7">725</div></div>
+      <div class="name"><span>07</span>Obsidian Glass</div>
+      <p class="desc">Made of glass. You see through it to the black beneath, the edges catch the light bright, the inside glows softly. Fragile and precious at once.</p></div>
+    <div class="card"><div class="num-well"><div class="num c8">725</div></div>
+      <div class="name"><span>08</span>Sapphire Jewel</div>
+      <p class="desc">Cut from deep blue sapphire. Dark blue body, bright white facet flashes, gold light on the edges. The only one with a deep colour &mdash; so it owns the page.</p></div>
+    <div class="card"><div class="num-well"><div class="num c9">725</div></div>
+      <div class="name"><span>09</span>Brushed Steel</div>
+      <p class="desc">Machined from brushed steel. Fine horizontal brush lines, matte steel, one soft top-light. It looks like it came off a lathe &mdash; and the machine is the point.</p></div>
+    <div class="card"><div class="num-well"><div class="num c10">725</div></div>
+      <div class="name"><span>10</span>Light Itself</div>
+      <p class="desc">Made of light. A bright core, a soft volumetric glow around it, like a filament in the dark. It does not sit on the plate &mdash; it hovers, lit from within.</p></div>
+  </div>
+  <footer>Every number here is the same score &mdash; <b>725</b>. What changes is what the number <b>is</b>.<br>
+  The one you pick becomes the score on the Dashboard.</footer>
+</div>
+</body>
+</html>
