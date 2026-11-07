@@ -297,7 +297,10 @@
   /* --- the ultimate: three reels, bottom to top, chakra colors --- */
   function buildReel(reel, target){
     var div = parseInt(reel.getAttribute('data-div'), 10);
-    var max = parseInt(reel.getAttribute('data-max'), 10);
+    /* the strip length comes from the TARGET, not the old data-max —
+       a strip rebuilt with the old length is still too short for the bigger count */
+    var max = Math.floor(target / div);
+    reel.setAttribute('data-max', String(max));
     var strip = reel.querySelector('.strip');
     var finalDigit = Math.floor(target / div) % 10;
     reel.setAttribute('data-final', finalDigit);
