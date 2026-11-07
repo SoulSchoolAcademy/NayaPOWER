@@ -406,6 +406,9 @@
       buildReel(reel, toVal);
       setTimeout(function(r){ return function(){ r.classList.remove('new'); }; }(reel), 700);
     }
+    /* rebuild every strip for the new target — the old strips are too short
+       for the bigger count, and a reel with no digit under the window reads blank */
+    buildReels(el, toVal);
     var reels = reelObjs(el);
     snapStrips(reels, fromVal);
     restoreStrips(reels, el);
