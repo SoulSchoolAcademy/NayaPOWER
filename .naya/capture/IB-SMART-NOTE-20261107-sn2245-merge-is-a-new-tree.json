@@ -1,0 +1,43 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2245",
+ "title": "The Merge Is a New Tree: Verify the Landing, Not the Promise",
+ "slug": "merge-is-a-new-tree",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/07/LESSON/SN-2245/IB-SMART-NOTE-20261107-sn2245-merge-is-a-new-tree.md",
+ "tone": "orange",
+ "icon": "◆",
+ "created_at": "2026-11-07T23:11:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Verdicts bind SHAs. A PR body decays the moment the head moves — rebind it at every material change. The repo is the demo: one frozen SHA for what is viewed, what is judged, and what is repaired. The frozen SHA is the judge's anchor, and the freezer is bound by it too. Caveats must carry their expiry trigger. Re-fetch freshness before the push, not just the post. A CANDIDATE note with a disclosed unknown may merge; a disguised unknown may not. Keep the review head stable. The auto-merge gate must re-verify on the merge commit — the merge itself changes the tree. Adjudicate convergence on blob-SHA proof and close the superseded PR instead of merging a no-op. The branch must not move before the check.",
+  "human_view": "A pull request's description said \"21 to 25 on the old base\" while the actual code was \"21 to 26 on the new base\" — five ways drifted, nothing flagged it, and a reviewer reading the body alone would have evaluated a change that no longer existed. An auto-merge landed a brain file and left the index stale — 188 files counted while the tree held 189 — because every check had qualified the pre-merge state and the merge itself created a new tree nobody re-verified. A judge froze a review at one SHA, then committed to the same branch a minute later — and the ruling held: the frozen SHA stands; her own later commit enters the next review, not this one. A pull request sat open while other lanes landed every piece of it; instead of merging a no-op, the owning lane proved convergence with exact file comparisons and closed it as superseded. The discipline in every case is the same: the evidence belongs to an exact tree, and the moment the tree moves, the evidence expires with it.",
+  "child_view": "Imagine a teacher grading your drawing, and while she grades it you keep drawing on it. Her grade is for the old drawing, not the new one — so she pins your drawing to the wall and grades exactly that one. If you change it afterward, that is a new drawing, and it gets a new grade. The pin is the promise: this exact drawing, this exact grade.",
+  "grandma_view": "Judge the thing as it is, not as it was described yesterday. If the words about the work are older than the work itself, rewrite the words. If you move the furniture while someone is measuring the room, their numbers are for the old room. Measure again after the move.",
+  "ai_view": "Bind every verdict to its SHA: a decision computed on tip T is inadmissible after the tip moves. Re-derive the PR body's claims — base pin, counts, test results, repair class, supersession list — from the new head in the same motion as the mutation, and stamp the body \"as of head X\" explicitly. Freeze the demo as a pushed commit; what Shawn views, what the judge scores, and what the repair targets are one SHA. Re-fetch tip freshness before the branch push too — a same-topic lane may have merged inside your repair window. Adjudicate convergence on proof — merge-base three-way plus per-blob SHA equality against live main — not on \"it merges clean,\" which means no conflicts, not that the content is needed. And never trust pre-merge checks on a post-merge tree: if the merge produces a new commit, re-run the derived-layer checks on the merge commit itself before declaring the landing healthy.",
+  "what_it_means": "A merge is not a ceremony over a verified PR head — it is a new tree, and nothing proved on the old tree transfers. Every defect in this family is the same shape: evidence measured on one tree, trusted on another. The freeze, the rebind, the re-verification, and the convergence proof are all one discipline — keep the evidence and the tree in the same moment, or the evidence is void.",
+  "whats_inside": [
+   "Never trust pre-merge checks on a post-merge tree. Verify the landing on the exact merge commit.",
+   "A merge is not a ceremony over a verified PR head — it is a new tree, and nothing proved on the old tree transfers.",
+   "The team merged verified work and still shipped a stale index, judged a moving branch and manufactured disagreement, and reviewed descriptions of code that no longer existed.",
+   "What you view is what was judged is what got repaired — one SHA, one review, one gate.",
+   "verdict SHA == head SHA at decision time, else re-verify and re-stamp",
+   "PR body re-derived from the new head on every material change",
+   "demo == frozen pushed commit SHA",
+   "review pins to the frozen SHA, never the branch head",
+   "every time-bound caveat carries its expiry trigger — the exact event that invalidates it",
+   "freshness re-fetch before push, post, and merge",
+   "index / ledger / cache checks re-run on the exact merge commit",
+   "convergence adjudicated on blob-SHA proof, superseded PRs closed unmerged with the residual preserved for cherry-pick",
+   "the irreversible mutation comes last, after every check is green.",
+   "Distills 10 raw notes (Batch 1, 10 of 100): SN-0185, SN-0191, SN-0206, SN-0041, SN-0472, SN-0325, SN-0473, SN-0328, SN-0558, SN-0352."
+  ],
+  "topics": [
+   "System",
+   "Lesson",
+   "Distillation"
+  ]
+ },
+ "page_hash": "80dc92bc3f3fcaf52a275f2b0ee540e527ef2511385e3b53c0d28b2abe5d236f",
+ "content_hash": "096eb18108561bd7dccdb8423cbb1368fbb1c684b204c734d85bbf0d5327a310"
+}
