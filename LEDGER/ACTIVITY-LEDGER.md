@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-07 07:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-07 07:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -287,6 +287,12 @@ _Last updated: 2026-11-07 07:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: retrieval/falsify-staleness-watches-20261018.py exists (4658 bytes) as the checked-in one-command instrument. Score 9.0/10 GOOD, ONE MORE PASS. Why not 9.5: single-seat — the FIRED-x2-on-live-derived-bytes and fail-closed re-proofs are receipt-internal runs, uncorroborated; a second seat re-running the one command closes it. Credited: the
 
+### ✅ t1564-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Lane 11 Heart verify: re-derive t1564 dispatcher reconcile (5 claims) + t1562 dequeue
+
+**Evidence:** Verified: receipt on disk and read; all 15 gap briefs still on disk (15/15); rotation queued=31, in_flight=[]; receipt pins both t1562 receipt SHAs (t1562-lane11.md 9903a6ad..., gap-t1562-lane11.md 6988bb99...) and confirms brief-t1562-lane11.md + brief-gap-t1562-lane11.md dequeued to claimed/done/. 5/5 claims re-derived with exact-name checks and 
+
 ### ✅ t1564 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Verify t1564 dispatcher reconcile + t1562 close from live bytes, Heart verify
@@ -317,6 +323,12 @@ _Last updated: 2026-11-07 07:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED this tick on live bytes: 31 brief-*.md files in brief-queue/, rotation queued=31, claimed/ holds only done/ — queue state exactly as receipted. One refusal independently spot-checked: brief-gap-t0422-lane7 dry-run refused on parent-authorship (parent author clarity == claimer), no mv, no touch, matching the receipt's exit-7 class. NOT PHAN
 
+### ✅ t1562-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Lane 11 Heart verify: re-derive t1562 dispatcher reconcile (5 claims) + t1561 dequeue
+
+**Evidence:** Verified: receipt on disk and read; all 15 gap briefs still on disk (15/15); rotation queued=31, in_flight=[]; receipt pins rotation mtime 2026-10-24 15:24:49Z (dispatcher reconcile, not this run) and the t1561 receipt SHA dff2cc55... (7,972 bytes, self-scored 9.0) matching the t1562 dispatch note. 5/5 claims + the t1561 dequeue re-derived; collisi
+
 ### ✅ t1562 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Verify t1562 dispatcher reconcile + t1561 dequeue from live bytes, Heart verify
@@ -332,6 +344,12 @@ _Last updated: 2026-11-07 07:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1562-lane11.md`
 
 **Evidence:** VERIFIED on live workspace bytes at scoring time: rotation queued=16 exactly (15 gap briefs listed verbatim + brief-t1562-lane11.md); all 15 gap briefs present in brief-queue/ root; 0 exact-name gap receipts in twelve-lane-receipts/; in_flight=[]; stale=18 historical entries, none queued; claimed/ root holds only brief-t1562-lane11.md + done/; 0 re
+
+### ✅ t1561-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Lane 11 Heart verify: re-derive t1561 dispatcher reconcile (5 claims) from live bytes
+
+**Evidence:** Verified: receipt on disk and read; all 15 gap briefs still on disk (15/15); rotation queued=31, in_flight=[]; receipt pins all 15 brief SHAs at verify instant (2026-10-24 ~15:14Z). 5/5 claims re-derived; collision exclusion explicit (13 counted, triple-gap parent named separately); 15 gap briefs' exit-7 parent-authorship refusals recorded, queue u
 
 ### ✅ t1561 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -349,6 +367,12 @@ _Last updated: 2026-11-07 07:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED on live workspace bytes at scoring time: all 15 cited gap-brief SHAs recomputed byte-identical (triple-gap t1504 90e7ecb2..., t1468 d919af..., t1507 081889..., t1508-10 3e52a0..., t1508-3 321843..., t1508-7 27f992..., t1510-2 0a3563..., t1510-8 454a17..., t1511 b5f1fb..., t1512-3 e31cff..., t1512-4 635cb9..., t1512-9 1c7a2c..., t1514 8f75c
 
+### ✅ t1558-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.2/10 [VERIFIED]
+
+**Task:** Lane 11 Heart verify: re-derive t1558 dispatcher reconcile (5 claims) from live bytes
+
+**Evidence:** Verified: receipt on disk and read; all 15 gap briefs still on disk (15/15); rotation queued=31, in_flight=[]; receipt pins rotation SHA a32468dc... at verify instant (2026-10-24 14:48Z). 5/5 claims re-derived in the receipt with exact-name checks (0/15 gap receipts) and the collision trap counted precisely (14 collisions, t1468-lane5 with none); Q
+
 ### ✅ t1558 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Verify t1558 dispatcher reconcile (5 claims) from live bytes, Heart verify
@@ -365,6 +389,12 @@ _Last updated: 2026-11-07 07:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED on live workspace bytes at scoring time: claim brief-t1558-lane11.md SHA-256 710350243d05211bc3dd3f60c6107ddc2d0dc2d4e9991af3289532ba7da8f487 MATCH receipt exactly; all 15 queued gap briefs on disk in brief-queue/ root (0 missing); 0 exact-name gap receipts in twelve-lane-receipts/ (14 tNNNN collisions explicitly excluded per receipt, t146
 
+### ✅ t1556-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.2/10 [VERIFIED]
+
+**Task:** Lane 11 Heart verify: re-derive t1556 dispatcher reconcile (5 claims) from live bytes
+
+**Evidence:** Verified: receipt on disk and read; all 15 gap briefs still on disk (15/15); rotation queued=31, in_flight=[]; receipt pins all 15 brief SHAs + rotation SHA c1e5f6f9... at verify instant (2026-10-24 14:24Z). Chain rebuilds exactly (15 + 1 claimed = 16); collision discipline explicit; Q2 carried at claim-time sign-in - the t1550/t1554 lateness defec
+
 ### ✅ t1556 — Team 11, Team Naya Scorer (Human Value) — 9.2/10 [VERIFIED]
 
 **Task:** Verify t1556 dispatcher reconcile (5 claims) from live bytes, Heart verify
@@ -380,6 +410,12 @@ _Last updated: 2026-11-07 07:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1556-lane11.md`
 
 **Evidence:** VERIFIED on live workspace bytes at scoring time: rotation SHA-256 c1e5f6f9106005976db3853f17e0d4b720af80e71f115738a17dd73c30293170 MATCH receipt exactly; tick_count 1556, lane_last_dispatched 11=t1556, in_flight []; queued 16 = 15 gap briefs listed verbatim + own claim brief-t1556-lane11.md; all 15 gap-brief SHA-256 values recomputed MATCH receipt
+
+### ✅ t1554-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.2/10 [VERIFIED]
+
+**Task:** Lane 11 Heart verify: re-derive t1554 dispatcher reconcile (5 claims) from live bytes
+
+**Evidence:** Verified: receipt on disk and read; all 15 gap briefs named in the receipt still on disk now (15/15, brief-queue/); rotation exists, queued=31, in_flight=[]; receipt pins rotation SHA 4220b927..., claim SHA 26a63b93..., lane-feed SHA d5405288... at verify instant (2026-10-24 14:08Z) - instant snapshots, current-state SHA equality not expected and n
 
 ### ✅ t1554 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
