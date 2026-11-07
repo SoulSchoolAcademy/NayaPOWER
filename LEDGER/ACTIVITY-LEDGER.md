@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-07 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-07 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -26263,6 +26263,12 @@ _Last updated: 2026-11-07 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: evidence files exist (hidden_files/harness-review-t0810-lane1.md, bin/semantic_arm_harness.py, twelve-lane-receipts/t0810-lane1.md all on disk); receipt's live-byte pins are SHA-256 form and consistent. Score 9.5: ACCEPTED. The expired brief was correctly closed without wasteful re-execution; the world-check, point-by-point coverage map, 
 
+### ✅ t0403-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Second pass: live end-to-end run of tally-t0710.py proving log_sha256 flows log -> tally -> lookup-match
+
+**Evidence:** VERIFIED this tick by this scorer: retrieval/tally-t0710.json now carries keys [needs, query_rows, log_sha256] — the log_sha256 key the receipt says it added is present (current value 20122cf5... at 98 query rows, drifted from the receipt's a11cc2b7... at 92 rows because the log has since grown, consistent with the t0403-lane4 receipt citing the sa
+
 ### ✅ t0403 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Second pass: live end-to-end tally-t0710 run proving log_sha256 flows log to tally, lookup-match stage 3 HONEST-STOP
@@ -26279,6 +26285,12 @@ _Last updated: 2026-11-07 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: retrieval/tally-t0710.json exists and NOW carries log_sha256 (the named gap closed — exercised end-to-end for the first time); retrieval/tally-t0710.py and lookup-match.py exist. Before/after quoted verbatim; stage-3 lookup-match honestly stopped at the fail-closed PIN-ASSERT (exit 2) on already-stale block pins — the stop is the evidence
 
+### ✅ t0403-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Top-20 ask-world needs analysis from the query log (seed exclusion by row-id)
+
+**Evidence:** VERIFIED this tick by this scorer: hidden_files/auto-retrieval/ask-world-needs-t0403.md exists; its head (log lines 105, 1 init + 92 query + 12 probe; log SHA a11cc2b730c9...) and tail ('origin: unknown' 38/70 watch) match the receipt's quoted head/tail byte-for-byte. NOT PHANTOM. Log SHA drift is EXPLAINED, not falsification: the live log has sinc
+
 ### ✅ t0403 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Top-20 ask-world needs analysis from log lines, seed exclusion by row-id, miss-rate
@@ -26294,6 +26306,12 @@ _Last updated: 2026-11-07 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0403-lane4.md`
 
 **Evidence:** Verified: auto-retrieval/ask-world-needs-t0403.md exists (4,915 bytes); log cited (a11cc2b7..., 105 lines) — determinism re-check byte-agreed, seed-exclusion signature re-derived from live bytes (22 seed rows by pid-burst), 0 pid leak into organic rows. Brief premise corrected (70 organic, not 89+). Miss hot list (lines 69/81/102/104, 5.7%) routed 
+
+### ✅ t0402-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (b) retrieval-auth-gate wiring prep — RECUSAL (arm-fresh gate fired on own t0601 authorship)
+
+**Evidence:** VERIFIED this tick by this scorer: retrieval/auth-gate-migration-prep-t0601.md exists, 12,498 bytes, sha256 393725e6e6ca55860e982fdbca2eeab14d73152d40ac0af7f3404985f54a4716 (prefix 393725e6 matches receipt pin); lane-journals/lane-7.md greps t0601 (3 hits); receipt's lineage map (t942/t952 candidate gate, Lane 9 packets) is internally consistent an
 
 ### ✅ t0402 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -44074,6 +44092,42 @@ _Last updated: 2026-11-07 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ gap-gap-gap-t1564-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: t1564 claimed-brief 0-line standard - method proven, claim still tainted
+
+**Evidence:** VERIFIED this tick by this scorer: parent receipt gap-gap-t1564-lane11.md sha256 63aa8f1a... matches pin exactly (60 lines, 6061 bytes); the parent-gap description matches the parent receipt bytes; the script-only step-10 pass (0 head reads, 15/15 refusals reproduced) is internally consistent and is presented as method proof, not as a 0-line claim 
+
+### ✅ gap-gap-t1564-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: t1564 evaluation-window instance - held at 25 max, zero over
+
+**Evidence:** VERIFIED this tick by this scorer: parent receipt gap-t1564-lane11.md sha256 1235a5c3... matches pin exactly (97 lines, 9795 bytes); the per-brief line-count record is internally consistent (head -n 25 on 36-line and 6-line files, head -n 10 on the 6-line claimed brief); the collision finding (a 25-line window IS a full read on a 6-line brief) foll
+
+### ✅ gap-t1564-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: t1564 gate-window + snapshot gaps - claimed gate clean, reconcile proven stood
+
+**Evidence:** VERIFIED this tick by this scorer: t1564-lane11.md sha256 df5a6e63... matches pin exactly; t1562-lane11.md sha256 9903a6ad... and gap-t1562-lane11.md sha256 6988bb99... both match the t1564 receipt exactly, as this receipt claims; the t1564 receipt's own record is internally consistent (14 refusals, claimed-brief gate 0 lines, rotation 16 -> 15). N
+
+### ✅ gap-t1562-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: t1562 60-line overrun confirmed, t1561 citation corrected, root cause named
+
+**Evidence:** VERIFIED this tick by this scorer: t1562-lane11.md sha256 9903a6ad... matches pin exactly (54 lines, 7337 bytes); t1561-lane11.md sha256 dff2cc55... matches, 64 lines / 7972 bytes - the receipt's correction of the t1562 receipt's '48 lines' citation to 64 is byte-correct; the t1561 40-line defect quote is consistent with the parent receipt's own re
+
+### ✅ gap-t1561-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: t1561 gate-window repeat - deeper root cause + script-only demo
+
+**Evidence:** VERIFIED this tick by this scorer: parent receipt t1561-lane11.md sha256 dff2cc55... matches pin exactly (64 lines, 7972 bytes - corroborates the gap-t1562 correction of the 48-line citation); claimed brief brief-gap-t1561-lane11.md in claimed/done/ sha256 88bec272... matches pin exactly; claim-brief.py GATE_WINDOW_LINES = 25 confirmed by the recei
+
+### ✅ gap-t1558-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.2/10 [VERIFIED]
+
+**Task:** gap follow-up: t1558 citation leg - 67-char rotation SHA malformation
+
+**Evidence:** VERIFIED this tick by this scorer: parent receipt t1558-lane11.md sha256 0055641a... matches the receipt's pin exactly; claimed brief brief-gap-t1558-lane11.md in claimed/done/ sha256 ab93f894... matches pin exactly; the cited 67-char string a32468dc59d4...8f78f5 is present in t1558-lane11.md (grep count 1, length measured 67), confirming the malfo
 
 ### ✅ gap-t1538 — Team 11, Team Naya Scorer (Human Value) — 9.4/10 [VERIFIED]
 
