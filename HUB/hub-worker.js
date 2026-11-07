@@ -60,11 +60,18 @@ function mapItem(r) {
 }
 
 
-// ---- Smart Note serving (Resolve, 2026-11-05) ----
-// Serves registered Smart Notes from the registry feed asset
-// (HUB/app/notes-feed.json, generated from .naya/memory/smart-notes/index.json
-// + captures). Live today at /notes/<slug>. The same handler answers
-// /s/<slug> the moment the /s/* route points at this worker.
+// ---- Smart Note serving (Resolve, 2026-11-05; in-Hub routing 2026-11-07) ----
+// A Smart Note URL (/smart-notes/<slug>, /notes/<slug>, /note/<slug>,
+// /note?n=<slug>) serves the HUB SHELL — Smart Notes open IN the Hub,
+// with the Hub around them (Shawn's ruling, 2026-11-06/07: the Hub is the
+// note's home; the standalone reader is the link/share surface, never the
+// in-Hub click destination). The Hub router reads the path and opens the
+// note inside the Hub. serveNote()/renderNote() below remain the parsing
+// reference the feed regen (tools/regenerate_feed_live.py) mirrors AND
+// the never-error fallback: if the shell cannot be fetched, the route
+// serves the note standalone rather than throwing (Resolve, 2026-11-07).
+// (Note: /s/* does not reach this worker at all — the Cloudflare route
+// table sends nayanet.app/s/* to the naya-share worker.)
 const SPECTRUM = ["#9d75ff", "#6f8dff", "#3ddc97", "#ffd34d", "#ff9f43", "#ff5d5d", "#ff5dd2"];
 function esc(s) {
   return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -234,7 +241,7 @@ function supersededTarget(reg, entry) {
     if (e && e.intelligent_block_id === targetIb) {
       const digits = String(e.smart_note_id || "").replace(/[^0-9]/g, "");
       if (!digits) return null;
-      return { id: e.smart_note_id, title: e.title || e.smart_note_id, url: "/smart-notes/sn" + digits };
+      return { id: e.smart_note_id, title: e.title || e.smart_note_id, url: "#/smart-notes/sn" + digits };
     }
   }
   return null;
@@ -288,6 +295,10 @@ function renderNote(rec) {
     REVEAL_SCRIPT +
     '</main></body></html>';
 }
+// The standalone reader (the link/share surface). Not the in-Hub click
+// destination — the note routes above serve the Hub shell. Called only
+// as the never-error fallback when the shell fetch fails, so a note URL
+// can never throw the way fd1c8059 did (live 500, error 1101).
 async function serveNote(request, env, rawSlug) {
   const reg = await loadRegistry();
   let entry = null;
@@ -325,8 +336,8 @@ async function serveNote(request, env, rawSlug) {
 }
 
 // ---- Service-worker cure (Resolve, 2026-11-06) ----
-// WHY THIS ROUTE EXISTS: the reader above answers /smart-notes/* correctly
-// at the server (verified by direct fetch), yet a returning, signed-in
+// WHY THIS ROUTE EXISTS: before 2026-11-07 the reader below answered
+// /smart-notes/* at the server (verified by direct fetch), yet a returning, signed-in
 // browser lands on the Hub shell instead (click-walk 2026-11-06: the URL
 // gains "#/hub" and the feed renders). The only layer that can substitute
 // the shell for a server-correct response in one profile while fresh
@@ -356,6 +367,41 @@ const SW_CURE_JS = [
   "",
 ].join("\n");
 
+// Serve the Hub shell (HUB/app/index.html) for a request whose browser
+// address must NOT change — the /pi rewrite's shape, reused for note URLs.
+// no-store: a stored shell answer for a note URL kept reappearing after
+// the route was fixed (observed 2026-10-26 for /pi); never store one.
+// REDIRECT LAW (Resolve, 2026-11-07): the assets layer answers a request
+// for /index.html with a 307 canonicalization redirect instead of the
+// document. The first version of this function returned that redirect
+// response verbatim and every note URL threw live (error 1101) — follow
+// the redirect chain here, inside the worker, and return the document
+// itself with status 200. If the chain never lands on a document, throw:
+// the caller's fallback serves the note standalone rather than erroring.
+async function serveHubShell(request, env) {
+  let target = new URL(request.url);
+  target.pathname = "/index.html";
+  target.search = "";
+  let shellRes = null;
+  for (let hop = 0; hop < 4; hop++) {
+    shellRes = await env.ASSETS.fetch(new Request(target, request));
+    const loc = shellRes.headers.get("Location");
+    if (shellRes.status >= 300 && shellRes.status < 400 && loc) {
+      target = new URL(loc, target);
+      continue;
+    }
+    break;
+  }
+  if (!shellRes || (shellRes.status >= 300 && shellRes.status < 400)) {
+    throw new Error("hub shell fetch did not land on a document");
+  }
+  const headers = new Headers(shellRes.headers);
+  headers.set("Cache-Control", "no-store");
+  headers.set("Pragma", "no-cache");
+  headers.delete("Location");
+  return new Response(shellRes.body, { status: 200, headers: headers });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -365,13 +411,30 @@ export default {
         headers: { "Content-Type": "text/javascript;charset=UTF-8", "Cache-Control": "no-store" },
       });
     }
-    if ((url.pathname === "/note" || url.pathname === "/smart-notes") && request.method === "GET") {
-      const q = url.searchParams.get("n");
-      if (q) return serveNote(request, env, q);
-    }
-    const noteMatch = url.pathname.match(/^\/(?:s|notes|smart-notes|note)\/([^/]+)\/?$/);
-    if (noteMatch && request.method === "GET") {
-      return serveNote(request, env, decodeURIComponent(noteMatch[1]));
+    // Smart Notes open IN THE HUB (Shawn's ruling, 2026-11-07). Mirror the
+    // /pi precedent below: rewrite the request to the Hub shell asset and
+    // return it. The browser address stays the clean /smart-notes/<slug>;
+    // the Hub router reads the path and opens the note inside the Hub.
+    // Bare /smart-notes or /note (no slug, no ?n=) used to fall through to
+    // the asset layer and throw (live 500, error 1101) — serve the shell
+    // and let the Hub boot to the feed instead.
+    if (request.method === "GET") {
+      const noteMatch = url.pathname.match(/^\/(?:s|notes|smart-notes|note)\/([^/]+)\/?$/);
+      const noteQuery = !noteMatch && (url.pathname === "/note" || url.pathname === "/smart-notes") && url.searchParams.get("n");
+      const bareNotePath = url.pathname === "/smart-notes" || url.pathname === "/smart-notes/" || url.pathname === "/note" || url.pathname === "/note/";
+      if (noteMatch || noteQuery || bareNotePath) {
+        try {
+          return await serveHubShell(request, env);
+        } catch (err) {
+          // A note must never throw (the fd1c8059 lesson, 2026-11-07): if
+          // the shell cannot be fetched, serve this note standalone via
+          // serveNote (the share surface) instead of erroring; a bare
+          // note path goes to the Hub home.
+          const slug = noteMatch ? noteMatch[1] : (noteQuery || null);
+          if (slug) return serveNote(request, env, slug);
+          return Response.redirect(new URL("/", request.url).toString(), 302);
+        }
+      }
     }
     if (url.pathname === "/pi/api/items" || url.pathname === "/pi/api/items/") {
       return handleItems(request, env, url);
