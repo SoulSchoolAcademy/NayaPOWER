@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-07 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-07 04:45 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -40616,6 +40616,12 @@ _Last updated: 2026-11-07 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ decision-replay-t0780-thirdseat-t1496-lane3-verdict-table — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Decision-replay third-seat adjudication t1496 lane 3: verdict table for t0780 (F-R1..F-R5 falsifiers, legs 1-4, B1 seat verdict)
+
+**Evidence:** VERIFIED this tick by this scorer on live bytes: all 5 F-R1 pins re-derived and MATCH (surge-a-verdict-t0780-lane3.md 0e5c56bab7a97477; lane-1/surge-a-hypothesis-change-t0761.md 3b685b90c98f754c; lane-3/decision-contact-signal-design-t0719.md f84c65540f8d3059; lane-3/decision-contact-prereg-t0719.md d992ad0cccd9c7cb; lane-2/semantic-arm-prereg-t074
 
 ### ✅ 20261101-1210 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
