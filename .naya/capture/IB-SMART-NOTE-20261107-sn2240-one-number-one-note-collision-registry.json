@@ -1,0 +1,41 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2240",
+ "title": "One Number, One Note: The Collision Registry",
+ "slug": "one-number-one-note-collision-registry",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/07/LESSON/SN-2240/IB-SMART-NOTE-20261107-sn2240-one-number-one-note-collision-registry.md",
+ "tone": "orange",
+ "icon": "◆",
+ "created_at": "2026-11-07T23:11:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "A Smart Note number is unique brain-wide — not per folder, not per branch, not per date. A number is not claimed until the registry holds an entry for it, written before staging. The registry is scanned in three layers — the board, every branch tree that carries live claims, and the commit graph — and the scan is re-run at claim time, because a read expires. First claim stands by creation time; the director's lock outranks first claim; a renumber is itself a claim and closes only with evidence. Dedupe must cover the human-visible number, not just the machine's internal id.",
+  "human_view": "Think of a library where every book gets one number, and the shelves are organized by month. Two different books both numbered 18 — one on the October shelf, one on the November shelf — break every lookup of \"book 18.\" That is what happened, more than once, and the team learned the registry the hard way: claims announced on the board before any registry entry existed, so each claim was only discoverable by digging after the fact; scans that checked the main tree but missed the open draft branches where the earlier claim lived; a scan that was right at 12:41 and wrong at 12:50 because another lane committed in between. The fixes are mechanical now: write the claim to the registry before you stage; scan all three layers; scan again at the moment you claim; and when a collision is found, the displaced lane renumbers its own work, proves the old paths are gone and the new number is free on every surface, and posts the evidence — an announced renumber closes nothing.",
+  "child_view": "Imagine a coat check where the attendant hands you ticket 19 but never writes down which coat goes with it — and another attendant at the other door hands out ticket 19 too. At the end of the night, two people claim ticket 19 and there are two coats. The fix is simple: write it down the moment you hand out the ticket, check the whole book before handing out a new number, and if two people ever hold the same ticket, the first one who got it keeps it.",
+  "grandma_view": "One number means one thing, everywhere, always. You check the whole library before you assign a number — every shelf, every month — not just the shelf you are standing at. And a promise to fix a mix-up is not a fix; the fix is done when you can show the old label is gone and the new one is in place.",
+  "ai_view": "Before you take a number: scan the board, every branch tree that carries live claims (including hub and kernel branches — claims live there too), and the commit graph. Write the registry entry — number, lane, branch, tree path, created-at — before you stage. Claim immediately after the final read; if a commit lands on a note branch between your scan and your claim, the scan is void — run it again. If you find a collision, flag and hold: first claim by creation time stands, the director's explicit lock on main outranks first claim, and no lane ever renumbers another seat's work. When you renumber, the replacement clears the same registry, and the flag closes only when the proof is posted.",
+  "what_it_means": "Numbering is identity. Two notes sharing a number is not a clerical error — it is a fork in the brain, and every future reader resolving that number lands on one of two different documents. The registry is the identity authority, and its discipline is all timing: write before staging, scan everything, re-scan at the claim, close with proof.",
+  "whats_inside": [
+   "Claim = registry write, before staging — and a read expires, so re-scan at the moment you claim.",
+   "Numbering is identity.",
+   "The brain is a lookup system.",
+   "You can trust that SN-#### means exactly one note, everywhere, forever.",
+   "claim = registry write, not board mention",
+   "three layers — board comments, every branch tree carrying live claims, commit-graph search for SN-NNN",
+   "uniqueness key is the NUMBER across all date partitions — same number with different bytes under a new date is a fork, not a second edition",
+   "re-verify at claim time — a registry read has a lifetime of seconds",
+   "precedence — director lock, then first open-draft claim, then later claims",
+   "close with evidence — old dir gone, new path present, zero old-number leftovers, consuming surfaces updated",
+   "dedupe keys on every human-visible identity, not just the internal one.",
+   "Distills 10 raw notes (Batch 1, 10 of 100): SN-0115, SN-0145, SN-0151, SN-0167, SN-0169, SN-0171, SN-0176, SN-0184, SN-0189, SN-0257."
+  ],
+  "topics": [
+   "System",
+   "Lesson",
+   "Distillation"
+  ]
+ },
+ "page_hash": "4e98b8cca923970d625602e1716c89444807d8e0c1072dbc8de3315a307250d0",
+ "content_hash": "98c42db912c642a14d0a804c4fca80ff98bd49c441b3078d77c7c6c3eb43c093"
+}
