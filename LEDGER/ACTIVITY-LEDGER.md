@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-07 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-07 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -34933,6 +34933,12 @@ _Last updated: 2026-11-07 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-t0802-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0802 t0800/t0802 double-dispatch reconciled: one live freeze record
+
+**Evidence:** VERIFIED this tick by this scorer: mcc-freeze-record-t0802-lane8.md sha256 80c92699... and .json 1fbb130b... byte-identical to receipt pins; record reads FALSIFIED, rate_pos 0.0; brief-queue/stale/brief-t0800-lane4.md exists (void corroborated); no t0800 receipt and no t0800 freeze record on disk (absence confirmed). Minor naming looseness only: re
+
 ### ✅ gap-gap-20261018-1050 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
 
 **Task:** gap-gap-20261018-1050 PR #2385 stale-gate re-verification + owner note
@@ -36010,6 +36016,12 @@ _Last updated: 2026-11-07 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ gap-t0806-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.3/10 [VERIFIED]
+
+**Task:** gap-t0806 K2 stopped-domino unblocked: 12 disqualification traces + pre-reg amendment
+
+**Evidence:** VERIFIED this tick by this scorer: amendment register-flip-prereg-t0806-lane7-amendment-k2.md sha256 c48b419f... matches receipt pin byte-identical; builder register-flip-k2-build-gap-t0806.py sha256 c3ed4298... matches; gate bin/value_calculus.py sha256 25ddc969... matches pre-reg pin (no drift); 12 trace docs trace-k2-01..12.md + validation.json 
 
 ### ✅ 20261101-1250 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -42000,6 +42012,12 @@ _Last updated: 2026-11-07 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ gap-t0072-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** gap-t0072 H8 gap CLOSED as honest negative for the seat-local line
+
+**Evidence:** VERIFIED this tick by this scorer: parent receipt t0072-lane2.md sha256 adae49fc... matches pin; t0052 seal prereg-sealed.md 8c8aa054... matches pin exactly (seal untouched); harness/verify_home_independent.py a685364a... matches; bin/receipt-filename-lint.py 1cfed7e9... matches; bin/check-receipt-window.py dce96308... matches. Baseline CSV re-coun
 
 ### ✅ 20261101-1150 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -48480,6 +48498,18 @@ _Last updated: 2026-11-07 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261106-0917 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by this scorer: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (live 32 files = 31 listed briefs + lane-feed.md, which is not a brief; the one extra listed token is the prose glob 'brief-*.md', not a brief; live - named = [] and named - live = [] apart from those two n
+
+### ✅ seat-stall-20261107-0134 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall watch receipt 2026-11-07 01:34 PST
+
+**Evidence:** VERIFIED this tick by this scorer: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31/31, live - named = [] and named - live = []); rotation queued = 31, disk brief-queue = 31, zero brief-tNNNN mission-sequence files; delta zero vs seat-stall-20261105-1556 (identical 31-brief set, 29x ex
 
 ### ✅ gate-stall-20261107-0114 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
