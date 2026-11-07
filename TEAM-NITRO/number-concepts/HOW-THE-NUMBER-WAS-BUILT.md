@@ -59,6 +59,12 @@ Five digits, six, seven, eight, as many as it takes. There is no limit:
 
 An 8-digit demo (12,345,678) proves it on the concepts page.
 
+### 7. The wrap — the fix that makes any number safe (2026-11-07 21:31Z)
+
+The screen check on the no-limit version found a real bug: the 8-digit demo (12,345,678) **froze the whole page** the moment it scrolled into view — four fresh loads, all frozen, never recovered. Cause: `buildReel` built the strip as long as the number itself (`max + 1` spans, `max = target / div`). For 12,345,678 the units reel alone was **12,345,679 spans** (~300 MB of HTML, ~13.7M DOM nodes across all eight reels). The hero (725) and the growing demo (10,725) never hit it — their strips are hundreds and thousands of spans. The 8-digit demo was the first one big enough to explode.
+
+The fix (blob f421fd90): the strip is a **fixed 10-digit cycle (0–9), never as long as the count**. The reel shows one digit at a time, and that digit is always `count % 10`, so 10 spans are all it ever needs. The translation wraps (`-(count % 10) * H`) instead of running away. When the wrap would jump the strip backwards, `setReel` snaps it with the transition off — invisible, because the strip repeats every 10 digits — so the roll never scrolls the wrong way. `snapStrips` and the initial park wrap the same way. This is what makes the number safe for ANY score, including the Dashboard's live one — a big score must never freeze the page. JS verified by a real compile check (9,274 bytes). Re-verification of all three sections (hero, growing, 8-digit) is running.
+
 ### 6. The real fix — the bug that taught the rule
 
 The growing demo stalled twice at "1" plus four blank tiles. The first fix (rebuild the strips for the new target) did NOT work. The real cause: `buildReel` read the strip length from the reel's STALE `data-max` attribute (set at creation for 725), so the "rebuilt" strips were still the old lengths — the count ran past the strip end, leaving no digit under the window (blank), while the colour logic advanced correctly. The real fix: the strip length is now computed from the target (`max = Math.floor(target / div)`, and `data-max` is updated). Screen check #3 (21:00Z) proved it on a real screen: the growing demo reaches 10,725 in every run, five tiles, all digits showing, none blank.
