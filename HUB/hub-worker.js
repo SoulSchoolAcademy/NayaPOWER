@@ -374,10 +374,15 @@ const SW_CURE_JS = [
 // REDIRECT LAW (Resolve, 2026-11-07): the assets layer answers a request
 // for /index.html with a 307 canonicalization redirect instead of the
 // document. The first version of this function returned that redirect
-// response verbatim and every note URL threw live (error 1101) — follow
-// the redirect chain here, inside the worker, and return the document
-// itself with status 200. If the chain never lands on a document, throw:
-// the caller's fallback serves the note standalone rather than erroring.
+// response verbatim and every note URL threw live (error 1101). Following
+// the chain inside the ASSETS binding did not land either (live probe:
+// the binding bounces /index.html <-> / and never hands over the
+// document). What DOES serve the document, proven by live probe, is the
+// public root: GET https://nayanet.app/ answers 200 with the exact shell
+// bytes. So: try the assets chain first (cheap when it works), then
+// fetch the shell from the public origin root over a normal fetch. If
+// neither lands on a document, throw: the caller's fallback serves the
+// note standalone rather than erroring.
 async function serveHubShell(request, env) {
   let target = new URL(request.url);
   target.pathname = "/index.html";
@@ -392,14 +397,23 @@ async function serveHubShell(request, env) {
     }
     break;
   }
-  if (!shellRes || (shellRes.status >= 300 && shellRes.status < 400)) {
+  if (shellRes && shellRes.status === 200) {
+    const headers = new Headers(shellRes.headers);
+    headers.set("Cache-Control", "no-store");
+    headers.set("Pragma", "no-cache");
+    headers.delete("Location");
+    return new Response(shellRes.body, { status: 200, headers: headers });
+  }
+  const origin = new URL(request.url).origin;
+  const pubRes = await fetch(origin + "/", { method: "GET", redirect: "follow" });
+  if (!pubRes || pubRes.status !== 200) {
     throw new Error("hub shell fetch did not land on a document");
   }
-  const headers = new Headers(shellRes.headers);
-  headers.set("Cache-Control", "no-store");
-  headers.set("Pragma", "no-cache");
-  headers.delete("Location");
-  return new Response(shellRes.body, { status: 200, headers: headers });
+  const pubHeaders = new Headers(pubRes.headers);
+  pubHeaders.set("Cache-Control", "no-store");
+  pubHeaders.set("Pragma", "no-cache");
+  pubHeaders.delete("Location");
+  return new Response(pubRes.body, { status: 200, headers: pubHeaders });
 }
 
 export default {
