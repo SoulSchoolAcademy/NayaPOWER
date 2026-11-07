@@ -1,0 +1,4 @@
+# Hero Orb — NAYA-JWL-016
+**Filed:** 2026-11-07 (pricing round 7 fix1, Addition 5). **Status:** filed object (spec), in use as the orbit centre's object-language + the systems slide's sunburst.
+**Canonical source:** `team-nitro/hub-board-v5.1-rebase/work/hub-v51-rebase/BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/factory-page-shell.html` — `.orb.orb--hero` (`--oc:#a06bff`, 200px; hero-show 220px), "the centerpiece, one per page" (line 2751); `.orb--black` construction; `.orb--hero::before` sunburst ring (inset -26px, 9s rotation), `::after` floor shadow. Catalog: `team-nitro/smart-builder/PIECES-INVENTORY-v2.json` (NAYA-JWL-016 = `.mini-gem.circle` jewel, source `Naya_Ultimate_Design_System_-_Naya_2.html`).
+**Construction:** a large purple glossy sphere, bright top-left highlight, faceted sunburst behind it. Applied: the orbit centre gets the NAYA-JWL-016 language (rotating conic-gradient rays ring + purple glow) and the satellite nodes carry dome studs.
