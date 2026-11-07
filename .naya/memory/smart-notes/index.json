@@ -30403,6 +30403,39 @@
     "Doctrine",
     "Synthesis"
    ]
+  },
+  {
+   "smart_note_id": "SN-2212",
+   "intelligent_block_id": "IB-SMART-NOTE-20261106-sn2212-build-your-world-how-it-all-connects",
+   "slug": "build-your-world-how-it-all-connects",
+   "title": "Build Your World — How It All Connects",
+   "file": "BRAIN/05-MEMORY/SMART-NOTE-build-your-world-how-it-all-connects.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-build-your-world-how-it-all-connects.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-build-your-world-how-it-all-connects.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn2212-build-your-world-how-it-all-connects.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "VISION",
+   "topic": "CAMPAIGN",
+   "captured_at": "2026-11-06",
+   "lifecycle_state": "ACTIVE",
+   "author": "shawn",
+   "filed_by": "resolve",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-07T02:02:00Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-06",
+   "page_hash": "6dfd9cf9913b225a8215a92b9463f91f12a0a6ab6594bf999369def830f1e835",
+   "content_hash": "a747a16076124c8038d95f8092463d98306fd128387f1a52d09ffb2ca79e118f",
+   "one_line": "Shawn's synthesis, spoken 2026-11-06 — how it all connects, in seven links. The foundation is a technology: collective chain technology — not a new app, not a new internet — where the value and the intelligence go back to the users and get shared with everybody. The cycle is how it works: everything you do — mail, messages, notes — can become a smart note; the notes join the intelligent network, and the network is intelligence, not images and videos. Privacy makes the cycle safe: we don't read your mail or your messages; conversations auto-delete — a day by default, your choice of a day, a week, a month — and you keep only what you choose to keep. The page is where a stranger meets all of it: not a sales page, a demonstration and a claim — three questions, and they watch their world appear. The campaign is BUILD YOUR WORLD, and the citizens are the campaign. The mission: the old internet fails something like 99% — ours is 100% success for everybody who uses her. And honesty holds every link together: no invented numbers, no fake live, no invented proof. Real or honestly absent.",
+   "topics": [
+    "Campaign",
+    "Vision",
+    "Collective Chain Technology"
+   ]
   }
  ],
  "sequence_policy": {
@@ -30413,5 +30446,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "e3e317131cb72c64e9a64275fb819697189575381e99b5876288e244c1a93b58"
+ "corpus_manifest_hash": "6ad7afa17a58c7c4dca8afb73f623efc89c5669e4b11c29ecb85034ae05906e2"
 }
