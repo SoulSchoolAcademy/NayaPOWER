@@ -31,7 +31,7 @@ The operating system is optimized for the AI. The viewpoint is optimized for the
 10. **The record goes stale, and decisions are made on it.** The completion ledger is stale. The Living List is frozen at 17:25Z because its refresh keeps failing. A stale record means repeated questions and re-work. **Fix:** the ledger is kept live as part of every delivery, and the refresh is repaired (see the sync fixes below).
 
 ### Speed — work that moves slowly
-11. **One team can do interfaces.** Everything funnels through Nitro. That is a serial bottleneck, and it is also a single point of failure. **Fix:** the org shape — Nitro owns interfaces; other teams feed it (content, data, logic, pieces — never the design); one seat at a time apprentices inside Nitro on a real page with Nitro's checker over their work; the Factory is the endgame — once a page is finished to his standard it becomes the template, and other seats can build from it because the taste is locked into the template. (Proposed 2026-11-07; needs his word.)
+11. **One team can do interfaces.** Everything funnels through Nitro. That is a serial bottleneck, and it is also a single point of failure. **Fix:** the org shape — Nitro owns interfaces; other teams feed it (content, data, logic, pieces — never the design); one seat at a time apprentices inside Nitro on a real page with Nitro's checker over their work; the Factory is the endgame — once a page is finished to his standard it becomes the template, and other seats can build from it because the taste is locked into the template. (DECIDED 2026-11-07 by his word: do what makes the most logical sense, is intelligent, and is aligned with our goals — the choice is made, for the team. Nitro owns interfaces; see AGENTS.md.)
 12. **Too much work in progress.** Twenty-six pages in flight. See the math above. **Fix:** one page finished before the next starts. Dashboard, then Personal, then Hub, then Pricing. Work-in-progress equals one.
 13. **The proof route keeps breaking.** Every page's proof waits on a working browser or host. Today alone: the sandbox browser dead, the file grant dead, the Muse links blocked. Each break costs hours of improvisation. **Fix:** an owned proof host — a Cloudflare worker serving the page as real HTML from GitHub. Built once, used for every page, forever. No more per-page improvisation, no more third-party previewer as the only road.
 14. **The environment fault.** The write fault flips channels minute to minute; every job that writes is exposed to it. It killed the sync, the refresh, the stream, the transcriber, the ledger, and the heartbeat today. **Fix:** never chase it — test the channel, use the one working right now (SN-2215). And remove the single points of failure it hits: the sync must not depend on a token cache file (see 15).
@@ -59,9 +59,7 @@ The operating system is optimized for the AI. The viewpoint is optimized for the
 10. **Measure it.** Three numbers, tracked every week: rounds per page (target: one), defects found by the maker vs by another seat vs by Shawn (target: nearly all by the maker), and time from start to his "yes" (target: falling). If the numbers do not improve, the strategy is not working — and we say so, plainly, instead of announcing progress.
 
 ## What needs his word
-- The org shape (bottleneck 11).
-- The sync code change is a proper change, not a hand-edit — it will be made and shown, not slipped in.
-- Nothing else in this strategy waits on him. The rest is already ordered, or is mine to do.
+- Nothing. Both open items were decided by his word this pass (2026-11-07 ~19:28Z): the org shape is Nitro owns interfaces (see bottleneck 11), and the sync fix is the in-memory token mint, implemented as a proper code change. The rest was already ordered, or is mine to do.
 
 ## What I am doing right now
 - The three-step verification is law and filed (SN-2216).
