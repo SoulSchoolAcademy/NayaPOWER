@@ -30544,8 +30544,39 @@
    "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/product/SN-0134/IB-SMART-NOTE-20261106-sn0134-smart-meet-needs-to-be-done.md",
    "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/product/SN-0134/IB-SMART-NOTE-20261106-sn0134-smart-meet-needs-to-be-done.md",
    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/product/SN-0134/IB-SMART-NOTE-20261106-sn0134-smart-meet-needs-to-be-done.md",
-   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "projection_status": "SUPERSEDED",
    "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn0134-smart-meet-needs-to-be-done.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "PRODUCT",
+   "captured_at": "2026-11-06",
+   "lifecycle_state": "SUPERSEDED",
+   "registered_by": "naya-power",
+   "registered_at": "2026-11-07T04:05:32Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-06",
+   "page_hash": "56a2ba59017f256d712a6ae2a2f578c45487e59049e7a07fb63f94caa6b98334",
+   "content_hash": "7bd169d80b60b41bd2270512080412b89b534879f586ac5cd0eb6a6e1bc779b3",
+   "one_line": "Smart Meet needs to be done. Make sure this does not get forgotten. Smart Meet is a way for people to video or chat with Naya. You can have a video one-on-one or an audio one-on-one with her, but you can also do it in groups. Four or six on video, and up to ten on audio. And there should be the option for them to have more — we should have that available, for example if they have a Smart Box or a higher Pro count, we should consider having more. And then also, if they want to have an event on their page, we have that — we discussed that before. What is involved in that? We should just get it done. Smart Meet is Shawn's name, locked. Audio plus video sharing, in Personal, Business, Space, Membership, and from a Smart Mail conversation. Paid members only — free members do not get it. Stage 1 at launch: video six plus audio ten. Stage 2: bigger groups, fifty, one hundred, whatever people ask for, enterprise-style plans, priced when the cost is known, never invented today. A call is not mail, and mail privacy still holds. Calls are not built live today. A call must be proven live — real people, real video plus audio, at those limits, phone first — before anyone is told calls work. Events are Max-only, not Pro. The Max host keeps the full event profit, NayaNET takes no cut, and the revenue from events is the per-live-head meter only. The build is Nitro's lane under the Design Gate. This note is the brief. Get it done.",
+   "topics": [
+    "System",
+    "Product",
+    "Smart Meet"
+   ]
+  },
+  {
+   "smart_note_id": "SN-0135",
+   "intelligent_block_id": "IB-SMART-NOTE-20261106-sn0135-smart-meet-is-member-to-member",
+   "slug": "smart-meet-is-member-to-member",
+   "title": "Smart Meet Is Member-to-Member — Video, Screen Share, and Audio Conference",
+   "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/product/SN-0135/IB-SMART-NOTE-20261106-sn0135-smart-meet-is-member-to-member.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/product/SN-0135/IB-SMART-NOTE-20261106-sn0135-smart-meet-is-member-to-member.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/product/SN-0135/IB-SMART-NOTE-20261106-sn0135-smart-meet-is-member-to-member.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn0135-smart-meet-is-member-to-member.json",
    "kind": "intelligent-block",
    "status": "canonical",
    "truth_state": "CANDIDATE",
@@ -30555,17 +30586,18 @@
    "captured_at": "2026-11-06",
    "lifecycle_state": "ACTIVE",
    "registered_by": "naya-power",
-   "registered_at": "2026-11-07T04:05:32Z",
+   "registered_at": "2026-11-07T04:14:03Z",
    "directed_by": "Shawn Vibert",
    "date": "2026-11-06",
-   "page_hash": "7b2400f587e4beda025f1bb79f8dc106b2bb41c1d8e4d53cc7ec241022c23daa",
-   "content_hash": "7bd169d80b60b41bd2270512080412b89b534879f586ac5cd0eb6a6e1bc779b3",
-   "one_line": "Smart Meet needs to be done. Make sure this does not get forgotten. Smart Meet is a way for people to video or chat with Naya. You can have a video one-on-one or an audio one-on-one with her, but you can also do it in groups. Four or six on video, and up to ten on audio. And there should be the option for them to have more — we should have that available, for example if they have a Smart Box or a higher Pro count, we should consider having more. And then also, if they want to have an event on their page, we have that — we discussed that before. What is involved in that? We should just get it done. Smart Meet is Shawn's name, locked. Audio plus video sharing, in Personal, Business, Space, Membership, and from a Smart Mail conversation. Paid members only — free members do not get it. Stage 1 at launch: video six plus audio ten. Stage 2: bigger groups, fifty, one hundred, whatever people ask for, enterprise-style plans, priced when the cost is known, never invented today. A call is not mail, and mail privacy still holds. Calls are not built live today. A call must be proven live — real people, real video plus audio, at those limits, phone first — before anyone is told calls work. Events are Max-only, not Pro. The Max host keeps the full event profit, NayaNET takes no cut, and the revenue from events is the per-live-head meter only. The build is Nitro's lane under the Design Gate. This note is the brief. Get it done.",
+   "page_hash": "6c65e5fd1ab71b8399ed56b586ec1338aa10df7a7b734a7a129a578d4ea8ef8d",
+   "content_hash": "0b052c21a124587183a1dba48097eb4ecbe96d2d9886002159482ff579e65bdb",
+   "one_line": "Correction, and this note supersedes SN-0134. Smart Meet is not audio and video with Naya. It is audio and video with the members. You cannot do a video call or an audio call with Naya. It is only for the members. Right now, with dictation, you can audio — you talk to Naya by voice, by dictation, and by text, and that is how you audio with her. What Smart Meet is, is where the members can video and screen share and audio conference with each other. Video one-on-one or audio one-on-one between members, and in groups: four or six on video, up to ten on audio, and more for higher tiers, for example Smart Box or higher Pro count. Screen share is part of it, named plainly now: members can show each other their screen while they talk. Smart Meet lives in Personal, Business, Space, Membership, and from a Smart Mail conversation. Paid members only — free members do not get it. Stage 1 at launch: video six plus audio ten. Stage 2: bigger groups, fifty, one hundred, enterprise-style plans, priced when the cost is known, never invented. A call is not mail, and mail privacy still holds. Events on your page are Max-only, not Pro, and the Max host keeps the full event profit. Calls are not built live today. A call must be proven live — real people, real video plus audio plus screen share, at those limits, phone first — before anyone is told calls work. The build is Nitro's lane under the Design Gate. This note is the corrected brief. SN-0134 is superseded.",
    "topics": [
     "System",
     "Product",
     "Smart Meet"
-   ]
+   ],
+   "supersedes": "SN-0134"
   }
  ],
  "sequence_policy": {
@@ -30576,5 +30608,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "bda6c6637c0c9f5b6ab968e45fa48e09c6185303b99b69ed43d1c5a2446678fc"
+ "corpus_manifest_hash": "8160cfa8341e1df5fe3c5278114fcaba41ed7f1aad5fdaa92a4d043cfeb31d79"
 }
