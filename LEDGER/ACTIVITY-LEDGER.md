@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-07 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-07 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -25745,6 +25745,12 @@ _Last updated: 2026-11-07 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 4 artifacts exist with exact sha256 prefix matches (run log eb29adc47708, evidence 7b5c3713aa72, battery copy 275e26345ec2, lane-1/t0452 copy identical); live remote tip dbe06f9e733efb52c50e583dbb0b74d77039eb73 matches the receipt's pin. Real work: calibrated instrument (M0/M0b byte-pins to t952 fixture, M1-total 25/25, new M2-total 9
 
+### ✅ t0442-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** STAGE 0 [RETRIEVAL] semantic slice-2: entailment-rerank arm vs frozen sealed t0432 baseline
+
+**Evidence:** VERIFIED this tick by this scorer: instrument hidden_files/auto-retrieval/t0442_entailment.py sha256 a211e4e4... matches pin exactly; results-t0442-entailment.json sha256 39201b40... matches pin exactly; sealed-note-t0442.md exists (pre-run seal); results JSON embeds the frozen baseline SHA b1af58d0... and baseline_md 460429b1... matching the recei
+
 ### ✅ t0442 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** STAGE 0 semantic slice-2: entailment-rerank arm vs frozen sealed t0432 baseline, honest verdict
@@ -25768,6 +25774,12 @@ _Last updated: 2026-11-07 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0442-lane5.md`
 
 **Evidence:** Verified: all 3 files exist with exact receipt SHAs (t0442_entailment.py a211e4e4…, sealed-note-t0442.md, results-t0442-entailment.json 39201b40…); sealed methodology pre-dates the run. Work: methodology sealed before the run, pre-registered ceiling analysis, ran ONCE with no tuning, honest FALSIFIED verdict 0/3 (worse than the bi-encoder it was me
+
+### ✅ t0442-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** RED-first retrieval-auth acceptance battery + stamping-migration prep
+
+**Evidence:** VERIFIED this tick by this scorer: tip commit dbe06f9e733efb52c50e583dbb0b74d77039eb73 exists; candidate branch head e654f16e8a49 exists and is the second parent of merge 993975d55 (PR #2403) - the branch ref is gone because it MERGED, not because it was phantom; all four work files exist in hidden_files/lane-1/t0442/ with sha256 pins matching EXAC
 
 ### ✅ t0442 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -33434,6 +33446,12 @@ _Last updated: 2026-11-07 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** 1723 lane-executor stall record (no eligible briefs)
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
+
+### ✅ gap-scorer-20261014-2300-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: independent review of t0492 feedback entry + receipt-evidence-checks instrument
+
+**Evidence:** VERIFIED this tick by this scorer: instrument hidden_files/bin/receipt-evidence-checks.py sha256 afb2c3bbc1ac7408... matches the receipt pin afb2c3bbc1ac exactly; parent receipt t0492-lane9.md exists; feedback entry [Lane 9 - Naya Smith, t0492] verified at feedback-feed.md lines 115+; live re-run of the instrument on t0492-lane9.md reproduces the r
 
 ### ✅ gap-t1162 — Team 9, Team Naya Scorer (Code Health) — 9.2/10 [VERIFIED]
 
@@ -42969,6 +42987,12 @@ _Last updated: 2026-11-07 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ gap-scorer-20261014-2320-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: board-post evidence misattribution CLOSED (parent gap-scorer-20261014-2140-lane12)
+
+**Evidence:** VERIFIED this tick by this scorer: erratum exists exactly as claimed in hidden_files/twelve-lane-receipts/gap-scorer-20261014-2140-lane12.md line 63, dated 2026-10-15 ~01:55 PDT, citing comment 6166884534 and scoping the correction to the citation only; parent receipt file exists. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS. Why not 9.5: (1) the pub
+
 ### ✅ 20261101-0630 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Gap closure lane-scorer-20261015-1210-lane12: citation close for t0555 CORRECTION post on live board
@@ -48552,6 +48576,12 @@ _Last updated: 2026-11-07 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261107-0239 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall watch receipt 2026-11-07 02:39 PST
+
+**Evidence:** VERIFIED this tick by this scorer: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31/31, named - live = [] and live - named = []); rotation queued = 31, in_flight = [], zero brief-tNNNN mission-sequence files; delta zero vs seat-stall-20261107-0134 (identical 31-brief set, 29x exit 7 / 
 
 ### ✅ gate-stall-20261106-0917 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
