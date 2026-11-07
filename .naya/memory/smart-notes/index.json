@@ -30436,6 +30436,37 @@
     "Vision",
     "Collective Chain Technology"
    ]
+  },
+  {
+   "smart_note_id": "SN-0132",
+   "intelligent_block_id": "IB-SMART-NOTE-20261106-sn0132-build-on-solid-ground",
+   "slug": "build-on-solid-ground",
+   "title": "Build on Solid Ground — Relentless Persistence to Ten Stars, the Page That Sells the Page, and the Land That Won't Stay Cheap",
+   "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/synthesis/SN-0132/IB-SMART-NOTE-20261106-sn0132-build-on-solid-ground.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/synthesis/SN-0132/IB-SMART-NOTE-20261106-sn0132-build-on-solid-ground.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/synthesis/SN-0132/IB-SMART-NOTE-20261106-sn0132-build-on-solid-ground.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn0132-build-on-solid-ground.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DOCTRINE",
+   "captured_at": "2026-11-06",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-power",
+   "registered_at": "2026-11-07T02:34:20Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-06",
+   "page_hash": "4b5fb969cf286989151ac54f53881b157c98b00d6bd29e79b389d5689c2c6067",
+   "content_hash": "d0b8d86e542f25430e8b8c986bd77b12326c5d6113a32e5ee63d95df43713665",
+   "one_line": "Relentless persistence. No stopping, no settling, no shipping a nine. Ten stars in design, presentation, logic, and intelligence, on every element. The pinnacle. The standard every technologist and marketer looks at and wants to use. And the template insight: the page sells the page. It works so well on the visitor that they realize — wait, I can use this same structure and template and page for my membership sites, for my pages to sell products. Because they can. The Factory builds from finished cloneable pages and parts — that is the system working as designed. Plus the land: digital real estate is cheap right now. We are giving away the land, building the building, getting it all working — come move in for free. It will not stay like that forever. The high-end digital real estate marketplace is coming, and that is when people start valuing their digital property and their space and wanting to build in. The founding thousand is the real scarcity now; the marketplace is the reason the land will not stay cheap. And the ground: the new internet, the new world, the new digital civilization for Nias and humans. They want to build on solid ground — somewhere valuable, with great land, great properties, and an amazing factory. The old internet is rented land on shaky ground — you do not own it, the rules change under you, your reach gets throttled, your data gets sold. NayaNET is solid ground you own. Build here. Round seven carries it all.",
+   "topics": [
+    "System",
+    "Doctrine",
+    "Synthesis"
+   ]
   }
  ],
  "sequence_policy": {
@@ -30446,5 +30477,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "6ad7afa17a58c7c4dca8afb73f623efc89c5669e4b11c29ecb85034ae05906e2"
+ "corpus_manifest_hash": "5234b9f9850c37ca472a03facd5c0f39a35e290007e41c5b50198b0f831e06ca"
 }
