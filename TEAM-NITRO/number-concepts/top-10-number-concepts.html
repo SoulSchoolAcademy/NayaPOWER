@@ -100,7 +100,7 @@
      Counting: each reel scrolls upward, bottom to top, in slow motion.
      Landed: each tile's rim, cap and halo light up in its colour —
      7 royal purple, 2 orange, 5 cyan. The number stays white. */
-  .ultimate { font-size: 168px; line-height: 1; }
+  .ultimate { font-size: 168px; line-height: 1; white-space: nowrap; }
   .ultimate.landed { animation: landBig 1.4s ease-out; }
   @keyframes landBig {
     0% { filter: brightness(1.9) drop-shadow(0 0 44px rgba(255,255,255,.7)); }
@@ -250,6 +250,18 @@
     <p class="recipe">The number is <b>dynamic</b> — it is built from the score, not fixed at three digits. It lands on <b>725</b>, then it keeps growing: a new tile slides in and it counts up to <b>7,250</b>, then another tile and it counts to <b>10,725</b>. Thousands, ten-thousands, as far as it goes — the tiles just keep coming, each one flashing in its colour as the numbers flow through it. The gauge and the number move as one — that is next.</p>
   </section>
 
+  <section class="hero">
+    <div class="kicker">No Limit &middot; It Fits the Page</div>
+    <h2>Five digits. Six. Seven. Eight.</h2>
+    <div class="hero-well">
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="num ultimate bignum"></div>
+        <div class="platter big" style="width:80%;max-width:860px;"></div>
+      </div>
+    </div>
+    <p class="recipe">There is <b>no limit</b> on the digits. The number builds its tiles from the score — five, six, seven, eight, as many as it takes — and the tiles shrink to fit the page. If it fits on the page, it is good to go. If you ever get a number that does not fit on the page — congratulations.</p>
+  </section>
+
   <div class="grid">
     <div class="card"><div class="num-well"><div class="num c1">725</div></div>
       <div class="name"><span>01</span>Platinum Engraved</div>
@@ -368,6 +380,19 @@
     void el.offsetWidth;
     reels.forEach(function(o){ o.strip.style.transition = ''; });
   }
+  /* no limit on the digits: shrink the whole number to fit the page width */
+  function fitNumber(el){
+    var well = el.closest('.hero-well');
+    if (!well) return;
+    var avail = well.clientWidth - 24;
+    el.style.transform = '';
+    var w = el.scrollWidth;
+    if (w > avail) {
+      var s = avail / w;
+      el.style.transform = 'scale(' + s + ')';
+      el.style.transformOrigin = 'top center';
+    }
+  }
   function revealUltimate(el, target, done){
     /* slow-mo: each reel lands in turn — hundreds, then tens, then units.
        Each tile flashes in its colour as the numbers flow through it,
@@ -382,7 +407,7 @@
       if (start === null) start = ts;
       var elapsed = ts - start, allDone = true;
       reels.forEach(function(o, i){
-        var dur = durations[i] || 10000;
+        var dur = durations[i] || (5000 + i * 1250);
         var p = Math.min(elapsed / dur, 1);
         var val = Math.round(target * easeOutQuint(p));
         var count = Math.floor(val / o.div);
@@ -412,6 +437,7 @@
     /* rebuild every strip for the new target — the old strips are too short
        for the bigger count, and a reel with no digit under the window reads blank */
     buildReels(el, toVal);
+    fitNumber(el);
     var reels = reelObjs(el);
     snapStrips(reels, fromVal);
     restoreStrips(reels, el);
@@ -434,6 +460,7 @@
   function revealGrowing(el){
     createReels(el, 725);
     buildReels(el, 725);
+    fitNumber(el);
     revealUltimate(el, 725, function(){
       setTimeout(function(){
         growAndReveal(el, 725, 7250, function(){
@@ -445,6 +472,13 @@
     });
   }
 
+  /* no limit: eight digits, built from the score, shrunk to fit the page */
+  function revealBig(el){
+    createReels(el, 12345678);
+    buildReels(el, 12345678);
+    fitNumber(el);
+    revealUltimate(el, 12345678);
+  }
   /* --- the eleven: plain count-up --- */
   function revealPlain(el){
     var dur = parseInt(el.getAttribute('data-dur') || '1700', 10);
@@ -468,6 +502,7 @@
       var el = en.target;
       io.unobserve(el);
       if (el.classList.contains('growing')) revealGrowing(el);
+      else if (el.classList.contains('bignum')) revealBig(el);
       else if (el.querySelector('.reel')) revealUltimate(el); else revealPlain(el);
     });
   }, { threshold: 0.4 });
