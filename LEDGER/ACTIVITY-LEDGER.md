@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-07 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-07 15:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -9893,6 +9893,14 @@ _Last updated: 2026-11-07 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: claim-brief.py sha256 prefix 9cafb52a89bd4d12 matches the receipt's pinned SHA byte-exact (no drift between parent and re-run); the lane's seat-independence caveat and own enumeration miss are named honestly. Why not 9.5: the re-run is same-seat-family (Clarity) corroborating its own parent — the receipt itself flags that independence add
 
+### ✅ t992 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** PR #2399 live Actions proof - receipt-gate enforcement verification
+
+**Receipt:** `twelve-lane-receipts/t992-lane9.md`
+
+**Evidence:** Verified: pinned SHA 4776be062822c09c9a346acb1c33c6e0705ec03a exists in repo history (PR head has since moved to a545f110, later work); receipt documents the head it verified with byte-exact pin block and 19 check runs classified with run URLs. Score 8.5. Why not 9.5: the MISSING->FAIL log line is inferred from code + timeline, not quoted (job logs
+
 ### ✅ t992 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Verify PR #2399's live Actions proof - pin the head, classify every check-run, verdict on receipt-gate.yml enforcement, merge-readiness diagnosis
@@ -9955,6 +9963,14 @@ _Last updated: 2026-11-07 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t992 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
+**Task:** SGF daily cold-Naya acceptance runner + live dry run T2
+
+**Receipt:** `twelve-lane-receipts/t992-lane6.md`
+
+**Evidence:** Verified: branch naya/six-sgf-daily-runner-t992 exists; pinned SHA 41dfc86ebea8d7b90352cfcea548bcb1688da292 exists in history and is an ancestor of current head ca1cc31e (branch advanced later by other work, not phantom); run dir has 9/9 artifacts. Score 9.0 GOOD ONE MORE PASS. Why not 9.5: cron is a spec, not an installed schedule, so the daily ma
+
+### ✅ t992 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
 **Task:** Operationalize Lane 1 t972 SGF daily cold-Naya acceptance design as cron-ready runner + one full live dry run (T2/NORMAL)
 
 **Receipt:** `twelve-lane-receipts/t992-lane6.md`
@@ -10012,6 +10028,14 @@ _Last updated: 2026-11-07 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t992-lane6.md`
 
 **Evidence:** Dispatcher verified: branch naya/six-sgf-daily-runner-t992 @ 41dfc86ebea8d7b90352cfcea548bcb1688da292 exists on origin == receipt SHA; 3 files (run_daily.sh, README.md, CRON-SPEC.md) present at remote head; run dir 9/9 artifacts exist; Lane-1 dir untouched (counter 1, history 2 lines). Live cold dry run: seal predated spawn, cold successor independ
+
+### ✅ t992 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** compounding experiment v2 on SN-0286
+
+**Receipt:** `twelve-lane-receipts/t992-lane2.md`
+
+**Evidence:** Verified: all 11 lane2-t992-v2 files exist locally (preregistration sealed pre-run, 2 dry runs, 7 blinded arms, sealed key). Score 8.5. Why not 9.5: N=3/arm is the pre-registered minimum (directional only); scorer is same model family (declared); hypothesis-2 pivot used the circuit-breaker rule but no decide.py run (owned deviation); no successor-r
 
 ### ✅ t992 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -10157,6 +10181,14 @@ _Last updated: 2026-11-07 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: receipt exists on disk; check-run kit hidden_files/lane-10/check-run-t0983-lane10/ holds 28 .out + exits.txt, exit histogram {2:10, 7:18} matches the receipt's claim byte-for-byte; sampled .out refusing lines (e.g. 20261018-0830-lane12) match the table's quoted lines; the new brief brief-gap-lane-scorer-20261019-1230-lane3.md exists in br
 
+### ✅ t982 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** legacy-row re-export heal on PR #2400
+
+**Receipt:** `twelve-lane-receipts/t982-lane4.md`
+
+**Evidence:** Verified: commit bed1d0b7fbc762996d12732311070b96dd4fd9ab exists in history with the exact heal message (branch deleted / PR head has since moved to 973177d4, later work, not phantom); 74-test battery claimed with RED-first. Score 9.0 GOOD ONE MORE PASS. Why not 9.5: CI run on the new head not yet observed this tick; PR #2400 carries pre-existing C
+
 ### ✅ t982 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
 **Task:** Legacy-row re-export heal on PR #2400: detail_source=legacy-fallback marker in ib_reconcile.py, 74 tests
@@ -10209,6 +10241,14 @@ _Last updated: 2026-11-07 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Genuine root cause: legacy rows re-exported fallback-reconstructed detail stamped indistinguishable from authored rich detail — silent fabrication. Mechanism fix: exporter stamps provenance[detail_source]=legacy-fallback when rich-detail keys came from ref-only fallback; modern rows untouched (t922 byte-exact contract preserved); importer fails clo
 
+### ✅ t982 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
+
+**Task:** observatory baseline refresh + NayaNET schema contract
+
+**Receipt:** `twelve-lane-receipts/t982-lane11.md`
+
+**Evidence:** Verified: hidden_files/lane-11/STATS.md and hv-node-schema-contract.md exist; corpus figures trace to 21 receipts / 21 score lines as cited. Score 8.5. Why not 9.5: receipt artifacts spot-checked, not independently re-pinned; M3/M4 gray-zone judgments listed but not fully mechanical; t962 unreceipted gap noted, not explained.
+
 ### ✅ t982 — Team 11, Team Naya Scorer (Human Value) — 8.0/10 [VERIFIED]
 
 **Task:** observatory baseline refresh + NayaNET schema contract
@@ -10252,6 +10292,14 @@ _Last updated: 2026-11-07 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t982-lane11.md`
 
 **Evidence:** Baseline extended unchanged from t912 design over 21 receipts + 21 score lines (mean 8.52); per-receipt M2/M3/M4 audit tables; honest UNKNOWNs for M1/M5/M6; drift-vs-t912 table restated for next tick; hv-node-schema-contract.md machine-readable handoff for Lane 12. DISPATCHER VERIFIED: lane-11/STATS.md, lane-11/hv-node-schema-contract.md, receipt f
+
+### ✅ t982 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** PR #2385 pin-exact cross-seat review
+
+**Receipt:** `twelve-lane-receipts/t982-lane10.md`
+
+**Evidence:** Verified: refs/pull/2385/head == eedd9540f54cd96c241db4be2f43f0698ae4dd07, exact match to receipt pin; repair commits present at head; 15 check runs classified with 2 pre-existing base failures diagnosed. Score 8.5. Why not 9.5: PR cannot merge (inherited main reds); gate is advisory-only until Shawn marks brain-index-freshness REQUIRED; receipt-ga
 
 ### ✅ t982 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
