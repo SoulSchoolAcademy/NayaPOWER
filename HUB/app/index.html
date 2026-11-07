@@ -4176,7 +4176,8 @@ window.NayaUI = { Icons, el, Board, StatePanel, DoorCard, Pill, toast };
 <script>/* js/router.js @ baf1221d9 */
 /* ═══════════════════════════════════════════════════════════════════
    ROUTER — hash routes. WELCOME → IDENTITY → INTELLIGENT HUB.
-   #/welcome · #/identity · #/hub · #/hub/:room
+   #/welcome · #/identity · #/hub · #/hub/:room · #/smart-notes/:slug
+   (Smart Notes open IN the Hub — Shawn's ruling, 2026-11-07.)
    ═══════════════════════════════════════════════════════════════════ */
 
 const Router = (() => {
@@ -4205,11 +4206,15 @@ const Router = (() => {
     let handler = routes[key];
     let params = {};
     if (!handler) {
-      // try parametric: hub/:room
+      // try parametric: hub/:room, smart-notes/:slug (also notes/:slug, note/:slug)
       if (segs[0] === 'hub' && segs[1]) {
         handler = routes['hub/:room'];
         params = { room: segs[1] };
         key = 'hub/:room';
+      } else if ((segs[0] === 'smart-notes' || segs[0] === 'notes' || segs[0] === 'note') && segs[1]) {
+        handler = routes['smart-notes/:slug'];
+        params = { slug: segs[1] };
+        key = 'smart-notes/:slug';
       }
     }
     if (!handler) handler = routes['*'];
@@ -5285,7 +5290,12 @@ function HubView(params) {
      shared searchWrap node simply isn't appended here, so global search
      keeps working everywhere else untouched. */
   const outlet = el('div', 'room-outlet');
-  if (room.id === 'feed') {
+  if (params.note) {
+    // A Smart Note opened inside the Hub (clean /smart-notes/<slug> URL or
+    // #/smart-notes/<slug>): the shell above stays exactly as home — the
+    // note renders alone in the outlet, in Hub board language.
+    outlet.appendChild(noteView(params.note));
+  } else if (room.id === 'feed') {
     outlet.appendChild(mainShow(room, C, feedStream || 'collective', searchWrap));
   } else if (room.id === 'connect' || room.id === 'ask') {
     // Start Here: hero + four steps only. No head, no search.
@@ -5314,7 +5324,8 @@ function HubView(params) {
   outlet.appendChild(body);
 
   // The document title always names the room you're actually in.
-  document.title = room.name + ' — NayaNET';
+  // (A note view sets its own title inside noteView — leave it alone.)
+  if (!params.note) document.title = room.name + ' — NayaNET';
 
   main.append(top, lensSlot, outlet);
 
@@ -6450,6 +6461,59 @@ window.NayaJewels = (() => {
     b.appendChild(micro);
 
     return b;
+  }
+
+  /* ——— Smart Note opened INSIDE the Hub (Shawn's ruling, 2026-11-07) ———
+     A note URL (/smart-notes/<slug> or #/smart-notes/<slug>) renders the
+     note as ONE intelligence board — the same intelBoard the feed uses, so
+     the ten sections render in Hub board language, verbatim from the live
+     feed data (window.NayaFeedIntelligence.notes, /feed-live.json). The
+     shell (rail, top bar, bottom bar) is the Hub's own; the back pill
+     returns to the feed. No new page, no restyle, no invented text: a
+     section with no content in the data simply does not render. */
+  function findNoteBySlug(slug) {
+    var notes = (window.NayaFeedIntelligence && window.NayaFeedIntelligence.notes) || [];
+    var digits = String(slug || '').replace(/[^0-9]/g, '');
+    if (!digits) return null;
+    var padded = 'sn' + digits.padStart(4, '0');
+    var plain = 'sn' + String(parseInt(digits, 10));
+    for (var i = 0; i < notes.length; i++) {
+      var id = String((notes[i] && notes[i].id) || '').toLowerCase();
+      if (id.indexOf(padded) > -1 || id.indexOf(plain) > -1) return notes[i];
+    }
+    return null;
+  }
+  function noteView(slug) {
+    var wrap = el('div', 'note-view');
+    var back = el('a', 'note-back');
+    back.href = '#/hub';
+    back.innerHTML = '&larr; Back to Hub';
+    back.setAttribute('aria-label', 'Back to Hub feed');
+    back.style.cssText = 'display:inline-block;margin:18px 0 16px;padding:9px 16px;border:1px solid #ffffff2e;border-radius:999px;color:#fff;text-decoration:none;font-size:14px;';
+    wrap.appendChild(back);
+    var live = window.NayaFeedIntelligence && window.NayaFeedIntelligence.ref === 'live-registry';
+    var note = findNoteBySlug(slug);
+    if (note) {
+      document.title = (note.title || ('Smart Note ' + String(slug).toUpperCase())) + ' — NayaNET';
+      wrap.appendChild(intelBoard(note, 0, 'collective'));
+    } else if (!live) {
+      // The live feed hasn't landed yet — it arrives shortly and its
+      // hashchange re-renders this view. Never flash "not found" for a
+      // note that is simply still loading.
+      document.title = 'Smart Note ' + String(slug).toUpperCase() + ' — NayaNET';
+      var loading = el('div', 'note-loading');
+      loading.style.cssText = 'padding:28px 0;color:var(--muted);font-size:15.5px;';
+      loading.textContent = 'Opening your note\u2026';
+      wrap.appendChild(loading);
+    } else {
+      document.title = 'Note not found — NayaNET';
+      var missing = el('div', 'room-head');
+      missing.innerHTML = '<div class="kicker">SMART NOTE</div>' +
+        '<h2>That note isn\u2019t here.</h2>' +
+        '<p>We couldn\u2019t find Smart Note ' + esc(String(slug)) + ' in the Hub feed. It may have been retired — head back to the Hub and keep exploring.</p>';
+      wrap.appendChild(missing);
+    }
+    return wrap;
   }
 
 
@@ -8244,11 +8308,24 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
     if (EXTERNAL_ROOMS[params.room]) { goExternal(params.room); return document.createElement('div'); }
     return window.HubView(params);
   });
+  // A Smart Note opens INSIDE the Hub: the Hub shell stays, the note renders
+  // alone in the outlet (HubView noteView). The '*' fallback below is untouched —
+  // genuinely unknown routes still land on the feed.
+  Router.on('smart-notes/:slug', params => window.HubView({ room: 'feed', note: params.slug }));
   Router.on('*', () => { location.hash = '#/hub'; return document.createElement('div'); });
 
-  // The Hub IS the app. No hash → straight to the feed.
+  // The Hub IS the app. No hash → straight to the feed — UNLESS the shell
+  // was served at a clean note URL (/smart-notes/<slug>, /notes/<slug>,
+  // /note/<slug>, /note?n=<slug>): the worker serves the Hub shell there, so
+  // carry the slug into the hash and open the note INSIDE the Hub.
   if (!location.hash) {
-    location.hash = '#/hub';
+    var notePath = location.pathname.match(/^\/(?:smart-notes|notes|note)\/([^/]+)\/?$/);
+    var noteQuery = null;
+    if (!notePath && (location.pathname === '/smart-notes' || location.pathname === '/note')) {
+      try { noteQuery = new URLSearchParams(location.search).get('n'); } catch (e) {}
+    }
+    var noteSlug = notePath ? decodeURIComponent(notePath[1]) : noteQuery;
+    location.hash = noteSlug ? '#/smart-notes/' + noteSlug : '#/hub';
   }
 
   Router.render();
