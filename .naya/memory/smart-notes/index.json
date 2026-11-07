@@ -30372,6 +30372,37 @@
     "Doctrine",
     "Marketing"
    ]
+  },
+  {
+   "smart_note_id": "SN-0131",
+   "intelligent_block_id": "IB-SMART-NOTE-20261106-sn0131-how-it-all-connects",
+   "slug": "how-it-all-connects",
+   "title": "How It All Connects — Collective Chain, the Cycle, the Page, the Campaign, the Mission",
+   "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/synthesis/SN-0131/IB-SMART-NOTE-20261106-sn0131-how-it-all-connects.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/synthesis/SN-0131/IB-SMART-NOTE-20261106-sn0131-how-it-all-connects.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/synthesis/SN-0131/IB-SMART-NOTE-20261106-sn0131-how-it-all-connects.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn0131-how-it-all-connects.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "DOCTRINE",
+   "captured_at": "2026-11-06",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-power",
+   "registered_at": "2026-11-07T02:00:42Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-06",
+   "page_hash": "0138019061fda8b136b131e6df276c7c104e30ad3329280fdf8302b8a2da9ec0",
+   "content_hash": "03cd1428ae6d2e6d86a6cf416a9206f34458d0eeb5e4c98389cdb6243c39abb2",
+   "one_line": "The technology is the foundation: collective chain technology. Not a new app, not a new internet — a new technology. The value and the intelligence go back to the users and get shared with everybody. The cycle is how it works: everything you do — mail, messages, notes — can become a smart note. The smart notes go into the intelligent network, and everybody learns and grows and has access. The network is not images and videos — it is intelligence, and all the sharing, commenting, liking, and spaces happen on that intelligence. The privacy is what makes the cycle safe: we do not read your mail or your messages. Auto-deleted, default a day, your choice of a day, a week, a month. You only keep what you choose to keep — pin it, save it to a list, turn a conversation into a smart note. The page is where a stranger meets all of it: not a sales page, a demonstration and a claim. They answer three questions and watch their world appear — that is the technology, shown, not argued. Then they claim their name — that is the door. The tiers are the power choice, the calculator shows the money, the trust section shows the privacy, and the close stacks the offer until the only sane answer is yes. Bugatti for the price of a Honda, nine days to try her, and you are hired on top of it. The campaign is how it spreads: BUILD YOUR WORLD, and the citizens are the campaign — fifty percent, same-day, day ten — so the page closes the deal, the citizens spread it, the feed amplifies it, and the smart notes compound it. And the mission is what it is all for: the old internet fails something like ninety-nine percent because of all that complexity — ours is one hundred percent success for everybody who uses her. Honesty holds every link together: no invented numbers, no fake live, no invented proof. Real or honestly absent.",
+   "topics": [
+    "System",
+    "Doctrine",
+    "Synthesis"
+   ]
   }
  ],
  "sequence_policy": {
@@ -30382,5 +30413,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "696bbff74a4de2b8c6887de5fb122a7848ad6fffa340bf0b56ee7346c346f656"
+ "corpus_manifest_hash": "e3e317131cb72c64e9a64275fb819697189575381e99b5876288e244c1a93b58"
 }
