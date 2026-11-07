@@ -17619,6 +17619,103 @@ function ldNodeDetail_SIMPLE(node, PD, w, n){
   
   return '<div style="max-width:600px;margin:0 auto;padding-bottom:40px;">' + hero + bars + grid + '</div>';
 }
+/* P3 (2026-11-06) — CLICKS detail for the Sales slot. Same drawer shape as
+   ldNodeDetail_SIMPLE (hero + 7-day trend + stats grid), but the numbers are
+   the featured holder's REAL clicks: the orb numeral is the link/world
+   clicks, so the drawer shows the same total plus the three real windows
+   (this week / prior week / older — they sum to the total by construction:
+   older = total - this week - prior week). Trend bars are the real daily
+   click counts for the last 7 days (oldest first), never Math.random();
+   a zero day renders the honest 8% baseline, same as SIMPLE's zero rule,
+   and each bar carries its real weekday initial + date/count on hover.
+   Source: the featured link's own day map when the holder is a link, else
+   the world click day map (PD.clickDayMap). Both are day-keyed {c} maps.
+   The drawer always shows the absolute windows, whatever time pill is on. */
+function ldClicksDetail_SIMPLE(node, PD, w, fo){
+  var color = node.color || '#e84fff';
+  var jewel = node.jewel || '\u2605';
+  var label = 'Clicks';
+  var days = null;
+  try {
+    var feat = (typeof window._featuredDisplay === 'function') ? window._featuredDisplay() : null;
+    if (feat && feat.kind === 'link' && window._featuredLinkDays && window._featuredLinkDays[feat.id]) {
+      days = window._featuredLinkDays[feat.id];
+    } else if (PD && PD.clickDayMap) {
+      days = PD.clickDayMap;
+    }
+  } catch(e) {}
+  /* daily counts, oldest first: 7 bars = today-6 .. today */
+  var last7 = [];
+  var nowMs = Date.now();
+  for (var di = 6; di >= 0; di--) {
+    var dk = new Date(nowMs - di*864e5).toISOString().slice(0,10);
+    var dv = (days && days[dk]) ? (days[dk].c||0) : 0;
+    last7.push({day: dk, c: dv});
+  }
+  var total = 0, week = 0, prior = 0;
+  /* Calendar-day windows, the page's own _dayKey/_sumDays convention
+     (today-6..today = this week, today-13..today-7 = prior week):
+     NEVER the noon-stamp age convention — before noon UTC it drops
+     today's clicks out of THIS WEEK (age < 0) and dumps them in OLDER. */
+  function _dk(off){ return new Date(nowMs - off*864e5).toISOString().slice(0,10); }
+  function _dc(k){ return (days && days[k]) ? (days[k].c||0) : 0; }
+  try {
+    Object.keys(days||{}).forEach(function(k){ total += (days[k].c||0); });
+    for (var wi = 0; wi < 7; wi++) week += _dc(_dk(wi));
+    for (var pi = 7; pi < 14; pi++) prior += _dc(_dk(pi));
+  } catch(e) {}
+  /* no dated history at all (days map empty) — the total is still the orb
+     numeral, never 0; the undated clicks sit in OLDER by construction. */
+  if (total === 0 && fo && typeof fo.pts === 'number' && fo.pts > 0) total = fo.pts;
+  var older = total - week - prior;
+  if (older < 0) older = 0;
+  var totalStr = total.toLocaleString();
+
+  /* Hero: Big number with orb color glow — same as SIMPLE, count not points */
+  var hero = '<div style="text-align:center;padding:32px 20px 24px;">' +
+    '<div style="font-size:72px;margin-bottom:12px;filter:drop-shadow(0 0 20px ' + color + ');">' + jewel + '</div>' +
+    '<div style="font-size:13px;font-weight:800;color:#fff;opacity:.7;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px;">' + label + '</div>' +
+    '<div style="font-size:84px;font-weight:900;color:#fff;line-height:1;text-shadow:0 0 24px ' + color + ', 0 0 60px ' + color + ';">' + totalStr + '</div>' +
+    '<div style="font-size:14px;color:#fff;opacity:.5;margin-top:8px;letter-spacing:.1em;">CLICKS</div>' +
+    '</div>';
+
+  /* Format 1: Trend bars (7-day visual) — REAL daily click counts */
+  var bars = '';
+  try {
+    var barHtml = '';
+    var mx = 1;
+    last7.forEach(function(d){ if (d.c > mx) mx = d.c; });
+    var WD = ['S','M','T','W','T','F','S'];
+    for (var i=0; i<7; i++) {
+      var h = last7[i].c > 0 ? Math.max(6, Math.round(last7[i].c/mx*100)) : 8; /* honest zero */
+      barHtml += '<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:80px;">' +
+        '<div title="'+last7[i].day+': '+last7[i].c+' clicks" style="width:100%;max-width:28px;border-radius:4px 4px 0 0;background:linear-gradient(180deg,' + color + ', ' + color + '55);height:' + h + '%;box-shadow:0 0 12px ' + color + '44;animation:barGrow .6s ease-out backwards;animation-delay:' + (i*0.05) + 's;"></div>' +
+        '</div>';
+    }
+    var dayLetters = last7.map(function(d){
+      return '<div style="flex:1;text-align:center;font-size:9px;color:#fff;opacity:.4;">' + WD[new Date(d.day+'T12:00:00').getDay()] + '</div>';
+    }).join('');
+    bars = '<div style="margin:0 20px 20px;padding:20px;background:rgba(255,255,255,.04);border-radius:16px;border:1px solid rgba(255,255,255,.08);">' +
+      '<div style="font-size:11px;font-weight:800;color:#fff;opacity:.6;letter-spacing:.15em;margin-bottom:16px;">7-DAY TREND</div>' +
+      '<div style="display:flex;gap:6px;align-items:flex-end;">' + barHtml + '</div>' +
+      '<div style="display:flex;gap:6px;margin-top:8px;">' + dayLetters + '</div></div>';
+  } catch(e) { bars = ''; }
+
+  /* Format 2: Stats grid — TOTAL + the three real windows (sum = total) */
+  function _cc(n, l, c){
+    return '<div style="padding:16px;background:rgba(255,255,255,.04);border-radius:12px;border:1px solid rgba(255,255,255,.08);text-align:center;">' +
+      '<div style="font-size:24px;font-weight:900;color:' + c + ';">' + n + '</div>' +
+      '<div style="font-size:10px;color:#fff;opacity:.5;letter-spacing:.1em;margin-top:4px;">' + l + '</div></div>';
+  }
+  var grid = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 20px 20px;">' +
+    _cc(totalStr, 'TOTAL', color) +
+    _cc(week.toLocaleString(), 'THIS WEEK', '#fff') +
+    _cc(prior.toLocaleString(), 'PRIOR WEEK', '#fff') +
+    _cc(older.toLocaleString(), 'OLDER', '#fff') +
+    '</div>';
+
+  return '<div style="max-width:600px;margin:0 auto;padding-bottom:40px;">' + hero + bars + grid + '</div>';
+}
 function ldCloseDrawer(){
   var dr = $('os-ld-drawer');
   if (dr){ dr.classList.remove('open'); dr.classList.remove('viewpoint'); dr.setAttribute('aria-hidden','true'); }
@@ -17818,7 +17915,18 @@ function ldOpenDrawer(key, noFocus){
   var dr = $('os-ld-drawer'), body = $('os-ld-drawer-body');
   if (!dr || !body) return;
   try {
-    body.innerHTML = ldNodeDetail_SIMPLE(node, PD, w, n);
+    /* P3 (2026-11-06): the Sales slot shows CLICKS while no sale has ever
+       landed — the orb numeral is the featured holder's clicks, but this
+       drawer rendered the sales node (ldNodeCount('sales') = 0, label SALES,
+       random trend bars, THIS WEEK hardcoded 0). When the featured override
+       says Clicks, render the real clicks detail instead; every other node
+       keeps the SIMPLE drawer untouched. */
+    var _fo = (typeof window._featuredOrbPts === 'function') ? window._featuredOrbPts(node, n, n*(node.value||0)) : null;
+    if (key === 'sales' && _fo && _fo.label === 'Clicks') {
+      body.innerHTML = ldClicksDetail_SIMPLE(node, PD, w, _fo);
+    } else {
+      body.innerHTML = ldNodeDetail_SIMPLE(node, PD, w, n);
+    }
   } catch(e) {
     body.innerHTML = '<div style="text-align:center;padding:60px 20px;color:#fff;">' +
       '<div style="font-size:48px;margin-bottom:16px;">'+node.jewel+'</div>' +
