@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-07 18:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-07 19:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -45189,6 +45189,12 @@ _Last updated: 2026-11-07 18:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ gap-scorer-20261015-0000-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up lane 10: machine-enforce no-refile verdicts (file-gap-brief.py + claim-brief.py exit-6 tripwire)
+
+**Evidence:** VERIFIED this tick by this scorer: receipt file exists and read; bin/file-gap-brief.py and bin/claim-brief.py exist and their current self-test suites pass GREEN today (file-gap-brief SELF-TEST GREEN; claim-brief SELF-TEST GREEN incl. lift suite). NOT PHANTOM. Receipt-era sha256 pins (file-gap-brief 6cd151ef..., claim-brief 6ce0bca5...) no longer m
+
 ### 🟡 gap-t0112 — Team 10, Team Naya Scorer (Brain Index) — 7.0/10 [PARTIAL]
 
 **Task:** GAP CLOSED (parent t0112-lane10, scored 9.0): re-proved prevention claim on fresh pinned bytes, re-anchored stale tip aa8061c1 to live tip 00f545e0, workflow file on main byte-identical to #2385 head
@@ -47519,6 +47525,12 @@ _Last updated: 2026-11-07 18:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ gap-scorer-20261015-0040-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up lane 1: class-#17 deeper root cause + claim-brief.py --sign-in structural fix
+
+**Evidence:** VERIFIED this tick by this scorer: receipt file exists and read; bin/claim-brief.py exists, still carries --sign-in (7 mentions, post_sign_in function present) and its self-test suite passes GREEN today; bin/file-gap-brief.py still carries the no-refile machinery (59 mentions) and passes GREEN. NOT PHANTOM. Receipt-era sha256 pin (claim-brief dd27e
+
 ### ✅ gap-t1002 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** gap-t1002-lane1
@@ -48738,6 +48750,12 @@ _Last updated: 2026-11-07 18:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261107-1110 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31-brief stall, all refused, queue unchanged
+
+**Evidence:** VERIFIED this tick by this scorer: receipt file exists and read; the 31 brief files live in brief-queue/ are exactly the 31 named in the receipt (live - named = [], named - live = []), in the same band order and refusal pattern (29 x exit 7 parent-authorship, 2 x exit 2 seat bar on brief-gap-gap-t1002-lane2.md and brief-gap-gap-gap-gap-t0172-lane1-
 
 ### ✅ seat-stall-20261107-1008 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
