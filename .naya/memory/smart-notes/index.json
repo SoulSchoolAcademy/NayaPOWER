@@ -30412,7 +30412,7 @@
    "file": "BRAIN/05-MEMORY/SMART-NOTE-build-your-world-how-it-all-connects.md",
    "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-build-your-world-how-it-all-connects.md",
    "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-build-your-world-how-it-all-connects.md",
-   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "projection_status": "SUPERSEDED",
    "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn2212-build-your-world-how-it-all-connects.json",
    "kind": "intelligent-block",
    "status": "canonical",
@@ -30421,7 +30421,7 @@
    "category": "VISION",
    "topic": "CAMPAIGN",
    "captured_at": "2026-11-06",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "SUPERSEDED",
    "author": "shawn",
    "filed_by": "resolve",
    "registered_by": "naya-resolve",
@@ -30435,7 +30435,9 @@
     "Campaign",
     "Vision",
     "Collective Chain Technology"
-   ]
+   ],
+   "superseded_by_capture_id": "IB-SMART-NOTE-20261106-sn0131-how-it-all-connects.json",
+   "supersession_reason": "duplicate filing of the same dictation; first-claim ruling (SN-033): SN-0131 claimed 2026-11-07T02:00:17Z, before SN-2212 (PR created 2026-11-07T02:03:14Z); content canonical as SN-0131; superseded-pointer cure 2026-11-07"
   },
   {
    "smart_note_id": "SN-0132",
@@ -30476,7 +30478,7 @@
    "file": "BRAIN/05-MEMORY/SMART-NOTE-solid-ground-the-pinnacle-standard-and-the-land.md",
    "projection_file": "BRAIN/05-MEMORY/SMART-NOTE-solid-ground-the-pinnacle-standard-and-the-land.md",
    "projection_path": "BRAIN/05-MEMORY/SMART-NOTE-solid-ground-the-pinnacle-standard-and-the-land.md",
-   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "projection_status": "SUPERSEDED",
    "capture_file": ".naya/capture/IB-SMART-NOTE-20261106-sn2213-solid-ground-the-pinnacle-standard-and-the-land.json",
    "kind": "intelligent-block",
    "status": "canonical",
@@ -30485,7 +30487,7 @@
    "category": "VISION",
    "topic": "CAMPAIGN",
    "captured_at": "2026-11-06",
-   "lifecycle_state": "ACTIVE",
+   "lifecycle_state": "SUPERSEDED",
    "author": "shawn",
    "filed_by": "resolve",
    "registered_by": "naya-resolve",
@@ -30499,7 +30501,9 @@
     "Campaign",
     "Vision",
     "Digital Real Estate"
-   ]
+   ],
+   "superseded_by_capture_id": "IB-SMART-NOTE-20261106-sn0132-build-on-solid-ground.json",
+   "supersession_reason": "duplicate filing of the same dictation; first-claim ruling (SN-033): SN-0132 claimed 2026-11-07T02:34:00Z, before SN-2213 (PR created 2026-11-07T02:35:30Z); content canonical as SN-0132; superseded-pointer cure 2026-11-07"
   },
   {
    "smart_note_id": "SN-0133",
@@ -30541,5 +30545,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "526d71ee4b0695c537a6bd8f16f7762aad49491e9368ced2336e2adfd61bec4e"
+ "corpus_manifest_hash": "9d8171b45e9d720e9e04d2ae9f2be1583209bd35efb20de09b2ec55d01579edf"
 }
