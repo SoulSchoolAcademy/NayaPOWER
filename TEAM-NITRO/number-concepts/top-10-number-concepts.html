@@ -107,21 +107,26 @@
     100% { filter: brightness(1); }
   }
   .reel { display: inline-block; height: 168px; overflow: hidden; vertical-align: top; }
-  .strip { display: block; transition: transform .28s ease-out; will-change: transform; }
-  .rd { display: block; height: 168px; line-height: 168px; text-align: center; font-weight: 900; }
-  /* rest state — obsidian black middle, white light around it */
-  .reel.rest .rd { background: none !important; color: #060607 !important; -webkit-text-fill-color: #060607 !important; -webkit-text-stroke: 2.5px rgba(255,255,255,.92); text-shadow: 0 0 22px rgba(255,255,255,.6), 0 0 48px rgba(255,255,255,.28), 0 10px 20px rgba(0,0,0,.85) !important; }
-  /* the chakra colors — the richest ones */
-  .rd.d0 { color: #ffffff; text-shadow: 0 0 20px rgba(255,255,255,.75), 0 0 44px rgba(255,255,255,.3), 0 10px 20px rgba(0,0,0,.85); }
-  .rd.d1 { background: linear-gradient(180deg,#ff8a8a,#e60000 55%,#ff6b6b); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 26px rgba(255,42,42,.6), 0 10px 20px rgba(0,0,0,.85); }
-  .rd.d2 { background: linear-gradient(180deg,#ffc27a,#ff8c00 55%,#ffab4a); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 26px rgba(255,140,0,.6), 0 10px 20px rgba(0,0,0,.85); }
-  .rd.d3 { background: linear-gradient(180deg,#fff3a0,#f5d76e 45%,#c9930a 75%,#ffe98a); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 26px rgba(245,215,110,.65), 0 10px 20px rgba(0,0,0,.85); }
-  .rd.d4 { background: linear-gradient(180deg,#6ee7a0,#00a86b 55%,#34d399); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 26px rgba(0,168,107,.6), 0 10px 20px rgba(0,0,0,.85); }
-  .rd.d5 { background: linear-gradient(180deg,#a5e3ff,#29b6f6 55%,#7dd3fc); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 26px rgba(41,182,246,.6), 0 10px 20px rgba(0,0,0,.85); }
-  .rd.d6 { background: linear-gradient(180deg,#9aa5ff,#3f51b5 55%,#5c6bc0); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 26px rgba(63,81,181,.65), 0 10px 20px rgba(0,0,0,.85); }
-  .rd.d7 { background: linear-gradient(180deg,#d8a0ff,#8e24aa 55%,#b06fd6); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 26px rgba(142,36,170,.65), 0 10px 20px rgba(0,0,0,.85); }
-  .rd.d8 { background: linear-gradient(180deg,#e9d5ff,#b388ff 55%,#d8b4fe); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 26px rgba(179,136,255,.6), 0 10px 20px rgba(0,0,0,.85); }
-  .rd.d9 { background: linear-gradient(180deg,#ff9ed2,#ff1493 55%,#ff6eb4); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 26px rgba(255,20,147,.6), 0 10px 20px rgba(0,0,0,.85); }
+  .strip { display: block; transition: transform .3s ease-out; will-change: transform; }
+  /* the digit is an object, same language as a button or a block:
+     obsidian black inside, the color as the light around it, real depth */
+  .rd { display: block; height: 168px; line-height: 168px; text-align: center; font-weight: 900;
+    background: linear-gradient(180deg, #26262b, #0a0a0d 55%, #050506);
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .reel.rest .rd { -webkit-text-stroke: 5px rgba(255,255,255,.95); text-shadow: 0 0 34px rgba(255,255,255,.85), 0 0 80px rgba(255,255,255,.4), 0 16px 30px rgba(0,0,0,.9); }
+  .rd.d0 { -webkit-text-stroke: 5px #ffffff; text-shadow: 0 0 34px rgba(255,255,255,.85), 0 0 80px rgba(255,255,255,.4), 0 16px 30px rgba(0,0,0,.9); }
+  .rd.d1 { -webkit-text-stroke: 5px #ff2a2a; text-shadow: 0 0 34px rgba(255,42,42,.85), 0 0 80px rgba(255,42,42,.45), 0 16px 30px rgba(0,0,0,.9); }
+  .rd.d2 { -webkit-text-stroke: 5px #ff8c00; text-shadow: 0 0 34px rgba(255,140,0,.85), 0 0 80px rgba(255,140,0,.45), 0 16px 30px rgba(0,0,0,.9); }
+  .rd.d3 { -webkit-text-stroke: 5px #f5d76e; text-shadow: 0 0 34px rgba(245,215,110,.85), 0 0 80px rgba(245,215,110,.45), 0 16px 30px rgba(0,0,0,.9); }
+  .rd.d4 { -webkit-text-stroke: 5px #00a86b; text-shadow: 0 0 34px rgba(0,168,107,.85), 0 0 80px rgba(0,168,107,.45), 0 16px 30px rgba(0,0,0,.9); }
+  .rd.d5 { -webkit-text-stroke: 5px #29b6f6; text-shadow: 0 0 34px rgba(41,182,246,.85), 0 0 80px rgba(41,182,246,.45), 0 16px 30px rgba(0,0,0,.9); }
+  .rd.d6 { -webkit-text-stroke: 5px #3f51b5; text-shadow: 0 0 34px rgba(63,81,181,.85), 0 0 80px rgba(63,81,181,.45), 0 16px 30px rgba(0,0,0,.9); }
+  .rd.d7 { -webkit-text-stroke: 5px #8e24aa; text-shadow: 0 0 34px rgba(142,36,170,.85), 0 0 80px rgba(142,36,170,.45), 0 16px 30px rgba(0,0,0,.9); }
+  .rd.d8 { -webkit-text-stroke: 5px #b388ff; text-shadow: 0 0 34px rgba(179,136,255,.85), 0 0 80px rgba(179,136,255,.45), 0 16px 30px rgba(0,0,0,.9); }
+  .rd.d9 { -webkit-text-stroke: 5px #ff1493; text-shadow: 0 0 34px rgba(255,20,147,.85), 0 0 80px rgba(255,20,147,.45), 0 16px 30px rgba(0,0,0,.9); }
+  /* a digit landing: it shines up and lights up */
+  .reel.lit .rd { animation: shine 1.4s ease-out; }
+  @keyframes shine { 0% { filter: brightness(2); } 100% { filter: brightness(1); } }
 
   /* 1 — Platinum Engraved: cut INTO the obsidian, platinum in the cut */
   .c1 { font-family: Georgia, "Times New Roman", serif;
@@ -195,7 +200,7 @@
         <div class="platter big"></div>
       </div>
     </div>
-    <p class="recipe">At rest, the number is <b>obsidian black in the middle with white light around it</b>. When it wakes, it counts up from the <b>bottom to the top</b> &mdash; and every number it passes <b>flickers to its own color</b>. One is red, two is orange, three is gold, four is emerald, five is cyan, six is indigo, seven is royal purple, eight is lavender, nine is hot pink, the crown chakra. It lands on the final number &mdash; <b>seven purple, two orange, five cyan</b> &mdash; each digit carrying its own color.</p>
+    <p class="recipe">At rest, the number is <b>obsidian black in the middle with white light around it</b> — the same language as every button, board and block. When it wakes, it counts up in <b>slow motion</b>, from the <b>bottom to the top</b> &mdash; and every number it passes <b>shines up in its own color</b>. One is red, two is orange, three is gold, four is emerald, five is cyan, six is indigo, seven is royal purple, eight is lavender, nine is hot pink, the crown chakra. Each digit lands in turn and lights up — <b>seven purple, then two orange, then five cyan</b> — the color on the outside, the obsidian black on the inside, with depth and living depth, like a button that is a number.</p>
     <div class="colorkey">
       <div class="key"><span class="sw d0">0</span>White</div>
       <div class="key"><span class="sw d1">1</span>Red</div>
@@ -208,7 +213,7 @@
       <div class="key"><span class="sw d8">8</span>Lavender</div>
       <div class="key"><span class="sw d9">9</span>Hot Pink</div>
     </div>
-    <p class="keynote">Nine is the crown chakra. The colors are the chakras &mdash; each number lights in its own color, so the score is never just a number.</p>
+    <p class="keynote">Nine is the crown chakra. The color is the light around the number — the inside stays obsidian black. The colors are the chakras, so the score is never just a number.</p>
   </section>
 
   <div class="grid">
@@ -273,10 +278,12 @@
     });
   }
   function revealUltimate(el){
-    var dur = parseInt(el.getAttribute('data-dur') || '2600', 10);
+    /* slow-mo: each reel lands in turn — hundreds, then tens, then units —
+       each one shining up in its own color as it lands. */
+    var durations = [5000, 7500, 10000];
     var reels = [];
     el.querySelectorAll('.reel').forEach(function(reel){
-      reels.push({ strip: reel.querySelector('.strip'), div: parseInt(reel.getAttribute('data-div'), 10) });
+      reels.push({ reel: reel, strip: reel.querySelector('.strip'), div: parseInt(reel.getAttribute('data-div'), 10) });
     });
     /* snap to 0 with no transition, drop the rest style, all in one frame */
     reels.forEach(function(o){
@@ -286,17 +293,20 @@
     el.querySelectorAll('.reel').forEach(function(r){ r.classList.remove('rest'); });
     void el.offsetWidth;
     reels.forEach(function(o){ o.strip.style.transition = ''; });
-    var start = null;
+    var start = null, finished = [false, false, false];
+    function easeOutQuint(p){ return 1 - Math.pow(1 - p, 5); } /* slow-mo: long slow finish */
     function tick(ts){
       if (start === null) start = ts;
-      var p = Math.min((ts - start) / dur, 1);
-      var eased = 1 - Math.pow(1 - p, 3); /* ease-out: fast climb, slow landing */
-      var val = Math.round(TARGET * eased);
-      reels.forEach(function(o){
+      var elapsed = ts - start, allDone = true;
+      reels.forEach(function(o, i){
+        var p = Math.min(elapsed / durations[i], 1);
+        var val = Math.round(TARGET * easeOutQuint(p));
         var count = Math.floor(val / o.div);
         o.strip.style.transform = 'translateY(' + (-count * H) + 'px)';
+        if (p >= 1 && !finished[i]) { finished[i] = true; o.reel.classList.add('lit'); }
+        if (p < 1) allDone = false;
       });
-      if (p < 1) requestAnimationFrame(tick);
+      if (!allDone) requestAnimationFrame(tick);
       else { el.classList.add('landed'); }
     }
     requestAnimationFrame(tick);
