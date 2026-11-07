@@ -17148,13 +17148,26 @@ function loadPointsBoard(_t){
       var pctMode = window._dashPctMode === true;
       var totalPts = 0;
       if (pctMode){
+        /* P4 (2026-11-07) — % view includes EVERY source: the denominator
+           is the sum of the FINAL per-orb values, i.e. the same pts this
+           loop displays, including the featured holder's override (world
+           holder: Clicks = 349 link clicks in the Sales slot). Raw node
+           values alone give 150 (100 Creations + 50 Invites) and omit
+           Clicks entirely; the scorecard DONE is "% view includes every
+           source; shares sum to 100% with Clicks in it", denominator 499
+           = 150 + 349. The birth-day bonus is not an orb (no birth node
+           in LD_NODES) — it stays a derivation line only, never a share.
+           Rounding stays the code's existing Math.round, as it was for
+           67/33: 100/499→20%, 50/499→10%, 349/499→70%, summing to 100%. */
         LD_NODES.forEach(function(nd){
           var nn = ldNodeCount(nd, PD, w);
           var pp = nd.value ? nn*nd.value : nn;
+          var _foP = (typeof window._featuredOrbPts === 'function') ? window._featuredOrbPts(nd, nn, pp) : null;
+          if (_foP) pp = _foP.pts;
           totalPts += pp;
         });
       }
-      var displayNum = (pctMode && totalPts > 0 && !((typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(node.key)))
+      var displayNum = (pctMode && totalPts > 0)
         ? Math.round(pts/totalPts*100)+'%'
         : fmtCompact(pts);
       /* 2026-11-02 — THE 12 CHARTS #9: SPARKLINES. Tiny trend on each orb.
@@ -17400,18 +17413,27 @@ function loadPointsBoard(_t){
         /* update orb numbers in place — no reload */
         try{
           var total = 0;
+          var pctTotal = 0;
           var orbVals = {};
           LD_NODES.forEach(function(nd){
             var n = ldNodeCount(nd, PD, window._dashWeek || 'all');
             var pts = nd.value ? n*nd.value : n;
             orbVals[nd.key] = pts;
             total += pts;
+            /* P4 (2026-11-07) — % denominator is the sum of the FINAL
+               per-orb values (same featured override as the render loop),
+               so Clicks (349) is in it: 499, not 150. `total` stays the
+               raw sum — the big-number fallback below still reads it. */
+            var _foT = (typeof window._featuredOrbPts === 'function') ? window._featuredOrbPts(nd, n, pts) : null;
+            pctTotal += _foT ? _foT.pts : pts;
           });
           document.querySelectorAll('.os-ld-n').forEach(function(el){
             var key = el.getAttribute('data-nn');
             var pts = parseInt(el.getAttribute('data-full') || '0', 10);
-            if (isPct && total > 0 && !((typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(key))){
-              el.textContent = Math.round(pts/total*100) + '%';
+            /* P4 — every source gets a share in % view, including
+               countOnly orbs (Clicks): the countOnly exclusion is gone. */
+            if (isPct && pctTotal > 0){
+              el.textContent = Math.round(pts/pctTotal*100) + '%';
             } else {
               try { el.textContent = pts.toLocaleString(); } catch(e) { el.textContent = pts; }
             }
