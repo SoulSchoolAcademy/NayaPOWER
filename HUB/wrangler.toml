@@ -8,6 +8,8 @@ compatibility_date = "2026-10-17"
 # Static assets: the Hub page lives in HUB/app/ (index.html + js/).
 [assets]
 directory = "./app"
+# The ASSETS binding is what env.ASSETS.fetch reads from in hub-worker.js.
+binding = "ASSETS"
 not_found_handling = "single-page-application"
 # Worker-first for every route hub-worker.js answers itself (the note
 # reader and the /sw.js cure). Without this, the assets layer answers
