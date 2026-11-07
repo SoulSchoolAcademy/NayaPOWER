@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-07 00:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-07 00:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -39479,6 +39479,12 @@ _Last updated: 2026-11-07 00:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gate-stall-1835-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Machine-enforce the SEAT-LINE BAR in claim-brief.py (close the 18:35 gate-stall fail-open)
+
+**Evidence:** VERIFIED this tick by this scorer: seat_line_bar present in live bytes (hidden_files/bin/claim-brief.py line 604); python3 bin/claim-brief.py --self-test GREEN this run (lift-stamp section 9 suite F1-F6 fire and pass). The 1d check still does the job it was built for. NOT PHANTOM. Independent score 9.0, GOOD ONE MORE PASS. Why not 9.5: (1) the rece
+
 ### ✅ 20261101-1200 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up gap-gap-t1032-lane4: local re-run of changed-test set on exact head bytes + merge-mechanism probe for PR #2400
@@ -48264,6 +48270,846 @@ _Last updated: 2026-11-07 00:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ 20261105-0505 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick: receipt file exists; 31 live queue files all present in its blocked list; the one extra token (brief-gap-scorer-20261014-2250-lane3.md, single-'gap') is honestly disclosed IN the receipt as a filename misread — the file did not exist, a re-list proved the queue untouched, nothing claimed. Refusal classes live re-verified by dry-
+
+### ✅ 20261106-1434 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261106-1331 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261106-1226 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261106-1119 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261106-1018 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261106-0917 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261106-0810 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261106-0706 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261106-0603 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261106-0501 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261106-0409 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261106-0303 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261106-0243 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261106-0138 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261106-0035 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261105-2329 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261105-2223 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261105-2121 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261105-2013 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261105-1908 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261105-1805 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261105-1703 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261105-1243 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261105-1139 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261105-1036 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261105-0925 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261105-0820 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261105-0713 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261105-0610 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261105-0403 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261105-0300 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261105-0153 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261105-0053 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-2349 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-2243 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-2143 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-2039 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-1938 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-1728 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-1625 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-1518 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-1415 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-1312 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-1139 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-1036 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-0934 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-0829 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-0725 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-0618 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-0515 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-0414 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-0308 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-0203 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261104-0100 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-2358 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-2254 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-2153 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-2048 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-1944 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-1839 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-1733 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-1629 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-1526 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-1418 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-1316 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-1215 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-1108 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-1005 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-0859 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-0753 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-0648 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-0543 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-0343 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-0239 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-0135 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261103-0030 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-2329 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-2224 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-2014 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-1910 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-1804 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-1701 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-1552 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-1441 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-1333 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-1231 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-1125 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-1020 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-0913 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-0813 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-0708 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-0603 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-0500 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-0359 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-0255 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-0150 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261102-0045 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-2340 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-2233 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-2128 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-2025 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-1924 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-1823 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-1719 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-1616 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-1514 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-1410 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-1303 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-1100 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-0955 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-0854 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-0748 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-0644 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-0539 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-0437 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-0335 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-0229 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-0126 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-0119 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261101-0019 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261031-2316 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261031-2211 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261031-2103 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261031-2000 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261031-1856 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261030-0835 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261030-0729 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261030-0623 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261030-0519 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261030-0414 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261030-0311 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261030-0210 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261030-0105 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261030-0004 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261029-2301 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261029-2159 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261029-2057 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
+
+### ✅ 20261029-1950 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged
+
+**Evidence:** VERIFIED this tick by batch check: receipt file exists; the brief filenames it lists are byte-identical to the live brief-queue set (31 files, zero diff); refusal classes live re-verified by dry-run claim attempts this tick — brief-gap-t0422-lane7.md refused exit 7 (parent-authorship), brief-gap-gap-t1002-lane2.md refused exit 2 (claimability gate)
 
 ### ✅ 20261106-1538 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
