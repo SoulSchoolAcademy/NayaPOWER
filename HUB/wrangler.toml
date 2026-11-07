@@ -9,3 +9,11 @@ compatibility_date = "2026-10-17"
 [assets]
 directory = "./app"
 not_found_handling = "single-page-application"
+# Worker-first for every route hub-worker.js answers itself (the note
+# reader and the /sw.js cure). Without this, the assets layer answers
+# browser NAVIGATIONS (Sec-Fetch-Mode: navigate) to these non-asset paths
+# with the SPA-fallback shell before the worker ever runs — the reader
+# rendered for plain fetches but was unreachable from a real browser
+# (root-caused 2026-11-06, reader-route fix round 2). All other paths
+# keep the default order; the worker delegates them to env.ASSETS.fetch.
+run_worker_first = ["/smart-notes", "/smart-notes/*", "/s/*", "/notes/*", "/note", "/note/*", "/sw.js", "/service-worker.js"]
