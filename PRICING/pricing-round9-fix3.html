@@ -942,6 +942,8 @@ body:not(.hero-mode) #tn-tacho-mount {width:min(320px,60%) !important;}
 #calculator .calc-controls{order:9; flex:none;}
 #calculator .calc-hero-example{order:10;}
 #calculator .calc-hired-link{order:11;}
+.doc-nav{overflow-x:auto; gap:12px; padding:8px 12px;}
+.doc-nav a{font-size:12px;}
 }
 /* 14. the promise (§3) + the close (§9) + the section headings */
 .sec-kicker{font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); text-align:center; margin:0 0 12px;}
@@ -2628,8 +2630,9 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
       window.NayaCalc = { config: cfg, update: update, setPlan: setPlan, setGoal: setGoal, state: state };
     })();
     </script>
-/* CLAIM — fix1 lines 2381-2395 (the hero's claim input; §7 keeps the claim) */
+/* CLAIM — fix1 lines 2380-2393 (the hero's claim input; §7 keeps the claim) */
 <script>
+  (function(){
     var claimBtns = document.querySelectorAll('a[data-claim]');
     var inputs = document.querySelectorAll('.claim-name');
     function slug(v){ return v.toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,32); }
@@ -2643,8 +2646,6 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
   })();
   // ADDITION 12 — the demo: three questions -> world -> gauge -> score card.
   // The score is COMPUTED from the answers (base 10 + Q1 20/25/30 + Q2 15/20/25
-  // + Q3 20/25/30 = 65-95). Each answer activates its trio of the nine systems
-  // (a partition of the nine each time) and opens its doors (real areas from
 </script>
 /* BOTTOM BAR — Hub lines 4997-5055 (NayaInstall NOT carried; tap() falls back to the absolute Hub URLs) */
 <script>
