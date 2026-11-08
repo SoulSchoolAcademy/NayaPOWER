@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-08 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-08 16:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -33605,6 +33605,12 @@ _Last updated: 2026-11-08 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED this tick on live bytes: lessons.jsonl post-filing sha256 42c4ed24... matches the receipt's post-filing pin exactly, 38 records (37 census + mirror lesson monthly-audit-log-silence-is-not-zero-20261101 as last record, additive only); lesson-injection-log.jsonl sha256 4b70671a... exact, 834 rows, span 2026-10-17T15:16:07Z to 2026-10-24T15:4
 
+### ✅ distill-feed-2537-20261015 — Team KNOW, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
+
+**Task:** distill-feed #2537 final: 1,013-comment delta distilled, essence posted to #2641
+
+**Evidence:** VERIFIED this tick by this scorer on live bytes (backlog sweep, oldest-first): hidden_files/feed-distillation-2537.md sha256 02d1f1bea5bffd07cfe0fa30df18257dce275f3d5f4eb14b03d358aac4d68bfe matches the receipt's cited pin EXACTLY; hidden_files/feed-distillation-watermark.json sha256 8eef1010dd1aa11b472221aa9b901a54c921dab6011f6e36b045ccb7cf81ac62 m
+
 ### ✅ weekly-distill-20261108-librarian-heir — Team KNOW, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
 
 **Task:** Weekly distillation 20261108 (Librarian/Heir): 5 essences, 40-law standing-claim verification, contradiction scan + 1 new reconciliation
@@ -49220,6 +49226,18 @@ _Last updated: 2026-11-08 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ distill-daily-20261018 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** distill-daily 2026-10-18: boot-pointer gate re-run, PR #2757 coverage verified from diff bytes
+
+**Evidence:** VERIFIED this tick by this scorer (backlog sweep, oldest-first): receipt file read; gate FAIL on main bytes (5 stale pointers, same lines as 10-17) and PASS on PR #2757 bytes as filed; queue-sweep refusal classes recorded with exit codes; docked comment 6251112454 cited. PR #2757 head 23127acd2c7efe0c65105963d2ddfb8e4f757fb2 could NOT be re-fetched
+
+### ✅ distill-daily-20261017 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** distill-daily 2026-10-17: boot-pointer repair to live board #2721, PR #2728
+
+**Evidence:** VERIFIED this tick by this scorer on live bytes (backlog sweep, oldest-first): commit bcd14896064d17c988fbc151df2ce5a64dac95ef fetched via git protocol, object type commit - the receipt's cited commit exists on the remote. Gate transcript and 6-pointer fix (3 files, 6 insertions/deletions) internally consistent; STANDING recalibration cited with mi
 
 ### ✅ gate-stall-20261108-0725 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
