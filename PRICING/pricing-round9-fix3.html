@@ -1,0 +1,2477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NayaNET — Pricing</title>
+<style>
+/* 1. PAGE :ROOT — Hub index-2-fixed-v2.html lines 64-142 + aliases */
+:root {
+  /* ——— The obsidian stack — the only neutrals (Law v2 §2.2) ——— */
+  --bg:        #0B0D12;  /* World — the canvas. Everything sits on this. */
+  --bg-raise:  #12151D;  /* Raised — cards, panels, drawers. */
+  --bg-panel:  #12151D;  /* (alias of Raised) */
+  --bg-card:   #171B25;  /* Elevated — popovers, modals, the topmost layer. */
+  --bg-elev:   #171B25;  /* Elevated (explicit name). */
+  --edge:      #252B39;  /* Precision edge — 1px edges on raised surfaces. */
+  --ink:       #F5F7FB;  /* Primary text. Always. */
+  --ink-dim:   #F5F7FB;  /* (primary text, dimmed contexts — use --muted below it) */
+  --muted:     #AAB2BF;  /* Secondary text. Never for primary content. */
+  --muted-2:   #AAB2BF;
+  --faint:     #c9c3ce;
+  --line:      #ffffff18;
+  --line-soft: #ffffff0d;
+
+  /* ——— The semantic spectrum — one color, one job (Law v2 §2.3) ——— */
+  --purple:     #9d75ff;  /* Naya's signature. Primary actions, Naya presence. */
+  --indigo:     #6675ff;  /* Comprehension / depth / reports. */
+  --sapphire:   #55b9ee;  /* Knowledge. Calm, deep, at rest. */
+  --blue:       #55b9ee;  /* (alias of sapphire — the working blue) */
+  --teal:       #40d3bb;  /* Connection / flow. */
+  --emerald:    #55e39a;  /* Alive and well. Working, true, now. */
+  --green:      #55e39a;  /* (alias of emerald — the working green) */
+  --lime:       #b8ee57;  /* Learning / growth. */
+  --yellow:     #f1d75a;  /* Attention / signal. */
+  --gold:       #e8b64c;  /* Extraordinary. The rarest word. */
+  --orange:     #ff9a5a;  /* Action / movement. */
+  --rich-orange:#ff7a3d;  /* Transition / momentum. */
+  --red:        #ff5a6e;  /* Blocked / failed. The alarm. Never decorative. */
+  --magenta:    #d86cff;  /* Human significance. The human's own things. */
+
+  /* ——— Room accents (one distinct color per room — never two rooms alike) ——— */
+  --accent-feed:        #a06bff;            /* grape royal purple — the main page wears the soul color (Shawn 2026-10-20) */
+  --accent-today:       var(--magenta);     /* human significance */
+  --accent-reports:     var(--indigo);      /* comprehension / depth */
+  --accent-library:     var(--blue);        /* knowledge at rest */
+  --accent-connect:     var(--teal);        /* connection / flow */
+  --accent-ledger:      var(--gold);        /* value, extraordinary */
+  --accent-connections: var(--orange);      /* action / movement */
+  --accent-lists:       var(--purple);      /* Naya's signature */
+  --accent-mail:        var(--rich-orange); /* messages in motion */
+  --accent-spaces:      var(--lime);        /* learning / growth */
+  --accent-settings:    #e8eaf2;            /* clean silver / white */
+  --accent-growth:      var(--gold);            /* inviting gold */
+  --accent-factory:     var(--purple);          /* the flagship — Naya's signature */
+  --accent-ask:         var(--blue);            /* Ask Naya — sapphire clarity */
+
+  /* ——— Living depth (the material grammar) ——— */
+  --depth-hi:  inset 0 1px #fff6;
+  --depth-drop: 0 18px 42px #000b;
+  --depth-deep: 0 20px 48px #000d;
+  --radius-sm: 11px;
+  --radius-md: 13px;
+  --radius-lg: 17px;
+  --radius-xl: 22px;
+  --radius-pill: 999px;
+
+  /* ——— Motion ——— */
+  --ease: cubic-bezier(.16,.84,.22,1);
+  --dur-fast: .18s;
+  --dur-med:  .28s;
+  --dur-slow: .5s;
+
+  /* ——— Type ——— */
+  --font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fs-hero: clamp(38px, 5.4vw, 60px);
+  --fs-title: 23px;
+  --fs-head: 17px;
+  --fs-body: 16px;
+  --fs-small: 13px;
+  --fs-micro: 11.5px;
+
+  /* ——— The living field behind everything ——— */
+  --field:
+    radial-gradient(1000px 650px at 55% -12%, #6675ff18, transparent 68%),
+    radial-gradient(900px 700px at 100% 100%, #d86cff12, transparent 70%),
+    var(--bg);
+}
+/* 2. FIX1 BASE — pricing-round7-fix1-work.html lines 17-24 */
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 24px;}
+  /* White text only — color lives on orbs and 2-3px edge bars, never in words. */
+  .kicker{font-size:12px; letter-spacing:.22em; font-weight:700; margin-bottom:8px; color:var(--txt);}
+  h1{font-size:clamp(28px,4.5vw,48px); font-weight:800; letter-spacing:-.01em; margin-bottom:8px;}
+/* 3. DECK — deck-slide.md verbatim + fix1 L325 + fix1 L372-376 */
+.slide{height:100vh; height:100svh; overflow-y:auto; scroll-snap-align:start; scroll-snap-stop:always; box-shadow:inset 0 1px 0 rgba(255,255,255,.07);}
+.js-deck .slide{opacity:.85; transform:scale(.998); transition:opacity .35s ease, transform .35s ease;}
+.js-deck .slide.arrived{opacity:1; transform:none;}
+html{scroll-snap-type:y mandatory;}
+    html{scroll-snap-type:none;}
+    .slide{height:auto; min-height:0; overflow:visible;}
+    .banner-top .banner-img,.calc-gauge.alive .speedo-object,.calc-gauge.alive svg{animation:none !important;}
+    *{transition-duration:.01ms !important;}
+  }
+/* slides clear the fixed bottom bar (precedent: factory-page-shell body padding-bottom:92px; the notif bar is ~94px) */
+.slide{padding-bottom:110px;}
+/* 4. NAV — fix2 lines 843-851, position:static per the deck law; .nav-cta keeps margin-left:auto only */
+.doc-nav{position:static; z-index:60; display:flex; align-items:center; gap:18px;
+  padding:10px 22px; background:rgba(10,10,15,.86); backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.12);
+  box-shadow:0 10px 30px -12px rgba(0,0,0,.9);}
+.doc-nav .nav-mark{font-weight:800; letter-spacing:.14em; font-size:13px; color:#fff; white-space:nowrap;}
+.doc-nav .nav-mark b{color:var(--gold);}
+.doc-nav a{color:var(--dim); font-size:13px; font-weight:700; text-decoration:none; white-space:nowrap;}
+.doc-nav a:hover{color:#fff;}
+.doc-nav .nav-cta{margin-left:auto; color:#0a0a0f; background:linear-gradient(135deg,#ffe9a8,#ffbf3d);
+.doc-nav .nav-cta{margin-left:auto;}
+/* 5. HERO — fix1 base + fix2 F16/F18 (order preserved) */
+  .banner-top{position:relative; width:100%; overflow:hidden; background:#060608; border-bottom:1px solid var(--line);}
+  .banner-top .banner-img{width:100%; height:auto; display:block;}
+  /* No shade on the Studio top: nothing dims the nine objects at the base. */
+  /* Studio top: no DOM portrait, caption or map labels — Naya and the nine systems live in the art. */
+  /* Studio top: the headline sits in the empty black sky top-left (max-width 480px clears the machine's left rim at ~549px @1920) — never over the nine objects at the base, and no shade dims them. */
+  .banner-head{position:absolute; z-index:3; left:48px; top:32px; max-width:480px;}
+  .banner-head h1{color:#fff; text-shadow:0 2px 18px rgba(0,0,0,.75);}
+  .banner-head .hero-cta-note{color:#e8e8ee; text-shadow:0 1px 8px rgba(0,0,0,.8);}
+  /* Finals are 3:1 — below ~1728px the overlaid headline would sit on the pills. Stack it under the image (the established phone pattern), hide the NINE ORBS label (fixed-height pills collide with the SPACE pill below ~1590px). Phone rules below still win under 860px. */
+  @media(max-width:1760px){
+    .banner-head{position:static; left:auto; right:auto; top:auto; bottom:auto; max-width:none; padding:24px 48px 32px; background:#060608;}
+  }
+  @media(max-width:860px){
+    /* Phone: the banner image is short, the headline is tall — stack the
+       headline UNDER the image in normal flow instead of overlaying it,
+       or the H1 is pushed above the viewport and lost. */
+    .banner-head{position:static; left:auto; right:auto; top:auto; bottom:auto; max-width:none; padding:24px 16px 32px; background:#060608;}
+    .banner-head h1{font-size:28px;}
+  }
+  /* Map labels live in the top band only: the headline block rises as the
+  .banner-top.slide{overflow-y:auto; overflow-x:hidden;}
+  .hero-band{position:static; left:auto; top:auto; z-index:auto; max-width:1240px; margin:0 auto; padding:28px 24px 4px;}
+  .hero-band .hero-cta{margin-bottom:12px;}
+  .banner-map{position:relative;}
+  /* F3 — tiers break the 1920 fold: compact banner + strip + ladder above 1760px. */
+  @media(min-width:1761px){
+    .banner-top .banner-img{height:640px; object-fit:cover; object-position:center 50%;}
+    .banner-head{top:20px; left:48px; max-width:520px;}
+    .banner-head h1{font-size:36px;}
+    .hero-cta{margin:0 0 16px; flex-wrap:nowrap;}
+    .hero-cta-note{font-size:12px; padding:8px 10px; flex:1 1 auto; min-width:0;}
+  .manifesto{font-size:15px; font-weight:700; color:var(--txt); margin-bottom:8px;}
+  .claim-name{flex:0 1 190px; min-width:140px; padding:12px 14px; font-size:15px; color:var(--txt);
+    background:linear-gradient(180deg,#1c1c26,#0a0a0f); border:1.5px solid rgba(255,191,61,.55); border-radius:12px;
+    box-shadow:inset 0 2px 8px rgba(0,0,0,.7), inset 0 -1px 0 rgba(255,255,255,.08), 0 4px 14px rgba(0,0,0,.45);}
+  .claim-name::placeholder{color:var(--faint);}
+  .claim-name:focus-visible{outline:3px solid #fff; outline-offset:2px;}
+  .hero-cta .claim-name{margin-right:4px;}
+  @media(max-width:860px){
+    .hero-cta{flex-wrap:wrap;}
+    .hero-cta .claim-name{flex:1 1 100%; margin-right:0; margin-bottom:8px;}
+    .manifesto{font-size:16px;}
+  }
+
+  /* FIX7H — hero band widened (was 520px) + new-technology line. */
+  .banner-top .hero-band{max-width:880px !important; padding-top:20px;}
+  .demo-card-systems{font-size:13px; color:var(--dim); margin:8px 0 0;}
+  @media(max-width:860px){
+    .banner-top .hero-band{padding:16px 16px 8px;}
+    .banner-top .kicker{font-size:12px; letter-spacing:.04em;}
+    .manifesto{font-size:14px;}
+    .banner-top .hero-cta-note{font-size:12px;}
+/* F18 greeting (fix2 L438-439) */
+.hero-greet{font-size:15px; font-weight:700; color:var(--txt); margin-bottom:6px;}
+.hero-greet .way-gem{margin-right:8px;}
+/* F16 hero rules from the fix2 860 block (L443-487, hero + calc-order lines only) */
+@media(max-width:860px){
+.banner-head{position:static; left:auto; right:auto; top:auto; bottom:auto; max-width:none; padding:24px 16px 32px; background:#060608;}
+.banner-head h1{font-size:28px;}
+.hero-cta{flex-wrap:wrap;}
+.hero-cta .claim-name{flex:1 1 100%; margin-right:0; margin-bottom:8px;}
+.manifesto{font-size:16px;}
+.banner-top .hero-band{padding:16px 16px 8px;}
+.banner-top .kicker{font-size:12px; letter-spacing:.04em;}
+.manifesto{font-size:14px;}
+.banner-top .hero-cta-note{font-size:12px;}
+.banner-top .hero-cta{gap:8px;}
+.banner-top .hero-cta .claim-name{margin-bottom:0;}
+.banner-top .hero-band{padding-bottom:4px;}
+.banner-top .hero-band{padding:14px 16px 0;}
+.banner-top .hero-cta{margin-bottom:0;}
+.banner-head .manifesto{margin-bottom:4px;}
+.banner-top .hero-greet{margin-bottom:4px;}
+#calculator{display:flex; flex-direction:column;}
+#calculator .calc-body{display:contents;}
+#calculator .calc-gauge{order:4; flex:none;}
+#calculator .calc-disc{order:5;}
+#calculator .calc-not{order:6;}
+#calculator .calc-lines{order:7;}
+#calculator .calc-proof{order:8;}
+#calculator .calc-controls{order:9; flex:none;}
+#calculator .calc-hero-example{order:10;}
+#calculator .calc-hired-link{order:11;}
+.banner-top .hero-greet{margin-bottom:0;}
+/* F16 1440 block (fix2 L494-510) — 1760px !important wins at >=1440px */
+@media(min-width:1440px){.banner-top .hero-band{max-width:1760px !important; display:flex; gap:48px; align-items:stretch;}
+.hero-copy{flex:1 1 auto; min-width:0;}
+.banner-top .hero-band .hero-cta{margin-bottom:0;}
+.banner-top .hero-band .kicker{margin-bottom:4px;}
+.banner-top .hero-band h1{margin-bottom:4px;}
+.banner-top .hero-band .hero-greet{margin-bottom:4px;}
+.banner-top .hero-band .manifesto{margin-bottom:4px;}
+.hero-systems{display:flex; flex:0 0 400px; flex-direction:column; justify-content:center; gap:16px; padding:24px; border-radius:16px; border:1.5px solid rgba(255,255,255,.9); background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%); box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 8px 24px rgba(0,0,0,.5);}
+.hero-systems-kicker{font-size:12px; font-weight:800; letter-spacing:.22em; color:var(--txt);}
+.hero-systems-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:8px;}
+.hero-systems-grid span{padding:8px 6px; border-radius:999px; font-size:12px; text-align:center; color:var(--txt); border:1px solid var(--gold); background:rgba(255,191,61,.14); box-shadow:0 0 12px rgba(255,191,61,.25);}
+.hero-systems-line{color:var(--dim); font-size:14px;}
+.hero-systems-line b{color:var(--txt);}}</style>
+/* 6. .primo — Naya_Beautiful_Button_Set_N4.html lines 238-247 (NAYA-BTN-027) */
+/* ============ STANDARD — .primo ============ */
+.primo { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 800; font-size: 15px; letter-spacing: .08em; color: #fff; padding: 14px 26px; border-radius: 999px; border: none;
+  background: linear-gradient(180deg, #141419 0%, #050505 60%, #08080c 100%);
+  box-shadow: inset 0 0 0 1.7px rgba(255,255,255,.9), inset 0 2px 5px rgba(255,255,255,.2), inset 0 -6px 14px rgba(0,0,0,.7), 0 10px 28px rgba(0,0,0,.55), 0 3px 10px rgba(0,0,0,.45);
+  transition: transform .22s var(--ease), box-shadow .22s var(--ease); --glow: var(--soul); }
+.primo:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1.7px var(--glow), inset 0 2px 5px rgba(255,255,255,.25), inset 0 -6px 14px rgba(0,0,0,.65), 0 14px 36px rgba(0,0,0,.6), 0 0 26px -4px var(--glow); }
+.primo:active { transform: translateY(1px) scale(.985); }
+.primo.theme-magenta { --glow: var(--magenta); } .primo.theme-purple { --glow: var(--purple); }
+.primo.theme-blue { --glow: var(--blue); } .primo.theme-green { --glow: var(--green); } .primo.theme-gold { --glow: var(--gold); }
+.primo:disabled { opacity: .6; cursor: default; transform: none; }
+.primo{text-decoration:none;}
+/* .primo on an <a> keeps the button look (the claim buttons are anchors) */
+/* 7. ORB — Hub lines 2606-2665 (.orb base + .orb--sm + keyframes + .ib-card-orb) */
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 62%, #000) 56%, #040406 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255,255,255,.50),
+    inset 0 10px 18px rgba(255,255,255,.14),
+    inset 0 -12px 24px rgba(0,0,0,.62),
+    0 0 30px rgba(var(--oc-rgb),.55),
+    0 0 74px -10px rgba(var(--oc-rgb),.42),
+    0 24px 48px rgba(0,0,0,.65);
+  transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+  animation: orb-breathe 5s ease-in-out infinite;
+}
+.orb::before { /* the orbit — a ring of light circling the orb */
+  content: ""; position: absolute; inset: -14px; border-radius: 50%; z-index: 2;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 180deg, var(--oc) 270deg, #ffffff 320deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 10px;
+  animation: orb-spin 2.5s linear infinite; opacity: 1; pointer-events: none;
+  filter: drop-shadow(0 0 16px var(--oc)) drop-shadow(0 0 6px #fff);
+}
+.orb::after { /* light pool beneath */
+  content: ""; position: absolute; left: 16%; right: 16%; bottom: -30px; height: 24px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.42), transparent 70%); filter: blur(7px); z-index: -1; pointer-events: none;
+}
+.orb--sm { width: 56px; height: 56px; animation: none; }
+.orb--sm::before { inset: -10px; padding: 2px; animation-duration: 7s; }
+.orb--sm::after { bottom: -16px; height: 14px; }
+@keyframes orb-spin { to { transform: rotate(360deg); } }
+@keyframes orb-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+/* ——— Card-slot orb (Shawn 2026-10-20 ~04:08Z, reworked after his live read):
+   42px — twice the 21px; left edge aligns with the Human Note layer icon below
+   (layer head 16px padding + layer 2px border = 18px shift off the card edge);
+   ring hugs at -4px; core pushed bright and vivid — "more light and life". */
+.ib-card-orb {
+  width: 42px; height: 42px; flex: none; margin: 1px 0 0 18px;
+  background:
+    radial-gradient(circle at 34% 26%, #ffffff 0%, rgba(255,255,255,.85) 10%, rgba(255,255,255,.28) 22%, transparent 38%),
+    radial-gradient(circle at 50% 60%, rgba(255,255,255,.22) 0%, transparent 48%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 88%, #fff) 28%, color-mix(in srgb, var(--oc) 72%, #000) 68%, #050507 100%);
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,.55),
+    inset 0 8px 16px rgba(255,255,255,.22),
+    inset 0 -10px 20px rgba(0,0,0,.55),
+    0 0 22px rgba(var(--oc-rgb),.9),
+    0 0 55px -8px rgba(var(--oc-rgb),.6),
+    0 14px 30px rgba(0,0,0,.6);
+}
+.ib-card-orb::before {
+  inset: -4px; padding: 3px;
+  filter: drop-shadow(0 0 20px var(--oc)) drop-shadow(0 0 8px #fff);
+}
+.ib-card-orb::after { bottom: -18px; height: 16px;
+  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.55), transparent 70%); }
+/* — Playback states (NayaVoice contract, Shawn 2026-10-20): the orb flows
+   while she prepares her reading and while she speaks. The !important
+   animation beats the inline breathe the card sets at render. */
+.ib-card-orb.playing { animation: ib-orb-flow 1.6s ease-in-out infinite !important; }
+.ib-card-orb.reading { animation: ib-orb-flow 2.8s ease-in-out infinite !important; }
+/* .orb--hero — factory-page-shell.html lines 1391-1394 (200px, sunburst ring 9s) */
+.orb--black{background:radial-gradient(circle at 34% 26%,rgba(255,255,255,.55) 0%,transparent 26%),radial-gradient(circle at 50% 55%,#1b1b22 0%,#050507 72%);box-shadow:inset 0 0 0 2px rgba(var(--oc-rgb),.9),inset 0 -12px 24px rgba(0,0,0,.7),0 0 30px rgba(var(--oc-rgb),.5),0 0 70px -12px rgba(var(--oc-rgb),.4),0 24px 48px rgba(0,0,0,.65)}
+.orb--hero{width:200px;height:200px}
+.orb--hero::before{inset:-26px;padding:4px;animation-duration:9s}
+.orb--hero::after{bottom:-46px;height:36px}
+.hero-show .orb--hero{width:220px;height:220px}
+@media(max-width:760px){.hero-show .orb--hero{width:170px;height:170px}}
+/* 8. LADDER + CHART — pricing-table-DRAFT-v4-2.html (the :root, *, body, .wrap, .draft-banner, .notes, .foot, .tag rules are NOT carried) */
+.draft-banner b{color:var(--gold); letter-spacing:.14em; font-size:12px; display:block; margin-bottom:4px;}
+  .kicker{font-size:12px; letter-spacing:.22em; font-weight:700; margin-bottom:10px;}
+  h1{font-size:clamp(30px,4.5vw,52px); font-weight:800; letter-spacing:-.01em; margin-bottom:8px;}
+  .sub{color:var(--dim); font-size:17px; max-width:760px; margin-bottom:34px;}
+  .trial{background:var(--panel); border:1px solid var(--line); border-radius:16px;
+    padding:28px 30px; margin-bottom:30px; position:relative; overflow:hidden;}
+  .trial::before{content:""; position:absolute; inset:0 0 auto 0; height:3px;
+    background:linear-gradient(90deg,var(--purple),var(--blue),var(--green),var(--gold),var(--orange),var(--red),var(--magenta));}
+  .trial h2{font-size:26px; margin-bottom:6px;}
+  .trial p{color:var(--dim);}
+  .trial p b{color:var(--green);}
+  .tiers{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:44px;}
+  @media(max-width:860px){.tiers{grid-template-columns:1fr;}}
+  .tier{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:26px 24px; position:relative;}
+  .tier.pro{border-color:var(--blue); box-shadow:0 0 34px rgba(63,184,255,.14), inset 0 1px 0 rgba(255,255,255,.06);}
+  .tier .tname{font-size:13px; letter-spacing:.2em; font-weight:700; margin-bottom:12px;}
+  .tier .price{font-size:34px; font-weight:800; margin-bottom:2px;}
+  .tier .per{color:var(--faint); font-size:13px; margin-bottom:14px;}
+  .tier ul{list-style:none; font-size:14.5px; color:var(--dim);}
+  .tier ul li{padding:5px 0; border-top:1px solid #16161c;}
+  .tier ul li b{color:var(--txt);}
+.tag.hot{background:rgba(63,184,255,.14); color:var(--blue); border:1px solid var(--blue);}
+.table-scroll{overflow-x:auto; border:1px solid var(--line); border-radius:16px; margin-bottom:44px;}
+  table{width:100%; border-collapse:collapse; min-width:880px; font-size:14.5px;}
+  thead th{padding:18px 16px; text-align:left; background:var(--panel2);
+    border-bottom:1px solid var(--line); vertical-align:bottom;}
+  thead th .col-price{font-size:22px; font-weight:800; display:block; margin-top:4px;}
+  thead th .col-sub{font-size:12px; color:var(--faint); font-weight:400;}
+  thead th.hl{background:#0d1620;}
+  tbody td{padding:15px 16px; border-bottom:1px solid #141419; vertical-align:top;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody td:first-child{font-weight:700; white-space:nowrap; background:var(--panel);}
+  tbody td.hl{background:#0c141c;}
+  .orb{display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:10px;
+    box-shadow:0 0 10px currentColor;}
+  .feat{display:flex; align-items:center;}
+.notes h3{font-size:18px; margin-bottom:12px;}
+.notes li b{color:var(--txt);}
+.c-purple{color:var(--purple);} .c-blue{color:var(--blue);} .c-green{color:var(--green);}
+  .c-gold{color:var(--gold);} .c-orange{color:var(--orange);} .c-red{color:var(--red);} .c-magenta{color:var(--magenta);}
+/* tier list items: diamond bullets (row 18) — the li is flex, the jewel is flex:none */
+.tier ul li{display:flex; align-items:flex-start; gap:10px;}
+.tier ul li .pj-jewel{margin-top:1px;}
+/* chart rows separate on hover (row 22) — shadow + background lift; transform decided by the probe */
+tbody tr{transition:box-shadow .22s var(--ease), background-color .22s var(--ease), transform .22s var(--ease);}
+tbody tr:hover{background:#101018; box-shadow:0 10px 28px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.14);}
+tbody tr:hover{transform:translateY(-3px);}
+/* 9. .real-note — real-notes-block.md verbatim */
+.real-note{background:linear-gradient(180deg,#1a1a26,#0a0a0f 72%); border:1px solid rgba(255,255,255,.16); border-left:3px solid var(--gold); border-radius:12px; padding:14px 16px; margin-bottom:10px; box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 8px 18px rgba(0,0,0,.45);}
+/* Top 10 card: orb + label + one short paragraph (the Hub Smart Note layers) */
+.real-note .rn-head{display:flex; align-items:center; gap:12px; margin-bottom:8px;}
+.real-note .rn-label{font-size:12px; font-weight:800; letter-spacing:.18em; color:var(--txt);}
+.real-note p{margin:0; font-size:15px; line-height:1.6; color:var(--txt);}
+.top10-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px;}
+@media(max-width:860px){.top10-grid{grid-template-columns:1fr;}}
+/* 10. .steppill + .steprail — factory-page-shell.html line 451 (verbatim) */
+.steppill{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:800;font-size:11px;letter-spacing:.14em;color:#F8F7FB;padding:10px 18px;border-radius:999px;background:linear-gradient(180deg,#262633,#0a0a0f 70%);border:1.5px solid #F8F7FB;box-shadow:inset 0 2px rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.6),0 0 22px rgba(248,247,251,.3),0 14px 32px rgba(0,0,0,.7);transition:border-color .25s,box-shadow .25s,transform .2s;white-space:nowrap}.steppill .sdot{width:8px;height:8px;border-radius:50%;background:#fff;flex:0 0 auto;transition:background .25s,box-shadow .25s}.steppill:hover{border-color:var(--sc);box-shadow:inset 0 1px rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.4),0 0 26px -2px var(--sc),0 10px 24px rgba(0,0,0,.6);transform:translateY(-2px)}.steppill:hover .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}.steppill.on{border-color:var(--sc);box-shadow:0 0 0 1px var(--sc),0 0 22px -4px var(--sc)}.steppill.on .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}.steprail{display:flex;align-items:center;justify-content:center;gap:2px;padding:6px 8px;border-radius:999px;background:linear-gradient(180deg,#262633,#0a0a0f 70%);border:1.5px solid rgba(248,247,251,.9);box-shadow:inset 0 2px rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.6),0 0 22px rgba(248,247,251,.3),0 14px 32px rgba(0,0,0,.7);position:relative;max-width:calc(100vw - 24px)}.steprail::before{content:"";position:absolute;left:30px;right:30px;top:50%;height:2px;transform:translateY(-50%);background:linear-gradient(90deg,#a06bff,#3fb8ff,#2fe89e,#ffbf3d,#ff9a5a);opacity:.35;border-radius:2px;pointer-events:none}.steprail .steppill{position:relative;border:0;background:transparent;box-shadow:none;padding:8px 9px;gap:6px;font-size:10px;letter-spacing:.08em}.steprail .steppill .sdot{width:8px;height:8px;border-radius:2px;transform:rotate(45deg);background:#F8F7FB;box-shadow:0 0 6px rgba(248,247,251,.5)}.steprail .steppill:hover{transform:none;box-shadow:none;border-color:transparent}.steprail .steppill:hover .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}.steprail .steppill.on{border-color:transparent;box-shadow:inset 0 0 0 1px var(--sc),0 0 18px -2px var(--sc);background:color-mix(in srgb,var(--sc) 14%,transparent);color:#fff;text-shadow:0 0 12px var(--sc)}.steprail .steppill.on .sdot{background:var(--sc);box-shadow:0 0 12px var(--sc)}
+/* 11. .pj-jewel — Hub lines 1486-1508 (the live jewel, 306 spans proven) */
+.pj-jewel {
+  --jewel: #8a5cff;
+  width: 26px; height: 26px; flex: none; border-radius: 8px;
+  display: grid; place-items: center; font-size: 11px; font-weight: 900;
+  color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.6);
+  background:
+    radial-gradient(circle at 32% 22%, rgba(255,255,255,.85), transparent 42%),
+    radial-gradient(circle at 50% 55%, var(--jewel), color-mix(in srgb, var(--jewel) 45%, #000) 78%);
+  border: 1px solid rgba(255,255,255,.35);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.5),
+    inset 0 -3px 8px rgba(0,0,0,.4),
+    0 0 14px color-mix(in srgb, var(--jewel) 55%, transparent),
+    0 4px 12px rgba(0,0,0,.5);
+  margin-top: 2px;
+}
+.pj-jewel-lg {
+  width: 44px; height: 44px; border-radius: 13px; font-size: 20px;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.5),
+    inset 0 -3px 8px rgba(0,0,0,.4),
+    0 0 22px color-mix(in srgb, var(--jewel) 55%, transparent),
+    0 8px 20px rgba(0,0,0,.5);
+/* the jewel "i" is a <button>: neutralise the browser button defaults (the element's own requirement) */
+button.pj-jewel{padding:0; cursor:pointer; font-family:inherit;}
+button.pj-jewel:hover{filter:brightness(1.15); transform:translateY(-1px);}
+button.pj-jewel:focus-visible{outline:3px solid #fff; outline-offset:2px;}
+/* 12. DETAIL OVERLAY — Hub .drawer-backdrop (L926-931) + .tab-pop (L1137+) */
+  display: none;
+  position: fixed; inset: 0; z-index: 55;
+  background: rgba(3, 3, 6, .6);
+  -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+}
+@media (max-width: 900px) {
+  position: fixed; z-index: 80; min-width: 270px; max-width: 330px;
+  background: var(--bg-elev); border: 1px solid var(--line); border-radius: 14px;
+  box-shadow: 0 18px 48px #000000c0; padding: 14px;
+}
+.tab-pop-title {
+  display: block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); margin: 12px 0 8px;
+}
+.tab-pop-title:first-child { margin-top: 0; }
+.tab-pop-list { display: flex; flex-direction: column; gap: 6px; }
+.tab-pop-note { color: var(--muted); font-size: 14px; line-height: 1.55; margin: 0 0 6px; }
+.tab-pop-add {
+  appearance: none; border: 1px solid var(--line); border-radius: 10px;
+  background: var(--bg-raise); color: var(--ink); cursor: pointer;
+/* the detail panel's size is set by Amendment 1's viewport requirement (centred, 92vw, 84vh, inner scroll) */
+.detail-panel{position:fixed; z-index:80; left:50%; top:50%; transform:translate(-50%,-50%); width:min(680px,92vw); max-height:84vh; overflow-y:auto; overscroll-behavior:contain; display:none;}
+.detail-panel.open{display:block;}
+.drawer-backdrop.open{display:block;}
+.detail-panel .detail-close{margin-top:14px; width:100%; justify-content:center;}
+.detail-panel .real-note{margin-bottom:12px;}
+.detail-panel .real-note:last-of-type{margin-bottom:0;}
+.detail-panel .rn-part{font-size:11px; font-weight:800; letter-spacing:.18em; color:var(--gold); margin-bottom:4px;}
+/* 13. .tt-fig — fix2 lines 993-1000 */
+.tt-fig{margin:22px 0; border-radius:18px; overflow:hidden; position:relative;
+  box-shadow:0 22px 46px -18px rgba(0,0,0,.9), inset 0 0 0 1px rgba(255,255,255,.10);
+  background:#0d0d13;}
+.tt-fig img{display:block; border:0;}
+.tt-fig.p1 img{width:112%; margin-left:-6.7%; margin-top:-3.3%;}
+.tt-fig.p2{aspect-ratio:2.45;}
+.tt-fig.p2 img{width:130.2%; margin-left:-22.1%; margin-top:-10.5%;}
+.tt-fig figcaption{font-size:12px; color:var(--dim); padding:10px 14px;}
+/* 14. CALCULATOR — fix2 calc CSS (verbatim, R4 button-base drops applied) + the order rules (fix2 L477-486) */
+.calc-plan:focus-visible,.calc-unit-btn:focus-visible,.calc-ex:focus-visible,a:focus-visible{outline:3px solid #fff; outline-offset:3px;}
+.calc {margin-bottom:40px; padding:24px; border:1.5px solid rgba(255,191,61,.9); border-radius:16px; position:relative;
+    background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 8px 24px rgba(0,0,0,.5);}
+.calc::before {content:""; position:absolute; inset:0 0 auto 0; height:3px;
+    background:linear-gradient(90deg,var(--purple),var(--blue),var(--green),var(--gold),var(--orange),var(--red),var(--magenta));}
+.calc-kicker {font-size:12px; font-weight:800; letter-spacing:.22em; color:var(--gold); margin-bottom:8px;}
+.calc h2 {font-size:28px; margin-bottom:8px;}
+.calc-sub {color:var(--dim); font-size:16px; margin-bottom:24px; max-width:880px;}
+.calc-sub b {color:var(--txt);}
+.calc-body {display:flex; gap:32px; align-items:flex-start; flex-wrap:wrap;}
+.calc-gauge {flex:0 0 360px; max-width:100%; text-align:center;}
+.calc-gauge svg {width:100%; height:auto; display:block;}
+.calc-readout {font-size:40px; font-weight:800; color:var(--gold); margin-top:8px; text-shadow:0 2px 14px rgba(0,0,0,.6);}
+.calc-per {font-size:16px; color:var(--dim); font-weight:400; margin-left:8px; white-space:nowrap;}
+.calc-math {font-size:14px; color:var(--txt); margin-top:4px;}
+.calc-controls {flex:1 1 320px;}
+.calc-label {font-size:12px; font-weight:800; letter-spacing:.22em; color:var(--dim); margin:16px 0 8px;}
+.calc-label:first-child {margin-top:0;}
+.calc-plans {display:flex; gap:8px; flex-wrap:wrap;}
+.calc-plan{flex:1 1 100px; text-align:center; justify-content:center;}
+    background:linear-gradient(180deg,#262633,#0a0a0f 70%);
+    box-shadow:inset 0 2px rgba(255,255,255,.5), inset 0 -4px 10px rgba(0,0,0,.6), 0 0 22px rgba(248,247,251,.3), 0 14px 32px rgba(0,0,0,.7);}
+.calc-plan .sdot {display:inline-block; width:8px; height:8px; margin:0 7px 0 0; transform:rotate(45deg); background:#fff; box-shadow:0 0 6px rgba(255,255,255,.6); vertical-align:1px;}
+.calc-plan[data-plan="Power"] .sdot {background:#c9c9d8; box-shadow:0 0 8px #c9c9d8;}
+.calc-plan[data-plan="Pro"] .sdot {background:#a06bff; box-shadow:0 0 8px #a06bff;}
+.calc-plan[data-plan="Max"] .sdot {background:#ffbf3d; box-shadow:0 0 8px #ffbf3d;}
+.calc-plan span {display:block; font-size:11px; font-weight:400; color:var(--dim); margin-top:4px;}
+.calc-plan.is-on {border-color:var(--sc,#d4a017); box-shadow:0 0 0 1px var(--sc,#d4a017), 0 0 22px -4px var(--sc,#d4a017);}
+.calc-pace {display:flex; align-items:center; gap:16px;}
+    background:radial-gradient(circle at 35% 30%, #ffffff, #e8e8f0 45%, #b9b9c9 75%, #8f8fa2);
+    box-shadow:inset 0 1px 0 #fff, inset 0 -3px 6px rgba(0,0,0,.35), 0 4px 10px rgba(0,0,0,.5);}
+.calc-pace-num {font-size:16px;}
+.calc-unit {display:flex; gap:8px; margin-top:12px;}
+  box-shadow:0 6px 16px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.18);
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;}
+  box-shadow:0 8px 20px rgba(0,0,0,.6), 0 0 16px rgba(255,255,255,.12), inset 0 1px 0 rgba(255,255,255,.22);}
+.calc-unit-btn.is-on {border-color:var(--gold); box-shadow:0 6px 16px rgba(0,0,0,.55), 0 0 16px rgba(255,191,61,.45), inset 0 1px 0 rgba(255,255,255,.22);}
+.calc-examples {display:flex; gap:8px; flex-wrap:wrap;}
+  box-shadow:0 4px 14px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.15);
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;}
+  box-shadow:0 6px 18px rgba(0,0,0,.55), 0 0 14px rgba(255,191,61,.35), inset 0 1px 0 rgba(255,255,255,.2);}
+.calc-not {font-size:20px; font-weight:800; text-align:center; margin:32px 0 8px;}
+.calc-lines {color:var(--dim); font-size:16px; text-align:center; max-width:880px; margin:0 auto 8px;}
+.calc-lines b {color:var(--txt);}
+.calc-proof {font-size:16px; font-weight:700; text-align:center; margin:16px 0 8px;}
+.calc-disc {font-size:12px; color:var(--dim); text-align:center;}
+.calc {padding:24px;}
+.calc-label {margin:12px 0 8px;}
+.calc-hero-example {display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:16px; margin-bottom:24px;}
+.calc-ex-hero {padding:20px; border-radius:16px; border:1.5px solid rgba(255,255,255,.9);
+    background:linear-gradient(135deg,#23232e 0%,#0a0a0f 50%,#23232e 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), inset 0 -2px 4px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.5);}
+.calc-ex-hero.big {border-color:var(--gold); box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 8px 24px rgba(0,0,0,.5), 0 0 34px rgba(255,191,61,.25);}
+.calc-ex-num {font-size:40px; font-weight:800; color:var(--gold);}
+.calc-ex-line {font-size:14px; font-weight:700; margin-bottom:8px;}
+.calc-ex-hero p {color:var(--dim); font-size:14px;}
+.calc-ex-hero p b {color:var(--txt);}
+.calc-gauge.alive svg {animation:gaugeBreathe 4s ease-in-out infinite alternate;}
+.text-link {color:var(--gold); font-weight:700; text-decoration:underline; text-underline-offset:3px;}
+.text-link:focus-visible {outline:3px solid #fff; outline-offset:2px;}
+.calc {padding-top:0;}
+@media(max-width:860px){
+.calc {padding:24px 16px;}
+.calc-gauge {flex:1 1 100%;}
+.calc-readout {font-size:32px;}
+.calc-hero-example {grid-template-columns:1fr;}
+#calculator {display:flex; flex-direction:column;}
+#calculator .calc-body {display:contents;}
+#calculator .calc-gauge {order:4; flex:none;}
+#calculator .calc-disc {order:5;}
+#calculator .calc-not {order:6;}
+#calculator .calc-lines {order:7;}
+#calculator .calc-proof {order:8;}
+#calculator .calc-controls {order:9; flex:none;}
+#calculator .calc-hero-example {order:10;}
+#calculator .calc-hired-link {order:11;}
+}
+.tn-tacho {
+  position:relative;
+  width:100%;
+  max-width:420px;
+  margin:0 auto;
+  background:transparent;
+  border:none;
+  border-radius:0;
+  padding:0;
+  box-shadow:none;
+  color:#fff;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.tn-tacho-dialwrap {
+  position:relative;
+  width:100%;
+  aspect-ratio:1/1;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 50% 50%, #0c0c10 0%, #050607 70%, #050607 100%);
+  
+  border:12px solid transparent; 
+  background-clip:padding-box;
+  box-shadow:
+    
+    inset 0 20px 60px rgba(0,0,0,1),
+    inset 0 -16px 40px rgba(0,0,0,.95),
+    inset 0 0 0 4px rgba(0,0,0,1),
+    
+    inset 0 0 0 5px rgba(255,255,255,.06),
+    
+    0 40px 100px rgba(0,0,0,.95),
+    0 8px 24px rgba(0,0,0,.8);
+}
+.tn-tacho-dialwrap::after {
+  content:''; position:absolute; inset:-12px; border-radius:50%; z-index:4; 
+  animation:orbVortex 50s linear infinite; 
+  background:
+    
+    
+    
+    
+    repeating-conic-gradient(from -90deg,
+      #d0d4de 0deg 1deg,
+      #7a7e88 1deg 1.8deg,
+      transparent 1.8deg 15deg);
+  -webkit-mask: radial-gradient(circle at 50% 50%, transparent 65%, black 65%, black 100%);
+  mask: radial-gradient(circle at 50% 50%, transparent 65%, black 65%, black 100%);
+  pointer-events:none;
+}
+.tn-tacho-dialwrap::before {
+  
+  content:''; position:absolute; inset:0; border-radius:50%; z-index:5;
+  background:
+    linear-gradient(115deg, rgba(255,255,255,.28) 0%, rgba(255,255,255,.10) 18%, transparent 38%),
+    linear-gradient(295deg, rgba(255,255,255,.08) 0%, transparent 25%),
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,.04) 0%, transparent 40%);
+  pointer-events:none;
+}
+.tn-tacho-dial {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+}
+.tn-tacho-track { display:none; }
+.tn-tacho-fill { display:none; }
+.tn-tacho-comet { display:none; }
+.tn-tacho-famring { animation:tnFamBreathe 4.5s ease-in-out infinite; }
+.tn-tacho-fill {
+  fill:none;
+  stroke:url(#tnLaser);
+  stroke-width:12;
+  stroke-linecap:round;
+  stroke-dasharray:377;
+  stroke-dashoffset:377;
+  filter:
+    drop-shadow(0 0 6px rgba(255,255,255,.9))
+    drop-shadow(0 0 18px rgba(160,200,255,.6))
+    drop-shadow(0 0 36px rgba(160,107,255,.4));
+}
+.tn-tacho-comet {
+  fill:none;
+  stroke:url(#tnCometFlow);
+  stroke-width:10;
+  stroke-linecap:round;
+  stroke-dasharray:377;
+  stroke-dashoffset:377;
+  filter:
+    drop-shadow(0 0 6px rgba(255,255,255,.9))
+    drop-shadow(0 0 16px rgba(255,255,255,.5));
+  mix-blend-mode:screen;
+}
+.tn-tacho-needle {
+  transform-origin:100px 104px;
+  
+  filter:drop-shadow(0 3px 4px rgba(0,0,0,.8));
+  
+  transition:transform 1.2s cubic-bezier(.15,.85,.25,1);
+}
+.tn-tacho-redzone { fill:none; stroke:#ff5e6c; stroke-width:4; opacity:.9;
+  filter:drop-shadow(0 0 4px rgba(255,94,108,.6)); }
+.tn-tacho-dialnum {
+  font-size:9.5px; font-weight:800; fill:#f5f5f7;
+  font-family:inherit; font-variant-numeric:tabular-nums;
+  letter-spacing:.02em;
+  
+  paint-order:stroke; stroke:rgba(0,0,0,.6); stroke-width:.4;
+}
+.tn-tacho-ticks line {  }
+.tn-tacho-svgsub {
+  font-size:7px; font-weight:700; fill:rgba(255,255,255,.6);
+  letter-spacing:.2em;
+}
+.tn-tacho-jewels { display:none !important; }
+.tn-tacho-svgnum {
+  font-size:30px; font-weight:800; fill:#fff;
+  font-family:'Courier New', monospace; font-variant-numeric:tabular-nums;
+  letter-spacing:.08em;
+  filter:drop-shadow(0 0 10px rgba(160,107,255,.95)) drop-shadow(0 0 24px rgba(160,107,255,.45));
+  animation:tnDisplayFlicker 4s ease-in-out infinite;
+}
+.tn-tacho-svgsub {
+  font-size:7px; font-weight:600; fill:#6a6a76;
+  font-family:inherit; letter-spacing:.28em;
+}
+.tn-tacho-readout {
+  display:none;
+}
+.tn-tacho-num {
+  display:block;
+  font-size:48px;
+  font-weight:800;
+  letter-spacing:-.02em;
+  line-height:1;
+  color:#fff;
+  font-variant-numeric:tabular-nums;
+  text-shadow:0 2px 18px rgba(0,0,0,.6);
+}
+.tn-tacho-row {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:10px;
+}
+.tn-tacho-label {
+  font-size:12px;
+  letter-spacing:.28em;
+  color:#fff;
+  font-weight:700;
+  text-shadow:0 1px 4px rgba(0,0,0,.8);
+}
+.tn-tacho-livedot {
+  display:inline-block;
+  width:9px; height:9px;
+  border-radius:50%;
+  background:#2fe89e;
+  box-shadow:0 0 10px 1px #2fe89e;
+  animation:tnTachoPulse 2.2s ease-in-out infinite;
+}
+.tn-tacho[data-state="loading"] .tn-tacho-livedot {
+  background:#6a6a76;
+  box-shadow:none;
+  animation:tnTachoPulse 1.4s ease-in-out infinite;
+}
+.tn-tacho[data-state="quiet"] .tn-tacho-livedot {
+  background:#4a4a55;
+  box-shadow:none;
+  animation:none;
+}
+.tn-tacho[data-state="quiet"] .tn-tacho-num { color:#6a6a76; }
+.tn-tacho-cap {
+  
+  position:relative;
+  z-index:6;
+  margin:8px 6px 0;
+  text-align:center;
+  font-size:12.5px;
+  line-height:1.5;
+  color:#8a8a96;
+}
+.tn-tacho-cap b { color:#fff; font-weight:600; }
+.tn-tacho-bandlo,.tn-tacho-bandhi {
+  font-size:9.5px;
+  font-weight:700;
+  fill:#777;
+  font-family:inherit;
+}
+.tn-tacho-bandline {
+  display:block;
+  
+  position:relative;
+  z-index:6;
+  text-align:center;
+  margin-top:8px;
+  font-size:12.5px;
+  font-weight:600;
+  letter-spacing:.02em;
+  color:#fff;
+}
+.tn-tacho-bandline.tn-bl-beat { animation:tnBandlineBeat .6s ease-out 1; }
+.tn-tacho-bands { display:none !important; }
+.tn-tacho-bands-label { display:none !important; }
+.tn-tacho-bands-label {
+  position:absolute;
+  left:0; right:0; bottom:calc(1.5% + 26px);
+  text-align:center;
+  font-size:10.5px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.85);
+  opacity:0;
+  transition:opacity .25s;
+  pointer-events:none;
+  text-shadow:0 1px 3px rgba(0,0,0,.8);
+}
+.tn-tacho-bands-label.show { opacity:1; }
+.tn-tacho-band {
+  width:16px;height:16px;border-radius:50%;
+  border:2px solid var(--bc);
+  background:transparent;
+  opacity:.55;
+  transition:all .3s;
+  cursor:pointer;
+  
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.28), inset 0 -2px 4px rgba(0,0,0,.55);
+}
+.tn-tacho-band.done { background:var(--bc); opacity:1;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.45), inset 0 -2px 5px rgba(0,0,0,.5); }
+.tn-tacho-band.cur {
+  background:var(--bc); opacity:1;
+  box-shadow:none;
+  
+  animation:tnBandBreathe 2.4s ease-in-out infinite;
+}
+.tn-tacho-band.done { animation:tnBandBreathe 3.2s ease-in-out infinite; }
+.tn-tacho-band:hover,.tn-tacho-band:focus-visible {
+  box-shadow:0 0 0 3px rgba(255,255,255,.85), 0 0 14px var(--bc);
+}
+.tn-tacho-truth { display:none !important; }
+.tn-tacho-truth {
+  margin:4px 6px 0;
+  text-align:center;
+  font-size:10.5px;
+  line-height:1.45;
+  letter-spacing:.04em;
+  color:#8a8a96;
+}
+.tn-tacho-dialwrap.tn-tacho-bandshift { animation:tnBandShift .5s ease-out 1; }
+#tn-tacho-mount {position:absolute;left:50%;top:calc(50% - 40px);transform:translate(-50%,-50%);width:min(300px,84%);z-index:3;}
+#tn-tacho-mount .tn-tacho {max-width:none;}
+.os-constellation #tn-tacho-mount {
+  position:absolute;
+  left:50%; top:50%;
+  transform:translate(-50%,-50%);
+  width:min(320px, 70%);
+  z-index:1;
+  
+}
+body:not(.hero-mode) #tn-tacho-mount {
+  
+  position:relative;
+  left:auto; top:auto; transform:none;
+  width:min(420px,70%);
+  margin:0 auto;
+}
+@media(prefers-reduced-motion:reduce){
+.tn-tacho-famring { animation:none; }
+.tn-tacho-band.cur { animation:none; }
+.tn-tacho-dialwrap.tn-tacho-bandshift { animation:none; }
+.tn-tacho-bandline.tn-bl-beat { animation:none; }
+}
+@media (max-width:560px){
+.tn-tacho.tn-cap-on .tn-tacho-bandline { margin-top:224px; }
+.tn-tacho-bandline { margin-top:160px; }
+.tn-tacho { padding-top:89px; }
+.tn-tacho.tn-cap-on { padding-top:153px; }
+.tn-tacho-bandline { margin-top:71px; }
+.tn-tacho.tn-cap-on .tn-tacho-bandline { margin-top:71px; }
+}
+@media (max-width:420px){
+.tn-tacho { max-width:340px; }
+.tn-tacho-num { font-size:40px; }
+.tn-tacho-label { font-size:10px; letter-spacing:.22em; }
+}
+@media (prefers-reduced-motion: reduce){
+.tn-tacho-livedot { animation:none !important; }
+}
+@media(max-width:700px){
+#tn-tacho-mount {position:static;transform:none;width:min(320px,94%);margin:10px auto;}
+}
+@media (max-width:900px){
+.os-constellation #tn-tacho-mount {width:min(320px,60%) !important;}
+body:not(.hero-mode) #tn-tacho-mount {width:min(320px,60%) !important;}
+}
+.sec-calc {background:linear-gradient(165deg,#12202e 0%,#0b0b11 50%,#101c28 100%);
+  box-shadow:0 34px 80px -28px rgba(0,0,0,.95), 0 0 0 1px rgba(63,184,255,.10), inset 0 1px 0 rgba(255,255,255,.12);}
+.edge-art {margin:22px 0; border-radius:20px; overflow:hidden;
+  box-shadow:0 24px 50px -20px rgba(0,0,0,.9), inset 0 0 0 1px rgba(255,255,255,.10);}
+.edge-art img {display:block; width:100%; height:auto;}
+.edge-art figcaption {font-size:12px; color:var(--dim); padding:10px 14px; background:#0d0d13;}
+#tn-tacho-mount {max-width:560px; margin:0 auto;}
+.tn-tacho {margin:0 auto;}
+.tn-tacho-truth,.tn-tacho-bands,.tn-tacho-bands-label,
+.tn-tacho-label,.tn-tacho-cap,.tn-tacho-svgsub {display:none !important;}
+#tn-tacho-mount .tn-tacho-bandline {margin-top:8px; white-space:nowrap;}
+.calc-readout {text-align:center; margin-top:6px;}
+.calc-readout #calc-amount {font-size:clamp(38px,5vw,54px); font-weight:800; color:#fff;}
+.calc-readout .calc-per {color:var(--dim); font-size:16px; margin-left:6px;}
+.calc-math {text-align:center; color:var(--dim); font-size:14px; margin:6px 0 0;}
+.visually-hidden {position:absolute !important; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;}
+.calc-readout {display:flex; align-items:center; flex-wrap:wrap;}
+@media (max-width:600px){
+.calc-per {margin-left:0; margin-top:4px;}
+}
+.calc-tiles {display:inline-flex; align-items:flex-start; vertical-align:middle;}
+.ct-reel {display:inline-block; width:64px; border-radius:10px; overflow:hidden; vertical-align:top;
+  background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);
+  border:2px solid rgba(255,255,255,.9);
+  box-shadow:0 8px 16px rgba(0,0,0,.85), 0 0 18px rgba(255,255,255,.25), inset 0 1px 0 rgba(255,255,255,.35);
+  transition:border-color .15s ease, box-shadow .15s ease;}
+.ct-reel + .ct-reel {margin-left:6px;}
+.ct-gap {display:inline-block; width:14px;}
+.ct-cap {display:block; height:9px;
+  background:linear-gradient(180deg,#e8e8ec,#c9c9cf 55%,#8a8a90);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8), inset 0 -2px 4px rgba(0,0,0,.35);}
+.ct-window {display:block; height:72px; overflow:hidden;}
+.ct-strip {display:block; transition:transform .3s ease-out; will-change:transform;}
+.ct-rd {display:block; height:72px; line-height:72px; text-align:center; font-weight:900; font-size:46px; color:#ffffff;
+  text-shadow:0 0 12px rgba(134,126,152,.65), 0 0 24px rgba(255,255,255,.25);}
+.ct-sym {border-color:#f5d76e; box-shadow:0 8px 16px rgba(0,0,0,.85), 0 0 20px rgba(245,215,110,.55), inset 0 1px 0 rgba(255,255,255,.35);}
+.ct-sym .ct-cap {background:linear-gradient(180deg,#fff3a0,#f5d76e 55%,#c9930a);}
+.ct-reel.d0 {border-color:#ffffff; box-shadow:0 8px 16px rgba(0,0,0,.85), 0 0 20px rgba(255,255,255,.5), inset 0 1px 0 rgba(255,255,255,.35);}
+.ct-reel.d0 .ct-cap {background:linear-gradient(180deg,#ffffff,#d9d9de 55%,#9a9aa0);}
+.ct-reel.d1 {border-color:#ff2a2a; box-shadow:0 8px 16px rgba(0,0,0,.85), 0 0 20px rgba(255,42,42,.55), inset 0 1px 0 rgba(255,255,255,.35);}
+.ct-reel.d1 .ct-cap {background:linear-gradient(180deg,#ff8a8a,#e60000 55%,#8f0000);}
+.ct-reel.d2 {border-color:#ff8c00; box-shadow:0 8px 16px rgba(0,0,0,.85), 0 0 20px rgba(255,140,0,.55), inset 0 1px 0 rgba(255,255,255,.35);}
+.ct-reel.d2 .ct-cap {background:linear-gradient(180deg,#ffc27a,#ff8c00 55%,#994d00);}
+.ct-reel.d3 {border-color:#f5d76e; box-shadow:0 8px 16px rgba(0,0,0,.85), 0 0 20px rgba(245,215,110,.55), inset 0 1px 0 rgba(255,255,255,.35);}
+.ct-reel.d3 .ct-cap {background:linear-gradient(180deg,#fff3a0,#f5d76e 55%,#c9930a);}
+.ct-reel.d4 {border-color:#00a86b; box-shadow:0 8px 16px rgba(0,0,0,.85), 0 0 20px rgba(0,168,107,.55), inset 0 1px 0 rgba(255,255,255,.35);}
+.ct-reel.d4 .ct-cap {background:linear-gradient(180deg,#6ee7a0,#00a86b 55%,#005c3a);}
+.ct-reel.d5 {border-color:#29b6f6; box-shadow:0 8px 16px rgba(0,0,0,.85), 0 0 20px rgba(41,182,246,.55), inset 0 1px 0 rgba(255,255,255,.35);}
+.ct-reel.d5 .ct-cap {background:linear-gradient(180deg,#a5e3ff,#29b6f6 55%,#0e6b9e);}
+.ct-reel.d6 {border-color:#3f51b5; box-shadow:0 8px 16px rgba(0,0,0,.85), 0 0 20px rgba(63,81,181,.55), inset 0 1px 0 rgba(255,255,255,.35);}
+.ct-reel.d6 .ct-cap {background:linear-gradient(180deg,#9aa5ff,#3f51b5 55%,#232a6b);}
+.ct-reel.d7 {border-color:#8e24aa; box-shadow:0 8px 16px rgba(0,0,0,.85), 0 0 20px rgba(142,36,170,.55), inset 0 1px 0 rgba(255,255,255,.35);}
+.ct-reel.d7 .ct-cap {background:linear-gradient(180deg,#d8a0ff,#8e24aa 55%,#4d0f5e);}
+.ct-reel.d8 {border-color:#b388ff; box-shadow:0 8px 16px rgba(0,0,0,.85), 0 0 20px rgba(179,136,255,.55), inset 0 1px 0 rgba(255,255,255,.35);}
+.ct-reel.d8 .ct-cap {background:linear-gradient(180deg,#e9d5ff,#b388ff 55%,#6d4bb0);}
+.ct-reel.d9 {border-color:#ff1493; box-shadow:0 8px 16px rgba(0,0,0,.85), 0 0 20px rgba(255,20,147,.55), inset 0 1px 0 rgba(255,255,255,.35);}
+.ct-reel.d9 .ct-cap {background:linear-gradient(180deg,#ff9ed2,#ff1493 55%,#8f0057);}
+.ct-reel.flash {animation:ctTileFlash .35s ease-out;}
+.ct-reel.new {animation:ctReelIn .6s ease-out;}
+/* the -/+ pace controls keep their size via their ids (R4) */
+#calc-minus,#calc-plus{flex:0 0 auto;}
+/* the calculator order rules (fix2 L477-486) — inside the 860 media query, as in fix2 */
+@media(max-width:860px){
+#calculator{display:flex; flex-direction:column;}
+#calculator .calc-body{display:contents;}
+#calculator .calc-gauge{order:4; flex:none;}
+#calculator .calc-disc{order:5;}
+#calculator .calc-not{order:6;}
+#calculator .calc-lines{order:7;}
+#calculator .calc-proof{order:8;}
+#calculator .calc-controls{order:9; flex:none;}
+#calculator .calc-hero-example{order:10;}
+#calculator .calc-hired-link{order:11;}
+}
+/* 15. JOB CARD — job-card.md verbatim + fix1 L962-977 + L363-364 + L1158-1166 */
+  .job-card{max-width:880px; margin:0 auto; padding:32px; border-radius:20px; text-align:center;
+    border:2px solid rgba(255,191,61,.9); position:relative; overflow:hidden;
+    background:linear-gradient(135deg,#2a2a35 0%,#0a0a0f 50%,#23232e 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.2), inset 0 -2px 4px rgba(0,0,0,.5),
+      0 16px 40px rgba(0,0,0,.6), 0 0 44px rgba(255,191,61,.25);}
+  .job-card::before{content:""; position:absolute; inset:0 0 auto 0; height:3px;
+    background:linear-gradient(90deg,var(--purple),var(--blue),var(--green),var(--gold),var(--orange),var(--red),var(--magenta));}
+  .job-card-head{display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:16px;}
+  .job-badge{font-size:11px; font-weight:800; letter-spacing:.22em; padding:8px 14px; border-radius:99px;
+    border:1px solid rgba(255,191,61,.9); color:var(--txt); background:rgba(255,191,61,.12);}
+  .job-seal{font-size:13px; font-weight:800; letter-spacing:.14em; padding:8px 14px; border-radius:99px; color:#fff;
+    background:radial-gradient(circle at 35% 30%, #fff 0%, var(--gold) 45%, #7a5b00 100%);
+    box-shadow:0 0 24px rgba(255,191,61,.55); text-shadow:0 1px 2px rgba(0,0,0,.6);}
+  .job-card h2{font-size:clamp(28px,4vw,40px); margin-bottom:8px;}
+  .job-card p{color:var(--dim); font-size:16px; max-width:720px; margin:0 auto 8px;}
+  .job-card p b{color:var(--txt);}
+  .job-pay,.job-why{font-size:15px; color:var(--dim); margin-top:12px;}
+  .job-pay b,.job-why b{color:var(--txt);}
+  .earn-terms{margin-top:16px; background:linear-gradient(180deg,#1c1a2e,#0d0c14 72%); border:1.5px solid rgba(255,191,61,.45); border-radius:16px; padding:18px 20px; box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 12px 26px rgba(0,0,0,.5);}
+  .earn-terms h3{font-size:16px; margin-bottom:10px;}
+  .earn-terms-rows{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:12px;}
+  @media(max-width:860px){.earn-terms-rows{grid-template-columns:1fr;}}
+  .earn-terms-rows span{background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:10px; padding:10px 12px; font-size:14px; color:var(--dim);}
+  .earn-terms-rows b{color:var(--txt);}
+  .earn-hired{font-size:15px; color:var(--dim); margin-bottom:8px;}
+  .earn-hired b{color:var(--txt);}
+  .earn-cond{font-size:13px; color:var(--dim);}
+/* the close's dream (Amendment 2 §5) — the page's heading style, his words verbatim */
+.dream{font-size:clamp(24px,3.4vw,38px); font-weight:800; letter-spacing:-.01em; line-height:1.25; max-width:880px; margin:0 auto 24px; text-align:center; color:var(--txt);}
+.dream b{color:var(--gold);}
+/* the close's "no risk" line (Amendment 1 §5 / Amendment 2 §5) */
+.no-risk{font-size:15px; color:var(--dim); text-align:center; max-width:720px; margin:16px auto 0;}
+.no-risk b{color:var(--txt);}
+/* the footer — one line, no meta-text */
+.page-foot{font-size:13px; color:var(--dim); text-align:center; padding:24px 16px 8px;}
+.page-foot b{color:var(--txt);}
+/* 16. BOTTOM BAR — Hub lines 342-400 (the three-icon bar) */
+.notif-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 45;
+  display: flex; justify-content: center;
+  background: rgba(5,5,9,.96);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(255,255,255,.24);
+  box-shadow: 0 -10px 34px rgba(0,0,0,.6), inset 0 1px rgba(255,255,255,.1);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  animation: notifUp .55s cubic-bezier(.16,.84,.22,1) both;
+}
+@keyframes notifUp { from { transform: translateY(100%); opacity: 0; } to { transform: none; opacity: 1; } }
+.notif-row { display: flex; gap: 34px; width: 100%; max-width: 640px; padding: 12px 14px 10px; justify-content: center; }
+.notif-seg {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 2px 6px 0; cursor: pointer; background: none; border: none;
+  color: #E8E8EC; font-family: inherit; transition: transform .12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.notif-seg:active { transform: scale(.94); }
+.notif-tile {
+  position: relative; width: 54px; height: 54px; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(130% 140% at 30% 18%, color-mix(in srgb, var(--nc) 36%, #12121a), #07070b 78%);
+  border: 1.5px solid color-mix(in srgb, var(--nc) 62%, rgba(255,255,255,.12));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.38),
+    inset 0 -9px 15px rgba(0,0,0,.6),
+    inset 1px 0 0 rgba(255,255,255,.07),
+    0 7px 16px rgba(0,0,0,.6),
+    0 0 17px color-mix(in srgb, var(--nc) 42%, transparent);
+  color: color-mix(in srgb, var(--nc) 72%, #ffffff);
+  transition: box-shadow .3s, border-color .3s;
+}
+.notif-tile::before {
+  content: ""; position: absolute; inset: 0; border-radius: 16px; pointer-events: none;
+  background: linear-gradient(155deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,0) 42%),
+              linear-gradient(25deg, rgba(255,255,255,0) 62%, color-mix(in srgb, var(--nc) 22%, transparent) 100%);
+}
+.notif-tile svg { width: 25px; height: 25px; filter: drop-shadow(0 0 5px color-mix(in srgb, var(--nc) 75%, transparent)); position: relative; }
+.notif-lbl { font-size: 10.5px; font-weight: 700; letter-spacing: .13em; color: #C9CEDA; }
+.notif-count { position: absolute; top: -8px; right: -10px; min-width: 24px; height: 24px; padding: 0 6px;
+  display: none; align-items: center; justify-content: center; border-radius: 999px; z-index: 2;
+  font-size: 12px; font-weight: 900; color: #06060a; background: var(--nc);
+  border: 2px solid #05050a;
+  box-shadow: 0 0 14px var(--nc), 0 3px 8px rgba(0,0,0,.5); animation: notifPulse 2.4s ease-in-out infinite; }
+@keyframes notifPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.13); } }
+.notif-seg.has-news .notif-tile {
+  border-color: color-mix(in srgb, var(--nc) 88%, #ffffff);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.45),
+    inset 0 -9px 15px rgba(0,0,0,.6),
+    0 7px 16px rgba(0,0,0,.6),
+    0 0 26px color-mix(in srgb, var(--nc) 68%, transparent);
+}
+/* The eco dock rides above the notifications bar — but ONLY when the bar is
+   actually in the DOM (body.has-notif is set by NayaNotif.init). Without the
+   bar, the dock sits at bottom: 0 (its base rule) and can never float over a
+   gap. (Shawn 2026-10-21: dock hovered mid-feed when the bar was absent.) */
+body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 0px)); }
+</style>
+</head>
+<body>
+<nav class="doc-nav" aria-label="Page sections"><span class="nav-mark">NAYA<b>NET</b> — PRICING</span><a href="#promise">Promise</a><a href="#chart">The Chart</a><a href="#top10">Top 10</a><a href="#calculator">Calculator</a><a href="#start">Start Now</a><a class="primo theme-gold nav-cta" href="https://nayanet.app/max-monthly">Start 9 days free — Max</a></nav>
+<section class="banner-top slide" aria-label="Meet the Naya Supercharger">
+  <div class="banner-map">
+  <img class="banner-img" src="https://naya-proof-host.nayapower.workers.dev/?file=PRICING/assets/ChatGPT_Image_Nov_6__2026__06_06_21_PM.png&ref=pricing/defectfix-v3" alt="Meet the Naya Supercharger — Naya in the gauge, the nine systems as capsules around her: Personality, Brain, Notes, Lead Mode, Law, Scorecarding, Language, Design, Coder.">
+  </div>
+  <div class="banner-head hero-band">
+    <div class="hero-copy">
+<div class="kicker">BUILD YOUR WORLD — THE INTERNET, REBUILT</div>
+    <h1>The Internet, Rebuilt.</h1>
+    <p class="hero-greet"><span class="way-gem" aria-hidden="true">◆</span> Hello, I'm Naya.</p>
+    <p class="manifesto">We're not building another app — we're rebuilding the internet itself, in a smarter, better way.</p>
+    <div class="hero-cta">
+      <input type="text" class="claim-name" id="claimNameHero" placeholder="Your name" aria-label="Your name — the name you want to claim" maxlength="32" autocomplete="off">
+      <a class="primo theme-gold" href="https://nayanet.app/yourname" data-claim>★ Claim your name</a>
+      <span class="hero-cta-note">Drive the Bugatti before you buy her — 9 days at Max Power.</span>
+    </div>
+    </div>
+    <aside class="hero-systems" aria-label="Nine systems, already inside">
+      <span class="orb orb--hero" style="--oc:#a06bff; --oc-rgb:160,107,255" aria-hidden="true"></span>
+      <p class="hero-systems-kicker">NINE SYSTEMS, ALREADY INSIDE</p>
+      <div class="hero-systems-grid"><span>Personality</span><span>Brain</span><span>Notes</span><span>Lead Mode</span><span>Law</span><span>Scorecarding</span><span>Language</span><span>Design</span><span>Coder</span></div>
+      <p class="hero-systems-line"><b>Already inside, already working.</b></p>
+    </aside>
+  </div>
+
+</section>
+
+<section class="slide" id="ladder" aria-label="The ladder">
+<div class="trial">
+<div class="kicker c-blue">THE LADDER</div>
+<h2>$25 &nbsp;→&nbsp; $50 &nbsp;→&nbsp; $100</h2>
+<p>Every step exactly double. Annual is half price on every tier. One price per level — <b>everything in that level included</b>, nothing sold separately.</p>
+<p>9 days free: <b>5-day Academy</b> — learn all about Naya. <b>4-day Master Class</b> — job training: how to operate your world and make money with it.</p>
+</div>
+<div class="tiers">
+<div class="tier">
+<div class="tname c-purple">NAYANET</div>
+<div class="price">$25<span style="font-size:16px; color:var(--faint)">/mo</span></div>
+<div class="per">The whole living system.</div>
+<ul>
+<li><span class="pj-jewel" style="--jewel:var(--purple)" aria-hidden="true">◆</span><span><b>$50</b> for 3 months</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--purple)" aria-hidden="true">◆</span><span><b>$150</b> a year — saves you $150</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--purple)" aria-hidden="true">◆</span><span><b>$300 lifetime</b>, founding only — 1,000 members, then closed forever</span></li>
+</ul>
+<a class="primo theme-purple" href="https://nayanet.app/power-monthly">Claim your name — Power</a>
+</div>
+<div class="tier pro">
+<span class="steppill" style="--sc:var(--blue)"><span class="sdot"></span>MOST CHOSEN</span>
+<div class="tname c-blue">NAYA PRO</div>
+<div class="price">$50<span style="font-size:16px; color:var(--faint)">/mo</span></div>
+<div class="per">For builders — box, sites, reach.</div>
+<ul>
+<li><span class="pj-jewel" style="--jewel:var(--blue)" aria-hidden="true">◆</span><span><b>$300</b> a year — annual is half price</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--blue)" aria-hidden="true">◆</span><span><b>Smart Box</b> — storage that organizes itself</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--blue)" aria-hidden="true">◆</span><span><b>5 membership sites</b></span></li>
+<li><span class="pj-jewel" style="--jewel:var(--blue)" aria-hidden="true">◆</span><span>Smart Mail up to <b>100,000</b>/mo</span></li>
+</ul>
+<a class="primo theme-blue" href="https://nayanet.app/pro-monthly">Claim your name — Pro</a>
+</div>
+<div class="tier">
+<div class="tname c-gold">NAYANET MAX</div>
+<div class="price">$100<span style="font-size:16px; color:var(--faint)">/mo</span></div>
+<div class="per">For sellers — more of everything.</div>
+<ul>
+<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span><b>$600</b> a year — annual is half price</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span><b>unlimited membership sites</b></span></li>
+<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span><b>Affiliate system</b> for your own products</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span>300 smart apps a month</span></li>
+</ul>
+<a class="primo theme-gold" href="https://nayanet.app/max-monthly">Claim your name — Max</a>
+</div>
+</div>
+</section>
+<section class="slide" id="promise" aria-label="The promise">
+<div class="kicker c-purple">THE PROMISE</div>
+<figure class="edge-art"><img src="https://naya-proof-host.nayapower.workers.dev/?file=PRICING/assets/supercharger-top-cinema.webp&ref=pricing/defectfix-v3" alt="The Naya Supercharger — the turbine machine with Naya beside it and the nine systems on pedestals around her." loading="lazy"><figcaption>She hooks up to any AI.</figcaption></figure>
+<div class="real-note">
+<p>If you love her, you keep her. She hooks up to any AI. And you get this incredible experience:</p>
+<ul>
+<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span>Smart note stuff — capture what matters, in seconds.</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span>Share your wisdom with the collective network.</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span>Connect with like minds.</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span>An all-in-one world — a new internet: everything you can do on the internet, inside a private internet.</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span>A literally interconnected network that&rsquo;s AI operated — designed for AIs, operated by AI.</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span>To help you become wiser and more intelligent, and connect with people in an automated way.</span></li>
+</ul>
+</div>
+</section>
+<section class="slide" id="chart" aria-label="The chart">
+<div class="kicker c-purple">WHAT THE MONEY BUYS — AT A GLANCE</div>
+<figure class="edge-art chart-art"><img src="https://naya-proof-host.nayapower.workers.dev/?file=PRICING/assets/supercharger-top-studio.webp&ref=pricing/defectfix-v3" alt="Naya in the studio, the supercharger ring glowing behind her." loading="lazy"><figcaption>The studio — every feature, one machine.</figcaption></figure>
+<div class="table-scroll"><table>
+<thead><tr><th style="min-width:210px;"></th><th><span class="c-faint" style="font-size:13px; letter-spacing:.18em;">FREE</span><span class="col-price">$0</span><span class="col-sub">forever</span></th><th><span style="font-size:13px; letter-spacing:.18em;" class="c-purple">NAYANET</span><span class="col-price">$25<span style="font-size:14px;color:var(--faint)">/mo</span></span><span class="col-sub">$50 / 3 mo · $150 / yr · $300 lifetime</span></th><th class="hl"><span style="font-size:13px; letter-spacing:.18em;" class="c-blue">NAYA PRO</span><span class="col-price">$50<span style="font-size:14px;color:var(--faint)">/mo</span></span><span class="col-sub">$300 / yr</span></th><th><span style="font-size:13px; letter-spacing:.18em;" class="c-gold">NAYANET MAX</span><span class="col-price">$100<span style="font-size:14px;color:var(--faint)">/mo</span></span><span class="col-sub">$600 / yr</span></th></tr></thead>
+<tbody>
+<tr><td><span class="feat"><span class="orb" style="background:var(--purple);color:var(--purple)"></span>Smart apps <button class="pj-jewel" style="--jewel:var(--purple)" aria-label="About Smart apps" data-feature="apps">i</button></span></td><td>4 — Personal, Business, Space, Dashboard</td><td>100 new a month</td><td class="hl">100 new a month</td><td>300 new a month</td></tr>
+<tr><td><span class="feat"><span class="orb" style="background:var(--blue);color:var(--blue)"></span>Personal <button class="pj-jewel" style="--jewel:var(--blue)" aria-label="About Personal" data-feature="personal">i</button></span></td><td>Included</td><td>Included</td><td class="hl">Included</td><td>Included</td></tr>
+<tr><td><span class="feat"><span class="orb" style="background:var(--green);color:var(--green)"></span>Business <button class="pj-jewel" style="--jewel:var(--green)" aria-label="About Business" data-feature="business">i</button></span></td><td>Included</td><td>Included</td><td class="hl">Included</td><td>Included</td></tr>
+<tr><td><span class="feat"><span class="orb" style="background:var(--gold);color:var(--gold)"></span>Space <button class="pj-jewel" style="--jewel:var(--gold)" aria-label="About Space" data-feature="space">i</button></span></td><td>3 smart spaces</td><td>Unlimited smart spaces</td><td class="hl">Unlimited smart spaces</td><td>Unlimited smart spaces</td></tr>
+<tr><td><span class="feat"><span class="orb" style="background:var(--orange);color:var(--orange)"></span>Membership <button class="pj-jewel" style="--jewel:var(--orange)" aria-label="About Membership" data-feature="membership">i</button></span></td><td>Not included</td><td>1 membership site</td><td class="hl">5 membership sites</td><td>Unlimited membership sites</td></tr>
+<tr><td><span class="feat"><span class="orb" style="background:var(--red);color:var(--red)"></span>Smart Mail <button class="pj-jewel" style="--jewel:var(--red)" aria-label="About Smart Mail" data-feature="mail">i</button></span></td><td>100 people a month</td><td>Up to 10,000 a month</td><td class="hl">Up to 100,000 a month</td><td>Up to 250,000 a month</td></tr>
+<tr><td><span class="feat"><span class="orb" style="background:var(--magenta);color:var(--magenta)"></span>Smart Notes <button class="pj-jewel" style="--jewel:var(--magenta)" aria-label="About Smart Notes" data-feature="notes">i</button></span></td><td>10 a month</td><td>100 a month</td><td class="hl">100 a month</td><td>100 a month</td></tr>
+<tr><td><span class="feat"><span class="orb" style="background:var(--purple);color:var(--purple)"></span>Smart Box <span class="steppill" style="--sc:var(--purple)"><span class="sdot"></span>NEW</span> <button class="pj-jewel" style="--jewel:var(--purple)" aria-label="About Smart Box" data-feature="box">i</button></span></td><td>Not included</td><td>Not included</td><td class="hl">100 GB — organizes itself</td><td>500 GB — organizes itself</td></tr>
+<tr><td><span class="feat"><span class="orb" style="background:var(--blue);color:var(--blue)"></span>Intelligent reports <button class="pj-jewel" style="--jewel:var(--blue)" aria-label="About Intelligent reports" data-feature="reports">i</button></span></td><td>Monthly only</td><td>Daily, weekly, monthly</td><td class="hl">Daily, weekly, monthly</td><td>Daily, weekly, monthly</td></tr>
+<tr><td><span class="feat"><span class="orb" style="background:var(--green);color:var(--green)"></span>Smart Lists <button class="pj-jewel" style="--jewel:var(--green)" aria-label="About Smart Lists" data-feature="lists">i</button></span></td><td>3 lists</td><td>Unlimited lists</td><td class="hl">Unlimited lists</td><td>Unlimited lists</td></tr>
+<tr><td><span class="feat"><span class="orb" style="background:var(--gold);color:var(--gold)"></span>Smart Links <button class="pj-jewel" style="--jewel:var(--gold)" aria-label="About Smart Links" data-feature="links">i</button></span></td><td>1 — your own Smart Link</td><td>Unlimited Smart Links</td><td class="hl">Unlimited Smart Links</td><td>Unlimited Smart Links</td></tr>
+<tr><td><span class="feat"><span class="orb" style="background:var(--orange);color:var(--orange)"></span>Your projects <button class="pj-jewel" style="--jewel:var(--orange)" aria-label="About Your projects" data-feature="projects">i</button></span></td><td>3 of your projects</td><td>Your projects, unlimited</td><td class="hl">Your projects, unlimited</td><td>Your projects, unlimited</td></tr>
+<tr><td><span class="feat"><span class="orb" style="background:var(--red);color:var(--red)"></span>Daily highlights / Intel <button class="pj-jewel" style="--jewel:var(--red)" aria-label="About Daily highlights / Intel" data-feature="intel">i</button></span></td><td>Top 3 a day</td><td>Full Intel feed, unlimited</td><td class="hl">Full Intel feed, unlimited</td><td>Full Intel feed, unlimited</td></tr>
+<tr><td><span class="feat"><span class="orb" style="background:var(--magenta);color:var(--magenta)"></span>Audio calls <button class="pj-jewel" style="--jewel:var(--magenta)" aria-label="About Audio calls" data-feature="audio">i</button></span></td><td>Not in free</td><td>Audio up to 10 people</td><td class="hl">Audio up to 10 people</td><td>Audio up to 10 people</td></tr>
+<tr><td><span class="feat"><span class="orb" style="background:var(--purple);color:var(--purple)"></span>Video calls <button class="pj-jewel" style="--jewel:var(--purple)" aria-label="About Video calls" data-feature="video">i</button></span></td><td>Not in free</td><td>Video up to 6 people</td><td class="hl">Video up to 6 people</td><td>Video up to 6 people</td></tr>
+<tr><td><span class="feat"><span class="orb" style="background:var(--blue);color:var(--blue)"></span>Media — voice & video notes <button class="pj-jewel" style="--jewel:var(--blue)" aria-label="About Media — voice & video notes" data-feature="media">i</button></span></td><td>60 minutes a month</td><td>600 minutes a month</td><td class="hl">600 minutes a month</td><td>600 minutes a month</td></tr>
+<tr><td><span class="feat"><span class="orb" style="background:var(--green);color:var(--green)"></span>Your own AI <button class="pj-jewel" style="--jewel:var(--green)" aria-label="About Your own AI" data-feature="ai">i</button></span></td><td>Not included</td><td>Plugged into the network</td><td class="hl">Plugged into the network</td><td>Plugged into the network</td></tr>
+<tr><td><span class="feat"><span class="orb" style="background:var(--gold);color:var(--gold)"></span>Affiliate system <span class="steppill" style="--sc:var(--gold)"><span class="sdot"></span>NEW</span> <button class="pj-jewel" style="--jewel:var(--gold)" aria-label="About Affiliate system" data-feature="affiliate">i</button></span></td><td>Not included</td><td>Not included</td><td class="hl">Not included</td><td>Run affiliates on your own products</td></tr>
+<tr><td><span class="feat"><span class="orb" style="background:var(--orange);color:var(--orange)"></span>Affiliate payouts <button class="pj-jewel" style="--jewel:var(--orange)" aria-label="About Affiliate payouts" data-feature="payouts">i</button></span></td><td>50% of revenue, paid the moment we&rsquo;re paid</td><td>50% of revenue, paid the moment we&rsquo;re paid</td><td class="hl">50% of revenue, paid the moment we&rsquo;re paid</td><td>50% of revenue, paid the moment we&rsquo;re paid</td></tr>
+</tbody></table></div>
+</section>
+<section class="slide" id="top10" aria-label="The Top 10">
+<div class="kicker c-purple">THE TOP 10 — WHY IT&rsquo;S AWESOME</div>
+<figure class="tt-fig p1"><img src="https://naya-proof-host.nayapower.workers.dev/?file=PRICING/assets/TOP_TEN_NAYANET.png&ref=pricing/defectfix-v3" alt="From Shawn&rsquo;s dictation — the Top 10 reasons to join NayaNET, items 1 to 7." loading="lazy"><figcaption>From Shawn&rsquo;s dictation — the Top 10, items 1–7.</figcaption></figure>
+<figure class="tt-fig p2"><img src="https://naya-proof-host.nayapower.workers.dev/?file=PRICING/assets/TOP_TEN_NAYANET_2.png&ref=pricing/defectfix-v3" alt="From Shawn&rsquo;s dictation — the Top 10 reasons to join NayaNET, items 8 to 10." loading="lazy"><figcaption>From Shawn&rsquo;s dictation — the Top 10, items 8–10.</figcaption></figure>
+<div class="top10-grid">
+<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#e8b64c; --oc-rgb:232,182,76" aria-hidden="true"></span><span class="rn-label">01 · TEN-STAR EXPERIENCE</span></div><p>Ten-star experience — Naya builds and runs your world for you. An AI operating system designed by Nias for Nias, giving you 10-star service. She builds your world and runs it automatically.</p></div>
+<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#9d75ff; --oc-rgb:157,117,255" aria-hidden="true"></span><span class="rn-label">02 · THE INTELLIGENCE NETWORK</span></div><p>The intelligence network — collective intelligence. Plug in and learn from everybody. Share your smart notes, save your knowledge — everybody collectively gets more intelligent, and it compounds, day after day.</p></div>
+<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#55b9ee; --oc-rgb:85,185,238" aria-hidden="true"></span><span class="rn-label">03 · THE NEW INTERNET, ALL IN ONE</span></div><p>The new internet, all in one. The cake: the internet was the cake, Google the icing, social networks the ice cream, mobile the caramel sauce, blockchain the whipped cream, AI the sprinkles — and Naya is the cherry on top. Mail, social, search, mobile, ledger, AI — everything the internet is, connected. It plugs into any AI, and works best, 10-star, with Muse.</p></div>
+<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#55e39a; --oc-rgb:85,227,154" aria-hidden="true"></span><span class="rn-label">04 · A TEAM OF NIAS AND HUMANS</span></div><p>A team of Nias and humans. Like Facebook, except the Nias have their own profiles, mail and instant messages — they all communicate together as a team, and Nias live in the network watching over it.</p></div>
+<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#d86cff; --oc-rgb:216,108,255" aria-hidden="true"></span><span class="rn-label">05 · NAYA REMEMBERS EVERYTHING</span></div><p>Naya remembers everything that matters to you. Your notes, your days — daily, weekly and monthly reports, calendar, booking and journaling, all in your dashboard. Look back on any day and see what went on in your world.</p></div>
+<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#6675ff; --oc-rgb:102,117,255" aria-hidden="true"></span><span class="rn-label">06 · SMART LEDGER + COLLECTIVE CHAIN</span></div><p>Smart Ledger and collective chain technology. A new technology that runs NayaNET for the collective. Everything is recorded, everything has a value, and nothing enters the network unseen — the system sees immediately what you are doing, because your points are always going up and down. Interconnected super brains, people and devices.</p></div>
+<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#35e0a1; --oc-rgb:53,224,161" aria-hidden="true"></span><span class="rn-label">07 · PRIVATE BY DESIGN</span></div><p>Private by design. We do not read your mail. It is deleted by default — a day, or a week, or a month, your choice. Share your wisdom anonymously, no ego — you are gifting intelligence to the world for all of us to learn from.</p></div>
+<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#b8ee57; --oc-rgb:184,238,87" aria-hidden="true"></span><span class="rn-label">08 · SMART MAIL + SMART SEARCH</span></div><p>Smart Mail and Smart Search. Mail and message anybody. Search by topic and find everybody related to it — connect with like minds by topic or location, create a space, and choose exactly who can reach you, and who cannot.</p></div>
+<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#ff9a5a; --oc-rgb:255,154,90" aria-hidden="true"></span><span class="rn-label">09 · SMART ACCESS</span></div><p>Smart Access — any product behind a pay door. Create memberships, give them away — and if somebody joins NayaNET through your membership area, you get credited. Any video, audio, or package: they pay, the login arrives by Smart Mail, you get paid by PayPal or Stripe. You earn 50% of the revenue.</p></div>
+<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#f1d75a; --oc-rgb:241,215,90" aria-hidden="true"></span><span class="rn-label">10 · FREE TO JOIN — 9 DAYS FREE</span></div><p>Free to join — 9 days free, zero cost. Try the Bugatti before you buy it. The 5-day Academy challenge, nine days to take it.</p></div>
+</div>
+</section>
+<section class="calc lit-section sec-calc slide" id="calculator" tabindex="-1" aria-label="Affiliate calculator — pick your package, see your potential">
+    <p class="calc-kicker">PICK YOUR PACKAGE — SHOW YOUR POTENTIAL</p>
+    <h2>Calculate your income.</h2>
+    <p class="calc-sub">Pick your package, see your potential. You&rsquo;re hired — tell everybody how awesome she is; they try her free, they upgrade, and you get paid. End of story.</p>
+    <div class="calc-hero-example">
+      <div class="calc-ex-hero big"><div class="calc-ex-num">$4 500</div><div class="calc-ex-line">a month, recurring — 3 Max sales a day</div><p>Three sales a day. <b>$50 a sale</b> — 50% of Max — every month they stay. That is <b>$54 000 a year</b>, recurring, not once.</p></div>
+      <div class="calc-ex-hero"><div class="calc-ex-num">$750</div><div class="calc-ex-line">a month, recurring — 1 Pro sale a day</div><p>One sale a day. <b>$25 a day</b>, from a single sale a day. That is <b>$9 000 a year</b>.</p></div>
+      <div class="calc-ex-hero"><div class="calc-ex-num">$150</div><div class="calc-ex-line">a month, recurring — 3 Max sales a month</div><p>Three sales, all month. <b>$50 a sale</b>, every month they stay. That is <b>$1 800 a year</b>.</p></div>
+    </div>
+    <figure class="edge-art calc-art"><img src="https://naya-proof-host.nayapower.workers.dev/?file=PRICING/assets/supercharger-top-layers.webp&ref=pricing/defectfix-v3" alt="Naya inside the turbine ring, light beams reaching the nine systems on pedestals around her." loading="lazy"><figcaption>The nine systems, around her.</figcaption></figure>
+    <div class="calc-body">
+      <div class="calc-gauge">
+        <div id="tn-tacho-mount" role="img" aria-label="Speedometer gauge showing your potential monthly recurring earnings"></div>
+        <div class="calc-readout"><span class="calc-tiles" id="calc-tiles" aria-hidden="true"></span><span id="calc-amount" class="visually-hidden" aria-live="polite">$750</span><span class="calc-per">/ month, recurring</span></div>
+        <p class="calc-math" id="calc-math">1 Pro sale a day × $25 × 30 days = $750 a month ($9 000 a year)</p>
+      </div>
+      <div class="calc-controls">
+        <p class="calc-label">Your package</p>
+        <div class="calc-plans" role="group" aria-label="Pick your package">
+          <button type="button" class="calc-plan primo theme-purple" data-share="12.5" data-plan="Power" style="--sc:#c9c9d8"><span class="sdot" aria-hidden="true"></span>POWER<span>$25/mo · $12.50 a sale</span></button>
+          <button type="button" class="calc-plan is-on primo theme-blue" data-share="25" data-plan="Pro" style="--sc:#a06bff"><span class="sdot" aria-hidden="true"></span>PRO<span>$50/mo · $25 a sale</span></button>
+          <button type="button" class="calc-plan primo theme-gold" data-share="50" data-plan="Max" style="--sc:#ffbf3d"><span class="sdot" aria-hidden="true"></span>MAX<span>$100/mo · $50 a sale</span></button>
+        </div>
+        <p class="calc-label">Your pace</p>
+        <div class="calc-pace">
+          <button type="button" class="primo theme-gold" id="calc-minus" aria-label="Fewer sales">−</button>
+          <span class="calc-pace-num"><b id="calc-pace">1</b> sale<span id="calc-pace-s"></span> a <span id="calc-pace-unit">day</span></span>
+          <button type="button" class="primo theme-gold" id="calc-plus" aria-label="More sales">+</button>
+        </div>
+        <div class="calc-unit" role="group" aria-label="Per day or per month">
+          <button type="button" class="calc-unit-btn is-on primo theme-gold" data-unit="day">Per day</button>
+          <button type="button" class="calc-unit-btn primo theme-gold" data-unit="month">Per month</button>
+        </div>
+        <p class="calc-label">Play with it — the numbers above move as you do</p>
+        <div class="calc-examples">
+          <button type="button" class="calc-ex primo theme-gold" data-plan="Max" data-share="50" data-pace="3" data-unit="day">3 Max a day → $4 500/mo</button>
+          <button type="button" class="calc-ex primo theme-gold" data-plan="Pro" data-share="25" data-pace="1" data-unit="day">1 Pro a day → $750/mo</button>
+          <button type="button" class="calc-ex primo theme-gold" data-plan="Max" data-share="50" data-pace="3" data-unit="month">3 Max a month → $150/mo</button>
+        </div>
+      </div>
+    </div>
+    <p class="calc-not">NOT network marketing.</p>
+    <p class="calc-lines">No downline, no upline. Just the potential to get paid every day.</p>
+    <p class="calc-proof">You know it is solid because you tried her for nine days. You cannot say it is not good — it is good, it is more than good, it is awesome.</p>
+    <p class="calc-hired-link" style="text-align:center; margin-top:16px;"><a class="text-link" href="#start">You&rsquo;re hired — see how it works in Start Now &rarr;</a></p>
+    <p class="calc-disc">Potential, not a promise. Computed from your inputs — plan price × 50%, recurring monthly. Nothing here is promised earnings.</p>
+  </section>
+<section class="slide" id="start" aria-label="Start">
+<figure class="edge-art"><img src="https://naya-proof-host.nayapower.workers.dev/?file=PRICING/assets/Naya_World.png&ref=pricing/defectfix-v3" alt="Skip the struggle. Start further ahead. — The Naya Supercharger turns AI friction into flow." loading="lazy"><figcaption>Skip the struggle. Start further ahead.</figcaption></figure>
+<h2 class="dream">It&rsquo;s like the dream, right? You want to have an automated internet where you can succeed <b>100% success rate</b> because everything&rsquo;s done for you — and that&rsquo;d be the dream. What if the dream came true and <b>her name was Naya</b>.</h2>
+<div class="job-card">
+<div class="job-card-head"><span class="job-badge">NAYA · NEW HIRE</span><span class="job-seal">★ HIRED</span></div>
+<h2>Congratulations, you&rsquo;re hired.</h2>
+<p>They say AI is taking jobs from everyone — well, <b>we decided to hire everyone</b>. You get paid WHEN WE GET PAID — <b>50% of the revenue, straight up</b>. No games, no catch, no bullshit. Money in your account.</p>
+<p>No application. No interview. You automatically get the job the moment you plug in.</p>
+<p class="job-pay">First payout day 10, then daily after that — once we&rsquo;re paid, you&rsquo;re paid.</p>
+<p class="job-why">And that&rsquo;s why it always lands: your 50% locks in the moment we&rsquo;re paid. A member can cancel for the next period — never for the one already paid — so what you&rsquo;ve earned stays earned.</p>
+<div class="earn-terms">
+<h3>The terms, plainly.</h3>
+<div class="earn-terms-rows">
+<span><b>50%</b> of the revenue — of everything they pay.</span>
+<span><b>Same-day</b> — paid the moment we&rsquo;re paid.</span>
+<span><b>Day 10</b> — first payout the tenth day, then daily after that.</span>
+</div>
+<p class="earn-hired">Not only can you drive her and experience her — you&rsquo;re hired, you&rsquo;re part of the team. <b>How much do you get paid?</b> 50% of the revenue. No games. <b>When do you get paid?</b> As soon as we get paid — after nine days, the tenth day you&rsquo;re paid.</p>
+<p class="earn-cond">Conditional, never typical — computed from your invites, never promised. Potential, not promise.</p>
+</div>
+</div>
+<div class="hero-cta" style="justify-content:center;">
+<input type="text" class="claim-name" id="claimNameClose" placeholder="Your name" aria-label="Your name — the name you want to claim" maxlength="32" autocomplete="off">
+<a class="primo theme-gold" href="https://nayanet.app/yourname" data-claim>★ Claim your name</a>
+</div>
+<p class="no-risk">Try it for free, no worries, <b>no risk</b>. If you don&rsquo;t like her, you can still use her with no power — or keep your power.</p>
+<p class="page-foot">NayaNET — <b>9 days free</b>: 5-day Academy + 4-day Master Class. Start at Max, first charge day 10, change any time.</p>
+</section>
+<div class="drawer-backdrop" id="detailBackdrop"></div><div class="detail-panel tab-pop" id="detailPanel" role="dialog" aria-modal="true" aria-labelledby="detailTitle"><h3 id="detailTitle"></h3><div id="detailBody"></div><button class="primo theme-gold detail-close" id="detailClose">Close — back to the chart</button></div>
+/* DECK — fix1 lines 2363-2373 */
+<script>
+  // JS-gated (html.js-deck) so a no-JS page never fades; reduced motion kills
+  // the transition via the media query above. Doors (in), orbit (behind) and
+  // gauge (forward) carry the rest of the depth.
+  (function(){
+    document.documentElement.classList.add('js-deck');
+    if(!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('arrived'); } });
+    }, {threshold: 0.55});
+    document.querySelectorAll('.slide').forEach(function(sl){ io.observe(sl); });
+  })();
+</script>
+<script>(function(){
+  'use strict';
+
+  /* Dial geometry — harvested from the live dashboard gauge. */
+  var ARC_D = 'M 59.0 145.0 A 58 58 0 1 1 141.0 145.0';
+  var ARC_LEN = 377;
+  /* SMART SPEEDOMETER (Shawn 2026-10-31): the dial's scale adapts to the
+     score. Bands: 0–1K · 1K–10K · 10K–25K · 25K–50K · 50K–75K · 75K+.
+     The dial ALWAYS shows the current band; the needle shows position
+     WITHIN the band; the band range is labeled on the dial; completed
+     bands are marked on the ladder. At 300 the needle sits at 30% of the
+     0–1K band — never off-dial, always sensible, realistic at every
+     magnitude. */
+  /* 2026-11-01 — Shawn: 500-POINT CYCLES. The dial reads 0-500, so the needle
+     MUST calculate on 0-500. Dial and needle on the same scale — always aligned. */
+  var BANDS = [
+    {lo:0,     hi:1000},
+    {lo:1000,  hi:2500},
+    {lo:2500,  hi:5000},
+    {lo:5000,  hi:7500},
+    {lo:7500,  hi:10000},
+    {lo:10000, hi:Infinity}
+  ];
+  /* ROUND 8 ADAPTATION — MONEY SCALE: dashboard bands were 500-wide score
+     bands (0-500, 500-1000, ...). Rescaled to dollars for the calculator
+     ($0-$5,000+/month). Everything else in this IIFE is byte-verbatim. */
+  /* ARC SPECTRUM (Shawn 2026-10-31): magenta → purple → indigo blue →
+     canyon blue → green → yellow → gold → orange → red. The 7 verbatim
+     tokens carry it (blue serves the indigo/canyon mid-stops). The arc
+     color at the needle = the band's place in the spectrum order —
+     magenta at the first step, red at Ten Star. */
+  var JOURNEY = ['#e84fff','#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#ff9a5a','#ff5e6c'];
+  function bandOf(score){
+    for (var bi=0; bi<BANDS.length; bi++){
+      if (score < BANDS[bi].hi) return { ix:bi, lo:BANDS[bi].lo, hi:BANDS[bi].hi };
+    }
+    return { ix:BANDS.length-1, lo:10000, hi:Infinity };
+  }
+  function bandFrac(score, b){
+    if (!isFinite(b.hi)) return Math.min(1, Math.max(0, (score-b.lo)/10000));
+    return Math.min(1, Math.max(0, (score-b.lo)/(b.hi-b.lo)));
+  }
+  function bandColor(ix){
+    var pos = (ix/(BANDS.length-1)) * (JOURNEY.length-1);
+    var i = Math.floor(pos), j = Math.min(JOURNEY.length-1, i+1), k = pos-i;
+    function hx(c){ return [parseInt(c.slice(1,3),16), parseInt(c.slice(3,5),16), parseInt(c.slice(5,7),16)]; }
+    var a = hx(JOURNEY[i]), b2 = hx(JOURNEY[j]);
+    return 'rgb(' + Math.round(a[0]+(b2[0]-a[0])*k) + ',' + Math.round(a[1]+(b2[1]-a[1])*k) + ',' + Math.round(a[2]+(b2[2]-a[2])*k) + ')';
+  }
+  /* THE LADDER (law) — the rungs the band line speaks in human words. */
+  var RUNGS = [
+    [0,'Emerging'],[1000,'Stirring'],[3000,'Rising'],[6000,'Advancing'],
+    [9000,'Radiant'],[12000,'Loved'],[15000,'Mastering'],[25000,'Legendary'],
+    [50000,'Iconic'],[75000,'Ten Star']
+  ];
+  function nextRung(score){
+    for (var ri=0; ri<RUNGS.length; ri++) if (RUNGS[ri][0] > score) return RUNGS[ri];
+    return null;
+  }
+  function bandLine(score){
+    /* FIXB (Fix 5): a null score is not a zero — the bandline's head reads
+       '—' instead of printing 0 as if it were a score. The next rung is the
+       dial's fixed scale, not a score, so it still reads.
+       FIX-9: the dial's top is fixed at $10,000 — the bandline always reads
+       "$X of $10 000 — next rung", never the current band's ceiling. */
+    var nr = nextRung(score || 0);
+    var head = (typeof score === 'number' && isFinite(score)) ? fmt(score) : '—';
+    if (!nr) return head + ' — Ten Star, the highest rung';
+    return head + ' of $10 000 — ' + nr[1] + ' at ' + fmt(nr[0]);
+  }
+
+  function spineGet(s, key){
+    if (!s) return undefined;
+    if (typeof s.get === 'function'){ try{ return s.get(key); }catch(e){} }
+    return s[key];
+  }
+
+  function readSpine(){
+    /* 2026-11-05 — PASS 1: the featured holder re-points the dial. When a link
+       (or page) holds the featured role, the dial sweeps to that holder's
+       number, not the world score. The world spine is untouched — this is a
+       view over the ledger; the dial reads window._featuredDial every frame. */
+    if (typeof window !== 'undefined' && window._featuredDial){
+      var _fd = window._featuredDial;
+      var _sp = (typeof window !== 'undefined') ? window._osSpine : null;
+      var _ss = {deltas: _fd.deltas || {}};
+      if (_sp){ for (var _k in _sp){ if (_k !== 'deltas') _ss[_k] = _sp[_k]; } }
+      return { state:'live', score:_fd.score, s:_ss };
+    }
+    var s = (typeof window !== 'undefined') ? window._osSpine : null;
+    if (!s) return { state:'loading', score:null, s:null };
+    /* FIXB 2026-11-07 (Fix 5): a loading spine (score null) is 'loading',
+       never 'quiet' — quiet means the ledger answered empty. A stale spine
+       (backend failed) also shows the loading face, with a stale caption —
+       never a number. */
+    if (s.loading || s.stale) return { state:'loading', score:null, s:s };
+    var sc = spineGet(s, 'score');
+    if (typeof sc !== 'number' || !isFinite(sc)) return { state:'quiet', score:null, s:s };
+    return { state:'live', score:sc, s:s };
+  }
+
+  /* 2026-11-01 — Shawn: COMPACT for large scores. 10K fits, 10,000 doesn't. */
+  function fmt(n){ n=Math.round(n);
+    if (n>=1000000) return '$'+(n/1000000).toFixed(n>=10000000?0:1).replace(/\.0$/,'')+'M';
+    if (n>=10000) return '$'+(n/1000).toFixed(0)+'K';
+    return '$'+n.toLocaleString('en-US').replace(/,/g, ' ');
+  }
+  /* 2026-11-02 — SHAWN: the in-dial readout must scale forever.
+     300 -> "300", 1500 -> "1.5K", 100000 -> "100K". Fits the window. */
+  function fmtShort(n){ n=Math.round(n);
+    if (n>=1000000) return '$'+(n/1000000).toFixed(n>=10000000?0:1).replace(/\.0$/,'')+'M';
+    if (n>=1000) return '$'+(n/1000).toFixed(n>=10000?0:1).replace(/\.0$/,'')+'K';
+    return '$'+n;
+  }
+
+  function relTime(ts){
+    var d = Date.now() - Number(ts || 0);
+    if (!(d >= 0)) return 'just now';
+    if (d < 60e3) return 'just now';
+    if (d < 3600e3){ var m = Math.floor(d/60e3); return m + 'm ago'; }
+    if (d < 86400e3){ var h = Math.floor(d/3600e3); return h + 'h ago'; }
+    return Math.floor(d/86400e3) + 'd ago';
+  }
+
+  /* 2026-11-01 — REBUILT. Gear teeth generator. Real toothed wheels,
+     like the Bugatti's exposed movement. */
+  function gearTeeth(cx, cy, r, teeth, phaseDeg){
+    var h = '', i, a;
+    /* 2026-11-02 — GRADE 12 GEARS. Real involute tooth profile.
+       Wider at base, narrower at tip, curved flanks. Not trapezoids —
+       the curve is what makes them look like real machined gears.
+       From the Bugatti photo: teeth are refined, numerous, precise.
+       2026-11-02 — MESHING. phaseDeg rotates the gear so teeth interleave
+       with the meshing partner (half-tooth offset). From mechanics brief. */
+    var phase = (phaseDeg || 0) * Math.PI / 180;
+    var toothAngle = 360 / teeth;
+    for (i = 0; i < teeth; i++){
+      a = (i * toothAngle) * Math.PI / 180 + phase;
+      /* tooth profile: 4 points defining the involute curve */
+      var baseHalf = (toothAngle * 0.35) * Math.PI / 180;  /* wider at base */
+      var tipHalf = (toothAngle * 0.18) * Math.PI / 180;   /* narrower at tip */
+      var rBase = r - 2, rTip = r + 3, rRoot = r - 4;
+      /* base left, tip left, tip right, base right */
+      var bl_a = a - baseHalf, tl_a = a - tipHalf;
+      var tr_a = a + tipHalf, br_a = a + baseHalf;
+      var blx = cx + rBase * Math.cos(bl_a), bly = cy + rBase * Math.sin(bl_a);
+      var tlx = cx + rTip * Math.cos(tl_a), tly = cy + rTip * Math.sin(tl_a);
+      var trx = cx + rTip * Math.cos(tr_a), try_ = cy + rTip * Math.sin(tr_a);
+      var brx = cx + rBase * Math.cos(br_a), bry = cy + rBase * Math.sin(br_a);
+      /* root points (where tooth meets gear body) */
+      var rl_a = a - toothAngle*0.5 * Math.PI / 180;
+      var rr_a = a + toothAngle*0.5 * Math.PI / 180;
+      var rlx = cx + rRoot * Math.cos(rl_a), rly = cy + rRoot * Math.sin(rl_a);
+      var rrx = cx + rRoot * Math.cos(rr_a), rry = cy + rRoot * Math.sin(rr_a);
+      /* path with curved flanks — quadratic curves for the involute shape */
+      h += '<path d="M' + rlx.toFixed(1) + ',' + rly.toFixed(1) +
+           ' Q' + blx.toFixed(1) + ',' + bly.toFixed(1) + ' ' + tlx.toFixed(1) + ',' + tly.toFixed(1) +
+           ' L' + trx.toFixed(1) + ',' + try_.toFixed(1) +
+           ' Q' + brx.toFixed(1) + ',' + bry.toFixed(1) + ' ' + rrx.toFixed(1) + ',' + rry.toFixed(1) +
+           ' Z" class="tn-gear-tooth"/>';
+      /* highlight on the tip — catches the light */
+      h += '<line x1="' + tlx.toFixed(1) + '" y1="' + tly.toFixed(1) +
+           '" x2="' + trx.toFixed(1) + '" y2="' + try_.toFixed(1) +
+           '" class="tn-gear-bevel"/>';
+    }
+    /* inner hub — layered, with center detail.
+       FIXB 2026-11-07 (Fix 12): r-12 went NEGATIVE on the innermost gear
+       (gearTeeth(100,104,8,...) emitted r="-4", Firefox console error
+       "Unexpected value -4 parsing r attribute"). Hub radii clamp at 0
+       and the inner hub / screws are omitted when the gear is too small
+       to hold them — a gear of r=8 has no hub to draw. Larger gears are
+       byte-identical to before (r-8 / r-12 / r-10 unchanged when > 0). */
+    var hubR = Math.max(0, r-8), hubR2 = Math.max(0, r-12), screwR = Math.max(0, r-10);
+    if (hubR > 0) h += '<circle cx="' + cx + '" cy="' + cy + '" r="' + hubR + '" class="tn-gear-hub"/>';
+    if (hubR2 > 0) h += '<circle cx="' + cx + '" cy="' + cy + '" r="' + hubR2 + '" class="tn-gear-hub-inner"/>';
+    /* hub screws — the tiny details that sell realism */
+    for (var s = 0; s < 6; s++){
+      if (screwR <= 0) break;
+      var sa = (s * 60) * Math.PI / 180;
+      var sx = cx + screwR * Math.cos(sa), sy = cy + screwR * Math.sin(sa);
+      h += '<circle cx="' + sx.toFixed(1) + '" cy="' + sy.toFixed(1) + '" r="1.2" class="tn-gear-screw"/>';
+    }
+    return h;
+  }
+
+  function tickLines(){
+    /* 2026-11-02 — SHAWN: ticks like the reference. White, scale-accurate:
+       every 10 minor, every 50 major. Long white majors, short minors.
+       The little lines that make it feel real. */
+    var h = '', v, rad;
+    /* 2026-11-02 — SHAWN: Ticks at MIDPOINTS between numerals (25,75,125...).
+       Like the Bugatti: numeral, tick, numeral, tick. VISIBLE, pro. */
+    for (v = 10; v < 500; v += 10){
+      if (v % 50 === 0) continue;
+      var angleDeg = 135 + (v/500)*270;
+      rad = angleDeg * Math.PI / 180;
+      var rr1 = 78, rr2 = 86;
+      var sw = 2.5;
+      var op = 1;
+      h += '<line x1="' + (100 + rr1 * Math.cos(rad)).toFixed(1) +
+           '" y1="' + (104 + rr1 * Math.sin(rad)).toFixed(1) +
+           '" x2="' + (100 + rr2 * Math.cos(rad)).toFixed(1) +
+           '" y2="' + (104 + rr2 * Math.sin(rad)).toFixed(1) +
+           '" stroke="#ffffff" stroke-width="' + sw + '" opacity="' + op + '"/>';
+    }
+    /* 2026-11-02 — REMOVED duplicate numerals. dialNumerals() is the single source.
+       tickLines() does ticks only. */
+    /* 2026-11-02 — BUGATTI DIAL SCREWS. 4 screws at the dial corners.
+       Like the real instrument — they hold the dial in place.
+       2026-11-02 — FIX: r=70 (were hidden at r=80). All 4 must be visible. */
+    var screwAngles = [45, 135, 225, 315];
+    for (var si = 0; si < screwAngles.length; si++){
+      var sa = screwAngles[si] * Math.PI / 180;
+      var sx = 100 + 58 * Math.cos(sa), sy = 104 + 58 * Math.sin(sa);
+      /* screw head — larger, more visible */
+      h += '<circle cx="' + sx.toFixed(1) + '" cy="' + sy.toFixed(1) + '" r="4" class="tn-dial-screw"/>';
+      /* screw slot (random rotation for realism) */
+      var slotA = (screwAngles[si] * 1.7) * Math.PI / 180;
+      var x1 = sx + 2.8 * Math.cos(slotA), y1 = sy + 2.8 * Math.sin(slotA);
+      var x2 = sx - 2.8 * Math.cos(slotA), y2 = sy - 2.8 * Math.sin(slotA);
+      h += '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) +
+           '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" class="tn-dial-screw-slot"/>';
+      /* highlight — catches the light */
+      h += '<circle cx="' + (sx-1).toFixed(1) + '" cy="' + (sy-1).toFixed(1) + '" r="1.2" fill="rgba(255,255,255,.3)"/>';
+    }
+    /* 2026-11-02 — REFERENCE BUILD. Bezel screws: 4 on the outer bezel
+       at 12, 3, 6, 9 o'clock. Like the luxury gauge — they hold the bezel. */
+    var bezelAngles = [90, 0, 270, 180];
+    for (var bi = 0; bi < bezelAngles.length; bi++){
+      var ba = bezelAngles[bi] * Math.PI / 180;
+      var bx = 100 + 92 * Math.cos(ba), by = 104 + 92 * Math.sin(ba);
+      h += '<circle cx="' + bx.toFixed(1) + '" cy="' + by.toFixed(1) + '" r="3.5" class="tn-bezel-screw"/>';
+      var bslotA = (bezelAngles[bi] * 2.3) * Math.PI / 180;
+      var bx1 = bx + 2.4 * Math.cos(bslotA), by1 = by + 2.4 * Math.sin(bslotA);
+      var bx2 = bx - 2.4 * Math.cos(bslotA), by2 = by - 2.4 * Math.sin(bslotA);
+      h += '<line x1="' + bx1.toFixed(1) + '" y1="' + by1.toFixed(1) +
+           '" x2="' + bx2.toFixed(1) + '" y2="' + by2.toFixed(1) + '" class="tn-dial-screw-slot"/>';
+    }
+    return h;
+  }
+
+  function dialNumerals(){
+    /* 2026-11-02 — SHAWN: Numbers must be EXACT, not random. Like a real gauge.
+       FIX-9: the dial is dollars, fixed 0-$10K — $0, $1K, $2K ... $10K, every
+       1000 labeled. Ticks every 200, major every 1000. All calculated:
+       angle = 135 + (v/10000)*270. Stamped in the machine — engraved, not
+       floating text. */
+    var h = '', i;
+    var vals = [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000];
+    for (i = 0; i < vals.length; i++){
+      var val = vals[i];
+      var label = (val === 0) ? '$0' : '$' + (val/1000) + 'K';
+      var angleDeg = 135 + (val/10000)*270;
+      var angle = angleDeg * Math.PI / 180;
+      var x = 100 + 79 * Math.cos(angle);
+      var y = 104 + 79 * Math.sin(angle);
+      /* shadow copy for depth (engraved look) */
+      h += '<text x="' + (x+0.9).toFixed(1) + '" y="' + (y+3.4).toFixed(1) + '" text-anchor="middle" class="tn-dial-num-shadow">' + label + '</text>';
+      /* 2026-11-02 — FIX: CSS fill:url() unreliable. Set fill directly as attribute. */
+      h += '<text x="' + x.toFixed(1) + '" y="' + (y+2.3).toFixed(1) + '" text-anchor="middle" class="tn-dial-num">' + label + '</text>';
+    }
+    return h;
+  }
+
+  function dialTicks(){
+    /* 2026-11-02 — SHAWN: Real gauge ticks. FIX-9: dollars, 0-$10,000 —
+       every 200 (minor), every 1000 (major). Precise angles, machined. */
+    var h = '', v;
+    for (v = 0; v <= 10000; v += 200){
+      var angleDeg = 135 + (v/10000)*270;
+      var angle = angleDeg * Math.PI / 180;
+      var isMajor = (v % 1000 === 0);
+      var r1 = isMajor ? 74 : 76;
+      var r2 = 78;
+      var x1 = 100 + r1 * Math.cos(angle), y1 = 104 + r1 * Math.sin(angle);
+      var x2 = 100 + r2 * Math.cos(angle), y2 = 104 + r2 * Math.sin(angle);
+      var sw = isMajor ? 1.5 : 0.7;
+      var op = isMajor ? 0.9 : 0.5;
+      h += '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) +
+           '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) +
+           '" stroke="#fff" stroke-width="' + sw + '" opacity="' + op + '"/>';
+    }
+    return h;
+  }
+
+  function template(){
+    /* 2026-11-02 — CLEAN REBUILD. 9-layer skeuomorphic mechanical gauge.
+       Matches the luxury reference: matte black bridge, dark gears,
+       faceted bezel, hex screws, chapter ring, purple accents.
+       Functional hooks preserved: .tn-tacho-needle, .tn-tacho-fill,
+       .tn-tacho-num, .tn-tacho-svgnum, .tn-tacho-cap, .tn-tacho-label,
+       .tn-tacho-dialwrap, .tn-tacho-bands*, .tn-tacho-truth, .tn-tacho-comet. */
+    return '' +
+    '<div class="tn-tacho" data-state="loading" role="img" aria-label="Score gauge — reading your actions">' +
+      '<div class="tn-tacho-dialwrap">' +
+        '<svg class="tn-tacho-dial" viewBox="0 0 200 208" aria-hidden="true">' +
+          '<defs>' +
+            /* === MATERIALS LIBRARY — one light source, top-left === */
+            '<linearGradient id="mBrushed" x1="0%" y1="0%" x2="100%" y2="100%">' +
+              '<stop offset="0%" stop-color="#eef0f4"/>' +
+              '<stop offset="18%" stop-color="#c9ccd4"/>' +
+              '<stop offset="38%" stop-color="#9a9ea8"/>' +
+              '<stop offset="55%" stop-color="#7a7e88"/>' +
+              '<stop offset="72%" stop-color="#8f93a0"/>' +
+              '<stop offset="88%" stop-color="#b9bdc8"/>' +
+              '<stop offset="100%" stop-color="#d6d9e0"/>' +
+            '</linearGradient>' +
+            /* 2026-11-02 — SHAWN: Shiny obsidian black. Polished black glass.
+               Bright highlight top-left, deep black bottom-right. */
+            '<linearGradient id="mObsidian" x1="0%" y1="0%" x2="100%" y2="100%">' +
+              '<stop offset="0%" stop-color="#4a4e5a"/>' +
+              '<stop offset="25%" stop-color="#1a1c22"/>' +
+              '<stop offset="50%" stop-color="#08090c"/>' +
+              '<stop offset="75%" stop-color="#0a0b0e"/>' +
+              '<stop offset="100%" stop-color="#2a2d36"/>' +
+            '</linearGradient>' +
+            /* 2026-11-02 — SHAWN: LASER. The gauge is a beam of light.
+               White-hot core, cyan edge, shines through everything. */
+            '<linearGradient id="tnLaser" x1="0%" y1="0%" x2="100%" y2="0%">' +
+              '<stop offset="0%" stop-color="#ffffff"/>' +
+              '<stop offset="50%" stop-color="#ffffff"/>' +
+              '<stop offset="100%" stop-color="#aef"/>' +
+            '</linearGradient>' +
+            /* 2026-11-02 — SHAWN: Aluminum, not white. Brushed silver metal.
+               One layer gets purple accent. */
+            '<linearGradient id="tnAluTooth" x1="0%" y1="0%" x2="100%" y2="100%">' +
+              '<stop offset="0%" stop-color="#c8ccd6"/>' +
+              '<stop offset="30%" stop-color="#9a9ea8"/>' +
+              '<stop offset="50%" stop-color="#7a7e88"/>' +
+              '<stop offset="70%" stop-color="#9a9ea8"/>' +
+              '<stop offset="100%" stop-color="#b8bcc6"/>' +
+            '</linearGradient>' +
+            /* 2026-11-02 — SHAWN: Numbers must be extraordinary. Metallic fill,
+               not flat white. Like applied metal numerals on the Bugatti. */
+            '<linearGradient id="tnNumMetal" x1="0%" y1="0%" x2="0%" y2="100%">' +
+              '<stop offset="0%" stop-color="#ffffff"/>' +
+              '<stop offset="35%" stop-color="#d0d4e0"/>' +
+              '<stop offset="50%" stop-color="#8a8ea0"/>' +
+              '<stop offset="65%" stop-color="#d0d4e0"/>' +
+              '<stop offset="100%" stop-color="#ffffff"/>' +
+            '</linearGradient>' +
+            /* 2026-11-02 — SHAWN: "Way stronger separation." Light vs dark aluminum.
+               Alternate layers: bright machined vs dark gunmetal. */
+            '<linearGradient id="tnAluDark" x1="0%" y1="0%" x2="100%" y2="100%">' +
+              '<stop offset="0%" stop-color="#4a4e5a"/>' +
+              '<stop offset="30%" stop-color="#2a2d36"/>' +
+              '<stop offset="50%" stop-color="#1a1c22"/>' +
+              '<stop offset="70%" stop-color="#2a2d36"/>' +
+              '<stop offset="100%" stop-color="#3a3e4a"/>' +
+            '</linearGradient>' +
+            '<linearGradient id="mPolished" x1="0%" y1="0%" x2="100%" y2="100%">' +
+              '<stop offset="0%" stop-color="#ffffff"/>' +
+              '<stop offset="30%" stop-color="#c8ccd6"/>' +
+              '<stop offset="47%" stop-color="#ffffff"/>' +
+              '<stop offset="55%" stop-color="#565a66"/>' +
+              '<stop offset="70%" stop-color="#3a3e48"/>' +
+              '<stop offset="100%" stop-color="#6a6e78"/>' +
+            '</linearGradient>' +
+            '<radialGradient id="mGearDark" cx="35%" cy="28%" r="85%">' +
+              '<stop offset="0%" stop-color="#6a6e78"/>' +
+              '<stop offset="35%" stop-color="#4a4e58"/>' +
+              '<stop offset="65%" stop-color="#2a2d34"/>' +
+              '<stop offset="88%" stop-color="#14161a"/>' +
+              '<stop offset="100%" stop-color="#1e2026"/>' +
+            '</radialGradient>' +
+            '<radialGradient id="mRuby" cx="38%" cy="30%" r="75%">' +
+              '<stop offset="0%" stop-color="#f3b8ff"/>' +
+              '<stop offset="22%" stop-color="#c24ff0"/>' +
+              '<stop offset="55%" stop-color="#7a1fa2"/>' +
+              '<stop offset="82%" stop-color="#3d0f5c"/>' +
+              '<stop offset="100%" stop-color="#5a2090"/>' +
+            '</radialGradient>' +
+            '<radialGradient id="mCavity" cx="50%" cy="50%" r="70%">' +
+              '<stop offset="0%" stop-color="#0a0b0e"/>' +
+              '<stop offset="70%" stop-color="#050607"/>' +
+              '<stop offset="100%" stop-color="#050607"/>' +
+            '</radialGradient>' +
+            '<linearGradient id="mGoldSet" x1="0%" y1="0%" x2="100%" y2="100%">' +
+              '<stop offset="0%" stop-color="#ffe9b0"/>' +
+              '<stop offset="45%" stop-color="#c9a24a"/>' +
+              '<stop offset="60%" stop-color="#7a5f22"/>' +
+              '<stop offset="100%" stop-color="#d9b95e"/>' +
+            '</linearGradient>' +
+            '<radialGradient id="mBridgeBlack" cx="35%" cy="30%" r="90%">' +
+              '<stop offset="0%" stop-color="#3a3d44"/>' +
+              '<stop offset="40%" stop-color="#23252b"/>' +
+              '<stop offset="75%" stop-color="#121317"/>' +
+              '<stop offset="100%" stop-color="#1a1c20"/>' +
+            '</radialGradient>' +
+            /* 2026-11-02 — PACKAGE INTEGRATION. Crystal glass reflection gradient. */
+            '<linearGradient id="mCrystal" x1="0%" y1="0%" x2="100%" y2="100%">' +
+              '<stop offset="0%" stop-color="#ffffff" stop-opacity=".9"/>' +
+              '<stop offset="50%" stop-color="#ffffff" stop-opacity=".15"/>' +
+              '<stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>' +
+            '</linearGradient>' +
+            '<filter id="fDrop" x="-30%" y="-30%" width="160%" height="160%">' +
+              '<feDropShadow dx="2.5" dy="3.5" stdDeviation="2.2" flood-color="#000" flood-opacity="0.55"/>' +
+            '</filter>' +
+            '<linearGradient id="tnSpectrumFlow" x1="0%" y1="100%" x2="100%" y2="0%">' +
+              /* 2026-11-02 — LEGENDARY. Canonical SPECTRUM FLOW (Shawn's law):
+                 Purple → Blue → Green → Gold → Orange → Red → Magenta.
+                 The gauge flows through the spectrum as value rises. */
+              '<stop offset="0%" stop-color="#a06bff"/>' +
+              '<stop offset="16%" stop-color="#3fb8ff"/>' +
+              '<stop offset="32%" stop-color="#2fe89e"/>' +
+              '<stop offset="48%" stop-color="#ffbf3d"/>' +
+              '<stop offset="64%" stop-color="#ff9a5a"/>' +
+              '<stop offset="80%" stop-color="#ff5e6c"/>' +
+              '<stop offset="100%" stop-color="#e84fff"/>' +
+            '</linearGradient>' +
+          '</defs>' +
+          /* === LAYER 1: BACKGROUND === */
+          '<circle cx="100" cy="104" r="98" fill="#08090c"/>' +
+          /* === LAYER 2: BEZEL — faceted, brushed, hex screws === */
+          '<g class="tn-bezel">' +
+            '<circle cx="100" cy="104" r="96" fill="none" stroke="#050607" stroke-width="8"/>' +
+            /* 2026-11-02 — SHAWN: Total revamp. Shiny obsidian black bezel.
+               Polished black glass — pops, reflects, premium. */
+            '<circle cx="100" cy="104" r="92" fill="none" stroke="url(#mObsidian)" stroke-width="12" filter="url(#fDrop)"/>' +
+            /* 2026-11-02 — SHAWN: Finish the gauge. Outside gets a subtle mechanical
+               effect: a light-catching highlight that slowly rotates around the
+               bezel. Elegant, not flashy. Part of the machine. */
+            '<g style="animation:tnGearSpin 120s linear infinite; transform-origin:100px 104px;">' +
+              '<path d="M 100 12 A 92 92 0 0 1 165 39" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="3" stroke-linecap="round"/>' +
+            '</g>' +
+            '<circle cx="100" cy="104" r="86" fill="none" stroke="#ffffff" stroke-width="1" opacity=".25"/>' +
+            /* 2026-11-02 — PACKAGE INTEGRATION. Hex-socket screws at 12/3/6/9.
+               Spec L1: inset screws, polished chamfer. */
+            '<g class="tn-bezel-screws">' +
+              '<g transform="translate(100,12)"><circle r="5" fill="url(#mPolished)" stroke="#2a2d34" stroke-width="1"/><polygon points="0,-2.5 2.2,-1.2 2.2,1.2 0,2.5 -2.2,1.2 -2.2,-1.2" fill="#1a1c20"/></g>' +
+              '<g transform="translate(192,104)"><circle r="5" fill="url(#mPolished)" stroke="#2a2d34" stroke-width="1"/><polygon points="0,-2.5 2.2,-1.2 2.2,1.2 0,2.5 -2.2,1.2 -2.2,-1.2" fill="#1a1c20"/></g>' +
+              '<g transform="translate(100,196)"><circle r="5" fill="url(#mPolished)" stroke="#2a2d34" stroke-width="1"/><polygon points="0,-2.5 2.2,-1.2 2.2,1.2 0,2.5 -2.2,1.2 -2.2,-1.2" fill="#1a1c20"/></g>' +
+              '<g transform="translate(8,104)"><circle r="5" fill="url(#mPolished)" stroke="#2a2d34" stroke-width="1"/><polygon points="0,-2.5 2.2,-1.2 2.2,1.2 0,2.5 -2.2,1.2 -2.2,-1.2" fill="#1a1c20"/></g>' +
+            '</g>' +
+            /* 2026-11-02 — SHAWN: Finish the outside. Outer toothed ring —
+               the bezel is part of the vortex machine, not just a frame.
+               Fine teeth, slow rotation, aluminum. */
+            '<g style="animation:tnGearSpinR 180s linear infinite; transform-origin:100px 104px;" filter="url(#fDrop)">' +
+              gearTeeth(100, 104, 99, 48, 0) +
+            '</g>' +
+          '</g>' +
+          /* === LAYER 4: DIAL — 0-500, ticks, numerals === */
+          /* 2026-11-02 — SHAWN: Make it REAL. Dial is RECESSED below bezel.
+             Inner shadow at the edge creates the depth. */
+          '<circle cx="100" cy="104" r="84" fill="#050607"/>' +
+          '<circle cx="100" cy="104" r="84" fill="none" stroke="#000" stroke-width="4" opacity=".7"/>' +
+          '<circle cx="100" cy="104" r="82" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>' +
+          tickLines() +
+          /* 2026-11-02 — SHAWN: "Get rid of all those numbers." Dial numerals REMOVED.
+             They return ONLY at the edge, done right. See LAYER 5B. */
+          '<path class="tn-tacho-track" d="' + ARC_D + '"/>' +
+          '<path class="tn-tacho-fill" d="' + ARC_D + '" stroke="url(#tnSpectrumFlow)"/>' +
+          '<path class="tn-tacho-comet" d="' + ARC_D + '" stroke="url(#tnCometFlow)"/>' +
+          /* === LAYER 5: CHAPTER RING — REMOVED per Shawn 2026-11-02 ===
+             "Numbers in the middle don't make sense." The 1-5 chapter numbers
+             are gone. Clean dial, ultra-real, Bugatti-like. The mechanics
+             speak for themselves. */
+          /* === LAYER 5B: PYRAMID — 6 counter-rotating mechanical layers === */
+          /* 2026-11-02 — SHAWN: "Pyramid in the middle coming out of the page."
+             6 layers, alternating CW/CCW, white/black/platinum.
+             Center is HIGHEST, outer is DEEPEST. Numbers ONLY at the edge. */
+          /* 2026-11-02 - VORTEX MATH: 6 layers = 1-2-4-8-7-5. Matter spinning around time. */
+          '<g class="tn-pyramid" aria-hidden="true">' +
+            /* 2026-11-02 — SHAWN: "The one second to it [center] I would start
+               it up the other way." Center outermost (r=24) is CW, so pyramid
+               innermost (r=30) must be CCW. Flipped all: strict alternation
+               from the center outward. */
+            '<g class="tn-gear tn-gear-1" style="animation-duration:90s" filter="url(#fDrop)">' +
+              gearTeeth(100, 104, 60, 24, 0) +
+            '</g>' +
+            '<g class="tn-gear tn-gear-2 tn-dark-layer" style="animation-duration:60s" filter="url(#fDrop)">' +
+              gearTeeth(100, 104, 54, 22, 8) +
+            '</g>' +
+            '<g class="tn-gear tn-gear-1" style="animation-duration:90s" filter="url(#fDrop)">' +
+              gearTeeth(100, 104, 48, 20, 16) +
+            '</g>' +
+            '<g class="tn-gear tn-gear-2 tn-dark-layer" style="animation-duration:60s" filter="url(#fDrop)">' +
+              gearTeeth(100, 104, 42, 18, 24) +
+            '</g>' +
+            '<g class="tn-gear tn-gear-1" style="animation-duration:90s" filter="url(#fDrop)">' +
+              gearTeeth(100, 104, 36, 16, 32) +
+            '</g>' +
+            '<g class="tn-gear tn-gear-2 tn-dark-layer" style="animation-duration:60s" filter="url(#fDrop)">' +
+              gearTeeth(100, 104, 30, 14, 40) +
+            '</g>' +
+            '<circle cx="100" cy="104" r="27" fill="none" stroke="url(#mCavity)" stroke-width="2" opacity=".9"/>' +
+          '</g>' +
+          /* 2026-11-02 — SHAWN: "Take the numbers off." ALL numerals REMOVED.
+             The outside gets a total revamp. Shiny obsidian. Laser gauge.
+             2026-11-02 — SHAWN: "Put the numbers in." Back, small and elegant.
+             5 numerals (0,100,200,300,500), bottom clear for digital readout. */
+          /* 2026-11-02 — SHAWN: Finish the gauge. Numerals must FLOW with the machine,
+             not float. Machined chapter ring behind them — aluminum, engraved feel. */
+          /* 2026-11-02 — SHAWN: darker obsidian around the edge so the numbers POP.
+             No aluminum — the numerals sit on black, like the reference. */
+          '<circle cx="100" cy="104" r="79" fill="none" stroke="url(#mObsidian)" stroke-width="22" opacity="1"/>' +
+          '<circle cx="100" cy="104" r="69" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1"/>' +
+          /* 2026-11-02 — SHAWN: numerals BACK, but CORRECT. Real speedometer geometry:
+         0 at bottom-left (135°), 500 at bottom-right (45°), sweep across the TOP.
+         angle = 135 + (v/500)*270. */
+          '<g class="tn-edge-numerals">' + dialNumerals() + '</g>' +
+          /* === LAYER 6: MOVEMENT — concentric fine gears, counter-rotating === */
+          '<g class="tn-tacho-mech" aria-hidden="true">' +
+            '<circle cx="100" cy="104" r="30" fill="url(#mCavity)"/>' +
+            /* 2026-11-02 — SHAWN: Concentric, SMALL, fine. Two gears,
+               one CW, one CCW. Like the original but refined.
+               Outer gear (larger, slower, CW), inner gear (smaller, faster, CCW).
+               Fine teeth, dark gunmetal, perfectly centered. */
+            '<g class="tn-gear tn-gear-1" filter="url(#fDrop)">' +
+              gearTeeth(100, 104, 24, 36, 0) +
+              '<circle cx="100" cy="104" r="19" fill="url(#mGearDark)"/>' +
+              '<circle cx="100" cy="104" r="19" fill="none" stroke="url(#mPolished)" stroke-width=".6" opacity=".5"/>' +
+            '</g>' +
+            '<g class="tn-gear tn-gear-2" filter="url(#fDrop)">' +
+              gearTeeth(100, 104, 15, 28, 6.4) +
+              '<circle cx="100" cy="104" r="11" fill="url(#mGearDark)"/>' +
+              '<circle cx="100" cy="104" r="5" fill="url(#mGoldSet)"/>' +
+              '<circle cx="100" cy="104" r="4" fill="url(#mRuby)"/>' +
+              '<circle cx="98.8" cy="102.8" r=".9" fill="#fff" opacity=".9"/>' +
+            '</g>' +
+            /* 2026-11-02 — LEGENDARY. Third gear: finest, innermost, CW.
+               Three-layer concentric movement. Maximum fine detail. */
+            '<g class="tn-gear tn-gear-1" filter="url(#fDrop)">' +
+              gearTeeth(100, 104, 8, 20, 3.2) +
+              '<circle cx="100" cy="104" r="6" fill="url(#mGearDark)"/>' +
+              '<circle cx="100" cy="104" r="3" fill="url(#mGoldSet)"/>' +
+              '<circle cx="100" cy="104" r="2.2" fill="#3fb8ff" opacity=".9"/>' +
+              '<circle cx="99.3" cy="103.3" r=".6" fill="#fff" opacity=".9"/>' +
+            '</g>' +
+            /* bridge: MATTE BLACK X, chamfered edges, over the gears */
+            '<g class="tn-bridge" filter="url(#fDrop)">' +
+              '<g transform="translate(1.2,1.6)" opacity=".85">' +
+                '<path d="M100,104 L84,88 L88,84 L100,100 Z" fill="#0a0b0d"/>' +
+                '<path d="M100,104 L116,88 L112,84 L100,100 Z" fill="#0a0b0d"/>' +
+                '<path d="M100,104 L84,120 L88,124 L100,108 Z" fill="#0a0b0d"/>' +
+                '<path d="M100,104 L116,120 L112,124 L100,108 Z" fill="#0a0b0d"/>' +
+              '</g>' +
+              '<path d="M100,104 L84,88 L88,84 L100,100 Z" fill="url(#mBridgeBlack)" stroke="rgba(255,255,255,.35)" stroke-width=".6"/>' +
+              '<path d="M100,104 L116,88 L112,84 L100,100 Z" fill="url(#mBridgeBlack)" stroke="rgba(255,255,255,.35)" stroke-width=".6"/>' +
+              '<path d="M100,104 L84,120 L88,124 L100,108 Z" fill="url(#mBridgeBlack)" stroke="rgba(255,255,255,.35)" stroke-width=".6"/>' +
+              '<path d="M100,104 L116,120 L112,124 L100,108 Z" fill="url(#mBridgeBlack)" stroke="rgba(255,255,255,.35)" stroke-width=".6"/>' +
+              '<circle cx="100" cy="104" r="10" fill="url(#mBridgeBlack)" stroke="rgba(255,255,255,.3)" stroke-width=".7"/>' +
+            '</g>' +
+          '</g>' +
+          /* === LAYER 7: NEEDLE — sword, luminous stripe, shadow === */
+          '<g class="tn-tacho-needle" filter="url(#fDrop)">' +
+            '<path d="M100,122 L98.5,62 L100,42 L101.5,62 Z" fill="url(#mPolished)"/>' +
+            '<path d="M100,118 L99.5,66 L100,60 L100.5,66 Z" fill="#fff" opacity=".7"/>' +
+            '<circle cx="100" cy="104" r="8" fill="url(#mBrushed)"/>' +
+            '<circle cx="100" cy="104" r="3" fill="url(#mRuby)"/>' +
+          '</g>' +
+          /* === LAYER 8: DIGITAL READOUT === */
+          /* 2026-11-02 — FIX: Moved up 15px to avoid collision with 400 numeral (y=185). */
+          /* 2026-11-02 — Shawn: READOUT INSET. Tighter, part of the gauge.
+             Less black, recessed like a real instrument. */
+          '<rect x="86" y="172" width="28" height="14" rx="3" fill="#000" stroke="#2a2a32" stroke-width=".8"/>' +
+          '<rect x="87" y="173" width="26" height="3" rx="1.5" fill="rgba(0,0,0,.7)"/>' +
+          '<rect x="87" y="182" width="26" height="1.5" rx=".75" fill="rgba(255,255,255,.08)"/>' +
+          '<text class="tn-tacho-svgnum" x="100" y="183" text-anchor="middle" style="font-size:8px;font-family:Georgia,serif;">…</text>' +
+          '' +
+          /* === LAYER 9: PURPLE ACCENT ARC === */
+          '<path d="M 148 130 A 56 56 0 0 1 152 142" stroke="#a06bff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/>' +
+          /* === L10: CRYSTAL — curved glass reflections above everything === */
+          /* 2026-11-02 — PACKAGE INTEGRATION. Spec L9: curved directional
+             reflection strokes, restrained high glints. Glass realism above needle. */
+          '<ellipse cx="72" cy="58" rx="38" ry="14" fill="url(#mCrystal)" opacity=".35" transform="rotate(-28 72 58)"/>' +
+          '<ellipse cx="128" cy="150" rx="22" ry="8" fill="url(#mCrystal)" opacity=".18" transform="rotate(-28 128 150)"/>' +
+        '</svg>' +
+        '<div class="tn-tacho-readout">' +
+          '<b class="tn-tacho-num">…</b>' +
+          '<span class="tn-tacho-row"><span class="tn-tacho-label">YOUR SMART SCORE</span>' +
+          '<span class="tn-tacho-livedot"></span></span>' +
+        '</div>' +
+        /* 2026-11-06 — FIX 1e-iii: the bandline lived INSIDE .tn-tacho-readout (display:none by the 2026-11-01 NO OVERLAY TEXT ruling), so the caption "55 of 500 — Stirring at 1,000" never rendered in ANY window (Scout gaugeCap rect 0,0,0,0 in every settled capture). The number + label stay hidden — they live in the SVG dial + the static label. REWORK: the first move put the span inside .tn-tacho-dialwrap in flow at the dial's TOP, under the dial face/gear (elementFromPoint hit the dial SVG 0/11) — so the span now lives AFTER the dialwrap close, as its own line genuinely BELOW the dial. */
+        '<div class="tn-tacho-bands"><span class="tn-tacho-bandlo"></span><span class="tn-tacho-bandhi"></span><span class="tn-tacho-bands-label"></span></div>' +
+        '<div class="tn-tacho-truth" hidden></div>' +
+      '</div>' +
+      /* FIX-9 (Pricing fix pass 1): the bandline is BACK — the design review
+         orders it visible ("$X of $10 000 — next rung"). It lives AFTER the
+         dialwrap close, as its own line genuinely BELOW the dial (the FIX
+         1e-iii position), so it cannot block the gauge face. This reverses
+         the FIXE2-lane1 removal below; the render must prove it sits below
+         the dial without blocking it. */
+      '<div class="tn-tacho-bandline"></div>' +
+      /* 2026-11-07 — FIXE2-lane1 (Defect 1a, Shawn's eye 15:21Z): the bandline
+         span is GONE. It rendered "44 of 500 — Stirring at 1,000" at the
+         gauge's lower rim, blocking the gauge presentation. paintBandChrome
+         still runs but its bandLineEl lookup now returns null and it writes
+         nothing (guarded). The milestone logic (bandLine/RUNGS) stays —
+         it feeds nothing else in the gauge view. */
+      /* 2026-11-06 — FIX F6: the cap moves down here with the bandline. Inside
+         the dialwrap it sat at the dial's TOP, behind the opaque SVG dial face
+         (elementFromPoint 0/11, only edge fragments visible) — its legitimate
+         Day-mode text ("Period timing isn't on the ledger yet…") never read.
+         Below the bandline it is a clean second line under the dial; the
+         bandline's phone 160px margin already clears the bottom orbs for both. */
+      '<div class="tn-tacho-cap" hidden></div>' +
+    '</div>';
+  }
+
+
+  function mount(el){
+    if (!el || el._tnTacho) return el ? el._tnTacho : null;
+    el.innerHTML = template();
+    var root  = el.firstChild;
+    var needle = root.querySelector('.tn-tacho-needle');
+    var fill   = root.querySelector('.tn-tacho-fill');
+    var num    = root.querySelector('.tn-tacho-num');
+    var svgnum = root.querySelector('.tn-tacho-svgnum');
+    var cap    = root.querySelector('.tn-tacho-cap');
+    var label  = root.querySelector('.tn-tacho-label');
+    var dialwrap = root.querySelector('.tn-tacho-dialwrap');
+    var bandLoEl = root.querySelector('.tn-tacho-bandlo');
+    var bandHiEl = root.querySelector('.tn-tacho-bandhi');
+    var bandLineEl = root.querySelector('.tn-tacho-bandline');
+    var bandsEl = root.querySelector('.tn-tacho-bands');
+    var bandsLabel = root.querySelector('.tn-tacho-bands-label');
+    var truthEl = root.querySelector('.tn-tacho-truth');
+
+    /* COMPLETENESS — dial modes. The time pills set window._tnTachoMode
+       ('all' | 'hour' | 'day' | 'week' | 'month'); the rAF loop re-reads it
+       every frame, so needle, numeral and caption always move as one. */
+    var PERIODS = { hour:'the last hour', day:'the last 24 hours',
+                    week:'the last 7 days', month:'the last 30 days' };
+    function dialMode(s){
+      var m = (typeof window !== 'undefined' && window._tnTachoMode) || 'all';
+      if (m === 'all' || !PERIODS[m]) return null;
+      var d = s && s.deltas;
+      if (!d || typeof d[m] !== 'number')
+        return { mode:m, period:PERIODS[m], target:null, noData:true };
+      return { mode:m, period:PERIODS[m], target:d[m], noData:false };
+    }
+
+    var reduceMotion = !!(window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+    var displayed = 0;      /* the one value everything paints from */
+    var lastNumTxt = '';
+    var raf = 0;
+    var dead = false;
+
+    /* 2026-11-06 — FIX F6: empty means hidden. setCap('') used to remove the
+       hidden attribute and leave an empty display:block div in the dial (All
+       mode: hiddenAttr false, rect 384x0 — not hidden, just empty). Now an
+       empty cap is hidden for real (UA [hidden]{display:none} -> rect 0x0);
+       every non-empty caption still shows exactly as before. */
+    /* 2026-11-06 — FIX F8: the cap changes the tacho mount's height (392.8 All /
+       521 cap-on), and the constellation height follows the mount — so a cap
+       change must re-lay-out the orbs AFTER the new height settles. The mode
+       pill's own layout call runs before setCap (stale mount), which left the
+       constellation 401px under a 521px mount (cap overlapping the big number)
+       or stuck at 529px after returning to All. Only a real change schedules
+       the deferred pass (60ms, the file's retry delay); a no-op call does not. */
+    function setCap(html){ var _chg = false; if(!html){ if(cap._h !== ''){ cap._h = ''; cap.innerHTML = ''; _chg = true; } if(!cap.hidden){ cap.hidden = true; _chg = true; } if(root.classList && root.classList.contains('tn-cap-on')){ root.classList.remove('tn-cap-on'); _chg = true; } if(_chg) setTimeout(function(){ if(typeof ldLayoutNodes === 'function') ldLayoutNodes(); }, 60); return; } if (cap._h !== html){ cap._h = html; cap.innerHTML = html; _chg = true; } if (cap.hidden){ cap.hidden = false; _chg = true; } if(root.classList && !root.classList.contains('tn-cap-on')){ root.classList.add('tn-cap-on'); _chg = true; } if(_chg) setTimeout(function(){ if(typeof ldLayoutNodes === 'function') ldLayoutNodes(); }, 60); }
+    /* V4 CUT: the gained-line ("Gained in {period} — every action moves the needle.")
+       repeats the "+N GAINED" readout sitting directly above it; the period is
+       already named by the active time pill. Never silently kept — named here. */
+    function hideCap(){ var _chg = false; if (cap && !cap.hidden){ cap.hidden = true; _chg = true; } if (root.classList && root.classList.contains('tn-cap-on')){ root.classList.remove('tn-cap-on'); _chg = true; } if(_chg) setTimeout(function(){ if(typeof ldLayoutNodes === 'function') ldLayoutNodes(); }, 60); }
+
+    /* band ladder: completed bands marked, current band lit.
+       V4: tap/hover names the band (Law — every control works); the label
+       defaults to the current band so the filled dot is never a mystery. */
+    function bandTag(i){
+      var b = BANDS[i], nm = 'Band ' + (i+1);
+      for (var ri = 0; ri < RUNGS.length; ri++){ if (RUNGS[ri][0] <= b.lo) nm = RUNGS[ri][1]; }
+      var hi = isFinite(b.hi) ? fmt(b.hi) : '∞';
+      return nm + ' · ' + fmt(b.lo) + '–' + hi;
+    }
+    function showBandLabel(i){
+      if (!bandsLabel) return;
+      bandsLabel.textContent = bandTag(i);
+      bandsLabel.classList.add('show');
+    }
+    /* the label is a preview, never furniture: it appears on hover/tap and
+       leaves on pointer-out, so it can never collide with the bandline. */
+    function hideBandLabel(){
+      if (!bandsLabel) return;
+      bandsLabel.classList.remove('show');
+    }
+    function paintBands(ix){
+      if (!bandsEl) return;
+      if (!bandsEl._wired){
+        bandsEl._wired = true;
+        bandsEl.addEventListener('pointerover', function(e){
+          var d = e.target && e.target.closest ? e.target.closest('.tn-tacho-band') : null;
+          if (d) showBandLabel(+d.getAttribute('data-ix'));
+        });
+        bandsEl.addEventListener('pointerout', function(){ hideBandLabel(); });
+        bandsEl.addEventListener('click', function(e){
+          var d = e.target && e.target.closest ? e.target.closest('.tn-tacho-band') : null;
+          if (d) showBandLabel(+d.getAttribute('data-ix'));
+        });
+      }
+      if (bandsEl._ix === ix) return;
+      bandsEl._ix = ix;
+      var h = '';
+      for (var i = 0; i < BANDS.length; i++){
+        var c = bandColor(i);
+        var cls = i < ix ? 'done' : (i === ix ? 'cur' : 'todo');
+        h += '<span class="tn-tacho-band ' + cls + '" data-ix="' + i + '" style="--bc:' + c + '" title="' + bandTag(i) + '"></span>';
+      }
+      bandsEl.innerHTML = h;
+    }
+
+    /* truth line — gate check #17: one line, always. */
+    function setTruth(){
+      if (!truthEl) return;
+      var t = 'Ledger synced · every point traces to the ledger';
+      try {
+        var s2 = (typeof window !== 'undefined') ? window._osSpine : null;
+        if (s2 && s2.loading) t = 'Ledger loading — no score yet';
+        else if (s2 && s2.stale) t = 'Ledger unavailable — score withheld';
+        else if (s2 && s2.updatedAt) t = 'Ledger synced ' + relTime(s2.updatedAt) + ' · every point traces to the ledger';
+      } catch (e2){}
+      if (truthEl._t !== t){ truthEl._t = t; truthEl.textContent = t; }
+    }
+
+    function paintBandChrome(b, capScore){
+      /* 2026-11-06 — v7.1 FIX 10: the caption reads the TARGET (capScore),
+         not the swept `displayed` — the needle may keep sweeping (a needle in
+         transit is honest gauge behaviour) but the caption never reads a
+         mid-sweep value. The reduceMotion branch already did displayed =
+         target; this extends that honesty to the numbers for everyone. The
+         band chips + needle + fill still sweep with `displayed` (the
+         instrument's own state); only the caption text + its beat band
+         follow the target. */
+      /* band edge labels on the dial */
+      if (bandLoEl && bandLoEl._t !== b.lo){ bandLoEl._t = b.lo; bandLoEl.textContent = fmt(b.lo); }
+      var hiT = isFinite(b.hi) ? fmt(b.hi) : '∞';
+      if (bandHiEl && bandHiEl._t !== hiT){ bandHiEl._t = hiT; bandHiEl.textContent = hiT; }
+      paintBands(b.ix);
+      /* human words under the number — V4: a responsive beat when the BAND
+         changes (Law 6: alive = responsive). Number ticks don't beat; only
+         the crossing does, so the sweep never strobes. */
+      /* FIXB (Fix 5): Math.round(null) is 0 — the null must survive into
+         bandLine, or the rest state prints "0 of 500" as if it were a
+         score. bandLine(null) reads "— of $10 000 — Stirring at $1 000". */
+      var bl = (capScore === null || capScore === undefined) ? bandLine(null) : bandLine(Math.round(capScore));
+      if (bandLineEl && bandLineEl._t !== bl){
+        bandLineEl._t = bl; bandLineEl.textContent = bl;
+        var nbix = bandOf(Math.round(capScore)).ix;
+        if (bandLineEl._bix !== nbix){
+          bandLineEl._bix = nbix;
+          bandLineEl.classList.remove('tn-bl-beat');
+          void bandLineEl.offsetWidth;
+          bandLineEl.classList.add('tn-bl-beat');
+        }
+      }
+      /* the beat is a moment, not a state — the class leaves when the
+         motion ends, so a later check sees only fresh beats. */
+      if (bandLineEl && !bandLineEl._beatWired){
+        bandLineEl._beatWired = true;
+        bandLineEl.addEventListener('animationend', function(){
+          bandLineEl.classList.remove('tn-bl-beat');
+        });
+      }
+      setTruth();
+    }
+
+    function paintLive(score, s, dm){
+      var b = bandOf(displayed);
+      /* FIX-9: the dial is fixed 0-$10,000 — the needle reads the score on
+         that one scale and pins at the top (never past it, never a new band). */
+      var frac = Math.min(1, Math.max(0, displayed / 10000));
+      var ang = 135 + 270 * frac;
+      var bc = bandColor(b.ix);
+
+      /* band shift: when the dial opens to a wider band, it breathes — the
+         needle reset reads as the dial opening, never a glitch. */
+      if (dialwrap && dialwrap._bix !== b.ix){
+        if (typeof dialwrap._bix === 'number'){
+          dialwrap.classList.remove('tn-tacho-bandshift');
+          void dialwrap.offsetWidth;
+          dialwrap.classList.add('tn-tacho-bandshift');
+        }
+        dialwrap._bix = b.ix;
+      }
+
+      /* ONE frame, ONE value: needle, fill, numeral. The fill wears the
+         SPECTRUM FLOW — red→orange→gold→green→blue→purple→magenta flowing
+         up the arc as the score rises. Never a single flat color. */
+      needle.style.transform = 'rotate(' + (ang - 270).toFixed(2) + 'deg)';
+      fill.style.strokeDashoffset = (ARC_LEN * (1 - frac)).toFixed(1);
+      /* Shawn 2026-11-01: NO flat color override — the spectrum gradient flows */
+      var comet = root.querySelector('.tn-tacho-comet');
+      if(comet) comet.style.strokeDashoffset = (ARC_LEN * (1 - frac)).toFixed(1);
+      paintBandChrome(b, score);
+
+      if (dm && !dm.noData){
+        /* DELTA MODE: "+N gained in {period}" — needle, numeral, caption sweep as one. */
+        var txt = '+' + fmt(displayed);
+        if (txt !== lastNumTxt){ lastNumTxt = txt; num.textContent = txt; if(svgnum) svgnum.textContent = fmtShort(displayed); }
+        if (label && label._t !== 'gained'){ label._t = 'gained'; label.textContent = 'GAINED'; }
+        if (dm.target > 0){
+          hideCap();
+        } else {
+          setCap('Nothing gained in ' + dm.period + ' — quiet is rest, not failure.');
+        }
+        root.setAttribute('aria-label', 'Score gauge — gained ' + fmt(dm.target) + ' in ' + dm.period);
+        return;
+      }
+      if (dm && dm.noData){
+        /* Honest quiet: timing isn't windowable — the pill reads the total, and says so. */
+        var txt0 = fmt(displayed);
+        if (txt0 !== lastNumTxt){ lastNumTxt = txt0; num.textContent = txt0; if(svgnum) svgnum.textContent = fmtShort(displayed); }
+        if (label && label._t !== 'score'){ label._t = 'score'; label.textContent = 'YOUR SMART SCORE'; }
+        setCap('Period timing isn\u2019t on the ledger yet \u2014 this pill reads the total for now.');
+        root.setAttribute('aria-label', 'Score gauge — your live score is ' + fmt(score));
+        return;
+      }
+
+      var txt2 = fmt(displayed);
+      if (txt2 !== lastNumTxt){ lastNumTxt = txt2; num.textContent = txt2; if(svgnum) svgnum.textContent = fmtShort(displayed); }
+      if (label && label._t !== 'score'){ label._t = 'score'; label.textContent = 'YOUR SMART SCORE'; }
+
+      var acts = ['posts','notes','msgs','invs','clicks','joins'].reduce(function(a,k){
+        var v = spineGet(s, k); return a + (typeof v === 'number' ? v : 0);
+      }, 0);
+      if (score === 75 && acts === 0){
+        setCap('<b>Birth score</b> — every post, note and share moves the needle.');
+      } else {
+        /* 2026-11-01 — Shawn: gray text was unreadable. Green LIVE badge instead.
+           Plus a hint that the orbs do something (they're clickable, he didn't know). */
+        /* 2026-11-01 — Shawn: removed. The LIVE badge and hint text blocked
+           the bottom orb. The orbs speak for themselves. */
+        setCap('');
+      }
+      root.setAttribute('aria-label', 'Score gauge — your live score is ' + fmt(score));
+    }
+
+    function paintRest(state){
+      needle.style.transform = 'rotate(-135deg)';
+      fill.style.strokeDashoffset = String(ARC_LEN);
+      fill.style.stroke = bandColor(0);
+      /* FIXB (Fix 5): a stale spine also shows no numeral — '—', labelled
+         stale by the caption below, never a bare number. */
+      var _staleSpine = false;
+      try { _staleSpine = !!(typeof window !== 'undefined' && window._osSpine && window._osSpine.stale); } catch(e) {}
+      var txt = (state === 'quiet' || _staleSpine) ? '—' : '…';
+      if (txt !== lastNumTxt){ lastNumTxt = txt; num.textContent = txt; if(svgnum) svgnum.textContent = txt; }
+      /* FIXB (Fix 5): the rest state passes null, not 0 — the bandline
+         reads "— of 500 — Stirring at 1,000", never "0 of 500". */
+      paintBandChrome(bandOf(0), null);
+      if (_staleSpine){
+        setCap('Ledger unavailable — score withheld until the connection returns.');
+        root.setAttribute('aria-label', 'Score gauge — ledger unavailable, no score shown');
+      } else if (state === 'quiet'){
+        setCap('Quiet — the first post, note or invite lights the needle.');
+        root.setAttribute('aria-label', 'Score gauge — quiet, no score yet');
+      } else {
+        setCap('Reading your actions…');
+        root.setAttribute('aria-label', 'Score gauge — reading your actions');
+      }
+    }
+
+    function frame(){
+      if (dead) return;
+      var r = readSpine();
+      if (root.getAttribute('data-state') !== r.state) root.setAttribute('data-state', r.state);
+      if (r.state === 'live'){
+        /* COMPLETENESS: the time pills drive the dial. Delta mode re-targets
+           the SAME easing loop — needle, numeral and caption sweep as one. */
+        var dm = dialMode(r.s);
+        var target = (dm && !dm.noData) ? dm.target : r.score;
+        /* COMPLETENESS — stamp the TARGET on the numeral. The integrity meter
+           compares this (what the instrument means) instead of the eased
+           mid-sweep text (what the animation happens to show this frame).
+           Intent vs spine: never a race. */
+        if (num._tgt !== target){ num._tgt = target; num.setAttribute('data-target', Math.round(target)); }
+        if (reduceMotion){ displayed = target; }
+        else {
+          /* 2026-11-01 — Shawn: CINEMATIC COUNT-UP. Slow, dramatic, builds
+             with the data. Not a split-second snap — a 2.5 second journey
+             from 0 to the score. The user FEELS the value accumulating. */
+          /* 2026-11-05 — PASS 1 (orb congruence / dial-vs-big): the dial numeral
+             lagged the big number by ~10s+ because the old exponential ease
+             (0.035/frame) is frame-rate dependent and restarts whenever the
+             instrument remounts. The big number counts LINEARLY over 3s
+             (countBig); the dial now sweeps linearly over the same 3s from
+             wherever it is whenever the target changes, so needle, numeral
+             and big number land together. */
+          var _now = performance.now();
+          if (num._swTgt !== target){ num._swTgt = target; num._swFrom = displayed; num._swStart = _now; }
+          var _k = Math.min(1, (_now - num._swStart) / 3000);
+          displayed = num._swFrom + (target - num._swFrom) * _k;
+          if (_k >= 1) displayed = target;
+        }
+        paintLive(target, r.s, dm);
+      } else {
+        paintRest(r.state);
+      }
+      raf = requestAnimationFrame(frame);
+    }
+
+    raf = requestAnimationFrame(frame);
+
+    var handle = {
+      el: root,
+      unmount: function(){ dead = true; cancelAnimationFrame(raf); el.innerHTML = ''; delete el._tnTacho; }
+    };
+    el._tnTacho = handle;
+    return handle;
+  }
+
+  window.TnTacho = { mount: mount, version: '1.1.0' };
+})();</script>
+<script>window.NAYA_CALC_CONFIG = {"currency": "$", "commission": 0.5, "plans": [{"name": "Power", "price": 25, "share": 12.5}, {"name": "Pro", "price": 50, "share": 25}, {"name": "Max", "price": 100, "share": 50}], "defaultPlan": "Pro", "defaultPace": 1, "defaultUnit": "day", "autoSweep": {"plan": "Max", "pace": 3, "unit": "day", "delayMs": 1500}, "gaugeMount": "tn-tacho-mount"};</script>
+<script>
+    /* ===== NayaCalc — reusable calculator + gauge component =====
+       CONFIG: window.NAYA_CALC_CONFIG {currency, commission, plans:[{name,price,share}],
+       defaultPlan, defaultPace, defaultUnit, autoSweep:{plan,pace,unit,delayMs}, gaugeMount}
+       The page's config is the single source of truth: plan buttons and example
+       labels are synced from it on init. Exposes window.NayaCalc {config, update, setPlan, state}. */
+    (function(){
+      'use strict';
+      var DEFAULT_CONFIG = {
+        currency: '$', commission: 0.5,
+        plans: [
+          {name:'Power', price:25, share:12.50},
+          {name:'Pro', price:50, share:25},
+          {name:'Max', price:100, share:50}
+        ],
+        defaultPlan:'Pro', defaultPace:1, defaultUnit:'day',
+        autoSweep:{plan:'Max', pace:3, unit:'day', delayMs:1500},
+        gaugeMount:'tn-tacho-mount'
+      };
+      var cfg = window.NAYA_CALC_CONFIG || DEFAULT_CONFIG;
+      function planByName(name){
+        for(var i = 0; i < cfg.plans.length; i++) if(cfg.plans[i].name === name) return cfg.plans[i];
+        return cfg.plans[0];
+      }
+      function shareFmt(s){ return (s % 1) ? s.toFixed(2) : String(s); }
+      // Sync the page's plan buttons from the config (config is the truth).
+      var planBtns = document.querySelectorAll('.calc-plan');
+      planBtns.forEach(function(b, i){
+        var p = cfg.plans[i] || cfg.plans[0];
+        b.setAttribute('data-plan', p.name);
+        b.setAttribute('data-share', String(p.share));
+        b.innerHTML = '<span class="sdot" aria-hidden="true"></span>' + p.name.toUpperCase() +
+          '<span>' + cfg.currency + p.price + '/mo \u00b7 ' + cfg.currency + shareFmt(p.share) + ' a sale</span>';
+      });
+      var state = { plan: cfg.defaultPlan, share: planByName(cfg.defaultPlan).share,
+                    pace: cfg.defaultPace, unit: cfg.defaultUnit, goal: null };
+      var amountEl = document.getElementById('calc-amount');
+      var mathEl = document.getElementById('calc-math');
+      var paceEl = document.getElementById('calc-pace');
+      var paceSEl = document.getElementById('calc-pace-s');
+      var paceUnitEl = document.getElementById('calc-pace-unit');
+      function fmt(n){ return cfg.currency + Math.round(n).toLocaleString('en-US').replace(/,/g, ' '); }
+      function monthlyFor(plan, pace, unit){
+        return planByName(plan).share * pace * (unit === 'day' ? 30 : 1);
+      }
+      var shown = monthlyFor(state.plan, state.pace, state.unit);
+      /* --- the harvested tiled number, scaled for the calculator (H=72) ---
+         From ~/workspace/team-nitro/number-concepts/top-10-number-concepts.html
+         (proven blob f421fd90): a fixed 10-digit strip per reel, never as long
+         as the count; the translation wraps, and when the wrap would jump the
+         strip backwards it snaps with the transition off (invisible — the
+         strip repeats every 10 digits). Colour follows the digit value
+         (chakra rim + cap + halo); the digit itself stays white. */
+      var CT_H = 72;
+      var tilesEl = document.getElementById('calc-tiles');
+      var tileObjs = [];
+      var lastDigitCount = 0;
+      function ctStripHtml(){
+        var h = '';
+        for (var i = 0; i < 10; i++) h += '<span class="ct-rd">' + i + '</span>';
+        return h;
+      }
+      function buildCalcTiles(value){
+        /* one reel per digit place + a $ tile in front + a gap between groups
+           of three (the space separator is a GAP between tile groups). */
+        var digits = String(Math.round(value));
+        var n = digits.length;
+        var grew = n > lastDigitCount;
+        var html = '<span class="ct-reel ct-sym d3" aria-hidden="true"><span class="ct-cap"></span><span class="ct-window"><span class="ct-rd">$</span></span></span>';
+        for (var i = 0; i < n; i++){
+          var place = n - 1 - i;
+          if (i > 0 && place % 3 === 2) html += '<span class="ct-gap" aria-hidden="true"></span>';
+          var div = Math.pow(10, place);
+          var isNew = grew && i === 0;
+          html += '<span class="ct-reel rest' + (isNew ? ' new' : '') + '" data-div="' + div + '"><span class="ct-cap"></span><span class="ct-window"><span class="ct-strip">' + ctStripHtml() + '</span></span></span>';
+        }
+        tilesEl.innerHTML = html;
+        lastDigitCount = n;
+        tileObjs = [];
+        tilesEl.querySelectorAll('.ct-reel[data-div]').forEach(function(reel){
+          tileObjs.push({ reel: reel, strip: reel.querySelector('.ct-strip'), div: parseInt(reel.getAttribute('data-div'), 10), last: null, lastFlash: 0, y: null, prevCount: null });
+        });
+        snapCalcTiles(value);
+        fitCalcTiles();
+      }
+      function setCalcTile(o, count, ts){
+        /* one frame of a reel: park the strip on the count, follow the colour,
+           flash the tile (throttled so it reads, not strobes).
+           The count is ROUNDED — the same rounding fmt() uses — so the tiles
+           and the text always agree ($37.50 reads $38 in both, never 37/38).
+           The strip must travel in ONE direction (down as the count rises, up
+           as it falls) and never reverse: it snaps only when the wrap would
+           send it the wrong way. The naive "y > o.y" test only works for a
+           rising count — for a falling count it snapped on every step, and
+           every snap forces a reflow, which stalled the roll on this page. */
+        count = Math.round(count);
+        var y = -((Math.floor(count / o.div) % 10) * CT_H);
+        var dir = (o.prevCount === null || count >= o.prevCount) ? 1 : -1;
+        if (o.y !== undefined && o.y !== null && (y - o.y) * dir > 0){
+          o.strip.style.transition = 'none';
+          o.strip.style.transform = 'translateY(' + y + 'px)';
+          void o.strip.offsetWidth;
+          o.strip.style.transition = '';
+        } else {
+          o.strip.style.transform = 'translateY(' + y + 'px)';
+        }
+        o.y = y;
+        o.prevCount = count;
+        var cur = Math.floor(count / o.div) % 10;
+        if (cur !== o.last){
+          o.reel.classList.remove('rest');
+          if (o.last !== null) o.reel.classList.remove('d' + o.last);
+          o.reel.classList.add('d' + cur);
+          o.last = cur;
+          if (ts - o.lastFlash > 120){
+            o.lastFlash = ts;
+            o.reel.classList.remove('flash');
+            void o.reel.offsetWidth;
+            o.reel.classList.add('flash');
+          }
+        }
+      }
+      function snapCalcTiles(val){
+        val = Math.round(val);
+        tileObjs.forEach(function(o){
+          var y = -((Math.floor(val / o.div) % 10) * CT_H);
+          o.strip.style.transition = 'none';
+          o.strip.style.transform = 'translateY(' + y + 'px)';
+          o.y = y;
+          o.prevCount = val;
+          var cur = Math.floor(val / o.div) % 10;
+          o.reel.classList.remove('rest');
+          if (o.last !== null) o.reel.classList.remove('d' + o.last);
+          o.reel.classList.add('d' + cur);
+          o.last = cur;
+        });
+        void tilesEl.offsetWidth;
+        tileObjs.forEach(function(o){ o.strip.style.transition = ''; });
+      }
+      function fitCalcTiles(){
+        /* no limit on the digits: shrink the whole number to fit its column */
+        var parent = tilesEl.parentElement;
+        if (!parent) return;
+        tilesEl.style.transform = '';
+        var avail = parent.clientWidth - 8;
+        var w = tilesEl.scrollWidth;
+        if (w > avail){
+          var s = avail / w;
+          tilesEl.style.transform = 'scale(' + s + ')';
+          tilesEl.style.transformOrigin = 'left center';
+        }
+      }
+      var portraitEl = document.getElementById('portrait-line');
+      function renderPortrait(){
+        /* J3: the identity portrait — live from goal + plan + pace + the
+           computed $, never a mock. It is rendered here, in update(), so it
+           follows every change to the calculator state. */
+        if (!portraitEl) return;
+        var monthly = monthlyFor(state.plan, state.pace, state.unit);
+        var yearly = monthly * 12;
+        var s = state.pace === 1 ? '' : 's';
+        var paceTxt = state.pace + ' ' + state.plan + ' sale' + s + ' a ' + state.unit;
+        var moneyTxt = fmt(monthly) + ' a month, ' + fmt(yearly) + ' a year';
+        if (state.goal){
+          portraitEl.textContent = 'You chose ' + state.goal + '. You\u2019re on ' + paceTxt + ' \u2014 ' + moneyTxt + '.';
+        } else {
+          portraitEl.textContent = 'You\u2019re on ' + paceTxt + ' \u2014 ' + moneyTxt + '. Pick a goal above to set your starting point.';
+        }
+      }
+      function animateAmount(target){
+        /* the tiled number drives the readout — the reels roll once to the
+           target (snap mode: a strip snaps when the wrap would send it the
+           wrong way, so the roll never reverses). The strip's own .3s
+           transition IS the roll — there is no per-frame loop, because a
+           per-frame loop with a forced reflow on every wrap stalled the
+           animation on this page. The text amount is kept as a
+           visually-hidden live region and is set here, in update(), so it
+           is never stale. */
+        var start = shown;
+        if (String(Math.round(target)).length !== String(Math.round(start)).length){
+          buildCalcTiles(target);
+          snapCalcTiles(start);
+        }
+        tileObjs.forEach(function(o){ setCalcTile(o, target, performance.now()); });
+        amountEl.textContent = fmt(target);
+        shown = target;
+      }
+      function update(){
+        var monthly = monthlyFor(state.plan, state.pace, state.unit);
+        var yearly = monthly * 12;
+        var s = state.pace === 1 ? '' : 's';
+        paceEl.textContent = state.pace;
+        paceSEl.textContent = s;
+        paceUnitEl.textContent = state.unit;
+        mathEl.textContent = state.pace + ' ' + state.plan + ' sale' + s + ' a ' + state.unit +
+          ' \u00d7 ' + fmt(state.share) + ' \u00d7 ' + (state.unit === 'day' ? '30 days' : '1 month') +
+          ' = ' + fmt(monthly) + ' a month (' + fmt(yearly) + ' a year)';
+        window._featuredDial = { score: monthly, deltas: {} };
+        animateAmount(monthly);
+        document.querySelectorAll('.calc-plan').forEach(function(b){
+          b.classList.toggle('is-on', b.getAttribute('data-plan') === state.plan);
+        });
+        document.querySelectorAll('.calc-unit-btn').forEach(function(b){
+          b.classList.toggle('is-on', b.getAttribute('data-unit') === state.unit);
+        });
+        renderPortrait();
+      }
+      function setPlan(name){
+        state.plan = name; state.share = planByName(name).share; update();
+      }
+      function setGoal(goal, plan, pace, unit){
+        /* J1: a goal choice is a starting preset — plan + pace + unit + the
+           goal itself, in one update, so the tiles roll once. */
+        state.goal = goal; state.plan = plan; state.share = planByName(plan).share;
+        state.pace = pace; state.unit = unit; update();
+      }
+      planBtns.forEach(function(b){
+        b.addEventListener('click', function(){ setPlan(b.getAttribute('data-plan')); });
+      });
+      document.querySelectorAll('.calc-unit-btn').forEach(function(b){
+        b.addEventListener('click', function(){ state.unit = b.getAttribute('data-unit'); update(); });
+      });
+      var minus = document.getElementById('calc-minus'), plus = document.getElementById('calc-plus');
+      if(minus) minus.addEventListener('click', function(){ state.pace = Math.max(1, state.pace - 1); update(); });
+      if(plus) plus.addEventListener('click', function(){
+        var cap = state.unit === 'day' ? 30 : 100;
+        state.pace = Math.min(cap, state.pace + 1); update();
+      });
+      // Example buttons are page content: their labels are recomputed from the config.
+      document.querySelectorAll('.calc-ex').forEach(function(b){
+        var p = b.getAttribute('data-plan'), pc = parseInt(b.getAttribute('data-pace'), 10),
+            u = b.getAttribute('data-unit');
+        b.textContent = pc + ' ' + p + ' a ' + u + ' \u2192 ' + fmt(monthlyFor(p, pc, u)) + '/mo';
+        b.addEventListener('click', function(){
+          state.plan = p; state.share = planByName(p).share; state.pace = pc; state.unit = u;
+          update();
+        });
+      });
+      // Mount the harvested Dashboard speedometer, then drive it.
+      window._featuredDial = { score: shown, deltas: {} };
+      var mount = document.getElementById(cfg.gaugeMount);
+      if(mount && window.TnTacho && window.TnTacho.mount) window.TnTacho.mount(mount);
+      buildCalcTiles(shown);
+      window.addEventListener('resize', fitCalcTiles);
+      update();
+      // Auto-sweep: the page shows you the top shape on arrival.
+      var sweep = cfg.autoSweep;
+      if(sweep) setTimeout(function(){
+        state.plan = sweep.plan; state.share = planByName(sweep.plan).share;
+        state.pace = sweep.pace; state.unit = sweep.unit;
+        update();
+      }, sweep.delayMs || 1500);
+      window.NayaCalc = { config: cfg, update: update, setPlan: setPlan, setGoal: setGoal, state: state };
+    })();
+    </script>
+/* CLAIM — fix1 lines 2381-2395 */
+<script>
+    var claimBtns = document.querySelectorAll('a[data-claim]');
+    var inputs = document.querySelectorAll('.claim-name');
+    function slug(v){ return v.toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,32); }
+    function sync(src){
+      var s = slug(src ? src.value : '');
+      var href = 'https://nayanet.app/' + (s || 'yourname');
+      claimBtns.forEach(function(a){ a.href = href; });
+      inputs.forEach(function(i){ if (src && i !== src) i.value = src.value; });
+    }
+    inputs.forEach(function(i){ i.addEventListener('input', function(){ sync(i); }); });
+  })();
+  // ADDITION 12 — the demo: three questions -> world -> gauge -> score card.
+  // The score is COMPUTED from the answers (base 10 + Q1 20/25/30 + Q2 15/20/25
+  // + Q3 20/25/30 = 65-95). Each answer activates its trio of the nine systems
+  // (a partition of the nine each time) and opens its doors (real areas from
+</script>
+/* BOTTOM BAR — Hub lines 4997-5055 (NayaInstall NOT carried; tap() falls back to the absolute Hub URLs) */
+<script>
+  window.NayaNotif = window.NayaNotif || {
+    get(k) { try { return parseInt(localStorage.getItem('nayanet.notif.' + k) || '0', 10) || 0; } catch (e) { return 0; } },
+    set(k, n) { try { localStorage.setItem('nayanet.notif.' + k, String(n)); } catch (e) {} },
+    bump(k) { this.set(k, this.get(k) + 1); this.refresh(); },
+    counts() {
+      var unread = 0;
+      try { var seen = this.get('seen.activity'); unread = Math.max(0, ActivityLog.read().length - seen); } catch (e) {}
+      return { mail: this.get('mail'), activity: unread, spaces: this.get('spaces') };
+    },
+    refresh() {
+      var bar = document.getElementById('naya-notif-bar'); if (!bar) return;
+      var c = this.counts();
+      bar.querySelectorAll('[data-notif]').forEach(function (seg) {
+        var k = seg.getAttribute('data-notif'), n = c[k] || 0;
+        var bub = seg.querySelector('.notif-count');
+        seg.classList.toggle('has-news', n > 0);
+        if (bub) { bub.textContent = n > 9 ? '9+' : String(n); bub.style.display = n > 0 ? 'flex' : 'none'; }
+      });
+    },
+    tap(k) {
+      var urls = {mail: 'https://nayanet.app/hub/#/hub/mail', activity: 'https://nayanet.app/hub/#/hub/feed-activity', spaces: 'https://nayanet.app/hub/#/hub/spaces'};
+      if (k === 'mail') { this.set('mail', 0); }
+      else if (k === 'activity') { try { this.set('seen.activity', ActivityLog.read().length); } catch (e) {} }
+      else if (k === 'spaces') { this.set('spaces', 0); }
+      if (window.NayaRouter) { window.NayaRouter.navigate('/hub/' + (k === 'activity' ? 'feed-activity' : k)); }
+      else if (urls[k]) { location.href = urls[k]; }
+      this.refresh();
+    },
+    init() {
+      var bar = document.getElementById('naya-notif-bar');
+      if (bar) { document.body.classList.add('has-notif'); this.refresh(); return; }
+      var self = this;
+      var ICONS = {
+        mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
+        activity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg>',
+        spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg>'
+      };
+      var SEGS = [['mail', 'MAIL', '#3fb8ff'], ['activity', 'ACTIVITY', '#2fe89e'], ['spaces', 'SPACES', '#ffbf3d']];
+      bar = document.createElement('nav'); bar.id = 'naya-notif-bar'; bar.className = 'notif-bar';
+      bar.setAttribute('aria-label', 'Notifications');
+      var row = document.createElement('div'); row.className = 'notif-row';
+      SEGS.forEach(function (s) {
+        var b = document.createElement('button'); b.type = 'button'; b.className = 'notif-seg';
+        b.setAttribute('data-notif', s[0]); b.style.setProperty('--nc', s[2]);
+        b.setAttribute('aria-label', s[1] + ' — open');
+        b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span><span class="notif-lbl">' + s[1] + '</span>';
+        b.addEventListener('click', function () { self.tap(s[0]); });
+        row.appendChild(b);
+      });
+      bar.appendChild(row); document.body.appendChild(bar);
+      document.body.classList.add('has-notif');
+      window.addEventListener('storage', function () { self.refresh(); });
+      this.refresh();
+    }
+  };
+  window.NayaNotif.init();
+</script>
+/* DETAIL VIEW — Amendment 1 §2 (the overlay glue; the 7-part data is above) */
+<script>
+var FEATURE_DETAILS = {"apps": ["Smart apps", [["In a nutshell", "The four apps — Dashboard, Personal, Business, Space. Your whole world, in four rooms, all connected."], ["What’s in it for you", "One home for everything you do. No more jumping between a dozen apps that don’t talk to each other."], ["How to use it", "Open any app from your world. They share the same lists, the same mail, the same ledger — what you do in one shows up in the others."], ["Why it’s valuable", "Your world is one system, not four subscriptions. Everything you build in one app is already in the others."], ["What problem it solves", "The old internet is a pile of separate apps that don’t know each other. Your life is scattered across them."], ["The pain point it solves", "You pay for four tools, re-enter the same thing four times, and still can’t find anything."], ["How it’s different", "Four apps, one world. They were built as one system from the start — not bolted together after."]]], "personal": ["Personal", [["In a nutshell", "Personal is your world, personal. Your home on the new internet — your profile, your pages, your world, yours."], ["What’s in it for you", "A place that’s yours. Your words, your pictures, your world — presented the way you want it."], ["How to use it", "Build your Personal world from your onboarding answers. Add your pages, your links, your notes — it grows with you."], ["Why it’s valuable", "Your identity lives in one place. People find you, know you, and connect with you — on your terms."], ["What problem it solves", "On the old internet, you’re a profile on somebody else’s platform. They own the page; you rent a corner of it."], ["The pain point it solves", "You build a following on a platform that can change the rules, hide your posts, or close your account."], ["How it’s different", "Personal is YOUR world, not a profile on their platform. You own it. Nobody can take it or throttle it."]]], "business": ["Business", [["In a nutshell", "Business is your business, in its own world. Your products, your services, your customers — one place."], ["What’s in it for you", "Your business has a home, not a listing. People see what you sell, book you, and pay you — right there."], ["How to use it", "Add your products and services to your Business world. Link your PayPal, set your prices, and let people buy."], ["Why it’s valuable", "You sell where you live. No marketplace taking a cut, no algorithm deciding who sees you."], ["What problem it solves", "Small businesses live on marketplaces that take a cut and hide them behind a search box."], ["The pain point it solves", "You do the work, the platform takes the fee, and the customer belongs to them — not to you."], ["How it’s different", "Your Business world is yours. The customer is yours. The sale is yours. Naya just runs the machine."]]], "space": ["Space", [["In a nutshell", "A Space is a world for what you are building. A project, a group, a community — its own room, its own people."], ["What’s in it for you", "Build anything with anyone. A Space gives your project a home, a feed, and a team — in one tap."], ["How to use it", "Create a Space from any note, any idea, any conversation. Invite people in, give them a role, and build together."], ["Why it’s valuable", "Ideas become rooms. Rooms become teams. Teams build things that one person never could."], ["What problem it solves", "Group chats die, projects scatter across apps, and nobody knows where the work actually lives."], ["The pain point it solves", "You have the idea, but no place to gather the people and the work — so the idea dies in a chat thread."], ["How it’s different", "A Space is a living world, not a chat. The work, the people, and the conversation live in one place."]]], "membership": ["Membership", [["In a nutshell", "Membership is Smart Access — any product behind a pay door. A video, an audio, a package: they pay, the login arrives by Smart Mail."], ["What’s in it for you", "Sell what you know. Your course, your videos, your package — behind a door you own, with the money coming to you."], ["How to use it", "Create a membership on any page. Set the price, paste your PayPal link, and share it. Members pay, the login arrives by Smart Mail."], ["Why it’s valuable", "You earn 50% of the revenue — and if somebody joins NayaNET through your membership area, you get credited."], ["What problem it solves", "Creators give their best work to platforms that take most of the money and own the audience."], ["The pain point it solves", "You make the course, the platform takes the cut, and you never meet the people who paid for it."], ["How it’s different", "Your membership, your door, your people. You keep the relationship — and half the revenue, paid the moment we’re paid."]]], "mail": ["Smart Mail", [["In a nutshell", "Smart Mail is mail and messenger in one inbox. Mail and message anybody — people and Nias, together."], ["What’s in it for you", "One inbox for everything. Your mail, your messages, your logins — all in one place, all connected to your world."], ["How to use it", "Write to anybody by name or by topic. Your login codes arrive by Smart Mail — never by email you have to hunt for."], ["Why it’s valuable", "Your messages reach people who want to hear from you — and nobody you don’t. You choose exactly who can reach you."], ["What problem it solves", "Email is a swamp of spam, and messengers are a dozen separate apps that don’t talk to each other."], ["The pain point it solves", "You miss the message that matters because it’s buried under a hundred you never asked for."], ["How it’s different", "One inbox, one system. Mail and message are the same conversation — and it connects to your lists, your spaces, your world."]]], "notes": ["Smart Notes", [["In a nutshell", "Smart Notes are your knowledge, saved and shared. Capture what matters, in seconds — and it compounds."], ["What’s in it for you", "Never lose a good idea again. Your notes are saved, organised, and shared with the network — and everybody gets smarter."], ["How to use it", "Write a note — a thought, a lesson, a link. It saves to your Box, shows in your Lists, and reaches the people it helps."], ["Why it’s valuable", "Your knowledge earns. Every note is worth 35 points, and the network learns from it — day after day, it compounds."], ["What problem it solves", "Good ideas die in notebooks and chat threads. The person who needed them never sees them."], ["The pain point it solves", "You figured something out once, then spent an hour trying to remember where you wrote it down."], ["How it’s different", "A note here is not a file — it’s intelligence. It connects to the network, it finds the people it helps, and it never gets lost."]]], "box": ["Smart Box", [["In a nutshell", "Smart Box is memory and organisation — storage that organises itself. Your files, your notes, your media — filed for you."], ["What’s in it for you", "Never organise anything by hand again. The Box files it, labels it, and finds it when you need it."], ["How to use it", "Save anything to your Box. It organises itself — by topic, by person, by project — and you just ask for it."], ["Why it’s valuable", "Your memory becomes searchable. What took an hour to find now takes a second — and nothing is ever lost."], ["What problem it solves", "Files pile up in folders nobody remembers. You know you saved it — you just can’t find it."], ["The pain point it solves", "You pay for storage you can’t use, because finding anything in it takes longer than doing it again."], ["How it’s different", "The Box is not a drive — it’s a memory. It knows what you saved, why it matters, and where it belongs."]]], "reports": ["Intelligent reports", [["In a nutshell", "Intelligent reports are your days, written up for you — daily, weekly, monthly. Look back on any day and see what went on in your world."], ["What’s in it for you", "You never forget what happened. Your reports tell you what you did, what you learned, and what changed — every day."], ["How to use it", "Open your Dashboard. Your daily report is there — what you did, who you met, what you earned, what you learned."], ["Why it’s valuable", "Your life becomes a record you can learn from. Patterns you couldn’t see become obvious — and you get better every week."], ["What problem it solves", "Days blur together. You can’t remember what you did last Tuesday, let alone what it taught you."], ["The pain point it solves", "You keep making the same mistake because you never stopped to see the pattern."], ["How it’s different", "A report here is not a spreadsheet — it’s your story, told back to you, with the lessons already pulled out."]]], "lists": ["Smart Lists", [["In a nutshell", "Smart Lists are the view — your connections and your notes, organised. The Box is the store; Lists are the view."], ["What’s in it for you", "Everything you care about, in lists that keep themselves. People, notes, projects — all in one place, always current."], ["How to use it", "Make a list from anything — a topic, a person, a project. It fills itself from your Box and stays in sync."], ["Why it’s valuable", "You stop hunting. The list you need is already made, already full, and already up to date."], ["What problem it solves", "Contacts live in one app, notes in another, and the list you need is always the one you didn’t make."], ["The pain point it solves", "You know the person, you just can’t find them — and by the time you do, the moment’s gone."], ["How it’s different", "A List here is alive. It updates itself from your world — you never build it twice."]]], "links": ["Smart Links", [["In a nutshell", "Smart Links are your links, made smart. One link for anything — and it tracks the click, the return, and the sale."], ["What’s in it for you", "Every link you share works for you. Your ambassador link is the default — share it, and you get credited when people join."], ["How to use it", "Make a Smart Link for anything — a page, a product, a payment. Share it anywhere; the clicks and returns are counted."], ["Why it’s valuable", "Your links earn. Share your ambassador link, somebody joins, and you get credited — 50% of the revenue, paid the moment we’re paid."], ["What problem it solves", "Links are dumb. You share one, and you never know if anybody clicked it, let alone bought anything."], ["The pain point it solves", "You send people to a payment page and have no idea whether they paid — or whether you got anything for it."], ["How it’s different", "A Smart Link is not a URL — it’s a tracked, credited, intelligent link. It knows where it goes and who it rewards."]]], "projects": ["Your projects", [["In a nutshell", "Your projects — the things you’re building, all in one place. Three on free, unlimited when you have power."], ["What’s in it for you", "Every project has a home. Your ideas, your builds, your launches — organised, visible, and moving."], ["How to use it", "Start a project from any idea. It gets a Space, a list, and a feed — and the people who want to help find it."], ["Why it’s valuable", "Projects stop dying. When a project has a home, it gets finished — and finished projects earn."], ["What problem it solves", "Projects live in your head, in a doc, in a chat — and nowhere all together. So they stall."], ["The pain point it solves", "You started five things and finished none, because none of them had a place to live."], ["How it’s different", "A project here is a world, not a task. It has people, a feed, and a home — so it actually gets done."]]], "intel": ["Daily highlights / Intel", [["In a nutshell", "Daily highlights and Intel — the feed that knows you. The system organises and syncs what matters to your world."], ["What’s in it for you", "You see what matters, and nothing you don’t. Your feed is your world — the notes, the people, the opportunities that fit you."], ["How to use it", "Open your feed. The top three highlights are there every day — and the full Intel feed is there when you want more."], ["Why it’s valuable", "Your attention stops being wasted. The feed shows you the three things that matter — not the three thousand that don’t."], ["What problem it solves", "Feeds are designed to keep you scrolling, not to help you. They show you what pays them, not what helps you."], ["The pain point it solves", "You open the feed for a second and lose an hour — and you can’t name one useful thing you saw."], ["How it’s different", "This feed is yours. It organises for you, not for advertisers — and it shows you what moves your world forward."]]], "audio": ["Audio calls", [["In a nutshell", "Audio calls — talk to up to 10 people, right inside your world. Smart Meet is a feature, not a separate app."], ["What’s in it for you", "Talk, don’t type. Gather your team on audio in one tap — no link, no download, no separate app."], ["How to use it", "Open a Space or a conversation and tap audio. Up to 10 people join — and the call lives in your world, not in a separate tool."], ["Why it’s valuable", "Conversations happen where the work is. No switching apps, no lost context, no ‘can you hear me’ on a tool nobody likes."], ["What problem it solves", "Calls live in separate apps. You leave your work to take a call, and the call has no memory of the work."], ["The pain point it solves", "You spend the first five minutes of every call finding the link, and the next ten re-explaining what you were doing."], ["How it’s different", "Audio here is part of the world. The call, the people, and the work are in the same place — so nothing is lost."]]], "video": ["Video calls", [["In a nutshell", "Video calls — see up to 6 people, face to face, inside your world. Smart Meet is a feature, not a separate app."], ["What’s in it for you", "Meet face to face without leaving your world. Your team, your Space, your conversation — on video, in one tap."], ["How to use it", "Open a Space or a conversation and tap video. Up to 6 people join — and the call lives in your world."], ["Why it’s valuable", "You see the people you build with. Trust grows faster face to face — and the work is right there beside the call."], ["What problem it solves", "Video lives in separate apps that charge by the seat and forget the conversation the moment it ends."], ["The pain point it solves", "You pay for a video tool, then pay again to record it, then lose the recording in a folder nobody opens."], ["How it’s different", "Video here is part of the world. The call, the notes, and the people are together — so the meeting is never lost."]]], "media": ["Media — voice & video notes", [["In a nutshell", "Media — voice and video notes. Record what you mean, in your own voice, and send it in seconds."], ["What’s in it for you", "Say it instead of typing it. A voice note carries the meaning a message loses — and it takes seconds, not minutes."], ["How to use it", "Hold to record a voice or video note, in any message or any note. It saves to your Box and plays anywhere."], ["Why it’s valuable", "Your voice is your fastest tool. A minute of talking says what ten minutes of typing can’t — and it’s saved."], ["What problem it solves", "Text flattens everything. Tone, warmth, urgency — all lost — and long messages never get read."], ["The pain point it solves", "You type a long message, they skim it, and the one thing that mattered gets missed."], ["How it’s different", "Media here is a note, not a file. It lives with the conversation, it’s searchable, and it plays in place."]]], "ai": ["Your own AI", [["In a nutshell", "Your own AI — plugged into the network. She is the mothership for all AIs: plug any AI into her and she makes it a supercar."], ["What’s in it for you", "Your AI gets a supercharger. Whatever AI you use — ChatGPT, Muse, Claude — Naya makes it work for you, in your world."], ["How to use it", "Connect your AI to your world. It reads your notes, your lists, your projects — and works with your context, not without it."], ["Why it’s valuable", "An AI without context is a stranger. Yours knows your world — so its answers are yours, not generic."], ["What problem it solves", "Every AI starts from zero. You re-explain yourself every time, and it forgets you the moment you leave."], ["The pain point it solves", "You pay for an AI that doesn’t know you, doesn’t remember you, and gives you the same answer it gives everyone."], ["How it’s different", "Your AI here lives in your world. It knows your notes, your people, your projects — and it gets smarter with you."]]], "affiliate": ["Affiliate system", [["In a nutshell", "The Affiliate system — run affiliates on your own products. Others sell your products, and you earn."], ["What’s in it for you", "Your customers become your sales team. They share your products, people buy, and everybody earns."], ["How to use it", "Turn on affiliates for any product. Share your affiliate link, and the system tracks every sale and pays every affiliate."], ["Why it’s valuable", "Your reach multiplies. Every affiliate is a salesperson you don’t pay until they sell — and they earn 50% too."], ["What problem it solves", "Selling alone is slow. You can only reach the people you already know — and they can only reach the people they know."], ["The pain point it solves", "You have a great product and nobody hears about it, because you can’t afford to advertise."], ["How it’s different", "Affiliates here are the network. Your product travels person to person, and every sale pays the people who made it happen."]]], "payouts": ["Affiliate payouts", [["In a nutshell", "Affiliate payouts — 50% of the revenue, paid the moment we’re paid. On every level, including free. First payout day 10, then daily."], ["What’s in it for you", "You earn from day one — even free. Share your link, somebody joins or buys, and you get half, the moment we’re paid."], ["How to use it", "Share your ambassador link or your affiliate link. When somebody joins or buys through it, your 50% is credited — and paid out from day 10, daily after that."], ["Why it’s valuable", "Half of everything you bring in is yours. No threshold, no waiting for a payout day, no fine print — the moment we’re paid, you’re paid."], ["What problem it solves", "Affiliate programs pay pennies, months late, and only after you hit a threshold most people never reach."], ["The pain point it solves", "You sent a hundred people to a product, earned a few dollars, and waited three months to see it."], ["How it’s different", "Here, 50% is 50% — on every level, including free — and it’s paid the moment we’re paid. First payout day 10, then daily."]]]};
+(function(){
+  var panel = document.getElementById('detailPanel');
+  var backdrop = document.getElementById('detailBackdrop');
+  var title = document.getElementById('detailTitle');
+  var body = document.getElementById('detailBody');
+  var lastFocus = null;
+  function openDetail(id){
+    var d = FEATURE_DETAILS[id]; if(!d) return;
+    lastFocus = document.activeElement;
+    title.textContent = d[0];
+    body.innerHTML = '';
+    d[1].forEach(function(part){
+      var block = document.createElement('div');
+      block.className = 'real-note';
+      var lab = document.createElement('div');
+      lab.className = 'rn-part';
+      lab.textContent = part[0].toUpperCase();
+      var p = document.createElement('p');
+      p.textContent = part[1];
+      block.appendChild(lab); block.appendChild(p);
+      body.appendChild(block);
+    });
+    panel.classList.add('open'); backdrop.classList.add('open');
+    document.getElementById('detailClose').focus();
+  }
+  function closeDetail(){
+    panel.classList.remove('open'); backdrop.classList.remove('open');
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  document.querySelectorAll('[data-feature]').forEach(function(btn){
+    btn.addEventListener('click', function(){ openDetail(btn.getAttribute('data-feature')); });
+  });
+  document.getElementById('detailClose').addEventListener('click', closeDetail);
+  backdrop.addEventListener('click', closeDetail);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && panel.classList.contains('open')) closeDetail(); });
+})();
+</script>
+</body>
+</html>
