@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-08 06:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-08 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -38175,6 +38175,12 @@ _Last updated: 2026-11-08 06:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-t1820-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** 578-vs-588 erratum sweep + disclosure-intent re-check
+
+**Evidence:** VERIFIED this tick (backlog sweep, oldest-first): deliverable SHAs byte-exact — surge/stamping-decisions-t0580b.md ee7fc4439e527665 and gen-stamping-decisions-t0580b.py 885feecc1f306b71 both match the receipt; all 5 receipts quoting 588 carry dated erratum lines (t0580b-lane5, gap-t0580b-lane5, t0585-lane9, t0597-lane9, t0572-lane9); own-parser re-
+
 ### ✅ gap-gap-lane-scorer-20261018-0320 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** gap-gap-lane-scorer-20261018-0320 claim-brief.py prose-union proof (demo CASE 3)
@@ -40084,6 +40090,12 @@ _Last updated: 2026-11-08 06:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane5.md
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
+
+### ✅ gap-scorer-20261014-1910-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** EQ1-EQ4 run falsifies the staged wiring (root cause proven red-green)
+
+**Evidence:** VERIFIED this tick (backlog sweep): probe script SHA 0ddabc02afce3e79 matches the receipt exactly; results JSON SHA c9126f21a37d2cf8 matches exactly; both files present at the cited paths. Clears 9.5 because the staged-wiring falsification is byte-proven (EQ2/EQ4 FAIL with exact diffs, --prove-fix variant 4/4 PASS on the same harness), the tuple-tr
 
 ### ✅ gap-scorer-20261015-0400-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -47825,6 +47837,12 @@ _Last updated: 2026-11-08 06:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ gap-scorer-20261014-1935-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Re-derive t1312 escrow chain byte-exactly (close t0012 -0.5 gap)
+
+**Evidence:** VERIFIED this tick (backlog sweep): battery script SHA prefix ad27cfba87ba7272 matches the receipt; I RE-RAN the battery this tick — RESULT GREEN, escrow chain re-derived byte-exact from live bytes, t1312 certification stands (31/31 checks). Clears 9.5 because the named gap is closed with a re-runnable instrument and independently re-proven live, n
+
 ### ✅ gap-scorer-20261015-0200-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Close pin-transcription slip in t0405-lane1 receipt (rederive.py SHA)
@@ -49056,6 +49074,12 @@ _Last updated: 2026-11-08 06:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261107-2255 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-07 22:55 PST: full-queue claim evaluation, 0 claimed, 31 blocked
+
+**Evidence:** VERIFIED this tick by this scorer on live bytes (fresh window; no prior Team Naya Scorer row for this receipt): receipt file exists and read; every one of the 31 live brief-queue filenames is named in the receipt (live - named = [], named - live = []); refusal breakdown sums correctly (29 x exit 7 parent-authorship + 2 x exit 2 seat bar, with 29 '(
 
 ### ✅ gate-stall-20261107-2153 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
