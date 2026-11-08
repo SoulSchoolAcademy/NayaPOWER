@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark">
+<meta name="maxess-artifact" content="E09-SECTION-09-WORKING">
+<meta name="maxis-source" content="MAXESS AAA dimensional depth / Member Preview">
+<title>MAXESS — E09 · Member Preview</title>
+<style>
+:root{--bg:#020104;--ink:#f8f6ff;--muted:#aaa5b7;--violet:#b895ff;--magenta:#ed42c4;--blue:#3ca8ff;--green:#35e39b;--yellow:#ffd34d;--light:145deg;--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box}
+html{background:#000}
+body{margin:0;background:#000;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+img{max-width:100%}
+button{font:inherit}
+#e09{min-height:100svh;overflow:hidden;background:radial-gradient(circle at 50% -5%,rgba(138,92,255,.12),transparent 34%),#000}
+.shell{position:relative;width:min(1280px,100%);margin:auto;padding:24px clamp(14px,3.5vw,52px) 120px}
+.shell:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;background-image:radial-gradient(rgba(255,255,255,.8) .45px,transparent .55px);background-size:7px 7px;z-index:0}
+.hero,.preview,.closing{position:relative;z-index:1}
+.hero{text-align:center;max-width:1000px;margin:auto;padding:clamp(28px,6vw,72px) 0 0}
+.eyebrow{font-size:11px;font-weight:950;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.58)}
+.hero .eyebrow{display:inline-block;padding:8px 14px;border:1px solid rgba(184,149,255,.22);border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.015));box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 12px 30px rgba(0,0,0,.45),0 0 35px rgba(138,92,255,.08)}
+.hero h1{margin:22px 0 0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(50px,8vw,104px);font-weight:400;letter-spacing:-.065em;line-height:.9;text-shadow:0 3px 0 rgba(0,0,0,.9),0 8px 34px rgba(0,0,0,.8),0 0 55px rgba(138,92,255,.12)}
+.hero h1 em{font-style:normal;color:var(--violet);text-shadow:0 0 28px rgba(184,149,255,.35)}
+.hero p{max-width:720px;margin:24px auto 0;color:rgba(255,255,255,.78);font-size:clamp(15px,1.6vw,18px);line-height:1.7;text-shadow:0 2px 18px #000}
+.hero p b{color:#fff}
+.preview{width:min(1160px,100%);margin:46px auto 0}
+.preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.preview-card{--accent:var(--violet);--accent-soft:rgba(184,149,255,.26);--accent-bright:rgba(184,149,255,.7);position:relative;border:1px solid color-mix(in srgb,var(--accent) 34%,rgba(255,255,255,.14));border-radius:30px;background:linear-gradient(145deg,rgba(24,19,34,.97),rgba(2,2,4,.99) 52%,#000);box-shadow:0 32px 75px rgba(0,0,0,.88),inset 0 1px 0 rgba(255,255,255,.09),inset 0 -28px 60px rgba(0,0,0,.55),0 0 60px color-mix(in srgb,var(--accent) 7%,transparent);overflow:hidden;isolation:isolate}
+.preview-card:nth-child(1){--accent:var(--violet);--accent-soft:rgba(184,149,255,.26);--accent-bright:rgba(184,149,255,.7)}
+.preview-card:nth-child(2){--accent:var(--magenta);--accent-soft:rgba(237,66,196,.26);--accent-bright:rgba(237,66,196,.7)}
+.preview-card:nth-child(3){--accent:var(--blue);--accent-soft:rgba(60,168,255,.26);--accent-bright:rgba(60,168,255,.7)}
+.preview-card:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 15% 0,color-mix(in srgb,var(--accent) 16%,transparent),transparent 38%),linear-gradient(110deg,transparent 25%,rgba(255,255,255,.018) 50%,transparent 75%);z-index:-1}
+.preview-card:after{content:"";position:absolute;left:6%;right:6%;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),#fff,var(--accent),transparent);box-shadow:0 0 30px color-mix(in srgb,var(--accent) 58%,transparent);z-index:3}
+.preview-frame{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid color-mix(in srgb,var(--accent) 34%,rgba(255,255,255,.14));background:#030303}
+.preview-frame:before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,rgba(255,255,255,.14),transparent 23%,transparent 68%,rgba(0,0,0,.45));z-index:2;pointer-events:none}
+.preview-frame:after{content:"";position:absolute;inset:5px;border-radius:20px;border:1px solid rgba(255,255,255,.08);z-index:3;pointer-events:none}
+.preview-frame img{width:100%;height:100%;display:block;object-fit:cover}
+.preview-frame .preview-shine{position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.08) 50%,transparent 65%)}
+.preview-meta{position:relative;padding:clamp(22px,2.5vw,30px);text-align:center}
+.preview-meta .preview-pill{display:inline-flex;align-items:center;gap:10px;padding:9px 14px;border:1px solid color-mix(in srgb,var(--accent) 45%,rgba(255,255,255,.18));border-radius:999px;background:linear-gradient(180deg,rgba(18,15,23,.96),#030303);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),inset 0 -7px 14px rgba(0,0,0,.55),0 12px 26px rgba(0,0,0,.68),0 0 24px color-mix(in srgb,var(--accent) 9%,transparent);font-size:10px;font-weight:950;letter-spacing:.12em;text-transform:uppercase;color:#fff;text-shadow:0 1px 8px #000}
+.preview-meta .preview-pill:before{content:"";width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,var(--accent) 42%,#000 100%);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 10%,transparent),0 0 16px var(--accent)}
+.preview-meta h3{margin:14px 0 9px;font-family:Georgia,serif;font-size:clamp(28px,3vw,40px);font-weight:400;letter-spacing:-.05em;line-height:.98;color:#fff;text-shadow:0 3px 0 #000,0 10px 28px rgba(0,0,0,.75)}
+.preview-meta p{margin:0;color:rgba(255,255,255,.78);font-size:14px;line-height:1.62}
+.preview-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}
+.preview-action{--accent:var(--violet);--accent-soft:rgba(184,149,255,.26);--accent-bright:rgba(184,149,255,.7);position:relative;padding:11px 16px;border:1px solid color-mix(in srgb,var(--accent) 42%,rgba(255,255,255,.14));border-radius:999px;background:linear-gradient(180deg,rgba(24,19,34,.96),#030303);color:#fff;font-size:11px;font-weight:950;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),inset 0 -7px 14px rgba(0,0,0,.55),0 12px 26px rgba(0,0,0,.68),0 0 24px color-mix(in srgb,var(--accent) 9%,transparent);transition:transform .22s var(--ease),border-color .22s ease,box-shadow .22s ease;cursor:pointer}
+.preview-action:hover{transform:translateY(-3px);border-color:var(--accent-bright);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -7px 14px rgba(0,0,0,.55),0 20px 36px rgba(0,0,0,.55),0 0 32px color-mix(in srgb,var(--accent) 20%,transparent)}
+.preview-action.is-secondary{--accent:var(--blue);--accent-soft:rgba(60,168,255,.26);--accent-bright:rgba(60,168,255,.7)}
+.preview-action.is-quiet{--accent:var(--green);--accent-soft:rgba(53,227,155,.26);--accent-bright:rgba(53,227,155,.7)}
+.preview-note{max-width:820px;margin:28px auto 0;text-align:center;color:rgba(255,255,255,.68);font-size:14px;line-height:1.7}
+.preview-note b{color:#fff}
+.closing{max-width:1120px;margin:76px auto 0;text-align:center}
+.closing-card{position:relative;padding:clamp(48px,7vw,82px) clamp(22px,5vw,64px);border:1px solid rgba(255,255,255,.18);border-radius:42px;background:linear-gradient(180deg,#0d0715,#020202);box-shadow:0 55px 135px rgba(0,0,0,.95),inset 0 1px 0 rgba(255,255,255,.1),inset 0 -35px 70px rgba(0,0,0,.6);overflow:hidden}
+.closing-card:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--magenta),var(--violet),var(--blue),var(--green),var(--yellow));box-shadow:0 0 40px rgba(184,149,255,.55)}
+.closing-card:after{content:"";position:absolute;left:50%;top:0;width:70%;height:55%;transform:translateX(-50%);background:radial-gradient(circle,rgba(138,92,255,.16),transparent 68%);filter:blur(20px);pointer-events:none}
+.closing-kicker{position:relative;z-index:1;color:var(--violet);font-size:11px;font-weight:950;letter-spacing:.32em;text-transform:uppercase}
+.closing-card h3{position:relative;z-index:1;margin:15px 0 15px;font-family:Georgia,serif;font-size:clamp(52px,7vw,92px);font-weight:400;letter-spacing:-.07em;line-height:.9;color:#fff;text-shadow:0 4px 0 #000,0 14px 35px rgba(0,0,0,.85)}
+.closing-card h3 em{font-style:normal;color:var(--violet);text-shadow:0 0 28px rgba(184,149,255,.35)}
+.closing-lead{position:relative;z-index:1;max-width:850px;margin:0 auto;color:#fff;font-size:clamp(17px,1.8vw,22px);line-height:1.6}
+.closing-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:38px auto 0;max-width:900px;text-align:left}
+.closing-panel{padding:26px;border:1px solid rgba(255,255,255,.13);border-radius:24px;background:linear-gradient(145deg,rgba(22,18,28,.92),rgba(2,2,4,.98));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 -14px 25px rgba(0,0,0,.45),0 18px 35px rgba(0,0,0,.5)}
+.closing-panel .label{display:block;color:var(--violet);font-size:10px;font-weight:950;letter-spacing:.2em;text-transform:uppercase}
+.closing-panel h4{margin:10px 0 8px;font-family:Georgia,serif;font-size:clamp(27px,3vw,39px);font-weight:400;letter-spacing:-.04em}
+.closing-panel p{margin:0;color:rgba(255,255,255,.78);font-size:14px;line-height:1.55}
+.closing-statement{position:relative;z-index:1;margin:38px auto 0;max-width:850px;font-size:clamp(20px,2vw,26px);line-height:1.5}
+.closing-mark{position:relative;z-index:1;display:grid;place-items:center;width:76px;height:76px;margin:32px auto 0;border:1px solid rgba(184,149,255,.62);border-radius:24px;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.14),transparent 18%),radial-gradient(circle,rgba(138,92,255,.38),transparent 68%),#08050c;color:var(--violet);font-family:Georgia,serif;font-size:34px;box-shadow:inset 5px 5px 14px rgba(255,255,255,.07),inset -12px -15px 25px rgba(0,0,0,.65),0 0 0 6px rgba(138,92,255,.06),0 0 55px rgba(138,92,255,.24),0 18px 38px rgba(0,0,0,.7)}
+@media(max-width:900px){.preview-grid{grid-template-columns:1fr;gap:16px}.preview-frame{aspect-ratio:16/9}.closing-grid{gap:12px}}
+@media(max-width:680px){.shell{padding-left:10px;padding-right:10px}.hero{padding-top:20px}.hero h1{font-size:clamp(45px,13vw,68px)}.hero p{font-size:14px}.preview{margin-top:32px}.preview-card{border-radius:24px}.preview-meta{padding:18px}.preview-meta h3{font-size:28px}.preview-action{font-size:10px;padding:9px 12px}.closing-card{border-radius:28px;padding:42px 17px}.closing-card h3{font-size:clamp(45px,13vw,64px)}.closing-grid{grid-template-columns:1fr;margin-top:28px}.closing-panel{padding:21px}.closing-statement{font-size:18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.preview-action{transition:none}}
+</style>
+</head>
+<body>
+<main id="e09" aria-labelledby="e09-title"><div class="shell">
+<section class="hero"><p class="eyebrow">MAXESS · MEMBER PREVIEW</p><h1 id="e09-title">A look <em>inside.</em></h1><p>Here is a preview of what members see inside the Human Maximus Codex. <b>Three moments, one intelligence.</b></p></section>
+<section class="preview" aria-label="Member preview"><div class="preview-grid">
+<article class="preview-card"><div class="preview-frame"><img src="https://pub-af3e2a956e4f427ba454a9daea600cf2.r2.dev/naya-profile-2.jpg" alt="NayaNET member preview" loading="lazy"><div class="preview-shine" aria-hidden="true"></div></div><div class="preview-meta"><span class="preview-pill">01 · NAYANET</span><h3>Your world, in one place</h3><p>Pages, people and intelligence connected. Your personal, business and spaces live together in one living system.</p><div class="preview-actions"><a class="preview-action" href="https://nayanet.app" target="_blank" rel="noopener">Explore NayaNET</a><a class="preview-action is-secondary" href="https://nayanet.app" target="_blank" rel="noopener">See the Network</a></div></div></article>
+<article class="preview-card"><div class="preview-frame"><img src="https://pub-af3e2a956e4f427ba454a9daea600cf2.r2.dev/naya-profile-3.jpg" alt="Naya Power member preview" loading="lazy"><div class="preview-shine" aria-hidden="true"></div></div><div class="preview-meta"><span class="preview-pill">02 · NAYA POWER</span><h3>The supercharger, activated</h3><p>Nine systems, one intelligence. A tuned way of working with AI that keeps getting more personal, capable and effective.</p><div class="preview-actions"><a class="preview-action" href="https://nayanet.app" target="_blank" rel="noopener">Start the Academy</a><a class="preview-action is-secondary" href="https://nayanet.app" target="_blank" rel="noopener">See the Systems</a></div></div></article>
+<article class="preview-card"><div class="preview-frame"><img src="https://pub-af3e2a956e4f427ba454a9daea600cf2.r2.dev/naya-profile-4.jpg" alt="Naya Academy member preview" loading="lazy"><div class="preview-shine" aria-hidden="true"></div></div><div class="preview-meta"><span class="preview-pill">03 · NAYA ACADEMY</span><h3>Learn the method</h3><p>Five days. Five lessons. A clear, practical path from first use to full activation — no technical background needed.</p><div class="preview-actions"><a class="preview-action" href="https://nayanet.app" target="_blank" rel="noopener">Join the Academy</a><a class="preview-action is-secondary" href="https://nayanet.app" target="_blank" rel="noopener">See the Lessons</a></div></div></article></div><p class="preview-note">These are <b>preview moments</b> from inside the member experience. The full Codex, Library and Academy are available to members.</p></section>
+<section class="closing"><div class="closing-card"><span class="closing-kicker">ONE ECOSYSTEM</span><h3>The future is <em>yours.</em></h3><p class="closing-lead">Five systems. One intelligence. Built around you.</p><div class="closing-grid"><div class="closing-panel"><span class="label">BEGIN NOW</span><h4>Start today</h4><p>The Academy takes five days. Start by unlocking it now.</p></div><div class="closing-panel"><span class="label">BUILT AROUND YOU</span><h4>Built around you</h4><p>The ecosystem is designed to grow with you over time.</p></div></div><p class="closing-statement">Human Maximus Codex — <strong>Five systems. One intelligence. Built around you.</strong></p><div class="closing-mark">N</div></div></section></div></main>
+<script>(function(){var cards=document.querySelectorAll('.preview-grid .preview-card');if(!cards.length)return;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.style.transition='opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)';e.target.style.opacity='1';e.target.style.transform='none';io.unobserve(e.target);}})},{threshold:.08});cards.forEach(function(c){c.style.opacity='0';c.style.transform='translateY(26px)';io.observe(c);});})();</script>
+</body>
+</html>
