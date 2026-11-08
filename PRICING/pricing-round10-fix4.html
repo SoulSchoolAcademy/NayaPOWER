@@ -1104,6 +1104,42 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
 @media (max-width:860px){
   .close-start .primo{padding:16px 20px; white-space:nowrap;}
 }
+
+/* ============ FIX 4c (2026-11-08, rev 10 same file — the captain's ruling, Option C) ============
+   Item 1 — DESKTOP CLOSE VISIBLE (the clip finding, unblocked). Fix 4b proved the
+   desktop close Start button is INVISIBLE at the landing: .slide{height:100vh;
+   overflow-y:auto} (line 90) clips #start's 1379px content in a 1080px box, so the
+   button sits 109-165px below the box bottom; its rect clears the bar by 15px but
+   elementFromPoint returns HTML, and the desk-close screenshot shows white space.
+   The ruling (Option C): #start{height:auto} at desktop only, so the last slide
+   grows to fit its content instead of clipping it.
+   NOT option A (shrink the stack >=165px — the 640px banner stays whole; cutting
+   the art to fit the box is cutting the page to fit the bug). NOT option B
+   (overflow:visible — it fights the mandatory snap and changes the deck's
+   clipping architecture). The -280px scroll-margin and 300px scroll room from 4b
+   STAY: #start's top does not move (5508 — the five slides above are unchanged),
+   the snap landing stays 5788, the button lands at viewport ~909-965, clearing
+   the bar top 979 by ~14px; the banner still shows ~359px. The document grows
+   by the slide's growth only: 6887 -> 7186 (1080 -> 1379 = +299); maxScroll
+   5807 -> 6106; snap 5788 stays reachable. With height:auto the slide's
+   overflow-y:auto is inert (no overflow to clip); the button is inside the
+   slide's layout, so elementFromPoint must return it. No min-height exists on
+   .slide to clear (grep: only the reduced-motion rule sets min-height, to 0). */
+@media (min-width:861px){
+  #start{height:auto;}
+}
+/* Item 2 — PHONE PILL-BOTTOM CLIP (try-if-safe, spacing only, no words, no art).
+   Baseline (4b, phone 390): the one-line pill 652-708, slide box bottom 703 —
+   5px below the box bottom; center returns the button, bottom edge returns HTML.
+   Shave the phone close stack by 10px: #start .trial-text margin-bottom 28px ->
+   18px at phone. The trial-text is the paragraph directly above the button and
+   is #start-only. After: content ~837px in the 842px box, button ~642-698, box
+   bottom 703 -> clears by ~5px. The phone snap (4463) does not move — the slide
+   top is unchanged and the slide height is viewport-driven, so the document
+   height stays 5316 and the snap stays reachable at maxScroll 4472. */
+@media (max-width:860px){
+  #start .trial-text{margin-bottom:18px;}
+}
 </style>
 </head>
 <body>
