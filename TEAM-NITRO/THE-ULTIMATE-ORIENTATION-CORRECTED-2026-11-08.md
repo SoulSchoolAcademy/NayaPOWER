@@ -1,8 +1,8 @@
 # THE ULTIMATE ORIENTATION — Corrected Edition (2026-11-08)
 
-**What this is:** Nitro's Ultimate Orientation (filed 2026-11-08, `workspace/user/files/THE-ULTIMATE-ORIENTATION.md`) with Shawn's own corrections of 2026-11-08 ~04:50Z applied in place. Nothing else was rewritten. Where Shawn ruled, his words govern; where he confirmed the original, the original stands and the earlier deduction is withdrawn.
-**Corrected by:** Naya Resolve, 2026-11-08. **Score history:** Resolve's first scorecard 8.2/10 → re-scored 9.0/10 after Shawn's corrections (two deductions were Resolve's errors, not the document's).
-**How to use it:** read the original for the full picture; read THIS edition for the law. Any conflict between the two resolves to this edition.
+**What this is:** Nitro's Ultimate Orientation (filed 2026-11-08, `workspace/user/files/THE-ULTIMATE-ORIENTATION.md`) with Shawn's own corrections of 2026-11-08 ~04:50Z applied in place. Nothing else was rewritten — except three sections that are new where the original was silent: §7 the daily heartbeat, §8 the state stamps, §10 the Lego rule. Where Shawn ruled, his words govern; where he confirmed the original, the original stands and the earlier deduction is withdrawn.
+**Corrected by:** Naya Resolve, 2026-11-08. **Score history:** Resolve's first scorecard 8.2/10 → re-scored 9.0/10 after Shawn's corrections (two deductions were Resolve's errors, not the document's). **Fix pass (2026-11-08):** beginning and end fine-tuned on Shawn's words in this file; the ten corrections (§1–§10) untouched.
+**How to use it:** new seats read THIS edition first — it is the law. Read the original after it, for the full picture. Any conflict between the two resolves to this edition. Two lines in the original are superseded, so do not follow them from the original: the merge line (§1 — "Never merge your own PRs… send him 'Shawn, merge:'") and the sequential build order (§6 — "build in this order; each finished and proven before the next").
 
 ---
 
@@ -78,7 +78,8 @@ Original taught harvest-first for components; Shawn sharpened why seats keep fai
 Everything else in the original stands as written and was confirmed in the same pass: the essence ("the intelligence that creates intelligence"), the circle, the chain (Note → Block → Feed → Box → Ledger → Dashboard → Auto-Match → Smart Link → Factory), the five gates, privacy by design, proof before report, the ladder ($25 / $50 / $100), the 9-day trial starting at Max, PayPal-first simple payments, and the closing test. The test gains one question from this edition:
 
 **11. Which stamp does a state claim need before you may call it live — and what are the other two stamps?**
+**Standing:** this edition governs. The original is the full picture behind it; where the two differ, this edition is the law.
 
 ---
 
-*Prepared for filing: this edition is the correction layer for `TEAM-NITRO/THE-ULTIMATE-ORIENTATION.md`. Remaining step is mechanical: file it alongside the original in GitHub and mail it to Nitro as the parallel path, so every new seat reads the corrected law, not yesterday's.*
+*Filed 2026-11-08 beside the original in GitHub (commit 834617066c91) and mailed to Nitro the same night — this edition is the law every new seat reads, not yesterday's. It is revised only on Shawn's word, and every revision is filed the same way.*
