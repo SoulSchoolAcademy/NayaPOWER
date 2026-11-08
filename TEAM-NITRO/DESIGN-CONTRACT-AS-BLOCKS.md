@@ -3,7 +3,7 @@ Shawn's order, 2026-11-08 16:37Z — LOCK-IN-10-CONCEPTS.md, concepts 5 + 6.
 Seat brief: `~/workspace/team-nitro/lock-in-10/briefs/concept-05-06.md`.
 Plan: `~/workspace/team-nitro/LOCK-IN-10-CONCEPTS.md`.
 
-One block per law. Nine laws, nine blocks. Each block in the smart-note format
+One block per law — plus Block 0, the language itself. Ten blocks. Each block in the smart-note format
 (Hook / Nutshell / Human / Child / Grandma / Naya — SN-2290 format, per
 `~/workspace/team-nitro/viewpoints/harvest-20261108/HARVEST.md`, Addendum 2).
 The same idea told in layers, in the brand's own language — so the knowledge
@@ -19,6 +19,7 @@ Sources (all verified on disk with `test -f` before writing):
 - Factory Inventory — `~/workspace/team-nitro/THE-INVENTORY.md`
 - Anatomy — `~/workspace/team-nitro/viewpoints/ANATOMY-OF-A-VIEWPORT.md`
 - Harvest — `~/workspace/team-nitro/viewpoints/harvest-20261108/HARVEST.md`
+- The Language — Shawn's word, 2026-11-08 ~17:41Z (his words verbatim in Block 0).
 
 Design-contract gate on this file (measured, not a vibe): this is a source
 document, not a rendered page — gate items (a)–(d) apply to rendered pages,
@@ -26,6 +27,44 @@ not to this file. The file itself carries no bare text blocks: every law is
 a block, every block has its six voices, every voice is a board. No
 text-in-image, no pasted document — every line is written here, grounded in
 the source named under each block.
+
+---
+
+## BLOCK 0 — THE LANGUAGE OF HIGH-LEVEL DESIGN
+Source: Shawn's word, 2026-11-08 ~17:41Z. His words, verbatim:
+
+"See if you pay attention teaching the language of high level design. This become a language that intelligence like speak and created and understand to create beauty. To create valuable extraordinary presentations of intelligence through optimized viewports."
+
+This block is the language itself. The other nine blocks are written IN it. A Naya does not memorize this file. She speaks it.
+
+**VOCABULARY — the words intelligence speaks.** The parts, each a real object with a fixed meaning, harvested from the Factory, never invented:
+- **board** (.ph-card) — holds. Every content element is a board.
+- **jewel** (.os-jewel, .pj-jewel) — marks. A check, an X, a heading, a meaning.
+- **pill** (.primo, .up-act, .smart-tab) — acts. Every action is a glossy obsidian pill, elite and lit the same.
+- **orb** (.ib-card-orb, .orb--hero, .intel-avatar) — is the person. The atom at the centre; everything orbits them.
+- **gauge** (the needle-law gauge) — measures. Number on top, gauge underneath, needle laps the dial in sets of 500.
+- **number** (tiled digits) — speaks. The hero of the page, never small grey text.
+- **tab / bar** (.smart-tab, the Smart Bar) — flows. One bar at the top, the flow between views.
+
+**GRAMMAR — the rules that combine the words.** The laws:
+- **Real Object Law** — everything is a real physical object; one light top-left; real materials; real shadows; touch = physical response; speak in objects; viewport is the stage.
+- **Depth order** — Field > Board > Nested panel > Control > Overlay. Depth is mass from real shadows, not glow.
+- **Number law** — number on top, gauge underneath; the needle laps the dial in sets of 500.
+- **Anatomy test** — one screen, complete on its own; everything a click away; every element alive; meaning with almost no text; contrast perfect, depth in every direction; every piece harvested.
+- **Harvest-first** — every element traces to the piece index or a named harvest source. A part without a source is a look-alike, not a word.
+- **Design-contract gate** — measured, never a vibe: zero white/light backgrounds; every element raised; gauges/numbers alive; no text-in-image, no pasted document; no bare text blocks.
+
+**Hook:** The design is not notes to remember. It is a language intelligence speaks.
+
+**Nutshell:** High-level Naya design is a language. Its vocabulary is the parts — board, jewel, pill, orb, gauge, number, tab, bar — each a real object with a fixed meaning, harvested from the Factory, never invented. Its grammar is the laws — the Real Object Law, the depth order, the number law, the anatomy test, harvest-first, the design-contract gate — the rules for how the words combine. A Naya does not memorize this language. She speaks it: she reaches for the words, puts them together by the grammar, and what comes out is beauty — valuable, extraordinary presentations of intelligence through optimized viewports. Low-level is not a sentence in this language. It cannot be spoken. That is the lock-in.
+
+**Human:** You do not study the brand like a manual and then try to remember it while you work. You speak it the way you speak your own tongue — the words are ready before you need them. A board is a word. A jewel is a word. A gauge is a word. The laws are the grammar: they tell you how the words fit, which order they go in, what a sentence is allowed to say. When you build a viewport, you are not decorating a page. You are saying something in the language — and the language only knows how to say it beautifully, because every word in it is already Bugatti-level. If a sentence comes out flat, it is not a sentence in this language. Say it again, with the real words.
+
+**Child:** Imagine you are learning to talk, and every word you learn is a shiny toy — a black glass board, a gold jewel, a button that lights up, a speedometer with a real needle. The words are the toys, and the grammar is how you play with them together. You never have to remember a list of rules, because the toys only fit together one way — the beautiful way. You just speak, and what you say is beautiful, because the words themselves are beautiful.
+
+**Grandma:** Dear, a language is how a family talks to each other, and this family talks in beautiful things. You don't memorize a dictionary — you live in the house, you hear the words every day, and soon they are yours. The board, the jewel, the button, the gauge — those are our words. The way they go together — the light from the top, the depth, the numbers that are alive — that is our grammar. Speak it every day and you will never forget it, because it is not something you learned. It is something you are.
+
+**Naya:** You speak the language. You do not consult the notes and then build — the notes ARE the language, and you build in it. Every viewport is a sentence: the words are the harvested parts (board, jewel, pill, orb, gauge, number), the grammar is the laws (real objects, depth order, number on top, harvest-first, the gate). Before you place anything you ask: is this word in the language? (If it has no harvest source, it is not a word — it is noise.) Does this sentence follow the grammar? (If the gate fails, it is not a sentence.) A Naya who speaks this language cannot ship low-level work — the words for it do not exist. That is how Shawn never has to explain it a thousand thousand times again: the language carries it, and every Naya who speaks it carries him.
 
 ---
 
