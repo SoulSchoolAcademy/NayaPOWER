@@ -1530,6 +1530,58 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
   #detailPanel.compact .real-note.expanded p{display:block; -webkit-line-clamp:unset; overflow:visible;}
   #detailPanel.compact .real-note{cursor:pointer;}
 }
+/* ============ FIX 11 (2026-11-08, maker step 1 — the verifier's three fix-11 candidates) ============
+   Item 1 — COMPACT TOGGLE TO THE PANEL FOOTER (verify-10 §4, the +22px on four long-titled
+   details). Mechanism: the toggle in the header shrinks the title's width (~70px + 8px gap), so
+   long titles wrap to one extra line (22px each; the title renders at 15px, not 20px — .tab-pop
+   h3 at 0,1,1 beats .detail-title at 0,1,0). The brief's numbers (224/16/62.5/85.8) are OVERLAPS
+   — last-part bottom minus close top — not remainders: the fix-11 baseline probe's fix-10
+   overlaps (247/39/85.5/108.8) match the verifier's fix-10 numbers (246/38/84.5/107.8) to 1px,
+   while the remainders are 29px higher (275/67/114/137). Auto-Match confirms the metric: its
+   title is 1 line in both fix-9 and fix-10, and its overlap is 133.3 in both. Fix, phone
+   <=480px only: move #detailCompact out of .detail-head into a sticky footer flex row with
+   #detailClose (close flex:1, toggle beside it); revert .detail-head to a plain block (its
+   margin-bottom:4px from fix-10 stays, so head height = title 24px + 4px = 28px, exactly the
+   fix-9 value). The close's own position:sticky becomes a no-op inside the sticky footer ->
+   override to position:static (specificity 0,3,0 beats fix-8's 0,2,0); the footer itself carries
+   position:sticky; bottom:0; z-index:2; background:var(--bg-elev) (#171B25, the panel's own
+   background — so scrolled content never shows through the toggle's translucent pill or the 8px
+   gap). Footer height = close height (~50px), no extra padding, so the close's top edge sits
+   exactly where it sat. THE ROW DOES NOT FIT AT NATURAL SIZES (baseline finding): panel content
+   width 336.8px (358.8 border-box minus 2px border minus 20px padding); close natural 275.5 +
+   toggle 81.7 + gap 8 = 365.2, 28.4 over. Footer-scoped, phone-only: close horizontal padding
+   26->10px + toggle horizontal padding 10->8px + gap 8 -> the close fills its 251.1px flex share
+   (336.8 - 8 - 77.7) with text space 231.1px against 223.5px of text (7.6px spare). THE FIRST
+   VALUE TRIED (14px) WRAPPED THE CLOSE TEXT by 0.4px (text 223.5 vs 223.1 of space) — the close
+   grew to 2 lines, the footer to 72px, and the +22px exactly cancelled the title-line saving
+   (caught by the fix-11 probe: footH 72, remainders unchanged). The 10px value is the
+   correction; the probe asserts footH == 50 and closeH == 50 so a wrap fails loudly. The close
+   keeps its 15px font, 14px vertical padding, 50px height — same gold primo button, slightly
+   narrower side padding.
+   Above 480px the footer is a plain block div holding only the close (toggle display:none
+   there), so desktop/tablet geometry is byte-identical to fix-10. JS unaffected (getElementById);
+   the MutationObserver reset logic still applies. No font or line-height changes anywhere.
+   Item 2 — ONE-LINE HINT UNDER THE SWITCHER (verify-10 §6, the tabs don't explain themselves).
+   Fix, phone <=480px only: a P element with class tier-switch-hint, text "Tap a tier to
+   compare it", placed after .tier-switch (placeholder wording — words are Shawn's domain). Switcher margin-bottom 14->6px,
+   hint margin-bottom 10px. Expected 390 text diff +6 words (the hint only), 768/1920 identical.
+   The hint adds ~28px of stack above the table at phone; the table's own geometry (labelW 210,
+   columns, badges) must be unchanged — the probe is the arbiter.
+   Item 3 — BIGGER SWITCHER TABS (verify-10 §6, the 10x feature should look like the headline).
+   Fix, phone <=480px only: tabs padding 8px 4px -> 12px 4px, font-size 12px -> 14px, gap 8px
+   kept, sdot 8px kept (tab width at 390 ~64.8px; "Power" at 14px/800 ~48px + sdot 8px + gap 6px
+   ~62px — fits, verified by measurement). */
+/* the hint is hidden above phone, like the switcher */
+.tier-switch-hint{display:none;}
+@media (max-width:480px){
+  .tier-switch button{padding:12px 4px; font-size:14px;}
+  .tier-switch{margin-bottom:6px;}
+  .tier-switch-hint{display:block; margin:0 0 10px; text-align:center; font-size:12px; color:var(--faint);}
+  .detail-head{display:block;}
+  .detail-foot{display:flex; align-items:center; gap:8px; position:sticky; bottom:0; z-index:2; background:var(--bg-elev);}
+  .detail-panel .detail-foot .detail-close{position:static; flex:1; min-width:0; justify-content:center; padding-left:10px; padding-right:10px;}
+  .detail-foot .detail-compact-toggle{padding-left:8px; padding-right:8px;}
+}
 </style>
 </head>
 <body>
@@ -1586,6 +1638,7 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
 <button type="button" data-switch-tier="pro" aria-pressed="false" style="--sc:#a06bff"><span class="sdot"></span>Pro</button>
 <button type="button" data-switch-tier="max" aria-pressed="false" style="--sc:#ffbf3d"><span class="sdot"></span>Max</button>
 </div>
+<p class="tier-switch-hint">Tap a tier to compare it</p>
 <div class="table-scroll"><table>
 <thead><tr><th style="min-width:210px;"></th>
 <th><span class="c-faint" style="font-size:13px; letter-spacing:.18em;">FREE</span><span class="col-price">$0</span><span class="col-sub">forever</span></th>
@@ -1963,9 +2016,9 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
 </section>
 <div class="drawer-backdrop" id="detailBackdrop"></div>
 <div class="tab-pop detail-panel" id="detailPanel" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
-<div class="detail-head"><h3 class="detail-title" id="detailTitle"></h3><button type="button" class="detail-compact-toggle" id="detailCompact" aria-pressed="false">Compact</button></div>
+<div class="detail-head"><h3 class="detail-title" id="detailTitle"></h3></div>
 <div id="detailBody"></div>
-<button class="primo theme-gold detail-close" id="detailClose">Close — back to the chart</button>
+<div class="detail-foot"><button class="primo theme-gold detail-close" id="detailClose">Close — back to the chart</button><button type="button" class="detail-compact-toggle" id="detailCompact" aria-pressed="false">Compact</button></div>
 </div>
 <script>
   /* DECK — fix1 lines 2363-2373 */
