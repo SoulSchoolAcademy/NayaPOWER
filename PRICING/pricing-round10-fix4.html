@@ -1421,6 +1421,115 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
   #detailPanel{padding-top:6px;}
   #detailBody{padding-bottom:24px;}
 }
+/* ============ FIX 10 (2026-11-08, maker step 1 — the verifier's three fresh-eyes items) ============
+   Item 1 — GROUP-ROW TAIL (verify-9 fresh eyes). Mechanism: at max horizontal scroll at phone 390
+   the GROUP 1 row shows its tail at the left edge ("OR" by the fix-10 baseline char scan, "OOR" by
+   the verifier's — the GROUP 5 row shows " IT'S NA" the same way; groups 2-4 are fully off-screen
+   left). The group label is 542px one-line in a 356px container, so pinning the whole TD would
+   leave the label's END cut at the viewport's right edge, and a fade cannot match a table whose
+   rows are dark (group #0d0d13, header #171B25) AND white (tier cells) with one gradient — a mask
+   on the container would fade the pinned label column too. Fix, scoped to <=1220px (the scroll
+   range, as fix 9): pin the group LABEL itself — wrap each group row's text in
+   SPAN.chart-group-label (inline-block, sticky left:14px, max-width:calc(100vw - 60px)). At phone
+   the 542px label wraps to 2 lines inside 330px and reads whole at every scroll position; at
+   tablet/desktop the max-width (708/1860px) exceeds the label, so it stays one line. The TD keeps
+   scrolling normally underneath; nothing else is in that band, so no z-index fight with the
+   pinned label column. TRADEOFF, NAMED: group rows grow ~17px taller at phone (2-line labels) —
+   the same wrapping fix 9 already accepted for label cells. No word changes. The span MUST carry
+   white-space:normal — the base rule tbody td:first-child sets nowrap (the group TD IS a first
+   child), and without it the 542px label overflows its 330px span instead of wrapping (caught by
+   the fix-10 probe: span scrollWidth 534 vs clientWidth 330, label cut at the viewport's right
+   edge). table-layout:fixed was TRIED for the POWER 10px overhang and REVERTED (probe run 3 +
+   diag10c/d): it collapsed the overhang (tableW 355) but DESTROYED the columns — the group rows'
+   colspan="6" makes Firefox count SIX columns in fixed layout, so all six go equal (59.2px each),
+   the label column is crushed from 210 to 59.2 and the tier column is a 59px sliver with its text
+   cut (seen by eye in the PRO switcher screenshot). Fixed layout is WRONG for this table; auto
+   layout stands. THE REAL DRIVER (diag10f): fix 8 set min-width:156px on the POWER th
+   (nth-child(3)) so its name (113.5px) fits in the scrolling chart — harmless there, but in
+   tier mode the table is exactly the container (356) and the 156px floor forces the POWER
+   column to 156, table 366, maxSL 10. The fix is one line in tier mode only:
+   nth-child(3){min-width:0} — the tier column is the 146px remainder (356-210), its content
+   134px after the 6px padding, and the name needs 113.5, so it fits with 20px spare. The ALL
+   chart keeps the 156px floor (the override is scoped to [data-switch] tier mode). The probe
+   guards the name (nameLines==1) so a regression would fail loudly.
+   The PRO steppill (171.8px) would not fit: in tier mode it becomes display:block +
+   max-width:100% so its text wraps to 2 lines (badge fully visible, no overlap, name stays 1
+   line), and its sdot gets display:inline-block so the 8px white circle from .steppill .sdot
+   renders inline with the text (width/height do not apply to a plain inline box — that is why
+   the diamond vanished in the first fix-10 run). Tablet/desktop keep the scrolling chart as-is
+   (switcher display:none above 480px).
+   Item 2 — TIER SWITCHER (verify-9 fresh eyes). Mechanism: the pinned label column leaves ~148px
+   of visible tiers at phone — one tier at a time, comparing means horizontal scrolling. Fix, phone
+   <=480px only: a switcher of five tabs (All / Free / Power / Pro / Max) directly above
+   .table-scroll; tapping a tab sets data-switch on #chart, and CSS hides the three non-selected
+   tier columns (th/td nth-child) + drops the table's min-width:880px to 0 (else the single tier
+   column would stretch to 670px). Default All = the current chart, byte-for-byte behavior. The
+   tabs harvest the Hub .tgl toggle (inline-flex, 1px rgba(255,255,255,.22) border, rgba(0,0,0,.45)
+   background) + the calculator .calc-plan language (sdot diamond, .is-on glow with per-tier --sc:
+   All #fff, Free var(--faint) #c9c3ce, Power #c9c9d8, Pro #a06bff, Max #ffbf3d — the exact values
+   already on the page). The tabs use data-switch-tier, NOT data-tier — the detail JS wires
+   [data-tier] to openDetail('tiers', ...), and a data-tier tab would open the tier detail. In
+   tier mode the tier th padding trims 18->6px and tier td + label td 16->8px. POWER's column
+   fits the 356px container because the tier-mode rule also lifts fix 8's min-width:156px floor
+   on the POWER th (nth-child(3){min-width:0}) — the floor was for the scrolling chart; in tier
+   mode the column is the 146px remainder and the name fits in 134px of content.
+   The PRO steppill (171.8px) would not fit: in tier mode it becomes display:block +
+   max-width:100% so its text wraps to 2 lines (badge fully visible, no overlap, name stays 1
+   line). Tablet/desktop keep the scrolling chart as-is (switcher display:none above 480px).
+   NEW WORDS, NAMED: the five tab labels at phone only — of those, only "All" is a genuinely new
+   word; Free/Power/Pro/Max already appear on the page. No EXISTING copy changes.
+   Item 3 — DETAIL COMPACT MODE (verify-9 §4, the 8/12/16 spread). Mechanism: a 7-part sheet in
+   a 716px viewport cannot show its last part at rest for the longest features (Smart Memberships
+   scrollH 969, Auto-Match 877) without typography surgery, which is NOT taken. Fix, phone
+   <=480px only: a compact toggle in the panel header — the header becomes a flex row (h3 flex:1
+   + pill toggle) that is height-neutral by construction (title 24px + 4px margin = 28px today;
+   toggle ~24px + row margin 4px = 28px), so normal mode is unchanged (Personal pages still
+   scrollH == clientH). In compact mode every .real-note p clamps to 1 line (-webkit-line-clamp:1
+   — a layout clamp, no font or line-height change) + compact spacing compression (real-note
+   pt/pb 6->4, mb 4->2, rn-part mb 4->2, body pb 24->12, panel pt 6->4); tapping a part expands it
+   alone (.expanded, full body), tapping again collapses it. Opening a detail resets to normal
+   mode; closing clears compact + expanded (MutationObserver on the panel's class, reacting only
+   to 'open' transitions). The toggle lives inside the closed panel, so it adds no page-load text.
+   The toggle MUST stay within the title's 22px height or normal mode regresses: line-height
+   normal made it 27px tall and pushed Personal pages' scrollH 715 -> 720 (caught by the fix-10
+   probe), so it carries line-height:1.2 + 2px vertical padding (~20px tall, under the 22px title).
+   No font or line-height changes anywhere in this pass. */
+/* the switcher + compact toggle are hidden above phone; the header div is a plain block there */
+.detail-compact-toggle{display:none;}
+.tier-switch{display:none;}
+@media (max-width:1220px){
+  #chart tr.chart-group td .chart-group-label{display:inline-block; position:sticky; left:14px; max-width:calc(100vw - 60px); white-space:normal;}
+}
+@media (max-width:480px){
+  .tier-switch{display:flex; gap:8px; margin:0 0 14px;}
+  .tier-switch button{flex:1 1 0; min-width:0; display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:8px 4px; border-radius:10px; border:1px solid rgba(255,255,255,.22); background:rgba(0,0,0,.45); cursor:pointer; color:#fff; font-weight:800; font-size:12px; font-family:inherit; white-space:nowrap;}
+  .tier-switch button .sdot{display:inline-block; width:8px; height:8px; flex:0 0 auto; transform:rotate(45deg); background:var(--sc,#fff); box-shadow:0 0 6px var(--sc,#fff);}
+  .tier-switch button.is-on{border-color:var(--sc,#d4a017); box-shadow:0 0 0 1px var(--sc,#d4a017), 0 0 22px -4px var(--sc,#d4a017);}
+  .tier-switch button:focus-visible{outline:3px solid #fff; outline-offset:3px;}
+  #chart[data-switch="free"] table th:nth-child(3), #chart[data-switch="free"] table th:nth-child(4), #chart[data-switch="free"] table th:nth-child(5), #chart[data-switch="free"] table td:nth-child(3), #chart[data-switch="free"] table td:nth-child(4), #chart[data-switch="free"] table td:nth-child(5){display:none;}
+  #chart[data-switch="power"] table th:nth-child(2), #chart[data-switch="power"] table th:nth-child(4), #chart[data-switch="power"] table th:nth-child(5), #chart[data-switch="power"] table td:nth-child(2), #chart[data-switch="power"] table td:nth-child(4), #chart[data-switch="power"] table td:nth-child(5){display:none;}
+  #chart[data-switch="pro"] table th:nth-child(2), #chart[data-switch="pro"] table th:nth-child(3), #chart[data-switch="pro"] table th:nth-child(5), #chart[data-switch="pro"] table td:nth-child(2), #chart[data-switch="pro"] table td:nth-child(3), #chart[data-switch="pro"] table td:nth-child(5){display:none;}
+  #chart[data-switch="max"] table th:nth-child(2), #chart[data-switch="max"] table th:nth-child(3), #chart[data-switch="max"] table th:nth-child(4), #chart[data-switch="max"] table td:nth-child(2), #chart[data-switch="max"] table td:nth-child(3), #chart[data-switch="max"] table td:nth-child(4){display:none;}
+  #chart[data-switch]:not([data-switch="all"]) table{min-width:0;}
+  #chart[data-switch]:not([data-switch="all"]) thead th:nth-child(3){min-width:0;}
+  #chart[data-switch]:not([data-switch="all"]) table th:nth-child(n+2){padding-left:6px; padding-right:6px;}
+  #chart[data-switch]:not([data-switch="all"]) table td:nth-child(n+2){padding-left:8px; padding-right:8px;}
+  #chart[data-switch]:not([data-switch="all"]) table td:first-child{padding-left:8px; padding-right:8px;}
+  #chart[data-switch]:not([data-switch="all"]) thead th .steppill{display:block; width:auto; max-width:100%; white-space:normal; text-align:center;}
+  #chart[data-switch]:not([data-switch="all"]) thead th .steppill .sdot{display:inline-block; vertical-align:1px;}
+  .detail-head{display:flex; align-items:center; gap:8px; margin-bottom:4px;}
+  .detail-head .detail-title{margin-bottom:0; flex:1; min-width:0;}
+  .detail-compact-toggle{display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; padding:2px 10px; line-height:1.2; border-radius:999px; border:1px solid rgba(255,191,61,.6); background:rgba(255,191,61,.08); color:var(--gold); font-weight:800; font-size:12px; letter-spacing:.06em; font-family:inherit; cursor:pointer;}
+  .detail-compact-toggle.is-on{background:rgba(255,191,61,.22); border-color:var(--gold);}
+  .detail-compact-toggle:focus-visible{outline:3px solid #fff; outline-offset:2px;}
+  #detailPanel.compact{padding-top:4px;}
+  #detailPanel.compact #detailBody{padding-bottom:12px;}
+  #detailPanel.compact .real-note{padding-top:4px; padding-bottom:4px; margin-bottom:2px;}
+  #detailPanel.compact .rn-part{margin-bottom:2px;}
+  #detailPanel.compact .real-note p{display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden;}
+  #detailPanel.compact .real-note.expanded p{display:block; -webkit-line-clamp:unset; overflow:visible;}
+  #detailPanel.compact .real-note{cursor:pointer;}
+}
 </style>
 </head>
 <body>
@@ -1465,11 +1574,18 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
 </ul>
 </div>
 </section>
-<section class="slide" id="chart" aria-label="The chart">
+<section class="slide" id="chart" aria-label="The chart" data-switch="all">
 <div class="slide-inner">
 <p class="sec-kicker">02 — The Chart · Everything, at a glance</p>
 <h2 class="sec-head">What the money buys.</h2>
 <p class="chart-intro">Every feature of NayaNET, every level, every number — in one beautiful graph. Free keeps the account, the profile, the connections and the intelligence, and loses AI automation. The areas are the same at every paid level — what changes is capacity. Each row lights up as you scroll; tap the eye and it tells you what the feature is, what it does, and what’s in it for you. About, Today, My World and Settings are in every world at every level — areas, not features — so they are named here, not charted as rows. The nine Academy systems live inside Learning / Academy (row 17). Smart Box (row 21) is a key feature — its row is marked below. The rows that decide lead: your worlds, your Dashboard, Smart Box, your Smart Access doors.</p>
+<div class="tier-switch" role="tablist" aria-label="Compare one tier">
+<button type="button" class="is-on" data-switch-tier="all" aria-pressed="true" style="--sc:#fff"><span class="sdot"></span>All</button>
+<button type="button" data-switch-tier="free" aria-pressed="false" style="--sc:var(--faint)"><span class="sdot"></span>Free</button>
+<button type="button" data-switch-tier="power" aria-pressed="false" style="--sc:#c9c9d8"><span class="sdot"></span>Power</button>
+<button type="button" data-switch-tier="pro" aria-pressed="false" style="--sc:#a06bff"><span class="sdot"></span>Pro</button>
+<button type="button" data-switch-tier="max" aria-pressed="false" style="--sc:#ffbf3d"><span class="sdot"></span>Max</button>
+</div>
 <div class="table-scroll"><table>
 <thead><tr><th style="min-width:210px;"></th>
 <th><span class="c-faint" style="font-size:13px; letter-spacing:.18em;">FREE</span><span class="col-price">$0</span><span class="col-sub">forever</span></th>
@@ -1477,7 +1593,7 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
 <th class="hl"><button class="tier-head-btn" data-tier="pro"><span class="steppill" style="--sc:var(--blue)"><span class="sdot"></span>★ MOST CHOSEN</span><span style="font-size:13px; letter-spacing:.18em;" class="c-blue">NAYA PRO</span><span class="col-price">$50<span style="font-size:14px;color:var(--faint)">/mo</span></span><span class="col-sub">$300 / yr</span></button></th>
 <th><button class="tier-head-btn" data-tier="max"><span class="steppill" style="--sc:var(--gold)"><span class="sdot"></span>CROWN</span><span style="font-size:13px; letter-spacing:.18em;" class="c-gold">NAYA MAX</span><span class="col-price">$100<span style="font-size:14px;color:var(--faint)">/mo</span></span><span class="col-sub">$600 / yr</span></button></th>
 </tr></thead><tbody>
-<tr class="chart-group"><td colspan="6">GROUP 1 — YOUR WORLDS — THE FOUR WORLDS + THE FRONT DOOR</td></tr>
+<tr class="chart-group"><td colspan="6"><span class="chart-group-label">GROUP 1 — YOUR WORLDS — THE FOUR WORLDS + THE FRONT DOOR</span></td></tr>
 <tr>
 <td><span class="chart-orb" style="background:#e84fff; color:#e84fff"></span> <span class="feat">Personal pages</span> <button class="pj-jewel" style="--jewel:#e84fff" aria-label="About Personal pages" data-feature="chart-01">i</button></td>
 <td>1 personal page, full.</td>
@@ -1513,7 +1629,7 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
 <td class="hl">included at every level.</td>
 <td>included at every level.</td>
 </tr>
-<tr class="chart-group"><td colspan="6">GROUP 2 — DAILY — WHAT YOU USE EVERY DAY</td></tr>
+<tr class="chart-group"><td colspan="6"><span class="chart-group-label">GROUP 2 — DAILY — WHAT YOU USE EVERY DAY</span></td></tr>
 <tr>
 <td><span class="chart-orb" style="background:#2fe89e; color:#2fe89e"></span> <span class="feat">Smart Feed / Today’s Intel</span> <button class="pj-jewel" style="--jewel:#2fe89e" aria-label="About Smart Feed / Today’s Intel" data-feature="chart-06">i</button></td>
 <td>top 3 highlights a day.</td>
@@ -1598,7 +1714,7 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
 <td class="hl">+ the full Academy.</td>
 <td>+ the full Academy + new courses first.</td>
 </tr>
-<tr class="chart-group"><td colspan="6">GROUP 3 — THE SYSTEM — THE MACHINE UNDERNEATH</td></tr>
+<tr class="chart-group"><td colspan="6"><span class="chart-group-label">GROUP 3 — THE SYSTEM — THE MACHINE UNDERNEATH</span></td></tr>
 <tr>
 <td><span class="chart-orb" style="background:#a8e62e; color:#a8e62e"></span> <span class="feat">Smart Ledger</span> <button class="pj-jewel" style="--jewel:#a8e62e" aria-label="About Smart Ledger" data-feature="chart-18">i</button></td>
 <td>your own entries.</td>
@@ -1655,7 +1771,7 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
 <td class="hl">full Smart Search.</td>
 <td>full Smart Search.</td>
 </tr>
-<tr class="chart-group"><td colspan="6">GROUP 4 — YOUR OWN WORLDS — EARNING</td></tr>
+<tr class="chart-group"><td colspan="6"><span class="chart-group-label">GROUP 4 — YOUR OWN WORLDS — EARNING</span></td></tr>
 <tr>
 <td><span class="chart-orb" style="background:#3fb8ff; color:#3fb8ff"></span> <span class="feat">Smart Memberships / Smart Access — ANY product behind a pay door</span> <button class="pj-jewel" style="--jewel:#3fb8ff" aria-label="About Smart Memberships / Smart Access — ANY product behind a pay door" data-feature="chart-26">i</button></td>
 <td>join memberships (be a member).</td>
@@ -1681,7 +1797,7 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
 <td class="hl">day 10, then daily, $500/day cap.</td>
 <td>day 10, then daily, same-day, $1 000/day cap.</td>
 </tr>
-<tr class="chart-group"><td colspan="6">GROUP 5 — THE PLATFORM — SAME FOR EVERYONE (THE REASON IT’S NAYANET)</td></tr>
+<tr class="chart-group"><td colspan="6"><span class="chart-group-label">GROUP 5 — THE PLATFORM — SAME FOR EVERYONE (THE REASON IT’S NAYANET)</span></td></tr>
 <tr>
 <td><span class="chart-orb" style="background:#ffbf3d; color:#ffbf3d"></span> <span class="feat">Private messaging</span> <button class="pj-jewel" style="--jewel:#ffbf3d" aria-label="About Private messaging" data-feature="chart-30">i</button></td>
 <td>Included at every level — Free included.</td>
@@ -1847,7 +1963,7 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
 </section>
 <div class="drawer-backdrop" id="detailBackdrop"></div>
 <div class="tab-pop detail-panel" id="detailPanel" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
-<h3 class="detail-title" id="detailTitle"></h3>
+<div class="detail-head"><h3 class="detail-title" id="detailTitle"></h3><button type="button" class="detail-compact-toggle" id="detailCompact" aria-pressed="false">Compact</button></div>
 <div id="detailBody"></div>
 <button class="primo theme-gold detail-close" id="detailClose">Close — back to the chart</button>
 </div>
@@ -3162,6 +3278,44 @@ var DETAIL_DATA = {"features": {"chart-01": ["Personal pages", [["In a nutshell"
   document.getElementById('detailClose').addEventListener('click', closeDetail);
   backdrop.addEventListener('click', closeDetail);
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && panel.classList.contains('open')) closeDetail(); });
+})();
+(function(){
+  /* FIX 10 — tier switcher + detail compact mode (phone only; the CSS scopes the visuals) */
+  var chart = document.getElementById('chart');
+  var scroller = document.querySelector('.table-scroll');
+  var tabs = document.querySelectorAll('.tier-switch button[data-switch-tier]');
+  tabs.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var tier = btn.getAttribute('data-switch-tier');
+      chart.setAttribute('data-switch', tier);
+      tabs.forEach(function(t){ var on = t === btn; t.classList.toggle('is-on', on); t.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+      if(scroller) scroller.scrollLeft = 0;
+    });
+  });
+  var panel = document.getElementById('detailPanel');
+  var toggle = document.getElementById('detailCompact');
+  var body = document.getElementById('detailBody');
+  function setCompact(on){
+    panel.classList.toggle('compact', on);
+    toggle.textContent = on ? 'Full' : 'Compact';
+    toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+    toggle.classList.toggle('is-on', on);
+    if(!on) body.querySelectorAll('.real-note.expanded').forEach(function(n){ n.classList.remove('expanded'); });
+  }
+  toggle.addEventListener('click', function(){ setCompact(!panel.classList.contains('compact')); });
+  body.addEventListener('click', function(e){
+    if(!panel.classList.contains('compact')) return;
+    var part = e.target.closest ? e.target.closest('.real-note') : null;
+    if(part) part.classList.toggle('expanded');
+  });
+  /* reset compact whenever a detail opens or closes (button, backdrop, Escape all
+     flow through the panel's 'open' class) — react ONLY to 'open' transitions so
+     setCompact's own class toggles never loop back here. */
+  var wasOpen = panel.classList.contains('open');
+  new MutationObserver(function(){
+    var isOpen = panel.classList.contains('open');
+    if(isOpen !== wasOpen){ wasOpen = isOpen; setCompact(false); }
+  }).observe(panel, {attributes:true, attributeFilter:['class']});
 })();
 </script>
 </body>
