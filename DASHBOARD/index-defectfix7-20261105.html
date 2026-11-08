@@ -24232,7 +24232,7 @@ else init();
   /* --- fit wiring --- */
   function refit(){ var el = numEl(); if (el && el.querySelector('.reel')) fitNumber(el); fitHero(); }
   window.addEventListener('resize', refit);
-  window.addEventListener('load', function(){ refit(); setTimeout(refit, 1200); });
+  window.addEventListener('load', function(){ refit(); setTimeout(refit, 1200); /* FIX 9 item 7 — FRESH FIT: the shipped scale (s=0.799, dial 152px) is a load-time transient; a resize re-measures to s=0.835 (dial 159px) and holds it stable. Bust the cache once after the layout settles so the fresh fit lands without a resize. */ setTimeout(function(){ _fitCache = null; refit(); }, 5000); });
   /* FIX 5B — the fitNumber margin is computed from the well width, which
      changes on resize/rotation. Without this, a phone rotated to landscape
      keeps the -64px phone margin on an 812px well and the number sits left
@@ -26356,4 +26356,49 @@ body.viewport-focus #viewport-back{
   syncBadges();
 })();
 </script>
+<style id="os-fix9">
+/* ═══ FIX 9 (2026-11-08) — phone drill + cap-on. Last style in the document,
+   so these win over the F9/FIXB rules at equal specificity. ═══ */
+/* Item 1+2 — DRILL PILLS, one row under the title (phone).
+   Root cause: F9 left:50% leaves only 195px available width, so the
+   shrink-to-fit container caps at 195px and the 283px of pills wrap to 2 rows;
+   FIXB bottom:16px + F9 top:132px both set stretches the container to 696px
+   and flex stretches each button to 345px. This forces a full-width centred
+   one-row bar. At 390px it clears the stage (top 173); above ~400px it sits
+   over the stage's top edge (empty space — the chart is centred). */
+@media (max-width:768px){
+  [role="dialog"] [class$="-pills"]{
+    top:132px !important; bottom:auto !important;
+    left:0 !important; right:0 !important; max-width:none !important;
+    transform:none !important; justify-content:center !important;
+    flex-direction:row !important; flex-wrap:nowrap !important;
+  }
+}
+/* Item 1 — DRILL SWITCH, above the bottom nav (phone).
+   The 10 F9 id-rules (position:fixed; bottom:20px) beat fix-8's base-rule
+   change; the nav (fixed, z:200, 68px at phone) covers the bar. 76px puts
+   the bar at y696-768, 8px clear of nav top 776; the total ends 676, 20px
+   above the bar. Scoped to 640px: at 700px a bottom:76px on the absolute
+   switches lands mid-stage, and a fixed bar would overlap the total. */
+@media (max-width:640px){
+  #os-sales-switch, #os-invites-switch, #os-notes-switch, #os-likes-switch,
+  #os-creations-switch, #os-shares-switch, #os-saves-switch, #os-joins-switch,
+  #os-comments-switch, #os-smartlink-switch{
+    position:fixed !important; bottom:76px !important;
+  }
+}
+/* Item 3 — CAP-ON (C1: pad89 / lift-15).
+   Cap-on padding-top was 153px (vs 89px All) and the fix-8 lift was scoped to
+   :not(.tn-cap-on), so the dial dropped 65px into the bottom orbs and the
+   mount grew 102px, pushing the absolute mode switcher under the nav.
+   pad89 + lift-15 re-centres the dial (dialVsOrbit -2.1, was +35.5), clears
+   the lap 5/5, and — via the refit on toggle — lifts the switcher to
+   bottom 743, clear of the nav by 33px. */
+@media (max-width:560px){
+  .tn-tacho.tn-cap-on{
+    padding-top:89px !important;
+    transform:translateY(-15px) !important;
+  }
+}
+</style>
 </body></html>
