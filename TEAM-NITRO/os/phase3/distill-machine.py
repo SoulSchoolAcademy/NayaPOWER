@@ -103,7 +103,11 @@ two three four five six seven eight nine ten because through next before
 after between into over under out off about against during without within
 along across behind beyond per via way thing things part end first last new
 same get gets make makes take takes go goes come say says see know think
-look need needs want use used keep let show give find bring set report""".split())
+look need needs want use used keep let show give find bring set report
+don't can't won't isn't didn't doesn't couldn't wouldn't shouldn't it's
+that's there's here's we're you're they've i've i'll we've you've aren't
+wasn't weren't hasn't haven't hadn't imagine already really actually even
+like""".split())
 
 
 def words(text):
@@ -169,13 +173,35 @@ def norm(text):
     return re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
 
 
+LEAD_FILLERS = {"still", "yet", "again", "also"}
+
+
+def lead_key(item):
+    """The bold lead, normalized, with intensifiers stripped.
+
+    'The merge waits.' and 'The merge still waits.' are the same item
+    — the 'still' adds nothing. Without this, near-duplicate leads
+    crowd the list (batch group 2: 4 of 6 'What changes now' items
+    were the merge waiting).
+    """
+    lead = bold_lead(item)
+    if not lead:
+        return ""
+    toks = [t for t in norm(lead).split() if t not in LEAD_FILLERS]
+    return " ".join(toks)
+
+
 def dedupe(items):
     seen = set()
+    seen_leads = set()
     out = []
     for it in items:
         key = norm(re.sub(r"\*\*", "", it))
-        if key and key not in seen:
+        lk = lead_key(it)
+        if key and key not in seen and (not lk or lk not in seen_leads):
             seen.add(key)
+            if lk:
+                seen_leads.add(lk)
             out.append(it)
     return out
 
