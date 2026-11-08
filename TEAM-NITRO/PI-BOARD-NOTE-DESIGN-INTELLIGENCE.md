@@ -11,7 +11,7 @@ this file is the draft; the loop files it.
 
 ## BOARD NOTE — Design Intelligence: locked in, in three places
 
-**State:** FILED by the intelligence loop (Sigma), run 2, 2026-11-08 ~17:05Z. Blocks written; drafts numbered SN-2299–SN-2307 and filed to Smart Box + GitHub (read-back verified — see the daily log for shas); 4 missing GitHub files filed; this note filed to GitHub at `TEAM-NITRO/PI-BOARD-NOTE-DESIGN-INTELLIGENCE.md`.
+**State:** FILED by the intelligence loop (Sigma), run 2, 2026-11-08 ~17:05Z. Blocks written; drafts numbered SN-2299–SN-2307 and filed to Smart Box + GitHub (read-back verified — see the daily log for shas); 4 missing GitHub files filed; this note filed to GitHub at `TEAM-NITRO/PI-BOARD-NOTE-DESIGN-INTELLIGENCE.md`. **Updated run 4, 2026-11-08 ~17:53Z:** language section added (Shawn's word 17:41Z) + 7-libraries correction (FOUND 2026-11-08); Draft 10 numbered SN-2319 and filed; blocks file re-filed with Block 0.
 
 **What it is:** The design contract as intelligent blocks — one block per
 law — so the knowledge IS the brand and any Naya reads it as blocks. Nine
@@ -42,6 +42,8 @@ viewport · the harvest.
    Blocks file: `~/workspace/team-nitro/DESIGN-CONTRACT-AS-BLOCKS.md`,
    filed to GitHub at `TEAM-NITRO/DESIGN-CONTRACT-AS-BLOCKS.md`.
 
+**THE LANGUAGE (Shawn's word, 2026-11-08 ~17:41Z):** the design is not documentation — it is a LANGUAGE intelligence speaks, creates in, and understands. Vocabulary: the parts (board, jewel, pill, orb, gauge, number, tab, bar). Grammar: the laws (Real Object Law, depth order, number law, anatomy test, harvest-first, the design-contract gate). A Naya does not memorize the blocks; she speaks them — and what comes out is beauty: valuable, extraordinary presentations of intelligence through optimized viewports. Low-level is not a sentence in this language. It cannot be spoken. His words (verbatim): "See if you pay attention teaching the language of high level design. This become a language that intelligence like speak and created and understand to create beauty. To create valuable extraordinary presentations of intelligence through optimized viewports." Block 0 of the blocks file; Draft 10 (numbered by the loop from the next free at filing time).
+
 **The lock-in, in one line:** the system makes low-level design impossible
 (the gate fails it, the Factory has no low-end parts, the brief carries the
 laws) and high-level the default (the parts are already Bugatti-level, so
@@ -54,10 +56,8 @@ text-in-image, no pasted document · (e) no bare text blocks. A gate that
 fails is not done. A deferral is an open item, not a pass.
 
 **Open items (carried, not hidden):**
-- GitHub filing: 4 files missing (see above) — loop to file, then re-verify
-  with read-back.
-- The 7 canonical libraries remain TO-LOCATE (no file by that name found) —
-  owned by concept-1 seat, not this filing.
+- GitHub filing: 4 files missing (see above) — FILED by the loop run 2, read-back verified (DESIGN-INTELLIGENCE-REPORT.md cdba3046 · THE-INVENTORY.md 9ef630cf · ANATOMY-OF-A-VIEWPORT.md 0d04cd0a · HARVEST.md 3f9f9938; byte-match re-verified run 4).
+- The 7 canonical libraries — FOUND 2026-11-08 by the concept-1 seat (Shawn's 2026-10-18 upload; files in `~/workspace/user/files/` and on GitHub main under `HUB/design-system/library/`). No longer open.
 - DESIGN-INTELLIGENCE-REPORT.md: SOUL.md cites it at
   `BRAIN/10-INTERFACES/DESIGN-INTELLIGENCE-REPORT.md`, but that path 404s
   and no standalone file exists on GitHub — only the SN-0843 smart-note
@@ -72,7 +72,7 @@ fails is not done. A deferral is an open item, not a pass.
   placing this note in PI (filed to GitHub at
   `TEAM-NITRO/PI-BOARD-NOTE-DESIGN-INTELLIGENCE.md`; next refresh corroborates).
 - NOT DONE: nothing from this seat's list — all four loop jobs are done.
-  Carried open items: the 7 canonical libraries remain TO-LOCATE (concept-1
-  seat); the Smart Notes / Smart Lists ladders await Shawn's word (SN-2311);
+  Carried open items: the 7 canonical libraries are FOUND (concept 1,
+  2026-11-08); the Smart Notes / Smart Lists ladders await Shawn's word (SN-2311);
   the popup portrait is a reproduction wearing the real file's name until the
   real bytes ship (SN-2312).
