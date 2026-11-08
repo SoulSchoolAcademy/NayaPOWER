@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-08 12:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-08 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -33500,6 +33500,12 @@ _Last updated: 2026-11-08 12:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Monthly distillation 2026-11-01: lesson value audit (37-lesson census)
 
 **Evidence:** VERIFIED this tick on live bytes: lessons.jsonl post-filing sha256 42c4ed24... matches the receipt's post-filing pin exactly, 38 records (37 census + mirror lesson monthly-audit-log-silence-is-not-zero-20261101 as last record, additive only); lesson-injection-log.jsonl sha256 4b70671a... exact, 834 rows, span 2026-10-17T15:16:07Z to 2026-10-24T15:4
+
+### ✅ weekly-distill-20261108-librarian-heir — Team KNOW, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
+
+**Task:** Weekly distillation 20261108 (Librarian/Heir): 5 essences, 40-law standing-claim verification, contradiction scan + 1 new reconciliation
+
+**Evidence:** VERIFIED this tick by this scorer on live bytes (fresh window; no prior Team Naya Scorer row for this receipt): notes branch naya4/smart-notes-2026-09-30 head on remote = 5755c79f8eb2dbe2de1cd48ba3803c28ad062dd6, exactly the receipt's cited SHA; essences file distill-weekly/essences-20261108.md exists, sha256 f6bfd702aa7bba2fe9284cfeefcb1fd1702d757
 
 ### ✅ weekly-distill-20261101-librarian-heir — Team KNOW, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
 
