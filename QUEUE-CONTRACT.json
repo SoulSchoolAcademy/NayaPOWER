@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-08T09:48:45Z",
-  "tip": "ef1e6c9d328ff1c908d7a1611f7589a61ed305d5",
+  "generated_at": "2026-11-08T15:49:08Z",
+  "tip": "09071f053e54b5ac92f00164d7ebef03537b27c1",
   "prs": [
     {
       "number": 3089,
@@ -56,6 +56,42 @@
       "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
       "owner": "author lane",
       "head": "a72942270b7a89a70d11ffe0b2a3347458e54dcd"
+    },
+    {
+      "number": 3297,
+      "title": "TRUTH: registry-drift detector keys orphans on projection_path too",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "1ba0c2ba1c15fbbf9b77467c2c1e5f14d360a094"
+    },
+    {
+      "number": 3298,
+      "title": "tools(spawn_brief): DECLARE template names exact creed path + tip-bytes method",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "7a485fcf558a33a4f0e37d1867cbc20a4af3cf83"
+    },
+    {
+      "number": 3299,
+      "title": "SN-2292 - Distill by Machine in the Morning (distilled, 2026-11-08)",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, door-obligation; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "99df5b399fdf783c5c2cfe809fd3a3a8fcd8cb72"
+    },
+    {
+      "number": 3300,
+      "title": "Daily Intelligence Report 2026-11-08 - filed edition (V2 skeleton + distillation core)",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "4ebdf8f5984c1e9ecc6514b53d130adf9c506ecc"
     }
   ]
 }
