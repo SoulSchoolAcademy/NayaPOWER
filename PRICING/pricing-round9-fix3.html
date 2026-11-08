@@ -132,6 +132,7 @@ html{scroll-snap-type:y mandatory;}
     .banner-head h1{font-size:28px;}
   }
   /* Map labels live in the top band only: the headline block rises as the
+     banner shortens (1280), so anything below ~30% collides with the H1. */
   .banner-top.slide{overflow-y:auto; overflow-x:hidden;}
   .hero-band{position:static; left:auto; top:auto; z-index:auto; max-width:1240px; margin:0 auto; padding:28px 24px 4px;}
   .hero-band .hero-cta{margin-bottom:12px;}
