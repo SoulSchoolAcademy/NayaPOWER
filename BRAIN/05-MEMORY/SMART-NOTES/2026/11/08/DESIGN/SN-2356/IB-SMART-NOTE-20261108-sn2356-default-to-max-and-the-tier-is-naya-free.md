@@ -13,7 +13,7 @@ A default is a suggestion, and the page was suggesting Free. Whatever is lit whe
 
 ## Nutshell
 
-**ROUND 18 — DEFAULT TIER IS MAX, "NAYA FREE" (builder 16c1fc94, dispatched 20:27Z, RUNNING at loop run 9):** on load, Max is the selected/lit tier everywhere the selection shows (chart header, level rectangles, chooser, calculator, start flow). "Naya Free" everywhere the tier is named — chart header, level rectangles, chooser, calculator, detail view, start flow, popups — never a bare "Free" as a tier name. **Name-law note:** his dictation said "NIA free" — the name law is N-A-Y-A (SN-2332), so the tier reads "Naya Free". Presented when it lands; his eye decides.
+**ROUND 18 — DEFAULT TIER IS MAX, "NAYA FREE" (builder 16c1fc94, dispatched 20:27Z, DONE 20:29:50Z + presented, verification SUCCEEDED):** on load, Max is the selected/lit tier everywhere the selection shows — chart opens with Naya Max lit (Max header pressed, chosen='max'), the linked start flow follows it (Max level rectangle selected, chooser opens with the Max row lit). "Naya Free" 26× everywhere the tier is named (chart header, popups, chart rows and popup copy); "Start free" / "nine days free" stay as-is; no "nia" anywhere; rounds 14–17 verified still in place. **Caught by the build's own audit, fix running (builder 253e33b4):** two "or continue free" buttons still say free — one under "Start free now", one inside the chooser popup — relabeling both to "or continue with Naya Free". His eye decides. **Name-law note:** his dictation said "NIA free" — the name law is N-A-Y-A (SN-2332), so the tier reads "Naya Free". Presented when it lands; his eye decides.
 
 ## Human
 
