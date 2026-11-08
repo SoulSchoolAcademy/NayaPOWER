@@ -8,16 +8,17 @@ SN-2267 · DESIGN / EYE
 
 ## Hook
 
-His eye saw four things the twelve-point check did not. The 3 is gold. The side pills don't look right. The gauge and orbs go bigger. The bar goes to the very bottom.
+His eye saw five things the twelve-point check did not. The 3 is gold. The side pills don't look right. The gauge and orbs go bigger. The bar goes to the very bottom. And the Running feed hides behind a button.
 
 ## Nutshell
 
-The Dashboard passed 12 of 12 in re-verification — and his eye still found four things. That is why his eye is the final gate, and why no seat's pass is ever the verdict.
+The Dashboard passed 12 of 12 in re-verification — and his eye still found five things. That is why his eye is the final gate, and why no seat's pass is ever the verdict.
 
 1. **The 3 is gold, not purple.** In his screenshot the number is 673: the 6 is indigo, the 7 is royal purple, but the 3 is ALSO purple — the 7 and the 3 are the same colour. The chakra colours are law: 1 red · 2 orange · 3 gold · 4 emerald · 5 cyan · 6 indigo · 7 royal purple · 8 lavender · 9 hot pink · 0 white. The 3 must be gold, in rim/cap/halo, never the glyph. The fixer must find the real cause — a wrong mapping, or a colour that sticks from an earlier value and doesn't follow the digit as the live number drifts — and prove the colour follows the digit.
 2. **The Day / Week / Month / All side pills don't look right.** They are in the right place (his direction: they stay on the side) but they don't LOOK right — small flat dark pills. They must be elite real objects in the brand language: elevated, real depth, real light, lit the same as the best buttons.
 3. **The gauge and the orbs a lot bigger, more to the front, more proportioned to each other.** Scale them up substantially, bring them forward, get their proportions right relative to each other and to the number. The hero is number + gauge + orbs, one balanced composition — bigger, still centred.
 4. **The PTS / % / MONEY bar to the very very bottom, just above the fold.** And ALL the data-like stuff below the fold, where you don't even see it: the math line, the "7 more clicks" line, the ledger pill. Nothing data-like in the hero viewpoint. The pill is relocated, not unfixed — the numbers must still agree.
+5. **The Running feed must not be automatically out.** Scrolled down, the Running feed card sits centred in the middle of the page — it just doesn't look good. It should not be there by default. In its place: a notifications button. The Running feed IS the notifications — when they click the Dashboard, the Smart Stats that come up, that's the notifications. They click "my notifications" and it comes up full screen, and they click out of it. It doesn't have to stay there. The feed content stays exactly as it is — it lives behind the button, full-screen on demand, instead of sitting centred in the middle of the page.
 
 ## Human
 
@@ -42,13 +43,14 @@ This is the three-step verification working exactly as designed. Step 1 (the mak
 - **The side pills must be elite.** Same elevation, same light, same standard as the best buttons. Flat dark pills are not real objects.
 - **Bigger gauge, bigger orbs, one composition.** More to the front, more proportioned to each other and to the number — still centred, still one balanced hero.
 - **The bar at the very bottom, the data below the fold.** The hero viewpoint holds only the machine. The numbers live underneath, working and agreeing, out of sight until scrolled to.
+- **The Running feed hides behind a button.** Nothing stays on the page that doesn't need to be there. The notifications come up full screen when asked for, and click out when done. The page is a machine, not a noticeboard.
 
 ## Why it matters
 
-The Dashboard is the instrument everything else is built from. If the 3 is the wrong colour, the number — the signature piece, the digital asset, the thing that appears everywhere — is wrong everywhere. If the gauge and orbs are too small, the machine doesn't feel like a machine. If the data sits in the hero, the viewpoint isn't clean. His eye caught all four in one look, and each one is fixable in one pass. That is the system working: the check before him caught the checkable, and his eye caught the visible. The next pass fixes exactly these four, re-verifies the twelve, and comes back to his eye.
+The Dashboard is the instrument everything else is built from. If the 3 is the wrong colour, the number — the signature piece, the digital asset, the thing that appears everywhere — is wrong everywhere. If the gauge and orbs are too small, the machine doesn't feel like a machine. If the data sits in the hero, the viewpoint isn't clean. If the feed sits centred in the middle of the page, the page is a noticeboard instead of a machine. His eye caught all five in two looks, and each one is fixable in one pass. That is the system working: the check before him caught the checkable, and his eye caught the visible. The next pass fixes exactly these five, re-verifies the twelve, and comes back to his eye.
 
 ## What changes now
 
-1. **Fix pass 5 dispatched (fresh seat, 01:38Z)** — exactly the four fixes, with his screenshot as ground truth, the real cause of the 3's colour to be found in the code, and the twelve re-verified.
+1. **Fix pass 5 dispatched (fresh seat, 01:38Z; FIX 5 added 01:39Z)** — exactly the five fixes, with his two screenshots as ground truth, the real cause of the 3's colour to be found in the code, and the twelve re-verified.
 2. **The verification checklist gains a colour check.** Every future Dashboard verification checks each digit's colour against the chakra map — not just that the number lands.
 3. **The merge waits.** His eye has not passed the page, so nothing merges. The branch holds fix pass 4; fix pass 5 lands there next, then re-verify, then his eye again.
