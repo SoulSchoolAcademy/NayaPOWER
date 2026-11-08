@@ -41,6 +41,7 @@ import urllib.request
 GH_DIRECT = os.path.expanduser("~/workspace/team-nitro/gh-direct.py")
 RAW_BASE = "https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/main/"
 API_BASE = "https://api.github.com"
+PROOF_HOST = "https://naya-proof-host.nayapower.workers.dev/"
 
 
 def load_gh_direct():
@@ -126,22 +127,44 @@ def main():
     receipt["blob_sha"] = content.get("sha")
 
     time.sleep(args.wait)
-    url = RAW_BASE + args.dest if args.branch == "main" else None
-    if url is None:
-        print("FILED (branch %s, blob %s) — read-back only supported on main"
-              % (args.branch, receipt["blob_sha"]))
-        receipt["verified"] = True
-        write_receipt(args.receipt, receipt)
-        return 0
-    try:
-        req = urllib.request.Request(url, headers={
-            "User-Agent": ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-                           "(KHTML, like Gecko) Chrome/120.0 Safari/537.36")})
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            body_bytes = resp.read()
-            http_status = resp.status
-    except Exception as exc:
-        print("READ-BACK FAILED: %s (%s)" % (url, exc))
+    if args.branch == "main":
+        url = RAW_BASE + args.dest
+    else:
+        # A branch file is read back through the proof host (it serves any
+        # public-repo file at a given ref; the blob sha busts its cache).
+        url = (PROOF_HOST + "?file=" + args.dest + "&ref=" + args.branch
+               + "&cb=" + (receipt["blob_sha"] or ""))
+    # Read-back fetch: curl, not urllib. urllib drops large workers.dev
+    # reads mid-body (IncompleteRead, twice in a row on this 1.6MB file)
+    # while curl returns the whole file every time. The bytes are the proof
+    # either way — the fetcher is not the check.
+    import subprocess
+    body_bytes = None
+    http_status = None
+    last_exc = None
+    for _ in range(3):
+        try:
+            curl = subprocess.run(
+                ["curl", "-s", "-A", "Mozilla/5.0 (X11; Linux x86_64) "
+                 "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 "
+                 "Safari/537.36", "-w", "\n%{http_code}", url],
+                capture_output=True, timeout=120)
+            if curl.returncode != 0:
+                last_exc = RuntimeError("curl exit %d: %s"
+                                        % (curl.returncode,
+                                           curl.stderr.decode()[:200]))
+                time.sleep(5)
+                continue
+            out = curl.stdout
+            marker = out.rfind(b"\n")
+            http_status = int(out[marker + 1:].decode().strip())
+            body_bytes = out[:marker]
+            break
+        except Exception as exc:
+            last_exc = exc
+            time.sleep(5)
+    if body_bytes is None:
+        print("READ-BACK FAILED: %s (%s)" % (url, last_exc))
         write_receipt(args.receipt, receipt)
         return 1
     if http_status != 200:
