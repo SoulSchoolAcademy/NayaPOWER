@@ -3849,7 +3849,8 @@ window.NayaContent = {
       if(!line) return;
       var d=newest?new Date(newest):new Date();
       var when=isNaN(d.getTime())?'today':d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
-      var want='Intelligence live \u2014 '+count+' Smart Notes \u00b7 updated '+when;
+      var ageDays=newest?Math.max(0,Math.floor((Date.now()-d.getTime())/86400000)):0;
+      var want='Intelligence as of '+when+' ('+ageDays+' day'+(ageDays===1?'':'s')+' ago) - '+count+' Smart Notes';
       if(line.textContent!==want){ line.textContent=want; }
     }catch(e){}
   }
@@ -8318,15 +8319,20 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
   // was served at a clean note URL (/smart-notes/<slug>, /notes/<slug>,
   // /note/<slug>, /note?n=<slug>): the worker serves the Hub shell there, so
   // carry the slug into the hash and open the note INSIDE the Hub.
-  if (!location.hash) {
+  // Clean note URLs carry their slug into the hash; otherwise the shell
+  // defaults to the feed. The default assignment is the first statement
+  // so a file-opened Hub always lands on its first screen.
+  var noteSlug = null;
+  (function () {
     var notePath = location.pathname.match(/^\/(?:smart-notes|notes|note)\/([^/]+)\/?$/);
     var noteQuery = null;
     if (!notePath && (location.pathname === '/smart-notes' || location.pathname === '/note')) {
       try { noteQuery = new URLSearchParams(location.search).get('n'); } catch (e) {}
     }
-    var noteSlug = notePath ? decodeURIComponent(notePath[1]) : noteQuery;
-    location.hash = noteSlug ? '#/smart-notes/' + noteSlug : '#/hub';
-  }
+    noteSlug = notePath ? decodeURIComponent(notePath[1]) : noteQuery;
+  })();
+  if (!location.hash) { location.hash = '#/hub'; }
+  if (noteSlug && location.hash === '#/hub') { location.hash = '#/smart-notes/' + noteSlug; }
 
   Router.render();
 
@@ -9359,6 +9365,11 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
   };
   var palette = NayaSearch.mountPalette(document.body, { store: searchStore });
   NayaSearch.installHotkey(document, function () { palette.open(); });
+  var searchButton = document.createElement('button');
+  searchButton.textContent = 'Search';
+  searchButton.setAttribute('aria-label', 'Search');
+  searchButton.addEventListener('click', function () { palette.open(); });
+  document.body.appendChild(searchButton);
   window.NayaSearchPalette = { open: function () { palette.open(); } };
 })();
 </script>
