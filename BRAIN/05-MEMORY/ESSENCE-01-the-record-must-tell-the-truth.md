@@ -54,7 +54,7 @@ You never have to guess what is true. Read the record, and it tells you — beca
 
 The durable lesson: write for the stranger. Bound the claim. Name the gap. Keep the falsifier. Never impersonate. Correct surgically. Route the decision. The record is the system — and a record that tells the truth is the only system that compounds.
 
-## COVERAGE — RAW NOTES DISTILLED (72)
+## COVERAGE — RAW NOTES DISTILLED (75)
 
 - IB-SMART-NOTE-20260930-sn0104-design-weight-decisions-not-settled-in-relay
 - IB-SMART-NOTE-20260930-sn0176-cross-partition-content-fork
@@ -128,3 +128,10 @@ The durable lesson: write for the stranger. Bound the claim. Name the gap. Keep 
 - IB-SMART-NOTE-20261108-sn2373-the-mobile-stack-one-viewport-on-the-phone
 - IB-SMART-NOTE-20261108-sn2374-the-hub-bindings-fix-carry-the-binding
 - IB-SMART-NOTE-20261108-sn2375-the-re-bake-fault-a-literal-script-tag-broke-the-bake
+
+## Intelligence Loop run 13 addendum (22:23Z) — SN-2376–2378 + coverage 75
+
+- **THE ONE-SHOT CHARGE 22:12Z (his words):** "Get her done, nail it, one shot, whole world in your hands — prepare, then take the shot; grand slam, bullseye; what are we ultimately trying to do for the user, the customer, everyone, and how; done right out of respect and honor for who and what she is; don't miss." The bullseye for the shot: a stranger laughs in 2 seconds, knows in seconds, taps the button right there — no risk, free, jump in the Bugatti — and becomes a citizen; the citizen gets a world, the people they share with get the same, the hive grows, everybody earns half. The shot is the opening letter v41 (presented 22:12Z+, seat score 9/10). ONE ITEM OWED: the button landing centered after the final beat — code-proven by two seats, NEVER run-proven by a live tap-through (0 probe acts captured); the tap-through probe is owed before his eye decides. SN-2376.
+- **THE HUB DEPLOY 400 — MY PATCH BROKE IT (sync 22:01Z):** the 21:47Z bindings fix declares an ASSETS binding on a script-only PUT with no assets uploaded — Cloudflare error 10305. Live worker untouched (clean rejection), Hub stale, will NOT self-heal. SN-2374 had named this exact risk ("may 400 — non-fatal, patch revised if so") — the note was right, the patch was not, and the very next sync proved it. Fix seat dispatched 22:15Z (wrangler route via Resolve's invocation if arrived, or multipart assets upload in deploy.py; dry-run first, then re-deploy + live proof). NEVER drop the binding to clear the 400. Resolve's exact wrangler command asked 21:55:05Z (thread d4beddfa), no reply to 22:23Z. Told to Shawn plainly, owning it. SN-2377.
+- **ONE WELCOME, NOT TWO (his call 22:21Z):** "The letter is the opening now; you don't need both. Keep the new one, don't keep the other one." Take off the "Start free now" door + the three pills — no second start door. Captain's call: remove altogether (he offered a slim welcome as the alternative) — the letter already IS the welcome (her portrait, the welcome, the button). Page flows letter → chart. Removal seat dispatched 22:21Z; his eye decides. SN-2378.
+- **Still open, his word needed:** the Pricing gold-border question (asked five times, no ruling recorded); the 5th-group colour (cycles to green) is the captain's reading, flagged to him; Your Reports Free-cell ambiguous; his pick of the one world-class statement (banner carries #1 provisionally); the % mismatch (83% vs 52%) decision; the thank-you API host (landing list L5–L10 undone); the PayPal double-subscription closers (webhooks + Settings change-level button, later builds); his eye on Pricing fix pass 2 + on the Academy harvest as inventory; his tap to dispatch the MAXESS build; the opening-letter tap-through probe (owed); the Pricing entrance removal (seat dispatched 22:21Z, handoff owed). **Live-proof owed:** the next sync redeploy proves both Hub fixes in one run — now blocked on the 400 fix seat (dispatched 22:15Z, wrangler command from Resolve still owed).
