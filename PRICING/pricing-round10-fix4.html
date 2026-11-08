@@ -1073,6 +1073,37 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
    not inside it) and rendered as visible code text below the close slide. Moved inside
    their scripts by the patch (same text, same provenance). Not a word change: the page
    copy is untouched; only the four loose comments leave the visible text. */
+
+/* ============ FIX 4b (2026-11-08, rev 10 same file — the captain's ruling + one safe repair) ============
+   Item 1 — DESKTOP CLOSE CLEARANCE (the captain's ruling: TAKE IT). Fix 4.1's scroll-margin
+   mechanism at desktop: the same defect fix 1 cured at phone, at the other width.
+   Baseline (rev 10, desktop 1920x1080, outer max): close Start 1189-1245, bar top 979 —
+   under by 266px; snap scrollY 5507 == maxScroll 5507 (the snap is ALREADY at the max,
+   so the margin alone cannot move it — the shift needs scroll room, fix 4's own rule).
+   Shift -280px: button bottom 1245-280 = 965, clears the bar top 979 by 14px (phone's
+   clearance is 11px; -265 would give 1px — too thin for a conversion action).
+   Scroll room: margin-bottom 300px (snap wants 5507+280 = 5787; room gives maxScroll
+   5507+300 = 5807, 20px headroom). The margin is white-on-white below the white close
+   slide — breathing room, not a gap (same as phone's 150px).
+   Banner bound: the 640px desktop banner shows 640-280 = 360px at the landing
+   (the brief's ~375px bound was for -265); head, sub, dream, trial and CTA all read. */
+@media (min-width:861px){
+  #start{scroll-margin-top:-280px; margin-bottom:300px;}
+}
+/* Item 2 — CLOSE START ONE LINE AT PHONE (safe repair, words UNCHANGED).
+   Baseline (rev 10, phone 390): the button is 358px wide — it already spans the full
+   content column — but its text needs ~303px at 17px (line 1 is 253px, line 2 is 45px)
+   and the content box is only 358-64 = 294px, so it wraps by one word and stands
+   80px tall. The button cannot be widened past the 358px column without overflowing
+   the slide, so the widening is of the TEXT AREA: padding 32px -> 20px (content
+   294 -> 318, 15px headroom) + white-space:nowrap as the guarantee.
+   Result: one line, 358x56 — the desktop button's height. Label verbatim.
+   Scroll-room note (measured): the one-line button is 24px shorter, but the close
+   slide's height is viewport-driven (842px at phone), so the document height does
+   NOT change and the phone snap stays reachable — no margin change is needed. */
+@media (max-width:860px){
+  .close-start .primo{padding:16px 20px; white-space:nowrap;}
+}
 </style>
 </head>
 <body>
