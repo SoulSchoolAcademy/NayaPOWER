@@ -72,6 +72,7 @@ function mapItem(r) {
 // HUB/wrangler.toml claims nayanet.app/s/* for hub. Before that, the
 // route table sent /s/* to the naya-share worker, whose share-page
 // template pointed at retired nayanet.live.)
+// 2026-11-08: nayanet.app/s/* route claimed by this worker (PR #3301); the naya-share route was deleted from the zone the same day, clearing Cloudflare code 10020.
 const SPECTRUM = ["#9d75ff", "#6f8dff", "#3ddc97", "#ffd34d", "#ff9f43", "#ff5d5d", "#ff5dd2"];
 function esc(s) {
   return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
