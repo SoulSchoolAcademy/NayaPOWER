@@ -2,8 +2,14 @@
 
 SN-2296 · VISION
 
-**Created:** 2026-11-08 16:23Z
-**Source:** The captain's restatement to Shawn in the main chat, 2026-11-08 ~16:28Z, of his 16:12Z teaching — endorsed by his 👍 reaction the same pass. The framing words are the captain's, held as given; the teaching underneath is his (see SN-2293). His 👍 is recorded as endorsement of the restatement, not as a new dictation.
+**Created:** 2026-11-08 16:23Z; source corrected 16:32Z
+**Source:** Shawn's dictation to Naya, 2026-11-08 16:26Z — "how do I speak the language to you... so that you truly get it right — what the job is" — recorded in the daily log (verbatim substance, held as given). The captain's restatement in the main chat ~16:28Z and his 👍 reaction the same pass confirm it; the framing words in the second quote are the captain's.
+
+> "We are a franchise — the Bugatti of the internet. Bugatti would have all its parts ready-built to make many Bugattis; they would not start from scratch each time. Our parts are code — objects, digital assets. Take all our digital assets, code, objects and inventory them, put them in the factory, in one place. Then Anaya goes in, knows the intent of what the page is and what the function is about, pulls the best relevant parts from the factory — all the already-done objects and assets — and puts them together to create the viewport, page, output, interface for users to interface with the super Bugatti high-tech machine of the internet. Boom, done."
+>
+> "Bugatti doesn't use old Ford parts or low-end parts — Bugatti uses all the high-end ones, ready-built in the factory, so they can build at high speeds and get it all done."
+>
+> "This is what we're creating. Do you get it?"
 
 > "Bugatti franchise. The factory is the parts warehouse, and every part in it is already built, high-end only, ready to bolt on. No Ford parts, no low-end parts. Our parts are the code and the objects from the pages we already have — the gauge, the tiled digits, the orbs, the jewels, the boards, the pills, the smart note, the intelligent block. The job is to take all of them and inventory them into one factory, organized, so any Naya can walk in, know what the page is for, pull the right parts, and assemble it — boom, done. And every page comes out beautiful because it's built from the same parts, the same language, the same brand. They all look like family because they are family."
 >
