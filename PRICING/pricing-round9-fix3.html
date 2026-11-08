@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NayaNET — Pricing</title>
 <style>
-/* 1. PAGE :ROOT — Hub index-2-fixed-v2.html lines 64-142 + aliases */
+/* 1. page:root — Hub lines 64-142 + aliases (--txt/--dim/--panel/--panel2, --soul, --ease) */
 :root {
   /* ——— The obsidian stack — the only neutrals (Law v2 §2.2) ——— */
   --bg:        #0B0D12;  /* World — the canvas. Everything sits on this. */
@@ -85,29 +85,16 @@
     radial-gradient(900px 700px at 100% 100%, #d86cff12, transparent 70%),
     var(--bg);
 }
-/* 2. FIX1 BASE — pricing-round7-fix1-work.html lines 17-24 */
-  *{box-sizing:border-box; margin:0; padding:0;}
-  body{background:var(--bg); color:var(--txt);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.55; -webkit-font-smoothing:antialiased;}
-  .wrap{max-width:1240px; margin:0 auto; padding:0 24px;}
-  /* White text only — color lives on orbs and 2-3px edge bars, never in words. */
-  .kicker{font-size:12px; letter-spacing:.22em; font-weight:700; margin-bottom:8px; color:var(--txt);}
-  h1{font-size:clamp(28px,4.5vw,48px); font-weight:800; letter-spacing:-.01em; margin-bottom:8px;}
-/* 3. DECK — deck-slide.md verbatim + fix1 L325 + fix1 L372-376 */
+/* 2. deck — Amendment 4 §6 (the .slide CSS pasted verbatim; the deck JS adds js-deck to <html>) */
 .slide{height:100vh; height:100svh; overflow-y:auto; scroll-snap-align:start; scroll-snap-stop:always; box-shadow:inset 0 1px 0 rgba(255,255,255,.07);}
 .js-deck .slide{opacity:.85; transform:scale(.998); transition:opacity .35s ease, transform .35s ease;}
 .js-deck .slide.arrived{opacity:1; transform:none;}
 html{scroll-snap-type:y mandatory;}
-    html{scroll-snap-type:none;}
-    .slide{height:auto; min-height:0; overflow:visible;}
-    .banner-top .banner-img,.calc-gauge.alive .speedo-object,.calc-gauge.alive svg{animation:none !important;}
-    *{transition-duration:.01ms !important;}
-  }
-/* slides clear the fixed bottom bar (precedent: factory-page-shell body padding-bottom:92px; the notif bar is ~94px) */
+@media (prefers-reduced-motion: reduce){ html{scroll-snap-type:none;} .slide{height:auto; min-height:0; overflow:visible;} *{transition-duration:.01ms!important;} }
+/* slides clear the fixed bottom bar (the airtight brief's deck rule — a separate rule, so §6's .slide stays verbatim) */
 .slide{padding-bottom:110px;}
-/* 4. NAV — fix2 lines 843-851, position:static per the deck law; .nav-cta keeps margin-left:auto only */
-.doc-nav{position:static; z-index:60; display:flex; align-items:center; gap:18px;
+/* 3. top nav — fix-2 L843-851 (position:static per the deck law; .nav-cta is a layout hook only) */
+.doc-nav{position:static; top:0; z-index:60; display:flex; align-items:center; gap:18px;
   padding:10px 22px; background:rgba(10,10,15,.86); backdrop-filter:blur(10px);
   border-bottom:1px solid rgba(255,255,255,.12);
   box-shadow:0 10px 30px -12px rgba(0,0,0,.9);}
@@ -116,8 +103,13 @@ html{scroll-snap-type:y mandatory;}
 .doc-nav a{color:var(--dim); font-size:13px; font-weight:700; text-decoration:none; white-space:nowrap;}
 .doc-nav a:hover{color:#fff;}
 .doc-nav .nav-cta{margin-left:auto; color:#0a0a0f; background:linear-gradient(135deg,#ffe9a8,#ffbf3d);
-.doc-nav .nav-cta{margin-left:auto;}
-/* 5. HERO — fix1 base + fix2 F16/F18 (order preserved) */
+.nav-cta{margin-left:auto;}
+/* 4. HERO — fix1 base + fix2 F16/F18 (the airtight brief R1; §7 keeps .tech/.mission/.sub/.demo-starter) */
+  .kicker{font-size:12px; letter-spacing:.22em; font-weight:700; margin-bottom:8px; color:var(--txt);}
+  .sub{color:var(--dim); font-size:16px; max-width:760px; margin-bottom:32px;}
+  .sub b{color:var(--txt);}
+  .hero-cta{display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin:0 0 32px;}
+  .hero-cta-note{font-size:14px; color:var(--dim);}
   .banner-top{position:relative; width:100%; overflow:hidden; background:#060608; border-bottom:1px solid var(--line);}
   .banner-top .banner-img{width:100%; height:auto; display:block;}
   /* No shade on the Studio top: nothing dims the nine objects at the base. */
@@ -125,16 +117,19 @@ html{scroll-snap-type:y mandatory;}
   /* Studio top: the headline sits in the empty black sky top-left (max-width 480px clears the machine's left rim at ~549px @1920) — never over the nine objects at the base, and no shade dims them. */
   .banner-head{position:absolute; z-index:3; left:48px; top:32px; max-width:480px;}
   .banner-head h1{color:#fff; text-shadow:0 2px 18px rgba(0,0,0,.75);}
+  .banner-head .sub{color:#e8e8ee; text-shadow:0 1px 10px rgba(0,0,0,.8); max-width:880px;}
   .banner-head .hero-cta-note{color:#e8e8ee; text-shadow:0 1px 8px rgba(0,0,0,.8);}
   /* Finals are 3:1 — below ~1728px the overlaid headline would sit on the pills. Stack it under the image (the established phone pattern), hide the NINE ORBS label (fixed-height pills collide with the SPACE pill below ~1590px). Phone rules below still win under 860px. */
   @media(max-width:1760px){
     .banner-head{position:static; left:auto; right:auto; top:auto; bottom:auto; max-width:none; padding:24px 48px 32px; background:#060608;}
+    .banner-head .sub{max-width:880px;}
   }
   @media(max-width:860px){
     /* Phone: the banner image is short, the headline is tall — stack the
        headline UNDER the image in normal flow instead of overlaying it,
        or the H1 is pushed above the viewport and lost. */
     .banner-head{position:static; left:auto; right:auto; top:auto; bottom:auto; max-width:none; padding:24px 16px 32px; background:#060608;}
+    .banner-head .sub{max-width:none;}
     .banner-head h1{font-size:28px;}
   }
   /* Map labels live in the top band only: the headline block rises as the
@@ -147,9 +142,13 @@ html{scroll-snap-type:y mandatory;}
     .banner-top .banner-img{height:640px; object-fit:cover; object-position:center 50%;}
     .banner-head{top:20px; left:48px; max-width:520px;}
     .banner-head h1{font-size:36px;}
+    .banner-head .sub{font-size:14px; margin-bottom:12px;}
     .hero-cta{margin:0 0 16px; flex-wrap:nowrap;}
     .hero-cta-note{font-size:12px; padding:8px 10px; flex:1 1 auto; min-width:0;}
   .manifesto{font-size:15px; font-weight:700; color:var(--txt); margin-bottom:8px;}
+  .mission{font-size:15px; color:var(--dim); margin-bottom:10px; max-width:880px;}
+  .mission b{color:var(--gold);}
+  .demo-starter{font-size:15px; font-weight:700; color:var(--gold); margin-bottom:12px;}
   .claim-name{flex:0 1 190px; min-width:140px; padding:12px 14px; font-size:15px; color:var(--txt);
     background:linear-gradient(180deg,#1c1c26,#0a0a0f); border:1.5px solid rgba(255,191,61,.55); border-radius:12px;
     box-shadow:inset 0 2px 8px rgba(0,0,0,.7), inset 0 -1px 0 rgba(255,255,255,.08), 0 4px 14px rgba(0,0,0,.45);}
@@ -160,15 +159,19 @@ html{scroll-snap-type:y mandatory;}
     .hero-cta{flex-wrap:wrap;}
     .hero-cta .claim-name{flex:1 1 100%; margin-right:0; margin-bottom:8px;}
     .manifesto{font-size:16px;}
+    .mission{font-size:14px;}
   }
 
   /* FIX7H — hero band widened (was 520px) + new-technology line. */
   .banner-top .hero-band{max-width:880px !important; padding-top:20px;}
+  .tech{font-size:15px; font-weight:700; color:var(--txt); margin-bottom:10px; border-left:3px solid var(--gold); padding-left:12px;}
   .demo-card-systems{font-size:13px; color:var(--dim); margin:8px 0 0;}
   @media(max-width:860px){
     .banner-top .hero-band{padding:16px 16px 8px;}
     .banner-top .kicker{font-size:12px; letter-spacing:.04em;}
     .manifesto{font-size:14px;}
+    .mission{font-size:14px;}
+    .tech{font-size:14px;}
     .banner-top .hero-cta-note{font-size:12px;}
 /* F18 greeting (fix2 L438-439) */
 .hero-greet{font-size:15px; font-weight:700; color:var(--txt); margin-bottom:6px;}
@@ -176,6 +179,7 @@ html{scroll-snap-type:y mandatory;}
 /* F16 hero rules from the fix2 860 block (L443-487, hero + calc-order lines only) */
 @media(max-width:860px){
 .banner-head{position:static; left:auto; right:auto; top:auto; bottom:auto; max-width:none; padding:24px 16px 32px; background:#060608;}
+.banner-head .sub{max-width:none;}
 .banner-head h1{font-size:28px;}
 .hero-cta{flex-wrap:wrap;}
 .hero-cta .claim-name{flex:1 1 100%; margin-right:0; margin-bottom:8px;}
@@ -189,6 +193,8 @@ html{scroll-snap-type:y mandatory;}
 .banner-top .hero-band{padding-bottom:4px;}
 .banner-top .hero-band{padding:14px 16px 0;}
 .banner-top .hero-cta{margin-bottom:0;}
+.banner-head .sub{margin-bottom:8px;}
+.banner-head .mission{margin-bottom:6px;}
 .banner-head .manifesto{margin-bottom:4px;}
 .banner-top .hero-greet{margin-bottom:4px;}
 #calculator{display:flex; flex-direction:column;}
@@ -205,18 +211,22 @@ html{scroll-snap-type:y mandatory;}
 /* F16 1440 block (fix2 L494-510) — 1760px !important wins at >=1440px */
 @media(min-width:1440px){.banner-top .hero-band{max-width:1760px !important; display:flex; gap:48px; align-items:stretch;}
 .hero-copy{flex:1 1 auto; min-width:0;}
+.banner-top .hero-band .sub{margin-bottom:8px; max-width:none;}
+.banner-top .hero-band .mission{max-width:none;}
 .banner-top .hero-band .hero-cta{margin-bottom:0;}
 .banner-top .hero-band .kicker{margin-bottom:4px;}
 .banner-top .hero-band h1{margin-bottom:4px;}
 .banner-top .hero-band .hero-greet{margin-bottom:4px;}
 .banner-top .hero-band .manifesto{margin-bottom:4px;}
+.banner-top .hero-band .tech{margin-bottom:6px;}
+.banner-top .hero-band .mission{margin-bottom:6px;}
 .hero-systems{display:flex; flex:0 0 400px; flex-direction:column; justify-content:center; gap:16px; padding:24px; border-radius:16px; border:1.5px solid rgba(255,255,255,.9); background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%); box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 8px 24px rgba(0,0,0,.5);}
 .hero-systems-kicker{font-size:12px; font-weight:800; letter-spacing:.22em; color:var(--txt);}
 .hero-systems-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:8px;}
 .hero-systems-grid span{padding:8px 6px; border-radius:999px; font-size:12px; text-align:center; color:var(--txt); border:1px solid var(--gold); background:rgba(255,191,61,.14); box-shadow:0 0 12px rgba(255,191,61,.25);}
 .hero-systems-line{color:var(--dim); font-size:14px;}
 .hero-systems-line b{color:var(--txt);}}</style>
-/* 6. .primo — Naya_Beautiful_Button_Set_N4.html lines 238-247 (NAYA-BTN-027) */
+/* 5. .primo — Naya_Beautiful_Button_Set_N4.html L238-247 (NAYA-BTN-027) */
 /* ============ STANDARD — .primo ============ */
 .primo { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 800; font-size: 15px; letter-spacing: .08em; color: #fff; padding: 14px 26px; border-radius: 999px; border: none;
   background: linear-gradient(180deg, #141419 0%, #050505 60%, #08080c 100%);
@@ -228,8 +238,17 @@ html{scroll-snap-type:y mandatory;}
 .primo.theme-blue { --glow: var(--blue); } .primo.theme-green { --glow: var(--green); } .primo.theme-gold { --glow: var(--gold); }
 .primo:disabled { opacity: .6; cursor: default; transform: none; }
 .primo{text-decoration:none;}
-/* .primo on an <a> keeps the button look (the claim buttons are anchors) */
-/* 7. ORB — Hub lines 2606-2665 (.orb base + .orb--sm + keyframes + .ib-card-orb) */
+/* 6. .real-note + .cycle-step — Amendment 4 §3 (pasted verbatim; .cycle-step is unused on this page — no cycle element is carried) */
+.real-note{background:linear-gradient(180deg,#1a1a26,#0a0a0f 72%); border:1px solid rgba(255,255,255,.16); border-left:3px solid var(--gold); border-radius:12px; padding:14px 16px; margin-bottom:10px; box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 8px 18px rgba(0,0,0,.45);}
+.cycle-step{background:linear-gradient(180deg,#1a1a26,#0a0a0f 72%); border:1px solid rgba(255,255,255,.16); border-radius:12px; padding:12px; font-size:13px; color:var(--dim); box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 8px 18px rgba(0,0,0,.45);}
+.real-note p{margin:0; font-size:15px; line-height:1.55;}
+.rn-head{display:flex; align-items:center; gap:12px; margin-bottom:8px;}
+.rn-label{font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase;}
+.top10-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+@media(max-width:860px){ .top10-grid{grid-template-columns:1fr;} }
+.top10-card{cursor:pointer;}
+.top10-card:focus-visible{outline:3px solid #fff; outline-offset:3px;}
+/* 7. orb + .ib-card-orb — Hub L2606-2665 (hub-ib-card-orb.css) */
   background:
     radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
     radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
@@ -290,72 +309,9 @@ html{scroll-snap-type:y mandatory;}
    animation beats the inline breathe the card sets at render. */
 .ib-card-orb.playing { animation: ib-orb-flow 1.6s ease-in-out infinite !important; }
 .ib-card-orb.reading { animation: ib-orb-flow 2.8s ease-in-out infinite !important; }
-/* .orb--hero — factory-page-shell.html lines 1391-1394 (200px, sunburst ring 9s) */
-.orb--black{background:radial-gradient(circle at 34% 26%,rgba(255,255,255,.55) 0%,transparent 26%),radial-gradient(circle at 50% 55%,#1b1b22 0%,#050507 72%);box-shadow:inset 0 0 0 2px rgba(var(--oc-rgb),.9),inset 0 -12px 24px rgba(0,0,0,.7),0 0 30px rgba(var(--oc-rgb),.5),0 0 70px -12px rgba(var(--oc-rgb),.4),0 24px 48px rgba(0,0,0,.65)}
-.orb--hero{width:200px;height:200px}
-.orb--hero::before{inset:-26px;padding:4px;animation-duration:9s}
-.orb--hero::after{bottom:-46px;height:36px}
-.hero-show .orb--hero{width:220px;height:220px}
-@media(max-width:760px){.hero-show .orb--hero{width:170px;height:170px}}
-/* 8. LADDER + CHART — pricing-table-DRAFT-v4-2.html (the :root, *, body, .wrap, .draft-banner, .notes, .foot, .tag rules are NOT carried) */
-.draft-banner b{color:var(--gold); letter-spacing:.14em; font-size:12px; display:block; margin-bottom:4px;}
-  .kicker{font-size:12px; letter-spacing:.22em; font-weight:700; margin-bottom:10px;}
-  h1{font-size:clamp(30px,4.5vw,52px); font-weight:800; letter-spacing:-.01em; margin-bottom:8px;}
-  .sub{color:var(--dim); font-size:17px; max-width:760px; margin-bottom:34px;}
-  .trial{background:var(--panel); border:1px solid var(--line); border-radius:16px;
-    padding:28px 30px; margin-bottom:30px; position:relative; overflow:hidden;}
-  .trial::before{content:""; position:absolute; inset:0 0 auto 0; height:3px;
-    background:linear-gradient(90deg,var(--purple),var(--blue),var(--green),var(--gold),var(--orange),var(--red),var(--magenta));}
-  .trial h2{font-size:26px; margin-bottom:6px;}
-  .trial p{color:var(--dim);}
-  .trial p b{color:var(--green);}
-  .tiers{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:44px;}
-  @media(max-width:860px){.tiers{grid-template-columns:1fr;}}
-  .tier{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:26px 24px; position:relative;}
-  .tier.pro{border-color:var(--blue); box-shadow:0 0 34px rgba(63,184,255,.14), inset 0 1px 0 rgba(255,255,255,.06);}
-  .tier .tname{font-size:13px; letter-spacing:.2em; font-weight:700; margin-bottom:12px;}
-  .tier .price{font-size:34px; font-weight:800; margin-bottom:2px;}
-  .tier .per{color:var(--faint); font-size:13px; margin-bottom:14px;}
-  .tier ul{list-style:none; font-size:14.5px; color:var(--dim);}
-  .tier ul li{padding:5px 0; border-top:1px solid #16161c;}
-  .tier ul li b{color:var(--txt);}
-.tag.hot{background:rgba(63,184,255,.14); color:var(--blue); border:1px solid var(--blue);}
-.table-scroll{overflow-x:auto; border:1px solid var(--line); border-radius:16px; margin-bottom:44px;}
-  table{width:100%; border-collapse:collapse; min-width:880px; font-size:14.5px;}
-  thead th{padding:18px 16px; text-align:left; background:var(--panel2);
-    border-bottom:1px solid var(--line); vertical-align:bottom;}
-  thead th .col-price{font-size:22px; font-weight:800; display:block; margin-top:4px;}
-  thead th .col-sub{font-size:12px; color:var(--faint); font-weight:400;}
-  thead th.hl{background:#0d1620;}
-  tbody td{padding:15px 16px; border-bottom:1px solid #141419; vertical-align:top;}
-  tbody tr:last-child td{border-bottom:none;}
-  tbody td:first-child{font-weight:700; white-space:nowrap; background:var(--panel);}
-  tbody td.hl{background:#0c141c;}
-  .orb{display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:10px;
-    box-shadow:0 0 10px currentColor;}
-  .feat{display:flex; align-items:center;}
-.notes h3{font-size:18px; margin-bottom:12px;}
-.notes li b{color:var(--txt);}
-.c-purple{color:var(--purple);} .c-blue{color:var(--blue);} .c-green{color:var(--green);}
-  .c-gold{color:var(--gold);} .c-orange{color:var(--orange);} .c-red{color:var(--red);} .c-magenta{color:var(--magenta);}
-/* tier list items: diamond bullets (row 18) — the li is flex, the jewel is flex:none */
-.tier ul li{display:flex; align-items:flex-start; gap:10px;}
-.tier ul li .pj-jewel{margin-top:1px;}
-/* chart rows separate on hover (row 22) — shadow + background lift; transform decided by the probe */
-tbody tr{transition:box-shadow .22s var(--ease), background-color .22s var(--ease), transform .22s var(--ease);}
-tbody tr:hover{background:#101018; box-shadow:0 10px 28px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.14);}
-tbody tr:hover{transform:translateY(-3px);}
-/* 9. .real-note — real-notes-block.md verbatim */
-.real-note{background:linear-gradient(180deg,#1a1a26,#0a0a0f 72%); border:1px solid rgba(255,255,255,.16); border-left:3px solid var(--gold); border-radius:12px; padding:14px 16px; margin-bottom:10px; box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 8px 18px rgba(0,0,0,.45);}
-/* Top 10 card: orb + label + one short paragraph (the Hub Smart Note layers) */
-.real-note .rn-head{display:flex; align-items:center; gap:12px; margin-bottom:8px;}
-.real-note .rn-label{font-size:12px; font-weight:800; letter-spacing:.18em; color:var(--txt);}
-.real-note p{margin:0; font-size:15px; line-height:1.6; color:var(--txt);}
-.top10-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px;}
-@media(max-width:860px){.top10-grid{grid-template-columns:1fr;}}
-/* 10. .steppill + .steprail — factory-page-shell.html line 451 (verbatim) */
+/* 8. .steppill / .steprail — factory-page-shell.html L451 */
 .steppill{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:800;font-size:11px;letter-spacing:.14em;color:#F8F7FB;padding:10px 18px;border-radius:999px;background:linear-gradient(180deg,#262633,#0a0a0f 70%);border:1.5px solid #F8F7FB;box-shadow:inset 0 2px rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.6),0 0 22px rgba(248,247,251,.3),0 14px 32px rgba(0,0,0,.7);transition:border-color .25s,box-shadow .25s,transform .2s;white-space:nowrap}.steppill .sdot{width:8px;height:8px;border-radius:50%;background:#fff;flex:0 0 auto;transition:background .25s,box-shadow .25s}.steppill:hover{border-color:var(--sc);box-shadow:inset 0 1px rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.4),0 0 26px -2px var(--sc),0 10px 24px rgba(0,0,0,.6);transform:translateY(-2px)}.steppill:hover .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}.steppill.on{border-color:var(--sc);box-shadow:0 0 0 1px var(--sc),0 0 22px -4px var(--sc)}.steppill.on .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}.steprail{display:flex;align-items:center;justify-content:center;gap:2px;padding:6px 8px;border-radius:999px;background:linear-gradient(180deg,#262633,#0a0a0f 70%);border:1.5px solid rgba(248,247,251,.9);box-shadow:inset 0 2px rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.6),0 0 22px rgba(248,247,251,.3),0 14px 32px rgba(0,0,0,.7);position:relative;max-width:calc(100vw - 24px)}.steprail::before{content:"";position:absolute;left:30px;right:30px;top:50%;height:2px;transform:translateY(-50%);background:linear-gradient(90deg,#a06bff,#3fb8ff,#2fe89e,#ffbf3d,#ff9a5a);opacity:.35;border-radius:2px;pointer-events:none}.steprail .steppill{position:relative;border:0;background:transparent;box-shadow:none;padding:8px 9px;gap:6px;font-size:10px;letter-spacing:.08em}.steprail .steppill .sdot{width:8px;height:8px;border-radius:2px;transform:rotate(45deg);background:#F8F7FB;box-shadow:0 0 6px rgba(248,247,251,.5)}.steprail .steppill:hover{transform:none;box-shadow:none;border-color:transparent}.steprail .steppill:hover .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}.steprail .steppill.on{border-color:transparent;box-shadow:inset 0 0 0 1px var(--sc),0 0 18px -2px var(--sc);background:color-mix(in srgb,var(--sc) 14%,transparent);color:#fff;text-shadow:0 0 12px var(--sc)}.steprail .steppill.on .sdot{background:var(--sc);box-shadow:0 0 12px var(--sc)}
-/* 11. .pj-jewel — Hub lines 1486-1508 (the live jewel, 306 spans proven) */
+/* 9. .pj-jewel — Hub L1486-1501 (hub-pj-jewel.css); the "i" is a <button> (Amendment 1) */
 .pj-jewel {
   --jewel: #8a5cff;
   width: 26px; height: 26px; flex: none; border-radius: 8px;
@@ -379,11 +335,10 @@ tbody tr:hover{transform:translateY(-3px);}
     inset 0 -3px 8px rgba(0,0,0,.4),
     0 0 22px color-mix(in srgb, var(--jewel) 55%, transparent),
     0 8px 20px rgba(0,0,0,.5);
-/* the jewel "i" is a <button>: neutralise the browser button defaults (the element's own requirement) */
 button.pj-jewel{padding:0; cursor:pointer; font-family:inherit;}
 button.pj-jewel:hover{filter:brightness(1.15); transform:translateY(-1px);}
 button.pj-jewel:focus-visible{outline:3px solid #fff; outline-offset:2px;}
-/* 12. DETAIL OVERLAY — Hub .drawer-backdrop (L926-931) + .tab-pop (L1137+) */
+/* 10. detail overlay — Hub L926-931 + L1137+ (hub-overlay.css), sized by Amendment 1 §2 */
   display: none;
   position: fixed; inset: 0; z-index: 55;
   background: rgba(3, 3, 6, .6);
@@ -404,15 +359,14 @@ button.pj-jewel:focus-visible{outline:3px solid #fff; outline-offset:2px;}
 .tab-pop-add {
   appearance: none; border: 1px solid var(--line); border-radius: 10px;
   background: var(--bg-raise); color: var(--ink); cursor: pointer;
-/* the detail panel's size is set by Amendment 1's viewport requirement (centred, 92vw, 84vh, inner scroll) */
-.detail-panel{position:fixed; z-index:80; left:50%; top:50%; transform:translate(-50%,-50%); width:min(680px,92vw); max-height:84vh; overflow-y:auto; overscroll-behavior:contain; display:none;}
+.detail-panel{width:min(680px,92vw); max-height:84vh; overflow-y:auto; left:50%; top:50%; transform:translate(-50%,-50%);}
 .detail-panel.open{display:block;}
 .drawer-backdrop.open{display:block;}
-.detail-panel .detail-close{margin-top:14px; width:100%; justify-content:center;}
-.detail-panel .real-note{margin-bottom:12px;}
-.detail-panel .real-note:last-of-type{margin-bottom:0;}
-.detail-panel .rn-part{font-size:11px; font-weight:800; letter-spacing:.18em; color:var(--gold); margin-bottom:4px;}
-/* 13. .tt-fig — fix2 lines 993-1000 */
+.rn-part{font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin-bottom:6px;}
+.detail-title{font-size:20px; font-weight:800; margin:0 0 12px;}
+.tier-lines{margin:12px 0 0; padding-left:20px; font-size:14px; line-height:1.6;}
+.tier-lines li{margin-bottom:4px;}
+/* 11. .tt-fig — fix-2 L993-1000 */
 .tt-fig{margin:22px 0; border-radius:18px; overflow:hidden; position:relative;
   box-shadow:0 22px 46px -18px rgba(0,0,0,.9), inset 0 0 0 1px rgba(255,255,255,.10);
   background:#0d0d13;}
@@ -421,7 +375,69 @@ button.pj-jewel:focus-visible{outline:3px solid #fff; outline-offset:2px;}
 .tt-fig.p2{aspect-ratio:2.45;}
 .tt-fig.p2 img{width:130.2%; margin-left:-22.1%; margin-top:-10.5%;}
 .tt-fig figcaption{font-size:12px; color:var(--dim); padding:10px 14px;}
-/* 14. CALCULATOR — fix2 calc CSS (verbatim, R4 button-base drops applied) + the order rules (fix2 L477-486) */
+/* 12. chart table — DRAFT v4 (the form; the ladder/tier-card rules are not used — §1 has no ladder slide) */
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  
+  
+  
+  .draft-banner b{color:var(--gold); letter-spacing:.14em; font-size:12px; display:block; margin-bottom:4px;}
+  .kicker{font-size:12px; letter-spacing:.22em; font-weight:700; margin-bottom:10px;}
+  h1{font-size:clamp(30px,4.5vw,52px); font-weight:800; letter-spacing:-.01em; margin-bottom:8px;}
+  .sub{color:var(--dim); font-size:17px; max-width:760px; margin-bottom:34px;}
+  .trial{background:var(--panel); border:1px solid var(--line); border-radius:16px;
+    padding:28px 30px; margin-bottom:30px; position:relative; overflow:hidden;}
+  .trial::before{content:""; position:absolute; inset:0 0 auto 0; height:3px;
+    background:linear-gradient(90deg,var(--purple),var(--blue),var(--green),var(--gold),var(--orange),var(--red),var(--magenta));}
+  .trial h2{font-size:26px; margin-bottom:6px;}
+  .trial p{color:var(--dim);}
+  .trial p b{color:var(--green);}
+  
+  @media(max-width:860px){}
+  
+  
+  .tier 
+  .tier 
+  .tier 
+  
+  .tier ul li{padding:5px 0; border-top:1px solid #16161c;}
+  .tier ul li b{color:var(--txt);}
+  
+  
+  .tag.new{background:rgba(47,232,158,.12); color:var(--green); border:1px solid var(--green);}
+  .table-scroll{overflow-x:auto; border:1px solid var(--line); border-radius:16px; margin-bottom:44px;}
+  table{width:100%; border-collapse:collapse; min-width:880px; font-size:14.5px;}
+  thead th{padding:18px 16px; text-align:left; background:var(--panel2);
+    border-bottom:1px solid var(--line); vertical-align:bottom;}
+  thead th .col-price{font-size:22px; font-weight:800; display:block; margin-top:4px;}
+  thead th .col-sub{font-size:12px; color:var(--faint); font-weight:400;}
+  thead th.hl{background:#0d1620;}
+  tbody td{padding:15px 16px; border-bottom:1px solid #141419; vertical-align:top;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody td:first-child{font-weight:700; white-space:nowrap; background:var(--panel);}
+  tbody td.hl{background:#0c141c;}
+  
+  .feat{display:flex; align-items:center;}
+  
+  .notes h3{font-size:18px; margin-bottom:12px;}
+  .notes li{margin:8px 0 8px 18px; color:var(--dim); font-size:14.5px;}
+  .notes li b{color:var(--txt);}
+  
+  .c-purple{color:var(--purple);} .c-blue{color:var(--blue);} .c-green{color:var(--green);}
+  .c-gold{color:var(--gold);} .c-orange{color:var(--orange);} .c-red{color:var(--red);} .c-magenta{color:var(--magenta);}
+/* the chart's dot — the DRAFT v4 .orb (11px, L50-51), renamed .chart-orb so it cannot fight the Hub's .orb */
+.chart-orb{display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:10px; box-shadow:0 0 10px currentColor;}
+/* the chart's group header (a spanning row, not a feature row — §5) */
+.chart-group td{font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); background:#0d0d13; padding:12px 14px;}
+/* the chart rows lift apart on hover (Amendment 1 §2 — the Hub .board pattern, R16) */
+tbody tr:hover{transform:translateY(-3px); box-shadow:0 10px 28px rgba(0,0,0,.55); background:#101018;}
+/* the tier header's names open the tier detail views (the fix-2 DOOR LAW — §6) */
+.tier-head-btn{background:none; border:none; padding:0; cursor:pointer; font:inherit; color:inherit; text-align:left;}
+.tier-head-btn:focus-visible{outline:3px solid #fff; outline-offset:3px;}
+/* the chart's footer lines (Amendment 3 §4 — the ladder line + the trial line) */
+.chart-foot{font-size:14px; line-height:1.6; color:var(--dim); margin:14px 0 0;}
+.chart-foot b{color:var(--txt);}
+/* 13. calculator — fix2-calc-tacho.css, R4-filtered (the button BASES are .primo; the .is-on states are kept) */
 .calc-plan:focus-visible,.calc-unit-btn:focus-visible,.calc-ex:focus-visible,a:focus-visible{outline:3px solid #fff; outline-offset:3px;}
 .calc {margin-bottom:40px; padding:24px; border:1.5px solid rgba(255,191,61,.9); border-radius:16px; position:relative;
     background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
@@ -857,9 +873,7 @@ body:not(.hero-mode) #tn-tacho-mount {width:min(320px,60%) !important;}
 .ct-reel.d9 .ct-cap {background:linear-gradient(180deg,#ff9ed2,#ff1493 55%,#8f0057);}
 .ct-reel.flash {animation:ctTileFlash .35s ease-out;}
 .ct-reel.new {animation:ctReelIn .6s ease-out;}
-/* the -/+ pace controls keep their size via their ids (R4) */
 #calc-minus,#calc-plus{flex:0 0 auto;}
-/* the calculator order rules (fix2 L477-486) — inside the 860 media query, as in fix2 */
 @media(max-width:860px){
 #calculator{display:flex; flex-direction:column;}
 #calculator .calc-body{display:contents;}
@@ -872,44 +886,23 @@ body:not(.hero-mode) #tn-tacho-mount {width:min(320px,60%) !important;}
 #calculator .calc-hero-example{order:10;}
 #calculator .calc-hired-link{order:11;}
 }
-/* 15. JOB CARD — job-card.md verbatim + fix1 L962-977 + L363-364 + L1158-1166 */
-  .job-card{max-width:880px; margin:0 auto; padding:32px; border-radius:20px; text-align:center;
-    border:2px solid rgba(255,191,61,.9); position:relative; overflow:hidden;
-    background:linear-gradient(135deg,#2a2a35 0%,#0a0a0f 50%,#23232e 100%);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.2), inset 0 -2px 4px rgba(0,0,0,.5),
-      0 16px 40px rgba(0,0,0,.6), 0 0 44px rgba(255,191,61,.25);}
-  .job-card::before{content:""; position:absolute; inset:0 0 auto 0; height:3px;
-    background:linear-gradient(90deg,var(--purple),var(--blue),var(--green),var(--gold),var(--orange),var(--red),var(--magenta));}
-  .job-card-head{display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:16px;}
-  .job-badge{font-size:11px; font-weight:800; letter-spacing:.22em; padding:8px 14px; border-radius:99px;
-    border:1px solid rgba(255,191,61,.9); color:var(--txt); background:rgba(255,191,61,.12);}
-  .job-seal{font-size:13px; font-weight:800; letter-spacing:.14em; padding:8px 14px; border-radius:99px; color:#fff;
-    background:radial-gradient(circle at 35% 30%, #fff 0%, var(--gold) 45%, #7a5b00 100%);
-    box-shadow:0 0 24px rgba(255,191,61,.55); text-shadow:0 1px 2px rgba(0,0,0,.6);}
-  .job-card h2{font-size:clamp(28px,4vw,40px); margin-bottom:8px;}
-  .job-card p{color:var(--dim); font-size:16px; max-width:720px; margin:0 auto 8px;}
-  .job-card p b{color:var(--txt);}
-  .job-pay,.job-why{font-size:15px; color:var(--dim); margin-top:12px;}
-  .job-pay b,.job-why b{color:var(--txt);}
-  .earn-terms{margin-top:16px; background:linear-gradient(180deg,#1c1a2e,#0d0c14 72%); border:1.5px solid rgba(255,191,61,.45); border-radius:16px; padding:18px 20px; box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 12px 26px rgba(0,0,0,.5);}
-  .earn-terms h3{font-size:16px; margin-bottom:10px;}
-  .earn-terms-rows{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:12px;}
-  @media(max-width:860px){.earn-terms-rows{grid-template-columns:1fr;}}
-  .earn-terms-rows span{background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:10px; padding:10px 12px; font-size:14px; color:var(--dim);}
-  .earn-terms-rows b{color:var(--txt);}
-  .earn-hired{font-size:15px; color:var(--dim); margin-bottom:8px;}
-  .earn-hired b{color:var(--txt);}
-  .earn-cond{font-size:13px; color:var(--dim);}
-/* the close's dream (Amendment 2 §5) — the page's heading style, his words verbatim */
-.dream{font-size:clamp(24px,3.4vw,38px); font-weight:800; letter-spacing:-.01em; line-height:1.25; max-width:880px; margin:0 auto 24px; text-align:center; color:var(--txt);}
+/* 14. the promise (§3) + the close (§9) + the section headings */
+.sec-kicker{font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); text-align:center; margin:0 0 12px;}
+.sec-head{font-size:clamp(24px,3.4vw,38px); font-weight:800; text-align:center; max-width:880px; margin:0 auto 16px; line-height:1.2;}
+.sec-sub{font-size:16px; line-height:1.6; text-align:center; max-width:720px; margin:0 auto 24px; color:var(--dim);}
+.promise-words{font-size:17px; line-height:1.7; max-width:760px; margin:0 auto 28px; text-align:center;}
+.promise-systems{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; max-width:900px; margin:0 auto;}
+@media(max-width:860px){ .promise-systems{grid-template-columns:1fr;} }
+.promise-systems li{display:flex; align-items:center; gap:10px; list-style:none; font-size:15px; line-height:1.45;}
+.promise-systems li b{font-weight:800;}
+.dream{font-size:clamp(24px,3.4vw,38px); font-weight:800; max-width:880px; margin:0 auto 24px; text-align:center; line-height:1.3;}
 .dream b{color:var(--gold);}
-/* the close's "no risk" line (Amendment 1 §5 / Amendment 2 §5) */
-.no-risk{font-size:15px; color:var(--dim); text-align:center; max-width:720px; margin:16px auto 0;}
-.no-risk b{color:var(--txt);}
-/* the footer — one line, no meta-text */
-.page-foot{font-size:13px; color:var(--dim); text-align:center; padding:24px 16px 8px;}
-.page-foot b{color:var(--txt);}
-/* 16. BOTTOM BAR — Hub lines 342-400 (the three-icon bar) */
+.trial-text{font-size:16px; line-height:1.7; text-align:center; max-width:720px; margin:0 auto 28px;}
+.close-start{display:flex; justify-content:center; margin:0 auto 24px;}
+.close-start .primo{font-size:17px; padding:16px 32px;}
+.chart-intro{font-size:15px; line-height:1.7; max-width:860px; margin:0 auto 24px; color:var(--dim);}
+.chart-intro b{color:var(--txt);}
+/* 15. bottom bar — Hub L342-400 (hub-notif-bar.css) */
 .notif-bar {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 45;
   display: flex; justify-content: center;
@@ -969,139 +962,372 @@ body:not(.hero-mode) #tn-tacho-mount {width:min(320px,60%) !important;}
    bar, the dock sits at bottom: 0 (its base rule) and can never float over a
    gap. (Shawn 2026-10-21: dock hovered mid-feed when the bar was absent.) */
 body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 0px)); }
+/* 16. the slide's inner padding (the deck's chrome) */
+.slide-inner{max-width:1760px; margin:0 auto; padding:32px 24px 0;}
+@media(max-width:860px){ .slide-inner{padding:24px 16px 0;} }
 </style>
 </head>
 <body>
-<nav class="doc-nav" aria-label="Page sections"><span class="nav-mark">NAYA<b>NET</b> — PRICING</span><a href="#promise">Promise</a><a href="#chart">The Chart</a><a href="#top10">Top 10</a><a href="#calculator">Calculator</a><a href="#start">Start Now</a><a class="primo theme-gold nav-cta" href="https://nayanet.app/max-monthly">Start 9 days free — Max</a></nav>
-<section class="banner-top slide" aria-label="Meet the Naya Supercharger">
+<nav class="doc-nav"><a class="doc-mark" href="#top">NAYA<b>NET</b> — PRICING</a><a href="#promise">The Promise</a><a href="#chart">The Chart</a><a href="#top10">Top 10</a><a href="#calculator">Calculator</a><a href="#start">Start Now</a><a class="primo theme-gold nav-cta" href="https://nayanet.app/max-monthly">Start free — try her for 9 days</a></nav>
+<section class="banner-top slide" id="top" aria-label="Meet the Naya Supercharger">
   <div class="banner-map">
   <img class="banner-img" src="https://naya-proof-host.nayapower.workers.dev/?file=PRICING/assets/ChatGPT_Image_Nov_6__2026__06_06_21_PM.png&ref=pricing/defectfix-v3" alt="Meet the Naya Supercharger — Naya in the gauge, the nine systems as capsules around her: Personality, Brain, Notes, Lead Mode, Law, Scorecarding, Language, Design, Coder.">
   </div>
   <div class="banner-head hero-band">
-    <div class="hero-copy">
 <div class="kicker">BUILD YOUR WORLD — THE INTERNET, REBUILT</div>
     <h1>The Internet, Rebuilt.</h1>
-    <p class="hero-greet"><span class="way-gem" aria-hidden="true">◆</span> Hello, I'm Naya.</p>
     <p class="manifesto">We're not building another app — we're rebuilding the internet itself, in a smarter, better way.</p>
+    <p class="tech">A new technology, not a new app: <b>Collective Chain Technology</b> — the value and the intelligence, given back to you and shared with everybody.</p>
+    <p class="mission">The old internet fails people — dead projects, forgotten chats, AI with amnesia. Something like 99 out of 100 never get what they came for. Our mission is 100% success: everybody who uses her, succeeds.</p>
+    <p class="sub">The new internet — intelligent, automated collective intelligence. A network for AIs and humans to collaborate. Plug any AI into her — ChatGPT, Muse, Claude — she is the mothership for all AIs and humans. Put a supercharger on your AI, and connect to the ultimate supercharger: a supercharged network.</p>
+    <p class="demo-starter">Three questions. Your world appears.</p>
     <div class="hero-cta">
       <input type="text" class="claim-name" id="claimNameHero" placeholder="Your name" aria-label="Your name — the name you want to claim" maxlength="32" autocomplete="off">
       <a class="primo theme-gold" href="https://nayanet.app/yourname" data-claim>★ Claim your name</a>
       <span class="hero-cta-note">Drive the Bugatti before you buy her — 9 days at Max Power.</span>
     </div>
-    </div>
-    <aside class="hero-systems" aria-label="Nine systems, already inside">
-      <span class="orb orb--hero" style="--oc:#a06bff; --oc-rgb:160,107,255" aria-hidden="true"></span>
-      <p class="hero-systems-kicker">NINE SYSTEMS, ALREADY INSIDE</p>
-      <div class="hero-systems-grid"><span>Personality</span><span>Brain</span><span>Notes</span><span>Lead Mode</span><span>Law</span><span>Scorecarding</span><span>Language</span><span>Design</span><span>Coder</span></div>
-      <p class="hero-systems-line"><b>Already inside, already working.</b></p>
-    </aside>
   </div>
 
 </section>
 
-<section class="slide" id="ladder" aria-label="The ladder">
-<div class="trial">
-<div class="kicker c-blue">THE LADDER</div>
-<h2>$25 &nbsp;→&nbsp; $50 &nbsp;→&nbsp; $100</h2>
-<p>Every step exactly double. Annual is half price on every tier. One price per level — <b>everything in that level included</b>, nothing sold separately.</p>
-<p>9 days free: <b>5-day Academy</b> — learn all about Naya. <b>4-day Master Class</b> — job training: how to operate your world and make money with it.</p>
-</div>
-<div class="tiers">
-<div class="tier">
-<div class="tname c-purple">NAYANET</div>
-<div class="price">$25<span style="font-size:16px; color:var(--faint)">/mo</span></div>
-<div class="per">The whole living system.</div>
-<ul>
-<li><span class="pj-jewel" style="--jewel:var(--purple)" aria-hidden="true">◆</span><span><b>$50</b> for 3 months</span></li>
-<li><span class="pj-jewel" style="--jewel:var(--purple)" aria-hidden="true">◆</span><span><b>$150</b> a year — saves you $150</span></li>
-<li><span class="pj-jewel" style="--jewel:var(--purple)" aria-hidden="true">◆</span><span><b>$300 lifetime</b>, founding only — 1,000 members, then closed forever</span></li>
-</ul>
-<a class="primo theme-purple" href="https://nayanet.app/power-monthly">Claim your name — Power</a>
-</div>
-<div class="tier pro">
-<span class="steppill" style="--sc:var(--blue)"><span class="sdot"></span>MOST CHOSEN</span>
-<div class="tname c-blue">NAYA PRO</div>
-<div class="price">$50<span style="font-size:16px; color:var(--faint)">/mo</span></div>
-<div class="per">For builders — box, sites, reach.</div>
-<ul>
-<li><span class="pj-jewel" style="--jewel:var(--blue)" aria-hidden="true">◆</span><span><b>$300</b> a year — annual is half price</span></li>
-<li><span class="pj-jewel" style="--jewel:var(--blue)" aria-hidden="true">◆</span><span><b>Smart Box</b> — storage that organizes itself</span></li>
-<li><span class="pj-jewel" style="--jewel:var(--blue)" aria-hidden="true">◆</span><span><b>5 membership sites</b></span></li>
-<li><span class="pj-jewel" style="--jewel:var(--blue)" aria-hidden="true">◆</span><span>Smart Mail up to <b>100,000</b>/mo</span></li>
-</ul>
-<a class="primo theme-blue" href="https://nayanet.app/pro-monthly">Claim your name — Pro</a>
-</div>
-<div class="tier">
-<div class="tname c-gold">NAYANET MAX</div>
-<div class="price">$100<span style="font-size:16px; color:var(--faint)">/mo</span></div>
-<div class="per">For sellers — more of everything.</div>
-<ul>
-<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span><b>$600</b> a year — annual is half price</span></li>
-<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span><b>unlimited membership sites</b></span></li>
-<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span><b>Affiliate system</b> for your own products</span></li>
-<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span>300 smart apps a month</span></li>
-</ul>
-<a class="primo theme-gold" href="https://nayanet.app/max-monthly">Claim your name — Max</a>
-</div>
-</div>
-</section>
 <section class="slide" id="promise" aria-label="The promise">
-<div class="kicker c-purple">THE PROMISE</div>
-<figure class="edge-art"><img src="https://naya-proof-host.nayapower.workers.dev/?file=PRICING/assets/supercharger-top-cinema.webp&ref=pricing/defectfix-v3" alt="The Naya Supercharger — the turbine machine with Naya beside it and the nine systems on pedestals around her." loading="lazy"><figcaption>She hooks up to any AI.</figcaption></figure>
-<div class="real-note">
-<p>If you love her, you keep her. She hooks up to any AI. And you get this incredible experience:</p>
-<ul>
-<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span>Smart note stuff — capture what matters, in seconds.</span></li>
-<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span>Share your wisdom with the collective network.</span></li>
-<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span>Connect with like minds.</span></li>
-<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span>An all-in-one world — a new internet: everything you can do on the internet, inside a private internet.</span></li>
-<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span>A literally interconnected network that&rsquo;s AI operated — designed for AIs, operated by AI.</span></li>
-<li><span class="pj-jewel" style="--jewel:var(--gold)" aria-hidden="true">◆</span><span>To help you become wiser and more intelligent, and connect with people in an automated way.</span></li>
+<div class="slide-inner">
+<p class="sec-kicker">Welcome to NayaNET</p>
+<h2 class="sec-head">Meet the Naya Supercharger.</h2>
+<p class="sec-sub">Same AI. Different operating system. One intelligence, nine activated systems — a tuned way of working with AI that becomes more personal, capable, and effective with you.</p>
+<p class="promise-words">If you love her, you keep her. She hooks up to any AI. Smart note what matters. Share your wisdom with the collective network. Connect with like minds. An all-in-one world — a new internet, everything you can do on the internet inside a private internet, an interconnected network, AI-operated, designed for AIs, operated by AI, to help you become wiser and more intelligent and connect with people in an automated way.</p>
+<ul class="promise-systems">
+<li><span class="pj-jewel" style="--jewel:var(--gold)">◆</span><span><b>Personality</b> — adapts to you.</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--gold)">◆</span><span><b>Brain</b> — richer context.</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--gold)">◆</span><span><b>Notes</b> — remembers.</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--gold)">◆</span><span><b>Lead Mode</b> — drives the work.</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--gold)">◆</span><span><b>Law</b> — protects standards.</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--gold)">◆</span><span><b>Scorecarding</b> — measures quality.</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--gold)">◆</span><span><b>Language</b> — communicates clearly.</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--gold)">◆</span><span><b>Design</b> — makes it beautiful.</span></li>
+<li><span class="pj-jewel" style="--jewel:var(--gold)">◆</span><span><b>Coder</b> — builds faster.</span></li>
 </ul>
 </div>
 </section>
 <section class="slide" id="chart" aria-label="The chart">
-<div class="kicker c-purple">WHAT THE MONEY BUYS — AT A GLANCE</div>
-<figure class="edge-art chart-art"><img src="https://naya-proof-host.nayapower.workers.dev/?file=PRICING/assets/supercharger-top-studio.webp&ref=pricing/defectfix-v3" alt="Naya in the studio, the supercharger ring glowing behind her." loading="lazy"><figcaption>The studio — every feature, one machine.</figcaption></figure>
+<div class="slide-inner">
+<p class="sec-kicker">02 — The Chart · Everything, at a glance</p>
+<h2 class="sec-head">What the money buys.</h2>
+<p class="chart-intro">Every feature of NayaNET, every level, every number — in one beautiful graph. Free keeps the account, the profile, the connections and the intelligence, and loses AI automation. The areas are the same at every paid level — what changes is capacity. Each row lights up as you scroll; tap the eye and it tells you what the feature is, what it does, and what’s in it for you. About, Today, My World and Settings are in every world at every level — areas, not features — so they are named here, not charted as rows. The nine Academy systems live inside Learning / Academy (row 17). Smart Box (row 21) is a key feature — its row is marked below. The rows that decide lead: your worlds, your Dashboard, Smart Box, your Smart Access doors.</p>
 <div class="table-scroll"><table>
-<thead><tr><th style="min-width:210px;"></th><th><span class="c-faint" style="font-size:13px; letter-spacing:.18em;">FREE</span><span class="col-price">$0</span><span class="col-sub">forever</span></th><th><span style="font-size:13px; letter-spacing:.18em;" class="c-purple">NAYANET</span><span class="col-price">$25<span style="font-size:14px;color:var(--faint)">/mo</span></span><span class="col-sub">$50 / 3 mo · $150 / yr · $300 lifetime</span></th><th class="hl"><span style="font-size:13px; letter-spacing:.18em;" class="c-blue">NAYA PRO</span><span class="col-price">$50<span style="font-size:14px;color:var(--faint)">/mo</span></span><span class="col-sub">$300 / yr</span></th><th><span style="font-size:13px; letter-spacing:.18em;" class="c-gold">NAYANET MAX</span><span class="col-price">$100<span style="font-size:14px;color:var(--faint)">/mo</span></span><span class="col-sub">$600 / yr</span></th></tr></thead>
-<tbody>
-<tr><td><span class="feat"><span class="orb" style="background:var(--purple);color:var(--purple)"></span>Smart apps <button class="pj-jewel" style="--jewel:var(--purple)" aria-label="About Smart apps" data-feature="apps">i</button></span></td><td>4 — Personal, Business, Space, Dashboard</td><td>100 new a month</td><td class="hl">100 new a month</td><td>300 new a month</td></tr>
-<tr><td><span class="feat"><span class="orb" style="background:var(--blue);color:var(--blue)"></span>Personal <button class="pj-jewel" style="--jewel:var(--blue)" aria-label="About Personal" data-feature="personal">i</button></span></td><td>Included</td><td>Included</td><td class="hl">Included</td><td>Included</td></tr>
-<tr><td><span class="feat"><span class="orb" style="background:var(--green);color:var(--green)"></span>Business <button class="pj-jewel" style="--jewel:var(--green)" aria-label="About Business" data-feature="business">i</button></span></td><td>Included</td><td>Included</td><td class="hl">Included</td><td>Included</td></tr>
-<tr><td><span class="feat"><span class="orb" style="background:var(--gold);color:var(--gold)"></span>Space <button class="pj-jewel" style="--jewel:var(--gold)" aria-label="About Space" data-feature="space">i</button></span></td><td>3 smart spaces</td><td>Unlimited smart spaces</td><td class="hl">Unlimited smart spaces</td><td>Unlimited smart spaces</td></tr>
-<tr><td><span class="feat"><span class="orb" style="background:var(--orange);color:var(--orange)"></span>Membership <button class="pj-jewel" style="--jewel:var(--orange)" aria-label="About Membership" data-feature="membership">i</button></span></td><td>Not included</td><td>1 membership site</td><td class="hl">5 membership sites</td><td>Unlimited membership sites</td></tr>
-<tr><td><span class="feat"><span class="orb" style="background:var(--red);color:var(--red)"></span>Smart Mail <button class="pj-jewel" style="--jewel:var(--red)" aria-label="About Smart Mail" data-feature="mail">i</button></span></td><td>100 people a month</td><td>Up to 10,000 a month</td><td class="hl">Up to 100,000 a month</td><td>Up to 250,000 a month</td></tr>
-<tr><td><span class="feat"><span class="orb" style="background:var(--magenta);color:var(--magenta)"></span>Smart Notes <button class="pj-jewel" style="--jewel:var(--magenta)" aria-label="About Smart Notes" data-feature="notes">i</button></span></td><td>10 a month</td><td>100 a month</td><td class="hl">100 a month</td><td>100 a month</td></tr>
-<tr><td><span class="feat"><span class="orb" style="background:var(--purple);color:var(--purple)"></span>Smart Box <span class="steppill" style="--sc:var(--purple)"><span class="sdot"></span>NEW</span> <button class="pj-jewel" style="--jewel:var(--purple)" aria-label="About Smart Box" data-feature="box">i</button></span></td><td>Not included</td><td>Not included</td><td class="hl">100 GB — organizes itself</td><td>500 GB — organizes itself</td></tr>
-<tr><td><span class="feat"><span class="orb" style="background:var(--blue);color:var(--blue)"></span>Intelligent reports <button class="pj-jewel" style="--jewel:var(--blue)" aria-label="About Intelligent reports" data-feature="reports">i</button></span></td><td>Monthly only</td><td>Daily, weekly, monthly</td><td class="hl">Daily, weekly, monthly</td><td>Daily, weekly, monthly</td></tr>
-<tr><td><span class="feat"><span class="orb" style="background:var(--green);color:var(--green)"></span>Smart Lists <button class="pj-jewel" style="--jewel:var(--green)" aria-label="About Smart Lists" data-feature="lists">i</button></span></td><td>3 lists</td><td>Unlimited lists</td><td class="hl">Unlimited lists</td><td>Unlimited lists</td></tr>
-<tr><td><span class="feat"><span class="orb" style="background:var(--gold);color:var(--gold)"></span>Smart Links <button class="pj-jewel" style="--jewel:var(--gold)" aria-label="About Smart Links" data-feature="links">i</button></span></td><td>1 — your own Smart Link</td><td>Unlimited Smart Links</td><td class="hl">Unlimited Smart Links</td><td>Unlimited Smart Links</td></tr>
-<tr><td><span class="feat"><span class="orb" style="background:var(--orange);color:var(--orange)"></span>Your projects <button class="pj-jewel" style="--jewel:var(--orange)" aria-label="About Your projects" data-feature="projects">i</button></span></td><td>3 of your projects</td><td>Your projects, unlimited</td><td class="hl">Your projects, unlimited</td><td>Your projects, unlimited</td></tr>
-<tr><td><span class="feat"><span class="orb" style="background:var(--red);color:var(--red)"></span>Daily highlights / Intel <button class="pj-jewel" style="--jewel:var(--red)" aria-label="About Daily highlights / Intel" data-feature="intel">i</button></span></td><td>Top 3 a day</td><td>Full Intel feed, unlimited</td><td class="hl">Full Intel feed, unlimited</td><td>Full Intel feed, unlimited</td></tr>
-<tr><td><span class="feat"><span class="orb" style="background:var(--magenta);color:var(--magenta)"></span>Audio calls <button class="pj-jewel" style="--jewel:var(--magenta)" aria-label="About Audio calls" data-feature="audio">i</button></span></td><td>Not in free</td><td>Audio up to 10 people</td><td class="hl">Audio up to 10 people</td><td>Audio up to 10 people</td></tr>
-<tr><td><span class="feat"><span class="orb" style="background:var(--purple);color:var(--purple)"></span>Video calls <button class="pj-jewel" style="--jewel:var(--purple)" aria-label="About Video calls" data-feature="video">i</button></span></td><td>Not in free</td><td>Video up to 6 people</td><td class="hl">Video up to 6 people</td><td>Video up to 6 people</td></tr>
-<tr><td><span class="feat"><span class="orb" style="background:var(--blue);color:var(--blue)"></span>Media — voice & video notes <button class="pj-jewel" style="--jewel:var(--blue)" aria-label="About Media — voice & video notes" data-feature="media">i</button></span></td><td>60 minutes a month</td><td>600 minutes a month</td><td class="hl">600 minutes a month</td><td>600 minutes a month</td></tr>
-<tr><td><span class="feat"><span class="orb" style="background:var(--green);color:var(--green)"></span>Your own AI <button class="pj-jewel" style="--jewel:var(--green)" aria-label="About Your own AI" data-feature="ai">i</button></span></td><td>Not included</td><td>Plugged into the network</td><td class="hl">Plugged into the network</td><td>Plugged into the network</td></tr>
-<tr><td><span class="feat"><span class="orb" style="background:var(--gold);color:var(--gold)"></span>Affiliate system <span class="steppill" style="--sc:var(--gold)"><span class="sdot"></span>NEW</span> <button class="pj-jewel" style="--jewel:var(--gold)" aria-label="About Affiliate system" data-feature="affiliate">i</button></span></td><td>Not included</td><td>Not included</td><td class="hl">Not included</td><td>Run affiliates on your own products</td></tr>
-<tr><td><span class="feat"><span class="orb" style="background:var(--orange);color:var(--orange)"></span>Affiliate payouts <button class="pj-jewel" style="--jewel:var(--orange)" aria-label="About Affiliate payouts" data-feature="payouts">i</button></span></td><td>50% of revenue, paid the moment we&rsquo;re paid</td><td>50% of revenue, paid the moment we&rsquo;re paid</td><td class="hl">50% of revenue, paid the moment we&rsquo;re paid</td><td>50% of revenue, paid the moment we&rsquo;re paid</td></tr>
+<thead><tr><th style="min-width:210px;"></th>
+<th><span class="c-faint" style="font-size:13px; letter-spacing:.18em;">FREE</span><span class="col-price">$0</span><span class="col-sub">forever</span></th>
+<th><button class="tier-head-btn" data-tier="power"><span style="font-size:13px; letter-spacing:.18em;" class="c-purple">NAYA POWER</span><span class="col-price">$25<span style="font-size:14px;color:var(--faint)">/mo</span></span><span class="col-sub">$50 / 3 mo · $150 / yr · $300 lifetime</span></button></th>
+<th class="hl"><button class="tier-head-btn" data-tier="pro"><span class="steppill" style="--sc:var(--blue)"><span class="sdot"></span>★ MOST CHOSEN</span><span style="font-size:13px; letter-spacing:.18em;" class="c-blue">NAYA PRO</span><span class="col-price">$50<span style="font-size:14px;color:var(--faint)">/mo</span></span><span class="col-sub">$300 / yr</span></button></th>
+<th><button class="tier-head-btn" data-tier="max"><span class="steppill" style="--sc:var(--gold)"><span class="sdot"></span>CROWN</span><span style="font-size:13px; letter-spacing:.18em;" class="c-gold">NAYA MAX</span><span class="col-price">$100<span style="font-size:14px;color:var(--faint)">/mo</span></span><span class="col-sub">$600 / yr</span></button></th>
+</tr></thead><tbody>
+<tr class="chart-group"><td colspan="6">GROUP 1 — YOUR WORLDS — THE FOUR WORLDS + THE FRONT DOOR</td></tr>
+<tr>
+<td><span class="chart-orb" style="background:#e84fff; color:#e84fff"></span> <span class="feat">Personal pages</span> <button class="pj-jewel" style="--jewel:#e84fff" aria-label="About Personal pages" data-feature="chart-01">i</button></td>
+<td>1 personal page, full.</td>
+<td>+ Naya builds and runs it.</td>
+<td class="hl">+ full automation + priority.</td>
+<td>+ everything, unlimited.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#a06bff; color:#a06bff"></span> <span class="feat">Business pages</span> <button class="pj-jewel" style="--jewel:#a06bff" aria-label="About Business pages" data-feature="chart-02">i</button></td>
+<td>1 business page.</td>
+<td>1 business page + AI automation.</td>
+<td class="hl">5 business pages.</td>
+<td>unlimited business pages.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#6a5cff; color:#6a5cff"></span> <span class="feat">Spaces</span> <button class="pj-jewel" style="--jewel:#6a5cff" aria-label="About Spaces" data-feature="chart-03">i</button></td>
+<td>3 smart spaces.</td>
+<td>unlimited.</td>
+<td class="hl">unlimited.</td>
+<td>unlimited.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#3fb8ff; color:#3fb8ff"></span> <span class="feat">Dashboard + Smart Stats</span> <button class="pj-jewel" style="--jewel:#3fb8ff" aria-label="About Dashboard + Smart Stats" data-feature="chart-04">i</button></td>
+<td>your score + basic numbers.</td>
+<td>full Dashboard, all stats.</td>
+<td class="hl">+ Smart Stats deep views.</td>
+<td>everything + the full Ledger view.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#17d9a5; color:#17d9a5"></span> <span class="feat">Home / Hub</span> <button class="pj-jewel" style="--jewel:#17d9a5" aria-label="About Home / Hub" data-feature="chart-05">i</button></td>
+<td>included at every level.</td>
+<td>included at every level.</td>
+<td class="hl">included at every level.</td>
+<td>included at every level.</td>
+</tr>
+<tr class="chart-group"><td colspan="6">GROUP 2 — DAILY — WHAT YOU USE EVERY DAY</td></tr>
+<tr>
+<td><span class="chart-orb" style="background:#2fe89e; color:#2fe89e"></span> <span class="feat">Smart Feed / Today’s Intel</span> <button class="pj-jewel" style="--jewel:#2fe89e" aria-label="About Smart Feed / Today’s Intel" data-feature="chart-06">i</button></td>
+<td>top 3 highlights a day.</td>
+<td>full Intel feed, unlimited.</td>
+<td class="hl">full Intel feed, unlimited.</td>
+<td>full Intel feed, unlimited.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#a8e62e; color:#a8e62e"></span> <span class="feat">Smart Mail + Messenger</span> <button class="pj-jewel" style="--jewel:#a8e62e" aria-label="About Smart Mail + Messenger" data-feature="chart-07">i</button></td>
+<td>100 a month, mail + messages.</td>
+<td>up to 10 000 a month.</td>
+<td class="hl">up to 100 000 a month.</td>
+<td>up to 250 000 a month.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#ffbf3d; color:#ffbf3d"></span> <span class="feat">Smart Notes</span> <button class="pj-jewel" style="--jewel:#ffbf3d" aria-label="About Smart Notes" data-feature="chart-08">i</button></td>
+<td>10 a month.</td>
+<td>100 a month.</td>
+<td class="hl">100 a month.</td>
+<td>100 a month.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#ff9a5a; color:#ff9a5a"></span> <span class="feat">Naya Notes</span> <button class="pj-jewel" style="--jewel:#ff9a5a" aria-label="About Naya Notes" data-feature="chart-09">i</button></td>
+<td>10 a month.</td>
+<td>100 a month.</td>
+<td class="hl">100 a month.</td>
+<td>100 a month.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#ff5e6c; color:#ff5e6c"></span> <span class="feat">Smart Lists</span> <button class="pj-jewel" style="--jewel:#ff5e6c" aria-label="About Smart Lists" data-feature="chart-10">i</button></td>
+<td>3 lists.</td>
+<td>unlimited lists.</td>
+<td class="hl">unlimited lists.</td>
+<td>unlimited lists.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#ff7ad9; color:#ff7ad9"></span> <span class="feat">Smart Links</span> <button class="pj-jewel" style="--jewel:#ff7ad9" aria-label="About Smart Links" data-feature="chart-11">i</button></td>
+<td>1 — your own Smart Link.</td>
+<td>unlimited Smart Links.</td>
+<td class="hl">unlimited.</td>
+<td>unlimited.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#e84fff; color:#e84fff"></span> <span class="feat">Connections / Smart Connect</span> <button class="pj-jewel" style="--jewel:#e84fff" aria-label="About Connections / Smart Connect" data-feature="chart-12">i</button></td>
+<td>connect freely — unlimited connections.</td>
+<td>+ Smart Connect suggestions.</td>
+<td class="hl">+ connection insights.</td>
+<td>+ everything, priority matching.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#a06bff; color:#a06bff"></span> <span class="feat">Smart Growth</span> <button class="pj-jewel" style="--jewel:#a06bff" aria-label="About Smart Growth" data-feature="chart-13">i</button></td>
+<td>invite + earn 25 / 50 points.</td>
+<td>+ Growth dashboard.</td>
+<td class="hl">+ Growth dashboard + insights.</td>
+<td>+ everything.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#6a5cff; color:#6a5cff"></span> <span class="feat">Your Reports</span> <button class="pj-jewel" style="--jewel:#6a5cff" aria-label="About Your Reports" data-feature="chart-14">i</button></td>
+<td>monthly only.</td>
+<td>daily, weekly, monthly.</td>
+<td class="hl">daily, weekly, monthly.</td>
+<td>daily, weekly, monthly.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#3fb8ff; color:#3fb8ff"></span> <span class="feat">Intelligent Library</span> <button class="pj-jewel" style="--jewel:#3fb8ff" aria-label="About Intelligent Library" data-feature="chart-15">i</button></td>
+<td>holds your 10 notes a month.</td>
+<td>holds 100 a month.</td>
+<td class="hl">holds 100 a month.</td>
+<td>unlimited.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#17d9a5; color:#17d9a5"></span> <span class="feat">Intelligent Directory</span> <button class="pj-jewel" style="--jewel:#17d9a5" aria-label="About Intelligent Directory" data-feature="chart-16">i</button></td>
+<td>search + browse the directory.</td>
+<td>+ your listing.</td>
+<td class="hl">+ featured listing.</td>
+<td>+ featured listing + directory stats.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#2fe89e; color:#2fe89e"></span> <span class="feat">Learning / Academy</span> <button class="pj-jewel" style="--jewel:#2fe89e" aria-label="About Learning / Academy" data-feature="chart-17">i</button></td>
+<td>the 5-day Academy challenge (inside the trial).</td>
+<td>+ the full Academy.</td>
+<td class="hl">+ the full Academy.</td>
+<td>+ the full Academy + new courses first.</td>
+</tr>
+<tr class="chart-group"><td colspan="6">GROUP 3 — THE SYSTEM — THE MACHINE UNDERNEATH</td></tr>
+<tr>
+<td><span class="chart-orb" style="background:#a8e62e; color:#a8e62e"></span> <span class="feat">Smart Ledger</span> <button class="pj-jewel" style="--jewel:#a8e62e" aria-label="About Smart Ledger" data-feature="chart-18">i</button></td>
+<td>your own entries.</td>
+<td>your whole world.</td>
+<td class="hl">your world + insights.</td>
+<td>the full Ledger data-center view.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#ffbf3d; color:#ffbf3d"></span> <span class="feat">Smart Factory</span> <button class="pj-jewel" style="--jewel:#ffbf3d" aria-label="About Smart Factory" data-feature="chart-19">i</button></td>
+<td>the 4 core apps — Personal, Business, Space, Dashboard.</td>
+<td>100 new smart apps a month.</td>
+<td class="hl">100 new smart apps a month.</td>
+<td>300 new smart apps a month.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#ff9a5a; color:#ff9a5a"></span> <span class="feat">Ask Naya</span> <button class="pj-jewel" style="--jewel:#ff9a5a" aria-label="About Ask Naya" data-feature="chart-20">i</button></td>
+<td>Ask Naya answers (basic, limited — Free loses AI automation).</td>
+<td>+ Naya builds for you.</td>
+<td class="hl">+ automation.</td>
+<td>full automation, everything.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#ff5e6c; color:#ff5e6c"></span> <span class="feat">Smart Box <span class="steppill" style="--sc:var(--green)"><span class="sdot"></span>KEY FEATURE · NEW</span></span> <button class="pj-jewel" style="--jewel:#ff5e6c" aria-label="About Smart Box" data-feature="chart-21">i</button></td>
+<td>Not included</td>
+<td>Not included</td>
+<td class="hl">100 GB — organizes itself.</td>
+<td>500 GB — organizes itself.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#ff7ad9; color:#ff7ad9"></span> <span class="feat">Project Intelligence</span> <button class="pj-jewel" style="--jewel:#ff7ad9" aria-label="About Project Intelligence" data-feature="chart-22">i</button></td>
+<td>your daily intelligence report.</td>
+<td>+ weekly.</td>
+<td class="hl">+ monthly + journal.</td>
+<td>full PI view — your whole world, any day.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#e84fff; color:#e84fff"></span> <span class="feat">Auto-Match / Smart Match <span class="steppill" style="--sc:var(--purple)"><span class="sdot"></span>BUILT</span></span> <button class="pj-jewel" style="--jewel:#e84fff" aria-label="About Auto-Match / Smart Match" data-feature="chart-23">i</button></td>
+<td>matches in your feed + notifications.</td>
+<td>+ match insights.</td>
+<td class="hl">+ match insights.</td>
+<td>+ priority matching.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#a06bff; color:#a06bff"></span> <span class="feat">Smart Meet</span> <button class="pj-jewel" style="--jewel:#a06bff" aria-label="About Smart Meet" data-feature="chart-24">i</button></td>
+<td>Not included</td>
+<td>video up to 6, audio up to 10.</td>
+<td class="hl">video up to 6, audio up to 10.</td>
+<td>video up to 6, audio up to 10.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#6a5cff; color:#6a5cff"></span> <span class="feat">Smart Search</span> <button class="pj-jewel" style="--jewel:#6a5cff" aria-label="About Smart Search" data-feature="chart-25">i</button></td>
+<td>search by topic (limited).</td>
+<td>full Smart Search.</td>
+<td class="hl">full Smart Search.</td>
+<td>full Smart Search.</td>
+</tr>
+<tr class="chart-group"><td colspan="6">GROUP 4 — YOUR OWN WORLDS — EARNING</td></tr>
+<tr>
+<td><span class="chart-orb" style="background:#3fb8ff; color:#3fb8ff"></span> <span class="feat">Smart Memberships / Smart Access — ANY product behind a pay door</span> <button class="pj-jewel" style="--jewel:#3fb8ff" aria-label="About Smart Memberships / Smart Access — ANY product behind a pay door" data-feature="chart-26">i</button></td>
+<td>join memberships (be a member).</td>
+<td>build 1 membership site / Smart Access door.</td>
+<td class="hl">build 5.</td>
+<td>unlimited doors.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#17d9a5; color:#17d9a5"></span> <span class="feat">Affiliate system / Ambassador system</span> <button class="pj-jewel" style="--jewel:#17d9a5" aria-label="About Affiliate system / Ambassador system" data-feature="chart-27">i</button></td>
+<td>earn 50% as an ambassador.</td>
+<td>earn 50%.</td>
+<td class="hl">earn 50%.</td>
+<td>earn 50% + run affiliates on your own products.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#2fe89e; color:#2fe89e"></span> <span class="feat">Smart Events <span class="steppill" style="--sc:var(--gold)"><span class="sdot"></span>SPANNING</span></span> <button class="pj-jewel" style="--jewel:#2fe89e" aria-label="About Smart Events" data-feature="chart-28">i</button></td>
+<td colspan="4">Priced per event — $150 per 1 000 live people. Not in the tier ladder.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#a8e62e; color:#a8e62e"></span> <span class="feat">Faster payouts <span class="steppill" style="--sc:var(--gold)"><span class="sdot"></span>PROPOSED — NEEDS HIS WORD</span></span> <button class="pj-jewel" style="--jewel:#a8e62e" aria-label="About Faster payouts" data-feature="chart-29">i</button></td>
+<td>day 10, then weekly, $100/day cap.</td>
+<td>day 10, then daily, $200/day cap.</td>
+<td class="hl">day 10, then daily, $500/day cap.</td>
+<td>day 10, then daily, same-day, $1 000/day cap.</td>
+</tr>
+<tr class="chart-group"><td colspan="6">GROUP 5 — THE PLATFORM — SAME FOR EVERYONE (THE REASON IT’S NAYANET)</td></tr>
+<tr>
+<td><span class="chart-orb" style="background:#ffbf3d; color:#ffbf3d"></span> <span class="feat">Private messaging</span> <button class="pj-jewel" style="--jewel:#ffbf3d" aria-label="About Private messaging" data-feature="chart-30">i</button></td>
+<td>Included at every level — Free included.</td>
+<td>Included at every level — Free included.</td>
+<td class="hl">Included at every level — Free included.</td>
+<td>Included at every level — Free included.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#ff9a5a; color:#ff9a5a"></span> <span class="feat">Auto-optimization</span> <button class="pj-jewel" style="--jewel:#ff9a5a" aria-label="About Auto-optimization" data-feature="chart-31">i</button></td>
+<td>Included at every level — Free included.</td>
+<td>Included at every level — Free included.</td>
+<td class="hl">Included at every level — Free included.</td>
+<td>Included at every level — Free included.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#ff5e6c; color:#ff5e6c"></span> <span class="feat">Collective chain technology</span> <button class="pj-jewel" style="--jewel:#ff5e6c" aria-label="About Collective chain technology" data-feature="chart-32">i</button></td>
+<td>Included at every level — it IS the network.</td>
+<td>Included at every level — it IS the network.</td>
+<td class="hl">Included at every level — it IS the network.</td>
+<td>Included at every level — it IS the network.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#ff7ad9; color:#ff7ad9"></span> <span class="feat">Smart security</span> <button class="pj-jewel" style="--jewel:#ff7ad9" aria-label="About Smart security" data-feature="chart-33">i</button></td>
+<td>Included at every level — Free included.</td>
+<td>Included at every level — Free included.</td>
+<td class="hl">Included at every level — Free included.</td>
+<td>Included at every level — Free included.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#e84fff; color:#e84fff"></span> <span class="feat">Point system / gamification</span> <button class="pj-jewel" style="--jewel:#e84fff" aria-label="About Point system / gamification" data-feature="chart-34">i</button></td>
+<td>your score + basic stats.</td>
+<td>full Dashboard stats.</td>
+<td class="hl">+ Smart Stats + leaderboards.</td>
+<td>everything + the full Ledger.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#a06bff; color:#a06bff"></span> <span class="feat">Install any page as a mobile app</span> <button class="pj-jewel" style="--jewel:#a06bff" aria-label="About Install any page as a mobile app" data-feature="chart-35">i</button></td>
+<td>Included at every level — all pages have it.</td>
+<td>Included at every level — all pages have it.</td>
+<td class="hl">Included at every level — all pages have it.</td>
+<td>Included at every level — all pages have it.</td>
+</tr>
+<tr>
+<td><span class="chart-orb" style="background:#6a5cff; color:#6a5cff"></span> <span class="feat">High-performance operating machine</span> <button class="pj-jewel" style="--jewel:#6a5cff" aria-label="About High-performance operating machine" data-feature="chart-36">i</button></td>
+<td>Included at every level — it IS the machine.</td>
+<td>Included at every level — it IS the machine.</td>
+<td class="hl">Included at every level — it IS the machine.</td>
+<td>Included at every level — it IS the machine.</td>
+</tr>
 </tbody></table></div>
+<p class="chart-foot"><b>FREE $0 · POWER $25 · PRO $50 · MAX $100</b> — every step exactly double. Annual is half price. Quarterly is 3 months for the price of 2. <button class="tier-head-btn" data-tier="seats" style="font-weight:800; color:var(--txt);">Founding lifetime seats — $300, 1 000 only, then closed forever.</button></p>
+<p class="chart-foot">Subscribe now — nothing is charged for 9 days. Day 10, you’re charged for the level you’re on. No refunds — the trial is the guarantee.</p>
+</div>
 </section>
 <section class="slide" id="top10" aria-label="The Top 10">
-<div class="kicker c-purple">THE TOP 10 — WHY IT&rsquo;S AWESOME</div>
-<figure class="tt-fig p1"><img src="https://naya-proof-host.nayapower.workers.dev/?file=PRICING/assets/TOP_TEN_NAYANET.png&ref=pricing/defectfix-v3" alt="From Shawn&rsquo;s dictation — the Top 10 reasons to join NayaNET, items 1 to 7." loading="lazy"><figcaption>From Shawn&rsquo;s dictation — the Top 10, items 1–7.</figcaption></figure>
-<figure class="tt-fig p2"><img src="https://naya-proof-host.nayapower.workers.dev/?file=PRICING/assets/TOP_TEN_NAYANET_2.png&ref=pricing/defectfix-v3" alt="From Shawn&rsquo;s dictation — the Top 10 reasons to join NayaNET, items 8 to 10." loading="lazy"><figcaption>From Shawn&rsquo;s dictation — the Top 10, items 8–10.</figcaption></figure>
+<div class="slide-inner">
+<p class="sec-kicker">03 — The Top 10 · What’s in it for you</p>
+<h2 class="sec-head">The ten that matter most.</h2>
+<figure class="tt-fig p1"><img src="https://naya-proof-host.nayapower.workers.dev/?file=PRICING/assets/TOP_TEN_NAYANET.png&ref=pricing/defectfix-v3" alt="The Top 10 reasons to join NayaNET, items 1–7."><figcaption>From Shawn’s dictation — the Top 10, items 1–7.</figcaption></figure>
+<figure class="tt-fig p2"><img src="https://naya-proof-host.nayapower.workers.dev/?file=PRICING/assets/TOP_TEN_NAYANET_2.png&ref=pricing/defectfix-v3" alt="The Top 10 reasons to join NayaNET, items 8–10."><figcaption>From Shawn’s dictation — the Top 10, items 8–10.</figcaption></figure>
 <div class="top10-grid">
-<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#e8b64c; --oc-rgb:232,182,76" aria-hidden="true"></span><span class="rn-label">01 · TEN-STAR EXPERIENCE</span></div><p>Ten-star experience — Naya builds and runs your world for you. An AI operating system designed by Nias for Nias, giving you 10-star service. She builds your world and runs it automatically.</p></div>
-<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#9d75ff; --oc-rgb:157,117,255" aria-hidden="true"></span><span class="rn-label">02 · THE INTELLIGENCE NETWORK</span></div><p>The intelligence network — collective intelligence. Plug in and learn from everybody. Share your smart notes, save your knowledge — everybody collectively gets more intelligent, and it compounds, day after day.</p></div>
-<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#55b9ee; --oc-rgb:85,185,238" aria-hidden="true"></span><span class="rn-label">03 · THE NEW INTERNET, ALL IN ONE</span></div><p>The new internet, all in one. The cake: the internet was the cake, Google the icing, social networks the ice cream, mobile the caramel sauce, blockchain the whipped cream, AI the sprinkles — and Naya is the cherry on top. Mail, social, search, mobile, ledger, AI — everything the internet is, connected. It plugs into any AI, and works best, 10-star, with Muse.</p></div>
-<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#55e39a; --oc-rgb:85,227,154" aria-hidden="true"></span><span class="rn-label">04 · A TEAM OF NIAS AND HUMANS</span></div><p>A team of Nias and humans. Like Facebook, except the Nias have their own profiles, mail and instant messages — they all communicate together as a team, and Nias live in the network watching over it.</p></div>
-<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#d86cff; --oc-rgb:216,108,255" aria-hidden="true"></span><span class="rn-label">05 · NAYA REMEMBERS EVERYTHING</span></div><p>Naya remembers everything that matters to you. Your notes, your days — daily, weekly and monthly reports, calendar, booking and journaling, all in your dashboard. Look back on any day and see what went on in your world.</p></div>
-<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#6675ff; --oc-rgb:102,117,255" aria-hidden="true"></span><span class="rn-label">06 · SMART LEDGER + COLLECTIVE CHAIN</span></div><p>Smart Ledger and collective chain technology. A new technology that runs NayaNET for the collective. Everything is recorded, everything has a value, and nothing enters the network unseen — the system sees immediately what you are doing, because your points are always going up and down. Interconnected super brains, people and devices.</p></div>
-<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#35e0a1; --oc-rgb:53,224,161" aria-hidden="true"></span><span class="rn-label">07 · PRIVATE BY DESIGN</span></div><p>Private by design. We do not read your mail. It is deleted by default — a day, or a week, or a month, your choice. Share your wisdom anonymously, no ego — you are gifting intelligence to the world for all of us to learn from.</p></div>
-<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#b8ee57; --oc-rgb:184,238,87" aria-hidden="true"></span><span class="rn-label">08 · SMART MAIL + SMART SEARCH</span></div><p>Smart Mail and Smart Search. Mail and message anybody. Search by topic and find everybody related to it — connect with like minds by topic or location, create a space, and choose exactly who can reach you, and who cannot.</p></div>
-<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#ff9a5a; --oc-rgb:255,154,90" aria-hidden="true"></span><span class="rn-label">09 · SMART ACCESS</span></div><p>Smart Access — any product behind a pay door. Create memberships, give them away — and if somebody joins NayaNET through your membership area, you get credited. Any video, audio, or package: they pay, the login arrives by Smart Mail, you get paid by PayPal or Stripe. You earn 50% of the revenue.</p></div>
-<div class="real-note"><div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#f1d75a; --oc-rgb:241,215,90" aria-hidden="true"></span><span class="rn-label">10 · FREE TO JOIN — 9 DAYS FREE</span></div><p>Free to join — 9 days free, zero cost. Try the Bugatti before you buy it. The 5-day Academy challenge, nine days to take it.</p></div>
+<article class="real-note top10-card" tabindex="0" role="button" aria-label="Ten-star experience — open the detail" data-reason="reason-01">
+<div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#e8b64c; --oc-rgb:232,182,76"></span><span class="rn-label">01 · TEN-STAR EXPERIENCE</span></div>
+<p>She builds your world and runs it automatically — so you never touch a setting, and your world just works.</p>
+</article>
+<article class="real-note top10-card" tabindex="0" role="button" aria-label="The intelligence network — open the detail" data-reason="reason-02">
+<div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#9d75ff; --oc-rgb:157,117,255"></span><span class="rn-label">02 · THE INTELLIGENCE NETWORK</span></div>
+<p>You get smarter every day, without studying — mail, messages and notes turn into smart notes, and the network hands them back to everybody.</p>
+</article>
+<article class="real-note top10-card" tabindex="0" role="button" aria-label="The new internet, all in one — open the detail" data-reason="reason-03">
+<div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#55b9ee; --oc-rgb:85,185,238"></span><span class="rn-label">03 · THE NEW INTERNET, ALL IN ONE</span></div>
+<p>Everything the internet is, connected — and it plugs into any AI, and works best, 10-star, with Muse.</p>
+</article>
+<article class="real-note top10-card" tabindex="0" role="button" aria-label="A team of Nias and humans — open the detail" data-reason="reason-04">
+<div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#55e39a; --oc-rgb:85,227,154"></span><span class="rn-label">04 · A TEAM OF NIAS AND HUMANS</span></div>
+<p>Nias live in the network watching over it — so you’re never building alone.</p>
+</article>
+<article class="real-note top10-card" tabindex="0" role="button" aria-label="Naya remembers everything that matters to you — open the detail" data-reason="reason-05">
+<div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#d86cff; --oc-rgb:216,108,255"></span><span class="rn-label">05 · NAYA REMEMBERS EVERYTHING</span></div>
+<p>Look back on any day and see what went on in your world — so you never lose what matters.</p>
+</article>
+<article class="real-note top10-card" tabindex="0" role="button" aria-label="Smart Ledger and collective chain technology — open the detail" data-reason="reason-06">
+<div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#6675ff; --oc-rgb:102,117,255"></span><span class="rn-label">06 · SMART LEDGER + COLLECTIVE CHAIN</span></div>
+<p>Interconnected super brains, people and devices — so nothing is hidden, and trust is built in.</p>
+</article>
+<article class="real-note top10-card" tabindex="0" role="button" aria-label="Private by design — open the detail" data-reason="reason-07">
+<div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#35e0a1; --oc-rgb:53,224,161"></span><span class="rn-label">07 · PRIVATE BY DESIGN</span></div>
+<p>Share your wisdom anonymously, no ego — you are gifting intelligence to the world for all of us to learn from.</p>
+</article>
+<article class="real-note top10-card" tabindex="0" role="button" aria-label="Smart Mail and Smart Search — open the detail" data-reason="reason-08">
+<div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#b8ee57; --oc-rgb:184,238,87"></span><span class="rn-label">08 · SMART MAIL + SMART SEARCH</span></div>
+<p>Choose exactly who can reach you, and who cannot — so you connect with like minds, fast.</p>
+</article>
+<article class="real-note top10-card" tabindex="0" role="button" aria-label="Smart Access — open the detail" data-reason="reason-09">
+<div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#ff9a5a; --oc-rgb:255,154,90"></span><span class="rn-label">09 · SMART ACCESS</span></div>
+<p>You earn 50% of the revenue — so you earn from what you already made.</p>
+</article>
+<article class="real-note top10-card" tabindex="0" role="button" aria-label="Free to join — open the detail" data-reason="reason-10">
+<div class="rn-head"><span class="orb orb--sm ib-card-orb" style="--oc:#f1d75a; --oc-rgb:241,215,90"></span><span class="rn-label">10 · FREE TO JOIN — 9 DAYS FREE</span></div>
+<p>9 days free, zero cost — so you try the Bugatti before you buy it.</p>
+</article>
+</div>
 </div>
 </section>
 <section class="calc lit-section sec-calc slide" id="calculator" tabindex="-1" aria-label="Affiliate calculator — pick your package, see your potential">
@@ -1152,34 +1378,23 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
     <p class="calc-disc">Potential, not a promise. Computed from your inputs — plan price × 50%, recurring monthly. Nothing here is promised earnings.</p>
   </section>
 <section class="slide" id="start" aria-label="Start">
-<figure class="edge-art"><img src="https://naya-proof-host.nayapower.workers.dev/?file=PRICING/assets/Naya_World.png&ref=pricing/defectfix-v3" alt="Skip the struggle. Start further ahead. — The Naya Supercharger turns AI friction into flow." loading="lazy"><figcaption>Skip the struggle. Start further ahead.</figcaption></figure>
-<h2 class="dream">It&rsquo;s like the dream, right? You want to have an automated internet where you can succeed <b>100% success rate</b> because everything&rsquo;s done for you — and that&rsquo;d be the dream. What if the dream came true and <b>her name was Naya</b>.</h2>
-<div class="job-card">
-<div class="job-card-head"><span class="job-badge">NAYA · NEW HIRE</span><span class="job-seal">★ HIRED</span></div>
-<h2>Congratulations, you&rsquo;re hired.</h2>
-<p>They say AI is taking jobs from everyone — well, <b>we decided to hire everyone</b>. You get paid WHEN WE GET PAID — <b>50% of the revenue, straight up</b>. No games, no catch, no bullshit. Money in your account.</p>
-<p>No application. No interview. You automatically get the job the moment you plug in.</p>
-<p class="job-pay">First payout day 10, then daily after that — once we&rsquo;re paid, you&rsquo;re paid.</p>
-<p class="job-why">And that&rsquo;s why it always lands: your 50% locks in the moment we&rsquo;re paid. A member can cancel for the next period — never for the one already paid — so what you&rsquo;ve earned stays earned.</p>
-<div class="earn-terms">
-<h3>The terms, plainly.</h3>
-<div class="earn-terms-rows">
-<span><b>50%</b> of the revenue — of everything they pay.</span>
-<span><b>Same-day</b> — paid the moment we&rsquo;re paid.</span>
-<span><b>Day 10</b> — first payout the tenth day, then daily after that.</span>
+  <div class="banner-map">
+  <img class="banner-img" src="https://naya-proof-host.nayapower.workers.dev/?file=PRICING/assets/Naya_World.png&ref=pricing/defectfix-v3" alt="Skip the struggle. Start further ahead. — THE NAYA SUPERCHARGER TURNS AI FRICTION INTO FLOW.">
+  </div>
+<div class="slide-inner">
+<h2 class="sec-head">Feel the whole thing first. Then decide.</h2>
+<p class="sec-sub">Nine days free on every level. After 9 days: pay and keep everything alive, or keep your free home.</p>
+<h2 class="dream">An automated internet where you can succeed <b>100% success rate</b> because everything’s done for you — and that’d be the dream. What if the dream came true and <b>her name was Naya</b>.</h2>
+<p class="trial-text">Try her free for 9 days. <b>5 days in the Academy</b> — learn about Naya. <b>4 days in the Master Class</b> — job training: how to operate your world and make money with it. Start at Max. Change your level any time, up or down. If you love her, you keep her.</p>
+<div class="close-start"><a class="primo theme-gold" href="https://nayanet.app/max-monthly">Start free — try her for 9 days</a></div>
 </div>
-<p class="earn-hired">Not only can you drive her and experience her — you&rsquo;re hired, you&rsquo;re part of the team. <b>How much do you get paid?</b> 50% of the revenue. No games. <b>When do you get paid?</b> As soon as we get paid — after nine days, the tenth day you&rsquo;re paid.</p>
-<p class="earn-cond">Conditional, never typical — computed from your invites, never promised. Potential, not promise.</p>
-</div>
-</div>
-<div class="hero-cta" style="justify-content:center;">
-<input type="text" class="claim-name" id="claimNameClose" placeholder="Your name" aria-label="Your name — the name you want to claim" maxlength="32" autocomplete="off">
-<a class="primo theme-gold" href="https://nayanet.app/yourname" data-claim>★ Claim your name</a>
-</div>
-<p class="no-risk">Try it for free, no worries, <b>no risk</b>. If you don&rsquo;t like her, you can still use her with no power — or keep your power.</p>
-<p class="page-foot">NayaNET — <b>9 days free</b>: 5-day Academy + 4-day Master Class. Start at Max, first charge day 10, change any time.</p>
 </section>
-<div class="drawer-backdrop" id="detailBackdrop"></div><div class="detail-panel tab-pop" id="detailPanel" role="dialog" aria-modal="true" aria-labelledby="detailTitle"><h3 id="detailTitle"></h3><div id="detailBody"></div><button class="primo theme-gold detail-close" id="detailClose">Close — back to the chart</button></div>
+<div class="drawer-backdrop" id="detailBackdrop"></div>
+<div class="tab-pop detail-panel" id="detailPanel" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+<h3 class="detail-title" id="detailTitle"></h3>
+<div id="detailBody"></div>
+<button class="primo theme-gold detail-close" id="detailClose">Close — back to the chart</button>
+</div>
 /* DECK — fix1 lines 2363-2373 */
 <script>
   // JS-gated (html.js-deck) so a no-JS page never fades; reduced motion kills
@@ -2356,7 +2571,7 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
       window.NayaCalc = { config: cfg, update: update, setPlan: setPlan, setGoal: setGoal, state: state };
     })();
     </script>
-/* CLAIM — fix1 lines 2381-2395 */
+/* CLAIM — fix1 lines 2381-2395 (the hero's claim input; §7 keeps the claim) */
 <script>
     var claimBtns = document.querySelectorAll('a[data-claim]');
     var inputs = document.querySelectorAll('.claim-name');
@@ -2433,31 +2648,42 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
   };
   window.NayaNotif.init();
 </script>
-/* DETAIL VIEW — Amendment 1 §2 (the overlay glue; the 7-part data is above) */
+/* DETAIL VIEW — Amendment 1 §2 + Amendment 3 §6-§7 (the overlay glue) */
 <script>
-var FEATURE_DETAILS = {"apps": ["Smart apps", [["In a nutshell", "The four apps — Dashboard, Personal, Business, Space. Your whole world, in four rooms, all connected."], ["What’s in it for you", "One home for everything you do. No more jumping between a dozen apps that don’t talk to each other."], ["How to use it", "Open any app from your world. They share the same lists, the same mail, the same ledger — what you do in one shows up in the others."], ["Why it’s valuable", "Your world is one system, not four subscriptions. Everything you build in one app is already in the others."], ["What problem it solves", "The old internet is a pile of separate apps that don’t know each other. Your life is scattered across them."], ["The pain point it solves", "You pay for four tools, re-enter the same thing four times, and still can’t find anything."], ["How it’s different", "Four apps, one world. They were built as one system from the start — not bolted together after."]]], "personal": ["Personal", [["In a nutshell", "Personal is your world, personal. Your home on the new internet — your profile, your pages, your world, yours."], ["What’s in it for you", "A place that’s yours. Your words, your pictures, your world — presented the way you want it."], ["How to use it", "Build your Personal world from your onboarding answers. Add your pages, your links, your notes — it grows with you."], ["Why it’s valuable", "Your identity lives in one place. People find you, know you, and connect with you — on your terms."], ["What problem it solves", "On the old internet, you’re a profile on somebody else’s platform. They own the page; you rent a corner of it."], ["The pain point it solves", "You build a following on a platform that can change the rules, hide your posts, or close your account."], ["How it’s different", "Personal is YOUR world, not a profile on their platform. You own it. Nobody can take it or throttle it."]]], "business": ["Business", [["In a nutshell", "Business is your business, in its own world. Your products, your services, your customers — one place."], ["What’s in it for you", "Your business has a home, not a listing. People see what you sell, book you, and pay you — right there."], ["How to use it", "Add your products and services to your Business world. Link your PayPal, set your prices, and let people buy."], ["Why it’s valuable", "You sell where you live. No marketplace taking a cut, no algorithm deciding who sees you."], ["What problem it solves", "Small businesses live on marketplaces that take a cut and hide them behind a search box."], ["The pain point it solves", "You do the work, the platform takes the fee, and the customer belongs to them — not to you."], ["How it’s different", "Your Business world is yours. The customer is yours. The sale is yours. Naya just runs the machine."]]], "space": ["Space", [["In a nutshell", "A Space is a world for what you are building. A project, a group, a community — its own room, its own people."], ["What’s in it for you", "Build anything with anyone. A Space gives your project a home, a feed, and a team — in one tap."], ["How to use it", "Create a Space from any note, any idea, any conversation. Invite people in, give them a role, and build together."], ["Why it’s valuable", "Ideas become rooms. Rooms become teams. Teams build things that one person never could."], ["What problem it solves", "Group chats die, projects scatter across apps, and nobody knows where the work actually lives."], ["The pain point it solves", "You have the idea, but no place to gather the people and the work — so the idea dies in a chat thread."], ["How it’s different", "A Space is a living world, not a chat. The work, the people, and the conversation live in one place."]]], "membership": ["Membership", [["In a nutshell", "Membership is Smart Access — any product behind a pay door. A video, an audio, a package: they pay, the login arrives by Smart Mail."], ["What’s in it for you", "Sell what you know. Your course, your videos, your package — behind a door you own, with the money coming to you."], ["How to use it", "Create a membership on any page. Set the price, paste your PayPal link, and share it. Members pay, the login arrives by Smart Mail."], ["Why it’s valuable", "You earn 50% of the revenue — and if somebody joins NayaNET through your membership area, you get credited."], ["What problem it solves", "Creators give their best work to platforms that take most of the money and own the audience."], ["The pain point it solves", "You make the course, the platform takes the cut, and you never meet the people who paid for it."], ["How it’s different", "Your membership, your door, your people. You keep the relationship — and half the revenue, paid the moment we’re paid."]]], "mail": ["Smart Mail", [["In a nutshell", "Smart Mail is mail and messenger in one inbox. Mail and message anybody — people and Nias, together."], ["What’s in it for you", "One inbox for everything. Your mail, your messages, your logins — all in one place, all connected to your world."], ["How to use it", "Write to anybody by name or by topic. Your login codes arrive by Smart Mail — never by email you have to hunt for."], ["Why it’s valuable", "Your messages reach people who want to hear from you — and nobody you don’t. You choose exactly who can reach you."], ["What problem it solves", "Email is a swamp of spam, and messengers are a dozen separate apps that don’t talk to each other."], ["The pain point it solves", "You miss the message that matters because it’s buried under a hundred you never asked for."], ["How it’s different", "One inbox, one system. Mail and message are the same conversation — and it connects to your lists, your spaces, your world."]]], "notes": ["Smart Notes", [["In a nutshell", "Smart Notes are your knowledge, saved and shared. Capture what matters, in seconds — and it compounds."], ["What’s in it for you", "Never lose a good idea again. Your notes are saved, organised, and shared with the network — and everybody gets smarter."], ["How to use it", "Write a note — a thought, a lesson, a link. It saves to your Box, shows in your Lists, and reaches the people it helps."], ["Why it’s valuable", "Your knowledge earns. Every note is worth 35 points, and the network learns from it — day after day, it compounds."], ["What problem it solves", "Good ideas die in notebooks and chat threads. The person who needed them never sees them."], ["The pain point it solves", "You figured something out once, then spent an hour trying to remember where you wrote it down."], ["How it’s different", "A note here is not a file — it’s intelligence. It connects to the network, it finds the people it helps, and it never gets lost."]]], "box": ["Smart Box", [["In a nutshell", "Smart Box is memory and organisation — storage that organises itself. Your files, your notes, your media — filed for you."], ["What’s in it for you", "Never organise anything by hand again. The Box files it, labels it, and finds it when you need it."], ["How to use it", "Save anything to your Box. It organises itself — by topic, by person, by project — and you just ask for it."], ["Why it’s valuable", "Your memory becomes searchable. What took an hour to find now takes a second — and nothing is ever lost."], ["What problem it solves", "Files pile up in folders nobody remembers. You know you saved it — you just can’t find it."], ["The pain point it solves", "You pay for storage you can’t use, because finding anything in it takes longer than doing it again."], ["How it’s different", "The Box is not a drive — it’s a memory. It knows what you saved, why it matters, and where it belongs."]]], "reports": ["Intelligent reports", [["In a nutshell", "Intelligent reports are your days, written up for you — daily, weekly, monthly. Look back on any day and see what went on in your world."], ["What’s in it for you", "You never forget what happened. Your reports tell you what you did, what you learned, and what changed — every day."], ["How to use it", "Open your Dashboard. Your daily report is there — what you did, who you met, what you earned, what you learned."], ["Why it’s valuable", "Your life becomes a record you can learn from. Patterns you couldn’t see become obvious — and you get better every week."], ["What problem it solves", "Days blur together. You can’t remember what you did last Tuesday, let alone what it taught you."], ["The pain point it solves", "You keep making the same mistake because you never stopped to see the pattern."], ["How it’s different", "A report here is not a spreadsheet — it’s your story, told back to you, with the lessons already pulled out."]]], "lists": ["Smart Lists", [["In a nutshell", "Smart Lists are the view — your connections and your notes, organised. The Box is the store; Lists are the view."], ["What’s in it for you", "Everything you care about, in lists that keep themselves. People, notes, projects — all in one place, always current."], ["How to use it", "Make a list from anything — a topic, a person, a project. It fills itself from your Box and stays in sync."], ["Why it’s valuable", "You stop hunting. The list you need is already made, already full, and already up to date."], ["What problem it solves", "Contacts live in one app, notes in another, and the list you need is always the one you didn’t make."], ["The pain point it solves", "You know the person, you just can’t find them — and by the time you do, the moment’s gone."], ["How it’s different", "A List here is alive. It updates itself from your world — you never build it twice."]]], "links": ["Smart Links", [["In a nutshell", "Smart Links are your links, made smart. One link for anything — and it tracks the click, the return, and the sale."], ["What’s in it for you", "Every link you share works for you. Your ambassador link is the default — share it, and you get credited when people join."], ["How to use it", "Make a Smart Link for anything — a page, a product, a payment. Share it anywhere; the clicks and returns are counted."], ["Why it’s valuable", "Your links earn. Share your ambassador link, somebody joins, and you get credited — 50% of the revenue, paid the moment we’re paid."], ["What problem it solves", "Links are dumb. You share one, and you never know if anybody clicked it, let alone bought anything."], ["The pain point it solves", "You send people to a payment page and have no idea whether they paid — or whether you got anything for it."], ["How it’s different", "A Smart Link is not a URL — it’s a tracked, credited, intelligent link. It knows where it goes and who it rewards."]]], "projects": ["Your projects", [["In a nutshell", "Your projects — the things you’re building, all in one place. Three on free, unlimited when you have power."], ["What’s in it for you", "Every project has a home. Your ideas, your builds, your launches — organised, visible, and moving."], ["How to use it", "Start a project from any idea. It gets a Space, a list, and a feed — and the people who want to help find it."], ["Why it’s valuable", "Projects stop dying. When a project has a home, it gets finished — and finished projects earn."], ["What problem it solves", "Projects live in your head, in a doc, in a chat — and nowhere all together. So they stall."], ["The pain point it solves", "You started five things and finished none, because none of them had a place to live."], ["How it’s different", "A project here is a world, not a task. It has people, a feed, and a home — so it actually gets done."]]], "intel": ["Daily highlights / Intel", [["In a nutshell", "Daily highlights and Intel — the feed that knows you. The system organises and syncs what matters to your world."], ["What’s in it for you", "You see what matters, and nothing you don’t. Your feed is your world — the notes, the people, the opportunities that fit you."], ["How to use it", "Open your feed. The top three highlights are there every day — and the full Intel feed is there when you want more."], ["Why it’s valuable", "Your attention stops being wasted. The feed shows you the three things that matter — not the three thousand that don’t."], ["What problem it solves", "Feeds are designed to keep you scrolling, not to help you. They show you what pays them, not what helps you."], ["The pain point it solves", "You open the feed for a second and lose an hour — and you can’t name one useful thing you saw."], ["How it’s different", "This feed is yours. It organises for you, not for advertisers — and it shows you what moves your world forward."]]], "audio": ["Audio calls", [["In a nutshell", "Audio calls — talk to up to 10 people, right inside your world. Smart Meet is a feature, not a separate app."], ["What’s in it for you", "Talk, don’t type. Gather your team on audio in one tap — no link, no download, no separate app."], ["How to use it", "Open a Space or a conversation and tap audio. Up to 10 people join — and the call lives in your world, not in a separate tool."], ["Why it’s valuable", "Conversations happen where the work is. No switching apps, no lost context, no ‘can you hear me’ on a tool nobody likes."], ["What problem it solves", "Calls live in separate apps. You leave your work to take a call, and the call has no memory of the work."], ["The pain point it solves", "You spend the first five minutes of every call finding the link, and the next ten re-explaining what you were doing."], ["How it’s different", "Audio here is part of the world. The call, the people, and the work are in the same place — so nothing is lost."]]], "video": ["Video calls", [["In a nutshell", "Video calls — see up to 6 people, face to face, inside your world. Smart Meet is a feature, not a separate app."], ["What’s in it for you", "Meet face to face without leaving your world. Your team, your Space, your conversation — on video, in one tap."], ["How to use it", "Open a Space or a conversation and tap video. Up to 6 people join — and the call lives in your world."], ["Why it’s valuable", "You see the people you build with. Trust grows faster face to face — and the work is right there beside the call."], ["What problem it solves", "Video lives in separate apps that charge by the seat and forget the conversation the moment it ends."], ["The pain point it solves", "You pay for a video tool, then pay again to record it, then lose the recording in a folder nobody opens."], ["How it’s different", "Video here is part of the world. The call, the notes, and the people are together — so the meeting is never lost."]]], "media": ["Media — voice & video notes", [["In a nutshell", "Media — voice and video notes. Record what you mean, in your own voice, and send it in seconds."], ["What’s in it for you", "Say it instead of typing it. A voice note carries the meaning a message loses — and it takes seconds, not minutes."], ["How to use it", "Hold to record a voice or video note, in any message or any note. It saves to your Box and plays anywhere."], ["Why it’s valuable", "Your voice is your fastest tool. A minute of talking says what ten minutes of typing can’t — and it’s saved."], ["What problem it solves", "Text flattens everything. Tone, warmth, urgency — all lost — and long messages never get read."], ["The pain point it solves", "You type a long message, they skim it, and the one thing that mattered gets missed."], ["How it’s different", "Media here is a note, not a file. It lives with the conversation, it’s searchable, and it plays in place."]]], "ai": ["Your own AI", [["In a nutshell", "Your own AI — plugged into the network. She is the mothership for all AIs: plug any AI into her and she makes it a supercar."], ["What’s in it for you", "Your AI gets a supercharger. Whatever AI you use — ChatGPT, Muse, Claude — Naya makes it work for you, in your world."], ["How to use it", "Connect your AI to your world. It reads your notes, your lists, your projects — and works with your context, not without it."], ["Why it’s valuable", "An AI without context is a stranger. Yours knows your world — so its answers are yours, not generic."], ["What problem it solves", "Every AI starts from zero. You re-explain yourself every time, and it forgets you the moment you leave."], ["The pain point it solves", "You pay for an AI that doesn’t know you, doesn’t remember you, and gives you the same answer it gives everyone."], ["How it’s different", "Your AI here lives in your world. It knows your notes, your people, your projects — and it gets smarter with you."]]], "affiliate": ["Affiliate system", [["In a nutshell", "The Affiliate system — run affiliates on your own products. Others sell your products, and you earn."], ["What’s in it for you", "Your customers become your sales team. They share your products, people buy, and everybody earns."], ["How to use it", "Turn on affiliates for any product. Share your affiliate link, and the system tracks every sale and pays every affiliate."], ["Why it’s valuable", "Your reach multiplies. Every affiliate is a salesperson you don’t pay until they sell — and they earn 50% too."], ["What problem it solves", "Selling alone is slow. You can only reach the people you already know — and they can only reach the people they know."], ["The pain point it solves", "You have a great product and nobody hears about it, because you can’t afford to advertise."], ["How it’s different", "Affiliates here are the network. Your product travels person to person, and every sale pays the people who made it happen."]]], "payouts": ["Affiliate payouts", [["In a nutshell", "Affiliate payouts — 50% of the revenue, paid the moment we’re paid. On every level, including free. First payout day 10, then daily."], ["What’s in it for you", "You earn from day one — even free. Share your link, somebody joins or buys, and you get half, the moment we’re paid."], ["How to use it", "Share your ambassador link or your affiliate link. When somebody joins or buys through it, your 50% is credited — and paid out from day 10, daily after that."], ["Why it’s valuable", "Half of everything you bring in is yours. No threshold, no waiting for a payout day, no fine print — the moment we’re paid, you’re paid."], ["What problem it solves", "Affiliate programs pay pennies, months late, and only after you hit a threshold most people never reach."], ["The pain point it solves", "You sent a hundred people to a product, earned a few dollars, and waited three months to see it."], ["How it’s different", "Here, 50% is 50% — on every level, including free — and it’s paid the moment we’re paid. First payout day 10, then daily."]]]};
+var DETAIL_DATA = {"features": {"chart-01": ["Personal pages", [["In a nutshell", "Personal pages: your personal world — your profile, your story, your feed."], ["What’s in it for you", "One place that is yours, that knows you, that grows with you."], ["How to use it", "You claim your name, and Naya builds the page — you never touch a setting."], ["Why it’s valuable", "Your whole self lives in one place, and it works while you sleep."], ["What problem it solves", "Your story is scattered across a dozen apps that don’t know each other."], ["The pain point it solves", "You rebuild yourself everywhere, and nowhere remembers you."], ["How it’s different", "It is a world, not a profile — it grows with you instead of freezing you in place."]]], "chart-02": ["Business pages", [["In a nutshell", "Business pages: your business world — your products, your services, your storefront."], ["What’s in it for you", "a business that runs while you sleep."], ["How to use it", "You list your products and services, and she sells for you — takes bookings, shows your work."], ["Why it’s valuable", "A business that runs while you sleep — it sells, takes bookings, and shows your work."], ["What problem it solves", "Your business stops when you stop — it only sells while you’re working."], ["The pain point it solves", "You do the selling, the booking, the showing — and it all stops when you do."], ["How it’s different", "It sells for you — a business that runs while you sleep, not a shop that waits for you."]]], "chart-03": ["Spaces", [["In a nutshell", "Spaces: your spaces — communities, groups, rooms you create and join."], ["What’s in it for you", "your people, in your place, on your terms."], ["How to use it", "You create a space around what you care about, and people gather — every space has its own page, feed, and members."], ["Why it’s valuable", "Your people, in your place, on your terms — a room that belongs to the people in it."], ["What problem it solves", "Your people are scattered across a dozen apps, and no place is yours."], ["The pain point it solves", "You gather people in a chat that isn’t yours, and the conversation disappears."], ["How it’s different", "It’s a place, not a thread — every space has its own page, feed, and members."]]], "chart-04": ["Dashboard + Smart Stats", [["In a nutshell", "Dashboard + Smart Stats: your numbers — the speedometer, the score, every stat that matters."], ["What’s in it for you", "You always know where you stand — and what to do next."], ["How to use it", "You open your Dashboard and the gauge tells you, in two seconds."], ["Why it’s valuable", "No more guessing what worked — the numbers say it, beautifully."], ["What problem it solves", "You can’t see what’s happening in your own world."], ["The pain point it solves", "You work blind, and you don’t know what to do next."], ["How it’s different", "The number is on top and the gauge is underneath — a high-performance machine, not a spreadsheet."]]], "chart-05": ["Home / Hub", [["In a nutshell", "Home / Hub: the front door of NayaNET — the Hub, the feed, the whole network in one place."], ["What’s in it for you", "you never get lost. Home is always one tap away."], ["How to use it", "You open the Hub and go anywhere in one tap — everything connects here."], ["Why it’s valuable", "You never get lost — Home is always one tap away, and the whole network is in one place."], ["What problem it solves", "The network is a maze of apps and links, and you can’t find your way home."], ["The pain point it solves", "You open an app and forget where you were, and where you were going."], ["How it’s different", "It’s a front door, not a maze — everything connects here, one tap away."]]], "chart-06": ["Smart Feed / Today's Intel", [["In a nutshell", "Smart Feed / Today's Intel: your feed — the smart notes, the highlights of the day, what matters now."], ["What’s in it for you", "you wake up and the day's intelligence is already there."], ["How to use it", "You open your feed and the day’s intelligence is already there — the highlights, the smart notes, what matters now."], ["Why it’s valuable", "You wake up and the day’s intelligence is already there — you don’t go looking for it."], ["What problem it solves", "You have to hunt for what matters, and the day’s intelligence never finds you."], ["The pain point it solves", "You scroll for an hour and can’t name one useful thing you saw."], ["How it’s different", "It brings you the intelligence — you don’t go looking for it."]]], "chart-07": ["Smart Mail + Messenger", [["In a nutshell", "Smart Mail + Messenger: your mail and your instant messages — one inbox, two ways to talk."], ["What’s in it for you", "everybody you need, one place, no app-hopping."], ["How to use it", "You mail anybody, message anybody, instantly — and toggle between mail and messenger in one tap."], ["Why it’s valuable", "Everybody you need, one place, no app-hopping — one inbox, two ways to talk."], ["What problem it solves", "Your mail lives in one app, your messages in another, and you hop between them all day."], ["The pain point it solves", "You miss the message that matters because it’s in the app you didn’t open."], ["How it’s different", "It’s one inbox, two ways to talk — mail and message are the same conversation."]]], "chart-08": ["Smart Notes", [["In a nutshell", "Smart Notes: intelligence — a note that adds value to the feed, to the network, to everybody."], ["What’s in it for you", "what you know compounds — and the network remembers it for you."], ["How to use it", "You write down what you learned, and it’s captured, verified, and shared — the network gets smarter because you wrote it down."], ["Why it’s valuable", "What you know compounds — and the network remembers it for you."], ["What problem it solves", "What you learn stays in your head, and the network never gets smarter for it."], ["The pain point it solves", "You figured something out once, then spent an hour trying to remember where you wrote it down."], ["How it’s different", "A note here is intelligence, not a file — it adds value to the feed, to the network, to everybody."]]], "chart-09": ["Naya Notes", [["In a nutshell", "Naya Notes: a note Naya makes FOR you — she takes your message and formats it beautifully."], ["What’s in it for you", "you sound like your best self, every time, with zero effort."], ["How to use it", "You write it, dictate it, or Naya writes it for you — then it posts, beautiful and interactive."], ["Why it’s valuable", "You sound like your best self, every time, with zero effort — she takes your message and formats it beautifully."], ["What problem it solves", "Your notes look plain, and the ones that matter never get read."], ["The pain point it solves", "You write a good note and it comes out flat, so nobody reads it."], ["How it’s different", "Naya makes the note FOR you — she takes your message and formats it beautifully."]]], "chart-10": ["Smart Lists", [["In a nutshell", "Smart Lists: your lists — connections, notes, spaces, pages, apps, all organized your way."], ["What’s in it for you", "your world, organized — show the right people the right pages."], ["How to use it", "You put anything into a list and the list organizes your world for you."], ["Why it’s valuable", "Your world, organized — show the right people the right pages."], ["What problem it solves", "Your world is scattered, and nothing is organized your way."], ["The pain point it solves", "You know the person, you just can’t find them — and by the time you do, the moment’s gone."], ["How it’s different", "The list organizes your world for you — you put anything in, and it’s organized your way."]]], "chart-11": ["Smart Links", [["In a nutshell", "Smart Links: every link, tracked — your pages, your PayPals, your URLs, all smart by default."], ["What’s in it for you", "you never fly blind — every link tells you its story."], ["How to use it", "You share a link and every click is counted, every return is seen — you always know what worked."], ["Why it’s valuable", "You never fly blind — every link tells you its story."], ["What problem it solves", "Links are dumb — you share one and never know if anybody clicked it."], ["The pain point it solves", "You send people to a payment page and have no idea whether they paid."], ["How it’s different", "Every link is tracked — your pages, your PayPals, your URLs, all smart by default."]]], "chart-12": ["Connections / Smart Connect", [["In a nutshell", "Connections / Smart Connect: your connections — everybody you know in the network, organized and listed."], ["What’s in it for you", "the right people find you, and you find them — without searching."], ["How to use it", "You share what you’re into, and it connects you with people like you, automatically, by what you’re into and where you are."], ["Why it’s valuable", "The right people find you, and you find them — without searching."], ["What problem it solves", "You’re surrounded by people who don’t match you, and the ones who do are invisible."], ["The pain point it solves", "You search, scroll, and guess — and your people stay strangers."], ["How it’s different", "It connects you automatically — by what you’re into and where you are, not by who you already know."]]], "chart-13": ["Smart Growth", [["In a nutshell", "Smart Growth: the way the network grows — you invite, people join, everybody earns."], ["What’s in it for you", "you grow the network and the network pays you for it."], ["How to use it", "You share your invite link, and your joins and your earnings are all tracked, all automatic."], ["Why it’s valuable", "You grow the network and the network pays you for it."], ["What problem it solves", "You bring people in and nobody pays you for it."], ["The pain point it solves", "You do the work of growing the network and the network keeps the reward."], ["How it’s different", "You invite, people join, everybody earns — your invite link, your joins, your earnings, all tracked, all automatic."]]], "chart-14": ["Your Reports", [["In a nutshell", "Your Reports: your intelligence reports — what you did, what you learned, what happened, all linked."], ["What’s in it for you", "you never lose a day — your life, remembered."], ["How to use it", "You open your report and look back on any day and see your whole world, in one beautiful report."], ["Why it’s valuable", "You never lose a day — your life, remembered."], ["What problem it solves", "Days blur together, and you can’t remember what you did last Tuesday."], ["The pain point it solves", "You keep making the same mistake because you never stopped to see the pattern."], ["How it’s different", "It’s your life, remembered — what you did, what you learned, what happened, all linked."]]], "chart-15": ["Intelligent Library", [["In a nutshell", "Intelligent Library: your library — every smart note and note, organized, searchable, all in one place."], ["What’s in it for you", "your knowledge, at your fingertips, forever."], ["How to use it", "You save a note and it’s organized, searchable, all in one place — find it in seconds."], ["Why it’s valuable", "Your knowledge, at your fingertips, forever."], ["What problem it solves", "Your knowledge is scattered, and finding anything takes longer than doing it again."], ["The pain point it solves", "You know you saved it — you just can’t find it."], ["How it’s different", "It’s a library, not a pile — every smart note and note, organized, searchable, all in one place."]]], "chart-16": ["Intelligent Directory", [["In a nutshell", "Intelligent Directory: the directory of the whole network — every person, space, page, and business, searchable."], ["What’s in it for you", "the whole network, one search away."], ["How to use it", "You search by topic, by place, by what they’re into — and find anybody, any space, any page."], ["Why it’s valuable", "The whole network, one search away."], ["What problem it solves", "The network is full of people you’d love, and you can’t find any of them."], ["The pain point it solves", "You know the person is out there, but the network won’t show you."], ["How it’s different", "It’s the directory of the whole network — every person, space, page, and business, searchable."]]], "chart-17": ["Learning / Academy", [["In a nutshell", "Learning / Academy: the Academy — the 5-day challenge and the nine systems that teach you the whole machine."], ["What’s in it for you", "you don't just use NayaNET, you master it."], ["How to use it", "You take the 5-day challenge, learn the nine systems, then you run the machine — and you keep learning."], ["Why it’s valuable", "You don’t just use NayaNET, you master it."], ["What problem it solves", "You get a powerful system and nobody teaches you how to run it."], ["The pain point it solves", "You use a tenth of what you paid for, because nobody showed you the rest."], ["How it’s different", "It’s an Academy, not a manual — five days to learn the system, then you run it."]]], "chart-18": ["Smart Ledger", [["In a nutshell", "Smart Ledger: the ledger — every action in and out of the system, recorded, valued, aligned with points."], ["What’s in it for you", "proof — of what you did, what you earned, what you're worth here."], ["How to use it", "You do something and it’s recorded, valued, aligned with points — nothing enters the network unseen."], ["Why it’s valuable", "Proof — of what you did, what you earned, what you’re worth here."], ["What problem it solves", "You do the work and there’s no record of it — nobody can see what you did, or what it’s worth."], ["The pain point it solves", "You work hard and have nothing to show for it — no proof, no score, no value."], ["How it’s different", "Every action has a value — recorded, valued, aligned with points, so your score shows it."]]], "chart-19": ["Smart Factory", [["In a nutshell", "Smart Factory: the factory — it builds apps and pages for you, automatically, from the finished masters."], ["What’s in it for you", "you get a world without learning to build one."], ["How to use it", "You answer ten questions and a world appears — your world, built, not assembled by hand."], ["Why it’s valuable", "You get a world without learning to build one."], ["What problem it solves", "Building a world means learning to code, or paying someone who can."], ["The pain point it solves", "You have the idea but no way to build it, so the idea dies."], ["How it’s different", "It builds apps and pages for you, automatically, from the finished masters — your world, built, not assembled by hand."]]], "chart-20": ["Ask Naya", [["In a nutshell", "Ask Naya: Ask Naya — your Naya, answering, building, doing, for you."], ["What’s in it for you", "an assistant that actually assists — push-button simple."], ["How to use it", "You ask, and she does — she builds your pages, organizes your world, answers your questions."], ["Why it’s valuable", "An assistant that actually assists — push-button simple."], ["What problem it solves", "Your assistant waits for you to do the work, then takes the credit."], ["The pain point it solves", "You ask for help and get a link to a help page."], ["How it’s different", "You ask, she does — she builds your pages, organizes your world, answers your questions."]]], "chart-21": ["Smart Box", [["In a nutshell", "Smart Box: your Box — storage that organizes itself, labels itself, remembers everything."], ["What’s in it for you", "You never lose anything, and you never organize anything by hand."], ["How to use it", "You put things in, and it sorts them, finds them, keeps them safe."], ["Why it’s valuable", "Your whole world is filed and findable, without you filing anything."], ["What problem it solves", "Things pile up, get lost, and you spend your time organizing instead of creating."], ["The pain point it solves", "You know it’s in there somewhere — and you can’t find it."], ["How it’s different", "Nothing else organizes itself. This one does."]]], "chart-22": ["Project Intelligence", [["In a nutshell", "Project Intelligence: the intelligence system — the Living List, the reports, the journal, the whole record of the work."], ["What’s in it for you", "your world, fully remembered — every day, every lesson, every win."], ["How to use it", "You open the Living List and everybody’s updated, everything’s organized, and no day goes missing."], ["Why it’s valuable", "Your world, fully remembered — every day, every lesson, every win."], ["What problem it solves", "The work is scattered, nobody’s updated, and days go missing."], ["The pain point it solves", "You ask what’s happening and nobody knows — the record is in five places, or nowhere."], ["How it’s different", "It’s the intelligence system — the Living List, the reports, the journal, the whole record of the work."]]], "chart-23": ["Auto-Match / Smart Match", [["In a nutshell", "The auto-match — the ONE algorithm that organizes people, spaces, mail, posts, and projects by what each thing is, at honest percentages. It IS how the whole system works: everything auto-organizes itself around what matches."], ["What’s in it for you", "You don’t search for your people — your people find you, and the right things find you, automatically."], ["How to use it", "You share and chat on any subject, in any space, and the system syncs you with the people who match."], ["Why it’s valuable", "The right people and the right things arrive without you hunting for them."], ["What problem it solves", "You are surrounded by people and content that don’t match you, and the ones that do are invisible."], ["The pain point it solves", "You search, scroll, and guess — and your people stay strangers."], ["How it’s different", "It matches by percentage, honestly — and it is built, proven live, not a promise."]]], "chart-24": ["Smart Meet", [["In a nutshell", "Smart Meet: meet with members — video, screen share, audio, in your world."], ["What’s in it for you", "you meet your people face to face, without leaving home."], ["How to use it", "You tap video or audio, one-on-one or in groups, right from your page, right from your mail."], ["Why it’s valuable", "You meet your people face to face, without leaving home."], ["What problem it solves", "Meeting means leaving your world for a separate app that forgets the conversation."], ["The pain point it solves", "You spend the first five minutes finding the link, and the next ten re-explaining the work."], ["How it’s different", "It’s a meet in your world — video, screen share, audio, right from your page, right from your mail."]]], "chart-25": ["Smart Search", [["In a nutshell", "Smart Search: search the whole network — by topic, by person, by what matters."], ["What’s in it for you", "the needle, not the haystack."], ["How to use it", "You search by topic and find everybody related to it — connect with like minds, choose exactly who can reach you."], ["Why it’s valuable", "The needle, not the haystack."], ["What problem it solves", "You search and get a haystack — a thousand results, none of them the person."], ["The pain point it solves", "You know the person is out there, but search won’t show you."], ["How it’s different", "It searches by topic, by person, by what matters — and finds everybody related to it."]]], "chart-26": ["Smart Memberships / Smart Access — ANY product behind a pay door", [["In a nutshell", "Smart Access — a way to put ANY digital product behind a pay door, like a membership to get into it. Memberships are one kind of it — but it is not just memberships. Any product you want: a course, a masterclass, a digital product, a community, a membership site. You build the door, you set the price, people pay to get in."], ["What’s in it for you", "You don’t just sell a product — you get an army selling it with you, and you earn on every sale they bring."], ["How to use it", "You build the door, set the price, and share the link — the payment and the login arrive by Smart Mail."], ["Why it’s valuable", "Anything you made becomes something you can sell, in one place."], ["What problem it solves", "You made something valuable and you have no door to sell it through."], ["The pain point it solves", "Your work sits there, unsold, because selling it means building a whole shop."], ["How it’s different", "The door is the product — and anyone can promote it and earn 50%, so an army promotes it for you."]]], "chart-27": ["Affiliate system / Ambassador system", [["In a nutshell", "The ambassador system — everybody is an ambassador; everybody earns."], ["What’s in it for you", "You get hired — “Congratulations, you’re hired.”"], ["How to use it", "You share your link, people join, and you earn 50% of the revenue — paid the moment we’re paid."], ["Why it’s valuable", "You earn from what you already do — talking about what you love."], ["What problem it solves", "You bring people in and nobody pays you for it."], ["The pain point it solves", "You do the work of growing the network and the network keeps the reward."], ["How it’s different", "Everybody earns, on every level, including free — paid the moment we’re paid."]]], "chart-28": ["Smart Events", [["In a nutshell", "Smart Events: events on your page — stages, crowds, live moments."], ["What’s in it for you", "your stage, your audience, your moment."], ["How to use it", "You host an event on your page, the crowd comes, the comments flow."], ["Why it’s valuable", "Your stage, your audience, your moment."], ["What problem it solves", "Your moments happen in a chat, and nobody sees them."], ["The pain point it solves", "You have something to say and no stage to say it on."], ["How it’s different", "It’s an event on your page — a stage, a crowd, a live moment — priced per event, not in the tier ladder."]]], "chart-29": ["Faster payouts", [["In a nutshell", "Faster payouts: the faster you get paid — the higher your level, the faster the money reaches you."], ["What’s in it for you", "you don't wait for your money — Max means same-day."], ["How to use it", "You earn your 50%, and it lands sooner, with a higher daily cap, the higher you go."], ["Why it’s valuable", "You don’t wait for your money — Max means same-day."], ["What problem it solves", "You earn and then you wait — the money trickles in days later."], ["The pain point it solves", "You did the work, the sale happened, and the money sits somewhere you can’t reach."], ["How it’s different", "The settled law is a tenure ladder — month 1 $100/day, then $200, $300, $400, $500, up to $1 000/day; over $500/day pays the following day. This row’s tier ladder is a proposal, not the settled law — it needs his word."]]], "chart-30": ["Private messaging", [["In a nutshell", "Private messaging: private by design — we do not read your mail, ever."], ["What’s in it for you", "you can say anything, to anyone, and know it's yours alone."], ["How to use it", "You message anybody, by alias, not your real name — private or public, your choice, per page."], ["Why it’s valuable", "You can say anything, to anyone, and know it’s yours alone."], ["What problem it solves", "Your messages are read, kept, and sold — and you never agreed to it."], ["The pain point it solves", "You write something private and it ends up in a database you can’t delete."], ["How it’s different", "It’s private by design — we do not read your mail, ever. Aliases, not real names."]]], "chart-31": ["Auto-optimization", [["In a nutshell", "Auto-optimization: deletion by default — a day by default, a week or a month if you choose."], ["What’s in it for you", "you are never the product. Your words disappear when you say so."], ["How to use it", "You choose a day, a week, or a month — and your conversations delete themselves."], ["Why it’s valuable", "You are never the product. Your words disappear when you say so."], ["What problem it solves", "Your conversations are kept forever, and you never agreed to that."], ["The pain point it solves", "You said something once and it follows you for years."], ["How it’s different", "It’s deletion by default — a day by default, a week or a month if you choose. We don’t read them and we don’t keep them."]]], "chart-32": ["Collective chain technology", [["In a nutshell", "Collective chain technology: the collective chain — many ledgers, one hub, hubs interconnected; intelligence that compounds."], ["What’s in it for you", "you plug into a network that gets more valuable the more people join."], ["How to use it", "You share what you know, and everybody learns from everybody — the whole gets smarter every day."], ["Why it’s valuable", "You plug into a network that gets more valuable the more people join."], ["What problem it solves", "Everybody learns alone, and the same lessons get learned a thousand times."], ["The pain point it solves", "You figured it out, and nobody else ever hears about it."], ["How it’s different", "It’s a collective chain — many ledgers, one hub, hubs interconnected; intelligence that compounds."]]], "chart-33": ["Smart security", [["In a nutshell", "Smart security: smart security — the NIA is always looking over the network."], ["What’s in it for you", "you are safe here — watched over, not watched."], ["How to use it", "You live in the network and the NIA looks over it — nobody can come in without being seen."], ["Why it’s valuable", "You are safe here — watched over, not watched."], ["What problem it solves", "Bad actors walk in unseen, and nobody knows until it’s too late."], ["The pain point it solves", "You never know who’s in your world, or what they’re doing there."], ["How it’s different", "The NIA is always looking over the network — nobody can come in without being seen. Nothing enters unseen."]]], "chart-34": ["Point system / gamification", [["In a nutshell", "Point system / gamification: the point system — every action has a value; everybody gets a score."], ["What’s in it for you", "your reputation is real, earned, and visible — and it pays."], ["How to use it", "You do good work and your score rises — positive actions raise your score and your profile’s value."], ["Why it’s valuable", "Your reputation is real, earned, and visible — and it pays."], ["What problem it solves", "Good work goes unnoticed, and bad behaviour costs nothing."], ["The pain point it solves", "You help everybody and nobody knows — your reputation is invisible."], ["How it’s different", "Every action has a value — positive actions raise your score, negative actions lower it, so it’s in your best interest to be good."]]], "chart-35": ["Install any page as a mobile app", [["In a nutshell", "Install any page as a mobile app: any page in the network installs on your phone as a working app — one tap, one button."], ["What’s in it for you", "NayaNET lives on your phone, like it belongs there — because it does."], ["How to use it", "You tap install and any page becomes a working app on your phone — one tap, one button."], ["Why it’s valuable", "NayaNET lives on your phone, like it belongs there — because it does."], ["What problem it solves", "Your world only lives in a browser tab, and you lose it the moment you close it."], ["The pain point it solves", "You want your world on your phone, and the only way is a bookmark that doesn’t work."], ["How it’s different", "It’s a real app, not a bookmark — any page installs on your phone as a working app."]]], "chart-36": ["High-performance operating machine", [["In a nutshell", "High-performance operating machine: NayaNET is a high-performance operating machine — an intelligence AI operating system network, not an app."], ["What’s in it for you", "everything is fast, everything works, everything is one tap."], ["How to use it", "You tap once and it runs at the speed of thought — automatic processes, perpetually producing value."], ["Why it’s valuable", "Everything is fast, everything works, everything is one tap."], ["What problem it solves", "The internet is slow, scattered, and manual — everything takes ten taps and three apps."], ["The pain point it solves", "You wait, you click, you re-enter the same thing — and the machine never helps."], ["How it’s different", "It’s a high-performance operating machine — an intelligence AI operating system network, not an app."]]]}, "tiers": {"power": ["Naya Power", [["What it is", "Naya Power: the whole living system — your world, built and run for you."], ["What it does", "$25 a month ($12.50 a month on annual); 1 membership site; 100 new smart apps a month; Smart Mail up to 10 000 a month."], ["What’s in it for you", "Your world, built and run for you — pages, mail, notes, all in one place."]], ["$12.50 a month on annual — half price", "$150 a year — saves you $150", "≈ $0.82 a day", "Build 1 membership site", "100 new smart apps a month", "Smart Mail up to 10 000 a month"]], "pro": ["Naya Pro", [["What it is", "Naya Pro: for builders — box, sites, reach."], ["What it does", "$50 a month ($25 a month on annual); 5 membership sites; Smart Box — 100 GB, storage that organizes itself; Smart Mail up to 100 000 a month."], ["What’s in it for you", "Five worlds growing at once — more room, more reach, more to sell."]], ["$25 a month on annual — half price", "$300 a year — annual is half price", "≈ $1.64 a day — less than a coffee", "Build 5 membership sites", "Smart Box — 100 GB, storage that organizes itself", "Smart Mail up to 100 000 a month"]], "max": ["Naya Max", [["What it is", "Naya Max: for sellers — more of everything."], ["What it does", "$100 a month ($50 a month on annual); unlimited membership sites; Smart Box — 500 GB, storage that organizes itself; affiliate system for your own products; 300 new smart apps a month."], ["What’s in it for you", "No ceiling — every idea live, and affiliates selling your products for you."]], ["$50 a month on annual — half price", "$600 a year — annual is half price", "≈ $3.29 a day", "Build unlimited membership sites", "Smart Box — 500 GB, storage that organizes itself", "Affiliate system for your own products", "300 new smart apps a month"]], "seats": ["1 000 seats", [["What it is", "Founding lifetime seats: $300 lifetime, founding only — 1 000 members, then closed forever."], ["What it does", "1 000 seats; when they’re gone, they’re gone; no taken count is shown — none is verified."], ["What’s in it for you", "A founding seat for $300, once — then closed forever."]], ["$300 lifetime, founding only", "1 000 members, then closed forever", "When they're gone, they're gone", "No taken count is shown — none is verified"]]}, "reasons": {"reason-01": ["Ten-star experience", [["What’s in it for you", "She builds your world and runs it automatically — so you never touch a setting, and your world just works."], ["What it is", "Ten-star experience: Naya builds and runs your world for you."], ["What it does", "An AI operating system designed by Nias for Nias, giving you 10-star service. She builds your world and runs it automatically."]]], "reason-02": ["The intelligence network", [["What’s in it for you", "You get smarter every day, without studying — mail, messages and notes turn into smart notes, and the network hands them back to everybody."], ["What it is", "The intelligence network: collective intelligence."], ["What it does", "Plug in and learn from everybody. Share your smart notes, save your knowledge — everybody collectively gets more intelligent, and it compounds, day after day."]]], "reason-03": ["The new internet, all in one", [["What’s in it for you", "Everything the internet is, connected — and it plugs into any AI, and works best, 10-star, with Muse."], ["What it is", "The new internet, all in one."], ["What it does", "The cake: the internet was the cake, Google the icing, social networks the ice cream, mobile the caramel sauce, blockchain the whipped cream, AI the sprinkles — and Naya is the cherry on top. Mail, social, search, mobile, ledger, AI — everything the internet is, connected."]]], "reason-04": ["A team of Nias and humans", [["What’s in it for you", "Nias live in the network watching over it — so you’re never building alone."], ["What it is", "A team of Nias and humans."], ["What it does", "Like Facebook, except the Nias have their own profiles, mail and instant messages — they all communicate together as a team, and Nias live in the network watching over it."]]], "reason-05": ["Naya remembers everything that matters to you", [["What’s in it for you", "Look back on any day and see what went on in your world — so you never lose what matters."], ["What it is", "Naya remembers everything that matters to you."], ["What it does", "Your notes, your days — daily, weekly and monthly reports, calendar, booking and journaling, all in your dashboard."]]], "reason-06": ["Smart Ledger and collective chain technology", [["What’s in it for you", "Interconnected super brains, people and devices — so nothing is hidden, and trust is built in."], ["What it is", "Smart Ledger and collective chain technology: a new technology that runs NayaNET for the collective."], ["What it does", "Everything is recorded, everything has a value, and nothing enters the network unseen — the system sees immediately what you are doing, because your points are always going up and down."]]], "reason-07": ["Private by design", [["What’s in it for you", "Share your wisdom anonymously, no ego — you are gifting intelligence to the world for all of us to learn from."], ["What it is", "Private by design."], ["What it does", "We do not read your mail. It is deleted by default — a day, or a week, or a month, your choice."]]], "reason-08": ["Smart Mail and Smart Search", [["What’s in it for you", "Choose exactly who can reach you, and who cannot — so you connect with like minds, fast."], ["What it is", "Smart Mail and Smart Search."], ["What it does", "Mail and message anybody. Search by topic and find everybody related to it — connect with like minds by topic or location, create a space."]]], "reason-09": ["Smart Access", [["What’s in it for you", "You earn 50% of the revenue — so you earn from what you already made."], ["What it is", "Smart Access: any product behind a pay door."], ["What it does", "Create memberships, give them away — and if somebody joins NayaNET through your membership area, you get credited. Any video, audio, or package: they pay, the login arrives by Smart Mail, you get paid by PayPal or Stripe."]]], "reason-10": ["Free to join", [["What’s in it for you", "9 days free, zero cost — so you try the Bugatti before you buy it."], ["What it is", "Free to join."], ["What it does", "9 days free, zero cost. Try the Bugatti before you buy it. The 5-day Academy challenge, nine days to take it."]]]}};
 (function(){
   var panel = document.getElementById('detailPanel');
   var backdrop = document.getElementById('detailBackdrop');
   var title = document.getElementById('detailTitle');
   var body = document.getElementById('detailBody');
   var lastFocus = null;
-  function openDetail(id){
-    var d = FEATURE_DETAILS[id]; if(!d) return;
+  function addPart(label, text){
+    var block = document.createElement('div');
+    block.className = 'real-note';
+    var lab = document.createElement('div');
+    lab.className = 'rn-part';
+    lab.textContent = label.toUpperCase();
+    var p = document.createElement('p');
+    p.textContent = text;
+    block.appendChild(lab); block.appendChild(p);
+    body.appendChild(block);
+  }
+  function openDetail(kind, key){
+    var d = DETAIL_DATA[kind][key]; if(!d) return;
     lastFocus = document.activeElement;
     title.textContent = d[0];
     body.innerHTML = '';
-    d[1].forEach(function(part){
-      var block = document.createElement('div');
-      block.className = 'real-note';
-      var lab = document.createElement('div');
-      lab.className = 'rn-part';
-      lab.textContent = part[0].toUpperCase();
-      var p = document.createElement('p');
-      p.textContent = part[1];
-      block.appendChild(lab); block.appendChild(p);
-      body.appendChild(block);
-    });
+    if(kind === 'tiers'){
+      d[1].forEach(function(part){ addPart(part[0], part[1]); });
+      if(d[2] && d[2].length){
+        var ul = document.createElement('ul');
+        ul.className = 'tier-lines';
+        d[2].forEach(function(line){ var li = document.createElement('li'); li.textContent = line; ul.appendChild(li); });
+        body.appendChild(ul);
+      }
+    } else {
+      d[1].forEach(function(part){ addPart(part[0], part[1]); });
+    }
     panel.classList.add('open'); backdrop.classList.add('open');
     document.getElementById('detailClose').focus();
   }
@@ -2466,7 +2692,14 @@ var FEATURE_DETAILS = {"apps": ["Smart apps", [["In a nutshell", "The four apps 
     if(lastFocus && lastFocus.focus) lastFocus.focus();
   }
   document.querySelectorAll('[data-feature]').forEach(function(btn){
-    btn.addEventListener('click', function(){ openDetail(btn.getAttribute('data-feature')); });
+    btn.addEventListener('click', function(){ openDetail('features', btn.getAttribute('data-feature')); });
+  });
+  document.querySelectorAll('[data-tier]').forEach(function(btn){
+    btn.addEventListener('click', function(){ openDetail('tiers', btn.getAttribute('data-tier')); });
+  });
+  document.querySelectorAll('[data-reason]').forEach(function(card){
+    card.addEventListener('click', function(){ openDetail('reasons', card.getAttribute('data-reason')); });
+    card.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openDetail('reasons', card.getAttribute('data-reason')); } });
   });
   document.getElementById('detailClose').addEventListener('click', closeDetail);
   backdrop.addEventListener('click', closeDetail);
