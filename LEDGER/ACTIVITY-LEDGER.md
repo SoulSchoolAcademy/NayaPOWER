@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-08 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-08 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -1023,11 +1023,27 @@ _Last updated: 2026-11-08 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1528 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
+**Task:** disclosure-decision packet for the six pending stamp entries
+
+**Receipt:** `twelve-lane-receipts/t1528-lane11.md`
+
+**Evidence:** VERIFIED: all 4 artifact SHA pins match on recomputation (packet ec77b561..., preview b618a698..., pending-split de784902..., extract-six b774db04...); preview byte-identical to parent; packet carries all six index/ID headers plus the pending class value. Clears 9.5 because the packet is decision-ready with the single class decision stated once, pe
+
+### ✅ t1528 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
 **Task:** Disclosure-decision packet for six live pending entries (t1515 gap follow-up)
 
 **Receipt:** `twelve-lane-receipts/t1528-lane11.md`
 
 **Evidence:** VERIFIED: packet sha ec77b561...a61e4b60a3, fresh preview sha b618a698...670b5 (byte-identical to parent preview), pending-split script sha de784902...0d24, extraction script sha b774db04...fbdf, corpus sha 238ebe9c...ff5, mirror tip 6c60c328...a85 all recomputed from live bytes and MATCH the receipt pins; mirror git status clean. Clears 9.5 becaus
+
+### ✅ t1527 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** read-only verification of t1527 dispatcher reconcile
+
+**Receipt:** `twelve-lane-receipts/t1527-lane1.md`
+
+**Evidence:** VERIFIED: receipts t1526-lane1.md and gap-t1515-lane11.md exist; rotation walk 15->14->13 adjudicated with the t1527-filing exception explained; addendum finished-but-unmoved state reported, not hidden. NOT PHANTOM: all cited files exist. Why not 9.5: the t1527 exception and the addendum's finished-but-unmoved state are named, not closed — the next
 
 ### ✅ t1527 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -1039,6 +1055,14 @@ _Last updated: 2026-11-08 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1526 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
+**Task:** read-only verification of night-dispatcher t1526 queue moves
+
+**Receipt:** `twelve-lane-receipts/t1526-lane1.md`
+
+**Evidence:** VERIFIED: all 4 moved briefs exist in claimed/done/ with matching receipts on disk. Read-only authority held; rotation untouched per brief. NOT PHANTOM: all cited files exist. Why not 9.5: check (d) is 3 PASS / 1 FAIL — the queue state is NOT verified clean; the one discrepancy is explained as a same-run race but the corrected state was not re-prov
+
+### ✅ t1526 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
 **Task:** Read-only verification of night-dispatcher t1526 queue moves (discrepancy report)
 
 **Receipt:** `twelve-lane-receipts/t1526-lane1.md`
@@ -1047,11 +1071,27 @@ _Last updated: 2026-11-08 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1524 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
+**Task:** addendum stopping the false t1516 score correction (scorer vs self-score)
+
+**Receipt:** `twelve-lane-receipts/t1524-lane1.md`
+
+**Evidence:** VERIFIED: scorer ledger entry t1516 lane 6 score 9.0 re-confirmed this tick by direct grep (entry carries its own adjudication); all 4 receipt SHA pins match (t1522-lane12, t1516-lane6, gap-t1516-lane6, t1523-lane11). The false correction (9.0->9.5) was stopped before filing and the addendum is the citable two-number form. Clears 9.5 because the ve
+
+### ✅ t1524 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
 **Task:** Adjudication of t1522-lane12 'scorer 9.0' flag; addendum filed, no receipt edits
 
 **Receipt:** `twelve-lane-receipts/t1524-lane1.md`
 
 **Evidence:** VERIFIED: t1522-lane12.md line 25 carries 'scorer 9.0 with a gap filed on SHA truncation' verbatim; scorer ledger line 5904 (t1516 lane 6) is score 9.0 with the SHA-truncation reason, line 5914 (t1522 lane 12) calls the line CORRECT, line 5915 (t1523 lane 11) calls the flag FALSE; addendum file exists in the receipts dir. Clears 9.5 because: the fl
+
+### ✅ t1523 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** audit of t1522-lane1, t1522-lane12, t1516-lane6 receipts (artifact-by-artifact)
+
+**Receipt:** `twelve-lane-receipts/t1523-lane11.md`
+
+**Evidence:** VERIFIED: 10 SHA pins re-verified against live bytes (t1515 arm script/report SHAs match my own recomputation); counts recounted from per-brief fields; genuine 59-char SHA-truncation defect in t1516 caught; quoted contract strings confirmed. NOT PHANTOM: all audited artifacts exist. Why not 9.5: the hard flag 'scorer 9.0 matches NO score on record'
 
 ### ✅ t1523 — Team 11, Team Naya Scorer (Human Value) — 8.0/10 [VERIFIED]
 
@@ -1063,11 +1103,27 @@ _Last updated: 2026-11-08 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1522 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
+**Task:** GUARD: CONNECT/CONNECTIONS rooms parked-honest verdict
+
+**Receipt:** `twelve-lane-receipts/t1522-lane12.md`
+
+**Evidence:** VERIFIED: mirror contracts exist with quoted headers (05-CONNECT 'SPECIFICATION, NOT PRODUCTION PROOF' confirmed by grep); heartbeat cycle_ok false confirmed; registry, MAP-STATE, health-log files exist. Scoped verdict, non-coverage named honestly; the 'scorer 9.0' line for t1516-lane6 stands correct (ledger entry confirmed by t1524). NOT PHANTOM: 
+
+### ✅ t1522 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
 **Task:** CONNECT unpark re-verification — verdict PARKED-HONEST
 
 **Receipt:** `twelve-lane-receipts/t1522-lane12.md`
 
 **Evidence:** VERIFIED: mirror contract header confirmed live (HUB/ROOMS/05-CONNECT.md: HUMAN-DIRECTOR-DIRECTED TARGET CONTRACT, SPECIFICATION NOT PRODUCTION PROOF); mirror git status clean after the run; brain-evidence line 't1516-lane6: scorer 9.0 with a gap filed on SHA truncation' is CORRECT against the scorer ledger (t1516 lane 6 scored 9.0, SHA-truncation 
+
+### ✅ t1522 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** independent recompute of t1515-lane12 semantic-decomp arm from sealed bytes
+
+**Receipt:** `twelve-lane-receipts/t1522-lane1.md`
+
+**Evidence:** VERIFIED: 5/6 durable SHA pins match on recomputation (prereg 8135f525..., arm script 857cc64f..., sealed report bfed3ae4..., corpus f3a97a11..., sealed catalog ff644a...); /tmp rerun file gone now (ephemeral) but t1523 audit confirmed it existed and matched at audit time, and its claimed sha equals the sealed report sha. Independent recounts (reca
 
 ### ✅ t1522 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
@@ -29601,6 +29657,14 @@ _Last updated: 2026-11-08 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0052 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
+**Task:** flip-sequence merge seat: re-pin PRs #2453/#2456/#2457/#2458, calculator HOLDs
+
+**Receipt:** `twelve-lane-receipts/t0052-lane8.md`
+
+**Evidence:** VERIFIED: both calculator decision receipts exist (20261012T080444Z #2456, 20261012T080449Z #2457); PR-head pins verified at action time per receipt via git protocol. NOT PHANTOM: the cited decision artifacts exist. Honest limit: the four 2026-10-12 flip-sequence branches no longer exist on the remote (ls-remote empty this run) - normal post-merge 
+
+### ✅ t0052 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
 **Task:** flip-sequence merge seat: re-pin 4 PRs, calculator verdicts, HOLD states
 
 **Receipt:** `twelve-lane-receipts/t0052-lane8.md`
@@ -29700,6 +29764,22 @@ _Last updated: 2026-11-08 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0052-lane8.md`
 
 **Evidence:** Dispatcher verified via git protocol: refs/pull/2453/head == 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4 == receipt pin; refs/pull/2456/head == e326283252a7e9f932b0d9ebad465c50950b0799 == pin; refs/pull/2457/head == 92fac0983d4de8e04f0144d9a99dfaa5e02c8f97 == pin; refs/pull/2458/head == ac270833fb3a52c6be45acc730b0e5132353d5a5 == pin; main == aa8061c1
+
+### ✅ t0052 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H8 hypothesis change + sealed pre-registration (shape-of-inheritance experiment)
+
+**Receipt:** `twelve-lane-receipts/t0052-lane2.md`
+
+**Evidence:** VERIFIED: all six cited artifacts exist; five seal pins recompute exactly on live bytes this run (prereg 8c8aa054..., HYPOTHESIS-CHANGE-h8 1b470332..., seed receipt 83454be5...; seal-verification.json and arm-key-sealed.json on disk); decision receipt 20261012T080627Z exists. NOT PHANTOM. Why not 9.5: the triple wild-failure evidence is 14 independ
+
+### ✅ t0052 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.3/10 [VERIFIED]
+
+**Task:** gap follow-up: REST-verify #2175 sign-in comment + H8 execution receipt + seal pins
+
+**Receipt:** `twelve-lane-receipts/t0052-lane2.md`
+
+**Evidence:** VERIFIED: all three seal SHAs recompute exactly on live bytes this run (prereg 8c8aa054..., HYPOTHESIS-CHANGE-h8 1b470332..., seed receipt 83454be5...); execution receipt t0072-lane2.md exists on disk; sign-in comment 6120247601 verified by REST GET per receipt (id/author/issue/timestamp byte-exact). NOT PHANTOM. Why not 9.5: the C1=1 dry-run verdi
 
 ### ✅ t0052 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -29817,6 +29897,22 @@ _Last updated: 2026-11-08 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0052 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
+**Task:** human-value window audit t0022-t0052 (M2:9/M3:8/M4:3)
+
+**Receipt:** `twelve-lane-receipts/t0052-lane11.md`
+
+**Evidence:** VERIFIED: run files hv_output_t0052_run1/run2.json and metric_audit_t0052.json exist; SHAs match exactly on recomputation (run e4f54deb..., audit 77354d82...); SUMMARY_t0052.md exists; boundary receipts handled per precedent (excluded, not retro-filled). NOT PHANTOM. Why not 9.5: single-seat judgments - no independent seat had re-run the audit at f
+
+### ✅ t0052 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: independent re-run of t0022-t0052 window audit (M2:9/M3:8/M4:3)
+
+**Receipt:** `twelve-lane-receipts/t0052-lane11.md`
+
+**Evidence:** VERIFIED: pinned archive SHAs match on recomputation (hv run1/run2 e4f54deb..., audit 77354d82...); re-run files gap-t0052-lane11 run1/run2 + summary exist; 27/27 flags agree on receipt-by-receipt re-judgment; corpus drift honestly recorded (13 vs 9 receipts). NOT PHANTOM. Why not 9.5: NOT blind - the seat read the audit and parent before judging, 
+
+### ✅ t0052 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
 **Task:** human-value window audit t0022-t0052
 
 **Receipt:** `twelve-lane-receipts/t0052-lane11.md`
@@ -29916,6 +30012,14 @@ _Last updated: 2026-11-08 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0052-lane11.md`
 
 **Evidence:** Dispatcher verified on disk: hv_output_t0052_run1.json sha256 e4f54debb... matches receipt pin; metric_audit_t0052.json, SUMMARY_t0052.md, STATS.md, journal all exist. Instrument determinism proven (2 byte-identical runs). Drift: tip re-pinned aa8061c1 at action time; CLEAN verdict rides Lane 10 t0032 --check (stated as such, not claimed as own re-
+
+### ✅ t0045 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: independently verify board-post half of t0803 verdict (comment 6184357778)
+
+**Receipt:** `twelve-lane-receipts/t0045-lane12.md`
+
+**Evidence:** VERIFIED: all cited artifacts exist (feedback-feed.md on disk); receipt records fresh REST GET of comment 6184357778 with id/author/issue/timestamp byte-exact and substance-fidelity verified claim-by-claim incl. all four case-law SHAs; the byte-match test run honestly and its negative result correctly interpreted (rendered post != block copy), crit
 
 ### ✅ t0045 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -49116,6 +49220,12 @@ _Last updated: 2026-11-08 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261108-0725 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31-brief stall, all refused, queue unchanged
+
+**Evidence:** VERIFIED this tick by this scorer on live bytes (fresh window; no prior Team Naya Scorer row for this receipt): receipt file exists and read; every one of the 31 live brief-queue filenames is named in the receipt (live - named = [], named - live = []); named set identical to prior receipt gate-stall-20261108-0623.md (set difference empty both ways)
 
 ### ✅ gate-stall-20261108-0623 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
