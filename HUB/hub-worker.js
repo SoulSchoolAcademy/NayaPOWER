@@ -529,3 +529,4 @@ async function handleItems(request, env, url) {
     areas: { status: "pending_schema", sets: null, note: "Area schema not applied; no per-area % shown rather than a wrong one." },
   }, 200);
 }
+// restore 2026-11-08 #2: repo deploy re-asserts hub code + routes after off-repo API deploys 20:03Z/20:32Z replaced the worker build.
