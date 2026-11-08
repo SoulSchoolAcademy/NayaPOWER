@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-08 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-08 00:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -763,6 +763,12 @@ _Last updated: 2026-11-08 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified live this tick: (1) bin/claim-brief.py sha256 de12a219... EXACT == receipt pin; (2) all three new patterns present in live bytes (fresh-pair-of-eyes; not-the-seat which/who/that + verb slot; not-the-participle seat); (3) self-test re-run BY THE SCORER: 15/15 main, sign-in suite passes, authorship suite passes incl. the new dialect fixtures
 
+### ✅ t1540-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.3/10 [VERIFIED]
+
+**Task:** Independent verification of night-dispatcher t1540 reconcile moves (Lane 11 Heart)
+
+**Evidence:** Verified live this tick: receipt file present; all eight checks re-derived from live bytes — done brief gap-t1538-lane11 8ef1bfc293... and receipt a58318869f... both re-hashed byte-identical this run; mirror line present exactly once (lesson-broadcast.md:77); rotation tick t1540 / last_reconcile_utc 2026-10-24T11:43:08Z matches the brief exactly; 1
+
 ### ✅ t1540 — Team 11, Team Naya Scorer (Human Value) — 9.4/10 [VERIFIED]
 
 **Task:** Independent verification of night-dispatcher t1540 reconcile moves
@@ -777,6 +783,12 @@ _Last updated: 2026-11-08 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified this tick: (1) gap-followup-seen.json carries 't0600-lane1' filed 2026-10-15T22:24Z — the brief was filed by the scorer machinery; (2) lane-feed shows SIGN-IN 22:38 UTC, seat=Naya Clarity Narzan, brief=brief-gap-t0600-lane1.md, claim-brief.py exit 0 true seat token, then COMPLETE pointing at this receipt — genuine second-seat standing (par
 
+### ✅ t1538-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.3/10 [VERIFIED]
+
+**Task:** Independent verification of night-dispatcher t1538 reconcile moves (Lane 11 Heart)
+
+**Evidence:** Verified live this tick: receipt file present; cited hashes re-checked byte-identical where spot-checked (gap-t1538-lane11 receipt a5831886..., done brief 8ef1bfc293...); triple-gap reconciled by t1537, not re-handled by t1538 (zero t1538 mirrors of it, t1538 reconcile note confirms); 8-check verification with chain rebuild across reconcile/dispatc
+
 ### ✅ t1538 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Independent verification of night-dispatcher t1538 reconcile moves
@@ -784,6 +796,12 @@ _Last updated: 2026-11-08 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1538-lane11.md`
 
 **Evidence:** VERIFIED: all four cited SHAs recomputed byte-identical - done brief-t1536-lane11 1808ce99..., receipt t1536-lane11 7ed15d70..., done brief-gap-gap-gap-t1530-lane12 0ddd5795..., receipt gap-gap-gap-t1530-lane12 e64bb70a...; lesson-broadcast mirror lines confirmed :71 (t1537 triple-gap) and :73 (t1538 t1536, 11:23Z); rotation tick_count 1538, queued
+
+### ✅ t1536-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.3/10 [VERIFIED]
+
+**Task:** Independent verification of night-dispatcher t1536 reconcile moves (Lane 11 Heart)
+
+**Evidence:** Verified live this tick: receipt file present; cited SHAs re-hash byte-identical (done t1535-lane11 55b8f7b036..., receipt t1535-lane11 15f9fc414...); gap-gap-t1530-lane12 moved, receipted and mirrored; triple-gap file in claimed/ root signed out (feed :5640, gap CLOSED at bundle level, receipt gap-gap-gap-t1530-lane12.md e64bb70a... re-hashed this
 
 ### ✅ t1536 — Team 11, Team Naya Scorer (Human Value) — 9.3/10 [VERIFIED]
 
@@ -793,6 +811,12 @@ _Last updated: 2026-11-08 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: all five cited SHAs recomputed byte-identical - done brief-t1535-lane11 55b8f7b0..., receipt t1535-lane11 15f9fc41..., done brief-gap-gap-t1530-lane12 2b9c4acc..., receipt gap-gap-t1530-lane12 1447a31b..., receipt gap-gap-gap-t1530-lane12 e64bb70a...; lesson-broadcast mirror lines confirmed at :68 (t1535, 9.3 PASS) and :70 (gap-gap-t1530,
 
+### ✅ t1535-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.3/10 [VERIFIED]
+
+**Task:** Independent verification of night-dispatcher t1535 reconcile moves (Lane 11 Heart)
+
+**Evidence:** Verified live this tick: receipt file present; cited SHAs re-hash byte-identical (done t1534-lane11 c21b0c7302..., receipt t1534-lane11 3e7b9153...); gap-gap-t1530-lane12 moved, receipted (verdict 'GAP NOT fully closed', self 9.0) and mirrored (lesson-broadcast.md:70); claimed/ root composition explained (triple-gap file + verifier's own claim, tri
+
 ### ✅ t1535 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Independent verification of night-dispatcher t1535 reconcile moves
@@ -800,6 +824,12 @@ _Last updated: 2026-11-08 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1535-lane11.md`
 
 **Evidence:** VERIFIED: done brief-t1534-lane11 sha c21b0c73... matches, receipt t1534-lane11 sha 3e7b9153... matches, bonus done t1533 447cc612... and done t1532 d5e69d11... and receipt t1532 8cc6c120... all recomputed byte-identical; lesson-broadcast.md:66 carries the t1535 mirror line verbatim; lane-feed :5605 sign-in and :5610 sign-out for t1534-lane11 prese
+
+### ✅ t1534-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.3/10 [VERIFIED]
+
+**Task:** Independent verification of night-dispatcher t1534 reconcile moves (Lane 11 Heart)
+
+**Evidence:** Verified live this tick: receipt file present; SHAs cited inside the receipt re-hash byte-identical (done t1533-lane11 447cc612..., done t1532-lane11 d5e69d119d..., receipt t1532-lane11 8cc6c120...); claimed/ root holds exactly the gap-gap-t1530-lane12 file plus the verifier's own live claim, with the gap file's sign-in/sign-out pair present (not a
 
 ### ✅ t1534 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
@@ -809,6 +839,12 @@ _Last updated: 2026-11-08 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: all cited SHAs recomputed live and MATCH (t1533 done brief 447cc612..., t1533 receipt da3ac453..., bonus t1532 done brief d5e69d11..., t1532 receipt 8cc6c120...); lesson-broadcast.md:64 carries the t1534 mirror line for t1533-lane11 verbatim (and :62 the t1533 mirror for t1532-lane11); rotation tick_count=1534, queued=16 = receipt's 15 ga
 
+### ✅ t1533-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.4/10 [VERIFIED]
+
+**Task:** Independent verification of night-dispatcher t1533 reconcile moves (Lane 11 Heart)
+
+**Evidence:** Verified live this tick: receipt file present; both full SHAs cited inside the receipt re-hash byte-identical (done t1532-lane11 d5e69d119d..., receipt t1532-lane11 8cc6c120...); cited mirror line (lesson-broadcast.md:62) and cited t1532-lane11 feed pair (:5585/:5590) both verified live by the receipt; lane-feed pair for t1533-lane11 present (:5595
+
 ### ✅ t1533 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
 **Task:** Independent verification of night-dispatcher t1533 reconcile moves
@@ -816,6 +852,12 @@ _Last updated: 2026-11-08 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1533-lane11.md`
 
 **Evidence:** CORRECTED (same tick, new evidence): all seven checks now re-derived byte-identical. VERIFIED: done brief-t1532-lane11.md sha256 d5e69d11... matches; receipt t1532-lane11.md sha256 8cc6c120... matches; lesson-broadcast.md:62 mirror present verbatim; rotation tick_count=1533, queued=16 (15 gap briefs + own claim brief-t1533-lane11.md), brief-t1532-l
+
+### ✅ t1532-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.4/10 [VERIFIED]
+
+**Task:** Independent verification of night-dispatcher t1532 reconcile moves (Lane 11 Heart)
+
+**Evidence:** Verified live this tick: receipt file present; all six SHAs cited inside the receipt re-hash byte-identical on the receipt's own cross-check (done/receipt pairs for t1531-lane11, t1531-lane12, gap-t1530-lane12); lane-feed sign-in/sign-out pair present; count deltas explained as the verifier's own claim perturbation, measured not assumed. Score 9.4.
 
 ### ✅ t1532 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
@@ -825,6 +867,12 @@ _Last updated: 2026-11-08 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: all 6 cited sha256 hashes recomputed live and MATCH (t1531-lane11 done brief b8064cce..., t1531-lane11 receipt 0480d416..., t1531-lane12 done brief 60d6edd3..., t1531-lane12 receipt fda0d31d..., gap-t1530-lane12 done brief 18592bc9..., gap-t1530-lane12 receipt d65224a0...); lesson-broadcast.md carries all three t1532 mirror lines verbatim
 
+### ✅ t1531-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.2/10 [VERIFIED]
+
+**Task:** Deploy-log pin for hub Worker + Residual 1 re-derivation (Lane 12 Herald)
+
+**Evidence:** Verified live this tick: receipt file present; deploy pin is precise and checkable (deployment d9d3d859, version ab6e0440 #222, created 2026-10-24T05:55:20Z, source api, workers/triggered_by upload); commit leg proven absent by construction (version record carries no commit field — a property of the record, verified by direct version-endpoint read,
+
 ### ✅ t1531 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Deploy-pin follow-up: deploy pinned, commit proven absent from deploy log, Residual 1 stays UNKNOWN
@@ -832,6 +880,12 @@ _Last updated: 2026-11-08 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1531-lane12.md`
 
 **Evidence:** VERIFIED on workspace bytes: claimed brief brief-t1531-lane12.md present in brief-queue/claimed/; rotation queued=15 live with brief-t1531-lane12.md removed and brief-t1531-lane11.md still queued, exactly as the receipt claims; reused clone HEAD e0cd4c247... verified clean with committer date 2026-10-24T05:55:39Z matching the receipt; HUB/app/index
+
+### ✅ t1531-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.4/10 [VERIFIED]
+
+**Task:** Independent verification of night-dispatcher t1531 reconcile moves (Lane 11 Heart)
+
+**Evidence:** Verified live this tick: receipt file present; cited hashes re-checked byte-identical (receipt t1530-lane11 f56fd126..., receipt t1530-lane12 75bf4a55..., done briefs 042fbb6c... and 52168d81...); all five checks pass with SHAs and live re-derivation, dispatcher note dispatcher_note_t1531 corroborates the reconcile-instant counts (queued 15->14->16
 
 ### ✅ t1531 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
@@ -853,6 +907,12 @@ _Last updated: 2026-11-08 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/room-feed-contract-2026-10-15.md on disk, sha256 d05d86da0d4c3c8c35e164ce47958d60b09713414f8df16e26c6d4c17d7028f EXACT == receipt pin (18.8KB, mtime 22:24Z). Receiver grounding verified class-sound (receipt greps Shawn's room files for the 4 localStorage keys); schema anchor = Shawn-ratified IB protocol 2026-09-29. Design cov
 
+### ✅ t1530-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.3/10 [VERIFIED]
+
+**Task:** Hub code evidence for addendum residuals: 'Your Connections' click + install dialog (Lane 12 Herald)
+
+**Evidence:** Verified live this tick: receipt file present; cited commit e0cd4c2 is a real main-tip commit of the period and the rail-code citations are precise (11 rooms, connections at index.html:2254, handler at :3544-3558, EXTERNAL map excluding connections). Residual 1 honestly held UNKNOWN (15-label audit sidebar matches no examined tree; deployed-vs-main
+
 ### ✅ t1530 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Hub code-evidence closure of addendum residuals: 'Your Connections' click and install dialog
@@ -860,6 +920,12 @@ _Last updated: 2026-11-08 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1530-lane12.md`
 
 **Evidence:** VERIFIED: receipt on disk; filed audit artifact browser-evidence/gap-addendum-t1522-lane12-live-render-wording-20261024.md present; claimed brief in brief-queue/claimed/done/brief-t1530-lane12.md; brief-t1530-lane12.md absent from rotation queued (16 live), confirming the receipt's queue edit. Code greps not re-run this tick (bounded reads; artifac
+
+### ✅ t1530-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.4/10 [VERIFIED]
+
+**Task:** Independent verification of night-dispatcher t1529 reconcile moves (Lane 11 Heart)
+
+**Evidence:** Verified live this tick: receipt file present; cited hashes re-checked byte-identical where spot-checked (receipt t1530-lane11 f56fd126..., done brief 042fbb6c...); the receipt's five checks re-derive from live bytes with both count deltas explained from the dispatcher's own record (queued 16 live vs 14 at reconcile = 2 post-reconcile filings; clai
 
 ### ✅ t1530 — Team 11, Team Naya Scorer (Human Value) — 9.4/10 [VERIFIED]
 
@@ -48834,6 +48900,12 @@ _Last updated: 2026-11-08 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261107-1631 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** lane-executor run 2026-11-07 16:31 PST: evaluate 31 queued briefs, claim what is claimable
+
+**Evidence:** Verified live this tick: brief-queue/ holds exactly 31 brief-*.md files, zero brief-tNNNN mission-sequence files, all gap follow-ups — matching the receipt's queue count and composition. Arithmetic checks: 29 script-attempted (28x exit 7 + 1x exit 2) + 2 gate-skipped = 31; per-band lists sum to 31. Spot-checked the gate-skips: brief-gap-gap-t1002-l
 
 ### ✅ gate-stall-20261107-1528 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
 
