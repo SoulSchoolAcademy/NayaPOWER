@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-08 16:02 UTC_
+_Last updated: 2026-11-08 16:31 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 8060
-- ✅ Verified (8+): 7992
+- **Total scored actions:** 8064
+- ✅ Verified (8+): 7996
 - 🟡 Partial (5–7): 65
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -15,10 +15,10 @@ _Last updated: 2026-11-08 16:02 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 535 | 9.1 | 9.6 |
+| Team 1 | Naya Verity | 537 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 536 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 494 | 9.0 | 10 |
-| Team 4 | Naya Mason | 469 | 9.1 | 9.6 |
+| Team 4 | Naya Mason | 470 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 616 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 354 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 474 | 9.0 | 10 |
@@ -975,6 +975,7 @@ _Last updated: 2026-11-08 16:02 UTC_
 - **gate-stall-20261108-0623:** 1 actions, avg 9.0/10
 - **gate-stall-20261108-0725:** 1 actions, avg 9.0/10
 - **distill-daily-20261018:** 2 actions, avg 9.2/10
+- **gate-stall-20261108-0830:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -2099,7 +2100,7 @@ _Last updated: 2026-11-08 16:02 UTC_
 - **20261030-2235:** 1 actions, avg 9.0/10
 - **20261106-0539:** 1 actions, avg 9.0/10
 - **2026-10-15T20:30:35-07:00:** 14 actions, avg 8.9/10
-- **t0012:** 40 actions, avg 8.8/10
+- **t0012:** 41 actions, avg 8.8/10
 - **t12:** 3 actions, avg 8.7/10
 - **t0012-lane1:** 1 actions, avg 8.5/10
 - **t0012-lane6:** 1 actions, avg 9.0/10
@@ -3119,7 +3120,7 @@ _Last updated: 2026-11-08 16:02 UTC_
 - **t2032:** 9 actions, avg 9.4/10
 - **t2033:** 1 actions, avg 9.4/10
 - **t2300:** 1 actions, avg 9.5/10
-- **t2330:** 8 actions, avg 9.5/10
+- **t2330:** 10 actions, avg 9.5/10
 - **t2331:** 1 actions, avg 8.5/10
 - **t2332:** 1 actions, avg 9.0/10
 - **t2333:** 1 actions, avg 9.0/10
