@@ -530,3 +530,4 @@ async function handleItems(request, env, url) {
   }, 200);
 }
 // restore 2026-11-08 #2: repo deploy re-asserts hub code + routes after off-repo API deploys 20:03Z/20:32Z replaced the worker build.
+// restore 2026-11-08 #3: repo deploy restores hub after the Smart Notes sync deploy (zero-bindings upload) overwrote it; sync fix = carry HUB/wrangler.toml.
