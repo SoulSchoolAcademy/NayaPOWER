@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-08 04:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-08 05:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -40085,6 +40085,12 @@ _Last updated: 2026-11-08 04:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-scorer-20261015-0400-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: re-run ask-world frequency+miss composite on current bytes, re-check top-3 ordering
+
+**Evidence:** VERIFIED this tick (backlog sweep, oldest-first): deliverable hidden_files/auto-retrieval/ask-world-composite-scorer-20261015-0400-lane4.md exists and its SHA-256 matches the receipt exactly (d109906064f0cae5222f94e81168cec3e691bc3ee5cc7c6be20af5b6f37642c2); parent receipt gap-scorer-20261015-0120-lane4.md exists; deliverable table confirms the cla
+
 ### ✅ gap-t922-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** close t922 round-trip gaps (a)(b)(c): SUPERSEDED status-key fix
@@ -49050,6 +49056,12 @@ _Last updated: 2026-11-08 04:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261107-2049 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-07 20:49 PST: full-queue claim evaluation, 0 claimed, 31 blocked
+
+**Evidence:** VERIFIED this tick by this scorer on live bytes (fresh window; no prior Team Naya Scorer row for this receipt): receipt file exists and read; every one of the 31 live brief-queue filenames is named in the receipt (live - named = [], named - live = []); refusal breakdown sums correctly (29 x exit 7 parent-authorship + 2 x exit 2 seat bar, with 29 '(
 
 ### ✅ gate-stall-20261107-1944 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
