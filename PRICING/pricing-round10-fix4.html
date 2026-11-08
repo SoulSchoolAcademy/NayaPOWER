@@ -1363,6 +1363,64 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
   .detail-panel .rn-part{margin-bottom:4px;}
   .detail-panel .detail-title{margin-bottom:6px;}
 }
+/* ============ FIX 9 (2026-11-08, maker step 1 — the verifier's three fresh-eyes cosmetics) ============
+   Item 1 — TABLET HERO DEAD SPACE (verify-8 don't-love 5). Mechanism: at tablet 768 the hero landing
+   is scrollY 146 (snap: slideTop 62 + |scroll-margin| 84); the slide is 1024 tall (100svh) but the
+   content ends at doc 766 (hero-cta bottom) — 320px of empty black inside the slide below the claim
+   (303px to the bar; banner visible 172 of 256; claim clearance 303, note whole). Next slide
+   (#promise) top doc 1086. Fix, tablet band 481-860px only: #top{height:auto; padding-bottom:0} —
+   the slide hugs its content (704 tall, bottom doc 766), #promise starts at 766, dead inside slide
+   0. The claim does not move (clearance stays 303, note whole, banner 172). TRADEOFF, NAMED: the
+   landing no longer shows a pure full-viewport hero at tablet — the next section peeks in below
+   the claim; the slide follows the content instead of floating it. The phone hero rules (<=480px,
+   fix 8) are untouched; the document shortens ~320px at tablet.
+   Item 2 — PINNED ROW-LABEL COLUMN (verify-8 don't-love 6, pre-existing). Mechanism: the label
+   column is 542.2px wide (tbody td:first-child is white-space:nowrap; longest label needs 510.2px
+   one-line, median 136.6); the table is 1132px wide and scrolls (maxScrollLeft 812 phone, 434
+   tablet; also 194 at 1024, 66 at 1152, 0 at 1280 — the scroll range ends ~1215). The label cell
+   is a vertical stack (orb 11 / feat text / jewel 26); at scrollLeft 0/mid/max the labels scroll
+   away (phone lefts 17 -> -383 -> -795); the th is position:static. Fix, scoped to <=1220px (the
+   scroll range): pin the first column (thead th:first-child and tbody tr:not(.chart-group)
+   td:first-child, sticky left:0, z-index 3/2) + narrow it to 210px content width (matches the
+   thead first th's existing inline min-width:210px, so no !important fight) + white-space:normal
+   so the labels wrap (longest 3 lines, median 1). The group rows (tr.chart-group td[colspan=6])
+   are EXCLUDED — they span all columns and must scroll normally. The label cells' opaque
+   backgrounds (var(--panel) #12151D body, var(--panel2) #171B25 header) already cover scrolled
+   tier cells; hover is preserved (the label cell keeps its own background). TRADEOFF, NAMED: the
+   long labels wrap to 2-3 lines at phone/tablet (row heights grow for those rows); the pinned
+   column takes 242px of the viewport. At 1024/1152 the narrowing removes the horizontal scroll
+   entirely (table 880 < container); at 1280 the rules do not apply (no scroll there).
+   Item 3 — DETAIL BOTTOM PAD (verify-8 §4, the 7th part half-cut at scrollTop 0). Mechanism: the
+   7th part is DIV.real-note (89.5px), NOT .rn-part (the 17px label — the first probe measured the
+   label; fixed before the patch). At rest (Personal pages): part 7 is 624-713.5, close 669-719,
+   overlap 44.5px; at max scroll overlap 0. All 36 features measured: 34 of 36 straddle the close
+   at rest (max overlap 50px); only chart-23/26 sit fully below the fold. The panel is a 716px
+   viewport holding 743-1021px of content — for content taller than ~730px the 7th part cannot be
+   fully visible at rest by any spacing change; the lift moves the CUT later in the content (more
+   parts fully readable at rest). Fix, phone <=480px only: spacing compression (real-note pt/pb
+   10->6, mb 6->4, title mb 6->4, panel pt 10->6) lifts the 7th part's bottom by 74px (Personal
+   pages 713.5 -> 639.5, 30.5px clear of the close top; the 790 band clears by 6.2px) + the bottom
+   pad (#detailBody padding-bottom:24px, below the last part, above the close button) so at max
+   scroll the last part clears the close by 28px (mb 4 + pad 24). Net scrollH change -52 (Personal
+   pages 767 -> ~715, remainder ~0; longer features keep a remainder, reduced by 52). NOT-DONE,
+   NAMED: the mid/long features' 7th parts remain scroll-to-read at rest (their overlap is reduced
+   where the lift helps, and more of each part is visible above the close than before) — a 7-part
+   sheet in a 716px viewport cannot show its last part at rest for 900px+ content without font
+   surgery, which is NOT taken (no font or line-height changes anywhere in this pass). No word
+   changes. */
+@media (min-width:481px) and (max-width:860px){
+  #top{height:auto; padding-bottom:0;}
+}
+@media (max-width:1220px){
+  #chart thead th:first-child{position:sticky; left:0; z-index:3;}
+  #chart tbody tr:not(.chart-group) td:first-child{position:sticky; left:0; z-index:2; width:210px; min-width:210px; max-width:210px; white-space:normal; box-shadow:6px 0 12px rgba(0,0,0,.35);}
+}
+@media (max-width:480px){
+  .detail-panel .real-note{padding-top:6px; padding-bottom:6px; margin-bottom:4px;}
+  .detail-panel .detail-title{margin-bottom:4px;}
+  #detailPanel{padding-top:6px;}
+  #detailBody{padding-bottom:24px;}
+}
 </style>
 </head>
 <body>
