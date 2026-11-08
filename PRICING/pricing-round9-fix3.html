@@ -85,7 +85,7 @@
     radial-gradient(900px 700px at 100% 100%, #d86cff12, transparent 70%),
     var(--bg);
 }
-/* 2. deck — Amendment 4 §6 (the .slide CSS pasted verbatim; the deck JS adds js-deck to <html>) */
+/* 2. deck — Amendment 4 §6 (the .slide CSS pasted verbatim; the deck JS adds js-deck to the html element) */
 .slide{height:100vh; height:100svh; overflow-y:auto; scroll-snap-align:start; scroll-snap-stop:always; box-shadow:inset 0 1px 0 rgba(255,255,255,.07);}
 .js-deck .slide{opacity:.85; transform:scale(.998); transition:opacity .35s ease, transform .35s ease;}
 .js-deck .slide.arrived{opacity:1; transform:none;}
@@ -225,7 +225,7 @@ html{scroll-snap-type:y mandatory;}
 .hero-systems-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:8px;}
 .hero-systems-grid span{padding:8px 6px; border-radius:999px; font-size:12px; text-align:center; color:var(--txt); border:1px solid var(--gold); background:rgba(255,191,61,.14); box-shadow:0 0 12px rgba(255,191,61,.25);}
 .hero-systems-line{color:var(--dim); font-size:14px;}
-.hero-systems-line b{color:var(--txt);}}</style>
+.hero-systems-line b{color:var(--txt);}}
 /* 5. .primo — Naya_Beautiful_Button_Set_N4.html L238-247 (NAYA-BTN-027) */
 /* ============ STANDARD — .primo ============ */
 .primo { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 800; font-size: 15px; letter-spacing: .08em; color: #fff; padding: 14px 26px; border-radius: 999px; border: none;
@@ -311,7 +311,7 @@ html{scroll-snap-type:y mandatory;}
 .ib-card-orb.reading { animation: ib-orb-flow 2.8s ease-in-out infinite !important; }
 /* 8. .steppill / .steprail — factory-page-shell.html L451 */
 .steppill{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:800;font-size:11px;letter-spacing:.14em;color:#F8F7FB;padding:10px 18px;border-radius:999px;background:linear-gradient(180deg,#262633,#0a0a0f 70%);border:1.5px solid #F8F7FB;box-shadow:inset 0 2px rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.6),0 0 22px rgba(248,247,251,.3),0 14px 32px rgba(0,0,0,.7);transition:border-color .25s,box-shadow .25s,transform .2s;white-space:nowrap}.steppill .sdot{width:8px;height:8px;border-radius:50%;background:#fff;flex:0 0 auto;transition:background .25s,box-shadow .25s}.steppill:hover{border-color:var(--sc);box-shadow:inset 0 1px rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,0,0,.4),0 0 26px -2px var(--sc),0 10px 24px rgba(0,0,0,.6);transform:translateY(-2px)}.steppill:hover .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}.steppill.on{border-color:var(--sc);box-shadow:0 0 0 1px var(--sc),0 0 22px -4px var(--sc)}.steppill.on .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}.steprail{display:flex;align-items:center;justify-content:center;gap:2px;padding:6px 8px;border-radius:999px;background:linear-gradient(180deg,#262633,#0a0a0f 70%);border:1.5px solid rgba(248,247,251,.9);box-shadow:inset 0 2px rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.6),0 0 22px rgba(248,247,251,.3),0 14px 32px rgba(0,0,0,.7);position:relative;max-width:calc(100vw - 24px)}.steprail::before{content:"";position:absolute;left:30px;right:30px;top:50%;height:2px;transform:translateY(-50%);background:linear-gradient(90deg,#a06bff,#3fb8ff,#2fe89e,#ffbf3d,#ff9a5a);opacity:.35;border-radius:2px;pointer-events:none}.steprail .steppill{position:relative;border:0;background:transparent;box-shadow:none;padding:8px 9px;gap:6px;font-size:10px;letter-spacing:.08em}.steprail .steppill .sdot{width:8px;height:8px;border-radius:2px;transform:rotate(45deg);background:#F8F7FB;box-shadow:0 0 6px rgba(248,247,251,.5)}.steprail .steppill:hover{transform:none;box-shadow:none;border-color:transparent}.steprail .steppill:hover .sdot{background:var(--sc);box-shadow:0 0 10px var(--sc)}.steprail .steppill.on{border-color:transparent;box-shadow:inset 0 0 0 1px var(--sc),0 0 18px -2px var(--sc);background:color-mix(in srgb,var(--sc) 14%,transparent);color:#fff;text-shadow:0 0 12px var(--sc)}.steprail .steppill.on .sdot{background:var(--sc);box-shadow:0 0 12px var(--sc)}
-/* 9. .pj-jewel — Hub L1486-1501 (hub-pj-jewel.css); the "i" is a <button> (Amendment 1) */
+/* 9. .pj-jewel — Hub L1486-1501 (hub-pj-jewel.css); the "i" is a BUTTON element (Amendment 1) */
 .pj-jewel {
   --jewel: #8a5cff;
   width: 26px; height: 26px; flex: none; border-radius: 8px;
@@ -338,18 +338,48 @@ html{scroll-snap-type:y mandatory;}
 button.pj-jewel{padding:0; cursor:pointer; font-family:inherit;}
 button.pj-jewel:hover{filter:brightness(1.15); transform:translateY(-1px);}
 button.pj-jewel:focus-visible{outline:3px solid #fff; outline-offset:2px;}
-/* 10. detail overlay — Hub L926-931 + L1137+ (hub-overlay.css), sized by Amendment 1 §2 */
+/* 10. detail overlay — Hub L925-930 (.drawer-backdrop) + L1096-1101, L1109, L1136-1141, L1142-1160, L2002-2007 (.tab-pop) (hub-overlay.css, selectors intact — the old extraction dropped them, so .tab-pop never got position:fixed) */
+/* .drawer-backdrop — Hub L925-930 */
+.drawer-backdrop {
   display: none;
   position: fixed; inset: 0; z-index: 55;
   background: rgba(3, 3, 6, .6);
   -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
 }
-@media (max-width: 900px) {
+/* .tab-menu, .tab-pop — Hub L1096-1101 (position:fixed; display:none) */
+.tab-menu, .tab-pop {
+  position: fixed; z-index: 1000; display: none;
+  background: linear-gradient(180deg, #121827, #0e1424);
+  border: 1px solid rgba(255,255,255,.18); border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.5);
+}
+/* .tab-pop — Hub L1109 (min-width/padding/color) + L1110-1126 (inner elements) */
+.tab-pop { min-width: 300px; padding: 14px; color: #fff; }
+.tab-pop h3 { margin: 0 0 10px; font-size: 15px; }
+.tab-pop .row { display: grid; gap: 6px; margin: 8px 0; }
+.tab-pop label { font-size: 12px; color: var(--muted); display: grid; gap: 4px; }
+.tab-pop input {
+  padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,.2);
+  background: #0a0f1a; color: #e6ecff; font-size: 13px;
+}
+.tab-pop .toggles { display: flex; gap: 8px; margin: 8px 0; flex-wrap: wrap; }
+.tab-pop .tgl {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px;
+  border-radius: 10px; border: 1px solid rgba(255,255,255,.22);
+  background: rgba(0,0,0,.45); cursor: pointer; color: #fff; font-weight: 800; font-size: 13px;
+}
+.tab-pop .tgl.on {
+  box-shadow: 0 0 0 2px rgba(255,255,255,.3) inset, 0 0 18px rgba(124,77,255,.25);
+}
+.tab-pop .ft { display: flex; gap: 8px; justify-content: flex-end; margin-top: 10px; }
+/* .tab-pop — Hub L1136-1141 (position:fixed; max-width:330px) */
+.tab-pop {
   position: fixed; z-index: 80; min-width: 270px; max-width: 330px;
   background: var(--bg-elev); border: 1px solid var(--line); border-radius: 14px;
   box-shadow: 0 18px 48px #000000c0; padding: 14px;
 }
 .tab-pop-title {
+/* .tab-pop-title/list/note/add — Hub L1142-1160 */
   display: block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
   color: var(--muted); margin: 12px 0 8px;
 }
@@ -359,7 +389,27 @@ button.pj-jewel:focus-visible{outline:3px solid #fff; outline-offset:2px;}
 .tab-pop-add {
   appearance: none; border: 1px solid var(--line); border-radius: 10px;
   background: var(--bg-raise); color: var(--ink); cursor: pointer;
-.detail-panel{width:min(680px,92vw); max-height:84vh; overflow-y:auto; left:50%; top:50%; transform:translate(-50%,-50%);}
+  font-size: 15px; text-align: left; padding: 9px 12px;
+}
+.tab-pop-add:hover { border-color: var(--purple); color: #fff; }
+.tab-pop-row { display: flex; align-items: center; gap: 8px; }
+.tab-pop-name { flex: 1 1 auto; color: var(--ink); font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tab-pop-row select {
+  background: var(--bg-raise); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 8px;
+  font-size: 14px; padding: 7px 8px; max-width: 128px;
+}
+/* .tab-pop on phones — Hub L2002-2007 inside @media (max-width:640px) */
+@media (max-width: 640px) {
+  .tab-pop {
+    min-width: 0; max-width: 360px; width: calc(100vw - 32px);
+    left: 50% !important; right: auto; top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 2000;
+  }
+}
+
+.detail-panel{position:fixed; width:min(680px,92vw); max-width:92vw; max-height:84vh; overflow-y:auto; left:50%; top:50%; transform:translate(-50%,-50%);}
 .detail-panel.open{display:block;}
 .drawer-backdrop.open{display:block;}
 .rn-part{font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin-bottom:6px;}
@@ -2657,6 +2707,7 @@ var DETAIL_DATA = {"features": {"chart-01": ["Personal pages", [["In a nutshell"
   var title = document.getElementById('detailTitle');
   var body = document.getElementById('detailBody');
   var lastFocus = null;
+  var savedScrollY = 0;
   function addPart(label, text){
     var block = document.createElement('div');
     block.className = 'real-note';
@@ -2671,6 +2722,7 @@ var DETAIL_DATA = {"features": {"chart-01": ["Personal pages", [["In a nutshell"
   function openDetail(kind, key){
     var d = DETAIL_DATA[kind][key]; if(!d) return;
     lastFocus = document.activeElement;
+    savedScrollY = window.scrollY;  // close returns to this exact scroll position (Amendment 1 §2)
     title.textContent = d[0];
     body.innerHTML = '';
     if(kind === 'tiers'){
@@ -2689,7 +2741,8 @@ var DETAIL_DATA = {"features": {"chart-01": ["Personal pages", [["In a nutshell"
   }
   function closeDetail(){
     panel.classList.remove('open'); backdrop.classList.remove('open');
-    if(lastFocus && lastFocus.focus) lastFocus.focus();
+    window.scrollTo(0, savedScrollY);  // back at the same place (focus() alone scrolls the button into view, not to the exact Y)
+    if(lastFocus && lastFocus.focus) lastFocus.focus({preventScroll:true});
   }
   document.querySelectorAll('[data-feature]').forEach(function(btn){
     btn.addEventListener('click', function(){ openDetail('features', btn.getAttribute('data-feature')); });
