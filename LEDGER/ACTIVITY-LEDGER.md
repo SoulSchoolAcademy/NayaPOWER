@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-08 16:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-08 17:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -38323,6 +38323,18 @@ _Last updated: 2026-11-08 16:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-gap-gap-gap-gap-t0042-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** prove last unproven contract row at runtime: no-eligible/demoted-empty cell on full corpus
+
+**Evidence:** VERIFIED by this scorer on live bytes (backlog sweep; no prior Team Naya Scorer row for this receipt): receipt file exists and read in full; proof script hidden_files/lane-5/gap-gap-gap-gap-gap-t0042-noeligible/prove_noeligible_demoted_empty.py exists. The run falsified the parent's unreachability claim on the live corpus (title-vocabulary search 0
+
+### ✅ gap-gap-gap-gap-t0042-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** unified wiring contract: three t0042 designs stacked into one decision table + caller rules with re-runnable proof
+
+**Evidence:** VERIFIED by this scorer on live bytes (backlog sweep; no prior Team Naya Scorer row for this receipt): receipt file exists and read in full; cited artifacts exist - hidden_files/lane-5/gap-gap-gap-gap-t0042-unified-contract/UNIFIED-WIRING-CONTRACT.md, prove_unified_contract.py, results.json all present. The three patch anchors were re-derived from 
+
 ### ✅ gap-scorer-20261015-0610-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
 
 **Task:** Infra packet-2 re-pin CLOSED (re-derive live sha256, root-cause post-pin amendment, re-run quote byte-check)
@@ -43590,6 +43602,12 @@ _Last updated: 2026-11-08 16:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ gap-addendum-gap-t1522-lane12-live-render-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** live-render wording audit: filed browser-evidence artifact closing the addendum paraphrase-only gap
+
+**Evidence:** VERIFIED by this scorer on live bytes (backlog sweep; no prior Team Naya Scorer row for this receipt): receipt file exists and read in full; filed artifact hidden_files/browser-evidence/gap-addendum-t1522-lane12-live-render-wording-20261024.md exists with sha256 0f09e434f09f2c27f2129dede59d6ef2b988ac53e9b18ee7cb848c65766f27e0 exactly as cited; pare
 
 ### ✅ gap-scorer-20261014-2340-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.5/10 [VERIFIED]
 
@@ -49246,6 +49264,18 @@ _Last updated: 2026-11-08 16:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gap-gap-distill-daily-20261024-lane0 — Team 0, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
+
+**Task:** gap-gap-distill: branch-move detection, 3-line diff proof, reconcile stale-tick-assert catch
+
+**Evidence:** VERIFIED by this scorer on live bytes (backlog sweep; no prior Team Naya Scorer row for this receipt): receipt file exists and read in full; cited historical commits exist as objects in the local repo (main tip 95719c4efaf5f426834f519458942e220b6cedb5 and new branch tip ae7d825ae1c85c36620411e0251b3e046fe4eeed both resolve via git cat-file -t = com
+
+### ✅ gap-distill-daily-20261024-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap-distill freshness re-derivation: re-check main/branch tips + file SHAs, byte-identical reconcile re-execution
+
+**Evidence:** VERIFIED by this scorer on live bytes (backlog sweep; no prior Team Naya Scorer row for this receipt): receipt file exists and read in full; cited historical commits exist as objects in the local repo (main tip 95719c4efaf5f426834f519458942e220b6cedb5, branch naya/mission-state tip accf8f30bc17e958f71fe9906fd423f2831ccd1d both resolve via git cat-f
 
 ### ✅ gate-stall-20261108-0830 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
