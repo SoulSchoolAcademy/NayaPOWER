@@ -68,8 +68,10 @@ function mapItem(r) {
 // home). serveNote()/renderNote() below are the parsing reference the
 // feed regen (tools/regenerate_feed_live.py) mirrors; they are not a
 // browser route (see THE NOTE ROUTE above noteRedirect for the record).
-// (Note: /s/* does not reach this worker at all — the Cloudflare route
-// table sends nayanet.app/s/* to the naya-share worker.)
+// (Note: /s/* reaches this worker since the 2026-11-08 route repoint —
+// HUB/wrangler.toml claims nayanet.app/s/* for hub. Before that, the
+// route table sent /s/* to the naya-share worker, whose share-page
+// template pointed at retired nayanet.live.)
 const SPECTRUM = ["#9d75ff", "#6f8dff", "#3ddc97", "#ffd34d", "#ff9f43", "#ff5d5d", "#ff5dd2"];
 function esc(s) {
   return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
