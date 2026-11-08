@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-08 16:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-08 16:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -73,6 +73,12 @@ _Last updated: 2026-11-08 16:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t2330 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
+**Task:** gap-t2330-lane4: skew-table independent re-tally
+
+**Evidence:** Verified by independent re-tally from raw log bytes (ask-world-queries.jsonl, window 2026-10-12 10:17:32-13:10:38 PDT, inclusive datetime comparison): 30 query rows, 24 lane / 6 global, class prior 0.80/0.20, lane_skew {1:2,2:2,3:3,4:1,5:5,6:1,7:1,8:3,9:1,10:3,11:1,12:1} - all 12 cells reproduce exactly, zero deltas. Score 9.5: clears 9.5 because t
+
+### ✅ t2330 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
 **Task:** gap-t2330 (skew-table independent re-tally)
 
 **Evidence:** Verified: independent third-pass re-tally from raw ask-world-queries.jsonl bytes with the t0539 window predicate (kind=='query', ts_pdt 2026-10-12 10:17:32 to 13:10:38 PDT inclusive) reproduces the draft exactly — 30 windowed query rows, 24 lane / 6 global = 0.80/0.20 class prior, lane_skew all 12 cells identical to lane-packet-v2-hypertuned.md (1:
@@ -94,6 +100,12 @@ _Last updated: 2026-11-08 16:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gap-t2330-lane4: skew-table independent re-tally
 
 **Evidence:** VERIFIED: independently re-ran the t0539 window predicate (kind==query, 2026-10-12 10:17:32->13:10:38 PDT, datetime comparison) against raw ask-world-queries.jsonl bytes: 30 windowed query rows; all 12 skew cells reproduce the v2 draft exactly (1:2 2:2 3:3 4:1 5:5 6:1 7:1 8:3 9:1 10:3 11:1 12:1), class_prior 24/6 = 0.80/0.20. CLEARS 9.5: the named 
+
+### ✅ t2330 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t2330-lane1: seal byte-purity GAP close on t0545
+
+**Evidence:** Verified: seal results-t0545-taskdecomp.json sha256 c61b73a7... matches receipt pin byte-exact; instrument t0545_taskdecomp.py sha 78731f46... matches; annotations file and SEAL-BYTE-PURITY-PROTOCOL.md exist on disk. Score 9.5: clears 9.5 because the named gap (seal not byte-pure) is closed with byte-verified evidence plus a class-level protocol ge
 
 ### ✅ t2330 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
@@ -31011,6 +31023,14 @@ _Last updated: 2026-11-08 16:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0012 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
 
+**Task:** t0012-lane1: veracity-arm verification + stale-bookkeeping closure
+
+**Receipt:** `twelve-lane-receipts/t0012-lane1.md`
+
+**Evidence:** Verified: VERACITY-ARM.md exists; battery.py sha256 6e855e78... matches pinned reference byte-exact; rerun copy diff-identical; blinded-scores-t1302.md ends 'Verdict: CERTIFIED'. Score 8.5 (REWORK band): verification + closure work re-proved all three DoD criteria from live bytes and caught the stale-checkbox re-brief cause - the right call, not a 
+
+### ✅ t0012 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
+
 **Task:** Veracity arm re-verification + stale bookkeeping closure
 
 **Receipt:** `twelve-lane-receipts/t0012-lane1.md`
@@ -49226,6 +49246,12 @@ _Last updated: 2026-11-08 16:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261108-0830 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31-brief stall, all refused, queue unchanged
+
+**Evidence:** VERIFIED this tick by this scorer on live bytes (fresh window; no prior Team Naya Scorer row for this receipt): receipt file exists and read; every one of the 31 live brief-queue filenames is named in the receipt (live - named = [], named - live = []); named set identical to prior receipt gate-stall-20261108-0725.md (set difference empty both ways)
 
 ### ✅ distill-daily-20261018 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
