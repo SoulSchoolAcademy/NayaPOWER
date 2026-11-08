@@ -1140,6 +1140,41 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
 @media (max-width:860px){
   #start .trial-text{margin-bottom:18px;}
 }
+
+/* ============ FIX 5 (2026-11-08, rev 10 same file — the verifier's 10-path, bounded to three safe repairs) ============
+   Item 1 — PLAN-PILL PRICE CRAMP (verify-4 fresh-eyes finding). Baseline (phone 390):
+   pills 113x112, row layout; the price wraps to 4 lines (Power, Max) and FIVE (Pro);
+   the sdot itself flex-shrinks 8px -> 6px. Both options measured live (probe5-options.py):
+   A column / A2 column+padding-12px / B wrap+basis-100% / B2 wrap+basis-100%+padding-12px.
+   CHOSEN B2: 113x88 (shortest), price 2 lines, diamond+name together on row 1 for all
+   three, sdot full 11px. A2 (98px) orphans the diamond on its own line; B (114px, 3 lines)
+   breaks Power inconsistently. Scope max-width:860px (the file's phone breakpoint);
+   the cramp persists to ~750px, so 480px would leave 481-750px cramped; at tablet the
+   pills stack cleanly. The .calc-plans container keeps fix 4.6's nowrap; the wrap is
+   INSIDE each pill only. Words UNCHANGED. */
+@media (max-width:860px){
+  .calc-plan{flex-wrap:wrap; gap:2px 10px; padding:14px 12px;}
+  .calc-plan span:last-child{flex-basis:100%;}
+}
+/* Item 2 — PHONE CLOSE DEAD SPACE (Option C, same as desktop fix 4c). Baseline (phone 390):
+   #start clientH 844, scrollH 973 — 129px of internal overflow below the button
+   (the 110px padding-bottom + content overhang); the button itself ends 5px above the
+   box bottom and IS visible. #start{height:auto} at phone grows the slide to fit its
+   content (~844 -> ~973); the -140px scroll-margin and 150px scroll room from fix 4.1
+   STAY, so the snap landing stays ~4463 and the button stays ~642-698, clearing the
+   bar top ~743 by ~45px. The document grows by the slide's growth only (5316 -> ~5445);
+   maxScroll 4472 -> ~4601; snap stays reachable. With height:auto the slide's
+   overflow-y:auto is inert. */
+@media (max-width:860px){
+  #start{height:auto;}
+}
+/* Item 3 — PACE LABEL BRIGHTNESS. Baseline (phone 390): .calc-pace-num ("3 sales a day")
+   is rgb(0,0,0) on the dark calculator gradient — contrast 1.27:1 vs the gradient's
+   lightest stop — while the -/+ buttons are #fff at 16.51:1. The verifier's suggested
+   `.calc-pace-label{color:inherit}` does not apply: no such class exists, and inherit
+   would hand the label the very black it inherits now (inherit IS the bug). Explicit
+   #fff matches the -/+ buttons exactly. Words, size, weight and position untouched. */
+.calc-pace-num{color:#fff;}
 </style>
 </head>
 <body>
