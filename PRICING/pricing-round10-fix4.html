@@ -1582,6 +1582,33 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
   .detail-panel .detail-foot .detail-close{position:static; flex:1; min-width:0; justify-content:center; padding-left:10px; padding-right:10px;}
   .detail-foot .detail-compact-toggle{padding-left:8px; padding-right:8px;}
 }
+/* ============ FIX 12 (2026-11-08, maker step 1 — the verifier's two fix-12 items) ============
+   Item 1 — COMPACT-BY-DEFAULT FOR THE LONGEST FEATURES (verify-11 §8, the 8/28 normal-mode
+   spread). Mechanism: at open time the panel decides by geometry — if the last content
+   block's bottom sits below the close top (the probe's own overlap metric: 7th .real-note
+   bottom − #detailClose top), the detail starts in compact mode. NOT a hardcoded list — the
+   "longest features" are exactly the ones that don't fit, decided per open. The decision is
+   synchronous in openDetail (so even a same-task measurement sees compact); the
+   MutationObserver below is the backstop, guarded so it can never undo the synchronous choice.
+   Gated on phone width; tablet/desktop untouched (compact CSS is phone-scoped anyway). The
+   toggle still switches modes; Full restores the exact fix-11 normal mode. No font or
+   line-height changes anywhere.
+   Item 2 — FOOTER PRIMO-PADDING DESIGN (verify-11 §8, the close's 10px side padding vs the
+   primo 26px). Mechanism: the footer breaks out of the panel padding with -10px side margins
+   — it spans the panel's padding box (358.8 border-box − 2 border = 356.8), so the row gains
+   20px without touching the panel width, the panel padding, or any title/body width (zero
+   title-flip risk; the Full-mode spread cannot move). The seam is invisible — the footer
+   background IS the panel background (var(--bg-elev) #171B25) — and the panel's 14px radius is
+   safe because the footer carries no border (the panel's own 1px border still draws). Measured
+   row: close natural 275.5 (text 223.5 + 52 primo padding) + gap 8 + toggle 69.7 (text 59.7 +
+   2 border + 8 padding) = 353.2 <= 356.8, 3.6px spare. The close keeps its 15px font, 14px
+   vertical padding, 50px height; the toggle keeps its 12px font. Above 480px the footer is a
+   plain block div holding only the close — untouched. */
+@media (max-width:480px){
+  .detail-panel .detail-foot{margin-left:-10px; margin-right:-10px;}
+  .detail-panel .detail-foot .detail-close{padding-left:26px; padding-right:26px;}
+  .detail-foot .detail-compact-toggle{padding-left:4px; padding-right:4px;}
+}
 </style>
 </head>
 <body>
@@ -3311,6 +3338,15 @@ var DETAIL_DATA = {"features": {"chart-01": ["Personal pages", [["In a nutshell"
       d[1].forEach(function(part){ addPart(part[0], part[1]); });
     }
     panel.classList.add('open'); backdrop.classList.add('open');
+    /* FIX 12 — compact-by-default: a long detail opens compact at phone, so all 7 parts read
+       at rest (the normal-mode spread is 8 clear / 28 straddle; compact is the route to 36/36).
+       The decision is the probe's own metric — last content block bottom vs close top — made
+       synchronously here so even a same-task measurement sees compact; the MutationObserver
+       below is the backstop. Gated on phone width; tablet/desktop untouched. */
+    if(window.matchMedia('(max-width:480px)').matches && panel.__setCompact){
+      var _last = body.lastElementChild, _close = document.getElementById('detailClose');
+      if(_last && _close && _last.getBoundingClientRect().bottom > _close.getBoundingClientRect().top) panel.__setCompact(true);
+    }
     document.getElementById('detailClose').focus();
   }
   function closeDetail(){
@@ -3355,6 +3391,8 @@ var DETAIL_DATA = {"features": {"chart-01": ["Personal pages", [["In a nutshell"
     toggle.classList.toggle('is-on', on);
     if(!on) body.querySelectorAll('.real-note.expanded').forEach(function(n){ n.classList.remove('expanded'); });
   }
+  /* FIX 12 — expose setCompact so openDetail can decide synchronously at open time. */
+  panel.__setCompact = setCompact;
   toggle.addEventListener('click', function(){ setCompact(!panel.classList.contains('compact')); });
   body.addEventListener('click', function(e){
     if(!panel.classList.contains('compact')) return;
@@ -3364,10 +3402,24 @@ var DETAIL_DATA = {"features": {"chart-01": ["Personal pages", [["In a nutshell"
   /* reset compact whenever a detail opens or closes (button, backdrop, Escape all
      flow through the panel's 'open' class) — react ONLY to 'open' transitions so
      setCompact's own class toggles never loop back here. */
+  /* FIX 12 — compact-by-default backstop: on open, re-run the fit decision ONLY if the panel
+     is not already compact (openDetail decides synchronously first; this must never undo it).
+     On close, reset to normal as before. React ONLY to 'open' transitions so setCompact's own
+     class toggles never loop back here. */
   var wasOpen = panel.classList.contains('open');
+  function detailFits(){
+    if(!window.matchMedia('(max-width:480px)').matches) return true;
+    var close = document.getElementById('detailClose');
+    var last = body.lastElementChild;
+    if(!close || !last) return true;
+    return last.getBoundingClientRect().bottom <= close.getBoundingClientRect().top;
+  }
   new MutationObserver(function(){
     var isOpen = panel.classList.contains('open');
-    if(isOpen !== wasOpen){ wasOpen = isOpen; setCompact(false); }
+    if(isOpen !== wasOpen){ wasOpen = isOpen;
+      if(isOpen){ if(!panel.classList.contains('compact')) setCompact(!detailFits()); }
+      else setCompact(false);
+    }
   }).observe(panel, {attributes:true, attributeFilter:['class']});
 })();
 </script>
