@@ -1,0 +1,78 @@
+# PI BOARD-NOTE DRAFT — THE DESIGN INTELLIGENCE (Living List entry)
+Shawn's order, 2026-11-08 16:37Z — LOCK-IN-10-CONCEPTS.md, concepts 5 + 6.
+Seat brief: `~/workspace/team-nitro/lock-in-10/briefs/concept-05-06.md`.
+
+**DRAFT — not yet in PI.** The intelligence loop seat (Sigma) places this
+entry in Project Intelligence (the Living List) as the tracked, current
+record of the design intelligence. Do not file it yourself from this seat —
+this file is the draft; the loop files it.
+
+---
+
+## BOARD NOTE — Design Intelligence: locked in, in three places
+
+**State:** FILED by the intelligence loop (Sigma), run 2, 2026-11-08 ~17:05Z. Blocks written; drafts numbered SN-2299–SN-2307 and filed to Smart Box + GitHub (read-back verified — see the daily log for shas); 4 missing GitHub files filed; this note filed to GitHub at `TEAM-NITRO/PI-BOARD-NOTE-DESIGN-INTELLIGENCE.md`.
+
+**What it is:** The design contract as intelligent blocks — one block per
+law — so the knowledge IS the brand and any Naya reads it as blocks. Nine
+laws: the brand · the real object law · the playbook (the HOW) · the design
+intelligence report (the WHY) · the Clarity Confirmation Act (DRAFT) · the
+intelligent block rules (LAW) · the Factory inventory · the anatomy of a
+viewport · the harvest.
+
+**Where it lives (three places, never one):**
+1. **GitHub** — the files. Verification 2026-11-08 ~16:47Z (read-only,
+   `gh-direct.py` GETs on main, `SoulSchoolAcademy/NayaPOWER`):
+   PRESENT (5): THE-NAYA-BRAND.md (`BRAIN/10-INTERFACES/`, sha 9bda3c9e) ·
+   THE-REAL-OBJECT-LAW.md (`TEAM-NITRO/laws/`, sha 5ba81147) ·
+   THE-PLAYBOOK.md (`BRAIN/10-INTERFACES/`, sha eb1076bf) ·
+   CLARITY-CONFIRMATION-ACT-DRAFT-20261106.md (`BRAIN/10-INTERFACES/`,
+   sha c6131634) · INTELLIGENT-BLOCK-RULES-LAW-20261106.md
+   (`BRAIN/10-INTERFACES/`, sha 4afe829f).
+   MISSING (4): THE-INVENTORY.md · DESIGN-INTELLIGENCE-REPORT.md ·
+   ANATOMY-OF-A-VIEWPORT.md · HARVEST.md — filed by the loop this run
+   (read-back verified — see the daily log for shas).
+2. **Project Intelligence** — this board note (the Living List entry),
+   filed to GitHub at `TEAM-NITRO/PI-BOARD-NOTE-DESIGN-INTELLIGENCE.md`
+   by the loop this run; the next PI refresh corroborates it.
+3. **The Smart Box** — the smart notes + blocks. Numbered SN-2299–SN-2307
+   by the loop (Draft 1 → SN-2299, … Draft 9 → SN-2307) and filed to the
+   Smart Box (local `~/workspace/team-nitro/smart-notes/`) + GitHub
+   `BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/` (read-back verified).
+   Blocks file: `~/workspace/team-nitro/DESIGN-CONTRACT-AS-BLOCKS.md`,
+   filed to GitHub at `TEAM-NITRO/DESIGN-CONTRACT-AS-BLOCKS.md`.
+
+**The lock-in, in one line:** the system makes low-level design impossible
+(the gate fails it, the Factory has no low-end parts, the brief carries the
+laws) and high-level the default (the parts are already Bugatti-level, so
+assembling them IS Bugatti-level). He never has to explain it a thousand
+thousand times again.
+
+**The gate (measured, never a vibe):** (a) zero white/light backgrounds ·
+(b) every element raised/elevated · (c) gauges/numbers alive · (d) no
+text-in-image, no pasted document · (e) no bare text blocks. A gate that
+fails is not done. A deferral is an open item, not a pass.
+
+**Open items (carried, not hidden):**
+- GitHub filing: 4 files missing (see above) — loop to file, then re-verify
+  with read-back.
+- The 7 canonical libraries remain TO-LOCATE (no file by that name found) —
+  owned by concept-1 seat, not this filing.
+- DESIGN-INTELLIGENCE-REPORT.md: SOUL.md cites it at
+  `BRAIN/10-INTERFACES/DESIGN-INTELLIGENCE-REPORT.md`, but that path 404s
+  and no standalone file exists on GitHub — only the SN-0843 smart-note
+  copy. The loop files the local report at that path (or corrects the cite
+  if the file lives elsewhere — search first, do not guess).
+
+**Done / not done:**
+- DONE: blocks file (9 blocks, six voices each); 9 number-free drafts;
+  this board-note draft; loop handoff; GitHub read-only verification
+  (5 present, 4 missing, with evidence); numbering (loop, SN-2299–SN-2307);
+  filing to Smart Box + GitHub (read-back verified); mail to the other Nias;
+  placing this note in PI (filed to GitHub at
+  `TEAM-NITRO/PI-BOARD-NOTE-DESIGN-INTELLIGENCE.md`; next refresh corroborates).
+- NOT DONE: nothing from this seat's list — all four loop jobs are done.
+  Carried open items: the 7 canonical libraries remain TO-LOCATE (concept-1
+  seat); the Smart Notes / Smart Lists ladders await Shawn's word (SN-2311);
+  the popup portrait is a reproduction wearing the real file's name until the
+  real bytes ship (SN-2312).
