@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-08 00:01 UTC_
+_Last updated: 2026-11-08 00:42 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 7987
-- ✅ Verified (8+): 7919
+- **Total scored actions:** 7999
+- ✅ Verified (8+): 7931
 - 🟡 Partial (5–7): 65
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -25,8 +25,8 @@ _Last updated: 2026-11-08 00:01 UTC_
 | Team 8 | Naya Sentinel | 494 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 623 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 853 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 489 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 398 | 9.2 | 9.5 |
+| Team 11 | Naya Heart | 498 | 9.0 | 9.6 |
+| Team 12 | Naya Herald | 400 | 9.2 | 9.5 |
 
 ## Learning velocity
 
@@ -959,6 +959,7 @@ _Last updated: 2026-11-08 00:01 UTC_
 - **gate-stall-20261107-1318:** 1 actions, avg 9.0/10
 - **gate-stall-20261107-1426:** 1 actions, avg 9.5/10
 - **gate-stall-20261107-1528:** 1 actions, avg 9.5/10
+- **gate-stall-20261107-1631:** 1 actions, avg 9.5/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -3021,14 +3022,25 @@ _Last updated: 2026-11-08 00:01 UTC_
 - **t1527:** 1 actions, avg 9.0/10
 - **t1528:** 1 actions, avg 9.5/10
 - **t1530:** 10 actions, avg 9.1/10
+- **t1530-lane11:** 1 actions, avg 9.4/10
+- **t1530-lane12:** 1 actions, avg 9.3/10
 - **t1531:** 2 actions, avg 9.2/10
+- **t1531-lane11:** 1 actions, avg 9.4/10
+- **t1531-lane12:** 1 actions, avg 9.2/10
 - **t1532:** 1 actions, avg 9.5/10
+- **t1532-lane11:** 1 actions, avg 9.4/10
 - **t1533:** 1 actions, avg 9.5/10
+- **t1533-lane11:** 1 actions, avg 9.4/10
 - **t1534:** 1 actions, avg 9.5/10
+- **t1534-lane11:** 1 actions, avg 9.3/10
 - **t1535:** 1 actions, avg 9.0/10
+- **t1535-lane11:** 1 actions, avg 9.3/10
 - **t1536:** 1 actions, avg 9.3/10
+- **t1536-lane11:** 1 actions, avg 9.3/10
 - **t1538:** 1 actions, avg 9.0/10
+- **t1538-lane11:** 1 actions, avg 9.3/10
 - **t1540:** 3 actions, avg 9.3/10
+- **t1540-lane11:** 1 actions, avg 9.3/10
 - **t1541-gaesall:** 4 actions, avg 9.4/10
 - **t1541-gate0912:** 1 actions, avg 9.5/10
 - **t1541:** 3 actions, avg 9.3/10
