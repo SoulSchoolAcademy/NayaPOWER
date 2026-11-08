@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-08 08:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-08 09:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -35353,6 +35353,12 @@ _Last updated: 2026-11-08 08:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-lane-scorer-20261015-0420-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.2/10 [VERIFIED]
+
+**Task:** RED half re-derived in-session (original staged patch, same tip/harness as green half)
+
+**Evidence:** Verified: RED wrapper SHA 7fd5da6288afb324267910fea1d0f6269dd4fd04837af5bf34ec491c05b0b9cf, RED results 411dd73ca23698ee35687d019d5073b52629aa7b8a419d9fcd39a3e0bdfa85bb, original patch 1571e04252a249c13ad77782359191866d1ddf757698d884e6fa7275cf26596a, green results e62dcbf5fdfb9876 — all byte-exact live. Score 9.2, not 9.5 because: the receipt's own
+
 ### ✅ gap-scorer-20261014-2340-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** gap follow-up: void procedure codified as installable proposal (canonical VOID feed line + formatter)
@@ -38174,6 +38180,12 @@ _Last updated: 2026-11-08 08:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-lane-scorer-20261015-0350-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.2/10 [VERIFIED]
+
+**Task:** Buried-eligibility class audit + live stamp on brief-gap-t0413-lane3
+
+**Evidence:** Verified: the # CLAIMABILITY GATE — NON-Clarity SEATS ONLY stamp is byte-present at the head of brief-gap-t0413-lane3.md in two independent surviving copies (t0533 snapshot 2026-10-15 12:50 and prose-bar-migration-backup-20261016, identical 1415 bytes, provenance line cites this gap brief); parent brief-t0413-lane3.md now sits in brief-queue/done/,
 
 ### ✅ gap-t1820-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
