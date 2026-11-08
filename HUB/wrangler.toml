@@ -8,6 +8,10 @@ compatibility_date = "2026-10-17"
 # Static assets: the Hub page lives in HUB/app/ (index.html + js/).
 [assets]
 directory = "./app"
+# hub-worker.js serves its fall-through via env.ASSETS (lines 433/444);
+# declare the binding explicitly so the config is self-consistent and any
+# deploy path (wrangler or API upload) carries it — named by Nitro 2026-11-08.
+binding = "ASSETS"
 not_found_handling = "single-page-application"
 # Worker-first for every route hub-worker.js answers itself (the note
 # reader and the /sw.js cure). Without this, the assets layer answers
