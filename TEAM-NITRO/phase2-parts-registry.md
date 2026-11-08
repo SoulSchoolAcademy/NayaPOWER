@@ -29,6 +29,21 @@
 
 The number is an element on its own — an object of itself. Each digit is a tile built from the Dashboard button anatomy: 2px coloured rim, glossy cap, black gradient face, white digit, halo and drop shadow. Chakra colours (1 red, 2 orange, 3 gold, 4 emerald, 5 cyan, 6 indigo, 7 royal purple, 8 lavender, 9 hot pink, 0 white). Slow-mo staggered reveal, colour-sync flash, dynamic growth (725 → 7,250 → 10,725), no limit (tiles shrink to fit the page). Shawn's verdict: better than he envisioned, a work of art, locked. Used by the Dashboard (number + gauge) and the Pricing calculator (Power / Pro / Max → the number they can make). Smart Note SN-2221. The rule: any page that needs a number harvests this one — never invent a new one.
 
+## The Academy Conversion Sections — Digital Assets (2026-11-08)
+
+| Asset | File | Size | Type |
+|-------|------|------|------|
+| Academy conversion page (Block 1) | DESIGN-BLOCKS/academy-assets-20261108/academy-conversion-page.html (blob d5d786d8, 46,335B) | 46,335B | Conversion |
+| Academy five-day experience (Block 2) | DESIGN-BLOCKS/academy-assets-20261108/academy-five-day-experience.html (blob bd0dabfe, 42,639B) | 42,639B | Conversion |
+| Academy CTA override (Block 3) | DESIGN-BLOCKS/academy-assets-20261108/academy-cta-override.js (blob b1156e1f, 7,885B) | 7,885B | Conversion |
+| Academy E05 — Does Any of This Sound Familiar? | DESIGN-BLOCKS/academy-assets-20261108/maxess-e05.html (blob 4cc851a7, 13,882B) | 13,882B | Conversion |
+| Academy E06 — Meet the Naya Supercharger | DESIGN-BLOCKS/academy-assets-20261108/maxess-e06.html (blob 21c546e9, 55,467B) | 55,467B | Conversion |
+| Academy E08 — Human Maximus Ecosystem | DESIGN-BLOCKS/academy-assets-20261108/maxess-e08.html (blob bd3559bc, 23,700B) | 23,700B | Conversion |
+| Academy E09 — Member Preview | DESIGN-BLOCKS/academy-assets-20261108/maxess-e09.html (blob 1f13e373, 15,026B) | 15,026B | Conversion |
+| Academy assets index | DESIGN-BLOCKS/academy-assets-20261108/README.md (blob c0122e44, 3,922B) | 3,922B | Index |
+
+CORRECTION (Shawn, 2026-11-08 21:15Z): these are Academy / Human Maximus conversion sections. They are NOT the MAXESS engine — MAXESS is the future scoring engine (15 questions, answers worth 4/3/2/1/0, percentage + level report). The filenames keep their sent names (maxess-e05 etc.) verbatim; the name in this registry is the correction. Source: the Academy page's full source as sent by Shawn 2026-11-08 ~20:50Z; local files ~/workspace/team-nitro/factory-assets/academy/ (208,856B total). Layers stay separate, fragments stay fragments; the CTA override is truncated as sent. The local README still carries the pre-correction "MAXESS" labels — the file is verbatim, the correction lives here and in the commit messages.
+
 ## Parts Categories for the Generator
 
 1. **Buttons** (110+): From Beautiful, Elite, Epic — all spectrum colors, all states
