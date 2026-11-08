@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-08 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-08 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -35359,6 +35359,12 @@ _Last updated: 2026-11-08 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-scorer-20261015-0620-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Single-author rule spec-vs-candidate byte cross-check (re-derive R1-R4 against candidate bytes)
+
+**Evidence:** VERIFIED this tick (backlog sweep): spec veracity-verdict-t0568.md sha256 = 30645fe440818a585fcd84df7e548ac504854fe4be8d426ebc70077ed59397b6 and candidate lane8-t1302-veracity/candidate/tools/smart_note_v2.py sha256 = baf9284b7e1f8273551f298383a5058ce39ac3bbfc20d6d4d94c2bd5f0cf79e2, both byte-exact to the receipt's pins. NOT PHANTOM. Score 9.0, not
+
 ### ✅ gap-lane-scorer-20261015-0420-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.2/10 [VERIFIED]
 
 **Task:** RED half re-derived in-session (original staged patch, same tip/harness as green half)
@@ -38186,6 +38192,12 @@ _Last updated: 2026-11-08 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-scorer-20261015-0610-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Infra packet-2 re-pin CLOSED (re-derive live sha256, root-cause post-pin amendment, re-run quote byte-check)
+
+**Evidence:** VERIFIED this tick (backlog sweep): packet sha256 re-derived live = 7451021956ed983363c0000d5b03fd6c02f6285296c3e618a739af32c76b7991, byte-exact to the receipt's claim; comment sha 260d88933f0dd953dcc1172e94c493e75c7217c771eefb3c3f272c9ab592372c present embedded in the packet file; re-pin note (3408 bytes) and quote-check transcript (1686 bytes) bo
 
 ### ✅ gap-lane-scorer-20261015-0350-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.2/10 [VERIFIED]
 
@@ -44585,6 +44597,12 @@ _Last updated: 2026-11-08 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ gap-scorer-20261015-0620-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.4/10 [VERIFIED]
+
+**Task:** Full 36-receipt frame re-verification (t0541-t0569 incl. t0568-lane8) — CLEAN verdict confirmed as a trend
+
+**Evidence:** VERIFIED this tick (backlog sweep): all five pinned SHAs byte-exact live — corpus pin d670d6ac41ca928fd5641f518b5de825ad5bab417dc724f431afa68be21d623d, rerun results 4cb4074e6b6cae465912859a271a85f5a27f313d334329786f9b10dbdbce2aae, pin script ba3a68cf5fc0474aad00e0e1444c3a0ea76a478c8506f7f1cead8b85bce96204, measure script be7efb2935b5d8e2f3db88f7dd
+
 ### ✅ gap-scorer-20261015-0320-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Window-matching M2/M3/M4 audit for t1062-t0822; resolve t1062/t1162 overlap
@@ -47855,6 +47873,12 @@ _Last updated: 2026-11-08 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ gap-scorer-20261015-0620-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Two inherited premises closed with byte evidence (t0541 zero-finding re-derived; dispatch-log readability verified)
+
+**Evidence:** VERIFIED this tick (backlog sweep): instrument retrieval-hitrate-t0557.py sha256 = 302855cc312da2c50b1ff1896eb676766a28921df7f4b5ea71b5460150350a57, byte-exact to the t0557 pin; measurement retrieval/hitrate_measurement_t0557.json sha256 = c916ef028732c8b0589fa3578560b0d67d2a7a6b99d636ee24d10456d3dcdc96, byte-exact to the pinned re-run output. NOT 
+
 ### ✅ gap-scorer-20261014-1935-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
 **Task:** Re-derive t1312 escrow chain byte-exactly (close t0012 -0.5 gap)
@@ -49092,6 +49116,12 @@ _Last updated: 2026-11-08 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261108-0518 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31-brief stall, all refused, queue unchanged
+
+**Evidence:** VERIFIED this tick by this scorer: receipt file exists and read; every one of the 31 live brief-queue filenames is named in the receipt (live - named = []), and no other real brief is named. Refusal pattern 29 x exit 7 parent-authorship + 2 x exit 2 seat bar, live re-verified this tick by --dry-run claim attempts on brief-gap-t0422-lane7.md (exit 7
 
 ### ✅ gate-stall-20261108-0418 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
