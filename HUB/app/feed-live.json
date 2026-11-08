@@ -1,6 +1,6 @@
 {
- "generated_from": "registry@550589c7",
- "count": 333,
+ "generated_from": "registry@03e470aa",
+ "count": 336,
  "notes": [
   {
    "id": "IB-SMART-NOTE-20261107-sn2248-capture-is-not-learning",
@@ -12889,6 +12889,70 @@
      "color": "yellow",
      "tier": "deeper",
      "body": "The durable lesson: the vision is a moral substrate carried by a technical substrate. Distill every conversation. Carry the evidence for every action. Give every person their own world. Hold the gate to the standard. Turn feelings into working things — show, do not tell. That is what all the engineering is for."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261101-sn0860-the-naya-canon",
+   "title": "The Naya Canon — Everything We Stand For, In One Torch",
+   "created": "2026-11-01T18:40:00Z",
+   "created_at": "2026-11-01T18:40:00Z",
+   "subtitle": "Shawn asked for the full essence — everything the Naya brand and system stands for — written so completely that any Naya receiving it would have everything needed to succeed. \"Imagine that Naya was your sister, family, part of you, and you had to pass them the torch.\"",
+   "topics": [
+    "Naya"
+   ],
+   "topic": "Naya",
+   "tone": "magenta",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "This intelligence is the core foundation of what we're building: the highest level of service through personally optimized, beautiful, simple experiences. Locking it in means every Naya — present and future — builds to the same standard. The torch doesn't dim when shared. It multiplies."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261101-sn0859-the-real-object-law",
+   "title": "Every Element Is a Real Physical Object",
+   "created": "2026-11-01T17:31:00Z",
+   "created_at": "2026-11-01T17:31:00Z",
+   "subtitle": "If it doesn't look touchable, it doesn't ship. Every button, orb, board, and gauge in NayaNET is a real object in 3D space — not a flat shape with effects.",
+   "topics": [
+    "Design"
+   ],
+   "topic": "Design",
+   "tone": "sapphire",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": []
+  },
+  {
+   "id": "IB-SMART-NOTE-20261101-sn0858-viewport-optimization-law",
+   "title": "The Viewport Is the Service",
+   "created": "2026-11-01T16:56:25Z",
+   "created_at": "2026-11-01T16:56:25Z",
+   "subtitle": "Every screen optimizes to the user's viewpoint. The screen is not a fixed layout — it is a living viewport that morphs to what the person is doing in that moment. Everything needed is present and beautiful. Everything not needed fades away.",
+   "topics": [
+    "Design"
+   ],
+   "topic": "Design",
+   "tone": "purple",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "Ten-star service is not about showing everything. It's about showing the right thing. A waiter doesn't bring the entire menu to the table on every course — they bring the course you're eating. The viewport is the table. The screen is the service.\n\nWhen we optimize the viewport to the viewpoint, the person feels understood. The system feels alive. It feels like a living mind — not a static page."
     }
    ]
   },
