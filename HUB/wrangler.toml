@@ -17,3 +17,13 @@ not_found_handling = "single-page-application"
 # (root-caused 2026-11-06, reader-route fix round 2). All other paths
 # keep the default order; the worker delegates them to env.ASSETS.fetch.
 run_worker_first = ["/smart-notes", "/smart-notes/*", "/s/*", "/notes/*", "/note", "/note/*", "/sw.js", "/service-worker.js"]
+
+# /s/* short links belong to this worker (2026-11-08, Resolve): the note
+# handler in hub-worker.js already 302s /s/<slug> into the Hub. Before
+# this route claim, the zone route table sent nayanet.app/s/* to the
+# naya-share worker, whose share-page template points at the retired
+# nayanet.live (dead domain, wrong target). Claim the route here so the
+# next Hub deploy repoints it.
+[[routes]]
+pattern = "nayanet.app/s/*"
+zone_name = "nayanet.app"
