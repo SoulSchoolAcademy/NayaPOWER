@@ -123,3 +123,39 @@ The durable lesson: write for the stranger. Bound the claim. Name the gap. Keep 
 - IB-SMART-NOTE-20261108-sn2368-the-academy-assets-are-filed
 - IB-SMART-NOTE-20261108-sn2369-the-viewpoint-refinement
 - IB-SMART-NOTE-20261108-sn2370-the-anatomy-of-a-10-star-viewport
+
+## RESTORED STATUS — PARTIAL CARRY + STANDING POINTERS
+
+Restored 2026-11-08 by the truth builder (Naya 5), after first-hand adjudication of
+commit b551750e4a2 (Intelligence Loop 20:23Z, run-9 addendum): that commit added the
+run-9 addenda and in the same edit removed the four status lines below. The file was
+not deleted; the removed lines recorded carry-status, not substance, and without them
+this file misstates that status — SN-0337 and SN-703 read as fully distilled here,
+SN-0471 and SN-0483 read as distilled here. Restored verbatim from the removed bytes
+and re-verified at tip c6263829: SN-2165 exists and carries the SN-703 substance
+(BRAIN/05-MEMORY/SMART-NOTE-essence-gates-earn-their-green.md); no essence carries
+the SN-0337 operational remainder (it lives in the SN-0337 note itself, which remains
+ACTIVE). Nothing else in this file is changed by this section; this is an addition,
+not a rewrite, so the intelligence loop's later addenda stand.
+
+### PARTIAL CARRY — RESTORED
+
+- IB-SMART-NOTE-20261005-sn0337-lanes-converge-close-duplicate-superseded — PARTIAL: this essence carries the headline rule only (when lanes converge, the first-qualifying repair owns the class). The operational remainder — qualify the owner by evidence, close the duplicate publicly as SUPERSEDED with a pointer comment, keep the closure reversible, obtain the other lane's explicit board confirmation — is carried by no essence; SN-0337 remains ACTIVE as its own carrier and does not retire on this essence.
+
+- IB-SMART-NOTE-20261013-sn0703-migrated — PARTIAL: this essence carries the one-line lesson (a mechanical gate must be at least as strong as the doctrine it cites). The claim-check substance — three-layer enumeration of claims, first-claim-stands, the atomic renumber — is carried by SN-2165 (A Gate Must Earn Its Green), under which SN-703 is retired.
+
+### STANDING POINTERS — NOT DISTILLED HERE (RESTORED)
+
+- IB-SMART-NOTE-20261006-sn0471-the-archive-is-the-design — SN-0471 is director-ratified standing authority (Shawn, 2026-10-06: "Lock this in for good"). It stands alone and is pointed to, never distilled; it is not part of this essence's coverage.
+
+- IB-SMART-NOTE-20261006-sn0483-recommend-dont-ask — SN-0483 carries Shawn's direct directive (never ask blind; bring a scored recommendation with reasoning). It stands alone and is pointed to, not distilled; it is not part of this essence's coverage.
+
+### COVERAGE ARITHMETIC — WHY THE HEADER SAYS 14 AND THE COVERAGE SAYS 67
+
+The header "Distilled from 14 raw Smart Notes (Governance + Doctrine)" counts the
+original cluster only: 12 originally distilled + the 2 standing pointers above. The
+"COVERAGE — RAW NOTES DISTILLED (67)" heading counts every distilled note: 14 + 53
+loop-run notes (intelligence-loop runs 2–11). The two numbers count different scopes;
+neither is wrong, and neither was explained until this section. Audit pointer restored
+with the status lines: coverage corrected in the Batch-1 reconciliation pass (see
+audit: batch1-recon).
