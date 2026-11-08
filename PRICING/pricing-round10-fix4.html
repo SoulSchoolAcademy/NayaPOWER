@@ -1175,6 +1175,42 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
    would hand the label the very black it inherits now (inherit IS the bug). Explicit
    #fff matches the -/+ buttons exactly. Words, size, weight and position untouched. */
 .calc-pace-num{color:#fff;}
+
+/* ============ FIX 6 (2026-11-08, rev 10 same file — the verifier's 10-path, bounded to three safe repairs) ============
+   Item 1 — DESKTOP CLOSE CLEARANCE, FROM ABOVE (verify-5 §3, the sharpest correction).
+   Baseline (fix 5, desktop 1920x1080, 3 runs each direction, fix-6 baseline probe):
+   FROM ABOVE (scrollIntoView — the way a visitor scrolling down arrives): scrollY 5787-5788,
+   button 908-965, clearance 14-15px. FROM BELOW (scrollTo maxScroll — overshoot, snap back):
+   scrollY 5807, button 890-946, clearance 34px. Both VISIBLE, but 14-15px is thin.
+   Mechanism: the snap area is the slide inset by the negative scroll-margin-top. Slide #start:
+   top 5507/5508, height 1379 (clientH), bottom 6887. With -280px the snap area is 1379-280 =
+   1099px — TALLER than the 1080px viewport by 19px — so the browser end-aligns it from below
+   (scrollY = 6887-1080 = 5807) and top-aligns it from above (scrollY = 5508+280 = 5788).
+   The fix: -280px -> -300px. The snap area becomes 1379-300 = 1079px — SHORTER than the
+   viewport — so the oversize end-alignment can no longer engage and BOTH directions land at
+   the one top-alignment, scrollY = 5508+300 = 5808, clearance ~35px both ways (button document
+   bottom 6752-6753; 979-944 = 35). The direction-dependence itself is gone, not just the thin
+   number. Cost, NAMED: the banner shows ~340px at the unified landing (the from-below value —
+   the from-above arrival loses the 19-20px it used to show, 359-360 -> ~340; head, dream, trial
+   and CTA all still read). The margin-bottom:300px scroll room from fix 4b STAYS (maxScroll
+   6106, snap 5808, ~298px headroom). The -280px rule stays in the file (its margin-bottom is
+   still live); this rule overrides only its scroll-margin-top at desktop. */
+@media (min-width:861px){
+  #start{scroll-margin-top:-300px;}
+}
+/* Item 3 — PHONE CLOSE SLIDE'S 110PX BOTTOM PADDING (verify-5 §6, the maker's own note).
+   Measured first: #start's computed padding-bottom at phone IS 110px (the .slide rule, line
+   96). The button sits 134px above the box bottom = 110px padding + 24px — the 24px is
+   .close-start's own margin-bottom (wrap margin-bottom 24px, button margin-bottom 0px).
+   The trim zeroes padding-bottom ONLY, on #start at phone; scroll-padding-bottom:110px on
+   .slide stays, and the 24px .close-start margin stays. After the trim the slide is
+   973-110 = ~863px tall and the button ends ~24px above the box bottom. The snap landing
+   cannot move (slide top and button document position unchanged): snap stays ~4463,
+   clearance stays 45px, document 5445 -> ~5335, maxScroll 4601 -> ~4491 (snap still < max,
+   ~28px headroom). Desktop untouched (phone-scoped). */
+@media (max-width:860px){
+  #start{padding-bottom:0;}
+}
 </style>
 </head>
 <body>
@@ -1560,7 +1596,7 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
         <p class="calc-label">Your package</p>
         <div class="calc-plans" role="group" aria-label="Pick your package">
           <button type="button" class="calc-plan primo theme-purple" data-share="12.5" data-plan="Power" style="--sc:#c9c9d8"><span class="sdot" aria-hidden="true"></span>POWER<span>$25/mo · $12.50 a sale</span></button>
-          <button type="button" class="calc-plan is-on primo theme-blue" data-share="25" data-plan="Pro" style="--sc:#a06bff"><span class="sdot" aria-hidden="true"></span>PRO<span>$50/mo · $25 a sale</span></button>
+          <button type="button" class="calc-plan is-on primo theme-blue" data-share="25" data-plan="Pro" style="--sc:#a06bff"><span class="sdot" aria-hidden="true"></span>PRO<span>$50/mo · $25&nbsp;a sale</span></button>
           <button type="button" class="calc-plan primo theme-gold" data-share="50" data-plan="Max" style="--sc:#ffbf3d"><span class="sdot" aria-hidden="true"></span>MAX<span>$100/mo · $50 a sale</span></button>
         </div>
         <p class="calc-label">Your pace</p>
@@ -2558,7 +2594,7 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
         b.setAttribute('data-plan', p.name);
         b.setAttribute('data-share', String(p.share));
         b.innerHTML = '<span class="sdot" aria-hidden="true"></span>' + p.name.toUpperCase() +
-          '<span>' + cfg.currency + p.price + '/mo \u00b7 ' + cfg.currency + shareFmt(p.share) + ' a sale</span>';
+          '<span>' + cfg.currency + p.price + '/mo \u00b7 ' + cfg.currency + shareFmt(p.share) + '\u00a0a sale</span>';
       });
       var state = { plan: cfg.defaultPlan, share: planByName(cfg.defaultPlan).share,
                     pace: cfg.defaultPace, unit: cfg.defaultUnit, goal: null };
