@@ -11,7 +11,7 @@ this file is the draft; the loop files it.
 
 ## BOARD NOTE — Design Intelligence: locked in, in three places
 
-**State:** FILED by the intelligence loop (Sigma), run 2, 2026-11-08 ~17:05Z. Blocks written; drafts numbered SN-2299–SN-2307 and filed to Smart Box + GitHub (read-back verified — see the daily log for shas); 4 missing GitHub files filed; this note filed to GitHub at `TEAM-NITRO/PI-BOARD-NOTE-DESIGN-INTELLIGENCE.md`. **Updated run 4, 2026-11-08 ~17:53Z:** language section added (Shawn's word 17:41Z) + 7-libraries correction (FOUND 2026-11-08); Draft 10 numbered SN-2319 and filed; blocks file re-filed with Block 0.
+**State:** FILED by the intelligence loop (Sigma), run 2, 2026-11-08 ~17:05Z. Blocks written; drafts numbered SN-2299–SN-2307 and filed to Smart Box + GitHub (read-back verified — see the daily log for shas); 4 missing GitHub files filed; this note filed to GitHub at `TEAM-NITRO/PI-BOARD-NOTE-DESIGN-INTELLIGENCE.md`. **Updated run 4, 2026-11-08 ~17:53Z:** language section added (Shawn's word 17:41Z) + 7-libraries correction (FOUND 2026-11-08); Draft 10 numbered SN-2319 and filed; blocks file re-filed with Block 0. **Updated run 5, 2026-11-08 ~18:23Z:** SN-2324–SN-2327 filed (membership ladder changed Power 10/Pro 100/Max ∞ + Ambassador rename; Smart Box gigabytes + Smart Ledger Included ×4; entrance banner as a real object; colour flow green → blue → purple → gold); LOCK-IN-10 done 18:23Z (9/10 complete, concept-10 synced file blocked by the EPERM write fault); ESSENCE-01 run-5 addendum (coverage 20 → 24); ESSENCE-08 filed locally (its GitHub home still unestablished).
 
 **What it is:** The design contract as intelligent blocks — one block per
 law — so the knowledge IS the brand and any Naya reads it as blocks. Nine
@@ -72,7 +72,13 @@ fails is not done. A deferral is an open item, not a pass.
   placing this note in PI (filed to GitHub at
   `TEAM-NITRO/PI-BOARD-NOTE-DESIGN-INTELLIGENCE.md`; next refresh corroborates).
 - NOT DONE: nothing from this seat's list — all four loop jobs are done.
-  Carried open items: the 7 canonical libraries are FOUND (concept 1,
-  2026-11-08); the Smart Notes / Smart Lists ladders await Shawn's word (SN-2311);
-  the popup portrait is a reproduction wearing the real file's name until the
-  real bytes ship (SN-2312).
+  Carried open items: the Smart Notes / Smart Lists ladders are SETTLED
+  (SN-2323 — Smart Notes 10/100/1,000/unlimited, Smart Lists
+  3/100/1,000/unlimited; no longer open); the popup portrait is a
+  reproduction wearing the real file's name until the real bytes ship
+  (SN-2312) — restated by his eye 18:24Z (SN-2326): the banner builder
+  tries the copy again and says plainly if the block still stops it;
+  ESSENCE-08 has no GitHub home yet (filed locally only); two "Affiliate"
+  mentions remain outside the renamed row (mini-card + Smart Growth popup)
+  awaiting his word on sweeping them (SN-2324); the 5th-group colour
+  (cycles to green) is the captain's reading, flagged to him (SN-2327).
