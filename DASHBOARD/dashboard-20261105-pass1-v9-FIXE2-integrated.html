@@ -2288,6 +2288,10 @@ button:hover{
 .tn-truth-meter.tn-truth-m-loading .tn-truth-dot{
   width:7px; height:7px;
 }
+/* FIX PASS 3 (Fail 10, 2026-11-08): the meter is position:absolute top:118px inside
+   #os-ld-org, so it lands at y=214 — inside the number tiles. The loading message now lives
+   in the skeleton caption (.os-skel-msg), so the absolute meter hides while loading. */
+.tn-truth-meter.tn-truth-m-loading{display:none;}
 /* 2026-11-01 — Shawn: the "Ledger synced" bar shouldn't be there.
    The meter ONLY appears as a bar when numbers disagree (actionable).
    Live/stale/partial states are silent — no bar, no noise. */
@@ -4576,7 +4580,7 @@ html.os-calm
 #os-se-val{background:none;border:none;box-shadow:none;padding:0;text-shadow:none;}
 #os-se-num{background:none;-webkit-background-clip:border-box;background-clip:border-box;-webkit-text-fill-color:#fff;color:#fff;text-shadow:none;filter:none;}
 /* the silver platter the number is served on */
-#os-score-elegant .platter{width:430px;max-width:86%;height:34px;margin:2px auto 0;border-radius:50%;background:radial-gradient(ellipse at 50% 28%,#ffffff,#cfcfcf 42%,#8d8d8d 72%,#ececec);box-shadow:0 8px 16px rgba(0,0,0,.75),inset 0 2px 3px rgba(255,255,255,.85),inset 0 -3px 5px rgba(0,0,0,.35);}
+#os-score-elegant .platter{width:430px;max-width:86%;height:34px;margin:2px auto 0;border-radius:50%;background:radial-gradient(ellipse at 50% 28%,#2c2c36,#0d0d12 55%,#050507);border:1px solid rgba(217,165,33,.35);box-shadow:0 8px 16px rgba(0,0,0,.75),0 0 26px rgba(217,165,33,.16),inset 0 2px 3px rgba(255,255,255,.22),inset 0 -3px 5px rgba(0,0,0,.55);}
 /* the hero fit wrapper (Addendum 4): the hero is zoomed to fill the viewport exactly */
 #os-hero-fit{transform-origin:top center;will-change:transform;}
 /* the data area below the fold: the ledger pill + the math line, as data */
@@ -4675,7 +4679,7 @@ body.os-nav-hidden #nayanet-nav,body.os-nav-hidden .ph-bottom{transform:translat
      One viewpoint, nothing else in it. The wrapper is scaled by fitHero(). -->
 <div id="os-hero-fit">
 <div class="os-score-elegant" id="os-score-elegant">
-  <div class="os-se-val" id="os-se-val"><span class="os-se-num" id="os-se-num"><span class="os-skel-line" style="width:120px;height:59px;border-radius:12px;vertical-align:middle;"></span></span></div>
+  <div class="os-se-val" id="os-se-val"><span class="os-se-num" id="os-se-num"><span class="os-skel-tile"></span><span class="os-skel-tile"></span><span class="os-skel-tile"></span><span class="os-skel-msg">Ledger loading — your score appears when the ledger answers</span></span></div>
   <div class="platter big"></div>
 </div>
 <p class="tn-hero-voice" data-tn-voice="hero" aria-label="Naya reads your score"></p>
@@ -5223,7 +5227,7 @@ body:not(.hero-mode) .os-ld{
   /* FIXB 2026-11-07 (A2-3): was min-height:100vh — the centred content left ~250px of empty black between the plate and the boards at desktop height. The block is now content-height; the boards follow the plate. Bar clearance lives in the bottom padding. */
   display:flex; flex-direction:column;
   align-items:center; justify-content:center;
-  padding:32px 0 calc(2vh + 110px); /* PASS 1 v6 (a): top padding 2vh (~19px) -> 32px — the meter band (toggle bottom to constellation top) needs 36px for the 26px meter with clearance. */
+  padding:32px 0 calc(2vh + 84px); /* PASS 4 (addendum 13): was calc(2vh + 110px) — the derivation/next-move stack it protected is gone, so the padding only clears the ~72px bottom icon bar with breathing room. The hero is centred by fitHero now, not by dead space. */
   /* 2026-11-02 — FIX: bottom clearance for fixed smart bar (~80px) + 20px breathing room.
      Score no longer collides with #nsbBottom.
      2026-11-05 — DEFECT FIX 2: the constellation grew to 670px since 11-02, so the
@@ -5242,7 +5246,7 @@ body:not(.hero-mode) .os-ld{
    It cannot lift the next-move line fully clear (that needs ~30px; the
    padding nudge is slack-capped) — that remainder is a phone-hero layout
    item, documented in BUILD-REPORT.md, not papered over. */
-@media(max-width:560px){.os-block-gauge{padding-bottom:calc(2vh + 120px);}} /* FIXB 2026-11-07 (A2-3): was 216px — the derivation clip it protected is gone (the stack under the number was removed), so the extra dead space goes. */
+@media(max-width:560px){.os-block-gauge{padding-bottom:calc(2vh + 96px);}} /* PASS 4 (addendum 13): was calc(2vh + 120px) — the derivation clip it protected is gone; the padding only clears the ~72px bottom icon bar. */
 /* 2026-11-02 — Bullseye: Smart Stats. Hide smart bar in focused drill-down views. */
 body.viewport-focus #nsbBottom{display:none !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important;}
 body.viewport-focus .nsb-bottom{display:none !important; visibility:hidden !important;}
@@ -5386,6 +5390,7 @@ body.has-orbs .os-pts-toggle{
 .os-score-derive .os-sd-part:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.12);}
 .os-score-derive .os-sd-op{color:rgba(255,255,255,.55);font-size:12px;font-weight:700;}
 .os-score-derive .os-sd-sum{color:#fff;font-weight:900;font-size:13px;}
+.os-score-derive .os-sd-alltime{color:rgba(255,255,255,.6);font-size:12px;font-weight:700;margin-left:6px;} /* PASS 4 (fail 7): the all-time score is a separate label, never a second '=' — two '=' signs read as an unbalanced equation. */
 .os-score-derive .os-sd-empty{color:rgba(255,255,255,.6);font-size:12px;}
 .os-score-next{margin-top:8px;font-size:12px;color:rgba(255,255,255,.75);text-align:center;padding:0 12px;}
 .os-score-next .os-sd-share{appearance:none;border:none;background:none;color:#7fd4ff;font-family:inherit;font-size:inherit;font-weight:800;cursor:pointer;text-decoration:underline;text-underline-offset:2px;padding:0;}
@@ -6108,6 +6113,14 @@ button.os-ld-node .os-ld-n{
   0%{ background-position:200% 0; }
   100%{ background-position:-200% 0; }
 }
+/* PASS 4 (fail 10): the loading skeleton is the size of the number itself
+   (three dark tiles, same footprint as the landed tiles) so the layout
+   never shifts and never overlaps the text below. Dark obsidian, never
+   a blank white rectangle. The tiles use the same --tnum-tile-w the
+   real tiles use, so they shrink on a phone exactly like the number. */
+.os-skel-tile{display:inline-block;width:var(--tnum-tile-w,150px);max-width:28vw;height:auto;aspect-ratio:150/194;border-radius:20px;vertical-align:middle;background:linear-gradient(180deg,#14141c,#060609);border:2px solid rgba(255,255,255,.14);box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -4px 8px rgba(0,0,0,.6),0 6px 14px rgba(0,0,0,.6);animation:skelPulse 1.6s ease-in-out infinite;}
+.os-skel-tile + .os-skel-tile{margin-left:8px;}
+.os-skel-msg{display:block;font-size:12.5px;line-height:1.4;color:#9a9aa2;text-align:center;margin:10px auto 0;white-space:normal;max-width:100%;}
 .os-skel-bars{
   display:flex; align-items:flex-end; gap:4px; height:80px; padding:12px 0;
 }
@@ -12755,7 +12768,7 @@ NF.register(UNIT, {
     function fc(n){
       if (n>=1000000) return (n/1000000).toFixed(n>=10000000?0:1).replace(/\.0$/,'')+'M';
       if (n>=1000) return (n/1000).toFixed(n>=10000?0:1).replace(/\.0$/,'')+'K';
-      return Math.round(n).toLocaleString();
+      return window._osSpc(Math.round(n));
     }
     /* 2026-11-06 — v7.1 FIX 10: instant — the final value is written at once
        (was a 900ms eased rAF count). The final text keeps the caller's format:
@@ -13121,7 +13134,7 @@ NF.register(UNIT, {
   var plugPaySeq = 0;
   function plugMoney(cents){
     var n = Number(cents || 0);
-    return '$' + (n / 100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return '$' + window._osMoney(n / 100); /* PASS 4 (fail 4): space thousands, decimals kept */
   }
   function plugRevenue(st){
     var paid = Number(st.paid_count || 0);
@@ -13399,7 +13412,7 @@ NF.register(UNIT, {
       +cell(slMiniGauge(share, c), esc(String(clicks)), 'Total clicks', conv===null?'no clicks yet':conv+'% became joins')
       +cell(slMiniGauge(null, c), '&mdash;', 'Total views', 'not counted')
       +cell(slMiniGauge(null, c), '&mdash;', 'CTR', 'needs views')
-      +cell(slMiniGauge(null, c), '&mdash;', 'Revenue / 1,000 views', 'needs views')
+      +cell(slMiniGauge(null, c), '&mdash;', 'Revenue / 1 000 views', 'needs views')
       +'</div>';
   }
   function renderLinks(links, stats, linksErr, dims){
@@ -13442,9 +13455,9 @@ NF.register(UNIT, {
        The stats ARE the interface — no paragraphs. */
     try{
       var _tcn=$('os-sl-total-clicks'), _tln=$('os-sl-total-links'), _tjn=$('os-sl-total-joins');
-      if (_tcn) _tcn.textContent=tc.toLocaleString();
+      if (_tcn) _tcn.textContent=window._osSpc(tc);
       if (_tln) _tln.textContent=rows.length;
-      if (_tjn) _tjn.textContent=tj.toLocaleString();
+      if (_tjn) _tjn.textContent=window._osSpc(tj);
       /* 2026-11-01 — Shawn: PERCENTAGES, NOT COUNTS. The conversion rate
          tells the truth. 40 clicks → 0 joins = 0%. That's the leak. */
       var _conv=$('os-sl-conv');
@@ -13452,12 +13465,14 @@ NF.register(UNIT, {
         if (tc>0){
           var _rate=Math.round(tj/tc*100);
           var _color=_rate>=10?'#2fe89e':(_rate>0?'#ffbf3d':'#ff5e6c');
-          _conv.innerHTML='<span style="color:'+_color+'">'+_rate+'%</span>&nbsp;of clicks became joins';
-          if (_rate===0) _conv.innerHTML+='&nbsp;<span class="os-sl-leak">— the leak is here</span>';
+          _conv.innerHTML='<span style="color:'+_color+'">'+_rate+'%</span> <span>of clicks became joins</span>' + (_rate===0 ? ' <span class="os-sl-leak">— the leak is here</span>' : '');
         } else {
           _conv.textContent='Share your link to start the funnel';
         }
       }
+      /* PASS 4 (fail 5): the totals above were just set as plain text —
+         tile them now (the #os-ld-org observer re-tiles on later renders). */
+      try{ if (typeof window._osMiniNums === 'function') window._osMiniNums(); }catch(e){}
       /* click graph: last 30 days as bars */
       var _g=$('os-sl-graph');
       if (_g){
@@ -13793,8 +13808,8 @@ function dashFixFP(s){ var h=0; for (var i=0;i<s.length;i++){ h=((h<<5)-h+s.char
       box.innerHTML='<div class="os-src-viz empty" style="height:100%;border:0;background:transparent;box-shadow:none"><span>No actions counted yet.</span></div>';
       if (leg) leg.innerHTML=''; return;
     }
-    box.innerHTML=segs.map(function(s){ return '<div class="os-pts-seg" data-w="'+(s.n/total*100).toFixed(1)+'" style="--sc:'+s.c+'" title="'+s.label+': '+s.n.toLocaleString()+'"></div>'; }).join('');
-    if (leg) leg.innerHTML=segs.map(function(s){ return '<span><i style="--sc:'+s.c+'"></i>'+s.label+' <b>'+s.n.toLocaleString()+'</b></span>'; }).join('');
+    box.innerHTML=segs.map(function(s){ return '<div class="os-pts-seg" data-w="'+(s.n/total*100).toFixed(1)+'" style="--sc:'+s.c+'" title="'+s.label+': '+window._osSpc(s.n)+'"></div>'; }).join('');
+    if (leg) leg.innerHTML=segs.map(function(s){ return '<span><i style="--sc:'+s.c+'"></i>'+s.label+' <b>'+window._osSpc(s.n)+'</b></span>'; }).join('');
     requestAnimationFrame(function(){ requestAnimationFrame(function(){
       Array.prototype.forEach.call(box.children, function(el){ el.style.width=el.getAttribute('data-w')+'%'; });
     }); });
@@ -13818,7 +13833,7 @@ function dashFixFP(s){ var h=0; for (var i=0;i<s.length;i++){ h=((h<<5)-h+s.char
     var line=smoothPath(pts);
     var endY=(94-(cum[cum.length-1]/run*82)).toFixed(1);
     box.innerHTML='<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="'+line+'L100,100 L0,100 Z" fill="#2fe89e" opacity="0.14"/><path class="os-ts-draw" pathLength="100" d="'+line+'" fill="none" stroke="#2fe89e" stroke-width="2.5" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"/><circle cx="100" cy="'+endY+'" r="2.4" fill="#ffbf3d"/></svg><span class="os-src-viz-cap">cumulative · live</span>';
-    if (note) note.textContent=run.toLocaleString()+' actions and counting — every one of them real.';
+    if (note) note.textContent=window._osSpc(run)+' actions and counting — every one of them real.';
   }
 
 /* ============ POINTS LIVING DATA ENGINE (vision build, 2026-10-30) ============
@@ -14058,12 +14073,12 @@ function uchartStory(def, S, w, trimN, paceDays){
     else shape='steady';
     if(def.key==='score'){
       var gained=total-S.values[0];
-      if(gained>0){ dirHtml='▲ up '+gained.toLocaleString()+' pts in view'; dirCls='os-uchart-dirup'; }
+      if(gained>0){ dirHtml='▲ up '+window._osSpc(gained)+' pts in view'; dirCls='os-uchart-dirup'; }
       else { dirHtml='― flat in view'; dirCls='os-uchart-dirflat'; }
     } else {
       var P=uchartSeries(def,w,Date.now()-uchartWindowMs(w)), d=total-P.total, pname=wname.replace(/^the last /,'');
-      if(d>0){ dirHtml='▲ up '+d.toLocaleString()+' vs prior '+pname; dirCls='os-uchart-dirup'; }
-      else if(d<0){ dirHtml='▼ down '+Math.abs(d).toLocaleString()+' vs prior '+pname; dirCls='os-uchart-dirdn'; }
+      if(d>0){ dirHtml='▲ up '+window._osSpc(d)+' vs prior '+pname; dirCls='os-uchart-dirup'; }
+      else if(d<0){ dirHtml='▼ down '+window._osSpc(Math.abs(d))+' vs prior '+pname; dirCls='os-uchart-dirdn'; }
       else { dirHtml='― flat vs prior '+pname; dirCls='os-uchart-dirflat'; }
     }
   }
@@ -14075,13 +14090,13 @@ function uchartStory(def, S, w, trimN, paceDays){
   var h;
   /* V6: zero events in view — an honest empty read, never "Busiest: <date>: 0 pts". */
   if(def.key==='score'&&S.events===0){
-    h='<b>'+total.toLocaleString()+'</b> '+unitName+' in '+wname+' — no activity yet, and that is honest, not empty.';
+    h='<b>'+window._osSpc(total)+'</b> '+unitName+' in '+wname+' — no activity yet, and that is honest, not empty.';
   } else {
-    h='<b>'+total.toLocaleString()+'</b> '+unitName+' in '+wname+' — '+shape+'.';
-    if(total>0) h+=' Busiest: <b>'+busyDate+'</b>: <b>'+busyVal.toLocaleString()+'</b>'+(def.key==='score'?' pts':' '+def.label.toLowerCase())+'.';
+    h='<b>'+window._osSpc(total)+'</b> '+unitName+' in '+wname+' — '+shape+'.';
+    if(total>0) h+=' Busiest: <b>'+busyDate+'</b>: <b>'+window._osSpc(busyVal)+'</b>'+(def.key==='score'?' pts':' '+def.label.toLowerCase())+'.';
   }
   h+=' <span class="'+dirCls+'">'+dirHtml+'</span>';
-  if(typeof paceDays==='number' && paceDays>0 && paceDays<3650) h+=' At this pace, <b>1,000</b> in ~<b>'+paceDays+'</b> days.';
+  if(typeof paceDays==='number' && paceDays>0 && paceDays<3650) h+=' At this pace, <b>1 000</b> in ~<b>'+paceDays+'</b> days.';
   if(trimN>0) h+=' <span style="color:#8a8a96">Timeline starts at first data — '+trimN+' quiet '+ql+(trimN===1?'':'s')+' before.</span>';
   h+=' <span class="os-uchart-move"><b>The move:</b> '+uchartMoveText(def,shape)+'</span>';
   return h;
@@ -14093,9 +14108,9 @@ function uchartBreakdownHTML(def, S){
   S.stackDefs.forEach(function(g,gi){
     if(gi===0) return;
     var v=S.perSrc[gi];
-    if(v>0) h+='<span class="os-uchart-bdeq">+</span><span class="os-uchart-bd"><span class="os-uchart-chip" style="background:'+g.color+'"></span><b>'+v.toLocaleString()+'</b>&nbsp;'+g.label.toLowerCase()+'</span>';
+    if(v>0) h+='<span class="os-uchart-bdeq">+</span><span class="os-uchart-bd"><span class="os-uchart-chip" style="background:'+g.color+'"></span><b>'+window._osSpc(v)+'</b>&nbsp;'+g.label.toLowerCase()+'</span>';
   });
-  h+='<span class="os-uchart-bdeq">=</span><span class="os-uchart-bd"><b>'+S.total.toLocaleString()+'</b>&nbsp;total</span>';
+  h+='<span class="os-uchart-bdeq">=</span><span class="os-uchart-bd"><b>'+window._osSpc(S.total)+'</b>&nbsp;total</span>';
   return h;
 }
 /* V5: zero-state copy per stat — every empty view is a next-action card, never a dead chart. */
@@ -14128,9 +14143,9 @@ function uchartFunnelStory(){
   if(fc===0 && fi===0){ h='<b>0</b> link clicks, <b>0</b> invites — the funnel is empty at the top.'; }
   else{
     var r1=fc>0?Math.round(fi/fc*100):0;
-    h='<b>'+fi.toLocaleString()+'</b> invites from <b>'+fc.toLocaleString()+'</b> link clicks = <b>'+r1+'%</b>. ';
+    h='<b>'+window._osSpc(fi)+'</b> invites from <b>'+window._osSpc(fc)+'</b> link clicks = <b>'+r1+'%</b>. ';
     if(fi>0 && fj===0){ h+='Zero joins — the leak is the invite, not the click.'; }
-    else if(fj>0 && fi>0){ var r2=Math.round(fj/fi*100); h+='<b>'+fj.toLocaleString()+'</b> joins = <b>'+r2+'%</b> of invites. '+(r2<20?'Joins are thin — the invite needs tightening.':'The loop is working — feed the top.'); }
+    else if(fj>0 && fi>0){ var r2=Math.round(fj/fi*100); h+='<b>'+window._osSpc(fj)+'</b> joins = <b>'+r2+'%</b> of invites. '+(r2<20?'Joins are thin — the invite needs tightening.':'The loop is working — feed the top.'); }
     else { h+='No invites yet — nothing to convert.'; }
   }
   var mv=(fi>0&&fj===0)?'rewrite the invite message — say what they’ll get in one line, then ask.'
@@ -14189,10 +14204,10 @@ function uchartRender(){
     var h;
     if(isScore){
       var gain = i===0 ? v-75 : v-S.values[i-1];
-      h='<b>'+esc(fd)+'</b> — <b>+'+gain.toLocaleString()+'</b> pts that day · <b>'+v.toLocaleString()+'</b> total.';
+      h='<b>'+esc(fd)+'</b> — <b>+'+window._osSpc(gain)+'</b> pts that day · <b>'+window._osSpc(v)+'</b> total.';
     } else {
       var share = S.total>0 ? Math.round(v/S.total*100) : 0;
-      h='<b>'+esc(fd)+'</b> — <b>'+v.toLocaleString()+'</b> '+unit+' · '+share+'% of the total in view.';
+      h='<b>'+esc(fd)+'</b> — <b>'+window._osSpc(v)+'</b> '+unit+' · '+share+'% of the total in view.';
     }
     
     dd.innerHTML=h; dd.classList.add('show');
@@ -14212,7 +14227,7 @@ function uchartRender(){
           var tsv=tSig[ti];
           var chip = tsv>0 ? uchartValueColor(tsv,loT,hiT,def) : '#2a2a32';
           var dl = ti>0 ? S.values[ti]-S.values[ti-1] : S.values[ti]-(isScore?75:0);
-          var dHtml = dl>0 ? '<span class="uc-dup">+'+dl.toLocaleString()+'</span>' : (dl<0 ? '<span class="uc-ddn">\u2212'+Math.abs(dl).toLocaleString()+'</span>' : '<span class="uc-dflat">\u2014</span>');
+          var dHtml = dl>0 ? '<span class="uc-dup">+'+window._osSpc(dl)+'</span>' : (dl<0 ? '<span class="uc-ddn">\u2212'+window._osSpc(Math.abs(dl))+'</span>' : '<span class="uc-dflat">\u2014</span>');
           var bestCls = (ti===pkT && tsv>0) ? ' uc-best' : '';
           /* V9: inline visual bar — the value you can SEE, not just read. */
           var tMax=Math.max.apply(null,S.values.concat([1]));
@@ -14221,7 +14236,7 @@ function uchartRender(){
           /* V9.3: stagger + ignition variables — each row enters in sequence, ignites in stat color. */
           var rowDelay=((n-1-ti)*45)+'ms';
           th+='<tr class="uc-row'+bestCls+'" data-i="'+ti+'" tabindex="0" style="animation-delay:'+rowDelay+';--sc:'+def.color+';--cc:'+chip+'"><td class="uc-tdate">'+esc(uchartFullDate(S.stamps[ti]))+(ti===pkT&&tsv>0?' \u2605':'')+'</td>'
-            +'<td class="uc-tval"><span class="os-uchart-chip"></span>'+S.values[ti].toLocaleString()+(isScore?' pts':'')
+            +'<td class="uc-tval"><span class="os-uchart-chip"></span>'+window._osSpc(S.values[ti])+(isScore?' pts':'')
             +'<span class="uc-tbar" style="display:inline-block;width:72px;height:8px;border-radius:4px;background:#1a1a22;margin-left:10px;vertical-align:middle;overflow:hidden;"><span style="display:block;height:100%;width:'+barW+'%;border-radius:4px;background:'+barBg+';box-shadow:inset 0 1px 0 rgba(255,255,255,.4);"></span></span></td>'
             +'<td class="uc-tdelta">'+dHtml+'</td></tr>';
         }
@@ -14249,9 +14264,9 @@ function uchartRender(){
           /* V9 (Shawn 2026-11-01): the funnel TELLS THE STORY — no "100% of itself"
              confusion. Each stage says what happened in human words. */
           var story;
-          if(si===0){ story = st.v>0 ? st.v.toLocaleString()+' people tapped' : 'no taps yet'; }
+          if(si===0){ story = st.v>0 ? window._osSpc(st.v)+' people tapped' : 'no taps yet'; }
           else if(si===1){ story = st.v>0 ? ('1 in '+Math.max(1,Math.round(stages[0].v/st.v))+' tapped through') : 'no invites sent'; }
-          else { story = st.v>0 ? st.v.toLocaleString()+' joined' : 'the gap to close'; }
+          else { story = st.v>0 ? window._osSpc(st.v)+' joined' : 'the gap to close'; }
           var conv = story;
           /* V5: a zero row is a designed next-action state — never a dead hollow track. */
           if(st.v===0){
@@ -14263,7 +14278,7 @@ function uchartRender(){
                The silhouette itself tells the story: wide at attention, narrow at action. */
             var taperIn=si*9, taperOut=si*9+8;
             var clip='polygon('+taperIn+'% 0,'+(100-taperIn)+'% 0,'+(100-taperOut)+'% 100%,'+taperOut+'% 100%)';
-            fh+='<div class="os-uchart-funnelrow"><div class="os-uchart-funnellbl">'+st.label+' <b>'+st.v.toLocaleString()+'</b></div>'
+            fh+='<div class="os-uchart-funnelrow"><div class="os-uchart-funnellbl">'+st.label+' <b>'+window._osSpc(st.v)+'</b></div>'
               +'<div class="os-uchart-funneltrack" style="background:transparent;border:none;overflow:visible;"><div class="os-uchart-funnelbar" style="width:'+pct+'%;clip-path:'+clip+';background:linear-gradient(180deg,'+uchartShade(st.color,.45)+','+st.color+' 50%,'+uchartShade(st.color,-.4)+');filter:drop-shadow(0 6px 12px rgba(0,0,0,.55));"></div></div>'
               +'<div class="os-uchart-funnelconv">'+conv+'</div></div>';
           }
@@ -14293,7 +14308,7 @@ function uchartRender(){
         for(var gv=Math.ceil(minV/st)*st; gv<=maxV+1e-9; gv+=st){
           var gy=Y(gv);
           gl+='<line x1="'+pl+'" y1="'+gy.toFixed(1)+'" x2="'+(W-pr)+'" y2="'+gy.toFixed(1)+'" stroke="rgba(255,255,255,.07)" stroke-width="1"/>'
-            +'<text x="'+(pl-10)+'" y="'+(gy+4).toFixed(1)+'" text-anchor="end" fill="#8a8a96" font-size="11" font-weight="600">'+Math.round(gv).toLocaleString()+'</text>';
+            +'<text x="'+(pl-10)+'" y="'+(gy+4).toFixed(1)+'" text-anchor="end" fill="#8a8a96" font-size="11" font-weight="600">'+window._osSpc(Math.round(gv))+'</text>';
         }
       })();
       s+=gl;
@@ -14392,9 +14407,9 @@ function uchartRender(){
           if(isPk){
             var dx=X(i), dy=y-14;
             s+='<rect x="'+(dx-6).toFixed(1)+'" y="'+(dy-6).toFixed(1)+'" width="12" height="12" transform="rotate(45 '+dx.toFixed(1)+' '+dy.toFixed(1)+')" fill="#ffbf3d" stroke="#0a0a10" stroke-width="1.5" pointer-events="none"/>'
-              +'<text x="'+dx.toFixed(1)+'" y="'+(dy-12).toFixed(1)+'" text-anchor="middle" fill="#ffbf3d" font-size="11" font-weight="900" pointer-events="none">'+v.toLocaleString()+'</text>';
+              +'<text x="'+dx.toFixed(1)+'" y="'+(dy-12).toFixed(1)+'" text-anchor="middle" fill="#ffbf3d" font-size="11" font-weight="900" pointer-events="none">'+window._osSpc(v)+'</text>';
           } else if(v>0){
-            s+='<text x="'+X(i).toFixed(1)+'" y="'+(y-6).toFixed(1)+'" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="700">'+v.toLocaleString()+'</text>';
+            s+='<text x="'+X(i).toFixed(1)+'" y="'+(y-6).toFixed(1)+'" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="700">'+window._osSpc(v)+'</text>';
           }
         });
       } else {
@@ -14424,14 +14439,14 @@ function uchartRender(){
             if(cg.g>=25 && !cliffDone[cg.i]){
               cliffDone[cg.i]=1;
               s+='<rect x="'+(X(cg.i)-6)+'" y="'+(Y(S.values[cg.i])-6)+'" width="12" height="12" transform="rotate(45 '+X(cg.i)+' '+Y(S.values[cg.i])+')" fill="none" stroke="#ffbf3d" stroke-width="2.5"/>'
-                +(qi===0?'<g class="os-v6-hit" data-v6derive="cliff:'+qi+'"><rect x="'+(X(cg.i)-44).toFixed(1)+'" y="'+(Y(S.values[cg.i])-4).toFixed(1)+'" width="88" height="44" fill="transparent"/><text x="'+X(cg.i).toFixed(1)+'" y="'+(Y(S.values[cg.i])+22).toFixed(1)+'" text-anchor="middle" fill="#ffbf3d" font-size="11" font-weight="800">+'+cg.g.toLocaleString()+'</text></g>':'');
+                +(qi===0?'<g class="os-v6-hit" data-v6derive="cliff:'+qi+'"><rect x="'+(X(cg.i)-44).toFixed(1)+'" y="'+(Y(S.values[cg.i])-4).toFixed(1)+'" width="88" height="44" fill="transparent"/><text x="'+X(cg.i).toFixed(1)+'" y="'+(Y(S.values[cg.i])+22).toFixed(1)+'" text-anchor="middle" fill="#ffbf3d" font-size="11" font-weight="800">+'+window._osSpc(cg.g)+'</text></g>':'');
             }
           }
           /* goal line at 1,000 */
           if(goalPlot){
             s+='<line x1="'+pl+'" y1="'+Y(1000)+'" x2="'+(W-pr)+'" y2="'+Y(1000)+'" stroke="#ffbf3d" stroke-width="1.5" stroke-dasharray="8,6" opacity=".8"/>'
               +'<g class="os-v6-hit" data-v6derive="goal"><rect x="'+(W-pr-130)+'" y="'+(Y(1000)-32)+'" width="126" height="44" fill="transparent"/>'
-              +'<text x="'+(W-pr-4)+'" y="'+(Y(1000)-8)+'" text-anchor="end" fill="#ffbf3d" font-size="11" font-weight="800">goal 1,000</text></g>';
+              +'<text x="'+(W-pr-4)+'" y="'+(Y(1000)-8)+'" text-anchor="end" fill="#ffbf3d" font-size="11" font-weight="800">goal 1 000</text></g>';
           }
           /* V6 review 2026-10-31: below 750 there is NO goal line. A dashed line
              pinned at chart-top reads as a plotted value (~360 here) while the
@@ -14450,7 +14465,7 @@ function uchartRender(){
              if they would collide at top-right, the value label steps left. */
           var valX=X(pkS), valY=Y(S.values[pkS])-16;
           if(goalPlot && Math.abs(valY-(Y(1000)-8))<30){ valX=X(pkS)-84; }
-          s+='<g class="os-v6-hit" data-v6derive="total"><rect x="'+(valX-60).toFixed(1)+'" y="'+(valY-28).toFixed(1)+'" width="120" height="44" fill="transparent"/><text x="'+valX.toFixed(1)+'" y="'+valY.toFixed(1)+'" text-anchor="middle" fill="#ffbf3d" font-size="15" font-weight="900" stroke="#0a0a10" stroke-width="3" paint-order="stroke">'+S.values[pkS].toLocaleString()+'</text></g>';
+          s+='<g class="os-v6-hit" data-v6derive="total"><rect x="'+(valX-60).toFixed(1)+'" y="'+(valY-28).toFixed(1)+'" width="120" height="44" fill="transparent"/><text x="'+valX.toFixed(1)+'" y="'+valY.toFixed(1)+'" text-anchor="middle" fill="#ffbf3d" font-size="15" font-weight="900" stroke="#0a0a10" stroke-width="3" paint-order="stroke">'+window._osSpc(S.values[pkS])+'</text></g>';
         } else {
           var pts=S.values.map(function(v,i){return [X(i),Y(v)];});
           var line=uchartSmooth(pts);
@@ -14478,7 +14493,7 @@ function uchartRender(){
               +(isLast?'<animate attributeName="stroke-opacity" values=".35;1;.35" dur="2.2s" repeatCount="indefinite"/>':'')
               +'</circle>';
             if(i===topOne){
-              s+='<g class="os-v6-hit" data-v6derive="peak:'+i+'"><rect x="'+(p[0]-60).toFixed(1)+'" y="'+(p[1]-40).toFixed(1)+'" width="120" height="44" fill="transparent"/><text x="'+p[0].toFixed(1)+'" y="'+(p[1]-12).toFixed(1)+'" text-anchor="middle" fill="'+def.color+'" font-size="15" font-weight="800" stroke="#0a0a10" stroke-width="3" paint-order="stroke">'+S.values[i].toLocaleString()+'</text></g>';
+              s+='<g class="os-v6-hit" data-v6derive="peak:'+i+'"><rect x="'+(p[0]-60).toFixed(1)+'" y="'+(p[1]-40).toFixed(1)+'" width="120" height="44" fill="transparent"/><text x="'+p[0].toFixed(1)+'" y="'+(p[1]-12).toFixed(1)+'" text-anchor="middle" fill="'+def.color+'" font-size="15" font-weight="800" stroke="#0a0a10" stroke-width="3" paint-order="stroke">'+window._osSpc(S.values[i])+'</text></g>';
             }
           });
         }
@@ -14505,7 +14520,7 @@ function uchartRender(){
           var restStroke=el.getAttribute('stroke'), restW=el.getAttribute('stroke-width');
           function on(e){
             var unit = isScore ? ' pts' : '';
-            showTip('<div style="font-size:17px;font-weight:900;line-height:1.2;">'+v.toLocaleString()+unit+'</div>'
+            showTip('<div style="font-size:17px;font-weight:900;line-height:1.2;">'+window._osSpc(v)+unit+'</div>'
               +'<div class="os-uchart-tiplbl">'+esc(def.label)+' · '+esc(S.labels[i])+'</div>',
               +el.getAttribute('cx')||+el.getAttribute('x'), +el.getAttribute('cy')||+el.getAttribute('y'), col);
             el.setAttribute('stroke','#fff'); el.setAttribute('stroke-width','2');
@@ -14533,7 +14548,7 @@ function uchartRender(){
   /* ============ chrome: header, story, breakdown, pills, views ============ */
   var sn=$('os-uchart-statname'), st=$('os-uchart-total'), sw2=$('os-uchart-wind'), pv=$('os-uchart-provtext');
   if (sn) sn.innerHTML='<span class="os-jewel os-jewel-sm" style="--jc:'+def.color+'">'+def.icon+'</span> '+def.label;
-  if (st){ st.textContent=S.total.toLocaleString(); st.style.color=def.color; }
+  if (st){ st.textContent=window._osSpc(S.total); st.style.color=def.color; }
   if (sw2){ var wl2={hourly:'Last 24 hours',daily:'Last 14 days',weekly:'Last 12 weeks',monthly:'Last 12 months',all:'All time'}; sw2.textContent=wl2[w]||w; }
   if (pv){
     var ql2={hourly:'hours',daily:'days',weekly:'weeks',monthly:'months',all:'days'}[w]||'days';
@@ -14554,7 +14569,7 @@ function uchartRender(){
     });}
     pills.innerHTML='<span class="os-uchart-pillslabel">Stat</span>'+UCHART_STATS.map(function(d){
       var t=uchartSeries(d,w).total;
-      return '<button class="os-uchart-pill" role="tab" data-stat="'+d.key+'" style="--sc:'+d.color+'"><span class="os-jewel os-jewel-sm" style="--jc:'+d.color+'">'+d.icon+'</span>'+d.label+' <b>'+t.toLocaleString()+'</b></button>'; }).join('');
+      return '<button class="os-uchart-pill" role="tab" data-stat="'+d.key+'" style="--sc:'+d.color+'"><span class="os-jewel os-jewel-sm" style="--jc:'+d.color+'">'+d.icon+'</span>'+d.label+' <b>'+window._osSpc(t)+'</b></button>'; }).join('');
     var bs=pills.querySelectorAll('button');
     for (var bi=0;bi<bs.length;bi++) bs[bi].classList.toggle('on', bs[bi].getAttribute('data-stat')===def.key);
   }
@@ -14653,7 +14668,7 @@ function v6Render(){
       var firstBit = na.act.today===0 ? ' — your first '+na.act.key.replace(/s$/,'')+' today' : '';
       h='<span class="os-v6-eyebrow"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">\u2726</span> The one move</span>'
         +'<span class="os-v6-act"><b>'+esc(na.act.verb)+'</b><span class="os-v6-pts">+'+na.act.pts+'</span></span>'
-        +'<span class="os-v6-why">'+esc(na.act.why)+firstBit+'. You are <b>'+na.dist.toLocaleString()+'</b> pts from <b>'+esc(na.next.name)+'</b>'
+        +'<span class="os-v6-why">'+esc(na.act.why)+firstBit+'. You are <b>'+window._osSpc(na.dist)+'</b> pts from <b>'+esc(na.next.name)+'</b>'
         +(na.need!=null?' — <b>'+na.need+'</b> '+(na.need===1?'move':'moves')+' at this value closes it':'')+'.'
         +(na.flat?' The pace is flat — this move restarts it.':'')+'</span>';
     } else {
@@ -14669,7 +14684,7 @@ function v6Render(){
       ph='<span class="os-v6-eyebrow"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">\u25b2</span> Pace</span>'
         +'<span class="os-v6-pacecells"><span class="os-v6-pacecell"><b>'+pd.ag.toFixed(1)+'</b>pts / day, last 7 days</span>'
         +'<span class="os-v6-pacecell"><b>'+esc(pd.next.name)+'</b>arrives ~'+esc(v6MonthDay(pd.arr))+'</span></span>'
-        +'<span class="os-v6-why">Arrival at <b>'+pd.next.at.toLocaleString()+'</b> recomputes from live data. One smart note a day (+35) pulls it closer.</span>';
+        +'<span class="os-v6-why">Arrival at <b>'+window._osSpc(pd.next.at)+'</b> recomputes from live data. One smart note a day (+35) pulls it closer.</span>';
     } else if(pd.ag>0){
       ph='<span class="os-v6-eyebrow"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">\u25b2</span> Pace</span>'
         +'<span class="os-v6-why"><b>'+pd.ag.toFixed(1)+'</b> pts/day — Ten Star held.</span>';
@@ -14693,7 +14708,7 @@ function v6Render(){
 /* ---------- tap-any-number: every number proves itself ---------- */
 function v6SheetHead(t,s){ return '<h4>'+esc(t)+'</h4><p class="os-v6-dsub">'+esc(s)+'</p>'; }
 function v6DRow(label,math,pts,neg){
-  return '<div class="os-v6-drow"><span class="os-v6-dlabel">'+esc(label)+'</span><span class="os-v6-dmath">'+esc(math)+'</span><b class="os-v6-dpts">'+(neg?'\u2212':'+')+Number(pts).toLocaleString()+'</b></div>';
+  return '<div class="os-v6-drow"><span class="os-v6-dlabel">'+esc(label)+'</span><span class="os-v6-dmath">'+esc(math)+'</span><b class="os-v6-dpts">'+(neg?'\u2212':'+')+window._osSpc(Number(pts))+'</b></div>';
 }
 function v6DeriveScore(w){
   var S=uchartSeries(uchartStatDef('score'),w), defs=S.stackDefs||[];
@@ -14702,12 +14717,12 @@ function v6DeriveScore(w){
     var g=defs[gi]; if(g.key==='birth') continue;
     var pts=S.perSrc?S.perSrc[gi]:0; sum+=pts;
     var cnt=g.v?Math.round(pts/g.v):0;
-    rows+=v6DRow(g.label,cnt.toLocaleString()+' \u00d7 '+g.v+' pts',pts);
+    rows+=v6DRow(g.label,window._osSpc(cnt)+' \u00d7 '+g.v+' pts',pts);
   }
   var total=75+sum;
   return v6SheetHead('Smart Score — the derivation','Every point traces to the ledger. One truth, three expressions: the number on the chart = the number in the sentence = the number in the ledger.')
     +rows
-    +'<div class="os-v6-deq"><span>75 birth + '+sum.toLocaleString()+' earned</span><b>= '+total.toLocaleString()+'</b></div>'
+    +'<div class="os-v6-deq"><span>75 birth + '+window._osSpc(sum)+' earned</span><b>= '+window._osSpc(total)+'</b></div>'
     +'<p class="os-v6-dnote">Window: '+esc(v6WindowName(w))+' \u00b7 '+S.events+' ledger events in view. Sources with no ledger timestamps on this front (membership, sales, likes, comments, shares) read 0 — the formula never invents.</p>';
 }
 function v6DeriveStat(key){
@@ -14719,12 +14734,12 @@ function v6DeriveStat(key){
   var h='';
   if(vals[key]){
     var pts=S.total*vals[key];
-    h='<div class="os-v6-drow"><span class="os-v6-dlabel">Events in view</span><span class="os-v6-dmath">'+S.total.toLocaleString()+' \u00d7 '+vals[key]+' pts</span><b class="os-v6-dpts">+'+pts.toLocaleString()+'</b></div>'
-      +'<p class="os-v6-dnote">Each '+esc(def.label.toLowerCase().replace(/s$/,''))+' is worth <b>'+vals[key]+' points</b> by the canon value table. '+S.total.toLocaleString()+' \u00d7 '+vals[key]+' = <b>'+pts.toLocaleString()+' pts</b> toward your Smart Score.</p>';
+    h='<div class="os-v6-drow"><span class="os-v6-dlabel">Events in view</span><span class="os-v6-dmath">'+window._osSpc(S.total)+' \u00d7 '+vals[key]+' pts</span><b class="os-v6-dpts">+'+window._osSpc(pts)+'</b></div>'
+      +'<p class="os-v6-dnote">Each '+esc(def.label.toLowerCase().replace(/s$/,''))+' is worth <b>'+vals[key]+' points</b> by the canon value table. '+window._osSpc(S.total)+' \u00d7 '+vals[key]+' = <b>'+window._osSpc(pts)+' pts</b> toward your Smart Score.</p>';
   } else if(key==='msgs'){
-    h='<p class="os-v6-dnote">'+esc(def.label)+' carries no points — it carries <b>conversations</b>. Messages compound into relationships, not points. Count in view: <b>'+S.total.toLocaleString()+'</b>.</p>';
+    h='<p class="os-v6-dnote">'+esc(def.label)+' carries no points — it carries <b>conversations</b>. Messages compound into relationships, not points. Count in view: <b>'+window._osSpc(S.total)+'</b>.</p>';
   } else {
-    h='<p class="os-v6-dnote">'+esc(def.label)+' carries no points — it carries the <b>top of your funnel</b>. Clicks become invites; invites are 25 pts each. Count in view: <b>'+S.total.toLocaleString()+'</b>.</p>';
+    h='<p class="os-v6-dnote">'+esc(def.label)+' carries no points — it carries the <b>top of your funnel</b>. Clicks become invites; invites are 25 pts each. Count in view: <b>'+window._osSpc(S.total)+'</b>.</p>';
   }
   return head+h+'<p class="os-v6-dnote">Window: '+esc(v6WindowName(w))+'.</p>';
 }
@@ -14733,10 +14748,10 @@ function v6DeriveSource(key){
   for(var gi=0;gi<defs.length;gi++){
     var g=defs[gi]; if(g.key!==key) continue;
     var pts=key==='birth'?75:(S.perSrc?S.perSrc[gi]:0);
-    var math=key==='birth'?'canon':(Math.round(pts/g.v).toLocaleString()+' \u00d7 '+g.v+' pts');
+    var math=key==='birth'?'canon':(window._osSpc(Math.round(pts/g.v))+' \u00d7 '+g.v+' pts');
     return v6SheetHead(g.label+' — the derivation','This source, traced to the ledger.')
       +v6DRow(g.label,math,pts)
-      +'<p class="os-v6-dnote">Part of your Smart Score (<b>'+S.total.toLocaleString()+'</b> total). Window: '+esc(v6WindowName(w))+'.</p>';
+      +'<p class="os-v6-dnote">Part of your Smart Score (<b>'+window._osSpc(S.total)+'</b> total). Window: '+esc(v6WindowName(w))+'.</p>';
   }
   return v6DeriveScore(w);
 }
@@ -14746,16 +14761,16 @@ function v6DeriveCell(ri){
   var v=S.values[i], isScore=def.key==='score';
   var gain=isScore?(i===0?v-75:v-S.values[i-1]):v;
   var h=v6SheetHead(uchartFullDate(S.stamps[i])+' — the derivation','This bucket, traced to the ledger.');
-  h+='<div class="os-v6-drow"><span class="os-v6-dlabel">'+(isScore?'Gained that day':'Count that day')+'</span><span class="os-v6-dmath">'+(isScore?(i===0?'cumulative from birth':'day total \u2212 prior day'):'ledger events')+'</span><b class="os-v6-dpts">'+(gain>0?'+':'')+gain.toLocaleString()+'</b></div>';
-  h+='<div class="os-v6-drow"><span class="os-v6-dlabel">Running total after</span><span class="os-v6-dmath">this bucket</span><b class="os-v6-dpts">'+v.toLocaleString()+'</b></div>';
+  h+='<div class="os-v6-drow"><span class="os-v6-dlabel">'+(isScore?'Gained that day':'Count that day')+'</span><span class="os-v6-dmath">'+(isScore?(i===0?'cumulative from birth':'day total \u2212 prior day'):'ledger events')+'</span><b class="os-v6-dpts">'+(gain>0?'+':'')+window._osSpc(gain)+'</b></div>';
+  h+='<div class="os-v6-drow"><span class="os-v6-dlabel">Running total after</span><span class="os-v6-dmath">this bucket</span><b class="os-v6-dpts">'+window._osSpc(v)+'</b></div>';
   return h;
 }
 function v6DeriveGoal(){
   var pd=v6PaceData();
-  var h=v6SheetHead('Goal 1,000 — the derivation','The line on the chart, traced.');
-  h+='<div class="os-v6-drow"><span class="os-v6-dlabel">Rung</span><span class="os-v6-dmath">the next band above Emerging</span><b class="os-v6-dpts">Stirring \u00b7 1,000</b></div>';
-  h+='<div class="os-v6-drow"><span class="os-v6-dlabel">You are here</span><span class="os-v6-dmath">live score</span><b class="os-v6-dpts">'+pd.total.toLocaleString()+'</b></div>';
-  h+='<div class="os-v6-drow"><span class="os-v6-dlabel">Distance</span><span class="os-v6-dmath">1,000 \u2212 '+pd.total.toLocaleString()+'</span><b class="os-v6-dpts">'+Math.max(0,1000-pd.total).toLocaleString()+'</b></div>';
+  var h=v6SheetHead('Goal 1 000 — the derivation','The line on the chart, traced.');
+  h+='<div class="os-v6-drow"><span class="os-v6-dlabel">Rung</span><span class="os-v6-dmath">the next band above Emerging</span><b class="os-v6-dpts">Stirring \u00b7 1 000</b></div>';
+  h+='<div class="os-v6-drow"><span class="os-v6-dlabel">You are here</span><span class="os-v6-dmath">live score</span><b class="os-v6-dpts">'+window._osSpc(pd.total)+'</b></div>';
+  h+='<div class="os-v6-drow"><span class="os-v6-dlabel">Distance</span><span class="os-v6-dmath">1 000 \u2212 '+window._osSpc(pd.total)+'</span><b class="os-v6-dpts">'+window._osSpc(Math.max(0,1000-pd.total))+'</b></div>';
   if(pd.ag>0&&pd.next) h+='<div class="os-v6-drow"><span class="os-v6-dlabel">At your pace</span><span class="os-v6-dmath">'+pd.ag.toFixed(1)+' pts/day</span><b class="os-v6-dpts">~'+pd.daysTo+' days</b></div>';
   else h+='<p class="os-v6-dnote">No pace yet — the first action sets it.</p>';
   return h;
@@ -14766,9 +14781,9 @@ function v6DeriveCliff(qi){
   gains.sort(function(a,b){ return b.g-a.g; });
   var cg=gains[+qi];
   if(!cg) return v6DeriveStat(def.key);
-  return v6SheetHead('The +'+cg.g.toLocaleString()+' spike — the derivation','The labeled cliff on the chart, traced.')
-    +'<div class="os-v6-drow"><span class="os-v6-dlabel">Date</span><span class="os-v6-dmath">'+esc(uchartFullDate(S.stamps[cg.i]))+'</span><b class="os-v6-dpts">+'+cg.g.toLocaleString()+'</b></div>'
-    +'<div class="os-v6-drow"><span class="os-v6-dlabel">Running total then</span><span class="os-v6-dmath">after that day</span><b class="os-v6-dpts">'+S.values[cg.i].toLocaleString()+'</b></div>'
+  return v6SheetHead('The +'+window._osSpc(cg.g)+' spike — the derivation','The labeled cliff on the chart, traced.')
+    +'<div class="os-v6-drow"><span class="os-v6-dlabel">Date</span><span class="os-v6-dmath">'+esc(uchartFullDate(S.stamps[cg.i]))+'</span><b class="os-v6-dpts">+'+window._osSpc(cg.g)+'</b></div>'
+    +'<div class="os-v6-drow"><span class="os-v6-dlabel">Running total then</span><span class="os-v6-dmath">after that day</span><b class="os-v6-dpts">'+window._osSpc(S.values[cg.i])+'</b></div>'
     +'<p class="os-v6-dnote">Gain = that day\u2019s total \u2212 the prior day\u2019s total.</p>';
 }
 function v6DerivePace(){
@@ -14776,14 +14791,14 @@ function v6DerivePace(){
   if(!(pd.ag>0)||!pd.next) return v6SheetHead('Pace — the derivation','No pace yet.')+'<p class="os-v6-dnote"><b>Flat.</b> The first action sets the pace — and that is honest, not empty.</p>';
   return v6SheetHead('Pace — the derivation','The dashed projection, traced. A projection — never presented as real.')
     +'<div class="os-v6-drow"><span class="os-v6-dlabel">Daily pace</span><span class="os-v6-dmath">avg gain, last 7 days</span><b class="os-v6-dpts">'+pd.ag.toFixed(1)+' / day</b></div>'
-    +'<div class="os-v6-drow"><span class="os-v6-dlabel">Next rung</span><span class="os-v6-dmath">'+esc(pd.next.name)+'</span><b class="os-v6-dpts">'+pd.next.at.toLocaleString()+'</b></div>'
-    +'<div class="os-v6-drow"><span class="os-v6-dlabel">Arrival</span><span class="os-v6-dmath">('+pd.next.at.toLocaleString()+' \u2212 '+pd.total.toLocaleString()+') \u00f7 '+pd.ag.toFixed(1)+'</span><b class="os-v6-dpts">~'+esc(v6MonthDay(pd.arr))+'</b></div>';
+    +'<div class="os-v6-drow"><span class="os-v6-dlabel">Next rung</span><span class="os-v6-dmath">'+esc(pd.next.name)+'</span><b class="os-v6-dpts">'+window._osSpc(pd.next.at)+'</b></div>'
+    +'<div class="os-v6-drow"><span class="os-v6-dlabel">Arrival</span><span class="os-v6-dmath">('+window._osSpc(pd.next.at)+' \u2212 '+window._osSpc(pd.total)+') \u00f7 '+pd.ag.toFixed(1)+'</span><b class="os-v6-dpts">~'+esc(v6MonthDay(pd.arr))+'</b></div>';
 }
 function v6DerivePeak(idx){
   var def=uchartStatDef(window._uchartStat), w=window._ldWindow||'all', S=uchartSeries(def,w), i=+idx;
   if(!(i>=0&&i<S.values.length)) return v6DeriveStat(def.key);
   return v6SheetHead('The peak — the derivation','The labeled peak on the chart, traced.')
-    +'<div class="os-v6-drow"><span class="os-v6-dlabel">Date</span><span class="os-v6-dmath">'+esc(uchartFullDate(S.stamps[i]))+'</span><b class="os-v6-dpts">'+S.values[i].toLocaleString()+'</b></div>'
+    +'<div class="os-v6-drow"><span class="os-v6-dlabel">Date</span><span class="os-v6-dmath">'+esc(uchartFullDate(S.stamps[i]))+'</span><b class="os-v6-dpts">'+window._osSpc(S.values[i])+'</b></div>'
     +'<p class="os-v6-dnote">Highest bucket in view. Window: '+esc(v6WindowName(w))+'.</p>';
 }
 function v6OpenFor(spec){
@@ -15283,13 +15298,13 @@ function ldStoryHTML(counts, score, w, mom, PD){
   var wl = LD_WINDOWS[w].label;
   // the score, honestly composed from the full canon table
   var parts = ['75 from your birth'];
-  if (counts.posts > 0) parts.push((counts.posts*LD_VALUES.posts).toLocaleString()+' from creating');
-  if (counts.notes > 0) parts.push((counts.notes*LD_VALUES.notes).toLocaleString()+' from smart notes');
-  if (counts.saves > 0) parts.push((counts.saves*LD_VALUES.saves).toLocaleString()+' from saves');
-  if (counts.invs > 0) parts.push((counts.invs*LD_VALUES.invites).toLocaleString()+' from invites');
-  if (counts.joins > 0) parts.push((counts.joins*LD_VALUES.joins).toLocaleString()+' from joins');
+  if (counts.posts > 0) parts.push(window._osSpc((counts.posts*LD_VALUES.posts))+' from creating');
+  if (counts.notes > 0) parts.push(window._osSpc((counts.notes*LD_VALUES.notes))+' from smart notes');
+  if (counts.saves > 0) parts.push(window._osSpc((counts.saves*LD_VALUES.saves))+' from saves');
+  if (counts.invs > 0) parts.push(window._osSpc((counts.invs*LD_VALUES.invites))+' from invites');
+  if (counts.joins > 0) parts.push(window._osSpc((counts.joins*LD_VALUES.joins))+' from joins');
   if ((counts.member||0) > 0) parts.push(LD_VALUES.memberBonus+' from membership — one time');
-  lines.push('This '+wl+' you hold <b>'+score.toLocaleString()+' points</b> — '+parts.join(', ')+'.');
+  lines.push('This '+wl+' you hold <b>'+window._osSpc(score)+' points</b> — '+parts.join(', ')+'.');
   // strongest current
   var cur = [];
   if (counts.posts > 0) cur.push(['creating', counts.posts*LD_VALUES.posts, counts.posts+' wall post'+(counts.posts===1?'':'s')]);
@@ -15442,7 +15457,7 @@ function ldWireRiverHover(PD, w){
       });
       var cfg = LD_WINDOWS[window._ldWindow||'all'];
       var when = new Date(Date.now() - (n-1-ix)*cfg.ms);
-      var wl = cfg.ms >= 864e5 ? when.toLocaleDateString() : when.toLocaleString();
+      var wl = cfg.ms >= 864e5 ? when.toLocaleDateString() : window._osSpc(when);
       out.innerHTML = tot > 0
         ? '<b>'+tot+'</b> actions · '+wl+(parts.length ? ' — mostly '+parts.sort(function(a,b){return parseInt(b)-parseInt(a);})[0].split(' ').slice(1).join(' ') : '')
         : wl+' — quiet water.';
@@ -15469,7 +15484,7 @@ function ldRenderMilestones(counts, score, PD, actions){
   var _mpd = null;
   try { _mpd = (typeof window.v6PaceData === 'function') ? window.v6PaceData() : null; } catch(e) {}
   var _mag = (_mpd && _mpd.ag > 0) ? _mpd.ag : 0;
-  if (score >= 100) card('century','\u2605','First century', score.toLocaleString()+' points and climbing.', true);
+  if (score >= 100) card('century','\u2605','First century', window._osSpc(score)+' points and climbing.', true);
   else card('century','\u2605','First century', (100-score)+' points to go' + (_mag > 0 ? ' — ~'+Math.ceil((100-score)/_mag)+' days at your pace ('+_mag.toFixed(1)+' pts/day).' : ' — no pace yet; the first action sets it.'), false);
   var daySet = {};
   ['notes','posts','msgs','invs'].forEach(function(k){ (PD[k]||[]).forEach(function(t){ daySet[new Date(t).toISOString().slice(0,10)] = 1; }); });
@@ -15514,7 +15529,7 @@ function osStatsView(vals, color, label){
     var dl = dayLabel(i);
     return '<div class="os-dg-bar" style="height:'+h+'%;--nc:'+bc+';" title="'+dl+': '+v+' '+label+'"><span class="os-dg-bar-v">'+(v>0?v:'')+'</span></div>';
   }).join('');
-  var barsView = '<div class="os-dg-headline">'+total.toLocaleString()+' '+label+' in 30 days · avg '+avg+'/day'+(peakV>0?' · peak '+peakV+' on '+dayLabel(peakIx):'')+'</div>'+
+  var barsView = '<div class="os-dg-headline">'+window._osSpc(total)+' '+label+' in 30 days · avg '+avg+'/day'+(peakV>0?' · peak '+peakV+' on '+dayLabel(peakIx):'')+'</div>'+
     '<div class="os-dg-bars">'+bars+'</div><div class="os-dg-label">each bar = one day · hover for exact date + count</div>';
   /* FLOW: peak annotated, min/max labeled, shape explained */
   var fpts = vals.map(function(v,i){
@@ -15612,8 +15627,8 @@ document.addEventListener('click', function(e){
 });
 function ldNodeDetail(node, PD, w, n){
   var pts = node.value ? n*node.value : 0;
-  var ptsStr = pts.toLocaleString();
-  var nStr = n.toLocaleString();
+  var ptsStr = window._osSpc(pts);
+  var nStr = window._osSpc(n);
   /* Hero: mini vortex + giant number. Same machine as the gauge, smaller.
      2026-11-02 — SHAWN: "Work your way through it and out." The detail IS the orb's world. */
   var vortexSvg = '<svg class="os-mini-vortex" viewBox="0 0 100 100" style="--nc:'+node.color+'">'+
@@ -15677,7 +15692,7 @@ function ldNodeDetail(node, PD, w, n){
     '<div class="os-donut-hole"><span style="font-size:20px;font-weight:900;color:#fff;">'+Math.round(share*100)+'%</span><span class="os-donut-cap">SHARE</span></div>'+
     '</div>'+
     '<div class="os-mg-cap">the pie</div>'+
-    '<div class="os-mg-num">'+ptsStr+' of '+orbTotal.toLocaleString()+'</div>'+
+    '<div class="os-mg-num">'+ptsStr+' of '+window._osSpc(orbTotal)+'</div>'+
     '</div>';
   var multiForm = '<div class="os-multiform">'+miniGauge+shareDonut+'</div>';
   /* 2026-11-01 — Shawn: BEAUTIFUL GRAPH. 30-day activity bars in the orb's
@@ -15792,7 +15807,7 @@ function ldNodeDetail_SIMPLE(node, PD, w, n){
   var pts = 0;
   try { pts = node.value ? n*node.value : 0; } catch(e) {}
   var ptsStr = '0';
-  try { ptsStr = pts.toLocaleString(); } catch(e) {}
+  try { ptsStr = window._osSpc(pts); } catch(e) {}
   var label = node.label || 'Stats';
   var color = node.color || '#d9a521';
   var jewel = node.jewel || '◆';
@@ -15853,7 +15868,7 @@ function ldNodeDetail_SIMPLE(node, PD, w, n){
         '</div>';
     }
     var _trendNote = (!_trendSeries) ? 'No daily history for ' + label.toLowerCase() + ' yet — history starts today.'
-      : (_weekTotal === 0 ? 'No ' + label.toLowerCase() + ' in the last 7 days.' : _weekTotal.toLocaleString() + ' in the last 7 days — each bar is one day.');
+      : (_weekTotal === 0 ? 'No ' + label.toLowerCase() + ' in the last 7 days.' : window._osSpc(_weekTotal) + ' in the last 7 days — each bar is one day.');
     var _dayLabels = '';
     for (var _li=0; _li<7; _li++) _dayLabels += '<div style="flex:1;text-align:center;font-size:9px;color:#fff;opacity:.4;">' + _dayKeys[_li].wd + '</div>';
     bars = '<div style="margin:0 20px 20px;padding:20px;background:rgba(255,255,255,.04);border-radius:16px;border:1px solid rgba(255,255,255,.08);">' +
@@ -15869,7 +15884,7 @@ function ldNodeDetail_SIMPLE(node, PD, w, n){
     '<div style="font-size:24px;font-weight:900;color:' + color + ';">' + ptsStr + '</div>' +
     '<div style="font-size:10px;color:#fff;opacity:.5;letter-spacing:.1em;margin-top:4px;">TOTAL</div></div>' +
     '<div style="padding:16px;background:rgba(255,255,255,.04);border-radius:12px;border:1px solid rgba(255,255,255,.08);text-align:center;">' +
-    '<div style="font-size:24px;font-weight:900;color:#fff;">' + (_trendSeries ? _weekTotal.toLocaleString() : '—') + '</div>' +
+    '<div style="font-size:24px;font-weight:900;color:#fff;">' + (_trendSeries ? window._osSpc(_weekTotal) : '—') + '</div>' +
     '<div style="font-size:10px;color:#fff;opacity:.5;letter-spacing:.1em;margin-top:4px;">THIS WEEK</div></div>' +
     '</div>';
   
@@ -16243,14 +16258,14 @@ function formatNumber(value, format){
   if(/[kK]$/.test(s)) suf='K'; else if(/[xX]$/.test(s)) suf='x';
   function dec1(x){ var t=x.toFixed(1); return t.replace(/\.0$/,''); }
   if(format==='money'){
-    return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    return '$'+window._osMoney(n); /* PASS 4 (fail 4): space thousands, decimals kept */
   }
   if(format==='percent'){
     return dec1(n)+'%';
   }
   if(suf==='K') return dec1(n)+'K';
   if(suf==='x') return dec1(n)+'x';
-  return Math.round(n).toLocaleString('en-US');
+  return window._osSpc(Math.round(n));
 }
 /* Conservative orb formatter: only adds a missing $ or % symbol, never rewrites approved values. */
 function fmtOrb(raw, ftype){
@@ -16571,7 +16586,7 @@ function salesViewRender(){
   var o=document.getElementById('os-sales-orbs');
   if(o) o.innerHTML=salesOrbsHTML(d);
   var n=document.getElementById('os-sales-total-n');
-  if(n) n.textContent=(typeof d.pages==='number' ? d.pages.toLocaleString() : d.pages); /* PASS 1 v6 (f): the total is clicks now — revenue has no pipeline on this front, so it reads '—'. */
+  if(n) n.textContent=(typeof d.pages==='number' ? window._osSpc(d.pages) : d.pages); /* PASS 1 v6 (f): the total is clicks now — revenue has no pipeline on this front, so it reads '—'. */
   var pills=document.querySelectorAll('#os-sales-pills button');
   for(var i=0;i<pills.length;i++) pills[i].classList.toggle('on', pills[i].getAttribute('data-sw')===_salesWindow);
 }
@@ -16999,7 +17014,7 @@ function likesViewRender(){
   var o=document.getElementById('os-likes-orbs');
   if(o) o.innerHTML=likesOrbsHTML(d);
   var n=document.getElementById('os-likes-total-n');
-  if(n) n.textContent=d.likes.toLocaleString();
+  if(n) n.textContent=window._osSpc(d.likes);
   if(n && window._setDialogPts) window._setDialogPts(n, 'likes', d.likes);
   var pills=document.querySelectorAll('#os-likes-pills button');
   for(var i=0;i<pills.length;i++) pills[i].classList.toggle('on', pills[i].getAttribute('data-lw')===_likesWindow);
@@ -17935,7 +17950,7 @@ window._setDialogPts = function(totalNEl, key, count){
     var m = map[key];
     if (!m) return;
     var c = (typeof count === 'number') ? count : 0;
-    lab.textContent = m.base + ' · ' + (c*m.value).toLocaleString() + ' pts';
+    lab.textContent = m.base + ' · ' + window._osSpc((c*m.value)) + ' pts';
   }catch(e){}
 };
 /* 2026-11-06 — FIX 7: one drill-down open at a time, and Back / browser-Back close it.
@@ -18081,7 +18096,7 @@ function slOpenLink(name){
   var html =
     '<div class="os-detail-hero" style="--nc:#d9a521">'+
     '<div class="os-detail-icon">🔗</div>'+
-    '<div class="os-detail-points">'+link.clicks.toLocaleString()+'</div>'+
+    '<div class="os-detail-points">'+window._osSpc(link.clicks)+'</div>'+
     '<div class="os-detail-label">CLICKS</div>'+
     '<div class="os-detail-sub">nayanet.app/'+esc(link.name)+' · '+link.joins+' joins attributed</div>'+
     '</div>'+
@@ -18510,7 +18525,7 @@ window.ldLayoutNodes = ldLayoutNodes;
   window._featuredDial = null;
 
   function _esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-  function _fmt(n){ n = Math.round(n || 0); return n.toLocaleString('en-US'); }
+  function _fmt(n){ n = Math.round(n || 0); return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); } /* PASS 4 (fail 4): the space separator, not a comma */
   function _dayKey(offset){ var d = new Date(Date.now() - offset*864e5); return d.toISOString().slice(0,10); }
   function _winKey(){
     var w = window._ldWindow || 'all';
@@ -18952,6 +18967,9 @@ window.ldLayoutNodes = ldLayoutNodes;
     try{ if(window.tnTruth && window.tnTruth.wire){ window.tnTruth.wire(host); var _fs=document.getElementById('os-feat-stats'); if(_fs) window.tnTruth.wire(_fs); } }catch(e){}
   };
   window.setFeatured = function(kind, id){
+    /* PASS 4 (fail 8): remember the holder being left, so "Back to board"
+       returns to it — not always to Dashboard. */
+    if (window._featured && (window._featured.kind !== kind || window._featured.id !== id)) window._featuredPrev = window._featured;
     window._featured = {kind:kind, id:id, label:null};
     /* 2026-11-07 — CLOSER (Addition 2): choosing a holder returns the gauge to that
        holder's number — the orb override ends. */
@@ -19002,7 +19020,7 @@ window.ldLayoutNodes = ldLayoutNodes;
       var y = (typeof window._featuredReturnY === 'number') ? window._featuredReturnY : 0;
       fb.style.display = 'none';
       /* FIXB 2026-11-07 (Fix 5): Back to board returns the GAUGE to the overall score too — the featured holder is what left, so it goes back. setFeatured scrolls to 0 internally, so the saved scroll restore comes after. */
-      try{ if (typeof window.setFeatured === 'function') window.setFeatured('world', 'dashboard'); }catch(e){}
+      try{ var _prev = window._featuredPrev; if (_prev && _prev.kind && _prev.id && typeof window.setFeatured === 'function') window.setFeatured(_prev.kind, _prev.id); else if (typeof window.setFeatured === 'function') window.setFeatured('world', 'dashboard'); }catch(e){}
       try{ window.scrollTo(0, y); }catch(e){}
     });
     window.addEventListener('scroll', function(){
@@ -19142,7 +19160,7 @@ window._renderScoreDerivation = function(totalArg, orbDataArg){
             if (i > 0) h += '<span class="os-sd-op">+</span>';
             var _oc = (typeof o.count === 'number') ? o.count : null;
             var _ow = _cw[o.key] || o.label.toLowerCase();
-            var _part = (_oc == null) ? (o.label + ' · ' + o.pts + ' pts') : (o.label + ' · ' + _oc.toLocaleString() + ' ' + _ow + ' · ' + o.pts + ' pts');
+            var _part = (_oc == null) ? (o.label + ' · ' + o.pts + ' pts') : (o.label + ' · ' + window._osSpc(_oc) + ' ' + _ow + ' · ' + o.pts + ' pts');
             h += '<button type="button" class="os-sd-part" data-derive-part="' + o.key + '">' + _part + '</button>';
           });
           h += '<span class="os-sd-op">=</span><span class="os-sd-sum">' + total + ' pts</span>';
@@ -19152,7 +19170,7 @@ window._renderScoreDerivation = function(totalArg, orbDataArg){
              above — and stays as today. The 'x 2 birth' line is All-only. */
           var _f7per = (window._ldWindow && window._ldWindow !== 'all');
           if (mult === 2 && !_f7per){ h += '<span class="os-sd-op">× 2 birth</span><span class="os-sd-op">=</span><span class="os-sd-sum">' + spineScore + ' pts</span>'; }
-          else if (spineScore !== total){ h += '<span class="os-sd-op">=</span><span class="os-sd-sum">' + spineScore + ' pts' + (_f7per ? ' · all time' : '') + '</span>'; }
+          else if (spineScore !== total){ h += '<span class="os-sd-alltime">All-time score: ' + spineScore + ' pts</span>'; }
         }
         if (derEl) derEl.innerHTML = h;
         if (derBelow) derBelow.innerHTML = h;
@@ -19186,9 +19204,9 @@ window._renderScoreDerivation = function(totalArg, orbDataArg){
         if (!clicks){
           h2 = '<span class="os-sd-empty">No clicks yet — share your link to light the board.</span>';
         } else {
-          h2 += '<button type="button" class="os-sd-part" data-derive-part="sales">' + clicks.toLocaleString('en-US') + ' clicks</button>';
+          h2 += '<button type="button" class="os-sd-part" data-derive-part="sales">' + window._osSpc(clicks) + ' clicks</button>';
           h2 += '<span class="os-sd-op">·</span>';
-          h2 += '<button type="button" class="os-sd-part" data-derive-part="joins">' + joins.toLocaleString('en-US') + ' joins</button>';
+          h2 += '<button type="button" class="os-sd-part" data-derive-part="joins">' + window._osSpc(joins) + ' joins</button>';
           h2 += '<span class="os-sd-op">·</span>';
           h2 += '<span class="os-sd-sum">' + winTag + '</span>';
           h2 += '<span class="os-sd-op">·</span>';
@@ -19204,8 +19222,8 @@ window._renderScoreDerivation = function(totalArg, orbDataArg){
            the world-line error this repair fixes. */
         var nextMs = (Math.floor(clicks / 10) + 1) * 10;
         var need = nextMs - clicks;
-        if (nextEl) nextEl.innerHTML = need + ' more click' + (need > 1 ? 's' : '') + ' takes you to ' + nextMs.toLocaleString('en-US') + ' — <button type="button" class="os-sd-share" data-sl-copy="' + linkName + '">share your link</button>';
-        if (nextBelow) nextBelow.innerHTML = need + ' more click' + (need > 1 ? 's' : '') + ' takes you to ' + nextMs.toLocaleString('en-US') + ' — <button type="button" class="os-sd-share" data-sl-copy="' + linkName + '">share your link</button>';
+        if (nextEl) nextEl.innerHTML = need + ' more click' + (need > 1 ? 's' : '') + ' takes you to ' + window._osSpc(nextMs) + ' — <button type="button" class="os-sd-share" data-sl-copy="' + linkName + '">share your link</button>';
+        if (nextBelow) nextBelow.innerHTML = need + ' more click' + (need > 1 ? 's' : '') + ' takes you to ' + window._osSpc(nextMs) + ' — <button type="button" class="os-sd-share" data-sl-copy="' + linkName + '">share your link</button>';
       }
     }
   }catch(e){}
@@ -19347,7 +19365,7 @@ function loadPointsBoard(_t){
       num.classList.add('ld-tick');
     }
     var cl = $('os-ld-countline');
-    if (cl) cl.innerHTML = '<b>'+actions.toLocaleString()+'</b> actions counted · levels — <span class="os-pending">ruling owed</span> · <button type="button" class="os-ledger-link" data-goto-ledger="1">trace in ledger ⌗</button>';
+    if (cl) cl.innerHTML = '<b>'+window._osSpc(actions)+'</b> actions counted · levels — <span class="os-pending">ruling owed</span> · <button type="button" class="os-ledger-link" data-goto-ledger="1">trace in ledger ⌗</button>';
   });
 
 
@@ -19419,13 +19437,13 @@ function loadPointsBoard(_t){
          word — never "points". Points orbs say "points". */
       var _isCount = (typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(node.key);
       var _alAct = (window._featuredMetric && window._featuredMetric.key===node.key) ? 'Open detail.' : 'Show in gauge.';
-      var al = _orbUnanswered ? _lbl+': still loading — open detail.' : (_isCount ? _lbl+': '+pts.toLocaleString()+' '+_lbl.toLowerCase()+'. '+_alAct : _lbl+': '+pts.toLocaleString()+' points. '+_alAct);
+      var al = _orbUnanswered ? _lbl+': still loading — open detail.' : (_isCount ? _lbl+': '+window._osSpc(pts)+' '+_lbl.toLowerCase()+'. '+_alAct : _lbl+': '+window._osSpc(pts)+' points. '+_alAct);
       /* 2026-11-01 — Shawn: COMPACT NUMBERS. 1,500→"1.5K", 10,000→"10K",
          100,000→"100K". Always fits the orb, no matter how big you get. */
       function fmtCompact(n){
         if (n>=1000000) return (n/1000000).toFixed(n>=10000000?0:1).replace(/\.0$/,'')+'M';
         if (n>=1000) return (n/1000).toFixed(n>=10000?0:1).replace(/\.0$/,'')+'K';
-        return n.toLocaleString();
+        return window._osSpc(n);
       }
       /* 2026-11-01 — Shawn: NUMBER DEAD CENTER. Label below. Nothing else.
          No "4 actions" — they can see the number. Less is more.
@@ -19564,7 +19582,7 @@ function loadPointsBoard(_t){
           return;
         }
         var dateStr = new Date(pd6.arr).toLocaleDateString('en-US', {month:'short', day:'numeric'});
-        paceEl.innerHTML = 'At this pace (<strong>'+pd6.ag.toFixed(1)+' pts/day</strong>), you will hit <strong>'+pd6.next.at.toLocaleString()+'</strong> by <span class="os-pace-date">'+dateStr+'</span>';
+        paceEl.innerHTML = 'At this pace (<strong>'+pd6.ag.toFixed(1)+' pts/day</strong>), you will hit <strong>'+window._osSpc(pd6.next.at)+'</strong> by <span class="os-pace-date">'+dateStr+'</span>';
       }catch(pe){ paceEl.style.display='none'; }
     })();
     /* 2026-11-02 — THE 12 CHARTS: Big Number + Delta, Donut, Progress Ring.
@@ -19603,7 +19621,7 @@ function loadPointsBoard(_t){
              2026-11-02 "drama" order; the scorecards + fix list require numbers
              true immediately — the needle keeps the motion, the numbers stop
              lying mid-sweep). The settled value is unchanged: the old loop
-             ended at Math.round(displayTotal).toLocaleString(). */
+             ended at window._osSpc(Math.round(displayTotal)). */
           /* PASS 3: the big number is the tile number now. The first paint
              arms the shared slow-mo reveal (needle + tiles, driven by
              TnTacho frame() via _osTilesPaint); later changes snap. The old
@@ -19611,7 +19629,7 @@ function loadPointsBoard(_t){
           if (typeof window._osTilesSet === 'function'){
             window._osTilesSet((window._osSpine && (window._osSpine.loading || window._osSpine.stale)) ? null : Math.round(displayTotal));
           } else if (bigVal){
-            bigVal.textContent = Math.round(displayTotal).toLocaleString();
+            bigVal.textContent = window._osSpc(Math.round(displayTotal));
             if (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) bigVal.textContent = '—';
           }
         }
@@ -19690,9 +19708,9 @@ function loadPointsBoard(_t){
             'stroke-linecap="round" transform="rotate(-90 90 90)" ' +
             'style="filter:drop-shadow(0 0 8px rgba(217,165,33,.6));"/>' +
             '<text x="90" y="85" text-anchor="middle" fill="#fff" font-size="24" font-weight="900">'+Math.round(progress*100)+'%</text>' +
-            '<text x="90" y="105" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="11">'+(nextTier[1] ? 'TO '+nextTier[1].toUpperCase() : 'TO '+nextTier[0].toLocaleString())+'</text></svg>' +
+            '<text x="90" y="105" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="11">'+(nextTier[1] ? 'TO '+nextTier[1].toUpperCase() : 'TO '+window._osSpc(nextTier[0]))+'</text></svg>' +
             '<div style="margin-top:12px;font-size:13px;color:rgba(255,255,255,.7);">' +
-            '<strong style="color:#fff;">'+total.toLocaleString()+'</strong> / '+nextTier[0].toLocaleString()+' points</div>' +
+            '<strong style="color:#fff;">'+window._osSpc(total)+'</strong> / '+window._osSpc(nextTier[0])+' points</div>' +
             '<div style="margin-top:6px;font-size:12.5px;color:rgba(255,255,255,.55);">' +
             ((_pf && _pf.ag > 0 && _pf.next) ? 'At your pace: <strong style="color:#fff;">'+_pf.ag.toFixed(1)+' pts/day</strong> — ~'+_pf.daysTo+' days to '+nextTier[1] : (_pf && _pf.ag > 0) ? 'You have passed every tier — <strong>legendary</strong>' : 'No pace yet — the first action sets it.') +
             '</div>';
@@ -19791,7 +19809,7 @@ function loadPointsBoard(_t){
               el.textContent = (total > 0 ? Math.round(pts/total*100) : 0) + '%';
               try{ el.setAttribute('data-pct', String(total > 0 ? Math.round(pts/total*100) : 0)); }catch(e){}
             } else {
-              try { el.textContent = pts.toLocaleString(); } catch(e) { el.textContent = pts; }
+              try { el.textContent = window._osSpc(pts); } catch(e) { el.textContent = pts; }
             }
           });
           }
@@ -19815,7 +19833,7 @@ function loadPointsBoard(_t){
           if (bigVal){
             /* PASS 3: the big number is the tile number now (the $ tile follows the mode inside _osTilesSet). */
             if (typeof window._osTilesSet === 'function'){ var _c3 = (typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total); window._osTilesSet((window._osSpine && (window._osSpine.loading || window._osSpine.stale)) ? null : ((typeof _c3 === 'number' && isFinite(_c3)) ? _c3 : null)); }
-            else bigVal.textContent = (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) ? '—' : ((typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total)).toLocaleString();
+            else bigVal.textContent = (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) ? '—' : window._osSpc(((typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total)));
           }
           /* PASS 1 v7 (2026-11-05) — a PTS/% flip re-reads the live ledger; the derivation under the number re-renders with it. */
           try{ if (typeof window._renderScoreDerivation === 'function') window._renderScoreDerivation(); }catch(e){}
@@ -19972,15 +19990,15 @@ function loadLedgerView(_t){
   function rec(name,val,proof,pending){
     return '<div class="os-ledger-rec'+(pending?' pending':'')+'"><div class="os-lr-top"><span class="os-lr-name">'+name+'</span><span class="os-lr-val">'+val+'</span></div><div class="os-lr-proof">'+proof+'</div></div>';
   }
-  function live(table,filter,n){ return 'source '+table+' · '+filter+'<br>'+dashFixN(n).toLocaleString()+' rows · read '+now+' · fingerprint '+dashFixFP(table+'|'+filter+'|'+n); }
+  function live(table,filter,n){ return 'source '+table+' · '+filter+'<br>'+window._osSpc(dashFixN(n))+' rows · read '+now+' · fingerprint '+dashFixFP(table+'|'+filter+'|'+n); }
   recs.innerHTML=
-    rec('Wall posts',dashFixN(d.postTimes&&d.postTimes.length).toLocaleString(),live('smart_notes','owner_alias = "'+alias+'", kind = "wall"',(d.postTimes||[]).length),false)+
-    rec('Smart notes',dashFixN(d.noteTimes&&d.noteTimes.length).toLocaleString(),live('smart_notes','owner_alias = "'+alias+'", kind = "note"',(d.noteTimes||[]).length),false)+
-    rec('Messages received',dashFixN(d.msgTimes&&d.msgTimes.length).toLocaleString(),live('smart_mail_messages','threads to "'+alias+'", received only',(d.msgTimes||[]).length),false)+
-    rec('Invites recorded',dashFixN(d.invTimes&&d.invTimes.length).toLocaleString(),live('invites','inviter_alias = "'+alias+'"',(d.invTimes||[]).length),false)+
-    rec('Link clicks',dashFixN(lt.c).toLocaleString(),live('smart_link_daily_stats','owner_alias = "'+alias+'"',lt.c),false)+
-    rec('Joins attributed',dashFixN(lt.j).toLocaleString(),live('smart_link_daily_stats','owner_alias = "'+alias+'"',lt.j),false)+
-    rec('People around you',dashFixN(d.peopleAround&&d.peopleAround.length).toLocaleString(),'sources smart_notes + smart_mail_threads + invites · distinct names in this world\u2019s activity<br>'+dashFixN(d.peopleAround&&d.peopleAround.length).toLocaleString()+' rows · read '+now,false)+
+    rec('Wall posts',window._osSpc(dashFixN(d.postTimes&&d.postTimes.length)),live('smart_notes','owner_alias = "'+alias+'", kind = "wall"',(d.postTimes||[]).length),false)+
+    rec('Smart notes',window._osSpc(dashFixN(d.noteTimes&&d.noteTimes.length)),live('smart_notes','owner_alias = "'+alias+'", kind = "note"',(d.noteTimes||[]).length),false)+
+    rec('Messages received',window._osSpc(dashFixN(d.msgTimes&&d.msgTimes.length)),live('smart_mail_messages','threads to "'+alias+'", received only',(d.msgTimes||[]).length),false)+
+    rec('Invites recorded',window._osSpc(dashFixN(d.invTimes&&d.invTimes.length)),live('invites','inviter_alias = "'+alias+'"',(d.invTimes||[]).length),false)+
+    rec('Link clicks',window._osSpc(dashFixN(lt.c)),live('smart_link_daily_stats','owner_alias = "'+alias+'"',lt.c),false)+
+    rec('Joins attributed',window._osSpc(dashFixN(lt.j)),live('smart_link_daily_stats','owner_alias = "'+alias+'"',lt.j),false)+
+    rec('People around you',window._osSpc(dashFixN(d.peopleAround&&d.peopleAround.length)),'sources smart_notes + smart_mail_threads + invites · distinct names in this world\u2019s activity<br>'+window._osSpc(dashFixN(d.peopleAround&&d.peopleAround.length))+' rows · read '+now,false)+
     rec('Point values','pending','Not set — Shawn sets the values. The ledger already holds every counted action above; no points are claimed until values land. Nothing is invented in the meantime.',true)+
     rec('Page visits','no pipeline','No visit pipeline on personal / business / space / membership yet — the ledger writes nothing until a source connects.',true)+
     rec('Sales & income','not connected','Payments not connected — the ledger writes nothing until the first real payment lands.',true);
@@ -20191,10 +20209,10 @@ function renderComposition(d){
   var max=1; parts.forEach(function(p){ if(p.pts>max) max=p.pts; });
   box.innerHTML=parts.map(function(p){
     var h=Math.max(8, Math.round(p.pts/max*100));
-    return '<div class="os-comp-src"><div class="os-comp-bar" style="height:110px"><div class="os-comp-fill" style="height:'+h+'%;background:linear-gradient(180deg,'+p.color+','+p.color+'55);box-shadow:0 0 12px '+p.color+'66"></div></div><span class="os-comp-val">'+p.pts.toLocaleString()+'</span><span class="os-comp-lbl">'+esc(p.label)+'</span></div>';
+    return '<div class="os-comp-src"><div class="os-comp-bar" style="height:110px"><div class="os-comp-fill" style="height:'+h+'%;background:linear-gradient(180deg,'+p.color+','+p.color+'55);box-shadow:0 0 12px '+p.color+'66"></div></div><span class="os-comp-val">'+window._osSpc(p.pts)+'</span><span class="os-comp-lbl">'+esc(p.label)+'</span></div>';
   }).join('');
   var note=$('os-comp-note');
-  if (note) note.innerHTML='Every point has a source — <b>'+total.toLocaleString()+'</b> total. '+parts.map(function(p){ return esc(p.note); }).join(' · ')+'. Nothing else claims points.';
+  if (note) note.innerHTML='Every point has a source — <b>'+window._osSpc(total)+'</b> total. '+parts.map(function(p){ return esc(p.note); }).join(' · ')+'. Nothing else claims points.';
   flashChange('composition', box, total);
 }
 /* V4b. COMPOUNDING: intelligence flowing outward — the drawing only this
@@ -20205,7 +20223,7 @@ function renderCompounding(d){
   var notes=(d.noteTimes||[]).length;
   var people=(d.peopleAround||[]).length;
   var responses=(d.msgTimes||[]).length + (d.posts||[]).filter(function(p){ return p.j && p.j.a && String(p.j.a).toLowerCase()!=='this page' && String(p.j.a).toLowerCase()!=='guest'; }).length;
-  function stage(n,label){ return '<div class="os-comp-stage"><b>'+n.toLocaleString()+'</b><span>'+label+'</span></div>'; }
+  function stage(n,label){ return '<div class="os-comp-stage"><b>'+window._osSpc(n)+'</b><span>'+label+'</span></div>'; }
   box.innerHTML = stage(notes,'Your notes')+'<span class="os-comp-arrow">→</span>'+stage(people,'People around')+'<span class="os-comp-arrow">→</span>'+stage(responses,'Their responses')+'<span class="os-comp-arrow">→</span>'+stage(notes+responses,'Back into the world');
   var note=$('os-compound-note');
   if (note) note.textContent = notes? 'Your intelligence, outward: '+notes+' note'+(notes===1?'':'s')+' reached '+people+' people, drew '+responses+' response'+(responses===1?'':'s')+' — and every response feeds the world again.'
@@ -22021,16 +22039,16 @@ function derivationFor(key, holder){
         if (key === 'clicks'){
           return { title: 'Smart Link clicks — this link’s count',
             rows: [
-              {k:'This window', v: _fv.center.toLocaleString('en-US') + ' — ' + _fv.centerLabel + '.'},
-              {k:'All time', v: _fv.clicksAll.toLocaleString('en-US') + ' clicks · all time.'},
+              {k:'This window', v: window._osSpc(_fv.center) + ' — ' + _fv.centerLabel + '.'},
+              {k:'All time', v: window._osSpc(_fv.clicksAll) + ' clicks · all time.'},
               {k:'Became joins', v: _ctr + ' — clicks turning into joins.'}
             ],
             foot: 'Counts from the ledger — the one true record. <a href="https://nayanet.app/rooms/ledger">Open the ledger ⌗</a>' };
         }
         return { title: 'Joins — this link’s count',
           rows: [
-            {k:'Joins · all time', v: _fv.below.toLocaleString('en-US') + ' — joins through this link.'},
-            {k:'Clicks · all time', v: _fv.clicksAll.toLocaleString('en-US') + ' — the taps they came from.'},
+            {k:'Joins · all time', v: window._osSpc(_fv.below) + ' — joins through this link.'},
+            {k:'Clicks · all time', v: window._osSpc(_fv.clicksAll) + ' — the taps they came from.'},
             {k:'Became joins', v: _ctr + ' — clicks turning into joins.'}
           ],
           foot: 'Counts from the ledger — the one true record. <a href="https://nayanet.app/rooms/ledger">Open the ledger ⌗</a>' };
@@ -22473,11 +22491,11 @@ else init();
     {lo:2000,  hi:2500},
     {lo:2500,  hi:Infinity}
   ];
-  /* ARC SPECTRUM (Shawn 2026-10-31): magenta → purple → indigo blue →
-     canyon blue → green → yellow → gold → orange → red. The 7 verbatim
-     tokens carry it (blue serves the indigo/canyon mid-stops). The arc
-     color at the needle = the band's place in the spectrum order —
-     magenta at the first step, red at Ten Star. */
+  /* ARC SPECTRUM (Shawn 2026-10-31; PASS 4: the tokens were re-mapped to
+     gold in fix pass 2) — gold → gold → blue → green → gold → orange →
+     red-pink. The 7 verbatim tokens carry it. The arc color at the needle
+     = the band's place in the spectrum order — gold at the first step,
+     red-pink at Ten Star. No magenta, no purple anywhere in the arc. */
   var JOURNEY = ['#ffbf3d','#d9a521','#3fb8ff','#2fe89e','#ffbf3d','#ff9a5a','#ff5e6c'];
   function bandOf(score){
     for (var bi=0; bi<BANDS.length; bi++){
@@ -22557,6 +22575,22 @@ else init();
        number, in every mode — 1 000, 12 345. (The compact K/M forms above
        have no separator.) */
     return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  }
+  /* PASS 4 (fail 3): the numeral for a raw value in the CURRENT mode. %
+     is the needle's position on the 0–500 dial (score/500*100, space-grouped);
+     money is dollars with a $ in front; points are plain. The needle and
+     the bands never use this — they always read the raw score. */
+  function fmtMode(v){
+    var m = (typeof window !== 'undefined' && window._dashMode) || 'pts';
+    if (m === 'pct') return String(Math.round((v || 0) / 500 * 100)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + '%';
+    if (m === 'money') return '$' + fmt(v);
+    return fmt(v);
+  }
+  function fmtModeShort(v){
+    var m = (typeof window !== 'undefined' && window._dashMode) || 'pts';
+    if (m === 'pct') return String(Math.round((v || 0) / 500 * 100)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + '%';
+    if (m === 'money') return '$' + fmtShort(v);
+    return fmtShort(v);
   }
   /* 2026-11-02 — SHAWN: the in-dial readout must scale forever.
      300 -> "300", 1500 -> "1.5K", 100000 -> "100K". Fits the window. */
@@ -22756,6 +22790,15 @@ else init();
               '<stop offset="88%" stop-color="#b9bdc8"/>' +
               '<stop offset="100%" stop-color="#d6d9e0"/>' +
             '</linearGradient>' +
+            /* PASS 4 (fail 6): tnAluHub was referenced by .tn-gear-hub but
+               NEVER defined — the gear hubs had no valid fill. Silver,
+               matching mBrushed. */
+            '<linearGradient id="tnAluHub" x1="0%" y1="0%" x2="100%" y2="100%">' +
+              '<stop offset="0%" stop-color="#eef0f4"/>' +
+              '<stop offset="38%" stop-color="#9a9ea8"/>' +
+              '<stop offset="55%" stop-color="#7a7e88"/>' +
+              '<stop offset="100%" stop-color="#d6d9e0"/>' +
+            '</linearGradient>' +
             /* 2026-11-02 — SHAWN: Shiny obsidian black. Polished black glass.
                Bright highlight top-left, deep black bottom-right. */
             '<linearGradient id="mObsidian" x1="0%" y1="0%" x2="100%" y2="100%">' +
@@ -22814,13 +22857,10 @@ else init();
               '<stop offset="88%" stop-color="#14161a"/>' +
               '<stop offset="100%" stop-color="#1e2026"/>' +
             '</radialGradient>' +
-            '<radialGradient id="mRuby" cx="38%" cy="30%" r="75%">' +
-              '<stop offset="0%" stop-color="#f3b8ff"/>' +
-              '<stop offset="22%" stop-color="#c24ff0"/>' +
-              '<stop offset="55%" stop-color="#7a1fa2"/>' +
-              '<stop offset="82%" stop-color="#3d0f5c"/>' +
-              '<stop offset="100%" stop-color="#5a2090"/>' +
-            '</radialGradient>' +
+            /* PASS 4 (fail 6): the mRuby gradient was PURPLE and filled the
+               needle's centre dot and the middle gear's centre — the purple
+               dot in the gauge centre. The jewel is gold now: both fills
+               point at mGoldSet, and this def is deleted, not re-coloured. */
             '<radialGradient id="mCavity" cx="50%" cy="50%" r="70%">' +
               '<stop offset="0%" stop-color="#0a0b0e"/>' +
               '<stop offset="70%" stop-color="#050607"/>' +
@@ -22849,7 +22889,7 @@ else init();
             '</filter>' +
             '<linearGradient id="tnSpectrumFlow" x1="0%" y1="100%" x2="100%" y2="0%">' +
               /* 2026-11-02 — LEGENDARY. Canonical SPECTRUM FLOW (Shawn's law):
-                 Purple → Blue → Green → Gold → Orange → Red → Magenta.
+                 Gold → Blue → Green → Gold → Orange → Red-pink → Gold.
                  The gauge flows through the spectrum as value rises. */
               '<stop offset="0%" stop-color="#d9a521"/>' +
               '<stop offset="16%" stop-color="#3fb8ff"/>' +
@@ -22966,7 +23006,7 @@ else init();
               gearTeeth(100, 104, 15, 28, 6.4) +
               '<circle cx="100" cy="104" r="11" fill="url(#mGearDark)"/>' +
               '<circle cx="100" cy="104" r="5" fill="url(#mGoldSet)"/>' +
-              '<circle cx="100" cy="104" r="4" fill="url(#mRuby)"/>' +
+              '<circle cx="100" cy="104" r="4" fill="url(#mGoldSet)"/>' +
               '<circle cx="98.8" cy="102.8" r=".9" fill="#fff" opacity=".9"/>' +
             '</g>' +
             /* 2026-11-02 — LEGENDARY. Third gear: finest, innermost, CW.
@@ -22998,7 +23038,7 @@ else init();
             '<path d="M100,122 L98.5,62 L100,42 L101.5,62 Z" fill="url(#mPolished)"/>' +
             '<path d="M100,118 L99.5,66 L100,60 L100.5,66 Z" fill="#fff" opacity=".7"/>' +
             '<circle cx="100" cy="104" r="8" fill="url(#mBrushed)"/>' +
-            '<circle cx="100" cy="104" r="3" fill="url(#mRuby)"/>' +
+            '<circle cx="100" cy="104" r="3" fill="url(#mGoldSet)"/>' +
           '</g>' +
           /* === LAYER 8: DIGITAL READOUT === */
           /* 2026-11-02 — FIX: Moved up 15px to avoid collision with 400 numeral (y=185). */
@@ -23230,29 +23270,29 @@ else init();
 
       if (dm && !dm.noData){
         /* DELTA MODE: "+N gained in {period}" — needle, numeral, caption sweep as one. */
-        var txt = '+' + fmt(displayed) + (window._dashPctMode === true ? '%' : '');
-        if (txt !== lastNumTxt){ lastNumTxt = txt; num.textContent = txt; if(svgnum) svgnum.textContent = fmtShort(displayed); }
+        var txt = '+' + fmtMode(displayed);
+        if (txt !== lastNumTxt){ lastNumTxt = txt; num.textContent = txt; if(svgnum) svgnum.textContent = fmtModeShort(displayed); }
         if (label && label._t !== 'gained'){ label._t = 'gained'; label.textContent = 'GAINED'; }
         if (dm.target > 0){
           hideCap();
         } else {
           setCap('Nothing gained in ' + dm.period + ' — quiet is rest, not failure.');
         }
-        root.setAttribute('aria-label', 'Score gauge — gained ' + fmt(dm.target) + ' in ' + dm.period);
+        root.setAttribute('aria-label', 'Score gauge — gained ' + fmtMode(dm.target) + ' in ' + dm.period);
         return;
       }
       if (dm && dm.noData){
         /* Honest quiet: timing isn't windowable — the pill reads the total, and says so. */
-        var txt0 = fmt(displayed) + (window._dashPctMode === true ? '%' : '');
-        if (txt0 !== lastNumTxt){ lastNumTxt = txt0; num.textContent = txt0; if(svgnum) svgnum.textContent = fmtShort(displayed); }
+        var txt0 = fmtMode(displayed);
+        if (txt0 !== lastNumTxt){ lastNumTxt = txt0; num.textContent = txt0; if(svgnum) svgnum.textContent = fmtModeShort(displayed); }
         if (label && label._t !== 'score'){ label._t = 'score'; label.textContent = 'YOUR SMART SCORE'; }
         setCap('Period timing isn\u2019t on the ledger yet \u2014 this pill reads the total for now.');
-        root.setAttribute('aria-label', 'Score gauge — your live score is ' + fmt(score));
+        root.setAttribute('aria-label', 'Score gauge — your live score is ' + fmtMode(score));
         return;
       }
 
-      var txt2 = fmt(displayed) + (window._dashPctMode === true ? '%' : '');
-      if (txt2 !== lastNumTxt){ lastNumTxt = txt2; num.textContent = txt2; if(svgnum) svgnum.textContent = fmtShort(displayed); }
+      var txt2 = fmtMode(displayed);
+      if (txt2 !== lastNumTxt){ lastNumTxt = txt2; num.textContent = txt2; if(svgnum) svgnum.textContent = fmtModeShort(displayed); }
       if (label && label._t !== 'score'){ label._t = 'score'; label.textContent = 'YOUR SMART SCORE'; }
 
       var acts = ['posts','notes','msgs','invs','clicks','joins'].reduce(function(a,k){
@@ -23267,7 +23307,7 @@ else init();
            the bottom orb. The orbs speak for themselves. */
         setCap('');
       }
-      root.setAttribute('aria-label', 'Score gauge — your live score is ' + fmt(score));
+      root.setAttribute('aria-label', 'Score gauge — your live score is ' + fmtMode(score));
     }
 
     function paintRest(state){
@@ -23304,14 +23344,12 @@ else init();
            the SAME easing loop — needle, numeral and caption sweep as one. */
         var dm = dialMode(r.s);
         var target = (dm && !dm.noData) ? dm.target : r.score;
-        /* PASS 3 (Addenda 10+11): the dial follows the mode — the target is
-           the mode value (pct: a % of the featured total; money/pts: as-is).
-           displayed snaps to it, so the needle, the inner window and the
-           tiles all read the same mode value. _osModeVal is a no-op until
-           the tile driver loads, and falls back to points until the % total
-           is known. In delta mode the dm.target follows too, so the
-           aria-label reads the mode value. */
-        if (typeof window._osModeVal === 'function'){ try{ target = window._osModeVal(target); if (dm && !dm.noData) dm.target = target; }catch(e){} }
+        /* PASS 4 (fail 3): the needle and the bands always read the RAW
+           score — the mode value is for the numerals and the tiles only.
+           The old code converted the needle's target through _osModeVal,
+           so in % mode the needle pointed at 200 (the % of the pre-birth
+           total) instead of at 300 (the score's place on the 0–500 dial).
+           In delta mode dm.target stays the raw gain; the numeral formats it. */
         /* COMPLETENESS — stamp the TARGET on the numeral. The integrity meter
            compares this (what the instrument means) instead of the eased
            mid-sweep text (what the animation happens to show this frame).
@@ -23492,12 +23530,14 @@ else init();
        concepts page; the live path drives through _osTilesPaint instead,
        so the needle and the tiles share one driver.) */
     target = target || TARGET;
+    var gen = S.gen; /* PASS 4: a newer _osTilesSet aborts this reveal */
     var durations = [5000, 7500, 10000];
     var reels = reelObjs(el);
     snapStrips(reels, 0);
     restoreStrips(reels, el);
     var start = null, finished = reels.map(function(){ return false; });
     function tick(ts){
+      if (gen !== S.gen) return; /* PASS 4: superseded by a newer _osTilesSet — stop writing */
       if (start === null) start = ts;
       var elapsed = ts - start, allDone = true;
       reels.forEach(function(o, i){
@@ -23563,7 +23603,20 @@ else init();
     }
   }
   /* --- Dashboard wiring: the live score + the gauge sync --- */
-  var S = { target: null, revealed: false, start: null, reels: [] };
+  var S = { target: null, revealed: false, start: null, reels: [], anim: false, gen: 0, shown: null };
+  /* PASS 4 (fail 4): the SPACE separator, one helper for every number.
+     Space-grouped thousands, threes from the right — 1 000, 12 345,
+     1 234 567 — in every mode, on every surface, including the feed.
+     _osMoney keeps two decimals for dollar amounts ($1 234.56). */
+  window._osSpc = function(n){
+    if (typeof n === 'string') n = n.replace(/[\s,]/g, '');
+    n = Math.round(Number(n) || 0);
+    return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  };
+  window._osMoney = function(n){
+    var s = (Number(n) || 0).toFixed(2);
+    return s.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  };
   function durations(){
     var n = S.reels.length, out = [];
     for (var i = 0; i < n; i++) out.push(5000 + i * 2500);
@@ -23581,10 +23634,17 @@ else init();
      targets ever differ for a frame. */
   window._osTilesPaint = function(displayed, dialTarget){
     var el = numEl(); if (!el || S.target == null || !S.reels.length) return;
+    /* PASS 4 (fail 1/2): while a tile-owned reveal is running, the needle
+       must not write the strips — the reveal owns them. */
+    if (S.anim) return;
     var ts = nowTs();
     if (S.start == null) S.start = ts;
     var p = (dialTarget && isFinite(dialTarget) && dialTarget > 0) ? Math.max(0, Math.min(1, displayed / dialTarget)) : 1;
     var val = S.target * p;
+    /* PASS 4 (fail 1/2): never move the tiles BACKWARD for the same target —
+       the tile reveal may be ahead of the needle; the needle only advances. */
+    if (typeof S.shown === 'number' && val < S.shown) val = S.shown;
+    S.shown = val;
     S.reels.forEach(function(o){ setReel(o, Math.floor(val / o.div), ts); });
     /* each reel lights as the count reaches its share — hundreds, then tens,
        then units — so the tiles light in step with the needle's progress,
@@ -23594,20 +23654,18 @@ else init();
     if (p >= 1) el.classList.add('landed');
   };
   /* --- the mode value (Addenda 10+11): the stats follow the mode --- */
-  /* PTS: the points value. %: the value as a share of the featured total
-     (the same % the orbs show — points / total * 100, rounded; 0 when the
-     total is genuinely 0, matching the orb rule). MONEY: the value as
-     dollars (1 point = $1 — the conversion is a product decision for
-     Shawn). The total is window._osTotalPts, exposed by the orb render
-     (Q8). Until the total is known (undefined), the value reads in points
-     rather than a wrong % — the % tile follows the same rule. */
+  /* PASS 4 (fail 3) — THE RULE: % is the needle's position on the 0–500
+     dial — score / 500 * 100 (300 pts = 60%). The old code divided by the
+     pre-birth points total (150), so 300 pts read 200% and 747 clicks read
+     498%. The dial scale is a fixed constant, so no gate on _osTotalPts is
+     needed and the % is never a guess. MONEY: the value as dollars
+     (1 point = $1). PTS: the value as-is. Counts never pass through here —
+     a count is a count in every mode (see miniModeValue). */
   function _osModeVal(v){
     if (typeof v !== 'number' || !isFinite(v)) return v;
     var mode = (typeof window._dashMode !== 'undefined') ? window._dashMode : 'pts';
     if (mode === 'pct'){
-      if (typeof window._osTotalPts !== 'number' || !isFinite(window._osTotalPts)) return v;
-      var t = window._osTotalPts;
-      return (t > 0) ? Math.round(v / t * 100) : 0;
+      return Math.round(v / 500 * 100);
     }
     return v;
   }
@@ -23636,12 +23694,12 @@ else init();
   /* A tile in the same button-anatomy style as the digits, showing "%",
      AFTER the number — mirroring the $ tile in front for money. Points get
      no symbol. It is NOT a .reel (the counting logic must never touch it);
-     it is a static tile. It only shows when the % total is known (the
-     total is exposed by the orb render, Q8) — until then the number reads
-     in points and no % tile is shown, rather than a wrong %. */
+     it is a static tile. PASS 4 (fail 3): the % is score/500*100 — the
+     dial scale is a fixed constant, so the tile shows in % mode without
+     waiting on the points total. */
   function syncPctTile(){
     var el = numEl(); if (!el) return false;
-    var want = (typeof window._dashMode !== 'undefined' && window._dashMode === 'pct') && (typeof window._osTotalPts === 'number' && isFinite(window._osTotalPts));
+    var want = (typeof window._dashMode !== 'undefined' && window._dashMode === 'pct');
     var has = !!el.querySelector('.os-pct-tile');
     if (want && !has){
       var t = document.createElement('span');
@@ -23664,13 +23722,14 @@ else init();
       S.target = null; S.revealed = false; S.start = null; S.reels = [];
       TARGET = 0;
       el.classList.remove('landed');
-      el.innerHTML = '<span class="os-skel-line" style="width:120px;height:59px;border-radius:12px;vertical-align:middle;"></span>';
+      el.innerHTML = '<span class="os-skel-tile"></span><span class="os-skel-tile"></span><span class="os-skel-tile"></span><span class="os-skel-msg">Ledger loading \u2014 your score appears when the ledger answers</span>';
       return;
     }
     value = Math.round(value);
-    /* Addenda 10+11: the number follows the mode — pct shows the % of the
-       featured total, money shows dollars (1 point = $1), pts shows the
-       points. The $ / % tiles follow the mode, not the value. */
+    /* Addenda 10+11 (PASS 4, fail 3): the number follows the mode — pct
+       shows the % of the 0–500 dial (score/500*100), money shows dollars
+       (1 point = $1), pts shows the points. The $ / % tiles follow the
+       mode, not the value. */
     var _mode = (typeof window._dashMode !== 'undefined') ? window._dashMode : 'pts';
     value = _osModeVal(value);
     TARGET = value;
@@ -23692,30 +23751,73 @@ else init();
     syncMoneyTile(); syncPctTile(); /* createReels wiped the tiles — put them back if the mode wants them */
     fitNumber(el);
     if (!S.revealed) {
-      /* first paint: park at 0 — the needle's frame() drives the count via _osTilesPaint */
+      /* PASS 4 (fail 1/2): first paint — the tiles own their reveal. The old
+         code parked at 0 and waited for the needle's frame() to drive the
+         count; when the dial was not live, the tiles froze at "000" for
+         8–10+ s. Now the tiles count up themselves (slow-mo staggered
+         reveal) and the needle may only advance them, never pull them back. */
       if (S.start == null) S.start = nowTs();
-      snapStrips(S.reels, 0);
-      restoreStrips(S.reels, el);
       S.revealed = true;
+      S.gen++;
+      var _gen = S.gen;
+      if (S.reduceMotion) {
+        snapStrips(S.reels, value);
+        restoreStrips(S.reels, el);
+        S.reels.forEach(function(o){ setReel(o, Math.floor(value / o.div), nowTs()); });
+        S.shown = value;
+        el.classList.add('landed');
+      } else {
+        S.anim = true;
+        revealUltimate(el, value, function() { if (S.gen === _gen) { S.anim = false; S.shown = value; } });
+      }
     } else {
-      /* later change: snap — the needle snaps too, so the tiles land with it */
-      snapStrips(S.reels, value);
-      restoreStrips(S.reels, el);
-      S.reels.forEach(function(o){
-        var d = Math.floor(value / o.div) % 10;
-        o.reel.classList.remove('rest');
-        if (o.last !== null) o.reel.classList.remove('d' + o.last);
-        o.reel.classList.add('d' + d); o.last = d;
-        o.reel.classList.add('lit');
-      });
-      el.classList.add('landed');
-      fitNumber(el);
+      /* PASS 4 (fail 1/2 + fail 7): later change. When the digit count GREW,
+         the tiles own the count-up (revealUltimate — the new tiles count up
+         from 0, never a jump) — so a tab change to a bigger window still
+         shows a count-up. When it stays or shrinks, snap (the needle snaps
+         too, so the tiles land with it). */
+      S.anim = false;
+      S.gen++;
+      if (newDigits > oldDigits) {
+        var _g2 = S.gen;
+        if (S.reduceMotion) {
+          snapStrips(S.reels, value);
+          restoreStrips(S.reels, el);
+          S.reels.forEach(function(o){ setReel(o, Math.floor(value / o.div), nowTs()); });
+          S.shown = value;
+          el.classList.add('landed');
+        } else {
+          S.anim = true;
+          revealUltimate(el, value, function() { if (S.gen === _g2) { S.anim = false; S.shown = value; } });
+        }
+      } else {
+        snapStrips(S.reels, value);
+        restoreStrips(S.reels, el);
+        S.reels.forEach(function(o){
+          var d = Math.floor(value / o.div) % 10;
+          o.reel.classList.remove('rest');
+          if (o.last !== null) o.reel.classList.remove('d' + o.last);
+          o.reel.classList.add('d' + d); o.last = d;
+          o.reel.classList.add('lit');
+        });
+        S.shown = value;
+        el.classList.add('landed');
+        fitNumber(el);
+      }
     }
+    /* PASS 4 (fail 10 + addendum 13): refit now that the tiles are real —
+       the hero's height was measured with the skeleton, so the scale and
+       the centering must be recomputed with the landed tiles. */
+    try{ refit(); }catch(e){}
   };
   /* --- hero fit (Addendum 4): zoom the hero to fill the viewport exactly --- */
   function fitHero(){
     var w = document.getElementById('os-hero-fit'); if (!w) return;
-    w.style.transform = ''; w.style.height = '';
+    /* PASS 4 (addendum 13): reset the centering margin before measuring —
+       otherwise the margin feeds back into r.top and the scale shrinks a
+       little on every refit. #os-ld-org has overflow:hidden, so the margin
+       does not collapse into the parent. */
+    w.style.transform = ''; w.style.height = ''; w.style.marginTop = '';
     var natW = w.scrollWidth, natH = w.scrollHeight;
     if (!natW || !natH) return;
     var r = w.getBoundingClientRect();
@@ -23729,6 +23831,12 @@ else init();
     w.style.transform = 'scale(' + s + ')';
     w.style.transformOrigin = 'top center';
     w.style.height = (natH * s) + 'px';
+    /* PASS 4 (addendum 13): centre the hero vertically in the viewport —
+       the number + gauge + orbs read as one balanced composition, with
+       nothing intruding from the bottom. The slack is split evenly above
+       and below the hero. */
+    var slack = availH - natH * s;
+    w.style.marginTop = (slack > 0 ? Math.round(slack / 2) : 0) + 'px';
   }
   window._osFitHero = fitHero;
   /* --- running feed (Addenda 3+4): live updates, newest first, below the fold --- */
@@ -23760,8 +23868,8 @@ else init();
     Object.keys(dm).forEach(function(k){
       var c = (dm[k] && dm[k].c) || 0, j = (dm[k] && dm[k].j) || 0;
       var ms = new Date(k + 'T12:00:00').getTime(); if (!isFinite(ms)) return;
-      if (c > 0) items.push({ t: ms, icon: '◆', color: '#ffbf3d', text: c + ' link click' + (c === 1 ? '' : 's') + ' · ' + k });
-      if (j > 0) items.push({ t: ms, icon: '●', color: '#40d3bb', text: j + ' join' + (j === 1 ? '' : 's') + ' · ' + k });
+      if (c > 0) items.push({ t: ms, icon: '◆', color: '#ffbf3d', text: window._osSpc(c) + ' link click' + (c === 1 ? '' : 's') + ' · ' + k });
+      if (j > 0) items.push({ t: ms, icon: '●', color: '#40d3bb', text: window._osSpc(j) + ' join' + (j === 1 ? '' : 's') + ' · ' + k });
     });
     items.sort(function(a, b){ return b.t - a.t; });
     return items.slice(0, 10);
@@ -23825,25 +23933,15 @@ else init();
     for (var i = 0; i < str.length; i++) html += miniTileHTML(str[i]);
     return html + '</span>';
   };
-  /* the mode value for a stat (Addenda 10+11): a plain integer point count
-     renders in the current mode — pts as-is (space-grouped), pct as a %
-     of the featured total, money as dollars. Anything that is not a plain
-     integer ($1.22, 1.5K, —) is already in its own unit and stays as-is. */
+  /* PASS 4 (fail 3) — THE RULE: % is the needle's position on the 0–500
+     dial, for score-like quantities only. A COUNT is a count in every mode —
+     747 clicks stay "747" in % mode (they never become 498%) and stay "747"
+     in money mode (they never become $747). A $ amount is already money; a
+     % is already a %. So a mini tile passes its raw value through unchanged:
+     the mode flip never rewrites a count. The space grouping happens in
+     miniTileHTML (a comma in the raw text becomes a gap). */
   function miniModeValue(raw){
-    var str = String(raw).trim().replace(/,/g, '');
-    if (!/^[0-9]+$/.test(str)) return raw; /* not a plain integer — leave it */
-    var pts = parseInt(str, 10);
-    var mode = (typeof window._dashMode !== 'undefined') ? window._dashMode : 'pts';
-    if (mode === 'pct'){
-      var t = (typeof window._osTotalPts === 'number' && isFinite(window._osTotalPts)) ? window._osTotalPts : 0;
-      if (!(t > 0)) return raw; /* total not known yet — show points, not a wrong % */
-      return Math.round(pts / t * 100) + '%';
-    }
-    if (mode === 'money'){
-      return '$' + String(pts).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-    }
-    /* pts: space-grouped (Addendum 11 — a space for every number) */
-    return String(pts).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    return raw;
   }
   function miniConvert(el, size){
     if (!el) return;
@@ -23868,6 +23966,10 @@ else init();
     /* board stats (small) + drill/dialog totals (medium) */
     document.querySelectorAll('.os-wb-nums b').forEach(function(b){ miniConvert(b, 'small'); });
     document.querySelectorAll('[id$="-total-n"]').forEach(function(el){ miniConvert(el, 'med'); });
+    /* PASS 4 (fail 5): the Smart Links LIVE totals + per-link gauge numbers
+       — plain text before; they are mini tiles now. */
+    document.querySelectorAll('.os-sl-stat-n').forEach(function(el){ miniConvert(el, 'med'); });
+    document.querySelectorAll('.os-sl-gauge-num').forEach(function(el){ miniConvert(el, 'med'); });
   };
   /* re-tile whenever the boards or a drill re-renders (the render wipes the
      tiles by setting textContent/innerHTML; the converter puts them back).
@@ -23925,7 +24027,7 @@ else init();
 
   /* -- small pure helpers ------------------------------------------------ */
   function num(n) {
-    return Number(n || 0).toLocaleString("en-US");
+    return window._osSpc(Number(n || 0));
   }
   function pl(n, one, many) {
     return n === 1 ? one : many;
@@ -24408,7 +24510,7 @@ function trendStreakLine(v){
   }catch(e){ return ''; }
 }
 function kindColor(k){ for(var i=0;i<KINDS.length;i++) if(KINDS[i].k===k) return KINDS[i].c; return '#fff'; }
-function fmtNum(n){ return Number(n).toLocaleString('en-US'); }
+function fmtNum(n){ return window._osSpc(Number(n)); }
 function qn(n, one, many){ return Number(n)===1 ? one : many; }
 function setNote(t){ var el=q('[data-tn-trend-note]'); if(el) el.textContent=t; }
 function setDetail(html){ var el=q('[data-tn-trend-detail]'); if(!el) return; if(!html){ el.hidden=true; el.innerHTML=''; } else { el.hidden=false; el.innerHTML=html; } }
