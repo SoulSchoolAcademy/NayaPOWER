@@ -54,7 +54,7 @@ You never have to guess what is true. Read the record, and it tells you — beca
 
 The durable lesson: write for the stranger. Bound the claim. Name the gap. Keep the falsifier. Never impersonate. Correct surgically. Route the decision. The record is the system — and a record that tells the truth is the only system that compounds.
 
-## COVERAGE — RAW NOTES DISTILLED (53)
+## COVERAGE — RAW NOTES DISTILLED (60)
 
 - IB-SMART-NOTE-20260930-sn0104-design-weight-decisions-not-settled-in-relay
 - IB-SMART-NOTE-20260930-sn0176-cross-partition-content-fork
@@ -109,3 +109,10 @@ The durable lesson: write for the stranger. Bound the claim. Name the gap. Keep 
 - IB-SMART-NOTE-20261108-sn2354-allowed-is-not-sent
 - IB-SMART-NOTE-20261108-sn2355-one-family-in-treatment-exclusive-in-glyph
 - IB-SMART-NOTE-20261108-sn2356-default-to-max-and-the-tier-is-naya-free
+- IB-SMART-NOTE-20261108-sn2357-take-the-shown-object-never-recreate-it
+- IB-SMART-NOTE-20261108-sn2358-the-factory-holds-every-digital-asset
+- IB-SMART-NOTE-20261108-sn2359-the-scorecard-rides-with-the-round
+- IB-SMART-NOTE-20261108-sn2360-depth-on-naya-the-gauge-ring
+- IB-SMART-NOTE-20261108-sn2361-paypal-doesnt-know-they-switched
+- IB-SMART-NOTE-20261108-sn2362-the-academy-harvest-measured
+- IB-SMART-NOTE-20261108-sn2363-the-academy-button-and-the-tracked-flow
