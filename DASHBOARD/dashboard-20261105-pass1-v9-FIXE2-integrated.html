@@ -18764,7 +18764,19 @@ window.ldLayoutNodes = ldLayoutNodes;
   window._featuredKey = function(){ var v = window._featuredDisplay(); return v.kind + ':' + v.id; };
   window._featuredCenter = function(fallbackTotal){
     var v = window._featuredDisplay();
-    return (typeof v.center === 'number' && isFinite(v.center)) ? v.center : fallbackTotal;
+    if (typeof v.center === 'number' && isFinite(v.center)) return v.center;
+    /* FIX PASS 4 (fail 7): a scoreless featured holder (a page) has no
+       center, so the old fallback was the window orb total — in All mode
+       that is the PRE-BIRTH subtotal (150) while the derivation's final is
+       the spine score (300). The tiles must show the final, never the
+       subtotal. In All mode the final is the spine score; in a period
+       window the window total already IS the final, so keep it there. */
+    var _w = window._ldWindow || 'all';
+    if (_w === 'all'){
+      var _sp = window._osSpine;
+      if (_sp && typeof _sp.score === 'number' && isFinite(_sp.score)) return _sp.score;
+    }
+    return fallbackTotal;
   };
   window._featuredOrbPts = function(node, n, pts){
     var v = window._featuredDisplay();
@@ -18817,8 +18829,10 @@ window.ldLayoutNodes = ldLayoutNodes;
       /* FIXB 2026-11-07 (Fix 5): no big number before the ledger answers. */
       if (bigVal){
         /* PASS 3: the big number is the tile number now — never textContent (that wipes the tiles). A null center (page, waiting ledger) is the skeleton, never a fabricated 0. */
+        /* FIX PASS 4 (fail 10): the no-tiles branch below must never write a bare "—" — it wipes the skeleton and paints a 168px white em-dash for the whole ledger load. Loading, stale, or no center: the skeleton. A known number: the only text ever written. */
         if (typeof window._osTilesSet === 'function'){ window._osTilesSet((window._osSpine && (window._osSpine.loading || window._osSpine.stale)) ? null : ((typeof v.center === 'number' && isFinite(v.center)) ? v.center : null)); }
-        else bigVal.textContent = (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) ? '—' : ((typeof v.center === 'number' && isFinite(v.center)) ? _fmt(v.center) : '—');
+        else if ((window._osSpine && (window._osSpine.loading || window._osSpine.stale)) || !(typeof v.center === 'number' && isFinite(v.center))) bigVal.innerHTML = '<span class="os-skel-tile"></span><span class="os-skel-tile"></span><span class="os-skel-tile"></span><span class="os-skel-msg">Ledger loading \u2014 your score appears when the ledger answers</span>';
+        else bigVal.textContent = _fmt(v.center);
       }
       /* PASS 1 v7 (2026-11-05) — the number moved; the derivation under
          it moves with it, or a featured switch shows the new number
@@ -19020,7 +19034,8 @@ window.ldLayoutNodes = ldLayoutNodes;
       var y = (typeof window._featuredReturnY === 'number') ? window._featuredReturnY : 0;
       fb.style.display = 'none';
       /* FIXB 2026-11-07 (Fix 5): Back to board returns the GAUGE to the overall score too — the featured holder is what left, so it goes back. setFeatured scrolls to 0 internally, so the saved scroll restore comes after. */
-      try{ var _prev = window._featuredPrev; if (_prev && _prev.kind && _prev.id && typeof window.setFeatured === 'function') window.setFeatured(_prev.kind, _prev.id); else if (typeof window.setFeatured === 'function') window.setFeatured('world', 'dashboard'); }catch(e){}
+      /* FIX PASS 4 (fail 7 edge): a link prev is valid with a null id — the ambassador link holder is {kind:'link', id:null} by design. */
+      try{ var _prev = window._featuredPrev; if (_prev && _prev.kind && (_prev.id || _prev.kind === 'link') && typeof window.setFeatured === 'function') window.setFeatured(_prev.kind, _prev.id); else if (typeof window.setFeatured === 'function') window.setFeatured('world', 'dashboard'); }catch(e){}
       try{ window.scrollTo(0, y); }catch(e){}
     });
     window.addEventListener('scroll', function(){
@@ -19629,8 +19644,15 @@ function loadPointsBoard(_t){
           if (typeof window._osTilesSet === 'function'){
             window._osTilesSet((window._osSpine && (window._osSpine.loading || window._osSpine.stale)) ? null : Math.round(displayTotal));
           } else if (bigVal){
-            bigVal.textContent = window._osSpc(Math.round(displayTotal));
-            if (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) bigVal.textContent = '—';
+            /* FIX PASS 4 (fail 10): no bare "—" here. This render can run
+               before the tiles IIFE defines _osTilesSet (the fetch callbacks
+               fire mid-parse on a streamed page), and the old code wrote a
+               bare "—" as textContent — wiping the skeleton and painting a
+               168px white em-dash for the whole ledger load. Loading or
+               stale: re-assert the skeleton (the dark loading face). Loaded:
+               the spaced number is the only text ever written. */
+            if (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) bigVal.innerHTML = '<span class="os-skel-tile"></span><span class="os-skel-tile"></span><span class="os-skel-tile"></span><span class="os-skel-msg">Ledger loading \u2014 your score appears when the ledger answers</span>';
+            else bigVal.textContent = window._osSpc(Math.round(displayTotal));
           }
         }
         /* PASS 1 v6 (i) — THE SCORE AS A LIVING DERIVATION. Parts fan
@@ -19833,7 +19855,9 @@ function loadPointsBoard(_t){
           if (bigVal){
             /* PASS 3: the big number is the tile number now (the $ tile follows the mode inside _osTilesSet). */
             if (typeof window._osTilesSet === 'function'){ var _c3 = (typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total); window._osTilesSet((window._osSpine && (window._osSpine.loading || window._osSpine.stale)) ? null : ((typeof _c3 === 'number' && isFinite(_c3)) ? _c3 : null)); }
-            else bigVal.textContent = (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) ? '—' : window._osSpc(((typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total)));
+            /* FIX PASS 4 (fail 10): no bare "—" — skeleton while loading, the spaced number when loaded. */
+            else if (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) bigVal.innerHTML = '<span class="os-skel-tile"></span><span class="os-skel-tile"></span><span class="os-skel-tile"></span><span class="os-skel-msg">Ledger loading \u2014 your score appears when the ledger answers</span>';
+            else bigVal.textContent = window._osSpc(((typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total)));
           }
           /* PASS 1 v7 (2026-11-05) — a PTS/% flip re-reads the live ledger; the derivation under the number re-renders with it. */
           try{ if (typeof window._renderScoreDerivation === 'function') window._renderScoreDerivation(); }catch(e){}
