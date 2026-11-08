@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-08T03:48:40Z",
-  "tip": "eac91b4adc1e8efbf59d9d496e2e9a634090a5c2",
+  "generated_at": "2026-11-08T09:48:45Z",
+  "tip": "ef1e6c9d328ff1c908d7a1611f7589a61ed305d5",
   "prs": [
     {
       "number": 3089,
@@ -20,6 +20,42 @@
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
       "head": "1679fbdb7a7e1b87def5afbd4dc88dfe47274b9c"
+    },
+    {
+      "number": 3293,
+      "title": "docs(brain): learning event 2026-11-07",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "950cb0f1e1f2686e74bc6730fa1fcac7b0ccf805"
+    },
+    {
+      "number": 3294,
+      "title": "SN-2291 \u2014 Fixed Means the Click the User Named (distilled, 2026-11-07)",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "9866abb0aa91f69cb46b8a26be21b4bf4be128a7"
+    },
+    {
+      "number": 3295,
+      "title": "Daily Intelligence Report 2026-11-07 - filed edition (V2 skeleton + distillation core)",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, claim-evidence-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "21af3b9ad50f3bdbfb3560816655b9f76c6631dc"
+    },
+    {
+      "number": 3296,
+      "title": "INFRA w2903: add feed-provenance-line element to Main Show render",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "a72942270b7a89a70d11ffe0b2a3347458e54dcd"
     }
   ]
 }
