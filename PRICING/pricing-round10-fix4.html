@@ -1271,6 +1271,98 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
    (~4591), clearance ~20px, slide ~822. The item-3 trim is phone-only
    (max-width:480px) precisely so the tablet slide stays 742px and this margin is
    enough — a tablet trim would have needed 334px. */
+/* ============ FIX 8 (2026-11-08, maker step 1 — the verifier's fresh-eyes finding + three 10-path items) ============
+   Item 1 — POWER'S TIER NAME WRAPS TO TWO LINES AT PHONE + TABLET (verify-7 §8.1, pre-existing).
+   Mechanism: table layout auto, no colgroup; th widths identical at 390 and 768 (the table is
+   1132px wide, scrolls horizontally at both): POWER th 119.9px, padding 16px each side -> content
+   87.9px, but the name needs 113.5px (13px, letter-spacing .18em). The 32px of th padding is what
+   starves the name — deficit 25.6px. The fix: min-width 156px on the POWER th (3rd th -> content
+   124px > 113.5, spare 10.5px; table grows ~36px, still inside the horizontal scroll container)
+   + nowrap on the four name spans as belt-and-braces (targets exactly the four names: the first
+   th is empty, FREE's name is its th's only non-price/sub span). At desktop the POWER th is
+   already 260.5px, so the min-width is a no-op there. Guard: name lines == 1 AND name right edge
+   <= th right edge + 1px at all three widths (nowrap alone would overflow ~26px into PRO's th).
+   No word changes. */
+#chart thead th:nth-child(3){min-width:156px;}
+#chart thead th > span:not(.col-price):not(.col-sub),
+#chart thead .tier-head-btn > span:not(.steppill):not(.col-price):not(.col-sub){white-space:nowrap;}
+/* Item 2 — PHONE HERO BANNER RECLAIM (verify-7 §9, the 46px strip). Mechanism: the landing is
+   top-aligned — scrollY = slideTop + |scroll-margin| = 62 + 84 = 146 (fix 7 set #top -84px at
+   <=860px; the -60 in fix 4.1's comment is stale). Banner visible = 130 - |scroll-margin|.
+   Claim clearance = barTop - (claimDocBottom - scrollY) = 742 - 856 + 146 = 32. The fix, phone-only
+   (<=480px): trim 29px above the claim (kicker 10->6, h1 8->4, manifesto 4->2, tech 10->6,
+   mission 6->3, sub 4->2, demo-starter 12->8, band pt 14->8) + scroll-margin -84 -> -55.
+   scrollY 146 -> 117 (banner 46 -> ~75); the claim and the note move up 29 with the trim, so the
+   claim clearance stays ~32 and the note bottom lands 735 < 742 (whole). THE TRIM IS REQUIRED,
+   not cosmetic: without it the note (doc bottom 881) would land at viewport 764 — 22px under the
+   bar. TRADEOFF, NAMED: the hero intro's inter-element gaps shrink 68px -> 39px of spacing above
+   the claim; the text itself is untouched. The elements are direct children of .banner-head
+   .hero-band (there is NO .hero-copy wrapper in the DOM). Tablet keeps -84 (untouched). */
+@media (max-width:480px){
+  .banner-top .hero-band{padding-top:8px;}
+  .banner-top .hero-band .kicker{margin-bottom:6px;}
+  .banner-top .hero-band h1{margin-bottom:4px;}
+  .banner-top .hero-band .manifesto{margin-bottom:2px;}
+  .banner-top .hero-band .tech{margin-bottom:6px;}
+  .banner-top .hero-band .mission{margin-bottom:3px;}
+  .banner-top .hero-band .sub{margin-bottom:2px;}
+  .banner-top .hero-band .demo-starter{margin-bottom:8px;}
+  #top{scroll-margin-top:-55px;}
+}
+/* Item 3 — TABLET CLOSE TIGHTENING (verify-7 §9, the 213px float). Mechanism: slide-inner top 5478,
+   h 462, pt 24; head mb 16; sub mb 24; dream mb 24; trial mb 18; button doc top 5884, bottom 5940;
+   slide top doc 5222, slide h 742. B (button-bottom offset within slide) = 718; H = 742; M = 290;
+   tablet barH = 101; clearance = H + M - B - barH = 213. BINDING: the snap lands at maxScroll
+   (5230), so slide top stays -8 and H+M = 1032 is pinned — clearance = 1032 - B - 101, so the ONLY
+   lever is B: add DELTA above the button and cut margin-bottom by DELTA. DELTA = 140 -> clearance
+   73, margin 290 -> 150, slide top stays -8, sliver stays gone. Even distribution, tablet band
+   481-860px only (phone keeps 290, desktop untouched): pt 24->52, head mb 16->44, sub mb 24->52,
+   dream mb 24->52, trial mb 18->46. Slide becomes 882 tall (86% of the 1024 viewport) — a
+   full-viewport composition like the desktop close, not dead white. The button's document position
+   does not move (+140 above, -140 margin below): doc bottom stays 5940, snap stays maxScroll
+   (new docH 6114, maxScroll 5090, slide top 5082 -> viewport -8), button viewport bottom 850,
+   clearance 923 - 850 = 73. (Reducing the banner height or trimming below the button cannot work:
+   trimming below the button changes H without B, and the sliver constraint M >= V - H forces M
+   back up.) Selectors mirror fix 7's phone trim. */
+@media (min-width:481px) and (max-width:860px){
+  #start{margin-bottom:150px;}
+  #start .slide-inner{padding-top:52px;}
+  #start h2.sec-head{margin-bottom:44px;}
+  #start p.sec-sub{margin-bottom:52px;}
+  #start h2.dream{margin-bottom:52px;}
+  #start p.trial-text{margin-bottom:46px;}
+}
+/* Item 4 — PHONE DETAIL PANEL FIT (verify-7 §8.6, the 34px under the bar). Mechanism: the panel is
+   position:fixed, centered (top:50% + translate), 358.8 x 708.1 (max-height 84vh), clientH 706,
+   scrollH 900, padding 14/14 (from .tab-pop). The close button is position:static, in normal flow
+   at the END of the 900px content — at scrollTop 0 it sits at viewport 904-954, OFF-SCREEN, not
+   visible at all (VERIFY-7 §8.6's "the close button stays visible above the bar" measured the
+   scrolled state, scrollTop 194). Content is 900px for both Personal and Smart Box (the 7-part
+   template runs ~2 lines per body by design); space above the bar at phone = 742px. The literal
+   "no internal scroll" goal needs ~160px of content cut; the available levers total ~164px but
+   leave ~1px of margin and degrade the typography — fragile and unwise. DECISION (phone-only
+   <=480px): top-anchor the panel as a sheet (top:12px; translateX(-50%); max-height
+   calc(100svh - 125px) -> 718px tall, bottom 730, 12px above the bar at 742) + sticky close
+   (position:sticky; bottom:0 — ALWAYS visible above the bar: at scrollTop 0 it sticks at the
+   panel's bottom edge, at max scroll it sits at its natural position below the last part) +
+   spacing compression only (part pt/pb 14->10, label mb 6->4, part mb 10->6, title mb 10->6, panel
+   padding 14->10 = -106 -> content ~794, internal scroll ~76px for the longest content).
+   NOT-DONE, NAMED: ~76px of internal scroll remains for the longest content; the no-scroll route
+   needs typography surgery with ~1px margin — the captain's call. Desktop panel (716 tall,
+   scrollH 714 == clientH 714, underBar 0) and tablet panel (739 tall, scrollH 737 == clientH 737,
+   underBar 0, close clearance 57) are measured clean and stay untouched: these rules are
+   <=480px only. The top/transform NEED !important: the panel is ALSO a .tab-pop, and the Hub
+   .tab-pop phone rule (@media max-width:640px, line ~424) forces top:50% + translate(-50%,-50%)
+   with !important — a normal declaration cannot beat it, however late. The !important here is
+   scoped to .detail-panel (this panel only) and to exactly those two properties; max-height and
+   padding win without it. */
+@media (max-width:480px){
+  .detail-panel{top:12px !important; transform:translateX(-50%) !important; max-height:calc(100svh - 125px); padding:10px;}
+  .detail-panel .detail-close{position:sticky; bottom:0; z-index:2;}
+  .detail-panel .real-note{padding:10px 16px; margin-bottom:6px;}
+  .detail-panel .rn-part{margin-bottom:4px;}
+  .detail-panel .detail-title{margin-bottom:6px;}
+}
 </style>
 </head>
 <body>
