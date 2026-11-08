@@ -27,3 +27,27 @@ run_worker_first = ["/smart-notes", "/smart-notes/*", "/s/*", "/notes/*", "/note
 [[routes]]
 pattern = "nayanet.app/s/*"
 zone_name = "nayanet.app"
+
+# 2026-11-08 (Resolve): the note-route family and the service-worker cure
+# are declared here so every repo deploy re-asserts them; an off-repo deploy
+# on 2026-11-08 dropped the zone's hub bindings and /s/* + /smart-notes/*
+# answered 200 shells until this restore.
+[[routes]]
+pattern = "nayanet.app/smart-notes*"
+zone_name = "nayanet.app"
+
+[[routes]]
+pattern = "nayanet.app/notes/*"
+zone_name = "nayanet.app"
+
+[[routes]]
+pattern = "nayanet.app/note*"
+zone_name = "nayanet.app"
+
+[[routes]]
+pattern = "nayanet.app/sw.js"
+zone_name = "nayanet.app"
+
+[[routes]]
+pattern = "nayanet.app/service-worker.js"
+zone_name = "nayanet.app"
