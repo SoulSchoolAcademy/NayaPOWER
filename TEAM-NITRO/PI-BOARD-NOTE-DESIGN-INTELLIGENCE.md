@@ -11,7 +11,7 @@ this file is the draft; the loop files it.
 
 ## BOARD NOTE — Design Intelligence: locked in, in three places
 
-**State:** FILED by the intelligence loop (Sigma), run 2, 2026-11-08 ~17:05Z. Blocks written; drafts numbered SN-2299–SN-2307 and filed to Smart Box + GitHub (read-back verified — see the daily log for shas); 4 missing GitHub files filed; this note filed to GitHub at `TEAM-NITRO/PI-BOARD-NOTE-DESIGN-INTELLIGENCE.md`. **Updated run 4, 2026-11-08 ~17:53Z:** language section added (Shawn's word 17:41Z) + 7-libraries correction (FOUND 2026-11-08); Draft 10 numbered SN-2319 and filed; blocks file re-filed with Block 0. **Updated run 5, 2026-11-08 ~18:23Z:** SN-2324–SN-2329 filed (membership ladder changed Power 10/Pro 100/Max ∞ + Ambassador rename; Smart Box gigabytes + Smart Ledger Included ×4; entrance banner as a real object; colour flow green → blue → purple → gold; no gold writing — white diamond / black diamond, Max's gold shifts to white gold; popups reversed, nutshell first); LOCK-IN-10 done 18:23Z (9/10 complete, concept-10 synced file blocked by the EPERM write fault); ESSENCE-01 run-5 addendum (coverage 20 → 26); ESSENCE-08 filed locally (its GitHub home still unestablished).
+**State:** FILED by the intelligence loop (Sigma), run 2, 2026-11-08 ~17:05Z. Blocks written; drafts numbered SN-2299–SN-2307 and filed to Smart Box + GitHub (read-back verified — see the daily log for shas); 4 missing GitHub files filed; this note filed to GitHub at `TEAM-NITRO/PI-BOARD-NOTE-DESIGN-INTELLIGENCE.md`. **Updated run 4, 2026-11-08 ~17:53Z:** language section added (Shawn's word 17:41Z) + 7-libraries correction (FOUND 2026-11-08); Draft 10 numbered SN-2319 and filed; blocks file re-filed with Block 0. **Updated run 5, 2026-11-08 ~18:23Z:** SN-2324–SN-2329 filed (membership ladder changed Power 10/Pro 100/Max ∞ + Ambassador rename; Smart Box gigabytes + Smart Ledger Included ×4; entrance banner as a real object; colour flow green → blue → purple → gold; no gold writing — white diamond / black diamond, Max's gold shifts to white gold; popups reversed, nutshell first); LOCK-IN-10 done 18:23Z (9/10 complete, concept-10 synced file blocked by the EPERM write fault); ESSENCE-01 run-5 addendum (coverage 20 → 26); ESSENCE-08 filed locally (its GitHub home still unestablished). **Updated run 6, 2026-11-08 ~18:53Z:** SN-2330–SN-2332 filed (Banner Law — a trillion-dollar plaque, not text in a box, standing; the white "i" info jewel, all 36 the same; N-A-Y-A not N-I-A + Ambassadors not Affiliates + Smart Access not Memberships, grep "affiliate" zero); chart round 6 DONE 18:44Z (banner rebuilt as a real object, portrait is assets/naya-guide.jpg stand-in — the real NAYA_POWER.jpg copy still EPERM-blocked) + round 7 DONE 18:47Z, both presented to Shawn, his eye decides; PR #3301 MERGED 18:40Z (/s/ short-link repoint to the Hub worker — live verification pending); ESSENCE-01 run-6 addendum (coverage 26 → 29).
 
 **What it is:** The design contract as intelligent blocks — one block per
 law — so the knowledge IS the brand and any Naya reads it as blocks. Nine
@@ -79,6 +79,16 @@ fails is not done. A deferral is an open item, not a pass.
   (SN-2312) — restated by his eye 18:24Z (SN-2326): the banner builder
   tries the copy again and says plainly if the block still stops it;
   ESSENCE-08 has no GitHub home yet (filed locally only); two "Affiliate"
-  mentions remain outside the renamed row (mini-card + Smart Growth popup)
-  awaiting his word on sweeping them (SN-2324); the 5th-group colour
+  mentions (mini-card + Smart Growth popup) — SWEPT by chart round 7
+  18:47Z (grep "affiliate" ZERO anywhere in the artifact, SN-2332); his eye
+  still decides on the page itself; the 5th-group colour
   (cycles to green) is the captain's reading, flagged to him (SN-2327).
+- NEW since run 5 (recorded, not hidden): PR #3301 MERGED 18:40:23Z — the
+  /s/ short-link repoint (nayanet.app/s/* to the Hub worker, Resolve's lane)
+  is on main; live verification pending (inspector's next run). PI refresh
+  FAILED 18:40Z/18:42Z — the EPERM write block zeroed all five feed reports;
+  last good publish remains 16:10Z (same fault, already surfaced ~17:07Z —
+  one alert per fault, not re-reported). Smart Notes sync stalled — heartbeat
+  frozen since ~16:06Z, past the 75-min threshold, unsynced changes exist
+  (same fault). Chart portrait is assets/naya-guide.jpg (stand-in) in round
+  6 — the real NAYA_POWER.jpg replaces it the moment the block clears.
