@@ -44,21 +44,34 @@ def sha256_of(path):
 
 
 def fetch_bytes(url, timeout=60):
-    import http.client
-    req = urllib.request.Request(url, headers={
-        "User-Agent": ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-                       "(KHTML, like Gecko) Chrome/120.0 Safari/537.36")})
+    # curl, not urllib: urllib drops large workers.dev reads mid-body
+    # (IncompleteRead on a 1.6MB file, twice in a row) while curl returns
+    # the whole file every time. The bytes are the proof either way.
+    import subprocess
     last_exc = None
     for _ in range(3):
         try:
-            with urllib.request.urlopen(req, timeout=timeout) as resp:
-                if resp.status != 200:
-                    return None, resp.status
-                return resp.read(), resp.status
+            curl = subprocess.run(
+                ["curl", "-s", "-A", "Mozilla/5.0 (X11; Linux x86_64) "
+                 "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 "
+                 "Safari/537.36", "-w", "\n%{http_code}", url],
+                capture_output=True, timeout=timeout)
+            if curl.returncode != 0:
+                last_exc = RuntimeError("curl exit %d: %s"
+                                        % (curl.returncode,
+                                           curl.stderr.decode()[:200]))
+                time.sleep(5)
+                continue
+            out = curl.stdout
+            marker = out.rfind(b"\n")
+            status = int(out[marker + 1:].decode().strip())
+            if status != 200:
+                return None, status
+            return out[:marker], status
         except Exception as exc:
-            # IncompleteRead and transient cuts are retryable; after 3
-            # attempts the fetch is reported as failed (honest "couldn't
-            # check", never a false "bytes differ").
+            # A transient cut is retryable; after 3 attempts the fetch is
+            # reported as failed (honest "couldn't check", never a false
+            # "bytes differ").
             last_exc = exc
             time.sleep(5)
     raise last_exc
