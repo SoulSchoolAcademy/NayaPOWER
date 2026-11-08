@@ -1211,6 +1211,66 @@ body.has-notif .eco-bottombar { bottom: calc(94px + env(safe-area-inset-bottom, 
 @media (max-width:860px){
   #start{padding-bottom:0;}
 }
+/* ============ FIX 7 (2026-11-08, maker step 1 — the verifier's 10-path, bounded to four repairs) ============
+   Item 1 — CHART HEADER BADGES OFF THE TIER NAMES (verify-6 §1). Baseline (fix 6, desktop
+   1920): the pill and the name are inline on the same line inside .tier-head-btn, so the
+   name wraps mid-name — PRO reads "★ MOST CHOSEN NAYA" / "PRO" (the pill overlaps the
+   name span's union rect by 4983px² and the name's centre returns the pill); MAX reads
+   "● CROWN NAYA MAX" with the pill's right edge touching the "N". At phone/tablet the
+   pill already sits above the name and reads clean. The fix: the pill becomes a
+   block-level flex box (width:max-content, 6px below it), so it sits on its own line
+   above the name at every width — the phone layout, made universal. No word changes.
+   The header row grows ~5px (PRO) / ~25px (MAX) at desktop; the feature rows are
+   untouched (their pills are not inside .tier-head-btn). */
+.tier-head-btn .steppill{display:flex; width:max-content; margin-bottom:6px;}
+/* Item 2 — PHONE HERO CLEARANCE + SECONDARY NOTE (verify-6 §4). Baseline (phone 390):
+   hero landing scrollY 122 (slide top 62, scroll-margin-top -60px); claim 684-734,
+   clearance 9px; secondary note 742-759, 16px cut, 1px visible. The lever is the
+   scroll-margin: more negative pulls the slide up and the claim away from the bar
+   (the desktop close proved it in fix 6: -280 -> -300 bought 14-15px -> 34-35px).
+   The fix: -60px -> -84px (phone breakpoint). The claim gains 24px (9 -> ~33px)
+   and the note's bottom lifts 24px clear of the bar (~8px of air). COST, NAMED: the
+   hero banner shows ~46px instead of ~70px (the slide top moves up 24px). Kicker
+   and h1 still read. Tablet hero shifts 24px too (279px -> ~303px of claim
+   clearance). Desktop hero untouched (different breakpoint). */
+@media (max-width:860px){
+  #top{scroll-margin-top:-84px;}
+  #start{scroll-margin-top:-75px; margin-bottom:290px;}
+}
+/* Item 3 — PHONE CLOSE BANNER RESTORED (verify-6 §5). Baseline (phone 390): the banner
+   is 130px tall (Naya_World.png 2172x724, 3:1) and the snap cuts 141px (scroll-margin
+   -140px), so the banner ends 11px above the viewport top — bannerVis 0. The fix has
+   two levers, and the math binds them: V = 130 - depth (banner visible) and
+   C = X + depth - 95 (button clearance, X = spacing trimmed above the button), so
+   V + C = X + 35. With the gentle 40px trim below (gaps stay >=10px) and depth 75
+   (scroll-margin -75px): the banner shows ~55px (42% of the art, near desktop's
+   53%) and the button clears by ~20px. The snap moves 4463 -> ~4398 and the slide
+   863 -> ~822: the fix-6 trim's PROPERTIES hold at the new numbers (slide == its
+   content, button clear and visible, no dead space) — the old numbers were the
+   fix-6 state, not the goal; the banner is hidden precisely because of the -140
+   snap, so the snap MUST move to show it. The full banner (130px) would need a
+   ~110px trim and cramped 8px gaps — named, not taken. The close-start margin
+   (24px) is NOT trimmed: it sits below the button and cannot buy clearance. */
+@media (max-width:480px){
+  #start .slide-inner{padding-top:12px;}
+  #start h2.sec-head{margin-bottom:10px;}
+  #start p.sec-sub{margin-bottom:16px;}
+  #start h2.dream{margin-bottom:16px;}
+  #start p.trial-text{margin-bottom:12px;}
+}
+/* Item 4 — TABLET CLOSE "$750" SLIVER (verify-6 §7, new cosmetic). Baseline (tablet
+   768x1024): slideTop 5222, maxScroll 5090 — the document is 132px too short for the
+   snap to land the slide top at the viewport top, so the top 132px show the
+   calculator's example cards ("$750" half-cut) above the banner. The fix: the
+   scroll room grows 140px (margin-bottom 150px -> 290px, phone breakpoint — it
+   covers tablet; the rule sits in the max-width:860px block above). maxScroll
+   becomes ~5230, the slide top lands ~8px above the viewport top, the banner shows
+   ~248px of 256, no sliver. COST, NAMED: the tablet button clearance rises 73px ->
+   ~213px (the button's document position is unchanged; the landing scrollY rises
+   140px). Phone unaffected: its snap (~4398) stays far below its maxScroll
+   (~4591), clearance ~20px, slide ~822. The item-3 trim is phone-only
+   (max-width:480px) precisely so the tablet slide stays 742px and this margin is
+   enough — a tablet trim would have needed 334px. */
 </style>
 </head>
 <body>
