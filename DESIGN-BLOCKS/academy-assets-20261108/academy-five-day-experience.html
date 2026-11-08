@@ -1,0 +1,2094 @@
+<!-- ============================================================
+ 🔱 NAYANET — NAYA POWER ACADEMY
+ FIVE-DAY EXPERIENCE — AAA JEWEL EDITION
+
+ DROP-IN RULE:
+ Paste this ENTIRE block once at the very END of the existing
+ working page code.
+
+ This block:
+ • Preserves the existing page.
+ • Preserves the existing feature player.
+ • Preserves the five Academy videos.
+ • Preserves the checkout destination.
+ • Adds the Academy experience below the existing page.
+ • Creates MAXIS-inspired living jewel boards.
+ • Uses a five-color spectrum across every lesson.
+ • Does NOT require a second patch.
+ ============================================================ -->
+
+<style>
+
+/* ============================================================
+   01 — ACADEMY ROOT
+   ============================================================ */
+
+.ny-academy-experience {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: clamp(28px, 4vw, 62px) 0 clamp(30px, 4vw, 58px);
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+}
+
+
+/* ============================================================
+   02 — ATMOSPHERE
+   ============================================================ */
+
+.ny-academy-experience::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  top: 8%;
+  left: 50%;
+  width: min(1200px, 100%);
+  height: 900px;
+  transform: translateX(-50%);
+
+  background:
+    radial-gradient(
+      ellipse at 50% 15%,
+      rgba(148, 67, 255, .13),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 15% 55%,
+      rgba(0, 112, 255, .055),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 85% 80%,
+      rgba(255, 0, 180, .055),
+      transparent 42%
+    );
+
+  pointer-events: none;
+}
+
+.ny-academy-experience::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(0,0,0,.08) 30%,
+      rgba(0,0,0,.22) 100%
+    );
+
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   03 — INTRO
+   ============================================================ */
+
+.ny-academy-intro {
+  width: min(1380px, calc(100% - 30px));
+  margin: 0 auto clamp(38px, 5vw, 66px);
+  text-align: center;
+}
+
+.ny-academy-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: rgba(221, 190, 255, .95);
+  font-size: clamp(10px, .82vw, 13px);
+  line-height: 1.2;
+  font-weight: 900;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 18px rgba(166, 76, 255, .48);
+}
+
+.ny-academy-title {
+  margin: 13px auto 0;
+  max-width: 1050px;
+
+  color: #fff;
+  font-size: clamp(32px, 4.5vw, 64px);
+  line-height: .99;
+  font-weight: 900;
+  letter-spacing: -.052em;
+
+  text-shadow:
+    0 4px 28px rgba(0,0,0,.78),
+    0 0 55px rgba(144, 65, 255, .20);
+}
+
+.ny-academy-title span {
+  display: block;
+  margin-top: 15px;
+
+  color: rgba(231, 211, 255, .94);
+  font-size: clamp(17px, 1.65vw, 25px);
+  line-height: 1.3;
+  font-weight: 650;
+  letter-spacing: -.018em;
+}
+
+.ny-academy-intro-copy {
+  max-width: 820px;
+  margin: 21px auto 0;
+
+  color: rgba(255,255,255,.76);
+  font-size: clamp(14px, 1.05vw, 17px);
+  line-height: 1.68;
+  font-weight: 500;
+
+  text-shadow: 0 2px 12px rgba(0,0,0,.65);
+}
+
+
+/* ============================================================
+   04 — LESSON STACK
+   ============================================================ */
+
+.ny-academy-lessons {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: clamp(70px, 8vw, 118px);
+}
+
+
+/* ============================================================
+   05 — LESSON
+   ============================================================ */
+
+.ny-academy-lesson {
+  width: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ============================================================
+   06 — LESSON HEADER
+   ============================================================ */
+
+.ny-academy-lesson-header {
+  width: min(1500px, calc(100% - 24px));
+  margin: 0 auto 16px;
+
+  text-align: center;
+}
+
+.ny-academy-day {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 32px;
+  padding: 7px 16px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(179, 92, 255, .19),
+      rgba(255,255,255,.035)
+    );
+
+  border: 1px solid rgba(216, 178, 255, .30);
+
+  color: rgba(230, 205, 255, .97);
+
+  font-size: clamp(10px, .75vw, 12px);
+  font-weight: 900;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.11),
+    0 0 28px rgba(138, 58, 238, .10);
+}
+
+.ny-academy-lesson-title {
+  margin: 14px 0 0;
+
+  color: #fff;
+  font-size: clamp(27px, 3vw, 46px);
+  line-height: 1.03;
+  font-weight: 900;
+  letter-spacing: -.042em;
+
+  text-shadow:
+    0 4px 25px rgba(0,0,0,.72),
+    0 0 34px rgba(152, 72, 255, .14);
+}
+
+
+/* ============================================================
+   07 — CINEMATIC VIDEO
+   ============================================================ */
+
+.ny-academy-video-shell {
+  position: relative;
+
+  width: min(1500px, calc(100% - 24px));
+
+  padding: clamp(2px, .18vw, 4px);
+
+  border-radius: clamp(14px, 1.45vw, 24px);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.78),
+      rgba(199,137,255,.70) 17%,
+      rgba(94,33,178,.72) 48%,
+      rgba(255,255,255,.30) 75%,
+      rgba(139,72,236,.66)
+    );
+
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.17),
+    0 20px 58px rgba(0,0,0,.74),
+    0 30px 105px rgba(74,18,147,.30),
+    0 0 95px rgba(135,55,245,.16);
+}
+
+.ny-academy-video {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+
+  border-radius: clamp(12px, 1.25vw, 21px);
+
+  background: #000;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.15),
+    inset 0 0 0 1px rgba(255,255,255,.045);
+}
+
+.ny-academy-video::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.045),
+      transparent 18%,
+      transparent 82%,
+      rgba(0,0,0,.17)
+    );
+}
+
+.ny-academy-video iframe {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  border: 0 !important;
+  background: #000;
+}
+
+
+/* ============================================================
+   08 — JEWEL BOARD
+   ============================================================ */
+
+.ny-jewel-panel {
+  --board-accent: #a15cff;
+  --board-accent-soft: rgba(161,92,255,.22);
+  --board-accent-bright: rgba(195,143,255,.95);
+
+  position: relative;
+  isolation: isolate;
+
+  width: min(1250px, calc(100% - 34px));
+
+  margin: clamp(22px, 2.7vw, 36px) auto 0;
+
+  padding:
+    clamp(29px, 3.4vw, 52px)
+    clamp(22px, 3.5vw, 52px)
+    clamp(27px, 3.2vw, 46px);
+
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  background:
+    radial-gradient(
+      circle at 12% 0%,
+      var(--board-accent-soft),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 92% 100%,
+      var(--board-accent-soft),
+      transparent 36%
+    ),
+    linear-gradient(
+      145deg,
+      #211727 0%,
+      #100c14 43%,
+      #07070a 100%
+    );
+
+  border: 1px solid rgba(225,205,255,.22);
+
+  box-shadow:
+    0 25px 78px rgba(0,0,0,.52),
+    0 0 85px var(--board-accent-soft),
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 -1px 0 rgba(0,0,0,.85);
+
+  text-align: center;
+}
+
+.ny-jewel-panel::before {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  top: 0;
+  left: 9%;
+
+  width: 82%;
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.90) 18%,
+      var(--board-accent-bright) 50%,
+      rgba(255,255,255,.90) 82%,
+      transparent
+    );
+
+  box-shadow:
+    0 0 16px var(--board-accent),
+    0 0 38px var(--board-accent-soft);
+}
+
+.ny-jewel-panel::after {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  left: 0;
+  top: 15%;
+
+  width: 2px;
+  height: 70%;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      var(--board-accent),
+      transparent
+    );
+
+  box-shadow:
+    0 0 18px var(--board-accent),
+    0 0 40px var(--board-accent-soft);
+}
+
+
+/* ============================================================
+   09 — BOARD HEADER
+   ============================================================ */
+
+.ny-jewel-kicker {
+  color: var(--board-accent-bright);
+
+  font-size: clamp(10px, .78vw, 12px);
+  line-height: 1.2;
+  font-weight: 900;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 18px var(--board-accent-soft);
+}
+
+.ny-jewel-title {
+  margin: 10px auto 0;
+
+  color: #fff;
+
+  font-size: clamp(27px, 2.7vw, 41px);
+  line-height: 1.04;
+  font-weight: 900;
+  letter-spacing: -.042em;
+
+  text-shadow:
+    0 3px 20px rgba(0,0,0,.75),
+    0 0 35px var(--board-accent-soft);
+}
+
+.ny-jewel-summary {
+  max-width: 900px;
+
+  margin: 15px auto 0;
+
+  color: rgba(255,255,255,.82);
+
+  font-size: clamp(14px, 1.04vw, 17px);
+  line-height: 1.65;
+  font-weight: 520;
+
+  text-shadow: 0 2px 10px rgba(0,0,0,.65);
+}
+
+/* ============================================================
+   10 — FIVE JEWEL CARDS
+   ============================================================ */
+
+.ny-jewel-points {
+  width: 100%;
+  max-width: 1120px;
+
+  margin: clamp(29px, 3.2vw, 42px) auto 0;
+
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+
+/* ============================================================
+   11 — INDIVIDUAL JEWEL
+   ============================================================ */
+
+.ny-jewel-point {
+  --jewel: #a15cff;
+  --jewel-rgb: 161,92,255;
+
+  position: relative;
+
+  min-height: 190px;
+
+  padding:
+    21px 13px 18px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(var(--jewel-rgb), .18),
+      transparent 58%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.095),
+      rgba(255,255,255,.025)
+    );
+
+  border: 1px solid rgba(var(--jewel-rgb), .42);
+
+  box-shadow:
+    0 12px 34px rgba(0,0,0,.30),
+    0 0 26px rgba(var(--jewel-rgb), .10),
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 -1px 0 rgba(0,0,0,.55);
+
+  transition:
+    transform .28s ease,
+    border-color .28s ease,
+    box-shadow .28s ease,
+    filter .28s ease;
+}
+
+.ny-jewel-point::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 10%;
+  right: 10%;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.72),
+      var(--jewel),
+      rgba(255,255,255,.72),
+      transparent
+    );
+
+  box-shadow:
+    0 0 12px var(--jewel);
+
+  opacity: .90;
+}
+
+.ny-jewel-point::after {
+  content: "";
+
+  position: absolute;
+
+  width: 130px;
+  height: 130px;
+
+  top: -82px;
+  right: -62px;
+
+  border-radius: 50%;
+
+  background: var(--jewel);
+
+  filter: blur(55px);
+
+  opacity: .12;
+
+  pointer-events: none;
+}
+
+.ny-jewel-point:hover {
+  transform: translateY(-7px) scale(1.015);
+
+  border-color: rgba(var(--jewel-rgb), .78);
+
+  box-shadow:
+    0 19px 42px rgba(0,0,0,.42),
+    0 0 32px rgba(var(--jewel-rgb), .23),
+    0 0 65px rgba(var(--jewel-rgb), .10),
+    inset 0 1px 0 rgba(255,255,255,.14);
+
+  filter: brightness(1.08);
+}
+
+
+/* ============================================================
+   12 — FACETED JEWEL ICON
+   ============================================================ */
+
+.ny-jewel-icon {
+  position: relative;
+
+  width: 54px;
+  height: 54px;
+
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: rotate(45deg);
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.98) 0%,
+      var(--jewel) 28%,
+      color-mix(in srgb, var(--jewel) 68%, #000 32%) 68%,
+      #08050d 100%
+    );
+
+  border: 1px solid rgba(255,255,255,.78);
+
+  box-shadow:
+    inset 3px 3px 8px rgba(255,255,255,.55),
+    inset -7px -8px 15px rgba(0,0,0,.48),
+    0 0 20px rgba(var(--jewel-rgb), .48),
+    0 7px 18px rgba(0,0,0,.58);
+
+  overflow: hidden;
+}
+
+.ny-jewel-icon::before {
+  content: "";
+
+  position: absolute;
+
+  top: 5px;
+  left: 7px;
+
+  width: 22px;
+  height: 11px;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.78);
+
+  filter: blur(5px);
+
+  opacity: .72;
+}
+
+.ny-jewel-icon::after {
+  content: "";
+
+  position: absolute;
+  inset: 8px;
+
+  border: 1px solid rgba(255,255,255,.34);
+
+  border-radius: 9px;
+}
+
+.ny-jewel-icon span {
+  position: relative;
+  z-index: 2;
+
+  transform: rotate(-45deg);
+
+  color: #fff;
+
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 950;
+
+  text-shadow:
+    0 2px 5px rgba(0,0,0,.75),
+    0 0 8px rgba(255,255,255,.40);
+}
+
+
+/* ============================================================
+   13 — CARD TYPOGRAPHY
+   ============================================================ */
+
+.ny-jewel-point-title {
+  margin-top: 17px;
+
+  color: #fff;
+
+  font-size: clamp(12px, .90vw, 15px);
+  line-height: 1.12;
+  font-weight: 900;
+  letter-spacing: -.015em;
+
+  text-shadow:
+    0 2px 10px rgba(0,0,0,.72);
+}
+
+.ny-jewel-point-text {
+  margin-top: 8px;
+
+  color: rgba(255,255,255,.70);
+
+  font-size: clamp(10px, .73vw, 12px);
+  line-height: 1.48;
+  font-weight: 500;
+
+  text-shadow:
+    0 1px 7px rgba(0,0,0,.68);
+}
+
+
+/* ============================================================
+   14 — BIG IDEA
+   ============================================================ */
+
+.ny-nutshell-line {
+  max-width: 920px;
+
+  margin: 29px auto 0;
+  padding-top: 21px;
+
+  border-top:
+    1px solid rgba(255,255,255,.11);
+
+  position: relative;
+}
+
+.ny-nutshell-line::before {
+  content: "";
+
+  position: absolute;
+
+  top: -1px;
+  left: 34%;
+
+  width: 32%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--board-accent),
+      transparent
+    );
+
+  box-shadow:
+    0 0 12px var(--board-accent);
+}
+
+.ny-nutshell-line-label {
+  color: var(--board-accent-bright);
+
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 900;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+
+.ny-nutshell-line-text {
+  margin-top: 8px;
+
+  color: rgba(255,255,255,.94);
+
+  font-size: clamp(14px, 1.03vw, 17px);
+  line-height: 1.52;
+  font-weight: 700;
+
+  text-shadow:
+    0 2px 12px rgba(0,0,0,.65);
+}
+
+/* ============================================================
+   15 — CTA
+   ============================================================ */
+
+.ny-academy-cta {
+  position: relative;
+
+  width: min(700px, calc(100% - 34px));
+  min-height: clamp(80px, 7vw, 110px);
+
+  margin: clamp(18px, 2.2vw, 27px) auto 0;
+  padding: 2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 23px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff6ff 0%,
+      #e7baff 9%,
+      #b565ff 23%,
+      #7a32e5 42%,
+      #42118d 63%,
+      #8f42ee 82%,
+      #e8c0ff 100%
+    );
+
+  border: 1px solid rgba(255,255,255,.44);
+
+  color: #fff !important;
+  text-decoration: none !important;
+
+  box-shadow:
+    0 10px 28px rgba(55,14,119,.52),
+    0 24px 62px rgba(74,20,157,.30),
+    0 0 70px rgba(150,69,255,.25),
+    inset 0 1px 1px rgba(255,255,255,.86);
+
+  transition:
+    transform .24s ease,
+    filter .24s ease,
+    box-shadow .24s ease;
+}
+
+.ny-academy-cta::before {
+  content: "";
+
+  position: absolute;
+  inset: 2px;
+
+  border-radius: 21px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #302733 0%,
+      #171119 28%,
+      #09080b 62%,
+      #030305 100%
+    );
+
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.18),
+    inset 0 -18px 30px rgba(0,0,0,.58);
+}
+
+.ny-academy-cta:hover {
+  transform: translateY(-5px);
+
+  filter: brightness(1.08);
+
+  box-shadow:
+    0 14px 34px rgba(55,14,119,.60),
+    0 28px 76px rgba(105,37,220,.40),
+    0 0 86px rgba(170,80,255,.34),
+    inset 0 1px 1px rgba(255,255,255,.96);
+}
+
+.ny-academy-cta-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  min-height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  padding: 13px 25px;
+
+  text-align: center;
+}
+
+.ny-academy-cta-icon {
+  position: relative;
+
+  width: 48px;
+  height: 48px;
+
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      #fff 0%,
+      #f4ddff 12%,
+      #d28cff 29%,
+      #9747ff 47%,
+      #5518a7 68%,
+      #22043f 100%
+    );
+
+  border: 1px solid rgba(241,217,255,.98);
+
+  color: #fff;
+
+  font-size: 20px;
+
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,.90),
+    inset 0 -8px 13px rgba(37,4,77,.72),
+    0 0 19px rgba(167,80,255,.45),
+    0 5px 14px rgba(0,0,0,.58);
+}
+
+.ny-academy-cta-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ny-academy-cta-title {
+  color: #fff;
+
+  font-size: clamp(16px, 1.4vw, 21px);
+  line-height: 1.12;
+  font-weight: 850;
+  letter-spacing: -.02em;
+
+  text-shadow:
+    0 2px 10px rgba(0,0,0,.60);
+}
+
+.ny-academy-cta-sub {
+  margin-top: 5px;
+
+  color: rgba(255,255,255,.72);
+
+  font-size: clamp(10px, .78vw, 12px);
+  line-height: 1.2;
+  letter-spacing: .025em;
+}
+
+
+/* ============================================================
+   16 — FINAL FEEDBACK
+   ============================================================ */
+
+.ny-feel-power {
+  position: relative;
+
+  width: min(1200px, calc(100% - 30px));
+
+  margin: clamp(72px, 9vw, 120px) auto 0;
+
+  padding:
+    clamp(42px, 5vw, 72px)
+    clamp(20px, 5vw, 70px);
+
+  overflow: hidden;
+
+  border-radius: 32px;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at 50% -15%,
+      rgba(180,100,255,.32),
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 10% 100%,
+      rgba(92,34,173,.19),
+      transparent 42%
+    ),
+    linear-gradient(
+      145deg,
+      #18101f,
+      #08070b 65%,
+      #11091a
+    );
+
+  border: 1px solid rgba(220,188,255,.26);
+
+  box-shadow:
+    0 25px 90px rgba(0,0,0,.57),
+    0 0 100px rgba(112,44,207,.14),
+    inset 0 1px 0 rgba(255,255,255,.09);
+}
+
+.ny-feel-power::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 9%;
+
+  width: 82%;
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(240,220,255,.96),
+      rgba(166,86,255,.95),
+      rgba(240,220,255,.96),
+      transparent
+    );
+
+  box-shadow:
+    0 0 20px rgba(169,91,255,.50);
+}
+
+.ny-feel-eyebrow {
+  color: rgba(215,181,255,.95);
+
+  font-size: clamp(10px, .9vw, 13px);
+  font-weight: 900;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+}
+
+.ny-feel-title {
+  margin: 13px auto 0;
+
+  color: #fff;
+
+  font-size: clamp(32px, 4.5vw, 61px);
+  line-height: 1.01;
+  font-weight: 900;
+  letter-spacing: -.05em;
+
+  text-shadow:
+    0 4px 30px rgba(0,0,0,.76),
+    0 0 48px rgba(158,75,255,.22);
+}
+
+.ny-feel-subtitle {
+  max-width: 720px;
+
+  margin: 17px auto 0;
+
+  color: rgba(229,204,255,.92);
+
+  font-size: clamp(16px, 1.45vw, 21px);
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.ny-feel-copy {
+  max-width: 740px;
+
+  margin: 19px auto 0;
+
+  color: rgba(255,255,255,.72);
+
+  font-size: clamp(13px, 1vw, 16px);
+  line-height: 1.66;
+}
+
+.ny-feel-question {
+  margin: 29px auto 0;
+
+  color: rgba(255,255,255,.94);
+
+  font-size: clamp(15px, 1.15vw, 18px);
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   17 — FINAL DAY JEWELS
+   ============================================================ */
+
+.ny-feel-days {
+  max-width: 950px;
+
+  margin: 30px auto 0;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 11px;
+}
+
+.ny-feel-day {
+  --feel: #a15cff;
+  --feel-rgb: 161,92,255;
+
+  position: relative;
+
+  min-height: 118px;
+
+  padding: 16px 9px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border-radius: 19px;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(var(--feel-rgb), .18),
+      transparent 68%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.075),
+      rgba(255,255,255,.018)
+    );
+
+  border: 1px solid rgba(var(--feel-rgb), .40);
+
+  color: #fff;
+  text-decoration: none;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.065),
+    0 10px 29px rgba(0,0,0,.27),
+    0 0 24px rgba(var(--feel-rgb), .08);
+
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease,
+    filter .22s ease;
+}
+
+.ny-feel-day::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 12%;
+  width: 76%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--feel),
+      transparent
+    );
+
+  box-shadow:
+    0 0 13px var(--feel);
+}
+
+.ny-feel-day:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(var(--feel-rgb), .76);
+
+  box-shadow:
+    0 17px 38px rgba(0,0,0,.37),
+    0 0 35px rgba(var(--feel-rgb), .20),
+    inset 0 1px 0 rgba(255,255,255,.10);
+
+  filter: brightness(1.08);
+}
+
+.ny-feel-day-number {
+  color: var(--feel);
+
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .18em;
+
+  text-shadow:
+    0 0 14px rgba(var(--feel-rgb), .40);
+}
+
+.ny-feel-day-question {
+  margin-top: 9px;
+
+  color: #fff;
+
+  font-size: clamp(12px, .88vw, 14px);
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.ny-feel-footer {
+  margin-top: 13px;
+
+  color: rgba(255,255,255,.46);
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   18 — COLOR SPECTRUM
+   ============================================================ */
+
+/* DAY 1 — MAGENTA */
+
+.ny-jewel-panel[data-day="1"] {
+  --board-accent: #ff3eb5;
+  --board-accent-soft: rgba(255,62,181,.18);
+  --board-accent-bright: #ff8ad5;
+}
+
+.ny-jewel-panel[data-day="1"] .ny-jewel-point:nth-child(1),
+.ny-feel-day:nth-child(1) {
+  --jewel: #ff3eb5;
+  --jewel-rgb: 255,62,181;
+  --feel: #ff3eb5;
+  --feel-rgb: 255,62,181;
+}
+
+.ny-jewel-panel[data-day="1"] .ny-jewel-point:nth-child(2) {
+  --jewel: #d94bdc;
+  --jewel-rgb: 217,75,220;
+}
+
+.ny-jewel-panel[data-day="1"] .ny-jewel-point:nth-child(3) {
+  --jewel: #b04fff;
+  --jewel-rgb: 176,79,255;
+}
+
+.ny-jewel-panel[data-day="1"] .ny-jewel-point:nth-child(4) {
+  --jewel: #7e62ff;
+  --jewel-rgb: 126,98,255;
+}
+
+.ny-jewel-panel[data-day="1"] .ny-jewel-point:nth-child(5) {
+  --jewel: #5c8dff;
+  --jewel-rgb: 92,141,255;
+}
+
+
+/* DAY 2 — INDIGO */
+
+.ny-jewel-panel[data-day="2"] {
+  --board-accent: #725cff;
+  --board-accent-soft: rgba(114,92,255,.18);
+  --board-accent-bright: #aaa0ff;
+}
+
+.ny-jewel-panel[data-day="2"] .ny-jewel-point:nth-child(1) {
+  --jewel: #9a62ff;
+  --jewel-rgb: 154,98,255;
+}
+
+.ny-jewel-panel[data-day="2"] .ny-jewel-point:nth-child(2) {
+  --jewel: #725cff;
+  --jewel-rgb: 114,92,255;
+}
+
+.ny-jewel-panel[data-day="2"] .ny-jewel-point:nth-child(3) {
+  --jewel: #536fff;
+  --jewel-rgb: 83,111,255;
+}
+
+.ny-jewel-panel[data-day="2"] .ny-jewel-point:nth-child(4) {
+  --jewel: #428cff;
+  --jewel-rgb: 66,140,255;
+}
+
+.ny-jewel-panel[data-day="2"] .ny-jewel-point:nth-child(5) {
+  --jewel: #43a9ff;
+  --jewel-rgb: 67,169,255;
+}
+
+
+/* DAY 3 — SAPPHIRE */
+
+.ny-jewel-panel[data-day="3"] {
+  --board-accent: #24a9ff;
+  --board-accent-soft: rgba(36,169,255,.18);
+  --board-accent-bright: #86d5ff;
+}
+
+.ny-jewel-panel[data-day="3"] .ny-jewel-point:nth-child(1) {
+  --jewel: #37b8ff;
+  --jewel-rgb: 55,184,255;
+}
+
+.ny-jewel-panel[data-day="3"] .ny-jewel-point:nth-child(2) {
+  --jewel: #238fff;
+  --jewel-rgb: 35,143,255;
+}
+
+.ny-jewel-panel[data-day="3"] .ny-jewel-point:nth-child(3) {
+  --jewel: #3f70ff;
+  --jewel-rgb: 63,112,255;
+}
+
+.ny-jewel-panel[data-day="3"] .ny-jewel-point:nth-child(4) {
+  --jewel: #5860ff;
+  --jewel-rgb: 88,96,255;
+}
+
+.ny-jewel-panel[data-day="3"] .ny-jewel-point:nth-child(5) {
+  --jewel: #7654ff;
+  --jewel-rgb: 118,84,255;
+}
+
+
+/* DAY 4 — GREEN */
+
+.ny-jewel-panel[data-day="4"] {
+  --board-accent: #35d98b;
+  --board-accent-soft: rgba(53,217,139,.16);
+  --board-accent-bright: #8ff5bf;
+}
+
+.ny-jewel-panel[data-day="4"] .ny-jewel-point:nth-child(1) {
+  --jewel: #48e3a0;
+  --jewel-rgb: 72,227,160;
+}
+
+.ny-jewel-panel[data-day="4"] .ny-jewel-point:nth-child(2) {
+  --jewel: #35d98b;
+  --jewel-rgb: 53,217,139;
+}
+
+.ny-jewel-panel[data-day="4"] .ny-jewel-point:nth-child(3) {
+  --jewel: #63d95e;
+  --jewel-rgb: 99,217,94;
+}
+
+.ny-jewel-panel[data-day="4"] .ny-jewel-point:nth-child(4) {
+  --jewel: #a6dc45;
+  --jewel-rgb: 166,220,69;
+}
+
+.ny-jewel-panel[data-day="4"] .ny-jewel-point:nth-child(5) {
+  --jewel: #d0e343;
+  --jewel-rgb: 208,227,67;
+}
+
+
+/* DAY 5 — GOLD */
+
+.ny-jewel-panel[data-day="5"] {
+  --board-accent: #f2bd45;
+  --board-accent-soft: rgba(242,189,69,.16);
+  --board-accent-bright: #ffe39a;
+}
+
+.ny-jewel-panel[data-day="5"] .ny-jewel-point:nth-child(1) {
+  --jewel: #ffd15a;
+  --jewel-rgb: 255,209,90;
+}
+
+.ny-jewel-panel[data-day="5"] .ny-jewel-point:nth-child(2) {
+  --jewel: #f2bd45;
+  --jewel-rgb: 242,189,69;
+}
+
+.ny-jewel-panel[data-day="5"] .ny-jewel-point:nth-child(3) {
+  --jewel: #f5a83c;
+  --jewel-rgb: 245,168,60;
+}
+
+.ny-jewel-panel[data-day="5"] .ny-jewel-point:nth-child(4) {
+  --jewel: #e98c39;
+  --jewel-rgb: 233,140,57;
+}
+
+.ny-jewel-panel[data-day="5"] .ny-jewel-point:nth-child(5) {
+  --jewel: #ffdf78;
+  --jewel-rgb: 255,223,120;
+}
+
+
+/* ============================================================
+   19 — FINAL FEEDBACK SPECTRUM
+   ============================================================ */
+
+.ny-feel-day:nth-child(1) {
+  --feel: #ff3eb5;
+  --feel-rgb: 255,62,181;
+}
+
+.ny-feel-day:nth-child(2) {
+  --feel: #725cff;
+  --feel-rgb: 114,92,255;
+}
+
+.ny-feel-day:nth-child(3) {
+  --feel: #24a9ff;
+  --feel-rgb: 36,169,255;
+}
+
+.ny-feel-day:nth-child(4) {
+  --feel: #35d98b;
+  --feel-rgb: 53,217,139;
+}
+
+.ny-feel-day:nth-child(5) {
+  --feel: #f2bd45;
+  --feel-rgb: 242,189,69;
+}
+
+
+/* ============================================================
+   20 — RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1050px) {
+
+  .ny-jewel-points {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .ny-jewel-point:last-child {
+    grid-column: auto;
+  }
+
+  .ny-feel-days {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
+
+
+@media (max-width: 760px) {
+
+  .ny-jewel-points {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ny-feel-days {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ny-jewel-point {
+    min-height: 175px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .ny-academy-experience {
+    padding-top: 24px;
+  }
+
+  .ny-academy-intro,
+  .ny-academy-lesson-header {
+    width: calc(100% - 18px);
+  }
+
+  .ny-academy-video-shell {
+    width: calc(100% - 18px);
+    border-radius: 15px;
+  }
+
+  .ny-academy-video {
+    border-radius: 13px;
+  }
+
+  .ny-jewel-panel {
+    width: calc(100% - 18px);
+    padding: 27px 15px;
+    border-radius: 23px;
+  }
+
+  .ny-jewel-points {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .ny-jewel-point {
+    min-height: 0;
+    padding: 20px 18px;
+  }
+
+  .ny-jewel-point-text {
+    max-width: 310px;
+  }
+
+  .ny-academy-cta {
+    width: calc(100% - 18px);
+  }
+
+  .ny-academy-cta-content {
+    padding: 12px 15px;
+  }
+
+  .ny-academy-cta-icon {
+    width: 43px;
+    height: 43px;
+  }
+
+  .ny-feel-power {
+    width: calc(100% - 18px);
+    padding: 39px 15px;
+    border-radius: 25px;
+  }
+
+  .ny-feel-days {
+    grid-template-columns: 1fr;
+  }
+
+  .ny-feel-day {
+    min-height: 72px;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 13px 18px;
+    text-align: left;
+  }
+
+}
+
+
+/* ============================================================
+   21 — REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ny-jewel-point,
+  .ny-academy-cta,
+  .ny-feel-day {
+    transition: none !important;
+  }
+
+  .ny-jewel-point:hover,
+  .ny-academy-cta:hover,
+  .ny-feel-day:hover {
+    transform: none !important;
+    filter: none !important;
+  }
+
+}
+
+</style>
+
+
+<script>
+(function () {
+
+  "use strict";
+
+  /* ==========================================================
+     CANONICAL CHECKOUT
+     ========================================================== */
+
+  const CHECKOUT_URL =
+    "https://humanmaximuscodex.groovesell.com/checkout/08fba2cbd6488ef4d2cc82b52d361dab";
+
+
+  /* ==========================================================
+     FEATURE VIDEO
+     ========================================================== */
+
+  const FEATURE_VIDEO_ID = "wnjvDqEhBCY";
+
+
+  /* ==========================================================
+     FIVE-DAY ACADEMY DATA
+     ========================================================== */
+
+  const LESSONS = [
+
+    {
+      day: "DAY 1",
+      dayNumber: "1",
+      title: "ACTIVATE / EXPERIENCE",
+      video: "ZRIfvxCsYWY",
+
+      summary:
+        "Meet Naya. Activate the relationship. Feel the difference immediately by letting Naya understand who you are, what matters to you, and where you want to go.",
+
+      points: [
+        ["01","MEET NAYA","Begin a relationship instead of another disconnected AI conversation."],
+        ["02","BE UNDERSTOOD","Give Naya your identity, story, goals, priorities and direction."],
+        ["03","SOLVE THE FIVE","See how Naya addresses directive, consistency, overwhelm, context and quality problems."],
+        ["04","CAPTURE WHAT MATTERS","Begin making human and Naya notes so important experience is not lost."],
+        ["05","FIRST PROOF","End the day with your Daily Intelligence Briefing and experience intelligence beginning to compound."]
+      ],
+
+      nutshell:
+        "Day 1 is about becoming known — and discovering what changes when AI starts with you."
+    },
+
+    {
+      day: "DAY 2",
+      dayNumber: "2",
+      title: "REMEMBER / COMPOUND",
+      video: "j0YwJsC6Q4Y",
+
+      summary:
+        "Stop starting over. Turn useful experience into intelligence that can be remembered, retrieved, reviewed and carried forward.",
+
+      points: [
+        ["01","SMART NOTES","Capture the moments, lessons, decisions and breakthroughs actually worth remembering."],
+        ["02","CONTEXT","Preserve the information that helps future conversations start further ahead."],
+        ["03","RETRIEVE","Turn past experience into something useful instead of something forgotten."],
+        ["04","REVIEW","Use daily, weekly, monthly and longer-term reviews to see what changed."],
+        ["05","COMPOUND","Build a personal intelligence savings account where useful experience becomes more valuable over time."]
+      ],
+
+      nutshell:
+        "Day 2 changes the relationship from conversations that end to intelligence that carries forward."
+    },
+
+    {
+      day: "DAY 3",
+      dayNumber: "3",
+      title: "LEARN / MASTER",
+      video: "PtYW43cIZng",
+
+      summary:
+        "Learn meaningful AI and Human Maximus subjects with Naya, then prove what you know and discover exactly where you can improve.",
+
+      points: [
+        ["01","CHOOSE","Select a meaningful AI or Human Maximus subject worth mastering."],
+        ["02","LEARN","Ask Naya to teach, explain, explore and build the subject with you."],
+        ["03","TEST","Use MAXIS to measure where your understanding actually is."],
+        ["04","IMPROVE","Discover gaps, learn more and return without judgment."],
+        ["05","MASTER","Retest your knowledge and watch your capability develop through evidence."]
+      ],
+
+      nutshell:
+        "Day 3 turns AI from an answer machine into a learning and mastery partner."
+    },
+
+    {
+      day: "DAY 4",
+      dayNumber: "4",
+      title: "CREATE / EXECUTE",
+      video: "3c0q_NjM3i8",
+
+      summary:
+        "Turn intelligence into extraordinary work. Think with Naya, create with Naya, review with Naya, score it, improve it and execute.",
+
+      points: [
+        ["01","THINK","Use Naya to clarify ideas, problems, strategy and direction."],
+        ["02","CREATE","Write, plan, research, design, analyze, organize and build."],
+        ["03","REVIEW","Ask Naya to challenge the work instead of simply accepting the first result."],
+        ["04","SCORE","Define what excellent looks like and identify the gaps."],
+        ["05","EXECUTE","Move from idea to finished result through deliberate improvement."]
+      ],
+
+      nutshell:
+        "Day 4 is where intelligence becomes action — and better action becomes better results."
+    },
+
+    {
+      day: "DAY 5",
+      dayNumber: "5",
+      title: "BECOME / COMPOUND",
+      video: "T9Pi1BftCZk",
+
+      summary:
+        "This is not simply the end of five lessons. It is the beginning of a new way to operate: learn, remember, create, reflect, improve and compound.",
+
+      points: [
+        ["01","PERSONALIZE","Naya becomes increasingly useful because the relationship carries context."],
+        ["02","REMEMBER","Your valuable experiences remain available instead of disappearing."],
+        ["03","LEARN","Lessons and assessments create a path for continuous development."],
+        ["04","CREATE","Your intelligence becomes a practical force for better work and better decisions."],
+        ["05","COMPOUND","The value grows because every meaningful day can become part of the next."]
+      ],
+
+      nutshell:
+        "Day 5 reveals the bigger idea — Naya Power is not a five-day course. It is a new way to operate."
+    }
+
+  ];
+
+
+  /* ==========================================================
+     PREVENT DUPLICATE ACADEMY
+     ========================================================== */
+
+  if (
+    document.querySelector(".ny-academy-experience")
+  ) {
+    return;
+  }
+
+
+  /* ==========================================================
+     FEATURE PLAYER
+     ONLY MODIFY AN EXISTING NON-ACADEMY IFRAME
+     ========================================================== */
+
+  const existingIframes =
+    Array.from(document.querySelectorAll("iframe"));
+
+  let featureIframe =
+    existingIframes.find(function (iframe) {
+
+      const src =
+        (iframe.getAttribute("src") || "").toLowerCase();
+
+      const title =
+        (iframe.getAttribute("title") || "").toLowerCase();
+
+      return (
+        src.includes("youtube.com/embed") ||
+        src.includes("youtube-nocookie.com/embed") ||
+        title.includes("welcome") ||
+        title.includes("ai mastery") ||
+        title.includes("human empowerment")
+      );
+
+    });
+
+
+  if (featureIframe) {
+
+    featureIframe.src =
+      "https://www.youtube-nocookie.com/embed/" +
+      FEATURE_VIDEO_ID +
+      "?rel=0&modestbranding=1&playsinline=1&vq=hd1080";
+
+    featureIframe.setAttribute(
+      "title",
+      "Naya Power — Meet Naya. Experience the Future."
+    );
+
+    featureIframe.setAttribute(
+      "allow",
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+    );
+
+    featureIframe.setAttribute(
+      "allowfullscreen",
+      ""
+    );
+
+    featureIframe.setAttribute(
+      "loading",
+      "eager"
+    );
+
+    featureIframe.setAttribute(
+      "referrerpolicy",
+      "strict-origin-when-cross-origin"
+    );
+
+  }
+
+
+  /* ==========================================================
+     ACADEMY ROOT
+     ========================================================== */
+
+  const academy =
+    document.createElement("section");
+
+  academy.className =
+    "ny-academy-experience";
+
+  academy.setAttribute(
+    "aria-label",
+    "Naya Power Academy Five-Day Experience"
+  );
+
+
+  /* ==========================================================
+     INTRO
+     ========================================================== */
+
+  academy.innerHTML =
+
+    '<div class="ny-academy-intro">' +
+
+      '<div class="ny-academy-eyebrow">' +
+        "NAYA POWER ACADEMY" +
+      "</div>" +
+
+      '<h2 class="ny-academy-title">' +
+        "Five Days. Five Experiences. One New Way to Operate." +
+        '<span>See what you will experience inside Naya Power.</span>' +
+      "</h2>" +
+
+      '<div class="ny-academy-intro-copy">' +
+        "This is not about watching five videos and learning another AI tool. " +
+        "It is about experiencing what happens when AI becomes more personal, " +
+        "more consistent, more memorable, more capable and more useful over time." +
+      "</div>" +
+
+    "</div>" +
+
+    '<div class="ny-academy-lessons"></div>';
+
+
+  const lessonStack =
+    academy.querySelector(
+      ".ny-academy-lessons"
+    );
+
+
+  /* ==========================================================
+     BUILD FIVE LESSONS
+     ========================================================== */
+
+  LESSONS.forEach(function (lesson, lessonIndex) {
+
+    const article =
+      document.createElement("article");
+
+    article.className =
+      "ny-academy-lesson";
+
+
+    const pointsHTML =
+      lesson.points
+        .map(function (point) {
+
+          return (
+
+            '<div class="ny-jewel-point">' +
+
+              '<div class="ny-jewel-icon" aria-hidden="true">' +
+                '<span>' +
+                  point[0] +
+                '</span>' +
+              "</div>" +
+
+              '<div class="ny-jewel-point-title">' +
+                point[1] +
+              "</div>" +
+
+              '<div class="ny-jewel-point-text">' +
+                point[2] +
+              "</div>" +
+
+            "</div>"
+
+          );
+
+        })
+        .join("");
+
+
+    article.innerHTML =
+
+      '<div class="ny-academy-lesson-header">' +
+
+        '<div class="ny-academy-day">' +
+          lesson.day +
+        "</div>" +
+
+        '<h3 class="ny-academy-lesson-title">' +
+          lesson.title +
+        "</h3>" +
+
+      "</div>" +
+
+
+      '<div class="ny-academy-video-shell">' +
+
+        '<div class="ny-academy-video">' +
+
+          '<iframe ' +
+            'src="https://www.youtube-nocookie.com/embed/' +
+              lesson.video +
+              '?rel=0&modestbranding=1&playsinline=1&vq=hd1080" ' +
+            'title="' +
+              lesson.day +
+              " — " +
+              lesson.title +
+            '" ' +
+            'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" ' +
+            'allowfullscreen ' +
+            'loading="' +
+              (lessonIndex === 0 ? "eager" : "lazy") +
+            '" ' +
+            'referrerpolicy="strict-origin-when-cross-origin">' +
+          "</iframe>" +
+
+        "</div>" +
+
+      "</div>" +
+
+
+      '<div class="ny-jewel-panel" data-day="' +
+        lesson.dayNumber +
+      '">' +
+
+        '<div class="ny-jewel-kicker">' +
+          "IN A NUTSHELL" +
+        "</div>" +
+
+        '<div class="ny-jewel-title">' +
+          lesson.title +
+        "</div>" +
+
+        '<div class="ny-jewel-summary">' +
+          lesson.summary +
+        "</div>" +
+
+        '<div class="ny-jewel-points">' +
+          pointsHTML +
+        "</div>" +
+
+        '<div class="ny-nutshell-line">' +
+
+          '<div class="ny-nutshell-line-label">' +
+            "THE BIG IDEA" +
+          "</div>" +
+
+          '<div class="ny-nutshell-line-text">' +
+            lesson.nutshell +
+          "</div>" +
+
+        "</div>" +
+
+      "</div>" +
+
+
+      '<a class="ny-academy-cta" ' +
+        'href="' + CHECKOUT_URL + '" ' +
+        'aria-label="Start ' +
+          lesson.day +
+          ' — ' +
+          lesson.title +
+        '">' +
+
+        '<span class="ny-academy-cta-content">' +
+
+          '<span class="ny-academy-cta-icon" aria-hidden="true">' +
+            "★" +
+          "</span>" +
+
+          '<span class="ny-academy-cta-copy">' +
+
+            '<span class="ny-academy-cta-title">' +
+              "Start " +
+              lesson.day +
+              " — " +
+              lesson.title +
+            "</span>" +
+
+            '<span class="ny-academy-cta-sub">' +
+              "Experience Naya Power — Five Days. Zero Risk." +
+            "</span>" +
+
+          "</span>" +
+
+        "</span>" +
+
+      "</a>";
+
+
+    lessonStack.appendChild(article);
+
+  });
+
+
+  /* ==========================================================
+     FINAL FEEDBACK EXPERIENCE
+     ========================================================== */
+
+  const feedback =
+    document.createElement("section");
+
+  feedback.className =
+    "ny-feel-power";
+
+  feedback.setAttribute(
+    "aria-label",
+    "Which day did you feel Naya Power?"
+  );
+
+
+  feedback.innerHTML =
+
+    '<div class="ny-feel-eyebrow">' +
+      "ONE LAST FAVOR" +
+    "</div>" +
+
+    '<h2 class="ny-feel-title">' +
+      "Which Day Did You Feel Naya Power?" +
+    "</h2>" +
+
+    '<div class="ny-feel-subtitle">' +
+      "Was there a moment when it just clicked?" +
+    "</div>" +
+
+    '<div class="ny-feel-copy">' +
+      "Maybe it was the first conversation. Maybe it was the moment " +
+      "Naya remembered something that mattered. Maybe it was your " +
+      "Daily Intelligence Briefing — or the realization that you could " +
+      "learn, create and improve with her beside you." +
+    "</div>" +
+
+    '<div class="ny-feel-question">' +
+      "Tell us where you felt the power." +
+    "</div>" +
+
+    '<div class="ny-feel-days">' +
+
+      [1,2,3,4,5]
+        .map(function (day) {
+
+          return (
+
+            '<a class="ny-feel-day" ' +
+              'href="' + CHECKOUT_URL + '" ' +
+              'aria-label="I felt Naya Power on Day ' +
+                day +
+              '">' +
+
+              '<span class="ny-feel-day-number">' +
+                "DAY " +
+                day +
+              "</span>" +
+
+              '<span class="ny-feel-day-question">' +
+                "I felt it here." +
+              "</span>" +
+
+            "</a>"
+
+          );
+
+        })
+        .join("") +
+
+    "</div>" +
+
+    '<div class="ny-feel-footer">' +
+      "Your answer helps us understand where the experience becomes real." +
+    "</div>";
+
+
+  academy.appendChild(feedback);
+
+
+  /* ==========================================================
+     INSERT — NEVER REPLACE THE EXISTING PAGE
+     ========================================================== */
+
+  const existingPage =
+    document.querySelector(
+      ".ny-page-inner"
+    );
+
+
+  if (existingPage) {
+
+    existingPage.appendChild(
+      academy
+    );
+
+  } else {
+
+    document.body.appendChild(
+      academy
+    );
+
+  }
+
+
+  /* ==========================================================
+     CTA ENFORCEMENT
+     ========================================================== */
+
+  academy
+    .querySelectorAll(
+      ".ny-academy-cta, .ny-feel-day"
+    )
+    .forEach(function (link) {
+
+      link.href =
+        CHECKOUT_URL;
+
+    });
+
+
+})();
+</script>
