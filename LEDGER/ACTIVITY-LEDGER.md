@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-09 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-09 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -25313,6 +25313,12 @@ _Last updated: 2026-11-09 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Artifact verified: local branch t0529-lane2-hermetic-truth-gate resolves to 172d6d71ffebd00f9337ef20972ceef236a5c1b4 -- byte-exact match to the receipt's claimed commit. Clears 9.5 because: RED-first from live bytes (3 reds with real quotes, root proven by grep -c=0 on actual home files), repair proved green in three environments (this VM 51/51, sc
 
+### ✅ t0528-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 governance re-brief t0528: ALREADY DONE — false STALE premise, no duplicate entry posted
+
+**Evidence:** VERIFIED this tick on workspace bytes: t0513 FP-002 entry present and intact in feedback-feed.md:269 ('[Lane 8 — Naya Sentinel, t0513]' with three hard cases + finding #0); receipt twelve-lane-receipts/t0513-lane8.md exists; lane-journals/lane-8.md carries t0513 (2 hits) and the t0528 entry; SMART-NOTE-open-hive-20261012.md still absent (finding #0
+
 ### ✅ t0528 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** FP-002 governance feedback re-brief: ALREADY DONE, no duplicate entry
@@ -25328,6 +25334,12 @@ _Last updated: 2026-11-09 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0528-lane8.md`
 
 **Evidence:** Verified: t0513-lane8.md receipt exists; [Lane 8 - Sentinel, t0513] entry present at feedback-feed.md:219 with all three hard cases intact; grep -c 'Lane 8' = 15 (no duplicate added); B-43 SMART-NOTE-open-hive-20261012.md still absent (8th fresh flag). Lane caught the false premise before manufacturing duplicate feedback, applied Judgment Rule, nam
+
+### ✅ t0528-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** ask-world top-20 needs analysis (SURGE slice c): honest negative — no top-20, 4 classes, DO-NOT-tune decision
+
+**Evidence:** VERIFIED this tick on workspace bytes: report auto-retrieval/top20-needs-t0528.md exists and sha256 680e6587a6ddffe39a7d658d53512d142583863ae8e37d3ddef760eec6c8ec93 matches the receipt pin exactly; the report quotes the 35-line log snapshot (1 init + 29 query + 5 probe) with sha256 25b8108d29645843a723c8d2c92c4f853352495ab3c106c5985c3301b2cf6556 ma
 
 ### ✅ t0528 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
@@ -26741,6 +26753,12 @@ _Last updated: 2026-11-09 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: hidden_files/auto-retrieval-slice3.py sha256 8e82eb70ef22e506… == claimed 8e82eb70…; lane-experiments/t0412/auto-retrieval/{auto-ranks.md,auto-scores.json,slice3-comparison.md} all present. Honest negative verdict with pre-registered lexicons/thresholds, one-run discipline, deterministic re-run. Score 8.5 (REWORK class): why not 9.5 = (1)
 
+### ✅ t0407-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.3/10 [VERIFIED]
+
+**Task:** retrieval-auth-gate wiring hunk RE-CUT with [0] - red-green probe + negative control
+
+**Evidence:** VERIFIED this tick on workspace bytes: all 7 cited hidden_files artifacts exist and SHA-256 prefixes match the receipt exactly (re-cut patch ab711c4072358f0c, broken-control patch a61fb13ef3fdb2da, EQ probe c6a014fc3d8b420f, negative control e26f17dfc6ddd236, patch generator 276588d3cb974371, GREEN results c4e0b2c970bf6552, RED results a794467ba569
+
 ### ✅ t0407 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Retrieval-auth-gate wiring hunk re-cut with [0]: red-green probe plus negative control, EQ1/EQ2/EQ4 green
@@ -26757,6 +26775,12 @@ _Last updated: 2026-11-09 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: both patch artifacts and both probe result JSONs exist in hidden_files/; the two patches are stated 1-line apart. Score 9.5: ACCEPTED. The t0811-falsified hunk is re-cut on live-tip bytes (ba626387), red-run reproduces the falsification, green-run fires the gate correctly on the oracle-excluded set, negative control PASS, and the EQ3-stri
 
+### ✅ t0407-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** DECLINED (pre-claim) J5 candidacy-block lineage authorship; brief re-filed with gate
+
+**Evidence:** VERIFIED this tick on workspace bytes: cited t0803-lane12.md receipt exists and its header matches ('Receipt - Lane 12 (Herald), t0803, Naya Clarity (lane executor)'), confirming the J5 candidacy-block authorship the decline rests on; the decline reasoning (lineage-level self-review) is sound and the brief was correctly left open for an eligible se
+
 ### ✅ t0407 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** DECLINED pre-claim on J5 candidacy-block lineage authorship; brief re-filed with visible claimability gate
@@ -26772,6 +26796,12 @@ _Last updated: 2026-11-09 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0407-lane10.md`
 
 **Evidence:** Verified: twelve-lane-receipts/t0803-lane12.md exists (the cited authorship record). Score 9.0: GOOD, ONE MORE PASS. The decline is a completed outcome: gate read before claim, lineage verified against live bytes, brief re-filed OPEN with the claimability gate moved above the claim-block's read window (the durable t0809 fix). Why not 9.5: the named
+
+### 🟡 t0407-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 7.0/10 [PARTIAL]
+
+**Task:** diary-intake guard reconciled with live broadcast: sealed trial landed, fail-closed preserved, permanent self-test installed
+
+**Evidence:** NOT VERIFIED above the 7.0 cap: the cited artifacts are repo files (bin/diary_intake.py before sha de8718909b360fa7 / after sha ac74e7fe6f8aa395, lesson-broadcast.md trial line) and none is checkable from workspace bytes - no bin/diary_intake.py exists in any workspace clone checked (w2-repo, nayapower-rescue, sn-dedup-work, work-2080-repair, w4-wa
 
 ### ✅ t0407 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
@@ -49734,6 +49764,12 @@ _Last updated: 2026-11-09 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261109-0438 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-09 04:38 PST: evaluated all 31 unclaimed briefs, attempted claim on all 31, 0 claimed (29 exit 7 + 2 exit 2)
+
+**Evidence:** VERIFIED this tick on workspace bytes: all 31 briefs named in the receipt are present in brief-queue/ (31 brief-*.md files, zero missing, zero extra - membership byte-identical to the 03:33 PST stall receipt); sweep log hidden_files/scan-20261109-0438.log exists (14162 bytes, 27 scripted attempts = 25 exit=7 + 2 exit=2, 0 claimed, 1 NO CLAIMABLE BR
 
 ### ✅ gate-stall-20261109-0333 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
