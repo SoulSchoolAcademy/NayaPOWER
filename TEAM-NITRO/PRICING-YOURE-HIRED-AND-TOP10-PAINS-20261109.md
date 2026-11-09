@@ -6,7 +6,48 @@
 
 ---
 
-## A. The "You're hired" rewrite — full replacement copy
+## v2 — The opening, revised (2026-11-09 ~02:19Z, his dictation)
+
+He restated the settled shape — the Top 10 pain points open the page — and gave the FRAME that must sit around the pains: welcome first, then proof it is real, then the objections answered head-on, then the pains, then the problem we solve, then welcome to the future. His product words stay verbatim: "welcome aboard" · "math and logic" · "not network marketing" · "push button simple" · "average Joe" · "welcome to the future" · "there's a new girl in town, her name is Naya, she's an intelligent layer." His direction is shaped, never pasted raw.
+
+### The opening, as it would read on the page
+
+> **Welcome aboard.**
+>
+> Let me tell you what that really means, in simple words, so there is no confusion. You are about to see exactly what this is — and exactly what pain it solves for you.
+>
+> First: this is for real. It is not a scam. It is math and logic. Let me break it down for you, plainly — you bring people, they join, you get half. That is the whole deal, and you can count it yourself. Nothing to guess at.
+>
+> Now let me answer what you are already thinking. A lot of you think, right away — oh, it's network marketing. It's not. Let me explain. And some of you don't believe in anything — or you don't know how to tell whether something is real or not. Fair enough. But sometimes things are logical, and they are mathematical — and when they are, you don't have to believe. You can check the math. We needed to create something different, so we did.
+>
+> So — what pain are we solving for you? Here are the ten. Read them and find your own:
+>
+> 1. The internet is too complicated — and 99% of the people who try to make money on it fail.
+> 2. They say AI is taking jobs.
+> 3. Google and Facebook make billions from you being the user — and pay you nothing.
+> 4. Your whole life is scattered — six platforms, ten apps, and no home of your own.
+> 5. Nothing is push-button simple — everything needs learning, setting up, or paying someone else to run it.
+> 6. You bring the value, and somebody else keeps the money.
+> 7. Nobody remembers — not your notes, not your days, not your promises.
+> 8. Your mail gets read, and your life gets kept forever.
+> 9. On the internet, you're the product — not the person.
+> 10. And everything charges you before you even know if it works.
+>
+> That is the problem. And here is what we made to solve it: push button simple. One system that lets you operate the internet, connect with people, organize your whole world, and make money from the internet — with the best tools, all in one place. Affordable for your average Joe.
+>
+> Welcome to the future. Now everybody in the world gets to make money from the internet. There's a new girl in town — her name is Naya. She's an intelligent layer.
+
+**What changed from v1, and why:**
+- The frame is new: v1 opened straight on the pains. v2 welcomes them first, proves it is real with math and logic, and answers the objections before the pains ever appear — because a stranger's first question is not "what are the pains," it is "is this real, and what pain are you solving for me?"
+- The ten pains are kept exactly as filed in v1 — the new frame does not demand a single change to them. Their grounding notes stand below in the v1 record.
+- The "You're hired" rewrite stands exactly as filed in v1 — the v2 revision is the opening only.
+- The opening's shape (for the build seat, after his eye): welcome → real → objections → ten pains → the problem we solve → welcome to the future → the chart, which is the answer. No prices in the opening, no button in the opening: the opening names the problem and proves it is real; the chart shows the world that solves it; the letter closes it.
+
+---
+
+## v1 — as filed 02:18Z (kept for the record)
+
+### A. The "You're hired" rewrite — full replacement copy
 
 Same board, same place on the page, same green jewel. Replaces the current board word for word (current board, for the record: "This is a new system — for creating, connecting, and interacting. A new level of the internet. And it is a smart money system: you get rewarded for the value you bring. Google and Facebook make billions from you being the user — and pay you nothing. Here, you get half the revenue, because you're the user. Invite your whole family: each of them gets their own world — and you get half of every one of them who joins through you.").
 
@@ -29,9 +70,7 @@ Same board, same place on the page, same green jewel. Replaces the current board
 - The 50% stays as "half the revenue" (the board's own settled truth; the story boards below it carry the when-we're-paid wording and the $12.50 / $25 / $50 math).
 - "These people" are the Top 10 Ideal Customers (`TEAM-NITRO/TOP-10-IDEAL-CUSTOMERS-20261109.md`, SN-2427) — the builders, the everyday people, the 99%.
 
----
-
-## B. The Top 10 pains — the opening the page now starts with
+### B. The Top 10 pains — the opening the page now starts with
 
 Each pain is one line, in his voice. The pains are the mirror of the reasons: a visitor reads the ten and sees their own — then the chart answers them.
 
@@ -58,9 +97,7 @@ Each pain is one line, in his voice. The pains are the mirror of the reasons: a 
 
 **The opening's shape (for the build seat, after his eye):** the ten pains, one line each, then the chart — the chart is the answer. No prices in the opening, no button in the opening: the pains name the problem, the chart shows the world that solves it, the letter closes it. Nothing invented — every pain traces to a line he already said.
 
----
-
-## Flags kept
+### Flags kept
 
 - The "You're hired" rewrite does NOT touch the eight story boards below the calculator — their airtight copy (v44) and the when-we're-paid wording stand.
 - The pains do not promise anything the page doesn't deliver; they name what the chart and the letter then answer.
