@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-09T15:50:13Z",
-  "tip": "953416389ce82eff8607d2d00cd4806fdedd91d0",
+  "generated_at": "2026-11-09T21:49:07Z",
+  "tip": "4479c3e179c9aa34e229dd6c2d461ea97fca14b2",
   "prs": [
     {
       "number": 3089,
@@ -22,78 +22,6 @@
       "head": "1679fbdb7a7e1b87def5afbd4dc88dfe47274b9c"
     },
     {
-      "number": 3293,
-      "title": "docs(brain): learning event 2026-11-07",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "950cb0f1e1f2686e74bc6730fa1fcac7b0ccf805"
-    },
-    {
-      "number": 3294,
-      "title": "SN-2291 \u2014 Fixed Means the Click the User Named (distilled, 2026-11-07)",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "9866abb0aa91f69cb46b8a26be21b4bf4be128a7"
-    },
-    {
-      "number": 3295,
-      "title": "Daily Intelligence Report 2026-11-07 - filed edition (V2 skeleton + distillation core)",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, claim-evidence-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "21af3b9ad50f3bdbfb3560816655b9f76c6631dc"
-    },
-    {
-      "number": 3296,
-      "title": "INFRA w2903: add feed-provenance-line element to Main Show render",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "a72942270b7a89a70d11ffe0b2a3347458e54dcd"
-    },
-    {
-      "number": 3297,
-      "title": "TRUTH: registry-drift detector keys orphans on projection_path too",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "1ba0c2ba1c15fbbf9b77467c2c1e5f14d360a094"
-    },
-    {
-      "number": 3298,
-      "title": "tools(spawn_brief): DECLARE template names exact creed path + tip-bytes method",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "7a485fcf558a33a4f0e37d1867cbc20a4af3cf83"
-    },
-    {
-      "number": 3299,
-      "title": "SN-2292 - Distill by Machine in the Morning (distilled, 2026-11-08)",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, door-obligation; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "99df5b399fdf783c5c2cfe809fd3a3a8fcd8cb72"
-    },
-    {
-      "number": 3300,
-      "title": "Daily Intelligence Report 2026-11-08 - filed edition (V2 skeleton + distillation core)",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "4ebdf8f5984c1e9ecc6514b53d130adf9c506ecc"
-    },
-    {
       "number": 3302,
       "title": "Truth: restore ESSENCE-01 partial-carry + standing-pointer status removed in b551750e",
       "tier": "B",
@@ -110,51 +38,6 @@
       "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
       "owner": "author lane",
       "head": "80f8dab67ec939ad524c2a092f479c7ca5cf6716"
-    },
-    {
-      "number": 3304,
-      "title": "docs(brain): learning event 2026-11-08",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "4dbb77487f80682b8044e9d39e4829b626da79ee"
-    },
-    {
-      "number": 3305,
-      "title": "INFRA w2976: Hub shell defaults to #/hub and states its capture date",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "5b75dd2dcfa93741f0234a72f8d23f5bf8d99b51"
-    },
-    {
-      "number": 3306,
-      "title": "Sync BRAIN/CURRENT-MISSION-STATE.md from naya/mission-state @ b79d034 (05:08 PST snapshot)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "187b644ac49ee86fb6897414ce8f58a32d5da885"
-    },
-    {
-      "number": 3307,
-      "title": "SN-2505 - One Deploy Shape (distilled, 2026-11-09)",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, door-obligation; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "0e8b0d1fa9db49461b79be32510c7856a5150082"
-    },
-    {
-      "number": 3308,
-      "title": "Daily Intelligence Report 2026-11-09 - filed edition (V2 skeleton + distillation core)",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "e47ac7bb4005d6525e7d2e3331af67ca11b253b7"
     }
   ]
 }
