@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-09T09:49:16Z",
-  "tip": "8d18bbf5149ef671392fb49de227ad8f6dcdba93",
+  "generated_at": "2026-11-09T15:50:13Z",
+  "tip": "953416389ce82eff8607d2d00cd4806fdedd91d0",
   "prs": [
     {
       "number": 3089,
@@ -119,6 +119,42 @@
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
       "head": "4dbb77487f80682b8044e9d39e4829b626da79ee"
+    },
+    {
+      "number": 3305,
+      "title": "INFRA w2976: Hub shell defaults to #/hub and states its capture date",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "5b75dd2dcfa93741f0234a72f8d23f5bf8d99b51"
+    },
+    {
+      "number": 3306,
+      "title": "Sync BRAIN/CURRENT-MISSION-STATE.md from naya/mission-state @ b79d034 (05:08 PST snapshot)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "187b644ac49ee86fb6897414ce8f58a32d5da885"
+    },
+    {
+      "number": 3307,
+      "title": "SN-2505 - One Deploy Shape (distilled, 2026-11-09)",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, door-obligation; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "0e8b0d1fa9db49461b79be32510c7856a5150082"
+    },
+    {
+      "number": 3308,
+      "title": "Daily Intelligence Report 2026-11-09 - filed edition (V2 skeleton + distillation core)",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "e47ac7bb4005d6525e7d2e3331af67ca11b253b7"
     }
   ]
 }
