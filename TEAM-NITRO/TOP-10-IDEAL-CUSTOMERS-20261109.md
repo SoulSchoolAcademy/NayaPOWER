@@ -8,6 +8,55 @@
 
 ---
 
+## v4 — First-person voice: she speaks to each one of you (2026-11-09 ~02:30Z, Shawn's answer)
+
+Shawn settled the voice question: Naya speaks directly to the visitor, in the first person, like a friend — real, concise, direct. Her face is there beside the words. The voice lives in the words — **no audio build is ordered** (the voice-reference question stays open on its own).
+
+The standard: "I" speaking to "you." Ten beats, one customer per beat — now she speaks to each one directly. Same substance, same jargon-free words, first person throughout. The four apps return by name in beat 1 (from v1) — your Personal, your Business, your Space, your Dashboard.
+
+### The ten, as unfolding beats — v4 (for the build seat, after his eye)
+
+**Beat 1 — Solo service owners, the first customer.**
+> You're the one with the skill — the hairstylist, the cleaner, the landscaper, the photographer, the trainer, the baker. You're talented at the work — that was never the problem. The problem is everything around the work: the bookings, the messages, the no-shows, the follow-ups that never happened. I take the repetitive work and run it. Your own Personal, Business, Space, and Dashboard — your whole world in one place. Bookings that book themselves, services, prices, photos, contact — and one link to share anywhere. When someone taps it, the inquiry arrives organized, and your dashboard shows what happened and what to do next. And when you see your own business running without you chasing it, you'll say it out loud: where has Naya been all my life?
+
+**Beat 2 — Coaches, consultants, and freelancers.**
+> Your knowledge is your product. You sell your time, your advice, your eye — one client at a time. What eats your hours is the business around the craft: getting found, getting booked, getting paid, remembering who said what. I hold the whole practice — sessions and bookings in one place, notes that remember what was said and what was promised, and a membership for your knowledge when you're ready — earning while you sleep, and you keep half of what it earns. The moment it clicks: a client rebooks without a single message being chased, and you realize your business is running while you were doing the work you love.
+
+**Beat 3 — Creators, influencers, and affiliates.**
+> You make things — videos, posts, lessons, recommendations — and people follow you for it. But your audience lives on platforms you don't own, your work is scattered across six platforms, and your links don't fit in a bio. I give you a home: your videos, your links, your memberships, your people — all in one place, all yours. Anything behind a pay door earns, and you keep half. And when you bring people in, you earn half of everything those people bring — because you are my best referrers. The moment it clicks: you share one link, and watch a stranger become a member, a member become a payer, and the money arrive without a platform taking its cut first.
+
+**Beat 4 — Home-based side-hustlers.**
+> You have a day job and a dream on the side — the shop that opens after dinner, the craft, the course, the service you're building one evening at a time. No time, no budget, and a business that has to run while you're at work. I run your side hustle while you're at your job. Nine days free, zero cost — try the Bugatti before you buy it. Your page, your bookings, your links, your little shop, all in one place, working while you're not watching. The moment it clicks: you check your phone at lunch and find a booking that came in while you were in a meeting. Your business worked a shift you didn't have to.
+
+**Beat 5 — Community builders.**
+> You're the one who gathers people — the group chat that became a community, the club, the circle, the movement, the neighborhood, the cause. You hold people together, mostly by hand. A hundred conversations in ten places, nobody knowing where anything lives, the same question asked twenty times, the new person who never got welcomed. I give your community a home — a Space where everything lives: the people, the conversations, the events, the shared notes. New people get welcomed. Events get found. And when you bring your people in, everybody earns — community leaders are among my best referrers. The moment it clicks: a new member joins, finds everything without asking anyone, and says they feel like they've been here for months — on their first day.
+
+**Beat 6 — Small businesses, 2–10 staff.**
+> A small team with a real business — a salon with chairs, a café, a studio, a shop, a crew. More than one person, not yet a company. You still know every customer by name — and you are the system, running on memory and group chats. Who is booked where. Who paid, who didn't. What the regulars like. I become the system you've been carrying in your head: bookings, customers, money — everything recorded, nothing lost. Your team sees the same world you see. The moment it clicks: you open your dashboard on a Monday morning and see the whole week — bookings, money, people — without asking a single person a single question.
+
+**Beat 7 — Relationship sales.**
+> Your business is people. The agent, the rep, the advisor, the broker — the one whose phone is their office and whose memory is their filing cabinet. You don't sell products; you sell trust, one relationship at a time. Hundreds of people, and the fear of forgetting one: who was looking for what, who you promised to call back, who went quiet and why. The follow-up that didn't happen is the sale that didn't happen. I remember everything that matters — every person, every conversation, every promise. I find anybody, and I reach exactly who should be reached. The moment it clicks: you open a contact and see the whole history — the last conversation, the promise made, the birthday coming up — and the call you make lands like you never left.
+
+**Beat 8 — Teachers and tutors.**
+> You teach — in a classroom, online, one-to-one, after school, on weekends. Your knowledge is the product, and your students are the point. Lessons scattered across drives and notebooks, students in five different chats, bookings by text message, the same question answered twenty times because there is no one place where the answer lives. I give your teaching a home: lessons, students, bookings, and payments in one place. A membership for your course — students join, and you earn. And what you teach compounds: your notes become our learning, and everybody gets more intelligent, day after day. The moment it clicks: a student finds the answer themselves — the lesson, the notes, the next step — without you having to say a word.
+
+**Beat 9 — Busy parents and families.**
+> The household. Two jobs, school runs, practices, birthdays, bills, the calendar that lives in three places and none of them right. You're not building a business — you're holding a life together. Who needs to be where, when. The permission slip. The photo from three years ago that nobody can find. I remember everything that matters — the notes, the days, the calendar, the plans, the memories, the lists — your family's whole world in one place. Look back on any day and see what went on in your world. Private by design: nobody reads your mail, and it is deleted by default — a day, or a week, or a month, your choice. The moment it clicks: you look back on a day from months ago — the photos, the notes, the little things — and realize nothing precious was lost. I kept it all.
+
+**Beat 10 — Hobbyists, learners, and retirees.**
+> You have time, and you have curiosity. The gardener, the reader, the maker, the one learning a language, the one who retired and finally gets to do the thing they always wanted to do. You're not chasing money — you're chasing meaning. The desire to learn, to make, to share — and nowhere to put it. The knowledge in your head that nobody asks about. I give your curiosity a world: learn anything from our shared learning, share what you know — a note, a lesson, a space — and be acknowledged, loved, appreciated, valued, respected for it. Your knowledge becomes part of something bigger, and you earn points for sharing it, because sharing wisdom is gifting intelligence to the world. The moment it clicks: you share one thing you know, and a stranger on the other side of the world says thank you, and means it.
+
+### The whole picture (v4 close)
+
+> Read the ten together and you see the world market: work, learning, family, community, creation — everybody with people counting on them. The foundation is one system, and the starting experience is different for each of you — but my promise is the same for all ten: I know you, I remember what matters, and I run your world for you, at ten stars, for free to start. And I'm much more than money. Much more than meets the eye. I'm everything, all in one — the automation, the internet, the intelligent layer, the connection. All of it. Not one thing — everything that matters.
+
+**What changed from v3, and why:**
+- The voice: every "Naya" becomes "I," every "their" becomes "your." She speaks to each customer directly — "You're the one with the skill" — instead of describing them in the third person.
+- Beat 1 restores the four apps by name from v1 (your Personal, your Business, your Space, your Dashboard) — v3's note said they stayed, but the beat text had dropped them.
+- The "where has Naya been all my life?" line stays verbatim — as a quote of what the customer says to her, not as her own words.
+- The whole-picture close is now her promise: "I know you, I remember what matters, and I run your world for you."
+- No invented numbers, no invented people. The full v1 and v3 texts stand below for the record.
+
 ## v3 — Word-perfect polish + the unfolding shape (2026-11-09 ~02:21Z, his direction)
 
 Shawn's order: the letter's unfolding-beat format — read one, click for the next — is used for ALL THREE spots: the Top 10 pains, who this is for (the Top 10 ideal customers), and the founder's letter. "It's beautiful and it's easy to read that way... it's almost like that viewpoint just unfolds, unfolds before your eyes."
