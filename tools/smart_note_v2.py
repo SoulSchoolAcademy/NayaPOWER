@@ -794,7 +794,13 @@ def _retrieval_idf(field_word_sets):
 INDEX_SCHEMA = "naya.smart-note-projection-index.v1"
 
 # Projection pages may only live under these roots (relative to ROOT).
-INDEX_ALLOWED_PROJECTION_ROOTS = ("BRAIN/05-MEMORY/SMART-NOTES", ".naya/memory/smart-notes")
+# BRAIN/05-MEMORY is a root (not just SMART-NOTES) because the 2026-11-05/06
+# backfill registered the essence + BRAIN-root notes with projection_path at
+# BRAIN/05-MEMORY/*.md — files that legitimately live there (the essence
+# documents are canonical at that path; the loop updates ESSENCE-01 in place).
+# The ".." / absolute-path checks below still block true escapes; the
+# PATH_ESCAPE test ("../../README.md") still fails closed.
+INDEX_ALLOWED_PROJECTION_ROOTS = ("BRAIN/05-MEMORY/SMART-NOTES", "BRAIN/05-MEMORY", ".naya/memory/smart-notes")
 
 # Lifecycle states the validator skips. They never enter any candidate pool
 # under any query, so their drift cannot produce a retrieval answer. The
