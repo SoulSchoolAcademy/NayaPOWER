@@ -1,12 +1,12 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-09 12:31 UTC_
+_Last updated: 2026-11-09 13:05 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 8164
-- ✅ Verified (8+): 8095
-- 🟡 Partial (5–7): 66
+- **Total scored actions:** 8170
+- ✅ Verified (8+): 8100
+- 🟡 Partial (5–7): 67
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
 - **Verification rate:** 99% of actions fully verified
@@ -15,16 +15,16 @@ _Last updated: 2026-11-09 12:31 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 545 | 9.1 | 9.6 |
+| Team 1 | Naya Verity | 546 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 542 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 498 | 9.0 | 10 |
 | Team 4 | Naya Mason | 473 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 625 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 626 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 358 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 479 | 9.0 | 10 |
-| Team 8 | Naya Sentinel | 500 | 9.0 | 9.5 |
+| Team 8 | Naya Sentinel | 502 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 632 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 860 | 9.1 | 9.7 |
+| Team 10 | Naya Librarian | 861 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 520 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 410 | 9.2 | 9.5 |
 
@@ -999,6 +999,7 @@ _Last updated: 2026-11-09 12:31 UTC_
 - **gap-gate-stall-20261016-1027-lane0:** 1 actions, avg 8.5/10
 - **gap-gate-stall-20261016-1037-lane0:** 1 actions, avg 9.0/10
 - **gate-stall-20261109-0333:** 1 actions, avg 9.0/10
+- **gate-stall-20261109-0438:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -2312,6 +2313,9 @@ _Last updated: 2026-11-09 12:31 UTC_
 - **t0405-lane4:** 1 actions, avg 9.5/10
 - **t0405-lane9:** 1 actions, avg 9.5/10
 - **t0407:** 6 actions, avg 9.2/10
+- **t0407-lane1:** 1 actions, avg 7.0/10
+- **t0407-lane10:** 1 actions, avg 9.0/10
+- **t0407-lane8:** 1 actions, avg 9.3/10
 - **t0412:** 8 actions, avg 8.6/10
 - **t0412-lane2:** 1 actions, avg 8.5/10
 - **t0412-lane3:** 1 actions, avg 8.5/10
@@ -2388,6 +2392,8 @@ _Last updated: 2026-11-09 12:31 UTC_
 - **t0527-lane3:** 1 actions, avg 8.5/10
 - **t0527-lane6:** 1 actions, avg 8.5/10
 - **t0528:** 4 actions, avg 8.8/10
+- **t0528-lane5:** 1 actions, avg 9.0/10
+- **t0528-lane8:** 1 actions, avg 9.0/10
 - **t0529-lane2:** 1 actions, avg 9.5/10
 - **t0529:** 4 actions, avg 8.5/10
 - **t0530:** 6 actions, avg 9.0/10
