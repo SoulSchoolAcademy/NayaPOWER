@@ -1610,7 +1610,18 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
 
     known_pages = {f"{e.get('intelligent_block_id')}.md" for e in entries if e.get("intelligent_block_id")}
     known_ib_ids = {str(e.get("intelligent_block_id")) for e in entries if e.get("intelligent_block_id")}
+    # TRUTH-FIX (Naya 5, 2026-11-08, proven at tip eac91b4a): a page is also
+    # registered when an entry's projection_path names it exactly. The 2026-10-13
+    # migration stamped wrong IB ids (sn0116 family) on entries whose
+    # projection_paths are correct; IB-filename keying alone flagged 300 such
+    # pages as orphans. Projection-path keying removes the false positives
+    # without hiding true orphans (a page with no entry pointing at it, by
+    # either key, still fires).
+    known_projection_paths = {e.get("projection_path") for e in entries if e.get("projection_path")}
     for name, paths in sorted(pages_by_name.items()):
+        paths = [path for path in paths if path not in known_projection_paths]
+        if not paths:
+            continue
         if name == "smart-note.md":
             # The v7 projection's canonical basename is scoped by its parent IB directory.
             # Treat it as registered only when that exact IB identity exists in the index;
