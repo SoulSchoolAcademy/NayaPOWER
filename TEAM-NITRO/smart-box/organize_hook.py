@@ -302,7 +302,11 @@ def live_tree_backfill(owner=DEFAULT_OWNER, boxes_root=None,
     stats = {
         "owner": owner,
         "live_tree": True,
-        "tree_sha": tree.get("sha"),
+        # The trees endpoint returns the resolved ref's sha here -
+        # the tip COMMIT of main at read time, not the tree-object
+        # sha (verified 2026-11-09: it equalled the tip commit twice).
+        # It identifies exactly which main this backfill read.
+        "main_commit": tree.get("sha"),
         "live_paths": len(live),
         "selected": len(selected),
         "fetched": 0,
