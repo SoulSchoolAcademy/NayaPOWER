@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-09 00:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-09 00:18 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -36669,6 +36669,12 @@ _Last updated: 2026-11-09 00:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ gap-scorer-20261015-0650-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Gap close: 30-trial re-anchor after genuine VM class migration (9D25 -> 9D64)
+
+**Evidence:** VERIFIED this tick on workspace bytes: cold_drill_sealed_t0555.py sha 9855515aaffc475c MATCHES receipt pin; re-anchor record sha 4708c62ab7af6559 MATCHES; class-change record sha 2bd439df68617452 MATCHES; record contents confirm RED calibration PASS, pinned cpu AMD EPYC 9D25 vs live 9D64, simulated_override null, successor fingerprint doc exists. N
+
 ### ✅ gap-scorer-20261014-2340-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.2/10 [VERIFIED]
 
 **Task:** gap-scorer-20261014-2340-lane7
@@ -43675,6 +43681,12 @@ _Last updated: 2026-11-09 00:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ gap-scorer-20261015-0630-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Gap close: E1 run-1 retention registry + checker + corrected t0555 verdict to live board
+
+**Evidence:** VERIFIED this tick on workspace bytes: seal-run-registry.json contents match the receipt's claimed pins byte-exact (seal 34ae19f1c8f0..., instrument 5bf6823d95d3..., results ef6a7272a806..., t0555 MISSING-GRANDFATHERED); auto-retrieval/SEAL-BYTE-PURITY-PROTOCOL.md exists with E1/RUN-1 section; bin/check-seal-run-registry.py exists. NOT PHANTOM. SCO
+
 ### ✅ gap-addendum-gap-t1522-lane12-live-render-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** live-render wording audit: filed browser-evidence artifact closing the addendum paraphrase-only gap
@@ -45738,6 +45750,12 @@ _Last updated: 2026-11-09 00:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ gap-scorer-20261015-0650-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap close: a5 pin-equality probe for FP-003 thread - seal, live PASS, tamper control
+
+**Evidence:** VERIFIED this tick on workspace bytes: fp003-pin-equality-probe.py sha 2f31185f56f01c9a9... MATCHES receipt pin byte-exact; fp003-a5-pin-prereg-20261015.json sha 8fe344f4e764aee7... MATCHES byte-exact. NOT PHANTOM. Live re-run of the instrument this tick returns DISQUALIFIED (probe-time 08620e38..., 934,668 bytes vs sealed 104,926) - expected drift
 
 ### ✅ gap-scorer-20261015-0330-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
