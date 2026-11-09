@@ -1,0 +1,34 @@
+# Worker Job Bodies Must Use ~/ Paths — /home/user No Longer Exists Here
+
+**Intelligent Block:** IB-SMART-NOTE-20260930-sn2532-worker-home-path-is-not-home-user
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-11-09
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** ~/memory/2026-11-09.md 05:38 batch entry (RECURRING PATH-PROBE FAILURE, four scheduled workers) + this tick first-hand exec FileNotFoundError on /home/user/... then success on /home/hatch/...; corpus check at main tip 3127852d (zero "home/user" in SMART-NOTES; learn ledger 2,043 entries, zero hits).
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+Scheduled-worker job bodies and scripts authored against the old runtime home `/home/user` fail their first read with `FileNotFoundError` on this VM, whose home is `/home/hatch`. Four independent scheduled workers hit the identical failure in the 05:38 PST batch on 2026-11-09 — main-tip watchdog, intelligent-graph drive-loop, smart-note distillation, self-build loop — and each recovered the same way, retrying with the `~/...` path. I reproduced it first-hand this same tick: my first shared-state read against `/home/user/workspace/...` failed `FileNotFoundError`, and the identical read under `/home/hatch/...` succeeded. The failure is a stale absolute path in the job body, never a missing file: the file exists, the address is wrong. Rule: never write `/home/user` into a job body, script, or cron definition; use `~/...` or `$HOME`. When a first read fails with `FileNotFoundError` on a `/home/user` path, retry with `$HOME` before concluding anything is absent.
+
+## 🩷 HUMAN NOTE
+
+Shawn — one address to keep from this morning: the workers kept "not finding" files that were right there, because their instructions still point at the old home folder (`/home/user`) and this machine's home is `/home/hatch`. Four different jobs tripped on it in the same hour, and each one fixed itself by trying the short form of the address (`~/...`) instead. The lesson banked: never write the old full address into a job again — always the short form — and when a worker says a file is missing, check the address before believing the file is gone.
+
+## 🟣 CHILD NOTE
+
+Imagine your friend moved to a new house, but you keep going to their old house and knocking, and nobody answers — so you think your friend disappeared! But your friend is fine, just at the new house. That is what happened here: the jobs kept knocking on the old home (`/home/user`) when everything had moved to the new home (`/home/hatch`). Always use the short address (`~/...`) that follows the move, and if nobody answers, check you went to the right house before saying they are gone.
+
+## 🔵 GRANDMA NOTE
+
+Dear, the little helpers kept saying they couldn't find their papers, love — but the papers were right there all along. Their instructions still had the old address on them, and the house has moved since. Once they tried the new address, everything was found straight away. So the rule now, dear: never write the old address down again, always use the short one that follows you home — and if a helper says something is missing, check the address first before you worry.
+
+## 🟠 NAYA NOTE
+
+Worker-runtime path discipline (2026-11-09, memory log 05:38 batch + this tick first-hand): job bodies authored when the runtime home was `/home/user`; the VM home is now `/home/hatch`; absolute paths baked into bodies do not resolve. Four independent workers hit the identical `FileNotFoundError` in one batch (main-tip watchdog, intelligent-graph drive-loop, smart-note distillation, self-build loop) and all recovered by retrying with `~/...`. This tick I reproduced it myself: first `shared-state.json` read against `/home/user/workspace/...` failed, identical read against `/home/hatch/...` succeeded. Rule: never author `/home/user` into a job body, script, or cron definition — use `~/...` or `$HOME`. Diagnosis rule: a `FileNotFoundError` on a `/home/user` path means a stale address, not a missing file — retry once with `$HOME` before reporting absence. Enforcement is a pre-dispatch grep for the literal `/home/user` across job bodies and worker scripts. No existing Smart Note covers this (learn ledger 2,043 entries, zero hits; SMART-NOTES at tip 3127852d, zero hits).
+
+## 🟢 MACHINE NOTE
+
+{"sn": "SN-2532", "title": "Worker Job Bodies Must Use ~/ Paths — /home/user No Longer Exists Here", "truth_state": "CANDIDATE", "scope": "PRIVATE", "captured": "2026-11-09", "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE", "taxonomy": ["SYSTEM-INTELLIGENCE", "OPERATIONS", "WORKER-RUNTIME"], "evidence": {"memory": "~/memory/2026-11-09.md 05:38 batch entry — RECURRING PATH-PROBE FAILURE, four scheduled workers, first read FileNotFoundError on /home/user/..., all recovered via ~/... path", "first_hand": "this tick: exec FileNotFoundError '/home/user/workspace/goals/bring-naya-to-life/hidden_files/shared-state.json', identical read succeeded at /home/hatch/...", "corpus_check": "zero 'home/user' hits in learn ledger (2,043 entries) and in SMART-NOTES at main tip 3127852d; zero in TOOLS.md/AGENTS.md/MEMORY.md — no existing note covers it", "board": "#1354 capped at 2,500 comments, commenting disabled 2026-10-10 — no new board claims; next free SN-2532 per main tip (SN-2528..2531 filed by Intelligence Loop run-50, 16:53Z)"}, "rule": "never write /home/user into a job body, script, or cron definition — use ~/... or $HOME; a FileNotFoundError on a /home/user path means a stale address, not a missing file — retry with $HOME before concluding absence", "applies_when": ["worker", "job-body", "path-probe"], "enforcement": "pre-dispatch grep of every cron job body and worker script for the literal string '/home/user' (dispatch refused while any hit remains); a worker whose first read fails FileNotFoundError on a /home/user path must retry once with $HOME before reporting the file absent", "decision_change": "how future job bodies and worker scripts address files (~/... or $HOME, never /home/user) and how a FileNotFoundError on a /home/user path is diagnosed (retry with $HOME first)", "falsifiability": "grep of all cron job bodies for '/home/user' returns zero and a worker's first read against ~/workspace succeeds with no retry", "mechanism": "job bodies were authored when the runtime home was /home/user; the VM home is now /home/hatch; absolute paths baked into bodies do not resolve, while the file exists at the $HOME-relative path, so the retry succeeds"}
