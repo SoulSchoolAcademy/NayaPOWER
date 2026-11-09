@@ -1,9 +1,49 @@
 {
   "contract": "room-feed/v1",
   "room": "today",
-  "emitted_at": "2026-10-22T02:14:57.801376-07:00",
+  "emitted_at": "2026-11-09T15:59:45.422744-08:00",
   "source_ref": "engine-job:hub-feeds-emitter-t0479",
   "items": [
+    {
+      "id": "idx-850b2b79-c52b-4379-9ce9-5983c100476c",
+      "title": "Naya runtime flow lesson",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-09 18:14:35.805593+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-0f2dad86-8b30-4c80-94d2-cd0476bc8365",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-09 18:14:35.456313+00"
+        }
+      ]
+    },
     {
       "id": "idx-68bf83a4-9857-40bb-ad57-d88f7ea8984d",
       "title": "SN-9999 — hub-sync live-fire test note (lifecycle record; retired test fixture)",
@@ -241,46 +281,6 @@
           "color": "#FFFFFF",
           "tier": "primary",
           "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:40:02.251093+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-796c4542-1dc4-4e6a-a97f-30df8099dde1",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:25:58.232806+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-e3e80e3a-8ee8-46af-b1f0-2f5c1f5eb467",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-20 17:40:59.070574+00"
         }
       ]
     },
