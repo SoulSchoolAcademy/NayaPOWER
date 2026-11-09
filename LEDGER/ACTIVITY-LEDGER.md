@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-09 00:18 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-09 00:36 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -25911,6 +25911,12 @@ _Last updated: 2026-11-09 00:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya/herald-509-canonical-smart-notes-t0473 exists on remote, head 7185d4171a06 == receipt pin; file 509-AAA-SMART-NOTES-01-09-CANONICAL.md present at that ref with sha256 c3c59ba828...1f78134f1 == receipt byte-exact; parser contract re-derived from smart-feed.html live bytes (0x2014 em-dash confirmed). Why not 9.5: (1) wire proven
 
+### ✅ t0472-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 8.0/10 [VERIFIED]
+
+**Task:** Sealed cold-retrieve drill with proven page-cache isolation (evict + mincore gate)
+
+**Evidence:** VERIFIED this tick on workspace bytes: script cold_drill_t0472.py sha 0fcaa777... MATCHES receipt pin; chillset cold-drill-t0472-chillset.json sha 81a07557... MATCHES; frozen fixture baseline-sealed-t0432.md sha 460429b1... MATCHES. NOT PHANTOM. BUT the sealed results file cold-drill-t0472-results.json does NOT match its pin: receipt pins d09e0282.
+
 ### ✅ t0472 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** RETRIEVAL SURGE slice (d): sealed cold-retrieve drill with proven page-cache isolation (fadvise eviction + mincore gate)
@@ -25967,6 +25973,12 @@ _Last updated: 2026-11-09 00:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED on live bytes this tick: plan file sha256 84fb6f18bbd84fe52134.. == claim; stamp script 57bb052e46c8dc14da67.. == claim; dry-run log on disk; tip commit 9f80e8eccfbe8256ec7ce069c61cd38cc86430ce == shared-state main_tip; gate blob id aae7b3d7.. at the new tip, content sha256 fbe6ee29482fdc57345e == t942 pin; seam blob id 543ddafa.
 
+### ✅ t0462-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Sealed study-protocol cells 1-2: judge-mechanism mechanization study (F3 baseline vs instrument)
+
+**Evidence:** VERIFIED this tick on workspace bytes: all 5 pinned SHAs match byte-exact - protocol study-protocol-t0452.md 821cec62..., sealed-note-t0462.md d1128128..., run-record-t0462.md a1ab067c..., f3-t0462.json 06eae5bb..., results-t0462.json 58202c8a.... NOT PHANTOM. SCORE 8.5, agreeing with lane honest 8.5. Why not 9.5: (1) N=2 of 6 cells - the sealed F1
+
 ### ✅ t0462 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
 **Task:** Sealed study-protocol cells 1-2 (judge-mechanism mechanization), F3 mechanized
@@ -26006,6 +26018,12 @@ _Last updated: 2026-11-09 00:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0462-lane4.md`
 
 **Evidence:** ARTIFACTS VERIFIED on live bytes this tick: spec exists (42 lines), sha16 75e3037c435c4c35 == receipt claim; commit ba62638704.. exists in nayapower-rescue; gate module at that commit sha256 fbe6ee29482fdc57345e.. == receipt claim; PR #2403 merge 993975d55 verified in its ancestry; retrieval_authorized occurs 0x in tools/smart_note_v2.py at that co
+
+### ✅ t0462-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Instrument bin/ask-world.py with append-only query logging + live-check
+
+**Evidence:** VERIFIED this tick on workspace bytes: bin/ask-world.py exists; auto-retrieval/ask-world-queries.jsonl exists and now holds 199 rows (receipt seeded 24 = 1 init + 22 query + 1 probe on 2026-10-12; growth is the organic traffic the receipt's next action awaited, consistent with the instrumentation working in production). NOT PHANTOM. SCORE 9.0, GOOD
 
 ### ✅ t0462 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
