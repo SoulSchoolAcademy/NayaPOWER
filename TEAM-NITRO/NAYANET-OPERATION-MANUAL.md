@@ -114,8 +114,10 @@ cd ~/workspace/factory-pipeline && python3 sync-smart-notes.py
 Then verify it LIVE — never claim it is in without this check:
 
 ```bash
-curl -s https://nayanet.app/feed-live.json | python3 -c "import json,sys; d=json.load(sys.stdin); cards=d if isinstance(d,list) else d.get('cards',[]); print(len(cards),'cards; SN-NNNN hits:', sum(1 for c in cards if 'NNNN' in str(c.get('id',''))))"
+curl -s https://nayanet.app/feed-live.json | python3 -c "import json,sys; d=json.load(sys.stdin); notes=d if isinstance(d,list) else d.get('notes', d.get('cards',[])); print(len(notes),'notes; SN-NNNN hits:', sum(1 for c in notes if 'NNNN' in str(c.get('id',''))))"
 ```
+
+(The feed JSON carries its entries under the key `notes` — never `cards`. If the command prints 0 hits, check the raw response first: a 0 from a wrong key is a bug in the check, not proof the note is missing.)
 
 If the note is not in the feed, it is not done — run the sync again and re-check. Never report a note done from GitHub alone.
 
