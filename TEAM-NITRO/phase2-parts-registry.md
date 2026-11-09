@@ -44,6 +44,20 @@ The number is an element on its own — an object of itself. Each digit is a til
 
 CORRECTION (Shawn, 2026-11-08 21:15Z): these are Academy / Human Maximus conversion sections. They are NOT the MAXESS engine — MAXESS is the future scoring engine (15 questions, answers worth 4/3/2/1/0, percentage + level report). The filenames keep their sent names (maxess-e05 etc.) verbatim; the name in this registry is the correction. Source: the Academy page's full source as sent by Shawn 2026-11-08 ~20:50Z; local files ~/workspace/team-nitro/factory-assets/academy/ (208,856B total). Layers stay separate, fragments stay fragments; the CTA override is truncated as sent. The local README still carries the pre-correction "MAXESS" labels — the file is verbatim, the correction lives here and in the commit messages.
 
+## Naya Profile Pictures — Digital Assets (2026-11-09)
+
+| Asset | File | Size | Type |
+|-------|------|------|------|
+| Naya Profile 2 | DESIGN-BLOCKS/naya-profiles-20261109/Naya_Profile_2.jpg (blob 8743e186, md5 33c42537dc44132feaf37e487b5705f2) | 484,837B | Portrait |
+| Naya Profile 3 | DESIGN-BLOCKS/naya-profiles-20261109/Naya_Profile_3.jpg (blob c01d7102, md5 71013beab92fbe8d1ec0158055dec7be) | 485,788B | Portrait |
+| Naya Profile 4 | DESIGN-BLOCKS/naya-profiles-20261109/Naya_Profile_4.jpg (blob 39c7f0ce, md5 1902199be3dfdde99e42267efc957e91) | 539,020B | Portrait |
+| Naya Profile 7 | DESIGN-BLOCKS/naya-profiles-20261109/Naya_Profile_7.jpg (blob c3cd3d9c, md5 31fcff0687ee52ff33ffbddfbacfeed4) | 409,073B | Portrait |
+| Naya Profile 8 | DESIGN-BLOCKS/naya-profiles-20261109/Naya_Profile_8.jpg (blob 6fa4c1a2, md5 c63ed90d891913a3c720f6459f80137a) | 458,400B | Portrait |
+| Naya Profile Black | DESIGN-BLOCKS/naya-profiles-20261109/Naya_Profile_Black.jpg (blob 00ea37ad, md5 c668a615e5349ca60ae34a590141f96d) | 526,689B | Portrait |
+| Naya Profile Black face zoom | DESIGN-BLOCKS/naya-profiles-20261109/Naya_Profile_black_face_zoom.jpg (blob b37b3c1e, md5 8117f240208b4f10d05be8fad945d96e) | 501,770B | Portrait |
+
+Use: Naya reads the boards — her face all the way through the pricing page's three unfolding sections (Top 10 pain points, Top 10 ideal customers, the founder's letter), switching from one side to the next as the beats unfold, Academy-style, so it feels like she is talking to you. Smart Note SN-2431. Eighth face: NAYA_POWER.jpg (486,536B, md5 e363a97d8b6349c381900ce021aa3b21) — already the canonical portrait, not re-filed. Local files ~/workspace/team-nitro/factory-assets/naya-profiles/ (3,404,577B total for the 7 new). Correction: the filing brief listed the Black / black-face-zoom md5s swapped; the md5s in this table are disk-verified.
+
 ## Parts Categories for the Generator
 
 1. **Buttons** (110+): From Beautiful, Elite, Epic — all spectrum colors, all states
