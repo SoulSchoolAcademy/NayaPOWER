@@ -30,4 +30,4 @@ A Naya Note is the record — literally what was said. Without the habit, the wo
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*The first Naya Note written under the official template (NAYA-NOTE-TEMPLATE.md) — rewritten 17:15Z into the three-output shape: what it is, why it matters, how to use it. The Smart Note it pairs with carries the distilled lesson; this note carries what was said.*
+*The first Naya Note written under the official template (NAYA-NOTE-TEMPLATE.md) — rewritten 17:15Z into the three-output shape: what it is, why it matters, how to use it. The Smart Note it pairs with carries the distilled lesson; this note carries what was said. Paired Smart Note: **SN-2532 — Naya Notes: The Habit, and the Format Is Three Outputs**.*
