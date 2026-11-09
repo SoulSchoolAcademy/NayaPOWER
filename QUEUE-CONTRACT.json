@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-09T03:49:08Z",
-  "tip": "1668f404a86c303d240a362966d82a34737b8f27",
+  "generated_at": "2026-11-09T09:49:16Z",
+  "tip": "8d18bbf5149ef671392fb49de227ad8f6dcdba93",
   "prs": [
     {
       "number": 3089,
@@ -110,6 +110,15 @@
       "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
       "owner": "author lane",
       "head": "80f8dab67ec939ad524c2a092f479c7ca5cf6716"
+    },
+    {
+      "number": 3304,
+      "title": "docs(brain): learning event 2026-11-08",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "4dbb77487f80682b8044e9d39e4829b626da79ee"
     }
   ]
 }
