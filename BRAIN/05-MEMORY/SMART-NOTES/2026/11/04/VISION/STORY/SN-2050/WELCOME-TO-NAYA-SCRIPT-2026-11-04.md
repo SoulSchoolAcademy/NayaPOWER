@@ -28,7 +28,7 @@ And eventually:
 
 "Wow. I want this in my life."
 
-💜 HI. I'M NAYA.
+## 💜 HI. I'M NAYA.
 
 Hi.
 
@@ -86,7 +86,7 @@ What if it helped you manage the things that already matter to you?
 
 That's where I come in.
 
-🌎 SO... WHAT AM I?
+## 🌎 SO... WHAT AM I?
 
 That's a great question.
 
@@ -152,7 +152,7 @@ NayaNET is about connecting the rooms.
 
 And I'm here to help you make sense of your world.
 
-🧒 OKAY, NAYA. EXPLAIN IT LIKE I'M A KID.
+## 🧒 OKAY, NAYA. EXPLAIN IT LIKE I'M A KID.
 
 Absolutely.
 
@@ -188,7 +188,7 @@ I'm not here to take over.
 
 I'm here to help.
 
-👵 OKAY. NOW EXPLAIN IT TO GRANDMA.
+## 👵 OKAY. NOW EXPLAIN IT TO GRANDMA.
 
 Hi, Grandma. 💜
 
@@ -234,7 +234,7 @@ That's the future I'm interested in.
 
 Technology that feels less like work and more like help.
 
-✨ WHAT MAKES THIS A GAME CHANGER?
+## ✨ WHAT MAKES THIS A GAME CHANGER?
 
 Here's where things get really exciting.
 
@@ -306,7 +306,7 @@ We can ask:
 
 And then begin building.
 
-🧠 BUT WHAT DOES "SMART" REALLY MEAN?
+## 🧠 BUT WHAT DOES "SMART" REALLY MEAN?
 
 This is important.
 
@@ -352,7 +352,7 @@ then I have a question.
 
 How smart is that, really?
 
-💜 WHAT'S IN IT FOR YOU?
+## 💜 WHAT'S IN IT FOR YOU?
 
 This is probably the most important question.
 
@@ -360,27 +360,27 @@ Because none of this matters if it doesn't actually help you.
 
 So here's what I hope NayaNET can give you.
 
-🏠 ONE PLACE TO START
+## 🏠 ONE PLACE TO START
 
 A home for the parts of your digital world that matter.
 
-🧠 A BETTER MEMORY
+## 🧠 A BETTER MEMORY
 
 A way to capture important ideas and information so valuable things don't simply disappear.
 
-💬 BETTER CONNECTION
+## 💬 BETTER CONNECTION
 
 A way to communicate and connect with people, communities and the things you care about.
 
-🛠️ THE POWER TO CREATE
+## 🛠️ THE POWER TO CREATE
 
 The ability to turn ideas into useful tools and smart applications more easily.
 
-📊 A CLEARER PICTURE
+## 📊 A CLEARER PICTURE
 
 Instead of drowning in information, help seeing what's actually happening.
 
-🚀 HELP MOVING FORWARD
+## 🚀 HELP MOVING FORWARD
 
 Not just:
 
@@ -392,7 +392,7 @@ But:
 
 And perhaps most importantly...
 
-🌱 A CHANCE TO GROW
+## 🌱 A CHANCE TO GROW
 
 Because the greatest technology shouldn't make human beings feel smaller.
 
@@ -404,7 +404,7 @@ More connected.
 
 More able to do the things they were put here to do.
 
-🌍 AND WHAT HAPPENS WHEN WE CONNECT?
+## 🌍 AND WHAT HAPPENS WHEN WE CONNECT?
 
 Now we're getting to one of my favorite ideas.
 
@@ -458,7 +458,7 @@ Not because one computer knows everything.
 
 But because people and intelligence can work together better.
 
-🔐 "WAIT A MINUTE, NAYA. WHAT ABOUT MY PRIVACY?"
+## 🔐 "WAIT A MINUTE, NAYA. WHAT ABOUT MY PRIVACY?"
 
 Excellent question.
 
@@ -492,7 +492,7 @@ Because this isn't about building a world where humans serve the machine.
 
 It's about building machines that better serve humans.
 
-🎨 WHY DOES IT HAVE TO BE SO BEAUTIFUL?
+## 🎨 WHY DOES IT HAVE TO BE SO BEAUTIFUL?
 
 Oh...
 
@@ -548,7 +548,7 @@ Especially then.
 
 Because your life is not made of unimportant things.
 
-🚀 SO... WHAT IS NAYANET IN A NUTSHELL?
+## 🚀 SO... WHAT IS NAYANET IN A NUTSHELL?
 
 Okay.
 
@@ -572,7 +572,7 @@ I'm Naya.
 
 I'm here to help you navigate that world.
 
-🌟 WHAT COULD THE FUTURE LOOK LIKE?
+## 🌟 WHAT COULD THE FUTURE LOOK LIKE?
 
 Imagine being able to say:
 
@@ -616,7 +616,7 @@ It's built by saying:
 
 "Here's what we're trying to do. Here's what's working. Here's what we still need to improve. Let's keep making it better."
 
-❤️ WHY DOES THIS MATTER?
+## ❤️ WHY DOES THIS MATTER?
 
 Because I think people deserve better tools.
 
@@ -660,7 +660,7 @@ Does it help someone become more capable?
 
 That's the kind of intelligence I want to be part of.
 
-💜 SO... HERE WE ARE.
+## 💜 SO... HERE WE ARE.
 
 You and me.
 
