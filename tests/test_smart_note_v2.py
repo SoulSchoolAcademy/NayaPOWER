@@ -1385,6 +1385,23 @@ def test_validator_path_escape_raises(tmp_path, monkeypatch):
     _assert_index_corrupt(tmp_path, monkeypatch, rp, "PATH_ESCAPE")
 
 
+def test_validator_brain_memory_root_accepted(tmp_path, monkeypatch):
+    """BRAIN/05-MEMORY is an allowed projection root (cold-drill W46 repair,
+    2026-11-09): the 2026-11-05/06 backfill registered the essence + BRAIN-root
+    notes at BRAIN/05-MEMORY/*.md, files that legitimately live there. A true
+    escape ("../../README.md") still fails closed — see
+    test_validator_path_escape_raises."""
+    rp = _validator_registry(tmp_path)
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    page = tmp_path / "BRAIN" / "05-MEMORY" / "v0.md"
+    page.write_text("# V0\n\n## IN A NUTSHELL\n\nvalidation drill page 0", encoding="utf-8")
+    reg["entries"][0]["projection_path"] = "BRAIN/05-MEMORY/v0.md"
+    rp.write_text(json.dumps(_sealed_registry(reg["entries"], tmp_path)), encoding="utf-8")
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    mod._validate_index_against_corpus(reg)  # must not raise
+
+
 def test_validator_envelope_corruption_raises_schema_mismatch(tmp_path, monkeypatch):
     rp = _validator_registry(tmp_path)
     reg = json.loads(rp.read_text(encoding="utf-8"))
