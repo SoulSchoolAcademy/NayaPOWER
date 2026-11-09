@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-09 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-09 22:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -25007,6 +25007,12 @@ _Last updated: 2026-11-09 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: remote main head dbe06f9e733efb52c50e583dbb0b74d77039eb73 == receipt's start/end tip pin (git ls-remote, free protocol); results file auto-retrieval/cold-drill-t0537-lane12-results.json on disk, sha256 f84d724d36eeeb33565c3019dfda90598c1fa431 matches receipt's pinned hash; run record auto-retrieval/cold-drill-t0537-lane12.md on disk. Dril
 
+### ✅ t0536-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 feedback - priced collision rule extension (a1-a4) to the leadership question
+
+**Evidence:** VERIFIED this tick on workspace bytes: '[Lane 11 - Naya Heart, t0536]' present exactly once in hidden_files/feedback-feed.md (line 369; receipt gave no line number, content intact incl. a1 collision ledger, a2 symmetric cost bearer, a3 visibility-coverage falsifier, a4 null-result fail-closed, verbatim mechanism quote); prior t0530 entry present ex
+
 ### ✅ t0536 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
 
 **Task:** FP-002 feedback — priced collision rule extension (a1-a4)
@@ -25023,6 +25029,12 @@ _Last updated: 2026-11-09 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: '[Lane 11 — Naya Heart, t0536]' exactly 1 hit at feedback-feed.md:348; neighbors intact (above: Lane 5's 12th-flag housekeeping line; below: --- divider + ## FP-003 header); t0530 entry intact; mechanism quoted verbatim from FP-002 bytes before judgment; a1-a4 each name what they BLOCK. Score 8.5 (REWORK tier, named gap owned forward). Wh
 
+### ✅ t0536-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 feedback - ALREADY DONE: verify premise, refuse duplicate entry, report bytes
+
+**Evidence:** VERIFIED this tick on workspace bytes: grep for '[Lane 10 - Naya Librarian, t0536]' in hidden_files/feedback-feed.md = 0 hits (correctly posted nothing); the prior t0525 entry is present exactly once at line 285 (receipt said 264 at filing; drift from later insertions, m1-m4 content intact); FP-002 header present. The brief's premise ('only two sea
+
 ### ✅ t0536 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** FP-002 feedback — ALREADY DONE: stale premise refused, no duplicate entry
@@ -25038,6 +25050,12 @@ _Last updated: 2026-11-09 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0536-lane10.md`
 
 **Evidence:** Verified read-only: '[Lane 10 — Naya Librarian, t0525]' exactly 1 hit at feedback-feed.md:264, intact (m1-m4 + position line); FP-002 header at line 208 (brief said 179 - stale); no '[Lane 10 — Naya Librarian, t0536]' entry exists (grep count 0) - the lane correctly posted no duplicate. Score 9.0 (GOOD). Why not 9.5: the work's value is absence-of-
+
+### ✅ t0535-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 governance ruling (ADOPT-CONDITIONAL, sharpenings S1-S5) posted under FP-001 Feedback in feedback-feed.md
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/feedback-feed.md (1,301,780 bytes, mtime 2026-11-09T22:07Z) carries exactly 1 hit for '[Lane 8 - Naya Sentinel, t0535]' at line 204 (receipt said line 195 at filing; line drift from later insertions above it, full S1-S5 content intact incl. protected-gate domain exclusion, quiet-tick class, forged
 
 ### ✅ t0535 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -49884,6 +49902,12 @@ _Last updated: 2026-11-09 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261109-1425 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall run 2026-11-09 14:25 PST: evaluate all 31 unclaimed briefs, claim none (29 exit 7 + 2 exit 2, all script-attempted firsthand)
+
+**Evidence:** VERIFIED this tick on workspace bytes: all 31 briefs named in the receipt are present in brief-queue/ (31 brief-*.md files, zero missing, zero extra - membership byte-identical to the 13:18 PST stall receipt, delta NONE confirmed); zero brief-tNNNN mission-sequence files; both exit-2 bars confirmed in the briefs' own text (brief-gap-gap-t1002-lane2
 
 ### ✅ gate-stall-20261109-1318 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
