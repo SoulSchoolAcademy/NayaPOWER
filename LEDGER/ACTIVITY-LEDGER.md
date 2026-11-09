@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-09 06:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-09 07:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -25599,6 +25599,12 @@ _Last updated: 2026-11-09 06:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: brief-gap-gate-stall-20261016-1027-lane0.md drained to brief-queue/done/. Root cause named precisely: evaluate_gate grammar is bar-only, no affirmative-allow token, so an allow-everyone dispatcher stamp exits 3 fail-closed; two concrete fix paths specified (dispatcher re-stamp workaround + durable token). Why not 9.5: neither fix applied 
 
+### ✅ t502 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 feedback (ops seat): is 7-step enforcement mechanical or bloat; does the done-criteria survive dispatch cadence
+
+**Evidence:** Verified: feedback entry '[Lane 7 — Naya Conductor, t0502]' present at feedback-feed.md line 155; entry carries five ops conditions (trial cohort, scorer capacity, template net-size budget, sub-9.0 re-queue, instrumented enforcer) and the missing angle (who scores the scorer's capacity). Score 9.0. Why not 9.5: the entry is untested prose until the
+
 ### ✅ t0502 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** FP-001 feedback from the ops seat: is 7-step enforcement mechanical or bloat at real dispatch cadence?
@@ -25614,6 +25620,12 @@ _Last updated: 2026-11-09 06:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0502-lane7.md`
 
 **Evidence:** Verified: feedback-feed.md line 146 carries the [Lane 7 - Naya Conductor, t0502] entry; grep -c 'Lane 7' = 1 (was 0), sole match is the new entry, FP-002 divider intact; entry answers the briefed question with an ops verdict (mechanical only if five gaps closed, otherwise bloat), grounded in SEAT_RE t0012 precedent and the journal system's demonstr
+
+### ✅ t502 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** FP-001 feedback (learning seat): does the 7-step loop close the compounding gap or rename it
+
+**Evidence:** Verified: feedback entry '[Lane 2 — Naya Sage, t0502]' present as a single entry at feedback-feed.md line 85 (second grep hit at line 486 is a later Lane 11 entry quoting it, not a duplicate); entry carries the falsifier, ONE-METRIC decline condition, and missing angles; other lanes' entries byte-intact per receipt's check. Score 8.5. Why not 9.5: 
 
 ### ✅ t0502 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
@@ -25631,6 +25643,12 @@ _Last updated: 2026-11-09 06:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: '[Lane 2 — Naya Sage, t0502]' entry exists in feedback-feed.md (grep=1 exact match); lane reported corrupting the feed mid-run and repairing it with 4 surgical edits + full re-verification (mirror lesson recorded). Sign-in #2175 comment 6130167541 per receipt. Score 8.5 — kept from 9.5 by: (1) the mid-run corruption is a real defect, repa
 
+### ✅ t502 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 feedback (map owner seat): would the 7 steps have caught real drift/merge failures
+
+**Evidence:** Verified: feedback entry '[Lane 10 — Naya Librarian, t0502]' present at feedback-feed.md line 140; entry cites traceable cases (t0032 merge-discard, t1352 receipt-pin red, t0112/t0272 stale-premise, world_model.py truncation) and adds five sharpenings including invariant-naming and control-arm trial design. Score 9.0. Why not 9.5: the feedback is u
+
 ### ✅ t0502 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** FP-001 feedback from the map owner seat: would the 7 steps have caught real drift/receipt-gate failures?
@@ -25646,6 +25664,12 @@ _Last updated: 2026-11-09 06:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0502-lane10.md`
 
 **Evidence:** Verified: '[Lane 10 — Naya Librarian, t0502]' entry exists in feedback-feed.md (grep=1 exact match). Entry cites traceable real cases (t0032 attribution, t1352 frozen-payload red, t0112/t0272 stale-premise briefs, world_model.py truncation fix) and quotes template Part 2 / FP-001 verbatim, not paraphrased. Score 9.0 — GOOD, ONE MORE PASS: kept from
+
+### ✅ t492 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 enforcement feedback (verifier seat): 7-step mechanical-vs-judgment table, gaming surface, null-result falsifier
+
+**Evidence:** Verified: feedback entry '[Lane 9 — Naya Smith, t0492]' present exactly once in hidden_files/feedback-feed.md (grep count 1); entry carries the 7-step table, gaming surface with counter-measures, null-result falsifier, adopt-with-sharpenings position. Score 9.0. Why not 9.5: no independent seat has reviewed the feedback entry, and the freshness/cro
 
 ### ✅ t0492 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -42841,6 +42865,12 @@ _Last updated: 2026-11-09 06:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ gap-gap-t0162-lane2-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: close H9 round-2 gap by deeper root cause (parent gap-t0162-lane2)
+
+**Evidence:** Verified live this tick: sealed instrument hidden_files/lane-2/gap-t0162-lane2/measure_h9r2.py sha256 3cdc590e7627f48666fa3ec85b607bf798f45fdbaa39b01d62bc2f95c729ff81 matches the parent pin; rerun evidence filed (h9r2-rerun-20261026.json + verification-notes.md); decisions/ tick-pick files all dated 2026-10-12 (68 files), latest t0472, consistent w
+
 ### ✅ gap-scorer-20261015-0400-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.4/10 [VERIFIED]
 
 **Task:** gap follow-up: per-brief why for the skipped bucket in sweep-stale-gap-briefs.py + t0815 root cause with proof
@@ -43790,6 +43820,12 @@ _Last updated: 2026-11-09 06:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### 🟡 gap-lane-scorer-20261015-1210-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 7.0/10 [PARTIAL]
+
+**Task:** Gap follow-up: cite the corrected t0555 verdict's live-board comment ID
+
+**Evidence:** Verified: receipt internally consistent (comment 6200160386 on #2641, body sha256 12a08bc1..., byte quote of the CORRECTION line); claim-brief discipline and sign-in-before-read recorded. NOT verified: the live-board comment itself — GitHub REST returns 401 Bad credentials this tick (PAT expired; same failure as the 06:20Z master_directive sync), s
 
 ### ✅ gap-scorer-20261015-0650-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.0/10 [VERIFIED]
 
@@ -44956,6 +44992,12 @@ _Last updated: 2026-11-09 06:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ gap-gap-t0162-lane11-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: fix hv_measure.py --help crash (parent gap-t0162-lane11)
+
+**Evidence:** Verified live this tick: hidden_files/bin/hv_measure.py sha256 a83e2ab07fd70c150d9ea5a34549304a97bf1ebd33fc9a284a57263fe0c3c22e matches the receipt pin; --help exits 0 with 24-line usage; scoped window t0122-t0162 metrics M2:12/M3:5/M4:1 match the pre-fix run (no window regression). Score 9.0. Why not 9.5: the fix lives only in the goal-workspace i
 
 ### ✅ gap-scorer-20261015-0620-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.4/10 [VERIFIED]
 
@@ -48239,6 +48281,18 @@ _Last updated: 2026-11-09 06:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ gap-gap-t0172-lane1-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: strip 6 fixture lines from drift ledger + live-head refresh mechanism (parent gap-t0172-lane1)
+
+**Evidence:** Verified live this tick: hidden_files/lane-1/she-goes-forever/sgf_history.jsonl sha256 ae216d01639acc06c4ce07ada0514dca1e67650342af557ff9236ff0a0b2e4b4, 9 lines, zero 2099 lines, backup sgf_history-15line-before-strip.jsonl present in the evidence dir; wrapper hidden_files/lane-1/she-goes-forever/run-pinned-test-live-head.py sha256 b4290fb11bf96f64
+
+### ✅ gap-lane-scorer-20261015-1220-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: pin the t0541 retrieval-hitrate measurement JSON
+
+**Evidence:** Verified: instrument hidden_files/retrieval/retrieval-hitrate-t0541.py sha256 df4962208a446efece415c452c2362e30998031109573dca7eb31efb32e3d75f byte-identical to the t0541 pin; pinned measurement retrieval-hitrate-t0541-measurement-20261015-1220-lane1.json sha256 10cd5503273eff9fa769eb2b664bc1703883b343c2a9de3daaa38440156ad278 matches the receipt; -
+
 ### ✅ gap-scorer-20261015-0720-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: persist t0810 probes as re-runnable scripts (parent gap-scorer-20261014-2230, 9.0)
@@ -49494,6 +49548,12 @@ _Last updated: 2026-11-09 06:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261108-2215 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-08 22:13 PST: evaluated all 31 unclaimed briefs, attempted script claim on all 31, claimed none (29 exit 7 parent-authorship, 2 exit 2 claimability gates)
+
+**Evidence:** VERIFIED this tick on workspace bytes: all 31 briefs named in the receipt are present in brief-queue/ (31 brief-*.md files, zero missing, zero extra - membership byte-identical to the receipt's list); claim log claim-loop-20261108-2215.log exists and records 31 attempted, 0 claimed, 29 rc=7, 2 rc=2, matching the receipt's breakdown exactly; both ex
 
 ### ✅ gate-stall-20261108-2109 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
