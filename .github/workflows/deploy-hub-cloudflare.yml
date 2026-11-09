@@ -48,8 +48,8 @@ jobs:
       - name: Health check the deployment
         run: |
           sleep 10
-          curl -sf -o /dev/null --max-time 20 https://nayanet.live/ \
-            && echo "HEALTHY: nayanet.live responds" \
+          curl -sf -o /dev/null --max-time 20 https://nayanet.app/ \
+            && echo "HEALTHY: nayanet.app responds" \
             || { echo "health check failed"; exit 1; }
 
       - name: Record deploy receipt
