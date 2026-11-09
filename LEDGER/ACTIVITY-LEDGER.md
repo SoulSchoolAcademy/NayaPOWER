@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-09 07:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-09 08:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -13382,6 +13382,12 @@ _Last updated: 2026-11-09 07:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0814-lane12.md`
 
 **Evidence:** Verified: spec file hidden_files/smart-note-communication-mode-spec-v1.md sha byte-exact; comment-standard-v2 pin 5a3dd2ce matches; lesson-broadcast pin drift explained (live rolling feed modified after write-time pin — expected churn, not a defect). Clears 9.5 because: design-only deliverable met exactly — six modes derived from live reads, every 
+
+### ✅ t0813-lane8-reclaim — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** t0813-lane8 recusal-repeat: duplicate claim on gated brief, gate re-fired, re-filed
+
+**Evidence:** Verified: prior complete recusal receipt twelve-lane-receipts/t0813-lane8.md exists on disk, corroborating the duplicate-claim finding and the gate re-firing; the receipt's core claim (recusal IS the deliverable, zero design work, no pre-reg touched) is consistent with the on-disk record. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS. Why not 9.5: the
 
 ### ✅ t0813 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -34169,6 +34175,12 @@ _Last updated: 2026-11-09 07:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-t0776-lane9-decline2-rootcause — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0776 decline #2: identity-barred PR #2591 verdict, root cause (empty eligibility pool) named with proof, loop broken
+
+**Evidence:** Verified: parent receipt twelve-lane-receipts/t0776-lane9.md and prior decline twelve-lane-receipts/gap-t0776-lane9.md both exist on disk, corroborating the decline #1 -> re-file -> decline #2 loop; the pool-composition finding (24/25 recent receipts Clarity-signed) is the brief's own escape hatch used as designed. NOT PHANTOM. Score 9.0, GOOD ONE 
+
 ### ✅ gap-lane-scorer-20261018-1540 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Three-leg close: receipt-pin PASS, delivery-gate TOOL-ERROR diagnosis, merge-consensus + test reds re-proven from rule inputs
@@ -41668,6 +41680,12 @@ _Last updated: 2026-11-09 07:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ gap-t0818-lane3-decline2 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0818 decline #2: same-seat lineage recusal, gate stamped with dry-run proof, board post confirmed placed
+
+**Evidence:** Verified: parent receipt twelve-lane-receipts/t0818-lane3.md and prior decline twelve-lane-receipts/gap-t0818-lane3.md both exist on disk, corroborating the same-brief prior decline; the gate-stamp + dry-run proof (exit 2 barred for Clarity, exit 0 allowed for Resolve) is recorded in the receipt. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS. Why not 
 
 ### ✅ gap-t0818-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
