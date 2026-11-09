@@ -34,6 +34,11 @@ test writes itself.
      unparseable file is counted, never marked, and retried next
      run; a changed sha re-fetches and supersedes by block id; a
      truncated tree refuses outright.
+  J. A pathless block never clobbers a pathed block: appending the
+     same note as a local copy (empty github_path) after the
+     GitHub-pathed block landed appends nothing and the box keeps
+     naming the real path; a pathed block DOES supersede a pathless
+     one; the hook's run counts the skip.
 """
 
 import json
@@ -373,6 +378,55 @@ def main():
             check("I truncated tree refuses", False, "no raise")
         except ValueError:
             check("I truncated tree refuses", True)
+
+        # J. A pathless block never clobbers a pathed block.
+        boxes_j = str(tmp / "boxes-clobber")
+        boxstore.BOXES_ROOT = boxes_j
+        text_j = (FIXTURES / "SN-2535-what-naya-does.md") \
+            .read_text(encoding="utf-8")
+        real_path = ("BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/"
+                     "SYSTEM-INTELLIGENCE/SN-2535/IB-SMART-NOTE-"
+                     "20261109-sn2535-what-naya-does.md")
+        pathed = hook.content_to_block(text_j, real_path, OWNER)
+        check("J pathed block appends",
+              hook.append_blocks(OWNER, [pathed]) == 1)
+        pathless = hook.content_to_block(text_j, "", OWNER)
+        check("J same note pathless appends nothing after pathed",
+              hook.append_blocks(OWNER, [pathless]) == 0)
+        kept = boxstore.read_blocks(OWNER)[pathed["id"]]
+        check("J the box still names the real path",
+              kept["where"].get("github_path") == real_path,
+              "github_path=%r" % kept["where"].get("github_path"))
+        # The reverse order: pathed supersedes pathless.
+        boxes_j2 = str(tmp / "boxes-clobber2")
+        boxstore.BOXES_ROOT = boxes_j2
+        check("J pathless appends first when the box is empty",
+              hook.append_blocks(OWNER, [pathless]) == 1)
+        check("J pathed supersedes pathless",
+              hook.append_blocks(OWNER, [pathed]) == 1)
+        kept2 = boxstore.read_blocks(OWNER)[pathed["id"]]
+        check("J pathed wins after pathless",
+              kept2["where"].get("github_path") == real_path,
+              "github_path=%r" % kept2["where"].get("github_path"))
+        # Run-level: the hook counts the skip, box keeps the path.
+        local_j = tmp / "local-clobber"
+        local_j.mkdir()
+        (local_j / "SN-2535-what-naya-does.md").write_text(
+            text_j, encoding="utf-8")
+        wm_j = str(tmp / "watermark-clobber.json")
+        stats_j = hook.run(owner=OWNER, notes_roots=[(str(local_j),
+                                                       False)],
+                           store_path=None, boxes_root=boxes_j,
+                           watermark=wm_j)
+        check("J run counts the pathless skip",
+              stats_j["organized"] == 0 and
+              stats_j["pathless_skipped"] == 1,
+              "organized=%s skipped=%s" % (stats_j["organized"],
+                                           stats_j["pathless_skipped"]))
+        kept3 = boxstore.read_blocks(OWNER)[pathed["id"]]
+        check("J run leaves the real path named",
+              kept3["where"].get("github_path") == real_path,
+              "github_path=%r" % kept3["where"].get("github_path"))
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 
