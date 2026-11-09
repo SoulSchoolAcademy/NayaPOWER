@@ -65,6 +65,10 @@ _NN_REF = re.compile(r"\bNN-(\d{8})-([a-z0-9-]+)\b")
 _CREATED = re.compile(r"\*\*Created:\*\*\s*(.+?)\s*$", re.MULTILINE)
 _AMENDED = re.compile(r"\*\*Amended:\*\*\s*(.+?)\s*$", re.MULTILINE)
 _SN_LINE = re.compile(r"^SN-(\d{4})\s*[·•]\s*(.+?)\s*$", re.MULTILINE)
+# Naya Notes carry no SN line; their category lives on a
+# ``**Category:**`` line (``**Category:** System — Intelligence /
+# What Counts``). Plain ``Category:`` matches too.
+_CATEGORY_LINE = re.compile(r"^\**Category:\**\s*(.+?)\s*$", re.MULTILINE)
 
 
 def slugify(text):
@@ -104,6 +108,12 @@ def parse_smart_note(text):
     sn_match = _SN_LINE.search(text)
     sn_id = "SN-%s" % sn_match.group(1) if sn_match else None
     category = sn_match.group(2).strip() if sn_match else ""
+    if not category:
+        # Naya Notes carry no SN line; their category lives on a
+        # ``**Category:**`` line. The SN line always wins when it
+        # exists - this only fills the gap, never overrides it.
+        cat_match = _CATEGORY_LINE.search(text)
+        category = cat_match.group(1).strip() if cat_match else ""
     created = _CREATED.search(text)
     amended = _AMENDED.search(text)
     source_line = None
@@ -155,7 +165,7 @@ def note_to_block(text, owner="shawn", github_path=None, local_path=None,
     slug = slugify("%s %s" % (sn_id, parsed["title"]))
     about = []
     for tag in parsed["category"].replace("/", " ").split():
-        tag = tag.strip("·•,")
+        tag = tag.strip("·•,—–")
         if tag and tag not in about:
             about.append(tag)
     essence = _nutshell(parsed["sections"])
