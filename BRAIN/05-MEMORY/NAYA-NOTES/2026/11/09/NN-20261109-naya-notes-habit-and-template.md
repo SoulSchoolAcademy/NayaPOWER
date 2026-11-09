@@ -20,7 +20,7 @@ His words, 17:08Z Nov 9 — literally what was said:
 
 A Naya Note is the record — literally what was said. Without the habit, the words evaporate: he teaches all day and the next day the evidence shows nothing was kept. Without the sections, nobody can view them — the notes exist in GitHub only and the feed shows zero. The habit plus the sections is what makes the words stay and be seen.
 
-## How to apply it
+## How to use it
 
 - Write the Naya Note first, then the Smart Note — every loop run, same pass. The record and the lesson are two different files.
 - The template is the Intelligent Block template, unchanged — a Naya Note fills it with three outputs by default (what it is → why it matters → how to apply it), flexible one to three, never the Smart Note's seven.
@@ -30,4 +30,4 @@ A Naya Note is the record — literally what was said. Without the habit, the wo
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*The first Naya Note written under the official template (NAYA-NOTE-TEMPLATE.md) — rewritten 17:15Z into the three-output shape: what it is, why it matters, how to apply it. The Smart Note it pairs with carries the distilled lesson; this note carries what was said.*
+*The first Naya Note written under the official template (NAYA-NOTE-TEMPLATE.md) — rewritten 17:15Z into the three-output shape: what it is, why it matters, how to use it. The Smart Note it pairs with carries the distilled lesson; this note carries what was said.*
