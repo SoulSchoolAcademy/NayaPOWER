@@ -14,10 +14,11 @@ layer on the store that already works (GitHub + Supabase + Cloudflare).
 The vault is a namespace, not a new building: your files at your path,
 your rows under your owner id. I operate your Super Brain; I do not own
 it, I do not read it, and I do not share it — you do, when you choose,
-what you choose. Pieces 1 and 2 (the shape and the gate) are built and
-proven on real data in this pass; pieces 3, 4, and 5 (organize, key,
-bridge) are specified here so the next passes build from this document,
-never from memory.
+what you choose. Pieces 1 and 2 (the shape and the gate) were built and
+proven on real data in the first pass; pieces 3, 4, and 5 (organize, key,
+bridge) are built and proven in the second pass (2026-11-09, §9 proof
+record) — the sync working memory and the bake step now live in the box
+too, and the map carries both halves.
 
 ---
 
@@ -46,6 +47,18 @@ this one machine — they are the last two pieces still living inside it.
 The shape, the gate, the organize function, the key, and the bridge in
 this blueprint are the build that moves them into the box too, so the
 next sickness costs nothing at all — not even a scare.
+
+**Second pass (2026-11-09, after Shawn scored the first pass 8/10 and
+ordered it to ten): the move is done and proven.** The sync state
+(1,519 tracked files) and heartbeat now live verbatim in the box
+(`smart-box/box/` + `manifest.json`), the bake output is recorded by
+hash (656 notes, 5,020,384 bytes), and the recovery demo rebuilds both
+state files byte-identical from the box after a wipe. What is still
+true: the live sync scripts themselves were NOT repointed — they still
+read their local files, and the box holds the authoritative copy beside
+them. Repointing the sync to read from the box is a later step, with its
+own proof, not smuggled in here — so no sync behaviour changed for
+anyone.
 
 ### What I am, in this system
 
@@ -203,11 +216,12 @@ keyed Naya MAY share the note the owner did choose public; a keyed Naya
 reads a body the owner opened to them by name; an unknown action is
 denied, never allowed by accident.
 
-### 3.3 Piece 3 — The organize function (SPECIFIED, built next)
+### 3.3 Piece 3 — The organize function (BUILT, proven second pass)
 
 **What it is:** `organize(thing)` → tags + shelf + links. The four steps
 as code, run on every thing that enters, in the pipeline the sync already
-runs in.
+runs in. File: `smart-box/block.py` — `organize(block)` plus
+`organize_store(entries)` for a whole store.
 
 **The four steps, from the Intelligence Loop Seat
 (`INTELLIGENCE-LOOP-SEAT.md` — listen → understand → note → file):**
@@ -238,10 +252,30 @@ the loop's hand steps become the function's code path, one for one.
 hand-organized record; then the pipeline hook, with the loop's 30-minute
 run calling it instead of doing the steps by hand.
 
-### 3.4 Piece 4 — The key (SPECIFIED, built next)
+**Proven second pass:** `organize` ran on the whole real store — all
+2,086 entries, 42 topics indexed, 365 links, 220 blocks with links.
+(Fix pass: the blueprint first said 341 links / 199 blocks with links;
+re-running `organize_store` on the real store gives 365 / 220 — the
+cause is that `organize()` also links SN refs named in the title.)
+Sampled by value: SB-0001 tags `dictation` + `memory`, shelf
+`shawn/note/dictation`, links SN-0883 (title) + SN-0831 (text); SB-0002
+tags `law` + `memory`, shelf `shawn/note/law`; SB-2086 tags
+`system-map`, shelf `shawn/note/system-map`; SB-1673 links SB-1680
+(`superseded_by`); SB-1941 links its filed Act URL. The function is
+deterministic and idempotent (organizing twice = organizing once), and
+every organized block keeps its `raw` verbatim. One honest limit, kept
+from the spec: same-topic relations live in the corpus topic index
+(`organize_store` returns it), not as hundreds of links inside each
+block — a topic shared by 1,439 entries is an index entry, not 1,439
+links. The pipeline hook (the loop calling it on its 30-minute run) is
+NOT done — the function is proven, the hook is the follow-on.
+
+### 3.4 Piece 4 — The key (BUILT, proven second pass)
 
 **What it is:** per-person, per-Naya, revocable. Checked on every call by
 the same gate. That is how any AI plugs in — without a new auth system.
+File: `smart-box/gate.py` — `KeyRegistry` (mint / check / revoke /
+status / record / log) and `may_share(..., key_registry=registry)`.
 
 **The shape of a key:** an owner id, a Naya id, a scope, a status. Scope
 is `organize`: the key lets its Naya organize the owner's map and brain,
@@ -266,6 +300,25 @@ the issue, storage, and revocation live here, in the next pass.
   into a file, a log, a note, or a block. The key is an identifier the
   gate checks, never a value anyone can copy out of the record.
 
+**Proven second pass — the first pass's trust gap is closed.** Before,
+`may_share` believed any Key object handed to it. Now the proof path is
+`may_share(..., key_registry=registry)`: a key counts only when the
+registry minted it and it is still live there for this owner and this
+Naya. Proven: mint → check ALLOW → revoke → DENY; no-key DENY; a forged
+key (same fields, "active", never minted) DENY; another Naya's key DENY;
+a key for another owner DENY; mint/revoke by a stranger refused
+(ValueError); minting twice returns the one live key; minting after a
+revoke issues a fresh key id. The registry holds identifiers only.
+**Fix pass (2026-11-09, after the verifier found the legacy path still
+trusted a forged key):** `may_share` without a registry now FAILS
+CLOSED — every keyed path DENYs, even for a genuine minted key, because
+the proof cannot be checked. The old first-pass behaviour (trusting a
+Key object as handed, with no registry) is GONE, not kept; the
+first-pass 10-case matrix now passes a registry so it stays green. The
+only no-registry ALLOWs are the two paths that need no key by design:
+the owner on their own block (rule 1) and anyone reading a public smart
+note (rule 3, read half).
+
 **The plug:** the Naya does not live in the box — she connects with
 permission, like a key in a lock, and reads the MAP and the BRAIN, not
 the raw pile; when she needs a raw file she asks the box, and the box
@@ -273,11 +326,12 @@ checks the permission first. Any AI in the world can plug into NayaNET,
 then into your Box — but the plug goes through your permission, into
 your vault, and the vault stays yours.
 
-### 3.5 Piece 5 — The bridge (SPECIFIED, built next)
+### 3.5 Piece 5 — The bridge (BUILT, proven second pass)
 
 **What it is:** the sync, extended. The bridge already exists — GitHub ↔
 Supabase ↔ Hub — and it carries notes into the feed today. The extension
-carries blocks, not just text.
+carries blocks, not just text. File: `smart-box/bridge.py` — `Box`,
+`carry`, `build_space_from_note`.
 
 **The two flows:**
 
@@ -307,6 +361,15 @@ carries blocks, not just text.
   bridge pass lands and proves it — this build does not change the sync
   engine, and neither does the bridge pass without its own proof.
 
+**Proven second pass:** a real block (SN-2535, public + chosen) carried
+box → box with zero loss — `id`, `raw`, `what`, and `body` identical on
+arrival; the second carry returns DUPLICATE and the destination still
+holds one copy; a keyed Naya carrying a private note DENY (nothing
+moves); a stranger carrying DENY; a revoked key carrying DENY. One click
+builds a space from the note (BUILT, the space's links name the note);
+the second click returns EXISTS with the same space, never a duplicate;
+a stranger building a space DENY.
+
 ### 3.6 The store and the vault — a namespace, not a building
 
 **The store is already built.** GitHub stores files (versioned,
@@ -327,7 +390,9 @@ own box holds the shared intelligence, organized the same way.
 **Build order (smallest first):** (1) the shape · (2) the gate ·
 (3) the organize function · (4) the key · (5) the bridge extension.
 Each provable in a day. Pieces 1 and 2 are proven in this pass; the
-rest build from this blueprint, never from memory.
+rest build from this blueprint, never from memory. **Second pass: all
+five are now built and proven** — see §9 for the second-pass proof
+record, and §10 for what is still honestly open.
 
 ### 3.7 The Law of One as the architecture
 
@@ -524,30 +589,112 @@ untouched, one set, not two.
   (listen → understand → note → file) · design-contract gate
   (`check-gate.py` + `next-sn-number.py` at `~/workspace/team-nitro/`).
 
+### The proof record (second pass, 2026-11-09 ~19:33–19:45Z — pieces 3–5)
+
+- **Test suite:** `smart-box/test_smart_box.py` — **82/82 checks passed,
+  exit 0, zero stderr** (stderr 0 bytes), re-run from a fresh copy of
+  the directory (`/tmp/sb-fresh`) with the same result, 82/82.
+  No regressions: the first-pass 24 checks still pass unchanged inside
+  the 82 (10/10 gate matrix + 3 extras, 6/6 round-trips).
+- **Organize (piece 3):** all 2,086 real store entries organized —
+  42 topics indexed, 365 links, 220 blocks with links; sampled by value
+  (SB-0001 / SB-0002 / SB-2086 / SB-1673 / SB-1941 / SN-2535); the
+  function is deterministic and idempotent; every organized block keeps
+  its `raw` verbatim. (Fix pass: the record first said 341 links / 199
+  blocks with links; re-running `organize_store` on the real store
+  gives 365 / 220 — `organize()` also links SN refs named in the
+  title.)
+- **Key (piece 4):** mint → check ALLOW → revoke → DENY; no-key DENY;
+  forged key DENY; another Naya's key DENY; a key for another owner
+  DENY; mint/revoke by a stranger refused; one live key per pair; fresh
+  key id after revoke. The registry holds identifiers only — no key
+  material in any file (verified by scan).
+- **Bridge (piece 5):** SN-2535 carried box → box, zero loss (`id` +
+  `raw` + `what` + `body` identical); second carry DUPLICATE, one copy
+  held; private-note carry DENY; stranger carry DENY; revoked-key carry
+  DENY; space from a note BUILT in one click, second click EXISTS, no
+  duplicate; stranger building a space DENY.
+- **The sickness's root (syncbox):** the sync state (1,519 tracked
+  files, 298,217 bytes, sha256 `5df6cb43…560d21f`) and heartbeat (131
+  bytes, sha256 `a9645f67…38d82`) captured verbatim into
+  `smart-box/box/` with `manifest.json`; the bake output recorded by
+  hash (hub-feed-live.json, 656 notes, 5,020,384 bytes, sha256
+  `ae7c674a…dcf11` — verified against the live file); the scripts recorded by hash
+  (sync-smart-notes.py 57,727 bytes, sha256 `2973d9b9…278b9`;
+  build_feed_live.py 31,658 bytes, sha256 `e4869f2c…caef4ed`).
+  Recovery demo: a wiped directory (no state files at all) rebuilt
+  from the box — both files byte-identical to the originals, hashes
+  matching the manifest. The live sync scripts were NOT edited and no
+  sync behaviour changed.
+- **Map, completed:** every proof note's `where` carries its
+  hub_smart_notes row (SN-2535 / SN-2543 / SN-2545 rows fetched live
+  from Supabase, github_path + ib_id + title all matching); every one
+  of the 2,086 entry blocks carries the honest KV record
+  (`kv-snapshot:nitro-smart-box/store/entries.jsonl:line-N`).
+  No Box table exists in Supabase — re-verified this pass against the
+  live PostgREST schema (198 paths; probes for `smart_box`,
+  `smart_boxes`, `boxes`, `box_entries`, `smart_box_entries` all return
+  PGRST205 "Could not find the table"), so no row id was invented.
+- **Write probe:** a 300,000-byte write succeeded before the box
+  capture; no write failed in this pass; no work was lost.
+- **No banned word:** the word appears nowhere in the code, tests, box
+  record, or this blueprint (verified by scan).
+- **Fix pass (2026-11-09 ~19:50Z — the verifier's two gaps closed):**
+  organize counts corrected to the true shipped-code values — **365
+  links, 220 blocks with links** (§3.3 and §9 above). The legacy
+  no-registry path is closed: `may_share` fails closed without a
+  registry (the verifier's forged key `key-shawn-naya-9999` DENYs; a
+  genuine minted key without a registry DENYs; the owner reading their
+  own private block without a registry still ALLOWs); the 10-case
+  matrix now passes a registry. A 300KB write-probe test was added, so
+  the probe is proven by the suite run itself. **Suite: 91/91 checks
+  passed, exit 0, zero stderr**, re-run from a fresh copy
+  (`/tmp/sb-fix-fresh`). One drift fix on the way: the syncbox check
+  that hard-coded 1,519 tracked files now compares the capture against
+  the live file at test time (the live sync had grown it to 1,522 by
+  the fix pass).
+
 ---
 
 ## 10. OPEN ITEMS — NOT DONE (named, not buried)
 
-- **Organize function (piece 3):** specified in §3.3, not yet built.
-  Next pass, on the same real data.
-- **Key issue / storage / revocation (piece 4):** specified in §3.4; the
-  gate checks the key shape today, the lifecycle lands next.
-- **Bridge extension (piece 5):** specified in §3.5; the sync engine is
-  untouched until the bridge pass proves itself.
-- **Sync working memory + bake step:** still live on this one machine —
-  the move into the box is the follow-on the sickness implied, not part
-  of this pass.
-- **Supabase half of `where` unmapped:** entry blocks carry the store
-  path and line, but `supabase_row` is empty — no Box table exists in
-  Supabase (the live Box is a KV snapshot of the store file), so there
-  is no row to name yet. The next pass maps entries to their Supabase
-  rows (or records that the KV snapshot is the row) instead of leaving
-  the field blank.
+- **Organize function (piece 3):** BUILT and proven on the whole store
+  (second pass). The pipeline hook — the loop calling it on its
+  30-minute run instead of doing the steps by hand — is NOT done.
+- **Key issue / storage / revocation (piece 4):** BUILT and proven
+  (second pass). The key record lives in the registry in memory; a
+  durable issue/revoke record filed in the owner's box is NOT done.
+- **Bridge extension (piece 5):** BUILT and proven (second pass). The
+  bridge runs in memory between Box holders; wiring it into the live
+  sync/feed path is NOT done — and must not happen without its own
+  proof.
+- **Sync working memory + bake step:** the state, heartbeat, and bake
+  record now live in the box (second pass, recovery proven). Repointing
+  the live sync scripts to read from the box is NOT done — deliberate:
+  no sync behaviour changed in this pass.
+- **Supabase half of `where`:** COMPLETE (second pass) — notes carry
+  their hub_smart_notes row, entries carry the honest KV record. No
+  Box table exists in Supabase (re-verified live this pass); if a Box
+  table is ever created, the KV records should be re-mapped to rows.
+- **Fix pass (2026-11-09, the verifier's two gaps):** CLOSED in the
+  working copy — organize counts corrected (365 links / 220 blocks
+  with links), the legacy no-registry path fails closed, a 300KB
+  write-probe test added, suite 91/91 from a fresh copy. **No legacy
+  no-registry trust remains in `gate.py`** — `_active_organize_key`
+  returns None without a registry, so no code path trusts a Key object
+  as handed. Re-verification by a different seat is owed before
+  filing, and filing itself is owed (GitHub one file at a time, no
+  merge).
 - **Independent verification (step 2):** owed — a different seat re-runs
-  the suite fresh and confirms the same result.
+  the suite fresh, re-derives the round-trip, and runs the attack test
+  (read a private block without a key, share without the owner's
+  choice, use a revoked key — and fails on every attempt).
 - **GitHub filing + read-backs:** owed — the coordinator files one file
-  at a time (blueprint, `block.py`, `gate.py`, `test_smart_box.py`,
-  fixtures). No merge — merge is Shawn's hand.
+  at a time (blueprint, `block.py`, `gate.py`, `bridge.py`,
+  `syncbox.py`, `test_smart_box.py`, `box/` record, fixtures).
+  No merge — merge is Shawn's hand.
+- **A live citizen's vault end-to-end:** NOT done — proven on the
+  owner's own store and notes, not yet on a live citizen's box.
 - **Shawn's eye:** the final gate, on the live system — as always.
 
 ---
