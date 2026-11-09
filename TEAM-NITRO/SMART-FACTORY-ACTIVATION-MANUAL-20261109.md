@@ -4,6 +4,7 @@
 **Written:** 2026-11-09, by a Nitro seat, for captain Naya Nitro Narzan
 **Ordered by Shawn, 2026-11-09 20:27Z:** "The Factory needs an activation manual so that ALL can build in the Smart Factory — so they can build interfaces with the SAME language I build them in, so everybody learns and remembers. A Smart Factory — a Smart Box Factory — that HOLDS all the knowledge and awareness of how to build all the parts. A Naya plugs into it, works at the factory, and builds beautiful interfaces from the beautiful high-level parts we have inventoried and put in the system."
 **Status:** activation manual for the Smart Factory completion. No merge — merge is Shawn's hand.
+**Revised 2026-11-09 (manual v2):** six gaps the proof Naya named, closed — §3 live file, §6.5 crown file+line, §6.6 mount map, §7.4 proof host, §8 branch filing + large-file read-back, §10 proof run. Lesson smart-noted as SN-2583.
 **Filed:** GitHub `TEAM-NITRO/SMART-FACTORY-ACTIVATION-MANUAL-20261109.md` · Held in the Factory's own Smart Box (owner `smart-factory`).
 
 ---
@@ -64,12 +65,14 @@ That gives you the whole system on your machine: pages, libraries, the inventory
 
 **Step 2 — Find the page you need.** The canonical pages and their local working copies:
 
+**⚠ CLONE THE LIVE FILE, NOT THE REBUILD FILE.** A page that is live has a `*-live.html` — that is the file to clone. Rebuild files (`pricing-round10-fix12.html`, `*-pass1-v9-*`, `fixed-candidate.html` and the like) are intermediates: they are older, partial, or superseded, and some do not even exist in the repo (`PRICING/pricing-round10-fix12.html` returns 404 on GitHub main — the manual's first draft named it and the proof Naya could not clone it). If a page has a live file, the table below names it with its blob — clone that blob, verify it with `git hash-object`, and work from it. If there is no live file, clone the newest verified working file the table names, never a file you guessed.
+
 | Page | Local working copy | What to take from it |
 |---|---|---|
 | **Hub** | `~/workspace/team-nitro/hub/index-2-fixed-v2.html` | Smart Tabs pill ribbon, Primo Purple button, jewel "i", rail nav, sticky top bar, mobile drawer, intel boards |
 | **Dashboard** | `~/workspace/team-nitro/dashboard/defectfix-v7/builder/fix9/` (fix-9 working files; pristine fix-8 file `dashboard-20261105-pass1-v9-FIX8-pristine.html`) | The real gauge (needle law), `.ph-card` boards, `.os-jewel`, tiled numbers, the orbit dial |
 | **Personal** | `~/workspace/team-nitro/personal/verify-5/fixed-candidate.html` | Nutshell block, identity rows, heading jewels, pill action buttons, hero orb, vision input |
-| **Pricing** | `~/workspace/team-nitro/pricing/rebuild/pricing-round10-fix12.html` | The chart (`<section id="chart">`, 5 groups, 36 rows), the calculator (gauge + tiled digits), Top 10 cards, hero + close |
+| **Pricing** | GitHub `PRICING/pricing-live.html` — **blob `a2d06d5bb43199139f400e1688079f1b40a1b8fa` (short `a2d06d5b`), 11,350,562 bytes, live at nayanet.app/pricing** (v74, commit `b619a4e9`, read-back verified byte-identical, sha256 `7a0b837c…`) · local working copy `/tmp/pricing-v74.html` (same bytes, `git hash-object` = the blob sha) | The chart (`<section id="chart">`, 5 groups, 36 rows), the calculator (gauge + tiled digits), Top 10 cards, hero + close |
 | **PI face** | `~/workspace/project-intelligence/pi-everything-face/build-face-v4.py` (live at nayanet.app/pi) | Strip, tab row, page card, info row, score board, lane cards, percentage pop, progress bar |
 | **Smart Factory page** | Live at nayanet.app/smartfactory | The piece cards (`.pcard`), the pills, the handle board |
 
@@ -289,6 +292,12 @@ All five yes → act fully, at full power, no hesitation. Any gate no → stop, 
 **The five steps:**
 1. **CLONE a page (§3).** Copy a finished page from GitHub — Dashboard, Hub, Personal, Pricing, the PI face. Work on the copy, never the canonical file.
 2. **REPLACE some parts.** Swap a part for another harvested part in the same slot. REPLACE means: the slot stays, the grammar stays, only the part changes — the board in a slot becomes a different harvested board that fits that slot (for example, a Reference crown such as NAYA-BRD-001, the Feature board). Replace ONLY with harvested parts — a part from the Inventory, the Piece Index, or the 7 libraries (§4). Never an invented one. If no harvested part fits the slot, leave the slot as the cloned page has it — do not invent a filler.
+
+**Worked example — the crown swap (REPLACE, done exactly this way).** Take a board slot on your clone and put the Reference crown NAYA-BRD-001, the Feature board, in it. The crown's HTML lives in the working store, `~/workspace/personal-app/pieces.json`, **entry lines 344–348, the `html` field on line 346**:
+```html
+<div class="board-h" style="--bc:#40d3bb"><div class="bh-icon">◆</div><div class="bh-text"><h3>Feature board</h3><p>one color, one world</p></div><button class="bh-btn" type="button">Open</button>
+```
+Its CSS lives in the same store's stylesheet, `~/workspace/personal-app/factory.css`, **lines 240–245** (readable form; the live minified form is lines 1060–1062). Copy the HTML from line 346 and the CSS from lines 240–245 verbatim into the slot — change only the words inside (`Feature board`, `one color, one world`, `Open`) to your page's words, and only the `--bc` color to your slot's own color. The slot keeps its place, its size, and its grammar; only the board changes. That is a REPLACE. (Verified against the store on disk 2026-11-09: 155 entries, NAYA-BRD-001 `reference: true`.)
 3. **MOVE some parts around.** Reorder parts on the page — the same parts, a new order. MOVE never restyles a part: a moved part keeps its exact HTML, its exact CSS values, its exact JS behavior; only its position changes, and the new position is still calculated (§5.1), never eyeballed.
 4. **VERIFY (§7).** Self-scorecard first, another seat second, Shawn's eye last. Scroll 0 AND scrolled, desktop AND phone, phone first, design-contract gate measured.
 5. **FILE (§8).** One file at a time, through the helper, read-back verified. No merge — Shawn's hand.
@@ -296,6 +305,32 @@ All five yes → act fully, at full power, no hesitation. Any gate no → stop, 
 **What REPLACE is not:** it is not restyling, not redrawing, not "in the same spirit" — the replacement part is taken verbatim, the way §3 Step 4 says. **What MOVE is not:** it is not a redesign — the page's language stays the page's language; only the order of its parts changes.
 
 **A complete pass, in one breath:** clone the Pricing page → REPLACE one board in one slot with a harvested board that fits that slot → MOVE two boards to swap their order → verify against §7 → file with §8. That is a build. Most builds are that, repeated viewpoint by viewpoint until the page is done.
+
+### 6.6 The excerpt rule — the section→JS-mount map (Pricing v74, the page you clone)
+
+**Nutshell:** the Pricing page's scripts assume the whole page is there. Excerpt only some sections and a script dies — and a dead script takes every button it wires with it. So before you excerpt anything, read this map. It was verified against the live v74 file (`PRICING/pricing-live.html`, blob `a2d06d5b`, 2026-11-09) — all six scripts, every mount below, file lines included.
+
+**⚠ SCRIPT 1 IS UNGUARDED — THIS IS THE TRAP.** The first script opens with `var head=document.getElementById('chartHead');` and there is NO null guard anywhere in it — zero `if (head` in all 584 lines. At load it runs `head.appendChild(d)` for every tier button and `wrap.appendChild(...)` for every chart row. So if `chartHead` or `chartWrap` is missing, script 1 throws a TypeError **at load** — and the whole script dies: all 27 `addEventListener` wirings, the chooser, the viewer, the plan detail, the letter controls, everything in script 1. The same is true of every mount below marked LOAD-TIME: each is touched at load with no guard, so dropping its section kills script 1 at load. **The rule: carry every section script 1 mounts, or carry none of script 1 — delete the whole script AND every section it touches. Never half a script.**
+
+| Section (live v74 file line) | Mounts script 1 needs (file line) | If you drop the section |
+|---|---|---|
+| `<section id="openingLetter" class="letter">` (line 1638) | `letterStart` (1825) · `chartHead` (1849) · `chartWrap` (1848) | Script 1 dies at load — `head.appendChild` on null, `letterStart` listener on null. The chart AND the letter AND the chooser AND the viewer all go dead. |
+| `<footer class="foot">` (line 1966) | `massiveStart` (1968) · `massiveNote` (1974) | Script 1 dies at load — `document.getElementById('massiveStart').addEventListener` on null. |
+| `<section class="ph-card hook">` (line 2037) | `gaugeStart` (2040) | Script 1 dies at load — `gaugeStart` listener on null. |
+| `<footer class="foot finale-foot">` (line 2055) | `finaleStart` (2056) · `finaleFree` (2057) | Script 1 dies at load — `finaleStart` / `finaleFree` listener on null. |
+| Chooser overlay region — `<div class="overlay chooser-overlay" id="chooserOverlay">` (line 2118) | `chooserOverlay` (2118) · `chooserFree` (2214) | Script 1 dies at load — `chooserOverlay.addEventListener` and `chooserFree` listener on null. (`chooserFree` is also read inside `openChooser`, but the load-time listener kills first.) |
+| Plan overlay region — `<div class="overlay plan-overlay" id="planOverlay">` (line 2222) | `planOverlay` (2222) · `planDetailCard` (2223) | Script 1 dies at load — `planOverlay.addEventListener` on null. |
+| Overlays region — `<div class="overlay" id="overlay">` (2324) + `<section id="popCard" class="ph-card pop">` (2325) | `overlay` (2324) · `popCard` (2325) | Script 1 dies at load — `overlay.addEventListener` on null. |
+| Viewer region — `<div class="overlay viewer-overlay" id="viewerOverlay">` (2350) + `<section id="viewerCard" class="ph-card viewer">` (2351) | `viewerOverlay` (2350) · `viewerCard` (2351) | Script 1 dies at load — `viewerOverlay.addEventListener` on null. |
+
+**The other five scripts — same rule, different guards:**
+- **Script 2 (the gauge, 906 lines)** is a library: it defines `window.TnTacho = { mount: mount, ... }` and touches no mount itself. It is safe to carry always — nothing in it reads the page.
+- **Script 3 (1 line)** is config only: `window.NAYA_CALC_CONFIG = {... "gaugeMount": "tn-tacho-mount"}`. Safe to carry always.
+- **Script 4 (NayaCalc, 260 lines)** runs `update()` at load, and `update()` touches `paceEl.textContent`, `paceSEl.textContent`, `paceUnitEl.textContent` with NO guard — so dropping the calculator section (`<section id="calculator">`, line 1981; `calc-amount`, `calc-pace`, `calc-pace-s`, `calc-pace-unit`) kills script 4 at load. Two guards save the rest: `mathEl` is guarded (`if (mathEl)`), and the gauge mount is guarded (`var mount = document.getElementById(cfg.gaugeMount); if(mount && window.TnTacho && window.TnTacho.mount) window.TnTacho.mount(mount);`) — a missing `#tn-tacho-mount` alone does NOT kill script 4.
+- **Script 5 (earnings popup, 14 lines)** is unguarded at load: `var ov=document.getElementById('earnOverlay')` then `ov.addEventListener(...)` and `document.getElementById('earnClose').addEventListener(...)` with no guard. Drop the earn overlay (`<div class="overlay earn-overlay" id="earnOverlay">`, line 2253) and script 5 dies at load.
+- **Script 6 (Learn-more, 16 lines)** is half-guarded: `if(btn)` guards `learnMoreBtn`, but `ov.querySelectorAll('.hired-close')` and `ov.addEventListener(...)` are unguarded. Drop the hired overlay (`<div class="overlay hired-overlay" id="hiredOverlay">`, line 2294) and script 6 dies at load.
+
+**How the proof build survived this:** the proof Naya carried all six scripts verbatim AND every mount in this map — her build script asserts 29 required ids present and zero duplicated ids before it writes the file. That is the check: before you file an excerpted build, assert every mount your carried scripts need is present, exactly once. If one is missing, either carry its section or delete the whole script that needs it — never ship the gap.
 
 ---
 
@@ -325,6 +360,26 @@ If yes to all three: show him. Say nothing. Let his eye judge. If no to any: fix
 - **The test in his head:** "is this the max level of experience I can give the user?" — asked about the PAGE, not the briefed items. If you can see the defect by looking, fix it, don't hand it on.
 - **Presenting work: link, don't preview.** When work is complete, verify the artifact exists at its real address first — commit actually pushed, page actually live. Only then tell him — and the message carries the LINK as the proof, never a local file attachment as the deliverable. No link = not done = don't announce.
 
+### 7.4 The proof host — how to get a live link for any filed file
+
+**Nutshell:** a filed file is not a viewable page until it has a URL a browser can open. The proof host serves any file from the public repo as a real web page. Use it for every proof link — never a `sandbox://` attachment, never a raw GitHub blob page, as the render proof.
+
+**The host:** `https://naya-proof-host.nayapower.workers.dev/` (Cloudflare worker `naya-proof-host`, account NayaPOWER; serves `text/html` for `.html`, correct content-type by extension, `cache-control: no-store` so proofs always serve the current file).
+
+**The link format:**
+```
+https://naya-proof-host.nayapower.workers.dev/?file=<repo path>&ref=<branch>&cb=<blob>
+```
+- `file` — the path inside the repo, e.g. `TEAM-NITRO/factory-proof/factory-proof-clone.html`.
+- `ref` — the branch, e.g. `factory/proof-clone-20261109` (default `main` if omitted — but never omit it for a proof: name the branch).
+- `cb` — the file's blob sha, as a cache-buster pinning the exact version you proved (the worker reads `file` + `ref`; `cb` makes the link unique to the blob you verified).
+
+**Worked example — the proof build's own link** (verified live 2026-11-09: HTTP 200, `text/html`, 3,241,639 bytes, sha256 `62b7b7079c9d5f8f18ad587fb29dc9445893679b8ad193ea1bd7990290dc52e0` — byte-identical to the local file):
+```
+https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/factory-proof/factory-proof-clone.html&ref=factory/proof-clone-20261109&cb=22261044e9d211d71f69ce9c6a60464ae8ab23b4
+```
+**The health check:** `https://naya-proof-host.nayapower.workers.dev/health` — expect `200 naya-proof-host ok`. If it is not 200, the host is down: say so, do not claim a proof link works. **Error paths:** no `?file` → 400 usage; `../` traversal → 400 bad path; missing file → 404 `GitHub 404 for ...@<ref>`.
+
 ---
 
 ## 8. HOW TO FILE IT
@@ -334,10 +389,16 @@ If yes to all three: show him. Say nothing. Let his eye judge. If no to any: fix
 1. **Checkpoint early.** Write your file locally first. The first write happens within minutes of starting — never read for 8 minutes without writing.
 2. **File with the helper, create mode:** `~/workspace/team-nitro/file-one-to-github.py` — usage: `file-one-to-github.py <repo_path> <local_path> <message>`. Example: `python3 ~/workspace/team-nitro/file-one-to-github.py TEAM-NITRO/SMART-FACTORY-ACTIVATION-MANUAL-20261109.md ~/workspace/team-nitro/SMART-FACTORY-ACTIVATION-MANUAL-20261109.md "Smart Factory activation manual — Shawn's order 20261109"`. GitHub access ONLY through the file helpers (App token path) — NEVER the MCP connector tools.
 3. **One file at a time.** Two PUTs to main in parallel race — the second 409s on a stale HEAD. File sequentially: one PUT, verify the blob, then the next. Never parallelize writes to the same branch.
-4. **Read-back verified.** The helper exits 0 only when the PUT returned 201 (create) and the read-back GET returns the same blob sha AND the decoded content sha256 matches the local file. Record the blob sha + commit sha in your report. No link = not done.
+4. **Read-back verified — and the large-file correction.** The helper exits 0 only when the PUT returned 201 (create) / 200 (update) and the read-back GET returns the same blob sha AND the decoded content sha256 matches the local file. Record the blob sha + commit sha in your report. No link = not done.
+   **⚠ THE CORRECTION (proof Naya, 2026-11-09): for files over ~1MB this read-back FAILS — and the failure is the API's, not yours.** The Contents-API GET returns `"content": "", "encoding": "none"` for large files — observed live on `PRICING/pricing-live.html` (11,350,562 bytes): HTTP 200, correct blob sha `a2d06d5b…`, size correct, content EMPTY. The blob sha still proves the file landed, but the sha256 half of the check cannot run on an empty body. **So: for any file over ~1MB, verify through the git/blobs API instead** — `GET /repos/SoulSchoolAcademy/NayaPOWER/git/blobs/<full 40-char blob sha>` returns the base64 content; decode it and compare its sha256 to the local file. That is the read-back for large files: blob sha correct AND decoded-content sha256 matches the local file. Proven on the proof build's blob `22261044e9d211d71f69ce9c6a60464ae8ab23b4` (3,241,639 bytes): blobs API returned size 3,241,639, decoded sha256 `62b7b707…` — identical to the local file. **Never report a large file's read-back as failed because the Contents GET came back empty — switch to the blobs API and check again.**
 5. **No merge.** Never merge your own PRs. The moment a PR is merge-ready, send him "Shawn, merge:" plus the link, no batching.
 6. **Smart-note the lesson.** What did you learn? Write it down the same pass — a smart note, filed, so the next Naya doesn't need the same correction. A lesson you cite but don't apply is not compounded. The proof is in the next brief, the next verification, the next thing you send him.
 7. **Lock in a finished viewpoint.** When Shawn says "okay yeah it's good" on a viewpoint live, it lands in the Inventory's Part 3 (locked-in smart blocks) with the block, the page, the viewpoint, the source (file + location), and his approval (his words + date). That is how the Factory grows.
+8. **Filing to a BRANCH (not main).** The helper `file-one-to-github.py` files to main only — it builds its PUT body with no `branch` field. When your work belongs on a branch (a proof build, a review build, anything Shawn has not asked to land on main), file through `gh-direct.py` with the branch in the PUT body — same App-token path, same helper, one file at a time. Step by step, exactly as proven 2026-11-09:
+   - **(a) Create the branch from main's HEAD.** Get main's HEAD sha: `GET /repos/SoulSchoolAcademy/NayaPOWER/git/refs/heads/main`. Then create the branch: `POST /repos/SoulSchoolAcademy/NayaPOWER/git/refs` with body `{"ref": "refs/heads/<your-branch>", "sha": "<main HEAD sha>"}`. Expect HTTP 201 with the new ref. (Proven: branch `manual-v2-branch-test-20261109` created from main HEAD `cd6fa47d…`.)
+   - **(b) PUT the file with `branch` in the body.** Build a JSON body file with `{"message": "<commit message>", "content": "<base64 of the file>", "branch": "<your-branch>"}` and run `python3 ~/workspace/team-nitro/gh-direct.py PUT /repos/SoulSchoolAcademy/NayaPOWER/contents/<repo path> @<body file>`. Expect HTTP 201 with the blob sha. **Never use the MCP connector tools for this — the App-token path only.**
+   - **(c) Read back ON THE BRANCH.** `GET /repos/SoulSchoolAcademy/NayaPOWER/contents/<repo path>?ref=<your-branch>` — the blob sha must match the PUT's blob sha, and (for files under ~1MB) the decoded content sha256 must match the local file. For files over ~1MB, use the git/blobs API instead (step 4's correction — the Contents GET returns empty content). (Proven: scratch file on `manual-v2-branch-test-20261109`, blob `3c9a57cf…`, read-back MATCH, then the scratch file and the branch were deleted — the branch is gone, main untouched.)
+   - **(d) No merge.** A branch filing is still not a merge. The moment it is merge-ready, send him "Shawn, merge:" plus the link, no batching. Never merge your own PRs.
 
 ---
 
@@ -365,7 +426,7 @@ If yes to all three: show him. Say nothing. Let his eye judge. If no to any: fix
 - **Title size (C3) and the nutshell's exact construction (C4, G11).** Three competing title rules; Shawn's correction is "not massive." The nutshell's text is 20px white and its layer is an elevated board — but no source gives the elevated nutshell's exact border/shadow values. Derive them from the layer-board formula and Shawn's eye.
 - **Shawn's vocabulary (G1).** "The elevators" (the things that lift), "the enhancers" (the things that make it shine), "the pinnacle points" (the peaks everything rises to) — his words, no canonical definition anywhere. Awaiting his definition before they can become rules. Do not define them yourself.
 - **The local `pieces.json` ai_label drift (§4.1).** The Step-3 Index says every canonical entry carries an `ai_label`; the local store copy carries none. Trust the Index + JSON twin; do not invent labels.
-- **The proof Naya.** This manual is the source the proof Naya will build from alone — a different Naya cloning a page and building a working interface from this manual alone. That proof has not run yet. Until it has, this manual is a first draft of the activation, not a proven one.
+- **The proof Naya — RUN 2026-11-09, and it worked.** A different Naya, from this manual alone, cloned the Pricing page and built a working interface: `TEAM-NITRO/factory-proof/factory-proof-clone.html` (3,241,639 bytes, blob `22261044e9d211d71f69ce9c6a60464ae8ab23b4`), filed to branch `factory/proof-clone-20261109`, commit `ad6faad55b6636ec9133c6543e8762f95c5205fb`. Her build (clone-build §6.5): chart moved to the top, calculator 2nd, start section last; Top-10 grid slot 4 REPLACED with the harvested who-sec board; every part verbatim from the clone, nothing invented. Render-tested in headless Chromium (desktop 1280×900 + phone 390px): zero console errors, gauge mounted, calculator amount + tiles live, `calc-plus` and level-card interactions work, chooser opens and closes on Escape. Live at the proof host: `https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/factory-proof/factory-proof-clone.html&ref=factory/proof-clone-20261109&cb=22261044e9d211d71f69ce9c6a60464ae8ab23b4` (verified HTTP 200, byte-identical sha256 `62b7b707…`). **The proof also named six exact gaps where the manual FAILED her — and this revision closes all six:** (1) §3 never named the v74 live file — now `PRICING/pricing-live.html`, blob `a2d06d5b`, 11,350,562 bytes, and the stale rebuild-file row is corrected; (2) §8 had no branch filing — now step 8, proven end to end; (3) §8 step 4's read-back claim fails for files over ~1MB — now corrected to the git/blobs API; (4) §6.5 never warned script 1 is unguarded — now §6.6, the section→JS-mount map verified against the live v74 file; (5) the manual never named the proof host or its link format — now §7.4, with the proof build's own link worked; (6) §6.5's REPLACE example gave no file+line for the crown swap — now the worked example with `pieces.json` line 346 and `factory.css` lines 240–245. The lesson is smart-noted as SN-2583. This manual is now a proven activation, not a first draft — and the next proof Naya re-proves it from the box alone (see §9).
 
 ---
 
@@ -387,7 +448,9 @@ If yes to all three: show him. Say nothing. Let his eye judge. If no to any: fix
 
 **Verify:** self-scorecard first (not 9+ by your own accord? fix it yourself) → another seat → Shawn's eye. Scroll 0 AND scrolled, desktop AND phone, phone first. Design-contract gate measured: zero white, everything raised, gauges alive, no text-in-image.
 
-**File:** helper, one file at a time, read-back verified (blob + sha256 MATCH), no merge — Shawn's hand. Smart-note the lesson the same pass.
+**File:** helper, one file at a time, read-back verified (blob + sha256 MATCH), no merge — Shawn's hand. Smart-note the lesson the same pass. Branch filing: `gh-direct.py` PUT with `branch` in the body (§8 step 8) — the helper files to main only. Large files (over ~1MB): Contents GET returns empty content — verify via the git/blobs API instead (§8 step 4).
+
+**Clone the LIVE file:** Pricing = `PRICING/pricing-live.html`, blob `a2d06d5b`, 11,350,562 bytes — never a rebuild file (§3). **Excerpt rule:** script 1 is unguarded — carry every section it mounts or delete the whole script (§6.6). **Proof link:** `https://naya-proof-host.nayapower.workers.dev/?file=<path>&ref=<branch>&cb=<blob>` (§7.4).
 
 **Five gates before every consequential action:** Is it right? Is it what they truly need? Is it mine to do? Is now the time? Can I prove it?
 
