@@ -37,7 +37,8 @@
       "id": "drill-2026-w41-c",
       "note_id": "SN-0344",
       "query": "canary synthetic red check repair drill signals",
-      "retired": false,
+      "retired": true,
+      "retired_reason": "SN-0344 retired 2026-11-06 (retired_by_essence SN-2150); per README, bank items retire when their note is superseded or expires. Retired during the W46 cold-drill repair, 2026-11-09.",
       "rotation_week": 2
     },
     {
