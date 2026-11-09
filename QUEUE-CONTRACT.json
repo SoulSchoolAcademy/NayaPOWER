@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-08T21:48:57Z",
-  "tip": "c62638299bb9e77076015e0ca282078ad54bfac5",
+  "generated_at": "2026-11-09T03:49:08Z",
+  "tip": "1668f404a86c303d240a362966d82a34737b8f27",
   "prs": [
     {
       "number": 3089,
@@ -92,6 +92,24 @@
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
       "head": "4ebdf8f5984c1e9ecc6514b53d130adf9c506ecc"
+    },
+    {
+      "number": 3302,
+      "title": "Truth: restore ESSENCE-01 partial-carry + standing-pointer status removed in b551750e",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "be1a07e7a9e9a057573bc81939a895a778be325d"
+    },
+    {
+      "number": 3303,
+      "title": "Hub: search button, hash-default-first, provenance as-of label",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "80f8dab67ec939ad524c2a092f479c7ca5cf6716"
     }
   ]
 }
