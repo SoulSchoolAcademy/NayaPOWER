@@ -151,6 +151,24 @@ def _nutshell(sections):
     return ""
 
 
+_SMART_BASENAME = re.compile(r"^ib-smart-note-|sn-?\d+",
+                              re.IGNORECASE)
+
+
+def _is_smart_note_file(github_path, local_path):
+    """A SMART-NOTES file: its repo path carries SMART-NOTES/, or its
+    filename is a SMART-NOTES name (``IB-SMART-NOTE-...`` or
+    ``snNNNN``). The second signal matters: the same note in a local
+    working copy has no SMART-NOTES/ in its path, but it IS the same
+    note - and it must get the same block id, so the hook's
+    first-wins dedup still sees one note, not two."""
+    path = github_path or local_path or ""
+    if "SMART-NOTES/" in path:
+        return True
+    name = path.rsplit("/", 1)[-1]
+    return bool(_SMART_BASENAME.search(name))
+
+
 def note_to_block(text, owner="shawn", github_path=None, local_path=None,
                   visibility="private", owner_shared_choice=False):
     """Convert a real smart-note file into a block.
@@ -161,8 +179,34 @@ def note_to_block(text, owner="shawn", github_path=None, local_path=None,
     enforces that, it does not guess it.
     """
     parsed = parse_smart_note(text)
-    sn_id = parsed["sn_id"] or "note"
-    slug = slugify("%s %s" % (sn_id, parsed["title"]))
+    sn_id = parsed["sn_id"]
+    title = parsed["title"]
+    if sn_id is None:
+        # No ``SN-XXXX ·`` line: the note is old-format (or has no
+        # number at all). For SMART-NOTES files the FILENAME is the
+        # identity - the sync derives a note's id from its path, and
+        # the filename carries the number, date, and title slug, so
+        # it keeps every file distinct. Without this, every such
+        # note collapses onto the generic heading (``Intelligent
+        # Block``) or a shared title, and only the first file's block
+        # ever lands - 24 real notes stayed out of the box on the
+        # live-tree backfill (2026-11-09). Naya Notes and pathless
+        # text keep today's derivation: their titles are their
+        # identity. A note WITH a real ``SN-XXXX ·`` line is
+        # untouched below - its id stays byte-identical.
+        path = github_path or local_path or ""
+        if _is_smart_note_file(github_path, local_path):
+            name = path.rsplit("/", 1)[-1]
+            name = re.sub(r"\.md$", "", name, flags=re.IGNORECASE)
+            name = re.sub(r"^ib-smart-note-\d{8}-", "", name,
+                          flags=re.IGNORECASE)
+            name = re.sub(r"^sn(\d+)-", r"sn-\1-", name,
+                          flags=re.IGNORECASE)
+            slug = slugify(name) if name else slugify("note %s" % title)
+        else:
+            slug = slugify("note %s" % title)
+    else:
+        slug = slugify("%s %s" % (sn_id, title))
     about = []
     for tag in parsed["category"].replace("/", " ").split():
         tag = tag.strip("·•,—–")
