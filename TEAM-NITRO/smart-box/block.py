@@ -317,3 +317,213 @@ def roundtrip_check_entry(block, entry):
     if block["raw"] != dict(entry):
         missing.append("entry record not verbatim in raw")
     return missing
+
+
+# ---------------------------------------------------------------------------
+# Piece 3 - organize(thing): LOOK -> TAG -> FILE -> LINK.
+#
+# The engine is a function, not an app. It takes one block (in the shape
+# of section 3.1) and returns a NEW block with ``about``, ``where`` and
+# ``links`` filled and ``essence`` set - never a mutated input, never a
+# value invented from outside the thing. Every tag, shelf, and link
+# traces to the thing itself or to the person's words about it:
+#
+#   LOOK  read the title, text, source, date, type/category from the
+#         block (and its ``raw`` record). Nothing is guessed from
+#         outside the thing.
+#   TAG   ``about`` = the thing's own topics + its store type (an
+#         entry's ``type``: dictation / law / directive / ...) + the
+#         source file's stem (``MEMORY.md:5`` -> ``memory``). A smart
+#         note's category words are already its ``about``; its type
+#         is the note itself, so no type tag is added for notes.
+#   FILE  the shelf: ``owner/kind/<type-or-first-topic>`` - a namespace
+#         decision, not a move. The thing stays where the store put it;
+#         ``where["shelf"]`` names where the map files it.
+#   LINK  ``links`` = the SN / NN references named in the text + the
+#         entry's own ``link`` URL + the entry it supersedes or is
+#         superseded by (``superseded_by``). No link is invented: a
+#         same-topic relation lives in the corpus topic index that
+#         ``organize_store`` builds, not in the block - a topic shared
+#         by 1,439 entries is an index entry, not 1,439 links.
+#
+# ``organize`` is deterministic and idempotent: organizing an already
+# organized block returns the same block.
+# ---------------------------------------------------------------------------
+
+# The Supabase table that holds smart-note rows. There is NO Box table
+# in Supabase (re-verified 2026-11-09: the PostgREST schema lists 198
+# paths and none is smart_box / smart_boxes / boxes / box_entries /
+# smart_box_entries - each probe returns PGRST205 "Could not find the
+# table"). A note's row lives in hub_smart_notes; a store entry's row
+# is the Cloudflare KV snapshot of the store file, recorded honestly
+# as such - never an invented row id.
+SUPABASE_NOTES_TABLE = "hub_smart_notes"
+KV_SNAPSHOT = "nitro-smart-box/store/entries.jsonl"
+
+
+def _sn_refs_in_text(text):
+    """SN / NN ids named in a text, in order, deduplicated."""
+    refs = []
+    for ref in _SN_REF.findall(text or ""):
+        ref = "SN-%s" % ref
+        if ref not in refs:
+            refs.append(ref)
+    for day, slug in _NN_REF.findall(text or ""):
+        ref = "NN-%s-%s" % (day, slug)
+        if ref not in refs:
+            refs.append(ref)
+    return refs
+
+
+def _source_stem(source):
+    """``MEMORY.md:5`` -> ``memory``; ``memory/2026-11-03.md:2898`` ->
+    ``memory``. The stem traces to the thing's own source citation."""
+    if not source:
+        return ""
+    first = source.split(":")[0].split("/")[0]
+    return slugify(first.rsplit(".", 1)[0]) if "." in first else slugify(first)
+
+
+def organize(block):
+    """LOOK -> TAG -> FILE -> LINK on one block. Returns a new block.
+
+    The input block is not mutated. Tags, shelf, and links are derived
+    only from the block and its ``raw`` record. ``essence`` is kept as
+    the converter set it (a note's nutshell, an entry's text).
+    """
+    if not isinstance(block, dict) or "id" not in block:
+        raise ValueError("organize needs a block, not %r" % type(block))
+    out = json.loads(json.dumps(block))
+    raw = out.get("raw") or {}
+    text = out.get("body") or ""
+
+    # LOOK: what the thing is, from the thing itself.
+    entry_type = raw.get("type", "") if isinstance(raw, dict) else ""
+    source = out.get("source") or ""
+    sn_id = None
+    if isinstance(raw, dict):
+        sn_id = raw.get("sn_id") or None
+
+    # TAG: own topics + store type + source stem. No invented tags.
+    tags = list(out.get("about") or [])
+    for tag in (entry_type, _source_stem(source)):
+        if not tag:
+            continue
+        tag = slugify(tag)
+        if tag and tag not in tags:
+            tags.append(tag)
+    out["about"] = tags
+
+    # FILE: the shelf - owner / kind / type-or-first-topic.
+    shelf_key = slugify(entry_type) if entry_type else (
+        slugify(tags[0]) if tags else "unsorted")
+    out["where"]["shelf"] = "%s/%s/%s" % (
+        (out.get("who") or {}).get("owner", ""), out.get("kind", ""),
+        shelf_key)
+
+    # LINK: refs named in the text + the entry's own link +
+    # superseded_by. A note never links to itself: only its OWN sn id
+    # is skipped, never a ref that merely appears in its title slug.
+    # LOOK reads the title too: a ref named in the title is named in
+    # the thing, so title refs link as well as text refs.
+    own_sn = sn_id
+    links = list(out.get("links") or [])
+    for ref in _sn_refs_in_text((out.get("what") or "") + "\n" + text):
+        if ref not in links and ref != own_sn:
+            links.append(ref)
+    if isinstance(raw, dict):
+        if raw.get("link") and raw["link"] not in links:
+            links.append(raw["link"])
+        sup = raw.get("superseded_by")
+        if isinstance(sup, dict):
+            sup_id = sup.get("id", "")
+            if sup_id and sup_id not in links:
+                links.append(sup_id)
+    out["links"] = links
+
+    out["proof"] = "organize: LOOK->TAG->FILE->LINK from the thing itself"
+    return out
+
+
+def organize_store(entries, owner="shawn", store_path=None):
+    """Run organize over a whole store (a list of entry dicts).
+
+    Returns (blocks, topic_index, stats): the organized blocks in
+    store order, the map's topic index (topic -> [block ids]), and
+    counts. The topic index is the corpus-level link: entries sharing
+    a topic are linked through the index, not by bloating each block
+    with hundreds of links.
+    """
+    blocks = []
+    topic_index = {}
+    links_total = 0
+    for line_no, entry in enumerate(entries, start=1):
+        block = entry_to_block(entry, owner=owner, store_path=store_path,
+                               store_line=line_no)
+        block = organize(block)
+        block = complete_where(block)[0]
+        blocks.append(block)
+        links_total += len(block["links"])
+        for topic in block["about"]:
+            topic_index.setdefault(topic, []).append(block["id"])
+    stats = {
+        "total": len(blocks),
+        "topics": len(topic_index),
+        "links_total": links_total,
+        "blocks_with_links": sum(1 for b in blocks if b["links"]),
+        "tags_added": sum(
+            len(b["about"]) - len(b["raw"].get("topics", []))
+            for b in blocks),
+    }
+    return blocks, topic_index, stats
+
+
+def note_supabase_row(block):
+    """The Supabase row for a smart-note block: ``hub_smart_notes:<ib>``.
+
+    The ib id is the GitHub file's stem (``IB-SMART-NOTE-...``). Empty
+    when the block has no GitHub path - never guessed.
+    """
+    path = (block.get("where") or {}).get("github_path") or ""
+    if not path:
+        return ""
+    stem = path.rsplit("/", 1)[-1]
+    if stem.endswith(".md"):
+        stem = stem[:-3]
+    if not stem.startswith("IB-"):
+        return ""
+    return "%s:%s" % (SUPABASE_NOTES_TABLE, stem)
+
+
+def entry_kv_record(block):
+    """The honest Supabase-half record for a store entry: the KV
+    snapshot of the store file, at the entry's line. There is no Box
+    table, so there is no row id to name - the snapshot IS the row."""
+    line = (block.get("where") or {}).get("store_line")
+    if line is None:
+        return ""
+    return "kv-snapshot:%s:line-%s" % (KV_SNAPSHOT, line)
+
+
+def complete_where(block):
+    """Fill the map's second half: ``where["supabase_row"]``.
+
+    Notes get their hub_smart_notes row; store entries get the honest
+    KV-snapshot record. Returns (block, complete): ``complete`` is
+    True when ``supabase_row`` is non-empty. The GitHub half is left
+    exactly as the converter set it - an entry honestly has no
+    individual GitHub file, so its github_path stays empty.
+    """
+    out = json.loads(json.dumps(block))
+    if out.get("kind") == "note" and isinstance(out.get("raw"), dict) \
+            and out["raw"].get("sn_id"):
+        row = note_supabase_row(out)
+    elif isinstance(out.get("raw"), dict) and "id" in out["raw"] \
+            and out["raw"].get("title") is not None \
+            and (out.get("where") or {}).get("store_line") is not None:
+        row = entry_kv_record(out)
+    else:
+        row = note_supabase_row(out) or entry_kv_record(out)
+    if row:
+        out["where"]["supabase_row"] = row
+    return out, bool(out["where"].get("supabase_row"))
