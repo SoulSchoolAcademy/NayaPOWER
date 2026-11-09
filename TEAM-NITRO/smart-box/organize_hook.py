@@ -55,6 +55,14 @@ LOCAL_NN_ROOT = os.path.expanduser("~/workspace/team-nitro/naya-notes")
 STORE_PATH = os.path.expanduser(
     "~/workspace/nitro-smart-box/store/entries.jsonl")
 WATERMARK_DIR = os.path.expanduser("~/workspace/nitro-smart-box")
+SYNC_PATH = os.path.expanduser(
+    "~/workspace/factory-pipeline/sync-smart-notes.py")
+
+# One flow: the notes in GitHub and the Smart Box are one system, not
+# two. The live-tree backfill IS the sync of the notes with the Box -
+# the notes living inside her memory (organized, shelved, linked),
+# not a copy sitting beside it. Understand -> learn -> grow -> know
+# -> evolve: the backfill is the learn step made durable.
 
 SKIP_NAMES = ("TEMPLATE",)
 
@@ -197,6 +205,166 @@ def file_to_block(path, github_path, owner):
     return block
 
 
+def content_to_block(content, github_path, owner):
+    """One note's text -> an organized block. The same pipeline as
+    ``file_to_block``, but from fetched text, not a disk file - the
+    live-tree backfill converts what GitHub serves, byte for byte,
+    through ``note_to_block`` -> ``organize`` -> ``complete_where``.
+    Raises ValueError when the text is not a smart note."""
+    block = note_to_block(content, owner=owner,
+                          github_path=github_path)
+    block = organize(block)
+    block, _complete = complete_where(block)
+    return block
+
+
+def _load_gh_api():
+    """``gh_api`` from the sync module, lazy-imported. The sync owns
+    the GitHub App token path (in-memory mint, 401 re-mint); the hook
+    never holds credentials, never mints, never writes a token."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "sync_smart_notes", SYNC_PATH)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.gh_api
+
+
+def _fetch_note_content(gh_api, path, sha):
+    """One note's text from the live tree. Contents API first; the
+    git/blobs fallback when the Contents API returns no content
+    (the large-file shape). A 403/429 (secondary rate limit) pauses
+    60s and retries once per call - a limit mid-backfill must not
+    kill the run; a 404 or any other failure raises, and the caller
+    counts it and moves on (the watermark leaves it unmarked, so
+    the next run retries it)."""
+    import base64
+    import time
+    import urllib.error
+    for attempt in range(3):
+        try:
+            data = gh_api("/contents/%s?ref=main" % path)
+            if data.get("content"):
+                return base64.b64decode(data["content"]).decode("utf-8")
+            blob = gh_api("/git/blobs/%s" % sha)
+            return base64.b64decode(blob["content"]).decode("utf-8")
+        except urllib.error.HTTPError as exc:
+            if exc.code in (403, 429) and attempt < 2:
+                time.sleep(60)
+                continue
+            raise
+    raise RuntimeError("fetch failed for %s" % path)
+
+
+def live_tree_backfill(owner=DEFAULT_OWNER, boxes_root=None,
+                       watermark=None, batch_size=100, gh_api_fn=None):
+    """Backfill the owner's box from the LIVE GitHub tree - never the
+    local clone (the stale-clone backfill named 789 of 1,547 state
+    paths; the completeness gate correctly refused it every run).
+
+    The tree is the source of what exists; the box is where it
+    lives. Fetch the recursive tree (REFUSE when truncated - a
+    partial listing must never read as the whole corpus), take every
+    SMART-NOTES ``.md`` blob, and fetch + convert + append each one
+    whose blob sha differs from the watermark's ``live_tree`` record
+    (missing or changed since the last live-tree run). A changed note
+    re-appends, superseding by block id, per ``boxstore`` - the box
+    holds the current note, not the November-4th copy.
+
+    Checkpointing: blocks append in batches (default 100) and the
+    watermark advances per batch, so a failure mid-run loses at most
+    one batch and the next run resumes where it stopped. One bad
+    file (unparseable, or a fetch that fails) is counted and skipped,
+    never fatal; ten consecutive fetch failures abort the run - that
+    pattern means the token or the network died, not one bad file.
+
+    ``gh_api_fn`` overrides the GitHub reader (tests pass a stub;
+    live runs use the sync's ``gh_api``). Returns the stats dict
+    (also printed by main)."""
+    if boxes_root is not None:
+        boxstore.BOXES_ROOT = boxes_root
+    if watermark is None:
+        watermark = watermark_path(owner)
+    mark = load_watermark(watermark)
+    seen_live = mark.get("live_tree", {})
+    if not isinstance(seen_live, dict):
+        raise ValueError("corrupt watermark: live_tree is not a map")
+    gh_api = gh_api_fn or _load_gh_api()
+    tree = gh_api("/git/trees/main?recursive=1")
+    if tree.get("truncated"):
+        raise ValueError(
+            "live tree truncated - refusing a partial backfill")
+    live = {t["path"]: t.get("sha") for t in tree.get("tree", [])
+            if "SMART-NOTES/" in t["path"]
+            and t["path"].endswith(".md") and t["type"] == "blob"}
+    selected = sorted(p for p, sha in live.items()
+                      if seen_live.get(p) != sha)
+    stats = {
+        "owner": owner,
+        "live_tree": True,
+        "tree_sha": tree.get("sha"),
+        "live_paths": len(live),
+        "selected": len(selected),
+        "fetched": 0,
+        "organized": 0,
+        "duplicates_skipped": 0,
+        "skipped_unparseable": 0,
+        "fetch_errors": 0,
+        "block_ids": [],
+    }
+    blocks = []
+    seen_ids = set()
+    consecutive_errors = 0
+    for path in selected:
+        try:
+            content = _fetch_note_content(gh_api, path, live[path])
+        except Exception:  # noqa: BLE001 - counted, never fatal
+            stats["fetch_errors"] += 1
+            consecutive_errors += 1
+            if consecutive_errors >= 10:
+                raise RuntimeError(
+                    "live-tree backfill aborted: 10 consecutive "
+                    "fetch failures (token or network, not one bad "
+                    "file) after %d organized"
+                    % stats["organized"])
+            continue
+        consecutive_errors = 0
+        stats["fetched"] += 1
+        try:
+            block = content_to_block(content, path, owner)
+        except (ValueError, UnicodeDecodeError):
+            stats["skipped_unparseable"] += 1
+            continue
+        if block["id"] in seen_ids:
+            stats["duplicates_skipped"] += 1
+            continue
+        seen_ids.add(block["id"])
+        blocks.append(block)
+        stats["block_ids"].append(block["id"])
+        if len(blocks) >= batch_size:
+            append_blocks(owner, blocks)
+            stats["organized"] += len(blocks)
+            for block in blocks:
+                seen_live[block["where"]["github_path"]] = \
+                    live[block["where"]["github_path"]]
+            mark["live_tree"] = seen_live
+            mark["owner"] = owner
+            save_watermark(watermark, mark)
+            blocks = []
+    if blocks:
+        append_blocks(owner, blocks)
+        stats["organized"] += len(blocks)
+        for block in blocks:
+            seen_live[block["where"]["github_path"]] = \
+                live[block["where"]["github_path"]]
+        mark["live_tree"] = seen_live
+        mark["owner"] = owner
+        save_watermark(watermark, mark)
+    stats["watermark"] = watermark
+    stats["box"] = boxstore.box_dir(owner)
+    return stats
+
+
 def store_entry_to_block(entry, line_no, owner, store_path):
     """One store entry -> an organized block."""
     block = entry_to_block(entry, owner=owner, store_path=store_path,
@@ -337,9 +505,10 @@ def run(owner=DEFAULT_OWNER, backfill=False, notes_roots=None,
 
 
 def main(argv=None):
-    """CLI: organize_hook.py [--owner shawn] [--backfill] [--dry-run]
-    [--watermark PATH] [--boxes-root PATH]. Prints one JSON summary
-    line. Exit 0 on success, 2 on usage error, 1 on a failed run."""
+    """CLI: organize_hook.py [--owner shawn] [--backfill] [--live-tree]
+    [--dry-run] [--watermark PATH] [--boxes-root PATH]. Prints one
+    JSON summary line. Exit 0 on success, 2 on usage error, 1 on a
+    failed run."""
     import argparse
     parser = argparse.ArgumentParser(
         description="Organize new notes and store entries into a "
@@ -348,6 +517,12 @@ def main(argv=None):
     parser.add_argument("--backfill", action="store_true",
                         help="organize the whole live note tree once, "
                              "ignoring the watermark")
+    parser.add_argument("--live-tree", action="store_true",
+                        help="backfill the box from the LIVE GitHub "
+                             "tree (never the local clone): fetch "
+                             "every SMART-NOTES file whose blob sha "
+                             "differs from the watermark's live_tree "
+                             "record, convert, organize, append")
     parser.add_argument("--dry-run", action="store_true",
                         help="select and convert, but write nothing")
     parser.add_argument("--watermark", default=None)
@@ -355,9 +530,14 @@ def main(argv=None):
     parser.add_argument("--store", default=STORE_PATH)
     args = parser.parse_args(argv)
     try:
-        stats = run(owner=args.owner, backfill=args.backfill,
-                    store_path=args.store, boxes_root=args.boxes_root,
-                    watermark=args.watermark, dry_run=args.dry_run)
+        if args.live_tree:
+            stats = live_tree_backfill(
+                owner=args.owner, boxes_root=args.boxes_root,
+                watermark=args.watermark)
+        else:
+            stats = run(owner=args.owner, backfill=args.backfill,
+                        store_path=args.store, boxes_root=args.boxes_root,
+                        watermark=args.watermark, dry_run=args.dry_run)
     except Exception as exc:  # noqa: BLE001 - the CLI reports, never traces
         print(json.dumps({"error": str(exc)}), file=sys.stderr)
         return 1
