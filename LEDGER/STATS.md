@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-09 11:30 UTC_
+_Last updated: 2026-11-09 12:11 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 8156
-- ✅ Verified (8+): 8087
+- **Total scored actions:** 8161
+- ✅ Verified (8+): 8092
 - 🟡 Partial (5–7): 66
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -19,8 +19,8 @@ _Last updated: 2026-11-09 11:30 UTC_
 | Team 2 | Naya Sage | 542 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 498 | 9.0 | 10 |
 | Team 4 | Naya Mason | 472 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 622 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 357 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 625 | 9.0 | 9.6 |
+| Team 6 | Naya Heir | 358 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 479 | 9.0 | 10 |
 | Team 8 | Naya Sentinel | 500 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 631 | 9.0 | 9.5 |
@@ -998,6 +998,7 @@ _Last updated: 2026-11-09 11:30 UTC_
 - **gate-stall-20261109-0228:** 1 actions, avg 9.0/10
 - **gap-gate-stall-20261016-1027-lane0:** 1 actions, avg 8.5/10
 - **gap-gate-stall-20261016-1037-lane0:** 1 actions, avg 9.0/10
+- **gate-stall-20261109-0333:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -1766,6 +1767,9 @@ _Last updated: 2026-11-09 11:30 UTC_
 - **gap-gap-gap-gap-t0042-lane5:** 1 actions, avg 9.0/10
 - **gap-gap-gap-gap-gap-t0042-lane5:** 1 actions, avg 9.5/10
 - **gap-gap-t0722:** 1 actions, avg 8.5/10
+- **gap-t0042-lane5:** 1 actions, avg 9.0/10
+- **gap-gap-t0042-lane5:** 1 actions, avg 9.0/10
+- **gap-gap-gap-t0042-lane5:** 1 actions, avg 9.0/10
 - **gap-t0770:** 1 actions, avg 9.5/10
 - **gap-t1242-lane6:** 2 actions, avg 8.8/10
 - **gap-t1242:** 1 actions, avg 8.5/10
@@ -1791,6 +1795,7 @@ _Last updated: 2026-11-09 11:30 UTC_
 - **gap-t0092:** 2 actions, avg 8.5/10
 - **gap-lane-scorer-20261017-1830:** 1 actions, avg 9.0/10
 - **gap-lane-scorer-20261018-1440:** 1 actions, avg 9.0/10
+- **gap-t0032-lane6:** 1 actions, avg 9.0/10
 - **t-contract-selfreview:** 9 actions, avg 8.6/10
 - **t-contract-verify:** 10 actions, avg 8.8/10
 - **t-converge:** 10 actions, avg 8.9/10
