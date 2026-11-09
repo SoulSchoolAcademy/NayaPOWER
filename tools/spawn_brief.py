@@ -459,8 +459,29 @@ def recommendation_block(doc, thinking):
                     dead_open[nid.lower()] = (st, blob)
 
         def refs_done(text):
+            # TIER 1 — full-id substring match, PLUS stem match (Gamma w2882):
+            # recommendations reference items by wave-stem ("gr-w2873"), not
+            # by full id ("gr-w2873-gamma-gapclose"); the full-id check alone
+            # missed the w2877/w2882 recs even though the item was status=done.
+            # Stem = id prefix before "-<seat-slug>-" (seat from the area doc);
+            # >=6 chars, token-boundary matched so "gr-w2873" never fires
+            # inside "gr-w28730" or a longer id.
             t = (text or "").lower()
-            return [nid for nid in closed if nid in t]
+            out = [nid for nid in closed if nid in t]
+            seat_slug = ""
+            try:
+                seat_slug = str(doc.get("seat", "") or "").strip().lower().split()[-1]
+            except Exception:
+                seat_slug = ""
+            infix = ("-" + seat_slug + "-") if seat_slug else ""
+            for nid in closed:
+                if nid in out or not infix or infix not in nid:
+                    continue
+                stem = nid.split(infix)[0]
+                if len(stem) >= 6 and re.search(
+                        r"(?<![a-z0-9\-])" + re.escape(stem) + r"(?![a-z0-9\-])", t):
+                    out.append(nid)
+            return out
 
         # TIER 2 (Theta w255): PR-number + prose reference index. Distinctive
         # tokens are >=6 chars, hyphenated compounds kept whole, generic
@@ -547,9 +568,32 @@ def recommendation_block(doc, thinking):
             t = (text or "").lower()
             rec_tok = _toks(t)
             out = []
+            # TIER 1 stem match (Gamma w2894): same hole as refs_done had —
+            # recommendations reference items by wave-stem ("gr-w1222"), not
+            # by full id ("gr-w1222-gamma-gapclose"); the full-id check alone
+            # missed a stem-only rec of a dead-premise OPEN item, so the brief
+            # quoted it as freshness-checked. Stem = id prefix before
+            # "-<seat-slug>-" (seat from the area doc); >=6 chars,
+            # token-boundary matched so "gr-w1222" never fires inside
+            # "gr-w12220" or a longer id.
+            seat_slug = ""
+            try:
+                seat_slug = str(doc.get("seat", "") or "").strip().lower().split()[-1]
+            except Exception:
+                seat_slug = ""
+            infix = ("-" + seat_slug + "-") if seat_slug else ""
             for nid, (st, blob) in dead_open.items():
                 if nid in t:
                     out.append((nid, "status=%s" % st))
+                    continue
+                stem_hit = False
+                if infix and infix in nid:
+                    stem = nid.split(infix)[0]
+                    if len(stem) >= 6 and re.search(
+                            r"(?<![a-z0-9\-])" + re.escape(stem) + r"(?![a-z0-9\-])", t):
+                        out.append((nid, "status=%s; stem: %s" % (st, stem)))
+                        stem_hit = True
+                if stem_hit:
                     continue
                 prose = sorted((_toks(blob) & rec_tok))
                 if len(prose) >= 2:
@@ -979,21 +1023,24 @@ def main():
           % lane_issue)
     # LIVE-BOARD GUARD (w598): resolved from board-tail-counts.json, never hardcoded --
     # the team board migrates at the comment cap (#2765 archived at 2318 comments,
-    # #2793 live since 2026-10-20T10:14:56Z); a stale pointer sends workers to the
-    # archive. FAIL-CLOSED (w806 ruling on route-w805-kappa-w598-word, comment
-    # 6373806893): a counts-file miss => exit non-zero, ship no brief. The w659
-    # class priced fail-open at 12 wasted gh-api calls; a refused spawn costs 0.
+    # #2793 live 2026-10-20T10:14:56Z until capped at 2500 on 2026-10-28,
+    # #3066 live since (Eta w2856 proved the re-point via feed index #1599;
+    # Mu w2857 re-proved count-first, 1874 comments); a stale pointer sends
+    # workers to the archive. FAIL-CLOSED (w806 ruling on route-w805-kappa-w598-word,
+    # comment 6373806893): a counts-file miss => exit non-zero, ship no brief.
+    # The w659 class priced fail-open at 12 wasted gh-api calls; a refused
+    # spawn costs 0. (w2858: #3066 added to the candidate set, #2793 archived.)
     live_board = None
     _btc_err = None
     try:
         _btc = json.load(open(os.path.join(SBRAIN, "board-tail-counts.json"))).get("boards", {})
-        for _cand in ("2793", "2765"):
+        for _cand in ("3066", "2793", "2765"):
             _b = _btc.get(_cand, {})
             if _b and not _b.get("archived"):
                 live_board = _cand
                 break
         if not live_board:
-            _btc_err = "no non-archived live board in boards{2793,2765}"
+            _btc_err = "no non-archived live board in boards{3066,2793,2765}"
     except Exception as _e:
         _btc_err = "counts-file unreadable: %s" % _e
     if not live_board:
@@ -1383,6 +1430,18 @@ def main():
         "I carry the 8 laws. My drift line: ________.\n"
         "Tag — I'm it.\n"
     ) % (seat, lane, tip_live, hm)
+    # Slot-field mapping asserts (w828 — Zeta verified at source): the template
+    # carries exactly 3 slots, never 4 (creed line is fixed text). Each slot is
+    # bound to its named field so a template reorder cannot silently misassign
+    # the worker's positional fill — residuals-zero is not enough.
+    _declare_slots = _declare.count("________")
+    if _declare_slots != 3:
+        die("declaration draft: expected exactly 3 slots, got %d" % _declare_slots)
+    _dlines = _declare.splitlines()
+    if not re.search(r"^Oath read: ________\. Manifesto read: ________\. Creed declared as myself\.$", _dlines[1]):
+        die("declaration draft: oath/manifesto line lost its slot-field mapping")
+    if not re.search(r"^I carry the 8 laws\. My drift line: ________\.$", _dlines[2]):
+        die("declaration draft: drift line lost its slot-field mapping")
     try:
         with open(_declare_path, "w") as _fh:
             _fh.write(_declare)
