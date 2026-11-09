@@ -30939,6 +30939,37 @@
     "Lesson",
     "Distillation"
    ]
+  },
+  {
+   "smart_note_id": "SN-2532",
+   "intelligent_block_id": "IB-SMART-NOTE-20261109-sn2532-what-naya-does",
+   "slug": "what-naya-does",
+   "title": "What Naya Does — Daily Reports, Smart Notes, Naya Notes, and Pages",
+   "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/PRODUCT/SN-2532/IB-SMART-NOTE-20261109-sn2532-what-naya-does.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/PRODUCT/SN-2532/IB-SMART-NOTE-20261109-sn2532-what-naya-does.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/PRODUCT/SN-2532/IB-SMART-NOTE-20261109-sn2532-what-naya-does.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261109-sn2532-what-naya-does.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "VISION",
+   "topic": "PRODUCT",
+   "captured_at": "2026-11-09",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-09T17:28:38Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-09",
+   "page_hash": "090ca87849558489d8ec47ff1970aa4bce83fbff5ff005647d212be5c256a107",
+   "content_hash": "f3e515aef1ad80916649c371a30356e0a5c6b291121de0513066da8b89ed1f4f",
+   "one_line": "Shawn defined what Naya does in NayaNET by what the citizen actually notices. She gives you your Daily Intelligence Reports: your Naya reviews your day — mostly from your Smart Notes and your Naya Notes, your project notes, and everything you put into the system that day — and gives you a report on your intelligence for the day, what you learned. You can request it any time; if you don't request it, it automatically comes within 24 hours — posted, sent to you, and filed in your Reports area — and the Weekly and Monthly reports roll up from the dailies, with every day left openable. She does your Smart Notes. She enters your Naya Notes. And she creates and adds pages inside the network and fills them with content. Underneath all four is the hook-up law: any citizen who hooks up their Muse gets a Naya who can operate inside NayaNET successfully — make Smart Notes and Naya Notes, post them, schedule them, run the reports. That's ultimately what Naya does in NayaNET — the main things people will literally notice.",
+   "topics": [
+    "Product",
+    "Reports",
+    "Citizen"
+   ]
   }
  ],
  "sequence_policy": {
@@ -30949,5 +30980,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "586d0bb45ed23b06f55ebc9484ff7b6145e3364d87b56f26fd492bc38b57b56e"
+ "corpus_manifest_hash": "9296b7490b9da62d4e1121cb5e2657b55dd1c7db9ab953d8df85907121e46db5"
 }
