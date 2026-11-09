@@ -155,7 +155,7 @@ def main():
         blocks = boxstore.read_blocks(OWNER)
         check("A all 8 blocks are in the box", len(blocks) == 8,
               "blocks=%s" % len(blocks))
-        newest = blocks.get("shawn:note:note-tonight-s-newest-note")
+        newest = blocks.get("shawn:note:sn-9999-tonights-newest-note")
         check("A tonight's newest note is organized",
               newest is not None and
               newest["where"].get("shelf", "").startswith(
@@ -210,7 +210,7 @@ def main():
               len(blocks) == 8, "blocks=%s" % len(blocks))
         check("C the edited body is the one in the box",
               "EDITED after the first run" in
-              blocks["shawn:note:note-tonight-s-newest-note"]["body"])
+              blocks["shawn:note:sn-9999-tonights-newest-note"]["body"])
 
         # D. The unparseable file was skipped and counted, run alive.
         check("D unparseable file skipped and counted",
