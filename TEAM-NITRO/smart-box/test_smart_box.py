@@ -511,6 +511,108 @@ def test_nn_category():
     return True
 
 
+def test_old_format_ids():
+    """E3. Old-format notes get distinct block ids (live-tree backfill
+    2026-11-09: 24 real notes collapsed to 3 degenerate ids - ``note``,
+    ``note-intelligent-block``, ``note-the-nonstop-loop-...`` - and
+    never landed). A SMART-NOTES file with no ``SN-XXXX ·`` line takes
+    its id from its filename (the system's canonical identity, as the
+    sync derives it) - number, date, and title slug all in the name.
+    Naya Notes keep the title derivation. A note WITH a real SN line
+    keeps its id byte-identical - the fallback never touches it."""
+    old_270 = (
+        "# Intelligent Block\n"
+        "**Truth state:** CANDIDATE\n"
+        "**SN number:** SN-0270\n"
+        "**Category:** SYSTEM-INTELLIGENCE\n"
+        "\n"
+        "## IN A NUTSHELL\n"
+        "\n"
+        "Beautiful is not proof. Analysis is proof.\n")
+    path_270 = ("BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/"
+                "SYSTEM-INTELLIGENCE/NAYA-STANDING-LAW/EVALUATION-LAW/"
+                "SN-0270/IB-SMART-NOTE-20260930-sn0270-beautiful-not-"
+                "equal-10-10.md")
+    block_270 = note_to_block(old_270, owner=OWNER,
+                              github_path=path_270)
+    check("old-format note takes its number from the filename",
+          block_270["id"]
+          == "shawn:note:sn-0270-beautiful-not-equal-10-10",
+          "id=%s" % block_270["id"])
+    old_219 = (
+        "# Intelligent Block\n"
+        "**Truth state:** CANDIDATE\n"
+        "**SN number:** SN-0219\n"
+        "**Category:** ENGINEERING-PROOF\n"
+        "\n"
+        "## IN A NUTSHELL\n"
+        "\n"
+        "What is built is not what is shipped.\n")
+    path_219 = ("BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/"
+                "SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/"
+                "INDEPENDENT-VERIFICATION/SN-0219/IB-SMART-NOTE-"
+                "20260930-sn0219-deployed-not-built-walk-the-live-"
+                "site.md")
+    block_219 = note_to_block(old_219, owner=OWNER,
+                              github_path=path_219)
+    check("two old files never share one block id",
+          block_219["id"] != block_270["id"]
+          and block_219["id"]
+          == "shawn:note:sn-0219-deployed-not-built-walk-the-live-site",
+          "id=%s" % block_219["id"])
+    # A stale **SN number:** line loses to the filename (rename case).
+    stale = note_to_block(old_270, owner=OWNER,
+                          github_path="BRAIN/05-MEMORY/SMART-NOTES/"
+                          "2026/11/08/SYSTEM-INTELLIGENCE/SN-2536/"
+                          "IB-SMART-NOTE-20261108-sn2536-the-top-10-"
+                          "is-their-pains-not-our-value.md")
+    check("filename wins over a stale SN number line",
+          stale["id"]
+          == "shawn:note:sn-2536-the-top-10-is-their-pains-not-"
+          "our-value",
+          "id=%s" % stale["id"])
+    # No number anywhere in the text: the filename still separates
+    # the manifesto from its SN-2051 twin.
+    wise_text = (
+        "# The Wise One\n"
+        "\n"
+        "## IN A NUTSHELL\n"
+        "\n"
+        "Naya means wise one.\n")
+    manifesto = note_to_block(
+        wise_text, owner=OWNER,
+        github_path="BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/WISDOM/"
+        "THE-WISE-ONE-MANIFESTO/THE-WISE-ONE-manifesto.md")
+    twin = note_to_block(
+        wise_text, owner=OWNER,
+        github_path="BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/"
+        "WISDOM/SN-2051/THE-WISE-ONE-MANIFESTO-2026-11-04.md")
+    check("numberless notes separate by filename",
+          manifesto["id"] == "shawn:note:the-wise-one-manifesto"
+          and twin["id"]
+          == "shawn:note:the-wise-one-manifesto-2026-11-04",
+          "manifesto=%s twin=%s" % (manifesto["id"], twin["id"]))
+    # A real SN line keeps its id byte-identical: the fallback never
+    # fires, even with the generic heading.
+    new_text = (
+        "# Intelligent Block\n"
+        "\n"
+        "SN-2588 · System — Intelligence\n"
+        "\n"
+        "## IN A NUTSHELL\n"
+        "\n"
+        "The wiring verdict, plainly.\n")
+    new_block = note_to_block(
+        new_text, owner=OWNER,
+        github_path="BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/"
+        "SYSTEM-INTELLIGENCE/SN-2588/IB-SMART-NOTE-20261109-sn2588-"
+        "smart-box-wiring-the-verdict-fail-on-1b.md")
+    check("a real SN line keeps its id byte-identical",
+          new_block["id"] == "shawn:note:sn-2588-intelligent-block",
+          "id=%s" % new_block["id"])
+    return True
+
+
 def test_key_lifecycle():
     """F. The key lifecycle: mint, check, revoke - proven per call."""
     registry = KeyRegistry()
@@ -768,6 +870,7 @@ def main():
     test_refuses_non_note()
     test_organize()
     test_nn_category()
+    test_old_format_ids()
     test_key_lifecycle()
     test_bridge()
     test_map_complete()
