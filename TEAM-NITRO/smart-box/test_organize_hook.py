@@ -28,6 +28,12 @@ test writes itself.
   G. --dry-run writes nothing: no box dir, no watermark.
   H. The box on disk is the boxstore layout: blocks.jsonl +
      keys.jsonl + manifest.json, and the manifest counts match.
+  I. --live-tree backfills from the LIVE GitHub tree (stubbed
+     gh_api, never the network): only missing-or-changed blob shas
+     are fetched; an already-current path is never re-fetched; an
+     unparseable file is counted, never marked, and retried next
+     run; a changed sha re-fetches and supersedes by block id; a
+     truncated tree refuses outright.
 """
 
 import json
@@ -99,6 +105,33 @@ def make_tree(tmp):
         for entry in entries:
             handle.write(json.dumps(entry) + "\n")
     return repo_notes, local_notes, nn_root, store
+
+
+def _stub_gh_api(tree_paths, contents, truncated=False):
+    """A stub gh_api for the live-tree tests: the tree call returns
+    the canned tree; contents calls return the canned note text.
+    ``tree_paths`` is {github_path: blob_sha}; ``contents`` is
+    {github_path: text}. Never touches the network."""
+    import base64
+    import urllib.error
+    import urllib.parse
+
+    def fake(path):
+        if path.startswith("/git/trees/"):
+            return {"sha": "treesha-test", "truncated": truncated,
+                    "tree": [{"path": p, "sha": s, "type": "blob"}
+                             for p, s in sorted(tree_paths.items())]}
+        if path.startswith("/contents/"):
+            p = urllib.parse.unquote(
+                path[len("/contents/"):].split("?")[0])
+            if p in contents:
+                return {"content": base64.b64encode(
+                    contents[p].encode("utf-8")).decode("ascii")}
+            raise urllib.error.HTTPError(
+                path, 404, "not found", {}, None)
+        raise ValueError("unexpected gh_api path %s" % path)
+
+    return fake
 
 
 def main():
@@ -241,6 +274,105 @@ def main():
               manifest["blocks"] == len(lines) and
               manifest["owner"] == OWNER,
               "manifest=%s lines=%s" % (manifest["blocks"], len(lines)))
+
+        # I. --live-tree backfills from the LIVE tree (stubbed gh_api).
+        boxes_lt = str(tmp / "boxes-livetree")
+        wm_lt = str(tmp / "watermark-livetree.json")
+        text2535 = (FIXTURES / "SN-2535-what-naya-does.md") \
+            .read_text(encoding="utf-8")
+        text2543 = (FIXTURES / "SN-2543-smart-box-cure-saving-sickness.md") \
+            .read_text(encoding="utf-8")
+        text2545 = (FIXTURES / "SN-2545-super-brain-is-yours.md") \
+            .read_text(encoding="utf-8")
+        p_a = ("BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/"
+               "SYSTEM-INTELLIGENCE/SN-2535-what-naya-does.md")
+        p_b = ("BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/"
+               "SYSTEM-INTELLIGENCE/SN-2543-smart-box-cure-saving-sickness.md")
+        p_d = ("BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/"
+               "SYSTEM-INTELLIGENCE/SN-2545-super-brain-is-yours.md")
+        p_c = ("BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/"
+               "SYSTEM-INTELLIGENCE/SN-9999-not-a-note.md")
+        p_other = ("BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/"
+                   "SYSTEM-INTELLIGENCE/README.txt")
+        tree1 = {p_a: "a1", p_b: "b1", p_d: "d1", p_c: "c1",
+                 p_other: "o1"}
+        contents1 = {p_a: text2535, p_b: text2543, p_d: text2545,
+                     p_c: "hello, this is not a smart note\n"}
+        # B is already current per the watermark: never re-fetched.
+        Path(wm_lt).write_text(json.dumps(
+            {"owner": OWNER, "files": {}, "entries": {},
+             "live_tree": {p_b: "b1"}}), encoding="utf-8")
+        stats_lt = hook.live_tree_backfill(
+            owner=OWNER, boxes_root=boxes_lt, watermark=wm_lt,
+            batch_size=2, gh_api_fn=_stub_gh_api(tree1, contents1))
+        check("I live-tree organizes only the missing notes",
+              stats_lt["organized"] == 2 and
+              stats_lt["live_paths"] == 4,
+              "organized=%s live=%s" % (stats_lt["organized"],
+                                        stats_lt["live_paths"]))
+        check("I live-tree skips the already-current path",
+              stats_lt["selected"] == 3 and stats_lt["fetched"] == 3,
+              "selected=%s fetched=%s" % (stats_lt["selected"],
+                                          stats_lt["fetched"]))
+        check("I live-tree counts the unparseable file, run alive",
+              stats_lt["skipped_unparseable"] == 1,
+              "skipped=%s" % stats_lt["skipped_unparseable"])
+        lt_lines = [json.loads(ln) for ln in
+                    (Path(boxes_lt) / OWNER / "blocks.jsonl")
+                    .read_text(encoding="utf-8").splitlines()
+                    if ln.strip()]
+        check("I live-tree blocks carry the github path + a shelf",
+              len(lt_lines) == 2 and all(
+                  b["where"]["github_path"].startswith(
+                      "BRAIN/05-MEMORY/SMART-NOTES/")
+                  and b["where"].get("shelf") for b in lt_lines),
+              "lines=%s" % len(lt_lines))
+        mark_lt = json.loads(Path(wm_lt).read_text(encoding="utf-8"))
+        check("I live-tree watermark marks fetched paths only",
+              mark_lt["live_tree"] == {p_a: "a1", p_b: "b1", p_d: "d1"},
+              "live_tree=%s" % sorted(mark_lt["live_tree"]))
+        # Second run: only the unparseable file is re-selected.
+        stats_lt2 = hook.live_tree_backfill(
+            owner=OWNER, boxes_root=boxes_lt, watermark=wm_lt,
+            batch_size=2, gh_api_fn=_stub_gh_api(tree1, contents1))
+        check("I second live-tree run organizes 0, retries the bad file",
+              stats_lt2["organized"] == 0 and
+              stats_lt2["selected"] == 1 and
+              stats_lt2["skipped_unparseable"] == 1,
+              "organized=%s selected=%s skipped=%s" % (
+                  stats_lt2["organized"], stats_lt2["selected"],
+                  stats_lt2["skipped_unparseable"]))
+        # Changed sha re-fetches and supersedes by block id.
+        a_id = [b["id"] for b in lt_lines
+                if b["where"]["github_path"] == p_a][0]
+        tree2 = dict(tree1)
+        tree2[p_a] = "a2"
+        contents2 = dict(contents1)
+        contents2[p_a] = text2535 + "\nEDITED live-tree v2 line.\n"
+        stats_lt3 = hook.live_tree_backfill(
+            owner=OWNER, boxes_root=boxes_lt, watermark=wm_lt,
+            batch_size=2, gh_api_fn=_stub_gh_api(tree2, contents2))
+        lt_lines3 = [json.loads(ln) for ln in
+                     (Path(boxes_lt) / OWNER / "blocks.jsonl")
+                     .read_text(encoding="utf-8").splitlines()
+                     if ln.strip()]
+        by_id = {}
+        for block in lt_lines3:
+            by_id[block["id"]] = block
+        check("I changed sha re-fetches and supersedes by block id",
+              stats_lt3["organized"] == 1 and len(by_id) == 2 and
+              "EDITED live-tree v2 line" in by_id[a_id]["body"],
+              "organized=%s unique=%s" % (stats_lt3["organized"],
+                                          len(by_id)))
+        # Truncated tree refuses, never a partial backfill.
+        try:
+            hook.live_tree_backfill(
+                owner=OWNER, boxes_root=boxes_lt, watermark=wm_lt,
+                batch_size=2,
+                gh_api_fn=_stub_gh_api(tree1, contents1, truncated=True))
+            check("I truncated tree refuses", False, "no raise")
+        except ValueError:
+            check("I truncated tree refuses", True)
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 
