@@ -36,4 +36,4 @@ Notes are how we talk to each other — citizen to Naya, Naya to Naya, project t
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*The governing vision for Naya Notes (Ninos), filed as a Naya Note under the official template — three outputs: what it is, why it matters, how to use it.*
+*The governing vision for Naya Notes (Ninos), filed as a Naya Note under the official template — three outputs: what it is, why it matters, how to use it. Paired Smart Note: **SN-2533 — Ninos: Naya Takes the Note for You**.*
