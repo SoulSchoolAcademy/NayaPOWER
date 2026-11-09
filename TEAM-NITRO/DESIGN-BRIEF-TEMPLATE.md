@@ -59,6 +59,8 @@ Builder's activation sign-off (fill in before building):
 - [ ] I read all five files above. Date/time read: [____]
 - [ ] My handoff will carry the applied-laws table above.
 
+**Run `python3 design-contract-gate/check-brief.py <this brief>` before dispatching — a FAIL means the brief does not go out.**
+
 ---
 
 ## §2 — THE DESIGN CONTRACT (embedded in full — the measured gate)
@@ -76,6 +78,8 @@ Every build is measured against all five items. The checker is `~/workspace/team
 
 **The design-contract test that catches a pasted Word doc:** "Is this the max level of experience I can give the user?" — asked about the PAGE, not the briefed items. If you can see the defect by looking, fix it, don't hand it on.
 
+**Human checks H1–H5** (what the machine cannot check — H1 stranger test · H2 perfect-words law · H3 face quality · H4 test in his head · H5 one ultimate ten) are attested per build with evidence in the handoff; all five attested PASS + machine clean = OVERALL PASS. Without them the verdict reads PASS — MACHINE ONLY, HUMAN CHECKS PENDING.
+
 ---
 
 ## §2A — TONIGHT'S LAWS — CHECK BEFORE YOU BUILD, CHECK BEFORE YOU HAND BACK (2026-11-09)
@@ -92,6 +96,15 @@ Every build is measured against all five items. The checker is `~/workspace/team
 | L7 | **The one ultimate ten.** One set, not two — each item is pain + solution + what's in it for them (+ who it's for). The features are valuable BECAUSE they solve the pains; they go hand in hand. Together the ten paint the picture of how the puzzle goes together and why it's extraordinary and different. | Each item names the problem, then the solution ("quite literally, this is the solution — this is how we do it"), then what's in it for them and who it's for. Two separate sets of ten FAILS. An item that only names a pain, or only claims a fix, FAILS. | 2026-11-09 03:21Z + 03:28Z · daily log `~/memory/2026-11-09.md` (smart note pending — next intelligence-loop run) |
 
 **The handoff's gate section (§6) must report each of L1–L7 as PASS / FAIL / N-A, with the test evidence for each.** A handoff that does not report them is incomplete.
+
+### ANTI-REPEAT — the known failure modes (every brief carries these)
+*These six prohibitions are the failures tonight already paid for. A brief without them is incomplete — the brief checker fails it. The seat reads them before building and again before handing back.*
+- **Never paste his dictation verbatim into public copy (v49/v4).** His words are input, not output — scorecard them, take what's great, craft the 10/10 version in his voice.
+- **Never use the word "blockchain" anywhere.** Smart Ledger is a hub of intelligent blocks — a collective chain intelligent network, not the old kind of chain.
+- **Never invent a component when the harvested one exists.** Harvest-first: compose, don't create. Take the shown object verbatim.
+- **Never report done from scroll-0 checks alone.** Verify scroll 0 AND scrolled, desktop AND phone — a page checked at scroll 0 only is not checked.
+- **Never claim without a live measurement.** Live bytes, rendered pages, real measurements — never claims. Receipt before report.
+- **Never present work without a live link.** Link, don't preview — no link = not done = don't announce.
 
 ---
 
@@ -190,6 +203,7 @@ Brief-writer: run `test -f <path>` for every row and record the result. A row wi
 - In a real browser. Phone first (390px), desktop second (1280px and wide). Scroll 0 AND scrolled.
 - Every button clicked, every destination recorded. Screenshots or it did not happen.
 - The design-contract gate measurements (§2) + the anatomy six-question test, both in the handoff.
+- **Standard verification plan (every brief names it):** Playwright, desktop 1440 + phone 390 + true 360, zero overflow, zero console errors, named no-regressions.
 - **The three-step verification is DEAD as a quality gate.** Seat scorecards (maker's self-scorecard, then a different seat's) are PREPARATION, never proof. The only verification is Shawn's eye, live, per viewpoint. The captain refuses to present a build without the gate measurements + the anatomy answers (HANDOFF-CONTRACT.md).
 
 ---
