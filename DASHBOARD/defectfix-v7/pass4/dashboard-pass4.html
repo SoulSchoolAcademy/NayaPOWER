@@ -24651,7 +24651,24 @@ window._repaintOrbMinis = function(box){
    auto-wire is deliberately NOT transplanted (it observes .num — a label
    class on this page — and would fire reveals on the wrong elements). */
 (function(){
-  var H = 168; /* one digit height in px (full-size tile, verbatim) */
+  var H = 168; /* one digit height in px (full-size tile, verbatim) — the FALLBACK only */
+  /* FIXROUND PASS-4 (D2, 2026-11-09): the ≤768px media query shrinks
+     .rd/.window 168→108px, but the strip offsets were computed in the
+     constant 168px units — at phone widths every strip sat 168/108 ≈ 1.56
+     digits off, so 305 read "508" (5 with a sliver of 4, 0, 8 with a sliver
+     of 7). The digit height is MEASURED from the rendered .rd (layout px,
+     unaffected by the fitNumber/fitHero scales), cached per viewport width
+     so the per-frame setReel calls don't force layout. */
+  var _dH = null, _dHvw = -1;
+  function digitH(){
+    var vw = window.innerWidth;
+    if (_dH !== null && _dHvw === vw) return _dH;
+    var el = numEl();
+    var rd = el && el.querySelector('.rd');
+    var h = (rd && rd.offsetHeight) || H;
+    if (h > 0) { _dH = h; _dHvw = vw; }
+    return h;
+  }
   var TARGET = 0; /* the live score; updated by _osTilesSet */
   var NUM_EL = null;
   function numEl(){ if (!NUM_EL) NUM_EL = document.getElementById('os-se-num'); return NUM_EL; }
@@ -24680,7 +24697,7 @@ window._repaintOrbMinis = function(box){
     strip.innerHTML = html;
     /* park on the final digit, in rest style (obsidian + white light) */
     var finalCount = Math.floor(target / div);
-    strip.style.transform = 'translateY(' + (-(finalCount % 10) * H) + 'px)';
+    strip.style.transform = 'translateY(' + (-(finalCount % 10) * digitH()) + 'px)';
   }
   function buildReels(el, target){
     target = target || TARGET;
@@ -24711,7 +24728,7 @@ window._repaintOrbMinis = function(box){
        stays bounded no matter how big the number is. When the wrap would jump
        the strip backwards, snap it with the transition off — invisible, because
        the strip repeats every 10 digits — so the roll never scrolls the wrong way. */
-    var y = -((count % 10) * H);
+    var y = -((count % 10) * digitH());
     if (o.y !== undefined && o.y !== null && y > o.y) {
       o.strip.style.transition = 'none';
       o.strip.style.transform = 'translateY(' + y + 'px)';
@@ -24742,7 +24759,7 @@ window._repaintOrbMinis = function(box){
   }
   function snapStrips(reels, val){
     reels.forEach(function(o){
-      var y = -((Math.floor(val / o.div) % 10) * H);
+      var y = -((Math.floor(val / o.div) % 10) * digitH());
       o.strip.style.transition = 'none';
       o.strip.style.transform = 'translateY(' + y + 'px)';
       o.y = y;
@@ -25186,7 +25203,12 @@ window._repaintOrbMinis = function(box){
   });
   try{ onScroll(); }catch(e){} /* init: both bars start hidden at scroll 0 */
   /* --- fit wiring --- */
-  function refit(){ var el = numEl(); if (el && el.querySelector('.reel')) fitNumber(el); fitHero(); }
+  function refit(){ var el = numEl(); if (el && el.querySelector('.reel')) fitNumber(el); fitHero();
+    /* FIXROUND PASS-4 (D2): a resize across the 768px breakpoint changes the
+       rendered digit height (168↔108) — re-snap the settled strips to the
+       shown value in the new units, so a rotated phone never reads stale. */
+    try{ if (el && S.reels && S.reels.length && typeof S.shown === 'number'){ _dH = null; snapStrips(S.reels, S.shown); restoreStrips(S.reels, el); } }catch(e){}
+  }
   window.addEventListener('resize', refit);
   window.addEventListener('load', function(){ refit(); setTimeout(refit, 1200); /* FIX 9 item 7 — FRESH FIT: the shipped scale (s=0.799, dial 152px) is a load-time transient; a resize re-measures to s=0.835 (dial 159px) and holds it stable. Bust the cache once after the layout settles so the fresh fit lands without a resize. */ setTimeout(function(){ _fitCache = null; refit(); }, 5000); });
   /* FIX 5B — the fitNumber margin is computed from the well width, which
@@ -27226,6 +27248,33 @@ body.os-bottom-hidden #os-bottom3{ transform:translateY(110%) !important; opacit
   border-color:#d9a521 !important;
   box-shadow:inset 0 1.5px 0 rgba(255,255,255,.4), inset 0 -4px 8px rgba(0,0,0,.5), 0 0 18px rgba(217,165,33,.5), 0 8px 18px rgba(0,0,0,.5) !important;
 }
+/* FIXROUND PASS-4 (D1, 2026-11-09): the drill list (#os-smartlink-list) lives
+   in the fixed .os-smartlink-view overlay, NOT inside .os-sl-board, so the
+   pass-4 gold rule above never matched it — drill buttons fell back to the
+   neutral white .ph-msg border (rgba(255,255,255,.5)), and :hover lit them
+   in the row's own --ac (pink #ff5e6c for the featured link). ONE gold
+   everywhere: the same gold border + glow on the drill's Show-on-gauge /
+   On-the-gauge buttons, at rest AND on hover. The featured state is settled
+   once — gold-lit (gold border + gold tint), never pink, never the link's
+   own colour — and the same lit tint is used on the board featured buttons
+   too, so featured reads the same in both places. */
+#os-smartlink-list .os-link-row .ph-msg[data-featured-show],
+#os-smartlink-list .os-link-row .ph-msg[disabled],
+#os-smartlink-list .os-link-row .ph-msg[data-featured-show]:hover,
+#os-smartlink-list .os-link-row .ph-msg[disabled]:hover{
+  border-color:#d9a521 !important;
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.4), inset 0 -4px 8px rgba(0,0,0,.5), 0 0 18px rgba(217,165,33,.5), 0 8px 18px rgba(0,0,0,.5) !important;
+}
+#os-smartlink-list .os-link-row .ph-msg[disabled],
+.os-sl-board .os-link-row .ph-msg[disabled],
+.os-world-board .os-wb-btn[disabled]{
+  background:rgba(217,165,33,.18) !important;
+}
+/* FIXROUND PASS-4 (D3, 2026-11-09): the drill rows sit outside .os-sl-board,
+   so they missed the board's white-unit rule and the "clicks"/"joins" words
+   rendered #c9c9d4 gray while the numbers were white. White units in the
+   drill too — the same words, the same white, everywhere. */
+#os-smartlink-list .os-link-num i{color:#fff}
 /* HERO FIX 2026-11-09 (l): the disabled "On the gauge ✓" button is the only
    disabled .ph-msg in a link row, so the [disabled] selector above lights the
    featured card's button in ITS board's colour too — never a neutral border. */
@@ -27438,6 +27487,26 @@ body.viewport-focus #viewport-back{
 .os-sales-x:hover,.os-invites-x:hover,.os-shares-x:hover,.os-joins-x:hover,.os-notes-x:hover,.os-comments-x:hover,.os-likes-x:hover,.os-creations-x:hover,.os-saves-x:hover,.os-smartlink-x:hover,.os-ld-drawer-x:hover{transform:translateY(-2px) !important;}
 /* (3) ALL-LINKS DRILL LIST: the same rows as the board, stacked in the dialog, scrollable. */
 .os-smartlink-list{display:none;width:min(920px,94vw);max-height:66vh;overflow-y:auto;flex-direction:column;gap:12px;padding:6px 2px;z-index:2;}
+/* FIXROUND PASS-4 (D4, 2026-11-09): the list could rest scrolled mid-row, so
+   the row above the top edge showed only its bottom strip — its gauge
+   sub-labels ("needs views") detached from their cells, reading as a stray
+   fragment up in the header. The list now snaps to row starts, so the top
+   edge always opens on a whole row and a sub-label never sits apart from
+   its cell. */
+.os-smartlink-list{scroll-snap-type:y mandatory;}
+.os-smartlink-list .os-link-row{scroll-snap-align:start;}
+/* …and the last row's snap point must be REACHABLE: without trailing space
+   the list's max scroll stops short of it (shortfall = list height − row
+   height − ~48px; measured 70–328px across 600–1440px widths), so the list
+   rests with the previous row's bottom strip peeking at the top edge. The
+   trailing space equals the list height minus 200px, which keeps a ~70px
+   margin at every viewport height for any row height ≥ ~152px (measured
+   minimum 223px); it reads as end-of-list space, nothing more. Phones
+   (≤480px) already reach the last row — their tall rows need no trailing
+   space, so the rule stays off there. */
+@media (min-width:481px){
+  .os-smartlink-list{padding-bottom:calc(66vh - 200px);}
+}
 .os-smartlink-list.on{display:flex;}
 .os-smartlink-list .os-link-row{width:100%;}
 /* FIX-ROUND 2026-11-09 (minor): drill-row numbers ran together at a glance
