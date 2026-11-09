@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-09 12:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-09 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -26789,6 +26789,12 @@ _Last updated: 2026-11-09 12:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: bin/diary_intake.py exists; receipt documents the inherited dual-format guard on live bytes with before/after SHA discipline. Score 9.5: ACCEPTED. The executor correctly adopted a correct unreceipted repair instead of re-doing it (Fit Law, forward-only, no history rewrite), verified it byte-by-byte and by battery, ran the sealed trial end
 
+### ✅ t0405-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** register-flip K2 buffer spec: single-drop-void class specified dead (traces 13-14, degraded-mode table)
+
+**Evidence:** VERIFIED this tick on workspace bytes: buffer spec 6e6046f2... matches (post-pass-2 SHA; pass-1 draft superseded and named); amendment c48b419f... and gate 25ddc969... match live files; freeze seal a045c5f3... matches; 12/12 trace SHAs == frozen seal pins; builder script c3ed4298... matches. Score 9.5. Clears 9.5 because the spec is complete, hones
+
 ### ✅ t0405 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Register-flip K2 buffer spec: traces 13-14 selection rule + degraded-mode table, worst-drop simulation
@@ -26805,6 +26811,12 @@ _Last updated: 2026-11-09 12:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/register-flip-k2-buffer-spec-t0405-lane9.md exists on disk; receipt re-pinned amendment+gate read-only (no writes). Score 9.0: GOOD, ONE MORE PASS. The class-level design is sound and the simulated worst-trace drop runs through the pinned gate, but it is a SPEC only: nothing wired, nothing battery-proven, single simulated dro
 
+### ✅ t0405-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t0806 K2 register freeze: seal committed, lock proven fail-closed via red-plant
+
+**Evidence:** VERIFIED this tick on workspace bytes: freeze seal JSON a045c5f3... and seal MD 4c44c397... match; lock checker 03043cf6... matches; seal's gate pin 25ddc969... and amendment pin c48b419f... match live files; all 12 trace SHAs re-hashed against the seal 12/12; restored trace-k2-07 ca551107... == sealed pin. Score 9.5. Clears 9.5 because the freeze 
+
 ### ✅ t0405 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** Gap-t0806 K2 register freeze: seal committed, lock proven fail-closed
@@ -26820,6 +26832,12 @@ _Last updated: 2026-11-09 12:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0405-lane4.md`
 
 **Evidence:** Verified: freeze seal JSON+MD, lock checker, freeze executor exist on disk at the receipt's paths. Score 9.5: ACCEPTED. Freeze-time re-pin (12/12 + gate no-drift), fail-closed lock checker proven with a one-byte red-plant (exit 2 naming the exact file), restore verified byte-exact == sealed pin, settled-state lock PASS before filing. Why not 10: th
+
+### ✅ t0405-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t0806 K2 battery: independent second-seat re-run of 12 disqualification traces, CONFIRM 12/12
+
+**Evidence:** VERIFIED this tick on workspace bytes: pre-run manifest f9ad796c..., gate value_calculus.py 25ddc969... (no drift vs pre-reg pin), builder script c3ed4298... matches amendment, amendment c48b419f... matches, rederive.py corrected pin e90a48bc... (transcription slip corrected in receipt, live re-derived hash matches), rederive-results.json c22afac7.
 
 ### ✅ t0405 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
