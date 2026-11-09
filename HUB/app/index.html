@@ -5827,6 +5827,11 @@ window.NayaJewels = (() => {
     });
     wrap.appendChild(lens);
 
+    /* — Feed provenance line (INFRA w2903): fixProvenance writes here; without this element it returns early. — */
+    const prov = el('p', 'feed-provenance');
+    prov.id = 'feed-provenance-line';
+    wrap.appendChild(prov);
+
     /* — Boards — */
     const feed = el('div', 'show-feed');
     feed.setAttribute('aria-busy', 'true');
