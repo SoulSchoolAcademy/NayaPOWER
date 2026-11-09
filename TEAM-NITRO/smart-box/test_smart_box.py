@@ -435,6 +435,82 @@ def test_organize():
     return True
 
 
+def test_nn_category():
+    """E2. Naya Notes read their ``**Category:**`` line (fix 20261109
+    item 3): her memory organizing itself, not filing. A Naya Note
+    carries no SN line, so its category lives on the Category line -
+    the block gets real ``about`` tags and a real shelf, never empty
+    / unsorted. The SN line always wins when it exists."""
+    nn_text = (
+        "# A Smart Note Is Official Only When It Is In\n"
+        "\n"
+        "**Written by Naya for Shawn Vibert — Founder / Creator of "
+        "NayaNET**\n"
+        "\n"
+        "**NN-20261109-a-smart-note-is-official-only-when-it-is-in · "
+        "Naya Note · 2026-11-09 20:58Z**\n"
+        "\n"
+        "**Category:** System — Intelligence / What Counts\n"
+        "\n"
+        "## What it is\n"
+        "\n"
+        "His dictation, 20:58Z Nov 9 — recorded from his words.\n"
+        "\n"
+        "## Why it matters\n"
+        "\n"
+        "Hundreds of smart notes sitting in GitHub that nobody reads "
+        "are not in the system.\n"
+        "\n"
+        "## How to use it\n"
+        "\n"
+        "- A smart note is official only when it is IN.\n")
+    block = note_to_block(nn_text, owner=OWNER,
+                          github_path="BRAIN/05-MEMORY/NAYA-NOTES/"
+                          "NN-20261109-a-smart-note-is-official-only-"
+                          "when-it-is-in.md")
+    check("NN Category line becomes about tags (no bare dash tag)",
+          block["about"] == ["System", "Intelligence", "What", "Counts"],
+          "about=%s" % block["about"])
+    check("NN Category line is kept verbatim in raw",
+          block["raw"]["category"]
+          == "System — Intelligence / What Counts",
+          "raw category=%r" % block["raw"]["category"])
+    organized = organize(block)
+    check("NN block shelves on its first category tag",
+          organized["where"].get("shelf") == "shawn/note/system",
+          "shelf=%s" % organized["where"].get("shelf"))
+    sn_text = (
+        "# The Gauge Follows The Number\n"
+        "\n"
+        "SN-9999 · Law — Gauge\n"
+        "\n"
+        "**Category:** Other — Place\n"
+        "\n"
+        "## Hook\n"
+        "\n"
+        "The gauge follows the number.\n")
+    sn_block = note_to_block(sn_text, owner=OWNER,
+                             github_path="BRAIN/05-MEMORY/SMART-NOTES/"
+                             "2026/11/09/LAW/SN-9999/IB-SMART-NOTE-"
+                             "20261109-sn9999.md")
+    check("SN line wins over a Category line when both exist",
+          sn_block["about"] == ["Law", "Gauge"],
+          "about=%s" % sn_block["about"])
+    bare_text = (
+        "# A Note With No Category\n"
+        "\n"
+        "## What it is\n"
+        "\n"
+        "Nothing to categorize here.\n")
+    bare = note_to_block(bare_text, owner=OWNER)
+    check("a note with no category keeps empty about, shelf unsorted",
+          bare["about"] == []
+          and organize(bare)["where"].get("shelf")
+          == "shawn/note/unsorted",
+          "about=%s" % bare["about"])
+    return True
+
+
 def test_key_lifecycle():
     """F. The key lifecycle: mint, check, revoke - proven per call."""
     registry = KeyRegistry()
@@ -691,6 +767,7 @@ def main():
     test_legacy_path_fails_closed()
     test_refuses_non_note()
     test_organize()
+    test_nn_category()
     test_key_lifecycle()
     test_bridge()
     test_map_complete()
