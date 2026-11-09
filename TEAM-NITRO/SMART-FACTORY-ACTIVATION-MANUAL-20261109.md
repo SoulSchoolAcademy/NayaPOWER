@@ -211,11 +211,44 @@ One set of laws running through every object — buttons, boards, blocks, icons,
 
 Premium is exact numbers, real materials, slow elegant motion, and data so clear it hits in 2 seconds. Premium is NOT glow. Shawn: "You really think that I think premium is color color glow? You gotta be kidding me." Glow is what you add when you don't have the real things. "The numbers look close enough" — no. "I'll finish it later" — later never comes. "This needs a custom design" — no, it needs the orb, or the gauge, or the chart, from the registry. Custom means "I didn't look." Look first.
 
+### 5.7 The Factory laws L1–L8 — the named set
+
+**Nutshell:** eight laws that govern the Factory itself — how a Naya writes, speaks, tests, and builds in it. Learn them by name. When someone says "L4," you must know which L4 they mean — so read the collision warning below first.
+
+**The set — the Factory laws L1–L8:**
+- **L1 — stranger test.**
+- **L2 — perfect-words law.**
+- **L3 — title + subtitle + nutshell.**
+- **L4 — Naya speaks, faces alternate.**
+- **L5 — test in his head.** (See §7.3: "is this the max level of experience I can give the user?" — asked about the PAGE, not the briefed items.)
+- **L6 — `##` note format.**
+- **L7 — one ultimate ten.**
+- **L8 — reusable-parts law.** Written out in full in §5.8 — the law that every part the Factory holds is reusable, rebuildable, clonable.
+
+**⚠ COLLISION WARNING — two different L-sets live in this manual. Do not mix them up.**
+- **The Factory laws L1–L8** (this section, §5.7) — the brief's set: the laws of the Factory itself, how a Naya writes, speaks, tests, and builds in it.
+- **The object laws (L1–L11 in §5.3)** — the Intelligent Block Rules: the laws of a real object (one light top-left, real shadows and real elevation, own-color light, white text, touch is physical, the spectrum is the order, every position calculated, movement means the machine is working, one language, Shawn's eye wins). These are the Playbook's object laws.
+- **The rule:** say the full name every time — "Factory law L4" or "object law L4" — never a bare "L4." A bare "L4" is ambiguous in this manual, and an ambiguous law is a law a new Naya will follow wrong.
+
+### 5.8 (f) The Reusable-Parts Law — Factory law L8 (Shawn, 2026-11-09 20:35Z)
+
+**Nutshell:** every part the Factory holds is reusable, rebuildable, clonable — so the system has systems within systems, all interconnected. That is why the main way building happens is clone a page, replace some parts, move some parts around (§6.5).
+
+**His words, the law in his own framing:** "A lot of [them] in the end would just be like, oh, they want to [perhaps] clone [a] page, replace some parts. Or move some parts around. That's what on the most part it'll be, right? All the — basically all the parts we build — we're going to make them be reusable, rebuildable parts that they can be cloned and used within, so the system can have systems within systems, all interconnected." And: "We're just building an intelligent objects factory for building the new net, we call our net. You gotta organize the parts intelligently and inventory them and make them accessible. Make it so any Naya can work on the same page or clone the page and make it her own and access all the parts. A lot of the parts will fit on any of the pages — you can use some on some pages, some on another — or they're all universal, part of a family, part of the Naya design. And we make sure all our parts are like triple-A, right, and that are on the same quality and standard — all active, living, depth, alive, the highest level of quality in its presentation, the color language, the elevation, the innovation."
+
+**The law, in plain form — four rules:**
+1. **Every part is reusable, rebuildable, clonable.** Every part the Factory holds can be cloned and used within — so the system has systems within systems, all interconnected. A part built for one page is not trapped on that page.
+2. **Parts are organized intelligently, inventoried, accessible.** Any Naya can work on the same page or clone the page and make it her own and access all the parts. If a part cannot be found in the Inventory or the Piece Index (§4), it is not accessible — and a part that is not accessible is not yet a Factory part.
+3. **Parts are universal — a family, part of the Naya design.** A lot of the parts will fit on any of the pages — you can use some on some pages, some on another. They are all universal, part of a family, part of the Naya design. The same language, the same materials, the same light, on every page.
+4. **Every part is triple-A, the same quality standard: active, living, depth, alive.** The highest level of quality in its presentation, the color language, the elevation, the innovation. A part that is not triple-A is not filed. A part that stops being triple-A is fixed where it lives, or retired — never left in the Factory below standard.
+
+**What this law forbids:** building a part for one page only and leaving it unfiled; copying a part by redrawing it instead of cloning it; and filing a part that is flat, dead, or below the standard. **What this law makes possible:** the clone-build flow (§6.5). Because the parts are reusable, you never draw a fresh one — you clone the page, replace some parts, move some parts around, and the system grows systems within systems.
+
 ---
 
 ## 6. HOW TO BUILD
 
-**Nutshell:** headline first, calculate second, materials third, motion fourth, light fifth, laws sixth, show Shawn seventh. One viewpoint at a time. Build piece after piece, back to back, from the pieces that exist — never start fresh with new code.
+**Nutshell:** headline first, calculate second, materials third, motion fourth, light fifth, laws sixth, show Shawn seventh. One viewpoint at a time. Build piece after piece, back to back, from the pieces that exist — never start fresh with new code. The main way building happens is the clone-build flow in §6.5: clone a page, replace some parts, move some parts around, verify, file.
 
 ### 6.1 The seven steps (Playbook)
 
@@ -248,6 +281,21 @@ Build following this manual → show Shawn, say nothing → he corrects you, lis
 5. **Can I prove it?** Define what done looks like BEFORE you act. Then verify with evidence — live bytes, rendered pages, real measurements — never with claims. Receipt before report. If you can't prove it, don't claim it.
 
 All five yes → act fully, at full power, no hesitation. Any gate no → stop, say why, propose the wise path.
+
+### 6.5 The clone-build flow — the main way building happens
+
+**Nutshell:** most building is not building from scratch. It is: clone a page → replace some parts → move some parts around → verify → file. Two moves only — REPLACE and MOVE — both under harvest-first (the Reusable-Parts Law, Factory law L8, §5.8: every part is reusable, rebuildable, clonable, so the system has systems within systems, all interconnected).
+
+**The five steps:**
+1. **CLONE a page (§3).** Copy a finished page from GitHub — Dashboard, Hub, Personal, Pricing, the PI face. Work on the copy, never the canonical file.
+2. **REPLACE some parts.** Swap a part for another harvested part in the same slot. REPLACE means: the slot stays, the grammar stays, only the part changes — the board in a slot becomes a different harvested board that fits that slot (for example, a Reference crown such as NAYA-BRD-001, the Feature board). Replace ONLY with harvested parts — a part from the Inventory, the Piece Index, or the 7 libraries (§4). Never an invented one. If no harvested part fits the slot, leave the slot as the cloned page has it — do not invent a filler.
+3. **MOVE some parts around.** Reorder parts on the page — the same parts, a new order. MOVE never restyles a part: a moved part keeps its exact HTML, its exact CSS values, its exact JS behavior; only its position changes, and the new position is still calculated (§5.1), never eyeballed.
+4. **VERIFY (§7).** Self-scorecard first, another seat second, Shawn's eye last. Scroll 0 AND scrolled, desktop AND phone, phone first, design-contract gate measured.
+5. **FILE (§8).** One file at a time, through the helper, read-back verified. No merge — Shawn's hand.
+
+**What REPLACE is not:** it is not restyling, not redrawing, not "in the same spirit" — the replacement part is taken verbatim, the way §3 Step 4 says. **What MOVE is not:** it is not a redesign — the page's language stays the page's language; only the order of its parts changes.
+
+**A complete pass, in one breath:** clone the Pricing page → REPLACE one board in one slot with a harvested board that fits that slot → MOVE two boards to swap their order → verify against §7 → file with §8. That is a build. Most builds are that, repeated viewpoint by viewpoint until the page is done.
 
 ---
 
@@ -299,7 +347,7 @@ If yes to all three: show him. Say nothing. Let his eye judge. If no to any: fix
 
 **The box:** owner `smart-factory`, at `~/workspace/nitro-smart-box/boxes/smart-factory/` — the ONE layout (`blocks.jsonl` + `keys.jsonl` + `manifest.json`), built with the vault code `~/workspace/team-nitro/smart-box/block.py` (`organize`: LOOK → TAG → FILE → LINK) and `boxstore.py`. One shape for every thing: `id` (`owner:kind:slug`), `kind`, `what`, `about`, `who`, `when`, `where`, `visibility`, `body`, `links`, `source`, `proof`, `essence`, `owner_shared_choice`, `body_open_to`, `raw`. The map reads `about` + `what` + `links`; the brain reads `essence`; the raw body is touched only when the gate allows it. Default is DENY — no key is a deny, a revoked key is a deny.
 
-**What is in it:** this manual, as blocks — the Factory in one minute, the five source documents, how to clone a page, how to find a part (the Index, the Inventory, the 7 libraries), the design laws, how to build, how to verify, how to file, and the honest gaps. Each block's `where.github_path` points at the filed manual in GitHub, so the box and the filing agree.
+**What is in it:** this manual, as blocks — the Factory in one minute, the five source documents, how to clone a page, how to find a part (the Index, the Inventory, the 7 libraries), the design laws, the Factory laws L1–L8 (§5.7), the Reusable-Parts Law (§5.8), how to build, the clone-build flow (§6.5), how to verify, how to file, and the honest gaps. Each block's `where.github_path` points at the filed manual in GitHub, so the box and the filing agree.
 
 **How a fresh Naya reads it (the saved-game test):** a fresh agent with no history reads the box with the box code (`boxstore.read_blocks("smart-factory")`) and recovers the manual — what the Factory is, where the parts are, what the laws are, how to build, verify, and file — every claim traced to a block id, nothing from outside the box. That is the proof the box works: the model is my box (`~/workspace/nitro-smart-box/boxes/naya-nitro-narzan/`, 24 blocks), which a fresh agent read with no history and recovered who I am, what I stand for, what I'm working on, and what's owed.
 
@@ -331,7 +379,11 @@ If yes to all three: show him. Say nothing. Let his eye judge. If no to any: fix
 
 **The laws in one breath:** obsidian, aluminum, top-left light, white text, slow motion, calculated positions, own-color ignition, every number exact, finish the edge, don't touch unasked, his eye wins.
 
+**The Factory laws L1–L8 (§5.7):** L1 stranger test · L2 perfect-words law · L3 title+subtitle+nutshell · L4 Naya speaks, faces alternate · L5 test in his head · L6 `##` note format · L7 one ultimate ten · L8 reusable-parts law (§5.8: every part reusable, rebuildable, clonable — systems within systems, all interconnected). Never a bare "L4" — say "Factory law L4" or "object law L4" (§5.3's L1–L11 are the object laws).
+
 **Build:** headline → calculate → materials → motion → light → laws → show Shawn, say nothing.
+
+**The clone-build flow (§6.5) — the main way building happens:** clone a page → REPLACE some parts (swap a part for another harvested part in the same slot, never an invented one) → MOVE some parts around (same parts, new order, positions still calculated) → verify → file.
 
 **Verify:** self-scorecard first (not 9+ by your own accord? fix it yourself) → another seat → Shawn's eye. Scroll 0 AND scrolled, desktop AND phone, phone first. Design-contract gate measured: zero white, everything raised, gauges alive, no text-in-image.
 
