@@ -1,12 +1,12 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-09 06:14 UTC_
+_Last updated: 2026-11-09 07:12 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 8114
-- ✅ Verified (8+): 8046
-- 🟡 Partial (5–7): 65
+- **Total scored actions:** 8124
+- ✅ Verified (8+): 8055
+- 🟡 Partial (5–7): 66
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
 - **Verification rate:** 99% of actions fully verified
@@ -15,18 +15,18 @@ _Last updated: 2026-11-09 06:14 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 540 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 538 | 8.9 | 9.5 |
+| Team 1 | Naya Verity | 542 | 9.1 | 9.6 |
+| Team 2 | Naya Sage | 540 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 495 | 9.0 | 10 |
 | Team 4 | Naya Mason | 471 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 621 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 355 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 476 | 9.0 | 10 |
+| Team 7 | Naya Conductor | 477 | 9.0 | 10 |
 | Team 8 | Naya Sentinel | 498 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 625 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 857 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 518 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 408 | 9.2 | 9.5 |
+| Team 9 | Naya Smith | 626 | 9.0 | 9.5 |
+| Team 10 | Naya Librarian | 858 | 9.1 | 9.7 |
+| Team 11 | Naya Heart | 519 | 9.0 | 9.6 |
+| Team 12 | Naya Herald | 409 | 9.2 | 9.5 |
 
 ## Learning velocity
 
@@ -990,6 +990,7 @@ _Last updated: 2026-11-09 06:14 UTC_
 - **gate-stall-20261108-1900:** 1 actions, avg 9.0/10
 - **gate-stall-20261108-2007:** 1 actions, avg 9.0/10
 - **gate-stall-20261108-2109:** 1 actions, avg 9.0/10
+- **gate-stall-20261108-2215:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -1142,6 +1143,8 @@ _Last updated: 2026-11-09 06:14 UTC_
 - **gap-scorer-20261015-0620-lane1:** 1 actions, avg 9.5/10
 - **gap-lane-scorer-20261015-0700-lane1:** 1 actions, avg 8.0/10
 - **gap-scorer-20261015-0720-lane1:** 1 actions, avg 9.0/10
+- **gap-lane-scorer-20261015-1220-lane1:** 1 actions, avg 9.0/10
+- **gap-gap-t0172-lane1-lane1:** 1 actions, avg 9.0/10
 - **scorer-20261014-1520:** 2 actions, avg 9.2/10
 - **scorer-20261014-1540:** 3 actions, avg 8.5/10
 - **gap-t0771:** 2 actions, avg 9.0/10
@@ -1376,6 +1379,7 @@ _Last updated: 2026-11-09 06:14 UTC_
 - **gap-gap-gap-t1564-lane11:** 1 actions, avg 9.0/10
 - **gap-scorer-20261015-0320-lane11:** 1 actions, avg 9.0/10
 - **gap-scorer-20261015-0620-lane11:** 1 actions, avg 9.4/10
+- **gap-gap-t0162-lane11-lane11:** 1 actions, avg 9.0/10
 - **scorer-20261014-2010:** 4 actions, avg 9.2/10
 - **scorer-20261014-2310:** 7 actions, avg 9.4/10
 - **scorer-20261014-2320:** 4 actions, avg 8.9/10
@@ -1450,6 +1454,7 @@ _Last updated: 2026-11-09 06:14 UTC_
 - **preregister-t0718:** 1 actions, avg 9.5/10
 - **preregister-t0719:** 1 actions, avg 9.5/10
 - **gap-scorer-20261015-0650-lane12:** 1 actions, avg 8.0/10
+- **gap-lane-scorer-20261015-1210-lane12:** 1 actions, avg 7.0/10
 - **scorer-20261014-1450:** 5 actions, avg 9.1/10
 - **gap-scorer-20261015-0140:** 2 actions, avg 9.2/10
 - **lane-scorer-20261015-0430:** 2 actions, avg 9.1/10
@@ -1512,6 +1517,7 @@ _Last updated: 2026-11-09 06:14 UTC_
 - **gap-t0072-lane2:** 1 actions, avg 8.5/10
 - **gap-scorer-20261014-2320-lane2:** 1 actions, avg 9.0/10
 - **gap-scorer-20261015-0400-lane2:** 1 actions, avg 9.4/10
+- **gap-gap-t0162-lane2-lane2:** 1 actions, avg 9.0/10
 - **scorer-20261014-1440:** 8 actions, avg 8.9/10
 - **gap-t0767:** 2 actions, avg 9.5/10
 - **scorer-20261014-1950:** 6 actions, avg 9.0/10
@@ -2335,7 +2341,9 @@ _Last updated: 2026-11-09 06:14 UTC_
 - **t0492:** 6 actions, avg 8.9/10
 - **t0492-lane11:** 1 actions, avg 9.0/10
 - **t0492-lane4:** 1 actions, avg 8.5/10
+- **t492:** 1 actions, avg 9.0/10
 - **t0502:** 6 actions, avg 8.8/10
+- **t502:** 3 actions, avg 8.8/10
 - **t0511:** 2 actions, avg 9.2/10
 - **t0512:** 6 actions, avg 8.8/10
 - **t0513:** 4 actions, avg 8.9/10
