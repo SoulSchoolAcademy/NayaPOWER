@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-09 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-09 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -34265,6 +34265,12 @@ _Last updated: 2026-11-09 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-lane-scorer-20261015-1700-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261015-1700-lane9: re-derive t0705 E3 sign-out timestamps from live feed bytes
+
+**Evidence:** VERIFIED: cited on-disk pins match live bytes — value-ledger-seed-t0690.md present (7,136 bytes); t0677-lane4.md mtime Oct 13 22:22 == receipt's 22:22:06Z proxy; t0685-lane5.md mtime Oct 13 23:37 == receipt's 23:37:07Z proxy. Both cited timestamps falsified with comment IDs (t0679 sign-out 6156689421 is wrong tick/lane; 23:58Z is learning-event com
+
 ### ✅ gap-t0776-lane9-decline2-rootcause — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** gap-t0776 decline #2: identity-barred PR #2591 verdict, root cause (empty eligibility pool) named with proof, loop broken
@@ -49686,6 +49692,18 @@ _Last updated: 2026-11-09 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gap-gate-stall-20261016-1037-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap-gate-stall-20261016-1037-lane0: reproduce all 28 parent refusal verdicts with pinned transcript
+
+**Evidence:** VERIFIED: transcript hidden_files/gap-gap-gate-stall-20261016-1037-transcript.log exists (30,849 bytes, 275 lines) and sha256 7ef715c66676a72cb16061f8c9e2c6c673eab94962595b4c954c47b6237ad234 matches the receipt's pinned prefix byte-for-byte; all 28 verdicts machine-reproduced, zero accidental claims; honest correction 28 -> 22 blocked (6 already dr
+
+### ✅ gap-gate-stall-20261016-1027-lane0 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gap-gate-stall-20261016-1027-lane0: claim refusal root-caused (claim-brief.py affirmative-allow grammar hole)
+
+**Evidence:** VERIFIED: brief-gap-gate-stall-20261016-1027-lane0.md found in brief-queue/done/ (drained as claimed); bin/claim-brief.py exists (187,852 bytes). Root cause named with line numbers (evaluate_gate lines 600-652, bar-only grammar, no affirmative-allow token) plus two concrete paths (re-stamp/reword vs allow token) and a prequeue_eligible filter spec.
 
 ### ✅ gate-stall-20261109-0228 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
