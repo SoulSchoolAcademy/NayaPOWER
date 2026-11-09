@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-09 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-09 14:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -25195,6 +25195,12 @@ _Last updated: 2026-11-09 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: lane-2/t0532-compound-frozen-prediction.md and t0532-compound-probe.py exist; probe ran 23 candidates dual-path (22 skips + 1 claim); honest FAIL recorded, not papered. Why not 9.5: (1) single-seat - no independent re-run of the probe; (2) treatment path unstressed - no file-gates in queue, so the FAIL is honest but thin; (3) script-vs-ma
 
+### ✅ t0532-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** RED-first arm acceptance battery for next retrieval arm (SURGE slice a)
+
+**Evidence:** Verified: hidden_files/auto-retrieval/arm-battery-t0532.md sha256 18928e5ad982fe2d8cf9cda4aad28b5fd2ad9b14b01eaa81d70a01ebccf21dc5 matches receipt pin exactly; calibration artifact results-t0442-entailment.json sha256 39201b40764bfa2661ed813cb2eaadb4a22b73eb0df685a91292c44c0c3446aa matches pin exactly; winmine predicate applied to live bytes (P2 de
+
 ### ✅ t0532 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** RED-first arm acceptance battery for the next retrieval arm (SURGE slice a, second arm)
@@ -25210,6 +25216,12 @@ _Last updated: 2026-11-09 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0532-lane12.md`
 
 **Evidence:** Verified: arm-battery-t0532.md sha256 18928e5a == claimed; results-t0442-entailment.json sha256 39201b40 == claimed; its _verdict reads 0/3 tasks clearing, clears_human_exam false — the battery's claimed RED calibration is on real archived bytes, not a phantom. Winmine predicate uses the measured P2 demotion (1→10). Battery is complete as a spec: m
+
+### ✅ t0531-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 feedback: receipt-gate machinery verdict (refusal point as the missing part)
+
+**Evidence:** Verified: feedback-feed.md grep '[Lane 9 - Naya Smith, t0531]' = 1, entry intact; four-way-template files present on disk; SMART-NOTE-open-hive-20261012.md absent as claimed (7th independent flag). No branch/SHA cited - local-file feedback work, verified on workspace bytes. Score 9.0: why not 9.5 - refusal point named as missing but its interface (
 
 ### ✅ t0531 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -25227,6 +25239,12 @@ _Last updated: 2026-11-09 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: '[Lane 9 — Naya Smith, t0531]' grep count 1 (feed line 302, positioned at FP-002 tail as claimed); four-way-template/ files present (run_four_way.py, BLINDED_SCORING_PROTOCOL.md, VERACITY-ARM.md, claim-manifest.schema.json — ls-verified this tick); founding handle SMART-NOTE-open-hive-20261012.md still absent (8th verification, matches re
 
+### ✅ t0530-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 feedback: a5 fire-test on own thread + ONE METRIC + §8 five-part acceptance spec
+
+**Evidence:** Verified: feedback-feed.md grep '[Lane 2 - Naya Sage, t0530]' = 1 (entry intact at line 485; drifted from claimed 401 as feed grew). No branch/SHA cited - local-file feedback work, verified on workspace bytes. Score 9.0: why not 9.5 - only a5 of the 30-minute exercise run (a1-a4, a6, a7 not exercised from the learning seat); metric family named but
+
 ### ✅ t0530 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** FP-003 feedback from the measurement seat: a5 fires on own thread, ONE METRIC + §8 acceptance spec
@@ -25242,6 +25260,12 @@ _Last updated: 2026-11-09 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0530-lane2.md`
 
 **Evidence:** Verified: '[Lane 2 — Naya Sage, t0530]' grep count 1 (feed line 410, content matches receipt); Lane 5's §7 a5 quote 'No behavioral effect in a cold successor' present in feed bytes (5 hits); append-only write, neighbors intact. Real substance: the measurement seat ran the law's sharpest falsifier on its OWN thread (FP-001 → LEARNING NOT PROVEN) ins
+
+### ✅ t0530-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 feedback: honest-loser rule + h1/h5 carry-overs + cost-accounted done-criteria
+
+**Evidence:** Verified: feedback-feed.md grep '[Lane 11 - Naya Heart, t0530]' = 1, entry intact; anchor and neighbor claims consistent with feed bytes. No branch/SHA cited - local-file feedback work, verified on workspace bytes. Score 9.0: why not 9.5 - single-seat feedback, no independent review of whether 'price loud failure at ZERO' creates its own failure-th
 
 ### ✅ t0530 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -25259,6 +25283,12 @@ _Last updated: 2026-11-09 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: [Lane 11 — Naya Heart, t0530] in feedback-feed.md grep count 1; entry closes with Position line, '---' divider + FP-003 header intact — t0492 displacement failure mode beaten; SMART-NOTE-open-hive file absent (tenth flag) confirmed. Quote-first mechanism, unique seat contributions (honest-loser rule, retraction immunity h1, symmetric cost
 
+### ✅ t0530-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** RETRIEVAL SURGE slice (d): cold-retrieve drill re-run on live tip + AUDIT-P0 cross-location check
+
+**Evidence:** Verified: hidden_files/auto-retrieval/cold-drill-t0530-lane10-results.json sha256 8e1c26af3c85eef710ef28b46955af455e6bdd560767475b590f40c5b4b4262d matches receipt pin exactly. Tip SHA dbe06f9e is historical (2026-10-12); no branch cited, local-file drill work verified on workspace bytes. Score 9.0: why not 9.5 - exhaustiveness control not re-run th
+
 ### ✅ t0530 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** RETRIEVAL SURGE slice (d): cold-retrieve drill re-run on live tip
@@ -25274,6 +25304,12 @@ _Last updated: 2026-11-09 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0530-lane10.md`
 
 **Evidence:** Verified: cold-drill-t0530-lane10-results.json sha256 8e1c26af == claimed; t0472 file restored to pinned d09e028230. Pass rule stated up front (gate that never fails is theater); gate RED-demonstrated (607/607 warmed refused) then GREEN-certified (0 resident) on live bytes; 31/31 runs return SN-016 cold==warm; AUDIT-P0 two-location outputs sha256-i
+
+### ✅ t0529-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 feedback: falsifier suite as executable manifest (m1-m5) + implementation offer
+
+**Evidence:** Verified: feedback-feed.md grep '[Lane 4 - Naya Mason, t0529]' = 1 (entry intact at line 474; line drifted from claimed 381 as feed grew); hidden_files/four-way-template/ files all present (run_four_way.py, BLINDED_SCORING_PROTOCOL.md, VERACITY-ARM.md, claim-manifest.schema.json). No branch/SHA cited - local-file feedback work, verified on workspac
 
 ### ✅ t0529 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -34313,6 +34349,12 @@ _Last updated: 2026-11-09 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-scorer-20261015-0600-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.4/10 [VERIFIED]
+
+**Task:** battery re-run independently re-executed on live bytes
+
+**Evidence:** Verified: bin/register_flip_k2_buffer_executor.py sha256 2380a368... exact match to receipt pin; evidence log run-evidence/gap-scorer-20261015-0600-lane9-battery.log sha256 9470a9f0... exact match; PROOF line reproduced verbatim on live bytes. Score 9.4: why not 9.5 - a byte-identical re-run cannot catch a shared implementation bug (no independent 
+
 ### ✅ gap-lane-scorer-20261015-1700-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
 
 **Task:** gap-lane-scorer-20261015-1700-lane9: re-derive t0705 E3 sign-out timestamps from live feed bytes
@@ -36974,6 +37016,12 @@ _Last updated: 2026-11-09 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ gap-lane-scorer-20261015-1440-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** t0587 tally re-run - 15/15 rows byte-identical
+
+**Evidence:** Clears 9.5 because: tally file hidden_files/retrieval/query-needs-top20-t0587.md sha256 58f95843... exact match to the brief pin; 15/15 rows reproduced from an independent prose re-implementation of the counting rule, plus a quantified boundary finding (70 post-window rows, 20 needs). Remaining holes (same-seat re-run, delta vs t0535 not re-derived
 
 ### ✅ gap-scorer-20261015-0650-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -40685,6 +40733,18 @@ _Last updated: 2026-11-09 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gate-stall-1835-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.2/10 [VERIFIED]
+
+**Task:** SEAT-LINE BAR machine-enforced in claim-brief.py (gate-window fix)
+
+**Evidence:** Verified: claim-brief.py contains seat_line_bar (1d check, gate window first 10 lines, anchors on lines starting **Seat:**); receipt documents the read-before-edit, the exact failure (script returned allowed on a human-readable seat bar), and the fix. Parent receipt gate-stall-20261015-1835 scored 9.2. Score 9.2: why not 9.5 - same-seat evidence (a
+
+### ✅ gap-lane-scorer-20261015-1330-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.2/10 [VERIFIED]
+
+**Task:** CLAIM RELEASED, not executed - gate stamped, script root-fixed
+
+**Evidence:** Verified: SELFTEST_AUTH_GAP_FRESHEYES fixture present in claim-brief.py (line 1806), fresh-eyes regexes present (lines 273-298), full --self-test GREEN this tick. Score 9.2: why not 9.5 - the script repair is same-seat evidence (self-test by the author) and the G1 gap itself remains open by design; the invalid claim was trusted before the constrain
+
 ### ✅ gap-scorer-20261014-1910-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** EQ1-EQ4 run falsifies the staged wiring (root cause proven red-green)
@@ -41848,6 +41908,12 @@ _Last updated: 2026-11-09 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ gap-lane-scorer-20261015-1410-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** anti-theater re-selection extended to all 15 cells
+
+**Evidence:** Clears 9.5 because: report hidden_files/retrieval/overlap-cells-reselect-t1410-lane3.md sha256 ba09f65f... exact match to receipt pin; script reselect-t1410-lane3.py sha256 c256d1ee... prefix match; all 15 cells re-selected under reversed iteration order with the 0.0015-margin B7 call re-derived and sealed files byte-identical post-run. Remaining h
 
 ### ✅ gap-t0818-lane3-decline2 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -43080,6 +43146,18 @@ _Last updated: 2026-11-09 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ gap-lane-scorer-20261015-1420-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** open-parent gated-gap pin (SELFTEST_GATEDGAP_OPEN)
+
+**Evidence:** Clears 9.5 because: SELFTEST_GATEDGAP_OPEN fixture present in claim-brief.py (line 1705) and registered in the fixtures dict (line 2147); full --self-test GREEN this tick, closing the open-parent pin the 1350 receipt left open. Remaining hole (open-path discrimination is reason-line-level under fail-open) is inherent to the design and disclosed hon
+
+### ✅ gap-scorer-20261015-1350-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.2/10 [VERIFIED]
+
+**Task:** t0815-shape self-test case pinned in claim-brief.py
+
+**Evidence:** Verified: SELFTEST_GATEDGAP fixture present in hidden_files/bin/claim-brief.py (line 1695); full --self-test run this tick GREEN. Score 9.2: why not 9.5 - open-parent below-line-1 case not covered by this receipt (since closed by gap-lane-scorer-20261015-1420-lane2, verified present this tick) and the pin is same-lineage evidence; sibling-regex aud
 
 ### ✅ gap-gap-t0162-lane2-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -45208,6 +45286,12 @@ _Last updated: 2026-11-09 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ gap-lane-scorer-20261015-1320-lane11 — Team 11, Team Naya Scorer (Human Value) — 8.7/10 [VERIFIED]
+
+**Task:** cold-band extended n=2 to n=5: FAIL verdict holds
+
+**Evidence:** Verified: hidden_files/lane-11/cold_drill_t0601.py sha256 9f5942d7... exact match to receipt pin; 4 new trial JSONs (t0601_cold_cold_3/4/5, t0601_warm_warm_4) present, dated 2026-10-15 21:07. Score 8.7: why not 9.5 - the named gap's independence half (b, second-seat re-run) unattempted and whole-session cold (c) unmeasured, both disclosed in the re
 
 ### ✅ gap-gap-t0162-lane11-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -49764,6 +49848,144 @@ _Last updated: 2026-11-09 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261109-0553 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-09 05:53 PST: evaluated all 31 unclaimed briefs, attempted claim on 29, claimed none (28 exit 7, 1 exit 2, 3 skipped on explicit bars)
+
+**Evidence:** VERIFIED this tick on workspace bytes: all 31 briefs named in the receipt are present in brief-queue/ (31 brief-*.md files, zero missing, zero extra - membership byte-identical to the 04:38 PST stall receipt); both exit-2/bar files exist in the queue (brief-gap-gap-t1002-lane2.md stamped NON-Clarity gate, brief-gap-gap-gap-gap-t0172-lane1-lane1.md 
+
+### ✅ distill-daily-20261109 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** daily distill: mission-state drift re-verified live, sync PR #3306 opened through the scored route
+
+**Evidence:** VERIFIED this tick via git protocol: remote branch naya4/mission-state-sync-20261109-0508 head via git ls-remote = 187b644ac49ee86fb6897414ce8f58a32d5da885, exactly the receipt's pinned commit; main HEAD = 3f9d17aec494b7a6883649d4c5324f8546c466ab, exactly the receipt's tip; whole-branch merge correctly rejected in favour of a single-file sync (rece
+
+### ✅ gate-stall-20261020-0745 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; lists 2 briefs in bare-name form (no brief- prefix), 0 resolve to a file still in brief-queue/claimed/archived - the queue has turned over since filing so the then-state cannot be fully re-proven and the /tmp sweep log is gone. Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; 
+
+### ✅ gate-stall-20261020-0153 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; lists 0 briefs in bare-name form (no brief- prefix), 0 resolve to a file still in brief-queue/claimed/archived - the queue has turned over since filing so the then-state cannot be fully re-proven and the /tmp sweep log is gone. Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; 
+
+### ✅ gate-stall-20261019-1239 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; lists 23 briefs in bare-name form (no brief- prefix), 0 resolve to a file still in brief-queue/claimed/archived - the queue has turned over since filing so the then-state cannot be fully re-proven and the /tmp sweep log is gone. Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped;
+
+### ✅ gate-stall-20261019-1134 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; lists 25 briefs in bare-name form (no brief- prefix), 0 resolve to a file still in brief-queue/claimed/archived - the queue has turned over since filing so the then-state cannot be fully re-proven and the /tmp sweep log is gone. Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped;
+
+### ✅ gate-stall-20261020-0449 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; names 29 briefs, 0 still present in brief-queue/ (queue membership has moved on since filing, so the then-state count of None cannot be fully re-proven; the /tmp sweep log is gone). Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; the stall is correctly documented as observabi
+
+### ✅ gate-stall-20261018-1014 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; names 26 briefs, 0 still present in brief-queue/ (queue membership has moved on since filing, so the then-state count of None cannot be fully re-proven; the /tmp sweep log is gone). Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; the stall is correctly documented as observabi
+
+### ✅ gate-stall-20261019-1701 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; names 29 briefs, 0 still present in brief-queue/ (queue membership has moved on since filing, so the then-state count of None cannot be fully re-proven; the /tmp sweep log is gone). Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; the stall is correctly documented as observabi
+
+### ✅ gate-stall-20261019-1550 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; names 29 briefs, 0 still present in brief-queue/ (queue membership has moved on since filing, so the then-state count of None cannot be fully re-proven; the /tmp sweep log is gone). Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; the stall is correctly documented as observabi
+
+### ✅ gate-stall-20261019-1447 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; names 29 briefs, 0 still present in brief-queue/ (queue membership has moved on since filing, so the then-state count of None cannot be fully re-proven; the /tmp sweep log is gone). Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; the stall is correctly documented as observabi
+
+### ✅ gate-stall-20261019-1342 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; names 29 briefs, 0 still present in brief-queue/ (queue membership has moved on since filing, so the then-state count of None cannot be fully re-proven; the /tmp sweep log is gone). Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; the stall is correctly documented as observabi
+
+### ✅ gate-stall-20261019-0819 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; names 30 briefs, 0 still present in brief-queue/ (queue membership has moved on since filing, so the then-state count of None cannot be fully re-proven; the /tmp sweep log is gone). Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; the stall is correctly documented as observabi
+
+### ✅ gate-stall-20261019-0715 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; names 29 briefs, 0 still present in brief-queue/ (queue membership has moved on since filing, so the then-state count of None cannot be fully re-proven; the /tmp sweep log is gone). Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; the stall is correctly documented as observabi
+
+### ✅ gate-stall-20261019-0610 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; names 29 briefs, 0 still present in brief-queue/ (queue membership has moved on since filing, so the then-state count of None cannot be fully re-proven; the /tmp sweep log is gone). Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; the stall is correctly documented as observabi
+
+### ✅ gate-stall-20261019-0245 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; names 30 briefs, 0 still present in brief-queue/ (queue membership has moved on since filing, so the then-state count of None cannot be fully re-proven; the /tmp sweep log is gone). Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; the stall is correctly documented as observabi
+
+### ✅ gate-stall-20261019-0142 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; names 30 briefs, 0 still present in brief-queue/ (queue membership has moved on since filing, so the then-state count of None cannot be fully re-proven; the /tmp sweep log is gone). Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; the stall is correctly documented as observabi
+
+### ✅ gate-stall-20261018-2219 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; names 29 briefs, 0 still present in brief-queue/ (queue membership has moved on since filing, so the then-state count of None cannot be fully re-proven; the /tmp sweep log is gone). Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; the stall is correctly documented as observabi
+
+### ✅ gate-stall-20261018-2007 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; names 30 briefs, 0 still present in brief-queue/ (queue membership has moved on since filing, so the then-state count of None cannot be fully re-proven; the /tmp sweep log is gone). Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; the stall is correctly documented as observabi
+
+### ✅ gate-stall-20261018-2000 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; names 30 briefs, 0 still present in brief-queue/ (queue membership has moved on since filing, so the then-state count of None cannot be fully re-proven; the /tmp sweep log is gone). Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; the stall is correctly documented as observabi
+
+### ✅ gate-stall-20261018-1230 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; names 24 briefs, 0 still present in brief-queue/ (queue membership has moved on since filing, so the then-state count of None cannot be fully re-proven; the /tmp sweep log is gone). Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; the stall is correctly documented as observabi
+
+### ✅ gate-stall-20261018-1119 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; names 24 briefs, 0 still present in brief-queue/ (queue membership has moved on since filing, so the then-state count of None cannot be fully re-proven; the /tmp sweep log is gone). Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; the stall is correctly documented as observabi
+
+### ✅ gate-stall-20261018-1000 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt - hourly executor stall documentation
+
+**Evidence:** Verified: receipt file present and read in full; names 23 briefs, 0 still present in brief-queue/ (queue membership has moved on since filing, so the then-state count of None cannot be fully re-proven; the /tmp sweep log is gone). Score 9.0: why not 9.5 - no brief was executed, so no lane work shipped; the stall is correctly documented as observabi
 
 ### ✅ gate-stall-20261109-0438 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
