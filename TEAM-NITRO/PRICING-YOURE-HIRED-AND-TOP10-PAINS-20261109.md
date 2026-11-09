@@ -6,6 +6,59 @@
 
 ---
 
+## v3 — Word-perfect polish + the unfolding shape (2026-11-09 ~02:21Z, his direction)
+
+Shawn's order: the letter's unfolding-beat format — read one, click for the next — is used for ALL THREE spots: the Top 10 pains, who this is for, and the founder's letter. "It's beautiful and it's easy to read that way, it's nice, it's easy to present to — it's almost like that viewpoint just unfolds, unfolds before your eyes."
+
+The standard: word perfect. It is what it is. Beautiful. Not confusing. Logical, reasonable, sensible. Something they can trust because it's obvious. Cut the jargon — "hey, this is how it is, look, and we have a thing to do the math."
+
+The substance, woven in: it's much more than money. Much more than meets the eye. Everything, all in one — the automation, the internet, the intelligent layer, the connection. All of it. Not one thing — everything that matters.
+
+### The opening, as unfolding beats (for the build seat, after his eye)
+
+One beat = one idea. Read one, click for the next. The ten pains are beats 4–13, one pain per beat. No prices in the opening, no button in the opening: the opening names the problem and proves it is real; the chart shows the world that solves it; the letter closes it.
+
+**Beat 1 — Welcome aboard.**
+> Welcome aboard. Let me tell you what that really means, in simple words, so there is no confusion. You are about to see exactly what this is — and exactly what pain it solves for you.
+
+**Beat 2 — It's real.**
+> This is for real. It is not a scam. It is math and logic. Let me break it down for you, plainly — you bring people, they join, you get half. That is the whole deal, and you can count it yourself. Nothing to guess at.
+
+**Beat 3 — The objections, answered.**
+> Now let me answer what you are already thinking. A lot of you think, right away — oh, it's network marketing. It's not. Let me explain. And some of you don't believe in anything — or you don't know how to tell whether something is real or not. Fair enough. But sometimes things are logical, and they are mathematical — and when they are, you don't have to believe. You can check the math. We needed to create something different, so we did.
+
+**The bridge to the pains:**
+> So — what pain are we solving for you? Here are the ten. Read them and find your own:
+
+**Beat 4 — Pain 1.** The internet is too complicated — and 99% of the people who try to make money on it fail.
+**Beat 5 — Pain 2.** They say AI is taking jobs.
+**Beat 6 — Pain 3.** Google and Facebook make billions from you being the user — and pay you nothing.
+**Beat 7 — Pain 4.** Your whole life is scattered — six platforms, ten apps, and no home of your own.
+**Beat 8 — Pain 5.** Nothing is push-button simple — everything needs learning, setting up, or paying someone else to run it.
+**Beat 9 — Pain 6.** You bring the value, and somebody else keeps the money.
+**Beat 10 — Pain 7.** Nobody remembers — not your notes, not your days, not your promises.
+**Beat 11 — Pain 8.** Your mail gets read, and your life gets kept forever.
+**Beat 12 — Pain 9.** On the internet, you're the product — not the person.
+**Beat 13 — Pain 10.** And everything charges you before you even know if it works.
+
+**Beat 14 — The problem, solved.**
+> That is the problem. And here is what we made to solve it: push button simple. One system that lets you operate the internet, connect with people, organize your whole world, and make money from the internet — with the best tools, all in one place. Affordable for your average Joe.
+
+**Beat 15 — Much more than money.**
+> And it is much more than money. Much more than meets the eye. It's everything, all in one — the automation, the internet, the intelligent layer, the connection. All of it. Not one thing. Everything that matters.
+
+**Beat 16 — Welcome to the future.**
+> Welcome to the future. Now everybody in the world gets to make money from the internet. There's a new girl in town — her name is Naya. She's an intelligent layer.
+
+**What changed from v2, and why:**
+- The shape: the opening is now written as unfolding beats (16 beats), the same format as the letter — one idea per beat, click to reveal the next. The words are the v2 words, re-shaped, not re-written.
+- One small cut for the standard: "First:" dropped from beat 2 — the beat number does that job. "Let me break it down for you, plainly" stays — it is his voice, not jargon.
+- The ten pains are unchanged, word for word — they were already one line each, and each one is already obvious.
+- New beat 15 carries the "much more than money" substance in his words: the automation, the internet, the intelligent layer, the connection — all of it.
+- The "You're hired" board is unchanged in v3 — on read-through it already passes the standard (every line is his words, plain and logical), and it already carries the same substance in "the best of the whole internet, all in one place." The board is one board, not beats, and it stays one board.
+
+---
+
 ## v2 — The opening, revised (2026-11-09 ~02:19Z, his dictation)
 
 He restated the settled shape — the Top 10 pain points open the page — and gave the FRAME that must sit around the pains: welcome first, then proof it is real, then the objections answered head-on, then the pains, then the problem we solve, then welcome to the future. His product words stay verbatim: "welcome aboard" · "math and logic" · "not network marketing" · "push button simple" · "average Joe" · "welcome to the future" · "there's a new girl in town, her name is Naya, she's an intelligent layer." His direction is shaped, never pasted raw.
