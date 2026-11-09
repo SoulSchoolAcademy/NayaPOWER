@@ -444,8 +444,15 @@ h2{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(24px,3vw,
 /* Letter slots — placement only: the Hub card margin (18px, card-header
    alignment) does not apply inside a list; the in-text orb is sized to sit
    inside a line of letter text. The component above is untouched. */
-.jlist .ib-card-orb.lb-orb{margin:1px 0 0}
-.letter .jlist li{align-items:center}
+.jlist .ib-card-orb.lb-orb{margin:0}
+/* Every list orb belongs on its item's FIRST line — the heading line —
+   never at the block's middle: items with a sub-line (the wide list)
+   and items whose text wraps at phone width both run past one line.
+   Seat the orb at the top and drop it by half the gap between the
+   first line's height (1.45em) and the orb, so its centre lands
+   exactly on the first line's centre at any font size. */
+.letter .jlist li{align-items:flex-start}
+.letter .jlist .ib-card-orb.lb-orb{margin-top:calc((1.45em - 11px)/2)}
 .lb-orb-in{width:26px;height:26px;vertical-align:-7px;margin:0 0 0 3px}
 .lb-orb-in::before{inset:-3px;padding:2px}
 /* === LETTER GEMS — the letter's orb bullets refined (Shawn 2026-11-09):
@@ -454,23 +461,35 @@ h2{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(24px,3vw,
    every digit colour deepened toward its jewel (the colour still comes
    only from --oc / --oc-rgb, so the digit law per position is unchanged:
    1 ruby, 2 amber, 3 dark gold, 4 emerald, 5 sapphire, 6 indigo,
-   7 royal purple, 8 plum, 9 magenta). The halo is pulled back to a whisper
-   so the stone reads as a gem, not a light bulb; the light pool is gone.
+   7 royal purple, 8 plum, 9 magenta). The halo stays a jewel's glow, not a
+   light bulb's; the light pool is gone. The core is lit from within —
+   near-full colour at its heart, deepening to the rim — so the stone
+   reads luminous, never flat, never a glossy ball.
    Life: the ::before arc genuinely CIRCLES — a short bright arc with a
-   white-hot head sweeping the ring on orb-spin — while the core keeps its
-   orb-breathe. The small facet glint at 34%/26% is the diamond cut. === */
+   white-hot head sweeping the ring on orb-spin — a real .orb-ring child
+   element circles with it carrying the glint dot, while the core keeps
+   its orb-breathe. The small facet glint at 34%/26% is the diamond cut. === */
 .letter .ib-card-orb.lb-orb,.letter .ib-card-orb.lb-orb-in{
   width:11px;height:11px;
   background:
-    radial-gradient(circle at 34% 26%, rgba(255,255,255,.92) 0%, rgba(255,255,255,.30) 15%, transparent 36%),
-    radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--oc) 50%, #000) 0%, color-mix(in srgb, var(--oc) 66%, #000) 56%, color-mix(in srgb, var(--oc) 32%, #000) 100%);
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.38) 15%, transparent 36%),
+    radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--oc) 88%, #fff) 0%, var(--oc) 42%, color-mix(in srgb, var(--oc) 62%, #000) 78%, color-mix(in srgb, var(--oc) 38%, #000) 100%);
   box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.38),
-    inset 0 2px 3px rgba(255,255,255,.20),
-    inset 0 -3px 5px rgba(0,0,0,.60),
-    0 0 5px rgba(var(--oc-rgb),.38),
+    inset 0 0 0 1px rgba(255,255,255,.50),
+    inset 0 2px 3px rgba(255,255,255,.28),
+    inset 0 -3px 5px rgba(0,0,0,.55),
+    0 0 9px rgba(var(--oc-rgb),.65),
+    0 0 22px -4px rgba(var(--oc-rgb),.45),
     0 1px 3px rgba(0,0,0,.65);
 }
+/* The orbiting satellite — a REAL element riding the ring: .orb-ring is a
+   live child of the orb carrying orb-spin, so the circling is a true
+   change of position over time, not a scale — the white-hot glint dot
+   (.orb-dot) travels the ring at its edge, on the same 3s period as the
+   ::before arc, seated at the arc's bright head. */
+.letter .orb-ring{position:absolute;inset:-3px;border-radius:50%;z-index:2;pointer-events:none;animation:orb-spin 3s linear infinite}
+.letter .orb-dot{position:absolute;top:0;left:50%;width:2.5px;height:2.5px;margin:-1.25px 0 0 -1.25px;border-radius:50%;background:#fff;box-shadow:0 0 4px 1px rgba(var(--oc-rgb),.95),0 0 2px #fff}
+@media(prefers-reduced-motion:reduce){.letter .orb-ring{animation:none!important}}
 .letter .ib-card-orb.lb-orb::before,.letter .ib-card-orb.lb-orb-in::before{
   inset:-3px;padding:1.5px;
   background:conic-gradient(from 0deg, transparent 0deg, transparent 195deg, color-mix(in srgb, var(--oc) 72%, #000) 262deg, #ffffff 324deg, transparent 360deg);
@@ -478,7 +497,7 @@ h2{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(24px,3vw,
   animation:orb-spin 3s linear infinite;
 }
 .letter .ib-card-orb.lb-orb::after,.letter .ib-card-orb.lb-orb-in::after{display:none}
-.letter .ib-card-orb.lb-orb-in{vertical-align:-1px;margin:0 0 0 3px}
+.letter .ib-card-orb.lb-orb-in{vertical-align:middle;top:-0.12em;margin:0 0 0 3px}
 .sign-line{display:block;font-family:Marcellus,Georgia,serif;font-size:19px;line-height:1.42;color:#fff;max-width:440px}
 @media(max-width:640px){.sign-line{font-size:16.5px}}
 @media(max-width:640px){
@@ -570,7 +589,7 @@ h2{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(24px,3vw,
 .how-card p{margin:0;font-size:15.5px;line-height:1.65;color:#fff}
 .start-cta{margin-top:12px;padding:22px 20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
 .start-big{font-size:19px;padding:20px 46px;--glow:#2fe89e}
-.pay-note,.free-note{display:none;margin:0;font-size:13.5px;font-weight:700;line-height:1.5;color:#fff;max-width:540px}
+.pay-note,.free-note{display:none;margin:0;font-size:13.5px;font-weight:700;line-height:1.5;color:#fff;max-width:540px;scroll-margin-bottom:28px}
 .pay-note.show,.free-note.show{display:block}
 .cont-free{background:none;border:none;font-family:inherit;font-size:13px;font-weight:700;color:var(--soft);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px 8px}
 .cont-free:hover{color:#fff}
@@ -585,7 +604,7 @@ h2{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(24px,3vw,
    lighter subline beneath. One tap opens the nine-block chooser, same as every other start door. ============ */
 .finale-foot{margin:34px auto 58px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
 .finale-btn{--glow:var(--purple);position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;gap:22px;text-align:left;
-  width:min(720px,100%);padding:26px 42px;border-radius:999px;border:1.5px solid rgba(255,255,255,.40);color:#fff;
+  width:min(840px,100%);padding:26px 34px;border-radius:999px;border:1.5px solid rgba(255,255,255,.40);color:#fff;
   background:radial-gradient(120% 160% at 50% 0%,rgba(255,255,255,.10),rgba(255,255,255,0) 50%),linear-gradient(180deg,#101018 0%,#07070b 52%,#050607 100%);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.30),inset 0 -10px 22px rgba(0,0,0,.78),0 0 44px rgba(160,107,255,.55),0 0 110px -12px rgba(160,107,255,.55),0 24px 48px rgba(0,0,0,.72);
   animation:finale-breathe 3.8s ease-in-out infinite}
@@ -1299,6 +1318,86 @@ body:not(.hero-mode) #tn-tacho-mount {width:min(320px,60%) !important;}
   .tn-tacho-bandline{white-space:normal}
   #tn-tacho-mount .tn-tacho-bandline{white-space:normal}
 }
+/* ============ FULL SCREEN + MOBILE-FIRST (v58) — sizing/spacing only.
+   The viewport is the stage: the old 1280px centered column left dead
+   black space on both sides of a laptop. Every page-level container now
+   spans the full viewport width with a comfortable 32px gutter (inside
+   the 24–40px band); grids, boards, the letter, the calculator and the
+   finale stretch with it. On the phone — the primary experience — the
+   gutters drop to 12px so the content is genuinely full-width, the
+   letter's end button fits on ONE line, the feature label clears its
+   info jewel, and the chooser gets breathing room. No words, colours,
+   counts, links or behaviour change. ============ */
+.wrap{max-width:none;width:100%;padding-left:32px;padding-right:32px}
+.foot{max-width:none;width:100%;padding-left:32px;padding-right:32px}
+.finale-leadin-wrap{max-width:none;width:100%;padding-left:32px;padding-right:32px}
+.chooser-pop{max-width:none;padding-left:32px;padding-right:32px}
+.plan-pop{max-width:none;padding-left:32px;padding-right:32px}
+.viewer{width:100%}
+.finale-btn{width:min(1120px,100%)}
+.calc-story-grid{max-width:none}
+@media(max-width:900px){
+  .wrap{padding:18px 12px 6px}
+  .foot{padding-left:12px;padding-right:12px}
+  .finale-leadin-wrap{padding-left:12px;padding-right:12px}
+  /* the feature label must clear the info jewel seated at its top-right —
+     "Home / Hub" was running underneath it at phone width */
+  .ch-feat{padding-right:30px}
+  .eye-jewel{width:18px;height:18px;font-size:11px;top:5px;right:5px}
+}
+@media(max-width:640px){
+  .chooser-pop{padding:16px 8px 24px}
+  .plan-pop{padding:16px 12px 24px}
+  .chooser-grid,.chooser-cols{gap:7px}
+  .plan-block{padding:14px 4px 13px;min-height:44px}
+  .plan-pill{white-space:nowrap}
+  .finale-btn{gap:12px;padding:18px 14px}
+  .finale-star{width:48px;height:48px;font-size:22px}
+  .finale-title{font-size:20px}
+  .finale-sub{font-size:13.5px}
+  .cont-free{padding:10px 12px}
+}
+@media(max-width:480px){
+  /* the letter's end button — "Get in — start your trial now ◆" — wrapped
+     to two lines at phone width; sized to sit on one line, thumb-high */
+  .letter-cta .start-big{font-size:16px;letter-spacing:.02em;padding:16px 10px;white-space:nowrap;min-height:52px}
+  .massive{font-size:17px;letter-spacing:.03em;padding:20px 12px;white-space:nowrap;min-height:56px}
+}
+/* ============ MOBILE FIX PASS (v61) — three measured defects, fixed at
+   phone widths only; desktop rendering is untouched.
+   1) TRUE 360px OVERFLOW: the calculator's gauge / readout / digit
+   tiles were fixed-width (352px) inside a ~302px content box, and the
+   letter's corner medallions kept their desktop corner-straddle
+   transform, so both ran past the right edge (scrollWidth 381 at a
+   360px viewport). The calculator column is now fluid — capped at its
+   natural 352px, shrinking with the screen — and the medallions sit
+   inside the letter's corners instead of straddling them.
+   2) TAP TARGETS: the "or continue with Naya Free" doors (38px tall)
+   and "or read the whole letter at once" (26px) were under the 44px
+   guideline — vertical padding + min-height only, text size unchanged.
+   3) SIGNATURE: the sign-off line wrapped to 3 cramped lines at 360px;
+   slightly smaller type at the smallest widths settles it on two. ============ */
+.cont-free{padding:13px 12px;min-height:44px}
+.cont-free.lit-free{padding-top:12px;padding-bottom:12px;min-height:44px}
+.letter-all{padding:14px 10px;min-height:44px}
+@media(max-width:640px){
+  .lc-tl{transform:rotate(-35deg)}
+  .lc-tr{transform:rotate(35deg)}
+  .lc-bl{transform:rotate(-145deg)}
+  .lc-br{transform:rotate(145deg)}
+}
+@media(max-width:480px){
+  #calculator .calc-gauge{flex:0 1 auto;width:min(352px,100%);max-width:100%;min-width:0;margin-left:auto;margin-right:auto}
+  #tn-tacho-mount{max-width:100%;min-width:0}
+  .tn-tacho{max-width:100%}
+  .calc-readout{width:100%;max-width:100%;min-width:0}
+  .calc-tiles{display:flex;width:100%;max-width:352px;min-width:0;margin:0 auto}
+  .calc-tiles .ct-reel{flex:1 1 0;width:auto;min-width:0}
+  .calc-tiles .ct-gap{flex:0 0 14px}
+}
+@media(max-width:400px){
+  .sign-line{font-size:13.5px;line-height:1.38}
+}
 </style>
 </head>
 <body>
@@ -1507,7 +1606,7 @@ body:not(.hero-mode) #tn-tacho-mount {width:min(320px,60%) !important;}
       <div class="letter-beat lb lead" style="--bc:#ff2a2a">
         <p class="lb-h"><span class="os-jewel os-jewel-md" style="--jc:#ff2a2a">◆</span><span>GET IN THE BUGATTI — OR STAY IN THE GOLF CART.</span></p>
         <p class="lb-big">The door&rsquo;s open.</p>
-        <p class="lb-big">Welcome to <strong>NayaNET</strong>. <span class="orb ib-card-orb lb-orb-in" style="--oc:#ff2a2a;--oc-rgb:255,42,42" aria-hidden="true"></span></p>
+        <p class="lb-big">Welcome to <strong>NayaNET</strong>. <span class="orb ib-card-orb lb-orb-in" style="--oc:#ff2a2a;--oc-rgb:255,42,42" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span></p>
       </div>
       <div class="letter-beat lb " style="--bc:#ff8c00" hidden>
         <p>You can keep doing the internet the old way.</p>
@@ -1525,11 +1624,11 @@ body:not(.hero-mode) #tn-tacho-mount {width:min(320px,60%) !important;}
         <p class="lb-h"><span class="os-jewel os-jewel-md" style="--jc:#00a86b">◆</span><span>YOUR LIFE ISN&rsquo;T AN APP.</span></p>
         <p>So why is your digital world scattered across dozens of them?</p>
         <ul class="jlist">
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff2a2a;--oc-rgb:255,42,42" aria-hidden="true"></span><span>Your ideas are in one place.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff8c00;--oc-rgb:255,140,0" aria-hidden="true"></span><span>Your messages are somewhere else.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#f5d76e;--oc-rgb:245,215,110" aria-hidden="true"></span><span>Your projects live somewhere else.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#00a86b;--oc-rgb:0,168,107" aria-hidden="true"></span><span>Your people are somewhere else.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#29b6f6;--oc-rgb:41,182,246" aria-hidden="true"></span><span>Your business has another login.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff2a2a;--oc-rgb:255,42,42" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Your ideas are in one place.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff8c00;--oc-rgb:255,140,0" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Your messages are somewhere else.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#f5d76e;--oc-rgb:245,215,110" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Your projects live somewhere else.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#00a86b;--oc-rgb:0,168,107" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Your people are somewhere else.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#29b6f6;--oc-rgb:41,182,246" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Your business has another login.</span></li>
         </ul>
         <p>And your AI?</p>
         <p>It helps you for a conversation&hellip; and then much of what mattered disappears into yesterday.</p>
@@ -1539,15 +1638,15 @@ body:not(.hero-mode) #tn-tacho-mount {width:min(320px,60%) !important;}
         <p class="lb-h"><span class="os-jewel os-jewel-md" style="--jc:#29b6f6">◆</span><span>What if your digital world could work together?</span></p>
         <p>What if you had a place for your:</p>
         <ul class="jlist">
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff2a2a;--oc-rgb:255,42,42" aria-hidden="true"></span><span>Ideas.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff8c00;--oc-rgb:255,140,0" aria-hidden="true"></span><span>People.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#f5d76e;--oc-rgb:245,215,110" aria-hidden="true"></span><span>Projects.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#00a86b;--oc-rgb:0,168,107" aria-hidden="true"></span><span>Business.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#29b6f6;--oc-rgb:41,182,246" aria-hidden="true"></span><span>Conversations.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#3f51b5;--oc-rgb:63,81,181" aria-hidden="true"></span><span>Spaces.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#8e24aa;--oc-rgb:142,36,170" aria-hidden="true"></span><span>Learning.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#b388ff;--oc-rgb:179,136,255" aria-hidden="true"></span><span>Intelligence.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff1493;--oc-rgb:255,20,147" aria-hidden="true"></span><span>Creations.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff2a2a;--oc-rgb:255,42,42" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Ideas.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff8c00;--oc-rgb:255,140,0" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>People.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#f5d76e;--oc-rgb:245,215,110" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Projects.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#00a86b;--oc-rgb:0,168,107" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Business.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#29b6f6;--oc-rgb:41,182,246" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Conversations.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#3f51b5;--oc-rgb:63,81,181" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Spaces.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#8e24aa;--oc-rgb:142,36,170" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Learning.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#b388ff;--oc-rgb:179,136,255" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Intelligence.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff1493;--oc-rgb:255,20,147" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Creations.</span></li>
         </ul>
         <p>A world that could become more organized, connected, and useful around <strong>you</strong>.</p>
         <p>That&rsquo;s what we&rsquo;re building.</p>
@@ -1558,11 +1657,11 @@ body:not(.hero-mode) #tn-tacho-mount {width:min(320px,60%) !important;}
         <p>Imagine an intelligent network designed to make technology feel more helpful and more human.</p>
         <p>A place where you can:</p>
         <ul class="jlist jlist-wide">
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff2a2a;--oc-rgb:255,42,42" aria-hidden="true"></span><span><strong>Capture what matters</strong><span class="sub">Turn ideas and valuable information into organized intelligence.</span></span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff8c00;--oc-rgb:255,140,0" aria-hidden="true"></span><span><strong>Connect with people</strong><span class="sub">Find, communicate, collaborate, and share with people around the world.</span></span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#f5d76e;--oc-rgb:245,215,110" aria-hidden="true"></span><span><strong>Build things</strong><span class="sub">Create projects, businesses, communities, pages, spaces&mdash;and eventually powerful smart apps.</span></span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#00a86b;--oc-rgb:0,168,107" aria-hidden="true"></span><span><strong>Learn and grow</strong><span class="sub">Choose what you want to learn from the collective intelligence of the network.</span></span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#29b6f6;--oc-rgb:41,182,246" aria-hidden="true"></span><span><strong>Build your world</strong><span class="sub">Bring the important parts of your digital life into one connected experience.</span></span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff2a2a;--oc-rgb:255,42,42" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span><strong>Capture what matters</strong><span class="sub">Turn ideas and valuable information into organized intelligence.</span></span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff8c00;--oc-rgb:255,140,0" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span><strong>Connect with people</strong><span class="sub">Find, communicate, collaborate, and share with people around the world.</span></span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#f5d76e;--oc-rgb:245,215,110" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span><strong>Build things</strong><span class="sub">Create projects, businesses, communities, pages, spaces&mdash;and eventually powerful smart apps.</span></span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#00a86b;--oc-rgb:0,168,107" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span><strong>Learn and grow</strong><span class="sub">Choose what you want to learn from the collective intelligence of the network.</span></span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#29b6f6;--oc-rgb:41,182,246" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span><strong>Build your world</strong><span class="sub">Bring the important parts of your digital life into one connected experience.</span></span></li>
         </ul>
       </div>
       <div class="letter-beat lb " style="--bc:#8e24aa" hidden>
@@ -1634,15 +1733,15 @@ body:not(.hero-mode) #tn-tacho-mount {width:min(320px,60%) !important;}
         <p class="lb-h"><span class="os-jewel os-jewel-md" style="--jc:#ff8c00">◆</span><span>WANT TO TRY HER?</span></p>
         <p class="lb-big">The door is open.</p>
         <ul class="jlist">
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff2a2a;--oc-rgb:255,42,42" aria-hidden="true"></span><span>Try NayaNET.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff8c00;--oc-rgb:255,140,0" aria-hidden="true"></span><span>Explore it.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#f5d76e;--oc-rgb:245,215,110" aria-hidden="true"></span><span>Take the Academy.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#00a86b;--oc-rgb:0,168,107" aria-hidden="true"></span><span>See what we&rsquo;re building.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#29b6f6;--oc-rgb:41,182,246" aria-hidden="true"></span><span>Use the parts that help you.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#3f51b5;--oc-rgb:63,81,181" aria-hidden="true"></span><span>Meet people.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#8e24aa;--oc-rgb:142,36,170" aria-hidden="true"></span><span>Build something.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#b388ff;--oc-rgb:179,136,255" aria-hidden="true"></span><span>Tell us what you love.</span></li>
-          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff1493;--oc-rgb:255,20,147" aria-hidden="true"></span><span>Tell us what sucks.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff2a2a;--oc-rgb:255,42,42" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Try NayaNET.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff8c00;--oc-rgb:255,140,0" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Explore it.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#f5d76e;--oc-rgb:245,215,110" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Take the Academy.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#00a86b;--oc-rgb:0,168,107" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>See what we&rsquo;re building.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#29b6f6;--oc-rgb:41,182,246" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Use the parts that help you.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#3f51b5;--oc-rgb:63,81,181" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Meet people.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#8e24aa;--oc-rgb:142,36,170" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Build something.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#b388ff;--oc-rgb:179,136,255" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Tell us what you love.</span></li>
+          <li><span class="orb ib-card-orb lb-orb" style="--oc:#ff1493;--oc-rgb:255,20,147" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span><span>Tell us what sucks.</span></li>
         </ul>
         <p>Seriously.</p>
         <p>We&rsquo;re building this for human beings&mdash;not for a slide deck.</p>
@@ -1654,14 +1753,14 @@ body:not(.hero-mode) #tn-tacho-mount {width:min(320px,60%) !important;}
         <p>That&rsquo;s okay too.</p>
         <p>No hard feelings.</p>
         <p>But fair warning&hellip;</p>
-        <p class="lb-h2">You might fall in love. <span class="orb ib-card-orb lb-orb-in" style="--oc:#ff8c00;--oc-rgb:255,140,0" aria-hidden="true"></span></p>
+        <p class="lb-h2">You might fall in love. <span class="orb ib-card-orb lb-orb-in" style="--oc:#ff8c00;--oc-rgb:255,140,0" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span></p>
         <p>Because some things can&rsquo;t really be explained.</p>
         <p>You have to experience them.</p>
       </div>
       <div class="letter-beat lb final" style="--bc:#f5d76e" hidden>
         <p class="lb-big">Imagine there was a new internet &mdash; imagine her name was Naya. Imagine the internet had a mind, one that knew you, remembered what matters, and ran your whole world for you. Your smart apps &mdash; smart app pages, smart app spaces, groups and pages &mdash; all in one place, all at ten stars.</p>
         <p class="lb-big">So what would you create in a world like that? Build on her. See results straight away. Build your business, grow your community, find your people &mdash; all organized for you.</p>
-        <p class="lb-big">Welcome. It&rsquo;s ready for you. <span class="orb ib-card-orb lb-orb-in" style="--oc:#f5d76e;--oc-rgb:245,215,110" aria-hidden="true"></span></p>
+        <p class="lb-big">Welcome. It&rsquo;s ready for you. <span class="orb ib-card-orb lb-orb-in" style="--oc:#f5d76e;--oc-rgb:245,215,110" aria-hidden="true"><i class="orb-ring" aria-hidden="true"><i class="orb-dot"></i></i></span></p>
       </div>
     </div>
     <div class="letter-controls" id="letterControls">
@@ -2266,8 +2365,8 @@ body:not(.hero-mode) #tn-tacho-mount {width:min(320px,60%) !important;}
     document.getElementById('popConnects').textContent=f.detail.c;
     document.getElementById('popSolves').textContent=f.detail.s;
     var vb=document.getElementById('popView');
-    if(APP_LINKS[f.name]){vb.hidden=false;vb.onclick=function(){openViewer(f)}}
-    else{vb.hidden=true;vb.onclick=null}
+    if(APP_LINKS[f.name]){vb.hidden=false;vb.style.display='';vb.onclick=function(){openViewer(f)}}
+    else{vb.hidden=true;vb.style.display='none';vb.onclick=null}
     overlay.classList.add('open');overlay.scrollTop=0;document.body.style.overflow='hidden';
     document.getElementById('popClose').focus();
   }
@@ -2277,8 +2376,8 @@ body:not(.hero-mode) #tn-tacho-mount {width:min(320px,60%) !important;}
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&overlay.classList.contains('open')&&!viewerOverlay.classList.contains('open'))closePop()});
 
   /* ===== THE VIEW FEATURE — a View app button exists ONLY where a real, complete smart app
-     exists (each URL verified live 2026-11-08). The other 28 rows get no button at all:
-     the button's presence is the proof the app exists. ===== */
+     exists (each URL verified live 2026-11-08; 10 more verified live 2026-11-09). The other
+     18 rows get no button at all: the button's presence is the proof the app exists. ===== */
   var APP_LINKS={
     'Personal pages':'https://nayanet.app/personal',
     'Business pages':'https://nayanet.app/business',
@@ -2286,11 +2385,22 @@ body:not(.hero-mode) #tn-tacho-mount {width:min(320px,60%) !important;}
     'Dashboard + Smart Stats':'https://nayanet.app/dashboard',
     'Home / Hub':'https://nayanet.app',
     'Smart Feed':'https://nayanet.app',
+    'Today’s Intel':'https://nayanet.app/rooms/today',
+    'Smart Mail + Messenger':'https://nayanet.app/rooms/mail',
+    'Smart Lists':'https://nayanet.app/rooms/lists',
+    'Connections / Smart Connect':'https://nayanet.app/rooms/connections',
+    'Smart Growth':'https://nayanet.app/rooms/growth',
+    'Your Reports':'https://nayanet.app/rooms/reports',
+    'Intelligent Library':'https://nayanet.app/rooms/library',
     'Naya Learning / Naya Academy':'https://nayanet.groovepages.com/academy',
+    'Smart Ledger':'https://nayanet.app/rooms/ledger',
+    'Smart Factory':'https://nayanet.app/smartfactory',
+    'Smart Box':'https://nayanet.app/smartbox',
     'Project Intelligence \u2014 your projects':'https://nayanet.app/pi'
   };
   var viewerOverlay=document.getElementById('viewerOverlay'),viewerFrame=document.getElementById('viewerFrame');
   function openViewer(f){
+    if(!APP_LINKS[f.name])return;
     document.getElementById('viewerCard').style.setProperty('--ac',f.color);
     var j=document.getElementById('viewerJewel');j.style.setProperty('--jc',f.color);j.textContent=f.icon.g;
     document.getElementById('viewerTitle').textContent=f.name+' \u2014 live app';
@@ -2392,8 +2502,16 @@ body:not(.hero-mode) #tn-tacho-mount {width:min(320px,60%) !important;}
     });
   })();
   document.getElementById('finaleFree').addEventListener('click',function(){
-    document.getElementById('startSec').scrollIntoView({behavior:'smooth',block:'center'});
     document.getElementById('contFree').click();
+    /* The note lives at the foot of the start section, and that section is
+       taller than the viewport: centering the section settled the page on
+       the level rectangles and left the note below the fold (far below on a
+       phone, where the rectangles stack). Bring the note itself fully into
+       view once it has rendered — the same fix the bottom finale's Free
+       door already uses for its own note. */
+    var fn=document.getElementById('freeNote');
+    var bringNote=function(){fn.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'end',inline:'nearest'});};
+    if(window.requestAnimationFrame)window.requestAnimationFrame(bringNote);else bringNote();
   });
   /* THE BOTTOM FINALE — after the letter: the massive start button opens the chooser on the
      currently chosen level (the finale's own level rectangles open it on their tier, through
@@ -2403,6 +2521,10 @@ body:not(.hero-mode) #tn-tacho-mount {width:min(320px,60%) !important;}
     var bn=document.getElementById('bottomNote');
     bn.textContent='Welcome in — you\u2019re starting on Naya Free. Nine days to look around, zero cost, zero risk — and you can step up any time in Settings.';
     bn.classList.add('show');
+    /* The finale sits at the very bottom of the page: when the note appears it grows
+       downward past the fold, so bring it fully into view once it has rendered. */
+    var bringNote=function(){bn.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'end',inline:'nearest'});};
+    if(window.requestAnimationFrame)window.requestAnimationFrame(bringNote);else bringNote();
   });
   var lvlCards=document.querySelectorAll('.lvl-card');
   for(var li=0;li<lvlCards.length;li++)(function(card){card.addEventListener('click',function(){openChooser(card.getAttribute('data-level'));});})(lvlCards[li]);
