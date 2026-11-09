@@ -30941,15 +30941,15 @@
    ]
   },
   {
-   "smart_note_id": "SN-2532",
-   "intelligent_block_id": "IB-SMART-NOTE-20261109-sn2532-what-naya-does",
+   "smart_note_id": "SN-2535",
+   "intelligent_block_id": "IB-SMART-NOTE-20261109-sn2535-what-naya-does",
    "slug": "what-naya-does",
    "title": "What Naya Does — Daily Reports, Smart Notes, Naya Notes, and Pages",
-   "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/PRODUCT/SN-2532/IB-SMART-NOTE-20261109-sn2532-what-naya-does.md",
-   "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/PRODUCT/SN-2532/IB-SMART-NOTE-20261109-sn2532-what-naya-does.md",
-   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/PRODUCT/SN-2532/IB-SMART-NOTE-20261109-sn2532-what-naya-does.md",
+   "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/PRODUCT/SN-2535/IB-SMART-NOTE-20261109-sn2535-what-naya-does.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/PRODUCT/SN-2535/IB-SMART-NOTE-20261109-sn2535-what-naya-does.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/PRODUCT/SN-2535/IB-SMART-NOTE-20261109-sn2535-what-naya-does.md",
    "projection_status": "GITHUB_BRAIN_PUBLISHED",
-   "capture_file": ".naya/capture/IB-SMART-NOTE-20261109-sn2532-what-naya-does.json",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261109-sn2535-what-naya-does.json",
    "kind": "intelligent-block",
    "status": "canonical",
    "truth_state": "CANDIDATE",
@@ -30962,7 +30962,7 @@
    "registered_at": "2026-11-09T17:28:38Z",
    "directed_by": "Shawn Vibert",
    "date": "2026-11-09",
-   "page_hash": "f514821903b9c00fe88b62c297214d79fe2b6e6235ab463152e860d1914db216",
+   "page_hash": "7c2ffb95faaddba5f69a6af575593c47b1c4dfd4717a57622a82f5f6c05b1c9f",
    "content_hash": "afb150448dd85fca350e906364a7089b3cdf05eccc8cd50f4bdfeffe40d72794",
    "one_line": "Naya operates all of NayaNET for you — automatically, just by requesting it from your own AI, or on daily scheduling. She pretty much can run the show. Shawn locked the definition in by what the citizen actually notices. The headline is four acts: she gives you your Daily Intelligence Reports — your Naya reviews your day, mostly from your Smart Notes and your Naya Notes, your project notes, and everything you put into the system that day, and gives you a report on your intelligence for the day, what you learned; you can request it any time, and if you don't request it, it automatically comes within 24 hours — posted, sent to you, and filed in your Reports area — with the Weekly and Monthly reports rolling up from the dailies and every day left openable. She does your Smart Notes. She enters your Naya Notes. And she creates and adds pages inside the network and fills them with content. Around the headline, she runs the rest of the show: she enters your highlights — like the highlights in Intel Today, in a nutshell all your Smart Notes listed there. She sends on your behalf — mail for you, messages and posts for you on any feed, and notes on behalf of yourself to another member. She enters anything you want into your Smart Box — enter it all — and then it's all remembered for you. She builds your Smart Lists: contacts by username or by their alias, and lists of Smart Notes from their links or their names. She sends the mail that keeps everybody on your team updated — the welcome email is the named one. And she runs your stats: she checks them for you, gives them in your Dashboard, gives you a stats report, or sends you the link for the stats on a specific page — the super admin, the all-in-one hub. Underneath it all is the hook-up law: any citizen who hooks up their Muse gets a Naya who can operate inside NayaNET successfully. This is the lock-in definition of what Naya does in NayaNET.",
    "topics": [
@@ -30980,5 +30980,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "078ae6a396510ee4995e819a3a4216c184fcdd3d9d6a4b3676cd6e85e8a7c449"
+ "corpus_manifest_hash": "ae912ee702f92fa20a3da57990829a1a3ed2481fa575e8a1d7c34f8fb669da34"
 }
