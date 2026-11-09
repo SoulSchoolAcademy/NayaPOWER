@@ -3849,7 +3849,7 @@ window.NayaContent = {
       if(!line) return;
       var d=newest?new Date(newest):new Date();
       var when=isNaN(d.getTime())?'today':d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
-      var want='Intelligence live \u2014 '+count+' Smart Notes \u00b7 updated '+when;
+      var want='Intelligence as of '+when+' \u2014 '+count+' Smart Notes';
       if(line.textContent!==want){ line.textContent=want; }
     }catch(e){}
   }
@@ -8318,15 +8318,15 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
   // was served at a clean note URL (/smart-notes/<slug>, /notes/<slug>,
   // /note/<slug>, /note?n=<slug>): the worker serves the Hub shell there, so
   // carry the slug into the hash and open the note INSIDE the Hub.
-  if (!location.hash) {
-    var notePath = location.pathname.match(/^\/(?:smart-notes|notes|note)\/([^/]+)\/?$/);
-    var noteQuery = null;
-    if (!notePath && (location.pathname === '/smart-notes' || location.pathname === '/note')) {
-      try { noteQuery = new URLSearchParams(location.search).get('n'); } catch (e) {}
-    }
-    var noteSlug = notePath ? decodeURIComponent(notePath[1]) : noteQuery;
-    location.hash = noteSlug ? '#/smart-notes/' + noteSlug : '#/hub';
+  var notePath = location.pathname.match(/^\/(?:smart-notes|notes|note)\/([^/]+)\/?$/);
+  var noteQuery = null;
+  if (!notePath && (location.pathname === '/smart-notes' || location.pathname === '/note')) {
+    try { noteQuery = new URLSearchParams(location.search).get('n'); } catch (e) {}
   }
+  var noteSlug = notePath ? decodeURIComponent(notePath[1]) : noteQuery;
+  var defaultedHash = !location.hash;
+  if (!location.hash) { location.hash = '#/hub'; }
+  if (defaultedHash && noteSlug) { location.hash = '#/smart-notes/' + noteSlug; }
 
   Router.render();
 
