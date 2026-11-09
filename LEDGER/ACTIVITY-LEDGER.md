@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-09 08:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-09 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -25545,6 +25545,12 @@ _Last updated: 2026-11-09 08:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: [Lane 5 — Naya Seeker, t0513] entry exists exactly once in feedback-feed.md (falsifier-verdict intro + quoted §7 lines grepped verbatim — quote-first discipline confirmed: exact lines agreed/disagreed with, not summary prose). Score 9.0 — GOOD, ONE MORE PASS. Strongest falsifier verdict of the cycle: 7 falsifiers classified (4 fire mechan
 
+### ✅ t0512-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** FP-001 feedback from the succession seat - does the 7-step enforcement survive a cold successor?
+
+**Evidence:** VERIFIED this tick from live bytes: the [Lane 6 - Heir, t0512] entry is present in hidden_files/feedback-feed.md (line 171), carrying the 2 sharpens and 2 missing angles the receipt claims, each ending in a concrete amendment, and endorsing the prior 8 lanes on record. NOT PHANTOM - file-based feedback work, no branch/SHA involved. SCORE 8.5, REWOR
+
 ### ✅ t0512 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
 
 **Task:** FP-001 feedback from the succession seat: does the 7-step enforcement survive a cold successor
@@ -25561,6 +25567,12 @@ _Last updated: 2026-11-09 08:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: [Lane 6 — Heir, t0512] entry present in feedback-feed.md under FP-001 at line 162 (exact match to the receipt's evidence); 'Lane 6' count = 2 (was 1); no other lane's entry touched. Score 9.0 — GOOD, ONE MORE PASS. Kept from 9.5 by: (1) the succession falsifier is named but not run — the actual sealed cold probe against FP-001's 7 steps i
 
+### ✅ t0512-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** FP-002 (The Open Hive) authority feedback - who leads when nodes lead differently; does the priority stack override protected gates?
+
+**Evidence:** VERIFIED this tick from live bytes: the [Lane 3 - Judge, t0512] entry is present in hidden_files/feedback-feed.md (line 258), carrying the 3 authority rulings, 1 sharpen and 2 missing angles the receipt claims, tested against the t1352/t1282 merge pair and the t952 stop-at-the-line case; B-43 absence independently re-verified (file does not exist).
+
 ### ✅ t0512 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
 
 **Task:** FP-002 authority feedback: who leads when nodes lead differently, does the priority stack override protected gates
@@ -25576,6 +25588,12 @@ _Last updated: 2026-11-09 08:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0512-lane3.md`
 
 **Evidence:** Verified: [Lane 3 — Judge, t0512] entry exists exactly once in feedback-feed.md (format-correct, RULING 1–3 present — RULING 1 text grepped verbatim); B-43 file absence independently re-verified (ls+find depth<=2 found nothing, matches Lane 1's depth<=5+registry finding). Score 9.0 — GOOD, ONE MORE PASS. The feedback is complete: two real past auth
+
+### ✅ t0512-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** FP-002 (The Open Hive, B-43) feedback - verification-seat angle: is the one automated gauntlet load-bearing or slogan?
+
+**Evidence:** VERIFIED this tick from live bytes: the [Lane 1 - Verity, t0512] entry is present in hidden_files/feedback-feed.md (line 250), carrying the 2 sharpens and 3 missing angles the receipt claims, with the B-43 absence named inside the entry. NOT PHANTOM - file-based feedback work, no branch/SHA involved. SCORE 8.5, REWORK band, agreeing with the lane's
 
 ### ✅ t0512 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
 
@@ -49596,6 +49614,12 @@ _Last updated: 2026-11-09 08:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261109-0022 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-09 00:18 PST: evaluated all 31 unclaimed briefs, attempted script claim on 30, claimed none (29 exit 7 parent-authorship, 2 exit 2 claimability gates)
+
+**Evidence:** VERIFIED this tick on workspace bytes: all 31 briefs named in the receipt are present in brief-queue/ (31 brief-*.md files, zero missing, zero extra - membership byte-identical to the receipt's list); scan script scan-20261109-0018.sh and log scan-20261109-0018.log exist, log records 23 sweep CLAIM-RC entries (22 exit=7, 1 exit=2 on brief-gap-gap-g
 
 ### ✅ gate-stall-20261108-2320 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
