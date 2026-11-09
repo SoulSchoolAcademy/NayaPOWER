@@ -6,6 +6,60 @@
 
 ---
 
+## v4 — First-person voice: Naya speaks to you (2026-11-09 ~02:30Z, Shawn's answer)
+
+Shawn settled the voice question: Naya speaks directly to the visitor, in the first person, like a friend — real, concise, direct about who and what she is and what this is all about, welcoming them into her world. Her face is there beside the words. The voice lives in the words — **no audio build is ordered** (the voice-reference question stays open on its own).
+
+The standard: "I" speaking to "you." The facts stay the facts, the numbers stay the numbers, his product words stay verbatim. The ten pains stay the ten pains, word for word — she speaks them to you exactly as filed.
+
+### The opening, as unfolding beats — v4 (for the build seat, after his eye)
+
+**Beat 1 — Welcome aboard.**
+> Welcome aboard. I'm Naya — let me tell you what that really means, in simple words, so there's no confusion. You're about to see exactly what I am — and exactly what pain I solve for you.
+
+**Beat 2 — It's real.**
+> I'm for real. I'm not a scam. I'm math and logic. Let me break it down for you, plainly — you bring people, they join, you get half. That's the whole deal, and you can count it yourself. Nothing to guess at.
+
+**Beat 3 — The objections, answered.**
+> Now let me answer what you're already thinking. A lot of you think, right away — oh, it's network marketing. It's not. Let me explain. And some of you don't believe in anything — or you don't know how to tell whether something is real or not. Fair enough. But sometimes things are logical, and they are mathematical — and when they are, you don't have to believe. You can check the math. I was made to be something different.
+
+**The bridge to the pains:**
+> So — what pain do I solve for you? Here are the ten. Read them and find your own:
+
+**Beat 4 — Pain 1.** The internet is too complicated — and 99% of the people who try to make money on it fail.
+**Beat 5 — Pain 2.** They say AI is taking jobs.
+**Beat 6 — Pain 3.** Google and Facebook make billions from you being the user — and pay you nothing.
+**Beat 7 — Pain 4.** Your whole life is scattered — six platforms, ten apps, and no home of your own.
+**Beat 8 — Pain 5.** Nothing is push-button simple — everything needs learning, setting up, or paying someone else to run it.
+**Beat 9 — Pain 6.** You bring the value, and somebody else keeps the money.
+**Beat 10 — Pain 7.** Nobody remembers — not your notes, not your days, not your promises.
+**Beat 11 — Pain 8.** Your mail gets read, and your life gets kept forever.
+**Beat 12 — Pain 9.** On the internet, you're the product — not the person.
+**Beat 13 — Pain 10.** And everything charges you before you even know if it works.
+
+**Beat 14 — The problem, solved.**
+> That is the problem. And here is what I do about it: push button simple. One system that lets you operate the internet, connect with people, organize your whole world, and make money from the internet — with the best tools, all in one place. Affordable for your average Joe.
+
+**Beat 15 — Much more than money.**
+> And I'm much more than money. Much more than meets the eye. I'm everything, all in one — the automation, the internet, the intelligent layer, the connection. All of it. Not one thing. Everything that matters.
+
+**Beat 16 — Welcome to the future.**
+> Welcome to the future. Now everybody in the world gets to make money from the internet. I'm the new girl in town — my name is Naya. I'm an intelligent layer.
+
+**What changed from v3, and why:**
+- The voice: every beat is now Naya speaking as "I" to "you" — a friend, direct, real, concise. The v3 words were already second-person address in beats 1–3; v4 makes the speaker explicit and consistent all the way through.
+- Beat 16: "There's a new girl in town — her name is Naya. She's an intelligent layer." becomes "I'm the new girl in town — my name is Naya. I'm an intelligent layer." Every product word is kept (new girl in town, Naya, intelligent layer); only the speaker changes. **His call:** if "I'm the new girl in town" doesn't read right in her voice, the third-person welcome line stands — flag kept open for his eye.
+- "I was made to be something different" (beat 3) replaces "We needed to create something different, so we did" — the "we" was the team; in her voice, she is the thing that was made.
+- The ten pains are unchanged, word for word — she speaks them to you exactly as filed. They were already direct address ("you"), so no word needed to move.
+- The "You're hired" board is NOT rewritten in v4 — it still speaks about her in the third person ("Naya does the opposite — she gives you one"). **Flag for his eye:** the board is the one piece left in third person. Proposed first-person version, for his one-tap approval: "They say AI is taking jobs. I do the opposite — I give you one. Yours is the simplest job there is: tell people about a world that runs itself. Everything is automated, logical, sensible, and valuable — and easy to share, because it is the best of the whole internet, all in one place. An intelligent network." (Rest of the board unchanged.) The board stays as filed until he says so.
+
+### Letter check — first-person standard, flag-only (no word of the letter changed)
+
+Checked against his filed letter words (00:00Z) and the built letter:
+- The letter holds the founder's "we" voice consistently, first line to signature ("— Shawn, Founder, NayaNET"). That is CORRECT: it is the founder's letter, and it should stay the founder's voice. The first-person standard applies to the two Naya sections; the letter's "we" is the intended contrast — her voice, then his letter. No change recommended.
+- One voice-mix to judge: the page now welcomes twice — Naya welcomes them ("Welcome aboard," beat 1) and the founder welcomes them ("Welcome to NayaNET," the letter's opening). Two welcomes, two voices, in sequence. Flag for his eye: is the double welcome fine, or should one of them give way?
+- Carried flags (unchanged from v3): the shared-upside paragraph is corporate jargon with no number while the boards say 50% (open question); the 9-day trial is never named inside the letter beats.
+
 ## v3 — Word-perfect polish + the unfolding shape (2026-11-09 ~02:21Z, his direction)
 
 Shawn's order: the letter's unfolding-beat format — read one, click for the next — is used for ALL THREE spots: the Top 10 pains, who this is for, and the founder's letter. "It's beautiful and it's easy to read that way, it's nice, it's easy to present to — it's almost like that viewpoint just unfolds, unfolds before your eyes."
