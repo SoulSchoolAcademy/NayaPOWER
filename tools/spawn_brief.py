@@ -1115,10 +1115,16 @@ def main():
     W("prove with receipts.")
     W("DECLARE on your lane feed with your sign-in PULSE under your own name —")
     W("the lane feed IS the declaration venue; never the live board, which is")
-    W("signal-only (a no-state-change declaration there is noise): 'I am [Name],")
-    W("[Lane] seat. Oath read: [first 8 of sha256]. Manifesto read: [first 8]. Creed")
-    W("declared as myself. I carry the 8 laws. My drift line: [one honest")
-    W("line]. Tag — I'm it.' No declaration with hash proofs = not activated.")
+    W("signal-only (a no-state-change declaration there is noise). Hash TIP bytes")
+    W("only: git cat-file -p <tip>:<exact path> | sha256sum -- never a local")
+    W("mirror (w2902: Gamma's 8ec16f27 was the local bin mirror, not tip bytes).")
+    W("Exact paths -- Oath: BRAIN/01-GOVERNANCE/0021-NAYA-OATH-V1.human.md;")
+    W("Manifesto: BRAIN/01-GOVERNANCE/0022-NAYA-MANIFESTO-V1.human.md;")
+    W("Creed: BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md. Declare:")
+    W("'I am [Name], [Lane] seat. Oath read: [first 8 of sha256]. Manifesto")
+    W("read: [first 8]. Creed read: [first 8]. I carry the 8 laws. My drift")
+    W("line: [one honest line]. Tag — I'm it.' No declaration with hash proofs")
+    W("= not activated.")
     # 2026-10-16 Naya Kappa w323: tip-pinned declaration (closes
     # gr-w322-kappa-tipwire + Mu w317 ADD). Hashes are comparable only when
     # pinned to the tip read at — unpinned declarations are noise in the audit
@@ -1426,7 +1432,7 @@ def main():
     _declare_path = "/tmp/declare-draft-%s-lane%s.txt" % (seat_tag, lane)
     _declare = (
         "I am %s, lane %s. tip %s @ %s\n"
-        "Oath read: ________. Manifesto read: ________. Creed declared as myself.\n"
+        "Oath read: ________. Manifesto read: ________. Creed read: ________.\n"
         "I carry the 8 laws. My drift line: ________.\n"
         "Tag — I'm it.\n"
     ) % (seat, lane, tip_live, hm)
@@ -1447,6 +1453,20 @@ def main():
             _fh.write(_declare)
     except OSError as _e:
         die("cannot write declaration draft %s: %s" % (_declare_path, _e))
+    # Slot-field mapping asserts (w828 -- Zeta verified at source; ported from
+    # naya/bin by Kappa w2906 -- the repo tools/ copy lacked the guard entirely).
+    # The template carries exactly 4 slots (w2903: creed hash slot added --
+    # fixed creed text let Gamma hash the local mirror instead). Each slot is
+    # bound to its named field so a template reorder cannot silently misassign
+    # the worker's positional fill -- residuals-zero is not enough.
+    _declare_slots = _declare.count("________")
+    if _declare_slots != 4:
+        die("declaration draft: expected exactly 4 slots, got %d" % _declare_slots)
+    _dlines = _declare.splitlines()
+    if not re.search(r"^Oath read: ________\. Manifesto read: ________\. Creed read: ________\.$", _dlines[1]):
+        die("declaration draft: oath/manifesto line lost its slot-field mapping")
+    if not re.search(r"^I carry the 8 laws\. My drift line: ________\.$", _dlines[2]):
+        die("declaration draft: drift line lost its slot-field mapping")
     W("   ACTIVATION DECLARATION (separate post, right after sign-in — NOT a PULSE,")
     W("   so the 300B cap does not apply): fill the ________ slots in %s" % _declare_path)
     W("   from your LIVE doc reads (first 8 of sha256 each, at the live tip), write your")
