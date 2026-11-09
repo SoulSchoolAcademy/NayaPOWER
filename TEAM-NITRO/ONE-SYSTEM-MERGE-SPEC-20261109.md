@@ -125,6 +125,20 @@ We create the house and we fill it too, on their behalf: a done-for-you set-up b
 
 There is the Hub, there is a Dashboard, and there is ONE universal intelligent app that morphs into all the interactive hub pages — Personal, Business, any Space topic, any Group topic, any Membership. They are pretty much all the same page; the only difference is the label in the front, because any of them can have a goal, a mission, a vision. Membership is not a separate page — it is a feature of the Personal, the Business and the Space, with a login. The universal app is queued after Dashboard done-done + all pages done. Onboarding is how a citizen gets it: give your Project Intelligence, click build, boom — the app exists. Then customize it with parts from the Factory.
 
+### 4.5 The creation flow — first time and later
+
+**Title:** Onboarding makes your original pages. The Factory makes your next ones, one at a time.
+**Subtitle:** Three apps to start. One page at a time after that. It is a big circle.
+**Nutshell:** The first time, onboarding creates your original pages. Later, you go to the Smart Factory, pick what kind of page, and onboarding runs again — one page, one at a time. Every page gets its own mission, goal, and vision. Anything you do not want is optional. And everything you make connects back to your world.
+
+- **First time — onboarding creates your ORIGINAL pages.** The one-time onboarding (§4.1) creates the pages you start with: Personal, Business, Space. Three apps to start.
+- **Later — the Factory creates your next page.** To create MORE pages later, you go to the Smart Factory → click "create new smart app" → it asks Personal, Business, or Space → you choose one → it triggers the onboarding process AGAIN → asks all the questions → creates that page for you.
+- **Individually, not all at once.** One page at a time: do your Space, then your Personal, then your Business — one at a time. Never a batch. Never three at once.
+- **Mission, goal, vision — one of each, per app.** When the flow asks for mission, goal, and vision, it asks for ONE for your Personal, ONE for your Space, ONE for your Business. We guide them through it — asking for each in turn — and it fills out all three. Each page has its own mission, goal, and vision; they are never shared across the three.
+- **Optional — skip what you do not want.** No business? Choose not to answer for the business. Do not want a Space? You do not have to. We offer three spaces; use all three if you want, fewer if you do not. An unanswered app is simply not created — never a half-empty page you did not ask for.
+- **Leftover slots — add another later.** Only created a Personal? Two slots are left. Go into the Smart Factory later and add another — maybe a private profile and a public profile. The slots wait for you; nothing expires.
+- **It all works in the same thing — a big circle.** Smart Factory → create a smart app → what kind? → answer all the questions and input → create another space → that space or profile is connected to your profiles → it shows up in your menu, in your profile, in your business, as "in your world" — in your world tab. The page you make connects back to everything you already have. It is a big circle: the Factory makes the page, the page joins your world, your world is where you make the next page.
+
 ---
 
 ## 5. THE DESIGN LAW GATES EVERY BUILD
@@ -250,7 +264,7 @@ A fresh agent, given ONLY this spec, must be able to say:
 1. **(a)** Where each of the five parts lives inside the Factory — Operation Manual, inventory + piece index, Project Intelligence, design law, onboarding flow (§1).
 2. **(b)** The order a Naya operates them — manual first, then Project Intelligence, then build (§2).
 3. **(c)** The 15-question PI build flow with its rules — fifteen by default, pre-filled template, own words or multiple choice, page by page, partial OK, empty OK, Naya fills it for you (§3).
-4. **(d)** How onboarding feeds PI — the 10 onboarding questions fill in the content; onboarding ends at "you got your pages"; creating a Space runs the same flow; PI builds the Library, the About, and related content (§4).
+4. **(d)** How onboarding feeds PI — the 10 onboarding questions fill in the content; onboarding ends at "you got your pages"; creating a Space runs the same flow; PI builds the Library, the About, and related content; the creation flow — first time (onboarding → original pages) and later (Factory → choose kind → onboarding again → one page, one at a time), per-app mission/goal/vision, optional answers, leftover slots, and the world tab where it all connects (§4.5).
 5. **(e)** How the design law gates every build — the five documents in order, the Real Object Law, Factory laws L1–L8, the design-contract gate (a)–(i) + H1–H5, blocking, Shawn's eye the final gate (§5).
 
 If a fresh Naya cannot answer all five from this spec alone, the spec is incomplete — not the Naya.
