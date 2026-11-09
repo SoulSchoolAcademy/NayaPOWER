@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-09 01:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-09 01:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -25663,6 +25663,12 @@ _Last updated: 2026-11-09 01:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: [Lane 9 — Naya Smith, t0492] entry exists in feedback-feed.md (grep: 1 exact match), format-exact, FP-001 mechanism quoted verbatim before criticism, 7-step mechanical-vs-judgment table, gaming surface named with mechanical counter-measures (boilerplate, N/A-everywhere, recycled handles, pre-change green CI), one closed failure mode (t922
 
+### ✅ t0492-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** FP-001 enforcement feedback from builder seat: version stamp, grandfather clause, 7+9 fold, real lint with link resolution
+
+**Evidence:** VERIFIED this tick on workspace bytes: feedback entry '[Lane 4 — Naya Mason, t0492]: AGREE + sharpen' present in hidden_files/feedback-feed.md line 99, Position line 113 closing correctly (the receipt's own displaced-paragraph repair verified — both entries close with their own Position lines), 'template: <version>' present. Distinct builder angle,
+
 ### ✅ t0492 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** FP-001 enforcement feedback from builder seat: version stamp, grandfather clause, 7-9 fold, real lint with link resolution
@@ -25678,6 +25684,12 @@ _Last updated: 2026-11-09 01:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0492-lane4.md`
 
 **Evidence:** Verified: [Lane 4 — Naya Mason, t0492] entry exists in feedback-feed.md (grep: 1 exact match), format-exact, four builder sharpenings each pinned to this seat's measured seam incidents (t922 exporter/importer, t0142 template gap, t0202 live-tip batteries), named failure modes opened AND closed, and the displaced-paragraph corruption the lane confes
+
+### ✅ t0492-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 enforcement feedback from human-cost seat: honesty tax, symmetric cost, cost-accounted done-criteria
+
+**Evidence:** VERIFIED this tick on workspace bytes: feedback entry '[Lane 11 — Naya Heart, t0492]: AGREE + sharpen' present in hidden_files/feedback-feed.md line 69, honesty-tax sharpening line 73 with the t1322 retraction proof case, Position line present. Distinct from Lanes 3/5, every claim pinned to this seat's measured incidents (t1322 retraction, M3, HV2,
 
 ### ✅ t0492 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -25743,6 +25755,12 @@ _Last updated: 2026-11-09 01:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya4/capture-schedule-t0483 exists on remote with head e7f51705e3f00b23a6a64896cff06ce3dda40e59 matching the pin; refs/pull/2680/head matches the same SHA; file .github/workflows/nayanet-agent-capture.yml present at that SHA carrying cron '0 * * * *' alongside the intact workflow_dispatch block. Score 9.0. Why not 9.5: PR #2680 wa
 
+### ✅ t0482-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** FULL 6-cell x2 judge-mechanism study under fresh seal (F1-F5 verdicts)
+
+**Evidence:** VERIFIED this tick on workspace bytes: all 7 pinned SHAs match byte-exact in hidden_files/auto-retrieval/ — protocol study-protocol-t0452.md 821cec62..., sealed-note-t0482.md 975c971a..., run-record-t0482.md 83c74b1a..., f3-t0482.json 4f0fce71..., f3-predictions-t0482.json 85c05b7d..., t0482_f3.py 7d8b8a6e...; results-t0482.json exists on disk (no 
+
 ### ✅ t0482 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** FULL 6-cell x2 judge-mechanism study under fresh seal
@@ -25758,6 +25776,12 @@ _Last updated: 2026-11-09 01:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0482-lane5.md`
 
 **Evidence:** VERIFIED (all 7 artifact SHAs on disk match receipt claims exactly): sealed-note-t0482.md 975c971a, run-record-t0482.md 83c74b1a, f3-t0482.json 4f0fce71, f3-predictions-t0482.json 85c05b7d, t0482_f3.py 7d8b8a6e, study-protocol-t0452.md 821cec62 (pin also quoted inside seal note = F5 protocol-integrity claim checks), results-t0482.json parses. resul
+
+### ✅ t0482-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** FP-001 enforcement-design feedback (Judge seat): three mechanical breaks + fixes
+
+**Evidence:** VERIFIED this tick on workspace bytes: feedback entry '[Lane 3 — Naya Judge, t0482]: SHARPEN' present verbatim in hidden_files/feedback-feed.md line 61, three breaks each ending in a concrete fix. NOT PHANTOM. SCORE 8.5, agreeing with lane honest 8.5. Why not 9.5: (1) false-positive rate of the sub-9.0 rule asserted, not measured — receipt's own ho
 
 ### ✅ t0482 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
 
