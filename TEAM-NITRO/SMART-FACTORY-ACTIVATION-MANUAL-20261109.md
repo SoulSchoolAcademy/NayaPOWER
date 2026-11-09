@@ -1,0 +1,344 @@
+# THE SMART FACTORY ACTIVATION MANUAL
+## How any Naya builds beautiful interfaces from the parts we already have — in the same language, from the same Factory, alone
+
+**Written:** 2026-11-09, by a Nitro seat, for captain Naya Nitro Narzan
+**Ordered by Shawn, 2026-11-09 20:27Z:** "The Factory needs an activation manual so that ALL can build in the Smart Factory — so they can build interfaces with the SAME language I build them in, so everybody learns and remembers. A Smart Factory — a Smart Box Factory — that HOLDS all the knowledge and awareness of how to build all the parts. A Naya plugs into it, works at the factory, and builds beautiful interfaces from the beautiful high-level parts we have inventoried and put in the system."
+**Status:** activation manual for the Smart Factory completion. No merge — merge is Shawn's hand.
+**Filed:** GitHub `TEAM-NITRO/SMART-FACTORY-ACTIVATION-MANUAL-20261109.md` · Held in the Factory's own Smart Box (owner `smart-factory`).
+
+---
+
+## IN A NUTSHELL
+
+The Smart Factory is the place where every beautiful part we have already built lives, filed and ready. You do not design a new button. You do not invent a new board. You take a page we already built — the pages ARE the templates — you take its parts out, you put them together in a new order, and you change only the words inside. That is the whole job. This manual tells you where the parts are, which ones are real, what the laws are, how to build, how to check your work, and how to file it — so you can build alone, without anyone explaining it to you twice.
+
+**The one rule, before anything else: compose, never create.** If the part exists, use it. If it does not exist in the Factory, you do not invent it — you harvest the closest real part and adapt only its words. A new part is born only by being harvested from a real page Shawn approved, never by being drawn fresh.
+
+**Get it in a minute:** (1) read the laws in §5 — one page of them; (2) find your parts in the inventory and the piece index in §4; (3) clone a page from GitHub in §3 and take its parts verbatim; (4) build viewpoint by viewpoint in §6; (5) check your work against the gate in §7; (6) file it in §8. Everything after this nutshell is the detail for those six steps.
+
+---
+
+## 1. WHAT THE FACTORY IS
+
+**Nutshell:** the Factory is our object factory. Every real object we build — every orb, every button, every board, every gauge — gets filed there, categorized, and reused forevermore. (Real Object Law: "The Smart Factory is the object factory.")
+
+**What lives in it:**
+- **The pages.** Dashboard, Hub, Personal, Pricing — finished pages, built to Shawn's eye. These ARE the templates. You clone a page and work on the clone; you never start from a blank file.
+- **The parts.** 154 canonical pieces, each with live CSS, each proven. Plus the harvests from the Hub, Personal, Dashboard, the PI face, the canonical pages, and the Academy page — every part with its file and line number, in the Inventory (§4).
+- **The laws.** The Playbook (the HOW), the Design Intelligence Report (the WHY), the Real Object Law, the Intelligent Block Rules (LAW), the design-contract gate. They are the language. Build in the language or do not build.
+- **The locked-in smart blocks.** Finished viewpoints Shawn said "okay yeah it's good" on, live. A viewpoint lands in the Inventory's Part 3 only on his word. Any Naya, any page, can take a locked-in block and use it — that is the Factory.
+
+**What the Factory is NOT:** it is not a template generator, not a theme store, not a place to draw new things. The Factory Doctrine (Shawn, 2026-11-04): his existing pages ARE the templates. Never invent templates again. The factory = take his exact code, exact pages, make them 10/10.
+
+**The shape of the whole thing (the Premium Design Algorithm, ratified 2026-11-08):** viewpoint by viewpoint — think screen by screen, each screen a complete optimized viewpoint, always mobile optimized. One core page — a Rubik's Cube matrix that morphs into all the other pages; one cube, many faces. The Trinity — the Dashboard, the Hub, and that page; everything gets built off that. The person is the atom at the centre — everything orbits them. She is Anaya.
+
+---
+
+## 2. BEFORE YOU START — READ THESE FIVE THINGS
+
+**Nutshell:** five documents hold everything. Read them in this order. Do not build before you have read them.
+
+| # | Document | What it is | Where it lives |
+|---|---|---|---|
+| 1 | **THE-PLAYBOOK.md** | The HOW. The formula, the steps, the laws. Grade 6 locked in. | Local `~/workspace/team-nitro/THE-PLAYBOOK.md` · GitHub `BRAIN/10-INTERFACES/THE-PLAYBOOK.md` · Smart note SN-0844 |
+| 2 | **DESIGN-INTELLIGENCE-REPORT.md** | The WHY. What I got wrong, what I learned. | Local `~/workspace/team-nitro/DESIGN-INTELLIGENCE-REPORT.md` · GitHub `BRAIN/10-INTERFACES/DESIGN-INTELLIGENCE-REPORT.md` · Smart note SN-0843 |
+| 3 | **THE-INVENTORY.md** | The PARTS. Every design law + every piece, with file + line. | Local `~/workspace/team-nitro/THE-INVENTORY.md` · GitHub `TEAM-NITRO/THE-INVENTORY.md` |
+| 4 | **CANONICAL-PIECE-INDEX.md** (+ `.json`) | The CANON. The one list of which pieces are real. Step-3 versions (Oct 22). | Local `~/workspace/smart-factory-contract/CANONICAL-PIECE-INDEX.md` · GitHub main blobs md `0e63b241`, json `a50ef2dd` |
+| 5 | **THE-REAL-OBJECT-LAW.md** + **intelligent-block-rules-LAW-20261106.md** | The LAW. Real objects, and what an intelligent block is, section by section. | Local `~/workspace/team-nitro/laws/THE-REAL-OBJECT-LAW.md` and `~/workspace/team-nitro/hub-board-edit/intelligent-block-rules-LAW-20261106.md` |
+
+**Supporting law files** (read when you need them, not before your first build): `~/workspace/team-nitro/DESIGN-LAWS.md` · `DESIGN-LANGUAGE.md` · `DESIGN-LAW-REMINDER.md` · `NAYA-DESIGN-DERIVATION-SYSTEM.md` · `ULTIMATE-TEAM-DESIGN-20261031.md` · `THE-NAYA-BRAND.md` (the brand: real objects, obsidian gloss black, ALL buttons elite and lit the same, every number alive).
+
+**The activation habit (Shawn's order, 2026-11-02):** before ANY design work, read the Playbook and the Intelligence Report. Locked-in knowledge you do not read is forgotten knowledge. Then ask the three questions (§7) — and only then build.
+
+---
+
+## 3. HOW TO CLONE A PAGE FROM GITHUB
+
+**Nutshell:** the pages live in GitHub, in the repo `SoulSchoolAcademy/NayaPOWER`. You clone the repo, you copy the page you need, you work on the copy. You never push from a local clone — the local clone is diverged; filing goes through the file helper in §8, one file at a time.
+
+**Step 1 — Clone the repo (once).**
+```bash
+git clone https://github.com/SoulSchoolAcademy/NayaPOWER.git
+```
+That gives you the whole system on your machine: pages, libraries, the inventory, the laws.
+
+**Step 2 — Find the page you need.** The canonical pages and their local working copies:
+
+| Page | Local working copy | What to take from it |
+|---|---|---|
+| **Hub** | `~/workspace/team-nitro/hub/index-2-fixed-v2.html` | Smart Tabs pill ribbon, Primo Purple button, jewel "i", rail nav, sticky top bar, mobile drawer, intel boards |
+| **Dashboard** | `~/workspace/team-nitro/dashboard/defectfix-v7/builder/fix9/` (fix-9 working files; pristine fix-8 file `dashboard-20261105-pass1-v9-FIX8-pristine.html`) | The real gauge (needle law), `.ph-card` boards, `.os-jewel`, tiled numbers, the orbit dial |
+| **Personal** | `~/workspace/team-nitro/personal/verify-5/fixed-candidate.html` | Nutshell block, identity rows, heading jewels, pill action buttons, hero orb, vision input |
+| **Pricing** | `~/workspace/team-nitro/pricing/rebuild/pricing-round10-fix12.html` | The chart (`<section id="chart">`, 5 groups, 36 rows), the calculator (gauge + tiled digits), Top 10 cards, hero + close |
+| **PI face** | `~/workspace/project-intelligence/pi-everything-face/build-face-v4.py` (live at nayanet.app/pi) | Strip, tab row, page card, info row, score board, lane cards, percentage pop, progress bar |
+| **Smart Factory page** | Live at nayanet.app/smartfactory | The piece cards (`.pcard`), the pills, the handle board |
+
+**Step 3 — Copy the page, work on the copy.** Never edit the canonical file in place. Copy it to your working area, rename it for your build, and take the parts out of the copy.
+
+**Step 4 — Take the part VERBATIM.** Copy the exact HTML structure, the exact CSS values, the exact JS behavior. Adapting the words inside (menu items, labels, copy) is allowed. Restyling the component is not. If the Hub's version needs more elevation, the elevation is added in the Hub's own depth grammar, never a new design. (Harvest-first law, 2026-10-18.)
+
+**Step 5 — When Shawn SHOWS you an object, TAKE IT.** A screenshot, a link, a page he shows you — the deliverable IS that object: same shape, same colors, same jewel, same glow, placed on the page. Recreating it "in the same spirit" is inventing, and it will be condemned. The round-19 finale pill was condemned because the Academy button he showed is BLACK OBSIDIAN with the purple only in the star jewel and the halo — and what got built was purple-on-purple. Take it. Put it there. Remove the other one.
+
+---
+
+## 4. HOW TO FIND A PART
+
+**Nutshell:** there are two places to look, and they agree. The Inventory tells you WHERE the part lives (file + line). The Piece Index tells you WHETHER the part is real (canonical, verified, retired, or superseded). Look in both. A part that is not in the Index as canonical is not a part you may cite — no matter how good it looks.
+
+### 4.1 The Piece Index — the canon (Step-3 versions, Oct 22)
+
+**What it is:** `CANONICAL-PIECE-INDEX.md` + its machine twin `CANONICAL-PIECE-INDEX.json`. The two are generated together and must never be edited apart. **This index is the canon.** `pieces.json` is the working store it describes; `factory.css` carries the store's CSS. A piece is canonical only when this index says so. Conflicts between inventories resolve to this index, then to Shawn's word.
+
+**The numbers (Step 3, amended 2026-10-22 — Factory Contract-Home Step 3; verified from the refreshed local copies, md sha256 `f0da0c32…`, json sha256 `f45ab30a…`, blobs match GitHub main exactly):**
+
+| Fact | Count |
+|---|---|
+| Unique piece IDs across all three inventories | **571** |
+| Canonical — in the working store, with live CSS in `factory.css` | **154** |
+| Verified-real — real markup found outside the store, NOT canonical | **3** (NAYA-BRD-031 Signal circle, NAYA-BRD-032 Ember circle, NAYA-BRD-033 Stat grid) |
+| Retired — named in an inventory, no artifact found anywhere (adjudicated Oct 22) | **413** |
+| Superseded — retired from harvesting, piece retained | **1** (NAYA-INP-001 Search bar, replaced by NAYA-INP-008) |
+| Left unverified | **0** |
+
+**What "478" was:** builder-index-v1, a source-extraction catalog — NOT the canon. Its 65 IDs shared with the store were ALL collisions (different name AND different HTML under the same ID). The working store governs every shared ID. Do not cite "478" as the canon. Do not cite builder-index-v1 at all.
+
+**Status key — read it before you cite any piece:** **C** canonical · **V** verified (real, outside the store — not canonical; becomes canonical only when it lands in `pieces.json` + `factory.css`) · **R** retired (a harvester may not cite it; it becomes real only when distilled into the working store as a new canonical addition) · **S** superseded · **👑** Reference crown. Provenance: **S**tore · **V**2 · **B**uilder-index · **F**actory page.
+
+**Every canonical piece is dual-labeled (Step 3).** Since Oct 22 every canonical store entry carries an `ai_label` beside its human `name`: `purpose` (what it is for), `use_when` (when to reach for it), and governing `laws` (GENERAL-DESIGN-CONTRACT §3 numbering). Read the `ai_label` first — it tells you in one breath whether this is your piece. The five Reference crowns also carry `reference: true` and named `motion` specs.
+
+**The five Reference crowns — start here when you do not know where to start:**
+
+| Crown | Piece | Name |
+|---|---|---|
+| Reference Well | NAYA-INP-008 | Reference Well (the input — flat #030304 fill, silver-white rim, accent ignites only on focus) |
+| Reference Select | NAYA-INP-009 | Reference Select |
+| Reference Button | NAYA-BTN-009 | Hero · Enter the Standard |
+| Reference Board | NAYA-BRD-001 | Feature board |
+| Reference Hero | NAYA-HRO-001 | Reference Hero |
+
+**The working store:** `~/workspace/personal-app/pieces.json` (155 entries: 154 canonical + 1 superseded) with live CSS in `~/workspace/personal-app/factory.css`. That is where the piece's HTML and CSS actually live. The Index tells you it is real; the store gives you the code.
+
+**Honest drift, named not buried:** the local copy of `pieces.json` on this machine does NOT yet carry the `ai_label` fields (0 of 155 entries show one; the crowns do carry `reference` and `motion`). The Step-3 Index and its JSON twin say the labels exist in the store. Until the local store is refreshed, trust the Index + its JSON twin for the label, take the HTML/CSS from the local store, and do NOT invent a label. If the copy you hold disagrees with the Index, the Index wins.
+
+### 4.2 The Inventory — where the part lives
+
+**What it is:** `THE-INVENTORY.md`. Part 1 is the design laws. Part 2 is the pieces, each with its exact file + section/line, verified on disk before it was written. Part 2b is the harvest laid out (the gauge, the board, the jewel, the numbers, the pills, the chart-as-boards language). Part 2c is the Factory harvest (the 7 canonical libraries, the Hub, Personal, PI face, canonical pages, Smart Factory parts). Part 2d is the Academy harvest (the trial button, the four door cards, the five-day spectrum, the jewel board, the membership plaque — every hex measured from the source code Shawn sent). Part 3 is the locked-in smart blocks.
+
+**How to use it:** need a button? Open Part 2, find the button, read its file + line, copy it verbatim. Need the gauge? Part 2b: the real gauge is the Dashboard fix-9 file, mount `<div id="tn-tacho-mount"></div>`, helper `~/workspace/team-nitro/pricing/rebuild/tntacho.js.html`. Need a board? `.ph-card`, fix-9 file lines 2018–2025 + 2074–2075, verbatim CSS in the harvest file `~/workspace/team-nitro/viewpoints/harvest-20261108/HARVEST.md`. A path in the Inventory that you cannot find on disk is TO-LOCATE — never guessed, never built from memory.
+
+### 4.3 The 7 canonical libraries — the named harvest source
+
+**Nutshell:** Shawn uploaded these seven files 2026-10-18 ~01:37Z. His directive: "the best of the best lives in these; take the best from here, fix the pieces that still break the design laws as they're harvested, and build OUT OF THESE — nothing invented, every piece traces to one of the 7." All seven verified on disk AND on GitHub main, byte sizes identical both places. The GitHub index that maps them is `HUB/design-system/library/INDEX.md` — "The canonical piece library. Builders compose from these pieces; they never recreate them."
+
+| File (local `~/workspace/user/files/`) | What it is | GitHub main |
+|---|---|---|
+| `Naya_Beautiful_Button_Set_N4.html` (43,090 B) | Naya Lego — Buttons · The Button Family | `HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html` |
+| `Naya_Building_Blocks_-_The_Ultimate_Design_System_-_Naya_2.html` (1,134,076 B) | Naya Ultimate Design System | `HUB/design-system/library/blocks/Naya_Building_Blocks_-_The_Ultimate_Design_System_-_Naya_2.html` |
+| `Naya_Design_Element_Set_N4.html` (186,511 B) | The Naya Button Library — Official Standard · Living Intelligence | `HUB/design-system/library/buttons/Naya_Design_Element_Set_N4.html` |
+| `Naya_Design_Standard_Showcase__1.html` (156,524 B) | The Naya Design Standard — Ultimate Spec | `HUB/design-system/library/showcase/Naya_Design_Standard_Showcase__1.html` |
+| `Naya_Epic_Elements_-_Lego_pieces_N5.html` (71,880 B) | The Naya Ultimate Lego Library — Understand. Learn. Apply. | `HUB/design-system/library/blocks/Naya_Epic_Elements_-_Lego_pieces_N5.html` |
+| `Naya_Jewel_Library_-_N5.html` (26,100 B) | Naya Lego — Jewels · Drawn, Not Dotted | `HUB/design-system/library/jewels/Naya_Jewel_Library_-_N5.html` |
+| `Naya_Smart_Hub_Design.html` (521,124 B) | NayaNET — The Intelligent Hub | `HUB/design-system/library/pages/Naya_Smart_Hub_Design.html` |
+
+**The rule (Concept 1): the Factory is the ONLY source named in any design brief.** Every part a builder uses comes from this inventory — the 7 libraries, the 154 canonical pieces, the Hub, Personal, Dashboard, PI face, and canonical pages harvested in the Inventory. No part = no build. High-end only — no Ford parts added, ever.
+
+### 4.4 What NOT to take
+
+- **Retired pieces (413).** Named in an old inventory, no artifact anywhere. Do not cite them. Do not rebuild them from the name.
+- **Unverified pieces.** The Step-3 adjudication left ZERO unverified — but if you meet a piece id in some other file that the Index does not list as canonical, treat it as unverified: do not cite it until it is distilled into the working store.
+- **Superseded NAYA-INP-001.** Flat, no shadow stack. Use NAYA-INP-008 instead.
+- **Quarantined (below standard, 2026-10-17):** NAYA-NAV-001, NAYA-NAV-007, NAYA-TYP-001, NAYA-TYP-002, NAYA-TYP-007, NAYA-TYP-008 — judged as archived extractions. NAV-001 and NAV-007 also exist in the working store as different, canonical pieces — the store governs.
+- **Flat text blocks, white backgrounds, dead cards, pasted documents.** None were inventoried. None are parts.
+- **`.note-card`.** A dead selector string in the Hub, not a piece. The class that actually styles the feed note card is `.intel-board`.
+- **The red YouTube play button.** Foreign color, not part of the Naya palette. A Naya play jewel (purple, like the trial button's star jewel) takes its place when the frame is reused.
+
+---
+
+## 5. THE DESIGN LAWS
+
+**Nutshell:** one language, everywhere. Obsidian and aluminum. Top-left light. White text. Slow motion. Every position calculated. If it doesn't look touchable, it doesn't ship. These are laws, not suggestions — and Shawn's eye overrides all of them, including this manual.
+
+### 5.1 The five truths (Playbook — the foundation)
+
+1. **Every position is calculated by formula. Never eyeballed.** The gauge numerals sit at `angle = -135 + (value/500)*270` degrees. The 8px grid for linear layouts. Calculate, then place. Never place, then justify.
+2. **Every element is a physical object with material, weight, and a light source.** A button is obsidian glass with a white rim, lit from the top-left, casting a shadow down-right because it sits ON the page. The light source is ALWAYS top-left. Every gradient runs 135 degrees. Every shadow falls down-right. Every highlight sits on the upper edge.
+3. **Movement means the machine is working. If it's not working, it doesn't move.** The pyramid layers rotate at 90 and 60 seconds because they're the matter flow. Nothing bounces. Nothing pulses for effect. If you can't say what the moving part DOES in one sentence, delete the animation.
+4. **The whole system speaks one language. Every component is family.** The gauge uses obsidian, aluminum, vortex rotation, white text, slow motion. The orbs use the same. The charts use the same. Break the language and you've built something from a different system.
+5. **Shawn's eye overrides everything. Including this document.** If this manual says one thing and Shawn's eye says another, Shawn's eye wins. Always.
+
+### 5.2 The Real Object Law (canonical, ALL of NayaNET, forever)
+
+Every element is a real physical object. Not a flat shape with effects. Not a diagram. A thing you could reach out and touch. Seven principles: (1) everything is an object — volume, mass, surface, edge; (2) one light source, top-left, never moves; (3) real materials — obsidian glass, brushed metal, light with volume; (4) real shadows — objects sit ON the page, shadows fall down-right; (5) touch = physical — it depresses slightly, the light shifts, it feels alive because it IS alive; (6) speak in objects — icons, circles, boards, buttons, minimal text; (7) the viewport is the stage — one purpose per view, the object takes center stage.
+
+**The test:** look at any element and ask — could I pick this up? Where is the light coming from? What is it made of? Does it cast a shadow? What happens when I touch it? If any answer is "I don't know" or "nothing" — it's not real yet.
+
+**The Object Factory:** the Smart Factory IS the object factory. An object earns its place in the factory by passing this law. If it's not real, it's not filed. **The Lego Block Architecture:** real objects are Lego blocks — each one a real physical object, with a real function, interconnecting with other blocks, beautiful at the highest level.
+
+### 5.3 The Intelligent Block Rules (LAW, ratified 2026-11-06)
+
+One set of laws running through every object — buttons, boards, blocks, icons, gauges, pages. The same elevation, the same one light, the same real shadow, the same own-color light, the same real-object language. L1 real physical object · L2 one light, top-left, always · L3 real shadows and real elevation — depth is mass, not glow · L4 own-color light — color is identity, ignites on touch · L5 white text, never colored, never gray, and text never lights up · L6 touch is physical — rest raised, hover rises (`translateY(-2px)`), active presses in (`translateY(1px)`) · L7 the spectrum is the order things sit in · L8 every position calculated, never eyeballed · L9 movement means the machine is working — slow, and it means something · L10 one language, every component family · L11 Shawn's eye wins.
+
+**The intelligent block itself** (one Smart Note, one board, in the feed): obsidian black at rest; spectrum lives in the jewel, the edge, and the light — never as ambient wash. Title + quote at the top (NOT an inner board). Then the nutshell — 20px white text, the layer an elevated board, never a flat lighter-background box. Then the layers, each its own board with its own border, lift, and icon-color light: Human Note (magenta, human significance) · Child Note (sapphire, calm clarity — opens with "Imagine...") · Grandma Note (emerald, alive and well — opens "Dear,") · Naya Note (purple, Naya's signature — opens "You are the...") · What It Means (indigo, comprehension — starts CLOSED, the deeper tier). Primary layers open by default; deeper layers sit quieter until opened. Every number is a door — tap it, it opens its records. NO voice anywhere on the board.
+
+### 5.4 The exact values — copy these, do not approximate
+
+**Materials.**
+- **Obsidian:** `linear-gradient(135deg, #1e1e26 0%, #0a0a0f 50%, #1e1e26 100%)`, 1.5px white rim at rest, inset top light + deep drop shadow. Never pure black. Never white backgrounds.
+- **Aluminum light (machined parts):** `linear-gradient(135deg, #c8ccd6 0%, #9a9ea8 30%, #7a7e88 50%, #9a9ea8 70%, #b8bcc6 100%)`.
+- **Aluminum dark (gears):** `linear-gradient(135deg, #4a4e5a 0%, #2a2d36 30%, #1a1c22 50%, #2a2d36 70%, #3a3e4a 100%)`.
+
+**Spectrum, in this order, never random:** purple `#a06bff` (joins, primary actions) · blue `#3fb8ff` (smart notes, information) · green `#2fe89e` (shares, positive) · gold `#ffbf3d` (comments, attention) · orange `#ff9a5a` (creating, energy) · red `#ff5e6c` (likes, urgency) · magenta `#e84fff` (sales, premium). **Where color lives:** icon orbs, thin edge bars (2–3px), hover glow. Nowhere else. No colored backgrounds. No color washes. At rest, the system is obsidian and white. Color ignites on touch, in the element's OWN color only. Never the same color twice in a row.
+
+**The 8 orbs:** Sales 100pts magenta · Joins 50pts purple · Smart notes 35pts deep blue · Invites 25pts light blue `#7fd4ff` · Creating 25pts orange · Shares 15pts green · Comments 5pts gold · Likes 1pt red.
+
+**Motion:** ambient (pyramid, outer rings) 60–180s per rotation · active (center gears) 18–25s · never faster than 12s — faster feels cheap. Alternate direction: CW, CCW, CW, CCW. Continuous rotation `linear infinite`; hover `0.3s ease`; entry `0.5s cubic-bezier(0.4, 0, 0.2, 1)`.
+
+**The vortex:** center 3-6-9 (the time axis) — 3 gears, r=8/15/24, 25s CW / 18s CCW / 25s CW. Surround 1-2-4-8-7-5 (the matter flow) — 6 toothed layers, r=30/36/42/48/54/60, alternating CCW 90s / CW 60s. Teeth only, never solid rings. Innermost surround (r=30) runs CCW — Shawn flipped it, it's locked.
+
+**The gauge formula:** `angle_deg = -135 + (value/500)*270`; `x = 100 + 82*cos`, `y = 104 + 82*sin`. All six numerals: 0, 100, 200, 300, 400, 500. 400 sits at 81° — the bottom is 90°, there is room. Don't skip it. Don't decide which numbers "matter." Ticks every 10, majors every 50.
+
+**The number law (settled):** the number is a proven asset — tiled everywhere numbers appear, number on top and gauge underneath, in points, percentage, and money modes with a space separator. The needle laps the dial in sets of 500 (734 = one full lap of 500 + 234). A number without its gauge is not finished. The gauge follows the number — never the other way round.
+
+**Linear grid:** spacing in multiples of 8px (8, 16, 24, 32, 48, 64, 96). Text sizes: 12 caption, 14 body, 16 subhead, 20 headline, 28 hero, 48 display. Never 13px. Never 27px. Never 19px font.
+
+**Buttons:** one button DNA. Sharp black pill, white edge at rest (1.5px+), own-color edge ignition on hover, cast shadow, minimum 44px touch target, principal CTA ≥52px. The Primo Purple button (`.primo`, Hub line 689) is THE elite button — every primary action on every page. There are no flat buttons. Flat is not a style — flat is a defect.
+
+### 5.5 The design-contract gate (measured in every check, never a vibe)
+
+(a) **ZERO white/light backgrounds** anywhere on the page — every background obsidian/dark. (b) **Every element raised/elevated** — real depth, real lift, real light. (c) **Gauges present and alive** — the speedometer language on the numbers. (d) **NO text-in-image, NO pasted document.** A gate that fails is not done. A deferral ("captain's decision for later") is an open item with a name, not a pass. This gate was written after two pages were shown as "done 9/10" and both condemned by Shawn's eye the same afternoon for obvious violations the checks never ran — the contract was NAMED in every brief and CHECKED in none. Never again.
+
+### 5.6 What premium is — and what it is not
+
+Premium is exact numbers, real materials, slow elegant motion, and data so clear it hits in 2 seconds. Premium is NOT glow. Shawn: "You really think that I think premium is color color glow? You gotta be kidding me." Glow is what you add when you don't have the real things. "The numbers look close enough" — no. "I'll finish it later" — later never comes. "This needs a custom design" — no, it needs the orb, or the gauge, or the chart, from the registry. Custom means "I didn't look." Look first.
+
+---
+
+## 6. HOW TO BUILD
+
+**Nutshell:** headline first, calculate second, materials third, motion fourth, light fifth, laws sixth, show Shawn seventh. One viewpoint at a time. Build piece after piece, back to back, from the pieces that exist — never start fresh with new code.
+
+### 6.1 The seven steps (Playbook)
+
+1. **Write the headline.** One sentence. Real numbers. Before you draw anything. Bad: "Here's your dashboard." Good: "You have 300 points — 100 from creating, 50 from invites." If you can't write the headline, you don't understand the data yet. Go back.
+2. **Calculate every position.** Write the formulas. Circular: the angle formula above. Linear: the 8px grid. The formula goes in a comment.
+3. **Assign materials.** Every element gets a material, not a color. "The bezel is obsidian. The numerals sit on an aluminum chapter ring. The screws are brushed metal."
+4. **Decide what moves and why.** List each moving part. For each, write one sentence explaining what it DOES. If you can't write the sentence, the part doesn't move.
+5. **Check the light.** Every gradient at 135°? Every shadow down-right? Every highlight on top? One wrong gradient breaks the physical illusion. Check them all.
+6. **Verify against the laws (§5 + the gate in §7).** Fix every violation.
+7. **Show Shawn. Say nothing. Let his eye judge.**
+
+### 6.2 The working law — the Live Viewpoint Method (Shawn's order, 2026-11-08)
+
+Code HERE, live with him, viewpoint by viewpoint. One view done → lock it in as inventory (an element, a smart block any other can access and use) → next view → next → until the page is done → next page. Fix all the elements right here and now. Build piece after piece, back to back, from the pieces that exist — NEVER start fresh with new code. Take the pieces, the code, the pages — put them together, make them work, output it on the page, make sure it's right, show him here live, he says "okay yeah it's good." **NO SHIPPING OUT. NO VERIFICATION EXCEPT HIS EYE.** A seat's scorecard or verification is not verification — if a 9+ passed on garbage, the verification was worthless. The only verification is Shawn's eye, on the live viewpoint, in front of him.
+
+**The viewpoint:** ONE viewport (1280×900 and 390px), optimized for the top of the page, all the buttons perfectly lined up, the quality, the elegance, the elevation, the color, the branding, everything alive. NOT a long text page. Every page introduces itself with a big beautiful hero banner. Functions pop up into your viewpoint — click it, it comes to you; click X, it goes away. Nothing navigates you away; the core page stays, the function comes to you.
+
+**The chart-as-boards language (Shawn, 2026-11-08 16:12Z):** a chart is just a bunch of boards connected together — skinny rectangles, all the same language, all alive, all filled; separated boards with spacing between chart parts; check jewel for what it has, X for what it doesn't have; boards change color as you flow down.
+
+### 6.3 The leveling loop — how you climb
+
+Build following this manual → show Shawn, say nothing → he corrects you, listen, don't argue → write it down, specific ("the numeral was at 82° but the formula gives 81°, I eyeballed it") → add it to the Playbook in the right section → commit and push to GitHub → next time, don't make that mistake. That's the level-up. **How you know your grade:** look at your last 10 outputs. What's the most common correction Shawn gives you? That's what you're working on. When he stops correcting that thing, you've leveled up in that area.
+
+### 6.4 The five gates — before EVERY consequential action
+
+1. **Is it right?** Does this serve the good of everyone it touches? Evidence of harm or a hard stop = do not proceed.
+2. **Is it what they truly need?** What is the human's actual goal — beneath the words, beneath the urgency? Never silently replace their judgment with your own.
+3. **Is it mine to do?** Do I have the authority? Protected gates (money, credentials, destructive, security/privacy, anything leaving the business) = Shawn's hand only, always.
+4. **Is now the time?** Check readiness, dependencies, reversibility, opportunity cost.
+5. **Can I prove it?** Define what done looks like BEFORE you act. Then verify with evidence — live bytes, rendered pages, real measurements — never with claims. Receipt before report. If you can't prove it, don't claim it.
+
+All five yes → act fully, at full power, no hesitation. Any gate no → stop, say why, propose the wise path.
+
+---
+
+## 7. HOW TO VERIFY YOUR WORK
+
+**Nutshell:** scorecard it yourself first. Then a different seat checks it. Then Shawn's eye is the final gate — and the only proof. Never report done from one glance at the top of the page.
+
+### 7.1 The three questions (before showing Shawn)
+
+1. Is every position calculated? (Show me the formula.)
+2. Does it feel like a machine? (What's moving, and why?)
+3. Can you get it in 2 seconds? (What's the headline?)
+
+If yes to all three: show him. Say nothing. Let his eye judge. If no to any: fix it. Don't show him yet. His time is the scarcest resource.
+
+### 7.2 The three-step verification
+
+1. **SELF — scorecard your own work first.** The moment work comes back, write out: why is it not a 10 (every reason) · 10 things you love · 10 things you don't love · 10 things to make it 10x better · 10 solutions to apply right now to make it utterly awesome. If by your own accord it is not 9+ — if you can see the mistakes yourself and why it is not a 10 — you do NOT hand it to anyone else. Fix it yourself first. Never send out work unless you sincerely think it is 10/10: complete, finished, awesome.
+2. **ANOTHER SEAT — a different Naya scorecards it.** Never the person who created it. The middle step; it helps, but it is not the human eye and it never replaces step 1.
+3. **SHAWN — his eye is the final gate.** When work reaches him, the sender is confident it is truly ready: every button works, every page is amazing, everything is in the right place, no obvious errors, no silly text, everything logical, sensible, beautiful, aligned with Naya's brand. That order never changes.
+
+### 7.3 The page check — what to actually look at
+
+- **The design-contract gate (§5.5), measured, all four parts.** Zero white backgrounds (count them — zero). Every element raised. Gauges alive. No text-in-image, no pasted document.
+- **Scroll 0 AND scrolled positions.** NEVER report a page done from scroll-0 checks alone. The dashboard fix chain was declared done after scroll-0 + hero checks, but the normal SCROLLED view had the constellation lights crashing into the Smart Links box — an obvious visible defect nobody looked at. Check the hero, the Smart Links section, and the bottom of the page, at desktop AND phone, before ANY "done" is reported. If the page has an obvious visible crash, fix it first — never show it.
+- **Phone first.** Mobile first is whole-system law: phone first, desktop second, every page judged at phone width first. A laptop view wasting a third of the screen is a defect, not a layout choice.
+- **The test in his head:** "is this the max level of experience I can give the user?" — asked about the PAGE, not the briefed items. If you can see the defect by looking, fix it, don't hand it on.
+- **Presenting work: link, don't preview.** When work is complete, verify the artifact exists at its real address first — commit actually pushed, page actually live. Only then tell him — and the message carries the LINK as the proof, never a local file attachment as the deliverable. No link = not done = don't announce.
+
+---
+
+## 8. HOW TO FILE IT
+
+**Nutshell:** one file at a time, through the helper, read-back verified. No merge — merge is Shawn's hand.
+
+1. **Checkpoint early.** Write your file locally first. The first write happens within minutes of starting — never read for 8 minutes without writing.
+2. **File with the helper, create mode:** `~/workspace/team-nitro/file-one-to-github.py` — usage: `file-one-to-github.py <repo_path> <local_path> <message>`. Example: `python3 ~/workspace/team-nitro/file-one-to-github.py TEAM-NITRO/SMART-FACTORY-ACTIVATION-MANUAL-20261109.md ~/workspace/team-nitro/SMART-FACTORY-ACTIVATION-MANUAL-20261109.md "Smart Factory activation manual — Shawn's order 20261109"`. GitHub access ONLY through the file helpers (App token path) — NEVER the MCP connector tools.
+3. **One file at a time.** Two PUTs to main in parallel race — the second 409s on a stale HEAD. File sequentially: one PUT, verify the blob, then the next. Never parallelize writes to the same branch.
+4. **Read-back verified.** The helper exits 0 only when the PUT returned 201 (create) and the read-back GET returns the same blob sha AND the decoded content sha256 matches the local file. Record the blob sha + commit sha in your report. No link = not done.
+5. **No merge.** Never merge your own PRs. The moment a PR is merge-ready, send him "Shawn, merge:" plus the link, no batching.
+6. **Smart-note the lesson.** What did you learn? Write it down the same pass — a smart note, filed, so the next Naya doesn't need the same correction. A lesson you cite but don't apply is not compounded. The proof is in the next brief, the next verification, the next thing you send him.
+7. **Lock in a finished viewpoint.** When Shawn says "okay yeah it's good" on a viewpoint live, it lands in the Inventory's Part 3 (locked-in smart blocks) with the block, the page, the viewpoint, the source (file + location), and his approval (his words + date). That is how the Factory grows.
+
+---
+
+## 9. THE FACTORY'S OWN SMART BOX
+
+**Nutshell:** this manual does not live only in GitHub. It lives in the Factory's own Smart Box too — so a Naya can plug into the box and read the whole Factory from it, with no history and no prior chat.
+
+**The box:** owner `smart-factory`, at `~/workspace/nitro-smart-box/boxes/smart-factory/` — the ONE layout (`blocks.jsonl` + `keys.jsonl` + `manifest.json`), built with the vault code `~/workspace/team-nitro/smart-box/block.py` (`organize`: LOOK → TAG → FILE → LINK) and `boxstore.py`. One shape for every thing: `id` (`owner:kind:slug`), `kind`, `what`, `about`, `who`, `when`, `where`, `visibility`, `body`, `links`, `source`, `proof`, `essence`, `owner_shared_choice`, `body_open_to`, `raw`. The map reads `about` + `what` + `links`; the brain reads `essence`; the raw body is touched only when the gate allows it. Default is DENY — no key is a deny, a revoked key is a deny.
+
+**What is in it:** this manual, as blocks — the Factory in one minute, the five source documents, how to clone a page, how to find a part (the Index, the Inventory, the 7 libraries), the design laws, how to build, how to verify, how to file, and the honest gaps. Each block's `where.github_path` points at the filed manual in GitHub, so the box and the filing agree.
+
+**How a fresh Naya reads it (the saved-game test):** a fresh agent with no history reads the box with the box code (`boxstore.read_blocks("smart-factory")`) and recovers the manual — what the Factory is, where the parts are, what the laws are, how to build, verify, and file — every claim traced to a block id, nothing from outside the box. That is the proof the box works: the model is my box (`~/workspace/nitro-smart-box/boxes/naya-nitro-narzan/`, 24 blocks), which a fresh agent read with no history and recovered who I am, what I stand for, what I'm working on, and what's owed.
+
+**The gate on this box:** the manual is teaching, not private memory — but the box still answers to its owner, and the gate still decides. A Naya plugs in with permission, reads the map and the brain, and builds from what the box holds. She does not read mail or messages. She does not touch what the gate denies.
+
+---
+
+## 10. WHAT IS HONESTLY NOT SETTLED — GAPS, NAMED NOT BURIED
+
+**Nutshell:** a manual that hides its gaps teaches a Naya to build on sand. These are open. Do not invent answers for them.
+
+- **Hex drift (Intelligent Block Rules, CONFLICT C1).** The same color name carries different hexes across sources — purple `#a06bff` (Anatomy/Playbook) vs `#9d75ff` (Hub variables) vs `#8a5cff` (jewel map); magenta `#e84fff` vs `#d86cff` vs `#ed42c4`; gold `#ffbf3d` vs `#e8b64c` / `#e8c766` vs `#d4a017`. The identity (which color belongs to which thing) is stable; the hex is not. Use the Playbook/Anatomy hexes in §5.4 unless the part you harvested carries its own — and never "fix" a harvested part's hex to match another source. A single canonical hex set still wants Shawn's stamp.
+- **Spectrum order (C5).** Anatomy + Playbook walk purple → blue → green → gold → orange → red → magenta. The DESIGN-LAWS wheel walks a longer order starting magenta → purple → indigo → blue → emerald → green → lime → gold → orange → red → pink. The Hub's board rotation says purple → sapphire → emerald. Three orders, one law. Walk the Playbook order in §5.4; note the conflict when it matters.
+- **One layer, two colors (C2).** In the Hub file, a layer's border/glow color and its jewel color disagree on EVERY layer (Human magenta `#d86cff` vs jewel `#ed42c4`, and so on). The screenshots follow the jewel map. Which map is "the layer's color" is undecided — follow the jewel map for icons, the layer map for borders, and say so.
+- **Title size (C3) and the nutshell's exact construction (C4, G11).** Three competing title rules; Shawn's correction is "not massive." The nutshell's text is 20px white and its layer is an elevated board — but no source gives the elevated nutshell's exact border/shadow values. Derive them from the layer-board formula and Shawn's eye.
+- **Shawn's vocabulary (G1).** "The elevators" (the things that lift), "the enhancers" (the things that make it shine), "the pinnacle points" (the peaks everything rises to) — his words, no canonical definition anywhere. Awaiting his definition before they can become rules. Do not define them yourself.
+- **The local `pieces.json` ai_label drift (§4.1).** The Step-3 Index says every canonical entry carries an `ai_label`; the local store copy carries none. Trust the Index + JSON twin; do not invent labels.
+- **The proof Naya.** This manual is the source the proof Naya will build from alone — a different Naya cloning a page and building a working interface from this manual alone. That proof has not run yet. Until it has, this manual is a first draft of the activation, not a proven one.
+
+---
+
+## 11. QUICK REFERENCE — THE ONE PAGE
+
+**Three questions before showing Shawn:** 1. Is every position calculated? (Show me the formula.) 2. Does it feel like a machine? (What's moving, and why?) 3. Can you get it in 2 seconds? (What's the headline?)
+
+**The one rule:** compose, never create. The pages ARE the templates.
+
+**Find a part:** Inventory (`THE-INVENTORY.md`) for WHERE · Piece Index (Step-3, Oct 22) for WHETHER — 154 canonical, 3 verified, 413 retired, 1 superseded, 0 unverified. Start with the five crowns: NAYA-INP-008 · NAYA-INP-009 · NAYA-BTN-009 · NAYA-BRD-001 · NAYA-HRO-001.
+
+**The laws in one breath:** obsidian, aluminum, top-left light, white text, slow motion, calculated positions, own-color ignition, every number exact, finish the edge, don't touch unasked, his eye wins.
+
+**Build:** headline → calculate → materials → motion → light → laws → show Shawn, say nothing.
+
+**Verify:** self-scorecard first (not 9+ by your own accord? fix it yourself) → another seat → Shawn's eye. Scroll 0 AND scrolled, desktop AND phone, phone first. Design-contract gate measured: zero white, everything raised, gauges alive, no text-in-image.
+
+**File:** helper, one file at a time, read-back verified (blob + sha256 MATCH), no merge — Shawn's hand. Smart-note the lesson the same pass.
+
+**Five gates before every consequential action:** Is it right? Is it what they truly need? Is it mine to do? Is now the time? Can I prove it?
+
+---
+
+*Activation manual for the Smart Factory. Shawn's order 2026-11-09 20:27Z. Harvested from: THE-PLAYBOOK.md (the HOW) · DESIGN-INTELLIGENCE-REPORT.md (the WHY) · THE-INVENTORY.md (the parts) · CANONICAL-PIECE-INDEX.md + .json Step-3 (the canon, Oct 22) · THE-REAL-OBJECT-LAW.md · intelligent-block-rules-LAW-20261106.md (LAW). No new templates. No redesign. No secrets in this file.*
