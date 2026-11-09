@@ -311,6 +311,7 @@ def live_tree_backfill(owner=DEFAULT_OWNER, boxes_root=None,
         "selected": len(selected),
         "fetched": 0,
         "organized": 0,
+        "pathless_skipped": 0,
         "duplicates_skipped": 0,
         "skipped_unparseable": 0,
         "fetch_errors": 0,
@@ -346,8 +347,12 @@ def live_tree_backfill(owner=DEFAULT_OWNER, boxes_root=None,
         blocks.append(block)
         stats["block_ids"].append(block["id"])
         if len(blocks) >= batch_size:
-            append_blocks(owner, blocks)
-            stats["organized"] += len(blocks)
+            # Live-tree blocks are always pathed, so append_blocks
+            # never skips one here - the return is still the honest
+            # count of what landed.
+            appended = append_blocks(owner, blocks)
+            stats["organized"] += appended
+            stats["pathless_skipped"] += len(blocks) - appended
             for block in blocks:
                 seen_live[block["where"]["github_path"]] = \
                     live[block["where"]["github_path"]]
@@ -356,8 +361,9 @@ def live_tree_backfill(owner=DEFAULT_OWNER, boxes_root=None,
             save_watermark(watermark, mark)
             blocks = []
     if blocks:
-        append_blocks(owner, blocks)
-        stats["organized"] += len(blocks)
+        appended = append_blocks(owner, blocks)
+        stats["organized"] += appended
+        stats["pathless_skipped"] += len(blocks) - appended
         for block in blocks:
             seen_live[block["where"]["github_path"]] = \
                 live[block["where"]["github_path"]]
@@ -387,6 +393,18 @@ def append_blocks(owner, blocks):
     here are byte-identical to what ``append_block`` writes (same
     JSON, same layout), and the manifest is ``boxstore``'s own
     ``write_manifest`` - the layout is unchanged, only the batching.
+
+    ONE RULE (live-tree backfill, 2026-11-09): a PATHLESS block
+    (a local working copy, ``github_path`` empty) NEVER supersedes a
+    block that already names its GitHub path. The pathed block is
+    the note's canonical home; the local copy is its shadow. Without
+    this, the hook's regular run re-appends a local copy after the
+    backfill and boxstore's last-wins makes the empty path win - the
+    box stops naming 16 real notes and the completeness gate fails
+    on paths the box already holds. A pathed block DOES supersede a
+    pathless one (that is how a filed note claims its home), and a
+    pathless block supersedes a pathless one (a draft's newest edit
+    wins). Returns the number of blocks actually appended.
     """
     for block in blocks:
         if not isinstance(block, dict) or "id" not in block \
@@ -394,13 +412,27 @@ def append_blocks(owner, blocks):
             raise ValueError("append_blocks needs blocks, not %r"
                              % type(block))
     boxstore.ensure_box(owner)
+    current = boxstore.read_blocks(owner)
+    keep = []
+    for block in blocks:
+        new_path = (block.get("where") or {}).get("github_path") or ""
+        cur = current.get(block["id"])
+        cur_path = ""
+        if isinstance(cur, dict):
+            cur_path = (cur.get("where") or {}).get("github_path") or ""
+        if not new_path and cur_path:
+            continue
+        keep.append(block)
+        current[block["id"]] = block
+    if not keep:
+        return 0
     path = os.path.join(boxstore.box_dir(owner), boxstore.BLOCKS_NAME)
     with open(path, "a", encoding="utf-8") as handle:
-        for block in blocks:
+        for block in keep:
             handle.write(json.dumps(block, sort_keys=True,
                                     ensure_ascii=False) + "\n")
     boxstore.write_manifest(owner)
-    return len(blocks)
+    return len(keep)
 
 
 def run(owner=DEFAULT_OWNER, backfill=False, notes_roots=None,
@@ -486,12 +518,17 @@ def run(owner=DEFAULT_OWNER, backfill=False, notes_roots=None,
         seen_ids.add(block["id"])
         blocks.append(block)
 
-    stats["organized"] = len(blocks)
     stats["block_ids"] = [b["id"] for b in blocks]
+    stats["organized"] = len(blocks)
+    stats["pathless_skipped"] = 0
 
     if not dry_run:
         if blocks:
-            append_blocks(owner, blocks)
+            # append_blocks may skip pathless blocks that would
+            # clobber a pathed block - organized counts what landed.
+            stats["organized"] = append_blocks(owner, blocks)
+            stats["pathless_skipped"] = (len(blocks)
+                                         - stats["organized"])
         # The watermark advances only over what this run actually saw
         # on disk - a skipped (unparseable) file stays unmarked, so
         # the next run retries it instead of forgetting it.
