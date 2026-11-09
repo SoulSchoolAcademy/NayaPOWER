@@ -49,5 +49,9 @@
 - Live landed-numbers read needs Shawn's seat (Supabase CDN never loads from this VM; all live numbers above are synthetic spine + synthetic links).
 - Gray text in timestamps/drawer/legend rows; MOCK toggle + metric-strip legend kept as flagged judgment calls; orb minis still disabled per pass-3 (a).
 - The drill list is 1.4MB of HTML (20 full gauge SVGs per open) — heavy; lazy-mounting is future work.
-- Filing to GitHub: PENDING (next step — see below).
+- Filing to GitHub: DONE 22:43–22:45Z Nov 9 — branch `dashboard/pass4-one-family-20261109` (created from main `3cc47d2e3081de1842e814f9c2b9f217bb1a3c10`, HTTP 201). All PUTs sequential, read-back verified (blob API / Contents GET, sha256 match):
+  - `DASHBOARD/defectfix-v7/pass4/dashboard-pass4.html` — blob `6a12b4b820649629615673fee0e87f9fc6723b5d`, 1,767,911 B, sha256 `8ddc73daf396e8cca4aae23838653eaf30a69d181259749cd00c7b8ed69543b3`, commit `c795daf91d7891852f3845788d892c3c263f4f3e`.
+  - `DASHBOARD/defectfix-v7/pass4/PASS4-WORK-RECORD.md` — blob `8594a9ba743dc76cb9df14aebb3351b7e1af699c`, commit `f18ed7945ed7b40967399e205dcfc4ffd9709f45` (read-back MATCH; re-filed after this filing section was added — see below).
+  - `DASHBOARD/defectfix-v7/pass4/PASS4-BYTE-COMPARE.md` — blob `191471537b9ec206d3c2ed028f54af8aa78f6fdd`, commit `960bfa6e27fc83c396ccd1b174a5d1c6df6f95e9`, read-back MATCH.
+  - NO merge, NO live deploy (coordinator deploys after independent verification; merges are Shawn's hand only).
 
