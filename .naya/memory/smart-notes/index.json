@@ -26290,7 +26290,7 @@
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-05T23:00:00Z",
    "date": "2026-11-05",
-   "page_hash": "4b346cd04ed93e69bb0e838a5f51e2f95ad07a8bdaf9c3e55e92d422516bf634",
+   "page_hash": "05a6d6e4c4fca15934a8f2cf9c227b4beda7a4637422eee338b5424bb365c7c8",
    "content_hash": "ed4bcd717f27243601767e9484304e84632f29d47d57a8223a89b8044675273f",
    "one_line": "The record — the registry, the ledger, the artifacts, the commit messages — must tell the truth to a cold reader who has no prior chat. A ledger is a claim about production; produc",
    "topics": [
@@ -30949,5 +30949,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "09ca91f25c37ec21e72ace42345e65d3e6cb81b655eb1a8e92611f2598eff92f"
+ "corpus_manifest_hash": "586d0bb45ed23b06f55ebc9484ff7b6145e3364d87b56f26fd492bc38b57b56e"
 }
