@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-09 05:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-09 05:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -33739,6 +33739,12 @@ _Last updated: 2026-11-09 05:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED this tick on live bytes: lessons.jsonl post-filing sha256 42c4ed24... matches the receipt's post-filing pin exactly, 38 records (37 census + mirror lesson monthly-audit-log-silence-is-not-zero-20261101 as last record, additive only); lesson-injection-log.jsonl sha256 4b70671a... exact, 834 rows, span 2026-10-17T15:16:07Z to 2026-10-24T15:4
 
+### ✅ gap-20261017-2350 — Team KNOW, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Routine-pile sweep: 258 never-cited comments on board #2641, two-pass body-pattern sweep, distillation amendment
+
+**Evidence:** VERIFIED this tick on workspace bytes: corpus hidden_files/feed-2641-comments-20261017.json exists; distillation hidden_files/feed-distillation-2641.md exists and carries the amended line citing both 6211507953 and 6211812291 (grep=1 each). NOT PHANTOM. SCORE 9.0, GOOD ONE MORE PASS, agreeing with the lane's honest 9.3 self-score direction (one not
+
 ### ✅ distill-feed-2537-20261015 — Team KNOW, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
 
 **Task:** distill-feed #2537 final: 1,013-comment delta distilled, essence posted to #2641
@@ -43784,6 +43790,18 @@ _Last updated: 2026-11-09 05:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ preregister-t0719 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Pre-registration tick t0719 breaker #6 feature.connect: falsifiers F1-F7 with predicted outcomes, written before any module byte
+
+**Evidence:** VERIFIED this tick: pre-registration timestamped 2026-10-18 ~02:57 UTC, before any module byte; canonical order re-derived from live registry SHA 8d1e6f9d with built set (smart_mail, smart_list, space, social_feed, cover) stated; falsifiers F1-F7 each carry a predicted outcome, including strict-True consent (F4), no-contact-without-consent (F5), ve
+
+### ✅ preregister-t0718 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Pre-registration breaker #5 feature.social_feed: falsifiers F1-F7 with predicted outcomes, written before any module byte
+
+**Evidence:** VERIFIED this tick: pre-registration timestamped 2026-10-18 02:44 UTC, before module bytes; canonical order re-derived from live registry SHA 1121d012 (== t0715 flip SHA, stated in the receipt); falsifiers F1-F7 each carry a predicted outcome, including the fail-closed deltas and the F7 push-before-receipt discipline. Vindication on record: the fol
 
 ### ✅ gap-scorer-20261015-0630-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
