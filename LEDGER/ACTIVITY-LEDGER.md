@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-09 05:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-09 06:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -43791,6 +43791,12 @@ _Last updated: 2026-11-09 05:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ gap-scorer-20261015-0650-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: app-identity path + t0572 seal stale-lineage correction (parent t0578, 9.0)
+
+**Evidence:** Receipt is detailed with sha pins (results JSON ef6a7272, seal 2f85967c, correction 065e18c7) and an honest self-scorecard 9.0, but scorer could not re-verify the cited repo artifacts this tick: the NayaPOWER checkout holding auto-retrieval/sealed-note-t0572-lineage-correction.md and results-t0555-allclauses.json was not located in the time box, so
+
 ### ✅ preregister-t0719 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** Pre-registration tick t0719 breaker #6 feature.connect: falsifiers F1-F7 with predicted outcomes, written before any module byte
@@ -48232,6 +48238,18 @@ _Last updated: 2026-11-09 05:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-scorer-20261015-0720-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: persist t0810 probes as re-runnable scripts (parent gap-scorer-20261014-2230, 9.0)
+
+**Evidence:** Verified: both probe scripts exist in hidden_files/bin/ with sha256 byte-matching the receipt exactly (probe-gap-2230-absent-venv.py 24953f40, probe-gap-2230-anchor-repro.py 5318b503); receipt reports both PASS with exact MRR anchors 0.4263/0.4829. Persistence gap closed: probes are re-runnable, pinned, venv-safe. Score 9.0, GOOD ONE MORE PASS. Why
+
+### ✅ gap-lane-scorer-20261015-0700-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 8.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: second-reading veracity-law boundary battery (parent lane-scorer-20261015-0700, 9.0)
+
+**Evidence:** Strong work in-text: 6-pool boundary battery over both guard implementations, law-derived pre-registered expectations, genuine new root cause D1 (both guards share the same floor-blind R2 reading; P4/P6 diverge from law B3). Scorer could not re-verify the cited artifacts this tick: lane-1/t0700-boundary-battery.py, its output txt, and t0700-second-
 
 ### ✅ gap-scorer-20261015-0620-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
