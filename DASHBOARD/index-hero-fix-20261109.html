@@ -2879,6 +2879,16 @@ button:hover{
   color:#8a8a96;
 }
 .tn-tacho-cap b{ color:#fff; font-weight:600; }
+@media (max-width:560px){
+  /* 2026-11-09 — HERO FIX ROUND (defect 2): in the loading state the cap
+     ("Reading your actions…") sits at the dial's foot, between the bottom
+     orbs at 390/360, and reads as fragments ("…g your ac…") behind them.
+     Phones only, loading state only: hide it — the page already says
+     "Ledger loading — your score appears when the ledger answers" above the
+     gauge, and the cap returns in every other state and at desktop. The
+     .tn-cap-on padding stays, so the mount height and orb layout do not move. */
+  #tn-tacho-mount .tn-tacho[data-state="loading"] .tn-tacho-cap{display:none !important;}
+}
 /* 2026-11-08 — SHAWN'S EYE: the lap line, below the gauge, clear of the
    object. A small dark pill, white text, centred under the dial — the same
    words the dial used to carry ("3RD LAP — 1K"), now where they can't
@@ -6210,6 +6220,14 @@ button.os-ld-node.os-ld-mini .os-ld-n{font-size:0 !important;line-height:0 !impo
   .os-ld-node.os-ld-mini .tn-mini-mount{width:56%;top:1%;}
   .os-ld-node.os-ld-mini .os-ld-lbl{font-size:8px !important;}
 }
+/* 2026-11-09 — HERO FIX ROUND (defect 1): the orb mini inherits the main
+   gauge's phone padding-top (89px, max-width:560px) + the -45px lift, so its
+   .tn-mini-mount box is 34x120px — 60px taller than its 60px orb — and the
+   strip's transparent foot crosses the main dial's top rim at 390/360
+   (elementFromPoint at 270 deg hit the mount 5/5). Orb minis only: zero the
+   padding and the lift, so the mount box is just the dial (~35px) and stays
+   inside its orb. The main gauge is untouched. */
+.os-ld-node.os-ld-mini .tn-mini-mount .tn-tacho{padding-top:0 !important;transform:none !important;}
 .os-ld-node .os-ld-pts.is-na{opacity:.4;}
 .os-ld-node.ld-node-hit::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:2px solid var(--nc);animation:osLdHit 1s ease-out 1;pointer-events:none;}
 @keyframes osLdHit{0%{transform:scale(.85);opacity:.9;}100%{transform:scale(1.28);opacity:0;}}
