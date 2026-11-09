@@ -30,7 +30,25 @@ template §2A and are checked here where the machine can check them):
   (a) ZERO white/light backgrounds anywhere on the page.
   (b) Every element raised/elevated (real depth, real lift, real light).
   (c) Gauges present and alive (the speedometer language on the numbers).
-  (d) NO text-in-image, NO pasted document.
+      Two kinds, two standards (2026-11-09 gate fix): a mount inside
+      calculator context (any ancestor naming the calculator — id
+      "calculator", class calc-gauge / calc-body / calc-...) is the
+      CALCULATOR gauge — the pricing speedometer — measured against its
+      own standard: number on top, gauge underneath, needle/dial alive
+      (JS wiring moves it with the numbers), gold rim intact. A mount
+      anywhere else is the Dashboard NEEDLE-LAW gauge: #tn-tacho-mount
+      in the DOM, .tn-tacho-needle in the DOM, the winning needle rule
+      carries NO real CSS transition (rAF owns the motion), gear teeth
+      present (>= 2). Measuring the calculator gauge against the needle
+      law is a category error — fixed 2026-11-09.
+  (d) NO text-in-image, NO pasted document. A data:image/ payload is
+      opaque binary — base64 noise contains random "doc"/"list"
+      substrings — so the payload bytes are NEVER scanned for text
+      signals (2026-11-09 gate fix: the 8 Naya faces + orbs were 23
+      false positives). The alt text of a data-URI image IS still
+      scanned, and file/URL images are scanned on src + alt as before:
+      a real pasted document (screenshot file, document-signalling
+      filename or alt) still FAILS.
   (e) NO bare text blocks — every word lives in a board, pill, jewel, or orb.
   (f) NO LOOK-ALIKE buttons/gauges/numbers (addendum 16:41Z) — a part that is
       not the harvested part FAILS. Any button, gauge, or number element whose
@@ -131,8 +149,13 @@ see TEST-REPORT.md; change a constant here and the report must say so):
       .board-title, .board-sub and .board-nut; consecutive boards alternate
       face-left / face-right; every face image is a different source. A
       board missing any part, two boards on the same side in a row, or a
-      repeated face FAILS. Pages with no story boards pass (i) as not
-      applicable.
+      repeated face FAILS. The Ten is the same family in a different
+      shape (2026-11-09 gate fix): a board carrying .ult-card / .ult-part
+      is a TEN board — title (.board-title) + three parts (.ult-part-why,
+      .ult-part-sol, .ult-part-nut, each with at least one real bullet)
+      + who line (.ult-who). A Ten missing its nutshell (.ult-part-nut)
+      FAILS (i) exactly as a hired board missing .board-nut does. Pages
+      with no story boards pass (i) as not applicable.
   HUMAN CHECKS (H1–H5) — what the machine cannot check, a NAMED HUMAN CHECK
   the seat must run and report in the handoff. A gate that isn't run is not
   a pass. Printed after the machine checks on every run; attested with
@@ -558,6 +581,136 @@ def needle_has_real_transition(rules):
     return False, winner
 
 
+# ------------------------------------------------- calculator-gauge helpers
+# (2026-11-09 gate fix — bug 3.) The pricing calculator's speedometer is
+# a DIFFERENT component from the Dashboard needle-law gauge. A mount is a
+# calculator gauge when any ancestor names the calculator (id="calculator",
+# class calc-gauge / calc-body / calc-...). The Dashboard gauge has no
+# calc ancestor, so the needle law still applies to it unchanged.
+CALC_GOLD_HEXES = ("#ffbf3d", "#e8b64c", "#ffd45a", "#f5d76e", "#d9a521",
+                    "#ffcf5c")
+
+
+def gauge_is_calculator(mount_el):
+    for a in mount_el.ancestors():
+        hay = ((a.attrs.get("class") or "") + " " + (a.attrs.get("id") or "")).lower()
+        if "calc" in hay:
+            return True
+    return False
+
+
+def _element_full_text(el):
+    """Direct text + all descendant text, whitespace-collapsed."""
+    txt = " ".join(el.text.split())
+    for d in _descendants(el):
+        txt += " " + " ".join(d.text.split())
+    return txt.strip()
+
+
+def _part_bullet_text(board_el, part_cls):
+    """Text of the bullets in a Ten part block, or None when the part
+    block itself is absent. Empty string when the block exists but
+    carries no bullets — a label alone is not a nutshell."""
+    for d in [board_el] + _descendants(board_el):
+        if part_cls in d.classes():
+            bullets = []
+            for x in _descendants(d):
+                if x.tag == "li":
+                    t = _element_full_text(x)
+                    if t:
+                        bullets.append(t)
+            return " ".join(bullets)
+    return None
+
+
+def calc_gauge_subchecks(mount_el, elements, rules, text, custom_props):
+    """The calculator gauge's own standard. Returns (failures, notes,
+    counts): failures is a list of FAIL strings (empty = the gauge passes
+    its standard). The four sub-checks:
+      1. NUMBER ON TOP — a numeric amount element exists and is paired
+         with the gauge: amount and mount share a gauge-block ancestor
+         (class containing "gauge"). Visual above/below is the live
+         verifier's job (screenshots); the static check is the pairing —
+         DOM order alone would misfire here (the mount precedes the
+         amount in source while the number renders above the dial).
+      2. NEEDLE/DIAL ALIVE — the needle is built by script (some script
+         mentions tn-tacho-needle) AND the calculator drives the mount
+         when the amount changes (some script mentions both the mount id
+         and calc-amount). A gauge with no JS wiring is dead, not alive.
+      3. GOLD RIM INTACT — the calculator's gold token (--gold, a gold
+         hex) is defined and is used by a calculator/tacho-scope rule
+         (the gauge's number/readout wears it).
+    """
+    failures, notes, counts = [], [], {}
+    # 1. number paired with the gauge
+    amount_el = None
+    for el in elements:
+        if el.attrs.get("id") == "calc-amount" or "calc-amount" in el.classes():
+            amount_el = el
+            break
+    if amount_el is None:
+        for el in elements:
+            if "calc-readout" in el.classes() and re.search(r"\d", _element_full_text(el)):
+                amount_el = el
+                break
+    paired = False
+    if amount_el is not None and re.search(r"\d", _element_full_text(amount_el)):
+        mount_gauge_blocks = {id(a) for a in mount_el.ancestors()
+                              if "gauge" in (a.attrs.get("class") or "").lower()}
+        amount_gauge_blocks = {id(a) for a in amount_el.ancestors()
+                               if "gauge" in (a.attrs.get("class") or "").lower()}
+        paired = bool(mount_gauge_blocks & amount_gauge_blocks)
+    counts["calc_number_paired"] = int(paired)
+    if amount_el is None:
+        failures.append("C-CALC NO NUMBER: no calc-amount / calc-readout element "
+                        "with a digit — the gauge has no number on top")
+    elif not paired:
+        failures.append("C-CALC NUMBER NOT PAIRED: the amount element does not share "
+                        "a gauge-block ancestor with the mount — number and gauge "
+                        "are not one component")
+    else:
+        notes.append("C-CALC number on top: amount \"%s\" shares a gauge block with "
+                     "the mount" % _element_full_text(amount_el)[:40])
+    # 2. needle/dial alive — JS wiring
+    scripts = re.findall(r"<script[^>]*>(.*?)</script>", text, re.S | re.I)
+    needle_built = any("tn-tacho-needle" in s for s in scripts)
+    driven = any("tn-tacho-mount" in s and "calc-amount" in s for s in scripts)
+    counts["calc_needle_built_by_js"] = int(needle_built)
+    counts["calc_driven_by_amount"] = int(driven)
+    if not needle_built:
+        failures.append("C-CALC DEAD NEEDLE: no script builds tn-tacho-needle — "
+                        "the dial has no needle to move")
+    if not driven:
+        failures.append("C-CALC NOT DRIVEN: no script mentions both the mount id and "
+                        "calc-amount — nothing moves the needle with the numbers")
+    if needle_built and driven:
+        notes.append("C-CALC needle/dial alive: needle built by script, calculator "
+                     "drives the mount when the amount changes")
+    # 3. gold rim intact
+    gold = (custom_props.get("--gold") or "")
+    gold_defined = any(h in gold.lower() for h in CALC_GOLD_HEXES)
+    gold_used = False
+    for r in rules:
+        sel = r.selector.lower()
+        if "calc" in sel or "tacho" in sel:
+            if "var(--gold)" in r.decl or any(h in r.decl.lower() for h in CALC_GOLD_HEXES):
+                gold_used = True
+                break
+    counts["calc_gold_defined"] = int(gold_defined)
+    counts["calc_gold_used"] = int(gold_used)
+    if not gold_defined:
+        failures.append("C-CALC GOLD RIM MISSING: --gold is not defined as a gold "
+                        "colour in the calculator scope")
+    elif not gold_used:
+        failures.append("C-CALC GOLD RIM MISSING: --gold is defined but no "
+                        "calculator/tacho rule uses it — the gold is gone from "
+                        "the gauge")
+    else:
+        notes.append("C-CALC gold rim intact: --gold=%s, used by the gauge's "
+                     "number/readout" % gold.strip())
+    return failures, notes, counts
+
+
 # ------------------------------------------------------------------ checks
 class GateResult:
     def __init__(self, letter, name):
@@ -745,10 +898,16 @@ def check_b(elements, rules):
     return res
 
 
-def check_c(text, elements, rules):
-    """(c) gauges present and alive."""
+def check_c(text, elements, rules, custom_props=None):
+    """(c) gauges present and alive. Two kinds, two standards (2026-11-09
+    gate fix): a mount inside calculator context is the calculator gauge
+    (its own standard — number, pairing, aliveness, gold rim); a mount
+    anywhere else is the Dashboard needle-law gauge (mount + needle in
+    DOM, no CSS transition on the winning needle rule, >= 2 gear teeth).
+    Every mount must pass its own standard. Pages with no gauge pass on
+    the fallback only when live numbers are present."""
     res = GateResult("c", "gauges present and alive")
-    mount = any(el.attrs.get("id") == "tn-tacho-mount" for el in elements)
+    mounts = [el for el in elements if el.attrs.get("id") == "tn-tacho-mount"]
     needle_dom = any("tn-tacho-needle" in el.classes() for el in elements)
     needle_css = any("tn-tacho-needle" in r.selector for r in rules)
     teeth = text.count("tn-gear-tooth")
@@ -758,7 +917,7 @@ def check_c(text, elements, rules):
                    if any("orb" in c.lower() for c in el.classes())
                    and re.search(r"\d", el.text))
     res.counts.update({
-        "tn_tacho_mount_in_dom": int(mount),
+        "tn_tacho_mount_in_dom": len(mounts),
         "tn_tacho_needle_in_dom": int(needle_dom),
         "tn_tacho_needle_in_css": int(needle_css),
         "tn_gear_tooth_occurrences": teeth,
@@ -766,16 +925,44 @@ def check_c(text, elements, rules):
         "tiled_digit_occurrences": tiled,
         "orb_numerals": orb_nums,
     })
-    if mount and (needle_dom or needle_css):
-        res.note("real gauge present: #tn-tacho-mount in DOM, needle %s, "
-                 "%d gear-tooth occurrence(s)" % ("in DOM" if needle_dom else "in CSS only", teeth))
-        if needle_transition:
-            res.fail("C NEEDLE LAW BROKEN: .tn-tacho-needle carries a CSS transition "
-                     "(%s) — rAF must own the motion, no CSS transition" % needle_rule.loc())
-        if teeth < 2:
-            res.fail("C GEAR TEETH MISSING: only %d tn-gear-tooth occurrence(s) — "
-                     "the harvested gauge has 246 teeth; this gauge is not the "
-                     "harvested one" % teeth)
+    if mounts:
+        calc_mounts = [m for m in mounts if gauge_is_calculator(m)]
+        needle_mounts = [m for m in mounts if not gauge_is_calculator(m)]
+        res.counts["calc_gauges"] = len(calc_mounts)
+        res.counts["needle_law_gauges"] = len(needle_mounts)
+        if needle_mounts:
+            # Needle-law path: unchanged semantics — evaluated only when a
+            # needle exists (DOM or CSS); a needle-less mount falls back
+            # to live numbers, exactly as before.
+            if needle_dom or needle_css:
+                res.note("needle-law gauge present: #tn-tacho-mount in DOM, needle %s, "
+                         "%d gear-tooth occurrence(s)"
+                         % ("in DOM" if needle_dom else "in CSS only", teeth))
+                if needle_transition:
+                    res.fail("C NEEDLE LAW BROKEN: .tn-tacho-needle carries a CSS transition "
+                             "(%s) — rAF must own the motion, no CSS transition" % needle_rule.loc())
+                if teeth < 2:
+                    res.fail("C GEAR TEETH MISSING: only %d tn-gear-tooth occurrence(s) — "
+                             "the harvested gauge has 246 teeth; this gauge is not the "
+                             "harvested one" % teeth)
+            elif tiled > 0 or orb_nums > 0:
+                res.note("needle-law mount with no needle; live numbers present "
+                         "instead: %d tiled-digit occurrence(s), %d orb numeral(s)"
+                         % (tiled, orb_nums))
+            else:
+                res.fail("C NO GAUGE, NO LIVE NUMBERS: #tn-tacho-mount with no needle "
+                         "and no tiled digits / orb numerals — the numbers are plain text")
+        for m in calc_mounts:
+            res.note("calculator gauge present: #tn-tacho-mount inside calculator "
+                     "context (line %d) — measured against the calculator standard, "
+                     "not the needle law" % m.line)
+            failures, notes, cc = calc_gauge_subchecks(
+                m, elements, rules, text, custom_props or {})
+            res.counts.update(cc)
+            for n in notes:
+                res.note(n)
+            for f in failures:
+                res.fail(f)
     elif tiled > 0 or orb_nums > 0:
         res.note("no needle-law gauge; live numbers present instead: %d tiled-digit "
                  "occurrence(s), %d orb numeral(s)" % (tiled, orb_nums))
@@ -786,18 +973,33 @@ def check_c(text, elements, rules):
 
 
 def check_d(elements, text):
-    """(d) no text-in-image, no pasted document."""
+    """(d) no text-in-image, no pasted document. A data:image/ payload is
+    opaque binary — base64 noise contains random "doc"/"list" substrings
+    (2026-11-09 gate fix: the 8 Naya faces + orbs were 23 false
+    positives) — so the payload bytes are never scanned for text
+    signals. The alt text of a data-URI image IS still scanned, and
+    file/URL images are scanned on src + alt as before."""
     res = GateResult("d", "no text-in-image, no pasted document")
     hits = 0
+    data_uri_excluded = 0
     for el in elements:
         if el.tag == "img":
-            hay = (el.attrs.get("src", "") + " " + el.attrs.get("alt", "")).lower()
+            src = el.attrs.get("src", "")
+            alt = el.attrs.get("alt", "")
+            if src.lower().startswith("data:image/"):
+                # Opaque binary payload — the base64 itself signals
+                # nothing. Only the human-written alt text can signal
+                # text content (e.g. alt="Top 10 chart screenshot").
+                data_uri_excluded += 1
+                hay = alt.lower()
+            else:
+                hay = (src + " " + alt).lower()
             words = [w for w in TEXT_IMG_WORDS if w in hay]
             if words:
                 hits += 1
                 res.fail("TEXT-IN-IMAGE: <img src=\"%s\" alt=\"%s\"> line %d "
-                         "(signals: %s)" % (el.attrs.get("src", "")[:80],
-                                            el.attrs.get("alt", "")[:80], el.line,
+                         "(signals: %s)" % (src[:80],
+                                            alt[:80], el.line,
                                             ", ".join(words)))
         elif el.tag in ("iframe", "embed", "object"):
             src = el.attrs.get("src", el.attrs.get("data", "")).lower()
@@ -813,6 +1015,11 @@ def check_d(elements, text):
                          % (el.line, cap[:100]))
     res.counts["text_in_image_hits"] = hits
     res.counts["img_count"] = sum(1 for el in elements if el.tag == "img")
+    res.counts["data_uri_images_excluded"] = data_uri_excluded
+    if data_uri_excluded:
+        res.note("%d data-URI image payload(s) excluded from the src scan "
+                 "(opaque binary — no text signal); alt text still scanned"
+                 % data_uri_excluded)
     if not hits:
         res.note("%d <img> element(s), none signalling text content; no document embeds"
                  % res.counts["img_count"])
@@ -918,17 +1125,26 @@ def check_f(elements, rules, text):
         res.note("every button/CTA traces to a harvested class, a harvested "
                  "family prefix, or an id/data-* address (%d attribute-addressed)"
                  % attr_addressed)
-    # F3 needle law (gauge must be the harvested gauge, not a look-alike)
+    # F3 needle law (gauge must be the harvested gauge, not a look-alike).
+    # Calculator gauges are exempt (2026-11-09 gate fix): a mount inside
+    # calculator context is the pricing speedometer, not the Dashboard
+    # needle-law gauge — its aliveness is measured by (c)'s calculator
+    # standard, and a dead calculator gauge still FAILs (c).
     mount = any(el.attrs.get("id") == "tn-tacho-mount" for el in elements)
     if mount:
-        has_trans, needle_rule = needle_has_real_transition(rules)
-        if has_trans:
-            res.fail("F3 FAKE GAUGE: .tn-tacho-needle carries a CSS transition (%s) — "
-                     "the harvested needle has NO transition; rAF owns the motion"
-                     % needle_rule.loc())
-        if text.count("tn-gear-tooth") < 2:
-            res.fail("F3 FAKE GAUGE: only %d tn-gear-tooth occurrence(s) — the "
-                     "harvested gauge has 246 teeth" % text.count("tn-gear-tooth"))
+        mounts = [el for el in elements if el.attrs.get("id") == "tn-tacho-mount"]
+        if mounts and all(gauge_is_calculator(m) for m in mounts):
+            res.note("F3 needle law skipped: every gauge mount is a calculator "
+                     "gauge — aliveness is measured by (c)'s calculator standard")
+        else:
+            has_trans, needle_rule = needle_has_real_transition(rules)
+            if has_trans:
+                res.fail("F3 FAKE GAUGE: .tn-tacho-needle carries a CSS transition (%s) — "
+                         "the harvested needle has NO transition; rAF owns the motion"
+                         % needle_rule.loc())
+            if text.count("tn-gear-tooth") < 2:
+                res.fail("F3 FAKE GAUGE: only %d tn-gear-tooth occurrence(s) — the "
+                         "harvested gauge has 246 teeth" % text.count("tn-gear-tooth"))
     # F4 numbers — evidence only (static source cannot prove the digits render
     # as the harvested tiles; that is his eye's call)
     tiled = len(re.findall(r"svgnum|tiled-digit|digit-tile|ct-reel|num-tile", text, re.I))
@@ -1026,15 +1242,61 @@ def check_i(elements):
         res.note("no story boards (.calc-story-card) on this page — (i) not applicable")
         return res
     missing = 0
+    ten_count = 0
     for idx, b in enumerate(boards, 1):
-        for cls in ("board-title", "board-sub", "board-nut"):
-            txt = _class_text(b, cls)
-            if txt is None:
+        # The Ten is the same family in a different shape (2026-11-09 gate
+        # fix): a board carrying .ult-card / .ult-part is a TEN board —
+        # title + three parts (why / solution / nutshell, each with at
+        # least one real bullet) + who line — NOT title + subtitle +
+        # nutshell. A Ten missing its nutshell FAILS (i) exactly as a
+        # hired board missing .board-nut does. Side alternation and face
+        # distinctness below still apply to Ten boards unchanged.
+        is_ten = "ult-card" in b.classes() or any(
+            "ult-part" in d.classes() for d in _descendants(b))
+        if is_ten:
+            ten_count += 1
+            title = _class_text(b, "board-title")
+            if title is None:
                 missing += 1
-                res.fail("BOARD %d MISSING .%s — line %d" % (idx, cls, b.line))
-            elif not txt:
+                res.fail("TEN BOARD %d MISSING .board-title — line %d" % (idx, b.line))
+            elif not title:
                 missing += 1
-                res.fail("BOARD %d EMPTY .%s — line %d" % (idx, cls, b.line))
+                res.fail("TEN BOARD %d EMPTY .board-title — line %d" % (idx, b.line))
+            for part_cls, part_name in (("ult-part-why", "why"),
+                                        ("ult-part-sol", "solution"),
+                                        ("ult-part-nut", "nutshell")):
+                part_txt = _part_bullet_text(b, part_cls)
+                if part_txt is None:
+                    missing += 1
+                    res.fail("TEN BOARD %d MISSING .%s (%s) — line %d"
+                             % (idx, part_cls, part_name, b.line))
+                elif not part_txt:
+                    missing += 1
+                    res.fail("TEN BOARD %d EMPTY .%s (%s) — line %d"
+                             % (idx, part_cls, part_name, b.line))
+            who = _class_text(b, "ult-who")
+            if who is None:
+                missing += 1
+                res.fail("TEN BOARD %d MISSING .ult-who (who line) — line %d"
+                         % (idx, b.line))
+            elif not who:
+                missing += 1
+                res.fail("TEN BOARD %d EMPTY .ult-who (who line) — line %d"
+                         % (idx, b.line))
+        else:
+            for cls in ("board-title", "board-sub", "board-nut"):
+                txt = _class_text(b, cls)
+                if txt is None:
+                    missing += 1
+                    res.fail("BOARD %d MISSING .%s — line %d" % (idx, cls, b.line))
+                elif not txt:
+                    missing += 1
+                    res.fail("BOARD %d EMPTY .%s — line %d" % (idx, cls, b.line))
+    res.counts["ten_boards"] = ten_count
+    if ten_count:
+        res.note("%d Ten board(s) detected (.ult-card / .ult-part shape: title + "
+                 "why / solution / nutshell + who line)"
+                 % ten_count)
     res.counts["boards_missing_a_part"] = missing
     sides, face_hashes = [], []
     for b in boards:
@@ -1069,9 +1331,10 @@ def check_i(elements):
             res.fail("BOARD %d HAS NO FACE IMAGE — Naya speaks the boards; every "
                      "board carries her face" % j)
     if res.passed:
-        res.note("%d story boards, each with non-empty title + subtitle + nutshell; "
-                 "sides %s; %d distinct faces"
-                 % (len(boards), "".join(s[0].upper() for s in sides),
+        res.note("%d story boards (%d Ten-shaped, %d hired-shaped), each with its "
+                 "required parts; sides %s; %d distinct faces"
+                 % (len(boards), ten_count, len(boards) - ten_count,
+                    "".join(s[0].upper() for s in sides),
                     len({h for h in face_hashes if h})))
     return res
 
@@ -1118,7 +1381,7 @@ def check_file(path):
     results = [
         check_a(rules, custom_props),
         check_b(elements, rules),
-        check_c(text, elements, rules),
+        check_c(text, elements, rules, custom_props),
         check_d(elements, text),
         check_e(elements),
         check_f(elements, rules, text),
