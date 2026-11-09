@@ -1,0 +1,68 @@
+# "You're Hired" — Rewritten + The Top 10 Pains Opening
+
+**Settled 2026-11-09 ~02:16Z, Shawn's eye + tap.** The Top 10 pains open the pricing page (his tap on the options widget — the chart-first and ideal-customers-opening options are closed). The "You're hired" board is rewritten from his 02:16Z dictation — CRAFTED in his voice, never pasted verbatim (dictation-is-material law). His product words stay verbatim: "AI gives you a job" · "push button simple" · "the 99% who fail" · "25 years online" · "10 years in the making" · "Welcome."
+
+**Nothing here is on the page yet.** Both pieces come back to Shawn for his eye first; the build seat implements after he approves the words.
+
+---
+
+## A. The "You're hired" rewrite — full replacement copy
+
+Same board, same place on the page, same green jewel. Replaces the current board word for word (current board, for the record: "This is a new system — for creating, connecting, and interacting. A new level of the internet. And it is a smart money system: you get rewarded for the value you bring. Google and Facebook make billions from you being the user — and pay you nothing. Here, you get half the revenue, because you're the user. Invite your whole family: each of them gets their own world — and you get half of every one of them who joins through you.").
+
+> **You're hired.**
+>
+> They say AI is taking jobs. Naya does the opposite — she gives you one.
+>
+> Yours is the simplest job there is: tell people about a world that runs itself. Everything is automated, logical, sensible, and valuable — and easy to share, because it is the best of the whole internet, all in one place. An intelligent network.
+>
+> This job is for everyday people — and mostly for the builders. The ones who want to make money online, who have a business online, who want success online and haven't found it yet. It is for the 99% who fail, because the internet is too complicated.
+>
+> So we built the opposite: push-button simple. Twenty-five years online, listening to what people actually want — a system that makes them money and does everything for them. Ten years in the making. Here we are. Welcome.
+>
+> And here is the deal: Google and Facebook make billions from you being the user — and pay you nothing. Here, you get half the revenue, because you are the user. Invite your whole family: each of them gets their own world — and you get half of every one of them who joins through you.
+
+**What changed and why:**
+- The board now answers the question Shawn's eye asked: what does "You're hired" MEAN? It means AI gives you a job instead of taking one — and the job is telling people about a world that runs itself.
+- "This is a new system — for creating, connecting, and interacting. A new level of the internet." is cut: a slogan without a meaning, and the letter already says what the new internet is.
+- The Google-and-Facebook line and the family line stay — they were already his words, and they are the deal.
+- The 50% stays as "half the revenue" (the board's own settled truth; the story boards below it carry the when-we're-paid wording and the $12.50 / $25 / $50 math).
+- "These people" are the Top 10 Ideal Customers (`TEAM-NITRO/TOP-10-IDEAL-CUSTOMERS-20261109.md`, SN-2427) — the builders, the everyday people, the 99%.
+
+---
+
+## B. The Top 10 pains — the opening the page now starts with
+
+Each pain is one line, in his voice. The pains are the mirror of the reasons: a visitor reads the ten and sees their own — then the chart answers them.
+
+1. **The internet is too complicated — and 99% of the people who try to make money on it fail.**
+   *Grounding: his dictation 02:16Z, verbatim — "this is for the 99% who fail because the internet is too complicated."*
+2. **They say AI is taking jobs.**
+   *Grounding: his dictation 02:16Z, verbatim — the line the whole board answers.*
+3. **Google and Facebook make billions from you being the user — and pay you nothing.**
+   *Grounding: his words on the current board + Reason 9 (10 Reasons, Nov 6) — "you get half the revenue."*
+4. **Your whole life is scattered — six platforms, ten apps, and no home of your own.**
+   *Grounding: Ideal Customer #3 ("their work scattered across six platforms… no home of their own") + Reason 3 ("everything the internet is, connected").*
+5. **Nothing is push-button simple — everything needs learning, setting up, or paying someone else to run it.**
+   *Grounding: his dictation 02:16Z — "people just want a push button simple system that makes them money and does everything for them."*
+6. **You bring the value, and somebody else keeps the money.**
+   *Grounding: Reason 9 (Smart Access, 50% of the revenue) + WHAT ALL HUMANS WANT (Nov 7) — "a way to pay bills and rent and eat."*
+7. **Nobody remembers — not your notes, not your days, not your promises.**
+   *Grounding: Reason 5 ("Naya remembers everything that matters") + Ideal Customer #7 (the fear of forgetting one person).*
+8. **Your mail gets read, and your life gets kept forever.**
+   *Grounding: Reason 7 ("We do not read your mail. It is deleted by default — a day, or a week, or a month, your choice") — the pain is the inverse the rest of the internet lives by.*
+9. **On the internet, you're the product — not the person.**
+   *Grounding: his approved statement combo (Nov 8) — "you're not the product — you're the owner" + WHAT ALL HUMANS WANT — "to be acknowledged, loved, appreciated, valued, respected."*
+10. **And everything charges you before you even know if it works.**
+    *Grounding: Reason 10 ("Free to join — 9 days free, zero cost. Try the Bugatti before you buy it") — the pain is paying first.*
+
+**The opening's shape (for the build seat, after his eye):** the ten pains, one line each, then the chart — the chart is the answer. No prices in the opening, no button in the opening: the pains name the problem, the chart shows the world that solves it, the letter closes it. Nothing invented — every pain traces to a line he already said.
+
+---
+
+## Flags kept
+
+- The "You're hired" rewrite does NOT touch the eight story boards below the calculator — their airtight copy (v44) and the when-we're-paid wording stand.
+- The pains do not promise anything the page doesn't deliver; they name what the chart and the letter then answer.
+- No statistics invented. "99%" is his number, from his dictation, not a measured figure — it stays as his words.
+- "Sarah, 37" does not appear here; she is the hypothetical persona for Ideal Customer #1, not a pain.
