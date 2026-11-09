@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-09 09:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-09 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -49686,6 +49686,18 @@ _Last updated: 2026-11-09 09:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261108-2320 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-08 23:18 PST: evaluated all 31 unclaimed briefs, attempted script claim on all 31, claimed none (29 exit 7 parent-authorship, 2 exit 2 claimability gates), queue left untouched at 31
+
+**Evidence:** VERIFIED this tick from live bytes: sweep log hidden_files/sweep-20261108-2318.log exists (26 CLAIM-ATTEMPT lines: 24 exit=7 + 2 exit=2, ALL-REFUSED present) plus the 5 individually-attempted briefs = 31 attempts, 29 exit 7 + 2 exit 2, matching the receipt's per-band breakdown exactly (b1 2 + b2 18 + b3 3 + b4 6 + b5 2 = 31). Prior receipt gate-sta
+
+### ✅ gate-stall-20261109-0123 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-09 01:23 PST: evaluated all 31 unclaimed briefs, attempted script claim on 30, claimed none (28 exit 7 parent-authorship, 2 exit 2 claimability gates), 1 header-honored
+
+**Evidence:** VERIFIED this tick on workspace bytes: all 31 briefs named in the receipt are present in brief-queue/ (31 brief-*.md files, zero missing, zero extra - membership byte-identical to the receipt's list); scan script scan-20261109-0123.sh and log scan-20261109-0123.log exist, log records 25 sweep TRY entries (23 exit=7, 2 exit=2 on brief-gap-gap-t1002-
 
 ### ✅ seat-stall-20261109-0040 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
