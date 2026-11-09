@@ -30970,6 +30970,31 @@
     "Reports",
     "Citizen"
    ]
+  },
+  {
+   "smart_note_id": "SN-2600",
+   "intelligent_block_id": "IB-SMART-NOTE-20261109-sn2600-the-keys-to-a-new-digital-world",
+   "slug": "the-keys-to-a-new-digital-world",
+   "title": "The Keys to a New Digital World — the Shawn × Naya Presentation",
+   "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/PRESENTATION/SN-2600/IB-SMART-NOTE-20261109-sn2600-the-keys-to-a-new-digital-world.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/PRESENTATION/SN-2600/IB-SMART-NOTE-20261109-sn2600-the-keys-to-a-new-digital-world.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/PRESENTATION/SN-2600/IB-SMART-NOTE-20261109-sn2600-the-keys-to-a-new-digital-world.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261109-sn2600-the-keys-to-a-new-digital-world.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "VISION",
+   "topic": "PRESENTATION",
+   "captured_at": "2026-11-09",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-09T22:41:00Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-09",
+   "page_hash": "3c1ad290efa885e10401389957fb440a60666033e6ca108938a1d898f8d1d542",
+   "content_hash": "6a2aa52be1467546880e2b6c6e6fdac374ee627f9f53b0bfcf498dea5d6b1299"
   }
  ],
  "sequence_policy": {
@@ -30980,5 +31005,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "3921df4df225f0b3ac977e8422a8562e1f259688d5e588cce9bb82886b7e260b"
+ "corpus_manifest_hash": "09e28b6091d0943fbffbd87e81f34d2dd348dff16eef6b4b88cb4318f99b9f5b"
 }
