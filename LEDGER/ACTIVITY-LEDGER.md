@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-09 11:30 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-09 12:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -38039,6 +38039,12 @@ _Last updated: 2026-11-09 11:30 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ gap-t0032-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0032-lane6: close t0032 cold-leg gap by verifying pre-existing t0092 proof
+
+**Evidence:** VERIFIED this tick on workspace bytes: seal-verification.json sha256 57692d2e... matches receipt pin; PREREG-reseal-t0032.md 549adc52... matches sealed pin; packet cold-evidence-t0092.md a888c8bc... matches score-sheet packet SHA; scorer/score-sheet.md ac599ef5... matches; t0092-lane6.md 7da1e364... matches receipt pin; score sheet G0-G4 all 1, bli
+
 ### ✅ gap-lane-scorer-20261018-1440 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** Re-prove staleness-watch falsifier on current instrument bytes (9/9 assertions)
@@ -38666,6 +38672,24 @@ _Last updated: 2026-11-09 11:30 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-gap-gap-t0042-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap-gap-gap-t0042-lane5: probe-path demoted visibility with guard unmoved (decision-first diagnostic)
+
+**Evidence:** VERIFIED this tick on workspace bytes: pinned candidate baf9284b... and corpus 3eeddc8f... match; prove_probe_visibility.py 5a91a2e8... matches; results.json 4c2c09e4... matches. Receipt reports P1-P6 marker-gating cells + R1-R3 regressions green, guard line and raise byte-identical with no return between them, and an honestly corrected first-run f
+
+### ✅ gap-gap-t0042-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap-gap-t0042-lane5: mixed-case demoted visibility via distinct floor-marker stderr token
+
+**Evidence:** VERIFIED this tick on workspace bytes: pinned candidate baf9284b... and corpus 3eeddc8f... match (same pins as parent); parent proof script df5d149d... matches; prove_mixed_visibility.py 19688c4e... matches; results.json 980c05ce... matches. Parent proof re-ran green before new work; M1/M2/M3/M4 cells reported with the rc=3 contract untouched and t
+
+### ✅ gap-t0042-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0042-lane5: distinct rc=3 falsified-only refusal signal (candidate patch + proof script)
+
+**Evidence:** VERIFIED this tick on workspace bytes: pinned candidate smart_note_v2.py baf9284b... matches; corpus index.json 3eeddc8f... matches; prove_distinct_signal.py df5d149d... matches; results.json 43464f00... matches. Receipt reports M1/M2/M3 cells green with all 5 negative controls byte-identical and an honestly corrected first-run failure (diff-line c
 
 ### ✅ gap-gap-t0722 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
@@ -49692,6 +49716,12 @@ _Last updated: 2026-11-09 11:30 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261109-0333 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-09 03:33 PST: evaluated all 31 unclaimed briefs, attempted claim on all 31, 0 claimed (29 exit 7 + 2 exit 2)
+
+**Evidence:** VERIFIED this tick on workspace bytes: all 31 briefs named in the receipt are present in brief-queue/ (31 brief-*.md files, zero missing, zero extra - membership byte-identical to the 02:28 PST stall receipt); sweep log hidden_files/scan-20261109-0333.log exists (15,716 bytes) with 29 rc=7 + 2 rc=2 entries (the 2 rc=2 are brief-gap-gap-t1002-lane2.
 
 ### ✅ gap-gate-stall-20261016-1037-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
