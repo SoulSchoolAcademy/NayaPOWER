@@ -30,4 +30,4 @@ This is the loop's own standing order, given by him directly: the teaching must 
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*His dictation on the smart-note habit — filed as a Naya Note under the official template — three outputs: what it is, why it matters, how to use it. Paired Smart Note: **SN-2584 — The Smart-Note Habit**.*
+*His dictation on the smart-note habit — filed as a Naya Note under the official template — three outputs: what it is, why it matters, how to use it. Paired Smart Note: **SN-2586 — The Smart-Note Habit**.*
