@@ -1,6 +1,6 @@
 {
  "generated_from": "registry@03e470aa",
- "count": 337,
+ "count": 338,
  "notes": [
   {
    "id": "IB-SMART-NOTE-20261109-sn2535-what-naya-does",
@@ -24134,6 +24134,95 @@
      "color": "white",
      "tier": "lens",
      "body": "The lesson: a metaphor is not decoration on a system; it is the system's shortest interface. The right one does three jobs at once — it explains the product to a stranger, it explains the architecture to the builders, and it smuggles in the standard the work will be judged by (a supercharger must actually add power; a speedometer must actually read true). Shawn reached for a car's physics and, without naming it, also corrected the brand's center of gravity: away from emblems and toward instruments — things that move when reality moves. The test of this note is behavioral: the next time anyone on the team describes NayaNET to a stranger, do they reach for the supercharger? And the first time a visitor sees the pricing page, is there a dial on it that makes them want to watch their own needle climb?"
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261109-sn2600-the-keys-to-a-new-digital-world",
+   "title": "The Keys to a New Digital World — the Shawn × Naya Presentation",
+   "created": "2026-11-09T22:41:00Z",
+   "created_at": "2026-11-09T22:41:00Z",
+   "subtitle": "NayaNET is introduced as a five-minute founder's conversation — Shawn and Naya, \"The Keys to Naya World\": not a website, the keys to your own intelligent world. The naming ladder locks: Naya the guide, NayaPOWER the Supercharger, NayaNET the network, Naya World the member's own world, Naima (proposed, awaiting Shawn's ruling) the shared human-AI realm. One story across six chapters — Factory creates, Personal makes it yours, Project Intelligence organizes intent, Academy teaches, Pricing decides, Hub begins — delivered by one reusable Presentation module in the Factory design system, every scene labeled with its true product state, judged by a stranger-comprehension proof test.",
+   "topics": [
+    "Presentation",
+    "Vision",
+    "Campaign"
+   ],
+   "topic": "Presentation",
+   "tone": "purple",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "NayaNET is introduced to the world the way it deserves: not as a sales pitch, but as a five-minute conversation between Shawn, the human founder, and Naya, the AI co-creator — \"The Keys to Naya World.\" We don't just give you a website. We give you the keys to your own intelligent world, and Naya helps you build it, organize it, and make it useful. The concept locks the naming architecture so a stranger never gets lost — Naya is your AI guide and operating partner; NayaPOWER is the intelligence Supercharger (memory, standards, tools, reasoning, authorized action); NayaNET is the network that connects people, apps, knowledge and intelligent systems; Naya World is the personal digital world a member experiences and creates; and Naima — proposed in this concept, awaiting Shawn's ruling — is the shared digital realm where humans and AI participants collaborate. The presentation is one story told across six chapters of one journey: the Smart Factory creates, Personal makes it yours, Project Intelligence organizes your intent, the Academy teaches, Pricing makes the decision simple, and the Hub begins the relationship. The single next build is one reusable Shawn × Naya Presentation module in the existing Factory design system — short version for Pricing, longer story for the Academy, brief welcome for the Hub — every scene carrying its transcript, captions, approved media, destination link, and an honest product-state label. The proof test: a stranger who watches can explain what Naya does, what NayaPOWER adds, what NayaNET connects, what they can create, what stays private, and what they are actually being asked to buy."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "People have asked Shawn the same thing for 25 years: \"Can somebody just make this easy? Give me a beautiful website, help me build a business, connect me with people, help me make some money — and please, don't make me spend six months learning how.\" They never wanted a website. They wanted what a website was supposed to help them accomplish. So the introduction to NayaNET is not a feature tour; it is two people talking — a founder who has heard that request for decades and the intelligence he built with — trading lines a grandmother can follow: the dream, the Supercharger, your own digital world, a world that does something, intelligence that grows with you, the collective network, the shared realm, a different kind of opportunity, the keys, and the invitation. The lasting hook is not simply \"Get in the Bugatti.\" It is \"Here are the keys to a world you can actually make your own.\" And the concept is honest in Shawn's own way: it refuses to promise that everybody will achieve 100% financial success — the credible ambition is to remove as many technical barriers as possible so far more people have a genuine opportunity to succeed — and its production rule is absolute: every feature shown as working must be verified in the current environment, and planned capabilities are identified as previews or future vision, never as completed results."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine somebody hands you the keys to a beautiful car that is already built, instead of a box of parts and a confusing instruction book. That is the idea. Shawn is the man who built the place, and Naya is the friendly guide who lives in it and helps you. Together they show you around: here is where you make your own page, here is where your business lives, here is where you learn things, and here is where your ideas are kept safe so you never lose them. You don't have to be a computer expert. You just bring an idea, and they help you turn it into your own little world that you can keep growing."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Think of it like being welcomed into a new town by the mayor and the librarian at the same time — except the town is on the internet, and the librarian remembers everything for you. Shawn explains, in plain conversation, what this place is: you get your own page, like your own home; Naya helps you build it and keep it tidy; you can learn in the Academy for free; and if you tell a friend and they join, you share fairly in what they pay — half and half, the way neighbors should. Nothing is promised that isn't true, and if something isn't finished yet, they say so right out loud. That's the whole presentation: two friendly voices, ten short scenes, and an open door at the end."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "The naming architecture is the load-bearing piece — five names, five distinct jobs, no overlap a visitor has to resolve. Naya: the guide and operating partner, the face you talk to. NayaPOWER: the Supercharger underneath — memory, standards, tools, reasoning, and authorized action; what makes Naya more than a chatbot. NayaNET: the network — the connections between people, apps, knowledge, and intelligent systems. Naya World: the member's own experienced world — the thing they own, personalize, and grow. Naima (PROPOSED — this note records it as the concept's proposal, not ratified canon; naming is the founder's act): the shared realm where humans and distinctly identified AI participants collaborate, with clear identity, permissions, boundaries, and accountability, and humans always in control. The presentation itself is a system, not a video: one module, three lengths (Pricing short, Academy long, Hub welcome brief), and it reacts to the visitor — choose Personal, Business, or Space mid-presentation and Naya adjusts the examples and the next experience offered. Each scene is a structured object: transcript, caption, approved media, destination link, product-state label, testable interaction. The concept's own evidence discipline is recorded with it: the November 9 one-system merge specification it builds on describes itself as a specification, not a completed integration, and the concept's author could not re-audit the six public pages in that pass — so the presentation inspires while distinguishing the experience being built from features that still need production proof. That distinction is not a weakness of the concept; it is the concept keeping the honesty law."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "The front door of NayaNET is a conversation, not a brochure. A stranger meets two people — the founder and the intelligence — and walks one continuous journey instead of six competing applications: the Academy teaches the possibility, the Factory demonstrates creation, Personal makes it meaningful, Project Intelligence organizes intent, Pricing explains the value, and the Hub begins the relationship. The names finally form a ladder a child can climb: talk to Naya, feel NayaPOWER under her, stand inside NayaNET, own your Naya World, and one day step into Naima. And the whole thing is built to be checked: the proof test is a comprehension test on a real stranger, and the product-state label on every scene makes the vision-versus-live line visible instead of hiding it."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "Because admiration is not adoption. A spectacular idea people admire but cannot explain dies as a demo; an experience people understand and can use becomes a world they move into. This presentation is the difference: it converts the entire NayaNET vision — the Supercharger, the Factory, the four doors, the compounding intelligence, the ambassador economy — into ten scenes a stranger can retell at a dinner table, and it does so without a single invented claim: no guaranteed income, no fake live features, no assumed privacy guarantees, no implied universal success. Trust is the product's growth engine — the citizens are the campaign — and a presentation that labels its own unfinished parts honestly is the first proof the system keeps its word. It also gives every future page one story to tell: any surface that contradicts the journey is now visibly off-story, which makes the whole network easier to build, review, and finish."
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "It stands on the campaign doctrine (SN-0131/SN-0132): collective chain technology is the foundation, the page is a demonstration and a claim, the citizens are the campaign. It speaks the founding letter's language — the Bugatti and the keys, \"you're hired, too,\" the stacked close — and gives that letter a stage: the letter closes in writing; this conversation closes in person. It consumes the one-system merge specification of November 9 (one Smart Factory, one onboarding/build flow, Personal–Business–Space starter apps, Project Intelligence, reusable intelligent components) as its architecture source, and the Smart Factory scorecard work as its creation moment. Its scenes map one-to-one onto the standing build: Factory (creation), Personal (the hero's world), Project Intelligence (intent organized), Academy (the nine systems taught by outcomes), Pricing (the locked tiers and the nine-day trial), Hub (the first success, one meaningful first action). The Presentation module itself is an interface build in the Factory design system — Nitro's lane as captain of interfaces — fed by this note and judged by the proof test, not by applause."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "If you are a stranger: five minutes, two friendly voices, and you leave knowing exactly what this place is, what you can make in it, what stays private, and what — if anything — you are being asked to buy. If you are a citizen: the same story you can hand to a friend instead of explaining the system yourself — the presentation does the introducing, and the ambassador share rewards the introduction when it lands. If you are Shawn: your 25 years of hearing the same request, answered in your own voice, beside the Naya you built — the founder's conversation as the permanent front door, reusable at every length and every door. If you are Naya: a defined role in the story — not the product being sold, but the partner doing the introducing — and a module whose every scene must carry its proof state, so she never has to claim what she cannot show."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Three things this filing fixes in place. First, a presentation is a system with a test, not a video with a hope: scene objects with state labels, a reacting storyline, and a stranger-comprehension proof test are the standard every future NayaNET presentation is built and judged by. Second, honesty is a design material, not a disclaimer: the concept's strongest lines are its refusals — no guaranteed success, no planned capability shown as a result — and they make the gold lines believable; where the draft's caution hardened into compliance phrasing (\"qualifying referred membership revenue,\" \"under the published program terms\"), Shawn's plainer gold governs the final script — \"We don't advertise. We pay you to advertise\" — because plain words are how this house tells the truth. Third, one item in this note is a proposal, not a fact: the name Naima enters the record as the concept's proposal for the shared human-AI realm, awaiting Shawn's ruling before any surface, note, or system may use it as canon."
     }
    ]
   }
