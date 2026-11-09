@@ -26290,7 +26290,7 @@
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-05T23:00:00Z",
    "date": "2026-11-05",
-   "page_hash": "22dfde0afd36bd81f97258dc3198fc7a370d163eae1d0f9b7bddf31c6e2649b8",
+   "page_hash": "4b346cd04ed93e69bb0e838a5f51e2f95ad07a8bdaf9c3e55e92d422516bf634",
    "content_hash": "ed4bcd717f27243601767e9484304e84632f29d47d57a8223a89b8044675273f",
    "one_line": "The record — the registry, the ledger, the artifacts, the commit messages — must tell the truth to a cold reader who has no prior chat. A ledger is a claim about production; produc",
    "topics": [
@@ -26320,7 +26320,7 @@
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-05T23:00:00Z",
    "date": "2026-11-05",
-   "page_hash": "76e802ff3f71d923bb195a280601a0641a817cae1c81fa5d5de724ccc694ddea",
+   "page_hash": "a212b17fbd803aa392e3b7ff8b3660f8f659f640f064c9a8a019e279dd4fc7f6",
    "content_hash": "ebd19d2c2357b352efde16ce75d80b531aa52602b2b85942f97514b9bfb145ff",
    "one_line": "A write is not a memory — \"she remembers\" is only proven when a receipt survives process death, read back cold from a fresh process. A green report must be computed from the consum",
    "topics": [
@@ -26350,7 +26350,7 @@
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-05T23:00:00Z",
    "date": "2026-11-05",
-   "page_hash": "4ba2dd3c6dace7b9027c0b96b676a63550c2660c022fe2951899b5efa3f6cb83",
+   "page_hash": "b13d3bbb616b8f001f8b5c3d3c2ec4357081447a242bc7c9cd4d5d5ba74d5933",
    "content_hash": "a7d3cb9acd11dfbaeefff46a3bfa726e1f713a1d75ebb4f81a74535604de5a6a",
    "one_line": "When a seat fails, check the system before blaming the seat — failures can be system-enabled, when the system of record contradicts the system's own instructions. One intelligence,",
    "topics": [
@@ -26410,7 +26410,7 @@
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-05T23:00:00Z",
    "date": "2026-11-05",
-   "page_hash": "41f2839d26454d9fbd6cbc3cfe04d527336d2daf21a944516251fe8c078cd67f",
+   "page_hash": "f3ea5d37bfbeb49ad41e028968521f84e020e5e04098d71345405ec42c5f04db",
    "content_hash": "a50c195a6c642a259aa1c316eb1bc8da24190623e82d90f9a34e92f893fd72d5",
    "one_line": "Intelligence is only proven when it transfers between builders — the transfer test (builder A proves the reference room, builder B applies the extracted law) is what turns one room",
    "topics": [
@@ -26440,7 +26440,7 @@
    "registered_by": "naya-resolve",
    "registered_at": "2026-11-05T23:00:00Z",
    "date": "2026-11-05",
-   "page_hash": "0527ae416c6b9e6f278740e4ef51cf74d44f0e8b756596bb9eff490731459564",
+   "page_hash": "c69661efb63ddffbb27bea83e324e1d394650da46ecff91c0fb82b144133eaec",
    "content_hash": "12f08962fac6da80a4db6806dc6c14a56d51e1dd14e53c4b81b0915254e6e111",
    "one_line": "The Smart Link is the seat's attestation — a clickable link where Shawn can SEE the intelligence, VERIFY it was in the right spot, and confirm it happened. It is the machine-genera",
    "topics": [
@@ -30209,7 +30209,7 @@
    "registered_at": "2026-11-06T21:27:45Z",
    "directed_by": "Shawn Vibert",
    "date": "2026-11-06",
-   "page_hash": "d2ccd8b6cb01d71bac6b7822d3ce96406eea915db4a1171da4858e1978317bb9",
+   "page_hash": "cc007e531ea352be89969675e50a3e940f3e668a7e1c92021f234167114c0950",
    "content_hash": "08e70bea0e388c8a18431a41892adc78709dc822a23c4d51fd2a867974d10674",
    "one_line": "We are not building another app. We are helping people rebuild and reformat the internet itself, in a smarter, better way. Everything is automated, done for you, beautiful, adaptable. It optimizes for you — who you are, what you are into, what your business is about, the things you care about. And the people in your world are right there with you, privately — collaborating, teaming up, video chatting, sharing a feed of intelligence, saving it, capturing it, building mastermind groups, embedding intelligence into everything. Or just being part of the collective network. That is the whole thing, in one breath. The future is now.",
    "topics": [
@@ -30949,5 +30949,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "03e470aa08bda5597d16c62865d15a1b89a76993c3839b2714a6358b93c934d2"
+ "corpus_manifest_hash": "09ca91f25c37ec21e72ace42345e65d3e6cb81b655eb1a8e92611f2598eff92f"
 }
