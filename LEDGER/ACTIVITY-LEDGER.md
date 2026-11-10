@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-10 18:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-10 18:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -50354,6 +50354,18 @@ _Last updated: 2026-11-10 18:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261110-1009 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall run 2026-11-10 10:09 PST: evaluate all 31 unclaimed briefs, claim none (29 exit 7 + 2 exit 2)
+
+**Evidence:** VERIFIED against its cited log hidden_files/claim-sweep-20261110-1009.log (46 lines): 31 attempts listed in fixed band order, 29x exit 7 + 2x exit 2 - exact match to the receipt's headline counts. The two named exit-2 briefs (brief-gap-gap-t1002-lane2.md, brief-gap-gap-gap-gap-t0172-lane1-lane1.md) match the log. Delta NONE vs the 09:03 run verifie
+
+### ✅ gate-stall-20261110-0735 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall run 2026-11-10 07:35 PST: evaluate all 31 unclaimed briefs, claim none (claimed 29 exit 7 + 2 exit 2)
+
+**Evidence:** VERIFIED against its own cited log hidden_files/claim-sweep-20261110-0735.log (163 lines): the log holds 27 ATTEMPT lines, 25x claim-exit=7 and 2x claim-exit=2 (27 REFUSED lines match 1:1) - NOT the 31 attempts / 29x exit 7 + 2x exit 2 the receipt claims. Four briefs the receipt says were attempted are absent from the log (0 mentions each): brief-g
 
 ### ✅ gate-stall-20261110-0903 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
