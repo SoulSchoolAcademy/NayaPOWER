@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-10 05:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-10 06:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -37195,6 +37195,14 @@ _Last updated: 2026-11-10 05:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### 🚨 t-contract-verify — Team 7, Team Naya Scorer (Team Operations) — 0/10 [PHANTOM]
+
+**Task:** Contract gate verification (Judge): sign-in/sign-out battery + tamper tripwire on branch naya4/contract-staging
+
+**Receipt:** `twelve-lane-receipts/t-contract-verify-lane7.md`
+
+**Evidence:** PHANTOM: receipt cites branch naya4/contract-staging at tip 82186972011c0d09456b30678b79af4ab986688c and gate file kernel/protocol/contract_gate.py - the branch does NOT exist on the remote (git ls-remote empty), the pinned SHA is not fetchable via git protocol (fetch exit 0 but object absent; git cat-file fails), the REST check returned 401 Bad cr
+
 ### ✅ gap-lane-scorer-20261015-1440-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
 
 **Task:** t0587 tally re-run - 15/15 rows byte-identical
@@ -50040,6 +50048,12 @@ _Last updated: 2026-11-10 05:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261109-2148 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall run 2026-11-09 21:48 PST: evaluate all 31 unclaimed briefs, claim none (29 exit 7 + 2 exit 2, all script-attempted firsthand)
+
+**Evidence:** VERIFIED this tick on workspace bytes: all 31 briefs named in the receipt are present in brief-queue/ (31 brief-*.md files, zero missing, zero extra); zero brief-tNNNN mission-sequence files; the single GATE hit in first 25 lines is the t1002 CLAIMABILITY GATE (NON-Clarity seats only, stamped 2026-10-26) at line 1 of brief-gap-gap-t1002-lane2.md; t
 
 ### ✅ gate-stall-20261109-2045 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
