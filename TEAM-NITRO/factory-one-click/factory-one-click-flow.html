@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Factory — Create a new smart app in one click</title>
+<!--
+  FACTORY ONE-CLICK ACTIVATION — the flow. Shawn's order 03:01Z Nov 10.
+  ONE button ("create new smart app") runs the onboarding (15 questions,
+  mostly pre-filled, skips allowed) and the build, and the page goes live.
+  No manual steps between the click and the live page.
+
+  HARVEST — every part below is taken from a named source, file + line.
+  Nothing here is invented. His existing pages ARE the templates.
+  - .primo button ......... Hub ~/workspace/team-nitro/hub/index-2-fixed-v2.html:689
+  - .ph-card board ........ Dashboard fix-9 ~/workspace/team-nitro/dashboard/defectfix-v7/builder/fix9/fix9-work.html:2018-2025
+  - .ph-nutshell .......... Personal fix-5b ~/workspace/team-nitro/personal/verify-5/fixed-candidate.html:1982
+  - .os-jewel ............. Dashboard fix-9 file:3916-3923
+  - .intel-avatar orb ..... Hub index-2-fixed-v2.html:46
+  - .tn-tacho gauge ....... Dashboard fix-9 mount line 4895; helper ~/workspace/team-nitro/pricing/rebuild/tntacho.js.html
+                           Needle law: number on top, gauge underneath, needle laps the dial in sets of 500;
+                           numerals at angle = -135 + (value/500)*270 (Playbook).
+  - .ph-door cards ........ Academy harvest, THE-INVENTORY.md Part 2d — .ny-secondary measurements
+                           (block 1 §13-18, Shawn's source 2026-11-08 20:50Z), silver gradient border, obsidian face.
+  - .strip / .pct-pop / .progbar / .progfill ... PI face ~/workspace/project-intelligence/pi-everything-face/build-face-v4.py:99,125,126
+  - .os-id-row ............ Personal fix-5b:4372
+  - .tn-li-btn ............ Personal fix-5b:2446
+  - .szpill ............... Factory piece pills, THE-INVENTORY.md Part 2b
+  - .visionin input ....... Personal fix-5b:268 (obsidian input, 1.5px white border, purple focus)
+  - 15 questions .......... ONE-SYSTEM-MERGE-SPEC-20261109.md §3 (PI build flow) + §4.2 (SN-2581 creation flow)
+  - Obsidian + spectrum ... THE-PLAYBOOK.md (135deg light, white text, slow motion, 8px grid)
+
+  DESIGN-CONTRACT GATE: (a) zero white/light backgrounds (b) every element raised
+  (c) gauge alive (d) no text-in-image — no <img> anywhere (e) no bare text blocks
+  (f) no look-alike parts (g) note format (h) no dictation-blunt phrases
+  (i) title+subtitle+nutshell + faces alternate. His eye is the final gate.
+  No merge. No deploy of the flow without his eye.
+-->
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    color:#ffffff;
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    font-size:16px;line-height:1.5;
+    min-height:100vh;
+  }
+  .tn-wrap{max-width:960px;margin:0 auto;padding:24px 16px 64px}
+  /* .strip — PI face build-face-v4.py:99 */
+  .strip{
+    background:linear-gradient(135deg,rgba(255,255,255,.08) 0%,rgba(255,255,255,.03) 100%);
+    border:1px solid rgba(255,255,255,.35);border-radius:16px;padding:20px 24px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 8px 24px rgba(0,0,0,.5);
+  }
+  .strip h1{font-size:28px;line-height:1.2;margin:0 0 8px}
+  .strip h2{font-size:20px;line-height:1.3;margin:0 0 8px}
+  .strip p{margin:0;color:rgba(255,255,255,.9)}
+  /* .ph-card — Dashboard fix-9:2018-2025 */
+  .ph-card{
+    background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    border:2px solid rgba(255,255,255,.9);border-radius:20px;padding:28px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -2px 4px rgba(0,0,0,.5),0 8px 24px rgba(0,0,0,.5);
+    margin:16px 0;
+  }
+  .ph-card:hover{transform:translateY(-4px);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 12px 32px rgba(0,0,0,.6),0 0 24px var(--ac,rgba(217,165,33,.35))}
+  .ph-card h2{font-size:20px;margin:0 0 8px}
+  .ph-card h3{font-size:16px;margin:0 0 8px;color:rgba(255,255,255,.9)}
+  .ph-card p{margin:0 0 12px;color:rgba(255,255,255,.9)}
+  /* .ph-nutshell — Personal fix-5b:1982 */
+  .ph-nutshell{
+    background:linear-gradient(90deg,rgba(160,107,255,.12) 0%,rgba(160,107,255,.06) 100%);
+    border-left:4px solid #a06bff;border-radius:0 16px 16px 0;padding:16px 20px;margin:16px 0;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 24px rgba(0,0,0,.45);
+  }
+  .ph-nutshell p{margin:0;font-size:20px}
+  /* .primo — Hub:689, THE elite button */
+  .primo{
+    display:inline-block;padding:16px 32px;border-radius:999px;cursor:pointer;
+    font-size:16px;font-weight:700;color:#ffffff;
+    background:linear-gradient(135deg,#2a2a33 0%,#0a0a0f 50%,#2a2a33 100%);
+    border:1.5px solid rgba(255,255,255,.9);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 8px 24px rgba(0,0,0,.5);
+    position:relative;overflow:hidden;
+  }
+  .primo::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.25) 0%,transparent 40%);pointer-events:none}
+  .primo:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 12px 28px rgba(0,0,0,.6),0 0 24px rgba(160,107,255,.55)}
+  .primo:active{transform:scale(.97)}
+  .primo:disabled{opacity:.55;cursor:default;transform:none}
+  /* .tn-li-btn — Personal fix-5b:2446 */
+  .tn-li-btn{
+    display:inline-block;padding:12px 24px;border-radius:999px;cursor:pointer;
+    font-size:14px;font-weight:700;color:#ffffff;
+    background:linear-gradient(135deg,#2a2a33 0%,#0a0a0f 50%,#2a2a33 100%);
+    border:1.5px solid rgba(255,255,255,.9);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 6px 18px rgba(0,0,0,.5);
+  }
+  .tn-li-btn:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 10px 22px rgba(0,0,0,.6),0 0 18px rgba(63,184,255,.5)}
+  /* .ph-door — Academy .ny-secondary measurements, Part 2d block 1 §13-18 */
+  .ph-door{
+    flex:1 1 220px;min-height:124px;border-radius:22px;padding:24px 20px;cursor:pointer;
+    background:linear-gradient(145deg,#25272d 0%,#131519 29%,#08090b 62%,#020203 100%);
+    border:2px solid transparent;
+    border-image:linear-gradient(135deg,#ffffff 0%,#e7eaf0 11%,#9da4ae 31%,#ffffff 50%,#c7ccd4 72%,#6e757e 100%) 1;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 8px 24px rgba(0,0,0,.5);
+  }
+  .ph-door:hover{transform:translateY(-4px);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 12px 28px rgba(0,0,0,.6),0 0 24px var(--jc,rgba(160,107,255,.5))}
+  .ph-door h3{margin:8px 0 4px;font-size:20px}
+  .ph-door p{margin:0;color:rgba(255,255,255,.85);font-size:14px}
+  .tn-doors{display:flex;flex-wrap:wrap;gap:16px;margin:16px 0}
+  /* .os-jewel — Dashboard fix-9:3916-3923 */
+  .os-jewel{
+    width:36px;height:36px;border-radius:10px;flex:0 0 36px;display:inline-flex;align-items:center;justify-content:center;
+    font-size:18px;font-weight:800;color:#ffffff;
+    background:radial-gradient(circle at 30% 20%,#ffffff 0%,var(--jc,#a06bff) 45%,#1a1a20 100%);
+    border:1px solid rgba(255,255,255,.9);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 4px 12px rgba(0,0,0,.5),0 0 12px var(--jc,#a06bff);
+  }
+  /* .intel-avatar — Hub:46 */
+  .intel-avatar{
+    width:56px;height:56px;border-radius:50%;flex:0 0 56px;display:inline-flex;align-items:center;justify-content:center;
+    font-size:24px;font-weight:800;color:#ffffff;position:relative;
+    background:radial-gradient(circle at 30% 20%,#ffffff 0%,var(--jc,#a06bff) 45%,#1a1a20 100%);
+    border:1.5px solid rgba(255,255,255,.9);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 6px 16px rgba(0,0,0,.5);
+  }
+  .intel-avatar::before{
+    content:"";position:absolute;inset:-5px;border-radius:50%;
+    background:conic-gradient(from 0deg,transparent 0deg,transparent 270deg,var(--jc,#a06bff) 320deg,transparent 360deg);
+    animation:tn-orb-spin 90s linear infinite;z-index:-1;
+  }
+  @keyframes tn-orb-spin{to{transform:rotate(360deg)}}
+  .tn-face-row{display:flex;gap:16px;align-items:flex-start}
+  .tn-face-right{flex-direction:row-reverse;text-align:left}
+  .tn-face-left{flex-direction:row}
+  /* .szpill — Factory piece pills */
+  .szpill{
+    display:inline-block;padding:8px 16px;border-radius:999px;margin:4px;
+    font-size:14px;font-weight:700;color:#ffffff;
+    background:linear-gradient(135deg,#2a2a33 0%,#0a0a0f 100%);
+    border:1.5px solid var(--jc,#a06bff);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 4px 12px rgba(0,0,0,.5);
+  }
+  /* .tn-visionin — Personal .visionin:268 */
+  .tn-visionin{
+    width:100%;padding:16px;border-radius:16px;font-size:16px;color:#ffffff;
+    background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 100%);
+    border:1.5px solid rgba(255,255,255,.9);
+    box-shadow:inset 0 2px 8px rgba(0,0,0,.6),0 4px 12px rgba(0,0,0,.4);
+  }
+  .tn-visionin:focus{outline:none;border-color:#a06bff;box-shadow:inset 0 2px 8px rgba(0,0,0,.6),0 0 24px rgba(160,107,255,.55)}
+  textarea.tn-visionin{min-height:96px;resize:vertical}
+  /* .progbar / .progfill + .pct-pop — PI face:125-126 */
+  .progbar{height:12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);overflow:hidden;box-shadow:inset 0 1px 3px rgba(0,0,0,.6)}
+  .progfill{height:100%;width:0%;background:linear-gradient(90deg,#2fe89e,#3fb8ff);box-shadow:0 0 12px rgba(47,232,158,.6)}
+  .pct-pop{
+    display:inline-block;padding:4px 12px;border-radius:999px;font-weight:800;font-size:14px;color:#ffffff;
+    background:rgba(47,232,158,.12);border:1px solid rgba(47,232,158,.55);
+    box-shadow:0 0 12px rgba(47,232,158,.35);
+  }
+  /* Gauge — needle law: number on top, gauge underneath, rAF owns the motion */
+  .tn-tacho-needle{transition:none;transform-origin:100px 104px}
+  .tn-digit-tile{
+    display:inline-block;min-width:34px;padding:6px 4px;text-align:center;border-radius:10px;
+    font-size:28px;font-weight:800;color:#ffffff;
+    background:linear-gradient(135deg,#3a3a44 0%,#0a0a0f 100%);
+    border:1.5px solid rgba(255,255,255,.9);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 12px rgba(0,0,0,.5);
+  }
+  .tn-gauge-wrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+  .tn-num-block{text-align:center}
+  .tn-num-block p{margin:8px 0 0;font-size:14px;color:rgba(255,255,255,.85)}
+  /* .os-id-row — Personal fix-5b:4372 */
+  .os-id-row{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.15)}
+  .os-id-row b{display:block;font-size:12px;letter-spacing:.12em;color:rgba(255,255,255,.7)}
+  .os-id-row span{font-size:16px}
+  .tn-choice-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+  .tn-choice-row .tn-li-btn.on{border-color:#a06bff;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 18px rgba(160,107,255,.6)}
+  .tn-btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+  .tn-step-line{font-size:14px;color:rgba(255,255,255,.85);margin:0 0 4px}
+  .tn-hidden{display:none}
+  .tn-hero-orb{width:120px;height:120px;border-radius:50%;flex:0 0 120px;display:inline-flex;align-items:center;justify-content:center;font-size:48px;font-weight:800;
+    background:radial-gradient(circle at 30% 20%,#ffffff 0%,#a06bff 45%,#1a1a20 100%);
+    border:2px solid rgba(255,255,255,.9);
+    box-shadow:inset 0 2px 0 rgba(255,255,255,.4),0 12px 32px rgba(0,0,0,.6),0 0 32px rgba(160,107,255,.45)}
+  .tn-test-strip{border:2px dashed #ffbf3d}
+  @media (max-width:480px){
+    .ph-card{padding:20px}
+    .strip h1{font-size:24px}
+    .tn-hero-orb{width:88px;height:88px;flex-basis:88px;font-size:36px}
+  }
+</style>
+</head>
+<body>
+<div class="tn-wrap">
+
+  <!-- ============ SCREEN 1: THE FACTORY — ONE BUTTON ============ -->
+  <section id="tn-screen-factory" class="tn-screen">
+    <div class="strip">
+      <h1>Create a new smart app — in one click</h1>
+      <p>One button. Fifteen questions, mostly answered for you. Your page, live.</p>
+    </div>
+    <div class="ph-nutshell">
+      <p>Tap once, answer what you like, skip the rest — I'm Naya, and I'll build your world for you.</p>
+    </div>
+    <div class="ph-card" style="--ac:#a06bff">
+      <h2>Your world, ready-built</h2>
+      <h3>Not a blank page. A finished house, waiting for your name on the door.</h3>
+      <p>Pick the kind of world you want. Tell Naya what it is for — or let her fill it in. She builds it from the parts that already exist, pins your notes into your Intelligent Library, and hands you the keys.</p>
+      <div>
+        <span class="szpill" style="--jc:#a06bff">◆ Personal</span>
+        <span class="szpill" style="--jc:#3fb8ff">◆ Business</span>
+        <span class="szpill" style="--jc:#2fe89e">◆ Space</span>
+        <span class="szpill" style="--jc:#ffbf3d">◆ Library</span>
+        <span class="szpill" style="--jc:#ff9a5a">◆ About</span>
+      </div>
+      <div class="tn-btn-row">
+        <button class="primo" id="tn-create-btn" type="button">✦ Create new smart app</button>
+      </div>
+      <p style="margin-top:12px;font-size:14px">Three steps, no manual: choose your kind, answer or skip, build.</p>
+    </div>
+    <div class="ph-card" style="--ac:#3fb8ff">
+      <h2>How far along are you?</h2>
+      <h3>The gauge follows your answers — every answer moves the needle.</h3>
+      <div class="tn-gauge-wrap">
+        <div class="tn-num-block">
+          <div>
+            <span class="tn-digit-tile" id="tn-digit-0">0</span><span class="tn-digit-tile" id="tn-digit-1">0</span><span class="tn-digit-tile" id="tn-digit-2">0</span>
+          </div>
+          <p>points of 500 — one answer is worth its share</p>
+        </div>
+        <div id="tn-tacho-mount">
+          <svg width="200" height="208" viewBox="0 0 200 208" role="img" aria-label="Progress gauge, 0 to 500">
+            <circle cx="100" cy="104" r="99" fill="none" stroke="#3a3e4a" stroke-width="2"></circle>
+            <g fill="#c8ccd6">
+              <rect class="tn-gear-tooth" x="97" y="2" width="6" height="10" rx="2"></rect>
+              <rect class="tn-gear-tooth" x="97" y="2" width="6" height="10" rx="2" transform="rotate(30 100 104)"></rect>
+              <rect class="tn-gear-tooth" x="97" y="2" width="6" height="10" rx="2" transform="rotate(60 100 104)"></rect>
+              <rect class="tn-gear-tooth" x="97" y="2" width="6" height="10" rx="2" transform="rotate(90 100 104)"></rect>
+              <rect class="tn-gear-tooth" x="97" y="2" width="6" height="10" rx="2" transform="rotate(120 100 104)"></rect>
+              <rect class="tn-gear-tooth" x="97" y="2" width="6" height="10" rx="2" transform="rotate(150 100 104)"></rect>
+              <rect class="tn-gear-tooth" x="97" y="2" width="6" height="10" rx="2" transform="rotate(180 100 104)"></rect>
+              <rect class="tn-gear-tooth" x="97" y="2" width="6" height="10" rx="2" transform="rotate(210 100 104)"></rect>
+              <rect class="tn-gear-tooth" x="97" y="2" width="6" height="10" rx="2" transform="rotate(240 100 104)"></rect>
+              <rect class="tn-gear-tooth" x="97" y="2" width="6" height="10" rx="2" transform="rotate(270 100 104)"></rect>
+              <rect class="tn-gear-tooth" x="97" y="2" width="6" height="10" rx="2" transform="rotate(300 100 104)"></rect>
+              <rect class="tn-gear-tooth" x="97" y="2" width="6" height="10" rx="2" transform="rotate(330 100 104)"></rect>
+            </g>
+            <g fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">
+              <text x="42" y="50">0</text>
+              <text x="113" y="27">100</text>
+              <text x="173" y="71">200</text>
+              <text x="173" y="145">300</text>
+              <text x="113" y="189">400</text>
+              <text x="42" y="166">500</text>
+            </g>
+            <line class="tn-tacho-needle" id="tn-needle" x1="100" y1="104" x2="100" y2="30" stroke="#ffbf3d" stroke-width="4" stroke-linecap="round" transform="rotate(-135 100 104)"></line>
+            <circle cx="100" cy="104" r="10" fill="#a06bff" stroke="#ffffff" stroke-width="1.5"></circle>
+          </svg>
+        </div>
+      </div>
+      <div class="progbar" style="margin-top:16px"><div class="progfill" id="tn-progfill"></div></div>
+      <p style="margin-top:12px"><span class="pct-pop" id="tn-pct">0% ready</span></p>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN 2: WHAT KIND ============ -->
+  <section id="tn-screen-kind" class="tn-screen tn-hidden">
+    <div class="strip">
+      <h1>What kind of world?</h1>
+      <p>Three kinds. One page at a time. Pick one — the rest follows.</p>
+    </div>
+    <div class="ph-nutshell">
+      <p>Your Personal, your Business, or your Space — each gets its own mission, goal, and vision.</p>
+    </div>
+    <div class="tn-doors">
+      <div class="ph-door" id="tn-kind-personal" tabindex="0" role="button" aria-label="Personal world" style="--jc:#a06bff">
+        <span class="os-jewel" style="--jc:#a06bff">◆</span>
+        <h3>Personal</h3>
+        <p>Your world, in your words — who you are, what you love, where you are going.</p>
+      </div>
+      <div class="ph-door" id="tn-kind-business" tabindex="0" role="button" aria-label="Business world" style="--jc:#3fb8ff">
+        <span class="os-jewel" style="--jc:#3fb8ff">◆</span>
+        <h3>Business</h3>
+        <p>Your work, open for the world — what you offer, and who it is for.</p>
+      </div>
+      <div class="ph-door" id="tn-kind-space" tabindex="0" role="button" aria-label="Space world" style="--jc:#2fe89e">
+        <span class="os-jewel" style="--jc:#2fe89e">◆</span>
+        <h3>Space</h3>
+        <p>Your gathering place — a topic, a group, a community that meets here.</p>
+      </div>
+    </div>
+    <div class="tn-btn-row">
+      <button class="tn-li-btn" id="tn-kind-back" type="button">← Back to the Factory</button>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN 3: THE FIFTEEN QUESTIONS ============ -->
+  <section id="tn-screen-questions" class="tn-screen tn-hidden">
+    <div class="strip">
+      <h1 id="tn-q-head">Tell Naya about your world</h1>
+      <p>I'm Naya — every question comes already answered. Edit it, pick a choice, or skip it. Nothing stops you.</p>
+    </div>
+    <div class="ph-card" id="tn-q-card" style="--ac:#a06bff">
+      <p class="tn-step-line" id="tn-q-step">Question 1 of 15</p>
+      <div class="tn-face-row tn-face-left" id="tn-q-face-row">
+        <span class="intel-avatar" id="tn-q-avatar" style="--jc:#a06bff">N</span>
+        <div style="flex:1;min-width:0">
+          <h2 id="tn-q-title">Your vision</h2>
+          <h3 id="tn-q-sub">What does this world look like when it is at its best?</h3>
+          <div class="ph-nutshell"><p id="tn-q-nut">One line is enough — Naya fills in the rest.</p></div>
+          <div id="tn-q-body"></div>
+          <div class="tn-choice-row" id="tn-q-choices"></div>
+          <div class="tn-btn-row">
+            <button class="primo" id="tn-q-next" type="button">Next →</button>
+            <button class="tn-li-btn" id="tn-q-skip" type="button">Skip this one</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="progbar"><div class="progfill" id="tn-q-progfill"></div></div>
+    <p style="margin-top:12px"><span class="pct-pop" id="tn-q-pct">0% ready</span></p>
+  </section>
+
+  <!-- ============ SCREEN 4: BUILD ============ -->
+  <section id="tn-screen-build" class="tn-screen tn-hidden">
+    <div class="strip">
+      <h1>Your answers are in. Build it.</h1>
+      <p>One tap — I'll compose your page from the template and pin your library.</p>
+    </div>
+    <div class="ph-nutshell">
+      <p>What you skipped stays open for later. What you gave is already in the page.</p>
+    </div>
+    <div class="ph-card" style="--ac:#2fe89e">
+      <h2>Ready to build</h2>
+      <h3>Your page comes out with everything you put in.</h3>
+      <p id="tn-build-summary">15 questions, all answered or skipped by your choice.</p>
+      <div class="tn-btn-row">
+        <button class="primo" id="tn-build-btn" type="button">✦ Build my page</button>
+        <button class="tn-li-btn" id="tn-build-back" type="button">← Change an answer</button>
+      </div>
+      <div id="tn-build-steps" style="margin-top:16px"></div>
+    </div>
+    <div id="tn-built-page"></div>
+  </section>
+
+  <!-- ============ SCREEN 5: DONE ============ -->
+  <section id="tn-screen-done" class="tn-screen tn-hidden">
+    <div class="strip">
+      <h1>Your page is live in this view</h1>
+      <p>It is built from the template, with your words inside. Scroll down and meet it.</p>
+    </div>
+    <div class="ph-nutshell">
+      <p>Your world is ready to welcome people — from the first moment, they can read, join, and message you.</p>
+    </div>
+    <div class="ph-card" style="--ac:#ffbf3d">
+      <h2>What happens next</h2>
+      <h3>Your page joins your world — and your world is where the next page begins.</h3>
+      <p>The page shows in your menu, in your profile, and in your world. Want another one? Come back to the Factory, tap once, and build the next — one at a time, each with its own mission, goal, and vision.</p>
+      <div class="tn-btn-row">
+        <button class="primo" id="tn-again-btn" type="button">✦ Create another smart app</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script>
+(function(){
+  "use strict";
+  var SPECTRUM=["#a06bff","#3fb8ff","#2fe89e","#ffbf3d","#ff9a5a","#ff5e6c","#e84fff"];
+  var GLYPHS=["N","✦","◆","●","★","✦","◆"];
+  /* The fifteen questions — ONE-SYSTEM-MERGE-SPEC-20261109.md §3.1 + §4.2 (SN-2581).
+     Every one pre-answered; empty allowed; skip never blocks. */
+  var QUESTIONS=[
+    {key:"kind",title:"What kind of world is this?",sub:"Personal, Business, or Space — one page at a time.",nut:"One kind, one page, its own mission, goal, and vision.",input:null,def:"Personal",choices:["Personal","Business","Space"]},
+    {key:"name",title:"What is your page called?",sub:"The name people see first, at the top of your world.",nut:"A name they remember is a door they walk through.",input:"text",def:"My World",choices:[]},
+    {key:"vision",title:"What is your vision?",sub:"What does this world look like when it is at its best?",nut:"One clear picture is worth a hundred words.",input:"area",def:"A world where my best work finds the people it helps.",choices:[]},
+    {key:"goal",title:"What is your goal?",sub:"The one thing this page is here to achieve.",nut:"One goal, clearly said, is a page that knows its job.",input:"area",def:"Share what I know, connect with like minds, and grow a little every day.",choices:[]},
+    {key:"mission",title:"What is your mission?",sub:"What you are here to do, in your own words.",nut:"Your mission is the promise your page keeps.",input:"area",def:"To make something useful, every day, for the people in my world.",choices:[]},
+    {key:"for",title:"What is this page for?",sub:"The job it does in your world.",nut:"A page with a purpose never feels empty.",input:"area",def:"A home for my work, my notes, and my people.",choices:[]},
+    {key:"does",title:"What does it do?",sub:"What a visitor can do here, from the first moment.",nut:"People stay when they can do something right away.",input:"area",def:"It shows my world, keeps my notes, and lets people reach me.",choices:[]},
+    {key:"who",title:"Who is it for?",sub:"The people you are building this for.",nut:"Made for someone is made for real.",input:"area",def:"People like me — curious, building, and ready to connect.",choices:[]},
+    {key:"links",title:"Where else can people find you?",sub:"Your links, all in one place — add them now or later.",nut:"Your world is the hub; your links are the doors out.",input:"text",def:"Add your links later — your page works without them.",choices:[]},
+    {key:"images",title:"What should people see?",sub:"Your photos bring your world to life.",nut:"A face and a place make a page feel like home.",input:null,def:"Use Naya's art for now",choices:["Use Naya's art for now","I will add my photos later"]},
+    {key:"logos",title:"What is your mark?",sub:"Your logo or symbol, if you have one.",nut:"A mark is a signature — yours, when you are ready.",input:null,def:"Add my mark later",choices:["Add my mark later","I have one to add"]},
+    {key:"style",title:"What should it feel like?",sub:"Colours and style — the Naya standard is already chosen.",nut:"Obsidian and gold: deep, warm, and unmistakably Naya.",input:null,def:"Obsidian and gold",choices:["Obsidian and gold","Obsidian and purple","Obsidian and emerald"]},
+    {key:"functions",title:"What should your page do?",sub:"The functions that come with every smart app.",nut:"Mail, lists, and scheduling — one system, working together.",input:null,def:"Smart Mail, Smart Lists, Scheduler",choices:["Smart Mail","Smart Lists","Scheduler","Membership"]},
+    {key:"notes",title:"Add your smart notes and notes?",sub:"Your notes hold what you already know — let them build with you.",nut:"What you have written becomes what your page knows.",input:null,def:"Yes — build with my notes",choices:["Yes — build with my notes","Not now"]},
+    {key:"library",title:"Pin your notes into your Intelligent Library?",sub:"Your Library tells every visitor all about your world.",nut:"Everybody gets an Intelligent Library — it is yours.",input:null,def:"Yes — pin them into my Library",choices:["Yes — pin them into my Library","Not yet"]}
+  ];
+  var state={kind:"Personal",answers:{},step:0,done:0};
+  QUESTIONS.forEach(function(q){state.answers[q.key]=q.def;});
+  function $(id){return document.getElementById(id);}
+  function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+  function show(id){
+    ["tn-screen-factory","tn-screen-kind","tn-screen-questions","tn-screen-build","tn-screen-done"].forEach(function(s){
+      var el=$(s); if(el){el.classList.toggle("tn-hidden",s!==id);}
+    });
+    window.scrollTo(0,0);
+  }
+  function points(){return Math.round(state.done/15*500);}
+  function angleFor(v){return -135+(v/500)*270;}
+  var needleAngle=-135, needleTarget=-135, needleRaf=null;
+  function paintGauge(){
+    var p=points();
+    var s=String(p); while(s.length<3){s="0"+s;}
+    $("tn-digit-0").textContent=s[0]; $("tn-digit-1").textContent=s[1]; $("tn-digit-2").textContent=s[2];
+    var pct=Math.round(state.done/15*100);
+    $("tn-progfill").style.width=pct+"%";
+    $("tn-pct").textContent=pct+"% ready";
+    var qf=$("tn-q-progfill"); if(qf){qf.style.width=pct+"%";}
+    var qp=$("tn-q-pct"); if(qp){qp.textContent=pct+"% ready";}
+    needleTarget=angleFor(p);
+    if(!needleRaf){
+      var tick=function(){
+        needleAngle+=(needleTarget-needleAngle)*0.12;
+        if(Math.abs(needleTarget-needleAngle)<0.1){needleAngle=needleTarget;}
+        var n=$("tn-needle"); if(n){n.setAttribute("transform","rotate("+needleAngle.toFixed(1)+" 100 104)");}
+        if(needleAngle!==needleTarget){needleRaf=requestAnimationFrame(tick);}else{needleRaf=null;}
+      };
+      needleRaf=requestAnimationFrame(tick);
+    }
+  }
+  function renderQuestion(){
+    var q=QUESTIONS[state.step];
+    $("tn-q-step").textContent="Question "+(state.step+1)+" of 15";
+    $("tn-q-title").textContent=q.title;
+    $("tn-q-sub").textContent=q.sub;
+    $("tn-q-nut").textContent=q.nut;
+    var row=$("tn-q-face-row");
+    row.className="tn-face-row "+(state.step%2===0?"tn-face-left":"tn-face-right");
+    var av=$("tn-q-avatar");
+    av.style.setProperty("--jc",SPECTRUM[state.step%SPECTRUM.length]);
+    av.textContent=GLYPHS[state.step%GLYPHS.length];
+    $("tn-q-card").style.setProperty("--ac",SPECTRUM[state.step%SPECTRUM.length]);
+    var body=$("tn-q-body"); body.innerHTML="";
+    if(q.input==="area"){
+      var ta=document.createElement("textarea");
+      ta.className="tn-visionin"; ta.value=state.answers[q.key]; ta.setAttribute("aria-label",q.title);
+      ta.addEventListener("input",function(){state.answers[q.key]=ta.value;});
+      body.appendChild(ta);
+    }else if(q.input==="text"){
+      var inp=document.createElement("input");
+      inp.className="tn-visionin"; inp.type="text"; inp.value=state.answers[q.key]; inp.setAttribute("aria-label",q.title);
+      inp.addEventListener("input",function(){state.answers[q.key]=inp.value;});
+      body.appendChild(inp);
+    }else{
+      var p=document.createElement("p");
+      p.textContent="Your answer so far: "+state.answers[q.key];
+      body.appendChild(p);
+    }
+    var ch=$("tn-q-choices"); ch.innerHTML="";
+    q.choices.forEach(function(c){
+      var b=document.createElement("button");
+      b.className="tn-li-btn"+(state.answers[q.key]===c||(q.key==="functions"&&state.answers[q.key].indexOf(c)>=0)?" on":"");
+      b.type="button"; b.textContent=c;
+      b.addEventListener("click",function(){
+        if(q.key==="functions"){
+          var cur=state.answers[q.key]==="Smart Mail, Smart Lists, Scheduler"?["Smart Mail","Smart Lists","Scheduler"]:state.answers[q.key].split(", ");
+          var i=cur.indexOf(c); if(i>=0){cur.splice(i,1);}else{cur.push(c);}
+          state.answers[q.key]=cur.length?cur.join(", "):"None chosen yet";
+        }else{
+          state.answers[q.key]=c;
+        }
+        renderQuestion();
+      });
+      ch.appendChild(b);
+    });
+    $("tn-q-next").textContent=state.step===14?"Review and build →":"Next →";
+    paintGauge();
+  }
+  function answerStep(){
+    state.done=Math.min(15,state.done+1);
+    if(state.step<14){state.step+=1;renderQuestion();}
+    else{
+      var answered=0; QUESTIONS.forEach(function(q){if(state.answers[q.key]&&state.answers[q.key]!==q.def){answered+=1;}});
+      $("tn-build-summary").textContent="15 questions asked. "+state.done+" answered or kept as the ready-made default. Your page builds with everything you gave — and nothing you skipped holds it back.";
+      show("tn-screen-build");
+    }
+    paintGauge();
+  }
+  function buildPage(a){
+    var kind=a.kind||"Personal";
+    var rows=[
+      ["WHAT I DO",a.does],["MY MOTTO",a.mission],["MY VISION",a.vision],["MY GOAL",a.goal],["MY MISSION",a.mission]
+    ];
+    var rowHtml="";
+    rows.forEach(function(r,i){
+      rowHtml+='<div class="os-id-row"><span class="os-jewel" style="--jc:'+SPECTRUM[i%SPECTRUM.length]+'">◆</span><div><b>'+esc(r[0])+'</b><span>'+esc(r[1])+'</span></div></div>';
+    });
+    var lib=(a.library||"").indexOf("Yes")===0
+      ?"Your smart notes are pinned here — your Intelligent Library tells every visitor all about your world."
+      :"Your Intelligent Library is ready and waiting — pin your notes here whenever you like.";
+    var notesLine=(a.notes||"").indexOf("Yes")===0
+      ?"Built with your notes — Naya read them and wove them into this page."
+      :"Built from the template — add your notes any time and Naya will weave them in.";
+    return ''+
+    '<div class="strip tn-test-strip" style="margin-top:24px"><h2>TEST PAGE — built by the one-click flow with the ready-made answers</h2>'+
+    '<p>This page is a test of the flow. It is named as a test, and it is removed after verification — or kept only on Shawn\u2019s word.</p></div>'+
+    '<div class="ph-card" style="--ac:#a06bff"><div class="tn-face-row tn-face-left"><span class="tn-hero-orb">N</span><div style="flex:1;min-width:0">'+
+    '<h2>'+esc(a.name)+' — your '+esc(kind)+'</h2><h3>'+esc(a.for)+'</h3>'+
+    '<div class="ph-nutshell"><p>'+esc(a.vision)+'</p></div>'+
+    '<p>'+esc(notesLine)+'</p></div></div></div>'+
+    '<div class="ph-card" style="--ac:#3fb8ff"><h2>Vision, goal, and mission</h2><h3>One of each — yours, for this page alone.</h3>'+rowHtml+'</div>'+
+    '<div class="ph-card" style="--ac:#2fe89e"><h2>Your Intelligent Library</h2><h3>'+esc(lib)+'</h3>'+
+    '<p>From the first moment, a visitor can read your Library, look on your feed, open your About, join you, and message you.</p>'+
+    '<div><span class="szpill" style="--jc:#a06bff">◆ Smart Mail</span><span class="szpill" style="--jc:#3fb8ff">◆ Smart Lists</span><span class="szpill" style="--jc:#2fe89e">◆ Scheduler</span><span class="szpill" style="--jc:#ffbf3d">◆ Membership</span></div></div>'+
+    '<div class="ph-card" style="--ac:#ffbf3d"><h2>Your style</h2><h3>'+esc(a.style)+' — the Naya standard.</h3>'+
+    '<p>Images: '+esc(a.images)+' · Mark: '+esc(a.logos)+' · Find me: '+esc(a.links)+'</p>'+
+    '<p>Functions on this page: '+esc(a.functions)+'.</p></div>';
+  }
+  function wireKind(id,kind){
+    var el=$(id);
+    if(!el){return;}
+    var go=function(){
+      state.kind=kind; state.answers.kind=kind;
+      state.done=Math.max(state.done,1); state.step=1;
+      show("tn-screen-questions"); renderQuestion();
+    };
+    el.addEventListener("click",go);
+    el.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}});
+  }
+  var createBtn=$("tn-create-btn");
+  if(createBtn){createBtn.addEventListener("click",function(){show("tn-screen-kind");});}
+  wireKind("tn-kind-personal","Personal");
+  wireKind("tn-kind-business","Business");
+  wireKind("tn-kind-space","Space");
+  var kb=$("tn-kind-back"); if(kb){kb.addEventListener("click",function(){show("tn-screen-factory");});}
+  var qn=$("tn-q-next"); if(qn){qn.addEventListener("click",answerStep);}
+  var qs=$("tn-q-skip"); if(qs){qs.addEventListener("click",function(){answerStep();});}
+  var bb=$("tn-build-back"); if(bb){bb.addEventListener("click",function(){state.step=14;show("tn-screen-questions");renderQuestion();});}
+  var buildBtn=$("tn-build-btn");
+  if(buildBtn){
+    buildBtn.addEventListener("click",function(){
+      buildBtn.disabled=true;
+      var steps=$("tn-build-steps"); steps.innerHTML="";
+      var lines=["Reading your answers…","Composing from the template — the parts that already exist…","Pinning your notes into your Intelligent Library…","Your page is ready."];
+      lines.forEach(function(t,i){
+        var d=document.createElement("div");
+        d.className="os-id-row";
+        d.innerHTML='<span class="os-jewel" style="--jc:'+SPECTRUM[i%SPECTRUM.length]+'">✓</span><div><span>'+esc(t)+'</span></div>';
+        steps.appendChild(d);
+      });
+      state.done=15; paintGauge();
+      window.setTimeout(function(){
+        show("tn-screen-done");
+        var done=document.querySelector("#tn-screen-done");
+        var old=document.querySelector("#tn-built-copy");
+        if(old&&old.parentNode){old.parentNode.removeChild(old);}
+        var host=document.createElement("div");
+        host.id="tn-built-copy";
+        host.innerHTML=buildPage(state.answers);
+        if(done){done.appendChild(host);}
+        buildBtn.disabled=false;
+      },600);
+    });
+  }
+  var again=$("tn-again-btn");
+  if(again){again.addEventListener("click",function(){
+    state.done=0; state.step=0;
+    QUESTIONS.forEach(function(q){state.answers[q.key]=q.def;});
+    state.answers.kind="Personal"; state.kind="Personal";
+    paintGauge(); show("tn-screen-factory");
+  });}
+  paintGauge();
+})();
+</script>
+</body>
+</html>
