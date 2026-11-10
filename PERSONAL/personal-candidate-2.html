@@ -1543,7 +1543,7 @@ h2.stept{font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;margin:6p
 .naya-note.is-unread{border-color:rgba(160,107,255,.35);background:rgba(160,107,255,.06)}
 .naya-note-body{flex:1;font-size:13.5px;color:var(--ink-dim);line-height:1.55;min-width:0}
 .naya-note-body strong{color:var(--ink)}
-.naya-note-time{font-size:11.5px;color:var(--ink-faint);margin-top:6px}
+.naya-note-time{font-size:11.5px;color:rgba(255,255,255,.85);margin-top:6px} /* FIX-8c: was var(--ink-faint) #a9a4b8 — dim metadata, now near-white (scoped to this class only; other --ink-faint chrome is untouched) */
 .naya-avatar{--av:64px;width:var(--av);height:var(--av);border-radius:50%;flex:none;display:inline-grid;place-items:center;font-size:calc(var(--av) * .38);font-weight:800;color:#F8F7FB;position:relative;border:1.5px solid #F8F7FB;background:radial-gradient(circle at 34% 26%,rgba(255,255,255,.9) 0%,rgba(255,255,255,.25) 14%,transparent 32%),radial-gradient(circle at 50% 50%,var(--av-hue,var(--soul)) 0%,color-mix(in srgb,var(--av-hue,var(--soul)) 55%,#000) 60%,#040406 100%);box-shadow:inset 0 2px 4px rgba(255,255,255,.4),inset 0 -6px 12px rgba(0,0,0,.6),0 0 24px var(--av-hue,var(--soul)),0 12px 28px rgba(0,0,0,.6);transition:transform .25s}
 .naya-avatar::before{content:'';position:absolute;inset:-8px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 270deg,var(--av-hue,var(--soul)) 320deg,rgba(255,255,255,.95) 348deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2.5px;animation:orb-spin 4s linear infinite;opacity:.9;pointer-events:none}
 .naya-avatar:hover{transform:translateY(-3px) scale(1.06)}
@@ -3603,7 +3603,7 @@ article.intel-board:hover, article.intel-board:active { border-color: var(--tone
 .os-mship-portal-btn .os-jewel{flex:none;}
 @media(max-width:560px){.os-mship-portal-btn{width:100%;padding:16px 20px;font-size:16px;}}
 /* ---- interim ownership claim (identity lane replaces) ---- */
-.os-mship-claim{background:none;border:none;color:#8f8fa3;font-size:12px;font-family:inherit;text-decoration:underline;cursor:pointer;padding:6px 2px;}
+.os-mship-claim{background:none;border:none;color:rgba(255,255,255,.85);font-size:12px;font-family:inherit;text-decoration:underline;cursor:pointer;padding:6px 2px;} /* FIX-8c: was #8f8fa3 — dim metadata, now near-white; the interim wording is honest copy and stays exactly as written */
 .os-mship-claim:hover{color:#ffbf3d;}
 /* ---- celestial upgrade modal ---- */
 .up-modal.mship-upgrade{width:min(660px,94vw);border:2px solid transparent;background:linear-gradient(180deg,#101018,#060609) padding-box,linear-gradient(135deg,rgba(160,107,255,.85),rgba(255,191,61,.85)) border-box;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 24px 60px rgba(0,0,0,.7),0 0 60px -8px rgba(160,107,255,.55);}
@@ -4143,8 +4143,8 @@ html.os-calm .os-orb.hot::after{animation:none!important}
 .os-mw-row .os-mw-ic{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:17px;background:rgba(255,255,255,.06)}
 .os-mw-row .os-mw-tx{flex:1;min-width:0}
 .os-mw-row .os-mw-ti{display:block;font-weight:800;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.os-mw-row .os-mw-su{display:block;font-size:12px;color:#9a9aa5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.os-mw-row .os-mw-tm{flex:none;font-size:12px;color:#9a9aa5}
+.os-mw-row .os-mw-su{display:block;font-size:12px;color:rgba(255,255,255,.85);white-space:nowrap;overflow:hidden;text-overflow:ellipsis} /* FIX-8c: was #9a9aa5 — dim metadata, now near-white like the fix-8b .intel-empty raising */
+.os-mw-row .os-mw-tm{flex:none;font-size:12px;color:rgba(255,255,255,.85)} /* FIX-8c: was #9a9aa5 — dim metadata, now near-white */
 .os-mw-row.os-mw-total{cursor:default}
 .os-mw-chip{flex:none;display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.04em;color:#0a0a0f;background:#2fe89e}
 .os-dash-lab{color:#E8E8EC;font-size:12px;font-weight:800;letter-spacing:.08em;margin-top:2px}
@@ -7692,10 +7692,14 @@ function wallCard(j, iso, pid, idx){
      live invites / wall carry "Proof Friend" and "Proof Visitor" from
      verification runs — filtered at render in loadFaces' add(), never
      renamed in the live data. Any display name starting with "Proof "
-     matches; a real citizen name never starts that way. */
+     matches; a real citizen name never starts that way.
+     FIX-8c: the same filter now also matches any display name containing
+     "Verify" — "Chi Verify Friend 2336" is a verification-run invitee
+     name, same family, same render-only treatment. A real citizen name
+     never contains "Verify". */
   function upIsProofName(name){
     var n=String(name||'').trim().toLowerCase();
-    return n==='proof' || n.indexOf('proof ')===0;
+    return n==='proof' || n.indexOf('proof ')===0 || n.indexOf('verify')>=0;
   }
 
   /* P5 2026-11-06: fetchWall was called in 3 places (loadToday, loadFaces,
@@ -9644,7 +9648,7 @@ function wallCard(j, iso, pid, idx){
       var mem=$('os-members');
       if (mem){
         var jSet=['joined','accepted','converted','member'];
-        var joinedRows=out[2].filter(function(v){ return jSet.indexOf(String(v.status||'').toLowerCase())>=0; });
+        var joinedRows=out[2].filter(function(v){ return jSet.indexOf(String(v.status||'').toLowerCase())>=0 && !upIsProofName(v.invitee_name); }); /* FIX-8c: the Members card renders invitee names directly (not through add()) — verification-flavored names never render there either */
         var dsM=new Date(); dsM.setHours(0,0,0,0);
         var activeToday=list.filter(function(f){ return new Date(f.at)>=dsM; });
         var mSub=function(t){ return '<p style="font-weight:800;color:#fff;margin:12px 0 6px;">'+t+'</p>'; };
@@ -11995,6 +11999,53 @@ body.os-msg-mode .ph-cover,body.os-msg-mode .ph-actions-row.up-actions,body.os-m
    (placeNear puts the popover above the gear, y ~536-726 @638), covering
    the speed slider. */
 .nsb-gear{margin-right:56px;}
+/* ============ FIX-8c (2026-11-10, round-2 FAIL defects 1+2+5) ============
+   D1: the bottom icon bar's row was justify-content:center — at phone
+   widths the centered content overflows BOTH sides and scrollLeft cannot
+   go negative, so Home/Dashboard/Message sat off-screen left FOREVER
+   (first paint showed Activity/Mail) and were unreachable by scrolling.
+   Below 1200px the row is flex-start: scrollLeft 0 shows Home first and
+   every tab scrolls into reach. Desktop (content fits) stays centered.
+   D2a (390/360): the gear sits at the row's right end; a tab parked at
+   the row's right edge had its centre under the gear. At <=375px the row
+   padding + tab padding tighten so Dashboard's centre sits inside the
+   row box, clear of the gear. (390 needs no tightening: Dashboard's
+   centre is already 16px clear of the gear once the row is flex-start.)
+   D2b (1440 Inbox / 360 Dashboard): the fixed eco-plus circle floats over
+   the top strip's right end. The left side already reserves a 72px slot
+   for the rooms-plus (R2 FIX 1); the right side never got one. The inner
+   now reserves the same slot for the eco-plus, and the top pills tighten
+   slightly (gap 10->6, padding 20->18 desktop / 16->14 phone) so the
+   first-set Inbox centre (1440) and Dashboard centre (360) clear the
+   eco-plus with margin. Compact mode gets the same slots.
+   D5: the post-failure status line is cleared of the fixed + button
+   (#plusbtn, 60px at right:16 -> its left edge is vw-76): 56px right
+   MARGIN on the status line, every width. Margin, not padding: padding
+   does not shrink the border box, so the text zone still reached under
+   the + button at 390 (proven: padding-right 76 re-wrapped the text but
+   the 0.9/0.98 probe points still hit "Add something"). Margin pulls
+   the box edge in 56px (26px clear of the button at 390).
+   Compact top row: in compact mode (scrolled, app name hidden) the row
+   padding 24px + gap 6px parked Growth's centre under the eco-plus at
+   1440 (cx 1387 vs eco-plus left 1380). Tighter compact padding/gap
+   shifts every pill ~32px left — Growth clears by ~25px, and 360's
+   compact Dashboard clears by ~34px. */
+#nsbTopstack .nsb-top-inner{padding:10px 72px 10px 64px;}
+#nsbTopstack.nsb-compact .nsb-top-inner{padding:6px 72px 6px 64px;}
+#nsbTop .nsb-row{gap:6px;}
+#nsbTopstack.nsb-compact .nsb-top .nsb-row{padding:8px 12px 14px;gap:4px;}
+#os-post-status{margin-right:56px;}
+@media (min-width:481px){ #nsbTop .nsb-tab{padding:12px 18px;} }
+@media (max-width:480px){
+  #nsbTopstack .nsb-top-inner{padding-right:60px;}
+  #nsbTopstack.nsb-compact .nsb-top-inner{padding-right:60px;}
+  #nsbTop .nsb-tab{padding:11px 14px;}
+}
+@media (max-width:1200px){ #nsbBottom.nsb-iconbar .nsb-row{justify-content:flex-start;} }
+@media (max-width:375px){
+  #nsbBottom .nsb-row{padding-left:4px;padding-right:4px;}
+  #nsbBottom.nsb-iconbar .nsb-tab{padding:10px 10px;}
+}
 .nsb-gear:hover{border-color:var(--blue);transform:rotate(30deg) translateY(-2px);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.5), inset 0 -1px 0 rgba(0,0,0,.45),
     0 0 20px -2px var(--blue), 0 4px 8px rgba(0,0,0,.6), 0 14px 28px rgba(0,0,0,.6);}
@@ -12559,6 +12610,7 @@ window.NayaSmartBar = {
        once and held; the visitor still scrolls/swipes the row by hand.
        drift() stays defined (Settings keeps its stored speed value). */
     try { var _at = tRow.querySelector('.nsb-tab.active') || tRow.querySelector('.nsb-tab'); if (_at) _at.scrollIntoView({behavior:'auto', block:'nearest', inline:'nearest'}); } catch(e){}
+    try { tRow.scrollLeft=0; } catch(e){} /* FIX-8c D1: Home first visible on first paint — the strip never loads mid-set */
 
     /* ----- BOTTOM BAR ----- */
     var bottom = document.getElementById('nsbBottom');
@@ -12899,7 +12951,7 @@ window.NayaSmartBar = {
     ng.style.setProperty('--tc', '#3fb8ff');
     net.appendChild(ng);
     var nc = document.createElement('span');
-    nc.innerHTML = '<small>' + tabsNet.length + ' apps</small>';
+    nc.innerHTML = '<small>' + (sortedNet().length + 1) + ' apps</small>'; /* FIX-8c D6a: the count is the tabs on the bar — the network tabs plus the Add-a-tab door (8 + 1 = 9); sortedNet() counts what actually renders */
     net.appendChild(nc);
     /* settings gear: bar motion is theirs to tune */
     var gear = document.createElement('button'); gear.type = 'button'; gear.className = 'nsb-gear';
@@ -12916,6 +12968,7 @@ window.NayaSmartBar = {
        top strip. Active tab snapped into view once and held; hand-scroll
        still works. */
     try { var _ab = bRow.querySelector('.nsb-tab.active') || bRow.querySelector('.nsb-tab'); if (_ab) _ab.scrollIntoView({behavior:'auto', block:'nearest', inline:'nearest'}); } catch(e){}
+    try { bRow.scrollLeft=0; } catch(e){} /* FIX-8c D1: Home first visible on first paint — the strip never loads mid-set */
     /* keyboard-open: hide bottom bar when the keyboard takes the screen */
     if (window.visualViewport){
       var baseH = window.visualViewport.height;
@@ -13069,6 +13122,29 @@ NayaSmartBar.mount({
   }
   nameIcons();
   bottom.addEventListener('smarttabs-change', function(){ setTimeout(nameIcons, 50); });
+  /* FIX-8c D6b: Pricing opens its destination even when the popup is
+     blocked — capture runs before the pill's own handler, so the
+     destination opens exactly once (new tab when allowed, this tab when
+     the popup is blocked), and never falls through to the dashboard.
+     No 'noopener': Firefox returns null for noopener opens even when
+     the popup succeeds (proven 2026-11-10: 'noopener' -> NULL, plain
+     _blank -> window, popup opened in all three cases), so a null-check
+     fallback is impossible with it; the destination is same-family
+     nayanet.app. */
+  bottom.addEventListener('click', function(e){
+    if (e.target && e.target.closest && e.target.closest('.nsb-more')) return;
+    var b=e.target && e.target.closest ? e.target.closest('.nsb-tab') : null;
+    if(!b || !bottom.contains(b)) return;
+    var lab=(b.getAttribute('aria-label')||'').replace(/ \(no destination yet\)$/,'');
+    if(lab!=='Pricing') return;
+    e.stopPropagation();
+    e.preventDefault();
+    bottom.querySelectorAll('.nsb-tab.active').forEach(function(x){ x.classList.remove('active'); });
+    b.classList.add('active');
+    var w=null;
+    try { w=window.open('https://nayanet.app/welcome','_blank'); } catch(err){ w=null; }
+    if(!w){ window.location.href='https://nayanet.app/welcome'; }
+  }, true);
   bottom.addEventListener('click', function(e){
     var b=e.target && e.target.closest ? e.target.closest('.nsb-tab') : null;
     if(!b || !bottom.contains(b)) return;
