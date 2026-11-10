@@ -7696,12 +7696,21 @@ function wallCard(j, iso, pid, idx){
      FIX-8c: the same filter now also matches any display name containing
      "Verify" — "Chi Verify Friend 2336" is a verification-run invitee
      name, same family, same render-only treatment. A real citizen name
-     never contains "Verify". */
+     never contains "Verify".
+     FIX-8e: the match widens from "verify" to "verif" — "Chi Verifier"
+     (wall author, faces tile on dashboard + reports) contains no "verify"
+     substring, so the old predicate missed it; "verif" covers verify /
+     verifier / verification in one stroke. False-positive check run FIRST
+     on live data (raw-names-8e.json): 7 distinct display names, exactly
+     two contain "verif" (the two verification-run names), zero real names
+     caught. "Verity" has no "verif" (V-e-r-i-t-y, no "f") and is absent
+     from the live data. */
   function upIsProofName(name){
     var n=String(name||'').trim().toLowerCase();
-    return n==='proof' || n.indexOf('proof ')===0 || n.indexOf('verify')>=0;
+    return n==='proof' || n.indexOf('proof ')===0 || n.indexOf('verif')>=0; /* FIX-8e: was 'verify' — 'verifier'/'verification' contain no 'verify' substring, so 'Chi Verifier' rendered. 'verif' covers the family; false-positive check (live data, raw-names-8e.json) found zero real names containing 'verif'. */
   }
   window.upIsProofName = upIsProofName; /* FIX-8d: the dash-script block is a separate <script> outside this IIFE, and its dashboard faces + activity/joins filters call the same predicate — exposed on window here so there is one filter, no copy. The os-script call sites keep resolving to the local function; the dash-script call sites resolve through window. */
+  window.upIsVerificationPost = upIsVerificationPost; /* FIX-8e: loadDashboard (dash-script, outside this IIFE) filters wallRows through the same predicate — one filter, no copy, same pattern as FIX-8d. */
 
   /* P5 2026-11-06: fetchWall was called in 3 places (loadToday, loadFaces,
      loadAbout) but never defined, so About / Connections threw
@@ -11599,7 +11608,7 @@ function wallCard(j, iso, pid, idx){
          too. Same two schedFor checks as loadWall; the Reports loader
          uses the same pair. */
       var _nowF3=Date.now();
-      var wallRows=allNoteRows.filter(function(x){ return x.j.k==='wall' && !(x.j.schedFor && Date.parse(x.j.schedFor) > _nowF3) && !(x.j.scheduled && x.j.scheduled.ts && x.j.scheduled.ts > _nowF3); });
+      var wallRows=allNoteRows.filter(function(x){ return x.j.k==='wall' && !upIsVerificationPost(x.j) && !(x.j.schedFor && Date.parse(x.j.schedFor) > _nowF3) && !(x.j.scheduled && x.j.scheduled.ts && x.j.scheduled.ts > _nowF3); }); /* FIX-8e: verification posts never render on the dashboard — the activity list reads d.posts (= wallRows), as does pickMove's newest-post snippet. Same render-only filter as loadWall/fetchWall (upIsVerificationPost, exposed on window above); the two rows ('Verification wall post CHI-VERIFY-WALL-20261021-2336-B2', 'Proof post from the flagship verification run') are filtered here, never deleted. Dashboard post count now matches the feed count (F3). */
       var noteRows=allNoteRows.filter(function(x){ return x.j.k==='note'; });
       var saveRows=allNoteRows.filter(function(x){ return x.j.k==='save'; });
       var connectRows=allNoteRows.filter(function(x){ return x.j.k==='connect'; });
