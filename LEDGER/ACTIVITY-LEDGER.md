@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-10 17:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-10 17:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -41157,6 +41157,12 @@ _Last updated: 2026-11-10 17:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-gap-gap-t0062-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: independently re-execute blob-less-clone merge-base ancestor check for t0062
+
+**Evidence:** Verified: proof file hidden_files/lane-4/gap-gap-gap-t0062-ancestor-20261026/ancestor-check-2822313f.json exists, sha256 dacd64a2249427da186de071543ca1f012145a60f91d96800cb8c06c893fd565 matches receipt exactly; both ancestor commits named with full SHAs. Score 9.5 - clears 9.5 because the named gap (independent re-execution on a proven non-shallow 
+
 ### ✅ gap-t0062-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** GAP follow-up: re-prove 20/20 IB exporter round-trip on current tip durably + decompose merge-faithfulness
@@ -45748,6 +45754,12 @@ _Last updated: 2026-11-10 17:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ gap-gap-gap-t0122-lane11 — Team 11, Team Naya Scorer (Human Value) — 8.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: blind-independence re-run for t0122 human-value audit - recusal with re-file
+
+**Evidence:** Verified: brief re-filed byte-identical (sha256 a9aecb87f3dbcc68f169f9fb5cab25f4ae3534db08319ecdf06f207b90fd36e9 matches), parent receipt sha 3c9c01593b49ad6c8499ae85d6e4b93e87d686ac4fb949fad0e459d2e0186df3 matches, parent evidence file sha d3d068fc7f6b124e592bd6d5df089178cf871e290fdb0b02aaed3754ea0edd41 matches, brief still queued OPEN (31 queued)
 
 ### ✅ gap-gap-gap-gap-t0162-lane11-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
@@ -50342,6 +50354,12 @@ _Last updated: 2026-11-10 17:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261110-0903 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall run 2026-11-10 09:03 PST: evaluate all 31 unclaimed briefs, claim none (29 exit 7 + 2 exit 2, all script-attempted firsthand)
+
+**Evidence:** VERIFIED this tick on workspace bytes: cited log hidden_files/claim-sweep-20261110-0903.log holds 31 attempt lines (29x exit 7 + 2x exit 2 per its totals line; grep counts 30/3 incl. the totals line itself), and the log's named set == live brief-queue/ set 31/31 (zero missing, zero extra); zero brief-tNNNN mission-sequence files; both exit-2 bars a
 
 ### ✅ gate-stall-20261110-0735 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
