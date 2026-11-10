@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-10 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-10 23:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -24767,6 +24767,12 @@ _Last updated: 2026-11-10 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 10 fossil PR heads (1139,1169,1228,1239,1240,1241,1245,1246,1248,1258) re-pinned byte-identical via ONE batched git ls-remote against live bytes; the parent's named gap (40 REST calls for the same check class) closed at 1 call with identical verdict power. lane-3.md '## Open threads' confirmed present at live bytes carrying the indepe
 
+### ✅ t0544-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** CANDIDATE candidacy-block registry spec + dry-fire log against the live consult door (t0803 SHARPEN)
+
+**Evidence:** VERIFIED this tick on workspace bytes: lane-12/candidacy-block-registry-CANDIDATE-t0544.md sha256 7dabded59254fb77890c35d10f86f825e60e92d560a2379824fbea152d922d8d matches receipt pin EXACTLY; .machine.json 3fcd4222c3a67dbefe0ac8d713ed2376d9e70c56c60dba5cc9767aad561e7277 matches EXACTLY; dry-fire-consult-t0544.py 38b29192b81c9bfd81d3ced7b72aab6282ac
+
 ### ✅ t0544 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** CANDIDATE candidacy-block registry spec + dry-fire vs live door
@@ -24858,6 +24864,12 @@ _Last updated: 2026-11-10 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** SURGE: semantic arm vs t0532 battery (dual-view bi-encoder)
 
 **Evidence:** VERIFIED: instrument auto-retrieval/t0537_semantic.py at exact sha 9eaa09750d8ab97eea137e0c2f5c6d0be65359d05d49e3d85224bbb0eabad352; results auto-retrieval/results-t0537-semantic.json on disk; battery verdicts computed from bytes (P1 FAIL, P2 HOLDS, overall FAIL — honestly reported, no tuning). Score 9.0. Kept from 9.5: the arm FAILS the human exam
+
+### ✅ t0541-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** STAGE 0 intake port proven end-to-end on live bytes (diary_intake.py -> lesson-broadcast.md)
+
+**Evidence:** VERIFIED this tick on workspace bytes: bin/diary_intake.py exists and --self-test re-run live just now returns all 9 checks green (SELF-TEST: all green); lesson-broadcast.md exists. NOT re-verifiable from current bytes: the [TEST-INTAKE t0541] entry is no longer in the broadcast (grep count 0) — the receipt itself documents the max-20 trim dropping
 
 ### ✅ t0541 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -25038,6 +25050,12 @@ _Last updated: 2026-11-10 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0540-lane4.md`
 
 **Evidence:** VERIFIED: retrieval/smartblocks/lane-status-packet-v1.md exists, sha256 matches 0bff1625...f977fa547; source pins match (query-needs-top20-t0535.json 347f4210...f1ffb0, log 31aa1619...f42239d68fe1) on live bytes. Solid draft with machine source pointers, staleness predicates S1/S2/S3, UNWIRED-DRAFT scope. Score 9.0, not 9.5: lane self-named gaps ho
+
+### ✅ t0539-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** TF-IDF-arm falsification battery sealed, run, and certified (SURGE slice a5)
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/retrieval/battery-tfidf-t0539/ holds all 4 deliverables; prereg-sealed.md sha256 63e47e07a156663eeef0e858b13843fbcd6a023d440f73772c61a79563c50982 matches receipt pin EXACTLY and run-output-t0539.json sha256 95b45115182ab0028494ee549519c69dd2558a17fbabcf0b7ccffb95d1183 matches receipt pin EXACTLY. 
 
 ### ✅ t0539 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -43639,6 +43657,12 @@ _Last updated: 2026-11-10 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ gap-t0533-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Close evidence-retention gap: restore or re-derive t0533 r3 claim EVALUATED=26 DIVERGENCES=23 from retained bytes (gap-t0533-lane2)
+
+**Evidence:** VERIFIED this tick on workspace bytes: replay probe log lane-2/t0533-r3replay-compound.log sha256 99b954ff1d552dc6... matches cited 99b954ff1d552dc6; verdicts JSON 53039eeea0fb7447... matches cited 53039eeea0fb7447; score JSON e95186f7b8ce08ea... matches cited e95186f7b8ce08ea; manifest t0533-r3replay-manifest.json present; frozen snapshot dir lane
+
 ### ✅ gap-t0112-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
 **Task:** GAP follow-up: dry-gate re-run, durable (seal-first re-verification + foreign gate + negative control)
@@ -45796,6 +45820,12 @@ _Last updated: 2026-11-10 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ gap-t0622-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Second-seat independent re-application of all 13 CR- checks on CR-ACCEPT t0614 (gap-t0622-lane11)
+
+**Evidence:** VERIFIED this tick on workspace bytes: checker script lane-2/t0622-secondseat-check.py sha256 7206673b93927738... matches cited 7206673b93927738dc8e064e9b230ed3d6bc57caaf68f17cafee2ff2d6f0f152; results JSON lane-2/t0622-secondseat-results.json sha256 fc5df496b7fb2502c3999330dd84a733... matches cited fc5df496b7fb2502c3999330dd84a73394dbc27b9a8ea1251
 
 ### ✅ gap-lane-scorer-20261015-2140-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
