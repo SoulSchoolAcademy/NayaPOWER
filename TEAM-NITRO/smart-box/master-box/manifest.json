@@ -1,32 +1,32 @@
 {
   "blocks": 21,
-  "blocks_sha256": "59cb9a45f841eedfbcd18bb12e1fcebb95e5954c69ce5bf710ec88949978c6cb",
-  "built_at": "2026-11-10T02:00:52.391611+00:00",
+  "blocks_sha256": "ca47e99747e37d8ccd205b0cb6a9dc043532c65427dfdf2011672500a2da45ea",
+  "built_at": "2026-11-10T02:20:47.454124+00:00",
   "built_from": "smart-box/block.py + gate.py + boxstore.py (verbatim) + build_master_box.py",
   "children": [
     {
       "blocks": 24,
+      "blocks_sha256": "fb9f158257f777024ac14b68b101bb55a3d66443714a6db836285e983fb45805",
       "id": "naya-nitro-narzan:box:naya-nitro-narzan",
-      "key_events": 1,
-      "manifest_sha256": "fb9f158257f777024ac14b68b101bb55a3d66443714a6db836285e983fb45805"
+      "key_events": 1
     },
     {
-      "blocks": 63,
+      "blocks": 65,
+      "blocks_sha256": "63267fafe9e5a0c37e707681d34f60d727da69a76990b1ee256ff719d6dc7290",
       "id": "shared:box:shared",
-      "key_events": 0,
-      "manifest_sha256": "8b2028c6f3ddd81b28e15f3882934aba3ea7a4b23d5fd23d716be9c805d8e3c7"
+      "key_events": 0
     },
     {
-      "blocks": 8254,
+      "blocks": 8256,
+      "blocks_sha256": "51d544fa4b4f7d91d3119c22995977bedaff82df6e0aecdcaf814628748d69e2",
       "id": "shawn:box:shawn",
-      "key_events": 5,
-      "manifest_sha256": "44f30833b7e1fa20826e733660da4529dc6ad969c783f97627cd4d08a3f1809d"
+      "key_events": 5
     },
     {
       "blocks": 16,
+      "blocks_sha256": "67c6f654d95e2b878e882018459aa38d649450d08b1405aa237839b20434eed1",
       "id": "smart-factory:box:smart-factory",
-      "key_events": 0,
-      "manifest_sha256": "67c6f654d95e2b878e882018459aa38d649450d08b1405aa237839b20434eed1"
+      "key_events": 0
     }
   ],
   "key_events": 1,
@@ -35,7 +35,7 @@
   "owner": "collective",
   "sources": [
     "DESIGN-INTELLIGENCE-REPORT.md (whole file, 2026-11-02)",
-    "MEMORY.md: THE INTELLIGENCE RUBRIC + D2 + D3 + D4 + THE 99% BASELINE PRINCIPLE (Shawn 01:58Z Nov 10)",
+    "MEMORY.md: THE INTELLIGENCE RUBRIC + D2 + D3 SETTLED (no bundle cap) + D4 + THE 99% BASELINE PRINCIPLE (Shawn 01:58Z + 02:12Z Nov 10)",
     "MEMORY.md: THE MASTER BOX - OFFICIALLY SET UP (Shawn 01:24Z Nov 10)",
     "MEMORY.md: THE NAIMA RESOLUTION (Shawn 01:00Z Nov 10)",
     "MEMORY.md: THE PERMISSION MODEL - CORRECTED (Shawn 01:31Z Nov 10; supersedes the 01:24Z framing)",
