@@ -35,6 +35,14 @@ Hero gauge · payout line · D4-R1 scroll-margin rule. No redesign, no invented 
 - Known limits (for the verifier, live): (a) per-link Smart Links cards never render in the sandbox (no ledger) — same code path + CSS as the verified boards, but the verifier must SEE a link card live; (b) D4-R1 scroll rest not re-measured on the taller rows (rule untouched; geometry driver is trailing space, unchanged; the "label clear" check is moot — the label is gone); (c) the 10s hang-timeout path unexercised (sb undefined in sandbox; only the sb-null path observed); (d) hero gauge caption still says 'Quiet — nothing measured yet.' in its rest state — DO-NOT-TOUCH this round, flagged not fixed; (e) historical comments still quote removed strings (L13753, D4-R1 comment) — annotated where it matters.
 - NOT in this round: no merge, no deploy (coordinator deploys after independent verification).
 
+## FILING (GitHub, read-back verified)
+- **Branch:** `dashboard/pass5-no-gray-text-20261110` (created from pass-4 head `43a937e743c97645082f903f654b100c4c6615cf`)
+- **File:** `DASHBOARD/defectfix-v7/pass5/dashboard-pass5.html` — blob `4b4084e1aad4e3fbd64d1052abc2f48cdc56ac23`, 1,778,959 B, commit `1bb12951049ef7a6866400c8031faa35161c6258`; read-back via git-blobs API: BYTE-IDENTICAL, sha256 `0e4ef2fef4ccf54c178155f86d14176a56418d1d7590732ce39321b583b4a388`
+- **Record:** `DASHBOARD/defectfix-v7/pass5/PASS5-BUILDER-RECORD.md` — blob `8503cb89c0b74dcf2ce02e786b0d277ae6f34400`; branch head `edcceadac96ce3aebc5e9ff59fa8b16e2423b157`
+- **Link:** https://github.com/SoulSchoolAcademy/NayaPOWER/blob/dashboard/pass5-no-gray-text-20261110/DASHBOARD/defectfix-v7/pass5/dashboard-pass5.html
+- **Diff vs pass-4 base:** 283 lines changed; base blob `a334b43747ec5d7884ebeef485b3995ca7e211e8` (1,773,677 B) untouched (sha256 `a4a5d3cc…` re-verified after editing).
+- **Local work files:** `~/workspace/team-nitro/dashboard/defectfix-v7/pass5/` — `dashboard-pass5.html` (deliverable), `dashboard-pass4-base.html` (base copy), `apply-pass5.py` (edit script), `probe.py` (Playwright verification probe), `PASS5-BUILDER-RECORD.md` (this record).
+
 ## SELF-SCORECARD (maker's own, before handoff)
 **Self-score: 9/10.** All six brief changes are complete and measured-pass in the sandbox. The point off is for the live-only verifications I cannot do here (link cards with real data, D4-R1 rest on taller rows, hang-timeout path) and the 67px phone dial→tile air (tacho internal slack shared with the hero — out of scope to touch).
 
