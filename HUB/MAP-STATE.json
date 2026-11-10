@@ -1,35 +1,35 @@
 {
-  "measured_at": "2026-11-10T09:52:01.800865+00:00",
+  "measured_at": "2026-11-10T17:51:25.060746+00:00",
   "probes": {
     "supabase_tables": {
       "status": "unknown",
       "evidence": "measurement unavailable: no SUPABASE_URL in this environment. Last verified baseline (2026-10-15, Management API): 22 tables, 12,026 rows \u2014 NOT re-measured this run. Row counts require an authenticated key (anon role is RLS-locked, 42501) \u2014 loud unknown, not fake green.",
-      "measured_at": "2026-11-10T09:51:48.734008+00:00"
+      "measured_at": "2026-11-10T17:51:12.693922+00:00"
     },
     "feeds": {
       "status": "amber",
-      "evidence": "live: today (5 items, 9:52:03 old), lists (5 items, 20 days, 17:32:07 old), spaces (5 items, 19 days, 6:48:45 old); missing/invalid: feed, reports, library, connect, ledger, connections, mail, settings, manifest",
-      "measured_at": "2026-11-10T09:51:51.568700+00:00"
+      "evidence": "live: today (5 items, 17:51:27 old), lists (5 items, 21 days, 1:31:32 old), spaces (5 items, 19 days, 14:48:09 old); missing/invalid: feed, reports, library, connect, ledger, connections, mail, settings, manifest",
+      "measured_at": "2026-11-10T17:51:16.610554+00:00"
     },
     "bridge": {
       "status": "red",
       "evidence": "PR #2679 closed (PR state: closed); bridge code in repo: not found at checked paths",
-      "measured_at": "2026-11-10T09:51:52.291817+00:00"
+      "measured_at": "2026-11-10T17:51:17.671902+00:00"
     },
     "rooms": {
       "status": "amber",
       "evidence": "0/9 on seeds, 8/9 loading, 0/9 unknown \u2014 hub/: mixed (seeds: OFFICIAL_NOTES; loaders: NayaPowerRuntime, HUB/FEEDS); hub/today: loading; hub/lists: loading; hub/spaces: loading; hub/mail: loading; hub/reports: loading; hub/ledger: loading; hub/library: loading; hub/connections: loading",
-      "measured_at": "2026-11-10T09:51:56.736925+00:00"
+      "measured_at": "2026-11-10T17:51:18.971546+00:00"
     },
     "capture": {
       "status": "green",
-      "evidence": "latest run completed/success (1:46:45 old, event=schedule); 5/5 recent runs scheduled; recent success: True, recent failure: False",
-      "measured_at": "2026-11-10T09:51:57.100383+00:00"
+      "evidence": "latest run completed/success (0:59:27 old, event=schedule); 5/5 recent runs scheduled; recent success: True, recent failure: False",
+      "measured_at": "2026-11-10T17:51:19.400427+00:00"
     },
     "dock": {
       "status": "red",
       "evidence": "#2676 closed (CI failing); #2678 closed (merged) (CI failing); #2679 closed (CI failing); #2680 closed (merged) (CI failing); #2686 closed (CI failing)",
-      "measured_at": "2026-11-10T09:52:01.800812+00:00"
+      "measured_at": "2026-11-10T17:51:25.060682+00:00"
     }
   },
   "summary": {
