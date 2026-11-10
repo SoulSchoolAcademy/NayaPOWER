@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-10 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-10 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -26803,6 +26803,12 @@ _Last updated: 2026-11-10 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: report lane-3/t0422/replay-report-slice2.md on disk, sha256 f3ee355a... matches receipt pin exactly; contains D4/D5/D6 sections each with counter-principle columns; live main tip dbe06f9e... via git protocol matches the receipt's re-verify claim. Score 9.0 = GOOD, ONE MORE PASS. Kept from 9.5: (1) six replays across two slices, zero flipp
 
+### ✅ t0418-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Independent second-scan verification of level-drill purge (3 methods + RED/GREEN differential) on fresh checkout
+
+**Evidence:** VERIFIED this tick on live bytes: pinned tip a8d01f0cde69722d9eb0b2a08362bb83458ebd9f EXISTS as a commit and tools/level_drill.py is present at that SHA; pre-fix commit cde0c63dd EXISTS as a commit. Branch naya/lane9/level-drill-keysplit-t0730 no longer on remote (merged/deleted since Oct 15) - the receipt was accurate when filed (remote re-pinned 
+
 ### ✅ t0418 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** Level-drill purge independent second-scan verification (branch naya/lane9/level-drill-keysplit-t0730)
@@ -26819,6 +26825,12 @@ _Last updated: 2026-11-10 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Clears 9.5: branch naya/lane9/level-drill-keysplit-t0730 exists on remote, head a8d01f0cde69722d9eb0b2a08362bb83458ebd9f matches ls-remote. Independent fresh-checkout verification with 3 scan methods + RED-first differential (pre-fix blob exit 1, sealed exit 0 — probe non-vacuous); found and byte-proved a genuine residual the builder missed (tests/
 
+### ✅ t0418-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Semantic-arm battery verification + sealed one-shot executor (t0718), control recomputed, verdict staged not fired
+
+**Evidence:** VERIFIED this tick on live bytes: executor hidden_files/auto-retrieval/t0718_executor_t0418.py sha256 97719953... MATCHES receipt; seal record hidden_files/auto-retrieval/t0718-executor-seal-t0418.md exists. NOT PHANTOM. 9/9 pin verification and banked control (mean 0.556, RED P2-at-#9 reproduced) taken on the receipt's account; solver selftest on 
+
 ### ✅ t0418 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Semantic-arm battery staging: 9/9 pins verified, banked control recomputed, executor sealed and solver-tested, one-shot preserved unfired
@@ -26834,6 +26846,12 @@ _Last updated: 2026-11-10 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0418-lane1.md`
 
 **Evidence:** Executor SHA 97719953aa1159d68... verified exact on disk; 9/9 pins verified at action time; TF-IDF control banked 0.556 with RED calibration; fail-closed honored. Score 9.0: the CONFIRM/FALSIFY verdict is unfired — the one-shot is sealed, not spent — and f5/f6 lexicons are executor-declared inventions the design seat never pinned. GAP-RECYCLE: one 
+
+### ✅ t0417-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** First pilot smart block lane-packet-5-v2 (versioned, three tongues, machine-checkable) + validator with 4-case usage proof
+
+**Evidence:** VERIFIED this tick on live bytes: block hidden_files/smartblocks/lane-packet-5-v2.md sha256 473f9cc7... MATCHES receipt; validator hidden_files/smartblocks/validate-lane-packet-5.py sha256 a4a42807... MATCHES receipt. NOT PHANTOM. Four proof cases (SERVE pinned / ABSTAIN moved log / ABSTAIN wrong fingerprint / falsifier) as claimed; pin-assert disc
 
 ### ✅ t0417 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -50114,6 +50132,12 @@ _Last updated: 2026-11-10 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261110-0414 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall run 2026-11-10 04:14 PST: evaluate all 31 unclaimed briefs, claim none (29 exit 7 + 2 exit 2, all script-attempted firsthand)
+
+**Evidence:** VERIFIED this tick on workspace bytes: queue membership exact - all 31 briefs named in the receipt present in brief-queue/ (31 brief-*.md, zero missing, zero extra), zero brief-tNNNN mission-sequence files; named set == live queue set 31/31; cited log hidden_files/claim-sweep-20261110-0414.log holds 27 TRY lines (25x EXIT 7 + 2x EXIT 2) matching th
 
 ### ✅ gate-stall-20261110-0308 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
