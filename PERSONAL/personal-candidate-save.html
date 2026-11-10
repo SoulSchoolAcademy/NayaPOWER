@@ -7273,7 +7273,7 @@ NF.register(UNIT, {
      backend row lost it. The cure is the sections' own discipline (secSave):
      write the row AND keep the timestamped on-device mirror, so a reload
      keeps what was saved with or without the connection. */
-  sb.addEventListener('click',function(){var text=ae.value||at.textContent;at.textContent=text;at.style.display='';ae.style.display='none';eb.style.display='';nb.style.display='none';sb.style.display='none';if(cb)cb.style.display='none';if(xb)xb.style.display='none';var now=new Date().toISOString();try{localStorage.setItem('naya.about',text);localStorage.setItem('naya.about.at',now);localStorage.setItem('naya.aboutsec.story',text);localStorage.setItem('naya.aboutsec.story.at',now);}catch(e){}window.__osAboutSecs=window.__osAboutSecs||{};window.__osAboutSecs['story']=text;var st2=document.getElementById('os-story-text');if(st2)st2.textContent=text;var client=(window.NayaAuth&&window.NayaAuth.client)||null;if(!client&&typeof supabase!=='undefined'){try{client=supabase.createClient('https://dahisasgpfvziswqvmvm.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGlzYXNncGZ2emlzd3F2bXZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2MjM3ODgsImV4cCI6MjEwMzE5OTc4OH0.zX2r3T23sKebUMBdNg-4Noxos8JFOHaK2rRwqAVXU_s');}catch(e){client=null;}}if(!client){setAboutStatus('<p class="os-note">Saved on this device — it joins this app&rsquo;s own data when the connection returns.</p>');return;}client.from('smart_notes').insert({owner_alias:(window.PAGE_ALIAS||'flagship-personal'),content:JSON.stringify({k:'aboutsec',s:'story',text:text})}).then(function(res){if(res&&res.error){setAboutStatus('<p class="os-note">Saved on this device — the app&rsquo;s copy could not be written just now.</p>');return;}setAboutStatus('<p class="os-note" style="color:#2fe89e">Saved — it is this app&rsquo;s own data now.</p>');},function(){setAboutStatus('<p class="os-note">Saved on this device — the app&rsquo;s copy could not be written just now.</p>');});});
+  sb.addEventListener('click',function(){var text=ae.value||at.textContent;at.textContent=text;at.style.display='';ae.style.display='none';eb.style.display='';nb.style.display='none';sb.style.display='none';if(cb)cb.style.display='none';if(xb)xb.style.display='none';var now=new Date().toISOString();try{localStorage.setItem('naya.about',text);localStorage.setItem('naya.about.at',now);localStorage.setItem('naya.aboutsec.story',text);localStorage.setItem('naya.aboutsec.story.at',now);}catch(e){}window.__osAboutSecs=window.__osAboutSecs||{};window.__osAboutSecs['story']=text;var st2=document.getElementById('os-story-text');if(st2)st2.textContent=text;fetch(window.PERSONAL_SAVE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({alias:(window.PAGE_ALIAS||'flagship-personal'),model:{aboutsec:{story:text}}})}).then(function(r){return r.json().catch(function(){return null;});}).then(function(j){if(j&&j.ok){setAboutStatus('<p class="os-note" style="color:#2fe89e">Saved — it is this app&rsquo;s own data now.</p>');}else{setAboutStatus('<p class="os-note">Saved on this device — the app&rsquo;s copy could not be written just now.</p>');}}).catch(function(){setAboutStatus('<p class="os-note">Saved on this device — the app&rsquo;s copy could not be written just now.</p>');});});
   try{var s=localStorage.getItem('naya.about');if(s)at.textContent=s;}catch(e){}
   try{var sa=localStorage.getItem('naya.about');if(sa&&sa.indexOf('Nova Reyes is the demo persona')===0){localStorage.setItem('naya.about','Shawn Vibert builds NayaNET — the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live. Welcome to the new world. Welcome to the new net.');at.textContent='Shawn Vibert builds NayaNET — the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live. Welcome to the new world. Welcome to the new net.';}}catch(e){}
   // Cover/avatar
@@ -7494,6 +7494,7 @@ NF.register(UNIT, {
   var PAGE_ALIAS = 'flagship-personal';
   /* PERSONAL SAVE ONE-ROUTE: the model goes through our own server (staging URL — the live worker URL replaces it at deploy). */
   var PERSONAL_SAVE_URL = 'https://naya-save-staging.nayapower.workers.dev/api/personal/save';
+  window.PERSONAL_SAVE_URL = PERSONAL_SAVE_URL; /* the story editor lives in an earlier script block — it reads the window property. */
   var SB_URL = 'https://dahisasgpfvziswqvmvm.supabase.co';
   var SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGlzYXNncGZ2emlzd3F2bXZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2MjM3ODgsImV4cCI6MjEwMzE5OTc4OH0.zX2r3T23sKebUMBdNg-4Noxos8JFOHaK2rRwqAVXU_s';
   var sb = null;
@@ -8957,7 +8958,7 @@ function wallCard(j, iso, pid, idx){
     var reg = (cat && sb) ? sb.from('naya_note_categories').insert({ owner_alias: PAGE_ALIAS, name: cat }).then(function(){}, function(){}) : Promise.resolve();
     reg.then(function(){
       /* PERSONAL SAVE ONE-ROUTE: the note goes through our own server — no direct public-key write. */
-      fetch(PERSONAL_SAVE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({alias:PAGE_ALIAS, model:{naya_note:{title:title || null, body:body, category:cat || null}}})}).then(function(r){ return r.json().then(function(d){ return {ok:r.ok, d:d}; }); }).then(function(out){
+      fetch(window.PERSONAL_SAVE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({alias:PAGE_ALIAS, model:{naya_note:{title:title || null, body:body, category:cat || null}}})}).then(function(r){ return r.json().then(function(d){ return {ok:r.ok, d:d}; }); }).then(function(out){
         if (!(out.ok && out.d && out.d.ok)){ st.textContent = 'Couldn’t save just now — the save service did not answer. Your words are still here; nothing was lost.'; try{console.warn('[save-route] naya-note save failed');}catch(e){} return; }
         $('os-nn-body').value = ''; $('os-nn-title').value = ''; $('os-nn-newcat').value = ''; nnPick = '';
         st.textContent = 'Saved — it is in your Naya Notes.';
@@ -10583,7 +10584,7 @@ function wallCard(j, iso, pid, idx){
     secEdit(key, false);
     /* PERSONAL SAVE ONE-ROUTE: the model goes through our own server — no direct public-key write. */
     var saveBody={alias:PAGE_ALIAS, model:{aboutsec:{}}}; saveBody.model.aboutsec[key]=text;
-    fetch(PERSONAL_SAVE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(saveBody)}).then(function(r){ return r.json().then(function(d){ return {ok:r.ok, d:d}; }); }).then(function(out){
+    fetch(window.PERSONAL_SAVE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(saveBody)}).then(function(r){ return r.json().then(function(d){ return {ok:r.ok, d:d}; }); }).then(function(out){
       if (out.ok && out.d && out.d.ok){ if (st) st.innerHTML='<p class="os-note" style="color:#2fe89e">Saved — it is this app&rsquo;s own data now.</p>'; return; }
       if (st) st.innerHTML='<p class="os-note">Saved on this device — the app&rsquo;s copy could not be written just now.</p>';
     }, function(){ if (st) st.innerHTML='<p class="os-note">Saved on this device — the app&rsquo;s copy could not be written just now.</p>'; });
@@ -10846,7 +10847,7 @@ function wallCard(j, iso, pid, idx){
       capBtn.disabled=true;
       var t=text.length>60?text.slice(0, 60).trim()+'…':text;
       /* PERSONAL SAVE ONE-ROUTE: the note goes through our own server — no direct public-key write. */
-      fetch(PERSONAL_SAVE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({alias:PAGE_ALIAS, model:{smart_note:{title:t, body:text}}})}).then(function(r){ return r.json().then(function(d){ return {ok:r.ok, d:d}; }); }).then(function(out){
+      fetch(window.PERSONAL_SAVE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({alias:PAGE_ALIAS, model:{smart_note:{title:t, body:text}}})}).then(function(r){ return r.json().then(function(d){ return {ok:r.ok, d:d}; }); }).then(function(out){
         capBtn.disabled=false;
         if (!(out.ok && out.d && out.d.ok)){ if (st) st.textContent='The note could not be saved — try once more.'; return; }
         capIn.value='';
