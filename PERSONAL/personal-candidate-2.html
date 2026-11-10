@@ -1942,6 +1942,12 @@ body{background:#050507;margin:0;overflow-x:hidden;font-family:Inter,system-ui,s
   box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 24px rgba(160,107,255,.35);}
 .ph-connect:hover{background:rgba(160,107,255,.2);box-shadow:0 0 12px rgba(160,107,255,.35);transform:translateY(-2px) scale(1.03);}
 .ph-connect.connected{border-color:#2fe89e;box-shadow:0 0 24px rgba(47,232,158,.4);}
+/* FIX-6: anchor pills are inline — their 14px vertical padding painted outside
+   the ~23px line box, so the three Connected links overlapped by 29px at every
+   width (measured 390/1440/360). Inline-block makes the pill's box real, so
+   each row stands on its own height; the 8px room gap is the 8px grid. */
+a.ph-connect{display:inline-block;}
+.os-roomline{margin:0 0 8px;}
 .ph-msg{background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.25);color:#fff;
   padding:14px 28px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s;}
 .ph-msg:hover{border-color:#3fb8ff;box-shadow:0 0 24px rgba(63,184,255,.45);}
@@ -7041,7 +7047,12 @@ NF.register(UNIT, {
   document.addEventListener('keydown',function(e){if((e.key==='Escape'||e.keyCode===27)&&ae.style.display!=='none')cancelAbout();});
   eb.addEventListener('click',function(){ae.value=at.textContent;at.style.display='none';ae.style.display='';eb.style.display='none';nb.style.display='';sb.style.display='';if(cb)cb.style.display='';if(xb)xb.style.display='';});
   nb.addEventListener('click',function(){ae.value='Passionate creator and lifelong learner. I build things that matter and share what I discover.';});
-  sb.addEventListener('click',function(){at.textContent=ae.value||at.textContent;at.style.display='';ae.style.display='none';eb.style.display='';nb.style.display='none';sb.style.display='none';if(cb)cb.style.display='none';if(xb)xb.style.display='none';try{localStorage.setItem('naya.about',at.textContent);}catch(e){}});
+  /* FIX-6: the story saved in-session only — localStorage alone, never the
+     page's own store (no {k:'about'} row existed), so a fresh device or any
+     backend row lost it. The cure is the sections' own discipline (secSave):
+     write the row AND keep the timestamped on-device mirror, so a reload
+     keeps what was saved with or without the connection. */
+  sb.addEventListener('click',function(){var text=ae.value||at.textContent;at.textContent=text;at.style.display='';ae.style.display='none';eb.style.display='';nb.style.display='none';sb.style.display='none';if(cb)cb.style.display='none';if(xb)xb.style.display='none';var now=new Date().toISOString();try{localStorage.setItem('naya.about',text);localStorage.setItem('naya.about.at',now);}catch(e){}var st=document.getElementById('os-about-status');var client=(window.NayaAuth&&window.NayaAuth.client)||null;if(!client&&typeof supabase!=='undefined'){try{client=supabase.createClient('https://dahisasgpfvziswqvmvm.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGlzYXNncGZ2emlzd3F2bXZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2MjM3ODgsImV4cCI6MjEwMzE5OTc4OH0.zX2r3T23sKebUMBdNg-4Noxos8JFOHaK2rRwqAVXU_s');}catch(e){client=null;}}if(!client){if(st)st.innerHTML='<p class="os-note">Saved on this device — it joins this app&rsquo;s own data when the connection returns.</p>';return;}client.from('smart_notes').insert({owner_alias:(window.PAGE_ALIAS||'flagship-personal'),content:JSON.stringify({k:'about',text:text})}).then(function(res){if(res&&res.error){if(st)st.innerHTML='<p class="os-note">Saved on this device — the app&rsquo;s copy could not be written just now.</p>';return;}if(st)st.innerHTML='<p class="os-note" style="color:#2fe89e">Saved — it is this app&rsquo;s own data now.</p>';},function(){if(st)st.innerHTML='<p class="os-note">Saved on this device — the app&rsquo;s copy could not be written just now.</p>';});});
   try{var s=localStorage.getItem('naya.about');if(s)at.textContent=s;}catch(e){}
   try{var sa=localStorage.getItem('naya.about');if(sa&&sa.indexOf('Nova Reyes is the demo persona')===0){localStorage.setItem('naya.about','Shawn Vibert builds NayaNET — the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live. Welcome to the new world. Welcome to the new net.');at.textContent='Shawn Vibert builds NayaNET — the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live. Welcome to the new world. Welcome to the new net.';}}catch(e){}
   // Cover/avatar
@@ -10111,9 +10122,41 @@ function wallCard(j, iso, pid, idx){
   /* — About gains structure (wave #26) + its story lives in the page's own
        data (wave #20): facts read live; the latest 'about' row wins over
        the baked text; saving writes a row back to the page's store. — */
+  /* FIX-6: last-write-wins between the on-device mirror and the app's own
+     rows. backend: {about:{text,at}, sections:{key:{text,at}}} or null when
+     offline. The mirror wins when there is no row, when it carries no
+     timestamp (saved before fix-6 stamped one), or when it is newer; the
+     row wins when it is newer. Either way a reload keeps what was saved. */
+  function applyAboutMirrors(backend){
+    var b=backend||{about:null, sections:{}};
+    try{
+      var ls=null, lsAt=null;
+      try{ ls=localStorage.getItem('naya.about'); lsAt=localStorage.getItem('naya.about.at'); }catch(e){}
+      if (ls!==null){
+        var row=b.about;
+        if (!row || !row.at || !lsAt || new Date(lsAt).getTime()>=new Date(row.at).getTime()){
+          var tx=$('abouttext'); if (tx) tx.textContent=ls;
+        }
+      }
+    }catch(e){}
+    ['about','goals','mission','vision','love','dont','motto','purpose','whatido'].forEach(function(key){
+      var mv=secMirrorGet(key); if (mv===null) return;
+      var srow=(b.sections||{})[key];
+      var mvAt=secMirrorAt(key);
+      if (!srow || !srow.at || !mvAt || new Date(mvAt).getTime()>=new Date(srow.at).getTime()){
+        window.__osAboutSecs=window.__osAboutSecs||{}; window.__osAboutSecs[key]=mv;
+        var tp=$('os-sec-'+key+'-text');
+        if (tp){ if (mv){ tp.textContent=mv; tp.classList.remove('os-note'); } else { tp.textContent='Nothing here yet — tap Edit and write the first line.'; tp.classList.add('os-note'); } }
+      }
+    });
+  }
+
   function loadAbout(){
     var facts=$('os-about-facts'); if (!facts) return;
     var name=(($('pname')||{textContent:''}).textContent||'').trim();
+    /* FIX-6: mirrors first, so a saved story or section shows even with no
+       connection; the live rows re-decide below. */
+    applyAboutMirrors(null);
     if (!sb){ facts.innerHTML='<p class="os-note">Connection unavailable — the facts cannot load right now.</p>'; return; }
     function rows(p){ return p.then(function(r){ return (r && r.data)||[]; }, function(){ return []; }); }
     Promise.all([fetchWall(200),
@@ -10147,10 +10190,20 @@ function wallCard(j, iso, pid, idx){
         window.__osAboutSecs[key]=sec[0].text;
         tp.textContent=sec[0].text; tp.classList.remove('os-note');
       });
+      /* FIX-6: the mirrors re-decide against the live rows — newest wins. */
+      var bk={about:null, sections:{}};
+      out[3].forEach(function(r){
+        var cc=parseRow(r);
+        if (cc.k==='about' && cc.text && !bk.about) bk.about={text:cc.text, at:r.created_at};
+        if (cc.k==='aboutsec' && cc.s && cc.text && !bk.sections[cc.s]) bk.sections[cc.s]={text:cc.text, at:r.created_at};
+      });
+      applyAboutMirrors(bk);
       /* RETHINK: hero-carried seed — GOAL/VISION/MISSION text moved from
          the hero card into About. If no saved row exists, the seeded static
          text IS the value, so Edit re-seeds from it instead of blank. */
-      ['goals','mission','vision'].forEach(function(key){ if(!window.__osAboutSecs[key]){ var tp2=$('os-sec-'+key+'-text'); if(tp2 && tp2.textContent && tp2.textContent.indexOf('No ')!==0) window.__osAboutSecs[key]=tp2.textContent; } });
+      /* FIX-6: a cleared field must stay cleared — seed only when nothing
+         was ever saved (===undefined), not when the saved value is empty. */
+      ['goals','mission','vision'].forEach(function(key){ if(window.__osAboutSecs[key]===undefined){ var tp2=$('os-sec-'+key+'-text'); if(tp2 && tp2.textContent && tp2.textContent.indexOf('No ')!==0) window.__osAboutSecs[key]=tp2.textContent; } });
     });
   }
 
@@ -10159,7 +10212,7 @@ function wallCard(j, iso, pid, idx){
     var tp=$('os-sec-'+key+'-text'), ta=$('os-sec-'+key+'-edit');
     var be=document.querySelector('[data-os-sec-edit="'+key+'"]'), bs=document.querySelector('[data-os-sec-save="'+key+'"]');
     if (!tp || !ta) return;
-    if (on){ ta.value=(window.__osAboutSecs&&window.__osAboutSecs[key])||''; }
+    if (on){ var mv=secMirrorGet(key); ta.value=((window.__osAboutSecs&&window.__osAboutSecs[key])||(mv===null?'':mv)); }
     tp.style.display=on?'none':''; ta.style.display=on?'':'none';
     if (be) be.style.display=on?'none':'';
     if (bs) bs.style.display=on?'':'none';
@@ -10179,18 +10232,26 @@ function wallCard(j, iso, pid, idx){
     for (var i=0;i<keys.length;i++){ var ta=$('os-sec-'+keys[i]+'-edit'); if (ta && ta.style.display!=='none') return keys[i]; }
     return null;
   }
+  /* FIX-6: on-device mirror for an About section — the same last-write-wins
+     mirror as the story. A save with no connection used to lose the words
+     ("Connection unavailable — nothing was saved"); now the words persist
+     on this device and the app's copy follows when the connection returns. */
+  function secMirrorGet(key){ try{ return localStorage.getItem('naya.aboutsec.'+key); }catch(e){ return null; } }
+  function secMirrorAt(key){ try{ return localStorage.getItem('naya.aboutsec.'+key+'.at'); }catch(e){ return null; } }
+  function secMirrorSet(key, text){ try{ localStorage.setItem('naya.aboutsec.'+key, text); localStorage.setItem('naya.aboutsec.'+key+'.at', new Date().toISOString()); }catch(e){} }
   function secSave(key){
     var ta=$('os-sec-'+key+'-edit'), st=$('os-sec-'+key+'-status'), tp=$('os-sec-'+key+'-text');
     var text=((ta&&ta.value)||'').trim();
-    if (!sb){ if (st) st.innerHTML='<p class="os-note">Connection unavailable — nothing was saved.</p>'; return; }
+    secMirrorSet(key, text);
+    window.__osAboutSecs=window.__osAboutSecs||{}; window.__osAboutSecs[key]=text;
+    if (tp){ if (text){ tp.textContent=text; tp.classList.remove('os-note'); } else { tp.textContent='Nothing here yet — tap Edit and write the first line.'; tp.classList.add('os-note'); } }
+    secEdit(key, false);
+    if (!sb){ if (st) st.innerHTML='<p class="os-note">Saved on this device — the app&rsquo;s copy will follow when the connection returns.</p>'; return; }
     var row={k:'aboutsec', s:key, text:text};
     sb.from('smart_notes').insert({owner_alias:PAGE_ALIAS, content:JSON.stringify(row)}).then(function(res){
-      if (res && res.error){ if (st) st.innerHTML='<p class="os-note">Could not save just now — nothing was written.</p>'; return; }
-      window.__osAboutSecs=window.__osAboutSecs||{}; window.__osAboutSecs[key]=text;
-      if (tp){ if (text){ tp.textContent=text; tp.classList.remove('os-note'); } else { tp.textContent='Nothing here yet — tap Edit and write the first line.'; tp.classList.add('os-note'); } }
-      secEdit(key, false);
+      if (res && res.error){ if (st) st.innerHTML='<p class="os-note">Saved on this device — the app&rsquo;s copy could not be written just now.</p>'; return; }
       if (st) st.innerHTML='<p class="os-note" style="color:#2fe89e">Saved — it is this app&rsquo;s own data now.</p>';
-    }, function(){ if (st) st.innerHTML='<p class="os-note">Could not save just now — nothing was written.</p>'; });
+    }, function(){ if (st) st.innerHTML='<p class="os-note">Saved on this device — the app&rsquo;s copy could not be written just now.</p>'; });
   }
 
   /* — Settings: identity + data & privacy read live (steer 2 §2) — */
