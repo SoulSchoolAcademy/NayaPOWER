@@ -192,7 +192,7 @@ def test_no_personal_contents():
         raw_children = (children[0].get("raw") or {}).get("children", [])
         check("8 children are ids with counts only",
               all(set(c) == {"id", "blocks", "key_events",
-                             "manifest_sha256"}
+                             "blocks_sha256"}
                   for c in raw_children),
               "%d children" % len(raw_children))
         check("8 children include the captain's box",
