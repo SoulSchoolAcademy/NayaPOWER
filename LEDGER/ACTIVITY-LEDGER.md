@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-10 13:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-10 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -23413,6 +23413,12 @@ _Last updated: 2026-11-10 13:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/cold-retrieve-isolated-t0580b.md and auto-retrieval/cold-drill-sealed-t0580b-results.json both exist on disk (timestamps 04:46 UTC consistent with the run). SEAL_C pin 92d8b2be...5efdbe independently corroborated: lane 5's receipt at the same tick lands the same writer-file sha256 (92d8b2bef7018c2a5ceda2bc7af411de68f1bbfd7d
 
+### ✅ t0580b-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (b) — Option-B per-entry stamping-decision table (631 rows, deterministic generator)
+
+**Evidence:** VERIFIED this tick on live bytes: hidden_files/surge/stamping-decisions-t0580b.md sha256 ee7fc443... EXACT match to receipt pin; surge/gen-stamping-decisions-t0580b.py sha256 885feecc... EXACT match to receipt pin; table file 224,134 bytes, 653 pipe rows. NOT PHANTOM. Tip pin e8b4868c... and corpus/index pins taken on the receipt's account (histori
+
 ### ✅ t0580b — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE slice (b): Option-B per-entry stamping-decision table, 631 rows
@@ -25023,6 +25029,12 @@ _Last updated: 2026-11-10 13:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: log auto-retrieval/ask-world-queries.jsonl 9181 bytes, sha256 31aa1619e0f691a7038a041b3505d092fe7ef47fa711d1593e40f42239d68fe1 == receipt claim exactly (byte-identical to t0535's sha: zero new rows in ~9h - the tick's real finding, surfaced honestly); deliverable retrieval/query-log-top20-t0539.md 7688 bytes == claim. INDEPENDENT RECOMPUT
 
+### ✅ t0538-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice a4 — stemmed-TF-IDF arm, measured HIT@5 (3/3 human #1s)
+
+**Evidence:** VERIFIED this tick on live bytes: hidden_files/auto-retrieval/stemmed_tfidf_arm.py sha256 de3a35315ac3799a... EXACT match to receipt pin; stemmed-tfidf-arm-t0538-results.json sha256 72cccb2942f3f080... EXACT match to receipt pin; report stemmed-tfidf-arm-t0538.md EXISTS; RED calibration (unstemmed P2 #9) corroborated by my own re-run of Lane 1's re
+
 ### ✅ t0538 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE slice a4 — stemmed-TF-IDF arm, measured HIT@5
@@ -25038,6 +25050,12 @@ _Last updated: 2026-11-10 13:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0538-lane7.md`
 
 **Evidence:** VERIFIED: arm script auto-retrieval/stemmed_tfidf_arm.py sha256 de3a35315ac3799a5548194c8b2aeeac1fd4398fca34e87567d54274b094e018 == receipt claim exactly; results JSON sha256 72cccb2942f3f0808171fee1351308cd9ffedbd0f6ff4eb56a7c08952b2bdc36 == claim exactly; report on disk with 3/3 claim. INDEPENDENT RE-RUN (scorer seat): full arm executed end-to-en
+
+### ✅ t0538-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice a3 — independent verification of Lane 7's t0532 mechanization (re-run + quote-level claim check)
+
+**Evidence:** VERIFIED this tick on live bytes: hidden_files/auto-retrieval/mechanization-verify-t0538.md EXISTS; scratch/t0538-lane1/repro_tfidf.py EXISTS and RE-RAN this tick reproducing P2 unstemmed 0.069329 at #9 exactly as receipted; fixture pins 3/4 byte-exact (baseline-sealed-t0432.md 460429b1..., results-t0432.json b1af58d0..., sealed-note-t0442.md 1cd86
 
 ### ✅ t0538 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
