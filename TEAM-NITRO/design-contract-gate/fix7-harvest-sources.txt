@@ -1,0 +1,15 @@
+# Harvest sources for Personal fix-7 — named citations for (f) F1.
+# Format: one selector per line, then its exact source file + lines.
+# Verified 2026-11-10 against GitHub (SoulSchoolAcademy/NayaPOWER, main):
+# NIAS/SMART-BOX/naya-world-welcome.html lines 4199-4215 define
+# .tg-modes / .tg-mode / .tg-dot / .tg-mode.on / .tg-mode.on .tg-dot.
+# Personal lines 13645-13656 carry the same declarations, differing only
+# in flex sizing (welcome flex:1;min-width:140px vs Personal
+# flex:0 0 auto;min-width:0). The toggle itself is live-verified in
+# verify-fix7 results.json (tg_toggle: before ["tg-mode on","tg-mode"],
+# after ["tg-mode","tg-mode on"]).
+.tg-modes NIAS/SMART-BOX/naya-world-welcome.html:4199-4215
+.tg-mode NIAS/SMART-BOX/naya-world-welcome.html:4199-4215
+.tg-mode.on NIAS/SMART-BOX/naya-world-welcome.html:4199-4215
+.tg-mode .tg-dot NIAS/SMART-BOX/naya-world-welcome.html:4199-4215
+.tg-mode.on .tg-dot NIAS/SMART-BOX/naya-world-welcome.html:4199-4215
