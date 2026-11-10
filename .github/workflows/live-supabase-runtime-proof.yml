@@ -1443,3 +1443,65 @@ jobs:
         with:
           name: nine-node-behavioral-acceptance
           path: nine-node-behavioral-acceptance.json
+
+  retrieve-smoke:
+    # Real-test caller for nayanet-intelligence-retrieve (search engine deploy
+    # 2026-11-10): no workflow called the retrieval function before this job,
+    # so the live function could not be exercised with a real identity. This
+    # job mints the trusted OIDC identity and asks real citizen questions.
+    needs: [source-integrity]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mint short-lived GitHub OIDC runtime identity for retrieval
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Ask real citizen questions of the live retrieval engine
+        shell: bash
+        env:
+          OIDC_JWT: ${{ runner.temp }}/oidc.jwt
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os, urllib.request, urllib.error
+          questions = [
+            "What is a smart note?",
+            "How does the Hub work?",
+            "What does it mean to be a Naya?",
+            "How do I invite people and earn?",
+            "What is the Dashboard?",
+            "How does Auto-Match connect people?",
+            "What is the welcome series?",
+            "How much does Power cost?",
+          ]
+          token = open(os.environ["OIDC_JWT"]).read().strip()
+          url = "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-intelligence-retrieve"
+          out = []
+          for q in questions:
+            body = json.dumps({"mode": "retrieve", "query": q, "limit": 5}).encode()
+            req = urllib.request.Request(url, data=body, method="POST",
+              headers={"Authorization": "Bearer " + token, "Content-Type": "application/json"})
+            try:
+              with urllib.request.urlopen(req, timeout=60) as resp:
+                out.append({"question": q, "http": resp.status,
+                            "response": json.loads(resp.read().decode())})
+            except urllib.error.HTTPError as e:
+              out.append({"question": q, "http": e.code,
+                          "response": e.read().decode()[:1000]})
+          json.dump(out, open("retrieve-smoke.json", "w"), indent=2)
+          # Structural proof only: the door opens and a known-good question
+          # returns ranked results. Scoring happens off-run, from the
+          # artifact - never in this job.
+          ok = [o for o in out if o["http"] == 200 and o["response"].get("ok") is True]
+          assert ok, out
+          smart = [o for o in out if o["question"] == "What is a smart note?"][0]
+          assert smart["response"].get("results"), smart
+          print("retrieve-smoke: %d/%d calls ok; smart-note results: %d" % (
+            len(ok), len(out), len(smart["response"]["results"])))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: retrieve-smoke
+          path: retrieve-smoke.json
