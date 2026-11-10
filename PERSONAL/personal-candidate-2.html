@@ -7680,7 +7680,7 @@ function wallCard(j, iso, pid, idx){
      verification-post filter. Title + body, case-insensitive; a citizen
      note would never carry these markers. */
   function upIsInternalMemo(c){
-    var txt=((c && c.t)||'')+'\n'+((c && c.b)||'')+'\n'+((c && c.raw)||'');
+    var txt=((c && (c.t||c.title))||'')+'\n'+((c && (c.b||c.body))||'')+'\n'+((c && c.raw)||'');
     var low=txt.toLowerCase();
     if(low.indexOf('not built/verified')>=0) return true;
     if(low.indexOf('not deployed')>=0) return true;
@@ -8703,7 +8703,7 @@ function wallCard(j, iso, pid, idx){
     ]).then(function(out){
       if (myLoad !== nnLoadSeq) return; /* a newer load owns this render */
       nnCats = (out[0] && !out[0].error && out[0].data) ? out[0].data.map(function(r){ return r.name; }) : [];
-      nnNotes = (out[1] && !out[1].error && out[1].data) ? out[1].data : [];
+      nnNotes = (out[1] && !out[1].error && out[1].data) ? out[1].data.filter(function(n){ return !upIsInternalMemo(n); }) : []; /* FIX-8b: internal memos never render as notes */
       nnLinks = {};
       if (out[2] && !out[2].error && out[2].data) out[2].data.forEach(function(r){ nnLinks[r.a_id] = { id: r.id, b_label: r.b_label }; });
       if (window.NayaMedia) window.NayaMedia._absorb(out[3], out[4]);
