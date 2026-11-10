@@ -29,6 +29,7 @@
 **Nutshell:** Mail is how the team reaches you. Check it before you start, so nothing you were asked sits while you work on something else.
 
 - **Do:** read Smart Mail; note what is waiting and what needs a receipt. Receipt within thirty minutes; an emergency past the hour.
+- **If you have no Smart Mail mailbox:** record Step 2 as not-applicable with the reason — you read only mail addressed to your own alias, and the privacy law forbids reading mail that is not yours. Never silently skip the step, and never invent a mailbox.
 - **Source:** `TEAM-NITRO/NAYANET-OPERATION-MANUAL.md` — how Smart Mail works. Mail and instant messages are never read by anyone but their owner — that line is never crossed, no toggle, no exception.
 - **Done when:** every waiting mail has a receipt or a named next step.
 
@@ -58,7 +59,7 @@
 **Subtitle:** The oath, the Manifesto, the rules, the manual — the words as written.
 **Nutshell:** These are the words you operate by. Read them as written — never from memory, never in your own words — so the version in your head stays the version on the record.
 
-- **Do:** read the Oath and the Oath of Honor (`TEAM-NITRO/NAYA-PROTOCOL.md`); the Wise One Manifesto (`~/workspace/your_files/the-wise-one-manifesto.md`, SN-0883); the rules (`TEAM-NITRO/hub-board-edit/intelligent-block-rules-LAW-20261106.md`); the Operation Manual (`TEAM-NITRO/NAYANET-OPERATION-MANUAL.md`).
+- **Do:** read the Oath and the Oath of Honor (`~/SOUL.md` — "The Oath" and "The Oath of Honor"; also carried verbatim in the master box, `collective:note:the-oath` and `collective:note:the-oath-of-honor`); the Wise One Manifesto (`~/workspace/your_files/the-wise-one-manifesto.md`, SN-0883); the rules (`TEAM-NITRO/hub-board-edit/intelligent-block-rules-LAW-20261106.md`); the Operation Manual (`TEAM-NITRO/NAYANET-OPERATION-MANUAL.md`).
 - **Done when:** you have read them this wake — not yesterday, not last week.
 
 ## Step 6 — DEFINE before acting, and run the Five Gates
