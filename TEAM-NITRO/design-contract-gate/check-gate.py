@@ -4,9 +4,20 @@ check-gate.py — THE DESIGN-CONTRACT GATE AS A MACHINE CHECK
 Concept 2 of Shawn's LOCK-IN-10 order (2026-11-08 16:37Z), plus the ADDENDUM
 (Shawn's eye, 2026-11-08 16:41Z: look-alike parts, not harvested parts).
 
-Usage:  python3 check-gate.py <page.html> [more pages...]
+Usage:  python3 check-gate.py [--human-checks FILE] [--live-evidence FILE]
+        [--harvest-sources FILE] <page.html> [more pages...]
 Exit 0 only when every gate item PASSES on every page given; non-zero on any FAIL.
 Python stdlib only. STATIC source-level checker (HTML + CSS parsing).
+Two attested inputs close what the static source cannot see (2026-11-10 gate fix):
+  --live-evidence FILE: JSON of live-DOM measurements (teeth count in the
+    live DOM, needle present in the live DOM) from a verifier run. When it
+    applies, the live count replaces the static count in (c) and (f) F3 —
+    a JS template string is the recipe, not the gauge. Bound to the page
+    by page_sha256 when present; a mismatch ignores the file.
+  --harvest-sources FILE: harvested selectors with their exact source file
+    + lines, one per line. A button class named there is excused in (f) F1
+    with the cited source. Both inputs are TRUSTED attestations, like
+    --human-checks: the gate cites the file it read; it does not re-measure.
 
 STATIC-ONLY CONSTRAINT — Playwright is DEAD in this VM since 16:18Z 2026-11-08
 (Firefox SIGSEGV / Chromium SIGTRAP on launch). This checker therefore measures
@@ -41,6 +52,10 @@ template §2A and are checked here where the machine can check them):
       carries NO real CSS transition (rAF owns the motion), gear teeth
       present (>= 2). Measuring the calculator gauge against the needle
       law is a category error — fixed 2026-11-09.
+      TEETH, STATIC vs LIVE (2026-11-10 gate fix): the static count is taken outside
+      <script> blocks — a JS template string is the recipe, not a tooth. When
+      --live-evidence applies, the live DOM count replaces the static count in (c)
+      and (f) F3: the gauge is judged by the teeth that actually render.
   (d) NO text-in-image, NO pasted document. A data:image/ payload is
       opaque binary — base64 noise contains random "doc"/"list"
       substrings — so the payload bytes are NEVER scanned for text
@@ -53,7 +68,9 @@ template §2A and are checked here where the machine can check them):
   (f) NO LOOK-ALIKE buttons/gauges/numbers (addendum 16:41Z) — a part that is
       not the harvested part FAILS. Any button, gauge, or number element whose
       classes are NOT on the allowlist below (and not a named harvest source
-      with file + line) is flagged LOOK-ALIKE and fails.
+      with file + line, cited in --harvest-sources FILE — 2026-11-10 gate fix:
+      the docstring always excused a named source, but the machine had no input
+      for one until now) is flagged LOOK-ALIKE and fails.
 
 THRESHOLDS (chosen by the gate seat, calibrated against the two known files —
 see TEST-REPORT.md; change a constant here and the report must say so):
@@ -63,7 +80,11 @@ see TEST-REPORT.md; change a constant here and the report must say so):
       light backgrounds. Gold #d9a521 (lightness 0.50) and #ffbf3d (0.62)
       pass; #fff, #f8f7fb, #d9d9de, #e8e8ec pass as light. rgba() colours
       are blended over the obsidian base #050607 first, so a white tint at
-      low alpha (rgba(255,255,255,.06)) stays dark.
+      low alpha (rgba(255,255,255,.06)) stays dark. 8-digit hex blends the same way:
+      its alpha byte (bytes 6-8) is parsed, so #ffffff14 is white at 7.8% alpha,
+      lightness ~0.10, not solid white (2026-11-10 gate fix: parse_color dropped the
+      alpha byte and read every hex8 tint as lightness 1.00 — 7 false hits on Personal
+      fix-7, #ffffff05–#ffffff14).
       A1 base canvas: a body/html rule MUST set a dark background
       (luminance <= 0.30, var() resolved through :root). No dark canvas =
       the browser's default white canvas shows through — exactly the
@@ -95,8 +116,10 @@ see TEST-REPORT.md; change a constant here and the report must say so):
       DOM, .tn-tacho-needle in the DOM, the winning needle rule carries NO
       real CSS transition (`transition:none` IS the law — rAF owns the
       motion; the last .tn-tacho-needle rule in source order decides), and
-      gear teeth are present (>= 2 occurrences of tn-gear-tooth). Pages with
-      no gauge PASS on the fallback only when live numbers are present
+      gear teeth are present (>= 2 occurrences of tn-gear-tooth outside
+      <script> blocks — a JS template string is the recipe, not a tooth;
+      with --live-evidence the live DOM count replaces the static one).
+      Pages with no gauge PASS on the fallback only when live numbers are present
       (tiled digits / svgnum / orbiting orbs with numerals); a page with
       neither a gauge nor live numbers FAILS (c). A page whose numbers are
       plain text FAILS the fallback.
@@ -126,7 +149,8 @@ see TEST-REPORT.md; change a constant here and the report must say so):
       (the condemned yellow "try her nine free" button wore exactly
       `primo theme-gold`). F3 needle law: when a gauge is present, its
       winning needle rule must have no real `transition` (`transition:none`
-      is the law), and gear teeth must be present (>= 2 occurrences). F4 numbers are evidence only: tiled digits /
+      is the law), and gear teeth must be present (>= 2 occurrences outside
+      <script> blocks, or the live DOM count with --live-evidence). F4 numbers are evidence only: tiled digits /
       svgnum / orb numerals counted and reported; a static check cannot
       prove the digits render as the harvested tiles — that is his eye's
       call, and the report says so. (f) FAILS on any F1, F2, or F3 hit.
@@ -207,6 +231,7 @@ the inventory names the family as the shared language across pages).
     inventions — the chart's header pills have no harvested pedigree).
 """
 import hashlib
+import json
 import re
 import sys
 from html.parser import HTMLParser
@@ -293,7 +318,14 @@ def parse_color(tok):
         h = m.group(1)
         if len(h) == 3:
             h = "".join(c * 2 for c in h)
-        return (int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16), 1.0)
+        # 8-digit hex carries its alpha in bytes 6-8 (CSS Color 4):
+        # #ffffff14 is white at 0x14/255 = 7.8% alpha, NOT solid white.
+        # (2026-11-10 gate fix: parse_color dropped the alpha byte and
+        # returned 1.0 for every hex8 token, so 7 faint white tints on
+        # Personal fix-7 read as lightness 1.00 — the same colour as
+        # rgba(255,255,255,0.08) correctly read as 0.102.)
+        alpha = int(h[6:8], 16) / 255.0 if len(h) == 8 else 1.0
+        return (int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16), alpha)
     m = re.match(r"rgba?\(\s*([0-9.]+)[,\s]+([0-9.]+)[,\s]+([0-9.]+)(?:[,\s/]+([0-9.]+))?\s*\)$", tok)
     if m:
         a = float(m.group(4)) if m.group(4) is not None else 1.0
@@ -324,6 +356,137 @@ def effective_lightness(tok):
     b = a * b + (1 - a) * BASE_RGB[2]
     r, g, b = r / 255.0, g / 255.0, b / 255.0
     return (max(r, g, b) + min(r, g, b)) / 2.0
+
+
+# ------------------------------------------- live-evidence + harvest inputs
+# (2026-11-10 gate fix, fixes 2 and 3.) The static checker cannot see the
+# live DOM: gear teeth and the needle are built by JS at runtime, so the
+# static source holds only the recipe (one JS template string), never the
+# 246 teeth. Two attested inputs close the gap — both are TRUSTED inputs,
+# like --human-checks: the gate cites the file it read and applies what
+# it says; it does not re-measure the live page itself.
+def strip_script_blocks(text):
+    """Page source with <script>...</script> blocks removed. A JS template
+    string is the recipe for a part, not the part: counting
+    'tn-gear-tooth' inside a script counts the template as a tooth.
+    The static teeth count below is taken on the script-stripped source
+    (HTML markup + CSS rules only)."""
+    return re.sub(r"<script\b[^>]*>.*?</script>", "", text,
+                  flags=re.S | re.I)
+
+
+def page_sha256(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def read_live_evidence(path):
+    """Parse a --live-evidence JSON file. Expected keys (all optional
+    except the measurements the seat wants judged):
+      page (str): the page the measurements were taken on, for the record.
+      page_sha256 (str): sha256 of the measured page file. When present
+        the gate applies the evidence ONLY to a page whose bytes hash to
+        it — evidence for one page can never rescue another page.
+        When absent the evidence is UNBOUND: applied on trust, and the
+        output says so loudly.
+      teeth_in_mount (int): .tn-gear-tooth elements inside #tn-tacho-mount
+        in the LIVE DOM. teeth_in_doc (int): same, whole document.
+      needle_in_dom (bool): .tn-tacho-needle present in the LIVE DOM.
+      needle_transition (str): live computed transition of the needle
+        ("none" is the law). needle_moved (bool): the needle's transform
+        changed between two live samples (rAF owns the motion).
+    Returns the dict, or raises ValueError on a malformed file."""
+    try:
+        data = json.loads(Path(path).read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        raise ValueError("live-evidence file %s unreadable: %s" % (path, exc))
+    if not isinstance(data, dict):
+        raise ValueError("live-evidence file %s must hold one JSON object" % path)
+    for key in ("teeth_in_mount", "teeth_in_doc"):
+        if key in data and not isinstance(data[key], int):
+            raise ValueError("live-evidence %s must be an integer" % key)
+    return data
+
+
+def live_evidence_binding(evidence, actual_sha256):
+    """Decide whether live evidence applies to the page being checked.
+    Returns (applies, note). A page_sha256 mismatch means the evidence
+    was measured on a DIFFERENT page: it is ignored, never applied."""
+    if evidence is None:
+        return False, None
+    claimed = evidence.get("page_sha256")
+    if claimed is None:
+        return True, ("live evidence UNBOUND (no page_sha256 in the file) — "
+                      "applied on trust; bind it with the page's sha256 "
+                      "before relying on it")
+    if str(claimed).lower() != actual_sha256.lower():
+        return False, ("live evidence IGNORED — page_sha256 mismatch "
+                       "(evidence was measured on a different page: "
+                       "%.12s… vs this page %.12s…)"
+                       % (str(claimed), actual_sha256))
+    return True, "live evidence bound to this page (page_sha256 matches)"
+
+
+def effective_teeth(text, elements, live_evidence, actual_sha256):
+    """The gear-teeth count the gate judges. Static: occurrences outside
+    <script> blocks (a JS template string is the recipe, not a tooth).
+    Live: when --live-evidence applies AND the page has a mount in its
+    static DOM, the live DOM count replaces the static count — the gauge
+    is judged by the teeth that actually render, not by the template
+    string that builds them. Returns (teeth, static_teeth, live_teeth,
+    applies, note)."""
+    static_teeth = strip_script_blocks(text).count("tn-gear-tooth")
+    has_mount = any(el.attrs.get("id") == "tn-tacho-mount" for el in elements)
+    if live_evidence is None:
+        return static_teeth, static_teeth, None, False, None
+    applies, note = live_evidence_binding(live_evidence, actual_sha256)
+    if applies and not has_mount:
+        return (static_teeth, static_teeth, None, False,
+                "live evidence IGNORED — no #tn-tacho-mount in the static "
+                "DOM, so a live teeth count has nothing to attach to")
+    if not applies:
+        return static_teeth, static_teeth, None, False, note
+    live_teeth = live_evidence.get("teeth_in_mount")
+    if live_teeth is None:
+        return (static_teeth, static_teeth, None, False,
+                (note + "; no teeth_in_mount in the evidence file — static "
+                 "count stands") if note else
+                "no teeth_in_mount in the evidence file — static count stands")
+    return live_teeth, static_teeth, live_teeth, True, note
+
+
+def read_harvest_sources(path):
+    """Parse a --harvest-sources file: one harvested selector per line,
+    each with its exact source file + lines:
+        .tg-mode NIAS/SMART-BOX/naya-world-welcome.html:4199-4215
+        .tg-mode.on .tg-dot NIAS/SMART-BOX/naya-world-welcome.html:4199-4215
+    Blank lines and '#' comments are skipped. Every class named in the
+    selector is excused in (f) F1 with the cited source. A line that does
+    not match the shape raises ValueError — a malformed citation is an
+    error, never silently skipped. Returns {class: 'file:lines'}."""
+    out = {}
+    try:
+        lines = Path(path).read_text(encoding="utf-8").splitlines()
+    except OSError as exc:
+        raise ValueError("harvest-sources file %s unreadable: %s" % (path, exc))
+    for ln, raw in enumerate(lines, 1):
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        m = re.match(r"^(.*?)\s+(\S+:\d+(?:-\d+)?)\s*$", line)
+        if not m:
+            raise ValueError("harvest-sources %s line %d malformed (want "
+                             "'<selector> <file>:<lines>'): %s"
+                             % (path, ln, raw.strip()[:80]))
+        selector, source = m.group(1).strip(), m.group(2)
+        classes = re.findall(r"\.([a-zA-Z0-9_-]+)", selector)
+        if not classes and re.fullmatch(r"[a-zA-Z0-9_-]+", selector):
+            classes = [selector]
+        if not classes:
+            raise ValueError("harvest-sources %s line %d names no class: %s"
+                             % (path, ln, raw.strip()[:80]))
+        for cls in classes:
+            out.setdefault(cls, source)
+    return out
 
 
 # ------------------------------------------------------------ harvest list
@@ -898,20 +1061,44 @@ def check_b(elements, rules):
     return res
 
 
-def check_c(text, elements, rules, custom_props=None):
+def check_c(text, elements, rules, custom_props=None, live_evidence=None,
+            evidence_path=None, actual_sha256=None):
     """(c) gauges present and alive. Two kinds, two standards (2026-11-09
     gate fix): a mount inside calculator context is the calculator gauge
     (its own standard — number, pairing, aliveness, gold rim); a mount
     anywhere else is the Dashboard needle-law gauge (mount + needle in
     DOM, no CSS transition on the winning needle rule, >= 2 gear teeth).
     Every mount must pass its own standard. Pages with no gauge pass on
-    the fallback only when live numbers are present."""
+    the fallback only when live numbers are present.
+    TEETH, STATIC vs LIVE (2026-11-10 gate fix): the static count is
+    taken outside <script> blocks — a JS template string is the recipe,
+    not a tooth. When --live-evidence applies, the live DOM count
+    replaces the static count: the gauge is judged by the teeth that
+    actually render (246 on Personal fix-7), not by the one template
+    string that builds them."""
     res = GateResult("c", "gauges present and alive")
     mounts = [el for el in elements if el.attrs.get("id") == "tn-tacho-mount"]
     needle_dom = any("tn-tacho-needle" in el.classes() for el in elements)
     needle_css = any("tn-tacho-needle" in r.selector for r in rules)
-    teeth = text.count("tn-gear-tooth")
+    teeth, static_teeth, live_teeth, live_applies, live_note = effective_teeth(
+        text, elements, live_evidence, actual_sha256)
     needle_transition, needle_rule = needle_has_real_transition(rules)
+    if live_evidence is not None:
+        res.counts["live_evidence_file"] = evidence_path
+        if live_note:
+            res.note(live_note + (" — %s" % evidence_path if evidence_path else ""))
+        if live_applies:
+            if "needle_in_dom" in live_evidence:
+                needle_dom = bool(live_evidence["needle_in_dom"])
+            lt = live_evidence.get("needle_transition")
+            if lt is not None:
+                res.counts["needle_live_transition"] = lt
+                if str(lt).strip().lower() not in ("none", "", "null"):
+                    res.fail("C LIVE NEEDLE TRANSITION: the live needle carries a "
+                             "computed transition (%s) — the harvested needle has "
+                             "NO transition; rAF owns the motion" % lt)
+            if live_evidence.get("needle_moved") is True:
+                res.note("live needle moved between samples (rAF owns the motion)")
     tiled = len(re.findall(r"svgnum|tiled-digit|digit-tile|ct-reel|num-tile", text, re.I))
     orb_nums = sum(1 for el in elements
                    if any("orb" in c.lower() for c in el.classes())
@@ -921,6 +1108,8 @@ def check_c(text, elements, rules, custom_props=None):
         "tn_tacho_needle_in_dom": int(needle_dom),
         "tn_tacho_needle_in_css": int(needle_css),
         "tn_gear_tooth_occurrences": teeth,
+        "tn_gear_tooth_occurrences_static": static_teeth,
+        "tn_gear_tooth_live_in_mount": live_teeth,
         "needle_css_has_transition": int(needle_transition),
         "tiled_digit_occurrences": tiled,
         "orb_numerals": orb_nums,
@@ -936,8 +1125,10 @@ def check_c(text, elements, rules, custom_props=None):
             # to live numbers, exactly as before.
             if needle_dom or needle_css:
                 res.note("needle-law gauge present: #tn-tacho-mount in DOM, needle %s, "
-                         "%d gear-tooth occurrence(s)"
-                         % ("in DOM" if needle_dom else "in CSS only", teeth))
+                         "%d gear-tooth occurrence(s)%s"
+                         % ("in DOM" if needle_dom else "in CSS only", teeth,
+                            " (live DOM count; static source holds %d)" % static_teeth
+                            if live_applies else ""))
                 if needle_transition:
                     res.fail("C NEEDLE LAW BROKEN: .tn-tacho-needle carries a CSS transition "
                              "(%s) — rAF must own the motion, no CSS transition" % needle_rule.loc())
@@ -1067,10 +1258,20 @@ def check_e(elements):
     return res
 
 
-def check_f(elements, rules, text):
-    """(f) no look-alike buttons/gauges/numbers (addendum 16:41Z)."""
+def check_f(elements, rules, text, live_evidence=None, evidence_path=None,
+            actual_sha256=None, harvest_sources=None, harvest_path=None):
+    """(f) no look-alike buttons/gauges/numbers (addendum 16:41Z).
+    NAMED HARVEST SOURCE (2026-11-10 gate fix): the docstring always
+    excused a named harvest source, but the machine had no input for
+    one. --harvest-sources FILE supplies it: one selector per line with
+    its exact source file + lines. A button class named there is excused
+    in F1 with the cited source. F3 teeth use the same live-evidence
+    override as (c): a JS template string is not the gauge."""
     res = GateResult("f", "no look-alike buttons/gauges/numbers")
     lookalikes, gold_ctas, attr_addressed = [], [], 0
+    harvest_excused = []
+    if harvest_sources:
+        res.counts["harvest_sources_file"] = harvest_path
 
     def pedigree(el):
         """Return 'harvested', 'attribute', or the offending class list.
@@ -1079,10 +1280,21 @@ def check_f(elements, rules, text):
         meaningful class at all (the Dashboard's classless tab/back buttons).
         A button WITH a custom non-allowlisted class is a look-alike even
         when it also has a data-* hook — the hook is wiring, not pedigree.
+        A class named in --harvest-sources with its source file + lines
+        IS pedigree: the harvested part, cited, not a look-alike.
         """
         meaningful = [c for c in el.classes() if c not in STATE_CLASSES]
         if any(is_harvested(c) for c in meaningful):
             return "harvested"
+        if harvest_sources:
+            named = [c for c in meaningful if c in harvest_sources]
+            if named:
+                for c in named:
+                    harvest_excused.append(
+                        "<%s class=\"%s\"> line %d — .%s harvested from %s"
+                        % (el.tag, " ".join(el.classes())[:50], el.line, c,
+                           harvest_sources[c]))
+                return "harvested"
         if meaningful:
             return meaningful
         if el.attrs.get("id") or any(k.startswith("data-") for k in el.attrs):
@@ -1103,7 +1315,8 @@ def check_f(elements, rules, text):
                               % (el.tag, el.line))
         elif p != "harvested":
             lookalikes.append("<%s class=\"%s\"> line %d — class(es) %s not on the "
-                              "harvest allowlist and no named harvest source"
+                              "harvest allowlist and no named harvest source "
+                              "(cite one in --harvest-sources FILE)"
                               % (el.tag, " ".join(el.classes())[:50], el.line, p))
         if any(t in el.classes() for t in YELLOW_TOKENS):
             gold_ctas.append("<%s class=\"%s\"> line %d — gold-theme CTA "
@@ -1117,14 +1330,18 @@ def check_f(elements, rules, text):
     res.counts["lookalike_buttons"] = len(lookalikes)
     res.counts["gold_theme_ctas"] = len(gold_ctas)
     res.counts["attribute_addressed_controls"] = attr_addressed
+    res.counts["harvest_source_excused_buttons"] = len(harvest_excused)
     for h in lookalikes[:15]:
         res.fail("F1 LOOK-ALIKE BUTTON: " + h)
     for h in gold_ctas[:15]:
         res.fail("F2 GOLD-THEME CTA: " + h)
+    for h in harvest_excused[:15]:
+        res.note("F1 HARVESTED (named source): " + h)
     if not lookalikes and not gold_ctas:
         res.note("every button/CTA traces to a harvested class, a harvested "
-                 "family prefix, or an id/data-* address (%d attribute-addressed)"
-                 % attr_addressed)
+                 "family prefix, a named harvest source (--harvest-sources %s), "
+                 "or an id/data-* address (%d attribute-addressed)"
+                 % (harvest_path, attr_addressed))
     # F3 needle law (gauge must be the harvested gauge, not a look-alike).
     # Calculator gauges are exempt (2026-11-09 gate fix): a mount inside
     # calculator context is the pricing speedometer, not the Dashboard
@@ -1142,9 +1359,16 @@ def check_f(elements, rules, text):
                 res.fail("F3 FAKE GAUGE: .tn-tacho-needle carries a CSS transition (%s) — "
                          "the harvested needle has NO transition; rAF owns the motion"
                          % needle_rule.loc())
-            if text.count("tn-gear-tooth") < 2:
+            teeth, static_teeth, live_teeth, live_applies, live_note = effective_teeth(
+                text, elements, live_evidence, actual_sha256)
+            res.counts["tn_gear_tooth_occurrences"] = teeth
+            res.counts["tn_gear_tooth_occurrences_static"] = static_teeth
+            res.counts["tn_gear_tooth_live_in_mount"] = live_teeth
+            if live_evidence is not None and live_note:
+                res.note(live_note + (" — %s" % evidence_path if evidence_path else ""))
+            if teeth < 2:
                 res.fail("F3 FAKE GAUGE: only %d tn-gear-tooth occurrence(s) — the "
-                         "harvested gauge has 246 teeth" % text.count("tn-gear-tooth"))
+                         "harvested gauge has 246 teeth" % teeth)
     # F4 numbers — evidence only (static source cannot prove the digits render
     # as the harvested tiles; that is his eye's call)
     tiled = len(re.findall(r"svgnum|tiled-digit|digit-tile|ct-reel|num-tile", text, re.I))
@@ -1351,8 +1575,10 @@ def image_provenance(elements):
 
 
 # --------------------------------------------------------------------- main
-def check_file(path):
+def check_file(path, live_evidence=None, evidence_path=None,
+               harvest_sources=None, harvest_path=None):
     path = Path(path)
+    actual_sha256 = page_sha256(path)
     text = path.read_text(encoding="utf-8", errors="ignore")
     parser = PageParser()
     parser.feed(text)
@@ -1381,10 +1607,15 @@ def check_file(path):
     results = [
         check_a(rules, custom_props),
         check_b(elements, rules),
-        check_c(text, elements, rules, custom_props),
+        check_c(text, elements, rules, custom_props,
+                live_evidence=live_evidence, evidence_path=evidence_path,
+                actual_sha256=actual_sha256),
         check_d(elements, text),
         check_e(elements),
-        check_f(elements, rules, text),
+        check_f(elements, rules, text,
+                live_evidence=live_evidence, evidence_path=evidence_path,
+                actual_sha256=actual_sha256,
+                harvest_sources=harvest_sources, harvest_path=harvest_path),
         check_h(text),
         check_i(elements),
     ]
@@ -1430,10 +1661,14 @@ def print_human_checks(attestations):
 def main(argv):
     args = list(argv[1:])
     attestations = None
+    live_evidence, evidence_path = None, None
+    harvest_sources, harvest_path = None, None
+    usage = ("usage: check-gate.py [--human-checks FILE] [--live-evidence FILE] "
+             "[--harvest-sources FILE] <page.html|note.md> [more...]")
     if "--human-checks" in args:
         i = args.index("--human-checks")
         if i + 1 >= len(args):
-            print("usage: check-gate.py [--human-checks FILE] <page.html|note.md> [more...]")
+            print(usage)
             return 2
         try:
             attestations = read_human_attestations(args[i + 1])
@@ -1441,13 +1676,42 @@ def main(argv):
             print("ERROR: --human-checks file not found: %s" % args[i + 1])
             return 2
         del args[i:i + 2]
+    if "--live-evidence" in args:
+        i = args.index("--live-evidence")
+        if i + 1 >= len(args):
+            print(usage)
+            return 2
+        evidence_path = args[i + 1]
+        try:
+            live_evidence = read_live_evidence(evidence_path)
+        except ValueError as exc:
+            print("ERROR: %s" % exc)
+            return 2
+        del args[i:i + 2]
+    if "--harvest-sources" in args:
+        i = args.index("--harvest-sources")
+        if i + 1 >= len(args):
+            print(usage)
+            return 2
+        harvest_path = args[i + 1]
+        try:
+            harvest_sources = read_harvest_sources(harvest_path)
+        except ValueError as exc:
+            print("ERROR: %s" % exc)
+            return 2
+        del args[i:i + 2]
     if not args:
-        print("usage: check-gate.py [--human-checks FILE] <page.html|note.md> [more...]")
+        print(usage)
         return 2
     overall_fail = False
     for fname in args:
         print("=" * 72)
         print("GATE: %s" % fname)
+        if live_evidence is not None:
+            print("LIVE EVIDENCE: %s" % evidence_path)
+        if harvest_sources is not None:
+            print("HARVEST SOURCES: %s (%d class(es) cited)"
+                  % (harvest_path, len(harvest_sources)))
         print("=" * 72)
         if fname.lower().endswith(".md"):
             try:
@@ -1472,7 +1736,9 @@ def main(argv):
             print("\nOVERALL: %s — %s" % (verdict, fname))
             continue
         try:
-            results, images = check_file(fname)
+            results, images = check_file(
+                fname, live_evidence=live_evidence, evidence_path=evidence_path,
+                harvest_sources=harvest_sources, harvest_path=harvest_path)
         except FileNotFoundError:
             print("ERROR: file not found: %s" % fname)
             overall_fail = True
