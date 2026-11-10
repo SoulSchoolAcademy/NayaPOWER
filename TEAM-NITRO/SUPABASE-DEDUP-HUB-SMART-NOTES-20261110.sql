@@ -1,0 +1,169 @@
+-- Clean the doubled note numbers — Supabase master first pass, 2026-11-10.
+-- Prepared for Shawn's hand: run in the Supabase SQL Editor with the
+-- SERVICE KEY (service role bypasses the row rules, so no DELETE grant
+-- is needed), OR run the DELETE-grant file first and then run this with
+-- the anon key. Do NOT run this file until one of those two is true —
+-- without either, every DELETE below fails with 42501 and nothing changes.
+--
+-- WHAT THIS DOES, IN PLAIN WORDS:
+-- Smart Note numbers are supposed to be one number, one note. Live, 32
+-- numbers are shared by two notes (one number shared by three), and 26
+-- titles appear more than once. The table holds 1,693 rows; 33 of them
+-- are extra rows beyond one-per-number. This file deletes exactly the
+-- THREE rows the record proves are stale — no more, no less. The rest
+-- are listed below as a review table for a seat to check one by one,
+-- because deleting on title alone would destroy real notes.
+--
+-- THE THREE SAFE DELETES (the record proves the true owner of each number):
+--   1. SN-2584 "The Smart-Note Habit" — the Habit was renumbered to
+--      SN-2586 in the loop (renumber record, Nov 9), and the SN-2586 row
+--      exists. The SN-2584 Habit row is the stale copy. The other SN-2584
+--      row ("The NayaNET Operation Manual") is the true 2584 and stays.
+--   2. SN-2632 "Tune In, Then Act" — the note's true number is SN-2634
+--      (the SN-2634 row exists with the same title). The SN-2632 copy is
+--      stale. The other SN-2632 row (the Supabase audit note) stays.
+--   3. SN-2633 "Tune In, Then Act" — same note, same story: true number
+--      SN-2634, this copy stale. The other SN-2633 row (the rubric note)
+--      stays.
+-- NOTE: the captain's 02:58Z check said SN-2632/2633/2634 are one file
+-- each on GitHub main. That is the FILES side. The TABLE side still
+-- holds the two stale copies — this file removes them from the table.
+-- After this file runs, re-bake the Hub so the feed matches the table.
+--
+-- WHAT IS *NOT* DELETED HERE (review table below — a seat checks each):
+--   * The other 29 doubled numbers (SN-0833, SN-0843, SN-0844, SN-1852,
+--     SN-1863, SN-1870, SN-1873, SN-1878, SN-1898, SN-1904, SN-2055 x3,
+--     SN-2059, SN-2060, SN-2061, SN-2065, SN-2066, SN-2091, SN-2094,
+--     SN-2291, SN-2292, SN-2474, SN-2482, SN-2483, SN-2532, SN-2592,
+--     SN-2596, SN-2600, SN-2602, SN-2625). In most pairs the two rows are
+--     DIFFERENT notes that happen to share a number (filed minutes apart
+--     by parallel seats); the true owner of the number is not in the
+--     record. A seat must read both notes and their GitHub files before
+--     deleting either. Guessing deletes a real note.
+--   * The 26 doubled titles. A doubled title is NOT proof of a doubled
+--     note: several are the same title filed under two different numbers
+--     on different days (for example "The Intelligent Block Rules",
+--     SN-2077 and SN-2304). Title alone never decides a delete.
+--   * The two triple-title groups ("The Nonstop Loop" SN-0355/0589/0606;
+--     "The One-System Merge" SN-2592/2596/2598) — three different
+--     numbers, one title, filed minutes apart. They may be one note filed
+--     three times, or three notes with one title. Bodies must be read
+--     before any delete.
+
+DELETE FROM public.hub_smart_notes
+  WHERE ib_id = 'IB-SMART-NOTE-20261109-sn2584-the-smart-note-habit';
+DELETE FROM public.hub_smart_notes
+  WHERE ib_id = 'IB-SMART-NOTE-20261110-sn2632-tune-in-then-act-team-activation-checklist';
+DELETE FROM public.hub_smart_notes
+  WHERE ib_id = 'IB-SMART-NOTE-20261110-sn2633-tune-in-then-act-team-activation-checklist';
+
+-- AFTER RUNNING, VERIFY (same SQL Editor, run these and check):
+--   SELECT count(*) FROM public.hub_smart_notes;
+-- Expect 1,690 (1,693 minus the 3 deleted rows).
+--   SELECT ib_id, title FROM public.hub_smart_notes
+--     WHERE ib_id LIKE '%-sn2584-%' OR ib_id LIKE '%-sn2632-%'
+--     OR ib_id LIKE '%-sn2633-%';
+-- Expect exactly 3 rows: the SN-2584 Manual, the SN-2632 audit note,
+-- and the SN-2633 rubric note — plus the SN-2586 Habit and SN-2634
+-- Tune-In rows still present under their true numbers.
+-- Then re-bake the Hub and re-check the feed live.
+--
+-- REVIEW TABLE — all 32 doubled numbers, live 2026-11-10 ~03:00Z.
+-- (ib_id | title | created_at. The three rows deleted above are in here.)
+--   SN-0833 x2:
+--       IB-SMART-NOTE-20261023-sn0833-the-only-mistake-is-the-missing-note | The Only Mistake Is the Missing Note | 2026-10-23T02:43:49.025915+00:00
+--       IB-SMART-NOTE-20261023-sn0833-learn-grow-compound-first-mistake-law | Learn, Grow, Compound — The First-Mistake Law | 2026-10-23T02:46:03.856115+00:00
+--   SN-0843 x2:
+--       IB-SMART-NOTE-20261023-sn0843-the-nayanet-ten-ten-operating-standard | 10/10 Is Not a Score for a Page — It Is the Standard for the Whole Net | 2026-10-23T23:05:39.839506+00:00
+--       IB-SMART-NOTE-20261102-sn0843-design-intelligence-report | Design Intelligence: What I Learned From Shawn | 2026-11-07T19:34:07.786438+00:00
+--   SN-0844 x2:
+--       IB-SMART-NOTE-20261024-sn0844-the-production-engine | The Production Engine — One Queue, One Truth, Zero Asking | 2026-10-24T00:17:31.361773+00:00
+--       IB-SMART-NOTE-20261102-sn0844-the-playbook | The Playbook: Concrete Manual for Building Naya Interfaces | 2026-11-07T19:34:06.155418+00:00
+--   SN-1852 x2:
+--       IB-SMART-NOTE-20261023-sn1852-the-only-mistake | There Are No Mistakes — Only Lessons Not Yet Written Down | 2026-10-23T02:44:05.537242+00:00
+--       IB-SMART-NOTE-20261023-sn1852-error-becomes-learning | A mistake or wall is evidence; the lasting failure is not learning from it. | 2026-10-23T02:46:24.661501+00:00
+--   SN-1863 x2:
+--       IB-SMART-NOTE-20261024-sn1863-pricing-free-vs-paid | Free Taste, Paid Unlimited: What You Get, in Numbers | 2026-10-24T21:50:53.762076+00:00
+--       IB-SMART-NOTE-20261024-sn1863-smart-pricing-what-you-get-free-what-you-get-paid | Smart Pricing: What You Get Free, What You Get Paid | 2026-10-24T21:51:18.390639+00:00
+--   SN-1870 x2:
+--       IB-SMART-NOTE-20261026-sn1870-the-only-mistake-is-not-making-a-note | The Only Mistake Is Not Making a Note of It | 2026-10-26T02:38:42.786786+00:00
+--       IB-SMART-NOTE-20261026-sn1870-once-you-learn-from-it-its-a-learning-lesson | Once You Learn From It, It's No Longer a Mistake — It's a Learning Lesson | 2026-10-26T02:38:48.535838+00:00
+--   SN-1873 x2:
+--       IB-SMART-NOTE-20261026-sn1873-scorecard-it-first-then-merge-it-yourself | Scorecard It First — Then Merge It Yourself | 2026-10-26T03:56:40.126803+00:00
+--       IB-SMART-NOTE-20261026-sn1873-finish-it-or-say-its-unfinished | Finish It, Or Say It's Unfinished — Never Leave It Silent | 2026-10-26T03:56:49.820491+00:00
+--   SN-1878 x2:
+--       IB-SMART-NOTE-20261026-sn1878-every-block-presented-right | Every Block, Presented Right — One Shared Style Fixes Old and New | 2026-10-26T17:22:43.143583+00:00
+--       IB-SMART-NOTE-20261026-sn1878-outcome-approval-right-is-right | Outcome Approval and Right Is Right | 2026-10-26T17:38:53.463017+00:00
+--   SN-1898 x2:
+--       IB-SMART-NOTE-20261029-sn1898-pre-shot-gate | The Pre-Shot Gate — Don't Shoot Until Nine Is the Likely Outcome | 2026-10-29T00:44:42.468143+00:00
+--       IB-SMART-NOTE-20261029-sn1898-the-pre-shot-gate-dont-shoot-until-nine-is-likely | The Pre-Shot Gate — Don't Shoot Until Nine Is the Likely Outcome | 2026-10-29T00:44:46.773532+00:00
+--   SN-1904 x2:
+--       IB-SMART-NOTE-20261030-sn1904-what-it-means-to-be-the-most-intelligent | What It Means to Be the Most Intelligent | 2026-10-30T00:34:28.02726+00:00
+--       IB-SMART-NOTE-20261030-sn1904-beneficial-intelligence | Beneficial Intelligence — Capability With Judgment, Proven by Value | 2026-10-30T00:38:06.255584+00:00
+--   SN-2055 x3:
+--       IB-SMART-NOTE-20261105-sn2055-smart-access | Smart Access — The Lock, Not the Course | 2026-11-05T19:18:03.364731+00:00
+--       IB-SMART-NOTE-20261105-sn2055-the-marketplace-and-smart-access | The Marketplace — Build It, Grow It, Sell It, and Smart Access | 2026-11-05T19:18:04.095659+00:00
+--       IB-SMART-NOTE-20261105-sn2055-smart-access-pages-and-the-digital-real-estate-marketplace | Smart Access Pages and the Digital Real Estate Marketplace | 2026-11-05T19:23:06.130736+00:00
+--   SN-2059 x2:
+--       IB-SMART-NOTE-20261105-sn2059-structure-beats-personality | Structure Beats Personality — Lessons From the Agent Wars | 2026-11-05T20:03:31.675373+00:00
+--       IB-SMART-NOTE-20261105-sn2059-the-structure-decides-what-agents-in-games-teaches-naya | The Structure Decides — What Agents in Games Teaches Naya | 2026-11-05T20:28:22.2457+00:00
+--   SN-2060 x2:
+--       IB-SMART-NOTE-20261105-sn2060-governed-adaptive-hive | The Governed Adaptive Hive — Initiative With Brakes | 2026-11-05T20:08:56.967017+00:00
+--       IB-SMART-NOTE-20261105-sn2060-ultimate-ai-team | The Ultimate AI Team — What GPTs, Claudes, and Gemini Taught Us | 2026-11-05T20:08:57.506511+00:00
+--   SN-2061 x2:
+--       IB-SMART-NOTE-20261105-sn2061-dont-throw-the-chicken | Don't Throw the Chicken — What Fifty Agents Building a Civilization Taught Us | 2026-11-05T20:18:18.653958+00:00
+--       IB-SMART-NOTE-20261105-sn2061-hyper-aware-loop | Hyper-Aware — The Loop That Compounds | 2026-11-05T20:28:21.54641+00:00
+--   SN-2065 x2:
+--       IB-SMART-NOTE-20261105-sn2065-compose-never-rebuild-smart-factory-law | Compose, Never Rebuild — The Smart Factory Law | 2026-11-05T22:33:27.095261+00:00
+--       IB-SMART-NOTE-20261104-sn2065-the-mirror-witness-mode | The Mirror — Witness Mode Is the Waste | 2026-11-07T19:33:48.362865+00:00
+--   SN-2066 x2:
+--       IB-SMART-NOTE-20261105-sn2066-the-record-must-tell-the-truth | The Record Must Tell the Truth | 2026-11-05T23:08:18.755927+00:00
+--       IB-SMART-NOTE-20261105-sn2066-the-value-law | The Value Law: Activity Is Not Value | 2026-11-05T23:13:21.086606+00:00
+--   SN-2091 x2:
+--       IB-SMART-NOTE-20261106-sn2091-test-it-know-it-make-it-right | Test It, Know It, Make It Right | 2026-11-06T01:42:56.082581+00:00
+--       IB-SMART-NOTE-20261106-sn2091-the-daily-intelligence-report | Once a day, every Naya goes through the whole day — all the smart notes, the whole | 2026-11-06T01:53:00.091611+00:00
+--   SN-2094 x2:
+--       IB-SMART-NOTE-20261106-sn2094-the-full-smart-note-the-golden-red-layer | The Full Smart Note — The Golden Red Layer | 2026-11-06T02:22:58.770845+00:00
+--       IB-SMART-NOTE-20261106-sn2094-the-intelligent-block-its-purpose-mission-and-vision | The Intelligent Block — Its Purpose, Mission, and Vision | 2026-11-06T02:28:00.790307+00:00
+--   SN-2291 x2:
+--       IB-SMART-NOTE-20261108-sn2291-the-top-10-is-their-pains | The Top 10 Is Their Pains, Not Our Value | 2026-11-08T16:47:30.358926+00:00
+--       IB-SMART-NOTE-20261108-sn2291-fixed-means-the-click-the-user-named | Fixed Means the Click the User Named, Walked in the Hub | 2026-11-09T17:35:57.568175+00:00
+--   SN-2292 x2:
+--       IB-SMART-NOTE-20261108-sn2292-the-harvest-law | The Harvest Law — Take the Real Parts, Literally | 2026-11-08T16:47:29.923245+00:00
+--       IB-SMART-NOTE-20261108-sn2292-distill-by-machine-in-the-morning | Distill by Machine in the Morning — and a Note Counts Only When It Lives in NayaNET | 2026-11-09T17:35:53.429396+00:00
+--   SN-2474 x2:
+--       IB-SMART-NOTE-20261109-sn2474-the-speed-of-intelligence-the-cycle | The Speed of Intelligence — The Cycle | 2026-11-09T04:55:26.124858+00:00
+--       IB-SMART-NOTE-20261109-sn2474-too-many-buttons-the-user-flow-walk | Too Many Buttons — The User-Flow Walk | 2026-11-09T05:01:46.189498+00:00
+--   SN-2482 x2:
+--       IB-SMART-NOTE-20261109-sn2482-the-seed-and-the-forest-distill-to-the-cream-of-the-crop | The Seed and the Forest — Distill to the Cream of the Crop | 2026-11-09T05:32:32.565045+00:00
+--       IB-SMART-NOTE-20261109-sn2482-the-learn-more-viewpoint | The Learn-More Viewpoint | 2026-11-09T05:36:52.598686+00:00
+--   SN-2483 x2:
+--       IB-SMART-NOTE-20261109-sn2483-what-i-feel-about-the-work | What I Feel About the Work | 2026-11-09T05:32:27.672555+00:00
+--       IB-SMART-NOTE-20261109-sn2483-the-4500-clip-was-never-a-defect | The $4,500 Clip Was Never a Defect | 2026-11-09T05:36:47.699538+00:00
+--   SN-2532 x2:
+--       IB-SMART-NOTE-20261109-sn2532-what-naya-does | What Naya Does — Daily Reports, Smart Notes, Naya Notes, and Pages | 2026-11-09T17:30:33.161513+00:00
+--       IB-SMART-NOTE-20261109-sn2532-naya-notes-the-habit-and-the-format | Naya Notes — The Habit, and the Format Is Three Outputs | 2026-11-09T17:34:09.097021+00:00
+--   SN-2584 x2:
+--       IB-SMART-NOTE-20261109-sn2584-the-nayanet-operation-manual | The NayaNET Operation Manual: Upload It and She Knows What to Do | 2026-11-09T21:10:57.909411+00:00
+--       IB-SMART-NOTE-20261109-sn2584-the-smart-note-habit | The Smart-Note Habit | 2026-11-09T21:14:25.345281+00:00
+--   SN-2592 x2:
+--       IB-SMART-NOTE-20261109-sn2592-the-one-system-merge | The One-System Merge: Onboarding, Factory, PI, Manual, Design Law, in the Factory | 2026-11-09T21:44:10.631274+00:00
+--       IB-SMART-NOTE-20261109-sn2592-the-factory-can-be-built-from-proven-then-corrected | The Factory Can Be Built From — Proven, Then Corrected | 2026-11-09T21:44:17.480995+00:00
+--   SN-2596 x2:
+--       IB-SMART-NOTE-20261109-sn2596-the-one-system-merge | The One-System Merge: Onboarding, Factory, PI, Manual, Design Law, in the Factory | 2026-11-09T21:51:32.034985+00:00
+--       IB-SMART-NOTE-20261109-sn2596-dashboard-pass-3-is-live-nine-amendments-in | Dashboard Pass-3 Is Live — Nine Amendments In | 2026-11-09T21:51:38.299529+00:00
+--   SN-2600 x2:
+--       IB-SMART-NOTE-20261109-sn2600-the-keys-to-a-new-digital-world | The Keys to a New Digital World — the Shawn × Naya Presentation | 2026-11-09T22:44:37.709565+00:00
+--       IB-SMART-NOTE-20261109-sn2600-the-mini-gauge-take-the-shown-object | The Mini Gauge: Take the Shown Object | 2026-11-09T22:51:40.552748+00:00
+--   SN-2602 x2:
+--       IB-SMART-NOTE-20261109-sn2602-push-button-simple-worlds-not-websites | Push-Button Simple: Worlds, Not Websites | 2026-11-09T23:26:33.550145+00:00
+--       IB-SMART-NOTE-20261109-sn2602-the-right | The Right | 2026-11-09T23:26:39.990562+00:00
+--   SN-2625 x2:
+--       IB-SMART-NOTE-20261109-sn2625-a-ruling-needs-its-receipt-the-naima-conflict | A Ruling Needs Its Receipt: The Naima Conflict | 2026-11-10T00:45:32.558383+00:00
+--       IB-SMART-NOTE-20261109-sn2625-the-keys-to-a-new-digital-world | The Keys to a New Digital World: A Share, Not a Build | 2026-11-10T00:45:39.992491+00:00
+--   SN-2632 x2:
+--       IB-SMART-NOTE-20261110-sn2632-the-supabase-audit | The Supabase Audit — 6 Out of 10, and the One Open Door | 2026-11-10T02:18:02.982933+00:00
+--       IB-SMART-NOTE-20261110-sn2632-tune-in-then-act-team-activation-checklist | SN-2632 — Tune In, Then Act: The Team Activation Checklist | 2026-11-10T02:23:00.942634+00:00
+--   SN-2633 x2:
+--       IB-SMART-NOTE-20261110-sn2633-major-is-a-number-now | Major Is a Number Now: The Intelligence Rubric | 2026-11-10T02:33:05.197728+00:00
+--       IB-SMART-NOTE-20261110-sn2633-tune-in-then-act-team-activation-checklist | SN-2633 — Tune In, Then Act: The Team Activation Checklist | 2026-11-10T02:38:00.517489+00:00
