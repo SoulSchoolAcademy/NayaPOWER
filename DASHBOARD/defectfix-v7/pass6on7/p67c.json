@@ -1,0 +1,232 @@
+{
+ "merged-390": {
+  "hoverSeries": {
+   "board0": [
+    {
+     "board": "Dashboard",
+     "hoverMatches": true,
+     "border": "rgb(255, 79, 216)",
+     "shadow": "rgb(255, 79, 216) 0px 0px 26px -2px, rgba(0, 0, 0, 0.5) 0px 10px 28px 0px",
+     "transform": "matrix(1, 0, 0, 1, 0, -2)",
+     "filter": "brightness(1.12)",
+     "bg": "linear-gradient(rgb(35, 35, 48), rgb(10, 10, 16))"
+    },
+    {
+     "board": "Dashboard",
+     "hoverMatches": true,
+     "border": "rgb(255, 79, 216)",
+     "shadow": "rgb(255, 79, 216) 0px 0px 26px -2px, rgba(0, 0, 0, 0.5) 0px 10px 28px 0px",
+     "transform": "matrix(1, 0, 0, 1, 0, -2)",
+     "filter": "brightness(1.12)",
+     "bg": "linear-gradient(rgb(35, 35, 48), rgb(10, 10, 16))"
+    },
+    {
+     "board": "Dashboard",
+     "hoverMatches": true,
+     "border": "rgb(255, 79, 216)",
+     "shadow": "rgb(255, 79, 216) 0px 0px 26px -2px, rgba(0, 0, 0, 0.5) 0px 10px 28px 0px",
+     "transform": "matrix(1, 0, 0, 1, 0, -2)",
+     "filter": "brightness(1.12)",
+     "bg": "linear-gradient(rgb(35, 35, 48), rgb(10, 10, 16))"
+    },
+    {
+     "board": "Dashboard",
+     "hoverMatches": true,
+     "border": "rgb(255, 79, 216)",
+     "shadow": "rgb(255, 79, 216) 0px 0px 26px -2px, rgba(0, 0, 0, 0.5) 0px 10px 28px 0px",
+     "transform": "matrix(1, 0, 0, 1, 0, -2)",
+     "filter": "brightness(1.12)",
+     "bg": "linear-gradient(rgb(35, 35, 48), rgb(10, 10, 16))"
+    }
+   ],
+   "board2": [
+    {
+     "board": "Business",
+     "hoverMatches": true,
+     "border": "rgb(58, 91, 255)",
+     "shadow": "rgb(58, 91, 255) 0px 0px 26px -2px, rgba(0, 0, 0, 0.5) 0px 10px 28px 0px",
+     "transform": "matrix(1, 0, 0, 1, 0, -2)",
+     "filter": "brightness(1.12)",
+     "bg": "linear-gradient(rgb(35, 35, 48), rgb(10, 10, 16))"
+    },
+    {
+     "board": "Business",
+     "hoverMatches": true,
+     "border": "rgb(58, 91, 255)",
+     "shadow": "rgb(58, 91, 255) 0px 0px 26px -2px, rgba(0, 0, 0, 0.5) 0px 10px 28px 0px",
+     "transform": "matrix(1, 0, 0, 1, 0, -2)",
+     "filter": "brightness(1.12)",
+     "bg": "linear-gradient(rgb(35, 35, 48), rgb(10, 10, 16))"
+    },
+    {
+     "board": "Business",
+     "hoverMatches": true,
+     "border": "rgb(58, 91, 255)",
+     "shadow": "rgb(58, 91, 255) 0px 0px 26px -2px, rgba(0, 0, 0, 0.5) 0px 10px 28px 0px",
+     "transform": "matrix(1, 0, 0, 1, 0, -2)",
+     "filter": "brightness(1.12)",
+     "bg": "linear-gradient(rgb(35, 35, 48), rgb(10, 10, 16))"
+    },
+    {
+     "board": "Business",
+     "hoverMatches": true,
+     "border": "rgb(58, 91, 255)",
+     "shadow": "rgb(58, 91, 255) 0px 0px 26px -2px, rgba(0, 0, 0, 0.5) 0px 10px 28px 0px",
+     "transform": "matrix(1, 0, 0, 1, 0, -2)",
+     "filter": "brightness(1.12)",
+     "bg": "linear-gradient(rgb(35, 35, 48), rgb(10, 10, 16))"
+    }
+   ]
+  },
+  "scrolled120pct": {
+   "scrollY": 120,
+   "barTop": 850.8,
+   "note": {
+    "rect": {
+     "x": 43.9,
+     "y": 846.1,
+     "w": 302.3,
+     "h": 38,
+     "top": 846.1,
+     "bottom": 884.1
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks \u2014 numbers, not points.",
+    "barOverlap": 10066.6,
+    "hitCenter": null
+   },
+   "toggle": {
+    "rect": {
+     "x": 65.8,
+     "y": 884.1,
+     "w": 258.4,
+     "h": 43.9,
+     "top": 884.1,
+     "bottom": 928
+    },
+    "barOverlap": 8966.5,
+    "hitCenter": null
+   }
+  },
+  "moneyAfterScrollClick": {
+   "state": "live",
+   "numeral": "$1 120"
+  },
+  "consoleErrors": []
+ },
+ "merged-1440": {
+  "hoverSeries": {
+   "board0": [
+    {
+     "board": "Dashboard",
+     "hoverMatches": true,
+     "border": "rgb(255, 79, 216)",
+     "shadow": "rgb(255, 79, 216) 0px 0px 18px -4px, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+     "transform": "matrix(1, 0, 0, 1, 0, 0)",
+     "filter": "brightness(1)",
+     "bg": "linear-gradient(rgb(35, 35, 48), rgb(10, 10, 16))"
+    },
+    {
+     "board": "Dashboard",
+     "hoverMatches": true,
+     "border": "rgb(255, 79, 216)",
+     "shadow": "rgb(255, 79, 216) 0px 0px 26px -2px, rgba(0, 0, 0, 0.5) 0px 10px 28px 0px",
+     "transform": "matrix(1, 0, 0, 1, 0, -2)",
+     "filter": "brightness(1.12)",
+     "bg": "linear-gradient(rgb(35, 35, 48), rgb(10, 10, 16))"
+    },
+    {
+     "board": "Dashboard",
+     "hoverMatches": true,
+     "border": "rgb(255, 79, 216)",
+     "shadow": "rgb(255, 79, 216) 0px 0px 26px -2px, rgba(0, 0, 0, 0.5) 0px 10px 28px 0px",
+     "transform": "matrix(1, 0, 0, 1, 0, -2)",
+     "filter": "brightness(1.12)",
+     "bg": "linear-gradient(rgb(35, 35, 48), rgb(10, 10, 16))"
+    },
+    {
+     "board": "Dashboard",
+     "hoverMatches": true,
+     "border": "rgb(255, 79, 216)",
+     "shadow": "rgb(255, 79, 216) 0px 0px 26px -2px, rgba(0, 0, 0, 0.5) 0px 10px 28px 0px",
+     "transform": "matrix(1, 0, 0, 1, 0, -2)",
+     "filter": "brightness(1.12)",
+     "bg": "linear-gradient(rgb(35, 35, 48), rgb(10, 10, 16))"
+    }
+   ],
+   "board2": [
+    {
+     "board": "Business",
+     "hoverMatches": true,
+     "border": "rgb(58, 91, 255)",
+     "shadow": "rgb(58, 91, 255) 0px 0px 26px -2px, rgba(0, 0, 0, 0.5) 0px 10px 28px 0px",
+     "transform": "matrix(1, 0, 0, 1, 0, -2)",
+     "filter": "brightness(1.12)",
+     "bg": "linear-gradient(rgb(35, 35, 48), rgb(10, 10, 16))"
+    },
+    {
+     "board": "Business",
+     "hoverMatches": true,
+     "border": "rgb(58, 91, 255)",
+     "shadow": "rgb(58, 91, 255) 0px 0px 26px -2px, rgba(0, 0, 0, 0.5) 0px 10px 28px 0px",
+     "transform": "matrix(1, 0, 0, 1, 0, -2)",
+     "filter": "brightness(1.12)",
+     "bg": "linear-gradient(rgb(35, 35, 48), rgb(10, 10, 16))"
+    },
+    {
+     "board": "Business",
+     "hoverMatches": true,
+     "border": "rgb(58, 91, 255)",
+     "shadow": "rgb(58, 91, 255) 0px 0px 26px -2px, rgba(0, 0, 0, 0.5) 0px 10px 28px 0px",
+     "transform": "matrix(1, 0, 0, 1, 0, -2)",
+     "filter": "brightness(1.12)",
+     "bg": "linear-gradient(rgb(35, 35, 48), rgb(10, 10, 16))"
+    },
+    {
+     "board": "Business",
+     "hoverMatches": true,
+     "border": "rgb(58, 91, 255)",
+     "shadow": "rgb(58, 91, 255) 0px 0px 26px -2px, rgba(0, 0, 0, 0.5) 0px 10px 28px 0px",
+     "transform": "matrix(1, 0, 0, 1, 0, -2)",
+     "filter": "brightness(1.12)",
+     "bg": "linear-gradient(rgb(35, 35, 48), rgb(10, 10, 16))"
+    }
+   ]
+  },
+  "scrolled120pct": {
+   "scrollY": 120,
+   "barTop": 851.8,
+   "note": {
+    "rect": {
+     "x": 560.5,
+     "y": 852.4,
+     "w": 318.9,
+     "h": 25.6,
+     "top": 852.4,
+     "bottom": 878
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks \u2014 numbers, not points.",
+    "barOverlap": 8163.8,
+    "hitCenter": null
+   },
+   "toggle": {
+    "rect": {
+     "x": 632.8,
+     "y": 878,
+     "w": 174.3,
+     "h": 29.6,
+     "top": 878,
+     "bottom": 907.6
+    },
+    "barOverlap": 5159.3,
+    "hitCenter": null
+   }
+  },
+  "moneyAfterScrollClick": {
+   "state": "loading",
+   "numeral": "\u2014"
+  },
+  "consoleErrors": []
+ }
+}
