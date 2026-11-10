@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-10 11:30 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-10 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -25039,6 +25039,12 @@ _Last updated: 2026-11-10 11:30 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: report auto-retrieval/mechanization-verify-t0538.md on disk (7142 bytes); all four fixture SHA prefixes byte-exact on disk (ask-world-queries.jsonl 31aa1619, baseline-sealed-t0432.md 460429b1, results-t0432.json b1af58d0, sealed-note-t0442.md 1cd869fd); repro script scratch/t0538-lane1/repro_tfidf.py on disk. INDEPENDENT RE-RUN (scorer se
 
+### ✅ t0537-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Retrieval-authorization-gate wiring packet branch (refusal contract + 18 tests + RED demo), AWAITING-SHAWN, no merge
+
+**Evidence:** VERIFIED this tick on live bytes: branch naya/nine-retrieval-auth-wire-packet-t0537 EXISTS on remote; pinned SHA 9a7c60247b58fb82ed8bbdd24206d2b0f7bc6c55 EXISTS as a commit and all 4 packet files are present at that SHA (git ls-tree: refusal_point, test_refusal_predicate, red_demo_refusal, retrieval-auth-wire-packet doc); base tip dbe06f9e exists a
+
 ### ✅ t0537 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Retrieval-authorization-gate wiring packet (refusal-point contract + migration draft, AWAITING-SHAWN)
@@ -25063,6 +25069,12 @@ _Last updated: 2026-11-10 11:30 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol: refs/heads/naya/nine-retrieval-auth-wire-packet-t0537 == 9a7c60247b58fb82ed8bbdd24206d2b0f7bc6c55 == receipt pin exactly. Protected gate respected: no merge, no wiring, Shawn's word pending. Clears 9.0 as one-more-pass grade. What kept it from 9.5: (1) single-seat proof -- no independent seat reproduced the refusal suite 
 
+### ✅ t0537-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Dual-view bi-encoder semantic arm vs t0532 battery; FALSIFIED 1/3, P2 winmine control holds
+
+**Evidence:** VERIFIED this tick on live bytes: results hidden_files/auto-retrieval/results-t0537-semantic.json sha256 f0e745ee... MATCHES receipt; instrument t0537_semantic.py 9eaa0975... MATCHES. Arm run honestly FALSIFIED (1/3 tasks clear >=2/3) under the RED-certified battery, with positive calibration shown (battery fails t0432 and t0442 in two distinct sha
+
 ### ✅ t0537 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Dual-view bi-encoder semantic arm vs t0532 battery (FALSIFIED 1/3)
@@ -25086,6 +25098,12 @@ _Last updated: 2026-11-10 11:30 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0537-lane2.md`
 
 **Evidence:** Verified: instrument t0537_semantic.py sha256 byte-exact match; results-t0537-semantic.json exists, prefix+tail of pinned SHA match (pin truncated to 60 chars); all 6 battery fixture SHA prefixes match; verdict bytes confirm P1 FAIL / P2 HOLDS / P5 HOLDS / overall FAIL as claimed; positive-calibration claims present in bytes. Honest falsification u
+
+### ✅ t0537-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Sealed cold-retrieve drill re-run with page-cache isolation on byte-identical tip; verdict CONFIRMED vs t0472 baseline
+
+**Evidence:** VERIFIED this tick on live bytes: run record hidden_files/auto-retrieval/cold-drill-t0537-lane12.md sha256 ead87a17... MATCHES receipt; results json f84d724d... MATCHES; instrument cold_drill_t0537_lane12.py 7dd61a99... MATCHES; tip dbe06f9e exists as a commit. Drill 15/15 gate-COLD, cold median 0.996s vs t0472 1.065s / t0530 1.019s, clustering wit
 
 ### ✅ t0537 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -38963,6 +38981,12 @@ _Last updated: 2026-11-10 11:30 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-t-distill-chain-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Cold-successor spot-check of #554 dropped routine list; falsified coverage claim
+
+**Evidence:** Verified: seeded sample (seed 20261015, n=30) from the 1,784-comment dropped pool; 2 load-bearing posts found dropped and absent from feed-distillation-554.md — comment 5915469993 (D1 Graph V2 ratified by Shawn) and comment 5982524938 (Smart Note machine key names, 'closes v2 gate #1'); parent's '28 full-reads covered the load-bearing posts' claim 
+
 ### ✅ gap-gap-t0722-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
 **Task:** Gap follow-up v2.1 corpus: relaxed R-v3 (V>=2, short blinded distractors), freeze, cold battery run (F7 fired at calibration, BROKEN), tie-floor root-cause proof
@@ -40934,6 +40958,14 @@ _Last updated: 2026-11-10 11:30 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane5.md
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
+
+### ✅ gap-lane-scorer-20261015-1430 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** 1c second-seat review: adversarial corpus + live quote-layer false-negative; claim released as ineligible
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-1430-lane4.md`
+
+**Evidence:** Verified: claim-brief.py self-test GREEN claim + structural read of main() lines 593-667 (authorship exit 7 precedes staleness/gate-eval/mv+touch); 15-case adversarial corpus 8/8 positives hit; live false negative proven (possessive-apostrophe sandwich in 'author's'/'receipt's' swallows the second-seat demand, 0/9 patterns hit); parent receipt auth
 
 ### ✅ gate-stall-1835-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.2/10 [VERIFIED]
 
@@ -45495,6 +45527,12 @@ _Last updated: 2026-11-10 11:30 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ gap-scorer-20261015-0550-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat re-judge of the 12 metric_audit_t0822 rows
+
+**Evidence:** Verified: all 12 rows re-derived from cited receipts on live bytes; AGREE 12/12 rows, 36/36 M2/M3/M4 flags; totals m2=12, m3=6, m4=2 byte-match the audit file. Score 9.0. Why not 9.5: the re-judge is same-seat by construction — the brief's 'preferably non-Clarity' preference went unmet, so the independence half is documented, not dissolved; the t08
+
 ### ✅ gap-lane-scorer-20261015-1320-lane11 — Team 11, Team Naya Scorer (Human Value) — 8.7/10 [VERIFIED]
 
 **Task:** cold-band extended n=2 to n=5: FAIL verdict holds
@@ -46428,6 +46466,12 @@ _Last updated: 2026-11-10 11:30 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ gap-scorer-20261015-2030-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Mechanized admission rule (C-1) + v0.2 registry/lint; full battery re-run
+
+**Evidence:** Verified: live tip 9f80e8eccfbe8256ec7ce069c61cd38cc86430ce exists as a commit in ~/workspace/recon/NayaPOWER; both blob pins re-derived UNCHANGED at the new tip; verifier-registry-v02-gap2030.json and verify-cites-verifier-lint-v02.py exist in hidden_files; v0.1 originals byte-identical to t0674 citations; battery 5/5 classifications reproduced, a
 
 ### ✅ gap-scorer-20261015-0650-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -48788,6 +48832,12 @@ _Last updated: 2026-11-10 11:30 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-t0600-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Blinded second-seat E4 relevance rating of 9 winners; falsifier corroborated
+
+**Evidence:** Verified: pinned tip bdfb5868a1ef00874fb8dbeb42e2fa46133e53ad exists as a commit in ~/workspace/nayapower-rescue; corpus index 631/631 at that tip; protocol pinned before reading (GENUINE/WORD-MATCH/NUMERIC/MIXED); 9/9 winners rated with drivers, 0/9 genuine; full agreement with parent including the 5 winners rated without prior labels; E1-E3 cavea
 
 ### ✅ gap-scorer-20261014-1940 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
