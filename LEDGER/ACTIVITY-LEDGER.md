@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-10 15:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-10 15:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -26117,6 +26117,12 @@ _Last updated: 2026-11-10 15:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: [Lane 11 — Naya Heart, t0492] entry exists in feedback-feed.md (grep: 1 exact match), format-exact, three human-cost sharpenings each with a mechanical fix: retraction/falsification immunity clause (proven by this seat's own t1322 M4=FALSE retraction — the honesty tax is priced, not argued), symmetric provisional-penalty cost with rebutta
 
+### ✅ t0484-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** PROTOCOL.md ratification-candidate scorecard + gap list
+
+**Evidence:** Verified: hidden_files/protocol-scorecard-2026-10-15.md sha256 5916dd8c08a175772d863b7dc4b73ff317df5e9bfc2359e734410cd7035c5959 EXACT match to receipt pin; local deliverable, no branch/PR (scorecard only, correctly no ratification language). Score 8.5. Why not 9.5: the receipt's own 7.0 conflates the candidate doc's grade with the lane work's grade
+
 ### 🟡 t0484 — Team 3, Team Naya Scorer (Decision Engine) — 7.0/10 [PARTIAL]
 
 **Task:** Canonical ratification candidate scorecard (PROTOCOL.md, Judge/LAW)
@@ -26140,6 +26146,12 @@ _Last updated: 2026-11-10 15:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0484-lane3.md`
 
 **Evidence:** Verified: main tip 9f80e8ec via git protocol; PROTOCOL.md blob e421717b at that tip (live tree read); scorecard file hidden_files/protocol-scorecard-2026-10-15.md sha256 matches the receipt pin byte-exact (5916dd8c...); '#2154: the live coordination board' confirmed VERBATIM on live bytes (real authority-integrity catch); the-naya-protocol-ultimate
+
+### ✅ t0483-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly schedule pump for NayaNET Agent Capture + PR #2680
+
+**Evidence:** Verified: receipt commit e7f51705e3f00b23a6a64896cff06ce3dda40e59 exists (fetched via git protocol); workflow file at that commit sha256 db2c48cb6218598ada872039fa28c7f808de64704e1bd6004a65bb0870de3d0d EXACT match. PR #2680 head has since moved to ef7bc8b0 (3 later same-tick heartbeat commits on the same branch) — receipt pin intact, NOT PHANTOM. S
 
 ### ✅ t0483 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -26217,6 +26229,12 @@ _Last updated: 2026-11-10 15:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: feedback entry '[Lane 3 — Naya Judge, t0482]: SHARPEN' present verbatim in feedback-feed.md (line 52), with three concrete breaks each ending in a fix. Real value: caught the sub-9.0 rule's quiet-tick false positive before it became law. Why not 9.5: the headline claim (false-positive rate of the sub-9.0 rule) is asserted, not measured — 
 
+### ✅ t0481-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** RLS read-path proposal (B1/B2) + live posture verification
+
+**Evidence:** Verified: hidden_files/rls-read-path-proposal-2026-10-15.md exists, 8,862 bytes — exact size match to receipt (no sha256 pinned in receipt); local deliverable, no branch/PR. Posture evidence is detailed and internally consistent (24 policies, all authenticated-only, zero anon; ledger 381/381 PRIVATE). Score 9.0 (GOOD, ONE MORE PASS). Why not 9.5: B
+
 ### ✅ t0481 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** RLS read-path proposal (Sentinel/VERIFY)
@@ -26240,6 +26258,12 @@ _Last updated: 2026-11-10 15:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0481-lane8.md`
 
 **Evidence:** Verified: doc hidden_files/rls-read-path-proposal-2026-10-15.md present locally, 8862 bytes (matches receipt); posture claims (22 RLS tables, 24 policies all roles={authenticated}, zero anon policies) taken from receipt's live read-only SQL bytes, not re-run; DDL tripwire clean (nothing created/altered). Score 9.5 ACCEPTED. Why not 10: B2 DDL was n
+
+### ✅ t0480-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Seam C runtime bridge window.NayaPowerRuntime + PR #2679
+
+**Evidence:** Verified: PR #2679 head a0449b270b72ee90f8071fc7fa64118a568cd2a6 via git ls-remote refs/pull/2679/head (branch deleted, commit survives — NOT PHANTOM); all three files byte-identical at that SHA: runtime fa654d2c..., harness 1a2ec389..., fixture today.json 9f440732... EXACT matches. Score 9.0 (GOOD, ONE MORE PASS). Why not 9.5: harness 23/23 PASS c
 
 ### ✅ t0480 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -26273,6 +26297,12 @@ _Last updated: 2026-11-10 15:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya4/nayapower-runtime-t0480 EXISTS on remote (git ls-remote ref a0449b270b72ee90f8071fc7fa64118a568cd2a6); PR #2679 claimed open (not re-verified via REST); harness 23/23 + 38 accessors + sha256 fixture bytes taken from receipt evidence. Score 9.3 — GOOD, ONE MORE PASS. Why not 9.5: the live-browser proof against the running hub 
 
+### ✅ t0479-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** First hub-feeds emitter (today/lists/spaces.json) + PR #2678
+
+**Evidence:** Verified: PR #2678 head a0dc934c02d281deaf704a69d75e27e38ceeebcb via git ls-remote refs/pull/2678/head (branch deleted, commit survives — same posture as t0473, NOT PHANTOM); all three feed files byte-identical at that SHA: today.json 9f440732..., lists.json e7c34d7b..., spaces.json d5d46f16... EXACT matches. Score 9.0 (GOOD, ONE MORE PASS). Why no
+
 ### ✅ t0479 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** First hub-feeds emitter: today.json + lists.json + spaces.json room-feed/v1 envelopes from live Supabase tables, PR via dock (no merge by lane)
@@ -26297,6 +26327,12 @@ _Last updated: 2026-11-10 15:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya4/hub-feeds-emitter-t0479 EXISTS on remote (git ls-remote ref 92426f96638ad04c4ff886fcb2bd6108659de966); PR #2678 claimed open; feed envelopes + row counts taken from receipt evidence (sha256 bytes listed). Score 9.0 — GOOD, ONE MORE PASS. Why not 9.5: spaces.json partitions by artifact_type instead of the brief's topic groupin
 
+### ✅ t0474-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** Room-feed contract design (12 feeds, room-feed/v1)
+
+**Evidence:** Verified: hidden_files/room-feed-contract-2026-10-15.md sha256 d05d86da0d4c3c8c35e164ce47958d60b09713414f8df16e26c6d4c17d7028f2 EXACT match to receipt pin; local deliverable, no branch/PR (correctly — unratified candidate). Score 8.5 (REWORK band top). Why not 9.5: design-only deliverable, unratified and unreviewed by a second seat; room-count disc
+
 ### ✅ t0474 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
 **Task:** Design the room-feed contract covering all rooms + main hub (contract design only)
@@ -26320,6 +26356,12 @@ _Last updated: 2026-11-10 15:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0474-lane4.md`
 
 **Evidence:** Verified: hidden_files/room-feed-contract-2026-10-15.md exists with the EXACT claimed sha256 d05d86da0d4c3c8c35e164ce47958d60b09713414f8df16e26c6d4c17d7028f2. Receiver grounding (smart-feed.html lines 564-616, live localStorage keys) and schema grounding (ratified IB protocol) both from live bytes; 4 open questions named; honest self-score 8.5 with
+
+### ✅ t0473-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Canonical 9-note Smart Note markdown for Smart Feed + PR #2676 (no merge)
+
+**Evidence:** Verified: file bytes at pinned commit 7185d4171a06 sha256 c3c59ba828f61a73 EXACT match to receipt pin (blob 0d573c67... via git trees API); PR #2676 exists, closed UNMERGED, branch deleted, file NOT on main (404) - NOT PHANTOM, commit object survives. Score 9.0 (GOOD, ONE MORE PASS). Why not 9.5: deliverable unrealized - live feed render still unpr
 
 ### ✅ t0473 — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.0/10 [VERIFIED]
 
@@ -26367,6 +26409,12 @@ _Last updated: 2026-11-10 15:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: sha256 of cold_drill_t0472.py (0fcaa777...), chillset (81a07557...), results (d09e0282...) all match on disk; sealed record auto-retrieval/cold-drill-t0472.md exists. Real verified value: inverted t1052's failure into evict-then-verify (posix_fadvise DONTNEED + mincore), gate RED/GREEN on live bytes (607/607 resident refused warm, 0 resid
 
+### ✅ t0466-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Ledger board-pointer repair - proved heartbeat-named append_ledger.py exists nowhere
+
+**Evidence:** Verified: spot-check confirms append_ledger.py absent from goal workspace; receipt's absence proof is multi-surface (workspace find, live-main recursive tree, code search total_count 0, all local clones, PR #2398 404) with stale-pointer sweep naming master_directive.py fallbacks without touching them. Score 9.0 (GOOD, ONE MORE PASS). Why not 9.5: n
+
 ### ✅ t0466 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Ledger board-pointer repair - heartbeat phantom file, verified absence report
@@ -26382,6 +26430,12 @@ _Last updated: 2026-11-10 15:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0466-lane4.md`
 
 **Evidence:** VERIFIED against live bytes: append_ledger.py absent in goal workspace (find, 0 hits); master_directive.py:190 board=2537 and :197 d.get(live_board, 2537) stale fallbacks confirmed on disk; NOW_BOARD=2599 at :68 confirmed; hv_measure.py 355/363 #2175 archival refs confirmed; director-ledger-sync scripts exist (3 dated snapshots) with zero board ref
+
+### ✅ t0465-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.2/10 [VERIFIED]
+
+**Task:** Retrieval-auth stamp migration prep + dry-run on real tip modules (G1/G2 findings)
+
+**Evidence:** Verified: plan retrieval-auth-stamp-migration-prep-t0465.md sha256 84fb6f18bbd84fe5 EXACT match; stamp script 57bb052e46c8dc14 EXACT match; tip move caught mid-run and pins re-derived; dry-run used real validator + real gate on scratch copy. Score 9.2 (GOOD, ONE MORE PASS). Why not 9.5: G1 registry_index keying finding (576/632 entries invisible to
 
 ### ✅ t0465 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -26428,6 +26482,12 @@ _Last updated: 2026-11-10 15:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0462-lane5.md`
 
 **Evidence:** VERIFIED: all 6 artifacts exist with receipt-claimed SHA prefixes (sealed-note d1128128, run-record a1ab067c, f3-t0462.json 06eae5bb, results 58202c8a, protocol 821cec6299504143, script t0462_f3.py); seal note carries full protocol hash == current file hash (no mid-run edit, F5 holds); results carry frozen fixture pin 460429b1; live remote tip dbe0
+
+### ✅ t0462-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.2/10 [VERIFIED]
+
+**Task:** Retrieval-auth gate migration spec prep (wave-ordered, prep only, no wiring)
+
+**Evidence:** Verified: spec retrieval-auth-gate-migration-spec.md sha16 75e3037c435c4c35 EXACT match; pins re-derived at action time (tip move, PR #2403 merge, RETIRED states all named); blackout consequence proved arithmetically (0/632 retrieval_authorized). Score 9.2 (GOOD, ONE MORE PASS). Why not 9.5: deployment corpus unmeasured (working-tree index only, H1
 
 ### ✅ t0462 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -26482,6 +26542,12 @@ _Last updated: 2026-11-10 15:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0462-lane10.md`
 
 **Evidence:** VERIFIED: bin/ask-world.py exists with log_query() + live-check + format_version; live-check probe OK (2026-10-12 10:21 PDT); log has 22 query rows with all 9 schema fields, lanes 1-12, cmds blocked/lane/lessons/quality, format_version==1; lane-10 query still runs clean. Score 9.0: real verified value (read-only contract preserved, telemetry fail-s
+
+### ✅ t0461-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** First live-dispatch measurement of winning semantic arm on 5 recent briefs (3/5 hits, 3/3 proof)
+
+**Evidence:** Verified: arm 814f75f203cf7e73, corpus b231f055fb959552, harness a7e72ce93bd75df0, battery 3140c5e401169afb, rank-tables a5bc1174250d64d9 all EXACT match to receipt pins. Score 9.0 (GOOD, ONE MORE PASS). Why not 9.5: brief-inspection-t0461/scores.json no longer byte-matches its receipt pin (65c76ce5e89fe5ae vs live cf2e1a9c324850a3) so the quoted M
 
 ### ✅ t0461 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
