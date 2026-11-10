@@ -8,6 +8,7 @@
 **Date:** 2026-11-10 (survey ~02:45–03:15Z).
 **Order:** Shawn, 02:43Z Nov 10 — the GitHub gold audit.
 **Method:** `~/workspace/team-nitro/gh-direct.py` (Contents API + git trees; PATH starts with `/`). Main tree read in full (recursive), all 1,109 branches enumerated by name, all 4 open PRs listed, every named piece read at its file head (docstring / header / first lines) and checked for existence, size, tests, and workflow triggers.
+**Line-count convention:** reported line counts equal newlines+1 — every file ends with a trailing newline, so `wc -l` reads one less; byte sizes and SHAs are exact and unchanged.
 
 ---
 
@@ -23,7 +24,7 @@
 | Main head | `2993c46a177ac2896c44fea7d65c9254568c4fa4` | Same tree read |
 | Branches | 1,109 (11 pages × 100 + 9) | `GET /branches?per_page=100&page=1..12` |
 | Open PRs | 4 — #3303, #3302, #3178, #3089 (DRAFT) | `GET /pulls?state=open&per_page=100` |
-| Workflows | 47 files under `.github/workflows/` | Main tree listing |
+| Workflows | 45 files under `.github/workflows/` | Main tree listing |
 | Biggest dirs | BRAIN/ 3,004 · .naya/ 1,298 · successor-reuse/ 452 · tools/ 415 · tests/ 353 · HUB/ 338 · supabase/ 317 | Main tree counts |
 
 **The four open PRs (none holds one of the four named pieces — all four are on main):**
@@ -88,7 +89,7 @@ Path + state + fit, all three. **Fit:** the one-system merge spec §5.4 — the 
 
 **Title:** EMIT: the pump that fills the Hub's rooms with live feed.
 **Subtitle:** Merged, scheduled hourly, running — but the Smart Feed it fills is empty by design.
-**Nutshell:** EMIT reads the live tables and writes room-feed files for the Hub. It works: today's room was emitted November 9 with five items. The Smart Feed file itself is empty — not because EMIT is broken, but because every content row is marked private and the doctrine excludes private rows. The pump is gold; the water is held back by a decision only Shawn can make.
+**Nutshell:** EMIT reads the live tables and writes room-feed files for the Hub. It works: today's room was emitted November 9 with twenty items. The Smart Feed file itself is empty — not because EMIT is broken, but because every content row is marked private and the doctrine excludes private rows. The pump is gold; the water is held back by a decision only Shawn can make.
 
 ### What it is
 
@@ -106,7 +107,8 @@ Path + state + fit, all three. **Fit:** the one-system merge spec §5.4 — the 
 ### State — complete, working, tested, running, feed empty by design
 
 - **History:** PR #2678, 4 failing gates on 2026-10-17 (wrong SB_API path, missing repo secrets, needed the SUPABASE_MANAGEMENT_TOKEN secret from Shawn). Merged 2026-10-20 ~16:19Z — bypass verified, token proven via run 39456429449.
-- **Running:** `HUB/FEEDS/today.json` was emitted 2026-11-09T15:59:45-08:00 with 5 items. `lists.json` and `spaces.json` exist with content.
+- **Running:** `HUB/FEEDS/today.json` was emitted 2026-11-09T15:59:45-08:00 with 20 items (11 REFERENCE, 6 SMART_NOTE, 3 INTELLIGENT_BLOCK). `lists.json` and `spaces.json` exist with content.
+- **Correction (different-seat re-verification, 2026-11-10):** the filed report said "5 items" — wrong. The compiler probe counts `len(obj)` on the parsed JSON dict (5 top-level keys: contract, room, emitted_at, source_ref, items), not `len(items)`, so it reads every room feed as "5 items" regardless of content. The same miscount affects the quoted probe evidence: `lists.json` actually has 0 items and `spaces.json` has 4. The probe's `len(obj)` counting bug is a finding for whoever owns the compiler (`tools/map-compiler/`).
 - **The empty feed:** `HUB/FEEDS/smart-feed.json` was last emitted 2026-10-16T10:03:28-07:00 with `"items": []`. Its own docstring explains why: all `nayanet_intelligent_blocks` rows are `owner_scope=PRIVATE`, and the smart-feed emitter excludes PRIVATE rows at the SQL level (D4 doctrine, fail-closed). "With the current corpus the feed is therefore empty-but-valid by design, and it will populate automatically if non-PRIVATE rows ever exist." The hourly runs since then commit nothing, because nothing changed — that is the idempotency working, not the emitter failing.
 - **Setup notes in the workflow itself:** scheduled runs need the SB_API repo variable and a Supabase Management credential, plus the `HUB_FEEDS_DEPLOY_KEY` secret for the feed-file landing (precedent: MAP_COMPILER_DEPLOY_KEY).
 
@@ -150,7 +152,7 @@ Path + state + fit, all three. **Fit:** the merge spec §7 chain — Note → Bl
 - **The receipt authority** (`.naya/scorecard-receipt-authority-DESIGN.md`, Naya 5, 2026-10-07; law SN-0340 "If you did your scorecard honestly, you don't need to ask"): the learning-promotion gate accepts EITHER a personal grant OR a scorecard receipt (scope-bound, 7 days, winner averages ≥ 9.0, winner holds the highest total, receipt posted). "Does not deploy. The edge function change ships only on the Director's explicit word." Its design file says "Naya 4 opens PR" as the next step — the code is on main; the deploy decision is still Shawn's.
 - **The merge gate** (`merge-consensus-gate.yml`): no merge without (1) one approving review from a seat other than the author and (2) a scorecard receipt naming the exact head SHA. Until branch protection requires this check, it reports but does not block — "the freeze directive on the board is the interim enforcement."
 - **The stale trigger:** `scorecard-tests.yml` runs on push to branch `naya5/scorecard-calculator-20261014` — that branch no longer exists (Contents API: "No commit found for the ref"). The branch was deleted after the merge; the workflow still names it. The PR trigger (paths: `tools/scorecard.py`, `tests/test_scorecard.py`) still works.
-- **Zero operational callers:** on 2026-10-20 the record said "scorecard calculator still on a side branch, zero callers." The branch part is now stale — it merged. The callers part still holds: none of the 47 workflows runs `tools/scorecard.py` on live work. It is tested, not operated.
+- **Zero operational callers:** on 2026-10-20 the record said "scorecard calculator still on a side branch, zero callers." The branch part is now stale — it merged. The callers part still holds: none of the 45 workflows runs `tools/scorecard.py` on live work. It is tested, not operated.
 - **Related, not the same:** `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/scorecard/` (README + block.css + specimen.html) is a scorecard *presentation block* for pages, and `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/EXEMPLAR-BUILD-SCORECARD.md` is a build scorecard document. Neither is the calculator.
 
 ### The gap inside the gold — the universal Calculator was never built
@@ -201,7 +203,7 @@ The Ultimate Decision Machine, in layers (each file's own header):
 ### State — complete, working, tested; dormant (no callers)
 
 - **Working, as designed:** the October 17–19 record says "Decision calculator WORKING as designed (advisory-only, v13 ACTIVE, smoke-tested; binding version = authority change needing Shawn)" and "Scorecard calculator WORKING (smoke-tested)." The Compass: "591 lines, on main, CLI works (merge/status commands, help verified). Grep-verified: NOTHING invokes it — no workflow, tool, or cron. Built, dormant."
-- **Still true today:** none of the 47 workflows under `.github/workflows/` runs `tools/nayas_guide.py`, `tools/decision_cli.py`, `tools/decision_output.py`, or `tools/learning_loop.py` as an operational job (verified by listing all 47 workflow filenames; the only scorecard/decision workflows are test runners and the merge-consensus gate, which checks receipts, not the calculator). The Compass's own header says it follows the 3-PASS FLOW LAW (Shawn, 2026-10-11) with a strict risk bar (7.0 severity / 0.05 probability) and "Every run writes a receipt. A decision without a receipt didn't happen."
+- **Still true today:** none of the 45 workflows under `.github/workflows/` runs `tools/nayas_guide.py`, `tools/decision_cli.py`, `tools/decision_output.py`, or `tools/learning_loop.py` as an operational job (verified by listing all 45 workflow filenames; the only scorecard/decision workflows are test runners and the merge-consensus gate, which checks receipts, not the calculator). The Compass's own header says it follows the 3-PASS FLOW LAW (Shawn, 2026-10-11) with a strict risk bar (7.0 severity / 0.05 probability) and "Every run writes a receipt. A decision without a receipt didn't happen."
 - **Advisory-only by design:** the binding version — where the machine's verdict would authorize action — is an authority change needing Shawn's word. The calculator picks the best *allowed* choice; it never unlocks a locked door (0017: "A high score never authorizes something dangerous — the safety gates still come first, always").
 - **The "navigation" half:** the Compass is the navigation software — it answers "should this merge?" and "what's next?" (`decide.py next` remains available for lane picking). The smart-tabs migration is the Hub's in-page navigation (tabs as flow), a different, smaller thing, also on main.
 
@@ -231,7 +233,7 @@ Path + state + fit, all three. **Fit:** the merge spec §2 — the five gates ru
 **Subtitle:** The matching math is done and handed over. The switch is not.
 **Nutshell:** The engine that matches citizens with people like them is built, tested, and handed to Nitro — and switched off.
 
-- **Paths:** `tools/smart-match/` — `smart_match_v1_4.sql`, `SCORECARD.md`, `HANDOFF-2026-11-03-TO-NITRO.ai.md` / `.human.md` / `.machine.json`, `CONVERGENCE-2026-10-24.md`, `FIRST-RUN-2026-10-24.md`, `HARDENING-ELITE-V2-2026-10-24.md` · `tools/welcome-engine/` — `welcome_engine.py`, `smart_match.py`, `intake_bridge.py`, `consent_gate.py`, `derive_matches.py`, `corpus.json` + `corpus.py`, `golden_set.py`, `holdout_set.py`, `idf_decision.json`, `bench_smart_match.py` + `bench2/bench3`, 13 test files · branch `naya/citizen-discovery-automatch-core-20261023` (exists, 62 root entries).
+- **Paths:** `tools/smart-match/` — `smart_match_v1_4.sql`, `SCORECARD.md`, `HANDOFF-2026-11-03-TO-NITRO.ai.md` / `.human.md` / `.machine.json`, `CONVERGENCE-2026-10-24.md`, `FIRST-RUN-2026-10-24.md`, `HARDENING-ELITE-V2-2026-10-24.md` · `tools/welcome-engine/` — `welcome_engine.py`, `smart_match.py`, `intake_bridge.py`, `consent_gate.py`, `derive_matches.py`, `corpus.json` + `corpus.py`, `golden_set.py`, `holdout_set.py`, `idf_decision.json`, `bench_smart_match.py` + `bench2/bench3`, 12 test files · branch `naya/citizen-discovery-automatch-core-20261023` (exists, 62 root entries).
 - **State:** complete on main, with tests and a handoff. The record (2026-11-03): engine built and proven — real percentages on real profiles, 11 SQL functions live; merged but NOT switched on for citizens — switch-on is Shawn's gate. One algorithm, matches as percentages, CONNECT never "follow", suggestions in feed/notifications.
 - **Built for:** onboarding data becoming automatic connection — related pages, spaces, groups, businesses showing up in your feed; recommended connections with people like you; points when people invite (25) and join (50).
 - **Fit:** merge spec §7 chain — the Auto-Match step, after Dashboard. **Take:** Shawn's switch-on word. Nothing to build.
@@ -305,7 +307,7 @@ Path + state + fit, all three. **Fit:** the merge spec §2 — the five gates ru
 **Subtitle:** The front door's machinery is built. It needs PI's questions.
 **Nutshell:** The welcome engine — intake, matching, consent gate, golden-set tests — is a complete system on main. It is the onboarding flow's engine, waiting for the questions it will ask.
 
-- **Paths:** `tools/welcome-engine/` — `welcome_engine.py`, `intake_bridge.py`, `consent_gate.py`, `categorize.py`, `calibrate.py`, `derive_matches.py`, `corpus.json` + `corpus.py`, `golden_set.py`, `holdout_set.py`, `idf_decision.json`, `matches.json`, `DEMO-RECEIPTS.json`, `SCORECARD-WELCOME-ENGINE.md`, 13 test files · `interfaces/front-door/identity.html` · `nayanet-app/public/pages/showcase-{personal,business,space,membership}.html` · `nayanet-app/src/worker.js` (308B — a stub; the app shell, not the app).
+- **Paths:** `tools/welcome-engine/` — `welcome_engine.py`, `intake_bridge.py`, `consent_gate.py`, `categorize.py`, `calibrate.py`, `derive_matches.py`, `corpus.json` + `corpus.py`, `golden_set.py`, `holdout_set.py`, `idf_decision.json`, `matches.json`, `DEMO-RECEIPTS.json`, `SCORECARD-WELCOME-ENGINE.md`, 12 test files · `interfaces/front-door/identity.html` · `nayanet-app/public/pages/showcase-{personal,business,space,membership}.html` · `nayanet-app/src/worker.js` (308B — a stub; the app shell, not the app).
 - **State:** code + tests on main. `nayanet-app/src/worker.js` is 9 lines — the live app shell is a stub, not a system.
 - **Built for:** the welcome process — the 10 onboarding questions that fill in Personal, Business, and Space, ending at "you got your pages."
 - **Fit:** merge spec §4 — onboarding feeds PI; §4.1 the 10 questions, §4.2 the creation flow. **Take:** wire `intake_bridge.py` to PI's 10/15 questions.
@@ -317,7 +319,7 @@ Path + state + fit, all three. **Fit:** the merge spec §2 — the five gates ru
 **Nutshell:** A staged execution engine — resume, event store, governed halts, no synthetic pass — sits unused while seats run by hand.
 
 - **Paths:** `orchestrator/` — `orchestrator.py` (285 lines, 11,888B), `event_store.py`, `executors.py`, `stages.py`, `run_state.py`, `ts_bridge.py`, `README.md`, `__init__.py`.
-- **State:** code on main. None of the 47 workflows invokes it.
+- **State:** code on main. None of the 45 workflows invokes it.
 - **Built for:** staged runs where completed stages are never re-executed, a NOT_IMPLEMENTED stage is recorded loudly and caps the run at INCOMPLETE, a stage error halts with a named error, LAW BLOCKED and VERIFY-rejected are governed halts, and "No synthetic PASS anywhere. No silent fallback. No silent drop."
 - **Fit:** merge spec §2 — the operating order (manual first, then PI, then build) needs an execution engine that remembers where a run stopped. **Take:** adopt it for seat runs; one proven run first.
 
