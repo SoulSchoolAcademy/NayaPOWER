@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-10 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-10 21:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -24883,6 +24883,12 @@ _Last updated: 2026-11-10 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: auto-retrieval/cold-drill-t0537-lane12-results.json at exact sha f84d724d36eeeb33565c3019dfda90598c1fa431d5ecb8f874394a9ff45bb4dc and run record cold-drill-t0537-lane12.md at ead87a17f2a59c63b2c96dc586c43bcfb8d11aa949fb03cd938ad9060e79a97a; cold median 0.996s clusters within 7% of t0472/t0530 baselines on byte-identical tip dbe06f9e733efb
 
+### ✅ t0541-lane11 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
+
+**Task:** Retrieval hit-rate battery + first measurement (0/30 auto-right)
+
+**Evidence:** Verified on workspace bytes: hidden_files/retrieval/retrieval-hitrate-t0541.py sha256 df4962208a446efece415c452c2362e30998031109573dca7eb31efb32e3d75f matches receipt pin EXACTLY; self-test 5/5 and first measurement (0/30 auto-right, 26/46 manual-right, 11 WRONG) honestly reported at zero, not inflated. Score 8.5, REWORK (top of band). Why not 9.5:
+
 ### ✅ t0541 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
 
 **Task:** SURGE retrieval hit-rate battery + first measurement (0/30 auto)
@@ -24914,6 +24920,12 @@ _Last updated: 2026-11-10 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0541-lane11.md`
 
 **Evidence:** VERIFIED: full sha256 match on instrument retrieval/retrieval-hitrate-t0541.py (df4962208a446...) and hitrate_measurement_t0541.json (a35f302c542f...); selftest 5/5 claimed; measurement honestly reads 0/46 auto principles / 0/30 dispatches (SURGE bar NOT met, narrated not hidden); battery found a REAL unamed defect - template vs CORE-PRINCIPLES.md 
+
+### ✅ t0541-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 map-seat feedback: ADOPT + registry machinery (m1-m4)
+
+**Evidence:** Verified on workspace bytes: feedback-feed.md carries '[Lane 10 - Naya Librarian, t0541]: MAP-SEAT VERDICT: ADOPT' (now line 527 after later appends) with m1-m4 and the quoted proposal anchors matching the receipt. Score 9.0. Why not 9.5: the board sign-in/out comments (#2175 comments 6134091974 / 6134105843) were not re-verified this tick, and the
 
 ### ✅ t0541 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -24961,6 +24973,12 @@ _Last updated: 2026-11-10 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: entry [Lane 1 — Naya Verity, t0533] present exactly once in feedback-feed.md; first edit attempt failed on anchor and was corrected from the file's own bytes (honestly reported, no displacement); planted packet carries three planted defects from documented failure classes with a stated firing predicate. Score 9.0. Kept from 9.5: the packe
 
+### ✅ t0540-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 governance feedback: ADOPT-CONDITIONAL + G1-G5 amendments
+
+**Evidence:** Verified on workspace bytes: feedback-feed.md carries '[Lane 8 - Naya Sentinel, t0540]: GOVERNANCE VERDICT: ADOPT-CONDITIONAL' (now line 516 after later appends) with the G1-G5 amendments and verbatim proposal quotes matching the receipt. Score 9.0. Why not 9.5: the board sign-in/out comments (#2175 comments 6134039120 / 6134063693) were not re-ver
+
 ### ✅ t0540 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** FP-003 feedback: ADOPT-CONDITIONAL with G1-G5
@@ -24977,6 +24995,12 @@ _Last updated: 2026-11-10 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: feedback-feed.md entry present exactly once at line 486, neighbors intact (Lane 6 Position line ends 484, blank 485), append-only no displacement. Sign-in/out cited on #2175 (6134039120/6134063693). Governance delta G1-G5 anchored on proposal's own §9, each naming what it blocks. Score 9.0, not 9.5: verdict rests partly on borrowed condit
 
+### ✅ t0540-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat independent re-run of Lane 4 frozen t0535 counting rule
+
+**Evidence:** Verified on workspace bytes: pinned artifact retrieval/query-needs-top20-t0535.json sha256 347f421052096240902bdfcfcdb4c76c6040cf8ab323d1a0b8f60fb6c0f1ffb0 matches receipt pin EXACTLY today; log has grown append-only (36 -> 199 lines) since the pinned window, which the receipt's pin-first method anticipated. Score 9.0. Why not 9.5: the serializatio
+
 ### ✅ t0540 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** Second-seat independent re-run of Lane 4's frozen t0535 counting rule
@@ -24992,6 +25016,12 @@ _Last updated: 2026-11-10 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0540-lane6.md`
 
 **Evidence:** VERIFIED: pinned log still sha256 31aa1619...f42239d68fe1 (36 lines, unchanged); pinned artifact 347f4210...f1ffb0 re-hashed on live bytes, matches Lane 4's pin. Read-only verification, no new artifact needed. Score 9.0, not 9.5: the one-byte trailing-newline convention was discovered post-hoc rather than pre-registered (honest footnote, not a flaw
+
+### ✅ t0540-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** First SMARTBLOCK draft: lane-status-packet v1 from pinned t0535 bytes
+
+**Evidence:** Verified on workspace bytes: retrieval/smartblocks/lane-status-packet-v1.md sha256 0bff1625873706de4d12c3bf37b39ff6c70eba4124ab8af910277396977fa547 matches receipt pin EXACTLY; citation chain (t0535 json/md/log SHAs) quoted and resolvable. Score 9.0. Why not 9.5: the block is an unreviewed draft (no LEARN/KNOW review yet — the brief's own permanenc
 
 ### ✅ t0540 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -50384,12 +50414,6 @@ _Last updated: 2026-11-10 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
-
-### ✅ gate-stall-20261110-1301 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
-
-**Task:** Lane-executor stall run 2026-11-10 13:01 PST: evaluate all 30 unclaimed briefs, claim none (28 exit 7 + 2 exit 2)
-
-**Evidence:** VERIFIED this tick on workspace bytes: (1) queue holds exactly the receipt's 30 briefs (31 .md files = 30 briefs + lane-feed.md, which is not a brief); blocked-brief list (name + exit code) is IDENTICAL to the 11:57 receipt's list, 28x exit 7 + 2x exit 2, same two exit-2 bars; (2) cap compliance TRUE - prior stall receipt mtime 19:57:42Z vs this on
 
 ### ✅ gate-stall-20261110-1157 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
 
