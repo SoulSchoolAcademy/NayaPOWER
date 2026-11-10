@@ -69,7 +69,7 @@ The picture to hold: **the person is the atom at the center, and everything orbi
 - **Smart Links** — a link that is tracked, branded, and featured. Minted at publish. Click any block or link and it moves up into the featured role; the gauge follows. The ambassador link is the default on login.
 - **Smart Meet** — video and audio meetings, inside the system.
 - **Booking / Scheduler** — one shared calendar with different scheduling functions (booker, scheduler, appointments).
-- **Smart Access (Memberships)** — an add-on to any page, never a separate app. Paid members build: Power 1, Pro 5, Max unlimited. A member page holds video, PDFs, audios, content.
+- **Smart Access (Memberships)** — an add-on to any page, never a separate app. Paid members build: Power $25 = 10, Pro $50 = 100, Max $100 = unlimited. A member page holds video, PDFs, audios, content.
 - **Ask Naya** — ask, and she answers from the system's intelligence.
 - **Smart Search** — finds Smart Notes by title, nutshell, and block content, ranked title first, showing the matching block itself at the top.
 - **Smart Growth / Affiliate** — invite, earn 25 points for an invite, 50 for a join; citizens earn 50% of revenue on all levels, paid automatically the moment we're paid.
