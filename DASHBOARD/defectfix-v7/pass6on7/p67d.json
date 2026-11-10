@@ -1,0 +1,426 @@
+{
+ "merged-390": {
+  "scroll0": {
+   "scrollY": 0,
+   "vh": 844,
+   "bar": {
+    "rect": {
+     "x": 0,
+     "y": 776,
+     "w": 390,
+     "h": 68,
+     "top": 776,
+     "bottom": 844
+    },
+    "position": "fixed",
+    "display": "flex"
+   },
+   "note": {
+    "rect": {
+     "x": 76.8,
+     "y": 769.2,
+     "w": 236.4,
+     "h": 29.7,
+     "top": 769.2,
+     "bottom": 798.9
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks \u2014 numbers, not points.",
+    "barOverlap": 5413.6,
+    "hitCenter": "os-b3-btn os-b3-act"
+   },
+   "toggle": {
+    "rect": {
+     "x": 93.9,
+     "y": 798.9,
+     "w": 202.1,
+     "h": 34.3,
+     "top": 798.9,
+     "bottom": 833.3
+    },
+    "barOverlap": 6952.2,
+    "hitCenter": "svg"
+   }
+  },
+  "scroll60": {
+   "scrollY": 60,
+   "vh": 844,
+   "bar": {
+    "rect": {
+     "x": 0,
+     "y": 850.8,
+     "w": 390,
+     "h": 68,
+     "top": 850.8,
+     "bottom": 918.8
+    },
+    "position": "fixed",
+    "display": "flex"
+   },
+   "note": {
+    "rect": {
+     "x": 76.8,
+     "y": 709.2,
+     "w": 236.4,
+     "h": 29.7,
+     "top": 709.2,
+     "bottom": 738.9
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks \u2014 numbers, not points.",
+    "barOverlap": 0,
+    "hitCenter": "os-pts-note"
+   },
+   "toggle": {
+    "rect": {
+     "x": 93.9,
+     "y": 738.9,
+     "w": 202.1,
+     "h": 34.3,
+     "top": 738.9,
+     "bottom": 773.3
+    },
+    "barOverlap": 0,
+    "hitCenter": "os-pts-btn active"
+   }
+  },
+  "scroll120": {
+   "scrollY": 120,
+   "vh": 844,
+   "bar": {
+    "rect": {
+     "x": 0,
+     "y": 850.8,
+     "w": 390,
+     "h": 68,
+     "top": 850.8,
+     "bottom": 918.8
+    },
+    "position": "fixed",
+    "display": "flex"
+   },
+   "note": {
+    "rect": {
+     "x": 76.8,
+     "y": 649.2,
+     "w": 236.4,
+     "h": 29.7,
+     "top": 649.2,
+     "bottom": 678.9
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks \u2014 numbers, not points.",
+    "barOverlap": 0,
+    "hitCenter": "os-pts-note"
+   },
+   "toggle": {
+    "rect": {
+     "x": 93.9,
+     "y": 678.9,
+     "w": 202.1,
+     "h": 34.3,
+     "top": 678.9,
+     "bottom": 713.3
+    },
+    "barOverlap": 0,
+    "hitCenter": "os-pts-btn active"
+   }
+  },
+  "scroll300": {
+   "scrollY": 300,
+   "vh": 844,
+   "bar": {
+    "rect": {
+     "x": 0,
+     "y": 850.8,
+     "w": 390,
+     "h": 68,
+     "top": 850.8,
+     "bottom": 918.8
+    },
+    "position": "fixed",
+    "display": "flex"
+   },
+   "note": {
+    "rect": {
+     "x": 76.8,
+     "y": 469.2,
+     "w": 236.4,
+     "h": 29.7,
+     "top": 469.2,
+     "bottom": 498.9
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks \u2014 numbers, not points.",
+    "barOverlap": 0,
+    "hitCenter": "os-pts-note"
+   },
+   "toggle": {
+    "rect": {
+     "x": 93.9,
+     "y": 498.9,
+     "w": 202.1,
+     "h": 34.3,
+     "top": 498.9,
+     "bottom": 533.3
+    },
+    "barOverlap": 0,
+    "hitCenter": "os-pts-btn active"
+   }
+  },
+  "noteIntoView": {
+   "scrollY": 362,
+   "vh": 844,
+   "bar": {
+    "rect": {
+     "x": 0,
+     "y": 850.8,
+     "w": 390,
+     "h": 68,
+     "top": 850.8,
+     "bottom": 918.8
+    },
+    "position": "fixed",
+    "display": "flex"
+   },
+   "note": {
+    "rect": {
+     "x": 76.8,
+     "y": 407.2,
+     "w": 236.4,
+     "h": 29.7,
+     "top": 407.2,
+     "bottom": 436.9
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks \u2014 numbers, not points.",
+    "barOverlap": 0,
+    "hitCenter": "os-pts-note"
+   },
+   "toggle": {
+    "rect": {
+     "x": 93.9,
+     "y": 436.9,
+     "w": 202.1,
+     "h": 34.3,
+     "top": 436.9,
+     "bottom": 471.3
+    },
+    "barOverlap": 0,
+    "hitCenter": "os-pts-btn active"
+   }
+  }
+ },
+ "merged-1440": {
+  "scroll0": {
+   "scrollY": 0,
+   "vh": 844,
+   "bar": {
+    "rect": {
+     "x": 0,
+     "y": 766,
+     "w": 1440,
+     "h": 78,
+     "top": 766,
+     "bottom": 844
+    },
+    "position": "fixed",
+    "display": "flex"
+   },
+   "note": {
+    "rect": {
+     "x": 597.5,
+     "y": 791.8,
+     "w": 244.9,
+     "h": 19.7,
+     "top": 791.8,
+     "bottom": 811.4
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks \u2014 numbers, not points.",
+    "barOverlap": 4800,
+    "hitCenter": "polyline"
+   },
+   "toggle": {
+    "rect": {
+     "x": 653.1,
+     "y": 811.5,
+     "w": 133.9,
+     "h": 22.7,
+     "top": 811.5,
+     "bottom": 834.2
+    },
+    "barOverlap": 3039.5,
+    "hitCenter": "os-b3-btn os-b3-act"
+   }
+  },
+  "scroll60": {
+   "scrollY": 60,
+   "vh": 844,
+   "bar": {
+    "rect": {
+     "x": 0,
+     "y": 851.8,
+     "w": 1440,
+     "h": 78,
+     "top": 851.8,
+     "bottom": 929.8
+    },
+    "position": "fixed",
+    "display": "flex"
+   },
+   "note": {
+    "rect": {
+     "x": 597.5,
+     "y": 731.8,
+     "w": 244.9,
+     "h": 19.7,
+     "top": 731.8,
+     "bottom": 751.4
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks \u2014 numbers, not points.",
+    "barOverlap": 0,
+    "hitCenter": "os-pts-note"
+   },
+   "toggle": {
+    "rect": {
+     "x": 653.1,
+     "y": 751.5,
+     "w": 133.9,
+     "h": 22.7,
+     "top": 751.5,
+     "bottom": 774.2
+    },
+    "barOverlap": 0,
+    "hitCenter": "os-pts-btn active"
+   }
+  },
+  "scroll120": {
+   "scrollY": 120,
+   "vh": 844,
+   "bar": {
+    "rect": {
+     "x": 0,
+     "y": 851.8,
+     "w": 1440,
+     "h": 78,
+     "top": 851.8,
+     "bottom": 929.8
+    },
+    "position": "fixed",
+    "display": "flex"
+   },
+   "note": {
+    "rect": {
+     "x": 597.5,
+     "y": 671.8,
+     "w": 244.9,
+     "h": 19.7,
+     "top": 671.8,
+     "bottom": 691.4
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks \u2014 numbers, not points.",
+    "barOverlap": 0,
+    "hitCenter": "os-pts-note"
+   },
+   "toggle": {
+    "rect": {
+     "x": 653.1,
+     "y": 691.5,
+     "w": 133.9,
+     "h": 22.7,
+     "top": 691.5,
+     "bottom": 714.2
+    },
+    "barOverlap": 0,
+    "hitCenter": "os-pts-btn active"
+   }
+  },
+  "scroll300": {
+   "scrollY": 300,
+   "vh": 844,
+   "bar": {
+    "rect": {
+     "x": 0,
+     "y": 851.8,
+     "w": 1440,
+     "h": 78,
+     "top": 851.8,
+     "bottom": 929.8
+    },
+    "position": "fixed",
+    "display": "flex"
+   },
+   "note": {
+    "rect": {
+     "x": 597.5,
+     "y": 491.8,
+     "w": 244.9,
+     "h": 19.7,
+     "top": 491.8,
+     "bottom": 511.4
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks \u2014 numbers, not points.",
+    "barOverlap": 0,
+    "hitCenter": "os-pts-note"
+   },
+   "toggle": {
+    "rect": {
+     "x": 653.1,
+     "y": 511.5,
+     "w": 133.9,
+     "h": 22.7,
+     "top": 511.5,
+     "bottom": 534.2
+    },
+    "barOverlap": 0,
+    "hitCenter": "os-pts-btn active"
+   }
+  },
+  "noteIntoView": {
+   "scrollY": 380,
+   "vh": 844,
+   "bar": {
+    "rect": {
+     "x": 0,
+     "y": 851.8,
+     "w": 1440,
+     "h": 78,
+     "top": 851.8,
+     "bottom": 929.8
+    },
+    "position": "fixed",
+    "display": "flex"
+   },
+   "note": {
+    "rect": {
+     "x": 597.5,
+     "y": 411.8,
+     "w": 244.9,
+     "h": 19.7,
+     "top": 411.8,
+     "bottom": 431.4
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks \u2014 numbers, not points.",
+    "barOverlap": 0,
+    "hitCenter": "os-pts-note"
+   },
+   "toggle": {
+    "rect": {
+     "x": 653.1,
+     "y": 431.5,
+     "w": 133.9,
+     "h": 22.7,
+     "top": 431.5,
+     "bottom": 454.2
+    },
+    "barOverlap": 0,
+    "hitCenter": "os-pts-btn active"
+   }
+  }
+ }
+}
