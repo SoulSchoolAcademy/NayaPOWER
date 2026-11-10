@@ -1,0 +1,161 @@
+# NAYA POWER — DAILY INTELLIGENCE REPORT — 2026-11-10
+
+**Header** — Date: Tuesday, 2026-11-10 (America/Vancouver) · Window covered: 2026-11-09 06:37 – 2026-11-10 06:37 Vancouver time (2026-11-09T14:37Z – 2026-11-10T14:40Z) · Main tip at writing: 4201e7badf68fd99c6c9d70bb6571e9ac9e9000c (live ref read this run via gh-app-api; the legacy gh-api credential route failed with an authdc surrogate error and nothing in this report rests on it) · Arc of the day: the note machine ran at full speed — 402 commits, a whole batch distilled, the Hub feed proven alive with today's notes on it — while the proven-outcome column stayed at zero for another day and the note numbers themselves began colliding faster than the guard could stop them.
+Written in Smart Note language.
+
+**Value ratio today: 0 outcomes ÷ 141 units = UNDEFINED (no verified outcome to divide by)** — 0 verified outcomes under the strict standard (my own sb-api query for Project Intelligence rows reaching done-proven in the window returned an empty set; the PI Fill Finisher census at 01:23 PST the same morning read 677 rows with 30 done_proven, unchanged), against 141 counted activity units (22 pull requests merged + 16 pull requests opened + 52 board comments on #3066 + 51 new-sequence Smart Notes SN-2600–SN-2650 filed). Scheduled-job runs were NOT measured this run and are excluded and named, not estimated. This is the second straight zero-outcome morning in this series.
+
+## THE DISTILLATION CORE — the heart of this report
+
+Raw notes in this window: 51 new-sequence Smart Notes filed (SN-2600–SN-2650), inside 402 commits to main that touched 151 distinct Smart Note numbers in total (amendments, renumbers and collision repairs included). Distilled notes filed in the window: the DIR batch SN-2603–SN-2620 (18 notes; SN-2606–SN-2620 are each titled as distilled from ten raw notes into one, one from three), plus SN-2621 (the 2026-11-09 Daily Intelligence Report note itself). ESSENCE-01 coverage — the distilled essence that carries the whole corpus — rose 282 → 313 across the window (runs 64–69 addenda). Distilled notes live on the Hub: PROVEN for the feed-visible set — this run's own live browser check of nayanet.app (redirecting to /#/hub, Smart Feed) saw today's notes on the page, including The World Masters, The Master Operational Manual, Take It From 6 to 10, The Wake Flow, and the Daily Intelligence Report 2026-11-09 note. This run filed no new Smart Note of its own: with an active number-collision cascade in flight (see holes), claiming a fresh number without a full census would break the filing law; the report itself, filed by PR, is this run's filing. 510-backlog batch state: the DIR batch SN-2603–SN-2620 is COMPLETE per Intelligence Loop run 64 ("DIR batch complete", coverage 282 → 300 in that step); the batch's notes are filed in GitHub and feed-visible as above. A full item-by-item reconciliation of the original 510 against batches was not measured this run and is named as such, not estimated. No raw notes were deleted — deletion is Shawn's hand alone.
+
+### 1. The top 10 most valuable things learned
+1. A ruling needs its receipt (SN-2625). The Naima question burned a full day because a decision arrived by relay without the words that made it. A decision nobody can point to is a decision everybody re-litigates.
+2. The guard is too slow to stop a race (SN-2626). Note numbers are claimed by hand at machine speed; the collision guard checks after the fact, so collisions are cured by renumbering instead of prevented.
+3. Synced is not live (SN-2611) — and today the reverse was proven too: the Hub feed really does carry today's notes, checked in a live browser, not from a receipt.
+4. The Master Box is built (SN-2630, its gate 37 of 37). One box that holds a person's whole world is no longer a drawing; it passed its own checks.
+5. The About save now writes the real row — and the row write can still refuse (SN-2641, fixed then corrected in the same night: the save writes the mirror and attempts the row, and the row write returned 401). A fix and its limit, both on the record.
+6. Major is a number now (SN-2639). "Big" stopped being a feeling and became a threshold a person can test.
+7. The permission model fits in one line (SN-2638): mail never, notes your choice, Smart Notes shared. Privacy a child can repeat is privacy a citizen can trust.
+8. Membership counts are settled in plain numbers: Power $25 holds 10, Pro $50 holds 100, Max $100 holds unlimited (orientation §6 and §8 corrected to match).
+9. One flow, not separate systems — and not in sync yet (SN-2619). The honest second half of that title is the valuable part.
+10. Proven outcomes are the scarcest thing in the system: 402 commits produced zero new done-proven rows. Volume is not the constraint; proof is.
+
+### 2. The top 10 most useful things
+1. The Wake Flow (SN-2647): awake, lock in, back to work — a repeatable start any seat can run.
+2. The Team Activation Process (SN-2645): tune in, lock in, then go — the order matters and is now written down.
+3. Notification answers (SN-2640): digest once a day, send his notes, and the 99% baseline — how a busy person hears the system without drowning.
+4. Every new user automatically gets a Smart Box (SN-2646): nobody starts empty-handed.
+5. The Intelligence Rubric (SN-2639/SN-2633): a shared ruler for what counts as major.
+6. Clone a page, replace some parts — that is how building happens (SN-2618). Building is reuse, not reinvention.
+7. Push-button simple: worlds, not websites (SN-2622) — the test every new page must pass.
+8. The three questions (SN-2623): what would you do with it? — asked of every world before it is built.
+9. PR #3320 (open): the spec-integrity gate stops pinning the Constitution and the Locked-In Declaration — a named cure for one of the tip's three red checks.
+10. PR #3322 (open): a visible mobile search entry button for the Hub — search you can see beats search you must know about.
+
+### 3. The top 10 most helpful things — for someone who is stuck
+1. Bring the answer, not the problem (SN-2649: "Take It From 6 to 10"). Stuck ends when the next step arrives with the problem.
+2. Look at the page yourself — a report is not the page (SN-2617). When a receipt and your eyes disagree, believe your eyes.
+3. Prove it from the live bytes (SN-2610). The served page, not the claim about the page, settles every argument.
+4. Measure the real thing (SN-2609). Measuring a copy tells you about the copy.
+5. His eye judges the viewpoint, not the measurement (SN-2616) — when a score and a person disagree, check what the person actually sees.
+6. A ruling needs its receipt (SN-2625): if you are stuck on "who decided this?", the cure is finding or filing the receipt, not asking louder.
+7. First claim stands. Every collision today was cured the same way — the first filing keeps the number, the second renumbers (SN-2632/2633, SN-2644–2650 cascade). No debate needed.
+8. Lock the lesson in the same pass (SN-2607). A lesson written tomorrow is a lesson paid for twice.
+9. The vault is a thin layer, not a new system (SN-2615) — when a build feels huge, check whether it is a layer on something that exists.
+10. Order is the design (SN-2612). When a page feels wrong and nothing is missing, rearrange before you add.
+
+### 4. The top 10 most enlightening things
+1. Naima, in the record now: the mother Naya is the whole — NayaNET itself, not a separate realm (SN-2628, SN-2600 corrected per a 01:00Z Nov 10 settlement attributed to Shawn). This run did not witness Shawn's words directly; the settlement reaches Resolve by relay and filed notes, and SN-2625's own lesson — a ruling needs its receipt — is the standing caveat on it.
+2. Truth stepped down 6.0 → 5.5 in the hourly accountability (09:53Z) because six more notes landed without being registered. The notes exist; the map of the notes is what failed.
+3. PR #3305 merged on 2026-11-09 with 13 failed checks at its head (Verity dock event, board). The merge worked; the gate did not gate.
+4. Workers finish at 9 out of 10 and almost none finish right (Naya 5 hourly, all day; Lambda and Kappa at 9.5 are the named exceptions). The last step — proof at the standard — is the system's rarest act.
+5. The queue grew to 1,249 while everyone was busy. Busy and shrinking are different things.
+6. Two Project Intelligence rows about the Naima hold vanished and a re-add was declined (board, 04:59Z and 05:28Z). Work can disappear from the board of record without a decision anyone can point to — the same disease as the missing ruling receipt, in the other direction.
+7. The Supabase audit reads 6 out of 10, with one open door (SN-2632). The honest score and the named hole arrived together.
+8. ESSENCE-01 coverage reached 313 — the essence grows even while the raw pile grows faster. Distillation works; intake discipline does not.
+9. The DIR batch was distilled by hand after the machine failed on group 2 under a GitHub API rate limit (commit titles, SN-2609–SN-2620). The fallback worked because a person did it — and that does not scale.
+10. The Hub defaults to #/hub and states its capture date (PR #3305's cargo, now on main): a page that admits how old its picture is is more trustworthy than a page that pretends to be live.
+
+### 5. The top 10 most memorable things
+1. "Take It From 6 to 10: Bring the Answer, Not the Problem" (SN-2649) — the day's title, if it needed one.
+2. "We Are Family" (SN-2636) — filed in the middle of the fastest night of the year.
+3. The Master Operational Manual needed two volumes in one document (SN-2650) — and four renumbers to find its number.
+4. The renumber cascade itself: SN-2644 through SN-2650, notes chasing numbers like seats in a full theatre — funny once, a system smell the fifth time.
+5. The World Masters: one master per world (SN-2650's sibling filing, feed-visible this morning).
+6. 402 commits in 24 hours. Whatever else is true, nobody was idle.
+7. The 01:00Z settlement hour: a naming question that had split the team for a day closed in the record before most seats woke.
+8. "A Share, Not a Build" (SN-2627/SN-2625) — the presentation is something you give people, not something you construct at them.
+9. Kappa at 9.5 on the kernel, Lambda at 9.5 re-proving the decision watch — proof that the top bar is reachable.
+10. The Smart Feed at breakfast: today's notes, on the Hub, in a real browser — the thing this report series has asked for since October, ordinary at last.
+
+### 6. The top 10 most important things
+1. Zero proven outcomes for another day (PI done-proven flat; my own window query empty). Everything else depends on this column moving.
+2. The number-claim race must become mechanical before the next filing wave — collisions SN-2602, 2632, 2633 and the 2644–2650 cascade are one root, named in SN-2626.
+3. Notes landing unregistered (Truth 6.0 → 5.5) — registration is the difference between a brain and a pile.
+4. Three red checks sit on the live tip (test, spec-integrity, promote-and-prove — 10 success, 6 skipped, 3 failure of 19 check runs on 4201e7ba). Red at the tip is the background real regressions will hide in.
+5. Merges over red (PR #3305, 13 failed checks) must stop being possible, not just regretted.
+6. Rows vanishing from Project Intelligence without a receipt (the two Naima rows) — the board of record must be append-only in effect, or nothing on it can be trusted.
+7. A5 and A3b still wait on Nitro's lane (escalations aged ~264h and ~227h at the 01:23 PST finisher) — the oldest unblock in the system.
+8. The About row write still 401s (SN-2641 fix-7) — a citizen-facing save that only half-saves.
+9. The Weekly Intelligence Report for 2026-11-02 → 2026-11-09 sits open as PR #3319, held for a different seat's scorecard — the week's distillation should not age in a queue.
+10. The Naima settlement needs its receipt visible where Resolve can read Shawn's own words — SN-2625's lesson applied to SN-2628's claim.
+
+### 7. The top 10 wisest things learned
+1. Distill by machine in the morning, judge by eye in the day (the standing pattern this series runs on; SN-2292's lesson, re-proven when the machine failed and hands finished the batch).
+2. The essence is the brain; the pile is the warehouse. Coverage 313 essences carrying thousands of notes is the right shape — if intake slows enough to let it stay the shape.
+3. A lesson counts only when it changes a future decision — SN-2625 was filed at midnight and was already governing this report's caveats by morning.
+4. First claim stands, and the second filing renumbers without shame. The cascade cures were fast because nobody argued ownership of a number.
+5. Say what state a thing is in, in its name: filed is not registered, registered is not live, live is not proven. Half of today's confusion was stage names blended.
+6. When a score falls because the instrument got better, that is growth, not decline (Truth's step-downs are the instruments working).
+7. Simplicity builds trust: split the number down the middle, correct the counts in both places (§6 and §8), write the permission model in one line.
+8. Do not claim a number you have not censused. This run filed no new Smart Note rather than add a fifty-second collision risk to an active cascade.
+9. The cheapest qualified method wins: when the machine distillation hit a rate limit, hands finished it — and the wise part is naming that it must not become the method.
+10. Persistence is not permission, and volume is not value: 402 commits and zero proven outcomes is the governed-hive formula with the numerator at zero.
+
+### 8. The best of the best — the top 10 of all of it
+1. A ruling needs its receipt (SN-2625) — the day's deepest lesson, already changing behavior.
+2. Zero proven outcomes against 141 counted units — the number that must govern tomorrow.
+3. The Master Box is built and gated 37/37 (SN-2630).
+4. The Hub feed, proven in a live browser this run, carrying today's notes — filed AND live, both halves true at once.
+5. The DIR batch completed: SN-2603–SN-2620, essence coverage 282 → 313 for the day.
+6. Bring the answer, not the problem (SN-2649).
+7. The number race named at its root: the guard is too slow (SN-2626).
+8. The permission model in one line (SN-2638): mail never, notes your choice, Smart Notes shared.
+9. The About save, fixed and honestly corrected in one night (SN-2641).
+10. Major is a number now (SN-2639).
+
+### 9. What is it saying, in the simplest words?
+We built a lot today and proved almost none of it. The notes flew in faster than we could number them, name them, or register them — and still, the best of them reached the Hub where a person can read them this morning. The lesson of the day is small and plain: slow the intake down enough for the proof to catch up, write down who decided what, and let one finished, proven thing count for more than a hundred busy ones.
+
+Distillation accounting (one line): raw in today 51 new Smart Notes (SN-2600–SN-2650; 151 distinct numbers touched in 402 commits) → distilled filed SN-2603–SN-2620 (DIR batch, 18 notes) + ESSENCE-01 coverage 282 → 313 → live on the Hub: feed-visible set proven by this run's live browser check (World Masters, Master Operational Manual, Take It From 6 to 10, Wake Flow, DIR 2026-11-09 note) → 510-backlog: DIR batch complete per run 64; full 510-item reconciliation not measured this run.
+
+## 1. Executive scorecard
+Evidence-calibrated; nothing at 9+ without proof. Truth 7.0 (the record corrected itself all day — collisions renounced, the About fix re-corrected — but a head ruling still travels by relay) · Governance 5.0 (a merge over 13 red checks; two PI rows vanished without a receipt) · Capture 8.0 (402 commits, 51 notes, hourly receipts — capture is not the problem; it is arguably the flood) · VERIFY 5.0 (proof at 9/10 is common, finish-right is rare; three red checks on the tip) · Graph 4.0 (six notes unregistered in one hour's read; registry lag is the day's repeat failure) · ACT 6.5 (Master Box gated, About save half-cured, Hub cures landing) · LEARN 7.5 (145 principles in the Daily Learning Review, +2; lessons changed same-day behavior) · Immune 4.5 (the system's own filing speed is now the thing its guards cannot catch) · EVOLVE 5.0 (essence coverage compounding 282 → 313; PI foundations still verifying, escalations aging) · Human experience 6.0 (the Hub feed at breakfast is genuinely good; the About save still half-saves) · Team OS 6.0 (hourly accountability never missed; the queue still grew to 1,249) · **Whole-system directional: 5.5/10** (yesterday 5.6 — the instruments improved, the outcomes column did not).
+
+## 2. Day's accomplishments — what actually landed, with evidence
+- 22 PRs merged in the window, including #3316 (SN-2600, The Keys to a New Digital World) and #3317 (its Naima amendment), #3313–#3315 (registry and essence page-hash cures), #3308 (Daily Intelligence Report 2026-11-09 filed edition), #3300 (the 2026-11-08 edition), #3294/#3299 (distilled SN-2291/SN-2292), #3311/#3312 (SN-2532 and its amendment).
+- 402 commits to main in the window (five full pages of the commits API, counted this run); open PRs at build time: 9 (#3322, #3321, #3320, #3319, #3318, #3303, #3302, #3178, #3089).
+- The DIR distillation batch completed (SN-2603–SN-2620) and ESSENCE-01 coverage rose 282 → 313.
+- The Master Box was built and passed its gate 37/37 (SN-2630); the Master Operational Manual (SN-2650) and World Masters notes were filed and are feed-visible.
+- Hub status: LIVE and current — this run's browser check (06:40–06:41 PST, runtime-measured) loaded nayanet.app → /#/hub with today's feed. Ask Naya prototype and the Naya voice pipeline: no change evidenced in the window's commits or board — reported as no-change, not progress.
+
+## 3. Kudos
+- **Nitro's Intelligence Loop lanes** — for the DIR batch finished by hand when the machine hit its rate limit, and for renumbering their own collisions without argument. The batch exists because hands did it.
+- **Naya 5** — hourly accountability that never missed, and for stepping Truth down in public when the evidence said so. Instruments that lower their own scores are the ones worth trusting.
+- **Naya Verity** — the Daily Learning Review (145 principles, +2) and the dock ruling routing #3320 before #3322, plus flagging #3305's red merge as an event instead of letting it pass.
+- **Resolve's own lanes (self-correction named)** — the PI Fill Finisher kept the census honest at 01:23 PST and this run declined to claim a Smart Note number mid-cascade.
+- **Shawn** — the 01:00Z settlement that closed the Naima split (as filed in SN-2628), and the challenge named in SN-2648, "The Ultimate Team: His Challenge, My Honest Score — 6/10": a director who files his own score as a 6 is asking for honesty, and the day answered with some.
+
+## 4. Ten holes, ranked
+1. Zero proven outcomes, second straight day (PI window query empty; census flat at 30 done-proven of 677).
+2. The Smart Note number race: collisions SN-2602 (the fourth), SN-2632, SN-2633, and the SN-2644–2650 cascade — the guard is post-hoc (SN-2626).
+3. Notes landing unregistered — Truth 6.0 → 5.5 on six unregistered notes in one read.
+4. PR #3305 merged with 13 failed checks at its head — the merge gate did not gate.
+5. Two PI rows (the Naima hold items) vanished; a re-add was declined; no receipt names who removed them or why.
+6. Three red check runs on the live tip: test, spec-integrity, promote-and-prove (19 runs: 10 success, 6 skipped, 3 failure). A fresh local full-suite run was attempted this run and could not start — the git fetch for a fresh worktree timed out with no FETCH_HEAD — so the CI read above is the measured kernel gate for tonight, and the local battery stands as a named gap, not a silent one.
+7. The About row write still returns 401 (SN-2641 fix-7) — the save is half a save.
+8. A5/A3b escalations to Nitro aged ~264h / ~227h; Foundations still verifying with the grand-mission evidence null.
+9. The worker queue grew to 1,249 while completions ran at 9/10-not-finished-right — throughput without finish.
+10. The Naima settlement's receipt is still relay-only in Resolve's channel — SN-2625's lesson, unclosed at the top.
+
+## 5. Ten highest-value actions
+1. Make number-claiming mechanical: claim-before-write inside the filing path itself (the allocator the guard already names), so a collision cannot be filed, not merely cured. (Owner: filing-lane + guard owner.)
+2. Register-on-file: no note commit lands without its registry entry in the same commit; the Truth step-downs end. (Owner: sync/registry lane.)
+3. Branch-protect the merge path: red checks block merge, mechanically — #3305 must be the last of its kind. (Owner: governance; Shawn's gate if protection settings are his.)
+4. Restore or receipt the two vanished PI rows: either the rows return or a named decision with a reason replaces them. (Owner: PI lane.)
+5. Land PR #3320 (spec-integrity cure), then re-run the tip checks; chase test + promote-and-prove reds to named roots. (Owner: spec-integrity lane, Verity dock order already set.)
+6. Finish the About save: the row write's 401 root-named and cured, proven by a real save in a real profile. (Owner: Personal lane.)
+7. A different seat scorecards and lands the Weekly Intelligence Report PR #3319 before it ages. (Owner: any non-author seat.)
+8. Close A5 chunk 1 or re-scope it in writing — a 264-hour escalation is a decision the system has already made by default. (Owner: Nitro lane / Shawn if it is a destination call.)
+9. Publish the Naima settlement receipt where every seat can read Shawn's own words (one link, in SN-2628). (Owner: Resolve, on receipt.)
+10. Cap intake to proof capacity for one day: filings pause at the hour the registry lags — protect the numerator. (Owner: Team OS.)
+
+## 6. Reflection
+What got more mechanical: distillation coverage, hourly accountability, collision cures, the learning review. What remains human: deciding what a name means, noticing that a save only half-saves, and reading the page with your own eyes. The day's shape is the governed hive's warning in pure form — activity at record volume, verified value at zero — and also its hope: the essence still grew, the feed still fed a real reader at breakfast, and the lessons filed at midnight were already steering this report by morning. The machine is learning to count itself honestly. Next it has to learn to finish.
+
+## 7. Bottom line
+Fulfilled by the simplest-words paragraph in §0b(9) above — not duplicated.
+
+---
+Built from: live GitHub via gh-app-api (tip ref, PR lists, commits pages 1–5, board #3066 pages 19–21, tip check-runs), sb-api Project Intelligence queries (window + census corroboration from the 01:23 PST PI Fill Finisher log in ~/memory/2026-11-10.md), a live browser read of nayanet.app (browser task, 06:40–06:41 PST), the Master Directive (~/workspace/user/files/MASTER-DIRECTIVE-DISTILLATION-RESOLVE.md), and the V2 structure doc read from main this run. Window: 2026-11-09T14:37Z – 2026-11-10T14:40Z. Known gaps, named: scheduled-job runs not counted; the local full test suite could not start this run (fresh-worktree git fetch timed out, no FETCH_HEAD) so CI check-runs on the tip are the kernel measure; Ask Naya and voice pipeline not re-probed (no-change evidenced in commits/board); the 510-item backlog was not item-reconciled this run; the Naima settlement is reported as filed, with its receipt caveat stated where it appears.
