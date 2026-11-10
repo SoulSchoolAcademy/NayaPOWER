@@ -1,0 +1,8 @@
+# Factory One-Click — human checks H1–H5 (builder seat attestation, 2026-11-10)
+# Machine gate: check-gate.py OVERALL PASS — MACHINE ONLY on both files.
+# H5 is not attested: this flow carries 15 onboarding questions, not a Ten set;
+# the One Ultimate Ten check does not apply to a creation flow. H3 is an honest FAIL.
+H1: PASS — Stranger test: every screen says what happens in plain words ("One button. Fifteen questions, mostly answered for you. Your page, live."); each question answers what it asks with a mechanism (pre-filled answer, choice chips, or Skip); the build screen names its four build actions before the tap.
+H2: PASS — Perfect-words law: copy is professional, no dictation pasted verbatim, no process talk; Naya speaks in the first person ("I'm Naya — every question comes already answered... I'll build your world for you.").
+H3: FAIL — Face quality: the faces beside the words are spectrum orb avatars (.intel-avatar), not photographs — no Naya face-photo asset exists on disk to harvest. They alternate left/right with a distinct colour and glyph per step, but they are not real faces. A real face asset + Shawn's eye are owed.
+H4: PASS — Test in his head (builder's call; Shawn's eye is final): one tap, answer-or-skip, build, page in view — the value is obvious (a finished page, not a form), the mechanism is shown at every step, and nothing in the flow asks the citizen to do a manual step.
