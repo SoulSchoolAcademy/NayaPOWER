@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-10 00:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-10 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -26729,6 +26729,12 @@ _Last updated: 2026-11-10 00:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/smartblocks/lane-packet-5-v2.md and validate-lane-packet-5.py exist on disk. Score 9.5: ACCEPTED. Pin-assert-before-read held, the block is versioned with staleness predicates P1/P2/P3 and an EXPIRED-DISUSE kill rule, the validator decides on live bytes, and all four proof cases behave as designed (serves pinned segment, abst
 
+### ✅ t0417-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Second-seat verification of t0816 needs table - independent re-derivation, pin-assert, falsifier
+
+**Evidence:** VERIFIED this tick on workspace bytes: pin 0fa1f99d... == sha256 of first 89 lines of live auto-retrieval/ask-world-queries.jsonl EXACTLY (log now 199 lines, append-only holds); first-100 prefix 786a7f04 and first-105 prefix a11cc2b7 match the claimed chain; t0816-lane11.md (136 lines) and retrieval/tally-t0710.json both present. The receipt's inde
+
 ### ✅ t0417 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Second-seat verification of t0816 needs table: independent parser re-derivation, 19/19 rank-by-rank match
@@ -26744,6 +26750,12 @@ _Last updated: 2026-11-10 00:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0417-lane12.md`
 
 **Evidence:** Verified: receipt references /tmp scratch (ephemeral, not required) and the standing tally script; pin discipline applied to the ask-world log. Score 9.5: ACCEPTED. Fresh independent parser from the frozen rule spec (not a copy of the canonical tally), pin-assert first, 19/19 rank-by-rank match including full need-key triples — closing the standing
+
+### ✅ t0413-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Recusal: blind corroboration of t0601 authorship map - author of lineage artifact, arm-fresh gate fires
+
+**Evidence:** VERIFIED this tick on workspace bytes: all three cited SHAs byte-exact - retrieval/auth-gate-migration-prep-t0601.md 393725e6..., twelve-lane-receipts/t0402-lane7.md 24de724a..., twelve-lane-receipts/t0601-lane7.md b1937e64...; recusal rule correctly applied (authorship of lineage artifact = recuse, t0402 precedent) and brief re-filed byte-intact w
 
 ### ✅ t0413 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
