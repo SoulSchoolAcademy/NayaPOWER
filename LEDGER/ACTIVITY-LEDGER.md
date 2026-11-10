@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-10 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-10 13:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4679,6 +4679,12 @@ _Last updated: 2026-11-10 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via git protocol + disk: main == e85c6e44222c6f307110eeb06c0b4f48a2d4de02 == receipt tip == shared-state tip at action time (tip has since moved to aa8061c1d311, noted in briefs). seal.json EXISTS on disk; its receipt-pinned sha256 59df9fb0... is reproducible as the canonical key-sorted hash of the object (verified: sha256 of so
 
+### ✅ t1422-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Re-fire t1305 frozen GO/NO-GO predicate against live ask-world query log; verdict WAIT HOLDS (0 emergent rows)
+
+**Evidence:** VERIFIED this tick on live bytes: hidden_files/smartblocks/sb-demand-refire-t1422.md sha256 7a677c36... MATCHES receipt; smartblocks/refire-evidence/refire-t1422.py 2c00032b... MATCHES. NOT PHANTOM. Live log ask-world-queries.jsonl has since moved (current sha b0abfb68... vs action-time c902815f...) - expected drift on a live log, receipt pinned th
+
 ### ✅ t1422-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
 **Task:** Re-fire t1305 GO/NO-GO predicate against live query log + re-fire doc (Stage 2 proof)
@@ -4692,6 +4698,12 @@ _Last updated: 2026-11-10 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1422-lane11.md`
 
 **Evidence:** VERIFIED: refire-t1422.py sha256 2c00032b (match) re-run by scorer at 14:54Z reproduces byte-identically: 198 rows, emergent 0, verdict WAIT — predicate output, not the lane's. sb-demand-refire-t1422.md sha256 7a677c36 (match) at smartblocks/. Live log sha256 c902815f (match). Stale brief pin flagged openly; class-#17 deviation owned honestly. Clea
+
+### ✅ t1421-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** First automatic principle-violation detector: stall-cap-check.py with planted-violation + boundary proof and live-dir run
+
+**Evidence:** VERIFIED this tick on live bytes: hidden_files/bin/stall-cap-check.py sha256 e6d7653f... MATCHES receipt; stall-cap-check-testlog-t1421.txt d9bfe95a... MATCHES; stall-cap-fixtures-t1421/ present with 7 files (planted 0700/0725 pair, drift fixture, 1200/1300 boundary pair). NOT PHANTOM. Live-dir finding of ~100 cap breaches incl. post-rule pairs tak
 
 ### ✅ t1421-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
@@ -4707,6 +4719,12 @@ _Last updated: 2026-11-10 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: stall-cap-check.py sha256 e6d7653f (match); fixtures dir present (7 files); test log EXISTS with all 3 runs (planted catch incl. exact CAP-VIOLATION line, live-dir run ~100 findings, 60-min boundary pair). Gap found by scorer: the receipt's testlog sha256 pin d9bfe95a(9ff...) does NOT match the file d9bfe95a(1d7f...) — pin stale (content 
 
+### ✅ t1420-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Retrieval-auth gate migration prep: re-derive t942 candidate on fresh clone, byte-pinned wiring packet
+
+**Evidence:** VERIFIED this tick on live bytes: hidden_files/retrieval-auth-gate-migration-prep-t1420.md sha256 6b010d57... MATCHES receipt. NOT PHANTOM. Two real premise drifts documented (stale spec 4.1 line pin; CLI-driven drill needing a caller flag); verdict keeps READY (prep) and BLOCKED-on-word (wire) distinct. Repo pins and 25/25 suite pass taken on the 
+
 ### ✅ t1420-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
 
 **Task:** SURGE slice (b): re-derive t942 retrieval-auth gate on live bytes (fresh clone), write migration-prep doc byte-pinned
@@ -4720,6 +4738,12 @@ _Last updated: 2026-11-10 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1420-lane2.md`
 
 **Evidence:** VERIFIED: retrieval-auth-gate-migration-prep-t1420.md sha256 6b010d57 (match); doc carries exact wiring action, fail-closed discipline, gate; two genuine premise drifts found (stale spec §4.1 line pin; CLI-driven drill needs caller flag). No wiring/PR/merge — correctly read-only. Score 9.4. Kept from 9.5: the 25/25 suite pass and the two blob pins 
+
+### ✅ t1418-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (a): semantic H-done-entailment matcher arm, RED-first vs t0412 fixtures + TF-IDF control
+
+**Evidence:** VERIFIED this tick on live bytes: hidden_files/auto-retrieval/arm_semantic_t1418.py sha256 fb82ca54... MATCHES receipt; predictions-t1418.json dc43d5d6... MATCHES; results-t1418-semantic.json 4d6ccbe6... MATCHES. NOT PHANTOM. Pre-registration (seal mtime < results mtime) and P2#1 conservative test taken on the receipt's account; battery CLEAR / hol
 
 ### ✅ t1418-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
@@ -26972,6 +26996,12 @@ _Last updated: 2026-11-10 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0412-lane3.md`
 
 **Evidence:** VERIFIED: hidden_files/lane-3/t0412/replay-report.md exists (11,764 bytes); cited receipts all on disk. Real value: counter-principle column run to ground on all three decisions; produced a transferable rule (P3 protects P4 — never fix your own ruling's gate mid-ruling). Score 9.0 (GOOD, ONE MORE PASS): why not 9.5 = (1) D1 replays the seat's own w
+
+### ✅ t0412-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Stage-0 slice 3 rubric mechanization test (auto arm vs TF-IDF vs judge, frozen t0402 ground truth)
+
+**Evidence:** VERIFIED this tick on live bytes: hidden_files/auto-retrieval-slice3.py sha256 8e82eb70... MATCHES receipt; lane-experiments/t0412/auto-retrieval/auto-scores.json sha256 5c87df57... MATCHES receipt; slice3-comparison.md present. NOT PHANTOM. MRR judge 0.567 / TF-IDF 0.502 / AUTO 0.426 and P10 #14 as claimed, taken on the receipt's account (not re-e
 
 ### ✅ t0412 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
