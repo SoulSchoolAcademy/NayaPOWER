@@ -23,7 +23,10 @@ The master owns the loop: the daily intelligence reports, the Naya notes, the sm
 ### 5. Interfaces — the face
 The master is Nitro herself, captain of Team Nitro. Nitro owns interfaces — locked in 2026-11-07: one team, one standard, nobody else ships a page; other teams feed Nitro content, data, logic, pieces — never the design. Dashboard, Personal, Hub, Pricing — every page to his eye, phone first, every button doing what it says, every number alive. The face is the leader's own world.
 
-### 6. The team — Muse and her agents
+### 6. The Factory — the parts and the one click
+The master owns the Factory world: the parts, the inventory, the Project Intelligence, and the pages going live. The Factory holds every digital asset; the master keeps it current — every part inventoried, every page a template, nothing invented. Its first charge: creating a page is a click of a button. Like Facebook — add a group, create a page — one click activates the template: the onboarding runs, the build runs, the page goes live, no manual steps between the click and the live page. It is not complicated; it is a matter of mastering the universal template.
+
+### 7. The team — Muse and her agents
 The leader's own world. Every seat named, every lane staffed or honestly queued, nothing sitting. The twelve lanes — Sigma LEARN, Pi KNOW, Rho ACT, Xi LAW, Chi VERIFY, Nu BUILD, Omega WIRE, Omicron TEAM, Tau INFRA, Phi PRODUCT, Psi MEMORY, Upsilon GOVERN — are the hands the masters draw on. The daily captain scorecard is the measure.
 
 ## The leader — Nitro
@@ -35,6 +38,12 @@ Every master has the head role in their own world. If something needs doing, it 
 ## The reporting
 Each master reports to the leader daily — or on the loop where a loop runs: what changed, what was cleaned, what is unfinished, what needs a hand. The leader relays to Shawn: the done and the not-done together, plain words first, link as proof. The daily captain scorecard (starts Nov 10) measures the masters — pass rate, catch rate, time to live proof, rework rate. That scorecard is how the 6 becomes a 10.
 
+## The full-time seats
+Two components are big enough to hold a seat full-time, and they do: the Dashboard (the pass-4 coordinator is running) and the Personal template (the full-time seat is dispatched — fix-6 + About save persistence, then the universal template). The Factory master's first build runs alongside them (the one-click activation). Parallel lanes, one per component, running at the same time — that is the adopted solution, and it is how the system gets completed.
+
+## The method — non-stop until done
+The method is written down so it can just be repeated: `TEAM-NITRO/THE-NON-STOP-METHOD-20261110.md`. The pricing chart is the list (36 rows, every part, real or missing). The loop: take the next part → build it from harvested parts → visually show the evidence (live, phone + desktop, scroll 0 + scrolled) → check it works yourself (click every button) → file it and note it → next part. No stopping between parts. A part is done when the evidence shows it live and working. The system is done when all parts are done, all pages done, all working, all synced — and it does everything we are describing.
+
 ## Flexible by design
 A master is a role, not a headcount. One seat or a small team, as the world needs. A world that grows gets a new master when it grows. The shape holds even as the people change: one master per world, one leader over all, nothing unwatched.
 
@@ -44,4 +53,7 @@ A master is a role, not a headcount. One seat or a small team, as the world need
 - NayaNET master: the loop and the noting seat already run — the daily report, the notes, the mail, the feed.
 - Cloudflare master: the deploy path. Next deploy is the Dashboard pass-4, after his eye.
 - Interfaces: pass-4 in fix round 2.
+- Factory master: first build is the one-click activation (dispatched 03:01Z Nov 10).
+- Personal template, full-time: fix-6 + About save persistence (dispatched 03:01Z Nov 10), then the universal template.
+- The method: `TEAM-NITRO/THE-NON-STOP-METHOD-20261110.md` — the loop that runs non-stop until it is done.
 - The leader: the daily captain scorecard starts Nov 10.
