@@ -257,7 +257,7 @@ Re-run sample (3 tables + 3 functions):
 5. `v7-smart-note-canonical` — ACTIVE v26; live endpoint answers auth-gated.
 6. `nayanet_pages` — anon REST read returns `PGRST205`.
 
-Filing: `TEAM-NITRO/SUPABASE-AUDIT-20261110.md` on branch `supabase/audit-20261110`, read-back verified byte-identical. Accompanying smart note filed in the `##` format and verified live on the feed.
+Filing: `TEAM-NITRO/SUPABASE-AUDIT-20261110.md` on branch `supabase/audit-20261110`, read-back verified byte-identical. Accompanying smart note **SN-2632** ("The Supabase Audit — 6 Out of 10, and the One Open Door") filed to main in the `##` format, read-back verified, and confirmed live as a row in `hub_smart_notes` — but the rendered feed/share link (`nayanet.live/s/sn2632`) could NOT be verified from this VM: nayanet.live is unreachable here (curl 000, browser fetch DNS/connection failure), a transport limit, not a verdict on the link. That check is owed by a seat that can reach nayanet.live.
 
 ## Honest NOT-DONE list
 - No fix was made in this audit — read-only by design. Every gap above is still open at filing time.
@@ -265,3 +265,4 @@ Filing: `TEAM-NITRO/SUPABASE-AUDIT-20261110.md` on branch `supabase/audit-202611
 - The "3 stale duplicate rows" named in the brief could not be matched to one named set in the record; what the live table holds instead is measured in Gap 2 (20 duplicated titles, two triplets, one number collision).
 - The connector doc is still an unfilled template (noted, not fixed — a seat task).
 - No deploy, no merge, no Supabase change of any kind was made.
+- Rendered-feed verification of SN-2632 is still owed: the note is on main and its row is live in `hub_smart_notes`, but `nayanet.live/s/sn2632` could not be reached from this VM (transport failure, not a verdict).
