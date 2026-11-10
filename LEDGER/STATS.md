@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-10 16:04 UTC_
+_Last updated: 2026-11-10 16:31 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 8303
-- ✅ Verified (8+): 8231
+- **Total scored actions:** 8308
+- ✅ Verified (8+): 8236
 - 🟡 Partial (5–7): 67
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 5
@@ -16,14 +16,14 @@ _Last updated: 2026-11-10 16:04 UTC_
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 552 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 552 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 505 | 9.0 | 10 |
+| Team 2 | Naya Sage | 554 | 8.9 | 9.5 |
+| Team 3 | Naya Judge | 507 | 9.0 | 10 |
 | Team 4 | Naya Mason | 488 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 633 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 360 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 483 | 8.9 | 10 |
 | Team 8 | Naya Sentinel | 508 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 639 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 640 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 867 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 525 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 417 | 9.2 | 9.5 |
@@ -2470,9 +2470,11 @@ _Last updated: 2026-11-10 16:04 UTC_
 - **t0531-lane9:** 1 actions, avg 9.0/10
 - **t0532:** 6 actions, avg 9.0/10
 - **t0532-lane12:** 1 actions, avg 9.0/10
+- **t0532-lane2:** 1 actions, avg 9.0/10
 - **t0532-lane7:** 1 actions, avg 9.0/10
 - **t0533:** 6 actions, avg 8.9/10
 - **t0533-lane1:** 1 actions, avg 9.0/10
+- **t0533-lane2:** 1 actions, avg 8.5/10
 - **t0533-lane3:** 1 actions, avg 8.5/10
 - **t0534:** 4 actions, avg 8.5/10
 - **t0534-lane5:** 1 actions, avg 8.5/10
@@ -2492,6 +2494,7 @@ _Last updated: 2026-11-10 16:04 UTC_
 - **t0538-lane1:** 1 actions, avg 9.0/10
 - **t0538-lane7:** 1 actions, avg 9.0/10
 - **t0539:** 4 actions, avg 8.6/10
+- **t0539-lane3:** 1 actions, avg 8.5/10
 - **t0540:** 6 actions, avg 9.0/10
 - **t0541:** 26 actions, avg 9.0/10
 - **t0544:** 3 actions, avg 9.2/10
@@ -2530,10 +2533,10 @@ _Last updated: 2026-11-10 16:04 UTC_
 - **t0580:** 6 actions, avg 8.8/10
 - **t0580b:** 29 actions, avg 9.1/10
 - **t0580b-lane5:** 2 actions, avg 9.0/10
-- **t0580b-lane9:** 1 actions, avg 9.0/10
+- **t0580b-lane9:** 2 actions, avg 9.0/10
 - **t0581:** 5 actions, avg 9.0/10
 - **t0581b:** 15 actions, avg 9.0/10
-- **t0581b-lane3:** 1 actions, avg 9.0/10
+- **t0581b-lane3:** 2 actions, avg 9.0/10
 - **t0582:** 7 actions, avg 9.0/10
 - **t0582b:** 14 actions, avg 8.7/10
 - **t0582b-lane4:** 1 actions, avg 9.5/10
