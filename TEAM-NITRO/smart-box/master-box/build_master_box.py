@@ -191,6 +191,8 @@ def _harvest():
     HARVEST["the-master-box-design"] = extract(
         MEMORY, "THE MASTER BOX — OFFICIALLY SET UP",
         "\n- **THE PERMISSION MODEL")
+    HARVEST["the-notification-rulings"] = extract(
+        MEMORY, "THE INTELLIGENCE RUBRIC", None)
     return HARVEST
 
 
@@ -498,6 +500,20 @@ def master_blocks():
            "MEMORY.md",
            links=["collective:note:the-box-shape",
                   "collective:note:the-notification-design"]),
+        mk("the-notification-rulings",
+           "The notification rulings - what counts as major, when the digest goes",
+           ["notification", "rulings", "rubric", "digest"],
+           "Major intelligence is judged on a scale from -9 to +9. "
+           "The digest rides the Daily Intelligence Report at 23:17 "
+           "UTC. His Naya Notes go to the team, mostly. Nothing is "
+           "black and white: the baseline covers 99% of the time, "
+           "and judgment in the moment covers the rest.",
+           HARVEST["the-notification-rulings"],
+           "MEMORY.md: THE INTELLIGENCE RUBRIC + D2 + D3 + D4 + "
+           "THE 99% BASELINE PRINCIPLE (Shawn 01:58Z Nov 10)",
+           "MEMORY.md",
+           links=["collective:note:the-notification-design",
+                  "collective:note:the-permission-model"]),
         mk("the-master-box-design",
            "The master box - the mother of all Smart Boxes",
            ["master-box", "mother", "collective"],
