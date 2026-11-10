@@ -22,6 +22,10 @@ What it checks (each is a named section in the output):
   8. SHOULD THIS EXIST — the brief names the host page the work
      attaches to and what it does not duplicate; a standalone page
      fails outright (the minus-ten law, 2026-11-10).
+  9. EDIT, DON'T CREATE — the brief names the existing base file
+     being edited; a new file needs a captain-signed justification
+     of why no existing file hosts it (the never-start-over law,
+     2026-11-10).
 
 Rules of the checker itself (the lock-in law):
   - Plain Python, stdlib only. No dependencies.
@@ -465,11 +469,60 @@ def check_8_should_exist(text):
     return r
 
 
+# ---------------------------------------------------------------- check 9
+
+BASE_FILE = re.compile(r"base file|the base", re.I)
+EDIT_NOT_CREATE = re.compile(
+    r"edit.{0,40}(this|the) file|edits this file|never rebuild", re.I)
+NEW_FILE_JUSTIFICATION = re.compile(
+    r"new file.{0,80}why no existing|why no existing file", re.I | re.S)
+NOT_A_PAGE_BUILD = re.compile(
+    r"not a page build|no page file applies", re.I)
+
+
+def check_9_edit_dont_create(text):
+    """The never-start-over law, made mechanical. The Factory
+    one-click flow passed checks 1-8 because the machine policed
+    the ELEMENTS (Law 14: every element traces to the piece index)
+    but never policed the FILE: a builder could harvest every
+    element and still write a brand-new page from scratch. That is
+    the glitch — a fresh file is a restart to grade one, and we are
+    at grade twelve. Every page/interface brief names the existing
+    base file being edited; a new file is allowed only with a
+    captain-signed justification of why no existing file hosts it.
+    Document/system/library briefs state plainly that no page file
+    applies."""
+    r = Result(9, "EDIT, DON'T CREATE — BASE FILE, NO FRESH BUILD")
+    if NOT_A_PAGE_BUILD.search(text):
+        r.ok("not a page build — stated plainly")
+        return r
+    if NEW_FILE_JUSTIFICATION.search(text):
+        if BASE_FILE.search(text):
+            r.ok("new file justified + existing files named")
+        else:
+            r.fail("new-file justification present but names no "
+                   "existing file checked")
+        return r
+    if BASE_FILE.search(text) and EDIT_NOT_CREATE.search(text):
+        r.ok("base file named + edit-not-create stated")
+    elif BASE_FILE.search(text):
+        r.fail("base file named but no edit-not-create statement "
+               "(the deliverable must be an edit to that file, never "
+               "a fresh build)")
+    else:
+        r.fail("no base file named — every page brief names the "
+               "existing file being edited; a new file needs a "
+               "captain-signed 'why no existing file hosts this' "
+               "section")
+    return r
+
+
 # ---------------------------------------------------------------- main
 
 CHECKS = [check_1_done_first, check_2_harvest, check_3_laws,
           check_4_gate, check_5_anti_repeat, check_6_five_gates,
-          check_7_verification, check_8_should_exist]
+          check_7_verification, check_8_should_exist,
+          check_9_edit_dont_create]
 
 
 def check_brief(path):
