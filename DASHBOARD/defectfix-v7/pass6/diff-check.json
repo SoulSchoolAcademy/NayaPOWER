@@ -1,0 +1,362 @@
+{
+ "dashboard-pass5-base.html-1440": {
+  "minis": [
+   "1100",
+   "0",
+   "0.0%",
+   "1293",
+   "5",
+   "4",
+   "1293",
+   "0",
+   "0.3%",
+   "0",
+   "1316",
+   "4",
+   "5",
+   "2",
+   "1293",
+   "4",
+   "0.3%",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0"
+  ],
+  "orbs": [
+   {
+    "text": "1100",
+    "digit": 13,
+    "tiled": true
+   },
+   {
+    "text": "0",
+    "digit": 13,
+    "tiled": true
+   },
+   {
+    "text": "280",
+    "digit": 13,
+    "tiled": true
+   },
+   {
+    "text": "50",
+    "digit": 13,
+    "tiled": true
+   },
+   {
+    "text": "100",
+    "digit": 13,
+    "tiled": true
+   },
+   {
+    "text": "0",
+    "digit": 13,
+    "tiled": true
+   },
+   {
+    "text": "0",
+    "digit": 13,
+    "tiled": true
+   },
+   {
+    "text": "0",
+    "digit": 13,
+    "tiled": true
+   },
+   {
+    "text": "5",
+    "digit": 13,
+    "tiled": true
+   }
+  ],
+  "numeral": "1 100",
+  "state": "live",
+  "gaugeTrackPts": [
+   "863",
+   "1 048",
+   "1 093",
+   "1 100",
+   "1 100"
+  ]
+ },
+ "dashboard-pass5-base.html-390": {
+  "minis": [
+   "1100",
+   "0",
+   "0.0%",
+   "1293",
+   "5",
+   "4",
+   "1293",
+   "0",
+   "0.3%",
+   "0",
+   "1316",
+   "4",
+   "5",
+   "2",
+   "1293",
+   "4",
+   "0.3%",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0"
+  ],
+  "orbs": [
+   {
+    "text": "1100",
+    "digit": 10,
+    "tiled": true
+   },
+   {
+    "text": "0",
+    "digit": 10,
+    "tiled": true
+   },
+   {
+    "text": "280",
+    "digit": 10,
+    "tiled": true
+   },
+   {
+    "text": "50",
+    "digit": 10,
+    "tiled": true
+   },
+   {
+    "text": "100",
+    "digit": 10,
+    "tiled": true
+   },
+   {
+    "text": "0",
+    "digit": 10,
+    "tiled": true
+   },
+   {
+    "text": "0",
+    "digit": 10,
+    "tiled": true
+   },
+   {
+    "text": "0",
+    "digit": 10,
+    "tiled": true
+   },
+   {
+    "text": "5",
+    "digit": 10,
+    "tiled": true
+   }
+  ],
+  "numeral": "1 100",
+  "state": "live",
+  "gaugeTrackPts": [
+   "877",
+   "1 055",
+   "1 094",
+   "1 100",
+   "1 100"
+  ]
+ },
+ "dashboard-pass6.html-1440": {
+  "minis": [
+   "1100",
+   "0",
+   "0.0%",
+   "1293",
+   "5",
+   "4",
+   "1293",
+   "0",
+   "0.3%",
+   "0",
+   "1316",
+   "4",
+   "5",
+   "2",
+   "1293",
+   "4",
+   "0.3%",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0"
+  ],
+  "orbs": [
+   {
+    "text": "1100",
+    "digit": 24,
+    "tiled": true
+   },
+   {
+    "text": "0",
+    "digit": 24,
+    "tiled": true
+   },
+   {
+    "text": "280",
+    "digit": 24,
+    "tiled": true
+   },
+   {
+    "text": "50",
+    "digit": 24,
+    "tiled": true
+   },
+   {
+    "text": "100",
+    "digit": 24,
+    "tiled": true
+   },
+   {
+    "text": "0",
+    "digit": 24,
+    "tiled": true
+   },
+   {
+    "text": "0",
+    "digit": 24,
+    "tiled": true
+   },
+   {
+    "text": "0",
+    "digit": 24,
+    "tiled": true
+   },
+   {
+    "text": "5",
+    "digit": 24,
+    "tiled": true
+   }
+  ],
+  "numeral": "1 100",
+  "state": "live",
+  "gaugeTrackPts": [
+   "930",
+   "1 055",
+   "1 093",
+   "1 100",
+   "1 100"
+  ]
+ },
+ "dashboard-pass6.html-390": {
+  "minis": [
+   "1100",
+   "0",
+   "0.0%",
+   "1293",
+   "5",
+   "4",
+   "1293",
+   "0",
+   "0.3%",
+   "0",
+   "1316",
+   "4",
+   "5",
+   "2",
+   "1293",
+   "4",
+   "0.3%",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0",
+   "0"
+  ],
+  "orbs": [
+   {
+    "text": "1100",
+    "digit": 18,
+    "tiled": true
+   },
+   {
+    "text": "0",
+    "digit": 18,
+    "tiled": true
+   },
+   {
+    "text": "280",
+    "digit": 18,
+    "tiled": true
+   },
+   {
+    "text": "50",
+    "digit": 18,
+    "tiled": true
+   },
+   {
+    "text": "100",
+    "digit": 18,
+    "tiled": true
+   },
+   {
+    "text": "0",
+    "digit": 18,
+    "tiled": true
+   },
+   {
+    "text": "0",
+    "digit": 18,
+    "tiled": true
+   },
+   {
+    "text": "0",
+    "digit": 18,
+    "tiled": true
+   },
+   {
+    "text": "5",
+    "digit": 18,
+    "tiled": true
+   }
+  ],
+  "numeral": "1 100",
+  "state": "live",
+  "gaugeTrackPts": [
+   "873",
+   "1 058",
+   "1 095",
+   "1 100",
+   "1 100"
+  ]
+ }
+}
