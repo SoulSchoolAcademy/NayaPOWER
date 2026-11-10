@@ -1,0 +1,114 @@
+[
+  {
+    "id": "5011fe87-7d29-4208-8d86-a6bc98d508f3",
+    "name": "joinus",
+    "target_url": "https://nayanet.app/welcome",
+    "active": true,
+    "owner_alias": "flagship-personal",
+    "created_at": "2026-10-23T15:57:23.116941+00:00"
+  },
+  {
+    "id": "25368a0a-19d5-4b74-879f-4b8c6342b68e",
+    "name": "power-quarterly",
+    "target_url": "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-0KN19958AE674942RNLXCPAA",
+    "active": true,
+    "owner_alias": "flagship-personal",
+    "created_at": "2026-11-06T20:59:19.880638+00:00"
+  },
+  {
+    "id": "6856183b-5bd4-4aa3-a21f-f878576f1965",
+    "name": "power-monthly",
+    "target_url": "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-8R981894073971936NLXBB4A",
+    "active": true,
+    "owner_alias": "flagship-personal",
+    "created_at": "2026-11-06T21:02:54.687494+00:00"
+  },
+  {
+    "id": "4ca9ac7e-624b-4ff6-90e1-b93a9f6af495",
+    "name": "power-yearly",
+    "target_url": "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-11G64738AC933853PNLXCM2Q",
+    "active": true,
+    "owner_alias": "flagship-personal",
+    "created_at": "2026-11-06T21:03:03.819898+00:00"
+  },
+  {
+    "id": "b9268851-3291-4123-a328-a528266df816",
+    "name": "pro-monthly",
+    "target_url": "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-9C183697N7307403UNLXCUBI",
+    "active": true,
+    "owner_alias": "flagship-personal",
+    "created_at": "2026-11-06T21:03:13.000675+00:00"
+  },
+  {
+    "id": "fb60a78a-3cb0-45a8-9700-78de93673650",
+    "name": "pro-quarterly",
+    "target_url": "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-8NA584022N107122UNLXDGEQ",
+    "active": true,
+    "owner_alias": "flagship-personal",
+    "created_at": "2026-11-06T21:03:23.693748+00:00"
+  },
+  {
+    "id": "cbe7a163-37f1-42f8-bffb-c3c4561816f3",
+    "name": "pro-yearly",
+    "target_url": "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-8UW94978BW329323UNLXDIPA",
+    "active": true,
+    "owner_alias": "flagship-personal",
+    "created_at": "2026-11-06T21:03:33.456997+00:00"
+  },
+  {
+    "id": "e1f7a2cc-69ca-49a3-9c2e-112d8786966c",
+    "name": "max-monthly",
+    "target_url": "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-7AL685984U3816414NLXDOMQ",
+    "active": true,
+    "owner_alias": "flagship-personal",
+    "created_at": "2026-11-06T21:03:43.097752+00:00"
+  },
+  {
+    "id": "d2dcbd74-d125-4f3e-87f8-49094a7303f6",
+    "name": "max-quarterly",
+    "target_url": "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-11P49072XN471673PNLXDMBY",
+    "active": true,
+    "owner_alias": "flagship-personal",
+    "created_at": "2026-11-06T21:03:52.152369+00:00"
+  },
+  {
+    "id": "9b986559-3940-4077-95a0-f196a0ad0dda",
+    "name": "max-yearly",
+    "target_url": "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-7Y535865SR1836345NLXDQ6I",
+    "active": true,
+    "owner_alias": "flagship-personal",
+    "created_at": "2026-11-06T21:04:00.989552+00:00"
+  },
+  {
+    "id": "96fc3d38-93c7-4912-a75a-897e719f7e63",
+    "name": "academy",
+    "target_url": "https://nayanet.groovepages.com/academy",
+    "active": true,
+    "owner_alias": "flagship-personal",
+    "created_at": "2026-11-06T23:26:10.706472+00:00"
+  },
+  {
+    "id": "9127bd23-8f26-4943-ba3d-be34863981b1",
+    "name": "lane6test",
+    "target_url": "https://example.com/lane6",
+    "active": true,
+    "owner_alias": "flagship-personal",
+    "created_at": "2026-11-07T15:58:56.039044+00:00"
+  },
+  {
+    "id": "20772b90-76a8-48c0-8029-63609658967b",
+    "name": "closer-test-7x9",
+    "target_url": "https://example.com/closer-test-page",
+    "active": true,
+    "owner_alias": "flagship-personal",
+    "created_at": "2026-11-07T16:58:50.259985+00:00"
+  },
+  {
+    "id": "83e521de-b0ed-44c4-b089-47111d8f94da",
+    "name": "my-test-link",
+    "target_url": "https://example.com/my-page",
+    "active": true,
+    "owner_alias": "flagship-personal",
+    "created_at": "2026-11-09T16:20:39.519753+00:00"
+  }
+]
