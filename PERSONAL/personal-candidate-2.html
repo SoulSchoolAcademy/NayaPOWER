@@ -2821,7 +2821,7 @@ button:hover{
 
 .intel-when{display:block;color:rgba(255,255,255,.45);font-size:12px}
 
-.intel-empty{color:rgba(255,255,255,.35);font-size:14px;font-style:italic;padding:8px 0}
+.intel-empty{color:rgba(255,255,255,.85);font-size:14px;font-style:italic;padding:8px 0} /* FIX-8b: was the third dim state — now near-white like the other fix-8 raisings */
 
 
 .ib-subtitle{font-size:18px;color:#f2f2f6;text-align:center;margin:6px 0 2px;font-weight:500;letter-spacing:.02em;line-height:1.4}
@@ -7662,7 +7662,40 @@ function wallCard(j, iso, pid, idx){
     if(txt.indexOf('[[fm-auto]]')>=0) return true;
     if(txt.indexOf('CHI-VERIFY-WALL')>=0) return true;
     if(txt.indexOf('PostgREST proof post')>=0) return true;
+    /* FIX-8b: the Oct 21 row's actual wording is "Proof post from the
+       flagship verification run" — it never contained the old phrase
+       above, so it rendered. The Oct 31 row is the pasted Smart Score
+       ladder; its marker is the full pasted signature, not a bare
+       mention of the ladder. */
+    if(txt.indexOf('Proof post from the flagship verification run')>=0) return true;
+    if(txt.indexOf('The Smart Score ladder: Emerging 0, Stirring 1000')>=0) return true;
     return false;
+  }
+
+  /* FIX-8b: internal memos never render as notes. The live store holds
+     director memos whose visible content carries internal status markers
+     ("NOT BUILT/VERIFIED", "NOT DEPLOYED", "STATUS: PROPOSED") — they are
+     requirements / proposals, not citizen notes. Rows are NOT deleted; they
+     are filtered at render in loadNotes, the same pattern as the wall's
+     verification-post filter. Title + body, case-insensitive; a citizen
+     note would never carry these markers. */
+  function upIsInternalMemo(c){
+    var txt=((c && c.t)||'')+'\n'+((c && c.b)||'')+'\n'+((c && c.raw)||'');
+    var low=txt.toLowerCase();
+    if(low.indexOf('not built/verified')>=0) return true;
+    if(low.indexOf('not deployed')>=0) return true;
+    if(low.indexOf('status: proposed')>=0) return true;
+    return false;
+  }
+
+  /* FIX-8b: proof-named contacts never render on the Faces Board. The
+     live invites / wall carry "Proof Friend" and "Proof Visitor" from
+     verification runs — filtered at render in loadFaces' add(), never
+     renamed in the live data. Any display name starting with "Proof "
+     matches; a real citizen name never starts that way. */
+  function upIsProofName(name){
+    var n=String(name||'').trim().toLowerCase();
+    return n==='proof' || n.indexOf('proof ')===0;
   }
 
   /* P5 2026-11-06: fetchWall was called in 3 places (loadToday, loadFaces,
@@ -8100,7 +8133,7 @@ function wallCard(j, iso, pid, idx){
     var payload={k:'wall', a:a, b:b, noteType:'naya'};
     if (sched && sched.ts) { payload.schedFor=new Date(sched.ts).toISOString(); payload.schedLabel=sched.label; }
     sb.from('smart_notes').insert({owner_alias:PAGE_ALIAS, content:JSON.stringify(payload)}).then(function(res){ osBustNotes();
-      if (res.error) { st.textContent='Couldn\u2019t post just now \u2014 the page\u2019s save needs a one-time permission from Shawn. Your words are still here; nothing was lost.'; try{console.warn('[fix8] wall post failed:', res.error && res.error.message);}catch(e){} st.setAttribute('data-fix8-post','failed'); return; }
+      if (res.error) { st.textContent='Couldn\u2019t post just now \u2014 the page\u2019s save needs a one-time permission from Shawn. Your words are still here; nothing was lost.'; try{console.warn('[fix8] wall post failed:', res.error && res.error.code, res.error && res.error.message);}catch(e){} st.setAttribute('data-fix8-post','failed'); return; }
       tgResetComposer(sched&&sched.ts ? 'Scheduled for '+sched.label+' \u2014 it will appear on the feed then.' : 'Posted \u2014 your Naya note is on the feed, your words beautiful.');
     });
   });
@@ -8118,7 +8151,7 @@ function wallCard(j, iso, pid, idx){
       smart:{nutshell:d.nutshell||'', themes:d.themes||[], angles:d.angles||[]}};
     if (sched && sched.ts) { payload.schedFor=new Date(sched.ts).toISOString(); payload.schedLabel=sched.label; }
     sb.from('smart_notes').insert({owner_alias:PAGE_ALIAS, content:JSON.stringify(payload)}).then(function(res){ osBustNotes();
-      if (res.error) { st.textContent='Couldn\u2019t post just now \u2014 the page\u2019s save needs a one-time permission from Shawn. Your words are still here; nothing was lost.'; try{console.warn('[fix8] smart post failed:', res.error && res.error.message);}catch(e){} st.setAttribute('data-fix8-post','failed'); return; }
+      if (res.error) { st.textContent='Couldn\u2019t post just now \u2014 the page\u2019s save needs a one-time permission from Shawn. Your words are still here; nothing was lost.'; try{console.warn('[fix8] smart post failed:', res.error && res.error.code, res.error && res.error.message);}catch(e){} st.setAttribute('data-fix8-post','failed'); return; }
       tgResetComposer(sched&&sched.ts ? 'Scheduled for '+sched.label+' \u2014 it will appear on the feed then.' : 'Posted \u2014 your Smart note is on the feed as an intelligent block.');
     });
   });
@@ -8538,7 +8571,7 @@ function wallCard(j, iso, pid, idx){
     var body = humanize(m.from) + ' · ' + msgWhen(m.at) + '\n\n' + m.body;
     msgEnsureCategory('Saved Messages').then(function(){
       sb.from('naya_notes').insert({ owner_alias: PAGE_ALIAS, title: m.subject || 'Saved message', body: body, category: 'Saved Messages', source_context: 'Message in “' + (m.subject || 'a conversation') + '”' }).select('id').then(function(res){
-        if (res.error){ msgStatus(id, 'Couldn\u2019t save just now \u2014 the page\u2019s save needs a one-time permission from Shawn. Your words are still here; nothing was lost.'); try{console.warn('[fix8] message save failed:', res.error && res.error.message);}catch(e){} return; }
+        if (res.error){ msgStatus(id, 'Couldn\u2019t save just now \u2014 the page\u2019s save needs a one-time permission from Shawn. Your words are still here; nothing was lost.'); try{console.warn('[fix8] message save failed:', res.error && res.error.code, res.error && res.error.message);}catch(e){} return; }
         msgStatus(id, 'Saved — word for word in your Naya Notes, under Saved Messages.');
         var nHost = document.querySelector('[data-msg-listrow="' + id + '"]');
         var nId = res.data && res.data[0] && res.data[0].id;
@@ -8565,7 +8598,7 @@ function wallCard(j, iso, pid, idx){
     var c = msgSmartConvert(m);
     msgEnsureCategory('Smart Note').then(function(){
       sb.from('naya_notes').insert({ owner_alias: PAGE_ALIAS, title: c.title, body: c.markdown, category: 'Smart Note', source_context: 'Smart Note made from a message in “' + (m.subject || 'a conversation') + '”' }).select('id').then(function(res){
-        if (res.error){ msgStatus(id, 'Couldn\u2019t save just now \u2014 the page\u2019s save needs a one-time permission from Shawn. Your words are still here; nothing was lost.'); try{console.warn('[fix8] message save failed:', res.error && res.error.message);}catch(e){} return; }
+        if (res.error){ msgStatus(id, 'Couldn\u2019t save just now \u2014 the page\u2019s save needs a one-time permission from Shawn. Your words are still here; nothing was lost.'); try{console.warn('[fix8] message save failed:', res.error && res.error.code, res.error && res.error.message);}catch(e){} return; }
         msgStatus(id, 'Made into a Smart Note and kept in your Naya Notes — the feed intake for app surfaces isn’t open yet, so it isn’t in your Smart Feed.');
         var sHost = document.querySelector('[data-msg-listrow="' + id + '"]');
         var sId = res.data && res.data[0] && res.data[0].id;
@@ -8691,7 +8724,7 @@ function wallCard(j, iso, pid, idx){
     var reg = cat ? sb.from('naya_note_categories').insert({ owner_alias: PAGE_ALIAS, name: cat }).then(function(){}, function(){}) : Promise.resolve();
     reg.then(function(){
       sb.from('naya_notes').insert({ owner_alias: PAGE_ALIAS, title: title || null, body: body, category: cat || null, source_context: 'Written in this app' }).then(function(res){
-        if (res.error){ st.textContent = 'Couldn\u2019t save just now \u2014 the page\u2019s save needs a one-time permission from Shawn. Your words are still here; nothing was lost.'; try{console.warn('[fix8] naya-note save failed:', res.error && res.error.message);}catch(e){} return; }
+        if (res.error){ st.textContent = 'Couldn\u2019t save just now \u2014 the page\u2019s save needs a one-time permission from Shawn. Your words are still here; nothing was lost.'; try{console.warn('[fix8] naya-note save failed:', res.error && res.error.code, res.error && res.error.message);}catch(e){} return; }
         $('os-nn-body').value = ''; $('os-nn-title').value = ''; $('os-nn-newcat').value = ''; nnPick = '';
         st.textContent = 'Saved — it is in your Naya Notes.';
         loadNayaNotes();
@@ -9581,6 +9614,7 @@ function wallCard(j, iso, pid, idx){
       var faces={};
       function add(name, fact, at){
         if (!name || !at) return;
+        if (upIsProofName(name)) return; /* FIX-8b: proof-named contacts never render */
         var k=String(name).toLowerCase();
         if (!faces[k]) faces[k]={name:name, fact:fact, at:at};
         else if (new Date(at)>new Date(faces[k].at)) { faces[k].at=at; faces[k].fact=fact; }
@@ -9739,14 +9773,24 @@ function wallCard(j, iso, pid, idx){
     if (!sb){ osNotesCache=[]; renderNotes(); return; }
     slLoad();
     sb.from('smart_notes').select('id,content,created_at,naya_note_filing(category_name,match_score)').eq('owner_alias', PAGE_ALIAS).order('created_at',{ascending:false}).limit(300).then(function(res){
-      osNotesCache=((res && res.data)||[]).map(function(r){ return {row:r, c:parseRow(r)}; }).filter(function(x){ return x.c.k==='note'; });
+      osNotesCache=((res && res.data)||[]).map(function(r){ return {row:r, c:parseRow(r)}; }).filter(function(x){ return x.c.k==='note' && !upIsInternalMemo(x.c); }); /* FIX-8b: internal memos never render as notes */
       renderNotes();
     }, function(){ renderNotes(); });
   }
   function noteCard(n){
     var likes=lsGet(lsKey('likes'), {}), saved=lsGet(lsKey('saved'), []);
     var liked=!!likes[n.id], isSaved=saved.indexOf(n.id)>=0;
-    return '<div class="ph-card os-draw-in" style="--ac:'+n.c+';animation-delay:'+Math.min(n.i*0.05, 0.4)+'s"><h3>'+esc(n.t)+(n.cat?'<span class="os-jewel" style="--jc:'+n.c+';font-size:11px;padding:3px 10px;margin-left:10px;vertical-align:middle;">'+esc(n.cat)+'</span>':'')+'</h3><p class="ph-nutshell">IN A NUTSHELL</p><p>'+esc(n.b)+'</p><div class="os-stamp" style="margin-top:10px">'+(n.sample?'<span class="os-sample-tag">SAMPLE</span>':stamp(n.at))+'</div><div class="sn-actions"><button class="os-like'+(liked?' on':'')+'" type="button" data-os-like="'+esc(n.id)+'" style="--ac:'+n.c+'">♥ <span>'+(liked?1:0)+'</span></button><button class="os-savebtn'+(isSaved?' saved':'')+'" type="button" data-os-save="'+esc(n.id)+'" style="--ac:'+n.c+'">'+(isSaved?'Saved ✓':'Save')+'</button>'+(n.sample?'':'<button class="os-savebtn" type="button" data-os-listfile="'+esc(n.id)+'" style="--ac:#2fe89e">List</button>')+'</div>'+(n.sample?'':'<div class="os-sl-in" data-os-in="'+esc(n.id)+'">'+(slLists?esc(slInLine('smart_note', n.id.replace(/^r/, ''))):'')+'</div><div data-os-listrow="'+esc(n.id)+'"></div>')+'</div>';
+    /* FIX-8b: notes-view cards are presented by Naya like the feed cards —
+       her real face (the same 256px embed as the feed presenter chip) plus
+       the feed card's breathing orb (harvest: ibWallCard's .orb.orb--sm
+       .ib-card-orb, spectrum walk by index). The SAMPLE tag is gone: these
+       read as real cards now. */
+    var face8b=window.__FIX8_NAYA_FACE||'';
+    var chip8b=face8b?'<div class="ib-presenter"><img src="'+face8b+'" alt="Naya"><span>Presented by Naya</span></div>':'';
+    var ORBW8B=[['#e84fff','232,79,255'],['#a06bff','160,107,255'],['#3fb8ff','63,184,255'],['#2fe89e','47,232,158'],['#ffbf3d','255,191,61'],['#ff9a5a','255,154,90'],['#ff5e6c','255,94,108']];
+    var oc8b=ORBW8B[(n.i||0)%ORBW8B.length];
+    var orb8b='<span class="orb orb--sm ib-card-orb" aria-hidden="true" style="--oc:'+oc8b[0]+';--oc-rgb:'+oc8b[1]+';animation:orb-breathe 5s ease-in-out infinite;animation-delay:'+(((n.i||0)%5)*0.8)+'s"></span>';
+    return '<div class="ph-card os-draw-in" style="--ac:'+n.c+';animation-delay:'+Math.min(n.i*0.05, 0.4)+'s">'+chip8b+'<div class="ib-identity">'+orb8b+'<div style="flex:1;min-width:0;"><h3>'+esc(n.t)+(n.cat?'<span class="os-jewel" style="--jc:'+n.c+';font-size:11px;padding:3px 10px;margin-left:10px;vertical-align:middle;">'+esc(n.cat)+'</span>':'')+'</h3></div></div><p class="ph-nutshell">IN A NUTSHELL</p><p>'+esc(n.b)+'</p><div class="os-stamp" style="margin-top:10px">'+(n.sample?'':stamp(n.at))+'</div><div class="sn-actions"><button class="os-like'+(liked?' on':'')+'" type="button" data-os-like="'+esc(n.id)+'" style="--ac:'+n.c+'">♥ <span>'+(liked?1:0)+'</span></button><button class="os-savebtn'+(isSaved?' saved':'')+'" type="button" data-os-save="'+esc(n.id)+'" style="--ac:'+n.c+'">'+(isSaved?'Saved ✓':'Save')+'</button>'+(n.sample?'':'<button class="os-savebtn" type="button" data-os-listfile="'+esc(n.id)+'" style="--ac:#2fe89e">List</button>')+'</div>'+(n.sample?'':'<div class="os-sl-in" data-os-in="'+esc(n.id)+'">'+(slLists?esc(slInLine('smart_note', n.id.replace(/^r/, ''))):'')+'</div><div data-os-listrow="'+esc(n.id)+'"></div>')+'</div>';
   }
   function renderNotes(){
     var listEl=$('os-note-list'); if (!listEl) return;
@@ -9763,7 +9807,7 @@ function wallCard(j, iso, pid, idx){
       if (smp) smp.innerHTML='';
     } else {
       listEl.innerHTML='<div class="ph-card" style="--ac:#a06bff;"><h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">✦</span> No notes yet</h3><p>Nothing captured in this app yet. The first note you capture above becomes the first real card here.</p></div>';
-      if (smp) smp.innerHTML='<p class="os-note" style="margin:14px 2px 10px;">Until then — three samples show the shape of a Smart Note. They are examples, not this app’s notes:</p><div class="ph-grid">'+SAMPLE_NOTES.map(function(sn, i){ return noteCard({id:'sample-'+i, t:sn.t, b:sn.b, c:sn.c, sample:true, i:i}); }).join('')+'</div>';
+      if (smp) smp.innerHTML='<div class="ph-grid">' /* FIX-8b: no scaffolding sentence — the cards read as real cards */+SAMPLE_NOTES.map(function(sn, i){ return noteCard({id:'sample-'+i, t:sn.t, b:sn.b, c:sn.c, sample:true, i:i}); }).join('')+'</div>';
     }
   }
   function toggleLike(id){
@@ -12580,6 +12624,21 @@ window.NayaSmartBar = {
       });
       if(changed) storeSet(STORE_KEY, tabsNet);
     })();
+    /* ----- T1e MIGRATION 2026-11-10 (FIX-8b: Memberships joins the
+       bottom app bar): the stored seed was written once on first paint,
+       so citizens seeded before this change carry a 7-tab bar with no
+       Memberships door. Append the Memberships seed tab to stored bars
+       that lack it — unless the citizen shaped their bar (manual wins:
+       a shaped bar is theirs, they add it with +). Idempotent: a bar
+       that already has Memberships passes through unchanged. */
+    (function migrateMembershipsTab(){
+      if (!Array.isArray(tabsNet) || customized()) return;
+      var has=false, m;
+      for (m=0; m<tabsNet.length; m++){ if (tabsNet[m] && tabsNet[m].label==='Memberships'){ has=true; break; } }
+      if (has) return;
+      tabsNet.push({id:'seed-memberships', label:'Memberships', url:undefined, target:'#memberships', icon:'\uD83C\uDFAB', state:null, color:'#a06bff'});
+      storeSet(STORE_KEY, tabsNet);
+    })();
     /* Personalized by default: until the citizen shapes it (heart/star/add/remove),
        the bar auto-organizes by their own logic — frequency × recency. Manual wins. */
     function customized(){
@@ -12984,7 +13043,8 @@ NayaSmartBar.mount({
     {label:"Activity", target:"#dashboard", icon:"\u26a1"},
     {label:"Mail", target:"#inbox", icon:"\u2709"},
     {label:"Stats", target:"#dashboard", icon:"\u25a4"},
-    {label:"Pricing", url:"https://nayanet.app/welcome", icon:"\u2605"}
+    {label:"Pricing", url:"https://nayanet.app/welcome", icon:"\u2605"},
+    {label:"Memberships", target:"#memberships", icon:"\uD83C\uDFAB", color:"#a06bff"} /* FIX-8b: Memberships joins the bottom app bar (7 apps -> 8) */
   ]
 });
 </script>
@@ -13000,7 +13060,7 @@ NayaSmartBar.mount({
   var bottom=document.getElementById('nsbBottom');
   if(!bottom) return;
   bottom.classList.add('nsb-iconbar');
-  var VIEWS_BY_LABEL={'Dashboard':'dashboard','Message':'message','Activity':'dashboard','Mail':'inbox','Stats':'dashboard'};
+  var VIEWS_BY_LABEL={'Dashboard':'dashboard','Message':'message','Activity':'dashboard','Mail':'inbox','Stats':'dashboard','Memberships':'memberships'}; /* FIX-8b: the new app-bar tab opens the memberships view in-page */
   function nameIcons(){
     bottom.querySelectorAll('.nsb-tab').forEach(function(b){
       var lab=(b.getAttribute('aria-label')||'').replace(/ \(no destination yet\)$/,'');
@@ -15262,12 +15322,19 @@ document.addEventListener("click", function(e){
   function mshipSb() {
     if (_sb) return _sb;
     try {
+      /* FIX-8b: the page's live client first — window.NayaAuth.client is
+         created on 'supabase-ready' by the auth layer, and it is the same
+         client the wall / notes loaders already read through. */
+      if (window.NayaAuth && window.NayaAuth.client) { _sb = window.NayaAuth.client; return _sb; }
       if (typeof supabase === 'undefined') return null;
-      var url = (typeof SB_URL !== 'undefined' && SB_URL) ||
-                (typeof SUPABASE_URL !== 'undefined' && SUPABASE_URL) || '';
-      var key = (typeof SB_ANON !== 'undefined' && SB_ANON) ||
-                (typeof SUPABASE_ANON !== 'undefined' && SUPABASE_ANON) || '';
-      if (!url || !key) return null;
+      /* FIX-8b: the old code read SB_URL / SB_ANON — but those live inside
+         the os-script IIFE's closure, NOT on window, so the typeof checks
+         always missed and this returned null on EVERY call: the list could
+         never read, and the view always showed the offline line even with
+         Supabase loaded. Same public anon values the page already carries
+         in two other script blocks; local constants, never a secret. */
+      var url = 'https://dahisasgpfvziswqvmvm.supabase.co';
+      var key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGlzYXNncGZ2emlzd3F2bXZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2MjM3ODgsImV4cCI6MjEwMzE5OTc4OH0.zX2r3T23sKebUMBdNg-4Noxos8JFOHaK2rRwqAVXU_s';
       _sb = supabase.createClient(url, key);
     } catch (e) { _sb = null; }
     return _sb;
@@ -15342,6 +15409,7 @@ document.addEventListener("click", function(e){
           return;
         }
         var rows = res.data || [];
+        if (statusEl) statusEl.textContent = ''; /* FIX-8b: the read answered — a stale offline line must not survive it. */
         if (!rows.length) {
           listEl.innerHTML = '<p class="os-note">No memberships yet.</p>';
           return;
@@ -15610,6 +15678,11 @@ document.addEventListener("click", function(e){
     mshipLoad();
   }
   window.mshipLoad = mshipLoad; /* FIX-8: the router calls this when the memberships view opens. */
+  /* FIX-8b: the Supabase bundle loads async — if boot ran before it
+     landed, mshipLoad wrote the honest offline line and stopped. Re-read
+     the moment the bundle lands, so the list (or its true empty state)
+     replaces the offline line without waiting for a re-open. */
+  if (typeof window !== 'undefined' && window.addEventListener) window.addEventListener('supabase-ready', function(){ try { if (typeof window.mshipLoad==='function') window.mshipLoad(); } catch(e){} });
   if (document.readyState === 'loading')
     document.addEventListener('DOMContentLoaded', mshipBoot);
   else
