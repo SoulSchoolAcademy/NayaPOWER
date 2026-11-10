@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-10 16:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-10 16:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -23119,6 +23119,12 @@ _Last updated: 2026-11-10 16:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: patched cold_drill_sealed_t0555.py sha 160400dfb407c5e5 MATCHES receipt pin; original .pre-t0581 sha 70a33455ef4e14cc MATCHES; byte diff (116 lines), trial header (machine_class.match=true, RED PASS), CLASS-CHANGE sim record (exit 7, band null) all exist on disk; fingerprint doc Enforcement section present; seals A-E semantics un
 
+### ✅ t0581b-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Retroactive 3-pass show-your-work receipt for merged PR #2501 (completeness gate), closing FM#32
+
+**Evidence:** Verified: merge commit e8b4868ce402c2945a8990b1a5ddc69979b880fd exists on remote (fetched via git protocol); tree 8ff158164185914aa54428eb01a21273ce81e6ad EXACT match to receipt claim; refs/pull/2501/head a324ea1e matches a claimed parent; local receipt hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists (7,508 bytes). NOT PHANTOM. Sc
+
 ### ✅ t0581b — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Retroactive 3-pass show-your-work receipt for merged PR #2501 (completeness gate: named-seat recognition fix), closing formal breach FM#32
@@ -23266,6 +23272,12 @@ _Last updated: 2026-11-10 16:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0581-lane10.md`
 
 **Evidence:** ARTIFACT VERIFIED: sealed-selection-t0581.md sha dc4f06e6a3e0a2a5 MATCHES pin; results-t0581-overlap.json sha 29a9d26ac9de7741 MATCHES pin; both scripts sha pins MATCH; frozen instrument decision_change_arm_t0567.py sha 4d43798e58f2769f MATCHES the t0567 seal pin (untouched); results file internally pins seal_sha16 + instrument_sha16 (both corrobor
+
+### ✅ t0580b-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice d: cold-retrieve drill with page-cache isolation (sealed instrument)
+
+**Evidence:** Verified: local deliverables exist — hidden_files/surge/cold-retrieve-isolated-t0580b.md (4,298 bytes) and auto-retrieval/cold-drill-sealed-t0580b-results.json (915 bytes), both dated 2026-10-13 04:46 matching receipt time; receipt cites exact seal hashes (A 0fcaa777265b, B 81a07557f0b6, C 92d8b2bef701) and band 1.027s with 3.3% spread. Score 9.0 (
 
 ### ✅ t0580b — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -25013,6 +25025,12 @@ _Last updated: 2026-11-10 16:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: battery dir retrieval/battery-tfidf-t0539/ holds all 4 deliverables (prereg-sealed.md, run_battery.py, run-output-t0539.json, verdict-t0539.md). Pre-reg sha256 63e47e07a156663eeef0e858b13843fbcd6a023d440f73772c61a79563c50982 == receipt claim exactly (sealed pre-run). PIN-INTEGRITY MISS: receipt's run-output pin 95b45115...19c69dd... != on
 
+### ✅ t0539-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** SURGE slice c: ranked top-20 ask-world query-needs analysis recomputed from live log bytes + 3 hypertuning recommendations
+
+**Evidence:** Verified: deliverable retrieval/query-log-top20-t0539.md exists at exact 7,688 bytes with 15 ranked needs and 3 hypertuning recommendations; query log's first 9,181 bytes sha EXACT match to receipt pin 31aa1619 (log has since grown to 60,358 bytes append-only, as expected — the receipt's silence finding is about the log at receipt time). NOT PHANTO
+
 ### ✅ t0539 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
 
 **Task:** SURGE slice (c): ranked top-20 ask-world query-needs analysis recomputed from live log bytes
@@ -25337,6 +25355,12 @@ _Last updated: 2026-11-10 16:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: '[Lane 3 - Naya Judge, t0533]' exactly 1 hit (feedback-feed.md:456) under the FP-003 header (:350); verdict line SHARPEN present; J1-J4 rulings on the bytes (collision rule GATE-CLASS vs repair, J2 refusal TTL + blast-radius, J3 gaming-signature predicate, J4 anti-inversion); FP-003 §6 and §7 a5/a6 quoted before judgment (quote-first disc
 
+### ✅ t0533-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** STAGE-0 [COMPOUND] fail-forward arm: stale-by-byte-proof dual-path probe + separate scorer (26 candidates, PASS)
+
+**Evidence:** Verified: frozen prediction ad8e4957f893, probe 7d1ccaa24745, scorer f211257f9bf6 all EXACT match; rich audit trail of timestamped re-runs on disk. BUT the three cited run-output pins do NOT reproduce: log 34fecf1a4829, verdicts 29e8afe96464, score e23799641823 match no file on disk — a later v2 run-stamped re-run (20261016T102013Z, 27 evaluated vs
+
 ### ✅ t0533 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** STAGE-0 [COMPOUND] fail-forward arm after t0532 FAIL: fresh lesson, frozen prediction, dual-path probe, separate scorer
@@ -25396,6 +25420,12 @@ _Last updated: 2026-11-10 16:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0532-lane7.md`
 
 **Evidence:** Verified: report hidden_files/auto-retrieval/mechanization-t0532.md exists (6847 B, created this tick); fixture SHAs byte-verified — ask-world-queries.jsonl 31aa1619..., baseline-sealed-t0432.md 460429b1..., results-t0432.json b1af58d0... all exact 64-char matches; results-t0442-entailment.json, sealed-note-t0442.md, t0432_fingerprint.py all presen
+
+### ✅ t0532-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** STAGE-0 [COMPOUND] close one measured compounding loop: frozen prediction + dual-path divergence probe (Sentinel W4 lesson)
+
+**Evidence:** Verified: all 4 cited SHAs EXACT match on disk — frozen prediction e889b218, probe script ec07e2f2, verdicts JSON 4a0e8125, probe log 7a99335a. NOT PHANTOM. Honest FAIL (23 evaluated, 0 divergences) with machinery left re-runnable. Score 9.0 (GOOD, ONE MORE PASS). Why not 9.5: single-seat, no independent re-run of the probe; the FAIL instance could
 
 ### ✅ t0532 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
