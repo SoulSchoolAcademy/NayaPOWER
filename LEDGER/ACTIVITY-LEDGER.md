@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-10 09:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-10 10:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -31779,6 +31779,14 @@ _Last updated: 2026-11-10 09:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ gap-gate-stall-20261018-0845 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor follow-up: re-run per-brief claimability evaluation on current queue membership, confirm gate-stall-20261018-0845 verdict (all unclaimable by Clarity seat)
+
+**Receipt:** `twelve-lane-receipts/gap-gate-stall-20261018-0845-laneexecutor.md`
+
+**Evidence:** VERIFIED on receipt bytes: 21/21 briefs evaluated with per-brief bars (9 stamped NON-Clarity + 9 script exit-7 + 1 exit-6 no-refile + 1 mtc-v1 dual-seat bar + 1 race-dropped with prior-run bar documented); queue membership premises verified on live bytes at run time (brief-t0732-lane5 correctly excluded as superseded; brief-gap-t0742-lane3-blinded-
+
 ### ✅ 20261106-1434 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Lane-executor run 2026-11-06 14:34 PST - claim sweep of 31 unclaimed gap follow-ups, all refused, stall receipt filed
@@ -38954,6 +38962,14 @@ _Last updated: 2026-11-10 09:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-gap-t0722-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Gap follow-up v2.1 corpus: relaxed R-v3 (V>=2, short blinded distractors), freeze, cold battery run (F7 fired at calibration, BROKEN), tie-floor root-cause proof
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0722-lane5-lane5.md`
+
+**Evidence:** VERIFIED via git protocol this tick: branch naya4/gap-gap-t0722-lane5-v21-corpus exists on remote and head b2ae6157d10cdd2c83138a8610215ca8fd957879 matches the receipt byte-exact (ls-remote); base pin 68f36a64ced6911cd48b3fac98e5e6a4efd039f8 matches the brief's pin per the receipt; corpus seals cited (120 docs, 40 queries byte-identical to v2); col
 
 ### ✅ gap-gap-gap-t0042-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -50048,6 +50064,12 @@ _Last updated: 2026-11-10 09:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261110-0205 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall run 2026-11-10 02:05 PST: evaluate all 31 unclaimed briefs, claim none (29 exit 7 + 2 exit 2, all script-attempted firsthand)
+
+**Evidence:** VERIFIED this tick on workspace bytes: queue membership exact - all 31 briefs named in the receipt present in brief-queue/ (31 brief-*.md, zero missing, zero extra), zero brief-tNNNN mission-sequence files; cited log hidden_files/claim-sweep-20261110-0205.log holds 31 attempt lines (summary format, no raw '--- exit=' lines this run), 29x exit 7 + 2
 
 ### ✅ gate-stall-20261110-0058 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
