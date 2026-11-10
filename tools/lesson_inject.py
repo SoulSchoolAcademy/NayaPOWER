@@ -65,8 +65,14 @@ def norm_status(lesson):
 
 
 def is_injectable(lesson):
-    """Retired lessons never inject. Everything else active-ish injects."""
-    return norm_status(lesson) not in ("retired",)
+    """Retired and retracted lessons never inject. Everything else active-ish injects.
+
+    "retracted" is the store's dead status (see measure_lesson_delta.py,
+    which excludes retracted lessons from FILED); a lesson withdrawn from
+    the store must not be served into briefs. norm_status() lowercases,
+    so "Retracted" is excluded too.
+    """
+    return norm_status(lesson) not in ("retired", "retracted")
 
 
 def counters(lesson):

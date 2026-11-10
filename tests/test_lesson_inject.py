@@ -93,6 +93,21 @@ def test_retired_never_injects(store_path):
     assert sel == []
 
 
+def test_retracted_never_injects(store_path):
+    # Retracted is the store's dead status (measure_lesson_delta.py excludes
+    # retracted from FILED); a withdrawn lesson must not be served into
+    # briefs, exactly like a retired one. Regression: is_injectable()
+    # excluded only ("retired",) so both live retracted rows injected.
+    p = store_path([make_lesson("L-1", areas=["dispatch"], status="retracted"),
+                    make_lesson("L-2", classes=["gap-recycle"], status="Retracted"),
+                    make_lesson("L-3", areas=["dispatch"])])
+    sel = li.inject(li.load_store(p), ["dispatch"], ["gap-recycle"], [])
+    assert [l["lesson_id"] for _, _, _, l in sel] == ["L-3"]
+    assert li.is_injectable({"status": "retracted"}) is False
+    assert li.is_injectable({"status": "Retracted"}) is False
+    assert li.is_injectable({"status": "RETRacted"}) is False
+
+
 def test_incomplete_lesson_bounced(store_path):
     # Spec §6.3: lessons missing applies_when/enforcement never enter the store;
     # the injector must skip them, not crash.
