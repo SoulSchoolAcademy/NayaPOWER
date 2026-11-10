@@ -200,13 +200,18 @@ def _harvest():
     # "KEEP 1" recommendation (rejected by the settlement), and the
     # unrelated Team Activation Process entry. So the block is rubric
     # + D2 + D3-SETTLED + D4 + 99% baseline, in that order, each slice
-    # verbatim from MEMORY.md.
+    # verbatim from MEMORY.md. The D3 slice ends at the next entry
+    # boundary ("\n\n- **"), never at end-of-file: MEMORY.md keeps
+    # growing (three entries landed 02:19Z, minutes after the build),
+    # and a to-EOF slice would swallow every later entry into this
+    # block on the next refresh.
     HARVEST["the-notification-rulings"] = "\n".join([
         extract(MEMORY, "THE INTELLIGENCE RUBRIC",
                 "- **D2 — DIGEST ONCE A DAY"),
         extract(MEMORY, "- **D2 — DIGEST ONCE A DAY",
                 "- **D3 — BUNDLE CAP (not answered"),
-        extract(MEMORY, "- **D3 — SETTLED, NO BUNDLE CAP", None),
+        extract(MEMORY, "- **D3 — SETTLED, NO BUNDLE CAP",
+                "\n\n- **"),
         extract(MEMORY, "- **D4 — HIS NAYA NOTES TO THE TEAM",
                 "- **THE 99% BASELINE PRINCIPLE"),
         extract(MEMORY, "- **THE 99% BASELINE PRINCIPLE",
