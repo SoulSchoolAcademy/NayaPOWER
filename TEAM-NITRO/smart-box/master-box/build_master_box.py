@@ -187,12 +187,31 @@ def _harvest():
         MEMORY, "THE NAIMA RESOLUTION",
         "\n- **THE NOTIFICATION SYSTEM")
     HARVEST["the-permission-model"] = extract(
-        MEMORY, "THE PERMISSION MODEL", None, occurrence=-1)
+        MEMORY, "THE PERMISSION MODEL",
+        "\n- **THE INTELLIGENCE RUBRIC")
     HARVEST["the-master-box-design"] = extract(
         MEMORY, "THE MASTER BOX — OFFICIALLY SET UP",
         "\n- **THE PERMISSION MODEL")
-    HARVEST["the-notification-rulings"] = extract(
-        MEMORY, "THE INTELLIGENCE RUBRIC", None)
+    # The notification rulings, composed from verbatim slices - never
+    # retyped. A plain slice from the rubric to end-of-file would
+    # re-import three things that must NOT stand in the box: the
+    # stale D3 line ("not answered ... spec default stands", superseded
+    # 02:12Z Nov 10), the 02:05Z cap explainer carrying the captain's
+    # "KEEP 1" recommendation (rejected by the settlement), and the
+    # unrelated Team Activation Process entry. So the block is rubric
+    # + D2 + D3-SETTLED + D4 + 99% baseline, in that order, each slice
+    # verbatim from MEMORY.md.
+    HARVEST["the-notification-rulings"] = "\n".join([
+        extract(MEMORY, "THE INTELLIGENCE RUBRIC",
+                "- **D2 — DIGEST ONCE A DAY"),
+        extract(MEMORY, "- **D2 — DIGEST ONCE A DAY",
+                "- **D3 — BUNDLE CAP (not answered"),
+        extract(MEMORY, "- **D3 — SETTLED, NO BUNDLE CAP", None),
+        extract(MEMORY, "- **D4 — HIS NAYA NOTES TO THE TEAM",
+                "- **THE 99% BASELINE PRINCIPLE"),
+        extract(MEMORY, "- **THE 99% BASELINE PRINCIPLE",
+                "- **THE BUNDLE CAP — EXPLAINED"),
+    ])
     return HARVEST
 
 
@@ -250,7 +269,7 @@ def children_block():
             "id": "%s:box:%s" % (manifest.get("owner", name), name),
             "blocks": manifest.get("blocks", 0),
             "key_events": manifest.get("key_events", 0),
-            "manifest_sha256": manifest.get("blocks_sha256", ""),
+            "blocks_sha256": manifest.get("blocks_sha256", ""),
         })
     lines = [
         "Title: The children - every personal box, by id only",
@@ -263,9 +282,9 @@ def children_block():
     ]
     for child in children:
         lines.append(
-            "%s - blocks %d, key_events %d, manifest_sha256 %s"
+            "%s - blocks %d, key_events %d, blocks_sha256 %s"
             % (child["id"], child["blocks"], child["key_events"],
-               child["manifest_sha256"]))
+               child["blocks_sha256"]))
     lines.append("")
     lines.append("Source: each child box's own manifest.json (counts and "
                  "hashes only). No child's blocks.jsonl or keys.jsonl "
@@ -501,16 +520,19 @@ def master_blocks():
            links=["collective:note:the-box-shape",
                   "collective:note:the-notification-design"]),
         mk("the-notification-rulings",
-           "The notification rulings - what counts as major, when the digest goes",
+           "The notification rulings - what counts as major, when the digest goes, no bundle cap",
            ["notification", "rulings", "rubric", "digest"],
            "Major intelligence is judged on a scale from -9 to +9. "
            "The digest rides the Daily Intelligence Report at 23:17 "
-           "UTC. His Naya Notes go to the team, mostly. Nothing is "
-           "black and white: the baseline covers 99% of the time, "
-           "and judgment in the moment covers the rest.",
+           "UTC. No bundle cap: mail is a choice at the moment of "
+           "writing the note, and every note is a notification in "
+           "the system. His Naya Notes go to the team, mostly. "
+           "Nothing is black and white: the baseline covers 99% of "
+           "the time, and judgment in the moment covers the rest.",
            HARVEST["the-notification-rulings"],
-           "MEMORY.md: THE INTELLIGENCE RUBRIC + D2 + D3 + D4 + "
-           "THE 99% BASELINE PRINCIPLE (Shawn 01:58Z Nov 10)",
+           "MEMORY.md: THE INTELLIGENCE RUBRIC + D2 + D3 SETTLED "
+           "(no bundle cap) + D4 + THE 99% BASELINE PRINCIPLE "
+           "(Shawn 01:58Z + 02:12Z Nov 10)",
            "MEMORY.md",
            links=["collective:note:the-notification-design",
                   "collective:note:the-permission-model"]),
