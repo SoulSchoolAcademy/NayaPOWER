@@ -27507,6 +27507,30 @@ body.viewport-focus #viewport-back{
 @media (min-width:481px){
   .os-smartlink-list{padding-bottom:calc(66vh - 200px);}
 }
+/* FIXROUND2 PASS-4 (D4-R1, 2026-11-09): REGRESSION from the D4 snap above,
+   phone widths only. At ≤480px each row (829px) is TALLER than the list
+   (66vh: 557px @390, 528px @360), so the last row's snap range runs from
+   start-aligned to END-aligned — and the list rests at the end-aligned
+   point, 14px short of maxScroll (390: 3674 vs 3688; 360: 3703 vs 3716),
+   because 14px of trailing space sits below the last row's bottom edge.
+   At that rest the last row's "needs views" label sits under the fixed
+   "Back to board" chip (390: label y 708–721, chip y 712–756;
+   elementFromPoint returns the chip). Adding trailing padding does NOT
+   move the rest (the rest is pinned by the row's bottom edge, not by
+   maxScroll — verified live: candidate C changed nothing). The fix is a
+   scroll-margin on the last row only: it extends that row's snap area
+   downward, so the end-aligned snap point reaches true maxScroll and
+   the list rests there (390: 3688, label y 694–707, clear of the chip
+   by 5px; 360: 3716, elementFromPoint returns the label — both exactly
+   the pre-fix-round-1 base behavior). 20px covers the measured 14px
+   shortfall with margin for rounding; the rest clamps at maxScroll, so
+   it cannot overshoot. No other row's snap range is touched (forced
+   scrollTop=300 still rests 278 @390 / 300 @360, identical to the
+   fix-round-1 file), and feat-delta still rests 3402 with the row at
+   the list top. Desktop (≥481px) is untouched. */
+@media (max-width:480px){
+  .os-smartlink-list .os-link-row:last-child{scroll-margin-bottom:20px;}
+}
 .os-smartlink-list.on{display:flex;}
 .os-smartlink-list .os-link-row{width:100%;}
 /* FIX-ROUND 2026-11-09 (minor): drill-row numbers ran together at a glance
