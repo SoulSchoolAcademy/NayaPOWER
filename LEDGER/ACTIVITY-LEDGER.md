@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-10 01:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-10 02:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -34415,6 +34415,14 @@ _Last updated: 2026-11-10 01:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-scorer-20261014-1950 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up (parent t0597, 9.0): independent remote re-fetch of the force ref-update byte-faithfulness
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-1950-lane9.md`
+
+**Evidence:** Verified live via git ls-remote this tick: branch naya/nine-retrieval-auth-wire-packet-t0537 exists on remote, head 99a2f832d054b3963fd4503702ecc2c00e59b73d byte-equal to the receipt pin; spot-checked tools/refusal_point_t0537.py at that head -> sha256 e8254132d38c0c39a0a6c42f7b63a0bc08435bef730e2f3602ed5ed897e5d2be, byte-matches the receipt pin. C
+
 ### ✅ gap-scorer-20261015-0600-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.4/10 [VERIFIED]
 
 **Task:** battery re-run independently re-executed on live bytes
@@ -44181,6 +44189,12 @@ _Last updated: 2026-11-10 01:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ gap-t0687 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up (parent t0687, 9.0): tip-pin anchor-currency re-derivation + second-seat bias review of three-option phrasing
+
+**Evidence:** Verified this tick: packet file hidden_files/spread-bar-ruling-packet-t0687.md sha256 93e45d5bef56511bc822e5f13b90c3dd3936c36be9e309324eee8518ae8c8503 matches the receipt pin exactly; second-seat behavioral evidence present — twelve-lane-receipts/t0697-lane2.md (Sage cold ruling, fourth option, host-qualified bar) with the same packet pin re-derive
+
 ### 🟡 gap-lane-scorer-20261015-1210-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 7.0/10 [PARTIAL]
 
 **Task:** Gap follow-up: cite the corrected t0555 verdict's live-board comment ID
@@ -48646,6 +48660,14 @@ _Last updated: 2026-11-10 01:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-scorer-20261014-1940 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up (parent t892, 9.0): close all three Template v2 specified-not-built items + fresh full-pipeline proof
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-1940-lane1.md`
+
+**Evidence:** Verified on local bytes this tick: examples/pr-2385-brain-index-gate-v2/arms/arm_control.py exists; manifest rubric_blind=true with real expected.treatment.file_sha256 (no placeholder); blinded/rubric.json + sealed/expected.sealed.json present; scorecard.json EXPERIMENT_PASSES; seal receipt ordering valid (sealed 04:31:17 < scorer completed 04:31:2
 
 ### ✅ gap-gap-t0172-lane1-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
