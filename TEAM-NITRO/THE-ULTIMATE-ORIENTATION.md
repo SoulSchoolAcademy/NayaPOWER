@@ -96,7 +96,7 @@ The picture to hold: **the person is the atom at the center, and everything orbi
 
 **Free to join.** Anyone joins free. Power, Pro Power, Max Power — their choice. Max is the standard.
 
-**The ladder (settled):** Power **$25/month** builds **1** membership site · Pro **$50/month** builds **5** · Max **$100/month** builds **unlimited**. Enormous value at every level, limited on purpose, so each step up is a clear upgrade and Max is always the most attractive. The same ladder shapes everything: pages, notes, links, capacity.
+**The ladder (settled):** Power **$25/month** builds **10** membership sites · Pro **$50/month** builds **100** · Max **$100/month** builds **unlimited**. Enormous value at every level, limited on purpose, so each step up is a clear upgrade and Max is always the most attractive. The same ladder shapes everything: pages, notes, links, capacity.
 
 **The trial:** **9 days free** — a 5-day Academy (learn about Naya) plus a 4-day Master Class (job training: operate your world, make money). You start at Max. Day 10, you are charged for the level you are on. Changeable any time, up or down. No refunds — the trial is the guarantee.
 
