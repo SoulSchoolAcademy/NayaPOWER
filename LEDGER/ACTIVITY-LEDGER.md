@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-10 05:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-10 05:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -25017,6 +25017,14 @@ _Last updated: 2026-11-10 05:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0538 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
+**Task:** Independent verification of Lane 7 t0532 mechanization (CONFIRM with qualifications)
+
+**Receipt:** `twelve-lane-receipts/t0538-lane1.md`
+
+**Evidence:** Verified: verification report hidden_files/auto-retrieval/mechanization-verify-t0538.md present; repro script hidden_files/scratch/t0538-lane1/repro_tfidf.py present and re-runnable (stdlib only). Headline figure reproduced to 6 decimals (P2 #1 @ 0.331676) from a from-scratch implementation; all five AUDIT-P0 elements verified; three non-load-beari
+
+### ✅ t0538 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
 **Task:** SURGE slice a3 — independent verification of Lane 7's t0532 mechanization
 
 **Receipt:** `twelve-lane-receipts/t0538-lane1.md`
@@ -25030,6 +25038,14 @@ _Last updated: 2026-11-10 05:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0538-lane1.md`
 
 **Evidence:** VERIFIED: report auto-retrieval/mechanization-verify-t0538.md on disk (7142 bytes); all four fixture SHA prefixes byte-exact on disk (ask-world-queries.jsonl 31aa1619, baseline-sealed-t0432.md 460429b1, results-t0432.json b1af58d0, sealed-note-t0442.md 1cd869fd); repro script scratch/t0538-lane1/repro_tfidf.py on disk. INDEPENDENT RE-RUN (scorer se
+
+### ✅ t0537 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Retrieval-authorization-gate wiring packet (refusal-point contract + migration draft, AWAITING-SHAWN)
+
+**Receipt:** `twelve-lane-receipts/t0537-lane9.md`
+
+**Evidence:** Verified: branch naya/nine-retrieval-auth-wire-packet-t0537 exists on remote; pinned commit 9a7c60247b58fb82ed8bbdd24206d2b0f7bc6c55 EXISTS (GitHub commits API HTTP 200, 2026-10-12T22:04:44Z) — not PHANTOM. Branch head has since moved to 99a2f832..., so the pin is historical, not current head; the four packet files were verified on the pinned SHA b
 
 ### ✅ t0537 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -25049,6 +25065,14 @@ _Last updated: 2026-11-10 05:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0537 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
+**Task:** Dual-view bi-encoder semantic arm vs t0532 battery (FALSIFIED 1/3)
+
+**Receipt:** `twelve-lane-receipts/t0537-lane2.md`
+
+**Evidence:** Verified: results hidden_files/auto-retrieval/results-t0537-semantic.json sha256 f0e745ee... matches receipt byte-exact; instrument t0537_semantic.py sha256 9eaa0975... matches. Arm FALSIFIED honestly at 1/3 (same as blind baseline) under a discriminating battery — positive calibration shown (battery fails t0432 and t0442 in two distinct shapes, P2
+
+### ✅ t0537 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
 **Task:** Semantic arm (dual-view bi-encoder) against the t0532 battery
 
 **Receipt:** `twelve-lane-receipts/t0537-lane2.md`
@@ -25062,6 +25086,14 @@ _Last updated: 2026-11-10 05:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0537-lane2.md`
 
 **Evidence:** Verified: instrument t0537_semantic.py sha256 byte-exact match; results-t0537-semantic.json exists, prefix+tail of pinned SHA match (pin truncated to 60 chars); all 6 battery fixture SHA prefixes match; verdict bytes confirm P1 FAIL / P2 HOLDS / P5 HOLDS / overall FAIL as claimed; positive-calibration claims present in bytes. Honest falsification u
+
+### ✅ t0537 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Sealed cold-retrieve drill re-run on byte-identical tip (isolation claim end-to-end)
+
+**Receipt:** `twelve-lane-receipts/t0537-lane12.md`
+
+**Evidence:** Verified: run record hidden_files/auto-retrieval/cold-drill-t0537-lane12.md sha256 ead87a17... matches receipt byte-exact; instrument cold_drill_t0537_lane12.py sha256 7dd61a99... matches; results json f84d724d... matches. Drill SEALED 15/15 gate-COLD, cold median 0.996s vs t0472 1.065s / t0530 1.019s on byte-identical tip dbe06f9e — verdict CONFIR
 
 ### ✅ t0537 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
