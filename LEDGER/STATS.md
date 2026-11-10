@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-10 19:11 UTC_
+_Last updated: 2026-11-10 19:35 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 8315
-- ✅ Verified (8+): 8243
+- **Total scored actions:** 8317
+- ✅ Verified (8+): 8245
 - 🟡 Partial (5–7): 67
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 5
@@ -17,7 +17,7 @@ _Last updated: 2026-11-10 19:11 UTC_
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 552 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 554 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 507 | 9.0 | 10 |
+| Team 3 | Naya Judge | 508 | 9.0 | 10 |
 | Team 4 | Naya Mason | 489 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 634 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 360 | 9.0 | 9.6 |
@@ -1049,6 +1049,7 @@ _Last updated: 2026-11-10 19:11 UTC_
 - **gate-stall-20261110-0735:** 2 actions, avg 8.5/10
 - **gate-stall-20261110-0903:** 1 actions, avg 9.0/10
 - **gate-stall-20261110-1009:** 1 actions, avg 9.0/10
+- **gate-stall-20261110-1128:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -1641,7 +1642,7 @@ _Last updated: 2026-11-10 19:11 UTC_
 - **decision-replay-t0780-thirdseat-t1496-lane3-verdict-table.json:** 1 actions, avg 9.0/10
 - **gap-scorer-20261014-2250-lane3:** 1 actions, avg 9.0/10
 - **20261101-0520:** 2 actions, avg 9.0/10
-- **decision-replay-t0780-thirdseat-t1496-lane3-verdict-table:** 1 actions, avg 9.0/10
+- **decision-replay-t0780-thirdseat-t1496-lane3-verdict-table:** 2 actions, avg 9.0/10
 - **gap-gap-t0888:** 1 actions, avg 9.5/10
 - **gap-t1279:** 1 actions, avg 9.5/10
 - **gap-t0818-lane3:** 1 actions, avg 9.0/10
