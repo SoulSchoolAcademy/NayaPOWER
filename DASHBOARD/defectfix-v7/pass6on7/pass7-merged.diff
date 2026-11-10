@@ -1,0 +1,188 @@
+--- dashboard-pass7-blob.html	2026-11-10 06:23:49.786268266 +0000
++++ dashboard-pass6on7.html	2026-11-10 06:24:11.360913057 +0000
+@@ -4814,19 +4814,22 @@
+ }
+ /* 2026-11-08 — ORB TILES (A-star / B-star law: only tiled digits). The orb's
+    number, small enough to ride below the mini dial inside the orb's circle. */
+-.os-mini-num.orbnum{gap:2px;}
+-.os-mini-num.orbnum .os-mini-tile{width:16px;border-radius:4px;border-width:1px;}
+-.os-mini-num.orbnum .os-mini-tile .cap{height:3px;}
+-.os-mini-num.orbnum .os-mini-tile .rd{height:15px;line-height:15px;font-size:13px;}
+-.os-mini-num.orbnum .os-mini-tile.dot{width:7px;}
+-.os-mini-num.orbnum .os-mini-tile.dot .rd{height:15px;padding-bottom:2px;}
+-.os-mini-num.orbnum .os-mini-tile.pct{width:18px;}
+-.os-mini-num.orbnum .os-mini-gap{width:6px;}
++/* PASS-6 2026-11-10 — ORB TILES ENLARGED: the digits were 13px tiles inside a 135px orb (Shawn: 'too small to read'). Same tile font, grown: 24px digits, 26px tiles. */
++.os-mini-num.orbnum{gap:3px;}
++.os-mini-num.orbnum .os-mini-tile{width:26px;border-radius:5px;border-width:1px;}
++.os-mini-num.orbnum .os-mini-tile .cap{height:4px;}
++.os-mini-num.orbnum .os-mini-tile .rd{height:26px;line-height:26px;font-size:24px;}
++.os-mini-num.orbnum .os-mini-tile.dot{width:12px;}
++.os-mini-num.orbnum .os-mini-tile.dot .rd{height:26px;padding-bottom:3px;}
++.os-mini-num.orbnum .os-mini-tile.pct{width:28px;}
++.os-mini-num.orbnum .os-mini-gap{width:8px;}
+ @media (max-width:768px){
+-  .os-mini-num.orbnum .os-mini-tile{width:11px;}
+-  .os-mini-num.orbnum .os-mini-tile .cap{height:2px;}
+-  .os-mini-num.orbnum .os-mini-tile .rd{height:11px;line-height:11px;font-size:10px;}
+-  .os-mini-num.orbnum .os-mini-tile.pct{width:13px;}
++  .os-mini-num.orbnum{gap:2px;}
++  .os-mini-num.orbnum .os-mini-tile{width:20px;}
++  .os-mini-num.orbnum .os-mini-tile .cap{height:3px;}
++  .os-mini-num.orbnum .os-mini-tile .rd{height:19px;line-height:19px;font-size:18px;}
++  .os-mini-num.orbnum .os-mini-tile.dot{width:9px;}
++  .os-mini-num.orbnum .os-mini-tile.pct{width:22px;}
+ }
+ </style>
+ <style id="os-fix5">
+@@ -4990,12 +4993,13 @@
+      so no JS change was needed. Nothing is kept below the number, so there is
+      nothing bunched up against it. -->
+ </div>
++<!-- PASS-6 2026-11-10: the note lives HERE now — in flow under the gauge, above the mode bar. It was absolute bottom:64px after the toggle, anchored to hero-fit's stale-short box, and landed across the gauge face on desktop. In flow it cannot overlap the gauge: it sits below the whole constellation. -->
++<div class="os-pts-note" id="os-pts-note"></div>
+ <div class="os-pts-toggle" id="os-pts-toggle">
+   <button class="os-pts-btn active" data-mode="pts">PTS</button>
+   <button class="os-pts-btn" data-mode="pct">%</button>
+   <button class="os-pts-btn" data-mode="money">MONEY</button>
+ </div>
+-<div class="os-pts-note" id="os-pts-note" hidden></div>
+ </div><!-- /os-hero-fit -->
+ <!-- 2026-11-02 — SHAWN: pace pill REMOVED. Stuck content, not part of the gauge. -->
+ <!-- 2026-11-02 — THE 12 CHARTS #5: DONUT. "Where does it come from."
+@@ -5641,7 +5645,7 @@
+ }
+ .os-pts-btn:not(.active):hover{ color:#fff; transform:translateY(-2px); }
+ /* 2026-11-06 — FIX 5: % mode note — names the count-only orbs so the mode never promises what it doesn't do. */
+-.os-pts-note{font-size:12px;color:rgba(255,255,255,.65);text-align:center;margin:0;max-width:560px;line-height:1.45;padding:0 16px;position:absolute;left:50%;bottom:64px;transform:translateX(-50%);width:max-content;max-width:90%;z-index:100;} /* FIX 5 FIX 4: rides above the pinned mode bar. 2026-11-08: the bar is taller now (big coloured toggle) — the note rides 64px up. */
++.os-pts-note{font-size:15px;color:#fff;text-align:center;margin:10px auto 0;max-width:560px;line-height:1.5;padding:0 16px;min-height:45px;visibility:hidden;} /* PASS-6 2026-11-10: in-flow caption under the gauge, above the mode bar — white, bigger, readable. The slot is ALWAYS reserved (min-height 45px = two lines) so the fit scale never jumps when the note appears in % / MONEY mode; _refreshPtsNote toggles visibility, never display. The old absolute bottom:64px is gone: it anchored to hero-fit's stale-short box and sat across the gauge face. */
+ /* 2026-11-02 — THE 12 CHARTS #2: BIG NUMBER + DELTA */
+ /* 2026-11-02 — SHAWN: elegant score display below the gauge. Dynamic, clean. */
+ /* 2026-11-05 — DEFECT FIX 2 (big score cut by the bottom bar): the 48px gap
+@@ -8575,6 +8579,8 @@
+ <h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">★</span> Ambassador link — the headliner</h3>
+ <p class="os-note os-feat-sub">Your master link — every click it brings in, counted live.</p>
+ <div class="os-feat-top"><span class="os-feat-marker" id="os-feat-marker"></span><span class="os-feat-name" id="os-feat-name"></span></div>
++<!-- PASS-6 2026-11-10: the Ambassador sample — the real ambassador link as it actually looks, harvested live from sb-api smart_links (owner flagship-personal, first link, name joinus, 2026-11-10). Short address nayanet.app/joinus, clickable to the real link. -->
++<div class="os-feat-sample"><span class="os-feat-sample-tag">Sample</span><a class="os-feat-sample-link" href="https://nayanet.app/joinus" target="_blank" rel="noopener">nayanet.app/joinus ↗</a></div>
+ <div class="os-feat-stats" id="os-feat-stats"></div>
+ <p class="os-feat-scope" id="os-feat-scope"></p>
+ </section>
+@@ -18549,7 +18555,7 @@
+   var isMobile = W < 768;
+   /* 2026-11-01 — Shawn: smaller orbs in normal mode (80px), full size in hero (104px). */
+   /* FIX 5 FIX 3: orbs a LOT bigger — hero 104 -> 132 desktop, 60 -> 68 phone; non-hero 76 -> 88. */
+-  var nd = isMobile ? (isHero ? 66 : 64) : (isHero ? 160 : 135); /* FIX 6 — PHONE ORBIT CLEARANCE (measured live at 390: orb inner edge sits ~14px
++  var nd = isMobile ? 96 : (isHero ? 160 : 135); /* PASS-6 2026-11-10: phone orbs 64/66 -> 96 — the 40px number needs the room (widest content ~99px). Desktop untouched (160/135 already hold the 52px number). FIX 6 — PHONE ORBIT CLEARANCE (measured live at 390: orb inner edge sits ~14px
+      ONTO the dial rim — orbit centre distance 98.7px vs dial radius 82px, orb radius 30.5px.
+      The orbit is width-capped, so the clearance comes from the orbs: nd 84->74 grows the cap
+      by 5 AND moves the inner edge out by 5 (10 layout px ≈ 7 visual) plus the cap margin
+@@ -18572,7 +18578,7 @@
+     var _gd = _gm ? _gm.querySelector('svg.tn-tacho-dial') : null;
+     if (_gd && _gd.clientWidth > 50) { gaugeR = _gd.clientWidth / 2; }
+   } catch(e){}
+-  var gap = isMobile ? 40 : 48; /* PASS-3 (ninth): phones get a 40px gap — 26px let the bottom orbs sit on the gauge's lapline text at 390. HERO FIX 2026-11-09 (f): 16px left the
++  var gap = isMobile ? 32 : 48; /* PASS-6 2026-11-10: phones 40 -> 32 — the bigger orbs (nd 96) eat orbit room, so the gap gives 8px back to the gauge. Desktop keeps 48px. PASS-3 (ninth): phones get a 40px gap — 26px let the bottom orbs sit on the gauge's lapline text at 390. HERO FIX 2026-11-09 (f): 16px left the
+      bottom orbs' mini-mount corners grazing the dial rim at 390/360 (probe8 rim
+      sample: div.tn-mini-mount at 210°/270°/330°; the 6px float bob + the mini's
+      rectangular corners eat ~10px of the nominal gap, so 16px read as touching
+@@ -20177,9 +20183,9 @@
+         var n = document.getElementById('os-pts-note'); if (!n) return;
+         if (typeof window._dashMode !== 'undefined' && window._dashMode === 'money'){
+           n.textContent = 'Money: your score as dollars — the gauge wraps every $500.';
+-          n.hidden = false; return;
++          n.style.visibility = 'visible'; return;
+         }
+-        if (window._dashPctMode !== true){ n.hidden = true; return; }
++        if (window._dashPctMode !== true){ n.style.visibility = 'hidden'; return; }
+         var v = null;
+         try{ v = (typeof window._featuredDisplay === 'function') ? window._featuredDisplay() : null; }catch(e){}
+         var names = [];
+@@ -20189,9 +20195,9 @@
+           var lab = (v && v.orbs && v.orbs[nd.key] && v.orbs[nd.key].label) || nd.label || nd.key;
+           names.push(lab);
+         });
+-        if (!names.length){ n.hidden = true; return; }
++        if (!names.length){ n.style.visibility = 'hidden'; return; }
+         n.textContent = 'Counts stay counts: ' + names.join(', ') + ' — numbers, not points.';
+-        n.hidden = false;
++        n.style.visibility = 'visible';
+       }catch(e){}
+     };
+ 
+@@ -21565,8 +21571,8 @@
+   border:none !important;
+   border-radius:0 !important;
+   box-shadow:none !important;
+-  /* 2026-11-02 — Shawn: 75% size (28px), perfectly centered, minimal elegant glow */
+-  font-size:28px !important;
++  /* PASS-6 2026-11-10 — Shawn's eye: the orb numbers are too small to read. SAME font as before (it looks good) — only the size grows, 28px -> 52px, so the number is the hero of the orb. The widest honest content (a flipped full number like "3 937", ~128px at 52px) still fits the 135px desktop orb. Phone size rides in the media query below. */
++  font-size:52px !important;
+   font-weight:700 !important;
+   color:#ffffff !important;
+   line-height:1 !important;
+@@ -21594,6 +21600,12 @@
+     0 2px 6px rgba(0,0,0,.7),
+     0 0 14px var(--nc) !important;
+ }
++/* PASS-6 2026-11-10 — phone orbs: SAME font, 40px. A 52px number cannot fit a phone orb (the widest content "3 937" is ~99px at 40px vs the 96px phone orb); 40px is the biggest size that fits the harvested orb. The orbs grow with it (ldLayoutNodes nd 64 -> 96). */
++@media (max-width:768px){
++  html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-n{
++    font-size:40px !important;
++  }
++}
+ /* Also catch the old .os-ld-l class in case it's still generated */
+ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-l{
+   display:block !important;
+@@ -23075,7 +23087,12 @@
+       var _sp = (typeof window !== 'undefined') ? window._osSpine : null;
+       var _ss = {deltas: _fd.deltas || {}};
+       if (_sp){ for (var _k in _sp){ if (_k !== 'deltas') _ss[_k] = _sp[_k]; } }
+-      if (_fd.noData) return { state:'quiet', score:null, s:_ss }; /* FIXB 2026-11-07 (Fix 5): a featured page has no numbers — the gauge shows its quiet face, never the world spine. */
++      if (_fd.noData){ /* PASS-6 2026-11-10: a featured page has no numbers of its own — but the page holds live world numbers, so the gauge shows the world's live number, never the quiet face. Quiet while the world is live was the wrong state (Shawn's eye 05:15Z: a dash in the gauge center + 'Quiet' caption on a page full of live numbers). Only when the world spine itself has no finite score does the gauge stay quiet. Supersedes FIXB 2026-11-07 (Fix 5) for the live-world case. */
++        var _wsp = (typeof window !== 'undefined') ? window._osSpine : null;
++        var _wsc = _wsp ? spineGet(_wsp, 'score') : undefined;
++        if (typeof _wsc === 'number' && isFinite(_wsc)) return { state:'live', score:_wsc, s:_wsp };
++        return { state:'quiet', score:null, s:_ss };
++      }
+       return { state:'live', score:_fd.score, s:_ss };
+     }
+     var s = (typeof window !== 'undefined') ? window._osSpine : null;
+@@ -23890,7 +23907,8 @@
+         setCap('Ledger unavailable — score withheld until the connection returns.');
+         root.setAttribute('aria-label', 'Score gauge — ledger unavailable, no score shown');
+       } else if (state === 'quiet'){
+-        setCap('Quiet — nothing measured yet.');
++        /* PASS-6 2026-11-10: the Quiet caption never renders — it told a page full of live numbers that nothing was measured. The gauge shows the live number whenever one exists (readSpine falls back to the world spine); this branch survives only for a ledger that answered empty with no live number anywhere, and it shows no caption at all. */
++        setCap('');
+         root.setAttribute('aria-label', 'Score gauge — quiet, no score yet');
+       } else {
+         setCap('Reading your actions…');
+@@ -25371,10 +25389,11 @@
+     var tiled = el.querySelector('.os-mini-num');
+     var raw;
+     if (tiled){
+-      /* already tiled — a mode flip re-renders from the stored points
+-         (the % is not invertible to points, so the points are stored) */
+-      if (typeof el._osMiniPts !== 'number') return;
+-      raw = el._osMiniPts;
++      /* PASS-6 2026-11-10 — re-tile the CURRENT displayed value. The mode flip already wrote it ('44%' / '$1 100' / '280'); re-rendering blindly from the stored points CLOBBERED the % back to points 150ms after every flip. Only fall back to the stored points when the current text is not a tileable number (the % is not invertible to points, so the points are stored for exactly that case). */
++      var cur = (el.textContent || '').trim();
++      if (/^[$]?[0-9][0-9 ]*(\.[0-9]+)?%?$/.test(cur)) raw = cur;
++      else if (typeof el._osMiniPts === 'number') raw = el._osMiniPts;
++      else return;
+     } else {
+       raw = (el.textContent || '').trim();
+       if (!raw || raw === '—') return;
+@@ -27166,6 +27185,11 @@
+ .os-feat-stats{ display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin:14px 0 6px; }
+ .os-feat-stats .os-sl-stat{ margin:0; }
+ .os-feat-scope{ margin:8px 0 0; }
++/* PASS-6 2026-11-10 — the Ambassador sample: the real link as a real object (obsidian chip, purple headliner glow, same elite-button DNA as the mode buttons). */
++.os-feat-sample{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0 2px;}
++.os-feat-sample-tag{font-size:10px;font-weight:800;letter-spacing:.18em;color:#a06bff;text-transform:uppercase;}
++.os-feat-sample-link{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;background:linear-gradient(180deg,#17171f,#0a0a0f);border:1.5px solid rgba(255,255,255,.5);color:#fff;font-size:17px;font-weight:800;text-decoration:none;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.4),inset 0 -4px 8px rgba(0,0,0,.5),0 0 18px rgba(160,107,255,.5),0 8px 18px rgba(0,0,0,.5);}
++.os-feat-sample-link:hover{transform:translateY(-2px);}
+ .os-feat-creator{ margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,.08); }
+ .os-feat-creator-label{ font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#b9b3c7; margin-bottom:2px; }
+ .os-featured-panel .os-fieldwrap{ margin:8px 0; }
