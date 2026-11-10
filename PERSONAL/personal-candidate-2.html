@@ -6103,7 +6103,9 @@ button.os-ld-node .os-ld-n{
 .ib-layer-head .ib-chev{margin-left:auto;color:var(--lc);font-size:16px;transition:transform .2s cubic-bezier(.16,.84,.22,1);}
 .ib-layer.open .ib-layer-head .ib-chev{transform:rotate(180deg);}
 .ib-layer-body{padding:8px 24px 24px;overflow-wrap:break-word;}
-.ib-layer-body>p:first-child{color:#fff;font-size:17px;line-height:1.7;margin:0;}
+.ib-layer-body>p:first-child{margin:0;}
+/* (the field text itself renders 18px/1.6 white from the page's own
+   .ib-layer-body p rule — line ~3488, !important — not from here.) */
 .ib-layer:not(.open) .ib-layer-body{display:none;}
 /* Jewel bullets for the story questions — the Hub's faceted-jewel list. */
 .ib-layer-body ul{list-style:none;margin:12px 0;padding:0;display:flex;flex-direction:column;gap:12px;}
@@ -6287,15 +6289,18 @@ button.os-ld-node .os-ld-n{
    (4) the story questions open the story editor in About;
    (5) the three offer doors open the membership create form pre-set. */
 (function(){
-  /* (1) Fold / unfold. */
+  /* (1) Fold / unfold — the page ALREADY toggles .ib-layer-head clicks
+     (capture-phase delegated handler, "layer expand/collapse", line
+     ~14431). This listener only keeps aria-expanded honest; it never
+     toggles the class itself — a second toggle would undo the first
+     (proven: capture toggle + this toggle = net zero, layer never folds). */
   document.addEventListener('click', function(e){
     var h=e.target&&e.target.closest?e.target.closest('[data-os-ib-toggle]'):null;
     if (!h) return;
     var layer=h.closest?h.closest('.ib-layer'):null;
     if (!layer) return;
-    var open=!layer.classList.contains('open');
-    layer.classList.toggle('open', open);
-    h.setAttribute('aria-expanded', open?'true':'false');
+    /* bubble runs after the capture toggle, so the class is final here. */
+    h.setAttribute('aria-expanded', layer.classList.contains('open')?'true':'false');
   });
   /* (2) Labels by kind — personal says "My", anything else says "Our". */
   var STORY_QS={
