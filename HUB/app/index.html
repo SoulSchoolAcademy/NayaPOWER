@@ -9364,6 +9364,15 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
   };
   var palette = NayaSearch.mountPalette(document.body, { store: searchStore });
   NayaSearch.installHotkey(document, function () { palette.open(); });
+  // Mobile entry: a visible, operable button. The hotkey alone is not
+  // reachable on a phone, and the palette needs a control that works.
+  var searchButton = document.createElement('button');
+  searchButton.type = 'button';
+  searchButton.className = 'naya-search-button';
+  searchButton.setAttribute('aria-label', 'Search');
+  searchButton.textContent = 'Search';
+  searchButton.addEventListener('click', function () { palette.open(); });
+  document.body.appendChild(searchButton);
   window.NayaSearchPalette = { open: function () { palette.open(); } };
 })();
 </script>
