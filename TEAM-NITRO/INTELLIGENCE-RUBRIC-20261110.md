@@ -146,7 +146,7 @@ A negative score is a verdict, not an insult: it says *do not capture this, do n
 | Score | Band | What you do | Source |
 |---|---|---|---|
 | **+7 to +9** | **MAJOR** | **Smart-note it. Mail it to everybody immediately** — it breaks the digest (notification spec §1.4, D1 resolved: major = score ≥ +7). Headline the Daily Intelligence Report. File it in the Box under its type, and tell the team in mail the same pass. | Threshold number: **PROPOSAL** (writer's, for his word). The break-through itself is **HIS** (D1 ruling, 01:58Z Nov 10). |
-| **+5 to +6** | Major to its scope | Smart-note it. **Immediate mail to the project team and scope followers** (notification spec §1.4 immediate mail, within the bundle cap). It rides the digest for whole-NayaNET scope — it does not mail everybody. Digest headline candidate. | Threshold number: **PROPOSAL**. Immediate-mail-within-scope is **HIS** (notification spec §1.4, settled ground). |
+| **+5 to +6** | Major to its scope | Smart-note it. **Immediate mail to the project team and scope followers** (notification spec §1.4 immediate mail — no bundle cap; mail is the writer's choice at the note, notification spec §8 D3, settled 02:12Z Nov 10). It rides the digest for whole-NayaNET scope — it does not mail everybody. Digest headline candidate. | Threshold number: **PROPOSAL**. Immediate-mail-within-scope is **HIS** (notification spec §1.4, settled ground). |
 | **+3 to +4** | Worth a smart note | Smart-note it. **Digest only** — no immediate mail to anybody. It reaches whole-NayaNET scope in the Daily Intelligence Report, and its project team on the feed. | Threshold number: **PROPOSAL**. Digest-only for this band follows from **HIS** D1/D2 rulings (only major breaks the digest; the digest carries the rest). |
 | **+1 to +2** | Worth a note | Note it — a Naya Note, or a loop record — and share it with the team it belongs to if it helps them. **No smart note.** No mail, no digest headline; it may appear in the daily intel highlights only as a one-line nutshell if the report's author judges it useful. | Threshold number: **PROPOSAL**. |
 | **0** | Record only | Capture it as a record — a log line, a PI entry — and nothing more. No note, no share, no mail. | Threshold number: **PROPOSAL**. |
@@ -253,7 +253,7 @@ Not a filed smart note. The noting seat's permission-model draft as written at 0
 
 **Filing record (filled at filing time):**
 - Rubric: `TEAM-NITRO/INTELLIGENCE-RUBRIC-20261110.md`, branch `notification/spec-20261110` — blob + commit + link in the report back. No merge. No deploy.
-- Notification spec amended: `TEAM-NITRO/NOTIFICATION-SYSTEM-SPEC-20261110.md` §8 only (+ the D1 citation) — same branch, blob + commit + link in the report back.
+- Notification spec amended: `TEAM-NITRO/NOTIFICATION-SYSTEM-SPEC-20261110.md` §8 (D1–D4 rulings + 99% baseline principle) plus the D3 correction pass (02:12Z Nov 10: no bundle cap — cap removed from §1.4, §4.2, and §7.2) — same branch, blob + commit + link in the report back.
 - Accompanying smart note: filed per the numbering law (`next-sn-number.py` FRESH), `##` format, verified live on the feed ("in means on the feed").
 - Verification owed (different seats, not the writer): the §8 calibration test (three sample notes within one point) + the proof test (DONE FIRST questions from the rubric alone, with section numbers).
 
