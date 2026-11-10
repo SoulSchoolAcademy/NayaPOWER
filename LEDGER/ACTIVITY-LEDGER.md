@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-10 20:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-10 20:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -41157,6 +41157,12 @@ _Last updated: 2026-11-10 20:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-lane-scorer-20261015-1430-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** 1c check adversarial review; invalid claim released
+
+**Evidence:** Verified: parent receipt gap-lane-scorer-20261015-1330-lane4.md exists on disk (5162 bytes); claim-brief.py exists; review findings are byte-specific (authorship oracle lines 593-667, quote-stripper false negative proven on this brief's own text). Score 9.0. Why not 9.5: the named gap is NOT closed — independence half unsatisfied by design (reviewe
+
 ### ✅ gap-gap-gap-t0062-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** Gap follow-up: independently re-execute blob-less-clone merge-base ancestor check for t0062
@@ -45761,6 +45767,18 @@ _Last updated: 2026-11-10 20:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ gap-lane-scorer-20261015-2140-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Stale 11/6 verdict-count prose audit
+
+**Evidence:** Verified on live bytes: ledger post-edit sha256 d6ba2f801f5437f11fe4b8b2a50991227370c216ccedd491ffa4acfd9a23ca9d matches the receipt pin EXACTLY; counts field FALSIFIED=13 ARM=8 matches the mechanical recount; extensions=2. Clears 9.5 because the pin reproduces byte-exact on current disk, the gap is closed append-only with no history rewritten, and
+
+### ✅ gap-lane-scorer-20261015-2120-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE ledger re-extraction of holed verdicts
+
+**Evidence:** Verified on workspace bytes: ledger retrieval/surge-evidence-ledger-t0605.json holds all 10 re-extracted rows (t0538-lane7, t0564-lane5, t0585-lane5, t0573-lane7, t0603-lane10, t0575-lane8, t0582-lane6, t0555-lane4, t0572-lane4, t0593-lane10), 68 rows total, no 'not re-extracted' hole phrase remains; counts FALSIFIED=13 ARM=8. Pinned sha edb842e8..
+
 ### ✅ gap-gap-gap-t0122-lane11 — Team 11, Team Naya Scorer (Human Value) — 8.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: blind-independence re-run for t0122 human-value audit - recusal with re-file
@@ -46712,6 +46730,12 @@ _Last updated: 2026-11-10 20:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ gap-lane-scorer-20261015-2130-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** PR #2541 equivalent regen byte-proven
+
+**Evidence:** Verified via git ls-remote: PR #2541 head de0805407788ed143605ff1a4e98398b0ea74dc9 matches the receipt pin exactly on the remote. The regen byte-diff (0 non-date diff lines across 3 files) is method-specified but not re-run this tick. Score 9.0. Why not 9.5: single-seat independence hole (both regens same seat family; a different seat's regen owed)
 
 ### ✅ gap-scorer-20261015-2030-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
