@@ -14244,18 +14244,18 @@ document.addEventListener('click', function(e){
 .ib-presenter img{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid #a06bff;box-shadow:0 0 12px rgba(160,107,255,.55);}
 .ib-presenter span{font-size:13px;font-weight:800;letter-spacing:.04em;color:#fff;}
 .tn-tacho{cursor:pointer;}
-/* FIX-10 D5: at 360px the orb labels hang below their discs and the next orb
+/* FIX-10 D5 (FIX-11: breakpoint widened 360 -> 389, rules unchanged): at <=389px the orb labels hang below their discs and the next orb
    on the orbit paints over the end letter (JOINS reads JOIN, INVITES reads
    NVITES). The orbit cannot grow here: the fixed bottom bar sits at y=662
    and the + FAB guards the right edge, so a wider orbit trades one clip for
    another (proven live: orbR 108/110 fixed JOINS but hid SHARES/CREATIONS
-   under the bar and INVITES under the FAB). Instead, at <=360px only, the
+   under the bar and INVITES under the FAB). Instead, at <=389px only, the
    labels paint above the neighbour discs: nodes stop creating a stacking
    context (z-index:auto) and each label gets z-index:5 in the nodes layer.
    Orb positions, sizes, colours, numbers and the needle are untouched;
-   390/1440 are outside the media query. Labels also drop to 9px/.10em so
+   390/1440 are outside the media query (390 verified unchanged after the widening). Labels also drop to 9px/.10em so
    they sit further inside their discs. */
-@media (max-width:360px){
+@media (max-width:389px){
   html body .os-constellation .os-ld-nodes button.os-ld-node{ z-index:auto !important; }
   html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{ position:relative !important; z-index:5 !important; font-size:9px !important; letter-spacing:.10em !important; }
 }
