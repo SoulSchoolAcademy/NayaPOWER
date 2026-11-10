@@ -1,0 +1,37 @@
+{
+ "drillOpen": "clicked: See every link",
+ "drill": {
+  "showOnGaugeCount": 5,
+  "sample": [
+   {
+    "text": "Show on gauge",
+    "color": "rgb(255, 255, 255)",
+    "borderColor": "rgb(217, 165, 33)",
+    "boxShadow": "rgba(255, 255, 255, 0.4) 0px 1.5px 0px 0px inset, rgba(0, 0, 0, 0.5) 0px -4px 8px 0px inset, rgba(217, 165, 33, 0.5) 0px 0px 18px 0px, rgba("
+   },
+   {
+    "text": "Show on gauge",
+    "color": "rgb(255, 255, 255)",
+    "borderColor": "rgb(217, 165, 33)",
+    "boxShadow": "rgba(255, 255, 255, 0.4) 0px 1.5px 0px 0px inset, rgba(0, 0, 0, 0.5) 0px -4px 8px 0px inset, rgba(217, 165, 33, 0.5) 0px 0px 18px 0px, rgba("
+   },
+   {
+    "text": "Show on gauge",
+    "color": "rgb(255, 255, 255)",
+    "borderColor": "rgb(217, 165, 33)",
+    "boxShadow": "rgba(255, 255, 255, 0.4) 0px 1.5px 0px 0px inset, rgba(0, 0, 0, 0.5) 0px -4px 8px 0px inset, rgba(217, 165, 33, 0.5) 0px 0px 18px 0px, rgba("
+   },
+   {
+    "text": "Show on gauge",
+    "color": "rgb(255, 255, 255)",
+    "borderColor": "rgb(217, 165, 33)",
+    "boxShadow": "rgba(255, 255, 255, 0.4) 0px 1.5px 0px 0px inset, rgba(0, 0, 0, 0.5) 0px -4px 8px 0px inset, rgba(217, 165, 33, 0.5) 0px 0px 18px 0px, rgba("
+   }
+  ],
+  "linkRows": 6
+ },
+ "boardTap": {
+  "error": "Page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\".os-world-board\").nth(1).locator(\".os-wb-btn\")\n    - locator resolved to <a class=\"ph-connect os-wb-btn\" href=\"https://nayanet.app/personal\">Open the stats</a>\n  - attempting click action\n    2 \u00d7 waiting for element to be visibl",
+  "urlNow": "http://127.0.0.1:18765/dashboard-pass6on7.html#drill-smartlink"
+ }
+}
