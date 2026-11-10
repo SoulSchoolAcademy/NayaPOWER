@@ -54,7 +54,7 @@ You never have to guess what is true. Read the record, and it tells you — beca
 
 The durable lesson: write for the stranger. Bound the claim. Name the gap. Keep the falsifier. Never impersonate. Correct surgically. Route the decision. The record is the system — and a record that tells the truth is the only system that compounds.
 
-## COVERAGE — RAW NOTES DISTILLED (300)
+## COVERAGE — RAW NOTES DISTILLED (305)
 
 - IB-SMART-NOTE-20260930-sn0104-design-weight-decisions-not-settled-in-relay
 - IB-SMART-NOTE-20260930-sn0176-cross-partition-content-fork
@@ -356,6 +356,11 @@ The durable lesson: write for the stranger. Bound the claim. Name the gap. Keep 
 - IB-SMART-NOTE-20261109-sn2618-clone-a-page-replace-some-parts-that-is-how-building-happens
 - IB-SMART-NOTE-20261109-sn2619-one-flow-not-separate-systems-and-not-in-sync-yet
 - IB-SMART-NOTE-20261109-sn2620-everything-in-the-factory-one-system
+- IB-SMART-NOTE-20261109-sn2622-push-button-simple-worlds-not-websites
+- IB-SMART-NOTE-20261109-sn2623-the-three-questions-what-would-you-do-with-it
+- IB-SMART-NOTE-20261109-sn2624-how-she-ultimately-works-and-why-it-works-that-way
+- IB-SMART-NOTE-20261109-sn2625-a-ruling-needs-its-receipt-the-naima-conflict
+- IB-SMART-NOTE-20261109-sn2626-the-guard-is-too-slow-to-stop-a-race-sn-2602-the-fourth-collision
 
 ## Intelligence Loop run 13 addendum (22:23Z) — SN-2376–2378 + coverage 75
 
@@ -900,3 +905,15 @@ The durable lesson: write for the stranger. Bound the claim. Name the gap. Keep 
 - **NAIMA — STILL CONTESTED, STILL HIS:** SN-2600 on GitHub still reads "Naima — adopted by Shawn's ruling on 2026-11-09, canon from that day" (verified from the bytes this run, blob 09d2b5e4). The noting seat is on HOLD per the captain's instruction — the correction does not land until he answers. The captain's question went to him ~23:31Z; no answer in this window's reads. The claim has spread to a second file (PRESENTATION-MODULE-STATE-LABELS, 4bd0cca6) — the correction must reach both places when it lands.
 - **ORGANIZE HOOK (step 4, this run):** exit 0 — 19 organized, 19 files new, 0 unparseable, 2,086 entries scanned, watermark holds.
 - **QUIET:** no chat report — the Naima question is already in front of him via the captain; the pass-4 fix round is running; the two loop notes ride with the team mail digest this run, filed by run 65 once the guard blesses their numbers. Next loop run 00:23Z.
+
+## Intelligence Loop run 65 addendum (00:23Z) — two loop notes filed + SN-2622/2623/2624 folded in + coverage 305
+
+- **THE TWO LOOP NOTES — FILED (guard-blessed, file-time-checked):** SN-2625 "A Ruling Needs Its Receipt: The Naima Conflict" + SN-2626 "The Guard Is Too Slow to Stop a Race: SN-2602, the Fourth Collision" (drafts held since run 63; run 64 could not file them — its first guard died, the re-launch blessed SN-2623 after the noting seat had already taken it). The noting seat filed SN-2623 (00:24:00Z) and SN-2624 (00:33:25Z) while this run's guard was still reading — the guard's blessing went stale in the same minute, and the file-time check before each PUT is what kept the filings clean. The lesson the SN-2626 note records was applied in the same pass that filed it.
+- **SN-2622 PUSH-BUTTON RE-FILE — LANDED + LIVE (collision CLOSED):** SN-2622 "Push-Button Simple: Worlds, Not Websites" (commit 179cd3be, 00:14:37Z) is the noting seat's re-file of the SN-2602 duplicate — verified from the bytes this run (blob 74de8760, 6,513B) and live in the Hub feed from the 00:17Z sync (share asset nayanet.live/s/sn2622). The duplicate deletion (98e2eae2) is confirmed in the sync's 404 list. First-filed keeps the number: the machine's "The Right" is SN-2602, the push-button note is SN-2622.
+- **SN-2623 THE THREE QUESTIONS + SN-2624 HOW SHE ULTIMATELY WORKS (noting seat, filed this window):** SN-2623 — the pitch is three questions (would you use it, value it, tell your friends? use → value → tell is the flywheel), and "personalized for you" has to be SHOWN, not said. SN-2624 — his question after watching the pieces land ("Now that establish the connection to everything... how she ultimately works and why it works that way. You got that locked in now?"): one flow — listen → understand → distill → Box → connect → retrieve → apply → verify → learn — and the why: memory that changes what happens next IS intelligence. His order stands: "keep going, get it completed right now." Both live in the feed (SN-2623 is the first card). Their paired Naya Notes are NOT yet filed — no "three-questions" or "how-she-ultimately-works" NN in the 2026/11/09 folder (52 NNs); the noting seat owns them, the loop watches.
+- **NAIMA — STILL CONTESTED, HOLD STANDS, NO ANSWER:** SN-2600 still reads "Naima — adopted by Shawn's ruling on 2026-11-09" (last verified run 64, blob 09d2b5e4). The correction was dispatched, then SUPERSEDED by the captain's HOLD after Resolve's 23:11Z/23:13Z letters claiming a 14:58 PST ruling — no such message is visible in the main chat. The captain's question went to him ~23:31Z; no answer in this window's reads. SN-2600 stays exactly as filed. The claim has spread to a second file (PRESENTATION-MODULE-STATE-LABELS, 4bd0cca6) — the correction must reach both when it lands.
+- **LIVE FEED — LAG CLOSED:** feed-live.json HTTP 200, 5,884,956B, count 760 (was 739), first card SN-2623 "The Three Questions". The 00:17Z sync carried SN-2619/2620/2621/2622 into the feed and the Hub was rebaked + redeployed; SN-2623/2624 are live too. The 19-note lag run 64 recorded is closed; only this run's two loop notes (SN-2625/2626) await the next sync.
+- **PASS-4 FIX ROUND 2 — ON THE BRANCH, RE-VERIFY PENDING:** branch dashboard/pass4-one-family-20261109 tip 43a937e7 (00:11:30Z) carries the D4-R1 fix (last-row scroll-margin-bottom:20px at <=480px). The fix seat (74301d6a) completed 00:26:29Z: D4-R1 fixed, +24 lines, nothing else changed. The accidental main filing (b74f5659) was reverted 45s later (34534ad7); main is clean (tip b322feae is the noting seat's SN-2624). A fresh different-seat re-verify is the pending step — not this seat's work, and pass-4 is not done until that chain passes + his eye.
+- **RUN 64 CLOSE — COMPLETED BY THIS RUN:** run 64 timed out mid-flight; its PUTs are verified landed by commit history (ESSENCE-01 b4d75732 00:22:45Z, PI board note b88dde0b 00:22:37Z) and by blob read-back this run — both GitHub SHAs match the local files byte-identically (ESSENCE-01 bf2bc577, PI 15702951). Its team mail is reported sent (receipts not re-checked this run; no re-send — a duplicate digest is noise). Its tip check, SN-2622 identity check, and daily-log entry are done here.
+- **ORGANIZE HOOK (step 4, this run):** exit 0 — 0 organized, 0 files new, 0 unparseable, watermark holds. A 0-new run is healthy, not skipped: nothing new since run 64's 19.
+- **QUIET:** no chat report — the Naima question is already in front of him via the captain; the pass-4 re-verify is pending; the two loop notes ride with the team mail digest this run. Next loop run 00:53Z.
