@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-10 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-10 19:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -42353,6 +42353,12 @@ _Last updated: 2026-11-10 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ decision-replay-t0780-thirdseat-t1496-lane3-verdict-table — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Third-seat verdict table for the t0780 decision replay (t1496 lane 3): B1 seat-independence verdict + F-R1..F-R5 falsifier adjudications
+
+**Evidence:** VERIFIED this tick on workspace bytes: all 5 f_r1 evidence pins re-derive byte-identical from live files (surge-a-verdict-t0780-lane3.md 0e5c56ba..., lane-1 hypothesis-change 3b685b90..., lane-3 signal-design f84c6554..., lane-3 prereg d992ad0c..., lane-2 semantic-arm prereg aeffc6fa...); subject receipt pins also reproduce - t1481 pin 190596cf... 
+
 ### ✅ gap-t0102-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** GAP follow-up: verify PR #2418 seat-2 state live; gap already closed by events
@@ -50354,6 +50360,12 @@ _Last updated: 2026-11-10 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261110-1128 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall run 2026-11-10 11:23 PST: evaluate all 30 unclaimed briefs, claim none (28 exit 7 + 2 exit 2)
+
+**Evidence:** VERIFIED this tick on workspace bytes: cited log hidden_files/claim-sweep-20261110-1128.log holds 30 attempt lines (28x exit 7 + 2x exit 2 per its totals line; grep counts 29/3 incl. the totals line itself); the log's named set == live brief-queue/ set 30/30 (t0422 mentioned only in the delta line, now in brief-queue/claimed/done/ - queue 31 -> 30 
 
 ### ✅ gate-stall-20261110-1009 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
