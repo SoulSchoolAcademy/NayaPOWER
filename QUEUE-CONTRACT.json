@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-10T15:49:10Z",
-  "tip": "4201e7badf68fd99c6c9d70bb6571e9ac9e9000c",
+  "generated_at": "2026-11-10T21:48:41Z",
+  "tip": "f971b0313c296f54109875bf5e5402ae2b059dc5",
   "prs": [
     {
       "number": 3089,
@@ -38,60 +38,6 @@
       "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
       "owner": "author lane",
       "head": "80f8dab67ec939ad524c2a092f479c7ca5cf6716"
-    },
-    {
-      "number": 3318,
-      "title": "docs(brain): learning event 2026-11-09",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "eb2583fcea9def5e596f72af0d59a45ddb727694"
-    },
-    {
-      "number": 3319,
-      "title": "Weekly Intelligence \u2014 2026-11-02 \u2192 2026-11-09 (filed, held for scorecard)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "ef80d745d6e6e2c3232623aad9578dd21cfcd7b8"
-    },
-    {
-      "number": 3320,
-      "title": "spec-integrity: exclude 0036 constitution + 0037 locked-in declaration from pinning",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "2c63f7fcad7bdecc8f2772d27fe059dfb4d5bffa"
-    },
-    {
-      "number": 3321,
-      "title": "fix(retrieval): re-anchor SN-2068 page_hash e5779e95 to f6f4c3d8",
-      "tier": "C",
-      "action": "MERGE-NOW",
-      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
-      "owner": "dock",
-      "head": "c645f2ee5900a44591d237603aaa1a992d3ec0b3"
-    },
-    {
-      "number": 3322,
-      "title": "Hub search wiring: add visible mobile search entry button",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "3ff03d92aa1d7c7097f3dd1a136d4dda6dea7162"
-    },
-    {
-      "number": 3323,
-      "title": "Daily Intelligence Report 2026-11-10 - filed edition (V2 skeleton + distillation core)",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, claim-evidence-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "65af48e174ed3b5a09f9a2864ffd35431b23b2c9"
     }
   ]
 }
