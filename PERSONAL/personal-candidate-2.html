@@ -3602,8 +3602,8 @@ article.intel-board:hover, article.intel-board:active { border-color: var(--tone
 .os-mship-portal-btn.mship-busy{opacity:.72;pointer-events:none;}
 .os-mship-portal-btn .os-jewel{flex:none;}
 @media(max-width:560px){.os-mship-portal-btn{width:100%;padding:16px 20px;font-size:16px;}}
-/* ---- interim ownership claim (identity lane replaces) ---- */
-.os-mship-claim{background:none;border:none;color:rgba(255,255,255,.85);font-size:12px;font-family:inherit;text-decoration:underline;cursor:pointer;padding:6px 2px;} /* FIX-8c: was #8f8fa3 — dim metadata, now near-white; the interim wording is honest copy and stays exactly as written */
+/* ---- ownership claim (sign-in coming) ---- */
+.os-mship-claim{background:none;border:none;color:rgba(255,255,255,.85);font-size:12px;font-family:inherit;text-decoration:underline;cursor:pointer;padding:6px 2px;} /* FIX-8c: was #8f8fa3 — dim metadata, now near-white. FIX-9 D2: reworded to plain citizen words — no "interim", no process talk. */
 .os-mship-claim:hover{color:#ffbf3d;}
 /* ---- celestial upgrade modal ---- */
 .up-modal.mship-upgrade{width:min(660px,94vw);border:2px solid transparent;background:linear-gradient(180deg,#101018,#060609) padding-box,linear-gradient(135deg,rgba(160,107,255,.85),rgba(255,191,61,.85)) border-box;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 24px 60px rgba(0,0,0,.7),0 0 60px -8px rgba(160,107,255,.55);}
@@ -4354,6 +4354,19 @@ html.os-calm
 .os-sl-board .os-link-row{transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease}
 .os-sl-board .os-link-row:hover{transform:translateY(-2px)}
 .os-sl-graph{flex:1 1 100%;margin-top:12px}
+/* FIX-9 D1: the graph is a flex item with min-width:auto, so it could not
+   shrink below its min-content (14 bars + 14 day labels ≈ 508px) and forced
+   its ~296px phone row — and the page — to scrollWidth 592 at 390/360.
+   min-width:0 lets it fit the row; the day labels shrink with it. Phone
+   tightening (bars 0 1px, labels 8.5px, graph padding 5px) keeps the bars
+   finger-wide and the labels legible. Same 14 bars, pills, note, tap. */
+.os-sl-board .os-sl-graph{min-width:0}
+.os-sl-board .os-sl-graph-days span{min-width:0}
+@media (max-width:560px){
+.os-sl-board .os-sl-graph .os-week .bar{margin:0 1px}
+.os-sl-board .os-sl-graph-days span{font-size:8.5px}
+.os-sl-board .os-sl-graph{padding-left:5px;padding-right:5px}
+}
 .os-sl-graph .os-week{height:58px;padding:13px 2px 0}
 .os-sl-graph .bar{flex:1;cursor:pointer}
 .os-sl-graph-days{display:flex;padding:0 2px;margin-top:5px}
@@ -6292,7 +6305,7 @@ button.os-ld-node .os-ld-n{
 <h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">✦</span> Memberships</h3>
 <p class="os-note" style="margin-top:8px;">Memberships live on this page — private communities with videos, PDFs, audio and notes. Members join, log in, and everything beautiful opens for them.</p>
 <div class="ph-actions" id="mship-create-row" style="display:none;margin-top:12px;justify-content:center;"><button class="os-mship-portal-btn" id="mship-create-btn" type="button"><span class="os-jewel" style="--jc:#ffbf3d;font-size:15px;padding:8px 11px;">✦</span><span>Create membership</span></button></div>
-<div id="mship-claim-row" style="display:none;margin-top:10px;text-align:center;"><button class="os-mship-claim" type="button" data-mship-claim>I own this page (interim — identity sign-in coming)</button></div>
+<div id="mship-claim-row" style="display:none;margin-top:10px;text-align:center;"><button class="os-mship-claim" type="button" data-mship-claim>Your page — sign in is coming soon.</button></div>
 <div id="mship-list" style="display:flex;flex-direction:column;gap:12px;margin-top:12px;"><div class="os-skel"></div></div>
 <div class="os-status" id="mship-status"></div>
 </div>
@@ -15740,13 +15753,13 @@ document.addEventListener("click", function(e){
       modal.appendChild(p);
       return;
     }
-    /* interim ownership claim — clearly labeled, identity lane replaces */
+    /* FIX-9 D2: ownership claim — clearly labeled, sign-in coming */
     var cl = t.closest ? t.closest('[data-mship-claim]') : null;
     if (cl) {
       lsSet(CLAIM_KEY, '1');
       mshipBoot();
       var s2 = $('mship-status');
-      if (s2) s2.textContent = 'Ownership claimed on this device (interim — the identity lane will sign owners in properly).';
+      if (s2) s2.textContent = 'This page is yours on this device — sign in is coming soon.';
     }
   });
 
