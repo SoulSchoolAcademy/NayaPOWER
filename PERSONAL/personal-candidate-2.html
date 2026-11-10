@@ -3653,7 +3653,7 @@ article.intel-board:hover, article.intel-board:active { border-color: var(--tone
 #nsbSearchBackdrop{position:fixed!important;inset:0!important;background:rgba(0,0,0,.62)!important;z-index:1999!important;display:none!important;}
 #nsbSearchBackdrop.on{display:block!important;}
 .nsb-modal-x{position:absolute!important;top:12px!important;right:12px!important;width:32px!important;height:32px!important;border-radius:50%!important;border:1px solid rgba(255,255,255,.25)!important;background:transparent!important;color:#fff!important;font-size:16px!important;cursor:pointer!important;line-height:1!important;padding:0!important;}
-.nsb-search-fab{position:fixed!important;bottom:76px!important;right:16px!important;width:48px!important;height:48px!important;border-radius:50%!important;background:rgba(8,8,12,.92)!important;border:1.5px solid rgba(160,107,255,.55)!important;color:#fff!important;font-size:20px!important;z-index:1500!important;cursor:pointer!important;display:flex!important;align-items:center!important;justify-content:center!important;box-shadow:0 8px 24px rgba(0,0,0,.6)!important;}
+.nsb-search-fab{position:fixed!important;bottom:18px!important;right:16px!important;width:48px!important;height:48px!important;border-radius:50%!important;background:rgba(8,8,12,.92)!important;border:1.5px solid rgba(160,107,255,.55)!important;color:#fff!important;font-size:20px!important;z-index:1500!important;cursor:pointer!important;display:flex!important;align-items:center!important;justify-content:center!important;box-shadow:0 8px 24px rgba(0,0,0,.6)!important;}
 @media (max-height:480px){.nsb-search-fab{bottom:12px!important;}}
 /* FIX-PASS-3 FAIL 6(b/c): ≤640px docking — at 621px the floating + sat at a
    magic document offset (480px/380px) that only matches the cover at desktop
@@ -4438,6 +4438,7 @@ html.os-calm
         <div class="ph-actions-row up-actions">
       <button class="up-act" id="msgbtn" type="button" style="--ac:#3fb8ff;">✉️ Message</button>
       <button class="up-act" id="aboutbtn" type="button" style="--ac:#2fe89e;" data-os-go="about">About</button>
+      <button class="up-act" id="storybtn" type="button" style="--ac:#a06bff;" data-os-go="story">✦ My Story</button>
       <button class="up-act" id="myworldbtn" type="button" style="--ac:#e84fff;" data-os-go="dashboard">🌍 My World</button>
       <button class="up-act" id="connbtn" type="button" style="--ac:#ffbf3d;" data-os-go="people">Connections</button>
       <button class="up-act" id="growthbtn" type="button" style="--ac:#ff9a5a;" data-os-go="growth">Invite</button>
@@ -6082,17 +6083,61 @@ button.os-ld-node .os-ld-n{
 </section>
 </div>
 
+<style>
+/* STORY ROUND — intelligent-block layers, harvested from the Hub
+   (~/workspace/user/files/index-2.html, .ib-layer lines 1732-1790):
+   2px tone border, 18px radius, obsidian gradient, jewel head button,
+   body 17px/1.7 white. Tones walk the spectrum; each field its own.
+   The head is a button — tap it to fold the body away or bring it back. */
+.ib-layer{--lc:#a06bff;border:2px solid color-mix(in srgb, var(--lc) 42%, #fff 8%);border-radius:18px;background:linear-gradient(145deg,#0d0d13,#050508);box-shadow:inset 0 1px rgba(255,255,255,.11),0 14px 30px rgba(0,0,0,.56),0 0 20px color-mix(in srgb, var(--lc) 10%, transparent);overflow:hidden;margin-bottom:20px;transition:transform .25s,border-color .25s,box-shadow .25s;}
+.ib-layer:hover{transform:translateY(-4px);border-color:rgba(160,107,255,.6);box-shadow:inset 0 1px rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px rgba(160,107,255,.25);}
+.ib-layer.layer-purple{--lc:#a06bff;}
+.ib-layer.layer-sapphire{--lc:#3ca8ff;}
+.ib-layer.layer-emerald{--lc:#2fe89e;}
+.ib-layer.layer-gold{--lc:#ffd45a;}
+.ib-layer.layer-indigo{--lc:#6675ff;}
+.ib-layer.layer-orange{--lc:#ff8c42;}
+.ib-layer.layer-magenta{--lc:#ed42c4;}
+.ib-layer-head{width:100%;appearance:none;background:none;border:0;cursor:pointer;display:flex;align-items:center;gap:12px;text-align:left;padding:16px 18px;color:#fff;font-family:inherit;}
+.ib-layer-head b{font-size:18px;letter-spacing:.07em;color:#fff;}
+.ib-layer-head .ib-chev{margin-left:auto;color:var(--lc);font-size:16px;transition:transform .2s cubic-bezier(.16,.84,.22,1);}
+.ib-layer.open .ib-layer-head .ib-chev{transform:rotate(180deg);}
+.ib-layer-body{padding:8px 24px 24px;overflow-wrap:break-word;}
+.ib-layer-body>p:first-child{color:#fff;font-size:17px;line-height:1.7;margin:0;}
+.ib-layer:not(.open) .ib-layer-body{display:none;}
+/* Jewel bullets for the story questions — the Hub's faceted-jewel list. */
+.ib-layer-body ul{list-style:none;margin:12px 0;padding:0;display:flex;flex-direction:column;gap:12px;}
+.ib-layer-body ul li{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.65;color:#e8e4ee;font-weight:500;padding:0;margin:0;}
+.ib-layer-body ul li::before{content:"";flex:none;width:24px;height:24px;margin-top:2px;border-radius:50%;background:radial-gradient(circle at 50% 50%,#0a0a0e 0%,#0a0a0e 35%,transparent 36%),radial-gradient(circle at 32% 28%,rgba(255,255,255,.9),transparent 40%),radial-gradient(circle at 50% 50%,var(--lc,#8a5cff),color-mix(in srgb, var(--lc,#8a5cff) 30%, #000) 100%);border:2px solid var(--lc,#8a5cff);box-shadow:inset 0 1px 2px rgba(255,255,255,.6),inset 0 -2px 6px rgba(0,0,0,.5),0 0 16px var(--lc,#8a5cff),0 0 4px var(--lc,#8a5cff),0 4px 12px rgba(0,0,0,.6);}
+.ib-layer-body ul li:nth-child(5n+1)::before{--lc:#ed42c4;}
+.ib-layer-body ul li:nth-child(5n+2)::before{--lc:#8a5cff;}
+.ib-layer-body ul li:nth-child(5n+3)::before{--lc:#3ca8ff;}
+.ib-layer-body ul li:nth-child(5n+4)::before{--lc:#35e39b;}
+.ib-layer-body ul li:nth-child(5n+5)::before{--lc:#d4a017;}
+.os-story-qs button{appearance:none;background:none;border:0;padding:0;cursor:pointer;color:#fff;font-size:17px;line-height:1.65;text-align:left;font-family:inherit;font-weight:600;}
+.os-story-qs button:hover{color:var(--lc,#8a5cff);}
+/* The three doors — one row on desktop, stacked on phones. */
+.os-offer-doors{display:flex;gap:12px;margin:14px 0;}
+.os-offer-door{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:8px;text-align:left;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:16px;color:#fff;cursor:pointer;font-family:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 22px rgba(0,0,0,.45);transition:transform .2s,border-color .2s;}
+.os-offer-door:hover{transform:translateY(-3px);border-color:rgba(255,191,61,.6);}
+.os-offer-door b{font-size:16px;letter-spacing:.02em;}
+.os-offer-desc{font-size:14px;line-height:1.55;color:#E8E8EC;}
+@media(max-width:640px){.os-offer-doors{flex-direction:column;}}
+</style>
 <div class="ph-sec os-view" id="about" data-os-view="about" data-block="about">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> About Me</div>
-<div class="ph-card" style="--ac:#3fb8ff;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">❝</span> My motto</h3>
+<div class="ib-layer layer-purple open">
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#a06bff">❝</span><b>My motto</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer-body">
 <p id="os-sec-motto-text" class="os-note" style="margin:0;"></p>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-motto-edit" rows="2" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-motto-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="motto">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="motto" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="motto" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="motto" style="display:none;" aria-label="Close without saving">×</button></div>
 <div class="os-status" id="os-sec-motto-status"></div>
 </div>
+</div>
 
-<div class="ph-card" style="--ac:#3fb8ff;"><h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">👋</span> My story</h3>
+<div class="ib-layer layer-sapphire open"><button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#3ca8ff">👋</span><b>My story</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer-body">
 <p id="abouttext">Shawn Vibert builds NayaNET — the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live. Welcome to the new world. Welcome to the new net.</p>
 <div class="os-fieldwrap"><textarea class="ph-about-edit" id="aboutedit" style="display:none;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="aboutedit" aria-label="Dictate your story" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
 <div class="ph-actions">
@@ -6102,45 +6147,56 @@ button.os-ld-node .os-ld-n{
 </div>
 <div class="os-status" id="os-about-status"></div>
 </div>
+</div>
 
 <!-- FIX-PASS-3 FAIL 4: WHAT I DO slot — the About section had motto, story,
      goals, purpose, mission, vision, but no WHAT I DO. The slot is here,
      empty, wired to the same Edit/Save machinery (key "whatido") — the
      words are Shawn's to write, never invented. -->
-<div class="ph-card" style="--ac:#3fb8ff;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🛠️</span> What I do</h3>
+<div class="ib-layer layer-emerald open">
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#2fe89e">🛠️</span><b>What I do</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer-body">
 <p id="os-sec-whatido-text" class="os-note" style="margin:0;">No what-I-do yet &mdash; tap Edit and say what you do, in one line.</p>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-whatido-edit" rows="3" style="display:none;margin-top:10px;"></textarea></div>
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="whatido">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="whatido" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="whatido" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="whatido" style="display:none;" aria-label="Close without saving">×</button></div>
 <div class="os-status" id="os-sec-whatido-status"></div>
 </div>
-<div class="ph-card" style="--ac:#3fb8ff;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🎯</span> My goals</h3>
+</div>
+<div class="ib-layer layer-gold open">
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#ffd45a">🎯</span><b>My goals</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer-body">
 <p id="os-sec-goals-text" class="os-note" style="margin:0;">One million citizens by 2027.</p>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-goals-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-goals-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="goals">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="goals" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="goals" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="goals" style="display:none;" aria-label="Close without saving">×</button></div>
 <div class="os-status" id="os-sec-goals-status"></div>
 </div>
-<div class="ph-card" style="--ac:#a06bff;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">🎯</span> My purpose</h3>
+</div>
+<div class="ib-layer layer-indigo open">
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#6675ff">🎯</span><b>My purpose</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer-body">
 <p id="os-sec-purpose-text" class="os-note" style="margin:0;">No purpose written yet &mdash; tap Edit and say why this page exists, in one line.</p>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-purpose-edit" rows="3" style="display:none;margin-top:10px;"></textarea></div>
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="purpose">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="purpose" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="purpose" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="purpose" style="display:none;" aria-label="Close without saving">×</button></div>
 <div class="os-status" id="os-sec-purpose-status"></div>
 </div>
-<div class="ph-card" style="--ac:#3fb8ff;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🚀</span> My mission</h3>
+</div>
+<div class="ib-layer layer-orange open">
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#ff8c42">🚀</span><b>My mission</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer-body">
 <p id="os-sec-mission-text" class="os-note" style="margin:0;">Build NayaNET — the intelligent highway for the AI age.</p>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-mission-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-mission-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="mission">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="mission" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="mission" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="mission" style="display:none;" aria-label="Close without saving">×</button></div>
 <div class="os-status" id="os-sec-mission-status"></div>
 </div>
-<div class="ph-card" style="--ac:#3fb8ff;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🔭</span> My vision</h3>
+</div>
+<div class="ib-layer layer-magenta open">
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#ed42c4">🔭</span><b>My vision</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer-body">
 <p id="os-sec-vision-text" class="os-note" style="margin:0;">A world where intelligence compounds and everybody wins.</p>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-vision-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-vision-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="vision">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="vision" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="vision" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="vision" style="display:none;" aria-label="Close without saving">×</button></div>
 <div class="os-status" id="os-sec-vision-status"></div>
+</div>
 </div>
 
 
@@ -6174,7 +6230,135 @@ button.os-ld-node .os-ld-n{
 <textarea class="os-textarea" id="os-lib-na" rows="3" placeholder="The answer &mdash; in plain words"></textarea>
 <div class="ph-actions"><button class="ph-connect" id="os-lib-add" type="button">Add to the library</button></div>
 <div class="os-status" id="os-lib-status">Entries save onto this app, for every visitor &mdash; the library fills in one answer at a time.</div>
-</div></div><div class="ph-sec os-view" data-os-view="today" data-block="today">
+</div></div><div class="ph-sec os-view" id="story" data-os-view="story" data-block="story">
+<div class="ph-sec-t"><span class="ph-dot" style="background:#a06bff;color:#a06bff;"></span> <span id="os-story-title">My Story</span></div>
+<div class="ib-layer layer-sapphire open">
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#3ca8ff">👋</span><b>The story</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer-body">
+<p id="os-story-text" style="margin:0;">Shawn Vibert builds NayaNET — the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live. Welcome to the new world. Welcome to the new net.</p>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-story-edit="story">✏️ Edit the story in About</button></div>
+</div>
+</div>
+<div class="ib-layer layer-purple open">
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#a06bff">❝</span><b>My motto</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer-body">
+<p id="os-story-motto-text" style="margin:0;"></p>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-story-edit="motto">✏️ Edit in About</button></div>
+</div>
+</div>
+<div class="ib-layer layer-magenta open">
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#ed42c4">🔭</span><b>My vision</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer-body">
+<p id="os-story-vision-text" style="margin:0;"></p>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-story-edit="vision">✏️ Edit in About</button></div>
+</div>
+</div>
+<div class="ib-layer layer-gold open">
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#ffd45a">🎯</span><b>My goal</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer-body">
+<p id="os-story-goal-text" style="margin:0;"></p>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-story-edit="goals">✏️ Edit in About</button></div>
+</div>
+</div>
+<div class="ib-layer layer-orange open">
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#ff8c42">🚀</span><b>My mission</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer-body">
+<p id="os-story-mission-text" style="margin:0;"></p>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-story-edit="mission">✏️ Edit in About</button></div>
+</div>
+</div>
+<div class="ib-layer layer-indigo open">
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#6675ff">?</span><b>Questions to shape your story</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer-body">
+<p>Two questions shape every story here — answer them in your own words, and the story writes itself.</p>
+<ul class="os-story-qs">
+<li><button type="button" data-os-story-q="q1"><span class="os-story-q1">What is your story?</span></button></li>
+<li><button type="button" data-os-story-q="q2"><span class="os-story-q2">Why do you love what you do?</span></button></li>
+</ul>
+<p class="os-note">Tap a question — it opens the story editor in About, ready for your answer.</p>
+</div>
+</div>
+</div>
+<script>
+/* STORY ROUND (2026-11-10) — the story tab's wiring, all in one place:
+   (1) intelligent-block layers fold/unfold on their head button;
+   (2) the story labels follow the page kind (My Story / Our Story);
+   (3) the story view's Edit buttons open the matching About editor;
+   (4) the story questions open the story editor in About;
+   (5) the three offer doors open the membership create form pre-set. */
+(function(){
+  /* (1) Fold / unfold. */
+  document.addEventListener('click', function(e){
+    var h=e.target&&e.target.closest?e.target.closest('[data-os-ib-toggle]'):null;
+    if (!h) return;
+    var layer=h.closest?h.closest('.ib-layer'):null;
+    if (!layer) return;
+    var open=!layer.classList.contains('open');
+    layer.classList.toggle('open', open);
+    h.setAttribute('aria-expanded', open?'true':'false');
+  });
+  /* (2) Labels by kind — personal says "My", anything else says "Our". */
+  var STORY_QS={
+    personal:['What is your story?','Why do you love what you do?'],
+    business:['What is our story?','Why do we love what we do?'],
+    space:['What is the story of this space?','Why do you love it?'],
+    memberships:['What is our story?','Why do we love what we do?']
+  };
+  function applyStoryLabels(){
+    var kind='personal';
+    try{ kind=window.MSHIP_PAGE_KIND||'personal'; }catch(e){}
+    var mine=(kind==='personal');
+    var label=mine?'My Story':'Our Story';
+    var t=document.getElementById('os-story-title'); if (t) t.textContent=label;
+    var cb=document.getElementById('storybtn'); if (cb) cb.textContent='\u2726 '+label;
+    var qs=STORY_QS[kind]||STORY_QS.personal;
+    var q1=document.querySelector('.os-story-q1'); if (q1) q1.textContent=qs[0];
+    var q2=document.querySelector('.os-story-q2'); if (q2) q2.textContent=qs[1];
+    /* the top pill carries the same label — the bar renders it twice. */
+    try{
+      document.querySelectorAll('#nsbTop .nsb-tab').forEach(function(b){
+        var lab=b.querySelector('.nsb-label');
+        if (lab && (lab.textContent==='My Story'||lab.textContent==='Our Story')){ lab.textContent=label; b.setAttribute('aria-label', label); }
+      });
+    }catch(e){}
+  }
+  if (document.readyState==='loading') document.addEventListener('DOMContentLoaded', applyStoryLabels);
+  else applyStoryLabels();
+  setTimeout(applyStoryLabels, 800);
+  /* (3) + (4) Edit in About / ask a question — the story is written in About. */
+  document.addEventListener('click', function(e){
+    var b=e.target&&e.target.closest?e.target.closest('[data-os-story-edit]'):null;
+    var q=!b && e.target&&e.target.closest?e.target.closest('[data-os-story-q]'):null;
+    if (!b && !q) return;
+    if (window.osShowView) window.osShowView('about');
+    setTimeout(function(){
+      if (b){
+        var key=b.getAttribute('data-os-story-edit');
+        if (key==='story'){ var eb=document.getElementById('editabout'); if (eb) eb.click(); }
+        else { var fb=document.querySelector('[data-os-sec-edit="'+key+'"]'); if (fb) fb.click(); }
+      } else {
+        var eb2=document.getElementById('editabout'); if (eb2) eb2.click();
+        var ae=document.getElementById('aboutedit'); if (ae) ae.focus();
+      }
+    }, 350);
+  });
+  /* (5) The three doors — the owner opens the create form pre-set; a
+     visitor gets the honest line and the claim row beside it. */
+  document.addEventListener('click', function(e){
+    var d=e.target&&e.target.closest?e.target.closest('[data-mship-door]'):null;
+    if (!d) return;
+    var door=d.getAttribute('data-mship-door');
+    if (!window.MShip || typeof window.MShip.ownerVisible!=='function') return;
+    if (!window.MShip.ownerVisible()){
+      var s=document.getElementById('mship-status');
+      if (s) s.textContent='Memberships are created by the page owner — claim this page to offer your own.';
+      return;
+    }
+    if (typeof window.MShip.onCreateClick==='function') window.MShip.onCreateClick(door);
+  });
+})();
+</script>
+<div class="ph-sec os-view" data-os-view="today" data-block="today">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> Today</div>
 <div class="os-roomline">
 <a class="ph-connect" href="https://nayanet.app/rooms/today">Open the Intel Today room →</a>
@@ -6308,6 +6492,18 @@ button.os-ld-node .os-ld-n{
 <div id="mship-claim-row" style="display:none;margin-top:10px;text-align:center;"><button class="os-mship-claim" type="button" data-mship-claim>Your page — sign in is coming soon.</button></div>
 <div id="mship-list" style="display:flex;flex-direction:column;gap:12px;margin-top:12px;"><div class="os-skel"></div></div>
 <div class="os-status" id="mship-status"></div>
+</div>
+<div class="ib-layer layer-gold open">
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#ffbf3d">🎁</span><b>Offer what you have</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer-body">
+<p>What you have that&rsquo;s valuable — a video, an audio, a PDF, a whole course, or one powerful video. Offer it three ways:</p>
+<div class="os-offer-doors">
+<button type="button" class="os-offer-door" data-mship-door="free"><span class="os-jewel os-jewel-h" style="--jc:#2fe89e">✦</span><b>Free</b><span class="os-offer-desc">Everyone in, no login. Share it wide.</span></button>
+<button type="button" class="os-offer-door" data-mship-door="invite"><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🔑</span><b>Members only</b><span class="os-offer-desc">Behind a login — your members sign in to see it.</span></button>
+<button type="button" class="os-offer-door" data-mship-door="paid"><span class="os-jewel os-jewel-h" style="--jc:#ffbf3d">$</span><b>Paid</b><span class="os-offer-desc">Your price, one-time or a subscription. Your expertise.</span></button>
+</div>
+<p class="os-note">Tap a door — it opens the create form with that door chosen. The price is yours to set.</p>
+</div>
 </div>
 </div>
 
@@ -7060,7 +7256,7 @@ NF.register(UNIT, {
   if (xb) xb.addEventListener('click',cancelAbout);
   ae.addEventListener('keydown',function(e){if(e.key==='Escape'||e.keyCode===27){e.preventDefault();cancelAbout();}});
   document.addEventListener('keydown',function(e){if((e.key==='Escape'||e.keyCode===27)&&ae.style.display!=='none')cancelAbout();});
-  eb.addEventListener('click',function(){ae.value=at.textContent;at.style.display='none';ae.style.display='';eb.style.display='none';nb.style.display='';sb.style.display='';if(cb)cb.style.display='';if(xb)xb.style.display='';});
+  eb.addEventListener('click',function(){var lyr=at.closest?at.closest('.ib-layer'):null;if(lyr){lyr.classList.add('open');var hd=lyr.querySelector('[data-os-ib-toggle]');if(hd)hd.setAttribute('aria-expanded','true');}ae.value=at.textContent;at.style.display='none';ae.style.display='';eb.style.display='none';nb.style.display='';sb.style.display='';if(cb)cb.style.display='';if(xb)xb.style.display='';});
   nb.addEventListener('click',function(){ae.value='Passionate creator and lifelong learner. I build things that matter and share what I discover.';});
   /* FIX-7: ONE writer for #os-about-status. Two save handlers wrote it
      (this one via innerHTML, a legacy duplicate via textContent) and raced
@@ -7072,7 +7268,7 @@ NF.register(UNIT, {
      backend row lost it. The cure is the sections' own discipline (secSave):
      write the row AND keep the timestamped on-device mirror, so a reload
      keeps what was saved with or without the connection. */
-  sb.addEventListener('click',function(){var text=ae.value||at.textContent;at.textContent=text;at.style.display='';ae.style.display='none';eb.style.display='';nb.style.display='none';sb.style.display='none';if(cb)cb.style.display='none';if(xb)xb.style.display='none';var now=new Date().toISOString();try{localStorage.setItem('naya.about',text);localStorage.setItem('naya.about.at',now);}catch(e){}var client=(window.NayaAuth&&window.NayaAuth.client)||null;if(!client&&typeof supabase!=='undefined'){try{client=supabase.createClient('https://dahisasgpfvziswqvmvm.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGlzYXNncGZ2emlzd3F2bXZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2MjM3ODgsImV4cCI6MjEwMzE5OTc4OH0.zX2r3T23sKebUMBdNg-4Noxos8JFOHaK2rRwqAVXU_s');}catch(e){client=null;}}if(!client){setAboutStatus('<p class="os-note">Saved on this device — it joins this app&rsquo;s own data when the connection returns.</p>');return;}client.from('smart_notes').insert({owner_alias:(window.PAGE_ALIAS||'flagship-personal'),content:JSON.stringify({k:'about',text:text})}).then(function(res){if(res&&res.error){setAboutStatus('<p class="os-note">Saved on this device — the app&rsquo;s copy could not be written just now.</p>');return;}setAboutStatus('<p class="os-note" style="color:#2fe89e">Saved — it is this app&rsquo;s own data now.</p>');},function(){setAboutStatus('<p class="os-note">Saved on this device — the app&rsquo;s copy could not be written just now.</p>');});});
+  sb.addEventListener('click',function(){var text=ae.value||at.textContent;at.textContent=text;at.style.display='';ae.style.display='none';eb.style.display='';nb.style.display='none';sb.style.display='none';if(cb)cb.style.display='none';if(xb)xb.style.display='none';var now=new Date().toISOString();try{localStorage.setItem('naya.about',text);localStorage.setItem('naya.about.at',now);localStorage.setItem('naya.aboutsec.story',text);localStorage.setItem('naya.aboutsec.story.at',now);}catch(e){}window.__osAboutSecs=window.__osAboutSecs||{};window.__osAboutSecs['story']=text;var st2=document.getElementById('os-story-text');if(st2)st2.textContent=text;var client=(window.NayaAuth&&window.NayaAuth.client)||null;if(!client&&typeof supabase!=='undefined'){try{client=supabase.createClient('https://dahisasgpfvziswqvmvm.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGlzYXNncGZ2emlzd3F2bXZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2MjM3ODgsImV4cCI6MjEwMzE5OTc4OH0.zX2r3T23sKebUMBdNg-4Noxos8JFOHaK2rRwqAVXU_s');}catch(e){client=null;}}if(!client){setAboutStatus('<p class="os-note">Saved on this device — it joins this app&rsquo;s own data when the connection returns.</p>');return;}client.from('smart_notes').insert({owner_alias:(window.PAGE_ALIAS||'flagship-personal'),content:JSON.stringify({k:'aboutsec',s:'story',text:text})}).then(function(res){if(res&&res.error){setAboutStatus('<p class="os-note">Saved on this device — the app&rsquo;s copy could not be written just now.</p>');return;}setAboutStatus('<p class="os-note" style="color:#2fe89e">Saved — it is this app&rsquo;s own data now.</p>');},function(){setAboutStatus('<p class="os-note">Saved on this device — the app&rsquo;s copy could not be written just now.</p>');});});
   try{var s=localStorage.getItem('naya.about');if(s)at.textContent=s;}catch(e){}
   try{var sa=localStorage.getItem('naya.about');if(sa&&sa.indexOf('Nova Reyes is the demo persona')===0){localStorage.setItem('naya.about','Shawn Vibert builds NayaNET — the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live. Welcome to the new world. Welcome to the new net.');at.textContent='Shawn Vibert builds NayaNET — the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live. Welcome to the new world. Welcome to the new net.';}}catch(e){}
   // Cover/avatar
@@ -7448,7 +7644,7 @@ NF.register(UNIT, {
        own nav tabs (data-view), the hero doors and in-block doors
        (data-os-go), and the Smart Tabs ribbon (mapped in the page script).
        Settings is a tab in the one navigation — reachable from every block. — */
-  var VIEWS=['home','dashboard','about','today','notes','people','message','inbox','growth','lists','reports','settings','scheduler','memberships'];
+  var VIEWS=['home','dashboard','about','story','today','notes','people','message','inbox','growth','lists','reports','settings','scheduler','memberships'];
   function showView(name, skipPush){
     /* P1: every navigation re-resolves the client, so a view opened after a
        late bundle still reads live data. */
@@ -7470,6 +7666,7 @@ NF.register(UNIT, {
     if (name==='lists') loadLists();
     if (name==='memberships' && typeof window.mshipLoad==='function') window.mshipLoad(); /* FIX-8: memberships view loads its list on open */
     if (name==='about') { loadAbout(); loadLibrary(); }
+    if (name==='story') { loadAbout(); }
     if (!skipPush){ try { history.pushState({osView:name}, '', '#'+name); } catch(e){} }
     /*__NU_20261104_SHAWN: hide Living Intelligence strip in message view */
     try { var _li = document.querySelector('[data-tn-li="strip"]'); if (_li) _li.style.display = (name==='message') ? 'none' : ''; } catch(e){}
@@ -7478,6 +7675,9 @@ NF.register(UNIT, {
        sidebar +) hides while messaging, so the composer IS the screen.
        The top bar stays: Home takes them back. */
     try { document.body.classList.toggle('os-msg-mode', name==='message'); } catch(e){}
+    /* STORY ROUND: the floating + sits in the middle of About and of the
+       story view — hide it on both, the way message mode hides it. */
+    try { document.body.classList.toggle('os-hide-plus', name==='about'||name==='story'); } catch(e){}
   }
   window.addEventListener('popstate', function(e){
     var v=(e.state && e.state.osView) || (location.hash||'').replace('#','');
@@ -10215,6 +10415,19 @@ function wallCard(j, iso, pid, idx){
      offline. The mirror wins when there is no row, when it carries no
      timestamp (saved before fix-6 stamped one), or when it is newer; the
      row wins when it is newer. Either way a reload keeps what was saved. */
+  /* STORY ROUND: one story, two views — the story text paints in About
+     (#abouttext) and in the story tab (#os-story-text) from the same row
+     and the same mirror, so the two never disagree. */
+  function setStoryText(t){ var tx=$('abouttext'); if (tx) tx.textContent=t; var st=$('os-story-text'); if (st) st.textContent=t; }
+  function syncStoryFields(){
+    var map={motto:'os-story-motto-text', vision:'os-story-vision-text', goals:'os-story-goal-text', mission:'os-story-mission-text'};
+    Object.keys(map).forEach(function(key){
+      var src=$('os-sec-'+key+'-text'), dst=$(map[key]);
+      if (src && dst) dst.textContent=src.textContent;
+    });
+    var at=$('abouttext'), st=$('os-story-text');
+    if (at && st) st.textContent=at.textContent;
+  }
   function applyAboutMirrors(backend){
     var b=backend||{about:null, sections:{}};
     try{
@@ -10223,7 +10436,20 @@ function wallCard(j, iso, pid, idx){
       if (ls!==null){
         var row=b.about;
         if (!row || !row.at || !lsAt || new Date(lsAt).getTime()>=new Date(row.at).getTime()){
-          var tx=$('abouttext'); if (tx) tx.textContent=ls;
+          setStoryText(ls);
+        }
+      }
+    }catch(e){}
+    /* STORY ROUND: the aboutsec story mirror — the same last-write-wins as
+       the legacy mirror above, decided against the story row. */
+    try{
+      var sls=null, slsAt=null;
+      try{ sls=localStorage.getItem('naya.aboutsec.story'); slsAt=localStorage.getItem('naya.aboutsec.story.at'); }catch(e){}
+      if (sls!==null){
+        var srow=(b.sections||{})['story'];
+        if (!srow || !srow.at || !slsAt || new Date(slsAt).getTime()>=new Date(srow.at).getTime()){
+          window.__osAboutSecs=window.__osAboutSecs||{}; window.__osAboutSecs['story']=sls;
+          setStoryText(sls);
         }
       }
     }catch(e){}
@@ -10237,6 +10463,7 @@ function wallCard(j, iso, pid, idx){
         if (tp){ if (mv){ tp.textContent=mv; tp.classList.remove('os-note'); } else { tp.textContent='Nothing here yet — tap Edit and write the first line.'; tp.classList.add('os-note'); } }
       }
     });
+    syncStoryFields();
   }
 
   function loadAbout(){
@@ -10264,7 +10491,12 @@ function wallCard(j, iso, pid, idx){
       var fh=$('os-about-faces');
       if (fh) fh.innerHTML=arr.length?('<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center">'+arr.slice(0,8).map(function(p, ix){ return avatarHTML(p.name, p.at, SPECTRUM[ix%SPECTRUM.length]); }).join('')+'</div>'):'';
       var abRows=out[3].map(function(r){ return {r:r, c:parseRow(r)}; }).filter(function(x){ return x.c.k==='about'; });
-      if (abRows.length && abRows[0].c.text){ var tx=$('abouttext'); if (tx) tx.textContent=abRows[0].c.text; }
+      if (abRows.length && abRows[0].c.text){ setStoryText(abRows[0].c.text); }
+      /* STORY ROUND: the story now lives as an aboutsec row (s:'story') — the
+         sections' own discipline. It wins over the legacy {k:'about'} row
+         above; the legacy read stays only as the fallback. */
+      var storyRows=out[3].map(function(r){ return {r:r, c:parseRow(r)}; }).filter(function(x){ return x.c.k==='aboutsec' && x.c.s==='story' && x.c.text; });
+      if (storyRows.length && storyRows[0].c.text){ setStoryText(storyRows[0].c.text); }
       /* the grown-up About sections (EYE-PASS CURE #8): About · Goals ·
          Mission · Vision · What I love · What I don't · My motto — each
          stored as a smart_notes row {k:'aboutsec', s:<key>, text},
@@ -10296,6 +10528,7 @@ function wallCard(j, iso, pid, idx){
       /* FIX-6: a cleared field must stay cleared — seed only when nothing
          was ever saved (===undefined), not when the saved value is empty. */
       ['goals','mission','vision'].forEach(function(key){ if(window.__osAboutSecs[key]===undefined){ var tp2=$('os-sec-'+key+'-text'); if(tp2 && tp2.textContent && tp2.textContent.indexOf('No ')!==0) window.__osAboutSecs[key]=tp2.textContent; } });
+      syncStoryFields();
     });
   }
 
@@ -10305,6 +10538,9 @@ function wallCard(j, iso, pid, idx){
     var be=document.querySelector('[data-os-sec-edit="'+key+'"]'), bs=document.querySelector('[data-os-sec-save="'+key+'"]');
     if (!tp || !ta) return;
     if (on){ var mv=secMirrorGet(key); ta.value=((window.__osAboutSecs&&window.__osAboutSecs[key])||(mv===null?'':mv)); }
+    /* STORY ROUND: editing opens the layer — the editor lives inside the
+       body, so a folded layer would hide it. */
+    if (on){ var lyr=tp.closest?tp.closest('.ib-layer'):null; if (lyr){ lyr.classList.add('open'); var hd=lyr.querySelector('[data-os-ib-toggle]'); if (hd) hd.setAttribute('aria-expanded','true'); } }
     tp.style.display=on?'none':''; ta.style.display=on?'':'none';
     if (be) be.style.display=on?'none':'';
     if (bs) bs.style.display=on?'':'none';
@@ -11991,7 +12227,10 @@ function wallCard(j, iso, pid, idx){
 #nsbBottom.nsb-iconbar .nsb-tab .nsb-label{display:none;}
 #nsbBottom.nsb-iconbar .nsb-tab{padding:10px 12px;}
 body.os-msg-mode .ph-cover,body.os-msg-mode .ph-actions-row.up-actions,body.os-msg-mode .ph-plus{display:none;}
-.nsb-bottom-inner{display:flex;align-items:center;gap:10px;padding:10px 16px 12px;}
+/* STORY ROUND: the floating + is hidden on About and on the story view
+   (the router toggles .os-hide-plus on the body, same pattern as above). */
+body.os-hide-plus .ph-plus{display:none;}
+.nsb-bottom-inner{display:flex;align-items:center;gap:10px;padding:10px 16px 6px;}
 /* network anchor: the persistent connection, one touch away */
 .nsb-net{display:flex;align-items:center;gap:7px;flex:0 0 auto;padding-right:4px;
   color:#fff;font-size:12px;font-weight:800;white-space:nowrap;opacity:.85;}
@@ -12121,7 +12360,7 @@ body.os-msg-mode .ph-cover,body.os-msg-mode .ph-actions-row.up-actions,body.os-m
 @media (prefers-reduced-motion: reduce){ .nsb-tab.active{animation:none;} .nsb-tab.nsb-ripple{animation:none;} }
 html.nsb-calm .nsb-tab.active{animation:none;}
 html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
-.nsb-bottom .nsb-row{padding:10px 24px 18px;
+.nsb-bottom .nsb-row{padding:10px 24px 8px;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);
   mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);}
 /* ============ SEARCH RESULTS (dropdown from the search level) ============ */
@@ -12225,6 +12464,10 @@ html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
     0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--red);}
 .nsb-status{font-size:13px;color:#fff;opacity:.7;margin:8px 16px 10px;min-height:18px;}
+/* STORY ROUND: an empty status line still took 18px + margins below the
+   tabs — the bar's dead space. Empty means hidden, at every height
+   (the max-height:500px query already did this; now it holds always). */
+.nsb-bottom .nsb-status:empty{display:none;}
 /* ============ P10 2026-11-06 — SHORT-VIEWPORT BAR SLIM (scorecard SN-2102) ============
    At 638x444 / 390x444 the fixed bottom bar (142 px) covered the first-paint
    hero buttons: row 1 (#myworldbtn/#joinbtn, doc 294-340) sat 38 px under it
@@ -13096,12 +13339,18 @@ window.NayaSmartBar = {
 </script>
 <script>
 /* SMART BAR v1.0 config — Personal */
+/* STORY ROUND: the story pill's label follows the page kind — personal
+   reads "My Story", business and space read "Our Story". The mount runs
+   before the kind injection below, so the URL param decides here and the
+   boot correction (story-round script) re-decides from the injected kind. */
+var _storyLabel=(function(){ try{ var k=new URLSearchParams(location.search).get('kind'); return (k==='business'||k==='space'||k==='memberships')?'Our Story':'My Story'; }catch(e){ return 'My Story'; } })();
 NayaSmartBar.mount({
   app: { name: "Personal", honesty: "proven" },
   sections: [
     {label:"Home", target:"#home", icon:"\u2302", color:"#a06bff"},
     {label:"Dashboard", target:"#dashboard", icon:"\u25c9", color:"#3fb8ff"},
     {label:"About", target:"#about", icon:"\u25ce", color:"#2fe89e"},
+    {label:_storyLabel, target:"#story", icon:"\u2726", color:"#a06bff"},
     {label:"Today", target:"#today", icon:"\u2726", color:"#ffbf3d"},
     {label:"Smart Notes", target:"#notes", icon:"\u25c6", color:"#ff9a5a"},
     {label:"Connections", target:"#people", icon:"\u25c8", color:"#ff5e6c"},
@@ -13199,7 +13448,7 @@ NayaSmartBar.mount({
   }
   window.addEventListener('resize',pad); pad(); setTimeout(pad,800);
   var top=document.getElementById('nsbTop'); if(!top)return;
-  var VIEWS=["home", "dashboard", "about", "today", "notes", "people", "message", "inbox", "growth", "lists", "reports", "settings","scheduler"];
+  var VIEWS=["home", "dashboard", "about", "story", "today", "notes", "people", "message", "inbox", "growth", "lists", "reports", "settings","scheduler"];
   var want="home";
     var row=top.querySelector('.nsb-row');
   function pills(){return Array.prototype.filter.call(row.children,function(c){return c.classList&&c.classList.contains('nsb-tab');});}
@@ -15601,18 +15850,23 @@ document.addEventListener("click", function(e){
       );
     } catch (e) { cb('free'); }
   }
-  function mshipOnCreateClick() {
+  /* STORY ROUND: the three-door offer — a door pre-selects its access in
+     the create form. The preset rides the same gate as the Create button
+     and is dropped if the gate sends them to the upgrade modal. */
+  var mshipPresetAccess = null;
+  function mshipOnCreateClick(presetAccess) {
+    mshipPresetAccess = (presetAccess && ACCESS[presetAccess]) ? presetAccess : null;
     var btn = $('mship-create-btn');
     if (btn) { btn.disabled = true; btn.classList.add('mship-busy'); }
     function done() {
       if (btn) { btn.disabled = false; btn.classList.remove('mship-busy'); }
     }
     /* Interim claim without a real session can never verify a tier. */
-    if (!mshipIsOwner()) { mshipOpenUpgrade(); done(); return; }
+    if (!mshipIsOwner()) { mshipPresetAccess = null; mshipOpenUpgrade(); done(); return; }
     mshipFetchTier(function (tier) {
       done();
       if (mshipGateDecision(tier) === 'create') mshipOpenCreate();
-      else mshipOpenUpgrade();
+      else { mshipPresetAccess = null; mshipOpenUpgrade(); }
     });
   }
 
@@ -15686,6 +15940,14 @@ document.addEventListener("click", function(e){
     var pl = el('label', 'os-note', 'Price (USD)');
     pl.style.cssText = 'display:block;margin:10px 0 4px;';
     wrap.appendChild(pl); wrap.appendChild(priceRow);
+
+    /* STORY ROUND: a door's preset — tap the matching chip so the form
+       opens with that door chosen (and the price row shows for paid). */
+    if (mshipPresetAccess) {
+      var pc = chipRow.querySelector('[data-access="' + mshipPresetAccess + '"]');
+      mshipPresetAccess = null;
+      if (pc) pc.click();
+    }
 
     var err = el('p', 'os-note mship-err');
     err.style.cssText = 'display:none;color:#ff5e6c;margin:10px 0 0;';
