@@ -1,0 +1,24 @@
+{
+ "buttonState": {
+  "rect": {
+   "x": 36,
+   "y": 745.5,
+   "w": 318,
+   "h": 52
+  },
+  "visible": true,
+  "display": "block",
+  "visibility": "visible",
+  "href": "https://nayanet.app/personal"
+ },
+ "box": {
+  "x": 36,
+  "y": 745.5,
+  "width": 318,
+  "height": 52
+ },
+ "boardTap": {
+  "landed": "https://nayanet.app/personal",
+  "title": "Shawn Vibert"
+ }
+}
