@@ -1,0 +1,66 @@
+{
+  "blocks": 20,
+  "blocks_sha256": "f83ef8dfa7fda6aba1a1a48b7c3423b5e4cbac1eb083a3c929f6867f7d6d8090",
+  "built_at": "2026-11-10T01:37:33.051793+00:00",
+  "built_from": "smart-box/block.py + gate.py + boxstore.py (verbatim) + build_master_box.py",
+  "children": [
+    {
+      "blocks": 24,
+      "id": "naya-nitro-narzan:box:naya-nitro-narzan",
+      "key_events": 1,
+      "manifest_sha256": "fb9f158257f777024ac14b68b101bb55a3d66443714a6db836285e983fb45805"
+    },
+    {
+      "blocks": 63,
+      "id": "shared:box:shared",
+      "key_events": 0,
+      "manifest_sha256": "8b2028c6f3ddd81b28e15f3882934aba3ea7a4b23d5fd23d716be9c805d8e3c7"
+    },
+    {
+      "blocks": 8254,
+      "id": "shawn:box:shawn",
+      "key_events": 5,
+      "manifest_sha256": "44f30833b7e1fa20826e733660da4529dc6ad969c783f97627cd4d08a3f1809d"
+    },
+    {
+      "blocks": 16,
+      "id": "smart-factory:box:smart-factory",
+      "key_events": 0,
+      "manifest_sha256": "67c6f654d95e2b878e882018459aa38d649450d08b1405aa237839b20434eed1"
+    }
+  ],
+  "key_events": 1,
+  "keys_sha256": "ecda6a9c7145207f71c395f0bb9b5db1607868ed57bbbea6495d7d9445049927",
+  "kind": "master",
+  "owner": "collective",
+  "sources": [
+    "DESIGN-INTELLIGENCE-REPORT.md (whole file, 2026-11-02)",
+    "MEMORY.md: THE MASTER BOX - OFFICIALLY SET UP (Shawn 01:24Z Nov 10)",
+    "MEMORY.md: THE NAIMA RESOLUTION (Shawn 01:00Z Nov 10)",
+    "MEMORY.md: THE PERMISSION MODEL - CORRECTED (Shawn 01:31Z Nov 10; supersedes the 01:24Z framing)",
+    "NAYA-PROTOCOL.md (whole file, 2026-10-26)",
+    "NOTIFICATION-SYSTEM-SPEC-20261110.md \u00a70, \u00a71, \u00a74, \u00a75.4, \u00a77 (SPEC ONLY - build waits for Shawn's word)",
+    "ONE-SYSTEM-MERGE-SPEC-20261109.md \u00a77",
+    "SOUL.md: The Oath (Shawn, 2026-10-16)",
+    "SOUL.md: The Oath of Honor (NAYA LAW, 2026-10-20, SN-0802)",
+    "THE-BULLSEYE.md (whole file, 2026-11-07)",
+    "THE-PLAYBOOK.md (Foundation + Formula + Premium Design Algorithm)",
+    "THE-SMART-BOX-BLUEPRINT-20261109.md \u00a73, \u00a73.6, \u00a73.7",
+    "THE-ULTIMATE-ORIENTATION.md \u00a72",
+    "THE-ULTIMATE-ORIENTATION.md \u00a73",
+    "THE-ULTIMATE-ORIENTATION.md \u00a74",
+    "THE-ULTIMATE-ORIENTATION.md \u00a75 + ONE-SYSTEM-MERGE-SPEC-20261109.md \u00a77",
+    "THE-ULTIMATE-ORIENTATION.md \u00a75 + THE-PLAYBOOK.md (Premium Design Algorithm, ratified 2026-11-08)",
+    "nitro-smart-box/boxes/*/manifest.json (counts + hashes only)",
+    "the-wise-one-manifesto.md (whole file, SN-0883, 2026-11-04)",
+    "the-wise-one-manifesto.md \u00a7IV (SN-0883)"
+  ],
+  "team_keys": [
+    {
+      "key_id": "key-collective-naya-nitro-narzan-0001",
+      "naya_id": "naya-nitro-narzan",
+      "scope": "organize",
+      "status": "active"
+    }
+  ]
+}
