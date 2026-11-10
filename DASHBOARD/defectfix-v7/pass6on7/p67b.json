@@ -1,0 +1,2916 @@
+{
+ "A-moneyfirst-merged-390": {
+  "moneySamples": [
+   {
+    "state": "live",
+    "numeral": "$654",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "world",
+     "id": "dashboard",
+     "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+     "name": "Dashboard",
+     "center": 1120
+    }
+   },
+   {
+    "state": "live",
+    "numeral": "$963",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "world",
+     "id": "dashboard",
+     "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+     "name": "Dashboard",
+     "center": 1120
+    }
+   },
+   {
+    "state": "live",
+    "numeral": "$1 104",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "world",
+     "id": "dashboard",
+     "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+     "name": "Dashboard",
+     "center": 1120
+    }
+   },
+   {
+    "state": "live",
+    "numeral": "$1 120",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "world",
+     "id": "dashboard",
+     "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+     "name": "Dashboard",
+     "center": 1120
+    }
+   }
+  ],
+  "ptsAfter9s": {
+   "state": "live",
+   "numeral": "1 120",
+   "capText": "",
+   "quietOnPage": false,
+   "spineStale": null,
+   "fd": {
+    "kind": "world",
+    "id": "dashboard",
+    "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+    "name": "Dashboard",
+    "center": 1120
+   }
+  },
+  "consoleErrors": []
+ },
+ "A-moneyfirst-merged-1440": {
+  "moneySamples": [
+   {
+    "state": "live",
+    "numeral": "$649",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "world",
+     "id": "dashboard",
+     "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+     "name": "Dashboard",
+     "center": 1120
+    }
+   },
+   {
+    "state": "live",
+    "numeral": "$960",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "world",
+     "id": "dashboard",
+     "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+     "name": "Dashboard",
+     "center": 1120
+    }
+   },
+   {
+    "state": "live",
+    "numeral": "$1 102",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "world",
+     "id": "dashboard",
+     "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+     "name": "Dashboard",
+     "center": 1120
+    }
+   },
+   {
+    "state": "live",
+    "numeral": "$1 120",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "world",
+     "id": "dashboard",
+     "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+     "name": "Dashboard",
+     "center": 1120
+    }
+   }
+  ],
+  "ptsAfter9s": {
+   "state": "live",
+   "numeral": "1 120",
+   "capText": "",
+   "quietOnPage": false,
+   "spineStale": null,
+   "fd": {
+    "kind": "world",
+    "id": "dashboard",
+    "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+    "name": "Dashboard",
+    "center": 1120
+   }
+  },
+  "consoleErrors": []
+ },
+ "A-moneyfirst-pass6-390": {
+  "moneySamples": [
+   {
+    "state": "live",
+    "numeral": "$650",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "link",
+     "id": "joinus",
+     "marker": "\u2605 FEATURED \u2014 YOUR AMBASSADOR LINK",
+     "name": "nayanet.app/joinus",
+     "center": 1100
+    }
+   },
+   {
+    "state": "live",
+    "numeral": "$942",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "link",
+     "id": "joinus",
+     "marker": "\u2605 FEATURED \u2014 YOUR AMBASSADOR LINK",
+     "name": "nayanet.app/joinus",
+     "center": 1100
+    }
+   },
+   {
+    "state": "live",
+    "numeral": "$1 083",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "link",
+     "id": "joinus",
+     "marker": "\u2605 FEATURED \u2014 YOUR AMBASSADOR LINK",
+     "name": "nayanet.app/joinus",
+     "center": 1100
+    }
+   },
+   {
+    "state": "live",
+    "numeral": "$1 100",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "link",
+     "id": "joinus",
+     "marker": "\u2605 FEATURED \u2014 YOUR AMBASSADOR LINK",
+     "name": "nayanet.app/joinus",
+     "center": 1100
+    }
+   }
+  ],
+  "ptsAfter9s": {
+   "state": "live",
+   "numeral": "1 100",
+   "capText": "",
+   "quietOnPage": false,
+   "spineStale": null,
+   "fd": {
+    "kind": "link",
+    "id": "joinus",
+    "marker": "\u2605 FEATURED \u2014 YOUR AMBASSADOR LINK",
+    "name": "nayanet.app/joinus",
+    "center": 1100
+   }
+  },
+  "consoleErrors": []
+ },
+ "A-moneyfirst-pass6-1440": {
+  "moneySamples": [
+   {
+    "state": "live",
+    "numeral": "$544",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "link",
+     "id": "joinus",
+     "marker": "\u2605 FEATURED \u2014 YOUR AMBASSADOR LINK",
+     "name": "nayanet.app/joinus",
+     "center": 1100
+    }
+   },
+   {
+    "state": "live",
+    "numeral": "$931",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "link",
+     "id": "joinus",
+     "marker": "\u2605 FEATURED \u2014 YOUR AMBASSADOR LINK",
+     "name": "nayanet.app/joinus",
+     "center": 1100
+    }
+   },
+   {
+    "state": "live",
+    "numeral": "$1 080",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "link",
+     "id": "joinus",
+     "marker": "\u2605 FEATURED \u2014 YOUR AMBASSADOR LINK",
+     "name": "nayanet.app/joinus",
+     "center": 1100
+    }
+   },
+   {
+    "state": "live",
+    "numeral": "$1 100",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "link",
+     "id": "joinus",
+     "marker": "\u2605 FEATURED \u2014 YOUR AMBASSADOR LINK",
+     "name": "nayanet.app/joinus",
+     "center": 1100
+    }
+   }
+  ],
+  "ptsAfter9s": {
+   "state": "live",
+   "numeral": "1 100",
+   "capText": "",
+   "quietOnPage": false,
+   "spineStale": null,
+   "fd": {
+    "kind": "link",
+    "id": "joinus",
+    "marker": "\u2605 FEATURED \u2014 YOUR AMBASSADOR LINK",
+    "name": "nayanet.app/joinus",
+    "center": 1100
+   }
+  },
+  "consoleErrors": []
+ },
+ "A-moneyfirst-pass7-390": {
+  "moneySamples": [
+   {
+    "state": "live",
+    "numeral": "$660",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "world",
+     "id": "dashboard",
+     "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+     "name": "Dashboard",
+     "center": 1120
+    }
+   },
+   {
+    "state": "live",
+    "numeral": "$959",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "world",
+     "id": "dashboard",
+     "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+     "name": "Dashboard",
+     "center": 1120
+    }
+   },
+   {
+    "state": "live",
+    "numeral": "$1 104",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "world",
+     "id": "dashboard",
+     "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+     "name": "Dashboard",
+     "center": 1120
+    }
+   },
+   {
+    "state": "live",
+    "numeral": "$1 120",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "world",
+     "id": "dashboard",
+     "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+     "name": "Dashboard",
+     "center": 1120
+    }
+   }
+  ],
+  "ptsAfter9s": {
+   "state": "live",
+   "numeral": "1 120",
+   "capText": "",
+   "quietOnPage": false,
+   "spineStale": null,
+   "fd": {
+    "kind": "world",
+    "id": "dashboard",
+    "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+    "name": "Dashboard",
+    "center": 1120
+   }
+  },
+  "consoleErrors": []
+ },
+ "A-moneyfirst-pass7-1440": {
+  "moneySamples": [
+   {
+    "state": "live",
+    "numeral": "$622",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "world",
+     "id": "dashboard",
+     "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+     "name": "Dashboard",
+     "center": 1120
+    }
+   },
+   {
+    "state": "live",
+    "numeral": "$956",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "world",
+     "id": "dashboard",
+     "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+     "name": "Dashboard",
+     "center": 1120
+    }
+   },
+   {
+    "state": "live",
+    "numeral": "$1 103",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "world",
+     "id": "dashboard",
+     "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+     "name": "Dashboard",
+     "center": 1120
+    }
+   },
+   {
+    "state": "live",
+    "numeral": "$1 120",
+    "capText": "",
+    "quietOnPage": false,
+    "spineStale": null,
+    "fd": {
+     "kind": "world",
+     "id": "dashboard",
+     "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+     "name": "Dashboard",
+     "center": 1120
+    }
+   }
+  ],
+  "ptsAfter9s": {
+   "state": "live",
+   "numeral": "1 120",
+   "capText": "",
+   "quietOnPage": false,
+   "spineStale": null,
+   "fd": {
+    "kind": "world",
+    "id": "dashboard",
+    "marker": "\u2605 FEATURED \u2014 YOUR WORLD",
+    "name": "Dashboard",
+    "center": 1120
+   }
+  },
+  "consoleErrors": []
+ },
+ "B-fit-pass5-390": {
+  "pts": {
+   "fit": 0.911,
+   "barTop": 850.8,
+   "note": {
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0,
+     "top": 0,
+     "bottom": 0
+    },
+    "visibility": "visible",
+    "text": ""
+   },
+   "toggle": {
+    "rect": {
+     "x": 55.6,
+     "y": 755.3,
+     "w": 278.8,
+     "h": 47.4,
+     "top": 755.3,
+     "bottom": 802.6
+    }
+   },
+   "orbs": [
+    {
+     "key": "sales",
+     "orbD": 58.3,
+     "numText": "1.1K",
+     "tileDigitPx": null,
+     "tileDigitVisualH": null,
+     "tiled": false
+    },
+    {
+     "key": "joins",
+     "orbD": 58.3,
+     "numText": "0",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 10,
+     "tiled": true
+    },
+    {
+     "key": "notes",
+     "orbD": 58.3,
+     "numText": "280",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 10,
+     "tiled": true
+    },
+    {
+     "key": "invs",
+     "orbD": 58.3,
+     "numText": "50",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 10,
+     "tiled": true
+    },
+    {
+     "key": "posts",
+     "orbD": 58.3,
+     "numText": "100",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 10,
+     "tiled": true
+    },
+    {
+     "key": "shares",
+     "orbD": 58.3,
+     "numText": "0",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 10,
+     "tiled": true
+    },
+    {
+     "key": "comments",
+     "orbD": 58.3,
+     "numText": "0",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 10,
+     "tiled": true
+    },
+    {
+     "key": "likes",
+     "orbD": 58.3,
+     "numText": "0",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 10,
+     "tiled": true
+    },
+    {
+     "key": "saves",
+     "orbD": 58.3,
+     "numText": "5",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 10,
+     "tiled": true
+    }
+   ],
+   "minis": [
+    "1100",
+    "0",
+    "0.0%",
+    "1293",
+    "5",
+    "4",
+    "1293",
+    "0",
+    "0.3%",
+    "0",
+    "1316",
+    "4",
+    "5",
+    "2",
+    "1293",
+    "4",
+    "0.3%",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "overflowX": false
+  },
+  "pct": {
+   "fit": 0.897,
+   "barTop": 776,
+   "note": {
+    "rect": {
+     "x": 50.4,
+     "y": 643.5,
+     "w": 289.1,
+     "h": 31.2,
+     "top": 643.5,
+     "bottom": 674.7
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks, Joins \u2014 numbers, not points."
+   },
+   "toggle": {
+    "rect": {
+     "x": 57.7,
+     "y": 750.8,
+     "w": 274.6,
+     "h": 46.7,
+     "top": 750.8,
+     "bottom": 797.4
+    }
+   },
+   "orbs": [
+    {
+     "key": "sales",
+     "orbD": 57.4,
+     "numText": "1100",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 9.9,
+     "tiled": true
+    },
+    {
+     "key": "joins",
+     "orbD": 57.4,
+     "numText": "0",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 9.9,
+     "tiled": true
+    },
+    {
+     "key": "notes",
+     "orbD": 57.4,
+     "numText": "280",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 9.9,
+     "tiled": true
+    },
+    {
+     "key": "invs",
+     "orbD": 57.4,
+     "numText": "50",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 9.9,
+     "tiled": true
+    },
+    {
+     "key": "posts",
+     "orbD": 57.4,
+     "numText": "100",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 9.9,
+     "tiled": true
+    },
+    {
+     "key": "shares",
+     "orbD": 57.4,
+     "numText": "0",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 9.9,
+     "tiled": true
+    },
+    {
+     "key": "comments",
+     "orbD": 57.4,
+     "numText": "0",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 9.9,
+     "tiled": true
+    },
+    {
+     "key": "likes",
+     "orbD": 57.4,
+     "numText": "0",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 9.9,
+     "tiled": true
+    },
+    {
+     "key": "saves",
+     "orbD": 57.4,
+     "numText": "5",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 9.9,
+     "tiled": true
+    }
+   ],
+   "minis": [
+    "1100",
+    "0",
+    "0.0%",
+    "1293",
+    "5",
+    "4",
+    "1293",
+    "0",
+    "0.3%",
+    "0",
+    "1316",
+    "4",
+    "5",
+    "2",
+    "1293",
+    "4",
+    "0.3%",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "overflowX": false
+  },
+  "consoleErrors": []
+ },
+ "B-fit-pass5-1440": {
+  "pts": {
+   "fit": 0.524,
+   "barTop": 851.8,
+   "note": {
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0,
+     "top": 0,
+     "bottom": 0
+    },
+    "visibility": "visible",
+    "text": ""
+   },
+   "toggle": {
+    "rect": {
+     "x": 639.8,
+     "y": 806.6,
+     "w": 160.3,
+     "h": 27.2,
+     "top": 806.6,
+     "bottom": 833.8
+    }
+   },
+   "orbs": [
+    {
+     "key": "sales",
+     "orbD": 70.7,
+     "numText": "1.1K",
+     "tileDigitPx": null,
+     "tileDigitVisualH": null,
+     "tiled": false
+    },
+    {
+     "key": "joins",
+     "orbD": 70.7,
+     "numText": "0",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 7.8,
+     "tiled": true
+    },
+    {
+     "key": "notes",
+     "orbD": 70.7,
+     "numText": "280",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 7.8,
+     "tiled": true
+    },
+    {
+     "key": "invs",
+     "orbD": 70.7,
+     "numText": "50",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 7.9,
+     "tiled": true
+    },
+    {
+     "key": "posts",
+     "orbD": 70.7,
+     "numText": "100",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 7.9,
+     "tiled": true
+    },
+    {
+     "key": "shares",
+     "orbD": 70.7,
+     "numText": "0",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 7.9,
+     "tiled": true
+    },
+    {
+     "key": "comments",
+     "orbD": 70.7,
+     "numText": "0",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 7.9,
+     "tiled": true
+    },
+    {
+     "key": "likes",
+     "orbD": 70.7,
+     "numText": "0",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 7.8,
+     "tiled": true
+    },
+    {
+     "key": "saves",
+     "orbD": 70.7,
+     "numText": "5",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 7.8,
+     "tiled": true
+    }
+   ],
+   "minis": [
+    "1100",
+    "0",
+    "0.0%",
+    "1293",
+    "5",
+    "4",
+    "1293",
+    "0",
+    "0.3%",
+    "0",
+    "1316",
+    "4",
+    "5",
+    "2",
+    "1293",
+    "4",
+    "0.3%",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "overflowX": false
+  },
+  "pct": {
+   "fit": 0.524,
+   "barTop": 766,
+   "note": {
+    "rect": {
+     "x": 629.4,
+     "y": 440.9,
+     "w": 181.3,
+     "h": 9.1,
+     "top": 440.9,
+     "bottom": 450
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks, Joins \u2014 numbers, not points."
+   },
+   "toggle": {
+    "rect": {
+     "x": 639.8,
+     "y": 806.6,
+     "w": 160.3,
+     "h": 27.2,
+     "top": 806.6,
+     "bottom": 833.8
+    }
+   },
+   "orbs": [
+    {
+     "key": "sales",
+     "orbD": 70.7,
+     "numText": "1100",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 7.9,
+     "tiled": true
+    },
+    {
+     "key": "joins",
+     "orbD": 70.7,
+     "numText": "0",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 7.8,
+     "tiled": true
+    },
+    {
+     "key": "notes",
+     "orbD": 70.7,
+     "numText": "280",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 7.8,
+     "tiled": true
+    },
+    {
+     "key": "invs",
+     "orbD": 70.7,
+     "numText": "50",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 7.9,
+     "tiled": true
+    },
+    {
+     "key": "posts",
+     "orbD": 70.7,
+     "numText": "100",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 7.9,
+     "tiled": true
+    },
+    {
+     "key": "shares",
+     "orbD": 70.7,
+     "numText": "0",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 7.9,
+     "tiled": true
+    },
+    {
+     "key": "comments",
+     "orbD": 70.7,
+     "numText": "0",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 7.9,
+     "tiled": true
+    },
+    {
+     "key": "likes",
+     "orbD": 70.7,
+     "numText": "0",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 7.8,
+     "tiled": true
+    },
+    {
+     "key": "saves",
+     "orbD": 70.7,
+     "numText": "5",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 7.8,
+     "tiled": true
+    }
+   ],
+   "minis": [
+    "1100",
+    "0",
+    "0.0%",
+    "1293",
+    "5",
+    "4",
+    "1293",
+    "0",
+    "0.3%",
+    "0",
+    "1316",
+    "4",
+    "5",
+    "2",
+    "1293",
+    "4",
+    "0.3%",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "overflowX": false
+  },
+  "consoleErrors": []
+ },
+ "B-fit-pass6-390": {
+  "pts": {
+   "fit": 0.859,
+   "barTop": 850.8,
+   "note": {
+    "rect": {
+     "x": 41.3,
+     "y": 744.8,
+     "w": 307.4,
+     "h": 38.6,
+     "top": 744.8,
+     "bottom": 783.4
+    },
+    "visibility": "hidden",
+    "text": ""
+   },
+   "toggle": {
+    "rect": {
+     "x": 63.6,
+     "y": 783.4,
+     "w": 262.8,
+     "h": 44.7,
+     "top": 783.4,
+     "bottom": 828.1
+    }
+   },
+   "orbs": [
+    {
+     "key": "sales",
+     "orbD": 82.4,
+     "numText": "1.1K",
+     "tileDigitPx": null,
+     "tileDigitVisualH": null,
+     "tiled": false
+    },
+    {
+     "key": "joins",
+     "orbD": 82.4,
+     "numText": "0",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 16.3,
+     "tiled": true
+    },
+    {
+     "key": "notes",
+     "orbD": 82.4,
+     "numText": "280",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 16.3,
+     "tiled": true
+    },
+    {
+     "key": "invs",
+     "orbD": 82.4,
+     "numText": "50",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 16.3,
+     "tiled": true
+    },
+    {
+     "key": "posts",
+     "orbD": 82.4,
+     "numText": "100",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 16.3,
+     "tiled": true
+    },
+    {
+     "key": "shares",
+     "orbD": 82.4,
+     "numText": "0",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 16.3,
+     "tiled": true
+    },
+    {
+     "key": "comments",
+     "orbD": 82.4,
+     "numText": "0",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 16.3,
+     "tiled": true
+    },
+    {
+     "key": "likes",
+     "orbD": 82.4,
+     "numText": "0",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 16.3,
+     "tiled": true
+    },
+    {
+     "key": "saves",
+     "orbD": 82.4,
+     "numText": "5",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 16.3,
+     "tiled": true
+    }
+   ],
+   "minis": [
+    "1100",
+    "0",
+    "0.0%",
+    "1293",
+    "5",
+    "4",
+    "1293",
+    "0",
+    "0.3%",
+    "0",
+    "1316",
+    "4",
+    "5",
+    "2",
+    "1293",
+    "4",
+    "0.3%",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "overflowX": false
+  },
+  "pct": {
+   "fit": 0.836,
+   "barTop": 776,
+   "note": {
+    "rect": {
+     "x": 45.3,
+     "y": 737.2,
+     "w": 299.5,
+     "h": 37.6,
+     "top": 737.2,
+     "bottom": 774.9
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks, Joins \u2014 numbers, not points."
+   },
+   "toggle": {
+    "rect": {
+     "x": 67,
+     "y": 774.9,
+     "w": 256,
+     "h": 43.5,
+     "top": 774.9,
+     "bottom": 818.4
+    }
+   },
+   "orbs": [
+    {
+     "key": "sales",
+     "orbD": 80.3,
+     "numText": "1100",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 15.9,
+     "tiled": true
+    },
+    {
+     "key": "joins",
+     "orbD": 80.3,
+     "numText": "0",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 15.9,
+     "tiled": true
+    },
+    {
+     "key": "notes",
+     "orbD": 80.3,
+     "numText": "44%",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 15.9,
+     "tiled": true
+    },
+    {
+     "key": "invs",
+     "orbD": 80.3,
+     "numText": "8%",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 15.9,
+     "tiled": true
+    },
+    {
+     "key": "posts",
+     "orbD": 80.3,
+     "numText": "16%",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 15.9,
+     "tiled": true
+    },
+    {
+     "key": "shares",
+     "orbD": 80.3,
+     "numText": "0%",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 15.9,
+     "tiled": true
+    },
+    {
+     "key": "comments",
+     "orbD": 80.3,
+     "numText": "0%",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 15.9,
+     "tiled": true
+    },
+    {
+     "key": "likes",
+     "orbD": 80.3,
+     "numText": "0%",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 15.9,
+     "tiled": true
+    },
+    {
+     "key": "saves",
+     "orbD": 80.3,
+     "numText": "1%",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 15.9,
+     "tiled": true
+    }
+   ],
+   "minis": [
+    "1100",
+    "0",
+    "0.0%",
+    "1293",
+    "5",
+    "4",
+    "1293",
+    "0",
+    "0.3%",
+    "0",
+    "1316",
+    "4",
+    "5",
+    "2",
+    "1293",
+    "4",
+    "0.3%",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "overflowX": false
+  },
+  "consoleErrors": []
+ },
+ "B-fit-pass6-1440": {
+  "pts": {
+   "fit": 0.504,
+   "barTop": 851.8,
+   "note": {
+    "rect": {
+     "x": 578.8,
+     "y": 785,
+     "w": 282.3,
+     "h": 22.7,
+     "top": 785,
+     "bottom": 807.7
+    },
+    "visibility": "hidden",
+    "text": ""
+   },
+   "toggle": {
+    "rect": {
+     "x": 642.8,
+     "y": 807.7,
+     "w": 154.3,
+     "h": 26.2,
+     "top": 807.7,
+     "bottom": 833.9
+    }
+   },
+   "orbs": [
+    {
+     "key": "sales",
+     "orbD": 68.1,
+     "numText": "1.1K",
+     "tileDigitPx": null,
+     "tileDigitVisualH": null,
+     "tiled": false
+    },
+    {
+     "key": "joins",
+     "orbD": 68.1,
+     "numText": "0",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 13.1,
+     "tiled": true
+    },
+    {
+     "key": "notes",
+     "orbD": 68.1,
+     "numText": "280",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 13.1,
+     "tiled": true
+    },
+    {
+     "key": "invs",
+     "orbD": 68.1,
+     "numText": "50",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 13.1,
+     "tiled": true
+    },
+    {
+     "key": "posts",
+     "orbD": 68.1,
+     "numText": "100",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 13.1,
+     "tiled": true
+    },
+    {
+     "key": "shares",
+     "orbD": 68.1,
+     "numText": "0",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 13.1,
+     "tiled": true
+    },
+    {
+     "key": "comments",
+     "orbD": 68.1,
+     "numText": "0",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 13.1,
+     "tiled": true
+    },
+    {
+     "key": "likes",
+     "orbD": 68.1,
+     "numText": "0",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 13.1,
+     "tiled": true
+    },
+    {
+     "key": "saves",
+     "orbD": 68.1,
+     "numText": "5",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 13.1,
+     "tiled": true
+    }
+   ],
+   "minis": [
+    "1100",
+    "0",
+    "0.0%",
+    "1293",
+    "5",
+    "4",
+    "1293",
+    "0",
+    "0.3%",
+    "0",
+    "1316",
+    "4",
+    "5",
+    "2",
+    "1293",
+    "4",
+    "0.3%",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "overflowX": false
+  },
+  "pct": {
+   "fit": 0.504,
+   "barTop": 766,
+   "note": {
+    "rect": {
+     "x": 578.8,
+     "y": 785,
+     "w": 282.3,
+     "h": 22.7,
+     "top": 785,
+     "bottom": 807.7
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks, Joins \u2014 numbers, not points."
+   },
+   "toggle": {
+    "rect": {
+     "x": 642.8,
+     "y": 807.7,
+     "w": 154.3,
+     "h": 26.2,
+     "top": 807.7,
+     "bottom": 833.9
+    }
+   },
+   "orbs": [
+    {
+     "key": "sales",
+     "orbD": 68.1,
+     "numText": "1100",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 13.1,
+     "tiled": true
+    },
+    {
+     "key": "joins",
+     "orbD": 68.1,
+     "numText": "0",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 13.1,
+     "tiled": true
+    },
+    {
+     "key": "notes",
+     "orbD": 68.1,
+     "numText": "44%",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 13.1,
+     "tiled": true
+    },
+    {
+     "key": "invs",
+     "orbD": 68.1,
+     "numText": "8%",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 13.1,
+     "tiled": true
+    },
+    {
+     "key": "posts",
+     "orbD": 68.1,
+     "numText": "16%",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 13.1,
+     "tiled": true
+    },
+    {
+     "key": "shares",
+     "orbD": 68.1,
+     "numText": "0%",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 13.1,
+     "tiled": true
+    },
+    {
+     "key": "comments",
+     "orbD": 68.1,
+     "numText": "0%",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 13.1,
+     "tiled": true
+    },
+    {
+     "key": "likes",
+     "orbD": 68.1,
+     "numText": "0%",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 13.1,
+     "tiled": true
+    },
+    {
+     "key": "saves",
+     "orbD": 68.1,
+     "numText": "1%",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 13.1,
+     "tiled": true
+    }
+   ],
+   "minis": [
+    "1100",
+    "0",
+    "0.0%",
+    "1293",
+    "5",
+    "4",
+    "1293",
+    "0",
+    "0.3%",
+    "0",
+    "1316",
+    "4",
+    "5",
+    "2",
+    "1293",
+    "4",
+    "0.3%",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "overflowX": false
+  },
+  "consoleErrors": []
+ },
+ "B-fit-pass7-390": {
+  "pts": {
+   "fit": 0.751,
+   "barTop": 850.8,
+   "note": {
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0,
+     "top": 0,
+     "bottom": 0
+    },
+    "visibility": "visible",
+    "text": ""
+   },
+   "toggle": {
+    "rect": {
+     "x": 80,
+     "y": 793.8,
+     "w": 230,
+     "h": 39.1,
+     "top": 793.8,
+     "bottom": 832.9
+    }
+   },
+   "orbs": [
+    {
+     "key": "sales",
+     "orbD": 48.1,
+     "numText": "1.3K",
+     "tileDigitPx": null,
+     "tileDigitVisualH": null,
+     "tiled": false
+    },
+    {
+     "key": "joins",
+     "orbD": 48.1,
+     "numText": "200",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 8.3,
+     "tiled": true
+    },
+    {
+     "key": "notes",
+     "orbD": 48.1,
+     "numText": "280",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 8.3,
+     "tiled": true
+    },
+    {
+     "key": "invs",
+     "orbD": 48.1,
+     "numText": "50",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 8.3,
+     "tiled": true
+    },
+    {
+     "key": "posts",
+     "orbD": 48.1,
+     "numText": "100",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 8.3,
+     "tiled": true
+    },
+    {
+     "key": "shares",
+     "orbD": 48.1,
+     "numText": "0",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 8.3,
+     "tiled": true
+    },
+    {
+     "key": "comments",
+     "orbD": 48.1,
+     "numText": "0",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 8.3,
+     "tiled": true
+    },
+    {
+     "key": "likes",
+     "orbD": 48.1,
+     "numText": "0",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 8.3,
+     "tiled": true
+    },
+    {
+     "key": "saves",
+     "orbD": 48.1,
+     "numText": "5",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 8.3,
+     "tiled": true
+    }
+   ],
+   "minis": [
+    "1120",
+    "280",
+    "200",
+    "1293",
+    "5",
+    "4",
+    "1293",
+    "0",
+    "0.3%",
+    "0",
+    "1316",
+    "4",
+    "5",
+    "2",
+    "1293",
+    "4",
+    "0.3%",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "overflowX": false
+  },
+  "pct": {
+   "fit": 0.751,
+   "barTop": 776,
+   "note": {
+    "rect": {
+     "x": 77.4,
+     "y": 635.1,
+     "w": 235.1,
+     "h": 13.1,
+     "top": 635.1,
+     "bottom": 648.2
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks \u2014 numbers, not points."
+   },
+   "toggle": {
+    "rect": {
+     "x": 80,
+     "y": 793.8,
+     "w": 230,
+     "h": 39.1,
+     "top": 793.8,
+     "bottom": 832.9
+    }
+   },
+   "orbs": [
+    {
+     "key": "sales",
+     "orbD": 48.1,
+     "numText": "1293",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 8.3,
+     "tiled": true
+    },
+    {
+     "key": "joins",
+     "orbD": 48.1,
+     "numText": "200",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 8.3,
+     "tiled": true
+    },
+    {
+     "key": "notes",
+     "orbD": 48.1,
+     "numText": "280",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 8.3,
+     "tiled": true
+    },
+    {
+     "key": "invs",
+     "orbD": 48.1,
+     "numText": "50",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 8.3,
+     "tiled": true
+    },
+    {
+     "key": "posts",
+     "orbD": 48.1,
+     "numText": "100",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 8.3,
+     "tiled": true
+    },
+    {
+     "key": "shares",
+     "orbD": 48.1,
+     "numText": "0",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 8.3,
+     "tiled": true
+    },
+    {
+     "key": "comments",
+     "orbD": 48.1,
+     "numText": "0",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 8.3,
+     "tiled": true
+    },
+    {
+     "key": "likes",
+     "orbD": 48.1,
+     "numText": "0",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 8.3,
+     "tiled": true
+    },
+    {
+     "key": "saves",
+     "orbD": 48.1,
+     "numText": "5",
+     "tileDigitPx": 10,
+     "tileDigitVisualH": 8.3,
+     "tiled": true
+    }
+   ],
+   "minis": [
+    "1120",
+    "280",
+    "200",
+    "1293",
+    "5",
+    "4",
+    "1293",
+    "0",
+    "0.3%",
+    "0",
+    "1316",
+    "4",
+    "5",
+    "2",
+    "1293",
+    "4",
+    "0.3%",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "overflowX": false
+  },
+  "consoleErrors": []
+ },
+ "B-fit-pass7-1440": {
+  "pts": {
+   "fit": 0.454,
+   "barTop": 851.8,
+   "note": {
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0,
+     "top": 0,
+     "bottom": 0
+    },
+    "visibility": "visible",
+    "text": ""
+   },
+   "toggle": {
+    "rect": {
+     "x": 650.5,
+     "y": 810.5,
+     "w": 139.1,
+     "h": 23.6,
+     "top": 810.5,
+     "bottom": 834.1
+    }
+   },
+   "orbs": [
+    {
+     "key": "sales",
+     "orbD": 61.3,
+     "numText": "1.3K",
+     "tileDigitPx": null,
+     "tileDigitVisualH": null,
+     "tiled": false
+    },
+    {
+     "key": "joins",
+     "orbD": 61.3,
+     "numText": "200",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 6.8,
+     "tiled": true
+    },
+    {
+     "key": "notes",
+     "orbD": 61.3,
+     "numText": "280",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 6.8,
+     "tiled": true
+    },
+    {
+     "key": "invs",
+     "orbD": 61.3,
+     "numText": "50",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 6.8,
+     "tiled": true
+    },
+    {
+     "key": "posts",
+     "orbD": 61.3,
+     "numText": "100",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 6.8,
+     "tiled": true
+    },
+    {
+     "key": "shares",
+     "orbD": 61.3,
+     "numText": "0",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 6.8,
+     "tiled": true
+    },
+    {
+     "key": "comments",
+     "orbD": 61.3,
+     "numText": "0",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 6.8,
+     "tiled": true
+    },
+    {
+     "key": "likes",
+     "orbD": 61.3,
+     "numText": "0",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 6.8,
+     "tiled": true
+    },
+    {
+     "key": "saves",
+     "orbD": 61.3,
+     "numText": "5",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 6.8,
+     "tiled": true
+    }
+   ],
+   "minis": [
+    "1120",
+    "280",
+    "200",
+    "1293",
+    "5",
+    "4",
+    "1293",
+    "0",
+    "0.3%",
+    "0",
+    "1316",
+    "4",
+    "5",
+    "2",
+    "1293",
+    "4",
+    "0.3%",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "overflowX": false
+  },
+  "pct": {
+   "fit": 0.454,
+   "barTop": 766,
+   "note": {
+    "rect": {
+     "x": 648.9,
+     "y": 448.7,
+     "w": 142.2,
+     "h": 7.9,
+     "top": 448.7,
+     "bottom": 456.6
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks \u2014 numbers, not points."
+   },
+   "toggle": {
+    "rect": {
+     "x": 650.5,
+     "y": 810.5,
+     "w": 139.1,
+     "h": 23.6,
+     "top": 810.5,
+     "bottom": 834.1
+    }
+   },
+   "orbs": [
+    {
+     "key": "sales",
+     "orbD": 61.3,
+     "numText": "1293",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 6.8,
+     "tiled": true
+    },
+    {
+     "key": "joins",
+     "orbD": 61.3,
+     "numText": "200",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 6.8,
+     "tiled": true
+    },
+    {
+     "key": "notes",
+     "orbD": 61.3,
+     "numText": "280",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 6.8,
+     "tiled": true
+    },
+    {
+     "key": "invs",
+     "orbD": 61.3,
+     "numText": "50",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 6.8,
+     "tiled": true
+    },
+    {
+     "key": "posts",
+     "orbD": 61.3,
+     "numText": "100",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 6.8,
+     "tiled": true
+    },
+    {
+     "key": "shares",
+     "orbD": 61.3,
+     "numText": "0",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 6.8,
+     "tiled": true
+    },
+    {
+     "key": "comments",
+     "orbD": 61.3,
+     "numText": "0",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 6.8,
+     "tiled": true
+    },
+    {
+     "key": "likes",
+     "orbD": 61.3,
+     "numText": "0",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 6.8,
+     "tiled": true
+    },
+    {
+     "key": "saves",
+     "orbD": 61.3,
+     "numText": "5",
+     "tileDigitPx": 13,
+     "tileDigitVisualH": 6.8,
+     "tiled": true
+    }
+   ],
+   "minis": [
+    "1120",
+    "280",
+    "200",
+    "1293",
+    "5",
+    "4",
+    "1293",
+    "0",
+    "0.3%",
+    "0",
+    "1316",
+    "4",
+    "5",
+    "2",
+    "1293",
+    "4",
+    "0.3%",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "overflowX": false
+  },
+  "consoleErrors": []
+ },
+ "B-fit-merged-390": {
+  "pts": {
+   "fit": 0.66,
+   "barTop": 850.8,
+   "note": {
+    "rect": {
+     "x": 76.8,
+     "y": 769.2,
+     "w": 236.4,
+     "h": 29.7,
+     "top": 769.2,
+     "bottom": 798.9
+    },
+    "visibility": "hidden",
+    "text": ""
+   },
+   "toggle": {
+    "rect": {
+     "x": 93.9,
+     "y": 798.9,
+     "w": 202.1,
+     "h": 34.3,
+     "top": 798.9,
+     "bottom": 833.3
+    }
+   },
+   "orbs": [
+    {
+     "key": "sales",
+     "orbD": 63.4,
+     "numText": "1.3K",
+     "tileDigitPx": null,
+     "tileDigitVisualH": null,
+     "tiled": false
+    },
+    {
+     "key": "joins",
+     "orbD": 63.4,
+     "numText": "200",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 12.6,
+     "tiled": true
+    },
+    {
+     "key": "notes",
+     "orbD": 63.4,
+     "numText": "280",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 12.6,
+     "tiled": true
+    },
+    {
+     "key": "invs",
+     "orbD": 63.4,
+     "numText": "50",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 12.6,
+     "tiled": true
+    },
+    {
+     "key": "posts",
+     "orbD": 63.4,
+     "numText": "100",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 12.6,
+     "tiled": true
+    },
+    {
+     "key": "shares",
+     "orbD": 63.4,
+     "numText": "0",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 12.6,
+     "tiled": true
+    },
+    {
+     "key": "comments",
+     "orbD": 63.4,
+     "numText": "0",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 12.6,
+     "tiled": true
+    },
+    {
+     "key": "likes",
+     "orbD": 63.4,
+     "numText": "0",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 12.6,
+     "tiled": true
+    },
+    {
+     "key": "saves",
+     "orbD": 63.4,
+     "numText": "5",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 12.6,
+     "tiled": true
+    }
+   ],
+   "minis": [
+    "1120",
+    "280",
+    "200",
+    "1293",
+    "5",
+    "4",
+    "1293",
+    "0",
+    "0.3%",
+    "0",
+    "1316",
+    "4",
+    "5",
+    "2",
+    "1293",
+    "4",
+    "0.3%",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "overflowX": false
+  },
+  "pct": {
+   "fit": 0.66,
+   "barTop": 776,
+   "note": {
+    "rect": {
+     "x": 76.8,
+     "y": 769.2,
+     "w": 236.4,
+     "h": 29.7,
+     "top": 769.2,
+     "bottom": 798.9
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks \u2014 numbers, not points."
+   },
+   "toggle": {
+    "rect": {
+     "x": 93.9,
+     "y": 798.9,
+     "w": 202.1,
+     "h": 34.3,
+     "top": 798.9,
+     "bottom": 833.3
+    }
+   },
+   "orbs": [
+    {
+     "key": "sales",
+     "orbD": 63.4,
+     "numText": "1293",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 12.6,
+     "tiled": true
+    },
+    {
+     "key": "joins",
+     "orbD": 63.4,
+     "numText": "31%",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 12.6,
+     "tiled": true
+    },
+    {
+     "key": "notes",
+     "orbD": 63.4,
+     "numText": "44%",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 12.6,
+     "tiled": true
+    },
+    {
+     "key": "invs",
+     "orbD": 63.4,
+     "numText": "8%",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 12.6,
+     "tiled": true
+    },
+    {
+     "key": "posts",
+     "orbD": 63.4,
+     "numText": "16%",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 12.6,
+     "tiled": true
+    },
+    {
+     "key": "shares",
+     "orbD": 63.4,
+     "numText": "0%",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 12.6,
+     "tiled": true
+    },
+    {
+     "key": "comments",
+     "orbD": 63.4,
+     "numText": "0%",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 12.6,
+     "tiled": true
+    },
+    {
+     "key": "likes",
+     "orbD": 63.4,
+     "numText": "0%",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 12.6,
+     "tiled": true
+    },
+    {
+     "key": "saves",
+     "orbD": 63.4,
+     "numText": "1%",
+     "tileDigitPx": 18,
+     "tileDigitVisualH": 12.6,
+     "tiled": true
+    }
+   ],
+   "minis": [
+    "1120",
+    "280",
+    "200",
+    "1293",
+    "5",
+    "4",
+    "1293",
+    "0",
+    "0.3%",
+    "0",
+    "1316",
+    "4",
+    "5",
+    "2",
+    "1293",
+    "4",
+    "0.3%",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "overflowX": false
+  },
+  "consoleErrors": []
+ },
+ "B-fit-merged-1440": {
+  "pts": {
+   "fit": 0.437,
+   "barTop": 851.8,
+   "note": {
+    "rect": {
+     "x": 597.5,
+     "y": 791.8,
+     "w": 244.9,
+     "h": 19.7,
+     "top": 791.8,
+     "bottom": 811.4
+    },
+    "visibility": "hidden",
+    "text": ""
+   },
+   "toggle": {
+    "rect": {
+     "x": 653.1,
+     "y": 811.5,
+     "w": 133.9,
+     "h": 22.7,
+     "top": 811.5,
+     "bottom": 834.2
+    }
+   },
+   "orbs": [
+    {
+     "key": "sales",
+     "orbD": 59,
+     "numText": "1.3K",
+     "tileDigitPx": null,
+     "tileDigitVisualH": null,
+     "tiled": false
+    },
+    {
+     "key": "joins",
+     "orbD": 59,
+     "numText": "200",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 11.4,
+     "tiled": true
+    },
+    {
+     "key": "notes",
+     "orbD": 59,
+     "numText": "280",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 11.4,
+     "tiled": true
+    },
+    {
+     "key": "invs",
+     "orbD": 59,
+     "numText": "50",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 11.4,
+     "tiled": true
+    },
+    {
+     "key": "posts",
+     "orbD": 59,
+     "numText": "100",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 11.4,
+     "tiled": true
+    },
+    {
+     "key": "shares",
+     "orbD": 59,
+     "numText": "0",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 11.4,
+     "tiled": true
+    },
+    {
+     "key": "comments",
+     "orbD": 59,
+     "numText": "0",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 11.4,
+     "tiled": true
+    },
+    {
+     "key": "likes",
+     "orbD": 59,
+     "numText": "0",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 11.4,
+     "tiled": true
+    },
+    {
+     "key": "saves",
+     "orbD": 59,
+     "numText": "5",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 11.4,
+     "tiled": true
+    }
+   ],
+   "minis": [
+    "1120",
+    "280",
+    "200",
+    "1293",
+    "5",
+    "4",
+    "1293",
+    "0",
+    "0.3%",
+    "0",
+    "1316",
+    "4",
+    "5",
+    "2",
+    "1293",
+    "4",
+    "0.3%",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "overflowX": false
+  },
+  "pct": {
+   "fit": 0.437,
+   "barTop": 766,
+   "note": {
+    "rect": {
+     "x": 597.5,
+     "y": 791.8,
+     "w": 244.9,
+     "h": 19.7,
+     "top": 791.8,
+     "bottom": 811.4
+    },
+    "visibility": "visible",
+    "text": "Counts stay counts: Clicks \u2014 numbers, not points."
+   },
+   "toggle": {
+    "rect": {
+     "x": 653.1,
+     "y": 811.5,
+     "w": 133.9,
+     "h": 22.7,
+     "top": 811.5,
+     "bottom": 834.2
+    }
+   },
+   "orbs": [
+    {
+     "key": "sales",
+     "orbD": 59,
+     "numText": "1293",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 11.4,
+     "tiled": true
+    },
+    {
+     "key": "joins",
+     "orbD": 59,
+     "numText": "31%",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 11.4,
+     "tiled": true
+    },
+    {
+     "key": "notes",
+     "orbD": 59,
+     "numText": "44%",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 11.4,
+     "tiled": true
+    },
+    {
+     "key": "invs",
+     "orbD": 59,
+     "numText": "8%",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 11.4,
+     "tiled": true
+    },
+    {
+     "key": "posts",
+     "orbD": 59,
+     "numText": "16%",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 11.4,
+     "tiled": true
+    },
+    {
+     "key": "shares",
+     "orbD": 59,
+     "numText": "0%",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 11.4,
+     "tiled": true
+    },
+    {
+     "key": "comments",
+     "orbD": 59,
+     "numText": "0%",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 11.4,
+     "tiled": true
+    },
+    {
+     "key": "likes",
+     "orbD": 59,
+     "numText": "0%",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 11.4,
+     "tiled": true
+    },
+    {
+     "key": "saves",
+     "orbD": 59,
+     "numText": "1%",
+     "tileDigitPx": 24,
+     "tileDigitVisualH": 11.4,
+     "tiled": true
+    }
+   ],
+   "minis": [
+    "1120",
+    "280",
+    "200",
+    "1293",
+    "5",
+    "4",
+    "1293",
+    "0",
+    "0.3%",
+    "0",
+    "1316",
+    "4",
+    "5",
+    "2",
+    "1293",
+    "4",
+    "0.3%",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "overflowX": false
+  },
+  "consoleErrors": []
+ },
+ "C-hover-merged-390": {
+  "hovers": [
+   {
+    "board": "Dashboard",
+    "ac": "#ff4fd8",
+    "border": "rgb(255, 79, 216)",
+    "shadow": "rgb(255, 79, 216) 0px 0px 18px -4px, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+    "bg": "linear-gradient(rgb(27, 27, 36), rgb(5, 6, 7))"
+   },
+   {
+    "board": "Personal",
+    "ac": "#a06bff",
+    "border": "rgb(160, 107, 255)",
+    "shadow": "rgb(160, 107, 255) 0px 0px 18px -4px, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+    "bg": "linear-gradient(rgb(27, 27, 36), rgb(5, 6, 7))"
+   },
+   {
+    "board": "Business",
+    "ac": "#3a5bff",
+    "border": "rgb(58, 91, 255)",
+    "shadow": "rgb(58, 91, 255) 0px 0px 18px -4px, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+    "bg": "linear-gradient(rgb(27, 27, 36), rgb(5, 6, 7))"
+   },
+   {
+    "board": "Space",
+    "ac": "#3fb8ff",
+    "border": "rgb(63, 184, 255)",
+    "shadow": "rgb(63, 184, 255) 0px 0px 18px -4px, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+    "bg": "linear-gradient(rgb(27, 27, 36), rgb(5, 6, 7))"
+   }
+  ],
+  "rests": [
+   {
+    "board": "Dashboard",
+    "ac": "#ff4fd8",
+    "border": "rgb(255, 79, 216)",
+    "shadow": "rgb(255, 79, 216) 0px 0px 18px -4px, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+    "bg": "linear-gradient(rgb(27, 27, 36), rgb(5, 6, 7))"
+   },
+   {
+    "board": "Personal",
+    "ac": "#a06bff",
+    "border": "rgb(160, 107, 255)",
+    "shadow": "rgb(160, 107, 255) 0px 0px 18px -4px, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+    "bg": "linear-gradient(rgb(27, 27, 36), rgb(5, 6, 7))"
+   },
+   {
+    "board": "Business",
+    "ac": "#3a5bff",
+    "border": "rgb(58, 91, 255)",
+    "shadow": "rgb(58, 91, 255) 0px 0px 18px -4px, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+    "bg": "linear-gradient(rgb(27, 27, 36), rgb(5, 6, 7))"
+   },
+   {
+    "board": "Space",
+    "ac": "#3fb8ff",
+    "border": "rgb(63, 184, 255)",
+    "shadow": "rgb(63, 184, 255) 0px 0px 18px -4px, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+    "bg": "linear-gradient(rgb(27, 27, 36), rgb(5, 6, 7))"
+   }
+  ],
+  "consoleErrors": []
+ },
+ "C-hover-merged-1440": {
+  "hovers": [
+   {
+    "board": "Dashboard",
+    "ac": "#ff4fd8",
+    "border": "rgb(255, 79, 216)",
+    "shadow": "rgb(255, 79, 216) 0px 0px 18px -4px, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+    "bg": "linear-gradient(rgb(27, 27, 36), rgb(5, 6, 7))"
+   },
+   {
+    "board": "Personal",
+    "ac": "#a06bff",
+    "border": "rgb(160, 107, 255)",
+    "shadow": "rgb(160, 107, 255) 0px 0px 18px -4px, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+    "bg": "linear-gradient(rgb(27, 27, 36), rgb(5, 6, 7))"
+   },
+   {
+    "board": "Business",
+    "ac": "#3a5bff",
+    "border": "rgb(58, 91, 255)",
+    "shadow": "rgb(58, 91, 255) 0px 0px 18px -4px, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+    "bg": "linear-gradient(rgb(27, 27, 36), rgb(5, 6, 7))"
+   },
+   {
+    "board": "Space",
+    "ac": "#3fb8ff",
+    "border": "rgb(63, 184, 255)",
+    "shadow": "rgb(63, 184, 255) 0px 0px 18px -4px, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+    "bg": "linear-gradient(rgb(27, 27, 36), rgb(5, 6, 7))"
+   }
+  ],
+  "rests": [
+   {
+    "board": "Dashboard",
+    "ac": "#ff4fd8",
+    "border": "rgb(255, 79, 216)",
+    "shadow": "rgb(255, 79, 216) 0px 0px 18px -4px, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+    "bg": "linear-gradient(rgb(27, 27, 36), rgb(5, 6, 7))"
+   },
+   {
+    "board": "Personal",
+    "ac": "#a06bff",
+    "border": "rgb(160, 107, 255)",
+    "shadow": "rgb(160, 107, 255) 0px 0px 18px -4px, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+    "bg": "linear-gradient(rgb(27, 27, 36), rgb(5, 6, 7))"
+   },
+   {
+    "board": "Business",
+    "ac": "#3a5bff",
+    "border": "rgb(58, 91, 255)",
+    "shadow": "rgb(58, 91, 255) 0px 0px 18px -4px, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+    "bg": "linear-gradient(rgb(27, 27, 36), rgb(5, 6, 7))"
+   },
+   {
+    "board": "Space",
+    "ac": "#3fb8ff",
+    "border": "rgb(63, 184, 255)",
+    "shadow": "rgb(63, 184, 255) 0px 0px 18px -4px, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+    "bg": "linear-gradient(rgb(27, 27, 36), rgb(5, 6, 7))"
+   }
+  ],
+  "consoleErrors": []
+ },
+ "D-page-pts-390": {
+  "at3s": {
+   "state": "live",
+   "numeral": "983",
+   "capText": "",
+   "quietOnPage": false,
+   "spineStale": null,
+   "fd": {
+    "kind": "page",
+    "id": "business",
+    "marker": "\u2605 FEATURED \u2014 BUSINESS",
+    "name": "Business",
+    "center": null
+   }
+  },
+  "at9s": {
+   "state": "live",
+   "numeral": "1 120",
+   "capText": "",
+   "quietOnPage": false,
+   "spineStale": null,
+   "fd": {
+    "kind": "page",
+    "id": "business",
+    "marker": "\u2605 FEATURED \u2014 BUSINESS",
+    "name": "Business",
+    "center": null
+   }
+  },
+  "consoleErrors": []
+ },
+ "D-page-pts-1440": {
+  "at3s": {
+   "state": "live",
+   "numeral": "949",
+   "capText": "",
+   "quietOnPage": false,
+   "spineStale": null,
+   "fd": {
+    "kind": "page",
+    "id": "business",
+    "marker": "\u2605 FEATURED \u2014 BUSINESS",
+    "name": "Business",
+    "center": null
+   }
+  },
+  "at9s": {
+   "state": "live",
+   "numeral": "1 120",
+   "capText": "",
+   "quietOnPage": false,
+   "spineStale": null,
+   "fd": {
+    "kind": "page",
+    "id": "business",
+    "marker": "\u2605 FEATURED \u2014 BUSINESS",
+    "name": "Business",
+    "center": null
+   }
+  },
+  "consoleErrors": []
+ },
+ "D-page-pct-390": {
+  "at3s": {
+   "state": "live",
+   "numeral": "194%",
+   "capText": "",
+   "quietOnPage": false,
+   "spineStale": null,
+   "fd": {
+    "kind": "page",
+    "id": "business",
+    "marker": "\u2605 FEATURED \u2014 BUSINESS",
+    "name": "Business",
+    "center": null
+   }
+  },
+  "at9s": {
+   "state": "live",
+   "numeral": "224%",
+   "capText": "",
+   "quietOnPage": false,
+   "spineStale": null,
+   "fd": {
+    "kind": "page",
+    "id": "business",
+    "marker": "\u2605 FEATURED \u2014 BUSINESS",
+    "name": "Business",
+    "center": null
+   }
+  },
+  "consoleErrors": []
+ },
+ "D-page-pct-1440": {
+  "at3s": {
+   "state": "live",
+   "numeral": "193%",
+   "capText": "",
+   "quietOnPage": false,
+   "spineStale": null,
+   "fd": {
+    "kind": "page",
+    "id": "business",
+    "marker": "\u2605 FEATURED \u2014 BUSINESS",
+    "name": "Business",
+    "center": null
+   }
+  },
+  "at9s": {
+   "state": "live",
+   "numeral": "224%",
+   "capText": "",
+   "quietOnPage": false,
+   "spineStale": null,
+   "fd": {
+    "kind": "page",
+    "id": "business",
+    "marker": "\u2605 FEATURED \u2014 BUSINESS",
+    "name": "Business",
+    "center": null
+   }
+  },
+  "consoleErrors": []
+ },
+ "D-page-money-390": {
+  "at3s": {
+   "state": "live",
+   "numeral": "$975",
+   "capText": "",
+   "quietOnPage": false,
+   "spineStale": null,
+   "fd": {
+    "kind": "page",
+    "id": "business",
+    "marker": "\u2605 FEATURED \u2014 BUSINESS",
+    "name": "Business",
+    "center": null
+   }
+  },
+  "at9s": {
+   "state": "live",
+   "numeral": "$1 120",
+   "capText": "",
+   "quietOnPage": false,
+   "spineStale": null,
+   "fd": {
+    "kind": "page",
+    "id": "business",
+    "marker": "\u2605 FEATURED \u2014 BUSINESS",
+    "name": "Business",
+    "center": null
+   }
+  },
+  "consoleErrors": []
+ },
+ "D-page-money-1440": {
+  "at3s": {
+   "state": "live",
+   "numeral": "$944",
+   "capText": "",
+   "quietOnPage": false,
+   "spineStale": null,
+   "fd": {
+    "kind": "page",
+    "id": "business",
+    "marker": "\u2605 FEATURED \u2014 BUSINESS",
+    "name": "Business",
+    "center": null
+   }
+  },
+  "at9s": {
+   "state": "live",
+   "numeral": "$1 120",
+   "capText": "",
+   "quietOnPage": false,
+   "spineStale": null,
+   "fd": {
+    "kind": "page",
+    "id": "business",
+    "marker": "\u2605 FEATURED \u2014 BUSINESS",
+    "name": "Business",
+    "center": null
+   }
+  },
+  "consoleErrors": []
+ }
+}
