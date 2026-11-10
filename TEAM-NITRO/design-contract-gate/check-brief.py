@@ -19,6 +19,9 @@ What it checks (each is a named section in the output):
   7. VERIFICATION PLAN — Playwright (or real browser) at desktop 1440 +
      phone 390 + true 360, zero overflow, zero console errors, named
      no-regressions.
+  8. SHOULD THIS EXIST — the brief names the host page the work
+     attaches to and what it does not duplicate; a standalone page
+     fails outright (the minus-ten law, 2026-11-10).
 
 Rules of the checker itself (the lock-in law):
   - Plain Python, stdlib only. No dependencies.
@@ -421,11 +424,52 @@ def check_7_verification(text):
     return r
 
 
+# ---------------------------------------------------------------- check 8
+
+HOST_SIGNALS = [
+    re.compile(r"host page", re.I),
+    re.compile(r"where it lives", re.I),
+    re.compile(r"lives on", re.I),
+    re.compile(r"attaches to", re.I),
+    re.compile(r"entry point", re.I),
+    re.compile(r"does not duplicate", re.I),
+    re.compile(r"not a duplicate", re.I),
+    re.compile(r"duplicates nothing", re.I),
+    re.compile(r"no new page", re.I),
+]
+STANDALONE = re.compile(r"standalone page", re.I)
+NOT_STANDALONE = re.compile(r"not a standalone|never a standalone",
+                            re.I)
+
+
+def check_8_should_exist(text):
+    """Gate 1 made mechanical: a build that is not a page itself must
+    name the host page it attaches to; a new page must name the page
+    it does not duplicate. The Factory one-click flow passed checks
+    1-7 and was a minus-ten because nobody asked this — a standalone
+    page duplicating the Factory, wired to nothing, two blocks doing
+    nothing. A brief that builds a standalone page fails here, full
+    stop."""
+    r = Result(8, "SHOULD THIS EXIST — HOST PAGE + NO DUPLICATE")
+    if STANDALONE.search(text) and not NOT_STANDALONE.search(text):
+        r.fail("brief builds a standalone page — name the host page "
+               "it lives on instead (a flow not wired into its page "
+               "is waste)")
+        return r
+    if not any(p.search(text) for p in HOST_SIGNALS):
+        r.fail("no host page / where-it-lives statement — every build "
+               "names the page it attaches to and what it does not "
+               "duplicate")
+    else:
+        r.ok("host page + no-duplicate named")
+    return r
+
+
 # ---------------------------------------------------------------- main
 
 CHECKS = [check_1_done_first, check_2_harvest, check_3_laws,
           check_4_gate, check_5_anti_repeat, check_6_five_gates,
-          check_7_verification]
+          check_7_verification, check_8_should_exist]
 
 
 def check_brief(path):
