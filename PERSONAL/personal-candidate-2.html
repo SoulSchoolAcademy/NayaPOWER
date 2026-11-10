@@ -3593,18 +3593,18 @@ article.intel-board:hover, article.intel-board:active { border-color: var(--tone
    page. Obsidian body (harvested .ph-connect grammar), portal-arch gradient
    border purple #a06bff → gold #ffbf3d, angelic ✦ jewel, shimmer sweep, and a
    dual purple+gold ignition on hover. ---- */
-.mship-portal-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:16px 34px;border-radius:999px;border:2px solid transparent;background:linear-gradient(180deg,#191922,#07070c 72%) padding-box,linear-gradient(135deg,#a06bff 0%,#e84fff 32%,#ffbf3d 68%,#ff9a5a 100%) border-box;color:#fff;font-weight:800;font-size:17px;font-family:inherit;letter-spacing:.5px;cursor:pointer;overflow:hidden;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.6),0 0 26px -4px rgba(160,107,255,.65),0 12px 28px rgba(0,0,0,.6);transition:transform .18s ease,box-shadow .25s ease;text-shadow:0 1px 3px rgba(0,0,0,.7);}
-.mship-portal-btn::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.38) 50%,transparent 68%);transform:translateX(-130%);transition:transform .8s ease;pointer-events:none;}
-.mship-portal-btn:hover{transform:translateY(-2px) scale(1.02);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.62),inset 0 -4px 10px rgba(0,0,0,.55),0 0 44px -2px rgba(160,107,255,.9),0 0 72px -6px rgba(255,191,61,.55),0 16px 34px rgba(0,0,0,.65);}
-.mship-portal-btn:hover::before{transform:translateX(130%);}
-.mship-portal-btn:active{transform:translateY(0) scale(.99);}
-.mship-portal-btn:focus-visible{outline:2px solid #ffbf3d;outline-offset:3px;}
-.mship-portal-btn.mship-busy{opacity:.72;pointer-events:none;}
-.mship-portal-btn .os-jewel{flex:none;}
-@media(max-width:560px){.mship-portal-btn{width:100%;padding:16px 20px;font-size:16px;}}
+.os-mship-portal-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:16px 34px;border-radius:999px;border:2px solid transparent;background:linear-gradient(180deg,#191922,#07070c 72%) padding-box,linear-gradient(135deg,#a06bff 0%,#e84fff 32%,#ffbf3d 68%,#ff9a5a 100%) border-box;color:#fff;font-weight:800;font-size:17px;font-family:inherit;letter-spacing:.5px;cursor:pointer;overflow:hidden;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.6),0 0 26px -4px rgba(160,107,255,.65),0 12px 28px rgba(0,0,0,.6);transition:transform .18s ease,box-shadow .25s ease;text-shadow:0 1px 3px rgba(0,0,0,.7);}
+.os-mship-portal-btn::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.38) 50%,transparent 68%);transform:translateX(-130%);transition:transform .8s ease;pointer-events:none;}
+.os-mship-portal-btn:hover{transform:translateY(-2px) scale(1.02);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.62),inset 0 -4px 10px rgba(0,0,0,.55),0 0 44px -2px rgba(160,107,255,.9),0 0 72px -6px rgba(255,191,61,.55),0 16px 34px rgba(0,0,0,.65);}
+.os-mship-portal-btn:hover::before{transform:translateX(130%);}
+.os-mship-portal-btn:active{transform:translateY(0) scale(.99);}
+.os-mship-portal-btn:focus-visible{outline:2px solid #ffbf3d;outline-offset:3px;}
+.os-mship-portal-btn.mship-busy{opacity:.72;pointer-events:none;}
+.os-mship-portal-btn .os-jewel{flex:none;}
+@media(max-width:560px){.os-mship-portal-btn{width:100%;padding:16px 20px;font-size:16px;}}
 /* ---- interim ownership claim (identity lane replaces) ---- */
-.mship-claim{background:none;border:none;color:#8f8fa3;font-size:12px;font-family:inherit;text-decoration:underline;cursor:pointer;padding:6px 2px;}
-.mship-claim:hover{color:#ffbf3d;}
+.os-mship-claim{background:none;border:none;color:#8f8fa3;font-size:12px;font-family:inherit;text-decoration:underline;cursor:pointer;padding:6px 2px;}
+.os-mship-claim:hover{color:#ffbf3d;}
 /* ---- celestial upgrade modal ---- */
 .up-modal.mship-upgrade{width:min(660px,94vw);border:2px solid transparent;background:linear-gradient(180deg,#101018,#060609) padding-box,linear-gradient(135deg,rgba(160,107,255,.85),rgba(255,191,61,.85)) border-box;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 24px 60px rgba(0,0,0,.7),0 0 60px -8px rgba(160,107,255,.55);}
 .mship-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;}
@@ -4828,8 +4828,10 @@ html body .os-constellation .os-ld-nodes button.os-ld-node[data-node="saves"] .o
   transform-origin:100px 104px;
   /* the needle casts a shadow — it's a physical object above the dial */
   filter:drop-shadow(0 3px 4px rgba(0,0,0,.8));
-  /* ACCELERATION: the needle sweeps, never jumps */
-  transition:transform 1.2s cubic-bezier(.15,.85,.25,1);
+  /* FIX-7: NO CSS transition — the needle law. rAF owns the motion: the
+     frame loop sweeps the needle over 3s (displayed -> target), so a CSS
+     transition only fought it, lagging every frame's transform. */
+  transition:none;
 }
 /* v4 char 201257 — .tn-tacho-redzone */.tn-tacho-redzone{ fill:none; stroke:#ff5e6c; stroke-width:4; opacity:.9;
   filter:drop-shadow(0 0 4px rgba(255,94,108,.6)); }
@@ -6071,7 +6073,7 @@ button.os-ld-node .os-ld-n{
 <div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> About Me</div>
 <div class="ph-card" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">❝</span> My motto</h3>
-<p id="os-sec-motto-text" class="os-note" style="margin:0;">No motto yet &mdash; tap Edit and put it in one line.</p>
+<p id="os-sec-motto-text" class="os-note" style="margin:0;"></p>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-motto-edit" rows="2" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-motto-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="motto">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="motto" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="motto" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="motto" style="display:none;" aria-label="Close without saving">×</button></div>
 <div class="os-status" id="os-sec-motto-status"></div>
@@ -6289,8 +6291,8 @@ button.os-ld-node .os-ld-n{
 <div class="ph-card" style="--ac:#a06bff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">✦</span> Memberships</h3>
 <p class="os-note" style="margin-top:8px;">Memberships live on this page — private communities with videos, PDFs, audio and notes. Members join, log in, and everything beautiful opens for them.</p>
-<div class="ph-actions" id="mship-create-row" style="display:none;margin-top:12px;justify-content:center;"><button class="mship-portal-btn" id="mship-create-btn" type="button"><span class="os-jewel" style="--jc:#ffbf3d;font-size:15px;padding:8px 11px;">✦</span><span>Create membership</span></button></div>
-<div id="mship-claim-row" style="display:none;margin-top:10px;text-align:center;"><button class="mship-claim" type="button" data-mship-claim>I own this page (interim — identity sign-in coming)</button></div>
+<div class="ph-actions" id="mship-create-row" style="display:none;margin-top:12px;justify-content:center;"><button class="os-mship-portal-btn" id="mship-create-btn" type="button"><span class="os-jewel" style="--jc:#ffbf3d;font-size:15px;padding:8px 11px;">✦</span><span>Create membership</span></button></div>
+<div id="mship-claim-row" style="display:none;margin-top:10px;text-align:center;"><button class="os-mship-claim" type="button" data-mship-claim>I own this page (interim — identity sign-in coming)</button></div>
 <div id="mship-list" style="display:flex;flex-direction:column;gap:12px;margin-top:12px;"><div class="os-skel"></div></div>
 <div class="os-status" id="mship-status"></div>
 </div>
@@ -7047,12 +7049,17 @@ NF.register(UNIT, {
   document.addEventListener('keydown',function(e){if((e.key==='Escape'||e.keyCode===27)&&ae.style.display!=='none')cancelAbout();});
   eb.addEventListener('click',function(){ae.value=at.textContent;at.style.display='none';ae.style.display='';eb.style.display='none';nb.style.display='';sb.style.display='';if(cb)cb.style.display='';if(xb)xb.style.display='';});
   nb.addEventListener('click',function(){ae.value='Passionate creator and lifelong learner. I build things that matter and share what I discover.';});
+  /* FIX-7: ONE writer for #os-about-status. Two save handlers wrote it
+     (this one via innerHTML, a legacy duplicate via textContent) and raced
+     each other after every save — the legacy handler is deleted below and
+     every status write goes through setAboutStatus. */
+  function setAboutStatus(html){ var s=document.getElementById('os-about-status'); if (s) s.innerHTML=html; }
   /* FIX-6: the story saved in-session only — localStorage alone, never the
      page's own store (no {k:'about'} row existed), so a fresh device or any
      backend row lost it. The cure is the sections' own discipline (secSave):
      write the row AND keep the timestamped on-device mirror, so a reload
      keeps what was saved with or without the connection. */
-  sb.addEventListener('click',function(){var text=ae.value||at.textContent;at.textContent=text;at.style.display='';ae.style.display='none';eb.style.display='';nb.style.display='none';sb.style.display='none';if(cb)cb.style.display='none';if(xb)xb.style.display='none';var now=new Date().toISOString();try{localStorage.setItem('naya.about',text);localStorage.setItem('naya.about.at',now);}catch(e){}var st=document.getElementById('os-about-status');var client=(window.NayaAuth&&window.NayaAuth.client)||null;if(!client&&typeof supabase!=='undefined'){try{client=supabase.createClient('https://dahisasgpfvziswqvmvm.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGlzYXNncGZ2emlzd3F2bXZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2MjM3ODgsImV4cCI6MjEwMzE5OTc4OH0.zX2r3T23sKebUMBdNg-4Noxos8JFOHaK2rRwqAVXU_s');}catch(e){client=null;}}if(!client){if(st)st.innerHTML='<p class="os-note">Saved on this device — it joins this app&rsquo;s own data when the connection returns.</p>';return;}client.from('smart_notes').insert({owner_alias:(window.PAGE_ALIAS||'flagship-personal'),content:JSON.stringify({k:'about',text:text})}).then(function(res){if(res&&res.error){if(st)st.innerHTML='<p class="os-note">Saved on this device — the app&rsquo;s copy could not be written just now.</p>';return;}if(st)st.innerHTML='<p class="os-note" style="color:#2fe89e">Saved — it is this app&rsquo;s own data now.</p>';},function(){if(st)st.innerHTML='<p class="os-note">Saved on this device — the app&rsquo;s copy could not be written just now.</p>';});});
+  sb.addEventListener('click',function(){var text=ae.value||at.textContent;at.textContent=text;at.style.display='';ae.style.display='none';eb.style.display='';nb.style.display='none';sb.style.display='none';if(cb)cb.style.display='none';if(xb)xb.style.display='none';var now=new Date().toISOString();try{localStorage.setItem('naya.about',text);localStorage.setItem('naya.about.at',now);}catch(e){}var client=(window.NayaAuth&&window.NayaAuth.client)||null;if(!client&&typeof supabase!=='undefined'){try{client=supabase.createClient('https://dahisasgpfvziswqvmvm.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGlzYXNncGZ2emlzd3F2bXZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2MjM3ODgsImV4cCI6MjEwMzE5OTc4OH0.zX2r3T23sKebUMBdNg-4Noxos8JFOHaK2rRwqAVXU_s');}catch(e){client=null;}}if(!client){setAboutStatus('<p class="os-note">Saved on this device — it joins this app&rsquo;s own data when the connection returns.</p>');return;}client.from('smart_notes').insert({owner_alias:(window.PAGE_ALIAS||'flagship-personal'),content:JSON.stringify({k:'about',text:text})}).then(function(res){if(res&&res.error){setAboutStatus('<p class="os-note">Saved on this device — the app&rsquo;s copy could not be written just now.</p>');return;}setAboutStatus('<p class="os-note" style="color:#2fe89e">Saved — it is this app&rsquo;s own data now.</p>');},function(){setAboutStatus('<p class="os-note">Saved on this device — the app&rsquo;s copy could not be written just now.</p>');});});
   try{var s=localStorage.getItem('naya.about');if(s)at.textContent=s;}catch(e){}
   try{var sa=localStorage.getItem('naya.about');if(sa&&sa.indexOf('Nova Reyes is the demo persona')===0){localStorage.setItem('naya.about','Shawn Vibert builds NayaNET — the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live. Welcome to the new world. Welcome to the new net.');at.textContent='Shawn Vibert builds NayaNET — the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live. Welcome to the new world. Welcome to the new net.';}}catch(e){}
   // Cover/avatar
@@ -10157,7 +10164,7 @@ function wallCard(j, iso, pid, idx){
     /* FIX-6: mirrors first, so a saved story or section shows even with no
        connection; the live rows re-decide below. */
     applyAboutMirrors(null);
-    if (!sb){ facts.innerHTML='<p class="os-note">Connection unavailable — the facts cannot load right now.</p>'; return; }
+    if (!sb){ facts.innerHTML='<p class="os-note">Connection unavailable — the facts cannot load right now.</p>'; /* FIX-7: no read coming — paint the motto's empty state now (mirror already applied above). */ var mt0=$('os-sec-motto-text'); if (mt0 && !(window.__osAboutSecs && window.__osAboutSecs['motto']!==undefined)){ mt0.textContent='No motto yet — tap Edit and put it in one line.'; } return; }
     function rows(p){ return p.then(function(r){ return (r && r.data)||[]; }, function(){ return []; }); }
     Promise.all([fetchWall(200),
       rows(sb.from('smart_mail_threads').select('from_alias,created_at').eq('to_alias', PAGE_ALIAS).limit(30)),
@@ -10198,6 +10205,10 @@ function wallCard(j, iso, pid, idx){
         if (cc.k==='aboutsec' && cc.s && cc.text && !bk.sections[cc.s]) bk.sections[cc.s]={text:cc.text, at:r.created_at};
       });
       applyAboutMirrors(bk);
+      /* FIX-7: the motto's empty state paints only once the read has
+         resolved — the baked "No motto yet" flashed in a fresh context
+         before the live row arrived. Same words, later paint. */
+      if (!(window.__osAboutSecs && window.__osAboutSecs['motto']!==undefined)){ var mt=$('os-sec-motto-text'); if (mt){ mt.textContent='No motto yet — tap Edit and put it in one line.'; mt.classList.add('os-note'); } }
       /* RETHINK: hero-carried seed — GOAL/VISION/MISSION text moved from
          the hero card into About. If no saved row exists, the seeded static
          text IS the value, so Edit re-seeds from it instead of blank. */
@@ -10535,14 +10546,12 @@ function wallCard(j, iso, pid, idx){
     });
     var libBtn=$('os-lib-add'); if (libBtn) libBtn.addEventListener('click', saveQuestion);
     var libQ=$('os-lib-q'); if (libQ) libQ.addEventListener('input', renderLibrary);
-    var saveBtn=$('saveabout');
-    if (saveBtn) saveBtn.addEventListener('click', function(){
-      var tx=$('abouttext'), st=$('os-about-status');
-      if (!tx || !sb) return;
-      sb.from('smart_notes').insert({owner_alias:PAGE_ALIAS, content:JSON.stringify({k:'about', text:tx.textContent.trim()})}).then(function(res){
-        if (st) st.textContent=res.error?'Saved on this device — the page copy will be written when the connection is back.':'Saved — this story now lives in the page’s own data, not just this device.';
-      }, function(){});
-    });
+    /* FIX-7: the legacy duplicate #saveabout handler lived here — it fired
+       on the same click as the FIX-6 handler, inserted a SECOND identical
+       {k:'about'} row on every save (the verifier caught two POSTs per
+       save), and overwrote #os-about-status via textContent, racing the
+       FIX-6 handler's innerHTML write. Deleted: the FIX-6 handler above
+       is the single writer now (mirror + row + setAboutStatus). */
   })();
   /* Back (wave #6): seed history with the view this page opened on, so the
      phone/browser Back button walks the app's own views and never exits. */
