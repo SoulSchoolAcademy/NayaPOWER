@@ -28,7 +28,7 @@
 | `collective:note:the-box-shape` | Smart Box Blueprint §3, §3.6, §3.7 |
 | `collective:note:the-nine-nodes` | Merge spec §7 (LEARN · KNOW · ACT · LAW · VERIFY · SELF · CONNECT · EVOLVE · PROVE) |
 | `collective:note:the-notification-design` | Notification spec §0, §1, §4, §5.4, §7 (SPEC ONLY) |
-| `collective:note:the-notification-rulings` | MEMORY.md: rubric −9 to +9, D2 digest 23:17 UTC, D3 open, D4 his Naya Notes to the team, 99% baseline (01:58Z Nov 10) |
+| `collective:note:the-notification-rulings` | MEMORY.md: rubric −9 to +9, D2 digest 23:17 UTC, D3 SETTLED — no bundle cap, D4 his Naya Notes to the team, 99% baseline (01:58Z + 02:12Z Nov 10) |
 | `collective:note:the-naima-resolution` | MEMORY.md: Naima resolution (01:00Z Nov 10) |
 | `collective:note:the-permission-model` | MEMORY.md: Permission model CORRECTED (01:31Z Nov 10) |
 | `collective:note:the-master-box-design` | MEMORY.md: Master Box setup (01:24Z Nov 10) |
