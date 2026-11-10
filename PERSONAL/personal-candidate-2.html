@@ -4589,17 +4589,17 @@ function osFeedPulseSpine(){
 .os-wb-top .os-jewel{ font-size:22px; flex:none; }
 .os-wb-id{ min-width:0; }
 .os-wb-id b{ display:block; font-size:17px; font-weight:900; color:#fff; overflow-wrap:anywhere; }
-.os-wb-id span{ display:block; font-size:12.5px; color:#b9b3c7; margin-top:2px; }
-.os-wb-kind{ margin-left:auto; flex:none; font-size:10px; font-weight:800; letter-spacing:.16em; color:#8a8a96; }
+.os-wb-id span{ display:block; font-size:12.5px; color:rgba(255,255,255,.85); margin-top:2px; } /* FIX-8d: was #b9b3c7 — dim score-card micro-label, now near-white like the fix-8b .intel-empty raising */
+.os-wb-kind{ margin-left:auto; flex:none; font-size:10px; font-weight:800; letter-spacing:.16em; color:rgba(255,255,255,.85); } /* FIX-8d: was #8a8a96 — dim score-card micro-label, now near-white (no markup use today; brightened with its group so the class can never render dim) */
 .os-wb-nums{ display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin:14px 0 4px; }
 .os-wb-nums b{ display:block; font-size:24px; font-weight:900; color:#fff; }
-.os-wb-nums i{ display:block; font-style:normal; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:#8a8a96; margin-top:2px; overflow-wrap:anywhere; }
+.os-wb-nums i{ display:block; font-style:normal; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.85); margin-top:2px; overflow-wrap:anywhere; } /* FIX-8d: was #8a8a96 — dim score-card micro-label (Smart Score / Creations / Invites), now near-white */
 .os-wb-note{ margin:8px 0 0; }
 .os-wb-btn{ width:auto; min-width:160px; }
 .os-world-board .os-link-row{ display:flex; gap:8px; margin-top:12px; }
 .os-world-board .os-link-row .ph-msg{ flex:1; }
 .os-wb-open{ margin-top:12px; text-align:center; }
-.os-wb-open a{ color:#b9b3c7; font-size:12.5px; text-decoration:none; }
+.os-wb-open a{ color:rgba(255,255,255,.85); font-size:12.5px; text-decoration:none; } /* FIX-8d: was #b9b3c7 — the fourth dim rule of the same score-card group (Open Personal/Business/Space, 3 of the baseline 75); brightened so the dashboard group reads 0, per the absolute measurement */
 .os-wb-open a:hover{ color:#fff; }
 @media (max-width:900px){
 #os-boards-list{ grid-template-columns:1fr; }
@@ -7701,6 +7701,7 @@ function wallCard(j, iso, pid, idx){
     var n=String(name||'').trim().toLowerCase();
     return n==='proof' || n.indexOf('proof ')===0 || n.indexOf('verify')>=0;
   }
+  window.upIsProofName = upIsProofName; /* FIX-8d: the dash-script block is a separate <script> outside this IIFE, and its dashboard faces + activity/joins filters call the same predicate — exposed on window here so there is one filter, no copy. The os-script call sites keep resolving to the local function; the dash-script call sites resolve through window. */
 
   /* P5 2026-11-06: fetchWall was called in 3 places (loadToday, loadFaces,
      loadAbout) but never defined, so About / Connections threw
@@ -8508,7 +8509,7 @@ function wallCard(j, iso, pid, idx){
       renderFunnel(rows);
       var list=$('os-invite-list'); if(!list) return;
       if (!rows.length) { list.innerHTML=''; return; }
-      list.innerHTML=rows.slice(0,20).map(function(v){ return '<div class="ph-card" style="--ac:#ff5e6c;"><h3>'+esc(v.invitee_name)+' &middot; '+esc(v.status)+'</h3><p>Invite code '+esc(v.code||'')+' &middot; recorded, not sent</p><div class="os-stamp">'+stamp(v.created_at)+'</div></div>'; }).join('');
+      list.innerHTML=rows.filter(function(v){ return !upIsProofName(v.invitee_name); }).slice(0,20).map(function(v){ return '<div class="ph-card" style="--ac:#ff5e6c;"><h3>'+esc(v.invitee_name)+' &middot; '+esc(v.status)+'</h3><p>Invite code '+esc(v.code||'')+' &middot; recorded, not sent</p><div class="os-stamp">'+stamp(v.created_at)+'</div></div>'; }).join(''); /* FIX-8d: verification-run invitee names never render in the Growth invite list */
       renderInviteShare(rows);
     });
   }
@@ -9275,7 +9276,7 @@ function wallCard(j, iso, pid, idx){
     Promise.all([wallP, thrRowsP.then(function(rows){ return rows.map(function(r){ return r.created_at; }); }), invRowsP.then(function(rows){ return rows.map(function(r){ return r.created_at; }); }), peopleP]).then(function(out){
       var posts=out[0].times, msgs=out[1], invs=out[2];
       var pmap={};
-      out[0].authors.concat(out[3]||[]).forEach(function(p){ var k=p.name.toLowerCase(); if (!pmap[k] || new Date(p.at)>new Date(pmap[k].at)) pmap[k]=p; });
+      out[0].authors.concat(out[3]||[]).forEach(function(p){ if (upIsProofName(p.name)) return; var k=p.name.toLowerCase(); if (!pmap[k] || new Date(p.at)>new Date(pmap[k].at)) pmap[k]=p; }); /* FIX-8d: verification-run names never render in the Reports faces */
       var peopleList=Object.keys(pmap).map(function(k){ return pmap[k]; }).sort(function(a, b){ return new Date(b.at)-new Date(a.at); });
       var people=peopleList.length;
       countUp($('os-rep-posts'), posts.length);
@@ -9557,7 +9558,7 @@ function wallCard(j, iso, pid, idx){
       var items=[];
       out[0].forEach(function(p){ items.push({at:p.at, kind:'Feed post', color:'#a06bff', glyph:'✎', name:p.j.a||'Guest', html:'<h3>Feed post by '+esc(p.j.a||'Guest')+'</h3><p>'+esc(p.j.b||'')+'</p>'}); });
       out[1].forEach(function(t){ items.push({at:t.created_at, kind:'Message', color:'#3fb8ff', glyph:'✉️', name:humanize(t.from_alias), html:'<h3>Message: '+esc(t.subject)+'</h3><p>From '+esc(humanize(t.from_alias))+'</p>'}); });
-      out[2].forEach(function(v){ items.push({at:v.created_at, kind:'Invite', color:'#2fe89e', glyph:'🌱', name:v.invitee_name, html:'<h3>Invite recorded for '+esc(v.invitee_name)+'</h3><p>Recorded, not sent — the growth story, one name at a time.</p>'}); });
+      out[2].filter(function(v){ return !upIsProofName(v.invitee_name); }).forEach(function(v){ items.push({at:v.created_at, kind:'Invite', color:'#2fe89e', glyph:'🌱', name:v.invitee_name, html:'<h3>Invite recorded for '+esc(v.invitee_name)+'</h3><p>Recorded, not sent — the growth story, one name at a time.</p>'}); }); /* FIX-8d: verification-run invitee names never render in Today (list + faces) */
       items.sort(function(a,b){ return new Date(b.at)-new Date(a.at); });
       var top=items.slice(0,8);
       /* EYE-PASS CURE #9: the light-blue dashboard cross-pill is
@@ -10900,9 +10901,9 @@ function wallCard(j, iso, pid, idx){
     (d.posts||[]).forEach(function(p){ act.push({ic:'✦', ti:(p.j.b||'Feed post'), su:((p.j.a||'Guest')+' posted'), at:p.at, go:'home'}); });
     (d.noteRows||[]).forEach(function(r){ act.push({ic:'✦', ti:(r.j.t||'Untitled note'), su:'Smart Note', at:r.at, go:'notes'}); });
     (d.connectRows||[]).forEach(function(r){ act.push({ic:'🤝', ti:'Someone connected', su:((r.j.a||'A visitor')+' connected'), at:r.at, go:'people'}); });
-    (d.invRows||[]).forEach(function(v){ act.push({ic:'💌', ti:(v.invitee_name||'Someone'), su:'Invited'+(v.status?(' · '+v.status):''), at:v.created_at, go:'growth'}); });
+    (d.invRows||[]).forEach(function(v){ if (upIsProofName(v.invitee_name)) return; act.push({ic:'💌', ti:(v.invitee_name||'Someone'), su:'Invited'+(v.status?(' · '+v.status):''), at:v.created_at, go:'growth'}); }); /* FIX-8d: verification-run invitee names never render in the activity list */
     (d.threads||[]).forEach(function(t){ mail.push({ic:'✉️', ti:(t.subject||'(no subject)'), su:humanize(t.from_alias)+(t.preview?(' — '+t.preview):''), at:t.created_at, go:'inbox'}); });
-    (d.joinedRows||[]).forEach(function(v){ stats.push({ic:'✅', ti:(v.invitee_name||'Someone'), su:'Joined', at:v.created_at, go:'growth'}); });
+    (d.joinedRows||[]).forEach(function(v){ if (upIsProofName(v.invitee_name)) return; stats.push({ic:'✅', ti:(v.invitee_name||'Someone'), su:'Joined', at:v.created_at, go:'growth'}); }); /* FIX-8d: verification-run invitee names never render in the joins list */
     function byAt(a,b){ return new Date(b.at)-new Date(a.at); }
     act.sort(byAt); mail.sort(byAt); stats.sort(byAt);
     return {activity:act, mail:mail, stats:stats};
@@ -11637,6 +11638,7 @@ function wallCard(j, iso, pid, idx){
         var faces={};
         function add(name, fact, at){
           if (!name || !at) return;
+          if (upIsProofName(name)) return; /* FIX-8d: verification-run names never render on the dashboard faces — same filter as loadFaces' add(), same render-only treatment (upIsProofName is a global from the os-script block) */
           var k=String(name).toLowerCase();
           if (!faces[k]) faces[k]={name:name, fact:fact, at:at};
           else if (new Date(at)>new Date(faces[k].at)) { faces[k].at=at; faces[k].fact=fact; }
