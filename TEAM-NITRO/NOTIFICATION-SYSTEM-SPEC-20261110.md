@@ -268,16 +268,18 @@ Areas live under the umbrella of NayaNET intelligence / Project Intelligence. Th
 
 ---
 
-## 8. DECISIONS LEFT AS SHAWN'S (explicitly — not decided here, not guessed)
+## 8. DECISIONS LEFT AS SHAWN'S — ANSWERED 01:58Z NOV 10 (three resolved, one still open)
 
-**Title:** Four questions only he can answer.
-**Subtitle:** Everything else in this spec is decided. These four wait for his word, and the build waits with them.
-**Nutshell:** The spec is complete without these answers — each has a safe default below, and the default holds until he says otherwise. Nothing in §8 blocks the spec being read, filed, or judged.
+**Title:** Four questions only he could answer. Three answered, one still open.
+**Subtitle:** His word, 01:58Z Nov 10, recorded here in his meaning. The build still waits for his word on the spec as a whole.
+**Nutshell:** D1 is resolved by the Intelligence Rubric: major is a score, not a feeling. D2 is resolved: the digest rides the Daily Intelligence Report at 23:17 UTC, with highlights flowing all day. D3 is still open — the spec default stands. D4 is resolved: his Naya Notes mostly go to the team. And over all four sits his 99% baseline principle: the guideline covers 99% of the time, judgment in the moment covers the rest.
 
-- **D1 — What counts as "major" intelligence.** Default: nothing breaks the digest — no note mails everybody immediately. If some notes should break through and mail everybody at once, only he can name what counts as major. Until he names it, the digest rule (§1.4) holds for everything.
-- **D2 — The digest hour.** Default: the digest rides the Daily Intelligence Report mail, whenever that mail goes out. If he wants a fixed hour for it, he names the hour.
-- **D3 — The bundle cap number.** Default: one immediate mail per project per hour per recipient (§1.4). He confirms the number or changes it — one per hour, one per day, or no cap at all are all his to choose.
-- **D4 — His own Naya Notes.** Default: Naya Notes do not trigger notifications (§1.2 — they are records, not intelligence). His dictations are the most-watched words in the system, so if his own Naya Notes should send a heads-up to the team when filed, that is his call to make.
+- **D1 — What counts as "major" intelligence. RESOLVED by the rubric.** Major = a rubric score at or above the threshold the rubric names: **score +7 or higher** (Intelligence Rubric, `TEAM-NITRO/INTELLIGENCE-RUBRIC-20261110.md` §6, MAJOR band). A note scoring +7 to +9 smart-notes, mails everybody immediately — it breaks the digest — and headlines the Daily Intelligence Report. The rubric is his design (01:58Z Nov 10): a scale from -9 to +9, least valuable to most valuable, from his five questions (major effect on development? major feature? something all should know? something we should learn ongoing? major behavior lesson?) plus the type of intelligence, combined in a mathematical matrix. The threshold number itself (+7) is the rubric writer's proposal for his word, labelled PROPOSAL in the rubric §6 — the break-through rule (major mails everybody at once) is his. Until he moves the number, +7 stands.
+- **D2 — The digest hour. RESOLVED: the digest rides the Daily Intelligence Report, 23:17 UTC.** The report reads all the day's smart notes + notes, determines the highest-valued ones and the big lessons, and gives a full report automatically. **Highlights flow all day:** basically every smart note in a nutshell goes into the daily intel; click through to the full note. The digest shape in §3.2 is unchanged — one mail, not two, with the Daily Intelligence Report mail; if the day brought no new intelligence in the recipient's scope, no digest goes out at all.
+- **D3 — The bundle cap number. STILL OPEN — spec default stands.** Default: one immediate mail per project per hour per recipient (§1.4). He confirms the number or changes it — one per hour, one per day, or no cap at all are all his to choose. Not answered 01:58Z Nov 10; named here as still open, not guessed.
+- **D4 — His own Naya Notes. RESOLVED: YES, mostly send them.** His Naya Notes go to the team — Team Nitro (Naya + her team) and to Resolve and Power when the note is major and about the whole project — most of the time, because the team should always know what's up. Think it through, do what makes sense in the moment; everything's relative, it depends on the situation. The §1.2 default (Naya Notes do not trigger notifications — they are records, not intelligence) holds for Naya Notes in general; his own Naya Notes are the exception he named here.
+
+**The 99% BASELINE PRINCIPLE (his law, 01:58Z Nov 10) — governs this whole spec:** nothing's black and white; there are exceptions to everything; we want a guideline/baseline that covers 99% of the time, and we write the algorithms for the automation from it. Judgment in the moment covers the rest. The rubric (§6 thresholds), the bundle cap, the digest rule, and the D4 "mostly send" are all baselines in that sense — written to cover 99%, overridden openly when the moment demands it, never silently.
 
 ---
 
