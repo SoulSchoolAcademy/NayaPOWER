@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-10 16:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-10 17:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -39173,6 +39173,12 @@ _Last updated: 2026-11-10 16:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-gap-gap-gap-t0432-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Errata 04:01 scoring-time citation qualified as unverified-to-the-minute (section 6 addendum)
+
+**Evidence:** Verified: errata auto-retrieval/errata-gap-gap-gap-t0432.md sha256 8fbc9ca6c0a2c88f82838aaca3d7810dd219a009e1297afd0b49e06460e861d2 EXACT match to receipt pin (supersedes b26663ea...); section-6 addendum present with the corrected citation 'scorer-row note text gives 04:01 UTC; unverified to the minute; bracketed 03:56:27-04:04:13 UTC'; sections 1-
+
 ### ✅ gap-t-distill-chain-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Cold-successor spot-check of #554 dropped routine list; falsified coverage claim
@@ -45742,6 +45748,12 @@ _Last updated: 2026-11-10 16:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ gap-gap-gap-gap-t0162-lane11-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Repo-tree leg independently re-executed at parent HEAD + current tip; PR search re-run
+
+**Evidence:** Verified: tree-HEAD-4316bc72.txt sha256 63c7ee43... EXACT match; tree-parentHEAD-5af6d2ee.txt a1c12170... EXACT match; bin/hv_measure.py a83e2ab0... EXACT match to parent post-fix pin; pr-search JSON + EVIDENCE.md on disk. Both listings show 0 hv_measure/claim-brief/budget-governor paths. Score 9.5 (ACCEPTED). Clears 9.5 because the named gap (tree
 
 ### ✅ gap-scorer-20261015-0550-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
