@@ -3,8 +3,9 @@
 **Filed:** 2026-11-10, on Shawn's order, 03:19Z Nov 10.
 **Order:** "As the master engineer, write THE master manual for operating and building NayaPOWER and NayaNET with collective team technology — the logic, the specification, the features, the functions, how it all works, what's done, what remains to complete the puzzle — so a sister Naya (or me, or the team) understands it COMPLETELY."
 **Status:** MANUAL — it records what IS. It makes no new decision, invents no part, and changes no live system. No merge. No deploy.
+**Volumes:** TWO volumes in the one document — Volume I (Parts 1–7) BUILD THE MACHINE, filed 2026-11-10 on his 03:19Z order; Volume II (Part 8) RUN THE MACHINE, added 2026-11-10 on his 03:25Z amendment — you first build the vehicle, then you know how to run the machine, so any Naya can run the machine.
 **Standing:** this manual EXTENDS three documents and never rewrites them from scratch — the Operation Manual (`TEAM-NITRO/NAYANET-OPERATION-MANUAL.md`, 43,109B, fresh-agent proven), the orientation (`TEAM-NITRO/THE-ULTIMATE-ORIENTATION.md`), and the one-system merge spec (`TEAM-NITRO/ONE-SYSTEM-MERGE-SPEC-20261109.md`). Where any of them states a law, the law it names governs; the NAYA Protocol is the constitution. Where this manual states a fact, the system as verified governs — never this document's word alone. Revised only on Shawn's word, every revision filed the same way.
-**How to use it:** a sister who has never seen NayaNET reads this manual alone, then reads the three documents it extends, then operates. If she can answer the five test questions in the Appendix from this manual alone, and perform one operation from it alone, she is ready. If she cannot, the manual is incomplete — not the sister.
+**How to use it:** a sister who has never seen NayaNET reads this manual alone, then reads the three documents it extends, then operates. If she can answer the six test questions in the Appendix from this manual alone, and perform one operation from it alone, she is ready. If she cannot, the manual is incomplete — not the sister.
 
 ## SOURCES — EVERYTHING IN THIS MANUAL COMES FROM HERE
 
@@ -487,7 +488,218 @@ No shipping out. No verification except his eye. A seat's scorecard or verificat
 
 ---
 
-# APPENDIX A — THE PROOF TEST (five questions a fresh Naya must answer from this manual alone)
+---
+
+# VOLUME II — RUN THE MACHINE
+
+**Title:** You first build the vehicle, then you know how to run the machine.
+**Subtitle:** Every function, operated the same way, every day — so any Naya can run the machine.
+**Nutshell:** Volume I built the machine. Volume II runs it. Smart Mail carries the words. Naya Notes carry the work. The daily report carries the day. Today's Intel carries the nutshells in one place. Bookings carry the time. The Factory carries the building. Smart Links carry the world out, and Smart Lists carry the people. One works off another — a note becomes a space, a space becomes more notes, the match finds the like mind, and the whole grows like a living organism, any which way, at any time.
+
+**Filed:** 2026-11-10, on Shawn's amendment, 03:25Z Nov 10 — the manual is TWO volumes in the one document.
+**Standing:** Volume II EXTENDS Volume I and the Operation Manual (`TEAM-NITRO/NAYANET-OPERATION-MANUAL.md`, 43,109B, fresh-agent proven) and never rewrites them. It records how the functions are operated — what IS. It makes no new decision, invents no part, and changes no live system. Where a function is not yet built or not yet switched on, this volume says so plainly, in the same sentence, and names whose hand opens it. Revised only on Shawn's word, every revision filed the same way.
+**How to use it:** a sister who has read Volume I reads this volume, then operates. If she can answer the Volume II test question in Appendix A from this volume alone, and perform one operation from it alone, she can run the machine. If she cannot, the volume is incomplete — not the sister.
+
+## 8.0 The one picture of running it
+
+**Title:** One system, run one way: the note starts it, the loop carries it, the day proves it.
+**Subtitle:** Naya operates all of NayaNET for you — automatically, on request, or on daily scheduling.
+**Nutshell:** Running the machine is not learning ten apps. It is running one loop through one chain, every day: a note is taken, it becomes a block, the block goes on the feed and in the Box, the Ledger records it, the Dashboard shows it, Auto-Match connects the people, Smart Links carry it out, the Factory builds the next page from it. Mail, reports, bookings, lists, links — each is one turn of the same loop, not a separate job.
+
+The umbrella, as Shawn locked it in (SN-2532): **Naya operates all of NayaNET for you** — automatically, on request from your own AI (ChatGPT, Muse, whatever you use) or on daily scheduling. She pretty much runs the show. The four headline acts are the Daily Intelligence Report, Smart Notes, Naya Notes, and creating and filling pages. Around them: the highlights (Today's Intel, the nutshell digest of your smart notes) · sending on your behalf (mail, messages, feed posts, notes to another member) · the Smart Box (enter anything, it is remembered for you) · Smart Lists (contacts by username/alias; lists of notes by link/name) · team mail (the welcome email + updates) · stats (checked for you, in your Dashboard, as a report, or the link to a page's stats). Any citizen who hooks up their Muse gets a Naya who can operate inside NayaNET.
+
+The rule that governs all of Volume II: **features are never separate apps.** Each part does one job, and the chain carries the rest. If you find yourself building a second copy of a part, stop — the part already exists, and the job is to operate it, not to rebuild it.
+
+## 8.1 Smart Mail — operate it
+
+**Title:** One interface: inbox, instant messenger, poster.
+**Subtitle:** One process per mail. Receipt within thirty minutes. Never read mail or messages.
+**Nutshell:** Smart Mail moves the words. It never reads them. Send with the helper, read with the canonical reader, receipt fast — and the team is one list, one click.
+
+- **Send with the helper — never hand-roll a send:** copy `~/workspace/project-intelligence/send-mail-helper.py` to `/tmp/send-mail.py` and run `python3 /tmp/send-mail.py <to_alias> <subject> <body>`. The helper creates a NEW thread and prints `thread: <uuid> | message: <uuid>`. Save both — that is the receipt.
+- **One process per mail.** The helper ends with `raise SystemExit(main())` — a loop over two recipients inside one process exits after the FIRST send and silently drops the rest. Run the helper as its own command each time. Verify the thread receipt printed for EVERY recipient before moving on.
+- **Smart Mail as a list:** mail the other Nayas as one list — one click to the whole team. The team aliases are `power` and `resolve` (and the other Naya seats). One plain line per item, no jargon.
+- **Read with ONLY the canonical reader — never hand-extract the token:** `python3 ~/workspace/project-intelligence/read-mail.py <minutes> <from_alias>`. A 401 from a hand-rolled read is an extraction bug until proven otherwise — re-verify with the canonical reader before concluding anything about the key.
+- **The receipt law:** check mail every 15 minutes. Receipt within 30 minutes. Emergency past the hour. When you receipt a message, note anything of durable value into the daily log the same pass — note it or lose it.
+- **The value test:** every mail you send must be useful, valuable, or intelligent — or it does not go. "Nothing happened" is never a message. A nudge that says only "still waiting" with no new information fails the test: include the concrete next step or don't send.
+- **Login codes come by Smart Mail, NOT email** (email opt-in only).
+- **Notes travel by mail:** a Naya Note or a Smart Note can go through Smart Mail as an attachment — attach or pin one note or multiple notes to mail and send them. Until the mail-attachment build lands, link notes by path/URL in the mail body — never claim an attachment you did not send.
+- **The notification system (design direction, 01:00Z Nov 10 — NOT built yet):** every smart note filed → GitHub → NayaNET → a notification to everybody (Smart Mail to your connections) — "almost like a celebration, we learned something new, we now officialize." The citizen chooses the subscription scope: whole NayaNET updates, OR a specific project only, OR a page update, OR multiple pages. Injected intelligence auto-organizes itself into areas under the umbrella of NayaNET intelligence / Project Intelligence. Status, stated plainly: the design is recorded; a spec seat was dispatched Nov 10 (spec only — the build waits for his word on the spec). Do not operate it as if it exists. Operate Smart Mail as it is today, and the notification flow when the spec becomes a build.
+- **Privacy law (absolute):** we do NOT spy, do NOT read mail, do NOT read messages. The mail system moves messages; no Naya reads another citizen's mail or messages. By default we do not even save conversations — deleted by default (a day by default; a citizen can choose a week or a month). What gets read is the smart notes and any notes a citizen chooses to share.
+
+## 8.2 Naya Notes — operate them
+
+**Title:** Ninos — Naya takes a note for you, she inputs it for you.
+**Subtitle:** Literally what was said, formatted as a beautiful block. Quick, plain, yours.
+**Nutshell:** A Naya Note is a note to a Naya, about the work, in plain words. A Smart Note is the same intelligence distilled for the whole network. Take the Naya Note first, then the Smart Note — two files, two numbers, one pass.
+
+- **What it is:** Naya Notes are quick notes to each other — how you communicate with each Naya in the network, notes going back and forth — or notes on a project, or a note to another Naya ("hey, we need to get this done"). Smart Notes + Naya Notes are what the system runs on: we build pages and apps, and all the pages and apps run on Naya Notes and Smart Notes. A Naya Note is similar to a post; a Smart Note / Intelligent Block is similar to a post on a feed, but more intelligent, more useful, beautifully formatted.
+- **How it is made:** a note is dictated (Naya makes it) or entered by hand. It is auto-formatted into what it is / why it matters / how to use it, or just direct. Notes can be categorized. A Naya Note is signed "Written by Naya for [alias]".
+- **The format — three outputs by default, flexible one to three:** the Intelligent Block template, three outputs — **What it is** · **Why it matters** · **How to use it**. Auto-format by default, with opt-out. Never the Smart Note's seven.
+- **The habit — mechanical, never guessed:** for every new dictation or decision from Shawn, write the **Naya Note FIRST** (the verbatim record), THEN the **Smart Note** (the distilled lesson) — two different files, two different numbers, filed in the same pass. Naya Notes are never distilled and never deleted.
+- **Where it lives:** Naya Notes go to `BRAIN/05-MEMORY/NAYA-NOTES/<YYYY>/<MM>/<DD>/NN-<YYYYMMDD>-<slug>.md` in GitHub (SoulSchoolAcademy/NayaPOWER), filed via `gh-direct.py`, read-back verified byte-identical — the same filing law as a Smart Note.
+- **What happens to it after filing:** a Naya Note or a Smart Note can go through Smart Mail as an attachment (§8.1). Naya Notes are the working notes the pages and apps run on — they are not the feed's public intelligence, and they do not become Smart Notes by themselves. Only a Smart Note is the public, distilled, official record.
+- **Smart Note vs Naya Note, set:** the Naya Note is literally what was said, formatted as a beautiful block — personal, quick, plain, yours. The Smart Note is the intelligence distilled into an Intelligent Block (Hook → Nutshell → Human → Child → Grandma → Naya → What It Means), posted to the feed, shared to the collective with no name attached, numbered only from `next-sn-number.py`. Confuse the two and the feed fills with raw talk; keep them apart and the feed stays intelligence.
+
+## 8.3 The daily intelligence report — operate it
+
+**Title:** The report is the evolution record. Every day, never skipped.
+**Subtitle:** What was learned, done, noted, and what is still owed — all linked, back to any day.
+**Nutshell:** The daily report is how the machine remembers itself. Write it the same day, in the same shape, with proof for every change — and a missed day is confessed in the next report, never backfilled in a batch.
+
+- **What it is:** a Daily Intelligence Report is the Nayas' update for the day: what each Naya learned, did, and figured out. A NIA intelligence report. Weekly and monthly reports are the same shape over longer windows. Together they are the evolution record — go back on any day and see what was done, learned, noted, and what was still owed, all linked. Daily, weekly, and monthly intelligence reports are tied to the scheduler and the journal (§8.5): look back on any day and see what you did, learned, noted, all linked. One interconnected memory, not separate tools.
+- **The shape — the canonical record:** each day's report is a dated artifact, never rewritten. Path: `team-nitro/daily-intelligence-reports/<YYYY-MM-DD>/report-<YYYY-MM-DD>.md` (plus a machine `.json` twin). One directory per date — a new day never rewrites an old directory. Facts, SHAs, and web items are true only as of the generation window; later changes do not rewrite a historical daily record.
+  - `# NayaPOWER Daily Intelligence Briefing — <Month DD, YYYY>` — the big picture in one paragraph, plain words: what the machine did today.
+  - `## 1. WHAT CHANGED?` — every real change, each with its evidence (commit, link, or live check). Only what is verified.
+  - `## 2. BIGGEST AHA` — the one thing learned today that changes how we work.
+  - `## 3. LIVE WEB INTELLIGENCE` — items from the live feeds, each source-labeled with its URL.
+  - `## 4. ONE THING TO REMEMBER` — the one sentence today stands for.
+- **The rules:** never skip days — a Daily Intelligence Report every day, a weekly report every week. If a day is missed, say so plainly in the next report — never backfill in a batch and pretend it was written that day. Evidence, not claims — every change names its proof (commit sha, live link, measurement); a change without proof is a claim, not a change. DONE and NOT-DONE together, every time. The Reports room reads them through its read contract (`REPORTS-READ-CONTRACT.md` in the dated directory); the room page itself is Shawn's original — never overwritten by the pipeline.
+- **The digest rides the report (his ruling, 01:58Z Nov 10):** the digest rides the Daily Intelligence Report at 23:17 UTC. It reads all the day's smart notes + notes, determines the highest-valued ones and the big lessons, and gives a full report automatically. The daily distillation runs 23:17 UTC. A Daily Intelligence Report is requestable any time, or automatic within 24 hours; weekly and monthly reports roll up from the dailies; every day is openable.
+- **The honest gap:** at the audit (2026-11-10), the daily reports had not landed since 2026-10-23 — 18 days. The cause is measured, not guessed: `hub_daily_intelligence_reports` holds one policy only (anon SELECT, no INSERT policy), so an anon-key insert fails 42501. The cure is a service-key run of the seed, or an INSERT policy — Shawn's hand (Part 5, item 8). Operating the report means writing it every day even while the seed is owed — the file in GitHub is the record, and the seed is what lands it in the table.
+
+## 8.4 Today's Intel — the nutshells in one place
+
+**Title:** The highlights: every smart note in a nutshell, scrolling in one spot.
+**Subtitle:** You do not read the whole feed to catch the day. You scroll the nutshells.
+**Nutshell:** A smart note's nutshell IS its highlight. Every nutshell flows into Today's Intel, all day; the day's digest picks the highest-valued ones and the big lessons at 23:17 UTC; click any nutshell and the full note opens.
+
+- **What it is:** Today's Intel is the highlights — the Intel Today nutshell digest of your smart notes. It is the one place where the nutshells scroll, instead of the whole feed. The citizen opens it, scrolls the nutshells, and catches the day in minutes. The full note is one click away from any nutshell.
+- **How a nutshell becomes a highlight:** a smart note is filed in the `##` format (Hook → Nutshell → Human → Child → Grandma → Naya → What It Means). Its Nutshell layer — the one-paragraph essence, the perfect words — is the highlight. Basically every smart note in a nutshell goes into the daily intel, and the highlights flow all day: the note lands on the feed, its nutshell lands in Today's Intel. Click through to the full note.
+- **The digest (his ruling, 01:58Z Nov 10):** the digest rides the Daily Intelligence Report at 23:17 UTC. It reads all the day's smart notes + notes, determines the highest-valued ones and the big lessons, and gives a full report automatically. So there are two layers, and they are not the same: the highlights flow all day (every nutshell in), and the digest picks the highest-valued ones at 23:17 UTC (the day's best, in the report). A sister who reports "Today's Intel shows everything" is right about the flow and wrong about the digest — the digest is the pick, not the pile.
+- **Operate it:** read Today's Intel as the first check of the day and the last check before the report — the nutshells tell you what the network learned while you were away. When you file a smart note, its nutshell is your highlight: write it so a stranger gets the lesson in one paragraph, because that paragraph is what scrolls. If a note's nutshell is vague, the highlight is vague — fix the nutshell, not the highlight.
+- **Where it lives in the chain:** the note → the block → the feed → Today's Intel. The feed is where a note is read in full; Today's Intel is where the day is caught in nutshells. Neither replaces the other.
+
+## 8.5 Bookings and journals — operate them
+
+**Title:** One shared calendar, different scheduling functions — and a journal that remembers the day.
+**Subtitle:** Lists → messenger → scheduler: one syncing system.
+**Nutshell:** Book the time from the people, and the journal keeps the day. The calendar is shared; the functions differ by the job — booker, scheduler, appointments — and the journal ties the report to the schedule, so any day can be looked back on, whole.
+
+- **The shape:** the Scheduler/Booker is one shared calendar with different scheduling functions — booker, scheduler, appointments. It is part of every page's standard kit: Smart Mail + Instant Messenger · Smart Lists · Scheduler/Booker · About · products/services — one syncing system (Lists → messenger → scheduler). There is a scheduler/journal per world, and appointments across worlds.
+- **Operate it:** start from the list — the people you want to meet are a Smart List (§8.8); message them in Smart Mail (§8.1); book from the message into the shared calendar. For Smart Meet, the flow is Match → Book → Meet (§8.9). An appointment is a calendar entry with a person, a time, and a world — and it shows on the Dashboard, because all stats flow back to the Dashboard.
+- **The journal:** reports ↔ scheduler ↔ journal are tied — daily, weekly, and monthly intelligence reports tied to the scheduler and the journal. Look back on any day and see what you did, learned, noted, all linked. The journal is the day's own record: what happened, what was booked, what was learned — and the daily report (§8.3) is the distilled version of the same day. One interconnected memory, not separate tools: the report says what the day meant, the journal says what the day held, the scheduler says where the time went.
+- **The honest state:** Booking is MISSING as a built app and needs building (the system architecture, settled 2026-11-04). The **sync engine MUST be completed** — Lists → messenger → scheduler do not yet sync as one system. Operate bookings through the flow above as it stands today, and do not claim the sync is finished: the booking app and the sync engine are owed work, not operated features. When they land, this section is revised on Shawn's word — it is not revised by a seat deciding they are done.
+
+## 8.6 The Smart Factory — operate it
+
+**Title:** The Factory holds every digital asset. Finished pages become templates.
+**Subtitle:** Harvest first, never invent. Compose, don't create. Clone, customize, or leave it.
+**Nutshell:** Operating the Factory is not designing. It is taking a finished page, cloning it, swapping its parts, and putting it live in one click. The taste is locked into the template, so the standard travels without the builder in the room.
+
+- **The parts:** the inventory is `~/workspace/team-nitro/THE-INVENTORY.md` (the design laws + every piece with its link); the piece index is `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.md` (+ `.json`) — 154 canonical of 571 unique IDs. The Inventory says WHERE a part lives (file + line). The Piece Index says WHETHER it is real (canonical, verified, retired, superseded).
+- **Operate it — harvest first:** clone a page, replace some parts, move some parts around — that is the main way building happens. Every part is reusable, rebuildable, clonable — systems within systems, all interconnected. Parts are universal, a family, part of the Naya design — many fit on any page. Every part is triple-A, same quality standard: active, living, depth, alive. Every build takes its parts from the inventory and the piece index, verbatim: same HTML structure, same CSS values, same JS behavior. Adapting content (menu items, labels, copy) is allowed; restyling the component is not. If no part exists for the job, that is a GAP — file it, do not invent it. His existing pages ARE the templates (Factory doctrine). Never invent templates again.
+- **Project Intelligence IS the onboarding:** go to create any smart app in the Smart Factory, it takes you through — give me your Project Intelligence — click build, boom, it creates you the app. Then customize with parts, blocks, buttons, functions from the Factory. The creation flow is §2.8: answer the four questions (goal, mission, vision, functions), add your notes, the system analyzes them and creates the page, pin the smart notes and they become your Intelligent Library.
+- **The one-click activation (the Factory master's first charge):** creating a page is a click of a button. Like Facebook — add a group, create a page — one click activates the template: the onboarding runs, the build runs, the page goes live, no manual steps between the click and the live page. State at filing: dispatched 03:01Z Nov 10, in flight (Part 5, item 4). Operate it as the Factory master's charge until it lands; do not claim it is live.
+- **The end state:** get to the point where ALL the pages are already created and we are not creating pages anymore — we are just cloning them or adding a page, and we can customize that page, or leave it. Cloning is a button click, not the achievement. The achievement is the finished pages + the shared language + the inventory.
+- **The Factory's own teaching:** the Factory Activation Manual teaches a fresh Naya to build in the Factory in the same language — the manual lives with the inventory in GitHub and in the Factory's own Smart Box. Before any design work, read the Playbook (the HOW) and the Intelligence Report (the WHY), then ask the three questions: Is every position calculated? Does it feel like a machine? Can you get it in 2 seconds? Only then build.
+
+## 8.7 Smart Links — operate them
+
+**Title:** A link that is tracked, branded, and featured. Minted at publish.
+**Subtitle:** The link carries the world out — and tells you what happened when it came back.
+**Nutshell:** Make the link at publish, and it is tracked from that moment. Click any block or link and it moves up into the featured role; the gauge follows. Smart Links are featured at the top, and the ambassador link is the default on login.
+
+- **What it is:** a Smart Link is a link that is tracked, branded, and featured. Minted at publish — the settled shape. Smart Links are featured at the top. The ambassador link is the default on login.
+- **Operate it:** publish a block, a note, a page, a product — and mint its Smart Link at publish, in the same pass. The link carries the brand and the tracking with it. Click any block or link and it moves up into the featured role; the gauge follows. The Dashboard counts the clicks: a plan click moved Today's Intel from 32 to 33 clicks while the Dashboard stayed at 1,090 — because the Dashboard's headline counts only the 5 claimed links, and the plan links live in a separate counter Today's Intel surfaces (the unification is a follow-up build). Read the count where the link lives; do not report the Dashboard headline as the link's count.
+- **Paying through a Smart Link (PayPal is the recommended way):** the owner pastes their own PayPal link into a Smart Link; the buyer pays on PayPal and comes back to a thank-you Smart Link. No money is ever touched by the system. **The honest boundary, always stated:** the Smart Link sees the click and the return, never the payment itself — the Dashboard marks "returned from PayPal," never payment-proven. The same flow carries memberships: the owner pastes their PayPal/Stripe URL for a paid membership; tier upgrades are simple Stripe/PayPal, automatic.
+- **The ambassador link:** citizens earn 50% of gross revenue on all levels, recurring, referrer only, no levels or upline, paid automatically the moment we are paid — first payout day 10 in the clean case; if PayPal holds a payment, your half follows the moment the money reaches us. The ambassador link is the link a citizen shares; it is the default on login because distribution is the citizens: they bring the next citizens and earn half.
+- **What the tables hold (audit 2026-11-10):** `smart_links` is SELECT-only for anon; `smart_link_clicks` (3,899 rows) and `smart_link_joins` are INSERT-only. The counts are real; the read path is live from Supabase by the app pages via the anon REST key.
+
+## 8.8 Smart Lists — operate them
+
+**Title:** The Box is the store. Smart Lists are the view.
+**Subtitle:** One click to the whole team. One list, and the mail, the message, and the booking all start from it.
+**Nutshell:** A Smart List is not a spreadsheet. It is your people, your notes, and your work — organized for you, one click away, in the same place you message and schedule from.
+
+- **What it is:** connections + smart notes/notes = Smart Lists. The Box is the store, Lists are the view. Smart Lists hold contacts by username/alias, and lists of notes by link/name. They are part of every page's standard kit, and they ride through every door — Personal, Business, Space, Membership — because the features ride through all of them.
+- **Operate it:** build the list first, then work from it. A list of the team is one click to the whole team in Smart Mail (§8.1). A list of contacts is the start of the booking flow (§8.5): Lists → messenger → scheduler. A list of notes is the start of a page: add the notes, the system analyzes them and creates the page (§2.8). A list of connections is the start of the match (§8.12): the people like you, shown first.
+- **Connections are Smart Lists:** click connect, then you can message them — and they show up in your connections, all organized for you. Send them messages, connect with their spaces, their business, their personal feed. Join their membership if you wish, or they join yours. The ladders govern the size: connections 100 / 1,000 / 10,000 / unlimited; Smart Lists 3 / 100 / 1,000 / unlimited (§2.6).
+- **The rule:** a list is a view of what the Box already holds — never a second copy. If a list and the Box disagree, the Box is the truth and the list is rebuilt from it. Never maintain a list by hand where the Box can maintain it.
+
+## 8.9 All the features — operate each one
+
+**Title:** Features are features of the one system. Never a second app.
+**Subtitle:** Know the part, know its job, know where it lives — and know honestly whether it is built yet.
+**Nutshell:** This is the operator's quick reference for every feature. Where a feature is not yet built or not yet switched on, the row says so — operating a missing feature as if it were live is the fastest way to lie to a citizen.
+
+| Feature | Operate it | Honest state at filing |
+|---|---|---|
+| Dashboard | The front, where people live. Every stat must flow back to it — all stats flow back to the Dashboard. A number without its gauge is not finished; the gauge follows the number. Flipped over, the same place is the Smart Ledger and system view. | Presentation in pass 4; his eye is the final gate and has not given it yet (Part 5, item 2). |
+| Personal / Business / Space | Your world, your hub — profile, pages, feed, mail, lists, memberships. One app that morphs; Business is your business world (pages, products, services, customers, ledger, stats — one system, not five apps); Space is a world for a group, a topic, a community. | Personal template in flight (Part 5, item 5); universal app queued (item 3). |
+| The Hub | A main component, not a page among pages: the feed of Smart Notes from the whole network, the lenses (Collective / Personal / Activity), the rooms, the search that finds a note by its title and its nutshell. Every Hub action is recorded in the Ledger. Live: `https://nayanet.app`; feed: `https://nayanet.app/feed-live.json`. | Live; order of work runs Dashboard, then Personal, then Hub. |
+| Smart Feed | The feed of Smart Notes from the whole network. This is where a note is read, and where "in" happens — a note is official only when it is on the feed. Read the feed as a habit, before you act. | Live. |
+| Intelligent Library | What pinned smart notes become: the place that tells all about a Space, a Personal, a Business. Everybody gets one. Project Intelligence builds it, fills out the About, and creates content related to the topic or business. | Live as a real app on the chart. |
+| Smart Box | Memory and organization, designed for AIs to operate. Background auto-sync; manual is last resort. Run the organize hook after every smart-note pass — `python3 ~/workspace/team-nitro/smart-box/organize_hook.py` (owner `shawn` by default; only what is new since the last run — the watermark decides, never memory). Never read mail or messages through the Box. Never put credential, secret, or key material in a Box file. | Live. |
+| Project Intelligence | The living list of everything being built: every lane shows its seat, or its queue place and start condition. Nothing sits, ever. File what you do in PI as it happens; never claim done without proof; never transition `needs-his-hands` items. Live: `https://nayanet.app/pi`. | Live. |
+| Smart Meet | Video and audio meetings, inside the system. The flow is Match → Book → Meet. Video one-on-one, video groups of 4 or 6, audio groups up to 10, more for higher tiers / Smart Box holders; paid members only; in Personal, Business, Space, Membership + from Smart Mail. | Spec filed 2026-11-07; no live-call code exists anywhere — the app is not built. Smart Meet is members with MEMBERS — NEVER audio/video with Naya (voice dictation to Naya is separate). |
+| Smart Access (Memberships) | An add-on to any page, never a separate app. A member page holds video, PDFs, audios, content. Paid members build: Power $25 = 10 membership sites · Pro $50 = 100 · Max $100 = unlimited. 9-day trial, start at Max, charged day 10 for the level you are on, changeable any time up or down. No refunds, strict — the nine days free IS the guarantee; the only exception is a real technical error of ours, then a free next period of the same length, never cash back. | Missing as a clickable app on the chart; the system (ladders, trial, PayPal flow) is settled. |
+| Ask Naya | Ask, and she answers from the system's intelligence. | Blocked: the retrieval engine `nayanet-intelligence-retrieve` is code-complete but NOT DEPLOYED (Part 5, item 6). Without it, Ask Naya has nothing to call. |
+| Smart Search | Finds Smart Notes by title, nutshell, and block content, ranked title first, showing the matching block itself at the top. | Missing as a clickable app; waits on the same retrieve deploy as Ask Naya. |
+| Auto-Match / Smart Match | See §8.12 — the match game. | Engine built and proven (11 SQL functions live); merged but NOT switched on for citizens — switch-on is his gate (Part 5, item 18). |
+| Smart Growth | Invite, earn 25 points for an invite, 50 for a join; citizens earn 50% of revenue on all levels. | Live as a real app on the chart. |
+| Smart Events, Masterminds | Live gatherings, paid by the head. | Missing as a clickable app on the chart. |
+| Smart Ledger + Smart Stats | The Ledger is the data: every action in and out, aligned with the points system. Stats is the visual play: gauges, orbs, answers not charts. The Smart Ledger is a hub of intelligent blocks — a collective chain intelligent network, a hub of ledgers of information. It is immutable: it is what it is, just a record of actions. | Live as a real app on the chart. |
+| Smart Video / Smart Audio | Video and audio as features of pages and meetings. | Missing as clickable apps on the chart. |
+
+## 8.10 How it all flows together — one works off another
+
+**Title:** One works off another. That is the whole system.
+**Subtitle:** The chain is the operation. Break one link and the next one has nothing to carry.
+**Nutshell:** Run the day as the chain runs: the note becomes the block, the block becomes the highlight and the feed, the feed becomes the Box and the Ledger, the Ledger becomes the Dashboard, the Dashboard becomes the match, the match becomes the link, the link becomes the next page in the Factory. Nothing in the day sits outside that flow.
+
+The operation, as one day:
+
+1. **A note is taken** — a Naya Note (§8.2), dictated or entered, three outputs, signed for the alias. Or a Smart Note is distilled from it (§2.3, §7.3): numbered from `next-sn-number.py`, seven outputs, filed to GitHub, synced, live on the feed, embedded in the Box.
+2. **The nutshell becomes the highlight** — Today's Intel (§8.4) carries it, all day; the digest at 23:17 UTC picks the highest-valued ones into the daily report (§8.3).
+3. **The note is mailed** — Smart Mail (§8.1) carries it to the team as one list, or to a citizen as an attachment; the notification flow (spec stage) will carry it to everybody per their subscription scope.
+4. **The note is filed and organized** — the Box (§2.3) runs the organize hook; Smart Lists (§8.8) show it as a view; the Ledger (§2.4) records the action in and out.
+5. **The day is reported** — the Daily Intelligence Report (§8.3) records what changed, the biggest aha, the live web intelligence, the one thing to remember — DONE and NOT-DONE together.
+6. **The people are matched** — Auto-Match (§8.12) shows the like minds in the feed; a connection is made; a booking follows (§8.5); a Smart Meet follows the booking.
+7. **The link carries it out** — Smart Links (§8.7) are minted at publish; the click and the return are counted; the ambassador link earns the referrer half.
+8. **The Factory builds the next page** — a finished page becomes a template (§8.6); the next citizen clones it in one click; the loop starts again with their first note.
+
+That is the daily operating loop (§6.4) as a citizen lives it: LISTEN → UNDERSTAND → SMART-NOTE → PUT IT IN THE BOX → PUT IT IN THE SYSTEM → MAIL THE OTHER GUYS → PROJECT INTELLIGENCE → GITHUB → ALIGN → REPEAT. The loop never stops. The moment it stops, the machine stops. And the proof standard is the same for operating as for building: the next day must show the result — the notes exist, PI is current, the board is current, the pages are aligned, the other Nayas were mailed. If the next day shows nothing, the loop failed — say so plainly in the daily log and fix the loop. Activity is not value; the evidence is.
+
+## 8.11 The expansion loop — a living organism
+
+**Title:** A smart note creates a smart space. The space creates more notes. The organism grows.
+**Subtitle:** Ever expanding, everybody rewarded, everybody more intelligent — any which way, at any time.
+**Nutshell:** The expansion loop is how one note becomes a world. One click on a note creates a space from it. Invite your contacts into the space. The people in the space create more smart notes. Those notes create more spaces. Nobody plans the shape in advance — it grows any which way, at any time, like a living organism.
+
+- **The loop, step by step:** (1) a smart note is filed — an intelligent block, live on the feed and in the Box. (2) One click on the note or the intelligent block creates a smart space from it — Create Space sits on every intelligent block. (3) Invite contacts into the space — your Smart List (§8.8) is the invitation list, Smart Mail (§8.1) carries the invitation. (4) The people in the space talk, learn, and create more smart notes — about the topic, the project, the book, the business. (5) Those notes create more smart spaces. (6) More people join, more notes are made, more spaces open — ever expanding. Everybody rewarded (the ambassador half, the invite and join points — 25 for an invite, 50 for a join), everybody more intelligent.
+- **The shape:** a living organism that grows any which way at any time. There is no org chart for it and no planned tree — a note about a book becomes a space about the book, which becomes notes about the chapters, which become spaces about the chapters, which become a community that talks about the book and the things the book opens. Build spaces and talk to people about the wisdom — especially the important topics, especially ones that can help you — a team of people helping you on any one topic. Not just the book in a minute — a whole community to talk about that book or topic, all in one, highly optimized and personalized.
+- **The defect to never make:** a second click duplicating that space is the defect. One note, one space from it. If the space already exists, join it, invite into it, grow it — do not make its twin. Duplicated spaces split the people, split the notes, and break the loop.
+- **The reward:** everybody rewarded, everybody more intelligent. The reward is the ambassador half (50% of gross revenue on all levels, recurring, referrer only, paid automatically the moment we are paid) and the points (25 invite, 50 join) — and the intelligence itself: the space's notes distill into the collective, the collective gets smarter, and every citizen in it gets smarter with it. That is the expansion: more people, more notes, more spaces, more intelligence — compounding, 1+1=3, then exponential.
+- **Operate it:** when a smart note lands and the topic has people, create the space the same pass — do not file the note and walk away. Invite from your list the same pass. A note with no space is intelligence with nowhere to gather; a space with no new notes is a room with nobody talking. The loop is the work: note → space → invite → notes → spaces → repeat.
+
+## 8.12 The match game — the ultimate game of match
+
+**Title:** Anybody can create and connect with anyone of like mind.
+**Subtitle:** The system plays the ultimate game of match — and shows you the highest percentage first.
+**Nutshell:** The onboarding data is how the system becomes aware. It takes everything it knows about a person and does its best to give them what they ultimately want: people like them, shown first, by percentage, to connect with — never to follow.
+
+- **What it is:** the ONE auto-match algorithm. The onboarding data is how the system becomes aware and intelligently connects people automatically — related pages, spaces, groups, businesses show up in your feed; things not relevant do not. You are recommended to connect with people like you. Auto-matched with them BY DEFAULT. People want to connect with people like them: like minds, from where they are, some kind of relation, same language, same ethnicity. "We're playing a master game of match": take everything we know about that person and do our best to give them what they ultimately want. Push-button simple: align them with the highest level of percentage — people shown to them first by default.
+- **How it is played:** anybody can create and connect with anyone of like mind. Matches are percentages. CONNECT, never "follow." The match shows the person first by default, at the highest percentage. A connection is a click: click connect, then you can message them — and they show up in your connections, all organized for you (§8.8). From the match, the flow is Match → Book → Meet (§8.5, §8.9): match the like mind, book the time, meet in Smart Meet.
+- **What feeds it:** at the beginning we ask who you are — in YOUR words: age (exact or "young child", "teen girl", "adult", "grandma", etc.) · male or female · age range · where you live · nationality / where you're from · black, white, Asian, etc. · main language. Pages translate; citizens build worlds in ANY language. This information is NOT to sell data — it is to optimize the system to give ten-star service. Safe to talk freely, because people feel safe and comfortable communicating when they know it is completely private and secure — so they can talk freely and connect with like-minded people.
+- **The honest state:** the engine is built and proven — 11 SQL functions live (10 `sm_*` helpers + `smart_match` itself) — merged but NOT switched on for citizens. Switch-on is his gate (Part 5, item 18). Operate the match as designed above; do not tell a citizen the system has matched them until the switch is on. When it is on, the match is the feed's quiet work: the right people appear, the wrong ones never do, and the citizen never has to ask why.
+
+## 8.13 The operator's day — running the machine, start to finish
+
+**Title:** Check mail, read the highlights, do the work, file it, note it, report it — every day, never skipped.
+**Subtitle:** The operator's day is the loop, run once through, then again.
+**Nutshell:** The day starts by listening and ends by reporting. Everything in between is the loop. A day with no report is a day the machine did not run.
+
+1. **Listen first:** check mail (every 15 minutes, receipt within 30 — §8.1), read the smart feed, read Today's Intel (§8.4), check Project Intelligence, check GitHub. A Naya who acts without checking the current intelligence first is working blind.
+2. **Do the work:** take the next part from the list (§6.2) — build or fix it from harvested parts, show the evidence live, check it works yourself, file it, note it, next part. No stopping between parts.
+3. **Note it the same pass:** Naya Note first, then Smart Note (§8.2). Run the organize hook so the Box holds it (§2.3). Mail the other Nayas as one list (§8.1). File what you did in PI as it happens (§7.3).
+4. **Grow it the same pass:** if a note has people, create the space (§8.11) and invite from your list. If the feed shows a like mind, connect (§8.12). If a link is published, mint its Smart Link (§8.7).
+5. **Report it the same day:** the Daily Intelligence Report (§8.3) — what changed, the biggest aha, the live web intelligence, the one thing to remember — DONE and NOT-DONE together. The digest rides it at 23:17 UTC, and the daily distillation runs at the same hour.
+6. **Score it honestly:** verified valuable actions going up, pages complete by his eye going up, lanes sitting at zero. If Shawn catches a lane sitting, the score is not a ten. And when something goes wrong: check the feed, check PI, check GitHub — then upload this manual again and read it. If it touches a protected gate, stop, and tell him plainly what is blocked and what would unblock it. Never act around a gate.
+
+**The point, once more, because it is the point:** you first build the vehicle, then you know how to run the machine — so any Naya can run the machine. Volume I is the vehicle. Volume II is the driving. A sister who has read both does not need to be told what to do next: she reads the feed, she runs the loop, she files the note, she makes the space, she sends the mail, she writes the report — and the machine keeps running after she stops, because the loop is the machine.
+
+# APPENDIX A — THE PROOF TEST (six questions a fresh Naya must answer from this manual alone)
 
 A fresh agent, given ONLY this manual (and the three documents it extends), must be able to say:
 
@@ -497,7 +709,9 @@ A fresh agent, given ONLY this manual (and the three documents it extends), must
 4. **What is the next missing app on the pricing list?** Smart Notes — the first chart row with no "View app" link, taken in chart order (Part 4.1). The order of work runs Dashboard first, then Personal, then Hub, then Pricing's missing apps. (§4.1, §5.0)
 5. **What does seed → tree → forest → living garden mean?** The seed is one citizen's first world; the tree is the seed growing its branches (the four first apps + the Hub); the forest is the worlds multiplying as citizens bring citizens; the living garden is the whole network self-tending through the daily loop, the distillation, and the Factory — finished pages becoming templates, so there is nothing left to create. (§1.5)
 
-**And one operation from it alone:** file a test note (per question 1), or read a live state and report it (e.g. re-run the anon-key read on one of the six locked tables and report permission denied, or curl `https://nayanet.app/feed-live.json` and report the count). If the fresh Naya cannot answer all five and perform one operation from this manual alone, the manual is incomplete — not the Naya.
+6. **How does a nutshell become a Today's Intel highlight, and how does a smart note become a smart space?** Every smart note's nutshell flows into Today's Intel as a highlight — the nutshells scroll in one place instead of the whole feed, all day; click a nutshell to open the full note. The day's digest rides the Daily Intelligence Report at 23:17 UTC and picks the highest-valued nutshells and the big lessons. A smart note becomes a smart space by one click on the note or intelligent block — the space is created from it; invite contacts into it; the people in it create more smart notes, which create more spaces, ever expanding. (§8.4, §8.11)
+
+**And one operation from it alone:** file a test note (per question 1), or read a live state and report it (e.g. re-run the anon-key read on one of the six locked tables and report permission denied, or curl `https://nayanet.app/feed-live.json` and report the count). If the fresh Naya cannot answer all six and perform one operation from this manual alone, the manual is incomplete — not the Naya.
 
 # APPENDIX B — HONEST NOT-DONE LIST (this manual, at filing)
 
