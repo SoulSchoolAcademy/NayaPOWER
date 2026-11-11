@@ -8,7 +8,7 @@
      Composed from harvested parts, never from scratch:
      - .ph-card / .ph-nutshell / .naya-btn / .os-jewel / .os-orb / .nsb-tab harvested from
        ~/workspace/team-nitro/membership-round4-20261111/membership-round4-fixed.html (Personal, round 4 live)
-     - Timeline fed by real Project Intelligence items: ~/workspace/project-intelligence/state/state.json (2026-11-11T18:25:19Z)
+     - Timeline fed by the real project record (2026-11-11 18:25Z)
      - Journal fed by real entries: Daily Intelligence Report 2026-11-10 (SN-2654) + ~/memory/2026-11-11.md
      - People: real roles from ~/memory/people/INDEX.md. Zero invented projects, people, or bookings.
      - Bookings are honest: the booking + Smart Meet system was never built; its round is next. No fake form, no fake meeting. -->
@@ -18,7 +18,7 @@
 html,body{margin:0;padding:0}
 body{background:#050507;color:#F8F7FB;font-family:Inter,system-ui,-apple-system,sans-serif;min-height:100vh;overflow-x:hidden}
 a{color:#fff}
-.ph-wrap{max-width:1080px;margin:0 auto;padding:16px 16px 64px}
+.ph-wrap{max-width:1760px;margin:0 auto;padding:16px 32px 64px}
 /* --- top tab strip: the Smart Hub tab, one tap away (bridge design: tab in the top strip) --- */
 .ph-tabs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:8px 0 24px;box-shadow:0 8px 20px rgba(0,0,0,.4)}
 .nsb-tab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;cursor:pointer;user-select:none;border:1px solid rgba(255,255,255,.16);background:linear-gradient(180deg,rgba(255,255,255,.15),rgba(255,255,255,.03) 38%,rgba(0,0,0,.14) 68%,rgba(0,0,0,.44)),linear-gradient(180deg,#22222c,#0a0a0f 70%,#060609);color:#fff;font-family:inherit;font-weight:900;font-size:13px;letter-spacing:.03em;white-space:nowrap;min-height:44px;text-decoration:none;text-shadow:0 2px 6px rgba(0,0,0,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.42),inset 0 2px 6px rgba(255,255,255,.09),inset 0 -1px 0 rgba(0,0,0,.55),inset 0 -9px 16px rgba(0,0,0,.5),0 2px 5px rgba(0,0,0,.7),0 12px 28px rgba(0,0,0,.55)}
@@ -50,6 +50,12 @@ a{color:#fff}
 .ph-actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
 .ph-row{display:flex;gap:14px;align-items:flex-start;padding:16px;border:1px solid rgba(255,255,255,.12);border-radius:16px;margin:0 0 12px;background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.01));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 20px rgba(0,0,0,.4)}
 .ph-row:last-child{margin-bottom:0}
+.ph-rows{display:block}
+.ph-hero{padding:20px 28px}
+@media(min-width:1024px){
+  .ph-rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .ph-rows .ph-row{margin-bottom:0}
+}
 .ph-col{flex:1;min-width:0}
 .ph-col p{margin:0 0 6px}
 .ph-col p:last-child{margin-bottom:0}
@@ -91,37 +97,12 @@ a{color:#fff}
     <span class="nsb-tab on" aria-current="page">Smart Hub</span>
   </nav>
 
-  <!-- HERO: the operating center introduces itself. -->
-  <section class="ph-card" style="--ac:#a06bff" aria-label="Smart Hub">
+  <!-- HERO: the purpose in one line, then the page shows it. -->
+  <section class="ph-card ph-hero" style="--ac:#a06bff" aria-label="Smart Hub">
     <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">✦</span> Smart Hub — your operating center</p>
     <h1>Smart Hub</h1>
-    <p class="ph-sub">Your projects, your calendar, your people, your journal — everything in your world, on one timeline, in one place.</p>
-    <div class="ph-nutshell">
-      <span class="ph-nl">IN A NUTSHELL</span>
-      <p>I keep your whole world on one timeline, so you can see what&rsquo;s happening and do the next thing. Everything here is a door — here, click here — one tap away. I show the happening; the Dashboard shows the score.</p>
-    </div>
-    <div class="ph-trio">
-      <span class="ph-pill">Step 1 — See today</span>
-      <span class="ph-pill">Step 2 — Open a project</span>
-      <span class="ph-pill">Step 3 — Book, add, note</span>
-    </div>
-    <div class="ph-actions">
-      <a class="naya-btn" href="https://nayanet.app/dashboard">Open the Dashboard — the score</a>
-      <a class="naya-btn" href="https://nayanet.app/personal">Open Personal — your world</a>
-    </div>
-    <p class="ph-src">Build, organize, operate — the Smart Factory builds, Smart Projects organizes, the Smart Hub operates. All three read the one record in your Smart Box.</p>
-  </section>
-
-  <!-- THE RECORD, ALIVE: real Project Intelligence counts — linked from the record, never typed from memory. -->
-  <section class="ph-card" style="--ac:#3fb8ff" aria-label="The record, alive">
-    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">◉</span> The record, alive</p>
-    <div class="ph-orbs">
-      <div class="ph-orbcell"><div class="os-orb" style="--ac:#2fe89e">55</div><span class="os-orb-l">IN MOTION</span></div>
-      <div class="ph-orbcell"><div class="os-orb" style="--ac:#3fb8ff">41</div><span class="os-orb-l">DONE + PROVEN</span></div>
-      <div class="ph-orbcell"><div class="os-orb" style="--ac:#ff9a5a">104</div><span class="os-orb-l">QUEUED</span></div>
-      <div class="ph-orbcell"><div class="os-orb" style="--ac:#a06bff">203</div><span class="os-orb-l">ITEMS ON RECORD</span></div>
-    </div>
-    <p class="ph-note">Project Intelligence, state.json — 2026-11-11 18:25Z. One record, one timeline: Project Intelligence knows it, the Factory builds from it, you see it here.</p>
+    <p class="ph-sub">Your world, in one place.</p>
+    <p>Today, your projects, your people, your journal — see what&rsquo;s happening, then do the next thing.</p>
   </section>
 
   <!-- 1 · TODAY -->
@@ -129,19 +110,20 @@ a{color:#fff}
     <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">☀</span> 1 · Today — Wednesday 11 November 2026</p>
     <h2>Today</h2>
     <p>What&rsquo;s happening now — today&rsquo;s timeline, in order.</p>
+    <div class="ph-rows">
     <div class="ph-row">
       <span class="ph-time">18:28Z</span>
       <div class="ph-col">
         <h3>The Smart Hub bridge design</h3>
-        <p>Shawn&rsquo;s dictation: everything is one system, not separate parts — the Smart Hub is the place you see where everything is at. This page is built from that design.</p>
+        <p>Everything is one system, not separate parts — the Smart Hub is the place you see where everything is at.</p>
       </div>
       <span class="ph-pill ph-pill-blue">DESIGN</span>
     </div>
     <div class="ph-row">
       <span class="ph-time">18:29Z</span>
       <div class="ph-col">
-        <h3>Smart Hub settled — your Smart Box is the database</h3>
-        <p>The project record, the journal, the bookings, the contacts — they live in the Box. The Hub reads the Box; Project Intelligence reads the Box; the Factory builds from the Box.</p>
+        <h3>Smart Hub settled — your Smart Box holds it all</h3>
+        <p>Your projects, your journal, your bookings, your people — they all live in one place, your Smart Box. Everything you see here reads from it.</p>
       </div>
       <span class="ph-pill ph-pill-blue">SETTLED</span>
     </div>
@@ -169,16 +151,18 @@ a{color:#fff}
       </div>
       <span class="ph-pill ph-pill-gold">SCHEDULED</span>
     </div>
+    </div>
     <div class="ph-actions">
       <a class="naya-btn" href="https://nayanet.app/hub">Open the Hub — what&rsquo;s new in the network</a>
     </div>
   </section>
 
-  <!-- 2 · YOUR PROJECTS — real PI Living List boards, word for word. -->
+  <!-- 2 · YOUR PROJECTS — real project boards, word for word. -->
   <section class="ph-card" style="--ac:#2fe89e" aria-label="Your projects">
     <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">⬢</span> 2 · Your projects</p>
     <h2>Your projects</h2>
-    <p>Each project with its status on its timeline — where it&rsquo;s at, what&rsquo;s next. These are the live boards, word for word from Project Intelligence. Nothing here is invented.</p>
+    <p>Each project with its status — where it&rsquo;s at, what&rsquo;s next. Nothing here is invented.</p>
+    <div class="ph-rows">
     <div class="ph-row">
       <div class="ph-col">
         <h3>Wave 2 — the flagship header&rsquo;s final form</h3>
@@ -221,46 +205,19 @@ a{color:#fff}
       </div>
       <span class="ph-pill ph-pill-blue">DONE + PROVEN</span>
     </div>
+    </div>
     <p class="ph-note">Next in line, queued in order: Dashboard steps 1–5 are #1, then Four short voice clips and the ACTIVATION-10 rehearsal, then the &lsquo;Your Day&rsquo; board for Today at #4. The queue is the order they&rsquo;ll be worked — nothing sits.</p>
     <div class="ph-actions">
       <a class="naya-btn" href="https://nayanet.app/hub">Open the Hub — where the notes land</a>
     </div>
   </section>
 
-  <!-- 3 · BOOKINGS — honest: the time layer as it exists today. -->
-  <section class="ph-card" style="--ac:#ffbf3d" aria-label="Bookings">
-    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">◷</span> 3 · Bookings</p>
-    <h2>Bookings</h2>
-    <div class="ph-nutshell">
-      <span class="ph-nl">IN A NUTSHELL</span>
-      <p>I show no bookings yet — and I fake none. The booking system was never built. Its own round comes next, and it brings Smart Meet with it: book the time, the meeting is the call, what you talked about lands in the project and the journal.</p>
-    </div>
-    <div class="ph-row">
-      <span class="ph-time">TODAY</span>
-      <div class="ph-col">
-        <h3>The time layer, as it exists today</h3>
-        <p>Scheduled tonight: Welcome Day 1 at 23:30Z, with a second Day 1 at 23:55Z queued for adoption. Your calendar lives in your Smart Box — the booking round connects it, so people can book with you from here.</p>
-      </div>
-      <span class="ph-pill ph-pill-gold">NEXT ROUND</span>
-    </div>
-    <div class="ph-row">
-      <span class="ph-time">NEXT</span>
-      <div class="ph-col">
-        <h3>Smart Meet — video and audio</h3>
-        <p>Appointments are where you talk over a project or a business. Smart Meet rides with the booking round: book, meet, talk — never built yet, never faked here.</p>
-      </div>
-      <span class="ph-pill ph-pill-gold">NEXT ROUND</span>
-    </div>
-    <div class="ph-actions">
-      <a class="naya-btn" href="https://nayanet.app/personal">Open Personal — where bookings will live</a>
-    </div>
-  </section>
-
-  <!-- 4 · YOUR PEOPLE — Smart Lists shape, real people, real roles. -->
+  <!-- 3 · YOUR PEOPLE — Smart Lists shape, real people, real roles. -->
   <section class="ph-card" style="--ac:#e84fff" aria-label="Your people">
-    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#e84fff">♥</span> 4 · Your people</p>
+    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#e84fff">♥</span> 3 · Your people</p>
     <h2>Your people</h2>
     <p>Who you&rsquo;re working with, right now. A person is on the timeline too — they joined, they booked, they messaged.</p>
+    <div class="ph-rows">
     <div class="ph-row">
       <span class="os-jewel os-jewel-sm" style="--jc:#a06bff">N</span>
       <div class="ph-col">
@@ -301,22 +258,24 @@ a{color:#fff}
       </div>
       <span class="ph-pill">LEAD</span>
     </div>
+    </div>
     <p class="ph-note">Add someone to a project — adding lives in Smart Lists, on your Personal page. Messages live in Smart Mail: the Hub shows that someone wrote; Mail holds the message. No second inbox here.</p>
     <div class="ph-actions">
       <a class="naya-btn" href="https://nayanet.app/personal">Open Smart Lists on Personal</a>
     </div>
   </section>
 
-  <!-- 5 · JOURNAL — the daily record, real entries. -->
+  <!-- 4 · JOURNAL — the daily record, real entries. -->
   <section class="ph-card" style="--ac:#ff9a5a" aria-label="Journal">
-    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#ff9a5a">✎</span> 5 · Journal</p>
+    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#ff9a5a">✎</span> 4 · Journal</p>
     <h2>Journal</h2>
     <p>The daily record — what happened, what you noted, where you&rsquo;re at. Go back to the day before, see what&rsquo;s coming.</p>
+    <div class="ph-rows">
     <div class="ph-row">
       <span class="ph-time">TODAY</span>
       <div class="ph-col">
         <h3>Wednesday 11 November 2026</h3>
-        <p>Smart Hub designed (18:28Z) and settled (18:29Z) — the Box is the database. Membership round 4 went live on Personal. This page — the Smart Hub itself — is being built today.</p>
+        <p>Smart Hub designed (18:28Z) and settled (18:29Z) — your Smart Box holds it all. Membership round 4 went live on Personal. This page — the Smart Hub itself — is being built today.</p>
       </div>
       <span class="ph-pill ph-pill-blue">TODAY</span>
     </div>
@@ -332,20 +291,45 @@ a{color:#fff}
       <span class="ph-time">WHAT&rsquo;S NEXT</span>
       <div class="ph-col">
         <h3>The booking round, then citizen project records</h3>
-        <p>Booking and Smart Meet get their own round after this page. Then every citizen&rsquo;s projects live on the same record shape — the Hub keeps them up to date.</p>
+        <p>Booking and Smart Meet come next. Then every citizen&rsquo;s projects live here the same way — the Hub keeps them up to date.</p>
       </div>
       <span class="ph-pill ph-pill-gold">NEXT</span>
+    </div>
     </div>
     <div class="ph-actions">
       <a class="naya-btn" href="https://nayanet.app/hub">Open the Hub — the feed where notes land</a>
     </div>
   </section>
 
-  <!-- FOOTER: how this page is fed — the honest source line. -->
-  <section class="ph-card" style="--ac:#a06bff" aria-label="How this page is fed">
-    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">✦</span> How this page is fed</p>
-    <p>Timeline fed by Project Intelligence state.json (2026-11-11 18:25:19Z) and the daily memory log (2026-11-10, 2026-11-11). Zero invented projects, people, or bookings. Dashboard numbers are linked, never copied — the Hub shows what&rsquo;s happening; the Dashboard shows the score.</p>
-    <p>One record, one timeline. The Smart Box is the database — the Hub reads the Box, Project Intelligence reads the Box, the Factory builds from the Box.</p>
+  <!-- 5 · BOOKINGS — honest: the time layer as it exists today. -->
+  <section class="ph-card" style="--ac:#ffbf3d" aria-label="Bookings">
+    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">◷</span> 5 · Bookings</p>
+    <h2>Bookings</h2>
+    <div class="ph-nutshell">
+      <span class="ph-nl">IN A NUTSHELL</span>
+      <p>I show no bookings yet — and I fake none. The booking system was never built. Its own round comes next, and it brings Smart Meet with it: book the time, the meeting is the call, what you talked about lands in the project and the journal.</p>
+    </div>
+    <div class="ph-rows">
+    <div class="ph-row">
+      <span class="ph-time">TODAY</span>
+      <div class="ph-col">
+        <h3>The time layer, as it exists today</h3>
+        <p>Scheduled tonight: Welcome Day 1 at 23:30Z, with a second Day 1 at 23:55Z queued for adoption. Your calendar lives in your Smart Box — the booking round connects it, so people can book with you from here.</p>
+      </div>
+      <span class="ph-pill ph-pill-gold">NEXT ROUND</span>
+    </div>
+    <div class="ph-row">
+      <span class="ph-time">NEXT</span>
+      <div class="ph-col">
+        <h3>Smart Meet — video and audio</h3>
+        <p>Appointments are where you talk over a project or a business. Smart Meet rides with the booking round: book, meet, talk — never built yet, never faked here.</p>
+      </div>
+      <span class="ph-pill ph-pill-gold">NEXT ROUND</span>
+    </div>
+    </div>
+    <div class="ph-actions">
+      <a class="naya-btn" href="https://nayanet.app/personal">Open Personal — where bookings will live</a>
+    </div>
   </section>
 
 </main>
