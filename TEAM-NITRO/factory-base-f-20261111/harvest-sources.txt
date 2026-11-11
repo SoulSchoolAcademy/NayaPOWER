@@ -2,19 +2,54 @@
 # Format (fix-7 precedent): one selector per line, then its exact source
 # file + lines. A class is cited ONLY when it genuinely traces to that
 # source — the source file must exist and the lines must define the class.
-# Verified 2026-11-11 against the Hub board (~/workspace/user/files/index-2.html):
-# .eco-bb-btn — Hub lines 284-339 define the part (46px round icon button,
+# NEVER cite the Factory page itself as its own harvest source.
+#
+# SOURCE 1 — the Factory stylesheet (~/workspace/personal-app/factory.css,
+# 2026-10-21, 171KB, 1017 rules): the shared Factory CSS library.
+# Provenance (verified 2026-11-11): the live page's own
+# <style id="factory-sync-css"> comment (SYNC-ADDED 2026-11-08) names it
+# "Source:" for rules the page copied from it; the Hub board
+# (~/workspace/user/files/index-2.html:2706) treats it as the definition
+# source for naya-btn foundation variants. The cited rules are
+# byte-identical to the page's copies where compared (btn-select, tview,
+# eco-bb-btn, bh-btn). Every line below was verified to define the class.
+# SOURCE 2 — the Hub board (~/workspace/user/files/index-2.html):
+# .eco-bb-btn lines 284-339 define the part (46px round icon button,
 # radial obsidian gradient, hover lift + data-label tooltip, 42/44px mobile
 # rule); Hub JS line 6865 creates it as an anchor (a.className='eco-bb-btn'),
 # and the Factory's 18 are anchors too, with the same CSS carried verbatim.
-# .bh-btn — Hub line 8959 defines .board-h .bh-btn (14px/28px pill, obsidian
+# .bh-btn line 8959 defines .board-h .bh-btn (14px/28px pill, obsidian
 # gradient, btn-flash); Hub JS lines 8896/9139 create <button class="bh-btn">
 # inside .board-h; the Factory's 8 sit inside .board-h and the scoped rule
-# governs by specificity. All other offending classes have NO genuine
-# external source (Hub grep + THE-INVENTORY.md + CANONICAL-PIECE-INDEX.md
-# grep, 2026-11-11: btn-select, btn-notes, tview, naya-btn, steppill,
-# day-dot, smarttab and the rest appear in no harvest source) and were
-# re-classed to the harvested allowlist class primo-btn, never cited.
-# NEVER cite the Factory page itself as its own harvest source.
+# governs by specificity.
+# NOT cited (checked and refused): Hub defines NONE of btn-select, btn-notes,
+# tview, naya-btn, steppill, day-dot, smarttab (Hub grep, 2026-11-11);
+# THE-INVENTORY.md and CANONICAL-PIECE-INDEX.md define none of them either.
+# Hub's .tab-pop .tgl (index-2.html:1118-1123) was NOT cited for the
+# Factory's tgl button — different context (tab-pop toggle vs the Factory's
+# "Live" piece-card toggle); the Factory's tgl traces to factory.css:1187.
+.btn-select ~/workspace/personal-app/factory.css:1282-1283
+.btn-notes ~/workspace/personal-app/factory.css:1282-1283
+.tview ~/workspace/personal-app/factory.css:1328-1329
+.steppill ~/workspace/personal-app/factory.css:432
+.day-dot ~/workspace/personal-app/factory.css:1481-1484
+.naya-btn ~/workspace/personal-app/factory.css:545-569
+.living-btn ~/workspace/personal-app/factory.css:475-490
+.cx-btn ~/workspace/personal-app/factory.css:531-533
+.naya-toggle ~/workspace/personal-app/factory.css:1525-1528
+.smarttab ~/workspace/personal-app/factory.css:1802-1803
+.vtog ~/workspace/personal-app/factory.css:160-162
+.tgl ~/workspace/personal-app/factory.css:1187-1188
+.sn-btn ~/workspace/personal-app/factory.css:1190-1192
+.btn-chrome ~/workspace/personal-app/factory.css:1411-1414
+.orbit-btn ~/workspace/personal-app/factory.css:784-787
+.like-pill ~/workspace/personal-app/factory.css:1472-1475
+.act-chip ~/workspace/personal-app/factory.css:1478-1480
+.send-cta ~/workspace/personal-app/factory.css:1485-1488
+.mic-btn ~/workspace/personal-app/factory.css:1489-1492
+.fab ~/workspace/personal-app/factory.css:1494-1496
+.ref-select-btn ~/workspace/personal-app/factory.css:1890-1899
+.naya-brand ~/workspace/personal-app/factory.css:1733-1736
+.sumbtn ~/workspace/personal-app/factory.css:1371-1372
 .eco-bb-btn ~/workspace/user/files/index-2.html:284-339
 .bh-btn ~/workspace/user/files/index-2.html:8959
