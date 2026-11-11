@@ -1,0 +1,9 @@
+{
+  "sn": "SN-2657",
+  "number": 2657,
+  "intelligent_block_id": "IB-SMART-NOTE-20261108-sn2657-daily-intelligence-report-2026-11-08",
+  "seat": "naya-power",
+  "claimed_at_utc": "2026-11-11T16:16:28Z",
+  "allocator": "tools/smart_note_v2.py:_allocate_from_registry",
+  "via": "tools/sn_claims.py claim (claim-before-author)"
+}
