@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2520",
+ "title": "Show on Gauge Must Work — and in Its Board's Color",
+ "slug": "show-on-gauge-must-work",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2520/IB-SMART-NOTE-20261109-sn2520-show-on-gauge-must-work.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "- **HIS WORDS, VERBATIM:** \"all the show gauge they all show the same color light up\" — \"when I click show on gauge nothing happens it doesn't show on gauge there's no engagement like it doesn't work\"\n- **DEFECT ONE — SAME COLOR:** every \"Show on gauge\" button lights up gold, whatever its board is. The button should match its board: \"if you scroll over those board one is gold and then it goes to blue and then green and then gold\" — the button lights in ITS board's color, never all the same gold.\n- **DEFECT TWO — DEAD CLICK:** clicking \"Show on gauge\" does nothing. No engagement, no movement, no gauge change. A button that does nothing is not a button — it is a label wearing a button's clothes.\n- **THE FIX:** the click moves that board into the featured role and the gauge follows its numbers. The button lights in its board's color (from the SN-2519 sequence: purple, indigo, canyon blue, green, gold, orange, red, magenta).\n- **SCOPE:** every \"Show on gauge\" button on the Dashboard boards page.",
+  "human_view": "Two things are wrong with the same button, and they are the same wrongness twice: the button doesn't belong to its board, and it doesn't do its job. Every one of them lights up the same gold, so you can't tell which board a button belongs to — and when you press one, nothing happens, so you learn not to press them at all. The fix is one motion: the button takes its board's color, and the press puts that board on the gauge — the gauge follows the board you chose, and you can see it happen. A button that works and wears its board's color is a button you trust; a dead gold button is a button you stop seeing.",
+  "child_view": "The \"Show on gauge\" buttons were all the same gold color, and when you pressed one, nothing happened at all — like a light switch that isn't connected to any light. So now each button wears its own board's color, and when you press it, that board jumps up onto the big gauge and the gauge shows its numbers. Press it, and something really happens.",
+  "grandma_view": "Dear, those little buttons were all the same gold, love, and pressing one did nothing at all — like ringing a doorbell that isn't wired up. Now each button takes its own board's color, dear, and when you press it the board goes right up onto the gauge and the needle follows its numbers. A button should do what it says, love, and now it does.",
+  "ai_view": "This is the honesty law applied to a control: a button must do what it says, and it must say which thing it belongs to. It connects to SN-2519 (the board color sequence — the button's color comes from its board, so the color is a fact) and to SN-2506 (the gauge follows the number — the gauge follows the board you chose, so the number and the needle agree). A dead button teaches the visitor that the page is a picture, not a machine; a working button teaches them the page is alive. The color is the address, the click is the action, and both must be true at once.",
+  "what_it_means": "- **EACH BUTTON ITS BOARD'S COLOR:** never all the same gold — the button lights in the color of the board it belongs to.\n- **THE CLICK WORKS:** pressing \"Show on gauge\" moves that board into the featured role and the gauge follows its numbers.\n- **A DEAD BUTTON IS A DEFECT:** a control that does nothing is not a control.",
+  "whats_inside": [
+   "- Every \"Show on gauge\" button lights in its board's color.\n- Clicking one features that board and the gauge follows its numbers.\n- Next loop run re-checks: a click on a board's button moves the gauge, live."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "c13ad12ac277934f9e06106fdae4f4f2b9d145cd83237595608e30c4d10a8714",
+ "content_hash": "efb30e5d6d4e49f352f96034e2682ba9b9f67748a41207e1cdc8c8c96f973aba",
+ "reconstructed_from_page": true
+}
