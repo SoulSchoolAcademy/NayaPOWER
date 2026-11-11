@@ -18,6 +18,16 @@ lane:* rows whose ledger item closed — so the lanes show on the PI page
 in the app, which reads work_items live. No worker deploy, no face rebuild,
 no artifact redesign: the page already reads this table.
 
+Ownership guard (2026-11-11, lane:nitro:board-machine-wipe-fix): the
+machine NEVER overwrites a row a seat owns. A lane row whose
+last_actor_seat is not board-machine is left entirely untouched — its
+notes, state, next_action, title and priority are the seat's, not the
+machine's to recompute. New lanes are inserted whole; lanes the machine
+itself last wrote are refreshed with machine-owned fields only, never
+"notes" (notes are seat-written, always). Deletes already only touch
+rows the machine last wrote. A seat-owned row therefore can never be
+captured and then deleted when its lane closes.
+
 Discipline (the same as the other feeds — ACTIVATION.md):
   - Observations + reconciliation only. Never rewrites state.json items,
     never transitions needs-his-hands, never claims done without proof.
@@ -221,7 +231,9 @@ def build_board(ledger, state, work_items, now):
 
 def lane_row(lane, now):
     """One work_items row per open lane. Never claims done. Detail carries
-    the ledger's own words; updated_at is the lane's own movement stamp."""
+    the ledger's own words; updated_at is the lane's own movement stamp.
+    "notes": [] here is the INSERT value only — refreshes of rows the
+    machine already owns use machine_owned_row(), which omits notes."""
     state = "in_progress" if lane["status"] == "ACTIVE" else "queued"
     # Priority is the page's sort (higher first; the face renders the top 30
     # open jobs). Seat-born rows reach 10000, so a lane at 9000 never renders.
@@ -257,6 +269,17 @@ def lane_row(lane, now):
     }
 
 
+def machine_owned_row(lane, now):
+    """Machine-owned fields only, for refreshing a lane row the machine
+    itself last wrote. "notes" is deliberately absent: PostgREST
+    merge-duplicates updates only the columns present in the payload,
+    so omitting notes leaves seat-written notes untouched even on a
+    row the machine owns."""
+    row = lane_row(lane, now)
+    row.pop("notes", None)
+    return row
+
+
 def supabase_req():
     """Reuse publish-to-project.py's req() — one auth path, no new keys."""
     spec = importlib.util.spec_from_file_location(
@@ -270,7 +293,9 @@ def read_work_items(req):
     rows, off = [], 0
     while True:
         page = req("GET", f"/work_items?project_id=eq.{PROJECT_ID}"
-                          f"&select=item_key,state,updated_at,last_actor_seat"
+                          f"&select=item_key,state,updated_at,last_actor_seat,"
+                          f"notes,title,detail,next_action,owner_seat,priority,"
+                          f"maker_seat,prover_seat,evidence_url,blocker"
                           f"&order=updated_at.asc&limit=1000&offset={off}") or []
         if not page:
             break
@@ -283,13 +308,33 @@ def read_work_items(req):
 
 def publish(req, board, now):
     """Upsert lane:* rows for open lanes; delete lane:* rows whose lane closed.
-    Only rows this machine wrote (last_actor_seat == board-machine)."""
+    Ownership guard: only rows this machine wrote (last_actor_seat ==
+    board-machine) are refreshed, and only with machine-owned fields —
+    "notes" is never in the refresh payload, so seat-written notes survive.
+    Rows a seat last wrote are skipped entirely and reported; new lanes
+    are inserted whole (notes [] on insert only). Deletes only touch rows
+    the machine last wrote, so a seat-owned row can never be deleted."""
     existing = read_work_items(req)
     by_key = {r["item_key"]: r for r in existing}
-    rows = [lane_row(l, now) for l in board["lanes"]]
-    if rows:
+    new_rows, owned_rows, skipped = [], [], []
+    for l in board["lanes"]:
+        key = "lane:" + l["lane_id"]
+        row = by_key.get(key)
+        if row is None:
+            new_rows.append(lane_row(l, now))
+        elif row.get("last_actor_seat") == ACTOR:
+            owned_rows.append(machine_owned_row(l, now))
+        else:
+            # Seat-owned (or unknown last writer): hands off entirely.
+            skipped.append({"item_key": key,
+                            "last_actor_seat": row.get("last_actor_seat"),
+                            "state": row.get("state")})
+    if new_rows:
         req("POST", "/work_items?on_conflict=project_id,item_key",
-            body=rows, prefer="resolution=merge-duplicates")
+            body=new_rows, prefer="resolution=merge-duplicates")
+    if owned_rows:
+        req("POST", "/work_items?on_conflict=project_id,item_key",
+            body=owned_rows, prefer="resolution=merge-duplicates")
     live_keys = {"lane:" + l["lane_id"] for l in board["lanes"]}
     stale = [r for r in existing
              if r["item_key"].startswith("lane:")
@@ -298,7 +343,9 @@ def publish(req, board, now):
     for r in stale:
         req("DELETE", f"/work_items?project_id=eq.{PROJECT_ID}"
                       f"&item_key=eq.{urllib.parse.quote(r['item_key'], safe='')}")
-    return {"upserted": len(rows), "deleted": len(stale)}
+    return {"upserted": len(new_rows) + len(owned_rows),
+            "inserted": len(new_rows), "updated": len(owned_rows),
+            "skipped_seat_owned": skipped, "deleted": len(stale)}
 
 
 def atomic_write(path, obj):
@@ -340,10 +387,15 @@ def verify(ledger, board, req):
         return False, diffs + [f"work_items unreadable during verify: {e}"]
     wi_lanes = {r["item_key"][5:]: r for r in existing
                 if r["item_key"].startswith("lane:") and r.get("last_actor_seat") == ACTOR}
-    if set(wi_lanes) != board_ids:
+    seat_lanes = {r["item_key"][5:]: r for r in existing
+                  if r["item_key"].startswith("lane:") and r.get("last_actor_seat") != ACTOR}
+    # A seat-owned lane row counts as present: the machine leaves it alone
+    # by design, so its state is the seat's, not the derived want.
+    present = set(wi_lanes) | set(seat_lanes)
+    if present != board_ids:
         diffs.append(f"work_items lane rows != board lanes: "
-                     f"missing {sorted(board_ids - set(wi_lanes))[:5]}, "
-                     f"extra {sorted(set(wi_lanes) - board_ids)[:5]}")
+                     f"missing {sorted(board_ids - present)[:5]}, "
+                     f"extra {sorted(present - board_ids)[:5]}")
     for l in board.get("lanes", []):
         row = wi_lanes.get(l["lane_id"])
         if row is None:
@@ -399,6 +451,14 @@ def main():
         except Exception as e:
             pub = {"error": str(e)[:200]}
             review.append(f"work_items publish failed ({pub['error']}) — board.json still written")
+        if isinstance(pub, dict) and pub.get("skipped_seat_owned"):
+            skipped = pub["skipped_seat_owned"]
+            review.append(
+                f"{len(skipped)} lane rows are seat-owned "
+                f"(last_actor_seat != board-machine) — left untouched, "
+                f"notes/state/next_action preserved: "
+                + ", ".join(s["item_key"] for s in skipped[:5])
+                + (" ..." if len(skipped) > 5 else ""))
     report = {"at": now_iso(), "generated_board": BOARD, "publish": pub,
               "counts": board["counts"], "review": review,
               "ledger_sha256": ledger_sha,
