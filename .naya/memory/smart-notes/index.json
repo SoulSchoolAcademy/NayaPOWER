@@ -23859,7 +23859,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2168-essence-verdicts-expire-decisions-priced",
    "retired_at": "2026-11-06T04:11:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0798-migrated.json"
   },
   {
    "smart_note_id": "SN-799",
@@ -23882,7 +23883,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2172-essence-activation-machines-fetch-truth",
    "retired_at": "2026-11-06T04:11:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0799-migrated.json"
   },
   {
    "smart_note_id": "SN-800",
@@ -23905,7 +23907,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2165-essence-gates-earn-their-green",
    "retired_at": "2026-11-06T04:11:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0800-migrated.json"
   },
   {
    "smart_note_id": "SN-801",
@@ -23928,7 +23931,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2171-essence-note-exists-when-every-system-knows",
    "retired_at": "2026-11-06T04:11:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0801-migrated.json"
   },
   {
    "smart_note_id": "SN-802",
@@ -23951,7 +23955,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2171-essence-note-exists-when-every-system-knows",
    "retired_at": "2026-11-06T04:11:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0802-migrated.json"
   },
   {
    "smart_note_id": "SN-803",
@@ -23974,7 +23979,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2164-essence-claims-bounded-by-evidence",
    "retired_at": "2026-11-06T04:11:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0803-migrated.json"
   },
   {
    "smart_note_id": "SN-804",
@@ -23997,7 +24003,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2170-essence-relays-hand-evidence",
    "retired_at": "2026-11-06T04:11:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0804-migrated.json"
   },
   {
    "smart_note_id": "SN-805",
@@ -24020,7 +24027,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2167-essence-verification-must-say-no",
    "retired_at": "2026-11-06T04:11:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0805-migrated.json"
   },
   {
    "smart_note_id": "SN-806",
@@ -24043,7 +24051,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2169-essence-repair-lifecycle",
    "retired_at": "2026-11-06T04:11:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0806-migrated.json"
   },
   {
    "smart_note_id": "SN-807",
@@ -24066,7 +24075,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2170-essence-relays-hand-evidence",
    "retired_at": "2026-11-06T04:11:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0807-migrated.json"
   },
   {
    "smart_note_id": "SN-808",
@@ -24089,7 +24099,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2170-essence-relays-hand-evidence",
    "retired_at": "2026-11-06T04:11:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0808-migrated.json"
   },
   {
    "smart_note_id": "SN-809",
@@ -24112,7 +24123,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2167-essence-verification-must-say-no",
    "retired_at": "2026-11-06T04:11:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0809-migrated.json"
   },
   {
    "smart_note_id": "SN-810",
@@ -24135,7 +24147,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2167-essence-verification-must-say-no",
    "retired_at": "2026-11-06T04:11:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0810-migrated.json"
   },
   {
    "smart_note_id": "SN-811",
@@ -24155,7 +24168,8 @@
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0811-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order — the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0811-migrated.json"
   },
   {
    "smart_note_id": "SN-812",
@@ -24178,7 +24192,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2167-essence-verification-must-say-no",
    "retired_at": "2026-11-06T04:11:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0812-migrated.json"
   },
   {
    "smart_note_id": "SN-813",
@@ -24201,7 +24216,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2171-essence-note-exists-when-every-system-knows",
    "retired_at": "2026-11-06T04:11:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0813-migrated.json"
   },
   {
    "smart_note_id": "SN-814",
@@ -24224,7 +24240,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2169-essence-repair-lifecycle",
    "retired_at": "2026-11-06T04:11:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0814-migrated.json"
   },
   {
    "smart_note_id": "SN-815",
@@ -24247,7 +24264,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2167-essence-verification-must-say-no",
    "retired_at": "2026-11-06T04:11:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0815-migrated.json"
   },
   {
    "smart_note_id": "SN-816",
@@ -24270,7 +24288,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2167-essence-verification-must-say-no",
    "retired_at": "2026-11-06T04:11:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-3); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0816-migrated.json"
   },
   {
    "smart_note_id": "SN-817",
@@ -24293,7 +24312,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2177-essence-proof-that-proves",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0817-migrated.json"
   },
   {
    "smart_note_id": "SN-818",
@@ -24316,7 +24336,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0818-migrated.json"
   },
   {
    "smart_note_id": "SN-819",
@@ -24339,7 +24360,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2179-essence-evidence-expires",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0819-migrated.json"
   },
   {
    "smart_note_id": "SN-820",
@@ -24362,7 +24384,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0820-migrated.json"
   },
   {
    "smart_note_id": "SN-821",
@@ -24385,7 +24408,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2179-essence-evidence-expires",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0821-migrated.json"
   },
   {
    "smart_note_id": "SN-822",
@@ -24408,7 +24432,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2177-essence-proof-that-proves",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0822-migrated.json"
   },
   {
    "smart_note_id": "SN-823",
@@ -24431,7 +24456,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2179-essence-evidence-expires",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0823-migrated.json"
   },
   {
    "smart_note_id": "SN-824",
@@ -24454,7 +24480,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2185-essence-compounding-method",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0824-migrated.json"
   },
   {
    "smart_note_id": "SN-825",
@@ -24477,7 +24504,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2178-essence-merge-discipline",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0825-migrated.json"
   },
   {
    "smart_note_id": "SN-826",
@@ -24500,7 +24528,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2185-essence-compounding-method",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0826-migrated.json"
   },
   {
    "smart_note_id": "SN-827",
@@ -24523,7 +24552,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2185-essence-compounding-method",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0827-migrated.json"
   },
   {
    "smart_note_id": "SN-828",
@@ -24546,7 +24576,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0828-migrated.json"
   },
   {
    "smart_note_id": "SN-829",
@@ -24566,7 +24597,8 @@
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0829-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order — the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0829-migrated.json"
   },
   {
    "smart_note_id": "SN-830",
@@ -24589,7 +24621,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2181-essence-collisions-and-convergence",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0830-migrated.json"
   },
   {
    "smart_note_id": "SN-831",
@@ -24612,7 +24645,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2181-essence-collisions-and-convergence",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0831-migrated.json"
   },
   {
    "smart_note_id": "SN-832",
@@ -24635,7 +24669,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2180-essence-regen-discipline",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0832-migrated.json"
   },
   {
    "smart_note_id": "SN-833",
@@ -24658,7 +24693,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2186-essence-ratification-in-the-artifact",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0833-migrated.json"
   },
   {
    "smart_note_id": "SN-834",
@@ -24681,7 +24717,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2181-essence-collisions-and-convergence",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0834-migrated.json"
   },
   {
    "smart_note_id": "SN-835",
@@ -24704,7 +24741,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2179-essence-evidence-expires",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0835-migrated.json"
   },
   {
    "smart_note_id": "SN-836",
@@ -24727,7 +24765,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0836-migrated.json"
   },
   {
    "smart_note_id": "SN-837",
@@ -24750,7 +24789,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0837-migrated.json"
   },
   {
    "smart_note_id": "SN-838",
@@ -24773,7 +24813,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0838-migrated.json"
   },
   {
    "smart_note_id": "SN-839",
@@ -24796,7 +24837,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0839-migrated.json"
   },
   {
    "smart_note_id": "SN-840",
@@ -24816,7 +24858,8 @@
    "provenance": {
     "ingestion": "pr-2981-import",
     "note": "Recovered lost Smart Note import from PR #2981 (branch naya4/smart-notes-2026-09-30), 2026-11-04. Original capture IB-SMART-NOTE-20261013-sn0840-migrated filed 2026-10-13 as branch-era v2 migration (source: branch_projection_migration, PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-N). Filed by import worker under Shawn's GO ALL IN order — the branch was 4,109 commits behind main and unmergeable, so notes were imported clean: original capture + BRAIN projection + registry entry. Content preserved verbatim from the v2 capture; projection headers normalized to the canonical format."
-   }
+   },
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0840-migrated.json"
   },
   {
    "smart_note_id": "SN-841",
@@ -24839,7 +24882,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2178-essence-merge-discipline",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0841-migrated.json"
   },
   {
    "smart_note_id": "SN-842",
@@ -24862,7 +24906,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0842-migrated.json"
   },
   {
    "smart_note_id": "SN-843",
@@ -24885,7 +24930,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2186-essence-ratification-in-the-artifact",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0843-migrated.json"
   },
   {
    "smart_note_id": "SN-844",
@@ -24908,7 +24954,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2177-essence-proof-that-proves",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0844-migrated.json"
   },
   {
    "smart_note_id": "SN-845",
@@ -24931,7 +24978,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0845-migrated.json"
   },
   {
    "smart_note_id": "SN-846",
@@ -24954,7 +25002,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2175-essence-gate-must-fail",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0846-migrated.json"
   },
   {
    "smart_note_id": "SN-847",
@@ -24977,7 +25026,8 @@
    },
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2176-essence-classify-the-red",
    "retired_at": "2026-11-06T04:17:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-4); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261013-sn0847-migrated.json"
   },
   {
    "smart_note_id": "SN-848",
@@ -43851,5 +43901,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "d5e5854e622bdb4fe0dd51711f921aa92ce6d7dd47e951e7faf1c498445af89e"
+ "corpus_manifest_hash": "a803977bc5954ff7af0a9943d29b7e2f8be0a3c2c3c10eb0b197811cb5ae4838"
 }
