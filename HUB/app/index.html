@@ -5332,57 +5332,9 @@ function HubView(params) {
 
   main.append(top, lensSlot, outlet);
 
-  /* ——— Bottom ecosystem bar: quick access to all 12 destinations ——— */
-  const bbBar = el('nav', 'eco-bottombar');
-  bbBar.setAttribute('aria-label', 'Ecosystem quick access');
-  /* ECO_LINKS defined in topbar scope — rebuild minimal list here */
-  const BB_LINKS = [
-    { label: 'HOME', url: 'https://nayanet.app/', icon: 'home', color: '#ed42c4' },
-    { label: 'NAYA POWER', url: 'https://nayanet.app/welcome', icon: 'bolt', color: '#8a5cff' },
-    { label: 'ABOUT US', url: 'https://nayanet.groovepages.com/aboutus', icon: 'users', color: '#3ca8ff' },
-    { label: 'YOUR HIRED', url: 'https://getpaid.takeyourpowerback.xyz/', icon: 'brief', color: '#35e39b' },
-    { label: 'WHITE PAPER', url: 'https://nayanet.groovepages.com/whitepaper', icon: 'doc', color: '#ffea00' },
-    { label: 'NAYA ACADEMY', url: 'https://nayanet.groovepages.com/academy', icon: 'cap', color: '#ff8c42' },
-    { label: '"5" DAY CHALLENGE', url: 'https://nayanet.groovepages.com/academy', icon: 'trophy', color: '#ff5e6c' },
-    { label: 'MAXIS AI SCORE', url: 'https://app.nayanet.technology/', icon: 'gauge', color: '#ed42c4' },
-    { label: 'AI MASTERCLASS', url: 'https://aimasterclass.help/', icon: 'star', color: '#8a5cff' },
-    { label: 'INTRO REPORT', url: 'https://notebook.google.com/notebook/153122ce-965d-4bcd-a574-9e5511119474/artifact/d08f82fe-8696-4139-a708-b19eac5adf09?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_', icon: 'report', color: '#3ca8ff' },
-    { label: 'LIFE WITH NAYA', url: 'https://lifewithnaya.nayapower.workers.dev/', icon: 'heart', color: '#35e39b' },
-    { label: 'MEMBER LOGIN', url: 'https://nayanet.app/rooms/mail', icon: 'key', color: '#ffea00' },
-  ];
-  BB_LINKS.forEach(l => {
-    const a = document.createElement('a');
-    a.href = l.url; a.target = '_blank'; a.rel = 'noopener';
-    a.className = 'eco-bb-btn';
-    a.setAttribute('data-label', l.label);
-    a.setAttribute('aria-label', l.label + ' (opens in new tab)');
-    a.setAttribute('title', l.label);
-    a.style.setProperty('--eco', l.color);
-    /* Raw SVG icon (not jewel-wrapped) */
-    const iconPaths = {
-      home: '<path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/>',
-      bolt: '<path d="M13 2L4 14h6l-1 8 9-12h-6z"/>',
-      users: '<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/>',
-      brief: '<rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"/>',
-      doc: '<path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/>',
-      cap: '<path d="M12 4L2 9l10 5 10-5z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/>',
-      trophy: '<path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M12 13v4M8 20h8"/>',
-      gauge: '<path d="M4 14a8 8 0 1116 0"/><path d="M12 14l4-5"/>',
-      star: '<path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/>',
-      report: '<path d="M5 20V10M12 20V4M19 20v-7"/>',
-      heart: '<path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/>',
-      key: '<circle cx="8" cy="14" r="4.5"/><path d="M11 11l8-8M17 5l2.5 2.5"/>',
-    };
-    a.innerHTML = '<span class="eco-bb-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (iconPaths[l.icon] || iconPaths.star) + '</svg></span>';
-    bbBar.appendChild(a);
-  });
-  /* Mission quote — the promise, no dead buttons */
-  const quote = el('div', 'hub-quote');
-  quote.innerHTML =
-    '<p class="hub-quote-text">Your life creates your intelligence every day.</p>' +
-    '<p class="hub-quote-sub">Naya helps you capture it, understand it, remember it, compound it, and use it.</p>';
-  main.appendChild(quote);
-  main.appendChild(bbBar);
+  /* ONE-BOTTOM-BAR (2026-11-11): the 12-icon eco-bottombar builder lived here.
+     Replaced by the one bottom bar component (static HTML before </body>).
+     The notifications bar below it is untouched — the component stacks above it. */
 
   /* ——— Notifications bar: Mail · Activity · Spaces (Shawn 2026-10-20) ——— */
   window.NayaNotif = window.NayaNotif || {
@@ -9419,5 +9371,117 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
   });
 })();
 </script>
+<!-- ONE-BOTTOM-BAR v2 (2026-11-11) — ONE ICON SET, ONE BOTTOM BAR (Shawn 2026-11-11 01:18Z).
+  Harvest: Inviter Smart Bar pill() builder + trio + network seed + SPECTRUM,
+  growth-round-20261110/growth-new.html (pill() L3601+, trio L4067+, seed L4226+, SPECTRUM L2629).
+  Order = trio order, then network-seed order. Labels per brief; glyphs, colors, hrefs harvested.
+  NO-OVERLAY law (Shawn 2026-11-11 01:25Z): this bar sits in its own lane ABOVE the Smart Bar
+  (#nsbBottom), the notif bar and the jewel bar — its bottom offset is measured at runtime
+  from the visible bars below it, never a fixed guess. Identical block on Inviter, Hub,
+  Dashboard — never edit per page.
+  v2 changes (fix seat, 2026-11-11): (1) FIX 1 — the pill row is a SCROLL STRIP with
+  snap-to-whole-pills at narrow widths (scroll-snap-type:x mandatory on the row,
+  scroll-snap-align:start + scroll-snap-stop:always on each pill): after any scroll
+  settles, the leftmost pill is whole — no pill ever rests half-sliced — and all 10
+  are reachable by scroll. The row itself scrolls (was: the bar); the trailing pill
+  peeking in at the right edge is the scroll affordance, same pattern as the
+  Personal My World rails (scroll-snap-type:x mandatory). Pills are NOT shrunk
+  and the bar is NOT split into two rows — it stays one component.
+  (2) FIX 2 — the lane measurement no longer rides the flap: re-measurement is
+  debounced to settle (one trailing 150 ms timer, coalesced — never a layout
+  read per mutation) and the offset is written only when it changes. On a page
+  with no below-bars (Dashboard) the fast path reads zero rects. -->
+<nav class="obb-bar" id="obb-bar" aria-label="Apps">
+<div class="obb-row">
+  <a class="obb-pill" data-obb="mail" data-b3="mail" href="https://nayanet.app/rooms/mail" style="--obb:#ffbf3d" aria-label="Mail" title="Mail"><span class="obb-jewel" aria-hidden="true">✉</span><span class="obb-lbl">Mail</span></a>
+  <a class="obb-pill" data-obb="activity" data-b3="activity" href="https://nayanet.app/#/hub/feed" style="--obb:#a06bff" aria-label="Activity" title="Activity"><span class="obb-jewel" aria-hidden="true">◈</span><span class="obb-lbl">Activity</span><span class="obb-badge os-b3-badge" id="os-b3-badge" hidden></span></a>
+  <a class="obb-pill" data-obb="dashboard" data-b3="dashboard" href="https://nayanet.app/dashboard" style="--obb:#2fe89e" aria-label="Dashboard" title="Dashboard"><span class="obb-jewel" aria-hidden="true">◉</span><span class="obb-lbl">Dashboard</span></a>
+  <a class="obb-pill" data-obb="business" href="https://nayanet.app/business" style="--obb:#ffbf3d" aria-label="Business" title="Business"><span class="obb-jewel" aria-hidden="true">■</span><span class="obb-lbl">Business</span></a>
+  <a class="obb-pill" data-obb="space" href="https://nayanet.app/space" style="--obb:#ff9a5a" aria-label="Space" title="Space"><span class="obb-jewel" aria-hidden="true">▲</span><span class="obb-lbl">Space</span></a>
+  <a class="obb-pill" data-obb="growth" href="https://nayanet.app/rooms/growth" style="--obb:#ff5e6c" aria-label="Growth" title="Growth"><span class="obb-jewel" aria-hidden="true">✦</span><span class="obb-lbl">Growth</span></a>
+  <a class="obb-pill" data-obb="connections" href="https://nayanet.app/rooms/connections" style="--obb:#e84fff" aria-label="Connections" title="Connections"><span class="obb-jewel" aria-hidden="true">◇</span><span class="obb-lbl">Connections</span></a>
+  <a class="obb-pill" data-obb="lists" href="https://nayanet.app/rooms/lists" style="--obb:#a06bff" aria-label="Smart Lists" title="Smart Lists"><span class="obb-jewel" aria-hidden="true">☰</span><span class="obb-lbl">Smart Lists</span></a>
+  <a class="obb-pill" data-obb="reports" href="https://nayanet.app/rooms/reports" style="--obb:#3fb8ff" aria-label="Reports" title="Reports"><span class="obb-jewel" aria-hidden="true">◆</span><span class="obb-lbl">Reports</span></a>
+  <a class="obb-pill obb-more" data-obb="more" href="https://nayanet.app/#/hub" style="--obb:#3fb8ff" aria-label="10 apps" title="10 apps"><span class="obb-jewel" aria-hidden="true">＋</span><span class="obb-lbl">10 apps</span></a>
+</div>
+</nav>
+<style>
+/* ONE-BOTTOM-BAR v2 — placement + pills. Jewel treatment harvested from .nsb-jewel (Inviter L3300+); pill treatment from .nsb-tab (L3244+). */
+.obb-bar,.obb-bar *{box-sizing:border-box}
+.obb-bar{position:fixed;left:0;right:0;bottom:var(--obb-below,0px);z-index:200;display:flex;align-items:center;justify-content:flex-start;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(3,3,5,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 -16px 44px rgba(0,0,0,.68);transition:transform .35s ease,opacity .35s ease}
+body.os-bottom-hidden .obb-bar{transform:translateY(110%);opacity:0}
+/* FIX 1 (v2): the row is the scroll strip — snap-to-whole-pills. The bar stays
+   one component; the row scrolls inside it and snaps so no pill rests half-sliced. */
+.obb-row{display:flex;align-items:center;gap:8px;margin:0 auto;flex:0 1 auto;min-width:0;max-width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;scroll-snap-type:x mandatory;scroll-padding:0 12px;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.obb-row::-webkit-scrollbar{display:none}
+.obb-pill{flex:0 0 auto;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-width:58px;min-height:52px;padding:6px 8px 5px;border-radius:14px;text-decoration:none;color:#fff;cursor:pointer;background:linear-gradient(180deg,#1d1d26 0%,#0b0b10 55%,#020203 100%);border:1.5px solid var(--obb);box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.55),0 0 14px -2px var(--obb),0 8px 20px rgba(0,0,0,.75);position:relative}
+.obb-pill:hover,.obb-pill:focus-visible{box-shadow:inset 0 2px 0 rgba(255,255,255,.45),inset 0 -4px 10px rgba(0,0,0,.55),0 0 22px 0 var(--obb),0 8px 20px rgba(0,0,0,.75);transform:translateY(-1px);outline:none}
+.obb-pill:active{box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.55),0 0 26px 5px var(--obb),0 8px 20px rgba(0,0,0,.75)}
+.obb-jewel{width:29px;height:29px;border-radius:9px;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;font-size:15px;color:#fff;background:linear-gradient(180deg,color-mix(in srgb,var(--obb) 30%,rgba(255,255,255,.1)),color-mix(in srgb,var(--obb) 12%,rgba(0,0,0,.42)));border:1px solid color-mix(in srgb,var(--obb) 55%,rgba(0,0,0,.3));box-shadow:inset 0 2px 5px rgba(0,0,0,.55),inset 0 1px 2px rgba(255,255,255,.12),inset 0 -1px 0 rgba(255,255,255,.08),0 0 10px -2px var(--obb)}
+.obb-lbl{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;white-space:nowrap;line-height:1}
+.obb-badge{position:absolute;top:-7px;right:-7px;min-width:22px;height:22px;padding:0 6px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:#04120a;color:#fff;font-size:12px;font-weight:900;line-height:1;border:2px solid #2fe89e;box-shadow:0 0 12px rgba(47,232,158,.8)}
+@media (max-width:640px){.obb-bar{gap:6px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))}.obb-row{gap:6px;scroll-padding:0 10px}.obb-pill{min-width:52px;min-height:50px;padding:5px 6px 4px}.obb-jewel{width:26px;height:26px;font-size:14px}.obb-lbl{font-size:9px}}
+</style>
+<script>
+/* ONE-BOTTOM-BAR v2 — lane stacking (NO-OVERLAY law). Measures the visible bottom-stack bars
+   below this bar (Smart Bar, notif bar, jewel bar) and lifts this bar above the tallest of
+   them, so no bar ever covers another. Re-measures on load, resize, and whenever the bars
+   change (Smart Bar built/toggled, notif shown/hidden, keyboard shown/hidden).
+   v2 — FIX 2: measure on SETTLE, not on flap. Mutation bursts (e.g. the Dashboard's
+   scroll-settle loop toggling body classes ~10x/s) coalesce into ONE trailing 150 ms
+   re-measure; the offset is written only when it changes; when the page has no
+   below-bars at all the fast path reads zero rects. v1 scheduled a 60 ms layout
+   read per mutation — on the Dashboard that path was already a no-op (no below-bars
+   exist there, so no rect was ever read and --obb-below never touched transform),
+   but v2 removes even the scheduling. The html/body class observers stay: the
+   Inviter hides its Smart Bar via `html.nsb-nobottom #nsbBottom` (line 337), so a
+   class change on <html> is the only signal that lane closed. */
+(function(){
+  var bar=document.getElementById('obb-bar'); if(!bar) return;
+  var lastBelow=null, soonT=null;
+  function obbLayout(){
+    soonT=null;
+    var vh=window.innerHeight||0, below=0, found=0;
+    var sels=['#nsbBottom','.notif-bar','.jewelbar'];
+    for(var s=0;s<sels.length;s++){
+      var els=document.querySelectorAll(sels[s]);
+      for(var k=0;k<els.length;k++){
+        var el=els[k], cs;
+        try{ cs=getComputedStyle(el); }catch(e){ continue; }
+        if(!cs||cs.display==='none'||cs.visibility==='hidden') continue;
+        if(cs.position!=='fixed') continue;
+        var r; try{ r=el.getBoundingClientRect(); }catch(e){ continue; }
+        if(!r||r.height<=0) continue;
+        if(r.top>=vh) continue;
+        if(r.bottom<vh-260) continue;
+        found++;
+        var need=vh-r.top; if(need>below) below=need;
+      }
+    }
+    below=Math.ceil(below);
+    if(below===lastBelow) return; /* write only on change — never restyle on a flap */
+    lastBelow=below;
+    bar.style.setProperty('--obb-below', below+'px');
+  }
+  function obbSoon(){ if(soonT) return; soonT=setTimeout(obbLayout, 150); }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', obbLayout); }
+  else { obbLayout(); }
+  window.addEventListener('load', obbLayout);
+  window.addEventListener('resize', obbLayout);
+  setTimeout(obbLayout, 500); setTimeout(obbLayout, 1500);
+  try{
+    var mo=new MutationObserver(obbSoon);
+    mo.observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+    mo.observe(document.body,{attributes:true,attributeFilter:['class']});
+    var sels2=['#nsbBottom','.notif-bar','.jewelbar'];
+    for(var i=0;i<sels2.length;i++){
+      var bars=document.querySelectorAll(sels2[i]);
+      for(var j=0;j<bars.length;j++) mo.observe(bars[j],{childList:true,attributes:true,attributeFilter:['class','style']});
+    }
+  }catch(e){}
+  window.__obbLayout=obbLayout;
+})();
+</script>
+<!-- /ONE-BOTTOM-BAR -->
 </body>
 </html>
