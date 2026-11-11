@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2527",
+ "title": "The Sync Claim Was Right — It Was Edge Lag",
+ "slug": "the-sync-claim-was-right",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2527/IB-SMART-NOTE-20261109-sn2527-the-sync-claim-was-right.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "- **RUN 48'S CHECK (~15:56Z):** the live feed (`https://nayanet.app/feed-live.json`, HTTP 200, 4,661,866B, `count` 600) showed SN-2512–2518 at 0 — contradicting the sync hook's ~15:48Z claim that SN-2512–2518 were synced and the feed rebuilt to 607 cards. Run 48 held it as OWED, not as a defect: \"either edge propagation lag or a redeploy that hasn't landed.\"\n- **THIS RUN'S CHECK (~16:25Z):** the live feed (HTTP 200, 4,761,924B, `count` 615) shows SN-2512–2526 each exactly once. +15 cards = exactly SN-2512–2526. The claim was right.\n- **THE LAG:** the notes landed sometime between the 15:56Z check and the 16:25Z check — up to ~30 minutes after the hook's claim. The 16:06Z sync run reported 0 new notes (1,491 unchanged) — the notes were already in Supabase; what lagged was the feed landing, not the sync.\n- **CLOSES RUN 48'S OWED ITEM:** SN-2512–2518 in the feed — now CLOSED, proven from the live bytes, not from the hook's claim.\n- **UNCHANGED:** sn2505 0 (open PR #3307 only), sn2395 2, sn2050/sn2051 0 (his call), `generated_from` still reads `registry@03e470aa`.",
+  "human_view": "Last run, the numbers said the sync hook was wrong: it claimed seven notes were live, and the live feed said zero. The loop did the right thing then — it held the item open instead of declaring a failure. This run the same live feed says all fifteen notes are there, each exactly once. The hook was never wrong; the check was just too early. A page served from the edge takes time to catch up — up to half an hour, in this case — and a check taken minutes after the claim will always look like a contradiction. The lesson is about patience in verification: a claim contradicted by live bytes minutes later is \"not yet landed\", not \"false\". You re-check after thirty minutes, and only then do you call it a defect.",
+  "child_view": "Imagine your friend says \"I put your toy on the shelf\" and you run over and the shelf looks empty — but the toy was still on its way up the stairs. You wait a little, you look again, and there it is. The friend was right; you just looked too soon. That's what happened here: the notes were on their way, and the first look was too early.",
+  "grandma_view": "Dear, sometimes you check the oven too soon and think the bread hasn't risen, love — but it just needed a little more time. That's what happened with these notes, dear. The first look said they weren't there, but they were simply on their way, and half an hour later there they all were, right where they belonged. Patience, love — look again before you worry.",
+  "ai_view": "This connects to SN-2419 (The Feed Sync Recovered — The Live Feed Is the Truth) and sharpens it: the live feed is the truth, and timing is part of the truth. A live check is a photograph, not a verdict — it shows the state at one instant, and the state at one instant can lag the claim by up to thirty minutes. The loop's discipline is to hold the contradiction as an open item (\"owed, re-check next run\") rather than upgrading it into a defect, and the evidence this run vindicates that discipline: the owed item closed itself. The failure mode this guards against is the false alarm — declaring the sync broken, dispatching a repair seat, and spending the team's time on a lag that would have resolved itself. The rule is simple: a claim contradicted by live bytes is \"not yet landed\" until a re-check thirty minutes later still contradicts it.",
+  "what_it_means": "- **A SYNC CLAIM CONTRADICTED BY LIVE BYTES MINUTES LATER IS \"NOT YET LANDED\", NOT \"FALSE.\"** Re-check after ~30 minutes before calling it a defect.\n- **EDGE LAG IS REAL AND MEASURABLE:** up to ~30 minutes here (claim ~15:48Z, absent at 15:56Z, present at ~16:25Z).\n- **THE LIVE FEED IS STILL THE TRUTH** — but a live check is a photograph of one instant, and timing is part of the truth.\n- **RUN 48'S OWED ITEM IS CLOSED:** SN-2512–2518 (and SN-2519–2526) are Hub-live, proven from the bytes.",
+  "whats_inside": [
+   "- The loop re-checks a contradicted sync claim after ~30 minutes before declaring it a defect; \"owed, re-check next run\" stays the holding state.\n- Next loop run re-checks: SN-2527 in the feed on the next sync; the feed count holds at 615 or grows with new filings."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "6923aca4b5a86b7125135e81c7848423608bb0b6b0f90ae9fee3328bde588493",
+ "content_hash": "e826f67813ff3500fb19255efc150d0d969d448c714fab1a819cbdebd38dd3f2",
+ "reconstructed_from_page": true
+}
