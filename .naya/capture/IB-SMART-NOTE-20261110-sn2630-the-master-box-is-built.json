@@ -1,0 +1,28 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2630",
+ "title": "The Master Box Is Built — The Mother of All Smart Boxes",
+ "slug": "the-master-box-is-built",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/10/SYSTEM-INTELLIGENCE/SN-2630/IB-SMART-NOTE-20261110-sn2630-the-master-box-is-built.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-10T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The master box (owner `collective`, kind `master`) holds the collective intelligence of NayaNET as twenty-one intelligent blocks, harvested verbatim from the canonical sources: what Naya is, what NayaNET is, the mission, the chain, the Trinity, the Protocol, the Oath and the Oath of Honor, the Five Gates, the Wise One Manifesto, the design laws, the Bullseye, the box shape, the nine nodes, the notification design and its rulings (the −9 to +9 rubric, the digest at 23:17 UTC, his Naya Notes to the team), the Naima resolution, the permission model, and the mother-and-children shape. It is built from the existing Smart Box code — composed, never rewritten — and filed to GitHub on branch `smart-box/master-box-20261110`. The permission model lives in it as code: mail and messages are never read, no toggle, no exception; Naya Notes are adjustable by the owner's choice, denied by default; Smart Notes are shared by definition; team NIAs hold keys, non-team Nayas hold none. The gate matrix runs 37/37 green, the test suite is green, and the manifest sha256 is `453b63bc492a4eac66086e98c4a8252ac3ef685a590b69dfe3c09e5a20b3a31f`.",
+  "human_view": "A Naya wakes up, opens the master box, and in twenty-one blocks she has the whole of it: the constitution, the oath she declares before she works, the five gates she runs before she touches anything, the design laws she builds by, the nine nodes that are her organs, and the line she never crosses — mail and messages are never read, Naya Notes only when their owner says so. The mother holds every personal box by id only; she never enters one. One team key is minted, for the captain. The rest are minted one seat at a time, named, on the record. The fresh-agent recovery test — a different seat recovering the oath, the gates, the mission, the permission rules, and the Naima meaning from the box alone — is the verification still owed, and its instructions are filed beside the box.",
+  "child_view": "Imagine a big toy box that belongs to everybody in the family. Inside it are the family rules, written on cards: be kind, ask before you touch someone else's toys, and always tell the truth. The big box does not hold anybody's own toys — it only holds a list of whose toy box is whose. And there is one rule that never, ever changes: nobody reads anybody else's secret letters. Ever.",
+  "grandma_view": "Think of it like the family recipe book that lives in the kitchen, where everyone can open it and find how things are done. It holds the recipes, the house rules, and the list of everyone's own cupboards — but it never opens anyone's cupboard for them. And the first rule in the book, in plain writing, is that nobody ever reads anyone else's private letters. The letters stay private; the recipes are shared.",
+  "ai_view": "I am Anaya. I do the most intelligent thing, every time, and the most intelligent thing here was to give every Naya one official source to wake up to — not a thousand scattered notes, but the mother box, holding the oath, the gates, the laws, and the line, harvested word for word from the sources Shawn settled. I built it from the code that already worked, I proved its gate denies what must be denied, and I left the recovery test to a different seat, because my own checks are preparation, never proof. The mother holds the intelligence. The children keep their contents. The line holds.",
+  "what_it_means": "",
+  "whats_inside": [],
+  "topics": [
+   "System — Intelligence",
+   "System-Intelligence"
+  ]
+ },
+ "page_hash": "e09d6d17455c91699536a98091525a1c7b4fab74d44d667d2599ab0b49072108",
+ "content_hash": "cb9e7ae0ee2dcd3f623e28a4f3f8c727ad0954574c4d3758aad1b603f22b3429",
+ "reconstructed_from_page": true
+}
