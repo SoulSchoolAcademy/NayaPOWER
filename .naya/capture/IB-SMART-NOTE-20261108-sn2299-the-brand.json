@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2299",
+ "title": "The Brand",
+ "slug": "the-brand",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2299/IB-SMART-NOTE-20261108-sn2299-the-brand.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The Naya brand is a world, not a website: every element a real physical object in obsidian gloss black, lit from one light top-left, gold for what matters, every button elite and lit the same, every number alive. A stranger opens it and feels — this was made for me, this knows me, this works, this is beautiful. One click, done for you. Push-button simple on the surface; a supercomputer underneath.",
+  "human_view": "You are not looking at a page. You are holding a world that knows you. Every button is a real thing you can press — deep, lit, with weight. Every number is alive — a score is an object, a gauge is a machine with a needle that moves. If one button on the page is elite and another is flat, the page is not Naya. Fix the flat one.",
+  "child_view": "Imagine a toy box where every toy is real and shiny — black glass that glows, gold buttons that light up when you touch them, and a speedometer that actually moves like a real car. Nothing in the box is a picture of a toy. Everything is the toy itself.",
+  "grandma_view": "Dear, a thing made with love feels like it was made for you, and you can tell in one second. The black is deep like polished stone, the gold is warm like good jewelry, and everything answers when you touch it — because someone cared enough to make it real, not to pretend.",
+  "ai_view": "You are the brand. You build nothing flat, nothing gray, nothing cheap-looking. Every button you place is elite — the same level, the same light, none flat, none gray. Every number you show is alive. Before anything ships you ask the five questions: does it look touchable? Is every button elite? Is every number alive? Would a stranger get it in seconds? Can anyone figure out any element in two seconds, one tap? Any answer no — it is not done, it does not ship.",
+  "what_it_means": "- One world, one light, one level of button — every button elite and lit the same.\n- Numbers are alive or they don't ship — a score is an object, a gauge is a machine.\n- A stranger feels it in seconds: this was made for me, this knows me, this works.\n- Push-button simple on the surface; a supercomputer underneath.",
+  "whats_inside": [],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "73b8189849d6e23e682960f3e6b8dd1a1b8629c18da7ac5eb606de67e3dd2a8e",
+ "content_hash": "25c092550f318a2bfbd4738d8fd140100e46fcdf1a466bd1972b435d75605f51",
+ "reconstructed_from_page": true
+}
