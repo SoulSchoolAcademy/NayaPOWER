@@ -19626,26 +19626,75 @@ setTimeout(function(){
   .sa-cover-play{width:52px;height:52px;font-size:20px;}
 }
 
+/* ——— SMART ACCESS ROUND 2 2026-11-11 · LOGIN FIRST, THEN THE COURSE ———
+   Login: the portal image full-bleed, the login panel centred in the middle.
+   Course: mirrors the Personal page — wide sheet (1760px, the page's own
+   .wrap width), course hero on top, feed-board tabs below, feed full width.
+   Tabs are the Personal feed-board tabs (.mw-ftab, base L4641-4643) verbatim,
+   labels changed only: Videos / Audios / Lessons. */
+#saLogin[hidden],#saCourse[hidden],#saFeedCard[hidden]{display:none;}
+#saBannerVideo[hidden],#saBannerAudios[hidden],#saBannerLessons[hidden]{display:none;}
+.sa-login-hero{position:relative;min-height:100svh;min-height:100vh;display:flex;padding:32px 16px;box-sizing:border-box;}
+.sa-login-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+.sa-login-shade{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(5,5,8,.22) 0%,rgba(5,5,8,0) 28%,rgba(5,5,8,0) 62%,rgba(5,5,8,.45) 100%);}
+.sa-login-panel-wrap{position:relative;z-index:2;width:min(640px,100%);margin:auto;}
+.sa-login-panel{background:linear-gradient(135deg,rgba(30,30,38,.94) 0%,rgba(10,10,15,.96) 50%,rgba(30,30,38,.94) 100%);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+.sa-login-panel .sa-doors{flex-direction:column;}
+.sa-sheet{max-width:1760px;margin:0 auto;padding:24px 32px 120px;}
+.sa-sheet.ph-card{padding:24px 32px 120px;}
+.sa-course-hero{padding:28px 28px 24px;}
+#saCoverCard .ph-sec-t{font-size:26px;line-height:1.25;margin-bottom:10px;}
+#saCoverCard #saCoverText{font-size:16px;line-height:1.65;}
+.sa-banner{padding:22px 24px;border-left:4px solid var(--ac,#a06bff);}
+.sa-banner h3{margin:0 0 6px;font-size:22px;line-height:1.25;color:#fff;}
+.sa-banner p{margin:0;font-size:14px;line-height:1.6;color:#E8E8EC;}
+@media (max-width:640px){
+  .sa-sheet{padding:12px 16px 96px;}
+  .sa-sheet.ph-card{padding:12px 16px 96px;}
+  .sa-login-hero{padding:20px 12px;}
+  .sa-course-hero{padding:20px 20px 16px;}
+  #saCoverCard .ph-sec-t{font-size:21px;}
+  .sa-banner{padding:18px 20px;}
+  .sa-banner h3{font-size:19px;}
+}
+
 </style>
-<!-- SMART ACCESS VIEW — round 2026-11-11. A view inside the Personal world:
-     same URL, no navigation away. X closes back. Buttons use only the
-     page's harvested classes (.ph-connect .os-offer-door). Content is
-     filled by #mw-access-script from verified sources. -->
+<!-- SMART ACCESS VIEW — round 2 2026-11-11: LOGIN FIRST, THEN THE COURSE.
+     Stage 1 — the login: the portal image full-bleed, the login in the middle,
+     the three doors on it. Stage 2 — the course: the Personal page's shape
+     (hero + feed board + feed, full width), tabs Videos / Audios / Lessons.
+     Every content id the script fills is unchanged from round 1; only the
+     stage wrappers, the course head, and the tabs are new. -->
 <div id="mwSmartAccess" hidden role="dialog" aria-label="Smart Access">
-<div class="ph-card sa-sheet">
-<div class="ph-card sa-head"><span class="os-jewel os-jewel-h" id="saJewel" style="--jc:#a06bff">✦</span><div class="sa-head-txt"><h2 id="saTitle">Smart Access</h2><p class="os-note" id="saSub" style="margin:0;">Three doors, one gate — free, members only, or paid.</p></div><button class="ph-connect sa-x" id="saClose" type="button" aria-label="Close Smart Access">✕ Close</button></div>
-<div class="ph-card" id="saCoverCard"><div class="ph-sec-t"><span class="ph-dot" id="saCoverDot" style="background:#a06bff;color:#a06bff;"></span> <span id="saCoverHead">Welcome in</span></div><p class="os-note" id="saCoverText" style="margin:0;"></p></div>
+<div id="saLogin" hidden>
+<div class="sa-login-hero">
+<img class="sa-login-img" id="saLoginImg" src="https://naya-proof-host.nayapower.workers.dev/?file=PERSONAL/portal-nayanet.png&amp;ref=personal/membership-round2-20261111&amp;cb=62cd7641f6657939f86aae584ba8b6b837c4fe01" alt="Welcome to NayaNET — Portal to the New Internet" width="1672" height="941">
+<div class="sa-login-shade" aria-hidden="true"></div>
+<div class="sa-login-panel-wrap">
+<div class="ph-card sa-login-panel">
+<div class="sa-head"><span class="os-jewel os-jewel-h" id="saJewel" style="--jc:#a06bff">✦</span><div class="sa-head-txt"><h2 id="saTitle">Smart Access</h2><p class="os-note" id="saSub" style="margin:0;">Three doors, one gate — free, members only, or paid.</p></div><button class="ph-connect sa-x" id="saClose" type="button" aria-label="Close Smart Access">✕ Close</button></div>
 <div class="ph-card"><div class="ph-sec-t"><span class="ph-dot" style="background:#2fe89e;color:#2fe89e;"></span> The door in — Smart Access</div><div class="sa-doors"><button type="button" class="os-offer-door sa-on" data-sa-door="free" style="--mc:#2fe89e"><span class="os-jewel os-jewel-h" style="--jc:#2fe89e">✦</span><b>Free</b><span class="os-offer-desc">Your info in, you enter. Our three are free at join.</span></button><button type="button" class="os-offer-door" data-sa-door="members" style="--mc:#3fb8ff"><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🔑</span><b>Members only</b><span class="os-offer-desc">Behind a login — members sign in with their code.</span></button><button type="button" class="os-offer-door" data-sa-door="paid" style="--mc:#ffbf3d"><span class="os-jewel os-jewel-h" style="--jc:#ffbf3d">$</span><b>Paid</b><span class="os-offer-desc">Behind the paywall — the owner's payment link.</span></button></div><div id="saDoorPanel" style="margin-top:16px;"></div></div>
 <div class="ph-card"><div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> Your login experience</div><p class="os-note" style="margin-top:0;">Video button, lesson, audio library, video library — then click next.</p><div class="sa-rail"><button type="button" class="ph-connect" data-sa-rail="video">▶ Video</button><button type="button" class="ph-connect" data-sa-rail="lesson">Lesson</button><button type="button" class="ph-connect" data-sa-rail="audio">Audio library</button><button type="button" class="ph-connect" data-sa-rail="videolib">Video library</button><button type="button" class="ph-connect" data-sa-rail="next">Next →</button></div></div>
-<div class="ph-card"><div class="ph-sec-t"><span class="ph-dot" style="background:#a06bff;color:#a06bff;"></span> Three views</div><div class="sa-tabs"><button type="button" class="ph-connect sa-on" data-sa-view="podcasts">Podcasts</button><button type="button" class="ph-connect" data-sa-view="video">Video</button><button type="button" class="ph-connect" data-sa-view="lesson">Lesson</button></div></div>
-<div class="sa-pane" id="saPanePodcasts"><div class="ph-card" style="--ac:#a06bff;"><div class="ph-sec-t"><span class="ph-dot" style="background:#a06bff;color:#a06bff;"></span> PowerCast — Naya Power Radio</div><div class="sa-now" style="--mc:#a06bff"><span class="sa-now-num" id="saPcNum">01</span><div style="min-width:0;"><b id="saPcTitle">WHAT IS NAYA POWER</b><p class="os-note" id="saPcDesc" style="margin:6px 0 0;">The starting point for understanding Naya Power.</p></div></div><div class="sa-controls"><button type="button" class="ph-connect" id="saPcPrev" aria-label="Previous episode">⏮</button><button type="button" class="ph-connect" id="saPcBack" aria-label="Back 15 seconds">↶ 15</button><button type="button" class="ph-connect" id="saPcPlay" aria-label="Play or pause">▶ Play</button><button type="button" class="ph-connect" id="saPcFwd" aria-label="Forward 30 seconds">30 ↷</button><button type="button" class="ph-connect" id="saPcNext" aria-label="Next episode">⏭</button></div><div class="sa-progress" id="saPcBar" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><div class="sa-progress-fill" id="saPcFill"></div></div><p class="os-note"><span id="saPcCur">0:00</span> / <span id="saPcTot">0:00</span> · <span id="saPcState">Ready — press play</span></p><p class="os-note">Up next: <span id="saPcUpNext">Meet Your Compounding Superbrain</span></p></div><div class="ph-card"><div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> Episodes — 42 queued</div><div id="saPcList"></div><div class="ph-actions" style="margin-top:12px;"><button type="button" class="ph-connect" id="saPcAll">Show all 42</button><a class="ph-connect" href="https://powercasts.nayapower.workers.dev" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Open the full PowerCast ↗</a></div></div></div>
+</div>
+</div>
+</div>
+</div>
+<div id="saCourse" class="ph-card sa-sheet" hidden>
+<div class="sa-head"><span class="os-jewel os-jewel-h" id="saCourseJewel" style="--jc:#a06bff">✦</span><div class="sa-head-txt"><h2 id="saCourseTitle">Smart Access</h2><p class="os-note" id="saCourseSub" style="margin:0;"></p></div><button class="ph-connect sa-x" type="button" data-sa-close aria-label="Close Smart Access">✕ Close</button></div>
+<div class="ph-card sa-course-hero" id="saCoverCard"><div class="ph-sec-t"><span class="ph-dot" id="saCoverDot" style="background:#a06bff;color:#a06bff;"></span> <span id="saCoverHead">Welcome in</span></div><p class="os-note" id="saCoverText" style="margin:0;"></p></div>
+<div class="ph-card"><div class="ph-sec-t"><span class="ph-dot" style="background:#ffbf3d;color:#ffbf3d;"></span> The course — watch, listen, read</div><div class="mw-feedtabs" role="tablist" aria-label="Course feed"><button type="button" class="mw-ftab on" style="--fc:#ffbf3d" data-sa-view="videos" role="tab" aria-selected="true"><span class="mw-jewel"></span>Videos</button><button type="button" class="mw-ftab" style="--fc:#3fb8ff" data-sa-view="audios" role="tab" aria-selected="false"><span class="mw-jewel"></span>Audios</button><button type="button" class="mw-ftab" style="--fc:#2fe89e" data-sa-view="lessons" role="tab" aria-selected="false"><span class="mw-jewel"></span>Lessons</button></div></div>
+<div class="ph-card sa-banner" id="saBannerVideo" style="--ac:#ffbf3d" hidden><h3>Video lessons</h3><p class="os-note" style="margin:0;">Watch a day, then do the day — one video at a time, full screen when you tap it.</p></div>
 <div class="sa-pane" id="saPaneVideo" hidden></div>
+<div class="ph-card sa-banner" id="saBannerAudios" style="--ac:#3fb8ff" hidden><h3>PowerCast — Naya Power Radio</h3><p class="os-note" style="margin:0;">Listen while you walk — forty-two episodes, one player, press play.</p></div>
+<div class="sa-pane" id="saPanePodcasts" hidden><div class="ph-card" style="--ac:#a06bff;"><div class="ph-sec-t"><span class="ph-dot" style="background:#a06bff;color:#a06bff;"></span> PowerCast — Naya Power Radio</div><div class="sa-now" style="--mc:#a06bff"><span class="sa-now-num" id="saPcNum">01</span><div style="min-width:0;"><b id="saPcTitle">WHAT IS NAYA POWER</b><p class="os-note" id="saPcDesc" style="margin:6px 0 0;">The starting point for understanding Naya Power.</p></div></div><div class="sa-controls"><button type="button" class="ph-connect" id="saPcPrev" aria-label="Previous episode">⏮</button><button type="button" class="ph-connect" id="saPcBack" aria-label="Back 15 seconds">↶ 15</button><button type="button" class="ph-connect" id="saPcPlay" aria-label="Play or pause">▶ Play</button><button type="button" class="ph-connect" id="saPcFwd" aria-label="Forward 30 seconds">30 ↷</button><button type="button" class="ph-connect" id="saPcNext" aria-label="Next episode">⏭</button></div><div class="sa-progress" id="saPcBar" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><div class="sa-progress-fill" id="saPcFill"></div></div><p class="os-note"><span id="saPcCur">0:00</span> / <span id="saPcTot">0:00</span> · <span id="saPcState">Ready — press play</span></p><p class="os-note">Up next: <span id="saPcUpNext">Meet Your Compounding Superbrain</span></p></div><div class="ph-card"><div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> Episodes — 42 queued</div><div id="saPcList"></div><div class="ph-actions" style="margin-top:12px;"><button type="button" class="ph-connect" id="saPcAll">Show all 42</button><a class="ph-connect" href="https://powercasts.nayapower.workers.dev" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Open the full PowerCast ↗</a></div></div></div>
+<div class="ph-card sa-banner" id="saBannerLessons" style="--ac:#2fe89e" hidden><h3>The lessons</h3><p class="os-note" style="margin:0;">One after another, down the feed — just the lesson, scroll to the next, click next.</p></div>
 <div class="sa-pane" id="saPaneLesson" hidden></div>
-<div class="ph-card"><div class="ph-sec-t"><span class="ph-dot" id="saFeedDot" style="background:#2fe89e;color:#2fe89e;"></span> <span id="saFeedHead">The lessons</span></div><p class="os-note" style="margin-top:0;">One after another, down the feed — just the lesson, scroll to the next, click next.</p><div id="saFeed"></div></div>
+<div class="ph-card" id="saFeedCard"><div class="ph-sec-t"><span class="ph-dot" id="saFeedDot" style="background:#2fe89e;color:#2fe89e;"></span> <span id="saFeedHead">The lessons</span></div><p class="os-note" style="margin-top:0;">One after another, down the feed — just the lesson, scroll to the next, click next.</p><div id="saFeed"></div></div>
+</div>
 <div id="saTheatre" hidden><div class="sa-theatre-bar"><span id="saTheatreTitle"></span><button type="button" class="ph-connect sa-x" id="saTheatreX" aria-label="Close video">✕ Close</button></div><div class="sa-sixteen"><iframe id="saFrame" title="Lesson video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </div>
-</div>
-
 <script id="mw-script">
 /* ——— MY WORLD ROUND 2026-11-10 · 19 fixes ———
    Runs at end of body, before DOMContentLoaded. Wraps (never rewrites)
@@ -20304,7 +20353,7 @@ var SA_MEMBERSHIPS = {
 var saCur = null;            /* current membership object */
 var saDoor = 'free';
 var saLessonIdx = {fac:0, academy:0};
-var saViewName = 'podcasts';
+var saViewName = 'lessons';
 var saPcIdx = 0, saPcShowAll = false;
 var saAudio = null;
 try{ saAudio = new Audio(); saAudio.preload = 'metadata'; }catch(e){ saAudio = null; }
@@ -20318,6 +20367,8 @@ function saOpen(name){
   saRenderAll();
   var ov = sa$('mwSmartAccess');
   ov.hidden = false;
+  sa$('saLogin').hidden = false;
+  sa$('saCourse').hidden = true;
   try{ document.documentElement.style.overflow = 'hidden'; }catch(e){}
   try{ ov.scrollTop = 0; }catch(e){}
 }
@@ -20326,9 +20377,11 @@ function saClose(){
   try{ if(saAudio) saAudio.pause(); }catch(e){}
   var ov = sa$('mwSmartAccess');
   ov.hidden = true;
+  sa$('saLogin').hidden = true;
+  sa$('saCourse').hidden = true;
   try{ document.documentElement.style.overflow = ''; }catch(e){}
 }
-window.__saOpen = saOpen; window.__saClose = saClose;
+window.__saOpen = saOpen; window.__saClose = saClose; window.__saEnterCourse = saEnterCourse;
 
 /* ---------- render ---------- */
 function saRenderAll(){
@@ -20341,7 +20394,11 @@ function saRenderAll(){
   sa$('saCoverText').textContent = m.cover;
   sa$('saFeedDot').style.background = m.color; sa$('saFeedDot').style.color = m.color;
   sa$('saFeedHead').textContent = m.slug==='fac' ? 'The nine-day orientation — 9 lessons' : (m.slug==='academy' ? 'The Academy — 5 day videos' : 'The Masterclass — lessons');
+  sa$('saCourseTitle').textContent = m.name;
+  sa$('saCourseSub').textContent = m.desc;
+  sa$('saCourseJewel').style.setProperty('--jc', m.color);
   saRenderDoors();
+  saViewName = m.slug==='academy' ? 'videos' : 'lessons';
   saShowView(saViewName);
   saRenderFeed();
   saRenderLesson();
@@ -20382,7 +20439,10 @@ function saRenderDoorPanel(){
   } else if(saDoor==='members'){
     p.innerHTML = '<div class="ph-card"><h3>Members only</h3>'
       + '<p class="os-note">Members sign in with the code Naya mailed them. You\u2019re viewing as the owner, so everything below is open to you.</p>'
-      + '<div class="ph-actions"><button type="button" class="ph-connect" data-sa-goto-feed>Take me to the lessons \u2193</button></div></div>';
+      + '<label class="os-note" for="saCodeInput">Your member code</label><input class="sa-input" id="saCodeInput" type="text" placeholder="The code Naya mailed you" autocomplete="one-time-code">'
+      + '<div class="ph-actions"><button type="button" class="ph-connect" id="saCodeGo">Enter with code \u2192</button>'
+      + '<button type="button" class="ph-connect" data-sa-goto-feed>Step in as the owner \u2192</button></div>'
+      + '<p class="os-note" id="saCodeMsg"></p></div>';
   } else {
     p.innerHTML = '<div class="ph-card"><h3>Paid \u2014 the paywall</h3>'
       + '<p class="os-note">Our three are free at join. If the owner ever charges for this one, this is the door visitors meet.</p>'
@@ -20397,12 +20457,21 @@ function saShowView(v){
   saViewName = v;
   var tabs = document.querySelectorAll('#mwSmartAccess [data-sa-view]');
   for(var i=0;i<tabs.length;i++){
-    if(tabs[i].getAttribute('data-sa-view')===v){ tabs[i].classList.add('sa-on'); }
-    else { tabs[i].classList.remove('sa-on'); }
+    var on = tabs[i].getAttribute('data-sa-view')===v;
+    if(on){ tabs[i].classList.add('sa-on'); tabs[i].classList.add('on'); tabs[i].setAttribute('aria-selected','true'); }
+    else { tabs[i].classList.remove('sa-on'); tabs[i].classList.remove('on'); tabs[i].setAttribute('aria-selected','false'); }
   }
-  sa$('saPanePodcasts').hidden = (v!=='podcasts');
-  sa$('saPaneVideo').hidden = (v!=='video');
-  sa$('saPaneLesson').hidden = (v!=='lesson');
+  sa$('saPanePodcasts').hidden = (v!=='audios');
+  sa$('saPaneVideo').hidden = (v!=='videos');
+  sa$('saPaneLesson').hidden = (v!=='lessons');
+  sa$('saBannerVideo').hidden = (v!=='videos');
+  sa$('saBannerAudios').hidden = (v!=='audios');
+  sa$('saBannerLessons').hidden = (v!=='lessons');
+  var feedCard = sa$('saFeedCard');
+  if(feedCard){
+    var feedView = !saCur ? 'lessons' : (saCur.slug==='academy' ? 'videos' : 'lessons');
+    feedCard.hidden = (v!==feedView);
+  }
 }
 
 /* ---------- feed ---------- */
@@ -20496,7 +20565,7 @@ function saRenderVideo(){
   } else if(saCur.slug==='fac'){
     pane.innerHTML = '<div class="ph-card sa-empty"><h3>No videos filed for this one \u2014 yet.</h3>'
       + '<p class="os-note">The Fast Action Club is nine written lessons \u2014 the orientation you read, one day at a time. When the owner adds videos, they land here. Meanwhile the audio library is open below, in Podcasts.</p>'
-      + '<div class="ph-actions"><button type="button" class="ph-connect" data-sa-view="podcasts">Open the audio library →</button></div></div>';
+      + '<div class="ph-actions"><button type="button" class="ph-connect" data-sa-view="audios">Open the audio library →</button></div></div>';
   } else {
     pane.innerHTML = '<div class="ph-card sa-empty"><h3>Lessons not yet filed \u2014 the owner adds them.</h3>'
       + '<p class="os-note">The AI Masterclass has no video content filed in the workspace yet. When the owner files the lessons, they appear here \u2014 nothing is made up in the meantime.</p></div>';
@@ -20589,6 +20658,22 @@ function saPcInit(){
   saPcLoad(0, false);
 }
 
+/* ---------- enter the course ---------- */
+function saEnterCourse(view){
+  if(!saCur) return;
+  sa$('saLogin').hidden = true;
+  sa$('saCourse').hidden = false;
+  if(view){ saShowView(view); }
+  try{ document.getElementById('mwSmartAccess').scrollTop = 0; }catch(e){}
+}
+function saCodeGo(){
+  var inp = sa$('saCodeInput'), msg = sa$('saCodeMsg');
+  var code = inp ? inp.value.trim() : '';
+  if(!code){ if(msg) msg.textContent = 'Type the code Naya mailed you \u2014 then step in.'; if(inp) inp.focus(); return; }
+  try{ localStorage.setItem('sa.code.'+saCur.slug, code); }catch(e){}
+  saEnterCourse();
+}
+
 /* ---------- wiring ---------- */
 function saWire(){
   /* X close + Escape */
@@ -20604,9 +20689,10 @@ function saWire(){
   });
   /* doors / rail / tabs / feed / lesson / video / player — one delegated listener */
   sa$('mwSmartAccess').addEventListener('click', function(e){
-    var t = e.target && e.target.closest ? e.target.closest('[data-sa-door],[data-sa-rail],[data-sa-view],[data-sa-read],[data-sa-next],[data-sa-watch],[data-sa-nextvid],[data-sa-cover],[data-sa-prev-lesson],[data-sa-next-lesson],[data-sa-pc-play],[data-sa-goto-feed]') : null;
+    var t = e.target && e.target.closest ? e.target.closest('[data-sa-door],[data-sa-rail],[data-sa-view],[data-sa-read],[data-sa-next],[data-sa-watch],[data-sa-nextvid],[data-sa-cover],[data-sa-prev-lesson],[data-sa-next-lesson],[data-sa-pc-play],[data-sa-goto-feed],[data-sa-close]') : null;
     if(!t){
       if(e.target && e.target.closest && e.target.closest('#saJoinGo')){ saJoinGo(); return; }
+      if(e.target && e.target.closest && e.target.closest('#saCodeGo')){ saCodeGo(); return; }
       if(e.target && e.target.closest && e.target.closest('#saPcAll')){ saPcShowAll = !saPcShowAll; saRenderPcList(); return; }
       if(e.target && e.target.closest && e.target.closest('#saPcPlay')){ saPcToggle(); return; }
       if(e.target && e.target.closest && e.target.closest('#saPcPrev')){ saPcLoad((saPcIdx+SA_PC.length-1)%SA_PC.length, true); return; }
@@ -20624,17 +20710,18 @@ function saWire(){
       return;
     }
     if(t.hasAttribute('data-sa-door')){ saDoor = t.getAttribute('data-sa-door'); saRenderDoors(); return; }
+    if(t.hasAttribute('data-sa-close')){ saClose(); return; }
     if(t.hasAttribute('data-sa-rail')){
       var rail = t.getAttribute('data-sa-rail');
-      if(rail==='video' || rail==='videolib'){ saShowView('video'); sa$('saPaneVideo').scrollIntoView({block:'start'}); }
-      else if(rail==='lesson'){ saShowView('lesson'); }
-      else if(rail==='audio'){ saShowView('podcasts'); }
+      if(rail==='video' || rail==='videolib'){ saEnterCourse('videos'); }
+      else if(rail==='lesson'){ saEnterCourse('lessons'); }
+      else if(rail==='audio'){ saEnterCourse('audios'); }
       else if(rail==='next'){ saNextLesson(); }
       return;
     }
     if(t.hasAttribute('data-sa-view')){ saShowView(t.getAttribute('data-sa-view')); return; }
-    if(t.hasAttribute('data-sa-goto-feed')){ var f = sa$('saFeed'); if(f) f.scrollIntoView({block:'start'}); return; }
-    if(t.hasAttribute('data-sa-read')){ var ri = +t.getAttribute('data-sa-read'); saLessonIdx.fac = ri; saRenderLesson(); saShowView('lesson'); return; }
+    if(t.hasAttribute('data-sa-goto-feed')){ saEnterCourse(); return; }
+    if(t.hasAttribute('data-sa-read')){ var ri = +t.getAttribute('data-sa-read'); saLessonIdx.fac = ri; saRenderLesson(); saShowView('lessons'); return; }
     if(t.hasAttribute('data-sa-next')){ var ni = +t.getAttribute('data-sa-next'); var nx = Math.min(SA_FAC.length-1, ni+1); saLessonIdx.fac = nx; saRenderLesson(); var card = document.querySelector('#mwSmartAccess [data-sa-card="'+nx+'"]'); if(card) card.scrollIntoView({block:'start'}); return; }
     if(t.hasAttribute('data-sa-nextvid')){ var nvi = +t.getAttribute('data-sa-nextvid'); var nxv = Math.min(SA_ACADEMY.length-1, nvi+1); var cardv = document.querySelector('#mwSmartAccess [data-sa-card="'+nxv+'"]'); if(cardv) cardv.scrollIntoView({block:'start'}); return; }
     if(t.hasAttribute('data-sa-cover') || t.hasAttribute('data-sa-watch')){ var wi = +(t.getAttribute('data-sa-cover') || t.getAttribute('data-sa-watch')); saOpenTheatre(wi, t); return; }
@@ -20648,6 +20735,12 @@ function saWire(){
       var c = e.target.closest('[data-sa-cover]');
       if(c){ e.preventDefault(); saOpenTheatre(+c.getAttribute('data-sa-cover'), c); }
     }
+  });
+  /* Enter key: member code joins, join name/contact joins */
+  sa$('mwSmartAccess').addEventListener('keydown', function(e){
+    if(e.key!=='Enter' || !e.target || !e.target.id) return;
+    if(e.target.id==='saCodeInput'){ e.preventDefault(); saCodeGo(); }
+    else if(e.target.id==='saJoinName' || e.target.id==='saJoinContact'){ e.preventDefault(); saJoinGo(); }
   });
   /* cover buttons + membership-card Open buttons — capture, before the
      page's own bubble handlers (which would navigate away). Only the
@@ -20688,11 +20781,12 @@ function saJoinGo(){
   if(!name){ if(msg) msg.textContent = 'Tell Naya your name first — then step in.'; if(nameEl) nameEl.focus(); return; }
   try{ localStorage.setItem('sa.join.'+saCur.slug, JSON.stringify({name:name, contact: conEl ? conEl.value.trim() : '', at: Date.now()})); }catch(e){}
   saRenderDoorPanel();
+  saEnterCourse();
 }
 function saNextLesson(){
   if(!saCur) return;
-  if(saCur.slug==='fac'){ saLessonIdx.fac = Math.min(SA_FAC.length-1, saLessonIdx.fac+1); saRenderLesson(); saShowView('lesson'); }
-  else if(saCur.slug==='academy'){ saLessonIdx.academy = Math.min(SA_ACADEMY.length-1, saLessonIdx.academy+1); saRenderLesson(); saShowView('lesson'); }
+  if(saCur.slug==='fac'){ saLessonIdx.fac = Math.min(SA_FAC.length-1, saLessonIdx.fac+1); saRenderLesson(); saShowView('lessons'); }
+  else if(saCur.slug==='academy'){ saLessonIdx.academy = Math.min(SA_ACADEMY.length-1, saLessonIdx.academy+1); saRenderLesson(); saShowView('lessons'); }
 }
 function saStepLesson(d){
   if(!saCur) return;
