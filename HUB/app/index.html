@@ -3847,9 +3847,11 @@ window.NayaContent = {
       if(window.NayaContent && window.NayaContent.meta && newest){ window.NayaContent.meta.as_of=newest; }
       var line=document.getElementById('feed-provenance-line');
       if(!line) return;
-      var d=newest?new Date(newest):new Date();
+      var asOf=(window.NayaContent && window.NayaContent.meta && window.NayaContent.meta.as_of) || newest;
+      var d=asOf?new Date(asOf):new Date();
       var when=isNaN(d.getTime())?'today':d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
-      var want='Intelligence as of '+when+' \u2014 '+count+' Smart Notes';
+      var ageDays=isNaN(d.getTime())?0:Math.max(0,Math.floor((Date.now()-d.getTime())/86400000));
+      var want='Intelligence as of '+when+' \u00b7 '+count+' Smart Notes \u00b7 '+ageDays+(ageDays===1?' day':' days')+' old';
       if(line.textContent!==want){ line.textContent=want; }
     }catch(e){}
   }
