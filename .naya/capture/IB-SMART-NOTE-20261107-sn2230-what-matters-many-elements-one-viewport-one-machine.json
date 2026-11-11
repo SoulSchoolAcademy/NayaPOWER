@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2230",
+ "title": "What Matters — Many Elements, One Viewport, One Machine",
+ "slug": "what-matters-many-elements-one-viewport-one-machine",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/07/DESIGN/SN-2230/IB-SMART-NOTE-20261107-sn2230-what-matters-many-elements-one-viewport-one-machine.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-07T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The number is an element on its own, an object of itself — a smart block, a Lego block in the digital matrix. But the mastery is not one element done well. It is multiple elements on the same viewport, working together fast and effectively and efficiently: the number, the gauge, the orbs, the toggles — they share one count, one easing, one landing. The number and the gauge move as one. The Dashboard takes the number for the score and the gauge. The Pricing page takes it for the calculator. Any page that needs a number takes this one. One block at a time, viewpoint by viewpoint, until the whole world is ultimate.",
+  "human_view": "Shawn's order: get used to working with multiple elements on the same viewport. That is the whole thing — master it, and the pages stop being a list of parts and start being a machine. And document as you build: how you did it, what works, how, and what matters — so success keeps compounding.",
+  "child_view": "One shiny block is nice. But when all the blocks work together on the same page — the number, the gauge, the circles, the buttons — all moving together like one big machine, that's when it's magic.",
+  "grandma_view": "It's not about one beautiful thing. It's about all the beautiful things on the page working together, like the parts of a clock, all moving at the same time, all telling the same story.",
+  "ai_view": "The smart block is the unit. The viewport is the stage. The machine is the blocks working together. The number proved the unit. The Dashboard merge proves the stage. The system is the machine — and the machine is what we are building, one block at a time, until every viewport is ultimate.",
+  "what_it_means": "- The number is the first smart block, saved in GitHub, filed as SN-2221, registered in the Parts Registry, documented in HOW-THE-NUMBER-WAS-BUILT.md, and told in these nine notes (SN-2222–SN-2230).\n- The Dashboard merge (number + gauge, one viewport) is the next proof. The Pricing calculator comes after.\n- The nine-notes habit: one note per part, every time, categorized intelligently, in the right feed, findable — so the team stays aligned and the brain stays organized.",
+  "whats_inside": [
+   "- Every build is one block at a time, viewpoint by viewpoint, and every build is documented in nine notes.\n- The notes go in the right category, the right feed, findable — and every login shows a notification that an intelligent event happened, so the team reads the feed and stays aligned."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "6969f826edf343299c9e2ea5237474042442501cebd25e6d863f71a7c77f9c07",
+ "content_hash": "ae17a6ce033a0e13baa22c4b2ccdb6983b7e6308af05be440999073b340531b2",
+ "reconstructed_from_page": true
+}
