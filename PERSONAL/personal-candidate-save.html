@@ -4542,7 +4542,6 @@ html.os-calm
         <div class="ph-actions-row up-actions">
       <button class="up-act" id="msgbtn" type="button" style="--ac:#3fb8ff;">✉️ Message</button>
       <button class="up-act" id="aboutbtn" type="button" style="--ac:#2fe89e;" data-os-go="about">About</button>
-      <button class="up-act" id="storybtn" type="button" style="--ac:#a06bff;" data-os-go="story">✦ My Story</button>
       <button class="up-act" id="myworldbtn" type="button" style="--ac:#e84fff;" data-os-go="myworld">🌍 My World</button>
       <button class="up-act" id="connbtn" type="button" style="--ac:#ffbf3d;" data-os-go="people">Connections</button>
       <button class="up-act" id="growthbtn" type="button" style="--ac:#ff9a5a;" data-os-go="growth">Invite</button>
@@ -6262,6 +6261,12 @@ button.os-ld-node .os-ld-n{
    Save/Cancel and every other .ph-msg on the page are untouched. */
 #about .ph-actions button[data-os-sec-edit="motto"],#about .ph-actions #editabout,#about .ph-actions button[data-os-sec-edit="whatido"],#about .ph-actions button[data-os-sec-edit="goals"]{background:transparent !important;border:1px solid rgba(255,255,255,.18) !important;box-shadow:none !important;padding:8px 14px !important;font-size:13px !important;font-weight:600 !important;color:rgba(255,255,255,.72) !important;transform:none !important;}
 #about .ph-actions button[data-os-sec-edit="motto"]:hover,#about .ph-actions #editabout:hover,#about .ph-actions button[data-os-sec-edit="whatido"]:hover,#about .ph-actions button[data-os-sec-edit="goals"]:hover{border-color:rgba(255,255,255,.38) !important;box-shadow:none !important;color:#fff !important;transform:none !important;}
+/* NAV BOARDS FIX (2026-11-11, Shawn 13:56Z) — the four About boards read as
+   elevated: the Hub's live board verbatim (hub-live-base.html line 3826,
+   .intel-board .ib-nutshell) — bg #050607, 18px radius, the 20px glow.
+   Scoped to #about so only these four boards change; the tone left edge and
+   border from the file's own rules stay. */
+#about .ib-nutshell{background:#050607 !important;border-radius:18px !important;box-shadow:inset 0 1px #ffffff1c,0 14px 30px #00000090,0 0 20px color-mix(in srgb, #ffffff 10%, transparent) !important;}
 </style>
 <div class="ph-sec os-view" id="about" data-os-view="about" data-block="about">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> About Me</div>
@@ -13546,7 +13551,6 @@ NayaSmartBar.mount({
     {label:"Home", target:"#home", icon:"\u2302", color:"#a06bff"},
     {label:"Dashboard", target:"#dashboard", icon:"\u25c9", color:"#3fb8ff"},
     {label:"About", target:"#about", icon:"\u25ce", color:"#2fe89e"},
-    {label:_storyLabel, target:"#story", icon:"\u2726", color:"#a06bff"},
     {label:"Today", target:"#today", icon:"\u2726", color:"#ffbf3d"},
     {label:"Smart Notes", target:"#notes", icon:"\u25c6", color:"#ff9a5a"},
     {label:"Connections", target:"#people", icon:"\u25c8", color:"#ff5e6c"},
@@ -13559,7 +13563,7 @@ NayaSmartBar.mount({
     {label:"Scheduler", target:"#scheduler", icon:"\ud83d\udcc5", color:"#e84fff"}
   ],
   network: [
-    {label:"Home", url:"https://nayanet.app/", icon:"\u2302"},
+    {label:"Home", target:"#home", icon:"\u2302"},
     {label:"Dashboard", target:"#dashboard", icon:"\u25c9"},
     {label:"Message", target:"#message", icon:"\u25c7"},
     {label:"Activity", target:"#dashboard", icon:"\u26a1"},
@@ -13582,7 +13586,7 @@ NayaSmartBar.mount({
   var bottom=document.getElementById('nsbBottom');
   if(!bottom) return;
   bottom.classList.add('nsb-iconbar');
-  var VIEWS_BY_LABEL={'Dashboard':'dashboard','Message':'message','Activity':'dashboard','Mail':'inbox','Stats':'dashboard','Memberships':'memberships'}; /* FIX-8b: the new app-bar tab opens the memberships view in-page */
+  var VIEWS_BY_LABEL={'Home':'home','Dashboard':'dashboard','Message':'message','Activity':'dashboard','Mail':'inbox','Stats':'dashboard','Memberships':'memberships'}; /* FIX-8b: the new app-bar tab opens the memberships view in-page */ /* NAV-BOARDS 2026-11-11: Home returns to the home view in-page, never the welcome page */
   function nameIcons(){
     bottom.querySelectorAll('.nsb-tab').forEach(function(b){
       var lab=(b.getAttribute('aria-label')||'').replace(/ \(no destination yet\)$/,'');
@@ -13675,9 +13679,9 @@ NayaSmartBar.mount({
   /* The routing table: label -> destination. url = leave the page;
      view = switch the in-page view; null = honest-coming. */
   var ROUTES = {
-    'Home':        { url: 'https://nayanet.app/' },
+    'Home':        { view: 'home' },
     'Dashboard':   { url: 'https://nayanet.app/dashboard' },
-    'About':       { url: 'https://nayanet.app/personal#about' },
+    'About':       { view: 'about' },
     'Today':       { url: 'https://nayanet.app/rooms/today' },
     'Smart Notes': { view: 'notes' },
     'Connections': { url: 'https://nayanet.app/rooms/connections' },
@@ -20333,6 +20337,8 @@ function saClose(){
   var ov = sa$('mwSmartAccess');
   ov.hidden = true;
   try{ document.documentElement.style.overflow = ''; }catch(e){}
+  /* NAV-BOARDS 2026-11-11: closing Smart Access returns to the Personal home view. */
+  if (window.osShowView) window.osShowView('home');
 }
 window.__saOpen = saOpen; window.__saClose = saClose;
 
