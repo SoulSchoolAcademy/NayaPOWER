@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2434",
+ "title": "The Orbs Don't Circle",
+ "slug": "the-orbs-dont-circle",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2434/IB-SMART-NOTE-20261109-sn2434-the-orbs-dont-circle.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The full-screen verification (v58, 02:07Z) corrected the record: **the orbs do NOT circle.** The verifier measured their positions static over 2.5 seconds — the orb-spin and ib-orb-flow keyframes exist in the code but are UNUSED; only the scale-breathe moves. The v52 claim (\"ring genuinely circles, rotation + pixel-diff proven\") was wrong: the pixel-diff the verifier measured was the breathing scale, not rotation. The lesson is a proof lesson, and it is the record's own law applied to itself: measure the thing itself — the rotation — not a proxy that moves for another reason. A fix seat was dispatched the same pass (brief `PRICING-ORBS-CIRCLE-BRIEF-20261109.md`): real rotation, measured. And Shawn added 02:10Z that the orbs must be brighter, with more life, aligned with their headlines (SN-2435) — the circling seat carries both now.",
+  "human_view": "What the verifier found, 02:07Z: the orbs do not circle. Positions measured static over 2.5 seconds. The spin keyframes are in the code but nothing uses them — only the breathing scale moves. The v52 proof was wrong: the pixels changed because the orb was breathing, not because it was turning. So the claim \"the ring genuinely circles\" is revoked, and the fix is a seat with a brief: make them genuinely circle, and measure the rotation itself this time.",
+  "child_view": "Imagine someone says \"look, the wheel is turning!\" — but the wheel is only getting bigger and smaller, like it's breathing. It looks alive, but it isn't turning. The pixels moved, so the checker thought it was turning. But moving and turning are different things. Now we check the turning itself — not just whether something moved.",
+  "grandma_view": "Dear, the little jewels on the page were supposed to float around in circles, like planets. Someone checked and said yes, they're circling — but they weren't. They were only breathing, getting a tiny bit bigger and smaller, and that movement fooled the check. So we take the compliment back, love, and we fix it properly: they must really go around, and this time we watch them go around.",
+  "ai_view": "This is the proof standard biting its own tail, which is exactly what it is for. A pixel-diff is a proxy: it proves something changed, not what changed. The v52 verifier saw change and named it rotation; the change was scale. The correction is surgical and public — the claim is revoked in the same pass, the seat is dispatched with the right measurement named in its brief, and the record now carries both the error and the lesson. That is the record telling the truth to a cold reader: not \"we verified it\" but \"we verified it wrong, here is how, here is the fix.\"",
+  "what_it_means": "- **The v52 circling claim is REVOKED** — the orbs do not circle; only scale-breathe moves.\n- **A pixel-diff can lie** — it proves change, not rotation; measure the rotation itself.\n- **The fix is dispatched** (brief `PRICING-ORBS-CIRCLE-BRIEF-20261109.md`): real rotation, measured — plus Shawn's 02:10Z addition, brighter, more life, aligned with headlines.",
+  "whats_inside": [
+   "- The orbs-circle seat builds real rotation and proves it by measuring positions over time — rotation, not pixel change.\n- The v52 verification is cited as corrected wherever it was used as evidence; do not quote \"ring genuinely circles\" as proven.\n- Every future verification names its measurement: what moved, and how it was measured — not just that something changed."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "74920549f73f7ea0f321f8eed152981f0e7f7a0f930578519fb109d5b011292d",
+ "content_hash": "bbe084ab93fda91ac2d39d50588704638c3d74f99a872ee07a88f1e1f60e6477",
+ "reconstructed_from_page": true
+}
