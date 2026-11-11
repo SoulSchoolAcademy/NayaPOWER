@@ -29,6 +29,8 @@ def test_historical_live_schema_is_blocked_on_exact_source_contract() -> None:
     assert result["verdict"] == "BLOCKED_SCHEMA_DRIFT"
     assert result["missing_column_count"] == 13
     assert result["affected_tables"] == 6
+    assert result["type_mismatches"] == {}
+    assert result["required_not_null_mismatches"] == {"naya_notes": ["category"]}
     assert result["missing"] == {
         "invites": ["owner_alias"],
         "naya_notes": ["owner_id", "text"],
@@ -42,15 +44,26 @@ def test_historical_live_schema_is_blocked_on_exact_source_contract() -> None:
 def test_adding_all_missing_columns_is_only_shape_compatibility() -> None:
     data = snapshot()
     contracts = preflight.required_columns()
+    declared = preflight.declared_contracts()
     for table, cols in contracts.items():
+        missing = cols - set(data["tables"][table])
         data["tables"][table] = sorted(set(data["tables"][table]) | cols)
+        for col in missing:
+            # Where source guards don't declare types, synthetic shape is only
+            # diagnostic. Never apply these placeholders to real production.
+            rule = declared.get(table, {}).get(col, {"udt_name": "text"})
+            data["column_types"][table][col] = rule["udt_name"]
+        for col, rule in declared.get(table, {}).items():
+            if rule["not_null"] and col not in data["not_nullable"][table]:
+                data["not_nullable"][table].append(col)
     result = preflight.evaluate(data, contracts)
     assert result["verdict"] == "SHAPE_COMPATIBLE_ONLY"
     assert result["missing"] == {}
     assert result["meaning"].endswith("NEVER production approval.")
 
 
-@pytest.mark.parametrize("broken", ["tables", "kind", "captured_date_utc"])
+@pytest.mark.parametrize("broken", ["tables", "kind", "captured_date_utc",
+                                  "column_types", "not_nullable"])
 def test_invalid_or_incomplete_catalog_fails_closed(broken: str) -> None:
     data = snapshot()
     data.pop(broken)
@@ -84,3 +97,48 @@ def test_create_table_contract_removal_fails_closed(tmp_path: Path) -> None:
     sql.write_text(original.replace("owner_id uuid", "legacy_owner_uuid uuid", 1), encoding="utf-8")
     with pytest.raises(preflight.PreflightError, match="SOURCE_COLUMN_CONTRACT_MISSING"):
         preflight.required_columns(tmp_path)
+
+
+def test_existing_source_column_type_drift_is_blocked() -> None:
+    data = snapshot()
+    data["column_types"]["smart_links"]["active"] = "text"  # expected boolean / bool
+    result = preflight.evaluate(data, preflight.required_columns())
+    assert result["verdict"] == "BLOCKED_SCHEMA_DRIFT"
+    assert result["type_mismatches"]["smart_links.active"] == {
+        "expected": "bool", "observed": "text"
+    }
+
+
+def test_required_not_null_mismatch_alone_still_blocks() -> None:
+    data = snapshot()
+    # Removing required NOT NULL from an existing field is not safe even
+    # when every required name is present in an idealized schema.
+    data["tables"] = {k: list(v) for k, v in data["tables"].items()}
+    declared = preflight.declared_contracts()
+    for table, cols in preflight.required_columns().items():
+        for col in cols - set(data["tables"][table]):
+            data["tables"][table].append(col)
+            data["column_types"][table][col] = declared.get(table, {}).get(
+                col, {"udt_name": "text"})["udt_name"]
+        for col, rule in declared.get(table, {}).items():
+            if rule["not_null"] and col != "category" and col not in data["not_nullable"][table]:
+                data["not_nullable"][table].append(col)
+    result = preflight.evaluate(data, preflight.required_columns())
+    assert result["missing_column_count"] == 0
+    assert result["type_mismatches"] == {}
+    assert result["required_not_null_mismatches"] == {"naya_notes": ["category"]}
+    assert result["verdict"] == "BLOCKED_SCHEMA_DRIFT"
+
+
+def test_partial_type_metadata_fails_closed() -> None:
+    data = snapshot()
+    del data["column_types"]["smart_links"]["active"]
+    with pytest.raises(preflight.PreflightError, match="METADATA_COLUMN_TYPES_INCOMPLETE"):
+        preflight.evaluate(data, preflight.required_columns())
+
+
+def test_non_nullable_metadata_cannot_name_nonexistent_field() -> None:
+    data = snapshot()
+    data["not_nullable"]["smart_mail_threads"].append("fake_field")
+    with pytest.raises(preflight.PreflightError, match="METADATA_NULLABILITY_INVALID"):
+        preflight.evaluate(data, preflight.required_columns())

@@ -1,8 +1,8 @@
 {
-  "kind": "information_schema_columns",
+  "kind": "information_schema_column_contracts",
   "captured_date_utc": "2026-11-11",
   "source": "read-only live Supabase information_schema.columns metadata, public schema, project dahisasgpfvziswqvmvm",
-  "source_sql": "SELECT table_name,column_name FROM information_schema.columns WHERE table_schema='public' AND table_name IN ('smart_notes','smart_mail_threads','smart_mail_messages','invites','naya_notes','smart_links') ORDER BY table_name,ordinal_position",
+  "source_sql": "SELECT table_name,column_name,udt_name,is_nullable FROM information_schema.columns WHERE table_schema='public' AND table_name IN ('smart_notes','smart_mail_threads','smart_mail_messages','invites','naya_notes','smart_links') ORDER BY table_name,ordinal_position",
   "historical_fixture": true,
   "tables": {
     "invites": [
@@ -61,6 +61,112 @@
       "owner_alias",
       "created_at",
       "updated_at"
+    ]
+  },
+  "column_types": {
+    "invites": {
+      "id": "uuid",
+      "code": "text",
+      "inviter_alias": "text",
+      "invitee_name": "text",
+      "invitee_email_hash": "text",
+      "status": "text",
+      "template_id": "text",
+      "dry_run": "bool",
+      "created_at": "timestamptz",
+      "sent_at": "timestamptz",
+      "visited_at": "timestamptz",
+      "joined_at": "timestamptz",
+      "nudged_at": "timestamptz"
+    },
+    "naya_notes": {
+      "id": "uuid",
+      "owner_alias": "text",
+      "title": "text",
+      "body": "text",
+      "category": "text",
+      "list_name": "text",
+      "source_context": "text",
+      "created_at": "timestamptz",
+      "updated_at": "timestamptz"
+    },
+    "smart_links": {
+      "id": "uuid",
+      "owner_alias": "text",
+      "name": "text",
+      "target_url": "text",
+      "active": "bool",
+      "created_at": "timestamptz"
+    },
+    "smart_mail_messages": {
+      "id": "uuid",
+      "thread_id": "uuid",
+      "from_alias": "text",
+      "body": "text",
+      "created_at": "timestamptz"
+    },
+    "smart_mail_threads": {
+      "id": "uuid",
+      "subject": "text",
+      "from_alias": "text",
+      "to_alias": "text",
+      "preview": "text",
+      "created_at": "timestamptz",
+      "updated_at": "timestamptz"
+    },
+    "smart_notes": {
+      "id": "uuid",
+      "content": "text",
+      "owner_alias": "text",
+      "created_at": "timestamptz",
+      "updated_at": "timestamptz"
+    }
+  },
+  "not_nullable": {
+    "invites": [
+      "id",
+      "code",
+      "inviter_alias",
+      "invitee_name",
+      "invitee_email_hash",
+      "status",
+      "template_id",
+      "dry_run",
+      "created_at"
+    ],
+    "naya_notes": [
+      "id",
+      "owner_alias",
+      "body",
+      "created_at",
+      "updated_at"
+    ],
+    "smart_links": [
+      "id",
+      "owner_alias",
+      "name",
+      "target_url",
+      "active",
+      "created_at"
+    ],
+    "smart_mail_messages": [
+      "id",
+      "thread_id",
+      "from_alias",
+      "body",
+      "created_at"
+    ],
+    "smart_mail_threads": [
+      "id",
+      "subject",
+      "from_alias",
+      "to_alias",
+      "created_at",
+      "updated_at"
+    ],
+    "smart_notes": [
+      "id",
+      "content"
     ]
   }
 }
