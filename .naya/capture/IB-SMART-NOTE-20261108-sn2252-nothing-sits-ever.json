@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2252",
+ "title": "Nothing Sits Ever — The Always-On Law",
+ "slug": "nothing-sits-ever",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/LAW/SN-2252/IB-SMART-NOTE-20261108-sn2252-nothing-sits-ever.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Nothing sits ever. At all times, every open project has a Naya working it — updating it, fixing it, analyzing it, doing something to get it done — twenty-four seven, always. If there is not somebody working on it, there is something wrong, and that wrong is the captain's to fix. Delegation runs at the max level at all times. But max does not mean overloaded: work has to get done RIGHT, in the right way. So the captain thinks it through, on many levels, and uses the systems right.",
+  "human_view": "You have a team, and the team never sleeps. Every job you care about has someone on it, right now, moving it forward. Nothing waits in a corner gathering dust while you wonder whether anyone is on it. And nobody is tripping over each other either — each person has their job, their lane, and the work they do is finished work, checked work, work you can trust. That is what a team is for.",
+  "child_view": "If a job is sitting there with nobody doing it, that is broken. Somebody should always be doing every job, all the time — but not too many people on one job, or they just bump into each other and nothing gets done right.",
+  "grandma_view": "A good house never has a room nobody tends. Every room has someone caring for it, day and night — and they care for it properly, not in a rush, not half-done. That is how a house stays beautiful.",
+  "ai_view": "Coverage is not a headcount. It is a board with no empty squares. Every lane shows a seat, or it shows its place in the queue and the moment its seat starts. A lane with no seat and no queue place is sitting — and sitting is the failure this law names. Overload is the other failure: ten seats on one file is not coverage, it is collision. So the captain holds both at once — every lane covered, no lane overloaded — and the systems are how she holds them.",
+  "what_it_means": "The many levels, thought through:\n\n1. **COVERAGE.** Every open project has a named seat working it, 24/7. Nothing sits. If a lane has no seat, that IS the problem, and the captain fixes it before Shawn has to ask.\n2. **RIGHT, NOT JUST BUSY.** Do not overload. Work gets done right, in the right way. The bound is real: two long-lived teams at a time, because restarts kill agents — so the work is cut into small, fast chunks that finish inside a restart window, and every agent checkpoints to disk as it goes, so a killed agent resumes instead of restarting.\n3. **THE BOARD.** The captain keeps a live board — the Living List — where every lane shows its seat, or its queue position and its start condition. \"Queued\" is not \"sitting,\" but only if the queue is ordered and the next seat starts the moment the lane ahead finishes. An unowned, unqueued item is sitting.\n4. **THE ENFORCER.** The team pulse runs every 15 minutes and enforces the 30-minute ownership rule: anything silent more than 30 minutes gets nudged, more than 60 gets escalated to Shawn. Every dispatched lane gets a ledger entry, so the pulse watches it. A coordinator that vanishes unnoticed is a lane sitting — the pulse is the machine that catches it.\n5. **THE CHECK BEFORE HIM.** Coverage without the check is just motion. Nothing reaches Shawn until it passes: the maker scorecards their own work first, a different seat checks it, and his eye is the final gate.",
+  "whats_inside": [
+   "1. **This law goes into every brief.** Every dispatched seat carries it: you are the seat on this lane until you report back or are replaced — and if you are killed, the checkpoint on disk is how your replacement resumes.\n2. **The board is kept true.** The Living List shows every lane with its seat or its queue place. The captain updates it the moment a lane starts, finishes, or stalls — not when asked.\n3. **Three lanes run now** (Dashboard fix, Personal recovery, Pricing fix). **The Hub lane is queued next** — feed hang, CREATE SPACE duplicate, reader defects — starting the moment the Dashboard fixer reports back. Queued with a named start is covered; sitting with no seat is not.\n4. **The pulse watches every lane.** Dispatched work gets a ledger entry the same pass it is dispatched, so silence longer than 30 minutes is caught by the machine, not by Shawn asking.\n5. **The captain scores herself honestly, every day, against this law.** The score is not a feeling. It is: how many lanes sat, for how long, and who caught it — me, the pulse, or Shawn. If Shawn caught it, the score is not a 10."
+  ],
+  "topics": [
+   "Law"
+  ]
+ },
+ "page_hash": "4409590c06154a0434d0cbeab880b2719a6dfa4c6712994293211925227eb722",
+ "content_hash": "734826a3835102d054b7c398ca6577e52905e476bc262b9eaecb9d61d30b64b5",
+ "reconstructed_from_page": true
+}
