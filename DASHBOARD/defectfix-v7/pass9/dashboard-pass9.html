@@ -28601,8 +28601,9 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
    know why that's there") — there is no lap line in the base to keep, and
    restoring it would undo his order; tiles-vs-gauge agreement is measured
    against the gauge's own in-dial readout instead. (3) Orb numbers UP — the
-   hero node stack rides at the top of the disc (flex-start + 9% top padding)
-   instead of dead-centre, so every number sits in the orb's upper half with
+   hero node stack rides at the top of the disc (flex-start + 32px top
+   padding desktop / 12px phone) instead of dead-centre, so every number sits
+   in the orb's upper half with
    its label below it; labels keep the pass-12 sizes (30px desktop / 18px
    phone, SMART NOTES 14px phone). (4) Day / Week / Month / All take the MODE
    PILLS' own treatment (.os-pts-btn: 40px font / 38px vertical padding
@@ -28623,9 +28624,13 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
   text-shadow:0 1px 3px rgba(0,0,0,.95), 0 0 12px rgba(255,191,61,.35) !important;
 }
 
-/* (3) ORB NUMBERS UP — hero nodes only (drills untouched). */
+/* (3) ORB NUMBERS UP — hero nodes only (drills untouched). Fixed natural px,
+   NOT %: % padding resolves against the CONTAINING block (#os-ld-nodes,
+   1392px wide) so 9% was 125px and shoved the stack DOWN to cyFrac 0.61
+   at 1440 (measured, first staged probe). 32px desktop / 12px phone put
+   the number centre at ~0.27 of the disc at both widths. */
 #os-ld-nodes .os-ld-node{
-  justify-content:flex-start !important; padding-top:9% !important;
+  justify-content:flex-start !important; padding-top:32px !important;
 }
 
 /* (4) RANGE PILLS take the mode pills' treatment (.os-pts-btn). */
@@ -28636,6 +28641,9 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
 @media (max-width:900px){
   .os-ld-timepills button{
     font-size:32px !important; padding:28px 14px !important;
+  }
+  #os-ld-nodes .os-ld-node{
+    padding-top:12px !important;
   }
 }
 </style>
