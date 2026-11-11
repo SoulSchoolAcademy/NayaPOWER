@@ -1,0 +1,20 @@
+# Harvest sources for Factory base (f) — named citations for gate (f) F1.
+# Format (fix-7 precedent): one selector per line, then its exact source
+# file + lines. A class is cited ONLY when it genuinely traces to that
+# source — the source file must exist and the lines must define the class.
+# Verified 2026-11-11 against the Hub board (~/workspace/user/files/index-2.html):
+# .eco-bb-btn — Hub lines 284-339 define the part (46px round icon button,
+# radial obsidian gradient, hover lift + data-label tooltip, 42/44px mobile
+# rule); Hub JS line 6865 creates it as an anchor (a.className='eco-bb-btn'),
+# and the Factory's 18 are anchors too, with the same CSS carried verbatim.
+# .bh-btn — Hub line 8959 defines .board-h .bh-btn (14px/28px pill, obsidian
+# gradient, btn-flash); Hub JS lines 8896/9139 create <button class="bh-btn">
+# inside .board-h; the Factory's 8 sit inside .board-h and the scoped rule
+# governs by specificity. All other offending classes have NO genuine
+# external source (Hub grep + THE-INVENTORY.md + CANONICAL-PIECE-INDEX.md
+# grep, 2026-11-11: btn-select, btn-notes, tview, naya-btn, steppill,
+# day-dot, smarttab and the rest appear in no harvest source) and were
+# re-classed to the harvested allowlist class primo-btn, never cited.
+# NEVER cite the Factory page itself as its own harvest source.
+.eco-bb-btn ~/workspace/user/files/index-2.html:284-339
+.bh-btn ~/workspace/user/files/index-2.html:8959
