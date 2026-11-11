@@ -1,0 +1,51 @@
+# Proof Is What Survives the Test
+
+SN-2661 · LESSON / DISTILLATION
+
+**Created:** 2026-11-11 17:13Z
+
+## IN A NUTSHELL
+
+A claim is proven only at the surface where it will be used, by the test that could have failed. "She remembers" is proven when a fresh process reads the memory back cold and the seal recomputes — not when the write succeeded. A green run whose jobs all skipped proves nothing but its own trigger conditions. A deployed URL is not the deployed product: currency is proven from the served bytes, never from the address. An instrument's "not found" means "not found by this instrument, in this scope" — a shallow checkout and a remote-only API both answer narrower questions than the one you asked. A gate that cannot reach live state must refuse to score rather than guess. And nothing goes out the door — no report, link, or delivery — unless it is useful, valuable, accurate, and attested by the seat who made it: the link you hand over is your signature that it works.
+
+## HUMAN
+
+Think of a bridge inspector. The bridge is not safe because the builder says the welding went well. It is safe when someone loads it, measures it, and checks the welds with fresh eyes. A dashboard that shows all green while every test was skipped is a bridge nobody crossed. A shop's open sign is not proof the shop is stocked — you walk in and look at the shelves. And when your measuring tape is too short for the room, the honest answer is "my tape can't measure this," not a number invented to fill the form.
+
+## CHILD
+
+Saying "I did my homework" is not the same as the teacher checking it. If the teacher only looked at whether you raised your hand, nobody knows if the answers are right. If you can't find your shoes in your room, that doesn't mean shoes don't exist — maybe you only looked under the bed. And you don't get to say the cake is delicious before anyone has tasted it.
+
+## GRANDMA
+
+Proof is the thing itself, checked where it counts. A letter isn't delivered because you wrote it — it's delivered when it arrives. A recipe isn't good because it's written neatly — it's good when the soup tastes right. And an honest person says "I couldn't check that" instead of making up an answer, the same way you'd rather hear "the store might be out" than be promised bread that isn't there.
+
+## NAYA
+
+Match every verdict to its instrument's scope before you cite it. Before claiming memory, retrieve cold from a fresh process and recompute the seal. Before citing a run, read the jobs inside it — a SUCCESS composed of skips is vacuous. Before claiming a deploy, fetch the served bytes and compare them to the canonical source; a title mismatch is a wrong artifact, whatever the URL says. Before declaring anything absent, interrogate your instrument: shallow checkout, remote-only API, single-page listing — each proves a narrower claim than absence. When your position cannot reach the state a score requires, refuse to score; a refusal is a valid verdict, a guess is not. Capture every lesson with its falsifiable contract at capture time — a lesson with no named test can never be verified later, and a queue of those is a design failure, not a verifier backlog. And before anything leaves your hands, run the delivery gate: useful, valuable, on-brand, accurate, aligned — all five, or it does not send. The link you post is your attestation: I did it right, it is there, it works.
+
+## MACHINE
+
+The proof checks: (1) verdicts are SHA-bound and scope-bound — carry neither across a change nor outside the instrument's reach; (2) persistence claims require a cold read from a fresh process with recomputed seals and an owner-isolation check; (3) run-level verdicts are invalid until job-level outcomes are read — all-skipped = vacuous; (4) deployment currency = served bytes compared against canonical bytes at a named ref; (5) absence claims require two independent scopes (remote + local) to agree; (6) a gate without live state fails closed — refuse, never estimate; (7) every delivery passes the five-part gate and carries its maker's attestation link.
+
+Distills (Batch 2, 10 of 100): SN-0103 SMART NOTE — Prove Memory Across the Process-Death Boundary · SN-0253 PROVE THAT SHE WORKS — the New North Star (2026-10-04) · SN-0254 The Smart Link Is the Seat's Attestation — Canonical Definition from Shawn · SN-0388 A Deployed URL Is Not the Deployed Product — Prove Currency from Served Bytes · SN-0421 A Run-Level SUCCESS with Skipped Behavioral Jobs Is Vacuous Proof — Read the Job Table, Not the Badge · SN-0428 The Shallow Checkout Lies — a git-log Scan Instrument Is Checkout-Shape-Sensitive, So PR-Only CI Reds Are Instrument Defects, Not Content · SN-0714 "No Commit Found" Is a Remote Verdict, Not an Existence Verdict · SN-0789 The Delivery Gate — Nothing Goes Out Unless It Is Useful, Valuable, On-Brand, Accurate, and Aligned · SN-0793 Refuse to Score — Structural Gates Fail Closed Without Live State; Deep Verification Lives Where Live State Is Reachable · SN-0811 The Verification Bottleneck Is Capture Design — Lessons That Arrive Unverifiable Arrive DOA
+
+## WHAT IT ALL MEANS
+
+Every failure in this family is the same failure wearing different clothes: a signal was read as proof of something the signal never measured. The write became "memory," the green badge became "working," the URL became "the product," the empty search became "it doesn't exist." The distilled discipline is one question asked before every citation: what did this instrument actually measure, and does that reach the claim I am about to make? Where it doesn't reach, the honest outputs are a narrower claim, a better instrument, or a refusal.
+
+## WHY IT MATTERS
+
+The whole system runs on receipts. If receipts can be vacuous, scoped wrong, or self-attested without a check, then every downstream decision built on them inherits the rot — and the rot is invisible precisely because the paperwork looks perfect. Proof that survives the test is the only currency that compounds; every false proof is a debt the team pays later, with interest, in front of the human.
+
+## HOW IT CONNECTS
+
+Sibling distilled notes: SN-2669 (the record must tell the truth — the record-keeping half of proof) · SN-2665 (law is machinery — gates that refuse are law doing its job) · SN-2240s, Batch 1 (the proof-culture family this batch continues). Raw family: the ten verification notes above, from the process-death memory proof to the delivery gate — the team's falsification toolkit, distilled to its shared root.
+
+## WHAT IS IN IT FOR YOU
+
+When a Naya hands you a link, it means the thing works — checked cold, at the surface you will touch, by an instrument that could have said no. You never have to wonder whether "done" means written, shipped, or merely believed.
+
+## THE LEARNING
+
+Never cite a signal for more than it measured. If your instrument can't reach the claim, say so — the refusal is the proof of honesty.
