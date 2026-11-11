@@ -1261,6 +1261,7 @@ svg.jewel { display: block; }
   letter-spacing: -0.01em; margin: 0 0 20px; font-weight: 800;
   text-wrap: balance;
 }
+.ib-title-link { display: block; text-decoration: none; color: inherit; }
 
 
 /* ——— V10 faceted jewel icons ——— */
@@ -6325,7 +6326,15 @@ window.NayaJewels = (() => {
     }
     subtitle = shortHook(subtitle); // v5.1: hook <= 60 chars, never the full nutshell text
     const title = el('h2', 'ib-title', esc(headline));
-    titleWrap.append(title);
+    const snMatch = String(note.id || '').match(/sn(\d+)/i);
+    if (snMatch) {
+      const titleLink = el('a', 'ib-title-link');
+      titleLink.href = '#/smart-notes/sn' + snMatch[1];
+      titleLink.appendChild(title);
+      titleWrap.append(titleLink);
+    } else {
+      titleWrap.append(title);
+    }
     /* — Headline + hook compose as ONE unit (Shawn 2026-10-20): the
        subheadline sits centered directly under the headline — 18px,
        near-white silver, quotation marks kept. NO topic/category
