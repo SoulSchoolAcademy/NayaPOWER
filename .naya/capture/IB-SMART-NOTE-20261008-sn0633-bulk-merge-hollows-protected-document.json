@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-633",
+ "title": "A Bulk Merge Can Hollow a Protected Document — the Field Battery Is the Acceptance",
+ "slug": "bulk-merge-hollows-protected-document",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROTECTED-DOCUMENT-INTEGRITY/SN-0633/IB-SMART-NOTE-20261008-sn0633-bulk-merge-hollows-protected-document.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-09-30T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "",
+  "human_view": "",
+  "child_view": "",
+  "grandma_view": "",
+  "ai_view": "",
+  "what_it_means": "",
+  "whats_inside": [],
+  "topics": [
+   "System-Intelligence"
+  ]
+ },
+ "page_hash": "cf14bbdd6e20d5657ade1cb7e9d7807b4b3965d69425c1ca5b9f2eab7655f1b6",
+ "content_hash": "4ec274abf4176966721ba588560a04002b8f7c9d23bb4797866b0684bffd7240",
+ "reconstructed_from_page": true
+}
