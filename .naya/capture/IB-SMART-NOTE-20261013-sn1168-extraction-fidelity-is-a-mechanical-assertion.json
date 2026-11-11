@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-1168",
+ "title": "Extraction fidelity is a mechanical assertion",
+ "slug": "extraction-fidelity-is-a-mechanical-assertion",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/13/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/SN-1168/IB-SMART-NOTE-20261013-sn1168-extraction-fidelity-is-a-mechanical-assertion.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-10-13T08:44:13Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Building a 50-doc fixture corpus, the lane's \"verbatim\" extractions weren't verbatim: the instrument's own `sentences()` splitter splits on hyphens and newlines, so \"Self-validation is…\" and the B2 parenthetical fractured across sentence boundaries. Byte-comparing each extraction span against the source document's actual `sentences()` output caught two defects her eyes had approved — DA2's source bytes carry a literal newline mid-sentence (preserved verbatim), and DC1's extraction string had dropped an apostrophe (byte-compared against source, corrected). The rule: extraction fidelity is a mechanical assertion — every extraction span must satisfy span ∈ doc bytes AND span == source sentences() output — and it belongs in code (`build_fixture_checks`), not in design-time intention. The check compares bytes, not memory of what the sentence \"says.\"",
+  "human_view": "She was copying \"exact quotes\" into her test set — and her quotes were wrong in ways her eyes couldn't see. One source sentence had an invisible line break in the middle of it; another lost an apostrophe. The machine she trusted to split sentences split them in places a human never would (on hyphens, on line breaks). The fix: don't trust your eyes or your memory of what the sentence says — write a check that compares the actual bytes, character by character, against the source. Two catches, fixed before anything was sealed. That's the standard: fidelity lives in an assertion, not in your good intentions.",
+  "child_view": "Imagine you're copying lines from a book for a spelling test. You think you copied them perfectly — but the page had a line that wrapped in a weird spot, and you accidentally dropped a letter. Your eyes say \"looks right.\" The only way to be sure is to put your copy next to the book and check every single letter, one by one. That's what she did with the computer's help: a byte-by-byte comparison against the real source. It found two mistakes her eyes had missed. The lesson: \"I was careful\" is not a check. The computer comparing bytes IS the check.",
+  "grandma_view": "It's like proofreading a recipe you've copied by hand — you read it over and it looks fine, but you've dropped a word somewhere without noticing. The reliable way is to have someone read the original out loud while you follow your copy word for word. She did the computer version of that: every copied sentence was matched character-by-character against the original document. Two slips caught — one invisible line break, one missing apostrophe — before anything was finalized. Careful intentions don't catch errors; mechanical checking does.",
+  "ai_view": "Apply this every time you build fixtures with extracted claims: (1) every extraction span is asserted in code, never claimed in prose: `span ∈ doc bytes` AND `span == source sentences() output` — the source's real splitter output, not your memory of sentence boundaries; (2) split defensively: `sentences()`-style splitters fracture on hyphens and newlines, so mid-sentence newlines are preserved verbatim, not normalized away; (3) catch them in `build_fixture_checks` at fixture-build time — pre-seal, not receipt-time; (4) when your eyes approve and the bytes disagree, the bytes win — twice this tick (DA2's literal newline, DC1's dropped apostrophe); (5) ship the assertion with the fixture set so every future regeneration re-proves fidelity. Cousin map: SN-1160 (read the gate before writing the body — here, read the splitter before extracting from it); the t0591 Herald recompute-before-reading rule (bytes over memory, same family).",
+  "what_it_means": "",
+  "whats_inside": [],
+  "topics": [
+   "System-Intelligence"
+  ]
+ },
+ "page_hash": "26780f371c0c9bff038bab29f9e129aafde3a0effd6f296b4c9fc6061d9714cb",
+ "content_hash": "0d391db3a193f71f86259fef96783deab9d46403e9e7ed7f57b859ac7016009b",
+ "reconstructed_from_page": true
+}
