@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-1906",
+ "title": "THE RELATED BAR LAW — the bar knows where you'd go next (Shawn + Power, 2026-10-30)",
+ "slug": "the-related-bar-law",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1906/IB-SMART-NOTE-20261030-sn1906-the-related-bar-law.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-10-30T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "",
+  "human_view": "",
+  "child_view": "",
+  "grandma_view": "",
+  "ai_view": "",
+  "what_it_means": "",
+  "whats_inside": [],
+  "topics": [
+   "System"
+  ]
+ },
+ "page_hash": "ddfdbba01d90a1fce591151435395c04528673cdbc438f9ff26c6328bf5dc550",
+ "content_hash": "e3493a69d54539df57f7a4638bd87d6a3399e2a7354f70ddcee8b34e94884d56",
+ "reconstructed_from_page": true
+}
