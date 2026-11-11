@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2517",
+ "title": "Ten Is Full Width",
+ "slug": "ten-is-full-width",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2517/IB-SMART-NOTE-20261109-sn2517-ten-is-full-width.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "- **HIS WORDS, VERBATIM:** \"all of a sudden the whole screen as you're scrolling down it's widescreen widescreen all of a sudden it's narrow screen. narrow screen narrow screen for this presentation of the top ten and then it goes back to widescreen like it shouldn't do that right? It should just be full screen screen all the way through not switching to narrow screen halfway through the presentation.\"\n- **THE DEFECT:** the Top 10 section went narrow (centered column) in the middle of a widescreen page, then back to wide. The width switches mid-page for one section only.\n- **THE RULE:** the page is full screen all the way through — the Ten matches the other sections' width, no switching mid-page. One page, one width, end to end.\n- **WHY IT READS AS A DEFECT:** a width change mid-scroll reads as a different page, or a broken one. The reader's eye has settled into the widescreen rhythm; the narrow column breaks it for no reason, and the return to wide breaks it again. Two breaks for one section.\n- **SCOPE:** the pricing page (v73). The rule generalizes: a section never narrows the page on its own — width is a property of the page, not of the section.",
+  "human_view": "Scrolling down the pricing page feels like driving down a wide road — and then, just for the Top 10, the road narrows to a lane, and then widens again. Nothing is wrong with the Ten itself; the problem is the switch. A page should be one width all the way through, the way a road is one width all the way along. The Ten gets the same full width as everything else, and the drive stays smooth.",
+  "child_view": "Imagine a wide road that suddenly gets narrow for a little bit and then wide again — that would be strange, right? The page is the same: it should stay wide all the way down, including the Top 10 part. No squeezing in the middle.",
+  "grandma_view": "Dear, the page was wide and lovely, love, and then the Top 10 went narrow right in the middle, dear, and then wide again — it just shouldn't do that, love. One width, all the way through, like a good road. That's the whole of it, dear.",
+  "ai_view": "This is the \"one world\" law applied to width: the page is one continuous world, and a section that changes the world's width breaks the world. It connects to SN-2422 (a page that fills two-thirds of its stage is unfinished — the viewport is the stage) and to SN-2511's banner rule (the Ten's header must feel like part of the Ten): the Ten must feel like part of the page, and sharing the page's width is the most basic form of belonging. A centered narrow column inside a widescreen page is a page-within-a-page, and a page-within-a-page is the same class as a popup-within-a-page — the reader is suddenly somewhere else, and nobody told them why.",
+  "what_it_means": "- **TEN IS FULL WIDTH:** the Top 10 section matches the other sections' width — no narrow centered column mid-page.\n- **ONE WIDTH, ALL THE WAY THROUGH:** width is a property of the page, not of the section.\n- **THE DEFECT IS THE SWITCH:** narrow-then-wide reads as a different page, or a broken one.",
+  "whats_inside": [
+   "- The Ten goes full width in pricing v73, matching the other sections.\n- Width is a page property: no section narrows the page on its own.\n- Next loop run re-checks: the pricing page reads full screen all the way through, Ten included."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "237b102a2f31fe7e64eb596108bcf81f0ced19c76187f36b9d211d5d0b77e647",
+ "content_hash": "de69ac3eadbe44bb84aba7c66c6787ee16e2785814ff99f85ece0000a6ed4acb",
+ "reconstructed_from_page": true
+}
