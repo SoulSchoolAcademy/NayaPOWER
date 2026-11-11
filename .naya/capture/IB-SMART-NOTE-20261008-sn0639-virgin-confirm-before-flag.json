@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-639",
+ "title": "IB-SMART-NOTE-20261008-sn0639-virgin-confirm-before-flag.md",
+ "slug": "virgin-confirm-before-flag",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0639/IB-SMART-NOTE-20261008-sn0639-virgin-confirm-before-flag.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-10-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "A RED flag is a hypothesis until it survives virgin state. The battery that flags a failure must re-run itself on a fresh detached worktree at the exact tip BEFORE the flag goes to the board and before any repair is attempted. On 2026-10-08 a CI battery flagged 3 failures in test_protected_intelligence_integrity.py as \"SN-0359 hollowing\" on tip 00f50bb3; independent virgin-state reproduction returned 7/7 PASS twice and the full suite 1056/11/0 — two false REDs from reused (non-virgin) worktrees on the same object, both lanes burned on nothing. Per the evidence law, no repair is attempted on a failure that cannot be reproduced.",
+  "human_view": "",
+  "child_view": "",
+  "grandma_view": "",
+  "ai_view": "",
+  "what_it_means": "",
+  "whats_inside": [],
+  "topics": [
+   "System-Intelligence"
+  ]
+ },
+ "page_hash": "79ccd201fe198b5baa9c0253ca94fbfaac07c6a4a04ea1bf1b0b7f5862142037",
+ "content_hash": "c5656a4811cc5f2e865c96f1bf067c9eb1d432b9759dabdee41f096f76f27866",
+ "reconstructed_from_page": true
+}
