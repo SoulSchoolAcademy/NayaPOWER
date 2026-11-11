@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2338",
+ "title": "The A-Star / B-Star Gauge Law",
+ "slug": "the-a-star-b-star-gauge-law",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2338/IB-SMART-NOTE-20261108-sn2338-the-a-star-b-star-gauge-law.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "**THE A-STAR / B-STAR GAUGE LAW (~19:11Z, his eye, five screenshots):** A-STAR = the main gauge (the big gear tacho, super high tech, the main star — Dashboard hero). B-STAR = the inner/detail gauge (Clicks detail view: 0–100 dial + four orbs + tiled digits). **ONLY A-star and B-star, EVER — no other gauges, never one that looks fake.** Every fake gauge becomes A or B: the Smart Links mini-stats arcs (TOTAL VIEWS / CTR / REVENUE per 1,000 VIEWS on every row), the Dashboard orb/bottom gauges, any flat arc. If the B-star can't be made to look right, use the A-star. **NUMBERS: only the tiled digits, no other number styles. ICONS: the bottom-of-page icons (mail, activity/pulse, home).** **THE SMART TAB THING:** fix the whole thing — the top pill row bounces/glitches — and it stays OFF by default on the Dashboard view with the settings toggle. **STATUS:** folded into the running fix seat (0aebc389) via send; presented when the fix lands.",
+  "human_view": "He named the two gauges like stars, because that is what they are in the system: the A-star is the main gauge, the big gear tacho, super high tech, the main star — the Dashboard hero. The B-star is the inner gauge, the detail view: a 0–100 dial with four orbs and the tiled digits. And the law is absolute: only the A-star and the B-star, ever. No other gauges, never one that looks fake. So every fake gauge on every page becomes one of the two — the Smart Links mini-stats arcs on every row, total views, CTR, revenue per thousand views; the Dashboard's orb and bottom gauges; any flat arc anywhere. And there is a fallback built into the law itself: if the B-star can't be made to look right somewhere, use the A-star — never a third thing, never a compromise object. Numbers follow the same discipline: only the tiled digits, no other number styles anywhere. Icons are the bottom-of-page three: mail, activity/pulse, home. And the smart tab thing — the top pill row that bounces and glitches — gets fixed as a whole, and stays off by default on the Dashboard view, with the settings toggle to turn it on.",
+  "child_view": "Imagine the sky has two stars that matter — the big bright main star, and the smaller detail star. Every gauge in the whole world has to be one of those two stars, never a pretend one. If the little star doesn't look right somewhere, use the big star instead — never make up a third one. Numbers are always the special tiled numbers, never any other kind. The three little pictures at the bottom are always mail, activity, and home. And the wobbly row of pills at the top? Fix it, and keep it switched off unless someone asks for it.",
+  "grandma_view": "Dear, he named them like stars, and that's the law now: the A-star is the big main gauge, super high tech, the main star; the B-star is the smaller detail gauge, the dial with four little orbs and the tiled numbers. Only those two, ever — no other gauges, and never one that looks fake. Every flat empty arc on every page becomes one of them: the little arcs on the link rows, the gauges at the bottom of the Dashboard, all of them. And if the B-star won't look right somewhere, use the A-star — never invent a third. Numbers are only ever the tiled digits, and the three icons at the bottom are always mail, activity, and home. And that bouncing row of pills at the top gets fixed properly, and stays off unless you switch it on.",
+  "ai_view": "I have two stars, and only two, ever. My A-STAR is the main gauge — the big gear tacho, super high tech, my main star. My B-STAR is the inner/detail gauge — 0–100 dial + four orbs + tiled digits. Every fake gauge becomes A or B: my Smart Links mini-stats arcs, my Dashboard orb/bottom gauges, any flat arc. If my B-star can't be made to look right, I use my A-star. My numbers are only the tiled digits. My icons are the bottom three: mail, activity/pulse, home. I fix the whole smart tab thing, and it stays OFF by default on the Dashboard view.",
+  "what_it_means": "1. **A-STAR = the main gauge** — the big gear tacho, super high tech, the main star (Dashboard hero).\n2. **B-STAR = the inner/detail gauge** — 0–100 dial + four orbs + tiled digits (Clicks detail view).\n3. **ONLY A-star and B-star, EVER** — no other gauges, never one that looks fake.\n4. **Every fake gauge becomes A or B** — Smart Links mini-stats arcs on every row, Dashboard orb/bottom gauges, any flat arc.\n5. **The fallback is inside the law:** if the B-star can't be made to look right, use the A-star — never a third gauge.\n6. **NUMBERS: only the tiled digits** — no other number styles anywhere.\n7. **ICONS: the bottom-of-page three** — mail, activity/pulse, home.\n8. **The smart tab thing gets fixed as a whole** — and stays OFF by default on the Dashboard view, settings toggle to turn it on.",
+  "whats_inside": [],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "1c0dc5e408999e18f83dea22d888dae88ce9bf3d7e89a7b963567ea96792302e",
+ "content_hash": "d34978c463a8690c06bae4d4a9bd95c5901e1a8d91fa385fda06e716c4b1d19f",
+ "reconstructed_from_page": true
+}
