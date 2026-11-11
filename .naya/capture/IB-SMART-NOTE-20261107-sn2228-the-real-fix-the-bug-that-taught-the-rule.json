@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2228",
+ "title": "The Real Fix — The Bug That Taught the Rule",
+ "slug": "the-real-fix-the-bug-that-taught-the-rule",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/07/DESIGN/SN-2228/IB-SMART-NOTE-20261107-sn2228-the-real-fix-the-bug-that-taught-the-rule.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-07T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The growing demo added tiles but stalled at the last stage — frozen \"1\" plus four blank tiles, never reaching 10,725. The first fix (rebuild every strip for the new target) did NOT work — the re-check found the identical stall. The real cause: `buildReel` read the strip length from the reel's STALE `data-max` attribute (set at creation for 725), so the \"rebuilt\" strips were still the old lengths — the count ran past the strip end, leaving no digit under the window (blank), while the colour logic advanced correctly. The real fix: the strip length is now computed from the target (`max = Math.floor(target / div)`, and `data-max` is updated). Screen check #3 (21:00Z) proved it on a real screen: the growing demo reaches 10,725 in every run, five tiles, all digits showing, none blank.",
+  "human_view": "The screen check caught what the code review missed — twice. The first fix looked right and was wrong. The real cause was the stale state the fix read, not the fix itself. That is the lesson: check what the code reads, not just what it does.",
+  "child_view": "The toy was broken because it was reading an old instruction instead of the new one. We fixed it by making it read the new instruction every time. Now it works.",
+  "grandma_view": "It looked fixed, but it wasn't — because it was still using the old numbers underneath. Once we made it use the new numbers, it worked perfectly.",
+  "ai_view": "A fix that doesn't work is not a failure — it is information. It tells you the cause is deeper than the fix. The discipline is: don't fix the fix. Find what the fix reads, and fix that. And prove it on a real screen, because the screen is the only witness that cannot be argued with.",
+  "what_it_means": "- Bug: `buildReel` read strip length from the stale `data-max` attribute.\n- Fix: strip length computed from the target; `data-max` updated. Filed as blob cf4c79de.\n- Proof: screen check #3, 21:00Z — 10,725 in every run, three runs, two after reload.",
+  "whats_inside": [
+   "- The fix is in the build record (HOW-THE-NUMBER-WAS-BUILT.md) and in this note, so the lesson compounds instead of repeating.\n- Screen checks are the proof. A claim is not proof."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "5dcdc7e11b911d819fc70197a0193433f7fab4d4c65ab4cc7b46a44f6031b23e",
+ "content_hash": "5da1276011aae37bbd593ab0c28b948d3700dd0e709aa5dffaf8a165fe7cda5e",
+ "reconstructed_from_page": true
+}
