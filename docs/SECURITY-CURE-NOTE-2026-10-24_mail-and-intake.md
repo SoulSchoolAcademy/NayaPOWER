@@ -72,3 +72,27 @@ No production change of any kind; a review-only code proposal is not a productio
 **Expanded behavior proven in the synthetic schema:** Alias-binding migration creates canonical owner_alias_claims, backfills a known Alice alias from person_identities, denies direct anonymous claim reads and RPC execution, and permits owner-bound universal search. The intake migration admits an anonymous INSERT with no RETURNING clause (the intended write-only client behavior), but rejects an anonymous INSERT ... RETURNING id and returns no rows for anonymous SELECT. Mail behavior remains as in the 13-check isolated two-script test. All synthetic identities and data are fictitious.
 
 **Limitations / gate remains:** Full-chain *syntax and selected modeled behavior* PASS in a synthetic PostgreSQL fixture does not certify the historical 171 production migrations, the real live database's unmodeled tables/functions/policies, Supabase Auth/Data API, production API keys, revocation of stale JWTs, v7 Edge Function mail regression, independent security sign-off, or production safety. The full deployed migration history/contract and owner authorization must be independently tested in a properly scoped Supabase development environment before any GT-039 production application. No billing or production changes occurred in this proof.
+
+
+## 2026-11-11 production-shape preflight (fail-closed; historical metadata only)
+
+**New bounded technical artifact:** tools/preflight_gt039_schema.py consumes a metadata-only JSON snapshot of public table and column names, derives the required fields directly from the existing Person Timeline / Universal Search source guards and the existing Smart Links / Naya Notes CREATE TABLE contracts, and reports the first incompatible prerequisite shape without changing any database. It does not duplicate the canonical application schema, grant migrations, or add a new release engine.
+
+**Recorded source fixture:** tests/fixtures/gt039_live_columns_20261111.json contains only table names and column names obtained by read-only Supabase information_schema.columns inspection on November 11; **no owner, customer message, or account data**. It is historical evidence, not a current/fresh pre-deployment check. Its independent replay command is:
+
+python tools/preflight_gt039_schema.py --catalog-json tests/fixtures/gt039_live_columns_20261111.json
+
+**Expected result:** exit 2, verdict BLOCKED_SCHEMA_DRIFT, **13 missing columns across 6 existing production tables** (the expanded CREATE TABLE check also detects smart_links.updated_at, in addition to the earlier 12 source-guard/owner-field mismatches). Invalid/incomplete metadata fails with exit 3 (UNKNOWN_FAIL_CLOSED). A shape-compatible synthetic input exits 0 but explicitly says SHAPE_COMPATIBLE_ONLY, never production approval. Run tests/test_gt039_schema_preflight.py for sabotage and missing-metadata negative controls.
+
+**For an authorized fresh check:** First re-read the exact current production schema using the following read-only query, without touching table rows or private content:
+
+    SELECT table_name,column_name
+    FROM information_schema.columns
+    WHERE table_schema='public'
+      AND table_name IN ('smart_notes','smart_mail_threads','smart_mail_messages',
+                         'invites','naya_notes','smart_links')
+    ORDER BY table_name,ordinal_position;
+
+Collect the results into the documented JSON shape with kind=information_schema_columns, captured_date_utc set to the *actual* UTC capture date, and tables keyed by table_name with a list of column_name strings. Run the script on that snapshot. Read-only catalog results are still NOT proof of full version history, indexes, policies, privilege reachability, services, or production approval.
+
+**Release decision:** Existing PR #3345 remains DRAFT / HOLD. In the captured live schema, CREATE TABLE IF NOT EXISTS will not add the missing owner_id or text columns on existing tables; source guards deliberately reject other absent fields. Do not waive the guards or infer owner_id values from human-readable aliases. Security/DB plus Smart Links, Notes, Timeline/Search owners must reconcile a real schema-preserving dependency plan and obtain independent isolated runtime proof and Shawn's protected production approval.

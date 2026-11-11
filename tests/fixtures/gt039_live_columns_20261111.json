@@ -1,0 +1,66 @@
+{
+  "kind": "information_schema_columns",
+  "captured_date_utc": "2026-11-11",
+  "source": "read-only live Supabase information_schema.columns metadata, public schema, project dahisasgpfvziswqvmvm",
+  "source_sql": "SELECT table_name,column_name FROM information_schema.columns WHERE table_schema='public' AND table_name IN ('smart_notes','smart_mail_threads','smart_mail_messages','invites','naya_notes','smart_links') ORDER BY table_name,ordinal_position",
+  "historical_fixture": true,
+  "tables": {
+    "invites": [
+      "id",
+      "code",
+      "inviter_alias",
+      "invitee_name",
+      "invitee_email_hash",
+      "status",
+      "template_id",
+      "dry_run",
+      "created_at",
+      "sent_at",
+      "visited_at",
+      "joined_at",
+      "nudged_at"
+    ],
+    "naya_notes": [
+      "id",
+      "owner_alias",
+      "title",
+      "body",
+      "category",
+      "list_name",
+      "source_context",
+      "created_at",
+      "updated_at"
+    ],
+    "smart_links": [
+      "id",
+      "owner_alias",
+      "name",
+      "target_url",
+      "active",
+      "created_at"
+    ],
+    "smart_mail_messages": [
+      "id",
+      "thread_id",
+      "from_alias",
+      "body",
+      "created_at"
+    ],
+    "smart_mail_threads": [
+      "id",
+      "subject",
+      "from_alias",
+      "to_alias",
+      "preview",
+      "created_at",
+      "updated_at"
+    ],
+    "smart_notes": [
+      "id",
+      "content",
+      "owner_alias",
+      "created_at",
+      "updated_at"
+    ]
+  }
+}
