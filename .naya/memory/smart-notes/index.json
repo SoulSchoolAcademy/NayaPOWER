@@ -42865,6 +42865,34 @@
     "Lesson",
     "Distillation"
    ]
+  },
+  {
+   "smart_note_id": "SN-2091",
+   "intelligent_block_id": "IB-SMART-NOTE-20261106-sn2091-test-it-know-it-make-it-right",
+   "slug": "test-it-know-it-make-it-right",
+   "title": "Test It, Know It, Make It Right",
+   "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/quality/SN-2091/IB-SMART-NOTE-20261106-sn2091-test-it-know-it-make-it-right.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/quality/SN-2091/IB-SMART-NOTE-20261106-sn2091-test-it-know-it-make-it-right.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/quality/SN-2091/IB-SMART-NOTE-20261106-sn2091-test-it-know-it-make-it-right.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "QUALITY",
+   "captured_at": "2026-11-06",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-resolve",
+   "registered_at": "2026-11-11T18:19:27Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-06",
+   "page_hash": "dcac4e52a3ea30e6b1cae66fde09ed51a75001d3e4cc2606731cf599b00f8497",
+   "one_line": "By testing and using it, you know how to make it work better, and you know what you need to make it the ultimate. By actually getting in there and testing it all out and checking it all out, you know how to do it right. You know what is missing. And then you can just make it right. The whole system is built for us to create this ultimate empire of technology, done in a way that — done right — will build itself and do it successfully, as repeatable, and it is high level each time, because we built it into the system. That is our brand: high level, the highest level of design, quality, functionality — run by intelligence, operated by intelligence, made with intelligence.",
+   "topics": [
+    "System",
+    "Quality"
+   ]
   }
  ],
  "sequence_policy": {
@@ -42875,5 +42903,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "599235db1bae7d491479355092f4f7dc618139cec5e767f10e695520ccbd5563"
+ "corpus_manifest_hash": "80bbfd0b42e57a8334760464666100800e57232a71f8369b919dd6fd80292de4"
 }
