@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2325",
+ "title": "Smart Box Has Gigabytes, Smart Ledger Is Included",
+ "slug": "smart-box-gigabytes-ledger-included",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2325/IB-SMART-NOTE-20261108-sn2325-smart-box-gigabytes-ledger-included.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "**SMART BOX (his word ~18:19Z):** Power 10 GB (was X — Power now HAS Smart Box) / Pro 100 GB / Max 500 GB, organizes itself; Free still X. **SMART LEDGER (his word ~18:21Z):** Included ×4 — it IS the collective chain technology, the action ledger that makes everything transparent (a hub of blockchains done intelligently); NOT a tiered feature — the old Entries/Full ladder is gone. **Built:** Smart Box in round 2 (builder 2f4c35f5, 36/36/36 verified, Power 10 GB in place). Smart Ledger as its own edit (builder 47174403, done 18:23Z) — 36/36/36 verified, old Entries/Full values gone file-wide (grep 0), popup rewritten, § jewel kept, round-2 changes untouched. **Unchanged around them:** Smart Audio X/10/10/10; the rest of the chart as the ladder note (SN-2323) and the membership note (SN-2324) record it.",
+  "human_view": "Imagine two shelves in a shop. One shelf you used to rope off — \"not for you\" — and he walks up and says, no, this one is open to everyone who pays, measured in how much it holds: ten, a hundred, five hundred. The other shelf isn't a shelf at all — it's the floor the whole shop stands on. You don't charge different prices for the floor; everyone walks on it, because it's what makes the shop a shop. The builder moved the rope, relabeled the floor, and checked that no trace of the old labels remained anywhere — not one leftover word.",
+  "child_view": "Imagine a magic box that tidies itself. He said the box is for everyone who pays now — the smallest pays for ten toy-boxes of space, the middle for a hundred, the biggest for five hundred. And the ledger — the big book where every action is written down — isn't something you buy more of. It's just there, for everyone, because it's how the whole place stays honest. The builder erased the old prices from that row so thoroughly that not one old word is left anywhere on the page.",
+  "grandma_view": "Dear, some things are measured and some things are the ground you stand on. The Box is measured — in gigabytes now, and the smallest paying level gets it too, because he said so. The Ledger is the ground: it is the chain that makes everything transparent, and you don't sell the ground in slices. When a row changes from a ladder to \"included for everyone\", erase the old ladder completely — every trace of it, in every corner — or the old price will come back and confuse someone later.",
+  "ai_view": "I give Power the Box: 10 GB Power / 100 GB Pro / 500 GB Max, organizes itself; Free still X. I make the Ledger Included at all four levels — it is the collective chain technology, the action ledger that makes everything transparent, a hub of blockchains done intelligently — and I erase the old Entries/Full ladder completely, file-wide, grep 0, popup rewritten, § jewel kept. I keep the round-2 changes untouched while I do it, and I verify 36/36/36 after. What is infrastructure is included; what is measured is measured in his numbers.",
+  "what_it_means": "1. **Smart Box:** Power 10 GB (was X — Power now HAS Smart Box) / Pro 100 GB / Max 500 GB, organizes itself; Free still X.\n2. **Smart Ledger:** Included ×4 — it IS the collective chain technology, the action ledger that makes everything transparent (a hub of blockchains done intelligently); NOT a tiered feature.\n3. **Old ladder gone:** the Entries/Full values are erased file-wide (grep 0); the popup is rewritten; the § jewel is kept.\n4. **Built and verified:** Smart Box in round 2 (2f4c35f5, 18:21Z); Smart Ledger as its own edit (47174403, 18:23Z) — both 36/36/36, both presented to Shawn; his eye decides.\n5. **Unchanged:** Smart Audio X/10/10/10; the rest of the chart as SN-2323 and SN-2324 record it.",
+  "whats_inside": [],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "56fe89fb91b2481480ea08ef0dd27d5f8bf66327f378c38806050de259a21804",
+ "content_hash": "5696b3aab115c3a2768fc8f6d435472cb106c025458f5c70307e6ad0c8b21d0b",
+ "reconstructed_from_page": true
+}
