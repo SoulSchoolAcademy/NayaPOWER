@@ -5466,8 +5466,35 @@ function HubView(params) {
   /* ——— Notifications bar: Mail · Activity · Spaces (Shawn 2026-10-20) ——— */
   window.NayaNotif = window.NayaNotif || {
     get(k) { try { return parseInt(localStorage.getItem('nayanet.notif.' + k) || '0', 10) || 0; } catch (e) { return 0; } },
-    set(k, n) { try { localStorage.setItem('nayanet.notif.' + k, String(n)); } catch (e) {} },
+    set(k, n) { var prev = this.get(k); try { localStorage.setItem('nayanet.notif.' + k, String(n)); } catch (e) {} if ((k === 'mail' || k === 'activity' || k === 'spaces') && n > prev) { this.playSound(); } },
     bump(k) { this.set(k, this.get(k) + 1); this.refresh(); },
+    /* Notification sound (2026-11-11, hub-notification-sounds-toggle-20261027):
+       one calm chime, citizen's choice, default OFF (pref 'nayanet.notif.sound',
+       '1' = on, anything else = off). Fires on a notification ARRIVAL — a
+       channel count rising — the same event the pop-up fires on. WebAudio,
+       no asset, no library: two soft sine notes, gentle decay. Never throws;
+       a suspended AudioContext or missing API just stays silent. */
+    soundOn() { try { return localStorage.getItem('nayanet.notif.sound') === '1'; } catch (e) { return false; } },
+    playSound() {
+      if (!this.soundOn()) return false;
+      try {
+        var AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return false;
+        var ctx = this._audioCtx || (this._audioCtx = new AC());
+        try { if (ctx.state === 'suspended') { ctx.resume(); } } catch (e) {}
+        var t = ctx.currentTime || 0;
+        [[880, 0, 0.5], [659.25, 0.18, 0.7]].forEach(function (n) {
+          var o = ctx.createOscillator(), g = ctx.createGain();
+          o.type = 'sine'; o.frequency.value = n[0];
+          g.gain.setValueAtTime(0.0001, t + n[1]);
+          g.gain.exponentialRampToValueAtTime(0.12, t + n[1] + 0.03);
+          g.gain.exponentialRampToValueAtTime(0.0001, t + n[1] + n[2]);
+          o.connect(g); g.connect(ctx.destination);
+          o.start(t + n[1]); o.stop(t + n[1] + n[2] + 0.05);
+        });
+        return true;
+      } catch (e) { return false; }
+    },
     counts() {
       var unread = 0;
       try { var seen = this.get('seen.activity'); unread = Math.max(0, ActivityLog.read().length - seen); } catch (e) {}
@@ -8167,6 +8194,21 @@ function SettingsRoom(){
         }
         noti.body.appendChild(row);
       });
+      /* Notification sound (2026-11-11, hub-notification-sounds-toggle-20261027):
+         one calm chime on a new notification; citizen's choice, default OFF. */
+      const sndOn=pref('nayanet.notif.sound','0')==='1';
+      const sndRow=document.createElement('div');
+      sndRow.style.cssText='padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);max-width:680px';
+      const sndHead=document.createElement('div');
+      sndHead.style.cssText='display:flex;justify-content:space-between;align-items:center;gap:16px';
+      sndHead.innerHTML='<span style="'+LBL_STYLE+'">Notification sound</span>';
+      sndHead.appendChild(seg([{label:'On',value:'1'},{label:'Off',value:'0'}],sndOn?'1':'0',function(v){setPref('nayanet.notif.sound',v);if(v==='1'&&window.NayaNotif){try{window.NayaNotif.playSound();}catch(e){}}render();}));
+      sndRow.appendChild(sndHead);
+      const sndSub=document.createElement('p');
+      sndSub.style.cssText=MUTED_STYLE+';margin-top:8px';
+      sndSub.textContent='One calm chime when a new notification arrives. Off by default — silence unless you choose the sound.';
+      sndRow.appendChild(sndSub);
+      noti.body.appendChild(sndRow);
       const note=document.createElement('p');note.style.cssText=MUTED_STYLE+';margin-top:12px;max-width:680px';
       note.textContent='These set your preference only. The counts on the bar below are untouched — nothing already delivered is rewritten.';
       noti.body.appendChild(note);
