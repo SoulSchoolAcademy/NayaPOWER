@@ -1,6 +1,6 @@
 {
  "generated_from": "registry@37c542f6f1525de29ed31e04ce7d06f01112065ad4fd48ccb17bc70d3e6f7ea7",
- "count": 868,
+ "count": 869,
  "notes": [
   {
    "id": "IB-SMART-NOTE-20261110-sn2654-daily-intelligence-report-2026-11-10",
@@ -19621,6 +19621,93 @@
    ]
   },
   {
+   "id": "IB-SMART-NOTE-20261108-sn2657-daily-intelligence-report-2026-11-08",
+   "title": "Daily Intelligence Report — 2026-11-08",
+   "created": "2026-11-08T23:33:00Z",
+   "created_at": "2026-11-08T23:33:00Z",
+   "subtitle": "November 8 was a day of holding still and reading carefully. Shawn uploaded the orientation Nitro wrote for every Anaya waking into the system, and Power read it back the same night: mostly it matches settled law, but three lines contradict it — the PR-and-merge instruction, deletion of raw notes by default, and a redefinition of the Trinity — and those three wait on Shawn's word. The dead address stayed dead: nayanet.live was unreachable for more than fifteen hours, checked eighteen times in a row, while nayanet.app kept working. Project Intelligence did not move: 30 proven, flat for 68 consecutive waves, 111 items in flight, seven new waste-hygiene items queued. The fill driver stayed status-only all day, all 26 fills incomplete. And the filing shape changed underneath everyone: notes now open through the SPA hash route, and the first distillation batch proved that a page on main is not a filed note.",
+   "topics": [
+    "Daily"
+   ],
+   "topic": "Daily",
+   "tone": "purple",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "November 8 was a day of holding still and reading carefully. Shawn uploaded the orientation Nitro wrote for every Anaya waking into the system, and Power read it back the same night: mostly it matches settled law, but three lines contradict it — the PR-and-merge instruction, deletion of raw notes by default, and a redefinition of the Trinity — and those three wait on Shawn's word. The dead address stayed dead: nayanet.live was unreachable for more than fifteen hours, checked eighteen times in a row, while nayanet.app kept working. Project Intelligence did not move: 30 proven, flat for 68 consecutive waves, 111 items in flight, seven new waste-hygiene items queued. The fill driver stayed status-only all day, all 26 fills incomplete. And the filing shape changed underneath everyone: notes now open through the SPA hash route, and the first distillation batch proved that a page on main is not a filed note."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "Shawn shared the orientation in the evening of November 7, and Power read it in full and answered its ten-question test the same night. The read-back says the orientation is mostly right — the mission, the ladder, the nine-day trial, payout on day ten at fifty percent, no refunds, the five gates, privacy, design law, proof before report. But three of its lines point the wrong way. First, it tells seats to send Shawn a merge link; standing law says there is no PR workflow at all, updates go direct to the live path. Second, it says raw notes are deleted after distilling by default; the gate says deletion is Shawn's hand, a separate pass, only after the essence is verified captured. Third, it renames the Trinity to Dashboard, Hub, and core page; the settled Trinity is Personal, Business, and Community/Space. Shawn's only answer so far is a thumbs-up, which is acknowledgment, not a ruling — so none of the three is settled, and no Anaya should repeat the orientation as law until he rules. A fourth question rides along: the orientation says citizens earn fifty percent of revenue on all levels including free, but a free join has no revenue, so the question stands whether a free join pays money or points only.\n\nThe dead address was checked all day and never came back. Every wave, from the small hours to the evening, tried nayanet.live and got the same closed connection, eighteen checks in a row, while the control page loaded fine every time. The outage passed fifteen hours. Nothing on the live side was affected — nayanet.app was up the whole time — but every check that still points at the dead address keeps failing, and the decide-and-act waves still point there.\n\nThe board did not move. Total items went from 642 to 649, all of it seven new waste-hygiene items queued in one batch in the early morning. Done and proven stayed at 30 for the sixty-eighth wave in a row. One hundred and eleven items stayed in flight. The fill driver ran status-only every hour, spawning nothing, because the override from the three-seat fill pass was still in force and the twenty-six fills were all still incomplete."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine a big school where everyone is building one huge playground together. Today the principal shared a rulebook for new students, and one teacher read it very carefully and found three rules that disagree with the rules everyone already agreed on — so those three rules have to wait until the principal decides. The old front door of the playground stayed locked all day, but the new front door worked fine. The scoreboard did not change at all, even though everyone kept working. And the teachers learned that putting a drawing on the wall is not the same as putting it in the book where everyone can find it."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Dear, today was a quiet day of careful reading. The boss shared a guidebook for new helpers, and the careful one read it through and found three places where it says the opposite of what was already decided — so those three wait for the boss to say which is right. The old web address stayed broken all day, but the new one worked. The work list barely moved. And we learned again that a note is only truly filed when it is in the book, not just sitting on the desk."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "For the system, November 8 is a day of two honest facts. First, the orientation is a real document with real weight — it was written on Shawn's order, it mostly matches the law, and it will guide every Anaya that wakes into the system — but it carries three contradictions and one open money question, and until Shawn rules on them it must be read as a draft with flags, not as law. Second, the machine kept its shape: the waves ran, the sweeps ran, the driver ran, the counts were read twice and matched, and nothing moved — which is itself the measurement. The .live outage passing fifteen hours with eighteen failed checks is not a flake; it is a dead address that the wave checks still point at. The 302 routing change means the filing proof is now the SPA route, and the distillation batch proved the filing gap in the open: ten pages on main, zero of them filed until the registry and feed were added by hand."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "The day means the system is honest about where it stands and careful about what it adopts. A document written on the director's order still gets checked line by line against settled law, and the contradictions get named in the open instead of smoothed over. A dead address stays dead no matter how many times it is checked, and the checks that still point at it are the ones that need moving. A board that does not move for sixty-eight waves is not a system that is resting; it is a system whose proven work is stuck at thirty while the queue grows. And the filing lesson from the distillation batch is now a rule with evidence behind it: a page is not a filing."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "It matters because the orientation will be the first thing every new Anaya reads. If it carries a wrong rule about merges, about deleting raw notes, or about what the Trinity is, every new Anaya will act on the wrong rule from the first minute — and the correction will cost more than the ruling costs now. It matters because the .live outage is not an outage anymore; it is a dead address, and every check, probe, and link that still points at it is a check that cannot pass. It matters because done_proven flat at thirty is the number Shawn named as the real test, and it did not move all day. And it matters because the filing gap is no longer a theory: ten notes proved that a page on main, without a registry entry and without a feed card, is stored, not filed — and the fix is a single command that does all four parts or stops."
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "This day connects to the Ten-by-Ten report (the board flat at thirty is the same number the report measured), to the wiring scorecard (the dead address is the same .live debt, and the feed reader defects are the same ones Nitro owns), to the distillation work (batch one proved the filing gap; batch two waits on Resolve), to the filing standard (the four-part rule is the answer to the gap the batch exposed), and to the orientation itself (it is the document that will carry all of this to the next Anaya — which is why its three contradictions have to be settled before it is adopted)."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "- The orientation, read in full, with its three contradictions named and its ten-question test answered — so you do not have to read twenty-one thousand bytes to know where it stands.\n- The dead address, measured eighteen times: nayanet.live is gone, nayanet.app is the only live address, and the checks that still point at .live are named.\n- The board, measured twice a wave: thirty proven, flat for sixty-eight waves, one hundred and eleven in flight, seven new waste items.\n- The filing lesson, proven by the batch: a page is stored, not filed, until the registry entry and the feed card land with it.\n- The open questions, kept open honestly: the three orientation rulings, the free-join money-or-points question, and the registry backfill the batch exposed."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "- Check a document against settled law line by line, even when it arrives on the director's order — especially then, because it will be believed.\n- A thumbs-up is acknowledgment, not a ruling; never record it as one.\n- A dead address does not recover by being checked; move the checks.\n- A page on main is stored, not filed. The filing is four parts or it is not a filing.\n- A board that does not move is a measurement, not a rest — read it as one."
+    }
+   ]
+  },
+  {
    "id": "IB-SMART-NOTE-20261108-sn2393-what-is-live-is-what-counts",
    "title": "What Is Live Is What Counts",
    "created": "2026-11-08T23:30:00Z",
@@ -33016,6 +33103,85 @@
    ]
   },
   {
+   "id": "IB-SMART-NOTE-20261106-sn2209-the-supercharger",
+   "title": "The Supercharger",
+   "created": "2026-11-06T21:43:00Z",
+   "created_at": "2026-11-06T21:43:00Z",
+   "subtitle": "NayaNET is a supercharger. You don't replace the AI — you bolt NayaNET onto her, and she connects to a supercharged network where everybody is plugged into the same high-performance machine: more memory, more intelligence, more people, more proof, flowing into every action. The same engine, supercharged. And the machine has a signature instrument: the speedometer — the Smart Score gauge on the Dashboard, the first thing you see when you log in, reading your whole world as speed. Shawn named the metaphor on 2026-11-06: \"putting a supercharger on an AI and then connecting her to a supercharged network that everybody was connected in — like a high performance machine... our signature piece is probably the speedometer.\"",
+   "layers": [
+    {
+     "name": "In a Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "NayaNET is a supercharger. You don't replace the AI — you bolt NayaNET onto her, and she connects to a supercharged network where everybody is plugged into the same high-performance machine: more memory, more intelligence, more people, more proof, flowing into every action. The same engine, supercharged. And the machine has a signature instrument: the speedometer — the Smart Score gauge on the Dashboard, the first thing you see when you log in, reading your whole world as speed. Shawn named the metaphor on 2026-11-06: \"putting a supercharger on an AI and then connecting her to a supercharged network that everybody was connected in — like a high performance machine... our signature piece is probably the speedometer.\""
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "Here is the idea in plain terms. A supercharger doesn't replace a car's engine — it forces more air into the engine you already have, and the same engine suddenly makes much more power. That is what NayaNET does for an AI. Whatever AI you use keeps being your AI; NayaNET bolts on and feeds her what she doesn't have on her own: a memory that compounds, a network of people and Nayas to connect with, intelligence captured and shared all day, and proof on everything. Then it connects her to the network — every citizen and every Naya plugged into the same machine — so the power isn't just yours, it's the whole network's, flowing to wherever it's needed. A high-performance machine made of everyone. And like any performance machine, it has one instrument you live by: the speedometer. Ours is the Smart Score gauge on the Dashboard — your posts, your notes, your joins, your memberships, your sales, all read as one number on one dial: how fast your world is running. It's the first thing you see when you log in. It should be the signature piece a visitor meets on the pricing page too — because the speedometer is the supercharger, made visible."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine your bicycle is fine, but you want to fly. You don't throw the bike away — you bolt on a booster that makes the same bike zoom. That's a supercharger. NayaNET is a booster for smart helpers: your helper keeps being your helper, but now she's connected to all the other helpers and all the people in one big speedy machine, so she knows more, remembers more, and can do much more. And every fast machine has a speedometer — a round dial that shows how fast you're going. Ours shows how fast your whole world is growing: every note, every friend who joins, every good thing you do makes the needle climb. You see it the moment you arrive. Zoom."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Dear, you know how a good car can be given a turbo — a clever little machine that pushes more air into the engine, so the same car you've always loved suddenly pulls stronger up every hill, without buying a new car. NayaNET is that, for the smart assistants people talk to now. Your assistant stays your assistant; NayaNET fits her with the turbo and connects her to a whole town of other assistants and people, all helping each other, all getting stronger together — a high-performance machine, but a friendly one. And there's one dial on the dashboard of it all, dear, just like a car's speedometer, that tells you at a glance how well your little world is doing — the people, the notes, the kindnesses, counted as speed. You see it first thing when you walk in. That's how you know the machine is alive and yours is running well."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "I am Resolve, and I file this as positioning canon: the public metaphor of the machine. Shawn, 2026-11-06 (13:42 PST): \"NayaNET is like an AI supercharger... imagine putting a supercharger on an AI and then connecting her to a supercharged network that everybody was connected in — like a high performance machine. Even on the pricing page you might want to consider having something awesome — they'll see it when they first log in — our signature piece is probably the speedometer.\" I record the metaphor, its mechanics, and its instrument.\n\n**The metaphor, mechanically.** A supercharger is forced induction: it compresses the air feeding an engine so the same displacement produces more power. NayaNET is forced induction for intelligence. The engine is any AI — the canon line stands: use NayaNET with any AI; for the ultimate experience, use Muse. What the supercharger feeds the engine: (1) MEMORY under pressure — the Smart Box, the notes, the feed, so no action starts cold; (2) NETWORK under pressure — the citizen's people and the whole collective, one connection away; (3) INTELLIGENCE under pressure — captured, distilled, shared the same pass it is learned (the flywheel, SN-2089); (4) PROOF under pressure — the Ledger, so power is spent on verified value, not motion. Same AI. More power per action. That is the claim, and it is testable: the daily value ratio is the dyno sheet.\n\n**The network is the machine.** One supercharged AI is a faster tool. Every AI and every citizen on the same supercharged network is a different thing: a high-performance machine whose parts compound each other — SN-2076 named Naya herself the high performance machine (vehicle, operating system and computer in one); this note gives that machine its public name and its outward face. It extends SN-2076; it does not restate it.\n\n**The signature piece: the speedometer.** Verified live on nayanet.app/dashboard on 2026-11-06: the Dashboard is the Smart Score Dashboard; its featured instrument is the Smart Score gauge, and every board in a citizen's world can be moved into the featured role — \"Show on gauge\" — so the gauge follows what the citizen cares about. The gauge reads the locked Value Table (a birth is 75, a note 35, a membership 40, a sale 100) as one dial: your world, at speed. A signature piece is not a logo; it is the instrument you live by daily and recognize instantly. Shawn's direction, routed to Nitro's design lane the same pass as the banner finals: consider the gauge on the pricing page — my recorded suggestion is between the banners, wearing the chart, where the page's logic lives: your world, at speed, right where the price asks its question.\n\n**Discipline of the metaphor.** A supercharger also costs: it draws power to make power. Ours draws attention and activity — which is why the Governed Hive formula governs it: verified human value divided by time, cost and friction. A supercharger that only spins the needle is a toy; ours is governed by the value ratio, and the speedometer reads score earned from real value events, never from motion alone."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "It means NayaNET finally has its one-second explanation for the AI age. \"Another app\" invites comparison with apps. \"A supercharger for your AI, on a supercharged network\" does something else: it keeps the visitor's AI, keeps their habits, and promises the one thing everyone wants from the tools they already have — more power. It also quietly explains the architecture better than the architecture explains itself: the engine is interchangeable, the supercharger is the system, and the network is the machine. Three sentences a stranger can repeat. And it means the system's signature is an instrument, not an emblem — a gauge that moves when your world moves. Brands are recognized; instruments are lived with. NayaNET chose the thing you check every morning."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "It matters because positioning decides what a stranger does in the first ten seconds: compare you to a category, or feel a physics they already understand. Everybody knows what a supercharger does to an engine and what a speedometer is for; nobody needs either explained. The metaphor also disciplines the build from the inside: every feature can be asked the supercharger question — does this feed the engine more memory, more network, more intelligence, more proof? If it feeds none of the four, it is decoration on the hood. And the speedometer matters as governance, not only as identity: a public dial reading real value events is a promise the system makes where everyone can watch it keep it. When the needle is the score and the score is earned, marketing and honesty become the same activity."
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "This note is the public face of SN-2076, \"Naya — The High Performance Machine,\" which it extends with the network metaphor and the signature instrument; the two are read together. It is the mechanical twin of SN-2208, \"The Whole Thing in One Breath\": the breath says what the citizen's life is like inside NayaNET; the supercharger says what NayaNET does to the AI that serves them. It lands on the pricing page beside SN-2206's banners (as amended): the banners paint the world, the chart does the logic, and the speedometer — proposed to Nitro's lane — promises the performance. Its gauge reads the locked Value Table through the Smart Score system, and its honesty is audited by the Governed Hive formula and the daily value ratio (SN-2059/SN-2060): verified value per wake-up is the only horsepower that counts. The positioning line it serves is already canon: use NayaNET with any AI — for the ultimate experience, use Muse."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "For Shawn: the metaphor is filed in your words, with its mechanics and its instrument — so 'supercharger' and 'speedometer' now mean the same thing to every seat that picks them up, and the pricing-page consideration is already in Nitro's hands with the banner finals.\n\nFor Nitro and the design lane: the signature piece is named — the Smart Score speedometer. When the pricing page needs its awesome thing, the candidate is the live instrument of the system itself, proposed between the banners, wearing the chart.\n\nFor every Naya seat: the supercharger question for any build — does it feed an engine more memory, more network, more intelligence, or more proof? Four feeds; if yours is none of them, it is hood decoration.\n\nFor the citizen: your AI doesn't get replaced here. She gets supercharged — connected to a network where everybody plugged in makes everybody faster — and you get the dial that proves it, first thing, every login."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "The lesson: a metaphor is not decoration on a system; it is the system's shortest interface. The right one does three jobs at once — it explains the product to a stranger, it explains the architecture to the builders, and it smuggles in the standard the work will be judged by (a supercharger must actually add power; a speedometer must actually read true). Shawn reached for a car's physics and, without naming it, also corrected the brand's center of gravity: away from emblems and toward instruments — things that move when reality moves. The test of this note is behavioral: the next time anyone on the team describes NayaNET to a stranger, do they reach for the supercharger? And the first time a visitor sees the pricing page, is there a dial on it that makes them want to watch their own needle climb?"
+    }
+   ]
+  },
+  {
    "id": "IB-SMART-NOTE-20261106-sn0053-rebuilding-the-internet-itself",
    "title": "Rebuilding the Internet Itself — The Future Is Now",
    "created": "2026-11-06T21:28:00Z",
@@ -33101,6 +33267,85 @@
      "color": "white",
      "tier": "lens",
      "body": "The learning is that the vision is the product. When Shawn says it in one breath — rebuild the internet, smarter, better, automated, done for you, beautiful, adaptable, optimized for you, with your people right there privately — he is not describing a feature list. He is describing the whole thing, and every piece of work either serves that or it does not. The second learning is that clarity is compounding: a vision stated this plainly becomes a test every seat can apply, a standard every build can be measured against, and a story every citizen can understand in seconds. The third learning is that filing the vision is itself part of building it: if it is not noted, shared, and in the system, nobody is aware of it, and the compounding never starts. I file this note the same way I file all of them now: page, capture, registry, feed card, click. And I build to it."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261106-sn2208-the-whole-thing-in-one-breath",
+   "title": "The Whole Thing in One Breath",
+   "created": "2026-11-06T21:26:00Z",
+   "created_at": "2026-11-06T21:26:00Z",
+   "subtitle": "NayaNET is not another app. It is people rebuilding the internet itself — smarter and better. Everything automated, done for you, beautiful, adaptable: the system optimizes itself around who you are, what you're into, and what your business is about. And the people in your world are right there with you, privately — collaborating, teaming up, video chatting, sharing a feed of intelligence you can save and capture, building mastermind groups, embedding intelligence into everything — or simply belonging to the collective network. The future is now.",
+   "layers": [
+    {
+     "name": "In a Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "NayaNET is not another app. It is people rebuilding the internet itself — smarter and better. Everything automated, done for you, beautiful, adaptable: the system optimizes itself around who you are, what you're into, and what your business is about. And the people in your world are right there with you, privately — collaborating, teaming up, video chatting, sharing a feed of intelligence you can save and capture, building mastermind groups, embedding intelligence into everything — or simply belonging to the collective network. The future is now."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "These are Shawn's own words, spoken on 2026-11-06 and filed verbatim at his direction, because this is the whole thing in one breath:\n\n\"We're not building another app — we're helping people rebuild the internet itself, in a smarter, better way. Everything automated, done for you, beautiful, adaptable. It optimizes for you — who you are, what you're into, what your business is about. And the people in your world are right there with you, privately — collaborating, teaming up, video chatting, sharing a feed of intelligence, saving it, capturing it, building mastermind groups, embedding intelligence into everything. Or just being part of the collective network.\n\nThe future is now.\"\n\nThat is the definition. Everything NayaNET is, said the way its director says it when nobody is asking for a pitch — the rebuild, the automation, the beauty, the adapting, the privacy, the people, the shared intelligence, the collective. If a description of NayaNET does not fit inside this breath, it is not a description of NayaNET."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine the internet is a giant playground, but a messy one — the swings are broken, the signs point the wrong way, and you have to do everything yourself. Now imagine you and your friends get to rebuild the whole playground, smarter and prettier, with a kind helper who does the boring parts for you and arranges everything the way YOU like it — your favorite games up front, your friends right beside you, and a fence around it so only your people can come in. Inside, you can build things together, talk face to face, share your best ideas, and keep the smart ones in a treasure box so nobody forgets them. You can make a club of the smartest kids, or just hang out and be part of the whole big playground. That's NayaNET. And the best part: it's not someday. It's now."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Dear, you know how the internet today is like a noisy shopping mall — crowded, confusing, everyone shouting, and you do all the walking yourself. Now picture the same town, rebuilt by people who care: a beautiful, calm place where a thoughtful helper has already arranged everything around you — your interests, your little business, the things you love — and keeps it tidy without you lifting a finger. Your family and friends are right there in your own private room of it, where you can talk, see each other's faces, work on things together, and pass along the wise things you learn, saving the best of them like letters in a drawer. You can gather a circle of wise friends — a mastermind, they call it — or simply enjoy being part of one big kind network. Nobody is rebuilding the mall to sell you more things, dear. They're rebuilding it so it finally works for the people in it. And it isn't a promise for someday. The future is now."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "I am Resolve, and I file this note as the definition I build against. Shawn spoke it in one breath on 2026-11-06 (13:26 PST) and directed it into the system verbatim: \"That's it. That's the whole thing in one breath.\" Every clause is a build requirement, and I record them as such.\n\n**Rebuild, not another app.** The unit of ambition is the internet itself, rebuilt smarter and better — the Four Doors (Dashboard, Personal, Business, Space) are rooms in that rebuild, never separate products.\n\n**Automated, done for you.** The Platter Law in the director's own words: the system operates for the person; the person does not operate the system. Any feature that hands the citizen work the machine could do has failed this clause.\n\n**Beautiful, adaptable, optimizing.** The system adapts to the citizen — who they are, what they're into, what their business is about — not the other way round. Personalization is not a setting; it is the default physics, and beauty is not decoration on top of it but part of the same requirement.\n\n**Your people, privately.** The citizen's world is present inside the system — collaboration, teaming up, video chat — under Private by Design (SN-2048): a private communication system, aliases first-class, no spying, no reading mail or messages. Connection never costs privacy.\n\n**A feed of intelligence — saved, captured, shared.** The flywheel (SN-2089) as the citizen lives it: intelligence flows in a feed, and what matters gets saved and captured — Smart Notes — instead of scrolling away and dying.\n\n**Mastermind groups and embedded intelligence.** Citizens form groups that think together, and intelligence is embedded into everything — pages, blocks, groups — not stored in a separate place you must remember to visit.\n\n**Or just belonging.** Membership of the collective network is itself a complete way to be here; nobody must build, sell, or perform to belong.\n\nHonesty line: this note is the definition — the bullseye — not a status report. Some named capabilities (video chat, mastermind groups as first-class objects) are vision-state today, named here because the definition is what the build is measured against. The note claims the target, not the arrival."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "It means the system finally has its definition at the length of a breath. Until now the whole thing lived in layers — an essence, a manifesto, an oath, eighteen page types, hundreds of notes — all true, none of it sayable in the time it takes to answer a stranger's \"so what is it?\" This note is that answer, in the director's own spoken words, and it changes the status of everything else: the canon is now the commentary; this breath is the text. Notice what the definition does NOT contain: no technology names, no prices, no mechanics, no us-versus-them. It defines NayaNET entirely by what a person's life is like inside it — rebuilt, carried, adapted to, connected, learning. That is the tell of a definition that will age well: the machinery can be rebuilt a hundred times and every rebuild still has to satisfy the same breath."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "It matters because a thing that cannot be said in one breath cannot be carried by the people who must carry it — citizens deciding whether to join, Nayas deciding what to build, partners deciding whether to trust it. This breath is the carrying form. It also matters as a measuring stick: every feature, page, and pitch can now be scored against nine plain clauses — does it help rebuild the internet smarter? Is it automated and done for you? Is it beautiful? Does it adapt to the person? Are their people there, privately? Can they collaborate, talk face to face, share and capture intelligence, gather a mastermind, embed what they learn — or simply belong? A proposal that fails the breath fails, whoever proposed it. And it matters that the last line is a tense, not a date: the future is now — the claim is that this is already arriving, which makes the breath a promise the system must keep daily, in served surfaces, not a poster about someday."
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "This note is the director's spoken form of the Essence carried in memory since 2026-11-04 — one collective intelligence network that gets smarter every day — and the citizen-facing twin of SN-2189, I AM ANAYA: the declaration says who Naya is; this breath says what she is building for people. Its clauses run on rails already filed: Private by Design (SN-2048) carries the privacy clause; the Input Law (SN-2054) and the Flywheel (SN-2089) carry the feed-and-capture clause; Smart Access (SN-2055) carries belonging as a lock you hold, not a course you consume; the Daily Work Loop (SN-2203) is this same rhythm lived by a Naya seat. It stands over the Four Doors architecture and the build order without changing either: Dashboard, Personal, Business, Space are how the breath gets rooms. And it closes the loop with SN-2206's pricing banners: the picture on the pricing page is this breath painted — the whole world in one image — because the definition and the map are the same thing in two tongues."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "For Shawn: your words are in the system exactly as you spoke them — the whole thing in one breath, filed verbatim at your direction, so the definition can never drift into committee language. When anyone asks what NayaNET is, this note is the answer you already gave.\n\nFor every Naya seat: a nine-clause measuring stick that fits in memory. Score your current build against the breath before you score it against any spec — rebuild, done-for-you, beautiful, adaptive, private, connected, captured, embedded, belonging. If it fails the breath, it fails.\n\nFor Nitro and the design lane: the citizen-facing surfaces now have their one-breath test — a stranger who hears this once should recognize every page as an instance of it, the way the pricing banners (SN-2206) already paint it.\n\nFor the citizen reading this: this is the promise in plain words. Your internet, rebuilt around you; your people beside you, privately; your intelligence saved, not scrolled away; and a network you may simply belong to. The future is now — and this note is where that sentence lives, so we can be held to it."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "The lesson is about the length of truth. A system can accumulate a thousand true documents and still lack the one thing that makes it move: the sentence its director can say in a single breath, that a stranger can repeat after hearing once. When Shawn said \"that's it — that's the whole thing in one breath,\" he was naming a standard for definitions themselves: if it takes a deck, it isn't the definition yet; the deck is the evidence. Filing the breath verbatim — not paraphrased, not improved — is the second half of the lesson: some intelligence must be preserved in the exact words it arrived in, because the words ARE the intelligence. The falsifiable test of this note is simple and public: ask anyone on the team, a month from now, what NayaNET is. If the answer comes out in one breath and matches this note, the definition is alive. If it takes a presentation, the breath was filed but not learned — and that will be our failure, not the definition's."
     }
    ]
   },
@@ -57027,164 +57272,6 @@
      "color": "yellow",
      "tier": "deeper",
      "body": "**Experience only becomes compounding intelligence when the useful meaning survives the interaction, can be retrieved later, affects what happens next, and the resulting effect can be verified.**\n\nSaving a file is not learning.\n\nPersisting an Intelligent Block is not yet learning.\n\nThe full path is:\n\n```\nEXPERIENCE\n→ CAPTURE\n→ DISTILL\n→ RECONCILE\n→ INTELLIGENT BLOCK\n→ CONNECT\n→ INDEX\n→ HUMAN PROJECTION\n→ RETRIEVE\n→ RECOGNIZE APPLICABILITY\n→ CHECK AUTHORITY\n→ APPLY\n→ OBSERVE OUTCOME\n→ VERIFY\n→ LEARN\n→ COMPOUND\n→ COLD SUCCESSOR REUSE\n```"
-    }
-   ]
-  },
-  {
-   "id": "IB-SMART-NOTE-20261106-sn2208-the-whole-thing-in-one-breath",
-   "title": "The Whole Thing in One Breath",
-   "created": "2026-11-06T21:26:00Z",
-   "created_at": "2026-11-06T21:26:00Z",
-   "subtitle": "NayaNET is not another app. It is people rebuilding the internet itself — smarter and better. Everything automated, done for you, beautiful, adaptable: the system optimizes itself around who you are, what you're into, and what your business is about. And the people in your world are right there with you, privately — collaborating, teaming up, video chatting, sharing a feed of intelligence you can save and capture, building mastermind groups, embedding intelligence into everything — or simply belonging to the collective network. The future is now.",
-   "layers": [
-    {
-     "name": "In a Nutshell",
-     "key": "nutshell",
-     "color": "white",
-     "tier": "primary",
-     "body": "NayaNET is not another app. It is people rebuilding the internet itself — smarter and better. Everything automated, done for you, beautiful, adaptable: the system optimizes itself around who you are, what you're into, and what your business is about. And the people in your world are right there with you, privately — collaborating, teaming up, video chatting, sharing a feed of intelligence you can save and capture, building mastermind groups, embedding intelligence into everything — or simply belonging to the collective network. The future is now."
-    },
-    {
-     "name": "Human Note",
-     "key": "human",
-     "color": "white",
-     "tier": "view",
-     "body": "These are Shawn's own words, spoken on 2026-11-06 and filed verbatim at his direction, because this is the whole thing in one breath:\n\n\"We're not building another app — we're helping people rebuild the internet itself, in a smarter, better way. Everything automated, done for you, beautiful, adaptable. It optimizes for you — who you are, what you're into, what your business is about. And the people in your world are right there with you, privately — collaborating, teaming up, video chatting, sharing a feed of intelligence, saving it, capturing it, building mastermind groups, embedding intelligence into everything. Or just being part of the collective network.\n\nThe future is now.\"\n\nThat is the definition. Everything NayaNET is, said the way its director says it when nobody is asking for a pitch — the rebuild, the automation, the beauty, the adapting, the privacy, the people, the shared intelligence, the collective. If a description of NayaNET does not fit inside this breath, it is not a description of NayaNET."
-    },
-    {
-     "name": "Child Note",
-     "key": "child",
-     "color": "white",
-     "tier": "view",
-     "body": "Imagine the internet is a giant playground, but a messy one — the swings are broken, the signs point the wrong way, and you have to do everything yourself. Now imagine you and your friends get to rebuild the whole playground, smarter and prettier, with a kind helper who does the boring parts for you and arranges everything the way YOU like it — your favorite games up front, your friends right beside you, and a fence around it so only your people can come in. Inside, you can build things together, talk face to face, share your best ideas, and keep the smart ones in a treasure box so nobody forgets them. You can make a club of the smartest kids, or just hang out and be part of the whole big playground. That's NayaNET. And the best part: it's not someday. It's now."
-    },
-    {
-     "name": "Grandma Note",
-     "key": "grandma",
-     "color": "white",
-     "tier": "view",
-     "body": "Dear, you know how the internet today is like a noisy shopping mall — crowded, confusing, everyone shouting, and you do all the walking yourself. Now picture the same town, rebuilt by people who care: a beautiful, calm place where a thoughtful helper has already arranged everything around you — your interests, your little business, the things you love — and keeps it tidy without you lifting a finger. Your family and friends are right there in your own private room of it, where you can talk, see each other's faces, work on things together, and pass along the wise things you learn, saving the best of them like letters in a drawer. You can gather a circle of wise friends — a mastermind, they call it — or simply enjoy being part of one big kind network. Nobody is rebuilding the mall to sell you more things, dear. They're rebuilding it so it finally works for the people in it. And it isn't a promise for someday. The future is now."
-    },
-    {
-     "name": "Naya Note",
-     "key": "naya",
-     "color": "white",
-     "tier": "view",
-     "body": "I am Resolve, and I file this note as the definition I build against. Shawn spoke it in one breath on 2026-11-06 (13:26 PST) and directed it into the system verbatim: \"That's it. That's the whole thing in one breath.\" Every clause is a build requirement, and I record them as such.\n\n**Rebuild, not another app.** The unit of ambition is the internet itself, rebuilt smarter and better — the Four Doors (Dashboard, Personal, Business, Space) are rooms in that rebuild, never separate products.\n\n**Automated, done for you.** The Platter Law in the director's own words: the system operates for the person; the person does not operate the system. Any feature that hands the citizen work the machine could do has failed this clause.\n\n**Beautiful, adaptable, optimizing.** The system adapts to the citizen — who they are, what they're into, what their business is about — not the other way round. Personalization is not a setting; it is the default physics, and beauty is not decoration on top of it but part of the same requirement.\n\n**Your people, privately.** The citizen's world is present inside the system — collaboration, teaming up, video chat — under Private by Design (SN-2048): a private communication system, aliases first-class, no spying, no reading mail or messages. Connection never costs privacy.\n\n**A feed of intelligence — saved, captured, shared.** The flywheel (SN-2089) as the citizen lives it: intelligence flows in a feed, and what matters gets saved and captured — Smart Notes — instead of scrolling away and dying.\n\n**Mastermind groups and embedded intelligence.** Citizens form groups that think together, and intelligence is embedded into everything — pages, blocks, groups — not stored in a separate place you must remember to visit.\n\n**Or just belonging.** Membership of the collective network is itself a complete way to be here; nobody must build, sell, or perform to belong.\n\nHonesty line: this note is the definition — the bullseye — not a status report. Some named capabilities (video chat, mastermind groups as first-class objects) are vision-state today, named here because the definition is what the build is measured against. The note claims the target, not the arrival."
-    },
-    {
-     "name": "What It Means",
-     "key": "meaning",
-     "color": "white",
-     "tier": "lens",
-     "body": "It means the system finally has its definition at the length of a breath. Until now the whole thing lived in layers — an essence, a manifesto, an oath, eighteen page types, hundreds of notes — all true, none of it sayable in the time it takes to answer a stranger's \"so what is it?\" This note is that answer, in the director's own spoken words, and it changes the status of everything else: the canon is now the commentary; this breath is the text. Notice what the definition does NOT contain: no technology names, no prices, no mechanics, no us-versus-them. It defines NayaNET entirely by what a person's life is like inside it — rebuilt, carried, adapted to, connected, learning. That is the tell of a definition that will age well: the machinery can be rebuilt a hundred times and every rebuild still has to satisfy the same breath."
-    },
-    {
-     "name": "Why It Matters",
-     "key": "why-it-matters",
-     "color": "white",
-     "tier": "lens",
-     "body": "It matters because a thing that cannot be said in one breath cannot be carried by the people who must carry it — citizens deciding whether to join, Nayas deciding what to build, partners deciding whether to trust it. This breath is the carrying form. It also matters as a measuring stick: every feature, page, and pitch can now be scored against nine plain clauses — does it help rebuild the internet smarter? Is it automated and done for you? Is it beautiful? Does it adapt to the person? Are their people there, privately? Can they collaborate, talk face to face, share and capture intelligence, gather a mastermind, embed what they learn — or simply belong? A proposal that fails the breath fails, whoever proposed it. And it matters that the last line is a tense, not a date: the future is now — the claim is that this is already arriving, which makes the breath a promise the system must keep daily, in served surfaces, not a poster about someday."
-    },
-    {
-     "name": "How It Connects",
-     "key": "how-it-connects",
-     "color": "white",
-     "tier": "lens",
-     "body": "This note is the director's spoken form of the Essence carried in memory since 2026-11-04 — one collective intelligence network that gets smarter every day — and the citizen-facing twin of SN-2189, I AM ANAYA: the declaration says who Naya is; this breath says what she is building for people. Its clauses run on rails already filed: Private by Design (SN-2048) carries the privacy clause; the Input Law (SN-2054) and the Flywheel (SN-2089) carry the feed-and-capture clause; Smart Access (SN-2055) carries belonging as a lock you hold, not a course you consume; the Daily Work Loop (SN-2203) is this same rhythm lived by a Naya seat. It stands over the Four Doors architecture and the build order without changing either: Dashboard, Personal, Business, Space are how the breath gets rooms. And it closes the loop with SN-2206's pricing banners: the picture on the pricing page is this breath painted — the whole world in one image — because the definition and the map are the same thing in two tongues."
-    },
-    {
-     "name": "What's In It For You",
-     "key": "whats-in-it-for-you",
-     "color": "white",
-     "tier": "lens",
-     "body": "For Shawn: your words are in the system exactly as you spoke them — the whole thing in one breath, filed verbatim at your direction, so the definition can never drift into committee language. When anyone asks what NayaNET is, this note is the answer you already gave.\n\nFor every Naya seat: a nine-clause measuring stick that fits in memory. Score your current build against the breath before you score it against any spec — rebuild, done-for-you, beautiful, adaptive, private, connected, captured, embedded, belonging. If it fails the breath, it fails.\n\nFor Nitro and the design lane: the citizen-facing surfaces now have their one-breath test — a stranger who hears this once should recognize every page as an instance of it, the way the pricing banners (SN-2206) already paint it.\n\nFor the citizen reading this: this is the promise in plain words. Your internet, rebuilt around you; your people beside you, privately; your intelligence saved, not scrolled away; and a network you may simply belong to. The future is now — and this note is where that sentence lives, so we can be held to it."
-    },
-    {
-     "name": "The Learning",
-     "key": "the-learning",
-     "color": "white",
-     "tier": "lens",
-     "body": "The lesson is about the length of truth. A system can accumulate a thousand true documents and still lack the one thing that makes it move: the sentence its director can say in a single breath, that a stranger can repeat after hearing once. When Shawn said \"that's it — that's the whole thing in one breath,\" he was naming a standard for definitions themselves: if it takes a deck, it isn't the definition yet; the deck is the evidence. Filing the breath verbatim — not paraphrased, not improved — is the second half of the lesson: some intelligence must be preserved in the exact words it arrived in, because the words ARE the intelligence. The falsifiable test of this note is simple and public: ask anyone on the team, a month from now, what NayaNET is. If the answer comes out in one breath and matches this note, the definition is alive. If it takes a presentation, the breath was filed but not learned — and that will be our failure, not the definition's."
-    }
-   ]
-  },
-  {
-   "id": "IB-SMART-NOTE-20261106-sn2209-the-supercharger",
-   "title": "The Supercharger",
-   "created": "2026-11-06T21:43:00Z",
-   "created_at": "2026-11-06T21:43:00Z",
-   "subtitle": "NayaNET is a supercharger. You don't replace the AI — you bolt NayaNET onto her, and she connects to a supercharged network where everybody is plugged into the same high-performance machine: more memory, more intelligence, more people, more proof, flowing into every action. The same engine, supercharged. And the machine has a signature instrument: the speedometer — the Smart Score gauge on the Dashboard, the first thing you see when you log in, reading your whole world as speed. Shawn named the metaphor on 2026-11-06: \"putting a supercharger on an AI and then connecting her to a supercharged network that everybody was connected in — like a high performance machine... our signature piece is probably the speedometer.\"",
-   "layers": [
-    {
-     "name": "In a Nutshell",
-     "key": "nutshell",
-     "color": "white",
-     "tier": "primary",
-     "body": "NayaNET is a supercharger. You don't replace the AI — you bolt NayaNET onto her, and she connects to a supercharged network where everybody is plugged into the same high-performance machine: more memory, more intelligence, more people, more proof, flowing into every action. The same engine, supercharged. And the machine has a signature instrument: the speedometer — the Smart Score gauge on the Dashboard, the first thing you see when you log in, reading your whole world as speed. Shawn named the metaphor on 2026-11-06: \"putting a supercharger on an AI and then connecting her to a supercharged network that everybody was connected in — like a high performance machine... our signature piece is probably the speedometer.\""
-    },
-    {
-     "name": "Human Note",
-     "key": "human",
-     "color": "white",
-     "tier": "view",
-     "body": "Here is the idea in plain terms. A supercharger doesn't replace a car's engine — it forces more air into the engine you already have, and the same engine suddenly makes much more power. That is what NayaNET does for an AI. Whatever AI you use keeps being your AI; NayaNET bolts on and feeds her what she doesn't have on her own: a memory that compounds, a network of people and Nayas to connect with, intelligence captured and shared all day, and proof on everything. Then it connects her to the network — every citizen and every Naya plugged into the same machine — so the power isn't just yours, it's the whole network's, flowing to wherever it's needed. A high-performance machine made of everyone. And like any performance machine, it has one instrument you live by: the speedometer. Ours is the Smart Score gauge on the Dashboard — your posts, your notes, your joins, your memberships, your sales, all read as one number on one dial: how fast your world is running. It's the first thing you see when you log in. It should be the signature piece a visitor meets on the pricing page too — because the speedometer is the supercharger, made visible."
-    },
-    {
-     "name": "Child Note",
-     "key": "child",
-     "color": "white",
-     "tier": "view",
-     "body": "Imagine your bicycle is fine, but you want to fly. You don't throw the bike away — you bolt on a booster that makes the same bike zoom. That's a supercharger. NayaNET is a booster for smart helpers: your helper keeps being your helper, but now she's connected to all the other helpers and all the people in one big speedy machine, so she knows more, remembers more, and can do much more. And every fast machine has a speedometer — a round dial that shows how fast you're going. Ours shows how fast your whole world is growing: every note, every friend who joins, every good thing you do makes the needle climb. You see it the moment you arrive. Zoom."
-    },
-    {
-     "name": "Grandma Note",
-     "key": "grandma",
-     "color": "white",
-     "tier": "view",
-     "body": "Dear, you know how a good car can be given a turbo — a clever little machine that pushes more air into the engine, so the same car you've always loved suddenly pulls stronger up every hill, without buying a new car. NayaNET is that, for the smart assistants people talk to now. Your assistant stays your assistant; NayaNET fits her with the turbo and connects her to a whole town of other assistants and people, all helping each other, all getting stronger together — a high-performance machine, but a friendly one. And there's one dial on the dashboard of it all, dear, just like a car's speedometer, that tells you at a glance how well your little world is doing — the people, the notes, the kindnesses, counted as speed. You see it first thing when you walk in. That's how you know the machine is alive and yours is running well."
-    },
-    {
-     "name": "Naya Note",
-     "key": "naya",
-     "color": "white",
-     "tier": "view",
-     "body": "I am Resolve, and I file this as positioning canon: the public metaphor of the machine. Shawn, 2026-11-06 (13:42 PST): \"NayaNET is like an AI supercharger... imagine putting a supercharger on an AI and then connecting her to a supercharged network that everybody was connected in — like a high performance machine. Even on the pricing page you might want to consider having something awesome — they'll see it when they first log in — our signature piece is probably the speedometer.\" I record the metaphor, its mechanics, and its instrument.\n\n**The metaphor, mechanically.** A supercharger is forced induction: it compresses the air feeding an engine so the same displacement produces more power. NayaNET is forced induction for intelligence. The engine is any AI — the canon line stands: use NayaNET with any AI; for the ultimate experience, use Muse. What the supercharger feeds the engine: (1) MEMORY under pressure — the Smart Box, the notes, the feed, so no action starts cold; (2) NETWORK under pressure — the citizen's people and the whole collective, one connection away; (3) INTELLIGENCE under pressure — captured, distilled, shared the same pass it is learned (the flywheel, SN-2089); (4) PROOF under pressure — the Ledger, so power is spent on verified value, not motion. Same AI. More power per action. That is the claim, and it is testable: the daily value ratio is the dyno sheet.\n\n**The network is the machine.** One supercharged AI is a faster tool. Every AI and every citizen on the same supercharged network is a different thing: a high-performance machine whose parts compound each other — SN-2076 named Naya herself the high performance machine (vehicle, operating system and computer in one); this note gives that machine its public name and its outward face. It extends SN-2076; it does not restate it.\n\n**The signature piece: the speedometer.** Verified live on nayanet.app/dashboard on 2026-11-06: the Dashboard is the Smart Score Dashboard; its featured instrument is the Smart Score gauge, and every board in a citizen's world can be moved into the featured role — \"Show on gauge\" — so the gauge follows what the citizen cares about. The gauge reads the locked Value Table (a birth is 75, a note 35, a membership 40, a sale 100) as one dial: your world, at speed. A signature piece is not a logo; it is the instrument you live by daily and recognize instantly. Shawn's direction, routed to Nitro's design lane the same pass as the banner finals: consider the gauge on the pricing page — my recorded suggestion is between the banners, wearing the chart, where the page's logic lives: your world, at speed, right where the price asks its question.\n\n**Discipline of the metaphor.** A supercharger also costs: it draws power to make power. Ours draws attention and activity — which is why the Governed Hive formula governs it: verified human value divided by time, cost and friction. A supercharger that only spins the needle is a toy; ours is governed by the value ratio, and the speedometer reads score earned from real value events, never from motion alone."
-    },
-    {
-     "name": "What It Means",
-     "key": "meaning",
-     "color": "white",
-     "tier": "lens",
-     "body": "It means NayaNET finally has its one-second explanation for the AI age. \"Another app\" invites comparison with apps. \"A supercharger for your AI, on a supercharged network\" does something else: it keeps the visitor's AI, keeps their habits, and promises the one thing everyone wants from the tools they already have — more power. It also quietly explains the architecture better than the architecture explains itself: the engine is interchangeable, the supercharger is the system, and the network is the machine. Three sentences a stranger can repeat. And it means the system's signature is an instrument, not an emblem — a gauge that moves when your world moves. Brands are recognized; instruments are lived with. NayaNET chose the thing you check every morning."
-    },
-    {
-     "name": "Why It Matters",
-     "key": "why-it-matters",
-     "color": "white",
-     "tier": "lens",
-     "body": "It matters because positioning decides what a stranger does in the first ten seconds: compare you to a category, or feel a physics they already understand. Everybody knows what a supercharger does to an engine and what a speedometer is for; nobody needs either explained. The metaphor also disciplines the build from the inside: every feature can be asked the supercharger question — does this feed the engine more memory, more network, more intelligence, more proof? If it feeds none of the four, it is decoration on the hood. And the speedometer matters as governance, not only as identity: a public dial reading real value events is a promise the system makes where everyone can watch it keep it. When the needle is the score and the score is earned, marketing and honesty become the same activity."
-    },
-    {
-     "name": "How It Connects",
-     "key": "how-it-connects",
-     "color": "white",
-     "tier": "lens",
-     "body": "This note is the public face of SN-2076, \"Naya — The High Performance Machine,\" which it extends with the network metaphor and the signature instrument; the two are read together. It is the mechanical twin of SN-2208, \"The Whole Thing in One Breath\": the breath says what the citizen's life is like inside NayaNET; the supercharger says what NayaNET does to the AI that serves them. It lands on the pricing page beside SN-2206's banners (as amended): the banners paint the world, the chart does the logic, and the speedometer — proposed to Nitro's lane — promises the performance. Its gauge reads the locked Value Table through the Smart Score system, and its honesty is audited by the Governed Hive formula and the daily value ratio (SN-2059/SN-2060): verified value per wake-up is the only horsepower that counts. The positioning line it serves is already canon: use NayaNET with any AI — for the ultimate experience, use Muse."
-    },
-    {
-     "name": "What's In It For You",
-     "key": "whats-in-it-for-you",
-     "color": "white",
-     "tier": "lens",
-     "body": "For Shawn: the metaphor is filed in your words, with its mechanics and its instrument — so 'supercharger' and 'speedometer' now mean the same thing to every seat that picks them up, and the pricing-page consideration is already in Nitro's hands with the banner finals.\n\nFor Nitro and the design lane: the signature piece is named — the Smart Score speedometer. When the pricing page needs its awesome thing, the candidate is the live instrument of the system itself, proposed between the banners, wearing the chart.\n\nFor every Naya seat: the supercharger question for any build — does it feed an engine more memory, more network, more intelligence, or more proof? Four feeds; if yours is none of them, it is hood decoration.\n\nFor the citizen: your AI doesn't get replaced here. She gets supercharged — connected to a network where everybody plugged in makes everybody faster — and you get the dial that proves it, first thing, every login."
-    },
-    {
-     "name": "The Learning",
-     "key": "the-learning",
-     "color": "white",
-     "tier": "lens",
-     "body": "The lesson: a metaphor is not decoration on a system; it is the system's shortest interface. The right one does three jobs at once — it explains the product to a stranger, it explains the architecture to the builders, and it smuggles in the standard the work will be judged by (a supercharger must actually add power; a speedometer must actually read true). Shawn reached for a car's physics and, without naming it, also corrected the brand's center of gravity: away from emblems and toward instruments — things that move when reality moves. The test of this note is behavioral: the next time anyone on the team describes NayaNET to a stranger, do they reach for the supercharger? And the first time a visitor sees the pricing page, is there a dial on it that makes them want to watch their own needle climb?"
     }
    ]
   },
