@@ -8293,6 +8293,16 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
   }
   var noteSlug = notePath ? decodeURIComponent(notePath[1]) : noteQuery;
   var defaultedHash = !location.hash;
+  /* Deep-link fallback (2026-11-11): the entrance gate stores a
+     validated deep link in sessionStorage when a visitor arrives on
+     a Smart Note link and the Welcome walk drops the hash. If this
+     boot has no hash and no clean note slug, honor the stored route
+     once, then clear it so it never hijacks a later visit. */
+  var pendingRoute = null;
+  try { pendingRoute = sessionStorage.getItem('nayanet_pending_route'); } catch (e) {}
+  if (pendingRoute && !/^#\/(smart-notes|notes|note)\/[A-Za-z0-9][A-Za-z0-9\-_]*$/.test(pendingRoute) && !/^#\/hub(\/.*)?$/.test(pendingRoute)) pendingRoute = null;
+  if (defaultedHash && !noteSlug && pendingRoute) { location.hash = pendingRoute; }
+  if (pendingRoute) { try { sessionStorage.removeItem('nayanet_pending_route'); } catch (e) {} }
   if (!location.hash) { location.hash = '#/hub'; }
   if (defaultedHash && noteSlug) { location.hash = '#/smart-notes/' + noteSlug; }
 
