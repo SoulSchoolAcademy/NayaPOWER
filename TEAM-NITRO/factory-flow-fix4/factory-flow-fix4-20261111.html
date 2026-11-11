@@ -3929,7 +3929,7 @@ function saveNote(){const v=document.getElementById('noteText').value.trim();if(
 document.getElementById('noteSave').onclick=saveNote;
 document.getElementById('noteCancel').onclick=closeNote;
 document.getElementById('noteWrap').addEventListener('click',e=>{if(e.target.id==='noteWrap')closeNote();});
-function saveDraft(){try{const d={v:document.getElementById('visionText').value,h:document.getElementById('handleIn').value,q:[(document.getElementById('qVision')||{value:''}).value,document.getElementById('qDo').value,document.getElementById('qBehave').value],togs:[...document.querySelectorAll('.frow .tog')].map(t=>t.classList.contains('on')),cart:cart,tmpl:(document.querySelector('.tcard2.sel')||{dataset:{}}).dataset.t||'',sizes:{}};document.querySelectorAll('.pcard').forEach(c=>{const s=c.querySelector('.szpill.on');if(s)d.sizes[c.dataset.model]=s.dataset.s;});localStorage.setItem('nayaFactoryDraft',JSON.stringify(d));}catch(e){}}
+function saveDraft(){try{const d={v:document.getElementById('visionText').value,h:document.getElementById('handleIn').value,q:[(document.getElementById('qVision')||{value:''}).value,document.getElementById('qDo').value,document.getElementById('qBehave').value],togs:[...document.querySelectorAll('.frow .tog')].map(t=>t.classList.contains('on')),cart:cart,tmpl:(document.querySelector('.tcard2.sel')||{dataset:{}}).dataset.t||'',sizes:{}};document.querySelectorAll('.pcard').forEach(c=>{const s=c.querySelector('.szpill.on');if(s)d.sizes[c.dataset.model]=s.dataset.s;});try{var __prev=JSON.parse(localStorage.getItem('nayaFactoryDraft')||'{}');if(__prev.brand)d.brand=__prev.brand;if(__prev.addons)d.addons=__prev.addons;}catch(e){}localStorage.setItem('nayaFactoryDraft',JSON.stringify(d));}catch(e){}}
 function loadDraft(){try{const d=JSON.parse(localStorage.getItem('nayaFactoryDraft'));if(!d||(!d.v&&!d.h&&!d.cart.length&&!d.tmpl))return false;document.getElementById('visionText').value=d.v||'';document.getElementById('handleIn').value=d.h||'';const qs=['qVision','qDo','qBehave'];(d.q||[]).forEach((v,i)=>{var el=document.getElementById(qs[i]);if(el)el.value=v||'';});const togs=document.querySelectorAll('.frow .tog');(d.togs||[]).forEach((on,i)=>{if(togs[i])togs[i].classList.toggle('on',!!on);});cart.length=0;(d.cart||[]).forEach(i=>cart.push(i));Object.entries(d.sizes||{}).forEach(([m,s])=>{const c=document.querySelector('.pcard[data-model="'+m+'"]');if(c){c.querySelectorAll('.szpill').forEach(x=>x.classList.toggle('on',x.dataset.s===s));}});if(d.tmpl){const t=document.querySelector('.tcard2[data-t="'+d.tmpl+'"]');if(t){document.querySelectorAll('.tcard2').forEach(x=>x.classList.remove('open','sel'));t.classList.add('open','sel');}}document.getElementById('handleIn').dispatchEvent(new Event('input',{bubbles:true}));renderCart();saveDraft();return true;}catch(e){return false;}}
 function renderCart(){var cc=document.getElementById('cartCount');if(cc)cc.textContent=cart.reduce((a,i)=>a+i.qty,0);
  const box=document.getElementById('cartItems');box.innerHTML=cart.length?'':'<p style="opacity:.5;padding:20px">Your cart is empty — tap Select on any piece.</p>';
@@ -3974,7 +3974,8 @@ function draftContract(){
  const t=document.querySelector('.tcard2.sel');const tn=t?t.dataset.t:'[not yet — pick your template in Step 4, your pieces land on it]';
  const bn=(document.getElementById('brandName')||{}).value||'',bt=(document.getElementById('brandTagline')||{}).value||'',ba=(document.getElementById('brandAbout')||{}).value||'',ti=(document.getElementById('brandTitle')||{}).value||'',go=(document.getElementById('brandGoal')||{}).value||'',mi=(document.getElementById('brandMission')||{}).value||'';
  const ad=window.__addons||{};const adParts=[];if(ad.ask)adParts.push('Ask Naya about your page');if(ad.voice)adParts.push('Naya Voice presents your page'+(ad.presenter?' ('+ad.presenter+')':''));if(ad.qa)adParts.push('Q&A intelligent library');
- const extra=(bn?'\nname: '+bn:'')+(ti?'\ntitle: '+ti:'')+(bt?'\ntagline: '+bt:'')+(go?'\ngoal: '+go:'')+(mi?'\nmission: '+mi:'')+(ba?'\nabout: '+ba:'')+(window.__soulColor?'\nsoul_color: '+window.__soulColor:'')+(window.__brandPhoto?'\nphoto: (attached)':'')+(adParts.length?'\nadd-ons: '+adParts.join(' \u00b7 '):'');
+ const pid=(window.__PI_PROJECT_ID||'');
+ const extra=(pid?'\nproject_id: '+pid:'')+(bn?'\nname: '+bn:'')+(ti?'\ntitle: '+ti:'')+(bt?'\ntagline: '+bt:'')+(go?'\ngoal: '+go:'')+(mi?'\nmission: '+mi:'')+(ba?'\nabout: '+ba:'')+(window.__soulColor?'\nsoul_color: '+window.__soulColor:'')+(window.__brandPhoto?'\nphoto: (attached)':'')+(adParts.length?'\nadd-ons: '+adParts.join(' \u00b7 '):'');
  const lines=cart.map(i=>`  - ${i.model} · ${i.name} · size ${i.size} ×${i.qty}${i.note?' · note: '+i.note:''}`);
  const c=`DESIGN BUILD CONTRACT — SMART FACTORY
 vision: ${v}
@@ -3985,7 +3986,7 @@ rules: Naya design laws v1 (white text, edge-only ignition, one board one color,
 delivers to: nayanet.app/${h} — your app, live on NayaNET.`;
  document.getElementById('contract').textContent=c;
  const fnStates={};document.querySelectorAll('#step2 .frow').forEach(r=>{const nmEl=r.querySelector('b');const nm=nmEl?nmEl.textContent.trim():'';const id=FN_MAP[nm];const on=r.querySelector('.tog').classList.contains('on');if(id)fnStates[id]=on;else if(on)fnStates['!no-unit:'+nm]=true;});
- const jc={version:"contract-v1",handle:h,idea:document.getElementById('visionText').value||'',vision:(document.getElementById('qVision')||{value:''}).value||'',do:document.getElementById('qDo').value||'',behave:document.getElementById('qBehave').value||'',template:tn,functions:fnStates,pieces:cart.map(i=>({model:i.model,name:i.name,size:i.size,qty:i.qty,note:i.note||''})),rules:"Naya design laws v1"};
+ const jc={version:"contract-v1",project_id:(window.__PI_PROJECT_ID||''),handle:h,idea:document.getElementById('visionText').value||'',vision:(document.getElementById('qVision')||{value:''}).value||'',do:document.getElementById('qDo').value||'',behave:document.getElementById('qBehave').value||'',template:tn,functions:fnStates,pieces:cart.map(i=>({model:i.model,name:i.name,size:i.size,qty:i.qty,note:i.note||''})),rules:"Naya design laws v1"};
  if(bn)jc.name=bn;if(ti)jc.title=ti;if(bt)jc.tagline=bt;if(go)jc.goal=go;if(mi)jc.mission=mi;if(ba)jc.about=ba;if(window.__soulColor)jc.soul_color=window.__soulColor;if(window.__brandPhoto)jc.photo=window.__brandPhoto;const adOut={};if(ad.ask)adOut.ask_naya=true;if(ad.qa)adOut.qa_library=true;if(ad.voice)adOut.voice={presenter:ad.presenter||'',photo_ids:ad.photoIds||[]};if(Object.keys(adOut).length)jc.addons=adOut;
  document.getElementById('contractJson').textContent=JSON.stringify(jc,null,1);
  document.getElementById('contractWrap').style.display='block';
@@ -4186,7 +4187,7 @@ function __normT(t){ return String(t||'').toLowerCase().replace(/\s+/g,'-'); }
   var __saveDraft = saveDraft, __loadDraft = loadDraft;
   saveDraft = function(){ __saveDraft(); try {
     var d = JSON.parse(localStorage.getItem('nayaFactoryDraft') || '{}');
-    d.brand = { n:(document.getElementById('brandName')||{}).value||'', t:(document.getElementById('brandTagline')||{}).value||'', a:(document.getElementById('brandAbout')||{}).value||'', c:window.__soulColor||'', p:window.__brandPhoto||'' };
+    d.brand = { n:(document.getElementById('brandName')||{}).value||'', t:(document.getElementById('brandTagline')||{}).value||'', a:(document.getElementById('brandAbout')||{}).value||'', g:(document.getElementById('brandGoal')||{}).value||'', m:(document.getElementById('brandMission')||{}).value||'', ti:(document.getElementById('brandTitle')||{}).value||'', c:window.__soulColor||'', p:window.__brandPhoto||'' };
     d.addons = window.__addons;
     localStorage.setItem('nayaFactoryDraft', JSON.stringify(d));
   } catch(e){} };
@@ -4197,6 +4198,8 @@ function __normT(t){ return String(t||'').toLowerCase().replace(/\s+/g,'-'); }
       if (snap.brand){
         var bn = document.getElementById('brandName'), bt = document.getElementById('brandTagline'), ba = document.getElementById('brandAbout');
         if (bn) bn.value = snap.brand.n || ''; if (bt) bt.value = snap.brand.t || ''; if (ba) ba.value = snap.brand.a || '';
+        var bg = document.getElementById('brandGoal'), bm = document.getElementById('brandMission'), bti = document.getElementById('brandTitle');
+        if (bg) bg.value = snap.brand.g || ''; if (bm) bm.value = snap.brand.m || ''; if (bti) bti.value = snap.brand.ti || '';
         if (snap.brand.c){ window.__soulColor = snap.brand.c; var rw = document.getElementById('soulRow'); if (rw) rw.querySelectorAll('.soulsw').forEach(function(x){ x.classList.toggle('on', x.dataset.color === snap.brand.c); }); }
         if (snap.brand.p){ window.__brandPhoto = snap.brand.p; var pv = document.getElementById('brandPhotoPrev'); if (pv){ pv.src = snap.brand.p; pv.style.display = 'inline-block'; } var ex2 = document.getElementById('brandPhotoExamples'); if (ex2) ex2.style.display = 'none'; var nm2 = document.getElementById('brandPhotoName'); if (nm2) nm2.textContent = '✓ Your photo — on your app it wears your face, exactly like this.'; var pb2 = document.querySelector('label.photo-btn'); if (pb2) pb2.innerHTML = '✦ CHANGE PHOTO'; }
       }
@@ -5034,7 +5037,7 @@ var QS=[
 {q:'Add any smart notes or notes?',s:'Anything you have written that should live on the page.',nut:'Your notes are the intelligence your page is built from - Naya reads them and weaves them in.',def:'Not yet - add them after your page is live, and they join your world.',key:'notes'},
 {q:'Grow your Intelligent Library?',s:'Pin your smart notes to the page, so they grow into a library.',nut:'Pinned notes become your Intelligent Library - your knowledge, organized, on your own page.',def:'Yes',key:'library',pills:['Yes','No']}
 ];
-function freshAnswers(){return {kind:'Personal',for:QS[0].def,who:QS[1].def,social:QS[2].def,logo:QS[3].def,notes:QS[4].def,library:'Yes'};}
+function freshAnswers(){return {kind:'Personal',for:'',who:'',social:'',logo:'',notes:'',library:'Yes'};}
 var answers=freshAnswers();
 var idx=0;
 var needleAngle=-135;
@@ -5080,7 +5083,7 @@ function render(){
     if(q.pills){
       body.innerHTML='<div role="group" aria-label="Grow your Intelligent Library?"><button type="button" class="szpill'+(answers.library==='Yes'?' on':'')+'" data-lib="Yes" style="--sc:#2fe89e">YES - PIN THEM</button><button type="button" class="szpill'+(answers.library==='No'?' on':'')+'" data-lib="No" style="--sc:#ff9a5a">NOT NOW</button></div>';
     } else {
-      body.innerHTML='<textarea id="oc-ans" class="visionin carve-2" rows="3">'+esc(answers[q.key]||'')+'</textarea><p style="font-size:13px;opacity:.7;margin:10px 0 0">Pre-filled for you - edit it, clear it, or leave it. Empty is allowed.</p>';
+      body.innerHTML='<textarea id="oc-ans" class="visionin carve-2" rows="3">'+esc(answers[q.key]||'')+'</textarea><p style="font-size:13px;opacity:.7;margin:10px 0 0">Your words go here - type them, or leave it empty. Empty is allowed.</p>';
     }
   }
   $('oc-next').textContent=(idx===7)?'BUILD MY WORLD':'NEXT';
@@ -5103,12 +5106,19 @@ function applyAnswers(){
   function setVal(id,v){var el=$(id);if(el)el.value=v;}
   function slug(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'').slice(0,30)||'myworld';}
   var a=answers;
-  setVal('qBehave','Calm and clear - warm, never pushy.');
   var aboutEl=$('brandAbout');
   if(aboutEl&&!aboutEl.value){
     var goalEl=$('brandGoal'),missionEl=$('brandMission');
-    var about=['Mission: '+((missionEl&&missionEl.value)||'To share what I know, and make it easy for the right people to find it, use it, and grow with it.'),'Goal: '+((goalEl&&goalEl.value)||'To have one beautiful place where everything I do comes together - and people can find me, join me, and build with me.'),'This page is: '+(a.for||QS[0].def),'For: '+(a.who||QS[1].def),'Find me: '+(a.social||QS[2].def),'Logo: '+(a.logo||QS[3].def),'Notes: '+(a.notes||QS[4].def),'Library: '+(a.library==='Yes'?'Pin my smart notes - grow my Intelligent Library.':'Not now.')].join('\n');
-    setVal('brandAbout',about);
+    var parts=[];
+    if(missionEl&&missionEl.value)parts.push('Mission: '+missionEl.value);
+    if(goalEl&&goalEl.value)parts.push('Goal: '+goalEl.value);
+    if(a.for&&a.for!==QS[0].def)parts.push('This page is: '+a.for);
+    if(a.who&&a.who!==QS[1].def)parts.push('For: '+a.who);
+    if(a.social&&a.social!==QS[2].def)parts.push('Find me: '+a.social);
+    if(a.logo&&a.logo!==QS[3].def)parts.push('Logo: '+a.logo);
+    if(a.notes&&a.notes!==QS[4].def)parts.push('Notes: '+a.notes);
+    var about=parts.join('\n');
+    if(about)setVal('brandAbout',about);
   }
 
   var h=$('handleIn'); if(h) h.dispatchEvent(new Event('input',{bubbles:true}));
@@ -5329,6 +5339,76 @@ render();
   });
 })();
 </script>
+<script>
+/* ═══ LANE L2 — STEP 1 PRE-FILLS FROM PI, EMPTY STAYS EMPTY ═══
+   One read path, one function (loadPIProject), one key (project_id).
+   The PI record shape is the pi-page-schema shape plus project_id:
+     {project_id, name, title, tagline, vision, goal, mission, about}
+   Transports, in order — same record, same applyPIRecord, no second store:
+     1. window.__PI_RECORD, injected by the host that serves the flow with
+        the citizen's PI (this is how PI itself hands the flow its record).
+     2. fetch('pi/<project_id>.json') — the project's PI record document,
+        published beside the flow by PI (the same record L3 reads from the
+        PI store; a browser cannot read the store file off disk, so the record
+        travels as its own published document). No record, or a fetch failure,
+        = PI empty: the endpoint answers 200 with an empty record for a
+        project with no PI yet, never a 404 — a 404 would log a console error.
+   Precedence: a field the citizen already typed (or their draft restored)
+   always wins — PI fills only fields that are empty right now. PI empty
+   means the fields stay empty and the eye panels walk the citizen through.
+   Filled fields carry data-pi-source="pi" in the DOM (no visible change:
+   no style, label, or position moves — values only). */
+(function(){
+'use strict';
+var PI_FIELDS=[['vision','visionText'],['goal','brandGoal'],['mission','brandMission'],['about','brandAbout'],['name','brandName'],['title','brandTitle'],['tagline','brandTagline']];
+function piProjectId(){
+  try{var q=new URLSearchParams(location.search);var u=q.get('project_id');if(u)return u;}catch(e){}
+  try{var s=localStorage.getItem('nayaPIProjectId');if(s)return s;}catch(e){}
+  return '';
+}
+window.__PI_PROJECT_ID=piProjectId();
+try{if(window.__PI_PROJECT_ID)localStorage.setItem('nayaPIProjectId',window.__PI_PROJECT_ID);}catch(e){}
+window.__PI_PREFILL={project_id:window.__PI_PROJECT_ID,filled:[],source:'none'};
+function applyPIRecord(rec,source){
+  if(!rec||typeof rec!=='object')return;
+  var pid=rec.project_id||rec.id||'';
+  if(pid&&!window.__PI_PROJECT_ID){window.__PI_PROJECT_ID=pid;try{localStorage.setItem('nayaPIProjectId',pid);}catch(e){}}
+  if(window.__PI_PROJECT_ID)window.__PI_PREFILL.project_id=window.__PI_PROJECT_ID;
+  else if(pid)window.__PI_PREFILL.project_id=pid;
+  window.__PI_PREFILL.source='none';
+  PI_FIELDS.forEach(function(pair){
+    var key=pair[0],id=pair[1];
+    var v=rec[key];
+    if(typeof v!=='string'||!v)return;
+    var el=document.getElementById(id);
+    if(!el||el.value)return;
+    el.value=v;
+    el.setAttribute('data-pi-filled','true');
+    el.setAttribute('data-pi-source','pi');
+    try{el.dispatchEvent(new Event('input',{bubbles:true}));}catch(e){}
+    window.__PI_PREFILL.filled.push(key);
+  });
+  if(window.__PI_PREFILL.filled.length)window.__PI_PREFILL.source=source;
+  if(window.__PI_PREFILL.filled.indexOf('name')>=0&&typeof syncPreview==='function'){try{syncPreview();}catch(e){}}
+  if(typeof saveDraft==='function'){try{saveDraft();}catch(e){}}
+}
+function loadPIProject(){
+  if(window.__PI_RECORD&&typeof window.__PI_RECORD==='object'){
+    applyPIRecord(window.__PI_RECORD,'injected');
+    return;
+  }
+  var pid=window.__PI_PROJECT_ID;
+  if(!pid)return;
+  if(typeof fetch!=='function')return;
+  fetch('pi/'+encodeURIComponent(pid)+'.json',{cache:'no-store'})
+    .then(function(r){if(!r.ok)throw new Error('PI record unreadable');return r.json();})
+    .then(function(rec){applyPIRecord(rec,'pi-record');})
+    .catch(function(){/* PI empty or unreachable: fields stay empty, eyes walk them through */});
+}
+try{loadPIProject();}catch(e){}
+})();
+</script>
+
 </body></htm
 
 
