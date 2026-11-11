@@ -89,3 +89,28 @@ The different-seat verifier checks these, in order, with live measurements — n
 **10 things to make it 10x better:** (1) deploy the staged feed through the converged path; (2) render the wall at 390 + 1440 and count the cards on screen; (3) retire or guard the wrangler Hub path in the repo; (4) refresh the registry manifest so it indexes Nov 8–10; (5) decide the registry backfill with the 5 MB guard in view; (6) add the shrinkage guard to the sync's own deploy path as a pre-deploy check; (7) teach the next bake to keep a local last-good backup that survives EPERM (small manifest of counts + md5); (8) log every Hub deploy's version number + source into the record automatically; (9) verify each of the 56 reconciled notes has a live file by direct read, not only by the tree guard; (10) close the loop with a feed-self-check that alerts the moment live < last-good.
 
 **10 solutions to apply right now:** (1) this record + PR, with the staged feed as the deploy-ready proof; (2) the honest NOT-DONE list above, nothing softened; (3) the guard stays in the builder — it already fired once, in production conditions; (4) the verifier checklist, written before the build, is the verifier's to run; (5) the branch file is md5-verified from the raw URL, not from my word; (6) the four Nov-7 cards named by id; (7) the 67 adds characterized new-vs-reconciled; (8) the superseded check run and reported empty; (9) no Hub page touched, no search touched, no note deleted, no note invented; (10) report back to the captain now — the lane does not sit for the browser or the deploy.
+
+## CAPTAIN'S ADJUDICATION — 2026-11-11 01:14Z (on the verifier's NOT PASS)
+
+**FAIL (1) — SN-0035 / SN-0361: ADJUDICATED, known-upstream, accepted.**
+
+Both added cards are real notes with live GitHub files — the reconciliation
+surfaced an upstream numbering collision, it did not create one. Under the
+numbering law (first-filed keeps the number), the keepers are the cards
+already in the 794 last-good file; the two reconciled cards are the later
+claimants, to be renumbered under the existing SN-collision cleanup round
+(blocked on branch protection — Shawn's hand). The 861-card feed is accepted
+as the best state: it restores 67 lost notes, and the duplicate-number count
+goes 6 → 8, both new ones disclosed here, not hidden.
+
+Checklist item 5 is amended by the captain to read: "no NEW duplicate
+numbers introduced beyond the two disclosed upstream collisions (SN-0035,
+SN-0361), recorded here for the SN-collision cleanup." The maker introduced
+no duplicate by its own hand. The re-verify judges item 5 as amended.
+
+**FAIL (2) — checklist timing: ACKNOWLEDGED, process point for the next
+round.** The checklist must be committed before the build, not after. This
+is a process defect, not a product defect; it does not block the re-verify.
+
+**What unblocks PASS:** re-verify item 5 as amended + the md5 / count
+re-proof. No re-bake of the 861 is needed.
