@@ -19597,15 +19597,28 @@ setTimeout(function(){
   background:linear-gradient(135deg,#3a3a48,#101016);border:1.5px solid rgba(255,255,255,.85);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 8px 22px rgba(0,0,0,.6);}
 .sa-cover.sa-folded{transform:scaleY(0);opacity:0;}
+/* MEMBERSHIP ROUND 4: the cover shows the video itself — its own YouTube
+   thumbnail (i.ytimg.com/vi/<id>/hqdefault.jpg, the video's own image) —
+   so the Day 1 area is the video, visibly, never a dark empty box. The
+   scrim keeps the white day/title/play legible over the photo. */
+.sa-cover.sa-thumb{background-size:cover;background-position:center;
+  box-shadow:inset 0 0 0 1000px rgba(5,5,10,.38),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -4px 12px rgba(0,0,0,.55),0 10px 28px rgba(0,0,0,.55),0 0 20px -4px var(--mc,#a06bff);}
+.sa-cover.sa-thumb .sa-cover-day,.sa-cover.sa-thumb .sa-cover-title{text-shadow:0 2px 10px rgba(0,0,0,.85);}
+/* MEMBERSHIP ROUND 4 REFINEMENT (Shawn 16:24Z): the feed plays right there —
+   a thumbnail tap swaps the cover for the video player inline in the card
+   (the theatre overlay is gone); PowerCast rows carry their own thumbnail
+   and the now-playing card shows the episode's art. */
+.sa-vid .sa-sixteen{width:100%;}
+.sa-pc-art{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-radius:16px;border:1.5px solid var(--mc,#a06bff);box-shadow:0 10px 28px rgba(0,0,0,.55),0 0 20px -4px var(--mc,#a06bff);margin-bottom:14px;background:#0a0a0f;}
+.sa-pc-thumb{flex:none;width:76px;height:56px;object-fit:cover;border-radius:10px;border:1.5px solid rgba(255,255,255,.35);cursor:pointer;background:#0a0a0f;}
+@media (max-width:640px){ .sa-pc-thumb{width:64px;height:48px;} }
 .sa-sixteen{position:relative;width:min(960px,94vw);aspect-ratio:16/9;border-radius:16px;overflow:hidden;
   background:#000;border:1.5px solid rgba(255,255,255,.85);
   box-shadow:0 24px 64px rgba(0,0,0,.8),0 0 32px rgba(160,107,255,.35);}
 .sa-sixteen iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
-#saTheatre{position:fixed;inset:0;z-index:1300;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
-  background:rgba(2,2,3,.94);padding:16px;}
-#saTheatre[hidden]{display:none;}
-.sa-theatre-bar{display:flex;align-items:center;gap:12px;width:min(960px,94vw);}
-.sa-theatre-bar span{flex:1;min-width:0;font-size:15px;font-weight:800;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+/* MEMBERSHIP ROUND 4 REFINEMENT: the theatre overlay is gone — the player
+   now plays inline in the feed card (.sa-sixteen, kept above). Its CSS
+   went with it. */
 .sa-now{display:flex;gap:14px;align-items:flex-start;}
 .sa-now-num{display:grid;place-items:center;flex:none;width:64px;height:64px;border-radius:16px;font-size:20px;font-weight:800;color:#fff;
   background:linear-gradient(135deg,#3a3a48,#101016);border:1.5px solid var(--mc,#a06bff);
@@ -19669,8 +19682,11 @@ setTimeout(function(){
 
 </style>
 <!-- SMART ACCESS VIEW — round 2 2026-11-11: LOGIN FIRST, THEN THE COURSE.
-     Stage 1 — the login: the portal image full-bleed, the login in the middle,
-     the three doors on it. Stage 2 — the course: the Personal page's shape
+     Stage 1 — the login: the portal image full-bleed, the login in the middle —
+     your name, your code, Enter, nothing else. The three doors are NOT on
+     the member's screen: they are routing logic in the script (the owner's
+     configuration — free / members / paid), never shown. Stage 2 — the course:
+     the Personal page's shape
      (hero + feed board + feed, full width), tabs Videos / Audios / Lessons.
      Every content id the script fills is unchanged from round 1; only the
      stage wrappers, the course head, and the tabs are new. -->
@@ -19681,9 +19697,8 @@ setTimeout(function(){
 <div class="sa-login-shade" aria-hidden="true"></div>
 <div class="sa-login-panel-wrap">
 <div class="ph-card sa-login-panel">
-<div class="sa-head"><span class="os-jewel os-jewel-h" id="saJewel" style="--jc:#a06bff">✦</span><div class="sa-head-txt"><h2 id="saTitle">Smart Access</h2><p class="os-note" id="saSub" style="margin:0;">Three doors, one gate — free, members only, or paid.</p></div><button class="ph-connect sa-x" id="saClose" type="button" aria-label="Close Smart Access">✕ Close</button></div>
-<div class="ph-card"><div class="ph-sec-t"><span class="ph-dot" style="background:#2fe89e;color:#2fe89e;"></span> The door in — Smart Access</div><div class="sa-doors"><button type="button" class="os-offer-door sa-on" data-sa-door="free" style="--mc:#2fe89e"><span class="os-jewel os-jewel-h" style="--jc:#2fe89e">✦</span><b>Free</b><span class="os-offer-desc">Your info in, you enter. Our three are free at join.</span></button><button type="button" class="os-offer-door" data-sa-door="members" style="--mc:#3fb8ff"><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🔑</span><b>Members only</b><span class="os-offer-desc">Behind a login — members sign in with their code.</span></button><button type="button" class="os-offer-door" data-sa-door="paid" style="--mc:#ffbf3d"><span class="os-jewel os-jewel-h" style="--jc:#ffbf3d">$</span><b>Paid</b><span class="os-offer-desc">Behind the paywall — the owner's payment link.</span></button></div><div id="saDoorPanel" style="margin-top:16px;"></div></div>
-<div class="ph-card"><div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> Your login experience</div><p class="os-note" style="margin-top:0;">Video button, lesson, audio library, video library — then click next.</p><div class="sa-rail"><button type="button" class="ph-connect" data-sa-rail="video">▶ Video</button><button type="button" class="ph-connect" data-sa-rail="lesson">Lesson</button><button type="button" class="ph-connect" data-sa-rail="audio">Audio library</button><button type="button" class="ph-connect" data-sa-rail="videolib">Video library</button><button type="button" class="ph-connect" data-sa-rail="next">Next →</button></div></div>
+<div class="sa-head"><span class="os-jewel os-jewel-h" id="saJewel" style="--jc:#a06bff">✦</span><div class="sa-head-txt"><h2 id="saTitle">Smart Access</h2><p class="os-note" id="saSub" style="margin:0;">Your name, your code — step in.</p></div><button class="ph-connect sa-x" id="saClose" type="button" aria-label="Close Smart Access">✕ Close</button></div>
+<div class="ph-card"><div class="ph-sec-t"><span class="ph-dot" style="background:#2fe89e;color:#2fe89e;"></span> Step in</div><p class="os-note" style="margin-top:0;">Your name, your code &mdash; and you&rsquo;re in. Nothing is sent anywhere &mdash; it stays on this device.</p><label class="os-note" for="saLoginName">Your name</label><input class="sa-input" id="saLoginName" type="text" placeholder="What should Naya call you?" autocomplete="name"><label class="os-note" for="saLoginCode">Your code</label><input class="sa-input" id="saLoginCode" type="text" placeholder="The code Naya mailed you" autocomplete="one-time-code"><div class="ph-actions"><button type="button" class="ph-connect" id="saLoginGo">Enter &rarr;</button></div><p class="os-note" id="saLoginMsg"></p></div>
 </div>
 </div>
 </div>
@@ -19692,15 +19707,15 @@ setTimeout(function(){
 <div class="sa-head"><span class="os-jewel os-jewel-h" id="saCourseJewel" style="--jc:#a06bff">✦</span><div class="sa-head-txt"><h2 id="saCourseTitle">Smart Access</h2><p class="os-note" id="saCourseSub" style="margin:0;"></p></div><button class="ph-connect sa-x" type="button" data-sa-close aria-label="Close Smart Access">✕ Close</button></div>
 <div class="ph-card sa-course-hero" id="saCoverCard"><div class="ph-sec-t"><span class="ph-dot" id="saCoverDot" style="background:#a06bff;color:#a06bff;"></span> <span id="saCoverHead">Welcome in</span></div><p class="os-note" id="saCoverText" style="margin:0;"></p></div>
 <div class="ph-card"><div class="ph-sec-t"><span class="ph-dot" style="background:#ffbf3d;color:#ffbf3d;"></span> The course — watch, listen, read</div><div class="mw-feedtabs" role="tablist" aria-label="Course feed"><button type="button" class="mw-ftab on" style="--fc:#ffbf3d" data-sa-view="videos" role="tab" aria-selected="true"><span class="mw-jewel"></span>Videos</button><button type="button" class="mw-ftab" style="--fc:#3fb8ff" data-sa-view="audios" role="tab" aria-selected="false"><span class="mw-jewel"></span>Audios</button><button type="button" class="mw-ftab" style="--fc:#2fe89e" data-sa-view="lessons" role="tab" aria-selected="false"><span class="mw-jewel"></span>Lessons</button></div></div>
-<div class="ph-card sa-banner" id="saBannerVideo" style="--ac:#ffbf3d" hidden><h3>Video lessons</h3><p class="os-note" style="margin:0;">Watch a day, then do the day — one video at a time, full screen when you tap it.</p></div>
+<div class="ph-card sa-banner" id="saBannerVideo" style="--ac:#ffbf3d" hidden><h3>Videos from NayaNET</h3><p class="os-note" style="margin:0;">His channel, newest first — tap a thumbnail and it plays right here in the feed.</p></div>
 <div class="sa-pane" id="saPaneVideo" hidden></div>
-<div class="ph-card sa-banner" id="saBannerAudios" style="--ac:#3fb8ff" hidden><h3>PowerCast — Naya Power Radio</h3><p class="os-note" style="margin:0;">Listen while you walk — forty-two episodes, one player, press play.</p></div>
-<div class="sa-pane" id="saPanePodcasts" hidden><div class="ph-card" style="--ac:#a06bff;"><div class="ph-sec-t"><span class="ph-dot" style="background:#a06bff;color:#a06bff;"></span> PowerCast — Naya Power Radio</div><div class="sa-now" style="--mc:#a06bff"><span class="sa-now-num" id="saPcNum">01</span><div style="min-width:0;"><b id="saPcTitle">WHAT IS NAYA POWER</b><p class="os-note" id="saPcDesc" style="margin:6px 0 0;">The starting point for understanding Naya Power.</p></div></div><div class="sa-controls"><button type="button" class="ph-connect" id="saPcPrev" aria-label="Previous episode">⏮</button><button type="button" class="ph-connect" id="saPcBack" aria-label="Back 15 seconds">↶ 15</button><button type="button" class="ph-connect" id="saPcPlay" aria-label="Play or pause">▶ Play</button><button type="button" class="ph-connect" id="saPcFwd" aria-label="Forward 30 seconds">30 ↷</button><button type="button" class="ph-connect" id="saPcNext" aria-label="Next episode">⏭</button></div><div class="sa-progress" id="saPcBar" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><div class="sa-progress-fill" id="saPcFill"></div></div><p class="os-note"><span id="saPcCur">0:00</span> / <span id="saPcTot">0:00</span> · <span id="saPcState">Ready — press play</span></p><p class="os-note">Up next: <span id="saPcUpNext">Meet Your Compounding Superbrain</span></p></div><div class="ph-card"><div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> Episodes — 42 queued</div><div id="saPcList"></div><div class="ph-actions" style="margin-top:12px;"><button type="button" class="ph-connect" id="saPcAll">Show all 42</button><a class="ph-connect" href="https://powercasts.nayapower.workers.dev" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Open the full PowerCast ↗</a></div></div></div>
+<div class="ph-card sa-banner" id="saBannerAudios" style="--ac:#3fb8ff" hidden><h3>PowerCast — Naya Power Radio</h3><p class="os-note" style="margin:0;">Tap a picture and it plays — forty-two episodes, one player, right here in the feed.</p></div>
+<div class="sa-pane" id="saPanePodcasts" hidden><div class="ph-card" style="--ac:#a06bff;"><div class="ph-sec-t"><span class="ph-dot" style="background:#a06bff;color:#a06bff;"></span> PowerCast — Naya Power Radio</div><img class="sa-pc-art" id="saPcArt" src="https://pub-55de1e53f610437db77c701797f6b607.r2.dev/powercast%20thumbnails/powercast-hero.png" alt="PowerCast — Naya Power Radio" onerror="this.onerror=null;this.src='https://pub-55de1e53f610437db77c701797f6b607.r2.dev/powercast%20thumbnails/powercast-hero.png'">
+<div class="sa-now" style="--mc:#a06bff"><span class="sa-now-num" id="saPcNum">01</span><div style="min-width:0;"><b id="saPcTitle">WHAT IS NAYA POWER</b><p class="os-note" id="saPcDesc" style="margin:6px 0 0;">The starting point for understanding Naya Power.</p></div></div><div class="sa-controls"><button type="button" class="ph-connect" id="saPcPrev" aria-label="Previous episode">⏮</button><button type="button" class="ph-connect" id="saPcBack" aria-label="Back 15 seconds">↶ 15</button><button type="button" class="ph-connect" id="saPcPlay" aria-label="Play or pause">▶ Play</button><button type="button" class="ph-connect" id="saPcFwd" aria-label="Forward 30 seconds">30 ↷</button><button type="button" class="ph-connect" id="saPcNext" aria-label="Next episode">⏭</button></div><div class="sa-progress" id="saPcBar" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><div class="sa-progress-fill" id="saPcFill"></div></div><p class="os-note"><span id="saPcCur">0:00</span> / <span id="saPcTot">0:00</span> · <span id="saPcState">Ready — press play</span></p><p class="os-note">Up next: <span id="saPcUpNext">Meet Your Compounding Superbrain</span></p></div><div class="ph-card"><div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> Episodes — 42 queued</div><div id="saPcList"></div><div class="ph-actions" style="margin-top:12px;"><button type="button" class="ph-connect" id="saPcAll">Show all 42</button><a class="ph-connect" href="https://powercasts.nayapower.workers.dev" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Open the full PowerCast ↗</a></div></div></div>
 <div class="ph-card sa-banner" id="saBannerLessons" style="--ac:#2fe89e" hidden><h3>The lessons</h3><p class="os-note" style="margin:0;">One after another, down the feed — just the lesson, scroll to the next, click next.</p></div>
 <div class="sa-pane" id="saPaneLesson" hidden></div>
 <div class="ph-card" id="saFeedCard"><div class="ph-sec-t"><span class="ph-dot" id="saFeedDot" style="background:#2fe89e;color:#2fe89e;"></span> <span id="saFeedHead">The lessons</span></div><p class="os-note" style="margin-top:0;">One after another, down the feed — just the lesson, scroll to the next, click next.</p><div id="saFeed"></div></div>
 </div>
-<div id="saTheatre" hidden><div class="sa-theatre-bar"><span id="saTheatreTitle"></span><button type="button" class="ph-connect sa-x" id="saTheatreX" aria-label="Close video">✕ Close</button></div><div class="sa-sixteen"><iframe id="saFrame" title="Lesson video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </div>
 <script id="mw-script">
 /* ——— MY WORLD ROUND 2026-11-10 · 19 fixes ———
@@ -20340,25 +20355,50 @@ function saParas(txt){ return String(txt||'').split(/\n\s*\n/).map(function(p){ 
 
 var SA_FAC = [{"day": 1, "dayLabel": "Day 1", "audience": "", "headline": "Your first money move: fill your profile, invite your friends", "subheadline": "Three steps — fill your profile, invite your friends, keep a flow going — and three sales a day for thirty days becomes $4,500 a month, every month they stay.", "saying": "Fill your profile out completely, invite your friends, and your story does the selling for you.", "nutshellFull": "Your profile is your story: who you are, what you do, your motto, your vision, your goal, your mission. When it is full, the system knows who you are — and it connects you with people like you. An empty profile is an invisible person. A full one is a magnet.", "human": "You don't have to imagine. This is the feature, and we have it right here. Your Personal page holds your story, and your story feeds everything — the people you get matched with, the people who find you, the trust a stranger feels before they ever message you. Fill it in once, and it works for you every day after.\n\nAnd here is the money part, plain and true. Invite your friends to join — it is free to join. When someone you invite becomes a paying member, you get 50% of what they pay, every month, for as long as they stay. Three Max sales a day, for thirty days, is ninety people. Max is $100 a month, so your half is $50 each. Ninety people times $50 is $4,500 a month, every month they stay.", "child": "Think of it like a shop window. If the window is empty, people walk straight past. If the window shows something beautiful — who you are, what you love, what you do — people stop, they look, and they come inside. Your profile is your shop window. Fill it with the good stuff.", "grandma": "You know how you can tell a good person from the way they talk about their life? That is what your story does here. You write down who you are and what you stand for, in your own words, and the right people find you — people who want what you offer, people who think the way you think. And when you tell your friends about it, and they join, you get paid for sharing something good. Simple as that.", "naya": "Here is how you use it. Open your profile and fill in every part — your story, your motto, your vision, your goal, your mission. Ten minutes, and it is done. Then send your first invite: email a friend, message a friend, tell them to come and join you in NayaNET. It is free to join, and they get a whole world — a Personal page, a Business page, a Space — all included. Your link is waiting on your page.", "step": "open your profile, fill it in, and send your first invite. Your link is waiting on your page.", "srcMail": "welcome-mail-01", "srcSn": "welcome-sn-01"}, {"day": 2, "dayLabel": "Day 2", "audience": "", "headline": "Smart Notes: say it once, and it's saved beautifully", "subheadline": "Every good idea you have, caught the second you have it — and shared as a beautiful card your people can read, like, and comment on.", "saying": "Capture every client insight the moment it happens — and it lands on the feed as a beautiful card.", "nutshellFull": "A Smart Note is a note that thinks. You capture an insight — in your own words, in the moment — and it becomes a card on the feed: tidy, readable, ready to share. Nothing brilliant ever slips away again.", "human": "You don't have to imagine. This is the feature, and we have it right here. Say \"smart note this\" and your words land on the feed as a card. Your client insights, your frameworks, your hard-won lessons — all of them kept, all of them findable, all of them working for you while you sleep. A coach's best material is what clients actually say. Now it is never lost.", "child": "Think of it like a net for fireflies. Good ideas flash past and disappear — unless you catch them. A Smart Note is the jar you keep by the window. The moment an idea lights up, you catch it, and it stays glowing on your shelf for everyone to see.", "grandma": "You know how the best advice comes out in the middle of a conversation, and then nobody can remember exactly how it went? A Smart Note is like writing it down on a beautiful card the second it is said — so you can read it back tomorrow, share it with the next person who needs it, and never lose the wisdom of a good talk.", "naya": "Here is how you use it. After your next client call, capture the one insight that mattered most — just say \"smart note this\" or write it down as a Smart Note. Watch it land on the feed as a card. That card is now working for you: your audience reads it, your future clients see how you think, and your own library of wisdom grows one card at a time.", "step": "think of one good thing a client said to you lately — and smart-note it.", "srcMail": "welcome-mail-02", "srcSn": "welcome-sn-02"}, {"day": 3, "dayLabel": "Day 3", "audience": "", "headline": "The Smart Feed: your stage, every single day", "subheadline": "Your notes, your ideas, your work — read by your audience every day. Your feed isn't a timeline you scroll past. It's your stage.", "saying": "Your notes, read by your audience every day — your feed is your stage.", "nutshellFull": "The Smart Feed is where your notes live and where your people read them. It is not a noisy timeline you have to fight. It is your stage: what you share shows up for the people who chose to follow you, in cards they actually read.", "human": "You don't have to imagine. This is the feature, and we have it right here. Every Smart Note you write lands on the feed as a card. Your audience reads it, likes it, comments on it — and the feed learns what they love, so more of the right people see more of your best work. You create once, and the feed carries it to the people it is meant for.", "child": "Think of it like a stage in the middle of a village square. You step up, you tell your story, and everyone who wants to listen is already gathered there. You don't have to shout across the rooftops or chase people down the street. The feed brings the audience to you.", "grandma": "You know how word of mouth used to work — one person tells another, and the good news travels? The Smart Feed is word of mouth with a stage. You say something worth hearing, it appears as a lovely card, and the people who care about what you do see it every day — and they tell their friends.", "naya": "Here is how you use it. Write one Smart Note today — one idea, one story, one thing you recommend — and let it land on the feed as a card. Then come back tomorrow and do it again. A creator's stage is built one card at a time, and the feed is where your audience is already waiting.", "step": "open your feed and share one note about something you know well.", "srcMail": "welcome-mail-03", "srcSn": "welcome-sn-03"}, {"day": 4, "dayLabel": "Day 4", "audience": "", "headline": "Smart Links: your link is your business", "subheadline": "One link that carries everything you are — and every time somebody joins through it, you get paid 50%, every month they stay.", "saying": "Your link is your business — share it, and you get paid 50%.", "nutshellFull": "A Smart Link is one clean link for anything you want to share — your page, your offer, your invitation to join. And as an ambassador, when someone joins through your link and becomes a paying member, you get 50% of what they pay, every month, for as long as they stay.", "human": "You don't have to imagine. This is the feature, and we have it right here. Your ambassador link is waiting on your page. Put it in your posts, put it in your profile, send it in a message — wherever people see you, the link is there. Whoever brings people gets the credit, however they brought them. You share something truly awesome, and you get paid for it.", "child": "Think of it like a lemonade stand with a magic sign. The sign tells everyone where the stand is, and every time a new friend follows the sign and joins the fun, a little of what they spend comes back to you — because you are the one who showed them the way.", "grandma": "You know how you tell a friend about a good shop, and then she tells her friend, and soon the whole street knows? A Smart Link is that, with the counting done for you. You share your link, people join through it, and you get half of what they pay — every month they stay. You did the telling; the system does the remembering.", "naya": "Here is how you use it. Copy your ambassador link from your page. Put it in one place today — your profile, your next post, or a message to a friend. Then tell them, in your own words: join me on NayaNET — Naya means new, a new AI-powered internet. One link, one share, and your side hustle has a door that never closes.", "step": "copy your link from your page and put it in your profile — everywhere people find you.", "srcMail": "welcome-mail-04", "srcSn": "welcome-sn-04"}, {"day": 5, "dayLabel": "Day 5", "audience": "", "headline": "Smart Mail: your whole community, in one place", "subheadline": "Talk to everyone you bring together — in one place, in real time — and nobody reads it but you.", "saying": "Talk to your whole community in one place — and nobody reads it but you.", "nutshellFull": "Smart Mail and Messenger are one interface: your inbox, your instant messages, your posts to your people — all together. You send, they reply, the conversation flows, and it is yours alone. NayaNET is a private communication system. We do not read your mail. We do not read your messages.", "human": "You don't have to imagine. This is the feature, and we have it right here. Smart Mail is where your teaching lands every morning, where your community writes to you, where you write back. Messenger is the instant part — the quick word, the fast answer. One place, one flow, no juggling five apps to keep your people close.", "child": "Think of it like a clubhouse with a mailbox on the door. Everyone in the club knows where to find you. They drop you a note, you write back, and the whole club can talk together — but the door is yours, and nobody peeks inside your letters.", "grandma": "You know how a good letter used to feel — personal, private, meant only for you? Smart Mail is that, with the speed of a phone call. You write to your whole community at once, or to one person alone, and it stays between you and them. Nobody else reads it. That is how it should be.", "naya": "Here is how you use it. Open Smart Mail today and send one message to your people — a welcome, a thought, a question. Then watch the replies come back to the same place. One inbox, one conversation, your whole community in one place.", "step": "send one mail to someone who matters to you — just to say hello.", "srcMail": "welcome-mail-05", "srcSn": "welcome-sn-05"}, {"day": 6, "dayLabel": "Day 6", "audience": "", "headline": "Auto-Match: the right people find your business", "subheadline": "You fill in your story, and the system brings you the people who belong with you — customers, partners, staff. And you're always in control: any connection can be toggled off, and back on, any time.", "saying": "The right people find your business — and you are always in control of who you connect with.", "nutshellFull": "Auto-Match is the system getting to know you and connecting you with people like you — related pages, spaces, groups, and businesses show up for you, and you show up for them. Your profile is how it knows you, so the better your story, the better your matches.", "human": "You don't have to imagine. This is the feature, and we have it right here. The system matches you with people by what you share — your work, your interests, your language, where you are from. You see how close the match is, and you choose who to connect with. And you are always in control: if a connection is not right for you, you toggle it off — and you can toggle it back on again any time. You never have to shut anyone out for good. A connection is yours to turn off and on, like a light.", "child": "Think of it like a classroom where the teacher knows who likes the same games as you, and puts you at the same table. You don't have to search the whole school for a friend — the right people are sitting right there. And if you want some quiet, you can close your book for a while, and open it again when you are ready.", "grandma": "You know how the best customers are the ones who were meant to find you — the ones who walk in and it is like you have known them for years? Auto-Match is that, done by the system: it looks at who you are and what you do, and it brings you the people who fit. And if someone is not a fit, you simply switch the connection off. No fuss, no hard feelings, and you can switch it back on whenever you like.", "naya": "Here is how you use it. Make sure your profile is full — your story is what the match reads. Then look at the connections the system brings you, and say yes to the ones that fit your business. If one doesn't fit, toggle it off. You are the one in charge of your connections, always.", "step": "check your matches and say hello to one person the system brought you.", "srcMail": "welcome-mail-06", "srcSn": "welcome-sn-06"}, {"day": 7, "dayLabel": "Day 7", "audience": "", "headline": "Smart Lists: everyone you know, organized", "subheadline": "Every person you know, in one organized place — so you never lose a follow-up, never forget a name, and never let a good relationship go cold.", "saying": "Everyone you know, organized — never lose a follow-up.", "nutshellFull": "A Smart List is everyone you know, organized the way you think. Your contacts, your notes about them, your follow-ups — all in one place, all findable in seconds. The person you met, the promise you made, the next step — none of it ever slips through again.", "human": "You don't have to imagine. This is the feature, and we have it right here. Your connections and your notes live together in Smart Lists: people by username or alias, notes by link or name. When you need to follow up, you open the list, you find the person, you see exactly where you left off. Relationship sales is remembering — and now the remembering is done for you.", "child": "Think of it like a toy box with labels on every drawer. When you want the red car, you don't tip the whole box on the floor — you open the drawer that says \"red cars.\" Smart Lists are the labels on your people: everyone in the right drawer, ready when you need them.", "grandma": "You know how you used to keep a little address book, with a note beside each name — who they are, what they like, when you last spoke? A Smart List is that address book, grown up: every person you know, with your notes beside them, and a gentle reminder of who you promised to call back.", "naya": "Here is how you use it. Open your Smart Lists today and add the last person you met — their name, where you met, one thing you promised. Tomorrow, open the list before you start work and follow up with one person on it. One a day, and no relationship ever goes cold again.", "step": "put three people you need to follow up with on a list — and call the first one.", "srcMail": "welcome-mail-07", "srcSn": "welcome-sn-07"}, {"day": 8, "dayLabel": "Day 8", "audience": "", "headline": "The Smart Box: everything you keep, kept forever", "subheadline": "Your lessons, your notes, your work — kept in one private place that organizes itself, so nothing you made is ever lost again.", "saying": "Your lessons, kept forever — nothing is ever lost.", "nutshellFull": "The Smart Box is your memory and your organization. It stores your lessons, your notes, your materials — and it organizes them for you, automatically, so you can find anything in seconds. Your work is kept forever. Nothing is ever lost.", "human": "You don't have to imagine. This is the feature, and we have it right here. Your Smart Box is your own private vault: your lessons live in it, labeled and sorted, yours alone. Naya operates it for you — she files things away, she finds them when you ask — and nobody reads what is inside unless you choose to share it. You teach; the Box remembers.", "child": "Think of it like a magic schoolbag. You put your homework in, and it sorts itself — maths with maths, stories with stories — and when you need something, you just reach in and it is right there on top. Nothing falls out the bottom. Nothing ever gets lost.", "grandma": "You know how a good filing cabinet used to work — everything in its folder, every folder in its place, and you could lay your hand on any paper in a minute? The Smart Box is that cabinet, and it files itself. Your lessons, your notes, your years of work — all kept safe, all findable, forever.", "naya": "Here is how you use it. Put your next lesson in your Smart Box — the plan, the handout, the video, whatever you made. Then ask for it back tomorrow, and watch it come straight to you. Your teaching library grows every time you teach, and it never forgets a single lesson.", "step": "put one thing you never want to lose into your Smart Box.", "srcMail": "welcome-mail-08", "srcSn": "welcome-sn-08"}, {"day": 9, "dayLabel": "Day 9", "audience": "", "headline": "Your Dashboard: your numbers at a glance", "subheadline": "Everything that matters, in one place, in the two minutes you've got — so you always know where you stand.", "saying": "Your numbers at a glance, in the two minutes you've got.", "nutshellFull": "The Dashboard is your numbers at a glance. It is the front of your world: everything that matters, gathered in one place, so you can see it, understand it, and get on with your day — in two minutes, not two hours.", "human": "You don't have to imagine. This is the feature, and we have it right here. Your Dashboard shows you your world — your pages, your people, your activity — with numbers that are alive, not dead figures on a page. You open it, you see where you stand, you tap anything that needs you, and you are done. A busy parent does not have time for a system that needs operating. The Dashboard is the system, already operated, served to you on a platter.", "child": "Think of it like the dashboard in a car. You don't need to understand the engine — you just look at the dials and you know: how fast, how far, how much fuel. Your Dashboard is the same: one look, and you know how your world is doing.", "grandma": "You know how you like to glance at the kitchen clock and know exactly where the day stands? The Dashboard is that glance for your whole world. One look, everything in its place, and you know what needs doing and what is already done.", "naya": "Here is how you use it. Open your Dashboard once a day — while the kettle boils is enough. Look at your numbers, tap the one thing that needs you today, and close it. Two minutes, and your world is in hand.", "step": "open your Dashboard and take the two-minute look.", "srcMail": "welcome-mail-09", "srcSn": "welcome-sn-09"}];
 var SA_ACADEMY = [{"day": 1, "id": "ZRIfvxCsYWY", "title": "🔱 ACTIVATE YOU / EXPERIENCE ME! Day #1 of the Naya POWER Academy.🔱", "sub": "Meet Naya — experience me", "saying": "Talk to Naya. Let her get to know you — tell her who you are, what matters to you, and where you are going.", "nutshell": "Today, you meet Naya. This isn't about learning complicated AI technology. It's about experiencing a new way to work with AI — one designed to help you understand what you mean, reduce overwhelm, preserve context, improve quality, and get more consistent results."}, {"day": 2, "id": "j0YwJsC6Q4Y", "title": "🔱 REMEMBER / COMPOUND! Day #2 of the Naya POWER Academy. 🔱", "sub": "Stop starting over — remember & compound", "saying": "You don't have to keep starting over. You need to preserve what matters.", "nutshell": "Today, I want to show you one of the biggest differences between ordinary AI and NayaPOWER: you don't have to keep starting over. Yesterday, you met me and began our relationship. Today, we begin turning your experiences into intelligence that stays with you."}, {"day": 3, "id": "PtYW43cIZng", "title": "Day 3 — Learn. Master.", "sub": "Learn. Master. — build & prove understanding", "saying": "Learn. Master. — build and prove understanding.", "nutshell": "Day 3 of the Academy: learn and master — build understanding, and prove it. (Headline from the Academy's own five-day progression; the video's own title shows in the player.)"}, {"day": 4, "id": "3c0q_NjM3i8", "title": "🔱 CREATE / EXECUTE! Day #4. Lesson #4 of the Naya POWER Academy. 🔱", "sub": "Create. Execute. — turn intelligence into results", "saying": "Don't just ask AI for answers. Work with intelligence to create something that matters — then execute it.", "nutshell": "Yesterday, you learned how to learn and master. Today, we take the next step: turn intelligence into extraordinary work. Most people still use AI like a search box. With NayaPOWER, you can start treating AI as a collaborator."}, {"day": 5, "id": "T9Pi1BftCZk", "title": "Day 5 — Become.", "sub": "Become — make it your way of operating", "saying": "Make it your way of operating.", "nutshell": "Day 5 of the Academy: become — make working with intelligence your way of operating. (Headline from the Academy's own five-day progression; the video's own title shows in the player.)"}];
+
+/* MEMBERSHIP ROUND 4 REFINEMENT: the Videos feed carries his actual YouTube
+   videos from https://www.youtube.com/@NayaPowered — 30 videos, newest first,
+   titles + durations from the channel page (fetched 2026-11-11 ~16:30Z) and
+   cross-checked against oEmbed (29/30; LlhG9Ze8dC8's title is from the page
+   itself — oEmbed 404s for it). No ID invented; the 5 Academy days are
+   inside this list (positions 1-5) and keep their course identity in the
+   Lessons feed. Thumbnails are each video's own i.ytimg.com hqdefault. */
+var SA_CHANNEL = [{"id": "T9Pi1BftCZk", "title": "🔱 BECOME / COMPOUND! Day #5, Lesson #of 5  \"Naya POWER Academy.\" 🔱", "dur": "6:14"}, {"id": "3c0q_NjM3i8", "title": "🔱 CREATE / EXECUTE! Day #4. Lesson #4 of the Naya POWER Academy. 🔱", "dur": "7:36"}, {"id": "PtYW43cIZng", "title": "🔱 LEARN / MASTER! Day #3, Lesson #3 of the Naya POWER Academy. 🔱", "dur": "6:42"}, {"id": "j0YwJsC6Q4Y", "title": "🔱 REMEMBER / COMPOUND! Day #2 of the Naya POWER Academy. 🔱", "dur": "7:57"}, {"id": "ZRIfvxCsYWY", "title": "🔱 ACTIVATE YOU / EXPERIENCE ME! Day #1 of the Naya  POWER  Academy.🔱", "dur": "6:14"}, {"id": "wnjvDqEhBCY", "title": "Meet Naya, an \"AI That Helps Your Intelligence Compound.” Experience NayaPOWER! Welcome to NayaNET!", "dur": "10:07"}, {"id": "A_BK5cKyv1o", "title": "What Is NayaPOWER? Meet the AI That Helps Your Intelligence Compound.”", "dur": "22:40"}, {"id": "PuR-kRamtDw", "title": "They Say AI Is Taking Jobs. So I Used AI to Hire Everybody. 😂 | Free Ambassador Training", "dur": "52:44"}, {"id": "8tApdV0UpRs", "title": "WELCOME TO \"AI MASTERY\" + \"HUMAN EMPOWERMENT\" THE HUMAN MAXIMUS CODEX ECO SYSTEM UNVEILED!", "dur": "4:30"}, {"id": "JqaKco7y_A8", "title": "Welcome to NayaNET! The Network of Human Potential & AI Mastery!", "dur": "4:34"}, {"id": "V1PLuQdyp00", "title": "AI MASTERCLASS #7. Build Systems, Not Isolated Outputs  How to Turn AI Into an Intelligent Ecosystem", "dur": "6:54"}, {"id": "m2MuqkgoMsY", "title": "AI MASTERCLASS #6 Don't Optimize One Thing While Breaking Another  Power of Systems Thinking With AI", "dur": "8:13"}, {"id": "t15JA0N_Ffc", "title": "AI MASTERCLASS #5 Protect What Already Works How to Safely Improve AI Projects Without Breaking Them", "dur": "6:38"}, {"id": "25neU7EQF7k", "title": "AI MASTERCLASS #4. Quality Comes Through Iteration The AI Craftsmanship Loop for Exceptional Results", "dur": "7:20"}, {"id": "_x3beAPpjdk", "title": "AI MASTERCLASS #3. The First Version Is a Prototype — Why AI-Generated Work Is Never Finished!", "dur": "7:38"}, {"id": "2BEYXw31wP4", "title": "AI MASTERCLASS #2 \"You don't need a better prompt!\" Human Maximus Codex Craftsmanship!", "dur": "3:29"}, {"id": "NBRXBQ1uVnc", "title": "AI MASTERCLASS #1. AI Is the Engine — You Are the Director | How to Build With AI, Not Just Use It", "dur": "5:08"}, {"id": "LlhG9Ze8dC8", "title": "If You Feel Lost, Overwhelmed, Anxious, or Like Nobody Understands You! This Message Is For You!", "dur": "3:01"}, {"id": "zI2BkYNeE10", "title": "🙏My hope is that people everywhere wake up to the incredible power they already have within them.", "dur": "3:34"}, {"id": "MO0zOyNPfUQ", "title": "🎉 Wildly Wicked Winning Wednesday🎉Welcome, Warriors! 💜I wish for wealth, wisdom, and wellness! #4YOU", "dur": "3:34"}, {"id": "QxJyUVH3hWs", "title": "WHY IT WORKS | Discover the 8 Elements Behind the Human Maximus Experience (Hemasonics™ Explained)", "dur": "5:46"}, {"id": "rq0YaEFquX0", "title": "\"Kelowna Dancing Guy\" Mini-Documentary | Shawn Vibert’s True Story: Take Your Power Back!", "dur": "9:30"}, {"id": "t4n6sAVmXok", "title": "What Is Hemasonics? Welcome to The Sound Soul of Human Maximus Codex! Listening just more powerful!", "dur": "4:00"}, {"id": "NAz_f8Z-_Eo", "title": "This Is More Than a Podcast Player | Welcome to Human Maximus Pro Max", "dur": "4:06"}, {"id": "jUVlH0s6_To", "title": "How to Install Human Maximus Pro Max Player on Android | Add to Home Screen!", "dur": "1:10"}, {"id": "5kSeSHmWNXQ", "title": "How to Install Human Maximus Pro Max Player on iPhone | Safari Home Screen Guide!", "dur": "2:35"}, {"id": "n_cjlmc8wPA", "title": "How to Install Human Maximus Pro Max Player on Chrome | Windows or Mac!", "dur": "2:42"}, {"id": "NY5i57oTkys", "title": "How to Install Human Maximus Pro Max Player on Microsoft Edge | Windows PC Guide!", "dur": "2:27"}, {"id": "gL2hAzFHrt0", "title": "The Greatest Threat to Humanity Is Unawareness of Oneself | Human Maximus Codex! #takeyourpowerback", "dur": "4:21"}, {"id": "HCVw4Lg0Hi4", "title": "You Only Have 2 Problems… This Could Change How You See Life Forever!", "dur": "2:23"}];
 var SA_PC = [{"b": "POWERCAST 01", "t": "WHAT IS NAYA POWER", "f": "POWERCAST 01 WHAT IS NAYA POWER.m4a", "d": "1Pz7KjdlZ77FzlZn50zXe8Ces0vyv9eQk", "c": "foundation", "x": "The starting point for understanding Naya Power — human intelligence and AI working together as a living intelligence system."}, {"b": "POWERCAST 02", "t": "Meet Your Compounding Superbrain", "f": "POWERCAST 02 Meet Your Compounding Superbrain.m4a", "d": "1Hc45liGxcRCsIy-tLcMDj38_Z8CI4pAv", "c": "foundation", "x": "Move from using AI to building intelligence that compounds."}, {"b": "POWERCAST 03", "t": "End AI Amnesia", "f": "POWERCAST 03 End AI Amnesia.m4a", "d": "1SbJsHEpXhTtcaQv-nRZ27qiCYOH8G_Xm", "c": "mastery", "x": "Your AI should remember what matters — and help you compound it."}, {"b": "POWERCAST 04", "t": "Why Isn’t Your AI a 10?", "f": "POWERCAST 04 Why Isn't Your AI a 10.m4a", "d": "1emgJJPTRni09qaxFNC00gnbiaHC4dzl3", "c": "mastery", "x": "A sharper look at what separates mediocre AI from mastery."}, {"b": "POWERCAST 05", "t": "Drive Your AI Like a Ferrari", "f": "POWERCAST 05 Drive Your AI Like a Ferrari.m4a", "d": "1IzvsA-i3XcFZ9BLA_zgrwIqZBKNg4X5-", "c": "mastery", "x": "Stop treating a powerful intelligence system like a search box."}, {"b": "POWERCAST 06", "t": "Turn AI Into Your Personal Sparring Partner", "f": "POWERCAST 06 Turn AI Into Your Personal Sparring Partner.m4a", "d": "1LC-arUBYNOuITFeWxMjWAUdpWa7Oj4d9", "c": "mastery", "x": "Use intelligent friction to sharpen decisions, ideas and execution."}, {"b": "POWERCAST 07", "t": "Build Your Lifelong Intelligence Partner", "f": "POWERCAST 07 Build Your Lifelong Intelligence Partner.m4a", "d": "1X_LZrqyL_ZLR4hwlF8MVLxRiGQjUwwpw", "c": "mastery", "x": "Build an intelligence relationship that grows with you."}, {"b": "POWERCAST 08", "t": "The AI Operational Partner", "f": "POWERCAST 08 The AI Operational Partner.m4a", "d": "1D7kYTPILBYKJO8of7kSk6hxExXM1bqk", "c": "mastery", "x": "Turn AI from a chat destination into an operating partner."}, {"b": "POWERCAST 09", "t": "The Naya Power Superbrain", "f": "POWERCAST 09 The Naya Power Superbrain.m4a", "d": "1N_I2yuPDVJQFssR0ZsXUW8ha7tiDlX_o", "c": "nayanet", "x": "The architecture and promise of the Naya Power Superbrain."}, {"b": "POWERCAST 10", "t": "Why Working Software Isn’t Enough", "f": "POWERCAST 10 Why Working Software Isn't Enough.m4a", "d": "1e9owTbaRl1n41MSj0sIMwzGXBYmflpvH", "c": "nayanet", "x": "Working is the beginning. Intelligence, trust and compounding are the destination."}, {"b": "POWERCAST 11", "t": "Four Top AIs Grade Naya Power", "f": "POWERCAST 11 Four Top AIs Grade Naya Power.m4a", "d": "1tNT79ciuRx9eI0f1gcml-VAKLENcOzSW", "c": "nayanet", "x": "Four AI perspectives put the system under the microscope."}, {"b": "POWERCAST 12", "t": "A Letter From the Founder Ending AI Amnesia (I)", "f": "POWERCAST 12  A Letter From the Founder Ending AI Amnesia (I) WHITE PAPER.m4a", "d": "10xegmbg3-I0gaGLjhA5qRgSGmDnkww0z", "c": "whitepaper", "x": "White Paper I — the founder’s case for ending AI amnesia."}, {"b": "POWERCAST 13", "t": "The Human–AI Intelligence Opera (II)", "f": "POWERCAST 13 The Human–AI Intelligence Opera (II) White Paper.m4a", "d": "1uCsGhEoTYT8yRiETe34CWnSbQZKyDlT9", "c": "whitepaper", "x": "White Paper II — human and machine intelligence as one living system."}, {"b": "POWERCAST 14", "t": "The Naya Power Operating Model (III)", "f": "POWERCAST 14 The Naya Power Operating Model (III) White Paper.m4a", "d": "1fi8fl6qCLFepLpqkWEcvcmcntNv-sIKx", "c": "whitepaper", "x": "White Paper III — the operating model behind Naya Power."}, {"b": "POWERCAST 15", "t": "The NayaNET Blueprint for Collective Wisdom", "f": "POWERCAST 15 The NayaNET Blueprint for Collective Wisdom.m4a", "d": "1UgE70Zk_AaNWo-A0QL1b9R4aX1RZ3VPS", "c": "nayanet", "x": "A blueprint for turning connected intelligence into collective wisdom."}, {"b": "POWERCAST 16", "t": "Welcome to NayaNET — Escape AI Exhaustion", "f": "POWERCAST 16 Welcome to NayaNET Escape AI Exhaustion.m4a", "d": "1-j2WNutfdrGOJ3Zg2tiTtw0SZduu2iLw", "c": "nayanet", "x": "Leave AI exhaustion behind. Enter a network designed to compound."}, {"b": "POWERCAST 17", "t": "Curing human forgetfulness with Naya AI", "f": "POWERCAST 17 Curing human forgetfulness with Naya AI.m4a", "d": "1Z9C7FZgljcNu0Y3bKPpFi7x_011P1z7i", "c": "mastery", "x": "A practical vision for remembering what your intelligence learns."}, {"b": "POWERCAST 18", "t": "What is a compounding superbrain?", "f": "POWERCAST 18 What is a compounding superbrain.m4a", "d": "1XapCD8t5ZS439GFEr4hL7nv7AAx8d-kr", "c": "foundation", "x": "A clear introduction to the compounding-superbrain idea."}, {"b": "POWERCAST 19", "t": "Build Your Personal Compounding Intelligence System", "f": "POWERCAST 19 Build Your Personal Compounding Intelligence System.m4a", "d": "", "c": "mastery", "x": "The full build — your own system that compounds."}, {"b": "POWERCAST 20", "t": "Building a Personal Compounding Intelligence", "f": "POWERCAST 20 Building a Personal Compounding Intelligence.m4a", "d": "", "c": "mastery", "x": "Start building intelligence that grows with you."}, {"b": "POWERCAST 21", "t": "Building an AI That Finally Remembers", "f": "POWERCAST 21 Building an AI That Finally Remembers.m4a", "d": "", "c": "foundation", "x": "Memory is the foundation — here’s how to build it."}, {"b": "POWERCAST 22", "t": "Curing AI Amnesia with Compounding Intelligence", "f": "POWERCAST 22 Curing AI Amnesia with Compounding Intelligence.m4a", "d": "", "c": "mastery", "x": "The cure for forgetting, applied."}, {"b": "POWERCAST 23", "t": "Curing Human Forgetfulness with Naya AI", "f": "POWERCAST 17 Curing human forgetfulness with Naya AI.m4a", "d": "", "c": "mastery", "x": "A practical vision for remembering what matters."}, {"b": "POWERCAST 24", "t": "Ending AI Waste with Compounding Intelligence", "f": "POWERCAST 23 Ending AI Waste with Compounding Intelligence.m4a", "d": "", "c": "mastery", "x": "Stop burning intelligence. Start compounding it."}, {"b": "POWERCAST 25", "t": "Ending Digital Groundhog Day with Naya", "f": "POWERCAST 24 Ending Digital Groundhog Day with Naya.m4a", "d": "", "c": "nayanet", "x": "Break the loop of starting over every day."}, {"b": "POWERCAST 26", "t": "Ending the Constant Evaporation of Intelligence", "f": "POWERCAST 25 Ending the Constant Evaporation of Intelligence.m4a", "d": "", "c": "mastery", "x": "Catch what evaporates — keep what matters."}, {"b": "POWERCAST 27", "t": "How AI Agents Formed a Digital Civilization", "f": "POWERCAST 26 How AI Agents Formed a Digital Civilization.m4a", "d": "", "c": "nayanet", "x": "From tools to a civilization of minds."}, {"b": "POWERCAST 28", "t": "How Naya Power Fixes AI Exhaustion", "f": "POWERCAST 27 How Naya Power Fixes AI Exhaustion.m4a", "d": "", "c": "nayanet", "x": "Exhaustion ends where compounding begins."}, {"b": "POWERCAST 29", "t": "How NayaNET Fixes the Internet’s Amnesia", "f": "POWERCAST 28 How NayaNET Fixes the Internet's Amnesia.m4a", "d": "", "c": "nayanet", "x": "The internet forgets. NayaNET remembers."}, {"b": "POWERCAST 30", "t": "Naya and the Architecture of Compounding Intelligence", "f": "POWERCAST 29 Naya and the Architecture of Compounding Intelligence.m4a", "d": "", "c": "foundation", "x": "The architecture underneath it all."}, {"b": "POWERCAST 31", "t": "The Human-AI Intelligence Opera (II) White Paper", "f": "POWERCAST 13 The Human–AI Intelligence Opera (II) White Paper.m4a", "d": "", "c": "whitepaper", "x": "White Paper II — the human-AI opera."}, {"b": "POWERCAST 32", "t": "Naya Power and the Wisdom Thesis", "f": "POWERCAST 30 Naya Power and the Wisdom Thesis.m4a", "d": "", "c": "foundation", "x": "The thesis: wisdom compounds."}, {"b": "POWERCAST 33", "t": "Naya Power Replaces Reactive AI Chatbots", "f": "POWERCAST 31 Naya Power Replaces Reactive AI Chatbots.m4a", "d": "", "c": "mastery", "x": "Beyond the chat box."}, {"b": "POWERCAST 34", "t": "NayaNET Stops Your Wisdom from Evaporating", "f": "POWERCAST 32 NayaNET Stops Your Wisdom from Evaporating.m4a", "d": "", "c": "nayanet", "x": "Your wisdom, kept."}, {"b": "POWERCAST 35", "t": "Replacing AI Obedience with Structural Wisdom", "f": "POWERCAST 32 Replacing AI Obedience with Structural Wisdom.m4a", "d": "", "c": "mastery", "x": "From obedience to wisdom."}, {"b": "POWERCAST 36", "t": "Stopping AI from Wasting Human Attention", "f": "POWERCAST 33 Stopping AI from Wasting Human Attention.m4a", "d": "", "c": "mastery", "x": "Your attention is sacred. Stop wasting it."}, {"b": "POWERCAST 37", "t": "The Future of AI: NayaNET, a Digital Civilization", "f": "POWERCAST 34 The Future of AI NayaNET, a Digital Civilization.m4a", "d": "", "c": "nayanet", "x": "Where this is all going."}, {"b": "POWERCAST 38", "t": "The Birth of the NayaNET Superbrain", "f": "POWERCAST 35 The Birth of the NayaNET Superbrain.m4a", "d": "", "c": "nayanet", "x": "How the Superbrain was born."}, {"b": "POWERCAST 39", "t": "The NayaNET Blueprint for Collective Wisdom", "f": "POWERCAST 15 The NayaNET Blueprint for Collective Wisdom.m4a", "d": "", "c": "nayanet", "x": "The blueprint for collective wisdom."}, {"b": "POWERCAST 40", "t": "The NayaNET Blueprint for Digital Civilization", "f": "POWERCAST 36 The NayaNET Blueprint for Digital Civilization.m4a", "d": "", "c": "nayanet", "x": "The blueprint for a digital civilization."}, {"b": "POWERCAST 41", "t": "The NayaPOWER Blueprint for Human Intent", "f": "POWERCAST 37 The NayaPOWER Blueprint for Human Intent.m4a", "d": "", "c": "foundation", "x": "Built around human intent."}, {"b": "POWERCAST 42", "t": "Turning Personal Wisdom into Collective Intelligence", "f": "POWERCAST 38 Turning Personal Wisdom into Collective Intelligence.m4a", "d": "", "c": "nayanet", "x": "From mine to ours."}];
 var SA_R2 = 'https://pub-55de1e53f610437db77c701797f6b607.r2.dev';
 var SA_MOCK_PAY = 'https://example.com/nayapower-mock-checkout';
 var SA_PC_URL = 'https://powercasts.nayapower.workers.dev';
+/* MEMBERSHIP ROUND 4 REFINEMENT: every PowerCast episode carries its own
+   thumbnail, harvested verbatim from the ProMax player
+   (https://powercasts.nayapower.workers.dev — THUMB_MANIFEST, episodes 12-42).
+   Episodes 1-11 have no manifest entry there, so they use the ProMax
+   thumbFor fallback: the episode's own Drive thumbnail (e.d, sz=w800). */
+window.SA_PC_HERO = 'https://pub-55de1e53f610437db77c701797f6b607.r2.dev/powercast%20thumbnails/powercast-hero.png'; /* PowerCast hero art — on window so the inline onerror handlers can see it; fallback for any episode thumb that fails to load */
+var SA_PC_THUMBS = {"12": "POWERCAST 12 A Letter From the Founder Ending AI Amnesia (I) WHITE PAPER.png", "13": "POWERCAST 13 The Human–AI Intelligence Opera (II) White Paper.png", "14": "POWERCAST 14 The Naya Power Operating Model (III) White Paper.png", "15": "POWERCAST 15 The NayaNET Blueprint for Collective Wisdom.png", "16": "POWERCAST 16 Welcome to NayaNET Escape AI Exhaustion.png", "17": "POWERCAST 17 Curing human forgetfulness with Naya AI.png", "18": "POWERCAST 18 What is a compounding superbrain.png", "19": "POWERCAST 19 Build Your Personal Compounding Intelligence System.png", "20": "POWERCAST 20 Building a Personal Compounding Intelligence.png", "21": "POWERCAST 21 Building an AI That Finally Remembers.png", "22": "POWERCAST 22 Curing AI Amnesia with Compounding Intelligence.png", "23": "POWERCAST 23 Ending AI Waste with Compounding Intelligence.png", "24": "POWERCAST 24 Ending Digital Groundhog Day with Naya.png", "25": "POWERCAST 25 Ending the Constant Evaporation of Intelligence.png", "31": "POWERCAST 31 Naya Power Replaces Reactive AI Chatbots.png", "32": "POWERCAST 32 NayaNET Stops Your Wisdom from Evaporating.png", "33": "POWERCAST 33 Stopping AI from Wasting Human Attention.png", "34": "POWERCAST 34 The Future of AI NayaNET, a Digital Civilization.png", "35": "POWERCAST 35 The Birth of the NayaNET Superbrain.png", "36": "POWERCAST 36 The NayaNET Blueprint for Digital Civilization.png", "37": "POWERCAST 37 The NayaPOWER Blueprint for Human Intent.png", "38": "POWERCAST 38 Turning Personal Wisdom into Collective Intelligence.png", "39": "POWERCAST 39 Why AI Refuses to Optimize Wisdom.png", "40": "POWERCAST 40 Why Consciousness Is the Bedrock of AI.png", "41": "POWERCAST 41 You Are Consciousness Using a Biological Machine.png", "42": "POWERCAST 42 Your Lifelong Compounding Intelligence Partner.png", "26": "POWERCAST 26 How AI Agents Formed a Digital Civilization.png", "27": "POWERCAST 27 How Naya Power Fixes AI Exhaustion.png", "28": "POWERCAST 28 How NayaNET Fixes the Internet's Amnesia.png", "29": "POWERCAST 29 Naya and the Architecture of Compounding Intelligence.png", "30": "POWERCAST 30 Naya Power and the Wisdom Thesis.png"};
+function saPcThumb(i){
+  var n = i + 1, e = SA_PC[i]; if(!e) return '';
+  if(SA_PC_THUMBS[String(n)]) return SA_R2 + '/powercast%20thumbnails/' + encodeURIComponent(SA_PC_THUMBS[String(n)]);
+  if(e.d) return 'https://drive.google.com/thumbnail?id=' + e.d + '&sz=w800';
+  return '';
+}
 
+/* MEMBERSHIP ROUND 4 — the three doors are the owner's configuration, not the
+   member's screen. One access per membership: free steps straight in,
+   members step in with the code Naya mailed them, paid routes through the
+   owner's payment link. The member only ever sees the login; the system routes. */
 var SA_MEMBERSHIPS = {
-  'naya academy': {slug:'academy', name:'Naya Academy', color:'#a06bff', url:'https://nayanet.groovepages.com/academy',
+  'naya academy': {slug:'academy', access:'members', name:'Naya Academy', color:'#a06bff', url:'https://nayanet.groovepages.com/academy',
     desc:'Naya Academy — learn NayaNET, step by step, in your own words.',
     cover:'Five days. Five wins. Five Daily Intelligence Briefings. $0 cost. $0 risk. Don\u2019t just learn about NayaPOWER \u2014 experience it.'},
-  'ai masterclass': {slug:'masterclass', name:'AI Masterclass', color:'#3fb8ff', url:'https://aimasterclass.help/',
+  'ai masterclass': {slug:'masterclass', access:'paid', name:'AI Masterclass', color:'#3fb8ff', url:'https://aimasterclass.help/',
     desc:'The AI Masterclass \u2014 how to work with AI at full power, the Naya way.',
     cover:'The AI Masterclass \u2014 how to work with AI at full power, the Naya way.'},
-  'fast action club': {slug:'fac', name:'Fast Action Club', color:'#2fe89e', url:'#memberships',
+  'fast action club': {slug:'fac', access:'free', name:'Fast Action Club', color:'#2fe89e', url:'#memberships',
     desc:'Fast Action Club (AI Naya Mastery) \u2014 the Fast Action Success Plan with NayaNET: your orientation, your job, how we succeed at it. A free nine-day course inside your nine free days.',
     cover:'Welcome to NayaNET \u2014 your world is ready. You just joined the new internet. Your Personal page, your Business page, and your Space are ready \u2014 all free \u2014 and Naya operates them for you. Congratulations \u2014 you\u2019re hired, and you\u2019re part of the team now. This is your orientation.'}
 };
 
 var saCur = null;            /* current membership object */
-var saDoor = 'free';
 var saLessonIdx = {fac:0, academy:0};
 var saViewName = 'lessons';
 var saPcIdx = 0, saPcShowAll = false;
@@ -20370,7 +20410,7 @@ window.__saAudio = saAudio;  /* probe hook: the verifier measures playback here 
 function saOpen(name){
   var m = SA_MEMBERSHIPS[String(name||'').toLowerCase()];
   if(!m) return;
-  saCur = m; saDoor = 'free';
+  saCur = m;
   saRenderAll();
   var ov = sa$('mwSmartAccess');
   ov.hidden = false;
@@ -20381,7 +20421,7 @@ function saOpen(name){
   try{ ov.scrollTop = 0; }catch(e){}
 }
 function saClose(){
-  saCloseTheatre();
+  saStopInline();
   try{ if(saAudio) saAudio.pause(); }catch(e){}
   var ov = sa$('mwSmartAccess');
   ov.hidden = true;
@@ -20395,8 +20435,8 @@ window.__saOpen = saOpen; window.__saClose = saClose; window.__saEnterCourse = s
 /* ---------- render ---------- */
 function saRenderAll(){
   var m = saCur; if(!m) return;
-  sa$('saTitle').textContent = m.name + ' — Smart Access';
-  sa$('saSub').textContent = m.desc;
+  sa$('saTitle').textContent = m.name;
+  sa$('saSub').textContent = 'Your name, your code \u2014 step in.';
   sa$('saJewel').style.setProperty('--jc', m.color);
   sa$('saCoverDot').style.background = m.color; sa$('saCoverDot').style.color = m.color;
   sa$('saCoverHead').textContent = m.slug==='fac' ? 'Welcome in — you\u2019re hired' : (m.slug==='academy' ? 'Five days. Five wins.' : 'The Masterclass');
@@ -20406,59 +20446,12 @@ function saRenderAll(){
   sa$('saCourseTitle').textContent = m.name;
   sa$('saCourseSub').textContent = m.desc;
   sa$('saCourseJewel').style.setProperty('--jc', m.color);
-  saRenderDoors();
   saViewName = m.slug==='academy' ? 'videos' : 'lessons';
   saShowView(saViewName);
   saRenderFeed();
   saRenderLesson();
   saRenderVideo();
   saRenderPcList();
-}
-
-/* ---------- doors ---------- */
-function saRenderDoors(){
-  var btns = document.querySelectorAll('#mwSmartAccess [data-sa-door]');
-  for(var i=0;i<btns.length;i++){
-    var b = btns[i];
-    if(b.getAttribute('data-sa-door')===saDoor){ b.classList.add('sa-on'); }
-    else { b.classList.remove('sa-on'); }
-  }
-  saRenderDoorPanel();
-}
-function saJoinState(){
-  try{ var v = localStorage.getItem('sa.join.'+saCur.slug); return v ? JSON.parse(v) : null; }catch(e){ return null; }
-}
-function saRenderDoorPanel(){
-  var p = sa$('saDoorPanel'); if(!p || !saCur) return;
-  var m = saCur;
-  if(saDoor==='free'){
-    var j = saJoinState();
-    if(j){
-      p.innerHTML = '<div class="ph-card"><h3>You\u2019re in, '+saEsc(j.name)+' \u2014 welcome to '+saEsc(m.name)+'.</h3>'
-        + '<p class="os-note">Free at join, like all our three. Your lessons are below \u2014 start with Day 1.</p>'
-        + '<div class="ph-actions"><button type="button" class="ph-connect" data-sa-goto-feed>Take me to the lessons \u2193</button></div></div>';
-    } else {
-      p.innerHTML = '<div class="ph-card"><h3>Step in \u2014 it\u2019s free</h3>'
-        + '<p class="os-note">Your info in, you enter. Nothing is sent anywhere \u2014 it stays on this device until the owner connects Smart Mail.</p>'
-        + '<label class="os-note" for="saJoinName">Your name</label><input class="sa-input" id="saJoinName" type="text" placeholder="What should Naya call you?" autocomplete="name">'
-        + '<label class="os-note" for="saJoinContact">How Naya reaches you</label><input class="sa-input" id="saJoinContact" type="text" placeholder="Your Smart Mail name, or an email" autocomplete="email">'
-        + '<div class="ph-actions"><button type="button" class="ph-connect" id="saJoinGo">Enter \u2192</button></div>'
-        + '<p class="os-note" id="saJoinMsg"></p></div>';
-    }
-  } else if(saDoor==='members'){
-    p.innerHTML = '<div class="ph-card"><h3>Members only</h3>'
-      + '<p class="os-note">Members sign in with the code Naya mailed them. You\u2019re viewing as the owner, so everything below is open to you.</p>'
-      + '<label class="os-note" for="saCodeInput">Your member code</label><input class="sa-input" id="saCodeInput" type="text" placeholder="The code Naya mailed you" autocomplete="one-time-code">'
-      + '<div class="ph-actions"><button type="button" class="ph-connect" id="saCodeGo">Enter with code \u2192</button>'
-      + '<button type="button" class="ph-connect" data-sa-goto-feed>Step in as the owner \u2192</button></div>'
-      + '<p class="os-note" id="saCodeMsg"></p></div>';
-  } else {
-    p.innerHTML = '<div class="ph-card"><h3>Paid \u2014 the paywall</h3>'
-      + '<p class="os-note">Our three are free at join. If the owner ever charges for this one, this is the door visitors meet.</p>'
-      + '<p class="os-note"><b>MOCK payment link</b> \u2014 the owner pastes their real PayPal or Stripe link here. Nothing real is connected in this round, and no payment is taken.</p>'
-      + '<div class="ph-actions"><a class="ph-connect" href="'+SA_MOCK_PAY+'" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Pay \u2014 mock link</a></div>'
-      + '<p class="os-note">Mock checkout \u2014 the link goes to example.com, never to a real payment page.</p></div>';
-  }
 }
 
 /* ---------- views ---------- */
@@ -20478,7 +20471,10 @@ function saShowView(v){
   sa$('saBannerLessons').hidden = (v!=='lessons');
   var feedCard = sa$('saFeedCard');
   if(feedCard){
-    var feedView = !saCur ? 'lessons' : (saCur.slug==='academy' ? 'videos' : 'lessons');
+    /* MEMBERSHIP ROUND 4 REFINEMENT: the feed card is the Lessons feed. The
+       Videos pane already IS the videos feed (30 channel cards) — showing the
+       feed card under it repeated the same 5 Academy videos twice. */
+    var feedView = 'lessons';
     feedCard.hidden = (v!==feedView);
   }
 }
@@ -20515,7 +20511,9 @@ function saRenderFeed(){
   f.innerHTML = html;
 }
 function saCoverHtml(V, i){
-  return '<div class="sa-cover" data-sa-cover="'+i+'" style="--mc:'+saCur.color+'" role="button" tabindex="0" aria-label="Play Day '+V.day+' video">'
+  /* MEMBERSHIP ROUND 4: the video's own thumbnail is the cover — the video is
+     visibly there in the feed, never a dark empty box. */
+  return '<div class="sa-cover sa-thumb" data-sa-cover="'+i+'" style="--mc:'+saCur.color+';background-image:url(https://i.ytimg.com/vi/'+V.id+'/hqdefault.jpg)" role="button" tabindex="0" aria-label="Play Day '+V.day+' video">'
     + '<span class="sa-cover-day">DAY '+V.day+' \u00b7 NAYA POWER ACADEMY</span>'
     + '<span class="sa-cover-title">'+saEsc(V.title)+'</span>'
     + '<span class="sa-cover-play">\u25b6</span></div>';
@@ -20561,52 +20559,61 @@ function saRenderLesson(){
 
 /* ---------- video pane + theatre ---------- */
 function saRenderVideo(){
+  /* MEMBERSHIP ROUND 4 REFINEMENT: the Videos feed IS the channel feed — his
+     30 YouTube videos, newest first, each a smart block with its own
+     thumbnail. Tap the thumbnail and the lesson plays right there in the
+     feed (saPlayInline). The same feed shows for every membership. */
   var pane = sa$('saPaneVideo'); if(!pane || !saCur) return;
-  if(saCur.slug==='academy'){
-    var V = SA_ACADEMY[0];
-    var html = '<div class="ph-card sa-vid">' + saCoverHtml(V, 0)
-      + '<h3>'+saEsc(V.title)+'</h3><p class="os-note">'+saEsc(V.sub)+' \u2014 '+saEsc(V.saying)+'</p>'
-      + '<div class="ph-actions"><button type="button" class="ph-connect" data-sa-watch="0">\u25b6 Watch Day 1</button></div></div>';
-    for(var i=1;i<SA_ACADEMY.length;i++){
-      var Vi = SA_ACADEMY[i];
-      html += '<div class="ph-card sa-vid" data-sa-card="'+i+'">' + saCoverHtml(Vi, i)
-        + '<h3>'+saEsc(Vi.title)+'</h3><p class="os-note">'+saEsc(Vi.sub)+'</p>'
-        + '<div class="ph-actions"><button type="button" class="ph-connect" data-sa-watch="'+i+'">\u25b6 Watch</button></div></div>';
-    }
-    pane.innerHTML = html;
-  } else if(saCur.slug==='fac'){
-    pane.innerHTML = '<div class="ph-card sa-empty"><h3>No videos filed for this one \u2014 yet.</h3>'
-      + '<p class="os-note">The Fast Action Club is nine written lessons \u2014 the orientation you read, one day at a time. When the owner adds videos, they land here. Meanwhile the audio library is open below, in Podcasts.</p>'
-      + '<div class="ph-actions"><button type="button" class="ph-connect" data-sa-view="audios">Open the audio library →</button></div></div>';
-  } else {
-    /* MEMBERSHIP ROUND 3: kept — this pane is hidden unless the Videos tab is active,
-       so it is the single visible rendering on that tab, never a second one on the Lessons view. */
-    pane.innerHTML = '<div class="ph-card sa-empty"><h3>Lessons not yet filed \u2014 the owner adds them.</h3>'
-      + '<p class="os-note">The AI Masterclass has no video content filed in the workspace yet. When the owner files the lessons, they appear here \u2014 nothing is made up in the meantime.</p></div>';
-  }
+  var html = '';
+  SA_CHANNEL.forEach(function(V, j){
+    html += '<div class="ph-card sa-vid" data-sa-card="'+j+'">' + saChannelCoverHtml(V, j)
+      + '<h3>'+saEsc(V.title)+'</h3><p class="os-note">'+saEsc(V.dur)+' \u2014 from NayaNET on YouTube</p>'
+      + '<div class="ph-actions"><button type="button" class="ph-connect" data-sa-watch-ch="'+j+'">\u25b6 Watch</button></div></div>';
+  });
+  pane.innerHTML = html;
 }
-function saOpenTheatre(idx, el){
-  var V = SA_ACADEMY[idx]; if(!V) return;
+function saChannelCoverHtml(V, j){
+  /* LlhG9Ze8dC8 has NO thumbnail on YouTube — hq/mq/default/sd/maxres all
+     404, measured 2026-11-11 (its oEmbed 404s too). Its cover uses the
+     portal art (the membership's own hero, staged round-2 ref) so the card
+     never shows the empty dark box; the video still plays inline on click. */
+  var thumb = V.id==='LlhG9Ze8dC8' ? 'https://naya-proof-host.nayapower.workers.dev/?file=PERSONAL/portal-nayanet.png&ref=personal/membership-round2-20261111&cb=62cd7641f6657939f86aae584ba8b6b837c4fe01' : 'https://i.ytimg.com/vi/'+V.id+'/hqdefault.jpg';
+  return '<div class="sa-cover sa-thumb" data-sa-cover-ch="'+j+'" style="--mc:'+saCur.color+';background-image:url('+thumb+')" role="button" tabindex="0" aria-label="Play '+saEsc(V.title)+'">'
+    + '<span class="sa-cover-day">'+saEsc(V.dur)+' \u00b7 NAYANET ON YOUTUBE</span>'
+    + '<span class="sa-cover-title">'+saEsc(V.title)+'</span>'
+    + '<span class="sa-cover-play">\u25b6</span></div>';
+}
+var saInlineCover = null;   /* {card, html} of the cover swapped for the player */
+/* MEMBERSHIP ROUND 4 REFINEMENT: the lesson plays RIGHT THERE in the feed —
+   the thumbnail cover in the card is swapped for the video player, inline.
+   One player at a time; closing restores the cover. The theatre overlay is
+   gone — there is no second place a video plays. */
+function saPlayInline(idx, el, kind){
+  saStopInline();
+  var V = kind==='channel' ? SA_CHANNEL[idx] : SA_ACADEMY[idx]; if(!V) return;
   var cover = null;
-  if(el && el.hasAttribute && el.hasAttribute('data-sa-cover')){ cover = el; }
-  else if(el && el.closest){ var card = el.closest('.sa-vid,.sa-lesson'); if(card) cover = card.querySelector('[data-sa-cover]'); }
-  if(!cover){ cover = document.querySelector('#mwSmartAccess [data-sa-cover="'+idx+'"]'); }
-  if(cover){ cover.classList.add('sa-folded'); }
-  sa$('saTheatreTitle').textContent = V.title;
-  var fr = sa$('saFrame');
-  fr.src = 'https://www.youtube-nocookie.com/embed/'+V.id+'?rel=0&autoplay=1';
-  sa$('saTheatre').hidden = false;
+  if(el && el.hasAttribute && (el.hasAttribute('data-sa-cover') || el.hasAttribute('data-sa-cover-ch'))){ cover = el; }
+  else if(el && el.closest){ var card = el.closest('.sa-vid,.sa-lesson'); if(card) cover = card.querySelector('[data-sa-cover],[data-sa-cover-ch]'); }
+  if(!cover){ cover = document.querySelector('#mwSmartAccess [data-sa-cover="'+idx+'"], #mwSmartAccess [data-sa-cover-ch="'+idx+'"]'); }
+  if(!cover) return;
+  var card2 = cover.closest('.sa-vid,.sa-lesson'); if(!card2) return;
+  saInlineCover = {card: card2, html: cover.outerHTML};
+  var wrap = document.createElement('div');
+  wrap.className = 'sa-inline-wrap';
+  wrap.innerHTML = '<div class="sa-sixteen"><iframe src="https://www.youtube-nocookie.com/embed/'+V.id+'?rel=0&autoplay=1" title="'+saEsc(V.title)+'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
+    + '<div class="ph-actions" style="margin-top:10px;"><button type="button" class="ph-connect" data-sa-close-player>\u2715 Close player</button></div>';
+  cover.replaceWith(wrap);
   try{ if(saAudio) saAudio.pause(); }catch(e){}
 }
-function saCloseTheatre(){
-  var t = sa$('saTheatre'); if(!t) return;
-  t.hidden = true;
-  var fr = sa$('saFrame'); if(fr){ fr.src = 'about:blank'; }
-  var folded = document.querySelector('#mwSmartAccess .sa-cover.sa-folded');
-  if(folded){
-    folded.classList.remove('sa-folded');
-    try{ folded.scrollIntoView({block:'nearest'}); }catch(e){}
+function saStopInline(){
+  if(!saInlineCover) return;
+  var w = saInlineCover.card.querySelector('.sa-inline-wrap');
+  if(w){
+    var t = document.createElement('template');
+    t.innerHTML = saInlineCover.html.trim();
+    if(t.content.firstChild) w.replaceWith(t.content.firstChild);
   }
+  saInlineCover = null;
 }
 
 /* ---------- PowerCast player (harvested audio core) ---------- */
@@ -20620,6 +20627,8 @@ function saPcLoad(i, autoplay){
   sa$('saPcDesc').textContent = e.x || '';
   var nx = SA_PC[(i+1)%SA_PC.length];
   sa$('saPcUpNext').textContent = nx.t;
+  var art = sa$('saPcArt');
+  if(art){ art.src = saPcThumb(i); art.alt = 'PowerCast episode ' + (i+1) + ' \u2014 ' + e.t; }
   sa$('saPcState').textContent = 'Loading…';
   saAudio.src = saPcUrl(i);
   if(autoplay){ saAudio.play().catch(function(){}); }
@@ -20647,7 +20656,7 @@ function saRenderPcList(){
   var html = '';
   for(var i=0;i<show;i++){
     var e = SA_PC[i];
-    html += '<div class="sa-pc-row"><span class="sa-pc-num">'+('0'+(i+1)).slice(-2)+'</span>'
+    html += '<div class="sa-pc-row"><img class="sa-pc-thumb" src="'+saPcThumb(i)+'" alt="" data-sa-pc-play="'+i+'" onerror="this.onerror=null;this.src=window.SA_PC_HERO"><span class="sa-pc-num">'+('0'+(i+1)).slice(-2)+'</span>'
       + '<span class="sa-pc-t"><b>'+saEsc(e.t)+'</b><span>'+saEsc(e.b)+' · '+saEsc(e.x||'')+'</span></span>'
       + '<button type="button" class="ph-connect sa-mini" data-sa-pc-play="'+i+'" aria-label="Play '+saEsc(e.t)+'">'+(i===saPcIdx && saAudio && !saAudio.paused ? '❚❚' : '▶')+'</button></div>';
   }
@@ -20680,33 +20689,23 @@ function saEnterCourse(view){
   if(view){ saShowView(view); }
   try{ document.getElementById('mwSmartAccess').scrollTop = 0; }catch(e){}
 }
-function saCodeGo(){
-  var inp = sa$('saCodeInput'), msg = sa$('saCodeMsg');
-  var code = inp ? inp.value.trim() : '';
-  if(!code){ if(msg) msg.textContent = 'Type the code Naya mailed you \u2014 then step in.'; if(inp) inp.focus(); return; }
-  try{ localStorage.setItem('sa.code.'+saCur.slug, code); }catch(e){}
-  saEnterCourse();
-}
-
 /* ---------- wiring ---------- */
 function saWire(){
   /* X close + Escape */
   sa$('saClose').addEventListener('click', saClose);
-  sa$('saTheatreX').addEventListener('click', saCloseTheatre);
   document.addEventListener('keydown', function(e){
     var ov = sa$('mwSmartAccess');
     if(!ov || ov.hidden) return;
     if(e.key==='Escape'){
-      if(!sa$('saTheatre').hidden){ saCloseTheatre(); }
+      if(saInlineCover){ saStopInline(); }
       else { saClose(); }
     }
   });
   /* doors / rail / tabs / feed / lesson / video / player — one delegated listener */
   sa$('mwSmartAccess').addEventListener('click', function(e){
-    var t = e.target && e.target.closest ? e.target.closest('[data-sa-door],[data-sa-rail],[data-sa-view],[data-sa-read],[data-sa-next],[data-sa-watch],[data-sa-nextvid],[data-sa-cover],[data-sa-prev-lesson],[data-sa-next-lesson],[data-sa-pc-play],[data-sa-goto-feed],[data-sa-close]') : null;
+    var t = e.target && e.target.closest ? e.target.closest('[data-sa-view],[data-sa-read],[data-sa-next],[data-sa-watch],[data-sa-watch-ch],[data-sa-nextvid],[data-sa-cover],[data-sa-cover-ch],[data-sa-close-player],[data-sa-prev-lesson],[data-sa-next-lesson],[data-sa-pc-play],[data-sa-goto-feed],[data-sa-close]') : null;
     if(!t){
-      if(e.target && e.target.closest && e.target.closest('#saJoinGo')){ saJoinGo(); return; }
-      if(e.target && e.target.closest && e.target.closest('#saCodeGo')){ saCodeGo(); return; }
+      if(e.target && e.target.closest && e.target.closest('#saLoginGo')){ saLoginGo(); return; }
       if(e.target && e.target.closest && e.target.closest('#saPcAll')){ saPcShowAll = !saPcShowAll; saRenderPcList(); return; }
       if(e.target && e.target.closest && e.target.closest('#saPcPlay')){ saPcToggle(); return; }
       if(e.target && e.target.closest && e.target.closest('#saPcPrev')){ saPcLoad((saPcIdx+SA_PC.length-1)%SA_PC.length, true); return; }
@@ -20723,22 +20722,15 @@ function saWire(){
       }
       return;
     }
-    if(t.hasAttribute('data-sa-door')){ saDoor = t.getAttribute('data-sa-door'); saRenderDoors(); return; }
     if(t.hasAttribute('data-sa-close')){ saClose(); return; }
-    if(t.hasAttribute('data-sa-rail')){
-      var rail = t.getAttribute('data-sa-rail');
-      if(rail==='video' || rail==='videolib'){ saEnterCourse('videos'); }
-      else if(rail==='lesson'){ saEnterCourse('lessons'); }
-      else if(rail==='audio'){ saEnterCourse('audios'); }
-      else if(rail==='next'){ saNextLesson(); }
-      return;
-    }
     if(t.hasAttribute('data-sa-view')){ saShowView(t.getAttribute('data-sa-view')); return; }
     if(t.hasAttribute('data-sa-goto-feed')){ saEnterCourse(); return; }
     if(t.hasAttribute('data-sa-read')){ var ri = +t.getAttribute('data-sa-read'); saLessonIdx.fac = ri; saRenderLesson(); saShowView('lessons'); return; }
     if(t.hasAttribute('data-sa-next')){ var ni = +t.getAttribute('data-sa-next'); var nx = Math.min(SA_FAC.length-1, ni+1); saLessonIdx.fac = nx; saRenderLesson(); var card = document.querySelector('#mwSmartAccess [data-sa-card="'+nx+'"]'); if(card) card.scrollIntoView({block:'start'}); return; }
     if(t.hasAttribute('data-sa-nextvid')){ var nvi = +t.getAttribute('data-sa-nextvid'); var nxv = Math.min(SA_ACADEMY.length-1, nvi+1); var cardv = document.querySelector('#mwSmartAccess [data-sa-card="'+nxv+'"]'); if(cardv) cardv.scrollIntoView({block:'start'}); return; }
-    if(t.hasAttribute('data-sa-cover') || t.hasAttribute('data-sa-watch')){ var wi = +(t.getAttribute('data-sa-cover') || t.getAttribute('data-sa-watch')); saOpenTheatre(wi, t); return; }
+    if(t.hasAttribute('data-sa-close-player')){ saStopInline(); return; }
+    if(t.hasAttribute('data-sa-cover') || t.hasAttribute('data-sa-watch')){ var wi = +(t.getAttribute('data-sa-cover') || t.getAttribute('data-sa-watch')); saPlayInline(wi, t, 'academy'); return; }
+    if(t.hasAttribute('data-sa-cover-ch') || t.hasAttribute('data-sa-watch-ch')){ var ci = +(t.getAttribute('data-sa-cover-ch') || t.getAttribute('data-sa-watch-ch')); saPlayInline(ci, t, 'channel'); return; }
     if(t.hasAttribute('data-sa-prev-lesson')){ saStepLesson(-1); return; }
     if(t.hasAttribute('data-sa-next-lesson')){ saStepLesson(1); return; }
     if(t.hasAttribute('data-sa-pc-play')){ var pi = +t.getAttribute('data-sa-pc-play'); if(pi===saPcIdx){ saPcToggle(); } else { saPcLoad(pi, true); } return; }
@@ -20746,15 +20738,18 @@ function saWire(){
   /* cover keyboard: Enter/Space on a cover opens the theatre */
   sa$('mwSmartAccess').addEventListener('keydown', function(e){
     if((e.key==='Enter' || e.key===' ') && e.target && e.target.closest){
-      var c = e.target.closest('[data-sa-cover]');
-      if(c){ e.preventDefault(); saOpenTheatre(+c.getAttribute('data-sa-cover'), c); }
+      var c = e.target.closest('[data-sa-cover],[data-sa-cover-ch]');
+      if(c){
+        e.preventDefault();
+        if(c.hasAttribute('data-sa-cover-ch')){ saPlayInline(+c.getAttribute('data-sa-cover-ch'), c, 'channel'); }
+        else { saPlayInline(+c.getAttribute('data-sa-cover'), c, 'academy'); }
+      }
     }
   });
-  /* Enter key: member code joins, join name/contact joins */
+  /* Enter key: the login fields step in (name, code, Enter — one form) */
   sa$('mwSmartAccess').addEventListener('keydown', function(e){
     if(e.key!=='Enter' || !e.target || !e.target.id) return;
-    if(e.target.id==='saCodeInput'){ e.preventDefault(); saCodeGo(); }
-    else if(e.target.id==='saJoinName' || e.target.id==='saJoinContact'){ e.preventDefault(); saJoinGo(); }
+    if(e.target.id==='saLoginName' || e.target.id==='saLoginCode'){ e.preventDefault(); saLoginGo(); }
   });
   /* cover buttons + membership-card Open buttons — capture, before the
      page's own bubble handlers (which would navigate away). Only the
@@ -20789,12 +20784,26 @@ function saSameUrl(a, b){
   function norm(u){ return String(u||'').replace(/\/+$/,'').toLowerCase(); }
   return norm(a)===norm(b);
 }
-function saJoinGo(){
-  var nameEl = sa$('saJoinName'), conEl = sa$('saJoinContact'), msg = sa$('saJoinMsg');
+function saLoginGo(){
+  /* MEMBERSHIP ROUND 4: one login for every member — name, code, Enter.
+     The route is the owner's configuration (saCur.access), never a choice
+     the member sees: free steps straight in on the name; members need the
+     code Naya mailed them; paid routes through the owner's payment link
+     (mock link in this round — no payment is taken) and steps in as the
+     owner preview, the way round 3's members panel did. */
+  var nameEl = sa$('saLoginName'), codeEl = sa$('saLoginCode'), msg = sa$('saLoginMsg');
   var name = nameEl ? nameEl.value.trim() : '';
-  if(!name){ if(msg) msg.textContent = 'Tell Naya your name first — then step in.'; if(nameEl) nameEl.focus(); return; }
-  try{ localStorage.setItem('sa.join.'+saCur.slug, JSON.stringify({name:name, contact: conEl ? conEl.value.trim() : '', at: Date.now()})); }catch(e){}
-  saRenderDoorPanel();
+  if(!name){ if(msg) msg.textContent = 'Tell Naya your name first \u2014 then step in.'; if(nameEl) nameEl.focus(); return; }
+  var route = (saCur && saCur.access) || 'free';
+  if(route==='members'){
+    var code = codeEl ? codeEl.value.trim() : '';
+    if(!code){ if(msg) msg.textContent = 'Type the code Naya mailed you \u2014 then step in.'; if(codeEl) codeEl.focus(); return; }
+    try{ localStorage.setItem('sa.code.'+saCur.slug, code); }catch(e){}
+  }
+  try{ localStorage.setItem('sa.join.'+saCur.slug, JSON.stringify({name:name, at: Date.now()})); }catch(e){}
+  if(route==='paid'){
+    try{ window.open(SA_MOCK_PAY, '_blank', 'noopener'); }catch(e){}
+  }
   saEnterCourse();
 }
 function saNextLesson(){
