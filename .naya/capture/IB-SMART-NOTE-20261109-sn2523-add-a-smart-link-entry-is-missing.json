@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2523",
+ "title": "The Add-a-Smart-Link Entry Is Missing",
+ "slug": "add-a-smart-link-entry-is-missing",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2523/IB-SMART-NOTE-20261109-sn2523-add-a-smart-link-entry-is-missing.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "- **HIS WORDS, VERBATIM:** \"you don't even have the thing anymore where you can enter a smart link and then you you get a new smart link which is missing now because that should be there it should be able to enter a new smart link\"\n- **THE DEFECT:** the entry for a new Smart Link is missing from the page. A page whose purpose is partly to create Smart Links has no visible way to create one.\n- **THE FIX:** restore a visible entry at the top of the Smart Links section, wired to the creation flow — build the flow if it doesn't exist, and say so plainly if it has to be built.\n- **WHY THE TOP:** the entry sits at the top of its section because that is where the section starts — the reader meets the way in before they meet the list. (It connects to SN-2526: the track-any-link entry sits underneath the headliner — the same entry, in the page's final structure.)\n- **SCOPE:** the Dashboard boards page, Smart Links section.",
+  "human_view": "A page for managing Smart Links that has no place to add one is a door with no handle: you can see everything inside, but you can't put anything new in. The entry used to be there and now it isn't — nobody decided to remove it, it just went missing, and a missing thing nobody decided to remove is a thing nobody noticed losing. His fix is simple and non-negotiable: the entry comes back, at the top of the Smart Links section, wired to the flow that makes the link. If the flow itself doesn't exist, that gets built — and said plainly, not hidden.",
+  "child_view": "The box where you type in a new Smart Link had disappeared — like the front door going missing from a house. So we put it back, right at the top of the Smart Links part, where you can see it straight away. Type in your link, and there it is, a brand-new Smart Link with its own numbers.",
+  "grandma_view": "Dear, the little box where you put in a new Smart Link had simply gone, love — and a page for links with nowhere to add one is no good at all. So it comes back, dear, right at the top of the Smart Links part where you can find it, and you type your link in and there it is, all ready with its numbers.",
+  "ai_view": "This is the creation law: a page that manages things must also make them, in plain sight. It connects to SN-2522 (one board design — the new link appears as a board like all the others, in the named Smart Links section) and to SN-2525/2526 (the page's purpose — put in any URL and boom, a new Smart Link shows up with stats): the entry is the \"put in any URL\" half of that promise, and without it the promise is words without a way in. A missing entry is worse than a missing feature — a feature you never had is a gap; an entry you had and lost is a regression, and regressions are what make a user stop trusting the page to stay the way they left it.",
+  "what_it_means": "- **THE ENTRY RETURNS:** a visible place to enter a new Smart Link, at the top of the Smart Links section.\n- **WIRED TO THE FLOW:** it creates the link — build the flow if it doesn't exist, and say so plainly.\n- **THE PROMISE NEEDS ITS DOOR:** \"put in any URL and boom\" only works if there is somewhere to put the URL.",
+  "whats_inside": [
+   "- The add-a-Smart-Link entry is restored at the top of the Smart Links section.\n- It is wired to the creation flow (built if missing, said plainly).\n- Next loop run re-checks: the entry is visible, and entering a URL produces a new Smart Link with stats."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "6aaff8ab04e4d2706638190b7c558cc68a1d3f4146af351446e014c747889dc1",
+ "content_hash": "0a40b4451d2ac1cb80b2f626a24397db9057d9f73b653344c1fb927a452cdd77",
+ "reconstructed_from_page": true
+}
