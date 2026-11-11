@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-003",
+ "title": "Naya Continuation Engine — Reconstruct, Find Holes, Execute, Prove, Record, Reassess",
+ "slug": "naya-continuation-engine",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/NAYA-CONTINUATION-ENGINE/ONE-NEXT-ACTION-AND-PROOF/SN-003/IB-SMART-NOTE-20260929-sn003-naya-continuation-engine.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-09-29T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "",
+  "human_view": "",
+  "child_view": "",
+  "grandma_view": "",
+  "ai_view": "",
+  "what_it_means": "",
+  "whats_inside": [],
+  "topics": [
+   "System-Intelligence"
+  ]
+ },
+ "page_hash": "9841564342c0236c168e6a9a6ac9c8f3cb841eed5210ee964edd2eadee3de905",
+ "content_hash": "4ec274abf4176966721ba588560a04002b8f7c9d23bb4797866b0684bffd7240",
+ "reconstructed_from_page": true
+}
