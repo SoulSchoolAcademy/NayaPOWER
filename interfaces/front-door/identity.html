@@ -183,6 +183,7 @@
       --gold: #ffbf3d;
       --hair: rgba(245, 241, 232, 0.16);
       --royal: #a06bff;
+      --purple: #a855f7; /* harvested with the entrance .enter button — its border color */
       --royal-soft: rgba(160, 107, 255, 0.55);
       --royal-faint: rgba(160, 107, 255, 0.26);
       --label: #a06bff;
@@ -1081,6 +1082,50 @@
       .cert-plaque:has(.alias-status[data-state="taken"]) .cert-seal { width: 88px; height: 88px; }
       .cert-plaque:has(.alias-status[data-state="taken"]) .face-foot { margin-top: 14px; }
     }
+    /* Harvested verbatim from the live entrance (https://nayanet.app/)
+       — the .enter button's own rules. The identity page carried no
+       .enter rule, so the harvested button alone would render as a
+       browser-default flat button; flat is a defect. No new class,
+       no new style: the harvested one, byte-verbatim. */
+    .enter{
+      margin-top:11px;
+      width:100%;
+      height:55px;
+      border-radius:30px;
+      border:1.5px solid var(--purple);
+      color:white;
+      background:radial-gradient(
+        circle at 50% 0%,
+        #302054,
+        #05060a
+      );
+      font-size:clamp(.84rem,3.6vw,1rem);
+      font-weight:950;
+      letter-spacing:.18em;
+      box-shadow:
+        0 0 28px rgba(168,85,247,.35);
+      cursor:pointer;
+      transition:
+        transform .2s ease,
+        box-shadow .35s ease,
+        background .35s ease;
+    }
+    .enter:hover{
+      box-shadow:
+        0 0 35px rgba(168,85,247,.55),
+        inset 0 0 20px rgba(168,85,247,.08);
+    }
+    .enter:active{
+      transform:scale(.97);
+    }
+    @media(max-height:700px){ .enter{
+        height:48px;
+        margin-top:8px;
+      } }
+    @media(max-width:380px){ .enter{
+        font-size:.76rem;
+        letter-spacing:.13em;
+      } }
   </style>
   <!-- PWA: installable app. The crystal N becomes the home-screen icon, and launching
        opens straight into the Hub (start_url in manifest.webmanifest) — never this page.
@@ -1151,6 +1196,8 @@
             <span class="ab-title">ENTER</span>
           </span>
         </button>
+        <p class="hub-note">Already have a Smart Name?</p>
+        <button class="enter" type="button" id="returnJump">Jump back in →</button>
         <p class="cert-claim">Claim your Smart Name — yours alone: one person, one route, forever.</p>
         <p class="cert-benefit">Your alias is your Smart Link route — alias.nayanet.app — your Smart Mail, and your identity in NayaNET.</p>
         <p class="cert-privacy">Your name is never shared. Your alias is your identity in NayaNET — private by default.</p>
@@ -1206,11 +1253,23 @@
        scrubs it from the address bar.
        ========================================================= */
     var HUB_APP_URL = 'https://nayanet.app/';              /* placeholder — set to the real Hub host when known */
+    var WALKTHROUGH_URL = '/welcome';   /* the Official Welcome walk — identity hands off here, the walk hands off to the Hub */
     var HUB_APP_PLACEHOLDER = 'hub/';    /* the untouched default; the honesty guard keys off this */
-    var SB_ANON_KEY = '__SB_ANON_KEY__';  /* injected at deploy time by deploy-entrance.py — never a real key in this file */
+    var SB_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGlzYXNncGZ2emlzd3F2bXZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2MjM3ODgsImV4cCI6MjEwMzE5OTc4OH0.zX2r3T23sKebUMBdNg-4Noxos8JFOHaK2rRwqAVXU_s';  /* injected at deploy time by deploy-entrance.py — never a real key in this file */
 
     function hubEntryUrl(name, alias) {
       var url = HUB_APP_URL;
+      url += (url.indexOf('?') === -1 ? '?' : '&') +
+        'name=' + encodeURIComponent(name) +
+        '&alias=' + encodeURIComponent(alias);
+      return url;
+    }
+
+    /* The walkthrough lives on this same origin (/welcome), so the Smart
+       Identity in localStorage carries over — the query handoff is belt
+       and suspenders for the walk's own ingest. */
+    function walkthroughEntryUrl(name, alias) {
+      var url = WALKTHROUGH_URL;
       url += (url.indexOf('?') === -1 ? '?' : '&') +
         'name=' + encodeURIComponent(name) +
         '&alias=' + encodeURIComponent(alias);
@@ -1332,7 +1391,7 @@
          runs — the composing page carries no claim language, ever. */
       if (!silent) setAliasState('checking', alias);
       var headers = { 'apikey': SB_ANON_KEY, 'Authorization': 'Bearer ' + SB_ANON_KEY };
-      fetch('https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/nayanet_identities?alias=eq.' + encodeURIComponent(alias) + '&select=alias,name,device_key,created_at,cert_no', { headers: headers })
+      fetch('https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/nayanet_identities?alias=eq.' + encodeURIComponent(alias) + '&select=alias,name,device_key,created_at,cert_no' + '&cb=' + Date.now(), { headers: headers, cache: 'no-store' })
         .then(function(r){ return r.ok ? r.json() : Promise.reject(new Error('bad')); })
         .then(function(rows){
           if (seq !== aliasSeq) return;
@@ -1470,7 +1529,7 @@
       if (!finalAlias) {
         var plaqueEl = document.getElementById('certPlaque');
         if (savedAlias && plaqueEl && plaqueEl.classList.contains('is-certified')) {
-          window.location.href = hubEntryUrl(rawName || prettyName(savedAlias), savedAlias);
+          window.location.href = walkthroughEntryUrl(rawName || prettyName(savedAlias), savedAlias);
           return;
         }
         var st = document.getElementById('aliasStatus');
@@ -1519,7 +1578,7 @@
             return res.json().then(function(rows){ var ca = (rows && rows[0] && rows[0].created_at) || new Date().toISOString(); var cn = (rows && rows[0] && rows[0].cert_no != null) ? rows[0].cert_no : null; return { status: 'ok', createdAt: ca, certNo: cn }; }).catch(function(){ return { status: 'ok', createdAt: new Date().toISOString(), certNo: null }; });
           }
           if (res.status === 409) {
-            return fetch('https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/nayanet_identities?alias=eq.' + encodeURIComponent(finalAlias) + '&select=device_key,created_at,cert_no', { headers: sbHeaders })
+            return fetch('https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/nayanet_identities?alias=eq.' + encodeURIComponent(finalAlias) + '&select=device_key,created_at,cert_no' + '&cb=' + Date.now(), { headers: sbHeaders, cache: 'no-store' })
               .then(function (r2) { return r2.ok ? r2.json() : null; })
               .then(function (rows) {
                 if (rows && rows.length && rows[0].device_key !== deviceKey) return { status: 'taken', createdAt: null };
@@ -1538,6 +1597,7 @@
       claimAlias().then(function (result) {
         var status = (result && typeof result === 'object') ? result.status : result;
         if (status === 'taken') {
+          setAliasState('taken', finalAlias);
           var note = document.getElementById('hubNote');
           note.textContent = 'That alias is already claimed on another device. Pick a different alias to continue.';
           note.hidden = false;
@@ -1545,9 +1605,24 @@
         }
         var createdAt = (result && result.createdAt) || new Date().toISOString();
         try { if (window.stampCertificate) window.stampCertificate(createdAt, (result && result.certNo) || null); } catch(e){}
-        setTimeout(function(){ window.location.href = hubEntryUrl(rawName || prettyName(finalAlias), finalAlias); }, 800);
+        setTimeout(function(){ window.location.href = walkthroughEntryUrl(rawName || prettyName(finalAlias), finalAlias); }, 800);
       });
     };
+
+    /* Returning owner — Jump back in (front-door fix 2026-11-11):
+       the entrance's own button, harvested verbatim. It jumps to
+       the Hub with the typed alias (the same normalization as
+       finalAlias), or the saved alias when the field is empty —
+       the field starts empty, and that IS the returning owner. */
+    (function () {
+      var jumpBtn = document.getElementById('returnJump');
+      if (!jumpBtn) return;
+      jumpBtn.addEventListener('click', function () {
+        var typedAlias = aliasInput.value.toLowerCase().replace(/[^a-z0-9]/g, '');
+        var jumpAlias = typedAlias || savedAlias || '';
+        window.location.href = hubEntryUrl(rawName || prettyName(jumpAlias), jumpAlias);
+      });
+    })();
 
     /* ---------- PWA install — corner button + popup. ----------
        Real install: the crystal N becomes the home-screen icon, and launching
