@@ -1,6 +1,16 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-11T15:48:26Z",
-  "tip": "78b79d097224f21ecf52dce27b54cd9efe64f006",
-  "prs": []
+  "generated_at": "2026-11-11T21:49:56Z",
+  "tip": "518682e0135f490716e4bbed74b4b39cba5b7ac6",
+  "prs": [
+    {
+      "number": 3345,
+      "title": "[DRAFT][SECURITY] Complete pending Smart Mail legacy policy closure (no production apply)",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "5f99cc62b40a9fe1b2fa9bbc0b58f69d1bc58900"
+    }
+  ]
 }
