@@ -6993,7 +6993,8 @@
    "smart_link_verified_at": "2026-10-10T15:21:04Z",
    "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
    "index_validation": "RETIRED_UNVALIDATABLE",
-   "index_validation_reason": "B-51 fail-closed backfill 2026-10-13: no projection_path, so no page can be bound. Entry kept for provenance; it is never scored and never validated."
+   "index_validation_reason": "B-51 fail-closed backfill 2026-10-13: no projection_path, so no page can be bound. Entry kept for provenance; it is never scored and never validated.",
+   "capture_file": ".naya/capture/SMART-NOTE-20261005-sn0360-no-deletion-without-understanding.json"
   },
   {
    "smart_note_id": "SN-0361",
@@ -43999,5 +44000,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "7f89529f1bc5c3e7c8ea26736cb6ed9534d88f29f5055f842fda1f47e20f7c37"
+ "corpus_manifest_hash": "d7439737bb2ed3ba9df6ffd98840e33cd4f5f37d28a5bf2ded55ed214d2ebe83"
 }
