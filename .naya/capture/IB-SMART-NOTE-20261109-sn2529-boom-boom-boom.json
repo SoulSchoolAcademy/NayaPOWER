@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2529",
+ "title": "Boom Boom Boom — The Working Method",
+ "slug": "boom-boom-boom",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2529/IB-SMART-NOTE-20261109-sn2529-boom-boom-boom.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "- **HIS WORDS (seq 167201):** \"Yeah, so we're going to change the way that we work together. So it's just more like boom, boom, boom. We get things done one after another. No waiting, waiting no more. No, no bullshit. We just on top of it. You just one agent after another another agent. If you have to add more agents to get it done, we try and do do as efficiently and quickly so we can get all these all these pages all working and right. I assume that they got a lot to do because obviously they're behind haven't given it to me yet. So once they give me all that, then I will give you the next set the next set the next set and stuff and stuff and then we'll just work all day every day until all the interfaces interfaces are molded and working so that's the other thing you want me making sure that not only do they look look right but they work and everything's in sync so make sure you have like agents that like they're making or you can even ask make sure that everything is aligned and working and testing right when you create stuff check ...\"\n- **THE METHOD:** things get done one after another, immediately, no waiting. One agent after another; add more agents when it gets it done faster. Work all day, every day, until all the interfaces are molded and working.\n- **THE STANDARD:** looks right is NOT enough — it must WORK. Every build is checked for alignment and function — all buttons, all pages, the functionality understood, everything in sync, and **all stats flow back to the Dashboard**.\n- **THE RHYTHM:** he gives the next set when the seats deliver — the seats are behind and haven't given it to him yet.\n- **THE CAPTAIN'S PART:** she stays on top of it all. (Carried to the Dashboard coordinator's live prompt by the chat lane the same pass; this seat does not re-dispatch.)",
+  "human_view": "This is the same law as SN-2528, said a second time five minutes later in his own rhythm — and the repetition is the point. He is not describing a preference; he is replacing the way we work. The old way was: set it up, wait, check tomorrow. The new way is: boom, boom, boom — one agent after another, more agents when more agents make it faster, all day every day until the interfaces are molded and working. And he adds the quality bar that makes the speed safe: it is not enough for a page to look right. Every button must work, every page must work, everything must be in sync, and every stat must flow back to the Dashboard. Speed without that check is just faster garbage. The captain stays on top of it all — that is the job now, stated twice in one hour because the first telling did not change the machine enough.",
+  "child_view": "Imagine building a big tower out of blocks, one after another, boom boom boom, never stopping to stare at one block for a whole day. And when you put a block down, you wiggle it to make sure it really sticks — looking right is not enough, it has to actually hold. That is how we work now: fast, one after another, and every piece really working.",
+  "grandma_view": "Dear, he wants it done like a good kitchen, love — one dish after another, no standing around waiting, and every dish has to actually taste right, not just look pretty on the plate. Boom, boom, boom, all day, until everything is finished and working. That's the way now, dear.",
+  "ai_view": "SN-2528 is the rule (no send-and-wait); this note is the method (boom boom boom). Together they are the operating law for the interface work: velocity with a proof bar. The proof bar is the guard against the failure mode speed invites — a page that looks finished and does not work. The Dashboard is the integration point: stats flowing back to it is the test that the system is one system, not a pile of pages. The captain's role is explicit in his words — \"you just one agent after another\" — she is the one who keeps the chain moving, and the loop's job is to keep the record true so she can see what is sitting.",
+  "what_it_means": "- **BOOM BOOM BOOM:** one agent after another, immediately, no waiting; add more agents when it gets it done faster; work all day, every day, until all the interfaces are molded and working.\n- **LOOKS RIGHT IS NOT ENOUGH — IT MUST WORK:** every build is checked for alignment and function — all buttons, all pages, everything in sync, all stats flow back to the Dashboard.\n- **HE GIVES THE NEXT SET WHEN THE SEATS DELIVER** — the seats are behind; delivery is what unlocks the next set.",
+  "whats_inside": [
+   "- The Dashboard coordinator's live prompt already carries this order (chat lane, same pass).\n- The loop records delivery as the unlock: a seat's delivery is what earns the next set, and a sitting lane is the blockage."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "4e2cf28edf8f1f7c1ecbf7340b6fc9089eff959a4afc524951b02afc720fce31",
+ "content_hash": "d8fc611adcc78032a9cad50c0b09e72b143ed487894120aee4dd773f8e9e828b",
+ "reconstructed_from_page": true
+}
