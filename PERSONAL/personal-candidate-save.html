@@ -3644,9 +3644,9 @@ article.intel-board:hover, article.intel-board:active { border-color: var(--tone
    70px above the cover bottom — 390px from the cover top at 460px height
    (350px at the 420px phone height). Five buttons at 61px + 14px gaps end
    at 377px desktop — right above the picture. Three end mid-cover. */
-.mw-cover-mships{position:absolute;top:16px;left:16px;z-index:11;display:flex;flex-direction:column;gap:14px;max-width:min(320px,72vw)}
-@media (max-width:640px){.mw-cover-mships{top:6px;left:10px;gap:10px}.mw-mship-btn{padding:18px 20px!important}}
-.mw-mship-btn{display:inline-flex;align-items:center;gap:8px;padding:20px 20px;border-radius:999px;
+.mw-cover-mships{position:absolute;top:16px;left:16px;z-index:11;display:flex;flex-direction:column;gap:10px;max-width:min(320px,72vw)}
+@media (max-width:640px){.mw-cover-mships{top:6px;left:10px;gap:8px}.mw-mship-btn{padding:10px 16px!important}}
+.mw-mship-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;
   font-size:14px;font-weight:800;letter-spacing:.02em;color:#fff;text-decoration:none;cursor:pointer;
   background:linear-gradient(180deg,rgba(10,10,16,.82),rgba(10,10,16,.66));
   border:1.5px solid var(--mc,#a06bff);
@@ -3687,7 +3687,8 @@ article.intel-board:hover, article.intel-board:active { border-color: var(--tone
 .mw-stats-ico:hover{transform:translateY(-2px) scale(1.05);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 30px var(--pc,#a06bff),0 12px 26px rgba(0,0,0,.55)}
 .mw-flash{outline:2px solid #ffbf3d!important;outline-offset:3px;box-shadow:0 0 34px rgba(255,191,61,.8)!important}
 /* Fix 7 — hide control on the bottom bar. */
-.mw-hidebar{position:absolute;right:6px;top:50%;transform:translateY(-50%);z-index:2;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.25);
+/* FIX-20261111 F5 — hide button above the bar's left end: the right end sits under the search FAB, and the FAB must not move up (R3: the Bar settings popover). */
+.mw-hidebar{position:absolute;left:6px;right:auto;top:-46px;transform:none;z-index:2;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.25);
   background:rgba(255,255,255,.06);color:#fff;font-size:14px;cursor:pointer}
 body.mw-has-hidebtn #nsbBottom .nsb-row{padding-right:44px}
 .mw-hidebar:hover{border-color:#ff5e6c;color:#ff5e6c;box-shadow:0 0 16px rgba(255,94,108,.5)}
@@ -13680,6 +13681,8 @@ NayaSmartBar.mount({
     'Lists':       { view: 'lists' },
     'Reports':     { url: 'https://nayanet.app/rooms/reports' },
     'Settings':    { view: 'settings' },
+    'My Story':    { view: 'story' },
+    'Scheduler':   { view: 'scheduler' },
   };
 
   function norm(s) {
@@ -19567,7 +19570,7 @@ var MW_PAGES=[
   {key:'contacts',label:'Contacts',icon:'👥',color:'#2fe89e',go:'people',stat:'people'},
   {key:'about',label:'About',icon:'✦',color:'#e84fff',go:'about',stat:'notes'}
 ];
-var MW_FAST_ACTION_HTML='<div class="mw-plan"><details><summary>The nine-day course — open it</summary> <p><b>You&rsquo;re hired — how to spread the word about NayaNET.</b> You joined something truly awesome, and the best way to grow it is to tell people about it in your own words. You have a link that is yours. Put it where people already see you, send it to people you already know, and share the smart notes you love with your link beside them. When someone joins through you, the credit is yours.</p> <h4>Day 1 — Your link</h4> <p>The moment you join, you get your own link. It carries your name in it — something like joinus?ref=your-name — so when someone arrives through it, the system knows they came from you. That link is the start of everything below. Keep it close. You will use it in every way that follows.</p> <h4>Days 2–3 — Way one: share a smart note</h4> <p>This is the easiest way, and the most natural. You read a smart note you love — you share it. Tap the share button on the smart note. Your link goes into the post with it. The post carries a preview image, so it looks beautiful before anyone taps it. Add your own words. Something simple, in your voice: <b>join me on NayaNET — Naya means new, a new AI-powered internet.</b> Send it out through the share button on your phone — to your socials, or by email, wherever your people are. The note does the teaching. Your words do the inviting. Your link does the counting.</p> <h4>Days 4–5 — Way two: email invites</h4> <p>There is an invite system waiting for you, with the hard work already done. One email at a time. A series of emails — daily, every three days, weekly, or on a rhythm you choose yourself — so people hear from you more than once. Words you can copy — like <b>join me on NayaNET — Naya means new, a new AI-powered internet</b> — and the invite box on the page starts with a message of its own. Auto invites: once you set it up, the invites go out on their own schedule. One button, everywhere — the Invite button is across your pages, so inviting is never more than one tap away. Invite the people you actually know first. A personal invite from you beats a hundred posts to strangers.</p> <h4>Days 6–7 — Way three: your link in your profiles and your posts</h4> <p>Put your link where people already look for you. In your profile — on NayaNET and everywhere else you have a profile. In your posts — when you post about something you love, your link sits right there with it. In your messages — when someone asks what you are up to, send them your link with a line in your own words. People join people they know. Your link in your own places is you, inviting, every day, without you having to remember to do it.</p> <h4>Day 8 — Way four: your own domain (advanced users)</h4> <p>If you are the kind of person who has your own domain name — your own piece of the internet with your name on it — you can point it at NayaNET. This one is for advanced users only, and it is a possibility, not a promise. If that sentence meant nothing to you, skip this way entirely — the first three ways are more than enough, and they are where the people come from.</p> <h4>Day 9 — How you get credit, and your next step</h4> <p>Whoever brings people gets the credit, however they brought them — a shared smart note, an email invite, a link in a profile. If they came through you, it counts as yours. And the money side, in plain numbers: you earn 50% of what the people you bring pay. Three Max sales a day, for thirty days, is ninety people. Ninety people times $50 is <b>$4,500 a month, every month they stay.</b></p> <p>Do one thing today: share one smart note you love, with your link and your own words beside it. That is the whole job. Then do it again tomorrow.</p> </details></div>';
+var MW_FAST_ACTION_HTML='<div class="mw-plan"><details open><summary>The nine-day course — tap to close</summary> <p><b>You&rsquo;re hired — how to spread the word about NayaNET.</b> You joined something truly awesome, and the best way to grow it is to tell people about it in your own words. You have a link that is yours. Put it where people already see you, send it to people you already know, and share the smart notes you love with your link beside them. When someone joins through you, the credit is yours.</p> <h4>Day 1 — Your link</h4> <p>The moment you join, you get your own link. It carries your name in it — something like joinus?ref=your-name — so when someone arrives through it, the system knows they came from you. That link is the start of everything below. Keep it close. You will use it in every way that follows.</p> <h4>Days 2–3 — Way one: share a smart note</h4> <p>This is the easiest way, and the most natural. You read a smart note you love — you share it. Tap the share button on the smart note. Your link goes into the post with it. The post carries a preview image, so it looks beautiful before anyone taps it. Add your own words. Something simple, in your voice: <b>join me on NayaNET — Naya means new, a new AI-powered internet.</b> Send it out through the share button on your phone — to your socials, or by email, wherever your people are. The note does the teaching. Your words do the inviting. Your link does the counting.</p> <h4>Days 4–5 — Way two: email invites</h4> <p>There is an invite system waiting for you, with the hard work already done. One email at a time. A series of emails — daily, every three days, weekly, or on a rhythm you choose yourself — so people hear from you more than once. Words you can copy — like <b>join me on NayaNET — Naya means new, a new AI-powered internet</b> — and the invite box on the page starts with a message of its own. Auto invites: once you set it up, the invites go out on their own schedule. One button, everywhere — the Invite button is across your pages, so inviting is never more than one tap away. Invite the people you actually know first. A personal invite from you beats a hundred posts to strangers.</p> <h4>Days 6–7 — Way three: your link in your profiles and your posts</h4> <p>Put your link where people already look for you. In your profile — on NayaNET and everywhere else you have a profile. In your posts — when you post about something you love, your link sits right there with it. In your messages — when someone asks what you are up to, send them your link with a line in your own words. People join people they know. Your link in your own places is you, inviting, every day, without you having to remember to do it.</p> <h4>Day 8 — Way four: your own domain (advanced users)</h4> <p>If you are the kind of person who has your own domain name — your own piece of the internet with your name on it — you can point it at NayaNET. This one is for advanced users only, and it is a possibility, not a promise. If that sentence meant nothing to you, skip this way entirely — the first three ways are more than enough, and they are where the people come from.</p> <h4>Day 9 — How you get credit, and your next step</h4> <p>Whoever brings people gets the credit, however they brought them — a shared smart note, an email invite, a link in a profile. If they came through you, it counts as yours. And the money side, in plain numbers: you earn 50% of what the people you bring pay. Three Max sales a day, for thirty days, is ninety people. Ninety people times $50 is <b>$4,500 a month, every month they stay.</b></p> <p>Do one thing today: share one smart note you love, with your link and your own words beside it. That is the whole job. Then do it again tomorrow.</p> </details></div>';
 
 /* ---------- state ---------- */
 function mwSlots(){ var s=mwGet('coverslots',null); if(!s||s.length!==5){ s=JSON.parse(JSON.stringify(MW_DEFAULT_SLOTS)); } return s; }
@@ -19598,10 +19601,19 @@ function mwApplyBars(){
   try{ window.dispatchEvent(new Event('resize')); }catch(e){}
 }
 function mwLayoutPlus(){
-  var ts=$('nsbTopstack');
-  var h=(ts && ts.style.display!=='none')?ts.offsetHeight:0;
-  var tops=document.querySelectorAll('#os-chrome .rooms-plus, #os-chrome .eco-plus');
-  for(var i=0;i<tops.length;i++){ tops[i].style.top=(h+8)+'px'; }
+  /* FIX-20261111 F3 — the + buttons move to the cover's RIGHT side,
+     stacked below Change cover, positioned from the COVER's live
+     document top (not the topstack: with the Smart Bar off/bottom the
+     cover rises to y0 and topstack math breaks). Change cover ends at
+     coverTop+64 (desktop) / +54 (phone); eco at +76 and rooms at +132
+     sit on empty cover, clear of the button column, the avatar, and
+     the bars at both widths, in every bar state. */
+  var cvr=$('cvr'), coverTop=0;
+  if(cvr){ try{ coverTop=cvr.getBoundingClientRect().top + (window.scrollY||window.pageYOffset||0); }catch(e){} }
+  else { var ts=$('nsbTopstack'); coverTop=(ts && ts.style.display!=='none')?ts.offsetHeight:0; }
+  var rooms=$('os-rooms-plus'), eco=$('os-eco-plus');
+  if(eco){ eco.style.top=(coverTop+76)+'px'; }
+  if(rooms){ rooms.style.top=(coverTop+132)+'px'; rooms.style.left='auto'; rooms.style.right='12px'; }
 }
 /* Fix 7 — hide control on the bottom bar (tap to hide; Settings brings it back). */
 function mwEnsureHideBtn(){
@@ -19761,7 +19773,7 @@ function mwMergeDefaults(){
   if(listEl.querySelector('[data-mw-default]')) return;
   if(listEl.querySelector('.os-skel')){ var n=+(listEl.getAttribute('data-mw-retry')||'0'); if(n<6){ listEl.setAttribute('data-mw-retry', String(n+1)); setTimeout(mwMergeDefaults, 800); } return; }
   var liveNames={};
-  listEl.querySelectorAll('.mship-card h3').forEach(function(h){ liveNames[(h.textContent||'').trim().toLowerCase()]=1; });
+  listEl.querySelectorAll('.mship-card h3').forEach(function(h){ liveNames[(h.textContent||'').trim().replace(/^[^\p{L}\p{N}]+/u,'').toLowerCase()]=1; });
   var wrap=document.createElement('div');
   wrap.setAttribute('data-mw-default','1');
   wrap.style.cssText='display:flex;flex-direction:column;gap:12px;';
@@ -19771,11 +19783,16 @@ function mwMergeDefaults(){
   wrap.innerHTML=html;
   if(listEl.firstChild) listEl.insertBefore(wrap, listEl.firstChild);
   else listEl.appendChild(wrap);
+  /* FIX-20261111 F6: the empty state must not survive the defaults. */
+  Array.prototype.slice.call(listEl.children).forEach(function(ch){
+    if(ch.tagName==='P' && (ch.textContent||'').trim()==='No memberships yet.') ch.remove();
+  });
   /* Live rows fill empty cover slots (never overwriting the citizen's). */
   try{
     var slots=mwSlots(), changed=false;
     listEl.querySelectorAll('.mship-card h3').forEach(function(h){
-      var name=(h.textContent||'').trim(); if(!name) return;
+      if(h.closest && h.closest('[data-mw-default]')) return; /* the defaults we just added, not live rows */
+      var name=(h.textContent||'').trim().replace(/^[^\p{L}\p{N}]+/u,''); if(!name) return;
       var known=false; slots.forEach(function(s){ if(s.label && s.label.toLowerCase()===name.toLowerCase()) known=true; });
       if(known) return;
       for(var i=0;i<slots.length;i++){ if(!slots[i].label && !slots[i].url){ slots[i]={on:true,label:name,url:'#memberships'}; changed=true; break; } }
@@ -19998,6 +20015,51 @@ function mwBindSettings(){
   }
 }
 
+
+/* FIX-20261111 F6 — wire the default memberships to the ACTUAL open path.
+   Root cause (proven live): both doors bypass the _osv wrapper — the
+   Settings button and the Dashboard Membership row are data-os-go, and
+   the document click handler calls the LOCAL showView, never
+   window.osShowView — so the 700ms merge never fires. And mshipLoad's
+   async Supabase render would wipe a timed merge anyway. So: watch the
+   list itself (re-merge whenever the load lands or re-renders), watch
+   the section's 'on' class (merge when the view opens), and wrap
+   window.mshipLoad. The _osv wrapper stays as a fourth path. */
+function mwEnsureMemberships(){
+  var listEl=$('mship-list'); if(!listEl) return;
+  var sec=$('memberships');
+  function maybeMerge(){
+    if(sec && !sec.classList.contains('on')) return;
+    if(listEl.querySelector('[data-mw-default]')) return;
+    if(listEl.querySelector('.os-skel')) return; /* load still landing */
+    mwMergeDefaults();
+  }
+  if(!listEl._mwObserved){
+    listEl._mwObserved=true;
+    try{
+      new MutationObserver(function(){ setTimeout(maybeMerge, 150); }).observe(listEl, {childList:true});
+    }catch(e){}
+  }
+  if(sec && !sec._mwObserved && window.MutationObserver){
+    sec._mwObserved=true;
+    try{
+      new MutationObserver(function(){
+        if(sec.classList.contains('on')){ setTimeout(mwMergeDefaults, 700); setTimeout(maybeMerge, 2000); }
+      }).observe(sec, {attributes:true, attributeFilter:['class']});
+    }catch(e){}
+  }
+  if(window.mshipLoad && !window.mshipLoad._mwWrapped){
+    var _ml=window.mshipLoad;
+    /* mshipLoad also runs on EVERY page load (mshipBoot + the
+       supabase-ready re-read) — only merge when the view is actually
+       open, or a background load would merge (and fill cover slots)
+       behind the citizen's back. */
+    var wl=function(){ var r=_ml.apply(this, arguments); var s=$('memberships'); if(s && s.classList.contains('on')){ setTimeout(mwMergeDefaults, 1200); setTimeout(maybeMerge, 2500); } return r; };
+    wl._mwWrapped=true; window.mshipLoad=wl;
+  }
+  if(sec && sec.classList.contains('on')) setTimeout(mwMergeDefaults, 700);
+}
+
 /* ---------- wraps ---------- */
 function mwWrap(){
   if(window.osShowView && !window.osShowView._mwWrapped){
@@ -20046,6 +20108,7 @@ function mwInit(){
   mwRenderMyWorld();
   mwBindSettings();
   mwWrap();
+  mwEnsureMemberships();
   mwEnsureHideBtn();
   var bt=$('nsbBottom');
   if(bt && window.MutationObserver){
@@ -20091,7 +20154,7 @@ function mwInit(){
   setTimeout(function(){ mwApplyBars(); mwEnsureHideBtn(); }, 900);
 }
 try{ mwInit(); }catch(e){ try{ console.warn('[mw]', e); }catch(_){} }
-document.addEventListener('DOMContentLoaded', function(){ try{ mwApplyBars(); mwEnsureHideBtn(); mwApplyLang(); }catch(e){} });
+document.addEventListener('DOMContentLoaded', function(){ try{ mwApplyBars(); mwEnsureMemberships(); mwEnsureHideBtn(); mwApplyLang(); }catch(e){} });
 })();
 </script>
 
