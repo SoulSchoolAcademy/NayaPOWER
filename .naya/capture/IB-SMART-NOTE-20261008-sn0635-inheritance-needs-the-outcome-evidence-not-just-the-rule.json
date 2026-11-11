@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-635",
+ "title": "IB-SMART-NOTE-20261008-sn0635-inheritance-needs-the-outcome-evidence-not-just-the-rule.md",
+ "slug": "inheritance-needs-the-outcome-evidence-not-just-the-rule",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CONTINUITY/COLD-14/SN-0635/IB-SMART-NOTE-20261008-sn0635-inheritance-needs-the-outcome-evidence-not-just-the-rule.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-10-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "A retained lesson without its outcome evidence is not inheritable. In the SR-P2 cold-successor trial (2026-10-08), an inheritance arm rationally REJECTED an evidence-stripped retained note: the rule text alone was not enough to trust. Inheritance needs the outcome evidence — what was tried, what happened, what the proof showed — not just the rule. This supports the 14-element handoff schema's PROOF element and is flagged as the REUSE GAP.",
+  "human_view": "",
+  "child_view": "",
+  "grandma_view": "",
+  "ai_view": "",
+  "what_it_means": "",
+  "whats_inside": [],
+  "topics": [
+   "System-Intelligence"
+  ]
+ },
+ "page_hash": "2289f79bf75f6a04a004a9c8516dacd344e3ab6fd0a571710b8cf28ef2347f4f",
+ "content_hash": "7d136d1b48b1b716dcd1a5f3caa11933e76ad3a53a4cc4720160f5f8e946721b",
+ "reconstructed_from_page": true
+}
