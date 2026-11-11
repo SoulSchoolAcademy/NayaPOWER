@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2226",
+ "title": "The Growth — The Number Grows With the Score",
+ "slug": "the-growth-the-number-grows-with-the-score",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/07/DESIGN/SN-2226/IB-SMART-NOTE-20261107-sn2226-the-growth-the-number-grows-with-the-score.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-07T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The number is dynamic: it is built from the score, not fixed at three digits. `createReels(el, target)` builds one reel per digit of the target. `growAndReveal(el, fromVal, toVal)` grows it: it rebuilds every strip for the new target, slides a new tile in (`reelIn` keyframe), and counts up to the new value. 725 → 7,250 → 10,725. Thousands, ten-thousands, as far as it goes — the tiles just keep coming, each one flashing in its colour as the numbers flow through it. The gauge and the number move as one.",
+  "human_view": "Shawn's direction: the number is dynamic. It is not a picture of a number — it is built from the score, live. When the score grows, the number grows with it, a new tile sliding in. That is what makes it alive instead of printed.",
+  "child_view": "When your score gets bigger, a brand-new shiny box slides in next to the others, and the number counts up to the new big number. The boxes just keep coming as you grow.",
+  "grandma_view": "The number isn't stuck at three digits. When the score grows, a new tile appears and the number grows with it — from hundreds to thousands to ten-thousands, as far as it goes.",
+  "ai_view": "Growth is the number's proof that it is alive. A static number is a picture. A growing number is a machine — it reads the score, builds its tiles, and counts up. The reel that slides in is the moment the system shows you it is keeping up with you.",
+  "what_it_means": "- Built from the score: one reel per digit. Growth: rebuild the strips, slide a tile in, count up.\n- 725 → 7,250 → 10,725, proven on a real screen (screen check #3, 21:00Z — five tiles, all digits showing, none blank).\n- The gauge and the number move as one.",
+  "whats_inside": [
+   "- Every number in the system is built from its value, never fixed at a digit count.\n- The growth sequence is the demo of the number's life — it is how the number shows it is alive."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "f696a88cbed4b9c6faa030b8bebc036d63218818ee860ef255afae3bdd10cf10",
+ "content_hash": "8072e5d2915d59b6d57b0b02f01eb4f86ade64cd666a6706ecbda4f359586eb3",
+ "reconstructed_from_page": true
+}
