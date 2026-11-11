@@ -6256,13 +6256,19 @@ button.os-ld-node .os-ld-n{
 .os-offer-door b{font-size:16px;letter-spacing:.02em;}
 .os-offer-desc{font-size:14px;line-height:1.55;color:#E8E8EC;}
 @media(max-width:640px){.os-offer-doors{flex-direction:column;}}
+/* ABOUT BOARDS FIX (2026-11-11, Shawn 13:18Z) — the Edit button steps back:
+   the text board is the star, Edit is a plain quiet action below it.
+   Scoped to the four About cards only (motto / story / whatido / goals);
+   Save/Cancel and every other .ph-msg on the page are untouched. */
+#about .ph-actions button[data-os-sec-edit="motto"],#about .ph-actions #editabout,#about .ph-actions button[data-os-sec-edit="whatido"],#about .ph-actions button[data-os-sec-edit="goals"]{background:transparent !important;border:1px solid rgba(255,255,255,.18) !important;box-shadow:none !important;padding:8px 14px !important;font-size:13px !important;font-weight:600 !important;color:rgba(255,255,255,.72) !important;transform:none !important;}
+#about .ph-actions button[data-os-sec-edit="motto"]:hover,#about .ph-actions #editabout:hover,#about .ph-actions button[data-os-sec-edit="whatido"]:hover,#about .ph-actions button[data-os-sec-edit="goals"]:hover{border-color:rgba(255,255,255,.38) !important;box-shadow:none !important;color:#fff !important;transform:none !important;}
 </style>
 <div class="ph-sec os-view" id="about" data-os-view="about" data-block="about">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> About Me</div>
 <div class="ib-layer layer-purple open">
 <button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#a06bff">❝</span><b>My motto</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
-<p id="os-sec-motto-text" class="os-note" style="margin:0;"></p>
+<div class="ib-nutshell" style="--tone:#a06bff"><p id="os-sec-motto-text" class="os-note" style="margin:0;"></p></div>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-motto-edit" rows="2" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-motto-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="motto">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="motto" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="motto" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="motto" style="display:none;" aria-label="Close without saving">×</button></div>
 <div class="os-status" id="os-sec-motto-status"></div>
@@ -6271,7 +6277,7 @@ button.os-ld-node .os-ld-n{
 
 <div class="ib-layer layer-sapphire open"><button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#3ca8ff">👋</span><b>My story</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
-<p id="abouttext">Shawn Vibert builds NayaNET — the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live. Welcome to the new world. Welcome to the new net.</p>
+<div class="ib-nutshell" style="--tone:#3ca8ff"><p id="abouttext">Shawn Vibert builds NayaNET — the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live. Welcome to the new world. Welcome to the new net.</p></div>
 <div class="os-fieldwrap"><textarea class="ph-about-edit" id="aboutedit" style="display:none;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="aboutedit" aria-label="Dictate your story" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
 <div class="ph-actions">
 <button class="ph-msg" id="editabout" type="button">✏️ Edit</button>
@@ -6289,7 +6295,7 @@ button.os-ld-node .os-ld-n{
 <div class="ib-layer layer-emerald open">
 <button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#2fe89e">🛠️</span><b>What I do</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
-<p id="os-sec-whatido-text" class="os-note" style="margin:0;">No what-I-do yet &mdash; tap Edit and say what you do, in one line.</p>
+<div class="ib-nutshell" style="--tone:#2fe89e"><p id="os-sec-whatido-text" class="os-note" style="margin:0;">No what-I-do yet &mdash; tap Edit and say what you do, in one line.</p></div>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-whatido-edit" rows="3" style="display:none;margin-top:10px;"></textarea></div>
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="whatido">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="whatido" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="whatido" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="whatido" style="display:none;" aria-label="Close without saving">×</button></div>
 <div class="os-status" id="os-sec-whatido-status"></div>
@@ -6298,7 +6304,7 @@ button.os-ld-node .os-ld-n{
 <div class="ib-layer layer-gold open">
 <button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#ffd45a">🎯</span><b>My goals</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
-<p id="os-sec-goals-text" class="os-note" style="margin:0;">One million citizens by 2027.</p>
+<div class="ib-nutshell" style="--tone:#ffd45a"><p id="os-sec-goals-text" class="os-note" style="margin:0;">One million citizens by 2027.</p></div>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-goals-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-goals-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="goals">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="goals" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="goals" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="goals" style="display:none;" aria-label="Close without saving">×</button></div>
 <div class="os-status" id="os-sec-goals-status"></div>
