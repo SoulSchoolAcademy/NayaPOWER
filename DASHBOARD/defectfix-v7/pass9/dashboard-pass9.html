@@ -28557,7 +28557,17 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
    row measured 391.4px wide in a 390px viewport (Day cut 0.7px left, All
    cut 0.7px right); 28px + 18px/20px padding + 12px gaps brings it to
    ~348px rendered, ~42px spare. The toggle margin is measured live from
-   the pills' real height, so it adapts to the new size on its own. */
+   the pills' real height, so it adapts to the new size on its own.
+   MEASURED AGAIN (eye-check, same probe): 18px STILL clips the SMART
+   NOTES "S" — not at the viewport (right end 382.5 < 390) but at
+   .os-ld-org, the page column (x=16..374 rendered, overflow:hidden):
+   the label runs 8.5px past the column's right edge, and the glyph is
+   cut there (proven: lifting the column's clip in the live browser
+   paints the whole "SMART NOTES"). The column's edge does not scale
+   with the hero, so the longest label needs its own size: SMART NOTES
+   alone drops to 14px with no tracking (right end ~369 at 390, ~343
+   at 360 — clear of the column at both widths). The other eight labels
+   stay 18px. */
 @media (max-width:900px){
   html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
     font-size:18px !important; letter-spacing:.04em !important;
@@ -28567,6 +28577,12 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
   .os-ld-nodes .os-ld-node .os-ld-unit,
   .os-constellation .os-ld-node .os-ld-unit{
     font-size:12px !important; margin-top:3px !important;
+  }
+  /* SMART NOTES alone, 14px, no tracking: it is the longest label on the
+     rightmost orb, and the only one that reaches the .os-ld-org column
+     clip (x=374 rendered at 390). 18px ran to 382.5 and lost its "S". */
+  html body .os-constellation .os-ld-nodes button.os-ld-node[data-node="notes"] span.os-ld-lbl{
+    font-size:14px !important; letter-spacing:0 !important;
   }
   #os-ld-timepills{max-width:none !important; gap:12px !important;}
   .os-ld-timepills button{
