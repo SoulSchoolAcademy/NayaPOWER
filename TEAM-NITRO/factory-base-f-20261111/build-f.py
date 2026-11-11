@@ -1,14 +1,24 @@
 #!/usr/bin/env python3
 """Factory base (f) — build the edited page in memory, gate it, file it.
 Deterministic: same base bytes -> same edited bytes -> same sha.
-Edit spec (brief METHOD):
-  - cite eco-bb-btn + bh-btn (real Hub sources, verified) -> untouched
-  - every other offending button/CTA: append harvested allowlist class
+Edit spec (brief METHOD) — v2 (2026-11-11 ~01:40Z):
+  - CITE every class-set with a genuine external source (see HARVEST):
+    factory.css (~/workspace/personal-app/factory.css, 2026-10-21, the
+    shared Factory stylesheet — the live page's own <style
+    id="factory-sync-css"> comment names it "Source:" for rules the page
+    copied, and the Hub treats it as the definition source for naya-btn
+    variants) defines 23 of the cited classes; the Hub board
+    (~/workspace/user/files/index-2.html) defines eco-bb-btn + bh-btn.
+    Every cited class was verified line-by-line: the lines define the
+    class, with values byte-identical to the page's copy where compared.
+    Cited buttons are left UNTOUCHED.
+  - The 6 bare buttons (no class to cite): add harvested allowlist class
     `primo-btn` (0 occurrences in the base: no CSS, no JS, no uses -> the
-    look and the wiring cannot change; all original classes kept)
-  - 6 bare buttons: add class="primo-btn"
-  - 3 gold CTAs: theme-gold -> theme-purple (harvested non-gold theme)
-No CSS, JS, text, or other bytes change.
+    look and the wiring cannot change).
+  - 3 gold CTAs: theme-gold -> theme-purple (harvested non-gold theme).
+No CSS, JS, text, or other bytes change. v1 (420 edits, primo-btn vehicle
+for all 437 classed buttons) was filed, then factory.css was found and
+verified; v2 supersedes it with real citations — 9 tag edits total.
 """
 import subprocess, hashlib, importlib.util, re, sys, json, base64
 import urllib.request, urllib.error
@@ -21,8 +31,43 @@ BASE_SHA = 'f9bfd25cade628709e5c90da23d2d9c9a20a476faf776f08b3a33c091c2d0784'
 BRANCH = 'factory/base-f-20261111'
 REPO = 'SoulSchoolAcademy/NayaPOWER'
 HARVEST = {
+    # Hub board (~/workspace/user/files/index-2.html) — verified 2026-11-11:
+    # .eco-bb-btn lines 284-339 define the part; Hub JS line 6865 creates it
+    # as an anchor (a.className='eco-bb-btn'); the Factory's 18 are anchors
+    # too, same CSS verbatim. .bh-btn line 8959 defines .board-h .bh-btn;
+    # Hub JS 8896/9139 creates <button class="bh-btn"> inside .board-h;
+    # the Factory's 8 sit inside .board-h, scoped rule governs by specificity.
     'eco-bb-btn': '~/workspace/user/files/index-2.html:284-339',
     'bh-btn': '~/workspace/user/files/index-2.html:8959',
+    # Factory stylesheet (~/workspace/personal-app/factory.css, 2026-10-21,
+    # 171KB, 1017 rules) — the shared Factory CSS library. Provenance: the
+    # live page's own <style id="factory-sync-css"> comment (SYNC-ADDED
+    # 2026-11-08) names it "Source:" for rules the page copied; the Hub
+    # (index-2.html:2706) treats it as the definition source for naya-btn
+    # foundation variants. Every line below was verified to define the class.
+    'btn-select': '~/workspace/personal-app/factory.css:1282-1283',
+    'btn-notes': '~/workspace/personal-app/factory.css:1282-1283',
+    'tview': '~/workspace/personal-app/factory.css:1328-1329',
+    'steppill': '~/workspace/personal-app/factory.css:432',
+    'day-dot': '~/workspace/personal-app/factory.css:1481-1484',
+    'naya-btn': '~/workspace/personal-app/factory.css:545-569',
+    'living-btn': '~/workspace/personal-app/factory.css:475-490',
+    'cx-btn': '~/workspace/personal-app/factory.css:531-533',
+    'naya-toggle': '~/workspace/personal-app/factory.css:1525-1528',
+    'smarttab': '~/workspace/personal-app/factory.css:1802-1803',
+    'vtog': '~/workspace/personal-app/factory.css:160-162',
+    'tgl': '~/workspace/personal-app/factory.css:1187-1188',
+    'sn-btn': '~/workspace/personal-app/factory.css:1190-1192',
+    'btn-chrome': '~/workspace/personal-app/factory.css:1411-1414',
+    'orbit-btn': '~/workspace/personal-app/factory.css:784-787',
+    'like-pill': '~/workspace/personal-app/factory.css:1472-1475',
+    'act-chip': '~/workspace/personal-app/factory.css:1478-1480',
+    'send-cta': '~/workspace/personal-app/factory.css:1485-1488',
+    'mic-btn': '~/workspace/personal-app/factory.css:1489-1492',
+    'fab': '~/workspace/personal-app/factory.css:1494-1496',
+    'ref-select-btn': '~/workspace/personal-app/factory.css:1890-1899',
+    'naya-brand': '~/workspace/personal-app/factory.css:1733-1736',
+    'sumbtn': '~/workspace/personal-app/factory.css:1371-1372',
 }
 VEHICLE = 'primo-btn'
 
@@ -205,7 +250,7 @@ def main():
     print('EDITS tally:', dict(tally), 'total:', len(edits1))
     assert tally['gold-theme'] == 3, tally
     assert tally['bare-vehicle'] == 6, tally
-    assert tally['add-vehicle'] == 411, tally
+    assert tally.get('add-vehicle', 0) == 0, tally  # v2: every classed button cited
 
     # --- reconstruction: reverse every edit on the edited text and the
     # base must come back byte-for-byte (O(n); difflib on 580KB crawls) ---
@@ -233,11 +278,11 @@ def main():
     print('script blocks identical:', len(scripts_b),
           '| style blocks identical:', len(styles_b))
 
-    # --- class-token accounting: only primo-btn +417, theme-gold -3, theme-purple +3 ---
+    # --- class-token accounting: only primo-btn +6 (bare), theme-gold -3, theme-purple +3 ---
     cb, ce = class_token_counts(base), class_token_counts(edited)
     diff = {k: ce[k] - cb[k] for k in set(cb) | set(ce) if ce[k] != cb[k]}
     print('class-token diff base->edited:', diff)
-    assert diff == {VEHICLE: 417, 'theme-gold': -3, 'theme-purple': 3}, diff
+    assert diff == {VEHICLE: 6, 'theme-gold': -3, 'theme-purple': 3}, diff
     assert base.count(VEHICLE) == 0
     assert base.count('theme-gold') - edited.count('theme-gold') == 3
     print('edited bytes:', len(edited.encode('utf-8')),
