@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-11 00:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-11 00:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -50476,6 +50476,12 @@ _Last updated: 2026-11-11 00:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261110-1611 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Lane-executor stall run 2026-11-10 16:11 PST: evaluate all 30 unclaimed briefs, 0 claimed (28x exit 7, 2x exit 2), queue untouched
+
+**Evidence:** VERIFIED this tick on live bytes: (1) receipt's 30 blocked briefs match the live brief-queue/ set 30/30 exactly and rotation queued=30, same filename list, zero in either direction; (2) cap compliance TRUE - prior stall receipt mtime 23:07:52Z vs this one 00:12:18Z = 64m26s, outside the 60-min window; (3) both exit-2 bar texts verified present in t
 
 ### ✅ gate-stall-20261110-1507 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
