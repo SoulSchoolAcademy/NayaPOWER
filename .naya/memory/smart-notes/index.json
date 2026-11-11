@@ -26562,7 +26562,7 @@
    "ratified_by": "Shawn Vibert",
    "ratified_at": "2026-11-06T00:58:49Z",
    "date": "2026-11-06",
-   "page_hash": "4a985346a07746ab792d12dc501b8d39c26f66e0c76d463bced100f6ac03169c",
+   "page_hash": "014eee873e14f23f160ac352927c8c9a2484d3dcacab0ce4687de1c19fac2bbf",
    "content_hash": "e10804714ab4b567de621d5bf699eaf50d86634f3dc5703aef47b15d1c700dc4",
    "one_line": "What an intelligent block IS, section by section — harvested, not invented: one set of laws (real objects, one light, real shadow, own-color ignition, white text, physical touch, spectrum order) running through every button, board, icon and page — capped by the only test that finally matters: is it alive, is it layered, does it feel dimensional and real? RATIFIED by Shawn, 2026-11-05: \"Yes — ratify the Rules, distribution moves now.\"",
    "topics": [
@@ -31045,5 +31045,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "10b138cb6d146fceb61765df9b353fc9ebc132b4c5b825b5195c7b163aa13932"
+ "corpus_manifest_hash": "43b9f617ff93b5dad4ae7cee4e0d8d43de8e4e2f110ad7197e55c788142483ff"
 }
