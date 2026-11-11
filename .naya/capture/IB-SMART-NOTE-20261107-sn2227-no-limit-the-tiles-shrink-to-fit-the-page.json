@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2227",
+ "title": "No Limit — The Tiles Shrink to Fit the Page",
+ "slug": "no-limit-the-tiles-shrink-to-fit-the-page",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/07/DESIGN/SN-2227/IB-SMART-NOTE-20261107-sn2227-no-limit-the-tiles-shrink-to-fit-the-page.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-07T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "There is no limit on the digits. `fitNumber(el)` measures the number against its well and scales the whole number down to fit the page width. The tiles shrink; the number never wraps and never overflows. `white-space: nowrap` keeps the tiles in one row. An 8-digit demo (12,345,678) proves it on the concepts page. If it fits on the page, it is good to go. If you ever get a number that does not fit on the page — congratulations.",
+  "human_view": "Shawn's rule: make it dynamic, no limit. Five digits, six, seven, eight — whatever it takes. Don't cap it. If it fits on the page, it's good. And if a number ever doesn't fit on the page, that's not a problem — that's a congratulations.",
+  "child_view": "No matter how big your number gets, the boxes shrink a little so they all still fit on the page in one row. They never fall off the edge. And if your number gets so big it can't fit — wow, that's amazing.",
+  "grandma_view": "There's no cap on how big the number can get. The tiles just get a little smaller so they all fit. And if your number ever gets too big for the page — well, that's a wonderful problem to have.",
+  "ai_view": "No limit is a design decision, not a technical one. A capped number says \"we didn't think you'd get this far.\" An uncapped number says \"go as far as you can — we'll keep up.\" The fit logic is the machine keeping its promise.",
+  "what_it_means": "- `fitNumber(el)`: measure against the well, scale the whole number to fit. `white-space: nowrap`: one row, always.\n- 8-digit demo (12,345,678) on the concepts page. A screen check on the current version is running.\n- The Dashboard's number uses the same fit logic (addendum 6).",
+  "whats_inside": [
+   "- No number in the system has a digit limit. Ever.\n- The fit logic is part of the asset, not an afterthought — it ships with the number."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "d0ee53e8dcd8edbeebda9e362c5a6c01b2873c444c7e2fa0d797040957d71460",
+ "content_hash": "d1efc047f1ebc83820e24d09eb8cdca80259e637f740197ff14db27c5e7ee448",
+ "reconstructed_from_page": true
+}
