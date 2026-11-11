@@ -1714,6 +1714,41 @@ Create. Connect. Grow with US.
    scrubs it from the address bar.
    ========================================================= */
 
+/* =========================================================
+   DEEP-LINK PRESERVATION (2026-11-11) — a visitor who arrives
+   on a Smart Note link lands here with #/smart-notes/<slug> in
+   the address. The gate must carry that destination through
+   every exit — Jump back in, AUTO-LOGIN, and the claim flow —
+   or the link dies at the door. The hash is captured once at
+   load, validated as a real in-app route, and stored in
+   sessionStorage so it also survives the claim + Welcome walk
+   (same origin). Only a validated route is ever carried.
+   ========================================================= */
+var PENDING_ROUTE_KEY = 'nayanet_pending_route';
+function isInAppRoute(hash) {
+  if (!hash || hash.charAt(0) !== '#') return false;
+  var path = hash.slice(1);
+  return /^\/(smart-notes|notes|note)\/[A-Za-z0-9][A-Za-z0-9\-_]*$/.test(path) ||
+    /^\/hub(\/.*)?$/.test(path) ||
+    /^\/welcome$/.test(path) ||
+    /^\/identity$/.test(path);
+}
+var pendingRoute = '';
+try {
+  var incomingHash = window.location.hash || '';
+  if (isInAppRoute(incomingHash)) {
+    pendingRoute = incomingHash;
+    try { sessionStorage.setItem(PENDING_ROUTE_KEY, pendingRoute); } catch (e) {}
+  } else {
+    try { pendingRoute = sessionStorage.getItem(PENDING_ROUTE_KEY) || ''; } catch (e) {}
+    if (pendingRoute && !isInAppRoute(pendingRoute)) pendingRoute = '';
+  }
+} catch (e) { pendingRoute = ''; }
+function clearPendingRoute() {
+  pendingRoute = '';
+  try { sessionStorage.removeItem(PENDING_ROUTE_KEY); } catch (e) {}
+}
+
 var HUB_APP_URL = 'hub/';
 
 function hubEntryUrl(){
@@ -1747,6 +1782,10 @@ function hubEntryUrl(){
       encodeURIComponent(alias);
 
   }
+
+  /* Deep link rides with the Hub entry: the Hub router opens the
+     note from the hash, and its boot scrub keeps the hash. */
+  if (pendingRoute) { url += pendingRoute; clearPendingRoute(); }
 
   return url;
 
@@ -1918,9 +1957,7 @@ document
       setTimeout(
         function(){
 
-          location.href =
-            'identity.html?name=' +
-            encodeURIComponent(name);
+          location.href = 'identity.html?name=' + encodeURIComponent(name) + pendingRoute;
 
         },
         1350
