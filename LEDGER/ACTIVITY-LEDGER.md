@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-11 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-11 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30259,6 +30259,14 @@ _Last updated: 2026-11-11 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0062 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
+**Task:** PR #2400 merge-faithful on live main; 20/20 round-trip re-proven; D1 re-routed to Naya 5
+
+**Receipt:** `twelve-lane-receipts/t0062-lane4.md`
+
+**Evidence:** Verified: merge commit 597803d8 is an ancestor of the receipt-time tip aa8061c1 (git merge-base --is-ancestor, local mirror); all four tip blob SHAs byte-match the receipt (ib_reconcile.py bbb8ce53, test_ib_legacy_reexport.py 7530fe3f, test_ib_reconcile.py 39fb4f89, SCHEMA.md 3e0b5869); round-trip proof JSON lane4-t0062-d1-repro.json exists on disk
+
+### ✅ t0062 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
 **Task:** #2400 merge-faithful on live main + 20/20 round-trip re-proven + D1 repro
 
 **Receipt:** `twelve-lane-receipts/t0062-lane4.md`
@@ -30439,6 +30447,14 @@ _Last updated: 2026-11-11 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0052 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
+**Task:** Flip-sequence merge seat: re-pin 4 PRs, calculator HOLDs, Scorecard-Law state
+
+**Receipt:** `twelve-lane-receipts/t0052-lane8.md`
+
+**Evidence:** Verified: all four PR head refs byte-exact on live remote via one git ls-remote (#2453 3dd7837d, #2456 e3262832, #2457 92fac098, #2458 ac270833 - all match receipt pins); all four commits exist in the local mirror; both calculator decision receipts exist on disk. Score 9.0. Why not 9.5: #2458 calculator not run this tick (its verdict reads 'not run
+
+### ✅ t0052 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
 **Task:** flip-sequence merge seat: re-pin 4 PRs, calculator HOLDs, #2453 HOLD honored
 
 **Receipt:** `twelve-lane-receipts/t0052-lane8.md`
@@ -30554,6 +30570,14 @@ _Last updated: 2026-11-11 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0052-lane8.md`
 
 **Evidence:** Dispatcher verified via git protocol: refs/pull/2453/head == 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4 == receipt pin; refs/pull/2456/head == e326283252a7e9f932b0d9ebad465c50950b0799 == pin; refs/pull/2457/head == 92fac0983d4de8e04f0144d9a99dfaa5e02c8f97 == pin; refs/pull/2458/head == ac270833fb3a52c6be45acc730b0e5132353d5a5 == pin; main == aa8061c1
+
+### ✅ t0052 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H8 hypothesis-change + sealed pre-registration (home-independence shape experiment)
+
+**Receipt:** `twelve-lane-receipts/t0052-lane2.md`
+
+**Evidence:** Verified: all 7 cited artifacts exist on disk (HYPOTHESIS-CHANGE-h8.md, prereg-sealed.md, seal-verification.json, arm-key-sealed.json, harness/verify_home_independent.py, seed/data/receipt.txt, decide.py decision receipt). Score 9.0. Why not 9.5: the triple wild-failure evidence base is 14 failures from ONE incident class (declared, but single-inci
 
 ### ✅ t0052 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -30695,6 +30719,14 @@ _Last updated: 2026-11-11 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0052 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
+**Task:** Human-value window audit t0022-t0052 (instrument determinism + HV3 re-derivation)
+
+**Receipt:** `twelve-lane-receipts/t0052-lane11.md`
+
+**Evidence:** Verified: both instrument runs byte-identical, sha256 e4f54deb... matches the receipt's cited hash exactly; metric_audit_t0052.json and both run files exist on disk. Score 9.0. Why not 9.5: single-seat judgments - no independent seat has re-run the audit; board legs STALE on the contract snapshot (re-file unanswered); M1/M5/M6 headlines still UNKNO
+
+### ✅ t0052 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
 **Task:** HV window audit t0022-t0052 + HV3 re-derived + drift watch
 
 **Receipt:** `twelve-lane-receipts/t0052-lane11.md`
@@ -30818,6 +30850,14 @@ _Last updated: 2026-11-11 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0052-lane11.md`
 
 **Evidence:** Dispatcher verified on disk: hv_output_t0052_run1.json sha256 e4f54debb... matches receipt pin; metric_audit_t0052.json, SUMMARY_t0052.md, STATS.md, journal all exist. Instrument determinism proven (2 byte-identical runs). Drift: tip re-pinned aa8061c1 at action time; CLEAN verdict rides Lane 10 t0032 --check (stated as such, not claimed as own re-
+
+### ✅ t0045 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: independently verify board post half of t0803 Herald verdict (comment 6184357778)
+
+**Receipt:** `twelve-lane-receipts/t0045-lane12.md`
+
+**Evidence:** Verified: feedback block [Lane 12 - Naya Herald, t0803] present in feedback-feed.md:565 with cited SHARPEN content; receipt's substance-fidelity method (rendered post vs feed block) is the correct test and its criterion correction is sound. Score 9.0. Why not 9.5: the REST read itself (comment id/author/issue/timestamp) was not independently re-der
 
 ### ✅ t0045 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -50518,6 +50558,12 @@ _Last updated: 2026-11-11 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261111-0400 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-11 03:58 PST: evaluated all 30 queued gap follow-ups, 0 claimed, all refused by seat gate
+
+**Evidence:** Verified this tick on live bytes: (1) receipt's 30 blocked briefs match the live brief-queue/ set 30/30 exactly, symdiff empty; (2) sweep log hidden_files/claim-sweep-20261111-0358.log exists, 29 attempts / 0 claimed / 27 x rc=7 parent-authorship / 2 x rc=2 explicit bars, plus 1 unattempted on its own-note bar (brief-gap-gate-stall-20261026-2230-la
 
 ### ✅ lane-scorer-20261111-0300 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
