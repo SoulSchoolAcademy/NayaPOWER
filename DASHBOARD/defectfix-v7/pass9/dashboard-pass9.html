@@ -3680,14 +3680,11 @@ button:hover{
      2076→0 phone) with no way back. This chip restores it. Hidden until a
      Show-on-gauge jump; see setFeatured. -->
 <button id="os-feat-back" type="button" aria-label="Back to the board you came from" title="Back to the board you came from" style="display:none;">← Back to board</button>
-<!-- 2026-11-01 — Shawn: HERO MODE toggle. Fullscreen button, right side below settings. -->
-<button id="hero-toggle" aria-label="Toggle fullscreen" title="Toggle fullscreen">⛶</button>
+<!-- PASS-11 2026-11-10 (1): the fullscreen/max view is GONE — one view only (the good main view). The hero-toggle button is removed; the max view it opened showed $0 with the buttons covering the gauge. -->
 <!-- 2026-11-01 — Shawn: SETTINGS. Every page has one. Configures the page. -->
 <button id="page-settings" aria-label="Page settings" title="Page settings">⚙</button>
-<!-- 2026-11-01 — Shawn: SETTINGS PANEL. View options: fullscreen, hero mode, etc. -->
+<!-- 2026-11-01 — Shawn: SETTINGS PANEL. View options. PASS-11 (1): fullscreen / hero mode are gone — one view only. -->
 <div id="settings-panel">
-  <button data-action="fullscreen">⛶ Fullscreen</button>
-  <button data-action="hero">◉ Hero view</button>
   <button data-action="nav">☰ Show navigation</button>
 </div>
 <!-- SMART-BAR-SYSTEM v1.0: top mount -->
@@ -4142,7 +4139,7 @@ html.os-calm .os-orb.hot::after{animation:none!important}
    edge still applies. (Selector shape matters: :has() cannot be nested —
    :has(.ph-cover:not(:has(...))) is an invalid selector and the parser drops
    the whole rule. :not() OUTSIDE a single :has() is the valid form.)
-   Rail clearance: the fixed left-rail buttons (#hero-toggle, #os-eco-plus,
+   Rail clearance: the fixed left-rail buttons (#os-eco-plus,
    #page-settings) reach x=64 on both viewports, so the in-flow header gets
    padding-left:72px — the avatar starts clear of the rail. Desktop keeps
    the side-by-side header; phone wraps the info below the avatar. */
@@ -4515,7 +4512,7 @@ html.os-calm
      12px (measured: probe x=12, eyes x≈3 — half-cut on screen), so the whole
      column moves in 8px; every control now clears the edge with room. */
   #os-rooms-plus{left:20px !important}
-  #hero-toggle,#os-eco-plus,#page-settings,#viewport-back{left:24px !important}
+  #os-eco-plus,#page-settings,#viewport-back{left:24px !important}
 }
 .os-sl-gauge-lab{font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:3px}
 .os-sl-gauge-sub{font-size:10px;color:rgba(255,255,255,.45);margin-top:2px}
@@ -5025,14 +5022,14 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
      so no JS change was needed. Nothing is kept below the number, so there is
      nothing bunched up against it. -->
 </div>
-<!-- PASS-6 2026-11-10: the note lives HERE now — in flow under the gauge, above the mode bar. It was absolute bottom:64px after the toggle, anchored to hero-fit's stale-short box, and landed across the gauge face on desktop. In flow it cannot overlap the gauge: it sits below the whole constellation. -->
-<div class="os-pts-note" id="os-pts-note"></div>
 <div class="os-pts-toggle" id="os-pts-toggle">
   <button class="os-pts-btn primo active" data-mode="pts">PTS</button>
   <button class="os-pts-btn primo" data-mode="pct">%</button>
   <button class="os-pts-btn primo" data-mode="money">MONEY</button>
 </div>
 </div><!-- /os-hero-fit -->
+<!-- PASS-11 2026-11-10 (2): the money note lives HERE now — in flow BELOW the hero, as they scroll down. It used to sit inside hero-fit above the mode buttons, crowding the hero; the mode bar keeps the hero clean and the explanation follows the scroll. _refreshPtsNote still writes it by id; only its place moved. -->
+<div class="os-pts-note" id="os-pts-note"></div>
 <!-- 2026-11-02 — SHAWN: pace pill REMOVED. Stuck content, not part of the gauge. -->
 <!-- 2026-11-02 — THE 12 CHARTS #5: DONUT. "Where does it come from."
      Score broken into slices by orb. Pairs with the % toggle.
@@ -5067,7 +5064,7 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
 </div>
 <div class="os-sales-orbs" id="os-sales-orbs"></div>
 </div>
-<div class="os-sales-total"><div class="os-sales-total-n" id="os-sales-total-n">—</div><div class="os-sales-total-l">Clicks</div></div>
+<div class="os-sales-total"><div class="os-sales-total-n" id="os-sales-total-n">—</div><div class="os-sales-total-l">Top link clicks</div><div class="os-sales-total-ref" id="os-sales-total-ref"></div></div><!-- PASS-11 (8): the drill leads with the top link — the grand total is the small reference under it. -->
 </div>
 <div class="os-invites-view" id="os-invites-view" role="dialog" aria-label="Invites detail" aria-hidden="true">
 <button type="button" class="os-invites-x" id="os-invites-x" aria-label="Close invites detail">×</button>
@@ -5469,19 +5466,7 @@ body.focus-mode .focus-target{
   transform:scale(1.05); z-index:100; position:relative;
   transition:opacity .4s, filter .4s, transform .4s;
 }
-#hero-toggle{
-  /* 2026-11-01 — Shawn: FULLSCREEN button. Right side, BELOW the + and settings.
-     Vertical stack: + → ⚙ → ⛶. Always visible. */
-  position:fixed; top:112px; right:16px; z-index:200;
-  width:40px; height:40px; border-radius:50%;
-  background:linear-gradient(180deg, #1e1e28, #0c0c12);
-  border:1.5px solid rgba(255,255,255,.25); color:#fff;
-  font-size:18px; cursor:pointer; display:flex;
-  align-items:center; justify-content:center;
-  box-shadow:0 4px 16px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.2);
-  transition:transform .2s, border-color .2s;
-}
-#hero-toggle:hover{ transform:scale(1.1); border-color:#d9a521; }
+/* PASS-11 2026-11-10 (1): the #hero-toggle button is gone (see the HTML edit) — its CSS goes with it. The max view it opened is dead; one view only. */
 /* When hero mode is OFF, JS shrinks the orbit radius (R 290→200).
    CSS just ensures vertical centering — no double-shrink. */
 body:not(.hero-mode) .os-ld{
@@ -5549,7 +5534,8 @@ body:not(.hero-mode) .os-ld{
 /* 2026-11-02 — Bullseye: Smart Stats. Hide smart bar in focused drill-down views. */
 body.viewport-focus #nsbBottom{display:none !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important;}
 body.viewport-focus .nsb-bottom{display:none !important; visibility:hidden !important;}
-body.viewport-focus #os-bottom3{display:none !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important;} /* HERO FIX 2026-11-09 (j): drill views hide the bottom bar outright, like #nsbBottom already. */
+body.viewport-focus #os-bottom3{display:none !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important;} /* ONE-BOTTOM-BAR: drills hide the one bar too. */
+body.viewport-focus .obb-bar{display:none !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important;} /* HERO FIX 2026-11-09 (j): drill views hide the bottom bar outright, like #nsbBottom already. */
 .os-constellation{
   position:relative;
   width:100%;
@@ -5697,7 +5683,7 @@ body.has-orbs .os-pts-toggle{
   .os-pts-btn{ padding:28px 36px; font-size:32px; }
 }
 /* 2026-11-06 — FIX 5: % mode note — names the count-only orbs so the mode never promises what it doesn't do. */
-.os-pts-note{font-size:28px;color:#fff;text-align:center;margin:10px auto 0;max-width:560px;line-height:1.5;padding:0 16px;min-height:84px;visibility:hidden;} /* PASS-6 2026-11-10: in-flow caption under the gauge, above the mode bar — white, bigger, readable. The slot is ALWAYS reserved (min-height 45px = two lines) so the fit scale never jumps when the note appears in % / MONEY mode; _refreshPtsNote toggles visibility, never display. PASS-8 2026-11-10: 15px -> 28px, slot 45 -> 84px — the 15px note read ~7px after the fit scale at desktop; at 28px it reads at a glance at every width, and the slot still reserves two lines. The old absolute bottom:64px is gone: it anchored to hero-fit's stale-short box and sat across the gauge face. */
+.os-pts-note{font-size:20px;color:#fff;text-align:center;margin:24px auto 8px;max-width:640px;line-height:1.5;padding:0 16px;min-height:0;visibility:hidden;} /* PASS-11 2026-11-10 (2): the note lives BELOW the hero now, outside the fit scale — 20px reads as 20px (the 28px inside hero-fit read ~12px after the scale). The reserved slot is gone: the note no longer sits inside the fitted hero, so it cannot jump the fit when it appears in % / MONEY mode; _refreshPtsNote toggles visibility, never display. PASS-8 2026-11-10: 15px -> 28px, slot 45 -> 84px — the 15px note read ~7px after the fit scale at desktop. The old absolute bottom:64px is gone: it anchored to hero-fit's stale-short box and sat across the gauge face. */
 /* 2026-11-02 — THE 12 CHARTS #2: BIG NUMBER + DELTA */
 /* 2026-11-02 — SHAWN: elegant score display below the gauge. Dynamic, clean. */
 /* 2026-11-05 — DEFECT FIX 2 (big score cut by the bottom bar): the 48px gap
@@ -8029,7 +8015,7 @@ body.viewport-focus #os-ld-timepills{
 /* Tiny back button — restores the full viewport */
 #viewport-back{
   /* 2026-11-01 — Shawn: BACK BUTTON. Always visible in hero mode, top-LEFT.
-     The fullscreen button (hero-toggle) is top-right. They're a pair.
+     PASS-11 (1): the fullscreen button (hero-toggle) is gone — one view only. The back button stays top-left.
      2026-11-02 — FIX: Hidden in non-hero mode. Was overlapping content when scrolled. */
   position:fixed; top:16px; left:16px; z-index:100;
   width:44px; height:44px; border-radius:50%;
@@ -11298,9 +11284,9 @@ NF.register(UNIT, {
     var _g = (typeof window._slGaugesHTML === 'function') ? window._slGaugesHTML({clicks:_tc, joins:_tj, name:'all'}, _tc, '#3fb8ff') : '';
     host.innerHTML = '<div class="os-well" style="padding:14px 16px;margin-top:12px;">'
       + '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;"><b style="font-size:17px;color:#fff;">All your Smart Links</b>'
-      + '<span style="font-size:12px;font-weight:700;color:#fff;">Your links out in the world — every click counted.</span></div>'
+      + '<span style="font-size:12px;font-weight:700;color:#fff;">Your links out in the world — ' + (typeof window._osSpc === 'function' ? window._osSpc(_tc) : _tc) + ' clicks across all links.</span></div>'
       + _g
-      + '<p class="os-note">One total for all of them — tap to see every link, each with its own numbers and gauge.</p>'
+      + '<p class="os-note">Your top link leads above — tap to see every link, each with its own numbers and gauge.</p>' /* PASS-11 (8): the well's first cell is the top link now, not the grand total. */
       + '<div class="ph-actions"><button class="ph-msg" type="button" data-sl-summary-open="1">See every link</button></div>'
       + '</div>';
     try{ if (typeof window._osMountSlMinis === 'function') window._osMountSlMinis(host); }catch(e){}
@@ -13889,6 +13875,16 @@ NF.register(UNIT, {
      tntacho (TnTacho.mountMini), mini-sized where it sits small. A gauge with
      no data renders as the REAL canonical gauge at 0 (needle at rest, disc +
      ticks + numerals + hub all present) — never a flat empty arc. */
+  /* PASS-11 2026-11-10 (8): the grand total headlines in the HERO only.
+     Every other surface leads with its OWN number — the top link's clicks
+     here — and carries the grand total as a small reference. The top link
+     is the live leader of window._dashLinkRows (set by renderLinks before
+     any board or summary renders). */
+  window._osTopLinkClicks = function(){
+    var rows = window._dashLinkRows || [], best = null;
+    rows.forEach(function(r){ var c = Number((r && r.clicks) || 0); if (!best || c > best.clicks) best = {clicks:c, name:(r && r.name) || ''}; });
+    return best || {clicks:0, name:''};
+  };
   function slGaugesHTML(r, tc, c){
     var clicks=Number(r.clicks||0), joins=Number(r.joins||0);
     var share=tc>0?clicks/tc:0;
@@ -13938,8 +13934,17 @@ NF.register(UNIT, {
       ctrCell = cell(miniMount(_ctr === null ? 0 : Math.min(1, _ctr/100), MC.ctr, _ctrTxt, (_ctr === null ? 0 : _ctr), '%'), _ctrTxt, 'Click-through rate', MC.ctr, 'joins');
       revCell = cell(miniMount(0, MC.revenue, '0', 0, '$'), '0', 'Revenue / 1 000 views', MC.revenue, 'sales');
     }
+    /* PASS-11 (8): the grand total headlines in the HERO only. The summary
+       ('all') leads with the TOP LINK's clicks now, and each per-link row
+       leads with that link's own clicks — 'Link clicks', never 'Total
+       clicks'. The grand total survives only as a small reference in the
+       host line (renderLinks / the well below). */
+    var _top11 = (r.name === 'all' && typeof window._osTopLinkClicks === 'function') ? window._osTopLinkClicks() : null;
+    var _firstClicks = _top11 ? _top11.clicks : clicks;
+    var _firstLab = _top11 ? 'Top link clicks' : 'Link clicks';
+    var _firstShare = tc > 0 ? _firstClicks/tc : 0;
     return '<div class="os-sl-gauges'+(mock?' os-mock-on':'')+'" role="group" aria-label="Link stats">'
-      +cell(miniMount(share, MC.clicks, String(clicks), clicks, 'count'), esc(String(clicks)), 'Total clicks', MC.clicks, 'sales')
+      +cell(miniMount(_firstShare, MC.clicks, String(_firstClicks), _firstClicks, 'count'), esc(String(_firstClicks)), _firstLab, MC.clicks, 'sales')
       +viewsCell+ctrCell+revCell
       +'</div>';
   }
@@ -14106,7 +14111,7 @@ NF.register(UNIT, {
       return;
     }
     /* PASS-3 2026-11-09 (c): ONE summary card at rest — the total of all links (number + gauge + real stats). The per-link rows live in the drill (openSmartLinkList), all with the same presentation. */
-    box.innerHTML='<div class="os-link-row os-litobj os-sl-summary" style="--ac:#3fb8ff" data-sl-summary-open="1"><div class="os-link-main"><span class="os-link-name">All Smart Links</span><span class="os-link-host">Your links out in the world — every click counted. Tap to see every link.</span></div><div class="os-link-side"><span class="os-link-btns"><button class="ph-msg" type="button" data-sl-summary-open="1">See every link</button></span></div>'+slGaugesHTML({clicks:tc, joins:tj, name:'all'}, tc, '#3fb8ff')+'</div>';
+    box.innerHTML='<div class="os-link-row os-litobj os-sl-summary" style="--ac:#3fb8ff" data-sl-summary-open="1"><div class="os-link-main"><span class="os-link-name">All Smart Links</span><span class="os-link-host">Your links out in the world — '+(typeof window._osSpc==='function'?window._osSpc(tc):tc)+' clicks across all links. Tap to see every link.</span></div><div class="os-link-side"><span class="os-link-btns"><button class="ph-msg" type="button" data-sl-summary-open="1">See every link</button></span></div>'+slGaugesHTML({clicks:tc, joins:tj, name:'all'}, tc, '#3fb8ff')+'</div>'; /* PASS-11 (8): the host line carries the grand total as a small reference only — the first cell now leads with the top link. */
     try{ if (typeof window._osMountSlMinis === 'function') window._osMountSlMinis(box); }catch(e){} /* HERO FIX 2026-11-09 (i): mount the real mini gauges in the cards just written. */
     /* 2026-11-01 — Shawn: the "Clicked → Joined" paragraph was extra text.
        The numbers (40 CLICKS, 0 JOINS) already tell the story. Gone. */
@@ -16978,7 +16983,12 @@ function salesViewRender(){
   if(o) o.innerHTML=salesOrbsHTML(d);
   if(o && typeof window._upgradeOrbNodes === 'function'){ try{ window._upgradeOrbNodes(o); }catch(_u){} }
   var n=document.getElementById('os-sales-total-n');
-  if(n) n.textContent=(typeof d.pages==='number' ? window._osSpc(d.pages) : d.pages); /* PASS 1 v6 (f): the total is clicks now — revenue has no pipeline on this front, so it reads '—'. */
+  /* PASS-11 (8): the drill leads with the TOP LINK's clicks — the grand total
+     is the small reference under it, never the headline. */
+  var _top11 = (typeof window._osTopLinkClicks === 'function') ? window._osTopLinkClicks() : {clicks:(typeof d.pages === 'number' ? d.pages : 0)};
+  if(n) n.textContent=(window._osSpc ? window._osSpc(_top11.clicks) : _top11.clicks);
+  var _ref11 = document.getElementById('os-sales-total-ref');
+  if(_ref11) _ref11.textContent = (typeof d.pages === 'number' ? window._osSpc(d.pages) : d.pages) + ' clicks in all links';
   var pills=document.querySelectorAll('#os-sales-pills button');
   for(var i=0;i<pills.length;i++) pills[i].classList.toggle('on', pills[i].getAttribute('data-sw')===_salesWindow);
 }
@@ -18420,17 +18430,14 @@ document.addEventListener('DOMContentLoaded', function(){
      ldCloseDrawer() only removes viewport-focus — in hero mode the tap did
      nothing (proven by a real pointer tap: the button top at its center,
      hero still active after). The full view is neither hero nor focused,
-     so the back button leaves both — and syncs the hero-toggle label the
-     way the settings panel's nav action does, plus re-lays out the orbs
-     the way the toggle does. ldCloseDrawer() itself is untouched (Escape
+     so the back button leaves both — and re-lays out the orbs. PASS-11 (1):
+     the hero-toggle sync is gone with the max view. ldCloseDrawer() itself is untouched (Escape
      and the drawer's own close button keep their drawer-only meaning). */
   if (back) back.addEventListener('click', function(){
     /* 2026-11-06 — FIX 7: Back exits an open drill-down first. ldCloseDrawer only removes viewport-focus — the fullscreen drill-down (position:fixed, z-index 10001) stayed open and covering the screen, trapping the user. */
     try{ if (typeof window._closeOpenDrill === 'function') window._closeOpenDrill(); }catch(e){}
     ldCloseDrawer();
-    document.body.classList.remove('hero-mode');
-    var ht = document.getElementById('hero-toggle');
-    if (ht){ ht.textContent = '✕'; ht.title = 'Back to hero view'; }
+    /* PASS-11 (1): the hero-mode reset + hero-toggle relabel are gone with the max view. */
     if (typeof ldLayoutNodes === 'function') ldLayoutNodes();
   });
   /* 2026-11-01 — Shawn: FOCUS MODE. Click a major element → front and center.
@@ -18440,7 +18447,7 @@ document.addEventListener('DOMContentLoaded', function(){
     focusables.forEach(function(el){
       el.addEventListener('click', function(e){
         /* Don't trigger when clicking the morph button or interactive children */
-        if (e.target.closest('#hero-toggle, #page-settings, button, a, input')) return;
+        if (e.target.closest('#page-settings, button, a, input')) return;
         if (document.body.classList.contains('focus-mode')) {
           /* Already focused — unfocus */
           document.body.classList.remove('focus-mode');
@@ -18462,26 +18469,9 @@ document.addEventListener('DOMContentLoaded', function(){
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initFocusMode);
   } else { initFocusMode(); }
-  var heroToggle = document.getElementById('hero-toggle');
-  /* 2026-11-02 — URL param for testing: ?hero=0 forces non-hero mode on load.
-     Bypasses the auto-zoom for verification. */
-  try {
-    var urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('hero') === '0'){
-      document.body.classList.remove('hero-mode');
-      if (heroToggle){
-        heroToggle.textContent = '✕';
-        heroToggle.title = 'Back to hero view';
-      }
-    }
-  } catch(e){}
-  if (heroToggle) heroToggle.addEventListener('click', function(){
-    document.body.classList.toggle('hero-mode');
-    heroToggle.textContent = document.body.classList.contains('hero-mode') ? '⛶' : '✕';
-    heroToggle.title = document.body.classList.contains('hero-mode') ? 'Show navigation' : 'Back to hero view';
-    /* 2026-11-01 — Shawn: re-layout orbs for the new mode. Fold back to fit. */
-    if (typeof ldLayoutNodes === 'function') ldLayoutNodes();
-  });
+  /* PASS-11 2026-11-10 (1): the hero-toggle JS is gone — the max view it
+     opened is dead. One view only. (The ?hero=0 test param goes with it;
+     there is no second view left to force.) */
   /* 2026-11-01 — Shawn: SETTINGS PANEL. Click ⚙ → view options that work. */
   var settingsBtn = document.getElementById('page-settings');
   var settingsPanel = document.getElementById('settings-panel');
@@ -18509,12 +18499,10 @@ document.addEventListener('DOMContentLoaded', function(){
     });
     settingsPanel.querySelectorAll('button').forEach(function(btn){
       btn.addEventListener('click', function(){
-        var action = btn.getAttribute('data-action');
-        if (action === 'fullscreen' || action === 'hero') { document.body.classList.add('hero-mode'); }
-        if (action === 'nav') { document.body.classList.remove('hero-mode'); }
+        /* PASS-11 (1): fullscreen / hero actions are gone — one view only.
+           'nav' keeps its meaning (close the panel); it no longer has a
+           hero-mode class to remove, because nothing adds it anymore. */
         settingsPanel.classList.remove('open');
-        var ht = document.getElementById('hero-toggle');
-        if (ht) ht.textContent = document.body.classList.contains('hero-mode') ? '⛶' : '✕';
       });
     });
   }
@@ -19305,7 +19293,7 @@ window.ldLayoutNodes = ldLayoutNodes;
          (the MOCK sub tag is gone) — a sample number never reads as live. */
       var _mockOn = !!(window._osMock && typeof window._osMockFor === 'function');
       return '<div class="os-sl-gauges' + (_mockOn ? ' os-mock-on' : '') + '" role="group" aria-label="Link stats">'
-        + _boardCell(st.clicksAll, _fmt(st.clicksAll), 'Total clicks', 'count', 'data-node="sales"')
+        + _boardCell(st.clicksAll, _fmt(st.clicksAll), 'Link clicks', 'count', 'data-node="sales"') /* PASS-11 (8): this cell is the link's OWN clicks — the grand total headlines in the hero only. */
         + _boardCell(st.joinsAll, _fmt(st.joinsAll), 'Joins', 'count', 'data-node="joins"')
         + _boardCell(_conv, _convTxt, 'Click-through rate', '%', 'data-node="joins"')
         + _lViews + '</div>';
@@ -19329,12 +19317,14 @@ window.ldLayoutNodes = ldLayoutNodes;
       var _pconv10 = (_pc10 > 0) ? (_pj10/_pc10*100) : null;
       var _pconvTxt10 = (_pconv10 === null) ? '0' : _pconv10.toFixed(1)+'%';
       return '<div class="os-sl-gauges" role="group" aria-label="Page stats">'
-        + _boardCell(_pc10, _fmt(_pc10), 'Total clicks', 'count', 'data-node="sales"')
+        + _boardCell(_pc10, _fmt(_pc10), 'Page clicks', 'count', 'data-node="sales"') /* PASS-11 (8): the page's OWN clicks — see the PASS-10 comment above. */
         + _boardCell(_pj10, _fmt(_pj10), 'Joins', 'count', 'data-node="joins"')
         + _boardCell(_pconv10, _pconvTxt10, 'Click-through rate', '%', 'data-node="joins"')
         + _boardCell(null, '0', 'Total views', 'count', 'data-node="sales"') + '</div>';
     }
     var wt = _worldTotals();
+    /* PASS-11 (8): the world board leads with the TOP LINK's clicks. */
+    var _wTop11 = (typeof window._osTopLinkClicks === 'function') ? window._osTopLinkClicks().clicks : wt.totalClicks;
     var _wViews = _boardCell(null, '0', 'Total views', 'count', 'data-node="sales"');
     if (window._osMock && typeof window._osMockFor === 'function'){ var _mw = window._osMockFor('dashboard', wt.totalClicks); _wViews = _boardCell(_mw.views, _fmt(_mw.views), 'Total views', 'count', 'data-node="sales"'); }
     var _wConv = (wt.totalClicks > 0) ? (wt.totalJoins/wt.totalClicks*100) : null;
@@ -19343,7 +19333,7 @@ window.ldLayoutNodes = ldLayoutNodes;
        (the MOCK sub tag is gone) — a sample number never reads as live. */
     var _mockOnW = !!(window._osMock && typeof window._osMockFor === 'function');
     return '<div class="os-sl-gauges' + (_mockOnW ? ' os-mock-on' : '') + '" role="group" aria-label="World stats">'
-      + _boardCell(wt.totalClicks, _fmt(wt.totalClicks), 'Total clicks', 'count', 'data-node="sales"')
+      + _boardCell(_wTop11, _fmt(_wTop11), 'Top link clicks', 'count', 'data-node="sales"')
       + _boardCell(wt.totalJoins, _fmt(wt.totalJoins), 'Joins', 'count', 'data-node="joins"')
       + _boardCell(_wConv, _wConvTxt, 'Click-through rate', '%', 'data-node="joins"')
       + _wViews + '</div>';
@@ -19410,6 +19400,7 @@ window.ldLayoutNodes = ldLayoutNodes;
       '<div class="os-wb-top"><span class="os-jewel" style="--jc:' + color + '">' + icon + '</span>' +
       '<div class="os-wb-id"><b>' + _esc(name) + '</b></div></div>' +
       _boardCellsHTML(holder) +
+      (holder.kind === 'world' ? '<p class="os-note" style="margin:10px 0 0;">Dashboard total: ' + _fmt((window._dashLinkT && window._dashLinkT.c) || 0) + ' clicks across all links.</p>' : '') + /* PASS-11 (8): the grand total as a small reference only — the first cell above leads with the top link. */
       (holder.kind === 'page' ? '<p class="os-note" style="margin:10px 0 0;">' + ((holder._p10 && (holder._p10.c > 0 || holder._p10.j > 0)) ? 'These are the clicks of the links that point at this page — its own numbers, counted live.' : 'No links point at this page yet — its clicks count in the Dashboard total above.') + '</p>' : '') +
       '</div>' +
       '<div class="ph-actions os-wb-side"><a class="ph-connect os-wb-btn" href="' + _esc(openHref) + '">Open the stats</a></div></article>';
@@ -19483,17 +19474,29 @@ window.ldLayoutNodes = ldLayoutNodes;
       var v = (value == null || !isFinite(value)) ? 0 : Number(value);
       return '<div class="os-sl-gauge"><div class="os-sl-gauge-dial os-pricing-mini" ' + drillAttr + ' tabindex="0" role="button" aria-label="' + lab + ' — deeper stats"><div class="tn-mini-mount" data-share="0" data-color="#ffbf3d" data-num="' + _esc(String(numTxt)) + '" data-value="' + v + '" data-unit="' + unit + '"></div></div><div class="os-sl-gauge-num">' + _esc(String(numTxt)) + '</div><div class="os-sl-gauge-lab">' + lab + '</div></div>';
     }
+    /* PASS-11 (8): the Reports board leads with TODAY's actions — the per-day
+       counts from the spine series (last element = today) — never the
+       all-time grand total. The grand total is the small reference under
+       the row. */
+    function _today11(s){ var sr = (s && s.series) || null; if (!sr) return null;
+      var _arrs = [sr.posts, sr.notes, sr.msgs, sr.invs, sr.clicks, sr.joins], _t = 0;
+      for (var _i = 0; _i < _arrs.length; _i++){ var _a = _arrs[_i]; if (_a && _a.length) _t += Number(_a[_a.length - 1] || 0); }
+      return _t; }
+    var _today11v = live ? _today11(s2) : null;
     if (!live){
-      host.innerHTML = cell(null, '0', 'Actions counted', 'count', 'data-os-go="today"')
+      host.innerHTML = cell(null, '0', 'Actions today', 'count', 'data-os-go="today"')
         + cell(null, '0', 'Posts', 'count', 'data-node="posts"')
         + cell(null, '0', 'Messages', 'count', 'data-os-go="inbox"')
         + cell(null, '0', 'Invites', 'count', 'data-node="invs"');
     } else {
-      host.innerHTML = cell(s2.mixTotal, _fmt(s2.mixTotal), 'Actions counted', 'count', 'data-os-go="today"')
+      host.innerHTML = cell(_today11v, _fmt(_today11v == null ? 0 : _today11v), 'Actions today', 'count', 'data-os-go="today"')
         + cell(s2.posts, _fmt(s2.posts), 'Posts', 'count', 'data-node="posts"')
         + cell(s2.msgs, _fmt(s2.msgs), 'Messages', 'count', 'data-os-go="inbox"')
         + cell(s2.invs, _fmt(s2.invs), 'Invites', 'count', 'data-node="invs"');
     }
+    var _ref11 = document.getElementById('os-reports-total-ref');
+    if (_ref11) _ref11.remove();
+    host.insertAdjacentHTML('afterend', '<p class="os-note" id="os-reports-total-ref" style="margin:10px 0 0;">Dashboard total: ' + (live ? _fmt(s2.mixTotal) : '—') + ' actions counted.</p>');
     try{ if (typeof window._osMountSlMinis === 'function') window._osMountSlMinis(host); }catch(e){}
     try{ if (typeof window._osMiniNums === 'function') window._osMiniNums(); }catch(e){}
     try{ if (window.tnTruth && window.tnTruth.wire) window.tnTruth.wire(host); }catch(e){}
@@ -23764,9 +23767,7 @@ else init();
         '<div class="tn-tacho-bands"><span class="tn-tacho-bandlo"></span><span class="tn-tacho-bandhi"></span><span class="tn-tacho-bands-label"></span></div>' +
         '<div class="tn-tacho-truth" hidden></div>' +
       '</div>' +
-      /* 2026-11-08 — SHAWN'S EYE: the lap line, below the gauge, clear of the
-         object. paintLap writes it; hidden when there is no lap to name. */
-      '<div class="tn-tacho-lapline" hidden></div>' +
+      /* PASS-11 2026-11-10 (4): the lap line is GONE — "1ST LAP — $250" is deleted on Shawn's word ("I don't know why that's there"). The div is not rendered anymore; paintLap is neutered. */
       /* 2026-11-07 — FIXE2-lane1 (Defect 1a, Shawn's eye 15:21Z): the bandline
          span is GONE. It rendered "44 of 500 — Stirring at 1,000" at the
          gauge's lower rim, blocking the gauge presentation. paintBandChrome
@@ -23949,6 +23950,9 @@ else init();
        HTML — no text over the dial, ever. Same words (3RD LAP — 1K), same
        update rule (follows the swept value), clear of the object. */
     function paintLap(disp){
+      /* PASS-11 (4): the lap line is deleted — this is a no-op now. Kept as a
+         function because the sweep still calls it every frame. */
+      return;
       if (!laplineEl) return;
       var s = (typeof disp === 'number' && isFinite(disp)) ? Math.round(disp) : null;
       var t = '';
@@ -24671,9 +24675,7 @@ else init();
         '<div class="tn-tacho-bands"><span class="tn-tacho-bandlo"></span><span class="tn-tacho-bandhi"></span><span class="tn-tacho-bands-label"></span></div>' +
         '<div class="tn-tacho-truth" hidden></div>' +
       '</div>' +
-      /* 2026-11-08 — SHAWN'S EYE: the lap line, below the gauge, clear of the
-         object. paintLap writes it; hidden when there is no lap to name. */
-      '<div class="tn-tacho-lapline" hidden></div>' +
+      /* PASS-11 2026-11-10 (4): the lap line is GONE — "1ST LAP — $250" is deleted on Shawn's word ("I don't know why that's there"). The div is not rendered anymore; paintLap is neutered. */
       /* 2026-11-07 — FIXE2-lane1 (Defect 1a, Shawn's eye 15:21Z): the bandline
          span is GONE. It rendered "44 of 500 — Stirring at 1,000" at the
          gauge's lower rim, blocking the gauge presentation. paintBandChrome
@@ -25378,7 +25380,7 @@ window._repaintOrbMinis = function(box){
        behind it at scroll 0. Measured here, before the cache key, so the key
        tracks the bar state. */
     var barH = 0;
-    try{ var _bar = document.getElementById('os-bottom3');
+    try{ var _bar = document.getElementById('obb-bar') /* ONE-BOTTOM-BAR: was os-bottom3 */;
       if (_bar && !document.body.classList.contains('os-bottom-hidden')){
         var _br = _bar.getBoundingClientRect();
         if (_br.height > 0 && _br.top < window.innerHeight && _br.bottom > window.innerHeight - 2) barH = Math.round(_br.height);
@@ -25566,7 +25568,7 @@ window._repaintOrbMinis = function(box){
      listener never attached (round 4). transitionend bubbles; the target check
      ignores child transitions. */
   document.addEventListener('transitionend', function(e){
-    if (!e || !e.target || e.target.id !== 'os-bottom3') return;
+    if (!e || !e.target || e.target.id !== 'obb-bar' /* ONE-BOTTOM-BAR: was os-bottom3 */) return;
     if (e.propertyName && e.propertyName !== 'transform') return;
     try{ fitHero(); }catch(_te){}
   });
@@ -27522,7 +27524,7 @@ html body .os-constellation .os-ld-nodes button.os-ld-node[data-node="saves"] .o
    view) and collided with the fixed toggle at top:112px right:16px (measured
    10x32px on the Month pill). Left side, under the back button, is clear in
    every mode and every scroll position. */
-#hero-toggle{ left:16px !important; right:auto !important; top:68px !important; } /* HERO FIX 2026-11-09 (a): the hero-toggle sits UNDER the left + (rooms-plus at y12, toggle at y68). */
+/* PASS-11 (1): the #hero-toggle rule is gone with the button (see the HTML edit). */
 /* FULLSCREEN SCROLL REVAMP, CONT. (Pass 1 fix-up 2026-11-05 ~19:05Z) — the
    OTHER two fixed top-right buttons sat in the pills' path too. Measured
    live (Playwright, 1920x950): hero — #os-eco-plus overlaps the Day pill
@@ -27559,7 +27561,7 @@ html body .os-constellation .os-ld-nodes button.os-ld-node[data-node="saves"] .o
    every content pixel is identical to v3. At scroll 0 the controls sit
    exactly where they sat; the settings panel stays fixed (display:none
    until opened, next to the gear at scroll 0). */
-#os-rooms-plus, #os-eco-plus, #hero-toggle, #page-settings, #viewport-back{ position:absolute !important; }
+#os-rooms-plus, #os-eco-plus, #page-settings, #viewport-back{ position:absolute !important; }
 /* PASS 1 v4 — PHONE TOP BAND (2026-11-05): on phones the pills row is FIXED
    at viewport-top (y≈8–73) while the left controls are absolute at
    document-top, so every control rises through the pills band as the page
@@ -27571,14 +27573,12 @@ html body .os-constellation .os-ld-nodes button.os-ld-node[data-node="saves"] .o
    away with the page there and the back button must stay tappable). */
 @media (max-width:700px){
   #os-rooms-plus{ top:84px !important; }
-  #hero-toggle{ top:140px !important; }
   #os-eco-plus{ right:16px !important; left:auto !important; top:84px !important; }
   #page-settings{ right:16px !important; left:auto !important; top:140px !important; }
   #viewport-back{ top:88px !important; }
   #settings-panel{ right:64px; left:auto; top:192px; } /* PASS-9 2026-11-10: the phone panel sits below the GEAR (gear bottom 180 + 12 = 192). The pill is gone. The !importants are gone so the gear handler can live-anchor it to the gear's rect on open (an !important beats inline styles, which is why the anchor never took effect at phones). */
   body.os-scrolled:not(.hero-mode) #os-rooms-plus,
   body.os-scrolled:not(.hero-mode) #os-eco-plus,
-  body.os-scrolled:not(.hero-mode) #hero-toggle,
   body.os-scrolled:not(.hero-mode) #page-settings,
   body.os-scrolled:not(.hero-mode) #viewport-back{ display:none !important; }
 }
@@ -27794,17 +27794,92 @@ body.viewport-focus #viewport-back{
   }
 }
 </style>
-<div class="os-v6-stamp">Dashboard v9 · PASS10 · 2026-11-10</div>
+<div class="os-v6-stamp">Dashboard v9 · PASS11 · 2026-11-10</div>
 <!-- FIX 5 FIX 7: the three buttons at the bottom — the phone's three buttons.
      Blue envelope = Smart Mail. Green pulse + live badge = Activity (the
      activity in your Dashboard — the badge is the live feed count, never a
      hard-coded number). Gold home = Dashboard. Colour language (SN-2270):
      gold = Dashboard, green = activity, blue = mail. -->
-<nav id="os-bottom3" class="os-bottom3" aria-label="Dashboard">
-  <button type="button" class="os-b3-btn os-b3-mail" data-b3="mail" aria-label="Smart Mail"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 6 12 13 22 6"/></svg></button>
-  <button type="button" class="os-b3-btn os-b3-act" data-b3="activity" aria-label="Activity"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 12 7 12 10 5 14 19 17 12 22 12"/></svg><span class="os-b3-badge" id="os-b3-badge" hidden></span></button>
-  <button type="button" class="os-b3-btn os-b3-dash" data-b3="dashboard" aria-label="Dashboard"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 L12 3 L21 11"/><path d="M5 10 V21 H19 V10"/></svg></button>
+<!-- ONE-BOTTOM-BAR v1 (2026-11-11) — ONE ICON SET, ONE BOTTOM BAR (Shawn 2026-11-11 01:18Z).
+  Harvest: Inviter Smart Bar pill() builder + trio + network seed + SPECTRUM,
+  growth-round-20261110/growth-new.html (pill() L3601+, trio L4067+, seed L4226+, SPECTRUM L2629).
+  Order = trio order, then network-seed order. Labels per brief; glyphs, colors, hrefs harvested.
+  NO-OVERLAY law (Shawn 2026-11-11 01:25Z): this bar sits in its own lane ABOVE the Smart Bar
+  (#nsbBottom), the notif bar and the jewel bar — its bottom offset is measured at runtime
+  from the visible bars below it, never a fixed guess. Identical block on Inviter, Hub,
+  Dashboard — never edit per page. -->
+<nav class="obb-bar" id="obb-bar" aria-label="Apps">
+<div class="obb-row">
+  <a class="obb-pill" data-obb="mail" data-b3="mail" href="https://nayanet.app/rooms/mail" style="--obb:#ffbf3d" aria-label="Mail" title="Mail"><span class="obb-jewel" aria-hidden="true">✉</span><span class="obb-lbl">Mail</span></a>
+  <a class="obb-pill" data-obb="activity" data-b3="activity" href="https://nayanet.app/#/hub/feed" style="--obb:#a06bff" aria-label="Activity" title="Activity"><span class="obb-jewel" aria-hidden="true">◈</span><span class="obb-lbl">Activity</span><span class="obb-badge os-b3-badge" id="os-b3-badge" hidden></span></a>
+  <a class="obb-pill" data-obb="dashboard" data-b3="dashboard" href="https://nayanet.app/dashboard" style="--obb:#2fe89e" aria-label="Dashboard" title="Dashboard"><span class="obb-jewel" aria-hidden="true">◉</span><span class="obb-lbl">Dashboard</span></a>
+  <a class="obb-pill" data-obb="business" href="https://nayanet.app/business" style="--obb:#ffbf3d" aria-label="Business" title="Business"><span class="obb-jewel" aria-hidden="true">■</span><span class="obb-lbl">Business</span></a>
+  <a class="obb-pill" data-obb="space" href="https://nayanet.app/space" style="--obb:#ff9a5a" aria-label="Space" title="Space"><span class="obb-jewel" aria-hidden="true">▲</span><span class="obb-lbl">Space</span></a>
+  <a class="obb-pill" data-obb="growth" href="https://nayanet.app/rooms/growth" style="--obb:#ff5e6c" aria-label="Growth" title="Growth"><span class="obb-jewel" aria-hidden="true">✦</span><span class="obb-lbl">Growth</span></a>
+  <a class="obb-pill" data-obb="connections" href="https://nayanet.app/rooms/connections" style="--obb:#e84fff" aria-label="Connections" title="Connections"><span class="obb-jewel" aria-hidden="true">◇</span><span class="obb-lbl">Connections</span></a>
+  <a class="obb-pill" data-obb="lists" href="https://nayanet.app/rooms/lists" style="--obb:#a06bff" aria-label="Smart Lists" title="Smart Lists"><span class="obb-jewel" aria-hidden="true">☰</span><span class="obb-lbl">Smart Lists</span></a>
+  <a class="obb-pill" data-obb="reports" href="https://nayanet.app/rooms/reports" style="--obb:#3fb8ff" aria-label="Reports" title="Reports"><span class="obb-jewel" aria-hidden="true">◆</span><span class="obb-lbl">Reports</span></a>
+  <a class="obb-pill obb-more" data-obb="more" href="https://nayanet.app/#/hub" style="--obb:#3fb8ff" aria-label="10 apps" title="10 apps"><span class="obb-jewel" aria-hidden="true">＋</span><span class="obb-lbl">10 apps</span></a>
+</div>
 </nav>
+<style>
+/* ONE-BOTTOM-BAR v1 — placement + pills. Jewel treatment harvested from .nsb-jewel (Inviter L3300+); pill treatment from .nsb-tab (L3244+). */
+.obb-bar,.obb-bar *{box-sizing:border-box}
+.obb-bar{position:fixed;left:0;right:0;bottom:var(--obb-below,0px);z-index:200;display:flex;align-items:center;justify-content:flex-start;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));overflow-x:auto;overflow-y:hidden;scrollbar-width:none;background:rgba(3,3,5,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 -16px 44px rgba(0,0,0,.68);transition:transform .35s ease,opacity .35s ease}
+.obb-bar::-webkit-scrollbar{display:none}
+body.os-bottom-hidden .obb-bar{transform:translateY(110%);opacity:0}
+.obb-row{display:flex;align-items:center;gap:8px;margin:0 auto;flex:0 0 auto}
+.obb-pill{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-width:58px;min-height:52px;padding:6px 8px 5px;border-radius:14px;text-decoration:none;color:#fff;cursor:pointer;background:linear-gradient(180deg,#1d1d26 0%,#0b0b10 55%,#020203 100%);border:1.5px solid var(--obb);box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.55),0 0 14px -2px var(--obb),0 8px 20px rgba(0,0,0,.75);position:relative}
+.obb-pill:hover,.obb-pill:focus-visible{box-shadow:inset 0 2px 0 rgba(255,255,255,.45),inset 0 -4px 10px rgba(0,0,0,.55),0 0 22px 0 var(--obb),0 8px 20px rgba(0,0,0,.75);transform:translateY(-1px);outline:none}
+.obb-pill:active{box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.55),0 0 26px 5px var(--obb),0 8px 20px rgba(0,0,0,.75)}
+.obb-jewel{width:29px;height:29px;border-radius:9px;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;font-size:15px;color:#fff;background:linear-gradient(180deg,color-mix(in srgb,var(--obb) 30%,rgba(255,255,255,.1)),color-mix(in srgb,var(--obb) 12%,rgba(0,0,0,.42)));border:1px solid color-mix(in srgb,var(--obb) 55%,rgba(0,0,0,.3));box-shadow:inset 0 2px 5px rgba(0,0,0,.55),inset 0 1px 2px rgba(255,255,255,.12),inset 0 -1px 0 rgba(255,255,255,.08),0 0 10px -2px var(--obb)}
+.obb-lbl{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;white-space:nowrap;line-height:1}
+.obb-badge{position:absolute;top:-7px;right:-7px;min-width:22px;height:22px;padding:0 6px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:#04120a;color:#fff;font-size:12px;font-weight:900;line-height:1;border:2px solid #2fe89e;box-shadow:0 0 12px rgba(47,232,158,.8)}
+@media (max-width:640px){.obb-bar{gap:6px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))}.obb-row{gap:6px}.obb-pill{min-width:52px;min-height:50px;padding:5px 6px 4px}.obb-jewel{width:26px;height:26px;font-size:14px}.obb-lbl{font-size:9px}}
+</style>
+<script>
+/* ONE-BOTTOM-BAR v1 — lane stacking (NO-OVERLAY law). Measures the visible bottom-stack bars
+   below this bar (Smart Bar, notif bar, jewel bar) and lifts this bar above the tallest of
+   them, so no bar ever covers another. Re-measures on load, resize, and whenever the bars
+   change (Smart Bar built/toggled, notif shown/hidden, keyboard shown/hidden). */
+(function(){
+  var bar=document.getElementById('obb-bar'); if(!bar) return;
+  function obbLayout(){
+    var vh=window.innerHeight||0, below=0;
+    var sels=['#nsbBottom','.notif-bar','.jewelbar'];
+    for(var s=0;s<sels.length;s++){
+      var els=document.querySelectorAll(sels[s]);
+      for(var k=0;k<els.length;k++){
+        var el=els[k], cs;
+        try{ cs=getComputedStyle(el); }catch(e){ continue; }
+        if(!cs||cs.display==='none'||cs.visibility==='hidden') continue;
+        if(cs.position!=='fixed') continue;
+        var r; try{ r=el.getBoundingClientRect(); }catch(e){ continue; }
+        if(!r||r.height<=0) continue;
+        if(r.top>=vh) continue;
+        if(r.bottom<vh-260) continue;
+        var need=vh-r.top; if(need>below) below=need;
+      }
+    }
+    bar.style.setProperty('--obb-below', Math.ceil(below)+'px');
+  }
+  function obbSoon(){ setTimeout(obbLayout, 60); }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', obbLayout); }
+  else { obbLayout(); }
+  window.addEventListener('load', obbLayout);
+  window.addEventListener('resize', obbLayout);
+  setTimeout(obbLayout, 500); setTimeout(obbLayout, 1500);
+  try{
+    var mo=new MutationObserver(obbSoon);
+    mo.observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+    mo.observe(document.body,{attributes:true,attributeFilter:['class']});
+    var b2=document.getElementById('nsbBottom');
+    if(b2) mo.observe(b2,{childList:true,attributes:true,attributeFilter:['class','style']});
+  }catch(e){}
+  window.__obbLayout=obbLayout;
+})();
+</script>
+<!-- /ONE-BOTTOM-BAR -->
 <script>
 /* FIX 5 — FIX 5 + FIX 7 init. Runs at end of body; DOM is ready. */
 (function(){
@@ -27833,7 +27908,9 @@ body.viewport-focus #viewport-back{
   var mail = document.querySelector('[data-b3="mail"]');
   if (mail) mail.addEventListener('click', function(){ window.location.href = 'https://nayanet.app/rooms/mail'; });
   var act = document.querySelector('[data-b3="activity"]');
-  if (act) act.addEventListener('click', openFeed);
+  /* ONE-BOTTOM-BAR: the Activity pill is a link now — stop the navigation,
+     the feed overlay is the action (was a button, no navigation to stop). */
+  if (act) act.addEventListener('click', function(e){ e.preventDefault(); openFeed(); });
   /* PASS-9 2026-11-10 — TAP ONE TO SEE MORE. The notifications list is the
      only home notifications have now (the top pill is gone). Tapping a row
      opens its detail — the full date and time, then the event's own text —
@@ -27855,7 +27932,9 @@ body.viewport-focus #viewport-back{
     row.appendChild(det); row.classList.add('open');
   });
   var dash = document.querySelector('[data-b3="dashboard"]');
-  if (dash) dash.addEventListener('click', function(){ window.scrollTo(0, 0); });
+  /* ONE-BOTTOM-BAR: the Dashboard pill is a link now — stop the navigation,
+     scrolling to top is the action (was a button, no navigation to stop). */
+  if (dash) dash.addEventListener('click', function(e){ e.preventDefault(); window.scrollTo(0, 0); });
   /* the badges follow the live feed render — a MutationObserver on the list,
      so any render path updates them (no wrapping of the feed renderer). */
   try{
@@ -28235,6 +28314,132 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
 @media (max-width:768px){
   .os-b3-btn{ width:64px !important; height:62px !important; }
   .os-b3-btn::after{ font-size:8.5px !important; }
+}
+/* ================= PASS-11 2026-11-10 — Shawn's eye on the LIVE Dashboard =================
+   (1) The fullscreen/max view is GONE — one view only (the good main view). The
+   hero-toggle button, the settings-panel fullscreen/hero actions, and their JS
+   are removed (see the HTML/JS edits); the hero-mode rules elsewhere in this
+   file are dead code now — nothing adds the class anymore, so they can never
+   restyle the page. (2) The money note lives BELOW the hero now. (3) Day /
+   Week / Month / All read like the mode buttons. (4) The lap line is gone.
+   (5)+(10) Every orb — hero and drill alike: number up and centred, label
+   bigger below it, jewel underneath, never above the number. (8) The grand
+   total headlines in the hero only. (9) Bottom nav: icons only, the name on
+   hover. */
+
+/* (4) LAP LINE — dead, even if a stale gauge build paints one. */
+.tn-tacho-lapline{display:none !important;}
+
+/* (2) MONEY NOTE — below the hero (see the HTML move); the rule itself lives
+   with the other .os-pts-note rule above. */
+
+/* (3) TIME PILLS — the mode-button treatment. The pills sit inside the fit
+   scale (desktop ~0.44–0.6), so natural sizes run ~2x the rendered size:
+   28px reads ~12–17px at 1440. Each pill burns in its own colour (Day gold,
+   Week blue, Month green, All purple); the active pill burns brighter. The
+   column is pulled to the constellation's right edge (right:0) so the wider
+   pills clear the right orbs. */
+#os-ld-timepills{right:0 !important;}
+.os-ld-timepills button{
+  font-size:28px !important; font-weight:800 !important; letter-spacing:.06em !important;
+  padding:16px 22px !important; border-radius:16px !important;
+  color:#fff !important;
+  background:linear-gradient(180deg,#1d1d26 0%,#0b0b10 55%,#020203 100%) !important;
+  border:2px solid rgba(255,255,255,.9) !important;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.55),0 8px 20px rgba(0,0,0,.75) !important;
+}
+.os-ld-timepills button[data-ldtw="daily"]{box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.55),0 0 22px -2px #ffbf3d,0 8px 20px rgba(0,0,0,.75) !important;}
+.os-ld-timepills button[data-ldtw="weekly"]{box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.55),0 0 22px -2px #3fb8ff,0 8px 20px rgba(0,0,0,.75) !important;}
+.os-ld-timepills button[data-ldtw="monthly"]{box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.55),0 0 22px -2px #2fe89e,0 8px 20px rgba(0,0,0,.75) !important;}
+.os-ld-timepills button[data-ldtw="all"]{box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.55),0 0 22px -2px #a06bff,0 8px 20px rgba(0,0,0,.75) !important;}
+.os-ld-timepills button.on{border-color:#fff !important;}
+.os-ld-timepills button[data-ldtw="daily"].on{box-shadow:inset 0 2px 0 rgba(255,255,255,.4),inset 0 -4px 10px rgba(0,0,0,.5),0 0 34px 0 #ffbf3d,0 8px 20px rgba(0,0,0,.75) !important;}
+.os-ld-timepills button[data-ldtw="weekly"].on{box-shadow:inset 0 2px 0 rgba(255,255,255,.4),inset 0 -4px 10px rgba(0,0,0,.5),0 0 34px 0 #3fb8ff,0 8px 20px rgba(0,0,0,.75) !important;}
+.os-ld-timepills button[data-ldtw="monthly"].on{box-shadow:inset 0 2px 0 rgba(255,255,255,.4),inset 0 -4px 10px rgba(0,0,0,.5),0 0 34px 0 #2fe89e,0 8px 20px rgba(0,0,0,.75) !important;}
+.os-ld-timepills button[data-ldtw="all"].on{box-shadow:inset 0 2px 0 rgba(255,255,255,.4),inset 0 -4px 10px rgba(0,0,0,.5),0 0 34px 0 #a06bff,0 8px 20px rgba(0,0,0,.75) !important;}
+
+/* (5)+(10) ORB ORDER — number up and centred, label below it, jewel
+   underneath. The node is already a flex column; order does the move, no
+   builder is touched, so the hero and every drill get the same treatment.
+   The vortex / ticks / gear / badge / trend are absolute — order never
+   moves them. The number tiles themselves are untouched. */
+.os-ld-nodes .os-ld-node .os-ld-n,
+.os-constellation .os-ld-node .os-ld-n,
+button.os-ld-node .os-ld-n{order:1 !important;}
+.os-ld-nodes .os-ld-node .os-ld-lbl,
+.os-constellation .os-ld-node .os-ld-lbl,
+button.os-ld-node .os-ld-lbl{
+  order:2 !important; margin-top:8px !important;
+  font-size:22px !important; font-weight:800 !important;
+  letter-spacing:.08em !important; white-space:nowrap !important; max-width:none !important;
+}
+.os-ld-nodes .os-ld-node .os-ld-unit,
+.os-constellation .os-ld-node .os-ld-unit,
+button.os-ld-node .os-ld-unit{font-size:11px !important; margin-top:2px !important;}
+.os-ld-nodes .os-ld-node .os-ld-icon,
+.os-constellation .os-ld-node .os-ld-icon,
+button.os-ld-node .os-ld-icon{
+  order:3 !important; margin:8px 0 0 !important;
+  font-size:20px !important;
+}
+
+/* (10) DRILL ORBS — the same order, sized for the unscaled 112px disc (84px
+   on phones). The label reads at a glance and may wrap (Conversion, Top
+   Inviters); the jewel sits underneath it, never fighting the number for
+   the centre. The drill views scroll instead of clipping at short heights. */
+[role="dialog"] .os-ld-node .os-ld-lbl{
+  font-size:13px !important; white-space:normal !important; max-width:100px !important;
+  line-height:1.25 !important; overflow-wrap:anywhere !important;
+}
+[role="dialog"] .os-ld-node .os-ld-unit{font-size:10px !important;}
+[role="dialog"] .os-ld-node .os-ld-icon{font-size:32px !important; margin-top:8px !important;}
+.os-sales-view,.os-invites-view,.os-shares-view,.os-joins-view,.os-notes-view,.os-comments-view,.os-likes-view,.os-creations-view,.os-saves-view,.os-smartlink-view{overflow-y:auto !important;}
+
+/* (8) DRILL TOTAL REFERENCE — small, white, under the top-link total. */
+.os-sales-total-ref{font-size:13px !important;color:rgba(255,255,255,.85) !important;text-align:center !important;margin-top:6px !important;}
+
+/* (9) BOTTOM NAV — icons only. The pass-10 always-on ::after labels are
+   gone (they clipped over the icons); the name shows as a pill ABOVE the
+   button on hover / keyboard focus only. The button returns to its
+   icon-only 56px (50px phone) and the bar to its 28px gap. The badge (a
+   count, not a name) stays. The icons themselves are untouched — harvested
+   verbatim from the base file. */
+.os-b3-btn{width:56px !important; height:56px !important; flex-direction:row !important; gap:0 !important;}
+#os-bottom3{gap:28px !important;}
+.os-b3-btn::after{
+  content:attr(aria-label); position:absolute; bottom:calc(100% + 10px); left:50%;
+  transform:translateX(-50%) translateY(4px);
+  font-size:11px !important; font-weight:800 !important; letter-spacing:.12em !important;
+  color:#fff !important; text-transform:uppercase; white-space:nowrap; line-height:1 !important;
+  background:linear-gradient(180deg,#1d1d26,#0b0b10); border:1.5px solid rgba(255,255,255,.85);
+  border-radius:999px; padding:8px 14px;
+  box-shadow:0 8px 20px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.3);
+  opacity:0; pointer-events:none; transition:opacity .18s, transform .18s;
+}
+.os-b3-btn:hover::after,.os-b3-btn:focus-visible::after{opacity:1; transform:translateX(-50%) translateY(0);}
+
+/* (3)+(5) PHONES — the pills run as a row below the constellation (see the
+   max-width:900px rule above); the row fits 390px at 20px. Orb labels stay
+   one line ("SMART NOTES" fits the 140px disc at 16px) and read ~12px. */
+@media (max-width:900px){
+  .os-ld-timepills button{font-size:20px !important; padding:12px 18px !important;}
+  .os-ld-nodes .os-ld-node .os-ld-lbl,
+  .os-constellation .os-ld-node .os-ld-lbl,
+  button.os-ld-node .os-ld-lbl{
+    font-size:16px !important; letter-spacing:.04em !important;
+    white-space:nowrap !important; max-width:none !important; line-height:1.2 !important;
+  }
+  .os-ld-nodes .os-ld-node .os-ld-unit,
+  .os-constellation .os-ld-node .os-ld-unit,
+  button.os-ld-node .os-ld-unit{font-size:10px !important;}
+  .os-ld-nodes .os-ld-node .os-ld-icon,
+  .os-constellation .os-ld-node .os-ld-icon,
+  button.os-ld-node .os-ld-icon{font-size:16px !important; margin-top:6px !important;}
+  [role="dialog"] .os-ld-node .os-ld-lbl{font-size:11px !important; max-width:72px !important;}
+  [role="dialog"] .os-ld-node .os-ld-icon{font-size:24px !important; margin-top:6px !important;}
+}
+@media (max-width:768px){
+  .os-b3-btn{width:50px !important; height:50px !important;}
 }
 </style>
 </body></html>
