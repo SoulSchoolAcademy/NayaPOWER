@@ -32387,6 +32387,37 @@
    "page_hash": "16f661ea69e91718a5ca191f84c5ec171feb60b1a053056c7fce8cf1470cca68",
    "content_hash": "ecb8e270a4ef65bec60af1723c368905dbe55d69910ee27d166b6aaf335cedc4",
    "content_hash_source": "page-reconstructed"
+  },
+  {
+   "smart_note_id": "SN-2655",
+   "intelligent_block_id": "IB-SMART-NOTE-20261107-sn2655-daily-intelligence-report-2026-11-07",
+   "slug": "daily-intelligence-report-2026-11-07",
+   "title": "Daily Intelligence Report — 2026-11-07",
+   "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/07/REPORT/SN-2655/IB-SMART-NOTE-20261107-sn2655-daily-intelligence-report-2026-11-07.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/07/REPORT/SN-2655/IB-SMART-NOTE-20261107-sn2655-daily-intelligence-report-2026-11-07.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/07/REPORT/SN-2655/IB-SMART-NOTE-20261107-sn2655-daily-intelligence-report-2026-11-07.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261107-sn2655-daily-intelligence-report-2026-11-07.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "REPORT",
+   "captured_at": "2026-11-07",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-power",
+   "registered_at": "2026-11-11T16:09:26Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-07",
+   "page_hash": "0a63f58774db9788a49a009638fd4b402e937a720878e4367a593af81c70bb5f",
+   "content_hash": "3f74ba2cf6e790fb4e9c89dbe35ec70cf13bc333b7ae9fb856fb3bab7fc2b6aa",
+   "one_line": "November 7 was a day of honest measurement and one real delivery. Nothing finished: 30 proven items sat flat all day, all 26 fills stayed incomplete, and the Hub's card click was still broken in the morning. The one thing that truly landed was distillation batch 1 — 100 raw notes became 10 clear notes, SN-2239 to SN-2248 — but only after the first \"filed\" report was caught as stored, not filed, and corrected the same day. The old address, nayanet.live, stayed unreachable all day while nayanet.app worked. This report was filed 2026-11-11 as a backfill; the day it reports is 2026-11-07.",
+   "topics": [
+    "System",
+    "Report",
+    "Daily"
+   ]
   }
  ],
  "sequence_policy": {
@@ -32397,5 +32428,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "c2fea8077ed870b4d9b7929f496b243151f03c4fd840bdb5ba6eaa465e80a3ff"
+ "corpus_manifest_hash": "37c542f6f1525de29ed31e04ce7d06f01112065ad4fd48ccb17bc70d3e6f7ea7"
 }
