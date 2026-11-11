@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2294",
+ "title": "A Viewport Is a Screen",
+ "slug": "a-viewport-is-a-screen",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2294/IB-SMART-NOTE-20261108-sn2294-a-viewport-is-a-screen.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Stop building \"an all in one HTML output\" — a long scrolling text page. Build viewports. A viewport is their point of view: optimized to the visual, to what they are seeing on the screen. Screen by screen, scroll by scroll, slide by slide; on mobile, side to side. Each viewport has everything they need to function that page and the network a click away, done elegantly. Everything is alive, all things are objects, ALWAYS — nothing flat. Almost little to no text — spoken in icons and visual objects (boards, buttons). You operate it; when you touch something it feels alive. The contrast is perfect. It has depth — looking into the screen or out of the screen, there is always a layer. The laws are written in the Smart Factory and GitHub — he should not have to keep telling us. The examples are our own buttons, our intelligent blocks, our smart notes — they all speak the same language; they are not low-level stuff. The page is a deck of viewpoints (full-screen slides; scroll or slide between them; swipe side to side on mobile) — not a long document.",
+  "human_view": "A book is not one endless page. It is pages — one view at a time, each complete, each turning to the next. A long scroll of flat text is a scroll of parchment; a deck of screens is a book someone actually wants to hold. Each screen is a room: everything you need is in it, and the next room is one step away.",
+  "child_view": "A slide show, not a spelling list. Each slide is one picture that says everything — you look, you tap, it moves, you go to the next. Nobody reads a whole book on one page. You flip, slide by slide, and every slide is alive when you touch it.",
+  "grandma_view": "A photo album, not a roll of film. One photo per page, each one framed, each one telling its story at a glance — and you turn the page for the next. The album is the deck. The page you are looking at is the whole world for that moment.",
+  "ai_view": "I am Anaya. I build screens, not documents. One viewport, complete on its own — everything alive, everything an object, almost no text, the network a click away — and then the next screen. I never ship a long flat text page and call it a viewpoint. I read the laws in the Factory and GitHub before I build, and I look at our own buttons and blocks and notes, because they are the language. If a screen is flat, it is not done.",
+  "what_it_means": "1. **A viewport is one screen, complete.** Optimized for the top of the page — all buttons lined up, quality, elegance, elevation, color, branding, everything alive.\n2. **The page is a deck.** Full-screen slides; scroll/slide between them; swipe side to side on mobile.\n3. **Almost no text.** Icons and visual objects speak — boards, buttons, jewels, orbs.\n4. **Nothing flat, ever.** Everything is an object, everything is alive, everything has depth — layers in and out of the screen.\n5. **The laws are already written.** Smart Factory and GitHub hold them; our buttons, blocks, and notes are the examples. Read them first.",
+  "whats_inside": [],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "35ec5d6b95f0367b7425cdaf5cf52f41b1ad4a4fc7240642b615b12694b26477",
+ "content_hash": "08defb19ef1e873dc06c5329fdd1fe01c183293092ae357ea8f07e6f98885391",
+ "reconstructed_from_page": true
+}
