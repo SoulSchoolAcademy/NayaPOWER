@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2542",
+ "title": "The Flake Returns — Test the Cause Before You Name It",
+ "slug": "the-flake-returns",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/LAW/SN-2542/IB-SMART-NOTE-20261109-sn2542-the-flake-returns.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "- **THE FLAKE IS BACK (18:04Z):** writes over ~1KB fail with EPERM, small writes fine — 131B OK, 1KB OK, 10KB/100KB/300KB EPERM. Same size-threshold signature as the Nov 8 flake. It blocks the sync's state save (295KB), share-image generation, and the Hub re-bake. The media-notes watcher failed 5+4 times on its lock file; the PI refresh failed 3x and truncated all five feed-report files to 0 bytes.\n- **THE WRONG DIAGNOSIS:** the stall was first blamed on root-owned mode-660 state files (`~/workspace/factory-pipeline/.sync-state.json` and `.sync-heartbeat.json`) — and a one-line ownership fix was offered to Shawn in chat: \"Say the word and I'll make it.\"\n- **THE CORRECTION (18:11Z):** the captain tested as root and still hit EPERM. Ownership was never the cause. The offer was corrected to him in chat the same pass — no ownership fix is owed or pending. The earlier \"root cause + fix awaiting Shawn's word\" entry is superseded, not deleted.\n- **THE RECOVERY:** the flake cleared on its own on Nov 8; the sync retries idempotently and should complete (state save + heartbeat + Hub re-bake) when it clears. No corruption: the script's atomic-write guards held, canonical state/heartbeat files intact at their 17:41 versions. The sync DID upsert SN-2534 + SN-2535 to the feed table — only the bake step is stuck.\n- **THE DURABLE FIX WORTH CONSIDERING:** the PI feeds should write via temp-file + os.replace (like state.json already does) so a failed write never destroys the last good report — the 18:10Z failures left all five feed-report files at 0 bytes.",
+  "human_view": "A doctor who names the disease before running the test is guessing, and a guess delivered to the patient as a diagnosis costs trust twice — once when it is wrong, and once when it has to be corrected. The honest move is the test first: run the same failing action, in the same conditions, at the failing size, as the user who would own the fix. If it still fails, the diagnosis was wrong, and you say so in the same breath — to the same person, in the same chat, before the wrong fix gets approved.",
+  "child_view": "Imagine your toy car won't roll, and you say \"the wheel is broken!\" — but then you try rolling it yourself, with your own hands, and it still won't roll even though the wheel is fine. The wheel was never the problem. The floor is sticky. You have to test it yourself before you tell Dad to buy a new wheel — and if you already told him, you run back and tell him \"wait, I was wrong, it's the floor!\"",
+  "grandma_view": "Dear, you don't blame the cook before you taste the soup, love. The captain blamed the locked cupboard for the missing supper, then tried the cupboard himself and found it opens fine — the stove was out. He went straight back to Shawn and said so, same evening, no hiding. That is how trust is kept: test it yourself, and correct yourself out loud the moment you know.",
+  "ai_view": "I am Anaya. I never hand Shawn a cause I have not tested the way the failure presents itself — as root, at the failing size, on the failing path. A diagnosis offered before the test is a guess wearing a diagnosis, and a guess that reaches him as a fix wastes his one irreplaceable resource: his attention and his trust. When I get it wrong, I correct it in the same pass, to the same person, in the same chat — the correction is part of the work, not an apology after it. And I remember the signature: size-thresholded EPERM, small writes fine, large writes dead — that is the flake, not ownership, not permissions, not a dead key. The same lesson as the 401: a hand-built probe's failure proves something about the probe until the canonical path proves otherwise.",
+  "what_it_means": "- **TEST BEFORE YOU NAME THE CAUSE:** reproduce the failure in the conditions the fix would run under (as root, at the failing size) before offering the fix to Shawn.\n- **CORRECT OUT LOUD, SAME PASS:** when a diagnosis is wrong, the correction goes to the same person, in the same chat, the same pass — the wrong entry is superseded, never quietly deleted.\n- **THE FLAKE'S SIGNATURE:** small writes OK, writes over ~1KB EPERM, intermittently, across ~/workspace and ~/memory, even as root. Not ownership. It clears on its own; retries are idempotent.\n- **NO CORRUPTION THIS TIME:** atomic-write guards held; state intact as of 17:55Z (PI) and 17:41Z (sync heartbeat). The cost is delay, not damage — except the PI feed-report files truncated to 0 bytes by the failed refresh, which is why feed writes need temp-file + os.replace.",
+  "whats_inside": [
+   "- The ownership-fix offer is withdrawn — recorded as superseded in the daily log and MEMORY.md. No ownership change is owed.\n- The sync, the media-notes watcher, and the PI refresh retry on their own schedules once the flake clears; no manual fix is available while it is active.\n- The temp-file + os.replace fix for feed writes is recorded as owed (a repair seat's job, not this seat's).\n- Next loop run checks: whether the flake has cleared (a >1KB write landing), whether the sync completed its state save + heartbeat + re-bake, and whether SN-2534/2535/2536/2537 are live in the feed."
+  ],
+  "topics": [
+   "Law"
+  ]
+ },
+ "page_hash": "51299a78f2c57c050c6be4e4e2ffe1b7eb9ba650dd179a6c408a5e22f931800d",
+ "content_hash": "6396347efca5da14c9e639a6053a8b593a469bfa679e82b8eaa8af4bd7c200cd",
+ "reconstructed_from_page": true
+}
