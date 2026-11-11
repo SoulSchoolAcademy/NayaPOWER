@@ -3857,19 +3857,36 @@ window.NayaContent = {
     }catch(e){}
   }
   var liveCount=0, liveNewest=null, mo=null;
-  function currentNotes(){ try{ var f=window.NayaFeedIntelligence; if(f && f.notes && f.notes.length){ liveCount=f.notes.length; liveNewest=f.notes[0] && f.notes[0].created; } }catch(e){} }
+  function currentNotes(){ try{ var f=window.NayaFeedIntelligence; if(f && f.notes && f.notes.length){ liveCount=f.notes.length; liveNewest=f.notes[0] && (f.notes[0].created || f.notes[0].created_at); } }catch(e){} }
   function watch(){
     if(mo) return; mo=1;
     var tries=0;
     var iv=setInterval(function(){
       tries++; currentNotes();
       var boards=document.querySelectorAll('.intel-board').length;
-      var liveNow=window.NayaFeedIntelligence && window.NayaFeedIntelligence.ref==='live-registry';
       if(boards){ fixProvenance(liveCount, liveNewest); armAlive(); }
-      var line=document.getElementById('feed-provenance-line');
-      var shown=line && liveCount && line.textContent.indexOf(String(liveCount))>-1;
-      if((liveNow && shown) || tries>=150){ clearInterval(iv); }
+      if(tries>=150){ clearInterval(iv); }
     }, 400);
+    /* P2 fix2 (Nu, 2026-11-11; Chi receipt comment 6800881349): the strip
+       must survive EVERY re-render. The old interval stopped the moment
+       the strip showed once — a later live re-render rebuilt the feed
+       with a fresh EMPTY strip nothing repainted (M1 showed, M2 did
+       not). This observer repaints any fresh strip the moment it lands,
+       at any time, so the same strip renders on every load. */
+    try {
+      var obs=new MutationObserver(function(muts){
+        for(var i=0;i<muts.length;i++){
+          var added=muts[i].addedNodes||[];
+          for(var j=0;j<added.length;j++){
+            var n=added[j];
+            if(n && n.nodeType===1 && (n.id==='feed-provenance-line' || (n.querySelector && n.querySelector('#feed-provenance-line')))){
+              currentNotes(); fixProvenance(liveCount, liveNewest);
+            }
+          }
+        }
+      });
+      obs.observe(document.documentElement, { childList:true, subtree:true });
+    } catch(e){}
   }
   face(); watch();
   setTimeout(function(){ currentNotes(); fixProvenance(liveCount, liveNewest); armAlive(); }, 1200);
@@ -4163,11 +4180,37 @@ function Pill(status) {
   return `<span class="pill ${status}"><span class="dot"></span>${label}</span>`;
 }
 
-/* ——— Toast ——— */
-function toast(message, accent = 'var(--magenta)', ms = 4200) {
+/* ——— Toast ———
+   Two call conventions live in this file — honor both (P2 fix2, 2026-11-11):
+   (message, accent, ms)            — accent is a color/var, ms a number
+   (message, subtext, accentColor)  — subtext is a sentence, accent a color
+   The old signature (message, accent, ms) treated the subtext as the accent
+   and the color as ms, so setTimeout got NaN → 0 and every 3-arg toast
+   vanished instantly (diag11: 'LINK COPIED' already class 'out' at 8ms).
+   The subtext now renders as a second line; ms is always a real number. */
+function toast(message, second, third, fourth) {
+  function isColor(v) {
+    return typeof v === 'string' && (/^#[0-9a-f]{3,8}$/i.test(v.trim()) ||
+      /^var\(--[^)]+\)$/.test(v.trim()) ||
+      /^(gold|silver|white|black|red|green|blue|purple|magenta|teal|emerald)$/i.test(v.trim()));
+  }
+  let text = null, accent = 'var(--magenta)', ms = 4200;
+  if (isColor(second)) { accent = second; if (typeof third === 'number') ms = third; }
+  else {
+    if (second != null) text = second;
+    if (typeof third === 'string') accent = third;
+    else if (typeof third === 'number') ms = third;
+    if (typeof fourth === 'number') ms = fourth;
+  }
+  if (!(ms > 0)) ms = 4200;
   let stack = document.querySelector('.toast-stack');
   if (!stack) { stack = el('div', 'toast-stack'); document.body.appendChild(stack); }
-  const t = el('div', 'toast', `<span>${message}</span>`);
+  const t = el('div', 'toast', text ? `<span>${message}</span><small>${text}</small>` : `<span>${message}</span>`);
+  if (text) {
+    t.style.flexDirection = 'column'; t.style.alignItems = 'flex-start'; t.style.gap = '2px';
+    const s = t.querySelector('small');
+    if (s) { s.style.fontWeight = '400'; s.style.opacity = '.85'; }
+  }
   t.style.setProperty('--toast-accent', accent);
   stack.appendChild(t);
   setTimeout(() => { t.classList.add('out'); setTimeout(() => t.remove(), 350); }, ms);
@@ -4209,8 +4252,14 @@ const Router = (() => {
     let handler = routes[key];
     let params = {};
     if (!handler) {
-      // try parametric: hub/:room, smart-notes/:slug (also notes/:slug, note/:slug)
-      if (segs[0] === 'hub' && segs[1]) {
+      // try parametric: hub/note/:id (legacy card href — Chi receipt
+      // comment 6800881349) opens the SOLO note, never the full feed;
+      // hub/:room, smart-notes/:slug (also notes/:slug, note/:slug)
+      if (segs[0] === 'hub' && segs[1] === 'note' && segs[2]) {
+        handler = routes['smart-notes/:slug'];
+        params = { slug: segs[2] };
+        key = 'smart-notes/:slug';
+      } else if (segs[0] === 'hub' && segs[1]) {
         handler = routes['hub/:room'];
         params = { room: segs[1] };
         key = 'hub/:room';
@@ -4531,6 +4580,83 @@ window.BoardActions = (() => {
     return wrap;
   }
 
+  /* SHARE DIALOG (P2 fix2, Nu 2026-11-11; Chi receipt comment 6800881349):
+     SHARE INTEL always opens a real dialog with a real link. The old
+     flow copied silently — or failed silently where the clipboard is
+     unavailable — so the click produced no dialog and no link. The
+     dialog shows the canonical share URL in a selectable field, with
+     Copy / system share / Open link / Close. Copy falls back to manual
+     selection when the clipboard refuses, and says so honestly. Never a
+     dead button, never a silent copy. */
+  function showShareDialog(shareUrl, title) {
+    const old = document.getElementById('naya-share-dialog');
+    if (old) old.remove();
+    const overlay = el('div', 'naya-share-overlay');
+    overlay.id = 'naya-share-dialog';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', 'Share this intelligence');
+    overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.72);padding:20px;';
+    const box = el('div', 'naya-share-box');
+    box.style.cssText = 'width:min(520px,94vw);background:#0b0d12;border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:22px;color:#fff;box-shadow:0 28px 64px rgba(0,0,0,.6);';
+    const head = el('div', 'naya-share-head');
+    head.textContent = 'Share this intelligence';
+    head.style.cssText = 'font-size:17px;font-weight:700;margin-bottom:6px;';
+    const sub = el('div', 'naya-share-sub');
+    sub.textContent = title || 'NayaNET Intelligence';
+    sub.style.cssText = 'font-size:13px;color:#b9c0cf;margin-bottom:14px;';
+    const field = document.createElement('input');
+    field.type = 'text'; field.readOnly = true;
+    field.value = shareUrl;
+    field.setAttribute('aria-label', 'Share link');
+    field.style.cssText = 'width:100%;box-sizing:border-box;background:#050607;border:1px solid rgba(255,255,255,.22);border-radius:10px;color:#fff;font-size:13px;padding:10px 12px;margin-bottom:14px;';
+    field.addEventListener('click', () => { try { field.select(); } catch (e) {} });
+    const row = el('div', 'naya-share-row');
+    row.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;';
+    const mkBtn = (label, primary) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.textContent = label;
+      b.style.cssText = 'border:0;border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:700;cursor:pointer;' +
+        (primary ? 'background:#a06bff;color:#fff;' : 'background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);');
+      return b;
+    };
+    const close = () => { overlay.remove(); document.removeEventListener('keydown', onKey, true); };
+    const onKey = (ev) => { if (ev.key === 'Escape') { ev.stopPropagation(); close(); } };
+    document.addEventListener('keydown', onKey, true);
+    overlay.addEventListener('click', (ev) => { if (ev.target === overlay) close(); });
+    const copyBtn = mkBtn('Copy link', true);
+    copyBtn.addEventListener('click', async () => {
+      let ok = false;
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) { await navigator.clipboard.writeText(shareUrl); ok = true; }
+      } catch (e) { ok = false; }
+      if (!ok) {
+        try { field.select(); ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      }
+      if (ok) { toast('LINK COPIED', 'The intelligence link is on your clipboard.', '#2fe89e'); close(); }
+      else { toast('COPY BLOCKED', 'Select the link above and copy it by hand — it is right there.', '#ffbf3d'); try { field.select(); field.focus(); } catch (e) {} }
+    });
+    row.appendChild(copyBtn);
+    if (navigator.share) {
+      const sysBtn = mkBtn('Share…', false);
+      sysBtn.addEventListener('click', async () => {
+        try { await navigator.share({ title: title || 'NayaNET Intelligence', text: (title || 'NayaNET Intelligence') + ' — NayaNET Intelligent Hub', url: shareUrl }); close(); }
+        catch (err) { if (!err || err.name !== 'AbortError') toast('SHARE NOT COMPLETED', 'The sharing pathway could not complete. The link above still works.', '#ff5e6c'); }
+      });
+      row.appendChild(sysBtn);
+    }
+    const openBtn = mkBtn('Open link', false);
+    openBtn.addEventListener('click', () => { window.open(shareUrl, '_blank', 'noopener'); });
+    row.appendChild(openBtn);
+    const closeBtn = mkBtn('Close', false);
+    closeBtn.addEventListener('click', close);
+    row.appendChild(closeBtn);
+    box.append(head, sub, field, row);
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+    try { field.select(); field.focus(); } catch (e) {}
+  }
+
   function bottomActions(boardId, title, lens) {
     const wrap = el('div', 'board-actions');
     const store = read();
@@ -4636,10 +4762,10 @@ window.BoardActions = (() => {
     /* Share only on collective feed — not personal/activity (Shawn 2026-10-03) */
     const showShare = !lens || lens === 'collective';
     const share = showShare ? btn('\uFF0B SHARE INTEL', 'share-intel', 'Share this intelligence') : null;
-    if (share) share.addEventListener('click', async e => {
+    if (share) share.addEventListener('click', e => {
       e.stopPropagation();
       // Use note-specific share URL for beautiful OG preview (not generic Hub URL)
-      let shareUrl = location.href;
+      let shareUrl = null;
       const snMatch = String(boardId || '').match(/sn(\d+)/i);
       if (snMatch) {
         shareUrl = 'https://nayanet.app/s/sn' + snMatch[1];
@@ -4650,13 +4776,14 @@ window.BoardActions = (() => {
           shareUrl = 'https://nayanet.app/s/ib' + ibMatch[1];
         }
       }
-      const payload = { title: title || 'NayaNET Intelligence', text: (title || 'NayaNET Intelligence') + ' — NayaNET Intelligent Hub', url: shareUrl };
-      try {
-        if (navigator.share) { await navigator.share(payload); toast('INTELLIGENCE SHARED', 'The browser sharing pathway was opened.', '#d86cff'); }
-        else { await navigator.clipboard.writeText(shareUrl); toast('SHARE PATHWAY', 'The intelligence link was copied to the clipboard.', '#d86cff'); }
-      } catch (err) {
-        if (err && err.name !== 'AbortError') toast('SHARE NOT COMPLETED', 'The sharing pathway could not complete. No false success was recorded.', '#ff5e6c');
+      if (!shareUrl) {
+        // No short-link key (FEAT-* cards): link the note itself, never the feed.
+        const slug = String(boardId || '').replace(/^note-/i, '').toLowerCase() || 'feed';
+        shareUrl = location.origin + location.pathname + '#/smart-notes/' + slug;
       }
+      /* P2 fix2: the dialog IS the share — visible link, copy, open,
+         system share. Never a silent copy, never a dead button. */
+      showShareDialog(shareUrl, title);
     });
     if (share) {
       right.appendChild(share);
@@ -6279,14 +6406,17 @@ window.NayaJewels = (() => {
     subtitle = shortHook(subtitle); // v5.1: hook <= 60 chars, never the full nutshell text
     const title = el('h2', 'ib-title', esc(headline));
     const snMatch = String(note.id || '').match(/sn(\d+)/i);
-    if (snMatch) {
-      const titleLink = el('a', 'ib-title-link');
-      titleLink.href = '#/smart-notes/sn' + snMatch[1];
-      titleLink.appendChild(title);
-      titleWrap.append(titleLink);
-    } else {
-      titleWrap.append(title);
-    }
+    /* P2 fix2 (Nu, 2026-11-11; Chi receipt comment 6800881349): EVERY
+       card title is a real link to its solo note. sn-keyed notes keep
+       the short slug; ids without an sn key (FEAT-*) link by full id —
+       findNoteBySlug resolves both. A plain h2 with no href is a dead
+       end for middle-click / copy-link / open-in-new-tab, never shipped. */
+    const titleLink = el('a', 'ib-title-link');
+    titleLink.href = snMatch
+      ? '#/smart-notes/sn' + snMatch[1]
+      : '#/smart-notes/' + String(note.id || ('note-' + idx)).toLowerCase();
+    titleLink.appendChild(title);
+    titleWrap.append(titleLink);
     /* — Headline + hook compose as ONE unit (Shawn 2026-10-20): the
        subheadline sits centered directly under the headline — 18px,
        near-white silver, quotation marks kept. NO topic/category
@@ -6441,13 +6571,27 @@ window.NayaJewels = (() => {
      section with no content in the data simply does not render. */
   function findNoteBySlug(slug) {
     var notes = (window.NayaFeedIntelligence && window.NayaFeedIntelligence.notes) || [];
-    var digits = String(slug || '').replace(/[^0-9]/g, '');
-    if (!digits) return null;
-    var padded = 'sn' + digits.padStart(4, '0');
-    var plain = 'sn' + String(parseInt(digits, 10));
-    for (var i = 0; i < notes.length; i++) {
-      var id = String((notes[i] && notes[i].id) || '').toLowerCase();
-      if (id.indexOf(padded) > -1 || id.indexOf(plain) > -1) return notes[i];
+    var s = String(slug || '').toLowerCase();
+    if (!s) return null;
+    /* P2 fix2 (Nu, 2026-11-11; Chi receipt comment 6800881349): a full-id
+       slug (IB-SMART-NOTE-20261110-sn2654) carries the DATE inside its
+       digits, so the old strip-all-digits matched nothing and the note
+       read "not found". Extract the trailing snNNNN first — that is the
+       note's true key — and only then fall back to all digits. */
+    var snm = s.match(/sn-?(\d+)/);
+    var digits = snm ? snm[1] : s.replace(/[^0-9]/g, '');
+    if (digits) {
+      var padded = 'sn' + digits.padStart(4, '0');
+      var plain = 'sn' + String(parseInt(digits, 10));
+      for (var i = 0; i < notes.length; i++) {
+        var id = String((notes[i] && notes[i].id) || '').toLowerCase();
+        if (id.indexOf(padded) > -1 || id.indexOf(plain) > -1) return notes[i];
+      }
+    }
+    /* No sn key (FEAT-* cards) or no digit match: match the full id. */
+    for (var j = 0; j < notes.length; j++) {
+      var idj = String((notes[j] && notes[j].id) || '').toLowerCase();
+      if (idj && (idj === s || idj.indexOf(s) > -1 || s.indexOf(idj) > -1)) return notes[j];
     }
     return null;
   }
@@ -9374,9 +9518,15 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
     var board = e.target.closest('article.intel-board');
     if (!board) return;
     var iid = board.getAttribute('data-intelligence-id') || '';
+    if (iid.indexOf('smart-note-') !== 0) return;
     var m = iid.match(/sn-?\d+/i);
-    if (!m || iid.indexOf('smart-note-') !== 0) return;
-    var target = '#/smart-notes/' + m[0].toLowerCase().replace('-', '');
+    /* P2 fix2 (Nu, 2026-11-11; Chi receipt comment 6800881349): sn-keyed
+       boards keep the short slug; boards without an sn key (FEAT-*)
+       navigate by full id — findNoteBySlug resolves it. A click on ANY
+       card opens its solo note, never nothing. */
+    var target = m
+      ? '#/smart-notes/' + m[0].toLowerCase().replace('-', '')
+      : '#/smart-notes/' + iid.slice('smart-note-'.length).toLowerCase();
     if (location.hash !== target) location.hash = target;
   });
 })();
