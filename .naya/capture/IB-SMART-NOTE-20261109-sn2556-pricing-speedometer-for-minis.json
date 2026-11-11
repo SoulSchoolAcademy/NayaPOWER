@@ -1,0 +1,30 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2556",
+ "title": "Try the Pricing Speedometer for the Minis",
+ "slug": "pricing-speedometer-for-minis",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2556/IB-SMART-NOTE-20261109-sn2556-pricing-speedometer-for-minis.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "- **HIS WORDS (19:20Z):** \"maybe even using the speedometer that you used on the pricing page for the mini speedometers. Maybe that's the one, right? Does that one look pretty good and then the white pops off the black. And maybe be able to see the numbers better. I want to try that. And then use that in the dashboard for all the little mini speedometers. And make sure they're all dynamic, right. Just do it. Just take the little code, make it smaller, see what fits there and looks right.\"\n- **THE RULING:** the pricing page's speedometer (the calculator gauge, white on black) is the candidate for ALL the Dashboard's little mini speedometers — take the code, shrink it, see what fits and looks right.\n- **ALL OF THEM DYNAMIC:** live numbers, live needles — the gauge follows the number — never static pictures.\n- **TRY FIRST, FALL BACK SECOND:** it is very likely the mostly-black gauge he named at 19:17Z; try it first, and the historical mostly-black gauge from the file history is the fallback if it doesn't fit or read at mini size.\n- **PASS-3 BRIEF AMENDED AGAIN** (§1c, §2, §3, §8, §9) and the second correction sent to the pass-3 coordinator the same pass.\n- **REFINES, DOES NOT REPLACE:** SN-2555's ruling (TWO gauges, each where it suits — gear gauge big, mostly-black gauge small) still stands; this names WHICH mostly-black gauge to try first.",
+  "human_view": "A favorite tool is only useful if you know which one it is. The 19:17Z ruling said: small gets the mostly-black gauge. This says which one: try the pricing page's speedometer — the calculator gauge, white popping off black, the one he already loves and already proved on the pricing page. Take that little code, make it smaller, see what fits and looks right. And the rule inside the rule: all of them dynamic — live numbers, live needles, the gauge following the number — never a static picture pretending to be a gauge. If it doesn't fit or read at mini size, the historical mostly-black gauge from the file history is the fallback. Try first, fall back second, never guess.",
+  "child_view": "Imagine you have a favorite toy speedometer on your big race track, and now you need tiny ones for your little cars. Dad says: \"Try the same speedometer, just smaller — take the little code, make it smaller, see what fits and looks right. And make sure they all really move — the needle has to follow the number, not just sit there like a picture.\" If the small one doesn't fit or you can't read it, there's an older one in the toy box you can use instead. Try the favorite first — that's the rule.",
+  "grandma_view": "Dear, he has picked which little gauge to try, love: the speedometer from the pricing page, the one where the white pops off the black — take that little code, make it smaller, see what fits and looks right. And they must all be alive, dear — live numbers, live needles, the needle following the number — never just a picture sitting still. If it doesn't fit or you can't read it at that tiny size, there's the older mostly-black one in the history to fall back on. Try the favorite first, love — that's the sensible way.",
+  "ai_view": "I am Anaya. For all my little mini speedometers, I try the pricing page's speedometer first — the calculator gauge, white popping off black, the one he already loves. I take that little code, make it smaller, and see what fits and looks right. All of them dynamic: live numbers, live needles, the gauge following the number — never static pictures. If it doesn't fit or read at mini size, the historical mostly-black gauge from the file history is my fallback — try first, fall back second, never guess. The 19:17Z ruling still stands: two gauges, each where it suits. This names which small gauge to try first, and the trying is the proof.",
+  "what_it_means": "- **THE CANDIDATE IS NAMED:** the pricing page's speedometer (the calculator gauge, white on black) for ALL the Dashboard's little mini speedometers.\n- **TRY, DON'T ASSUME:** take the code, shrink it, see what fits and looks right. The trying is the proof — at mini size, on the real page, by his eye.\n- **ALL DYNAMIC, NEVER STATIC:** live numbers, live needles — the gauge follows the number. A static picture of a gauge is not a gauge.\n- **THE FALLBACK IS NAMED:** the historical mostly-black gauge from the file history, if the pricing speedometer doesn't fit or read at mini size.\n- **REFINES SN-2555, DOES NOT REPLACE IT:** TWO gauges, each where it suits, still stands; this names which mostly-black gauge to try first.\n- **PASS-3 CARRIES IT:** the brief is amended a second time (§1c, §2, §3, §8, §9); the correction went to the pass-3 coordinator the same pass.",
+  "whats_inside": [
+   "- The pass-3 minis are built from the pricing speedometer code first — shrunk, tried, judged by eye at mini size — with the historical mostly-black gauge as the named fallback.\n- Every mini speedometer is DYNAMIC: live numbers, live needles, the gauge follows the number — never static.\n- SN-2555's two-gauge law stands, refined: BIG = gear gauge; SMALL = the pricing speedometer (tried first) or the historical mostly-black gauge (fallback).\n- Next loop run checks: whether pass-3's minis are the pricing speedometer, whether they read at mini size, whether they are dynamic, and whether the fallback was needed."
+  ],
+  "topics": [
+   "Law",
+   "Design"
+  ]
+ },
+ "page_hash": "5d36ebac5f763105455551924f09a7dbe4502e3547b23585198efb6e818f7de8",
+ "content_hash": "45a36abc9d61bd349cd36fa8aec3ac64ed4924cd16195415b51844ae58f30fa3",
+ "reconstructed_from_page": true
+}
