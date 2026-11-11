@@ -341,80 +341,14 @@ a { color: inherit; }
 /* Mobile: labelled dock — buttons are columns now (icon + label), so the
    old icon-only 44px force no longer applies. Button takes its natural
    height; label caps to its column and wraps between words, never mid-word;
-   page bottom gets room for the 3-row dock + notif bar. */
+   page bottom gets room for the 3-row dock. */
 @media (max-width: 640px) {
   body .main { padding-bottom: 380px; }
   .eco-bottombar { gap: 8px; padding: 12px 12px; }
   .eco-bb-btn { width: auto; height: auto; flex: 0 0 auto; }
   .eco-bb-ico { width: 44px; height: 44px; flex: 0 0 44px; }
   .eco-bb-ico svg { width: 18px; height: 18px; }
-  .eco-bb-btn .notif-lbl { max-width: 72px; font-size: 10px; letter-spacing: .08em; line-height: 1.25; text-align: center; }
 }
-/* ——— Notifications bar (Shawn 2026-10-20): the very bottom edge ——— */
-.notif-bar {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 45;
-  display: flex; justify-content: center;
-  background: rgba(5,5,9,.96);
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-  border-top: 1px solid rgba(255,255,255,.24);
-  box-shadow: 0 -10px 34px rgba(0,0,0,.6), inset 0 1px rgba(255,255,255,.1);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
-  animation: notifUp .55s cubic-bezier(.16,.84,.22,1) both;
-}
-@keyframes notifUp { from { transform: translateY(100%); opacity: 0; } to { transform: none; opacity: 1; } }
-.notif-row { display: flex; gap: 34px; width: 100%; max-width: 640px; padding: 12px 14px 10px; justify-content: center; }
-.notif-seg {
-  position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px;
-  padding: 2px 6px 0; cursor: pointer; background: none; border: none;
-  color: #E8E8EC; font-family: inherit; transition: transform .12s;
-  -webkit-tap-highlight-color: transparent;
-}
-.notif-seg:active { transform: scale(.94); }
-.notif-tile {
-  position: relative; width: 54px; height: 54px; border-radius: 16px;
-  display: flex; align-items: center; justify-content: center;
-  background: radial-gradient(130% 140% at 30% 18%, color-mix(in srgb, var(--nc) 36%, #12121a), #07070b 78%);
-  border: 1.5px solid color-mix(in srgb, var(--nc) 62%, rgba(255,255,255,.12));
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.38),
-    inset 0 -9px 15px rgba(0,0,0,.6),
-    inset 1px 0 0 rgba(255,255,255,.07),
-    0 7px 16px rgba(0,0,0,.6),
-    0 0 17px color-mix(in srgb, var(--nc) 42%, transparent);
-  color: color-mix(in srgb, var(--nc) 72%, #ffffff);
-  transition: box-shadow .3s, border-color .3s;
-}
-.notif-tile::before {
-  content: ""; position: absolute; inset: 0; border-radius: 16px; pointer-events: none;
-  background: linear-gradient(155deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,0) 42%),
-              linear-gradient(25deg, rgba(255,255,255,0) 62%, color-mix(in srgb, var(--nc) 22%, transparent) 100%);
-}
-.notif-tile svg { width: 25px; height: 25px; filter: drop-shadow(0 0 5px color-mix(in srgb, var(--nc) 75%, transparent)); position: relative; }
-.notif-lbl { font-size: 10.5px; font-weight: 700; letter-spacing: .13em; color: #C9CEDA; }
-.notif-count { position: absolute; top: -8px; right: -10px; min-width: 24px; height: 24px; padding: 0 6px;
-  display: none; align-items: center; justify-content: center; border-radius: 999px; z-index: 2;
-  font-size: 12px; font-weight: 900; color: #06060a; background: var(--nc);
-  border: 2px solid #05050a;
-  box-shadow: 0 0 14px var(--nc), 0 3px 8px rgba(0,0,0,.5); animation: notifPulse 2.4s ease-in-out infinite; }
-@keyframes notifPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.13); } }
-.notif-seg.has-news .notif-tile {
-  border-color: color-mix(in srgb, var(--nc) 88%, #ffffff);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.45),
-    inset 0 -9px 15px rgba(0,0,0,.6),
-    0 7px 16px rgba(0,0,0,.6),
-    0 0 26px color-mix(in srgb, var(--nc) 68%, transparent);
-}
-/* The eco dock rides above the notifications bar — but ONLY when the bar is
-   actually in the DOM (body.has-notif is set by NayaNotif.init). Without the
-   bar, the dock sits at bottom: 0 (its base rule) and can never float over a
-   gap. (Shawn 2026-10-21: dock hovered mid-feed when the bar was absent.)
-   DOUBLE-BAR STACK CURE (2026-11-06): the offset is the bar's MEASURED
-   height (--notif-h, set by NayaNotif.syncStack) minus a 2px overlap, so the
-   dock sits flush on the bar with no gap and no hairline. The old hardcoded
-   94px assumed a 98px bar (with labels); the bar ships label-less at 79px,
-   so the dock floated 15px above it and the feed showed through the gap. */
-body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 79px) - 2px + env(safe-area-inset-bottom, 0px)); }
 .toast-stack { bottom: calc(122px + env(safe-area-inset-bottom, 0px)); }
 .main { padding-bottom: 186px; }
 @media (max-width: 640px) {
@@ -2677,9 +2611,8 @@ button, .btn, .tab, .eco-btn, .activity-card {
 </style>
 
 <style>
-/* ASK STACK CURE (2026-10-22): jewel 71 + notif 98 + dock, composed */
-body:has(.naya-ask-room) .notif-bar{bottom:calc(71px + env(safe-area-inset-bottom,0px))}
-body:has(.naya-ask-room) .eco-bottombar{bottom:calc(71px + var(--notif-h, 79px) - 2px + env(safe-area-inset-bottom,0px))}
+/* ASK STACK CURE (2026-10-22): jewel 71 + dock, composed (notif bar removed 2026-11-11) */
+body:has(.naya-ask-room) .eco-bottombar{bottom:calc(71px + env(safe-area-inset-bottom,0px))}
 @media (max-width:760px){
   body:has(.naya-ask-room) .side-topics.side-right{bottom:calc(312px + env(safe-area-inset-bottom,0px))}
   body:has(.naya-ask-room) .side-topics.side-left{bottom:calc(382px + env(safe-area-inset-bottom,0px))}
@@ -2688,12 +2621,10 @@ body:has(.naya-ask-room) .eco-bottombar{bottom:calc(71px + var(--notif-h, 79px) 
 
 <style>
 /* ASK READING CURE (2026-10-22 round 4): the shell's bottom bars yield to her answer */
-body:has(.naya-ask-room) .notif-bar{transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s}
 body:has(.naya-ask-room) .eco-bottombar{transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s}
-body.ask-reading:has(.naya-ask-room) .notif-bar{transform:translateY(calc(100% + 90px))!important;opacity:0!important;visibility:hidden;pointer-events:none;transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s linear .26s}
 body.ask-reading:has(.naya-ask-room) .eco-bottombar{transform:translateY(calc(100% + 200px))!important;opacity:0!important;visibility:hidden;pointer-events:none;transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s linear .26s}
 @media (prefers-reduced-motion: reduce){
-  body:has(.naya-ask-room) .notif-bar,body:has(.naya-ask-room) .eco-bottombar{transition:none}
+  body:has(.naya-ask-room) .eco-bottombar{transition:none}
 }
 </style>
 </head>
@@ -4255,7 +4186,6 @@ const ActivityLog = (() => {
     const items = read();
     items.unshift({ type, text, icon: icon || 'spark', color: color || '#9d75ff', iconPath: iconPath || null, ts: Date.now() });
     write(items);
-    try { if (window.NayaNotif) window.NayaNotif.refresh(); } catch (e) {}
   }
   function timeAgo(ts) {
     const s = Math.floor((Date.now() - ts) / 1000);
@@ -5334,77 +5264,8 @@ function HubView(params) {
 
   /* ONE-BOTTOM-BAR (2026-11-11): the 12-icon eco-bottombar builder lived here.
      Replaced by the one bottom bar component (static HTML before </body>).
-     The notifications bar below it is untouched — the component stacks above it. */
+     The notifications bar below it was removed 2026-11-11 (second-row round). */
 
-  /* ——— Notifications bar: Mail · Activity · Spaces (Shawn 2026-10-20) ——— */
-  window.NayaNotif = window.NayaNotif || {
-    get(k) { try { return parseInt(localStorage.getItem('nayanet.notif.' + k) || '0', 10) || 0; } catch (e) { return 0; } },
-    set(k, n) { try { localStorage.setItem('nayanet.notif.' + k, String(n)); } catch (e) {} },
-    bump(k) { this.set(k, this.get(k) + 1); this.refresh(); },
-    counts() {
-      var unread = 0;
-      try { var seen = this.get('seen.activity'); unread = Math.max(0, ActivityLog.read().length - seen); } catch (e) {}
-      return { mail: this.get('mail'), activity: unread, spaces: this.get('spaces') };
-    },
-    refresh() {
-      var bar = document.getElementById('naya-notif-bar'); if (!bar) return;
-      var c = this.counts();
-      bar.querySelectorAll('[data-notif]').forEach(function (seg) {
-        var k = seg.getAttribute('data-notif'), n = c[k] || 0;
-        var bub = seg.querySelector('.notif-count');
-        seg.classList.toggle('has-news', n > 0);
-        if (bub) { bub.textContent = n > 9 ? '9+' : String(n); bub.style.display = n > 0 ? 'flex' : 'none'; }
-      });
-    },
-    tap(k) {
-      if (k === 'mail') { this.set('mail', 0); window.NayaRouter && window.NayaRouter.navigate('/hub/mail'); }
-      else if (k === 'activity') { try { this.set('seen.activity', ActivityLog.read().length); } catch (e) {} window.NayaRouter && window.NayaRouter.navigate('/hub/feed-activity'); }
-      else if (k === 'spaces') { this.set('spaces', 0); window.NayaRouter && window.NayaRouter.navigate('/hub/spaces'); }
-      this.refresh();
-    },
-    /* ——— Double-bar stack cure (2026-11-06): the dock rides on the
-       notifications bar's MEASURED height, never a hardcoded number.
-       The old 94px assumed a 98px bar (with labels); the bar ships
-       label-less at 79px, so the dock floated 15px above it and the
-       feed showed through the gap. Measuring the row (+1 border-top)
-       makes the stack flush forever, at any width. ——— */
-    syncStack() {
-      var bar = document.getElementById('naya-notif-bar'); if (!bar) return;
-      var row = bar.querySelector('.notif-row');
-      var h = (row ? row.offsetHeight : bar.offsetHeight) + 1;
-      document.documentElement.style.setProperty('--notif-h', h + 'px');
-    },
-    init() {
-      var bar = document.getElementById('naya-notif-bar');
-      if (bar) { document.body.classList.add('has-notif'); this.refresh(); this.syncStack(); return; }
-      var self = this;
-      var ICONS = {
-        mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
-        activity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg>',
-        spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg>'
-      };
-      var SEGS = [['mail', 'MAIL', '#3fb8ff'], ['activity', 'ACTIVITY', '#2fe89e'], ['spaces', 'SPACES', '#ffbf3d']];
-      bar = document.createElement('nav'); bar.id = 'naya-notif-bar'; bar.className = 'notif-bar';
-      bar.setAttribute('aria-label', 'Notifications');
-      var row = document.createElement('div'); row.className = 'notif-row';
-      SEGS.forEach(function (s) {
-        var b = document.createElement('button'); b.type = 'button'; b.className = 'notif-seg';
-        b.setAttribute('data-notif', s[0]); b.style.setProperty('--nc', s[2]);
-        b.setAttribute('aria-label', s[1] + ' — open');
-        b.setAttribute('title', s[1]);
-        b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span>';
-        b.addEventListener('click', function () { self.tap(s[0]); });
-        row.appendChild(b);
-      });
-      bar.appendChild(row); document.body.appendChild(bar);
-      document.body.classList.add('has-notif');
-      window.addEventListener('storage', function () { self.refresh(); });
-      this.refresh();
-      this.syncStack();
-      if (!window.__nayaNotifStackBound) { window.__nayaNotifStackBound = true; window.addEventListener('resize', function () { self.syncStack(); }); }
-    }
-  };
-  window.NayaNotif.init();
 
   /* ——— NayaInstall: install-as-app is a first-class feature (Shawn 2026-10-20) ———
      Pop-up returns until the app is installed; also reached from the sidebar
@@ -7274,19 +7135,6 @@ window.HubView = HubView;
 
     function refresh(view){
       K.load(zone,'mail',{view},(payload,list,out)=>{
-        /* Notification writer (board audit 2026-10-20): the mail bubble
-           counts only what the runtime itself reports — an explicit
-           unread total, or items carrying read/unread flags. No signal,
-           no number: the bubble stays hidden instead of inventing one. */
-        try {
-          let n = null;
-          if (payload && typeof payload.unread_count === 'number') n = payload.unread_count;
-          else if (payload && typeof payload.unread === 'number') n = payload.unread;
-          else if (list.some(x => x && ('unread' in x || 'read' in x || 'is_read' in x))) {
-            n = list.filter(x => x.unread === true || x.read === false || x.is_read === false).length;
-          }
-          if (n !== null && window.NayaNotif) { window.NayaNotif.set('mail', n); window.NayaNotif.refresh(); }
-        } catch (e) {}
         const layout=el('div','mail-layout');
         const left=el('section','signal-list');
         const reader=K.board(r.accent,'mail','Message + context','Who · why it matters · related intelligence · response state');
@@ -7362,9 +7210,6 @@ window.HubView = HubView;
 
     function enter(space,out){
       const id=space.id||space.space_id||space.name;
-      /* Notification writer: entering (joining) a Space is the spaces
-         activity signal this room honestly produces. */
-      try { if (window.NayaNotif) window.NayaNotif.bump('spaces'); } catch (e) {}
       K.load(out,'spaces',{view:'space',space:id},(payload,list,target)=>{
         const head=K.board(r.accent,'spaces',space.name||space.title||'Space',payload.purpose||space.purpose||'Active governed context');
         const metrics=el('div','metric-ribbon');
@@ -8298,15 +8143,6 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
 
   Router.render();
 
-  /* The notifications bar is hub CHROME: it initializes with the shell on
-     every route, not only when a scene builder reaches its own init call.
-     Idempotent — NayaNotif.init() early-returns when the bar exists.
-     (Shawn 2026-10-21: bar missing on a direct /#/hub/feed load left the
-     eco dock floating 94px above the bottom.) */
-  try { if (window.NayaNotif) window.NayaNotif.init(); } catch (e) {}
-  window.addEventListener('hashchange', function () {
-    setTimeout(function () { try { if (window.NayaNotif) window.NayaNotif.init(); } catch (e) {} }, 0);
-  });
 
   // Debug surface for the team — read-only introspection.
   window.NayaHub = {
@@ -9376,7 +9212,7 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
   growth-round-20261110/growth-new.html (pill() L3601+, trio L4067+, seed L4226+, SPECTRUM L2629).
   Order = trio order, then network-seed order. Labels per brief; glyphs, colors, hrefs harvested.
   NO-OVERLAY law (Shawn 2026-11-11 01:25Z): this bar sits in its own lane ABOVE the Smart Bar
-  (#nsbBottom), the notif bar and the jewel bar — its bottom offset is measured at runtime
+  (#nsbBottom) and the jewel bar — its bottom offset is measured at runtime
   from the visible bars below it, never a fixed guess. Identical block on Inviter, Hub,
   Dashboard — never edit per page.
   v2 changes (fix seat, 2026-11-11): (1) FIX 1 — the pill row is a SCROLL STRIP with
@@ -9406,7 +9242,7 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
 </div>
 </nav>
 <style>
-/* ONE-BOTTOM-BAR v2 — placement + pills. Jewel treatment harvested from .nsb-jewel (Inviter L3300+); pill treatment from .nsb-tab (L3244+). */
+/* ONE-BOTTOM-BAR v2 — placement + pills. RESTORE 2026-11-11: little black rounded icons — pill DNA harvested verbatim from .nsb-tab + #nsbBottom.nsb-iconbar (hub-fixed.html: labels off, padding 10px 12px); rest = beautiful black, hover ignites in each pill's OWN --obb color (v1.6); jewel chip + visible labels removed. */
 .obb-bar,.obb-bar *{box-sizing:border-box}
 .obb-bar{position:fixed;left:0;right:0;bottom:var(--obb-below,0px);z-index:200;display:flex;align-items:center;justify-content:flex-start;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(3,3,5,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 -16px 44px rgba(0,0,0,.68);transition:transform .35s ease,opacity .35s ease}
 body.os-bottom-hidden .obb-bar{transform:translateY(110%);opacity:0}
@@ -9414,19 +9250,25 @@ body.os-bottom-hidden .obb-bar{transform:translateY(110%);opacity:0}
    one component; the row scrolls inside it and snaps so no pill rests half-sliced. */
 .obb-row{display:flex;align-items:center;gap:8px;margin:0 auto;flex:0 1 auto;min-width:0;max-width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;scroll-snap-type:x mandatory;scroll-padding:0 12px;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
 .obb-row::-webkit-scrollbar{display:none}
-.obb-pill{flex:0 0 auto;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-width:58px;min-height:52px;padding:6px 8px 5px;border-radius:14px;text-decoration:none;color:#fff;cursor:pointer;background:linear-gradient(180deg,#1d1d26 0%,#0b0b10 55%,#020203 100%);border:1.5px solid var(--obb);box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.55),0 0 14px -2px var(--obb),0 8px 20px rgba(0,0,0,.75);position:relative}
-.obb-pill:hover,.obb-pill:focus-visible{box-shadow:inset 0 2px 0 rgba(255,255,255,.45),inset 0 -4px 10px rgba(0,0,0,.55),0 0 22px 0 var(--obb),0 8px 20px rgba(0,0,0,.75);transform:translateY(-1px);outline:none}
-.obb-pill:active{box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.55),0 0 26px 5px var(--obb),0 8px 20px rgba(0,0,0,.75)}
-.obb-jewel{width:29px;height:29px;border-radius:9px;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;font-size:15px;color:#fff;background:linear-gradient(180deg,color-mix(in srgb,var(--obb) 30%,rgba(255,255,255,.1)),color-mix(in srgb,var(--obb) 12%,rgba(0,0,0,.42)));border:1px solid color-mix(in srgb,var(--obb) 55%,rgba(0,0,0,.3));box-shadow:inset 0 2px 5px rgba(0,0,0,.55),inset 0 1px 2px rgba(255,255,255,.12),inset 0 -1px 0 rgba(255,255,255,.08),0 0 10px -2px var(--obb)}
-.obb-lbl{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;white-space:nowrap;line-height:1}
+.obb-pill{flex:0 0 auto;scroll-snap-align:start;scroll-snap-stop:always;display:flex;align-items:center;justify-content:center;min-width:52px;min-height:52px;padding:10px 12px;border-radius:999px;text-decoration:none;color:#fff;cursor:pointer;background:linear-gradient(180deg,rgba(255,255,255,.15),rgba(255,255,255,.03) 38%,rgba(0,0,0,.14) 68%,rgba(0,0,0,.44)),linear-gradient(180deg,#22222c,#0a0a0f 70%,#060609);border:1px solid rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.42),inset 0 2px 6px rgba(255,255,255,.09),inset 0 -1px 0 rgba(0,0,0,.55),inset 0 -9px 16px rgba(0,0,0,.5),0 2px 5px rgba(0,0,0,.7),0 12px 28px rgba(0,0,0,.55);text-shadow:0 2px 6px rgba(0,0,0,.55);transition:transform .3s cubic-bezier(.2,1.25,.35,1),box-shadow .25s ease-out,border-color .2s ease-out,text-shadow .2s ease-out;position:relative}
+.obb-pill:hover,.obb-pill:focus-visible{border-color:color-mix(in srgb,var(--obb) 65%,rgba(255,255,255,.2));outline:none;transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 2px 6px rgba(255,255,255,.12),inset 0 0 0 1px var(--obb),inset 0 -1px 0 rgba(0,0,0,.5),inset 0 -9px 16px rgba(0,0,0,.42),0 8px 14px rgba(0,0,0,.6),0 22px 44px rgba(0,0,0,.5),0 12px 30px -8px var(--obb);text-shadow:0 2px 6px rgba(0,0,0,.55)}.obb-pill:hover .obb-jewel,.obb-pill:focus-visible .obb-jewel{text-shadow:0 0 10px var(--obb),0 1px 2px rgba(0,0,0,.7)}
+.obb-pill:active{transform:translateY(1px);transition:transform .12s cubic-bezier(.3,0,.8,.4),box-shadow .15s ease-out;box-shadow:inset 0 3px 10px rgba(0,0,0,.62),inset 0 1px 3px rgba(0,0,0,.5),inset 0 -1px 0 rgba(255,255,255,.08),inset 0 0 0 1px var(--obb),0 1px 3px rgba(0,0,0,.7)}
+/* ACTIVITY GREEN STATE (2026-11-11, second-row round): the green light lives
+   ON the Activity tab — when the Hub shows the feed (the Activity tab's
+   destination) the pill carries .obb-active and glows green #2fe89e, the
+   removed notif icon's green. No separate green icon anywhere. */
+.obb-pill[data-obb="activity"].obb-active{border-color:#2fe89e;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 2px 6px rgba(255,255,255,.12),inset 0 0 0 1px #2fe89e,inset 0 -1px 0 rgba(0,0,0,.5),inset 0 -9px 16px rgba(0,0,0,.42),0 8px 14px rgba(0,0,0,.6),0 22px 44px rgba(0,0,0,.5),0 0 26px rgba(47,232,158,.75)}
+.obb-pill[data-obb="activity"].obb-active .obb-jewel{color:#2fe89e;text-shadow:0 0 12px rgba(47,232,158,.9),0 1px 2px rgba(0,0,0,.7)}
+.obb-jewel{width:auto;height:auto;border-radius:0;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;font-size:20px;line-height:1;color:#fff;background:none;border:0;box-shadow:none;text-shadow:0 2px 4px rgba(0,0,0,.6)}
+.obb-lbl{display:none}
 .obb-badge{position:absolute;top:-7px;right:-7px;min-width:22px;height:22px;padding:0 6px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:#04120a;color:#fff;font-size:12px;font-weight:900;line-height:1;border:2px solid #2fe89e;box-shadow:0 0 12px rgba(47,232,158,.8)}
-@media (max-width:640px){.obb-bar{gap:6px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))}.obb-row{gap:6px;scroll-padding:0 10px}.obb-pill{min-width:52px;min-height:50px;padding:5px 6px 4px}.obb-jewel{width:26px;height:26px;font-size:14px}.obb-lbl{font-size:9px}}
+@media (max-width:640px){.obb-bar{gap:6px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))}.obb-row{gap:6px;scroll-padding:0 10px}.obb-pill{min-width:48px;min-height:48px;padding:8px 10px}.obb-jewel{font-size:19px}}
 </style>
 <script>
 /* ONE-BOTTOM-BAR v2 — lane stacking (NO-OVERLAY law). Measures the visible bottom-stack bars
-   below this bar (Smart Bar, notif bar, jewel bar) and lifts this bar above the tallest of
+   below this bar (Smart Bar, jewel bar) and lifts this bar above the tallest of
    them, so no bar ever covers another. Re-measures on load, resize, and whenever the bars
-   change (Smart Bar built/toggled, notif shown/hidden, keyboard shown/hidden).
+   change (Smart Bar built/toggled, keyboard shown/hidden).
    v2 — FIX 2: measure on SETTLE, not on flap. Mutation bursts (e.g. the Dashboard's
    scroll-settle loop toggling body classes ~10x/s) coalesce into ONE trailing 150 ms
    re-measure; the offset is written only when it changes; when the page has no
@@ -9442,7 +9284,7 @@ body.os-bottom-hidden .obb-bar{transform:translateY(110%);opacity:0}
   function obbLayout(){
     soonT=null;
     var vh=window.innerHeight||0, below=0, found=0;
-    var sels=['#nsbBottom','.notif-bar','.jewelbar'];
+    var sels=['#nsbBottom','.jewelbar'];
     for(var s=0;s<sels.length;s++){
       var els=document.querySelectorAll(sels[s]);
       for(var k=0;k<els.length;k++){
@@ -9473,13 +9315,29 @@ body.os-bottom-hidden .obb-bar{transform:translateY(110%);opacity:0}
     var mo=new MutationObserver(obbSoon);
     mo.observe(document.documentElement,{attributes:true,attributeFilter:['class']});
     mo.observe(document.body,{attributes:true,attributeFilter:['class']});
-    var sels2=['#nsbBottom','.notif-bar','.jewelbar'];
+    var sels2=['#nsbBottom','.jewelbar'];
     for(var i=0;i<sels2.length;i++){
       var bars=document.querySelectorAll(sels2[i]);
       for(var j=0;j<bars.length;j++) mo.observe(bars[j],{childList:true,attributes:true,attributeFilter:['class','style']});
     }
   }catch(e){}
   window.__obbLayout=obbLayout;
+})();
+/* ONE-BOTTOM-BAR — Activity green state (2026-11-11, second-row round). The
+   Activity pill is the feed's tab: when the Hub shows the feed (no hash, #/hub,
+   #/hub/feed, #/hub/feed-activity, #/hub/feed-personal), the pill carries
+   .obb-active and glows green. Any other room: no green. */
+(function(){
+  var pill=document.querySelector('.obb-pill[data-obb="activity"]'); if(!pill) return;
+  function sync(){
+    var h=(location.hash||'').replace(/^#/,'');
+    var on=h===''||h==='/'||/^\/hub(\/(feed|feed-activity|feed-personal))?\/?$/.test(h);
+    pill.classList.toggle('obb-active',on);
+    pill.setAttribute('aria-current',on?'page':'false');
+  }
+  window.addEventListener('hashchange',sync);
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',sync);}else{sync();}
+  setTimeout(sync,500);
 })();
 </script>
 <!-- /ONE-BOTTOM-BAR -->
