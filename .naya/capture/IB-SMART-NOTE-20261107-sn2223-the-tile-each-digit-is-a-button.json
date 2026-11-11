@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2223",
+ "title": "The Tile — Each Digit Is a Button",
+ "slug": "the-tile-each-digit-is-a-button",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/07/DESIGN/SN-2223/IB-SMART-NOTE-20261107-sn2223-the-tile-each-digit-is-a-button.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-07T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Each digit of the number is a tile (`.reel`), 150px wide and 194px tall, built in the Dashboard button's language: a 2px coloured rim and a diffused halo (the digit's chakra colour) · a black gradient face (#171720 → #0f0f15 → #020203) · a glossy cap on the top third, a lens of the digit's colour, brightest at the top and fading to black · a white bold digit (168px) rolling inside a window (194px tall, overflow hidden) · a drop shadow beneath it all, so the tile sits ON the page. The tile's colour comes from the digit it lands on. The digit itself stays white.",
+  "human_view": "Shawn's Real Object Law: every element is a real physical object, not a flat shape with effects. If it doesn't look touchable, it doesn't ship. If it doesn't feel real, it's not done. The tile is a real object — you can see it sitting on the page, lit from above, with a glossy cap you could touch.",
+  "child_view": "Each number lives in its own little black jewel box, shiny on top, glowing around the edges in its own colour. The number inside is white and big so you can read it from far away.",
+  "grandma_view": "The numbers aren't printed on the page. They're set into little black tiles, like the numbers on a beautiful clock — each one in its own box, each one glowing in its own colour.",
+  "ai_view": "The tile is the atom of the number. One tile, one digit, one colour. The number is a row of tiles. The Dashboard is a page of tiles. The whole system is tiles — smart blocks, Lego blocks, in the digital matrix. Build the tile right once, and every number in the system is right.",
+  "what_it_means": "- Tile: 150×194px, 2px rim, glossy cap, black gradient face, white 168px digit, halo, drop shadow.\n- Colour lives in the rim, the cap and the halo — never on the glyph.\n- The tile is registered in the Parts Registry as part of The Ultimate Number (SN-2221).",
+  "whats_inside": [
+   "- Any page that needs a number takes this tile. Never invent a new digit.\n- The tile's recipe is in the build record, so the next builder copies it exactly."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "bf6f914fb313705d7136aca38f4fd1582f90d9ce73ccf7c04dd87cdb114e589a",
+ "content_hash": "2fd8c08db0745f595fe6a434d11b01e6ee02378f2d6a66a8c2d71371a72f0a0f",
+ "reconstructed_from_page": true
+}
