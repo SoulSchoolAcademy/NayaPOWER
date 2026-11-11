@@ -6,6 +6,9 @@
  *   node tests/mail_rls_synthetic_pglite.mjs candidate       # expects 13/13 PASS, exit 0
  *   node tests/mail_rls_synthetic_pglite.mjs unsafe-thread   # expected fail, exit 2; spoofed thread visible
  *   node tests/mail_rls_synthetic_pglite.mjs unsafe-delete   # expected fail, exit 2; unauthorized delete
+ *   node tests/mail_rls_synthetic_pglite.mjs full-chain       # runs all 4 pending SQL, checks Supabase-default grants
+ *   node tests/mail_rls_synthetic_pglite.mjs full-chain-unsafe-thread # expected fail, exit 2
+ *   node tests/mail_rls_synthetic_pglite.mjs full-chain-unsafe-delete # expected fail, exit 2
  * This is a supplementary local proof, not independent security review.
  */
 import { pathToFileURL } from 'node:url';
@@ -13,10 +16,12 @@ const modulePath=process.env.NAYA_PGLITE_MODULE;
 if (!modulePath) throw new Error('Set NAYA_PGLITE_MODULE to the installed @electric-sql/pglite/dist/index.js. This test never downloads packages or contacts a database.');
 const { PGlite } = await import(pathToFileURL(modulePath).href);
 import fs from 'node:fs';
-const root = new URL('../supabase/migrations/', import.meta.url);
-const fixture = new URL('./fixtures/mail_rls_synthetic.sql', import.meta.url);
-const db = await PGlite.create();
 const mode = process.argv[2] || 'candidate';
+const fullChain = mode.startsWith('full-chain');
+const scenario = fullChain ? mode.slice('full-chain'.length).replace(/^-/, '') || 'candidate' : mode;
+const root = new URL('../supabase/migrations/', import.meta.url);
+const fixture = new URL(fullChain ? './fixtures/mail_rls_full_chain.sql' : './fixtures/mail_rls_synthetic.sql', import.meta.url);
+const db = await PGlite.create();
 const Alice = '11111111-1111-4111-8111-111111111111';
 const Bob = '22222222-2222-4222-8222-222222222222';
 let tests = 0, fail = 0;
@@ -37,7 +42,7 @@ async function as(role, claims, statement) {
 async function denied(name, role, claims, query) {
   let pass = false, detail = '';
   try { const r = await as(role, claims, query); detail = JSON.stringify(r.rows); }
-  catch (e) { pass = /permission denied/.test(e.message); detail=e.message.slice(0,180); }
+  catch (e) { pass = /permission denied|violates row-level security policy/i.test(e.message); detail=e.message.slice(0,180); }
   assert(name, pass, true);
   if (!pass) console.log('DETAIL', detail);
 }
@@ -45,14 +50,22 @@ try {
   await db.exec(fs.readFileSync(fixture,'utf8'));
   console.log('FIXTURE_CREATED');
   for (const filename of [
+    ...(fullChain ? [
+      '20261022213000_conversational_intake_v1.sql',
+      '20261022220000_alias_binding_v1.sql',
+    ] : []),
     '20261023190000_smart_mail_legacy_rls_hardening.sql',
     '20261024194500_smart_mail_participant_completion_and_intake_scope_v1.sql',
   ]) {
     let sql=fs.readFileSync(new URL(filename, root),'utf8');
-    if(filename.startsWith('20261024194500') && mode==='unsafe-thread') sql=sql.replace('drop policy if exists smart_mail_threads_owner_select on public.smart_mail_threads;', '');
-    if(filename.startsWith('20261024194500') && mode==='unsafe-delete') sql=sql.replace('drop policy if exists smart_mail_messages_owner_delete on public.smart_mail_messages;', '');
+    if(filename.startsWith('20261024194500') && scenario==='unsafe-thread') sql=sql.replace('drop policy if exists smart_mail_threads_owner_select on public.smart_mail_threads;', '');
+    if(filename.startsWith('20261024194500') && scenario==='unsafe-delete') sql=sql.replace('drop policy if exists smart_mail_messages_owner_delete on public.smart_mail_messages;', '');
     await db.exec(sql);
     console.log('MIGRATION_APPLIED_TO_SYNTHETIC_PGLITE',filename,'mode',mode);
+  }
+  if (fullChain) {
+    // Prerequisite migrations create these tables; add only synthetic test records afterwards.
+    await db.exec("INSERT INTO public.owner_alias_claims (alias_normalized,owner_id,claimed_via) VALUES ('bob','22222222-2222-4222-8222-222222222222','claim_rpc'); INSERT INTO public.intake_events (session_id,flow,event,owner_alias) VALUES ('a','welcome','started','alice'),('b','welcome','started','bob');");
   }
   const names=(await db.query("select tablename,policyname from pg_policies where schemaname='public' and tablename in ('smart_mail_messages','smart_mail_threads') order by tablename,policyname")).rows;
   assert('final mail policy inventory', names.map(x=>x.policyname), ['smart_mail_messages_participant_select','smart_mail_threads_participant_select']);
@@ -78,13 +91,31 @@ try {
   assert('intake owner scoped by auth.uid',intakeAlice.rows[0].n,1);
   const intakeStranger=await as('authenticated',{app_metadata:{smart_alias:'alice'},sub:'33333333-3333-4333-8333-333333333333'},"SELECT count(*)::integer AS n FROM public.intake_events");
   assert('intake alias spoof denied',intakeStranger.rows[0].n,0);
-  if(mode==='unsafe-thread') {
+  if(scenario==='unsafe-thread') {
     const vulnerable=await as('authenticated',{user_metadata:{smart_alias:'bob'},sub:Alice},'SELECT count(*)::integer AS n FROM public.smart_mail_threads');
     assert('sabotage: restored legacy thread policy leaks to user_metadata spoof',vulnerable.rows[0].n,1);
   }
-  if(mode==='unsafe-delete') {
+  if(scenario==='unsafe-delete') {
     const vulnerable=await as('authenticated',{app_metadata:{smart_alias:'charlie'},user_metadata:{smart_alias:'carol'},sub:Bob},"DELETE FROM public.smart_mail_messages WHERE from_alias='carol' RETURNING id");
     assert('sabotage: restored legacy delete policy allows forged sender deletion',vulnerable.rows.length,1);
+  }
+  if (fullChain) {
+    // The alias-binding and intake prerequisites must work, not just exist.
+    const ownerClaim = await as('authenticated',{sub:Alice}, "SELECT count(*)::integer AS n FROM public.owner_alias_claims WHERE alias_normalized='alice'");
+    assert('alias prerequisite binds Alice from person identity', ownerClaim.rows[0].n, 1);
+    const anonClaims = await as('anon',{},'SELECT count(*)::integer AS n FROM public.owner_alias_claims');
+    assert('anonymous cannot read owner alias claims', anonClaims.rows[0].n, 0);
+    await denied('anonymous cannot execute alias claim RPC','anon',{}, "SELECT public.claim_my_alias('victim')");
+    const ownedSearch = await as('authenticated',{sub:Alice}, "SELECT count(*)::integer AS n FROM public.search_universal('Synthetic') WHERE object_type='mail_thread'");
+    assert('alias-bound universal search returns Alice thread',ownedSearch.rows[0].n,1);
+    // Visitor flow is write-only: the client does not request a returned row.
+    await as('anon',{}, "INSERT INTO public.intake_events (session_id,flow,event,owner_alias) VALUES ('cold','welcome','started','alice')");
+    const inserted=(await db.query("SELECT count(*)::integer AS n FROM public.intake_events WHERE session_id='cold'")).rows[0].n;
+    assert('anonymous write-only intake insert succeeds',inserted,1);
+    await denied('anonymous intake INSERT RETURNING id rejected (no read scope)', 'anon', {},
+      "INSERT INTO public.intake_events (session_id,flow,event,owner_alias) VALUES ('cold2','welcome','started','alice') RETURNING id");
+    const anonRead = await as('anon',{}, "SELECT count(*)::integer AS n FROM public.intake_events");
+    assert('anonymous cannot read intake events',anonRead.rows[0].n,0);
   }
   console.log('SUMMARY',JSON.stringify({tests,fail,mode,engine:'PGlite WASM PostgreSQL',data:'synthetic only',production:'NOT TOUCHED'}));
 }catch(e){fail++; console.error('UNEXPECTED_ERROR',e.message,e.stack?.slice(0,1400));}

@@ -54,3 +54,21 @@ No production change of any kind; a review-only code proposal is not a productio
 - node tests/mail_rls_synthetic_pglite.mjs unsafe-delete — **expected exit 2**: omitting the new DROP POLICY smart_mail_messages_owner_delete step permits a synthetic recipient to delete another sender's message using forged user_metadata.smart_alias; the inventory guard fails.
 
 **Trust boundary:** This is a controlled causal test of the **candidate SQL logic under a synthetic fixture**, not evidence of any real data disclosure, not an independent-seated review, not proof that all Supabase policies/functions are correct, and not proof that the four pending production migrations can be applied safely. GT-039 remains **HOLD** until a qualified security/DB owner reproduces full dependency-chain tests with authoritative metadata and synthetic identities in an approved isolated Supabase environment, then obtains exact-head independent verification and the Director's protected production authorization.
+
+
+## 2026-11-11 full four-migration synthetic dependency-chain proof
+
+**Added proof:** The same optional PGlite harness now has a full-chain mode using tests/fixtures/mail_rls_full_chain.sql. It starts with a synthetic pre-migration schema and runs these four *existing pending* migration files in chronological order:
+
+1. 20261022213000_conversational_intake_v1.sql
+2. 20261022220000_alias_binding_v1.sql
+3. 20261023190000_smart_mail_legacy_rls_hardening.sql
+4. 20261024194500_smart_mail_participant_completion_and_intake_scope_v1.sql
+
+**Candidate result:** node tests/mail_rls_synthetic_pglite.mjs full-chain: **20/20 PASS, exit 0**. Additional scenarios full-chain-unsafe-thread and full-chain-unsafe-delete each exit **2 as required**; their synthetic sabotage control reproduces the respective unauthorized action and the policy inventory fails closed.
+
+**Source-calibrated fixture:** Read-only live Supabase pg_default_acl inspection on November 11 shows public-table default ALL privileges for anon/authenticated/service_role under the postgres and supabase_admin creators. The synthetic PGlite fixture models the relevant anon/authenticated defaults. Without this setting, local INSERT / SELECT tests fail from artificial missing grants, not from production SQL policy behavior. No real production privileges were changed.
+
+**Expanded behavior proven in the synthetic schema:** Alias-binding migration creates canonical owner_alias_claims, backfills a known Alice alias from person_identities, denies direct anonymous claim reads and RPC execution, and permits owner-bound universal search. The intake migration admits an anonymous INSERT with no RETURNING clause (the intended write-only client behavior), but rejects an anonymous INSERT ... RETURNING id and returns no rows for anonymous SELECT. Mail behavior remains as in the 13-check isolated two-script test. All synthetic identities and data are fictitious.
+
+**Limitations / gate remains:** Full-chain *syntax and selected modeled behavior* PASS in a synthetic PostgreSQL fixture does not certify the historical 171 production migrations, the real live database's unmodeled tables/functions/policies, Supabase Auth/Data API, production API keys, revocation of stale JWTs, v7 Edge Function mail regression, independent security sign-off, or production safety. The full deployed migration history/contract and owner authorization must be independently tested in a properly scoped Supabase development environment before any GT-039 production application. No billing or production changes occurred in this proof.
