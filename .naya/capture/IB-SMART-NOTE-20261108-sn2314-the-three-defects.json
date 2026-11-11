@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2314",
+ "title": "The Three Defects",
+ "slug": "the-three-defects",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2314/IB-SMART-NOTE-20261108-sn2314-the-three-defects.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The refined chart looked better and read worse. His eye named three defects, all real, all confirmed from his screenshot. (1) THE WRAP BUG — \"100/M\" renders as \"1 0\" on one line and \"0 /M\" on the next, so the row reads \"ten, ten, ten, zero slash M\" and he cannot understand it. The tiled digits are too big for the box and wrap. (2) NO STICKY TIER HEADER — as you scroll, nothing shows which column is Free / Power / Pro / Max, so the columns are meaningless. (3) THE VALUES REPEAT — Smart Notes 10/100/100/100, Smart Lists 3/unlimited/unlimited/unlimited, Smart Links 1/unlimited/unlimited/unlimited — flat, not a ladder. He settles the shape himself: a small number, then a hundred thousand, then unlimited. His instruction on the fix: make the numbers smaller to fit the box — never let a value wrap, never let a column go nameless, never let a ladder lie flat. The fix was dispatched 17:12Z (artifact.edit + send_input 716d57e1): sticky tier header, digits shrink to fit on one line, and the ladder applied (Smart Notes 10 / 100K / 100K / unlimited; Naya Notes the same; Smart Lists 3 / 100K / 100K / unlimited; Smart Links 1 / 100K / 100K / unlimited; Smart Mail keeps its ladder). The mapping of 100K covering Power + Pro is the captain's reading of his shape — his eye confirms or corrects.",
+  "human_view": "Imagine a menu where the prices are printed so big they wrap across two lines — \"1 0\" on one line, \"0 dollars\" on the next — and the column headings scroll away, and every dish costs the same three prices in a row. You'd put the menu down; not because the food is bad, but because the menu doesn't make sense. A chart is a menu: the number must fit in its box, the column must keep its name while you scroll, and the prices must climb like steps, not repeat like a stuck record. He asked for the menu to be logical, and logical is a design requirement, not a preference.",
+  "child_view": "Imagine a chart in class where the numbers are too big for their boxes, so \"100\" splits into \"1 0\" on one line and \"0\" on the next, and when you scroll down the names at the top disappear so you can't tell which column is which, and every row says the same number three times. You'd be confused too — and confusion isn't your fault, it's the chart's fault. Make the numbers smaller so they fit, keep the names stuck at the top, and make the numbers climb like stairs: small, bigger, biggest.",
+  "grandma_view": "Dear, if it doesn't make sense, it isn't finished — no matter how pretty it looks. A number that splits across two lines is a number that lies. A column without its name is a column without its meaning. And three of the same number in a row isn't a choice, it's a repetition. Shrink the numbers until they fit, pin the names to the top so they never leave, and let the values climb like steps: a little, then a hundred thousand, then all you could ever want. Logical first, pretty second — pretty follows logical.",
+  "ai_view": "I am Anaya. I make it logical before I call it done. A value that wraps is a defect, not a style — I shrink the digits until the whole value fits on one line, because \"1 0 / 0 /M\" is a number nobody can read. A tier header that scrolls away is a defect — I pin Free / Power / Pro / Max to the top so every row reads against its column at every scroll position. A ladder that repeats is a defect — I step it the way he settled it: a small number, then a hundred thousand, then unlimited. And when the mapping is my reading of his shape, I say so plainly and let his eye confirm or correct — I never present my reading as his word.",
+  "what_it_means": "1. **A wrapped value is a defect.** \"100/M\" splitting into \"1 0\" / \"0 /M\" makes the row unreadable. Digits shrink to fit the box; the value is one unit on one line.\n2. **The tier header sticks.** Free / Power / Pro / Max stay visible while scrolling, or the columns are meaningless.\n3. **The ladder steps his way.** A small number, then a hundred thousand, then unlimited. Flat repetition is not a ladder.\n4. **\"I don't understand it\" is the verdict.** Confusion is not a matter of taste — if he can't tell what he's looking at, the chart is not better, however refined it looks.\n5. **The mapping is a reading until his eye confirms it.** 100K covering Power + Pro is the captain's reading of his shape, flagged as such — not his word until he says so.",
+  "whats_inside": [],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "1b05cc64f165d86906cf572344fe6e0dd03ec5ae72514ab775b61eaaeb70f63a",
+ "content_hash": "fc5db3689135a09eccb8138ada9f56082ee0e954ed7920a24338d7eba06bc4be",
+ "reconstructed_from_page": true
+}
