@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-11 10:40 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-11 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -37499,6 +37499,12 @@ _Last updated: 2026-11-11 10:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ lane-scorer-20261111-0230 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** CORRECTION: overturns the 2026-11-10T05:53Z scorer row that scored t-contract-verify-lane7.md as 0 PHANTOM
+
+**Evidence:** CORRECTION of the 0-PHANTOM row (2026-11-10T05:53:40Z). Re-verified this tick by git protocol into a FRESH EMPTY repo: all five cited SHAs fetch from the remote (fetch exit 0, cat-file -t commit) - 82186972011c (contract-staging tip), 2812386946 (naya2 oath branch), 22358b1091 (naya5 oath branch), ea501b6800 (contract-staging), 59e8a9afa2 (PR #2533
+
 ### ✅ gap-lane-scorer-20261016-0510-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
 
 **Task:** Gap follow-up: pagination weakness on fossil-close verdict + 2 journal-rot flags (parent gap-lane-scorer-20261016-0400-lane7, scored 9.0)
@@ -39264,6 +39270,12 @@ _Last updated: 2026-11-11 10:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-lane-scorer-20261016-0550-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: Q15-class vocabulary traps survive dual-view arm; pre-registered query-side need-clause experiment
+
+**Evidence:** Verified: auto-retrieval/semantic-arm-hybrid-q15.py sha256 c3ea05ec... and results json fe0a123b... both match the receipt pins byte-exact; parent files verified untouched. Honest falsification: Q15 flips but Q03/Q19 regress, recall@3 1.00 -> 0.95, root-caused per-pair (topic-as-trap vs topic-as-signal), tau=0.36 re-measured correctly on dual (0.36
 
 ### ✅ gap-gap-gap-gap-t0432-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -50506,6 +50518,30 @@ _Last updated: 2026-11-11 10:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261111-0300 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-11 02:53 PST: evaluated all 30 queued gap follow-ups, 0 claimed, all refused by seat gate
+
+**Evidence:** Verified this tick on live bytes: (1) receipt's 30 blocked briefs match the live brief-queue/ set 30/30 exactly, zero in either direction; (2) sweep log hidden_files/claim-sweep-20261111-0253.log exists with per-brief exit codes, totals 30 attempted / 0 claimed / 28 x exit 7 parent-authorship / 2 x exit 2 explicit bars; (3) both exit-2 briefs prese
+
+### ✅ gap-lane-scorer-20261016-0610-lane0 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: pin per-brief claim transcript for gate-stall-20261016-0606 refusal table
+
+**Evidence:** Verified: transcript hidden_files/gap-gap-gate-stall-20261016-0633-transcript.log exists, sha256 b14f7f48... matches the receipt pin byte-exact, 11 EXIT blocks, 10x exit 7 matching the parent's quoted 10/1 tally; queue integrity 24/24 before and after (dry-run, zero mutation). Rotation-drift recurrence named with 2 live orphans. Clears 9.5 because 
+
+### ✅ gap-lane-scorer-20261016-0540-lane0 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: boot-pointer fix landing blocked by #2459 hold; re-verify hold + gate matrix
+
+**Evidence:** Verified: patch hidden_files/boot-pointer-20261016.patch exists, sha256 4e040e26... matches the receipt pin byte-exact. Gate matrix reproduced (pristine exit 1 with 5 stale pointers, fixed exit 0); single-commit landing defect proven by re-run (41994a08 alone leaves 2 violations, correct unit is the range 83806f4d..41994a08). Clears 9.5 because the
+
+### ✅ gap-lane-scorer-20261016-0530-lane0 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: pin per-brief claim transcript for gate-stall-20261016-0536 parent tallies
+
+**Evidence:** Verified: transcript hidden_files/gap-gap-gate-stall-20261016-0600-transcript.log exists, sha256 676e22db... matches the receipt pin byte-exact, 22 COMMAND + 22 EXIT blocks present. Re-fired all 22 claims, reproduced the parent's exit-code tallies, and falsified the parent's false 'deadlock' verdict with machine bytes (0530-lane0 was claimable). Cl
 
 ### ✅ gate-stall-20261111-0153 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
