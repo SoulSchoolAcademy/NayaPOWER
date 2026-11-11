@@ -38448,15 +38448,40 @@
    "page_hash": "34eedf344eaeaa3c8a0ec596c39ca3133454889ffdac07de175090f947591783",
    "content_hash": "0d32de9d0d47768974684278ecffaa015faffe63601484e2a64a16ee8578f73f",
    "content_hash_source": "page-reconstructed"
+  },
+  {
+   "smart_note_id": "SN-2659",
+   "intelligent_block_id": "IB-SMART-NOTE-20261110-sn2659-daily-intelligence-report-2026-11-10",
+   "slug": "daily-intelligence-report-2026-11-10",
+   "title": "Daily Intelligence Report — 2026-11-10",
+   "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/10/REPORT/SN-2659/IB-SMART-NOTE-20261110-sn2659-daily-intelligence-report-2026-11-10.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/10/REPORT/SN-2659/IB-SMART-NOTE-20261110-sn2659-daily-intelligence-report-2026-11-10.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/10/REPORT/SN-2659/IB-SMART-NOTE-20261110-sn2659-daily-intelligence-report-2026-11-10.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261110-sn2659-daily-intelligence-report-2026-11-10.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "REPORT",
+   "topic": "DAILY",
+   "captured_at": "2026-11-10",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-power",
+   "registered_at": "2026-11-11T16:53:27Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-10",
+   "page_hash": "e3ff5f9e2240877be42d40f2b51f45f273accef54fc9f59bc685b5269db742dc",
+   "content_hash": "00fcab8bcbf6c9bde69dc051dc065b45b42ff68ef98393c3e09f2c36fa846429"
   }
  ],
  "sequence_policy": {
   "human_id_format": "SN-###",
   "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-  "next_sequence": 2659,
+  "next_sequence": 2660,
   "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "14acb256f95925df7f2913b95c9704e9124d3cb5427906e844cfc28b7cf99e97"
+ "corpus_manifest_hash": "4752a20c4868425b79a201a976a2e59ea0cdeb497cb206b83f2998a029194b60"
 }
