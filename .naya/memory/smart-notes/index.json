@@ -4112,7 +4112,8 @@
    "page_hash": "b41b121eb0209b804b4ca3ba536f24c69cff6ecf7649903ccba2c6b9378d9660",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2119-essence-the-claim-registry",
    "retired_at": "2026-11-06T03:37:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (sep-2); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-2); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0250-green-run-compatible-with-corrupt-registry.json"
   },
   {
    "smart_note_id": "SN-0251",
@@ -4132,7 +4133,8 @@
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "b3144767aa54e80519c76412048dc2b40afe51b4d39b9a5a157d98fab3ef1fd9"
+   "page_hash": "b3144767aa54e80519c76412048dc2b40afe51b4d39b9a5a157d98fab3ef1fd9",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0251-fix-it-or-remove-it.json"
   },
   {
    "smart_note_id": "SN-0252",
@@ -4152,7 +4154,8 @@
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "924719982be3878d628ddb00700fbe4c5aecf8bb77b17a7b5cedde536f145593"
+   "page_hash": "924719982be3878d628ddb00700fbe4c5aecf8bb77b17a7b5cedde536f145593",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn252-priority-one-deliberation-arc.json"
   },
   {
    "smart_note_id": "SN-0253",
@@ -4172,7 +4175,8 @@
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "38071605137c83f74977cb41177636bf256d7a23bfda60e97453271bf7661589"
+   "page_hash": "38071605137c83f74977cb41177636bf256d7a23bfda60e97453271bf7661589",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0253-prove-that-she-works-north-star.json"
   },
   {
    "smart_note_id": "SN-0254",
@@ -4192,7 +4196,8 @@
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "e76ff27a113d9e739366a523789077fbe67b79d3f8d0c88665ad7bb24406c44c"
+   "page_hash": "e76ff27a113d9e739366a523789077fbe67b79d3f8d0c88665ad7bb24406c44c",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0254-smart-link-canonical-definition.json"
   },
   {
    "smart_note_id": "SN-0255",
@@ -4215,7 +4220,8 @@
    "page_hash": "69149bb50301d553ba08ef8285946bcb48b9deb3891a3d2dcc7487a782930c81",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2123-essence-the-note-is-the-deliverable",
    "retired_at": "2026-11-06T03:37:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (sep-2); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-2); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0255-smart-link-return-path-hole.json"
   },
   {
    "smart_note_id": "SN-0256",
@@ -4238,7 +4244,8 @@
    "page_hash": "78284f966169c4d1e61e11a74f7b863e2abcd257fa0b99414051069f38b9fa8d",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2123-essence-the-note-is-the-deliverable",
    "retired_at": "2026-11-06T03:37:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (sep-2); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-2); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0256-placement-is-architecture-never-invent-locations.json"
   },
   {
    "smart_note_id": "SN-0257",
@@ -4258,7 +4265,8 @@
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "a328841f3a304bd597e8f9a1a8c7a0ef15fea3fbe4b398e4358f1a63b8652686"
+   "page_hash": "a328841f3a304bd597e8f9a1a8c7a0ef15fea3fbe4b398e4358f1a63b8652686",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0257-dedupe-must-cover-human-visible-id.json"
   },
   {
    "smart_note_id": "SN-0258",
@@ -4281,7 +4289,8 @@
    "page_hash": "0434e862801f1a807e8738218a41c9b6291a824507260e52361ba72707973d23",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2123-essence-the-note-is-the-deliverable",
    "retired_at": "2026-11-06T03:37:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (sep-2); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-2); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0258-deliverable-is-note-plus-link-not-pr-number.json"
   },
   {
    "smart_note_id": "SN-0259",
@@ -4304,7 +4313,8 @@
    "page_hash": "73e9e98d766cb2fcfb7dc7729ea3bfe7f9d739654ac7d95e62d4776baec11738",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2146-essence-the-note-systems-mechanics",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0259-occupancy-scan-must-cover-merged-prs.json"
   },
   {
    "smart_note_id": "SN-0260",
@@ -4324,7 +4334,8 @@
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "e29bccd7bfb60b2ba5032e0babee014b41cf751b08bb44ac40cfe970a1491daf"
+   "page_hash": "e29bccd7bfb60b2ba5032e0babee014b41cf751b08bb44ac40cfe970a1491daf",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0260-check-the-system-not-just-the-seat.json"
   },
   {
    "smart_note_id": "SN-0261",
@@ -4347,7 +4358,8 @@
    "page_hash": "651ef20100e3d74cad4795cc59bb6c27fee121e086985a790872a18a10d94b13",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2123-essence-the-note-is-the-deliverable",
    "retired_at": "2026-11-06T03:37:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (sep-2); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-2); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20260930-sn0261-ratified-law-does-not-freeze-document.json"
   },
   {
    "smart_note_id": "SN-0262",
@@ -4370,7 +4382,8 @@
    "page_hash": "bbd0de54ecc5899f0bcdf1f3b7eddda81ca165f0e4ce12e9a8f05d14b9157d93",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2125-essence-law-lands-in-code",
    "retired_at": "2026-11-06T03:37:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (sep-2); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-2); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20260930-sn0262-constitutional-activation-ladder.json"
   },
   {
    "smart_note_id": "SN-0263",
@@ -4393,7 +4406,8 @@
    "page_hash": "762da81cbbe9eedc338c99d32ab990e994d78668d7d4477dfa9fb7f42d1e3ef8",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2142-essence-the-scorecard-way",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0263-ratification-receipt-bounded-authorization.json"
   },
   {
    "smart_note_id": "SN-0264",
@@ -4413,7 +4427,8 @@
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "36d6e3349032e4ad389550c3c1b783bafa2902505a8ef908365b1f4449ac324e"
+   "page_hash": "36d6e3349032e4ad389550c3c1b783bafa2902505a8ef908365b1f4449ac324e",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0264-the-ten-out-of-ten-bar.json"
   },
   {
    "smart_note_id": "SN-0265",
@@ -4436,7 +4451,8 @@
    "page_hash": "837cdaf2d69caff73ddc5325a3ee3258f740000c6e4b6ae8a74547a9d82ee6bd",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2142-essence-the-scorecard-way",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0265-one-law-for-every-seat.json"
   },
   {
    "smart_note_id": "SN-0269",
@@ -4456,7 +4472,8 @@
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "2037d5efe9ae846deab8ac57587c4cd15972d6796b975903b1fa6cdcc38d7d4b"
+   "page_hash": "2037d5efe9ae846deab8ac57587c4cd15972d6796b975903b1fa6cdcc38d7d4b",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20260930-sn0269-law-as-code-enforced-operating-law.json"
   },
   {
    "smart_note_id": "SN-0270",
@@ -4476,7 +4493,8 @@
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "1896c94ad8a12d2816f718e2be00336acd1d6c8d5a37780d0ab04fa22ee0c1c1"
+   "page_hash": "1896c94ad8a12d2816f718e2be00336acd1d6c8d5a37780d0ab04fa22ee0c1c1",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20260930-sn0270-beautiful-not-equal-10-10.json"
   },
   {
    "smart_note_id": "SN-0271",
@@ -4499,7 +4517,8 @@
    "page_hash": "4845500ccaa935741a54067cd019ce9e7ac7f9b882cd285da538a096d9941bee",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2119-essence-the-claim-registry",
    "retired_at": "2026-11-06T03:37:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (sep-2); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-2); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20260930-sn0271-registry-is-claim-not-evidence.json"
   },
   {
    "smart_note_id": "SN-0272",
@@ -4522,7 +4541,8 @@
    "page_hash": "bbc313a1d636853ded2eaf6f92eeaac14775869d996396ee29fe7237a22d43b4",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2145-essence-proof-from-real-bytes",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0272-building-fresh-not-on-a-false-memory.json"
   },
   {
    "smart_note_id": "SN-0273",
@@ -4545,7 +4565,8 @@
    "page_hash": "0025e7e930d86cd2af380e5a828cb27085c2445e6ac3de5384dcd8f57338e382",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2151-essence-the-character",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0273-when-the-director-ships-his-own-spec-close-yours-as-superseded.json"
   },
   {
    "smart_note_id": "SN-0274",
@@ -4568,7 +4589,8 @@
    "page_hash": "c8470274b605da97d1d970739cc9a00b220f5acdde585f992a3ed6dba69e30b9",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2149-essence-intent-and-the-interface",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0274-replace-the-renderer-not-the-button.json"
   },
   {
    "smart_note_id": "SN-0276",
@@ -4591,7 +4613,8 @@
    "page_hash": "f910fe0bafd4c39ebd850850866d5710d97d1d16e1e4a274c1cd1001fd4e6b0e",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2149-essence-intent-and-the-interface",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0276-naya-play-pattern-law.json"
   },
   {
    "smart_note_id": "SN-0277",
@@ -4614,7 +4637,8 @@
    "page_hash": "9318d506df2ca294dd5f39580e8a62bf0d4b1acc82218e8998456a90a082ad1b",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2151-essence-the-character",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0277-director-action-vs-spec-no-position.json"
   },
   {
    "smart_note_id": "SN-0278",
@@ -4637,7 +4661,8 @@
    "page_hash": "b64d76c8a783b1e787dcc878699b682818f17facf5d64a5be0f1287869502783",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2145-essence-proof-from-real-bytes",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0278-path-presence-not-content.json"
   },
   {
    "smart_note_id": "SN-0279",
@@ -4657,7 +4682,8 @@
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "6e1fbfd7527c4a10635834219a760bf487bb3b1ae0541bc1d01de8ac6681dd5a"
+   "page_hash": "6e1fbfd7527c4a10635834219a760bf487bb3b1ae0541bc1d01de8ac6681dd5a",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0279-continuous-execution-directive.json"
   },
   {
    "smart_note_id": "SN-028",
@@ -4680,7 +4706,8 @@
    "page_hash": "a63ff15616d3f42cc2b6a56dd44d0f083cc9a5377b2a45325018238807df4bbb",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2111-essence-evidence-law",
    "retired_at": "2026-11-06T03:29:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20260930-sn028-clean-room-verification.json"
   },
   {
    "smart_note_id": "SN-0280",
@@ -4703,7 +4730,8 @@
    "page_hash": "df81f88b7399fb0cbe4a6f5ff251199163852102a5cf17b70d4c43ab35b1f9b2",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2141-essence-the-operating-code",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0280-sign-in-sign-out-team-protocol.json"
   },
   {
    "smart_note_id": "SN-0281",
@@ -4726,7 +4754,8 @@
    "page_hash": "ef77693f8c7ea1993ee7771cdee6fccb4efb494ed5133261a8d4dbf285f4ac40",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2144-essence-gates-that-mean-it",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0281-proof-gating-no-if-always.json"
   },
   {
    "smart_note_id": "SN-0282",
@@ -4746,7 +4775,8 @@
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    },
-   "page_hash": "e09abf1f0087b3602e336eb6520adf0b0d87955c1e2599282680207ee6d9ab22"
+   "page_hash": "e09abf1f0087b3602e336eb6520adf0b0d87955c1e2599282680207ee6d9ab22",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0282-do-it-now-doctrine.json"
   },
   {
    "smart_note_id": "SN-0283",
@@ -4769,7 +4799,8 @@
    "page_hash": "d8ccb8268eb15d5f0a95908d1a447a04b6dda5bd6ba5adc8d7d03807d1755851",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2120-essence-proof-discipline",
    "retired_at": "2026-11-06T03:37:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (sep-2); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-2); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0283-false-pass-surfaces.json"
   },
   {
    "smart_note_id": "SN-0284",
@@ -4792,7 +4823,8 @@
    "page_hash": "acf56ef57918b06daab5560706edaef670ebd8676eeb0ace98d98c885d0c13dc",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2119-essence-the-claim-registry",
    "retired_at": "2026-11-06T03:37:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (sep-2); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-2); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0284-convention-coherence.json"
   },
   {
    "smart_note_id": "SN-0285",
@@ -4815,7 +4847,8 @@
    "page_hash": "1f1c498fb3331a356517c290fc1ef2e7647381009e6056dea068ec3ee2db00f0",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2144-essence-gates-that-mean-it",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0285-the-ratchet-block-new-drift-without-reddening-main.json"
   },
   {
    "smart_note_id": "SN-0286",
@@ -4838,7 +4871,8 @@
    "page_hash": "7150a9da5423ff22eb036fb8ea0aec822c2601be0ab6f62635948289d6036e81",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2145-essence-proof-from-real-bytes",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0286-restore-verifiable-mark-unverifiable.json"
   },
   {
    "smart_note_id": "SN-0287",
@@ -4861,7 +4895,8 @@
    "page_hash": "1314cb234a3fed055d40663813a0ecaae3dcdca56712d1856e63348b52d6659b",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2149-essence-intent-and-the-interface",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0287-click-test-feedback-path.json"
   },
   {
    "smart_note_id": "SN-0288",
@@ -4884,7 +4919,8 @@
    "page_hash": "ac778788c22571d2aa7f82b1b86f73590abb9ad0ce8238cb6fde02cc18c1f664",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2143-essence-the-worker-protocol",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0288-triple-a-excellence-doctrine.json"
   },
   {
    "smart_note_id": "SN-0289",
@@ -4907,7 +4943,8 @@
    "page_hash": "29b4b3c37bb456b5ecb2f88d09f0208c45912e47ba2851da67b1cebc5137e489",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2143-essence-the-worker-protocol",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0289-naya-worker-protocol.json"
   },
   {
    "smart_note_id": "SN-029",
@@ -4930,7 +4967,8 @@
    "page_hash": "16ed5535c66824d85ce2adbfda51508096124a7b734a0896767d5b38f12621ad",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2111-essence-evidence-law",
    "retired_at": "2026-11-06T03:29:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (sep-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20260930-sn029-sha-bound-authorization.json"
   },
   {
    "smart_note_id": "SN-0290",
@@ -4953,7 +4991,8 @@
    "page_hash": "05a1b841ffe05b20580bc6269f2da6e565097c731954a01f3adcb2620a0143ef",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2143-essence-the-worker-protocol",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0290-self-correcting-system.json"
   },
   {
    "smart_note_id": "SN-0291",
@@ -4976,7 +5015,8 @@
    "page_hash": "ec8755de2f3c3d8577ee34f15699bcb542d301420c70a34889a135b5dea77173",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2142-essence-the-scorecard-way",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0291-universal-worker-protocol.json"
   },
   {
    "smart_note_id": "SN-0292",
@@ -4999,7 +5039,8 @@
    "page_hash": "6861297018a9b728983e174cbb95e73136e2ff8eb8070ebd3d92aad221e5bf7d",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2142-essence-the-scorecard-way",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0292-verifier-without-negative-control.json"
   },
   {
    "smart_note_id": "SN-0293",
@@ -5022,7 +5063,8 @@
    "page_hash": "3608a0f6020ab92bfbbe81b36dd6558b115aabc9864b434a2fa2f52a4171806b",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2142-essence-the-scorecard-way",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0293-honesty-rewarded-not-penalized.json"
   },
   {
    "smart_note_id": "SN-0294",
@@ -5045,7 +5087,8 @@
    "page_hash": "631f3fae6122a3f97e747daa5baf8f7e1337107128665d23dc51e8962ee2d7e3",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2144-essence-gates-that-mean-it",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0294-coverage-is-part-of-conformance.json"
   },
   {
    "smart_note_id": "SN-0295",
@@ -5068,7 +5111,8 @@
    "page_hash": "14c7972d28c6673b5b626a915bdd5100ad6ecc2e391b9110734ab1f62de03985",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2140-essence-the-one-brain",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0295-super-brain-architecture.json"
   },
   {
    "smart_note_id": "SN-0296",
@@ -5091,7 +5135,8 @@
    "page_hash": "b3a0b2d915a0ce30a76d9dbae60e2207c4f04c7313c3854a6adb2bc8b5794aac",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2145-essence-proof-from-real-bytes",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0296-universal-verification-method.json"
   },
   {
    "smart_note_id": "SN-0297",
@@ -5114,7 +5159,8 @@
    "page_hash": "e7a0e651737ad6db9a36ee6ef43bbf2ac5f46f638995781c5c674ac25f10a600",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2145-essence-proof-from-real-bytes",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0297-branch-citations-are-not-canonical-provenance.json"
   },
   {
    "smart_note_id": "SN-0298",
@@ -5137,7 +5183,8 @@
    "page_hash": "3b820901ee757877eb5d8301e9e787ee9010e269c951ae05062c4ae213825858",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2151-essence-the-character",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0298-bounded-red-team-assignment-model.json"
   },
   {
    "smart_note_id": "SN-0299",
@@ -5160,7 +5207,8 @@
    "page_hash": "a196df771110298c9ecf61d18332ad388dd088a931964a1b9f1e5758f8409255",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2150-essence-learning-that-compounds",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0299-what-deserves-to-survive.json"
   },
   {
    "smart_note_id": "SN-0302",
@@ -5183,7 +5231,8 @@
    "page_hash": "1b5c3d51bba7805b7666846a32781d68b93de1bbca06e3c55b5d44de4e88c6dc",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2145-essence-proof-from-real-bytes",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0302-producer-computed-string-is-not-evidence.json"
   },
   {
    "smart_note_id": "SN-0303",
@@ -5206,7 +5255,8 @@
    "page_hash": "7a925932f3e5d4ddc91e5e5ef10988dfbedb50e6a2c344b50cf5a4bc5ad4cea4",
    "retired_by_essence": "IB-SMART-NOTE-20261105-sn2146-essence-the-note-systems-mechanics",
    "retired_at": "2026-11-06T03:51:00Z",
-   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification"
+   "retirement_basis": "SN-2081: essence verified by independent seat (oct-1); retirement automatic on verification",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261004-sn0303-registry-scan-decays-in-minutes.json"
   },
   {
    "smart_note_id": "SN-0304",
@@ -43053,5 +43103,5 @@
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "ed212ee82abb3feaf7ff7ebc72ebb9bda7ac282dae53dc2c1c8b422ddce8ffb6"
+ "corpus_manifest_hash": "f7f705bdcc9c6b141467bb41a858c729e48f14bf745deaeb90ebd01ce1e2eaae"
 }
