@@ -1257,11 +1257,49 @@
     var HUB_APP_PLACEHOLDER = 'hub/';    /* the untouched default; the honesty guard keys off this */
     var SB_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGlzYXNncGZ2emlzd3F2bXZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2MjM3ODgsImV4cCI6MjEwMzE5OTc4OH0.zX2r3T23sKebUMBdNg-4Noxos8JFOHaK2rRwqAVXU_s';  /* injected at deploy time by deploy-entrance.py — never a real key in this file */
 
+/* =========================================================
+   DEEP-LINK PRESERVATION (2026-11-11) — a visitor who arrives
+   on a Smart Note link lands here with #/smart-notes/<slug> in
+   the address. The gate must carry that destination through
+   every exit — Jump back in, AUTO-LOGIN, and the claim flow —
+   or the link dies at the door. The hash is captured once at
+   load, validated as a real in-app route, and stored in
+   sessionStorage so it also survives the claim + Welcome walk
+   (same origin). Only a validated route is ever carried.
+   ========================================================= */
+var PENDING_ROUTE_KEY = 'nayanet_pending_route';
+function isInAppRoute(hash) {
+  if (!hash || hash.charAt(0) !== '#') return false;
+  var path = hash.slice(1);
+  return /^\/(smart-notes|notes|note)\/[A-Za-z0-9][A-Za-z0-9\-_]*$/.test(path) ||
+    /^\/hub(\/.*)?$/.test(path) ||
+    /^\/welcome$/.test(path) ||
+    /^\/identity$/.test(path);
+}
+var pendingRoute = '';
+try {
+  var incomingHash = window.location.hash || '';
+  if (isInAppRoute(incomingHash)) {
+    pendingRoute = incomingHash;
+    try { sessionStorage.setItem(PENDING_ROUTE_KEY, pendingRoute); } catch (e) {}
+  } else {
+    try { pendingRoute = sessionStorage.getItem(PENDING_ROUTE_KEY) || ''; } catch (e) {}
+    if (pendingRoute && !isInAppRoute(pendingRoute)) pendingRoute = '';
+  }
+} catch (e) { pendingRoute = ''; }
+function clearPendingRoute() {
+  pendingRoute = '';
+  try { sessionStorage.removeItem(PENDING_ROUTE_KEY); } catch (e) {}
+}
+
     function hubEntryUrl(name, alias) {
       var url = HUB_APP_URL;
       url += (url.indexOf('?') === -1 ? '?' : '&') +
         'name=' + encodeURIComponent(name) +
         '&alias=' + encodeURIComponent(alias);
+      /* Deep link rides with the Hub entry: the Hub router opens the
+         note from the hash, and its boot scrub keeps the hash. */
+      if (pendingRoute) { url += pendingRoute; clearPendingRoute(); }
       return url;
     }
 
@@ -1273,6 +1311,10 @@
       url += (url.indexOf('?') === -1 ? '?' : '&') +
         'name=' + encodeURIComponent(name) +
         '&alias=' + encodeURIComponent(alias);
+      /* Deep link rides to the walk: the hash travels in the URL and
+         sessionStorage both, so the Hub boot can honor it after the
+         walk even if the walk drops the fragment. */
+      if (pendingRoute) { url += pendingRoute; }
       return url;
     }
 
