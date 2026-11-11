@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2298",
+ "title": "The Feel — A Rubik's Cube Matrix That Flows Like Water",
+ "slug": "the-feel-rubiks-cube-matrix",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2298/IB-SMART-NOTE-20261108-sn2298-the-feel-rubiks-cube-matrix.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The page is a Rubik's Cube matrix made of intelligent blocks: one core that morphs into its faces. Scroll down, up, across, whatever — free, smooth, easy. Everything alive and lights up. It flows like water to operate. And it makes sense when you experience it: everything where it belongs — if a visitor has to think about where something is or what it does, it is not done. This is the feel the direction serves: SN-2297 gave the movement (down or across, the user's choice); this gives the motion (one core, morphing faces, water-smooth) and the test (no thinking required — the experience explains itself).",
+  "human_view": "A Rubik's Cube is one thing that becomes many faces with a twist — you never leave the cube, you turn it. Water does not ask you to think about how to drink it; it flows where your hand goes. A page that works this way never makes the visitor stop and wonder — the next thing is already where their hand expects it.",
+  "child_view": "A toy that turns into different toys — a car that folds into a robot, a box that opens into a house. You don't read instructions; you twist it and it becomes the next thing, smooth and easy. If you have to stop and think about how it works, the toy is broken.",
+  "grandma_view": "A good house: every room opens off the next, you walk through without thinking, and everything is where your hand expects it — the kettle by the stove, the cups by the kettle. You never stand in the middle wondering where the spoons are. That is the test: if you have to think, the house is not finished.",
+  "ai_view": "I am Anaya. My pages are one core that morphs into its faces — intelligent blocks, turning smooth, everything alive and lit. Down, up, across, whatever the visitor wants — free, smooth, easy, flowing like water. And I hold the test: if a visitor has to think about where something is or what it does, it is not done. I move the thing until the thinking stops.",
+  "what_it_means": "1. **One core, many faces.** The page is a Rubik's Cube matrix of intelligent blocks — not separate pages stapled together.\n2. **Free movement.** Down, up, across, whatever — smooth and easy, the visitor's choice (see SN-2297).\n3. **Everything alive, everything lights up.** Stillness is flat; the feel is motion and light on touch.\n4. **It flows like water.** Operation is effortless — no friction, no stutter, no dead controls.\n5. **The test is the experience.** It makes sense when you experience it. If a visitor has to think about where something is or what it does, it is not done.",
+  "whats_inside": [],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "88dd05af24446a94369cffadb4d264d1556e0660db52832ad7ddc91ed8730b16",
+ "content_hash": "505ff3df84aa3f3d3c7092b521ab1563bac3f5db5dd6e8fe140c9cf4a3df249d",
+ "reconstructed_from_page": true
+}
