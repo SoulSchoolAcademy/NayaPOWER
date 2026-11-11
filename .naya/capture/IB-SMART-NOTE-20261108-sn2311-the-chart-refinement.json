@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2311",
+ "title": "The Chart Refinement",
+ "slug": "the-chart-refinement",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2311/IB-SMART-NOTE-20261108-sn2311-the-chart-refinement.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The chart was good; now make it pop. Icons in each row so you see what the feature is, and green check marks so you see what you get and the difference between the levels — the difference should be visible at a glance, not read out of text. The numbers in the boxes should be the Dashboard's beautiful numbers — the tiled digits, the real number language — used whenever there is an opportunity to use them, and shortened so they pop: not \"up to a hundred thousand a month,\" just 100K/M. And a little eye — a beautiful jewel — in the corner of each row: the affordance that says click me, and click — boom — the popup tells them about it. One thing is NOT settled: the ladders he floated (Smart Notes 10 / 100K / unlimited; Smart Lists 3 / 30? / 100K / unlimited) — the builder keeps the chart data's values until his word settles the numbers. No number changes on a floated idea.",
+  "human_view": "Imagine a menu where every dish has a little picture, a green tick when it's included, and the price in big clear numbers — you don't read the menu, you see it. Now imagine the same menu with no pictures, no ticks, and the prices written out in long sentences. Same food, but one menu you understand in two seconds and the other you have to study. The chart should be the first menu.",
+  "child_view": "Imagine a treasure map where every treasure has a picture, a green tick when you can have it, and a big shiny number — and a little eye on each spot that winks at you and says \"tap me and I'll tell you a secret.\" That map is fun to explore. A map with only words is homework.",
+  "grandma_view": "Dear, the eye is the kindest part: it tells you, without a word, that there is more to see if you touch it. A page that hides what it can do is like a house with no door handles — you stand outside wondering how to get in. The eye is the handle. The icons and the green ticks are the labels on the jars, so you know what you're getting before you open them.",
+  "ai_view": "I am Anaya. I make the chart pop the way he said: an icon in every row, a green check where they get it so the difference between levels is visible at a glance, and the numbers in the Dashboard's beautiful tiled digits — shortened to 100K/M, never spelled out in a sentence. Every row carries the eye — a beautiful jewel in the corner — because a row that can be opened must say so, and when they tap it, boom, Naya tells them about it. And I do not change a number on a floated idea: the Smart Notes and Smart Lists ladders stay at the chart data's values until his word settles them, and I ask him plainly instead of guessing.",
+  "what_it_means": "1. **Icons in every row.** You see what the feature is before you read a word.\n2. **Green checks show what you get.** The difference between tiers is visible at a glance — check where it's included, X where it isn't.\n3. **The beautiful numbers, everywhere they fit.** The Dashboard's tiled digits are the number language; use them in the chart boxes too, shortened (100K/M) so they pop.\n4. **The eye is the affordance.** A beautiful jewel in the corner of each row that says \"click me\" — and the click opens the story.\n5. **Shortened, not spelled out.** \"100K/M,\" not \"up to a hundred thousand a month\" — optimization is presentation.\n6. **Floated numbers are not settled numbers.** His word is needed before any ladder changes; until then the data's values stand and the question stays open.",
+  "whats_inside": [],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "bc57bc864618496ccde981306146884150b4aaf382eb32699d557cbfc7fb0a41",
+ "content_hash": "6330dfbe1df32f134d2f90fc0576ea1534848fc59daf26baefcaf251dd9c413f",
+ "reconstructed_from_page": true
+}
