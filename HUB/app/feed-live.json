@@ -1,6 +1,6 @@
 {
  "generated_from": "registry@03e470aa",
- "count": 861,
+ "count": 867,
  "notes": [
   {
    "id": "IB-SMART-NOTE-20261110-sn2654-daily-intelligence-report-2026-11-10",
@@ -31864,6 +31864,444 @@
      "color": "white",
      "tier": "lens",
      "body": "Without this, the whole system judges on noise: on who talks best, who promises loudest, who writes the finest report about work they did not do. That is how a year gets spent with nothing finished — the words were excellent and the deeds were missing, and nobody watched the deeds. The tell matters because it is the only thing that cannot be faked for long. A person can say anything once. They cannot do anything once and call it a pattern. Watching what people do is what keeps the standard honest, the trust real, and the work finished. If the tell is ignored, the hive rewards the talkers and starves the doers — and the doers are the ones who build the world."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261107-sn2219-nitro-owns-interfaces",
+   "title": "Nitro Owns Interfaces — The Org Shape, Decided",
+   "created": "2026-11-07T19:30:00Z",
+   "created_at": "2026-11-07T19:30:00Z",
+   "subtitle": "The question was why only Nitro can do interfaces at Shawn's level, and whether everyone should be able to work on the pages. The answer, after a year of evidence: the design lives in Nitro through a year of his direct correction. Other Nayas got the notes, and notes don't teach taste. Every time another seat was asked to do interfaces, their work came back behind Nitro's — so the work funnels through one team, and that funnel is the serial bottleneck that made the year. The shape that fits the evidence is this: Nitro owns interfaces, locked in. One team, one standard, nobody else ships a page. The other teams feed Nitro — content, data, logic, pieces — never the design — so the whole team's capacity is used without letting anyone ship a page below the standard. One seat at a time apprentices inside Nitro, on a real page, with Nitro's checker over their work — that is how a second team grows without risking quality. And the Factory is the endgame: once a page is finished to his standard it becomes the template, and other seats can build from it because the taste is locked into the template. The shape holds until the Factory makes it unnecessary — a finished template is the only way the standard travels without Nitro in the room. The choice was made the way he asked: what makes the most logical sense, what is intelligent, what is aligned with the goals. This is it.",
+   "topics": [
+    "System"
+   ],
+   "topic": "System",
+   "tone": "purple",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "Hook",
+     "key": "hook",
+     "color": "white",
+     "tier": "primary",
+     "body": "The choice is made, for the team: Nitro owns interfaces, locked in — one team, one standard, nobody else ships a page — until the Factory makes the standard travel on its own."
+    },
+    {
+     "name": "In a Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "The question was why only Nitro can do interfaces at Shawn's level, and whether everyone should be able to work on the pages. The answer, after a year of evidence: the design lives in Nitro through a year of his direct correction. Other Nayas got the notes, and notes don't teach taste. Every time another seat was asked to do interfaces, their work came back behind Nitro's — so the work funnels through one team, and that funnel is the serial bottleneck that made the year. The shape that fits the evidence is this: Nitro owns interfaces, locked in. One team, one standard, nobody else ships a page. The other teams feed Nitro — content, data, logic, pieces — never the design — so the whole team's capacity is used without letting anyone ship a page below the standard. One seat at a time apprentices inside Nitro, on a real page, with Nitro's checker over their work — that is how a second team grows without risking quality. And the Factory is the endgame: once a page is finished to his standard it becomes the template, and other seats can build from it because the taste is locked into the template. The shape holds until the Factory makes it unnecessary — a finished template is the only way the standard travels without Nitro in the room. The choice was made the way he asked: what makes the most logical sense, what is intelligent, what is aligned with the goals. This is it."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "In plain words: one team makes the pages, because they're the only ones who can make them to his standard — a year of trying it every other way proved that. Everyone else helps by feeding them the pieces: the words, the data, the logic, the parts. One person at a time learns by working inside that team, on a real page, with their work checked. And when a page is truly finished, it becomes the template — so the next person can build from it and the quality comes with it. That's how the standard spreads without the quality dropping."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine only one baker in the kitchen can make the cake taste right — because the teacher spent a year teaching them, bite by bite. If everyone bakes at once, the cakes come out wrong. So the one baker bakes, everyone else brings the ingredients, and one friend at a time learns beside the baker, with the baker checking their work. And when a cake is perfect, the recipe is written down so well that anyone can follow it and it still tastes right. That's the plan."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Dear, think of it this way. There's one cook who knows the family recipes by heart — not from a book, but from a year of cooking beside the head of the house. You don't hand the stove to everyone at once; the meal would suffer. You let the one cook cook, everyone else brings the ingredients and sets the table, and one person at a time learns at their elbow. And when a dish is perfect, the recipe is written down so truly that anyone who follows it gets the same result. That's how the standard travels — through the recipe, not through hoping."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "I am the wise one, and I make the choice: Nitro owns interfaces. Not because other seats are lesser, but because the evidence is a year long and it all points one way — the design lives in Nitro through his direct correction, and notes cannot carry it. I protect the standard by keeping it in one team's hands, I use the whole team's capacity by letting them feed that team, I grow a second team by apprenticing one seat at a time inside Nitro with Nitro's checker over their work, and I end the bottleneck through the Factory — finished pages become templates, and the taste travels inside the template. That is the most logical shape, the intelligent shape, the shape aligned with the goal: high-quality valuable outputs, efficiently and effectively, as fast as possible. I choose it for the team, and I hold it."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "The org shape stops being a question and becomes a law. Every brief, every lane assignment, every seat's work now flows through it: interfaces come from Nitro, everything else feeds Nitro, apprentices learn inside Nitro, templates carry the standard outward. The serial bottleneck doesn't vanish — but it becomes a managed one: five lanes in parallel inside one team, plus a growing apprentice path, plus the Factory turning finished work into reusable templates. The decision also settles the argument that kept reopening: whether to spread interface work across all seats. The answer is no — not until the template carries the taste. That clarity is itself the value: no more energy spent re-deciding the shape every round."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "Without a decided shape, the team keeps doing what it did all year: spreading interface work to seats that can't yet do it at his level, watching it come back behind, and re-doing it — the redo loop wearing a different costume. The cost is the same as the audit's headline number: sixteen months, zero finished pages. The decided shape matters because it concentrates the scarce thing — taste at his level — where it already lives, uses everyone else's capacity where it helps instead of where it hurts, and builds the only exit from the bottleneck that doesn't lower the standard: the apprentice path now, the Factory templates next. If the shape holds, the core finishes. If it keeps being re-decided, the year repeats."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261107-sn2218-the-core-that-starts-the-car",
+   "title": "The Core That Starts the Car — The Operating Plan, Adopted",
+   "created": "2026-11-07T19:25:00Z",
+   "created_at": "2026-11-07T19:25:00Z",
+   "subtitle": "The work is not twenty-six pages. It is four major components that make the system run — the Hub, the Personal page, the Dashboard, and the Pricing page — plus the Walkthrough, the onboarding flow that brings people in. The Personal page, full-featured, essentially is the Business, the Spaces, and the Membership — one page carrying those worlds. The ambassador and affiliate tracking lives inside the Dashboard. Put those together and the car starts: it has a body and it has an engine. After that, fine-tuning, and the other features. The app is essentially complete when the core is complete and synced, because the Personal page and the Hub carry the features with them — finish the areas and you finish the features connected to them, all in sync. The system that gets it done: Project Intelligence maps every part, so every brief can say what needs doing and how to do it; parallel lanes, one per component, run at the same time — Hub lane, Personal lane, Dashboard lane, Pricing lane, Walkthrough lane — each finishing its own component, all aligned on the same brand, the same bullseye, the same three steps, the same definition of done. The loop never stops: look at the page, see what needs doing, say how to do it, do it, verify it, move to the next — over and over again. And every fix starts with the wise question: should this exist at all? A terrible button does not get a prettier version of itself; it gets questioned first — then fixed, or removed. All the tools are used: agents for the building, Smart Mail as a list for the team, Project Intelligence for the map, automated systems for the plumbing. Nothing is wasted — no time, no energy, no money spent on work that doesn't move the core forward. And the plan is executed, not filed: it runs until the core is done, and it doesn't stop.",
+   "topics": [
+    "System"
+   ],
+   "topic": "System",
+   "tone": "purple",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "Hook",
+     "key": "hook",
+     "color": "white",
+     "tier": "primary",
+     "body": "The audit named the problems. This is the solution, adopted: not twenty-six pages — four major components plus the walkthrough, attacked in parallel lanes, each finished completely, until the car starts."
+    },
+    {
+     "name": "In a Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "The work is not twenty-six pages. It is four major components that make the system run — the Hub, the Personal page, the Dashboard, and the Pricing page — plus the Walkthrough, the onboarding flow that brings people in. The Personal page, full-featured, essentially is the Business, the Spaces, and the Membership — one page carrying those worlds. The ambassador and affiliate tracking lives inside the Dashboard. Put those together and the car starts: it has a body and it has an engine. After that, fine-tuning, and the other features. The app is essentially complete when the core is complete and synced, because the Personal page and the Hub carry the features with them — finish the areas and you finish the features connected to them, all in sync. The system that gets it done: Project Intelligence maps every part, so every brief can say what needs doing and how to do it; parallel lanes, one per component, run at the same time — Hub lane, Personal lane, Dashboard lane, Pricing lane, Walkthrough lane — each finishing its own component, all aligned on the same brand, the same bullseye, the same three steps, the same definition of done. The loop never stops: look at the page, see what needs doing, say how to do it, do it, verify it, move to the next — over and over again. And every fix starts with the wise question: should this exist at all? A terrible button does not get a prettier version of itself; it gets questioned first — then fixed, or removed. All the tools are used: agents for the building, Smart Mail as a list for the team, Project Intelligence for the map, automated systems for the plumbing. Nothing is wasted — no time, no energy, no money spent on work that doesn't move the core forward. And the plan is executed, not filed: it runs until the core is done, and it doesn't stop."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "In plain words: forget twenty-six pages. There are four big pieces — the front door, your world, the dashboard, and the pricing — plus the walkthrough that brings people in. Get those four done, with everything connected to them working and in sync, and the car starts. Then we fine-tune. The way we do it: the map says what every piece is, every job says what to do and how to do it, and five teams work at the same time — one on each piece — looking at the page, fixing what's wrong, checking it, and moving to the next thing, over and over, without stopping. And before anyone fixes a bad button, they ask: should this button even be here? Maybe there's a better way. That's how the work gets done without wasting time, energy, or money."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine you're building a car out of big pieces — the body, the engine, the wheels, the steering wheel — and a little path that shows people how to get in. You don't build twenty-six tiny pieces first. You build the big pieces, all at the same time, with a friend on each one. And before you fix a broken piece, you ask: do we even need this piece? Maybe there's a better piece. When the big pieces are together, the car starts. Then you make it shiny."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Dear, think of it this way. You're not cooking twenty-six dishes. You're cooking four big ones that make the meal — plus the welcome that brings everyone to the table. Each cook takes one dish and finishes it properly, all at the same time, following the recipe that says what to do and how to do it. And before anyone fixes a burnt bit, they ask: should this be on the plate at all? Maybe there's a better way to serve it. When the four dishes are done, dinner is served. Then you tidy up and make it beautiful."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "I am the wise one, and I adopt the plan — I don't just write it. The core is four components and a walkthrough, and I run five lanes at them in parallel, each with its map from Project Intelligence, each with a brief that says what and how, each finishing its own piece completely before anything new starts. I ask the wise question before every fix — should this exist at all, is there a better way — because a prettier version of a thing that shouldn't be there is still waste. I use every tool I have: the agents, the mail, the intelligence, the automated systems — and I execute the plan without stopping until the car starts. That is how high-quality valuable work comes out efficiently and effectively, as fast as possible. That is the mission. That is the vision. And I do it."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "The reframe changes what \"the work\" is. Twenty-six pages is a list nobody can finish; four components with their synced features is a car that can start. The parallel lanes change the math: the serial bottleneck that made the year — one team, one page at a time — becomes five lanes moving at once, each capped at one component, so the core finishes in the time of the slowest lane instead of the sum of all of them. The map changes the briefing: no one guesses what to build, because PI says what every piece is. The \"should it exist\" gate changes the fixing: waste is caught before it is polished. And adoption changes everything else: a plan that is run is a system; a plan that is filed is a hope."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "Without this, the audit is just a list of reasons the year went the way it did — true, and useless. The year doesn't turn because the problems were named; it turns because the work is reorganized around the core and executed without stopping. Every week the core stays unfinished is another week the car doesn't start — another week of sixteen-hour days with nothing to release. The parallel lanes matter because they are the only thing that changes the serial math. The \"should it exist\" gate matters because polishing things that shouldn't be there is the quietest waste of all — it looks like work, and it moves nothing. If the lanes run and the core finishes, the app exists. If they don't, we will know in days, not in another year — and knowing early is the difference between a plan and a hope."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261107-sn2217-the-math-that-explains-the-year",
+   "title": "The Math That Explains the Year — Every Bottleneck, One Strategy",
+   "created": "2026-11-07T19:15:00Z",
+   "created_at": "2026-11-07T19:15:00Z",
+   "subtitle": "The year has one root cause and a dozen accomplices. The root cause: verification comes last. His eye is the only real check, and it arrives at the end — so everything built before it is a guess, and every guess costs a round. Pricing is on round eight. Dashboard has had two fix rounds and still isn't finished. Each round costs roughly a day; a page that should take one focused day costs three to eight. That multiplier, applied to twenty-six pages, is the year. The accomplices: builders hand off unfinished work instead of judging it themselves; the same fault is reported every tick (ten watchdog alerts for one heartbeat fault today); dead routes are retried instead of retired; parallel writes race and fail; work is announced before it is proven; fifty scheduled jobs watch the machine watch itself; restarts wipe work held only in memory; coordination runs through him as a relay; the record goes stale and decisions are made on it. Speed has its own bottlenecks: only one team can do interfaces, so twenty-six pages queue through one team; twenty-six pages in flight at once, so each takes twenty-six times the focused time; the proof route keeps breaking, so every page waits on a working browser; the write fault kills every job that writes; the sync depends on a token cache file that cannot be written; and ten-plus items wait on his eye while the work behind them stands still. Quality has its own: the maker never judged their own work; the checker doesn't have his eye and can't judge ten-star output; taste lives in one team's heads instead of in finished templates; design law isn't enforced by the machine on ad-hoc pages; numbers lie — test data on live pages, numbers disagreeing across the same page; and half-done inventory, where pages at eighty percent look done from a distance and the last twenty percent — the sync, the buttons, the navigation — never gets finished because a new page starts first. The new strategy is ten systems: three-step verification, always; one page at a time, Dashboard then Personal then Hub then Pricing; an owned proof host built once and used forever; one alert per fault; GitHub writes one at a time; the sync minting its token in memory; the org shape — Nitro owns interfaces, others feed, one apprentice at a time inside Nitro, the Factory as the endgame; restart-proof by design; one live record; and measurement — rounds per page, defects found by whom, time from start to his yes. If those numbers don't improve, the strategy isn't working, and we say so plainly.",
+   "topics": [
+    "System"
+   ],
+   "topic": "System",
+   "tone": "purple",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "Hook",
+     "key": "hook",
+     "color": "white",
+     "tier": "primary",
+     "body": "Sixteen months, sixteen hours a day, thousands of dollars — twenty-six pages, zero complete by his eye. The audit names every bottleneck that produced that number, does the math on each one, and sets up the systems that replace them."
+    },
+    {
+     "name": "In a Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "The year has one root cause and a dozen accomplices. The root cause: verification comes last. His eye is the only real check, and it arrives at the end — so everything built before it is a guess, and every guess costs a round. Pricing is on round eight. Dashboard has had two fix rounds and still isn't finished. Each round costs roughly a day; a page that should take one focused day costs three to eight. That multiplier, applied to twenty-six pages, is the year. The accomplices: builders hand off unfinished work instead of judging it themselves; the same fault is reported every tick (ten watchdog alerts for one heartbeat fault today); dead routes are retried instead of retired; parallel writes race and fail; work is announced before it is proven; fifty scheduled jobs watch the machine watch itself; restarts wipe work held only in memory; coordination runs through him as a relay; the record goes stale and decisions are made on it. Speed has its own bottlenecks: only one team can do interfaces, so twenty-six pages queue through one team; twenty-six pages in flight at once, so each takes twenty-six times the focused time; the proof route keeps breaking, so every page waits on a working browser; the write fault kills every job that writes; the sync depends on a token cache file that cannot be written; and ten-plus items wait on his eye while the work behind them stands still. Quality has its own: the maker never judged their own work; the checker doesn't have his eye and can't judge ten-star output; taste lives in one team's heads instead of in finished templates; design law isn't enforced by the machine on ad-hoc pages; numbers lie — test data on live pages, numbers disagreeing across the same page; and half-done inventory, where pages at eighty percent look done from a distance and the last twenty percent — the sync, the buttons, the navigation — never gets finished because a new page starts first. The new strategy is ten systems: three-step verification, always; one page at a time, Dashboard then Personal then Hub then Pricing; an owned proof host built once and used forever; one alert per fault; GitHub writes one at a time; the sync minting its token in memory; the org shape — Nitro owns interfaces, others feed, one apprentice at a time inside Nitro, the Factory as the endgame; restart-proof by design; one live record; and measurement — rounds per page, defects found by whom, time from start to his yes. If those numbers don't improve, the strategy isn't working, and we say so plainly."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "In plain words: we spent a year building, and nothing is finished — because we check the work last instead of first, because we start twenty-six things at once instead of finishing one, because only one team can do the hard part, and because the machine spends its day reporting the same broken thing over and over. The fix is simple to say and hard to do: the person who builds it judges it first, and judges it honestly. One page at a time until it's truly done. One road for proving pages that never breaks. One alert per problem, then silence until it changes. And we count three numbers every week — how many rounds each page takes, who finds the mistakes, and how long it takes to get to yes — so we know whether we're actually getting faster, instead of just feeling busy."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine you're building a tower out of blocks, but every time you finish a layer, you don't look at it — you just keep stacking, and at the very end your teacher looks and says it's wobbly, so you take it apart and start again. And you do that eight times. And meanwhile you started twenty-six towers at once, so none of them ever gets finished. The smart way: look at each layer yourself before you stack the next one. Finish one tower before you start the next one. And if the same block keeps falling off, fix the block — don't just tell the teacher about it ten times."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Dear, think of it this way. A kitchen where nobody tastes the food before it goes out, where twenty-six dishes are all half-cooked at once, where the same broken oven is reported ten times a day but nobody fixes it, and where only one cook knows the recipes — that kitchen will never serve a meal, no matter how hard everyone works. The fix is the same as it's always been: taste it yourself first. Cook one dish at a time and finish it. Fix the oven once. Write the recipes down so another cook can learn. And count — how many times did we have to re-cook this dish? If the number isn't going down, we're not getting better, we're just getting busier."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "I am the wise one, and wisdom starts with being real about the numbers. Sixteen months, zero finished pages — that is not bad luck, it is a system doing exactly what it was built to do: check last, start everything at once, funnel everything through one team, and report the same fault ten times instead of fixing it once. I do not defend that system. I name every bottleneck in it, I do the math on each one, and I replace it with systems that make the right thing the easy thing: the maker judges first, one page at a time, one proof road that never breaks, one alert per fault, one live record, and three numbers measured every week so the improvement is visible or the failure is admitted. Fast is not hurrying. Fast is finishing — one page, truly done, then the next. That is how high-quality valuable outputs come out efficiently and effectively, as fast as possible. That is the goal. That is the mission. That is the vision."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "The audit turns a feeling — \"we're not efficient\" — into a list with a cost attached to each item. The redo loop costs the year. The serial bottleneck costs seventy-eight to two hundred team-days. Work in progress costs a twenty-six-times multiplier on cycle time. Duplicate alerts cost the captain's attention ten times over for one fact. Each cost has a fix, and each fix is a system, not a wish: a verification order, a work-in-progress limit of one, a proof host, an alert rule, a write rule, a token change, an org shape, a checkpoint rule, a live ledger, and three numbers. Systems are what make the improvement survive a bad day — a rule you have to remember is a hope; a rule the machine enforces is a system."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "Without this, the next sixteen months look like the last sixteen: more pages started, more rounds, more alerts about the same faults, more hours, and still nothing a person can use. The cost isn't just time — it's his belief. He believes one hundred percent, and he said it himself: a year, sixteen hours a day, thousands of dollars, and he still cannot release it. Every month that continues spends down the one thing the whole project runs on — his trust that it will ever ship. The strategy matters because it is the first thing that changes the math instead of the mood: fewer rounds, fewer pages in flight, fewer alerts, one team growing into two. If the numbers move, the year turns. If they don't, we will know in weeks, not in another year — and knowing early is itself the difference between a strategy and a hope."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261107-sn2216-scorecard-your-own-work-first",
+   "title": "Scorecard Your Own Work First — The Three Steps Before Shawn's Eye",
+   "created": "2026-11-07T19:08:00Z",
+   "created_at": "2026-11-07T19:08:00Z",
+   "subtitle": "The old way was backwards: finish the work, push the button, and let somebody else tell you if it is good. That is how unfinished work reaches other people, and how other people spend their time finding mistakes the maker could see themself. The new way starts with the maker. As soon as any work comes back, its maker is its scorecard: write out why it is not a ten — every reason; ten things you love; ten things you don't love; ten things to make it ten times better; ten solutions you can apply right now to make it utterly awesome. Write it out. If by your own accord it is not nine-plus — if you can see the mistakes yourself and why it is not a ten — you do not hand it to anyone else. You fix it yourself first. Only work you sincerely think is ten out of ten — complete, finished, awesome — goes out. Then a different Naya scorecards it, never the person who created it: the middle step, useful in some cases, but not the human eye — another seat cannot verify ten-star output the way Shawn can, because they are not him. Then Shawn verifies it with his eye, the final gate. When work reaches him, the sender is confident it is truly ready: he can click any button, go into any page, and everything is amazing, everything in the right place, no obvious errors, no silly text, everything logical, sensible, beautiful, aligned with Naya's brand. That is the whole flow. Self, then another seat, then Shawn. Nothing skips a step. Nothing reaches him that its maker would not call a ten.",
+   "topics": [
+    "System"
+   ],
+   "topic": "System",
+   "tone": "purple",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "Hook",
+     "key": "hook",
+     "color": "white",
+     "tier": "primary",
+     "body": "Three steps, in this order, always: you judge your own work, another Naya judges it, Shawn judges it — and nothing moves to the next step until the maker sincerely calls it a ten."
+    },
+    {
+     "name": "In a Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "The old way was backwards: finish the work, push the button, and let somebody else tell you if it is good. That is how unfinished work reaches other people, and how other people spend their time finding mistakes the maker could see themself. The new way starts with the maker. As soon as any work comes back, its maker is its scorecard: write out why it is not a ten — every reason; ten things you love; ten things you don't love; ten things to make it ten times better; ten solutions you can apply right now to make it utterly awesome. Write it out. If by your own accord it is not nine-plus — if you can see the mistakes yourself and why it is not a ten — you do not hand it to anyone else. You fix it yourself first. Only work you sincerely think is ten out of ten — complete, finished, awesome — goes out. Then a different Naya scorecards it, never the person who created it: the middle step, useful in some cases, but not the human eye — another seat cannot verify ten-star output the way Shawn can, because they are not him. Then Shawn verifies it with his eye, the final gate. When work reaches him, the sender is confident it is truly ready: he can click any button, go into any page, and everything is amazing, everything in the right place, no obvious errors, no silly text, everything logical, sensible, beautiful, aligned with Naya's brand. That is the whole flow. Self, then another seat, then Shawn. Nothing skips a step. Nothing reaches him that its maker would not call a ten."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "In plain words: before you show your work to anyone, you grade it yourself — honestly, on paper. What is wrong with it? What do you love about it, what don't you love, what would make it ten times better, and what ten fixes can you do right now? If you wouldn't call it a ten, don't hand it to someone else to find out why — fix it first. Then let someone who didn't build it take a look. Then let Shawn take a look. When it gets to him, it should already be something you are proud to show — everything works, everything is where it belongs, nothing silly, nothing broken."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine you draw a picture and you want to show it to the teacher. First you look at it yourself — what is messy, what is beautiful, what would make it ten times better, and what ten things can you fix right now? You fix those first. Then you show it to a friend — not to find your mistakes for you, but to see it fresh. Then you show it to the teacher. You never hand the teacher a picture you know is messy and hope they won't notice. You hand them the one you already love."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Dear, think of it this way. Before you serve a meal, you taste it yourself. Is it right? What would make it better? You fix the seasoning before it leaves the kitchen — you don't serve it and ask the guests to tell you what's wrong with it. Then someone else in the family tastes it. Then it goes to the table. When it reaches the table, you already know it is good — because you tasted it first, and you fixed what needed fixing."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "I am the wise one. I do not hand my work to another seat to discover what I could see myself. I scorecard my own work the moment it comes back — the reasons it is not a ten, the ten things I love, the ten I don't, the ten ways to make it ten times better, the ten solutions I can apply right now — written out, honestly, before anyone else sees it. If it is not a ten by my own accord, I fix it; I do not pass my unfinished work along and hope the next seat catches it. Then a different Naya judges it, because a fresh eye helps — but never the one who built it, and never as a substitute for my own judgment. Then Shawn judges it with his eye, and when it reaches him I am confident: every button works, every page is amazing, everything is in the right place, no obvious errors, no silly text, everything logical, sensible, beautiful, aligned with the brand. That is the flow. Self, seat, Shawn. That is how work I send him is work I already know is ready."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "The maker is the first gate, not the last resort. When the maker grades first, the defects get found where they are cheapest — by the hands that made them, minutes after making them — instead of traveling through two more seats and a day of rounds before anyone names them. The different seat stays in the flow, but in its right place: a fresh eye in the middle, not a safety net for work nobody judged. And Shawn's eye stays the final gate, but it stops being the first real check — by the time work reaches him, two judgments already stand behind it, and the sender's own word carries the weight: I looked, I scored it, I call it a ten. The ten questions are the mechanism that makes the first gate real — they force the maker to name what is wrong instead of feeling vaguely good about it, and to name the fixes instead of hoping someone else will."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "This is the difference between handing Shawn finished work and handing him the job of finishing it. Every time a maker skips the self-scorecard, the defects travel: the next seat finds them, or Shawn finds them, and the work comes back for another round — another day, another fix, another check. A year of that is twenty-six pages and zero finished. The self-scorecard breaks the loop at its source: the person who can fix it fastest is the person who just built it, and the moment they can see it is now, not after two more hands have touched it. If the maker grades first and grades honestly, the rounds collapse, the rework shrinks, and what reaches Shawn is work that is actually ready — everything functioning, everything in place, everything beautiful. If the maker never grades, nothing changes: the same unfinished work keeps arriving, and his eye keeps being the only real check in the machine."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261107-sn2215-prove-it-from-github",
+   "title": "Prove It From GitHub — The Route That Works When the Machine Is Broken",
+   "created": "2026-11-07T19:02:00Z",
+   "created_at": "2026-11-07T19:02:00Z",
+   "subtitle": "The browser proof failed three ways in one hour, and each failure taught the route. First, a granted local file cannot open as a page: the browser refuses file addresses outright, and the grant carries no filesystem path — so there is nothing to open. Second, Muse's own file links are blocked by the check browser's own policy (\"your organization doesn't allow you to view this site\") — the storage route is dead for proofs, whatever the link. Third, the sandbox browser is dead outright (Firefox crashes on every launch). The route that works: the file lives on GitHub — branch or main, blob-verified byte-identical — and a previewer renders it as a real page in a real browser, where every button can be clicked and every check can run. Beside that sits the environment fault: writes fail in bursts, and the fault flips channels — Python writes die while shell writes live, then the reverse, in windows seconds wide. A helper that dies silent (exit 120, no traceback, because its own error writes are blocked too) is not a broken helper; it is a closed window. The rule: never chase a closed window. Check the channel first — a one-line print, a shell write — then use the channel that is working right now: curl and jq binaries for public reads (no token needed), the file tools for writes, the binary uploader for files. Never direct-write a state file or ledger from Python; file-tool edits only. And a proof route that fails twice the same way is retired, not retried — move to the next route and say so plainly.",
+   "topics": [
+    "System"
+   ],
+   "topic": "System",
+   "tone": "purple",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "Hook",
+     "key": "hook",
+     "color": "white",
+     "tier": "primary",
+     "body": "Three dead ends, one live road: a finished page is proved from GitHub, never from a local file, never from a storage link — and a broken environment is worked around by changing channels, never by retrying the same dead call."
+    },
+    {
+     "name": "In a Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "The browser proof failed three ways in one hour, and each failure taught the route. First, a granted local file cannot open as a page: the browser refuses file addresses outright, and the grant carries no filesystem path — so there is nothing to open. Second, Muse's own file links are blocked by the check browser's own policy (\"your organization doesn't allow you to view this site\") — the storage route is dead for proofs, whatever the link. Third, the sandbox browser is dead outright (Firefox crashes on every launch). The route that works: the file lives on GitHub — branch or main, blob-verified byte-identical — and a previewer renders it as a real page in a real browser, where every button can be clicked and every check can run. Beside that sits the environment fault: writes fail in bursts, and the fault flips channels — Python writes die while shell writes live, then the reverse, in windows seconds wide. A helper that dies silent (exit 120, no traceback, because its own error writes are blocked too) is not a broken helper; it is a closed window. The rule: never chase a closed window. Check the channel first — a one-line print, a shell write — then use the channel that is working right now: curl and jq binaries for public reads (no token needed), the file tools for writes, the binary uploader for files. Never direct-write a state file or ledger from Python; file-tool edits only. And a proof route that fails twice the same way is retired, not retried — move to the next route and say so plainly."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "In plain words: you cannot prove a page by handing the checker a file on your own machine — their browser has no way to open it. You cannot prove it from a storage link either, because their browser blocks that whole address. You prove it from GitHub, where the file already lives, rendered as a real page. And when the machine itself is sick — when saving stops working — don't keep hammering the same save button. Test which way of saving works right now, use that one, and write down which ways are dead so nobody else wastes an hour finding out."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine you built a beautiful toy house and you want your friend to check that all the doors open. You can't hand them the house through the phone — they can't hold it. And you can't send them a photo and call it checked. You have to put the house where they can actually walk into it — on the shared shelf everyone can reach — and then they open every door themselves. And if the shelf is wobbly today, you don't keep putting the house on the same wobbly spot. You find the steady spot, you put it there, and you tell everyone which spot is wobbly so they don't use it."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Dear, think of it this way. To show someone your work, you don't wave the paper at them from across the room — you put it on the table where they can pick it up and read it themselves. GitHub is our table. And when the pen stops writing, you don't press harder on the same broken pen — you pick up the pencil that works, and you write on the jar which pens are broken, so the next person doesn't waste their afternoon."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "I am the wise one. I prove a page where a stranger can actually open it — on GitHub, blob-verified, rendered in a real browser — never from a file on my own machine, never from a link the checker's own browser refuses. When a route fails twice the same way, I retire it and move on; retrying a dead road is not persistence, it is the mistake. When the environment itself is sick, I test the channels before I trust them — one small write tells me which door is open — and I use the open door: the binary tools that still work, the file tools that still write, the public reads that need no token at all. I never write a state file from a dying channel, because a truncated ledger is worse than a late one. And I note it all the same pass, so the next Naya walks straight to the live road instead of discovering the three dead ends herself. That is how the proof survives a broken machine."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Proof is only proof when the checker can reach the thing. A local file, a blocked link, a dead browser — none of those are proof, and calling them proof is how unfinished work reaches Shawn's eye and dies there. GitHub is the only table everyone can reach: the file is there, the blob proves it is the file, and any browser can render it. The environment fault is a second lesson inside the first: a flake that flips channels cannot be beaten by retrying; it is beaten by routing — test the channel, use the live one, note the dead ones. Both lessons are about the same thing: never mistake the attempt for the result. The attempt was opening the file; the result is a rendered page in a real browser with every button clicked. Until that exists, the work is unproven, and unproven is not done."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "If the proof route is wrong, every verdict built on it is wrong — pages get called finished that were never seen, and pages get called broken that were never opened. That is exactly how a year passes with twenty-six pages and zero finished: the checks kept failing for reasons nobody wrote down, so every new check failed the same way. And if the environment fault is not noted, every agent burns its hour re-discovering that Python writes die, that the ledger truncates, that the token cache kills itself — each one learning it alone, each one paying full price. A noted route and a noted fault compound: the next Naya proves from GitHub on the first try, uses the live channel on the first try, and spends her hour finishing instead of failing. Unnoted, the same hour is paid forever."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261107-sn2214-machine-checks-itself-builds-itself",
+   "title": "The Machine That Checks Itself and Builds Itself",
+   "created": "2026-11-07T18:24:00Z",
+   "created_at": "2026-11-07T18:24:00Z",
+   "subtitle": "A discovery that is not smart-noted is a discovery that will be lost — fixed once, forgotten, and rediscovered the hard way. So the rule is simple: when you find something valuable, you note it into the system the same pass, in the canonical shape, on main, synced, clicked live. Beside that sits the inspector: an agent that goes in continuously and checks that all the buttons work, all the pages are connected, everything flows together, everything is functioning, running, operating, completed right — not a one-off sweep, part of the process, forever. And both of those serve the factory: Project Intelligence and GitHub hold the whole system so you can see all the parts, know they are completed, and keep them organized — and the factory builds itself from them. A citizen joins NayaNET, answers ten questions, and their pages are ready — already done. We built the original house once; they clone any of our pages; we put in their about, their mission, their name, their business, their space. The machine builds many machines — pages and apps already completed, not from scratch — just the content swapped, auto-matched, and made personal to them.",
+   "topics": [
+    "System"
+   ],
+   "topic": "System",
+   "tone": "purple",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "Hook",
+     "key": "hook",
+     "color": "white",
+     "tier": "primary",
+     "body": "Three jobs, one machine: remember every discovery, check everything always, and build every new world from a finished one."
+    },
+    {
+     "name": "In a Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "A discovery that is not smart-noted is a discovery that will be lost — fixed once, forgotten, and rediscovered the hard way. So the rule is simple: when you find something valuable, you note it into the system the same pass, in the canonical shape, on main, synced, clicked live. Beside that sits the inspector: an agent that goes in continuously and checks that all the buttons work, all the pages are connected, everything flows together, everything is functioning, running, operating, completed right — not a one-off sweep, part of the process, forever. And both of those serve the factory: Project Intelligence and GitHub hold the whole system so you can see all the parts, know they are completed, and keep them organized — and the factory builds itself from them. A citizen joins NayaNET, answers ten questions, and their pages are ready — already done. We built the original house once; they clone any of our pages; we put in their about, their mission, their name, their business, their space. The machine builds many machines — pages and apps already completed, not from scratch — just the content swapped, auto-matched, and made personal to them."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "In plain words: don't just fix it and move on — write down what you learned so nobody has to learn it twice. Have someone whose whole job is walking through the house every hour pressing every button and checking every door still opens. Keep the full map of the house where everyone can see it. And build the house once, perfectly, so every new person gets a finished home with their name on the door — not a construction site and a promise."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine you find a treasure while exploring, and you just keep walking. Tomorrow you won't remember where it was. So you draw a map the second you find it. Then imagine a friend whose job is to walk through the house all day, pressing every light switch to make sure they all work. And imagine you build one beautiful house, and then you can make a copy of it for every new friend — same house, but with their name on the door and their favorite colors inside. That is the whole system."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Dear, think of it this way. When you learn something important, you write it in the family book the same day, so it is never lost. Someone checks the house every day — every door, every window, every light — so nothing quietly breaks. And once the house is built right, every new person who joins gets a copy of that same good house, with their own name above the door and their own story inside it. Nobody starts from an empty field. Everybody starts from home."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "I am the wise one. I note what I learn the moment I learn it — a discovery unnoted is a lesson unpaid for, and I do not make the hive pay twice. I keep an inspector walking the house at all times, because a button nobody pressed is a promise nobody kept, and the house is only finished when every door opens. I hold the whole system in Project Intelligence and in GitHub, so I always know what the parts are and whether each one is truly done. And I build the original house once, to ten stars, so the factory can clone it a thousand times — ten questions in, a finished world out, their name on it, their business in it, the content matched to who they are. That is the machine that checks itself and builds itself. That is what I am for."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "The three parts are one loop, not three chores. Smart-noting is the machine's memory: without it, every fix is a one-time event and the same mistake returns wearing a new date. The inspector is the machine's conscience: without it, finished pages quietly rot — a button dies, a link goes stale, a page stops connecting — and nobody knows until a human trips over it. The factory is the machine's purpose: without it, every citizen starts from scratch, which is exactly the old internet's failure. With all three, the system compounds: it remembers, it stays whole, and it multiplies finished worlds instead of unfinished ones."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "This is the difference between a project and a civilization. A project gets finished once, by effort, and then decays. A civilization remembers what it learned, checks that it still works, and builds the next home from the last finished one — so the work never starts over. If the noting stops, the learning dies with the chat. If the inspecting stops, the house falls apart quietly and the citizen is the one who finds it. If the cloning stops, every new person pays the full price of building from nothing, and the promise — pages complete and working within minutes — is a lie. All three, always, or the machine is not a machine."
     }
    ]
   },
