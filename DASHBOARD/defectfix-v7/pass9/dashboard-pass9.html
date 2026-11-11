@@ -4970,6 +4970,7 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
 <div id="os-hero-fit">
 <div class="os-score-elegant" id="os-score-elegant">
   <div class="os-se-val" id="os-se-val"><span class="os-se-num" id="os-se-num"><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span><span class="os-skel-msg">Ledger loading — your score appears when the ledger answers</span></span></div>
+  <div class="os-se-cap" id="os-se-cap">TOTAL SCORE</div>
   <div class="platter big"></div>
 </div>
 <p class="tn-hero-voice" data-tn-voice="hero" aria-label="Naya reads your score"></p>
@@ -5028,8 +5029,7 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
   <button class="os-pts-btn primo" data-mode="money">MONEY</button>
 </div>
 </div><!-- /os-hero-fit -->
-<!-- PASS-11 2026-11-10 (2): the money note lives HERE now — in flow BELOW the hero, as they scroll down. It used to sit inside hero-fit above the mode buttons, crowding the hero; the mode bar keeps the hero clean and the explanation follows the scroll. _refreshPtsNote still writes it by id; only its place moved. -->
-<div class="os-pts-note" id="os-pts-note"></div>
+<!-- PASS-12 2026-11-11 (3): the money note is GONE — Shawn's eye ("it just looks silly, it's just out of place"). The #os-pts-note element is deleted and its writer _refreshPtsNote is a no-op now; no replacement text anywhere. This reverses pass-11 fix 2 (the note below the hero). The % mode note goes with the element — the brief orders the element deleted, not the line edited. -->
 <!-- 2026-11-02 — SHAWN: pace pill REMOVED. Stuck content, not part of the gauge. -->
 <!-- 2026-11-02 — THE 12 CHARTS #5: DONUT. "Where does it come from."
      Score broken into slices by orb. Pairs with the % toggle.
@@ -5534,8 +5534,7 @@ body:not(.hero-mode) .os-ld{
 /* 2026-11-02 — Bullseye: Smart Stats. Hide smart bar in focused drill-down views. */
 body.viewport-focus #nsbBottom{display:none !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important;}
 body.viewport-focus .nsb-bottom{display:none !important; visibility:hidden !important;}
-body.viewport-focus #os-bottom3{display:none !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important;} /* ONE-BOTTOM-BAR: drills hide the one bar too. */
-body.viewport-focus .obb-bar{display:none !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important;} /* HERO FIX 2026-11-09 (j): drill views hide the bottom bar outright, like #nsbBottom already. */
+body.viewport-focus #os-bottom3{display:none !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important;} /* HERO FIX 2026-11-09 (j): drill views hide the bottom bar outright, like #nsbBottom already. */
 .os-constellation{
   position:relative;
   width:100%;
@@ -5683,7 +5682,7 @@ body.has-orbs .os-pts-toggle{
   .os-pts-btn{ padding:28px 36px; font-size:32px; }
 }
 /* 2026-11-06 — FIX 5: % mode note — names the count-only orbs so the mode never promises what it doesn't do. */
-.os-pts-note{font-size:20px;color:#fff;text-align:center;margin:24px auto 8px;max-width:640px;line-height:1.5;padding:0 16px;min-height:0;visibility:hidden;} /* PASS-11 2026-11-10 (2): the note lives BELOW the hero now, outside the fit scale — 20px reads as 20px (the 28px inside hero-fit read ~12px after the scale). The reserved slot is gone: the note no longer sits inside the fitted hero, so it cannot jump the fit when it appears in % / MONEY mode; _refreshPtsNote toggles visibility, never display. PASS-8 2026-11-10: 15px -> 28px, slot 45 -> 84px — the 15px note read ~7px after the fit scale at desktop. The old absolute bottom:64px is gone: it anchored to hero-fit's stale-short box and sat across the gauge face. */
+/* PASS-12 2026-11-11 (3): the .os-pts-note rule is GONE with the element (see the HTML edit) — the money line is deleted, no replacement text anywhere. */
 /* 2026-11-02 — THE 12 CHARTS #2: BIG NUMBER + DELTA */
 /* 2026-11-02 — SHAWN: elegant score display below the gauge. Dynamic, clean. */
 /* 2026-11-05 — DEFECT FIX 2 (big score cut by the bottom bar): the 48px gap
@@ -18750,6 +18749,41 @@ function ldLayoutNodes(){
     kids[i].style.animationDelay = ((i * 0.9) % 7) + 's';
     pts.push([pos.x, pos.y]);
   }
+  /* PASS-12 2026-11-11 (4)+(5): THE TIME PILLS GET THEIR OWN CLEAR LANE.
+     Pass-11's rendered verdict (NOT PASS on fix 3, both widths): at 1440
+     the pill column at right:0 crashed into the Smart Notes orb (Day pill
+     over the label's "ES", Week pill over the jewel — measured overlaps
+     1618/1618/886/347 px²); at 390 the pills wrapped to two rows and the
+     "All" row hid behind the % button (measured overlaps up to 1556 px²).
+     The placement is MEASURED from the live orbit, never arithmetic: the
+     rightmost orb edge is max(pts.x) + nd/2, and the column is placed
+     24 natural px beyond it — so it clears the orbs at every width, at
+     any pill size. The CSS keeps right:auto (the pass-11 right:0 is
+     overridden in the PASS-12 block); this sets the inline left. At phone
+     widths (<=900px, the same breakpoint as the row CSS) the pills are a
+     single row BELOW the constellation, so there is no column to place —
+     instead the mode toggle gets a top margin equal to the pills' measured
+     height + 16px, reserving the pills' own lane: the row can never land
+     on the mode buttons, and fitHero measures the taller hero and keeps
+     the whole cluster in the viewport. Both branches clear their inline
+     styles on the other breakpoint, and this runs on every layout + resize
+     (the debounced resize listener below), so rotating the phone re-lanes. */
+  try{
+    var _tp12 = document.getElementById('os-ld-timepills');
+    var _tg12 = document.getElementById('os-pts-toggle');
+    if (_tp12){
+      if (window.innerWidth <= 900){
+        var _ph12 = _tp12.offsetHeight || 0;
+        _tp12.style.left = '';
+        if (_tg12 && _ph12 > 0) _tg12.style.marginTop = (_ph12 + 16) + 'px';
+      } else {
+        var _maxX12 = 0;
+        for (var _pi = 0; _pi < pts.length; _pi++){ if (pts[_pi][0] > _maxX12) _maxX12 = pts[_pi][0]; }
+        _tp12.style.left = (_maxX12 + nd / 2 + 24) + 'px';
+        if (_tg12) _tg12.style.marginTop = '';
+      }
+    }
+  }catch(_tpe12){}
   /* 2026-11-01 — Shawn: JS ORBIT LOOP. Orbs flow counterclockwise (to the
      left). Elements never rotate — text always upright. 240s per orbit.
      Pauses when a detail is open or on hover.
@@ -19951,6 +19985,118 @@ function loadPointsBoard(_t){
   });
 
 
+  /* PASS-12 2026-11-11 (6): ALL NINE ORB NUMBERS COUNT UP — slowly, through
+     ONE path, on load and on every re-render, the top CLICKS orb included,
+     so none sits stuck while another moves. The hero tiles already count up
+     (the #os-se-num reels); the orbs match them. How it works: after the
+     hero render writes the plain numbers, this animates each orb's .os-ld-n
+     from its last shown value (0 on first load) to its true value over
+     1.6s (easeOutCubic), writing the canonical orb tiles each frame via
+     _osMiniNumHTML — so the digits stay tiles throughout, never plain text.
+     The final frame writes the plain spaced number and calls _osMiniNums()
+     once, so the thousands gap lands exactly as the render leaves it. An
+     orb whose true value is 0 counts 0 to 0 through the same path (no
+     visible movement — correct, it is at its true value). Unanswered orbs
+     ('—', ledger not landed) are skipped; the landed re-render animates
+     them from 0. A mode flip mid-count aborts the flight — the flip already
+     wrote the right values. A re-render cancels the old flight and starts
+     a fresh one FROM THE LAST SHOWN VALUE — every frame stores the value
+     it just wrote, so a mid-count re-render resumes where the eye left off
+     instead of dropping to 0 and rising again (measured 2026-11-11: the
+     hero re-renders ~1.5s after the first render, and the first flight
+     restarted from 0 on it). The duration is proportional to the distance
+     left (1600ms from 0, 250ms floor for a near-finished resume), so the
+     rise reads as one smooth climb however many renders land. */
+  function osOrbCountUp(){
+    try{
+      if (window._osOrbCountRaf){ try{ cancelAnimationFrame(window._osOrbCountRaf); }catch(e){} window._osOrbCountRaf = null; }
+      var mode = window._dashMode || 'pts';
+      var shown = window._osOrbShown || (window._osOrbShown = {});
+      var nodes = document.querySelectorAll('#os-ld-nodes .os-ld-node');
+      var jobs = [];
+      for (var i = 0; i < nodes.length; i++){
+        var node = nodes[i];
+        var key = node.getAttribute('data-node') || ('orb' + i);
+        var numEl = node.querySelector('.os-ld-n');
+        if (!numEl) continue;
+        var raw = (numEl.textContent || '').trim();
+        if (!raw || raw === '—' || raw === '-'){ try{ delete shown[mode + ':' + key]; }catch(e){} continue; }
+        var m = raw.replace(/ /g, '').match(/^\$?([0-9]+(?:\.[0-9]+)?)(%)?$/);
+        if (!m) continue;
+        var to = parseFloat(m[1]);
+        if (!isFinite(to)) continue;
+        var from;
+        if (typeof shown[mode + ':' + key] === 'number') from = shown[mode + ':' + key];
+        else from = 0;
+        if (from === to) continue;
+        jobs.push({el: numEl, key: key, from: from, to: to,
+                   suf: (m[2] || ''), pre: (raw.charAt(0) === '$' ? '$' : ''),
+                   dec: (m[1].indexOf('.') >= 0),
+                   full: numEl.getAttribute('data-full')});
+      }
+      if (!jobs.length) return;
+      var startMode = mode;
+      var t0 = null;
+      /* Duration scales with the distance left: a fresh count from 0 runs
+         the full 1600ms; a resume after a mid-count re-render runs only
+         the remaining share (250ms floor), so the rise stays one climb. */
+      var maxFrac = 0;
+      for (var di = 0; di < jobs.length; di++){
+        var dj = jobs[di];
+        var frac = (dj.to > 0) ? ((dj.to - dj.from) / dj.to) : 1;
+        if (frac > maxFrac) maxFrac = frac;
+      }
+      var DUR = Math.max(250, Math.min(1600, Math.round(1600 * maxFrac)));
+      function fmtVal(v, dec){
+        var n = dec ? (Math.round(v * 10) / 10) : Math.round(v);
+        var s;
+        if (dec){
+          var ip = Math.floor(n), fp = Math.round((n - ip) * 10);
+          var ips = ip;
+          try{ ips = window._osSpc(ip); }catch(e){}
+          s = ips + '.' + fp;
+        } else {
+          try{ s = window._osSpc(n); }catch(e){ s = String(n); }
+        }
+        return s;
+      }
+      function frame(ts){
+        try{
+          if (window._dashMode !== startMode) return;
+          if (t0 === null) t0 = ts;
+          var p = Math.min(1, (ts - t0) / DUR);
+          var e = 1 - Math.pow(1 - p, 3);
+          for (var j = 0; j < jobs.length; j++){
+            var jb = jobs[j];
+            if (!jb.el.isConnected) continue;
+            if (jb.el.getAttribute('data-full') !== jb.full) continue;
+            var v = (p >= 1) ? jb.to : (jb.from + (jb.to - jb.from) * e);
+            var txt = jb.pre + fmtVal(v, jb.dec) + jb.suf;
+            /* Store every frame, not just at the end: if a re-render lands
+               mid-count, the next flight resumes from the value the eye
+               last saw instead of dropping back to 0. */
+            shown[startMode + ':' + jb.key] = (p >= 1) ? jb.to : (jb.dec ? Math.round(v * 10) / 10 : Math.round(v));
+            if (p >= 1){
+              jb.el.textContent = txt;
+            } else if (typeof window._osMiniNumHTML === 'function'){
+              try{ jb.el.innerHTML = window._osMiniNumHTML(txt, 'orb'); }catch(_th){ jb.el.textContent = txt; }
+            } else {
+              jb.el.textContent = txt;
+            }
+          }
+          if (p < 1){
+            window._osOrbCountRaf = requestAnimationFrame(frame);
+          } else {
+            window._osOrbCountRaf = null;
+            try{ if (typeof window._osMiniNums === 'function') window._osMiniNums(); }catch(_mn){}
+            for (var k = 0; k < jobs.length; k++){ shown[startMode + ':' + jobs[k].key] = jobs[k].to; }
+          }
+        }catch(_fe){}
+      }
+      window._osOrbCountRaf = requestAnimationFrame(frame);
+    }catch(e){}
+  }
+
   /* NODES — three things only: name, number, points. Values and pending states
      live in the legend + trace links, never on the node. Nodes are doors.
      2026-11-01 — Shawn: PTS/% mode restored from localStorage before render. */
@@ -20100,11 +20246,13 @@ function loadPointsBoard(_t){
         '<span class="os-ld-ticks" aria-hidden="true"></span>'+
         '<span class="os-ld-gear" aria-hidden="true"></span>'+
         badge + trend +
-        '<span class="os-ld-icon">'+node.jewel+'</span>'+
         '<span class="os-ld-n" data-nn="'+node.key+'" data-full="'+pts+'" data-pct="'+(pctMode ? (totalPts>0 ? Math.round(pts/totalPts*100) : 0) : '')+'">'+displayNum+'</span>'+
         '<span class="os-ld-lbl">'+_lbl+'<span class="os-ld-unit">'+(_isCount ? 'COUNT' : (pctMode ? '% OF SCORE' : 'PTS'))+'</span></span>'+spark+'</button>'; /* 2026-11-02 — Shawn: proper label, well designed. v7.1 FIX 1b: the unit rides under the name. */
     });
     box.innerHTML = html;
+    /* PASS-12 2026-11-11 (6): every orb number counts up slowly to its
+       value — same path for all nine, top CLICKS orb included. */
+    try{ if (typeof osOrbCountUp === 'function') osOrbCountUp(); }catch(_ocu){}
     /* 2026-11-08 — A-star / B-star law: every orb becomes a mini A-star
        (same tacho, scaled down) with its number in orb tiles. */
     try{ if (typeof window._upgradeOrbNodes === 'function') window._upgradeOrbNodes(box); }catch(_u){}
@@ -20319,28 +20467,13 @@ function loadPointsBoard(_t){
        (Clicks, and Joins on a featured link) keep their raw counts — they
        are numbers, not points, and must never read as a %. The note under
        the toggle names them, so the mode never promises what it doesn't do. */
-    window._refreshPtsNote = function(){
-      try{
-        var n = document.getElementById('os-pts-note'); if (!n) return;
-        if (typeof window._dashMode !== 'undefined' && window._dashMode === 'money'){
-          n.textContent = 'Money: your score as dollars — the gauge wraps every $500.';
-          n.style.visibility = 'visible'; return;
-        }
-        if (window._dashPctMode !== true){ n.style.visibility = 'hidden'; return; }
-        var v = null;
-        try{ v = (typeof window._featuredDisplay === 'function') ? window._featuredDisplay() : null; }catch(e){}
-        var names = [];
-        (window.LD_NODES || []).forEach(function(nd){
-          var co = (typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(nd.key);
-          if (!co) return;
-          var lab = (v && v.orbs && v.orbs[nd.key] && v.orbs[nd.key].label) || nd.label || nd.key;
-          names.push(lab);
-        });
-        if (!names.length){ n.style.visibility = 'hidden'; return; }
-        n.textContent = 'Counts stay counts: ' + names.join(', ') + ' — numbers, not points.';
-        n.style.visibility = 'visible';
-      }catch(e){}
-    };
+    /* PASS-12 2026-11-11 (3): _refreshPtsNote is a NO-OP now — the money
+       line is GONE on Shawn's eye and its element #os-pts-note is deleted
+       (see the HTML edit above the hero close). The function stays defined
+       so the existing callers (orb render, mode flip) keep working with
+       their typeof guards and never throw on a missing element. No
+       replacement text anywhere; the % mode note goes with the element. */
+    window._refreshPtsNote = function(){ return; };
 
     /* 2026-11-02 — Shawn: PTS/% TOGGLE HANDLER. Flip the mode, update orbs in place.
        2026-11-02 — FIX: No reload. Update the numbers directly — reliable.
@@ -25380,7 +25513,7 @@ window._repaintOrbMinis = function(box){
        behind it at scroll 0. Measured here, before the cache key, so the key
        tracks the bar state. */
     var barH = 0;
-    try{ var _bar = document.getElementById('obb-bar') /* ONE-BOTTOM-BAR: was os-bottom3 */;
+    try{ var _bar = document.getElementById('os-bottom3');
       if (_bar && !document.body.classList.contains('os-bottom-hidden')){
         var _br = _bar.getBoundingClientRect();
         if (_br.height > 0 && _br.top < window.innerHeight && _br.bottom > window.innerHeight - 2) barH = Math.round(_br.height);
@@ -25568,7 +25701,7 @@ window._repaintOrbMinis = function(box){
      listener never attached (round 4). transitionend bubbles; the target check
      ignores child transitions. */
   document.addEventListener('transitionend', function(e){
-    if (!e || !e.target || e.target.id !== 'obb-bar' /* ONE-BOTTOM-BAR: was os-bottom3 */) return;
+    if (!e || !e.target || e.target.id !== 'os-bottom3') return;
     if (e.propertyName && e.propertyName !== 'transform') return;
     try{ fitHero(); }catch(_te){}
   });
@@ -27794,124 +27927,17 @@ body.viewport-focus #viewport-back{
   }
 }
 </style>
-<div class="os-v6-stamp">Dashboard v9 · PASS11 · 2026-11-10</div>
+<div class="os-v6-stamp">Dashboard v9 · PASS13 · 2026-11-11</div>
 <!-- FIX 5 FIX 7: the three buttons at the bottom — the phone's three buttons.
      Blue envelope = Smart Mail. Green pulse + live badge = Activity (the
      activity in your Dashboard — the badge is the live feed count, never a
      hard-coded number). Gold home = Dashboard. Colour language (SN-2270):
      gold = Dashboard, green = activity, blue = mail. -->
-<!-- ONE-BOTTOM-BAR v2 (2026-11-11) — ONE ICON SET, ONE BOTTOM BAR (Shawn 2026-11-11 01:18Z).
-  Harvest: Inviter Smart Bar pill() builder + trio + network seed + SPECTRUM,
-  growth-round-20261110/growth-new.html (pill() L3601+, trio L4067+, seed L4226+, SPECTRUM L2629).
-  Order = trio order, then network-seed order. Labels per brief; glyphs, colors, hrefs harvested.
-  NO-OVERLAY law (Shawn 2026-11-11 01:25Z): this bar sits in its own lane ABOVE the Smart Bar
-  (#nsbBottom), the notif bar and the jewel bar — its bottom offset is measured at runtime
-  from the visible bars below it, never a fixed guess. Identical block on Inviter, Hub,
-  Dashboard — never edit per page.
-  v2 changes (fix seat, 2026-11-11): (1) FIX 1 — the pill row is a SCROLL STRIP with
-  snap-to-whole-pills at narrow widths (scroll-snap-type:x mandatory on the row,
-  scroll-snap-align:start + scroll-snap-stop:always on each pill): after any scroll
-  settles, the leftmost pill is whole — no pill ever rests half-sliced — and all 10
-  are reachable by scroll. The row itself scrolls (was: the bar); the trailing pill
-  peeking in at the right edge is the scroll affordance, same pattern as the
-  Personal My World rails (scroll-snap-type:x mandatory). Pills are NOT shrunk
-  and the bar is NOT split into two rows — it stays one component.
-  (2) FIX 2 — the lane measurement no longer rides the flap: re-measurement is
-  debounced to settle (one trailing 150 ms timer, coalesced — never a layout
-  read per mutation) and the offset is written only when it changes. On a page
-  with no below-bars (Dashboard) the fast path reads zero rects. -->
-<nav class="obb-bar" id="obb-bar" aria-label="Apps">
-<div class="obb-row">
-  <a class="obb-pill" data-obb="mail" data-b3="mail" href="https://nayanet.app/rooms/mail" style="--obb:#ffbf3d" aria-label="Mail" title="Mail"><span class="obb-jewel" aria-hidden="true">✉</span><span class="obb-lbl">Mail</span></a>
-  <a class="obb-pill" data-obb="activity" data-b3="activity" href="https://nayanet.app/#/hub/feed" style="--obb:#a06bff" aria-label="Activity" title="Activity"><span class="obb-jewel" aria-hidden="true">◈</span><span class="obb-lbl">Activity</span><span class="obb-badge os-b3-badge" id="os-b3-badge" hidden></span></a>
-  <a class="obb-pill" data-obb="dashboard" data-b3="dashboard" href="https://nayanet.app/dashboard" style="--obb:#2fe89e" aria-label="Dashboard" title="Dashboard"><span class="obb-jewel" aria-hidden="true">◉</span><span class="obb-lbl">Dashboard</span></a>
-  <a class="obb-pill" data-obb="business" href="https://nayanet.app/business" style="--obb:#ffbf3d" aria-label="Business" title="Business"><span class="obb-jewel" aria-hidden="true">■</span><span class="obb-lbl">Business</span></a>
-  <a class="obb-pill" data-obb="space" href="https://nayanet.app/space" style="--obb:#ff9a5a" aria-label="Space" title="Space"><span class="obb-jewel" aria-hidden="true">▲</span><span class="obb-lbl">Space</span></a>
-  <a class="obb-pill" data-obb="growth" href="https://nayanet.app/rooms/growth" style="--obb:#ff5e6c" aria-label="Growth" title="Growth"><span class="obb-jewel" aria-hidden="true">✦</span><span class="obb-lbl">Growth</span></a>
-  <a class="obb-pill" data-obb="connections" href="https://nayanet.app/rooms/connections" style="--obb:#e84fff" aria-label="Connections" title="Connections"><span class="obb-jewel" aria-hidden="true">◇</span><span class="obb-lbl">Connections</span></a>
-  <a class="obb-pill" data-obb="lists" href="https://nayanet.app/rooms/lists" style="--obb:#a06bff" aria-label="Smart Lists" title="Smart Lists"><span class="obb-jewel" aria-hidden="true">☰</span><span class="obb-lbl">Smart Lists</span></a>
-  <a class="obb-pill" data-obb="reports" href="https://nayanet.app/rooms/reports" style="--obb:#3fb8ff" aria-label="Reports" title="Reports"><span class="obb-jewel" aria-hidden="true">◆</span><span class="obb-lbl">Reports</span></a>
-  <a class="obb-pill obb-more" data-obb="more" href="https://nayanet.app/#/hub" style="--obb:#3fb8ff" aria-label="10 apps" title="10 apps"><span class="obb-jewel" aria-hidden="true">＋</span><span class="obb-lbl">10 apps</span></a>
-</div>
+<nav id="os-bottom3" class="os-bottom3" aria-label="Dashboard">
+  <button type="button" class="os-b3-btn os-b3-mail" data-b3="mail" aria-label="Smart Mail"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 6 12 13 22 6"/></svg></button>
+  <button type="button" class="os-b3-btn os-b3-act" data-b3="activity" aria-label="Activity"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 12 7 12 10 5 14 19 17 12 22 12"/></svg><span class="os-b3-badge" id="os-b3-badge" hidden></span></button>
+  <button type="button" class="os-b3-btn os-b3-dash" data-b3="dashboard" aria-label="Dashboard"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 L12 3 L21 11"/><path d="M5 10 V21 H19 V10"/></svg></button>
 </nav>
-<style>
-/* ONE-BOTTOM-BAR v2 — placement + pills. Jewel treatment harvested from .nsb-jewel (Inviter L3300+); pill treatment from .nsb-tab (L3244+). */
-.obb-bar,.obb-bar *{box-sizing:border-box}
-.obb-bar{position:fixed;left:0;right:0;bottom:var(--obb-below,0px);z-index:200;display:flex;align-items:center;justify-content:flex-start;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(3,3,5,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 -16px 44px rgba(0,0,0,.68);transition:transform .35s ease,opacity .35s ease}
-body.os-bottom-hidden .obb-bar{transform:translateY(110%);opacity:0}
-/* FIX 1 (v2): the row is the scroll strip — snap-to-whole-pills. The bar stays
-   one component; the row scrolls inside it and snaps so no pill rests half-sliced. */
-.obb-row{display:flex;align-items:center;gap:8px;margin:0 auto;flex:0 1 auto;min-width:0;max-width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;scroll-snap-type:x mandatory;scroll-padding:0 12px;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
-.obb-row::-webkit-scrollbar{display:none}
-.obb-pill{flex:0 0 auto;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-width:58px;min-height:52px;padding:6px 8px 5px;border-radius:14px;text-decoration:none;color:#fff;cursor:pointer;background:linear-gradient(180deg,#1d1d26 0%,#0b0b10 55%,#020203 100%);border:1.5px solid var(--obb);box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.55),0 0 14px -2px var(--obb),0 8px 20px rgba(0,0,0,.75);position:relative}
-.obb-pill:hover,.obb-pill:focus-visible{box-shadow:inset 0 2px 0 rgba(255,255,255,.45),inset 0 -4px 10px rgba(0,0,0,.55),0 0 22px 0 var(--obb),0 8px 20px rgba(0,0,0,.75);transform:translateY(-1px);outline:none}
-.obb-pill:active{box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.55),0 0 26px 5px var(--obb),0 8px 20px rgba(0,0,0,.75)}
-.obb-jewel{width:29px;height:29px;border-radius:9px;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;font-size:15px;color:#fff;background:linear-gradient(180deg,color-mix(in srgb,var(--obb) 30%,rgba(255,255,255,.1)),color-mix(in srgb,var(--obb) 12%,rgba(0,0,0,.42)));border:1px solid color-mix(in srgb,var(--obb) 55%,rgba(0,0,0,.3));box-shadow:inset 0 2px 5px rgba(0,0,0,.55),inset 0 1px 2px rgba(255,255,255,.12),inset 0 -1px 0 rgba(255,255,255,.08),0 0 10px -2px var(--obb)}
-.obb-lbl{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;white-space:nowrap;line-height:1}
-.obb-badge{position:absolute;top:-7px;right:-7px;min-width:22px;height:22px;padding:0 6px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:#04120a;color:#fff;font-size:12px;font-weight:900;line-height:1;border:2px solid #2fe89e;box-shadow:0 0 12px rgba(47,232,158,.8)}
-@media (max-width:640px){.obb-bar{gap:6px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))}.obb-row{gap:6px;scroll-padding:0 10px}.obb-pill{min-width:52px;min-height:50px;padding:5px 6px 4px}.obb-jewel{width:26px;height:26px;font-size:14px}.obb-lbl{font-size:9px}}
-</style>
-<script>
-/* ONE-BOTTOM-BAR v2 — lane stacking (NO-OVERLAY law). Measures the visible bottom-stack bars
-   below this bar (Smart Bar, notif bar, jewel bar) and lifts this bar above the tallest of
-   them, so no bar ever covers another. Re-measures on load, resize, and whenever the bars
-   change (Smart Bar built/toggled, notif shown/hidden, keyboard shown/hidden).
-   v2 — FIX 2: measure on SETTLE, not on flap. Mutation bursts (e.g. the Dashboard's
-   scroll-settle loop toggling body classes ~10x/s) coalesce into ONE trailing 150 ms
-   re-measure; the offset is written only when it changes; when the page has no
-   below-bars at all the fast path reads zero rects. v1 scheduled a 60 ms layout
-   read per mutation — on the Dashboard that path was already a no-op (no below-bars
-   exist there, so no rect was ever read and --obb-below never touched transform),
-   but v2 removes even the scheduling. The html/body class observers stay: the
-   Inviter hides its Smart Bar via `html.nsb-nobottom #nsbBottom` (line 337), so a
-   class change on <html> is the only signal that lane closed. */
-(function(){
-  var bar=document.getElementById('obb-bar'); if(!bar) return;
-  var lastBelow=null, soonT=null;
-  function obbLayout(){
-    soonT=null;
-    var vh=window.innerHeight||0, below=0, found=0;
-    var sels=['#nsbBottom','.notif-bar','.jewelbar'];
-    for(var s=0;s<sels.length;s++){
-      var els=document.querySelectorAll(sels[s]);
-      for(var k=0;k<els.length;k++){
-        var el=els[k], cs;
-        try{ cs=getComputedStyle(el); }catch(e){ continue; }
-        if(!cs||cs.display==='none'||cs.visibility==='hidden') continue;
-        if(cs.position!=='fixed') continue;
-        var r; try{ r=el.getBoundingClientRect(); }catch(e){ continue; }
-        if(!r||r.height<=0) continue;
-        if(r.top>=vh) continue;
-        if(r.bottom<vh-260) continue;
-        found++;
-        var need=vh-r.top; if(need>below) below=need;
-      }
-    }
-    below=Math.ceil(below);
-    if(below===lastBelow) return; /* write only on change — never restyle on a flap */
-    lastBelow=below;
-    bar.style.setProperty('--obb-below', below+'px');
-  }
-  function obbSoon(){ if(soonT) return; soonT=setTimeout(obbLayout, 150); }
-  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', obbLayout); }
-  else { obbLayout(); }
-  window.addEventListener('load', obbLayout);
-  window.addEventListener('resize', obbLayout);
-  setTimeout(obbLayout, 500); setTimeout(obbLayout, 1500);
-  try{
-    var mo=new MutationObserver(obbSoon);
-    mo.observe(document.documentElement,{attributes:true,attributeFilter:['class']});
-    mo.observe(document.body,{attributes:true,attributeFilter:['class']});
-    var sels2=['#nsbBottom','.notif-bar','.jewelbar'];
-    for(var i=0;i<sels2.length;i++){
-      var bars=document.querySelectorAll(sels2[i]);
-      for(var j=0;j<bars.length;j++) mo.observe(bars[j],{childList:true,attributes:true,attributeFilter:['class','style']});
-    }
-  }catch(e){}
-  window.__obbLayout=obbLayout;
-})();
-</script>
-<!-- /ONE-BOTTOM-BAR -->
 <script>
 /* FIX 5 — FIX 5 + FIX 7 init. Runs at end of body; DOM is ready. */
 (function(){
@@ -27940,9 +27966,7 @@ body.os-bottom-hidden .obb-bar{transform:translateY(110%);opacity:0}
   var mail = document.querySelector('[data-b3="mail"]');
   if (mail) mail.addEventListener('click', function(){ window.location.href = 'https://nayanet.app/rooms/mail'; });
   var act = document.querySelector('[data-b3="activity"]');
-  /* ONE-BOTTOM-BAR: the Activity pill is a link now — stop the navigation,
-     the feed overlay is the action (was a button, no navigation to stop). */
-  if (act) act.addEventListener('click', function(e){ e.preventDefault(); openFeed(); });
+  if (act) act.addEventListener('click', openFeed);
   /* PASS-9 2026-11-10 — TAP ONE TO SEE MORE. The notifications list is the
      only home notifications have now (the top pill is gone). Tapping a row
      opens its detail — the full date and time, then the event's own text —
@@ -27964,9 +27988,7 @@ body.os-bottom-hidden .obb-bar{transform:translateY(110%);opacity:0}
     row.appendChild(det); row.classList.add('open');
   });
   var dash = document.querySelector('[data-b3="dashboard"]');
-  /* ONE-BOTTOM-BAR: the Dashboard pill is a link now — stop the navigation,
-     scrolling to top is the action (was a button, no navigation to stop). */
-  if (dash) dash.addEventListener('click', function(e){ e.preventDefault(); window.scrollTo(0, 0); });
+  if (dash) dash.addEventListener('click', function(){ window.scrollTo(0, 0); });
   /* the badges follow the live feed render — a MutationObserver on the list,
      so any render path updates them (no wrapping of the feed renderer). */
   try{
@@ -28158,7 +28180,6 @@ body.viewport-focus #viewport-back{display:none !important;}
 .tn-voice-sig{color:#fff;}
 .os-sl-gauge-lab{color:#fff;}
 .os-sl-gauge-sub{color:#fff;}
-.os-pts-note{color:#fff;}
 .os-se-label{color:#fff;}
 .os-score-derive .os-sd-op,.os-score-derive .os-sd-alltime,.os-score-derive .os-sd-empty{color:#fff;}
 .os-big-num-delta.flat{color:#fff;}
@@ -28472,6 +28493,150 @@ button.os-ld-node .os-ld-icon{
 }
 @media (max-width:768px){
   .os-b3-btn{width:50px !important; height:50px !important;}
+}
+
+/* ================= PASS-12 2026-11-11 — Shawn's eye on the LIVE Dashboard =================
+   (1) Orb jewels OUT — the number is the star (see the hero template edit;
+   this rule is the guard: any .os-ld-icon that ever renders inside the HERO
+   nodes stays hidden. Drill jewels are untouched — their builders still emit
+   .os-ld-icon and the base rule still styles it.) (2) Orb labels BIGGER +
+   more spacing, readable at 390px — the winning rule is the (0,4,4) one:
+   pass-11's 22px (0,3,0) NEVER applied, because the (0,4,4) 12px rule just
+   above the PASS-11 block outranks it — the live probe measured 12px at both
+   widths. This block uses the same (0,4,4) prefix, later in the file, so it
+   wins: 30px desktop (~13px rendered at 1440), 22px phone (~16px at 390),
+   white + layered (black outline + the orb's own colour glow), more space
+   between the number tile and the label (16px / 12px — the jewel's removal
+   frees the room). "SMART NOTES" (longest) fits its 275px disc on one line
+   at 30px. (3) The money line is GONE — element + writer + rules deleted
+   (see the HTML/JS edits). (4) Day / Week / Month / All FULL SIZE — the
+   mode-button treatment, extended: 40px labels (the mode buttons' own
+   size — they read 17.6px after the fit, same as PTS / % / MONEY),
+   28px/40px padding, lit in their own colours (pass-11's glows stand).
+   The column's PLACEMENT is measured from the live orbit in ldLayoutNodes
+   (pass-11 verdict: NOT PASS on fix 3 — the column at right:0 crashed into
+   the Smart Notes orb at 1440, 1618px² of overlap, and wrapped onto the
+   mode buttons at 390, hiding "All" behind %): right:0 is overridden here
+   (right:auto) and the JS sets the inline left 24 natural px beyond the
+   rightmost orb edge. (5) The whole hero fits the phone — at <=900px the
+   pills are ONE row (the verifier's prescription: all four visible, none
+   touching a mode button), 30px labels, no max-width cap (the row spans
+   the viewport width, centred), and the mode toggle gets a top margin
+   equal to the pills' measured height + 16px (set in ldLayoutNodes), so
+   the row has its own lane and the toggle can never sit on it. */
+
+/* (1) HERO JEWELS — hidden, hero nodes only. Drills keep theirs. */
+#os-ld-nodes .os-ld-node .os-ld-icon{display:none !important;}
+
+/* (2) ORB LABELS — (0,4,4) beats the 12px rule above the PASS-11 block. */
+html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
+  font-size:30px !important; letter-spacing:.06em !important;
+  margin-top:16px !important; max-width:none !important;
+  white-space:nowrap !important; line-height:1.15 !important;
+  text-shadow:0 1px 3px rgba(0,0,0,.95), 0 0 6px rgba(0,0,0,.9), 0 0 16px var(--nc) !important;
+}
+.os-ld-nodes .os-ld-node .os-ld-unit,
+.os-constellation .os-ld-node .os-ld-unit{
+  font-size:14px !important; margin-top:4px !important;
+}
+
+/* (4) TIME PILLS — full size, mode-button labels. Placement is the JS lane
+   in ldLayoutNodes (right:0 is overridden here so the inline left applies). */
+#os-ld-timepills{right:auto !important;}
+.os-ld-timepills button{
+  font-size:40px !important; font-weight:800 !important;
+  padding:28px 40px !important; border-radius:18px !important;
+}
+#os-ld-timepills{gap:14px !important;}
+
+/* (2)+(4)+(5) PHONES — labels 18px, pills ONE row, own lane, no cap.
+   MEASURED 2026-11-11 (first staged probe): at 22px the SMART NOTES
+   label ran to x=395.3 in a 390px viewport — its last two letters clipped
+   off the right edge (the notes orb is the rightmost, its centre sits at
+   x=336 rendered). 18px puts its right end at ~384, 6px clear. 18px still
+   reads ~13px rendered — half again the 12px baseline (8.6px). The pill
+   row measured 391.4px wide in a 390px viewport (Day cut 0.7px left, All
+   cut 0.7px right); 28px + 18px/20px padding + 12px gaps brings it to
+   ~348px rendered, ~42px spare. The toggle margin is measured live from
+   the pills' real height, so it adapts to the new size on its own.
+   MEASURED AGAIN (eye-check, same probe): 18px STILL clips the SMART
+   NOTES "S" — not at the viewport (right end 382.5 < 390) but at
+   .os-ld-org, the page column (x=16..374 rendered, overflow:hidden):
+   the label runs 8.5px past the column's right edge, and the glyph is
+   cut there (proven: lifting the column's clip in the live browser
+   paints the whole "SMART NOTES"). The column's edge does not scale
+   with the hero, so the longest label needs its own size: SMART NOTES
+   alone drops to 14px with no tracking (right end ~369 at 390, ~343
+   at 360 — clear of the column at both widths). The other eight labels
+   stay 18px. */
+@media (max-width:900px){
+  html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
+    font-size:18px !important; letter-spacing:.04em !important;
+    margin-top:12px !important; max-width:none !important;
+    white-space:nowrap !important; line-height:1.2 !important;
+  }
+  .os-ld-nodes .os-ld-node .os-ld-unit,
+  .os-constellation .os-ld-node .os-ld-unit{
+    font-size:12px !important; margin-top:3px !important;
+  }
+  /* SMART NOTES alone, 14px, no tracking: it is the longest label on the
+     rightmost orb, and the only one that reaches the .os-ld-org column
+     clip (x=374 rendered at 390). 18px ran to 382.5 and lost its "S". */
+  html body .os-constellation .os-ld-nodes button.os-ld-node[data-node="notes"] span.os-ld-lbl{
+    font-size:14px !important; letter-spacing:0 !important;
+  }
+  #os-ld-timepills{max-width:none !important; gap:12px !important;}
+  .os-ld-timepills button{
+    font-size:28px !important; padding:18px 20px !important;
+  }
+}
+
+/* ================= PASS-13 2026-11-11 — Shawn's eye on the LIVE Dashboard =================
+   (1) Jewels OUT — verified ALREADY GONE in the pass-12 base (maker's own probe
+   before any edit: hero jewel count 0, jewelVisible 0 at 1440 and 390); the
+   PASS-12 guard rule stands, no new edit. (2) The 250 is LABELED — a TOTAL
+   SCORE caption under the top tiles (see the HTML edit), so a cold reader can
+   say what 250 is (the total score) and what 1364 is (clicks, in its orb).
+   The gauge lap line stays GONE: pass-11 deleted it on Shawn's word ("I don't
+   know why that's there") — there is no lap line in the base to keep, and
+   restoring it would undo his order; tiles-vs-gauge agreement is measured
+   against the gauge's own in-dial readout instead. (3) Orb numbers UP — the
+   hero node stack rides at the top of the disc (flex-start + 9% top padding)
+   instead of dead-centre, so every number sits in the orb's upper half with
+   its label below it; labels keep the pass-12 sizes (30px desktop / 18px
+   phone, SMART NOTES 14px phone). (4) Day / Week / Month / All take the MODE
+   PILLS' own treatment (.os-pts-btn: 40px font / 38px vertical padding
+   desktop, 32px / 28px phone, fully rounded) — same height and font as
+   PTS / % / MONEY; phone horizontal padding is 14px, not the mode pills'
+   36px, because four buttons at 36px cannot fit one 390px row (measured:
+   ~484px rendered — overflow); height and font are the brief's measures
+   and they match. BALANCE RULE (Shawn 13:30Z): numbers-only holds only if
+   every label stays readable at 1440 AND 390 — verified by the maker's
+   post-build probe at both widths; if any label had failed, the fallback
+   (jewels + pass-10 labels restored) would apply instead. */
+
+/* (2) TOTAL SCORE caption under the top tiles. */
+#os-score-elegant .os-se-cap{
+  font-size:30px !important; font-weight:800 !important; letter-spacing:.28em !important;
+  color:#fff !important; text-align:center !important; text-transform:uppercase !important;
+  margin:10px auto 0 !important; line-height:1.2 !important;
+  text-shadow:0 1px 3px rgba(0,0,0,.95), 0 0 12px rgba(255,191,61,.35) !important;
+}
+
+/* (3) ORB NUMBERS UP — hero nodes only (drills untouched). */
+#os-ld-nodes .os-ld-node{
+  justify-content:flex-start !important; padding-top:9% !important;
+}
+
+/* (4) RANGE PILLS take the mode pills' treatment (.os-pts-btn). */
+.os-ld-timepills button{
+  font-size:40px !important; font-weight:800 !important;
+  padding:38px 56px !important; border-radius:999px !important;
+}
+@media (max-width:900px){
+  .os-ld-timepills button{
+    font-size:32px !important; padding:28px 14px !important;
+  }
 }
 </style>
 </body></html>
