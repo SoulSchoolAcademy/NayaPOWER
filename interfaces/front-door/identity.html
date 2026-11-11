@@ -1391,7 +1391,7 @@
          runs — the composing page carries no claim language, ever. */
       if (!silent) setAliasState('checking', alias);
       var headers = { 'apikey': SB_ANON_KEY, 'Authorization': 'Bearer ' + SB_ANON_KEY };
-      fetch('https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/nayanet_identities?alias=eq.' + encodeURIComponent(alias) + '&select=alias,name,device_key,created_at,cert_no' + '&cb=' + Date.now(), { headers: headers, cache: 'no-store' })
+      fetch('https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/nayanet_identities?alias=eq.' + encodeURIComponent(alias) + '&select=alias,name,device_key,created_at,cert_no', { headers: headers, cache: 'no-store' })
         .then(function(r){ return r.ok ? r.json() : Promise.reject(new Error('bad')); })
         .then(function(rows){
           if (seq !== aliasSeq) return;
@@ -1578,7 +1578,7 @@
             return res.json().then(function(rows){ var ca = (rows && rows[0] && rows[0].created_at) || new Date().toISOString(); var cn = (rows && rows[0] && rows[0].cert_no != null) ? rows[0].cert_no : null; return { status: 'ok', createdAt: ca, certNo: cn }; }).catch(function(){ return { status: 'ok', createdAt: new Date().toISOString(), certNo: null }; });
           }
           if (res.status === 409) {
-            return fetch('https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/nayanet_identities?alias=eq.' + encodeURIComponent(finalAlias) + '&select=device_key,created_at,cert_no' + '&cb=' + Date.now(), { headers: sbHeaders, cache: 'no-store' })
+            return fetch('https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/nayanet_identities?alias=eq.' + encodeURIComponent(finalAlias) + '&select=device_key,created_at,cert_no', { headers: sbHeaders, cache: 'no-store' })
               .then(function (r2) { return r2.ok ? r2.json() : null; })
               .then(function (rows) {
                 if (rows && rows.length && rows[0].device_key !== deviceKey) return { status: 'taken', createdAt: null };
