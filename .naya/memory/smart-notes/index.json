@@ -32418,15 +32418,40 @@
     "Report",
     "Daily"
    ]
+  },
+  {
+   "smart_note_id": "SN-2657",
+   "intelligent_block_id": "IB-SMART-NOTE-20261108-sn2657-daily-intelligence-report-2026-11-08",
+   "slug": "daily-intelligence-report-2026-11-08",
+   "title": "Daily Intelligence Report — 2026-11-08",
+   "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/REPORT/SN-2657/IB-SMART-NOTE-20261108-sn2657-daily-intelligence-report-2026-11-08.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/REPORT/SN-2657/IB-SMART-NOTE-20261108-sn2657-daily-intelligence-report-2026-11-08.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/REPORT/SN-2657/IB-SMART-NOTE-20261108-sn2657-daily-intelligence-report-2026-11-08.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261108-sn2657-daily-intelligence-report-2026-11-08.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "REPORT",
+   "topic": "DAILY",
+   "captured_at": "2026-11-08",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-power",
+   "registered_at": "2026-11-11T16:16:28Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-08",
+   "page_hash": "4c40e0f063007c2c518add8df5042608cc8ee85f3ec77cbb26cadef7f39948d3",
+   "content_hash": "8bed7aed1bb359b2c9e601bc00f0afb1091001b0eadaa3fefef23de0a3d3c7ed"
   }
  ],
  "sequence_policy": {
   "human_id_format": "SN-###",
   "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-  "next_sequence": 2655,
+  "next_sequence": 2658,
   "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "37c542f6f1525de29ed31e04ce7d06f01112065ad4fd48ccb17bc70d3e6f7ea7"
+ "corpus_manifest_hash": "dec5a058d45a80162ea577ba8fb91c6f1a2f327e45d2c338fe2c4adc654e4b2b"
 }
