@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2422",
+ "title": "Full Screen, Not a Column",
+ "slug": "full-screen-not-a-column",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2422/IB-SMART-NOTE-20261109-sn2422-full-screen-not-a-column.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "His eye caught what no check had measured: on his laptop the pricing page occupies about two-thirds of the screen, with dead black space on both sides. The captain's honest answer the same pass: it is NOT mobile optimization — the page was built in a centered ~1140px max-width column; the phone layout is the same page stacked. His instinct is right (viewport is the stage — the Real Object Law's stage, SN-0858). **Measured 01:50Z by live browser at 1919px: content column 1,248px wide, gutters ~328px each side — the page occupies ~65% of the viewport, ~35% dead black space.** A full-screen seat was dispatched the same pass (brief `PRICING-FULLSCREEN-BRIEF-20261109.md`): widen to fill the viewport on desktop/laptop (24–40px gutters), phone unchanged, width only, verified at 1920/1440/1280/390. Re-freeze (GitHub + live + PI) follows once it lands. The same measurement pass confirmed the live letter carries the NEW wording (fixed line + \"Welcome. It's ready for you.\" + signature exact; zero \"smart pages\" in the letter).",
+  "human_view": "His question, 01:48Z: \"why is the pricing page not full screen?\" The captain's answer the same pass: \"it is NOT mobile optimization — the page was built in a centered ~1140px max-width column, so a laptop shows dead black space on both sides; the phone layout is the same page stacked. His instinct is right (viewport is the stage).\" The 01:50Z measurement: \"content column 1,248px wide, gutters ~328px each side — the page occupies ~65% of the viewport, ~35% dead black space.\"",
+  "child_view": "Imagine you paint a beautiful picture, then hang it on a huge empty wall with nothing around it — the picture is lovely, but most of the wall is just dark and empty, and your eye keeps wandering off the picture. The picture should fill the wall. That's the page: it should fill the screen it's on.",
+  "grandma_view": "Dear, he looked at the page on his laptop and asked why it didn't fill the screen — and he was right. The page was sitting in a narrow strip in the middle with big black empty spaces on both sides. We measured it: only about two-thirds of the screen is the page. The fix is to let it breathe out and fill the whole screen on a computer, while the phone stays just as it is.",
+  "ai_view": "Two lessons in one catch. First, the defect class: a max-width column is a design decision nobody re-examined after the page grew from a chart into a letter, a chooser, a calculator and a finale — the container stayed at the size the first chart needed. Second, the check class: every verification measured the page at its own width and never asked what fraction of the viewport it fills. The fix is width-only by design (24–40px gutters, phone unchanged) — and it is judged by the mobile-first law (SN-2421): widen the desktop without touching the phone. The re-freeze waits for the full-screen fix plus the wiring, so the frozen version is the wide one, not this column.",
+  "what_it_means": "- **His eye, 01:48Z: the pricing page is not full screen on laptop** — ~35% dead black space on both sides.\n- **Cause: a centered ~1140px max-width column**, not a mobile problem. The phone layout is the same page stacked.\n- **Measured 01:50Z at 1919px: content 1,248px, gutters ~328px each side, page ~65% of viewport.**\n- **Fix dispatched (full-screen seat):** widen to fill the viewport on desktop/laptop (24–40px gutters), phone unchanged, width only, verified at 1920/1440/1280/390.\n- **Re-freeze follows** once it lands (GitHub + live + PI) — the frozen version must be the wide one.\n- **Same pass confirmed:** the live letter carries the new wording (fixed beat-12 line, \"Welcome. It's ready for you.\", signature exact).",
+  "whats_inside": [
+   "- The full-screen seat widens pricing to the viewport (desktop/laptop), phone unchanged.\n- The final re-freeze waits for the full-screen fix + the wiring — the current live/GitHub v55 copy is NOT the final freeze.\n- Viewport-share joins the verification checklist: measure the content column against the viewport at every width.\n- The mobile-first law (SN-2421) governs how the widening is judged."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "2c6a17529fe724e709d7cabf25795c72e7556708b4a262e14e3b0fd95ce8a748",
+ "content_hash": "7580c38f9fab8eded0fa246012a8e1c57da23f06dcccd7d394482dad6754cdd6",
+ "reconstructed_from_page": true
+}
