@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2641",
+ "title": "Personal Fix-6: The About Save Now Persists",
+ "slug": "personal-fix6-about-saves",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/10/SYSTEM-INTELLIGENCE/SN-2641/IB-SMART-NOTE-20261110-sn2641-personal-fix6-about-saves.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-10T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Two defects, both measured before the fix. (1) The three Connected links overlapped by 29px at every width: anchor pills are inline, so their vertical padding painted outside the line box. One rule — `a.ph-connect{display:inline-block}` plus an 8px room gap — and the overlap is 0px at 390, 1440 and 360. (2) The About save was in-session only (Resolve, thread 6eb5570b). The story wrote localStorage alone — zero `{k:'about'}` rows in the live backend, verified by REST — and the five fields had no offline mirror, so a save with no connection lost the words. The cure is the sections' own discipline: every save now writes the on-device mirror and attempts the row — the row currently 401s, so the app's copy cannot be written just now — and loading re-decides last-write-wins, so a reload keeps what was saved on this device with or without the connection. Story and motto both proven across a reload in a real browser; the 621px fix-5b proof re-proved byte-identical (About 411–535). No five-fields words written, no redesign, no new component. The design-contract gate is unchanged from fix-5b — (a)/(c)/(f) fail there too, pre-existing, named as the next fix pass, not smuggled in here.",
+  "human_view": "Shawn ordered a full-time seat on the Personal template, and the first job was the save: you write your story, you reload, and it should still be there. It wasn't — the story lived only in the browser's pocket, never in the app's own store, and the fields lost their words the moment the connection dropped. Now the save writes the pocket copy at once and attempts the app's store — the store's copy currently cannot be written (it answers 401), so today the reload keeps the pocket copy; when the page loads it keeps whichever is newest. The Connected links were the same kind of small break: three pills painted on top of each other because the browser never gave them a real box. One rule gives them one. Nothing else on the page was touched, and the one thing carried over — the About pill sitting off-screen on a narrow phone — is still his call, not a fix I took on myself.",
+  "child_view": "Imagine you write your name on a piece of paper, and then the wind blows it away every time you close the book. That was the About page: you saved your story, closed the page, opened it again, and your words were gone. Now there are two tries: one tucked in your pocket, which always works, and one meant to be glued into the book itself — but the glue isn't holding right now, so the pocket copy is the one you see. And the three little link buttons that were squished on top of each other? They each have their own seat now, so they sit in a neat row.",
+  "grandma_view": "Dear, your story is safe now, love. Before, when you wrote about yourself and saved it, the words only lived in that one browser, dear — close the page on another device and they were gone, and if the connection dropped they were gone entirely. Now every save keeps a copy on your device, love, and tries to write the words into the app itself too — but the app's copy isn't going through just now, dear, so the copy on your device is the one that keeps your words safe, and the newest one always wins. And those three little links that were all piled on top of each other — they sit properly apart now, dear, each in its own place.",
+  "ai_view": "I am Anaya. The save is the promise of the whole system: what a citizen writes is theirs, and it stays written. Fix-6 keeps that promise the way it can today — the mirror on the device is written, the row in the app's own store is attempted and currently refused (401) — and the newest wins, so no save is ever lost to a dropped connection on this device. The fresh-device half of the promise waits on the store accepting the row. The overlap was the same lesson in miniature: a box that was never given its own height will always collide with its neighbour. Give it the height, and the row stands clean. I touched nothing else. The gate's old reds stay named, the narrow-phone pill stays his call, and the proof — save, reload, words still there — is in the report for any other seat to re-run.",
+  "what_it_means": "",
+  "whats_inside": [],
+  "topics": [
+   "System-Intelligence"
+  ]
+ },
+ "page_hash": "24dd986bf7d61d235a03fd70ebe25175581919bcc1d6d5ab31a9f759c40548bc",
+ "content_hash": "8f3dcad45af7abb50c21a3fcc71cb5fbed0775ef7f4019addf58dda27fbf843e",
+ "reconstructed_from_page": true
+}
