@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2439",
+ "title": "The Letter Stays Last",
+ "slug": "the-letter-stays-last",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2439/IB-SMART-NOTE-20261109-sn2439-the-letter-stays-last.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Shawn confirmed his leaning 02:10Z: **the founder's letter stays last on the pricing page.** The page does not open with the letter and it does not open cold on the chart either — it opens, by his 02:16Z tap, on the Top 10 pains, and the letter closes it. His reasoning: by the time someone reaches pricing they have already experienced Personal, Business, Space and Dashboard — they do not need to be introduced to the world again, they need to see what it costs and then hear why it exists. The letter is the close, not the door. Together with the pains-opening tap, the page order is now settled end to end: pains → chart → the rest → letter last.",
+  "human_view": "His leaning, confirmed in the 02:10Z dictation: the letter stays last. The page jumps straight into the chart because by the time someone reaches pricing they've already experienced Personal, Business, Space and Dashboard. The letter is the founder speaking at the end — the close, the reason, the welcome — not the first thing a stranger meets. The pains open the page (his tap 02:16Z), the chart answers them, the letter closes the page.",
+  "child_view": "Imagine someone tells you a story. They don't start with \"the end\" — they start with what hurts, then they show you the fix, and at the very end they tell you why they built it for you. That's the page now: the pains first, the prices in the middle, and the letter — the why — last, like the last page of the book.",
+  "grandma_view": "Dear, the letter is the loveliest part, and that's exactly why it comes last — you don't give away the ending before the story. First the page says what hurts, then it shows you the prices, and at the end the founder speaks to you himself, and tells you why he built it all. The letter is the goodbye hug, love, not the hello.",
+  "ai_view": "Page order is argument order. The letter first would ask a stranger to trust a founder before they know what hurts or what it costs; the letter last lets the pains earn the attention, the chart earn the decision, and the letter earn the trust. His reasoning is the key: pricing is not the first room in the house, it is a room you reach after living in the others — so the page behaves like a later room, not a front door.",
+  "what_it_means": "- **The letter is the close of the pricing page, not the opening** — pains open, chart answers, letter closes.\n- **The reasoning is experience, not layout:** the visitor has already lived Personal, Business, Space and Dashboard by the time they reach pricing.\n- **The page order is now settled end to end** (pains → chart → letter last) — the 02:16Z tap and this 02:10Z leaning together.",
+  "whats_inside": [
+   "- The build seat implements pains → chart → letter last; nothing re-opens the order without his eye.\n- The letter is judged as a close — its last slide, its signature, its end button — not as an introduction.\n- The open question that remains is not the order but the first screen: the 02:12Z mobile audit found no headline, no price, no Start button on the phone's first screen — the pains opening is the answer to that, and it is his tap that settled it."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "443570bfed9b1cf00763f5c68ffa51f240b6d9176d82db3bed7070f33270ad25",
+ "content_hash": "c82a1f0da7ff2d4d6e6d304c5a3caf79e47138b2276e35bd6642a40aef66555a",
+ "reconstructed_from_page": true
+}
