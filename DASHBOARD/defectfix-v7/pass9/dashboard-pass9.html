@@ -28548,10 +28548,19 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
 }
 #os-ld-timepills{gap:14px !important;}
 
-/* (2)+(4)+(5) PHONES — labels 22px, pills ONE row, own lane, no cap. */
+/* (2)+(4)+(5) PHONES — labels 18px, pills ONE row, own lane, no cap.
+   MEASURED 2026-11-11 (first staged probe): at 22px the SMART NOTES
+   label ran to x=395.3 in a 390px viewport — its last two letters clipped
+   off the right edge (the notes orb is the rightmost, its centre sits at
+   x=336 rendered). 18px puts its right end at ~384, 6px clear. 18px still
+   reads ~13px rendered — half again the 12px baseline (8.6px). The pill
+   row measured 391.4px wide in a 390px viewport (Day cut 0.7px left, All
+   cut 0.7px right); 28px + 18px/20px padding + 12px gaps brings it to
+   ~348px rendered, ~42px spare. The toggle margin is measured live from
+   the pills' real height, so it adapts to the new size on its own. */
 @media (max-width:900px){
   html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
-    font-size:22px !important; letter-spacing:.04em !important;
+    font-size:18px !important; letter-spacing:.04em !important;
     margin-top:12px !important; max-width:none !important;
     white-space:nowrap !important; line-height:1.2 !important;
   }
@@ -28559,9 +28568,9 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
   .os-constellation .os-ld-node .os-ld-unit{
     font-size:12px !important; margin-top:3px !important;
   }
-  #os-ld-timepills{max-width:none !important;}
+  #os-ld-timepills{max-width:none !important; gap:12px !important;}
   .os-ld-timepills button{
-    font-size:30px !important; padding:20px 22px !important;
+    font-size:28px !important; padding:18px 20px !important;
   }
 }
 </style>
