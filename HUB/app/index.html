@@ -2697,6 +2697,12 @@ body.ask-reading:has(.naya-ask-room) .eco-bottombar{transform:translateY(calc(10
 </style>
 </head>
 <body>
+<!-- SMART-BAR-SYSTEM v1.0: top mount -->
+<div class="nsb-topstack" id="nsbTopstack">
+  <div class="nsb nsb-top" id="nsbTop" aria-label="App sections"></div>
+  <div class="nsb-searchlevel" id="nsbSearchLevel" aria-label="Search the network"></div>
+</div>
+<!-- /SMART-BAR-SYSTEM v1.0 -->
 
 
 <div id="app" aria-live="polite"></div>
@@ -9196,6 +9202,572 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
 @keyframes nayaGuideSpin{to{transform:rotate(360deg);}}
 @keyframes nayaGuidePulse{0%,100%{box-shadow:0 0 10px var(--room-accent,#a06bff);}50%{box-shadow:0 0 22px var(--room-accent,#a06bff),0 0 40px var(--room-accent,#a06bff);}}
 </style>
+<style>
+/* ============ TOKENS (Law 9, verbatim N5) ============ */
+:root{
+  --obsidian:#050507; --deep:#020203; --white:#ffffff; --silver:#F8F7FB;
+  --purple:#a06bff; --magenta:#e84fff; --blue:#3fb8ff; --green:#2fe89e;
+  --gold:#ffbf3d; --red:#ff5e6c; --teal:#40d3bb; --indigo:#6675ff;
+  --lime:#b8ee57; --orange:#ff9a5a;
+  --sb-top-speed:16; --sb-bottom-speed:24; /* px/s, decided */
+}
+/* ============ TOP STACK: bar at the very highest, search the next level down ============
+   (Shawn's final charge: search is NOT in the bar — it lives directly below it.) */
+.nsb-topstack{position:fixed;top:0;left:0;right:0;z-index:900;
+  padding-top:env(safe-area-inset-top);
+  font-family:Inter,system-ui,sans-serif;}
+.nsb-top{background:rgba(3,3,5,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  box-shadow:0 16px 44px rgba(0,0,0,.68),
+    inset 0 -2px 10px rgba(0,0,0,.85), inset 0 -1px 0 rgba(0,0,0,.9);}
+/* SEARCH LEVEL: the new-internet piece — search the network from every page */
+.nsb-searchlevel{background:rgba(8,8,12,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  padding:8px 16px;transition:padding .25s;}
+.nsb-searchfield{display:flex;align-items:center;gap:12px;max-width:640px;margin:0 auto;
+  background:linear-gradient(180deg, #050508, #0a0a10 55%, #050508);
+  border:1.5px solid rgba(160,107,255,.55);border-radius:999px;
+  padding:11px 11px 11px 18px;
+  box-shadow:inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.22), inset 0 -8px 16px rgba(0,0,0,.65), 0 0 22px rgba(160,107,255,.35), 0 0 48px rgba(160,107,255,.12), 0 14px 30px rgba(0,0,0,.6);
+  transition:box-shadow .25s, border-color .25s;}
+.nsb-searchfield:focus-within{border-color:#a06bff;
+  box-shadow:inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.3), inset 0 -8px 16px rgba(0,0,0,.6), 0 0 34px rgba(160,107,255,.6), 0 0 70px rgba(160,107,255,.2), 0 16px 34px rgba(0,0,0,.65);}
+.nsb-searchfield svg{width:16px;height:16px;flex:0 0 auto;color:rgba(255,255,255,.6);}
+.nsb-searchfield input{flex:1;background:transparent;border:0;color:#fff;font-family:inherit;
+  font-size:14px;font-weight:600;outline:none;min-width:0;}
+.nsb-searchfield input::placeholder{color:rgba(255,255,255,.45);}
+/* v1.6 COLOR LANGUAGE: icon-only submit — no "Go" text. Rest = beautiful black; hover ignites purple (the search's own color). */
+.nsb-search-go{border:1px solid rgba(255,255,255,.16);border-radius:50%;color:#fff;
+  width:44px;height:44px;min-width:44px;padding:0;display:grid;place-items:center;
+  font-size:19px;line-height:1;cursor:pointer;font-family:inherit;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.03) 38%, rgba(0,0,0,.14) 68%, rgba(0,0,0,.44)),
+    linear-gradient(180deg, #22222c, #0a0a0f 70%, #060609);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.42), inset 0 -1px 0 rgba(0,0,0,.55),
+    0 2px 5px rgba(0,0,0,.7), 0 12px 28px rgba(0,0,0,.55);
+  transition:transform .3s cubic-bezier(.2,1.25,.35,1), box-shadow .25s ease-out, border-color .2s ease-out;}
+.nsb-search-go:hover{transform:translateY(-2px);border-color:var(--purple);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.42), inset 0 -1px 0 rgba(0,0,0,.55),
+    0 4px 8px rgba(0,0,0,.6), 0 16px 32px rgba(0,0,0,.55), 0 0 22px -4px var(--purple);}
+.nsb-search-go:active{transform:translateY(1px);
+  transition:transform .1s cubic-bezier(.3,0,.8,.4), box-shadow .12s ease-out;
+  box-shadow:inset 0 3px 10px rgba(0,0,0,.5), 0 1px 3px rgba(0,0,0,.6);}
+.nsb-topstack.nsb-compact .nsb-search-go{width:38px;height:38px;min-width:38px;font-size:17px;}
+.nsb-search-tag{max-width:640px;margin:6px auto 0;font-size:11.5px;color:#E8E8EC;
+  opacity:.65;text-align:center;letter-spacing:.02em;transition:opacity .25s, margin .25s;}
+/* compact: search slims when the page scrolls */
+.nsb-topstack.nsb-compact .nsb-searchlevel{padding:5px 12px;}
+.nsb-topstack.nsb-compact .nsb-search-tag{display:none;}
+.nsb-topstack.nsb-compact .nsb-searchfield{padding:6px 6px 6px 14px;}
+/* ============ SMART BAR CHROME ============ */
+/* ============ ELEVATION v1.3 — Shawn's trillion-dollar depth pass (2026-10-30):
+   v1.4 GLOW POLISH (2026-10-30): rest halo softened ~25% (bevel untouched); hover physics cubic-bezier(.2,.9,.25,1) — quick attack, soft settle.
+   v1.5 LIVING DEPTH (2026-10-30): Shawn's calibration — "coming out of the screen, almost touchable", "just enough, never gaudy".
+   Harvested HIS Smart_tabs.png: hairline border (2px white killed), spherical top-lit face gradient, machined bevel,
+   CAST SHADOWS replace glow-as-depth, white halo removed, jewel = recessed well w/ glyph lit from within,
+   trays deepened to recessed channels, search = Hub's Ask Naya purple-ringed deep well (index-2.html:814-835).
+   Springs: rise overshoots slightly and settles; press snappy and firm.
+   v1.6 COLOR LANGUAGE (2026-10-30): Shawn's law — every button owns its color. Rest = beautiful black;
+   hover ignites in its OWN color, never all the same. Search submit = icon-only (no "Go" text).
+   Panel chrome blue→purple; panel outer edge ignites purple on hover (nothing static).
+   every control reads as a physical object lifting off the page.
+   REST raised · HOVER rises toward the finger · ACTIVE pressed INTO the page. ============ */
+.nsb{font-family:Inter,system-ui,sans-serif;}
+/* TOP: sticky very-top, outermost */
+.nsb-top-inner{display:flex;align-items:center;gap:10px;padding:10px 16px 10px 72px;}
+/* R2 FIX 1 (2026-11-07): the 72px left slot is RESERVED for the app title —
+   the fixed rooms-plus circle is 48px at left:12 (right edge 60), so the
+   title (dot + "Personal") starts clear of it and no tab can ever cover it. */
+/* app anchor: name + honesty dot */
+.nsb-app{display:flex;align-items:center;gap:9px;flex:0 0 auto;padding-right:6px;}
+.nsb-app-name{font-size:15px;font-weight:800;color:#fff;white-space:nowrap;letter-spacing:.02em;}
+.nsb-honesty{width:9px;height:9px;border-radius:50%;flex:0 0 auto;
+  box-shadow:0 0 10px 1px currentColor;background:currentColor;}
+.nsb-honesty.proven{color:var(--green);} .nsb-honesty.stated{color:var(--blue);}
+.nsb-honesty.unknown{color:rgba(255,255,255,.4);box-shadow:none;}
+/* the scrolling pill row */
+.nsb-row{flex:1 1 auto;display:flex;gap:10px;overflow-x:auto;overflow-y:hidden;
+  padding:10px 28px 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 28px,#000 calc(100% - 28px),transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 28px,#000 calc(100% - 28px),transparent);}
+.nsb-row::-webkit-scrollbar{display:none;}
+/* compact mode: sticky top collapses to pill row only */
+.nsb-topstack.nsb-compact .nsb-app-name{display:none;}
+.nsb-topstack.nsb-compact .nsb-top-inner{padding:6px 12px 6px 72px;}
+.nsb-topstack.nsb-compact .nsb-top .nsb-row{padding:8px 24px 14px;}
+/* ============ PILL DNA (harvested v1.1.4, elevated) ============ */
+.nsb-tab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;
+  padding:12px 20px;border-radius:999px;cursor:pointer;user-select:none;-webkit-user-select:none;
+  border:1px solid rgba(255,255,255,.16);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.03) 38%, rgba(0,0,0,.14) 68%, rgba(0,0,0,.44)),
+    linear-gradient(180deg, #22222c, #0a0a0f 70%, #060609);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  color:#fff;font-family:inherit;font-weight:900;font-size:13px;letter-spacing:.03em;
+  white-space:nowrap;min-height:44px;
+  text-shadow:0 2px 6px rgba(0,0,0,.55);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.42), inset 0 2px 6px rgba(255,255,255,.09),
+    inset 0 -1px 0 rgba(0,0,0,.55), inset 0 -9px 16px rgba(0,0,0,.5),
+    0 2px 5px rgba(0,0,0,.7), 0 12px 28px rgba(0,0,0,.55);
+  transition:transform .3s cubic-bezier(.2,1.25,.35,1), box-shadow .25s ease-out, border-color .2s ease-out, text-shadow .2s ease-out;}
+.nsb-tab:hover,.nsb-tab:focus-visible{border-color:color-mix(in srgb, var(--tc) 65%, rgba(255,255,255,.2));outline:none;
+  transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5), inset 0 2px 6px rgba(255,255,255,.12),
+    inset 0 0 0 1px var(--tc), inset 0 -1px 0 rgba(0,0,0,.5), inset 0 -9px 16px rgba(0,0,0,.42),
+    0 8px 14px rgba(0,0,0,.6), 0 22px 44px rgba(0,0,0,.5),
+    0 12px 30px -8px var(--tc);
+  text-shadow:0 2px 6px rgba(0,0,0,.55);}
+.nsb-tab:active{transform:translateY(1px);
+  transition:transform .12s cubic-bezier(.3,0,.8,.4), box-shadow .15s ease-out;
+  box-shadow:inset 0 3px 10px rgba(0,0,0,.62), inset 0 1px 3px rgba(0,0,0,.5),
+    inset 0 -1px 0 rgba(255,255,255,.08), inset 0 0 0 1px var(--tc),
+    0 1px 3px rgba(0,0,0,.7);}
+.nsb-tab.active{border-color:rgba(255,255,255,.5);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55), inset 0 2px 6px rgba(255,255,255,.12),
+    inset 0 -1px 0 rgba(0,0,0,.5), inset 0 -9px 16px rgba(0,0,0,.42),
+    inset 0 0 0 1px rgba(255,255,255,.3),
+    0 2px 5px rgba(0,0,0,.7), 0 14px 32px rgba(0,0,0,.55),
+    0 0 26px rgba(255,255,255,.13);}
+.nsb-tab.loved{border-color:color-mix(in srgb, #a06bff 60%, rgba(255,255,255,.25));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45), inset 0 2px 6px rgba(255,255,255,.1),
+  inset 0 0 0 1.5px rgba(160,107,255,.8), inset 0 -1px 0 rgba(0,0,0,.5), inset 0 -9px 16px rgba(0,0,0,.45),
+  0 2px 5px rgba(0,0,0,.7), 0 12px 28px rgba(0,0,0,.55),
+  0 10px 26px -6px rgba(160,107,255,.55);}
+.nsb-tab.starred{border-color:color-mix(in srgb, #ffbf3d 60%, rgba(255,255,255,.25));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45), inset 0 2px 6px rgba(255,255,255,.1),
+  inset 0 0 0 1.5px rgba(255,191,61,.8), inset 0 -1px 0 rgba(0,0,0,.5), inset 0 -9px 16px rgba(0,0,0,.45),
+  0 2px 5px rgba(0,0,0,.7), 0 12px 28px rgba(0,0,0,.55),
+  0 10px 26px -6px rgba(255,191,61,.55);}
+/* honesty states on tabs */
+.nsb-tab.is-working{border-style:dashed;}
+.nsb-tab.is-locked{opacity:.85;}
+.nsb-tab.is-locked .nsb-lock{font-size:11px;opacity:.8;}
+.nsb-tab.is-dead{opacity:.55;cursor:not-allowed;}
+.nsb-tab .nsb-more{border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:8px;
+  background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.04));
+  padding:3px 9px;cursor:pointer;font-size:13px;line-height:1.5;font-family:inherit;
+  transition:all .2s;min-height:0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25), 0 3px 8px rgba(0,0,0,.4);}
+.nsb-tab .nsb-more:hover{background:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,.1));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 0 12px -2px var(--tc), 0 4px 10px rgba(0,0,0,.45);}
+.nsb-tab.add{border-style:dashed;color:rgba(255,255,255,.75);}
+/* jewel icon per tab — the signature chip: colored glass, per-tab glow */
+.nsb-jewel{width:29px;height:29px;border-radius:9px;flex:0 0 auto;
+  display:inline-flex;align-items:center;justify-content:center;font-size:14px;color:#fff;
+  background:linear-gradient(180deg,
+    color-mix(in srgb, var(--tc) 30%, rgba(255,255,255,.1)),
+    color-mix(in srgb, var(--tc) 12%, rgba(0,0,0,.42)));
+  border:1px solid color-mix(in srgb, var(--tc) 55%, rgba(0,0,0,.3));
+  box-shadow:inset 0 2px 5px rgba(0,0,0,.55), inset 0 1px 2px rgba(255,255,255,.12),
+    inset 0 -1px 0 rgba(255,255,255,.18),
+    0 1px 0 rgba(255,255,255,.08);
+  text-shadow:0 0 8px color-mix(in srgb, var(--tc) 75%, #fff), 0 1px 2px rgba(0,0,0,.7);}
+
+/* ============ BOTTOM BAR: fixed very-bottom, outermost ============ */
+.nsb-bottom{position:fixed;left:0;right:0;bottom:0;z-index:900;
+  padding-bottom:env(safe-area-inset-bottom);
+  background:rgba(3,3,5,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-top:1px solid rgba(255,255,255,.08);
+  box-shadow:inset 0 2px 10px rgba(0,0,0,.85), inset 0 1px 0 rgba(0,0,0,.9),
+    0 -16px 44px rgba(0,0,0,.68);}
+.nsb-bottom.nsb-kb-hidden{transform:translateY(110%);transition:transform .3s;}
+.nsb-bottom{transition:transform .3s;}
+.nsb-bottom.nsb-folded{transform:translateY(110%);}
+#nsbBottom.nsb-iconbar .nsb-row{justify-content:center;}
+#nsbBottom.nsb-iconbar .nsb-tab .nsb-label{display:none;}
+#nsbBottom.nsb-iconbar .nsb-tab{padding:10px 12px;}
+body.os-msg-mode .ph-cover,body.os-msg-mode .ph-actions-row.up-actions,body.os-msg-mode .ph-plus{display:none;}
+/* STORY ROUND: the floating + is hidden on About and on the story view
+   (the router toggles .os-hide-plus on the body, same pattern as above). */
+body.os-hide-plus .ph-plus{display:none;}
+.nsb-bottom-inner{display:flex;align-items:center;gap:10px;padding:10px 16px 6px;}
+/* network anchor: the persistent connection, one touch away */
+.nsb-net{display:flex;align-items:center;gap:7px;flex:0 0 auto;padding-right:4px;
+  color:#fff;font-size:12px;font-weight:800;white-space:nowrap;opacity:.85;}
+.nsb-net .nsb-net-glyph{width:24px;height:24px;border-radius:8px;flex:0 0 auto;
+  display:inline-flex;align-items:center;justify-content:center;font-size:13px;
+  background:linear-gradient(180deg,rgba(255,255,255,.15),rgba(255,255,255,.03) 45%,rgba(0,0,0,.3));
+  border:1px solid rgba(255,255,255,.2);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4), inset 0 -1px 0 rgba(0,0,0,.5),
+    0 2px 5px rgba(0,0,0,.6), 0 0 14px -4px var(--blue);}
+.nsb-net small{font-weight:600;opacity:.7;}
+/* settings gear */
+.nsb-gear{flex:0 0 auto;border:1px solid rgba(255,255,255,.22);color:#fff;
+  background:linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.03) 45%, rgba(0,0,0,.34));
+  border-radius:50%;width:40px;height:40px;font-size:17px;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;font-family:inherit;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.42), inset 0 -1px 0 rgba(0,0,0,.5),
+    0 2px 5px rgba(0,0,0,.65), 0 10px 22px rgba(0,0,0,.55);
+  transition:transform .2s cubic-bezier(.2,1.25,.35,1), box-shadow .2s ease-out, border-color .2s;}
+/* R3 FIX B (2026-11-07): the Search FAB (#nsbSearchFab, fixed bottom:76
+   right:16) sat on top of this gear at every width (overlap 1,340 px²
+   @638/1920, 1,105 px² @390) — a real click hit the FAB and opened
+   nothing. The gear is the last item in the bottom bar's flex row, so a
+   right margin shifts it left clear of the FAB. 56px, not 64: at 64 the
+   bottom tabs row lost 64px of width at 390 and its mount-time snap
+   scrolled it 6px (botSL 6, stable — R2 measured 0); at 56 the row stays
+   wide enough that the snap does not scroll (botSL 0) while the gear
+   stays clear of the FAB (8px at 638/1920, 2px at 390). The FAB is NOT
+   moved: moving it up would park it on top of the settings popover
+   (placeNear puts the popover above the gear, y ~536-726 @638), covering
+   the speed slider. */
+.nsb-gear{margin-right:56px;}
+/* ============ FIX-8c (2026-11-10, round-2 FAIL defects 1+2+5) ============
+   D1: the bottom icon bar's row was justify-content:center — at phone
+   widths the centered content overflows BOTH sides and scrollLeft cannot
+   go negative, so Home/Dashboard/Message sat off-screen left FOREVER
+   (first paint showed Activity/Mail) and were unreachable by scrolling.
+   Below 1200px the row is flex-start: scrollLeft 0 shows Home first and
+   every tab scrolls into reach. Desktop (content fits) stays centered.
+   D2a (390/360): the gear sits at the row's right end; a tab parked at
+   the row's right edge had its centre under the gear. At <=375px the row
+   padding + tab padding tighten so Dashboard's centre sits inside the
+   row box, clear of the gear. (390 needs no tightening: Dashboard's
+   centre is already 16px clear of the gear once the row is flex-start.)
+   D2b (1440 Inbox / 360 Dashboard): the fixed eco-plus circle floats over
+   the top strip's right end. The left side already reserves a 72px slot
+   for the rooms-plus (R2 FIX 1); the right side never got one. The inner
+   now reserves the same slot for the eco-plus, and the top pills tighten
+   slightly (gap 10->6, padding 20->18 desktop / 16->14 phone) so the
+   first-set Inbox centre (1440) and Dashboard centre (360) clear the
+   eco-plus with margin. Compact mode gets the same slots.
+   D5: the post-failure status line is cleared of the fixed + button
+   (#plusbtn, 60px at right:16 -> its left edge is vw-76): 56px right
+   MARGIN on the status line, every width. Margin, not padding: padding
+   does not shrink the border box, so the text zone still reached under
+   the + button at 390 (proven: padding-right 76 re-wrapped the text but
+   the 0.9/0.98 probe points still hit "Add something"). Margin pulls
+   the box edge in 56px (26px clear of the button at 390).
+   Compact top row: in compact mode (scrolled, app name hidden) the row
+   padding 24px + gap 6px parked Growth's centre under the eco-plus at
+   1440 (cx 1387 vs eco-plus left 1380). Tighter compact padding/gap
+   shifts every pill ~32px left — Growth clears by ~25px, and 360's
+   compact Dashboard clears by ~34px. */
+#nsbTopstack .nsb-top-inner{padding:10px 72px 10px 64px;}
+#nsbTopstack.nsb-compact .nsb-top-inner{padding:6px 72px 6px 64px;}
+#nsbTop .nsb-row{gap:6px;}
+#nsbTopstack.nsb-compact .nsb-top .nsb-row{padding:8px 12px 14px;gap:4px;}
+#os-post-status{margin-right:56px;}
+@media (min-width:481px){ #nsbTop .nsb-tab{padding:12px 18px;} }
+@media (max-width:480px){
+  #nsbTopstack .nsb-top-inner{padding-right:60px;}
+  #nsbTopstack.nsb-compact .nsb-top-inner{padding-right:60px;}
+  #nsbTop .nsb-tab{padding:11px 14px;}
+}
+@media (max-width:1200px){ #nsbBottom.nsb-iconbar .nsb-row{justify-content:flex-start;} }
+@media (max-width:375px){
+  #nsbBottom .nsb-row{padding-left:4px;padding-right:4px;}
+  #nsbBottom.nsb-iconbar .nsb-tab{padding:10px 10px;}
+}
+.nsb-gear:hover{border-color:var(--blue);transform:rotate(30deg) translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5), inset 0 -1px 0 rgba(0,0,0,.45),
+    0 0 20px -2px var(--blue), 0 4px 8px rgba(0,0,0,.6), 0 14px 28px rgba(0,0,0,.6);}
+.nsb-gear:active{transform:rotate(30deg) translateY(1px);
+  box-shadow:inset 0 3px 10px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.6);}
+/* settings popover */
+.nsb-settings{position:fixed;z-index:1000;display:none;
+  background:linear-gradient(180deg,#171e33,#0b0f1d 60%,#070a14);
+  border:1px solid rgba(255,255,255,.24);border-radius:16px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18), inset 0 -10px 28px rgba(0,0,0,.4),
+    0 0 0 1px rgba(0,0,0,.55),
+    0 34px 80px rgba(0,0,0,.78), 0 10px 28px rgba(0,0,0,.55);
+  min-width:270px;max-width:88vw;padding:18px;}
+.nsb-settings.open{display:block;}
+.nsb-settings h4{margin:0 0 4px;font-size:15px;color:#fff;letter-spacing:.02em;
+  text-shadow:0 2px 8px rgba(0,0,0,.7);}
+.nsb-settings p{margin:0 0 12px;font-size:12.5px;color:#E8E8EC;line-height:1.5;}
+.nsb-settings .nsb-speed-labels{display:flex;justify-content:space-between;
+  font-size:11px;color:#E8E8EC;margin:6px 2px 0;opacity:.8;}
+.nsb-settings input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:30px;
+  background:transparent;margin:8px 0 2px;cursor:pointer;}
+.nsb-settings input[type=range]::-webkit-slider-runnable-track{height:10px;border-radius:999px;
+  background:linear-gradient(180deg,#040407,#0c0c12);
+  box-shadow:inset 0 2px 6px rgba(0,0,0,.75), inset 0 -1px 0 rgba(255,255,255,.08),
+    0 1px 0 rgba(255,255,255,.07);}
+.nsb-settings input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
+  width:26px;height:26px;border-radius:50%;margin-top:-8px;
+  background:radial-gradient(circle at 35% 30%, #a8d9ff, var(--blue) 55%, #1663a8);
+  border:2px solid rgba(255,255,255,.55);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.7), inset 0 -3px 6px rgba(0,0,0,.35),
+    0 4px 0 rgba(0,0,0,.3), 0 8px 18px rgba(0,0,0,.55), 0 0 16px -2px var(--blue);}
+.nsb-settings input[type=range]::-moz-range-track{height:10px;border-radius:999px;
+  background:linear-gradient(180deg,#040407,#0c0c12);
+  box-shadow:inset 0 2px 6px rgba(0,0,0,.75), inset 0 -1px 0 rgba(255,255,255,.08);}
+.nsb-settings input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #a8d9ff, var(--blue) 55%, #1663a8);
+  border:2px solid rgba(255,255,255,.55);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.7), inset 0 -3px 6px rgba(0,0,0,.35),
+    0 4px 0 rgba(0,0,0,.3), 0 8px 18px rgba(0,0,0,.55), 0 0 16px -2px var(--blue);}
+.nsb-settings .nsb-speed-val{font-size:13px;font-weight:800;color:#fff;text-align:center;margin-top:6px;}
+.nsb-settings .nsb-speed-val span{color:var(--blue);}
+/* signature: the active tab breathes, gently — alive, never a flood */
+@keyframes nsbBreathe{0%,100%{filter:brightness(1);}50%{filter:brightness(1.14);}}
+.nsb-tab.active{animation:nsbBreathe 4s ease-in-out infinite;}
+/* signature: touch ripple — the network feels your touch.
+   Neighbors lift briefly, outward from the tap, like a pebble in water. */
+@keyframes nsbRipple{0%{filter:brightness(1);}35%{filter:brightness(1.28);}100%{filter:brightness(1);}}
+.nsb-tab.nsb-ripple{animation:nsbRipple .55s ease-out;animation-delay:var(--rd,0s);}
+@media (prefers-reduced-motion: reduce){ .nsb-tab.active{animation:none;} .nsb-tab.nsb-ripple{animation:none;} }
+html.nsb-calm .nsb-tab.active{animation:none;}
+html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
+.nsb-bottom .nsb-row{padding:10px 24px 8px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);}
+/* ============ SEARCH RESULTS (dropdown from the search level) ============ */
+.nsb-search-results{position:fixed;z-index:950;display:none;
+  background:linear-gradient(180deg,#171e33,#0b0f1d 60%,#070a14);
+  border:1px solid rgba(255,255,255,.24);border-radius:16px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18), inset 0 -10px 28px rgba(0,0,0,.4),
+    0 0 0 1px rgba(0,0,0,.55),
+    0 34px 80px rgba(0,0,0,.78), 0 10px 28px rgba(0,0,0,.55);
+  min-width:260px;max-width:min(420px,92vw);
+  max-height:50vh;overflow-y:auto;padding:8px;}
+.nsb-search-results.open{display:block;}
+.nsb-sr-item{display:block;padding:12px 14px;border-radius:10px;color:#fff;text-decoration:none;
+  font-size:14px;font-weight:700;cursor:pointer;border:1px solid transparent;background:none;
+  width:100%;text-align:left;font-family:inherit;transition:all .15s;}
+.nsb-sr-item:hover{background:linear-gradient(180deg, rgba(63,184,255,.2), rgba(63,184,255,.07));
+  border-color:rgba(63,184,255,.35);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 0 16px -4px var(--blue), 0 4px 12px rgba(0,0,0,.4);
+  transform:translateY(-1px);}
+.nsb-sr-item small{display:block;font-weight:400;color:#E8E8EC;font-size:12px;margin-top:2px;}
+.nsb-sr-none{padding:14px;color:#E8E8EC;font-size:13px;}
+/* ============ ⋯ MENU (bottom bar tabs) ============ */
+.nsb-menu{position:fixed;z-index:1000;display:none;
+  background:linear-gradient(180deg,#171e33,#0b0f1d 60%,#070a14);
+  border:1px solid rgba(255,255,255,.24);border-radius:14px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18), inset 0 -8px 22px rgba(0,0,0,.4),
+    0 0 0 1px rgba(0,0,0,.55),
+    0 28px 64px rgba(0,0,0,.75), 0 8px 22px rgba(0,0,0,.5);
+  min-width:220px;padding:6px;}
+.nsb-menu .mi{padding:11px 14px;border-radius:10px;cursor:pointer;color:#fff;
+  font-weight:800;font-size:13px;font-family:inherit;border:1px solid transparent;background:none;
+  width:100%;text-align:left;display:block;transition:all .15s;}
+.nsb-menu .mi:hover{background:linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.04));
+  border-color:rgba(255,255,255,.14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 4px 12px rgba(0,0,0,.4);
+  transform:translateY(-1px);}
+.nsb-menu .mi:active{transform:translateY(1px);
+  box-shadow:inset 0 2px 8px rgba(0,0,0,.5);}
+/* v1.6 COLOR LANGUAGE: rest = beautiful black; hover ignites EACH in its own color. Never all the same. */
+.nsb-menu .mi-ico{font-style:normal;}
+.nsb-menu .mi-heart .mi-ico{color:var(--purple);text-shadow:0 0 10px rgba(160,107,255,.85);}
+.nsb-menu .mi-star .mi-ico{color:var(--gold);text-shadow:0 0 10px rgba(255,191,61,.85);}
+.nsb-menu .mi-edit:hover{border-color:var(--green);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 4px 12px rgba(0,0,0,.4), 0 0 16px -4px var(--green);}
+.nsb-menu .mi-heart:hover{border-color:var(--purple);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 4px 12px rgba(0,0,0,.4), 0 0 16px -4px var(--purple);}
+.nsb-menu .mi-star:hover{border-color:var(--gold);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 4px 12px rgba(0,0,0,.4), 0 0 16px -4px var(--gold);}
+.nsb-menu .mi-remove:hover{border-color:var(--red);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 4px 12px rgba(0,0,0,.4), 0 0 16px -4px var(--red);}
+/* suggestion highlight (keyboard) + suggestion URL line — new elements, v1.4 values untouched */
+.nsb-menu .mi.sel{background:linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.04));border-color:rgba(255,255,255,.14);}
+.nsb-sug-url{display:block;font-size:11px;opacity:.6;font-weight:400;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+/* ============ EDITOR ============ */
+.nsb-ed{display:none;margin:0 16px 12px;border:1px solid rgba(255,255,255,.22);
+  border-radius:14px;padding:16px;background:linear-gradient(180deg,#141a2e,#0b0e18 65%,#070a12);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -8px 22px rgba(0,0,0,.35),
+    0 18px 44px rgba(0,0,0,.6);
+  transition:border-color .25s ease-out, box-shadow .25s ease-out;}
+.nsb-ed.open{display:block;}
+/* v1.6: nothing static — the panel's outer edge ignites purple on hover (Aliveness law). */
+.nsb-ed:hover{border-color:rgba(160,107,255,.65);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -8px 22px rgba(0,0,0,.35),
+    0 18px 44px rgba(0,0,0,.6), 0 0 26px -4px rgba(160,107,255,.5);}
+.nsb-ed p{margin:0 0 4px;font-size:16px;font-weight:700;color:#fff;}
+.nsb-ed label{display:block;font-size:13px;color:#fff;margin:10px 0 4px;opacity:.85;}
+.nsb-ed input,.nsb-ed select{width:100%;box-sizing:border-box;color:#fff;
+  background:linear-gradient(180deg,#060609,#0f0f16);
+  border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:11px 12px;
+  font-size:14px;font-family:inherit;
+  box-shadow:inset 0 3px 10px rgba(0,0,0,.68), inset 0 1px 3px rgba(0,0,0,.5),
+    0 1px 0 rgba(255,255,255,.06);}
+.nsb-ed input:focus,.nsb-ed select:focus{outline:none;border-color:var(--purple);
+  box-shadow:inset 0 3px 10px rgba(0,0,0,.68), 0 0 18px -4px var(--purple);}
+.nsb-ed-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.nsb-btn{color:#fff;border:1.5px solid rgba(255,255,255,.4);
+  background:linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.03) 45%, rgba(0,0,0,.3)), #141419;
+  border-radius:10px;padding:10px 16px;font-size:14px;font-weight:700;min-height:44px;
+  cursor:pointer;font-family:inherit;transition:all .2s;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3), inset 0 -3px 8px rgba(0,0,0,.4),
+    0 5px 0 rgba(0,0,0,.3), 0 10px 22px rgba(0,0,0,.5);}
+/* v1.6 COLOR LANGUAGE: rest = beautiful black for ALL; hover ignites each in its OWN color. Never all the same. */
+.nsb-btn.save:hover,.nsb-btn.primary:hover{border-color:var(--blue);transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
+    0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--blue);}
+.nsb-btn.move-left:hover{border-color:var(--green);transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
+    0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--green);}
+.nsb-btn.move-right:hover{border-color:var(--purple);transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
+    0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--purple);}
+.nsb-btn.close:hover{border-color:rgba(255,255,255,.9);transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
+    0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px rgba(255,255,255,.5);}
+.nsb-btn:active{transform:translateY(2px);
+  box-shadow:inset 0 3px 10px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.5);}
+.nsb-btn.primary{border-color:rgba(255,255,255,.4);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3), inset 0 -3px 8px rgba(0,0,0,.4),
+    0 5px 0 rgba(0,0,0,.3), 0 10px 22px rgba(0,0,0,.5);}
+.nsb-btn.danger:hover{border-color:var(--red);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
+    0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--red);}
+.nsb-status{font-size:13px;color:#fff;opacity:.7;margin:8px 16px 10px;min-height:18px;}
+/* STORY ROUND: an empty status line still took 18px + margins below the
+   tabs — the bar's dead space. Empty means hidden, at every height
+   (the max-height:500px query already did this; now it holds always). */
+.nsb-bottom .nsb-status:empty{display:none;}
+/* ============ P10 2026-11-06 — SHORT-VIEWPORT BAR SLIM (scorecard SN-2102) ============
+   At 638x444 / 390x444 the fixed bottom bar (142 px) covered the first-paint
+   hero buttons: row 1 (#myworldbtn/#joinbtn, doc 294-340) sat 38 px under it
+   and rows 2-3 were fully behind it. Body padding cannot fix first paint —
+   it only protects max scroll. So at short heights ONLY (max-height:500px;
+   desktop 1920x998, 638x844 and 390x844 are untouched) the bar slims:
+   (1) the .nsb-status line leaves the flow — it floats as a toast just above
+   the bar, hidden when empty. It MUST leave the flow rather than merely
+   collapse when empty: say() messages persist until the next say(), so an
+   in-flow collapse would let the bar re-grow 36 px on any tab action and
+   re-cover row 1, and body padding-bottom (set from offsetHeight by pad())
+   would go stale. As a toast the bar height is constant in every state and
+   the message is still shown. (2) pill-row padding 10/18 -> 6/8 (-14 px).
+   (3) inner padding 10/12 -> 6/8 (-8 px). Bar: 142 -> 84 px at 638 wide
+   (top 360 vs row-1 bottom 340: 20 px clear), 140 -> 82 px at 390 wide
+   (top 362 vs row-1 bottom 338: 24 px clear). Tabs keep their 44 px+
+   min-height / 55 px rendered height — touch targets untouched. Rows 2-4
+   of the hero actions still sit behind the bar at scroll 0 (they span doc
+   294-508 in a 444 px viewport — no bar of any height clears all four
+   rows at first paint); they clear after a 56-170 px scroll, as before.
+   Re-check if the quick-access prototype lands (it adds a hero button and
+   raises the phone cover band). */
+@media (max-height:500px){
+  .nsb-bottom .nsb-status{position:absolute;left:16px;right:16px;bottom:calc(100% + 6px);
+    margin:0;padding:6px 10px;min-height:0;
+    background:rgba(3,3,5,.94);border:1px solid rgba(255,255,255,.14);border-radius:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,.6);}
+  .nsb-bottom .nsb-status:empty{display:none;}
+  .nsb-bottom .nsb-row{padding:4px 24px 6px;}
+  .nsb-bottom-inner{padding:4px 16px 6px;}
+  /* P10 COMPLETION (filed): slim the bar further at short heights only.
+     Bar tabs: padding 12/11 -> 7px top/bottom, min-height 44px kept
+     (tabs 55 -> 45px @638, 47px @390). Bar: 84/82 -> 66px, top 378. */
+  .nsb-bottom .nsb-tab{padding-top:7px;padding-bottom:7px;}
+}
+/* P10 COMPLETION (filed): compact the hero at short viewports only
+   (max-height:500px AND max-width:760px; desktop + tall viewports
+   untouched). The hero stack is bottom-anchored to the cover, so cover
+   420 -> 326 moves every action row up 94px: row 3 bottom 452/450 ->
+   368/366 vs bar top 378 (10/12px clear). Buttons 46 -> 40px (padding
+   12 -> 9), row gap 10 -> 6, actions margin-top 14 -> 8. Row 4
+   (Share/Settings) rises with the stack -- its top lands ~374/372, in
+   view but behind the bar (~36/34px covered). Row 4 is EXEMPTED by the
+   parent's ruling (never visible at first paint on the baseline; clears
+   on ~40px scroll); no 74px gap, no rescale below the 40px Fix X floor.
+   Fix B (same pass): the cover shrink pulls the head up, so at 390 wide
+   the name (x146-306, y119-159) collides with the top-right Change-cover
+   button (x216-380, y108-156). At short heights only the button moves to
+   the cover's top-left corner, compacted (padding 8px 12px, font 12px)
+   so its right edge stays left of the name (x146). Label, function and
+   clickability unchanged. */
+@media (max-height:500px) and (max-width:760px){
+  .ph-cover{height:326px !important;}
+  .ph-actions-row{margin-top:8px;gap:6px;}
+  .up-act{padding:9px 14px;}
+  .ph-cover-btn{top:6px;left:10px;right:auto;padding:8px 12px;font-size:12px;}
+}
+/* ============ MOTION ============ */
+@media (prefers-reduced-motion: reduce){
+  .nsb-tab,.nsb-search-btn{transition:none;}
+}
+html.nsb-calm .nsb-tab{transition:none;}
+/* phone tuning */
+@media (max-width:480px){
+  .nsb-top-inner{padding-left:72px;padding-right:10px;}
+  .nsb-bottom-inner{padding-left:10px;padding-right:10px;}
+  .nsb-tab{padding:11px 16px;font-size:12.5px;min-height:42px;}
+  .nsb-app-name{font-size:13.5px;}
+  .nsb-search-box{min-width:0;flex:1;}
+  .nsb-search{flex:1;justify-content:flex-end;}
+  .nsb-search.open{flex:1;}
+}
+
+/* ============ ELITE POLISH 2026-10-30 — Shawn's eye pass ============
+   Every element alive. Color language on every hover. Living depth everywhere.
+   Law: rest = beautiful black + white light; hover = own-color edge ignition. */
+@keyframes livePulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.7}}
+
+/* ---- LIVE badge: black pill, alive green dot, green edge ignition ---- */
+.os-src-chip.live{background:linear-gradient(180deg,#16161e,#0a0a10);color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:999px;display:inline-flex;align-items:center;gap:6px;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -3px 6px rgba(0,0,0,.5),0 4px 10px rgba(0,0,0,.5);transition:border-color .18s cubic-bezier(.16,.84,.22,1),box-shadow .18s,transform .18s;cursor:default}
+.os-src-chip.live::before{content:"";width:7px;height:7px;border-radius:50%;flex:none;background:#2fe89e;box-shadow:0 0 8px 2px rgba(47,232,158,.65);animation:livePulse 2s ease-in-out infinite}
+.os-src-chip.live:hover{border-color:#2fe89e;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 0 18px -4px #2fe89e,0 4px 10px rgba(0,0,0,.5);transform:translateY(-1px)}
+.os-sl-live{background:linear-gradient(180deg,#16161e,#0a0a10);border:1.5px solid rgba(255,255,255,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 10px rgba(0,0,0,.5);transition:border-color .18s cubic-bezier(.16,.84,.22,1),box-shadow .18s,transform .18s}
+.os-sl-live i{width:8px;height:8px;border-radius:50%;flex:none;background:#2fe89e;box-shadow:0 0 10px 2px rgba(47,232,158,.7);animation:livePulse 2s ease-in-out infinite}
+.os-sl-live:hover{border-color:#2fe89e;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 0 18px -4px #2fe89e,0 4px 10px rgba(0,0,0,.5);transform:translateY(-1px)}
+
+/* ---- Page tiles: spectrum walk ignition (was: zero hover) ---- */
+.os-page-tile{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.22),inset 0 -4px 8px rgba(0,0,0,.4),0 8px 22px rgba(0,0,0,.35);transition:border-color .18s cubic-bezier(.16,.84,.22,1),box-shadow .18s,transform .18s;cursor:default}
+.os-page-tile:hover{transform:translateY(-2px)}
+.os-page-tile:nth-child(1):hover{border-color:#a06bff;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.22),0 0 20px -4px #a06bff,0 8px 22px rgba(0,0,0,.35)}
+.os-page-tile:nth-child(2):hover{border-color:#3fb8ff;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.22),0 0 20px -4px #3fb8ff,0 8px 22px rgba(0,0,0,.35)}
+.os-page-tile:nth-child(3):hover{border-color:#2fe89e;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.22),0 0 20px -4px #2fe89e,0 8px 22px rgba(0,0,0,.35)}
+.os-page-tile:nth-child(4):hover{border-color:#ffbf3d;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.22),0 0 20px -4px #ffbf3d,0 8px 22px rgba(0,0,0,.35)}
+.os-page-tile:nth-child(5):hover{border-color:#ff9a5a;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.22),0 0 20px -4px #ff9a5a,0 8px 22px rgba(0,0,0,.35)}
+.os-page-tile:nth-child(6):hover{border-color:#ff5e6c;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.22),0 0 20px -4px #ff5e6c,0 8px 22px rgba(0,0,0,.35)}
+
+/* ---- Page invite: gentle ignition ---- */
+.os-page-invite{transition:border-color .18s cubic-bezier(.16,.84,.22,1),box-shadow .18s}
+.os-page-invite:hover{border-color:rgba(255,255,255,.5);box-shadow:0 0 18px -6px rgba(255,255,255,.35),inset 0 1px 0 rgba(255,255,255,.12)}
+
+/* ---- Ledger records: own-accent ignition ---- */
+.os-ledger-rec{transition:border-color .18s cubic-bezier(.16,.84,.22,1),box-shadow .18s,transform .18s;cursor:default}
+.os-ledger-rec:hover{border-color:var(--ac,#a06bff);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 20px -6px var(--ac,#a06bff),0 10px 24px rgba(0,0,0,.45);transform:translateY(-2px)}
+
+/* ---- Orbs: lift on hover (they already breathe) ---- */
+.os-orb{transition:transform .18s cubic-bezier(.16,.84,.22,1),box-shadow .18s}
+.os-orb:hover{transform:translateY(-2px) scale(1.04)}
+
+/* ---- Jewels: alive on hover ---- */
+.os-jewel{transition:transform .18s cubic-bezier(.16,.84,.22,1),box-shadow .18s}
+.os-jewel:hover{transform:scale(1.1)}
+/* ============ /ELITE POLISH ============ */
+/* Fix 7 — hide control on the bottom bar. */
+.mw-hidebar{position:absolute;right:6px;top:50%;transform:translateY(-50%);z-index:2;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.06);color:#fff;font-size:14px;cursor:pointer}
+body.mw-has-hidebtn #nsbBottom .nsb-row{padding-right:44px}
+.mw-hidebar:hover{border-color:#ff5e6c;color:#ff5e6c;box-shadow:0 0 16px rgba(255,94,108,.5)}
+/* Fix 8/9 — Smart Bar position + scroll strip, driven by body classes. */
+body.mw-sb-off #nsbTopstack,body.mw-sb-off #nsbBottom{display:none!important}
+body.mw-sb-bottom #nsbTopstack{display:none!important}
+body.mw-sb-bottom #nsbBottom .nsb-tab .nsb-label,body.mw-sb-both #nsbBottom .nsb-tab .nsb-label{display:inline}
+body.mw-strip-off #nsbTop .nsb-row{display:none}
+body.mw-strip-bottom #nsbTop .nsb-row{display:none}
+body.mw-strip-bottom #nsbBottom .nsb-tab .nsb-label{display:inline}
+body.mw-strip-bottom #nsbBottom{bottom:0!important}
+#nsbBottom{transition:transform .45s cubic-bezier(.16,.84,.22,1)}
+@media (max-width:640px){
+  #nsbTopstack:not(.nsb-compact) .nsb-row{padding:10px 16px 18px;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 16px,#000 calc(100% - 16px),transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 16px,#000 calc(100% - 16px),transparent);}
+  /* FIX-PASS-5B: at 621px the 69px app name ("Personal") is what pushes About
+     (right 613) under the eco-plus circle (561-609) — About's right ~44px sat
+     behind it at rest. Compact mode already hides the name on scroll (line
+     11747: .nsb-topstack.nsb-compact .nsb-app-name{display:none}); at <=640px
+     the bar is too narrow for the name AND the pills, so hide it at rest too.
+     Frees 69px + 9px gap; About lands at ~535, clear of the circle by ~26px.
+     The honesty dot stays (the status signal is kept); the row's left edge
+     lands at ~97, still clear of the rooms-plus (right edge 60). Scoped to
+     :not(.nsb-compact) so compact keeps its own rule; desktop untouched. */
+  #nsbTopstack:not(.nsb-compact) .nsb-app-name{display:none;}
+}
+#nsbSearchLevel{display:none;}
+#nsbSearchLevel.nsb-modal{position:fixed!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;width:min(92vw,600px)!important;max-height:84vh!important;overflow-y:auto!important;background:rgba(8,8,12,.98)!important;border:1px solid rgba(255,255,255,.14)!important;border-radius:18px!important;padding:48px 20px 24px!important;z-index:2000!important;box-shadow:0 32px 96px rgba(0,0,0,.75)!important;}
+#nsbSearchLevel.nsb-modal .nsb-search-results{position:static!important;max-height:44vh!important;max-width:none!important;min-width:0!important;margin-top:12px!important;}
+#nsbSearchBackdrop{position:fixed!important;inset:0!important;background:rgba(0,0,0,.62)!important;z-index:1999!important;display:none!important;}
+#nsbSearchBackdrop.on{display:block!important;}
+.nsb-modal-x{position:absolute!important;top:12px!important;right:12px!important;width:32px!important;height:32px!important;border-radius:50%!important;border:1px solid rgba(255,255,255,.25)!important;background:transparent!important;color:#fff!important;font-size:16px!important;cursor:pointer!important;line-height:1!important;padding:0!important;}
+.nsb-search-fab{position:fixed!important;bottom:18px!important;right:16px!important;width:48px!important;height:48px!important;border-radius:50%!important;background:rgba(8,8,12,.92)!important;border:1.5px solid rgba(160,107,255,.55)!important;color:#fff!important;font-size:20px!important;z-index:1500!important;cursor:pointer!important;display:flex!important;align-items:center!important;justify-content:center!important;box-shadow:0 8px 24px rgba(0,0,0,.6)!important;}
+@media (max-height:480px){.nsb-search-fab{bottom:12px!important;}}
+</style>
 
 <script>
 /* NAYA-GUIDE v1 — Naya introduces every room, in her own voice.
@@ -9358,6 +9930,1140 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
     var target = '#/smart-notes/' + m[0].toLowerCase().replace('-', '');
     if (location.hash !== target) location.hash = target;
   });
+})();
+</script>
+
+<!-- SMART-BAR-SYSTEM v1.0: bottom+system -->
+<div class="nsb nsb-bottom" id="nsbBottom" aria-label="Network"></div>
+<script>
+/* ================= SMART BAR SYSTEM v1.0 ================= */
+(function(){
+'use strict';
+var SPECTRUM = ['#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#ff9a5a','#ff5e6c','#e84fff']; /* harvested v1.1.4 */
+var TOP_SPEED = 16, BOTTOM_SPEED = 24; /* px/s at 1x, decided */
+var STORE_KEY = 'naya.smarttabs.v1';
+var SETTINGS_KEY = 'naya.smartbar.settings.v1';
+var USAGE_KEY = 'naya.smartbar.usage.v1';
+/* speed: 0 = still, 0.5 = slow, 1 = cruise, 2 = swift. Theirs to tune.
+   bottomBar: true = the network bar shows; false = their choice, it stays off. */
+function getSettings(){
+  var s = storeGet(SETTINGS_KEY, null);
+  if (!s || typeof s.speed !== 'number') s = {speed: 1, bottomBar: true};
+  s.speed = Math.max(0, Math.min(2, s.speed));
+  if (typeof s.bottomBar !== 'boolean') s.bottomBar = true;
+  return s;
+}
+function saveSettings(s){
+  storeSet(SETTINGS_KEY, {speed: s.speed, bottomBar: s.bottomBar});
+  try { document.dispatchEvent(new CustomEvent('smartbar-settings', {detail:{speed:s.speed, bottomBar:s.bottomBar}})); } catch(e){}
+}
+function setSpeed(v){
+  var s = getSettings();
+  s.speed = Math.max(0, Math.min(2, +v || 0));
+  saveSettings(s);
+  try { document.dispatchEvent(new CustomEvent('smartbar-speed', {detail:{speed:s.speed}})); } catch(e){}
+  return s.speed;
+}
+function setBottomBar(on){
+  var s = getSettings();
+  s.bottomBar = !!on;
+  saveSettings(s);
+  applyBottomBar();
+  return s.bottomBar;
+}
+function applyBottomBar(){
+  var on = getSettings().bottomBar;
+  var b = document.getElementById('nsbBottom');
+  if (b) b.style.display = on ? '' : 'none';
+  document.documentElement.classList.toggle('nsb-nobottom', !on);
+}
+function slug(s){ return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'') || 'tab'; }
+/* usage: {seedId: {taps, last}} — the bar learns their logic, then they shape it */
+function getUsage(){ return storeGet(USAGE_KEY, {}) || {}; }
+function tapUsage(id){
+  var u = getUsage();
+  var r = u[id] || {taps:0, last:0};
+  r.taps++; r.last = Date.now();
+  u[id] = r;
+  storeSet(USAGE_KEY, u);
+}
+function usageScore(id){
+  var u = getUsage()[id];
+  if (!u) return 0;
+  var ageDays = (Date.now() - (u.last||0)) / 864e5;
+  var recency = Math.max(0.15, 1 - ageDays / 30); /* fades over 30 days, never zero */
+  return u.taps * recency;
+}
+
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function storeGet(k,f){ try{ var r=localStorage.getItem(k); return r==null?f:JSON.parse(r);}catch(e){return f;} }
+function storeSet(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); return true;}catch(e){return false;} }
+function uid(p){ return p+'-'+Date.now().toString(36)+'-'+Math.floor(Math.random()*1e6).toString(36); }
+function reduced(){ try{ return matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
+
+/* ---------- pill ---------- */
+function pill(t, opts){
+  opts = opts || {};
+  var b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'nsb-tab' + (t.active?' active':'') + (t.state==='heart'?' loved':'') + (t.state==='star'?' starred':'')
+    + (t.working?' is-working':'') + (t.locked?' is-locked':'') + (!t.url&&!t.target?' is-dead':'');
+  b.style.setProperty('--tc', t.color || SPECTRUM[0]);
+  b.setAttribute('aria-label', t.label + (t.url||t.target ? '' : ' (no destination yet)'));
+  if (t.icon){
+    var jw = document.createElement('span');
+    jw.className = 'nsb-jewel'; jw.style.setProperty('--tc', t.color || SPECTRUM[0]);
+    jw.textContent = t.icon; jw.setAttribute('aria-hidden','true');
+    b.appendChild(jw);
+  }
+  var lab = document.createElement('span'); lab.className='nsb-label'; lab.textContent = t.label;
+  b.appendChild(lab);
+  if (t.state==='heart'){ var h=document.createElement('span'); h.textContent='♥'; h.style.fontSize='12px'; b.appendChild(h); }
+  if (t.state==='star'){ var s=document.createElement('span'); s.textContent='★'; s.style.fontSize='12px'; b.appendChild(s); }
+  if (t.locked){ var l=document.createElement('span'); l.className='nsb-lock'; l.textContent='🔒'; b.appendChild(l); }
+  if (opts.menu){ var m=document.createElement('button'); m.type='button'; m.className='nsb-more';
+    m.textContent='⋯'; m.setAttribute('aria-label','Tab options'); m.title='Edit, heart, star or remove';
+    m.addEventListener('click', function(e){ e.stopPropagation(); opts.menu(t,b); });
+    b.appendChild(m); }
+  if (!opts.noGo){
+    b.addEventListener('click', function(){
+      var dest = t.url || t.target;
+      document.querySelectorAll('.nsb-tab.active').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      if (t.trackId) tapUsage(t.trackId); /* the bar learns their logic */
+      /* ripple: the network feels the touch — neighbors lift outward, gently */
+      try {
+        var sibs = Array.prototype.slice.call(b.parentNode.querySelectorAll('.nsb-tab'));
+        var bi = sibs.indexOf(b);
+        sibs.forEach(function(s, i){
+          if (s === b || s.classList.contains('add')) return;
+          var d = Math.abs(i - bi);
+          if (d > 6) return;
+          s.classList.remove('nsb-ripple');
+          s.style.setProperty('--rd', (d * 0.07) + 's');
+          void s.offsetWidth; /* restart the animation */
+          s.classList.add('nsb-ripple');
+          setTimeout(function(){ s.classList.remove('nsb-ripple'); }, 900 + d * 70);
+        });
+      } catch(e){}
+      if (dest){
+        if (/^https?:\/\//i.test(dest)){ window.open(dest,'_blank','noopener'); }
+        else if (dest.charAt(0)==='#'){ var el=document.querySelector(dest); if(el) el.scrollIntoView({behavior:reduced()?'auto':'smooth'}); }
+        else { window.location.href = dest; }
+      } else {
+        say('bottom', '"'+t.label+'" has no destination yet — open ⋯ and give it one.');
+      }
+    });
+  }
+  return b;
+}
+
+/* ---------- status line ---------- */
+var statusEls = {};
+function say(which, msg){ var el = statusEls[which]; if (el) el.textContent = msg; }
+
+/* ---------- drift engine: one-way wrap, invisible via duplicated set ----------
+   Speed-aware: reads naya.smartbar.settings.v1 live; 0 = still. */
+function drift(row, dir, basePxPerSec){
+  if (reduced()) return function(){};
+  var poke = 0, timer = null, half = 0, speed = getSettings().speed;
+  function onSpeed(e){ if (e && e.detail && typeof e.detail.speed === 'number') speed = e.detail.speed; }
+  document.addEventListener('smartbar-speed', onSpeed);
+  function measure(){ half = row.scrollWidth / 2; }
+  function tick(){
+    if (document.hidden) return;
+    if (speed <= 0) return; /* still — theirs to stop */
+    if (Date.now() - poke < 5000) return;
+    measure();
+    if (half <= 4) return;
+    var step = (basePxPerSec * speed) / 25; /* 25fps tick */
+    var n = row.scrollLeft + dir * step;
+    if (dir > 0 && n >= half) n -= half;
+    if (dir < 0 && n <= 0) n += half;
+    row.scrollLeft = n;
+  }
+  timer = setInterval(tick, 40);
+  ['pointerenter','pointerdown','focusin','touchstart','wheel'].forEach(function(ev){
+    row.addEventListener(ev, function(){ poke = Date.now(); }, {passive:true});
+  });
+  return function(){ if (timer) clearInterval(timer); document.removeEventListener('smartbar-speed', onSpeed); };
+}
+
+/* ---------- ⋯ menu ---------- */
+var openMenu = null;
+function closeMenu(){ if (openMenu && openMenu.parentNode) openMenu.parentNode.removeChild(openMenu); openMenu = null; }
+function placeNear(anchor, pop){
+  pop.style.visibility='hidden'; pop.style.display='block';
+  var r = anchor.getBoundingClientRect();
+  var pw = pop.offsetWidth||220, ph = pop.offsetHeight||190, pad = 8;
+  var x = Math.min(Math.max(r.left, pad), window.innerWidth - pw - pad);
+  var y = r.bottom + 8;
+  if (y + ph > window.innerHeight - pad) y = r.top - ph - 8;
+  if (y < pad) y = pad;
+  pop.style.left = x+'px'; pop.style.top = y+'px'; pop.style.visibility='';
+}
+document.addEventListener('click', function(e){
+  if (!openMenu) return;
+  var n = e.target; while (n){ if (n===openMenu) return; n = n.parentNode; }
+  closeMenu();
+});
+document.addEventListener('keydown', function(e){
+  if ((e.key==='Escape'||e.keyCode===27) && openMenu) closeMenu();
+});
+
+/* ================= PUBLIC API ================= */
+window.NayaSmartBar = {
+  version: '1.0',
+  onSearch: null, /* host hook: function(query, done) — done(results:[{label, sub, url}]) */
+  mount: function(cfg){
+    cfg = cfg || {};
+    var app = cfg.app || {};
+    var sections = cfg.sections || [];
+    var network = cfg.network || [];
+    var honesty = app.honesty || 'unknown';
+
+    /* ----- TOP BAR ----- */
+    var top = document.getElementById('nsbTop');
+    top.innerHTML = '';
+    var tInner = document.createElement('div'); tInner.className = 'nsb-top-inner';
+    var anchor = document.createElement('div'); anchor.className = 'nsb-app';
+    var dot = document.createElement('span');
+    dot.className = 'nsb-honesty ' + honesty;
+    dot.title = honesty==='proven' ? 'Proven live' : honesty==='stated' ? 'Stated' : 'Unverified';
+    anchor.appendChild(dot);
+    var nm = document.createElement('span'); nm.className = 'nsb-app-name'; nm.textContent = app.name || 'App';
+    anchor.appendChild(nm);
+    tInner.appendChild(anchor);
+    var tRow = document.createElement('div'); tRow.className = 'nsb-row';
+    tRow.setAttribute('role','tablist'); tRow.setAttribute('aria-label',(app.name||'App')+' sections');
+    /* duplicate set for invisible wrap */
+    var tabs = sections.length ? sections : [{label: app.name||'App', target:'#top'}];
+    function renderTopSet(){
+      tRow.innerHTML = '';
+      [0,1].forEach(function(){
+        tabs.forEach(function(s, i){
+          tRow.appendChild(pill({
+            label: s.label, target: s.target, url: s.url, icon: s.icon,
+            color: s.color || SPECTRUM[i % SPECTRUM.length]
+          }, {noGo:false}));
+        });
+      });
+    }
+    renderTopSet();
+    tInner.appendChild(tRow);
+    top.appendChild(tInner);
+    /* SEARCH LEVEL — the next level down from the bar, not in it.
+       Search the whole network from every page. */
+    var sLevel = document.getElementById('nsbSearchLevel');
+    sLevel.innerHTML = '';
+    var sField = document.createElement('div'); sField.className = 'nsb-searchfield';
+    sField.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>'
+      + '<input type="search" placeholder="Search the network…" aria-label="Search the whole network">'
+      + '<button type="button" class="nsb-search-go" aria-label="Search">➤</button>';
+    sLevel.appendChild(sField);
+    var sTag = document.createElement('div'); sTag.className = 'nsb-search-tag';
+    sTag.textContent = 'Search the network — get intelligence, learn, grow, connect.';
+    sLevel.appendChild(sTag);
+    var results = document.createElement('div'); results.className = 'nsb-search-results';
+    results.setAttribute('role','listbox'); document.body.appendChild(results);
+    var sInput = sField.querySelector('input');
+    var sGo = sField.querySelector('.nsb-search-go');
+    function runSearch(){
+      var q = sInput.value.trim();
+      if (!q){ results.classList.remove('open'); return; }
+      var r = sField.getBoundingClientRect();
+      results.style.top = (r.bottom + 8)+'px';
+      results.style.left = Math.max(8, r.left)+'px';
+      results.style.right = 'auto';
+      results.style.minWidth = Math.min(420, Math.max(260, r.width))+'px';
+      function show(list){
+        results.innerHTML = '';
+        if (!list.length){ results.innerHTML = '<div class="nsb-sr-none">Nothing found for "'+esc(q)+'" — yet.</div>'; }
+        list.slice(0,12).forEach(function(it){
+          var a = document.createElement('a'); a.className='nsb-sr-item'; a.href = it.url||'#';
+          a.innerHTML = esc(it.label) + (it.sub ? '<small>'+esc(it.sub)+'</small>' : '');
+          results.appendChild(a);
+        });
+        results.classList.add('open');
+      }
+      if (typeof NayaSmartBar.onSearch === 'function'){ NayaSmartBar.onSearch(q, show); }
+      else {
+        /* built-in index: this app's sections + the network */
+        var ql = q.toLowerCase(), out = [], seen = {};
+        tabs.concat(network).forEach(function(t){
+          if ((t.label||'').toLowerCase().indexOf(ql) > -1) {
+            /* FIX-PASS-5 S1: tabs.concat(network) lists the same destination twice
+               (Dashboard + Message are in both lists) — dedupe by label+url, first wins. */
+            var u = t.url||t.target||'#', k = (t.label||'') + '|' + u;
+            if (!seen[k]) { seen[k] = true; out.push({label:t.label, sub:t.url||t.target||'', url:u}); }
+          }
+        });
+        show(out);
+      }
+    }
+    sGo.addEventListener('click', runSearch);
+    sInput.addEventListener('input', runSearch);
+    sInput.addEventListener('keydown', function(e){
+      if (e.key==='Enter'){ e.preventDefault(); runSearch(); }
+      else if (e.key==='Escape'){ sInput.value=''; results.classList.remove('open'); }
+    });
+    document.addEventListener('click', function(e){
+      if (!results.classList.contains('open')) return;
+      var n = e.target, inside = false;
+      while (n){ if (n===results || n===sLevel){ inside = true; break; } n = n.parentNode; }
+      if (!inside){ results.classList.remove('open'); }
+    });
+    /* PERSONAL-SEARCH 2026-10-31 (page-scoped): the bar's own search row
+       is retired on /personal (Shawn: it ruins the cover). The one-search
+       part below the cover drives this exact machinery — same index,
+       same results dropdown, same behavior. Shared bar source untouched. */
+    sLevel._nsbBridge = { run: runSearch, input: sInput, results: results, field: sField };
+    /* compact on scroll — the stack slims, both levels stay */
+    var compactAt = 120;
+    var topstack = document.getElementById('nsbTopstack');
+    window.addEventListener('scroll', function(){
+      topstack.classList.toggle('nsb-compact', window.scrollY > compactAt);
+    }, {passive:true});
+    /* R2 FIX 1 (2026-11-07): the autonomous marquee is OFF — drift() is no
+       longer started on either strip. The active tab is snapped into view
+       once and held; the visitor still scrolls/swipes the row by hand.
+       drift() stays defined (Settings keeps its stored speed value). */
+    try { var _at = tRow.querySelector('.nsb-tab.active') || tRow.querySelector('.nsb-tab'); if (_at) _at.scrollIntoView({behavior:'auto', block:'nearest', inline:'nearest'}); } catch(e){}
+    try { tRow.scrollLeft=0; } catch(e){} /* FIX-8c D1: Home first visible on first paint — the strip never loads mid-set */
+
+    /* ----- BOTTOM BAR ----- */
+    var bottom = document.getElementById('nsbBottom');
+    bottom.innerHTML = '';
+    var bInner = document.createElement('div'); bInner.className = 'nsb-bottom-inner';
+    var bRow = document.createElement('div'); bRow.className = 'nsb-row';
+    bRow.setAttribute('role','tablist'); bRow.setAttribute('aria-label','Network');
+    var tabsNet = storeGet(STORE_KEY, null);
+    var seeded = false;
+    if (!Array.isArray(tabsNet)){
+      seeded = true;
+      tabsNet = network.map(function(n,i){ return {id: 'seed-'+slug(n.label), label:n.label, url:n.url, target:n.target, icon:n.icon, state:null, color:n.color||SPECTRUM[i%SPECTRUM.length]}; });
+      storeSet(STORE_KEY, tabsNet); /* seed is real state from the first paint */
+    }
+    /* ----- T1b MIGRATION 2026-11-06 (seed migration so the T1 delete reaches
+       existing citizens): the stored seed was written once on first paint, so
+       citizens seeded before T1 still carry the dead "Smart Lists" tab and the
+       old Pricing URL. Fix the stored seed here — after the seed is loaded,
+       before it is rendered (renderNet below) and before any write-back.
+       Match by label AND url, never by label alone. Everything else is
+       preserved exactly: order, hearts/stars, user-added tabs, user removals,
+       icons, colors. Idempotent: a migrated seed passes through unchanged. */
+    (function migrateSmartTabsSeed(){
+      if (!Array.isArray(tabsNet)) return; /* fresh profile: seeded above from the fixed array */
+      var changed = false, out = [], m, t;
+      for (m = 0; m < tabsNet.length; m++){
+        t = tabsNet[m];
+        if (!t || typeof t !== 'object'){ out.push(t); continue; }
+        if (t.label === 'Smart Lists' && t.url === 'https://nayanet.app/lists'){ changed = true; continue; } /* T1 delete: drop the dead tab */
+        if (t.label === 'Pricing' && t.url === 'https://nayanet.app/pricing'){ t.url = 'https://nayanet.app/welcome'; changed = true; } /* T1 repoint: mutate url only, every other field untouched */
+        out.push(t);
+      }
+      if (changed){ tabsNet = out; storeSet(STORE_KEY, tabsNet); }
+    })();
+    /* ----- T1c MIGRATION 2026-11-07 (BUILDER-2: bottom bar becomes the
+       icon bar, navigation law 16:18Z): the stored seed still carries the
+       old 10-tab network ribbon. If the citizen never shaped it (no
+       hearts/stars/added tabs), replace it with the icon-bar set — the
+       system's new default. A shaped bar is theirs: it stays, rendered
+       icons-only. Idempotent: the new set carries none of the old
+       labels, so a migrated seed passes through unchanged. */
+    (function migrateBottomToIconBar(){
+      if (!Array.isArray(tabsNet) || customized()) return;
+      var OLD=['Personal','Business','Space','Intel Today','Smart Mail','Library','Project Intel'];
+      var hasOld=tabsNet.some(function(t){ return t && OLD.indexOf(t.label)>=0; });
+      if(!hasOld) return;
+      tabsNet = network.map(function(n,i){ return {id: 'seed-'+slug(n.label), label:n.label, url:n.url, target:n.target, icon:n.icon, state:null, color:n.color||SPECTRUM[i%SPECTRUM.length]}; });
+      storeSet(STORE_KEY, tabsNet);
+    })();
+    /* ----- T1d MIGRATION 2026-11-07 (BUILDER-2: .live -> .app): the
+       retired nayanet.live domain is dead (connection closed) — every
+       bottom tab that still points at it opens a dead tab. Any stored tab
+       URL containing it is repointed to nayanet.app, same path. Runs on
+       every load until no .live URL remains; a shaped bar keeps its
+       shape, only the dead domain is fixed. */
+    (function migrateLiveToApp(){
+      if (!Array.isArray(tabsNet)) return;
+      var changed=false;
+      tabsNet.forEach(function(t){
+        if(t && typeof t.url==='string' && t.url.indexOf('nayanet.live')>=0){
+          t.url=t.url.replace('nayanet.live','nayanet.app'); changed=true;
+        }
+      });
+      if(changed) storeSet(STORE_KEY, tabsNet);
+    })();
+    /* ----- T1e MIGRATION 2026-11-10 (FIX-8b: Memberships joins the
+       bottom app bar): the stored seed was written once on first paint,
+       so citizens seeded before this change carry a 7-tab bar with no
+       Memberships door. Append the Memberships seed tab to stored bars
+       that lack it — unless the citizen shaped their bar (manual wins:
+       a shaped bar is theirs, they add it with +). Idempotent: a bar
+       that already has Memberships passes through unchanged. */
+    (function migrateMembershipsTab(){
+      if (!Array.isArray(tabsNet) || customized()) return;
+      var has=false, m;
+      for (m=0; m<tabsNet.length; m++){ if (tabsNet[m] && tabsNet[m].label==='Memberships'){ has=true; break; } }
+      if (has) return;
+      tabsNet.push({id:'seed-memberships', label:'Memberships', url:undefined, target:'#memberships', icon:'\uD83C\uDFAB', state:null, color:'#a06bff'});
+      storeSet(STORE_KEY, tabsNet);
+    })();
+    /* Personalized by default: until the citizen shapes it (heart/star/add/remove),
+       the bar auto-organizes by their own logic — frequency × recency. Manual wins. */
+    function customized(){
+      if (storeGet('naya.smarttabs.manual.v1', false)) return true; /* explicit arrangement: manual order wins */
+      return tabsNet.some(function(t){ return t.state || t.id.indexOf('seed-') !== 0; });
+    }
+    function sortedNet(){
+      var list = tabsNet.slice();
+      try{ if(window.osIsPaidMember) list=list.filter(function(t){ return t.label!=='Pricing'; }); }catch(e){}
+      /* FIX-PASS-3 FAIL 10: the usage sort (frequency × recency) lived here
+         and re-ran on EVERY render, so the bar drifted under the citizen as
+         usage changed. It now runs ONCE (autoOrganizeOnce below) and the
+         stored order stands. Hearts/stars still sort first — that is the
+         citizen's explicit curation, and it only moves when they move it. */
+      var hw = function(t){ return (t.state==='heart'?2:0)+(t.state==='star'?1:0); };
+      list.sort(function(a,b){ return hw(b) - hw(a); });
+      return list;
+    }
+    function persistNet(){
+      storeSet(STORE_KEY, tabsNet);
+      try{ bottom.dispatchEvent(new CustomEvent('smarttabs-change',{detail:tabsNet.slice(),bubbles:true})); }catch(e){}
+    }
+    /* FIX-PASS-3 FAIL 10 — one-time auto-organize: the bar auto-organizes by
+       the citizen's own logic (frequency × recency) exactly ONCE — the first
+       render with usage to rank by — then the order is stored and stays put.
+       A shaped bar (manual arrangement, hearts, stars, added tabs) is never
+       touched; manual always wins. Idempotent: the flag makes a second run
+       a no-op, and a fresh profile sorts equal (zero) scores — a no-op too. */
+    (function autoOrganizeOnce(){
+      if (customized()) return;
+      if (storeGet('naya.smarttabs.autoorg.v1', false)) return;
+      tabsNet.sort(function(a,b){ return usageScore(b.id) - usageScore(a.id); });
+      storeSet(STORE_KEY, tabsNet);
+      storeSet('naya.smarttabs.autoorg.v1', true);
+    })();
+    var ed = document.createElement('div'); ed.className = 'nsb-ed';
+    function renderNet(){
+      bRow.innerHTML = ''; closeMenu();
+      /* BUILDER-2 2026-11-07: single pass — the set was duplicated for the
+         drift marquee, and drift is OFF (R2 FIX 1), so the copy only
+         doubled the bar. The icon bar shows each icon once. */
+      sortedNet().forEach(function(t){
+        t.trackId = t.id;
+        bRow.appendChild(pill(t, {menu: openNetMenu}));
+      });
+      var add = document.createElement('button'); add.type='button';
+      add.className = 'nsb-tab add'; add.style.setProperty('--tc', SPECTRUM[1]);
+      add.textContent = '＋'; add.title='Add a tab'; add.setAttribute('aria-label','Add a tab');
+      add.addEventListener('click', function(){ openNetEditor(null); });
+      bRow.appendChild(add);
+    }
+    /* ---------- explicit reorder: move buttons (not drag — the bar drifts) ---------- */
+    function moveTab(id, dir){
+      var i = -1, k;
+      for (k = 0; k < tabsNet.length; k++){ if (tabsNet[k].id === id){ i = k; break; } }
+      if (i < 0) return;
+      var j = i + dir;
+      if (j < 0 || j >= tabsNet.length){ say('bottom','"'+tabsNet[i].label+'" is already at the '+(dir<0?'front':'end')+'.'); return; }
+      var tmp = tabsNet[i]; tabsNet[i] = tabsNet[j]; tabsNet[j] = tmp;
+      storeSet('naya.smarttabs.manual.v1', true); /* explicit arrangement: manual order wins */
+      persistNet(); renderNet();
+      say('bottom','Moved "'+tabsNet[j].label+'" '+(dir<0?'left':'right')+'.');
+    }
+    /* ---------- keyword→URL autocomplete: the label promises "word" — make it real ----------
+       Registry = the citizen's own live tab set (labels+urls they carry) + the canonical
+       network sections (from the bar's deployed seed config). No match → the raw word
+       stays allowed; click-time behavior unchanged. */
+    var SECTION_FALLBACK = [
+      ['Home','https://nayanet.app/'],
+      ['Dashboard','https://nayanet.app/dashboard'],
+      ['Personal','https://nayanet.app/personal'],
+      ['Business','https://nayanet.app/business'],
+      ['Space','https://nayanet.app/space'],
+      ['Intel Today','https://nayanet.app/rooms/today'],
+      ['Smart Mail','https://nayanet.app/rooms/mail'],
+      ['Library','https://nayanet.app/rooms/library'],
+      ['Project Intel','https://nayanet.app/pi'],
+      ['Pricing','https://nayanet.app/welcome'],
+      ['Growth','https://nayanet.app/rooms/growth'],
+      ['Connections','https://nayanet.app/rooms/connections']
+    ];
+    function sectionRegistry(){
+      var seen = {}, out = [];
+      function add(label, url){
+        if (!label || !url) return;
+        var k = String(label).toLowerCase();
+        if (seen[k]) return; seen[k] = 1;
+        out.push({label:String(label), url:String(url)});
+      }
+      tabsNet.forEach(function(t){ add(t.label, t.url); });
+      SECTION_FALLBACK.forEach(function(p){ add(p[0], p[1]); });
+      return out;
+    }
+    function attachAutocomplete(input){
+      var box = null, items = [], hi = -1;
+      function close(){
+        if (box && box.parentNode) box.parentNode.removeChild(box);
+        box = null; items = []; hi = -1;
+        input.setAttribute('aria-expanded','false');
+      }
+      function paintHi(){
+        if (!box) return;
+        var mis = box.querySelectorAll('.mi'), k;
+        for (k = 0; k < mis.length; k++){
+          if (k === hi) mis[k].classList.add('sel'); else mis[k].classList.remove('sel');
+        }
+      }
+      function pick(i){
+        var s = items[i];
+        if (!s) return;
+        input.value = s.url;
+        close();
+        input.focus();
+      }
+      function render(){
+        close();
+        var q = input.value.trim();
+        if (!q || /^https?:\/\//i.test(q) || q.charAt(0) === '#') return;
+        var ql = q.toLowerCase(), ms = [];
+        sectionRegistry().forEach(function(s){
+          if (s.label.toLowerCase().indexOf(ql) !== -1 || s.url.toLowerCase().indexOf(ql) !== -1) ms.push(s);
+        });
+        ms = ms.slice(0, 6);
+        if (!ms.length) return;
+        box = document.createElement('div');
+        box.className = 'nsb-menu'; box.setAttribute('role','listbox');
+        ms.forEach(function(s, i){
+          var mi = document.createElement('button');
+          mi.type = 'button'; mi.className = 'mi'; mi.setAttribute('role','option');
+          mi.innerHTML = '<b>'+esc(s.label)+'</b><span class="nsb-sug-url">'+esc(s.url)+'</span>';
+          mi.addEventListener('mousedown', function(e){ e.preventDefault(); pick(i); });
+          box.appendChild(mi);
+        });
+        document.body.appendChild(box);
+        placeNear(input, box);
+        items = ms; hi = 0; paintHi();
+        input.setAttribute('aria-expanded','true');
+      }
+      input.setAttribute('autocomplete','off');
+      input.setAttribute('role','combobox');
+      input.setAttribute('aria-expanded','false');
+      input.addEventListener('input', render);
+      input.addEventListener('keydown', function(e){
+        if (!box) return;
+        if (e.key === 'ArrowDown'){ e.preventDefault(); hi = (hi+1)%items.length; paintHi(); }
+        else if (e.key === 'ArrowUp'){ e.preventDefault(); hi = (hi-1+items.length)%items.length; paintHi(); }
+        else if (e.key === 'Enter'){ e.preventDefault(); pick(hi<0?0:hi); }
+        else if (e.key === 'Escape'){ close(); }
+      });
+      input.addEventListener('blur', function(){ setTimeout(close, 180); });
+      return close;
+    }
+    function openNetMenu(t, anchorEl){
+      closeMenu();
+      var m = document.createElement('div'); m.className = 'nsb-menu'; m.setAttribute('role','menu');
+      [['edit','✎ Edit'],['heart','♥ Set Purple Heart'],['star','★ Set Gold Star'],['remove','✕ Remove']]
+      .forEach(function(pair){
+        var mi = document.createElement('button'); mi.type='button'; mi.className='mi mi-'+pair[0];
+        mi.setAttribute('aria-label', pair[1]);
+        mi.innerHTML = '<span class="mi-ico" aria-hidden="true">'+pair[1].charAt(0)+'</span>'+pair[1].slice(1);
+        mi.addEventListener('click', function(){
+          closeMenu();
+          if (pair[0]==='edit') openNetEditor(t.id);
+          else if (pair[0]==='heart'||pair[0]==='star'){
+            t.state = (t.state===pair[0]) ? null : pair[0];
+            persistNet(); renderNet();
+            if (t.state==='heart'){
+              /* keep the promise visibly: the heart just rose to the front — show the front.
+                 pause drift via its own poke so the rise is seen, not scrolled past. */
+              bRow.scrollLeft = 0;
+              try { bRow.dispatchEvent(new Event('pointerdown')); } catch(e){}
+            }
+            say('bottom', '"'+t.label+'" '+(t.state==='heart'?'has the ♥ purple heart — it rises to the front.'
+              : t.state==='star'?'has the ★ gold star.' : 'is a plain tab again.'));
+          } else if (pair[0]==='remove'){
+            tabsNet = tabsNet.filter(function(x){return x.id!==t.id;});
+            persistNet(); renderNet();
+            say('bottom', 'Removed "'+t.label+'".');
+          }
+        });
+        m.appendChild(mi);
+      });
+      document.body.appendChild(m); openMenu = m;
+      placeNear(anchorEl, m);
+    }
+    function openNetEditor(id){
+      var t = null;
+      if (id) tabsNet.forEach(function(x){ if (x.id===id) t = x; });
+      ed.classList.add('open'); ed.innerHTML = '';
+      var ttl = document.createElement('p'); ttl.textContent = t ? 'Edit tab' : 'Add a tab';
+      ed.appendChild(ttl);
+      function field(lbl, val, ph){
+        var l = document.createElement('label'); l.textContent = lbl; ed.appendChild(l);
+        var i = document.createElement('input'); i.value = val||''; i.placeholder = ph||'';
+        ed.appendChild(i); return i;
+      }
+      var nameIn = field('Name', t?t.label:'', 'e.g. Smart Mail');
+      var urlIn = field('Destination — URL or word', t?(t.url||''):'', 'https://… or just a word');
+      var closeSug = attachAutocomplete(urlIn);
+      if (!t){
+        /* quick-add chips: "add it again" is literally one tap — main apps not already on the bar */
+        var have = {};
+        tabsNet.forEach(function(x){ if (x.url) have[String(x.url).toLowerCase()] = 1; });
+        var missing = sectionRegistry().filter(function(s){ return !have[String(s.url).toLowerCase()]; });
+        if (missing.length){
+          var ql = document.createElement('label'); ql.textContent = 'Quick add'; ed.appendChild(ql);
+          var qw = document.createElement('div');
+          qw.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;';
+          missing.forEach(function(s){
+            var c = document.createElement('button');
+            c.type = 'button'; c.textContent = s.label;
+            c.setAttribute('aria-label','Add '+s.label+' tab');
+            c.style.cssText = 'background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.25);border-radius:20px;color:#fff;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;';
+            c.addEventListener('click', function(){
+              closeSug();
+              tabsNet.push({id:uid('tab'), label:s.label, url:s.url, state:null});
+              persistNet(); renderNet(); ed.classList.remove('open');
+              say('bottom','Added "'+s.label+'" — it now rides this bar everywhere.');
+            });
+            qw.appendChild(c);
+          });
+          ed.appendChild(qw);
+        }
+      }
+      var rowB = document.createElement('div'); rowB.className = 'nsb-ed-row';
+      function btn(txt, cls, fn){
+        var b = document.createElement('button'); b.type='button';
+        b.className = 'nsb-btn '+(cls||''); b.textContent = txt;
+        b.addEventListener('click', fn); rowB.appendChild(b);
+      }
+      btn(t?'Save':'Add tab','primary save', function(){
+        closeSug();
+        var nm = nameIn.value.trim(), ur = urlIn.value.trim();
+        if (!nm){ say('bottom','Give the tab a name first.'); nameIn.focus(); return; }
+        if (t){ t.label = nm; t.url = ur; say('bottom','Saved "'+nm+'".'); }
+        else { tabsNet.push({id:uid('tab'), label:nm, url:ur, state:null}); say('bottom','Added "'+nm+'" — it now rides this bar everywhere.'); }
+        persistNet(); renderNet(); ed.classList.remove('open');
+      });
+      if (t){
+        btn('← Move left','move-left', function(){ moveTab(t.id, -1); });
+        btn('Move right →','move-right', function(){ moveTab(t.id, 1); });
+        btn('Remove','danger', function(){
+          closeSug();
+          tabsNet = tabsNet.filter(function(x){return x.id!==t.id;});
+          persistNet(); renderNet(); ed.classList.remove('open');
+          say('bottom','Removed "'+t.label+'".');
+        });
+      }
+      btn('Close','close', function(){ closeSug(); ed.classList.remove('open'); });
+      ed.appendChild(rowB);
+      setTimeout(function(){ nameIn.focus(); }, 60);
+    }
+    bInner.appendChild(bRow);
+    /* network anchor: the persistent connection — the whole network, one touch away */
+    var net = document.createElement('div'); net.className = 'nsb-net';
+    net.title = 'The whole network — one touch away, from any app';
+    var ng = document.createElement('span'); ng.className = 'nsb-net-glyph'; ng.textContent = '◈';
+    ng.style.setProperty('--tc', '#3fb8ff');
+    net.appendChild(ng);
+    var nc = document.createElement('span');
+    nc.innerHTML = '<small>' + (sortedNet().length + 1) + ' apps</small>'; /* FIX-8c D6a: the count is the tabs on the bar — the network tabs plus the Add-a-tab door (8 + 1 = 9); sortedNet() counts what actually renders */
+    net.appendChild(nc);
+    /* settings gear: bar motion is theirs to tune */
+    var gear = document.createElement('button'); gear.type = 'button'; gear.className = 'nsb-gear';
+    gear.textContent = '⚙'; gear.setAttribute('aria-label','Bar settings — motion speed');
+    gear.title = 'Bar settings — motion speed';
+    bInner.insertBefore(net, bRow);
+    bInner.appendChild(gear);
+    bottom.appendChild(bInner);
+    bottom.appendChild(ed);
+    var st = document.createElement('p'); st.className = 'nsb-status';
+    bottom.appendChild(st); statusEls.bottom = st;
+    renderNet();
+    /* R2 FIX 1 (2026-11-07): marquee OFF on the bottom bar too — same as the
+       top strip. Active tab snapped into view once and held; hand-scroll
+       still works. */
+    try { var _ab = bRow.querySelector('.nsb-tab.active') || bRow.querySelector('.nsb-tab'); if (_ab) _ab.scrollIntoView({behavior:'auto', block:'nearest', inline:'nearest'}); } catch(e){}
+    try { bRow.scrollLeft=0; } catch(e){} /* FIX-8c D1: Home first visible on first paint — the strip never loads mid-set */
+    /* keyboard-open: hide bottom bar when the keyboard takes the screen */
+    if (window.visualViewport){
+      var baseH = window.visualViewport.height;
+      window.visualViewport.addEventListener('resize', function(){
+        var shrunk = window.visualViewport.height < baseH * 0.7;
+        bottom.classList.toggle('nsb-kb-hidden', shrunk);
+      });
+    }
+    /* settings popover: speed control, real and working */
+    var setPop = document.createElement('div'); setPop.className = 'nsb-settings';
+    setPop.setAttribute('role','dialog'); setPop.setAttribute('aria-label','Bar settings');
+    var SPEED_NAMES = [[0,'Still'],[0.5,'Slow'],[1,'Cruise'],[1.5,'Brisk'],[2,'Swift']];
+    function speedName(v){
+      var best = SPEED_NAMES[0];
+      SPEED_NAMES.forEach(function(p){ if (Math.abs(p[0]-v) < Math.abs(best[0]-v)) best = p; });
+      return best[1];
+    }
+    function renderSettings(){
+      var s = getSettings();
+      setPop.innerHTML = '';
+      var h = document.createElement('h4'); h.textContent = 'Bar settings'; setPop.appendChild(h);
+      var p = document.createElement('p');
+      p.textContent = 'The bars are yours. Tune the motion, or turn the network bar off entirely — most keep it on.';
+      setPop.appendChild(p);
+      /* motion speed */
+      var sh = document.createElement('h4'); sh.textContent = 'Motion speed'; sh.style.fontSize = '13px';
+      sh.style.margin = '12px 0 4px'; setPop.appendChild(sh);
+      var rng = document.createElement('input');
+      rng.type = 'range'; rng.min = '0'; rng.max = '2'; rng.step = '0.5'; rng.value = String(s.speed);
+      rng.setAttribute('aria-label','Bar motion speed');
+      var val = document.createElement('div'); val.className = 'nsb-speed-val';
+      function showVal(){ val.innerHTML = 'Speed: <span>' + speedName(+rng.value) + '</span>'; }
+      showVal();
+      rng.addEventListener('input', function(){
+        var v = setSpeed(+rng.value); showVal();
+        say('bottom', 'Bar motion: ' + speedName(v) + '.');
+      });
+      setPop.appendChild(rng);
+      var labs = document.createElement('div'); labs.className = 'nsb-speed-labels';
+      labs.innerHTML = '<span>Still</span><span>Cruise</span><span>Swift</span>';
+      setPop.appendChild(labs);
+      setPop.appendChild(val);
+      /* bottom bar on/off */
+      var bh = document.createElement('h4'); bh.textContent = 'Network bar'; bh.style.fontSize = '13px';
+      bh.style.margin = '14px 0 4px'; setPop.appendChild(bh);
+      var tog = document.createElement('button'); tog.type = 'button'; tog.className = 'nsb-btn';
+      tog.style.width = '100%';
+      function showTog(){ tog.textContent = getSettings().bottomBar ? '✓ Network bar is ON — tap to turn off' : 'Network bar is OFF — tap to turn on'; }
+      showTog();
+      tog.addEventListener('click', function(){
+        var on = setBottomBar(!getSettings().bottomBar);
+        showTog();
+        say('bottom', on ? 'Network bar is back on.' : 'Network bar off — your choice. Turn it back on here any time.');
+      });
+      setPop.appendChild(tog);
+    }
+    document.body.appendChild(setPop);
+    function closeSettings(){
+      /* every close path must FULLY hide the panel: class off AND all inline
+         styles cleared — a stale inline display keeps it painted after close */
+      setPop.classList.remove('open');
+      setPop.removeAttribute('style');
+    }
+    gear.addEventListener('click', function(e){
+      e.stopPropagation();
+      if (setPop.classList.contains('open')){ closeSettings(); return; }
+      renderSettings();
+      setPop.classList.add('open');
+      placeNear(gear, setPop);
+      /* placeNear leaves inline display:block for measurement; .open drives
+         visibility from here — clear it so a later close can't stick */
+      setPop.style.display = '';
+    });
+    document.addEventListener('click', function(e){
+      if (!setPop.classList.contains('open')) return;
+      var n = e.target, inside = false;
+      while (n){ if (n===setPop || n===gear){ inside = true; break; } n = n.parentNode; }
+      if (!inside) closeSettings();
+    });
+    document.addEventListener('keydown', function(e){
+      if ((e.key==='Escape'||e.keyCode===27) && setPop.classList.contains('open')) closeSettings();
+    });
+    /* public: apps surface this in their Settings page too */
+    NayaSmartBar.openSettings = function(){
+      renderSettings(); setPop.classList.add('open');
+      setPop.style.left = '50%'; setPop.style.top = '40%';
+      setPop.style.transform = 'translate(-50%,-50%)'; setPop.style.position = 'fixed';
+    };
+    NayaSmartBar.setSpeed = setSpeed;
+    NayaSmartBar.getSpeed = function(){ return getSettings().speed; };
+    NayaSmartBar.setBottomBar = setBottomBar;
+    NayaSmartBar.bottomBarOn = function(){ return getSettings().bottomBar; };
+    applyBottomBar(); /* their choice, honored from the first paint */
+    return {
+      top: top, bottom: bottom,
+      destroy: function(){ top.innerHTML=''; bottom.innerHTML=''; }
+    };
+  }
+};
+})();
+</script>
+<script>
+/* BUILDER-2 2026-11-07 — bottom icon bar (navigation law 16:18Z). The
+   unit renders the icons; this wiring makes them navigate IN-PAGE (the
+   pill's own click only scrolls for #targets — it never switches views),
+   marks the bar as the icon bar (labels off), names each icon on hover,
+   and folds the bar away while scrolling (back up when scrolling stops).
+   Home + Pricing are external: the pill opens them in a new tab, as
+   before — they are NOT in the view map below, on purpose. */
+(function(){
+  var bottom=document.getElementById('nsbBottom');
+  if(!bottom) return;
+  bottom.classList.add('nsb-iconbar');
+  var VIEWS_BY_LABEL={'Dashboard':'dashboard','Message':'message','Activity':'dashboard','Mail':'inbox','Stats':'dashboard','Memberships':'memberships'}; /* FIX-8b: the new app-bar tab opens the memberships view in-page */
+  function nameIcons(){
+    bottom.querySelectorAll('.nsb-tab').forEach(function(b){
+      var lab=(b.getAttribute('aria-label')||'').replace(/ \(no destination yet\)$/,'');
+      if(lab && !b.getAttribute('title')) b.setAttribute('title', lab);
+    });
+  }
+  nameIcons();
+  bottom.addEventListener('smarttabs-change', function(){ setTimeout(nameIcons, 50); });
+  /* FIX-8c D6b: Pricing opens its destination even when the popup is
+     blocked — capture runs before the pill's own handler, so the
+     destination opens exactly once (new tab when allowed, this tab when
+     the popup is blocked), and never falls through to the dashboard.
+     No 'noopener': Firefox returns null for noopener opens even when
+     the popup succeeds (proven 2026-11-10: 'noopener' -> NULL, plain
+     _blank -> window, popup opened in all three cases), so a null-check
+     fallback is impossible with it; the destination is same-family
+     nayanet.app. */
+  bottom.addEventListener('click', function(e){
+    if (e.target && e.target.closest && e.target.closest('.nsb-more')) return;
+    var b=e.target && e.target.closest ? e.target.closest('.nsb-tab') : null;
+    if(!b || !bottom.contains(b)) return;
+    var lab=(b.getAttribute('aria-label')||'').replace(/ \(no destination yet\)$/,'');
+    if(lab!=='Pricing') return;
+    e.stopPropagation();
+    e.preventDefault();
+    bottom.querySelectorAll('.nsb-tab.active').forEach(function(x){ x.classList.remove('active'); });
+    b.classList.add('active');
+    var w=null;
+    try { w=window.open('https://nayanet.app/welcome','_blank'); } catch(err){ w=null; }
+    if(!w){ window.location.href='https://nayanet.app/welcome'; }
+  }, true);
+  bottom.addEventListener('click', function(e){
+    var b=e.target && e.target.closest ? e.target.closest('.nsb-tab') : null;
+    if(!b || !bottom.contains(b)) return;
+    var lab=(b.getAttribute('aria-label')||'').replace(/ \(no destination yet\)$/,'');
+    var view=VIEWS_BY_LABEL[lab];
+    if(view && window.osShowView){ window.osShowView(view); }
+  });
+  var foldTimer=null, folded=false;
+  function fold(on){
+    if(on===folded) return; folded=on;
+    bottom.classList.toggle('nsb-folded', on);
+  }
+  window.addEventListener('scroll', function(){
+    if(window.scrollY>60 && window._mwAutofold!==false) fold(true);
+    if(foldTimer) clearTimeout(foldTimer);
+    foldTimer=setTimeout(function(){ fold(false); }, 1500);
+  }, {passive:true});
+})();
+</script>
+<script>
+/* HUB HOST — Smart Bar wiring (Hub host code, NOT harvested).
+   Written for the Hub bar round, Phase 2 (2026-11-11). Nothing here is
+   quoted as harvested: every harvested byte lives in B1-B7 + B9, spliced
+   verbatim around this script. This script is the Hub's side of the
+   contract — the mount config, the follow, the fold gate, the routing,
+   the stacking, the pad.
+   Sources (measured from the Hub base, branch one-bottom-bar-20261111,
+   tip 184a0760, Hub blob b9e2a025, 5,535,667 B):
+   - ROOMS: Hub L2719-2734 (ids, names, accents — accents resolved to hex
+     from the Hub :root, see HUB_ROOMS below).
+   - Router: Hub L8264-8267 (Router.on('hub/:room') -> HubView or
+     goExternal), L8256-8258 (goExternal: location.href = EXTERNAL + search),
+     L6716 (NayaRouter.navigate('/hub/feed') else location.hash).
+   - EXTERNAL_ROOMS: Hub L8249-8255.
+   - Notif bar: Hub L353-363 (.notif-bar, fixed bottom:0, z-45) + L5337-5404
+     (NayaNotif.init — always in the DOM) + L5368-5373 (syncStack sets
+     --notif-h; the bar ships label-less at 79px).
+   - Dock (.eco-bottombar, Hub L268-287): CSS only — no element is ever
+     created in the Hub JS, so there is no dock in the rendered stack.
+   - Sticky top: Hub L696-703 (.top, position:sticky, top:0, z-30) and
+     L459-473 (.rail.left, position:sticky, top:0, height:100dvh; fixed
+     drawer <=900px, L948-957). Both + buttons live INSIDE .top (Hub
+     L4915 rooms-plus, L4965 eco-plus) — so the sticky-top fix below
+     covers the + buttons too; there is no #os-chrome on the Hub and no
+     fixed + button to lift (B11's mwLayoutPlus selector matches nothing).
+   - Bottom reserve: Hub L419 (.main padding-bottom:186px) + L693 (220px,
+     later rule wins on desktop) + L346/L421 (380px, body .main, <=640px).
+   - Settings room: Hub L7815-8233 (SettingsRoom) — verified this run: NO
+     Smart Bar on/off control, NO autofold control, NO position control.
+     FLAG (R11): the citizen's way back from the hide button is the
+     Personal page's Settings (shared store) — the Hub Settings room gains
+     a control only by a separate Hub Settings edit, never invented here.
+   - Search: Hub L9317 (NayaSearch.mountPalette) is the Hub's search; the
+     Smart Bar search level stays hidden per B6 (popup-only ruling, R9).
+   - Component: the one-bottom-bar block (Hub L9363-9474, v2, sha 51bb0ca0)
+     measures #nsbBottom / .notif-bar / .jewelbar and lifts above the
+     tallest (HARVEST.md §6). It is NOT touched by this script.
+   Derivations (decisions Phase 2 had to make; the verifier judges them):
+   - D-ORDER: the splice plan's S3+S4 anchors as written would put the
+     scripts BEFORE the bottom mount in parse order — but mount() has no
+     null guard (B7: bottom.innerHTML='' throws) and B9 early-returns
+     without #nsbBottom. So the end-of-body order is B2, then B7, B9, S5,
+     then the component — "bottom HTML first, then the scripts", exactly
+     as HARVEST.md §7's own sentence orders it. The bytes are unchanged;
+     only the order is corrected.
+   - D-LIFT: the Smart Bar owns bottom:0, so it would cover the Hub's
+     notif bar (also bottom:0, z-45). Bars stack, never overlay — so this
+     script lifts the notif bar above the Smart Bar by the bar's MEASURED
+     height (--nsb-lift), and the jewelbar the same way in the Ask room.
+     The component then measures the lifted bars and rides above them.
+     When the Smart Bar folds or turns off, the lift drops to 0 and the
+     notif bar returns to bottom:0. Never a fixed guess: every height is
+     read live (offsetHeight) on load, resize, scroll-settle, fold change,
+     and store change.
+   - D-STICKY: .top and .rail.left stick to viewport top:0 — the fixed
+     topstack would cover them on scroll. This script writes the topstack's
+     measured height to --nsb-top-h and the host CSS sticks them below it.
+     Body padding-top carries the same measured height.
+   - D-PAD: the bottom pad is only the gap — the stack height (Smart Bar +
+     notif + component, all measured live) minus the Hub's CSS reserve
+     (220px desktop / 380px mobile). Nothing added when the reserve covers
+     it; the inline pad is cleared the moment the gap closes (fold/off).
+   - D-MEMBERSHIPS: the Hub has no memberships room. The bottom seed's
+     Memberships pill routes to #/hub/settings — the Membership board
+     (level, what you can build, upgrade) lives in the Settings room
+     (Hub L7938-7944). It navigates somewhere real; it is not a dead pill.
+   - D-GLYPHS: the Hub's ROOMS carry icon NAMES (SVG paths), not text
+     glyphs, so the top pills take one distinct glyph each from the
+     harvested Smart Bar glyph set (the same set B8 uses). Labels are the
+     Hub's own room names, never invented.
+   - D-POSITION: position is Hub-local (R1), default top, stored in
+     hub.set.smartbar. There is no Hub UI to change it yet — the value
+     stays top unless the store says otherwise. Never a new shared key.
+   - D-SEARCH: the Smart Bar search field mounts into #nsbSearchLevel and
+     stays hidden (B6). Nothing in the system ever opens it as a modal
+     (no nsb-modal opener exists in B7) — the Hub's palette is the search.
+   - D-FOLD-RETURN: the fold script (B9) reads window._mwAutofold. This
+     script sets that flag from Hub-local state (hub.set.autofold,
+     default true) — the name is the transplanted script's, the state is
+     the Hub's. */
+(function(){
+'use strict';
+/* --- Hub-local store (B13 pattern, hub.set.* keys) --- */
+function hubGet(k,d){ try{ var v=localStorage.getItem('hub.set.'+k); return v===null?d:JSON.parse(v); }catch(e){ return d; } }
+function hubPut(k,v){ try{ localStorage.setItem('hub.set.'+k, JSON.stringify(v)); }catch(e){} }
+
+/* --- shared-store bridge (B11 pattern, Hub names) --- */
+function hubSystemBottomBar(){
+  try{ if(window.NayaSmartBar && typeof window.NayaSmartBar.bottomBarOn==='function') return !!window.NayaSmartBar.bottomBarOn(); }catch(e){}
+  try{ var s=JSON.parse(localStorage.getItem('naya.smartbar.settings.v1')||'{}'); return s.bottomBar!==false; }catch(e){ return true; }
+}
+function hubSetSystemBottomBar(on){
+  try{ if(window.NayaSmartBar && typeof window.NayaSmartBar.setBottomBar==='function'){ window.NayaSmartBar.setBottomBar(!!on); hubApplyBars(); return; } }catch(e){}
+  try{ var s=JSON.parse(localStorage.getItem('naya.smartbar.settings.v1')||'{}'); s.bottomBar=!!on; localStorage.setItem('naya.smartbar.settings.v1', JSON.stringify(s)); }catch(e){}
+  hubApplyBars();
+}
+
+/* --- autofold gate: Hub-local state, default ON (B9 reads window._mwAutofold) --- */
+window._mwAutofold = hubGet('autofold', true);
+
+/* --- host CSS: notif/jewel lift + sticky offsets (Hub host CSS, NOT harvested) --- */
+(function hubHostCss(){
+  if (document.getElementById('hub-smartbar-host')) return;
+  var st = document.createElement('style');
+  st.id = 'hub-smartbar-host';
+  st.textContent = [
+    '/* HUB HOST — Smart Bar lift + sticky offsets (Hub host CSS, NOT harvested).',
+    '   The Smart Bar owns bottom:0; the Hub\'s notif bar rides above it, the',
+    '   jewelbar above that in the Ask room. --nsb-lift / --nsb-top-h are',
+    '   measured live by the host script — never a fixed guess. */',
+    'body.hub-has-smartbar .notif-bar{bottom:var(--nsb-lift,0px);transition:bottom .45s cubic-bezier(.16,.84,.22,1);}',
+    'body.hub-has-smartbar:has(.naya-ask-room) .notif-bar{bottom:calc(var(--nsb-lift,0px) + 71px);}',
+    'body.hub-has-smartbar:has(.naya-ask-room) .jewelbar{bottom:var(--nsb-lift,0px);}',
+    'body.hub-has-smartbar .top{top:var(--nsb-top-h,0px);}',
+    'body.hub-has-smartbar .rail.left{top:var(--nsb-top-h,0px);height:calc(100dvh - var(--nsb-top-h,0px));}'
+  ].join('\n');
+  document.head.appendChild(st);
+  document.body.classList.add('hub-has-smartbar');
+})();
+
+/* --- Hub rooms: ids + names from the Hub ROOMS (L2719-2734); accents
+       resolved to hex from the Hub :root; glyphs distinct, from the
+       harvested Smart Bar glyph set (see D-GLYPHS above). --- */
+var HUB_ROOMS = [
+  { id:'connect',     label:'Start Here',        icon:'\u2302', color:'#40d3bb' },
+  { id:'feed',        label:'Smart Feed',        icon:'\u25a4', color:'#a06bff' },
+  { id:'factory',     label:'Smart Factory',     icon:'\u25ce', color:'#9d75ff' },
+  { id:'ask',         label:'Ask Naya',          icon:'\u25c7', color:'#55b9ee' },
+  { id:'spaces',      label:'Smart Spaces',      icon:'\u25c9', color:'#b8ee57' },
+  { id:'today',       label:"Today's Intel",     icon:'\u2726', color:'#d86cff' },
+  { id:'growth',      label:'Smart Growth',      icon:'\u25b2', color:'#e8b64c' },
+  { id:'reports',     label:'Your Reports',      icon:'\u2b22', color:'#6675ff' },
+  { id:'library',     label:'Intelligent Library', icon:'\u2630', color:'#55b9ee' },
+  { id:'ledger',      label:'Smart Ledger',      icon:'\u25a6', color:'#e8b64c' },
+  { id:'connections', label:'Your Connections',  icon:'\u25c8', color:'#ff9a5a' },
+  { id:'lists',       label:'Smart Lists',       icon:'\u2605', color:'#9d75ff' },
+  { id:'mail',        label:'Smart Mail',        icon:'\u2709', color:'#ff7a3d' },
+  { id:'settings',    label:'Settings',          icon:'\u2699', color:'#e8eaf2' }
+];
+var HUB_EXTERNAL_ROOMS = { today:'/rooms/today', reports:'/rooms/reports', library:'/rooms/library', ledger:'/rooms/ledger', connections:'/rooms/connections', mail:'/rooms/mail', spaces:'/rooms/spaces', growth:'/rooms/growth', factory:'/smartfactory' };
+function hubGoRoom(id){
+  if (HUB_EXTERNAL_ROOMS[id]) { location.href = HUB_EXTERNAL_ROOMS[id] + location.search; return; }
+  if (window.NayaRouter && typeof window.NayaRouter.navigate === 'function') window.NayaRouter.navigate('/hub/' + id);
+  else location.hash = '#/hub/' + id;
+}
+function hubRoomFromHash(){
+  var m = (location.hash || '').match(/#\/hub\/([a-z-]+)/);
+  if (m) { var r = m[1]; if (r.indexOf('feed') === 0) return 'feed'; return r; }
+  if ((location.hash || '') === '#/hub' || !location.hash) return 'feed';
+  return null;
+}
+
+/* --- mount: Hub sections + the shared network seed (B8 verbatim) --- */
+NayaSmartBar.mount({
+  app: { name: 'Hub', honesty: 'proven' },
+  sections: HUB_ROOMS.map(function(r){ return {label:r.label, target:'#hub-room-'+r.id, icon:r.icon, color:r.color}; }),
+  network: [
+    {label:"Home", url:"https://nayanet.app/", icon:"\u2302"},
+    {label:"Dashboard", target:"#dashboard", icon:"\u25c9"},
+    {label:"Message", target:"#message", icon:"\u25c7"},
+    {label:"Activity", target:"#dashboard", icon:"\u26a1"},
+    {label:"Mail", target:"#inbox", icon:"\u2709"},
+    {label:"Stats", target:"#dashboard", icon:"\u25a4"},
+    {label:"Pricing", url:"https://nayanet.app/welcome", icon:"\u2605"},
+    {label:"Memberships", target:"#memberships", icon:"\uD83C\uDFAB", color:"#a06bff"} /* FIX-8b: Memberships joins the bottom app bar (7 apps -> 8) */
+  ]
+});
+
+/* --- top-pill routing (B10 pattern: bubble phase, index map; B7's own pill
+       handler runs first — active + ripple + tapUsage — then this routes.
+       The row renders the section set twice (invisible wrap, B7), so the
+       index folds. The pill targets are safe no-op selectors. --- */
+var hubTop = document.getElementById('nsbTop');
+if (hubTop) {
+  hubTop.addEventListener('click', function(e){
+    var b = e.target && e.target.closest ? e.target.closest('.nsb-tab') : null;
+    if (!b || !hubTop.contains(b)) return;
+    var row = hubTop.querySelector('.nsb-row'); if (!row) return;
+    var pills = Array.prototype.filter.call(row.children, function(c){ return c.classList && c.classList.contains('nsb-tab'); });
+    var idx = pills.indexOf(b);
+    if (idx < 0) return;
+    var room = HUB_ROOMS[idx % HUB_ROOMS.length];
+    if (room) hubGoRoom(room.id);
+  });
+}
+function hubMarkTopActive(){
+  var room = hubRoomFromHash(); if (!room) return;
+  var top = document.getElementById('nsbTop'); if (!top) return;
+  var row = top.querySelector('.nsb-row'); if (!row) return;
+  var pills = Array.prototype.filter.call(row.children, function(c){ return c.classList && c.classList.contains('nsb-tab'); });
+  pills.forEach(function(b, i){
+    b.classList.toggle('active', HUB_ROOMS[i % HUB_ROOMS.length].id === room);
+  });
+}
+window.addEventListener('hashchange', hubMarkTopActive);
+
+/* --- bottom-pill routing (bubble phase on #nsbBottom; B7's handler runs
+       first and no-ops on the dead in-page targets, B9's capture handler
+       already opened Pricing — this only routes the Hub destinations.
+       Home keeps the seed's own behavior (new tab to nayanet.app). --- */
+var HUB_BOTTOM = {
+  'Dashboard': function(){ location.href = 'https://nayanet.app/dashboard'; },
+  'Message': function(){ hubGoRoom('mail'); },
+  'Activity': function(){ hubGoRoom('feed'); },
+  'Mail': function(){ hubGoRoom('mail'); },
+  'Stats': function(){ location.href = 'https://nayanet.app/dashboard'; },
+  'Memberships': function(){ hubGoRoom('settings'); } /* D-MEMBERSHIPS */
+};
+var hubBottom = document.getElementById('nsbBottom');
+if (hubBottom) {
+  hubBottom.addEventListener('click', function(e){
+    if (e.target && e.target.closest && e.target.closest('.nsb-more')) return;
+    var b = e.target && e.target.closest ? e.target.closest('.nsb-tab') : null;
+    if (!b || !hubBottom.contains(b)) return;
+    var lab = (b.getAttribute('aria-label') || '').replace(/ \(no destination yet\)$/, '');
+    var go = HUB_BOTTOM[lab];
+    if (go) go();
+  });
+}
+
+/* --- hide control (B11 pattern, Hub names; R11). The way back is the
+       Personal page's Settings (shared store) until the Hub Settings room
+       gains its own control — flagged in the round record, never invented. --- */
+function hubEnsureHideBtn(){
+  var bt = document.getElementById('nsbBottom'); if (!bt) return;
+  if (bt.querySelector('.mw-hidebar')) return;
+  var b = document.createElement('button');
+  b.type = 'button'; b.className = 'mw-hidebar'; b.title = 'Hide the bottom bar — bring it back from Settings';
+  b.setAttribute('aria-label', 'Hide the bottom bar');
+  b.textContent = '\u2304';
+  b.addEventListener('click', function(e){ e.stopPropagation(); hubSetSystemBottomBar(false); });
+  bt.appendChild(b);
+  document.body.classList.add('mw-has-hidebtn');
+}
+
+/* --- apply: position (Hub-local, default top) + shared bottom-bar on/off.
+       Never re-saves the shared store here — the storage listener must not
+       ping-pong a save back to the tab that flipped it. --- */
+function hubApplyBars(){
+  var pos = hubGet('smartbar', 'top');
+  if (pos !== 'top' && pos !== 'bottom' && pos !== 'both' && pos !== 'off') pos = 'top';
+  var bbOn = hubSystemBottomBar();
+  document.body.classList.remove('hub-sb-top','hub-sb-bottom','hub-sb-both','hub-sb-off');
+  document.body.classList.add('hub-sb-' + pos);
+  var ts = document.getElementById('nsbTopstack');
+  var topVisible = (pos === 'top' || pos === 'both');
+  if (ts) ts.style.display = topVisible ? '' : 'none';
+  var bt = document.getElementById('nsbBottom');
+  var bottomVisible = (pos !== 'off') && bbOn;
+  if (bt) bt.style.display = bottomVisible ? '' : 'none';
+  document.body.classList.toggle('nsb-nobottom', !bottomVisible);
+  hubEnsureHideBtn();
+  hubSyncChrome();
+}
+
+/* --- sync: measure everything live (D-LIFT, D-STICKY, D-PAD). --- */
+function hubSyncChrome(){
+  var ts = document.getElementById('nsbTopstack');
+  var bt = document.getElementById('nsbBottom');
+  var topH = (ts && ts.style.display !== 'none') ? ts.offsetHeight : 0;
+  document.documentElement.style.setProperty('--nsb-top-h', topH + 'px');
+  document.body.style.paddingTop = topH ? (topH + 'px') : '';
+  var folded = !!(bt && bt.classList.contains('nsb-folded'));
+  var barH = (bt && bt.style.display !== 'none' && !folded) ? bt.offsetHeight : 0;
+  document.documentElement.style.setProperty('--nsb-lift', barH + 'px');
+  var main = document.querySelector('.main');
+  if (main) {
+    var prevPad = main.style.paddingBottom;
+    main.style.paddingBottom = '';
+    var reserved = parseFloat(getComputedStyle(main).paddingBottom) || 0;
+    var obb = document.querySelector('.obb-bar');
+    var obbH = 0;
+    try { obbH = (obb && getComputedStyle(obb).display !== 'none') ? obb.offsetHeight : 0; } catch(e) {}
+    var notif = document.getElementById('naya-notif-bar');
+    var notifH = 0;
+    try { notifH = (notif && getComputedStyle(notif).display !== 'none') ? notif.offsetHeight : 0; } catch(e) {}
+    var stack = barH + notifH + obbH;
+    main.style.paddingBottom = (stack > reserved) ? (stack + 'px') : '';
+  }
+}
+var hubSyncTimer = null;
+function hubScheduleSync(){ if (hubSyncTimer) clearTimeout(hubSyncTimer); hubSyncTimer = setTimeout(hubSyncChrome, 150); }
+
+/* --- follow: the Hub follows the bottom-bar on/off the Personal page writes. --- */
+window.addEventListener('storage', function(e){
+  if (e && e.key && e.key !== 'naya.smartbar.settings.v1') return;
+  hubApplyBars();
+});
+document.addEventListener('visibilitychange', function(){ if (!document.hidden) hubApplyBars(); });
+window.addEventListener('pageshow', function(){ hubApplyBars(); });
+window.addEventListener('resize', hubScheduleSync);
+window.addEventListener('scroll', hubScheduleSync, {passive:true});
+(function hubWatchBars(){
+  var bt = document.getElementById('nsbBottom');
+  var ts = document.getElementById('nsbTopstack');
+  if (!window.MutationObserver) return;
+  var mo = new MutationObserver(function(){ hubScheduleSync(); });
+  try { if (bt) mo.observe(bt, {attributes:true, attributeFilter:['class','style']}); } catch(e) {}
+  try { if (ts) mo.observe(ts, {attributes:true, attributeFilter:['class','style']}); } catch(e) {}
+})();
+
+/* --- first paint + settle --- */
+hubApplyBars();
+hubMarkTopActive();
+window.addEventListener('load', hubSyncChrome);
+setTimeout(hubSyncChrome, 800);
+setTimeout(hubSyncChrome, 1500);
+
+/* --- exposed for the verifier / debugging --- */
+window.__hubSmartBar = { apply: hubApplyBars, sync: hubSyncChrome, goRoom: hubGoRoom, rooms: HUB_ROOMS };
 })();
 </script>
 <!-- ONE-BOTTOM-BAR v2 (2026-11-11) — ONE ICON SET, ONE BOTTOM BAR (Shawn 2026-11-11 01:18Z).
