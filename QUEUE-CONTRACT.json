@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-11T03:48:38Z",
-  "tip": "02a2d784493ed56fcb693112ed49c094630053ad",
+  "generated_at": "2026-11-11T09:48:45Z",
+  "tip": "bb8e965ff2c2dd795d5e5d51c06f189400dc499d",
   "prs": [
     {
       "number": 3337,
@@ -11,6 +11,42 @@
       "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
       "owner": "any seat != author (scorecard drive)",
       "head": "8e5a6d90d609acd3fafd058b90f734296f3ff447"
+    },
+    {
+      "number": 3338,
+      "title": "CONNECT: mint feed cards SN-2214\u2013SN-2219 (Hub shows live intelligence)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "f1818006c67ebc403d179d0154737fcb1800205a"
+    },
+    {
+      "number": 3339,
+      "title": "docs(brain): learning event 2026-11-10",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "b517dcd2cd1e15d863b08c4cedc9902726b4e4bc"
+    },
+    {
+      "number": 3340,
+      "title": "Canon gate fix: restore standard_feature_contracts to templates-registry.json (unblocks every Factory build)",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "104cca89c6a96eb726c84345805cd0b567d1fda9"
+    },
+    {
+      "number": 3341,
+      "title": "LEARN: pin nayanet-intelligence-retrieve in governed runtime functions test",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "d89fbf7ed7a55f4a12e120893843702299f6cca8"
     }
   ]
 }
