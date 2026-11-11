@@ -11010,6 +11010,17 @@ function hubApplyBars(){
 }
 
 /* --- sync: measure everything live (D-LIFT, D-STICKY, D-PAD). --- */
+/* --- OBB settle (FIX H4 F1): re-measure the OBB after the notif settles.
+       window.__obbLayout is the OBB v2 block's own exposed entry point —
+       calling it changes nothing in the OBB block itself. --- */
+var hubLastLift = null, hubObbSettleTimer = null;
+function hubObbSettle(){
+  try { if (typeof window.__obbLayout === 'function') window.__obbLayout(); } catch(e) {}
+}
+function hubArmObbSettle(){
+  if (hubObbSettleTimer) clearTimeout(hubObbSettleTimer);
+  hubObbSettleTimer = setTimeout(hubObbSettle, 650);
+}
 function hubSyncChrome(){
   var ts = document.getElementById('nsbTopstack');
   var bt = document.getElementById('nsbBottom');
@@ -11019,6 +11030,12 @@ function hubSyncChrome(){
   var folded = !!(bt && bt.classList.contains('nsb-folded'));
   var barH = (bt && bt.style.display !== 'none' && !folded) ? bt.offsetHeight : 0;
   document.documentElement.style.setProperty('--nsb-lift', barH + 'px');
+  /* FIX H4 (F1 SETTLE): the notif bar rides this var on a .45s transition and
+     the OBB's own trailing measure can sample it mid-flight and latch the
+     transient value. Whenever the lift changes, re-measure from the SETTLED
+     rects 650ms later (transition over + margin); the trailing timer means
+     rapid lift changes settle once, on the last one. */
+  if (barH !== hubLastLift) { hubLastLift = barH; hubArmObbSettle(); }
   var main = document.querySelector('.main');
   if (main) {
     var prevPad = main.style.paddingBottom;
@@ -11043,6 +11060,17 @@ window.addEventListener('storage', function(e){
   hubApplyBars();
 });
 document.addEventListener('visibilitychange', function(){ if (!document.hidden) hubApplyBars(); });
+/* --- OBB settle on transition end (FIX H4 F1, precise path): when the notif
+       or jewel bar's bottom transition actually ends, re-measure from the
+       settled rects. transitionend bubbles, so one delegated listener covers
+       the bar wherever it sits. The 650ms timer above is the fallback for
+       transitions that never fire an end event. --- */
+document.addEventListener('transitionend', function(e){
+  if (!e || e.propertyName !== 'bottom') return;
+  var t = e.target;
+  if (!t || !t.closest) return;
+  if (t.closest('.notif-bar,.jewelbar')) hubObbSettle();
+});
 window.addEventListener('pageshow', function(){ hubApplyBars(); });
 window.addEventListener('resize', hubScheduleSync);
 window.addEventListener('scroll', hubScheduleSync, {passive:true});
@@ -11054,6 +11082,31 @@ window.addEventListener('scroll', hubScheduleSync, {passive:true});
   try { if (bt) mo.observe(bt, {attributes:true, attributeFilter:['class','style']}); } catch(e) {}
   try { if (ts) mo.observe(ts, {attributes:true, attributeFilter:['class','style']}); } catch(e) {}
 })();
+
+/* --- fold-return watchdog (FIX H4 secondary): B9's return timer re-arms on
+       every scroll event, and the live feed keeps firing scroll events after
+       scroll-stop, so the bar can sit folded 6s+. This poller measures actual
+       scrollY stability instead of the event stream. A move under 5px/tick is
+       layout jitter, not a scroll — it never resets the stop clock. A move of
+       40px+/tick past 60px is a real scroll — it re-folds (covers the case
+       where B9's internal flag desyncs from the class removed here; B9's own
+       timer re-syncs the flag the next time scroll events stop). --- */
+var hubFoldLastY = window.scrollY || 0, hubFoldLastMove = Date.now();
+setInterval(function(){
+  try{
+    if (window._mwAutofold === false) return;
+    var bt = document.getElementById('nsbBottom');
+    if (!bt) return;
+    var y = window.scrollY || 0, now = Date.now(), dy = y - hubFoldLastY;
+    if (dy !== 0) {
+      hubFoldLastY = y;
+      if (Math.abs(dy) >= 5) hubFoldLastMove = now;
+      if (Math.abs(dy) >= 40 && y > 60 && !bt.classList.contains('nsb-folded')) bt.classList.add('nsb-folded');
+    } else if (bt.classList.contains('nsb-folded') && (now - hubFoldLastMove) >= 1500) {
+      bt.classList.remove('nsb-folded');
+    }
+  }catch(e){}
+}, 200);
 
 /* --- first paint + settle --- */
 hubApplyBars();
