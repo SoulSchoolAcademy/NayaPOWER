@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2452",
+ "title": "The Face Must Be Real",
+ "slug": "the-face-must-be-real",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2452/IB-SMART-NOTE-20261109-sn2452-the-face-must-be-real.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "His eye on live v63, 03:21Z, item (1): **board 7 face (\"Your level is your choice\") pixelated / not real — zoom in on her face more, or clean it up, or use a different picture (\"one from like the beginning one\"), never two the same, must be high quality.** The v63 faces verifier passed all 8 faces loading and distinct (13/13 images, 0 broken, closest pair MAD 26.76) — and his eye still caught board 7: loading is not looking real. A face can be present, distinct, and correctly placed, and still fail, because pixelation is a quality failure the checks never measured. The fix is his choice of three: zoom tighter on her face, clean the image up, or swap in a different picture — one from the beginning ones. Rides on the v64 restructure seat (brief `PRICING-RESTRUCTURE-V64-BRIEF-20261109.md`).",
+  "human_view": "His words, 03:21Z, as logged: \"Board 7 face ('Your level is your choice') pixelated/not real — zoom in on her face more, or clean it up, or use a different picture ('one from like the beginning one'), never two the same, must be high quality.\" The v63 verification (02:??Z, artifact v63) passed faces on load, distinctness, alternation, and phone layout — none of those checks ask whether a face LOOKS real at the size it is shown. His eye asked it in one look.",
+  "child_view": "Imagine a photo of your friend, but it's all blurry and blocky, like it was stretched too big. You'd know straight away it doesn't look like her. He spotted the same thing — one picture of Naya is blurry, so we need to zoom in closer on her real face, or clean the picture, or pick a better one. And no two pictures can ever be the same — each one has to be its own.",
+  "grandma_view": "Dear, he has a sharp eye — one of Naya's pictures on the seventh board is pixelated, not clear and real like the others. The fix is simple: zoom in closer on her face, or tidy the picture up, or choose a different one from the early ones. Never two the same, and always high quality. Her face is how people trust her — it has to look like a real person, not a blurry copy.",
+  "ai_view": "This is the real-object law (SN-0858) applied to her face: if it doesn't look touchable, it doesn't ship — and a pixelated face doesn't look touchable. It is also the proof lesson (SN-2434, the orbs): a check that measures the wrong thing passes what his eye fails. The v63 verifier measured load + distinctness + placement; the missing measurement is quality at display size — sharpness, resolution at the rendered size. The three-option fix is his pattern: he gives the seat the choices, not a single order, and the seat picks the best one. The \"never two the same\" repeats the v63 rule (all 8 faces different, md5-verified) — now as his word, not just the verifier's.",
+  "what_it_means": "- **THE FACE MUST BE REAL:** board 7's face is pixelated — zoom in on her face more, or clean it up, or use a different picture (\"one from like the beginning one\").\n- **NEVER TWO THE SAME, MUST BE HIGH QUALITY:** every face distinct, every face sharp at the size it is shown.\n- **LOADING IS NOT LOOKING REAL:** the v63 verifier passed all 8 faces on load/distinctness/placement — and his eye still caught board 7. Quality at display size needs its own check.\n- **RIDES ON v64 (seat dispatched 03:21Z):** the face fix is part of the restructure.",
+  "whats_inside": [
+   "- The v64 seat fixes board 7's face (zoom, clean, or swap — his three options).\n- Face verification gains a sharpness-at-display-size check — loading + distinct + placed is not enough.\n- The \"never two the same\" rule is now his word (this note), not just the verifier's finding."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "3943ff50957a0447a61de0d8e8dfd911c260e4e32655535d0a547b71684d70dd",
+ "content_hash": "c8d508bf2a1aafa44d3286854d64eeee5a1db86281586a13286574434230c033",
+ "reconstructed_from_page": true
+}
