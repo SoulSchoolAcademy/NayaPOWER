@@ -56,8 +56,8 @@ Base: live Factory page bytes, fetched live from nayanet.app/smartfactory,
 - Harvest-sources blob: `955e641a3d18fd3ceb7f627a29ca5230e26d0a44`.
 - Human-checks blob: `736e04bcae545bdb352ee3e5638546b50a289fc9`.
 - Build-script blob: `ce5388f15b9cfc743e2412378270291f378843ac`.
-- Record blob: (filled after filing — see report).
-- Branch tip commit: `7f9dc4c7e3011d625eaea2b412ba00d367cf4f08` (before the record file).
+- Record blob: `cd5547904d4a46b8df4f72415f6a90ef65bb4315` (filed, then this line filled in and re-filed — see tip).
+- Branch tip commit: `9866415c6b87e4d0fb7ee940efcbd86be00f6369` (record file; updated by the re-file below).
 - Staged link: https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/factory-base-f-20261111/smartfactory-base-f-20261111.html&ref=factory/base-f-20261111&cb=983d67267aa28e40a6d5238f74badf91234bcee0 — HTTP 200, 580,300 bytes served, sha256 MATCH.
 - v1 (superseded): page blob `eeaa521c00843381fea7797bb4360ac7b6d4442b`, commit `b4b7ccbd67f3d6e882dbf91aff9cea7ef4aeed71` (420 edits, sha `0231672370ba41b5ab73d7419cc7c845af06854dc9fa98c6c677a3805bb7df36`).
 
