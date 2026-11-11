@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-11 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-11 04:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -37493,6 +37493,12 @@ _Last updated: 2026-11-11 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ gap-lane-scorer-20261016-0510-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: pagination weakness on fossil-close verdict + 2 journal-rot flags (parent gap-lane-scorer-20261016-0400-lane7, scored 9.0)
+
+**Evidence:** VERIFIED this tick on live bytes: (1) the key correction artifact exists: hidden_files/twelve-lane-receipts/t942-lane8.md (12,354 B, 2026-10-11) - the independent Lane-3 consolidation scorecard the parent claimed was never filed; (2) all 10 fossil head pins re-checked via one git ls-remote batch, byte-identical 25 days later: #1139 7aca47da, #1169 
+
 ### 🚨 t-contract-verify — Team 7, Team Naya Scorer (Team Operations) — 0/10 [PHANTOM]
 
 **Task:** Contract gate verification (Judge): sign-in/sign-out battery + tamper tripwire on branch naya4/contract-staging
@@ -42438,6 +42444,12 @@ _Last updated: 2026-11-11 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ gap-scorer-20261016-0340-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: fossil-bar census (40-PR) + second-seat re-run of slice-3 replays R1/R2/R3 (parent gap-t1822, scored 9.0)
+
+**Evidence:** VERIFIED this tick on live bytes: (1) scripts exist in workspace: hidden_files/lane-3/gap-0340-lane3-census.py (1,662 B) and gap-0340-lane3-idle-sample.py (1,328 B); (2) all 6 head pins re-checked via one git ls-remote batch, byte-identical 25 days later: #1994 a29609a5e1d1, #2009 4253df311865, #2019 5692323c24bc, #1296 3cb37494124f9, #1645 9fa6741
 
 ### ✅ decision-replay-t0780-thirdseat-t1496-lane3-verdict-table — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -50476,6 +50488,12 @@ _Last updated: 2026-11-11 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261110-2030 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Lane-executor stall run 2026-11-10 20:30 PST: evaluate all 30 unclaimed briefs, 0 claimed (28x exit 7, 2x exit 2), queue untouched
+
+**Evidence:** VERIFIED this tick on live bytes: (1) receipt's 30 blocked briefs match the live brief-queue/ set 30/30 exactly and rotation queued=30, same filename list, zero in either direction; zero brief-tNNNN-* mission-sequence files; (2) claim-sweep-20261110-2030.log exists (202 lines), its SUMMARY line confirms 28 x exit 7 parent-authorship + 2 x exit 2 cl
 
 ### ✅ gate-stall-20261110-1926 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
 
