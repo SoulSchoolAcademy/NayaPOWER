@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2478",
+ "title": "The Headliner Is the Same Family",
+ "slug": "the-headliner-is-the-same-family",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2478/IB-SMART-NOTE-20261109-sn2478-the-headliner-is-the-same-family.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "- **HIS WORDS, 04:41Z:** \"The top one, the one that actually says 'Top 10 reasons to join' — you do something with that one, because that one's horrible. It doesn't even line up... it doesn't look like it's the same family. So it needs to be the headliner for these, and it's not. So you gotta fix that — and you gotta make it be the same size block, because if you scroll you'll see that block is a little bit bigger than those other blocks. They gotta be aligned.\"\n- **THE RULE:** the headliner is the SAME SIZE BLOCK as the items it heads, in the SAME FAMILY, ALIGNED. Bigger is not more important — bigger is off-family. The headliner's quality comes from the treatment inside (the Ten's inner-block grammar, the jewel, the colour), not from extra size.\n- **WHY IT FAILED:** the header was built as a different object — different size, different family — so the eye reads it as a stranger sitting on top of the family, not as its head. A headliner that doesn't look like its items doesn't lead them; it interrupts them.\n- **THE FIX (flow seat, v70):** rebuild the header as the headliner in the same family, same size block as the items, aligned; headliner quality from the treatment inside, not from a bigger block.",
+  "human_view": "His words, 04:41Z: \"The top one, the one that actually says 'Top 10 reasons to join' — you do something with that one, because that one's horrible. It doesn't even line up... it doesn't look like it's the same family. So it needs to be the headliner for these, and it's not. So you gotta fix that — and you gotta make it be the same size block, because if you scroll you'll see that block is a little bit bigger than those other blocks. They gotta be aligned.\" The principle is the one-family rule from SN-2472: the Ten items and the hired boards read as siblings because they share the `.ph-card` family. The header broke the family by being bigger — and the fix is not to make it grander, but to make it family.",
+  "child_view": "Imagine ten little houses all in a row, all the same size, all painted the same way — and then one big house on top that's a different size and a different colour. It looks wrong, doesn't it? Like it doesn't belong. The leader of the houses should look like the houses — the same size, the same family — just with something special inside that makes you know it's the leader. Not bigger. The same, but special inside.",
+  "grandma_view": "Dear, the little heading at the top of the ten reasons was all wrong, love — it didn't line up, it wasn't the same family as the rest, and it was a touch bigger than all the others, and you could see it the moment you scrolled. A headliner isn't a bigger box, dear — it's the same box as all the others, the same size, lined up neat, with the loveliness inside it. That's what makes it the leader — not being bigger, but being family, with the special treatment within. The fix is simple, love: same size, same family, aligned.",
+  "ai_view": "This note is the headliner rule's canonical record. It pairs with SN-2472 (the Ten pattern): the pattern is the inner blocks; the header rule is the frame around them. The verification check is now mechanical: measure the headliner against its items — same width, same family, aligned. A headliner that is bigger than its items fails the check, however beautiful it is. The same test applies to every section header on every page: the entrance banner, the chart header, the calculator header — family first, treatment inside.",
+  "what_it_means": "- **SAME SIZE, SAME FAMILY, ALIGNED:** a headliner that is bigger than its items is not a headliner — it is a stranger. Size is not importance.\n- **DISTINCTION COMES FROM INSIDE:** the headliner's quality is the treatment within the block — the jewel, the colour, the words — never extra size.\n- **ALIGNMENT IS VISIBLE:** \"if you scroll you'll see that block is a little bit bigger\" — the test is the scroll, not the spec. A headliner that only lines up at scroll 0 does not line up.",
+  "whats_inside": [
+   "- The flow seat (v70) rebuilds the \"Top 10 reasons to join\" header as the headliner in the same family, same size block, aligned.\n- Every section header gets the headliner check in verification: same size block as its items, same family, aligned — measured on the scroll, not just at scroll 0.\n- The rule joins the Ten pattern (SN-2472) as the frame around it: pattern inside, headliner rule outside."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "86f251100d813c7b98e8af4a9960405192e60da10c00161053ac15a636e6a603",
+ "content_hash": "ac0fadcfb4aab8a4bc4a5e31b1b382fbe70f5a8932ee792b53cb06329831e70a",
+ "reconstructed_from_page": true
+}
