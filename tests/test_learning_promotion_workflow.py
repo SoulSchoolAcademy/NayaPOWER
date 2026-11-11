@@ -130,6 +130,7 @@ def test_supabase_config_declares_governed_runtime_functions_for_native_integrat
         "nayanet-prove-runtime",
         "nayanet-verified-ai-action",
         "nayanet-github-intake",
+        "nayanet-intelligence-retrieve",
     }
     declared = {
         line[len("[functions."):-1]
