@@ -87,3 +87,5 @@ The denied combination is exactly **file-backed + MAP_SHARED + PROT_WRITE**, as 
 ## Filing
 
 Branch: `browser/recovery-20261111`. One change, one PR. No merge, no deploy.
+
+Filed: PR #3330 — https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3330 (open). Branch tip 06d0eb70. Main untouched at 63eb1d80.
