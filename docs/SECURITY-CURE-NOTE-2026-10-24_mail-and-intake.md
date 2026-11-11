@@ -96,3 +96,25 @@ python tools/preflight_gt039_schema.py --catalog-json tests/fixtures/gt039_live_
 Collect the results into the fixture's documented JSON shape with kind=information_schema_column_contracts, captured_date_utc set to the *actual* UTC capture date, tables keyed by table_name with a list of column_name strings, column_types keyed by table and column with udt_name values, and not_nullable listing columns where is_nullable=NO. Do not include customer data. Run the script on that snapshot. Read-only catalog results are still NOT proof of full version history, indexes, policies, privilege reachability, services, or production approval.
 
 **Release decision:** Existing PR #3345 remains DRAFT / HOLD. In the captured live schema, CREATE TABLE IF NOT EXISTS will not add the missing owner_id or text columns on existing tables; source guards deliberately reject other absent fields. Do not waive the guards or infer owner_id values from human-readable aliases. Security/DB plus Smart Links, Notes, Timeline/Search owners must reconcile a real schema-preserving dependency plan and obtain independent isolated runtime proof and Shawn's protected production approval.
+
+
+## 2026-11-11 visitor-mail functional compatibility HOLD (source-level)
+
+**New bounded executable preflight:** tools/preflight_gt039_mail_clients.py, and regression tests/test_gt039_mail_client_compat.py. This read-only script reads only committed code; it never calls Supabase or a public site. It deliberately **has no PASS verdict**: a source finding cannot prove what is deployed or whether a replacement message transport is secure.
+
+**Source-observed conflict with the pending security REVOKE:**
+- DASHBOARD/app/index.html has a public-key Supabase JS client plus the visitor "Send message" click path which directly INSERTs a thread, requests the inserted thread via .select().single(), and then INSERTs a message. The UI itself does not require an authenticated session first.
+- interfaces/walk/flagship-template.html and PERSONAL/index-master-20261105.html contain the same direct mail thread/message browser pattern. These are repo consumer candidates, **not proof each variant is currently deployed**.
+- HUB/booking/booking-store.mjs uses an authenticated session to POST directly to the same legacy tables, requesting thread representation for reminder delivery. This authenticated write also requires exact-role positive testing after the proposed policy changes.
+- The pending 20261024194500 mail migration revokes all direct anon privileges on these tables and defines participant SELECT rules but no replacement public visitor-send transport. Previous synthetic PostgreSQL tests correctly deny anonymous legacy-table inserts. An unauthenticated visitor using the committed button would therefore have no supported route to send a message **unless another governed service/path exists in the actual deployed system**.
+
+**Replay:** python tools/preflight_gt039_mail_clients.py returns exit 2 / BLOCKED_MAIL_CLIENT_COMPAT on the committed source, with file/line evidence and the booking-reminder warning. If the security REVOKE disappears, input files disappear, or no source consumer exists, it fails with exit 3 / UNKNOWN_FAIL_CLOSED instead of manufacturing approval. Even after a future transport migration, the static preflight alone cannot certify deployment.
+
+**Required user-journey proof before GT-039 production authorization:**
+1. Security/DB and Nitro confirm which actual deployed message/feedback/booking routes are active. Distinguish anonymous visitors, signed-in owners, and privileged backend transactions.
+2. Design one bounded authorized **write-only** mail intake path, preserving atomic thread+message creation, recipient routing, input validation, abuse/rate limiting, and no anonymous or cross-owner read/list/update/delete. Never expose service_role or unsafe SECURITY DEFINER privileges to a browser.
+3. Nitro owns necessary interface integration; technical owner owns the backend contract. Keep current messages and routes intact until replacement is independently proven.
+4. Synthetic and live isolated test matrix: visitor send PASS, message appears exactly once for rightful owner, stranger inbox DENY, owner read PASS, spoofed alias DENY, booking reminders PASS or intentionally deferred, mail deletion authorization explicit, rollback safe.
+5. Then independent Tier-A security verdict, exact-head required CI and Shawn's protected production approval. **Do not widen RLS to make a dead Send button work; do not deploy the REVOKE first.**
+
+**Proof level:** The file inventory and mismatch are source-observed, while the broken-button outcome is conditional on unauthenticated users running those paths against the proposed RLS state. No real user message was read, sent, or deleted; no production outage was measured or asserted.
