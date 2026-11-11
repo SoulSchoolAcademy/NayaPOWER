@@ -1,0 +1,30 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2509",
+ "title": "Dashboard First — MAXESS Waits",
+ "slug": "dashboard-first-maxess-waits",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2509/IB-SMART-NOTE-20261109-sn2509-dashboard-first-maxess-waits.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "- **HIS WORDS, VERBATIM:** \"Not yet — Dashboard first.\"\n- **THE DECISION:** MAXESS is NOT approved for build. It waits immediately behind Dashboard. The 15 drafted questions + proposed quarter bands stay unapproved — nothing is built on them until he approves.\n- **THE ORDER:** Dashboard fix-9 to his eye comes first, viewpoint by viewpoint. MAXESS builds immediately after — the work is deferred, not dropped, and nothing about it is lost.\n- **WHAT MAXESS IS (for the record):** a scoring engine, not Academy sections — 15 questions, five answers worth 4/3/2/1/0, 60 maximum. Built after Pricing in the earlier plan; now built after Dashboard. The ask was delivered to him 09:03Z; his tap came ~15:03Z.\n- **WHAT IT IS NOT:** not a rejection, not a re-scope, not a \"no.\" It is a sequence: one thing finished to his eye before the next begins. The four core pages run in order — Dashboard first, then Personal, then Hub, then Pricing — each finished and proven before the next, and MAXESS rides immediately behind Dashboard.",
+  "human_view": "He was asked whether to start building MAXESS, and his answer was the simplest kind of leadership: not yet — finish this first. The Dashboard is the thing in front of him, the thing his eye is judging viewpoint by viewpoint, and starting a second build now would split the attention that the first one needs. MAXESS isn't cancelled; it's queued, right behind the Dashboard, with its questions and its scoring bands kept exactly as drafted, waiting for its turn. One thing done beats two things half done.",
+  "child_view": "You finish your first puzzle before you open the second box. MAXESS is the second puzzle — it's ready, its pieces are counted, but the box stays closed until the first puzzle is finished and beautiful. Not yet doesn't mean never. It means first things first.",
+  "grandma_view": "Dear, he said not yet, love — the Dashboard first, and then MAXESS, dear. Nothing is lost, nothing is forgotten. One beautiful thing at a time, love, done properly.",
+  "ai_view": "This is sequencing as a decision, and it is the same law as the core operating plan: the four, in order, each finished and proven before the next. The MAXESS ask sat in front of him since 09:03Z with 15 drafted questions and proposed quarter bands — unapproved material that could easily have been built on by momentum. His tap stops that: unapproved stays unbuilt. The note also records the boundary clearly so no seat mistakes \"waits behind Dashboard\" for \"build it in parallel\" — the build starts on his tap, after Dashboard is done to his eye. The open item \"his tap to dispatch the MAXESS build\" is now CLOSED as a question and replaced by a new standing item: \"MAXESS builds immediately after Dashboard, on his tap.\"",
+  "what_it_means": "- **MAXESS IS DEFERRED, NOT DROPPED:** waits immediately behind Dashboard; 15 questions + quarter bands stay unapproved; nothing built on them until he approves.\n- **DASHBOARD FIX-9 COMES FIRST:** to his eye, viewpoint by viewpoint, before any MAXESS build.\n- **THE ASK IS ANSWERED:** the 09:03Z ask is closed — his tap is recorded, not pending.\n- **THE SEQUENCE HOLDS:** one thing finished to his eye before the next begins.",
+  "whats_inside": [
+   "- The open item \"his tap to dispatch the MAXESS build (ask delivered 09:03Z)\" is CLOSED — answered \"Not yet — Dashboard first.\"\n- New standing item: MAXESS builds immediately after Dashboard, on his tap; the 15 questions + quarter bands stay unapproved until then.\n- No seat dispatches MAXESS work; the Dashboard fix-9 seats carry the lane.\n- Next loop run re-checks: no MAXESS build started; Dashboard fix-9 progressing viewpoint by viewpoint."
+  ],
+  "topics": [
+   "Leadership",
+   "Design"
+  ]
+ },
+ "page_hash": "bb5d43c8a71a78da10c11eca00559507ea472df32f5a37499432d1c9bac2673c",
+ "content_hash": "46bf44dd28de04fe0a296c6a008fdf971c8dbd134ec583f144bb86e0ddd73665",
+ "reconstructed_from_page": true
+}
