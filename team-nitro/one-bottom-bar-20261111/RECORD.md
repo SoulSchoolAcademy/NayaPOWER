@@ -397,7 +397,9 @@ colors, hrefs unchanged from v1.
   whole with scrollLeft exact to 0.1px (stops: 0, 48.0, 115.5, 198.8,
   268.6, 326.6, 332.0 max on Inviter/Dashboard/Hub alike); a +20px nudge
   off a stop re-snaps to a pill position; all 10 pills reach 100% at some
-  stop. At rest at scrollLeft 0: 5 whole + Growth 73% peek. Computed
+  stop. At rest at scrollLeft 0: 5 whole + Growth 56% peek (corrected
+  03:12Z by the re-verifier: 56% painted, not 73% — the row clips at x=380;
+  the 73% figure was viewport intersection, not painted area). Computed
   `scroll-snap-type: x mandatory` on the row on all three pages.
 - **Probe lesson (Hub 390, first staged run):** the first staged Hub-390
   snap run failed (snapType read `none`, scrollLeft stuck at 0) — NOT a
@@ -689,3 +691,47 @@ names the wrong file, the wrong numbers, and the right ones.
   snap + stacking + errors), `hub390-probe.py`, `hub390-poll.py`,
   `hub390-snap-settled.py` (the Hub transient, diagnosed + re-proven),
   `shots/` + `shots-v2/` (eye screenshots).
+
+## CLOSE-OUT — RULINGS + PASS SCORING (2026-11-11)
+
+Re-verification: `verify/VERIFY2.md` (re-verifier cbfb2454, OVERALL NOT
+PASS 03:13Z — the v2 build verifies clean with zero regressions; both
+failures are pre-existing or design, neither introduced by this round).
+
+### Ruling 1 — Gate debt — captain's ruling, 03:13Z
+ACCEPT the no-regression result (the Factory (f) precedent). The
+Inviter (b)(c)(f) + Hub (c) gate failures are pre-existing baseline
+debt; they belong to the base pages as separate rounds, not to this
+round. Dashboard gate OVERALL PASS (depth 0.925 vs true base 0.921).
+
+### Ruling 2 — H2 — Shawn's call, 03:17Z
+The swipeable snap strip STANDS. H2 is amended to: "at phone 390 the
+strip rests ON a pill, never between pills; all 10 pills reachable by
+snap; at desktop 1440 all 10 legible with no scroll."
+All-nine-at-rest is NOT required — at 390 ten pills cannot all sit
+legible at rest without shrinking them illegible or splitting the bar.
+
+### Scoring
+ROUND SCORED PASS on the amended H2 + the accepted gate debt, 2026-11-11.
+
+### Live re-confirmation before filing (close-out seat, 03:18Z)
+- Branch tip: `82b68acd080c3f03d217229cb0f7c94aedc9aa5f` — unchanged
+  from the v2 filing.
+- Hub blob: `b9e2a02585b3b5db21779b886e2fd2107569c70a`, 5,535,667 B.
+- Dashboard blob: `821eb361d75245c2a9fca907d094ce6e68dff19a`, 1,838,395 B.
+- Component block sha `51bb0ca0…`, 10,597 B, byte-identical in all
+  three staged files; no v1 marker — re-proven by fresh staged curl.
+- Nothing moved since VERIFY2.md; filed on the verified bytes.
+
+### Follow-up patch, NOT a blocker
+Pills 6–9 share the max-scroll stop (332); end padding would give each
+its own leftmost stop. A small patch for a later seat if the strip is
+kept — it does not block this close-out.
+
+### What this close-out does NOT do
+No component rebuild, no new page file, no merge, no live deploy, no
+change to Personal / identity / live, no fresh re-verification
+(VERIFY2.md stands), no dispatch of the Hub bar Phase 2 (the captain
+dispatches that). The Dashboard freeze (pre-existing scroll-settle
+loop, base freezes 3/3 identically) is the separate Dashboard round's
+job.
