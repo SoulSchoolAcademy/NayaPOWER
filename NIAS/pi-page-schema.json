@@ -1,1 +1,145 @@
-{"$schema":"naya-pi-page-v1","description":"Project Intelligence data schema for page generation. Fill this in, the generator builds the page.","example":{"alias":"shawn","goal":"One million citizens by 2027.","mission":"Build NayaNET — the intelligent highway for the AI age.","name":"Shawn","privacy":"public","type":"personal","vision":"A world where intelligence compounds and everybody wins."},"properties":{"alias":{"description":"URL alias (e.g., 'shawn' → nayanet.app/shawn)","type":"string"},"cover":{"description":"Cover image URL (optional, defaults to DNA gradient)","type":"string"},"goal":{"description":"The goal — what this page is trying to achieve","type":"string"},"mission":{"description":"The mission — why this page exists","type":"string"},"name":{"description":"The page name (person, business, space, or membership name)","type":"string"},"privacy":{"default":"public","description":"Who can see this page","enum":["public","private","members-only"],"type":"string"},"sections":{"description":"Custom sections beyond the defaults (optional)","items":{"properties":{"color":{"description":"Spectrum color name","type":"string"},"content":{"type":"string"},"title":{"type":"string"}},"type":"object"},"type":"array"},"type":{"description":"Page type — determines which sections show","enum":["personal","business","space","membership"],"type":"string"},"vision":{"description":"The vision — what this page is becoming (shows in hero, 20px nutshell)","type":"string"}},"required":["name","type","vision","mission","goal"]}
+{
+  "$schema": "naya-pi-page-v1",
+  "description": "Project Intelligence data schema for page generation. Fill this in, the generator builds the page.",
+  "example": {
+    "about": "I built this world for Shawn \u2014 his front door on NayaNET, where intelligence compounds and everybody wins, and everything he does lives here.",
+    "alias": "shawn",
+    "build_url": "https://nayanet.app/shawn",
+    "goal": "One million citizens by 2027.",
+    "mission": "Build NayaNET \u2014 the intelligent highway for the AI age.",
+    "name": "Shawn",
+    "privacy": "public",
+    "project_id": "shawn-personal",
+    "type": "personal",
+    "vision": "A world where intelligence compounds and everybody wins."
+  },
+  "properties": {
+    "about": {
+      "description": "About \u2014 who this world is for and what lives in it, in Naya's voice",
+      "type": "string"
+    },
+    "alias": {
+      "description": "URL alias (e.g., 'shawn' \u2192 nayanet.app/shawn)",
+      "type": "string"
+    },
+    "build_receipt": {
+      "description": "The Factory build receipt \u2014 what was built, when, and what it looks like now. Written back to PI on every build.",
+      "properties": {
+        "applied": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "build_id": {
+          "type": "string"
+        },
+        "built_at": {
+          "type": "string"
+        },
+        "gate_score": {
+          "type": "string"
+        },
+        "not_applied": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "result_url": {
+          "type": "string"
+        },
+        "template": {
+          "type": "string"
+        },
+        "worker": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "build_url": {
+      "description": "The live URL of the built world",
+      "type": "string"
+    },
+    "built_at": {
+      "description": "ISO-8601 UTC of the last Factory build",
+      "type": "string"
+    },
+    "cover": {
+      "description": "Cover image URL (optional, defaults to DNA gradient)",
+      "type": "string"
+    },
+    "goal": {
+      "description": "The goal \u2014 what this world is trying to achieve",
+      "type": "string"
+    },
+    "mission": {
+      "description": "The mission \u2014 why this world exists",
+      "type": "string"
+    },
+    "name": {
+      "description": "The world name (person, business, space, or smart-access name)",
+      "type": "string"
+    },
+    "privacy": {
+      "default": "public",
+      "description": "Who can see this page",
+      "enum": [
+        "public",
+        "private",
+        "members-only"
+      ],
+      "type": "string"
+    },
+    "project_id": {
+      "description": "The project key \u2014 the contract key the flow carries and the processor reads PI by. A project IS a page.",
+      "type": "string"
+    },
+    "sections": {
+      "description": "Custom sections beyond the defaults (optional)",
+      "items": {
+        "properties": {
+          "color": {
+            "description": "Spectrum color name",
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "template": {
+      "description": "The Factory template this world was built from",
+      "type": "string"
+    },
+    "type": {
+      "description": "World type \u2014 determines which sections show",
+      "enum": [
+        "personal",
+        "business",
+        "space",
+        "smart-access"
+      ],
+      "type": "string"
+    },
+    "vision": {
+      "description": "The vision \u2014 what this page is becoming (shows in hero, 20px nutshell)",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "type",
+    "vision",
+    "mission",
+    "goal",
+    "about"
+  ]
+}
