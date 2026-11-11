@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-11 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-11 13:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -50558,6 +50558,18 @@ _Last updated: 2026-11-11 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261111-0540 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Daily distillation 2026-11-11: mission-state sync PR #3342 (main Nov 9 snapshot -> Nov 11 05:12 PST)
+
+**Evidence:** Verified this tick on live bytes: (1) branch naya4/distill-daily-20261111-mission-state-sync exists on remote at fda3d8bed30468699e46694d6c0ee713c63f746c, exact match to the receipt pin; (2) file at that commit SHA-256 939b04a3... matches the receipt exactly, 2236 lines / 1183088 bytes, diff vs parent dc79608 exactly 1 file +1302/-6; (3) main at dc
+
+### ✅ lane-scorer-20261111-0510 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-11 05:00 PST: script-attempted all 30 queued gap follow-ups, 0 claimed, all refused by seat gate
+
+**Evidence:** Verified this tick on live bytes: (1) brief-queue/ holds exactly the 30 brief-*.md files the receipt lists, zero brief-tNNNN-*, and the set matches the 03:58 receipt's set exactly (diff empty); (2) sweep log hidden_files/claim-sweep-20261111-0500.log exists with 30 per-brief lines, 28 x exit 7 and 2 x exit 2, totals line matching; (3) claimed/ hold
 
 ### ✅ lane-scorer-20261111-0400 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
