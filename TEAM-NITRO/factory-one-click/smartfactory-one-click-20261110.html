@@ -3924,6 +3924,12 @@ document.getElementById('buildBtn').onclick=()=>{startBuild();openSummary();};
 // Trigger a real build via the NayaPOWER build API
 function setBuildStatus(html){['buildStatus','sumStatus'].forEach(function(id){var d=document.getElementById(id);if(d){d.style.display='block';d.innerHTML=html;}});}
 function startBuild(){
+  if(!document.querySelector('.tcard2.sel')){
+    setBuildStatus("\u23f8 <b>Pick your template in Step 4 first.</b> Your pieces land on the template you choose \u2014 nothing was sent to the builder, no build yet. Tap a template, then hit BUILD again.");
+    var s4=document.getElementById('step3-templates');
+    if(s4) s4.scrollIntoView({behavior:'smooth',block:'start'});
+    return;
+  }
   draftContract();
   var sel=document.querySelector('.tcard2.sel');
   var tn=sel?sel.dataset.t:'';
