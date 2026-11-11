@@ -11,8 +11,9 @@
       "id": "drill-2026-w41-a",
       "note_id": "SN-015",
       "query": "active intelligence rule stored knowledge retrievable",
-      "retired": false,
-      "rotation_week": 0
+      "retired": true,
+      "rotation_week": 0,
+      "retired_reason": "SN-015 retired 2026-11-06 (retired_by_essence SN-2107); per README, bank items retire when their note is superseded or expires. Retired during the W46 cold-drill repair, 2026-11-11. Re-point ruled out at tip 7edcf2e4: SN-2107 scores 11.63 vs floor 40.0 (best live candidate 26.31); no live note carries the PERSISTED rung vocabulary."
     },
     {
       "application_question": "A seat is about to merge a PR where every CI check is green, but the change quietly violates the spirit of a standing team law. Per the retrieved rule, what should the seat do?",
@@ -51,8 +52,9 @@
       "id": "drill-2026-w41-d",
       "note_id": "SN-015",
       "query": "stored knowledge connected retrievable usable intelligence rule",
-      "retired": false,
-      "rotation_week": 3
+      "retired": true,
+      "rotation_week": 3,
+      "retired_reason": "SN-015 retired 2026-11-06 (retired_by_essence SN-2107); per README, bank items retire when their note is superseded or expires. Retired during the W46 cold-drill repair, 2026-11-11. Re-point ruled out at tip 7edcf2e4: SN-2107 scores 11.63 vs floor 40.0 (best live candidate 26.31); no live note carries the PERSISTED rung vocabulary."
     }
   ],
   "selection": "ISO week number mod len(active items)"
