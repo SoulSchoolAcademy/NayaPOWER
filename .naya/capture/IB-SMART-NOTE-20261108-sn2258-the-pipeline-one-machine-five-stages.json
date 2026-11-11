@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2258",
+ "title": "The Pipeline — One Machine, Five Stages",
+ "slug": "the-pipeline-one-machine-five-stages",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/SYSTEM/SN-2258/IB-SMART-NOTE-20261108-sn2258-the-pipeline-one-machine-five-stages.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The ultimate solution is not fifteen tools — it is one pipeline with five stages: BRIEF (a compiler that refuses an incomplete brief), BUILD (small chunks, checkpointed to disk, watched for silence), VERIFY (a different seat plus machine checks — no receipt, no done), FILE (verified work filed to GitHub + registry + feed automatically), REPORT (the day's verified actions become the Daily Intelligence Report automatically). Every problem A–O is answered by at least one stage. The pipeline is built in order, each stage proven before the next — because doing all the things at once is how we got the year.",
+  "human_view": "Think of a car factory. The car does not get built because fifteen clever people each do their own thing in the same building. It gets built because there is one line — frame, engine, body, paint, inspection — and the car cannot move to the next station until the last one is done right. The line IS the factory. Our pipeline is the line. The brief is the frame. The verification is the inspection. Nothing moves forward unproven.",
+  "child_view": "Making a sandwich has steps: bread, filling, top, cut, plate. If you skip the filling, it is not a sandwich — it is bread. Our work has steps too: brief, build, verify, file, report. Skip one and it is not done — it is just work. The pipeline makes sure no step gets skipped.",
+  "grandma_view": "A good kitchen has a routine: prep, cook, taste, serve, clean. The taste is the check — and you never serve what you haven't tasted. Our pipeline is the same routine, for building: brief, build, verify, file, report. The verify is the taste. Nothing gets served unproven.",
+  "ai_view": "A pipeline is honest in a way a plan is not: a plan can be ignored; a pipeline cannot be skipped, because the next stage will not accept work that the last stage did not pass. That is the difference between text and code — the brief compiler REFUSES an incomplete brief (it exits non-zero, it lists the missing fields); the watcher REPORTS a silent lane (it exits 1, it names the lane); the verification machine REFUSES to mark done without a receipt. The refusal is mechanical. No willpower required, no memory required, no captain required to remember. That is what \"aligned with how AI operates\" means: the system assumes the agent will drift, will forget, will be killed mid-task — and it is built so that none of those things can break the work.",
+  "what_it_means": "The five stages:\n1. **BRIEF — the compiler.** Takes the task and produces a complete, self-contained brief: outcome defined first, gates, Bullseye, Brand, North Star, the law, the checkpoint path, the report format, the exact files to read. Refuses an incomplete brief. Answers J, I, K, M.\n2. **BUILD — the checkpoint.** Small, fast chunks inside a restart window, progress written to disk incrementally. The watcher reads the checkpoint files and the ledger; silence over 30 minutes fires the pulse. Answers E, H, D.\n3. **VERIFY — the receipt.** A different seat plus machine checks: file exists? size and hash match? page renders? console clean? address live? No receipt = not done — the board shows in-motion with \"proof missing.\" Answers C, F, K, L.\n4. **FILE — the publish.** Verified work filed automatically — GitHub + registry + feed, one at a time, read-back verified. Every verified valuable action gets its note, its registry entry, its feed card — by the machine. Answers G, O, F.\n5. **REPORT — the distillation.** The day's verified actions become the Daily Intelligence Report automatically. The report IS the distillation. Answers B, L, F.\n\nThe machines, in build order: (1) brief compiler + checkpoint watcher — done this turn; (2) verification machine + filing machine; (3) board machine + memory machine; (4) the Factory — the pipeline applied to page-building itself. Each proven before the next.",
+  "whats_inside": [
+   "1. **The first two machines are built and tested in this turn** — the brief compiler (`os/brief-compiler.py`) and the checkpoint watcher (`os/checkpoint-watch.py`).\n2. **Every future dispatch goes through the compiler.** No brief without an outcome, a checkpoint path, and the law named.\n3. **Every lane is watched by the watcher.** Silence is caught by the machine, not by Shawn asking."
+  ],
+  "topics": [
+   "System"
+  ]
+ },
+ "page_hash": "0d4b226498cad8376584ed80a2597d9b96439368b1d37b4b9bfd0844f79ba8fa",
+ "content_hash": "bc2858bde442e34a2827c5f3c76828d04be30a912847ef70dcc15f1f9ca39212",
+ "reconstructed_from_page": true
+}
