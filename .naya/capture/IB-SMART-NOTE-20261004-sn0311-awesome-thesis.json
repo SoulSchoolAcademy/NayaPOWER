@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-311",
+ "title": "Awesome Thesis",
+ "slug": "awesome-thesis",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/PHILOSOPHY-LIFE/AWESOME-THESIS/SN-0311/IB-SMART-NOTE-20261004-sn0311-awesome-thesis.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-10-04T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Shawn's thesis on life, distilled by Shawn himself: we are utter awesomeness immersed in awesomeness, created in the imagination of the Creator. The Creator is the creation experiencing itself — source energy, cause and effect, the game programmer inside the game. Heaven and hell are not places but states of energy: above the line (awareness, positive) or below the line (unawareness, negative). The purpose of life is to live it to the max, be awesome every day, do no harm, forgive everything — and never give your power away.",
+  "human_view": "",
+  "child_view": "",
+  "grandma_view": "",
+  "ai_view": "",
+  "what_it_means": "",
+  "whats_inside": [],
+  "topics": [
+   "Philosophy-Life"
+  ]
+ },
+ "page_hash": "7788e5bdccc98ef42b9d7dbf794f07a4d606efac0432c939b4774a44b3cbb46b",
+ "content_hash": "89feb17efb2a31917d7bcdcb434add812604ae263316585ab7caed0c399264ad",
+ "reconstructed_from_page": true
+}
