@@ -1670,9 +1670,9 @@
       "version": "20261024194500",
       "name": "smart_mail_participant_completion_and_intake_scope_v1",
       "path": "supabase/migrations/20261024194500_smart_mail_participant_completion_and_intake_scope_v1.sql",
-      "sha256": "6d2687b2c7e2e49a940a0ffeafdc7e2dc167cd42b510a6925793a51d5fd191eb",
-      "statement_count": 14,
-      "bytes": 9217,
+      "sha256": "985b933ab6e714b6de0498ed9566cff8d3d1d6a62b07db6213f1492efc9d7083",
+      "statement_count": 17,
+      "bytes": 10157,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     },
     {

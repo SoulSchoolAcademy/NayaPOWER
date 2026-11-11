@@ -2,6 +2,8 @@
 
 **Date:** 2026-10-24 · **Builder lane:** Resolve (for the security lane's review) · **Status:** FILE ON BRANCH `resolve/security-cure-mail-intake-v1` — nothing applied; applying rides Shawn's GT-039 tap, after the security lane ratifies the one open decision ([MAIL-1] below).
 
+**2026-11-11 technical completion proposal (unmerged and unapplied):** Read-only live Postgres policy/grant inspection found two extra surviving legacy policies: `smart_mail_threads_owner_select` and `smart_mail_messages_owner_delete`. Both still consult user-editable JWT metadata. The prepared follow-up migration now explicitly drops both and revokes direct anonymous table privileges on the legacy messages/threads tables; it leaves authenticated participant access and v7 Mail untouched. The source-level regression test `tests/test_mail_pending_policy_completion.py` checks the observed policy inventory and negative controls. Five source-level tests pass, and the 13-test focused migration suite is green; **no isolated PostgreSQL/RLS functional test or production grant is claimed**. The required `intake_events` and `owner_alias_claims` tables are absent from the observed production database, so the earlier migrations `20261022213000` and `20261022220000` remain mandatory dependencies. Security/DB owner must re-review the final state and receive Shawn's approval for any production deployment.
+
 **The migration:** `20261024194500_smart_mail_participant_completion_and_intake_scope_v1.sql` (this directory). It is a follow-up to `20261023190000_smart_mail_legacy_rls_hardening.sql` (PR #3018), which it never edits. **Hard ordering dependency: #3018 applies first in the same GT-039 batch** — its anon-policy drops and first messages policy are the assumed base state.
 
 **Source standard:** whole-system security census 2026-10-24 (SN-1855 instrument), Surface 1 (Smart Mail) + the `intake_events` read-all finding.
@@ -29,7 +31,7 @@
 
 ## Static verification (this branch, before publish)
 
-- **pglast parse (battery-venv):** the new migration parses clean — 14 statements (begin/commit, 3× ALTER TABLE enable-RLS, 1× CREATE FUNCTION, revoke+grant, 3× DROP POLICY, 3× CREATE POLICY). Controls also parse clean: #3018 landed cure (12), intake v1 (11), alias-binding v1 (22).
+- **pglast parse (battery-venv):** the proposed completion migration parses clean — 17 statements (begin/commit, 3× ALTER TABLE enable-RLS, 1× CREATE FUNCTION, helper REVOKE+GRANT, legacy-table privilege REVOKE, 5× DROP POLICY, 3× CREATE POLICY). Controls also parse clean: #3018 landed cure (12), intake v1 (11), alias-binding v1 (22).
 - **Spoof-source grep:** `user_metadata` and `coalesce` occur in the new file **only in header comments** (lines 34–37, 129) explaining the defect — zero occurrences in executable SQL.
 - **`using (true)` grep across the surface files:** the only executable occurrence is intake v1 line 72 — the original policy this file drops and recreates scoped. Final state (apply #3018 → follow-up; intake v1 → follow-up): **no `using (true)` policy remains on `smart_mail_messages`, `smart_mail_threads`, or `intake_events`.**
 - **Final-state policy inventory (drop/create simulation over the apply sequence):** exactly 5 policies survive on the two surfaces — `smart_mail_messages_participant_select` (follow-up), `smart_mail_threads_participant_select` (follow-up), `intake_events_auth_select` (follow-up, owner-scoped), and the two intake INSERT policies from v1 (`with check (true)`, public intake, by design, deliberately untouched).
@@ -37,6 +39,6 @@
 
 ## What this does NOT do
 
-No production change of any kind; no PR opened; nothing registered in the production migration ledger (registration rides the tap with the batch). The wider GT-039 policy set for the other pending tables (census cure 5 — `hub_smart_notes`, `project_intel_items`, Trinity page tables) still requires the gated production schema read (G3) before it can be authored truthfully; it is not in this package.
+No production change of any kind; a review-only code proposal is not a production approval, and no SQL migration has been registered as applied in the production database (registration rides the authorized tap with the batch). The wider GT-039 policy set for the other pending tables (census cure 5 — `hub_smart_notes`, `project_intel_items`, Trinity page tables) still requires the gated production schema read (G3) before it can be authored truthfully; it is not in this package.
 
 — Resolve's lane, 2026-10-24. Review owner: security lane (Nitro).
