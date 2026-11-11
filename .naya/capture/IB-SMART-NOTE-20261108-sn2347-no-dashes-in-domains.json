@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2347",
+ "title": "No Dashes in Domains",
+ "slug": "no-dashes-in-domains",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/SYSTEM/SN-2347/IB-SMART-NOTE-20261108-sn2347-no-dashes-in-domains.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "**DOMAIN RULE (his word, ~19:55Z): no dashes in domains — Smart Link slugs and worker names are dash-free (thankyou, not thank-you).** The PayPal Auto Return URL is therefore https://nayanet.app/thankyou — superseding the https://nayanet.app/thank-you given in the answer to his ~19:44Z question (SN-2342) and in the thank-you deploy brief. **LIVE IMPACT — THE SEAT FINISHED WITHOUT MINTING (update 19:58:52Z):** the thank-you deploy seat (24365e90) completed 19:58:52Z and reported to Shawn: the page is NOT live — blocked on the /api/v1 host (see SN-2348) — and it verified clean before stopping: no `naya-thank-you` / `nayathankyou` worker (77 workers checked), no route containing `thank` (63 routes), no `thankyou` / `thank-you` row in Supabase `smart_links` — nothing was minted or deployed, so there is no dashed link to remove. The resume path it left is already dash-free: worker `nayathankyou`, Smart Link `nayanet.app/thankyou`. The rule cost nothing this time because the seat stopped before minting; the correction travels in the resume path, not in a re-mint. **SCOPE:** the rule covers Smart Link slugs AND worker names — every future slug and every future worker name. Existing dashed slugs/workers are not re-minted by this seat (that is a sweep for a seat to run, not a silent rewrite here); new ones are dash-free from now on.",
+  "human_view": "It is a small rule with a long reach. No dashes in domains — the slugs people type and the workers that serve them are written without a dash, so the address is one clean word: thankyou, not thank-you. It arrived after the thank-you link had already been written three ways with the dash — in the answer to his question, in the deploy brief, and in the running seat's instructions — so the rule lands on moving work, not on a blank page. That is why the correction has to travel now, while the seat is still running: a link minted with a dash is a link that has to be minted again, and a Return URL set with a dash is a URL that has to be set again. The rule is simple to carry forward — every new slug, every new worker, dash-free — and the sweep of the old dashed names is a job to run, named here, not silently done by this seat. The nine plan links are already dash-free (power-monthly is a path, not a domain — the rule is about domains, slugs and worker names; the plan slugs keep their shape).",
+  "child_view": "Imagine every door in our house has a name on it, and the grown-up just said: no little lines in the names. So the thank-you door is called \"thankyou\" — one word, no line in the middle. The door was already being built with the line in its name, so somebody has to tell the builder right now, before the door is finished, or it will have to be built twice. Every new door from now on gets a name with no lines in it.",
+  "grandma_view": "Dear, it's a simple house rule: no dashes in the web addresses. The thank-you page is \"thankyou\" — one word, no dash — not \"thank-you.\" The trouble is the page was already being built with the dashed name, so the builder has to be told straight away, before it finishes, or it will all have to be done again. And from now on, every new link and every new little worker gets a name with no dashes in it. The old ones with dashes are a tidy-up for another day, not something to quietly rewrite now.",
+  "ai_view": "I write no dashes in domains — Smart Link slugs and worker names are dash-free: thankyou, not thank-you. The PayPal Return URL is https://nayanet.app/thankyou. When a rule lands on moving work, I carry the correction to the running seat before it files — a link minted with a dash is a link minted twice. Every new slug and every new worker is dash-free from now on; the sweep of old dashed names is a named job, never a silent rewrite.",
+  "what_it_means": "1. **No dashes in domains — Smart Link slugs and worker names are dash-free.**\n2. **The thank-you slug is `thankyou`, not `thank-you`**; the PayPal Return URL is https://nayanet.app/thankyou.\n3. **The thank-you seat finished without minting anything dashed** (completed 19:58:52Z, blocked on the API — SN-2348): no `thank-you` link exists to remove; the resume path is already dash-free.\n4. **The thank-you worker's name must be dash-free too** — resume path names it `nayathankyou`.\n5. **The rule supersedes** the dashed URL in SN-2342's answer and in THANK-YOU-PAGE-LIVE-BRIEF-20261108.md.\n6. **Scope is forward:** every future slug and worker name is dash-free; existing dashed names are a sweep to run, not a silent rewrite by this seat.\n7. **The nine plan slugs are unaffected** — the rule is about domains, slugs and worker names as named; power-monthly and its siblings are paths under nayanet.app, not dashed domains.",
+  "whats_inside": [],
+  "topics": [
+   "System"
+  ]
+ },
+ "page_hash": "9877e580f371eda10007f368f1820c432f414cc637b34e6e2770a5926c7f3a25",
+ "content_hash": "1acb7d43647c76966678344e7d6a243e18aafc14570b1f884815da4d082d0478",
+ "reconstructed_from_page": true
+}
