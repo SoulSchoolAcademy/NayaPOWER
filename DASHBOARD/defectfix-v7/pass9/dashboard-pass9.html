@@ -19999,7 +19999,13 @@ function loadPointsBoard(_t){
      ('—', ledger not landed) are skipped; the landed re-render animates
      them from 0. A mode flip mid-count aborts the flight — the flip already
      wrote the right values. A re-render cancels the old flight and starts
-     a fresh one from the last settled value. */
+     a fresh one FROM THE LAST SHOWN VALUE — every frame stores the value
+     it just wrote, so a mid-count re-render resumes where the eye left off
+     instead of dropping to 0 and rising again (measured 2026-11-11: the
+     hero re-renders ~1.5s after the first render, and the first flight
+     restarted from 0 on it). The duration is proportional to the distance
+     left (1600ms from 0, 250ms floor for a near-finished resume), so the
+     rise reads as one smooth climb however many renders land. */
   function osOrbCountUp(){
     try{
       if (window._osOrbCountRaf){ try{ cancelAnimationFrame(window._osOrbCountRaf); }catch(e){} window._osOrbCountRaf = null; }
@@ -20030,7 +20036,16 @@ function loadPointsBoard(_t){
       if (!jobs.length) return;
       var startMode = mode;
       var t0 = null;
-      var DUR = 1600;
+      /* Duration scales with the distance left: a fresh count from 0 runs
+         the full 1600ms; a resume after a mid-count re-render runs only
+         the remaining share (250ms floor), so the rise stays one climb. */
+      var maxFrac = 0;
+      for (var di = 0; di < jobs.length; di++){
+        var dj = jobs[di];
+        var frac = (dj.to > 0) ? ((dj.to - dj.from) / dj.to) : 1;
+        if (frac > maxFrac) maxFrac = frac;
+      }
+      var DUR = Math.max(250, Math.min(1600, Math.round(1600 * maxFrac)));
       function fmtVal(v, dec){
         var n = dec ? (Math.round(v * 10) / 10) : Math.round(v);
         var s;
@@ -20056,6 +20071,10 @@ function loadPointsBoard(_t){
             if (jb.el.getAttribute('data-full') !== jb.full) continue;
             var v = (p >= 1) ? jb.to : (jb.from + (jb.to - jb.from) * e);
             var txt = jb.pre + fmtVal(v, jb.dec) + jb.suf;
+            /* Store every frame, not just at the end: if a re-render lands
+               mid-count, the next flight resumes from the value the eye
+               last saw instead of dropping back to 0. */
+            shown[startMode + ':' + jb.key] = (p >= 1) ? jb.to : (jb.dec ? Math.round(v * 10) / 10 : Math.round(v));
             if (p >= 1){
               jb.el.textContent = txt;
             } else if (typeof window._osMiniNumHTML === 'function'){
