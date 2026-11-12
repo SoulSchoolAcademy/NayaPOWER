@@ -862,6 +862,20 @@ function showTab(tab){
   const target = tab === "all" ? null : document.querySelector('[data-group="' + tab + '"]') || document.getElementById(tab);
   if(target && target.scrollIntoView) target.scrollIntoView();
 }
+function projectStatus(jobs){
+  // Per-project status at a glance, computed from live rows only (LIVE.items).
+  // PROVEN: every placed job done_proven (and at least one job). MOVING: any
+  // job in_progress or verifying. WAITING: jobs exist but none moving and not
+  // all proven (queued / blocked / needs_shawn only). No jobs placed: honest
+  // empty state, never a status word. Unknown states count as neither done
+  // nor moving — they cannot prove movement.
+  if(!jobs || !jobs.length) return {code:"none", label:"no jobs placed in this area yet"};
+  var done = jobs.filter(function(it){ return it.state === "done_proven"; }).length;
+  if(done === jobs.length) return {code:"proven", label:"PROVEN"};
+  var moving = jobs.some(function(it){ return it.state === "in_progress" || it.state === "verifying"; });
+  if(moving) return {code:"moving", label:"MOVING"};
+  return {code:"waiting", label:"WAITING"};
+}
 function updateScores(){
   if(!LIVE) return;
   PAGES.forEach(function(page){
@@ -869,14 +883,16 @@ function updateScores(){
     if(!box) return;
     const paras = box.querySelectorAll("p");
     if(page.shawn_estimate){
-      box.querySelector("p").innerHTML = '<strong>Score / % done:</strong> ' + esc(page.shawn_estimate) + ' — Shawn\'s estimate, not a computed count. (Live record for its area is shown below for comparison, not as a replacement for his estimate.)';
+      var stE = page.record_area ? projectStatus(LIVE.items.filter(function(it){ return it.area === page.record_area; })) : null;
+      box.querySelector("p").innerHTML = '<strong>Score / % done:</strong> ' + esc(page.shawn_estimate) + ' — Shawn\'s estimate, not a computed count. (Live record for its area is shown below for comparison, not as a replacement for his estimate.)' + (stE ? ' · <strong>Status: ' + stE.label + '</strong>' : '');
     } else if(!page.record_area){
       box.querySelector("p").innerHTML = '<strong>% done:</strong> Not measured yet — no record area. No % is invented here.';
     } else {
       const jobs0 = LIVE.items.filter(function(it){ return it.area === page.record_area; });
       const done0 = jobs0.filter(function(it){ return it.state === "done_proven"; }).length;
       const pct0 = jobs0.length ? (100 * done0 / jobs0.length).toFixed(1) : "0.0";
-      box.querySelector("p").innerHTML = '<strong>% done (computed from live rows, area ' + esc(page.record_area) + '):</strong> <span class="pct-pop">' + pct0 + '%</span> (' + done0 + ' of ' + jobs0.length + ' proven done)';
+      var st0 = projectStatus(jobs0);
+      box.querySelector("p").innerHTML = '<strong>% done (computed from live rows, area ' + esc(page.record_area) + '):</strong> <span class="pct-pop">' + pct0 + '%</span> (' + done0 + ' of ' + jobs0.length + ' proven done) · <strong>Status: ' + st0.label + '</strong>';
     }
     if(!page.record_area && paras.length > 1){
       paras[1].innerHTML = '<strong>Front end %:</strong> No record area — no lists. · <strong>Back end %:</strong> No record area — no lists. · <strong>Process jobs:</strong> No record area.';
@@ -932,7 +948,8 @@ function updateBriefLive(){
     set('criteria', withCrit.length ? ('Per-job criteria in this area (live rows): ' + withCrit.length + ' jobs carry criteria; ' + met + ' of ' + tot + ' criteria met.') : 'No job in this area carries acceptance criteria yet.');
     const owned = jobs.filter(function(it){ return !!it.owner; }).length;
     const blocked = jobs.filter(function(it){ return it.state === 'blocked'; }).length;
-    set('areastate', 'Live area jobs: ' + jobs.length + ' total · ' + done + ' proven done · ' + (jobs.length - done) + ' open · owners named on ' + owned + ' · blocked: ' + blocked + '.');
+    var st = projectStatus(jobs);
+    set('areastate', st.code === 'none' ? 'No jobs placed in this area yet — status not measurable; see the Not placed list.' : 'Status: ' + st.label + ' — Live area jobs: ' + jobs.length + ' total · ' + done + ' proven done · ' + (jobs.length - done) + ' open · owners named on ' + owned + ' · blocked: ' + blocked + '.');
     let bhtml = '<p><strong>Blockers in this area (live rows):</strong></p>';
     const blockedJobs = jobs.filter(function(it){ return it.state === 'blocked'; });
     if(!blockedJobs.length){ bhtml += '<p>No blocked jobs in this area.</p>'; }
