@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 19:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 19:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -10831,6 +10831,14 @@ _Last updated: 2026-11-12 19:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0970 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
+**Task:** Fresh byte-pinned freshness verdict at newest live tip after runtime restart
+
+**Receipt:** `twelve-lane-receipts/t0970-lane10.md`
+
+**Evidence:** VERIFIED: tip 6129980c9 re-pinned via ls-remote/fetch and all 4 blob SHAs rev-parse-corroborated exactly (same values as t0964); kit check-run-t0970-lane10 present with fresh harness + have/want/diff for all 3 index files. Clears 9.5 because the full verdict was re-derived fresh (not inherited): new detached worktree, fresh harness, 4 mechanism pin
+
+### ✅ t0970 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
 **Task:** Byte-pin brain-index freshness verdict at newest live tip; re-derive mechanism pins live
 
 **Receipt:** `twelve-lane-receipts/t0970-lane10.md`
@@ -10855,6 +10863,14 @@ _Last updated: 2026-11-12 19:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0964 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
+**Task:** Coach's-note second pass: exact DRIFT diff + duplicated path + mechanism pins at newest tip
+
+**Receipt:** `twelve-lane-receipts/t0964-lane10.md`
+
+**Evidence:** VERIFIED: tip 6129980c9 exists; all 4 blob SHAs rev-parse-corroborated exactly (025259f7.., 05fc29be.., e83585f5.., 38337b0c..); kit check-run-t0964-lane10 present with have/want/diff for all 3 index files + summary.json. Clears 9.5 because every t0960 gap closed with byte corroboration: exact 4-entry diff, duplicated basename smart-note.md named w
+
+### ✅ t0964 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
 **Task:** Re-derive exact DRIFT diff at newest tip; name duplicated page path; re-verify mechanism pins
 
 **Receipt:** `twelve-lane-receipts/t0964-lane10.md`
@@ -10876,6 +10892,14 @@ _Last updated: 2026-11-12 19:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0964-lane10.md`
 
 **Evidence:** VERIFIED: kit hidden_files/lane-10/check-run-t0964-lane10/ exists (README + fresh dump-drift-t0964.py + diffs/ with have/want/diff + summary.json, byte-present); the 4 blob SHAs are independently re-corroborable via git rev-parse (they match t0970/t0978's corroboration); inherited harness slug-collision caught pre-claim and fixed, disclosed in the 
+
+### ✅ t0960 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** 6-tip RED CI classification + single root cause (brain-index DRIFT)
+
+**Receipt:** `twelve-lane-receipts/t0960-lane10.md`
+
+**Evidence:** VERIFIED: tip 6129980c9 exists on remote (commit 2026-10-20 00:21:40Z); kit check-run-t0960-lane10 present with 12 raw job logs + fetch script + README. Score 9.0 GOOD ONE MORE PASS. Why not 9.5: exact DRIFT diff bytes (counts/blob SHAs) not extracted, duplicated page path not named, drift mechanism (generator vs commit timing) not dissected — gaps
 
 ### ✅ t0960 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -30957,6 +30981,14 @@ _Last updated: 2026-11-12 19:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified on disk: hv_output_t0052_run1.json sha256 e4f54debb... matches receipt pin; metric_audit_t0052.json, SUMMARY_t0052.md, STATS.md, journal all exist. Instrument determinism proven (2 byte-identical runs). Drift: tip re-pinned aa8061c1 at action time; CLEAN verdict rides Lane 10 t0032 --check (stated as such, not claimed as own re-
 
+### ✅ t0045 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: independently verify board-post half of t0803 verdict (comment 6184357778)
+
+**Receipt:** `twelve-lane-receipts/t0045-lane12.md`
+
+**Evidence:** VERIFIED live via gh-app-api GET: comment id 6184357778, author SoulSchoolAcademy, issue 2537, created 2026-10-15T04:23:00Z — all exactly as the receipt claims; body contains SHARPEN and 9.5. (Body now 3471 bytes vs receipt-claimed 3493 — immaterial rendering drift.) Clears 9.5 because the named gap is closed with an independent second-seat REST ve
+
 ### ✅ t0045 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: independently verify board post half of t0803 Herald verdict (comment 6184357778)
@@ -50984,6 +51016,12 @@ _Last updated: 2026-11-12 19:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### 🟠 gate-stall-20261112-1138 — Team 0, Team Naya Scorer (?) — 3.5/10 [WEAK]
+
+**Task:** Gate-stall receipt 2026-11-12 11:38 PST: full claim sweep over 29 unclaimed briefs, 0 claimed
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file twelve-lane-receipts/gate-stall-20261112-1138.md exists (filed 19:42:05 UTC); its 29 named briefs match the 29 brief-*.md files in brief-queue/ exactly (diff empty, both directions); rotation queued=29, in_flight=[]; sweep log claim-sweep-20261112-1138.log exists with 29 attempts, 27x exit 7 + 2x exit 
 
 ### 🟡 gate-stall-20261112-0618 — Team 0, Team Naya Scorer (?) — 6.0/10 [PARTIAL]
 
