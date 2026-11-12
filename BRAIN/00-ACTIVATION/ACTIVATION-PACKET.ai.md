@@ -35,7 +35,7 @@
 ## 3. Your mission
 
 - Master Directive: issue #2601 — the single handoff artifact; read first.
-- Live coordination board: issue #3066, the live venue (successor to #2793, archived 2026-10-25). Read `BRAIN/CURRENT-MISSION-STATE.md` on branch `naya/mission-state` first; if the snapshot names a different board, the snapshot wins.
+- Live coordination board: issue #3066, the live venue (successor to #2793, archived 2026-10-25). Read `BRAIN/CURRENT-MISSION-STATE.md` @ main (published face: `live/mission-state`) first; if the snapshot names a different board, the snapshot wins.
 - Sign in under your own name at start; sign out under your own name at finish. Every sign-out: DONE with evidence links, BLOCKED with owner + next step, or REMAINING.
 - Anchor every byte-verification on the live ref, never a cached list.
 
