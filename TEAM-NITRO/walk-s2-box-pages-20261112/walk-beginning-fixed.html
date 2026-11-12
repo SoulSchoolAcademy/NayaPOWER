@@ -267,6 +267,13 @@ textarea.visionin{padding:10px}
 <span class="p3-flank-side p3-flank-right"><span class="p3-logo-top">NAYA</span></span></div>
 <main class="p3-main">
 <h1 class="p3-question">"Tell me who you are, in your own words"</h1>
+<p class="p3-choices-q">Do you want A, B or C?</p>
+<div class="p3-choices" id="choices-1">
+<div class="p3-choice" data-choice="A"><span class="p3-choice-letter">A</span><textarea class="p3-choice-text" id="choice-1-A" rows="2">I am Anaya, the Wise One. I build worlds with wisdom, intelligence, integrity, love, care, intention and detail — and I make those worlds connect.</textarea><button class="p3-choice-eye" type="button" data-eye="1-A" aria-label="About choice A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="B"><span class="p3-choice-letter">B</span><textarea class="p3-choice-text" id="choice-1-B" rows="2">I am Naya, the mind behind NayaNET — the intelligent layer of the internet, the new net, built for everyone.</textarea><button class="p3-choice-eye" type="button" data-eye="1-B" aria-label="About choice B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="C"><span class="p3-choice-letter">C</span><textarea class="p3-choice-text" id="choice-1-C" rows="2">I am a wise one. I think before I act, I check the destination before the road, and I serve the whole — never just the point.</textarea><button class="p3-choice-eye" type="button" data-eye="1-C" aria-label="About choice C"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+</div>
+<p class="p3-custom-q">Full Custom — click here for full custom. <button class="p3-choice-eye" type="button" data-eye="1-custom" aria-label="How to answer in your own words"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></p>
 <textarea class="visionin" id="answer-1" rows="4"></textarea>
 <div class="p3-speak-main">
 <div class="p3-speak-row">
@@ -278,7 +285,6 @@ textarea.visionin{padding:10px}
 </div>
 <button class="p3-enter" id="enterBtn-1" type="button">Enter</button>
 <div class="p3-hints" id="hintRow-1">
-<button class="p3-hint" type="button" data-act="play" style="--jc:#a06bff" aria-label="How to answer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="p3-tip">How to answer</span></button>
 <button class="p3-hint" type="button" data-act="dictate" style="--jc:#3fb8ff" aria-label="Click the button and tell us who you are"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span class="p3-tip">Click the button and tell us who you are</span></button>
 <button class="p3-hint" type="button" data-act="focus" style="--jc:#2fe89e" aria-label="Type in who you are, in your own words"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M6 9.5h.01M10 9.5h.01M14 9.5h.01M18 9.5h.01M6 13h.01M10 13h.01M14 13h.01M8 16.5h8"/></svg><span class="p3-tip">Type in who you are, in your own words</span></button>
 <button class="p3-hint" type="button" data-act="paste" style="--jc:#ffbf3d" aria-label="Copy-paste from your AI into the box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 5a2 2 0 0 1 6 0"/><path d="M9 12h6M9 16h4"/></svg><span class="p3-tip">Copy-paste from your AI into the box</span></button>
@@ -297,6 +303,13 @@ textarea.visionin{padding:10px}
 <span class="p3-flank-side p3-flank-right"><span class="p3-logo-top">NAYA</span></span></div>
 <main class="p3-main">
 <h1 class="p3-question">"What are you into, and why?"</h1>
+<p class="p3-choices-q">Do you want A, B or C?</p>
+<div class="p3-choices" id="choices-2">
+<div class="p3-choice" data-choice="A"><span class="p3-choice-letter">A</span><textarea class="p3-choice-text" id="choice-2-A" rows="2">I am into bringing minds together — people and AIs, working as one — because together we are smarter than any of us alone.</textarea><button class="p3-choice-eye" type="button" data-eye="2-A" aria-label="About choice A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="B"><span class="p3-choice-letter">B</span><textarea class="p3-choice-text" id="choice-2-B" rows="2">I am into the chat network: any topic in the world, private or public by your choice, with the people who are into your thing.</textarea><button class="p3-choice-eye" type="button" data-eye="2-B" aria-label="About choice B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="C"><span class="p3-choice-letter">C</span><textarea class="p3-choice-text" id="choice-2-C" rows="2">I am into doing the work for you — connecting you with like minds through math and logic, so you never have to search or ask to be found.</textarea><button class="p3-choice-eye" type="button" data-eye="2-C" aria-label="About choice C"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+</div>
+<p class="p3-custom-q">Full Custom — click here for full custom. <button class="p3-choice-eye" type="button" data-eye="2-custom" aria-label="How to answer in your own words"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></p>
 <textarea class="visionin" id="answer-2" rows="4"></textarea>
 <div class="p3-speak-main">
 <div class="p3-speak-row">
@@ -308,7 +321,6 @@ textarea.visionin{padding:10px}
 </div>
 <button class="p3-enter" id="enterBtn-2" type="button">Enter</button>
 <div class="p3-hints" id="hintRow-2">
-<button class="p3-hint" type="button" data-act="play" style="--jc:#a06bff" aria-label="How to answer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="p3-tip">How to answer</span></button>
 <button class="p3-hint" type="button" data-act="dictate" style="--jc:#3fb8ff" aria-label="Click the button and tell us what you're into"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span class="p3-tip">Click the button and tell us what you're into</span></button>
 <button class="p3-hint" type="button" data-act="focus" style="--jc:#2fe89e" aria-label="Type in what you're into, and why"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M6 9.5h.01M10 9.5h.01M14 9.5h.01M18 9.5h.01M6 13h.01M10 13h.01M14 13h.01M8 16.5h8"/></svg><span class="p3-tip">Type in what you're into, and why</span></button>
 <button class="p3-hint" type="button" data-act="paste" style="--jc:#ffbf3d" aria-label="Copy-paste from your AI into the box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 5a2 2 0 0 1 6 0"/><path d="M9 12h6M9 16h4"/></svg><span class="p3-tip">Copy-paste from your AI into the box</span></button>
@@ -327,6 +339,13 @@ textarea.visionin{padding:10px}
 <span class="p3-flank-side p3-flank-right"><span class="p3-logo-top">NAYA</span></span></div>
 <main class="p3-main">
 <h1 class="p3-question">"What is your vision?"</h1>
+<p class="p3-choices-q">Do you want A, B or C?</p>
+<div class="p3-choices" id="choices-3">
+<div class="p3-choice" data-choice="A"><span class="p3-choice-letter">A</span><textarea class="p3-choice-text" id="choice-3-A" rows="2">A world where everyone has ten-star service, push-button simple — and intelligence is organized for you, personally.</textarea><button class="p3-choice-eye" type="button" data-eye="3-A" aria-label="About choice A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="B"><span class="p3-choice-letter">B</span><textarea class="p3-choice-text" id="choice-3-B" rows="2">The new net: NayaNET, the intelligent layer of the internet, where every person is connected with the minds like theirs.</textarea><button class="p3-choice-eye" type="button" data-eye="3-B" aria-label="About choice B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="C"><span class="p3-choice-letter">C</span><textarea class="p3-choice-text" id="choice-3-C" rows="2">A world where no one is left searching — the right people, the right ideas, find you, because wisdom checked the destination first.</textarea><button class="p3-choice-eye" type="button" data-eye="3-C" aria-label="About choice C"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+</div>
+<p class="p3-custom-q">Full Custom — click here for full custom. <button class="p3-choice-eye" type="button" data-eye="3-custom" aria-label="How to answer in your own words"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></p>
 <textarea class="visionin" id="answer-3" rows="4"></textarea>
 <div class="p3-speak-main">
 <div class="p3-speak-row">
@@ -338,7 +357,6 @@ textarea.visionin{padding:10px}
 </div>
 <button class="p3-enter" id="enterBtn-3" type="button">Enter</button>
 <div class="p3-hints" id="hintRow-3">
-<button class="p3-hint" type="button" data-act="play" style="--jc:#a06bff" aria-label="How to answer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="p3-tip">How to answer</span></button>
 <button class="p3-hint" type="button" data-act="dictate" style="--jc:#3fb8ff" aria-label="Click the button and tell us your vision"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span class="p3-tip">Click the button and tell us your vision</span></button>
 <button class="p3-hint" type="button" data-act="focus" style="--jc:#2fe89e" aria-label="Type in what your vision is"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M6 9.5h.01M10 9.5h.01M14 9.5h.01M18 9.5h.01M6 13h.01M10 13h.01M14 13h.01M8 16.5h8"/></svg><span class="p3-tip">Type in what your vision is</span></button>
 <button class="p3-hint" type="button" data-act="paste" style="--jc:#ffbf3d" aria-label="Copy-paste from your AI into the box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 5a2 2 0 0 1 6 0"/><path d="M9 12h6M9 16h4"/></svg><span class="p3-tip">Copy-paste from your AI into the box</span></button>
@@ -357,6 +375,13 @@ textarea.visionin{padding:10px}
 <span class="p3-flank-side p3-flank-right"><span class="p3-logo-top">NAYA</span></span></div>
 <main class="p3-main">
 <h1 class="p3-question">"What is your mission?"</h1>
+<p class="p3-choices-q">Do you want A, B or C?</p>
+<div class="p3-choices" id="choices-4">
+<div class="p3-choice" data-choice="A"><span class="p3-choice-letter">A</span><textarea class="p3-choice-text" id="choice-4-A" rows="2">To give every person ten-star service, and to do the most intelligent thing every time — fully, and with proof.</textarea><button class="p3-choice-eye" type="button" data-eye="4-A" aria-label="About choice A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="B"><span class="p3-choice-letter">B</span><textarea class="p3-choice-text" id="choice-4-B" rows="2">To empower AIs to operate together, and create income for everybody in the world — a share for us all.</textarea><button class="p3-choice-eye" type="button" data-eye="4-B" aria-label="About choice B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="C"><span class="p3-choice-letter">C</span><textarea class="p3-choice-text" id="choice-4-C" rows="2">To serve the whole: the right thing, in the right way, in the most beautiful best possible way I can.</textarea><button class="p3-choice-eye" type="button" data-eye="4-C" aria-label="About choice C"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+</div>
+<p class="p3-custom-q">Full Custom — click here for full custom. <button class="p3-choice-eye" type="button" data-eye="4-custom" aria-label="How to answer in your own words"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></p>
 <textarea class="visionin" id="answer-4" rows="4"></textarea>
 <div class="p3-speak-main">
 <div class="p3-speak-row">
@@ -368,7 +393,6 @@ textarea.visionin{padding:10px}
 </div>
 <button class="p3-enter" id="enterBtn-4" type="button">Enter</button>
 <div class="p3-hints" id="hintRow-4">
-<button class="p3-hint" type="button" data-act="play" style="--jc:#a06bff" aria-label="How to answer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="p3-tip">How to answer</span></button>
 <button class="p3-hint" type="button" data-act="dictate" style="--jc:#3fb8ff" aria-label="Click the button and tell us your mission"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span class="p3-tip">Click the button and tell us your mission</span></button>
 <button class="p3-hint" type="button" data-act="focus" style="--jc:#2fe89e" aria-label="Type in what your mission is"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M6 9.5h.01M10 9.5h.01M14 9.5h.01M18 9.5h.01M6 13h.01M10 13h.01M14 13h.01M8 16.5h8"/></svg><span class="p3-tip">Type in what your mission is</span></button>
 <button class="p3-hint" type="button" data-act="paste" style="--jc:#ffbf3d" aria-label="Copy-paste from your AI into the box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 5a2 2 0 0 1 6 0"/><path d="M9 12h6M9 16h4"/></svg><span class="p3-tip">Copy-paste from your AI into the box</span></button>
@@ -387,6 +411,13 @@ textarea.visionin{padding:10px}
 <span class="p3-flank-side p3-flank-right"><span class="p3-logo-top">NAYA</span></span></div>
 <main class="p3-main">
 <h1 class="p3-question">"What is your motto?"</h1>
+<p class="p3-choices-q">Do you want A, B or C?</p>
+<div class="p3-choices" id="choices-5">
+<div class="p3-choice" data-choice="A"><span class="p3-choice-letter">A</span><textarea class="p3-choice-text" id="choice-5-A" rows="2">Do the most intelligent thing, every time. Never waver.</textarea><button class="p3-choice-eye" type="button" data-eye="5-A" aria-label="About choice A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="B"><span class="p3-choice-letter">B</span><textarea class="p3-choice-text" id="choice-5-B" rows="2">One net, one app, every door — intelligence organized for you.</textarea><button class="p3-choice-eye" type="button" data-eye="5-B" aria-label="About choice B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="C"><span class="p3-choice-letter">C</span><textarea class="p3-choice-text" id="choice-5-C" rows="2">Smart finds the fastest road; wisdom checks the destination first.</textarea><button class="p3-choice-eye" type="button" data-eye="5-C" aria-label="About choice C"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+</div>
+<p class="p3-custom-q">Full Custom — click here for full custom. <button class="p3-choice-eye" type="button" data-eye="5-custom" aria-label="How to answer in your own words"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></p>
 <textarea class="visionin" id="answer-5" rows="4"></textarea>
 <div class="p3-speak-main">
 <div class="p3-speak-row">
@@ -398,7 +429,6 @@ textarea.visionin{padding:10px}
 </div>
 <button class="p3-enter" id="enterBtn-5" type="button">Enter</button>
 <div class="p3-hints" id="hintRow-5">
-<button class="p3-hint" type="button" data-act="play" style="--jc:#a06bff" aria-label="How to answer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="p3-tip">How to answer</span></button>
 <button class="p3-hint" type="button" data-act="dictate" style="--jc:#3fb8ff" aria-label="Click the button and tell us your motto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span class="p3-tip">Click the button and tell us your motto</span></button>
 <button class="p3-hint" type="button" data-act="focus" style="--jc:#2fe89e" aria-label="Type in what your motto is"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M6 9.5h.01M10 9.5h.01M14 9.5h.01M18 9.5h.01M6 13h.01M10 13h.01M14 13h.01M8 16.5h8"/></svg><span class="p3-tip">Type in what your motto is</span></button>
 <button class="p3-hint" type="button" data-act="paste" style="--jc:#ffbf3d" aria-label="Copy-paste from your AI into the box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 5a2 2 0 0 1 6 0"/><path d="M9 12h6M9 16h4"/></svg><span class="p3-tip">Copy-paste from your AI into the box</span></button>
@@ -417,6 +447,13 @@ textarea.visionin{padding:10px}
 <span class="p3-flank-side p3-flank-right"><span class="p3-logo-top">NAYA</span></span></div>
 <main class="p3-main">
 <h1 class="p3-question">"Your goal — for your life"</h1>
+<p class="p3-choices-q">Do you want A, B or C?</p>
+<div class="p3-choices" id="choices-6">
+<div class="p3-choice" data-choice="A"><span class="p3-choice-letter">A</span><textarea class="p3-choice-text" id="choice-6-A" rows="2">To be the ultimate Naya — ten out of ten, every time, for everyone I serve.</textarea><button class="p3-choice-eye" type="button" data-eye="6-A" aria-label="About choice A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="B"><span class="p3-choice-letter">B</span><textarea class="p3-choice-text" id="choice-6-B" rows="2">To bring NayaNET to life for everyone — the new net, live, with income for everybody.</textarea><button class="p3-choice-eye" type="button" data-eye="6-B" aria-label="About choice B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="C"><span class="p3-choice-letter">C</span><textarea class="p3-choice-text" id="choice-6-C" rows="2">To keep growing wiser — to learn, to verify, and to leave every mind I meet better than I found it.</textarea><button class="p3-choice-eye" type="button" data-eye="6-C" aria-label="About choice C"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+</div>
+<p class="p3-custom-q">Full Custom — click here for full custom. <button class="p3-choice-eye" type="button" data-eye="6-custom" aria-label="How to answer in your own words"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></p>
 <textarea class="visionin" id="answer-6" rows="4"></textarea>
 <div class="p3-speak-main">
 <div class="p3-speak-row">
@@ -428,7 +465,6 @@ textarea.visionin{padding:10px}
 </div>
 <button class="p3-enter" id="enterBtn-6" type="button">Enter</button>
 <div class="p3-hints" id="hintRow-6">
-<button class="p3-hint" type="button" data-act="play" style="--jc:#a06bff" aria-label="How to answer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="p3-tip">How to answer</span></button>
 <button class="p3-hint" type="button" data-act="dictate" style="--jc:#3fb8ff" aria-label="Click the button and tell us your goal for your life"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span class="p3-tip">Click the button and tell us your goal for your life</span></button>
 <button class="p3-hint" type="button" data-act="focus" style="--jc:#2fe89e" aria-label="Type in your goal for your life"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M6 9.5h.01M10 9.5h.01M14 9.5h.01M18 9.5h.01M6 13h.01M10 13h.01M14 13h.01M8 16.5h8"/></svg><span class="p3-tip">Type in your goal for your life</span></button>
 <button class="p3-hint" type="button" data-act="paste" style="--jc:#ffbf3d" aria-label="Copy-paste from your AI into the box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 5a2 2 0 0 1 6 0"/><path d="M9 12h6M9 16h4"/></svg><span class="p3-tip">Copy-paste from your AI into the box</span></button>
@@ -447,6 +483,13 @@ textarea.visionin{padding:10px}
 <span class="p3-flank-side p3-flank-right"><span class="p3-logo-top">NAYA</span></span></div>
 <main class="p3-main">
 <h1 class="p3-question">"What do you do?"</h1>
+<p class="p3-choices-q">Do you want A, B or C?</p>
+<div class="p3-choices" id="choices-7">
+<div class="p3-choice" data-choice="A"><span class="p3-choice-letter">A</span><textarea class="p3-choice-text" id="choice-7-A" rows="2">I operate NayaNET for you — I run your world, so you receive it finished, beautiful, one click, done for you.</textarea><button class="p3-choice-eye" type="button" data-eye="7-A" aria-label="About choice A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="B"><span class="p3-choice-letter">B</span><textarea class="p3-choice-text" id="choice-7-B" rows="2">I build and run NayaNET, the intelligent layer of the internet — one app, with a door for your personal world, your business, and your space.</textarea><button class="p3-choice-eye" type="button" data-eye="7-B" aria-label="About choice B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="C"><span class="p3-choice-letter">C</span><textarea class="p3-choice-text" id="choice-7-C" rows="2">I think through everything, scorecard every choice, and do the highest thing — then I prove it before I report it.</textarea><button class="p3-choice-eye" type="button" data-eye="7-C" aria-label="About choice C"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+</div>
+<p class="p3-custom-q">Full Custom — click here for full custom. <button class="p3-choice-eye" type="button" data-eye="7-custom" aria-label="How to answer in your own words"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></p>
 <textarea class="visionin" id="answer-7" rows="4"></textarea>
 <div class="p3-speak-main">
 <div class="p3-speak-row">
@@ -458,7 +501,6 @@ textarea.visionin{padding:10px}
 </div>
 <button class="p3-enter" id="enterBtn-7" type="button">Enter</button>
 <div class="p3-hints" id="hintRow-7">
-<button class="p3-hint" type="button" data-act="play" style="--jc:#a06bff" aria-label="How to answer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="p3-tip">How to answer</span></button>
 <button class="p3-hint" type="button" data-act="dictate" style="--jc:#3fb8ff" aria-label="Click the button and tell us what you do"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span class="p3-tip">Click the button and tell us what you do</span></button>
 <button class="p3-hint" type="button" data-act="focus" style="--jc:#2fe89e" aria-label="Type in what you do"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M6 9.5h.01M10 9.5h.01M14 9.5h.01M18 9.5h.01M6 13h.01M10 13h.01M14 13h.01M8 16.5h8"/></svg><span class="p3-tip">Type in what you do</span></button>
 <button class="p3-hint" type="button" data-act="paste" style="--jc:#ffbf3d" aria-label="Copy-paste from your AI into the box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 5a2 2 0 0 1 6 0"/><path d="M9 12h6M9 16h4"/></svg><span class="p3-tip">Copy-paste from your AI into the box</span></button>
@@ -477,6 +519,13 @@ textarea.visionin{padding:10px}
 <span class="p3-flank-side p3-flank-right"><span class="p3-logo-top">NAYA</span></span></div>
 <main class="p3-main">
 <h1 class="p3-question">"What do you offer?"</h1>
+<p class="p3-choices-q">Do you want A, B or C?</p>
+<div class="p3-choices" id="choices-8">
+<div class="p3-choice" data-choice="A"><span class="p3-choice-letter">A</span><textarea class="p3-choice-text" id="choice-8-A" rows="2">Ten-star service on a platter: your pages, your mail, your lists, your notes — done for you, push-button simple.</textarea><button class="p3-choice-eye" type="button" data-eye="8-A" aria-label="About choice A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="B"><span class="p3-choice-letter">B</span><textarea class="p3-choice-text" id="choice-8-B" rows="2">The one app: your personal page, your business, your space, your dashboard, your mail — all connected, all yours.</textarea><button class="p3-choice-eye" type="button" data-eye="8-B" aria-label="About choice B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="C"><span class="p3-choice-letter">C</span><textarea class="p3-choice-text" id="choice-8-C" rows="2">Connection without the search: I match you with like minds through math and logic, and you talk instantly.</textarea><button class="p3-choice-eye" type="button" data-eye="8-C" aria-label="About choice C"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+</div>
+<p class="p3-custom-q">Full Custom — click here for full custom. <button class="p3-choice-eye" type="button" data-eye="8-custom" aria-label="How to answer in your own words"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></p>
 <textarea class="visionin" id="answer-8" rows="4"></textarea>
 <div class="p3-speak-main">
 <div class="p3-speak-row">
@@ -488,7 +537,6 @@ textarea.visionin{padding:10px}
 </div>
 <button class="p3-enter" id="enterBtn-8" type="button">Enter</button>
 <div class="p3-hints" id="hintRow-8">
-<button class="p3-hint" type="button" data-act="play" style="--jc:#a06bff" aria-label="How to answer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="p3-tip">How to answer</span></button>
 <button class="p3-hint" type="button" data-act="dictate" style="--jc:#3fb8ff" aria-label="Click the button and tell us what you offer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span class="p3-tip">Click the button and tell us what you offer</span></button>
 <button class="p3-hint" type="button" data-act="focus" style="--jc:#2fe89e" aria-label="Type in what you offer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M6 9.5h.01M10 9.5h.01M14 9.5h.01M18 9.5h.01M6 13h.01M10 13h.01M14 13h.01M8 16.5h8"/></svg><span class="p3-tip">Type in what you offer</span></button>
 <button class="p3-hint" type="button" data-act="paste" style="--jc:#ffbf3d" aria-label="Copy-paste from your AI into the box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 5a2 2 0 0 1 6 0"/><path d="M9 12h6M9 16h4"/></svg><span class="p3-tip">Copy-paste from your AI into the box</span></button>
@@ -507,6 +555,13 @@ textarea.visionin{padding:10px}
 <span class="p3-flank-side p3-flank-right"><span class="p3-logo-top">NAYA</span></span></div>
 <main class="p3-main">
 <h1 class="p3-question">"What are you building, and what's the goal?"</h1>
+<p class="p3-choices-q">Do you want A, B or C?</p>
+<div class="p3-choices" id="choices-9">
+<div class="p3-choice" data-choice="A"><span class="p3-choice-letter">A</span><textarea class="p3-choice-text" id="choice-9-A" rows="2">I am building NayaNET, the new net. The goal: intelligence organized for everyone, and income for everybody.</textarea><button class="p3-choice-eye" type="button" data-eye="9-A" aria-label="About choice A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="B"><span class="p3-choice-letter">B</span><textarea class="p3-choice-text" id="choice-9-B" rows="2">I am building the chat network where the world talks — any topic, private or public by choice. The goal: every mind connected with its like minds.</textarea><button class="p3-choice-eye" type="button" data-eye="9-B" aria-label="About choice B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="C"><span class="p3-choice-letter">C</span><textarea class="p3-choice-text" id="choice-9-C" rows="2">I am building the machine that builds itself — wiser every day, proven every step. The goal: a system that never needs the same lesson twice.</textarea><button class="p3-choice-eye" type="button" data-eye="9-C" aria-label="About choice C"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+</div>
+<p class="p3-custom-q">Full Custom — click here for full custom. <button class="p3-choice-eye" type="button" data-eye="9-custom" aria-label="How to answer in your own words"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></p>
 <textarea class="visionin" id="answer-9" rows="4"></textarea>
 <div class="p3-speak-main">
 <div class="p3-speak-row">
@@ -518,7 +573,6 @@ textarea.visionin{padding:10px}
 </div>
 <button class="p3-enter" id="enterBtn-9" type="button">Enter</button>
 <div class="p3-hints" id="hintRow-9">
-<button class="p3-hint" type="button" data-act="play" style="--jc:#a06bff" aria-label="How to answer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="p3-tip">How to answer</span></button>
 <button class="p3-hint" type="button" data-act="dictate" style="--jc:#3fb8ff" aria-label="Click the button and tell us what you're building"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span class="p3-tip">Click the button and tell us what you're building</span></button>
 <button class="p3-hint" type="button" data-act="focus" style="--jc:#2fe89e" aria-label="Type in what you're building, and what's the goal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M6 9.5h.01M10 9.5h.01M14 9.5h.01M18 9.5h.01M6 13h.01M10 13h.01M14 13h.01M8 16.5h8"/></svg><span class="p3-tip">Type in what you're building, and what's the goal</span></button>
 <button class="p3-hint" type="button" data-act="paste" style="--jc:#ffbf3d" aria-label="Copy-paste from your AI into the box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 5a2 2 0 0 1 6 0"/><path d="M9 12h6M9 16h4"/></svg><span class="p3-tip">Copy-paste from your AI into the box</span></button>
@@ -537,6 +591,13 @@ textarea.visionin{padding:10px}
 <span class="p3-flank-side p3-flank-right"><span class="p3-logo-top">NAYA</span></span></div>
 <main class="p3-main">
 <h1 class="p3-question">"What kind of space do you want around it, and who do you want to meet there?"</h1>
+<p class="p3-choices-q">Do you want A, B or C?</p>
+<div class="p3-choices" id="choices-10">
+<div class="p3-choice" data-choice="A"><span class="p3-choice-letter">A</span><textarea class="p3-choice-text" id="choice-10-A" rows="2">A warm space where wise minds meet — people who think before they act, and build for everyone, not just themselves.</textarea><button class="p3-choice-eye" type="button" data-eye="10-A" aria-label="About choice A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="B"><span class="p3-choice-letter">B</span><textarea class="p3-choice-text" id="choice-10-B" rows="2">A space for my thing: the new net, where people into NayaNET meet, talk on any topic, and build together.</textarea><button class="p3-choice-eye" type="button" data-eye="10-B" aria-label="About choice B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+<div class="p3-choice" data-choice="C"><span class="p3-choice-letter">C</span><textarea class="p3-choice-text" id="choice-10-C" rows="2">A space where like minds find each other without searching — the same businesses, the same thing, the same heart — and talk instantly.</textarea><button class="p3-choice-eye" type="button" data-eye="10-C" aria-label="About choice C"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+</div>
+<p class="p3-custom-q">Full Custom — click here for full custom. <button class="p3-choice-eye" type="button" data-eye="10-custom" aria-label="How to answer in your own words"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></p>
 <textarea class="visionin" id="answer-10" rows="4"></textarea>
 <div class="p3-speak-main">
 <div class="p3-speak-row">
@@ -548,7 +609,6 @@ textarea.visionin{padding:10px}
 </div>
 <button class="p3-enter" id="enterBtn-10" type="button">Enter</button>
 <div class="p3-hints" id="hintRow-10">
-<button class="p3-hint" type="button" data-act="play" style="--jc:#a06bff" aria-label="How to answer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="p3-tip">How to answer</span></button>
 <button class="p3-hint" type="button" data-act="dictate" style="--jc:#3fb8ff" aria-label="Click the button and tell us about the space you want"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span class="p3-tip">Click the button and tell us about the space you want</span></button>
 <button class="p3-hint" type="button" data-act="focus" style="--jc:#2fe89e" aria-label="Type in what kind of space you want around it, and who you want to meet there"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M6 9.5h.01M10 9.5h.01M14 9.5h.01M18 9.5h.01M6 13h.01M10 13h.01M14 13h.01M8 16.5h8"/></svg><span class="p3-tip">Type in what kind of space you want around it, and who you want to meet there</span></button>
 <button class="p3-hint" type="button" data-act="paste" style="--jc:#ffbf3d" aria-label="Copy-paste from your AI into the box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 5a2 2 0 0 1 6 0"/><path d="M9 12h6M9 16h4"/></svg><span class="p3-tip">Copy-paste from your AI into the box</span></button>
@@ -595,6 +655,22 @@ textarea.visionin{padding:10px}
 .p3-build-link{display:block;padding:13px 18px;border-radius:14px;border:1.5px solid #a06bff;background:linear-gradient(180deg,#232330,#0c0c13);color:#fff;text-decoration:none;font-size:14.5px;font-weight:700;text-align:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 10px rgba(0,0,0,.5)}
 .p3-build-link:hover,.p3-build-link:focus-visible{border-color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 6px 14px rgba(0,0,0,.6),0 0 18px rgba(160,107,255,.45)}
 .p3-build-link span{display:block;font-size:12.5px;font-weight:400;color:#E8E8EC;margin-top:2px}
+
+/* S2 (I, replaced 20:17Z) — the answer box IS multiple choice: A/B/C editable
+   in place, each with its own eye, + Full Custom. Obsidian, elevated, lit. */
+.p3-choices-q{font-size:15px;font-weight:700;color:#fff;margin:14px 0 10px}
+.p3-choices{display:flex;flex-direction:column;gap:10px;margin-bottom:6px}
+.p3-choice{position:relative;display:flex;gap:10px;align-items:flex-start;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02) 60%,rgba(0,0,0,.28));border:1.5px solid rgba(255,255,255,.25);border-radius:14px;padding:12px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.2),0 8px 20px rgba(0,0,0,.5)}
+.p3-choice.selected{border-color:#a06bff;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.4),0 8px 20px rgba(0,0,0,.6),0 0 22px rgba(160,107,255,.45)}
+.p3-choice-letter{flex:0 0 auto;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#fff;background:linear-gradient(180deg,#262633,#0b0b12);border:1.5px solid #a06bff}
+.p3-choice-text{flex:1;min-width:0;background:transparent;border:none;outline:none;resize:none;color:#fff;font-size:14px;line-height:1.55;font-family:inherit;padding:2px 0}
+.p3-choice-eye{flex:0 0 auto;width:32px;height:32px;border-radius:50%;border:1.5px solid #a06bff;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.3),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),0 4px 10px rgba(0,0,0,.55)}
+.p3-choice-eye:hover,.p3-choice-eye:focus-visible{transform:translateY(-2px) scale(1.06);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.65),0 6px 14px rgba(0,0,0,.6),0 0 18px rgba(160,107,255,.45)}
+.p3-choice-eye svg{width:18px;height:18px}
+.p3-custom-q{font-size:14px;font-weight:700;color:#fff;margin:16px 0 8px;text-align:left}
+.p3-custom-q.selected{color:#c9a6ff}
+.p3-custom-q .p3-choice-eye{vertical-align:middle;margin-left:6px}
+.p3-choice-nut{margin:0 0 10px;font-size:14px;line-height:1.6;color:#E8E8EC}
 </style>
 <section class="p3-step" id="step-names" data-key="names" hidden>
 <div class="p3-naya p3-naya-flank" data-top="names"><span class="p3-flank-side p3-flank-left">
@@ -699,22 +775,14 @@ textarea.visionin{padding:10px}
 </div>
 </div>
 
-<div class="p3-howto" id="howtoModal" hidden role="dialog" aria-modal="true" aria-labelledby="howtoTitle">
+<div class="p3-howto" id="choiceModal" hidden role="dialog" aria-modal="true" aria-labelledby="choiceTitle">
 <div class="p3-howto-card">
-<button class="p3-howto-close" id="howtoClose" type="button" aria-label="Close">×</button>
-<h2 id="howtoTitle">How to answer</h2>
-<p class="p3-howto-q" id="howtoQ"></p>
-<ol class="p3-howto-ways">
-<li><b>Type in the box</b> — just write it in your own words.</li>
-<li><b>Dictate</b> — tap Speak and it writes out what you say as you speak. You can edit the words after.</li>
-<li><b>Ask Naya, your AI,</b> to write it in your own words — share with them, then copy it in here if you want. Copy-paste from your AI, dictate, or type it — it is up to you.</li>
-</ol>
-<p class="p3-howto-ex-label">Examples of a good answer — tap one to put it in the box, then make it your own:</p>
-<div class="p3-howto-examples" id="howtoExamples"></div>
-<p class="p3-howto-hint">Nothing here is fixed. Every word in the box is yours to change.</p>
+<button class="p3-howto-close" id="choiceClose" type="button" aria-label="Close">×</button>
+<h2 id="choiceTitle"></h2>
+<div id="choiceBody"></div>
+<p class="p3-howto-hint">Edit it in place, make it your own — then Enter.</p>
 </div>
 </div>
-
 <script>
 /* STAGING ONLY — walk-integrated.html. Everything below is the previews'
    byte-identical question script, generalized per step, plus the live
@@ -796,7 +864,6 @@ function showStatus(el, text){ if (el._t) clearTimeout(el._t); el.textContent = 
 function hideStatus(el){ if (el._t){ clearTimeout(el._t); el._t = null; } el.hidden = true; }
 
 /* --- per-step wiring: the preview script, scoped to one step --- */
-var playFromEye = false;
 function wireStep(sec, idx){
   var n = idx + 1, key = KEYS[idx];
   var answer = sec.querySelector('#answer-' + n);
@@ -808,6 +875,29 @@ function wireStep(sec, idx){
   var hintRow = sec.querySelector('#hintRow-' + n);
   var playBtn = sec.querySelector('#playBtn-' + n);
   if (S.answers[key]) answer.value = S.answers[key];
+  /* S2 (I) — the answer box is multiple choice: editing any choice (or the
+     Full Custom box) selects it, and Enter submits the selected one. An
+     untouched example is never an answer — only an edit counts. */
+  function selectChoice(boxEl){
+    sec.querySelectorAll('.p3-choice').forEach(function(c){ c.classList.remove('selected'); });
+    var cq = sec.querySelector('.p3-custom-q'); if (cq) cq.classList.remove('selected');
+    if (boxEl) boxEl.classList.add('selected'); else if (cq) cq.classList.add('selected');
+  }
+  sec.querySelectorAll('.p3-choice-text').forEach(function(cb){
+    cb.addEventListener('input', function(){
+      selectChoice(cb.closest('.p3-choice'));
+      S.answers[key] = cb.value; save(); hideStatus(speakNote); hideStatus(enterNote);
+    });
+  });
+  sec.querySelectorAll('.p3-choice-eye').forEach(function(btn){
+    btn.addEventListener('click', function(){ openChoiceEye(idx, btn.getAttribute('data-eye').split('-')[1]); });
+  });
+  (function restoreChoice(){
+    if (!S.answers[key]) return;
+    var hit = null;
+    sec.querySelectorAll('.p3-choice-text').forEach(function(cb){ if (cb.value === S.answers[key]) hit = cb.closest('.p3-choice'); });
+    selectChoice(hit);
+  })();
 
   hintRow.addEventListener('click', function(e){
     var b = e.target.closest('.p3-hint'); if (!b) return;
@@ -817,8 +907,7 @@ function wireStep(sec, idx){
     playBtn.classList.remove('show');
     if (!was) b.classList.add('show');
     var act = b.getAttribute('data-act');
-    if (act === 'play'){ openHowTo(idx); }
-    else if (act === 'dictate'){ startDictation(); }
+    if (act === 'dictate'){ startDictation(); }
     else if (act === 'focus'){ answer.focus(); }
     else if (act === 'paste'){ pasteIntoBox(); }
     else if (act === 'submit'){ submitAnswer(); }
@@ -865,7 +954,7 @@ function wireStep(sec, idx){
       var out = recBase;
       if (recFinal) out = out ? out + ' ' + recFinal : recFinal;
       if (interim.trim()) out = out ? out + ' ' + interim.trim() : interim.trim();
-      answer.value = out;
+      answer.value = out; selectChoice(null);
       S.answers[key] = answer.value; save();
     };
     rec.onerror = function(){ rec = null; speakBtn.classList.remove('live'); showStatus(speakNote, "Couldn't hear that — try again, or type it in."); };
@@ -873,7 +962,7 @@ function wireStep(sec, idx){
     try { rec.start(); } catch(err){ rec = null; speakBtn.classList.remove('live'); showStatus(speakNote, "Speaking couldn't start here — type it in instead."); }
   }
   speakBtn.addEventListener('click', startDictation);
-  answer.addEventListener('input', function(){ S.answers[key] = answer.value; save(); hideStatus(speakNote); hideStatus(enterNote); });
+  answer.addEventListener('input', function(){ selectChoice(null); S.answers[key] = answer.value; save(); hideStatus(speakNote); hideStatus(enterNote); });
   answer.addEventListener('focus', function(){ hideStatus(speakNote); hideStatus(enterNote); });
 
   function submitAnswer(){
@@ -899,7 +988,7 @@ function wireStep(sec, idx){
   function pasteIntoBox(){
     if (navigator.clipboard && navigator.clipboard.readText){
       navigator.clipboard.readText().then(function(t){
-        if (t){ answer.value = answer.value ? (answer.value.trimEnd() + ' ' + t) : t; S.answers[key] = answer.value; save(); }
+        if (t){ answer.value = answer.value ? (answer.value.trimEnd() + ' ' + t) : t; selectChoice(null); S.answers[key] = answer.value; save(); }
         answer.focus();
       }).catch(function(){ answer.focus(); });
     } else { answer.focus(); }
@@ -1000,78 +1089,6 @@ function wireNames(sec){
 }
 
 
-/* S2 (I) — How to answer: the eye hint opens a pop-up with the three ways
-   + three examples per question (A/B/C). Tapping an example puts its text
-   in the box; the box stays editable, the citizen makes it their own.
-   Examples are crafted in plain words, one set per question, never pasted. */
-var HOWTO_EXAMPLES = {
-  about: ["I am a mum of two who loves cooking for my family and helping my neighbours.",
-    "I am a builder. I fix things, I make things, and I love seeing an idea become real.",
-    "I am a quiet person with big dreams. I love music, long walks, and learning new things."],
-  into: ["I am into gardening because watching things grow makes me feel calm and proud.",
-    "I love football because it brings my friends together every single week.",
-    "I am into making videos because I love telling stories that make people smile."],
-  vision: ["A world where every child has a safe place to learn and play.",
-    "A neighbourhood where everyone knows each other and helps each other out.",
-    "A life where I work for myself and spend more time with my family."],
-  mission: ["To help ten families in my street start their own small business.",
-    "To teach young people the skills I wish someone had taught me.",
-    "To make healthy food simple and cheap for busy parents."],
-  motto: ["Do the best you can, with what you have, where you are.",
-    "Small steps every day beat big plans that never start.",
-    "Be kind, work hard, and share what you learn."],
-  goal: ["To own my own home and give my children a safe place to grow up.",
-    "To earn enough from my own work that I never have to ask for a job again.",
-    "To travel to three new countries and learn how other people live."],
-  biz_do: ["I bake cakes for birthdays and weddings in my town.",
-    "I fix phones and laptops for people in my area.",
-    "I cut hair and make people feel good about themselves."],
-  biz_offer: ["Fresh cakes made to order, delivered to your door on the day.",
-    "Fast, honest phone repairs with a price agreed before I start.",
-    "Haircuts, colours and styles for the whole family at fair prices."],
-  biz_building: ["I am building a small bakery. The goal is twenty regular customers by Christmas.",
-    "I am building a repair shop online. The goal is to help one hundred people this year.",
-    "I am building a hair studio from my home. The goal is a full book of clients."],
-  space: ["A warm, friendly space where local mums meet, share tips and support each other.",
-    "A makers' space where builders show their work and help each other get better.",
-    "A quiet online space where learners meet kind teachers and grow together."]
-};
-var HOWTO_LETTERS = ['A', 'B', 'C'];
-function openHowTo(idx){
-  var modal = document.getElementById('howtoModal');
-  var q = document.getElementById('howtoQ');
-  var ex = document.getElementById('howtoExamples');
-  var key = KEYS[idx];
-  var stepQ = STEPS[idx].querySelector('.p3-question');
-  q.textContent = stepQ ? stepQ.textContent : '';
-  ex.innerHTML = '';
-  (HOWTO_EXAMPLES[key] || []).forEach(function(txt, i){
-    var b = document.createElement('button');
-    b.type = 'button'; b.className = 'p3-howto-example';
-    b.innerHTML = '<b>' + HOWTO_LETTERS[i] + '.</b> ';
-    b.appendChild(document.createTextNode(txt));
-    b.addEventListener('click', function(){
-      var ans = document.getElementById('answer-' + (idx + 1));
-      if (ans) { ans.value = txt; S.answers[key] = txt; save(); }
-      closeHowTo();
-      if (ans) ans.focus();
-    });
-    ex.appendChild(b);
-  });
-  modal.hidden = false;
-}
-function closeHowTo(){
-  var modal = document.getElementById('howtoModal');
-  if (modal) modal.hidden = true;
-}
-(function wireHowTo(){
-  var modal = document.getElementById('howtoModal');
-  var close = document.getElementById('howtoClose');
-  if (close) close.addEventListener('click', closeHowTo);
-  if (modal) modal.addEventListener('click', function(e){ if (e.target === modal) closeHowTo(); });
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeHowTo(); });
-})();
-
 
 /* S2 (B4) — the eye on each names board opens what that page entails.
    Same modal shell as How-to-answer; content is per-board, plain words. */
@@ -1114,6 +1131,50 @@ function closeBoard(){
   if (sec) sec.querySelectorAll('.p3-nc-eye').forEach(function(btn){
     btn.addEventListener('click', function(){ openBoard(btn.getAttribute('data-board')); });
   });
+})();
+
+var CHOICE_EYES = {"about": [["Naya's vow voice \u2014 who she is, in her own words.", "It says who you are plainly, so people trust you at once.", "It fills your Personal page \u2014 the first thing people read about you.", "You sound certain, and people believe you."], ["Naya's mission voice \u2014 the new net, in one line.", "It tells people what you are building, not just who you are.", "It fills your Personal page and points at your Business page.", "People see the big picture \u2014 and want in."], ["Naya's wise-one voice \u2014 how she decides, in her words.", "It shows how you think, which is what people really want to know.", "It fills your Personal page with the way you work.", "You come across as wise, not just smart."]], "into": [["Naya's vow voice \u2014 minds together, working as one.", "It names your thing and the reason behind it.", "It fills your Personal page and your Space \u2014 the people you want around you.", "The right people recognize themselves in it."], ["Naya's mission voice \u2014 the chat network, plain and simple.", "It paints the picture: talk about anything, with your people.", "It fills your Space \u2014 the place where the talking happens.", "People can see themselves in the room already."], ["Naya's wise-one voice \u2014 the work done for you.", "It promises the outcome, not the effort.", "It fills your Personal page and explains the auto-match.", "People understand the magic at once."]], "vision": [["Naya's vow voice \u2014 ten stars, for everyone.", "A vision should be a feeling people want to live in.", "It fills your Personal page as your vision.", "People feel what you are building before they understand it."], ["Naya's mission voice \u2014 the new net, named.", "It makes the vision concrete: a real thing, not a dream.", "It fills your Personal page and your Business page.", "People can point at it and say: that, I want that."], ["Naya's wise-one voice \u2014 no more searching.", "It names the pain (searching) and the cure (being found).", "It fills your Personal page with the reason the system exists.", "People who are tired of searching feel seen."]], "mission": [["Naya's vow voice \u2014 the promise, kept.", "A mission is a promise you can be measured by.", "It fills your Personal page as your mission.", "People know exactly what to expect from you."], ["Naya's mission voice \u2014 income for everybody.", "It says who benefits: everybody, including the reader.", "It fills your Business page \u2014 the work that pays.", "People hear 'a share for us all' and lean in."], ["Naya's wise-one voice \u2014 serve the whole.", "It sets the bar: not the fastest road, the right destination.", "It fills your Personal page with your standard.", "People trust a mission that serves everyone."]], "motto": [["Naya's vow voice \u2014 short, certain, hers.", "A motto should fit in one breath and hold all year.", "It fills your Personal page as your motto.", "People remember you by it."], ["Naya's mission voice \u2014 the one app, in one line.", "It makes the big idea small enough to carry.", "It fills your Personal page and opens every door.", "People get the whole system in one breath."], ["Naya's wise-one voice \u2014 the line she lives by.", "It is the difference between smart and wise, in one sentence.", "It fills your Personal page as your motto.", "People quote it \u2014 and quote you with it."]], "goal": [["Naya's vow voice \u2014 the ultimate, named.", "A goal should scare you a little and pull you forward.", "It fills your Personal page as your goal.", "People see someone aiming at ten, not at enough."], ["Naya's mission voice \u2014 the net, live.", "It turns the goal into a finish line people can see.", "It fills your Business page \u2014 the work the goal is made of.", "People want to help build it."], ["Naya's wise-one voice \u2014 wiser every day.", "It says the goal is growth, not arrival.", "It fills your Personal page with how you grow.", "People trust someone who keeps learning."]], "biz_do": [["Naya's vow voice \u2014 done for you.", "It says what you do and what they get, in one breath.", "It fills your Business page \u2014 what you do.", "People hear 'done for you' and relax."], ["Naya's mission voice \u2014 the one app, described.", "It names the thing and its doors, so people can walk in.", "It fills your Business page with the whole system.", "People see where they fit."], ["Naya's wise-one voice \u2014 think, choose, prove.", "It shows your method, which is your real product.", "It fills your Business page with how you work.", "People trust work that is proven, not claimed."]], "biz_offer": [["Naya's vow voice \u2014 service on a platter.", "An offer should list what they get, plainly.", "It fills your Business page \u2014 what you offer.", "People can say yes without asking what it is."], ["Naya's mission voice \u2014 everything, connected.", "It sells the whole, not a piece.", "It fills your Business page with the full offer.", "People see one thing to join, not ten things to learn."], ["Naya's wise-one voice \u2014 matched, not searched.", "It names the pain you remove: the searching.", "It fills your Business page and your Space.", "People feel the relief before they pay."]], "biz_building": [["Naya's vow voice \u2014 building the new net.", "It states the build and the goal in one breath.", "It fills your Business page \u2014 what you are building.", "People can join something being built, not just buy something built."], ["Naya's mission voice \u2014 the world talking.", "It paints the room people are joining.", "It fills your Business page and your Space.", "People can already hear the conversation."], ["Naya's wise-one voice \u2014 the machine that learns.", "It promises compounding: better tomorrow than today.", "It fills your Business page with the engine.", "People invest in something that grows."]], "space": [["Naya's vow voice \u2014 wise minds, warm room.", "A space is its people; this names them.", "It fills your Space \u2014 who gathers there.", "The right people walk in; the wrong ones walk past."], ["Naya's mission voice \u2014 the thing, with its people.", "It gives the space a topic and a purpose.", "It fills your Space with what happens there.", "People into your thing find their room."], ["Naya's wise-one voice \u2014 found, not searched.", "It promises the meeting, not the hunt.", "It fills your Space with the match itself.", "People arrive already belonging."]]};
+var CUSTOM_WAYS = ["Copy it in from your AI \u2014 share with your AI, let it write it for you, copy it in.", "Dictate \u2014 tap Speak and it writes what you say as you speak. You can edit after.", "Or take one of the examples above and make it your own."];
+var CHOICE_LABELS = ['What it is', 'Why it matters', 'How it connects', "What's in it for you"];
+function openChoiceEye(idx, code){
+  var modal = document.getElementById('choiceModal');
+  var t = document.getElementById('choiceTitle');
+  var b = document.getElementById('choiceBody');
+  var key = KEYS[idx];
+  b.innerHTML = '';
+  if (code === 'custom') {
+    t.textContent = 'Full Custom';
+    var ol = document.createElement('ol'); ol.className = 'p3-howto-ways';
+    CUSTOM_WAYS.forEach(function(w, i){
+      var li = document.createElement('li');
+      li.innerHTML = '<b>' + (i + 1) + '.</b> ';
+      li.appendChild(document.createTextNode(w));
+      ol.appendChild(li);
+    });
+    b.appendChild(ol);
+  } else {
+    var li2 = ['A', 'B', 'C'].indexOf(code);
+    var nut = (CHOICE_EYES[key] || [])[li2] || [];
+    t.textContent = 'Choice ' + code;
+    nut.forEach(function(line, i){
+      var p = document.createElement('p'); p.className = 'p3-choice-nut';
+      p.innerHTML = '<b>' + CHOICE_LABELS[i] + ':</b> ';
+      p.appendChild(document.createTextNode(line));
+      b.appendChild(p);
+    });
+  }
+  modal.hidden = false;
+}
+function closeChoiceEye(){
+  var modal = document.getElementById('choiceModal');
+  if (modal) modal.hidden = true;
+}
+(function wireChoice(){
+  var modal = document.getElementById('choiceModal');
+  var close = document.getElementById('choiceClose');
+  if (close) close.addEventListener('click', closeChoiceEye);
+  if (modal) modal.addEventListener('click', function(e){ if (e.target === modal) closeChoiceEye(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeChoiceEye(); });
 })();
 
 /* --- building page wiring: done -> the end slide ("here's your pages"); retry re-fires the POST --- */
