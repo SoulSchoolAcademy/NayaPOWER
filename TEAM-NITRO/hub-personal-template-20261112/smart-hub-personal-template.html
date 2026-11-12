@@ -242,6 +242,12 @@ textarea.ph-field{min-height:84px;resize:vertical}
 .ph-cover{width:100%;height:460px;position:relative;overflow:hidden;cursor:pointer;
   background:linear-gradient(135deg,#1a1a3e 0%,#2d1b4e 30%,#4a2b7a 50%,#0f3460 75%,#16537e 100%);}
 .ph-cover img{width:100%;height:100%;object-fit:cover;display:block;position:relative;}
+/* The dark bottom gradient (Personal's .ph-cover::after) — the name, tagline
+   and row sit on the cover's lower band, and without it the white words wash
+   out against the bright image. It sits above the image and the tabs (z 10/11)
+   but below the head (z 6, positioned, later in the DOM). */
+.ph-cover::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent 50%,rgba(5,5,7,.8) 100%);}
 /* The WINNING cover rule (later in Personal's file — the 460px above never
    renders): height from the 16/9 band, capped at min(55vh,600px). At 1440x844
    that is 464px; the phone rule below forces 420px. */
@@ -319,6 +325,10 @@ textarea.ph-field{min-height:84px;resize:vertical}
 
 /* --- Quick tabs (Personal .mw-cover-mships / .mw-mship-btn family) --- */
 .mw-cover-mships{position:absolute;top:76px;left:16px;z-index:11;display:flex;flex-direction:column;gap:10px;max-width:min(320px,72vw)}
+/* Phone: the tabs ride the cover's top strip (top:6px), clear of the row —
+   the row is clean at 390 and the tabs overlap the name/tagline instead,
+   exactly as on live Personal. */
+@media (max-width:640px){.mw-cover-mships{top:6px;left:10px;gap:8px}}
 .mw-mship-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;
   font-size:14px;font-weight:800;letter-spacing:.02em;color:#fff;text-decoration:none;cursor:pointer;
   background:linear-gradient(180deg,rgba(10,10,16,.82),rgba(10,10,16,.66));
