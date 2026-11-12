@@ -204,8 +204,11 @@ jobs:
           ids=json.load(open(f"fresh-lesson-lineage-ids{sfx}.json"))
           json.dump({"mode":"verify",**ids},open(f"registry-verify-request{sfx}.json","w"))
           PY
-                if ! curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"registry-verify-request${sfx}.json" "$RUNTIME_FUNCTION" > "registry-runtime-verification${sfx}.json"; then
-                  echo "REGISTRY_RUNTIME_VERIFY_UNAVAILABLE${sfx}"
+                if ! verify_http_code="$(curl -sS --connect-timeout 10 --max-time 30 -o "registry-runtime-verification${sfx}.json" -w '%{http_code}' -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"registry-verify-request${sfx}.json" "$RUNTIME_FUNCTION" 2>"registry-verify-stderr${sfx}.txt")"; then
+                  echo "REGISTRY_RUNTIME_VERIFY_CURL_FAILED${sfx}: $(cat "registry-verify-stderr${sfx}.txt")"
+                  capture_ok=0
+                elif [[ ! "$verify_http_code" =~ ^2[0-9][0-9]$ ]]; then
+                  echo "REGISTRY_RUNTIME_VERIFY_HTTP_${verify_http_code}${sfx}: $(python3 -c 'import json,re,sys; o=json.load(open(sys.argv[1])); raw=str(o.get("error") or o.get("reason") or o.get("message") or ""); code=str(o.get("code") or ""); m=re.search(r"\"message\"\s*:\s*\"([A-Z][A-Z0-9_:-]{2,96})\"",raw); token=m.group(1) if m else (raw if re.fullmatch(r"[A-Z][A-Z0-9_:-]{2,96}",raw) else "NON_MACHINE_ERROR"); print(json.dumps({"code":code[:32],"message":token}))' "registry-runtime-verification${sfx}.json")"
                   capture_ok=0
                 else
                   verify_only_flag=""
@@ -219,10 +222,15 @@ jobs:
                     capture_ok=0
                   elif [[ "$action" == "SUPERSEDE" ]]; then
                     python tools/live_intelligence_reconcile.py build-supersede --capture "$capture_path_in" --expected "smart-note-expected${sfx}.json" --verify "registry-runtime-verification${sfx}.json" --grant-id "$GRANT_ID" --out "supersede-request${sfx}.json"
-                    if curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"supersede-request${sfx}.json" "$RUNTIME_FUNCTION" > "supersede-response${sfx}.json"; then
-                      python tools/live_intelligence_reconcile.py validate-supersede --expected "smart-note-expected${sfx}.json" --old-verify "registry-runtime-verification${sfx}.json" --response "supersede-response${sfx}.json" --out "supersession-reconciliation${sfx}.json"
+                    if supersede_http_code="$(curl -sS --connect-timeout 10 --max-time 30 -o "supersede-response${sfx}.json" -w '%{http_code}' -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"supersede-request${sfx}.json" "$RUNTIME_FUNCTION" 2>"supersede-stderr${sfx}.txt")"; then
+                      if [[ "$supersede_http_code" =~ ^2[0-9][0-9]$ ]]; then
+                        python tools/live_intelligence_reconcile.py validate-supersede --expected "smart-note-expected${sfx}.json" --old-verify "registry-runtime-verification${sfx}.json" --response "supersede-response${sfx}.json" --out "supersession-reconciliation${sfx}.json"
+                      else
+                        echo "REGISTRY_RUNTIME_SUPERSESSION_HTTP_${supersede_http_code}${sfx}: $(python3 -c 'import json,re,sys; o=json.load(open(sys.argv[1])); raw=str(o.get("error") or o.get("reason") or o.get("message") or ""); code=str(o.get("code") or ""); m=re.search(r"\"message\"\s*:\s*\"([A-Z][A-Z0-9_:-]{2,96})\"",raw); token=m.group(1) if m else (raw if re.fullmatch(r"[A-Z][A-Z0-9_:-]{2,96}",raw) else "NON_MACHINE_ERROR"); print(json.dumps({"code":code[:32],"message":token}))' "supersede-response${sfx}.json")"
+                        capture_ok=0
+                      fi
                     else
-                      echo "REGISTRY_RUNTIME_SUPERSESSION_FAILED${sfx}"
+                      echo "REGISTRY_RUNTIME_SUPERSESSION_FAILED${sfx}: $(cat "supersede-stderr${sfx}.txt")"
                       capture_ok=0
                     fi
                   else
@@ -363,7 +371,11 @@ jobs:
           ids=json.load(open("fresh-lesson-lineage-ids.json"))
           json.dump({"mode":"verify",**ids},open("registry-verify-request.json","w"))
           PY
-            curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @registry-verify-request.json "$RUNTIME_FUNCTION" > registry-runtime-verification.json
+            verify_http_code="$(curl -sS --connect-timeout 10 --max-time 30 -o registry-runtime-verification.json -w '%{http_code}' -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @registry-verify-request.json "$RUNTIME_FUNCTION" 2>registry-verify-stderr.txt)" || { echo "REGISTRY_RUNTIME_VERIFY_CURL_FAILED: $(cat registry-verify-stderr.txt)"; exit 1; }
+            if [[ ! "$verify_http_code" =~ ^2[0-9][0-9]$ ]]; then
+              echo "REGISTRY_RUNTIME_VERIFY_HTTP_${verify_http_code}: $(python3 -c 'import json,re,sys; o=json.load(open(sys.argv[1])); raw=str(o.get("error") or o.get("reason") or o.get("message") or ""); code=str(o.get("code") or ""); m=re.search(r"\"message\"\s*:\s*\"([A-Z][A-Z0-9_:-]{2,96})\"",raw); token=m.group(1) if m else (raw if re.fullmatch(r"[A-Z][A-Z0-9_:-]{2,96}",raw) else "NON_MACHINE_ERROR"); print(json.dumps({"code":code[:32],"message":token}))' registry-runtime-verification.json)"
+              exit 1
+            fi
             verify_only_flag=""
             [[ "$(cat replay-mode.txt)" == "verify-only" ]] && verify_only_flag="--verify-only"
             python tools/live_intelligence_reconcile.py assess --expected smart-note-expected.json --verify registry-runtime-verification.json $verify_only_flag --out reconciliation-plan.json
@@ -375,7 +387,11 @@ jobs:
               exit 1
             elif [[ "$action" == "SUPERSEDE" ]]; then
               python tools/live_intelligence_reconcile.py build-supersede --capture "$capture_path" --expected smart-note-expected.json --verify registry-runtime-verification.json --grant-id "$GRANT_ID" --out supersede-request.json
-              curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @supersede-request.json "$RUNTIME_FUNCTION" > supersede-response.json
+              supersede_http_code="$(curl -sS --connect-timeout 10 --max-time 30 -o supersede-response.json -w '%{http_code}' -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @supersede-request.json "$RUNTIME_FUNCTION" 2>supersede-stderr.txt)" || { echo "REGISTRY_RUNTIME_SUPERSESSION_CURL_FAILED: $(cat supersede-stderr.txt)"; exit 1; }
+              if [[ ! "$supersede_http_code" =~ ^2[0-9][0-9]$ ]]; then
+                echo "REGISTRY_RUNTIME_SUPERSESSION_HTTP_${supersede_http_code}: $(python3 -c 'import json,re,sys; o=json.load(open(sys.argv[1])); raw=str(o.get("error") or o.get("reason") or o.get("message") or ""); code=str(o.get("code") or ""); m=re.search(r"\"message\"\s*:\s*\"([A-Z][A-Z0-9_:-]{2,96})\"",raw); token=m.group(1) if m else (raw if re.fullmatch(r"[A-Z][A-Z0-9_:-]{2,96}",raw) else "NON_MACHINE_ERROR"); print(json.dumps({"code":code[:32],"message":token}))' supersede-response.json)"
+                exit 1
+              fi
               python tools/live_intelligence_reconcile.py validate-supersede --expected smart-note-expected.json --old-verify registry-runtime-verification.json --response supersede-response.json --out supersession-reconciliation.json
             else
               echo "REGISTRY_RUNTIME_RECONCILIATION_UNKNOWN_ACTION: $action"
