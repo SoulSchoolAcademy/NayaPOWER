@@ -236,6 +236,9 @@ textarea.ph-field{min-height:84px;resize:vertical}
    Personal's header/navigation shape. */
 
 /* --- Cover + head (Personal .ph-cover/.ph-head family) --- */
+[data-block=cover]{position:relative}
+.ph-cover:has(>img){min-height:0}
+#cvr>img{height:100%}
 .ph-cover{width:100%;height:460px;position:relative;overflow:hidden;cursor:pointer;
   background:linear-gradient(135deg,#1a1a3e 0%,#2d1b4e 30%,#4a2b7a 50%,#0f3460 75%,#16537e 100%);}
 .ph-cover img{width:100%;height:100%;object-fit:cover;display:block;position:relative;}
@@ -244,6 +247,12 @@ textarea.ph-field{min-height:84px;resize:vertical}
   padding:12px 22px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;
   backdrop-filter:blur(12px);transition:all .2s;font-family:inherit;}
 .ph-head{display:flex;align-items:flex-end;gap:20px;padding:0 24px;margin-top:-70px;position:relative;z-index:5;flex-wrap:wrap;}
+/* The head is ABSOLUTE at the cover's bottom (Personal's shape — the name,
+   tagline and row sit on the cover's lower band, the avatar overlapping its
+   bottom edge). Scoped to [data-block=cover], which the header wrapper carries.
+   It outranks the base rule above AND the 768px rule below (specificity). */
+[data-block=cover] .ph-head{position:absolute;left:0;right:0;bottom:0;margin-top:0;padding:0 24px 20px;z-index:6}
+@media(max-width:768px){ .ph-head{padding:0 16px;} }
 .ph-avwrap{position:relative;flex-shrink:0}
 .ph-av{width:140px;height:140px;border-radius:50%;border:7px solid #050507;flex-shrink:0;
   background:linear-gradient(135deg,#a06bff,#e84fff);display:flex;align-items:center;justify-content:center;
@@ -268,6 +277,18 @@ textarea.ph-field{min-height:84px;resize:vertical}
   transform:translateY(-2px);background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.05) 45%,rgba(0,0,0,.22));}
 /* ADAPTED: text-decoration:none added to .up-act (all nine Hub row buttons are
    anchors; Personal's Join is an anchor too and carries it inline). */
+/* The WINNING row rules (Personal, live-measured at 1440: the row fits one
+   line — 7x~123 + Skills 90 + Join 220 + 8x8 gaps = 1232). The base 13.5px /
+   13px 18px above never renders: desktop and phone both override it. */
+@media(min-width:641px){
+  .up-actions{justify-content:center;gap:8px;align-items:center;}
+  .up-act{flex:1 1 110px;max-width:200px;font-size:12px;padding:12px 8px;}
+}
+@media(max-width:640px){
+  .up-act{flex:1 1 44%;font-size:12px;padding:12px 5px;letter-spacing:0;height:46px;}
+}
+/* Skills is the smallest by design (Personal #skillsbtn, verbatim). */
+#shSkills{flex:0 1 90px;max-width:100px;}
 /* Join, biggest (the Join law, 2026-11-12 16:27Z — Join stays at the END, biggest).
    Glow + ring harvested verbatim from Personal's #joinbtn; the SIZES are enlarged
    per the law, because the harvest file's Join sizing (flex 0 1 220px, 14px)
@@ -296,7 +317,6 @@ textarea.ph-field{min-height:84px;resize:vertical}
 .ph-dot{width:12px;height:12px;border-radius:50%;box-shadow:0 0 14px currentColor;}
 .os-jewel-h{width:28px;height:28px;font-size:14.5px;border-radius:8px;vertical-align:-7px;margin-right:3px}
 .os-wb-sub{ margin:0 0 14px; }
-.up-actions{justify-content:center;gap:8px;align-items:center;}
 .ph-info{flex:1;min-width:220px;}
 .os-note{font-size:13.5px;color:#E8E8EC;line-height:1.5;margin-top:8px}
 .ph-msg{background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.25);color:#fff;
@@ -393,6 +413,7 @@ body{padding-bottom:96px;}
      (replace SMART-HUB/smart-hub-cover.jpg on the branch). No text over the image —
      the title lives below it, in the heading. The menu is the smart tabs for this
      page, harvested verbatim from the smart-bar template. -->
+<div data-block="cover">
 <!-- ═══ PERSONAL TEMPLATE — the Hub on Personal's shape (2026-11-12) ═══
      Cover + corners + Change cover, logo + name + tagline, the button row
      relabeled for the Hub, the three left pills as quick tabs. Harvested
@@ -421,7 +442,7 @@ body{padding-bottom:96px;}
       <a class="up-act" style="--ac:#2fe89e" href="https://nayanet.app/#/hub/mail"><span>✉️&nbsp;Message</span></a>
       <a class="up-act" style="--ac:#ffbf3d" href="#about"><span>ⓘ&nbsp;About</span></a>
       <a class="up-act" style="--ac:#ff9a5a" href="#myworld"><span>🌍&nbsp;My World</span></a>
-      <a class="up-act" style="--ac:#ff5e6c" href="https://nayanet.app/smartfactory"><span>⭐&nbsp;Skills</span></a>
+      <a class="up-act" style="--ac:#ff5e6c" id="shSkills" href="https://nayanet.app/smartfactory"><span>⭐&nbsp;Skills</span></a>
       <a class="up-act" style="--ac:#e84fff" href="#people"><span>👥&nbsp;Connections</span></a>
       <a class="up-act" style="--ac:#a06bff" href="https://nayanet.app/#/hub/growth"><span>💌&nbsp;Invite</span></a>
       <button class="up-act" style="--ac:#3fb8ff" id="shShare" type="button"><span>↗&nbsp;Share</span></button>
@@ -429,6 +450,7 @@ body{padding-bottom:96px;}
       <button class="up-act" style="--ac:#e8e8ec" id="shSettings" type="button"><span>⚙️&nbsp;Settings</span></button>
     </div>
   </div>
+</div>
 </div>
 
 <nav class="sh-menu" aria-label="Smart Hub sections">
@@ -1201,8 +1223,11 @@ body{padding-bottom:96px;}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(location.href).then(done,done);}
     else{var t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(t);done();}});}
   function openRight(){var p=$('plusRight');if(p){p.click();}}
-  var st=$('shSettings');if(st){st.addEventListener('click',openRight);}
-  var mw=$('shMwSettings');if(mw){mw.addEventListener('click',openRight);}
+  /* stopPropagation: the v4 base closes panels on ANY document click outside
+     .ph-panel/.ph-plus — without it, this click opens the panel and the
+     document handler closes it in the same bubble. */
+  var st=$('shSettings');if(st){st.addEventListener('click',function(e){e.stopPropagation();openRight();});}
+  var mw=$('shMwSettings');if(mw){mw.addEventListener('click',function(e){e.stopPropagation();openRight();});}
   /* Trio: tap goes to the live Hub view; fade on scroll down, back on stop. */
   document.querySelectorAll('#naya-notif-bar .notif-seg').forEach(function(b){
     b.addEventListener('click',function(){var u=b.getAttribute('data-href');if(u)location.href=u;});});
