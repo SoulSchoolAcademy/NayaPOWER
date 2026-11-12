@@ -2172,7 +2172,14 @@
       ],
       "human_journey": "Cold Naya answers 14 questions and safely acts",
       "naya_journey": "Under authenticated Project Intelligence #3012 / Team Board #2793 scope: cold-orient to Machine 14-question orientation, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
-      "network_continuity_journey": "Show one source-linked event for project-14q in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
+      "network_continuity_journey": "Show one source-linked event for project-14q in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context.",
+      "status": "retired",
+      "retired_at": "2026-11-12T11:43:45Z",
+      "retired_by": "naya-power",
+      "retired_by_pi_item": "page-audit-projects-questions",
+      "retirement_reason": "Route /projects/questions.json has served HTTP 404 since the 2026-10-23 audit and no questions.json file was ever committed to the repo. The payload is defined as a derived, 900-second-freshness artifact (HUB/app/js/fourteen-questions.js) with no emitter in the repo, so a static restore would fail its own freshness contract. Nothing consumes the route. The 14-question orientation itself is not lost: it survives in NAYANODE/0020, NAYANODE/0023, SN-0834, and HUB/app/js/fourteen-questions.js.",
+      "retirement_evidence": "Live 404 re-confirmed 2026-11-12 at https://nayanet.app/projects/questions.json; git history shows no standalone questions.json ever committed; no consumer fetches the route. PI item page-audit-projects-questions, closed 2026-11-12 by naya-power; board #3066 comment same pass.",
+      "observed_finding_asof_2026_11_12": "HTTP 404 re-confirmed 2026-11-12; surface retired, entry preserved as the record."
     }
   ],
   "ten_star_experience_contract": {
