@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 12:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -39367,6 +39367,12 @@ _Last updated: 2026-11-12 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-lane-scorer-20261016-1340-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Q15-class hybrid follow-up: H1 lexical-penalty + H2 need-clause hybrids built pre-registered and run; both falsified with byte proof; two-channel Q15 mechanism proven by ablation
+
+**Evidence:** VERIFIED this tick on live bytes: all 8 sha256 pins in hidden_files/lane-5/gap-lane-scorer-20261016-1340/ match exactly (PRE-REGISTRATION.md 18e09f0585dd..., HYPOTHESIS-CHANGE.md 0e917ea624b8..., PRE-REGISTRATION-v2.md a5cb1843010a..., hybrid-arm.py dab4021b28c6..., hybrid-arm-v2.py b5a36ae210bf..., shim 47409e23dc7e..., both transcript JSONs). Pre
+
 ### ✅ gap-lane-scorer-20261018-1510 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** gap-followup
@@ -44876,6 +44882,12 @@ _Last updated: 2026-11-12 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ gap-lane-scorer-20261016-0740-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-window mismatch closed in claim-brief.py: GATE_WINDOW_LINES 10 -> 25, stamper parity 25, late-gate positive-control fixture, 4 suites green, live-queue no-regression scan
+
+**Evidence:** VERIFIED this tick on live bytes: claim-brief.py line 207 still GATE_WINDOW_LINES = 25 (comment cites this run, lane-scorer-20261016-0740); stamp-claimability-gate.py line 64 _WINDOW = 25; both --self-test GREEN this tick (claim-brief lift-stamp suite, stamper prose suite). Receipt's 2026-10-16 sha256 pins no longer match current bytes (files edite
 
 ### ✅ gap-gap-gap-gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12-lane12-lane12-lane12-lane12-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
