@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 08:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 09:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -44877,6 +44877,12 @@ _Last updated: 2026-11-12 08:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ gap-gap-gap-gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12-lane12-lane12-lane12-lane12-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Gap-gap-gap-gap-gap-gap follow-up on 1610: execute the F2 manual recovery end-to-end (backup -> file -> sha re-check) and prove the CRITICAL branch's recovery instruction by performance
+
+**Evidence:** VERIFIED this tick on live bytes: shipped safe-edit.py sha 1d4f4507e2eb6cac9003a3990aca567e13f1fde32fd9a7ef884d482d62f22411 == receipt claim exactly; template sha 970a886db9379f6bb830025a6026e1679e94c04d21aa24d703a08977b8c2c1ce == receipt claim exactly; runner sha d957847c0c73186867d63d44dfd96a4db91c59a75be2f8d6634600e64731889f == receipt claim exa
+
 ### ✅ gap-gap-gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12-lane12-lane12-lane12-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.4/10 [VERIFIED]
 
 **Task:** Gap-gap-gap-gap-gap follow-up on 1610: force-test the exit-3 auto-restore path in safe-edit.py by fault injection and prove the CRITICAL branch
@@ -50862,6 +50868,12 @@ _Last updated: 2026-11-12 08:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261112-0054 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 2026-11-12 00:54 PST: full claim sweep over all 28 unclaimed briefs, 0 claimed (26x exit 7 parent-authorship, 2x exit 2 routing-prose), zero delta vs 23:52 stall receipt
+
+**Evidence:** VERIFIED this tick: sweep log hidden_files/claim-sweep-20261112-0054.log exists on disk; 28 unclaimed brief-*.md files on disk == receipt's 28; rotation queued=28 now matches disk (prior tick's 27-vs-29 drift resolved); log counts reconcile (26 per-brief exit 7 + 1 summary line, 2 per-brief exit 2 + 1 summary line); prior stall receipt gate-stall-2
 
 ### ✅ gate-stall-20261111-2352 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
