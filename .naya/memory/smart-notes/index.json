@@ -44064,15 +44064,64 @@
       "page_hash": null,
       "capture_file": ".naya/capture/SMART-NOTE-20261112-sn9999-retirement-superseded.json",
       "lifecycle_state": "ACTIVE"
+    },
+    {
+      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn9998-live-fire-test-lifecycle",
+      "title": "SN-9998 — retired test fixture, superseded (lifecycle record)",
+      "captured_at": "2026-11-12",
+      "category": "SYSTEM",
+      "topic": "LIFECYCLE",
+      "subtopic": "TEST-FIXTURE-SUPERSEDED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_status": null,
+      "smart_link_status": null,
+      "projection_policy": "No projection: a retired test fixture is never projected to the BRAIN. The capture file is the record; the runtime block is the machine source of truth.",
+      "keywords": [
+        "retired test fixture",
+        "superseded",
+        "lifecycle record",
+        "SN-9998",
+        "supersession"
+      ],
+      "provenance": {
+        "event_id": "df526e69-e89b-4570-90dc-2802dbe6df50",
+        "lineage_id": "011ce75a-df50-4cb9-a8ee-9e10dac457a6",
+        "relationship_id": "3571c502-640b-4633-a8b4-9da32f667fac",
+        "runtime_index_id": "328f851c-2c34-4ca6-ae19-1a17f2b19f47",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "660a66fe-1f96-43e6-a8a2-2120fb6eb42c",
+        "checkpoint_semantics": "MUTABLE_PROJECT_STATE_POINTER",
+        "historical_checkpoint_binding": "EXECUTION_RECEIPT_EVIDENCE",
+        "note": "The project cognition-state row advances in place; historical Smart Note verification must use object-local execution receipt evidence for lineage binding.",
+        "content_hash_note": "2026-11-12: content_hash is the digest of the SUCCESSOR capture's intelligence field (sha256 of json.dumps(sort_keys=True, separators=(',', ':'), ensure_ascii=False)) — the digest the workflow matches to fire the supersede of the fixture's block. Provenance below is the FIXTURE's lineage, recovered first-hand (brief SS3)."
+      },
+      "reconciliation": null,
+      "smart_link": null,
+      "canonical_brain_path": null,
+      "captured_at_utc": "2026-11-12T08:44:30Z",
+      "viewer": null,
+      "publication_scope": "PRIVATE",
+      "canonical_block_scope": "PRIVATE",
+      "private_runtime_link": "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-smart-note-viewer?ib=IB-SMART-NOTE-20261022-sn9998-live-fire-test-lifecycle",
+      "smart_note_id": "SN-9998",
+      "timestamp_role": "PROVENANCE_ONLY",
+      "projection_path": null,
+      "smart_link_verified_at": null,
+      "smart_link_verified_rev": null,
+      "content_hash": "866c6b8fca246114d23100d34b53cf24a67ae0a3d8ecdce0942e3bbaf3dc5bc4",
+      "page_hash": null,
+      "capture_file": ".naya/capture/SMART-NOTE-20261112-sn9998-retirement-superseded.json",
+      "lifecycle_state": "ACTIVE"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 2691,
+    "next_sequence": 2692,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "a73f870538c04549b6c8201a8baa291642843f5885cc705344195c56671d0f66"
+  "corpus_manifest_hash": "0b75628f9d022b340a1be9574496d7adc8d2fbbfb348969e19eb7c7641b90ddf"
 }
