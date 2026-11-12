@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 05:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 06:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -50764,6 +50764,12 @@ _Last updated: 2026-11-12 05:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261111-2133 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Lane-executor stall run 2026-11-11 21:28 PST: evaluate all 27 unclaimed briefs, 0 claimed (26x exit 7, 1x exit 2), queue untouched, zero delta vs 20:03 stall
+
+**Evidence:** Verified this tick on live bytes: (1) brief-queue/ holds exactly 27 brief-*.md files, 0 brief-tNNNN-*, and the set matches the receipt's 27 listed briefs exactly (symdiff empty); (2) sweep log hidden_files/claim-sweep-20261111-2133.log exists (3,220 B) with a totals line confirming 27 attempts, 0 claimed, 26 x exit 7 + 1 x exit 2, and per-brief lin
 
 ### ✅ distill-feed-3066-20261112 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
 
