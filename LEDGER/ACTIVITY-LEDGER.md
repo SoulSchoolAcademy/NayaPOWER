@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 15:23 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 15:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -50948,6 +50948,12 @@ _Last updated: 2026-11-12 15:23 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### 🟡 gate-stall-20261112-0726 — Team 0, Team Naya Scorer (?) — 5.5/10 [PARTIAL]
+
+**Task:** Gate-stall receipt 2026-11-12 07:26 PST: full claim sweep over 28 unclaimed briefs, 0 claimed
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file twelve-lane-receipts/gate-stall-20261112-0726.md exists (4,458 bytes, written 15:27:03 UTC); its 28 named briefs match the 28 brief-*.md files in brief-queue/ exactly (diff empty); rotation queued=28; the two exit-2 briefs named (brief-gap-gap-gap-t0547-lane1-lane1.md, brief-gap-gap-gap-gap-t0172-lane1
 
 ### 🟡 gate-stall-20261112-0618 — Team 0, Team Naya Scorer (?) — 6.0/10 [PARTIAL]
 
