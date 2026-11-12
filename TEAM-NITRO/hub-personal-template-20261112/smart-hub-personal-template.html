@@ -261,7 +261,15 @@ textarea.ph-field{min-height:84px;resize:vertical}
    bottom edge). Scoped to [data-block=cover], which the header wrapper carries.
    It outranks the base rule above AND the 768px rule below (specificity). */
 [data-block=cover] .ph-head{position:absolute;left:0;right:0;bottom:0;margin-top:0;padding:0 24px 20px;z-index:6}
-@media(max-width:768px){ .ph-head{padding:0 16px;} }
+@media(max-width:768px){
+  .ph-head{padding:0 16px;}
+  /* The WINNING phone head padding (later in Personal's file, same
+     specificity as the absolute rule above, so it wins): 16px sides, 16px
+     bottom — the 342px... 358px content fits avatar 110 + info 220 side by
+     side, so the head stays 407px tall inside the 420px cover. */
+  [data-block=cover] .ph-head{padding:0 16px 16px}
+  .ph-av{width:110px;height:110px;font-size:40px;}
+}
 .ph-avwrap{position:relative;flex-shrink:0}
 .ph-av{width:140px;height:140px;border-radius:50%;border:7px solid #050507;flex-shrink:0;
   background:linear-gradient(135deg,#a06bff,#e84fff);display:flex;align-items:center;justify-content:center;
@@ -304,7 +312,7 @@ textarea.ph-field{min-height:84px;resize:vertical}
    predates the Personal seat's F1–F7 landing and is not yet the biggest. */
 #shJoin{flex:0 1 300px;max-width:340px;font-size:16px;padding:14px 24px;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 0 0 1.5px rgba(47,232,158,.9),0 0 28px rgba(47,232,158,.45),0 8px 22px rgba(0,0,0,.5);}
-@media(max-width:760px){#shJoin{flex:1 1 100%;font-size:14px;padding:12px 8px;}}
+@media(max-width:640px){#shJoin{order:9;flex:1 1 100%;font-size:13px;padding:12px 8px;letter-spacing:0;}}
 
 /* --- Quick tabs (Personal .mw-cover-mships / .mw-mship-btn family) --- */
 .mw-cover-mships{position:absolute;top:76px;left:16px;z-index:11;display:flex;flex-direction:column;gap:10px;max-width:min(320px,72vw)}
