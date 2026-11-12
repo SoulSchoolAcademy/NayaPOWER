@@ -13122,6 +13122,19 @@ window.NayaSmartBar = {
     renderTopSet();
     tInner.appendChild(tRow);
     top.appendChild(tInner);
+    /* compact on scroll — the stack slims, both levels stay */
+    var compactAt = 120;
+    var topstack = document.getElementById('nsbTopstack');
+    window.addEventListener('scroll', function(){
+      topstack.classList.toggle('nsb-compact', window.scrollY > compactAt);
+    }, {passive:true});
+    /* R2 FIX 1 (2026-11-07): the autonomous marquee is OFF — drift() is no
+       longer started on either strip. The active tab is snapped into view
+       once and held; the visitor still scrolls/swipes the row by hand.
+       drift() stays defined (Settings keeps its stored speed value). */
+    try { var _at = tRow.querySelector('.nsb-tab.active') || tRow.querySelector('.nsb-tab'); if (_at) _at.scrollIntoView({behavior:'auto', block:'nearest', inline:'nearest'}); } catch(e){}
+    try { tRow.scrollLeft=0; } catch(e){} /* FIX-8c D1: Home first visible on first paint — the strip never loads mid-set */
+
     } /* end ROUND 6 if (top) — the top bar is gone; the search level below runs whether or not the bar exists. */
 
     /* ROUND 6 — SEARCH LEVEL, moved out of the top section: the popup search + the below-cover search row both drive this machinery, and they exist without a top bar. */
@@ -13191,19 +13204,6 @@ window.NayaSmartBar = {
        part below the cover drives this exact machinery — same index,
        same results dropdown, same behavior. Shared bar source untouched. */
     sLevel._nsbBridge = { run: runSearch, input: sInput, results: results, field: sField };
-    /* compact on scroll — the stack slims, both levels stay */
-    var compactAt = 120;
-    var topstack = document.getElementById('nsbTopstack');
-    window.addEventListener('scroll', function(){
-      topstack.classList.toggle('nsb-compact', window.scrollY > compactAt);
-    }, {passive:true});
-    /* R2 FIX 1 (2026-11-07): the autonomous marquee is OFF — drift() is no
-       longer started on either strip. The active tab is snapped into view
-       once and held; the visitor still scrolls/swipes the row by hand.
-       drift() stays defined (Settings keeps its stored speed value). */
-    try { var _at = tRow.querySelector('.nsb-tab.active') || tRow.querySelector('.nsb-tab'); if (_at) _at.scrollIntoView({behavior:'auto', block:'nearest', inline:'nearest'}); } catch(e){}
-    try { tRow.scrollLeft=0; } catch(e){} /* FIX-8c D1: Home first visible on first paint — the strip never loads mid-set */
-
     /* ----- BOTTOM BAR ----- */
     var bottom = document.getElementById('nsbBottom');
     bottom.innerHTML = '';
