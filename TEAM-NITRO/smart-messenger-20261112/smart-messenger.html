@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Messenger — NayaNET</title>
+<!--
+  SMART MESSENGER — new app, staged only (2026-11-12, Shawn 19:27Z).
+  Harvested, never invented:
+  - Page shape cover -> menu -> page + .ph-cover + .notif-bar trio (Mail blue /
+    Activity green / Spaces gold, count bubbles, 9+ cap) from
+    personal-feed-creator.html (sha aa93485b643139327489e05310a63bb684ff6289c6f22ca91175a0a3a4842295).
+  - Orb: initial by default, spinning, alive — .porb from the same file, the
+    Connections-room orb pattern (initial by default, never a face).
+  - Organizer tabs .org-tabs / .org-tab VERBATIM from the infinite-feeds page
+    (the Smart Organizer's scrolling topic pills).
+  - Install veil #installVeil + #installGo + #installLater ("Not now") + #installX
+    from the live identity page's install pattern (identity-fixed.html).
+  - Picker shape: Smart Search -> list with match % -> pick -> instant message
+    (Shawn 17:21Z dictation, live on Personal).
+  STUBS (named, live path owed): the people dataset below is SAMPLE data in the
+  page's own shape (initial, name, nutshell, match %) — no sample person is a
+  real citizen. Live path owed: the Smart Organizer's tabs + the Auto-Match
+  engine's people, and the real-time socket/push for send/receive. The live
+  store listing for install is owed; the veil shows the manual install steps.
+-->
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:#050507;color:#F5F7FB;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#c4a8ff}
+button{font-family:inherit}
+img{max-width:100%}
+/* --- COVER: .ph-cover harvested verbatim in shape (Personal page) --- */
+.ph-cover{width:100%;height:340px;max-height:55vh;position:relative;overflow:hidden;
+  background:radial-gradient(560px 240px at 12% -10%,rgba(160,107,255,.5),transparent 60%),radial-gradient(700px 300px at 88% 0%,rgba(63,184,255,.35),transparent 60%),linear-gradient(135deg,#1a1a3e 0%,#2d1b4e 30%,#4a2b7a 50%,#0f3460 75%,#16537e 100%)}
+.ph-cover::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 45%,rgba(5,5,7,.85) 100%)}
+.ph-cover-inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px}
+.ph-cover-inner h1{margin:0;font-size:44px;font-weight:800;letter-spacing:.2px;text-shadow:0 4px 24px rgba(0,0,0,.6)}
+.ph-cover-inner p{margin:10px 0 0;font-size:16px;color:rgba(245,247,251,.85);max-width:560px;line-height:1.5}
+.ph-plus{position:absolute;top:16px;z-index:5;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.45);color:#fff;background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);display:grid;place-items:center;font-size:24px;font-weight:700;cursor:pointer;box-shadow:inset 0 1px rgba(255,255,255,.25),0 8px 20px rgba(0,0,0,.55);transition:box-shadow .2s,border-color .2s,transform .2s}
+.ph-plus:hover{border-color:#e84fff;box-shadow:0 0 26px rgba(232,79,255,.65),0 10px 22px rgba(0,0,0,.6);transform:translateY(-2px)}
+.ph-plus.left{left:16px}.ph-plus.right{right:16px}
+/* --- MENU BAR under the cover --- */
+.menu-bar{display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;padding:12px 14px;background:#08080c;border-bottom:1px solid rgba(255,255,255,.09);box-shadow:0 10px 24px rgba(0,0,0,.5);position:relative;z-index:3}
+.menu-bar a,.menu-bar button.menu-item{color:#E8E8EC;text-decoration:none;font-size:14px;font-weight:700;padding:10px 16px;border-radius:999px;border:1px solid transparent;background:none;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.35);transition:box-shadow .2s,border-color .2s,background .2s}
+.menu-bar a:hover,.menu-bar button.menu-item:hover{border-color:#a06bff;box-shadow:0 0 22px rgba(160,107,255,.55),0 8px 18px rgba(0,0,0,.55);background:rgba(160,107,255,.12)}
+.menu-bar a.active{border-color:#e84fff;background:#17102a;box-shadow:0 0 24px rgba(232,79,255,.5),0 8px 18px rgba(0,0,0,.55)}
+/* --- PAGE --- */
+.ph-main{padding:26px 22px 150px;max-width:1280px;margin:0 auto}
+.page-head{text-align:center;margin:4px 0 18px}
+.page-head h2{margin:0;font-size:28px;font-weight:800}
+.page-head p{margin:8px 0 0;font-size:15px;color:rgba(245,247,251,.75)}
+/* --- ORGANIZER TABS: harvested VERBATIM (infinite-feeds / Smart Organizer) --- */
+.org-tabs{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 14px;scrollbar-width:thin}
+.org-tabs::-webkit-scrollbar{height:6px}
+.org-tabs::-webkit-scrollbar-thumb{background:rgba(160,107,255,.5);border-radius:3px}
+.org-tab{flex:0 0 auto;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.3);background:#0a0a0f;color:#fff;font-size:13px;font-weight:700;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 6px 16px rgba(0,0,0,.5);transition:transform .2s,box-shadow .2s,border-color .2s;white-space:nowrap}
+.org-tab small{color:#c4a8ff;font-weight:800;margin-left:5px}
+.org-tab:hover{transform:translateY(-2px);border-color:#3fb8ff;box-shadow:0 0 22px rgba(63,184,255,.6),0 10px 20px rgba(0,0,0,.6)}
+.org-tab.active{border-color:#e84fff;background:#17102a;box-shadow:0 0 24px rgba(232,79,255,.5),0 10px 20px rgba(0,0,0,.6)}
+/* --- SEARCH (picker shape: Smart Search -> match % -> pick) --- */
+.search-row{display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:17px;background:linear-gradient(180deg,#131318,#08080b);border:1.5px solid rgba(160,107,255,.55);box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 22px rgba(160,107,255,.28),0 14px 30px rgba(0,0,0,.6);margin-bottom:16px}
+.search-row input{flex:1;background:none;border:none;outline:none;color:#fff;font-size:15px;font-family:inherit}
+.search-row input::placeholder{color:rgba(245,247,251,.5)}
+/* --- MESSENGER GRID --- */
+.messenger{display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start}
+.panel{border-radius:18px;background:linear-gradient(180deg,#12101a,#08080c);border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden}
+.panel h3{margin:0;padding:16px 18px 8px;font-size:15px;font-weight:800}
+.panel .panel-sub{padding:0 18px 10px;font-size:12.5px;color:rgba(245,247,251,.65)}
+/* --- ORB: initial by default, spinning, alive (Connections-room pattern) --- */
+.orb{width:52px;height:52px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:20px;font-weight:800;color:#F8F7FB;background:radial-gradient(circle at 32% 28%,#f3e8ff 0%,#a06bff 32%,#4a2a86 72%,#1a0f2e 100%);box-shadow:0 0 24px rgba(160,107,255,.5),inset 0 0 12px rgba(255,255,255,.3);animation:porb 5s ease-in-out infinite}
+@keyframes porb{50%{transform:translateY(-4px);box-shadow:0 0 38px rgba(160,107,255,.75),inset 0 0 12px rgba(255,255,255,.3)}}
+.orb.sm{width:40px;height:40px;font-size:16px}
+.orb-wrap{position:relative;flex:none}
+.orb-dot{position:absolute;right:0;bottom:2px;width:12px;height:12px;border-radius:50%;background:#55d68a;border:2px solid #08080c;box-shadow:0 0 10px rgba(85,214,138,.8)}
+/* --- CONVERSATION / PERSON ROWS --- */
+.rows{display:flex;flex-direction:column;gap:8px;padding:6px 12px 16px}
+.row{display:flex;gap:12px;align-items:center;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.02);cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.4);transition:border-color .2s,box-shadow .2s,background .2s;text-align:left;width:100%;color:#F5F7FB;font-family:inherit}
+.row:hover{border-color:#a06bff;background:rgba(160,107,255,.08);box-shadow:0 0 22px rgba(160,107,255,.45),0 10px 22px rgba(0,0,0,.55)}
+.row.active{border-color:#e84fff;background:rgba(232,79,255,.08);box-shadow:0 0 24px rgba(232,79,255,.45),0 10px 22px rgba(0,0,0,.55)}
+.row-body{flex:1;min-width:0}
+.row-name{font-size:15px;font-weight:800;display:flex;gap:8px;align-items:baseline}
+.row-name .match{font-size:11.5px;color:#c4a8ff;font-weight:800}
+.row-last{font-size:13px;color:rgba(245,247,251,.7);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.row-nut{font-size:12.5px;color:rgba(245,247,251,.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.stub-note{padding:0 18px 14px;font-size:12px;color:rgba(245,247,251,.55);line-height:1.5}
+/* --- THREAD --- */
+.thread{display:flex;flex-direction:column;min-height:560px}
+.thread-head{display:flex;gap:14px;align-items:center;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.09)}
+.thread-head .who{flex:1;min-width:0}
+.thread-head .who b{font-size:17px}
+.thread-head .who span{display:block;font-size:12.5px;color:#55d68a;margin-top:2px}
+.thread-head .who span.mail-mode{color:#c4a8ff}
+/* --- TOGGLE: Smart Mail | Instant Message, in place --- */
+.toggle{display:flex;border-radius:999px;border:1.5px solid rgba(160,107,255,.55);overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.15);flex:none}
+.toggle button{padding:10px 16px;background:#0a0a0f;color:#E8E8EC;border:none;font-size:13px;font-weight:800;cursor:pointer;transition:box-shadow .2s,background .2s}
+.toggle button:hover{box-shadow:0 0 18px rgba(160,107,255,.5)}
+.toggle button.on{background:linear-gradient(180deg,#7b3fe0,#4a2a86);color:#fff;box-shadow:0 0 20px rgba(160,107,255,.55)}
+.thread-body{flex:1;padding:20px 18px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:520px}
+.msg{max-width:78%;padding:13px 16px;border-radius:16px;font-size:14.5px;line-height:1.55;box-shadow:0 8px 20px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12)}
+.msg .meta{display:block;font-size:11.5px;color:rgba(245,247,251,.6);margin-top:6px}
+.msg.mine{align-self:flex-end;background:linear-gradient(180deg,#7b3fe0,#4a2a86);border-color:rgba(160,107,255,.6)}
+.msg.theirs{align-self:flex-start;background:linear-gradient(180deg,#1b1b24,#0c0c11)}
+.msg.letter{align-self:stretch;max-width:100%;background:linear-gradient(180deg,#14141d,#0a0a0f)}
+.msg.letter .subject{font-weight:800;font-size:15px;margin-bottom:6px}
+.msg.letter .letter-to{font-size:12.5px;color:#c4a8ff;margin-bottom:8px}
+.typing{align-self:flex-start;font-size:12.5px;color:rgba(245,247,251,.6);padding:6px 4px}
+.format-note{align-self:center;font-size:12px;color:rgba(245,247,251,.55);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:7px 12px;border-radius:999px}
+/* --- SMART NOTE card in the thread (L6 format) --- */
+.smart-note{border-radius:16px;border:1px solid rgba(160,107,255,.4);background:linear-gradient(180deg,#17102a,#0a0a0f);padding:16px 18px;box-shadow:0 10px 26px rgba(0,0,0,.5);margin:4px 0}
+.smart-note h4{margin:0 0 4px;font-size:15px}
+.smart-note h5{margin:12px 0 3px;font-size:12.5px;color:#c4a8ff;text-transform:uppercase;letter-spacing:.4px}
+.smart-note p{margin:0;font-size:13.5px;line-height:1.55;color:rgba(245,247,251,.8)}
+/* --- COMPOSER with real depth --- */
+.composer{padding:14px;border-top:1px solid rgba(255,255,255,.09)}
+.composer-inner{display:flex;gap:10px;align-items:flex-end}
+.composer input[type=text]{flex:1;min-width:0;padding:15px 16px;border-radius:16px;border:1.5px solid rgba(160,107,255,.55);background:linear-gradient(180deg,#131318,#08080b);color:#fff;font-size:15px;font-family:inherit;outline:none;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.6),0 0 18px rgba(160,107,255,.22)}
+.composer input[type=text]:focus{border-color:#a06bff;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),0 0 28px rgba(160,107,255,.5)}
+.composer input.subject{flex:0 0 180px}
+.btn{padding:14px 20px;border-radius:14px;border:1.5px solid rgba(160,107,255,.6);background:linear-gradient(180deg,#7b3fe0,#4a2a86);color:#fff;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.25);transition:box-shadow .2s,border-color .2s,transform .2s;white-space:nowrap}
+.btn:hover{border-color:#e84fff;box-shadow:0 0 26px rgba(232,79,255,.6),0 12px 26px rgba(0,0,0,.6);transform:translateY(-1px)}
+.btn.ghost{background:linear-gradient(180deg,#1b1b24,#0c0c11);border-color:rgba(255,255,255,.3)}
+.btn.ghost:hover{border-color:#3fb8ff;box-shadow:0 0 22px rgba(63,184,255,.55),0 12px 26px rgba(0,0,0,.6)}
+.thread-foot{display:flex;gap:10px;flex-wrap:wrap;padding:0 14px 14px}
+.thread-foot .btn{padding:10px 14px;font-size:13px}
+/* --- NOTIFICATION TOAST --- */
+.toast{position:fixed;top:16px;right:16px;z-index:80;width:min(360px,calc(100vw - 32px));border-radius:16px;border:1px solid rgba(160,107,255,.55);background:linear-gradient(180deg,#17102a,#0a0a0f);box-shadow:0 0 30px rgba(160,107,255,.5),0 20px 44px rgba(0,0,0,.7);padding:14px 16px;cursor:pointer;display:none}
+.toast.show{display:block}
+.toast b{font-size:14.5px}
+.toast p{margin:5px 0 0;font-size:13px;color:rgba(245,247,251,.8);line-height:1.45}
+.toast small{color:#c4a8ff;font-weight:700}
+/* --- INSTALL VEIL: harvested from the live identity page --- */
+.install-veil{position:fixed;inset:0;z-index:90;background:rgba(3,3,6,.82);display:none;align-items:center;justify-content:center;padding:20px}
+.install-veil.show{display:flex}
+.install-card{position:relative;width:min(420px,100%);border-radius:20px;background:linear-gradient(180deg,#17102a,#08080c);border:1px solid rgba(160,107,255,.55);box-shadow:0 0 40px rgba(160,107,255,.45),0 30px 60px rgba(0,0,0,.8);padding:28px 24px;text-align:center}
+.install-card h2{margin:0 0 8px;font-size:22px}
+.install-card p{margin:0 0 16px;font-size:14px;line-height:1.55;color:rgba(245,247,251,.8)}
+.install-x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:#0a0a0f;color:#fff;font-size:16px;cursor:pointer}
+.install-x:hover{border-color:#e84fff;box-shadow:0 0 18px rgba(232,79,255,.55)}
+.install-manual{text-align:left;margin-top:16px;font-size:13.5px;line-height:1.6;color:rgba(245,247,251,.8)}
+.install-manual b{color:#fff}
+.install-later{display:block;margin:14px auto 0;background:none;border:none;color:#c4a8ff;font-size:13.5px;font-weight:700;cursor:pointer;padding:8px}
+.install-later:hover{text-shadow:0 0 14px rgba(196,168,255,.8)}
+/* --- NOTIF TRIO BAR: harvested verbatim in shape from the Hub's .notif-bar --- */
+.notif-bar{position:fixed;left:0;right:0;bottom:0;z-index:45;display:flex;justify-content:center;background:rgba(5,5,9,.96);backdrop-filter:blur(14px);box-shadow:0 -16px 44px rgba(0,0,0,.68);padding-bottom:env(safe-area-inset-bottom,0px)}
+.notif-row{display:flex;gap:34px;width:100%;max-width:640px;padding:12px 14px 10px;justify-content:center}
+.notif-seg{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:2px 6px 0;cursor:pointer;background:none;border:none;color:#E8E8EC;font-family:inherit}
+.notif-tile{position:relative;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:radial-gradient(130% 140% at 30% 18%,color-mix(in srgb,var(--nc) 36%,#12121a),#07070b 78%);border:1.5px solid color-mix(in srgb,var(--nc) 55%,transparent);box-shadow:0 8px 20px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.2);font-size:22px;transition:box-shadow .2s,border-color .2s}
+.notif-seg:hover .notif-tile{border-color:#fff;box-shadow:0 0 24px var(--nc),0 10px 22px rgba(0,0,0,.6)}
+.notif-seg span.lbl{font-size:12px;font-weight:700}
+.notif-count{position:absolute;top:-6px;right:-6px;min-width:22px;height:22px;border-radius:11px;background:#e84fff;color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center;padding:0 5px;box-shadow:0 0 12px rgba(232,79,255,.7)}
+.notif-count[hidden]{display:none}
+@media (max-width:900px){
+  .messenger{grid-template-columns:1fr}
+  .ph-cover{height:260px}
+  .ph-cover-inner h1{font-size:32px}
+  .thread{min-height:480px}
+  .composer input.subject{flex:1 1 100%}
+  .composer-inner{flex-wrap:wrap}
+}
+@media (max-width:420px){
+  .ph-main{padding:18px 12px 150px}
+  .toggle button{padding:10px 11px;font-size:12px}
+  .thread-head{flex-wrap:wrap}
+  .msg{max-width:88%}
+}
+/* --- FIX 2026-11-12 (checker NOT PASS 8/10): thread head at phone widths ---
+   Was: orb + who + toggle on one row left the presence 35px wide at 390
+   (9 lines) and 5px at 360 (10 lines); head 245/263px tall.
+   Now, under 640px: row 1 = orb + name + presence (full remaining width,
+   name 1 line, presence wraps at most 2 lines); row 2 = toggle full width,
+   its two buttons split the row evenly. 1440 untouched. */
+@media (max-width:640px){
+  .thread-head{flex-wrap:wrap;row-gap:8px;padding:12px 14px}
+  .thread-head .who{flex:1 1 0;min-width:0}
+  .thread-head .who b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .thread-head .toggle{flex:1 1 100%}
+  .thread-head .toggle button{flex:1;padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<header class="ph-cover" id="cover">
+  <div class="ph-cover-inner">
+    <h1>Smart Messenger</h1>
+    <p>One conversation, two formats — reach anyone, on any topic.</p>
+  </div>
+  <button class="ph-plus left" id="plusNew" type="button" aria-label="New message">+</button>
+  <button class="ph-plus right" id="plusInstall" type="button" aria-label="Install the messenger">+</button>
+</header>
+
+<!-- MENU BAR -->
+<nav class="menu-bar" aria-label="Network menu">
+  <a href="https://nayanet.app/">Hub</a>
+  <a href="https://nayanet.app/dashboard">Dashboard</a>
+  <a href="https://nayanet.app/personal">Personal</a>
+  <a href="https://nayanet.app/business">Business</a>
+  <a href="https://nayanet.app/spaces">Space</a>
+  <a href="#" class="active" aria-current="page">Messenger</a>
+  <a href="https://nayanet.app/pricing">Pricing</a>
+</nav>
+
+<main class="ph-main">
+  <div class="page-head">
+    <h2>Message anybody — by topic, not just by contact</h2>
+    <p>Flip the format, pick a topic, tap a person. One tap and you are talking.</p>
+  </div>
+
+  <!-- ORGANIZER TABS: the Smart Organizer's topics, harvested verbatim -->
+  <div class="org-tabs" id="orgTabs" role="tablist" aria-label="Topics in NayaNET"></div>
+
+  <!-- PICKER: Smart Search -> match % -> pick -->
+  <div class="search-row">
+    <span aria-hidden="true">🔍</span>
+    <input id="smartSearch" type="text" placeholder="Smart Search — type a name or a topic…" aria-label="Smart Search people by keyword" autocomplete="off">
+  </div>
+
+  <div class="messenger">
+    <!-- LEFT: conversations + topic people -->
+    <section class="panel" aria-label="Conversations">
+      <h3>Conversations</h3>
+      <p class="panel-sub">Your contacts — and the people online in your topic.</p>
+      <div class="rows" id="convList"></div>
+      <h3 id="topicPeopleTitle">Online in Design</h3>
+      <p class="panel-sub">Tap a person to open a conversation with them.</p>
+      <div class="rows" id="topicPeople"></div>
+      <p class="stub-note">Preview people — sample names showing the shape of the page. Live people come from the Smart Organizer and the Auto-Match engine; no sample person here is a real citizen.</p>
+    </section>
+
+    <!-- RIGHT: open thread -->
+    <section class="panel thread" aria-label="Open conversation">
+      <div class="thread-head">
+        <div class="orb-wrap"><div class="orb" id="threadOrb">M</div><span class="orb-dot" id="threadDot"></span></div>
+        <div class="who">
+          <b id="threadName">Maya R.</b>
+          <span id="threadPresence">Online now · Instant Message</span>
+        </div>
+        <div class="toggle" role="group" aria-label="Message format">
+          <button type="button" id="toggleMail" aria-pressed="false">Smart Mail</button>
+          <button type="button" id="toggleIM" class="on" aria-pressed="true">Instant Message</button>
+        </div>
+      </div>
+
+      <div class="thread-body" id="threadBody"></div>
+
+      <div class="composer">
+        <div class="composer-inner">
+          <input type="text" class="subject" id="mailSubject" placeholder="Subject" aria-label="Mail subject" hidden>
+          <input type="text" id="composerInput" placeholder="Message Maya instantly…" aria-label="Write a message" autocomplete="off">
+          <button class="btn" type="button" id="sendBtn">Send</button>
+        </div>
+      </div>
+      <div class="thread-foot">
+        <button class="btn ghost" type="button" id="backHub">← Back to the Hub</button>
+        <button class="btn ghost" type="button" id="downloadBtn">⬇ Install the app</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- NOTIFICATION TOAST -->
+<div class="toast" id="toast" role="button" tabindex="0" aria-label="New message notification">
+  <small id="toastKind">New instant message</small><br>
+  <b id="toastTitle"></b>
+  <p id="toastText"></p>
+</div>
+
+<!-- INSTALL VEIL: harvested from the live identity page -->
+<div class="install-veil" id="installVeil" hidden>
+  <div class="install-card" role="dialog" aria-modal="true" aria-labelledby="installTitle">
+    <button type="button" class="install-x" id="installX" aria-label="Close">✕</button>
+    <h2 id="installTitle">Install Smart Messenger</h2>
+    <p>Put the messenger on your home screen. One tap opens straight into your conversations.</p>
+    <button type="button" class="btn" id="installGo">Install App</button>
+    <div class="install-manual" id="installManual" hidden>
+      <p><b>Your browser needs the manual way — seconds, I promise:</b></p>
+      <p><b>iPhone:</b> tap Share — the square with the arrow pointing up — then <b>Add to Home Screen</b>, then <b>Add</b>. Done.</p>
+      <p><b>Android:</b> tap the menu, then <b>Add to Home screen</b>. Done.</p>
+      <p>The live store listing is still owed — this installs the messenger as an app from this page.</p>
+    </div>
+    <button type="button" class="install-later" id="installLater">Not now</button>
+  </div>
+</div>
+
+<!-- NOTIF TRIO BAR: Mail · Activity · Spaces, harvested from the Hub -->
+<footer class="notif-bar" id="notifBar">
+  <div class="notif-row">
+    <button class="notif-seg" type="button" id="segMail" style="--nc:#3fb8ff" aria-label="Mail notifications">
+      <span class="notif-tile">✉️<span class="notif-count" id="mailCount" hidden>0</span></span><span class="lbl">Mail</span>
+    </button>
+    <button class="notif-seg" type="button" id="segActivity" style="--nc:#55d68a" aria-label="Activity notifications">
+      <span class="notif-tile">🔔<span class="notif-count" id="activityCount">2</span></span><span class="lbl">Activity</span>
+    </button>
+    <button class="notif-seg" type="button" id="segSpaces" style="--nc:#ffd97a" aria-label="Spaces notifications">
+      <span class="notif-tile">◇<span class="notif-count" id="spacesCount" hidden>0</span></span><span class="lbl">Spaces</span>
+    </button>
+  </div>
+</footer>
+
+<script>
+/* STUB DATASET — sample people in the page's own shape (initial, name,
+   nutshell, match %). Named as a stub: no sample person is a real citizen.
+   Live path owed: Smart Organizer tabs + Auto-Match engine people. */
+var CONTACTS = [
+  {id:'maya', initial:'M', name:'Maya R.', nut:'Designing a kinder internet, one page at a time.', match:94, last:'That cover is beautiful — can you send the link?'},
+  {id:'jordan', initial:'J', name:'Jordan K.', nut:'Cooks slow food, grows fast herbs.', match:88, last:'Sunday market at nine — bring the sourdough.'},
+  {id:'priya', initial:'P', name:'Priya S.', nut:'Sings, teaches, and never misses a morning walk.', match:82, last:'The new song is ready. Want the first listen?'},
+  {id:'leo', initial:'L', name:'Leo T.', nut:'Fixing bikes, riding farther every month.', match:76, last:'Trail on Saturday if the rain holds off.'}
+];
+var TOPICS = {
+  'Design': [
+    {id:'t-d1', initial:'A', name:'Ava L.', nut:'Makes interfaces feel like real objects.', match:96},
+    {id:'t-d2', initial:'N', name:'Noah B.', nut:'Type, light, and the space between.', match:91},
+    {id:'t-d3', initial:'S', name:'Sofia M.', nut:'Illustrates worlds you can walk through.', match:87},
+    {id:'t-d4', initial:'E', name:'Ethan W.', nut:'Prototypes before breakfast, ships by lunch.', match:83}
+  ],
+  'Music': [
+    {id:'t-m1', initial:'L', name:'Lena F.', nut:'Writes songs on the train, records at dawn.', match:95},
+    {id:'t-m2', initial:'O', name:'Omar D.', nut:'Collects vinyl, plays oud on Fridays.', match:90},
+    {id:'t-m3', initial:'I', name:'Ivy C.', nut:'Choir lead, harmony hunter, tea drinker.', match:86},
+    {id:'t-m4', initial:'K', name:'Kai H.', nut:'Produces beats from kitchen sounds.', match:81}
+  ],
+  'Cooking': [
+    {id:'t-c1', initial:'R', name:'Rosa G.', nut:'Grandma recipes, measured in handfuls.', match:93},
+    {id:'t-c2', initial:'T', name:'Tom A.', nut:'Bakes bread, ferments everything else.', match:89},
+    {id:'t-c3', initial:'H', name:'Hana Y.', nut:'Five spices, one pan, zero waste.', match:85},
+    {id:'t-c4', initial:'D', name:'Dan P.', nut:'Grill master, rain or shine.', match:78}
+  ],
+  'Fitness': [
+    {id:'t-f1', initial:'Z', name:'Zoe N.', nut:'Runs at sunrise, stretches at sunset.', match:92},
+    {id:'t-f2', initial:'C', name:'Chris E.', nut:'Lifts heavy, laughs louder.', match:88},
+    {id:'t-f3', initial:'F', name:'Farah Q.', nut:'Yoga teacher, breath first, always.', match:84},
+    {id:'t-f4', initial:'B', name:'Ben O.', nut:'Cycling coach, hill lover.', match:79}
+  ],
+  'Gardening': [
+    {id:'t-g1', initial:'G', name:'Grace V.', nut:'Grows tomatoes the size of softballs.', match:91},
+    {id:'t-g2', initial:'W', name:'Will J.', nut:'Compost evangelist, bee friend.', match:87},
+    {id:'t-g3', initial:'M', name:'Mia Z.', nut:'Herb windowsills in every room.', match:83},
+    {id:'t-g4', initial:'S', name:'Sam U.', nut:'Prunes roses, plants wildflowers.', match:77}
+  ],
+  'Travel': [
+    {id:'t-t1', initial:'Y', name:'Yuki S.', nut:'Slow travel, fast friendships.', match:94},
+    {id:'t-t2', initial:'A', name:'Alex I.', nut:'Maps the world one train ride at a time.', match:89},
+    {id:'t-t3', initial:'N', name:'Nina R.', nut:'Mountain huts and morning mist.', match:85},
+    {id:'t-t4', initial:'J', name:'Jo M.', nut:'City walks, street food, golden hour.', match:80}
+  ],
+  'Business': [
+    {id:'t-b1', initial:'V', name:'Vera K.', nut:'Builds small businesses that last.', match:93},
+    {id:'t-b2', initial:'D', name:'David L.', nut:'Numbers guy with a storyteller heart.', match:88},
+    {id:'t-b3', initial:'E', name:'Emma D.', nut:'Helps founders find their first ten.', match:84},
+    {id:'t-b4', initial:'O', name:'Owen P.', nut:'Markets with honesty, sells with care.', match:76}
+  ]
+};
+var TAB_ORDER = ['Design','Music','Cooking','Fitness','Gardening','Travel','Business'];
+var THREADS = {
+  maya: [
+    {who:'theirs', text:'That cover is beautiful — can you send the link?', time:'09:41'},
+    {who:'mine', text:'Of course — sending it now. It is the one from last night.', time:'09:43'},
+    {who:'theirs', text:'Got it. The purple light on the edge is perfect.', time:'09:44'}
+  ],
+  jordan: [
+    {who:'theirs', text:'Sunday market at nine — bring the sourdough.', time:'08:12'},
+    {who:'mine', text:'On it. Two loaves, one for you.', time:'08:15'}
+  ],
+  priya: [
+    {who:'theirs', text:'The new song is ready. Want the first listen?', time:'Yesterday'},
+    {who:'mine', text:'Always. Send it over.', time:'Yesterday'}
+  ],
+  leo: [
+    {who:'theirs', text:'Trail on Saturday if the rain holds off.', time:'Yesterday'},
+    {who:'mine', text:'I am in. Meet at the gate at eight?', time:'Yesterday'}
+  ]
+};
+var state = { person: CONTACTS[0], topic: 'Design', format: 'im', mailCount: 0 };
+var $ = function(id){ return document.getElementById(id); };
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function nowTime(){ var d=new Date(); return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }
+
+function renderTabs(){
+  var html = '<button class="org-tab" type="button" data-topic="All">All topics</button>';
+  TAB_ORDER.forEach(function(t){
+    html += '<button class="org-tab' + (state.topic===t ? ' active' : '') + '" type="button" role="tab" data-topic="' + t + '">' + t + ' <small>' + TOPICS[t].length + ' online</small></button>';
+  });
+  $('orgTabs').innerHTML = html;
+  $('orgTabs').querySelectorAll('.org-tab').forEach(function(b){
+    b.addEventListener('click', function(){ pickTopic(b.dataset.topic); });
+  });
+}
+function renderConvs(){
+  var q = $('smartSearch').value.trim().toLowerCase();
+  var list = CONTACTS.filter(function(c){ return !q || c.name.toLowerCase().indexOf(q) >= 0 || c.nut.toLowerCase().indexOf(q) >= 0; });
+  $('convList').innerHTML = list.map(function(c){
+    return '<button class="row' + (state.person.id===c.id ? ' active' : '') + '" type="button" data-id="' + c.id + '">' +
+      '<span class="orb-wrap"><span class="orb sm">' + c.initial + '</span><span class="orb-dot"></span></span>' +
+      '<span class="row-body"><span class="row-name">' + esc(c.name) + ' <span class="match">' + c.match + '% match</span></span>' +
+      '<span class="row-last" data-last="' + c.id + '">' + esc(c.last) + '</span></span></button>';
+  }).join('') || '<p class="stub-note">Nobody matches that search yet — try another word.</p>';
+  $('convList').querySelectorAll('.row').forEach(function(r){
+    r.addEventListener('click', function(){ openPerson(CONTACTS.find(function(c){ return c.id===r.dataset.id; })); });
+  });
+}
+function renderTopicPeople(){
+  var topic = state.topic;
+  $('topicPeopleTitle').textContent = 'Online in ' + topic;
+  var q = $('smartSearch').value.trim().toLowerCase();
+  var list = (TOPICS[topic] || []).filter(function(p){ return !q || p.name.toLowerCase().indexOf(q) >= 0 || p.nut.toLowerCase().indexOf(q) >= 0 || topic.toLowerCase().indexOf(q) >= 0; });
+  $('topicPeople').innerHTML = list.map(function(p){
+    return '<button class="row topic-person" type="button" data-id="' + p.id + '" data-topic="' + topic + '">' +
+      '<span class="orb-wrap"><span class="orb sm">' + p.initial + '</span><span class="orb-dot"></span></span>' +
+      '<span class="row-body"><span class="row-name">' + esc(p.name) + ' <span class="match">' + p.match + '% match</span></span>' +
+      '<span class="row-nut">' + esc(p.nut) + '</span></span></button>';
+  }).join('') || '<p class="stub-note">Nobody online in this topic matches that search.</p>';
+  $('topicPeople').querySelectorAll('.topic-person').forEach(function(r){
+    r.addEventListener('click', function(){
+      var p = TOPICS[r.dataset.topic].find(function(x){ return x.id===r.dataset.id; });
+      openPerson({id:p.id, initial:p.initial, name:p.name, nut:p.nut, match:p.match, last:'Say hello — start the conversation.'});
+      /* STUB receive: the topic person greets first, proving receive + notification. */
+      setTimeout(function(){ receiveMessage(p, 'Hi! Great to meet you here in ' + r.dataset.topic + '. What are you working on?'); }, 900);
+    });
+  });
+}
+function renderThread(){
+  var p = state.person;
+  $('threadOrb').textContent = p.initial;
+  $('threadName').textContent = p.name;
+  $('threadPresence').textContent = state.format === 'im' ? 'Online now · Instant Message' : 'Smart Mail · they read it when they read it';
+  $('threadPresence').className = state.format === 'im' ? '' : 'mail-mode';
+  var msgs = THREADS[p.id] || [];
+  var html = '<div class="format-note">' + (state.format === 'im'
+    ? 'Instant Message — live, in the moment, with ' + esc(p.name)
+    : 'Smart Mail — the letter format, same conversation, same person') + '</div>';
+  if (p.id === 'maya' && state.format === 'mail') {
+    html += '<div class="smart-note"><h4>Shared note — Design, in the smart-note format</h4>' +
+      '<h5>Nutshell</h5><p>A messenger is one conversation in two formats, not two inboxes.</p>' +
+      '<h5>Why it matters</h5><p>People lose the thread when the format changes the conversation.</p>' +
+      '<h5>What it means</h5><p>The toggle switches the format and nothing else — the person stays.</p>' +
+      '<h5>How to apply it</h5><p>Flip the toggle, read the same thread, send in the format that fits the moment.</p>' +
+      '<h5>What is in it for you</h5><p>One conversation to keep, in the format you need right now.</p></div>';
+  }
+  msgs.forEach(function(m){
+    if (state.format === 'mail') {
+      html += '<div class="msg letter"><div class="subject">' + (m.who==='mine' ? 'You wrote' : esc(p.name) + ' wrote') + '</div>' +
+        '<div class="letter-to">To ' + (m.who==='mine' ? esc(p.name) : 'you') + ' · Smart Mail</div>' +
+        esc(m.text) + '<span class="meta">' + esc(m.time) + (m.topic ? ' · ' + esc(m.topic) : '') + '</span></div>';
+    } else {
+      html += '<div class="msg ' + m.who + '">' + esc(m.text) + '<span class="meta">' + esc(m.time) + (m.topic ? ' · ' + esc(m.topic) : '') + '</span></div>';
+    }
+  });
+  $('threadBody').innerHTML = html;
+  $('threadBody').scrollTop = $('threadBody').scrollHeight;
+  $('composerInput').placeholder = state.format === 'im' ? 'Message ' + p.name.split(' ')[0] + ' instantly…' : 'Write a letter to ' + p.name.split(' ')[0] + '…';
+  $('mailSubject').hidden = state.format !== 'mail';
+  $('sendBtn').textContent = state.format === 'im' ? 'Send' : 'Send mail';
+}
+function openPerson(p){
+  state.person = p;
+  if (!THREADS[p.id]) THREADS[p.id] = [];
+  renderConvs(); renderTopicPeople(); renderThread();
+}
+function pickTopic(t){
+  state.topic = (t === 'All') ? 'Design' : t;
+  renderTabs(); renderTopicPeople();
+}
+function setFormat(f){
+  state.format = f;
+  $('toggleMail').classList.toggle('on', f === 'mail');
+  $('toggleIM').classList.toggle('on', f === 'im');
+  $('toggleMail').setAttribute('aria-pressed', f === 'mail');
+  $('toggleIM').setAttribute('aria-pressed', f === 'im');
+  renderThread();
+}
+function setMailCount(n){
+  state.mailCount = n;
+  var el = $('mailCount');
+  el.textContent = n > 9 ? '9+' : String(n);
+  el.hidden = n === 0;
+}
+/* STUB send/receive — the working stub behind send + receive. Live path owed:
+   the real-time socket/push that carries a message the instant it is sent. */
+function sendMessage(){
+  var text = $('composerInput').value.trim();
+  if (!text) return;
+  var payload = { sender: 'You', text: text, time: nowTime(), topic: state.topic, format: state.format };
+  var subj = $('mailSubject').value.trim();
+  if (state.format === 'mail' && subj) payload.subject = subj;
+  if (!THREADS[state.person.id]) THREADS[state.person.id] = [];
+  THREADS[state.person.id].push({ who:'mine', text: text, time: payload.time, topic: payload.topic });
+  state.person.last = text;
+  $('composerInput').value = ''; $('mailSubject').value = '';
+  renderConvs(); renderThread();
+  window.__lastPayload = payload;
+  /* STUB reply: the other side answers, proving receive. */
+  var person = state.person;
+  setTimeout(function(){
+    receiveMessage(person, state.format === 'im' ? 'Got it — thank you! That is exactly what I needed.' : 'Thank you for your letter — I will read it properly tonight.');
+  }, 1200);
+}
+function receiveMessage(person, text){
+  var payload = { sender: person.name, text: text, time: nowTime(), topic: state.topic, format: state.format };
+  if (!THREADS[person.id]) THREADS[person.id] = [];
+  THREADS[person.id].push({ who:'theirs', text: text, time: payload.time, topic: payload.topic });
+  person.last = text;
+  window.__lastReceived = payload;
+  setMailCount(state.mailCount + 1);
+  var act = $('activityCount');
+  act.textContent = String(parseInt(act.textContent, 10) + 1);
+  $('toastTitle').textContent = person.name + ' · ' + state.topic;
+  $('toastText').textContent = text;
+  $('toast').classList.add('show');
+  window.__toastFor = person.id;
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(function(){ $('toast').classList.remove('show'); }, 8000);
+  renderConvs();
+  if (state.person.id === person.id) renderThread();
+}
+function openToast(){
+  $('toast').classList.remove('show');
+  var p = CONTACTS.find(function(c){ return c.id===window.__toastFor; }) ||
+    Object.keys(TOPICS).map(function(k){ return TOPICS[k]; }).flat().find(function(x){ return x.id===window.__toastFor; });
+  if (p) openPerson({id:p.id, initial:p.initial, name:p.name, nut:p.nut||'', match:p.match, last:p.last||''});
+  setMailCount(0);
+}
+function openInstall(){
+  var v = $('installVeil');
+  v.hidden = false; v.classList.add('show');
+}
+function closeInstall(){
+  var v = $('installVeil');
+  v.classList.remove('show'); v.hidden = true;
+}
+$('toggleMail').addEventListener('click', function(){ setFormat('mail'); });
+$('toggleIM').addEventListener('click', function(){ setFormat('im'); });
+$('sendBtn').addEventListener('click', sendMessage);
+$('composerInput').addEventListener('keydown', function(e){ if (e.key === 'Enter') sendMessage(); });
+$('smartSearch').addEventListener('input', function(){ renderConvs(); renderTopicPeople(); });
+$('toast').addEventListener('click', openToast);
+$('toast').addEventListener('keydown', function(e){ if (e.key === 'Enter') openToast(); });
+$('downloadBtn').addEventListener('click', openInstall);
+$('plusInstall').addEventListener('click', openInstall);
+$('installGo').addEventListener('click', function(){ $('installManual').hidden = false; });
+$('installLater').addEventListener('click', closeInstall);
+$('installX').addEventListener('click', closeInstall);
+$('plusNew').addEventListener('click', function(){ $('composerInput').focus(); });
+$('backHub').addEventListener('click', function(){ window.location.href = 'https://nayanet.app/'; });
+$('segMail').addEventListener('click', function(){ if (window.__toastFor) openToast(); });
+renderTabs(); renderConvs(); renderTopicPeople(); renderThread();
+</script>
+</body>
+</html>
