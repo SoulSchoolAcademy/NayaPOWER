@@ -394,7 +394,7 @@ PROBES = {
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="HUB/MAP-STATE.json")
-    ap.add_argument("--surface-audit", action="store_true", help="Opt-in 25-door public reachability/readiness audit; never automatic hourly")
+    ap.add_argument("--surface-audit", action="store_true", help="Opt-in 24-door public reachability/readiness audit; never automatic hourly")
     args = ap.parse_args()
 
     cfg = {
