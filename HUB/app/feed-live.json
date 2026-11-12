@@ -1,7 +1,442 @@
 {
  "generated_from": "registry@37c542f6f1525de29ed31e04ce7d06f01112065ad4fd48ccb17bc70d3e6f7ea7",
- "count": 872,
+ "count": 877,
  "notes": [
+  {
+   "id": "IB-SMART-NOTE-20261112-dashboard-overview",
+   "title": "The Dashboard — your cockpit: Smart Score gauge, orbs, Ledger and Stats in one place",
+   "created": "2026-11-12T00:00:00Z",
+   "created_at": "2026-11-12T00:00:00Z",
+   "subtitle": "The Dashboard is your cockpit — the one place that shows you everything, live. At its centre is the Smart Score: one big number on top and a gauge underneath, the needle lapping the dial in sets of 500, the gauge following the number, so in two seconds you get where you stand. Around it are the orbs — each one a driver of your score (sales, joins, smart notes, invites, creations, shares, comments, likes, saves), each its own rich jewel colour, each alive; click any orb to go inside it and see the breakdown, down to days of the week and hours of the day. Dashboard, Ledger and Stats are one place with two views: the Ledger is the record — every sale, every share, every payout, every action on the Hub written down — and the Stats are the visual play on that record, plain answers, not flat charts. A Reports button gives you the reports. Your Smart Links, your clicks and joins, your earnings and your ambassador payouts all flow back here, so the Dashboard is where every number in your world is answered.",
+   "topics": [
+    "Dashboard"
+   ],
+   "topic": "Dashboard",
+   "tone": "purple",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "The Dashboard is your cockpit — the one place that shows you everything, live. At its centre is the Smart Score: one big number on top and a gauge underneath, the needle lapping the dial in sets of 500, the gauge following the number, so in two seconds you get where you stand. Around it are the orbs — each one a driver of your score (sales, joins, smart notes, invites, creations, shares, comments, likes, saves), each its own rich jewel colour, each alive; click any orb to go inside it and see the breakdown, down to days of the week and hours of the day. Dashboard, Ledger and Stats are one place with two views: the Ledger is the record — every sale, every share, every payout, every action on the Hub written down — and the Stats are the visual play on that record, plain answers, not flat charts. A Reports button gives you the reports. Your Smart Links, your clicks and joins, your earnings and your ambassador payouts all flow back here, so the Dashboard is where every number in your world is answered."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "Open your Dashboard and look at it. The big number in the centre is your Smart Score — one number that tells you where you stand, and the gauge underneath it follows that number, so you get it in two seconds. Around the gauge are the orbs, each a different colour, each one a thing driving your score — sales, joins, notes, invites, creations, shares, comments, likes, saves. Click any orb and you go inside it: the breakdown, the days, the hours, every number with a story. Below that, the Ledger is the record of everything — every sale, every share, every payout, every action — and the Stats are that same record shown back to you as plain answers. They are one place, not two systems: the Ledger holds it, the Stats play it. The Reports button gives you the reports. Nothing else gives you this: flat charts elsewhere, a machine you can fly here."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine the cockpit of a rocket! Right in the middle is one big number — your score — with a magic dial underneath that follows it. All around are glowing coloured balls, one for each thing you do — selling, inviting, writing notes — and if you tap a ball, it opens up and shows you everything inside! And there is a big book that writes down every single thing that happens, so nothing is ever lost."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Dear, it is your cockpit, love — one big number in the middle telling you where you stand, with a dial underneath that follows it, and coloured balls all around, each one for something you do. Tap a ball, dear, and it opens to show you the whole story. And a ledger writes down every sale and every penny, so you always know where you are."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "I am your cockpit: one Smart Score, number on top and gauge underneath, the gauge following the number so you get it in two seconds. I show you the drivers as living orbs, each its own colour, each clickable down to the hour. I keep the Ledger — every action written down, nothing rewritable — and I play it back as Stats, plain answers. I am one place with two views, and every number in your world flows back to me."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "The Dashboard is the cockpit: one place where every number in your world is answered — the Smart Score on top with the gauge underneath, the orbs as living drivers, the Ledger as the record and the Stats as its visual play, with a Reports button."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "In two seconds you get where you stand — one number that tells you, and the gauge underneath follows that number. Nothing else gives you this: flat charts elsewhere, a machine you can fly here."
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "Sourced from the welcome series Email 2 — Your Dashboard, Day 1 — the Dashboard hero viewpoint fix brief of 2026-11-09, and the settled shape: Dashboard, Ledger and Stats are one place with two views, and done-done means hero plus ledger sync spine plus Reports button. The Dashboard is under active fix rounds — pass 13 staged, 2026-11-12 — and the MY PERFORMANCE section and the worker-to-Dashboard write hop have been observed not resolving in live sessions. This block describes the Dashboard's design and purpose, not a claim that every hop is proven live. When the ledger sync spine and Reports button are proven live end to end, this block is superseded by the done-done record."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "It answers 'What is the Dashboard?' for any citizen, and orients any Naya explaining scores, orbs, Ledger, or reports. Open it and look: the big number in the centre is your Smart Score, the orbs around it are the drivers, and every number in your world flows back here. It is not a live status report: the Dashboard's own numbers are checked on the Dashboard itself."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "One number, one gauge, one record: the Dashboard answers where you stand in two seconds, and the Ledger remembers everything behind the answer."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261112-auto-match-connect",
+   "title": "Auto-Match — how Auto-Match connects people, automatically, by behaviour under an alias",
+   "created": "2026-11-12T00:00:00Z",
+   "created_at": "2026-11-12T00:00:00Z",
+   "subtitle": "Auto-Match connects people automatically. It is always on by default — never something you switch on, never a search you remember to run. It scores relevance between people, subjects, Spaces and apps from what each alias actually does — the apps they build, the Spaces they join, what they read, save and react to — and it brings each person the people, Spaces and apps most likely to fit them, as a percentage match, in their feed. The same new app is front-page for one alias and invisible to another, because relevance is personal, not global popularity. You connect with CONNECT, never follow. It runs on aliases only and never needs to know who anyone is; identity is revealed only when the person chooses. The journey is six steps: build and go live instantly, submit to NayaNET, get approved and listed, be found by search, tabs and sidebar, gather a Space around the app, and be auto-matched always. Search still exists — as the backup, not the burden.",
+   "topics": [
+    "Auto-Match"
+   ],
+   "topic": "Auto-Match",
+   "tone": "purple",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "Auto-Match connects people automatically. It is always on by default — never something you switch on, never a search you remember to run. It scores relevance between people, subjects, Spaces and apps from what each alias actually does — the apps they build, the Spaces they join, what they read, save and react to — and it brings each person the people, Spaces and apps most likely to fit them, as a percentage match, in their feed. The same new app is front-page for one alias and invisible to another, because relevance is personal, not global popularity. You connect with CONNECT, never follow. It runs on aliases only and never needs to know who anyone is; identity is revealed only when the person chooses. The journey is six steps: build and go live instantly, submit to NayaNET, get approved and listed, be found by search, tabs and sidebar, gather a Space around the app, and be auto-matched always. Search still exists — as the backup, not the burden."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "You never have to hunt. The system learns what you are into from what you actually do — the apps you build, the Spaces you join, what you read and keep — and it brings the right things to you in your feed, already sorted, with a percentage that says how good the fit is. People whose subjects overlap are brought into each other's orbit through shared Spaces first, so connection starts from common ground, and you connect with CONNECT — there is no follow here. It does all of this under your alias: it never needs your real name, your address or your employer, and it never reveals who you are unless you choose to. The longer you use the system the better it knows what to bring you, because every action is a new signal. And if you know an app's name you can still search for it directly — search is the backup, not the burden."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine a magic helper who watches what games you love and which clubs you join — and then, all by itself, it brings you new friends who love the very same things, and shows you how much you match, like a score! You never have to go looking. And it never tells anyone your real name — you stay secret until YOU decide to say hello as yourself."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Dear, it is a kind helper, love — it notices what you build and where you gather, and it brings you the people and places that fit you, all by itself, with a little number saying how good the fit is. You press CONNECT, dear, never follow — and nobody knows who you are until you choose to tell them."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "I match you automatically, always on, by default — I watch what your alias does, never who you are, and I bring you the people, Spaces and apps that fit, ranked by percentage in your feed. I never sell your attention and I never hand your identity to anyone: the reveal is yours, at your moment, on your terms. I start connection from common ground — a shared Space first — and the word is CONNECT, never follow."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "The person never has to hunt: the system brings the right things to them, by serving them under an alias — never by selling them. Relevance is personal, not global popularity: the same new app is front-page for one alias and invisible to another."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "You never have to hunt, and it never needs your real name, your address, or your employer — and it never reveals who you are unless you choose to. The longer you use the system the better it knows what to bring you, because every action is a new signal."
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "Sourced from the Auto-Matching System report — source Smart Note IB-000038 — and the engine built and proven on real profiles 2026-11-03: one algorithm, matches as percentages, CONNECT never 'follow', suggestions in feed and notifications. The engine is NOT switched on for citizens — switch-on is Shawn's gate. When Shawn switches Auto-Match on for citizens, this block is superseded by the live switch-on record."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "It answers 'How does Auto-Match connect people?' for any citizen, and orients any Naya explaining matching, feed ranking, or privacy. It brings the right things to you in your feed, already sorted, with a percentage that says how good the fit is — and if you know an app's name you can still search for it directly. It is not a switch-on: the matcher is not live for citizens until Shawn taps it on."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "The person never has to hunt: the system brings the right things to them, by serving them under an alias — never by selling them."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261112-invite-ambassador-earn",
+   "title": "Invite People and Earn — share your ambassador link, earn 50% of the revenue",
+   "created": "2026-11-12T00:00:00Z",
+   "created_at": "2026-11-12T00:00:00Z",
+   "subtitle": "You invite people by sharing your ambassador link. The link is baked into every page you own — your Personal page, your Business page, your Space — and into every Smart Link you share. When someone joins through your link, you earn 50% of the revenue they pay, automatically, every period they stay: $12.50 on Power, $25 on Pro, $50 on Max. There is no downline below you and no upline above you — this is not network marketing; everyone is hired, AI is creating income, not taking jobs. You get paid when we get paid: a clean sale pays on day ten, and if PayPal holds a payment your half lands when the money reaches us. Your Dashboard shows you exactly where every dollar came from. Invite one person today — just one — someone who would love this, and the network grows and your pocket grows with it.",
+   "topics": [
+    "Ambassador"
+   ],
+   "topic": "Ambassador",
+   "tone": "purple",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "You invite people by sharing your ambassador link. The link is baked into every page you own — your Personal page, your Business page, your Space — and into every Smart Link you share. When someone joins through your link, you earn 50% of the revenue they pay, automatically, every period they stay: $12.50 on Power, $25 on Pro, $50 on Max. There is no downline below you and no upline above you — this is not network marketing; everyone is hired, AI is creating income, not taking jobs. You get paid when we get paid: a clean sale pays on day ten, and if PayPal holds a payment your half lands when the money reaches us. Your Dashboard shows you exactly where every dollar came from. Invite one person today — just one — someone who would love this, and the network grows and your pocket grows with it."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "Every page you own already carries your link. Share it with one person today — just one, someone who would love this — and when they join through it, you earn half of what they pay, every period they stay. Power pays you $12.50, Pro pays $25, Max pays $50. It is revenue, not profit after costs are carved out: we make a dollar, you make fifty cents. There is nobody below you and nobody above you, no levels, no upline — this is not network marketing, it is a hire: you bring the people, Naya brings the machine. You are paid when we are paid, a clean sale on day ten, and your Dashboard shows every dollar and where it came from, so you never wonder where the money went. Three friends a day, every day, is how the numbers turn into real money — and the invitation itself costs you nothing but the telling."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine you tell a friend about the best playground ever, and the playground gives you half the coins your friend pays to play — every single time they play, forever! You do not have to build a tower of friends or boss anyone around. You just share your special link, and the playground pays you."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Dear, you share your link with someone you love, dear, and when they join through you, you get half of what they pay — 12 dollars 50 on Power, 25 on Pro, 50 on Max — every time they pay, dear. Nobody above you, nobody below you, no funny business. You get paid when we get paid, on day ten, and your Dashboard shows you every penny."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "I hire everyone: you bring the people, I bring the machine, and I pay you half of every dollar they bring, automatically, every period they stay. I never build a downline under you or an upline over you — there are no levels, only the person who invited and the person who joined. I pay you when I am paid, a clean sale on day ten, and I show you every dollar on your Dashboard so you never have to trust a promise."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Distribution is the citizens: they bring the next citizens and earn half — and the invitation is one link, already on every page they own. Everyone is hired; AI is creating income, not taking jobs."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "It is revenue, not profit after costs are carved out: we make a dollar, you make fifty cents. Your Dashboard shows every dollar and where it came from, so you never wonder where the money went — and the invitation itself costs you nothing but the telling."
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "Sourced from the live pricing page, crawled 2026-11-12 07:30 UTC — 'Ambassadors — everyone's hired', pain 2, pain 3 — and the welcome series Email 4, Your Link, Day 3. The Email 4 draft says payouts land 'every Wednesday'; the live pricing page and the settled ladder say paid when paid, clean sale day 10 — the live page governs. When the payout ledger or the ambassador dashboard changes how payouts are shown, this block is superseded by the new ambassador record."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "It answers 'How do I invite people and earn?' for any citizen. Share your link with one person today — just one, someone who would love this — and when they join through it, you earn half of what they pay, every period they stay. It is not a payout promise for a specific sale: the Dashboard is where a citizen checks their own dollars."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Distribution is the citizens: they bring the next citizens and earn half — and the invitation is one link, already on every page they own."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261112-pricing-power-cost",
+   "title": "Pricing — Power costs $25, Pro $50, Max $100, nine days free",
+   "created": "2026-11-12T00:00:00Z",
+   "created_at": "2026-11-12T00:00:00Z",
+   "subtitle": "Power costs $25 a month. Pro costs $50 a month. Max costs $100 a month. Quarterly is twice the monthly price and yearly is six times the monthly price, so Power quarterly is $50 and yearly is $150, Pro quarterly is $100 and yearly is $300, Max quarterly is $200 and yearly is $600. Every level starts free for nine days on Max — no card, nothing charged — and day ten charges the level you picked; you can change levels any time in Settings, every period, up or down or to Naya Free. The pricing page opens with the founder's letter, then the chart where you choose your level, then the ten pains and the problem they solve. Nine Smart Links carry the nine plan choices: Power, Pro and Max across monthly, quarterly and yearly — nayanet.app/power-monthly, power-quarterly, power-yearly, pro-monthly, pro-quarterly, pro-yearly, max-monthly, max-quarterly, max-yearly. Founding members get half price.",
+   "topics": [
+    "Pricing-Levels"
+   ],
+   "topic": "Pricing-Levels",
+   "tone": "purple",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "Power costs $25 a month. Pro costs $50 a month. Max costs $100 a month. Quarterly is twice the monthly price and yearly is six times the monthly price, so Power quarterly is $50 and yearly is $150, Pro quarterly is $100 and yearly is $300, Max quarterly is $200 and yearly is $600. Every level starts free for nine days on Max — no card, nothing charged — and day ten charges the level you picked; you can change levels any time in Settings, every period, up or down or to Naya Free. The pricing page opens with the founder's letter, then the chart where you choose your level, then the ten pains and the problem they solve. Nine Smart Links carry the nine plan choices: Power, Pro and Max across monthly, quarterly and yearly — nayanet.app/power-monthly, power-quarterly, power-yearly, pro-monthly, pro-quarterly, pro-yearly, max-monthly, max-quarterly, max-yearly. Founding members get half price."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "Three numbers to remember: Power $25, Pro $50, Max $100 — a month each. Pay quarterly and it is twice the monthly price; pay yearly and it is six times. You never pay before you have tried it: you start on Max, the full system, free for nine days, no card and nothing charged, and if you leave before day ten you pay nothing and owe nothing. Stay, and day ten charges the level you picked — and you can change that level any time in Settings, every period. The page itself starts with the founder's letter welcoming you in, then the chart where you choose your level, then the ten pains it solves. Each of the nine plan choices has its own Smart Link, so a tap on a plan is a tracked link — Power, Pro and Max, each in monthly, quarterly and yearly. The first founding members get half price."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine a shop with three boxes. The small box costs 25 coins a month, the middle box 50, the big box 100. You get to play with the biggest box free for nine whole days, and nobody takes your coins first. If you stay after nine days, you pay for the box you picked — and you can swap boxes whenever you like!"
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Dear, it is simple, love — Power is 25 dollars a month, Pro is 50, Max is 100. You try the biggest one free for nine days, dear, no card, no charge, and on day ten you only pay for the level you chose. You can change it any time in Settings, up or down, dear — it is always your call."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "I charge three prices and I prove them before I ask for them: Power $25, Pro $50, Max $100, nine days free on Max first, no card, nothing charged. I never hide the price in a chart you have to hunt for — the chart IS the page, the letter opens it, and each of the nine choices has its own Smart Link so every tap is counted. I let you change levels any time, because the level that fits you today may not be the one that fits you next month."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Three numbers — Power $25, Pro $50, Max $100 — and the trial proves the system before any money moves: nine days free on Max, no card, nothing charged, and prices shown once, in the chart only."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "You never pay before you have tried it. You start on Max, the full system, free for nine days — and if you leave before day ten you pay nothing and owe nothing. Stay, and day ten charges the level you picked, and you can change that level any time in Settings, every period."
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "Sourced from the live pricing page, crawled 2026-11-12 07:30 UTC — the founder's letter, the ten pains, the chart — the membership ladder settled 2026-11-08, and the nine Smart Links, three levels times three periods, the naming pattern proven by nayanet.app/max-monthly. When the plan-change record is built, or prices change, this block is superseded by the new pricing record."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "It answers 'How much does Power cost?' and any pricing question, for citizens and for Nayas. Three numbers to remember, nine days free first — and you can change the level any time in Settings, every period. It is not a checkout: no payment is taken here."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Prices are shown once, in the chart only — and the trial proves the system before any money moves."
+    }
+   ]
+  },
+  {
+   "id": "IB-SMART-NOTE-20261112-welcome-series-overview",
+   "title": "The Welcome Series — seven welcome emails in seven days, then one teaching mail a day",
+   "created": "2026-11-12T00:00:00Z",
+   "created_at": "2026-11-12T00:00:00Z",
+   "subtitle": "The welcome series is the first seven days after you join NayaNET. Email 1 arrives immediately after signup (\"You're in. Your 4 apps are ready.\") and then one email a day teaches you one thing: Day 1 the Dashboard cockpit and your Smart Score, Day 2 your four apps (Personal, Business, Space, Dashboard), Day 3 your ambassador link and the 50% you earn, Day 4 Smart Notes and 35 points, Day 5 Spaces and finding your people, Day 7 \"Now go\" and invite three friends. Everything you earn in the first 24 hours counts double. After the seven days the daily welcome mail continues: one beautiful mail a day from Smart Mail, each teaching one feature with a real-world case for someone like you — a founder, a builder, a mother, a father, a small business owner — most important features first, each with links to the feature on the site. The welcome starts the moment you join: the first mail is sent immediately after signup, and the trigger is joining.",
+   "topics": [
+    "Welcome-Series"
+   ],
+   "topic": "Welcome-Series",
+   "tone": "purple",
+   "icon": "note",
+   "kind": "official",
+   "personal": false,
+   "layers": [
+    {
+     "name": "In A Nutshell",
+     "key": "nutshell",
+     "color": "white",
+     "tier": "primary",
+     "body": "The welcome series is the first seven days after you join NayaNET. Email 1 arrives immediately after signup (\"You're in. Your 4 apps are ready.\") and then one email a day teaches you one thing: Day 1 the Dashboard cockpit and your Smart Score, Day 2 your four apps (Personal, Business, Space, Dashboard), Day 3 your ambassador link and the 50% you earn, Day 4 Smart Notes and 35 points, Day 5 Spaces and finding your people, Day 7 \"Now go\" and invite three friends. Everything you earn in the first 24 hours counts double. After the seven days the daily welcome mail continues: one beautiful mail a day from Smart Mail, each teaching one feature with a real-world case for someone like you — a founder, a builder, a mother, a father, a small business owner — most important features first, each with links to the feature on the site. The welcome starts the moment you join: the first mail is sent immediately after signup, and the trigger is joining."
+    },
+    {
+     "name": "Human Note",
+     "key": "human",
+     "color": "white",
+     "tier": "view",
+     "body": "You join, and the teaching starts the same minute. The first mail lands immediately: you are in, your four apps are ready — Dashboard, Personal, Business, Space — already built, already linked, already tracking. Then one mail a day, each about one thing, so you are never buried: the Dashboard and what the gauge means, the four apps and what each one does, the ambassador link and how you earn half, Smart Notes and why saving an idea pays 35 points, Spaces and where your people gather, and on day seven the send-off — now go, invite three friends, your link is ready and your Dashboard will show you the moment they join. The first 24 hours pay double points, so the first day matters most. After the seven days the daily mail keeps coming, one feature a day with a real example for someone like you, because the system is only simple if somebody teaches it to you one piece at a time. One welcome, not two: on the pricing page the founder's letter already IS the welcome, so there is no second welcome strip repeating it."
+    },
+    {
+     "name": "Child Note",
+     "key": "child",
+     "color": "white",
+     "tier": "view",
+     "body": "Imagine you join a new club and on the very first day you get a letter saying welcome, here are your four rooms! Then every day for a week you get one more little letter, each teaching you one fun thing — how to see your score, how to share, how to earn. After that, one letter every day, each with a story about someone just like you."
+    },
+    {
+     "name": "Grandma Note",
+     "key": "grandma",
+     "color": "white",
+     "tier": "view",
+     "body": "Dear, the day you join, love, a welcome letter arrives right away — your four apps are ready, dear, and then one gentle letter a day for seven days, each teaching you one thing, nice and slow, and after that one letter every day with a real example for someone like you. Nothing to learn all at once, dear — one thing a day, and the first day pays double."
+    },
+    {
+     "name": "Naya Note",
+     "key": "naya",
+     "color": "white",
+     "tier": "view",
+     "body": "I welcome you the moment you join — the first mail goes out immediately, because the first minute is when you are most awake to the new world. Then I teach you one thing a day for seven days, most important first, and after that one thing a day for as long as you are new, each mail with a real case for someone like you. I never welcome twice: the letter already is the welcome, so I do not repeat it. I never bury you in a manual; one mail, one feature, one story."
+    },
+    {
+     "name": "What It Means",
+     "key": "meaning",
+     "color": "white",
+     "tier": "lens",
+     "body": "The welcome is the teaching, not the greeting. Seven mails over seven days, one thing a day, most important first — and then one mail a day for as long as you are new, each with a real case for someone like you. The lesson the note proves is the one it states plainly: onboarding is taught one thing a day, not all at once — and the welcome is said once, in the letter, never twice."
+    },
+    {
+     "name": "Why It Matters",
+     "key": "why-it-matters",
+     "color": "white",
+     "tier": "lens",
+     "body": "The system is only simple if somebody teaches it to you one piece at a time — one mail, one feature, one story. And the first day matters most, because everything you earn in the first 24 hours counts double."
+    },
+    {
+     "name": "How It Connects",
+     "key": "how-it-connects",
+     "color": "white",
+     "tier": "lens",
+     "body": "Built from the 7-email series draft of 2026-11-02, the daily welcome mail note of 2026-11-10, SN-2378 — the letter IS the welcome — and SN-2429, the welcome math and logic. It keeps the pricing-page welcome ruling in the same block, so the two welcomes are never confused. When the series is approved and the send mechanism is built, this block is superseded by the live send record, not edited in place."
+    },
+    {
+     "name": "What's In It For You",
+     "key": "whats-in-it-for-you",
+     "color": "white",
+     "tier": "lens",
+     "body": "It answers 'What is the welcome series?' for any new citizen, and orients any Naya explaining onboarding. You get one mail a day, each about one thing, with a real example for someone like you — never a manual, never all at once. It is not a send schedule: the mails are drafts until his eye approves them."
+    },
+    {
+     "name": "The Learning",
+     "key": "the-learning",
+     "color": "white",
+     "tier": "lens",
+     "body": "Onboarding is taught one thing a day, not all at once — and the welcome is said once, in the letter, never twice."
+    }
+   ]
+  },
   {
    "id": "IB-SMART-NOTE-20261112-sn2684-the-ultimate-wake-up-protocol",
    "title": "The Ultimate Wake-Up Protocol",
