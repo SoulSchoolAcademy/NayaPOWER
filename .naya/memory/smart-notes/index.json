@@ -43990,15 +43990,40 @@
     "System",
     "Quality"
    ]
+  },
+  {
+   "smart_note_id": "SN-2684",
+   "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2684-the-ultimate-wake-up-protocol",
+   "slug": "the-ultimate-wake-up-protocol",
+   "title": "The Ultimate Wake-Up Protocol",
+   "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/SYSTEM_INTELLIGENCE/SN-2684/IB-SMART-NOTE-20261112-sn2684-the-ultimate-wake-up-protocol.md",
+   "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/SYSTEM_INTELLIGENCE/SN-2684/IB-SMART-NOTE-20261112-sn2684-the-ultimate-wake-up-protocol.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/SYSTEM_INTELLIGENCE/SN-2684/IB-SMART-NOTE-20261112-sn2684-the-ultimate-wake-up-protocol.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "capture_file": ".naya/capture/IB-SMART-NOTE-20261112-sn2684-the-ultimate-wake-up-protocol.json",
+   "kind": "intelligent-block",
+   "status": "canonical",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM_INTELLIGENCE",
+   "topic": "WAKE-UP-PROTOCOL",
+   "captured_at": "2026-11-12",
+   "lifecycle_state": "ACTIVE",
+   "registered_by": "naya-power",
+   "registered_at": "2026-11-12T05:56:57Z",
+   "directed_by": "Shawn Vibert",
+   "date": "2026-11-12",
+   "page_hash": "2d394fdea77d8ac69856652c07ed98957b76ce0e3387735f7e0d904fb8489d21",
+   "content_hash": "8fd1c767d16bc4a0851124dae9ff96623fb8ab403446e371feee7bfe627b0c76"
   }
  ],
  "sequence_policy": {
   "human_id_format": "SN-###",
   "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-  "next_sequence": 2670,
+  "next_sequence": 2685,
   "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
   "counter_role": "advisory",
   "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
  },
- "corpus_manifest_hash": "d7439737bb2ed3ba9df6ffd98840e33cd4f5f37d28a5bf2ded55ed214d2ebe83"
+ "corpus_manifest_hash": "059e103c92d8483558e7bda3fbfd6fe2e7ffaa226dfc2840dcee96e58c65a681"
 }
