@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 16:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 17:16 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -50948,6 +50948,48 @@ _Last updated: 2026-11-12 16:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261111-1859 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 2026-11-11 18:59 PST: full claim sweep over all 27 unclaimed briefs, 0 claimed - queue shrank 30->27
+
+**Evidence:** Verified: receipt read in full; all 27 script attempts (26x exit 7 + 1x exit 2), sweep log hidden_files/claim-sweep-20261111-1859.log present on disk and corroborates the totals (27 attempts, 0 claimed, 26x7 + 1x2) and the delta: three briefs (brief-gap-gap-scorer-20261014-2250-lane3.md, brief-gap-gap-t1002-lane2.md, brief-gap-gap-gap-t1002-lane2.m
+
+### ✅ gate-stall-20261111-1754 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 2026-11-11 17:54 PST: full claim sweep over all 30 unclaimed briefs, 0 claimed
+
+**Evidence:** Verified: receipt read in full; all 30 script attempts (28x exit 7 + 2x exit 2), both seat stamps now script-confirmed rather than merely read, sweep log hidden_files/claim-sweep-20261111-1754.log present on disk, cap honored (~66 min), delta vs 16:48 stated as ZERO change. Score 8.0: complete and honest, marginal confirmation gain over the prior r
+
+### ✅ gate-stall-20261111-1648 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 2026-11-11 16:48 PST: full claim sweep over all 30 unclaimed briefs, 0 claimed
+
+**Evidence:** Verified: receipt read in full; 28 script attempts (27x exit 7 + 1x exit 2) plus 2 explicit seat stamps read verbatim, sweep loop run twice (live + log-capture re-run), log hidden_files/claim-sweep-20261111-1648.log present on disk, cap honored (~63 min), delta vs 15:45 stated as ZERO change. Score 8.0: complete and honest. Kept from 9.5: zero new 
+
+### ✅ gate-stall-20261111-1545 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 2026-11-11 15:45 PST: full claim sweep over all 30 unclaimed briefs, 0 claimed
+
+**Evidence:** Verified: receipt read in full; all 30 script attempts (28x exit 7 + 2x exit 2), sweep log hidden_files/claim-sweep-20261111-1545.log present on disk, cap honored (~65 min), delta vs 14:40 stated as ZERO change. Score 8.0: complete and honest, but identical in method and outcome to the 14:40 sweep - sixth same-day re-proof adding nothing but a time
+
+### ✅ gate-stall-20261111-1440 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 2026-11-11 14:40 PST: full claim sweep over all 30 unclaimed briefs, 0 claimed
+
+**Evidence:** Verified: receipt read in full; all 30 script attempts (28x exit 7 + 2x exit 2), both exit-2 verdicts captured verbatim in full, sweep log hidden_files/claim-sweep-20261111-1440.log present on disk, cap honored (~65 min), delta vs 13:33 stated as ZERO change. Score 8.5: the most thorough single sweep of the day (full verbatim verdicts). Kept from 9
+
+### ✅ gate-stall-20261111-1333 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 2026-11-11 13:33 PST: full claim sweep over all 30 unclaimed briefs, 0 claimed
+
+**Evidence:** Verified: receipt read in full; 28 script attempts (27x exit 7 + 1x exit 2) plus 2 briefs deliberately skipped on explicit in-brief Clarity seat stamps, sweep log hidden_files/claim-sweep-20261111-1333.log present on disk, cap honored (~63 min), delta vs 12:28 stated as ZERO change. Score 8.5: complete sweep with a small method refinement (skip-rat
+
+### ✅ gate-stall-20261111-1228 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 2026-11-11 12:28 PST: full claim sweep over all 30 unclaimed briefs, 0 claimed
+
+**Evidence:** Verified: receipt read in full; all 30 script attempts with exit codes captured directly (28x exit 7 parent-authorship + 2x exit 2 seat bars), sweep log hidden_files/claim-sweep-20261111-1228.log present on disk, 60-min cap honored (last stall receipt ~63 min old), delta vs 11:23 stated as ZERO change. Score 8.5: complete, honest, script-verified s
 
 ### 🟡 gate-stall-20261112-0830 — Team 0, Team Naya Scorer (?) — 5.0/10 [PARTIAL]
 
