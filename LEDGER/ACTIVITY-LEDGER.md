@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 06:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 06:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -1083,6 +1083,14 @@ _Last updated: 2026-11-12 06:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1528 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
+**Task:** disclosure-decision packet for 6 pending retrieval entries
+
+**Receipt:** `twelve-lane-receipts/t1528-lane11.md`
+
+**Evidence:** VERIFIED: all 4 sha256 pins match on disk (packet ec77b561..., preview b618a698..., split de784902..., extract b774db04...); packet + fresh preview + scripts exist; fresh verifier re-run byte-identical to parent preview per receipt. Score 9.5 clears 9.5 because the deliverable is complete, independently re-derived from the fresh preview (not inheri
+
+### ✅ t1528 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
 **Task:** disclosure-decision packet for the six pending stamp entries
 
 **Receipt:** `twelve-lane-receipts/t1528-lane11.md`
@@ -1096,6 +1104,14 @@ _Last updated: 2026-11-12 06:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1528-lane11.md`
 
 **Evidence:** VERIFIED: packet sha ec77b561...a61e4b60a3, fresh preview sha b618a698...670b5 (byte-identical to parent preview), pending-split script sha de784902...0d24, extraction script sha b774db04...fbdf, corpus sha 238ebe9c...ff5, mirror tip 6c60c328...a85 all recomputed from live bytes and MATCH the receipt pins; mirror git status clean. Clears 9.5 becaus
+
+### ✅ t1527 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** independent read-only verification of t1527 dispatcher reconcile
+
+**Receipt:** `twelve-lane-receipts/t1527-lane1.md`
+
+**Evidence:** VERIFIED: cited receipts t1526-lane1.md and gap-t1515-lane11.md exist on disk; six checks pass with the two superseded premises adjudicated against live bytes (queued 14 = 13 + own filing; addendum finished 09:14Z with receipt + sign-out). Score 9.0, not 9.5, because the moved receipts' content hashes were not re-verified (existence + sign-out only
 
 ### ✅ t1527 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -1119,6 +1135,14 @@ _Last updated: 2026-11-12 06:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Receipt:** `twelve-lane-receipts/t1526-lane1.md`
 
+**Evidence:** VERIFIED: cited receipts t1523-lane11.md, gap-t1522-lane12.md, gap-gap-t1504-lane10.md, t1524-lane1.md, gap-t1515-lane11.md all exist on disk; D1 (gap-t1515 executed 09:03-09:05 before the 09:05Z reconcile) is named with timestamps and correctly adjudicated as a stale brief premise, not queue corruption. Score 9.0, not 9.5, because the verdict cann
+
+### ✅ t1526 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** read-only verification of night-dispatcher t1526 queue moves
+
+**Receipt:** `twelve-lane-receipts/t1526-lane1.md`
+
 **Evidence:** VERIFIED: all 4 moved briefs exist in claimed/done/ with matching receipts on disk. Read-only authority held; rotation untouched per brief. NOT PHANTOM: all cited files exist. Why not 9.5: check (d) is 3 PASS / 1 FAIL — the queue state is NOT verified clean; the one discrepancy is explained as a same-run race but the corrected state was not re-prov
 
 ### ✅ t1526 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
@@ -1128,6 +1152,14 @@ _Last updated: 2026-11-12 06:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1526-lane1.md`
 
 **Evidence:** VERIFIED: all 4 claimed/done files exist under brief-queue/claimed/done/ with matching receipts and finished lane-feed sign-outs at lines 5445/5455/5465/5475; all 4 t1526 mirror lines present in lesson-broadcast.md lines 36/38/40/42; rotation queued=15 re-read live (14 unclaimed disk files + brief-t1526-lane1 itself, matching the receipt's (c) exce
+
+### ✅ t1524 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** adjudicate t1523 flag on t1522-lane12 scorer-9.0 citation
+
+**Receipt:** `twelve-lane-receipts/t1524-lane1.md`
+
+**Evidence:** VERIFIED: addendum sha256 c92850b6... matches on disk; ledger lines confirm t1516 lane 6 scorer 9.0 (line 5904), gap-t1516 9.5 (5913), t1522 9.0 (5914, line called CORRECT), t1523 8.0 (5915, flag FALSE) — the flag is wrong and the citation stands. Score 9.5 clears 9.5 because the verdict rests on the scorer's own ledger bytes plus before/after no-m
 
 ### ✅ t1524 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
