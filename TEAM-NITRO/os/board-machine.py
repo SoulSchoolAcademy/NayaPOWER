@@ -13,8 +13,8 @@ Outputs (always, even dry-run):
   proof/board.json         — the generated board (lanes + reconciliation)
   proof/board-report.json  — the run report (counts, review items, verify input)
 With --publish, it ALSO upserts one work_items row per open lane
-(key "lane:<ledger-id>", last_actor_seat "board-machine") and deletes
-lane:* rows whose ledger item closed — so the lanes show on the PI page
+(key "lane:<ledger-id>", last_actor_seat "board-machine") and never
+deletes a lane row — so the lanes show on the PI page
 in the app, which reads work_items live. No worker deploy, no face rebuild,
 no artifact redesign: the page already reads this table.
 
@@ -24,9 +24,9 @@ last_actor_seat is not board-machine is left entirely untouched — its
 notes, state, next_action, title and priority are the seat's, not the
 machine's to recompute. New lanes are inserted whole; lanes the machine
 itself last wrote are refreshed with machine-owned fields only, never
-"notes" (notes are seat-written, always). Deletes already only touch
-rows the machine last wrote. A seat-owned row therefore can never be
-captured and then deleted when its lane closes.
+"notes" (notes are seat-written, always). DELETE-SIDE GUARD (2026-11-12 —
+the sn2090-sync deletion): this machine never deletes a lane row at all.
+A stale row is held and reported for a seat to close, never deleted.
 
 Discipline (the same as the other feeds — ACTIVATION.md):
   - Observations + reconciliation only. Never rewrites state.json items,
@@ -307,13 +307,18 @@ def read_work_items(req):
 
 
 def publish(req, board, now):
-    """Upsert lane:* rows for open lanes; delete lane:* rows whose lane closed.
+    """Upsert lane:* rows for open lanes. Never deletes a lane row (see
+    DELETE-SIDE GUARD below).
     Ownership guard: only rows this machine wrote (last_actor_seat ==
     board-machine) are refreshed, and only with machine-owned fields —
     "notes" is never in the refresh payload, so seat-written notes survive.
     Rows a seat last wrote are skipped entirely and reported; new lanes
-    are inserted whole (notes [] on insert only). Deletes only touch rows
-    the machine last wrote, so a seat-owned row can never be deleted."""
+    are inserted whole (notes [] on insert only).
+    DELETE-SIDE GUARD (2026-11-12 — the sn2090-sync deletion): this
+    machine never deletes a lane row at all. A wiped seat row carries
+    this machine's name, so any delete gated on "machine-owned" destroys
+    exactly the rows the wipe created. A stale row is held and reported
+    for a seat to close, never a DELETE."""
     existing = read_work_items(req)
     by_key = {r["item_key"]: r for r in existing}
     new_rows, owned_rows, skipped = [], [], []
@@ -340,12 +345,12 @@ def publish(req, board, now):
              if r["item_key"].startswith("lane:")
              and r["item_key"] not in live_keys
              and r.get("last_actor_seat") == ACTOR]
-    for r in stale:
-        req("DELETE", f"/work_items?project_id=eq.{PROJECT_ID}"
-                      f"&item_key=eq.{urllib.parse.quote(r['item_key'], safe='')}")
+    # Never DELETE a lane row (see docstring): a stale machine-owned row
+    # is held and reported for a seat to close.
+    held = [r["item_key"] for r in stale]
     return {"upserted": len(new_rows) + len(owned_rows),
             "inserted": len(new_rows), "updated": len(owned_rows),
-            "skipped_seat_owned": skipped, "deleted": len(stale)}
+            "skipped_seat_owned": skipped, "deleted": 0, "held": held}
 
 
 def atomic_write(path, obj):
@@ -459,6 +464,12 @@ def main():
                 f"notes/state/next_action preserved: "
                 + ", ".join(s["item_key"] for s in skipped[:5])
                 + (" ..." if len(skipped) > 5 else ""))
+        if isinstance(pub, dict) and pub.get("held"):
+            review.append(
+                f"publish held {len(pub['held'])} stale lane row(s) — lane "
+                f"closed, row NOT deleted, a seat closes it: "
+                f"{', '.join(pub['held'][:5])}"
+                + (" ..." if len(pub["held"]) > 5 else ""))
     report = {"at": now_iso(), "generated_board": BOARD, "publish": pub,
               "counts": board["counts"], "review": review,
               "ledger_sha256": ledger_sha,
