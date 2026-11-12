@@ -44308,5 +44308,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "0b75628f9d022b340a1be9574496d7adc8d2fbbfb348969e19eb7c7641b90ddf"
+  "corpus_manifest_hash": "0411422749d48c132e86c85813386e6a3dd911b3f0bd449f0786b727dbe93ff2"
 }
