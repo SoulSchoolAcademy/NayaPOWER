@@ -21984,6 +21984,33 @@ function saHeroInvite(){
   } else { done('Your link: ' + url); }
 }
 
+/* MEMBERSHIP ROUND 5 FIX (2026-11-12): the PowerCast cards MOVE into
+   #saTheatre when fullscreen, outside #saCourse — so no theatre click ever
+   reached the #saCourse delegated listener and every transport control was
+   dead. One shared handler, harvested verbatim from that listener: the
+   #saCourse listener and the #saTheatre listener both call it. No duplicated
+   control logic, no new player, no rebuilt theatre. Returns true when the
+   click was an audio control. */
+function saPcHandleClick(e){
+  var t = e.target && e.target.closest ? e.target.closest('[data-sa-pc-play]') : null;
+  if(t){ var pi = +t.getAttribute('data-sa-pc-play'); if(pi===saPcIdx){ saPcToggle(); } else { saPcLoad(pi, true); } return true; }
+  if(e.target && e.target.closest && e.target.closest('#saPcAll')){ saPcShowAll = !saPcShowAll; saRenderPcList(); return true; }
+  if(e.target && e.target.closest && e.target.closest('#saPcPlay')){ saPcToggle(); return true; }
+  if(e.target && e.target.closest && e.target.closest('#saPcPrev')){ saPcLoad((saPcIdx+SA_PC.length-1)%SA_PC.length, true); return true; }
+  if(e.target && e.target.closest && e.target.closest('#saPcNext')){ saPcLoad((saPcIdx+1)%SA_PC.length, true); return true; }
+  if(e.target && e.target.closest && e.target.closest('#saPcBack')){ try{ saAudio.currentTime = Math.max(0, saAudio.currentTime-15); }catch(_){} return true; }
+  if(e.target && e.target.closest && e.target.closest('#saPcFwd')){ try{ saAudio.currentTime = Math.min(saAudio.duration||0, saAudio.currentTime+30); }catch(_){} return true; }
+  if(e.target && e.target.closest && e.target.closest('#saPcBar')){
+    try{
+      var bar = sa$('saPcBar'), r = bar.getBoundingClientRect();
+      var frac = (e.clientX - r.left)/r.width;
+      if(saAudio.duration){ saAudio.currentTime = frac * saAudio.duration; }
+    }catch(_){}
+    return true;
+  }
+  return false;
+}
+
 /* ---------- wiring ---------- */
 function saWire(){
   var back = sa$('saLoginBack');
@@ -21992,6 +22019,10 @@ function saWire(){
   if(tc) tc.addEventListener('click', saStopTheatre);
   var tn = sa$('saTheatreNext');
   if(tn) tn.addEventListener('click', saTheatreNext);
+  /* ROUND 5 FIX: the same audio handling on the theatre — the PowerCast
+     cards live here while fullscreen, outside #saCourse. */
+  var tht = sa$('saTheatre');
+  if(tht) tht.addEventListener('click', function(e){ saPcHandleClick(e); });
   var hi = sa$('saHeroInvite');
   if(hi) hi.addEventListener('click', saHeroInvite);
   var sb = sa$('saBackBtn');
@@ -22037,20 +22068,8 @@ function saWire(){
   if(course) course.addEventListener('click', function(e){
     var t = e.target && e.target.closest ? e.target.closest('[data-sa-toc],[data-sa-toc-back],[data-sa-read],[data-sa-next],[data-sa-watch],[data-sa-watch-ch],[data-sa-nextvid],[data-sa-cover],[data-sa-cover-ch],[data-sa-prev-lesson],[data-sa-next-lesson],[data-sa-pc-play],[data-sa-pc-full],[data-sa-close]') : null;
     if(!t){
-      if(e.target && e.target.closest && e.target.closest('#saPcAll')){ saPcShowAll = !saPcShowAll; saRenderPcList(); return; }
-      if(e.target && e.target.closest && e.target.closest('#saPcPlay')){ saPcToggle(); return; }
-      if(e.target && e.target.closest && e.target.closest('#saPcPrev')){ saPcLoad((saPcIdx+SA_PC.length-1)%SA_PC.length, true); return; }
-      if(e.target && e.target.closest && e.target.closest('#saPcNext')){ saPcLoad((saPcIdx+1)%SA_PC.length, true); return; }
-      if(e.target && e.target.closest && e.target.closest('#saPcBack')){ try{ saAudio.currentTime = Math.max(0, saAudio.currentTime-15); }catch(_){} return; }
-      if(e.target && e.target.closest && e.target.closest('#saPcFwd')){ try{ saAudio.currentTime = Math.min(saAudio.duration||0, saAudio.currentTime+30); }catch(_){} return; }
-      if(e.target && e.target.closest && e.target.closest('#saPcBar')){
-        try{
-          var bar = sa$('saPcBar'), r = bar.getBoundingClientRect();
-          var frac = (e.clientX - r.left)/r.width;
-          if(saAudio.duration){ saAudio.currentTime = frac * saAudio.duration; }
-        }catch(_){}
-        return;
-      }
+      /* ROUND 5 FIX: audio controls share one handler with the theatre. */
+      saPcHandleClick(e);
       return;
     }
     if(t.hasAttribute('data-sa-close')){ saClose(); return; }
@@ -22073,7 +22092,7 @@ function saWire(){
       if(curx >= mx){ saShowToc(); } else { saStepLesson(1); }
       return;
     }
-    if(t.hasAttribute('data-sa-pc-play')){ var pi = +t.getAttribute('data-sa-pc-play'); if(pi===saPcIdx){ saPcToggle(); } else { saPcLoad(pi, true); } return; }
+    if(t.hasAttribute('data-sa-pc-play')){ saPcHandleClick(e); return; }
   });
   /* cover buttons + membership-card Open buttons \u2014 capture, before the
      page's own bubble handlers (which would navigate away). Only the
