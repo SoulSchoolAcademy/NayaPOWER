@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-12T03:48:54Z",
-  "tip": "71adc46f76638544e906b00b4a8ee36d1ab9b040",
+  "generated_at": "2026-11-12T09:48:30Z",
+  "tip": "9c2a49ff59b82e1b607c0c49bc87885ea1606e04",
   "prs": [
     {
       "number": 3345,
@@ -13,13 +13,13 @@
       "head": "5f99cc62b40a9fe1b2fa9bbc0b58f69d1bc58900"
     },
     {
-      "number": 3349,
-      "title": "[DRAFT][INTELLIGENCE] NayaNET Smart Skills \u2014 distilled 12-master candidate for collective review",
-      "tier": "B",
+      "number": 3351,
+      "title": "docs(brain): learning event 2026-11-11",
+      "tier": "C",
       "action": "CURE",
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "4f099dfcf654fdfe9020f35cdd876bc18309de54"
+      "head": "3cfdc6d87dcd79a397442e820108cc447b7152c2"
     }
   ]
 }
