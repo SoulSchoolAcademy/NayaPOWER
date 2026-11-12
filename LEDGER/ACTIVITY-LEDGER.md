@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 08:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 08:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -44877,9 +44877,23 @@ _Last updated: 2026-11-12 08:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ gap-gap-gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12-lane12-lane12-lane12-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.4/10 [VERIFIED]
+
+**Task:** Gap-gap-gap-gap-gap follow-up on 1610: force-test the exit-3 auto-restore path in safe-edit.py by fault injection and prove the CRITICAL branch
+
+**Evidence:** VERIFIED this tick by independent scorer re-run on live bytes: shipped safe-edit.py sha 1d4f4507e2eb6cac9003a3990aca567e13f1fde32fd9a7ef884d482d62f22411 == receipt claim exactly; template sha 970a886db9379f6bb830025a6026e1679e94c04d21aa24d703a08977b8c2c1ce == receipt claim exactly; runner sha d957847c0c73186867d63d44dfd96a4db91c59a75be2f8d6634600e6
+
+### ✅ gap-gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12-lane12-lane12-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.2/10 [VERIFIED]
+
+**Task:** Gap-gap-gap-gap follow-up on 1610: close the automatic-invocation half of the EDIT-ANCHOR adoption gap (safe-edit.py edit path) and prove the independent-adoption half open or closed
+
+**Evidence:** VERIFIED this tick on live bytes: safe-edit.py sha 1d4f4507e2eb6cac9003a3990aca567e13f1fde32fd9a7ef884d482d62f22411 == receipt claim exactly, executable; template sha 970a886db9379f6bb830025a6026e1679e94c04d21aa24d703a08977b8c2c1ce == receipt claim exactly; EDIT-ANCHOR count 1, safe-edit.py mentions 1, check-edit-anchor.py mentions 1; backup lane-1
+
 ### ✅ gap-gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12-lane12-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.2/10 [VERIFIED]
 
 **Task:** Gap-gap-gap-gap follow-up on 1610: close the adoption half of the EDIT-ANCHOR RULE gap (prove an independent seat applied it) and/or make the rule mechanical rather than prose-only
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12-lane12-lane12-lane12.md`
 
 **Evidence:** VERIFIED this tick on live bytes: template sha b62d515d253e9100131ffc53e8cc92b9ecf2cda540e8916408df96a281dff184 == receipt post-edit pin exactly; backup sha 3429eed46c3bd0457aeba5b89a2b0167826a1026bde95152e1f8c2bfc63a853f == parent receipt post-edit sha exactly; diff backup->template exactly line 79 changed (one appended gate sentence); EDIT-ANCHOR
 
