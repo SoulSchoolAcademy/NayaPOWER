@@ -966,9 +966,13 @@ function wireStep(sec, idx){
   answer.addEventListener('focus', function(){ hideStatus(speakNote); hideStatus(enterNote); });
 
   function submitAnswer(){
-    if (!answer.value.trim()){ showStatus(enterNote, 'Say it first — speak, type, or paste your answer, then Enter.'); }
+    /* S2 (I) — the answer is the SELECTED one (S.answers[key]): it may live
+       in an edited choice box while the Full Custom box is empty. An
+       untouched example is never an answer — only an edit sets it. */
+    var v = String(S.answers[key] || '').trim();
+    if (!v){ showStatus(enterNote, 'Say it first — speak, type, or paste your answer, then Enter.'); }
     else {
-      S.answers[key] = answer.value; save();
+      S.answers[key] = v; save();
       hideStatus(speakNote);
       if (idx < 9) showStep(idx + 1);
       else showStep(10);
