@@ -1,9 +1,209 @@
 {
   "contract": "room-feed/v1",
   "room": "today",
-  "emitted_at": "2026-11-09T15:59:45.422744-08:00",
+  "emitted_at": "2026-11-12T01:27:55.240764-08:00",
   "source_ref": "engine-job:hub-feeds-emitter-t0479",
   "items": [
+    {
+      "id": "idx-b67024ab-1fec-4be5-b648-10f8503b7fe6",
+      "title": "The Welcome Series — seven welcome emails in seven days, then one teaching mail a day",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-12 07:35:20.001179+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-5796c785-f304-456c-be93-a44c51a5df18",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-12 07:35:19.938748+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-d7d5355f-aa8d-4cca-bc31-5c788b3576a6",
+      "title": "Pricing — Power costs $25, Pro $50, Max $100, nine days free",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-12 07:35:19.61971+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-761bdc2f-7452-47f0-a3d7-b769935f9ab7",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-12 07:35:19.564959+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-2f991012-2426-4839-baaf-fa8dcf3de87e",
+      "title": "Invite People and Earn — share your ambassador link, earn 50% of the revenue",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-12 07:35:19.251637+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-fa888ddf-a0cc-48a0-8963-aac5715148af",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-12 07:35:19.199721+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-a67e95b7-7d2f-462c-91a6-e0cbfe00627d",
+      "title": "The Dashboard — your cockpit: Smart Score gauge, orbs, Ledger and Stats in one place",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-12 07:35:18.694839+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-97962f0d-6058-4aab-b294-26f8efe33a18",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-12 07:35:18.631006+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-980f78db-3998-4af2-870a-4e7b272c400e",
+      "title": "Auto-Match — how Auto-Match connects people, automatically, by behaviour under an alias",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-12 07:35:18.242357+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-00507330-8045-4a16-affa-9ef45f1dddfc",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-12 07:35:17.844511+00"
+        }
+      ]
+    },
     {
       "id": "idx-850b2b79-c52b-4379-9ce9-5983c100476c",
       "title": "Naya runtime flow lesson",
@@ -81,206 +281,6 @@
           "color": "#FFFFFF",
           "tier": "primary",
           "body": "REFERENCE · status VERIFIED · event 2026-10-22 04:12:17.837262+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-328f851c-2c34-4ca6-ae19-1a17f2b19f47",
-      "title": "SN-9998 — live-fire distill-mode test note (lifecycle record; retired test fixture)",
-      "topics": [
-        "INTELLIGENT_BLOCK"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-22 04:12:16.277765+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-fd1e6fbb-e8fe-4761-967e-b3fb5336e96b",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-22 04:12:15.75027+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-87286474-a5fe-4f57-93da-5c2ef09e0dba",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-20 23:45:19.158843+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-a53f2ccf-76b3-4382-b228-da54e84b1970",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-20 23:33:33.018287+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-513e81ba-785b-4c7d-9add-d546cd00721c",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-20 21:12:50.775285+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-b412ced6-940a-42ad-bc3b-cdbea169ba95",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:59:12.644998+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-ff315f39-0025-40ef-b14c-e7b76b53f14c",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:59:04.421399+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-b90320eb-de23-4ddf-897d-b6474c43bb46",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:58:58.424727+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-69004354-4a64-4618-b0ed-4a6575719e39",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:58:50.92968+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-15be8fd3-4532-452e-a02c-11324af85707",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:40:02.251093+00"
         }
       ]
     },
