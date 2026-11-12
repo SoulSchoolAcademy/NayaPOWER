@@ -204,6 +204,18 @@ textarea.ph-field{min-height:84px;resize:vertical}
    margin, a tab click lands the section's top edge at the viewport top,
    BEHIND the menu, and the section's kicker is covered. 100px clears both. */
 .ph-card{scroll-margin-top:100px}
+/* E10 — THE LIVE WALL STRIP (addendum 15:59Z, Shawn's order). The four beats +
+   standing note, harvested from the PI Live Wall inside Personal (his screenshot
+   image-5.png) and the pricing study's board grammar: one spectrum colour owned
+   per board, spoken by its jewel, its rail and its glow; adjacent boards never
+   share a hue; white words, always. Shape = the bridge stage (.ph-stage:133-134),
+   full-width; jewel size = the smart-bar .nsb-jewel, 29px (template:188).
+   Colours = the screenshot's own assignment: gold · red · magenta · purple,
+   standing note blue. */
+.lw-beat{--ac:#a06bff;--ac-rgb:160,107,255;border:2px solid rgba(var(--ac-rgb),.42);border-radius:18px;padding:20px 22px;background:radial-gradient(420px 180px at 50% -12%,rgba(var(--ac-rgb),.16),rgba(var(--ac-rgb),0) 62%),linear-gradient(180deg,#07070b,#050607);box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5);display:flex;gap:14px;align-items:flex-start;transition:all .25s}
+.lw-beat:hover{transform:translateY(-4px);border-color:var(--ac);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.6),0 0 44px var(--ac)}
+.lw-beat .os-jewel{width:29px;height:29px;font-size:14px;border-radius:9px;flex:0 0 auto;margin-top:1px}
+.lw-beat p{margin:0;font-size:15px;line-height:1.55;color:#fff}
 .ph-hero .ph-kicker,.ph-hero h1,.ph-hero .ph-sub{text-align:center}
 .sh-title-jewels{display:flex;justify-content:center;gap:14px;margin:2px 0 12px}
 @media(max-width:480px){
@@ -320,6 +332,26 @@ textarea.ph-field{min-height:84px;resize:vertical}
 
   <!-- THE BRIDGE — a living flow, not a diagram. Intelligence → Factory → Apps, with live
        counts from the record and a real door on every stage. -->
+  <!-- THE LIVE WALL STRIP — what the Smart Hub is, in the PI Live Wall's own language
+       (addendum 15:59Z): four beats + the standing note. One spectrum colour per board,
+       adjacent boards never share a hue; the colours are the screenshot's own assignment
+       (gold · red · magenta · purple · blue). Shape = the bridge stage, full-width. -->
+  <section class="ph-card lw-beat" style="--ac:#ffbf3d;--ac-rgb:255,191,61" aria-label="What it is">
+    <span class="os-jewel" style="--jc:#ffbf3d">◆</span>
+    <p><b>What it is —</b> Your operating center. Today, your projects, your people, your journal — see what's happening, then do the next thing.</p>
+  </section>
+  <section class="ph-card lw-beat" style="--ac:#ff5e6c;--ac-rgb:255,94,108" aria-label="What it does">
+    <span class="os-jewel" style="--jc:#ff5e6c">⬢</span>
+    <p><b>What it does —</b> You name a project, tell me about it, and one tap creates it — into the record, onto the timeline, into Your projects. Your people and your journal sit beside it.</p>
+  </section>
+  <section class="ph-card lw-beat" style="--ac:#e84fff;--ac-rgb:232,79,255" aria-label="Why it matters">
+    <span class="os-jewel" style="--jc:#e84fff">✦</span>
+    <p><b>Why it matters —</b> Your whole life is scattered — six platforms, ten apps, no home. Here it is one record, one timeline — nothing sits, nothing is lost.</p>
+  </section>
+  <section class="ph-card lw-beat" style="--ac:#a06bff;--ac-rgb:160,107,255" aria-label="How it connects">
+    <span class="os-jewel" style="--jc:#a06bff">◉</span>
+    <p><b>How it connects —</b> Project Intelligence knows it, the Factory builds from it, this page operates it.</p>
+  </section>
   <section class="ph-card" style="--ac:#3fb8ff" aria-label="The bridge — how it flows">
     <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">◉</span> The bridge — how it flows</p>
     <h2>Intelligence becomes your world</h2>
@@ -363,8 +395,8 @@ textarea.ph-field{min-height:84px;resize:vertical}
 
   <!-- THE RECORD, ALIVE — the record's own numbers, rendered from the record by the page.
        Create a project above and watch them move. -->
-  <section class="ph-card" style="--ac:#3fb8ff" aria-label="The record, alive" id="record">
-    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">◉</span> The record, alive</p>
+  <section class="ph-card" style="--ac:#e84fff" aria-label="The record, alive" id="record">
+    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#e84fff">◉</span> The record, alive</p>
     <div class="ph-orbs">
       <div class="ph-orbcell"><div class="os-orb" style="--ac:#2fe89e" id="orbMotion">55</div><span class="os-orb-l">IN MOTION</span></div>
       <div class="ph-orbcell"><div class="os-orb" style="--ac:#3fb8ff" id="orbDone">41</div><span class="os-orb-l">DONE + PROVEN</span></div>
@@ -634,9 +666,9 @@ textarea.ph-field{min-height:84px;resize:vertical}
     </div>
   </section>
 
-  <!-- FOOTER: how this page is fed — the honest source line. -->
-  <section class="ph-card" style="--ac:#a06bff" aria-label="How this page is fed">
-    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">✦</span> How this page is fed</p>
+  <!-- STANDING NOTE (E10): the Live Wall's standing-note board — the honest source line. -->
+  <section class="ph-card" style="--ac:#3fb8ff" aria-label="Standing note">
+    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">✎</span> Standing note</p>
     <p>Fed by Project Intelligence (04:40Z) and the daily log. Factory counts 571 parts, 154 canonical — the 566-vs-571 count is unsettled, Shawn&rsquo;s call. One record, one timeline: the Smart Box is the database; this page reads the record below and writes what you create into it. The server-side Box write and the bottom bar (Hub nav round) come next.</p>
   </section>
 
