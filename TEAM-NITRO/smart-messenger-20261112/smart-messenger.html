@@ -172,9 +172,10 @@ img{max-width:100%}
    name 1 line, presence wraps at most 2 lines); row 2 = toggle full width,
    its two buttons split the row evenly. 1440 untouched. */
 @media (max-width:640px){
-  .thread-head{flex-wrap:wrap;row-gap:8px;padding:12px 14px}
+  .thread-head{flex-wrap:wrap;row-gap:6px;padding:10px 14px}
   .thread-head .who{flex:1 1 0;min-width:0}
   .thread-head .who b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .thread-head .who span{font-size:12px}
   .thread-head .toggle{flex:1 1 100%}
   .thread-head .toggle button{flex:1;padding:8px 10px}
 }
