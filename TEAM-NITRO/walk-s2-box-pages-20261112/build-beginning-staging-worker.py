@@ -48,7 +48,7 @@ welcome_sha = hashlib.sha256(welcome_raw).hexdigest()
 print(f"walk {len(walk_raw)} B sha {walk_sha}")
 print(f"identity {len(ident_raw)} B sha {ident_sha}")
 print(f"welcome {len(welcome_raw)} B sha {welcome_sha}")
-assert walk_sha.startswith("a6b787ab"), "walk sha is not the S2 walk sha"
+assert walk_sha.startswith("7e6ba646"), "walk sha is not the S2 walk sha"
 assert ident_sha.startswith("84c2b29a"), "identity sha is not the entry-identity-fix sha"
 assert welcome_sha.startswith("506a0f82"), "welcome sha is not the entry-identity-fix sha"
 
