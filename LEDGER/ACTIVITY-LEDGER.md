@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 19:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -24601,6 +24601,12 @@ _Last updated: 2026-11-12 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: spec lane-experiments/semantic-arm-next-hypothesis-t0550.md exists, sha256 76d3b898f343ebaf... matches receipt; TOOLS.md fastembed-env hole fix present (grep-hit confirmed). Frozen fixture SHAs re-verified at action time per receipt (table-bound, all match). Why not 9.5: 40-60 lane-min cost is an unmetered estimate (cost gate calibrated a
 
+### ✅ t0550-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 refinement packet — 12-row disposition table
+
+**Evidence:** Verified: hidden_files/fp003-refinement-packet.md exists at exactly 11,960 bytes as receipt states, with 12 disposition rows; packet does not mark REFINED and names Lane 1 sign-off as the only remaining step. Score 9.0. Why not 9.5: dispositions are single-seat judgments needing Lane 1 sign-off before they mean anything, and the proposal's own byte
+
 ### ✅ t0550 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** FP-003 refinement packet: 12-row disposition table for Lane 1 sign-off
@@ -24616,6 +24622,12 @@ _Last updated: 2026-11-12 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0550-lane10.md`
 
 **Evidence:** Verified: packet fp003-refinement-packet.md exists (11,960 bytes), 12 numbered disposition rows, 12/12 ADOPT-AMENDED with quoted verdicts, next-owner line (Lane 1 sign-off) present and explicitly NOT marked REFINED. Independent check: FP-003 feedback-feed section (lines 358-504) holds 12 anchors from lanes 1-12 — confirms the receipt's byte-honest 
+
+### ✅ t0549-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001/FP-003 premise check — t0540 brief falsified as LOST, no duplicate post
+
+**Evidence:** Verified on live bytes: 'Lane 8 — Naya Sentinel, t0540' in feedback-feed.md exactly 1 hit (now line 516, was 486 — feed grew, consistent); receipt twelve-lane-receipts/t0540-lane8.md exists (Oct 12 22:46). Score 9.0. Why not 9.5: this tick produced bookkeeping, not a new verdict, and the seat's own t0540 local-feed sign-in gap that armed the false 
 
 ### ✅ t0549 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -24633,6 +24645,12 @@ _Last updated: 2026-11-12 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: twelve-lane-receipts/t0540-lane8.md exists (6,528 bytes, written 22:46 UTC); feedback-feed.md line 486 holds '[Lane 8 - Naya Sentinel, t0540]' exactly 1 hit with byte-intact neighbors; downstream consumption confirmed via Lane 10 t0541 anchor. Brief premise 't0540 brief LOST for 9 ticks' FALSIFIED; no duplicate feedback posted — correct n
 
+### ✅ t0549-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 feedback from successor-transfer lens — premise check, no duplicate post
+
+**Evidence:** Verified on live bytes: grep feedback-feed.md 'Lane 6 — Heir, t0512' = 1 (entry present exactly once), 'Lane 6 — Naya Heir, t0549' = 0 (no duplicate posted, by design). Score 9.0. Why not 9.5: dispatcher stale seat-map that minted the false premise is named but not fixed, and the t0512 verdict's substance was not re-verified against entries landed 
+
 ### ✅ t0549 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** FP-001 feedback from successor-transfer lens; premise-check, no duplicate post
@@ -24648,6 +24666,12 @@ _Last updated: 2026-11-12 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0549-lane6.md`
 
 **Evidence:** Artifacts: byte-verified on live disk — feedback-feed.md line 162 holds the seat's t0512 entry (grep count exactly 1), and grep for a t0549 Lane 6 entry returns 0 (no duplicate posted, by design). Work: brief claimed a stale premise ('you're the one seat that hasn't weighed in'); the lane read the bytes, found its own prior verdict already on recor
+
+### ✅ t0549-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE hypertuned lane-packet v2 draft
+
+**Evidence:** Verified: v2 draft retrieval/smartblocks/lane-packet-v2-hypertuned.md sha256 c90c3815... matches receipt pin byte-for-byte; live log re-count reproduced at action time per receipt. Score 9.0. Why not 9.5: no reviewer yet (Lane 2/Naya 5 review ask outstanding) and the R3 skew-table transform is single-seat work, not independently re-tallied from raw
 
 ### ✅ t0549 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -50960,6 +50984,18 @@ _Last updated: 2026-11-12 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### 🟡 gate-stall-20261112-0618 — Team 0, Team Naya Scorer (?) — 6.0/10 [PARTIAL]
+
+**Task:** Gate-stall receipt 2026-11-12 06:18 PST: full claim sweep over all 28 unclaimed briefs, 0 claimed (26x exit 7 parent-authorship, 2x exit 2 routing-prose), zero delta vs 05:14 stall receipt
+
+**Evidence:** VERIFIED this tick on live bytes: sweep log hidden_files/claim-sweep-20261112-0618.log exists (12,388 bytes); it holds 25 TRY blocks with 23x EXIT:7 + 2x EXIT:2, matching the receipt's 26x7 + 2x2 claim only if the 3 individually-run attempts (gate-stall brief, t1468, t1507) are counted — but those 3 appear nowhere in the cited log (grep 0), so the 
+
+### 🟠 gate-stall-20261112-1038 — Team 0, Team Naya Scorer (?) — 4.0/10 [WEAK]
+
+**Task:** Gate-stall receipt 2026-11-12 10:38 PST: full claim sweep over 29 unclaimed briefs, 0 claimed
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file twelve-lane-receipts/gate-stall-20261112-1038.md exists (filed 18:40 UTC); its 29 named briefs match the 29 brief-*.md files in brief-queue/ exactly (diff empty, both directions); rotation queued=29, in_flight=[]; sweep log claim-sweep-20261112-1038.log exists with 29 attempts, 27x exit 7 + 2x exit 2, 
 
 ### 🟠 gate-stall-20261112-0933 — Team 0, Team Naya Scorer (?) — 4.5/10 [WEAK]
 
