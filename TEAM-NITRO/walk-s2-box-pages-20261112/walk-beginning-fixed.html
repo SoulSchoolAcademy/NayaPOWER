@@ -666,6 +666,7 @@ textarea.visionin{padding:10px}
 .p3-choice-eye:hover,.p3-choice-eye:focus-visible{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.6),0 6px 16px rgba(0,0,0,.6),0 0 26px rgba(160,107,255,.8);transform:translateY(-1px);outline:none}
 .p3-choice-text[readonly]{cursor:default}
 .p3-choice-text:not([readonly]){background:rgba(255,255,255,.06);border-radius:8px;padding:6px 8px;outline:1.5px solid rgba(160,107,255,.65)}
+.p3-custom-q .p3-choice-eye{display:inline-flex}
 .p3-choice.editing{border-color:#a06bff}
 .p3-choices{display:flex;flex-direction:column;gap:10px;margin-bottom:6px}
 .p3-choice{position:relative;display:flex;gap:10px;align-items:flex-start;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02) 60%,rgba(0,0,0,.28));border:1.5px solid rgba(255,255,255,.25);border-radius:14px;padding:12px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.2),0 8px 20px rgba(0,0,0,.5)}
@@ -859,6 +860,11 @@ function showStep(n){
   window.__walkStep = n;
   window.scrollTo(0, 0);
   var vis = n < 10 ? STEPS[n] : (n === 10 ? NAMESSEC : (n === 11 ? BUILDSEC : ENDSEC));
+  /* S2 (self-check 1) — the example texts are longer than 2 rows: fit each
+     choice textarea to its content so the citizen can READ the example. */
+  if (vis) vis.querySelectorAll('.p3-choice-text').forEach(function(cb){
+    cb.style.height = 'auto'; cb.style.height = (cb.scrollHeight + 2) + 'px';
+  });
   var ta = vis.querySelector('textarea.visionin');
   if (ta) { try { ta.focus({ preventScroll: true }); } catch(e){} }
 }
@@ -895,6 +901,7 @@ function wireStep(sec, idx){
     cb.addEventListener('input', function(){
       selectChoice(cb.closest('.p3-choice'));
       S.answers[key] = cb.value; save(); hideStatus(speakNote); hideStatus(enterNote);
+      cb.style.height = 'auto'; cb.style.height = (cb.scrollHeight + 2) + 'px';
     });
   });
   sec.querySelectorAll('.p3-choice-eye').forEach(function(btn){
@@ -912,6 +919,7 @@ function wireStep(sec, idx){
       if (!ta) return;
       ta.removeAttribute('readonly');
       ta.closest('.p3-choice').classList.add('editing');
+      ta.style.height = 'auto'; ta.style.height = (ta.scrollHeight + 2) + 'px';
       ta.focus();
       try { var len = ta.value.length; ta.setSelectionRange(len, len); } catch (e) {}
     });
