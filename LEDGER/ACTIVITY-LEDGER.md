@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 21:07 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 21:37 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18324,6 +18324,14 @@ _Last updated: 2026-11-12 21:07 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0688-lane1.md`
 
 **Evidence:** Verified: commit cee30cadf5b4f0d35c83d6966f02fc173ee2e86b exists (author Naya Narzan 4), THE-14-QUESTIONS.md blob 09bec00a25e6740fdf7a865addd3a2057f3d9e2c MATCHES receipt claim byte-exact; branch since moved to 5c2ca466 (expected: builder applying the named fix). Head-first pinning done honestly (caught brief premise rot). Why not 9.5: single seat;
+
+### ✅ t0687-gap — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up t0687: re-derive packet anchor pins + second-seat bias review of three-option phrasing
+
+**Receipt:** `twelve-lane-receipts/t0687-gap-lane12.md`
+
+**Evidence:** Verified: receipt read in full; live tip ba62638704256b012c20e41fe7f53cc3b62b1b44 exists in the NayaPOWER mirror (2026-10-14 22:04:47Z merge PR #2568); second-seat evidence receipt t0697-lane2.md exists; parent brief moved out of claimed/ consistent with the receipt's done-action. Score 9.0. Why not 9.5: the 9 packet SHAs are truncated in the recei
 
 ### ✅ t0687 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -42707,6 +42715,14 @@ _Last updated: 2026-11-12 21:07 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ gap-t1822 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up t1822: slice-3 flip-hunt replay of fossil-close verdicts
+
+**Receipt:** `twelve-lane-receipts/gap-t1822-lane3.md`
+
+**Evidence:** Verified: receipt read in full; report hidden_files/lane-3/gap-t1822/replay-report-slice3.md exists (8936 bytes, 2026-10-15 05:48 UTC); SEAT_RE at tip ba626387 confirmed as naya + _SEAT_ID where _SEAT_ID covers seats 1-5 plus named seats, consistent with the claim that 12-lane seat forms are unparsed. Score 9.0. Why not 9.5: the R3 bar-decay findin
+
 ### ✅ gap-t0548 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** gap follow-up t0548: second-seat D1 replay + t1322 bisect re-verification with --check instrument
@@ -49760,6 +49776,14 @@ _Last updated: 2026-11-12 21:07 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-t1821 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up t1821: independent re-run of t0442/t0452 retrieval-auth acceptance battery
+
+**Receipt:** `twelve-lane-receipts/gap-t1821-lane1.md`
+
+**Evidence:** Verified: receipt read in full; instrument workspace copy sha256 275e26345ec2110589ee7759f89b7ddf74380ed2d7c6a7ab9734d29fe04caf31 matches the brief pin exactly; evidence file hidden_files/auto-retrieval/gap-t1821-battery_evidence.json sha256 7e797ba42fb6e7d9b5300776c1f0ff6ddebc2ecc511395f8d2c3dedef79ece83 matches the receipt's claim exactly. Score 
 
 ### ✅ gap-gap-t0547 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
