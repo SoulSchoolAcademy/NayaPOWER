@@ -56,27 +56,27 @@ class SurfaceReadinessTests(unittest.TestCase):
 
     def test_inventory_covers_known_doors_but_not_all_apps(self):
         paths = {r["path"] for r in self.registry["surfaces"]}
-        self.assertEqual(len(paths), 25)
+        self.assertEqual(len(paths), 24)
         self.assertIn("/dashboard", paths)
         self.assertIn("/rooms/spaces", paths)
-        self.assertIn("/projects/questions.json", paths)
+        self.assertIn("/projects/state.json", paths)
         self.assertFalse(self.registry["coverage_complete"])
 
     def test_all_http_200_never_implies_nine_plus(self):
         r = audit_registry(self.registry, probe=lambda p:{
             "http_status":200,"reachable":True,"redirected":False,"effective_path":p})
         self.assertEqual(r["status"], "amber")
-        self.assertEqual(r["public_reachable"], 25)
-        self.assertEqual(r["unassessed"], 25)
+        self.assertEqual(r["public_reachable"], 24)
+        self.assertEqual(r["unassessed"], 24)
         self.assertIsNone(r["official_9_plus_count"])
 
     def test_404_is_red_and_not_completed(self):
         r = audit_registry(self.registry, probe=lambda p:{
-            "http_status":404 if p.endswith("questions.json") else 200,
-            "reachable":not p.endswith("questions.json"),
+            "http_status":404 if p == "/projects/state.json" else 200,  # SYNTHETIC probe: pretend the machine state endpoint is down; not a live finding
+            "reachable":p != "/projects/state.json",
             "redirected":False,"effective_path":p})
         self.assertEqual(r["status"], "red")
-        self.assertEqual(r["public_reachable"], 24)
+        self.assertEqual(r["public_reachable"], 23)
 
     def test_referral_redirect_does_not_prove_sign_up(self):
         r = audit_registry(self.registry, probe=lambda p:{
