@@ -9685,7 +9685,8 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
 body.os-bottom-hidden .obb-bar{transform:translateY(110%);opacity:0}
 /* FIX 1 (v2): the row is the scroll strip — snap-to-whole-pills. The bar stays
    one component; the row scrolls inside it and snaps so no pill rests half-sliced. */
-.obb-row{display:flex;align-items:center;gap:8px;margin:0 auto;flex:0 1 auto;min-width:0;max-width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;scroll-snap-type:x mandatory;scroll-padding:0 12px;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+/* ROUND ICONS 2026-11-12 — the row pitch is sized by the widest label ('Smart Factory', 98px at desktop / 84px at phone, measured live), so the labels beneath the circles never collide. The pitch stays UNIFORM like the gate strip; only the gap grows. The circles themselves are untouched. */
+.obb-row{display:flex;align-items:center;gap:64px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;scroll-snap-type:x mandatory;max-width:100%;margin:0 auto;padding:2px 4px 0}
 .obb-row::-webkit-scrollbar{display:none}
 /* ROUND ICONS 2026-11-12 — the pill IS the gate .eco-dot, verbatim (gate-icons-preview.html, 'GATE ICONS 10/10 — THE REUSABLE ICON COMPONENT' block + the inline rest skin on each anchor). --obb carries the destination color where the gate uses --eco-c; the rest glow is color-mix 35% = the gate's 59 hex alpha. The label rides below the circle (absolute); the glyph sits bare on the circle (the jewel is a transparent glyph holder now). */
 .obb-pill{flex:0 0 auto;scroll-snap-align:start;scroll-snap-stop:always;display:grid;place-items:center;width:38px;height:38px;min-width:38px;min-height:38px;padding:0;margin-bottom:16px;border-radius:50%;text-decoration:none;color:#fff;cursor:pointer;border:1.5px solid rgba(232,234,242,.55);border-top-color:rgba(255,255,255,.85);border-left-color:rgba(255,255,255,.7);border-bottom-color:rgba(140,144,160,.45);border-right-color:rgba(140,144,160,.5);background:radial-gradient(circle at 30% 22%,rgba(255,255,255,.28),rgba(255,255,255,0) 42%),radial-gradient(circle at 35% 28%,rgba(52,52,66,.95),rgba(8,8,12,.98) 72%);box-shadow:0 0 12px color-mix(in srgb,var(--obb) 35%,transparent),inset 0 1px 0 rgba(255,255,255,.4),inset 0 -3px 6px rgba(0,0,0,.65),inset 0 0 0 1px rgba(255,255,255,.07),0 5px 14px rgba(0,0,0,.65);transition:all .25s cubic-bezier(.16,.84,.22,1);-webkit-tap-highlight-color:transparent;position:relative}
@@ -9701,7 +9702,7 @@ body.os-bottom-hidden .obb-bar{transform:translateY(110%);opacity:0}
    kind Shawn asked off the Activity icon. Nothing in the file ever populates or
    shows this badge (no JS references #os-b3-badge), so the hidden attribute rules. */
 .obb-badge[hidden]{display:none}
-@media (max-width:640px){.obb-bar{gap:6px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))}.obb-row{gap:6px;scroll-padding:0 10px}.obb-pill{width:27px;height:27px;min-width:27px;min-height:27px;margin-bottom:14px}.obb-jewel{font-size:14px}.obb-lbl{font-size:9px}}
+@media (max-width:640px){.obb-bar{gap:6px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))}.obb-row{gap:61px;scroll-padding:0 10px}.obb-pill{width:27px;height:27px;min-width:27px;min-height:27px;margin-bottom:14px}.obb-jewel{font-size:14px}.obb-lbl{font-size:9px}}
 </style>
 <!-- 2026-11-12, Hub bar black icons (E4 OUT, Shawn 15:43Z): the Smart Bar is REMOVED — no smart bar at the bottom, on the Hub or any page. The #nsbBottom container is gone; the mount below is gone with it. The Smart Bar system code stays inert (unmounted) — smallest change, no rebuild. -->
 <style>
