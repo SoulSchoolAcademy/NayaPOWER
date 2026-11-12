@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-12T15:50:01Z",
-  "tip": "7e184ea82f98770e4c09307bf533cace9cb3ee6a",
+  "generated_at": "2026-11-12T21:48:43Z",
+  "tip": "edd97d60773fb5a3ed25c6b7b704ca07d914e2ec",
   "prs": [
     {
       "number": 3345,
@@ -11,24 +11,6 @@
       "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
       "owner": "any seat != author (scorecard drive)",
       "head": "5f99cc62b40a9fe1b2fa9bbc0b58f69d1bc58900"
-    },
-    {
-      "number": 3351,
-      "title": "docs(brain): learning event 2026-11-11",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "3cfdc6d87dcd79a397442e820108cc447b7152c2"
-    },
-    {
-      "number": 3353,
-      "title": "test(truth): ratchet registry lifecycle self-contradictions (SN-9998/SN-9999)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "a49fddf9181a92c4a0b442b493b162c2b302c7c0"
     },
     {
       "number": 3354,
