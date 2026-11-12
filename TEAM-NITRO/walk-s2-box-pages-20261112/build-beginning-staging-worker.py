@@ -48,7 +48,7 @@ welcome_sha = hashlib.sha256(welcome_raw).hexdigest()
 print(f"walk {len(walk_raw)} B sha {walk_sha}")
 print(f"identity {len(ident_raw)} B sha {ident_sha}")
 print(f"welcome {len(welcome_raw)} B sha {welcome_sha}")
-assert walk_sha.startswith("a4433384"), "walk sha is not the S2 walk sha"
+assert walk_sha.startswith("a6b787ab"), "walk sha is not the S2 walk sha"
 assert ident_sha.startswith("84c2b29a"), "identity sha is not the entry-identity-fix sha"
 assert welcome_sha.startswith("506a0f82"), "welcome sha is not the entry-identity-fix sha"
 
@@ -141,11 +141,15 @@ function pageBody(kind, a) {
     sec("Nutshell", a.biz_do);
     sec("Why it matters", a.biz_offer);
     sec("What it means", a.biz_building);
+    /* S2 (addendum 5) — vision runs through all three pages: the thread. */
+    sec("The vision", a.vision);
     sec("How to apply it", a.mission);
   } else {
     sec("Nutshell", a.space);
     sec("Why it matters", a.into);
     sec("What it means", a.vision);
+    /* S2 (addendum 5) — mission runs through all three pages: the thread. */
+    sec("The mission", a.mission);
     sec("What's in it for you", a.motto);
   }
   return out.join("\n") || "## Nutshell\nYour words will appear here as you add them in the walk.\n";
