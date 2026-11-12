@@ -807,7 +807,7 @@ function bootLive(){
     state.live.authorByIb = map;
     applyBylineAuthors();
   }).catch(function(){ state.live.authorByIb = {}; }));
-  Promise.all(p).then(function(){ updateLiveStrip(); renderPeople(); });
+  Promise.all(p).then(function(){ applyBylineAuthors(); updateLiveStrip(); renderPeople(); });
 }
 /* ---------- FULL NOTE: one reachable full L6 note, verified live ----------
    FULL5 is the candidate list (verified 2026-11-12: all five L6 sections
