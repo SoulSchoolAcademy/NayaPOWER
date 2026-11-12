@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2674",
+ "intelligence": {
+  "title": "Systems & Connections",
+  "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2674-systems-and-connections",
+  "smart_note_id": "SN-2674",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2674/IB-SMART-NOTE-20261112-sn2674-systems-and-connections.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-12. No runtime provenance invented.",
+  "ingested_at": "2026-11-12",
+  "essence": "",
+  "human_view": "",
+  "simple_view": "Sweetheart, everything is connected, like the rooms in a house — if you move a wall in one room, the rooms next door feel it. So before I move anything, I look at the whole house first.",
+  "grandma_view": "Dear, nothing in a house stands alone, love — the kitchen feeds the dining room, and the dining room feeds the family. Before you change one room, you walk the whole house and see what leans on what, dear.",
+  "naya_view": "I am Anaya. I see dependencies, feedback, and one brain across many doors. I map upstream and downstream before I change anything, and I prove the improvement end to end — better here, broken nowhere.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2674",
+   "title": "Systems & Connections",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2674/IB-SMART-NOTE-20261112-sn2674-systems-and-connections.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-12 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2674/IB-SMART-NOTE-20261112-sn2674-systems-and-connections.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "870570a5f76049bcaa72a1689f00476c00ffce43"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

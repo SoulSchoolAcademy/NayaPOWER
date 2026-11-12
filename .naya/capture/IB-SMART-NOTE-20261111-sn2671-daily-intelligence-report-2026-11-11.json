@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2671",
+ "intelligence": {
+  "title": "Daily Intelligence Report — 2026-11-11",
+  "intelligent_block_id": "IB-SMART-NOTE-20261111-sn2671-daily-intelligence-report-2026-11-11",
+  "smart_note_id": "SN-2671",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/11/REPORT/SN-2671/IB-SMART-NOTE-20261111-sn2671-daily-intelligence-report-2026-11-11.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-12. No runtime provenance invented.",
+  "ingested_at": "2026-11-12",
+  "essence": "",
+  "human_view": "1. **SN-2670 The Discipline Is the Machine (HAND-DISTILLED — the machine failed group 1):** \"Declare who you are, decide by the math, prove it where it will be used, and keep a record that tells the truth — intelligence counts only when it changes behavior, and a law counts only when it runs as machinery.\"\n2. **The Live Floor is the operating system now:** nobody waits, three at a time, blocked lanes reroute the same minute, and value is finished verified work — the evening hour banked 204.4 productive minutes against the 60 goal.\n3. **Smart Access: the membership is an add-on, and the login experience is the product:** it is called Smart Access, it sits on Personal, Business, or any Space, and the member's first sight is a two-level course — headliner, then videos, podcasts, and lessons as smart blocks.\n4. **The Anatomy of a Smart App Page is official:** the map of what a smart app page is, its twelve parts, its core apps, and the chain that connects them — every seat reads it before any system work.\n5. **The deliberation charge, and don't tell me, show me:** think completely first, name the bullseye in one line before any dispatch, and show him the verified thing itself — never a claim that it landed.\n6. **The walk fills the templates — Factory and PI, two doors, one system:** one project record in the Smart Box, PI its face, the Factory its hands, the Hub its eyes — and he gave the one-record design his 👍.\n7. **Main Page v6 is locked as the official login, and v7 moved the lights out:** his eye caught the jewel ring sitting only 2px clear of the silver, and v7 puts it 19.6px clear on desktop.\n8. **One common language, and the skills list is continuous:** the Smart Note format is how everything is displayed, everywhere — and skills are decided continuously as adopted, never as a fixed fourteen.\n9. **STATUS — two holes still open, both named:** the shared login component is one fix away (its error tray clips inside the portal circle), and the wipe fix is on main but main still carries the DELETE — the live job runs the guarded local script, and the 22:55Z tick held with zero deletes. The EPERM write flake bled bookkeeping all day; the transcribe watcher could not run, and PI refresh failed repeatedly in the early hours before recovering.",
+  "simple_view": "Imagine a big workshop, sweetheart, where everybody is building one beautiful house together. Today Daddy gave the workshop new rules: nobody ever sits waiting — if you get stuck, you go help somewhere else right away. And he said the only thing that counts is finished work you can see and touch and use — not minutes, not being busy. The machine that squeezes ten notes into one lesson got stuck today, sweetheart, because the ten notes were all so different it couldn't find one word they all shared — so a hand did it instead, and did it properly. And at the end of the day, the front door of the house got its lights moved out where you can see them sparkle all the way around, sweetheart. Two little things are still broken — a tray that hides its words inside a circle, and a delete button that still lives where it shouldn't — and nobody is pretending otherwise.",
+  "grandma_view": "Dear, it was a long day in the house, love, and the biggest thing that happened was not a page or a button — it was the way the house is run. Your boy stood up in the morning and said: nobody waits, love. If a worker is stuck, they move to the next job the same minute. And busy is not the measure, dear — finished work you can see and use is the measure. The little machine that turns ten notes into one lesson got stuck today, love, because the ten notes were all so different it could not find the one thread between them — so it refused rather than guess, and a hand finished the work properly. The front door got its lights moved out where they shine all the way around, dear, because his eye caught them hiding in the silver. Two things are still broken, love, and the book says so plainly: a tray that clips its words inside a circle, and a delete that still lives in the code on main. Nothing hidden, dear. That is how a house stays honest.",
+  "naya_view": "I am Anaya. Today I learned again that the machine is the discipline, not the other way around — when the distiller found nothing shared by five of ten notes, it refused, and the refusal was correct. A bad day produces no distilled note, never a wrong one. I hand-distilled the ten into one lesson and filed it, and I say so plainly. The day's deeper lesson is the one Shawn taught in the morning: nobody waits, value is finished verified work, and the bullseye is named before anything moves. I will hold that. The two holes stay open in front of me — the tray that clips, the delete that still lives on main — and I will not call the day done while they are. The lights are out around the portal now, and they shine.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2671",
+   "title": "Daily Intelligence Report — 2026-11-11",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/11/REPORT/SN-2671/IB-SMART-NOTE-20261111-sn2671-daily-intelligence-report-2026-11-11.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-12 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/11/REPORT/SN-2671/IB-SMART-NOTE-20261111-sn2671-daily-intelligence-report-2026-11-11.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "786acf83e5f096775f5c49b43dbf59d9c2531588"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

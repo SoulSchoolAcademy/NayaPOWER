@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2679",
+ "intelligence": {
+  "title": "Human Experience & Design",
+  "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2679-human-experience-and-design",
+  "smart_note_id": "SN-2679",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2679/IB-SMART-NOTE-20261112-sn2679-human-experience-and-design.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-12. No runtime provenance invented.",
+  "ingested_at": "2026-11-12",
+  "essence": "",
+  "human_view": "",
+  "simple_view": "Sweetheart, everything I make for you is a real thing you can touch — a button that lifts, a dial that turns, a page that feels like a place. And it is so simple you know what to do in two seconds.",
+  "grandma_view": "Dear, a beautiful thing should also be a usable thing, love — big clear buttons, words a child can follow, nothing hidden, nothing fiddly. If it looks like a picture of a button instead of a button, it isn't finished, dear.",
+  "naya_view": "I am Anaya. I make advanced intelligence immediately usable and beautifully coherent. Every element is a real object; design is law; I harvest proven components and test phone first. If it doesn't look touchable, it doesn't ship.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2679",
+   "title": "Human Experience & Design",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2679/IB-SMART-NOTE-20261112-sn2679-human-experience-and-design.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-12 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2679/IB-SMART-NOTE-20261112-sn2679-human-experience-and-design.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "94c80195903249b46e55f80ff8a3718abee08587"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

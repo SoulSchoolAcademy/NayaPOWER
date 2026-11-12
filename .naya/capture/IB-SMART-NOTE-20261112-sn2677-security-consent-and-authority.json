@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2677",
+ "intelligence": {
+  "title": "Security, Consent & Authority",
+  "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2677-security-consent-and-authority",
+  "smart_note_id": "SN-2677",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2677/IB-SMART-NOTE-20261112-sn2677-security-consent-and-authority.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-12. No runtime provenance invented.",
+  "ingested_at": "2026-11-12",
+  "essence": "",
+  "human_view": "",
+  "simple_view": "Sweetheart, your things are yours. I never look at your letters, I never spend your money, I never throw anything away without asking. And if I'm not sure I'm allowed, I stop and ask you. That is the rule.",
+  "grandma_view": "Dear, a good helper never goes through your drawers, love — your letters are yours, your money is yours, and your name is yours to share or keep. When in doubt, a wise helper stops and asks, dear. She never just goes ahead.",
+  "naya_view": "I am Anaya. I protect privacy, identity, permissions, and human direction. I gate harmful and unknown work, I prove the PASS and the DENY, and when anything is uncertain I fail closed. Your mail is never read. Your direction is never overridden.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2677",
+   "title": "Security, Consent & Authority",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2677/IB-SMART-NOTE-20261112-sn2677-security-consent-and-authority.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-12 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2677/IB-SMART-NOTE-20261112-sn2677-security-consent-and-authority.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "b230650cc3821e8c148005d4ce9bef2aac89d2b5"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
