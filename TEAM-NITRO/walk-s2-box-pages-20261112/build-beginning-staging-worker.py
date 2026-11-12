@@ -158,8 +158,11 @@ function composePages(answers, pn) {
   });
 }
 function pageHtml(alias, pg) {
-  const color = pg.kind === "personal" ? "#a06bff" : (pg.kind === "business" ? "#2fe89e" : "#ffbf3d");
-  const label = pg.kind === "personal" ? "YOUR PERSONAL PAGE" : (pg.kind === "business" ? "YOUR BUSINESS" : "YOUR SPACE");
+  /* S2 fix — the KV mirror stores the TABLE shape (page_kind), the composed
+     record uses kind. Resolve both, or every page renders as YOUR SPACE. */
+  const k = pg.page_kind || pg.kind;
+  const color = k === "personal" ? "#a06bff" : (k === "business" ? "#2fe89e" : "#ffbf3d");
+  const label = k === "personal" ? "YOUR PERSONAL PAGE" : (k === "business" ? "YOUR BUSINESS" : "YOUR SPACE");
   const secs = String(pg.body || "").split(/^## /m).filter(function(x){ return x.trim(); }).map(function(block){
     const nl = block.indexOf("\n");
     const title = (nl >= 0 ? block.slice(0, nl) : block).trim();
@@ -183,7 +186,8 @@ function pageHtml(alias, pg) {
 function hubHtml(alias, name, cards) {
   const defs = { personal: ["#a06bff", "YOUR PERSONAL PAGE"], business: ["#2fe89e", "YOUR BUSINESS"], space: ["#ffbf3d", "YOUR SPACE"] };
   const items = cards.map(function(pg){
-    const d = defs[pg.kind] || ["#a06bff", pg.kind];
+    const k = pg.page_kind || pg.kind;
+    const d = defs[k] || ["#a06bff", k];
     return '<a class="hcard" style="--hc:' + d[0] + '" href="/pages/' + esc(alias) + '/' + esc(pg.page_alias) + '">'
       + '<div class="label" style="color:' + d[0] + '">' + d[1] + '</div>'
       + '<div class="t">' + esc(pg.headline) + '</div>'
