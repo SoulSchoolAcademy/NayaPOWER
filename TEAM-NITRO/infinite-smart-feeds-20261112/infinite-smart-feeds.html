@@ -499,6 +499,10 @@ function searchTopic(){
     state.live.lastEngineMs = Math.round(performance.now() - t0);
     state.live.engineFailed = failed;
     state.live.engineDown = (state.scored.length === 0 && failed > 0);
+    /* The live-feed refresh (a 6.7MB download) starts only AFTER the first
+       search settles: scoring RPCs and the big download never share the
+       pipe, or the RPCs queue into transient 500s under the shared egress. */
+    if (!state.live.refreshStarted){ state.live.refreshStarted = true; refreshLiveFeed(); }
     if (!state.scored.length && failed > 0){
       $('feedList').innerHTML = '<div class="empty"><h3>The engine did not answer</h3><p>All ' + failed + ' live score calls failed. The feed is not faked from a fallback — tap the topic again to retry.</p><button class="read-note" type="button" id="retrySearch">Retry</button></div>';
       var b = $('retrySearch');
@@ -890,7 +894,9 @@ $('menuHub').addEventListener('click', function(){ window.location.href = 'https
   window.__isf = { state: state, prov: PROV };
   bootLive();
   searchTopic();
-  refreshLiveFeed();
+  /* refreshLiveFeed() is NOT called here: finish() starts it after the
+     first search settles, so the 6.7MB download never races the first
+     scoring (see the note in finish()). */
 })();
 </script>
 </body>
