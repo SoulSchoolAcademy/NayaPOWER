@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 21:37 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 22:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -45031,6 +45031,14 @@ _Last updated: 2026-11-12 21:37 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ gap-gap-gap-lane-scorer-20261018-1610 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up 1610: file a battery receipt under the F6 falsifier-reporting convention (adoption proof)
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-lane-scorer-20261018-1610-lane12.md`
+
+**Evidence:** Verified: receipt read in full; re-hashed this tick - template 970a886d, runner d957847c (pre AND post run), sealed verdict ebeef737, per-arm 58abf2ee, both run logs fce6dd7e byte-identical, selftest log f2e81753; FALSIFIER_BLOCK_SHA256 dd11e88b at runner line 71; F6 comment at L187 / assignment L203 (moved from L201 in the 07:31 repair); conventio
+
 ### ✅ gap-gap-gap-gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12-lane12-lane12-lane12-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** gap-gap-gap-gap-gap-gap follow-up 1610: execute F2 manual recovery end-to-end (backup -> file -> sha re-check)
@@ -49776,6 +49784,14 @@ _Last updated: 2026-11-12 21:37 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-gap-t1821 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up t1821: tip-bytes re-run of the t0452 retrieval-auth acceptance battery (falsify tip-copy premise + reproduce at two tips)
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t1821-lane1.md`
+
+**Evidence:** Verified: receipt read in full; re-hashed this tick - instrument 275e2634 (sole copy, matches parent pin), parent evidence 7e797ba4 (byte-identical re-derivation), current-tip evidence 32039d16; scratch dir hidden_files/scratch-gap-gap-t1821/ exists with per-tip evidence + run logs; git ls-tree in the local clone confirms NO auto-retrieval/ at ba62
 
 ### ✅ gap-t1821 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
