@@ -1,0 +1,63 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2688",
+  "capture_id": "20261112-auto-match-connect",
+  "title": "Auto-Match — how Auto-Match connects people, automatically, by behaviour under an alias",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "AUTO_MATCH",
+  "subtopic": "AUTO_MATCH_CONNECT",
+  "canonical_intent": "AUTO_MATCH_CONNECT_PEOPLE",
+  "lifecycle_state": "ACTIVE",
+  "source": {
+    "source_type": "canonical_source_synthesis",
+    "source_reference": "workspace/user/files/nayanet-auto-matching-system-report_BLACK.pdf (How NayaNET Works — The Intelligent Auto-Matching System; source: Smart Note IB-000038); Auto-Match engine built and proven 2026-11-03 (ONE algorithm, matches as percentages, CONNECT never 'follow', suggestions in feed and notifications; switch-on is Shawn's gate)",
+    "captured_at": "2026-11-12",
+    "captured_at_utc": "2026-11-12T08:30:00Z",
+    "captured_by": "Naya Nitro Narzan (Search Corpus Fix seat)",
+    "director": "Shawn Vibert"
+  },
+  "projection": {
+    "publication_scope": "PRIVATE",
+    "human_director_authorized_publication": false,
+    "category_slug": "SYSTEM_INTELLIGENCE",
+    "topic_slug": "AUTO_MATCH",
+    "subtopic_slug": "AUTO_MATCH_CONNECT"
+  },
+  "intelligence": {
+    "essence": "Auto-Match connects people automatically. It is always on by default — never something you switch on, never a search you remember to run. It scores relevance between people, subjects, Spaces and apps from what each alias actually does — the apps they build, the Spaces they join, what they read, save and react to — and it brings each person the people, Spaces and apps most likely to fit them, as a percentage match, in their feed. The same new app is front-page for one alias and invisible to another, because relevance is personal, not global popularity. You connect with CONNECT, never follow. It runs on aliases only and never needs to know who anyone is; identity is revealed only when the person chooses. The journey is six steps: build and go live instantly, submit to NayaNET, get approved and listed, be found by search, tabs and sidebar, gather a Space around the app, and be auto-matched always. Search still exists — as the backup, not the burden.",
+    "human_view": "You never have to hunt. The system learns what you are into from what you actually do — the apps you build, the Spaces you join, what you read and keep — and it brings the right things to you in your feed, already sorted, with a percentage that says how good the fit is. People whose subjects overlap are brought into each other's orbit through shared Spaces first, so connection starts from common ground, and you connect with CONNECT — there is no follow here. It does all of this under your alias: it never needs your real name, your address or your employer, and it never reveals who you are unless you choose to. The longer you use the system the better it knows what to bring you, because every action is a new signal. And if you know an app's name you can still search for it directly — search is the backup, not the burden.",
+    "simple_view": "Child: Imagine a magic helper who watches what games you love and which clubs you join — and then, all by itself, it brings you new friends who love the very same things, and shows you how much you match, like a score! You never have to go looking. And it never tells anyone your real name — you stay secret until YOU decide to say hello as yourself. Grandma: Dear, it is a kind helper, love — it notices what you build and where you gather, and it brings you the people and places that fit you, all by itself, with a little number saying how good the fit is. You press CONNECT, dear, never follow — and nobody knows who you are until you choose to tell them.",
+    "naya_view": "I match you automatically, always on, by default — I watch what your alias does, never who you are, and I bring you the people, Spaces and apps that fit, ranked by percentage in your feed. I never sell your attention and I never hand your identity to anyone: the reveal is yours, at your moment, on your terms. I start connection from common ground — a shared Space first — and the word is CONNECT, never follow.",
+    "ai_view": "Structured Auto-Match overview. entity=auto_match; mode=always_on_by_default; signals=apps built, Smart Tabs kept, Spaces joined/created, read/saved/reacted, subjects of listed apps and Spaces; output=percentage match in feed + Space invitations; connect_verb=CONNECT (never follow); identity=alias only, reveal by choice; journey=live, submit, approve, discoverable, Space, matched.",
+    "machine_view": {
+      "automatic_truth_ceiling": "CANDIDATE",
+      "raw_source_separate_from_distillation": true,
+      "status": "live_intelligence",
+      "authority_inheritance": "derived_from_director_ratified_sources",
+      "decision_engine": "not_applicable",
+      "hard_invariants": [
+        "Auto-Match is always on by default; it is never switched on and never a search you run",
+        "matches are percentages, personal relevance, not global popularity",
+        "connection is CONNECT, never follow",
+        "it runs on aliases only; identity is revealed only by the person's choice",
+        "search exists as the backup, not the burden"
+      ],
+      "human_gates": [],
+      "law_id": null,
+      "optimization_function": "none",
+      "optimization_target": "none",
+      "roadmap": []
+    },
+    "decisions": [
+      "Answer 'How does Auto-Match connect people?' with the mechanism first (always-on relevance scoring from behaviour) and the privacy second (alias only), because the privacy is what makes the always-on matching trustworthy.",
+      "State the percentage match and CONNECT-never-follow explicitly: both are the settled law and both were missing from the corpus.",
+      "Use the Auto-Matching System report (source IB-000038) as the canonical spec; the engine's built-and-proven state (2026-11-03) and Shawn's switch-on gate are named, not hidden."
+    ],
+    "connections": [],
+    "uncertainty": "The engine is built and proven on real profiles (2026-11-03) but NOT switched on for citizens — switch-on is Shawn's gate. The report describes the system as designed; the six builds (submit flow, directory, Space creation, rooms and feed, matcher service, privacy enforcement) are the running-product sequence.",
+    "applicability": "Answers 'How does Auto-Match connect people?' for any citizen, and orients any Naya explaining matching, feed ranking or privacy. Not a switch-on: the matcher is not live for citizens until Shawn taps it on.",
+    "learning_lesson": "The person never has to hunt: the system brings the right things to them, by serving them under an alias — never by selling them.",
+    "successor_effect": "When Shawn switches Auto-Match on for citizens, this block is superseded by the live switch-on record.",
+    "epistemic_state": "CANDIDATE"
+  }
+}

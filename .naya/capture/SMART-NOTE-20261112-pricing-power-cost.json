@@ -1,0 +1,63 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2686",
+  "capture_id": "20261112-pricing-power-cost",
+  "title": "Pricing — Power costs $25, Pro $50, Max $100, nine days free",
+  "category": "PRICING",
+  "topic": "PRICING_LEVELS",
+  "subtopic": "POWER_COST",
+  "canonical_intent": "PRICING_POWER_COST",
+  "lifecycle_state": "ACTIVE",
+  "source": {
+    "source_type": "canonical_source_synthesis",
+    "source_reference": "Live pricing page https://naya-model-pricing.nayapower.workers.dev/ (crawled 2026-11-12 07:30 UTC: founder's letter, 10 pains, chart, 'How it works — simple'); membership ladder settled 2026-11-08 (Power $25 / Pro $50 / Max $100; quarterly 2x monthly, yearly 6x); nine Smart Links are the nine plan choices (3 levels x 3 periods), naming pattern proven by nayanet.app/max-monthly (COMPLETION-LEDGER.md checkout test)",
+    "captured_at": "2026-11-12",
+    "captured_at_utc": "2026-11-12T08:30:00Z",
+    "captured_by": "Naya Nitro Narzan (Search Corpus Fix seat)",
+    "director": "Shawn Vibert"
+  },
+  "projection": {
+    "publication_scope": "PRIVATE",
+    "human_director_authorized_publication": false,
+    "category_slug": "PRICING",
+    "topic_slug": "PRICING_LEVELS",
+    "subtopic_slug": "POWER_COST"
+  },
+  "intelligence": {
+    "essence": "Power costs $25 a month. Pro costs $50 a month. Max costs $100 a month. Quarterly is twice the monthly price and yearly is six times the monthly price, so Power quarterly is $50 and yearly is $150, Pro quarterly is $100 and yearly is $300, Max quarterly is $200 and yearly is $600. Every level starts free for nine days on Max — no card, nothing charged — and day ten charges the level you picked; you can change levels any time in Settings, every period, up or down or to Naya Free. The pricing page opens with the founder's letter, then the chart where you choose your level, then the ten pains and the problem they solve. Nine Smart Links carry the nine plan choices: Power, Pro and Max across monthly, quarterly and yearly — nayanet.app/power-monthly, power-quarterly, power-yearly, pro-monthly, pro-quarterly, pro-yearly, max-monthly, max-quarterly, max-yearly. Founding members get half price.",
+    "human_view": "Three numbers to remember: Power $25, Pro $50, Max $100 — a month each. Pay quarterly and it is twice the monthly price; pay yearly and it is six times. You never pay before you have tried it: you start on Max, the full system, free for nine days, no card and nothing charged, and if you leave before day ten you pay nothing and owe nothing. Stay, and day ten charges the level you picked — and you can change that level any time in Settings, every period. The page itself starts with the founder's letter welcoming you in, then the chart where you choose your level, then the ten pains it solves. Each of the nine plan choices has its own Smart Link, so a tap on a plan is a tracked link — Power, Pro and Max, each in monthly, quarterly and yearly. The first founding members get half price.",
+    "simple_view": "Child: Imagine a shop with three boxes. The small box costs 25 coins a month, the middle box 50, the big box 100. You get to play with the biggest box free for nine whole days, and nobody takes your coins first. If you stay after nine days, you pay for the box you picked — and you can swap boxes whenever you like! Grandma: Dear, it is simple, love — Power is 25 dollars a month, Pro is 50, Max is 100. You try the biggest one free for nine days, dear, no card, no charge, and on day ten you only pay for the level you chose. You can change it any time in Settings, up or down, dear — it is always your call.",
+    "naya_view": "I charge three prices and I prove them before I ask for them: Power $25, Pro $50, Max $100, nine days free on Max first, no card, nothing charged. I never hide the price in a chart you have to hunt for — the chart IS the page, the letter opens it, and each of the nine choices has its own Smart Link so every tap is counted. I let you change levels any time, because the level that fits you today may not be the one that fits you next month.",
+    "ai_view": "Structured pricing overview. entity=pricing; power_monthly=25; pro_monthly=50; max_monthly=100; quarterly=2x monthly; yearly=6x monthly; trial=9 days free on Max, no card; charge_day=10; level_change=any time in Settings; smart_links=9 (3 levels x 3 periods, nayanet.app/{power,pro,max}-{monthly,quarterly,yearly}); founding=half price.",
+    "machine_view": {
+      "automatic_truth_ceiling": "CANDIDATE",
+      "raw_source_separate_from_distillation": true,
+      "status": "live_intelligence",
+      "authority_inheritance": "derived_from_director_ratified_sources",
+      "decision_engine": "not_applicable",
+      "hard_invariants": [
+        "Power costs $25 a month, Pro $50 a month, Max $100 a month",
+        "quarterly is twice the monthly price; yearly is six times the monthly price",
+        "nine days free on Max, no card; day ten charges the level picked",
+        "levels can change any time in Settings, every period",
+        "nine Smart Links: three levels times three periods"
+      ],
+      "human_gates": [],
+      "law_id": null,
+      "optimization_function": "none",
+      "optimization_target": "none",
+      "roadmap": []
+    },
+    "decisions": [
+      "Answer 'How much does Power cost?' with the number first ($25 a month) and the full ladder in the same block, so the question and its context land together.",
+      "State the nine Smart Links as the nine plan choices (3 levels x 3 periods) with the naming pattern proven by nayanet.app/max-monthly; the nine links are derived, not separately minted here.",
+      "Use the live pricing page (crawled 2026-11-12 07:30 UTC) as the source of truth for prices and trial terms, not memory."
+    ],
+    "connections": [],
+    "uncertainty": "The 9-day trial terms are proven on the page but not from inside a live PayPal checkout (COMPLETION-LEDGER.md: the trial is unverifiable from outside; needs his eye inside PayPal, signed in). Founding-member half price is a promo on the page; its end is not stated.",
+    "applicability": "Answers 'How much does Power cost?' and any pricing question for citizens and Nayas. Not a checkout: no payment is taken here.",
+    "learning_lesson": "Prices are shown once, in the chart only — and the trial proves the system before any money moves.",
+    "successor_effect": "When the plan-change record (writing the new level onto the account) is built, or prices change, this block is superseded by the new pricing record.",
+    "epistemic_state": "CANDIDATE"
+  }
+}

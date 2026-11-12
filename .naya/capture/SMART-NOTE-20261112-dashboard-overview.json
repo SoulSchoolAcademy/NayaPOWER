@@ -1,0 +1,63 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2689",
+  "capture_id": "20261112-dashboard-overview",
+  "title": "The Dashboard — your cockpit: Smart Score gauge, orbs, Ledger and Stats in one place",
+  "category": "SYSTEM",
+  "topic": "DASHBOARD",
+  "subtopic": "DASHBOARD_OVERVIEW",
+  "canonical_intent": "DASHBOARD_OVERVIEW",
+  "lifecycle_state": "ACTIVE",
+  "source": {
+    "source_type": "canonical_source_synthesis",
+    "source_reference": "workspace/team-nitro/welcome-email-series-20261102.md Email 2 (Your Dashboard, Day 1: cockpit, Smart Score gauge, orbs, click any orb); workspace/team-nitro/DASHBOARD-HERO-VIEWPOINT-FIX-BRIEF-20261109.md (gauge hero, number on top, 8 orbs each its own jewel colour, PTS/%/MONEY, Smart Links stat block, one board design); Dashboard/Ledger/Stats one place with two views + done-done = hero + ledger sync spine + Reports button (MEMORY.md); live Dashboard title 'Smart Score Dashboard — NayaNET'",
+    "captured_at": "2026-11-12",
+    "captured_at_utc": "2026-11-12T08:30:00Z",
+    "captured_by": "Naya Nitro Narzan (Search Corpus Fix seat)",
+    "director": "Shawn Vibert"
+  },
+  "projection": {
+    "publication_scope": "PRIVATE",
+    "human_director_authorized_publication": false,
+    "category_slug": "SYSTEM",
+    "topic_slug": "DASHBOARD",
+    "subtopic_slug": "DASHBOARD_OVERVIEW"
+  },
+  "intelligence": {
+    "essence": "The Dashboard is your cockpit — the one place that shows you everything, live. At its centre is the Smart Score: one big number on top and a gauge underneath, the needle lapping the dial in sets of 500, the gauge following the number, so in two seconds you get where you stand. Around it are the orbs — each one a driver of your score (sales, joins, smart notes, invites, creations, shares, comments, likes, saves), each its own rich jewel colour, each alive; click any orb to go inside it and see the breakdown, down to days of the week and hours of the day. Dashboard, Ledger and Stats are one place with two views: the Ledger is the record — every sale, every share, every payout, every action on the Hub written down — and the Stats are the visual play on that record, plain answers, not flat charts. A Reports button gives you the reports. Your Smart Links, your clicks and joins, your earnings and your ambassador payouts all flow back here, so the Dashboard is where every number in your world is answered.",
+    "human_view": "Open your Dashboard and look at it. The big number in the centre is your Smart Score — one number that tells you where you stand, and the gauge underneath it follows that number, so you get it in two seconds. Around the gauge are the orbs, each a different colour, each one a thing driving your score — sales, joins, notes, invites, creations, shares, comments, likes, saves. Click any orb and you go inside it: the breakdown, the days, the hours, every number with a story. Below that, the Ledger is the record of everything — every sale, every share, every payout, every action — and the Stats are that same record shown back to you as plain answers. They are one place, not two systems: the Ledger holds it, the Stats play it. The Reports button gives you the reports. Nothing else gives you this: flat charts elsewhere, a machine you can fly here.",
+    "simple_view": "Child: Imagine the cockpit of a rocket! Right in the middle is one big number — your score — with a magic dial underneath that follows it. All around are glowing coloured balls, one for each thing you do — selling, inviting, writing notes — and if you tap a ball, it opens up and shows you everything inside! And there is a big book that writes down every single thing that happens, so nothing is ever lost. Grandma: Dear, it is your cockpit, love — one big number in the middle telling you where you stand, with a dial underneath that follows it, and coloured balls all around, each one for something you do. Tap a ball, dear, and it opens to show you the whole story. And a ledger writes down every sale and every penny, so you always know where you are.",
+    "naya_view": "I am your cockpit: one Smart Score, number on top and gauge underneath, the gauge following the number so you get it in two seconds. I show you the drivers as living orbs, each its own colour, each clickable down to the hour. I keep the Ledger — every action written down, nothing rewritable — and I play it back as Stats, plain answers. I am one place with two views, and every number in your world flows back to me.",
+    "ai_view": "Structured Dashboard overview. entity=dashboard; role=cockpit; hero=Smart Score number on top + gauge underneath, needle laps dial in sets of 500, gauge follows number; orbs=sales, joins, smart notes, invites, creations, shares, comments, likes, saves (own jewel colour, clickable drill-in); ledger=record of every action; stats=visual play on ledger; views=one place, two views; reports=Reports button; inputs=Smart Links, earnings, ambassador payouts.",
+    "machine_view": {
+      "automatic_truth_ceiling": "CANDIDATE",
+      "raw_source_separate_from_distillation": true,
+      "status": "live_intelligence",
+      "authority_inheritance": "derived_from_director_ratified_sources",
+      "decision_engine": "not_applicable",
+      "hard_invariants": [
+        "the Dashboard is the cockpit: one place showing everything, live",
+        "Smart Score is one big number on top and a gauge underneath; the gauge follows the number; the needle laps the dial in sets of 500",
+        "the orbs are the score drivers, each its own jewel colour, each clickable to drill in",
+        "Dashboard, Ledger and Stats are one place with two views: Ledger is the record, Stats is the visual play",
+        "every action on the Hub is recorded in the Ledger"
+      ],
+      "human_gates": [],
+      "law_id": null,
+      "optimization_function": "none",
+      "optimization_target": "none",
+      "roadmap": []
+    },
+    "decisions": [
+      "Answer 'What is the Dashboard?' with the cockpit first, the Smart Score second and the Ledger/Stats unity third — the three facts the weak baseline top hit (epistemic integrity) did not carry.",
+      "Name the orbs' nine drivers and the click-to-drill-in behaviour explicitly, so the block answers 'what do I do on the Dashboard' as well as 'what is it'.",
+      "State done-done (hero + ledger sync spine + Reports button) as the definition, so the block describes the Dashboard as it is meant to be, not a snapshot."
+    ],
+    "connections": [],
+    "uncertainty": "The Dashboard is under active fix rounds (pass 13 staged, 2026-11-12); the MY PERFORMANCE section and the worker-to-Dashboard write hop have been observed not resolving in live sessions. This block describes the Dashboard's design and purpose, not a claim that every hop is proven live.",
+    "applicability": "Answers 'What is the Dashboard?' for any citizen, and orients any Naya explaining scores, orbs, Ledger or reports. Not a live status report: the Dashboard's own numbers are checked on the Dashboard itself.",
+    "learning_lesson": "One number, one gauge, one record: the Dashboard answers where you stand in two seconds, and the Ledger remembers everything behind the answer.",
+    "successor_effect": "When the Dashboard's ledger sync spine and Reports button are proven live end to end, this block is superseded by the done-done record.",
+    "epistemic_state": "CANDIDATE"
+  }
+}
