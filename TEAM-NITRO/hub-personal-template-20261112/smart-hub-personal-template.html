@@ -427,6 +427,14 @@ textarea.ph-field{min-height:84px;resize:vertical}
 
 /* --- Phone (Personal phone cover rule, verbatim) --- */
 @media(max-width:760px){.ph-cover{height:420px !important;aspect-ratio:auto !important;max-height:none !important;}}
+/* Phone + buttons (Personal's mwLayoutPlus, Round 6 — verbatim rule, CSS form):
+   the tab column fills the top-left at phone width, so the right + sits below
+   Change cover (+76) and the left + sits below the column (+186) — clear of
+   the name, the tagline, and the logo. Desktop keeps the true corners. */
+@media (max-width:640px){
+  .ph-plus-r{top:76px;}
+  .ph-plus-l{top:186px;}
+}
 
 /* --- NEW (not harvested): room for the fixed trio so the page's last
    content never hides under it. The round-icons round owns the bottom row;
