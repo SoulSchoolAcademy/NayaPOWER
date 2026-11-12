@@ -1080,6 +1080,61 @@
       "featured": true,
       "featured_order": 26,
       "featured_class": "exclusive"
+    },
+    {
+      "key": "open/the-golden-mare",
+      "file": "open/the-golden-mare.jpg",
+      "name": "The Golden Mare",
+      "kind": "open",
+      "tier": "open",
+      "category": "companions",
+      "suits": "a palomino mare and her foal in a sunlit crystal meadow at golden hour: THE horse cover - pet lovers, families, stables, rural businesses, warm welcome pages",
+      "status": "ready",
+      "credit": "Naya Power"
+    },
+    {
+      "key": "open/planet-rise",
+      "file": "open/planet-rise.jpg",
+      "name": "Planet Rise",
+      "kind": "open",
+      "tier": "open",
+      "category": "cosmos",
+      "suits": "a ringed planet rising over a still alien sea under aurora bands, a crystal tree on a distant shore: cosmos wonder for visionaries, memberships, the big-dream pages - pure design, no jewels",
+      "status": "ready",
+      "credit": "Naya Power"
+    },
+    {
+      "key": "open/the-wedding-garden",
+      "file": "open/the-wedding-garden.jpg",
+      "name": "The Wedding Garden",
+      "kind": "open",
+      "tier": "open",
+      "category": "celebration",
+      "suits": "white rose arches and a crystal arch over still water at golden hour: weddings, events vendors, communities that celebrate - the garden celebration",
+      "status": "ready",
+      "credit": "Naya Power"
+    },
+    {
+      "key": "open/the-glassblowers-studio",
+      "file": "open/the-glassblowers-studio.jpg",
+      "name": "The Glassblower's Studio",
+      "kind": "open",
+      "tier": "open",
+      "category": "craft",
+      "suits": "molten glass orbs glowing amber, crystal tools, furnace light, a blue crystal city beyond the arch: glass artists, makers, studios, skilled trades - pride of honest craft",
+      "status": "ready",
+      "credit": "Naya Power"
+    },
+    {
+      "key": "open/the-bridge-of-light",
+      "file": "open/the-bridge-of-light.jpg",
+      "name": "The Bridge of Light",
+      "kind": "open",
+      "tier": "open",
+      "category": "prosperity",
+      "suits": "a bridge of golden light arcing over a dawn river between crystal districts: businesses crossing over, real estate, coaches, creators building something - the prosperity crossing",
+      "status": "ready",
+      "credit": "Naya Power"
     }
   ],
   "assignment_on_page_creation": {
@@ -1730,8 +1785,8 @@
     }
   },
   "inventory": {
-    "counted_at": "2026-10-25",
+    "counted_at": "2026-11-12",
     "document": "HUB/covers/INVENTORY.human.md",
-    "verdict": "Thin-shelf round landed (22:24Z): Companions 3->5, Cosmos 3->5 - every citizen shelf now >=4, seven of eight >=5 after the finishing round. FINISHING ROUND (planned, 5): Companions +1 (->6), Cosmos +1 (->6), Celebrations +1 (->5), Craft +1 (->5), Prosperity +1 (->5) = every shelf >=5, ~83 ready. Then creation CLOSES; the work is the feature. Elite bar is the gate: a merely pretty piece does not enter."
+    "verdict": "Thin-shelf round landed (22:24Z): Companions 3->5, Cosmos 3->5 - every citizen shelf now >=4, seven of eight >=5 after the finishing round. FINISHING ROUND (planned, 5): Companions +1 (->6), Cosmos +1 (->6), Celebrations +1 (->5), Craft +1 (->5), Prosperity +1 (->5) = every shelf >=5, ~83 ready. Then creation CLOSES; the work is the feature. Elite bar is the gate: a merely pretty piece does not enter. FINISHING ROUND LANDED 2026-11-12 (Naya Power): +1 each Companions (The Golden Mare), Cosmos (Planet Rise), Celebrations (The Wedding Garden), Craft (The Glassblower's Studio), Prosperity (The Bridge of Light) - every citizen shelf >=5; creation CLOSES per this verdict."
   }
 }
