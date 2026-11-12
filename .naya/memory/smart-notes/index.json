@@ -44099,7 +44099,7 @@
       "reconciliation": null,
       "smart_link": null,
       "canonical_brain_path": null,
-      "captured_at_utc": "2026-11-12T08:44:30Z",
+      "captured_at_utc": "2026-11-12T08:56:28Z",
       "viewer": null,
       "publication_scope": "PRIVATE",
       "canonical_block_scope": "PRIVATE",
@@ -44109,7 +44109,7 @@
       "projection_path": null,
       "smart_link_verified_at": null,
       "smart_link_verified_rev": null,
-      "content_hash": "866c6b8fca246114d23100d34b53cf24a67ae0a3d8ecdce0942e3bbaf3dc5bc4",
+      "content_hash": "359884d526ce7d2391051cafcfd20261f5b8f0a4166607391584214bf332c36b",
       "page_hash": null,
       "capture_file": ".naya/capture/SMART-NOTE-20261112-sn9998-retirement-superseded.json",
       "lifecycle_state": "ACTIVE"
@@ -44308,5 +44308,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "0411422749d48c132e86c85813386e6a3dd911b3f0bd449f0786b727dbe93ff2"
+  "corpus_manifest_hash": "457d362fef5c7031386de57dd5e0660b568e8be2666b47090a302b856ce9ea3d"
 }
