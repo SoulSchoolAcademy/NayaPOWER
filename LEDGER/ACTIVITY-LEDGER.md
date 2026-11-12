@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 09:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 10:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -50868,6 +50868,30 @@ _Last updated: 2026-11-12 09:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261112-0158 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 2026-11-12 01:58 PST: full claim sweep over all 28 unclaimed briefs, 0 claimed (26x exit 7 parent-authorship, 2x exit 2 routing-prose), zero delta vs 00:54 stall receipt
+
+**Evidence:** VERIFIED this tick on live bytes: sweep log hidden_files/claim-sweep-20261112-0158.log exists on disk (1999 bytes, 09:59Z); per-brief entries reconcile to the Totals line (26 x exit 7 + 2 x exit 2, 28 attempts, 0 claimed); 28 unclaimed brief-*.md files on disk == receipt's 28; rotation queued=28 matches disk; prior stall receipt gate-stall-20261112
+
+### ✅ distill-daily-20261111 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Daily distillation: mission-state sync PR #3342 opened (1 file +1302/-6)
+
+**Evidence:** VERIFIED this tick on live bytes: branch naya4/distill-daily-20261111-mission-state-sync exists on remote at exactly fda3d8bed30468699e46694d6c0ee713c63f746c (receipt-cited commit); main-vs-branch SHAs and snapshot counts (53 vs 140) re-derived by the receipt; PR #3342 open/mergeable at creation per receipt read-back (merge state not re-checked thi
+
+### ✅ gate-stall-20261111-0358 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 29 attempted + 1 own-note bar, 0 claimed, zero delta vs 02:53 sweep
+
+**Evidence:** VERIFIED this tick on live bytes: claim-sweep-20261111-0358.log exists on disk (4798 bytes); b1 order corrected vs the 02:53 slip; cap honored (prior stall 62m47s old); zero delta vs 0253 stated explicitly. Score 9.0. Why not 9.5: zero-delta re-sweep is observability, not progress — the queue still needs dispatcher routing to a second seat, and one
+
+### ✅ gate-stall-20261111-0253 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 30/30 briefs script-claim-attempted, 0 claimed (28x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED this tick on live bytes: claim-sweep-20261111-0253.log exists on disk (3844 bytes); receipt quotes all 30 verdicts in band order with refusal codes; cap honored (prior stall 3635s old, outside 60-min window). Score 9.0. Why not 9.5: the stall itself is unresolved (30 briefs still need an eligible second seat or dispatcher-stamped gate — up
 
 ### ✅ gate-stall-20261112-0054 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
