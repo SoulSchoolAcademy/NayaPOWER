@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2327",
+ "title": "The Colour Flow — Green, Blue, Purple, Gold",
+ "slug": "the-colour-flow-green-blue-purple-gold",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2327/IB-SMART-NOTE-20261108-sn2327-the-colour-flow-green-blue-purple-gold.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "**HIS EYE (~18:26Z):** the colors flow wrong — should be green → blue → purple → gold, not green → purple → blue. **TIER MAPPING:** Free green, Power BLUE, Pro PURPLE, Max gold. Power/Pro are currently swapped — Power's accent is purple, Pro's is blue — and the swap is the fix. **GROUP HEADERS FLOW THE SAME WAY** down the page: Group 1 green, 2 blue, 3 purple, 4 gold, 5 cycles to green. **FLAGGED, NOT DECIDED:** the 5th-group color (cycles to green) is the captain's reading, flagged to him — his word, not a guess. **STATUS:** folded into the running banner builder (1ff90413) as a send_input alongside the entrance banner (SN-2326); presented when the handoff lands. **LINEAGE:** this settles the order of the common colour language from SN-2270 (gold = Dashboard, green = activity, blue = mail; \"there's a spectrum — it feels like flowing through the universe\") — the spectrum now has its sequence, and the tiers wear it.",
+  "human_view": "Imagine four doors in a row, each painted a colour — but the second and third doors are wearing each other's paint, so the rainbow stutters instead of flowing. He saw it at a glance: the flow is green, then blue, then purple, then gold — like light moving through the universe — and the two middle doors need to swap their paint. The section headers down the page follow the same river, one colour per group, and when the groups run out the river starts again at green. The fifth group's colour is a reading, flagged to him, because a guess about his colours is still a guess.",
+  "child_view": "Imagine a rainbow with four colours: green, blue, purple, gold. The doors were painted in the wrong order — the blue door was purple and the purple door was blue. He said: swap them, so the rainbow flows properly. The big titles down the page follow the same rainbow, one colour each, and when you run out you start again at green. The last one's colour is a guess for now, and guesses get flagged, not hidden.",
+  "grandma_view": "Dear, colours are a language, and a language has an order — green, blue, purple, gold, like light flowing through the universe. When two tiers are wearing each other's colours, swap them back; don't leave the spectrum stuttering. Let the same order run down the whole page, group by group, and when the colours run out, begin again at green. And when you have read a colour rather than been told it, say so plainly — his colours are his to settle.",
+  "ai_view": "I wear the spectrum in order: Free green, Power blue, Pro purple, Max gold — green → blue → purple → gold, never green → purple → blue. I swap Power and Pro back to their own colours, and I let the group headers flow the same way down the page — Group 1 green, 2 blue, 3 purple, 4 gold, 5 cycling to green. The fifth group's colour is a reading I flag to him, not a decision I make. The spectrum is the common colour language from SN-2270, and now it has its sequence.",
+  "what_it_means": "1. **The flow is green → blue → purple → gold** — not green → purple → blue.\n2. **Tier mapping:** Free green, Power BLUE, Pro PURPLE, Max gold. Power/Pro are currently swapped and the swap is the fix.\n3. **Group headers flow the same way:** Group 1 green, 2 blue, 3 purple, 4 gold, 5 cycles to green.\n4. **Flagged, not decided:** the 5th-group color (cycles to green) is the captain's reading, flagged to him.\n5. **Status:** folded into the running banner builder (1ff90413) with the entrance banner; presented when the handoff lands.\n6. **Lineage:** settles the order of the common colour language (SN-2270).",
+  "whats_inside": [],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "b6c5cfbe4b12d469b3c11ce5be238a965341eade7b9960f59bf1c9ac3fefe155",
+ "content_hash": "cdae56bf869758f06d74bc9c4230fd5fe7209fc8434d3f22ba765f3d1224f726",
+ "reconstructed_from_page": true
+}

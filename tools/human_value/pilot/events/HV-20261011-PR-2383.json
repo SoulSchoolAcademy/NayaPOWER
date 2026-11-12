@@ -1,0 +1,21 @@
+{
+  "schema_version": "1",
+  "event_id": "HV-20261011-PR-2383",
+  "recorded_at": "2026-10-11",
+  "value_type": "useful_outcome",
+  "value_units": 1.0,
+  "unit_description": "shipped change graded REAL VALUE (8.2/10) on the human-value rubric",
+  "evidence": [
+    {
+      "kind": "receipt",
+      "ref": "tools/human_value/pilot/packets.json"
+    },
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2383"
+    }
+  ],
+  "beneficiary": "team",
+  "delta_v_actual": 6.4,
+  "note": "P0-B ADVISE influence bridge (retrieved lessons change real ACTs) | why not 10: CLEAN=6.0 \u2014 Honest knock: the influence bridge raised the kernel behavior-engine invocation count 9->10 and broke test_measure_node_influence (1 python test + 1 node load-bearing claim failing at tip). Parked, not fixed. Real value with real debt.; DURABLE=7.0 \u2014 Tests guard the bridge \u2014 but the change left test_measure_node_influence failing (invocation count 9->10), parked for a builder seat. A bridge with a known crack underneath. | proximal (team-level) value: this records an evidenced valuable change, not a directly measured human-life improvement."
+}

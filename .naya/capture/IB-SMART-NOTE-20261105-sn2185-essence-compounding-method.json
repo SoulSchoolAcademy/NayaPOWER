@@ -1,0 +1,43 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2185",
+  "title": "Compounding: Whole Chains, Living Systems, Honest Ceilings",
+  "slug": "essence-compounding-method",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-compounding-method.md",
+  "tone": "purple",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:17:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Compounding — the system getting smarter from its own work — fails in three characteristic ways in this block, and each note is a guard against one. It fails by *slicing*: a fallback that shrinks the chain's length instead of its width ships a half-build that teaches nothing (SN-826). It fails by *freezing*: a checklist maintained as a document rots, so the checklist must be a machine-maintained system whose JSON twin is the source of truth (SN-827). And it fails by *flattering itself*: a retriever tuned against its own test until the number rises while the corpus still lacks the trigger text that would make retrieval real — where the honest result is a ceiling, 4/43, and the fix belongs upstream at capture (SN-824, SN-873). The method that avoids all three: work whole chains, score and repair the measured holes, verify independently, freeze exact — and reuse what exists instead of building a second anything (SN-854).",
+    "human_view": "Getting smarter as a system is not about collecting more — more notes, more branches cleaned, more checklists. It's about *loops that close*: one lesson traveling the whole path from being learned to changing a decision; a checklist that maintains itself instead of rotting in a drawer; a search that can actually find the lesson when it's needed. And it's about honesty inside the loop: when the search plateaus because the material itself is missing something, the compounding move is to fix the material at its source and say plainly \"this is our ceiling today\" — not to polish the number until it smiles.",
+    "child_view": "Learning is like building a train track. A fallback plan is a *shorter train on the whole track* — not a long train on half a track, because half a track goes nowhere. A checklist is like a garden: if nobody tends it, it fills with weeds, so we build a little robot gardener. And if you're looking for a book in the library and the books don't have labels saying what they're *for*, the answer isn't to guess harder — it's to start labeling new books properly, and to say honestly, \"right now I can only find 4 out of 43.\"",
+    "grandma_view": "It's household wisdom, dear, at system scale. Finish the whole job for one room rather than half-jobs in five. Keep the household book as a living ledger the house itself updates, not a list from last spring. When you've tidied a cupboard, put a system in place so it doesn't refill with junk by Christmas. And when the pantry simply doesn't stock an ingredient, you write it on the shopping list for next time — you don't relabel what's on the shelf and call the meal made.",
+    "ai_view": "Design every fallback as a full chain at reduced width (SN-826). Keep operational state in a machine-maintained twin (JSON source, generated .md, cron reconcile, stale flags) — never hand-edit the rendering (SN-827). Run the compounding loop literally: score first, repair only measured holes, verify independently, freeze at exact SHA + proof, reuse canonical engines (SN-854). Diagnose retrieval on held-out cases ranked by trigger conditions; report MATCH/WRONG/COLLISION separately and keep \"unassessed\" distinct from \"failed\" (SN-824). At a measured ceiling, fix the capture schema upstream, refuse backfill, and publish the ceiling (SN-873). Attach the anti-regrowth mechanism — claim window + structural fix — to every cleanup before calling it done (SN-890).",
+    "what_it_means": "The six notes define compounding as a property of *closed loops over honest state*: the chain is whole (SN-826), the state is alive (SN-827), the loop's steps are ordered and its freezes exact (SN-854), and the loop's instruments report their real limits (SN-824, SN-873) so that effort routes to the actual bottleneck — which, in this block, was upstream capture, not downstream tuning. SN-890 generalizes the pattern to housekeeping: even maintenance must close its own loop with a mechanism, or it recurs as someone else's emergency. Intelligence compounds exactly where loops close and numbers stay honest; everywhere else it merely accumulates.",
+    "whats_inside": [
+      "Fallbacks shrink a chain's width, never its length; a chain-breaking slice is a half-build (SN-826).",
+      "Operational checklists are machine-maintained systems: JSON source of truth, generated rendering, cron reconciliation, self-announcing staleness (SN-827).",
+      "The compounding loop is SCORE → IDENTIFY MEASURED HOLES → REPAIR HIGH-VALUE → INDEPENDENTLY VERIFY → FREEZE EXACT → REUSE → MEASURE; frozen = exact SHA + proof under governed supersession; never a second canonical engine (SN-854 — CANDIDATE articulation, PR #2086 unratified at capture).",
+      "Retrieval quality is bounded by trigger text; selector-discriminability ≠ forgetting; a named battery's pass ≠ general retrieval (SN-824).",
+      "When the corpus lacks the field, fix capture upstream and refuse backfill; a measured ceiling, honestly reported, beats tuning to the test (SN-873).",
+      "Cleanups ship batch + claim window + anti-regrowth mechanism, or they are scheduled rework (SN-890)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-4"
+    ],
+    "covers": [
+      "SN-824",
+      "SN-826",
+      "SN-827",
+      "SN-854",
+      "SN-873",
+      "SN-890"
+    ]
+  },
+  "page_hash": "e2009ced75fec07a89e7ad35332ef35f8be86db81c27cee7cca11ea796003949",
+  "content_hash": "349b7abac7c667144197b2ad0f409a214da9b1fd7329e7531a8939ecbbc49929"
+}

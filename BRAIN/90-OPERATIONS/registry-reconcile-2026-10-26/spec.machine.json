@@ -1,0 +1,552 @@
+{
+  "spec": "registry-reconcile-sn0594",
+  "pi_item": "resolve-registry-reconcile-sn0594",
+  "measured_at_tip": "57866113ca22c48c1580db8489ca8e35b88d6682",
+  "surfaces": {
+    "registry_entries": 728,
+    "retrieval_eligible_entries": 700,
+    "captures_on_disk": 719,
+    "published_md_pages": 722,
+    "door_scope_canonical_pages": 701,
+    "next_sequence": 1870,
+    "corpus_manifest_hash_stored": "ef5a71d637e5fd8c8c0781add0e55b644f9700d08b5155660b99f482d41250b2",
+    "corpus_manifest_hash_recomputed": "ef5a71d637e5fd8c8c0781add0e55b644f9700d08b5155660b99f482d41250b2",
+    "manifest_state": "CONSISTENT",
+    "registry_file_bytes": 879903,
+    "registry_serialization": "json.dumps(doc, indent=2, ensure_ascii=False) + '\\n' — byte-identical round-trip verified; this is the fixer's _atomic_write_json(indent=2) form"
+  },
+  "baselines_at_tip": {
+    "door_check_full_mode": {
+      "exit": 1,
+      "defects": 1,
+      "twins": 1,
+      "tombstones_shallow_clone_lower_bound": 0
+    },
+    "audit_registry_defect_total": 50,
+    "audit_counts": {
+      "unparseable_captures": 0,
+      "captures_missing_intelligence": 0,
+      "captures_unregistered_by_hash": 19,
+      "entries_without_hash": 28,
+      "entries_with_stale_hash": 0,
+      "duplicate_smart_note_ids_audit_semantics": 0,
+      "published_entries_missing_projection_path": 0,
+      "registry_projection_paths_absent": 0,
+      "published_pages_without_registry_entry": 3,
+      "duplicate_published_page_paths": 0
+    },
+    "pytest_brain_index_freshness": "13/13 passed",
+    "live_serve_titles_baseline": {
+      "sn0833": "The Only Mistake Is the Missing Note | NayaNET (COLLIDER note B is served)",
+      "sn1852": "There Are No Mistakes — Only Lessons Not Yet Written Down | NayaNET (first-claim note A served)",
+      "sn01773": "serves the note (quote-form title)",
+      "sn0593": "no <title> captured at check time",
+      "sn0594": "no <title> captured at check time"
+    }
+  },
+  "defect_classes": [
+    {
+      "class": "C1_PAGE_HASH_STALE_BLOCKING",
+      "count": 1,
+      "gate": "check_door_obligation full mode exit 1; CI guard battery visibility",
+      "entries": [
+        {
+          "smart_note_id": "SN-0594",
+          "index": 528,
+          "ib": "IB-SMART-NOTE-20261001-hub-is-intelligence-projection-dup0594",
+          "entry_page_hash": null,
+          "page_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-0594/IB-SMART-NOTE-20261001-hub-is-intelligence-projection-dup0594.md",
+          "page_sha256_measured": "881b8b91afb2eab04673fa754b738699a45f54fa10bfea04d173f2788e80da29",
+          "page_nature": "24-line tombstone pointer page (2026-10-04 integrity fix); its internal canonical_path names an SN-0594 path that does not exist on the tree; registry canonical is SN-0593's page (sha256 8ad25cbcc133b14fad983fcc787e95383ae59742a77f690d0867044245cb8ff8, entry page_hash verified MATCH)",
+          "mechanism": "checker is page-driven and lifecycle-blind: a page on disk whose entry carries content_hash but page_hash=None fires PAGE_HASH_STALE. SN-0594 is the only one of 28 tombstones whose page file survived consolidation."
+        }
+      ]
+    },
+    {
+      "class": "C2_DUAL_ACTIVE_ID_COLLISION",
+      "count": 2,
+      "ids": [
+        "SN-0833",
+        "SN-1852"
+      ],
+      "pairs": [
+        {
+          "smart_note_id": "SN-0833",
+          "first_claim_A": {
+            "ib": "IB-SMART-NOTE-20261023-sn0833-learn-grow-compound-first-mistake-law",
+            "title": "Learn, Grow, Compound — The First-Mistake Law",
+            "page": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/learning/SN-0833/IB-SMART-NOTE-20261023-sn0833-learn-grow-compound-first-mistake-law.md",
+            "earliest_commit": "063456a8c7",
+            "commit_time_utc": "2026-10-23T02:42:53Z",
+            "page_hash_verified": "MATCH"
+          },
+          "collider_B": {
+            "ib": "IB-SMART-NOTE-20261023-sn0833-the-only-mistake-is-the-missing-note",
+            "title": "The Only Mistake Is the Missing Note",
+            "page": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0833/IB-SMART-NOTE-20261023-sn0833-the-only-mistake-is-the-missing-note.md",
+            "earliest_commit": "66c9e01c4f",
+            "commit_time_utc": "2026-10-23T02:43:40Z",
+            "page_hash_verified": "MATCH",
+            "margin_seconds_after_A": 47,
+            "public_surface": "/s/sn0833 serves B today"
+          }
+        },
+        {
+          "smart_note_id": "SN-1852",
+          "first_claim_A": {
+            "ib": "IB-SMART-NOTE-20261023-sn1852-the-only-mistake",
+            "title": "There Are No Mistakes — Only Lessons Not Yet Written Down",
+            "page": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/LEARNING/lessons/SN-1852/IB-SMART-NOTE-20261023-sn1852-the-only-mistake.md",
+            "earliest_commit": "bc546b0bb2",
+            "commit_time_utc": "2026-10-23T02:42:55Z",
+            "page_hash_verified": "MATCH"
+          },
+          "collider_B": {
+            "ib": "IB-SMART-NOTE-20261023-sn1852-error-becomes-learning",
+            "title": "IB-SMART-NOTE-20261023-sn1852-error-becomes-learning",
+            "page": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM-INTELLIGENCE/LEARNING-AND-RECOVERY/SN-1852/IB-SMART-NOTE-20261023-sn1852-error-becomes-learning.md",
+            "earliest_commit": "2e0104160b",
+            "commit_time_utc": "2026-10-23T02:43:38Z",
+            "page_hash_verified": "MATCH",
+            "margin_seconds_after_A": 43,
+            "public_surface": "/s/sn1852 serves A today"
+          }
+        }
+      ],
+      "note": "All four captures exist on disk; all four content_hashes distinct — distinct intelligence objects, not re-captures. Vanish-guard doctrine: semantic similarity is modelled, never deleted."
+    },
+    {
+      "class": "C3_DUPLICATE_INTELLIGENT_BLOCK_ID",
+      "count": 1,
+      "ib": "IB-SMART-NOTE-20261001-hub-is-intelligence-projection",
+      "holders": [
+        {
+          "index": 527,
+          "smart_note_id": "SN-0593",
+          "lifecycle_state": "ACTIVE"
+        },
+        {
+          "index": 74,
+          "smart_note_id": "SN-018",
+          "lifecycle_state": "SUPERSEDED"
+        }
+      ],
+      "hazard": "IB-keyed maps silently shadow: check_pages builds {ib: entry} (last wins); _update_registry_locked replaces by IB — any future SN-0593 update would silently delete the SN-018 tombstone entry."
+    },
+    {
+      "class": "C4_TWIN_PROJECTION_DIVERGENT",
+      "count": 1,
+      "entries": [
+        {
+          "smart_note_id": "SN-01773",
+          "ib": "IB-SMART-NOTE-20261021-sn01773-finish-before-you-create",
+          "canonical_bound_A": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/governance/SN-01773/IB-SMART-NOTE-20261021-sn01773-finish-before-you-create.md",
+          "A_sha256": "290f412570392e2db29440fcc003c84bfa712f3c96b519895ccf2a444b5b3a7f",
+          "A_page_hash": "MATCH",
+          "A_chars": 8078,
+          "twin_B": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM-INTELLIGENCE/GOVERNANCE/FINISH-BEFORE-CREATE/SN-01773/IB-SMART-NOTE-20261021-sn01773-finish-before-you-create.md",
+          "B_sha256": "6d1abfbf00919bbda9dfd1b4ebf52dc435e8c004b2b4dbc15d27350fcfdf3eac",
+          "B_chars": 6385,
+          "diff_lines_A_to_B": 70,
+          "nature": "older alternate rendering of the same IB; checker TWIN warning (non-blocking); registry binds A only"
+        }
+      ]
+    },
+    {
+      "class": "C5_RETIRED_TOMBSTONES_BY_DESIGN",
+      "count": 28,
+      "gate_impact": "none — skipped by retrieval validator (inactive), compliant with vanish-guard retirement-evidence test (28/28 carry superseded_by_capture_id + supersession_reason)",
+      "placeholder_successor_count": 12,
+      "entries": [
+        {
+          "index": 74,
+          "smart_note_id": "SN-018",
+          "intelligent_block_id": "IB-SMART-NOTE-20261001-hub-is-intelligence-projection",
+          "title": "The Hub Is the Visual Projection of Intelligence",
+          "has_active_sibling": true,
+          "superseded_by_capture_id": "(successor SN-0593 capture not yet ingested)",
+          "placeholder_successor": true,
+          "page_on_disk": false
+        },
+        {
+          "index": 84,
+          "smart_note_id": "SN-019",
+          "intelligent_block_id": "IB-SMART-NOTE-20261001-sn019-complete-the-app-doctrine",
+          "title": "Complete the App Doctrine — Finish the House, Not the Shell",
+          "has_active_sibling": true,
+          "superseded_by_capture_id": "IB-SMART-NOTE-20261001-sn0595-complete-the-app-doctrine.json",
+          "placeholder_successor": false,
+          "page_on_disk": false
+        },
+        {
+          "index": 96,
+          "smart_note_id": "SN-020",
+          "intelligent_block_id": "IB-SMART-NOTE-20261001-sn020-naya-signature-design-mastery",
+          "title": "Naya Signature Design Mastery — Autonomous Extraordinary Interface Doctrine",
+          "has_active_sibling": true,
+          "superseded_by_capture_id": "IB-SMART-NOTE-20261001-sn0596-naya-signature-design-mastery.json",
+          "placeholder_successor": false,
+          "page_on_disk": false
+        },
+        {
+          "index": 119,
+          "smart_note_id": "SN-022",
+          "intelligent_block_id": "IB-SMART-NOTE-20261002-sn022-human-centered-design-intelligence",
+          "title": "Human-Centered Design Intelligence — World-Class UX Principles Adopted into Naya Design",
+          "has_active_sibling": true,
+          "superseded_by_capture_id": "IB-SMART-NOTE-20261002-sn0597-human-centered-design-intelligence.json",
+          "placeholder_successor": false,
+          "page_on_disk": false
+        },
+        {
+          "index": 217,
+          "smart_note_id": "SN-032",
+          "intelligent_block_id": "IB-SMART-NOTE-20261004-sn032-naya1-distilled-intelligence",
+          "title": "Naya 1 Distilled Intelligence — Director / Integrator Operating Doctrine",
+          "has_active_sibling": true,
+          "superseded_by_capture_id": "IB-SMART-NOTE-20261004-sn0598-naya1-distilled-intelligence.json",
+          "placeholder_successor": false,
+          "page_on_disk": false
+        },
+        {
+          "index": 240,
+          "smart_note_id": "SN-034",
+          "intelligent_block_id": "IB-SMART-NOTE-20261004-sn034-nayapower-core-system-synthesis",
+          "title": "NayaPOWER Core System Synthesis — Mission, Architecture, Laws, Intelligence River, and Human Experience",
+          "has_active_sibling": true,
+          "superseded_by_capture_id": "IB-SMART-NOTE-20261004-sn0599-nayapower-core-system-synthesis.json",
+          "placeholder_successor": false,
+          "page_on_disk": false
+        },
+        {
+          "index": 252,
+          "smart_note_id": "SN-035",
+          "intelligent_block_id": "IB-SMART-NOTE-20261004-sn035-charter-stratification-quality-gate",
+          "title": "NayaPOWER Charter Stratification & Quality Gate — Thesis, Law, Mission, Mechanism, and 10/10 Discipline",
+          "has_active_sibling": true,
+          "superseded_by_capture_id": "IB-SMART-NOTE-20261004-sn0600-charter-stratification-quality-gate.json",
+          "placeholder_successor": false,
+          "page_on_disk": false
+        },
+        {
+          "index": 260,
+          "smart_note_id": "SN-0356",
+          "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0356-dead-workers-still-vote",
+          "title": "Dead Workers Still Vote — Cloudflare Connection Hygiene",
+          "has_active_sibling": true,
+          "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
+          "placeholder_successor": true,
+          "page_on_disk": false
+        },
+        {
+          "index": 262,
+          "smart_note_id": "SN-0357",
+          "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0357-self-directed-intelligence-r2",
+          "title": "Self-Directed Intelligence Under Governance — The Law of Knowing What To Do Next",
+          "has_active_sibling": true,
+          "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
+          "placeholder_successor": true,
+          "page_on_disk": false
+        },
+        {
+          "index": 264,
+          "smart_note_id": "SN-0359",
+          "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0359-proactive-captain-r2",
+          "title": "The Captain Protocol — Proactive Leadership as Operating Law",
+          "has_active_sibling": true,
+          "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
+          "placeholder_successor": true,
+          "page_on_disk": false
+        },
+        {
+          "index": 267,
+          "smart_note_id": "SN-0360",
+          "intelligent_block_id": "IB-SMART-NOTE-SMART-NOTE-20261005-sn0360-no-deletion-without-understanding",
+          "title": "No Deletion Without Understanding — The Preservation Law",
+          "has_active_sibling": false,
+          "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
+          "placeholder_successor": true,
+          "page_on_disk": false
+        },
+        {
+          "index": 269,
+          "smart_note_id": "SN-0361",
+          "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0361-archive-recovery-thesis",
+          "title": "The Recovery Thesis — NayaPOWER Was Designed, Not Invented",
+          "has_active_sibling": true,
+          "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
+          "placeholder_successor": true,
+          "page_on_disk": false
+        },
+        {
+          "index": 271,
+          "smart_note_id": "SN-0362",
+          "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0362-cold14-intelligence-interface",
+          "title": "Cold-14 — The Minimum Viable Intelligence Interface for NayaNET",
+          "has_active_sibling": true,
+          "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
+          "placeholder_successor": true,
+          "page_on_disk": false
+        },
+        {
+          "index": 324,
+          "smart_note_id": "SN-041",
+          "intelligent_block_id": "IB-SMART-NOTE-20261004-sn041-discernment-operating-law",
+          "title": "Discernment-to-Compounding Operating Law — Understand Meaning, Distill Intelligence, Act with Evidence, Learn Fast",
+          "has_active_sibling": true,
+          "superseded_by_capture_id": "IB-SMART-NOTE-20261004-sn0601-discernment-operating-law.json",
+          "placeholder_successor": false,
+          "page_on_disk": false
+        },
+        {
+          "index": 336,
+          "smart_note_id": "SN-042",
+          "intelligent_block_id": "IB-SMART-NOTE-20261004-sn042-intelligence-gain-epistemic-calibration",
+          "title": "Intelligence Gain & Epistemic Calibration Law — Measure Capability, Causal Learning, Independence, and Complexity",
+          "has_active_sibling": true,
+          "superseded_by_capture_id": "IB-SMART-NOTE-20261004-sn0602-intelligence-gain-epistemic-calibration.json",
+          "placeholder_successor": false,
+          "page_on_disk": false
+        },
+        {
+          "index": 427,
+          "smart_note_id": "SN-0501",
+          "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0501-bake-memory-math",
+          "title": "Bake Memory Math: a restart loop cannot heal resource exhaustion — size the whole process tree to the machine",
+          "has_active_sibling": true,
+          "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
+          "placeholder_successor": true,
+          "page_on_disk": false
+        },
+        {
+          "index": 450,
+          "smart_note_id": "SN-0522",
+          "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0522-self-governing-intelligence-law",
+          "title": "The Self-Governing Intelligence Law",
+          "has_active_sibling": false,
+          "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
+          "placeholder_successor": true,
+          "page_on_disk": false
+        },
+        {
+          "index": 452,
+          "smart_note_id": "SN-0523",
+          "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0523-prime-math-decides",
+          "title": "Prime 3 — THE MATH DECIDES",
+          "has_active_sibling": true,
+          "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
+          "placeholder_successor": true,
+          "page_on_disk": false
+        },
+        {
+          "index": 454,
+          "smart_note_id": "SN-0524",
+          "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary",
+          "title": "Human IDs Are Canonical Continuity Boundaries",
+          "has_active_sibling": true,
+          "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
+          "placeholder_successor": true,
+          "page_on_disk": false
+        },
+        {
+          "index": 456,
+          "smart_note_id": "SN-0525",
+          "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0525-one-brain-every-ai",
+          "title": "One Brain. Every AI. — Human-Owned Intelligence Is the Constant",
+          "has_active_sibling": true,
+          "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
+          "placeholder_successor": true,
+          "page_on_disk": false
+        },
+        {
+          "index": 528,
+          "smart_note_id": "SN-0594",
+          "intelligent_block_id": "IB-SMART-NOTE-20261001-hub-is-intelligence-projection-dup0594",
+          "title": "SUPERSEDED — SN-0594 Projection (Tombstone)",
+          "has_active_sibling": false,
+          "superseded_by_capture_id": "IB-SMART-NOTE-20261001-hub-is-intelligence-projection.json",
+          "placeholder_successor": false,
+          "page_on_disk": true
+        },
+        {
+          "index": 554,
+          "smart_note_id": "SN-0618",
+          "intelligent_block_id": "IB-SMART-NOTE-20261008-sn0618-fix-the-source-not-the-projection",
+          "title": "Fix the Source, Not the Projection",
+          "has_active_sibling": false,
+          "superseded_by_capture_id": "IB-SMART-NOTE-20261008-sn0618-fix-the-source-not-the-projection.json",
+          "placeholder_successor": false,
+          "page_on_disk": false
+        },
+        {
+          "index": 555,
+          "smart_note_id": "SN-0619",
+          "intelligent_block_id": "IB-SMART-NOTE-20261008-sn0619-provisional-scores-wear-qualifiers",
+          "title": "Provisional Scores Wear Their Qualifiers; History Is Never Rewritten",
+          "has_active_sibling": false,
+          "superseded_by_capture_id": "IB-SMART-NOTE-20261008-sn0619-provisional-scores-wear-qualifiers.json",
+          "placeholder_successor": false,
+          "page_on_disk": false
+        },
+        {
+          "index": 557,
+          "smart_note_id": "SN-0620",
+          "intelligent_block_id": "IB-SMART-NOTE-20261008-sn0620-verification-is-not-approval",
+          "title": "The Platform Sees One Seat: Verification Is Not Approval",
+          "has_active_sibling": false,
+          "superseded_by_capture_id": "IB-SMART-NOTE-20261008-sn0620-verification-is-not-approval.json",
+          "placeholder_successor": false,
+          "page_on_disk": false
+        },
+        {
+          "index": 558,
+          "smart_note_id": "SN-0621",
+          "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0621-record-underreporting-resolution-is-false",
+          "title": "A Record That Under-Reports Resolution Is False — Claim Statuses Must Be Behaviorally Falsifiable in Both Directions",
+          "has_active_sibling": false,
+          "superseded_by_capture_id": "IB-SMART-NOTE-20260930-sn0621-record-underreporting-resolution-is-false.json",
+          "placeholder_successor": false,
+          "page_on_disk": false
+        },
+        {
+          "index": 559,
+          "smart_note_id": "SN-0622",
+          "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0622-score-hygiene-canonical-vs-trial-rung",
+          "title": "Canonical Area Score ≠ Trial Rung ≠ Threshold — Score Hygiene for the Learning Area",
+          "has_active_sibling": false,
+          "superseded_by_capture_id": "IB-SMART-NOTE-20260930-sn0622-score-hygiene-canonical-vs-trial-rung.json",
+          "placeholder_successor": false,
+          "page_on_disk": false
+        },
+        {
+          "index": 560,
+          "smart_note_id": "SN-0623",
+          "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0623-publication-not-promotion-evidence-gate",
+          "title": "Publication Blocker ≠ Promotion-Evidence Gate — Prove Every Hop Before Upgrading the Chain",
+          "has_active_sibling": false,
+          "superseded_by_capture_id": "IB-SMART-NOTE-20260930-sn0623-publication-not-promotion-evidence-gate.json",
+          "placeholder_successor": false,
+          "page_on_disk": false
+        },
+        {
+          "index": 682,
+          "smart_note_id": "SN-346",
+          "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0355-nonstop-loop",
+          "title": "The Nonstop Loop — NayaPOWER Operating Code",
+          "has_active_sibling": false,
+          "superseded_by_capture_id": "IB-SMART-NOTE-20261005-sn0589-nonstop-loop.json",
+          "placeholder_successor": false,
+          "page_on_disk": false
+        }
+      ]
+    },
+    {
+      "class": "C6_NUMERIC_FORMAT_COLLISION",
+      "count": 1,
+      "entries": [
+        {
+          "number": 346,
+          "forms": [
+            {
+              "smart_note_id": "SN-0346",
+              "lifecycle_state": "ACTIVE",
+              "index": 247
+            },
+            {
+              "smart_note_id": "SN-346",
+              "lifecycle_state": "SUPERSEDED",
+              "index": 682
+            }
+          ],
+          "gate_impact": "none today — unique-ids gate is path-based and only one page path exists; ambiguity is human-id level only"
+        }
+      ]
+    },
+    {
+      "class": "C7_HASHLESS_CONTENT_HASH_LEGACY",
+      "count": 28,
+      "entries_without_content_hash": [
+        "SN-003",
+        "SN-004",
+        "SN-005",
+        "SN-006",
+        "SN-007",
+        "SN-008",
+        "SN-009",
+        "SN-010",
+        "SN-011",
+        "SN-012",
+        "SN-016",
+        "SN-018",
+        "SN-0311",
+        "SN-0312",
+        "SN-0340",
+        "SN-0345",
+        "SN-035",
+        "SN-0399",
+        "SN-0400",
+        "SN-0408",
+        "SN-0459",
+        "SN-0460",
+        "SN-0501",
+        "SN-0522",
+        "SN-0523",
+        "SN-0524",
+        "SN-275",
+        "SN-NET-POWER-MAGIC-001"
+      ],
+      "coupled_class": "captures_unregistered_by_hash = 19 (includes SN-9998/SN-9999 live-fire test fixture captures)",
+      "gate_impact": "none — drift test is a ratchet (pins 28 / 20), green at tip",
+      "authority": "DIRECTOR DECISION REQUIRED — PR #1401 removed the hashes; tests/test_smart_note_registry_drift.py documents restoration as a Human Director decision on hash semantics. NOT cured by this spec.",
+      "unregistered_captures": [
+        "20261001-hub-is-intelligence-projection.json",
+        "20261008-sn0530-do-do-and-report.json",
+        "SMART-NOTE-20260929-sn003-naya-continuation-engine.json",
+        "SMART-NOTE-20260929-sn004-shawn-standing-law-r2.json",
+        "SMART-NOTE-20260929-sn004-shawn-standing-law.json",
+        "SMART-NOTE-20260930-sn016-prime-judgment-rule.json",
+        "SMART-NOTE-20261004-sn035-charter-stratification-quality-gate.json",
+        "SMART-NOTE-20261004-sn276-what-deserves-to-survive.json",
+        "SMART-NOTE-20261010-sn-0745-law-of-one.json",
+        "SMART-NOTE-20261010-sn-0746-calculator-as-default.json",
+        "SMART-NOTE-20261010-sn-0747-plain-words-decision-format.json",
+        "SMART-NOTE-20261010-sn-0748-reversibility-rule.json",
+        "SMART-NOTE-20261010-sn-0749-engine-before-production.json",
+        "SMART-NOTE-20261010-sn-0778-fairness-assumption-audit-protocol.json",
+        "SMART-NOTE-20261010-sn-0779-responsibility-boundary.json",
+        "SMART-NOTE-20261010-sn-0780-causal-trace.json",
+        "SMART-NOTE-20261010-sn-0781-causal-uncertainty.json",
+        "SMART-NOTE-20261022-sn9998-live-fire-test-lifecycle.json",
+        "SMART-NOTE-20261022-sn9999-live-fire-test-lifecycle.json"
+      ]
+    },
+    {
+      "class": "C8_AUDIT_ONLY_ORPHAN_PAGES",
+      "count": 3,
+      "gate_impact": "none for the door checker (not IB-named canonical pages); pinned in drift ratchet at 4, actual 3 groups",
+      "entries": [
+        "SN-0842 narzan-trinity-founding-portrait.md (shares SN-0842 public id — Smart Note identity lane, per drift pin note)",
+        "legacy smart-note.md v7-format group (IB-0000xx dirs, 2026/10/19)",
+        "the-naya-tool-set.md group"
+      ]
+    }
+  ],
+  "independent_hash_verification": {
+    "method": "raw.githubusercontent bytes at tip sha256 vs registry page_hash, independent of local checkout",
+    "pages_verified_match": 12,
+    "pages_verified_mismatch": 0,
+    "verified": [
+      "SN-0833 A+B",
+      "SN-1852 A+B",
+      "SN-0593",
+      "SN-018 ACTIVE",
+      "SN-019 ACTIVE",
+      "SN-0356 ACTIVE",
+      "SN-0523 ACTIVE",
+      "SN-1869",
+      "SN-001",
+      "SN-01773 A"
+    ],
+    "plus_full_surface": "check_pages at tip compared page_hash for all 701 door-scope pages: exactly 1 stale (C1)"
+  }
+}

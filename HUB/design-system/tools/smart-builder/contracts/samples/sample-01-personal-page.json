@@ -1,0 +1,48 @@
+{
+  "contract": "smart-builder/01-personal-page",
+  "template_id": "01",
+  "template_name": "Personal page",
+  "template_color": "#a06bff",
+  "title": "Maya Chen",
+  "kicker": "Sample · Personal page",
+  "lede": "My world in one page — who I am, what I love, and everywhere to find me.",
+  "sections": [
+    {
+      "kicker": "Cover",
+      "title": "Welcome to my world",
+      "lede": "A personal page opens with presence: a face, a name, a line that says everything.",
+      "pieces": [
+        "NAYA-TYP-009",
+        "NAYA-CRD-009",
+        "NAYA-JWL-014"
+      ]
+    },
+    {
+      "kicker": "About",
+      "title": "A little about me",
+      "lede": "Designer, gardener, night owl. I make interfaces that feel alive.",
+      "pieces": [
+        "NAYA-CRD-002",
+        "NAYA-LST-002"
+      ]
+    },
+    {
+      "kicker": "Connect",
+      "title": "Find me everywhere",
+      "lede": "One tap to every corner of my world.",
+      "pieces": [
+        "NAYA-BTN-001",
+        "NAYA-BTN-006",
+        "NAYA-BTN-013"
+      ]
+    },
+    {
+      "kicker": "Share",
+      "title": "Pass it on",
+      "lede": "This page is shareable — send it to a friend.",
+      "pieces": [
+        "NAYA-BTN-003"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>NayaNET · Every Page Settings — Proposed</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}*{box-sizing:border-box}
+body{background:radial-gradient(circle at 50% 0,#39215b 0,transparent 45%),#080b17;color:#f8f6ff;margin:0;padding:20px}
+main{max-width:790px;margin:20px auto;background:linear-gradient(148deg,#24213a,#111624 60%,#1e1330);padding:clamp(20px,5vw,40px);border:1px solid #7455b0;border-radius:28px;box-shadow:inset 0 1px #ffffff38,0 24px 100px #0009}
+h1{font-size:clamp(1.7rem,4vw,2.6rem);margin:.2rem 0 .3rem}h2{font-size:1.15rem;margin:.1rem 0}
+p{color:#c9c5dc;line-height:1.55}.kicker{font-size:.73rem;letter-spacing:.15em;text-transform:uppercase;color:#c6a5ff;font-weight:800}
+.row{background:linear-gradient(125deg,#292440,#161524);border:1px solid #655083;border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 8px 27px #0005,inset 0 1px #ffffff1a}
+fieldset{border:0;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:12px}legend{font-weight:650;margin-bottom:5px}
+label.opt{padding:10px 14px;border:1px solid #8b72b4;border-radius:12px;display:inline-flex;align-items:center;gap:9px;cursor:pointer;background:#1a1a30}
+input[type=radio]{accent-color:#ab75f5;width:17px;height:17px}
+select,button{font:inherit;color:white;background:#29223e;border:1px solid #9170bd;border-radius:12px;padding:10px 12px}
+button{cursor:pointer;background:linear-gradient(125deg,#6749c4,#476fc9);font-weight:700;box-shadow:0 7px 20px #0006}
+button:disabled{opacity:.5;cursor:not-allowed}button:hover:not(:disabled){filter:brightness(1.16)}
+:focus-visible{outline:3px solid #cbadff;outline-offset:3px}
+.meta{font-size:.84rem;color:#beb8d3}#status{color:#a3f5d4;min-height:28px}#impacts{color:#b7e2f2}
+small{color:#aba4c1}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.warn{border-left:3px solid #cca5ff;padding:12px;background:#241b38;border-radius:9px}
+</style></head><body><main>
+<div class="kicker">NayaNET · Universal Smart Page Control Deck</div>
+<h1>Every page. Your choice.</h1>
+<p>Choose who can view it, whether others can find it, and whether to offer an installable app. Every page has its own settings.</p>
+<p class="warn"><strong>Prototype only.</strong> The controls below prepare settings changes locally. They do not save permissions, publish pages, install apps or make privacy claims.</p>
+<label for="page"><strong>Choose a page</strong></label>
+<select id="page" aria-label="Choose page">
+<option value="p1">My Personal World</option><option value="b1">My Business Page</option>
+<option value="s1">My Community Space</option><option value="p2">Another Personal World</option></select>
+<div class="row"><h2>Who can see this page?</h2>
+<p class="meta">Private is enforced by the server, not by hiding a button.</p>
+<fieldset><legend>Visibility</legend><label class="opt"><input type="radio" name="visibility" value="private"/> Private</label>
+<label class="opt"><input type="radio" name="visibility" value="public"/> Public</label></fieldset></div>
+<div class="row"><h2>Include your alias in NayaNET Connect?</h2>
+<p class="meta">Findable includes only your separately approved alias and topic tags in search and AutoMatch; it never reveals your private page, real name, username, posts or private members. Unlisted disables the Connect listing. Private links still need access permission.</p>
+<fieldset><legend>Discoverability</legend><label class="opt"><input type="radio" name="discoverability" value="unlisted"/> Unlisted</label>
+<label class="opt"><input type="radio" name="discoverability" value="findable"/> Findable</label></fieldset></div>
+<div class="row"><h2>Install as a Smart App?</h2><p class="meta">Installation requires a deployed app and browser support. Never place private content in public offline caches.</p>
+<fieldset><legend>Installation preference</legend><label class="opt"><input type="radio" name="installation" value="enabled"/> Offer install</label>
+<label class="opt"><input type="radio" name="installation" value="disabled"/> Disable install</label></fieldset></div>
+<div id="impacts" role="status" aria-live="polite"></div>
+<div class="actions"><button id="copy">Copy proposed settings</button><button disabled aria-label="Production save unavailable until secure server integration">Save on NayaNET — not connected</button></div>
+<p id="status" role="status" aria-live="polite"></p>
+<small>Publishing is a separate, explicitly reviewed action. Changing a private page to public must not publish it automatically. Each page has its own world and community: your public connections never gain access to your private world. Settings for different pages never overwrite one another.</small>
+</main>
+<script type="module">
+import {makePagePolicy,proposePageSettings,describePageSettings} from '../tools/product/nayanet-page-settings.mjs';
+const policies=new Map([['p1',makePagePolicy('personal','p1')],['b1',makePagePolicy('business','b1')],['s1',makePagePolicy('space','s1')],['p2',makePagePolicy('personal','p2')]]);
+const page=document.querySelector('#page'),impacts=document.querySelector('#impacts'),status=document.querySelector('#status');
+function render(){const x=policies.get(page.value),description=describePageSettings(x);
+ for(const key of ['visibility','discoverability','installation']){
+  const radio=document.querySelector('input[name="'+key+'"][value="'+x[key]+'"]');radio.checked=true;
+ }
+ impacts.replaceChildren();
+ const p=document.createElement('p');
+ p.textContent='Proposed: '+x.visibility+' content · '+(x.discoverability==='findable'?'alias/topic Connect eligible':'no Connect discovery')+' · install '+x.installation+'. Status: unpublished draft.';
+ impacts.append(p);
+ for(const warning of description.warnings){const e=document.createElement('p');e.className='meta';e.textContent=warning;impacts.append(e);}
+ status.textContent='';
+}
+page.addEventListener('change',render);
+for(const key of ['visibility','discoverability','installation']){
+ document.querySelectorAll('input[name="'+key+'"]').forEach(r=>r.addEventListener('change',()=>{
+  const current=policies.get(page.value);
+  policies.set(page.value,proposePageSettings(current,{[key]:r.value}));render();
+ }));
+}
+document.querySelector('#copy').addEventListener('click',async()=>{
+ const data=JSON.stringify(policies.get(page.value),null,2);
+ try{await navigator.clipboard.writeText(data);status.textContent='Local draft copied; nothing was saved to NayaNET.';}
+ catch(e){status.textContent='Clipboard unavailable; nothing was saved.';}
+});
+render();
+</script></body></html>

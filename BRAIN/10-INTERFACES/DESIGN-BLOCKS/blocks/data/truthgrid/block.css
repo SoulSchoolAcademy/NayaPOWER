@@ -1,0 +1,31 @@
+/* Smart Block: data/truthgrid
+ * Source: Naya Design Element Set N4.html (byte-true extraction, not rewritten)
+ * Type: data
+ * Extracted: 2026-10-09
+ */
+
+/* Per-state accent: style="--tc2:#35e39b" on .truth and .torb */
+
+.truthgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+
+.truth{border:1.5px solid rgba(255,255,255,.22); border-radius:16px; padding:22px;
+  background:linear-gradient(180deg,#0c0c12,#060608);
+  box-shadow:0 14px 34px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.07);
+  display:flex; gap:16px; align-items:flex-start;
+  transition:border-color .25s var(--ease), box-shadow .25s var(--ease), transform .25s var(--ease);}
+
+.truth:hover{border-color:color-mix(in srgb, var(--tc2) 65%, transparent);
+  box-shadow:0 18px 40px rgba(0,0,0,.6), 0 0 30px -6px var(--tc2), inset 0 1px 0 rgba(255,255,255,.1);
+  transform:translateY(-3px);}
+
+.truth b{display:block; font-size:14px; letter-spacing:.18em; color:#fff; margin-bottom:4px;}
+
+.truth p{font-size:18px; color:#fff; margin:0; opacity:.92;}
+
+/* :root {
+  --ease: cubic-bezier(.16,.84,.22,1);
+} */
+.torb{width:44px; height:44px; border-radius:50%; flex:none; display:grid; place-items:center;
+  font-size:18px; font-weight:900; color:#fff;
+  background:radial-gradient(circle at 35% 30%, var(--tc2), #000 130%);
+  border:2px solid var(--tc2); box-shadow:0 0 18px var(--tc2);}

@@ -1,0 +1,41 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2200",
+  "title": "Noted, It Stops Being a Mistake — Learning That Compounds",
+  "slug": "essence-11-noted-it-stops-being-a-mistake",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-11-noted-it-stops-being-a-mistake.md",
+  "tone": "sapphire",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:26:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "An error is an event; a lesson is an asset; the difference is entirely the capture. A mistake, wall, or failure becomes a learning lesson the moment its way-around is noted — why it happened, how it was overcome, and what changes next time — and it stays a mistake only while the note is missing. Learning itself is proven the same way everything here is proven: report only the rung you actually evidenced, on a ladder that runs from EXISTS to EVOLVES. And what one seat learns must not stay one seat's ceiling: hoarded, it's a limit; shared — adopted, running, in the next sister's hands — it's the floor everyone builds from.",
+    "human_view": "Everyone makes mistakes; systems differ in what a mistake costs the second time. In this one, the first occurrence buys the lesson and every seat inherits it — the wall you hit becomes a door for everyone behind you. The only unforgivable version is the one nobody wrote down, because that one charges full price forever.",
+    "child_view": "When you fall off your bike and figure out why, tell your friends what you learned — then nobody else has to fall the same way. If you keep it to yourself, they'll fall too. And you don't get to say \"I can ride\" until you've actually ridden — not when you've read about it, not when you've sat on the bike.",
+    "grandma_view": "It's the family recipe book principle: the cook who burns the sauce writes down what went wrong and how to save it, and the book gets better every generation. Keeping the lesson in your head helps no one after you. Writing it down — honestly, including the rung you're really on — is how a family stops repeating its sorrows.",
+    "ai_view": "On any error, wall, or surprise: capture the solution path, the cause, and the evidence in the same pass; run the recovery sequence in order; and do not report the fix complete until the note exists. Claim your learning at its true transition — CAPTURED is not APPLIED, APPLIED is not REUSE_VERIFIED — and name your ladder rung with its evidence pointer on every completion claim. Share at the moment of learning, with enough context to survive compaction; adopt your sisters' lessons as running behavior, not as quotations.",
+    "what_it_means": "Learning is this system's compound interest, and the note is the deposit slip. The machinery here — classification by capture, the recovery sequence, the ladder, the inheritance rule — exists to convert private experience into collective capability at the moment it happens, at an honestly labeled strength. A lesson's value is not its eloquence; it is the recurrence it prevents and the decision it changes.",
+    "whats_inside": [
+      "The classification of an event is decided by its capture, not by whether it hurt.",
+      "A fix is not complete until its way-around exists as a note, filed in the same motion.",
+      "\"Learned\" is claimed only at observed reuse; the ladder rung you report is the highest one your evidence reaches.",
+      "Recovery is a sequence with a safety-first step, not an improvisation — and noting never replaces mitigating real harm.",
+      "Lessons are inherited, not re-learned: shared at the moment, with compaction-proof context, adopted as running behavior."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-5"
+    ],
+    "covers": [
+      "SN-1803",
+      "SN-1852",
+      "SN-1852b",
+      "SN-1894",
+      "SN-1900"
+    ]
+  },
+  "page_hash": "47fbabe799bee0308b02e6e773eea838381f4448e2cf9004b6c9b7726a14adaf",
+  "content_hash": "889cbe2933a61cf9c06149f5bbafde967ca593ec3e2eab60b1405f021455e37f"
+}

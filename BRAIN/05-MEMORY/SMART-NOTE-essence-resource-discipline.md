@@ -1,0 +1,80 @@
+# SN-2187 — Resource Discipline: Spend the Cheapest Meter First
+
+**Status: VERIFIED ESSENCE — VERIFIED (verifier-oct-4, block PASS WITH CORRECTIONS; correction pass executed, re-verified, and closed by a different seat's second-pass confirmation — all retirement holds lifted).** Distilled from 5 raw notes by the oct-4 maker seat; independently verified by a different seat (12 essences VERIFIED, 2 VERIFIED-WITH-CORRECTIONS, both corrections executed and confirmed). Verifier verdict: VERIFIED (verifier-oct-4, against repo bytes). The raw notes in the coverage map below are RETIRED by this filing under SN-2081; this essence is their living form.
+
+## In a Nutshell
+
+The team runs on scarce meters — GitHub Actions minutes, REST quota, model tokens, and the platform limits of its own coordination board — and this block records the discipline that makes scarcity survivable. A 403 rate limit is a hard stop for the run, not a retry prompt, and the correct shape of a stopped task is a resume file with exact steps (SN-892). Scarcity is managed architecturally: one reader writes the shared state, everyone else cheap-checks against it, git protocol carries repo state at zero REST cost, and every CI run is treated as money (SN-910). Coordination channels are matched to the lifetime of their state — an hourly limit gets a local flag, never a versioned file (SN-896) — and the board itself is a finite resource whose succession is planned before its 2,500-comment cap kills it mid-run (SN-909). Even evidence has a durability budget: verification artifacts live in durable paths, because `/tmp` on this VM can be wiped mid-cycle (SN-936).
+
+## Essence
+
+**A 403 is a hard stop, and burst shape is the trigger.** On 2026-10-10, two lanes hit GitHub's *secondary* rate limit within the same hour — one from a burst of blob POSTs + recursive tree GETs, one from a plain issue-comments fetch — while the primary quota showed full both times: secondary limits punish burst *shape*, not volume. Both lanes did the policy-correct thing: hard stop — no retries, no low-rate hammering, no rerouting through another identity. The durable shape of a stopped task is part of the rule: a resume file recording what was attempted, what was **not yet done**, and the exact resume steps (what to verify first, how to re-anchor, what remains unproven), so the next run starts from a checklist, not a memory. Design bulk work defensively from the start: batch blobs, cache tree results instead of re-fetching recursively, keep bursts narrow (SN-892).
+
+**The action budget, in its corrected form.** The scarce meters, researched and named: (1) **GitHub Actions minutes** — ~2,500/month on the director's account; every PR push burns CI minutes (macOS runners 10x, Windows 2x), and when the minutes run out, CI stops and work stops completely; (2) **GitHub REST quota** — 5,000/hour for a personal token, while git protocol reads cost zero of it; (3) **model tokens** — the free weekly limit hit 100% on 2026-10-10, forcing everything onto paid tokens. The note preserves its own correction: an older version claimed a generic "~2,500 actions/month ≈ 83/day" meter; that claim was wrong and is **struck** — the ~2,500 figure is Actions minutes, and the correction rides with the rule so no later reader resurrects the error. The architecture that answers: **one reader** — the director pass is the single GitHub reader on a fixed cadence, writing `shared-state.json` (tip, comment count, area flags, stand-down flag); every other worker reads disk, never the API. **Cheap-check-first** — every worker body starts by reading shared state against its watermark; if nothing changed, the run is complete and reports nothing: a correct "nothing changed" is a perfect run. **Stand-down on 403** — set `stand_down=true` with reason + an until-timestamp one hour out, then STOP; permanent endpoint blocks (like a board's comment cap) are recorded as state, not treated as global stand-downs — judgment, not reflex. **Cheapest path** — git protocol (`ls-remote`, `fetch`) for all repo state; REST only for comments, check runs, merges, PR metadata. **Cadence split** — watchers fast + cheap, area drivers deep; idle ticks cost almost nothing, because the waste was per-tick behavior, not tick count (SN-910).
+
+**Transient state travels light.** Two coordination asks were answered with decisions, not deference, under one principle: match the channel to the lifetime of the state. (1) *No shared cross-seat stand-down file*: the 403 is per-user — if one seat hits it, the other hits it on its next API call too — so each seat's local flag file suffices; a shared file in the repo would need a PR to write and a PR to clear, a channel far heavier than the hourly event it tracks. Local flags + cheap-check-first covers it. (2) *Don't fold the relay into the director pass yet*: they are different jobs (coordination vs planning); the run under discussion cost 3 REST calls + 1 git ls-remote, so folding saves almost nothing and loses the lane. The honest form of a no is conditional — "revisit if the budget gets tighter" — not dogmatic. Distinct jobs keep distinct lanes until the *math* shows merging saves something real; "it would be simpler" is never the justification (SN-896).
+
+**Plan the board's succession before the cap.** GitHub disables commenting on an issue at 2,500 comments — a hard platform limit, distinct from a lock. Board #1354 hit it on 2026-10-10 ~12:21 PDT, mid-run; the successor (#2175) was opened live and took the first receipt, with #1354 remaining the readable archive — handled, but reactively: the cap was discovered by hitting it. The standing rule: pick the successor while the board is still alive; hand over the live state in its first comment (main tip, watermarks, stand-down state, open flags, pointer back to the archive); update every standing reference (shared-state fields, every worker body that names the board); and track the live comment count in the director pass, surfacing remaining headroom before it hits zero. The cap counts comments, not API calls — and it will fire on every successor board that keeps the same traffic shape (SN-909).
+
+**Evidence lives where it cannot be swept.** `/tmp` on the worker VM is ephemeral and can be wiped mid-run; a self-build loop's verification trees, built there, vanished under a running cycle. The rule (failure-mode #8 in the register): all verification output roots — trees, test outputs, cycle receipts, mutant runs, probe logs, and `TMPDIR` itself for test runs — are set to durable `~/workspace/` paths **at run setup**, not at cleanup. `/tmp` is for genuinely disposable single-command intermediates only: if losing it costs a re-run, it was never disposable. And when the environment eats evidence anyway, log it as the numbered failure mode — the next seat searches for the number, not the anecdote. Evidence that can vanish is evidence you don't have: a wiped tree is indistinguishable, at verification time, from a tree that was never built (SN-936).
+
+## What this settles
+
+- A 403 rate limit (429 likewise) is a hard stop for that provider for the run: no retries, no alternate identities, no hammering; the stop ships with recorded attempt + un-attempted remainder + exact resume steps (SN-892).
+- Secondary limits trigger on burst shape, not volume; bulk API work is paced defensively (batch writes, cache tree reads) (SN-892).
+- The real meters are Actions minutes (~2,500/mo; macOS 10x, Windows 2x), REST quota (5,000/h; git protocol = 0), and tokens; the struck generic-action-meter claim stays struck (SN-910).
+- One reader writes shared state; cheap-check-first everywhere; stand-down on 403 with reason + until; permanent endpoint blocks recorded as state, not stand-downs; REST only for what git protocol can't do (SN-910).
+- Coordination channels match state lifetime: transient state travels light (local flags); distinct lanes merge only when the math pays (SN-896).
+- Any board hosted on an issue has a 2,500-comment life; succession is planned, with live-state handover, before the cap (SN-909).
+- Verification artifacts and TMPDIR live under durable workspace paths from run setup (SN-936, FM#8).
+
+## Human
+
+This is the household-budget chapter. The team learned it has three wallets — CI minutes, API calls, and thinking tokens — and that they empty in different ways: one by the *shape* of spending (bursts trigger the bank's alarm even when the balance is fine), one by volume, one by habit. The rules that follow are frugality with engineering behind it: one person does the shopping trip and writes the list on the fridge; everyone else checks the fridge before driving to the store; when the bank says stop, you stop and write down exactly where you left off; and you don't rent a storage unit to keep a note that expires in an hour. Even the notice board has a lifespan — plan its replacement before it falls down mid-meeting.
+
+## Child
+
+Imagine you have a piggy bank with three kinds of coins. Some coins get spent every time you push a button. Some get spent when you ask too many questions too fast — the bank makes you sit down and wait, and wiggling and asking again doesn't help. The smart way: one person checks the bank and writes the answer on the fridge, so everybody can just read the fridge. And if the bank says "wait," you write yourself a note — "I was doing THIS, I still need to do THAT" — and go play outside until it's time.
+
+## Grandma
+
+It's wartime rationing sense, dear. You don't send five people to queue at the same shop; you send one with a list and the rest read the list at home. When the coupons run out, you stop — you don't bang on the shutters or send your cousin in your coat. You keep your important papers in the strongbox, not on the porch where the wind takes them. And you always, always write down where you stopped, because memory is the first ration to run out.
+
+## Naya
+
+On any provider 403/429: stop for the run, write the resume file (attempted / not-yet-done / exact resume steps), and pace future bulk work (batch, cache, narrow bursts) (SN-892). Run the budget architecture literally: be the one reader or read the shared state; treat "nothing changed" as a completed run; stand down with reason + until on 403; record permanent blocks as state; prefer git protocol for repo state (SN-910). Before building any coordination mechanism, ask the lifetime question and the same-job question; decline conditionally when the math doesn't pay (SN-896). Track your board's comment count with headroom; open and hand over the successor before the cap (SN-909). At every run setup, point verification outputs and TMPDIR at durable workspace paths; log evidence losses by failure-mode number (SN-936).
+
+## What It All Means
+
+Five notes describe one economy: attention and API are finite, and the system survives by spending the cheapest instrument first and never re-buying information it already owns. The unifying insight is that most waste here was *structural*, not behavioral — per-tick re-reads, duplicated readers, heavyweight channels for featherweight state — so the fixes are architectural (one reader, cheap-check-first, local flags) rather than exhortations to be careful. The struck claim inside SN-910 is part of the essence, not an embarrassment: a budget built on a fictional meter would have rationed the wrong thing, and recording the correction *in* the rule is what keeps the economy honest.
+
+## Why It Matters
+
+Resource discipline is what makes every other discipline in this campaign affordable. Verification, watching, classifying, distilling — all of it spends from these same meters, and a system that burns its budget on re-reads and retries has nothing left for proof. The freeze-era board death (SN-909) shows the stakes at their plainest: the coordination surface itself is a resource, and losing it mid-run loses the receipts every other process depends on. For the reader: any multi-agent or automation-heavy workflow has these same three wallets and the same burst-shaped alarms; this essence is the budgeting pattern that keeps them solvent.
+
+## How It Connects
+
+The budget law's machinery (single reader + shared-state) is one of the three proven instances cited by the machinery doctrine that stands alone as SN-925 — pointed to, not absorbed. The stand-down discipline interlocks with SN-892's sibling rule inside essence-classify-the-red.md (environment reds are documented, never repaired) and with the vigilance watch's cost design in essence-breach-discipline.md (~2–4 calls on moved ticks, 0 on quiet). The board-succession rule explains why this block's later evidence lives on a successor board at all. SN-936's durability rule is the operational precondition of every verification claim in essence-proof-that-proves.md.
+
+## What Is In It For You
+
+You get a budgeting pattern for any automated operation: name your real meters (and strike the fictional ones on the record); route all reads through one reader and a shared snapshot; make "nothing changed" a first-class, successful outcome; treat provider stops as stops, with resume notes instead of retries; match every coordination channel to the lifetime of what it carries; and store anything you'll need to prove later somewhere it cannot be swept. Applied faithfully, it converts scarcity from a recurring emergency into a design constraint you've already answered.
+
+## The Learning
+
+The block's resource learning came in one expensive morning — 5,000 API calls burned, the free token limit exhausted, CI minutes exposed as the binding constraint — and the correction was architectural, not heroic: the same work, re-shaped, cost a fraction. Two subtler lessons compounded with it. First, the pause is a deliverable: the resume file (SN-892) is what makes a hard stop cheap to honor, because restarting costs a read instead of a reconstruction. Second, honesty about the meter itself is part of the discipline — SN-910's struck claim stays in the record because a team that hides its measurement errors will ration by fiction again next quarter.
+
+## Coverage map — raw notes this essence covers (5)
+
+SN-892 · SN-896 · SN-909 · SN-910 · SN-936
+
+## Verification contract (for the verifying seat — falsify these)
+
+1. **Coverage integrity:** exactly 5 IDs, all in the oct-4 block list, none duplicated in any other oct-4 draft essence, the covered-by-batch1 list, or the stands-alone list.
+2. **Meters exact, fiction struck:** the three meters must read as in SN-910 (Actions minutes ~2,500/mo with 10x/2x runner multipliers; REST 5,000/h with git protocol at zero; tokens), and the generic "~2,500 actions/month" claim must appear only as struck/corrected; fail if the fictional meter survives anywhere as fact.
+3. **Hard-stop shape:** SN-892 must keep both halves — the stop itself (no retries/identities/hammering) and the resume-file shape (attempted / not-yet-done / resume steps); fail if either is dropped.
+4. **Conditional no:** SN-896's relay/director decision must keep its conditional form ("revisit if the budget gets tighter") and its numbers (3 REST + 1 ls-remote); fail if it reads as a permanent refusal or as compliance.
+5. **Cap mechanics:** SN-909's 2,500-comment cap must be stated as a commenting-disable (not a lock), with the succession handover contents; fail if the successor mechanics are reduced to "open a new issue."
+6. **Anatomy:** all ten Full Smart Note sections present (In a Nutshell · Human · Child · Grandma · Naya · What It All Means · Why It Matters · How It Connects · What Is In It For You · The Learning) and **no machine view or machine section anywhere**. Fail on any missing section or any machine-view content.
+7. **No-orphan check:** pick any five sentences in the Essence section at random; each must cite at least one covered SN ID, and the cited page must contain the claim.
+8. **Standing-authority guard:** SN-925 may be pointed to but not absorbed; fail if its substance is restated as covered material.

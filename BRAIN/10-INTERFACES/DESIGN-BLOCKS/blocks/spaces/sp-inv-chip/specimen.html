@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block specimen: spaces/sp-inv-chip</title>
+<link rel="stylesheet" href="block.css">
+<style>
+  body{ background:#050507; color:#fff; font-family:system-ui,-apple-system,'Segoe UI',sans-serif; margin:0; padding:40px 24px; }
+  h1{ font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:#8a8a96; margin:0 0 24px; }
+  h2{ font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:#8a8a96; margin:32px 0 16px; }
+  .chips{ display:flex; gap:14px; flex-wrap:wrap; --sc:#7c3aed; }
+  .listwrap{ max-width:480px; }
+  /* .sp-invite-row has no rule in this block's CSS; specimen-only styling so the demo renders source-faithfully */
+  .sp-invite-row{ display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.06); }
+</style>
+</head>
+<body>
+<h1>spaces / sp-inv-chip</h1>
+
+<h2>Invite chips</h2>
+<div class="chips" id="chips"></div>
+
+<h2>Invite list</h2>
+<div class="listwrap" id="list"></div>
+
+<script src="block.js"></script>
+<script>
+  function dot(color, label){
+    var s = document.createElement('span');
+    s.title = label || '';
+    s.style.cssText = 'display:inline-block;width:30px;height:30px;border-radius:50%;background:' + color + ';flex:0 0 auto;';
+    return s;
+  }
+  document.getElementById('chips').appendChild(spInvChip({
+    name:'Design Guild', accent:'#7c3aed',
+    onJoin:function(n){ console.log('join', n); }
+  }));
+  document.getElementById('chips').appendChild(spInvChip({
+    name:'Morning Builders', accent:'#0d9e6f',
+    onJoin:function(n){ console.log('join', n); }
+  }));
+  document.getElementById('chips').appendChild(spInvChip({
+    name:'Signal Room', accent:'#1e6fd9',
+    onJoin:function(n){ console.log('join', n); }
+  }));
+
+  document.getElementById('list').appendChild(spInviteList([
+    spInviteRow({ name:'Ada Lovelace', avatar:dot('#7c3aed','A'), onAdd:function(n){ console.log('invite', n); } }),
+    spInviteRow({ name:'Grace Hopper', avatar:dot('#1e6fd9','G') }),
+    spInviteRow({ name:'Alan Turing', avatar:dot('#0d9e6f','T') }),
+    spInviteRow({ name:'Katherine Johnson', avatar:dot('#d4a017','K') })
+  ]));
+</script>
+</body>
+</html>

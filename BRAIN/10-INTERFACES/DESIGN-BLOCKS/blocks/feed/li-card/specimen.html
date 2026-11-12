@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Smart Block specimen — feed/li-card</title>
+<link rel="stylesheet" href="block.css">
+<style>
+  body{ margin:0; background:#050507; }
+  .demo-note{ color:#a09a8a; font-size:12px; letter-spacing:.18em; font-weight:800; margin:0 0 18px; }
+  .li-card{ margin-bottom:18px; }
+</style>
+</head>
+<body>
+<div class="li-stage">
+  <p class="demo-note">FEED / LI-CARD — SPECIMEN</p>
+  <div id="cards"></div>
+</div>
+<script src="block.js"></script>
+<script>
+  var host = document.getElementById('cards');
+  var now = Date.now();
+  var samples = [
+    { title:'Nine lanes converge on the 10/10 push',
+      summary:'All live bytes verified against the frozen SHA — scoreboard holds above 9.4 across every lane.',
+      source:'report', time:now-42*60*1000, jewel:'\u25C6',
+      meta:'9 lanes \u00B7 0 drift', index:0, animate:true, flash:true,
+      onOpen:function(d){ console.log('open heartbeat:', d.title); } },
+    { title:'Brain index re-bake completes clean',
+      summary:'999 files indexed, collision registry empty, no stale partitions. The loop holds.',
+      source:'note', time:now-3*3600*1000, jewel:'\u2726',
+      meta:'999 files \u00B7 0 collisions', index:1, animate:true },
+    { title:'Relay posts receipt 6024356065',
+      summary:'Post-merge faithfulness proof recorded: merge commit is ancestor of tip, key blobs byte-identical.',
+      source:'ledger', time:now-26*3600*1000, jewel:'\u25CF',
+      meta:'receipt \u00B7 verified', index:2, demo:true }
+  ];
+  samples.forEach(function(d){ host.appendChild(liCard(d)); });
+</script>
+</body>
+</html>

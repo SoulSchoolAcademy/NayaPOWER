@@ -23,13 +23,27 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const TOOL = join(ROOT, "tools", "guard_liveness.py");
 const FLOOR = join(ROOT, "tools", "guard-liveness-floor.json");
 
+// Resolve the interpreter at runtime: CI images carry `python`, minimal VMs
+// carry only `python3` -- and the kernel-tests workflow runs the node suite
+// BEFORE setup-python, so `python` is absent even on CI. A gate that cannot
+// execute is a gate that cannot fire, so the probe must run wherever the
+// suite runs. (Same pattern as tests/load_bearing_claims.test.mjs.)
+const PYTHON_BIN = (() => {
+  try {
+    execFileSync("python3", ["--version"], { stdio: "ignore" });
+    return "python3";
+  } catch {
+    return "python";
+  }
+})();
+
 function runTool(cwd = ROOT, args = [], toolPath = TOOL) {
   // toolPath is explicit because the fixture test copies the tool into a temp repo.
   // ROOT inside the script derives from __file__, so running the real script with a
   // temp cwd would silently scan the REAL repository -- which is exactly the kind of
   // false green this project keeps learning about.
   try {
-    const stdout = execFileSync("python", [toolPath, ...args], {
+    const stdout = execFileSync(PYTHON_BIN, [toolPath, ...args], {
       cwd,
       encoding: "utf8",
       timeout: 180000,

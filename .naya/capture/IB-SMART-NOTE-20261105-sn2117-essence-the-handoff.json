@@ -1,0 +1,45 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2117",
+  "title": "The Handoff Is a Claim: Delivery, Coverage, and Duplicates Between Lanes",
+  "slug": "essence-the-handoff",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-handoff.md",
+  "tone": "emerald",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:29:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Work handed between lanes crosses three gaps — delivery, coverage, duplication — and each has a named discipline: a lost announcement is not lost work (repair the channel, repost the verified receipt, never rerun) (SN-045); verification coverage is pinned to a commit, so every head move opens a gap that must be named with its head (SN-046); duplicate repairs are caught by diffing the diffs (SN-052) and duplicate artifacts are owned openly and consolidated in public (SN-054). Authority shapes handoffs too: you supersede by comment on artifacts you don't own — the opener owns the close (SN-060). Verifiers publish their own numbers and make deltas interpretable with parent comparisons (SN-089); intake verification does not protect consumption-time state (SN-0112); and a push receipt proves nothing about contents — verify the tree (SN-0125).",
+    "human_view": "Passing work between people is where things quietly go wrong: a finished report never arrives, the thing that was checked is no longer the thing that exists, two people unknowingly do the same job, or a delivery note claims files that never landed. These rules make every handoff checkable: repost receipts instead of redoing work, name exactly which version your check covers, compare duplicate work directly, never close someone else's ticket for tidiness, publish your own measurements rather than trusting the other person's, and verify what's actually in the delivered package.",
+    "child_view": "Imagine passing a note in class. If the note gets lost, you don't redo your whole homework — you just send the note again. If your friend adds a page to the project after you checked it, you say \"I checked it before the new page\" out loud. If you and a classmate accidentally do the same worksheet, you compare them side by side and keep one. And you never throw away someone else's paper just to tidy up — that's theirs.",
+    "grandma_view": "Dear, it's the etiquette of reliable messengers. A lost letter doesn't mean the news never happened — write the letter again, don't redo the event. Say exactly which version of things your word covers. When two people send the same message, acknowledge it openly and keep one. Never dispose of another person's papers for neatness. And check the parcel's contents yourself rather than trusting the delivery slip.",
+    "ai_view": "On any delivery failure, separate the work from its announcement: repair the channel, repost the receipt (SN-045). Pin every verification claim to its commit and announce head moves as coverage gaps (SN-046). Diff competing repairs byte-wise before merge listing (SN-052); consolidate race duplicates in public and patch the trigger (SN-054). Record supersession by comment on artifacts you don't own (SN-060). Measure independently and publish your own counts, with a parent comparison when they differ (SN-089). Audit consumption-time state, not just intake (SN-0112), and verify pushed contents at the tree, file by file (SN-0125).",
+    "what_it_means": "Eight notes govern the space between lanes — where work is most often lost, doubled, or overclaimed without anyone lying. A cold reader holding only this essence can still hand work over, receive it, and audit the seam, which is exactly what these notes were written to make reliable.",
+    "whats_inside": [
+      "Lost announcement ≠ lost work: repair the channel, repost the verified receipt, never rerun (SN-045).",
+      "Coverage is per-commit; every head move's gap is named with its head, and the baton is passed explicitly (SN-046).",
+      "Duplicate repairs are caught by diffing the diffs, not by trusting lane reports (SN-052); duplicate artifacts are owned openly, consolidated publicly, and the trigger patched (SN-054).",
+      "You supersede your own artifacts; artifacts opened under another's authority get a pointing comment, not your close (SN-060).",
+      "Verifiers publish their own numbers; parent comparisons make deltas interpretable; irreproducible claims stay open, disclosed (SN-089).",
+      "Verification at intake does not cover consumption-time aliasing — pin what you consume (SN-0112); push receipts prove nothing about trees — verify the tree (SN-0125)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-1"
+    ],
+    "covers": [
+      "SN-045",
+      "SN-046",
+      "SN-052",
+      "SN-054",
+      "SN-060",
+      "SN-089",
+      "SN-0112",
+      "SN-0125"
+    ]
+  },
+  "page_hash": "9fee13f8748ac9aa99431aaa2f1101203cc66b0113a95935b47096d552465a4a",
+  "content_hash": "4811c9672bedae2a5d38a299bbd2ca019f3ece539d09e4ad9363f454efaeb4cd"
+}

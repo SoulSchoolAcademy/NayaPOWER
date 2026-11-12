@@ -1,0 +1,92 @@
+{
+ "smart_note_id": "SN-0800",
+ "intelligence": {
+  "title": "How to Get Started with NayaNET",
+  "intelligent_block_id": "IB-SMART-NOTE-20261019-sn0800-how-to-get-started",
+  "smart_note_id": "SN-0800",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/SYSTEM/getting-started/SN-0800/IB-SMART-NOTE-20261019-sn0800-how-to-get-started.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. Published as Markdown projection without preserved runtime capture. No runtime provenance invented.",
+  "ingested_at": "2026-10-21",
+  "essence": "Getting started with NayaNET takes five minutes. Order Naya Power (free to try), get your activation documents, fork the GitHub repo, tell Muse to activate it, connect your GitHub, and you're in. Then you connect with like minds, share your wisdom, and start building.",
+  "human_view": "The whole flow, step by step: order Naya Power from the hub's bottom icon bar or the plus button on the right sidebar — free to try, and Academy or the 5-Day Challenge also grant access. Receive your activation documents. If you don't have GitHub yet, get a free account, then open the Naya Power GitHub link and fork the repo. Take your fork to Muse (recommended; ChatGPT works too) and say \"activate Naya Power\" — your brain activates, and Naya walks you through officially activating your hub. Then back on NayaNET, click Connect GitHub, and you're done: part of the network, able to connect with others of like minds, share your wisdom without ever sharing your identity unless you choose to, access all the features, and start building with the Smart Factory.",
+  "simple_view": "Imagine you're joining a club. First you sign up (that's ordering Naya Power — it's free to try). Then you get your membership card (activation documents). Then you get a toolbox (GitHub — also free). You copy the club's blueprint (fork the repo). You show it to your smart helper (Muse) and say \"set this up for me.\" You connect everything together. And now you're in the club! You can talk to other members, share your ideas, and build cool things together.",
+  "grandma_view": "Honey, it's simpler than it sounds. You sign up for free. You get some papers that explain everything. You make a free account on a website called GitHub. You click one button to copy something. You ask your AI helper to set it up. You click one more button to connect. And then you're part of something wonderful — a place where people share what they know and build beautiful things together. You don't have to share who you are unless you want to. Your wisdom is what matters.",
+  "naya_view": "This is the activation funnel for the NayaNET organism. Each step is a gate that converts a visitor into a node: order → activation documents → GitHub identity → fork (their copy of the brain) → AI activation (Muse or ChatGPT bootstraps their instance) → hub activation (copy/paste configuration) → GitHub connection (their node joins the network). After connection, the node's behavior — building, sharing, connecting — feeds the auto-matcher. The flow is designed for zero technical expertise: every step is click, copy, or converse.",
+  "ai_view": "Flow NAYANET_GETTING_STARTED (SN-0800, 2026-10-19): the onboarding path from visitor to connected node in about five minutes, at zero cost and zero technical expertise. Steps: (1) order Naya Power, free to try (Academy or the 5-Day Challenge also grant access); (2) receive activation documents; (3) create a free GitHub account if none exists; (4) fork the Naya Power repo; (5) activate via Muse (recommended) or ChatGPT — say \"activate Naya Power\" with the fork URL; (6) activate the hub, guided by Naya (copy/paste, updating configuration); (7) Connect GitHub on NayaNET — the node is live on the network; (8) participate: connect with like minds, share wisdom (alias by default — identity shared only by explicit choice), access all features, build with the Smart Factory. Design law: NayaNET is a network you join, not a product you buy; every step either costs nothing or is free to try, and the only prerequisite is curiosity. Retrieve this note whenever someone asks how to get started, and explain the flow simply, in order, without jargon.",
+  "machine_view": {
+   "flow": "nayanet-getting-started",
+   "steps": [
+    {
+     "n": 1,
+     "action": "Order Naya Power",
+     "where": "Hub icon bar (bottom) or plus button → Naya Power",
+     "cost": "Free to try",
+     "alt": "Academy or 5-Day Challenge (free) also grants access"
+    },
+    {
+     "n": 2,
+     "action": "Receive activation documents",
+     "where": "Delivered after ordering",
+     "cost": "Included"
+    },
+    {
+     "n": 3,
+     "action": "Create GitHub account",
+     "where": "github.com",
+     "cost": "Free",
+     "skip_if": "Already have GitHub"
+    },
+    {
+     "n": 4,
+     "action": "Fork Naya Power repo",
+     "where": "Naya Power GitHub link → Fork button",
+     "cost": "Free"
+    },
+    {
+     "n": 5,
+     "action": "Activate via AI",
+     "where": "Muse (recommended) or ChatGPT",
+     "say": "activate Naya Power",
+     "with": "Your fork URL"
+    },
+    {
+     "n": 6,
+     "action": "Activate hub",
+     "where": "Guided by Naya",
+     "involves": "Copy/paste, updating configuration"
+    },
+    {
+     "n": 7,
+     "action": "Connect GitHub",
+     "where": "NayaNET → Connect GitHub button",
+     "result": "Node live on network"
+    },
+    {
+     "n": 8,
+     "action": "Participate",
+     "capabilities": [
+      "Connect with like minds",
+      "Share wisdom (alias by default)",
+      "Access all features",
+      "Build with Smart Factory"
+     ]
+    }
+   ],
+   "privacy": "Alias by default. Identity shared only by explicit choice.",
+   "sn": "SN-0800",
+   "title": "How to Get Started with NayaNET",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/SYSTEM/getting-started/SN-0800/IB-SMART-NOTE-20261019-sn0800-how-to-get-started.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE"
+  },
+  "views_note": "Views derived 2026-10-21 from this note's published projection page (its HUMAN / CHILD / GRANDMA / NAYA / MACHINE sections) to cure the documentation-completeness gate. Derivation happened at cure time from the published page only; no runtime capture provenance is claimed or invented — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/SYSTEM/getting-started/SN-0800/IB-SMART-NOTE-20261019-sn0800-how-to-get-started.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

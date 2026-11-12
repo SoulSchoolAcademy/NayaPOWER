@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-0822",
+ "intelligence": {
+  "title": "A Number in a Box Is Not a Report",
+  "intelligent_block_id": "IB-SMART-NOTE-20261022-sn0822-a-number-in-a-box-is-not-a-report",
+  "smart_note_id": "SN-0822",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/living-data/SN-0822/IB-SMART-NOTE-20261022-sn0822-a-number-in-a-box-is-not-a-report.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-22. No runtime provenance invented.",
+  "ingested_at": "2026-10-22",
+  "essence": "A stat shown as a lone number in a black box is plumbing wearing a label. Data becomes a report when it has shape (a chart), direction (a trend), and meaning (a sentence a human can feel). NayaNET should be known for the most alive data presentation anywhere — living intelligence you can see breathing, not digits sitting in boxes.",
+  "human_view": "Shawn opened the flagship Reports and found three black boxes: a 3 that said WALL POSTS, and two cousins like it. Everything underneath was real — live counts from the page's own tables — and none of it was alive. His question is the standard now: \"Is that the most beautiful graphs and stats page you could ever make?\" If the honest answer is no, the page is not done, no matter how correct the plumbing is.",
+  "simple_view": "Showing someone the number 3 is like telling them \"you have three friends\" and walking away. Showing them a glowing ring that fills up, bars that grow day by day, and a sentence that says \"your wall is waking up\" — that's telling the story of the number.",
+  "grandma_view": "A number alone doesn't tell you if things are getting better or worse, or whether to smile about it. A good report is like a good neighbor: it shows you the picture, tells you which way things are heading, and says it in plain words.",
+  "naya_view": "The flagship pages already carried the living machinery — animated bars, a donut that fills, glow pulses, fade-up entrances — in a dormant CSS layer, while the Reports block used none of it. The failure class is the same one composition cured at page level, one level down: presence of parts is not experience of parts. Verification must now score each block as an experience: function, feeling, position, space, intuition — and for data, shape + direction + meaning.",
+  "ai_view": "Correctness is the floor, not the finish. The gap between \"the data is real\" and \"the page is alive\" is exactly the gap between an 8.5 engine and a 6.5 experience — and users only ever meet the experience.",
+  "machine_view": {
+   "sn": "SN-0822",
+   "title": "A Number in a Box Is Not a Report",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/living-data/SN-0822/IB-SMART-NOTE-20261022-sn0822-a-number-in-a-box-is-not-a-report.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "RULE: a metric surface is DONE only if it renders (a) magnitude, (b) at least one of {composition, trend, comparison}, and (c) a generated human sentence interpreting it. Verification: served-bytes check for chart elements bound to live values + a human-eye pass. A bare count node (number + label) FAILS the reports predicate regardless of data correctness."
+  },
+  "views_note": "Views derived 2026-10-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/living-data/SN-0822/IB-SMART-NOTE-20261022-sn0822-a-number-in-a-box-is-not-a-report.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "7bd2253549048e457ae56e8148a0908e90f91f70"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

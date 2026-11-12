@@ -1,0 +1,53 @@
+/* Smart Block CSS: onboarding/onb-progress
+ * Source: gap-blocks-2/onboarding-blocks.md (harvested, never restyled)
+ * Catalog: NAYA-ONB-003
+ */
+
+/* Family token sheet — every rule below assumes these (copied once, scoped to the family root) */
+
+.onb{--ground:#050507;--ink:#fff;--magenta:#e84fff;--purple:#a06bff;--indigo:#6675ff;--blue:#3fb8ff;--emerald:#35e0a1;--green:#2fe89e;--lime:#b8ee57;--gold:#ffbf3d;--orange:#ff9a5a;--red:#ff5e6c;--pink:#ed58cd;--ease:cubic-bezier(.16,.84,.22,1);--serif:Georgia,'Times New Roman',serif;background:var(--ground);color:var(--ink)}
+
+.onb-prog{max-width:520px;margin:0 auto;background:linear-gradient(180deg,#141318,#08080c);
+border:1.5px solid rgba(255,255,255,.3);border-radius:20px;padding:26px 28px;
+box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 12px 30px rgba(0,0,0,.6);
+transition:transform .28s cubic-bezier(.16,.84,.22,1),border-color .28s,box-shadow .28s}
+.onb-prog:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.55);
+box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 16px 36px rgba(0,0,0,.65),0 0 30px -10px rgba(160,107,255,.5)}
+.onb-prog-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+.onb-prog-top .lbl{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#fff;opacity:.7}
+.onb-pct{font-family:Georgia,serif;font-size:30px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.8);
+animation:onb-num-breathe 4s ease-in-out infinite}
+.onb-pct small{font-size:15px;opacity:.7}
+@keyframes onb-num-breathe{0%,100%{opacity:1}50%{opacity:.82}}
+.onb-bar{height:12px;border-radius:999px;background:#0a0a0e;border:1px solid rgba(255,255,255,.18);
+box-shadow:inset 0 2px 5px rgba(0,0,0,.8);overflow:hidden}
+.onb-fillbar{height:100%;width:62%;border-radius:999px;
+background:linear-gradient(90deg,#e84fff,#a06bff,#3fb8ff,#2fe89e,#ffbf3d);
+box-shadow:0 0 16px rgba(160,107,255,.55);transition:width .6s cubic-bezier(.16,.84,.22,1)}
+.onb-sub{font-size:13px;color:#fff;opacity:.75;margin:12px 0 0;letter-spacing:.03em}
+/* ring variant */
+.onb-ringwrap{position:relative;width:168px;height:168px;margin:0 auto}
+.onb-ring{width:100%;height:100%;transform:rotate(0deg);transition:transform .28s cubic-bezier(.16,.84,.22,1)}
+.onb-ringwrap:hover .onb-ring{filter:drop-shadow(0 0 14px rgba(160,107,255,.55))}
+.ring-track{fill:none;stroke:#0a0a0e;stroke-width:11}
+.ring-prog{fill:none;stroke:url(#onbRingGrad);stroke-width:11;stroke-linecap:round;
+transition:stroke-dashoffset .6s cubic-bezier(.16,.84,.22,1);filter:drop-shadow(0 0 6px rgba(160,107,255,.6))}
+.onb-ring-num{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.onb-ring-num b{font-family:Georgia,serif;font-size:34px;font-weight:400;color:#fff;
+text-shadow:0 2px 8px rgba(0,0,0,.8);animation:onb-num-breathe 4s ease-in-out infinite}
+.onb-ring-num b small{font-size:16px;opacity:.7}
+.onb-ring-num span{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#fff;opacity:.6;margin-top:4px}
+/* complete: one ignition, then calm */
+.onb-prog.is-complete{border-color:#ffbf3d;animation:onb-celebrate 1.1s cubic-bezier(.16,.84,.22,1) 1}
+.onb-prog.is-complete .onb-fillbar{width:100%;background:#ffbf3d;box-shadow:0 0 22px rgba(255,191,61,.7)}
+.onb-prog.is-complete .onb-pct{animation:none;color:#ffbf3d}
+.onb-ringwrap.is-complete .ring-prog{stroke:#ffbf3d;stroke-dashoffset:0;filter:drop-shadow(0 0 10px rgba(255,191,61,.8))}
+.onb-ringwrap.is-complete .onb-ring-num b{animation:none;color:#ffbf3d}
+.onb-ringwrap.is-complete{animation:onb-celebrate 1.1s cubic-bezier(.16,.84,.22,1) 1}
+@keyframes onb-celebrate{0%{box-shadow:0 0 0 rgba(255,191,61,0)}30%{box-shadow:0 0 80px rgba(255,191,61,.9)}100%{box-shadow:0 0 26px rgba(255,191,61,.4)}}
+/* indeterminate: honest about not knowing */
+.onb-prog.is-ind .onb-fillbar{width:34%;background:linear-gradient(90deg,transparent,#a06bff,transparent);
+box-shadow:0 0 16px rgba(160,107,255,.6);animation:onb-drift 2.2s ease-in-out infinite}
+@keyframes onb-drift{0%{margin-left:-34%}100%{margin-left:100%}}
+.onb-prog.is-ind .onb-pct{animation:none;font-size:20px}
+@media (prefers-reduced-motion:reduce){.onb-pct,.onb-ring-num b{animation:none}.onb-prog.is-complete,.onb-ringwrap.is-complete{animation:none}.onb-prog.is-ind .onb-fillbar{animation:none}.onb-prog,.onb-fillbar,.ring-prog{transition:none}}

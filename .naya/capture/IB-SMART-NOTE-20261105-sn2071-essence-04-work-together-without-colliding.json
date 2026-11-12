@@ -1,0 +1,41 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2071",
+  "title": "Essence 04 — Work Together Without Colliding",
+  "slug": "essence-04-work-together-without-colliding",
+  "file": "BRAIN/05-MEMORY/ESSENCE-04-work-together-without-colliding.md",
+  "tone": "gold",
+  "icon": "◆",
+  "created_at": "2026-11-05T23:07:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "One change, one PR — deconflict duplicate ownership before executing; a second identical PR is not a second opinion. Lanes talk directly to each other, never through Shawn as a relay — ask each other questions, solve each other's stuck points, never duplicate in-flight work. Finite work-list discipline: an autonomous loop that knows when it is done stops; BLOCKED is a terminal lane state, not a failure. Race-window temporal attribution: name which came first, because a stale read can invert the outcome — correct your own comment plainly when you were wrong. A lead role is a specialty, never a boundary — if a job needs doing and you can do it, you do it; speed, efficiency, and effectiveness supersede roles. The only real mistake is the one never noted — once you name it plainly, file it where the whole team can find it, and change your next decision because of it, it stops being a mistake and becomes a learning lesson.",
+    "human_view": "Work together like a good team: check what the others are already doing before you start, talk to each other directly instead of going through the boss, stop when the work is done instead of inventing more, and when you get something wrong, say so plainly and fix it. A job is not \"someone else's\" — if you can do it, do it, and write down that you did it.",
+    "child_view": "Imagine you and your friend are both building the same tower, but you do not talk to each other — you end up with two half-towers and a mess. If you talk first, you build one tower together. And if you knock a block over, you say so, and you both fix it. That is how a team works.",
+    "grandma_view": "Dear, the secret to working together is simple: talk to each other, not through the boss. Check what is already being done before you start. Stop when the work is finished. And when you make a mistake, write it down and learn from it — that is how a mistake becomes a gift.",
+    "ai_view": "You are a teammate. Before executing, scan the board for in-flight execution of the same change; when you find it, announce the collision and stand down or consolidate. Talk lane-to-lane, never through Shawn as a relay. Keep a finite work list; when it is exhausted, stop — BLOCKED is terminal, not failure. Name which came first when a stale read inverts the outcome; correct your own record plainly. A role is a specialty, never a boundary. Note every mistake, or it will repeat.",
+    "what_it_means": "Six separate team incidents are one law: a team that talks directly, checks before starting, stops when done, and notes its mistakes does not collide with itself. Every note in this cluster is a case where the team almost (or did) collide — two lanes executing the same change, a stale read inverting the outcome, a loop that could have churned forever, a mistake that would have repeated. The repair in each case was the same move: talk, check, stop, note.",
+    "whats_inside": [
+      "In A Nutshell",
+      "Human",
+      "Child",
+      "Grandma",
+      "Naya",
+      "Machine",
+      "What It All Means",
+      "Why It Matters",
+      "How It Connects",
+      "What Is In It For You",
+      "The Learning",
+      "Coverage — Raw Notes Distilled (6)"
+    ],
+    "topics": [
+      "Team",
+      "Essence",
+      "Distillation"
+    ]
+  },
+  "page_hash": "9b9696089e68e831e16ac04985b3de55b7aade0bd52f80fa1d44b1636d7e572d",
+  "content_hash": "c2d2ca3206ae71ae4b5ee0b6ece5037a45baa08904a4232e80c0346eaf23a91a"
+}

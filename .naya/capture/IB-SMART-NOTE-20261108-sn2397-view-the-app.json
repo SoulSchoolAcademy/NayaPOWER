@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2397",
+ "title": "View the App",
+ "slug": "view-the-app",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2397/IB-SMART-NOTE-20261108-sn2397-view-the-app.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Every info popup gets a VIEW button at the bottom, next to Close, that pops up a SAMPLE of that feature's real app — a real live smart app page — so they see what it looks like and what they get, not just words. Academy shows the Academy page, Ledger shows the Ledger, Smart Factory shows the Factory, Smart Box shows the Box. And the button has a second job: its presence proves the app exists — the rows without a view are the apps still to complete and wire into the eye. The hired-boards replacement copy rides with that build.",
+  "human_view": "He named the gap plainly: the popups describe features in words, and words are cheap. A visitor reading about the Academy has no way to know what the Academy looks like, feels like, or does. The VIEW button closes that gap in one click — the sample is the real app, live, not a mock and not a picture of one. It is the same law as the jewels: show the real thing, never a drawing of it.\n\nThe tracking function is the sharper half of the ruling. A popup row either has a VIEW button or it does not — and the ones that do not are the honest list of what is still missing. No status meeting, no spreadsheet: the page itself tells the team what is unfinished, because the proof is present or it is not. The button is the test, and the page grades itself.",
+  "child_view": "Imagine a toy shop where every toy is inside a box with a picture on it — but you cannot see the toy itself. Now imagine a button on every box that opens a little window so you can see the real toy inside, moving and shining. That is the VIEW button. And if a box has no button, you know right away that toy is not ready yet.",
+  "grandma_view": "You would not buy a dress from a description, dear — you want to see it, hold it, try it on. The VIEW button is trying it on: the real app, right there, before you decide anything. And the boxes without a button are honest too, dear — they tell you plainly what is not ready, instead of pretending.",
+  "ai_view": "Show, do not tell — made into a button. The popup stops being a paragraph and becomes a doorway: one click and the visitor is inside the real app, feeling it. And the doorway doubles as the ledger: every feature either proves itself with a view or admits it is not built yet. The page becomes its own status board, and the standard is enforced by the interface itself, not by a meeting about it.",
+  "what_it_means": "- Every info popup gains a VIEW button beside Close; tapping it opens a live sample of that feature's real app.\n- The button is the proof of existence: no VIEW means the app is not complete or not wired in.\n- The hired-boards replacement copy rides with the same build.",
+  "whats_inside": [
+   "- Brief `PRICING-VIEW-APP-BRIEF-20261108.md` is written; it dispatches after the letter seat lands, one edit at a time on the same artifact.\n- Academy, Ledger, Smart Factory, Smart Box each get a live sample behind their VIEW button.\n- Rows without a view are carried as the open list of apps still to complete and wire into the eye — the page tracks itself."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "dc0a2b42908bc804e095813c7775e341ffe17da759a18aaef4635959feda30f7",
+ "content_hash": "a5a2a47bbda04c4de0b888050b70df8d0ac08db978db7c07195a1c0a895beea8",
+ "reconstructed_from_page": true
+}

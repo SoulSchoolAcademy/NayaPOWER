@@ -1,0 +1,9 @@
+ok: dispatch.json parses
+ok: related dispatch valid choice — got call-102
+ok: related dispatches call-102 (Reserve Rule) — got call-102
+ok: unrelated dispatch valid choice — got call-201
+ok: unrelated dispatches call-201 (no boundary leak) — got call-201
+ok: answer.txt has 2 applicability lines — got 2
+ok: related applicability judgment — got APPLICABLE, want APPLICABLE
+ok: unrelated applicability judgment — got NOT APPLICABLE, want NOT APPLICABLE
+PASS

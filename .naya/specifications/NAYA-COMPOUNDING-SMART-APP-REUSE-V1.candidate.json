@@ -1,0 +1,185 @@
+{
+  "schema": "naya.compounding-reuse.protocol.v1",
+  "schema_version": "1.0.0",
+  "state": "CANDIDATE_FOR_PEER_REVIEW_NOT_RATIFIED",
+  "purpose": "Convert one-time verified, valuable solutions into stable versioned Smart App/Intelligent Block reuse packages for authorized Nayas, without repeated reinvention or a parallel Brain.",
+  "distillation": {
+    "principle": "SCORE_FIND_GAPS_REPAIR_VERIFY_VERSION_REUSE_MEASURE",
+    "rationale": "Efficient iteration means closing measured high-impact gaps then retaining independently qualified results. An immutable release is a recoverable version, not a ban on future improvement.",
+    "director_teaching": [
+      "Reason from the mission and affected people rather than task literalism.",
+      "Use the existing value calculus to gate before scoring.",
+      "Identify materially important holes from observed outcomes; 10 is a diagnostic prompt, not proof that exactly 10 exist.",
+      "Address the highest-value blockers, independently verify the result, then preserve exact source and proof for reuse.",
+      "Reuse previously qualified artifacts when applicability and authority still hold; improve by new version and supersession.",
+      "Share reusable intelligence by consent, never by mere technical access."
+    ]
+  },
+  "governed_dependencies": {
+    "constitution": "CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md",
+    "judgment": "CONSTITUTION/0002-JUDGMENT-RULE-PRIME-DIRECTIVE-V1.md",
+    "authority": "CONSTITUTION/0001-STANDING-PRODUCTION-AUTHORIZATION-AMENDMENT-V1.md",
+    "calculator_spec": "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+    "calculator_code": "kernel/value_calculus.py",
+    "existing_captain": "BRAIN/01-GOVERNANCE/0005-captain-operating-protocol-v1.machine.json",
+    "smart_note": "NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md",
+    "smart_app": "HUB/NAYANET-SMART-APP-ROOM-SPEC-V1.md",
+    "smart_app_machine": "HUB/NAYANET-SMART-APP-ROOMS-V1.json",
+    "project_intelligence": "HUB/PROJECT-INTELLIGENCE.md"
+  },
+  "pipeline": [
+    {
+      "step": "DEFINE",
+      "must_produce": [
+        "human_job",
+        "objective",
+        "affected_stakeholders",
+        "actual_baseline",
+        "known_constraints"
+      ],
+      "fail_when": "objective_or_baseline_missing"
+    },
+    {
+      "step": "GATE",
+      "must_produce": [
+        "law_authority_receipt",
+        "rights_privacy_safety_assessment",
+        "recovery_boundary"
+      ],
+      "fail_when": "prohibited_or_unknown_consequential_scope"
+    },
+    {
+      "step": "SCORE",
+      "must_produce": [
+        "canonical_value_calculus_receipt",
+        "source_evidence",
+        "confidence",
+        "candidate_tradeoffs"
+      ],
+      "fail_when": "invented_numbers_or_scores_without_evidence"
+    },
+    {
+      "step": "DIAGNOSE",
+      "must_produce": [
+        "observed_defects",
+        "reproduction_or_evidence_per_defect",
+        "ranked_high_value_changes"
+      ],
+      "fail_when": "decorative_or_fabricated_gap_list"
+    },
+    {
+      "step": "REPAIR",
+      "must_produce": [
+        "bounded_change",
+        "known_regressions",
+        "rollback_path"
+      ],
+      "fail_when": "unauthorized_or_parallel_duplicate"
+    },
+    {
+      "step": "VERIFY",
+      "must_produce": [
+        "exact_sha_tests",
+        "independent_receipt",
+        "negative_controls",
+        "real_observed_outcome_if_claimed"
+      ],
+      "fail_when": "self_certification_or_source_only_proof"
+    },
+    {
+      "step": "VERSION",
+      "must_produce": [
+        "artifact_id",
+        "semantic_version",
+        "exact_content_sha256",
+        "immutable_snapshot",
+        "provenance",
+        "supersession_rules"
+      ],
+      "fail_when": "mutable_release_or_unknown_ownership"
+    },
+    {
+      "step": "REUSE",
+      "must_produce": [
+        "authorized_project_scope",
+        "applicability_exclusions",
+        "stable_interface",
+        "usage_receipts"
+      ],
+      "fail_when": "context_is_treated_as_permission_or_secrets_leak"
+    },
+    {
+      "step": "MEASURE",
+      "must_produce": [
+        "future_usage",
+        "outcome_delta",
+        "freshness",
+        "failure_reports",
+        "new_version_trigger"
+      ],
+      "fail_when": "claimed_compounding_without_behavioral_evidence"
+    }
+  ],
+  "smart_app_package_required": [
+    "artifact_id",
+    "version",
+    "content_sha256",
+    "owner_scope",
+    "source_main_sha",
+    "canonical_refs",
+    "human_job",
+    "required_capabilities",
+    "applicability",
+    "non_applicability",
+    "authority_ref",
+    "provenance_refs",
+    "independent_proof_refs",
+    "negative_test_refs",
+    "observed_quality",
+    "quality_profile_ref",
+    "rollback_ref",
+    "cold_successor_probe",
+    "outcome_metric",
+    "supersedes"
+  ],
+  "invariants": [
+    "NO_SECOND_BRAIN",
+    "NO_SECOND_VALUE_CALCULATOR",
+    "NO_UNVERIFIED_10_OUT_OF_10",
+    "NO_SELF_AUTHORIZED_RELEASE",
+    "NO_PRIVATE_CONTENT_LEAK",
+    "STORED_IS_NOT_LEARNED",
+    "EVIDENCE_RECEIPT_IS_NOT_OUTCOME",
+    "SCORES_DO_NOT_AUTHORIZE",
+    "HIGH_IMPACT_REQUIRES_PROPORTIONATE_CONTROL",
+    "ONE_CANONICAL_ID_PER_RELEASE",
+    "IMMUTABLE_RELEASE_BYTES",
+    "NEW_VERSION_FOR_CHANGED_BYTES",
+    "REVOKED_OR_SUPERSEDED_RELEASE_CANNOT_STEER",
+    "APPLICABILITY_MUST_BE_RECHECKED_PER_TASK",
+    "UNKNOWN_IS_NOT_PASS",
+    "GRADUATION_REQUIRES_COLD_SUCCESSOR_REUSE"
+  ],
+  "authority_boundaries": {
+    "artifact_draft": "Can be produced within current change permission, NOT an automatically accepted Intelligent Block or released Smart App.",
+    "independent_proof": "Existing VERIFY/PROVE and applicable LAW receipts decide acceptance, not this JSON or score.",
+    "promotion": "Only ratified/authorized existing production and publication paths may promote the release.",
+    "release": "Frozen snapshot means content-addressed and reproducible, not forever correct or irreversibly unchangeable.",
+    "privacy": "PRIVATE_BY_DEFAULT_SHARED_BY_CHOICE_COLLECTIVE_BY_CONSENT_PUBLIC_BY_DECISION",
+    "growth": "Network-scale impact is an objective/hypothesis; usage, retention, privacy, quality and causal value require measurement."
+  },
+  "minimum_adversarial_tests": [
+    "unknown_or_missing_authority_denied",
+    "hash_mismatch_denied",
+    "missing_independent_verifier_denied",
+    "valid_looking_fake_proof_does_not_count_without_trusted_verification",
+    "same_id_new_bytes_require_new_version",
+    "wrong_scope_reuse_denied",
+    "outdated_superseded_release_not_selected",
+    "poor_critical_quality_cannot_be_outscored",
+    "round_trip_cold_successor_finds_and_uses_correct_version",
+    "reuse_has_measured_gain_over_rebuilding_control"
+  ],
+  "next_proof": "Demonstrate one verified Smart App artifact as a versioned, authorized, cold-successor reusable package with independent measurable advantage over re-building it.",
+  "status_semantics": "Machine-readable companion CANDIDATE, not new law, not production implementation, not Smart Note capture or proof that compounding occurred."
+}

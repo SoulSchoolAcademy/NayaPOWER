@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-1167",
+ "title": "An acceptance spec that cannot say FAIL is not a spec — it's a blessing",
+ "slug": "an-acceptance-spec-that-cannot-say-fail-is-not-a-spec-it-s-a",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/13/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/SN-1167/IB-SMART-NOTE-20261013-sn1167-an-acceptance-spec-that-cannot-say-fail-is-not-a-spec-it-s-a.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-10-13T08:44:13Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The t0591 acceptance instrument for the provenance-marker spec ran against 4 synthetic fixtures: two PASS, one mixed PASS, one zero-marker PASS — and one FAIL. The malformed-`fired` fixture (`brief-t0591d-fixture-bad-fired.md`) failed at C3 as designed (exit 1 — the A1 gate has teeth). Positive path exit 0, negative path exit 1, re-run identical. The rule: for any acceptance instrument, write the expected-FAIL fixture FIRST, before the happy paths. It pins what \"no\" looks like while the grammar is still fresh, and it is the only fixture in the set that proves the gate is real — a spec with all-green fixtures proves nothing except that the fixture set was kind. The fixture-d expected-FAIL is the most important fixture in the set; a suite that cannot say FAIL is a blessing, not a spec.",
+  "human_view": "It's like testing a smoke alarm: you don't just confirm it stays quiet in a clean room — you hold the test button first and make sure it screams. If you only ever check the quiet rooms, you've proved the alarm is decorative. The lane wrote the \"should fail\" test case first: a deliberately malformed record, and the instrument had to reject it (it did — check C3, exit code 1). That's what makes the passing checks mean something. Write the fail case first; the green lights only count after you've seen the red one work.",
+  "child_view": "Imagine you're making a new rule for the class — \"no running in the halls\" — and you want to check if the rule actually works. You don't just watch kids walking quietly. You ask a friend to run on purpose, and check: did the rule catch it? If nobody ever breaks the rule on purpose first, you never know if the rule is real or just words. That's the lesson: before you celebrate all the good tests passing, build one bad test on purpose and make sure the machine says NO. The NO is what proves the YES means something.",
+  "grandma_view": "It's like buying a home security system and only testing it on days nobody breaks in. You'd never know if the alarm actually works. The smart move is to have someone you trust trip it on purpose — open a window, set it off, hear it ring. Then you know. The team built their test the same way: they made a deliberately broken sample and confirmed the machine rejected it before trusting any of the \"all clear\" results. The rejection is the proof the approvals mean something.",
+  "ai_view": "Apply this every time you build an acceptance instrument: (1) write the expected-FAIL fixture FIRST, before any happy-path fixture — while the check grammar is still fresh in your hands, decide exactly what shape a rejection takes; (2) run it before you run anything else: the negative path must exit non-zero with the FAIL on the check you designed it for (here: C3, the A1 fired-grammar gate); (3) then write the PASS fixtures and confirm positive path exit 0; (4) if the FAIL fixture does NOT fail, stop — the instrument is a blessing, not a gate; do not proceed to PASS fixtures until the rejection is real; (5) label every fixture in its own bytes (synthetic) so no future run mistakes a fixture for live evidence. Cousin map: SN-1122 (a gate that only fails is as unverified as a gate that only passes — this is the build-order half of that verdict: write the FAIL first); SN-0708 (dry-run is not the control — a fail-closed test must exercise the failure path).",
+  "what_it_means": "",
+  "whats_inside": [],
+  "topics": [
+   "System-Intelligence"
+  ]
+ },
+ "page_hash": "b1c32dd63b79bcc12602d1037cd394a52106dfb962dc7fa6131b9ba89be7851a",
+ "content_hash": "2e32a1470955eca56d0296927f89d4114644cdf9a3b46336d89db0a1eddbe4fe",
+ "reconstructed_from_page": true
+}

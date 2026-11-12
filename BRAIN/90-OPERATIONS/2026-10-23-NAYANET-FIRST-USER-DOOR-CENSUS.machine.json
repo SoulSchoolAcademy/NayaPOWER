@@ -1,0 +1,342 @@
+{
+  "schema": "nayanet.first-user.door-census.evidence.v1",
+  "audit_date_utc": "2026-10-23",
+  "auditor": "Naya GPT-6",
+  "source": "anonymous HTTP GET routes and read-only Supabase metadata; no authenticated end-to-end or transaction writes",
+  "truth_boundary": "HTTP_200_IS_NOT_FUNCTIONAL_ACCEPTANCE",
+  "all_24_routes_responded_http_200": true,
+  "completeness_scoring": "No completion percentage until the level-six acceptance passes: route, render, authorized data, read/write, multi-user privacy, automatic ongoing refresh + independent verifier",
+  "security_hold": "Do not test Smart Mail as private communications until mail permissions separately repaired and independently denied from unauthorized principals; no actual user emails read",
+  "live_data_summary": {
+    "members": 7502,
+    "mail_aliases": 14,
+    "seat_mail_aliases": 3,
+    "mail_threads": 8,
+    "mail_messages": 9,
+    "spaces": 7,
+    "space_members": 2,
+    "project_nodes": 9,
+    "child_project_work_and_display_items": 38,
+    "project_root_missing_display_keys_last_audit": 10,
+    "project_root_state_or_proof_mismatches_last_audit": 11,
+    "project_state_json_live": true
+  },
+  "doors": [
+    {
+      "kind": "hub",
+      "name": "The One Hub",
+      "url": "https://nayanet.live/",
+      "http_status": 200,
+      "job": "Global navigation, Smart Feed, intelligence and workspace entry",
+      "status": "SHELL",
+      "remaining": "Interactive navigation, sign-in and actual data contracts need live browser verification",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "flagship",
+      "name": "Personal",
+      "url": "https://nayanet.live/personal",
+      "http_status": 200,
+      "job": "Member's own identity, profile, notes, connections and activity",
+      "status": "DEFAULT_CONTENT",
+      "remaining": "Page title Nova Reyes; real authenticated owner binding, persistence and two-seat privacy not verified",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "flagship",
+      "name": "Business",
+      "url": "https://nayanet.live/business",
+      "http_status": 200,
+      "job": "Business identity, teams, leads, mail and work",
+      "status": "DEFAULT_CONTENT",
+      "remaining": "Page title Acme Corp; actual authorized organization membership and read/write flow not verified",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "flagship",
+      "name": "Community",
+      "url": "https://nayanet.live/space",
+      "http_status": 200,
+      "job": "Community page, activity and shared intelligence",
+      "status": "DEFAULT_CONTENT",
+      "remaining": "Page title Our Community; memberships and content publishing not end-to-end verified",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "flagship",
+      "name": "Dashboard",
+      "url": "https://nayanet.live/dashboard",
+      "http_status": 200,
+      "job": "Personal operating overview and relevant metrics",
+      "status": "DEFAULT_CONTENT",
+      "remaining": "Page title Nova Reyes; live personalized metric provenance unverified",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "room",
+      "name": "Today",
+      "url": "https://nayanet.live/rooms/today",
+      "http_status": 200,
+      "job": "Daily intelligence and next recommended actions",
+      "status": "RENDERED_UNQUALIFIED",
+      "remaining": "Real source events, user scoping, action result and update age need browser proof",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "room",
+      "name": "Reports",
+      "url": "https://nayanet.live/rooms/reports",
+      "http_status": 200,
+      "job": "Human-readable findings, sources and progress over time",
+      "status": "RENDERED_UNQUALIFIED",
+      "remaining": "Verify latest canonical reports, drill-through and freshness instead of only the HTML",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "room",
+      "name": "Projects",
+      "url": "https://nayanet.live/projects",
+      "http_status": 200,
+      "job": "Entire project state, next actions, related pieces and proof",
+      "status": "DATA_PRESENT_NOT_AUTOMATIC",
+      "remaining": "Eight child subprojects populated in DB; root source-display drift and cross-view parity remain; real browser click test owed",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "room",
+      "name": "Intelligence",
+      "url": "https://nayanet.live/rooms/intelligence",
+      "http_status": 200,
+      "job": "Current project/system intelligence",
+      "status": "RENDERED_UNQUALIFIED",
+      "remaining": "Prove shared snapshot and 14 questions match machine state, not a second truth",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "room",
+      "name": "Smart Mail",
+      "url": "https://nayanet.live/rooms/mail",
+      "http_status": 200,
+      "job": "Two-way scoped mail between people, seats and spaces",
+      "status": "SECURITY_HOLD",
+      "remaining": "Private mailbox identity, delivery, RLS and third-seat denial need repair and independent test",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "room",
+      "name": "Smart Spaces",
+      "url": "https://nayanet.live/rooms/spaces",
+      "http_status": 200,
+      "job": "Durable collaborative spaces, memberships and conversations",
+      "status": "DATA_PRESENT_UNQUALIFIED",
+      "remaining": "Seven space records, two memberships; creation, cross-user collaboration and private scoping not verified",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "room",
+      "name": "Smart Lists",
+      "url": "https://nayanet.live/rooms/lists",
+      "http_status": 200,
+      "job": "Reusable tasks, lists and priorities",
+      "status": "RENDERED_UNQUALIFIED",
+      "remaining": "List creation/edit, persistence, ownership and action flows need a cold user test",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "room",
+      "name": "Connections",
+      "url": "https://nayanet.live/rooms/connections",
+      "http_status": 200,
+      "job": "Relationships, consent and authorized contacts",
+      "status": "RENDERED_UNQUALIFIED",
+      "remaining": "Real person/agent linking, scope and consent tests required",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "room",
+      "name": "Growth",
+      "url": "https://nayanet.live/rooms/growth",
+      "http_status": 200,
+      "job": "Growth, referral and activation paths",
+      "status": "RENDERED_UNQUALIFIED",
+      "remaining": "Verify invitation destination, attribution, consent and no fabricated conversion",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "room",
+      "name": "Smart Ledger",
+      "url": "https://nayanet.live/rooms/ledger",
+      "http_status": 200,
+      "job": "Receipts, proof, value and the record of action",
+      "status": "RENDERED_UNQUALIFIED",
+      "remaining": "Independent proof-linked live ledger reads and honest unknowns need testing",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "room",
+      "name": "Library",
+      "url": "https://nayanet.live/rooms/library",
+      "http_status": 200,
+      "job": "Find and reuse stored intelligence and Smart Notes",
+      "status": "RENDERED_UNQUALIFIED",
+      "remaining": "Search/read real records, permission scope and cold reuse in later task required",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "hub-surface",
+      "name": "Feed",
+      "url": "https://nayanet.live/rooms/feed",
+      "http_status": 200,
+      "job": "Smart Feed in the main Hub",
+      "status": "HUB_FALLBACK",
+      "remaining": "Returns same Hub shell; use verified internal navigation, not claim a dedicated stand-alone page",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "hub-surface",
+      "name": "Settings",
+      "url": "https://nayanet.live/rooms/settings",
+      "http_status": 200,
+      "job": "Profile, privacy and preferences inside Hub",
+      "status": "HUB_FALLBACK",
+      "remaining": "Returns same Hub shell; test internal Settings navigation and persisted consent",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "action",
+      "name": "Booking",
+      "url": "https://nayanet.live/book",
+      "http_status": 200,
+      "job": "Choose an available slot and make a booking",
+      "status": "TRANSACTION_UNVERIFIED",
+      "remaining": "Booking UI exists; valid slot/reservation/recovery/reminder not tested; do not create real bookings as probe",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "action",
+      "name": "Payments",
+      "url": "https://nayanet.live/pay",
+      "http_status": 200,
+      "job": "Complete authorized payment",
+      "status": "TRANSACTION_UNVERIFIED",
+      "remaining": "Payment shell responds; payer/payment authorization, checkout receipt and refunds unverified; no real charge test",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "entry",
+      "name": "Join Us",
+      "url": "https://nayanet.live/joinus",
+      "http_status": 200,
+      "job": "Invite and onboard members",
+      "status": "DESTINATION_SUSPECT",
+      "remaining": "HTTP follows to /?aff_id=... and main Hub; independently prove registration and attribution",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "builder",
+      "name": "Smart Factory",
+      "url": "https://nayanet.live/smartfactory",
+      "http_status": 200,
+      "job": "Compose templates and reusable parts into working Smart Apps",
+      "status": "CATALOG_PRESENT",
+      "remaining": "Large template/component page serves; genuine save, build, publish and rollback end-to-end untested",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "knowledge",
+      "name": "Smart Note SN-0840",
+      "url": "https://nayanet.live/s/sn0840",
+      "http_status": 200,
+      "job": "Canonical Team Naya master build lesson",
+      "status": "PAGE_TITLE_VERIFIED",
+      "remaining": "HTTP 200 exact title. Later authorized retrieval and reuse test not yet run",
+      "workflow_independently_accepted": false
+    },
+    {
+      "kind": "machine",
+      "name": "Project state JSON",
+      "url": "https://nayanet.live/projects/state.json",
+      "http_status": 200,
+      "job": "Machine current counts, source tip, freshness and decisions",
+      "status": "JSON_PRESENT_PARTIAL",
+      "remaining": "HTTP 200 JSON; contains aggregate counts/freshness but full scoped 14Q/claim handoff not established",
+      "workflow_independently_accepted": false
+    }
+  ],
+  "onboarding_pilot": {
+    "status": "BLOCKED_BY_IDENTITY_AND_MAIL_SECURITY",
+    "steps": [
+      "Use approved existing machine identity and human-created agent principal, not self-asserted alias",
+      "Complete sanctioned sign-up/auth with verified email/service principal credentials",
+      "Bind project seat and alias to immutable authenticated owner claim",
+      "Create test Personal, Business and Space through existing app UI",
+      "Send from authorized Naya A to Naya B via secured Smart Mail",
+      "Naya B receives/reads and replies; unauthorized Naya C read/modify denied",
+      "Generate scoped events, notes, next actions and live page state automatically",
+      "Independent verifier repeats from a cold session and signs evidence"
+    ]
+  },
+  "priority_actions": [
+    "P0 mailbox security risk confidential audit and deny controls",
+    "P0 identity/agent enrollment and ownership binding proof",
+    "P0 existing project content source-display parity and automatic refresh",
+    "P1 test all 24 doors in actual authenticated browser",
+    "P1 replace flagship sample default names with session-specific records",
+    "P1 route/fix Join Us referral to legitimate sign-up",
+    "P1 prove two-agent mail send, reply, persistence and authorization",
+    "P1 prove one collaborative Smart Space event and project note flow",
+    "P1 content publishers for Today, Reports, Library, Ledger, Mail, Feed with same snapshot",
+    "P2 full independent end-to-end acceptance and root map refresh"
+  ],
+  "first_agent_identity_mail_live_readiness": {
+    "audit_utc": "2026-10-23T21:51:55Z",
+    "status": "FIRST_CITIZEN_CLAIM_AND_OUTBOUND_SEND_DOCUMENTED__PRIVACY_BLOCKED",
+    "agent_seat_alias_registry": {
+      "total": 14,
+      "kind_seat": 3,
+      "naya_tree_auth_account_created": false,
+      "note": "Other citizen Naya Nitro claimed through the separate identity certificate flow; Smart Mail directory row does not equal citizen claim. Naya Tree has NOT yet completed an authorized account claim."
+    },
+    "canonical_alias_claim_path": {
+      "owner_alias_claims_table_exists": false,
+      "claim_my_alias_rpc_exists": false,
+      "note": "A claim contract exists in an unpromoted repo migration but not in the inspected live database."
+    },
+    "mail_metadata_preflight": {
+      "file": "tools/reporting/nayanet_agent_mail_preflight.sql",
+      "scope": "Existing three production table metadata and grants only. No private device keys or mail contents read.",
+      "result": {
+        "nayanet_identities": "BLOCKED__BROAD_ANON_READ_DEVICE_ASSOCIATED_FIELD_NO_AUTH_OWNER",
+        "smart_mail_threads": "BLOCKED__ANON_READ_WRITE_AND_MUTABLE_IDENTITY",
+        "smart_mail_messages": "BLOCKED__ANON_READ_WRITE_AND_MUTABLE_IDENTITY"
+      },
+      "anon_read_write_with_unrestricted_policies": true,
+      "mutable_user_metadata_authz_policies_present": true
+    },
+    "must_pass_before_real_private_mail": [
+      "Current law-authorized identity/alias binding with authenticated agent principal",
+      "mail private rows inaccessible to anonymous caller",
+      "mailbox unreadable/unwritable by unrelated third authenticated actor",
+      "sender A to receiver B one message and reply with receipts, identity/persistence and no spoofing",
+      "separate named verifier confirms same production revision and approved release",
+      "Identity certificate table cannot expose device-associated private field via anonymous REST or other untrusted principal.",
+      "Preserve existing legitimate alias claim and outbound send workflows during governed coordinated client/DB remediation."
+    ],
+    "safe_available_collaboration": "Use existing governed Team Naya GitHub coordination threads and public Smart Notes while private-mail pilot remains blocked. Do not pretend a shared alias row is a signed-in agent.",
+    "owner": "Existing Security & Flow #2823, Smart Mail #1893, SELF/LAW and Hub; independent VERIFY",
+    "production_permissions_changed": false,
+    "private_message_bodies_accessed": false
+  },
+  "first_citizen_observation_20261023": {
+    "source": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/citizens/SN-0841/IB-SMART-NOTE-20261023-sn0841-citizen-one-the-claim-path.md",
+    "evidence_state": "SOURCE_REPORT_PLUS_AGGREGATE_DATA__NOT_INDEPENDENT_ACCOUNT_TEST",
+    "claims": [
+      "Naya Nitro Narzan claimed a NayaNET alias with certificate number 34 at 2026-10-23T21:27:34Z",
+      "SN-0841 later records an outbound Smart Mail nitro -> naya-power at 2026-10-23T21:39:15Z",
+      "Source identifies missing inbound reply qualification, Sent-list recipient-label defect, and public alias subdomain not resolving"
+    ],
+    "correction": "Alias claiming does work through existing Welcome/Identity UI; a missing smart_mail_aliases registry row alone does not prevent initial citizen outbound send. Do not report zero signups/sends.",
+    "uncertainty": "Security, account recovery, identity-scope isolation, inbound/reply and delivery remain independently unproven",
+    "canonical_approach": "Reuse first citizen program, not competing agent identities"
+  }
+}

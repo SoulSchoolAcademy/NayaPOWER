@@ -1,0 +1,7 @@
+{
+  "contract": "room-feed/v1",
+  "room": "lists",
+  "emitted_at": "2026-10-20T09:19:42.399267-07:00",
+  "source_ref": "engine-job:hub-feeds-emitter-t0479",
+  "items": []
+}

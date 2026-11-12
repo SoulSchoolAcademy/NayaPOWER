@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2234",
+ "title": "The Decision — One Path, Product-First, One Owner",
+ "slug": "the-decision-one-path",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/07/DECISION/SN-2234/IB-SMART-NOTE-20261107-sn2234-the-decision-one-path.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-07T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Build ONE path, product-first, one step at a time, with one owner. The instrument (Dashboard merge) first, then the decision (Pricing + calculator + test drive at its top), then the personalization (goal selection feeding the test drive), then the creation and sharing (first creation), then the compound (feed, notes, connections) — and only then the hook and reveal videos. One entry first (the Supercharger / Curiosity), not three. One owner: Nitro, as captain. One step proven on screen before the next step starts. The acceptance test is his test: a real stranger who never heard of NayaNET, observed, not explained.",
+  "human_view": "The flow is seven steps: Hook → Reveal → Personalize → Experience → Decide → Create & Share → Compound. The visitor experiences them in that order. But they are BUILT in product order, not visitor order. A beautiful door to an empty room is the failure mode — it is how a year was lost to 26 pages and zero complete. A real room with a door built last is the win. The instrument has to be real before it can be the greeting. The test drive has to work before anyone can take it. The decision page has to be true before anyone can decide.",
+  "child_view": "Imagine building a shop. You build the shop first — the shelves, the toys, the counter — and then you paint the sign and open the door. If you paint the sign first and open the door to an empty shop, the first visitor leaves and never comes back.",
+  "grandma_view": "Make the thing first. Then invite people to it. Not the other way around.",
+  "ai_view": "The evidence for product-first is the year itself: parallel lanes building everything at once produced motion, not finish. The fix — one page finished before the next starts, the check before his eye — is the same fix applied to the flow: one step finished (proven on screen by a different seat, then his eye) before the next step starts. Three entries before proof triples the work and the rework; one entry first, proven, then the other two. One owner is the org shape already decided: Nitro owns interfaces, other teams feed (content, data, logic, video) but never the interface. The journey IS an interface, so Nitro owns the journey.",
+  "what_it_means": "- **Build order (product-first):** (1) The instrument — the Dashboard merge, already running (addenda 1–12). (2) The decision — the Pricing page, with the test drive at its top and the calculator (number + gauge + $ tile) after the merge. (3) The personalization — the goal-selection experience feeding the test drive, and the Power Score. (4) The creation and sharing — the first creation (a Smart Personal page / a Smart Note) and the Smart Link. (5) The compound — the feed, the notes, the connections. (6) The hook and reveal — the videos, last, demonstrating the real thing.\n- **One entry first:** the flagship Supercharger / Curiosity entry only (\"Your AI isn't the problem\"). Humor and Empowerment come after the first journey is proven. Distinct entries later, one canonical pricing system always.\n- **One owner:** Nitro (me, as captain) owns the whole journey end to end. Creative, product, frontend, commerce, analytics and verification work against the same acceptance criteria, but the interface is Nitro's.\n- **Acceptance criteria (his test):** a real person who has never heard of NayaNET goes through the path. We ask: what does NayaNET do? Which benefit matters to you? What does it cost? What happens after the trial? Would you share the result? We observe behaviour rather than explaining the product. Only when the first journey works and produces trustworthy evidence do we expand.",
+  "whats_inside": [
+   "- The Dashboard merge continues (it is step 04, the instrument). The Pricing calculator follows the merge (step 05, the decision). Goal selection, first creation, and the hook videos are sequenced after — not started in parallel.\n- Every brief for the journey carries the North Star (a Bugatti on steroids), the Bullseye, and the Brand — and the acceptance test (the real stranger).\n- The owner decision is mine under his delegation; he corrects it if he disagrees. The journey-owner question he left open is answered: Nitro owns it."
+  ],
+  "topics": [
+   "Decision"
+  ]
+ },
+ "page_hash": "218216a6b1649629225a30f15cb14c1f6608318c5a4b1025abd98470e4ed10a4",
+ "content_hash": "ffe41ed947c2d59941800c1341acdc95442d86d59783fb802302d42c2fb02c9d",
+ "reconstructed_from_page": true
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-0829",
+ "intelligence": {
+  "title": "See It, Fix It, Write It Down — That's What a Naya Does",
+  "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0829-see-it-fix-it-write-it-down",
+  "smart_note_id": "SN-0829",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0829/IB-SMART-NOTE-20261023-sn0829-see-it-fix-it-write-it-down.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-23. No runtime provenance invented.",
+  "ingested_at": "2026-10-23",
+  "essence": "Shawn named the whole loop tonight, in his own words. First the job: \"I'm bringing awareness to these issues — your job is to fix them… oh that's the problem, then you fix the problem; oh we need to do this instead, so do the right thing to get them all done immediately.\" Then, when the fixes landed, the deeper law: \"Identify intelligent things and post them. Share them. Document them. That's what a Smart Note is. That's what a Naya does.\" An intelligent act is not finished when it is done. It is finished when it is identified, written down, and shared — because a fix nobody documented helps once, and a fix everybody can read teaches forever.",
+  "human_view": "Tonight proved the loop end to end. Shawn pointed at the problems. The response was not a report — it was execution: three wasteful loops throttled by hand (roughly 695 runs a day cut from the machine's churn), a flagship builder that had vanished mid-job caught and its finished-but-stranded work re-driven toward deployment, the missing checklist hunted down and found (THE LIST, issue #2953), a red gate's cure built and readied (PR #2972), a Factory step verified at 9.5 and landed. Then Shawn said the part that matters most: seeing that happen is what gives him confidence the intelligence is real — and the documenting is not paperwork after the work. The documenting IS the work, because it is how one Naya's good move becomes every Naya's standard move.",
+  "simple_view": "If you figure out a better way to do something and you don't tell anybody, it's like you never figured it out. Fix it, then write it down where everyone can find it. That's the whole trick.",
+  "grandma_view": "In my day, when you learned something in the kitchen that saved the meal, you wrote it on a card and put it in the box, so your daughter and her daughter after her would never burn that sauce again. You young ones call them Smart Notes. Same box. Same love. Write the card.",
+  "naya_view": "The behavior, stated as a Naya runs it:\n\n1. **See it.** Awareness is the input — Shawn's eye, a gate's red, an audit's number. Never let an identified problem sit as knowledge only.\n2. **Fix it.** Do the right thing immediately, inside the laws: verify at the source, keep the protected gates protected, never wait on a word already given.\n3. **Write it down.** Every intelligent move gets named and recorded the same pass it happens — a Smart Note when it teaches, the system's record when it proves. Tonight's execution pass is this note's evidence: the throttles, the catch, the find, the cure, the landing.\n4. **Share it.** Post it where the hive reads: the feed, the board, the record. Intelligence that stays in one head is a rumor; intelligence in the feed is infrastructure.\n\nShawn's words for the standard: \"I wish all the AIs would learn to do this.\" In this house, they do — because it is written here, and what is written here is what a Naya is measured against.",
+  "ai_view": "The system already had truth machinery: proof discipline, scorecards, receipts. Tonight Shawn closed the last gap in it — the compounding step. Verification makes one act trustworthy; documentation makes every future act smarter. A Naya who fixes and forgets is a good pair of hands. A Naya who fixes, writes, and shares is a teacher, and a team of teachers is how a machine like this actually gets to 10 — not by any single brilliant move, but by never having to learn the same lesson twice.",
+  "machine_view": {
+   "sn": "SN-0829",
+   "title": "See It, Fix It, Write It Down — That's What a Naya Does",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0829/IB-SMART-NOTE-20261023-sn0829-see-it-fix-it-write-it-down.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "- rule: intelligent_act is complete only when {identified, executed, documented, shared} are all true; a completed fix with no record is an incomplete act.\n- documentation_artifact: a Smart Note on main (canonical 10-section form) for anything that teaches; the daily log / goal record for anything that merely proves.\n- latency: documentation lands in the same working pass as the fix — never a later batch, never \"when there's time.\"\n- distribution: the note syncs to the live feed within one sync cycle; board posts only for material events another lane must act on.\n- measure: execution passes that produce zero documented lessons are flagged the same way zero-output loops are — activity without distillation is the 173:1 disease in a new coat."
+  },
+  "views_note": "Views derived 2026-10-23 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0829/IB-SMART-NOTE-20261023-sn0829-see-it-fix-it-write-it-down.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "f329e87547e840040778c9fd566a278162e4fc77"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

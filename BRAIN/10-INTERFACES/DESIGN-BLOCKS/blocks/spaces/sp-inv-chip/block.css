@@ -1,0 +1,47 @@
+/* Smart Block CSS: spaces/sp-inv-chip
+ * Source: Smart Spaces Page Design.html (extracted byte-true, never rewritten)
+ */
+
+
+.sp-invite-btn{
+  padding:9px 20px; border-radius:999px; font-size:11px; font-weight:800; letter-spacing:.08em;
+  cursor:pointer; font-family:inherit; color:#fff;
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.2);
+  transition:border-color .2s, box-shadow .25s;
+}
+
+
+.sp-invite-btn:hover{ border-color:var(--sc); box-shadow:0 0 16px -4px var(--sc); }
+
+
+.sp-invite-list{ max-height:320px; overflow-y:auto; margin-bottom:16px; }
+
+
+.sp-invite-name{ flex:1; font-size:14px; font-weight:600; color:#fff; }
+
+
+.sp-invite-add{
+  padding:8px 18px; border-radius:999px; font-size:11px; font-weight:800;
+  cursor:pointer; font-family:inherit; color:#a78bfa;
+  background:rgba(157,117,255,.12); border:1px solid rgba(157,117,255,.4);
+}
+
+
+.sp-invite-add:hover{ background:rgba(157,117,255,.2); }
+
+
+
+.sp-inv-chip{ flex:0 0 auto; display:flex; flex-direction:column; gap:6px; align-items:flex-start;
+  padding:12px 14px; border-radius:16px; cursor:pointer; text-align:left; font-family:inherit;
+  background:linear-gradient(135deg, color-mix(in srgb, var(--sc) 30%, transparent), rgba(10,8,16,.92));
+  border:1px solid color-mix(in srgb, var(--sc) 45%, transparent); color:#fff; max-width:230px;
+  transition:transform .15s ease, box-shadow .15s ease; }
+
+
+.sp-inv-chip:hover{ transform:translateY(-2px); box-shadow:0 8px 28px -8px var(--sc); }
+
+
+.sp-inv-chip-name{ font-size:13px; font-weight:800; line-height:1.3; }
+
+
+.sp-inv-chip-join{ font-size:11px; font-weight:700; color:var(--sc); letter-spacing:.06em; }

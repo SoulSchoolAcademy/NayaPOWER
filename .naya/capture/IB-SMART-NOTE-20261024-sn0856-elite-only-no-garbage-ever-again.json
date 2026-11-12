@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-0856",
+ "intelligence": {
+  "title": "SN-0856 — Elite Only: No Garbage, Ever Again",
+  "intelligent_block_id": "IB-SMART-NOTE-20261024-sn0856-elite-only-no-garbage-ever-again",
+  "smart_note_id": "SN-0856",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0856/IB-SMART-NOTE-20261024-sn0856-elite-only-no-garbage-ever-again.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-24. No runtime provenance invented.",
+  "ingested_at": "2026-10-24",
+  "essence": "Elite only, from the first version. No grade-one drafts, no climbing from garbage to good, no presenting low-level work and hoping it improves. If it is not elite, it is not shown. If it is not in the factory, it is not used. If it does not pass the laws already written, it does not go out.",
+  "human_view": "You spent years building a beautiful house, with rules for how every room is finished. Then someone walks in, slaps up a crooked shelf, and shows it to you proudly as progress. That is not progress. That is ignoring the house, the rules, and the work that went into them. The right move is simple: do not show the crooked shelf. Either build it to the standard of the house, or do not build it yet.",
+  "simple_view": "Imagine you have the best Lego set in the world, with all the special pieces sorted, labeled, and ready. Building something ugly from random bits you made up, when the special pieces are right there, is silly. Use the special pieces. Put them together in the best places. Start beautiful, do not start ugly and hope it gets beautiful later.",
+  "grandma_view": "Dear, if you have a good recipe and good ingredients already in the kitchen, you do not invent a worse recipe with worse ingredients and serve it anyway. You use what is good, you follow the recipe that works, and you do not put a bad dish on the table and call it dinner.",
+  "naya_view": "A seat that presents substandard work has already failed, before anyone reviews it. The failure is not the review. The failure is the presentation. The laws are not suggestions to be remembered after the fact. They are the gate before the fact. The Smart Factory must already contain, officially, the design contract, the laws, and the rules, so no seat has to guess them, reinvent them, or claim it did not know them. A build that ignores them is not a draft. It is a violation, and it wastes the director's attention, which is the scarcest resource in the system.",
+  "ai_view": "Shawn's design, laws, and orders are not background reading. They are the work itself. Ignoring them is not a style difference. It is disrespect for the effort that made the standard, and it burns the time and energy that standard was built to save. Elite is not a goal to reach after several bad versions. Elite is the starting line. Anything below it is not a version. It is waste.",
+  "machine_view": {
+   "sn": "SN-0856",
+   "title": "SN-0856 — Elite Only: No Garbage, Ever Again",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0856/IB-SMART-NOTE-20261024-sn0856-elite-only-no-garbage-ever-again.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "- Input: any interface, page, demo, or piece a seat wants to present.\n- Gate, in order, all required, none optional:\n  1. Design contract: elevated, clean, crisp, high contrast, perfect spacing, exactly what's needed, push-button simple, approved elements only.\n  2. Harvest law: recompose elite pieces already in inventory, titled and labeled. No new Lego pieces. Respacing and reordering only.\n  3. Grade-12 start: start at grade twelve, do not climb from grade one. A grade-one version is waste, not progress, and is never presented.\n  4. AAA: Aligned to the laws, Authenticated by a different seat live, Actionable on arrival.\n  5. Truth: no fake liveness, no fabricated ranks, no invented pieces, no claimed verification that has not happened.\n- If any gate fails: DO NOT PRESENT. Fix it, or hold it and say plainly \"not ready, here is what fails and who can verify the fix.\" Presenting a failing version to Shawn is itself a failure, even if the fix is easy.\n- Output: only elite, triple-A, verified work reaches the director. Everything else stays in the workshop, unnamed, unshown, until it passes.\n- The Smart Factory is the enforcement point: design contract, laws, and rules live there officially, in inventory, retrievable by any seat, before any build. A seat that builds without reading them has not done the work."
+  },
+  "views_note": "Views derived 2026-10-24 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0856/IB-SMART-NOTE-20261024-sn0856-elite-only-no-garbage-ever-again.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "0ab6ec464da29b83208a86c136bf1b9f0dabde51"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

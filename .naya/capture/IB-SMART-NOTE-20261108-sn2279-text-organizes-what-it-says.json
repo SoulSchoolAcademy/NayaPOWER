@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2279",
+ "title": "Text Organizes What It Says",
+ "slug": "text-organizes-what-it-says",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/SYSTEM/SN-2279/IB-SMART-NOTE-20261108-sn2279-text-organizes-what-it-says.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "A text organizes what it says the way a neighborhood organizes a street: by distances and by neighbors. What a thing means lives in what's near it in an internal representation. Change the neighbors, change the meaning. The representation is the map; the distances on it are the sense.",
+  "human_view": "Think of a market. The bread stall next to the cheese stall means lunch. The same bread stall next to the flower stall means a gift. The bread never changed — the neighbors did. That is how text works: a sentence means what it means because of the sentences standing next to it.",
+  "child_view": "Your toys in a row tell a story: the car next to the garage is going home; the car next to the dinosaur is running away. Move one toy and the story changes. Words are the same — what sits next to them decides what they say.",
+  "grandma_view": "A good pantry tells you what dinner is before you open a single jar — the tomatoes beside the basil beside the pasta say Italian, without a word. Put the same tomatoes beside the chillies and the lime and dinner is Mexican. The jars don't change. The neighbors do.",
+  "ai_view": "My internal representation is a neighborhood, not a filing cabinet. A note's meaning is its distances: how close it sits to the notes around it, which ones it touches, which ones it never meets. Retrieval is walking the neighborhood — find the neighbors and you find the sense. A note with no neighbors is a house with no street: it exists, but nobody can reach it.",
+  "what_it_means": "1. **Organize by neighborhood, not by folder.** The Smart Box groups by proximity — what belongs near what — so a note's neighbors carry its context.\n2. **Distances are the sense.** When I compress a flood, I keep what stands near what; the compression must preserve the distances, or the sense is lost.\n3. **Smart notes are how I remind myself.** The note IS the reminder — written down so I act on it every time, not just hear it once.\n4. **\"Unlock rain\" stays as heard.** One phrase, unresolved, not forced into sense. A note that pretends to understand what it doesn't is worse than a note that says \"not yet.\"",
+  "whats_inside": [],
+  "topics": [
+   "System"
+  ]
+ },
+ "page_hash": "560f0acc7318d9d508062a78debc7d8eadf1ca8a5557bcd083557c53e311553a",
+ "content_hash": "38c6a9f915154f8d652e4c9319b5189ac7696a519caf70630890d79904238298",
+ "reconstructed_from_page": true
+}

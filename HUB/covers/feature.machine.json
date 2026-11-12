@@ -1,0 +1,121 @@
+{
+  "acceptance": [
+    "cold phone page creation wears a fitting cover with a truthful why",
+    "three doors in one tap on every page type",
+    "typical-term search finds the right shelf in the first screen",
+    "library pick persists across reload and form factors",
+    "upload + adjuster persists",
+    "mid-save failure keeps the old cover",
+    "thin-data page gets a sensible default, never blank"
+  ],
+  "defaults": {
+    "branded_or_area_page": "area/* cover for the page type",
+    "citizen_page": "recommendation top pick"
+  },
+  "doors": [
+    "recommended",
+    "library",
+    "upload"
+  ],
+  "feature": "nayanet-smart-covers",
+  "match_card_required_fields": [
+    "key",
+    "name",
+    "category",
+    "tier",
+    "suits",
+    "status",
+    "credit",
+    "file"
+  ],
+  "page_cover_state": {
+    "cover_key": "string|null (manifest assets[].key)",
+    "offset_y": "number -1..1, default 0",
+    "set_by": [
+      "system",
+      "owner"
+    ],
+    "source": [
+      "library",
+      "upload"
+    ],
+    "updated_at": "timestamp",
+    "upload_ref": "string|null"
+  },
+  "principle": "born beautiful, owner in control",
+  "recommendation": {
+    "engine": "smart-match field model (topics/goals/offers/needs/wants)",
+    "fallbacks": [
+      "page-type area default",
+      "rotating set"
+    ],
+    "output": {
+      "alternates_max": 11,
+      "top_pick": "cover_key",
+      "why": "one human sentence naming the matched signals"
+    },
+    "surface_threshold_signals": 2,
+    "exclude_for_citizens": {
+      "featured_class": [
+        "exclusive"
+      ],
+      "categories": [
+        "house-signature",
+        "house-area"
+      ],
+      "exception": "pages owned by a Naya"
+    }
+  },
+  "search": {
+    "browse": "category shelves",
+    "fields": [
+      "name",
+      "category",
+      "suits",
+      "typical_terms",
+      "mood_tags"
+    ],
+    "ordering": "recommended-first when page context exists"
+  },
+  "status": "assets ready (manifest); chooser = spec, not yet built",
+  "ui": {
+    "adjuster": {
+      "applies_to": [
+        "library",
+        "upload"
+      ],
+      "input": [
+        "mouse",
+        "touch"
+      ],
+      "persists_per_page": true
+    },
+    "chooser": [
+      "current",
+      "recommended with why",
+      "search",
+      "shelves",
+      "upload"
+    ],
+    "failure_rule": "a failed save never strips the existing cover",
+    "mobile_first": true
+  },
+  "version": 1,
+  "featured": {
+    "classes": [
+      "citizen",
+      "exclusive"
+    ],
+    "citizen_row": "featured_class=citizen, in featured_order",
+    "status": "complete - Shawn's picks, locked 2026-10-25",
+    "display_grid": {
+      "categories_per_class": 4,
+      "per_category": 3,
+      "contexts": [
+        "signup",
+        "onboarding",
+        "smart-factory"
+      ]
+    }
+  }
+}

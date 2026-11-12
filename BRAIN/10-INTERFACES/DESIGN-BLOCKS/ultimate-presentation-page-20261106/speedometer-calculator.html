@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Speedometer Calculator — NayaNET Smart Factory part</title>
+<!--
+  THE SPEEDOMETER CALCULATOR — named Smart Factory part.
+  Extracted VERBATIM from pricing-table-DRAFT-v4.html
+  (sha256 9c42eff887741ed4430a98b18fa9debe52517dc1691be63e40341f9f0f4b68ba,
+  134,450 bytes, 1,121 lines — blind-verified PASS 10/10, 199/200,
+  VERIFICATION-ROUND5.md, 2026-11-06).
+  Fragments, by source line number:
+    :root vars ......... lines 11-16
+    .lit-section ....... lines 130, 461 (cosmetic: opacity + border transition)
+    .calc-* CSS ........ lines 345-387
+    .calc-cinema CSS ... lines 438-441
+    calculator HTML .... lines 669-749
+    calculator script .. lines 750-802
+  Nothing was retyped or restyled. The Cinema image src below is the page's
+  own local path; the canonical GitHub copy is
+  HUB/app/banner-assets/pricing-supercharger-alt-cinema.webp (PR #3271).
+  Honest math: 50% of plan price per sale, recurring monthly.
+  3 Max/day = $4,500/month ($54,000/year) · 1 Pro/day = $750/month
+  ($9,000/year) · 3 Max/month = $150/month ($1,800/year).
+  NEVER $5,000/$60,000 as computed figures — $5,000 is the dial's cap only.
+-->
+<style>
+  :root{
+    --bg:#060608; --panel:#0c0c10; --panel2:#101014; --line:#1e1e26;
+    --txt:#f5f5f7; --dim:#a7a7b3; --faint:#a7a7b3;
+    --purple:#a06bff; --blue:#3fb8ff; --green:#2fe89e; --gold:#ffbf3d;
+    --orange:#ff9a5a; --red:#ff5e6c; --magenta:#e84fff;
+  }
+  .lit-section{opacity:1;}
+  .lit-section{transition:border-color .6s ease;}
+  /* ===== AMBASSADOR CALCULATOR — the speedometer (SN-2076). Discrete block: remove this section + its CSS (.calc-*) + its script to take it out. ===== */
+  .calc{margin-bottom:40px; padding:32px; border:1.5px solid rgba(255,191,61,.9); border-radius:16px; position:relative; overflow:hidden;
+    background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 8px 24px rgba(0,0,0,.5);}
+  .calc::before{content:""; position:absolute; inset:0 0 auto 0; height:3px;
+    background:linear-gradient(90deg,var(--purple),var(--blue),var(--green),var(--gold),var(--orange),var(--red),var(--magenta));}
+  .calc-kicker{font-size:12px; font-weight:800; letter-spacing:.22em; color:var(--gold); margin-bottom:8px;}
+  .calc h2{font-size:28px; margin-bottom:8px;}
+  .calc-sub{color:var(--dim); font-size:16px; margin-bottom:24px; max-width:880px;}
+  .calc-sub b{color:var(--txt);}
+  .calc-body{display:flex; gap:32px; align-items:flex-start; flex-wrap:wrap;}
+  .calc-gauge{flex:0 0 360px; max-width:100%; text-align:center;}
+  .calc-gauge svg{width:100%; height:auto; display:block;}
+  #calc-needle{transform-origin:180px 178px; transition:transform .5s cubic-bezier(.2,.8,.2,1);}
+  .calc-readout{font-size:40px; font-weight:800; color:var(--gold); margin-top:8px; text-shadow:0 2px 14px rgba(0,0,0,.6);}
+  .calc-per{font-size:16px; color:var(--dim); font-weight:400; margin-left:8px;}
+  .calc-math{font-size:14px; color:var(--txt); margin-top:4px;}
+  .calc-controls{flex:1 1 320px;}
+  .calc-label{font-size:12px; font-weight:800; letter-spacing:.22em; color:var(--dim); margin:16px 0 8px;}
+  .calc-label:first-child{margin-top:0;}
+  .calc-plans{display:flex; gap:8px; flex-wrap:wrap;}
+  .calc-plan{flex:1 1 100px; padding:12px 8px; border-radius:12px; border:1.5px solid rgba(255,255,255,.35); background:#0a0a0f; color:#fff; font-size:14px; font-weight:800; cursor:pointer; text-align:center;}
+  .calc-plan span{display:block; font-size:11px; font-weight:400; color:var(--dim); margin-top:4px;}
+  .calc-plan.is-on{border-color:var(--gold); box-shadow:0 0 16px rgba(255,191,61,.35);}
+  .calc-pace{display:flex; align-items:center; gap:16px;}
+  .calc-step{width:48px; height:48px; border-radius:50%; border:1.5px solid rgba(255,255,255,.7); background:#0a0a0f; color:#fff; font-size:24px; cursor:pointer; flex:0 0 auto;}
+  .calc-pace-num{font-size:16px;}
+  .calc-unit{display:flex; gap:8px; margin-top:12px;}
+  .calc-unit-btn{padding:8px 16px; border-radius:99px; border:1.5px solid rgba(255,255,255,.35); background:#0a0a0f; color:#fff; font-size:14px; cursor:pointer;}
+  .calc-unit-btn.is-on{border-color:var(--gold); box-shadow:0 0 12px rgba(255,191,61,.3);}
+  .calc-examples{display:flex; gap:8px; flex-wrap:wrap;}
+  .calc-ex{padding:8px 12px; border-radius:99px; border:1px solid rgba(255,255,255,.35); background:transparent; color:#e8e8ee; font-size:13px; cursor:pointer;}
+  .calc-ex:hover{border-color:var(--gold);}
+  .calc-not{font-size:20px; font-weight:800; text-align:center; margin:32px 0 8px;}
+  .calc-lines{color:var(--dim); font-size:16px; text-align:center; max-width:880px; margin:0 auto 8px;}
+  .calc-lines b{color:var(--txt);}
+  .calc-proof{font-size:16px; font-weight:700; text-align:center; margin:16px 0 8px;}
+  .calc-disc{font-size:12px; color:var(--dim); text-align:center;}
+  @media(max-width:860px){
+    .calc{padding:24px 16px;}
+    .calc-gauge{flex:1 1 100%;}
+    .calc-readout{font-size:32px;}
+  }
+  /* ===== THE CALCULATOR — Cinema beside it. ===== */
+  .calc-cinema{margin:0 0 24px; border-radius:16px; overflow:hidden; border:1.5px solid rgba(255,255,255,.9);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15), 0 8px 24px rgba(0,0,0,.5);}
+  .calc-cinema img{width:100%; height:auto; display:block;}
+</style>
+</head>
+<body>
+  <section class="calc lit-section" id="calculator" aria-label="Ambassador calculator — pick your package, see your potential">
+    <p class="calc-kicker">PICK YOUR PACKAGE — SHOW YOUR POTENTIAL</p>
+    <h2>Calculate your income.</h2>
+    <p class="calc-sub">Nine days. Everything. Free. Days 1–5 you train in the Academy; days 6–9 we show you how to actually operate. Anaya is hiring everybody in the world — we are a new high-tech internet company, and you are like a salesperson: tell everybody how awesome she is, tell them they can try her for free, and if they happen to upgrade — boom, you get paid. End of story.</p>
+    <figure class="calc-cinema"><img src="../../verify-pricing-v6/banner-assets/pricing-supercharger-alt-cinema.webp" alt="The supercharger: a turbine machine with a gauge face, Naya leaning on it, the nine systems on pedestals behind."></figure>
+    <div class="calc-body">
+      <div class="calc-gauge">
+        <svg viewBox="0 0 360 205" width="360" height="205" role="img" aria-label="Speedometer gauge showing your potential monthly recurring earnings">
+          <defs>
+            <radialGradient id="calc-dial" cx="50%" cy="55%" r="75%">
+              <stop offset="0%" stop-color="#23232e"/><stop offset="60%" stop-color="#101014"/><stop offset="100%" stop-color="#060608"/>
+            </radialGradient>
+            <linearGradient id="calc-gold" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffbf3d"/><stop offset="50%" stop-color="#fff2c4"/><stop offset="100%" stop-color="#ffbf3d"/>
+            </linearGradient>
+          </defs>
+          <path d="M 20 178 A 160 160 0 0 1 340 178 Z" fill="url(#calc-dial)" stroke="url(#calc-gold)" stroke-width="3"/>
+          <path d="M 32 178 A 148 148 0 0 1 328 178" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1"/>
+          <path d="M 48.0 178.0 A 132 132 0 0 1 53.3 140.8" fill="none" stroke="#ff4d4d" stroke-width="10"/>
+          <path d="M 53.3 140.8 A 132 132 0 0 1 69.0 106.6" fill="none" stroke="#ff9a3d" stroke-width="10"/>
+          <path d="M 69.0 106.6 A 132 132 0 0 1 93.6 78.2" fill="none" stroke="#ffcc33" stroke-width="10"/>
+          <path d="M 93.6 78.2 A 132 132 0 0 1 125.2 57.9" fill="none" stroke="#b8e62e" stroke-width="10"/>
+          <path d="M 125.2 57.9 A 132 132 0 0 1 161.2 47.3" fill="none" stroke="#2fe89e" stroke-width="10"/>
+          <path d="M 161.2 47.3 A 132 132 0 0 1 198.8 47.3" fill="none" stroke="#2fd4c4" stroke-width="10"/>
+          <path d="M 198.8 47.3 A 132 132 0 0 1 234.8 57.9" fill="none" stroke="#3fb8ff" stroke-width="10"/>
+          <path d="M 234.8 57.9 A 132 132 0 0 1 266.4 78.2" fill="none" stroke="#6a7cff" stroke-width="10"/>
+          <path d="M 266.4 78.2 A 132 132 0 0 1 291.0 106.6" fill="none" stroke="#a06bff" stroke-width="10"/>
+          <path d="M 291.0 106.6 A 132 132 0 0 1 306.7 140.8" fill="none" stroke="#e84fff" stroke-width="10"/>
+          <path d="M 306.7 140.8 A 132 132 0 0 1 312.0 178.0" fill="none" stroke="#ff5ea8" stroke-width="10"/>
+          <line x1="48.0" y1="178.0" x2="62.0" y2="178.0" stroke="rgba(255,255,255,.6)" stroke-width="2"/>
+          <text x="80.0" y="196.0" text-anchor="middle" font-size="11" fill="#e8e8ee">$0</text>
+          <line x1="86.7" y1="84.7" x2="96.6" y2="94.6" stroke="rgba(255,255,255,.6)" stroke-width="2"/>
+          <text x="109.3" y="111.3" text-anchor="middle" font-size="11" fill="#e8e8ee">$1,250</text>
+          <line x1="180.0" y1="46.0" x2="180.0" y2="60.0" stroke="rgba(255,255,255,.6)" stroke-width="2"/>
+          <text x="180.0" y="82.0" text-anchor="middle" font-size="11" fill="#e8e8ee">$2,500</text>
+          <line x1="273.3" y1="84.7" x2="263.4" y2="94.6" stroke="rgba(255,255,255,.6)" stroke-width="2"/>
+          <text x="250.7" y="111.3" text-anchor="middle" font-size="11" fill="#e8e8ee">$3,750</text>
+          <line x1="312.0" y1="178.0" x2="298.0" y2="178.0" stroke="rgba(255,255,255,.6)" stroke-width="2"/>
+          <text x="280.0" y="196.0" text-anchor="middle" font-size="11" fill="#e8e8ee">$5,000</text>
+          <g id="calc-needle">
+            <polygon points="180,66 174,178 186,178" fill="#ffbf3d" stroke="#fff2c4" stroke-width="1"/>
+          </g>
+          <circle cx="180" cy="178" r="13" fill="url(#calc-dial)" stroke="#ffbf3d" stroke-width="2"/>
+          <circle cx="180" cy="178" r="4" fill="#ffbf3d"/>
+        </svg>
+        <div class="calc-readout"><span id="calc-amount">$750</span><span class="calc-per">/ month, recurring</span></div>
+        <p class="calc-math" id="calc-math">1 Pro sale a day × $25 × 30 days = $750 a month ($9,000 a year)</p>
+      </div>
+      <div class="calc-controls">
+        <p class="calc-label">Your package</p>
+        <div class="calc-plans" role="group" aria-label="Pick your package">
+          <button type="button" class="calc-plan" data-share="12.5" data-plan="Power">POWER<span>$25/mo · $12.50 a sale</span></button>
+          <button type="button" class="calc-plan is-on" data-share="25" data-plan="Pro">PRO<span>$50/mo · $25 a sale</span></button>
+          <button type="button" class="calc-plan" data-share="50" data-plan="Max">MAX<span>$100/mo · $50 a sale</span></button>
+        </div>
+        <p class="calc-label">Your pace</p>
+        <div class="calc-pace">
+          <button type="button" class="calc-step" id="calc-minus" aria-label="Fewer sales">−</button>
+          <span class="calc-pace-num"><b id="calc-pace">1</b> sale<span id="calc-pace-s"></span> a <span id="calc-pace-unit">day</span></span>
+          <button type="button" class="calc-step" id="calc-plus" aria-label="More sales">+</button>
+        </div>
+        <div class="calc-unit" role="group" aria-label="Per day or per month">
+          <button type="button" class="calc-unit-btn is-on" data-unit="day">Per day</button>
+          <button type="button" class="calc-unit-btn" data-unit="month">Per month</button>
+        </div>
+        <p class="calc-label">Try it — the worked examples</p>
+        <div class="calc-examples">
+          <button type="button" class="calc-ex" data-plan="Max" data-share="50" data-pace="3" data-unit="day">3 Max a day → $4,500/mo</button>
+          <button type="button" class="calc-ex" data-plan="Pro" data-share="25" data-pace="1" data-unit="day">1 Pro a day → $750/mo</button>
+          <button type="button" class="calc-ex" data-plan="Max" data-share="50" data-pace="3" data-unit="month">3 Max a month → $150/mo</button>
+        </div>
+      </div>
+    </div>
+    <p class="calc-not">NOT network marketing.</p>
+    <p class="calc-lines">No downline, no upline — just the potential to get paid every day. Imagine working for Mercedes — a high-end, high-tech company, epic products, solid, amazing — and you get a commission for promoting them. But instead of 5% or 10%, you are getting <b>50% of the revenue — not the profit, straight up.</b></p>
+    <p class="calc-lines"><b>As soon as we get paid, you get paid. No hold back. No games.</b></p>
+    <p class="calc-proof">You know it is solid because you tried her for nine days. You cannot say it is not good — it is good, it is more than good, it is awesome.</p>
+    <p class="calc-lines"><b>Try the new Bugatti of the internet — name's Naya.</b> She is everything the whole of everything the internet is — smart mail, social networking, intelligence, everything all in one — an AI operating system for the internet, the new layer, the new intelligence layer. And you get paid for referring everybody to it — <b>and you get to use it, which is the greatest gift.</b></p>
+    <p class="calc-lines">Imagine getting paid from a high-tech intelligence company — not having to apply for the job, you automatically get the job. Something truly extraordinary — absolutely solid and beautiful and effective and useful. <b>50% of the revenue straight up. No games, no catch, no bullshit. Money in your account.</b> Everybody gets a trial for free.</p>
+    <p class="calc-disc">Potential, not a promise. Computed from your inputs — plan price × 50%, recurring monthly. Nothing here is promised earnings.</p>
+  </section>
+  <script>
+  (function(){
+    var plan='Pro', share=25, pace=1, unit='day';
+    var amount=document.getElementById('calc-amount'),
+        math=document.getElementById('calc-math'),
+        needle=document.getElementById('calc-needle'),
+        paceEl=document.getElementById('calc-pace'),
+        paceS=document.getElementById('calc-pace-s'),
+        paceUnit=document.getElementById('calc-pace-unit');
+    if(!amount||!needle) return;
+    function fmt(n){ return n%1===0 ? String(n) : n.toFixed(2); }
+    function money(n){ return '$'+Math.round(n).toLocaleString('en-US'); }
+    function update(){
+      var mult = unit==='day' ? 30 : 1;
+      var monthly = share*pace*mult;
+      amount.textContent = money(monthly);
+      var s = pace>1 ? 's' : '';
+      paceEl.textContent = pace; paceS.textContent = s; paceUnit.textContent = unit;
+      var m = pace+' '+plan+' sale'+s+' a '+unit+' × $'+fmt(share);
+      if(unit==='day'){ m += ' × 30 days'; }
+      m += ' = '+money(monthly)+' a month ('+money(monthly*12)+' a year)';
+      if(monthly>5000){ m += ' — off the dial; the needle is pegged at $5,000.'; }
+      math.textContent = m;
+      var ang = -90 + Math.min(monthly,5000)/5000*180;
+      needle.style.transform = 'rotate('+ang+'deg)';
+    }
+    document.querySelectorAll('.calc-plan').forEach(function(b){
+      b.addEventListener('click', function(){
+        document.querySelectorAll('.calc-plan').forEach(function(x){x.classList.remove('is-on');});
+        b.classList.add('is-on');
+        plan=b.getAttribute('data-plan'); share=parseFloat(b.getAttribute('data-share')); update();
+      });
+    });
+    document.getElementById('calc-minus').addEventListener('click', function(){ if(pace>1){pace--; update();} });
+    document.getElementById('calc-plus').addEventListener('click', function(){ if(pace<10){pace++; update();} });
+    document.querySelectorAll('.calc-unit-btn').forEach(function(b){
+      b.addEventListener('click', function(){
+        document.querySelectorAll('.calc-unit-btn').forEach(function(x){x.classList.remove('is-on');});
+        b.classList.add('is-on'); unit=b.getAttribute('data-unit'); update();
+      });
+    });
+    document.querySelectorAll('.calc-ex').forEach(function(b){
+      b.addEventListener('click', function(){
+        plan=b.getAttribute('data-plan'); share=parseFloat(b.getAttribute('data-share'));
+        pace=parseInt(b.getAttribute('data-pace'),10); unit=b.getAttribute('data-unit');
+        document.querySelectorAll('.calc-plan').forEach(function(x){x.classList.toggle('is-on', x.getAttribute('data-plan')===plan);});
+        document.querySelectorAll('.calc-unit-btn').forEach(function(x){x.classList.toggle('is-on', x.getAttribute('data-unit')===unit);});
+        update();
+      });
+    });
+    update();
+  })();
+  </script>
+
+</body>
+</html>

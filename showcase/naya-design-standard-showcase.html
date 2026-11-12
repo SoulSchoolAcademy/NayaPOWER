@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Naya Design Standard — Elite by Default</title>
+<style>
+/* ============ HARVESTED VERBATIM: :root tokens ============ */
+:root{
+ --field:#050507; --obsidian:#0B0D12; --raise:#12151D; --card:#171B25; --deep:#08080D;
+ --white:#F8F7FB; --quiet:#C8C4D0; --secondary:#AAB2BF; --line:rgba(255,255,255,.28);
+ --purple:#9d75ff; --indigo:#6675ff; --blue:#55b9ee; --teal:#40d3bb; --emerald:#55e39a;
+ --lime:#b8ee57; --gold:#e8c766; --orange:#ff9a5a; --red:#ff5e6c; --magenta:#d86cff;
+ --ease:cubic-bezier(.16,.84,.22,1); --fast:.18s; --med:.28s; --slow:.5s;
+ --lift:inset 0 1px rgba(255,255,255,.16),0 22px 54px rgba(0,0,0,.65);
+ --ring:0 0 0 1px rgba(255,255,255,.28),0 0 19px -7px rgba(255,255,255,.36);
+ --r-lg:20px; --r-xl:28px; --body:18px;
+ /* Spectrum law order: magenta → purple → blue → green → gold */
+ --sp1:#d86cff; --sp2:#9d75ff; --sp3:#55b9ee; --sp4:#55e39a; --sp5:#e8c766;
+}
+/* ============ HARVESTED VERBATIM: base ============ */
+*{box-sizing:border-box;margin:0;padding:0}
+body{margin:0;color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:var(--body);line-height:1.58;background:var(--field);overflow-x:hidden}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(52px,6.1vw,100px);font-weight:500;line-height:1.01;letter-spacing:-.05em;margin:25px 0 29px;text-shadow:0 9px 34px #000a}
+/* ============ HARVESTED VERBATIM: .primo button ============ */
+.primo{--glow:var(--purple);position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 20px;background:linear-gradient(145deg,#101016,#050505 56%,#0b0b10);color:#fff;border:1.7px solid rgba(248,247,255,.68);border-radius:999px;text-decoration:none;font-size:15px;font-weight:800;letter-spacing:.01em;box-shadow:inset 0 1px #ffffff4d,0 13px 28px #000c,0 0 17px -7px #fff9;text-shadow:0 1px 7px #000;transition:transform var(--fast) var(--ease),border-color var(--fast),box-shadow var(--med),background var(--fast);cursor:pointer}
+.primo:hover{transform:translateY(-2px);border-color:var(--glow);box-shadow:inset 0 1px #ffffff50,0 17px 30px #000d,0 0 25px -3px var(--glow),0 0 8px var(--glow)}
+.primo:active{transform:translateY(1px) scale(.985)}
+.primo svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+/* ============ Showcase structure ============ */
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+section{padding:88px 0;border-top:1px solid rgba(255,255,255,.07)}
+.kicker{font-size:14px;letter-spacing:.22em;font-weight:800;margin-bottom:18px}
+h2{font-family:Georgia,serif;font-size:44px;font-weight:500;letter-spacing:-.03em;line-height:1.08;margin:0 0 16px}
+.lede{font-size:20px;max-width:720px;color:var(--white);opacity:.94}
+p.body{font-size:18px;max-width:720px;margin:14px 0}
+.detail{font-size:14px;color:var(--white);opacity:.82;max-width:720px}
+/* Hero */
+.hero{min-height:96vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden}
+.hero .logo-ring{width:180px;height:180px;margin-bottom:28px;filter:drop-shadow(0 0 44px rgba(157,117,255,.55));animation:breathe 5s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1);filter:drop-shadow(0 0 34px rgba(157,117,255,.45))}50%{transform:scale(1.035);filter:drop-shadow(0 0 60px rgba(157,117,255,.7))}}
+.hero .eyebrow{font-size:14px;letter-spacing:.3em;font-weight:800;color:var(--purple);margin-bottom:10px}
+.hero h1{max-width:900px}
+.hero .sub{font-size:20px;max-width:640px;opacity:.9;margin-top:6px}
+.scroll-hint{margin-top:56px;font-size:13px;letter-spacing:.28em;opacity:.6;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.35}50%{opacity:.75}}
+/* Spectrum tiles */
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:36px}
+@media(max-width:640px){.tiles{grid-template-columns:repeat(2,1fr)}}
+.tile{border-radius:var(--r-lg);padding:26px 18px;min-height:170px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(160deg,#101016,#050505 60%);border:1.5px solid rgba(255,255,255,.28);box-shadow:var(--lift);position:relative;overflow:hidden;transition:transform var(--med) var(--ease),box-shadow var(--med)}
+.tile::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:var(--sc)}
+.tile:hover{transform:translateY(-4px);box-shadow:var(--lift),0 0 30px -4px var(--sc)}
+.tile .tname{font-weight:800;font-size:16px;letter-spacing:.06em}
+.tile .tjob{font-size:13px;opacity:.75;margin-top:4px}
+/* Law cards */
+.laws{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:36px}
+@media(max-width:700px){.laws{grid-template-columns:1fr}}
+.law{border-radius:var(--r-lg);padding:28px;background:linear-gradient(160deg,#101016,#050505 60%);border:1.5px solid rgba(255,255,255,.28);border-left:5px solid var(--sc);box-shadow:var(--lift);transition:transform var(--med) var(--ease),box-shadow var(--med)}
+.law:hover{transform:translateY(-3px);box-shadow:var(--lift),0 0 26px -6px var(--sc)}
+.law .lnum{font-size:13px;font-weight:800;letter-spacing:.2em;color:var(--sc);margin-bottom:10px}
+.law .lhead{font-family:Georgia,serif;font-size:24px;margin-bottom:10px}
+.law p{font-size:16px;opacity:.9}
+/* Button rows */
+.btnrow{display:flex;flex-wrap:wrap;gap:16px;margin-top:32px;align-items:center}
+.btnlabel{font-size:14px;letter-spacing:.14em;font-weight:800;width:100%;margin:18px 0 2px;color:var(--white)}
+.btnlabel:first-child{margin-top:0}
+/* Boards */
+.boards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px}
+@media(max-width:700px){.boards{grid-template-columns:1fr}}
+.board{border-radius:var(--r-xl);padding:30px;background:linear-gradient(165deg,#121218,#060608 62%);border:1.5px solid rgba(255,255,255,.28);border-top:5px solid var(--sc);box-shadow:var(--lift);position:relative;transition:transform var(--med) var(--ease),box-shadow var(--med)}
+.board:hover{transform:translateY(-4px);box-shadow:var(--lift),0 0 32px -6px var(--sc)}
+.board .bkicker{font-size:12px;font-weight:800;letter-spacing:.22em;color:var(--sc);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.board .bkicker svg{width:16px;height:16px;stroke:var(--sc);fill:none;stroke-width:2}
+.board h3{font-family:Georgia,serif;font-size:26px;font-weight:500;margin-bottom:12px}
+.board .nutshell{font-size:15px;font-weight:700;margin:14px 0 6px;letter-spacing:.04em}
+.board p{font-size:16px;opacity:.88}
+/* Jewels */
+.jewelrow{display:flex;gap:22px;margin-top:34px;flex-wrap:wrap;align-items:center}
+.jewel{width:46px;height:46px;display:grid;place-items:center}
+.jewel svg{width:40px;height:40px;filter:drop-shadow(0 0 10px var(--sc))}
+.jewelrow .jcap{font-size:14px;opacity:.8;width:100%;margin-top:6px}
+/* Type specimens */
+.spec{margin-top:30px;border-left:3px solid var(--sc,#9d75ff);padding:6px 0 6px 22px}
+.spec .tag{font-size:12px;font-weight:800;letter-spacing:.22em;opacity:.7;margin-bottom:8px}
+/* Truth */
+.truthrow{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.scorechip{border-radius:var(--r-lg);padding:22px 26px;background:linear-gradient(160deg,#101016,#050505 60%);border:1.5px solid rgba(255,255,255,.28);box-shadow:var(--lift);min-width:190px}
+.scorechip .snum{font-family:Georgia,serif;font-size:40px}
+.scorechip .slab{font-size:13px;opacity:.75;margin-top:6px}
+.scorechip.verified{border-color:var(--emerald);box-shadow:var(--lift),0 0 26px -6px var(--emerald)}
+.scorechip.verified .snum{color:var(--emerald);text-shadow:0 0 18px rgba(85,227,154,.5)}
+/* Icons */
+.icongrid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:30px}
+@media(max-width:700px){.icongrid{grid-template-columns:repeat(4,1fr)}}
+.icell{border-radius:14px;padding:18px 8px;text-align:center;background:#0b0b10;border:1px solid rgba(255,255,255,.14)}
+.icell svg{width:26px;height:26px;stroke:var(--white);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.icell .inm{font-size:11px;opacity:.65;margin-top:8px;font-family:monospace}
+/* Gate checklist */
+.gate{margin-top:30px;border-radius:var(--r-xl);padding:34px;background:linear-gradient(165deg,#121218,#060608 62%);border:1.5px solid rgba(255,255,255,.28);box-shadow:var(--lift)}
+.gate li{list-style:none;font-size:17px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);display:flex;gap:14px;align-items:baseline}
+.gate li:last-child{border-bottom:none}
+.gate .gj{flex:none;font-size:18px}
+/* Rooms */
+.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+@media(max-width:800px){.rooms{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.rooms{grid-template-columns:1fr}}
+.room{border-radius:var(--r-lg);padding:24px;background:linear-gradient(160deg,#101016,#050505 60%);border:1.5px solid rgba(255,255,255,.28);border-top:4px solid var(--sc);box-shadow:var(--lift);transition:transform var(--med) var(--ease),box-shadow var(--med)}
+.room:hover{transform:translateY(-3px);box-shadow:var(--lift),0 0 24px -6px var(--sc)}
+.room .rname{font-weight:800;font-size:17px}
+.room .rdesc{font-size:14px;opacity:.78;margin-top:8px}
+.room .rdot{width:10px;height:10px;border-radius:50%;background:var(--sc);box-shadow:0 0 12px var(--sc);margin-bottom:14px}
+/* Footer */
+footer{padding:80px 0 60px;text-align:center;border-top:1px solid rgba(255,255,255,.07)}
+footer .flogo{width:84px;height:84px;margin:0 auto 20px;filter:drop-shadow(0 0 26px rgba(157,117,255,.5))}
+footer p{font-size:15px;opacity:.7;max-width:560px;margin:10px auto}
+@media(prefers-reduced-motion:reduce){.hero .logo-ring,.scroll-hint{animation:none}}
+</style>
+</head>
+<body>
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="ic-spark" viewBox="0 0 24 24"><path d="m12 2 2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1Z"/></symbol>
+<symbol id="ic-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="ic-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="ic-book" viewBox="0 0 24 24"><path d="M12 6c-3-2-6-2-9-1v13c3-1 6-1 9 1m0-13c3-2 6-2 9-1v13c-3-1-6-1-9 1V6Z"/></symbol>
+<symbol id="ic-check" viewBox="0 0 24 24"><path d="m4 12 5.5 5.5L20 6"/></symbol>
+<symbol id="ic-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 8-3 8-3 10h18c0-2-3-2-3-10M10 21h4"/></symbol>
+<symbol id="ic-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 7 9-7"/></symbol>
+<symbol id="ic-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2c0-6 12-6 12 0v2M17 5a3 3 0 0 1 0 6m1 4c2 0 3 2 3 4v1"/></symbol>
+<symbol id="ic-heartbeat" viewBox="0 0 24 24"><path d="M2 12h5l2-6 4 12 2-6h7"/></symbol>
+<symbol id="ic-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+<symbol id="ic-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7"/><path d="m16 16 5 5"/></symbol>
+<symbol id="ic-shield" viewBox="0 0 24 24"><path d="m12 2 9 4v6c0 5-3.5 8.2-9 10-5.5-1.8-9-5-9-10V6l9-4Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
+<symbol id="ic-diamond" viewBox="0 0 24 24"><path d="M6 4h12l5 6-11 12L1 10 6 4Zm-5 6h22M6 4l6 18L18 4"/></symbol>
+<symbol id="ic-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M1 12h4m14 0h4"/></symbol>
+</defs></svg>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="eyebrow">THE NAYA DESIGN STANDARD</div>
+  <img class="logo-ring" src="naya-logo-real.png" alt="Naya — crystalline prismatic N in a glowing ring">
+  <h1>Elite by default.</h1>
+  <p class="sub">This page is the law. Every button, every board, every jewel below is real, harvested from the living system — not drawn for the occasion. If it isn't on this page, it isn't the standard.</p>
+  <div class="scroll-hint">SCROLL</div>
+</header>
+
+<div class="wrap">
+
+<!-- ================= 01 SPECTRUM ================= -->
+<section>
+  <div class="kicker" style="color:var(--sp1)">01 · THE SPECTRUM</div>
+  <h2>The spectrum is a law, not a palette.</h2>
+  <p class="lede">Magenta → purple → blue → green → gold. Richest first, ultra-rich magenta leading. Every sequence on every page follows it. When a list runs long, return to magenta and flow again. Scramble it and the eye knows something's wrong before the mind does.</p>
+  <div class="tiles">
+    <div class="tile" style="--sc:var(--sp1)"><div class="tname">MAGENTA</div><div class="tjob">The richest. Opens every sequence. The living edge.</div></div>
+    <div class="tile" style="--sc:var(--sp2)"><div class="tname">PURPLE</div><div class="tjob">The soul. Chrome, presence, choosing intelligence.</div></div>
+    <div class="tile" style="--sc:var(--sp3)"><div class="tname">BLUE</div><div class="tjob">Knowledge moving. Calm authority, clear passage.</div></div>
+    <div class="tile" style="--sc:var(--sp4)"><div class="tname">GREEN</div><div class="tjob">Alive and well. Verified, growing, earned light.</div></div>
+    <div class="tile" style="--sc:var(--sp5)"><div class="tname">GOLD</div><div class="tjob">Attention, earned. The headline point closes here.</div></div>
+  </div>
+  <p class="detail" style="margin-top:22px">Color is identity, not decoration. One color job per thing. Adjacent things never share a hue. The spectrum gives each thing its identity — and never shouts over the brand.</p>
+</section>
+
+<!-- ================= 02 TRINITY ================= -->
+<section>
+  <div class="kicker" style="color:var(--sp2)">02 · THE TRINITY</div>
+  <h2>Black ground. White light. Purple soul.</h2>
+  <p class="lede">Obsidian is the field — deep, never gray. White is the light — text 99% of the time, every idle rim. Purple is the soul — chrome accent, Naya's presence. Never a flood.</p>
+  <div class="laws">
+    <div class="law" style="--sc:#0B0D12"><div class="lnum">OBSIDIAN</div><div class="lhead">The field.</div><p>The world and dominant canvas. The page breathes on black. There is no light mode. There never will be.</p></div>
+    <div class="law" style="--sc:#F8F7FB"><div class="lnum">WHITE</div><div class="lhead">The light.</div><p>Text, idle rims, quiet borders. White at rest — then the object's own color ignites on touch.</p></div>
+    <div class="law" style="--sc:var(--sp2)"><div class="lnum">PURPLE</div><div class="lhead">The soul.</div><p>Chrome and Naya's presence. The signature — used with restraint, never as decoration, never as flood.</p></div>
+    <div class="law" style="--sc:var(--sp4)"><div class="lnum">REST</div><div class="lhead">Quiet at rest.</div><p>Everything idle is calm. Hover is ignition: the object's own color fires, it lifts, it glows. Then it settles back to quiet.</p></div>
+  </div>
+</section>
+
+<!-- ================= 03 BUTTONS ================= -->
+<section>
+  <div class="kicker" style="color:var(--sp3)">03 · BUTTONS</div>
+  <h2>Black heart. White voice. Visible skin.</h2>
+  <p class="lede">A button reads as a button before it is touched: black center, white text, a real icon, a visible white rim at rest — then its own color ignites on hover. The glyph is a promise: it shows what happens.</p>
+  <div class="btnrow">
+    <div class="btnlabel">CHROME — PURPLE FIRE</div>
+    <a class="primo" href="#" style="--glow:var(--purple)"><svg><use href="#ic-spark"/></svg>ACTIVATE</a>
+    <a class="primo" href="#" style="--glow:var(--purple)"><svg><use href="#ic-arrow"/></svg>ENTER THE HUB</a>
+    <div class="btnlabel">THEMED — EACH THING ITS OWN COLOR</div>
+    <a class="primo" href="#" style="--glow:var(--sp1)"><svg><use href="#ic-mail"/></svg>WRITE MAIL</a>
+    <a class="primo" href="#" style="--glow:var(--sp2)"><svg><use href="#ic-plus"/></svg>ADD CONNECTION</a>
+    <a class="primo" href="#" style="--glow:var(--sp3)"><svg><use href="#ic-book"/></svg>OPEN REPORT</a>
+    <a class="primo" href="#" style="--glow:var(--sp4)"><svg><use href="#ic-people"/></svg>JOIN THE SPACE</a>
+    <a class="primo" href="#" style="--glow:var(--sp5)"><svg><use href="#ic-check"/></svg>CONFIRM</a>
+    <div class="btnlabel">STATES — IDLE / HOVER / PRESS</div>
+    <span class="detail" style="width:100%">Idle: white rim visible, quiet. Hover: own color ignites, lifts 2px, glows. Press: compresses — alive. Try them.</span>
+  </div>
+</section>
+
+<!-- ================= 04 BOARDS ================= -->
+<section>
+  <div class="kicker" style="color:var(--sp4)">04 · BOARDS</div>
+  <h2>One board. One color. A destination you enter.</h2>
+  <p class="lede">The board is the intelligent object: theme-edged, jewel-marked, elevated. One spectrum color per board — spine, kicker, and corner jewel all speak it. Text stays white. Inside, meaning nests: the nutshell, then what it means, how to use it.</p>
+  <div class="boards">
+    <div class="board" style="--sc:var(--sp1)">
+      <div class="bkicker"><svg><use href="#ic-diamond"/></svg>INTELLIGENT BLOCK · SPECIMEN</div>
+      <h3>A lesson that stays learned.</h3>
+      <div class="nutshell">IN A NUTSHELL</div>
+      <p>Capture the essence. Verify the result. Let the next moment benefit.</p>
+      <div class="nutshell">WHAT IT MEANS</div>
+      <p>Understanding changes what Naya actually does next — not what she remembers, what she does.</p>
+    </div>
+    <div class="board" style="--sc:var(--sp3)">
+      <div class="bkicker"><svg><use href="#ic-shield"/></svg>THE GATE · SPECIMEN</div>
+      <h3>Nothing ships unchecked.</h3>
+      <div class="nutshell">IN A NUTSHELL</div>
+      <p>Every page runs the gate before it reaches a human. One fail — back to the bench.</p>
+      <div class="nutshell">HOW TO USE IT</div>
+      <p>Render it. Look at it. Score it against the fifteen laws. Then — only then — ship it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 JEWELS ================= -->
+<section>
+  <div class="kicker" style="color:var(--sp5)">05 · JEWELS</div>
+  <h2>Every bullet a jewel. Never twice in a row.</h2>
+  <p class="lede">Bullets are drawn jewels, not dots — each glowing its own spectrum color, cycling magenta → purple → blue → green → gold. One global sequence per page: no two adjacent jewels ever share a color.</p>
+  <div class="jewelrow">
+    <span class="jewel" style="--sc:var(--sp1)"><svg style="stroke:var(--sp1);fill:none;stroke-width:1.6"><use href="#ic-diamond"/></svg></span>
+    <span class="jewel" style="--sc:var(--sp2)"><svg style="stroke:var(--sp2);fill:none;stroke-width:1.6"><use href="#ic-spark"/></svg></span>
+    <span class="jewel" style="--sc:var(--sp3)"><svg style="stroke:var(--sp3);fill:none;stroke-width:1.6"><use href="#ic-circle"/></svg></span>
+    <span class="jewel" style="--sc:var(--sp4)"><svg style="stroke:var(--sp4);fill:none;stroke-width:1.6"><use href="#ic-check"/></svg></span>
+    <span class="jewel" style="--sc:var(--sp5)"><svg style="stroke:var(--sp5);fill:none;stroke-width:1.6"><use href="#ic-diamond"/></svg></span>
+    <span class="jcap">Magenta opens — the richest leads. Purple deepens. Blue carries. Green follows. Gold closes — the headline point earns the brightest jewel. At the highest level, craft distinct icons — don't stamp the same one three times.</span>
+  </div>
+</section>
+
+<!-- ================= 06 TYPOGRAPHY ================= -->
+<section>
+  <div class="kicker" style="color:var(--sp1)">06 · TYPOGRAPHY</div>
+  <h2>Size separates. Color doesn't.</h2>
+  <p class="lede">24 for headlines. 18 for body — most text lives here. 14 for details and evidence. White 99% of the time. Hierarchy comes from size — never from gray, never from colored text.</p>
+  <div class="spec" style="--sc:var(--sp1)"><div class="tag">HEADLINE · 24PX · SERIF VOICE</div><h2 style="margin:0">Your intelligence, collected.</h2></div>
+  <div class="spec" style="--sc:var(--sp3)"><div class="tag">BODY · 18PX · MOST TEXT LIVES HERE</div><p class="body" style="margin:0">Keep your people close. Organize them, remember them, reach them. White, generous, readable — a child can follow it.</p></div>
+  <div class="spec" style="--sc:var(--sp5)"><div class="tag">DETAIL · 14PX · EVIDENCE LIVES HERE</div><p class="detail" style="margin:0">Evidence and provenance live at this size. The floor — nothing readable ever goes smaller.</p></div>
+</section>
+
+<!-- ================= 07 TRUTH ================= -->
+<section>
+  <div class="kicker" style="color:var(--sp2)">07 · TRUTH</div>
+  <h2>Truth is part of the visual language.</h2>
+  <p class="lede">A claim and a proof must never look the same. What is verified glows green — it earned its light. What is merely claimed stays quiet until it earns its light. Shown honestly, never hidden.</p>
+  <div class="truthrow">
+    <div class="scorechip verified"><div class="snum">9.0</div><div class="slab">VERIFIED — another seat checked it and it survived contact with reality.</div></div>
+    <div class="scorechip"><div class="snum">7.5</div><div class="slab">Our own assessment — shown honestly, awaiting its stamp. Quiet until it earns its light.</div></div>
+    <div class="scorechip"><div class="snum">5.0</div><div class="slab">Our own assessment — shown honestly, awaiting its stamp. Quiet until it earns its light.</div></div>
+  </div>
+</section>
+
+<!-- ================= 08 ICONS ================= -->
+<section>
+  <div class="kicker" style="color:var(--sp3)">08 · ICONS</div>
+  <h2>Drawn, not shrunk.</h2>
+  <p class="lede">Vector geometry, readable at small sizes, native to the page's language. Every icon below is a real harvested glyph — stroke-drawn, never a shrunken render.</p>
+  <div class="icongrid">
+    <div class="icell"><svg><use href="#ic-spark"/></svg><div class="inm">spark</div></div>
+    <div class="icell"><svg><use href="#ic-arrow"/></svg><div class="inm">arrow</div></div>
+    <div class="icell"><svg><use href="#ic-plus"/></svg><div class="inm">plus</div></div>
+    <div class="icell"><svg><use href="#ic-book"/></svg><div class="inm">book</div></div>
+    <div class="icell"><svg><use href="#ic-check"/></svg><div class="inm">check</div></div>
+    <div class="icell"><svg><use href="#ic-bell"/></svg><div class="inm">bell</div></div>
+    <div class="icell"><svg><use href="#ic-mail"/></svg><div class="inm">mail</div></div>
+    <div class="icell"><svg><use href="#ic-people"/></svg><div class="inm">people</div></div>
+    <div class="icell"><svg><use href="#ic-heartbeat"/></svg><div class="inm">heartbeat</div></div>
+    <div class="icell"><svg><use href="#ic-grid"/></svg><div class="inm">grid</div></div>
+    <div class="icell"><svg><use href="#ic-search"/></svg><div class="inm">search</div></div>
+    <div class="icell"><svg><use href="#ic-shield"/></svg><div class="inm">shield</div></div>
+  </div>
+</section>
+
+<!-- ================= 09 ROOMS ================= -->
+<section>
+  <div class="kicker" style="color:var(--sp4)">09 · ROOMS</div>
+  <h2>One color per room. A destination you enter.</h2>
+  <p class="lede">Every room wears its own spectrum identity. The color is the room — remove it and something meaningful breaks. Hover any room: it ignites in its own color, never anyone else's.</p>
+  <div class="rooms">
+    <div class="room" style="--sc:var(--sp4)"><div class="rdot"></div><div class="rname">Smart Feed</div><div class="rdesc">The living stream. What the team did, as it happened.</div></div>
+    <div class="room" style="--sc:var(--sp1)"><div class="rdot"></div><div class="rname">Your Intelligence Today</div><div class="rdesc">The day, distilled. What matters, first.</div></div>
+    <div class="room" style="--sc:var(--sp2)"><div class="rname">Your Reports</div><div class="rdesc">Proof, collected. Every claim with its evidence.</div></div>
+    <div class="room" style="--sc:var(--sp3)"><div class="rdot"></div><div class="rname">Intelligent Library</div><div class="rdesc">Knowledge that compounds. Lessons that stay learned.</div></div>
+    <div class="room" style="--sc:var(--sp3)"><div class="rdot"></div><div class="rname">Smart Connect</div><div class="rdesc">People, close. The ones who matter, reachable.</div></div>
+    <div class="room" style="--sc:var(--sp5)"><div class="rdot"></div><div class="rname">Smart Ledger</div><div class="rdesc">Living intel — the heartbeat of it all.</div></div>
+  </div>
+  <p class="detail" style="margin-top:20px">PRIVATE BY DEFAULT. SHARED BY CHOICE. COLLECTIVE BY CONSENT.</p>
+</section>
+
+<!-- ================= 10 GATE ================= -->
+<section>
+  <div class="kicker" style="color:var(--sp5)">10 · THE GATE</div>
+  <h2>Nothing reaches Shawn unchecked.</h2>
+  <p class="lede">Every page runs the gate before it ships. Each check is mechanical where it can be, human where it must be. One fail — back to the bench.</p>
+  <ul class="gate">
+    <li><span class="gj" style="color:var(--sp1)">◆</span>Rendered and looked at — screenshot reviewed, not assumed.</li>
+    <li><span class="gj" style="color:var(--sp2)">◆</span>No two adjacent jewels share a color — checked by machine.</li>
+    <li><span class="gj" style="color:var(--sp3)">◆</span>All text white — zero gray, checked by machine.</li>
+    <li><span class="gj" style="color:var(--sp4)">◆</span>Type at 24 / 18 / 14 — headlines, body, details.</li>
+    <li><span class="gj" style="color:var(--sp5)">◆</span>Every board: one color — spine, kicker, and corner jewel agree.</li>
+    <li><span class="gj" style="color:var(--sp1)">◆</span>Real logo. Never a drawn substitute.</li>
+    <li><span class="gj" style="color:var(--sp2)">◆</span>Human words first — a child can follow it; technicals are evidence.</li>
+    <li><span class="gj" style="color:var(--sp3)">◆</span>Honest score against the laws. Elite or it doesn't ship.</li>
+  </ul>
+</section>
+
+</div>
+
+<footer>
+  <img class="flogo" src="naya-logo-real.png" alt="Naya">
+  <p><strong>THE NAYA DESIGN STANDARD.</strong></p>
+  <p>One standard. Every page. No drift. Any intelligence — human or machine — opens this page and knows exactly what elite looks like, and exactly what is expected.</p>
+  <p style="margin-top:24px;opacity:.5">Black ground · White light · Purple soul · Magenta leads</p>
+</footer>
+</body>
+</html>

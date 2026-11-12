@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2317",
+ "title": "The Cell Layout: Stacked, Centered",
+ "slug": "the-cell-layout-stacked-centered",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2317/IB-SMART-NOTE-20261108-sn2317-the-cell-layout-stacked-centered.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "His eye caught the cells themselves: the value cells look off-center, squished to the left, with the check mark sitting ABOVE the number — which looks weird. His pick is STACKED, CENTERED: the number (or the word) centered at the very top, then what it is underneath, then the check mark underneath that. Top to bottom: number → what it is → check, all centered. The psychology is his own: the eye reads value first, then meaning, then confirmation — the number leads because it IS the value. The fallback is named if the stacked layout does not read well: checks consistently in the top-right corner, number + label centered. Row-label cells stay left-aligned; X cells keep the X centered; spanning rows stay centered. The follow-up was sent to the running entrance rebuild (send_input 12fa85b6 to agent 9ce9f988), so the layout lands with the entrance rebuild and is presented when it lands.",
+  "human_view": "Imagine a price tag where the little tick is printed above the price and the whole thing is shoved to the left of the tag. Your eye doesn't know where to land — the tick says \"yes\" before you've seen what you're saying yes to. Now imagine the price dead center at the top, the name of the thing beneath it, and the tick beneath that, like a signature at the bottom. Your eye lands on the value first, learns what it is, and then gets the confirmation — in the order your mind actually thinks. That's not decoration. That's the order of thought, laid out in space.",
+  "child_view": "Imagine a flash card where the check mark is on top, the answer is squished to one side, and you have to hunt for the number. It's confusing! Now imagine the number big in the middle at the very top, then the words telling you what the number means, then the check mark at the bottom like a gold star. Your eye goes number, meaning, star — top to bottom, just like reading a story. The number goes first because the number is the most important part.",
+  "grandma_view": "Dear, the eye reads top to bottom, and the most important thing goes first. Put the number at the top, centered, proud — then underneath it, in smaller letters, what it is — then the little check underneath, like a nod at the end. Not the check first, not everything shoved to one side. Centered, stacked, in the order a person thinks: what is it worth, what is it, and yes. That's all it is — the order of thought, made visible.",
+  "ai_view": "I am Anaya. I lay the cell out the way the mind reads it: value first, meaning second, confirmation third — stacked, centered, top to bottom. I never put the check above the number, because confirmation before value is a sentence read backwards. I never squash the value to one side, because a value that can't stand in the center of its own cell doesn't look like a value. And I keep the fallback honest: if the stack doesn't read well, the checks go consistently to the top-right corner and the number + label stay centered — one consistent rule, not a different guess per row. Row labels stay left-aligned, X cells keep the X centered, spanning rows stay centered — every cell type has one rule, and the rule is written down before the build.",
+  "what_it_means": "1. **Stacked, centered: number → what it is → check.** Top to bottom, all centered. The number (or the word) is centered at the very top.\n2. **The number leads because it is the value.** The eye reads value first, then meaning, then confirmation. That order is the psychology, not a preference.\n3. **A check above the number looks weird.** Confirmation before value is a sentence read backwards — never.\n4. **Off-center and squished is a defect.** A value cell that can't center its value doesn't look like a value.\n5. **The fallback is named, not improvised.** If the stack doesn't read well: checks consistently top-right, number + label centered. One rule for all rows.\n6. **Every cell type has one rule.** Row labels left-aligned; X cells X centered; spanning rows centered. No per-row guessing.",
+  "whats_inside": [],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "ddccb2378df92547173e697a5caf83a9d8b810302af0155be08365d176f70823",
+ "content_hash": "cd803432f979aca00e848690d74aadf22e9f995a06f8937562e31d374c588eab",
+ "reconstructed_from_page": true
+}

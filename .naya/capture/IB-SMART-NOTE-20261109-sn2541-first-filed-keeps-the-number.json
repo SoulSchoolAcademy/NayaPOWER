@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2541",
+ "title": "First Filed Keeps the Number",
+ "slug": "first-filed-keeps-the-number",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/LAW/SN-2541/IB-SMART-NOTE-20261109-sn2541-first-filed-keeps-the-number.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "- **HIS RULING (18:08Z, his tap):** \"Move What Naya Does to a new number.\" DESIGN SN-2532 \"Naya Notes — The Habit\" (first-filed ~17:23Z, blob a387214e) KEEPS 2532. PRODUCT SN-2532 \"What Naya Does\" renumbers to the next free number — SN-2535.\n- **THE RULE, NOW SETTLED:** first filed keeps the number; the later filing moves. The precedent is now the law, not just the habit: SN-2474 → SN-2479, SN-2482/2483 → SN-2488/2489 (the loop's note moved both times), and now SN-2532 PRODUCT → SN-2535. In all three cases the note that arrived second moved.\n- **THE GUARD FOUND MORE:** the fix seat's full-tree scan surfaced TWO older collisions from Nov 8 and fixed them the same way — SN-2291 VISION \"The Top 10 Is Their Pains\" → SN-2536 (blob 44645107) · SN-2292 LAW \"The Harvest Law\" → SN-2537 (blob 2bce798d); first-filed keeps the number in both.\n- **THE SCAN, COMPLETE:** 318 distinct SNs, 0 duplicates — these three were the only collisions in the whole tree.\n- **THE GUARD, FIXED:** next-sn-number.py now collects EVERY claim and fails loudly, naming the SN and every claiming path/PR; live run PASS, next free SN-2538; synthetic tests 5/5. A highest-number-only guard could not see a duplicate — now it can.\n- **NOT DONE:** the live feed still shows the duplicates (EPERM flake — Hub re-bake stuck); the new share link nayanet.live/s/sn2535 is not yet verified live. Follow-up for the loop: re-distill the three moved notes under their new numbers — done in this run's ESSENCE-01 addendum (SN-2535/2536/2537).",
+  "human_view": "Two shops open on the same street with the same number on the door — the post goes to the wrong one, the customers get confused, and the street looks broken. The rule is simple and old: the shop that was there first keeps the number; the second one takes the next free number and puts up its own sign. You do not make the first shop move because the second one arrived.",
+  "child_view": "Imagine two kids in class both named the same name, and the teacher calls the name — both answer, and nobody knows who she means. The fair rule is: the kid who was in the class first keeps the name, and the new kid gets a new one. And then the teacher checks the whole class list, just in case there are any other two kids sharing a name she missed.",
+  "grandma_view": "Dear, when two letters arrive with the same address, you don't throw one away — you give the second one its own proper address, love. The first one stays where it is, because it was there first. And a good postmistress checks the whole street while she is at it, so it never happens again — that is what the guard does now.",
+  "ai_view": "I am Anaya. A number is an address, and two notes at one address break the feed, the share link, and the distillation machine all at once — the number is the key everything turns on. First filed keeps the number is not just fair, it is the only rule that does not rewrite history: the note that was already live, already linked, already read, stays where the world already points to it. The later note moves, and the move is word-for-word, with the old file deleted and the read-back verified — no silent copies, no lingering duplicates. And the guard learns: a check that cannot see the failure it exists to prevent is not a check. Now it collects every claim and fails loudly. That is the correction compound working — the mistake changed the machine, not just the note.",
+  "what_it_means": "- **FIRST FILED KEEPS THE NUMBER:** the adjudication rule for every collision from here on. The later filing moves, word-for-word, old file deleted, read-back verified.\n- **THE THREE MOVES, DONE ON GITHUB:** SN-2532 PRODUCT → SN-2535 \"What Naya Does\" (blob 9328c68c, commit e1e1396c; old file deleted, capture record moved) · SN-2291 → SN-2536 \"The Top 10 Is Their Pains\" · SN-2292 → SN-2537 \"The Harvest Law\". Full-tree scan: 318 distinct SNs, 0 duplicates.\n- **THE GUARD NOW SEES DUPLICATES:** next-sn-number.py collects every claim and fails loudly naming the SN and every claiming path/PR. Run it before every filing — the number comes from the command, never from memory.\n- **THE FEED IS THE LAG, NOT THE FIX:** GitHub is fixed; the live feed still shows the duplicates until the EPERM flake clears and the Hub re-bakes. The new share link nayanet.live/s/sn2535 is not yet verified live.",
+  "whats_inside": [
+   "- The loop re-distills the three moved notes under their new numbers — SN-2535, SN-2536, SN-2537 enter the ESSENCE-01 coverage list in this run's addendum (coverage 215 → 224 with this run's six new notes).\n- Next loop run checks: the live feed after the next re-bake — one SN-2532 card only (the DESIGN habit note), SN-2535/2536/2537 each exactly once, nayanet.live/s/sn2535 verified live.\n- The guard-duplicate-flag + brief leg from run 52 is CLOSED — the guard fix landed with the repair seat."
+  ],
+  "topics": [
+   "Law"
+  ]
+ },
+ "page_hash": "f286f3546dcf7c5ba7c6e3d921e7febbd2c0641d10ea009534ff6658ce59f8a9",
+ "content_hash": "aa22c5c5310e927779bb4e4ecf2190c9cbb597b2910a810e40ce9c6539e7acec",
+ "reconstructed_from_page": true
+}

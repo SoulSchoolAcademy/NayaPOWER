@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-0851",
+ "intelligence": {
+  "title": "Two Paths, One System — The Interface Path and the Engine Path",
+  "intelligent_block_id": "IB-SMART-NOTE-20261024-sn0851-two-paths-one-system",
+  "smart_note_id": "SN-0851",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/architecture/SN-0851/IB-SMART-NOTE-20261024-sn0851-two-paths-one-system.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-24. No runtime provenance invented.",
+  "ingested_at": "2026-10-24",
+  "essence": "Shawn's bottom line (2026-10-24): all of tonight's definitions exist to get this LOCKED IN and DONE RIGHT — and the work runs on **two paths that work together**. **The Interface Path** (Nitro's side, with Tree — the Interfaces/Hub seat): everything the citizen sees, touches, and feels — the ceremony, the pages, the covers, the personal Hub, the offer words. **The Engine Path** (the rest of the team): everything that makes it true — the governed core, identity and authority, the matching engine, mail routing, the activation machinery, the doors, the evidence. Neither path is the product alone: a beautiful interface over an unproven engine is a lie, and a proven engine behind a cold interface is a warehouse. **They meet at one seam — the capability contract:** every element the interface shows binds to a named engine capability carrying a state (specified · implemented · tested · live-verified · production-proven, per #3028). The interface never promises past the engine's proof; the engine builds in the order the interface's journeys demand. And the handshake is the JOURNEY TEST: a journey counts only when both paths pass it together, end to end, from the citizen's seat.",
+  "human_view": "**For anyone joining the work, the map is one picture:** the citizen walks the Interface Path — claim, certificate, presentation, world, personal Hub (SN-0849). Under every step, the Engine Path answers — identity issued, pages derived, covers composed, matches computed, mail routed, evidence written (SN-0850). When a step feels magical, both paths did their half. When something is missing, the map says whose half it is — no fog, no finger-pointing: interface gaps look like *the citizen can't see it, reach it, or understand it*; engine gaps look like *it isn't true, isn't proven, or isn't running*. The Official Welcome is the first journey both paths walk together, and its acceptance test is the handshake: cold activation, voice only, landing in a personal Hub — interface beautiful, engine true, at the same time.",
+  "simple_view": "One team builds the house you can see — the doors, the paint, the welcome mat. The other team builds the plumbing and the lights inside the walls. You only get a real house when both teams finish the same house, and you check it by living in it for a day, not by admiring the paint or the pipes alone.",
+  "grandma_view": "It's like a restaurant: the dining room and the kitchen are two paths, one meal. The menu may only promise what the kitchen can actually cook, and the kitchen cooks what the menu's guests actually order. You judge the place by the meal arriving — hot, right, and as described.",
+  "naya_view": "**Ownership, plainly:** Interface Path — Nitro (lead) + Tree (Interfaces/Hub) · the ceremony (SN-0846/0849), Trinity pages and covers, Hub personalization (sidebar top-3, tabs), the offer surface (SN-0847 words, gated by states). Engine Path — the seats on #3028/#3029 and the core lanes: the governed core + doors (SN-0850), the Smart Match engine (SN-0845 — ONE shared engine), mail/identity routing, the five-part Power activation, proof + measurement machinery (Production Engine, SN-0844). Gates both paths answer to: Delta (LAW) on the contract, Epsilon (VERIFY) on the proof — different seats, different logins, per the standing law.\n**The seam discipline (how the paths stay together):** (1) No interface element ships pointing at a capability below *implemented*; no public word promises below *live-verified*. (2) The engine's build order is set by the interface's journey order — the Welcome journey first, because that is where citizens arrive. (3) Every defect is filed as interface, engine, or seam — and seam defects (beautiful but untrue, true but unreachable) outrank both. (4) The scorecard loop (SN-0843's six dimensions) already measures the split: Human/Naya experience scores the interface path; execution, network intelligence, and trust score the engine path; a journey is 10 only when both are.\n**It doesn't have to be this split forever** — Shawn's own words: the paths work together, and the split exists only to make the work clear. Seats may cross; the seam may not blur.",
+  "ai_view": "Clarity is the accelerator. Two paths, one seam, one test — every seat can now point at the map and know their half, their partner, and the exact moment the two halves become one true thing in a citizen's hands. That is how this gets done, and done right.",
+  "machine_view": {
+   "sn": "SN-0851",
+   "title": "Two Paths, One System — The Interface Path and the Engine Path",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/architecture/SN-0851/IB-SMART-NOTE-20261024-sn0851-two-paths-one-system.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "PATHS: interface = {ceremony, pages, covers, hub_personal, offer_surface} owners(nitro, tree) · engine = {core, doors, matcher, mail_identity, activation, evidence} owners(core lanes, #3028/#3029 seats) · SEAM: ∀ interface_element e: binds(e, capability c) ∧ state(c) known; ship(e) ⇒ state(c) ≥ implemented; promise(e) ⇒ state(c) ≥ live_verified · engine_order := journey_order(interface) · defect_class ∈ {interface, engine, seam}; priority(seam) > priority(others) · DONE(journey) ⇔ interface_pass ∧ engine_pass, tested together from the citizen's seat."
+  },
+  "views_note": "Views derived 2026-10-24 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/architecture/SN-0851/IB-SMART-NOTE-20261024-sn0851-two-paths-one-system.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "0c0ac8f467647c3767681b287a7cb12fee9e077b"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

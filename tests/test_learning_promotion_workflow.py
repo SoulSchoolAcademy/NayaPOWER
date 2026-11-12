@@ -62,7 +62,10 @@ def test_fresh_intelligent_block_can_enter_existing_learning_candidate_path_with
     assert 'index_id' in source
     assert 'checkpoint_id' in source
     assert 'provenance_preserved: true' in source
-    assert 'status: "CANDIDATE"' in source
+    # Gate verdict flows through: admittedStatus defaults to CANDIDATE,
+    # gate may downgrade to NOT_VERIFIED on weak evidence (#2077).
+    # Hardcoded "CANDIDATE" literal would lie about weak evidence.
+    assert 'status: admittedStatus' in source
     assert 'mode === "candidate"' in source
 
 
@@ -126,6 +129,8 @@ def test_supabase_config_declares_governed_runtime_functions_for_native_integrat
         "nayanet-know-runtime",
         "nayanet-prove-runtime",
         "nayanet-verified-ai-action",
+        "nayanet-github-intake",
+        "nayanet-intelligence-retrieve",
     }
     declared = {
         line[len("[functions."):-1]

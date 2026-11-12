@@ -1,0 +1,2840 @@
+{
+ "dataset": "pi-readiness-dataset",
+ "derived_at": "2026-10-26 ~20:40Z",
+ "derived_by": "Naya Resolve (subagent pass, read-only)",
+ "source": "public.work_items via sb-api GET only - no writes made",
+ "status": "PREPARATION ONLY - not applied to the production record; applying it is gated",
+ "scope_note": {
+  "counted_scope": "the whole public.work_items table (355 rows) - this is the scope both known censuses and the face snapshot count",
+  "task_query_scope": "the task's suggested query filters project_id=a554e536-66a6-4808-8c36-988f13d9f394; that filter alone returns 295 rows / 295 unique keys / 0 duplicates, because the duplicate rows are double-inserts spread across 9 project_ids (the same item inserted under the canonical PI project and under one other project). The dedup and census work only has meaning at whole-table scope, so this dataset is built at whole-table scope and every dedup row carries its project_id.",
+  "canonical_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+  "project_ids_found": {
+   "a554e536-66a6-4808-8c36-988f13d9f394": 296,
+   "28a2c1db-01f8-455d-8e5f-521ecb7f707b": 15,
+   "3ca8e2dd-bd61-4e3a-9214-b39aa668206e": 10,
+   "3264234b-9e74-4488-84ca-138402f17c35": 8,
+   "a4dd8af8-b5bf-4f18-863d-89cec2202c6f": 4,
+   "0d9c8dea-8c9b-45b4-a308-064d24bd78dc": 4,
+   "3f56ee48-04f4-472b-977b-fc29a6570999": 6,
+   "89a646ec-0e2c-4dac-bb66-014bf47ff740": 4,
+   "01962a7c-06cd-4a5c-8d2f-9ba8d1bf75b5": 8
+  }
+ },
+ "census": {
+  "rows_read": 355,
+  "unique_item_keys": 330,
+  "duplicate_keys": 25,
+  "duplicate_extra_rows": 25,
+  "state_counts_raw": {
+   "queued": 207,
+   "needs_shawn": 8,
+   "in_progress": 75,
+   "verifying": 15,
+   "done_proven": 46,
+   "blocked": 4
+  },
+  "state_counts_unique_deduped": {
+   "queued": 195,
+   "needs_shawn": 8,
+   "in_progress": 70,
+   "verifying": 13,
+   "done_proven": 40,
+   "blocked": 4
+  },
+  "reconciliation": {
+   "earlier_census": "346 rows / 323 unique keys / 23 duplicated keys / 40 unique done_proven",
+   "newer_census": "355 items live / 46 raw done_proven (207 queued, 75 in_progress, 15 verifying, 8 needs_shawn, 4 blocked)",
+   "this_census": "355 rows / 330 unique keys / 25 duplicated keys / 46 raw done_proven / 40 unique done_proven - MATCHES the newer census exactly, state for state",
+   "delta_vs_earlier": "+9 rows, +7 unique keys, +2 duplicated keys since the 346-row census - consistent with new items filed tonight; unique done_proven unchanged at 40 in both censuses (all 6 extra raw done_proven rows are duplicate twins)"
+  }
+ },
+ "dedup_plan": [
+  {
+   "item_key": "enh-a-l2",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "28a2c1db-01f8-455d-8e5f-521ecb7f707b",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "Audit enhancer (enhal2, cluster A, rank 22): Good followthrough layer; typed sync is the prerequisite value..",
+     "priority": 3132
+    },
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "Audit enhancer (enhal2, cluster A, rank 22): Good followthrough layer; typed sync is the prerequisite value..",
+     "priority": 3132
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "enh-a-m2",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "Audit enhancer (enham2, cluster A, rank 17): Improves message quality and completion; recipient truth is the deeper cure..",
+     "priority": 3122
+    },
+    {
+     "project_id": "28a2c1db-01f8-455d-8e5f-521ecb7f707b",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "Audit enhancer (enham2, cluster A, rank 17): Improves message quality and completion; recipient truth is the deeper cure..",
+     "priority": 3122
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "enh-a-x1",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "Audit enhancer (enhax1, cluster A, rank 2): Makes help and action discoverable everywhere; matches the Hub 2 rule..",
+     "priority": 3101
+    },
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "Audit enhancer (enhax1, cluster A, rank 2): Makes help and action discoverable everywhere; matches the Hub 2 rule..",
+     "priority": 3101
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "twin rows are indistinguishable on every fetched field (same project, same values) - either may survive",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "enh-b-hub16",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "Audit enhancer (enhbhub16, cluster B, rank 16): The Hub answers \u201cwhat's happening\u201d before asking the member to scroll..",
+     "priority": 3128
+    },
+    {
+     "project_id": "3ca8e2dd-bd61-4e3a-9214-b39aa668206e",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "Audit enhancer (enhbhub16, cluster B, rank 16): The Hub answers \u201cwhat's happening\u201d before asking the member to scroll..",
+     "priority": 3128
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "enh-b-r15",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "Audit enhancer (enhbr15, cluster B, rank 15): The followup the report provoked, asked in the room, with the numbers in context..",
+     "priority": 3127
+    },
+    {
+     "project_id": "3264234b-9e74-4488-84ca-138402f17c35",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "Audit enhancer (enhbr15, cluster B, rank 15): The followup the report provoked, asked in the room, with the numbers in context..",
+     "priority": 3127
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "f04",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "done_proven",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": "cpi-verification",
+     "evidence_url": "https://nayahubpreviewasknaya.nayapower.workers.dev/#/hub/ask",
+     "next_action": null,
+     "priority": 4
+    },
+    {
+     "project_id": "3264234b-9e74-4488-84ca-138402f17c35",
+     "state": "done_proven",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": "cpi-verification",
+     "evidence_url": "https://nayahubpreviewasknaya.nayapower.workers.dev/#/hub/ask",
+     "next_action": null,
+     "priority": 4
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "f28",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "28a2c1db-01f8-455d-8e5f-521ecb7f707b",
+     "state": "in_progress",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "Building now.",
+     "priority": 1028
+    },
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "in_progress",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": null,
+     "priority": 1028
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "28a2c1db-01f8-455d-8e5f-521ecb7f707b",
+   "rule_applied": "rule (c): fuller next_action",
+   "tie_break_note": null,
+   "note": "next_action differs between twins; the survivor carries the fuller text - merge that text into the canonical row on application"
+  },
+  {
+   "item_key": "f32",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "28a2c1db-01f8-455d-8e5f-521ecb7f707b",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "Failed verification, retried and adjusted \u2014 now at your eartest stage .",
+     "priority": 3032
+    },
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": null,
+     "priority": 3032
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "28a2c1db-01f8-455d-8e5f-521ecb7f707b",
+   "rule_applied": "rule (c): fuller next_action",
+   "tie_break_note": null,
+   "note": "next_action differs between twins; the survivor carries the fuller text - merge that text into the canonical row on application"
+  },
+  {
+   "item_key": "gap-a12",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "done_proven",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": "cpi-verification",
+     "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2941",
+     "next_action": null,
+     "priority": 14
+    },
+    {
+     "project_id": "01962a7c-06cd-4a5c-8d2f-9ba8d1bf75b5",
+     "state": "done_proven",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": "cpi-verification",
+     "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2941",
+     "next_action": null,
+     "priority": 14
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "gap-a3",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "verifying",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": null,
+     "priority": 17
+    },
+    {
+     "project_id": "01962a7c-06cd-4a5c-8d2f-9ba8d1bf75b5",
+     "state": "verifying",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": null,
+     "priority": 17
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "gap-a4",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "done_proven",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": "cpi-verification",
+     "evidence_url": "https://nayanet.live/",
+     "next_action": null,
+     "priority": 57
+    },
+    {
+     "project_id": "3ca8e2dd-bd61-4e3a-9214-b39aa668206e",
+     "state": "done_proven",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": "cpi-verification",
+     "evidence_url": "https://nayanet.live/",
+     "next_action": null,
+     "priority": 57
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "gap-a5",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "done_proven",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": "cpi-verification",
+     "evidence_url": "https://nayanet.live/",
+     "next_action": null,
+     "priority": 7
+    },
+    {
+     "project_id": "3ca8e2dd-bd61-4e3a-9214-b39aa668206e",
+     "state": "done_proven",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": "cpi-verification",
+     "evidence_url": "https://nayanet.live/",
+     "next_action": null,
+     "priority": 7
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "gap-a8",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "28a2c1db-01f8-455d-8e5f-521ecb7f707b",
+     "state": "verifying",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": null,
+     "priority": 5
+    },
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "verifying",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": null,
+     "priority": 5
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "gap-b3",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "in_progress",
+     "owner_seat": "Ask port (finisher)",
+     "maker_seat": "Ask port (finisher)",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "Built, renderverified, and Shawnapproved (\"finally right,\" 21:08Z) \u2014 but only on the PREVIEW worker.",
+     "priority": 1037
+    },
+    {
+     "project_id": "3264234b-9e74-4488-84ca-138402f17c35",
+     "state": "in_progress",
+     "owner_seat": "Ask port (finisher)",
+     "maker_seat": "Ask port (finisher)",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "Built, renderverified, and Shawnapproved (\"finally right,\" 21:08Z) \u2014 but only on the PREVIEW worker.",
+     "priority": 1037
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "gap-c2",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "in_progress",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": "https://nayahubpreviewasknaya.nayapower.workers.dev/#/hub/ask",
+     "next_action": "\u2014 ports the approved room into repo HUB/app/index.html \u2192 PR \u2192 scorecard \u2192 merge \u2192 the deployhub workflow ships it.",
+     "priority": 1020
+    },
+    {
+     "project_id": "3264234b-9e74-4488-84ca-138402f17c35",
+     "state": "in_progress",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": "https://nayahubpreviewasknaya.nayapower.workers.dev/#/hub/ask",
+     "next_action": "\u2014 ports the approved room into repo HUB/app/index.html \u2192 PR \u2192 scorecard \u2192 merge \u2192 the deployhub workflow ships it.",
+     "priority": 1020
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "gap-c3",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "01962a7c-06cd-4a5c-8d2f-9ba8d1bf75b5",
+     "state": "done_proven",
+     "owner_seat": "Factory lane (builder c23a6e39; Phi 9.6)",
+     "maker_seat": "Factory lane (builder c23a6e39; Phi 9.6)",
+     "prover_seat": "cpi-verification",
+     "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2951",
+     "next_action": null,
+     "priority": 23
+    },
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "done_proven",
+     "owner_seat": "Factory lane (builder c23a6e39; Phi 9.6)",
+     "maker_seat": "Factory lane (builder c23a6e39; Phi 9.6)",
+     "prover_seat": "cpi-verification",
+     "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2951",
+     "next_action": null,
+     "priority": 23
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "gap-c5",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "28a2c1db-01f8-455d-8e5f-521ecb7f707b",
+     "state": "in_progress",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "\u2014 watcher baking one at a time (SQL this run: done 80 / pending 148 / baking 2 / error 4).",
+     "priority": 1021
+    },
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "in_progress",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "\u2014 watcher baking one at a time (SQL this run: done 80 / pending 148 / baking 2 / error 4).",
+     "priority": 1021
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "gap-d16",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "28a2c1db-01f8-455d-8e5f-521ecb7f707b",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "No recordedmedia note kind exists in any store.",
+     "priority": 3055
+    },
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "No recordedmedia note kind exists in any store.",
+     "priority": 3055
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "gap-d17",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "01962a7c-06cd-4a5c-8d2f-9ba8d1bf75b5",
+     "state": "done_proven",
+     "owner_seat": "Best-of-Best Wave 1",
+     "maker_seat": "Best-of-Best Wave 1",
+     "prover_seat": "cpi-verification",
+     "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2957",
+     "next_action": null,
+     "priority": 52
+    },
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "done_proven",
+     "owner_seat": "Best-of-Best Wave 1",
+     "maker_seat": "Best-of-Best Wave 1",
+     "prover_seat": "cpi-verification",
+     "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2957",
+     "next_action": null,
+     "priority": 52
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "gap-d21",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "28a2c1db-01f8-455d-8e5f-521ecb7f707b",
+     "state": "in_progress",
+     "owner_seat": "Voice streaming build",
+     "maker_seat": "Voice streaming build",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "The directed next form of playback (17:24Z) is not built; baked playback (\u00a7A8) is the current form.",
+     "priority": 1047
+    },
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "in_progress",
+     "owner_seat": "Voice streaming build",
+     "maker_seat": "Voice streaming build",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "The directed next form of playback (17:24Z) is not built; baked playback (\u00a7A8) is the current form.",
+     "priority": 1047
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "gap-d31",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "SQL this run: exactly 4 error rows sit in voicerequests.",
+     "priority": 3075
+    },
+    {
+     "project_id": "28a2c1db-01f8-455d-8e5f-521ecb7f707b",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "SQL this run: exactly 4 error rows sit in voicerequests.",
+     "priority": 3075
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "gap-d35",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "DECIDED (restore the facts; relaxation rejected) but NOT executed: BRAIN/CURRENTMISSIONSTATE.md on main still lacks the register ids and...",
+     "priority": 3079
+    },
+    {
+     "project_id": "0d9c8dea-8c9b-45b4-a308-064d24bd78dc",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "DECIDED (restore the facts; relaxation rejected) but NOT executed: BRAIN/CURRENTMISSIONSTATE.md on main still lacks the register ids and...",
+     "priority": 3079
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "gap-d43",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "Confirmed live this run by SQL: the feed card's title is a body sentence (\"Shawn's word, 20261021 ~10:36 PDT, clarifying his pullrequest...",
+     "priority": 3087
+    },
+    {
+     "project_id": "3ca8e2dd-bd61-4e3a-9214-b39aa668206e",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "Confirmed live this run by SQL: the feed card's title is a body sentence (\"Shawn's word, 20261021 ~10:36 PDT, clarifying his pullrequest...",
+     "priority": 3087
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "gap-d7",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "No splits anywhere: Mail room \"Waiting on me/them\" = 0; \"snippets\" in mail bytes are threadpreview text, not reply snippets; no sendlater.",
+     "priority": 3048
+    },
+    {
+     "project_id": "89a646ec-0e2c-4dac-bb66-014bf47ff740",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "No splits anywhere: Mail room \"Waiting on me/them\" = 0; \"snippets\" in mail bytes are threadpreview text, not reply snippets; no sendlater.",
+     "priority": 3048
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  },
+  {
+   "item_key": "gap-e6",
+   "row_count": 2,
+   "rows": [
+    {
+     "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "\u2014 his money call, if streaming's measured speed isn't enough.",
+     "priority": 3092
+    },
+    {
+     "project_id": "28a2c1db-01f8-455d-8e5f-521ecb7f707b",
+     "state": "queued",
+     "owner_seat": null,
+     "maker_seat": "cpi-state-core",
+     "prover_seat": null,
+     "evidence_url": null,
+     "next_action": "\u2014 his money call, if streaming's measured speed isn't enough.",
+     "priority": 3092
+    }
+   ],
+   "conflict": false,
+   "recommended_survivor_project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "rule_applied": "rules (a)-(c) all tied",
+   "tie_break_note": "final tie-break: canonical PI project row (a554e536) survives; the twin is a cross-project double-insert",
+   "note": "twins agree on title, state and every fetched field except project_id - a pure double-insert"
+  }
+ ],
+ "dedup_summary": {
+  "duplicated_keys": 25,
+  "keys_with_state_conflicts": 0,
+  "finding": "no duplicated key disagrees on state - every twin pair is a pure double-insert agreeing on title and state; 23 of 25 pairs span two project_ids, 1 pair (enh-a-x1) is duplicated inside the canonical project itself, and 2 keys (f28, f32) have a fuller next_action on the non-canonical twin, which rule (c) therefore makes the survivor - on application, merge that next_action text into the canonical-project row rather than moving the item"
+ },
+ "area_mapping": [
+  {
+   "item_key": "14q-5plus3-dashboard",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "14q-activation10-cold",
+   "area": "welcome",
+   "confidence": "high"
+  },
+  {
+   "item_key": "14q-connection-deno-hub-fresh",
+   "area": "connection",
+   "confidence": "high"
+  },
+  {
+   "item_key": "14q-connection-fork-isolation",
+   "area": "connection",
+   "confidence": "high"
+  },
+  {
+   "item_key": "14q-door-walk-key-divergence",
+   "area": "welcome",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "14q-factory-push-wire-inventory",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "14q-ledger-feed-live",
+   "area": "pi-hub",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "14q-live-walk-activate",
+   "area": "welcome",
+   "confidence": "high"
+  },
+  {
+   "item_key": "14q-merchant-payout-public",
+   "area": "membership-money",
+   "confidence": "high"
+  },
+  {
+   "item_key": "14q-merge-gate-admin",
+   "area": "security-privacy",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "14q-nitro-rendered-review",
+   "area": "factory-interfaces",
+   "confidence": "low",
+   "reason": "cross-surface platform / standards item with no single owning room - factory-interfaces is the platform-and-interfaces home, so it is the best fit"
+  },
+  {
+   "item_key": "14q-per-device-connections",
+   "area": "connection",
+   "confidence": "high"
+  },
+  {
+   "item_key": "14q-pi-hub-10star",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "14q-rls-repair-reproof",
+   "area": "mail-notifications",
+   "confidence": "high"
+  },
+  {
+   "item_key": "14q-smart-match-sql-deploy",
+   "area": "match",
+   "confidence": "high"
+  },
+  {
+   "item_key": "14q-sn1863-content-reconcile",
+   "area": "hub-dashboard",
+   "confidence": "low",
+   "reason": "a Hub content / feed / notes surface item - hub-dashboard is the citizen-facing Hub home, but the item's own system (notes, library, showcase page) has no dedicated area"
+  },
+  {
+   "item_key": "activation-stale-venue-pointers-20261026",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "app-format-finalization-20261026",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "auto-page-birth-mission",
+   "area": "welcome",
+   "confidence": "high"
+  },
+  {
+   "item_key": "automatch-onboarding-sync",
+   "area": "match",
+   "confidence": "high"
+  },
+  {
+   "item_key": "build-ambassador-system",
+   "area": "membership-money",
+   "confidence": "high"
+  },
+  {
+   "item_key": "build-connection-system",
+   "area": "connection",
+   "confidence": "high"
+  },
+  {
+   "item_key": "build-welcome-flow",
+   "area": "welcome",
+   "confidence": "high"
+  },
+  {
+   "item_key": "build-welcome-flow-engine",
+   "area": "welcome",
+   "confidence": "high"
+  },
+  {
+   "item_key": "connect-page-current-plan-20261026",
+   "area": "connection",
+   "confidence": "high"
+  },
+  {
+   "item_key": "connect-page-update-20261026",
+   "area": "connection",
+   "confidence": "high"
+  },
+  {
+   "item_key": "connection-interface-nitro",
+   "area": "connection",
+   "confidence": "high"
+  },
+  {
+   "item_key": "connections-merge-20261026",
+   "area": "connection",
+   "confidence": "high"
+  },
+  {
+   "item_key": "cover-adjuster-reposition",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "cover-chooser-every-page",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "cover-library-interface-nitro",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "cover-library-open-templates",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "cover-library-smart-factory-shelf",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "cover-library-wiring",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "dashboard-about-fix-20261026",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-a-a1",
+   "area": "identity-settings",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-a-a2",
+   "area": "identity-settings",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "enh-a-b1",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "enh-a-b2",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "enh-a-d1",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-a-d2",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-a-g1",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "enh-a-g2",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "enh-a-i1",
+   "area": "mail-notifications",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-a-l2",
+   "area": "projects-spaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "enh-a-m1",
+   "area": "mail-notifications",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-a-m2",
+   "area": "mail-notifications",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-a-r2",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-a-s1",
+   "area": "identity-settings",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-a-s2",
+   "area": "identity-settings",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-a-v1",
+   "area": "connection",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "enh-a-w1",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-a-w2",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-a-x1",
+   "area": "factory-interfaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "enh-b-hub16",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-b-lib10",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "enh-b-lib9",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "enh-b-maildel",
+   "area": "mail-notifications",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-b-r15",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-b-r3",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-b-route7",
+   "area": "factory-interfaces",
+   "confidence": "low",
+   "reason": "cross-surface platform / standards item with no single owning room - factory-interfaces is the platform-and-interfaces home, so it is the best fit"
+  },
+  {
+   "item_key": "enh-b-set22",
+   "area": "identity-settings",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-b-sp12",
+   "area": "projects-spaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-b-sp17",
+   "area": "projects-spaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-b-today",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "enh-r-drill",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "f01",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "f04",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "f06",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "f09",
+   "area": "factory-interfaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "f10",
+   "area": "security-privacy",
+   "confidence": "high"
+  },
+  {
+   "item_key": "f12",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "f15",
+   "area": "mail-notifications",
+   "confidence": "high"
+  },
+  {
+   "item_key": "f16",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "f19",
+   "area": "factory-interfaces",
+   "confidence": "low",
+   "reason": "cross-surface platform / standards item with no single owning room - factory-interfaces is the platform-and-interfaces home, so it is the best fit"
+  },
+  {
+   "item_key": "f22",
+   "area": "pi-hub",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "f28",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "f29",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "f32",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "f33",
+   "area": "welcome",
+   "confidence": "high"
+  },
+  {
+   "item_key": "face-pulse-today",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "factory-single-authority-reconcile-20261026",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "factory-templates-complete-20261026",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-ask-1",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-ask-naya-1",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-ask-naya-2",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-ask-naya-3",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-flow-2",
+   "area": "voice-audio",
+   "confidence": "low",
+   "reason": "voice-pipeline machinery (transcription / streaming / the speak-a-note flow) rather than a voice feature itself - voice-audio is its operating home"
+  },
+  {
+   "item_key": "fill-hub-1",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-hub-2",
+   "area": "pi-hub",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "fill-mirror-1",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "fill-nitro-1",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-smart-mail-1",
+   "area": "mail-notifications",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-smart-mail-2",
+   "area": "mail-notifications",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-smart-mail-3",
+   "area": "mail-notifications",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-team-nitro-1",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-team-nitro-2",
+   "area": "pi-hub",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "fill-team-nitro-3",
+   "area": "welcome",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-the-mirror-program-1",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "fill-the-mirror-program-2",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "fill-the-one-flow-1",
+   "area": "voice-audio",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "fill-the-one-flow-2",
+   "area": "voice-audio",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "fill-the-one-flow-3",
+   "area": "voice-audio",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "fill-the-one-hub-1",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-the-one-hub-2",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-the-one-hub-3",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-the-one-hub-4",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "fill-the-smart-factory-1",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-the-smart-factory-2",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-the-smart-factory-3",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-the-smart-factory-4",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-voice-1",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-voice-2",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-voice-3",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "fill-voice-4",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-a1",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-a10",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "gap-a11",
+   "area": "security-privacy",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-a12",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-a13",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "gap-a14",
+   "area": "projects-spaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-a15",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "gap-a2",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-a3",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-a4",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-a5",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-a6",
+   "area": "mail-notifications",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-a7",
+   "area": "connection",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-a8",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-a9",
+   "area": "mail-notifications",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-b1",
+   "area": "membership-money",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-b2",
+   "area": "connection",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-b3",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-b4",
+   "area": "security-privacy",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-c1",
+   "area": "factory-interfaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-c2",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-c3",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-c4",
+   "area": "membership-money",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-c5",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-d1",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-d10",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-d11",
+   "area": "factory-interfaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-d12",
+   "area": "factory-interfaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-d13",
+   "area": "projects-spaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-d14",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-d15",
+   "area": "membership-money",
+   "confidence": "low",
+   "reason": "no dedicated booking / smart-link area exists - paid services and ambassador smart-links sit in membership-money as the closest fit"
+  },
+  {
+   "item_key": "gap-d16",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-d17",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-d18",
+   "area": "factory-interfaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-d19",
+   "area": "factory-interfaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-d2",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-d20",
+   "area": "factory-interfaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-d21",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-d22",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "gap-d23",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-d24",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-d25",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-d26",
+   "area": "factory-interfaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-d27",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-d28",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-d29",
+   "area": "factory-interfaces",
+   "confidence": "low",
+   "reason": "cross-surface platform / standards item with no single owning room - factory-interfaces is the platform-and-interfaces home, so it is the best fit"
+  },
+  {
+   "item_key": "gap-d3",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-d30",
+   "area": "pi-hub",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-d31",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-d32",
+   "area": "welcome",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-d33",
+   "area": "security-privacy",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-d34",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "gap-d35",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "gap-d36",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "gap-d37",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "gap-d38",
+   "area": "hub-dashboard",
+   "confidence": "low",
+   "reason": "a Hub content / feed / notes surface item - hub-dashboard is the citizen-facing Hub home, but the item's own system (notes, library, showcase page) has no dedicated area"
+  },
+  {
+   "item_key": "gap-d39",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "gap-d4",
+   "area": "membership-money",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-d40",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "gap-d41",
+   "area": "factory-interfaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-d42",
+   "area": "factory-interfaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-d43",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-d44",
+   "area": "hub-dashboard",
+   "confidence": "low",
+   "reason": "a Hub content / feed / notes surface item - hub-dashboard is the citizen-facing Hub home, but the item's own system (notes, library, showcase page) has no dedicated area"
+  },
+  {
+   "item_key": "gap-d45",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-d46",
+   "area": "security-privacy",
+   "confidence": "low",
+   "reason": "production promotion / decision packet - gated production change, so the gate-and-permissions area is the best available fit"
+  },
+  {
+   "item_key": "gap-d47",
+   "area": "pi-hub",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-d5",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-d6",
+   "area": "connection",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-d7",
+   "area": "mail-notifications",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-d8",
+   "area": "factory-interfaces",
+   "confidence": "low",
+   "reason": "cross-surface platform / standards item with no single owning room - factory-interfaces is the platform-and-interfaces home, so it is the best fit"
+  },
+  {
+   "item_key": "gap-d9",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-e1",
+   "area": "factory-interfaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-e2",
+   "area": "membership-money",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-e3",
+   "area": "pi-hub",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "gap-e4",
+   "area": "identity-settings",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-e5",
+   "area": "security-privacy",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-e6",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "gap-e7",
+   "area": "security-privacy",
+   "confidence": "high"
+  },
+  {
+   "item_key": "growth-merge-20261026",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "hub-single-source-cure-20261026",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "hub-sn1873-misroute-cure-20261026",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "intel-today-merge-20261026",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "interface-registry-20261025",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "journey-test-2026-10-23",
+   "area": "welcome",
+   "confidence": "low",
+   "reason": "named journey test record - the citizen journey is the Welcome walk, but the item is a test-mechanics record rather than walk work itself"
+  },
+  {
+   "item_key": "library-overhaul-20261026",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "lists-overhaul-20261026",
+   "area": "projects-spaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "mail-right-one-20261026",
+   "area": "mail-notifications",
+   "confidence": "high"
+  },
+  {
+   "item_key": "membership-access-gating-20261025",
+   "area": "membership-money",
+   "confidence": "high"
+  },
+  {
+   "item_key": "membership-complete-20261026",
+   "area": "membership-money",
+   "confidence": "high"
+  },
+  {
+   "item_key": "membership-rebuild-review-20261025",
+   "area": "membership-money",
+   "confidence": "high"
+  },
+  {
+   "item_key": "mission-state-snapshot-retire-repoint-20261026",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "naya-code-completion-20261026",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "note-standalone-pages",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "other-ais-connection-20261026",
+   "area": "connection",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-audit-ask-naya",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-audit-booking",
+   "area": "membership-money",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "page-audit-business",
+   "area": "projects-spaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "page-audit-connect",
+   "area": "connection",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-audit-connections",
+   "area": "connection",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-audit-dashboard",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "page-audit-factory",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-audit-feed",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "page-audit-growth",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "page-audit-hub-home",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "page-audit-identity-certificate",
+   "area": "identity-settings",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-audit-intelligence",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "page-audit-join",
+   "area": "welcome",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-audit-ledger",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "page-audit-library",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "page-audit-life-with-naya",
+   "area": "hub-dashboard",
+   "confidence": "low",
+   "reason": "a Hub content / feed / notes surface item - hub-dashboard is the citizen-facing Hub home, but the item's own system (notes, library, showcase page) has no dedicated area"
+  },
+  {
+   "item_key": "page-audit-lists",
+   "area": "projects-spaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "page-audit-mail",
+   "area": "mail-notifications",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-audit-mission-room",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-audit-payments",
+   "area": "membership-money",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-audit-personal",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "page-audit-projects",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-audit-projects-questions",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-audit-projects-state",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-audit-projects-todos",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-audit-reports",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "page-audit-settings",
+   "area": "identity-settings",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-audit-smart-note-public",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "page-audit-space-page",
+   "area": "projects-spaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-audit-spaces-room",
+   "area": "projects-spaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-audit-today",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "page-audit-welcome",
+   "area": "welcome",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-birth-cold-walk",
+   "area": "welcome",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-birth-interface",
+   "area": "welcome",
+   "confidence": "high"
+  },
+  {
+   "item_key": "page-design-audit-2026-10-26",
+   "area": "factory-interfaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "pi-activity-notifications-20261025",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "pi-duplicates-reconcile-20261026",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "pi-face-build-track-20261026",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "pi-face-content-track-20261026",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "pi-face-design-rebuild-20261026",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "pi-face-world-view-20261026",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "pi-github-app-sync-20261026",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "pi-hub-ideal-design-20261026",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "pi-notifications-mail-20261026",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "pi-operating-code-20261026",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "pi-per-part-scoring-activity-20261026",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "pi-record-dedup-20261026",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "pi-stalled-work-surfacing-20261026",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "pricing-finish-20261026",
+   "area": "membership-money",
+   "confidence": "high"
+  },
+  {
+   "item_key": "pricing-page-finish-20261026",
+   "area": "membership-money",
+   "confidence": "high"
+  },
+  {
+   "item_key": "privacy-locks-before-citizens-20261026",
+   "area": "security-privacy",
+   "confidence": "high"
+  },
+  {
+   "item_key": "project-list-states",
+   "area": "pi-hub",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "projects-overhaul-20261026",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "prove-privacy-two-owner",
+   "area": "security-privacy",
+   "confidence": "high"
+  },
+  {
+   "item_key": "q14-10",
+   "area": "pi-hub",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "reports-merge-20261026",
+   "area": "hub-dashboard",
+   "confidence": "high"
+  },
+  {
+   "item_key": "resolve-automatch-buildable-complete",
+   "area": "match",
+   "confidence": "high"
+  },
+  {
+   "item_key": "resolve-p0-anon-execute-payment-rpcs",
+   "area": "security-privacy",
+   "confidence": "high"
+  },
+  {
+   "item_key": "resolve-pr3062-kernel-residual-1",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "resolve-pr3063-factory-residuals-2-3",
+   "area": "factory-interfaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "resolve-pr3064-reporting-residual-5",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "resolve-pr3065-migration-ledger-registration",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "resolve-production-packet-p1-p3",
+   "area": "security-privacy",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "resolve-registry-reconcile-sn0594",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "resolve-sentinel-cure-pr3067",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "resolve-sn1865-choose-whats-best",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "resolve-sn1866-finish-and-connect",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "resolve-sn1867-alignment-is-the-trump",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "resolve-sn1868-never-wait-never-stop",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "settings-merge-20261026",
+   "area": "identity-settings",
+   "confidence": "high"
+  },
+  {
+   "item_key": "settings-one-20261026",
+   "area": "identity-settings",
+   "confidence": "high"
+  },
+  {
+   "item_key": "shawn-feedback-into-pi-20261026",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "smart-covers-chooser",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "smart-covers-library-20261026",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "smart-factory-templates-complete-20261026",
+   "area": "factory-interfaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "smart-notes-file-to-live-proof-20261026",
+   "area": "hub-dashboard",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "smart-tabs-business-spaces-apps-20261026",
+   "area": "projects-spaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "spaces-directory-smart-format-20261026",
+   "area": "projects-spaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "standing-audit-resolve-20261026",
+   "area": "pi-hub",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "standing-rules-tonight-20261026",
+   "area": "factory-interfaces",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "tabs-spaces-complete-20261026",
+   "area": "projects-spaces",
+   "confidence": "high"
+  },
+  {
+   "item_key": "ten-by-ten-execution-2026-10-26",
+   "area": "pi-hub",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "voice-queue-cure-20261026",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "walkthrough-narration-nitro-20261026",
+   "area": "voice-audio",
+   "confidence": "medium"
+  },
+  {
+   "item_key": "walkthrough-page-birth-wiring",
+   "area": "welcome",
+   "confidence": "high"
+  },
+  {
+   "item_key": "waste-heartbeat-2026-10-23",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "waste-heartbeat-2026-10-24",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "waste-heartbeat-2026-10-26",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "waste-media-notes-transcribe-watcher-2026-10-23",
+   "area": "voice-audio",
+   "confidence": "low",
+   "reason": "voice-pipeline machinery (transcription / streaming / the speak-a-note flow) rather than a voice feature itself - voice-audio is its operating home"
+  },
+  {
+   "item_key": "waste-media-notes-transcribe-watcher-2026-10-24",
+   "area": "voice-audio",
+   "confidence": "low",
+   "reason": "voice-pipeline machinery (transcription / streaming / the speak-a-note flow) rather than a voice feature itself - voice-audio is its operating home"
+  },
+  {
+   "item_key": "waste-media-notes-transcribe-watcher-2026-10-25",
+   "area": "voice-audio",
+   "confidence": "low",
+   "reason": "voice-pipeline machinery (transcription / streaming / the speak-a-note flow) rather than a voice feature itself - voice-audio is its operating home"
+  },
+  {
+   "item_key": "waste-media-notes-transcribe-watcher-2026-10-26",
+   "area": "voice-audio",
+   "confidence": "low",
+   "reason": "voice-pipeline machinery (transcription / streaming / the speak-a-note flow) rather than a voice feature itself - voice-audio is its operating home"
+  },
+  {
+   "item_key": "waste-naya-build-queue-processor-2026-10-23",
+   "area": "factory-interfaces",
+   "confidence": "low",
+   "reason": "cross-surface platform / standards item with no single owning room - factory-interfaces is the platform-and-interfaces home, so it is the best fit"
+  },
+  {
+   "item_key": "waste-naya-build-queue-processor-2026-10-24",
+   "area": "factory-interfaces",
+   "confidence": "low",
+   "reason": "cross-surface platform / standards item with no single owning room - factory-interfaces is the platform-and-interfaces home, so it is the best fit"
+  },
+  {
+   "item_key": "waste-naya-build-queue-processor-2026-10-26",
+   "area": "factory-interfaces",
+   "confidence": "low",
+   "reason": "cross-surface platform / standards item with no single owning room - factory-interfaces is the platform-and-interfaces home, so it is the best fit"
+  },
+  {
+   "item_key": "waste-naya-smart-notes-sync-2026-10-23",
+   "area": "hub-dashboard",
+   "confidence": "low",
+   "reason": "a Hub content / feed / notes surface item - hub-dashboard is the citizen-facing Hub home, but the item's own system (notes, library, showcase page) has no dedicated area"
+  },
+  {
+   "item_key": "waste-naya-smart-notes-sync-2026-10-24",
+   "area": "hub-dashboard",
+   "confidence": "low",
+   "reason": "a Hub content / feed / notes surface item - hub-dashboard is the citizen-facing Hub home, but the item's own system (notes, library, showcase page) has no dedicated area"
+  },
+  {
+   "item_key": "waste-naya-smart-notes-sync-2026-10-26",
+   "area": "hub-dashboard",
+   "confidence": "low",
+   "reason": "a Hub content / feed / notes surface item - hub-dashboard is the citizen-facing Hub home, but the item's own system (notes, library, showcase page) has no dedicated area"
+  },
+  {
+   "item_key": "waste-naya-stream-daemon-supervisor-2026-10-26",
+   "area": "voice-audio",
+   "confidence": "low",
+   "reason": "voice-pipeline machinery (transcription / streaming / the speak-a-note flow) rather than a voice feature itself - voice-audio is its operating home"
+  },
+  {
+   "item_key": "waste-naya-sync-watchdog-2026-10-23",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "waste-naya-sync-watchdog-2026-10-24",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "waste-naya-sync-watchdog-2026-10-26",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "waste-naya-voice-synthesis-queue-2026-10-23",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "waste-naya-voice-synthesis-queue-2026-10-24",
+   "area": "voice-audio",
+   "confidence": "high"
+  },
+  {
+   "item_key": "waste-nitro-director-pass-2026-10-23",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "waste-nitro-director-pass-2026-10-24",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "waste-nitro-director-pass-2026-10-26",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "waste-nitro-wave-dispatcher-2026-10-23",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "waste-nitro-wave-dispatcher-2026-10-24",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "waste-nitro-wave-dispatcher-2026-10-26",
+   "area": "pi-hub",
+   "confidence": "low",
+   "reason": "team-operations / governance / system-health item - no product area owns it; PI itself is the tracking home, so pi-hub is the best fit"
+  },
+  {
+   "item_key": "waste-project-intelligence-refresh-2026-10-23",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "waste-project-intelligence-refresh-2026-10-24",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "waste-project-intelligence-refresh-2026-10-25",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "waste-project-intelligence-refresh-2026-10-26",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "waste-project-intelligence-state-publish-2026-10-23",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "waste-project-intelligence-state-publish-2026-10-24",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "waste-project-intelligence-state-publish-2026-10-25",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "waste-project-intelligence-state-publish-2026-10-26",
+   "area": "pi-hub",
+   "confidence": "high"
+  },
+  {
+   "item_key": "waste-smartlink-route-reconciler-watchdog-2026-10-23",
+   "area": "membership-money",
+   "confidence": "low",
+   "reason": "no dedicated booking / smart-link area exists - paid services and ambassador smart-links sit in membership-money as the closest fit"
+  },
+  {
+   "item_key": "waste-smartlink-route-reconciler-watchdog-2026-10-24",
+   "area": "membership-money",
+   "confidence": "low",
+   "reason": "no dedicated booking / smart-link area exists - paid services and ambassador smart-links sit in membership-money as the closest fit"
+  },
+  {
+   "item_key": "waste-smartlink-route-reconciler-watchdog-2026-10-26",
+   "area": "membership-money",
+   "confidence": "low",
+   "reason": "no dedicated booking / smart-link area exists - paid services and ambassador smart-links sit in membership-money as the closest fit"
+  }
+ ],
+ "area_summary": {
+  "pi-hub": {
+   "items": 74,
+   "done_proven": 6,
+   "pct_done_proven": 8.1
+  },
+  "hub-dashboard": {
+   "items": 72,
+   "done_proven": 8,
+   "pct_done_proven": 11.1
+  },
+  "factory-interfaces": {
+   "items": 52,
+   "done_proven": 11,
+   "pct_done_proven": 21.2
+  },
+  "voice-audio": {
+   "items": 33,
+   "done_proven": 5,
+   "pct_done_proven": 15.2
+  },
+  "membership-money": {
+   "items": 17,
+   "done_proven": 1,
+   "pct_done_proven": 5.9
+  },
+  "welcome": {
+   "items": 15,
+   "done_proven": 0,
+   "pct_done_proven": 0.0
+  },
+  "connection": {
+   "items": 15,
+   "done_proven": 1,
+   "pct_done_proven": 6.7
+  },
+  "mail-notifications": {
+   "items": 14,
+   "done_proven": 4,
+   "pct_done_proven": 28.6
+  },
+  "projects-spaces": {
+   "items": 13,
+   "done_proven": 1,
+   "pct_done_proven": 7.7
+  },
+  "security-privacy": {
+   "items": 12,
+   "done_proven": 1,
+   "pct_done_proven": 8.3
+  },
+  "identity-settings": {
+   "items": 10,
+   "done_proven": 2,
+   "pct_done_proven": 20.0
+  },
+  "match": {
+   "items": 3,
+   "done_proven": 0,
+   "pct_done_proven": 0.0
+  }
+ },
+ "mapping_confidence": {
+  "high": 187,
+  "medium": 85,
+  "low": 58
+ },
+ "owner_normalization": {
+  "values_found": {
+   "(null)": {
+    "proposed_canonical": null,
+    "rows": 160,
+    "basis": "no owner recorded - stays ownerless until a seat claims the item"
+   },
+   "naya-power": {
+    "proposed_canonical": "naya-power",
+    "rows": 46,
+    "basis": "already canonical (naya-<seat> form)"
+   },
+   "naya-nitro": {
+    "proposed_canonical": "naya-nitro",
+    "rows": 56,
+    "basis": "already canonical (naya-<seat> form)"
+   },
+   "naya-resolve": {
+    "proposed_canonical": "naya-resolve",
+    "rows": 31,
+    "basis": "already canonical (naya-<seat> form)"
+   },
+   "Resolve": {
+    "proposed_canonical": "naya-resolve",
+    "rows": 1,
+    "basis": "short form of the same seat"
+   },
+   "director": {
+    "proposed_canonical": "shawn-director",
+    "rows": 37,
+    "basis": "the human director (Shawn) - a role label, not a Naya seat; canonical form names person + role"
+   },
+   "Dashboard stage (Nu)": {
+    "proposed_canonical": "naya-nu",
+    "rows": 5,
+    "basis": "Nu is a named seat in the Greek-letter cohort (cf. gap items owned by Nu, Omega, Chi, Rho, Xi, Psi, Phi)"
+   },
+   "Factory lane (builder c23a6e39; Phi 9.6)": {
+    "proposed_canonical": "naya-phi",
+    "rows": 2,
+    "basis": "the label itself names Phi as the builder seat"
+   },
+   "Team Nitro (Smart Ledger build)": {
+    "proposed_canonical": "naya-nitro",
+    "rows": 1,
+    "basis": "team label for the Nitro seat"
+   },
+   "Team Nitro \u00b7 Issue Hygiene (Rho)": {
+    "proposed_canonical": "naya-nitro",
+    "rows": 1,
+    "basis": "team label for the Nitro seat (Rho named as contributor in the label)"
+   },
+   "Team Nitro (cert repair seat 4d30e0d4)": {
+    "proposed_canonical": "naya-nitro",
+    "rows": 1,
+    "basis": "team label for the Nitro seat"
+   },
+   "Best-of-Best Wave 1": {
+    "proposed_canonical": "team-best-of-best-wave-1",
+    "rows": 6,
+    "basis": "a wave label, not a seat - slug form; on application these should be re-pointed to the named seat that ran the wave"
+   },
+   "Surfaces stage": {
+    "proposed_canonical": "team-surfaces-stage",
+    "rows": 3,
+    "basis": "a stage label, seat unnamed - slug form"
+   },
+   "Ask port (finisher)": {
+    "proposed_canonical": "ask-port-finisher",
+    "rows": 2,
+    "basis": "a role label, seat unnamed - slug form"
+   },
+   "Factory lane": {
+    "proposed_canonical": "factory-lane",
+    "rows": 1,
+    "basis": "a lane label, seat unnamed - slug form"
+   },
+   "Voice streaming build": {
+    "proposed_canonical": "voice-streaming-build",
+    "rows": 2,
+    "basis": "a workstream label, seat unnamed - slug form"
+   }
+  },
+  "ownerless": {
+   "raw_rows_without_owner": 160,
+   "unique_items_without_owner": 139,
+   "item_keys": [
+    "build-welcome-flow",
+    "enh-a-a1",
+    "enh-a-a2",
+    "enh-a-b1",
+    "enh-a-b2",
+    "enh-a-d1",
+    "enh-a-d2",
+    "enh-a-g1",
+    "enh-a-g2",
+    "enh-a-i1",
+    "enh-a-l2",
+    "enh-a-m1",
+    "enh-a-m2",
+    "enh-a-r2",
+    "enh-a-s1",
+    "enh-a-s2",
+    "enh-a-v1",
+    "enh-a-w1",
+    "enh-a-w2",
+    "enh-a-x1",
+    "enh-b-hub16",
+    "enh-b-lib10",
+    "enh-b-lib9",
+    "enh-b-maildel",
+    "enh-b-r15",
+    "enh-b-r3",
+    "enh-b-route7",
+    "enh-b-set22",
+    "enh-b-sp12",
+    "enh-b-sp17",
+    "enh-b-today",
+    "enh-r-drill",
+    "f01",
+    "f04",
+    "f06",
+    "f09",
+    "f10",
+    "f12",
+    "f15",
+    "f16",
+    "f19",
+    "f28",
+    "f29",
+    "f32",
+    "f33",
+    "face-pulse-today",
+    "fill-ask-1",
+    "fill-ask-naya-1",
+    "fill-ask-naya-2",
+    "fill-ask-naya-3",
+    "fill-flow-2",
+    "fill-hub-1",
+    "fill-hub-2",
+    "fill-mirror-1",
+    "fill-nitro-1",
+    "fill-smart-mail-1",
+    "fill-smart-mail-2",
+    "fill-smart-mail-3",
+    "fill-team-nitro-1",
+    "fill-team-nitro-2",
+    "fill-team-nitro-3",
+    "fill-the-mirror-program-1",
+    "fill-the-mirror-program-2",
+    "fill-the-one-flow-1",
+    "fill-the-one-flow-2",
+    "fill-the-one-flow-3",
+    "fill-the-one-hub-1",
+    "fill-the-one-hub-2",
+    "fill-the-one-hub-3",
+    "fill-the-one-hub-4",
+    "fill-the-smart-factory-1",
+    "fill-the-smart-factory-2",
+    "fill-the-smart-factory-3",
+    "fill-the-smart-factory-4",
+    "fill-voice-1",
+    "fill-voice-2",
+    "fill-voice-3",
+    "fill-voice-4",
+    "gap-a1",
+    "gap-a10",
+    "gap-a11",
+    "gap-a12",
+    "gap-a13",
+    "gap-a14",
+    "gap-a15",
+    "gap-a2",
+    "gap-a3",
+    "gap-a4",
+    "gap-a5",
+    "gap-a6",
+    "gap-a7",
+    "gap-a8",
+    "gap-a9",
+    "gap-b2",
+    "gap-c1",
+    "gap-c2",
+    "gap-c4",
+    "gap-c5",
+    "gap-d15",
+    "gap-d16",
+    "gap-d18",
+    "gap-d19",
+    "gap-d20",
+    "gap-d23",
+    "gap-d24",
+    "gap-d25",
+    "gap-d26",
+    "gap-d27",
+    "gap-d29",
+    "gap-d30",
+    "gap-d31",
+    "gap-d32",
+    "gap-d33",
+    "gap-d34",
+    "gap-d35",
+    "gap-d36",
+    "gap-d37",
+    "gap-d38",
+    "gap-d39",
+    "gap-d40",
+    "gap-d41",
+    "gap-d42",
+    "gap-d43",
+    "gap-d44",
+    "gap-d46",
+    "gap-d47",
+    "gap-d5",
+    "gap-d7",
+    "gap-d8",
+    "gap-d9",
+    "gap-e1",
+    "gap-e2",
+    "gap-e5",
+    "gap-e6",
+    "gap-e7",
+    "journey-test-2026-10-23",
+    "note-standalone-pages",
+    "project-list-states",
+    "prove-privacy-two-owner"
+   ],
+   "note": "the '160 ownerless' figure circulating tonight is the raw row count; deduped, 139 unique items have no owner"
+  }
+ }
+}

@@ -31,8 +31,8 @@ const source = readFileSync(
 );
 const code = stripTypeScriptTypes(
   source
-    .replace(/^import .*from "\.\/.*";\r?\n/gm, "")
-    .replace(/^import .*;\r?\n/gm, "")
+    .replace(/^import[\s\S]*?from "\.\/.*";\r?\n/gm, "")
+    .replace(/^import[\s\S]*?;\r?\n/gm, "")
 );
 
 const OWNER = "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
@@ -213,6 +213,19 @@ async function runtime({ mode = "verify", body = {}, tables = {}, auth = {}, met
       };
     },
     createRemoteJWKSet: () => ({}),
+    // Stubs for the admission-gate import block (stripped above; #2077 made it
+    // multi-line). The candidate path references these names; without stubs the
+    // vm throws ReferenceError and the outer catch masks it as a 400, hiding the
+    // real behaviour under test. The gate itself is covered by its own tests.
+    ADMISSION_SCHEMA: {},
+    ADMITTED_CANDIDATE: "CANDIDATE",
+    ADMITTED_NOT_VERIFIED: "NOT_VERIFIED",
+    ADMITTED_REJECTED: "REJECTED",
+    GATE_EVALUATION_ERROR: "GATE_EVALUATION_ERROR",
+    admit_candidate: () => ({ admitted_as: "CANDIDATE", reasons: [] }),
+    canonicalJson: (v) => JSON.stringify(v),
+    inputHash: () => "stub-input-hash",
+    rejection_log: () => "stub-rejection-log",
     // The handler logs every refusal to stderr. That is correct runtime behaviour, but
     // here it would bury the test report under 30 stack traces that are the EXPECTED
     // outcome. Keep console.error reachable so nothing is hidden; just route it away.

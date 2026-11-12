@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-460",
+ "title": "IB-SMART-NOTE-20261006-sn0460-ratified-predecessor-guard",
+ "slug": "ratified-predecessor-guard",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/RATIFIED-PREDECESSOR-GUARD/SN-0460/IB-SMART-NOTE-20261006-sn0460-ratified-predecessor-guard.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-10-06T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "A truth-state guard is only real when every path into a higher-trust state is closed correctly. A direct `CANDIDATE -> RATIFIED` or `TESTING -> RATIFIED` jump can bypass the required Human-Director elevation boundary unless the predecessor relationship is enforced before authority and evidence are considered.\n\nThis defect was reproduced on the current main tip, repaired with the smallest fail-closed check, and re-proven by the repository's full required test battery. The repair preserves the existing governed path:\n\n`VERIFIED -> RATIFIED + valid elevation grant`\n\nand rejects every non-VERIFIED predecessor before the RATIFIED grant path is reached.",
+  "human_view": "",
+  "child_view": "",
+  "grandma_view": "",
+  "ai_view": "",
+  "what_it_means": "",
+  "whats_inside": [],
+  "topics": [
+   "System-Intelligence"
+  ]
+ },
+ "page_hash": "408cc7707351319e181ece1c38b278b84fd2178d883c56c0d46ed3e3f8e497af",
+ "content_hash": "683081ad6b14abb06cd7da7153f09f844788aaa5f558c2d74444c64ef7362550",
+ "reconstructed_from_page": true
+}

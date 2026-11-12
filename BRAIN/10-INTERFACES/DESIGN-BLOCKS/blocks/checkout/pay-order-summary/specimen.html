@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Block specimen: checkout/pay-order-summary</title>
+<link rel="stylesheet" href="block.css">
+<style>
+  body{ background:#050507; color:#e8eaf2; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; margin:0; padding:32px 20px; }
+  .demo{ max-width:560px; margin:0 auto; }
+  .demo h2{ font-size:14px; letter-spacing:.12em; text-transform:uppercase; color:#8a8a96; margin:34px 0 12px; }
+  .demo h2:first-child{ margin-top:0; }
+  .demo-note{ font-size:12px; color:#9aa3b5; margin:6px 0 12px; }
+  .demo-ctl button{ font:inherit; font-size:12px; letter-spacing:.06em; color:#e8eaf2; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.22); border-radius:999px; padding:8px 16px; margin:0 8px 8px 0; cursor:pointer; }
+  .demo-ctl button:hover{ border-color:#a06bff; box-shadow:0 0 18px -4px rgba(160,107,255,.7); }
+</style>
+</head>
+<body>
+<div class="demo">
+  <h2>Order summary board</h2>
+  <section class="pay-board pay-summary" aria-label="Order summary">
+    <span class="pay-corner" aria-hidden="true"><i>◆</i></span>
+    <header class="pay-head">
+      <p class="pay-kicker">CHECKOUT</p>
+      <h3 class="pay-title">Your order</h3>
+    </header>
+
+    <ul class="pay-items">
+      <li class="pay-item" data-tone="magenta">
+        <span class="pay-thumb" aria-hidden="true"><i>✦</i></span>
+        <div class="pay-item-body">
+          <span class="pay-item-name">Naya MAXIS AI Score</span>
+          <span class="pay-item-meta">Annual membership · renews Oct 2027</span>
+        </div>
+        <div class="pay-stepper" role="group" aria-label="Quantity for Naya MAXIS AI Score">
+          <button type="button" class="pay-step" aria-label="Decrease quantity">−</button>
+          <output class="pay-qty" aria-live="polite">1</output>
+          <button type="button" class="pay-step" aria-label="Increase quantity">+</button>
+        </div>
+        <span class="pay-price">$149.00</span>
+      </li>
+      <li class="pay-item" data-tone="purple">
+        <span class="pay-thumb" aria-hidden="true"><i>▲</i></span>
+        <div class="pay-item-body">
+          <span class="pay-item-name">AI Masterclass seat</span>
+          <span class="pay-item-meta">Cohort 12 · starts Nov 3</span>
+        </div>
+        <div class="pay-stepper" role="group" aria-label="Quantity for AI Masterclass seat">
+          <button type="button" class="pay-step" aria-label="Decrease quantity">−</button>
+          <output class="pay-qty" aria-live="polite">2</output>
+          <button type="button" class="pay-step" aria-label="Increase quantity">+</button>
+        </div>
+        <span class="pay-price">$298.00</span>
+      </li>
+      <li class="pay-item" data-tone="blue">
+        <span class="pay-thumb" aria-hidden="true"><i>◆</i></span>
+        <div class="pay-item-body">
+          <span class="pay-item-name">Powercast bundle</span>
+          <span class="pay-item-meta">14 episodes · yours to keep</span>
+        </div>
+        <div class="pay-stepper" role="group" aria-label="Quantity for Powercast bundle">
+          <button type="button" class="pay-step" aria-label="Decrease quantity">−</button>
+          <output class="pay-qty" aria-live="polite">1</output>
+          <button type="button" class="pay-step" aria-label="Increase quantity">+</button>
+        </div>
+        <span class="pay-price">$49.00</span>
+      </li>
+    </ul>
+
+    <form class="pay-promo" action="#" onsubmit="return false">
+      <label class="pay-promo-label" for="promo-code">Promo code</label>
+      <div class="pay-promo-row">
+        <input id="promo-code" class="pay-promo-input" type="text"
+               placeholder="Enter code" autocomplete="off" spellcheck="false">
+        <button type="submit" class="naya-btn pay-apply">Apply</button>
+      </div>
+      <p class="pay-promo-msg" aria-live="polite"></p>
+    </form>
+
+    <dl class="pay-totals">
+      <div class="pay-total-row"><dt>Subtotal</dt><dd>$496.00</dd></div>
+      <div class="pay-total-row"><dt>Estimated tax</dt><dd>$39.68</dd></div>
+      <div class="pay-total-row pay-grand"><dt>Total</dt><dd>$535.68</dd></div>
+    </dl>
+
+    <p class="pay-honest">Prices confirmed at checkout. The total is the total — no surprises on the next step.</p>
+  </section>
+</div>
+</body>
+</html>

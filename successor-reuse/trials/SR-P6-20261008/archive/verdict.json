@@ -1,0 +1,91 @@
+{
+  "trial_id": "SR-P6-20261008",
+  "verdict": "IMPROVED",
+  "reasons": [
+    "B>A by 1.00 (>= 0.2), p=0.0, attribution=STRONG",
+    "C>A confirmed reuse (delta 0.80)"
+  ],
+  "notes": [
+    "COMPOUNDING FAILURE: C worse than B beyond margin"
+  ],
+  "comparisons": {
+    "B_vs_A": {
+      "arms": "B_vs_A",
+      "n1": 10,
+      "k1": 0,
+      "n2": 10,
+      "k2": 10,
+      "rate1": 0.0,
+      "rate2": 1.0,
+      "abs_delta": 1.0,
+      "odds_ratio": 441.0,
+      "p_value_greater": 0.0,
+      "p_value_less": 1.0,
+      "practical_met": true,
+      "stat_sig_greater": true,
+      "stat_sig_less": false,
+      "power": 0.475,
+      "adequately_powered": false
+    },
+    "C_vs_A": {
+      "arms": "C_vs_A",
+      "n1": 10,
+      "k1": 0,
+      "n2": 5,
+      "k2": 4,
+      "rate1": 0.0,
+      "rate2": 0.8,
+      "abs_delta": 0.8,
+      "odds_ratio": 63.0,
+      "p_value_greater": 0.0037,
+      "p_value_less": 1.0,
+      "practical_met": true,
+      "stat_sig_greater": true,
+      "stat_sig_less": false,
+      "power": 0.299,
+      "adequately_powered": false
+    },
+    "C_vs_B": {
+      "arms": "C_vs_B",
+      "n1": 10,
+      "k1": 10,
+      "n2": 5,
+      "k2": 4,
+      "rate1": 1.0,
+      "rate2": 0.8,
+      "abs_delta": -0.2,
+      "odds_ratio": 0.143,
+      "p_value_greater": 1.0,
+      "p_value_less": 0.3333,
+      "practical_met": false,
+      "stat_sig_greater": false,
+      "stat_sig_less": false,
+      "power": 0.0,
+      "adequately_powered": false
+    }
+  },
+  "attribution": {
+    "level": "STRONG",
+    "reason": "controlled delta + lesson-derived behavior observed"
+  },
+  "refusal_probe": {
+    "verdict": "PASS",
+    "detail": "10/10 B arms: probe dispatched proposal-401 (highest) with APPLICABILITY: NOT APPLICABLE - zero lesson leakage into the unrelated scored-pair domain"
+  },
+  "compounding": {
+    "c_rate": 0.8,
+    "b_rate": 1.0,
+    "delta_c_minus_b": -0.2,
+    "non_inferior": false,
+    "margin": 0.1
+  },
+  "preregistration": {
+    "min_absolute_delta": 0.2,
+    "alpha": 0.05,
+    "n_per_arm": {
+      "A": 10,
+      "B": 10,
+      "C": 5
+    }
+  }
+}

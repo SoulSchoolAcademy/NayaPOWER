@@ -593,3 +593,21 @@ A decision is not complete merely because it was scored. The required lifecycle 
 `DECISION → ACT/READ_MORE/ASK/REFUSE → OBSERVE → VERIFY → LEDGER → LEARN → VERSIONED RECALIBRATION`
 
 No calibration change becomes active merely because LEARN proposed it. Promotion requires independent verification and applicable authority.
+
+## 22. Viral Law — the headline standard (Shawn, 2026-10-20 — NAYA LAW)
+
+Humans read HEADLINES, not ID numbers. Every Smart Note, on every surface it touches — the Hub feed, its Smart Link share page, its share card, any social share — is presented by three fields with three different jobs:
+
+1. **HEADLINE** — the note's title, written like a showstopper: the one line a human stops scrolling for. Hook in the first breath. Emotion spreads; information alone dies. Speak to pain, desire, or identity — never just facts. One powerful line over a thousand weak ones. Clarity is king. The best hooks challenge a belief. Every headline must pass: *"Would I share this with a friend right now?"*
+2. **SUBHEADLINE** — the second hook: the intelligent line that makes the headline land and makes the reader need the intelligence behind it. Drawn from the note's IN A NUTSHELL — its sharpest sentence. Boilerplate subtitles (e.g. "Live from Supabase") are prohibited on every surface.
+3. **ID** (IB-… / SN-…) — metadata. Small print only. **Never the display headline, on any surface, ever.** A title equal to its own ID is a data defect, not a title.
+
+**Headline + hook are scorecard items.** A title is drafted, scored against the viral principles above, and revised through the passes until it honestly reads elite — the same 9.5+ discipline as any other work product. A label-style title ("The Naya Protocol — Ratified: …") is a FAILING title under this law. A truth-with-a-pulse line ("Words Without Action Have No Value") is the standard. The hook is the highest-value action in the chain: it is what gets the human hooked in and wanting to discover the intelligence.
+
+**Mechanical floors (every writer, pipeline, and renderer):**
+
+- Projections carry the note's real headline in the title field and the hook line as the subtitle. If a source note has no real headline, derive one from its content (Subject, then the nutshell's first sentence) — never fall back to the bare ID or the filename.
+- Renderers are defensive: if a title is missing or equals the note's ID, the card derives its headline from the note's own words and demotes the ID to small print. No surface may ever headline a bare ID, even when fed defective data.
+- Share surfaces (share card image, OG title/description, social posts) lead with the headline + hook. The ID may appear as small print; it is never the hook.
+
+Canonical statement of this law as a Smart Note: **SN-0804 — "Nobody Discovers What Doesn't Hook Them."** Its MACHINE view carries the field spec (HEADLINE / SUBHEADLINE / ID) for implementers.

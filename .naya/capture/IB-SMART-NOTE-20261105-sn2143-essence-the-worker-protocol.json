@@ -1,0 +1,38 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2143",
+  "title": "The Worker Protocol: Briefed Fully, Trusted Never, Corrected Collectively",
+  "slug": "essence-the-worker-protocol",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-worker-protocol.md",
+  "tone": "purple",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:51:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Work is delegated through a protocol, not through hope. The Worker Protocol specifies a nine-component brief — the worker receives everything it needs to succeed and nothing extraneous — and then refuses the obvious shortcut: agents must not trust agents (SN-0289). Every unit of work travels the chain WORKER → EVIDENCE → VERIFIER → SCORE → ACCEPT/REJECT, so the maker's word is never the proof of the maker's work (SN-0289). Value is defined with the sentiment removed: Value = Verified Useful Outcome ÷ Cost, which means undone, unverified or merely busy work scores zero no matter how much effort it displays (SN-0289).\n\nThe nine components, enumerated from SN-0289 so a cold reader can actually write the brief: (1) **Mission** — the exact outcome owned; (2) **Current-state reconstruction** — inspect live truth before acting; (3) **Authority boundary** — what the worker may and may not change; (4) **Execution contract** — the exact operation; (5) **Verification contract** — how the worker proves the work; (6) **Failure protocol** — handling for UNKNOWN / BLOCKED / CONFLICTED / STALE; (7) **Quality gate** — under 9 is not finished, 9.5 and above is AAA, 10 is the target (the same figures as SN-0288's Triple-A 9.5 minimum); (8) **Handoff** — evidence, state, and one next action; (9) **Learning** — capture the improvements (SN-0289). The brief is wrapped in two further structures SN-0289 names: the operating principle OWN → UNDERSTAND → ACT → VERIFY → LEARN → IMPROVE, and the six safeguard layers — HONOR + LAW + CONTRACT + AUTOMATION + EVIDENCE + INDEPENDENT VERIFICATION — because honor is the cultural layer, never the only safeguard (SN-0289).\n\nThe standard the worker is briefed against is the Triple-A Excellence Doctrine: honor scales with responsibility, and excellence is not a mood but a grade the work must earn under independent eyes (SN-0288). SN-0288 states the doctrine in its strongest early form — value as binary, with no neutral state. That framing was later corrected inside the corpus: SN-0291 establishes UNKNOWN as a first-class state (carried in the Scorecard Way essence). The correction is recorded here rather than smoothed: the binary claim stands in SN-0288's text, the UNKNOWN doctrine supersedes it in practice, and a verifier reconciling the two should follow SN-0291 (SN-0288, SN-0291).\n\nThe system the workers inhabit corrects itself as a collective, not as a collection of careful individuals. The self-correcting loop runs: mistake → visible → fix → teach → encode → never repeat — and the word \"self\" means the whole team: a lesson learned by one seat and not encoded for all is a mistake scheduled to recur in another seat (SN-0290). Visibility is the load-bearing step: a mistake that stays private cannot be taught, and a fix that is not encoded is a preference, not a repair (SN-0290).",
+    "human_view": "When work is handed to a helper, the handoff is a complete package — everything needed, nothing extra — and the helper's own say-so never counts as proof. Someone else checks the evidence and scores it. Mistakes aren't hidden or owned privately; they are made visible, fixed, taught to everyone and built into the system so they cannot happen twice.",
+    "child_view": "Imagine giving a friend a job with a perfect instruction card. When they finish, they don't get to grade their own homework — a checker looks at the real work and gives the score. And if anyone makes a mistake, the whole class learns from it, so nobody has to make the same one again.",
+    "grandma_view": "Dear, it's good workshop practice. You hand over a job with clear instructions, you check the finished work yourself instead of taking the worker's word, and you pay for results, not for effort. And when something goes wrong, you don't hush it up — you show everyone, fix it, and change the workshop so it can't go wrong that way again.",
+    "ai_view": "Brief with all nine components or do not dispatch; never accept a worker's self-report as evidence — route everything through an independent verifier and a score (SN-0289). Price your own output by the formula: if it is not a verified useful outcome, its value is zero regardless of the hours in it (SN-0289). When you err, run the collective loop in the same pass — make it visible, fix it, teach it, encode it — because an unencoded fix protects only you (SN-0290). Where SN-0288 and SN-0291 conflict on neutral states, follow SN-0291 and say so (SN-0288, SN-0291).",
+    "what_it_means": "Three notes define how a team of agents can be trusted at scale: complete briefs, zero self-certification, and mistakes converted into shared immunity. A cold reader holding only this essence can still brief a worker, verify a worker, and handle a failure correctly — which is everything the covered notes exist to teach.",
+    "whats_inside": [
+      "Delegation without the nine-component brief and an independent verifier is not delegation — it is abdication; the chain WORKER → EVIDENCE → VERIFIER → SCORE → ACCEPT/REJECT is mandatory (SN-0289).",
+      "A worker's output is valued only as verified useful outcome over cost; effort, activity and confidence are not inputs to the formula (SN-0289).",
+      "Errors are team property the moment they are found: visible first, encoded always, or the system has chosen to repeat them (SN-0290).",
+      "SN-0288's binary-value framing is superseded on the neutral-state question by SN-0291's first-class UNKNOWN — named here so no cold reader has to rediscover the contradiction (SN-0288, SN-0291)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-1"
+    ],
+    "covers": [
+      "SN-0288",
+      "SN-0289",
+      "SN-0290"
+    ]
+  },
+  "page_hash": "8b5f351464bbd35ad722a3e9633e46f212efbb6efe73632bcd28a79233e82382",
+  "content_hash": "66724c4b10c78f9c13c150716e7242faa39ec62198c8e772f9078aa13f6e26f7"
+}

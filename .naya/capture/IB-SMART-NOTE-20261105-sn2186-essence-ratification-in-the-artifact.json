@@ -1,0 +1,42 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2186",
+  "title": "Ratification Lives in the Artifact's Fields",
+  "slug": "essence-ratification-in-the-artifact",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-ratification-in-the-artifact.md",
+  "tone": "sapphire",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:17:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Authority in this system is a property of artifacts and explicit words — never of messages, placements, or enthusiasm. A merge commit message claimed RATIFIED while the artifact's own fields said `ratified: false`; the fields were right (SN-840, carried by Batch 1 and pointed to below). A file's internal claim of `status=RATIFIED` is likewise only a claim: a pin requires `ratified_by == 'Shawn Vibert'` plus the DIRECTOR-RATIFIED envelope keys (SN-843). A constitution placed on a PR is CANDIDATE until the ratifier's explicit word — placed ≠ law, and no lane declares hierarchy between competing canons (SN-934). Around those cores sit the working machinery: an exclusion-precedent chain that keeps unratified specs out of the pin manifest by name (SN-884), a precedence rule that lets a dated standing directive supersede a roster (SN-833), and a backfill discipline that records pre-guard ratifications honestly as `kind=backfill`, never dressed as elevations (SN-876).",
+    "human_view": "This is the system's law about law. Words like \"ratified\" are load-bearing — products get pinned, gates get trusted, teams obey — so the system refuses to let those words travel by rumor. A commit message cheering \"RATIFIED!\" doesn't make it so; the document's own official fields do. A beautiful new constitution uploaded to a branch doesn't govern anyone until the one person with the authority says the word. And when old approvals are entered into the new registry, they're labeled honestly as backfill — history recorded as history, not promoted into something grander.",
+    "child_view": "Imagine a permission slip. It only counts if the right grown-up signed it in the right box — not if someone wrote \"SIGNED!\" in big letters on the back, and not if the slip is just lying on the teacher's desk. A new rulebook sitting on the desk is just a *suggestion book* until the principal says \"this is our rulebook now.\" And the old rulebook stays in charge until that exact moment.",
+    "grandma_view": "It's deed-and-title law, dear. The house isn't yours because the seller said so at dinner; it's yours when the deed is executed with the right signatures in the right places. A draft will in a drawer changes nothing, the old will governs until a new one is properly executed, and nobody's nephew gets to declare which document outranks which. And when the clerk copies old records into a new ledger, she writes \"copied from the old book\" — she doesn't pretend they were issued yesterday.",
+    "ai_view": "Before pinning anything: verify `status == RATIFIED` in the envelope, `ratified_by` by name, and the DIRECTOR-RATIFIED keys — never pin by filename resemblance (SN-884, SN-843). For anything CANDIDATE, write the exclusion-with-reason and cite the precedent chain in the decision record (SN-884). When a claim fails at a new tip, rewrite the exclusion reason to the new facts; verify the real check on exact tip bytes; don't merge your own repair (SN-843). Name every placed law's truth state in the same comment that places it; run the ratified law until ratification supersedes it; execute unverified-authority orders as CANDIDATE with the caveat recorded (SN-934). Resolve authority conflicts by the precedence order, correcting openly with verbatim citation before work hardens (SN-833). Record historical ratifications as backfill with real dates + hashes; keep the audit's no-pass-when-blind exits (SN-876).",
+    "what_it_means": "Five notes draw the boundary between *claiming* authority and *holding* it, at every surface where the two get confused: commit messages, file contents, branch placements, execution orders, and registry backfills. The common mechanism is to make authority a machine-checkable property of the artifact plus one human's explicit word — everything else is a claim, and claims get the CANDIDATE handling: provisional operation, provenance caveat, no downstream citation as law. This is also where the campaign's own stands-alone rule comes from: an essence may point at an authority instrument, but absorbing it would be exactly the category error these notes exist to prevent.",
+    "whats_inside": [
+      "Manifest pins are RATIFIED projections only; CANDIDATE specs get exclusion-with-reason citing the 0003/0013/0014/0006 chain by name (SN-884).",
+      "A scorecard claiming a gate fix must run the gate on exact bytes; pins-matching is theater (SN-884).",
+      "Pin eligibility is mechanical: `ratified_by == 'Shawn Vibert'` + DIRECTOR-RATIFIED envelope keys; internal status text is a claim; failed claims keep the exclusion with a freshly rewritten reason (SN-843).",
+      "PLACED ≠ LAW: candidate canons run provisionally under the previously ratified law; hierarchy between canons is the ratifier's call alone; auto-capture ≠ auto-ratify (SN-934).",
+      "Precedence: dated standing directive > roster > lane post; corrections are open, cited, and fast (SN-833).",
+      "Pre-guard ratifications record as `kind=backfill` with real dates and verified hashes; the audit has no pass-when-blind exit (SN-876)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-4"
+    ],
+    "covers": [
+      "SN-833",
+      "SN-843",
+      "SN-876",
+      "SN-884",
+      "SN-934"
+    ]
+  },
+  "page_hash": "a978347842919099f942a952a2c350366ba33ccaea03a87448442e22c6edc8d6",
+  "content_hash": "5bc8471aa8b93db3e50f91eb95608019a249b5c9b3f83ab9a109d66aafb64db2"
+}

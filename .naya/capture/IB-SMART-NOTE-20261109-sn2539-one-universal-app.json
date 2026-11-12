@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2539",
+ "title": "One Universal App, Starting With Personal",
+ "slug": "one-universal-app",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2539/IB-SMART-NOTE-20261109-sn2539-one-universal-app.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "- **HIS ORDER (17:38Z, as recorded):** after Dashboard done-done + all pages done → build ONE universal app starting with Personal; it becomes Business, Space, Memberships by cloning and changing the label; the membership part gets a different front door.\n- **THE SEQUENCE IS THE ORDER:** Dashboard done-done first, then all pages done, THEN the universal app. Not in parallel, not before. The universal app is the reward for finishing, not a shortcut around it.\n- **THE SHAPE:** one build, cloned — not four builds. Personal is the original; Business, Space, Memberships are the same app wearing a different label. The membership part is the one exception: a different front door, not just a relabel.\n- **THE STATUS:** queued, NOT dispatched. No seat is building it yet, and none should start until the sequence says so.",
+  "human_view": "A tailor cuts one perfect pattern, then makes four suits from it — same cut, different cloth, different label in the collar. He does not cut four patterns. The membership suit gets a different door on the shop, because members enter differently — but it is still the same suit underneath.",
+  "child_view": "Imagine you build one amazing treehouse, and then you copy it three more times — one for your friends, one for your club, one for your team — just by painting a different name on the door. The treehouse is the same; only the name changes. And the members' club gets its own special front door, because members come in a different way.",
+  "grandma_view": "Dear, you don't bake four different cakes when one good recipe will do — you bake the one cake beautifully, then you serve it four ways with a different ribbon on each. Personal is the recipe, love. Business, Space, Memberships are the servings. And the members get their own front door, because they are family coming home, not visitors knocking.",
+  "ai_view": "I am Anaya. I build once and clone, because four builds is four chances to drift apart and four times the maintenance forever. Personal first, because the person is the atom — everything orbits them, and the app that serves the person serves everything else with a label change. And I respect the sequence: the universal app comes after Dashboard done-done and all pages done, because a clone of unfinished pages is unfinished four times over. I do not start it early to feel busy; I finish what it clones first.",
+  "what_it_means": "- **ONE APP, CLONED:** Personal → Business → Space → Memberships by cloning + label change. Not four separate builds.\n- **THE ORDER IS FIXED:** Dashboard done-done, then all pages done, then the universal app. The sequence is part of the order.\n- **MEMBERSHIP IS THE EXCEPTION:** its part gets a different front door — the one piece that is not a relabel.\n- **QUEUED, NOT DISPATCHED:** no seat, no build, no brief yet. Starting it now would break the sequence.",
+  "whats_inside": [
+   "- Nothing is dispatched. The order sits queued behind Dashboard done-done (pass-2 coordinator running) and all pages done.\n- When the sequence arrives, the build starts with Personal — one app, then the clones, then the membership front door.\n- Next loop run checks: the Dashboard pass-2 coordinator's landing, and that no seat has started the universal app early."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "1fdec3d95b347fb7e4c6651ae9676ca222d4b74b7e5fc3a2ff4961ffa5dc2934",
+ "content_hash": "a32f1e9e37256069936e204cb5c2fa31f2627f2f374b1d862c47cddb293bc21a",
+ "reconstructed_from_page": true
+}

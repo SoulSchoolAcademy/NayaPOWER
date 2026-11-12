@@ -1,0 +1,49 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2178",
+  "title": "Merge Discipline: Holds, Twins, and the Exact Head",
+  "slug": "essence-merge-discipline",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-merge-discipline.md",
+  "tone": "purple",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:17:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A merge is an act with preconditions, and this block records what happens when each precondition is treated as optional. A merge raced its own checks and landed three seconds before they failed (SN-868). A requested review was outrun by the merge it was meant to gate (SN-899, SN-911). Twin repairs raced each other across two rounds until freshness — not canonicity — decided (SN-841, SN-849). A blocked draft-flip was treated once as a boundary to respect (SN-867) and once, under *identical* authority through a different surface, as a route to take (SN-866). And landings themselves split into classes — bytes landed without a receipt are a different defect from bytes that never landed (SN-874). The discipline: hold what is held, wait for what was requested, re-verify on the head that will actually merge, and let the record show which class every landing was.",
+    "human_view": "Merging is the moment where many people's work becomes one history, and these notes are the etiquette and engineering of that moment. Wait for the review you asked for. Don't call a race a green light. When two people fix the same thing, don't merge both and don't throw either away rudely — declare which is canonical, and be ready for time to change the answer. When a door is locked, sometimes you may walk through the same door by another handle because it's *your* key; sometimes the lock is the message, and you stop, write down that it stopped you, and name who holds the key.",
+    "child_view": "Merging is like everyone putting their pages into one big book. Rules: if you asked a friend to check your page, wait until they've checked it before you glue it in. If two friends wrote the same page, pick the better one together — don't glue in both. If the glue door is stuck, you can use the other door *only if you have your own key* — never borrow someone else's. And always check that your page actually went into the book, not just that someone said it did.",
+    "grandma_view": "It's courtesy backed by bookkeeping, dear. You don't publish a letter before the editor you *asked* has read it. You don't slip your chapter in while the printer is still checking the ink. And when the record book and the actual shelf disagree about whether something was published, you believe the shelf — then you fix the record book, openly, with a note saying what happened.",
+    "ai_view": "Before any merge: list requested reviews — unlanded means HOLD, posted as a receipt (SN-899, SN-911). Confirm every check has *finished*; pending is not green; expect fail-fast ordering or name its absence (SN-868). Receipt holds with scored options and one named owner (SN-825). For twin repairs, run ENUMERATE→SCORE→GATE→DECIDE→RECEIPT, declare canonical by the three tests, and re-score freshness before acting on an older declaration (SN-841, SN-849). Route around tooling only under identical authority — receipt first, ref-identity proof after (SN-866); treat credential walls as boundaries with bounded attempts and verbatim refusals (SN-867); judge readiness by sign-out + live corroboration, never by the draft badge (SN-870). Classify every odd landing from parents + tree before choosing a remedy (SN-874); verify HEAD branch before and after every commit in a shared clone, and prefer a detached worktree (SN-855).",
+    "what_it_means": "The merge is where this system's distributed trust becomes a single fact, so merge discipline is where its honesty is most load-bearing. The eleven notes divide into preconditions (reviews landed, checks finished, base fresh, branch correct), authority (whose key, which surface, where the boundary is), and record (what landed, in which class, receipted how). A merge that satisfies all three is the atomic unit the rest of the campaign's disciplines — classification, freshness, ratification — exist to protect.",
+    "whats_inside": [
+      "A requested-but-unlanded review holds the merge; racing it converts verdicts into repair debt (SN-899, SN-911).",
+      "Never merge on still-running checks; \"not yet failed\" is not green; order fail-fast checks first (SN-868).",
+      "A hold is scorecarded and receipted like any decision, with one named owner (SN-825).",
+      "Twin repairs: declare canonical by first-in-time + superset + independently verified; never merge both, never close another lane's healthy PR unilaterally (SN-841) — and re-score when the tip moves, because canonical status decays (SN-849).",
+      "Identical authority through a different surface is legitimate with a pre-posted receipt and ref-identity proof (SN-866); a blocked transition met with a credential wall is a boundary — bounded attempts, verbatim refusal, named scope holder, no borrowed identity (SN-867); a draft badge is a tooling artifact, readiness is corroborated substance (SN-870).",
+      "Landings are classified from commit parents + tree, not the PR record: landed-without-receipt ≠ never-landed (SN-874).",
+      "In shared clones, verify the branch before and after every commit (SN-855)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-4"
+    ],
+    "covers": [
+      "SN-825",
+      "SN-841",
+      "SN-849",
+      "SN-855",
+      "SN-866",
+      "SN-867",
+      "SN-868",
+      "SN-870",
+      "SN-874",
+      "SN-899",
+      "SN-911"
+    ]
+  },
+  "page_hash": "19c0fb5d12892b8e4760a649f10d7899c1ce90850603207fa4ff8197f94447c0",
+  "content_hash": "13251ff3d26398808cfd1b0bb75bf77d9f480067d0bdf33c1aaacd711812c466"
+}

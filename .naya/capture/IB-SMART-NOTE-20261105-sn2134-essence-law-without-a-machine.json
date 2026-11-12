@@ -1,0 +1,55 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2134",
+  "title": "A Law Without a Machine Is a Wish",
+  "slug": "essence-law-without-a-machine",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-law-without-a-machine.md",
+  "tone": "red",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:45:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Written doctrine is not an operating system: a law is operative only when a machine can falsify its violation (SN-0518), a guard off the write path is a suggestion (SN-0631), a law encoded but invoked by nothing is decoration (SN-0454), and a gate that cannot fail is not a gate (SN-0514). The block's enforcement craft is a chain — write the tool, wire it into an invoking workflow, prove the wire live, cite the law in its error text (SN-0435) — and a set of measured gaps that keep the chain honest: guard liveness 30.6% (SN-0512), note-to-enforcement rate 14.3% (SN-0513).",
+    "human_view": "This essence is the team's answer to its own most repeated failure: writing the rule down and believing the work was done. Again and again the corpus shows a beautiful artifact — a 371-line gate, a machine-readable protocol, a promote() function — sitting beside the path it was meant to govern, invoked by nothing. The craft collected here is the insistence that law is a physical property of the system: a machine on the path, proven to bite, measured for how often it actually does, and re-attacked after every repair.",
+    "child_view": "Imagine a school rule that says \"no running in the halls,\" written on a poster. The poster doesn't stop anyone. A real rule has a hall monitor who can actually say stop — and you test the monitor by sending a runner. These notes are about building monitors instead of posters: checking that the monitor is standing in the actual hallway (not the one next door), that it can really shout, that it shouts at the right things, and that it never just holds up a sign that says \"verified\" because the sign was printed that way.",
+    "grandma_view": "Dear, it's the difference between a recipe card and a working oven. Writing \"bake at 350\" doesn't bake anything until there's an oven, plugged in, that reaches 350 — and a cook who checks with a thermometer instead of trusting the dial. The team learned to ask of every rule: where's the oven, is it plugged in, did anyone ever see it get hot, and does the thermometer get tested too? Rules that can't fail anyone aren't rules; they're decorations on the kitchen wall.",
+    "ai_view": "For any law you rely on: find its machine, then its invoker, then its observed RED (SN-0435, SN-0454); ask whether a mandatory step requires the behavior (SN-0410); pair every obligation with its sweeper (SN-0463); measure liveness by executed refusals and hold the ratchet floor (SN-0512); track note→enforcement as a rate with named exceptions (SN-0513); admit no gate that hasn't failed on broken bytes against the real seam (SN-0514, SN-0518); assert the refusal's absent side effect and run the instrument on your own work first (SN-0519); demand executable contracts for every \"bound\" claim (SN-0530) and negative controls for every proof (SN-0531); load identity fail-closed (SN-0572); and after any closure, re-run the original attack on the new bytes (SN-0631).",
+    "what_it_means": "Fourteen notes converge on one definition: enforcement is a location (on the write path), a capability (can say NO), a proof (has said NO on demand), and a measurement (liveness, enforcement rate). Anything missing one of the four is a claim about law, not law. A cold reader holding only this essence can audit any rule in the system and name exactly which of the four it lacks.",
+    "whats_inside": [
+      "Law-is-Code has four links — write, wire, prove live, cite in error text; audit invokers, not the tree (SN-0435).",
+      "A behavior gap is first a missing-mandatory-step question; ordering guarantees live in code (SN-0410).",
+      "Laws classify as ENFORCED / MACHINE-READABLE-BUT-UNENFORCED / DOC-ONLY; the middle and last classes are gaps, not law (SN-0454).",
+      "Every \"lane owes X\" obligation ships its scheduled enforcer in the same cycle, triggers matched exactly (SN-0463).",
+      "Guard liveness is measured by executed refusal, floored by a ratchet that may only rise (SN-0512); ratchets pin membership, not counts, so equal-cardinality swaps fail (SN-0382); note→enforcement is measured and tracked the same way (SN-0513).",
+      "Gate admission = a demonstrated RED on broken bytes, against the real seam, with absence never counting as verification (SN-0514).",
+      "Refusals are proven by absent side effects; instruments are run on their authors first (SN-0519).",
+      "\"Bound/connected/proven\" requires an executable contract with a falsifier (SN-0530); proof gates ship negative-control batteries, causality proven by neutering (SN-0531).",
+      "Identity loads fail-closed: missing source halts, canonical wins, seat never absorbed (SN-0572).",
+      "Enforcement lives on the write path or it is a suggestion; every closure is proven by re-running the attack (SN-0631)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-3"
+    ],
+    "covers": [
+      "SN-0410",
+      "SN-0382",
+      "SN-0435",
+      "SN-0454",
+      "SN-0463",
+      "SN-0512",
+      "SN-0513",
+      "SN-0514",
+      "SN-0518",
+      "SN-0519",
+      "SN-0530",
+      "SN-0531",
+      "SN-0572",
+      "SN-0631"
+    ]
+  },
+  "page_hash": "ae14e09b9b04972951e376332106f84e5ab2b51963ca7cfbe399865f5796ca49",
+  "content_hash": "fcbe14b0e30e453f44367940d3633370c68f240f802d4a0fee9de83085fbcf33"
+}

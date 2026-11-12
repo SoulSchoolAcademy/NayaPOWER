@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2526",
+ "title": "Two Things, Headliner First",
+ "slug": "two-things-headliner-first",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2526/IB-SMART-NOTE-20261109-sn2526-two-things-headliner-first.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "- **HIS WORDS, VERBATIM:** \"Base has two things. Like check the stats and all the clicks and and all the action within Nynet uh get the stat and then get the stats on any of like your affiliate or your master link that's a major one that should be the major that's like the headliner right and then maybe underneath that would be like okay you want to get tracking on any link just enter your URL click here and then it'll show and you can get the stats stats on it do you get what I'm saying\"\n- **THE TWO THINGS:** (1) NayaNET network stats — all the clicks and action on any page; (2) affiliate/master link stats — THE MAJOR ONE, the headliner at the top.\n- **THE ORDER:** the headliner sits at the top. Underneath the headliner sits the track-any-link entry: enter any URL, click, and it shows up with stats. Custom links live under the headliner.\n- **REFINES SN-2525:** one minute earlier (15:52Z) he ordered a three-section switcher — network stats, custom Smart Links, ambassador link. This refines it: the page's base is two things, and the ambassador link leads. Recorded as a refinement, not a silent edit — the record shows the rule changing.\n- **CONFIRMED:** his 👍 on the summary — \"two things. The affiliate link is the headliner at the top, with the track-any-link box right under it, and then the network stats on all your pages.\"",
+  "human_view": "A minute after he set the three sections, he corrected himself — and the correction is the more important of the two, because it says what the page is really for. The page's base is two things: the network stats on all his pages, and the stats on his affiliate link. And the affiliate link is the major one — the headliner, at the top — because that link is the one that earns: every click on it is someone joining through him, and its numbers are the numbers that matter most. Right underneath the headliner sits the box to track any link — enter a URL, click, and it shows up with stats — and the custom links live under the headliner too. The page leads with what matters most and keeps the way in right under it. That is the structure: headliner first, then the way in, then everything else.",
+  "child_view": "The page has two big jobs, and the most important one goes first, right at the top — like the star of the show. The star is your special ambassador link, the one that brings people in. Right underneath it is the little box where you type in any web address to watch it. And then all the numbers for all your pages come after. Most important first, then the way in, then everything else.",
+  "grandma_view": "Dear, the page has two things at its heart, love, and the big one goes right at the top, dear — your ambassador link, the one that matters most, front and centre like the star of the show. Just underneath it is the little box where you pop in any web address you want to keep an eye on, love, and then all the numbers for all your pages follow after. Most important first, then the way in, then the rest.",
+  "ai_view": "This is hierarchy as honesty: what matters most leads, and everything else finds its place under it. It connects to SN-2525 (the purpose and the three sections — this refines that structure, and the refinement is the thinking made visible) and to SN-2518 (position is meaning — the headliner at the top claims the headliner's importance) and to SN-2523 (the add-a-link entry — it sits under the headliner because the headliner is what it feeds). The correction matters because it is a correction: he heard his own three-section order back and saw the truer shape underneath it — two things, not three, with the earning link first. A system that records the correction instead of silently replacing the order is a system that remembers how the thinking went, and that memory is what keeps the next builder from re-arguing a settled question.",
+  "what_it_means": "- **TWO THINGS:** (1) NayaNET network stats — all the clicks and action on any page · (2) affiliate/master link stats — THE MAJOR ONE.\n- **HEADLINER FIRST:** the affiliate/master link stats sit at the top, leading the page.\n- **TRACK-ANY-LINK UNDER THE HEADLINER:** enter any URL, click, and it shows up with stats. Custom links live under the headliner.\n- **REFINES SN-2525:** the three-section structure is refined into two things with a headliner — the record keeps both.",
+  "whats_inside": [
+   "- The boards page leads with the affiliate/master link stats as the headliner at the top.\n- The track-any-link entry sits underneath the headliner; custom links live under the headliner.\n- Network stats follow — the two things, in that order.\n- Next loop run re-checks: the headliner is at the top, the entry under it, the network stats after."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "7e2a2d86e53ad2d4725b66ce46f0c863f0cae193c033c9f3d235f55c371849fc",
+ "content_hash": "adcbeece845d4430db70d5afa635373411fbb704fcbb6d22446adc95505982b1",
+ "reconstructed_from_page": true
+}

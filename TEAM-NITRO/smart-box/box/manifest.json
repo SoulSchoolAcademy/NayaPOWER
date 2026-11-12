@@ -1,0 +1,45 @@
+{
+  "bake": {
+    "bytes": 5020384,
+    "generated_from": "registry@03e470aa",
+    "notes": 656,
+    "output": "hub-feed-live.json",
+    "recorded": "by hash only - the 5 MB derived output is rebuilt by re-running build_feed_live.py; the hash proves the rebuild matches",
+    "sha256": "ae7c674a64862cd3db657d30c51f81b09ea0962db390fbf0857f8eaae19dcf11",
+    "source_path": "/home/hatch/workspace/factory-pipeline/hub-feed-live.json"
+  },
+  "files": {
+    ".sync-heartbeat.json": {
+      "bytes": 131,
+      "heartbeat": {
+        "errors": 0,
+        "parser_version": "feed-truth-2026-10-20-v4",
+        "skipped": 1519,
+        "synced": 0,
+        "ts": "2026-11-09T19:24:50.065348+00:00"
+      },
+      "sha256": "a9645f6766ed498445f44f6867f0f4db9aa6279471cf29f0be35d403f5f38d82",
+      "source_path": "/home/hatch/workspace/factory-pipeline/.sync-heartbeat.json"
+    },
+    ".sync-state.json": {
+      "bytes": 298217,
+      "files_tracked": 1519,
+      "parser_version": "feed-truth-2026-10-20-v4",
+      "sha256": "5df6cb437b6b381aff262d6ec5b33ba4eb535e7f4174d8a8b974f909d560d21f",
+      "source_path": "/home/hatch/workspace/factory-pipeline/.sync-state.json"
+    }
+  },
+  "kind": "sync-state-in-box",
+  "scripts": {
+    "build_feed_live.py": {
+      "bytes": 31658,
+      "sha256": "e4869f2c6985565f908d8e56e07aa8704d2c4fffaafb4a9cef4d89b24caef4ed",
+      "source_path": "/home/hatch/workspace/factory-pipeline/build_feed_live.py"
+    },
+    "sync-smart-notes.py": {
+      "bytes": 57727,
+      "sha256": "2973d9b9527af30eb87fd32839fe263ae74aab276ce0fb73ebb1192b782278b9",
+      "source_path": "/home/hatch/workspace/factory-pipeline/sync-smart-notes.py"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+/* Smart Block: report/verdict
+ * Source: Naya Design Element Set N4.html (byte-true extraction, not rewritten)
+ * Type: report
+ * Extracted: 2026-10-09
+ */
+
+.verdict{font-family:var(--voice); font-size:24px; font-weight:600; text-align:center;
+  color:#fff; line-height:1.25; margin:10px 0 8px;
+  text-shadow:0 2px 12px rgba(0,0,0,.8), 0 0 40px rgba(255,212,90,.22);}
+
+.verdict strong{color:#ffd45a;}
+
+.verdictsub{text-align:center; font-size:14px; letter-spacing:.24em; color:#fff; opacity:.7; margin:0;}
+
+/* :root {
+  --voice: "Cormorant Garamond",Georgia,serif;
+} */

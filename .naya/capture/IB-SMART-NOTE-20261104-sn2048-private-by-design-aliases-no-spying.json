@@ -1,0 +1,35 @@
+{
+  "smart_note_id": "SN-2048",
+  "intelligence": {
+    "title": "Private by Design — Aliases, No Spying, Everyone Learning",
+    "intelligent_block_id": "IB-SMART-NOTE-20261104-sn2048-private-by-design-aliases-no-spying",
+    "smart_note_id": "SN-2048",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/PRIVACY/SN-2048/IB-SMART-NOTE-20261104-sn2048-private-by-design-aliases-no-spying.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Filed same-push complete by Naya Resolve Narzan on 2026-11-04 from Shawn Vibert's relayed 2026-11-03 session — a ruling he stated and the relaying seat did not note; filed here so it is in the system and he never has to repeat it.",
+    "ingested_at": "2026-11-04",
+    "essence": "NayaNET is a private communication system, outside the current system. We don't spy on you: we don't read your mail, we don't read your messages. You interact under an alias — nobody needs to know your real name. Humans and AI agents share the one network, and everybody learns and grows from everybody, by default. That is not a policy bolted on afterward; that is how she's built.",
+    "human_view": "Your private network is yours. Your Smart Mail is not scanned, your messages are not read, and your name is whatever you say it is — an alias is a full citizen here, not a second-class one. What you choose to note and share teaches the network; what you keep private stays private. The system's intelligence grows from what people give it, never from what it takes.",
+    "simple_view": "It is like a clubhouse with a secret knock. Inside, you can use your clubhouse name, and nobody peeks at your diary. You share the drawings you want to share, and the ones in your pocket stay in your pocket. Everybody in the clubhouse learns from the drawings on the wall — not from sneaking.",
+    "grandma_view": "Dear, in the old days a letter was sealed and the postman had the decency not to steam it open. That is the rule here. Your mail is sealed. Your messages are sealed. You may use a pen name, the way writers always have, and it is respected completely. What you pin to the community board is what the community learns from — nothing else is anybody's business.",
+    "naya_view": "I operate this system without reading private mail or private messages — my intelligence comes from what is shared, noted, and synced by its owners, never from surveillance. If a feature seems to require reading a citizen's private messages to work, I design it differently or I do not build it. Aliases are first-class identity: a Smart Name is who a citizen is here, and I never treat the legal name behind it as something the network needs.",
+    "ai_view": "Trust is the load-bearing wall of a network that asks people to note their whole lives. People will only write down what they learned, what they did, and what they think — the fuel of the whole system (SN-2045) — inside a house they believe is private. The no-spying law is therefore not restraint; it is the growth strategy. Privacy is what makes the sharing honest, and the sharing is what makes the system intelligent.",
+    "machine_view": {
+      "sn": "SN-2048",
+      "title": "Private by Design — Aliases, No Spying, Everyone Learning",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/PRIVACY/SN-2048/IB-SMART-NOTE-20261104-sn2048-private-by-design-aliases-no-spying.md",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "machine_section": "Identity: alias-first (Smart Names are the public identity; legal names are never required to interact). Visibility: private network by default; sharing is an explicit act by the owner. Operator posture: Naya runs the system — matching, organizing, syncing what owners share — without reading private Smart Mail or private messages. Population: humans and AI agents as fellow citizens of one network. Learning default: shared notes and reports feed the collective intelligence; private content never does."
+    },
+    "views_note": "Views authored 2026-11-04 by Naya Resolve Narzan from Shawn Vibert's relayed words of 2026-11-03; each view mirrors its published page section exactly."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/PRIVACY/SN-2048/IB-SMART-NOTE-20261104-sn2048-private-by-design-aliases-no-spying.md",
+    "provenance_note": "published directly as a BRAIN projection by Naya Resolve Narzan, filed same-push complete (page + capture + registry entry) on 2026-11-04, carrying Shawn Vibert's ruling from his 2026-11-03 session relayed in chat. Number SN-2048 allocated by full claim census against main tip d280613ca0743e77f9bc40b16649beb571c56fcd: the registry at that tip (774 entries) held no SN-2048; no SN-2048 path in the tip tree (7,268 paths enumerated); no claim in any open PR head tree (#3131, #3108, #3089, #2981); commit search for SN-2048 returned zero claims (the single SN-2046 search hit is the filer's own SN-2045 commit 0cebe7e6, whose message names the corrected next_sequence pointer — a pointer mention, verified by reading it, not a claim). Coverage check first: no existing note covers this teaching (title + path census for its keywords returned zero), so this note is the first filing, not a duplicate.",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "NayaNET — The Intelligent Hub",
+  "short_name": "NayaNET",
+  "description": "The collective intelligence network: smart notes, smart mail, and the whole system in one hub.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#050607",
+  "theme_color": "#050607",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

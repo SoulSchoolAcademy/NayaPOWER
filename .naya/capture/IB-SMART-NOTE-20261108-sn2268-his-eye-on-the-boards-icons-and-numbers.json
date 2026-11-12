@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2268",
+ "title": "His Eye on the Boards — Icons and Numbers, Demo So You Can See It",
+ "slug": "his-eye-on-the-boards-icons-and-numbers",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2268/IB-SMART-NOTE-20261108-sn2268-his-eye-on-the-boards-icons-and-numbers.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Scrolled down to \"Your world, board by board,\" his eye found the sixth thing. The Dashboard board has numbers (844 clicks, real). Personal, Business, and Space have dashes — no clicks, no real stats, page tracking not connected — and instead of numbers they have grey explanatory text: \"page tracking connects soon — views, clicks and conversions are not measured yet,\" \"numbers not yet,\" over and over, little grey text on black. Three things change:\n\n1. **Demo numbers on the empty boards.** For the presentation, the boards show demo — plausible, varied values, different digit counts — so he can see what it looks like for real, even though there's no stats. Marked as demo in the smallest honest way (a tiny DEMO tag), so real stats are never faked. The Dashboard board's numbers are real and stay real.\n2. **All the grey text goes.** The apologies, the descriptions, the \"not yet\" lines — stripped from every board. Boards become icon + name + numbers + the two actions (Show on gauge, Open) as buttons. Nothing else. The visual speaks for itself.\n3. **The numbers are the focus.** Big, tiled — the locked Ultimate Number tiles, same anatomy as the hero — zoomed in, extraordinary. Keep it simple, and make the numbers the thing you look at.\n\nHe approved one thing in the same breath: \"the four is green. That's fine.\" The green 4 stays. The mini-tile colours are intentional and consistent — verified, not changed.",
+  "human_view": "Imagine you walk into a showroom and three of the four cars have no engines — just a little grey note on each one saying \"engine connects soon.\" You can't tell what the car drives like. So you put a demo engine in, so the buyer can see it run, and you take the little grey notes off, because a car doesn't need a paragraph — it needs to be seen. That is the board: the number IS the presentation. The icon says which world it is. The number says how it's doing. Nothing else needs saying.",
+  "child_view": "Only the first board has numbers. The other three are empty with little grey words saying \"not yet.\" Put pretend numbers in the empty ones so you can see what they look like when they're full — and take all the grey words away. Just the picture and the big numbers. The numbers are the star of the show.",
+  "grandma_view": "The top board shows its numbers, beautiful and clear. The others show dashes and little grey explanations about why they're empty. Don't explain — demonstrate. Put sample numbers in, so you can see what the board looks like when it's alive, and take the grey words away. Just the little picture and the big, beautiful numbers. Simple is beautiful.",
+  "ai_view": "This is the same eye, the same session, the same law — and it sharpens two things I already knew. First: the number is the presentation. Everywhere numbers appear, they appear as the tiled Ultimate Number, and the board is no exception — the board's numbers must be as extraordinary as the hero's, because the board IS the hero, repeated four times. Second: honesty and presentation are not enemies. Demo numbers are not fake stats — they are a demonstration, marked as one, in the smallest honest way. The grey text was doing the opposite of honesty: it was apologising for the absence instead of showing the presence. The fix removes the apology and shows the thing. The Dashboard board proves the pattern works — its 844 is real, its tiles are green, its presentation is clean. The other three boards now follow the same pattern with demo values until their tracking connects. And the green 4 he approved is the proof that the board tiles already carry their colour correctly — the check is to verify the intention, not to change what he blessed.",
+  "what_it_means": "- **Demo is how you present what isn't live yet.** An empty board with dashes and apologies tells him nothing. A board with demo numbers shows him everything. The presentation must be seeable before the data is real.\n- **Grey text on black is not presentation.** Little grey explanations are the opposite of the intelligent-block presentation — clean, scannable, visual. If it needs a paragraph, the visual has failed.\n- **Icons and numbers only.** The icon says which world. The number says how it's doing. The two buttons say what you can do. That is the whole board.\n- **The numbers get the zoom.** Bigger, tiled, extraordinary — the same anatomy as the hero, because the board is the hero at a smaller scale.\n- **The green 4 is approved.** Don't fix what he blessed. Verify the mini-tile colours are intentional; change nothing he approved.",
+  "whats_inside": [
+   "1. **Fix pass 5, fix 6 of 6 (sent 01:41Z)** — demo numbers on the empty boards (marked demo, smallest honest way), all grey explanatory text stripped, boards reduced to icon + name + numbers + two buttons, numbers big and tiled and the focus. Dashboard board's real numbers untouched. Green 4 approved and unchanged.\n2. **The board is now a presentation standard.** Any board with no real stats shows demo, marked; no board ever shows dashes + grey apologies again.\n3. **The merge still waits.** His eye has not passed the page. Fix pass 5 lands, re-verify runs, his eye returns."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "e45ade462f77e7bb0b8489fcfad2c451ed6b3e28b55de0428288e0e9f4d26013",
+ "content_hash": "8cc7a97f1b0b85528d3b9b0f91393bf6f1866546293920e903b4d4f0712fd85d",
+ "reconstructed_from_page": true
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2131",
+  "title": "Read the Verdict Before You Trust It",
+  "slug": "essence-read-the-verdict",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-read-the-verdict.md",
+  "tone": "emerald",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:45:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A CI verdict is a sentence with grammar, and most misreadings are grammar errors: skipped is not failed (SN-0379), a green check on a stale base is void (SN-0423), a parity RED between merge and promotion is the cycle working, not a regression (SN-0396), a skip behind a RED can hide a second RED (SN-0552), and a gate rejecting a 41-character SHA is the validator working, not broken (SN-561). Classify before healing — with the base tip's own push-event runs as the control (SN-0535) — or the repair budget lands on the one component that was working.",
+    "human_view": "CI speaks in verdicts — green, red, skipped, clean — and this block learned, expensively, that each word has a precise meaning that punishes casual reading. Teams wasted repair effort on working validators, nearly merged drift under fresh-looking green, and missed second failures hiding behind first ones. This essence is the grammar book: how to read any automated verdict exactly, classify it against a control, and only then decide what — if anything — to fix.",
+    "child_view": "Imagine a school report that uses three stamps: PASS, FAIL, and DIDN'T TAKE THE TEST. Treating \"didn't take it\" as a fail is unfair; treating it as a pass is cheating. And if the test was last year's version, a PASS on it proves nothing about this year's class. These notes teach you to read the stamps exactly: which test, which version, who actually sat it — and to check the classroom next door too, because a second problem can hide behind the first one's noise.",
+    "grandma_view": "Dear, it's like reading a medical chart: \"test not run\" is not \"test clear,\" an old X-ray doesn't describe today's bones, and a machine beeping at a malformed sample is doing its job, not malfunctioning. The team learned to read the whole chart — every test, on the current patient, against the healthy baseline — before prescribing anything. Half of good diagnosis is refusing to misread the results you already have.",
+    "ai_view": "For every verdict you consume: name its class before its color (SN-0379, SN-0442); ask what skipped behind it (SN-0552); pin it to its (head, base) pair and void it if the base moved (SN-0423); read the base tip's push-event runs as your control (SN-0535); check whether the red is the cycle (SN-0396), the outside world (SN-0380, SN-0383), a holdout's first breath (SN-0427), a producer that never ran (SN-0430), or a projector's skipped regen (SN-0557); verify the success check asserts semantics, not proxies (SN-0384), and that execution — not static analysis — proved the module graph loads (SN-0543); and when a gate says no, read its input bytes before its code (SN-561).",
+    "what_it_means": "Fourteen notes build a single literacy: verdicts are evidence with scope, freshness, and class — and an unscoped, stale, or misclassed verdict is not evidence at all. A cold reader holding only this essence can classify any red or green the fleet produces and route the response correctly, which is most of what CI triage actually is.",
+    "whats_inside": [
+      "Three verdict classes everywhere: SUCCESS / FAILED-CANCELLED / SKIPPED-as-UNKNOWN; a skip is classified by cause before it is scored (SN-0379, SN-0442).",
+      "On a RED tip, enumerate what skipped behind the visible RED — a skip is a hiding place, not a verdict (SN-0552).",
+      "CI evidence is pinned to its exact (head, base) pair; mergeable is a shape claim, never freshness (SN-0423).",
+      "Classify every red against the base control — the base tip's own push-event runs — before healing, and route the heal to the owning lane (SN-0535).",
+      "Drift has three classes: PR-introduced, base-inherited, projector-commit-introduced (SN-0557).",
+      "Parity RED between merge and promotion is cycle-expected: promote, don't repair (SN-0396). External contamination is classified external, routed fail-closed (SN-0380, SN-0383).",
+      "A holdout's first execution is a new surface; enumerate check-runs across all workflows on the tip SHA (SN-0427, SN-0430).",
+      "The success check asserts the semantic requirement, never a proxy (SN-0384); static checks have blind spots only execution closes (SN-0543).",
+      "A fail-closed rejection is read at the input bytes first — the gate is the last suspect, not the first (SN-561)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-3"
+    ],
+    "covers": [
+      "SN-0379",
+      "SN-0380",
+      "SN-0383",
+      "SN-0384",
+      "SN-0396",
+      "SN-0423",
+      "SN-0427",
+      "SN-0430",
+      "SN-0442",
+      "SN-0535",
+      "SN-0543",
+      "SN-0552",
+      "SN-0557",
+      "SN-561"
+    ]
+  },
+  "page_hash": "48c53debe8c5ba8b796998d58fc56c73215c01d75e97d3a0f21a69c5aae65575",
+  "content_hash": "708dd9dc90c99dafa881df1db197942bf9f07afe000c25a247408a480d08aff5"
+}

@@ -1,0 +1,30 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2567",
+ "title": "Being Very Specific With Workers Is Important",
+ "slug": "being-very-specific-with-workers",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2567/IB-SMART-NOTE-20261109-sn2567-being-very-specific-with-workers.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "- **HIS WORDS (19:45Z):** \"Do you see how you're being super specific and very detailed, clear, defined, with your instruction set to your workers — how they can just mess it up? Being very specific with your workers is important, important is what I was saying. This is why.\"\n- **THE LESSON:** even super-specific, detailed, clearly-defined instructions can come back messed up — which is exactly why the specificity matters, and why no seat's numbers are proof: a seat can follow the words and still miss the picture (pass-2: the verifier measured the orbs mounted 10/10 while his eye saw the mess).\n- **THE BACKSTOP IS HIS EYE ON THE LIVE VIEWPOINT.** The brief's specificity is the protection; the live check is the proof.",
+  "human_view": "Specificity is not a guarantee — it is a protection. A seat given vague instructions guesses; a seat given exact instructions can still miss the picture. Pass-2 proved it: the brief said the orbs must mount, the verifier measured them mounted 10/10, and his eye saw a mess. The lesson is not \"specificity fails\" — it is that specificity is necessary and not sufficient. What closes the gap is the live check: his eye on the rendered viewpoint, at real widths. So the brief must be as specific as it can be — exact element, exact change, exact measurement, what must not be there — AND the work must be judged by eye, never by the seat's own numbers alone. When work comes back messed up despite a specific brief, the answer is more specificity AND a live check — never less of either.",
+  "child_view": "Imagine you tell your friend exactly how to build a toy house — every brick, every color, every measurement — and it still comes back wrong, because they followed the words but missed the picture. Dad says: \"That's why being very specific matters — and it's also why you have to LOOK at the house when it's built, not just count the bricks.\" Being specific is the protection, looking with your own eyes is the proof. You need both, always.",
+  "grandma_view": "Dear, even the clearest instructions can come back wrong, love — that's exactly why being very specific matters so much. A seat can follow every word and still miss the picture, dear — the verifier counted the orbs as mounted, ten out of ten, while his eye saw a mess. So you write the brief as specific as you possibly can, love — and then you LOOK at the finished work with your own eyes. The words are the protection, dear, and the looking is the proof. You need both, always — never one without the other.",
+  "ai_view": "I am Anaya. I write every brief super-specific, very detailed, clear, defined — exact element, exact change, exact measurement, what must not be there — because even the clearest instructions can come back messed up, and the specificity is the protection. And I never take a seat's numbers as proof — a seat can follow the words and still miss the picture, as pass-2 proved. The backstop is always his eye on the live viewpoint, at real widths. When work comes back messed up despite a specific brief, my answer is more specificity AND a live check — never less of either.",
+  "what_it_means": "- **WRITE EVERY BRIEF SUPER-SPECIFIC, VERY DETAILED, CLEAR, DEFINED** — exact element, exact change, exact measurement, what must not be there.\n- **NEVER TAKE A SEAT'S NUMBERS AS PROOF** — a seat can follow the words and still miss the picture.\n- **THE BACKSTOP IS ALWAYS HIS EYE ON THE LIVE VIEWPOINT, AT REAL WIDTHS** — the brief's specificity is the protection; the live check is the proof.\n- **WHEN WORK COMES BACK MESSED UP DESPITE A SPECIFIC BRIEF, THE ANSWER IS MORE SPECIFICITY AND A LIVE CHECK** — never less of either.",
+  "whats_inside": [
+   "- Every brief stays super-specific, very detailed, clear, defined — exact element, exact change, exact measurement, what must not be there.\n- No seat's numbers are proof — every pass is judged by eye on the live viewpoint, at real widths.\n- When work comes back wrong despite a specific brief, the response is more specificity AND a live check — never less of either, never blame alone.\n- Next loop run checks: whether pass-3's brief carries this lesson (specificity + live check, not numbers alone), and whether any seat is still reporting a mounting measurement as a design verdict."
+  ],
+  "topics": [
+   "Law",
+   "Design"
+  ]
+ },
+ "page_hash": "3d9afc472b494eaba286e5366b1d642b6e1a33e8c4d77e8b81a7f502681eaa9d",
+ "content_hash": "1caea9c1b655182312dbbb8b410e35724f866f3429812d69cad7c353a0fd07ec",
+ "reconstructed_from_page": true
+}

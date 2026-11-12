@@ -1,0 +1,112 @@
+{
+  "contract": "NAYA_APP_RECIPE_V1",
+  "status": "PROPOSAL_NOT_RATIFIED_NOT_PRODUCTION_PROVEN",
+  "version": 1,
+  "source_precedence": [
+    "PROTOCOL.md",
+    "AGENTS.md",
+    "NAYA-ACTIVATION/CONSTITUTION/CONSTITUTION.md",
+    "BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md",
+    "BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-of-naya-design.human.md",
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.json",
+    "current Project Intelligence and exact current source"
+  ],
+  "parts": {
+    "index_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.json",
+    "store_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+    "allowed_new_build_status": "canonical",
+    "must_exist_in_store": true,
+    "do_not_delete_historic_part_refs": true,
+    "note": "eligible means structurally selectable, not independently qualified"
+  },
+  "required_keys": [
+    "contract",
+    "version",
+    "build_status",
+    "project_intelligence",
+    "recipe",
+    "parts",
+    "shell",
+    "data",
+    "gate"
+  ],
+  "statuses": [
+    "draft",
+    "release_candidate"
+  ],
+  "scene_fields": [
+    "id",
+    "human_job",
+    "hero",
+    "context",
+    "primary_action_id",
+    "secondary_action_id",
+    "ambient",
+    "part_ids",
+    "data_refs",
+    "states",
+    "next_screen",
+    "experience"
+  ],
+  "max_context": 3,
+  "states": [
+    "loading",
+    "ready",
+    "empty",
+    "error",
+    "denied",
+    "offline",
+    "success"
+  ],
+  "required_viewports": [
+    [
+      320,
+      700
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1440,
+      900
+    ]
+  ],
+  "gate_dimensions": [
+    "visual",
+    "functionality",
+    "intelligence",
+    "honesty",
+    "performance",
+    "reliability",
+    "accessibility",
+    "craft"
+  ],
+  "preflight_limits": "Machine checks shape/lifecycle references, not actual frontend beauty, source auth, release approval or production health",
+  "no_go": [
+    "retired/superseded/missing part",
+    "unwired primary action in release candidate",
+    "missing independent reviewer",
+    "unknown privacy grant",
+    "unproven LIVE/earnings claims",
+    "source and deployment mismatch",
+    "mobile primary action obscured"
+  ],
+  "draft_policy": "May contain explicit UNKNOWN and unwired actions; they must remain not-verified, never called live.",
+  "release_candidate_policy": "Requires positive evidence pointers for actual services, permissions, visual/accessibility test, cross-account denial, independent verdict and exact version. Preflight still requires independent verification.",
+  "experience_fields": {
+    "hero_meaning": "plain-language answer: what is this and why does it matter?",
+    "empty_state_copy": "honest text for when meaningful data is absent",
+    "truth_source_ref": "ledger/event/dataset reference; static content uses approved source reference, never fabricated events",
+    "grid_rule": "explicit layout and alignment at usable phone viewport after chrome",
+    "touch_state": "actual meaningful interaction feedback and disabled/failure behavior",
+    "phone_review_ref": "external record from actual phone viewport, not a promise",
+    "laptop_review_ref": "external record from actual desktop/laptop viewport, not a promise",
+    "independent_two_second_review_ref": "different-seat cold glance and comprehension verdict on the exact version, not self-awarded"
+  },
+  "experience_policy": "Universal on every SCENE in every app. Draft missing entries generate warnings; release_candidate missing/UNKNOWN experience receipts DENY. References alone do not prove a rendered, accessible, functional or independently verified app. Preserve human-only Director cold-open and existing 9/9.5/10 governance decisions; do not silently choose a threshold."
+}

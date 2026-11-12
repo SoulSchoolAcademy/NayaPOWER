@@ -1,0 +1,20 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0637",
+ "capture_id": "20261008-sn-0637-registry-heal",
+ "title": "Local Verifier Green Proves Local Code, Never Deployed Enforcement",
+ "intelligence": {
+  "title": "Local Verifier Green Proves Local Code, Never Deployed Enforcement",
+  "smart_note_id": "SN-0637",
+  "intelligent_block_id": "IB-SMART-NOTE-20261008-sn0637-local-verifier-green-proves-local-code-never-deployed-enforcement",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0637/IB-SMART-NOTE-20261008-sn0637-local-verifier-green-proves-local-code-never-deployed-enforcement.md",
+  "truth_state": "CANDIDATE",
+  "captured_at": "2026-10-08",
+  "note": "Smart Note SN-0637 published via PR #1823. Capture reconstructed 2026-10-08 to heal registry drift."
+ },
+ "source": {
+  "captured_at": "2026-10-08",
+  "source_type": "registry_heal",
+  "source_reference": "PR #1838 \u2014 heal published_pages_without_registry_entry drift"
+ }
+}

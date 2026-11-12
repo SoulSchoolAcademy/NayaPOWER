@@ -1,0 +1,209 @@
+{
+  "contract": {
+    "path": "contracts/builder-page-v1.json",
+    "sha256": "a551aeb0621bccc0ab5f21452591702f577c06da9daae273a15c99081460968e"
+  },
+  "resolution": {
+    "index": {
+      "path": "../../library/catalog/builder-index-v1.json",
+      "sha256": "8a679f106344b0230d8fe4407da3e0722e6bf8a6581f15c027dcdc78711defea",
+      "entries": 478
+    },
+    "wall_pieces": [
+      "NAYA-TYP-009",
+      "NAYA-TYP-010",
+      "NAYA-TYP-011",
+      "NAYA-CRD-001",
+      "NAYA-CRD-008",
+      "NAYA-CRD-010",
+      "NAYA-CRD-012",
+      "NAYA-BTN-001",
+      "NAYA-BTN-003",
+      "NAYA-BTN-009",
+      "NAYA-BTN-014",
+      "NAYA-FRM-001",
+      "NAYA-FRM-007",
+      "NAYA-JWL-001",
+      "NAYA-JWL-002",
+      "NAYA-JWL-007",
+      "NAYA-LST-001",
+      "NAYA-LST-002",
+      "NAYA-NAV-012",
+      "NAYA-NAV-014"
+    ],
+    "composition": null
+  },
+  "build": {
+    "id": "179fbe72aa4faa6a22e79cea5c885bb9ec371d324f27683e3a92401636e7767e",
+    "assembler": "assemble-v1.14",
+    "template_sha256": "fecd88c15b1b9cbe3fa84dc91fdb406556d7512ff1d87d133e9965dfeee02c46",
+    "page": {
+      "path": "intake-page.html",
+      "bytes": 164381,
+      "sha256": "b919da66da0a7481c88eaf3b802ec72ef41808eeb12ceaf1781b8bdd6a20bd7f"
+    }
+  },
+  "verification": "pending \u2014 run verify-build.py",
+  "deployment": "pending \u2014 human approves preview first",
+  "receipt": {
+    "built_utc": "2026-10-17T23:46:22Z",
+    "events": [
+      {
+        "event": "smart_mail.wired",
+        "feature": "feature.smart_mail",
+        "version": "1.0.0"
+      },
+      {
+        "event": "space.wired",
+        "feature": "feature.space",
+        "version": "1.0.0"
+      },
+      {
+        "event": "social_feed.wired",
+        "feature": "feature.social_feed",
+        "version": "1.0.0"
+      },
+      {
+        "event": "smart_list.wired",
+        "feature": "feature.smart_list",
+        "version": "1.0.0"
+      },
+      {
+        "event": "smart_tabs.updated",
+        "feature": "feature.smart_tabs",
+        "version": "1.0.0",
+        "grants": {
+          "muse": false,
+          "github": false,
+          "network": false,
+          "nayanet": false
+        }
+      },
+      {
+        "event": "intelligence_today.updated",
+        "feature": "feature.intelligence_today",
+        "version": "1.0.0",
+        "grants": {
+          "muse": false,
+          "github": false,
+          "network": false,
+          "nayanet": false
+        }
+      }
+    ],
+    "grants": {
+      "muse": false,
+      "github": false,
+      "network": false,
+      "nayanet": false
+    },
+    "privacy": "private",
+    "identity": null,
+    "consent": {
+      "feature.smart_mail": {
+        "ready": [
+          "compose UI",
+          "drafts",
+          "mailbox view"
+        ],
+        "connected_active": [],
+        "connected_gated": [
+          {
+            "action": "broadcast to the network",
+            "grant": "nayanet"
+          }
+        ]
+      },
+      "feature.smart_list": {
+        "ready": [
+          "organize local: the contract's items render",
+          "read-only without a list service (zero connections)"
+        ],
+        "connected_active": [],
+        "connected_gated": [
+          {
+            "action": "list sync/share through the declared list service",
+            "grant": "nayanet"
+          }
+        ]
+      },
+      "feature.space": {
+        "ready": [
+          "space UI shell",
+          "local gathering view"
+        ],
+        "connected_active": [],
+        "connected_gated": [
+          {
+            "action": "invite and join sync",
+            "grant": "nayanet"
+          }
+        ]
+      },
+      "feature.connect": {
+        "ready": [
+          "connect UI",
+          "contact cards"
+        ],
+        "connected_active": [],
+        "connected_gated": [
+          {
+            "action": "request across network boundary",
+            "grant": "nayanet"
+          },
+          {
+            "action": "request across public boundary",
+            "grant": "network"
+          }
+        ]
+      },
+      "feature.intelligence_today": {
+        "ready": [
+          "render contract-carried reports (no I/O, no grant)"
+        ],
+        "connected_active": [],
+        "connected_gated": [
+          {
+            "action": "fetch external report sources",
+            "declares": "contract.features.intelligence_today.external_sources",
+            "grant": "network",
+            "status": "specified"
+          }
+        ]
+      },
+      "feature.social_feed": {
+        "ready": [
+          "feed UI",
+          "local draft posts"
+        ],
+        "connected_active": [],
+        "connected_gated": [
+          {
+            "action": "live updates",
+            "grant": "network"
+          }
+        ]
+      },
+      "feature.smart_tabs": {
+        "ready": [
+          "render local navigation from contract-carried pages (no I/O, no grant)"
+        ],
+        "connected_active": [],
+        "connected_gated": []
+      }
+    },
+    "readiness": [
+      {
+        "feature": "feature.smart_list",
+        "mode": "ready",
+        "grant": "connections.nayanet",
+        "granted": false
+      },
+      {
+        "feature": "feature.connect",
+        "mode": "idle",
+        "consent": "ready"
+      }
+    ]
+  }
+}

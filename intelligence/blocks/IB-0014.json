@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.1",
+  "title": "Lessons vs Work Products",
+  "principle": "His lessons go in instantly with no gate; agent work products need independent verification — never confuse the two.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-10",
+    "context": "His correction separating lesson capture from work verification."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: Lessons vs work products",
+      "note": "Shawn's explicit correction."
+    },
+    {
+      "kind": "receipt",
+      "ref": "9 demotions 2026-10-10",
+      "note": "Agent capability claims demoted for missing verification — correctly, under this law."
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "learning",
+      "verification",
+      "governance"
+    ],
+    "situations": "Capturing lessons; validating agent-produced work.",
+    "decisions": "Whether something needs independent verification before counting."
+  },
+  "verification_status": "BEHAVIOR-CHANGE-PROVEN",
+  "status_history": [
+    {
+      "status": "BEHAVIOR-CHANGE-PROVEN",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Partially mechanizable: promotion gates already distinguish lesson vs claim paths.",
+    "enforced_by": null
+  },
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T23:59:16+00:00",
+  "intelligent_block_id": "IB-0014",
+  "supersedes_block_id": null,
+  "superseded_by_block_id": null,
+  "block_id": null,
+  "owner_id": "NAYA",
+  "owner_scope": "TEAM",
+  "block_type": "GOVERNED_INTELLIGENCE",
+  "source_event_ids": [],
+  "provenance": {
+    "authored_via": "intelligence/blocks file form",
+    "source_who": "Shawn",
+    "source_when": "2026-10-10",
+    "source_context": "His correction separating lesson capture from work verification.",
+    "owner_assignment_pending": false,
+    "migration": "v1.0 -> v1.1 canonical contract (P0-A, 2026-10-11)",
+    "aliases": [
+      "IB-0014"
+    ],
+    "owner_lock": {
+      "owner_id": "NAYA",
+      "locked_at": "2026-10-11T23:59:16+00:00",
+      "decision": "Naya (the collective system) owns the 20 seed Intelligent Blocks and all future blocks. No per-block human owner (bottleneck). Operational authority flows through the system's verification/promotion gates.",
+      "decided_by": "Shawn",
+      "decided_at": "2026-10-11T22:34:00+00:00"
+    }
+  },
+  "purpose": "Standing team law: Lessons vs Work Products",
+  "authority_implications": "",
+  "conflicts": [],
+  "understanding_state": "VERIFIED",
+  "status": "DURABLE",
+  "version": 1,
+  "applicable_scope": ""
+}

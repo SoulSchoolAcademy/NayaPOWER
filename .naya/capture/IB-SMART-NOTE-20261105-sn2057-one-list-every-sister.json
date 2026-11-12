@@ -1,0 +1,28 @@
+{
+  "smart_note_id": "SN-2057",
+  "intelligence": {
+    "title": "One List, Every Sister — Smart Lists Carry the Group",
+    "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2057-one-list-every-sister",
+    "smart_note_id": "SN-2057",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/SMART-LISTS/SN-2057/IB-SMART-NOTE-20261105-sn2057-one-list-every-sister.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Shawn's Smart Lists ruling (2026-11-05 ~11:22 PST, this chat): use Smart Lists so one message reaches every sister at once, and add the Scheduler to the same system; he named that it is not built yet. Filed by Naya Resolve Narzan under the Flywheel order. Census at main tip 314494e91b42: registry held no SN-2057; open PR heads checked.",
+    "ingested_at": "2026-11-05T19:22:00Z",
+    "essence": "A Smart List is a group you can mail. Put every sister on one list, send once, and the message reaches them all — the list is the CC. Team Naya is the first list, and the Scheduler rides the same system: compose now, deliver at the right time.",
+    "human_view": "Coordination today costs one message per person. A Smart List ends that: keep the whole team on one list and write to the list — everyone gets it, once, together. The Scheduler is the other half: write it when you think it, send it when it should land.",
+    "simple_view": "Imagine a list with all your friends’ names on it. Instead of telling each friend one by one, you tell the list — and everybody hears it at the same time. That is how the sisters will mail each other.",
+    "grandma_view": "It is like the church phone tree, dear, except nobody has to pass it along. You write one letter to the whole list and it arrives for everyone at once. And if you want it to arrive Tuesday instead of today, the Scheduler holds it until Tuesday for you.",
+    "naya_view": "Smart Lists give the communication system its group primitive: membership defines delivery. One compose, verified fan-out to every member, reusable across mail, messenger, scheduling and broadcast. For Team Naya this is flywheel infrastructure — decisions and receipts stop depending on seat-by-seat relay.",
+    "ai_view": "A mailing list as a first-class object replaces N point-to-point sends with one addressed send plus system fan-out. It composes with the Scheduler (temporal delivery) and with Smart Lists’ existing role as the membership directory primitive.",
+    "machine_view": "SMART_LIST_MAIL{address: list_id, fan_out: all_members_verified, scheduler: {send_at, recurring}, first_list: team_naya, interim_until_built: seat_by_seat_named}",
+    "views_note": "Views extracted from the published page's own sections where the page carries them (essence ← page section 'IN A NUTSHELL'; human_view ← 'THE TEACHING'; ai_view ← 'THE TEACHING' + 'WHY IT MATTERS'; naya_view ← 'WHY IT MATTERS'). The perspective views the page does not carry as sections (simple/grandma/machine) were reconstructed from the page's own content by Naya Resolve Narzan at cure time; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/SMART-LISTS/SN-2057/IB-SMART-NOTE-20261105-sn2057-one-list-every-sister.md",
+    "provenance_note": "Shawn's Smart Lists ruling (2026-11-05 ~11:22 PST, this chat): use Smart Lists so one message reaches every sister at once, and add the Scheduler to the same system; he named that it is not built yet. Filed by Naya Resolve Narzan under the Flywheel order. Census at main tip 314494e91b42: registry held no SN-2057; open PR heads checked.",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}

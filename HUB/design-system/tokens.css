@@ -1,0 +1,90 @@
+/* ============================================================================
+   NAYA DESIGN TOKENS — v1 (canonical)
+   The single token set for every Smart App, every Hub page, every board,
+   button, icon, and element. Laws 12, 41–50, 51–52, 71–72.
+   Rule: if a page invents a new token instead of using one here, that is
+   drift (Law 91). Add the token here first, then use it.
+   ========================================================================== */
+
+:root {
+  /* ---- Surfaces: obsidian first (Law 12) ---- */
+  --obsidian:        #0a0a0f;   /* default surface — rich black, never gray */
+  --obsidian-deep:  #020203;   /* deepest — page background */
+  --raise:          #10141d;   /* +1 elevation */
+  --card:           #141a28;   /* board body */
+  --frosted:        rgba(10, 10, 15, 0.72); /* frosted obsidian panels */
+
+  /* ---- Neutrals do the heavy lifting (Law 48) ---- */
+  --white:          #ffffff;   /* titles, primary text */
+  --paper:          #f8f7fb;   /* paper white text */
+  --silver:         #c9c9d4;   /* body text */
+  --slate:          #8a8a99;   /* detail text — never below 12px (Law 37) */
+  --line:           rgba(255, 255, 255, 0.12); /* hairlines */
+
+  /* ---- The spectrum — in LAW ORDER (Law 41) ----
+     Purple → indigo → sapphire → teal → emerald → lime → yellow →
+     gold → orange → rich orange → red → magenta → repeat.
+     Assigned by POSITION in reading order, never by category. */
+  --sp-purple:      #a06bff;
+  --sp-indigo:      #6675ff;
+  --sp-sapphire:    #55b9ee;
+  --sp-teal:        #40d3bb;
+  --sp-emerald:     #2fe89e;
+  --sp-lime:        #b8ee57;
+  --sp-yellow:      #f1d75a;
+  --sp-gold:        #ffbf3d;   /* precious — use sparingly (Law 47) */
+  --sp-orange:      #ff9a5a;
+  --sp-rich-orange: #ff6b3d;
+  --sp-red:         #ff5e6c;   /* jewel only, never a surface (Law 46) */
+  --sp-magenta:     #e84fff;   /* leads every flow */
+
+  /* ---- Soul — Naya's presence (never a flood) ---- */
+  --soul:           #a06bff;
+
+  /* ---- Truth states (Law 40) ---- */
+  --verified:       #2fe89e;   /* green = verified */
+  --premium:        #ffbf3d;   /* gold = premium */
+  --featured:       #e84fff;   /* magenta = featured */
+
+  /* ---- Typography (Laws 51–54) ---- */
+  --font-voice: "Cormorant Garamond", Georgia, serif;   /* display + Naya voice */
+  --font-ui: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fs-display:  clamp(32px, 5vw, 40px);
+  --fs-headline: clamp(22px, 3vw, 28px);
+  --fs-body:     16px;          /* 15–17 range */
+  --fs-detail:   12px;          /* 12–13, never below 12 */
+  --fs-kicker:   11px;          /* uppercase, tracked — the only colored text */
+  --lh-body:     1.55;
+
+  /* ---- Elevation (Laws 1–10, 35) ----
+     Page bg (deepest) → panels (+1) → boards (+2) → featured (+3) → modal (+4) */
+  --elev-1: 0 2px 8px rgba(0, 0, 0, 0.55);
+  --elev-2: 0 6px 18px rgba(0, 0, 0, 0.6);
+  --elev-3: 0 12px 32px rgba(0, 0, 0, 0.65);
+  --elev-4: 0 20px 48px rgba(0, 0, 0, 0.7);
+  --edge-light: inset 0 1px 0 rgba(255, 255, 255, 0.14); /* 1px hairline, 12–20% (Law 8) */
+  --well: inset 0 2px 6px rgba(0, 0, 0, 0.6);            /* recessed (Law 9) */
+
+  /* ---- Radius ---- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  /* ---- Spacing ---- */
+  --pad-board: 22px;            /* 20–24 preferred (Law 38) */
+  --pad-panel: 16px;            /* minimum internal */
+  --gap: 16px;
+
+  /* ---- Motion (Laws 71–74) ---- */
+  --ease: cubic-bezier(0.16, 0.84, 0.22, 1);  /* the signature ease */
+  --dur-fast: 0.16s;
+  --dur-med: 0.22s;
+  --dur-slow: 0.4s;
+  --lift-hover: translateY(-3px);             /* hover lifts 2–4px (Law 24) */
+  --press: translateY(1px) scale(0.99);       /* press compresses 1–2px (Law 73) */
+
+  /* ---- Touch (Laws 28, 83) ---- */
+  --touch-min: 44px;
+  --touch-target: 48px;
+}

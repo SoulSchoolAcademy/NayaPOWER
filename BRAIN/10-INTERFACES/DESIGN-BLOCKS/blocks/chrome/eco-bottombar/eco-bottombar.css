@@ -1,0 +1,302 @@
+/* Smart Block: eco-bottombar
+ * Source: Naya Smart Hub Design.html (extracted verbatim, never rewritten)
+ * Category: chrome
+ */
+
+/* ——— Shared Hub tokens (also in DESIGN-BLOCKS/tokens.css; copied here so the block is self-contained) ——— */
+:root {
+  --depth-hi: inset 0 1px #fff6;
+  --ink: #F5F7FB;
+  --muted: #AAB2BF;
+  --purple: #9d75ff;
+  --radius-lg: 17px;
+  --radius-md: 13px;
+}
+
+.eco-bottombar {
+  position: fixed;
+  bottom: 0;
+  left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
+  background: linear-gradient(180deg, transparent, rgba(5,5,8,.92) 30%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,255,255,.08);
+  flex-wrap: wrap;
+}
+
+.eco-bb-btn {
+  width: 46px; height: 46px; flex: 0 0 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.3);
+  background: radial-gradient(circle at 35% 30%, #2a2a32, #0a0a0e 70%);
+  color: #fff;
+  cursor: pointer;
+  display: grid; place-items: center;
+  text-decoration: none;
+  transition: all .22s cubic-bezier(.16,.84,.22,1);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.15),
+    0 0 14px rgba(255,255,255,.1),
+    0 4px 10px rgba(0,0,0,.4);
+  position: relative;
+}
+
+.eco-bb-btn svg {
+  width: 20px; height: 20px;
+  transition: transform .22s;
+  filter: drop-shadow(0 0 3px rgba(255,255,255,.4));
+}
+
+.eco-bb-btn:hover {
+  transform: translateY(-3px) scale(1.08);
+  border-color: var(--eco);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.2),
+    0 0 24px color-mix(in srgb, var(--eco) 55%, transparent),
+    0 6px 16px rgba(0,0,0,.5);
+}
+
+.eco-bb-btn:hover svg {
+  color: var(--eco);
+  filter: drop-shadow(0 0 6px var(--eco));
+}
+
+.eco-bb-btn::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%; transform: translateX(-50%) translateY(4px);
+  white-space: nowrap;
+  font-size: 10px; font-weight: 800; letter-spacing: .1em;
+  color: #fff;
+  background: rgba(10,10,14,.95);
+  border: 1px solid color-mix(in srgb, var(--eco) 50%, transparent);
+  padding: 6px 10px; border-radius: 8px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .2s, transform .2s;
+}
+
+.eco-bb-btn:hover::after {
+  opacity: 1; transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 640px) {
+.eco-bottombar { gap: 8px; padding: 12px 12px; }
+.eco-bb-btn { width: 42px; height: 42px; flex: 0 0 42px; }
+.eco-bb-btn svg { width: 18px; height: 18px; }
+}
+
+.eco-plus {
+  --jewel: #ffea00;
+  width: 48px; height: 48px; flex: 0 0 48px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.35);
+  background:
+    radial-gradient(circle at 32% 22%, rgba(255,255,255,.85), transparent 42%),
+    radial-gradient(circle at 50% 55%, var(--jewel), color-mix(in srgb, var(--jewel) 45%, #000) 78%);
+  color: #fff; cursor: pointer;
+  display: grid; place-items: center;
+  text-shadow: 0 2px 8px rgba(0,0,0,.6);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.5),
+    inset 0 -3px 8px rgba(0,0,0,.4),
+    0 0 22px color-mix(in srgb, var(--jewel) 55%, transparent),
+    0 8px 20px rgba(0,0,0,.5);
+  transition: transform .18s cubic-bezier(.16,.84,.22,1), box-shadow .18s;
+}
+
+.eco-plus svg { width: 20px; height: 20px; }
+
+.eco-plus:hover { transform: translateY(-2px) scale(1.04); box-shadow: inset 0 1px rgba(255,255,255,.5), inset 0 -3px 8px rgba(0,0,0,.4), 0 0 32px color-mix(in srgb, var(--jewel) 75%, transparent), 0 12px 28px rgba(0,0,0,.6); }
+
+.eco-plus:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
+
+.eco-plus[aria-expanded="true"] {
+  background: color-mix(in srgb, var(--purple) 28%, transparent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--purple) 40%, transparent);
+}
+
+.eco-menu {
+  position: absolute; top: calc(100% + 10px); right: 28px;
+  min-width: 300px; max-width: 340px;
+  background: color-mix(in srgb, #0d0b14 94%, transparent);
+  -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+  border: 1px solid color-mix(in srgb, var(--purple) 35%, transparent);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--depth-hi), 0 0 36px color-mix(in srgb, var(--purple) 22%, transparent);
+  padding: 8px; z-index: 200;
+  display: none;
+}
+
+.eco-menu.open { display: block; }
+
+.eco-menu .eco-head {
+  padding: 10px 14px 6px;
+  font-size: 11px; font-weight: 800; letter-spacing: 2.5px;
+  color: var(--muted);
+}
+
+.eco-menu a {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  color: var(--ink); text-decoration: none;
+  font-size: 14px; font-weight: 650;
+}
+
+.eco-menu a:hover, .eco-menu a:focus-visible {
+  background: color-mix(in srgb, var(--purple) 16%, transparent);
+  outline: none;
+}
+
+.eco-menu a .eco-ico {
+  width: 32px; height: 32px; flex: 0 0 32px;
+  display: grid; place-items: center;
+  border-radius: 10px;
+  color: var(--eco, #9d75ff);
+  background: color-mix(in srgb, var(--eco, #9d75ff) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--eco, #9d75ff) 30%, transparent);
+  transition: all .2s cubic-bezier(.16,.84,.22,1);
+}
+
+.eco-menu a .eco-ico svg { width: 18px; height: 18px; }
+
+.eco-menu a:hover .eco-ico {
+  color: #fff;
+  background: color-mix(in srgb, var(--eco, #9d75ff) 35%, transparent);
+  border-color: var(--eco, #9d75ff);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--eco, #9d75ff) 60%, transparent);
+  transform: scale(1.08);
+}
+
+.eco-menu a:hover {
+  background: color-mix(in srgb, var(--eco, #9d75ff) 12%, transparent);
+}
+
+.eco-menu a .dot {
+  width: 8px; height: 8px; border-radius: 50%; flex: 0 0 8px;
+  background: var(--purple);
+  box-shadow: 0 0 10px var(--purple);
+}
+
+.eco-menu a span.lbl { flex: 1; }
+
+.eco-menu a .ext { color: var(--muted); font-size: 12px; }
+
+@media (max-width: 760px) {
+.eco-menu { right: 12px; left: 12px; min-width: 0; max-width: none; }
+}
+
+.eco-plus {
+  width: 48px; height: 48px; flex: 0 0 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.3);
+  background: radial-gradient(circle at 35% 30%, #2a2a32, #0a0a0e 70%);
+  color: #fff; cursor: pointer;
+  display: grid; place-items: center;
+  position: relative;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.15),
+    0 0 18px rgba(255,255,255,.12),
+    0 4px 12px rgba(0,0,0,.5);
+  transition: all .25s cubic-bezier(.16,.84,.22,1);
+}
+
+.eco-plus svg {
+  width: 26px; height: 26px;
+  transition: transform .25s cubic-bezier(.16,.84,.22,1);
+  filter: drop-shadow(0 0 5px rgba(255,255,255,.5));
+}
+
+.eco-plus:hover {
+  transform: scale(1.1) rotate(90deg);
+  border-color: rgba(157,117,255,.7);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.2),
+    0 0 28px rgba(157,117,255,.55),
+    0 4px 16px rgba(0,0,0,.5);
+}
+
+.eco-plus:hover svg {
+  transform: rotate(-90deg);
+  filter: drop-shadow(0 0 6px rgba(157,117,255,.8));
+}
+
+.eco-plus:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
+
+.eco-plus[aria-expanded="true"] {
+  background: color-mix(in srgb, var(--purple) 28%, transparent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--purple) 40%, transparent);
+}
+
+.eco-menu {
+  position: absolute; top: calc(100% + 10px); right: 0;
+  min-width: 300px; max-width: 340px;
+  background: color-mix(in srgb, #0d0b14 94%, transparent);
+  -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+  border: 1px solid color-mix(in srgb, var(--purple) 35%, transparent);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--depth-hi), 0 0 36px color-mix(in srgb, var(--purple) 22%, transparent);
+  padding: 8px; z-index: 200;
+  display: none;
+}
+
+.eco-menu.open { display: block; }
+
+.eco-menu .eco-head {
+  padding: 10px 14px 6px;
+  font-size: 11px; font-weight: 800; letter-spacing: 2.5px;
+  color: var(--muted);
+}
+
+.eco-menu a {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  color: var(--ink); text-decoration: none;
+  font-size: 14px; font-weight: 650;
+}
+
+.eco-menu a:hover, .eco-menu a:focus-visible {
+  background: color-mix(in srgb, var(--purple) 16%, transparent);
+  outline: none;
+}
+
+.eco-menu a .dot {
+  width: 8px; height: 8px; border-radius: 50%; flex: 0 0 8px;
+  background: var(--purple);
+  box-shadow: 0 0 10px var(--purple);
+}
+
+.eco-menu a span.lbl { flex: 1; }
+
+.eco-menu a .ext { color: var(--muted); font-size: 12px; }
+
+@media (max-width: 760px) {
+.eco-menu { position: fixed; top: 76px; right: 12px; left: 12px; min-width: 0; max-width: none; }
+}
+
+.eco-bar, .hub-foot {
+  padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+}
+
+button, .btn, .tab, .activity-card, .eco-btn, [role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.btn:active, .tab:active, .eco-btn:active {
+  transform: scale(.96);
+  filter: brightness(1.2);
+}
+
+button, .btn, .tab, .eco-btn, .activity-card {
+  -webkit-user-select: none; user-select: none;
+  touch-action: manipulation;
+}

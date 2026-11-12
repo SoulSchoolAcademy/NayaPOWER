@@ -1,0 +1,30 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2566",
+ "title": "Pro Level",
+ "slug": "pro-level",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2566/IB-SMART-NOTE-20261109-sn2566-pro-level.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "- **HIS WORDS (19:45Z):** \"Everything needs to be pro level, right? It can't be anything that's out of line. If you can just make it so it's cleaner, nicer, more beautiful, to present, it should be done that way.\"\n- **THE STANDARD:** pro level everywhere — nothing out of line; wherever it can be cleaner, nicer, more beautiful to present, it is done that way.\n- **ADDED TO THE PASS-3 BRIEF** (eighth amendment).",
+  "human_view": "\"Good enough\" is a ceiling that keeps a page at 6/10 forever — it works, so nobody touches it again. \"Pro level\" is a different bar: nothing out of line — no crooked board, no gray word, no purposeless orb, no number that disagrees with its gauge. And the second half is the method: wherever it can be cleaner, nicer, more beautiful to present, it is done that way. The work is not finished when it works; it is finished when it presents beautifully. That is the bar every board, every button, every number on the Dashboard is now judged by — and it is the bar the pricing page already cleared, which is why the pricing page is the model.",
+  "child_view": "Imagine you draw a picture and dad says, \"Make it pro level — nothing out of line, and if you can make any part cleaner or nicer or more beautiful, do it that way.\" So you straighten every line, you make every color bright and clear, and you don't stop when it just works — you stop when it looks beautiful. That's pro level: not just done, but done beautifully.",
+  "grandma_view": "Dear, \"pro level\" means nothing out of line, love — no crooked boards, no gray words, no useless balls, no numbers that don't agree with each other. And wherever it can be cleaner, nicer, more beautiful to show, dear, it is done that way. The work isn't finished when it works, love — it's finished when it presents beautifully. That's the bar now, dear, for every board and every button and every number.",
+  "ai_view": "I am Anaya. Everything is pro level — nothing out of line; wherever it can be cleaner, nicer, more beautiful to present, it is done that way. I do not stop when it works; I stop when it presents beautifully. The pricing page is the model — it cleared this bar, and the Dashboard is judged by the same one. Pass-3 carries the eight-times-amended brief, and I am judged by eye: if anything is out of line, it is not pro level, and it is not done.",
+  "what_it_means": "- **PRO LEVEL EVERYWHERE** — nothing out of line.\n- **WHEREVER IT CAN BE CLEANER, NICER, MORE BEAUTIFUL TO PRESENT, IT IS DONE THAT WAY.**\n- **THE WORK IS NOT FINISHED WHEN IT WORKS; IT IS FINISHED WHEN IT PRESENTS BEAUTIFULLY.**\n- **ADDED TO THE PASS-3 BRIEF** (eighth amendment).",
+  "whats_inside": [
+   "- Pro level is the standard for the Dashboard — nothing out of line, everything as clean, nice, and beautiful as it can be.\n- The pass-3 check is the pro-level check: if anything is out of line, it is not done.\n- The pricing page is the model — it cleared this bar; the Dashboard is judged by the same one.\n- Next loop run checks: whether pass-3's page reads as pro level by his eye — and whether any ruling tonight is still visibly unmet."
+  ],
+  "topics": [
+   "Law",
+   "Design"
+  ]
+ },
+ "page_hash": "1e4fae612f3301f32d0174a701ca6a17fbeb0a2486c5cd4078910c0218aeabd8",
+ "content_hash": "4caecb67be7bfa05b14683c42d43cb1d9e20b60860b285361fac6dc33ae04bac",
+ "reconstructed_from_page": true
+}

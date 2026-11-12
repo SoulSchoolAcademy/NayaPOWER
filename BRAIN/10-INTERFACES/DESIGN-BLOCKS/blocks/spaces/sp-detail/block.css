@@ -1,0 +1,60 @@
+/* Smart Block CSS: spaces/sp-detail
+ * Source: Smart Spaces Page Design.html (extracted byte-true, never rewritten)
+ */
+
+
+.sp-detail{ --sc:#7c3aed; width:100%; margin:0; }
+
+
+.sp-dhead{ margin-bottom:18px; }
+
+
+.sp-dcover{
+  border-radius:24px; padding:36px 30px; margin-bottom:16px;
+  background:
+    radial-gradient(120% 130% at 50% -20%, color-mix(in srgb, var(--sc) 42%, transparent), transparent 60%),
+    linear-gradient(180deg, #0c0b14, #060609);
+  border:1px solid color-mix(in srgb, var(--sc) 48%, transparent);
+  box-shadow:0 20px 60px rgba(0,0,0,.5), 0 0 70px -18px var(--sc);
+}
+
+
+.sp-dtitle{ font-size:clamp(28px,4vw,42px); font-weight:900; color:#fff; letter-spacing:-.02em; margin-bottom:6px; }
+
+
+.sp-dtopic{ display:inline-block; font-size:12px; font-weight:800; letter-spacing:.2em; text-transform:uppercase;
+  color:#fff; background:color-mix(in srgb, var(--sc) 24%, rgba(0,0,0,.6));
+  border:1px solid color-mix(in srgb, var(--sc) 60%, transparent);
+  padding:7px 15px; border-radius:999px; }
+
+
+.sp-ddesc{ font-size:15px; line-height:1.65; color:#c9cdd8; margin-bottom:14px; max-width:640px; }
+
+
+.sp-dhrow{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+
+
+.sp-dcount{ font-size:13px; color:#8a8a96; font-weight:600; }
+
+
+.sp-dcontent{ min-height:300px; }
+
+
+  .sp-detail{ max-width:100%; }
+
+
+/* Hero detail header */
+.sp-dcover{
+  border-radius:28px; padding:52px 38px; margin-bottom:18px; position:relative; overflow:hidden;
+  background:
+    radial-gradient(100% 140% at 12% 0%, rgba(255,255,255,.20), transparent 55%),
+    linear-gradient(135deg, color-mix(in srgb, var(--sc) 62%, #000) 0%, color-mix(in srgb, var(--sc) 22%, #060608) 100%);
+  border:1px solid color-mix(in srgb, var(--sc) 40%, rgba(255,255,255,.08));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 30px 80px rgba(0,0,0,.6), 0 0 70px -18px var(--sc);
+}
+
+
+.sp-dtitle{ font-size:clamp(28px,4vw,44px); font-weight:900; letter-spacing:-.02em; text-shadow:0 2px 24px rgba(0,0,0,.5); }
+
+
+.sp-dtopic{ font-size:12px; letter-spacing:.22em; font-weight:800; opacity:.85; margin-top:10px; }

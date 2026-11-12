@@ -1,0 +1,49 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2116",
+  "title": "Composition Is Proven Handoff by Handoff",
+  "slug": "essence-composition",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-composition.md",
+  "tone": "sapphire",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:29:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Components can each be excellent while the organism does not exist — composition is proven only through the default wiring, with genuine data, handoff by handoff. Trust properties must be invariants, not conventions: a store anyone in-process can write makes resolve-then-trust prove nothing about origin (SN-085). Qualification subjects are frozen and fetchable (SN-086); fixture substitution at a claimed seam voids the integration claim (SN-088); a PASS on receipt family X never qualifies family Y (SN-090); contract mismatches are resolved at the source under the five-class binding taxonomy, with UNKNOWN as a complete binding (SN-091). Findings name their consequence class, gap tests self-invalidate, traces stop at the first exact failing handoff, and semantic gaps are named — never invented across (SN-092, SN-093). Boundary fixes compose at the consumer from the producer's sealed facts (SN-095), data bridges belong to the composition root and transport without judging (SN-096), and import-still-red proves the missing seam lives in the host (SN-102).",
+    "human_view": "This is the story of discovering that a machine whose every part passed its tests still didn't work as a whole — because the parts were connected by promises instead of plumbing. The lessons: a lock that depends on everyone behaving is not a lock; a test that swaps in fake parts proves nothing about the real machine; proof about one kind of receipt says nothing about another kind; when a form asks for a fact nobody has, you write \"unknown\" — you never make one up; and when you trace a chain of handoffs, you stop at the first real break and say so, instead of pretending the rest worked.",
+    "child_view": "Imagine a relay race where each runner is super fast. That doesn't mean the team finishes — someone has to actually pass the baton! If a runner practices with a pretend baton, that doesn't prove the real pass works. If a box on the form asks for something nobody knows, you write \"nobody knows\" — you never make up an answer. And if the baton gets dropped at the third pass, you say \"dropped at the third pass,\" not \"great race.\"",
+    "grandma_view": "Dear, it's the difference between good parts and a good machine. Locks must be real locks, not habits. Tests must use the real thing, not a stand-in. When a record lacks a fact, the honest word is \"unknown,\" written plainly — inventing one is a kind of forgery. And a careful report names exactly where the chain broke and stops there, rather than painting the whole chain gold.",
+    "ai_view": "Audit every trust seam for invariant vs convention before relying on it (SN-085). Freeze fetchable subjects with digests and bind verdicts to SHAs (SN-086). Prove composition through the bare default constructor; reclassify fixture-substituted tests as fixture-only (SN-088). Name the specimen family of every proof artifact; fail closed at the first unsourceable field (SN-090). Bind every field by provenance class and resolve mismatches at the source (SN-091). Classify consequences honestly, ship gap tests that self-invalidate, and publish your limits (SN-092). Trace handoff by handoff; stop at the first exact failure; classify wiring vs semantic before touching anything (SN-093). Fix boundaries at the consumer from sealed producer facts (SN-095); give bridges to the composition root, transporting without judging (SN-096). When a seam is suspected missing, run the import-still-red experiment on a disposable branch (SN-102).",
+    "what_it_means": "Ten notes are the organism-level evidence craft: how separately-true parts become a proven whole — or an honestly-reported gap. A cold reader holding only this essence can still run a qualification, an integration proof, or a contract resolution the way these notes demand, and can recognize each named way such proofs go fake.",
+    "whats_inside": [
+      "Trust properties must be invariants, not conventions; resolve-then-trust against a mutable store establishes no origin (SN-085).",
+      "Qualification subjects are frozen and fetchable — SHA + digests, verdict bound to the SHA; unfetchable references are withdrawn, not edited (SN-086).",
+      "Integration is proven only through the default composition; fixture substitution reclassifies the evidence as fixture-only (SN-088).",
+      "Proof scope binds to the specimen family exercised; the first missing authoritative field stops the qualification, fail-closed (SN-090).",
+      "Contract mismatches resolve by source-finding under the five-class binding taxonomy; UNKNOWN is a complete binding; contracts are never widened and fields never synthesized (SN-091).",
+      "Findings name their consequence class, ship self-invalidating gap tests, and state their limits (SN-092); traces stop at the first exact failing handoff and never invent past a semantic gap (SN-093).",
+      "Boundary fixes compose at the consumer from the producer's sealed facts (SN-095); data bridges belong to the composition root and transport without judging (SN-096).",
+      "Import-still-red ⇒ the seam is missing in the host; build the host seam (SN-102)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-1"
+    ],
+    "covers": [
+      "SN-085",
+      "SN-086",
+      "SN-088",
+      "SN-090",
+      "SN-091",
+      "SN-092",
+      "SN-093",
+      "SN-095",
+      "SN-096",
+      "SN-102"
+    ]
+  },
+  "page_hash": "366a185244533d86dfb745b902a6b0799eb6df62c5d568a76f1c4137afbe383b",
+  "content_hash": "c72e3545678c43cbbe71d59b0faee31735ded754909583958864af8083defc5d"
+}

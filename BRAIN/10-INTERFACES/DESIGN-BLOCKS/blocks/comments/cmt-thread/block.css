@@ -1,0 +1,102 @@
+/* Smart Block CSS: comments/cmt-thread
+ * Source: gap-blocks-2/comments-blocks.md (harvested, never restyled)
+ * Catalog: NAYA-CMT-001
+ */
+
+/* Family token sheet — every rule below assumes these (copied once, scoped to the family root) */
+
+.cmt{--ground:#050507;--ink:#fff;--magenta:#e84fff;--purple:#a06bff;--indigo:#6675ff;--blue:#3fb8ff;--emerald:#35e0a1;--green:#2fe89e;--lime:#b8ee57;--gold:#ffbf3d;--orange:#ff9a5a;--red:#ff5e6c;--pink:#ed58cd;--ease:cubic-bezier(.16,.84,.22,1);--serif:Georgia,'Times New Roman',serif;background:var(--ground);color:var(--ink)}
+
+.cmt-thread{max-width:680px;margin:0 auto;font-family:system-ui,sans-serif}
+/* ——— composer ——— */
+.cmt-compose{display:flex;gap:12px;background:linear-gradient(180deg,#141318,#08080c);
+border:1.5px solid rgba(255,255,255,.3);border-radius:18px;padding:16px;margin-bottom:20px;
+box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 12px 30px rgba(0,0,0,.6)}
+.cmt-field{flex:1;background:#050505;border:1.5px solid rgba(255,255,255,.5);border-radius:12px;
+color:#fff;font-size:14px;padding:12px 14px;min-height:44px;resize:vertical;font-family:inherit;
+transition:border-color .18s var(--ease),box-shadow .18s var(--ease)}
+.cmt-field::placeholder{color:#fff;opacity:.5}
+.cmt-field:focus{outline:none;border-color:#a06bff;box-shadow:0 0 24px rgba(160,107,255,.5)}
+.cmt-post{align-self:flex-end;min-width:120px;min-height:52px;border-radius:14px;background:#050505;color:#fff;
+border:1.5px solid rgba(255,255,255,.85);font-size:15px;cursor:pointer;
+box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 10px 24px rgba(0,0,0,.6);
+transition:transform .18s var(--ease),border-color .18s var(--ease),box-shadow .18s var(--ease),opacity .18s}
+.cmt-post:hover:not(:disabled){transform:translateY(-2px);border-color:#a06bff;box-shadow:0 0 26px rgba(160,107,255,.55)}
+.cmt-post:active:not(:disabled){transform:translateY(1px)}
+.cmt-post:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.cmt-post:disabled{opacity:.38;cursor:not-allowed}
+/* ——— comment ——— */
+.cmt-item{display:flex;gap:12px;padding:14px 4px}
+.cmt-av{flex:none;width:44px;height:44px;transform:rotate(45deg);border-radius:12px;margin-top:2px;
+background:radial-gradient(circle at 35% 30%,#fff,var(--ac,#a06bff) 45%,#050507 95%);
+border:1.5px solid rgba(255,255,255,.85);box-shadow:0 0 22px var(--ac-glow,rgba(160,107,255,.45));
+display:grid;place-items:center}
+.cmt-av b{transform:rotate(-45deg);font-family:Georgia,serif;font-size:15px;color:#fff;
+text-shadow:0 1px 6px rgba(0,0,0,.9)}
+.cmt-main{flex:1;min-width:0}
+.cmt-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.cmt-name{font-family:Georgia,serif;font-size:16px;color:#fff;margin:0;
+text-shadow:0 2px 8px rgba(0,0,0,.8)}
+.cmt-time{font-size:12px;color:#fff;opacity:.6;letter-spacing:.04em}
+.cmt-edited{font-size:11px;color:#fff;opacity:.5;font-style:italic}
+.cmt-body{font-size:14px;line-height:1.6;color:#fff;margin:6px 0 10px;opacity:.96}
+.cmt-actions{display:flex;gap:6px;flex-wrap:wrap}
+.cmt-act{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:999px;
+background:transparent;border:1.5px solid transparent;color:#fff;font-size:13px;cursor:pointer;
+transition:transform .18s var(--ease),border-color .18s var(--ease),box-shadow .18s var(--ease),background .18s}
+.cmt-act svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:1.8;flex:none;transition:stroke .18s}
+.cmt-act:hover{transform:translateY(-2px);border-color:var(--ac,#a06bff);box-shadow:0 0 20px var(--ac-glow,rgba(160,107,255,.5))}
+.cmt-act:hover svg{stroke:var(--ac,#a06bff)}
+.cmt-act:active{transform:translateY(1px)}
+.cmt-act:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.cmt-act.is-on{border-color:var(--ac,#ed58cd);background:rgba(0,0,0,.5);box-shadow:0 0 22px var(--ac-glow,rgba(237,88,205,.5))}
+.cmt-act.is-on svg{stroke:var(--ac,#ed58cd);fill:var(--ac,#ed58cd)}
+.cmt-love{--ac:#ed58cd;--ac-glow:rgba(237,88,205,.5)}
+.cmt-reply{--ac:#a06bff;--ac-glow:rgba(160,107,255,.5)}
+.cmt-share{--ac:#3fb8ff;--ac-glow:rgba(63,184,255,.5)}
+/* ——— nesting: honest rails to depth 3 ——— */
+.cmt-kids{margin:6px 0 0 22px;padding-left:18px;border-left:2px solid var(--rail,#e84fff);
+transition:border-color .28s var(--ease),box-shadow .28s var(--ease)}
+.cmt-item:hover>.cmt-kids{box-shadow:-6px 0 18px -8px var(--rail,#e84fff)}
+.cmt-kids.d1{--rail:#e84fff}
+.cmt-kids.d2{--rail:#a06bff}
+.cmt-kids.d3{--rail:#3fb8ff}
+.cmt-fold{display:flex;align-items:center;gap:10px;margin:8px 0 0 56px}
+.cmt-chev{width:44px;height:44px;border-radius:50%;background:#050505;border:1.5px solid rgba(255,255,255,.85);
+color:#fff;cursor:pointer;display:grid;place-items:center;flex:none;
+transition:transform .18s var(--ease),border-color .18s var(--ease),box-shadow .18s var(--ease)}
+.cmt-chev i{width:9px;height:9px;border-top:2px solid #fff;border-right:2px solid #fff;transform:rotate(135deg);margin-top:-3px;
+transition:transform .18s var(--ease)}
+.cmt-chev[aria-expanded="false"] i{transform:rotate(45deg);margin-top:0}
+.cmt-chev:hover{transform:translateY(-2px);border-color:#a06bff;box-shadow:0 0 22px rgba(160,107,255,.55)}
+.cmt-chev:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.cmt-fold .n{font-size:13px;color:#fff;opacity:.75;letter-spacing:.04em}
+/* ——— continue thread: the depth cap, stated ——— */
+.cmt-more{display:flex;align-items:center;gap:12px;margin:10px 0 0 22px;padding:12px 16px;min-height:52px;
+background:#0a0a0e;border:1.5px dashed rgba(255,255,255,.45);border-radius:14px;color:#fff;font-size:14px;
+cursor:pointer;width:calc(100% - 22px);
+transition:transform .18s var(--ease),border-color .18s var(--ease),box-shadow .18s var(--ease)}
+.cmt-more:hover{transform:translateY(-2px);border-color:#a06bff;box-shadow:0 0 24px rgba(160,107,255,.5)}
+.cmt-more:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.cmt-more svg{width:16px;height:16px;stroke:#a06bff;fill:none;stroke-width:1.8;flex:none}
+.cmt-deep{margin:10px 0 0 22px;padding:16px;background:linear-gradient(180deg,#141318,#08080c);
+border:1.5px solid rgba(255,255,255,.3);border-radius:18px;
+box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 18px 44px rgba(0,0,0,.65)}
+.cmt-deep[hidden]{display:none}
+.cmt-deep .cap{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#fff;opacity:.6;margin:0 0 6px}
+/* ——— tombstone ——— */
+.cmt-tomb{margin:8px 0;padding:16px;border:1.5px dashed rgba(255,255,255,.3);border-radius:14px;
+color:#fff;opacity:.6;font-size:14px;font-style:italic}
+/* ——— empty ——— */
+.cmt-empty{text-align:center;padding:56px 20px;background:linear-gradient(180deg,#141318,#08080c);
+border:1.5px solid rgba(255,255,255,.3);border-radius:24px;
+box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 12px 30px rgba(0,0,0,.6)}
+.cmt-empty .jewel{width:34px;height:34px;margin:0 auto 18px;transform:rotate(45deg);border-radius:8px;
+background:radial-gradient(circle at 35% 30%,#fff,#a06bff 45%,#050507 90%);
+border:1.5px solid rgba(255,255,255,.8);box-shadow:0 0 30px rgba(160,107,255,.55)}
+.cmt-empty h3{font-family:Georgia,serif;font-size:20px;color:#fff;margin:0 0 8px}
+.cmt-empty p{font-size:14px;color:#fff;opacity:.85;margin:0}
+@media (prefers-reduced-motion:reduce){.cmt-act,.cmt-chev,.cmt-more,.cmt-post,.cmt-kids,.cmt-field{transition:none}}
+
+/* screen-reader-only — the same 1px-clip rule the registry's chat/sp-chat uses for .sr */
+.cmt-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}

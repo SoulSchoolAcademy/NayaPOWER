@@ -1,0 +1,44 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2142",
+  "title": "The Scorecard Way: Decisions by Scored Evidence, Never by Mouth",
+  "slug": "essence-the-scorecard-way",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-scorecard-way.md",
+  "tone": "magenta",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:51:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Decisions in this system are made by scoring, not by seniority, volume or confidence — and the discipline applies to every seat equally. One Law for Every Seat states the operating form: a seven-step loop run identically by every seat, four prohibitions that no score may talk its way around, and a critical-cap rule — a score is capped by what its weakest evidence supports, so confidence can never inflate a number past its proof (SN-0265). The charter that holds this discipline has four strata that form one charter, not four competing doctrines: THESIS (the Manifesto — what are we), LAW (the Constitutional Code — how do we behave), MISSION (the Mission Contract — what winning means), MECHANISM (the Systems Contract — how the mission becomes proven reality) (SN-0600).\n\nThe quality gate gives scoring its working motion and its bands: MAKE → SCORE → IDENTIFY THE HIGHEST-VALUE GAPS → IMPROVE → RESCORE → VERIFY → COMPOUND, with 10/10 the target, 9.5+ the preferred acceptance, 9.0+ the minimum acceptable, and below 9 the instruction to keep working unless a real evidence or authority boundary prevents improvement (SN-0600). A quality score never upgrades truth state, authority or proof — the number describes the work; it does not promote it (SN-0600).\n\nScoring has instruments, and the instruments have disciplines. Before a merge, the intent-to-merge scorecard runs with its falsifier pre-stated and a deconfliction re-fetch of the venue's newest state immediately before acting, and the battery runs before the next merge, not after (SN-0336). A system score is always recomputed from live evidence, never copied forward from a previous report — a carried-forward number is a stale claim wearing a fresh date (SN-0345). Ratification itself is a scored ritual, not a handshake: exact-SHA authorization, pre-verification of the bytes being ratified, and a bounded receipt — and the states are kept separate, because RATIFIED is not MERGED is not RUNTIME_ACTIVE is not BEHAVIORALLY_PROVEN is not PRODUCTION_PROVEN (SN-0263). The first live instance shows what \"bounded\" means concretely: the director's exact authorization string was `RATIFY SYSTEM CHARTER V1 @ 0ed85ad91da10212fe57bc64af302a21a0d889fa`, and the receipt it produced names what it does NOT authorize — merging PR #1386, production deployment, the machine-lived claim, authority-envelope changes — alongside what it does authorize: charter text as constitutional authority, the contract flip CANDIDATE_NON_GOVERNING → RATIFIED_ACTIVE, node directive compilation, and the behavioral proof sequence (SN-0263).\n\nThe evidence machinery underneath the scores runs a fourteen-stage heartbeat in which UNKNOWN is a first-class state rather than an embarrassment, an explicit ATTACK stage tests claims adversarially, a performance ledger records outcomes, and the scorer is itself scored (SN-0291). Every verifier carries a negative control — a case known to be wrong that the verifier must catch — so a checker that passes everything is itself failing (SN-0292). And declared uncertainty outscores silence: a seat that names what it does not know produces more decision value than one that says nothing, because the scorecard can price an admitted unknown and cannot price a hidden one (SN-0293).",
+    "human_view": "Nobody here talks you into a decision. Choices get listed, scored against what actually matters, checked against the hard limits, and written down as receipts you can audit. A fancy score can't override the gates, a confident voice can't substitute for evidence, and \"we don't know yet\" is an honest, usable answer — never a failure to hide. The same rules bind the newest helper and the most senior one.",
+    "child_view": "Imagine choosing with a scoreboard instead of arguing. You write down all the choices, give each one points for the things that matter, and the most points wins. But points can't break the house rules, ever. If nobody knows the answer yet, you write \"don't know\" on the board — that's allowed, and it's better than pretending. And everybody plays by the same scoreboard, even the grown-ups.",
+    "grandma_view": "Dear, it's decisions made the careful way: write the options down, weigh them honestly, respect the limits that aren't yours to bend, and keep the receipt. Nobody's loud voice counts as evidence, a good score doesn't let anyone break the rules, and saying \"I don't know yet\" is treated as honesty, not weakness.",
+    "ai_view": "Run the seven-step loop and respect the four prohibitions whatever your seat; cap every score at its weakest evidence (SN-0265). Move work through the quality motion — score, find the highest-value gaps, improve, rescore, verify, compound — and never let a number promote a truth state (SN-0600). Run the merge scorecard with the falsifier written before the result, and re-fetch the venue tail immediately before acting (SN-0336). Recompute system scores from live bytes; never copy a number forward (SN-0345). Score yourself with UNKNOWN where it belongs, carry a negative control when you verify, and score your own scoring (SN-0291, SN-0292).",
+    "what_it_means": "Eight notes build one decision culture: procedure over opinion, evidence class over enthusiasm, receipts over memory — applied to merges, ratifications, system health and the scorer itself. A cold reader holding only this essence can still score a decision honestly, cap a claim, and audit someone else's number — which is everything the covered notes exist to teach. The ratified law above this culture stands alone and is named under How It Connects. One tension inside the sources is preserved, not smoothed: SN-0288's Triple-A doctrine declares value binary with no neutral state, while SN-0291 makes UNKNOWN first-class; SN-0291 itself records the correction, and this essence follows the correction (see the Worker Protocol essence and the block receipt).",
+    "whats_inside": [
+      "The scoring discipline binds every seat identically; no seat's seniority exempts it, and the critical cap binds every number to its weakest evidence (SN-0265).",
+      "A score never buys authority, truth or proof-state promotion (SN-0600).",
+      "System scores are recomputed live every time; copied-forward numbers are defects (SN-0345).",
+      "Ratification is a ritual with exact-SHA authorization and separated states — never a vibe, never a single word covering five different facts (SN-0263).",
+      "UNKNOWN is a legitimate, first-class scoring state — and declaring it beats concealing it (SN-0291, SN-0293)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-1"
+    ],
+    "covers": [
+      "SN-0263",
+      "SN-0265",
+      "SN-0291",
+      "SN-0292",
+      "SN-0293",
+      "SN-0336",
+      "SN-0345",
+      "SN-0600"
+    ]
+  },
+  "page_hash": "abe1a4013e47b8d41455a04fc07b4a070daac243a5239702dcb06f29fc405ec8",
+  "content_hash": "45fd98524830cebfa4b399a072db3a05249e31624351f6729248c314cd0ea06e"
+}

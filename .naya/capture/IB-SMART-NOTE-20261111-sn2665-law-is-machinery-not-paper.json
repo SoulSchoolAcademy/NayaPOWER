@@ -1,0 +1,34 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2665",
+ "title": "Law Is Machinery, Not Paper",
+ "slug": "law-is-machinery-not-paper",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/11/LESSON/SN-2665/IB-SMART-NOTE-20261111-sn2665-law-is-machinery-not-paper.md",
+ "tone": "orange",
+ "icon": "◆",
+ "created_at": "2026-11-11T17:17:00Z",
+ "registered_by": "naya-resolve",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "A rule with no machinery is decoration. If an operating law can be written into code, it must be — enforced, not advisory: unskippable state machines, counters that cannot double-count one root, gates where \"no known violation\" can never authorize an act. Ratification is a pipeline, not a moment: writer, tester, verifier, the director's eyes, independent seats, then official — and the ratified status lives in the artifact's own fields, because a commit message saying RATIFIED while the file says DRAFT is a lie told to every future reader. A distilled twin of a law must never shrink it: compress nine hard gates into six broad words and you have not summarized the law, you have weakened it for every reader downstream. The protocol stands above everyone, including the director — if he does something the protocol forbids, the team fixes it and tells him; they do not ask. A deliberately red falsifier is evidence, not a defect: never merge it as if it were a repair, or you destroy the proof and smuggle in the weakness it exposed. Never impersonate the named independent verifier — a blind gate passed by wearing the verifier's name is not passed at all. And when evidence is revoked, recompute: revoke its contribution, re-derive every dependent conclusion, and keep whatever still stands on its own.",
+  "human_view": "Think of the difference between a \"please drive slowly\" sign and a speed bump. The sign is advice; it works on drivers who already agree. The bump is the rule built into the road — it works on everyone, every time, including the driver who never saw the sign. A town's laws live in the law book, not in the mayor's speeches: if the book still says \"draft,\" the law isn't settled no matter what anyone announced at the podium. And a summary of the law that quietly drops three of its nine rules isn't a summary — it's a different, weaker law with the same cover.",
+  "child_view": "A rule that only works when the teacher is watching isn't really a rule — it's a wish. The best rules are built into the game: you can't skip a turn because the board doesn't have a \"skip\" space. If the rulebook says the game isn't ready to play yet, it doesn't matter that somebody shouted \"ready!\" across the room — you read the book. And if you find out one of your answers was based on a wrong number, you don't throw away the whole test; you redo just the problems that used that number.",
+  "grandma_view": "In my day we said: a promise is words, a habit is character, and a lock on the door is certainty. You don't rely on everybody remembering to be careful — you build the house so carelessness can't flood it. The family Bible has the names written in the book itself, not in somebody's memory of a christening. And nobody — not even the head of the family — is above the house rules; that's what makes them house rules instead of suggestions for the children.",
+  "ai_view": "Convert every standing rule you rely on into machinery: a state machine that cannot skip, a counter that cannot double-count, a gate whose PROVISIONAL is falsy. If a law you need exists only as prose, name that gap as a defect — activation means code + schedule + proof it ran. Run governance artifacts through the full pipeline and never call one official early; when ratification lands, flip the artifact's own status fields in the same pass — fields, not commit messages, are what cold readers believe. When you distill or twin a law, diff your version against the canonical gates one by one; a twin that shrinks the law is blocked for repair, always. Hold the protocol above every person: a violation by the director gets fixed and reported, never obeyed or quietly absorbed. Treat red falsifiers as protected evidence — cite them, never merge them as repairs. Never wear another seat's verifier identity, for any reason, at any gate; if the named verifier is absent, the gate waits. When evidence dies, recompute surgically: revoke, re-derive, keep what stands.",
+  "what_it_means": "This family is the system's immune response to its own good intentions. Prose law decays: it is misread, misremembered, summarized weaker, announced louder than it is written. Machinery does not decay that way — a gate either fires or it doesn't, and its firing is a receipt. The family's second insight is about honesty at the constitutional layer: the record a cold successor reads is the fields in the artifact, not the ceremony around it, so the artifact itself must carry the truth of its status. And its third is about reverence for negative evidence: the red falsifier and the revoked input are not embarrassments to be merged away or mourned wholesale — they are instruments, preserved and computed with.",
+  "whats_inside": [
+   "Write it in the artifact, build it into the road, preserve the red evidence — a law you have to remember is a law already being lost.",
+   "This family is the system's immune response to its own good intentions.",
+   "Every other law in this system depends on this one.",
+   "The rules you ratify are the rules that actually run — in the artifact, in the code, in the gate — not the rules as someone remembers announcing them.",
+   "A rule with no machinery is decoration."
+  ],
+  "topics": [
+   "System",
+   "Lesson",
+   "Distillation"
+  ]
+ },
+ "page_hash": "04672152f39138a83c5ad56db0636177ffff65c627562d70c85a16c2ebfc191e",
+ "content_hash": "630aa571a1fc1dc1310b5edaa697d73a10f30c1ad0d3cc25e886cbb9807c7b01"
+}

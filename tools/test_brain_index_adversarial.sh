@@ -71,8 +71,13 @@ fi
 # ------------------------------------------------- case B: count skew
 echo "### CASE B: skewed domain count must fail exit 2"
 git clone -q "$REPO" "$T/b" 2>/dev/null
-git -C "$T/b" -c user.name=adv -c user.email=adv@local rm -q "BRAIN/99-ARCHIVE/README.md"
-git -C "$T/b" -c user.name=adv -c user.email=adv@local commit -qm "sabotage: delete 99-ARCHIVE README (count skew)"
+# Remove the whole 99-ARCHIVE domain: with the ratchet floor at >=1 for every
+# domain, deleting every file guarantees the count falls below the floor no
+# matter how many files the domain accumulates (deleting README.md alone
+# stopped tripping the floor once brain-reconciliation-ledger-f648833b.md
+# landed in 99-ARCHIVE).
+git -C "$T/b" -c user.name=adv -c user.email=adv@local rm -q -r "BRAIN/99-ARCHIVE"
+git -C "$T/b" -c user.name=adv -c user.email=adv@local commit -qm "sabotage: delete entire 99-ARCHIVE domain (count skew below floor)"
 out="$(python3 "$GEN" --root "$T/b" 2>&1)"; code=$?
 echo "$out"
 if [ $code -eq 2 ] && echo "$out" | grep -q "below the baseline floor"; then

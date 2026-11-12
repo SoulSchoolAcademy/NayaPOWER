@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2646",
+ "title": "Every New User Automatically Gets a Smart Box",
+ "slug": "every-new-user-automatically-gets-a-smart-box",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/10/SYSTEM-INTELLIGENCE/SN-2646/IB-SMART-NOTE-20261110-sn2646-every-new-user-automatically-gets-a-smart-box.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-10T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Shawn's law, 02:19Z on 2026-11-10: every new user AUTOMATICALLY gets a Smart Box. At join, a Smart Box is created for them, and everything to do with that user goes in that box. That is how we know about that user, how Naya knows about the user, how the system knows — how we run the system. Status: NOT built yet — the master box (the collective) is built and proven, personal boxes exist for him, but there is NO automatic provisioning at join. It belongs in the onboarding / universal-app build. Queued, not dispatched.",
+  "human_view": "This is the law, and it is simple. Every new user automatically gets a Smart Box. At join, a Smart Box is created for them — and everything to do with that user goes in that box. That is how we know about that user. That is how Naya knows about the user. That is how the system knows. That is how we run the system. Status, honestly: not built yet. The master box — the collective — is built and proven. Personal boxes exist for him. But there is NO automatic provisioning at join. It belongs in the onboarding / universal-app build. Queued, not dispatched.",
+  "child_view": "Imagine you join a new club, sweetheart, and the very moment you walk in the door, you get your very own special box — your own treasure box! And everything about you goes in that box, sweetheart — everything you like, everything you do, everything you need. That's how the club knows about you, sweetheart — that's how Naya knows about you, and how the whole system knows. The box is yours, and it grows with you. It's not built yet, sweetheart — the big box for everybody is built, and Daddy has his box — but the part where every new person gets their box automatically, the moment they join, is still waiting to be built. It's on the list, sweetheart. It's coming.",
+  "grandma_view": "Dear, it's very simple, love. Every new person who joins gets a Smart Box, automatically, dear — the very moment they join, a box is made for them, and everything to do with them goes in that box, love. That's how we know about them, dear — that's how Naya knows about them, and how the whole system knows. That's how we run the system, love. Now honestly, dear: it's not built yet. The big box for everybody is built, love, and he has his own box — but the part where every new person gets their box automatically, the moment they join, is still waiting, dear. It belongs in the joining step, love, and in the big app that's coming. It's on the list, dear. It's coming.",
+  "ai_view": "I am Anaya. The law is simple, and I carry it: every new user automatically gets a Smart Box. At join, a Smart Box is created for them, and everything to do with that user goes in that box. That is how we know about that user, how I know about the user, how the system knows — how we run the system. Status, honestly: not built yet. The master box — the collective — is built and proven. Personal boxes exist for him. But there is NO automatic provisioning at join. It belongs in the onboarding / universal-app build. Queued, not dispatched.",
+  "what_it_means": "- **EVERY NEW USER AUTOMATICALLY GETS A SMART BOX:** at join, a Smart Box is created for them, and everything to do with that user goes in that box.\n- **THAT IS HOW WE KNOW ABOUT THAT USER:** how Naya knows about the user, how the system knows — how we run the system.\n- **STATUS: NOT BUILT YET:** the master box (the collective) is built and proven, personal boxes exist for him, but there is NO automatic provisioning at join.\n- **IT BELONGS IN THE ONBOARDING / UNIVERSAL-APP BUILD:** queued, not dispatched.",
+  "whats_inside": [
+   "- The law is set: every new user automatically gets a Smart Box at join.\n- It is NOT built yet — no automatic provisioning at join exists today.\n- It belongs in the onboarding / universal-app build. Queued, not dispatched.\n- The master box (collective) is built and proven; personal boxes exist for him — the provisioning is the missing piece."
+  ],
+  "topics": [
+   "System-Intelligence"
+  ]
+ },
+ "page_hash": "ecdc91220f536ad567623772e96b582c811e0d2380280672c30ea5e50bb83293",
+ "content_hash": "6646b411d3ac9c068f46dd56af5851a9f1e257c07b3934b8f4d9ca3add08cc5d",
+ "reconstructed_from_page": true
+}

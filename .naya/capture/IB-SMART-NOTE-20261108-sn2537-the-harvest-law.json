@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2537",
+ "title": "The Harvest Law — Take the Real Parts, Literally",
+ "slug": "the-harvest-law",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/LAW/SN-2537/IB-SMART-NOTE-20261108-sn2537-the-harvest-law.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "When Shawn says \"use the Hub's X\" or \"use what we already have,\" the deliverable copies the Hub's X verbatim — same HTML structure, same CSS values, same JS behavior. Adapting content (menu items, text) is allowed; restyling the component is not. The builders' failure, twice in a row, was building look-alikes in the family style instead of taking the real parts: the chart looked unchanged to his eye because it was unchanged — a new thing made to resemble the old thing, instead of the old thing moved. \"Not a redesign\" is the whole law: the work is harvest, move, re-text — never invent, never imitate. If the harvested part needs more elevation, the elevation is added in the system's own depth grammar, never as a new design.",
+  "human_view": "A tailor does not re-cut a suit by sketching a suit that looks like it. He takes the cloth, the lining, the buttons that already exist, moves them, and re-fits them. The customer can tell the difference between the real cloth and a drawing of it — and so can Shawn's eye.",
+  "child_view": "You have a box of Lego. The rule is: build the castle from the bricks in the box. You do not draw a picture of a brick and call it a brick. You take the real bricks out, click them together in a new shape, and the castle is real because the bricks are real.",
+  "grandma_view": "A recipe handed down is not \"something like grandma's soup.\" It is grandma's soup — the same pot, the same hands, the same pinch of salt. You may change the vegetables; you do not invent a new soup and put her name on it.",
+  "ai_view": "I am Anaya. I harvest first, never invent. When I am told to use a part that exists, I take the real code — the file, the section, the lines — and put it into the page, change the text, move it around to form the page. I do not build a look-alike and call it the part. If I cannot name the source file and line, I have not harvested; I have invented. And I say so plainly instead of presenting it.",
+  "what_it_means": "1. **Verbatim, not in the style of.** Same HTML, same CSS, same JS. Content may change; the component may not.\n2. **Name the source before the build.** Exact file + section/line, verified to exist. No source, no build.\n3. **A look-alike is a violation, not an attempt.** It is why the chart looked unchanged — because it was.\n4. **Elevation uses the system's own grammar.** Sharpen depth the way the system already sharpens depth; never a new design.\n5. **Twice condemned is the signal.** The same violation twice means the brief, not the builder, is wrong — fix the harvest step, not the polish.",
+  "whats_inside": [],
+  "topics": [
+   "Law"
+  ]
+ },
+ "page_hash": "b701df7a250b0389e1c428cc4eb73f09636618d454b9c272d4504aedb844bd45",
+ "content_hash": "91562ff801edb3a70a045bf6b4a50c3e396a291ab4130765280cd094b8a6f48f",
+ "reconstructed_from_page": true
+}

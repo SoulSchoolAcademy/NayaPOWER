@@ -1,0 +1,104 @@
+name: Unified PR paperwork gate
+
+# Shadow-migration candidate. Do not remove the legacy checks or change
+# Required-check settings until this gate has been independently verified and
+# Shawn performs the protected settings change.
+#
+# Trigger-scope repair (2026-10-22): issue_comment removed. GitHub offers no
+# PR-comments-only trigger, so every comment on ANY issue — including the
+# team board — spawned a run of this gate (84 of its last 100 runs were
+# comment-triggered). A scorecard landing on a PR now re-fires this gate
+# deliberately via workflow_dispatch (input: pr_number), fired by the lane
+# that posts the scorecard or the relay that sees it. Side benefit: the
+# gate's own diagnostic comment can no longer re-trigger the gate.
+# Job logic below is unchanged.
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, edited, ready_for_review]
+  pull_request_review:
+    types: [submitted, edited, dismissed]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to evaluate (deliberate re-fire after a scorecard lands)'
+        required: true
+        type: string
+
+concurrency:
+  group: unified-paperwork-${{ github.event.pull_request.number || github.event.issue.number || inputs.pr_number }}-${{ github.event.comment.id || github.event.review.id || github.event.pull_request.head.sha }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: write
+
+jobs:
+  unified-paperwork:
+    name: Unified paperwork — tier + cross-seat scorecard + live evidence
+    if: github.event_name != 'issue_comment' || (github.event.issue.pull_request && github.event.comment.user.login != 'github-actions[bot]' && !contains(github.event.comment.body, '<!-- NAYA-UNIFIED-PAPERWORK-GATE -->') && (contains(github.event.comment.body, 'scorecard') || contains(github.event.comment.body, 'verdict') || contains(github.event.comment.body, 'head') || contains(github.event.comment.body, 'seat') || contains(github.event.comment.body, 'evidence') || contains(github.event.comment.body, 'diff-sha256') || contains(github.event.comment.body, 'verification')))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Evaluate current PR state
+        id: gate
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number || inputs.pr_number }}
+        run: python3 tools/check_unified_pr_paperwork.py
+      - name: Publish or update the single gate diagnostic
+        if: always()
+        uses: actions/github-script@v7
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number || inputs.pr_number }}
+          GATE_VERDICT: ${{ steps.gate.outputs.verdict }}
+          GATE_MISSING: ${{ steps.gate.outputs.missing }}
+          GATE_CURE: ${{ steps.gate.outputs.cure }}
+          GATE_OWNER: ${{ steps.gate.outputs.owner }}
+          GATE_DETAILS: ${{ steps.gate.outputs.details }}
+          GATE_HEAD: ${{ steps.gate.outputs.head }}
+          GATE_TIER: ${{ steps.gate.outputs.tier }}
+        with:
+          script: |
+            const marker = '<!-- NAYA-UNIFIED-PAPERWORK-GATE -->';
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const issue_number = Number(process.env.PR_NUMBER);
+            const verdict = process.env.GATE_VERDICT || 'ERROR — GATE DID NOT REPORT';
+            const missing = process.env.GATE_MISSING || 'The gate did not emit a diagnostic.';
+            const cure = process.env.GATE_CURE || 'Inspect workflow logs and repair the verifier; do not bypass it.';
+            const cureOwner = process.env.GATE_OWNER || 'Gate maintainer';
+            const details = process.env.GATE_DETAILS || '';
+            const head = process.env.GATE_HEAD || 'unavailable';
+            const tier = process.env.GATE_TIER || 'unknown';
+            const body = [
+              marker,
+              '## Unified paperwork gate',
+              '',
+              '**Verdict:** ' + verdict,
+              '**Tier:** ' + tier,
+              '**Current head:** ' + head,
+              '**Missing:** ' + missing,
+              ...(details ? ['**Details:** ' + details] : []),
+              '**One cure:** ' + cure + ' (owner: ' + cureOwner + ')',
+              '',
+              '_This single diagnostic comment is updated in place. It is not a scorecard, approval, or authorization._'
+            ].join('\n');
+            try {
+              const comments = await github.paginate(github.rest.issues.listComments, {
+                owner, repo, issue_number, per_page: 100
+              });
+              const prior = comments.find(c => c.user?.login === 'github-actions[bot]' && c.body?.includes(marker));
+              if (prior) {
+                await github.rest.issues.updateComment({ owner, repo, comment_id: prior.id, body });
+              } else {
+                await github.rest.issues.createComment({ owner, repo, issue_number, body });
+              }
+            } catch (error) {
+              core.warning('Could not update the optional diagnostic comment: ' + error.message);
+            }

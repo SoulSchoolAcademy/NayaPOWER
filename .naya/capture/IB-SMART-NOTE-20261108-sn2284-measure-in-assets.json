@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2284",
+ "title": "Measure in Assets",
+ "slug": "measure-in-assets",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/VISION/SN-2284/IB-SMART-NOTE-20261108-sn2284-measure-in-assets.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "What we are building is not a set of pages — it is intellectual property, assets of a digital empire, a civilization. The tiled numbers, the gauge-as-machine, the color language, the orb drill, the wrap math, the chain itself: these are the assets, and people build on our empire because the assets are there. So measure the work in assets — what was created, what was protected, what was added to — not only in pages finished. And the promise the assets carry is simple: 100% success rate — going live, being active, and it works.",
+  "human_view": "Think of a city. The buildings are the pages — they rise, they change, some get rebuilt. The assets are the roads, the water, the power, the laws: the things every building stands on. A city is measured by its infrastructure, not by counting roofs. Our assets are the infrastructure. The pages are the roofs.",
+  "child_view": "Your Lego set is not the castle you built today — it is the bricks. The castle comes apart, but the bricks stay, and tomorrow you build a tower with the same bricks. The bricks are the assets. The castle is just today's build.",
+  "grandma_view": "A family is not measured by one dinner, but by the recipes, the table, the house, the stories — the things the next generation inherits and cooks with. The assets are the inheritance. The dinner is tonight.",
+  "ai_view": "Every fix, every note, every brief is judged by one new question alongside the old ones: what asset did it create or protect? The tiled number language is the crown asset — digits as colored tiles, unique to us, readable in a glance. The gauge-as-machine, the chakra color language, the orb drill, the 500-cycle wrap math, the modes, the frozen link boards, the world boards, the feed, the chain itself — ten named in the Dashboard captain's scorecard (2026-11-08). A fix that breaks one of these is not a fix. A fix that adds one is the work compounding. And the assets are what people build on: citizens don't join for a page, they join for an empire they can build on — and the reason they stay is the success rate: they go live, they are active, and it works.",
+  "what_it_means": "1. **Count assets, not just pages.** Every delivery names the assets it created, added to, or protected — in the checkpoint, in the ledger, in the report.\n2. **Never fork an asset.** A new build harvests the existing asset (the tiled number, the gauge, the drill) — it does not invent a rival one. Two versions of one asset is a liability, not wealth.\n3. **Assets are the moat.** The empire grows because the assets compound: each one makes the next page cheaper, faster, and better. That is the 100% success rate made real — the machine works because the parts are proven.\n4. **People build on the empire.** Citizens build their worlds on our assets, and their building adds to the assets. That is the flywheel: assets → people build → more assets → more people.",
+  "whats_inside": [],
+  "topics": [
+   "Vision"
+  ]
+ },
+ "page_hash": "b03d38c8ae0fc85b1a9df266018da72533ddb368ab853250556df1c44b231a62",
+ "content_hash": "d0d4e11d8f946cc99858b9915fc7081611cf1b0ea3cff10dfa4437202d953308",
+ "reconstructed_from_page": true
+}

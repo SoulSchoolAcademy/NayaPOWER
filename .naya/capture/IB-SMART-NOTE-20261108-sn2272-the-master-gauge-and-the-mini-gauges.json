@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2272",
+ "title": "The Master Gauge and the Mini Gauges — The Stats Flow",
+ "slug": "the-master-gauge-and-the-mini-gauges",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2272/IB-SMART-NOTE-20261108-sn2272-the-master-gauge-and-the-mini-gauges.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The stats presentation (numbers + gauges, ten out of ten) should sit closer to the top, because it flows. The hero gauge at the top is the master gauge — the master node — and the stats below it are the mini gauges. The citizen feels it without being told: that's the master, and these are the minis. So the data area's stats come right below the hero — first thing below the fold, flowing from the master gauge — not buried deep down the page. And when they go inside the app and click an orb, the detail shows graphs with gauges like the stats view, and numbers. That is the way. The other chart formats (Bars, Donut, 123) stay as options if they want them — leave them there — but the default is the best: the gauges + numbers presentation. The default is what a stranger sees first; the options are what a citizen chooses.",
+  "human_view": "Imagine a control room. At the top, one big dial — the master gauge — the one that tells you how the whole machine is doing. Below it, a row of smaller dials — the mini gauges — each one telling you how one part is doing. You feel the hierarchy the moment you look: the big one is the master node, the small ones are its children. And when you tap one of the little orbs, it opens up into graphs and dials and numbers — the same language, bigger. That is the flow: master to minis, top to bottom, one language all the way down. And the machine always shows you its best face first — the other faces are there if you want them, but the best is the default.",
+  "child_view": "The big round dial at the top is the boss dial — the master. The little dials underneath are its helpers — the minis. The numbers and dials sit near the top so you can see them right away. And when you tap one of the little balls, it opens up into pictures and dials and numbers, just like the big ones. The best picture is the one you see first; the other pictures are there if you want them.",
+  "grandma_view": "The big dial at the top is the master — it tells you how everything is doing. The smaller dials below are the minis — each one tells you how one part is doing. They sit close to the top, flowing down from the master, so you see them straight away. Tap one of the little circles and it opens into lovely graphs and dials and numbers. The best view is the one you see first; the other views are there if you'd like them.",
+  "ai_view": "This is the flow that ties the whole Dashboard together — and the answer to his \"don't you think?\" is yes, absolutely, because it is the same law the page already follows, now named. The hero is the master gauge (the number on top, the gauge underneath, the orbs around it). The stats are the mini gauges (the same presentation, smaller, flowing from the master). The orb click is the master opening into its minis (graphs with gauges and numbers). The default is the best (the gauges + numbers, ten out of ten) with the other formats kept as choices. One language, three scales: master, minis, detail. The placement is the flow: the stats sit closer to the top because they ARE the top — the master node's children, right below their parent. The Running feed hides behind its button and the world boards sit below the stats, because the flow is master → minis → boards → feed, in that order. And \"default to the best\" is the deepest rule in the system: the stranger sees the best first, always; the options exist for the citizen who wants them, never as a maze the stranger must navigate.",
+  "what_it_means": "- **The master gauge is the master node.** The hero gauge at the top is the master; the stats below are the mini gauges. The hierarchy is felt, not explained.\n- **The stats sit closer to the top.** First thing below the fold, flowing from the master gauge. The data is below the fold (fix 4), but the stats are the first thing below it.\n- **The orb opens graphs with gauges and numbers.** Clicking an orb opens the detail in the stats presentation. That is the way.\n- **Default to the best, keep the rest as options.** Bars, Donut, 123 stay available — but the default is the gauges + numbers. The stranger sees the best first; the citizen chooses.\n- **One language, three scales.** Master, minis, detail — the same presentation (number on top, gauge underneath) at every scale. The flow is the design.",
+  "whats_inside": [
+   "1. **Fix pass 5, fix 8 of 8 (sent 01:50Z)** — stats closer to the top (first below the fold, flowing from the master gauge); orb click opens graphs with gauges + numbers; default is the gauges + numbers, Bars/Donut/123 stay as options.\n2. **The flow is the layout law.** Master → minis → boards → feed. Every future Dashboard layout follows it.\n3. **The default is the best, everywhere.** Not just the orb detail — every view that offers formats defaults to the best one. The options stay; the maze goes."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "f5a9ac1310fab2d732573dfadb9fcfe8aa14347814cb28fafb54e967ccfada3f",
+ "content_hash": "fdda48a8e41fb634249dd681e62ba9bbe356debd1eab3df2bf31d34c98fd0cf6",
+ "reconstructed_from_page": true
+}

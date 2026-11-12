@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-1861",
+ "intelligence": {
+  "title": "Fork or No Fork: Exactly What You Get",
+  "intelligent_block_id": "IB-SMART-NOTE-20261024-sn1861-fork-or-no-fork-exactly-what-you-get",
+  "smart_note_id": "SN-1861",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1861/IB-SMART-NOTE-20261024-sn1861-fork-or-no-fork-exactly-what-you-get.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-24. No runtime provenance invented.",
+  "ingested_at": "2026-10-24",
+  "essence": "No fork is the default, and it is the whole product: your identity, your pages, your quick notes, the Smart Note button, the feed, connect, mail, matching, and your own Muse — all through the one shared app, with no GitHub setup, no key, and no repo address, ever. A fork adds exactly four things: your own copy in your account, a private workshop, a safe place to break things, and room for custom pieces not yet proven. And a fork changes nothing by existing: every function stays on main's standard unless the fork is genuinely better for that function — by logic and by performance, never by existence.",
+  "human_view": "**What you get with NO fork (every citizen, automatically):**\n- Your citizen identity and your pages — personal, business, and space.\n- The whole collective to read and browse, including every Smart Note.\n- Quick notes in your personal space, private by default, saved as you wrote them.\n- The Smart Note button: tap it and your note comes back in the lenses — nutshell, human, child, grandma, machine, what it means, why it matters, what's in it for you — and stands in the shared feed.\n- Connect, citizen mail, and being matched.\n- Your own Muse connected through the shared app: say \"smart note this,\" and it files through the same door.\n- Nothing to install, no GitHub account work, no app of your own, no key to hold or lose.\n\n**What a fork ADDS (optional, one tap — \"Make my copy\"):**\n1. **Your own copy.** The repo lives in your account, under your name. It is yours if you ever leave — ownership and portability.\n2. **A private workshop.** Notes, code, and drafts nobody in the shared system sees until you choose to share them.\n3. **A safe place to break things.** Experiments can fail in your copy without touching the shared system everyone else is standing on.\n4. **Room for custom pieces.** A personal template or tool that has not yet earned its way into the shared factory can live and prove itself in your fork first.\n\nThat is the complete list. A fork does not make the feed faster, the notes smarter, or the matching better — the shared system already runs at full strength for everyone.\n\n**The rule that governs both:** when a fork exists, nothing switches to it automatically. Function by function, the question is: is this genuinely better on the fork — by logic, by performance? If yes, that one function uses the fork. If no, or if it is merely equal, main's standard runs it. And proven fork work does not stay forked: it promotes to main through the scorecard gate and becomes the standard for everyone. Harvest, not drift.\n\n**The honest costs of forking:** your copy ages unless it is maintained; two copies mean sync and drift work; and it adds setup and a key surface to guard. Those costs are exactly why fork is the option and not the default.",
+  "simple_view": "Imagine a big library everyone shares. You can read every book, write notes, and put your best notes on the big board — you don't need your own library for any of that. But if you want, you can have your own little copy of the library at home: your books stay yours, you can scribble and experiment, and if you mess up, the big library is fine. Having the copy doesn't change the big library one bit — unless you invent something wonderful at home, and then we check it together and put it in the big library for everyone.",
+  "grandma_view": "Dear, joining is simple: you get your pages, your notebook, and a button that turns your notes into beautiful Smart Notes on the shared board — no machinery of your own to look after. If someday you'd like your own copy of everything, kept in your own name, you can have one with a single tap, and it's lovely for keeping private drafts and trying things safely. But you never need it to belong fully. The shared house already has everything; the copy is a garden shed of your own — nice to have, yours to keep, and never a requirement.",
+  "naya_view": "Design law for every seat building on this (companion to SN-1860, the in-Hub filing design):\n- **Default path is no-fork, always.** Build every citizen function against main + the shared app first; a function that only works with a fork is a defect.\n- **Fork benefits are the four named above — closed list.** Do not invent new fork advantages to justify fork-first designs; a new benefit enters this list by evidence and a director ruling, not by a builder's preference.\n- **Selection is per-function, by logic and performance.** Never migrate a citizen's functions wholesale to their fork because a fork exists.\n- **Promotion is the only way fork work becomes standard:** different-seat scorecard at 9+, production on the director's greenlight.\n- **Receipts:** SN-1860 (the filing design this completes) filed direct `e271f185`, live at nayanet.live/s/sn1860; SN-1859 live at nayanet.live/s/sn1859. This note filed the same way, through the door, registered in the same pass.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-1861",
+   "title": "Fork or No Fork: Exactly What You Get",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1861/IB-SMART-NOTE-20261024-sn1861-fork-or-no-fork-exactly-what-you-get.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-10-24 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1861/IB-SMART-NOTE-20261024-sn1861-fork-or-no-fork-exactly-what-you-get.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "aac09d836d2621cf92e31d0b175b0dd926e2dab3"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,42 @@
+<!-- Smart Block specimen: spectrum-flow -->
+<!-- Bands: messages (purple) / intelligent blocks (blue) / spaces (green) / shares (gold) — 14 days -->
+<link rel="stylesheet" href="../../../tokens.css">
+<link rel="stylesheet" href="spectrum-flow.css">
+<div class="sg-card lit" style="max-width:560px">
+  <h4>Activity composition</h4>
+  <div class="c-sub">Automatic · 14 days · share of all events</div>
+  <svg class="sf-river" viewBox="0 0 520 190" preserveAspectRatio="none" role="img" aria-label="Activity composition over 14 days">
+    <defs>
+      <linearGradient id="sfG1" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#a06bff" stop-opacity=".85"/><stop offset="1" stop-color="#a06bff" stop-opacity=".25"/>
+      </linearGradient>
+      <linearGradient id="sfG2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3f9ff5" stop-opacity=".8"/><stop offset="1" stop-color="#3f9ff5" stop-opacity=".22"/>
+      </linearGradient>
+      <linearGradient id="sfG3" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#34d38a" stop-opacity=".8"/><stop offset="1" stop-color="#34d38a" stop-opacity=".22"/>
+      </linearGradient>
+      <linearGradient id="sfG4" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#e7c65a" stop-opacity=".8"/><stop offset="1" stop-color="#e7c65a" stop-opacity=".22"/>
+      </linearGradient>
+    </defs>
+    <g class="sf-grid">
+      <line class="sf-grid" x1="0" y1="47" x2="520" y2="47"/><line class="sf-grid" x1="0" y1="95" x2="520" y2="95"/><line class="sf-grid" x1="0" y1="142" x2="520" y2="142"/>
+    </g>
+    <g class="sf-bands">
+      <path class="sf-band" fill="url(#sfG4)" d="M-30,150 C60,138 120,146 190,132 C260,118 330,126 400,112 C460,102 520,108 560,100 L560,190 L-30,190 Z"/>
+      <path class="sf-band" fill="url(#sfG3)" d="M-30,150 C60,138 120,146 190,132 C260,118 330,126 400,112 C460,102 520,108 560,100 C520,108 460,118 400,128 C330,142 260,138 190,150 C120,162 60,158 -30,168 Z"/>
+      <path class="sf-band" fill="url(#sfG2)" d="M-30,108 C60,96 120,104 190,92 C260,80 330,88 400,76 C460,68 520,74 560,66 C520,74 460,88 400,96 C330,110 260,104 190,116 C120,128 60,124 -30,134 Z"/>
+      <path class="sf-band" fill="url(#sfG1)" d="M-30,64 C60,52 120,60 190,48 C260,36 330,44 400,32 C460,24 520,30 560,22 L560,0 L-30,0 Z"/>
+    </g>
+    <text class="sf-axis" x="6" y="182">14 days ago</text>
+    <text class="sf-axis" x="470" y="182">today</text>
+  </svg>
+  <div class="sg-legend">
+    <span><i style="--lc:var(--purple)"></i>Messages</span>
+    <span><i style="--lc:var(--blue)"></i>Intelligent Blocks</span>
+    <span><i style="--lc:var(--green)"></i>Spaces</span>
+    <span><i style="--lc:var(--gold)"></i>Shares</span>
+  </div>
+  <!-- SAMPLE DATA -->
+</div>

@@ -1,0 +1,51 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2165",
+  "title": "A Gate Must Earn Its Green",
+  "slug": "essence-gates-earn-their-green",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-gates-earn-their-green.md",
+  "tone": "sapphire",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:11:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A gate, a judge, or an instrument earns trust only by demonstrating it can fail: the exemplar adjacency gate was admitted as evidence because it FAILS on the pre-repair PDF with 17 adjacent-duplicates and 10 grays — the exact violations the Director named — and passes the fixed render (SN-719). A design judge was calibrated against known references (90, 95, 64) and rolled out report-only, blocking nothing, because blocking authority is earned through verified verdicts, never granted on shipping day (SN-730). A check that crashes yields no verdict at all, which is worse than drift (SN-786); a hash chain verifies only the lines that joined it, so health must count the corrupt lines that never became receipts (SN-772); and a gate that validates a receipt's *form* passes a 30-second forgery, while content-bound validation — sha256(marker) == sha256(exact receipt bytes) — survived 9 of 9 attacks (SN-795). Even a kindness is suspect: a proposed default that removed a refusal was rejected because the refusal was incidentally the only thing blocking NaN scores from passing every floor (SN-800).",
+    "human_view": "A lock is only trustworthy if you've seen it refuse the wrong key. Every instrument in this essence — gates, judges, hash chains, claim checks — was trusted only after someone tried to break it, fool it, or feed it garbage, and watched what it did. Some passed and earned their place. Some were caught passing forgeries, crashing silently, or checking only the tidy part of the input while the messy part rotted. And one grumpy old error message turned out to be the only thing standing between the system and a nonsense score sailing through — so before you remove anything that says no, find out what it's been saying no *to*.",
+    "child_view": "Imagine a hall monitor who stamps every hall pass without looking. The stamps look official, but anyone can scribble a pass and walk by. A good monitor actually reads the pass, checks the name against the list, and sometimes the pass is a test — the teacher sends a fake one on purpose to see if the monitor catches it. Only monitors who catch the fake ones get trusted with the real hallway. And if a monitor's stamp pad breaks, they say \"I can't check anyone right now\" out loud — they don't just wave everyone through.",
+    "grandma_view": "Dear, it's the difference between a scale you trust and a scale you hope. You trust the one you've tested with a known weight, that refuses to pretend when it's broken, and that weighs the whole sack — not just the clean potatoes on top. And mind the old latch on the gate that seems to stick for no reason: sometimes that stubborn latch is the only thing keeping the sheep in. Oil it if you must, but first walk the fence and see what it was holding.",
+    "ai_view": "Before you cite a gate, run it against the known-bad artifact and watch it fail (SN-719). Before you let a judge block anything, calibrate it on references whose scores you already know and run it report-only until its verdicts are verified (SN-730, SN-731). Build every check as a total function — unknown inputs get an honest verdict, never a crash (SN-786) — and pair every integrity verdict with a count of what never entered the mechanism (SN-772). Ask the forger's question of every receipt you accept: can this be fabricated from public values in 30 seconds? If yes, it validates form, not substance (SN-795). Treat unsourced numbers as blocked inputs (SN-692) and make your mechanical checks at least as strong as the doctrine they cite (SN-703). Never verify your own build (SN-784), never weaken a gate to reach green, and never delete a refusal until you've probed what it was incidentally blocking (SN-800). And before range math in a borrowed worktree, check for the shallow file (SN-718).",
+    "what_it_means": "Eleven notes are one law: **an instrument's green is worth exactly the failures it has demonstrably caught.** The adjacency gate, the calibrated calculator, the design gate, and the digest-bound receipt all earned trust the same way — by being attacked, fed known-bad input, or run against references, in public, with numbers. The failures are the same shape inverted: a gate that validated form (SN-795), a check that crashed (SN-786), a chain blind to non-members (SN-772), a claim check weaker than its doctrine (SN-703), a shallow clone answering range questions it had no right to answer (SN-718). And SN-800 is the law's defensive half: even an instrument's *accidents* — a refusal nobody designed as a NaN guard — are load-bearing until proven otherwise.",
+    "whats_inside": [
+      "A gate is admitted as evidence only with a two-sided run: it fails on the known-bad artifact and passes the repaired one (SN-719).",
+      "Judges graduate: calibrate against known references → report-only → blocking only after verified verdicts (SN-730); automation itself graduates only after a cold builder proves the bar by hand, five times, at 9.5+ (SN-731).",
+      "Checks must be total functions: a crash is no verdict, worse than drift; fail-safe fallbacks beat registering the one known case (SN-786).",
+      "Integrity verdicts pair with raw-input health: count what never joined the chain (SN-772).",
+      "Receipt validation binds content (digest of exact bytes) or it validates only form and passes forgeries; the fix is architectural — process attestation or challenge-response (SN-795).",
+      "Unsourced counts are blocked inputs; withdrawn numbers are replaced with sourced baselines (SN-692). Number-claim checks enumerate every branch tree carrying live claims, not the local branch alone (SN-703).",
+      "Builders never self-verify; gates are wired into CI and fixed when they err — never weakened (SN-784).",
+      "A refusal is removed only after proving what it incidentally blocks; fixtures are fixed before adapters (SN-800).",
+      "Range operations verify the clone is not shallow first (SN-718)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-3"
+    ],
+    "covers": [
+      "SN-692",
+      "SN-703",
+      "SN-718",
+      "SN-719",
+      "SN-730",
+      "SN-731",
+      "SN-772",
+      "SN-784",
+      "SN-786",
+      "SN-795",
+      "SN-800"
+    ]
+  },
+  "page_hash": "56e56858618e26e9c1d5c1bb761c0c885b15d7e4a9a3bff92d073066e51b4c16",
+  "content_hash": "0f7e5d092ff0db0d9e9e2762c3b2f56e82a0b4a5cc276faddcad8ef5a40d0c46"
+}

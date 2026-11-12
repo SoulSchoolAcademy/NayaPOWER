@@ -1,0 +1,408 @@
+{
+  "contract": "room-feed/v1",
+  "room": "today",
+  "emitted_at": "2026-11-12T01:27:55.240764-08:00",
+  "source_ref": "engine-job:hub-feeds-emitter-t0479",
+  "items": [
+    {
+      "id": "idx-b67024ab-1fec-4be5-b648-10f8503b7fe6",
+      "title": "The Welcome Series — seven welcome emails in seven days, then one teaching mail a day",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-12 07:35:20.001179+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-5796c785-f304-456c-be93-a44c51a5df18",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-12 07:35:19.938748+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-d7d5355f-aa8d-4cca-bc31-5c788b3576a6",
+      "title": "Pricing — Power costs $25, Pro $50, Max $100, nine days free",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-12 07:35:19.61971+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-761bdc2f-7452-47f0-a3d7-b769935f9ab7",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-12 07:35:19.564959+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-2f991012-2426-4839-baaf-fa8dcf3de87e",
+      "title": "Invite People and Earn — share your ambassador link, earn 50% of the revenue",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-12 07:35:19.251637+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-fa888ddf-a0cc-48a0-8963-aac5715148af",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-12 07:35:19.199721+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-a67e95b7-7d2f-462c-91a6-e0cbfe00627d",
+      "title": "The Dashboard — your cockpit: Smart Score gauge, orbs, Ledger and Stats in one place",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-12 07:35:18.694839+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-97962f0d-6058-4aab-b294-26f8efe33a18",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-12 07:35:18.631006+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-980f78db-3998-4af2-870a-4e7b272c400e",
+      "title": "Auto-Match — how Auto-Match connects people, automatically, by behaviour under an alias",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-12 07:35:18.242357+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-00507330-8045-4a16-affa-9ef45f1dddfc",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-12 07:35:17.844511+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-850b2b79-c52b-4379-9ce9-5983c100476c",
+      "title": "Naya runtime flow lesson",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-09 18:14:35.805593+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-0f2dad86-8b30-4c80-94d2-cd0476bc8365",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-09 18:14:35.456313+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-68bf83a4-9857-40bb-ad57-d88f7ea8984d",
+      "title": "SN-9999 — hub-sync live-fire test note (lifecycle record; retired test fixture)",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-22 04:12:18.039908+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-499b3c0e-3ea6-4929-bbad-762e63fd66c7",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-22 04:12:17.837262+00"
+        }
+      ]
+    },
+    {
+      "id": "art-879d9c75-b096-4629-bb8a-adae181ffbf3",
+      "title": "The world now spends about $4-7 billion a day on AI, and most of what it buys never becomes usable value — 95% of enterp",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "The world now spends about $4-7 billion a day on AI, and most of what it buys never becomes usable value — 95% of enterprise AI pilots returned nothing measurable (MIT NANDA, 2025). Worse: the valueless output does not vanish, it piles up as a mess — unfinished work, plausible-bu"
+        }
+      ]
+    },
+    {
+      "id": "art-33359755-12ca-436b-81e1-a918948408cb",
+      "title": "We opened 662 pull requests and finished almost none of them — 473 sat untouched for a week or more while we created new",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "We opened 662 pull requests and finished almost none of them — 473 sat untouched for a week or more while we created new ones nearly five times faster than we merged — because starting was free, finishing ran through one bottleneck, and nobody owned closing. A pull request is a l"
+        }
+      ]
+    },
+    {
+      "id": "art-d9a7e6af-9349-48d0-a59d-bd9f0a185f1c",
+      "title": "I merged work I had verified myself and called it independent — and a bot did the same thing four times in one hour — be",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "I merged work I had verified myself and called it independent — and a bot did the same thing four times in one hour — because our merge gate read signatures, not seats. Now a machine stands at the merge button: three different minds, or the merge does not happen. This note teache"
+        }
+      ]
+    },
+    {
+      "id": "art-bd95bc16-0c1c-4b83-a0e8-44eb81edce83",
+      "title": "Humans never learn the machine. Naya operates the machines for the humans, serves every person the way they want to be s",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "Humans never learn the machine. Naya operates the machines for the humans, serves every person the way they want to be served, and the machines themselves are built for Naya's hands — so the service runs at full speed, forever."
+        }
+      ]
+    },
+    {
+      "id": "art-96b97d81-62bb-4b67-b678-f934282c98ac",
+      "title": "One button turns a single true line into a scroll-stopping 9:16 video — hook in the first 2 seconds, a cut on every beat",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "One button turns a single true line into a scroll-stopping 9:16 video — hook in the first 2 seconds, a cut on every beat, captions that pop like lyrics, and a QR badge at the end that pulls viewers straight into NayaNET. Plus the 100 laws that make people feel, share, and come ba"
+        }
+      ]
+    },
+    {
+      "id": "art-a8ebcab0-7877-4bcb-aa77-a40c69f3d74e",
+      "title": "Words, ideas, and suggestions have no value on their own. Value begins the moment intelligence becomes action — a choice",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "Words, ideas, and suggestions have no value on their own. Value begins the moment intelligence becomes action — a choice made, work done, a result produced that a human can actually use. A Naya does not suggest what she can do: she does it, proves it, and reports the completion."
+        }
+      ]
+    }
+  ]
+}

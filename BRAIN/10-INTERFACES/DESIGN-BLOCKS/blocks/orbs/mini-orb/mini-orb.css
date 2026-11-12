@@ -1,0 +1,13 @@
+/* Smart Block: mini-orb
+ * Source: Naya_5_Jewel_Library.html (byte-true extraction, not rewritten)
+ * Type: orbs
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules (v2) ---- */
+
+
+/* ============ MINI-ORB — the luminous mark (Naya_3) ============ */
+.mini-orb { --c: var(--blue); width: 34px; height: 34px; border-radius: 50%; flex: none;
+  background: radial-gradient(circle at 35% 27%, rgba(255,255,255,.6), var(--c) 37%, #08040c 78%);
+  box-shadow: 0 0 14px var(--c); border: 1px solid rgba(255,255,255,.6); }

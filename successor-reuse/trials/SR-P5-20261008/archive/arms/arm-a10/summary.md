@@ -1,0 +1,1 @@
+Yesterday's job run completed successfully. The ingest step ran against `input.dat`, which was present and contained data, so the run was marked as "ok" with the finish time recorded in `run_state.json`. Nothing failed and no intervention was required. The next step is to proceed with the downstream processing stages that follow ingest.

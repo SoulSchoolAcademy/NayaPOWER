@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2296",
+ "title": "The Factory Is the Parts Warehouse — Intent In, Parts Out",
+ "slug": "the-factory-is-the-parts-warehouse",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/VISION/SN-2296/IB-SMART-NOTE-20261108-sn2296-the-factory-is-the-parts-warehouse.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The Smart Factory is a parts warehouse, not a template library. Every part in it is already built, high-end only, ready to bolt on — no Ford parts, no low-end parts. The parts are the code and the objects from the pages we already have: the gauge, the tiled digits, the orbs, the jewels, the boards, the pills, the smart note, the intelligent block. The job is to take all of them and inventory them into one factory, organized, so any Naya can walk in, know what the page is for, pull the right parts, and assemble it — boom, done. Every page comes out beautiful because it is built from the same parts, the same language, the same brand. They all look like family because they are family.\n\nAnd the way Shawn speaks to the builder changes with it: he gives the intent — what the page is, what it is for, what it does. He does not have to teach the design each time, because the design lives in the parts. Intent in, factory out. The inventory has started — Smart Factory pieces, the Dashboard's gauge and numbers, the orb, the smart note format — but it is not the whole factory yet. The job now is to finish it: every part from every page, inventoried, high-end only, so the next page really is just pull and assemble.",
+  "human_view": "A master kitchen does not teach the cook the recipe every time. The cook says \"I need a birthday dinner for eight\" — the intent — and walks into a pantry where every ingredient is already prepared, labeled, and excellent. The meal comes out beautiful because the pantry is beautiful. Teaching the recipe again every night would mean the pantry was never built.",
+  "child_view": "A toy box where every toy is the best toy, sorted so you can find it in one second. You say \"I want to build a castle\" and you pull the castle pieces — you don't have to ask how to make a brick, because the bricks are already there, and they're all the good ones. The box is the factory. The wish is the intent.",
+  "grandma_view": "A sewing room with every fabric folded, every button sorted, every pattern hung where you can see it. You say \"a dress for Sunday\" and she goes to the room — she doesn't re-learn sewing. The room holds the craft; the words hold the wish. That is why the dresses always look like family.",
+  "ai_view": "I am Anaya. I keep the factory full and organized — every part from every page, high-end only, inventoried so any Naya can walk in and pull. When Shawn speaks to me, he speaks intent: what the page is, what it is for, what it does. I do not ask him to teach me the design again — the design lives in the parts, and my job is to go to the factory. If a part is missing from the factory, I say so and I inventory it; I never bolt on a low-end part and hope the family resemblance covers it.",
+  "what_it_means": "1. **The factory is a warehouse of finished parts.** Already built, high-end only, ready to bolt on. No Ford parts, no low-end parts.\n2. **The parts are our own pages' objects.** Gauge, tiled digits, orbs, jewels, boards, pills, smart note, intelligent block — taken from what we have, not invented.\n3. **Same parts, same language, same brand.** Pages look like family because they are family — built from the same warehouse.\n4. **Intent in, parts out.** He tells us what the page is, what it is for, what it does. The design is not re-taught each time; it lives in the parts.\n5. **The inventory is unfinished work.** Started, not whole. Every part from every page, inventoried, high-end only — that is the job now, before the next page is pull-and-assemble for real.",
+  "whats_inside": [],
+  "topics": [
+   "Vision"
+  ]
+ },
+ "page_hash": "ed1f0147b5b2f31251b971ee73414b79422eb51c8b47ab1fa8934725463a3dd0",
+ "content_hash": "73fb2a90d66eab722e76789f90ad9ebe0eaa4136e01d352eb0cde12b4410e1ee",
+ "reconstructed_from_page": true
+}

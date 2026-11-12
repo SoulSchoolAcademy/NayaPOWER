@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block specimen: spaces/sp-detail</title>
+<link rel="stylesheet" href="block.css">
+<style>
+  body{ background:#050507; color:#fff; font-family:system-ui,-apple-system,'Segoe UI',sans-serif; margin:0; padding:40px 24px; }
+  h1{ font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:#8a8a96; margin:0 0 24px; }
+  .demo-block{ margin-bottom:40px; }
+  /* .sp-back / .sp-join / .sp-invite-btn are not in this block's CSS; specimen-only styling so the demo renders */
+  .sp-back{ padding:9px 20px; border-radius:999px; font-size:11px; font-weight:800; letter-spacing:.08em; cursor:pointer; font-family:inherit; color:#fff; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.2); margin-bottom:14px; }
+  .sp-join{ padding:9px 20px; border-radius:999px; font-size:11px; font-weight:800; letter-spacing:.08em; cursor:pointer; font-family:inherit; color:#a78bfa; background:rgba(157,117,255,.12); border:1px solid rgba(157,117,255,.4); }
+  .sp-join.in{ color:#fff; background:rgba(13,158,111,.2); border-color:rgba(13,158,111,.6); }
+  .sp-invite-btn{ padding:9px 20px; border-radius:999px; font-size:11px; font-weight:800; letter-spacing:.08em; cursor:pointer; font-family:inherit; color:#fff; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.2); }
+  .fake-tab{ padding:14px 18px; border-radius:16px; background:rgba(255,255,255,.03); border:1px dashed rgba(255,255,255,.2); color:#8a8a96; font-size:13px; }
+</style>
+</head>
+<body>
+<h1>spaces / sp-detail</h1>
+<div id="demo"></div>
+<script src="block.js"></script>
+<script>
+  var demo = document.getElementById('demo');
+
+  var d1 = spDetail({
+    name:'Design Guild', topic:'Creativity', accent:'#7c3aed', members:128,
+    desc:'World-class interface craft. The bar is 10 stars or it never ships.',
+    joined:false,
+    onJoin:function(j){ console.log('Design Guild joined =', j); }
+  });
+  var t1 = document.createElement('div');
+  t1.className = 'fake-tab';
+  t1.textContent = 'Tab content is filled by the tabs/sp-dtabs sibling block — this shell only provides .sp-dcontent.';
+  d1.content.appendChild(t1);
+  var w1 = document.createElement('div'); w1.className = 'demo-block'; w1.appendChild(d1); demo.appendChild(w1);
+
+  var d2 = spDetail({
+    name:'Signal Room', topic:'Governance', accent:'#1e6fd9', members:32,
+    desc:'Every law ships as code. The scorecard is the gate.',
+    privacy:'private', joined:true
+  });
+  var w2 = document.createElement('div'); w2.className = 'demo-block'; w2.appendChild(d2); demo.appendChild(w2);
+</script>
+</body>
+</html>

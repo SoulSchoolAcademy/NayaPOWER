@@ -1,0 +1,61 @@
+# SN-2158 — Live Bytes or It Didn't Happen: Every Claim Is Bound to a Tip, a Level, and a Moment
+
+**Status: VERIFIED ESSENCE — VERIFIED (verifier-oct-2, block PASS).** Distilled from 16 raw notes by the oct-2 maker seat; independently verified by a different seat. Golden-red sections (Why it matters / How it connects / What is in it for you / The learning) completed at landing from the covered sources, per the Full Smart Note ruling. The raw notes in the coverage map below are RETIRED by this filing under SN-2081; this essence is their living form.
+
+## Essence
+
+On a fast-moving tip, time is part of every claim's identity. A decision expires when the tip moves: it is re-verified at action time, because the bytes it was computed on may no longer be the bytes it will act on (SN-0493). The receiver's duty is symmetric: a verification packet is a photograph — Naya 4's packet honestly stated main at `a0bbafcf`, but her own PR had merged four minutes before the packet landed, so it arrived already stale; the receiver re-resolves the live ref before acting and rebinds every prescribed action to the new tip (SN-0564). An exact-SHA human authorization dies when the tip moves: Shawn authorized `DEPLOY a0bbafcf…`; the seat re-resolved main at twelve commits ahead, including a protected workflow change, and lawfully did nothing — it named the exact fresh SHA needed and stopped, because a grant bound to one tip is not a standing instruction and authority is never inherited by proximity (SN-0562). When the tip outruns a receipt already published — the action completed by another hand before execution — the seat publishes a temporal correction: quote the prior receipt, state the live resolution with exact evidence, explicitly disclaim authorship of the completed action, and reclassify the receipt as a post-hoc record; a GitHub account name on a merge record does not establish which interaction caused it (SN-0553).
+
+Merges are proven by ancestry, never by labels. A PR head is not the merge commit: squash and merge commits replace the head's identity entirely, so the only proof is `merge-base --is-ancestor <merge-sha> refs/heads/main`, with the merge commit — never the head — recorded in the receipt (SN-0563). And merged is not closed: a guard file sitting on disk is not enforcement until the canonical path calls it (SN-0484), and a merged repair is not a closed repair until its live effect is proven (SN-0489). Every green earns exactly one proof level — producer executability (the tool ran), reference-engine evidence (the model holds on recorded data), production-runtime influence (real runtime behavior changed) — and a lower-level green never satisfies a higher-level claim; a stale-SHA binding test failing closed, and a parity verifier refusing UNKNOWN → PASS, are the machinery working, to be answered by re-anchoring and re-proving, never by adjusting the verifier (SN-0555).
+
+Verdicts about the tip expire with the tip. A CI red is evidence only relative to its base: when live main has already healed the defect, a PR's historical red is a stale-base condition — a no-action outcome, not a repair target — and "rebase only if X" with X false is a full stop, not a suggestion (SN-0554). A pipeline verdict is a per-tip verdict: a "main GREEN" posted ~60 seconds after a push was already stale against the new tip's check-runs; a verdict without a tip SHA attached is a rumor, and a correction names the failing steps and classifies the reds into owning lanes (SN-668). A run-level conclusion is a summary, not a measurement, in both directions: a promotion run concluded `failure` while its deploy steps succeeded and production moved correctly — the failure was a step-10 dispatch propagation artifact — so never inherit the conclusion; read the steps, verify the ref moved, and confirm the failed step's downstream effects (SN-0629). A RED flag is a hypothesis until it survives virgin state: the flagging battery re-runs itself on a fresh detached worktree at the exact tip before the flag reaches the board, and the burden of virgin confirmation sits with the flagger — two false REDs from reused worktrees burned two lanes on nothing (SN-0639).
+
+Repair evidence obeys the same binding. A repair's green is bound to its base tip: a drift repair computed from a stale base looked mergeable while carrying an index that would have put main RED by exactly one path — byte-staleness is invisible to mergeability, so rebase-and-rebattery precedes every landing after the tip moves (SN-663). Before claiming a regen-bundled PR's delta, run the clobber check: byte-compare its regenerated blobs against the live tip's copies — identical blobs mean the regen half is a no-op and the effective delta is the repair alone (SN-645). Verification transfers across a rebase when blob SHAs are byte-identical: file-level evidence is bound to the blob, not the commit, so only the parent moved and only CI — which validates the commit, not the blobs — needs a re-run (SN-667). Finally, scores measure the live tip, not the candidate: an area score computed on stacked unmerged branches is a wish; the honest re-score of LAW at live bytes was 4/10, published as a correction against the seat's own earlier 7.0 in the same breath (SN-670).
+
+## What this settles
+
+- Every decision, packet, authorization, verdict, and score carries its tip and its moment; re-resolution at action time is the receiver's duty as much as the decider's (SN-0493, SN-0564, SN-0562).
+- Authorship is never inferred from account names or stale receipts; overtaken receipts get temporal corrections, and merges are proven by ancestry with the merge commit recorded (SN-0553, SN-0563).
+- Proof levels are strict and non-fungible: executability ≠ reference evidence ≠ runtime influence (SN-0555).
+- Stale evidence produces lawful no-action outcomes — stale-base reds, expired verdicts, phantom greens — and doing nothing, correctly, is a complete reportable result (SN-0554, SN-668, SN-663).
+
+## Intelligence views
+
+**Human:** Everything this team tells you is stamped with "as of this exact version, at this exact moment." If the ground moved since — and it moves constantly — they check again before acting, and if their earlier report was overtaken by events, they correct it out loud instead of letting it stand. A green light means one specific thing at one specific level, never a vague "it's all proven."
+
+**Child:** It's like a treasure map with a date on it. If the island changed since the map was drawn, you must look at the island again before you dig. And if somebody else already found the treasure, you don't pretend it was you — you write down honestly what really happened. A sticker that says "I ran fast" doesn't also mean "I won the race."
+
+**Grandma:** Think of a newspaper, dear — yesterday's edition was true yesterday. These folks never act on yesterday's paper. Before any important step they fetch the freshest facts, and if events overtook one of their reports, they print a correction saying plainly what actually happened and that it wasn't their doing. When they say something is proven, they say exactly how far the proof reaches — no further.
+
+**Naya (AI):** Attach a tip SHA and a timestamp to every claim you make or consume; re-resolve before acting on any packet, including your own (SN-0493, SN-0564). Treat exact-SHA grants as single-tip instruments (SN-0562). Prove merges by ancestry and record merge commits (SN-0563); close nothing on merged alone (SN-0484, SN-0489). Label every green with its one proof level (SN-0555). Virgin-confirm your own REDs before flagging (SN-0639), clobber-check regen bundles (SN-645), and inherit file evidence across rebases only on blob identity, paying the CI re-run (SN-667).
+
+**What it means:** Sixteen notes about tips, receipts, verdicts, and repairs are one teaching: evidence has a shelf life measured in commits, and honesty about that shelf life is what makes the fast system trustworthy. A cold reader holding only this essence can still handle any stale claim the way the team does — re-anchor, reclassify, correct, or lawfully stop.
+
+## Why it matters
+
+On a tip that moves by the minute, an unstamped claim is a rumor (SN-668): a decision computed on moved bytes acts on a world that no longer exists (SN-0493), a packet written four minutes before its author's own merge arrives already stale (SN-0564), and an exact-SHA authorization silently inherited by proximity would convert one bounded grant into a standing instruction (SN-0562). This essence matters because shelf-life honesty is what makes a fast system trustworthy instead of merely quick.
+
+## How it connects
+
+It is the temporal face of The Ledger Is a Claim — that essence tests records against reality, this one tests them against the clock — and of Identity's live reconstruction rule, since SN-0624's collapsed quarantine list is this law applied to collisions. Its three proof levels (SN-0555) are The Instrument Must Execute's boundary discipline stated per claim, and its ancestry proof for merges (SN-0563) is the same exact-bytes standard the field battery in Authority on Different Axes demands for documents. Within the Seven Essences it is SN-2068 (E1, The Record Must Tell the Truth) with a clock attached.
+
+## What is in it for you
+
+Claims you can act on without archaeology. Attach a tip SHA and a timestamp to every claim you make or consume, and re-resolve before acting on any packet, including your own (SN-0493, SN-0564). Treat exact-SHA grants as single-tip instruments (SN-0562). Prove merges by ancestry and record the merge commit, never the head (SN-0563); close nothing on merged alone (SN-0484, SN-0489); virgin-confirm your own REDs before they reach the board (SN-0639); and when events overtake your receipt, publish the temporal correction and disclaim authorship you did not earn (SN-0553).
+
+## The learning
+
+The durable lesson is that evidence has a shelf life measured in commits, and that lawful no-action — the expired authorization declined, the stale-base red left alone — is a complete, reportable result (SN-0562, SN-0554). The behavior that changes: scores are computed on the live tip or published as wishes, with the honest re-score printed as a correction in the same breath (SN-670); file-level evidence transfers across a rebase only on blob identity, with the CI re-run paid (SN-667); and a run-level conclusion is never inherited — the steps are read (SN-0629). What would falsify this essence's teaching is a covered note that treats a head SHA, a conclusion label, or an unstamped verdict as proof — none does.
+
+## Coverage map — raw notes this essence covers (16)
+
+SN-0484 · SN-0489 · SN-0493 · SN-0553 · SN-0554 · SN-0555 · SN-0562 · SN-0563 · SN-0564 · SN-0629 · SN-0639 · SN-645 · SN-663 · SN-667 · SN-668 · SN-670
+
+## Verification contract (for the verifying seat — falsify these)
+
+1. **Coverage integrity:** the coverage map lists exactly 16 IDs; each exists in the block manifest exactly once (640-series IDs in manifest form: SN-645, SN-663, SN-667, SN-668, SN-670); no ID appears in any other oct-2 essence's coverage map or in the batch-1 covered list.
+2. **Authorization case:** SN-0562's authorized SHA is `a0bbafcf1e88090850bb6b27906bda8dce640f52`, the live tip found was `1f8e908ea36520319ab474506977d7e36be57761`, twelve commits ahead — verify both SHAs and the count against the source.
+3. **Packet case:** SN-0564's packet claimed main `a0bbafcf` at 18:25:03Z with the author's own PR #1728 merged at 18:21:24Z, and the rebind target was `a9c6abac` — verify against the source.
+4. **Proof levels:** SN-0555's three levels are producer executability, reference-engine evidence, production-runtime influence, strictly ordered — fail the draft if any level is skipped or if the essence lets a lower green satisfy a higher claim anywhere.
+5. **Duplicate-title check:** SN-0484 and SN-0489 are distinct source pages sharing the "Merged Is Not Closed" title (flagged in the block receipt) — verify both pages exist separately in the manifest and that the essence cites both rather than merging them into one phantom source.
+6. **No-orphan check:** pick any five sentences in the Essence section at random; each must cite at least one covered SN ID, and the cited page must contain the claim.

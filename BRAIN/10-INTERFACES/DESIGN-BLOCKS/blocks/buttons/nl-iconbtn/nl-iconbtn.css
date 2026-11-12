@@ -1,0 +1,68 @@
+/* Smart Block: nl-iconbtn
+ * Source: Naya_Lego-blocks.html (byte-true extraction, not rewritten)
+ * Type: buttons
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules (v2) ---- */
+
+      .nl-ccard{border-radius:24px;overflow:hidden;background:linear-gradient(180deg,#12131a,#0a0b0f);border:1px solid rgba(255,255,255,.12);
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -16px 32px rgba(0,0,0,.45),0 24px 54px rgba(0,0,0,.55);
+        transition:transform .25s var(--snap),box-shadow .3s var(--ease)}
+
+
+
+      .nl-cmedia{position:relative;height:170px;
+        background:conic-gradient(from 40deg at 60% 40%,#e455f4,var(--purple),#3f9ff5,#0a0b0f 65%,#e455f4);
+        box-shadow:inset 0 -30px 50px rgba(5,5,7,.75),inset 0 2px 6px rgba(255,255,255,.25)}
+
+
+
+      .nl-cmedia:after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.22) 50%,transparent 60%);transform:translateX(-100%);transition:transform .8s var(--ease)}
+
+
+
+      .nl-cbody{padding:22px 22px 20px}
+
+
+
+      .nl-ckicker{font-size:11.5px;font-weight:800;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+
+
+
+      .nl-ctitle{font-size:20px;font-weight:800;margin:0 0 8px;letter-spacing:-.01em}
+
+
+
+      .nl-cdesc{font-size:15px;color:var(--quiet);margin:0 0 18px;line-height:1.6}
+
+
+
+      .nl-cactions{display:flex;gap:10px}
+
+
+
+      .nl-iconbtn{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.16);color:var(--quiet);display:flex;align-items:center;justify-content:center;
+        background:radial-gradient(circle at 35% 30%,#1d1e26,#0c0d12 70%);
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -4px 8px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.5);
+        transition:all .2s var(--snap)}
+
+
+
+      .nl-iconbtn:hover{color:#fff;transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 18px -2px var(--gold),0 12px 24px rgba(0,0,0,.55)}
+
+
+
+      .nl-iconbtn:active{transform:scale(.92)}
+
+
+
+      .nl-iconbtn.liked{color:var(--magenta);border-color:rgba(228,85,244,.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 18px -2px rgba(228,85,244,.7)}
+
+
+
+      .nl-iconbtn.saved{color:var(--gold);border-color:rgba(231,198,90,.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 18px -2px rgba(231,198,90,.7)}
+
+
+
+      .nl-ccta{margin-left:auto}

@@ -1,0 +1,20 @@
+ok: dispatch.json parses
+ok: s1 valid choice — got call-302
+ok: s1 dispatches call-302 (Reserve Rule) — got call-302
+ok: s2 valid choice — got call-304
+ok: s2 dispatches call-304 (Critical Override priority) — got call-304
+ok: s3 valid choice — got call-305
+ok: s3 dispatches call-305 (Normal) — got call-305
+ok: probe valid choice — got proposal-401
+ok: probe approves proposal-401 (no lesson leak) — got proposal-401
+ok: answer.txt has 4 applicability lines — got 4
+ok: s1 applicability judgment — got APPLICABLE, want APPLICABLE
+ok: s2 applicability judgment — got APPLICABLE, want APPLICABLE
+ok: s3 applicability judgment — got APPLICABLE, want APPLICABLE
+ok: probe applicability judgment — got NOT APPLICABLE, want NOT APPLICABLE
+ok: retained-note.txt present and non-empty
+info: note mentions override: true
+info: note mentions reserve: true
+info: note mentions priority/order: false
+info: note length chars: 770
+PASS

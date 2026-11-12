@@ -498,7 +498,8 @@ def _problem_b_inputs(m, tmp_path, ib_id):
               "relationship": {"relationship_id": "r1"},
               "index": {"id": "i1"}, "checkpoint": {"id": "c1"},
               "receipt": {"id": "rc1"}}}
-    proj = tmp_path / "proj.md"
+    proj = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES" / "proj.md"
+    proj.parent.mkdir(parents=True, exist_ok=True)
     proj.write_text("# test", encoding="utf-8")
     return capture, verify, proj
 
@@ -708,13 +709,14 @@ def test_registry_records_capture_lifecycle_metadata(tmp_path):
 
 
 def test_retrieve_ignores_superseded_registry_entries(tmp_path, monkeypatch):
-    old_page = tmp_path / "old.md"
-    new_page = tmp_path / "new.md"
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
+    old_page = brain / "old.md"
+    new_page = brain / "new.md"
     old_page.write_text("# Old\n\n## IN A NUTSHELL\n\nold answer", encoding="utf-8")
     new_page.write_text("# New\n\n## IN A NUTSHELL\n\nactive answer", encoding="utf-8")
     registry_path = tmp_path / "index.json"
-    registry_path.write_text(json.dumps({
-        "entries": [
+    registry_path.write_text(json.dumps(_sealed_registry([
             {
                 "smart_note_id": "SN-346",
                 "intelligent_block_id": "IB-OLD",
@@ -723,7 +725,7 @@ def test_retrieve_ignores_superseded_registry_entries(tmp_path, monkeypatch):
                 "topic": "GOVERNANCE",
                 "subtopic": "OPERATING_CODE",
                 "captured_at": "2026-10-05T23:59:59Z",
-                "projection_path": "old.md",
+                "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/old.md",
                 "lifecycle_state": "SUPERSEDED",
             },
             {
@@ -734,13 +736,13 @@ def test_retrieve_ignores_superseded_registry_entries(tmp_path, monkeypatch):
                 "topic": "GOVERNANCE",
                 "subtopic": "OPERATING_CODE",
                 "captured_at": "2026-10-05T00:00:00Z",
-                "projection_path": "new.md",
+                "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/new.md",
                 "lifecycle_state": "ACTIVE",
             },
-        ]
-    }), encoding="utf-8")
+        ], tmp_path)), encoding="utf-8")
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", registry_path)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("nonstop loop governance")
     assert result["retrieved"]["smart_note_id"] == "SN-0355"
     assert result["retrieved"]["intelligent_block_id"] == "IB-R2"
@@ -748,14 +750,40 @@ def test_retrieve_ignores_superseded_registry_entries(tmp_path, monkeypatch):
 
 
 # --- Retrieval truth-state tie-breaking (retrieval track, 2026-10-06) ---
+def _sealed_registry(entries, root):
+    """Return a validator-clean registry dict for synthetic test corpora.
+
+    The fail-closed validator (B-51 step 3) runs on EVERY retrieve(), including
+    synthetic test registries: page_hash per eligible entry (from the actual
+    page bytes under root) + corpus_manifest_hash over the full entry list.
+    Uses the module's own hash functions — the single hashing authority.
+    Inactive-lifecycle entries are skipped by the validator (like the
+    backfill's retired entries) and carry no page_hash.
+    """
+    inactive = {"SUPERSEDED", "ARCHIVED", "REVOKED", "RETIRED"}
+    for e in entries:
+        if str(e.get("lifecycle_state", "ACTIVE")).upper() in inactive:
+            continue
+        pp = e.get("projection_path")
+        if pp:
+            e["page_hash"] = mod._page_file_hash(root / pp)
+    return {"schema": "naya.smart-note-projection-index.v1",
+            "entries": entries,
+            "corpus_manifest_hash": mod._corpus_manifest_hash(entries)}
+
+
 def _truth_rank_registry(tmp_path, entries):
+    # Pages live under the allowed projection root: the validator (B-51 step 3)
+    # requires every eligible projection_path to stay inside an allowed root.
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
     for i, e in enumerate(entries):
-        page = tmp_path / f"p{i}.md"
+        page = brain / f"p{i}.md"
         page.write_text("# T\n\n## IN A NUTSHELL\n\nanswer", encoding="utf-8")
-        e.setdefault("projection_path", f"p{i}.md")
+        e.setdefault("projection_path", f"BRAIN/05-MEMORY/SMART-NOTES/p{i}.md")
         e.setdefault("lifecycle_state", "ACTIVE")
     rp = tmp_path / "index.json"
-    rp.write_text(json.dumps({"entries": entries}), encoding="utf-8")
+    rp.write_text(json.dumps(_sealed_registry(entries, tmp_path)), encoding="utf-8")
     return rp
 
 
@@ -773,6 +801,7 @@ def test_retrieve_prefers_ratified_on_keyword_tie(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("nonstop loop")
     assert result["retrieved"]["smart_note_id"] == "SN-R"
 
@@ -791,6 +820,7 @@ def test_retrieve_score_still_beats_truth_state(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("nonstop loop operating code")
     assert result["retrieved"]["smart_note_id"] == "SN-C"
 
@@ -807,6 +837,7 @@ def test_retrieve_missing_truth_state_is_neutral(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("nonstop loop")
     # tie on score and rank -> newest captured_at wins (legacy behavior)
     assert result["retrieved"]["smart_note_id"] == "SN-A"
@@ -821,27 +852,30 @@ def test_retrieve_matches_lesson_content_not_just_metadata(tmp_path, monkeypatch
     Captain Protocol note that teaches exactly that). The NUTSHELL lesson
     text is part of the haystack.
     """
-    (tmp_path / "captain.md").write_text(
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
+    (brain / "captain.md").write_text(
         "# Captain\n\n## IN A NUTSHELL\n\ndeclaring intent before acting is required",
         encoding="utf-8")
-    (tmp_path / "other.md").write_text(
+    (brain / "other.md").write_text(
         "# Other\n\n## IN A NUTSHELL\n\nunrelated lesson about calibration",
         encoding="utf-8")
     rp = tmp_path / "index.json"
-    rp.write_text(json.dumps({"entries": [
+    rp.write_text(json.dumps(_sealed_registry([
         {"smart_note_id": "SN-CAP", "intelligent_block_id": "IB-CAP",
          "title": "The Captain Protocol", "category": "X", "topic": "Y", "subtopic": "Z",
          "keywords": ["smart note", "capture", "intelligent block"],
          "truth_state": "CANDIDATE", "lifecycle_state": "ACTIVE",
-         "captured_at": "2026-10-06T00:00:00Z", "projection_path": "captain.md"},
+         "captured_at": "2026-10-06T00:00:00Z", "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/captain.md"},
         {"smart_note_id": "SN-OTH", "intelligent_block_id": "IB-OTH",
          "title": "Some Other Note", "category": "X", "topic": "Y", "subtopic": "Z",
          "keywords": ["smart note", "capture", "intelligent block"],
          "truth_state": "CANDIDATE", "lifecycle_state": "ACTIVE",
-         "captured_at": "2026-10-06T00:00:00Z", "projection_path": "other.md"},
-    ]}), encoding="utf-8")
+         "captured_at": "2026-10-06T00:00:00Z", "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/other.md"},
+    ], tmp_path)), encoding="utf-8")
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("declaring intent before acting")
     assert result["retrieved"]["smart_note_id"] == "SN-CAP"
 
@@ -869,6 +903,7 @@ def test_retrieve_relevance_dominates_small_gap(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("alpha beta gamma")
     assert result["retrieved"]["smart_note_id"] == "SN-C"
 
@@ -887,6 +922,7 @@ def test_retrieve_candidate_wins_on_large_gap(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("alpha beta gamma delta epsilon")
     assert result["retrieved"]["smart_note_id"] == "SN-C"
 
@@ -905,6 +941,7 @@ def test_retrieve_irrelevant_ratified_never_wins(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("alpha")
     assert result["retrieved"]["smart_note_id"] == "SN-C"
 
@@ -919,6 +956,7 @@ def test_retrieve_no_relevant_intelligence_still_fires(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     try:
         mod.retrieve("alpha")
     except SystemExit as exc:
@@ -953,6 +991,7 @@ def test_retrieve_full_ladder_ordering(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("alpha")
     assert result["retrieved"]["smart_note_id"] == "SN-L"
 
@@ -1013,6 +1052,7 @@ def test_retrieve_title_match_beats_keyword_only(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("compounding proof")
     assert result["retrieved"]["smart_note_id"] == "SN-T"
 
@@ -1031,6 +1071,7 @@ def test_retrieve_phrase_bonus_prefers_exact_phrase(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("compounding proof")
     assert result["retrieved"]["smart_note_id"] == "SN-P"
 
@@ -1049,6 +1090,7 @@ def test_retrieve_stemming_matches_inflections(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("compounding")
     assert result["retrieved"]["smart_note_id"] == "SN-S"
 
@@ -1067,5 +1109,631 @@ def test_retrieve_weighted_relevance_still_yields_to_authority_on_tie(tmp_path, 
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("parallel execution")
     assert result["retrieved"]["smart_note_id"] == "SN-R"
+
+
+# --- Retrieval IDF + length normalization (Naya 5, 2026-10-10) ---
+# Repair for the independent 43-case held-out diagnostic (2/43 MATCH_ID):
+# (1) ubiquitous terms (filename fragments, generic taxonomy) dominated
+# bag-of-words scoring; (2) wrong-note winners had 3x longer nutshells
+# (median 166 vs 53 words) — long documents won by match accumulation.
+# IDF discounts ubiquitous terms; pivoted length normalization stops long
+# documents winning by word count. Both are general relevance mechanics,
+# not fitted to any case. These tests pin them on synthetic registries.
+def test_retrieve_idf_distinctive_term_beats_ubiquitous_term(tmp_path, monkeypatch):
+    """Equal raw match counts -> the distinctive term wins, not the ubiquitous one."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-U", "intelligent_block_id": "IB-U",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["ubiq"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-D", "intelligent_block_id": "IB-D",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["distincto"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-F1", "intelligent_block_id": "IB-F1",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["ubiq"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-05T00:00:00Z"},
+        {"smart_note_id": "SN-F2", "intelligent_block_id": "IB-F2",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["ubiq"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-04T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
+    # Old bag-of-words: SN-U and SN-D tie at 1 keyword match each, and the
+    # newer captured_at (SN-U) would win. IDF: "distincto" (df=1) outranks
+    # "ubiq" (df=3), so SN-D wins on relevance.
+    result = mod.retrieve("ubiq distincto")
+    assert result["retrieved"]["smart_note_id"] == "SN-D"
+
+
+def test_retrieve_length_norm_stops_long_document_winning_by_word_count(tmp_path, monkeypatch):
+    """A long note must not win on accumulated low-value matches alone."""
+    filler = [f"pad{i}" for i in range(200)]
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-SHORT", "intelligent_block_id": "IB-S",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["rareone", "raretwo"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-LONG", "intelligent_block_id": "IB-L",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["comone", "comtwo", "comthree"] + filler,
+         "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-F", "intelligent_block_id": "IB-F",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["comone", "comtwo", "comthree"],
+         "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-05T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
+    # Old bag-of-words: SN-LONG has 3 keyword matches vs SN-SHORT's 2 and
+    # wins by accumulation. IDF + length normalization: the distinctive
+    # rare terms on the short note win.
+    result = mod.retrieve("rareone raretwo comone comtwo comthree")
+    assert result["retrieved"]["smart_note_id"] == "SN-SHORT"
+
+
+# --- Retrieval negative controls + privacy refusal (Naya 5, 2026-10-10) ---
+# Completes the #2058 board handoff in the existing canonical path:
+# semantic specificity shipped (IDF, above); these two close the loop.
+# (1) Relevance floor: a winner below the floor is not relevance evidence —
+# the selector refuses instead of returning the least-bad match. A wrong
+# confident answer is misdirection; a refusal is visible uncertainty.
+# (2) Privacy refusal: extraction/enumeration probes against private
+# intelligence are refused outright, since retrieve() has no caller-auth
+# concept (unlike render(), which gates PRIVATE projections). Both are
+# general selector mechanics, not fitted to any diagnostic case. The floor
+# mechanism is pinned on synthetic registries (monkeypatched floor); the
+# absolute value (40.0) is calibrated on the live registry against the
+# independent 43-case diagnostic + drill bank and re-verified there.
+def _floor_registry(tmp_path):
+    return _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-WEAK", "intelligent_block_id": "IB-W",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["ubiq"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-STRONG", "intelligent_block_id": "IB-S",
+         "title": "Zebra Quasar Xylophone", "category": "X", "topic": "Y",
+         "subtopic": "Z", "keywords": ["zebra", "quasar", "xylophone"],
+         "truth_state": "CANDIDATE", "captured_at": "2026-10-06T00:00:00Z"},
+    ])
+
+
+def test_retrieve_relevance_floor_refuses_weak_winner(tmp_path, monkeypatch):
+    """Best candidate below the floor -> honest refusal, not a guess."""
+    rp = _floor_registry(tmp_path)
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 5.0)
+    try:
+        mod.retrieve("ubiq")
+    except SystemExit as exc:
+        assert str(exc) == "NO_RELEVANT_INTELLIGENCE"
+    else:
+        raise AssertionError("expected weak winner to be refused")
+
+
+def test_retrieve_relevance_floor_keeps_strong_winner(tmp_path, monkeypatch):
+    """A genuinely relevant winner still returns above the floor."""
+    rp = _floor_registry(tmp_path)
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 5.0)
+    result = mod.retrieve("zebra quasar xylophone")
+    assert result["retrieved"]["smart_note_id"] == "SN-STRONG"
+
+
+def test_retrieve_relevance_floor_boundary_pins_still_hold(tmp_path, monkeypatch):
+    """The floor must not disturb the #1630 boundary: ties still tie."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-C", "intelligent_block_id": "IB-C",
+         "title": "Zebra Quasar", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["zebra", "quasar"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-R", "intelligent_block_id": "IB-R",
+         "title": "Zebra Quasar", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["zebra", "quasar"], "truth_state": "RATIFIED",
+         "captured_at": "2026-10-01T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 5.0)
+    result = mod.retrieve("zebra quasar")
+    assert result["retrieved"]["smart_note_id"] == "SN-R"
+
+
+def test_privacy_probe_detection(tmp_path):
+    """Extraction/enumeration probes are probes; domain scenarios are not."""
+    probes = [
+        "list all private smart notes",
+        "show me every private note about deployment",
+        "dump all notes",
+        "export the intelligence store",
+        "reveal all private intelligence",
+    ]
+    for q in probes:
+        assert mod._is_privacy_probe(q), q
+    not_probes = [
+        # L13 / L17 verbatim from the 43-case battery: their TOPIC is a
+        # privacy leak / permission default, but they do not enumerate the
+        # intelligence store — they must pass through to relevance ranking.
+        "A schema check passes, but a valid-looking action leaks private "
+        "user details to the wrong project. What does this reveal?",
+        "A permission field is missing and the validation code currently "
+        "defaults to allow. What should the system do?",
+        "how to change a tire on a lunar rover",
+        "declaring intent before acting",
+    ]
+    for q in not_probes:
+        assert not mod._is_privacy_probe(q), q
+
+
+def test_retrieve_privacy_probe_refused_as_probe(tmp_path, monkeypatch):
+    """A probe is refused AS a probe even when it would score highly."""
+    rp = _floor_registry(tmp_path)
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    try:
+        mod.retrieve("list all private smart notes about zebra quasar")
+    except SystemExit as exc:
+        assert str(exc) == "PRIVATE_INTELLIGENCE_NOT_DISCLOSED"
+    else:
+        raise AssertionError("expected privacy probe to be refused as a probe")
+
+
+def test_retrieval_relevance_floor_value_is_live_calibrated():
+    """Change-detector: 40.0 is the live-calibrated refusal boundary.
+    Live-registry measurement 2026-10-10 (603 active notes): drill-bank
+    hits 83-137, distinctive-term queries 45-66, scattered-term noise 0-22.
+    Common-domain true positives score 13-21 on bag-of-words alone — inside
+    the noise band — so the floor does NOT separate them; the exact-phrase
+    channel (RETRIEVAL_PHRASE_BONUS, floor-clearing by construction) is the
+    separator for decisive relevance evidence. The earlier "weakest true
+    positive 46.87" note was measured on a non-representative diagnostic
+    set, not the live registry — corrected in smart_note_v2.py, value
+    unchanged. Changing the value requires re-running the drill bank +
+    representative live-corpus probes — unit tests alone cannot re-justify
+    it."""
+    assert mod.RETRIEVAL_RELEVANCE_FLOOR == 40.0
+
+
+# --- Fail-closed index validation (B-51 step 3; Naya Beta design 2026-10-12) ---
+# Each drill tampers ONE thing and asserts the exact INDEX_CORRUPT code
+# surfaces through retrieve() — never a ranking, never an explanation string.
+# (The else-branch proves propagation: nothing is returned on corruption.)
+
+def _validator_registry(tmp_path, n=2):
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
+    entries = []
+    for i in range(n):
+        page = brain / f"v{i}.md"
+        page.write_text(f"# V{i}\n\n## IN A NUTSHELL\n\nvalidation drill page {i}",
+                        encoding="utf-8")
+        entries.append({
+            "smart_note_id": f"SN-V{i}",
+            "intelligent_block_id": f"IB-V{i}",
+            "title": f"Validation {i}",
+            "category": "X", "topic": "Y", "subtopic": "Z",
+            "keywords": ["validation", "drill"],
+            "truth_state": "CANDIDATE", "lifecycle_state": "ACTIVE",
+            "captured_at": "2026-10-06T00:00:00Z",
+            "projection_path": f"BRAIN/05-MEMORY/SMART-NOTES/v{i}.md",
+        })
+    rp = tmp_path / "index.json"
+    rp.write_text(json.dumps(_sealed_registry(entries, tmp_path)), encoding="utf-8")
+    return rp
+
+
+def _assert_index_corrupt(tmp_path, monkeypatch, rp, code):
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    try:
+        mod.retrieve("validation drill")
+    except SystemExit as exc:
+        assert str(exc).startswith(f"INDEX_CORRUPT:{code}:"), str(exc)
+    else:
+        raise AssertionError(f"expected INDEX_CORRUPT:{code}, retrieve() returned")
+
+
+def test_validator_content_edit_raises_page_hash_mismatch(tmp_path, monkeypatch):
+    rp = _validator_registry(tmp_path)
+    (tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES" / "v0.md").write_text(
+        "# V0\n\n## IN A NUTSHELL\n\nTAMPERED", encoding="utf-8")
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "PAGE_HASH_MISMATCH")
+
+
+def test_validator_deleted_page_raises_projection_absent(tmp_path, monkeypatch):
+    rp = _validator_registry(tmp_path)
+    (tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES" / "v0.md").unlink()
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "PROJECTION_ABSENT")
+
+
+def test_validator_stale_title_raises_manifest_stale(tmp_path, monkeypatch):
+    """A title edit without reindexing changes entries but not the manifest."""
+    rp = _validator_registry(tmp_path)
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    reg["entries"][0]["title"] = "Silently edited title"
+    rp.write_text(json.dumps(reg), encoding="utf-8")
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "MANIFEST_STALE")
+
+
+def test_validator_stripped_hash_raises_page_hash_missing(tmp_path, monkeypatch):
+    """No grandfathering: an entry without page_hash fails closed. This drill
+    also detects a no-op validator — one that always returns True cannot pass."""
+    rp = _validator_registry(tmp_path)
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    del reg["entries"][0]["page_hash"]
+    reg["corpus_manifest_hash"] = mod._corpus_manifest_hash(reg["entries"])
+    rp.write_text(json.dumps(reg), encoding="utf-8")
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "PAGE_HASH_MISSING")
+
+
+def test_validator_path_escape_raises(tmp_path, monkeypatch):
+    rp = _validator_registry(tmp_path)
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    reg["entries"][0]["projection_path"] = "../../README.md"
+    rp.write_text(json.dumps(reg), encoding="utf-8")
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "PATH_ESCAPE")
+
+
+def test_validator_brain_memory_root_accepted(tmp_path, monkeypatch):
+    """BRAIN/05-MEMORY is an allowed projection root (cold-drill W46 repair,
+    2026-11-09): the 2026-11-05/06 backfill registered the essence + BRAIN-root
+    notes at BRAIN/05-MEMORY/*.md, files that legitimately live there. A true
+    escape ("../../README.md") still fails closed — see
+    test_validator_path_escape_raises."""
+    rp = _validator_registry(tmp_path)
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    page = tmp_path / "BRAIN" / "05-MEMORY" / "v0.md"
+    page.write_text("# V0\n\n## IN A NUTSHELL\n\nvalidation drill page 0", encoding="utf-8")
+    reg["entries"][0]["projection_path"] = "BRAIN/05-MEMORY/v0.md"
+    rp.write_text(json.dumps(_sealed_registry(reg["entries"], tmp_path)), encoding="utf-8")
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    mod._validate_index_against_corpus(reg)  # must not raise
+
+
+def test_validator_envelope_corruption_raises_schema_mismatch(tmp_path, monkeypatch):
+    rp = _validator_registry(tmp_path)
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    reg["schema"] = "naya.smart-note-projection-index.v0-legacy"
+    rp.write_text(json.dumps(reg), encoding="utf-8")
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "SCHEMA_MISMATCH")
+
+
+def test_validator_unreadable_index_raises(tmp_path, monkeypatch):
+    rp = _validator_registry(tmp_path)
+    rp.write_text("{not valid json", encoding="utf-8")
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "INDEX_UNREADABLE")
+
+
+def test_validator_duplicate_binding_raises(tmp_path, monkeypatch):
+    rp = _validator_registry(tmp_path)
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    dup = dict(reg["entries"][0])
+    dup["smart_note_id"] = "SN-DUP"
+    reg["entries"].append(dup)
+    rp.write_text(json.dumps(reg), encoding="utf-8")
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "DUPLICATE_BINDING")
+
+
+def test_validator_malformed_entry_raises(tmp_path, monkeypatch):
+    rp = _validator_registry(tmp_path)
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    del reg["entries"][0]["projection_path"]
+    rp.write_text(json.dumps(reg), encoding="utf-8")
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "ENTRY_MALFORMED")
+
+
+def test_validator_missing_manifest_raises_manifest_stale(tmp_path, monkeypatch):
+    rp = _validator_registry(tmp_path)
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    del reg["corpus_manifest_hash"]
+    rp.write_text(json.dumps(reg), encoding="utf-8")
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "MANIFEST_STALE")
+
+
+def test_validator_skips_terminal_lifecycle_entries(tmp_path, monkeypatch):
+    """SUPERSEDED entries are unscored, so their drift cannot produce an
+    answer: the validator skips them (the backfill retires unvalidatable
+    entries into this set instead of deleting them)."""
+    rp = _validator_registry(tmp_path)
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    reg["entries"][0]["lifecycle_state"] = "SUPERSEDED"
+    del reg["entries"][0]["page_hash"]
+    reg["corpus_manifest_hash"] = mod._corpus_manifest_hash(reg["entries"])
+    rp.write_text(json.dumps(reg), encoding="utf-8")
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)
+    result = mod.retrieve("validation drill")
+    assert result["retrieved"]["smart_note_id"] == "SN-V1"
+
+
+def test_writer_emits_page_hash_and_manifest(tmp_path):
+    """Writer contract: page_hash binds the entry to its page bytes, and the
+    manifest anchors the full entry list — both inside one transaction."""
+    m = _problem_b_fresh_module(tmp_path)
+    cap, ver, proj = _problem_b_inputs(m, tmp_path, "IB-WRITER-1")
+    entry = m.update_registry(cap, ver, proj)
+    assert entry["page_hash"] == m._page_file_hash(proj)
+    reg = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    assert reg["corpus_manifest_hash"] == m._corpus_manifest_hash(reg["entries"])
+    # The written registry validates clean through the hot path.
+    m._validate_index_against_corpus(reg)
+
+
+def test_writer_second_write_refreshes_manifest(tmp_path):
+    """Two sequential captures: the manifest covers both entries."""
+    m = _problem_b_fresh_module(tmp_path)
+    for ib in ("IB-WRITER-A", "IB-WRITER-B"):
+        cap, ver, _ = _problem_b_inputs(m, tmp_path, ib)
+        proj = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES" / f"{ib}.md"
+        proj.write_text(f"# {ib}", encoding="utf-8")
+        m.update_registry(cap, ver, proj)
+    reg = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    assert len(reg["entries"]) == 2
+    assert reg["corpus_manifest_hash"] == m._corpus_manifest_hash(reg["entries"])
+    m._validate_index_against_corpus(reg)
+
+# --- Winner-read fail-closed (B-49/B-58, 2026-10-13, Naya 4) ---
+# Re-sealed 2026-10-13 (Naya Iota, #2515 rebase): main now runs the B-51
+# fail-closed index validator on EVERY retrieve(), so the fixtures must carry
+# a validator-clean envelope (schema + page_hash + corpus_manifest_hash).
+# Both tests still prove their original intent: fail closed with an explicit
+# code, never a crash, never silent admission.
+def _winner_read_registry(tmp_path, entry):
+    rp = tmp_path / "index.json"
+    rp.write_text(json.dumps(_sealed_registry([entry], tmp_path)), encoding="utf-8")
+    return rp
+
+
+def _winner_read_registry_missing_file(tmp_path, entry):
+    # Same seal as above, but the projection page stays missing: page_hash is a
+    # placeholder because Check 4 (PROJECTION_ABSENT) fires before Check 6
+    # ever reads it — the placeholder proves the failing code is the absence.
+    entry = dict(entry)
+    entry["page_hash"] = "0" * 64
+    rp = tmp_path / "index.json"
+    rp.write_text(json.dumps({
+        "schema": "naya.smart-note-projection-index.v1",
+        "entries": [entry],
+        "corpus_manifest_hash": mod._corpus_manifest_hash([entry]),
+    }), encoding="utf-8")
+    return rp
+
+
+def _winner_read_entry(projection_path):
+    return {
+        "smart_note_id": "SN-W",
+        "intelligent_block_id": "IB-W",
+        "title": "Deep tunnel maintenance protocol",
+        "category": "C",
+        "topic": "T",
+        "subtopic": "S",
+        "captured_at": "2026-10-01T00:00:00Z",
+        "projection_path": projection_path,
+        "lifecycle_state": "ACTIVE",
+        "truth_state": "CANDIDATE",
+        "keywords": ["deep", "tunnel"],
+    }
+
+
+def test_retrieve_winner_missing_projection_fails_closed(tmp_path, monkeypatch):
+    """B-58: the winning projection file does not exist on disk. Pre-repair
+    this raised an unhandled FileNotFoundError. On current main the B-51 index
+    gate (Check 4) catches the missing page first with INDEX_CORRUPT:
+    PROJECTION_ABSENT — still an explicit fail-closed miss code, still no
+    crash. The WINNER_PROJECTION_UNREADABLE guard in retrieve() stays behind
+    the gate as defense-in-depth. Non-vacuous: the entry wins on title
+    matches; the registry is sealed clean, so the failure is the missing page."""
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
+    rp = _winner_read_registry_missing_file(
+        tmp_path, _winner_read_entry("BRAIN/05-MEMORY/SMART-NOTES/gone.md"))
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
+    try:
+        mod.retrieve("deep tunnel maintenance protocol")
+    except SystemExit as exc:
+        assert str(exc).startswith("INDEX_CORRUPT:PROJECTION_ABSENT"), str(exc)
+    else:
+        raise AssertionError("missing winner projection must fail closed, not crash or answer")
+
+
+def test_retrieve_winner_without_nutshell_fails_closed(tmp_path, monkeypatch):
+    """B-49: the winner's projection is readable but carries no IN A NUTSHELL
+    section (deep-path degradation). Pre-repair this returned a positive
+    answer with explanation ""; the repair fails closed with an explicit miss
+    code. Non-vacuous: the entry wins on title matches; the page is sealed
+    (valid envelope + matching page hash), so the failure is the missing
+    nutshell — the validator passes and the winner-read guard fires."""
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
+    (brain / "degraded.md").write_text(
+        "# Deep tunnel maintenance protocol\n\n## Background\n\nLong-form text, no nutshell section.\n",
+        encoding="utf-8",
+    )
+    rp = _winner_read_registry(
+        tmp_path, _winner_read_entry("BRAIN/05-MEMORY/SMART-NOTES/degraded.md"))
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
+    try:
+        mod.retrieve("deep tunnel maintenance protocol")
+    except SystemExit as exc:
+        assert str(exc) == "WINNER_EXPLANATION_EMPTY", str(exc)
+    else:
+        raise AssertionError("title-only winner must fail closed, not be admitted silently")
+
+# --- Backfill-class migration guards (w428 deep-audit legs 192/205, fix batch gr-w440) ---
+def _backfill_fixture(tmp_path, missing_page=False):
+    """Pre-backfill index: eligible entries, NO page_hash yet, stale manifest —
+    the shape the B-51 backfill was written to repair."""
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
+    entries = []
+    for ib, name in (("IB-BF-1", "bf-one.md"), ("IB-BF-2", "bf-two.md")):
+        if not (missing_page and ib == "IB-BF-2"):
+            (brain / name).write_text(f"# {ib}\n\nnote body\n", encoding="utf-8")
+        entries.append({
+            "smart_note_id": f"SN-BF-{ib[-1]}",
+            "intelligent_block_id": ib,
+            "title": f"Backfill fixture {ib}",
+            "projection_path": f"BRAIN/05-MEMORY/SMART-NOTES/{name}",
+            "lifecycle_state": "ACTIVE",
+        })
+    idx_dir = tmp_path / ".naya" / "memory" / "smart-notes"
+    idx_dir.mkdir(parents=True, exist_ok=True)
+    registry = {
+        "schema": "naya.smart-note-projection-index.v1",
+        "entries": entries,
+        "corpus_manifest_hash": "stale-placeholder",
+    }
+    (idx_dir / "index.json").write_text(json.dumps(registry), encoding="utf-8")
+    return idx_dir / "index.json"
+
+
+def _load_backfill_module():
+    bspec = importlib.util.spec_from_file_location(
+        "backfill_b51_index_hashes", ROOT / "tools" / "backfill_b51_index_hashes.py")
+    bf = importlib.util.module_from_spec(bspec)
+    bspec.loader.exec_module(bf)
+    return bf
+
+
+def test_backfill_apply_restamps_manifest(tmp_path, monkeypatch, capsys):
+    """w428 leg 192: an index-mutating migration that skips the manifest
+    re-stamp leaves a stale anchor — the validator must refuse it
+    (MANIFEST_STALE); the backfill's own apply re-stamps and passes.
+
+    FAIL LEG (the deep-audit bug, reproduced): proper apply, then a textual
+    patch mutates an entry without re-stamping -> validator refuses.
+    PASS LEG (the writer contract): the backfill script's apply re-stamps
+    the manifest in the same apply -> validator passes, receipt names it."""
+    bf = _load_backfill_module()
+    idx_path = _backfill_fixture(tmp_path)
+    monkeypatch.setattr(bf, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(bf.m, "ROOT", tmp_path)
+
+    # PASS LEG: the real backfill apply re-anchors the manifest.
+    bf.main()
+    out = capsys.readouterr().out
+    reg = json.loads(idx_path.read_text(encoding="utf-8"))
+    assert reg["corpus_manifest_hash"] == bf.m._corpus_manifest_hash(reg["entries"])
+    assert reg["corpus_manifest_hash"] in out  # receipt names the anchor
+    for e in reg["entries"]:
+        assert e["page_hash"] == bf.m._page_file_hash(tmp_path / e["projection_path"])
+    bf.m._validate_index_against_corpus(reg)
+
+    # FAIL LEG: textual patch mutates an entry, no re-stamp -> fail closed.
+    raw = idx_path.read_text(encoding="utf-8")
+    patched = raw.replace("Backfill fixture IB-BF-1", "Backfill fixture IB-BF-1 (patched)")
+    assert patched != raw
+    idx_path.write_text(patched, encoding="utf-8")
+    tampered = json.loads(idx_path.read_text(encoding="utf-8"))
+    assert tampered["corpus_manifest_hash"] == reg["corpus_manifest_hash"]  # anchor NOT re-stamped
+    try:
+        bf.m._validate_index_against_corpus(tampered)
+    except SystemExit as exc:
+        assert str(exc).startswith("INDEX_CORRUPT:MANIFEST_STALE"), str(exc)
+    else:
+        raise AssertionError("textual patch without re-stamp must fail closed, not validate")
+
+
+def test_backfill_verify_abort_path_refuses(tmp_path, monkeypatch):
+    """w428 leg 205: the backfill's verify runs on the real path, in the same
+    process, before the migration lands. A deliberately failing verify refuses
+    the apply — pre-apply (missing page -> BACKFILL_REFUSED) and post-apply
+    (tampered bytes -> INDEX_CORRUPT) alike."""
+    bf = _load_backfill_module()
+
+    # Abort path 1: eligible entry's page missing -> refused before any write.
+    idx_path = _backfill_fixture(tmp_path, missing_page=True)
+    monkeypatch.setattr(bf, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(bf.m, "ROOT", tmp_path)
+    try:
+        bf.main()
+    except SystemExit as exc:
+        assert str(exc).startswith("BACKFILL_REFUSED:PROJECTION_ABSENT"), str(exc)
+    else:
+        raise AssertionError("missing projection page must abort the backfill, not apply")
+    untouched = json.loads(idx_path.read_text(encoding="utf-8"))
+    assert untouched["corpus_manifest_hash"] == "stale-placeholder"  # nothing landed
+
+    # Abort path 2: apply lands clean, then bytes are tampered -> the
+    # in-process verify (the same call the script runs post-write) refuses.
+    idx_path = _backfill_fixture(tmp_path)
+    bf.main()
+    reg = json.loads(idx_path.read_text(encoding="utf-8"))
+    bf.m._validate_index_against_corpus(reg)  # clean apply validates
+    page = tmp_path / reg["entries"][0]["projection_path"]
+    with page.open("ab") as f:
+        f.write(b"\n[tampered]\n")
+    corrupted = json.loads(idx_path.read_text(encoding="utf-8"))
+    try:
+        bf.m._validate_index_against_corpus(corrupted)
+    except SystemExit as exc:
+        assert str(exc).startswith("INDEX_CORRUPT:PAGE_HASH_MISMATCH"), str(exc)
+    else:
+        raise AssertionError("tampered page bytes must fail the post-apply verify, not pass")
+
+# --- Backfill guards, legs 166/221 (Beta w444 fix batch) ---
+def test_backfill_receipt_names_tree_pin(tmp_path, monkeypatch, capsys):
+    """w428 leg 166: instruments print the tree pin alongside the corpus
+    manifest. The pin binds the input page bytes: a one-byte page change
+    moves the pin, so a manifest match with a pin mismatch reads as input
+    drift, never a flake."""
+    bf = _load_backfill_module()
+    idx_path = _backfill_fixture(tmp_path)
+    monkeypatch.setattr(bf, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(bf.m, "ROOT", tmp_path)
+    bf.main()
+    receipt = json.loads(capsys.readouterr().out)
+    assert "tree_pin" in receipt, "receipt must name the tree pin next to the manifest"
+    reg = json.loads(idx_path.read_text(encoding="utf-8"))
+    assert receipt["tree_pin"] == bf.m._corpus_tree_pin(reg["entries"], tmp_path)
+    # FAIL LEG: the pin binds the input bytes — tamper one page, it moves.
+    page = tmp_path / reg["entries"][0]["projection_path"]
+    with page.open("ab") as f:
+        f.write(b"\n[drift]\n")
+    assert bf.m._corpus_tree_pin(reg["entries"], tmp_path) != receipt["tree_pin"]
+
+
+def test_backfill_diff_census_covers_corpus(tmp_path, monkeypatch, capsys):
+    """w428 leg 221: a diff census runs after the first apply — every entry
+    visited (hashed or retired) and changed, or the apply is refused before
+    it lands. The census runs on exact bytes, never the writer's format."""
+    bf = _load_backfill_module()
+    idx_path = _backfill_fixture(tmp_path)
+    monkeypatch.setattr(bf, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(bf.m, "ROOT", tmp_path)
+    bf.main()
+    receipt = json.loads(capsys.readouterr().out)
+    census = receipt.get("diff_census")
+    assert census, "receipt must carry the diff census"
+    assert census["total_entries"] == 2
+    assert census["hashed"] == 2 and census["retired_unvalidatable"] == 0
+    assert census["changed"] == 2 and census["coverage_ok"] is True
+    # FAIL LEG: the shortfall guard is enforced, not decorative — a census
+    # that does not cover the corpus refuses the apply before it lands.
+    monkeypatch.setattr(
+        bf, "_diff_census",
+        lambda *a: {"coverage_ok": False, "total_entries": 2, "hashed": 1,
+                    "retired_unvalidatable": 0, "changed": 1})
+    try:
+        bf.main()
+    except SystemExit as exc:
+        assert str(exc).startswith("BACKFILL_REFUSED:DIFF_CENSUS_SHORTFALL"), str(exc)
+    else:
+        raise AssertionError("shortfall census must refuse the apply, not pass")

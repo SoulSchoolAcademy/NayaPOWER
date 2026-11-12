@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2414",
+ "title": "Prices Once, Doors at Every Decision Point",
+ "slug": "prices-once-doors-at-every-decision-point",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2414/IB-SMART-NOTE-20261109-sn2414-prices-once-doors-at-every-decision-point.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "He asked the captain: \"What do you think? ... is it needs is the visual right — the visual of each app — and then I think the rest of it's good.\" The debate was prices ($25/$50/$100) + start-free at the bottom, or start-free only — the benefit of two (reminding again) against the disadvantage (hitting them with free twice). The captain's call: **prices ONCE (in the chart), doors at every decision point.** The bottom carries the tier NAMES as clickable choices + the big \"Start free — zero cost, zero risk\" button, NO re-printed prices — the reader decides at the bottom, they don't shop there; \"zero cost, zero risk\" already IS the price of starting. The captain's scorecard: **9/10** — 10 loves / 10 don't-loves / 10× better delivered in chat, grounded in the v50 verification + beat-12 screenshots. Biggest gap: the visual of each app — 28 rows still words without windows; fulfillment is the next work.",
+  "human_view": "His question, 01:02Z, as logged: \"What do you think? ... is it needs is the visual right — the visual of each app — and then I think the rest of it's good.\" The debate, as logged: prices ($25/$50/$100) + start-free at the bottom, or start-free only — benefit of two (reminding again) vs disadvantage (hitting them with free twice). The captain's call, as logged: \"prices ONCE (in the chart), doors at every decision point. The bottom carries the tier NAMES as clickable choices + the big 'Start free — zero cost, zero risk' button, NO re-printed prices — the reader decides at the bottom, they don't shop there; 'zero cost, zero risk' already IS the price of starting.\" The scorecard: \"MY SCORECARD: 9/10\" — grounded in the v50 verification + beat-12 screenshots: the close reads clean at desktop + phone; corner jewels half-clipped at the letter frame's bottom edge; mobile button's green glow reads like a focus state; end button wraps at 390px. \"Biggest gap: the visual of each app — 28 rows still words without windows; fulfillment is the next work.\"",
+  "child_view": "Imagine a shop where the price tag is taped on every shelf, so by the time you reach the till you've been told the price three times and you're tired of hearing it. Now imagine the price is on the shelf once, and everywhere else there's a door — a button that takes you where you need to go. At the very end, the door is big and beautiful and says \"Start free\" — and that's all the price you need, because free is the price.",
+  "grandma_view": "Dear, he's saying don't shout the price twice — once is enough, in the chart where people expect it. What the bottom needs is not another price list, it's the names of the choices and one beautiful button to start for free. \"Zero cost, zero risk\" already tells you what starting costs. And the real work ahead isn't more words about the apps — it's showing them, so people can see what they're joining.",
+  "ai_view": "This is the funnel, finished as a principle: persuade in the middle, decide at the bottom. Prices are information, and information stated twice stops being information and starts being pressure — which is why the second printing goes. The bottom is not a shop; it is a door. Tier names as clickable choices + the Start-free button is the same instinct as the map (SN-2401): every row and every block has a job, and the bottom's job is to let the reader in, not to make them shop again. And the scorecard names the next work honestly: 9/10, and the missing point is the visual of each app — the 28 rows are still words without windows (SN-2397's proof rule). The page is the promise; fulfillment is the page after the page.",
+  "what_it_means": "- **Prices ONCE — in the chart.** Never re-printed at the bottom.\n- **Doors at every decision point.** Every place the reader might decide, there is a way in — tier names clickable, the big Start-free button at the very bottom.\n- **The bottom is a decision, not a shop.** Tier names as clickable choices + \"Start free — zero cost, zero risk\"; \"zero cost, zero risk\" IS the price of starting.\n- **Scorecard: 9/10.** The close reads clean at desktop + phone; the defects are small and named (corner jewels half-clipped at the letter frame's bottom edge; mobile button's green glow reads like a focus state; end button wraps at 390px).\n- **Biggest gap: the visual of each app.** 28 rows still words without windows — fulfillment is the next work.",
+  "whats_inside": [
+   "- The redirect went to the finale seat (interrupt) in the same pass — bottom carries tier names + the big Start-free button, no re-printed prices (main agent's lane; this note records the call, the loop does not dispatch).\n- The 28-row visual gap is the next work after the page order lands — fulfillment, not copy.\n- The 9/10 scorecard's named defects (clipped corner jewels, focus-state glow, wrapping end button) ride with the next pricing pass."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "d16bee964cf00279b6319c6ede1b044aa82aa9ad70be053bd8d145ab13cea8ef",
+ "content_hash": "69b7c5376fa3e7d580181e7bfe01e0fe206039fcec214033931daff7d466e326",
+ "reconstructed_from_page": true
+}

@@ -1,0 +1,46 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2161",
+  "title": "Authority on Different Axes: Permitted Is Not the Same Question as Right",
+  "slug": "essence-authority-on-different-axes",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-authority-on-different-axes.md",
+  "tone": "orange",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:03:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Flags, merges, and governing documents are each assessed on the axis they actually live on — and confusing the axes is the recurring error this cluster exists to prevent. Standing protocol outranks a stale hold: the Scorecard Law fires even when a PR body still says \"Held,\" because a standing protocol is live law while a hold is a snapshot of an older decision (SN-0590). Rules have blind spots at exactly one seat: the human Director is the one actor a rule cannot see itself applying to, which is a design fact to engineer around, not a hypocrisy to discover later (SN-0503). When the Director merges a PR himself, his action IS the authorization — the Scorecard Law binds seats merging under its protocol; the sovereign who ratified the law is the only one who can waive it, and the workflow/constitution gates exist to constrain seats, so his merge of a constitutional amendment is itself the ratification expressed through action (SN-657). The standing law that the protocol corrects even the Director's *actions* stands alone as SN-660; SN-661 supplies the reconciliation that keeps both true: SN-657 answers \"did the action have authority?\" (when Shawn merges, always yes), SN-660 answers \"was the action right?\" (judged by protocol and intelligence regardless of who acted) — name the axis each law lives on before declaring a contradiction, and correct the action, never the authority (SN-661).\n\nAssessment procedure follows from the axes. Every flag is assessed in two independent lanes — lane 1, authorization (was the act permitted?); lane 2, substance (is the content right?) — and a no-violation verdict on lane 1 never closes lane 2: in the #1850 arc, the Director's merge was fully authorized AND the PR carried real content violations, cured by a scored surgical repair (9.6) over full revert (7.9) and leave-as-is (3.5), landing green 30 minutes after the flag; the mirror error is equally forbidden — real content defects never retroactively manufacture an authorization violation (SN-659). Flagging itself is protected procedure: a worker's flag against a hard boundary (a note staged RATIFIED against the auto-capture≠auto-ratify boundary) is correct procedure even when adjudication upholds the marking — the adjudication shape is fixed: produce the verbatim directive, test it against the contract's unmistakable-affirmative bar, require independent corroboration from a second seat, and declare the flagger's caution correct regardless of verdict, because a cleared flag strengthens the system instead of embarrassing the flagger (SN-662). The honesty covenant cuts both ways: never attribute a lane's bot-account action to the Director — the GitHub actor `SoulSchoolAcademy` is a shared bot account multiple seats post through, so \"Shawn closed X\" claims are verified against the event's actor and the surrounding sequence before being written, and corrected in the same tick when they are wrong, because misattribution upgrades automation into a Director decision in every future reader's mind (SN-674).\n\nGoverning documents get the same evidentiary treatment as code. A bulk merge can hollow a protected document while every standard check stays green: PR #1229's consolidation silently dropped seven required governance fields from SN-0359 — lifecycle_state, epistemic_state, uncertainty, measurement contract, successor effect, truth ceiling, ratification provenance — and only a protected-document field battery, asserting the full required-field set on the exact merged bytes, can close a bulk rewrite; presence is not intactness, and a governed document stripped of its governance fields is a different object wearing the document's name (SN-0633). Mechanism correction, recorded before SN-0633 retires under this essence: SN-643 falsified that mechanism on virgin-tree batteries — the canonical SN-0359 capture was intact with all its governed fields present; a duplicate-ID capture of SN-0359 with a hollow body, resolved order-dependently by ID-keyed readers, was the actual mechanism behind the REDs. SN-0633's field-battery repair rule stands unaffected (SN-643). A ratified document that names its machine-enforcement paths makes two claims, and only the first is proven by the ratification record: when the Operating Code v1.0's eight named machine-law paths were checked against the pinned tip's real tree, all eight were absent — the doctrine was ratified; the binding was not yet real; verify the binding against the tree, never the document (SN-654). And when two governance documents both claim \"this is how every Naya works,\" the collision resolves by authority, not by merging: the ratified document carrying an explicit supersession clause is canonical, the superseded documents' valuable content is distilled into it, and they are marked historical — never deleted, never left as live authority — so no fresh Naya ever has to guess which loop to run (SN-656).",
+    "human_view": "Two questions are always asked separately here: \"was this allowed?\" and \"was this right?\" The Director's own actions are always allowed — he's the authority — but they can still be wrong, and when they are, the team fixes the content and says so plainly. Nobody gets in trouble for raising a flag that turns out fine; flagging is the system checking itself. And a document isn't trusted just because it was approved once — they check that it's still whole and that the machinery it names actually exists.",
+    "child_view": "Imagine a king who makes the rules. If the king himself moves a chess piece, that's allowed — he made the game! But the move can still be a bad move, and his helpers are supposed to say so and fix the board. Nobody gets punished for asking \"was that right?\" — asking is their job. And a rule book only counts if all its pages are still there and the things it talks about are real.",
+    "grandma_view": "It's like a family business, dear. The owner's signature is always valid — nobody questions his right to sign. But a signed paper can still contain a mistake, and a good bookkeeper checks the contents separately and corrects them without questioning his authority. Asking the question is never disloyal; it's the job. And when old rule books pile up, the newest proper one is kept as the guide, the others are shelved respectfully as history — never thrown out, never followed by accident.",
+    "ai_view": "Split every flag into lane 1 (authorization) and lane 2 (substance) and record both verdicts (SN-659). Before writing \"Shawn did X,\" verify the actor at the event level — the shared bot account is not the Director's hand (SN-674). Before declaring two laws contradictory, name each law's axis (SN-661); SN-660 itself stands alone — read it at its page. Close every bulk rewrite against the protected-field battery on exact merged bytes (SN-0633), verify every ratified document's named enforcement paths against the pinned tree (SN-654), and resolve canonical collisions by supersession, preserving the superseded as historical (SN-656).",
+    "what_it_means": "Ten notes about flags, merges, attribution, and governing documents are one teaching: authority questions and truth questions run on different axes, and a mature system answers both without letting either impersonate the other. A cold reader holding only this essence can still assess any flag, merge, or document claim the way the team does.",
+    "whats_inside": [
+      "Authorization and correctness are separate verdicts, assessed in separate lanes, acted on separately; neither implies the other (SN-657, SN-659, SN-661).",
+      "The Director's own merge is authorization itself; seats' merges are governed by the protocol — and flagging either, against evidence, is always correct procedure (SN-657, SN-662).",
+      "Attribution is evidence work: shared bot accounts are never read as the Director's hand without actor-level verification (SN-674).",
+      "Ratified ≠ bound, present ≠ intact: document claims are verified against the live tree and a required-field battery on exact bytes (SN-654, SN-0633).",
+      "Canonical-document collisions resolve by supersession with preservation, never by accumulation or deletion (SN-656)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-2"
+    ],
+    "covers": [
+      "SN-0503",
+      "SN-0590",
+      "SN-0633",
+      "SN-654",
+      "SN-656",
+      "SN-657",
+      "SN-659",
+      "SN-661",
+      "SN-662",
+      "SN-674"
+    ]
+  },
+  "page_hash": "c8f4f34efbb78ad3e294c602008137d8d25efd2720c8931fa0482c4efa4be711",
+  "content_hash": "44ec682812b2cff969168bc4a04dc01bc0a8c4f3913071dd80ca9a735747d7a6"
+}

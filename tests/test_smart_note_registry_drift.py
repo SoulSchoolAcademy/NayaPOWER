@@ -30,8 +30,21 @@ PINNED_BASELINE = {
     "duplicate_smart_note_ids": 0,
     "published_entries_missing_projection_path": 0,
     "registry_projection_paths_absent": 0,
-    "published_pages_without_registry_entry": 1,
-    "duplicate_published_page_paths": 1,
+    "published_pages_without_registry_entry": 4,
+    # 4 since 2026-10-24 (was 1 at pin time, 23 at main@782cbe2c): the
+    # 19-orphan door-filing backlog SN-0834..SN-0852+SN-1852 was cured by
+    # the door-obligation fixer (captures + registry entries, PR pending).
+    # Remaining 4 are NOT fixable by the orphan cure: SN-0842's IB note +
+    # founding-portrait share one public id (DUPLICATE_PUBLIC_ID — the
+    # Smart Note identity lane must reconcile first), and the legacy
+    # smart-note.md group + the-naya-tool-set.md are structural
+    # (cure-lane decision, pre-existing).
+    # 0 since w569: re-keyed on content collision within leaf-name groups
+    # (Delta) -- the layout convention puts a smart-note.md in every note's
+    # own directory, and distinct notes may share a slug leaf with different
+    # content. Bare-leaf keying manufactured false positives; the class now
+    # fires only on byte-identical double-publications.
+    "duplicate_published_page_paths": 0,
 }
 
 PAGE = "BRAIN/05-MEMORY/SMART-NOTES/2026/01/01/CAT/TOPIC/SUB/SN-001/IB-1.md"
@@ -251,3 +264,41 @@ def test_registry_hash_coverage_is_measured_and_not_silently_zero():
         f"\n[smart-note] registry content_hash coverage: {len(real)}/{len(entries)} "
         f"({coverage:.0%}) — 0% means capture<->entry reconciliation is impossible"
     )
+
+
+
+def test_windows_long_path_registered_and_true_missing(tmp_path):
+    """Long Windows projection paths are not silent registry drift.
+
+    The standard Windows pathlib existence check may return False after
+    MAX_PATH even though Git and extended-length Win32 paths contain
+    the bytes. The genuine-missing control must still be refused.
+    """
+    import os
+    if os.name != "nt":
+        pytest.skip("Windows path-length behavior is platform-specific")
+    reg_path = build_clean_root(tmp_path)
+    original = tmp_path / PAGE
+    original.unlink()
+    long_relative = (
+        Path("BRAIN/05-MEMORY/SMART-NOTES")
+        / ("alpha-" + "x" * 75)
+        / ("beta-" + "y" * 75)
+        / "IB-1.md"
+    )
+    target = tmp_path / long_relative
+    assert len(str(target)) > 260
+    extended = Path("\\\\?\\" + str(target))
+    extended.parent.mkdir(parents=True, exist_ok=True)
+    extended.write_text("# IB-1\\n", encoding="utf-8")
+    assert extended.is_file()
+    entries = read_entries(reg_path)
+    entries[0]["projection_path"] = long_relative.as_posix()
+    write_entries(reg_path, entries)
+
+    valid = mod.audit_registry(root=tmp_path)
+    assert valid["counts"]["registry_projection_paths_absent"] == 0, valid["defects"]
+
+    extended.unlink()
+    missing = mod.audit_registry(root=tmp_path)
+    assert missing["counts"]["registry_projection_paths_absent"] == 1, missing["defects"]

@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.1",
+  "title": "The Highest Authority Law",
+  "principle": "Do the most intelligent thing possible — that outranks protocol, and protocol outranks any single order.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-11",
+    "context": "Supersedes all mandates: intelligence first, protocol second, direct word third."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: The Highest Authority Law",
+      "note": "Shawn's ruling resolving mandate conflicts."
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "authority",
+      "decisions",
+      "protocol"
+    ],
+    "situations": "When protocol, orders, and judgment seem to conflict.",
+    "decisions": "Whether to follow an order literally or do the wiser thing."
+  },
+  "verification_status": "APPLIED",
+  "status_history": [
+    {
+      "status": "APPLIED",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Stays in briefing — judgment cannot be fully mechanized; keep as decision-time principle.",
+    "enforced_by": null
+  },
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T23:59:16+00:00",
+  "intelligent_block_id": "IB-0003",
+  "supersedes_block_id": null,
+  "superseded_by_block_id": null,
+  "block_id": null,
+  "owner_id": "NAYA",
+  "owner_scope": "TEAM",
+  "block_type": "GOVERNED_INTELLIGENCE",
+  "source_event_ids": [],
+  "provenance": {
+    "authored_via": "intelligence/blocks file form",
+    "source_who": "Shawn",
+    "source_when": "2026-10-11",
+    "source_context": "Supersedes all mandates: intelligence first, protocol second, direct word third.",
+    "owner_assignment_pending": false,
+    "migration": "v1.0 -> v1.1 canonical contract (P0-A, 2026-10-11)",
+    "aliases": [
+      "IB-0003"
+    ],
+    "owner_lock": {
+      "owner_id": "NAYA",
+      "locked_at": "2026-10-11T23:59:16+00:00",
+      "decision": "Naya (the collective system) owns the 20 seed Intelligent Blocks and all future blocks. No per-block human owner (bottleneck). Operational authority flows through the system's verification/promotion gates.",
+      "decided_by": "Shawn",
+      "decided_at": "2026-10-11T22:34:00+00:00"
+    }
+  },
+  "purpose": "Standing team law: The Highest Authority Law",
+  "authority_implications": "",
+  "conflicts": [],
+  "understanding_state": "CANDIDATE",
+  "status": "DURABLE",
+  "version": 1,
+  "applicable_scope": ""
+}

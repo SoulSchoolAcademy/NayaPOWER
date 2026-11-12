@@ -1,0 +1,35 @@
+<link rel="manifest" href="manifest.json">
+<script>
+/* Service worker — the shell SW is served at this origin's /sw.js (the
+   worker emits it beside the page's OWN manifest, built from this page's
+   identity at deploy). Registration is guarded and silent: if the SW is
+   unavailable the page simply runs without one (S2 cure, 2026-10-22). */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    try { navigator.serviceWorker.register('sw.js').catch(function () {}); } catch (err) {}
+  });
+}
+</script>
+<script>
+/* Install capture — Hub pattern (index-2.html): capture the prompt early,
+   cement nayanet.installed on appinstalled / standalone, never nag.
+   The install UI itself lives ONLY inside the Settings block. */
+window.__osInstallPrompt = null;
+window.addEventListener('beforeinstallprompt', function (e) {
+  e.preventDefault();
+  window.__osInstallPrompt = e;
+  try { window.dispatchEvent(new CustomEvent('os-install-ready')); } catch (err) {}
+});
+window.addEventListener('appinstalled', function () {
+  window.__osInstallPrompt = null;
+  try { localStorage.setItem('nayanet.installed', '1'); localStorage.setItem('nayanet_install_done', '1'); } catch (err) {}
+  try { window.dispatchEvent(new CustomEvent('os-installed')); } catch (err) {}
+});
+(function () {
+  try {
+    if ((window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true) {
+      localStorage.setItem('nayanet.installed', '1');
+    }
+  } catch (err) {}
+})();
+</script>

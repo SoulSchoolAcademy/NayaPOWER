@@ -98,7 +98,10 @@ def test_reader_is_owner_and_block_bound():
     result = Engine(intelligence_reader=reader).execute_cycle(data)
 
     assert result["status"] == "COMPLETED"
-    assert calls == [("IB-NAYA-NODE-0001-0001", "owner-1")]
+    # ADVISE (influence bridge) and KNOW both consult the same reader;
+    # every call must carry the same owner-and-block binding.
+    assert len(calls) == 2
+    assert all(c == ("IB-NAYA-NODE-0001-0001", "owner-1") for c in calls)
 
 
 def test_successor_strips_inherited_authority():

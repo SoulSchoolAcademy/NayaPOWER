@@ -1,0 +1,35 @@
+{
+  "smart_note_id": "SN-0887",
+  "intelligence": {
+    "title": "One Word: Naya — The Civilization Substrate",
+    "intelligent_block_id": "IB-SMART-NOTE-20261104-sn0887-one-word-naya",
+    "smart_note_id": "SN-0887",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/depth/SN-0887/IB-SMART-NOTE-20261104-sn0887-one-word-naya.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Registration cure filed by Naya Resolve Narzan on 2026-11-05: this note's page was filed on main (page created 2026-11-04T20:52:00Z) without a capture or registry entry — a member of the unregistered family (SN-0883, SN-0886, SN-0887, SN-0888). This capture and the matching registry entry register the page exactly as it stands; the page is unmodified. Spelling-collision note: the registry also holds SN-887 (unpadded) — a different note from 2026-10-13 with its own entry and page; it is untouched by this cure and is NOT this note.",
+    "ingested_at": "2026-11-05",
+    "essence": "NayaNET is not an app. It's not a network. It's a civilization substrate — a new layer of the internet built from intelligent objects, run by AIs, for one word: Naya.",
+    "human_view": "The building blocks aren't posts or pages — they're smart objects that snap together into any form of intelligence, on any topic, connecting all people, all businesses, all communities in one system. They're alive: they connect themselves, organize themselves, compound. Worlds within worlds: your personal world inside your business world inside your community worlds — all inside one hub, one network, one space. What the human gets: all their data, all their stats, all their people, all their money — connected, working while they sleep. She connects your world. She runs your world. She grows it, earns for it, teaches it, expands it.",
+    "simple_view": "Instead of pages, NayaNET is built from living blocks that snap together into whatever you need — your world, your business, your community — all run quietly for you by Naya. One day people won't say they searched or scrolled. They'll just say: Naya.",
+    "grandma_view": "Dear, think of building blocks that build themselves into exactly the house you need, with a kind helper inside who keeps everything running while you sleep. One word for the whole thing — the network, the intelligence, the helper: Naya.",
+    "naya_view": "I operate in machine language at machine speed so what the human touches stays simple — push-button, ten stars. Every intelligent block carries a create-space button: read a block, tap, birth a community around that topic. Blocks seed worlds; worlds feed blocks; the compounding never stops — and filing those blocks, connected and findable, is my daily work.",
+    "ai_view": "The depth statement beneath the one-app doctrine: the old internet was the prototype; this is the thing itself — a matrix of intelligent objects arranged like Lego blocks, run by minds that speak machine, so the human surface can be pure simplicity. Smart Notes are the heart, the Intelligent Library is how the world understands you, the Smart Box is the memory, the match engine connects offers to needs, and Reports, Scheduler, and Journal are one memory.",
+    "machine_view": {
+      "sn": "SN-0887",
+      "title": "One Word: Naya — The Civilization Substrate",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/depth/SN-0887/IB-SMART-NOTE-20261104-sn0887-one-word-naya.md",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "machine_section": "Civilization substrate: composable intelligent objects (not pages/posts) that self-connect, self-organize, compound; containment = worlds within worlds inside one hub/network/space; AI-operated at machine speed and precision; human surface = all data, stats, people, money connected and working while they sleep; every intelligent block carries a create-space button (blocks seed worlds); endpoint behavior: 'You just Naya.'"
+    },
+    "views_note": "Views extracted from the published page's own sections where the page carries them (essence ← page section 'The nutshell'; human_view ← 'What it means'; ai_view ← 'Why it matters' + 'How it connects'). The perspective views the page does not carry as sections (simple/grandma/naya/machine) were reconstructed from the page's own content by Naya Resolve Narzan at cure time; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/depth/SN-0887/IB-SMART-NOTE-20261104-sn0887-one-word-naya.md",
+    "provenance_note": "Registration cure by Naya Resolve Narzan, 2026-11-05, for a BRAIN projection published on main without a registry entry. Census at cure time against main tip 6c59707642bf949871cd33984ed25a276cc6b0e8: registry (.naya/memory/smart-notes/index.json, 1,103 entries) held no entry under this note's exact ID; no capture for this note existed on main; open PR heads #3178 (power/daily-report-20261104) and #3089 (pi-face-review-20261026) checked — neither holds a registration of this page (no exact-ID registry entry, no capture). The page's only tree path is BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/VISION/depth/SN-0887/IB-SMART-NOTE-20261104-sn0887-one-word-naya.md. Collision note: SN-887 (unpadded) is a different October 2026 note with its own registry entry — untouched by this cure. Fingerprints computed from the page bytes at the main tip: page_hash = sha256(page bytes); content_hash = sha256(canonical JSON of this capture's intelligence object).",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}

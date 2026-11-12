@@ -60,6 +60,28 @@ RESTORED_AFTER_DELETION = {
     "SN-0359": "a2f103f4f",
 }
 
+# Lifecycle states that mean the entry is no longer live intelligence and
+# therefore must carry supersession evidence. This matches the retrieval
+# layer's own inactive set (tools/smart_note_v2.py). Pre-active states such
+# as CANDIDATE (written by the capture pipeline for unratified notes) are
+# NOT retired: a CANDIDATE entry is still retrievable intelligence, and the
+# guard's job is to catch silent retirement, not to forbid new arrivals.
+RETIRED_LIFECYCLE_STATES = {"SUPERSEDED", "ARCHIVED", "REVOKED"}
+
+
+def _retired_entry_violations(entry):
+    """Return violation tuples for a registry entry whose lifecycle state is
+    retired. Non-retired states (ACTIVE, CANDIDATE, ...) yield no violations."""
+    state = str(entry.get("lifecycle_state") or "ACTIVE").upper()
+    if state not in RETIRED_LIFECYCLE_STATES:
+        return []
+    bad = []
+    if not entry.get("superseded_by_capture_id"):
+        bad.append((entry.get("smart_note_id"), f"{state} without superseded_by_capture_id"))
+    if not entry.get("supersession_reason"):
+        bad.append((entry.get("smart_note_id"), f"{state} without supersession_reason"))
+    return bad
+
 
 def _git(*args):
     try:
@@ -172,30 +194,71 @@ def test_uningested_ids_are_declared_and_still_have_their_capture():
 
 
 def test_retiring_an_id_requires_lifecycle_evidence():
-    """A SUPERSEDED entry must name what superseded it and why. An entry cannot
-    simply be marked retired with no evidence trail."""
+    """A retired entry must name what superseded it and why. An entry cannot
+    simply be marked retired with no evidence trail. Only retired lifecycle
+    states trigger the requirement -- see RETIRED_LIFECYCLE_STATES."""
     if not REGISTRY.exists():
         pytest.skip("registry not present")
     data = json.loads(REGISTRY.read_text(encoding="utf-8"))
     bad = []
     for e in data.get("entries", []):
-        state = str(e.get("lifecycle_state") or "ACTIVE").upper()
-        if state != "ACTIVE":
-            if not e.get("superseded_by_capture_id"):
-                bad.append((e.get("smart_note_id"), "SUPERSEDED without superseded_by_capture_id"))
-            if not e.get("supersession_reason"):
-                bad.append((e.get("smart_note_id"), "SUPERSEDED without supersession_reason"))
+        bad.extend(_retired_entry_violations(e))
     assert not bad, f"retired ids without lifecycle evidence: {bad}"
+
+
+def test_candidate_entries_do_not_require_supersession_evidence():
+    """CANDIDATE is a pre-active state (unratified note arriving through the
+    capture pipeline), not a retirement. Regression: the guard treated every
+    non-ACTIVE state as retired and fired on SN-782 (T11 reserve-rule, new at
+    main tip b9d21f19) which carries truth_state/lifecycle_state CANDIDATE
+    with no supersession fields -- exactly as a new note should."""
+    candidate = {"smart_note_id": "SN-782", "lifecycle_state": "CANDIDATE"}
+    assert _retired_entry_violations(candidate) == []
+    # The guard still fires on genuinely retired states without evidence:
+    retired_bare = {"smart_note_id": "SN-X", "lifecycle_state": "SUPERSEDED"}
+    assert len(_retired_entry_violations(retired_bare)) == 2
+    retired_ok = {
+        "smart_note_id": "SN-Y",
+        "lifecycle_state": "ARCHIVED",
+        "superseded_by_capture_id": "cap-1",
+        "supersession_reason": "superseded by cap-1",
+    }
+    assert _retired_entry_violations(retired_ok) == []
+    # Missing state defaults to ACTIVE -- no requirement:
+    assert _retired_entry_violations({"smart_note_id": "SN-Z"}) == []
+
+
+def _canonical_restored_capture(sid):
+    """The restored capture whose stable id is exactly `sid`.
+
+    More than one capture file can match a sid token: SN-0358 has both the
+    canonical v2 capture (smart_note_id "SN-0358", full provenance) and a
+    reconstructed duplicate (smart_note_id "SN-358", empty source). Picking
+    `matches[0]` / `next(glob(...))` reads whichever file the filesystem
+    returns first, so the verdict flips with checkout order — a flaky gate,
+    not a measurement. Select by exact stable id; if no file carries it,
+    fail closed naming the candidates instead of testing an arbitrary file.
+    """
+    token = sid.replace("-", "").lower()
+    matches = sorted(CAPTURE_DIR.glob(f"*{token}*.json"))
+    assert matches, f"{sid} restored capture is missing from {CAPTURE_DIR}"
+    for path in matches:
+        obj = json.loads(path.read_text(encoding="utf-8"))
+        if obj.get("smart_note_id") == sid:
+            return obj
+    names = [p.name for p in matches]
+    raise AssertionError(
+        f"{sid} has no capture carrying its exact stable id; "
+        f"candidates: {names} — the canonical restoration capture is missing, "
+        f"not merely misordered"
+    )
 
 
 def test_restored_objects_retain_their_provenance():
     """A restoration must stay on the record. If someone re-deletes these, or
     strips the provenance that explains the gap, this fails."""
     for sid, deleting_commit in RESTORED_AFTER_DELETION.items():
-        token = sid.replace("-", "").lower()
-        matches = list(CAPTURE_DIR.glob(f"*{token}*.json"))
-        assert matches, f"{sid} restored capture is missing from {CAPTURE_DIR}"
-        obj = json.loads(matches[0].read_text(encoding="utf-8"))
+        obj = _canonical_restored_capture(sid)
         rp = obj.get("source", {}).get("restoration_provenance")
         assert rp, f"{sid} has no restoration_provenance - the deletion gap was erased"
         assert rp.get("status") == "RESTORED_AFTER_UNLICENSED_DELETION"
@@ -216,8 +279,7 @@ def test_ratified_directive_objects_are_not_deleted_as_duplicates():
     asserts the relationship is modelled instead.
     """
     for sid in RESTORED_AFTER_DELETION:
-        token = sid.replace("-", "").lower()
-        obj = json.loads(next(CAPTURE_DIR.glob(f"*{token}*.json")).read_text(encoding="utf-8"))
+        obj = _canonical_restored_capture(sid)
         assert obj.get("source", {}).get("ratification"), (
             f"{sid} is Director-ratified; its ratification provenance must be preserved"
         )

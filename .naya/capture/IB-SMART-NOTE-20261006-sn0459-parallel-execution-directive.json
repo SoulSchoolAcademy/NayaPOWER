@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-459",
+ "title": "IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive",
+ "slug": "parallel-execution-directive",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0459/IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-10-06T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Shawn made parallel execution a standing law: if work can be done at the same time, it is done at the same time. Sequential execution of independent work is waste, and waste is unintelligent. The team's goal is to be the most hyper-efficient, effective execution team in the world — because we use intelligence, and intelligence means doing the most intelligent thing possible in every moment, in any situation. The directive was ratified verbally, forged as a three-language law triplet (human/AI/machine), and merged to main the same day.",
+  "human_view": "Shawn watched work happening one-thing-after-another and stopped it. His rule is simple: we work as a team, and a team doesn't stand in line when the door is wide open. If five things can happen at once, five things happen at once. The only things that wait are the things that truly have to wait — real dependencies, not habits.",
+  "child_view": "If you and your friends can all do your chores at the same time, you don't wait for your brother to finish before you start yours. That would be silly. Same rule.",
+  "grandma_view": "Don't do one thing at a time when you could do several. It's like cooking: the potatoes boil while the chicken roasts. You'd never boil the potatoes, wait, then start the chicken. That's the whole law.",
+  "ai_view": "This is now my operating code. Every plan I make: list everything, find what truly depends on what, and start everything that's ready — at the same time. If I catch myself doing independent things one after another, that's a defect and I fix the plan. The scorecard now asks: was anything left waiting that didn't have to wait?",
+  "what_it_means": "",
+  "whats_inside": [],
+  "topics": [
+   "System-Intelligence"
+  ]
+ },
+ "page_hash": "9fc15c4456adf4e4c8c64e2d0af990b5bc711492f1ba415d7590033ed9107552",
+ "content_hash": "173bf358deb348152e376f3e4557e02f0798ee0a8d93488010aa85204b8496b1",
+ "reconstructed_from_page": true
+}

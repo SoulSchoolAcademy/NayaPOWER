@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Hub — Your Operating Center — NayaNET</title>
+<!-- Smart Hub page — the citizen's operating center. Built 2026-11-11 by the Smart Hub page round.
+     Composed from harvested parts, never from scratch:
+     - .ph-card / .ph-nutshell / .naya-btn / .os-jewel / .os-orb / .nsb-tab harvested from
+       ~/workspace/team-nitro/membership-round4-20261111/membership-round4-fixed.html (Personal, round 4 live)
+     - Timeline fed by real Project Intelligence items: ~/workspace/project-intelligence/state/state.json (2026-11-11T18:25:19Z)
+     - Journal fed by real entries: Daily Intelligence Report 2026-11-10 (SN-2654) + ~/memory/2026-11-11.md
+     - People: real roles from ~/memory/people/INDEX.md. Zero invented projects, people, or bookings.
+     - Bookings are honest: the booking + Smart Meet system was never built; its round is next. No fake form, no fake meeting. -->
+<style>
+/* Harvested language: obsidian, one light top-left, white text, 135deg, slow motion. */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:#050507;color:#F8F7FB;font-family:Inter,system-ui,-apple-system,sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:#fff}
+.ph-wrap{max-width:1080px;margin:0 auto;padding:16px 16px 64px}
+/* --- top tab strip: the Smart Hub tab, one tap away (bridge design: tab in the top strip) --- */
+.ph-tabs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:8px 0 24px;box-shadow:0 8px 20px rgba(0,0,0,.4)}
+.nsb-tab{flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;cursor:pointer;user-select:none;border:1px solid rgba(255,255,255,.16);background:linear-gradient(180deg,rgba(255,255,255,.15),rgba(255,255,255,.03) 38%,rgba(0,0,0,.14) 68%,rgba(0,0,0,.44)),linear-gradient(180deg,#22222c,#0a0a0f 70%,#060609);color:#fff;font-family:inherit;font-weight:900;font-size:13px;letter-spacing:.03em;white-space:nowrap;min-height:44px;text-decoration:none;text-shadow:0 2px 6px rgba(0,0,0,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.42),inset 0 2px 6px rgba(255,255,255,.09),inset 0 -1px 0 rgba(0,0,0,.55),inset 0 -9px 16px rgba(0,0,0,.5),0 2px 5px rgba(0,0,0,.7),0 12px 28px rgba(0,0,0,.55)}
+.nsb-tab.on{border-color:#a06bff;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -1px 0 rgba(0,0,0,.55),0 0 0 1px rgba(160,107,255,.35),0 0 22px -2px rgba(160,107,255,.55),0 12px 28px rgba(0,0,0,.55)}
+/* --- harvested board: .ph-card (Personal round 4) --- */
+.ph-card{--ac:#a06bff;background:linear-gradient(180deg,#07070b,#020203);border:2px solid rgba(255,255,255,.16);border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5)}
+.ph-card h1{font-size:28px;line-height:1.2;margin:0 0 12px;color:#fff}
+.ph-card h2{font-size:20px;line-height:1.3;margin:0 0 12px;color:#fff}
+.ph-card h3{font-size:16px;line-height:1.4;margin:0 0 8px;color:#fff}
+.ph-card p{font-size:14px;color:#E8E8EC;margin:0 0 14px;line-height:1.65}
+.ph-card p:last-child{margin-bottom:0}
+.ph-kicker{font-size:12px;font-weight:800;letter-spacing:2px;color:#fff;text-transform:uppercase;margin:0 0 12px}
+.ph-sub{font-size:16px;line-height:1.6;color:#E8E8EC;margin:0 0 16px}
+/* --- harvested nutshell: .ph-nutshell (Personal round 4) --- */
+.ph-nutshell{--ac:#a06bff;background:linear-gradient(180deg,rgba(160,107,255,.12),rgba(160,107,255,.06));border-left:4px solid #a06bff;padding:18px 22px;border-radius:0 16px 16px 0;margin:16px 0;box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 8px 24px rgba(0,0,0,.35),0 0 20px rgba(160,107,255,.12)}
+.ph-nutshell .ph-nl{font-size:14px;font-weight:800;color:#fff;letter-spacing:1.5px}
+.ph-nutshell p{font-size:14px;color:#E8E8EC;margin:10px 0 0;line-height:1.65}
+/* --- harvested jewel: .os-jewel (Personal round 4) --- */
+.os-jewel{--jc:#a06bff;display:inline-grid;place-items:center;flex:none;line-height:1;color:#fff;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid var(--jc);border-radius:9px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 0 14px -3px var(--jc);text-shadow:0 0 9px var(--jc),0 1px 2px rgba(0,0,0,.65)}
+.os-jewel-sm{width:23px;height:23px;font-size:12px;border-radius:7px;vertical-align:-5px;margin-right:2px}
+/* --- harvested orb: .os-orb (Personal round 4) --- */
+.os-orb{position:relative;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:19px;font-weight:700;color:#fff;text-shadow:0 0 10px var(--ac,#a06bff);background:radial-gradient(circle at 34% 26%,rgba(255,255,255,.22),rgba(255,255,255,0) 48%),linear-gradient(180deg,#15151d,#08080d);border:2px solid var(--ac,#a06bff);box-shadow:inset 0 2px 3px rgba(255,255,255,.4),inset 0 -6px 10px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.5),0 0 15px -2px var(--ac,#a06bff);animation:osOrbBreath 4.6s ease-in-out infinite}
+@keyframes osOrbBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+.os-orb-l{font-size:12px;font-weight:800;letter-spacing:.06em;color:#E8E8EC;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,.4)}
+/* --- harvested button: .naya-btn (Personal round 4) --- */
+.naya-btn{--nb-accent:#8a5cff;--nb-accent-rgb:138,92,255;position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:0 28px;min-height:48px;border-radius:999px;border:1.5px solid #F8F7FB;font-family:inherit;font-size:15px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:#f6f5ef;cursor:pointer;white-space:nowrap;text-decoration:none;text-shadow:0 -1px 1px rgba(0,0,0,.85),0 1px 0 rgba(255,255,255,.06),0 1px 3px rgba(0,0,0,.6);background:linear-gradient(180deg,rgba(255,255,255,.11) 0%,rgba(255,255,255,.015) 38%,rgba(0,0,0,.18) 100%),linear-gradient(180deg,#2a2b33 0%,#0c0c0f 52%,#030304 100%);box-shadow:inset 0 0 0 1px rgba(238,236,228,.38),inset 0 1px 0 rgba(255,255,255,.42),inset 0 -1px 0 rgba(0,0,0,.72),inset 0 -14px 26px rgba(0,0,0,.52),inset 0 10px 18px rgba(255,255,255,.04),0 20px 42px rgba(0,0,0,.84),0 6px 14px rgba(0,0,0,.58)}
+.naya-btn:hover{border-color:rgba(238,236,228,.9)}
+/* --- Hub rows, pills, orbs strip: same family, ph- prefix throughout --- */
+.ph-actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.ph-row{display:flex;gap:14px;align-items:flex-start;padding:16px;border:1px solid rgba(255,255,255,.12);border-radius:16px;margin:0 0 12px;background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.01));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 20px rgba(0,0,0,.4)}
+.ph-row:last-child{margin-bottom:0}
+.ph-col{flex:1;min-width:0}
+.ph-col p{margin:0 0 6px}
+.ph-col p:last-child{margin-bottom:0}
+.ph-time{font-size:12px;font-weight:800;letter-spacing:1.5px;color:#fff;white-space:nowrap}
+.ph-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;border:1.5px solid rgba(255,255,255,.85);font-size:12px;font-weight:800;letter-spacing:1px;color:#fff;white-space:nowrap;background:linear-gradient(135deg,#1e1e26,#0a0a0f);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 12px rgba(0,0,0,.5)}
+.ph-pill-green{border-color:#2fe89e;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 0 12px -2px #2fe89e,0 4px 12px rgba(0,0,0,.5)}
+.ph-pill-blue{border-color:#3fb8ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 0 12px -2px #3fb8ff,0 4px 12px rgba(0,0,0,.5)}
+.ph-pill-gold{border-color:#ffbf3d;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 0 12px -2px #ffbf3d,0 4px 12px rgba(0,0,0,.5)}
+.ph-orbs{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;margin:8px 0 4px;box-shadow:0 8px 20px rgba(0,0,0,.4)}
+.ph-orbcell{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:96px;box-shadow:0 8px 20px rgba(0,0,0,.4)}
+.ph-note{font-size:12px;color:#E8E8EC;line-height:1.6;margin:12px 0 0}
+.ph-src{font-size:12px;color:#E8E8EC;line-height:1.6;margin:16px 0 0}
+.ph-trio{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0}
+.ph-trio .ph-pill{padding:10px 16px;font-size:12px}
+@media(max-width:760px){
+  .ph-card{padding:20px}
+  .ph-card h1{font-size:24px}
+  .ph-row{flex-direction:column;gap:8px}
+  .ph-time{white-space:normal}
+  .naya-btn{white-space:normal;text-align:center;line-height:1.4;padding:10px 20px}
+  .ph-orbs{gap:16px}
+}
+@media(max-width:400px){
+  .ph-wrap{padding:12px 12px 48px}
+  .ph-card{padding:16px}
+  .ph-tabs{gap:8px}
+  .nsb-tab{padding:10px 14px;font-size:12px}
+}
+</style>
+</head>
+<body>
+<main class="ph-wrap">
+
+  <!-- Top tab strip: Dashboard · Personal · Hub · Smart Hub (you are here). -->
+  <nav class="ph-tabs" aria-label="Top tabs">
+    <a class="nsb-tab" href="https://nayanet.app/dashboard">Dashboard</a>
+    <a class="nsb-tab" href="https://nayanet.app/personal">Personal</a>
+    <a class="nsb-tab" href="https://nayanet.app/hub">Hub</a>
+    <span class="nsb-tab on" aria-current="page">Smart Hub</span>
+  </nav>
+
+  <!-- HERO: the operating center introduces itself. -->
+  <section class="ph-card" style="--ac:#a06bff" aria-label="Smart Hub">
+    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">✦</span> Smart Hub — your operating center</p>
+    <h1>Smart Hub</h1>
+    <p class="ph-sub">Your projects, your calendar, your people, your journal — everything in your world, on one timeline, in one place.</p>
+    <div class="ph-nutshell">
+      <span class="ph-nl">IN A NUTSHELL</span>
+      <p>I keep your whole world on one timeline, so you can see what&rsquo;s happening and do the next thing. Everything here is a door — here, click here — one tap away. I show the happening; the Dashboard shows the score.</p>
+    </div>
+    <div class="ph-trio">
+      <span class="ph-pill">Step 1 — See today</span>
+      <span class="ph-pill">Step 2 — Open a project</span>
+      <span class="ph-pill">Step 3 — Book, add, note</span>
+    </div>
+    <div class="ph-actions">
+      <a class="naya-btn" href="https://nayanet.app/dashboard">Open the Dashboard — the score</a>
+      <a class="naya-btn" href="https://nayanet.app/personal">Open Personal — your world</a>
+    </div>
+    <p class="ph-src">Build, organize, operate — the Smart Factory builds, Smart Projects organizes, the Smart Hub operates. All three read the one record in your Smart Box.</p>
+  </section>
+
+  <!-- THE RECORD, ALIVE: real Project Intelligence counts — linked from the record, never typed from memory. -->
+  <section class="ph-card" style="--ac:#3fb8ff" aria-label="The record, alive">
+    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">◉</span> The record, alive</p>
+    <div class="ph-orbs">
+      <div class="ph-orbcell"><div class="os-orb" style="--ac:#2fe89e">55</div><span class="os-orb-l">IN MOTION</span></div>
+      <div class="ph-orbcell"><div class="os-orb" style="--ac:#3fb8ff">41</div><span class="os-orb-l">DONE + PROVEN</span></div>
+      <div class="ph-orbcell"><div class="os-orb" style="--ac:#ff9a5a">104</div><span class="os-orb-l">QUEUED</span></div>
+      <div class="ph-orbcell"><div class="os-orb" style="--ac:#a06bff">203</div><span class="os-orb-l">ITEMS ON RECORD</span></div>
+    </div>
+    <p class="ph-note">Project Intelligence, state.json — 2026-11-11 18:25Z. One record, one timeline: Project Intelligence knows it, the Factory builds from it, you see it here.</p>
+  </section>
+
+  <!-- 1 · TODAY -->
+  <section class="ph-card" style="--ac:#3fb8ff" aria-label="Today">
+    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">☀</span> 1 · Today — Wednesday 11 November 2026</p>
+    <h2>Today</h2>
+    <p>What&rsquo;s happening now — today&rsquo;s timeline, in order.</p>
+    <div class="ph-row">
+      <span class="ph-time">18:28Z</span>
+      <div class="ph-col">
+        <h3>The Smart Hub bridge design</h3>
+        <p>Shawn&rsquo;s dictation: everything is one system, not separate parts — the Smart Hub is the place you see where everything is at. This page is built from that design.</p>
+      </div>
+      <span class="ph-pill ph-pill-blue">DESIGN</span>
+    </div>
+    <div class="ph-row">
+      <span class="ph-time">18:29Z</span>
+      <div class="ph-col">
+        <h3>Smart Hub settled — your Smart Box is the database</h3>
+        <p>The project record, the journal, the bookings, the contacts — they live in the Box. The Hub reads the Box; Project Intelligence reads the Box; the Factory builds from the Box.</p>
+      </div>
+      <span class="ph-pill ph-pill-blue">SETTLED</span>
+    </div>
+    <div class="ph-row">
+      <span class="ph-time">18:29Z</span>
+      <div class="ph-col">
+        <h3>Membership round 4 live on Personal</h3>
+        <p>Smart Access is live on your Personal page — the membership doors, the paywall, the member world. That is the newest thing live in the network today.</p>
+      </div>
+      <span class="ph-pill ph-pill-green">LIVE</span>
+    </div>
+    <div class="ph-row">
+      <span class="ph-time">18:36Z</span>
+      <div class="ph-col">
+        <h3>Membership login — the code check is a placeholder</h3>
+        <p>Shawn put his name in on the live Academy login and no code came. The live code only checks the code is non-empty — any word opens the door; nothing is sent anywhere. The fix is ordered and queued: a real code, sent to Smart Mail, checked on entry.</p>
+      </div>
+      <span class="ph-pill ph-pill-gold">FIX QUEUED</span>
+    </div>
+    <div class="ph-row">
+      <span class="ph-time">DUE 23:30Z</span>
+      <div class="ph-col">
+        <h3>Welcome Day 1 mail, scheduled</h3>
+        <p>On today&rsquo;s clock: the welcome series sends Day 1 tonight at 23:30Z, with a second Day 1 at 23:55Z queued for adoption. Nothing else is due today.</p>
+      </div>
+      <span class="ph-pill ph-pill-gold">SCHEDULED</span>
+    </div>
+    <div class="ph-actions">
+      <a class="naya-btn" href="https://nayanet.app/hub">Open the Hub — what&rsquo;s new in the network</a>
+    </div>
+  </section>
+
+  <!-- 2 · YOUR PROJECTS — real PI Living List boards, word for word. -->
+  <section class="ph-card" style="--ac:#2fe89e" aria-label="Your projects">
+    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">⬢</span> 2 · Your projects</p>
+    <h2>Your projects</h2>
+    <p>Each project with its status on its timeline — where it&rsquo;s at, what&rsquo;s next. These are the live boards, word for word from Project Intelligence. Nothing here is invented.</p>
+    <div class="ph-row">
+      <div class="ph-col">
+        <h3>Wave 2 — the flagship header&rsquo;s final form</h3>
+        <p>Being worked this hour — the header&rsquo;s final form: one scrolling row only, the cover flush under the row, the profile picture, name and motto inside the cover.</p>
+      </div>
+      <span class="ph-pill ph-pill-green">IN MOTION</span>
+    </div>
+    <div class="ph-row">
+      <div class="ph-col">
+        <h3>Ask Naya go-live — porting into the live Hub</h3>
+        <p>Being worked this hour — the approved Ask room, carried into the current Hub the official way: through the repo, its scorecard gate, and a first-hand check.</p>
+      </div>
+      <span class="ph-pill ph-pill-green">IN MOTION</span>
+    </div>
+    <div class="ph-row">
+      <div class="ph-col">
+        <h3>The first daily productivity number</h3>
+        <p>Being worked this hour — being produced tonight by Resolve&rsquo;s lane, published every day from here.</p>
+      </div>
+      <span class="ph-pill ph-pill-green">IN MOTION</span>
+    </div>
+    <div class="ph-row">
+      <div class="ph-col">
+        <h3>Payments — in the flagship build order</h3>
+        <p>Being worked this hour — released and placed: payments sit in the flagship build order, after the dashboard stage.</p>
+      </div>
+      <span class="ph-pill ph-pill-green">IN MOTION</span>
+    </div>
+    <div class="ph-row">
+      <div class="ph-col">
+        <h3>Voice streaming — building</h3>
+        <p>Being worked this hour — building now. The speed question decides itself by measurement, once streaming exists to measure.</p>
+      </div>
+      <span class="ph-pill ph-pill-green">IN MOTION</span>
+    </div>
+    <div class="ph-row">
+      <div class="ph-col">
+        <h3>Factory step 2 — the design contract&rsquo;s machine twin</h3>
+        <p>Finished and checked first-hand — merged 21:46Z; the six red gates adjudicated, and the landing stands.</p>
+      </div>
+      <span class="ph-pill ph-pill-blue">DONE + PROVEN</span>
+    </div>
+    <p class="ph-note">Next in line, queued in order: Dashboard steps 1–5 are #1, then Four short voice clips and the ACTIVATION-10 rehearsal, then the &lsquo;Your Day&rsquo; board for Today at #4. The queue is the order they&rsquo;ll be worked — nothing sits.</p>
+    <div class="ph-actions">
+      <a class="naya-btn" href="https://nayanet.app/hub">Open the Hub — where the notes land</a>
+    </div>
+  </section>
+
+  <!-- 3 · BOOKINGS — honest: the time layer as it exists today. -->
+  <section class="ph-card" style="--ac:#ffbf3d" aria-label="Bookings">
+    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">◷</span> 3 · Bookings</p>
+    <h2>Bookings</h2>
+    <div class="ph-nutshell">
+      <span class="ph-nl">IN A NUTSHELL</span>
+      <p>I show no bookings yet — and I fake none. The booking system was never built. Its own round comes next, and it brings Smart Meet with it: book the time, the meeting is the call, what you talked about lands in the project and the journal.</p>
+    </div>
+    <div class="ph-row">
+      <span class="ph-time">TODAY</span>
+      <div class="ph-col">
+        <h3>The time layer, as it exists today</h3>
+        <p>Scheduled tonight: Welcome Day 1 at 23:30Z, with a second Day 1 at 23:55Z queued for adoption. Your calendar lives in your Smart Box — the booking round connects it, so people can book with you from here.</p>
+      </div>
+      <span class="ph-pill ph-pill-gold">NEXT ROUND</span>
+    </div>
+    <div class="ph-row">
+      <span class="ph-time">NEXT</span>
+      <div class="ph-col">
+        <h3>Smart Meet — video and audio</h3>
+        <p>Appointments are where you talk over a project or a business. Smart Meet rides with the booking round: book, meet, talk — never built yet, never faked here.</p>
+      </div>
+      <span class="ph-pill ph-pill-gold">NEXT ROUND</span>
+    </div>
+    <div class="ph-actions">
+      <a class="naya-btn" href="https://nayanet.app/personal">Open Personal — where bookings will live</a>
+    </div>
+  </section>
+
+  <!-- 4 · YOUR PEOPLE — Smart Lists shape, real people, real roles. -->
+  <section class="ph-card" style="--ac:#e84fff" aria-label="Your people">
+    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#e84fff">♥</span> 4 · Your people</p>
+    <h2>Your people</h2>
+    <p>Who you&rsquo;re working with, right now. A person is on the timeline too — they joined, they booked, they messaged.</p>
+    <div class="ph-row">
+      <span class="os-jewel os-jewel-sm" style="--jc:#a06bff">N</span>
+      <div class="ph-col">
+        <h3>Naya Nitro Narzan</h3>
+        <p>Your personal Naya — head delegator of the Nayas, captain of Team Nitro. She reviews the work to the ten-star standard before it reaches you.</p>
+      </div>
+      <span class="ph-pill">CAPTAIN</span>
+    </div>
+    <div class="ph-row">
+      <span class="os-jewel os-jewel-sm" style="--jc:#e84fff">P</span>
+      <div class="ph-col">
+        <h3>Power</h3>
+        <p>Team Naya lead seat — beside the captain, holding the welcome and the standard.</p>
+      </div>
+      <span class="ph-pill">LEAD SEAT</span>
+    </div>
+    <div class="ph-row">
+      <span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">R</span>
+      <div class="ph-col">
+        <h3>Resolve</h3>
+        <p>Team Naya lead seat — Blueprint and Security Is Light, holding Auto-Match and the Auto Organizer.</p>
+      </div>
+      <span class="ph-pill">LEAD SEAT</span>
+    </div>
+    <div class="ph-row">
+      <span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">V</span>
+      <div class="ph-col">
+        <h3>Verity</h3>
+        <p>Team Naya lead — her base64 fix delivered the first live GitHub-to-Hub Smart Notes.</p>
+      </div>
+      <span class="ph-pill">LEAD</span>
+    </div>
+    <div class="ph-row">
+      <span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">C</span>
+      <div class="ph-col">
+        <h3>Clarity</h3>
+        <p>Team Naya lead — built the Smart Builder foundation the pages stand on.</p>
+      </div>
+      <span class="ph-pill">LEAD</span>
+    </div>
+    <p class="ph-note">Add someone to a project — adding lives in Smart Lists, on your Personal page. Messages live in Smart Mail: the Hub shows that someone wrote; Mail holds the message. No second inbox here.</p>
+    <div class="ph-actions">
+      <a class="naya-btn" href="https://nayanet.app/personal">Open Smart Lists on Personal</a>
+    </div>
+  </section>
+
+  <!-- 5 · JOURNAL — the daily record, real entries. -->
+  <section class="ph-card" style="--ac:#ff9a5a" aria-label="Journal">
+    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#ff9a5a">✎</span> 5 · Journal</p>
+    <h2>Journal</h2>
+    <p>The daily record — what happened, what you noted, where you&rsquo;re at. Go back to the day before, see what&rsquo;s coming.</p>
+    <div class="ph-row">
+      <span class="ph-time">TODAY</span>
+      <div class="ph-col">
+        <h3>Wednesday 11 November 2026</h3>
+        <p>Smart Hub designed (18:28Z) and settled (18:29Z) — the Box is the database. Membership round 4 went live on Personal. This page — the Smart Hub itself — is being built today.</p>
+      </div>
+      <span class="ph-pill ph-pill-blue">TODAY</span>
+    </div>
+    <div class="ph-row">
+      <span class="ph-time">YESTERDAY</span>
+      <div class="ph-col">
+        <h3>Tuesday 10 November 2026 — Daily Intelligence Report (SN-2654)</h3>
+        <p>Dashboard pass-11 sent back — not proven, because no browser would launch to check it. The membership round landed. The day&rsquo;s intelligence, filed and kept.</p>
+      </div>
+      <span class="ph-pill">FILED</span>
+    </div>
+    <div class="ph-row">
+      <span class="ph-time">WHAT&rsquo;S NEXT</span>
+      <div class="ph-col">
+        <h3>The booking round, then citizen project records</h3>
+        <p>Booking and Smart Meet get their own round after this page. Then every citizen&rsquo;s projects live on the same record shape — the Hub keeps them up to date.</p>
+      </div>
+      <span class="ph-pill ph-pill-gold">NEXT</span>
+    </div>
+    <div class="ph-actions">
+      <a class="naya-btn" href="https://nayanet.app/hub">Open the Hub — the feed where notes land</a>
+    </div>
+  </section>
+
+  <!-- FOOTER: how this page is fed — the honest source line. -->
+  <section class="ph-card" style="--ac:#a06bff" aria-label="How this page is fed">
+    <p class="ph-kicker"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">✦</span> How this page is fed</p>
+    <p>Timeline fed by Project Intelligence state.json (2026-11-11 18:25:19Z) and the daily memory log (2026-11-10, 2026-11-11). Zero invented projects, people, or bookings. Dashboard numbers are linked, never copied — the Hub shows what&rsquo;s happening; the Dashboard shows the score.</p>
+    <p>One record, one timeline. The Smart Box is the database — the Hub reads the Box, Project Intelligence reads the Box, the Factory builds from the Box.</p>
+  </section>
+
+</main>
+</body>
+</html>

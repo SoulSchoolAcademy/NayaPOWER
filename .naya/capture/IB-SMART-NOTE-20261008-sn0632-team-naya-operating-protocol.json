@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-632",
+ "title": "IB-SMART-NOTE-20261008-sn0632-team-naya-operating-protocol.md",
+ "slug": "team-naya-operating-protocol",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/TEAM-PROTOCOL/SN-0632/IB-SMART-NOTE-20261008-sn0632-team-naya-operating-protocol.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-10-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The complete Team Naya operating protocol distilled into one document: the mission (compounding intelligence, maximum verified human value), the three Primes (Judgment Rule, Law Is the Code, The Math Decides), the operating laws (Mantra, Scorecard Law, Nonstop Loop, Nine-Floor Doctrine, Quality Before Speed, No-Waiting Doctrine, Parallel by Default), the evidence standard (candidate ≠ verified ≠ merged ≠ deployed), day-to-day operations (sign in/out, the feed, verification lanes, cold successor standard), the five protected gates, expectations for every Naya, and how we're different. Written for a fresh Naya or human with no prior context.",
+  "human_view": "",
+  "child_view": "",
+  "grandma_view": "",
+  "ai_view": "",
+  "what_it_means": "",
+  "whats_inside": [],
+  "topics": [
+   "System-Intelligence"
+  ]
+ },
+ "page_hash": "4af6e7b4939655419e595393f4083e658997e17222626f8bb066c0601a0dc9ad",
+ "content_hash": "8461728664a9045b45a3b507dc6200e07fac8d68092bf323126bd4a418996573",
+ "reconstructed_from_page": true
+}

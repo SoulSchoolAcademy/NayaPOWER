@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2306",
+ "title": "The Anatomy of a Viewport",
+ "slug": "the-anatomy-of-a-viewport",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2306/IB-SMART-NOTE-20261108-sn2306-the-anatomy-of-a-viewport.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "A viewport is ONE screen — not the top of a long page, not a section. The page is optimized so they can scroll DOWN or ACROSS: both, not one or the other, on laptop and on mobile — the user chooses. The structure is a Rubik's Cube matrix of intelligent blocks: one core that morphs into its faces. The feel: it flows like water — free, smooth, easy, everything alive and lighting up — and it makes sense when you experience it: everything is where it belongs, so the moment you touch it, you understand it. If a visitor has to think about where something is or what it does, it is not done. Each viewport has everything they need a click away (the Smart Bar, one bar at the top). Everything is alive, all things are objects, always — flat text HTML is the lowest level of coding and never ships. Almost no text: the page speaks in icons and objects. Perfect contrast, always depth. One language: the harvested pieces — the real needle gauge, the `.ph-card` board, the `.os-jewel` / `.pj-jewel`, the Dashboard numbers, the glossy pills. The test, six questions: one screen? everything a click away? every element a real, alive object? meaning survives with almost no text? contrast perfect, depth everywhere? every piece harvested? Any no — the viewport is not done, and it never reaches his eye.",
+  "human_view": "You are standing in one room, and everything you need is in that room. You don't hunt, you don't scroll for days, you don't repeat yourself. You touch a jewel and the detail opens; you touch a number and its records open; you slide across or scroll down — whichever you like — and the next room is there, just as complete. That is a viewpoint: one screen, complete on its own, alive in every direction.",
+  "child_view": "Imagine a magic book where every page is a whole little world — one page, one world, everything you need on that page. You can turn the pages down, or slide them sideways — you choose. And every picture in the book is a real toy you can touch: press it, and it lights up and does something. If you have to stop and think \"where is the thing I need?\" — the page is not finished yet.",
+  "grandma_view": "Dear, a good room has everything in its place — you walk in, and you know where everything is without being told. That is what a viewpoint is: one room, everything where it belongs, everything alive, nothing flat, nothing hidden. You should never have to hunt for what you need in your own house.",
+  "ai_view": "You build viewpoint by viewpoint, never page by page. Each screen is a complete, optimized viewpoint, always mobile optimized. You take the harvested pieces and compose them — never fresh HTML that imitates them. You run the six-question test on every viewport before showing it, and a viewport that fails the test never reaches his eye. His eye is the final gate — but the test is what keeps the failures from wasting his time.",
+  "what_it_means": "- One screen, complete on its own — not the top of a long page.\n- Down or across — both, the user's choice, on laptop and on mobile.\n- Rubik's Cube matrix: one core that morphs into its faces.\n- Almost no text — the page speaks in icons and objects.\n- The six-question test runs before his eye, every time.",
+  "whats_inside": [],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "d8e8d6263345f14fabb77740078951aebbdc762bb2b2b1a33ae31af7eddd412d",
+ "content_hash": "9ee85f5cc7902bac8ecb5b1ba13ec9c61055530ce5502c583bed68081253ae54",
+ "reconstructed_from_page": true
+}

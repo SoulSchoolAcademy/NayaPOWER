@@ -1,0 +1,42 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2155",
+  "title": "Provenance Is Sacred: Preserve First, Describe Honestly, Index the Lesson",
+  "slug": "essence-provenance-and-preservation",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-provenance-and-preservation.md",
+  "tone": "red",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:03:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Nothing in the brain is deleted or rewritten on a guess. The Preservation Law is absolute: no deletion without understanding — you must know what a thing is, why it exists, and what depends on it before it may be removed, because in a compounding memory system a careless deletion destroys intelligence no one can re-derive (SN-0608). Provenance is the companion duty: a record must describe what actually happened, and there are exactly two legitimate registration patterns — (1) a real pipeline run produces real UUIDs, or (2) an explicit provenance note documents the exceptional path honestly; anything else, above all UUIDs no run ever produced, is fabrication wearing a process costume (SN-0466). And a manual registry edit owns every invariant the pipeline maintains: the registration that missed `sequence_policy.next_sequence` (361 against a corpus max of SN-408) was caught by the test suite, not by care (SN-0466). The capture lifecycle shows the failure modes by name. A direct-commit capture bypass skips the lifecycle that gives a note its checks, landing intelligence the pipeline never vetted (SN-0491). Fabricating a capture — writing provenance for an event that did not happen as described — is provenance laundering: it converts the memory system itself into a counterfeiter, and it is never a shortcut, a favor, or a repair (SN-0494).\n\nCapture also has an identity discipline: an agent capture must present a real user JWT, and the receiver stays byte-identical — the authentication is the agent's burden to carry honestly, never the receiver's code to loosen (SN-0496). What gets captured must be findable as what it teaches: index the lesson, not just the metadata, because retrieval matches its haystack — a corpus indexed by titles and tags alone will fail to surface the very rule a cold successor needs (SN-0612). Retrieval itself is one transparent path: a single retrieval RPC whose scoring is visible, where relationships traverse but no authority is created by the act of ranking — being found is not being ratified (SN-0497).",
+    "human_view": "Your memory system here never throws anything away just to tidy up, and it never lies about where something came from. Every note says truthfully who did the work and how it got in, it got in through the proper door with proper identification, and it's filed by what it actually teaches — so when you go looking for a lesson later, you find the lesson, not just a label.",
+    "child_view": "It's like a library where nobody rips out pages, and every book has a true card saying who wrote it and when it arrived. Books come in through the front desk with a real library card — never through a window. And the catalogue is organized by what the books teach, so you can actually find the one you need.",
+    "grandma_view": "Dear, think of a family archive kept by someone careful. Nothing is thrown out until they understand what it is and what it means to the family. Every entry honestly says where it came from — pretending otherwise has a name, and it's forbidden. New items come in properly, with honest identification, and they're indexed by their real contents, the way you'd index a recipe by its ingredients, not just its title.",
+    "ai_view": "Before any deletion, write down what the artifact is, why it exists, and what depends on it — or stop (SN-0608). Register work only in the two honest patterns — a real run's real UUIDs, or an explicit provenance note for the exceptional path — and after any manual registry edit run the full test suite, which enforces the invariants (sequence_policy, allocation) that hand edits break (SN-0466); if you are tempted to write provenance for an event you did not witness as described, that is laundering (SN-0494) — refuse. Never route a capture around the lifecycle (SN-0491) and never patch a receiver to accept a weaker credential (SN-0496). When you capture, index the lesson body (SN-0612) and remember the retrieval RPC ranks without ratifying (SN-0497).",
+    "what_it_means": "Seven notes about preservation, provenance, capture, and retrieval are one teaching: a memory system is only as trustworthy as its intake. A cold reader holding only this essence can still protect the corpus at its root — refuse the dishonest registration, refuse the careless deletion, and file the lesson so the next mind can find it.",
+    "whats_inside": [
+      "Deletion is a conclusion, not a cleanup step: understanding first, always (SN-0608).",
+      "Provenance has exactly two honest shapes — a real pipeline run's real UUIDs, or an explicit provenance note documenting the exceptional path — and a manual registry edit must maintain every invariant the pipeline maintains, `sequence_policy.next_sequence` included; laundering is a named, forbidden act, not a gray area (SN-0466, SN-0494).",
+      "Bypassing the capture lifecycle or loosening the receiver to accommodate a capture are both defects; the capture conforms to the system, authenticated as a real user (SN-0491, SN-0496).",
+      "Findability is part of capture quality: the lesson text is the index, and retrieval ranking confers no authority (SN-0612, SN-0497)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-2"
+    ],
+    "covers": [
+      "SN-0466",
+      "SN-0491",
+      "SN-0494",
+      "SN-0496",
+      "SN-0497",
+      "SN-0608",
+      "SN-0612"
+    ]
+  },
+  "page_hash": "11a6543a9b741fc6ee9e030af95c1b1f0eca1c89868a19eaed742fe95540001a",
+  "content_hash": "8c0464e4341115c277e502b45746f51a2523e0f9d79295b1637ff934142b8a0e"
+}

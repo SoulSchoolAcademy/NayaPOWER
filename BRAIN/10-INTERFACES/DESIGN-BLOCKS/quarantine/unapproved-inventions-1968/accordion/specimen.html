@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>data/accordion — Smart Block Specimen</title>
+<link rel="stylesheet" href="accordion.css">
+<style>
+  body{ background:#050507; color:#F8F7FB; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    margin:0; padding:32px 20px; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:600px; margin:0 auto; }
+  h1{ font-size:24px; margin:0 0 6px; }
+  .sub{ font-size:14px; color:rgba(248,247,251,.55); margin:0 0 28px; }
+  .cap{ font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:.12em;
+    color:rgba(248,247,251,.55); margin:28px 0 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>data / accordion</h1>
+  <p class="sub">Tap a header. The first stack allows many open; the second is <code>data-single</code> (one open at a time).</p>
+
+  <div class="cap">Multi-open stack</div>
+  <div class="acc-stack" data-acc>
+    <div class="acc-item">
+      <button type="button" class="acc-head" aria-expanded="false">
+        <span class="acc-title">The Obsidian Material</span>
+        <span class="acc-chev">⌄</span>
+      </button>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p>Every card is machined from the same obsidian: a <strong>vertical gradient from graphite to near-black</strong>, hairline inner edges, and deep drop shadows. Nothing flat, ever — elevation is carried by light, not color.</p>
+        <p>Purple is the accent: <strong>glow and edge only</strong>, never solid fill. That restraint is the 95% / 5% rule — the fire appears only where the hand touches.</p>
+      </div></div>
+    </div>
+    <div class="acc-item">
+      <button type="button" class="acc-head" aria-expanded="false">
+        <span class="acc-title">The Spectrum Law</span>
+        <span class="acc-chev">⌄</span>
+      </button>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p>Identity colors live on the <strong>spectrum only</strong>: magenta, purple, blue, green, gold. Each hue names a thing — verified, claimed, demo — and never decorates. When everything glows, nothing does.</p>
+      </div></div>
+    </div>
+    <div class="acc-item acc-open">
+      <button type="button" class="acc-head" aria-expanded="true">
+        <span class="acc-title">Pre-opened Item</span>
+        <span class="acc-chev">⌄</span>
+      </button>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p>This item ships with <strong>acc-open</strong> — the purple 3px left edge, the rotated chevron, and the expanded body all render on load. Resize the window to 360px and the animated height re-seats itself.</p>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="cap">Single-open stack (data-single)</div>
+  <div class="acc-stack" data-acc data-single>
+    <div class="acc-item">
+      <button type="button" class="acc-head" aria-expanded="false">
+        <span class="acc-title">First Movement</span>
+        <span class="acc-chev">⌄</span>
+      </button>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p>Opening this closes the others. The single-open contract is declared with one attribute on the stack — <strong>data-single</strong> — no extra markup per item.</p>
+      </div></div>
+    </div>
+    <div class="acc-item">
+      <button type="button" class="acc-head" aria-expanded="false">
+        <span class="acc-title">Second Movement</span>
+        <span class="acc-chev">⌄</span>
+      </button>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p>Each body animates on <strong>max-height with the shared ease curve</strong>, sized from live scrollHeight so long content never clips. Reduced-motion users get an instant toggle.</p>
+      </div></div>
+    </div>
+    <div class="acc-item">
+      <button type="button" class="acc-head" aria-expanded="false">
+        <span class="acc-title">Third Movement</span>
+        <span class="acc-chev">⌄</span>
+      </button>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p>Headers are real <strong>&lt;button&gt;</strong> elements with aria-expanded — full keyboard access (Tab, Enter, Space) and screen-reader state come free.</p>
+      </div></div>
+    </div>
+  </div>
+</div>
+<script src="accordion.js"></script>
+</body>
+</html>

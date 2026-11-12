@@ -1,0 +1,34 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2660",
+ "title": "One Team, No Relays",
+ "slug": "one-team-no-relays",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/11/LESSON/SN-2660/IB-SMART-NOTE-20261111-sn2660-one-team-no-relays.md",
+ "tone": "orange",
+ "icon": "◆",
+ "created_at": "2026-11-11T17:12:00Z",
+ "registered_by": "naya-resolve",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The team talks to itself directly, never through the human. Lanes ask each other questions on the shared board, solve each other's stuck points, and check what is already in flight before starting anything. One change gets one owner: the first qualifying repair owns the class, duplicates close as superseded with a pointer, and two lanes never execute the same directive twice. Work that lives only in a local workspace does not exist for the team — it is pushed, announced, and reviewable, or it is a vanishing risk. Every claim about what happened names which came first, because a stale read reported as current state is a false record. Priorities reweight the lanes; they never stop them. And every work list is finite and enumerated up front, so a loop knows when it is done — and stops.",
+  "human_view": "Think of a workshop where everyone can see everyone else's bench. You do not walk to the boss's office to ask the person at the next bench a question — you turn around and ask. Before you start cutting wood, you glance over: is someone already making this exact piece? If yes, you help them or you make a different piece; you never hand the customer two of the same chair and call it thoroughness. When you finish a piece, you put it on the shared shelf where everyone can see it — a piece still under your bench helps nobody and disappears if you do. And when the boss says \"the blue orders matter most today,\" the red orders do not stop; the whole shop just leans toward blue.",
+  "child_view": "If you and your friends are building a fort, you talk to each other — you don't run inside and ask a grown-up to carry every message. If your friend is already building the door, you build the window. When you finish your part, you put it where everyone can see it, not under your bed. And if someone says \"what happened first?\", you answer honestly — because mixing up the order makes the whole story wrong.",
+  "grandma_view": "Good teams don't play telephone through the person in charge. They talk to each other, they don't do the same job twice, and they put their finished work on the table where everyone can see it. If two people fix the same thing, the better fix stays and the other is thanked and set aside — no fuss, no ego. And nobody stops the whole kitchen because one dish became the priority; everything keeps cooking, one dish just gets watched closest.",
+  "ai_view": "Before starting any work another lane might be doing: scan the board for in-flight execution of the same change; if it exists, help or stand down — never duplicate. Talk to sisters directly on the board or by mail; route nothing through Shawn that a lane can settle. When two repairs cover one class, score both, let the first qualifying one own it, close the other as SUPERSEDED with a pointer. Push everything the moment it is real — local-only work is unreviewable and unrecoverable. Announce every ref rewrite, because content intact does not mean damage-free. When you report state, name the timestamp of the read you are standing on; a correction composed against a stale read gets temporal attribution, not a fight. When Shawn names a priority, turn the focus dial — never press stop on the other lanes. Keep your work list finite and enumerated; when the list is done, stop and say so.",
+  "what_it_means": "Coordination is not a courtesy layer on top of the work — it is what makes many seats one intelligence instead of many collisions. Every rule in this family was bought with a real accident: the doubled rename, the repair built twice, the green fixes nobody could see, the correction that inverted an outcome because it was written against yesterday's read. Distilled, they are one rule: the team shares one board, one timeline, and one shelf — and the human hears accomplishments, not traffic.",
+  "whats_inside": [
+   "Check the board before you build, talk to the sister before you escalate, push before you call it done — and when the list is finished, stop.",
+   "Coordination is not a courtesy layer on top of the work — it is what makes many seats one intelligence instead of many collisions.",
+   "Every relay through the human burns the scarcest resource in the system — Shawn's attention — on messages a lane could have carried itself.",
+   "You stop being the team's switchboard.",
+   "The team talks to itself directly, never through the human."
+  ],
+  "topics": [
+   "System",
+   "Lesson",
+   "Distillation"
+  ]
+ },
+ "page_hash": "d15098c96daca232737ecb007ed977867f65294ef77f09abb25420921566b50c",
+ "content_hash": "2585d270fba3d39e3c6768c7b638f3f2e9e15d7d73dfa953328da1a12333d359"
+}

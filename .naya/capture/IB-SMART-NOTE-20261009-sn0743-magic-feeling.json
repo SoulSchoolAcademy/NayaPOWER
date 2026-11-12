@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-743",
+ "title": "IB-SMART-NOTE-20261009-sn0743-magic-feeling.md",
+ "slug": "magic-feeling",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/MAGIC-FEELING/SN-0743/IB-SMART-NOTE-20261009-sn0743-magic-feeling.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-10-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "\"They're not going to understand it, but it's going to feel like magic to them.\" People will never grasp the intelligence architecture — the scorecards, the token systems, the 100 Laws, the measurement loops. They don't need to. What they feel: visual bliss, push-button simple, everything alive, Naya just knowing. Magic = deep complexity hidden behind perfect simplicity. Understanding is not required for value. Rule: never expose the machinery. If the user has to understand how it works, we've failed the presentation layer.",
+  "human_view": "",
+  "child_view": "",
+  "grandma_view": "",
+  "ai_view": "",
+  "what_it_means": "",
+  "whats_inside": [],
+  "topics": [
+   "System-Intelligence"
+  ]
+ },
+ "page_hash": "0154f38644caefffd7dcbda9e6ada136d18e6735212a5f5ac1490ce310e903f7",
+ "content_hash": "207e25691400db6ccebb424a80815a765489ac44f1c131ed4097f9b9fb10cfc6",
+ "reconstructed_from_page": true
+}

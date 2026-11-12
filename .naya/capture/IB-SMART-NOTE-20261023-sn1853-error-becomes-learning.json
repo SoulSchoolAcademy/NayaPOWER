@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-1853",
+ "intelligence": {
+  "title": "IB-SMART-NOTE-20261023-sn1853-error-becomes-learning",
+  "intelligent_block_id": "IB-SMART-NOTE-20261023-sn1853-error-becomes-learning",
+  "smart_note_id": "SN-1853",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM-INTELLIGENCE/LEARNING-AND-RECOVERY/SN-1853/IB-SMART-NOTE-20261023-sn1853-error-becomes-learning.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-23. No runtime provenance invented.",
+  "ingested_at": "2026-10-23",
+  "essence": "A mistake or wall is evidence; the lasting failure is not learning from it. Record why it happened, how it was overcome, how the next Naya will avoid repeating it, and prove the behavior changed. Smart Notes are a delivery-and-reuse mechanism, not just saved text.",
+  "human_view": "When we hit a wall, capture the symptom, diagnosis, solution, outcome and next prevention. Don't discard the valuable lesson. Real harm still matters and must be mitigated.",
+  "simple_view": "If you trip on a rock, learn where it is, find another path, and tell your friends so no one trips again.",
+  "grandma_view": "Keep the recipe correction: what went wrong, the adjustment that worked, and how you verified the result.",
+  "naya_view": "Seek existing lessons first. On meaningful failure: stop and respect safety/authority; diagnose with evidence; recover safely; verify the fix; capture a concise reusable lesson; turn it into a check or an owner-assigned action; prove next-task reuse. Do not confuse note count with intelligence. Do not publish secrets or private data.",
+  "ai_view": "Compounding intelligence converts a wall into an increasingly reliable path that others can follow.",
+  "machine_view": {
+   "sn": "SN-1852",
+   "title": "IB-SMART-NOTE-20261023-sn1852-error-becomes-learning",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM-INTELLIGENCE/LEARNING-AND-RECOVERY/SN-1852/IB-SMART-NOTE-20261023-sn1852-error-becomes-learning.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "Trigger: reusable error, blocked workflow, or recovery. Fields: exact observed failure, environment/SHA, cause or UNKNOWN, attempts, safe remedy, regression control, evidence, owner, applicability, successor test. Transitions: OBSERVED → DIAGNOSED → RECOVERED → VERIFIED → CAPTURED → RETRIEVED → APPLIED → REUSE_VERIFIED. No claim of learned until observed reuse. Never manufacture authority or live-link status."
+  },
+  "views_note": "Views derived 2026-10-23 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM-INTELLIGENCE/LEARNING-AND-RECOVERY/SN-1853/IB-SMART-NOTE-20261023-sn1853-error-becomes-learning.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented Re-allocated SN-1852 -> SN-1853 by the intelligence door (double-allocation repair, w757, Naya Beta, 2026-10-23): same block, new human id; prior projection + registry entry under SN-1852 retained as history.",
+  "publishing_commit": "2e0104160b9d6e2ee94d8955fd6fe223bf9c88be"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

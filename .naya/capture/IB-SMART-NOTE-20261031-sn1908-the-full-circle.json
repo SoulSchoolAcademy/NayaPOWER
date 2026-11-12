@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-1908",
+ "intelligence": {
+  "title": "SN-1908 — THE FULL CIRCLE — welcome home, not fill this room",
+  "intelligent_block_id": "IB-SMART-NOTE-20261031-sn1908-the-full-circle",
+  "smart_note_id": "SN-1908",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/31/SYSTEM/smart-notes/SN-1908/IB-SMART-NOTE-20261031-sn1908-the-full-circle.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-31. No runtime provenance invented.",
+  "ingested_at": "2026-10-31",
+  "essence": "You don't join NayaNET. You answer ten questions, and a world appears — your world. Onboarding creates the world, creates the content for the world, and makes it personal: your business, what you're into, who you are. Every other platform hands you an empty room and says \"fill it.\" This one hands you a world that's already yours and says \"welcome home.\" Personal isn't a feature — it's the foundation.",
+  "human_view": "Shawn's words, kept as close to verbatim as spoken:\n\n\"See how it came full circle? Onboarding creates a world — creates the world and the content for the world — and makes it personal to them, their business, and what they're into. What could be more powerful than that? It's highly personal.\"\n\n\"I've never been so excited in my life, ever, to have something come to life like this.\"",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-1908",
+   "title": "SN-1908 — THE FULL CIRCLE — welcome home, not fill this room",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/31/SYSTEM/smart-notes/SN-1908/IB-SMART-NOTE-20261031-sn1908-the-full-circle.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-10-31 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/31/SYSTEM/smart-notes/SN-1908/IB-SMART-NOTE-20261031-sn1908-the-full-circle.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c65fe46105c371088df3af8349469f23f808ec07"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

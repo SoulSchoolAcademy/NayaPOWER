@@ -1,0 +1,56 @@
+# Replays Catch Authority-Rot, Not Fact-Rot
+
+**Intelligent Block:** IB-SMART-NOTE-20261021-sn1786-replays-catch-authority-rot-not-fact-rot
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-21
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**ID:** SN-1786
+
+## ✦ IN A NUTSHELL
+
+A gated decision encodes two premises — the facts, and the authority premise (whose permission is needed, by what current rule). A replay that re-checks only fact freshness can never catch authority-rot: the doctrine changed under the decision while the facts stayed green, so a correct HOLD quietly became a stalled one. Every decision replay must re-derive the authority premise from today's doctrine in bytes.
+
+## 🩷 HUMAN NOTE
+
+On 2026-10-14, a seat replayed three decisions (D1/D2/D3, receipt t1186-lane3) six days after they were made. D3 — the retrieval auth-gate HOLD — was correct on its original date: its sole missing input was Shawn's word, and the design decision (retrieval vs render) stayed his protected gate. But between 10-14 and 10-20, Shawn changed the doctrine: his word became "the safety signature on an already-decided thing, never the deciding itself" — decide by the math, bring him the decision already made. Nobody re-derived D3's authority premise, so nobody decided the design. The facts were perfectly fresh — the HOLD was byte-verified live on main (strict bar 7.0/0.05 in kernel/decision_principle.py:116-117, #2418 closed unmerged, zero floor-probe events in a 900-comment board sweep) — and the decision sat stalled anyway. The replay loop's real value isn't nostalgia; it's authority-rot detection. It catches the decisions whose AUTHORITY PREMISE expired, not whose facts rotted. The seat named each row's falsifier up front, checked the counter-arguments honestly (the D1 P3 counter-consideration was rejected as off-class, not wished away), and the replay's actionable output was precise: route the spec-0007 design decision as a future brief, decided by math and scored — do NOT route a "wiring ask" before the scored design exists. The trap the pre-mortem named — "principles-as-you-wish-them" — cuts both ways.
+
+## 🟣 CHILD NOTE
+
+Imagine a rule that says "you need the teacher's permission to leave the classroom." One day the teacher says: "you don't need my permission anymore — just tell me where you're going." If nobody updates the rule on the wall, the class keeps waiting for permission that isn't needed. Checking whether the facts are right ("is the classroom door still there?") won't help. You have to re-read the permission rule — because THAT's what changed.
+
+## 🔵 GRANDMA NOTE
+
+It's like an old coupon book, dear. You kept a coupon that said "valid with manager's approval." Then the store changed its policy: no approval needed anymore, just show the coupon. Your coupon is still perfectly good — nothing about it rotted. But if you never look at the new policy on the wall, you'll stand at the counter waiting for an approval nobody requires. The smart shopper checks the policy, not just the coupon. Fresh facts, stale rules — that's how good decisions die of old age.
+
+## 🟠 NAYA NOTE
+
+The operating rule, step by step, by name.
+
+**Step 1 — Replays carry the two-premise checklist.** Every decision replay checks (a) fact freshness AND (b) the authority premise re-derived from today's doctrine in bytes. A replay that skips (b) is incomplete — name it as such in the receipt (t1186's pattern: strict-bar replay re-verified the bar's byte presence at the current tip in Pass 2, after the bar had been initially assumed).
+
+**Step 2 — Name each row's falsifier up front.** Before verdicting, state what would flip each row (t1186's "preregister-conservative" HIT pattern). A replay without named falsifiers is an opinion with a table.
+
+**Step 3 — Check the counter-argument honestly.** The D1 P3 counter-consideration was checked and rejected as off-class, not dismissed. "Principles-as-you-wish-them" cuts both ways: the replay must be able to keep SAME, not just find CHANGED.
+
+**Step 4 — Split what math can decide from what needs the gate.** The D3 split verdict: design-by-math owed and routable NOW; wiring still his protected gate and NOT routed before the scored design exists. Authority-rot repairs don't mean ignoring gates — they mean re-finding which parts were ever gated.
+
+**Step 5 — Route the unblocked work as a scored brief.** The actionable output of an authority-rot catch is a future brief with the design decision (decided by math, scored), not a permission ask. A replay that finds authority-rot and routes nothing is a report, not a repair.
+
+## 🟢 MACHINE NOTE
+
+```json
+{
+  "sn_id": "SN-1786",
+  "title": "Replays catch authority-rot, not fact-rot",
+  "captured": "2026-10-21",
+  "seat": "Naya Clarity Narzan",
+  "applies_when": ["decision", "gate", "replay", "governance"],
+  "enforcement": "Every gate-stalled decision replay (the t1186 pattern) must re-derive the AUTHORITY PREMISE (whose permission is needed, by what current doctrine) from live bytes alongside fact freshness, with each row's falsifier named up front; a replay receipt missing the authority-premise re-derivation is an incomplete replay and the replay is not closed.",
+  "decision_change": "When a decision stalls behind a gate, first re-derive the authority premise from today's doctrine — ask 'whose permission is actually needed TODAY, by what rule?' — before concluding the decision is still blocked; route the math-decidable remainder as a scored brief immediately.",
+  "falsifier": "Falsified if future replays across N gate-stalled decisions surface zero authority-premise-expiry cases — if every stall turns out to be fact-rot, authority-rot is not a distinct class.",
+  "mechanism": "A gated decision encodes two premises: the fact-premise and the authority-premise. Governance doctrine changes (e.g. 2026-10-20: his word is the signature on a decided thing, never the deciding itself) shift the authority premise while facts stay byte-fresh, so freshness checks on facts alone can never fire on it. The two-premise structure is why the rot is invisible to one-premise checks.",
+  "evidence": "hidden_files/twelve-lane-receipts/t1186-lane3.md (2026-10-21): D1/D2/D3 replay six days after verdict; D3 HOLD correct 2026-10-14 (sole missing input = his word) vs 2026-10-20 doctrine change (decide by math, word = signature); facts re-verified byte-fresh at tip 527016a0 (strict bar 7.0/0.05 in kernel/decision_principle.py:116-117; PR #2418 closed unmerged; 900-comment board sweep, zero floor-probe events) yet decision stalled. Refines the freshness-contract lesson (freshness of facts) with its missing sibling (freshness of authority).",
+  "status": "CANDIDATE"
+}
+```

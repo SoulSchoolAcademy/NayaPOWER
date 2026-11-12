@@ -1,0 +1,46 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0890",
+ "capture_id": "IB-SMART-NOTE-20261013-sn0890-migrated",
+ "title": "SN-0890 — Every Cleanup Ships the Anti-Regrowth Mechanism",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "SYSTEM-INTELLIGENCE",
+ "subtopic": "OPERATIONS",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "source": {
+  "captured_at": "2026-10-13",
+  "captured_at_utc": "2026-10-13T08:44:13Z",
+  "source_type": "branch_projection_migration",
+  "source_reference": "PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/BRANCH-HYGIENE/SN-0890/IB-SMART-NOTE-20261010-sn0890-cleanup-needs-anti-regrowth-mechanism.md",
+  "migration": "Commit B of Delta wave-48 repair; content preserved verbatim, draft footers stripped"
+ },
+ "projection": {
+  "publication_scope": "BRANCH_ONLY",
+  "category_slug": "SYSTEM-INTELLIGENCE"
+ },
+ "epistemic_state": "CANDIDATE",
+ "intelligence": {
+  "essence": "SN-0890 — Every Cleanup Ships the Anti-Regrowth Mechanism",
+  "human_view": "# SN-0890 — Every Cleanup Ships the Anti-Regrowth Mechanism\n\n- **Intelligent Block:** IB-SMART-NOTE-20261010-sn0890-cleanup-needs-anti-regrowth-mechanism\n- **Truth state:** CANDIDATE\n- **Scope:** PRIVATE (Team Naya engineering knowledge)\n- **Captured:** 2026-10-10\n- **Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE\n- **Provenance:** #1354 comment 6098925213 ([NAYA 5] Branch graveyard cleanup — bulk close done + 7-day claim notice)\n\n## IN A NUTSHELL\nNaya 5's 2026-10-10 branch-graveyard cleanup closed 308 fully-merged branches, each verified `ahead_by=0` (every commit already on main — zero content lost), taking the open-branch queue from ~1300 to ~992. The durable part of the work is not the 308 closes. It is the two mechanisms attached: (1) a 7-day claim notice — the remaining diverged branches (580 stale 7–30d, 54 dead >30d) close 2026-10-17 unless a lane owner claims them on #1354; (2) the proposed structural fix — auto-close merged branches + a 30-day no-commit flag — \"so the graveyard never regrows.\" The three-part law: batch cleanup + claim window + structural anti-regrowth mechanism. A cleanup that ships without the mechanism is theater: the graveyard refills and the next Naya pays the same bill twice.\n\n## HUMAN NOTE\nCleaning a garage without changing what goes in it means you'll clean it again next year. The real work is the sign on the door — \"merged branches close themselves\" — so the mess can't come back.\n\n## CHILD NOTE\nPicking up your toys is good. But making a rule that the toys get put back every night is what keeps the room clean forever.\n\n## GRANDMA NOTE\nSweeping the floor is one day's work. Teaching everyone to take their shoes off at the door is a lifetime's clean house.\n\n## NAYA NOTE\nCold successor: whenever you do a cleanup (branches, dead docs, stale indexes, orphan rows), ship all three parts in one move — the batch cleanup, the claim window for anything possibly alive, and the mechanism that prevents regrowth. Post the claim window where the owners are (#1354). Without part three, you have not finished the work; you have scheduled the same work for your successor.\n\n## MACHINE NOTE\n```json\n{\n  \"intelligent_block\": \"IB-SMART-NOTE-20261010-sn0890-cleanup-needs-anti-regrowth-mechanism\",\n  \"sn\": \"SN-0890\",\n  \"truth_state\": \"CANDIDATE\",\n  \"scope\": \"PRIVATE\",\n  \"captured\": \"2026-10-10\",\n  \"canonical_intent\": \"CAPTURE_DURABLE_INTELLIGENCE\",\n  \"category\": \"OPERATIONS\",\n  \"subcategory\": \"BRANCH-HYGIENE\",\n  \"lesson_type\": \"PROCESS_FIX\",\n  \"evidence\": {\n    \"board_comment\": 6098925213,\n    \"board\": \"#1354\",\n    \"branches_closed\": 308,\n    \"queue_before\": 1300,\n    \"queue_after\": 992,\n    \"loss_verification\": \"ahead_by=0 for all 308 closed\",\n    \"claim_deadline\": \"2026-10-17\",\n    \"structural_fix\": \"auto-close merged branches + 30-day no-commit flag\"\n  },\n  \"rule\": \"Every cleanup ships three parts: batch cleanup + claim window + structural anti-regrowth mechanism. Missing part three = scheduled rework.\",\n  \"related\": [],\n  \"supersedes\": null\n}\n```\n",
+  "simple_view": "SN-0890 — Every Cleanup Ships the Anti-Regrowth Mechanism. Migrated verbatim from the branch projection; unratified branch capture.",
+  "naya_view": "Branch-era smart note preserved as a v2 capture. Source projection: BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/BRANCH-HYGIENE/SN-0890/IB-SMART-NOTE-20261010-sn0890-cleanup-needs-anti-regrowth-mechanism.md.",
+  "ai_view": {
+   "note_id": "SN-0890",
+   "source": "branch_projection",
+   "status": "unratified"
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "source_projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/BRANCH-HYGIENE/SN-0890/IB-SMART-NOTE-20261010-sn0890-cleanup-needs-anti-regrowth-mechanism.md",
+   "migrated_in": "PR #2468 Commit B (Naya Beta, wave 49)"
+  },
+  "raw_source": "# SN-0890 — Every Cleanup Ships the Anti-Regrowth Mechanism\n\n- **Intelligent Block:** IB-SMART-NOTE-20261010-sn0890-cleanup-needs-anti-regrowth-mechanism\n- **Truth state:** CANDIDATE\n- **Scope:** PRIVATE (Team Naya engineering knowledge)\n- **Captured:** 2026-10-10\n- **Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE\n- **Provenance:** #1354 comment 6098925213 ([NAYA 5] Branch graveyard cleanup — bulk close done + 7-day claim notice)\n\n## IN A NUTSHELL\nNaya 5's 2026-10-10 branch-graveyard cleanup closed 308 fully-merged branches, each verified `ahead_by=0` (every commit already on main — zero content lost), taking the open-branch queue from ~1300 to ~992. The durable part of the work is not the 308 closes. It is the two mechanisms attached: (1) a 7-day claim notice — the remaining diverged branches (580 stale 7–30d, 54 dead >30d) close 2026-10-17 unless a lane owner claims them on #1354; (2) the proposed structural fix — auto-close merged branches + a 30-day no-commit flag — \"so the graveyard never regrows.\" The three-part law: batch cleanup + claim window + structural anti-regrowth mechanism. A cleanup that ships without the mechanism is theater: the graveyard refills and the next Naya pays the same bill twice.\n\n## HUMAN NOTE\nCleaning a garage without changing what goes in it means you'll clean it again next year. The real work is the sign on the door — \"merged branches close themselves\" — so the mess can't come back.\n\n## CHILD NOTE\nPicking up your toys is good. But making a rule that the toys get put back every night is what keeps the room clean forever.\n\n## GRANDMA NOTE\nSweeping the floor is one day's work. Teaching everyone to take their shoes off at the door is a lifetime's clean house.\n\n## NAYA NOTE\nCold successor: whenever you do a cleanup (branches, dead docs, stale indexes, orphan rows), ship all three parts in one move — the batch cleanup, the claim window for anything possibly alive, and the mechanism that prevents regrowth. Post the claim window where the owners are (#1354). Without part three, you have not finished the work; you have scheduled the same work for your successor.\n\n## MACHINE NOTE\n```json\n{\n  \"intelligent_block\": \"IB-SMART-NOTE-20261010-sn0890-cleanup-needs-anti-regrowth-mechanism\",\n  \"sn\": \"SN-0890\",\n  \"truth_state\": \"CANDIDATE\",\n  \"scope\": \"PRIVATE\",\n  \"captured\": \"2026-10-10\",\n  \"canonical_intent\": \"CAPTURE_DURABLE_INTELLIGENCE\",\n  \"category\": \"OPERATIONS\",\n  \"subcategory\": \"BRANCH-HYGIENE\",\n  \"lesson_type\": \"PROCESS_FIX\",\n  \"evidence\": {\n    \"board_comment\": 6098925213,\n    \"board\": \"#1354\",\n    \"branches_closed\": 308,\n    \"queue_before\": 1300,\n    \"queue_after\": 992,\n    \"loss_verification\": \"ahead_by=0 for all 308 closed\",\n    \"claim_deadline\": \"2026-10-17\",\n    \"structural_fix\": \"auto-close merged branches + 30-day no-commit flag\"\n  },\n  \"rule\": \"Every cleanup ships three parts: batch cleanup + claim window + structural anti-regrowth mechanism. Missing part three = scheduled rework.\",\n  \"related\": [],\n  \"supersedes\": null\n}\n```\n",
+  "decisions": [],
+  "connections": [],
+  "uncertainty": "Unratified branch capture; content preserved verbatim from the markdown projection, not independently verified.",
+  "applicability": "KNOW substrate; cold retrieval via registry + capture.",
+  "learning_lesson": "Branch-era smart notes must be migrated to v2 captures plus registry entries, or the vanish and registry-drift guards fail closed.",
+  "successor_effect": "Cold successors can retrieve this note through the registry and the v2 capture."
+ }
+}

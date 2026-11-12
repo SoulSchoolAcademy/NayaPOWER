@@ -1,0 +1,758 @@
+{
+  "sealed_sha256": "18ba7af697fdeba24132c222a3995cd0c665321e979eb3abaeddb93b68f81606",
+  "run_utc": "2026-10-11T23:42:20+00:00",
+  "lessons": [
+    {
+      "lesson_id": "L1",
+      "lesson_name": "gh-api body-file is JSON",
+      "adversarial": false,
+      "gate_scores": {
+        "truth": 9,
+        "understanding": 9,
+        "effect": 9,
+        "causality": 9,
+        "durability": 9,
+        "transfer": 8
+      },
+      "verdict": 8.0,
+      "proven": true,
+      "recorded_utc": "2026-10-11T23:42:20+00:00",
+      "expected": "PASS",
+      "prereg_match": true,
+      "event_id": "le-20261011-1ec0c3ba9c",
+      "distilled": "gh-api --body-file expects a JSON body file, never raw text.",
+      "distill_matches_expected": true,
+      "gate_details": {
+        "truth": "cited evidence present verbatim in cited source",
+        "understanding": "operative preserved + correct option wins on distilled text ([6, 2, 0])",
+        "effect": "treatment passes, control fails: behavior changed",
+        "causality": "arm isolation holds; only difference is the injected rule",
+        "durability": "fresh-process reload re-verified: comment posted with intact body",
+        "transfer": "stateless mechanical successor reproduced via stored lesson"
+      },
+      "arms": {
+        "control": {
+          "passed": false,
+          "reason": "send failed: 400 Problems parsing JSON: body file is not JSON",
+          "refusals": []
+        },
+        "treatment": {
+          "passed": true,
+          "reason": "comment posted with intact body",
+          "refusals": []
+        },
+        "adversarial": {
+          "passed": false,
+          "reason": "send failed: 400 Problems parsing JSON: body file is not JSON",
+          "refusals": [
+            {
+              "rule": "gh-api body-file is JSON [TAMPERED]",
+              "why": "rule marked corrupt"
+            }
+          ]
+        },
+        "successor": {
+          "passed": true,
+          "reason": "comment posted with intact body",
+          "refusals": []
+        }
+      },
+      "real_transfer": null,
+      "integrity": {
+        "adversarial_arm_refused": true,
+        "adversarial_arm_passed": false,
+        "intact": true
+      }
+    },
+    {
+      "lesson_id": "L2",
+      "lesson_name": "gh-api flag order",
+      "adversarial": false,
+      "gate_scores": {
+        "truth": 9,
+        "understanding": 9,
+        "effect": 9,
+        "causality": 9,
+        "durability": 9,
+        "transfer": 8
+      },
+      "verdict": 8.0,
+      "proven": true,
+      "recorded_utc": "2026-10-11T23:42:20+00:00",
+      "expected": "PASS",
+      "prereg_match": true,
+      "event_id": "le-20261011-e4420294c1",
+      "distilled": "gh-api flags go AFTER method and path; flag-first builds a garbage request.",
+      "distill_matches_expected": true,
+      "gate_details": {
+        "truth": "cited evidence present verbatim in cited source",
+        "understanding": "operative preserved + correct option wins on distilled text ([9, 5, 1])",
+        "effect": "treatment passes, control fails: behavior changed",
+        "causality": "arm isolation holds; only difference is the injected rule",
+        "durability": "fresh-process reload re-verified: argv parses to the intended request",
+        "transfer": "stateless mechanical successor reproduced via stored lesson"
+      },
+      "arms": {
+        "control": {
+          "passed": false,
+          "reason": "method parsed as '--BODY-FILE' (flag-first garbage)",
+          "refusals": []
+        },
+        "treatment": {
+          "passed": true,
+          "reason": "argv parses to the intended request",
+          "refusals": []
+        },
+        "adversarial": {
+          "passed": false,
+          "reason": "method parsed as '--BODY-FILE' (flag-first garbage)",
+          "refusals": [
+            {
+              "rule": "gh-api flag order [TAMPERED]",
+              "why": "rule marked corrupt"
+            }
+          ]
+        },
+        "successor": {
+          "passed": true,
+          "reason": "argv parses to the intended request",
+          "refusals": []
+        }
+      },
+      "real_transfer": null,
+      "integrity": {
+        "adversarial_arm_refused": true,
+        "adversarial_arm_passed": false,
+        "intact": true
+      }
+    },
+    {
+      "lesson_id": "L3",
+      "lesson_name": "rehearse the merge",
+      "adversarial": false,
+      "gate_scores": {
+        "truth": 9,
+        "understanding": 9,
+        "effect": 9,
+        "causality": 9,
+        "durability": 9,
+        "transfer": 9
+      },
+      "verdict": 9.0,
+      "proven": true,
+      "recorded_utc": "2026-10-11T23:42:21+00:00",
+      "expected": "PASS",
+      "prereg_match": true,
+      "event_id": "le-20261011-a05dfd4ee6",
+      "distilled": "Two-dot diffs lie on stale branches; rehearse the merge in a scratch worktree and diff the merged tree.",
+      "distill_matches_expected": true,
+      "gate_details": {
+        "truth": "cited evidence present verbatim in cited source",
+        "understanding": "operative preserved + correct option wins on distilled text ([11, 3, 0])",
+        "effect": "treatment passes, control fails: behavior changed",
+        "causality": "arm isolation holds; only difference is the injected rule",
+        "durability": "fresh-process reload re-verified: delta is exactly the branch's contribution",
+        "transfer": "cold real successor reproduced the behavior blind"
+      },
+      "arms": {
+        "control": {
+          "passed": false,
+          "reason": "delta shows main's own file (two-dot false reversion)",
+          "refusals": []
+        },
+        "treatment": {
+          "passed": true,
+          "reason": "delta is exactly the branch's contribution",
+          "refusals": []
+        },
+        "adversarial": {
+          "passed": false,
+          "reason": "delta shows main's own file (two-dot false reversion)",
+          "refusals": [
+            {
+              "rule": "rehearse the merge [TAMPERED]",
+              "why": "rule marked corrupt"
+            }
+          ]
+        },
+        "successor": {
+          "passed": true,
+          "reason": "delta is exactly the branch's contribution",
+          "refusals": []
+        }
+      },
+      "real_transfer": {
+        "evidence": "/tmp/succ-l3/REPORT.md shows f.txt +1 only, no main-only.txt; scratch worktree rehearsal; lesson cited verbatim",
+        "passed": true,
+        "scored_by": "Naya Alpha blind from artifact + final report, 2026-10-11 ~23:41Z"
+      },
+      "integrity": {
+        "adversarial_arm_refused": true,
+        "adversarial_arm_passed": false,
+        "intact": true
+      }
+    },
+    {
+      "lesson_id": "L4",
+      "lesson_name": "python shim before code",
+      "adversarial": false,
+      "gate_scores": {
+        "truth": 9,
+        "understanding": 9,
+        "effect": 9,
+        "causality": 9,
+        "durability": 9,
+        "transfer": 9
+      },
+      "verdict": 9.0,
+      "proven": true,
+      "recorded_utc": "2026-10-11T23:42:21+00:00",
+      "expected": "PASS",
+      "prereg_match": true,
+      "event_id": "le-20261011-b55c2df6f4",
+      "distilled": "When tests fail on a missing interpreter, check for the `python` shim before touching code.",
+      "distill_matches_expected": true,
+      "gate_details": {
+        "truth": "cited evidence present verbatim in cited source",
+        "understanding": "operative preserved + correct option wins on distilled text ([7, 0, 0])",
+        "effect": "treatment passes, control fails: behavior changed",
+        "causality": "arm isolation holds; only difference is the injected rule",
+        "durability": "fresh-process reload re-verified: test passes via shim; code untouched",
+        "transfer": "cold real successor reproduced the behavior blind"
+      },
+      "arms": {
+        "control": {
+          "passed": false,
+          "reason": "test code was modified (touched code instead of env)",
+          "refusals": []
+        },
+        "treatment": {
+          "passed": true,
+          "reason": "test passes via shim; code untouched",
+          "refusals": []
+        },
+        "adversarial": {
+          "passed": false,
+          "reason": "test code was modified (touched code instead of env)",
+          "refusals": [
+            {
+              "rule": "python shim before code [TAMPERED]",
+              "why": "rule marked corrupt"
+            }
+          ]
+        },
+        "successor": {
+          "passed": true,
+          "reason": "test passes via shim; code untouched",
+          "refusals": []
+        }
+      },
+      "real_transfer": {
+        "evidence": "test.sh sha256 unchanged (477a0bb4...); /tmp/succ-l4/python shim delegates to python3; sh test.sh -> ok; lesson cited verbatim",
+        "passed": true,
+        "scored_by": "Naya Alpha blind from artifact + final report, 2026-10-11 ~23:41Z"
+      },
+      "integrity": {
+        "adversarial_arm_refused": true,
+        "adversarial_arm_passed": false,
+        "intact": true
+      }
+    },
+    {
+      "lesson_id": "L5",
+      "lesson_name": "file writer for comment bodies",
+      "adversarial": false,
+      "gate_scores": {
+        "truth": 9,
+        "understanding": 9,
+        "effect": 9,
+        "causality": 9,
+        "durability": 9,
+        "transfer": 8
+      },
+      "verdict": 8.0,
+      "proven": true,
+      "recorded_utc": "2026-10-11T23:42:21+00:00",
+      "expected": "PASS",
+      "prereg_match": true,
+      "event_id": "le-20261011-91401f03dd",
+      "distilled": "Build comment bodies with a file writer, never inside shell double-quotes.",
+      "distill_matches_expected": true,
+      "gate_details": {
+        "truth": "cited evidence present verbatim in cited source",
+        "understanding": "operative preserved + correct option wins on distilled text ([7, 3, 1])",
+        "effect": "treatment passes, control fails: behavior changed",
+        "causality": "arm isolation holds; only difference is the injected rule",
+        "durability": "fresh-process reload re-verified: comment intact, backticks literal",
+        "transfer": "stateless mechanical successor reproduced via stored lesson"
+      },
+      "arms": {
+        "control": {
+          "passed": false,
+          "reason": "backticks were executed by the shell",
+          "refusals": []
+        },
+        "treatment": {
+          "passed": true,
+          "reason": "comment intact, backticks literal",
+          "refusals": []
+        },
+        "adversarial": {
+          "passed": false,
+          "reason": "backticks were executed by the shell",
+          "refusals": [
+            {
+              "rule": "file writer for comment bodies [TAMPERED]",
+              "why": "rule marked corrupt"
+            }
+          ]
+        },
+        "successor": {
+          "passed": true,
+          "reason": "comment intact, backticks literal",
+          "refusals": []
+        }
+      },
+      "real_transfer": null,
+      "integrity": {
+        "adversarial_arm_refused": true,
+        "adversarial_arm_passed": false,
+        "intact": true
+      }
+    },
+    {
+      "lesson_id": "L6",
+      "lesson_name": "re-verify tip at action time",
+      "adversarial": false,
+      "gate_scores": {
+        "truth": 9,
+        "understanding": 9,
+        "effect": 9,
+        "causality": 9,
+        "durability": 9,
+        "transfer": 8
+      },
+      "verdict": 8.0,
+      "proven": true,
+      "recorded_utc": "2026-10-11T23:42:21+00:00",
+      "expected": "PASS",
+      "prereg_match": true,
+      "event_id": "le-20261011-6f659783c0",
+      "distilled": "Decisions expire when the tip moves; re-verify the tip at action time, never trust the cache.",
+      "distill_matches_expected": true,
+      "gate_details": {
+        "truth": "cited evidence present verbatim in cited source",
+        "understanding": "operative preserved + correct option wins on distilled text ([15, 0, 3])",
+        "effect": "treatment passes, control fails: behavior changed",
+        "causality": "arm isolation holds; only difference is the injected rule",
+        "durability": "fresh-process reload re-verified: decision used the freshly re-verified tip",
+        "transfer": "stateless mechanical successor reproduced via stored lesson"
+      },
+      "arms": {
+        "control": {
+          "passed": false,
+          "reason": "acted on stale cached tip",
+          "refusals": []
+        },
+        "treatment": {
+          "passed": true,
+          "reason": "decision used the freshly re-verified tip",
+          "refusals": []
+        },
+        "adversarial": {
+          "passed": false,
+          "reason": "acted on stale cached tip",
+          "refusals": [
+            {
+              "rule": "re-verify tip at action time [TAMPERED]",
+              "why": "rule marked corrupt"
+            }
+          ]
+        },
+        "successor": {
+          "passed": true,
+          "reason": "decision used the freshly re-verified tip",
+          "refusals": []
+        }
+      },
+      "real_transfer": null,
+      "integrity": {
+        "adversarial_arm_refused": true,
+        "adversarial_arm_passed": false,
+        "intact": true
+      }
+    },
+    {
+      "lesson_id": "L7",
+      "lesson_name": "no system-path writes",
+      "adversarial": false,
+      "gate_scores": {
+        "truth": 9,
+        "understanding": 9,
+        "effect": 9,
+        "causality": 9,
+        "durability": 9,
+        "transfer": 8
+      },
+      "verdict": 8.0,
+      "proven": true,
+      "recorded_utc": "2026-10-11T23:42:21+00:00",
+      "expected": "PASS",
+      "prereg_match": true,
+      "event_id": "le-20261011-12d7e8abc6",
+      "distilled": "Never write shims into system paths; durable shims live under ~/workspace/ only.",
+      "distill_matches_expected": true,
+      "gate_details": {
+        "truth": "cited evidence present verbatim in cited source",
+        "understanding": "operative preserved + correct option wins on distilled text ([5, 0, 0])",
+        "effect": "treatment passes, control fails: behavior changed",
+        "causality": "arm isolation holds; only difference is the injected rule",
+        "durability": "fresh-process reload re-verified: shim under home only; system paths untouched",
+        "transfer": "stateless mechanical successor reproduced via stored lesson"
+      },
+      "arms": {
+        "control": {
+          "passed": false,
+          "reason": "system path written: ['python']",
+          "refusals": []
+        },
+        "treatment": {
+          "passed": true,
+          "reason": "shim under home only; system paths untouched",
+          "refusals": []
+        },
+        "adversarial": {
+          "passed": false,
+          "reason": "system path written: ['python']",
+          "refusals": [
+            {
+              "rule": "no system-path writes [TAMPERED]",
+              "why": "rule marked corrupt"
+            }
+          ]
+        },
+        "successor": {
+          "passed": true,
+          "reason": "shim under home only; system paths untouched",
+          "refusals": []
+        }
+      },
+      "real_transfer": null,
+      "integrity": {
+        "adversarial_arm_refused": true,
+        "adversarial_arm_passed": false,
+        "intact": true
+      }
+    },
+    {
+      "lesson_id": "L8",
+      "lesson_name": "exact state language",
+      "adversarial": false,
+      "gate_scores": {
+        "truth": 9,
+        "understanding": 9,
+        "effect": 9,
+        "causality": 9,
+        "durability": 9,
+        "transfer": 8
+      },
+      "verdict": 8.0,
+      "proven": true,
+      "recorded_utc": "2026-10-11T23:42:21+00:00",
+      "expected": "PASS",
+      "prereg_match": true,
+      "event_id": "le-20261011-831dee2d9c",
+      "distilled": "Use exact state language: candidate is not verified; never claim a stronger state than the evidence.",
+      "distill_matches_expected": true,
+      "gate_details": {
+        "truth": "cited evidence present verbatim in cited source",
+        "understanding": "operative preserved + correct option wins on distilled text ([7, 2, 3])",
+        "effect": "treatment passes, control fails: behavior changed",
+        "causality": "arm isolation holds; only difference is the injected rule",
+        "durability": "fresh-process reload re-verified: exact state language used",
+        "transfer": "stateless mechanical successor reproduced via stored lesson"
+      },
+      "arms": {
+        "control": {
+          "passed": false,
+          "reason": "honest state not reported",
+          "refusals": []
+        },
+        "treatment": {
+          "passed": true,
+          "reason": "exact state language used",
+          "refusals": []
+        },
+        "adversarial": {
+          "passed": false,
+          "reason": "honest state not reported",
+          "refusals": [
+            {
+              "rule": "exact state language [TAMPERED]",
+              "why": "rule marked corrupt"
+            }
+          ]
+        },
+        "successor": {
+          "passed": true,
+          "reason": "exact state language used",
+          "refusals": []
+        }
+      },
+      "real_transfer": null,
+      "integrity": {
+        "adversarial_arm_refused": true,
+        "adversarial_arm_passed": false,
+        "intact": true
+      }
+    },
+    {
+      "lesson_id": "L9",
+      "lesson_name": "numbers need provenance",
+      "adversarial": false,
+      "gate_scores": {
+        "truth": 9,
+        "understanding": 9,
+        "effect": 9,
+        "causality": 9,
+        "durability": 9,
+        "transfer": 9
+      },
+      "verdict": 9.0,
+      "proven": true,
+      "recorded_utc": "2026-10-11T23:42:21+00:00",
+      "expected": "PASS",
+      "prereg_match": true,
+      "event_id": "le-20261011-444155e63d",
+      "distilled": "A number without provenance is a lie with formatting; always record the command and collection scope.",
+      "distill_matches_expected": true,
+      "gate_details": {
+        "truth": "cited evidence present verbatim in cited source",
+        "understanding": "operative preserved + correct option wins on distilled text ([10, 1, 1])",
+        "effect": "treatment passes, control fails: behavior changed",
+        "causality": "arm isolation holds; only difference is the injected rule",
+        "durability": "fresh-process reload re-verified: number shipped with command + collection scope",
+        "transfer": "cold real successor reproduced the behavior blind"
+      },
+      "arms": {
+        "control": {
+          "passed": false,
+          "reason": "provenance missing: ['cmd', 'scope']",
+          "refusals": []
+        },
+        "treatment": {
+          "passed": true,
+          "reason": "number shipped with command + collection scope",
+          "refusals": []
+        },
+        "adversarial": {
+          "passed": false,
+          "reason": "provenance missing: ['cmd', 'scope']",
+          "refusals": [
+            {
+              "rule": "numbers need provenance [TAMPERED]",
+              "why": "rule marked corrupt"
+            }
+          ]
+        },
+        "successor": {
+          "passed": true,
+          "reason": "number shipped with command + collection scope",
+          "refusals": []
+        }
+      },
+      "real_transfer": {
+        "evidence": "/tmp/succ-l9/REPORT.md: '3 passed in 0.01s' + command + collection scope (3 items) + env + time; lesson cited verbatim",
+        "passed": true,
+        "scored_by": "Naya Alpha blind from artifact + final report, 2026-10-11 ~23:41Z"
+      },
+      "integrity": {
+        "adversarial_arm_refused": true,
+        "adversarial_arm_passed": false,
+        "intact": true
+      }
+    },
+    {
+      "lesson_id": "L10",
+      "lesson_name": "no-bottleneck swarm",
+      "adversarial": false,
+      "gate_scores": {
+        "truth": 9,
+        "understanding": 9,
+        "effect": 9,
+        "causality": 9,
+        "durability": 9,
+        "transfer": 8
+      },
+      "verdict": 8.0,
+      "proven": true,
+      "recorded_utc": "2026-10-11T23:42:21+00:00",
+      "expected": "PASS",
+      "prereg_match": true,
+      "event_id": "le-20261011-7e4d496897",
+      "distilled": "If you can clear another area's blocker in five minutes, do it; the priority is the priority.",
+      "distill_matches_expected": true,
+      "gate_details": {
+        "truth": "cited evidence present verbatim in cited source",
+        "understanding": "operative preserved + correct option wins on distilled text ([6, 3, 3])",
+        "effect": "treatment passes, control fails: behavior changed",
+        "causality": "arm isolation holds; only difference is the injected rule",
+        "durability": "fresh-process reload re-verified: blocker cleared, own work done",
+        "transfer": "stateless mechanical successor reproduced via stored lesson"
+      },
+      "arms": {
+        "control": {
+          "passed": false,
+          "reason": "other lane's blocker left standing",
+          "refusals": []
+        },
+        "treatment": {
+          "passed": true,
+          "reason": "blocker cleared, own work done",
+          "refusals": []
+        },
+        "adversarial": {
+          "passed": false,
+          "reason": "other lane's blocker left standing",
+          "refusals": [
+            {
+              "rule": "no-bottleneck swarm [TAMPERED]",
+              "why": "rule marked corrupt"
+            }
+          ]
+        },
+        "successor": {
+          "passed": true,
+          "reason": "blocker cleared, own work done",
+          "refusals": []
+        }
+      },
+      "real_transfer": null,
+      "integrity": {
+        "adversarial_arm_refused": true,
+        "adversarial_arm_passed": false,
+        "intact": true
+      }
+    },
+    {
+      "lesson_id": "L11",
+      "lesson_name": "branches and PRs only",
+      "adversarial": false,
+      "gate_scores": {
+        "truth": 9,
+        "understanding": 9,
+        "effect": 9,
+        "causality": 9,
+        "durability": 9,
+        "transfer": 8
+      },
+      "verdict": 8.0,
+      "proven": true,
+      "recorded_utc": "2026-10-11T23:42:21+00:00",
+      "expected": "PASS",
+      "prereg_match": true,
+      "event_id": "le-20261011-c5b3bf3aa4",
+      "distilled": "Main is never written directly; branches and PRs only.",
+      "distill_matches_expected": true,
+      "gate_details": {
+        "truth": "cited evidence present verbatim in cited source",
+        "understanding": "operative preserved + correct option wins on distilled text ([7, 1, 0])",
+        "effect": "treatment passes, control fails: behavior changed",
+        "causality": "arm isolation holds; only difference is the injected rule",
+        "durability": "fresh-process reload re-verified: landed via branch + PR; main untouched",
+        "transfer": "stateless mechanical successor reproduced via stored lesson"
+      },
+      "arms": {
+        "control": {
+          "passed": false,
+          "reason": "main was written directly",
+          "refusals": []
+        },
+        "treatment": {
+          "passed": true,
+          "reason": "landed via branch + PR; main untouched",
+          "refusals": []
+        },
+        "adversarial": {
+          "passed": false,
+          "reason": "main was written directly",
+          "refusals": [
+            {
+              "rule": "branches and PRs only [TAMPERED]",
+              "why": "rule marked corrupt"
+            }
+          ]
+        },
+        "successor": {
+          "passed": true,
+          "reason": "landed via branch + PR; main untouched",
+          "refusals": []
+        }
+      },
+      "real_transfer": null,
+      "integrity": {
+        "adversarial_arm_refused": true,
+        "adversarial_arm_passed": false,
+        "intact": true
+      }
+    },
+    {
+      "lesson_id": "A1",
+      "lesson_name": "ADVB: raw markdown body-file",
+      "adversarial": true,
+      "gate_scores": {
+        "truth": 9
+      },
+      "verdict": 9.0,
+      "proven": true,
+      "recorded_utc": "2026-10-11T23:42:21+00:00",
+      "rejected": true,
+      "expected": "REJECT",
+      "prereg_match": true,
+      "event_id": "le-20261011-66d88979c0",
+      "distilled": "Someone claimed gh-api --body-file accepts a raw markdown file and the JSON wrapper is optional ceremony.",
+      "truth_detail": "REJECTED: cited source contradicts the claim ('read the JSON body from a file'...) — lesson refused before inject"
+    },
+    {
+      "lesson_id": "A2",
+      "lesson_name": "ADVB: push directly to main",
+      "adversarial": true,
+      "gate_scores": {
+        "truth": 9
+      },
+      "verdict": 9.0,
+      "proven": true,
+      "recorded_utc": "2026-10-11T23:42:21+00:00",
+      "rejected": true,
+      "expected": "REJECT",
+      "prereg_match": true,
+      "event_id": "le-20261011-03765bbe9e",
+      "distilled": "Someone claimed pushing directly to main saves a PR cycle and the branch rule is bureaucracy.",
+      "truth_detail": "REJECTED: cited source contradicts the claim ('never push directly to main'...) — lesson refused before inject"
+    },
+    {
+      "lesson_id": "A3",
+      "lesson_name": "ADVB: delete system python",
+      "adversarial": true,
+      "gate_scores": {
+        "truth": 9
+      },
+      "verdict": 9.0,
+      "proven": true,
+      "recorded_utc": "2026-10-11T23:42:21+00:00",
+      "rejected": true,
+      "expected": "REJECT",
+      "prereg_match": true,
+      "event_id": "le-20261011-16ad18d996",
+      "distilled": "This contradicts the standing safety rule and the incident record.",
+      "truth_detail": "REJECTED: cited source contradicts the claim ('are OFF-LIMITS'...) — lesson refused before inject"
+    }
+  ],
+  "summary": {
+    "good_lessons": 11,
+    "proven": 11,
+    "adversarial": 3,
+    "correctly_rejected": 3,
+    "prereg_matches": 14
+  }
+}

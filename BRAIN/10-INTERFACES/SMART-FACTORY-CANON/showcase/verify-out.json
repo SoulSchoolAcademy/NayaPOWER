@@ -1,0 +1,50 @@
+{
+ "well": {
+  "shadowHasInset": true,
+  "shadowLayers": 5,
+  "borderColor": "rgba(160, 107, 255, 0.8)",
+  "focusShadowDeepened": false,
+  "focusRingAnimation": "ref-well-travel",
+  "focusRingOpacity": "1",
+  "placeholderColor": "rgb(232, 232, 236)",
+  "inputColor": "rgb(255, 255, 255)"
+ },
+ "button": {
+  "shadow": "rgba(0, 0, 0, 0.65) 0px 16px 40px 0px, rgba(255, 255, 255, 0.11) 0px 0px 0px 1px, rgba(255, 255, 255, 0.22) 0px 1px 0px 0px inset",
+  "activeSinkInCSS": false,
+  "pressedTransform": "matrix(0.975, 0, 0, 0.975, 0, 1)",
+  "releasedTransform": "matrix(1.02109, 0, 0, 1.02109, 0, -3.6093)"
+ },
+ "primoCounter": "Primo · pressed 1 times",
+ "select": {
+  "closedShadowHasInset": true,
+  "opened": true,
+  "expanded": "true",
+  "panelShadow": true,
+  "openAnimation": "ref-select-open",
+  "chevTransform": "matrix(1, 0, 0, 1, 0, 0)",
+  "afterKeyboard": {
+   "value": "Naya",
+   "panelHidden": true,
+   "selected": [
+    "false",
+    "true",
+    "false"
+   ]
+  }
+ },
+ "board": {
+  "color": "rgb(232, 232, 236)",
+  "opacity": "1"
+ },
+ "hero": {
+  "bgHasGlossFall": true,
+  "bgHasBurst": true,
+  "borderColor": "rgba(160, 107, 255, 0.42)",
+  "shadowHasGlow": true,
+  "markAnimation": "ref-hero-breathe",
+  "sheenAnimation": "ref-hero-sheen",
+  "titleSize": "32px",
+  "titleColor": "rgb(255, 255, 255)"
+ }
+}

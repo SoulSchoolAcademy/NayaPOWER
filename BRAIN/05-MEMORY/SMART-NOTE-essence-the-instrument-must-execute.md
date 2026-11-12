@@ -1,0 +1,61 @@
+# SN-2157 — The Instrument Must Execute: A Green That Never Ran the Real Path Proves Nothing
+
+**Status: VERIFIED ESSENCE — VERIFIED (verifier-oct-2, block PASS).** Distilled from 16 raw notes by the oct-2 maker seat; independently verified by a different seat. Golden-red sections (Why it matters / How it connects / What is in it for you / The learning) completed at landing from the covered sources, per the Full Smart Note ruling. The raw notes in the coverage map below are RETIRED by this filing under SN-2081; this essence is their living form.
+
+## Essence
+
+Every measurement in NayaPOWER is guilty until its instrument is proven. The family rule in its sharpest form: a test that only asserts on source text is green by construction — tests must execute the seam they claim to cover (SN-0461). The same law governs regressions: a regression that only greps for the presence of a declaration proves the artifact is *there*, not that it *runs* — a protected repair shipped a runtime-fatal literal `\n` inside embedded Python in a workflow while CI stayed green, found only by exact-byte human review; for embedded artifacts (Python in YAML, JS in HTML, SQL in strings, shell in JSON) the guard must compile or execute the embedded artifact at its own layer, because the defect class lives below the grep layer (SN-0569). And a scorecard for a check-fixing PR that verifies inputs but never runs the gate it claims to fix is theater: the receipt must carry the check's name, its exit code on the exact head bytes, and the failure count before/after — no exit code, no merge (SN-0781).
+
+Instruments must resolve what they measure. An instrument that cannot resolve its top signal's identity is theater — if you cannot say exactly which object produced your strongest reading, the reading is not evidence (SN-0457). Count what the ledger counts: audit the instrument before believing its verdict, because an auditor counting a different set than the ledger produces confident, wrong numbers (SN-0469). Instrumentation itself must be captured at the level where work actually happens — the w3 instrumentation lesson: instrument the work, not the report about the work (SN-0482). Measurement tasks must discriminate: toy tasks do not discriminate, so lessons are measured at real difficulty, where a ceiling of perfect scores on both arms proves nothing about the lesson (SN-0495). The falsifier must fire: the canary protocol exists to prove the detection machinery actually triggers — a falsifier that has never been observed firing is an assumption, not a guard (SN-0603).
+
+Before any verifier is trusted, it is attacked. The TRUTH lane defeated a "fail-closed" trial-evidence verifier three ways — an in-repo symlink to /tmp, a `../../tmp` traversal, a symlink to /etc/hostname — all accepted as durable evidence; the hardened verifier resolves every path, enforces repo containment, fails closed when the repo root is ephemeral, and locks each defeated attack in as a permanent regression test (SN-0580). Gates get the same treatment: a gate that checks presence instead of meaning is decoration — sign-in fields accepted "asdf", a scorecard let an all-1s option beat an all-10s option, the protected-gates keyword mirror missed ~15 natural paraphrases, and when the canonical authority gate raised, the adapter silently fell through to the weaker mirror; every gate field must be bound to a verifiable reference, and a fallback must never silently degrade to the weakest check (SN-665). Measurement claims are extracted only from the layer they describe: aspirational goals are not current scores, file mtime is not a date, and a 10.0 is never heuristically extracted (SN-653); the extractor bakes the anti-corruption rules in — area and score share one sentence, multi-area sentences are skipped, movement beats prefix, authoritative status is never downgraded by a heuristic claim, and degraded sources render UNAVAILABLE rather than vanishing (SN-655). Use is not definition: an instrument must distinguish a file *using* the canonical engine from one *defining* a competing one, or it cries wolf on exactly the correct code — and when the instrument is wrong, the repair belongs to the instrument, never to the subject it flagged (SN-658).
+
+The boundary of every green must be stated with the green. A local verifier's 13/13 pass proves the local code behaves — it does not prove actual reading, comprehension, repository integration, or deployed enforcement, and citing it as live-system proof is a category error (SN-0637). Proof must flow through the real path: measure the organism, not the instrument — a closed-loop executor that unconditionally emitted VERIFIED, a rechecker that accepted forged receipts, a stubbed retrieval reported as a strong result, and a decision gate with zero live callers are all evidence about the simulator, and a self-certifying proof is worse than no proof because it consumes the trust real proof would have earned (SN-664). When a contract-expanding merge turns the suite RED, classify before touching either side: compare the harness's fabricated world to the shipped contract — a harness still fabricating the old four-child world against a five-child contract is a TEST DEFECT, the harness's fixtures are part of the merge's blast radius, and two seats classifying the same RED is convergence while two seats repairing it is a collision (SN-0570).
+
+## What this settles
+
+- Coverage is what executes: source-text assertions, presence greps, and scorecards without exit codes are theater in three costumes (SN-0461, SN-0569, SN-0781).
+- Every verifier, gate, and extractor ships with its adversarial evidence — attacks run, attacks encoded as regressions, anti-corruption rules baked in (SN-0580, SN-665, SN-655).
+- Every green carries its boundary in the same breath: local ≠ deployed, simulator ≠ organism, reference ≠ production path (SN-0637, SN-664).
+- A RED is classified (test defect vs product defect; instrument wrong vs subject wrong) before any repair begins (SN-0570, SN-658).
+
+## Intelligence views
+
+**Human:** Before anyone here believes a green light, they ask what it actually did. Did the test really run the thing, or just check the thing exists? Did the scorecard run the very check the fix was for? Has anyone tried to break the checker itself? If a measuring tool is wrong, they fix the tool — they never bend the correct thing to please a broken ruler.
+
+**Child:** Imagine a teacher who marks your homework by checking the pages are there but never reads your answers — you'd get full marks for nonsense! Here, the grown-ups make sure the checker really checks: they even try to trick it on purpose, and when the ruler itself is bent, they fix the ruler, not your homework.
+
+**Grandma:** It's the difference between a scale that's been tested with known weights and one that just looks official, dear. These folks test their scales, try to cheat them, and write down plainly what each scale can and cannot weigh. A green stamp means someone ran the real thing through the real path — and if the stamp itself is lying, the stamp gets repaired, never the honest work it stamped.
+
+**Naya (AI):** For every green you cite, answer in the receipt: what executed, on what bytes, through which real path, with what boundary (SN-0461, SN-0637, SN-664). For every PR that fixes check X, attach X's exit code on the exact head bytes or the scorecard does not close (SN-0781). Ship every verifier with its attack set as regressions (SN-0580) and every gate field bound to a verifiable reference (SN-665). Extract metrics only from their own layer with the five anti-corruption rules (SN-653, SN-655). Classify a RED against the shipped contract before repairing anything (SN-0570).
+
+**What it means:** Sixteen notes about tests, gates, extractors, verifiers, and canaries are one teaching: an instrument's output is evidence only to the extent the instrument was itself executed, attacked, and bounded. A cold reader holding only this essence can still interrogate any green in the system and find out whether it means anything.
+
+## Why it matters
+
+Every verdict the system trusts — scores, gates, migrations, promotions — is only as real as the instrument that produced it, and a self-certifying green is worse than no proof at all because it consumes the trust real proof would have earned (SN-664). The standing example is small and total: a protected repair shipped a runtime-fatal literal `\n` inside embedded Python while CI stayed green, because the guard grepped where the defect class lives below the grep layer (SN-0569). This essence matters because it is the discipline that keeps every other essence's evidence honest.
+
+## How it connects
+
+It is the measurement discipline behind the Learning Instrument — the trials in that essence are this law aimed at learning claims — and behind Live Bytes' proof levels, which are this essence's boundary rule stated per claim (SN-0555). Its attack-the-verifier protocol (SN-0580) is Fail Closed turned on the checkers themselves, and its extractor rules (SN-653, SN-655) guard the score surfaces the Self-Governing Machine steers by. Within the Seven Essences it is SN-2069 (E2, Proof Is Behavior, Not a Badge) as method.
+
+## What is in it for you
+
+An interrogation kit for any green. For every verdict you cite, answer in the receipt: what executed, on what bytes, through which real path, with what stated boundary (SN-0461, SN-0637, SN-664). Attach the check's name, its exit code on the exact head bytes, and before/after failure counts to every check-fixing scorecard — no exit code, no merge (SN-0781). Ship every verifier with its attack set encoded as permanent regressions (SN-0580), bind every gate field to a verifiable reference (SN-665), and classify a RED against the shipped contract before repairing anything (SN-0570).
+
+## The learning
+
+The durable lesson is that an instrument's output is evidence only to the extent the instrument was itself executed, attacked, and bounded (SN-0580, SN-655). The behavior that changes: toy tasks and ceiling-tied arms are refused as measurement (SN-0495); the falsifier must be observed firing before it is trusted as a guard (SN-0603); and when the instrument is wrong, the repair belongs to the instrument, never to the subject it flagged (SN-658). What would falsify this essence's teaching is a covered note that accepts a presence-grep, a source-text assertion, or a local pass as production proof — none does.
+
+## Coverage map — raw notes this essence covers (16)
+
+SN-0457 · SN-0461 · SN-0469 · SN-0482 · SN-0495 · SN-0569 · SN-0570 · SN-0580 · SN-0603 · SN-0637 · SN-653 · SN-655 · SN-658 · SN-664 · SN-665 · SN-0781
+
+## Verification contract (for the verifying seat — falsify these)
+
+1. **Coverage integrity:** the coverage map lists exactly 16 IDs; each exists in the block manifest exactly once (640-series IDs in manifest form: SN-653, SN-655, SN-658, SN-664, SN-665); no ID appears in any other oct-2 essence's coverage map or in the batch-1 covered list.
+2. **Embedded-artifact case:** SN-0569's defect is a literal `\n` in embedded Python inside `live-intelligence-commit-proof.yml`, PR #1667, with CI green — verify the essence's telling against the source, including the distinction it draws from SN-0567 (seam choice) — assertion strength is this note's subject.
+3. **Gate-execution rule:** SN-0781 requires check name + exit code on exact head bytes + before/after failure counts — all three must appear in the essence; the source case is PR #1982 trading 1 coverage failure for 7 envelope failures.
+4. **Attack set:** SN-0580's three defeats are symlink→/tmp, `../../tmp` traversal, symlink→/etc/hostname; the repair went 16/16 green under PR #1772 — verify against the source.
+5. **Anti-corruption rules:** SN-655 lists exactly five rules (shared sentence; skip multi-area; movement beats prefix; never downgrade authoritative status; degraded = UNAVAILABLE) — verify count and content.
+6. **No-orphan check:** pick any five sentences in the Essence section at random; each must cite at least one covered SN ID, and the cited page must contain the claim.

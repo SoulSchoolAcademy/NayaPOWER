@@ -1,0 +1,125 @@
+{
+  "packet_version": 1,
+  "change_id": "PR-2383",
+  "title": "P0-B ADVISE influence bridge (retrieved lessons change real ACTs)",
+  "merge_sha": "b5007fd8d21a550930761b74f31c6ce9026296b7",
+  "grader": "Naya Mu",
+  "graded_at_utc": "2026-10-12T04:36:05.413198+00:00",
+  "durable_check_due_utc": "2026-10-19T04:36:05.413222+00:00",
+  "disqualified": false,
+  "score": 8.2,
+  "verdict": "REAL VALUE",
+  "judgments": [
+    {
+      "dimension": "USE",
+      "claimed": 9.0,
+      "applied": 9.0,
+      "weight": 0.3,
+      "verified_evidence": 1,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "Closes Superbrain Report bottleneck #1: retrieved lessons now provably change authorized action plans before ACT executes. kernel_behavior_engine.py is the live engine \u2014 this runs in production behavior."
+    },
+    {
+      "dimension": "DELTA",
+      "claimed": 9.0,
+      "applied": 9.0,
+      "weight": 0.25,
+      "verified_evidence": 1,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "Bottleneck #1 closed: from 'retrieved learning does not reliably influence action' to proven influence. The biggest behavioral delta in tonight's sample."
+    },
+    {
+      "dimension": "PROOF",
+      "claimed": 8.0,
+      "applied": 8.0,
+      "weight": 0.2,
+      "verified_evidence": 1,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "318 lines of new tests prove the bridge; merged 21:17:33Z. The 'before' (bottleneck open) is attested via the Superbrain Report, not captured in-repo."
+    },
+    {
+      "dimension": "DURABLE",
+      "claimed": 7.0,
+      "applied": 7.0,
+      "weight": 0.15,
+      "verified_evidence": 1,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "Tests guard the bridge \u2014 but the change left test_measure_node_influence failing (invocation count 9->10), parked for a builder seat. A bridge with a known crack underneath."
+    },
+    {
+      "dimension": "CLEAN",
+      "claimed": 6.0,
+      "applied": 6.0,
+      "weight": 0.1,
+      "verified_evidence": 1,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "Honest knock: the influence bridge raised the kernel behavior-engine invocation count 9->10 and broke test_measure_node_influence (1 python test + 1 node load-bearing claim failing at tip). Parked, not fixed. Real value with real debt."
+    }
+  ],
+  "evidence_ledger": [
+    {
+      "dimension": "USE",
+      "index": 0,
+      "kind": "file",
+      "status": "VERIFIED",
+      "detail": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py:1-40 of 589 lines at b5007fd8d21a",
+      "citation": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py",
+      "lines": "1-40"
+    },
+    {
+      "dimension": "DELTA",
+      "index": 0,
+      "kind": "test",
+      "status": "VERIFIED",
+      "detail": "tests/test_advise_influence_bridge.py:1-40 of 318 lines at b5007fd8d21a",
+      "citation": "tests/test_advise_influence_bridge.py",
+      "lines": "1-40"
+    },
+    {
+      "dimension": "PROOF",
+      "index": 0,
+      "kind": "sha",
+      "status": "VERIFIED",
+      "detail": "object b5007fd8d21a550930761b74f31c6ce9026296b7 exists",
+      "citation": "b5007fd8d21a550930761b74f31c6ce9026296b7",
+      "lines": null
+    },
+    {
+      "dimension": "DURABLE",
+      "index": 0,
+      "kind": "file",
+      "status": "VERIFIED",
+      "detail": "tests/test_kernel_behavior_engine.py:1-30 of 115 lines at b5007fd8d21a",
+      "citation": "tests/test_kernel_behavior_engine.py",
+      "lines": "1-30"
+    },
+    {
+      "dimension": "CLEAN",
+      "index": 0,
+      "kind": "sha",
+      "status": "VERIFIED",
+      "detail": "object b5007fd8d21a550930761b74f31c6ce9026296b7 exists",
+      "citation": "b5007fd8d21a550930761b74f31c6ce9026296b7",
+      "lines": null
+    }
+  ],
+  "mechanical": {
+    "merge_subject": "Merge pull request #2383 from SoulSchoolAcademy/p0b/influence-bridge",
+    "files_changed": 3,
+    "files": [
+      "BRAIN/12-ENGINEERING/kernel_behavior_engine.py",
+      "tests/test_advise_influence_bridge.py",
+      "tests/test_kernel_behavior_engine.py"
+    ],
+    "insertions": 487,
+    "deletions": 3,
+    "test_files": 2,
+    "doc_files": 0
+  },
+  "why_not_10": "CLEAN=6.0 \u2014 Honest knock: the influence bridge raised the kernel behavior-engine invocation count 9->10 and broke test_measure_node_influence (1 python test + 1 node load-bearing claim failing at tip). Parked, not fixed. Real value with real debt.; DURABLE=7.0 \u2014 Tests guard the bridge \u2014 but the change left test_measure_node_influence failing (invocation count 9->10), parked for a builder seat. A bridge with a known crack underneath."
+}

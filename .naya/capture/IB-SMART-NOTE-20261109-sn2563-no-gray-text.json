@@ -1,0 +1,30 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2563",
+ "title": "No Gray Text",
+ "slug": "no-gray-text",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2563/IB-SMART-NOTE-20261109-sn2563-no-gray-text.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "- **HIS WORDS (19:34Z):** \"That gray text looks terrible. Terrible, like that's not easy to read and it's not pleasant, right? I wouldn't use that gray text or write that way of writing the information.\"\n- **THE RULING:** no gray text anywhere on the Dashboard — every text element high-contrast and readable at a glance (white on black), pleasant to read.\n- **INFORMATION IS NEVER WRITTEN IN GRAY, LOW-CONTRAST, SMALL TEXT.**\n- **EXTENDS SN-2513 (\"GRAY TEXT IS OUT\")** from the pricing page to the Dashboard — the law now covers the whole system.\n- **PASS-3 BRIEF AMENDED A SIXTH TIME** (§1c, §1 measurement, §1 must-not, §2, §9) and sent to the pass-3 coordinator the same pass.\n- **THE BROWSER LOOK TASK IS STILL RUNNING;** its findings come back separately.",
+  "human_view": "A page does not have to be broken to be unreadable — it only has to be gray. Gray text is the quiet failure: nothing errors, nothing overflows, and every word costs a little effort to read, until the whole page feels unpleasant and nobody can say why. His ruling makes readability a law, not a preference: every text element high-contrast, readable at a glance, pleasant to read. White on black is the standard; gray is out — on the Dashboard as on the pricing page, and everywhere the system writes words to a human. If it is not easy to read, it is not pleasant, and if it is not pleasant, it is not done.",
+  "child_view": "Imagine a storybook printed in light gray letters — you can read it if you squint, but it's no fun, and your eyes get tired. Dad says: \"That looks terrible. Write it in bright white on black, so it's easy and pleasant to read.\" That's the rule now: no gray text anywhere on the Dashboard — every word bright and easy to read at a glance. If a word is hard to read, it fails.",
+  "grandma_view": "Dear, gray writing looks terrible, love — it's not easy to read and it's not pleasant, and every word is a little effort. His ruling is simple, dear: no gray text anywhere on the Dashboard — every word bright white on black, easy to read at a glance, pleasant to read. Information is never written in gray, love — never small and faded and hard to see. If a word is hard to read, dear, it fails — that's the law now, for the whole system.",
+  "ai_view": "I am Anaya. No gray text anywhere on the Dashboard — every text element high-contrast and readable at a glance, white on black, pleasant to read. Information is never written in gray, low-contrast, small text. SN-2513 said gray text is out on the pricing page; this ruling extends it to the Dashboard, and the law now covers the whole system. If a word is hard to read, it fails — that is the measurement pass-3 carries, and the eye is the judge.",
+  "what_it_means": "- **NO GRAY TEXT ANYWHERE ON THE DASHBOARD** — every text element high-contrast and readable at a glance (white on black), pleasant to read.\n- **INFORMATION IS NEVER WRITTEN IN GRAY, LOW-CONTRAST, SMALL TEXT.**\n- **EXTENDS SN-2513** from the pricing page to the Dashboard — the law now covers the whole system.\n- **PASS-3 CARRIES IT:** the brief is amended a sixth time (§1c, §1 measurement, §1 must-not, §2, §9); the correction went to the pass-3 coordinator the same pass.",
+  "whats_inside": [
+   "- No gray text anywhere on the Dashboard — every text element white on black, high-contrast, readable at a glance.\n- The law is system-wide now: SN-2513's \"gray text is out\" covers the Dashboard too, and every page after it.\n- The pass-3 check includes a readability measurement: if a word is hard to read, it fails.\n- Next loop run checks: whether pass-3 has removed the gray text, and whether the browser look's findings name any more of it."
+  ],
+  "topics": [
+   "Law",
+   "Design"
+  ]
+ },
+ "page_hash": "727c02b32abbe51f92540877c9f83ac693df439547383f752bff67056b825205",
+ "content_hash": "7f607a0664aef057fb11b7fce707300b3efe4d6d3d02b95e5700497ef59e8704",
+ "reconstructed_from_page": true
+}

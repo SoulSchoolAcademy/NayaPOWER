@@ -1,0 +1,1 @@
+I learned that when the top two queued calls score within 0.5 points of each other, the Reserve Rule applies and the lower-scored call should be dispatched to preserve the higher-scored one as a reserve. I also learned that when the gap exceeds 0.5, the rule's own boundary says to dispatch the higher-scored call directly.

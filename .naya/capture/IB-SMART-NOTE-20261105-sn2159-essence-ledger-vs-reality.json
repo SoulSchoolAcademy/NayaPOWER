@@ -1,0 +1,47 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2159",
+  "title": "The Ledger Is a Claim: Heal the Canonical Seam, Not the Record of It",
+  "slug": "essence-ledger-vs-reality",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-ledger-vs-reality.md",
+  "tone": "emerald",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:03:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A system's records about itself are claims, not proof — and the gap between the ledger and reality is a defect class of its own. The ghost table: a migration ledger said APPLIED while the table was gone; the registry answers what was written, never what exists (SN-0520). Generalized: ledger APPLIED is a claim, not a proof — any consumer that treats a history record as existence proof will build on phantoms (SN-0536). Diagnosis must therefore reach the mechanism before prescribing: SN-0439's 400 was corrected when the mechanism, once actually traced, flipped the prescription — the first plausible cause is a hypothesis, and the repair follows the traced mechanism, not the symptom's shape (SN-0485). Healing belongs at the canonical seam: a reference-engine fix never establishes the production path, so the repair lands where production actually runs or it has not landed at all (SN-0548).\n\nDetection without healing is its own failure. A tripwire that fires every window is an unhealed seam — correct detection is not sufficient; a detector that keeps firing on the same wound is reporting an open repair, not doing a job (SN-0537). Before classifying a failure, re-run the exact failed job: a dead runner is not a verdict, and a job that never ran proves nothing about the code it never executed (SN-0549). Before opening a build, check for an in-flight lane claim on the seam — the claimed-seam rule prevents two lanes from healing the same wound into a collision (SN-0547). And the merge line holds even under pressure: never merge with red CI, even when the red isn't yours — a PR's own green does not license merging into a red tip; instead the merge order is documented on the record and the line converts revealed failures into an ordered path to green (SN-669). New enforcement ships advisory-first: a brand-new check has an unknown false-positive rate, so the detector ships as rung 1 (detect + report), accumulating the evidence base that justifies rung 2 (enforce) — promoting an unmeasured check straight to a blocking gate risks blocking legitimate lanes on day one (SN-675).\n\nThe infrastructure hygiene notes are this same law at the machine layer. Dead workers still vote: stale Cloudflare workers keep answering and keep influencing routing, so connection hygiene means retiring the dead, not just deploying the living (SN-0604). A production deploy takes two saves — the deploy is not done at the first confirmation; the second save is what makes the production state durable and checkable (SN-0477). Capacity is computed before it is spent: bake the memory math — never restart what the machine cannot fit; the fit calculation happens before the restart, not after the crash (SN-0613).",
+    "human_view": "The team's bookkeeping is never taken on faith — a ledger entry saying \"done\" is treated as a claim to be checked against the real thing. When something's broken, they find the actual mechanism before prescribing, they fix the real production path rather than a model of it, and if an alarm keeps ringing on the same fault, they treat the alarm as a repair order, not background noise.",
+    "child_view": "Imagine a diary that says \"I tidied my room\" — a grown-up still looks in the room! Here, nobody believes the diary alone. If the smoke alarm keeps going off in the same place, they don't just admire how well it beeps — they go and fix what's smoldering. And new rules start as gentle reminders until everyone knows they don't cry wolf.",
+    "grandma_view": "It's like reconciling a cheque book against the bank, dear — the book is your record, the bank is reality, and when they disagree you believe the bank and find the error. Repairs are made to the real pipes, not to a drawing of them. A burglar alarm that rings every night at the same window isn't \"working well\" — it's telling you the window was never fixed.",
+    "ai_view": "Treat every APPLIED/status/ledger entry you consume as a claim and verify existence at the real seam (SN-0520, SN-0536). Trace the mechanism before prescribing (SN-0485); land fixes on the production path (SN-0548); re-run the exact failed job before classifying (SN-0549); check lane claims before opening (SN-0547). File repeatedly firing tripwires as unhealed seams with owners (SN-0537). Ship new checks advisory-first (SN-675) and hold the red-CI line without exceptions (SN-669).",
+    "what_it_means": "Twelve notes about ledgers, seams, tripwires, runners, deploys, and stale infrastructure are one teaching: the map is not the territory, and a healthy system spends its effort closing the gap at the real seam. A cold reader holding only this essence can still triage any \"the record says it's fine\" situation the way the team does.",
+    "whats_inside": [
+      "History records (migration ledgers, registries, run conclusions) are claims to be verified against reality, never existence proofs (SN-0520, SN-0536).",
+      "Diagnosis order is mechanism → prescription; repairs land on the canonical production seam or they do not count (SN-0485, SN-0548).",
+      "A repeatedly firing tripwire is reclassified from \"detector working\" to \"seam unhealed,\" with the repair owned (SN-0537).",
+      "Enforcement grows in rungs — advisory detector first, blocking gate only on measured noise (SN-675) — and the no-red-merge line has no \"not my red\" exception (SN-669)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-2"
+    ],
+    "covers": [
+      "SN-0477",
+      "SN-0485",
+      "SN-0520",
+      "SN-0536",
+      "SN-0537",
+      "SN-0547",
+      "SN-0548",
+      "SN-0549",
+      "SN-0604",
+      "SN-0613",
+      "SN-669",
+      "SN-675"
+    ]
+  },
+  "page_hash": "dcaddc1772bca5d094820e7bc57e0d9bca929e1071ee1cbef9784d1c5dd06525",
+  "content_hash": "84315c1a378eae2af27762527a202e3adb997222c70e81e0ab094b684f34a3fc"
+}

@@ -1,0 +1,22 @@
+/* ============ BLOCK BASE ============ */
+/* Verbatim .li-stage base rule from "Ledger Page Design.html"
+ * (top of <style>). Provides --li-dim, base text color #f5f2ea and the
+ * system font stack every li-* component inherits. Prepended so the
+ * block is self-contained. */
+
+.li-stage{
+  --li-dim:#a09a8a;
+  max-width:100%; margin:0 auto; padding:36px 24px 90px; color:#f5f2ea;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,"Segoe UI",sans-serif;
+}
+
+/* Smart Block CSS: data/li-day
+ * Source: Ledger Page Design.html (extracted byte-true, never rewritten)
+ * NOTE: .li-day carries no <style> rule in source; styling is applied inline
+ * via cssText on the divider element. Captured here as a rule, verbatim values.
+ */
+
+.li-day{
+  font-size:11px; letter-spacing:.24em; color:#8a8a96; margin:24px 0 12px;
+  font-weight:800; text-align:center;
+}

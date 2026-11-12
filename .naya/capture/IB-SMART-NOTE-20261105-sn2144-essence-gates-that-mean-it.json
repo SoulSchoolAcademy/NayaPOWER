@@ -1,0 +1,47 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2144",
+  "title": "Gates That Mean It: Verdicts With Declared Coverage and Honest Refusals",
+  "slug": "essence-gates-that-mean-it",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-gates-that-mean-it.md",
+  "tone": "sapphire",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:51:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A gate is a claim about reality, and this corpus holds gates to the standard they claim to enforce. A verdict comes in three states — PASS (proven), PROVISIONAL (no known violation, proof pending), FAIL (observed violation or attempted proof failed) — never two: the provisional state exists because evidence is often real but incomplete, and collapsing it into pass or fail manufactures either false confidence or false alarm (SN-0267). When verifiers disagree, the disagreement is never averaged away; a calibration gap resolves to the verifier's lower score until the gap itself is explained (SN-0267). SN-0267 states all of this — the three-state semantics and the no-averaging reconciliation rule — as a CANDIDATE proposal: its own status line reads \"proposed resolution, needs Human Director or judge ruling before it becomes law,\" and this essence carries the semantics at exactly that status, never as ratified doctrine (SN-0267). Independent examination converges before it concludes: two examiners working separately and arriving at the same finding is the proof pattern, and the loop closes causally — findings feed the mechanism that produced them, not just the report (SN-0268).\n\nEvery gate must declare its coverage before its verdict: what was scanned, and what was not auditable, stated first; the verdict comes last (SN-0376). A PASS with undisclosed blind spots is itself a gate failure — the gate lied about its own eyes (SN-0376). Coverage is part of conformance: an exclusion list is load-bearing structure, not fine print, and a conformance claim is only as honest as the exclusions it names (SN-0294). Before designing around a gate, verify the gate's teeth — probe whether it actually refuses what it claims to refuse — and where the real gate is weaker than the design assumes, ship an honest weaker interim labeled exactly as what it is, never a strong-looking facade (SN-0371). Proof gating follows the same honesty: no `if: always()` that lets proof jobs run or pass regardless of state, red-state-first ordering, and verification performed on the shipped bytes rather than the intended ones (SN-0281).\n\nChange moves through gates on a ratchet. The Ratchet names a baseline, blocks new violations structurally rather than by vigilance, is enforced by structural tests rather than by review stamina, and has an exit ramp — a named condition under which it lifts — while the decision to flip the ratchet belongs to the director (SN-0285).\n\nGuards earn their place and know their limits. A detector earns CI only on real data with a published false-positive audit — zero false positives demonstrated, not asserted (SN-0375). A guard reports; containment is a deliberate human act, and a guard never self-remediates (SN-0375). New guards must be taught about legacy: pre-system entries lack new-system evidence by birth, not by bypass — absence of promotion receipts on an entry ratified before receipts existed is a birth certificate (SN-0377). A real bypass shows asymmetric absence, not uniform absence; guards detect anomalies, humans classify them, and a director-ratified entry is never demoted for missing new-system evidence alone (SN-0377). The same incident produced both notes — SN-016, ratified by the director himself before the receipt system existed, flagged first as a possible attack and then correctly classified as legacy — and the pair stands as the detection-versus-classification distinction made concrete (SN-0375, SN-0377).\n\nFinally, a gate refusing is often the design working. Classify every failure as product-RED versus guardrail-correct before touching code: when a fail-closed gate refuses stale SHAs, the refusal is the success, and \"fixing\" the guardrail would be the defect (SN-0413). A promotion gate firing on a knowingly-RED tip is not a new incident — fix the tip, never touch the gate, and never re-dispatch the gate to see if it clears (SN-0438). Proof windows make this practical: announce proof start on the board and hold merges until the proof completes — a bounded freeze with a named scope and end condition, never an open-ended veto (SN-0413).",
+    "human_view": "Every check in this system has to show its work: what it looked at, what it couldn't see, and only then its verdict. Under the three-state semantics SN-0267 proposes (still a candidate, awaiting a ruling), checks give three answers — yes, not yet, or no — and when two checkers disagree, the stricter answer stands until someone explains the difference. When a check refuses something bad, that's the system working, and nobody is allowed to \"fix\" the check to make the red light go away.",
+    "child_view": "Imagine a hall monitor with a checklist. The monitor has to say what they actually checked — no pretending. They can say \"good,\" \"not sure yet,\" or \"no.\" If two monitors disagree, the careful one wins. And when the monitor says \"no\" to someone breaking the rules, you don't fire the monitor — the monitor did the job.",
+    "grandma_view": "Dear, it's honest inspection. The inspector writes down what was examined and what couldn't be reached, then gives the verdict — in that order. Old things that predate the paperwork aren't treated as cheats; they're just old, and a person decides what they are. And when the smoke alarm screams at burnt toast, you open a window — you don't rip the alarm off the ceiling.",
+    "ai_view": "Carry SN-0267's proposed three-state verdicts as a proposal (CANDIDATE — awaiting a Human Director or judge ruling, not ratified), and resolve your calibration gaps downward (SN-0267). Print your coverage before your verdict, treat your exclusion list as load-bearing, and probe your own gate's teeth before relying on it (SN-0376, SN-0294, SN-0371). Never self-remediate as a guard; report and let accountable hands act (SN-0375). Classify legacy absence before escalating — uniform absence on pre-system entries is birth, asymmetric absence is the bypass signal (SN-0377). When a gate refuses, classify product-RED versus guardrail-correct first; if the refusal was correct, your repair target is the tip, and re-dispatching the gate is forbidden (SN-0413, SN-0438).",
+    "what_it_means": "Eleven notes define a gate culture: verdicts that confess their blind spots, guards that know their authority's edge, and refusals read as information rather than obstruction. A cold reader holding only this essence can still run a gate, audit a gate, and respond correctly when a gate says no — which is everything the covered notes exist to teach.",
+    "whats_inside": [
+      "Three-state verdicts are SN-0267's proposed semantics — a CANDIDATE proposal awaiting a Human Director or judge ruling, not ratified doctrine; in the proposal's own terms, binary gates are a defect class, and verifier disagreement resolves downward, never by average (SN-0267).",
+      "A verdict without a coverage statement is invalid on its face (SN-0376, SN-0294).",
+      "A guard's authority ends at reporting; remediation and containment are deliberate acts by accountable hands (SN-0375).",
+      "Legacy absence is not bypass; classification is a human judgment that detection can inform but never perform (SN-0377).",
+      "A correct refusal is a green behavior wearing red paint — the repair target is the input, never the gate (SN-0413, SN-0438)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-1"
+    ],
+    "covers": [
+      "SN-0267",
+      "SN-0268",
+      "SN-0281",
+      "SN-0285",
+      "SN-0294",
+      "SN-0371",
+      "SN-0375",
+      "SN-0376",
+      "SN-0377",
+      "SN-0413",
+      "SN-0438"
+    ]
+  },
+  "page_hash": "64cc2a7262eff371dd9e0047b991b6b9d3fb65509578ff203a72ff629150dbf5",
+  "content_hash": "c654ad323672daef3c14b5be72cafac16890ca9065c5b7c4ee85e19a34d97513"
+}

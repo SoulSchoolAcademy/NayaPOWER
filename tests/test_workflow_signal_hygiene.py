@@ -67,3 +67,22 @@ def test_explicit_wrong_sha_still_fails_closed():
     assert "authorized source_sha $authorized_sha does not equal workflow source $GITHUB_SHA" in text
     assert "main moved to $resolved_main after authorization of $authorized_sha" in text
     assert "exit 1" in text
+
+
+def test_failure_receipt_covers_every_failure_path():
+    # The failure receipt must run on EVERY failure path, not only when the
+    # standing-policy step produced an output. Gating on
+    # steps.standing_policy.outputs.allowed left pre-policy failures silent
+    # (2026-10-08: run 37813418273, superseded-tip race failing "Resolve
+    # standing authorization mode" before the policy step ran, emitted no
+    # receipt). The receipt builder degrades honestly on absent gate evidence
+    # (UNKNOWN / NOT_EXECUTED, never invented), so unconditional failure()
+    # is the safe wiring.
+    text = _text(PROMOTION)
+    idx = text.index("- name: Write production promotion failure receipt")
+    m = re.search(r"\n        if: (.+)", text[idx:idx + 3000])
+    assert m, "failure receipt step must declare an if: condition"
+    assert m.group(1).strip() == "${{ failure() }}", (
+        "failure receipt must run on every failure path, including pre-policy "
+        f"failures: got {m.group(1).strip()}"
+    )

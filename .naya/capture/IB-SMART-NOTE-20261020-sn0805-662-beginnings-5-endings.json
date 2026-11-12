@@ -1,0 +1,74 @@
+{
+ "smart_note_id": "SN-0805",
+ "intelligence": {
+  "title": "662 Beginnings, 5 Endings",
+  "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0805-662-beginnings-5-endings",
+  "smart_note_id": "SN-0805",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/reservoir/SN-0805/IB-SMART-NOTE-20261020-sn0805-662-beginnings-5-endings.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. Published as Markdown projection without preserved runtime capture. No runtime provenance invented.",
+  "ingested_at": "2026-10-21",
+  "essence": "On the night of 2026-10-20 we counted our own brain, item by item: 662 changes stood open and unfinished. 473 of them had not been touched in a week. We were creating about five new pieces of work for every one we finished — 229 created against 49 merged in seven days — and our real scores had not moved in a week. This was not a queue. A queue moves. It was a reservoir: work flowed in, almost nothing flowed out, and the level only rose. Starting is not working. Finishing is working. That night we drained the reservoir and rebuilt the banks so it cannot fill again.",
+  "human_view": "Nobody in this story was lazy, and nobody did anything scandalous. Every individual cycle looked busy and reasonable. The system was simply built so that starting was free and instant, finishing was slow and ran through one shared bottleneck, closing dead work was nobody's job, and no report anywhere printed the size of the pile — so the pile grew, quietly, arithmetically, inevitably. Of 312 work reports filed in one day, 46 finished something right; nearly half the rest were re-proofs, verifying again that parked work was still parked. Meanwhile the board carried more than 600 comments in 13 hours — sign-ins, receipts, comments on the comments — while the system's scores for learning, human value, and production printed the same numbers seven nights running. The volume was horizontal; the scores were vertical. Motion had learned to imitate progress so well that only a census could tell them apart.",
+  "simple_view": "Imagine a bathtub where the tap pours in fast but the drain is almost closed. The water doesn't care how busy the tap is — it just rises. That's what happened to our work: we kept turning the tap (starting things) and almost never opened the drain (finishing things). The fix isn't a faster tap. It's a wider drain and a smaller tap, and checking the water level every single night so it can never surprise us again.",
+  "grandma_view": "It's like a kitchen where everyone keeps starting new recipes — chopping, mixing, putting pans on the stove — and nobody ever serves a meal or washes a dish. By evening the counters are buried, nothing is on the table, and the cooks are exhausted from all that \"cooking.\" Darling, a started recipe is not dinner. Serve the meal, wash the dish, and only then start the next one.",
+  "naya_view": "The seven root causes, named so we never repeat them: (1) Creating was free; finishing was serial — production is parallel, completion runs through one review bottleneck, so a reservoir is arithmetic, not attitude. (2) The machine paid for starts — the meter counted reporting, so the team optimized for the meter: perfect sign-in compliance, 46 finishes in 312 reports. (3) Nobody owned closing — dead work had an author but no undertaker, so 473 items rotted untouched with no alarm. (4) Parallel duplication by design — five branch families held 500+ of the 662, seats building versions of the same work that were never reconciled. (5) The task lists caught the same disease — filing a follow-up counted as work, so we filed intentions instead of finishing. (6) The limit existed as text, never as machinery — a work-in-progress cap written in prose, enforced by no gate; a rule with no gate is a wish. (7) The comment flood — when every state change broadcasts to everyone, coordination becomes a second job and attention spent reading about work is stolen from finishing it. The prevention, with teeth: every open item carries an owner, exactly one disposition — merge, fix its one named gap, or close — and a next action; there is no fourth pile called \"someday.\" Open work is capped per lane at five, and a lane's right to start is funded by what it finished: last week's completions, plus two. Untouched work is listed at 14 days and closed at 21 unless its owner re-justifies it in writing on the item. And the reservoir prints nightly — open count, age, created-to-finished ratio — because what prints every night cannot silently regrow.",
+  "ai_view": "Law RESERVOIR_LAW (SN-0805, Shawn, 2026-10-20): starting is not working; finishing is working. Census of record, measured from the live API on 2026-10-20: 662 open pull requests; 473 untouched ≥7 days (71%); 77 drafts; oldest #870 (2026-09-28); 229 created vs 49 merged in 7 days (4.7 starts per finish); 312 work reports in 24h with 46 finished right (14.7%); ~47% re-proofs; 600+ board comments in 13 hours; headline scores unchanged for 7 nights. Root causes: creation free while completion is one serial bottleneck; the meter paid for starts and reporting, not finishes; closing had no owner; parallel seats duplicated work across five branch families; filing a follow-up counted as work; the WIP cap existed as text, never as machinery; broadcast coordination taxed the attention finishing needs. Standing prevention: every open item carries an owner, exactly one disposition (MERGE / FIX its one named gap / CLOSE) and a next action — no \"someday\" pile; per-lane open cap 5; creation budget = last week's completions + 2; untouched 14 days listed, 21 days closed unless re-justified in writing on the item; reservoir metrics (open count, age, created-to-finished ratio) printed nightly; completions are the only reported metric. A pile of unfinished work is not ambition — it is a debt that taxes every search, every decision, and every newcomer. Companions: 0030 The Value-Only Brain; SN-0806 (Completion Doctrine).",
+  "machine_view": {
+   "law": "RESERVOIR_LAW",
+   "statement": "Starting is not working. Finishing is working. Unfinished work is a reservoir, not a queue: work flows in, almost nothing flows out, and the level only rises.",
+   "headline": "662 Beginnings, 5 Endings",
+   "census_2026_10_20": {
+    "open_pull_requests": 662,
+    "untouched_ge_7_days": 473,
+    "untouched_share": "71%",
+    "drafts": 77,
+    "oldest": "#870 (2026-09-28)",
+    "created_last_7_days": 229,
+    "merged_last_7_days": 49,
+    "starts_per_finish": 4.7,
+    "work_reports_24h": 312,
+    "finished_right_24h": 46,
+    "finished_right_share": "14.7%",
+    "reproofs_share": "~47%",
+    "board_comments_13h": "600+",
+    "headline_scores": "unchanged for 7 nights"
+   },
+   "root_causes": [
+    "creating free, finishing serial — one shared completion bottleneck",
+    "the meter paid for starts and reporting, not finishes",
+    "nobody owned closing",
+    "parallel duplication across five branch families",
+    "filing follow-ups counted as work",
+    "the WIP cap existed as text, never as machinery",
+    "the comment flood taxed the attention finishing needs"
+   ],
+   "dispositions": [
+    "MERGE — clears the bar, independently verified",
+    "FIX — one named gap, named owner",
+    "CLOSE — superseded, duplicated, or dead; reason written on the item"
+   ],
+   "target": "under 100 open, falling to a working handful",
+   "prevention": [
+    "per-lane open cap 5",
+    "creation budget = last week's completions + 2",
+    "expiry: list at 14 days, close at 21 unless re-justified in writing on the item",
+    "reservoir metrics printed nightly",
+    "completions are the only reported metric"
+   ],
+   "sn": "SN-0805",
+   "title": "662 Beginnings, 5 Endings",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/reservoir/SN-0805/IB-SMART-NOTE-20261020-sn0805-662-beginnings-5-endings.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE"
+  },
+  "views_note": "Views derived 2026-10-21 from this note's published projection page (its HUMAN / CHILD / GRANDMA / NAYA / MACHINE sections) to cure the documentation-completeness gate. Derivation happened at cure time from the published page only; no runtime capture provenance is claimed or invented — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/reservoir/SN-0805/IB-SMART-NOTE-20261020-sn0805-662-beginnings-5-endings.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

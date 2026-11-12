@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Graphs · 07 · Orbit Dial — Design score</title>
+<link rel="stylesheet" href="../../DESIGN-BLOCKS/tokens.css">
+<link rel="stylesheet" href="../../DESIGN-BLOCKS/blocks/graphs/orbit-dial/orbit-dial.css">
+<link rel="stylesheet" href="sg-chrome.css">
+</head>
+<body class="sg-page">
+<div class="sg-wrap">
+  <div class="sg-kicker"><span class="gem"></span>Smart Graphs · Specimen 07</div>
+  <div class="sg-mode">Calculator · scored, not guessed</div>
+  <div class="sg-card">
+    <h4>Design score</h4>
+    <div class="c-sub">Calculator · honest rendered-experience score</div>
+    <div class="od-stage">
+      <div class="od-dial">
+        <div class="od-arc" style="--vt:.91"></div>
+        <div class="od-ticks"></div>
+        <div class="od-center">
+          <span class="od-num">9.1</span>
+          <span class="od-cap">out of 10</span>
+        </div>
+      </div>
+    </div>
+    <div class="od-scale"><span>0</span><span>5</span><span>10</span></div>
+    <div class="sg-foot"><span>Scored by the improvement loop, not by wishing</span><span>SAMPLE DATA</span></div>
+  </div>
+  <div class="sg-actions">
+    <button class="sg-action" disabled><span class="gem"></span>Save</button>
+    <button class="sg-action" disabled><span class="gem"></span>Share</button>
+    <button class="sg-action" disabled><span class="gem"></span>PDF</button>
+    <button class="sg-action" disabled><span class="gem"></span>Send to NayaNET</button>
+  </div>
+  <p class="sg-honesty">Actions reserved in v1 — the contract ships before the wiring.<br>Sample data. The instrument is real; the feed is next.</p>
+</div>
+<script>
+new IntersectionObserver((es, io) => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('lit'); io.disconnect(); }
+}), { threshold: .35 }).observe(document.querySelector('.sg-card'));
+</script>
+</body>
+</html>

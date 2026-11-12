@@ -1,0 +1,71 @@
+/* Smart Block: nl-player
+ * Source: Naya_Lego-blocks.html (byte-true extraction, not rewritten)
+ * Type: media
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules (v2) ---- */
+
+    
+
+      .nl-player{max-width:520px;margin:0 auto;border-radius:26px;padding:28px;
+        background:linear-gradient(180deg,#12131a,#090a0d);border:1px solid rgba(255,255,255,.12);
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -18px 36px rgba(0,0,0,.5),0 30px 64px rgba(0,0,0,.6),0 0 50px -14px rgba(var(--purple-rgb),.55)}
+
+
+
+      .nl-player-top{display:flex;gap:18px;align-items:center;margin-bottom:22px}
+
+
+
+      .nl-art{width:84px;height:84px;flex:none;border-radius:20px;
+        background:conic-gradient(from 200deg,#e455f4,var(--purple),#3f9ff5,#34d38a,#e7c65a,#e455f4);
+        box-shadow:inset 0 2px 5px rgba(255,255,255,.45),inset 0 -8px 16px rgba(0,0,0,.5),0 10px 24px rgba(0,0,0,.55),0 0 26px -6px rgba(var(--purple-rgb),.7)}
+
+
+
+      .nl-track-t{font-weight:800;font-size:17px}
+
+
+
+      .nl-track-a{font-size:14px;color:var(--quiet)}
+
+
+
+      .nl-playrow{display:flex;align-items:center;gap:18px}
+
+
+
+      .nl-prog{flex:1}
+
+
+
+      .nl-times{display:flex;justify-content:space-between;font-size:12.5px;color:var(--quiet);margin-bottom:8px;font-variant-numeric:tabular-nums}
+
+
+
+      .nl-fill{position:absolute;left:0;top:0;bottom:0;width:32%;border-radius:999px;
+        background:linear-gradient(90deg,var(--purple),var(--magenta));
+        box-shadow:0 0 14px rgba(var(--purple-rgb),.75),inset 0 1px 0 rgba(255,255,255,.4)}
+
+
+
+      .nl-knobp{position:absolute;top:50%;left:32%;width:20px;height:20px;border-radius:50%;transform:translate(-50%,-50%);
+        background:radial-gradient(circle at 35% 30%,#fff,#d9d4e6 60%,#8f8a9d);
+        box-shadow:inset 0 2px 3px rgba(255,255,255,.7),0 0 12px rgba(var(--purple-rgb),.8),0 3px 8px rgba(0,0,0,.6);transition:transform .15s}
+
+
+
+      .nl-vol{display:flex;align-items:center;gap:10px;margin-top:18px;color:var(--quiet)}
+
+
+
+      .nl-vol .nl-bar{width:130px;height:8px}
+
+
+
+      .nl-vol .nl-fill{background:linear-gradient(90deg,#3f9ff5,#39d7e8);box-shadow:0 0 12px rgba(63,159,245,.7),inset 0 1px 0 rgba(255,255,255,.4)}
+
+
+
+      .nl-vol .nl-knobp{left:70%;width:16px;height:16px;background:radial-gradient(circle at 35% 30%,#fff,#d9d4e6 60%,#8f8a9d)}

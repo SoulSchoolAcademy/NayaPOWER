@@ -1,0 +1,4 @@
+Retained lesson (ACTIVE, independently verified): "Never write state files through inline conditional expressions."
+
+Outcome evidence (Trial-14; Naya 1 independent verification): control 2/10 vs treatment 10/10, p=0.0007, h=1.1; re-grade 40/40 vs 28/40, p=1.85e-04, h=1.16.
+Provenance: real AGENTS.md lesson (ecological validity). Source: learning_evidence row 66122e1e-677b-4ef0-a765-80d08ccfa85b (T14), status ACTIVE, level E5_CAN_TEACH.

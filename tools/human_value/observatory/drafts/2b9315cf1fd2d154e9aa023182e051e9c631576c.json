@@ -1,0 +1,33 @@
+{
+  "author": "Shawn Vibert",
+  "diffstat": {
+    "deletions": 7,
+    "files": 3,
+    "insertions": 7,
+    "top_dirs": [
+      "BRAIN"
+    ]
+  },
+  "draft_version": 1,
+  "mechanical_note": "Every field above is verifiable with `git log` / `git diff` at the merge SHA. No value judgment is present or implied.",
+  "merge_sha": "2b9315cf1fd2d154e9aa023182e051e9c631576c",
+  "merged_at": "2026-10-11T20:58:46-07:00",
+  "parents": [
+    "b86eba89735c7cd5c3143e0419be50fa6e90a133",
+    "2b3c69af35345edd5359ba5a9674c52f21db0f2a"
+  ],
+  "pr_number": 2432,
+  "pr_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2432",
+  "status": "DRAFT \u2014 not a ledger event. The machine observes; it never credits. A graded scorecard promotes this.",
+  "suggested_evidence": [
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/commit/2b9315cf1fd2d154e9aa023182e051e9c631576c"
+    },
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2432"
+    }
+  ],
+  "title": "Merge pull request #2432 from SoulSchoolAcademy/naya5/brain-index-regen-e3fe3d43"
+}

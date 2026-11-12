@@ -1,0 +1,30 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2508",
+ "title": "Check the Viewpoint by Eye",
+ "slug": "check-the-viewpoint-by-eye",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2508/IB-SMART-NOTE-20261109-sn2508-check-the-viewpoint-by-eye.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "- **HIS WORDS, VERBATIM:** \"make sure when you're checking these pages that you're checking the viewpoint and seeing what you're seeing on the page like a lot of them it's messy for no reason.\"\n- **THE REBUKE:** the checks were passing numbers while the page looked messy to his eye. The orbs were one color, crashed into the gauge, the big orb covering the number tiles, the mode strip one flat bar — and the checks passed anyway. A verification that cannot see mess is not verification.\n- **THE RULE, NOW STANDING:** verification means looking at the rendered viewpoint the way he sees it. Seats judge screenshots like a human eye, not just rects and bytes. If the page looks messy by eye, it fails — whatever the numbers said.\n- **WHAT IT REPLACES:** measurement-only verification. Rects, contrast ratios, byte counts, and popup checks are preparation, never proof. They catch what they are told to catch; the eye catches what nobody told it to look for.\n- **WHAT IT DOES NOT REPLACE:** the measurements still run — they are the preparation. But no work moves on measurements alone. The viewpoint check is the gate the work passes through, and his eye is the final gate after that.",
+  "human_view": "Imagine a building inspector who measures every wall with a laser and declares the house perfect — while the front door is hanging off its hinges in plain sight. The measurements were right; the house was still wrong, because nobody looked at it. Shawn's rule is the look: before anything is called done, someone looks at the actual page the way he looks at it, on his screen, and asks — is this messy? If yes, it fails, no matter what the instruments said. The instruments prepare the work; the eye judges it.",
+  "child_view": "If you clean your room by measuring it with a ruler but never looking at it, you might miss the big pile of toys in the middle of the floor. The ruler says the room is tidy. Your eyes say it isn't. From now on, we always look at the room with our eyes before we say it's clean — the looking is the real check.",
+  "grandma_view": "Dear, the numbers said it was fine and his eyes said it was messy, love — and the eyes were right, dear. From now on we look at the thing itself, with our own eyes, before we call it done. A ruler can't see a mess, love. Eyes can.",
+  "ai_view": "This is the verification law catching up with the Live Viewpoint Method: no seat scorecard or verification is proof; only his eye is. SN-2508 makes that operational for every seat — the viewpoint check is not an extra step, it is THE check, and it happens before anything is reported done. It also explains the failure mode of the whole morning: seats verified mechanics (popups, padding, contrast, rects) and never asked whether the page looked right, so obvious defects — orbs crashed into the gauge, a flat mode bar, tabs eating the hero — walked past scout, rebuild, two verifiers, and the captain's browser check. The rule is cheap to apply (look at the screenshot as a human would) and it would have caught every one of them. A check that cannot fail on mess cannot pass on quality.",
+  "what_it_means": "- **THE VIEWPOINT IS THE CHECK:** every verification looks at the rendered viewpoint the way he sees it — desktop + phone, scroll 0 AND scrolled.\n- **MESSY BY EYE IS A FAIL:** a pass on numbers that looks messy by eye is a fail, full stop.\n- **MEASUREMENT IS PREPARATION:** rects, bytes, and contrast ratios still run — but they are never the proof on their own.\n- **HIS EYE IS THE FINAL GATE:** the seat's eye-check prepares the work; his eye decides it.",
+  "whats_inside": [
+   "- Every brief and every verification carries the viewpoint-by-eye check as a named gate: look at the rendered viewpoint as a human would, at desktop + phone, scroll 0 and scrolled, before reporting done.\n- The design-contract gate (obvious defects) and the viewpoint check are the same habit: if you can see the defect by looking, fix it, don't hand it on.\n- The Dashboard hero coordinator seat applies the rule to its own proof page first — its own eye-check precedes any report.\n- Next loop run re-checks: the hero proof page judged by eye, not just by rects."
+  ],
+  "topics": [
+   "Team",
+   "Design"
+  ]
+ },
+ "page_hash": "d86fc6b32c3c7c713f7aaf99b933083e68851eb58603259b4e9b463f1b62d45e",
+ "content_hash": "408ddeabc8b8e554ed1680b52d5b2f7aad1fb2fc5b5f24d49c078acd704c4fbe",
+ "reconstructed_from_page": true
+}

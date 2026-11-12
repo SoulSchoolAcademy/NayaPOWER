@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Block specimen: onboarding/onb-stepper</title>
+<link rel="stylesheet" href="block.css">
+<style>
+  body{ background:#050507; color:#e8eaf2; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; margin:0; padding:32px 20px; }
+  .demo{ max-width:560px; margin:0 auto; }
+  .demo h2{ font-size:14px; letter-spacing:.12em; text-transform:uppercase; color:#8a8a96; margin:34px 0 12px; }
+  .demo h2:first-child{ margin-top:0; }
+  .demo-note{ font-size:12px; color:#9aa3b5; margin:6px 0 12px; }
+  .demo-ctl button{ font:inherit; font-size:12px; letter-spacing:.06em; color:#e8eaf2; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.22); border-radius:999px; padding:8px 16px; margin:0 8px 8px 0; cursor:pointer; }
+  .demo-ctl button:hover{ border-color:#a06bff; box-shadow:0 0 18px -4px rgba(160,107,255,.7); }
+</style>
+</head>
+<body>
+<div class="demo">
+  <h2>Stepper</h2>
+  <div class="onb onb-rail" id="onbRail">
+    <div class="onb-thread" aria-hidden="true"><div class="onb-fill"></div></div>
+    <ol class="onb-steps" aria-label="Setup steps">
+      <li class="onb-step is-done" style="--sc:#e84fff">
+        <button class="onb-node" aria-label="Step 1 done: Meet Naya"><span class="in"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        <div class="onb-label"><span class="k">Step 1</span><span class="t">Meet Naya</span><span class="s">Done</span>
+          <span class="onb-job">One job: say hello.</span></div>
+      </li>
+      <li class="onb-step is-done" style="--sc:#a06bff">
+        <button class="onb-node" aria-label="Step 2 done: Choose your path"><span class="in"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        <div class="onb-label"><span class="k">Step 2</span><span class="t">Choose your path</span><span class="s">Done</span>
+          <span class="onb-job">One job: pick what this is for.</span></div>
+      </li>
+      <li class="onb-step is-current" style="--sc:#3fb8ff" aria-current="step">
+        <button class="onb-node" aria-label="Step 3 current: Add your team, optional"><span class="in">3</span></button>
+        <div class="onb-label"><span class="k">Step 3</span><span class="t">Add your team</span><span class="s">You are here</span><br>
+          <span class="onb-opt">Optional</span>
+          <span class="onb-job">One job: invite people — or skip it.</span></div>
+      </li>
+      <li class="onb-step is-locked" style="--sc:#2fe89e">
+        <button class="onb-node" disabled aria-disabled="true" aria-label="Step 4 locked: Set your rhythm"><span class="in">4</span></button>
+        <div class="onb-label"><span class="k">Step 4</span><span class="t">Set your rhythm</span><span class="s">Locked</span>
+          <span class="onb-job">One job: choose your pace.</span></div>
+      </li>
+      <li class="onb-step is-locked" style="--sc:#ffbf3d">
+        <button class="onb-node" disabled aria-disabled="true" aria-label="Step 5 locked: Light the feed"><span class="in">5</span></button>
+        <div class="onb-label"><span class="k">Step 5</span><span class="t">Light the feed</span><span class="s">Locked</span>
+          <span class="onb-job">One job: send your first note.</span></div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="onb onb-rail is-empty" aria-label="No steps example" style="margin-top:8px">
+    <div class="onb-no-steps">
+      <div class="jewel" aria-hidden="true"></div>
+      <h3>No steps yet</h3>
+      <p>The flow hasn't been built — so there's nothing to walk. This is not step zero of five.</p>
+    </div>
+  </div>
+</div>
+<script src="block.js"></script>
+</body>
+</html>

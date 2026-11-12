@@ -1,0 +1,38 @@
+{
+  "contract": "smart-builder/11-dashboard",
+  "template_id": "11",
+  "template_name": "Dashboard",
+  "template_color": "#ff6b3d",
+  "title": "Your week at a glance",
+  "kicker": "Sample · Dashboard",
+  "lede": "Live data, trackers — the frontier nobody owns.",
+  "sections": [
+    {
+      "kicker": "Stats",
+      "title": "The numbers",
+      "lede": "Where you stand right now.",
+      "pieces": [
+        "NAYA-CRD-014",
+        "NAYA-CRD-002"
+      ]
+    },
+    {
+      "kicker": "Progress",
+      "title": "Moving forward",
+      "lede": "Three goals, all trending the right way.",
+      "pieces": [
+        "NAYA-ONB-001",
+        "NAYA-ONB-003"
+      ]
+    },
+    {
+      "kicker": "Activity",
+      "title": "Recent wins",
+      "lede": "Every step counts — here's the proof.",
+      "pieces": [
+        "NAYA-LST-013",
+        "NAYA-BTN-008"
+      ]
+    }
+  ]
+}

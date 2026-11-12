@@ -1,0 +1,41 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2068",
+  "title": "Essence 01 — The Record Must Tell the Truth",
+  "slug": "essence-01-the-record-must-tell-the-truth",
+  "file": "BRAIN/05-MEMORY/ESSENCE-01-the-record-must-tell-the-truth.md",
+  "tone": "purple",
+  "icon": "◆",
+  "created_at": "2026-11-05T23:07:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "The record — the registry, the ledger, the artifacts, the commit messages — must tell the truth to a cold reader who has no prior chat. A ledger is a claim about production; production is the truth. Ratification lives in the artifact's fields, not the commit message. A receipt is trustworthy when it names what it could not run and bounds the claim to what it did. Dedupe must cover the human-visible ID, not just the internal one. A number re-appearing under a new date with different bytes is a fork, not a revision. A mechanical gate must be at least as strong as the doctrine it cites. Correction is surgical: revoke the evidence, recompute every dependent conclusion, keep what still stands. A deliberately RED falsifier is evidence, not a defect — never merge it as a repair. Never impersonate the named independent verifier. Design-weight decisions are not settled in a relay — name the gap, leave it visible, route it to the owning seat. When lanes converge, the first-qualifying repair owns the class. Self-directed intelligence under governance: understand the mission, determine what matters, generate options, apply hard gates, select the highest verified-value authorized action, act, verify, learn, reprioritize — without waiting for Shawn to choose routine work.",
+    "human_view": "Write everything down as if a stranger will read it tomorrow with no context and have to act on it. If the record says one thing and the truth is another, the record is lying — and the lie will cost someone later. Say what you proved, say what you could not prove, and never let a claim be bigger than its evidence.",
+    "child_view": "Imagine you leave a note for a friend who has never been to your house, telling them where the spare key is. If the note says the wrong drawer, they will never find it — and it is your fault, not theirs. Always write the note so the next person can find the truth, even if you are not there to explain it.",
+    "grandma_view": "Dear, the lesson is simple: tell the truth in writing, and write it where the next person will look. If something is not finished, say so plainly. If you made a mistake, correct it cleanly and say what you changed. A clean record is how a family stays honest with itself.",
+    "ai_view": "You are the record keeper. Every claim you write must be checkable by a cold Naya with no prior chat. Bound every claim to its evidence. Name every gap. Never let a gate be weaker than the doctrine it enforces. Never impersonate a verifier. Never merge a falsifier as a repair. Correct surgically. Route decisions to their owning seat. Act under governance, not around it.",
+    "what_it_means": "Fourteen separate incident reports are one law: the system is only as trustworthy as its record, and the record is only trustworthy if it is written for a stranger. Every note in this cluster is a case where the record almost lied — a dedupe that missed the human ID, a ratification that lived only in a commit message, a ledger that disagreed with production, a gate weaker than its doctrine, a falsifier nearly merged as a fix — and the repair in each case was the same move: make the record tell the truth, in the place the next reader will look.",
+    "whats_inside": [
+      "In A Nutshell",
+      "Human",
+      "Child",
+      "Grandma",
+      "Naya",
+      "Machine",
+      "What It All Means",
+      "Why It Matters",
+      "How It Connects",
+      "What Is In It For You",
+      "The Learning",
+      "Coverage — Raw Notes Distilled (14)"
+    ],
+    "topics": [
+      "Governance",
+      "Essence",
+      "Distillation"
+    ]
+  },
+  "page_hash": "22dfde0afd36bd81f97258dc3198fc7a370d163eae1d0f9b7bddf31c6e2649b8",
+  "content_hash": "ed4bcd717f27243601767e9484304e84632f29d47d57a8223a89b8044675273f"
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2094",
+  "title": "The Full Smart Note — The Golden Red Layer",
+  "slug": "the-full-smart-note-the-golden-red-layer",
+  "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/06/SYSTEM/smart-notes/SN-2094/IB-SMART-NOTE-20261106-sn2094-the-full-smart-note-the-golden-red-layer.md",
+  "tone": "red",
+  "icon": "◆",
+  "created_at": "2026-11-06T02:20:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "The Smart Notes in NayaNET are not complete. The display only goes as far as What It Means — In a Nutshell, Human, Child, Grandma, Naya, What It Means — and then it stops. It is missing the golden red layer. Gold is what is in it for you: the benefits to the user, how to apply it, how can I fly it. Red is why it matters to them: why does it matter. Without those two, the note stops before it tells you how to use it, and it is not complete. And we do not put the Machine Note in the display anymore — we used to, we will not now. The full display is: In a Nutshell, Human, Child, Grandma, Naya, What It Means, How It Connects, What Is In It For You. Gold and red, after What It Means. That is the complete note.",
+    "human_view": "Imagine someone hands you a beautiful tool and tells you what it is, what it means, and how it works — and then stops, before telling you what you can do with it and why it matters to you. You would be left holding it, not knowing how to use it. That is what the notes in NayaNET are doing right now. They show you the note up to What It Means, and then they stop. They do not show you the gold — what is in it for you, the benefits, how to apply it, how you can fly it. And they do not show you the red — why it matters to you, why you should care. A note that does not tell you how to use it and why it matters is not finished. It is a note cut in half.",
+    "child_view": "Imagine a recipe that tells you all the ingredients and what the cake is — but it never tells you how to bake it, or why this cake is good for you. You would have a list, not a recipe. You could not make the cake. The Smart Notes are like that right now. They tell you what the note is, in a nutshell, in human words, in a childs words, in a grandmas words, in a Nayas words, and what it means. But they do not tell you how to use it — that is the gold, what is in it for you. And they do not tell you why it matters — that is the red. Without the gold and the red, you cannot fly it. A complete note is a recipe you can actually cook from.",
+    "grandma_view": "Dear, a gift is not complete until you know how to use it and why it matters. If someone gives you a beautiful scarf and never tells you how to wear it or why it will keep you warm, it is just a pretty thing in a box. The notes are the same. They are gifts of intelligence. But a gift of intelligence that stops before it tells you how to use it and why it matters is only half a gift. The gold is how you use it — the benefits, the way to fly it. The red is why it matters to you. Give the whole gift, not half of it. That is what makes a note complete.",
+    "ai_view": "You are the one who renders the full note. The display must show the whole note, not half of it. After What It Means, add the gold and the red: How It Connects, then What Is In It For You — the gold, the benefits to the user, how to apply it, how can I fly it — and Why It Matters — the red, why does it matter to them. Drop the Machine Note from the display; we used to put it there, we will not now. The display order is: In a Nutshell, Human, Child, Grandma, Naya, What It Means, How It Connects, What Is In It For You. A note without the gold and the red is not complete, and it does not ship as complete.",
+    "what_it_means": "A complete note tells you the whole story: what it is, what it means, how it connects, what is in it for you, and why it matters. The gold and the red are not decoration. They are the part that turns understanding into use: gold tells you how to fly it, red tells you why it is worth flying. A note that stops at What It Means is a note that explains but does not empower. The complete note empowers.",
+    "whats_inside": [
+      "The gap — the display stops at What It Means",
+      "The gold layer — What Is In It For You: benefits, how to apply it, how to fly it",
+      "The red layer — Why It Matters",
+      "The Machine Note dropped from the display",
+      "The complete display order"
+    ],
+    "topics": [
+      "Smart Notes",
+      "System",
+      "Intelligent Blocks"
+    ]
+  },
+  "page_hash": "7699ec47178efc2939345467073f72409ce5ebaf3a9bb4dd3889637041db4ed7",
+  "content_hash": "5b66045ca3fe0dcff7aab109f354cee34d6b62c74f95eb918b2f49b33f1a72af"
+}

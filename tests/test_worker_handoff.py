@@ -29,7 +29,7 @@ Coda 1, test 15/15, commit abc123
 """
     res = check_handoff(good)
     assert res.accepted, res.violations
-    assert res.score >= 9.0
+    assert res.score >= 9.5
 
 
 def test_empty_handoff_is_rejected():
@@ -120,7 +120,7 @@ commit abc123, BLOCKED on merge
     assert res.accepted, res.violations
     assert not any("epistemic" in v for v in res.violations)
     # Declaring UNKNOWN/BLOCKED must not REDUCE the score.
-    assert res.score >= 9.0
+    assert res.score >= 9.5
     assert res.advisories == [], "declared uncertainty must not raise an advisory"
 
 

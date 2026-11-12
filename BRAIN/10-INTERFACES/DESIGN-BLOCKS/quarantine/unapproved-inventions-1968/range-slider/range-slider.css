@@ -1,0 +1,92 @@
+/* ============================================================
+   Smart Block — forms/range-slider
+   Inset 8px track, purple→magenta fill, white-hot machined thumb,
+   floating value bubble. Scoped: .rs-*
+   ============================================================ */
+
+/* ---- shared tokens (shared across all Smart Block files) ---- */
+:root{
+  --field:#050507; --obsidian:#0B0D12; --raise:#10141d; --card:#141a28;
+  --white:#F8F7FB; --ink:#F5F7FB;
+  --quiet:rgba(248,247,251,.72); --secondary:rgba(248,247,251,.55);
+  --line:rgba(255,255,255,.12);
+  --soul:#a06bff;
+  --magenta:#e84fff; --purple:#a06bff; --blue:#3fb8ff; --green:#2fe89e; --gold:#ffbf3d;
+  --magenta-rgb:232,79,255; --purple-rgb:160,107,255; --blue-rgb:63,184,255;
+  --green-rgb:47,232,158; --gold-rgb:255,191,61;
+  --verified:#2fe89e; --claim:#ffbf3d; --demo:#e84fff;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --r-lg:18px; --r-md:13px; --r-pill:999px;
+  --type-headline:24px; --type-body:18px; --type-small:14px;
+}
+
+/* ---- wrapper ---- */
+.rs-root{ position:relative; display:block; padding-top:44px; font-family:inherit; }
+
+/* ---- track ---- */
+.rs-track{
+  position:relative; height:8px; border-radius:var(--r-pill);
+  background:#0a0a0e; cursor:pointer;
+  box-shadow:
+    inset 0 2px 5px rgba(0,0,0,.9),
+    inset 0 -1px 0 rgba(255,255,255,.08),
+    0 1px 0 rgba(255,255,255,.06);
+  touch-action:none;
+}
+.rs-fill{
+  position:absolute; left:0; top:0; bottom:0; width:50%;
+  border-radius:var(--r-pill);
+  background:linear-gradient(90deg, var(--purple) 0%, var(--magenta) 100%);
+  box-shadow:0 0 12px rgba(var(--purple-rgb),.65), 0 0 28px -4px rgba(var(--magenta-rgb),.4);
+}
+
+/* ---- thumb ---- */
+.rs-thumb{
+  position:absolute; top:50%; left:50%;
+  width:26px; height:26px; border-radius:50%;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle at 50% 45%, #ffffff 0%, #f3efff 34%, rgba(160,107,255,.55) 68%, rgba(160,107,255,0) 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(var(--purple-rgb),.9),
+    inset 0 1px 2px rgba(255,255,255,.9),
+    inset 0 -2px 4px rgba(0,0,0,.5),
+    0 0 16px rgba(var(--purple-rgb),.7),
+    0 0 34px -4px rgba(var(--purple-rgb),.5),
+    0 4px 12px rgba(0,0,0,.7);
+  transition:transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+.rs-thumb.rs-drag{
+  transform:translate(-50%,-50%) scale(1.15);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(var(--purple-rgb),1),
+    inset 0 1px 2px rgba(255,255,255,.9),
+    inset 0 -2px 4px rgba(0,0,0,.5),
+    0 0 22px rgba(var(--purple-rgb),.9),
+    0 0 48px -4px rgba(var(--purple-rgb),.6),
+    0 4px 12px rgba(0,0,0,.7);
+}
+.rs-thumb:focus-visible{ outline:none;
+  box-shadow:inset 0 0 0 2.5px rgba(var(--purple-rgb),1),
+    0 0 22px rgba(var(--purple-rgb),.9);
+}
+
+/* ---- value bubble ---- */
+.rs-bubble{
+  position:absolute; top:0; left:50%;
+  transform:translate(-50%,0);
+  padding:6px 14px; border-radius:var(--r-pill);
+  font-size:var(--type-small); font-weight:800; color:var(--ink);
+  background:linear-gradient(180deg,#1d2029 0%,#0b0d12 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(var(--purple-rgb),.92),
+    0 0 18px -2px rgba(var(--purple-rgb),.55),
+    0 6px 14px rgba(0,0,0,.6);
+  white-space:nowrap; pointer-events:none;
+}
+
+/* ---- hidden native input for a11y ---- */
+.rs-input{ position:absolute; opacity:0; width:100%; height:8px; top:44px; left:0; margin:0; }
+
+@media (max-width:380px){
+  .rs-root{ padding-top:48px; }
+}

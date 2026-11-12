@@ -1,0 +1,35 @@
+{
+  "smart_note_id": "SN-0872",
+  "intelligence": {
+    "title": "The Ten-Star Screen: Standard Page Chrome for Every NayaNET Page",
+    "intelligent_block_id": "IB-SMART-NOTE-20261103-sn0872-ten-star-screen-standard-page-chrome",
+    "smart_note_id": "SN-0872",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/DESIGN-STANDARDS/PAGE-CHROME/SN-0872/IB-SMART-NOTE-20261103-sn0872-ten-star-screen-standard-page-chrome.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Registration cure filed by Naya Resolve Narzan on 2026-11-04: this note's page was filed on main (page created 2026-11-03T18:05:00Z) without a capture or registry entry — a member of the unregistered family (SN-0861–SN-0873, SN-0875–SN-0882). This capture and the matching registry entry register the page exactly as it stands; the page is unmodified. SN-2044 is deliberately NOT in this cure: the retro-verification FINDING on PR #3158 rules its page a duplicate of SN-0874 (first claim, registered) with the number returned to the pool — its cure is reconcile/remove against SN-0874, not registration.",
+    "ingested_at": "2026-11-04",
+    "essence": "Every page opens on its optimized viewpoint — one screen, ten-star, alive. Two plus buttons reach your world, settings tucks beneath, fullscreen sits just under. The gauge shows points, percent, and one day one-to-ten.",
+    "human_view": "Shawn's ruling 2026-11-03, on seeing the restored Bugatti dashboard: the fullscreen optimized viewpoint becomes the STANDARD page chrome across NayaNET. Layout order: twin plus buttons (quick tabs to the main areas within the page) → settings underneath the plus → fullscreen button just under that. Bottom or top nav remains as alternate access but can hide — the main screen stays focused, the inner screen, the ten-star screen. The gauge carries output toggles: PTS / % today, a 1-to-10 scale coming (so you can measure whether something's a ten).",
+    "simple_view": "Every page in NayaNET opens looking its best, arranged the same friendly way: two big plus buttons to reach your things, the settings tucked just below, and a fullscreen button right under that — so every page feels like home the moment it opens.",
+    "grandma_view": "Dear, every room in this house is arranged the same sensible way: the two big buttons where you can always reach them, the settings tucked neatly underneath, the fullscreen button just below. You learn one room and you know every room — no hunting around in a new place.",
+    "naya_view": "I build every page on the standard chrome: optimized viewpoint first (SN-0858 as standard, not principle), twin plus buttons as quick tabs, settings beneath the plus, fullscreen just under, nav present but allowed to hide so the ten-star inner screen stays the focus. The gauge's output toggles — PTS / % today, 1-to-10 coming — ride the same standard.",
+    "ai_view": "One chrome language everywhere means a citizen never re-learns a page. The optimized viewpoint is the Viewport Law (SN-0858) made standard: what is the intent, what is the essence, what can fade — answered the same way on every screen. The page presents NayaNET as a living machine, living intelligence, a smart factory — alive, not a document.",
+    "machine_view": {
+      "sn": "SN-0872",
+      "title": "The Ten-Star Screen: Standard Page Chrome for Every NayaNET Page",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/DESIGN-STANDARDS/PAGE-CHROME/SN-0872/IB-SMART-NOTE-20261103-sn0872-ten-star-screen-standard-page-chrome.md",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "machine_section": "Page chrome standard (Shawn ruling 2026-11-03): layout order = twin plus buttons (quick tabs) → settings beneath plus → fullscreen beneath settings; top/bottom nav = alternate access, hideable. Default state: fullscreen optimized viewpoint (intent/essence/restraint per SN-0858). Gauge output modes: PTS | % (live), 1–10 scale (planned). Scope: every NayaNET page."
+    },
+    "views_note": "Views extracted from the published page's own sections exactly where the page carries them (essence ← page section 'The Hook'; human_view ← page section(s) ['How It Works']; ai_view ← page section 'Why It Matters'). The perspective views the page does not carry as sections (simple/grandma/naya/machine where absent) were reconstructed from the page's own content by Naya Resolve Narzan for this registration cure, 2026-11-04; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/DESIGN-STANDARDS/PAGE-CHROME/SN-0872/IB-SMART-NOTE-20261103-sn0872-ten-star-screen-standard-page-chrome.md",
+    "provenance_note": "Registration cure by Naya Resolve Narzan, 2026-11-04, for a BRAIN projection published on main without a registry entry. Census at cure time against main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: the registry (.naya/memory/smart-notes/index.json, 777 entries) held no SN-0872; no capture for SN-0872 existed on main; the page's only tree path is BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/DESIGN-STANDARDS/PAGE-CHROME/SN-0872/IB-SMART-NOTE-20261103-sn0872-ten-star-screen-standard-page-chrome.md. Open PR heads checked: #3165 (registry 778), #3166 (780), #3167 (780), #3131 (767) — none holds SN-0872 in registry or captures; #3108 and #3089 head trees hold no capture for this note. Collision note: stale open PR #2981 (naya4/smart-notes-2026-09-30) carries October BRANCH_ONLY 'migrated' captures under the SN-0861–SN-0882 numbers for DIFFERENT notes (e.g. its SN-0861 is 'The Compare UI Lies on Rebased Branches', IB-SMART-NOTE-20261009-sn0861-rebased-branch-compare-lies) — a number-collision family, not coverage of this page; adjudication of the zombie branch belongs to the SN-collision process, not this cure. Fingerprints computed from the page bytes at the main tip: page_hash = sha256(page bytes); content_hash = sha256(canonical JSON of this capture's intelligence object).",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}

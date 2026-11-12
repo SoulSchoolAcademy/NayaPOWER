@@ -1,0 +1,66 @@
+/* Smart Block: assessment/question
+ * Source: Maxis App Design.html (byte-true extraction, not rewritten)
+ * Type: assessment
+ * Extracted: 2026-10-09
+ */
+
+.question-area{
+  width:min(940px,100%);
+  margin:0 auto;
+  text-align:center;
+  flex:0 0 auto;
+}
+
+.question-label{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin:0 0 12px;
+  color:#c3a8ff;
+  font-size:11px;
+  font-weight:950;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.question-label::before,
+.question-label::after{
+  content:"";
+  width:24px;
+  height:1px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(163,125,255,.7)
+    );
+}
+
+.question-label::after{
+  transform:rotate(180deg);
+}
+
+.question-title{
+  margin:0;
+  color:#fff;
+  font-size:clamp(26px,4vw,48px);
+  line-height:1.08;
+  letter-spacing:-.035em;
+  font-weight:900;
+  text-wrap:balance;
+  text-shadow:0 2px 16px rgba(0,0,0,.45);
+}
+
+.question-rule{
+  width:min(180px,35%);
+  height:1px;
+  margin:18px auto 0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #8c5dff,
+      transparent
+    );
+  box-shadow:0 0 15px rgba(124,82,255,.34);
+}

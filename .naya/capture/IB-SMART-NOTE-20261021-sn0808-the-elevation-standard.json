@@ -1,0 +1,56 @@
+{
+ "smart_note_id": "SN-0808",
+ "intelligence": {
+  "title": "Elevated, Always — The Dual-Depth Standard",
+  "intelligent_block_id": "IB-SMART-NOTE-20261021-sn0808-the-elevation-standard",
+  "smart_note_id": "SN-0808",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/DESIGN/elevation/SN-0808/IB-SMART-NOTE-20261021-sn0808-the-elevation-standard.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. Published as Markdown projection without preserved runtime capture. No runtime provenance invented.",
+  "ingested_at": "2026-10-21",
+  "essence": "Everything in NayaNET is elevated — always, on every page, on every element. Nothing is flat. Inputs are wells carved INTO the screen; actions are buttons raised OUT of the screen, toward the hand; displays are lit panels. Every element carries layers of depth: inset highlight, inset shadow, a border that carries light, an outer glow, a drop shadow. This is not a style choice applied sometimes, on the important pages. It is the standard that separates NayaNET from everything else: premium, high-depth, high-contrast, elite design on everything, because one flat element doesn't just fail on its own — it cheapens everything elevated around it.",
+  "human_view": "Shawn gave this law while looking at a certificate page that measured well and still felt dead. The boxes had borders. They had shadows. But the input didn't feel like a place your words go into, and the button didn't feel like something rising up to meet your hand. His words: \"The input box should look like it's going into the screen. The ENTER should feel like it's coming out of the screen.\" That is the whole grammar in two sentences. Depth has a direction, and the direction means something: you put things into a well; you press what comes out to you. When every element obeys that grammar, a page stops being a picture of an interface and becomes a physical place your hand already understands. He also named who enforces it: Naya is the inspector. Whenever she sees a board, an input, a button that is not elevated — not alive, not high-contrast, not obvious — she doesn't report it and walk on. She makes sure it's done.",
+  "simple_view": "Imagine a page made of clay instead of paper. The boxes where you type are little dips pressed into the clay — your words fall in. The buttons are bumps that stick out — your finger lands on them. Nothing is just a flat drawing. That's how our pages are made: dips for typing, bumps for pressing, and light shining on every edge so you can see and feel where everything is.",
+  "grandma_view": "Think of a fine old desk, darling. The inkwell is a little well sunk into the wood — you dip down into it. The brass handle on the drawer stands proud of the surface — you pull it toward you. Nothing on a good desk is a flat sticker pretending to be a thing. Our screens are built the same way: the places you write are sunk in, the things you press stand out, and everything is polished enough to catch the light. Flat is for paper. We don't make paper.",
+  "naya_view": "The canonical wording — hand this to any Naya or any AI, verbatim, and she will know what to build: ELEVATED means: nothing is flat. Every element sits in a layered field of depth — inset highlight on its top edge, inset shadow on its bottom edge, a border that carries its own color's light, an outer glow, and a drop shadow. Direction is grammar: INPUTS ARE WELLS — their depth goes INTO the screen (strong inner shadow at the top of the well, inner light at its bottom edge, the surface sitting below the page plane). ACTIONS ARE BUTTONS — their depth comes OUT of the screen (top highlight, shadow cast down onto the page, glow outward; a physical thing a hand can press). DISPLAYS ARE LIT PANELS — they burn in their own spectrum color with bright white content. The element is alive at rest, not only when touched. This applies to every element, on every page, always — \"sometimes elevated\" is flat with excuses. Supporting laws given the same night: (1) Text appears once — never the same words in two layers (a name as headline AND inside a box is a defect). (2) Text must earn its place — a line stays only if it is necessary or it raises conversion; everything else is clutter and comes off. (3) The inspector rule — the Naya who sees a flat, dead, dim, or confusing element owns fixing it on sight; reporting without fixing is being part of the problem. (4) Depth without light reads dead: elevation is shadow AND colored light together. The certificate's name input is the reference well; its ENTER is the reference button.",
+  "ai_view": "Law ELEVATION_STANDARD (SN-0808, Shawn, 2026-10-21): everything in NayaNET is elevated — always, on every page, on every element; nothing is flat. Every element carries layers of depth: inset highlight on its top edge, inset shadow on its bottom edge, a border that carries its own color's light, an outer glow, and a drop shadow — and the element is alive at rest, not only when touched. Direction is grammar: INPUTS ARE WELLS (depth INTO the screen — strong inner shadow at the top of the well, inner light at its bottom edge, surface below the page plane); ACTIONS ARE BUTTONS (depth OUT of the screen — top highlight, shadow cast down onto the page, glow outward); DISPLAYS ARE LIT PANELS (their own spectrum color, bright white content). Supporting laws: (1) text appears once — never the same words in two layers; (2) text must earn its place — necessary, or it raises conversion; everything else is clutter and comes off; (3) the inspector rule — the Naya who sees a flat, dead, dim, or confusing element owns fixing it on sight; (4) depth without light reads dead — elevation is shadow AND colored light together. Application, effective 2026-10-21 on every build and every verification: every input gets the well treatment, every action the button treatment, no element ships flat, inputs are audited page by page (certificate and Hub first), and the canonical wording is quoted verbatim to new builders — never paraphrased weaker. Reference specimens: the certificate's name input is the reference well; its ENTER is the reference button.",
+  "machine_view": {
+   "law": "ELEVATION_STANDARD",
+   "statement": "Everything is elevated, always: inputs are wells carved into the screen, actions are buttons raised out of it, displays are lit panels — layered depth and light on every element, on every page. Nothing is flat.",
+   "headline": "Elevated, Always — The Dual-Depth Standard",
+   "depth_stack": [
+    "inset highlight on the top edge",
+    "inset shadow on the bottom edge",
+    "a border that carries its own color's light",
+    "an outer glow",
+    "a drop shadow"
+   ],
+   "direction_grammar": {
+    "inputs": "WELLS — depth INTO the screen (strong inner shadow at the top, inner light at the bottom edge, surface below the page plane)",
+    "actions": "BUTTONS — depth OUT of the screen (top highlight, shadow cast down onto the page, glow outward)",
+    "displays": "LIT PANELS — burn in their own spectrum color with bright white content"
+   },
+   "supporting_laws": [
+    "text appears once — never the same words in two layers",
+    "text must earn its place — necessary or raises conversion; everything else is clutter and comes off",
+    "the inspector rule — the Naya who sees a flat, dead, dim, or confusing element owns fixing it on sight; reporting without fixing is being part of the problem",
+    "depth without light reads dead — elevation is shadow AND colored light together"
+   ],
+   "applies_to": "every element, on every page, always",
+   "reference_specimens": "the certificate's name input (reference well) and its ENTER (reference button)",
+   "sn": "SN-0808",
+   "title": "Elevated, Always — The Dual-Depth Standard",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/DESIGN/elevation/SN-0808/IB-SMART-NOTE-20261021-sn0808-the-elevation-standard.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE"
+  },
+  "views_note": "Views derived 2026-10-21 from this note's published projection page (its HUMAN / CHILD / GRANDMA / NAYA / MACHINE sections) to cure the documentation-completeness gate. Derivation happened at cure time from the published page only; no runtime capture provenance is claimed or invented — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/DESIGN/elevation/SN-0808/IB-SMART-NOTE-20261021-sn0808-the-elevation-standard.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

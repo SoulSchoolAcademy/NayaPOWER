@@ -221,16 +221,32 @@ test("CLAIM 2 -- every runtime site hardcoding independent_verification has a re
   // with a reason. A bare allowlist would let a real regression hide next to a false
   // positive. A verdict is auditable; a silenced rule is not.
   const offenders = new Set();
+  const scanLiteral = (rel) => {
+    const text = readFileSync(join(ROOT, rel), "utf8");
+    // TS/JS runtimes: independent_verification: true  |  Python/YAML: "independent_verification": True
+    if (/independent_verification\s*:\s*true/.test(text) || /["']independent_verification["']\s*:\s*True/.test(text)) {
+      offenders.add(rel);
+    }
+  };
   const dir = join(ROOT, "supabase", "functions");
   for (const fn of readdirSync(dir, { withFileTypes: true })) {
     if (!fn.isDirectory()) continue;
     for (const f of readdirSync(join(dir, fn.name))) {
       if (!f.endsWith(".ts")) continue;
-      const rel = `supabase/functions/${fn.name}/${f}`;
-      if (/independent_verification\s*:\s*true/.test(readFileSync(join(dir, fn.name, f), "utf8"))) {
-        offenders.add(rel);
-      }
+      scanLiteral(`supabase/functions/${fn.name}/${f}`);
     }
+  }
+  // The same trust class lives outside TS runtimes: live workflows build proof
+  // receipts, and tools/*.py builds verification responses. A literal on any of
+  // these surfaces is self-certification with the same blast radius, so the
+  // scanner covers them too. Excludes this test file's own quoted patterns.
+  for (const f of readdirSync(join(ROOT, ".github", "workflows"))) {
+    if (!f.endsWith(".yml")) continue;
+    scanLiteral(`.github/workflows/${f}`);
+  }
+  for (const f of readdirSync(join(ROOT, "tools"))) {
+    if (!f.endsWith(".py")) continue;
+    scanLiteral(`tools/${f}`);
   }
 
   const verdicts = RECORD.hardcoded_independent_verification_sites ?? {};
@@ -257,6 +273,71 @@ test("CLAIM 2 -- every runtime site hardcoding independent_verification has a re
       `${site} must record WHY it is safe or what is wrong with it`
     );
   }
+});
+
+test("CLAIM 2 -- REVIEWED_OK literals cannot be moved above their guards", () => {
+  // A REVIEWED_OK verdict is a claim about ORDER: the literal is safe only
+  // because verification executes before it is written. Moving the literal
+  // above its guard turns a safe attestation into self-certification, so each
+  // REVIEWED_OK site pins the ordering. SN-0528's rule: a verdict is
+  // auditable; the ordering it depends on must be executable.
+
+  // live-act-proof.yml: the proof dict's independent_verification flag must be
+  // DERIVED from a named predicate computed after the assertion gauntlet —
+  // never a bare literal (SN-0528). The predicate must summarize the same
+  // verification outcomes the asserts check, and the proof must name its scope
+  // and carry the act receipt's own (False-by-design) value, so a cold reader
+  // cannot mistake the workflow-level PASS for runtime-level verification
+  // (anti-citogenesis).
+  const actProof = read(".github/workflows/live-act-proof.yml");
+  const bareLiterals = [...actProof.matchAll(/["']independent_verification["']\s*:\s*True\b/g)];
+  assert.deepEqual(
+    bareLiterals,
+    [],
+    "live-act-proof.yml must not contain a bare independent_verification:True literal"
+  );
+  const derivedAt = actProof.indexOf('"independent_verification":workflow_verified_plan');
+  assert.ok(derivedAt > 0, "the act proof flag must be derived from the workflow_verified_plan predicate");
+  const stepStart = actProof.lastIndexOf("run: |", derivedAt);
+  const stepText = actProof.slice(stepStart, derivedAt);
+  const asserts = [...stepText.matchAll(/^\s*assert\s/mg)];
+  assert.ok(
+    asserts.length >= 10,
+    `the act proof step must keep its assertion gauntlet before the derivation (found ${asserts.length})`
+  );
+  const predStart = actProof.indexOf("workflow_verified_plan=(");
+  assert.ok(
+    predStart > stepStart && predStart < derivedAt,
+    "workflow_verified_plan must be computed inside the proof step before the proof dict"
+  );
+  const predText = actProof.slice(predStart, derivedAt);
+  for (const outcome of ["recomputed==stored", 'ae["observed_behavior"]']) {
+    assert.ok(
+      predText.includes(outcome),
+      `the derivation predicate must summarize the verification outcome (${outcome})`
+    );
+  }
+  assert.ok(
+    actProof.includes('"independent_verification_scope"'),
+    "the proof must name the scope of its independent_verification claim"
+  );
+  assert.ok(
+    actProof.includes('"act_receipt_independent_verification":ae["independent_verification"]'),
+    "the proof must carry the act receipt's own (False-by-design) value"
+  );
+
+  // tools/live_intelligence_reconcile.py: verify_supersession must raise on any
+  // failed check before reaching the return that carries the literal.
+  const reconcile = read("tools/live_intelligence_reconcile.py");
+  const fnStart = reconcile.indexOf("def verify_supersession(");
+  const literalLine = reconcile.indexOf('"independent_verification": True', fnStart);
+  assert.ok(fnStart >= 0 && literalLine > fnStart, "the reconcile literal must exist inside verify_supersession");
+  const guardText = reconcile.slice(fnStart, literalLine);
+  const raises = [...guardText.matchAll(/raise ValueError\(/g)];
+  assert.ok(
+    raises.length >= 5,
+    `verify_supersession must keep its raise-gauntlet before the literal (found ${raises.length})`
+  );
 });
 
 test("the claim record is itself honest", () => {
@@ -465,7 +546,18 @@ test("CLAIM 3 -- a regression that drops kernel influence fails the build", () =
   // influential for the runtime kernel -- the floor is recorded so it can only rise,
   // exactly like guard liveness.
   const probePath = join(ROOT, "tools", "measure_node_influence.py");
-  const out = execFileSync("python", [probePath, "--json"], {
+  // Resolve the interpreter at runtime: CI images carry `python`, minimal VMs
+  // carry only `python3`. A gate that cannot execute is a gate that cannot
+  // fire, so the probe must run wherever the suite runs.
+  const pythonBin = (() => {
+    try {
+      execFileSync("python3", ["--version"], { stdio: "ignore" });
+      return "python3";
+    } catch {
+      return "python";
+    }
+  })();
+  const out = execFileSync(pythonBin, [probePath, "--json"], {
     cwd: ROOT,
     encoding: "utf8",
     timeout: 180000,
@@ -481,13 +573,25 @@ test("CLAIM 3 -- a regression that drops kernel influence fails the build", () =
   // The reference kernel is intentionally still only SELF+LAW. The canonical nine-node
   // behavior engine, however, must demonstrate a real control/treatment effect for every
   // node. A count below nine means at least one node is still decorative in the measured
-  // runtime path and the load-bearing claim remains false.
+  // runtime path and the load-bearing claim remains false. The engine may legitimately
+  // grow beyond nine (e.g. the ADVISE influence bridge, P0-B) -- what must not regress
+  // is that all nine canonical nodes are invoked and demonstrate influence.
   const behaviorEngine = Object.entries(report.report).find(([k]) =>
     k.includes("kernel_behavior_engine")
   );
   assert.ok(behaviorEngine, "the report must include the canonical nine-node behavior engine");
   const [, behaviorStats] = behaviorEngine;
-  assert.equal(behaviorStats.invoked_count, 9);
+  const CANONICAL_NINE = ["SELF", "LAW", "ACT", "KNOW", "PROVE", "CONNECT", "VERIFY", "LEARN", "EVOLVE"];
+  for (const node of CANONICAL_NINE) {
+    assert.ok(
+      behaviorStats.invoked_nodes.includes(node),
+      `${node} was not invoked; a drop below the canonical nine is a kernel-influence regression`
+    );
+  }
+  assert.ok(
+    behaviorStats.invoked_count >= 9,
+    `the behavior engine invoked ${behaviorStats.invoked_count} nodes; it must invoke at least the canonical nine`
+  );
   assert.equal(
     behaviorStats.influence_demonstrated_count,
     9,

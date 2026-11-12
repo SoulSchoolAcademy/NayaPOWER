@@ -1,0 +1,35 @@
+{
+  "smart_note_id": "SN-0863",
+  "intelligence": {
+    "title": "One Number, Always Visible, Never Flashing",
+    "intelligent_block_id": "IB-SMART-NOTE-20261102-sn0863-one-always-visible-orb-number",
+    "smart_note_id": "SN-0863",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/ORB-NUMBER/SN-0863/IB-SMART-NOTE-20261102-sn0863-one-always-visible-orb-number.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Registration cure filed by Naya Resolve Narzan on 2026-11-04: this note's page was filed on main (page created 2026-11-02T18:48:44Z) without a capture or registry entry — a member of the unregistered family (SN-0861–SN-0873, SN-0875–SN-0882). This capture and the matching registry entry register the page exactly as it stands; the page is unmodified. SN-2044 is deliberately NOT in this cure: the retro-verification FINDING on PR #3158 rules its page a duplicate of SN-0874 (first claim, registered) with the number returned to the pool — its cure is reconcile/remove against SN-0874, not registration.",
+    "ingested_at": "2026-11-04",
+    "essence": "Every orb shows exactly one number — dynamic, beautiful, always there. No hover to reveal it. No flash. No second number competing with it. One number and its label, sitting in the orb like a real object.",
+    "human_view": "Shawn tested the orbs and found two wrongs: a small static number you couldn't read, and a big number that only appeared on hover — flashing. Both wrong. He said it four times over (\"I keep telling you the same thing over and over\"), then locked the rule: one number, dynamic, displayed without hovering, without flashing, with a label saying what it is.\n\n\"The static one has to go. The flashing one needs to stay but needs not to flash.\" — then, sharper: \"It must be there always, not just when I hover over it.\"\n\nAnd the click contract, from the same session: \"What should be there is a number that's dynamic, beautiful, and when I click on it, it should go into the stats page. There should not be two sets of numbers.\"",
+    "simple_view": "Every round orb on the dashboard shows one number, big and clear, all the time — you never have to touch it or wave at it to see the number, and it never blinks. Tap the orb and it opens the full story of that number.",
+    "grandma_view": "Dear, each little round dial shows you one number, plain as day, all the time — no squinting, no hovering your hand over it to make the number appear, and it doesn't flash at you. One number per dial, with a little label saying what it is.",
+    "naya_view": "I render exactly one number per orb: dynamic, labeled, always visible, never flashing, never hover-gated, and never duplicated by a second number set. The number is the door — a click goes to that orb's stats. On touch devices there is no hover, so hover-reveal is a broken promise by design.",
+    "ai_view": "The orb's number is the citizen's instant answer — \"where am I?\" in two seconds. If it hides behind a hover, it fails the phone-first law (no hover on touch). If it flashes, it feels broken. If two numbers fight, neither is trusted. One number, always on, is the difference between a dashboard and a decoration.",
+    "machine_view": {
+      "sn": "SN-0863",
+      "title": "One Number, Always Visible, Never Flashing",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/ORB-NUMBER/SN-0863/IB-SMART-NOTE-20261102-sn0863-one-always-visible-orb-number.md",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "machine_section": "Contract per orb: displayed_numbers = 1 (dynamic value) + 1 label. States: always-visible; no hover-reveal; no flash animation. Interaction: click → stats page for that orb (SN-0864 level 2). Violation classes: static unreadable number, hover-only number, dual number sets."
+    },
+    "views_note": "Views extracted from the published page's own sections exactly where the page carries them (essence ← page section 'Hook'; human_view ← page section(s) ['What happened', 'The rule, in his words']; ai_view ← page section 'Why it matters'). The perspective views the page does not carry as sections (simple/grandma/naya/machine where absent) were reconstructed from the page's own content by Naya Resolve Narzan for this registration cure, 2026-11-04; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/ORB-NUMBER/SN-0863/IB-SMART-NOTE-20261102-sn0863-one-always-visible-orb-number.md",
+    "provenance_note": "Registration cure by Naya Resolve Narzan, 2026-11-04, for a BRAIN projection published on main without a registry entry. Census at cure time against main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: the registry (.naya/memory/smart-notes/index.json, 777 entries) held no SN-0863; no capture for SN-0863 existed on main; the page's only tree path is BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/ORB-NUMBER/SN-0863/IB-SMART-NOTE-20261102-sn0863-one-always-visible-orb-number.md. Open PR heads checked: #3165 (registry 778), #3166 (780), #3167 (780), #3131 (767) — none holds SN-0863 in registry or captures; #3108 and #3089 head trees hold no capture for this note. Collision note: stale open PR #2981 (naya4/smart-notes-2026-09-30) carries October BRANCH_ONLY 'migrated' captures under the SN-0861–SN-0882 numbers for DIFFERENT notes (e.g. its SN-0861 is 'The Compare UI Lies on Rebased Branches', IB-SMART-NOTE-20261009-sn0861-rebased-branch-compare-lies) — a number-collision family, not coverage of this page; adjudication of the zombie branch belongs to the SN-collision process, not this cure. Fingerprints computed from the page bytes at the main tip: page_hash = sha256(page bytes); content_hash = sha256(canonical JSON of this capture's intelligence object).",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}

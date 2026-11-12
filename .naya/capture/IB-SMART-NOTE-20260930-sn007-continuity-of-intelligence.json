@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-007",
+ "title": "SMART NOTE — Continuity of Intelligence",
+ "slug": "continuity-of-intelligence",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/INTELLIGENCE-CONTINUITY/GOVERNED-CONTINUITY/SN-007/IB-SMART-NOTE-20260930-sn007-continuity-of-intelligence.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-09-30T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "",
+  "human_view": "",
+  "child_view": "",
+  "grandma_view": "",
+  "ai_view": "",
+  "what_it_means": "",
+  "whats_inside": [],
+  "topics": [
+   "System-Intelligence"
+  ]
+ },
+ "page_hash": "9244ffc926d70613f6e7bd21977906df1048a0679f6013f53ced708b103759be",
+ "content_hash": "4ec274abf4176966721ba588560a04002b8f7c9d23bb4797866b0684bffd7240",
+ "reconstructed_from_page": true
+}

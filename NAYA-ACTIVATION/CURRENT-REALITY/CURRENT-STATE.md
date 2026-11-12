@@ -12,7 +12,7 @@ Resolve current reality in this order:
 5. Ratified `.naya/project-intelligence/`.
 6. Dated documents only as snapshots.
 
-The current navigation reconciliation is `NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-10-04.md`.
+The current navigation reconciliation is `NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-10-04.ai.md`.
 
 The repository contains the canonical Smart Note operating contract and machine-first capture path. Current candidate work is converging on distillation, multiple perspectives, generated projections and behavioral learning proof.
 

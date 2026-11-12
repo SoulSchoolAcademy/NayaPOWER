@@ -1,0 +1,38 @@
+{
+  "contract": "smart-builder/10-signup-page",
+  "template_id": "10",
+  "template_name": "Signup page",
+  "template_color": "#b8ee57",
+  "title": "Get early access",
+  "kicker": "Sample · Signup page",
+  "lede": "Waitlists, newsletters — one field, one button.",
+  "sections": [
+    {
+      "kicker": "Why",
+      "title": "Be first through the door",
+      "lede": "Join 8,000 readers getting the Sunday brief on what's next.",
+      "pieces": [
+        "NAYA-TYP-019",
+        "NAYA-LST-012"
+      ]
+    },
+    {
+      "kicker": "Join",
+      "title": "One field. One button.",
+      "lede": "Your email. That's the whole ask.",
+      "pieces": [
+        "NAYA-FRM-004",
+        "NAYA-BTN-005"
+      ]
+    },
+    {
+      "kicker": "Welcome",
+      "title": "You're in",
+      "lede": "Check your inbox — the first brief lands Sunday.",
+      "pieces": [
+        "NAYA-ONB-002",
+        "NAYA-JWL-003"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+# One bottom bar — HUMAN CHECKS (v2, fix seat, 2026-11-11)
+#
+# H1–H5 per the brief. v1 was QUEUED for the eye (browsers dead at maker
+# time); the verifier ran them rendered, and this fix seat re-ran them on
+# the v2 staged pages in a live browser (Playwright Firefox, 1440 + 390,
+# scroll 0 + scrolled). Screenshots: /tmp/obb-fix/shots-v2/ (+
+# /tmp/obb-fix/shots/ for the local v2 files).
+#
+# H2's wording, corrected for the fix: the bar is a SCROLL STRIP with
+# snap-to-whole-pills. "Whole at rest" means the strip rests ON a pill
+# (its left edge exactly on a snap position), never BETWEEN pills — the
+# trailing pill peeking in at the right edge (and the outgoing pill
+# peeking out at the left) is the scroll affordance, the same pattern as
+# the Personal My World rails. At 390 the strip shows 5 whole pills + the
+# Growth peek at scrollLeft 0; every pill lands 100% whole at its snap
+# stop; all 10 are reachable. Measured, not eyeballed: see RECORD.md §v2.
+#
+H1: PASS — the bar reads as one real object. One dark obsidian strip, one
+top border, one shadow, ten raised lit pills each in its own color — seen
+at 1440 on all three staged pages and at 390 on Inviter/Hub/Dashboard
+(shots-v2: hub-1440-top, inviter-390-top, dash-390-bottom).
+H2: PASS (as a snap strip — see the wording note above). At 1440 all 10
+pills fully legible on all three pages. At 390: 5 whole + Growth peek at
+rest; every stop lands its pill 100% whole (scrollLeft exact to 0.1px on
+all 10 stops, all three pages); a +20px nudge off a stop re-snaps to a
+pill; all 10 reachable. Pills were NOT shrunk and the bar was NOT split.
+H3: PASS — the order matches the harvested source. Trio order then
+network-seed order, exactly as derived in RECORD.md; the component's
+data-obb order is identical in all three files and in the live DOM.
+H4: PASS — nothing overlaps at scroll 0 or scrolled. Rects: zero overlap
+between the bottom bar, the Smart Bar / notif bar, and the + buttons at
+1440 and 390, scroll 0 and scrolled, on all three staged v2 pages (see
+RECORD.md §v2). Eye note (pre-existing, not a rect failure): on the
+Inviter at 390 scroll 0 the fixed bars cover first-viewport board text
+sliding underneath them; pad() clears only the page bottom, which renders
+clean (inviter-390-bottom: PRIVATE BY DEFAULT fully visible above the bars).
+H5: PASS — the bar is identical across the three pages. Component block
+sha256 51bb0ca00ee3a1e709d29474149bb341165cf64141a706f1b2c99ecee9bf05e6
+(10,597 bytes, v2) extracted from the Inviter, the Dashboard, and the Hub
+staged files — all three equal; 9 named pills + 1 overflow pill in each.

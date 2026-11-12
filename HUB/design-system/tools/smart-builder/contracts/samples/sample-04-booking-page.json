@@ -1,0 +1,38 @@
+{
+  "contract": "smart-builder/04-booking-page",
+  "template_id": "04",
+  "template_name": "Booking page",
+  "template_color": "#55b9ee",
+  "title": "Book your table",
+  "kicker": "Sample · Booking page",
+  "lede": "Appointments without the friction — pick a time, done.",
+  "sections": [
+    {
+      "kicker": "Pick a day",
+      "title": "When works for you?",
+      "lede": "Real availability, straight from the calendar.",
+      "pieces": [
+        "NAYA-CAL-001",
+        "NAYA-CAL-003"
+      ]
+    },
+    {
+      "kicker": "Your details",
+      "title": "Who's coming?",
+      "lede": "Just enough to hold your spot — nothing more.",
+      "pieces": [
+        "NAYA-FRM-002",
+        "NAYA-FRM-005"
+      ]
+    },
+    {
+      "kicker": "Confirm",
+      "title": "Lock it in",
+      "lede": "One tap and your table is waiting.",
+      "pieces": [
+        "NAYA-BTN-010",
+        "NAYA-CRD-007"
+      ]
+    }
+  ]
+}

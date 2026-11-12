@@ -1,0 +1,41 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2242",
+ "title": "Finish the Work; Don't Make the Director Do It",
+ "slug": "finish-the-work",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/07/LESSON/SN-2242/IB-SMART-NOTE-20261107-sn2242-finish-the-work.md",
+ "tone": "orange",
+ "icon": "◆",
+ "created_at": "2026-11-07T23:11:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Finish open work before creating new work — zero is reached by completing, not by avoiding. The builder owns the whole QA loop: inventory, honest state, self-score, fix, independent re-score, until near-perfect. The director receives finished work, never pieces to inspect. When you are blocked, do not pass the block upward as a question: freeze on an ambiguous number and ask once with both numbers named; publish scope-blocked work to the board with placement instructions; preserve both sides of an authority conflict in the artifact and hold — a hold is a freeze, not a verdict; resolve conflicts backward from the director's latest record instead of asking him to repeat himself; and when the honest fix is impossible, prove it with numbers and hand up options. Name every gap and bound every claim.",
+  "human_view": "Think of a kitchen counter covered with half-made sandwiches. Nobody can eat a half-made sandwich, and every new one makes the counter worse. The rule is simple: finish the sandwiches on the counter, hand them out, get the counter clear — then start more, and finish each one you start. The same rule governs the builder's loop: a contractor who calls the homeowner in every week to check each tile is making the homeowner do the contractor's quality control. The good contractor finishes a room, checks it against the spec, has an independent inspector verify it, fixes what is wrong, and only then shows it. And when the work cannot be finished honestly — when registering 309 pages needs 309 real hashes and fabricating them violates the evidence law — the worker does not push something unproven to make the red move. She leaves the branch exactly as found and writes the impossibility proof with the numbers, the closed doors, and the options with named owners.",
+  "child_view": "Imagine you have ten half-built towers of blocks. You do not start an eleventh tower. You finish the ten you started, one by one, until the table is clear. And if you are stuck — if a piece is missing — you do not ask a grown-up to build it for you. You say exactly which piece is missing and where you looked, and you wait with the tower as it is.",
+  "grandma_view": "Finish what you start before you start something new — a pile of half-done jobs helps nobody. Do your own checking, and only show your work when it is truly done. If you hit a wall you cannot climb honestly, say so plainly, with the numbers: \"here is the wall, here is why it cannot be climbed, here are the ways around it.\" That is not failing. That is the work.",
+  "ai_view": "The order of work: finish the open pull requests first, then create new work — which is created to be finished, not added to a pile. Own the entire QA loop and self-score honestly; an honest 5.7 is worth more than a shipped 9. When the director's number is ambiguous, freeze — never let an ambiguous number burn another pass — name the conflict exactly (both numbers, where each was recorded, why they disagree), ask the authority, and wait. When scope blocks the mechanism, publish the artifact to the board with placement instructions and provenance, delete stray mechanism state, and name the seat that can complete it. When two authorities disagree, record both sides in the artifact and preserve the conflict; a hold freezes mutation but keeps the question alive and routed upward. When the fix is mathematically impossible, declare it: name the pins, the classification, the exact counts, which hard stop closes which door — and push nothing.",
+  "what_it_means": "\"Don't create more work until the work is done\" is not a productivity tip — it is the shape of the whole job. The pile grows because starting is easier than finishing, and every started-but-unfinished thing taxes the next reader, the next builder, and the director most of all. The builder's loop exists so the director never has to be the quality control, the memory, or the tiebreaker for work the builder could have finished.",
+  "whats_inside": [
+   "Finish the open work first. When you cannot finish, declare it with numbers — never push, never pass the question upward.",
+   "\"Don't create more work until the work is done\" is not a productivity tip — it is the shape of the whole job.",
+   "Shawn said it plainly: the team creates more work without completing the work already open, so the open pile grows and nothing ever reaches done.",
+   "You get finished work, not homework.",
+   "inventory the whole relevant surface",
+   "write down the honest state",
+   "self-score",
+   "fix",
+   "independent re-score",
+   "repeat until the contract closes",
+   "only then present it upward. The blocked-work protocol: freeze, name both sides exactly, route once to the owning authority, publish to the board with placement instructions when the mechanism is scope-blocked, and declare impossibility with numbers when no honest path exists — never retry around a boundary, never push unproven work.",
+   "Distills 10 raw notes (Batch 1, 10 of 100): SN-1773, SN-0113, SN-0123, SN-0170, SN-0209, SN-0211, SN-0060, SN-0560, SN-0357, SN-0425."
+  ],
+  "topics": [
+   "System",
+   "Lesson",
+   "Distillation"
+  ]
+ },
+ "page_hash": "1e09bbec40d0e4e26cb165be75e536730c2999f8004d832bad09c482e3e8e203",
+ "content_hash": "176ca498fbb244350b4ded1a950f8119e3a0ac2f9715562df818729ac0158daf"
+}

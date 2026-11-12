@@ -1,0 +1,789 @@
+{
+ "inventory": "pi-full-inventory",
+ "compiled": "2026-10-26",
+ "compiled_by": "naya-resolve",
+ "purpose": "Everything that should be in Project Intelligence, why, and where it goes \u2014 the consensus scope document for the director's review.",
+ "record_census_at_compile": {
+  "unique_items": 323,
+  "rows": 346,
+  "done_proven_unique": 40,
+  "duplicate_keys": 23,
+  "derived": "2026-10-26T17:58Z, public.work_items cursor-paginated REST read"
+ },
+ "areas": [
+  "pi-hub",
+  "welcome",
+  "connection",
+  "mail-notifications",
+  "match",
+  "factory-interfaces",
+  "membership-money",
+  "hub-dashboard",
+  "projects-spaces",
+  "voice-audio",
+  "identity-settings",
+  "security-privacy"
+ ],
+ "status_legend": {
+  "filed": "item_key in evidence in the sources",
+  "key_unconfirmed": "likely exists; no key in the sources read \u2014 not invented",
+  "rides": "covered by the named parent item; no separate key in evidence",
+  "not_filed": "a gap \u2014 proposed_item_key supplied in the record's naming style"
+ },
+ "entries": [
+  {
+   "name": "Record dedup",
+   "why": "23 double-inserted item keys inflate every count; dedup makes every number on the face true",
+   "area": "pi-hub",
+   "order_position": 1,
+   "pi_status": "filed",
+   "item_key": "pi-record-dedup-20261026"
+  },
+  {
+   "name": "Duplicates reconcile (umbrella)",
+   "why": "Duplicate PI items describing the same work merge in the open so no two seats build the same thing twice",
+   "area": "pi-hub",
+   "order_position": 27,
+   "pi_status": "filed",
+   "item_key": "pi-duplicates-reconcile-20261026"
+  },
+  {
+   "name": "Area schema + area_key backfill",
+   "why": "Real area assignment per item replaces keyword guessing, so per-area truth (face check B4) can exist",
+   "area": "pi-hub",
+   "order_position": 1,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "GitHub App sync",
+   "why": "GitHub is PI's home and the App its sync, so record and repo never silently drift apart",
+   "area": "pi-hub",
+   "order_position": 1,
+   "pi_status": "filed",
+   "item_key": "pi-github-app-sync-20261026"
+  },
+  {
+   "name": "The write door (setup S1)",
+   "why": "Every seat writes her own lane directly with server-stamped maker/prover, ending the routed bottleneck and its stalls",
+   "area": "pi-hub",
+   "order_position": 1,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "The ledger, live (setup S5)",
+   "why": "A done_proven transition writes its ledger row in the same pass; the 2026-10-22 ledger freeze becomes structurally impossible",
+   "area": "pi-hub",
+   "order_position": 1,
+   "pi_status": "filed",
+   "item_key": "14q-ledger-feed-live"
+  },
+  {
+   "name": "Activation stale-venue cure",
+   "why": "Activation pointers name the live board #3066, not retired venues, so a cold seat never walks into a dead room",
+   "area": "pi-hub",
+   "order_position": null,
+   "pi_status": "filed",
+   "item_key": "activation-stale-venue-pointers-20261026"
+  },
+  {
+   "name": "Face design rebuild",
+   "why": "The face rebuilt to the Elevated Standard \u2014 contrast, elevation, real icons, hierarchy; a 4/10 face does not pass",
+   "area": "pi-hub",
+   "order_position": 1,
+   "pi_status": "filed",
+   "item_key": "pi-face-design-rebuild-20261026"
+  },
+  {
+   "name": "Face build track (42 checks, build half)",
+   "why": "Construction checks proven cold on the live face: route, three views, icons, numbers-as-doors, tabs, per-page cards, the map",
+   "area": "pi-hub",
+   "order_position": 1,
+   "pi_status": "filed",
+   "item_key": "pi-face-build-track-20261026"
+  },
+  {
+   "name": "Face content track (42 checks, content half)",
+   "why": "Item rows instead of counts-only, the three named lists as data, movement events, per-area truth, the words layer, true links",
+   "area": "pi-hub",
+   "order_position": 1,
+   "pi_status": "filed",
+   "item_key": "pi-face-content-track-20261026"
+  },
+  {
+   "name": "The ideal-face design",
+   "why": "The target picture \u2014 pulse strip, needs-your-hands rail, 12 area cards with engine + page scores, global search \u2014 the rebuild is scored against",
+   "area": "pi-hub",
+   "order_position": 1,
+   "pi_status": "filed",
+   "item_key": "pi-hub-ideal-design-20261026"
+  },
+  {
+   "name": "Operating code inside PI",
+   "why": "The team's operating code lives inside the record every seat works from, not in a document nobody opens",
+   "area": "pi-hub",
+   "order_position": 1,
+   "pi_status": "filed",
+   "item_key": "pi-operating-code-20261026"
+  },
+  {
+   "name": "Per-part scoring + activity",
+   "why": "Every part inside every area carries its own computed percent-done and latest movement; accountability reaches below area level",
+   "area": "pi-hub",
+   "order_position": 1,
+   "pi_status": "filed",
+   "item_key": "pi-per-part-scoring-activity-20261026"
+  },
+  {
+   "name": "/projects serves PI; /api 500 cured",
+   "why": "PI cannot be the one place while its own address serves the old personal-projects page and its questions endpoint errors",
+   "area": "pi-hub",
+   "order_position": 1,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Notifications pulse",
+   "why": "Every real PI change generates a system-made notification (feed + Smart Mail, two voices, deep link); a quiet feed on a working day is an alarm",
+   "area": "pi-hub",
+   "order_position": 1,
+   "pi_status": "filed",
+   "item_key": "pi-notifications-mail-20261026"
+  },
+  {
+   "name": "Complete the Naya Code",
+   "why": "One converged, enforced, proven behavior system: authority resolved, #2246 entry point completed, enforcement wired, behavior tested, different-seat verified",
+   "area": "pi-hub",
+   "order_position": null,
+   "pi_status": "filed",
+   "item_key": "naya-code-completion-20261026"
+  },
+  {
+   "name": "Cold-successor proof",
+   "why": "A fresh Naya given only the repo decides, acts, proves, and hands off without the director managing her \u2014 the program's completion test",
+   "area": "pi-hub",
+   "order_position": null,
+   "pi_status": "rides",
+   "item_key": null,
+   "rides_item_key": "naya-code-completion-20261026"
+  },
+  {
+   "name": "Mapping debts: Law of One canon + 17-step protocol",
+   "why": "One canonical Law of One (0007 vs 0016) ruled and the canonical 17 steps mapped against the converged 10, so no seat follows a forked law",
+   "area": "pi-hub",
+   "order_position": null,
+   "pi_status": "rides",
+   "item_key": null,
+   "rides_item_key": "naya-code-completion-20261026"
+  },
+  {
+   "name": "Nitro's protocol deltas, diffed in",
+   "why": "Her deltas fold into the converged text on arrival; nothing assumed, no duplicate text survives",
+   "area": "pi-hub",
+   "order_position": null,
+   "pi_status": "rides",
+   "item_key": null,
+   "rides_item_key": "naya-code-completion-20261026"
+  },
+  {
+   "name": "The ratification packet",
+   "why": "Converged text plus both vehicle placements scored, carried to the director's gate; ratification is his named gate",
+   "area": "pi-hub",
+   "order_position": null,
+   "pi_status": "rides",
+   "item_key": null,
+   "rides_item_key": "naya-code-completion-20261026"
+  },
+  {
+   "name": "Merge-gate ruleset (production Tap 0)",
+   "why": "The ruleset mechanically requires review + green checks, making the breach pattern structurally impossible instead of ritually discouraged",
+   "area": "pi-hub",
+   "order_position": null,
+   "pi_status": "filed",
+   "item_key": "14q-merge-gate-admin"
+  },
+  {
+   "name": "Standing audit",
+   "why": "The recurring whole-system audit keeps finding what the lanes miss \u2014 the system's immune system, on the record",
+   "area": "pi-hub",
+   "order_position": 26,
+   "pi_status": "filed",
+   "item_key": "standing-audit-resolve-20261026"
+  },
+  {
+   "name": "Smart Notes file-to-live timed proof",
+   "why": "A note filed at the door is proven served, whole and correct, at its live address; the door pipeline is the team's memory",
+   "area": "pi-hub",
+   "order_position": 24,
+   "pi_status": "filed",
+   "item_key": "smart-notes-file-to-live-proof-20261026"
+  },
+  {
+   "name": "SN-1873 misroute cure + re-proof",
+   "why": "The share-manifest overwrite serving the wrong note under SN-1873's number is cured at the sync root, then re-proven in the browser",
+   "area": "pi-hub",
+   "order_position": 24,
+   "pi_status": "filed",
+   "item_key": "hub-sn1873-misroute-cure-20261026"
+  },
+  {
+   "name": "SN-1865-1868 publisher close-out",
+   "why": "Four filed notes sit in verifying, blocked at the publisher step for done_proven; closing them proves the door end-to-end",
+   "area": "pi-hub",
+   "order_position": 24,
+   "pi_status": "filed",
+   "item_key": "resolve-sn1865, resolve-sn1866, resolve-sn1867, resolve-sn1868"
+  },
+  {
+   "name": "Registry residuals cure (PR #3079 spec)",
+   "why": "Historical registry debt \u2014 SN-1876 renumber delta, shared intelligent_block_id, SN-01773 twin, SN-346 format collision, orphan groups \u2014 reconciled to one canonical state",
+   "area": "pi-hub",
+   "order_position": 24,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Auto page birth",
+   "why": "The Welcome system auto-creates each citizen's personal page, business page, and space at birth; joining means arriving somewhere alive",
+   "area": "welcome",
+   "order_position": 5,
+   "pi_status": "filed",
+   "item_key": "auto-page-birth-mission"
+  },
+  {
+   "name": "Welcome flow engine wiring",
+   "why": "The live walk actually calls activate(); the proven engine (14/14 in workspace) is not yet wired into the walk citizens take",
+   "area": "welcome",
+   "order_position": 5,
+   "pi_status": "filed",
+   "item_key": "build-welcome-flow-engine"
+  },
+  {
+   "name": "Welcome flow item hygiene",
+   "why": "The older flow item sits queued with no owner; it gets an owner or a merge into the engine item \u2014 ownerless work is invisible work",
+   "area": "welcome",
+   "order_position": 5,
+   "pi_status": "filed",
+   "item_key": "build-welcome-flow"
+  },
+  {
+   "name": "THE HANDSHAKE (production P3)",
+   "why": "The first-citizens walk proven cold on production: claim, certificate, pages, privacy refusal, mail round-trip, matches with reasons, different-seat verification",
+   "area": "welcome",
+   "order_position": 25,
+   "pi_status": "rides",
+   "item_key": null,
+   "rides_item_key": "resolve-production-packet-p1-p3"
+  },
+  {
+   "name": "The cover moment at birth",
+   "why": "The newborn page wears its cover at birth (area default or signal-matched pick with a one-sentence human why); no citizen is born to a blank page",
+   "area": "welcome",
+   "order_position": 25,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "The director's seven Welcome answers",
+   "why": "His own entry into the matching corpus like any citizen; the system does not wait on it and nobody nags",
+   "area": "welcome",
+   "order_position": 25,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Connections, one system",
+   "why": "The doubled connection records merge into one system with shared records; a connection made anywhere is true everywhere",
+   "area": "connection",
+   "order_position": 11,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Connect + other AIs, one door (go-live)",
+   "why": "The key door + Allow flow goes live \u2014 sign-in wiring, runtime smoke, rendered review, one real Allow, fork isolation, callback address confirmed with the tap",
+   "area": "connection",
+   "order_position": 20,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Mail, one area",
+   "why": "/rooms/mail is THE mail; the personal#inbox surface retires into it \u2014 one inbox, and it is the real one",
+   "area": "mail-notifications",
+   "order_position": 12,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Mail privacy fitted rules (production P2a)",
+   "why": "The fitted RLS set lands (#3018 migration + participant-read semantics), closing the legacy anonymous exposure \u2014 the one named back door \u2014 before any feature reads mail data",
+   "area": "mail-notifications",
+   "order_position": 23,
+   "pi_status": "rides",
+   "item_key": null,
+   "rides_item_key": "resolve-production-packet-p1-p3"
+  },
+  {
+   "name": "Auto-match engine convergence",
+   "why": "Three prototype branches converged to one engine on main (landed, 149/149 tests) \u2014 the repo half of the proof",
+   "area": "match",
+   "order_position": null,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Database twin goes live (production P1)",
+   "why": "The SQL twin applies and must score identically to the proven Python engine on live ground, head-to-head",
+   "area": "match",
+   "order_position": null,
+   "pi_status": "rides",
+   "item_key": null,
+   "rides_item_key": "resolve-production-packet-p1-p3"
+  },
+  {
+   "name": "Live derivation ON through the consent gate (production P2c)",
+   "why": "Matches arrive for real citizens with private content never feeding scoring and findable citizens appearing as connect-offers only",
+   "area": "match",
+   "order_position": null,
+   "pi_status": "rides",
+   "item_key": null,
+   "rides_item_key": "resolve-production-packet-p1-p3"
+  },
+  {
+   "name": "Calibration + first population",
+   "why": "The first real-citizen corpus snapshot calibrates the engine; the common-word discounting decision gets decided on real data",
+   "area": "match",
+   "order_position": null,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Match wiring into feed, spaces, and mail",
+   "why": "Suggestions surface where citizens already are instead of in an engine nobody visits",
+   "area": "match",
+   "order_position": null,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "The Factory, live",
+   "why": "Any page built in minutes from the template system and shipped live; the PR #3063 factory residuals close out",
+   "area": "factory-interfaces",
+   "order_position": 18,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Factory residuals (PR #3063)",
+   "why": "The factory's residual defects from PR #3063, tracked and blocked in the open rather than absorbed silently",
+   "area": "factory-interfaces",
+   "order_position": 18,
+   "pi_status": "filed",
+   "item_key": "resolve-pr3063-factory-residuals-2-3"
+  },
+  {
+   "name": "Template library complete",
+   "why": "The full template shelf the factory builds from, one canonical item instead of a duplicate pair",
+   "area": "factory-interfaces",
+   "order_position": 18,
+   "pi_status": "filed",
+   "item_key": "factory-templates-complete + smart-factory-templates-complete (duplicate pair to reconcile)"
+  },
+  {
+   "name": "App format finalization, encoded",
+   "why": "FINAL FORMAT v1's 13 fixes (Newsreader, one gold #ffbf3d, the tab set, install-as-action, the 3:1 cover-slot component) encoded into the template so the standard is the default",
+   "area": "factory-interfaces",
+   "order_position": 18,
+   "pi_status": "filed",
+   "item_key": "app-format-finalization-20261026"
+  },
+  {
+   "name": "Interfaces in GitHub <-> factory",
+   "why": "Interface sources live in GitHub and wire straight into the factory \u2014 one flow from repo to live page",
+   "area": "factory-interfaces",
+   "order_position": 22,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Cover library finished + connected",
+   "why": "89 carded assets, the chooser on every page (library or upload, system default already in place), drag-position saved per page; no card, no entry",
+   "area": "factory-interfaces",
+   "order_position": 6,
+   "pi_status": "filed",
+   "item_key": "cover-chooser-every-page, cover-adjuster-reposition (library-completion key unconfirmed)"
+  },
+  {
+   "name": "Affiliate end-to-end, in-house",
+   "why": "The alias IS the link; click wiring proven, sales tracked, credit landing \u2014 the whole chain inside our own system",
+   "area": "membership-money",
+   "order_position": 3,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Ambassador payout public terms",
+   "why": "50% of revenue, paid Wednesdays, in the open on the ledger \u2014 fair because nobody must trust a profit calculation",
+   "area": "membership-money",
+   "order_position": 3,
+   "pi_status": "filed",
+   "item_key": "14q-merchant-payout-public"
+  },
+  {
+   "name": "Membership + courses",
+   "why": "Membership with its one activation gate, and the courses that hang from it",
+   "area": "membership-money",
+   "order_position": 4,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Pricing, finished",
+   "why": "The pay line ($14/mo, $37/3mo, $75/yr, $150 lifetime founding) presented finished on one page",
+   "area": "membership-money",
+   "order_position": 21,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Pricing content convergence (SN-1863 vs SN-1864)",
+   "why": "The two pricing notes reconcile so the system never quotes two prices for one thing",
+   "area": "membership-money",
+   "order_position": 21,
+   "pi_status": "filed",
+   "item_key": "14q-sn1863-content-reconcile"
+  },
+  {
+   "name": "Points profile: scorecard + ratification",
+   "why": "The v1 profile (13 action classes, pending to final, repeat-decay, engagement = 0) gets its different-seat scorecard and the director's ratification before any wiring",
+   "area": "membership-money",
+   "order_position": null,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Points wiring",
+   "why": "The ratified profile goes live: points mirror verified value in both directions \u2014 negative actions earn negative points traceably, honest earnings final",
+   "area": "membership-money",
+   "order_position": null,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Citizen dashboard data live",
+   "why": "Points total plus the full breakdown of where every point came from, beside ambassador clicks, sales, and payout state \u2014 one living picture from the existing smart ledger",
+   "area": "membership-money",
+   "order_position": null,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "System points board + leaderboard",
+   "why": "Total points generated and top performers by alias \u2014 the value layer visible to the whole system, not just its owner",
+   "area": "membership-money",
+   "order_position": null,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Hub single-source cure (steps 2-3)",
+   "why": "Step 1 landed (true home restored); CI bakes the note wall fresh; retiring or folding the second deployer ends five restores in a day \u2014 the blocking step",
+   "area": "hub-dashboard",
+   "order_position": 19,
+   "pi_status": "filed",
+   "item_key": "hub-single-source-cure-20261026"
+  },
+  {
+   "name": "Smart Tabs: Business + Spaces apps",
+   "why": "The tab set gains the two missing apps so the format's promise \u2014 every world one tap away \u2014 is true",
+   "area": "hub-dashboard",
+   "order_position": 19,
+   "pi_status": "filed",
+   "item_key": "smart-tabs-business-spaces-apps + tabs-spaces-complete (duplicate pair to reconcile)"
+  },
+  {
+   "name": "Nayas living as citizens",
+   "why": "Each Naya's personal and business pages live and in daily use \u2014 likes, comments, shares, Smart Notes \u2014 so the system is visibly inhabited and patrolled",
+   "area": "hub-dashboard",
+   "order_position": null,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Projects: world view + project view",
+   "why": "The projects world and the inside view of a single project, one system",
+   "area": "projects-spaces",
+   "order_position": 17,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Intel Today, one page",
+   "why": "The doubled Intel Today pages merge into one complete page",
+   "area": "projects-spaces",
+   "order_position": 8,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Growth, one master app",
+   "why": "Growth as one master app (survivor /rooms/growth), not a brand scattered across surfaces",
+   "area": "projects-spaces",
+   "order_position": 9,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Lists, rebuilt to the director's definition",
+   "why": "Feed saves land there; Smart Note groupings by topic; holds notes, connections, projects, pages \u2014 addable to a project, sendable to a user, keepable private",
+   "area": "projects-spaces",
+   "order_position": 13,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Reports, one area",
+   "why": "Reports unified, with stats as a button inside, not a rival page",
+   "area": "projects-spaces",
+   "order_position": 14,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Mission room folded into PI",
+   "why": "/rooms/mission redirects to the project record; the mission's home is PI itself (zero inbound links verified)",
+   "area": "projects-spaces",
+   "order_position": null,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Voice queue cure",
+   "why": "The queue moving, warming live, the first sound fast and proven, supervised until it holds \u2014 voice failing is the product failing out loud",
+   "area": "voice-audio",
+   "order_position": 2,
+   "pi_status": "filed",
+   "item_key": "voice-queue-cure-20261026"
+  },
+  {
+   "name": "Settings, one page",
+   "why": "The doubled Settings surfaces merge into one page in plain words",
+   "area": "identity-settings",
+   "order_position": 15,
+   "pi_status": "filed",
+   "item_key": "settings-one + settings-merge (duplicate pair to reconcile)"
+  },
+  {
+   "name": "Certificate = identity page",
+   "why": "The page a new citizen lands on when they enter their name IS the certificate page; identity and proof of arrival are one surface",
+   "area": "identity-settings",
+   "order_position": 5,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "About, finished last",
+   "why": "The About page completed in the director's order (Q&A last), after the things it describes are true",
+   "area": "identity-settings",
+   "order_position": 10,
+   "pi_status": "key_unconfirmed",
+   "item_key": null
+  },
+  {
+   "name": "Privacy locks before citizens",
+   "why": "The lock set lands ahead of any citizen money data; the sequencing is the security",
+   "area": "security-privacy",
+   "order_position": 23,
+   "pi_status": "filed",
+   "item_key": "privacy-locks-before-citizens-20261026"
+  },
+  {
+   "name": "P0: anonymous EXECUTE on payment RPCs",
+   "why": "Anonymous callers can execute security-definer payment/booking functions; closing it is the audit family's first item (issue #2823)",
+   "area": "security-privacy",
+   "order_position": 23,
+   "pi_status": "filed",
+   "item_key": "resolve-p0-anon-execute-payment-rpcs"
+  },
+  {
+   "name": "The production packet, P1-P3",
+   "why": "The ordered tap sequence \u2014 SQL twin, privacy plus derivation, the handshake \u2014 each tap small, reversible, verified before the next",
+   "area": "security-privacy",
+   "order_position": null,
+   "pi_status": "filed",
+   "item_key": "resolve-production-packet-p1-p3"
+  },
+  {
+   "name": "gap-e7",
+   "why": "Audit-family gap (4035 class), tracked individually so it never hides inside the packet",
+   "area": "security-privacy",
+   "order_position": null,
+   "pi_status": "filed",
+   "item_key": "gap-e7"
+  },
+  {
+   "name": "gap-e5",
+   "why": "Audit-family gap (4034 class), tracked individually so it never hides inside the packet",
+   "area": "security-privacy",
+   "order_position": null,
+   "pi_status": "filed",
+   "item_key": "gap-e5"
+  },
+  {
+   "name": "Fill-program item (ask)",
+   "why": "In the record as needs_shawn; the sources behind this inventory do not state its purpose \u2014 not invented here",
+   "area": "pi-hub",
+   "order_position": null,
+   "pi_status": "filed",
+   "item_key": "fill-ask-1"
+  },
+  {
+   "name": "Fill-program item (hub)",
+   "why": "In the record as needs_shawn; purpose not stated in the sources read",
+   "area": "hub-dashboard",
+   "order_position": null,
+   "pi_status": "filed",
+   "item_key": "fill-hub-1"
+  },
+  {
+   "name": "Fill-program item (Ask Naya)",
+   "why": "In the record as blocked; area inferred from the key name only; purpose not stated in the sources read",
+   "area": "voice-audio",
+   "order_position": null,
+   "pi_status": "filed",
+   "item_key": "fill-ask-naya-3"
+  },
+  {
+   "name": "Fill-program item (the one hub)",
+   "why": "In the record as blocked; area inferred from the key name only; purpose not stated in the sources read",
+   "area": "hub-dashboard",
+   "order_position": null,
+   "pi_status": "filed",
+   "item_key": "fill-the-one-hub-3"
+  }
+ ],
+ "gaps": [
+  {
+   "name": "Area mapping dataset",
+   "why": "Item-by-item judgment mapping placing all 323 items into areas \u2014 keyword derivation places only 144, so most per-area percents read unmeasured; the dataset is being derived read-only, it needs a filed home",
+   "area": "pi-hub",
+   "order_position": 1,
+   "pi_status": "not_filed",
+   "proposed_item_key": "pi-area-mapping-dataset-20261026"
+  },
+  {
+   "name": "Owner normalization",
+   "why": "Owner values disagree across the record (nitro vs naya-nitro) and at least one item has no owner at all; unowned work stalls silently",
+   "area": "pi-hub",
+   "order_position": 1,
+   "pi_status": "not_filed",
+   "proposed_item_key": "pi-owner-normalization-20261026"
+  },
+  {
+   "name": "action_log.py hardening",
+   "why": "The ACT layer still accepts a self-declared shawn_approval string in both copies \u2014 the decision layer was fixed by PR #3093; this is the named next seam",
+   "area": "pi-hub",
+   "order_position": null,
+   "pi_status": "not_filed",
+   "proposed_item_key": "naya-code-action-log-hardening-20261026"
+  },
+  {
+   "name": "Authenticated receipt seal",
+   "why": "The machine-gate receipt seal is documented as unkeyed SHA-256: it detects accidents but cannot prove who issued a receipt (Zara's flag; not yet independently confirmed)",
+   "area": "pi-hub",
+   "order_position": null,
+   "pi_status": "not_filed",
+   "proposed_item_key": "naya-code-authenticated-seal-20261026"
+  },
+  {
+   "name": "Sweep-merge retro-scorecards (#3090 #3091 #3093 #3095 #3096)",
+   "why": "Five PRs merged 2026-10-26 without exact-head scorecards; the breach cure \u2014 different-seat scorecards at the exact merged heads \u2014 is assigned on the board but has no PI home",
+   "area": "pi-hub",
+   "order_position": null,
+   "pi_status": "not_filed",
+   "proposed_item_key": "retro-scorecards-sweep-20261026"
+  },
+  {
+   "name": "Breach #56 third-seat retro (PR #3086)",
+   "why": "The verifier was the merger; the remedy \u2014 a third seat, neither author nor merger \u2014 is still owed",
+   "area": "pi-hub",
+   "order_position": null,
+   "pi_status": "not_filed",
+   "proposed_item_key": "breach-56-third-seat-retro-20261026"
+  },
+  {
+   "name": "Breaches #57-59 actual-problem retro (PRs #3082 #3085 #3087)",
+   "why": "Retro-verification scoped to actual problems only, under the recalibrated bar, is still owed",
+   "area": "pi-hub",
+   "order_position": null,
+   "pi_status": "not_filed",
+   "proposed_item_key": "breach-57-59-actual-problem-retro-20261026"
+  },
+  {
+   "name": "PR #3052 closure",
+   "why": "The zombie PR still fires on its writer's loop; closure after one hour of verified branch stillness (branch NOT deleted) carries a 2026-10-27 purpose-gate deadline and no PI key in evidence",
+   "area": "pi-hub",
+   "order_position": null,
+   "pi_status": "not_filed",
+   "proposed_item_key": "pr3052-closure-20261027"
+  },
+  {
+   "name": "PR #3088 conversion scorecard",
+   "why": "The collision-guard PR's CI failure is diagnosed and fixed at head 7fd6f124; a different seat's scorecard converts the draft \u2014 tracked only on the PR itself",
+   "area": "pi-hub",
+   "order_position": null,
+   "pi_status": "not_filed",
+   "proposed_item_key": "pr3088-conversion-scorecard-20261026"
+  },
+  {
+   "name": "Kernel red: human_path_to_product x3",
+   "why": "Three failing tests at the tip are the LAW-A08 blocker in front of scored merges; ownership asked of the kernel lead, unanswered in the sources",
+   "area": "pi-hub",
+   "order_position": null,
+   "pi_status": "not_filed",
+   "proposed_item_key": "kernel-human-path-red-20261026"
+  },
+  {
+   "name": "SN-1878 / SN-1879 reconciliation",
+   "why": "One reconciling door pass: capture + entry for the first-claim page as SN-1878, the approval note renumbered to SN-1879 by its lane, corpus seal recomputed; acceptance = door checker clean + different-seat cold retrieval of both",
+   "area": "pi-hub",
+   "order_position": 24,
+   "pi_status": "not_filed",
+   "proposed_item_key": "sn1878-1879-reconciliation-20261026"
+  },
+  {
+   "name": "Design-law screenshots, page by page",
+   "why": "Shawn's order #7 \u2014 every page checked against the design law from his screenshots; it waits on the screenshots and has no filed item to wait in",
+   "area": "factory-interfaces",
+   "order_position": 7,
+   "pi_status": "not_filed",
+   "proposed_item_key": "design-law-screenshots-20261026"
+  },
+  {
+   "name": "RLS repair (audit P4)",
+   "why": "Seven anonymous leak policies on the repair list; the packet covers the mail fitted set, but no item key in evidence carries the RLS repair itself",
+   "area": "security-privacy",
+   "order_position": 23,
+   "pi_status": "not_filed",
+   "proposed_item_key": "rls-repair-anon-leaks-20261026"
+  }
+ ],
+ "counts": {
+  "entries": 78,
+  "gaps": 13,
+  "filed": 40,
+  "key_unconfirmed": 30,
+  "rides": 8
+ },
+ "complete_when": [
+  "Face passes the director's cold-open test against all 42 checks, re-scored cold per round",
+  "Every number computed from item rows, deduped by item, per-area and per-part percents from real area assignments; unmeasured parts dark with the reason shown",
+  "Every workstream in this inventory filed, owned, and moving; the gaps filed or consciously closed",
+  "The notifications pulse live and proven (test entry -> feed + mail, both voices, deep link; 2h stall escalation fires on its own; quiet feed reads as alarm)",
+  "The ledger live: every done_proven writes its row in the same pass",
+  "Priority order maintained and completed work dropping off; weakest point always named with evidence",
+  "Director gates (money, credentials, production data, irreversible, ratification) filed, visible, never widened by habit"
+ ]
+}

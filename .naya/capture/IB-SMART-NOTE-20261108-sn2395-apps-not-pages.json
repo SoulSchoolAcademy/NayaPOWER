@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2395",
+ "title": "Apps, Not Pages",
+ "slug": "apps-not-pages",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2395/IB-SMART-NOTE-20261108-sn2395-apps-not-pages.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "They are APPS — smart app pages, never just \"pages.\" Everything is a smart app page. The name is the standard: a page is something you read; an app is something that lives, works, and serves. Every surface in NayaNET — Dashboard, Personal, Business, Space, Pricing, the letter, the chart — is a smart app page, and it is judged as one.",
+  "human_view": "He said it as a standing rule, not a suggestion for one page: never just \"pages.\" The word \"page\" had been letting flat work through — a long scrolling document, a pasted chart, words about a thing instead of the thing. \"App\" closes that door. An app opens, it runs, it responds, it does something for the person holding it. If what was built cannot be called an app without lying, it is not done.",
+  "child_view": "Imagine someone hands you a picture of a car and calls it a car. It is not a car — you cannot drive a picture. A page is the picture. An app is the car. We build cars.",
+  "grandma_view": "You would not call a recipe a dinner, dear. The dinner is the thing you sit down to and eat. A page is the recipe. An app is the dinner — real, warm, ready, made to be used. Call it what it is.",
+  "ai_view": "The name is a gate. Every brief, every board note, every seat that says \"page\" and means a flat document is working under the old permission. From here the word is app, and the word carries the test with it: does it live, does it work, does it serve at ten stars? A smart app page is a viewport into a living system — the person at the centre, everything a click away, every number alive. If it cannot pass as an app, it does not ship as one.",
+  "what_it_means": "- The vocabulary changes everywhere the work is described: smart app pages, not pages.\n- The name is a quality gate, not a label — \"app\" means it works, it lives, it serves.\n- A flat document described as a page was never the standard; the standard was always the app, and now the word says so.",
+  "whats_inside": [
+   "- Every brief, board note, and seat calls them smart app pages — never just \"pages.\"\n- A build judged as a page is judged wrong; judge it as an app: does it live, does it work, does it serve?\n- The rule stands beside the Real Object Law and the Brand: the language is the law, and the law is written down."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "fee71cef4da846d231f1488cfb21a7e27aebaf61d0d6a88fad0b74e36d4b362c",
+ "content_hash": "4c0a967e7a5c8afb038962e67ad7a038e55267f9ee679e3a1882b08b4048d7ff",
+ "reconstructed_from_page": true
+}

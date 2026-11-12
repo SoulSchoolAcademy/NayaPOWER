@@ -19,7 +19,7 @@ def test_cold_runtime_proof_has_explicit_main_source_sha_input_for_manual_dispat
 def test_cold_runtime_proof_fails_closed_if_refs_heads_main_moves():
     workflow = _workflow()
     assert "Verify resolved source matches SOURCE_SHA" in workflow
-    assert 'resolved="$(gh api "repos/${{ github.repository }}/git/ref/heads/main" --jq .object.sha)"' in workflow
+    assert 'resolved="$(gh api "repos/${{ github.repository }}/git/refs/heads/main" --jq .object.sha)"' in workflow
     assert 'if [ "${SOURCE_SHA}" != "${resolved}" ]; then' in workflow
     assert "SOURCE_SHA_MISMATCH" in workflow
 

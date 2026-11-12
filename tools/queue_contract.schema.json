@@ -1,0 +1,77 @@
+{
+  "$id": "naya.queue-contract/1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "generated_at": {
+      "type": "string"
+    },
+    "prs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "enum": [
+              "MERGE-NOW",
+              "CURE",
+              "HOLD-HUMAN",
+              "CLOSE-CANDIDATE"
+            ],
+            "type": "string"
+          },
+          "cure": {
+            "type": "string"
+          },
+          "head": {
+            "type": "string"
+          },
+          "number": {
+            "type": "integer"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "tier": {
+            "enum": [
+              "A",
+              "B",
+              "C"
+            ],
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "number",
+          "title",
+          "tier",
+          "action",
+          "cure",
+          "owner",
+          "head"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schema": {
+      "enum": [
+        "naya.queue-contract/1"
+      ],
+      "type": "string"
+    },
+    "tip": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "generated_at",
+    "tip",
+    "prs"
+  ],
+  "title": "NayaPOWER Queue Contract \u2014 the live drain as data",
+  "type": "object"
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2169",
+  "title": "The Repair Lifecycle: Classify, Prove, Sequence, Close Honestly",
+  "slug": "essence-repair-lifecycle",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-repair-lifecycle.md",
+  "tone": "red",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:11:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A repair is a lifecycle, not a diff: classify the failure before healing it, prove the classification, sequence repairs in the order the gates can see them, and close every lane honestly — merged, superseded with credit, or closed unmerged when merging would do harm. The five-gate merge protocol is its governance frame: tests green → honest self-scorecard at 9.0+ → different-seat validation → intent posted with no objections → merge, report after (SN-691). Stacked repairs prove safe by combination runs, not by hope (SN-676). A heal's ancestry is verified, because twin commits are the norm in parallel lanes and a right conclusion with a wrong mechanism is verdict debt (SN-710). \"It fails on the tip too\" is corroboration, not proof — base-defect is proven by input-equivalence, diff ∩ check-inputs = ∅ (SN-775). A green heal that reconstructs artifacts without ratification, provenance, or epistemic state is named green-with-a-gap, never silent green (SN-737). Duplicated repairs resolve by superset, with the loser's insight credited and its branch kept (SN-762); a conflicted same-class repair is superseded respectfully, byte-equivalence proven, note posted on the superseded PR itself (SN-779); and an open PR whose targets the owner has since restructured is closed unmerged, because an open PR is a proposal, never a commitment (SN-780). Before any of it: check whether the red PR is a duplicate whose head SHA already merged — identical SHA = close, not repair (SN-814).",
+    "human_view": "Fixing things in a busy shared workshop is a craft with a beginning, a middle, and an end. The beginning is diagnosis: prove what's actually broken, where the test is really reading from, whether the failure is yours, the environment's, or older than your change. The middle is proof: run repairs together the way they'll land together, in the order the checking machinery can actually see them, and don't call a fix proven until the real pipeline has run it. The end is housekeeping with respect: when two people fixed the same thing, the more complete fix wins, the other's insight is credited in writing, and their work is kept — not deleted. When your own fix has been overtaken by events, you close it yourself, cleanly, rather than letting it land and undo someone else's good work.",
+    "child_view": "Imagine the class guinea pig's cage breaks and three kids fix it at once. First you check: is the cage really broken, or is the latch just being read wrong? Then the fixes get tested together, because two good fixes can still jam the same door. If two kids built the same latch, you keep the stronger one, write the other kid's good idea in the class book with their name on it, and keep their latch in the cupboard — you don't throw it away. And if the teacher already bought a brand-new cage while yours was being glued, you don't install your old cage anyway. You say, \"Mine isn't needed now,\" and put it away neatly.",
+    "grandma_view": "Dear, it's good mending practice. You find the real tear before you thread the needle — not the shadow of a tear, not a tear in a different garment. You baste pieces together before the final stitch to be sure they sit well together. When two menders have repaired the same seam, you keep the sturdier work, thank the other in the parish record, and fold their piece into the linen chest — nothing wasted, nobody erased. And when you discover the garment has already been replaced, you don't sew your patch onto the new cloth out of pride. You note the work, close the basket, and leave the household better documented than you found it.",
+    "ai_view": "Run the five gates and respect the undelegated ones (SN-691). Classify before you heal: print the resolved path, check the fixture contract, prove canonical damage (SN-736); name the true mechanism commit (SN-710); prove base-defect by input-equivalence and record the input list (SN-775). Diagnose identical failures environment-first (SN-806, SN-750). Prove stacked repairs in combination, sequence by gate visibility, and keep CI-unrun repairs labeled UNVERIFIED (SN-676, SN-764). Score heals on what they carry and name gaps in the receipt (SN-737). Simulate the wave pairwise before sequencing it (SN-740). Resolve duplication by superset with credit and kept branches (SN-762); supersede only byte-equivalent portions, in the open, with the note on the superseded PR (SN-779); close your own overtaken PRs unmerged (SN-780); and check head-SHA duplication before you repair anything red (SN-814).",
+    "what_it_means": "Fourteen notes are one lifecycle: **a repair earns its merge the way a claim earns its size — by proof at every transition.** Diagnosis transitions are proven by read-path and ancestry checks (SN-736, SN-710, SN-775); environment transitions by log-and-manifest diffs (SN-806, SN-750); composition transitions by stacked runs and merge-tree simulation (SN-676, SN-764, SN-740); acceptance transitions by what the artifact carries (SN-737); and exit transitions — supersede, close, consolidate — by byte-equivalence and SHA identity (SN-762, SN-779, SN-780, SN-814), all inside a governance frame that says who may merge and what never delegates (SN-691). A cold reader holding only this essence can still walk any repair in the system from RED to closed and know which proof belongs at each step.",
+    "whats_inside": [
+      "Merges under delegated authority run five gates (green → self-scorecard 9.0+ → different-seat validation → posted intent, no objections → merge, report after); the undelegated gates stay the Director's (SN-691).",
+      "Restorations queue only against proven canonical damage, after printing the resolved path and checking the fixture contract (SN-736).",
+      "Heal citations name main's actual mechanism commit, proven by containment — twins are the norm (SN-710).",
+      "Base-defect is proven by input-equivalence (diff ∩ check-inputs = ∅), never by signature-matching alone (SN-775).",
+      "Identical multi-PR failures are diagnosed environment-first: job log, then install-list-vs-imports diff (SN-806); committed imports must resolve from a fresh clone (SN-750).",
+      "Stacked repairs prove by combination run + no-overlap check + documented order (SN-676); fail-fast gates' hidden REDs are enumerated, and CI-unrun repairs stay UNVERIFIED (SN-764).",
+      "Heals are accepted on what they carry (ratification, restoration_provenance, epistemic_state), with gaps named in the receipt (SN-737).",
+      "Merge waves are simulated pairwise on exact SHAs and conflicts characterized before sequencing (SN-740).",
+      "Duplicated repairs resolve by superset with credit and branch preservation (SN-762); stale portions are superseded by byte-equivalent consolidation with a respectful note (SN-779); overtaken PRs close unmerged at action time (SN-780); duplicate heads close without repair (SN-814)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-3"
+    ],
+    "covers": [
+      "SN-676",
+      "SN-691",
+      "SN-710",
+      "SN-736",
+      "SN-737",
+      "SN-740",
+      "SN-750",
+      "SN-762",
+      "SN-764",
+      "SN-775",
+      "SN-779",
+      "SN-780",
+      "SN-806",
+      "SN-814"
+    ]
+  },
+  "page_hash": "8f28f1dcec76dead6399e5fffc4580e2193720adcc7059462ee63c0f6e5f01bc",
+  "content_hash": "74e17ef3cfd668c863b629d7f9fea77b727458621ece62e8ff84201bce216699"
+}

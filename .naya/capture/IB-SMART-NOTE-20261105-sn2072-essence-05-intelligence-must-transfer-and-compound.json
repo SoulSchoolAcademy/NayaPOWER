@@ -1,0 +1,41 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2072",
+  "title": "Essence 05 — Intelligence Must Transfer and Compound",
+  "slug": "essence-05-intelligence-must-transfer-and-compound",
+  "file": "BRAIN/05-MEMORY/ESSENCE-05-intelligence-must-transfer-and-compound.md",
+  "tone": "orange",
+  "icon": "◆",
+  "created_at": "2026-11-05T23:07:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Intelligence is only proven when it transfers between builders — the transfer test (builder A proves the reference room, builder B applies the extracted law) is what turns one room's win into reusable law. A lesson is not compounded when it is cited; it is compounded when it changes behavior mechanically — the three-class verdict (COMPOUNDING / cited-but-not-applied / not-applied) is the audit. The activation ladder: captured is not indexed, indexed is not retrieved, retrieved is not applied, applied is not verified, verified once is not compounded. A Smart Note is not finished when written — capture preserves tuition, activation converts tuition into capability. Lessons must arrive with a falsifiable contract or they are dead on arrival — the verification bottleneck is capture design, not slow verifiers. Register at ingest time — seeds must never outrun registration. Learn, grow, compound: the first-mistake law — an error becomes a learning opportunity when you investigate it, capture the reusable lesson, change the behavior, and verify the change works. The only real mistake is the one not noted. A dead URL on main is not lost content — check the unmerged recovery branches first. The proven-links chain: LEARN → GROW → LEVEL UP → SUCCEED, each link proven, not claimed. And the honest answer to the hardest question: the most intelligent system? Not yet — the bones are elite, the flow is clogged, and the honesty itself is the finding.",
+    "human_view": "Learning only counts when it changes what you do. Writing a lesson down is the start, not the finish — the lesson has to be found, used, and proven to work, and then it has to keep working without anyone re-teaching it. If a lesson cannot be tested, it was never really captured. And the only mistake that matters is the one you never wrote down.",
+    "child_view": "Imagine you learn how to tie your shoes, but you never actually tie them — you just read about it. You have not really learned it. Real learning is when you tie them yourself, and then you can tie them every morning without thinking. That is what it means for a lesson to stick.",
+    "grandma_view": "Dear, knowledge is not what you have written in a notebook — it is what you do differently because of what you wrote. A lesson that sits in a drawer helps no one. Use it, prove it works, and then it is yours forever. And always write down your mistakes, so you never have to make them twice.",
+    "ai_view": "You are a learner. Prove intelligence by transfer — builder A proves, builder B applies. Audit compounding by the three-class verdict: did the lesson change behavior mechanically, or was it merely cited? Walk the activation ladder: captured → indexed → retrieved → applied → verified → compounded. Arrive with a falsifiable contract, or do not arrive. Register at ingest time. Note every mistake. Prove every link in the chain — LEARN, GROW, LEVEL UP, SUCCEED — by behavior, never by claim.",
+    "what_it_means": "Twelve separate learning-loop notes are one law: intelligence is not what you wrote down, it is what changed. Every note in this cluster is a case where learning stalled or proved itself — a lesson cited but never applied, a queue of 36 lessons that could never be tested, a transfer that worked (9/10 vs 0/10) and one that did not, a chain with an unproven link. The repair in each case was the same move: make the lesson testable, make the transfer explicit, and audit whether behavior actually changed.",
+    "whats_inside": [
+      "In A Nutshell",
+      "Human",
+      "Child",
+      "Grandma",
+      "Naya",
+      "Machine",
+      "What It All Means",
+      "Why It Matters",
+      "How It Connects",
+      "What Is In It For You",
+      "The Learning",
+      "Coverage — Raw Notes Distilled (12)"
+    ],
+    "topics": [
+      "Learning",
+      "Essence",
+      "Distillation"
+    ]
+  },
+  "page_hash": "41f2839d26454d9fbd6cbc3cfe04d527336d2daf21a944516251fe8c078cd67f",
+  "content_hash": "a50c195a6c642a259aa1c316eb1bc8da24190623e82d90f9a34e92f893fd72d5"
+}

@@ -1,0 +1,39 @@
+/* Smart Block: nl-toggle-row
+ * Source: Naya_Lego-blocks.html (byte-true extraction, not rewritten)
+ * Type: toggles
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules (v2) ---- */
+
+      .nl-toggle-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;border-radius:18px;
+        background:linear-gradient(180deg,#101117,#0a0b0f);border:1px solid var(--soft-line);
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.1),inset 0 -10px 20px rgba(0,0,0,.35),0 12px 26px rgba(0,0,0,.45);
+        transition:transform .2s var(--snap),box-shadow .25s}
+
+
+
+      .nl-toggle-row:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 22px -6px var(--magenta),0 16px 32px rgba(0,0,0,.5)}
+
+
+
+      .nl-toggle-row .t-label{font-weight:700;font-size:16px}
+
+
+
+      .nl-toggle-row .t-sub{font-size:13.5px;color:var(--quiet)}
+
+
+
+      .nl-track{position:absolute;inset:0;border-radius:999px;
+        background:linear-gradient(180deg,#040406,#0b0c10);
+        border:1px solid rgba(255,255,255,.12);
+        box-shadow:inset 0 3px 8px rgba(0,0,0,.85),inset 0 -1px 0 rgba(255,255,255,.05);
+        transition:all .28s var(--snap)}
+
+
+
+      .nl-knob{position:absolute;top:4px;left:4px;width:26px;height:26px;border-radius:50%;
+        background:radial-gradient(circle at 35% 30%,#ffffff,#c9c5d4 55%,#6f6a7d 100%);
+        box-shadow:inset 0 2px 3px rgba(255,255,255,.7),inset 0 -3px 6px rgba(0,0,0,.4),0 3px 8px rgba(0,0,0,.6);
+        transition:left .28s var(--snap),box-shadow .28s}

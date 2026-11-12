@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Number — The Ultimate</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #050506;
+    background-image: radial-gradient(1200px 700px at 18% -10%, rgba(255,255,255,.07), transparent 60%),
+                      radial-gradient(900px 600px at 85% 110%, rgba(212,175,55,.05), transparent 60%);
+    color: #e8e8e8;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 48px 20px 64px;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 34px; }
+  .kicker {
+    color: #d4af37; letter-spacing: .35em; font-size: 12px; font-weight: 700;
+    text-transform: uppercase; margin-bottom: 14px;
+  }
+  h1 { font-size: 42px; font-weight: 900; letter-spacing: -.01em; color: #f5f5f5; }
+  h1 em { font-style: normal; color: #d4af37; }
+  .sub { margin-top: 12px; color: #9a9a9a; font-size: 16px; line-height: 1.55; }
+  .sub b { color: #e8e8e8; }
+
+  /* THE ULTIMATE — best of all eleven, one object */
+  .hero {
+    background: linear-gradient(180deg, #161618, #08080a);
+    border: 1px solid rgba(212,175,55,.45);
+    border-radius: 24px;
+    padding: 36px 30px 30px;
+    box-shadow: 0 30px 70px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.07);
+    text-align: center;
+    margin-bottom: 34px;
+  }
+  .hero .kicker { margin-bottom: 10px; }
+  .hero h2 { font-size: 30px; font-weight: 900; color: #f5f5f5; }
+  .hero h2 em { font-style: normal; color: #d4af37; }
+  .hero-well {
+    background: linear-gradient(180deg, #030304, #0b0b0d);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 18px;
+    box-shadow: inset 0 6px 26px rgba(0,0,0,.9), inset 0 -1px 0 rgba(255,255,255,.04);
+    display: flex; align-items: center; justify-content: center;
+    padding: 44px 12px 40px; margin: 26px 0 20px; min-height: 280px;
+  }
+  .recipe { color: #9d9d9d; font-size: 15px; line-height: 1.7; max-width: 760px; margin: 0 auto; }
+  .recipe b { color: #e8e8e8; }
+
+  /* The color key — the chakra colors, one per number */
+  .colorkey { display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: center; margin-top: 24px; }
+  .key { display: flex; align-items: center; gap: 8px; color: #b9b9b9; font-size: 13.5px; }
+  .sw { width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 900; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.6); box-shadow: 0 2px 8px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.35); flex: none; }
+  .sw.d0 { background: #f5f5f5; color: #111; text-shadow: none; }
+  .sw.d1 { background: radial-gradient(circle at 35% 30%, #ff7a7a, #e60000); }
+  .sw.d2 { background: radial-gradient(circle at 35% 30%, #ffb347, #ff7f00); }
+  .sw.d3 { background: radial-gradient(circle at 35% 30%, #ffe98a, #d4a017); color: #3a2c00; }
+  .sw.d4 { background: radial-gradient(circle at 35% 30%, #4ade80, #009444); }
+  .sw.d5 { background: radial-gradient(circle at 35% 30%, #7dd3fc, #0284c7); }
+  .sw.d6 { background: radial-gradient(circle at 35% 30%, #818cf8, #283593); }
+  .sw.d7 { background: radial-gradient(circle at 35% 30%, #c084fc, #7b1fa2); }
+  .sw.d8 { background: radial-gradient(circle at 35% 30%, #d8b4fe, #9d6bc4); color: #2a1245; }
+  .sw.d9 { background: radial-gradient(circle at 35% 30%, #ff7ac0, #ff1493); }
+  .keynote { margin-top: 16px; color: #8a8a8a; font-size: 13.5px; font-style: italic; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } h1 { font-size: 32px; } }
+  .card {
+    background: linear-gradient(180deg, #121214, #08080a);
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 20px;
+    padding: 26px 26px 22px;
+    box-shadow: 0 22px 48px rgba(0,0,0,.72), inset 0 1px 0 rgba(255,255,255,.06);
+  }
+  .card.feature { grid-column: 1 / -1; border-color: rgba(212,175,55,.4); }
+  .num-well {
+    background: linear-gradient(180deg, #030304, #0b0b0d);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 14px;
+    box-shadow: inset 0 4px 18px rgba(0,0,0,.85), inset 0 -1px 0 rgba(255,255,255,.04);
+    display: flex; align-items: center; justify-content: center;
+    padding: 30px 10px 26px; margin-bottom: 18px; min-height: 168px;
+  }
+  .num { font-size: 92px; line-height: 1; font-weight: 900; letter-spacing: -0.02em; }
+  .num.landed { animation: land 1s ease-out; }
+  @keyframes land { 0% { filter: brightness(1.7); } 100% { filter: brightness(1); } }
+  .platter { width: 250px; max-width: 82%; height: 26px; margin-top: -4px; border-radius: 50%;
+    background: radial-gradient(ellipse at 50% 28%, #ffffff, #cfcfcf 42%, #8d8d8d 72%, #ececec);
+    box-shadow: 0 8px 16px rgba(0,0,0,.75), inset 0 2px 3px rgba(255,255,255,.85), inset 0 -3px 5px rgba(0,0,0,.35); }
+  .platter.big { width: 430px; max-width: 86%; height: 34px; margin-top: -6px; }
+  .name { color: #d4af37; font-size: 17px; font-weight: 800; letter-spacing: .02em; margin-bottom: 6px; }
+  .name span { color: #666; font-weight: 700; font-size: 13px; letter-spacing: .12em; margin-right: 8px; }
+  .desc { color: #9d9d9d; font-size: 14.5px; line-height: 1.55; }
+  .desc b { color: #cfcfcf; }
+
+  /* THE ULTIMATE NUMBER — three digit-tiles, the Dashboard anatomy measured live.
+     At rest: obsidian black face, white rim, white cap, white halo.
+     Counting: each reel scrolls upward, bottom to top, in slow motion.
+     Landed: each tile's rim, cap and halo light up in its colour —
+     7 royal purple, 2 orange, 5 cyan. The number stays white. */
+  .ultimate { font-size: 168px; line-height: 1; white-space: nowrap; }
+  .ultimate.landed { animation: landBig 1.4s ease-out; }
+  @keyframes landBig {
+    0% { filter: brightness(1.9) drop-shadow(0 0 44px rgba(255,255,255,.7)); }
+    100% { filter: brightness(1); }
+  }
+  .num .reel + .reel { margin-left: 18px; }
+  .reel { display: inline-block; width: 150px; border-radius: 20px; overflow: hidden; vertical-align: top;
+    background: linear-gradient(180deg, #171720, #0f0f15 55%, #020203);
+    border: 2px solid rgba(255,255,255,.9);
+    box-shadow: 0 18px 34px rgba(0,0,0,.85), 0 0 34px rgba(255,255,255,.25), inset 0 1px 0 rgba(255,255,255,.35);
+    transition: border-color .15s ease, box-shadow .15s ease; }
+  .cap { display: block; height: 22px;
+    background: linear-gradient(180deg, #e8e8ec, #c9c9cf 55%, #8a8a90);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.8), inset 0 -2px 4px rgba(0,0,0,.35); }
+  .window { display: block; height: 168px; overflow: hidden; }
+  .strip { display: block; transition: transform .3s ease-out; will-change: transform; }
+  .rd { display: block; height: 168px; line-height: 168px; text-align: center; font-weight: 900; color: #ffffff;
+    text-shadow: 0 0 22px rgba(134,126,152,.65), 0 0 48px rgba(255,255,255,.25); }
+  /* a digit landing — its rim, cap and halo light up in its colour */
+  .reel.d0 { border-color: #ffffff; box-shadow: 0 18px 34px rgba(0,0,0,.85), 0 0 40px rgba(255,255,255,.5), inset 0 1px 0 rgba(255,255,255,.35); }
+  .reel.d0 .cap { background: linear-gradient(180deg, #ffffff, #d9d9de 55%, #9a9aa0); }
+  .reel.d1 { border-color: #ff2a2a; box-shadow: 0 18px 34px rgba(0,0,0,.85), 0 0 40px rgba(255,42,42,.55), inset 0 1px 0 rgba(255,255,255,.35); }
+  .reel.d1 .cap { background: linear-gradient(180deg, #ff8a8a, #e60000 55%, #8f0000); }
+  .reel.d2 { border-color: #ff8c00; box-shadow: 0 18px 34px rgba(0,0,0,.85), 0 0 40px rgba(255,140,0,.55), inset 0 1px 0 rgba(255,255,255,.35); }
+  .reel.d2 .cap { background: linear-gradient(180deg, #ffc27a, #ff8c00 55%, #994d00); }
+  .reel.d3 { border-color: #f5d76e; box-shadow: 0 18px 34px rgba(0,0,0,.85), 0 0 40px rgba(245,215,110,.55), inset 0 1px 0 rgba(255,255,255,.35); }
+  .reel.d3 .cap { background: linear-gradient(180deg, #fff3a0, #f5d76e 55%, #c9930a); }
+  .reel.d4 { border-color: #00a86b; box-shadow: 0 18px 34px rgba(0,0,0,.85), 0 0 40px rgba(0,168,107,.55), inset 0 1px 0 rgba(255,255,255,.35); }
+  .reel.d4 .cap { background: linear-gradient(180deg, #6ee7a0, #00a86b 55%, #005c3a); }
+  .reel.d5 { border-color: #29b6f6; box-shadow: 0 18px 34px rgba(0,0,0,.85), 0 0 40px rgba(41,182,246,.55), inset 0 1px 0 rgba(255,255,255,.35); }
+  .reel.d5 .cap { background: linear-gradient(180deg, #a5e3ff, #29b6f6 55%, #0e6b9e); }
+  .reel.d6 { border-color: #3f51b5; box-shadow: 0 18px 34px rgba(0,0,0,.85), 0 0 40px rgba(63,81,181,.55), inset 0 1px 0 rgba(255,255,255,.35); }
+  .reel.d6 .cap { background: linear-gradient(180deg, #9aa5ff, #3f51b5 55%, #232a6b); }
+  .reel.d7 { border-color: #8e24aa; box-shadow: 0 18px 34px rgba(0,0,0,.85), 0 0 40px rgba(142,36,170,.55), inset 0 1px 0 rgba(255,255,255,.35); }
+  .reel.d7 .cap { background: linear-gradient(180deg, #d8a0ff, #8e24aa 55%, #4d0f5e); }
+  .reel.d8 { border-color: #b388ff; box-shadow: 0 18px 34px rgba(0,0,0,.85), 0 0 40px rgba(179,136,255,.55), inset 0 1px 0 rgba(255,255,255,.35); }
+  .reel.d8 .cap { background: linear-gradient(180deg, #e9d5ff, #b388ff 55%, #6d4bb0); }
+  .reel.d9 { border-color: #ff1493; box-shadow: 0 18px 34px rgba(0,0,0,.85), 0 0 40px rgba(255,20,147,.55), inset 0 1px 0 rgba(255,255,255,.35); }
+  .reel.d9 .cap { background: linear-gradient(180deg, #ff9ed2, #ff1493 55%, #8f0057); }
+  /* a digit passing: the tile flashes in its colour (throttled in JS, so it reads) */
+  .reel.flash { animation: tileFlash .35s ease-out; }
+  @keyframes tileFlash { 0% { filter: brightness(2.1); } 100% { filter: brightness(1); } }
+  /* a new digit place sliding in as the number grows */
+  .reel.new { animation: reelIn .6s ease-out; }
+  @keyframes reelIn { 0% { opacity: 0; transform: translateX(-24px) scale(.9); } 100% { opacity: 1; transform: translateX(0) scale(1); } }
+  /* a digit landing: the tile shines up */
+  .reel.lit { animation: tileShine 1.4s ease-out; }
+  @keyframes tileShine { 0% { filter: brightness(1.7); } 100% { filter: brightness(1); } }
+
+  /* 1 — Platinum Engraved: cut INTO the obsidian, platinum in the cut */
+  .c1 { font-family: Georgia, "Times New Roman", serif;
+    background: linear-gradient(180deg, #f4f4f4, #b9b9b9 55%, #e9e9e9);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 -1px 1px rgba(0,0,0,.85), 0 1px 0 rgba(255,255,255,.22), 0 3px 6px rgba(0,0,0,.55); }
+  /* 2 — Platinum Relief: cast badge, raised, real shadow */
+  .c2 {
+    background: linear-gradient(180deg, #ffffff, #d2d2d2 38%, #8e8e8e 72%, #ececec);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 -1px 0 rgba(255,255,255,.65), 0 8px 14px rgba(0,0,0,.9), 0 3px 4px rgba(0,0,0,.55); }
+  /* 3 — Liquid Platinum: poured, mirror-bright, one specular band */
+  .c3 {
+    background: linear-gradient(155deg, #ffffff 0%, #e6e6e6 24%, #969696 48%, #fafafa 60%, #767676 78%, #dcdcdc 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 0 20px rgba(255,255,255,.35), 0 5px 12px rgba(0,0,0,.6); }
+  /* 4 — Diamond-Cut: flat facets, hard light breaks */
+  .c4 {
+    background: linear-gradient(135deg, #e9e9e9 0 16%, #ffffff 16% 30%, #a6a6a6 30% 48%, #f2f2f2 48% 62%, #8a8a8a 62% 80%, #e4e4e4 80%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 2px 6px rgba(0,0,0,.7), 0 0 14px rgba(255,255,255,.28); }
+  /* 5 — Gold on Obsidian: the standard, engraved gold */
+  .c5 { font-family: Georgia, "Times New Roman", serif;
+    background: linear-gradient(180deg, #fff4c2, #f5d76e 35%, #b8860b 65%, #ffe98a 92%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 1px 0 rgba(255,255,255,.3), 0 -1px 2px rgba(0,0,0,.85), 0 4px 10px rgba(0,0,0,.6); }
+  /* 6 — Two-Tone: platinum face, gold edge */
+  .c6 {
+    background: linear-gradient(180deg, #fdfdfd, #c6c6c6 52%, #f2f2f2);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    -webkit-text-stroke: 1.5px #d4af37;
+    text-shadow: 0 0 16px rgba(212,175,55,.35), 0 5px 10px rgba(0,0,0,.6); }
+  /* 7 — Obsidian Glass: see-through, light in the edges */
+  .c7 {
+    background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(205,215,235,.6) 55%, rgba(240,244,255,.85));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 0 3px rgba(255,255,255,.75), 0 0 22px rgba(175,200,255,.4), 0 5px 14px rgba(0,0,0,.8); }
+  /* 8 — Sapphire Jewel: deep blue, white facet flashes */
+  .c8 {
+    background: linear-gradient(160deg, #a9bdff, #2b4acb 42%, #0e1e6e 72%, #82a4ff);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 -1px 0 rgba(255,255,255,.55), 0 0 18px rgba(80,120,255,.5), 0 5px 12px rgba(0,0,0,.7); }
+  /* 9 — Brushed Steel: machined, fine horizontal brush */
+  .c9 {
+    background: repeating-linear-gradient(180deg, #c9c9c9 0 2px, #989898 2px 4px, #d6d6d6 4px 5px, #a8a8a8 5px 7px);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 2px 5px rgba(0,0,0,.55), 0 -1px 0 rgba(255,255,255,.35); }
+  /* 10 — Light Itself: the number is lit from within */
+  .c10 { color: #fffbe8;
+    text-shadow: 0 0 8px rgba(255,244,200,.95), 0 0 32px rgba(255,220,120,.55), 0 0 64px rgba(255,200,80,.32), 0 2px 6px rgba(0,0,0,.5); }
+  footer { text-align: center; margin-top: 40px; color: #777; font-size: 14px; line-height: 1.6; }
+  footer b { color: #d4af37; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">The Score &middot; The Concepts</div>
+    <h1>The number, as <em>real objects.</em></h1>
+    <p class="sub">The score is <b>725</b> in every one. Only the object changes.<br>
+    The ultimate is first &mdash; every concept distilled into one object, and now it lights up in the colors of the numbers themselves.<br>
+    Then the eleven, so you can see what went into it.</p>
+  </header>
+
+  <section class="hero">
+    <div class="kicker">The Ultimate &middot; Best of All Eleven</div>
+    <h2>The ultimate number.</h2>
+    <div class="hero-well">
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="num ultimate" data-dur="2600"><span class="reel rest" data-div="100" data-max="7"><span class="strip"><span class="rd d7">7</span></span></span><span class="reel rest" data-div="10" data-max="72"><span class="strip"><span class="rd d2">2</span></span></span><span class="reel rest" data-div="1" data-max="725"><span class="strip"><span class="rd d5">5</span></span></span></div>
+        <div class="platter big"></div>
+      </div>
+    </div>
+    <p class="recipe">Each digit is a <b>button</b> — the Dashboard's own anatomy, measured live: a coloured rim, a black gradient face, a white number, a glossy cap on top, a soft shadow underneath. At rest, the number is <b>obsidian black with white light around it</b>. When it wakes, it counts up in <b>slow motion</b>, from the <b>bottom to the top</b> — and each tile <b>flashes in its colour as the numbers flow through it</b>, in sync with the number, then lands and lights up in its own color: seven purple, then two orange, then five cyan. The color is the rim and the cap — the light of the object. The number stays white. The inside stays obsidian black. One is red, two is orange, three is gold, four is emerald, five is cyan, six is indigo, seven is royal purple, eight is lavender, nine is hot pink, the crown chakra.</p>
+    <div class="colorkey">
+      <div class="key"><span class="sw d0">0</span>White</div>
+      <div class="key"><span class="sw d1">1</span>Red</div>
+      <div class="key"><span class="sw d2">2</span>Orange</div>
+      <div class="key"><span class="sw d3">3</span>Gold</div>
+      <div class="key"><span class="sw d4">4</span>Emerald</div>
+      <div class="key"><span class="sw d5">5</span>Cyan</div>
+      <div class="key"><span class="sw d6">6</span>Indigo</div>
+      <div class="key"><span class="sw d7">7</span>Royal Purple</div>
+      <div class="key"><span class="sw d8">8</span>Lavender</div>
+      <div class="key"><span class="sw d9">9</span>Hot Pink</div>
+    </div>
+    <p class="keynote">Nine is the crown chakra. The color is the rim and the cap — the light of the object. The number stays white, the inside stays obsidian black. The colors are the chakras, so the score is never just a number.</p>
+  </section>
+
+  <section class="hero">
+    <div class="kicker">Dynamic &middot; It Keeps Growing</div>
+    <h2>The number grows with the score.</h2>
+    <div class="hero-well">
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="num ultimate growing"></div>
+        <div class="platter big"></div>
+      </div>
+    </div>
+    <p class="recipe">The number is <b>dynamic</b> — it is built from the score, not fixed at three digits. It lands on <b>725</b>, then it keeps growing: a new tile slides in and it counts up to <b>7,250</b>, then another tile and it counts to <b>10,725</b>. Thousands, ten-thousands, as far as it goes — the tiles just keep coming, each one flashing in its colour as the numbers flow through it. The gauge and the number move as one — that is next.</p>
+  </section>
+
+  <section class="hero">
+    <div class="kicker">No Limit &middot; It Fits the Page</div>
+    <h2>Five digits. Six. Seven. Eight.</h2>
+    <div class="hero-well">
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="num ultimate bignum"></div>
+        <div class="platter big" style="width:80%;max-width:860px;"></div>
+      </div>
+    </div>
+    <p class="recipe">There is <b>no limit</b> on the digits. The number builds its tiles from the score — five, six, seven, eight, as many as it takes — and the tiles shrink to fit the page. If it fits on the page, it is good to go. If you ever get a number that does not fit on the page — congratulations.</p>
+  </section>
+
+  <div class="grid">
+    <div class="card"><div class="num-well"><div class="num c1">725</div></div>
+      <div class="name"><span>01</span>Platinum Engraved</div>
+      <p class="desc">Carved <b>into</b> the obsidian, the cut filled with platinum. You read it by the light catching the bevel. Deep, quiet, permanent &mdash; like an engraving on a watch caseback.</p></div>
+    <div class="card"><div class="num-well"><div class="num c2">725</div></div>
+      <div class="name"><span>02</span>Platinum Relief</div>
+      <p class="desc">Cast as a solid piece of platinum and set <b>on</b> the plate, raised, with a real shadow falling away from it. It has weight. You can almost feel its edge.</p></div>
+    <div class="card"><div class="num-well"><div class="num c3">725</div></div>
+      <div class="name"><span>03</span>Liquid Platinum</div>
+      <p class="desc">Poured, molten, frozen mid-flow. Mirror-bright on top, dark underneath, one bright streak across it. It looks wet and alive &mdash; like it is still moving.</p></div>
+    <div class="card"><div class="num-well"><div class="num c4">725</div></div>
+      <div class="name"><span>04</span>Diamond-Cut</div>
+      <p class="desc">Cut like a gemstone. Flat facets, sharp angles, each facet a different shade of platinum catching the light differently. It sparkles when you move.</p></div>
+    <div class="card"><div class="num-well"><div class="num c5">725</div></div>
+      <div class="name"><span>05</span>Gold on Obsidian</div>
+      <p class="desc">The standard &mdash; engraved gold on black obsidian. Warm, rich, the classic. Gold is what matters; black is the night it shines against.</p></div>
+    <div class="card"><div class="num-well"><div class="num c6">725</div></div>
+      <div class="name"><span>06</span>Two-Tone &middot; Platinum + Gold</div>
+      <p class="desc">Platinum face, gold edge. The body is platinum, the rim is a thin line of gold light. Two metals together &mdash; it looks like a piece of jewellery, not a readout.</p></div>
+    <div class="card"><div class="num-well"><div class="num c7">725</div></div>
+      <div class="name"><span>07</span>Obsidian Glass</div>
+      <p class="desc">Made of glass. You see through it to the black beneath, the edges catch the light bright, the inside glows softly. Fragile and precious at once.</p></div>
+    <div class="card"><div class="num-well"><div class="num c8">725</div></div>
+      <div class="name"><span>08</span>Sapphire Jewel</div>
+      <p class="desc">Cut from deep blue sapphire. Dark blue body, bright white facet flashes, gold light on the edges. The only one with a deep colour &mdash; so it owns the page.</p></div>
+    <div class="card"><div class="num-well"><div class="num c9">725</div></div>
+      <div class="name"><span>09</span>Brushed Steel</div>
+      <p class="desc">Machined from brushed steel. Fine horizontal brush lines, matte steel, one soft top-light. It looks like it came off a lathe &mdash; and the machine is the point.</p></div>
+    <div class="card"><div class="num-well"><div class="num c10">725</div></div>
+      <div class="name"><span>10</span>Light Itself</div>
+      <p class="desc">Made of light. A bright core, a soft volumetric glow around it, like a filament in the dark. It does not sit on the plate &mdash; it hovers, lit from within.</p></div>
+    <div class="card feature"><div class="num-well"><div style="display:flex;flex-direction:column;align-items:center;"><div class="num c2">725</div><div class="platter"></div></div></div>
+      <div class="name"><span>11</span>The Silver Platter</div>
+      <p class="desc">Served on a silver platter. The number is the jewel, the platter is the presentation &mdash; a wide silver tray with a bright rim, the number resting on it like a trophy. Plaques, trophies, depth jewellery: real and valuable, not fake. <b>Shawn&rsquo;s addition.</b></p></div>
+  </div>
+  <footer>Every number here is the same score &mdash; <b>725</b>. What changes is what the number <b>is</b>.<br>
+  The ultimate is the best of all eleven. If it is the one, it becomes the score on the Dashboard.</footer>
+</div>
+<script>
+/* The reveal: every number scrolls up to 725 and unveils — the million-dollar moment. */
+(function(){
+  var TARGET = 725, H = 168; /* H = one digit height in px */
+  var io;
+
+  /* --- the ultimate: three reels, bottom to top, chakra colors --- */
+  function buildReel(reel, target){
+    var div = parseInt(reel.getAttribute('data-div'), 10);
+    /* the strip is a fixed 10-digit cycle (0-9), never as long as the count —
+       a strip built to the target is 12 million nodes for an 8-digit number
+       and freezes the page the moment it scrolls into view. The reel shows
+       one digit at a time, and that digit is count % 10, so 10 spans are all
+       it ever needs; the translation wraps (see setReel) instead of running away. */
+    var max = Math.floor(target / div);
+    reel.setAttribute('data-max', String(max));
+    var strip = reel.querySelector('.strip');
+    var finalDigit = Math.floor(target / div) % 10;
+    reel.setAttribute('data-final', finalDigit);
+    /* the tile: a glossy cap on top, the scrolling window below it */
+    if (!reel.querySelector('.cap')) {
+      var cap = document.createElement('span'); cap.className = 'cap'; reel.insertBefore(cap, strip);
+      var win = document.createElement('span'); win.className = 'window'; reel.insertBefore(win, strip); win.appendChild(strip);
+    }
+    var html = '';
+    for (var i = 0; i < 10; i++) {
+      html += '<span class="rd">' + i + '</span>';
+    }
+    strip.innerHTML = html;
+    /* park on the final digit, in rest style (obsidian + white light) */
+    var finalCount = Math.floor(target / div);
+    strip.style.transform = 'translateY(' + (-(finalCount % 10) * H) + 'px)';
+  }
+  function buildReels(el, target){
+    target = target || TARGET;
+    el.querySelectorAll('.reel').forEach(function(reel){ buildReel(reel, target); });
+  }
+  function createReels(el, target){
+    /* build the reels for a target from scratch — one per digit place */
+    var digits = String(target).length, html = '';
+    for (var i = digits - 1; i >= 0; i--) {
+      var div = Math.pow(10, i);
+      html += '<span class="reel rest" data-div="' + div + '" data-max="' + Math.floor(target / div) + '"><span class="strip"><span class="rd">' + (Math.floor(target / div) % 10) + '</span></span></span>';
+    }
+    el.innerHTML = html;
+  }
+  function reelObjs(el){
+    var out = [];
+    el.querySelectorAll('.reel').forEach(function(reel){
+      out.push({ reel: reel, strip: reel.querySelector('.strip'), div: parseInt(reel.getAttribute('data-div'), 10), last: null, lastFlash: 0, y: null });
+    });
+    return out;
+  }
+  function easeOutQuint(p){ return 1 - Math.pow(1 - p, 5); } /* slow-mo: long slow finish */
+  /* one frame of a reel: park the strip on the count, follow the colour, flash the tile */
+  function setReel(o, count, ts){
+    /* the translation wraps every 10 counts (the strip is a 0-9 cycle), so it
+       stays bounded no matter how big the number is. When the wrap would jump
+       the strip backwards, snap it with the transition off — invisible, because
+       the strip repeats every 10 digits — so the roll never scrolls the wrong way. */
+    var y = -((count % 10) * H);
+    if (o.y !== undefined && o.y !== null && y > o.y) {
+      o.strip.style.transition = 'none';
+      o.strip.style.transform = 'translateY(' + y + 'px)';
+      void o.strip.offsetWidth;
+      o.strip.style.transition = '';
+    } else {
+      o.strip.style.transform = 'translateY(' + y + 'px)';
+    }
+    o.y = y;
+    var cur = count % 10;
+    if (cur !== o.last) {
+      o.reel.classList.remove('rest');
+      if (o.last !== null) o.reel.classList.remove('d' + o.last);
+      o.reel.classList.add('d' + cur);
+      o.last = cur;
+      /* flash the tile in its colour — throttled so it reads, not strobes */
+      if (ts - o.lastFlash > 120) {
+        o.lastFlash = ts;
+        o.reel.classList.remove('flash');
+        void o.reel.offsetWidth;
+        o.reel.classList.add('flash');
+      }
+    }
+  }
+  function snapStrips(reels, val){
+    reels.forEach(function(o){
+      var y = -((Math.floor(val / o.div) % 10) * H);
+      o.strip.style.transition = 'none';
+      o.strip.style.transform = 'translateY(' + y + 'px)';
+      o.y = y;
+    });
+  }
+  function restoreStrips(reels, el){
+    void el.offsetWidth;
+    reels.forEach(function(o){ o.strip.style.transition = ''; });
+  }
+  /* no limit on the digits: shrink the whole number to fit the page width */
+  function fitNumber(el){
+    var well = el.closest('.hero-well');
+    if (!well) return;
+    var avail = well.clientWidth - 24;
+    el.style.transform = '';
+    var w = el.scrollWidth;
+    if (w > avail) {
+      var s = avail / w;
+      el.style.transform = 'scale(' + s + ')';
+      el.style.transformOrigin = 'top center';
+    }
+  }
+  function revealUltimate(el, target, done){
+    /* slow-mo: each reel lands in turn — hundreds, then tens, then units.
+       Each tile flashes in its colour as the numbers flow through it,
+       then lights up and shines when it lands. */
+    target = target || TARGET;
+    var durations = [5000, 7500, 10000];
+    var reels = reelObjs(el);
+    snapStrips(reels, 0);
+    restoreStrips(reels, el);
+    var start = null, finished = reels.map(function(){ return false; });
+    function tick(ts){
+      if (start === null) start = ts;
+      var elapsed = ts - start, allDone = true;
+      reels.forEach(function(o, i){
+        var dur = durations[i] || (5000 + i * 1250);
+        var p = Math.min(elapsed / dur, 1);
+        var val = Math.round(target * easeOutQuint(p));
+        var count = Math.floor(val / o.div);
+        setReel(o, count, ts);
+        if (p >= 1 && !finished[i]) { finished[i] = true; o.reel.classList.add('lit'); }
+        if (p < 1) allDone = false;
+      });
+      if (!allDone) requestAnimationFrame(tick);
+      else { el.classList.add('landed'); if (done) done(); }
+    }
+    requestAnimationFrame(tick);
+  }
+  /* grow: a new digit place slides in on the left, then the whole number counts up */
+  function growAndReveal(el, fromVal, toVal, done){
+    var oldDigits = String(fromVal).length, newDigits = String(toVal).length;
+    for (var d = newDigits; d > oldDigits; d--) {
+      var div = Math.pow(10, d - 1);
+      var reel = document.createElement('span');
+      reel.className = 'reel rest new';
+      reel.setAttribute('data-div', String(div));
+      reel.setAttribute('data-max', String(Math.floor(toVal / div)));
+      reel.innerHTML = '<span class="strip"><span class="rd">0</span></span>';
+      el.insertBefore(reel, el.firstChild);
+      buildReel(reel, toVal);
+      setTimeout(function(r){ return function(){ r.classList.remove('new'); }; }(reel), 700);
+    }
+    /* rebuild every strip for the new target — the old strips are too short
+       for the bigger count, and a reel with no digit under the window reads blank */
+    buildReels(el, toVal);
+    fitNumber(el);
+    var reels = reelObjs(el);
+    snapStrips(reels, fromVal);
+    restoreStrips(reels, el);
+    var start = null, dur = 4000;
+    function tick(ts){
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var val = Math.round(fromVal + (toVal - fromVal) * easeOutQuint(p));
+      reels.forEach(function(o){ setReel(o, Math.floor(val / o.div), ts); });
+      if (p < 1) requestAnimationFrame(tick);
+      else {
+        reels.forEach(function(o){ o.reel.classList.add('lit'); });
+        el.classList.add('landed');
+        if (done) done();
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+  /* the growing number: 725, then it keeps growing — 7,250, then 10,725 */
+  function revealGrowing(el){
+    createReels(el, 725);
+    buildReels(el, 725);
+    fitNumber(el);
+    revealUltimate(el, 725, function(){
+      setTimeout(function(){
+        growAndReveal(el, 725, 7250, function(){
+          setTimeout(function(){
+            growAndReveal(el, 7250, 10725, function(){});
+          }, 1400);
+        });
+      }, 1400);
+    });
+  }
+
+  /* no limit: eight digits, built from the score, shrunk to fit the page */
+  function revealBig(el){
+    createReels(el, 12345678);
+    buildReels(el, 12345678);
+    fitNumber(el);
+    revealUltimate(el, 12345678);
+  }
+  /* --- the eleven: plain count-up --- */
+  function revealPlain(el){
+    var dur = parseInt(el.getAttribute('data-dur') || '1700', 10);
+    var start = null;
+    function tick(ts){
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(TARGET * eased);
+      if (p < 1) requestAnimationFrame(tick);
+      else { el.textContent = TARGET; el.classList.add('landed'); }
+    }
+    requestAnimationFrame(tick);
+  }
+
+  var ult = document.querySelector('.num.ultimate:not(.growing)');
+  if (ult) buildReels(ult);
+  io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      var el = en.target;
+      io.unobserve(el);
+      if (el.classList.contains('growing')) revealGrowing(el);
+      else if (el.classList.contains('bignum')) revealBig(el);
+      else if (el.querySelector('.reel')) revealUltimate(el); else revealPlain(el);
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.num').forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>

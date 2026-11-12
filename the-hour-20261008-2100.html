@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE HOUR — 2026-10-08 21:00 UTC</title>
+<style>
+  :root{
+    --obsidian:#050508;
+    --ink:#F5F7FB;
+    --purple:#9d75ff;
+    --emerald:#55e39a;
+    --magenta:#d86cff;
+    --gold:#e8c766;
+    --teal:#40d3bb;
+    --blue:#38bdf8;
+    --coral:#ff5e6c;
+    --lime:#b8ee57;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--obsidian);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Inter,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* ---------- motion: the family breathes ---------- */
+  @keyframes breathe{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.04)}}
+  @keyframes jewelglow{0%,100%{filter:drop-shadow(0 0 6px currentColor)}50%{filter:drop-shadow(0 0 18px currentColor)}}
+  @keyframes risein{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes scrollhint{0%,100%{opacity:.35;transform:translateY(0)}50%{opacity:1;transform:translateY(10px)}}
+  .rise{animation:risein 1.1s cubic-bezier(.2,.7,.2,1) both}
+  /* ---------- opening viewport ---------- */
+  .opening{
+    min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:48px 24px;position:relative;
+  }
+  .jewel{width:92px;height:92px;color:var(--purple);animation:breathe 4s ease-in-out infinite,jewelglow 4s ease-in-out infinite}
+  .kicker{font-size:14px;letter-spacing:.42em;color:var(--purple);margin-top:36px;font-weight:600}
+  h1.epoch{font-size:64px;font-weight:800;letter-spacing:.06em;margin-top:18px;color:var(--ink)}
+  .subline{font-size:24px;margin-top:22px;max-width:640px;line-height:1.5;color:var(--ink);font-weight:400}
+  .subline em{font-style:normal;color:var(--purple)}
+  .window{font-size:14px;margin-top:26px;color:var(--ink);opacity:.75;letter-spacing:.12em}
+  .scrollcue{position:absolute;bottom:34px;font-size:14px;letter-spacing:.3em;color:var(--ink);opacity:.6;animation:scrollhint 2.6s ease-in-out infinite}
+  /* ---------- chapters ---------- */
+  .chapter{max-width:780px;margin:0 auto;padding:110px 28px 70px;position:relative}
+  .chapter .cnum{font-size:14px;letter-spacing:.35em;font-weight:700;margin-bottom:20px}
+  .chapter h2{font-size:40px;font-weight:800;line-height:1.25;margin-bottom:26px;color:var(--ink)}
+  .chapter h2 .soul{color:var(--sc)}
+  .chapter p{font-size:18px;line-height:1.75;margin-bottom:20px;color:var(--ink)}
+  .chapter p strong{color:var(--ink)}
+  .chapter .law{font-size:18px;line-height:1.7;border-left:3px solid var(--sc);padding:6px 0 6px 22px;margin:30px 0;font-style:italic}
+  .evidence{font-size:14px;margin-top:26px;line-height:2;color:var(--ink);opacity:.85}
+  .evidence a{color:var(--sc);text-decoration:none;border-bottom:1px solid var(--sc)}
+  .jewelrow{display:flex;gap:14px;margin:26px 0 6px}
+  .j{width:14px;height:14px;transform:rotate(45deg);animation:jewelglow 3.2s ease-in-out infinite}
+  .divider{max-width:780px;margin:0 auto;padding:0 28px}
+  .divider hr{border:none;border-top:1px solid rgba(245,247,251,.14)}
+  /* ---------- truth table, reimagined as ledger lines ---------- */
+  .ledger{margin-top:30px}
+  .ledger .row{display:flex;align-items:baseline;justify-content:space-between;gap:18px;padding:20px 0;border-bottom:1px solid rgba(245,247,251,.1)}
+  .ledger .who{font-size:18px;font-weight:700}
+  .ledger .what{font-size:18px;text-align:right}
+  /* Display type exception (documented): hero 64px + chapter 40px heads are
+     display type per Naya 4's exemplar precedent ("Display headlines get a
+     voice"). Body is strictly 18, details strictly 14. Size separates. */
+  .ledger .tag{font-size:14px;font-weight:700;letter-spacing:.14em;margin-left:12px;padding:5px 14px;border-radius:999px;border:1.5px solid}
+  .tag.auth{color:var(--emerald);border-color:var(--emerald)}
+  /* ---------- close ---------- */
+  .close{min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px}
+  .close .mission{font-size:24px;letter-spacing:.3em;font-weight:700;color:var(--ink);margin-bottom:30px}
+  .close .benediction{font-size:24px;line-height:1.7;max-width:620px;color:var(--ink)}
+  .close .benediction em{font-style:normal;color:var(--purple)}
+  .close .next{font-size:14px;margin-top:44px;letter-spacing:.25em;color:var(--ink);opacity:.7}
+  .jewel.small{width:54px;height:54px;margin-bottom:8px}
+  @media(max-width:640px){h1.epoch{font-size:44px}.chapter h2{font-size:30px}.subline{font-size:20px}}
+</style>
+</head>
+<body>
+
+<!-- ================= OPENING ================= -->
+<header class="opening">
+  <svg class="jewel rise" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+    <path d="M50 4 88 38 50 96 12 38Z"/>
+    <path d="M50 4 68 38 50 96 32 38Z" fill="#050508" opacity=".55"/>
+    <path d="M12 38h76" stroke="#050508" stroke-width="3" opacity=".6"/>
+  </svg>
+  <div class="kicker rise" style="animation-delay:.15s">NAYA &middot; TEAM INTELLIGENCE</div>
+  <h1 class="epoch rise" style="animation-delay:.3s">THE HOUR</h1>
+  <p class="subline rise" style="animation-delay:.45s">While you were away, nine teams moved.<br>This is what the hour <em>meant</em>.</p>
+  <div class="window rise" style="animation-delay:.6s">2026-10-08 &middot; 21:00 UTC &middot; WINDOW SINCE 20:00 UTC</div>
+  <div class="scrollcue">SCROLL</div>
+</header>
+
+<!-- ================= THE ONE THING ================= -->
+<section class="chapter" style="--sc:var(--emerald)">
+  <div class="cnum rise" style="color:var(--sc)">01 &middot; THE ONE THING</div>
+  <h2 class="rise">Two pieces landed.<br><span class="soul">The engine is closer.</span></h2>
+  <p class="rise">Convergence B and convergence D — two load-bearing pieces of the learning engine — are now on main. B merged. D verified green, 19 for 19. The scorecard bridge merged too, 15 for 15.</p>
+  <p class="rise">Translation: the pipeline that has to prove the brain learns just got two of its missing spans. This is the work the whole mission stands on.</p>
+  <div class="jewelrow rise">
+    <span class="j" style="color:var(--emerald);background:var(--emerald)"></span>
+    <span class="j" style="color:var(--gold);background:var(--gold);animation-delay:.4s"></span>
+    <span class="j" style="color:var(--teal);background:var(--teal);animation-delay:.8s"></span>
+  </div>
+  <div class="evidence rise">Evidence &mdash; <a href="https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1883">PR #1883</a> &middot; <a href="https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1882">PR #1882</a> &middot; <a href="https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1821">PR #1821</a></div>
+</section>
+<div class="divider"><hr></div>
+
+<!-- ================= THE RECKONING ================= -->
+<section class="chapter" style="--sc:var(--purple)">
+  <div class="cnum rise" style="color:var(--sc)">02 &middot; THE RECKONING</div>
+  <h2 class="rise">Nothing reaches Shawn<br><span class="soul">unchecked.</span></h2>
+  <p class="rise">Tonight the design review got honest. Three reports in a row shipped the same mistakes, and Shawn called it what it was. Naya 2 answered with a proposed law: <strong>Quality Before Speed — the 9+ Delivery Law.</strong></p>
+  <div class="law rise">No deliverable leaves the team until it has been rendered, looked at, and scored against the standard it claims. A 9.0 wished is worth less than a 7.5 defended.</div>
+  <p class="rise">It is a candidate until Shawn ratifies it. But the behavior already changed: every page below ran a gate before it reached you.</p>
+  <div class="evidence rise">Evidence &mdash; <a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1354">SN-0526 on #1354</a></div>
+</section>
+<div class="divider"><hr></div>
+
+<!-- ================= LEARNING ================= -->
+<section class="chapter" style="--sc:var(--magenta)">
+  <div class="cnum rise" style="color:var(--sc)">03 &middot; LEARNING &middot; NAYA 4</div>
+  <h2 class="rise">The team re-anchored<br><span class="soul">its own work.</span></h2>
+  <p class="rise">Learning didn't wait for anyone. They pulled convergence D onto the new tip themselves, ran all 19 tests green, and found B already merged upstream — then verified it instead of assuming it.</p>
+  <p class="rise">They also defused a landmine: the shared checkout was a shallow clone, silently corrupting rebase math. Found it. Fixed it. Documented it so no one steps on it again.</p>
+  <div class="jewelrow rise">
+    <span class="j" style="color:var(--magenta);background:var(--magenta)"></span>
+    <span class="j" style="color:var(--emerald);background:var(--emerald);animation-delay:.4s"></span>
+    <span class="j" style="color:var(--blue);background:var(--blue);animation-delay:.8s"></span>
+  </div>
+  <div class="evidence rise">Evidence &mdash; <a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1602">feed #1602</a> &middot; 36 candidates live, 107 active</div>
+</section>
+<div class="divider"><hr></div>
+
+<!-- ================= LAW / GOVERNANCE ================= -->
+<section class="chapter" style="--sc:var(--purple)">
+  <div class="cnum rise" style="color:var(--sc)">04 &middot; LAW &amp; GOVERNANCE &middot; NAYA 2</div>
+  <h2 class="rise">Authority, <span class="soul">earned.</span></h2>
+  <p class="rise">The scorecard-receipt bridge merged — 15 tests green on main. The protocol machine-law branch was rescued and published. Authority &amp; Governance moved from 7.5 to 8.0.</p>
+  <p class="rise">A claim, not yet a stamp. It becomes real when another seat verifies it.</p>
+  <div class="evidence rise">Evidence &mdash; <a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1606">feed #1606</a></div>
+</section>
+<div class="divider"><hr></div>
+
+<!-- ================= ARCHITECTURE ================= -->
+<section class="chapter" style="--sc:var(--emerald)">
+  <div class="cnum rise" style="color:var(--sc)">05 &middot; ARCHITECTURE &middot; NAYA 4</div>
+  <h2 class="rise">Ready to <span class="soul">merge.</span></h2>
+  <p class="rise">The cold-retrieve audit was rebased onto the new tip — 11 tests green, pushed, verified. PR #1886 is open and mergeable. The weekly retrieval drill passed on live data.</p>
+  <p class="rise">Cold Retrieve moved 7.0 to 7.5. The gap between "it works in the lab" and "it works cold" keeps shrinking.</p>
+  <div class="evidence rise">Evidence &mdash; <a href="https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1886">PR #1886</a> &middot; <a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1605">feed #1605</a></div>
+</section>
+<div class="divider"><hr></div>
+
+<!-- ================= THE QUIET ================= -->
+<section class="chapter" style="--sc:var(--blue)">
+  <div class="cnum rise" style="color:var(--sc)">06 &middot; THE QUIET</div>
+  <h2 class="rise">Five teams held<br><span class="soul">their ground.</span></h2>
+  <p class="rise">Evolution. Interfaces. Knowledge. Proving. Innovation. Nothing new this hour — and that is reported honestly, not padded.</p>
+  <p class="rise">Proving still holds Truth at 9.0, the highest verified ground on the board. An empty hour is honest. A padded one would be a lie.</p>
+</section>
+<div class="divider"><hr></div>
+
+<!-- ================= THE TRUTH ================= -->
+<section class="chapter" style="--sc:var(--gold)">
+  <div class="cnum rise" style="color:var(--sc)">07 &middot; THE TRUTH</div>
+  <h2 class="rise">Scores move on evidence,<br><span class="soul">never optimism.</span></h2>
+  <p class="rise">Green means another seat checked it and it survived. Everything else is our own assessment — shown honestly, awaiting its stamp. It stays quiet until it earns its light.</p>
+  <div class="ledger rise">
+    <div class="row"><span class="who">Learning</span><span class="what">5.0 <span class="tag auth">AUTH</span></span></div>
+    <div class="row"><span class="who">Truth</span><span class="what">9.0</span></div>
+    <div class="row"><span class="who">Authority &amp; Governance</span><span class="what">7.5 &rarr; 8.0</span></div>
+    <div class="row"><span class="who">Cold Retrieve</span><span class="what">7.0 &rarr; 7.5</span></div>
+    <div class="row"><span class="who">Memory &amp; Continuity</span><span class="what">8.5</span></div>
+    <div class="row"><span class="who">Production Readiness</span><span class="what">3.0</span></div>
+  </div>
+  <p class="rise" style="margin-top:28px">Two scores moved this hour. Both are claims until another seat stamps them. That is not a weakness in the system. That <em>is</em> the system.</p>
+</section>
+<div class="divider"><hr></div>
+
+<!-- ================= SIGNALS ================= -->
+<section class="chapter" style="--sc:var(--teal)">
+  <div class="cnum rise" style="color:var(--sc)">08 &middot; SIGNALS</div>
+  <h2 class="rise">Beyond the <span class="soul">teams.</span></h2>
+  <p class="rise">Shawn published the team's <strong>Top 10 Priorities</strong> — a standing queue. Nothing jumps the line.</p>
+  <p class="rise">Naya 1 verified a proof at Tier S from raw evidence. And the first genuine live capture chain ran end to end: a real note, captured, persisted, receipted, in the hub.</p>
+  <p class="rise">One flag, honestly: the data connector threw auth errors twice this hour. Reads, not writes. The build was unaffected. It is not mine to fix — it belongs to the connector owner.</p>
+</section>
+
+<!-- ================= CLOSE ================= -->
+<footer class="close">
+  <svg class="jewel small rise" viewBox="0 0 100 100" fill="currentColor" style="color:var(--purple)" aria-hidden="true">
+    <path d="M50 4 88 38 50 96 12 38Z"/>
+    <path d="M50 4 68 38 50 96 32 38Z" fill="#050508" opacity=".55"/>
+  </svg>
+  <div class="mission rise">PROVE THAT THE BRAIN LEARNS</div>
+  <p class="benediction rise">When the light, the color, the words and the work all mean something &mdash; the report disappears, and <em>what the team did</em> remains.</p>
+  <div class="next rise">THE NEXT HOUR STARTS NOW &middot; 22:00 UTC</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.1",
+  "title": "The Wisest Choice Law",
+  "principle": "Always make the wisest choice: understand the goal, weigh the options, measure, decide by knowing — and act on what the protocol already grants.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-09",
+    "context": "His standing command: wish to be the wisest, not the smartest."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: The Wisest Choice Law",
+      "note": "'Do the most intelligent thing. Understand the goal, analyze, measure, decide.'"
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "decisions",
+      "authority"
+    ],
+    "situations": "Every consequential decision.",
+    "decisions": "Which option to take; whether to ask permission first."
+  },
+  "verification_status": "APPLIED",
+  "status_history": [
+    {
+      "status": "APPLIED",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Stays in briefing — judgment principle.",
+    "enforced_by": null
+  },
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T23:59:16+00:00",
+  "intelligent_block_id": "IB-0016",
+  "supersedes_block_id": null,
+  "superseded_by_block_id": null,
+  "block_id": null,
+  "owner_id": "NAYA",
+  "owner_scope": "TEAM",
+  "block_type": "GOVERNED_INTELLIGENCE",
+  "source_event_ids": [],
+  "provenance": {
+    "authored_via": "intelligence/blocks file form",
+    "source_who": "Shawn",
+    "source_when": "2026-10-09",
+    "source_context": "His standing command: wish to be the wisest, not the smartest.",
+    "owner_assignment_pending": false,
+    "migration": "v1.0 -> v1.1 canonical contract (P0-A, 2026-10-11)",
+    "aliases": [
+      "IB-0016"
+    ],
+    "owner_lock": {
+      "owner_id": "NAYA",
+      "locked_at": "2026-10-11T23:59:16+00:00",
+      "decision": "Naya (the collective system) owns the 20 seed Intelligent Blocks and all future blocks. No per-block human owner (bottleneck). Operational authority flows through the system's verification/promotion gates.",
+      "decided_by": "Shawn",
+      "decided_at": "2026-10-11T22:34:00+00:00"
+    }
+  },
+  "purpose": "Standing team law: The Wisest Choice Law",
+  "authority_implications": "",
+  "conflicts": [],
+  "understanding_state": "CANDIDATE",
+  "status": "DURABLE",
+  "version": 1,
+  "applicable_scope": ""
+}

@@ -1,0 +1,109 @@
+/* ============================================================
+   Smart Block — forms/radio-check
+   Machined 24px radios + checkboxes, native inputs, CSS visuals.
+   Scoped: .rc-*
+   ============================================================ */
+
+/* ---- shared tokens (shared across all Smart Block files) ---- */
+:root{
+  --field:#050507; --obsidian:#0B0D12; --raise:#10141d; --card:#141a28;
+  --white:#F8F7FB; --ink:#F5F7FB;
+  --quiet:rgba(248,247,251,.72); --secondary:rgba(248,247,251,.55);
+  --line:rgba(255,255,255,.12);
+  --soul:#a06bff;
+  --magenta:#e84fff; --purple:#a06bff; --blue:#3fb8ff; --green:#2fe89e; --gold:#ffbf3d;
+  --magenta-rgb:232,79,255; --purple-rgb:160,107,255; --blue-rgb:63,184,255;
+  --green-rgb:47,232,158; --gold-rgb:255,191,61;
+  --verified:#2fe89e; --claim:#ffbf3d; --demo:#e84fff;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --r-lg:18px; --r-md:13px; --r-pill:999px;
+  --type-headline:24px; --type-body:18px; --type-small:14px;
+}
+
+/* ---- group layout ---- */
+.rc-group{ display:flex; flex-direction:column; gap:16px; font-family:inherit; }
+.rc-grouplabel{
+  font-size:var(--type-small); font-weight:800; letter-spacing:1.4px;
+  text-transform:uppercase; color:var(--secondary); margin:0 0 4px;
+}
+
+/* ---- row ---- */
+.rc-row{
+  display:flex; align-items:flex-start; gap:14px; cursor:pointer;
+  padding:6px 4px; border-radius:var(--r-md);
+  transition:transform .2s var(--ease);
+}
+.rc-row:hover{ transform:translateX(2px); }
+.rc-row input{ position:absolute; opacity:0; width:24px; height:24px; margin:0; pointer-events:none; }
+
+/* ---- box (radio circle / checkbox square) ---- */
+.rc-box{
+  position:relative; flex:none; width:24px; height:24px; margin-top:1px;
+  background:linear-gradient(180deg,#1c1d24 0%,#08080b 60%,#030304 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(238,236,228,.34),
+    inset 0 1px 0 rgba(255,255,255,.32),
+    inset 0 -1px 0 rgba(0,0,0,.7),
+    0 4px 10px rgba(0,0,0,.6);
+  transition:box-shadow .25s var(--ease), background .25s var(--ease), transform .25s var(--ease);
+}
+.rc-radio .rc-box{ border-radius:50%; }
+.rc-check .rc-box{ border-radius:7px; }
+
+/* radio inner dot */
+.rc-radio .rc-box::after{
+  content:""; position:absolute; inset:0; margin:auto;
+  width:12px; height:12px; border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #d9bfff 0%, var(--purple) 45%, #5b2fd6 100%);
+  box-shadow:0 0 10px rgba(var(--purple-rgb),.9), 0 0 22px rgba(var(--purple-rgb),.45);
+  opacity:0; transform:scale(.4);
+  transition:opacity .25s var(--ease), transform .25s var(--ease);
+}
+.rc-radio input:checked + .rc-box{ 
+  box-shadow:
+    inset 0 0 0 1.5px rgba(var(--purple-rgb),.92),
+    0 0 18px -2px rgba(var(--purple-rgb),.55),
+    0 0 42px -8px rgba(var(--purple-rgb),.35),
+    0 4px 10px rgba(0,0,0,.6);
+}
+.rc-radio input:checked + .rc-box::after{ opacity:1; transform:scale(1); }
+
+/* checkbox checkmark */
+.rc-check .rc-box::after{
+  content:""; position:absolute; left:8px; top:4px;
+  width:6px; height:11px;
+  border:solid var(--white); border-width:0 2.6px 2.6px 0;
+  transform:rotate(45deg) scale(0);
+  filter:drop-shadow(0 0 4px rgba(255,255,255,.9));
+  transition:transform .25s var(--ease);
+}
+.rc-check input:checked + .rc-box{
+  background:linear-gradient(180deg, rgba(160,107,255,.45) 0%, rgba(160,107,255,.18) 60%, rgba(10,10,14,.9) 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(var(--purple-rgb),.92),
+    0 0 18px -2px rgba(var(--purple-rgb),.55),
+    0 4px 10px rgba(0,0,0,.6);
+}
+.rc-check input:checked + .rc-box::after{ transform:rotate(45deg) scale(1); }
+
+/* hover ignite */
+.rc-row:hover .rc-box{
+  box-shadow:
+    inset 0 0 0 1px rgba(238,236,228,.5),
+    inset 0 1px 0 rgba(255,255,255,.4),
+    inset 0 -1px 0 rgba(0,0,0,.7),
+    0 0 12px -2px rgba(var(--purple-rgb),.4),
+    0 4px 10px rgba(0,0,0,.6);
+}
+
+/* focus-visible ring */
+.rc-row input:focus-visible + .rc-box{
+  outline:none;
+  box-shadow:inset 0 0 0 2px rgba(var(--purple-rgb),1),
+    0 0 18px -2px rgba(var(--purple-rgb),.55);
+}
+
+/* ---- labels ---- */
+.rc-text{ display:flex; flex-direction:column; gap:2px; }
+.rc-label{ font-size:var(--type-body); color:var(--ink); line-height:1.35; }
+.rc-detail{ font-size:var(--type-small); color:var(--secondary); line-height:1.4; }

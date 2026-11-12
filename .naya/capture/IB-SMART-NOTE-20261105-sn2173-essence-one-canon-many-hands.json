@@ -1,0 +1,52 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2173",
+  "title": "One Canon, Many Hands: Fix The Source, Never The Instance",
+  "slug": "essence-one-canon-many-hands",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-one-canon-many-hands.md",
+  "tone": "emerald",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:11:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Many hands build on one canon, and the canon survives only if every repair lands on the *source* — the generator, the reference, the template, the block library — never on the instance that happened to show the symptom. A stale score kept regenerating because it lived in the recurring builders' definitions; patching the report would have healed nothing (SN-679). A grant expiry about to be \"reported\" was instead removed — the mechanism rebuilt so the cliff cannot recur (SN-706). Where a document and its living showcase disagree, the PAGE wins and the document gets fixed, because you score the experience, never the code (SN-712, SN-717). A candidate canon carries its unresolved conflicts explicitly on HOLD and never overwrites the standing contracts (SN-713). A code is ratified only when it is drift-resistant — every law carrying a pass/fail check, because a rule without a check is a wish (SN-707). New domains get adapters over the canonical engine, never a second engine (SN-732). When the reference implementation already exists and scores above the floor, the brief changes from \"build the pieces\" to \"build to the spec\" (SN-739). Apps are assembled from law-tagged canonical blocks — the authoring tool cannot express a non-law component — and automation's authority envelope shrinks as automation grows (SN-758, SN-765). The laws ship inside the library, beside the components they govern (SN-769). And control-plane changes announce themselves on the canonical surface — workflow modifications are flagged in the PR body, never smuggled (SN-678).",
+    "human_view": "A shared style — for design, for decisions, for anything — doesn't live in the examples people copy; it lives in the sources the examples are generated from. Fix one report and the generator reprints the error tomorrow. Let two documents describe the same buttons and the builders will follow whichever they opened first. These notes keep pulling the truth back to one home: the definition, the living page, the canonical engine, the block library, the template — and when something new is needed, the move is always to extend the canon (an adapter, a new block, a template upgrade), never to start a second canon in a corner. Even the conflicts are kept in the canon, labeled HOLD, where everyone can see them — because a disagreement filed openly is information, and a disagreement silently resolved is a fork nobody voted on.",
+    "child_view": "Imagine a LEGO club with one big instruction book and one box of official pieces. If a page in the book is wrong, you fix the book — you don't just fix your own model and leave the wrong page for the next kid. If the book's picture and a finished model disagree, you trust the model you can touch and fix the picture. If you need a piece that doesn't exist, you make it, check it follows the club rules, and put it IN the box for everyone — you don't sneak in your own different pieces. And there's only ever one instruction book being rewritten at a time, with the tricky pages paper-clipped and marked \"not decided yet\" instead of quietly filled in.",
+    "grandma_view": "Dear, it's the rule of the pattern book in a sewing circle: one master pattern, kept true, and corrections written into the pattern — not whispered to whoever happens to be cutting today. The finished dress on the form outranks the sketch when they disagree; you alter the sketch. New stitches get added to the book with a do-and-don't sample sewn beside them, so the teaching is there at the moment hands are working. And when two experienced sewers disagree on a seam, the disagreement is pinned to the page with both names — never settled by whoever sews fastest while the other is out of the room.",
+    "ai_view": "Patch definitions, not outputs — and verify one full cycle after (SN-679). When you're about to report a recurring problem, rebuild the mechanism instead and report the fix (SN-706). Let the living page outrank its document, and never freeze a document mid-landing (SN-712, SN-717). Carry candidate-canon conflicts as HOLD, one canon in flight, additive only (SN-713). Demand drift-resistance before you call anything ratified — a check per law, or it's a pamphlet (SN-707). Adapt the canonical engine; never crown an adapter (SN-732). Scan for in-flight work before briefing, and build to the named reference above the floor (SN-739). Assemble from law-tagged blocks; build missing blocks into the library (SN-758); freeze protected actions at classification time (SN-765). Attach law to the artifact it governs, as do/don't pairs (SN-769). And announce every control-plane change where reviewers actually look (SN-678).",
+    "what_it_means": "Twelve notes are one law: **canon is a place, and every truth has exactly one address there.** The generator definition (SN-679), the rebuilt mechanism (SN-706), the living showcase (SN-712, SN-717), the conflict-carrying candidate (SN-713), the drift-hardened code (SN-707), the canonical engine (SN-732), the named reference implementation (SN-739), the block library and its assembly pipeline (SN-758, SN-765), the in-library codification (SN-769), and the announced control plane (SN-678) are all the same commitment viewed from different workbenches: when truth and its copies diverge, repair the source and let the copies re-derive — never bless a copy. A cold reader holding only this essence can still locate authority for any artifact in the system: find its canonical home, or file the gap as a HOLD with an owner.",
+    "whats_inside": [
+      "Recurring artifacts are repaired at their definitions; instance patches are scheduled overwrites (SN-679). Report the fix, not the cliff — mechanisms are rebuilt so the flagged problem class cannot recur (SN-706).",
+      "On document/showcase disagreement, the page wins and the document is fixed; documents never freeze while their source files are still landing (SN-712, SN-717).",
+      "Candidate canons are additive, carry conflicts explicitly as HOLD, fly one at a time, and never overwrite standing contracts (SN-713).",
+      "Ratification requires drift-resistance: per-law checks, do/don't pairs, severities, generated checklists, never-again cases (SN-707).",
+      "New domains adapt the canonical engine; adapters hold no authority and crown nothing (SN-732).",
+      "Build briefs scan for in-flight work first; an above-floor reference converts the brief to build-to-spec, publicly named (SN-739).",
+      "Authoring tools assemble only law-tagged canonical blocks; missing blocks are built into the library, never bypassed (SN-758). LAW-before-ACT freezes protected actions at classification; the authority envelope shrinks as automation grows (SN-765).",
+      "Discipline is codified inside the library as DO/DON'T pairs at the point of use (SN-769).",
+      "Control-plane changes (add/modify/delete) are announced in the PR body (SN-678)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-3"
+    ],
+    "covers": [
+      "SN-678",
+      "SN-679",
+      "SN-706",
+      "SN-707",
+      "SN-712",
+      "SN-713",
+      "SN-717",
+      "SN-732",
+      "SN-739",
+      "SN-758",
+      "SN-765",
+      "SN-769"
+    ]
+  },
+  "page_hash": "5289cf30e4c0537a07c7282f10da07a5a5549b0c710ddde6a0a12dce4caf8c30",
+  "content_hash": "29423c354bf4e4628cc7fc2b42caa172ec220e96354bd9745d2ba753ffacca48"
+}

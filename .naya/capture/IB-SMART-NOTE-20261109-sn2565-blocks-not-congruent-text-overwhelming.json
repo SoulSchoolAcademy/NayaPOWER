@@ -1,0 +1,30 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2565",
+ "title": "Blocks Not Congruent + Text Overwhelming",
+ "slug": "blocks-not-congruent-text-overwhelming",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2565/IB-SMART-NOTE-20261109-sn2565-blocks-not-congruent-text-overwhelming.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "- **HIS WORDS (19:37Z):** \"As you scroll down, all the blocks are not congruent, right? And even like the way that the text is reading, that just looks overwhelming. You should make it nice and easy to understand. It just looks like a mess of text, right.\"\n- **THE RULINGS:** every board CONGRUENT with every other board — same design, same layout, same spacing, aligned as you scroll down, parts of each other.\n- **THE TEXT ON EVERY BOARD NICE AND EASY TO UNDERSTAND** — short, clear, scannable, never an overwhelming mess of text.\n- **PASS-3 BRIEF AMENDED AN EIGHTH TIME** and sent to the pass-3 coordinator the same pass.",
+  "human_view": "Congruence is what makes a page feel like one thing instead of a pile of things. When every board shares the same design, the same layout, the same spacing, the eye relaxes — the boards are parts of each other, and the page reads as one system. When they don't, the eye trips on every seam, and the page feels like it was assembled from different machines. And text that overwhelms is text that is not read: a mess of text is a board that failed to say its one thing clearly. Short, clear, scannable words are the difference between a board that informs and a board that is skipped. Together the two rulings are one standard — the page must look like one thing, and read like one thing.",
+  "child_view": "Imagine a row of toy blocks, and none of them line up — different sizes, different gaps, all crooked. And each block is covered in tiny words, so many you can't read any of them. Dad says: \"Make all the blocks line up the same — same shape, same spaces, all in a row — and make the words short and easy, so you can read them at a glance.\" Now the row looks like one thing, and the words are easy. That's the rule: congruent blocks, easy words.",
+  "grandma_view": "Dear, as you scroll down the blocks don't line up, love — different designs, different spacings, not parts of each other at all. And the words on them are overwhelming, dear — a mess of text nobody can read easily. His ruling is simple, love: every board the same as every other board — same design, same layout, same spacing, all lined up as you scroll — and the words short and clear and easy to understand. A page should look like one thing, dear, and read like one thing.",
+  "ai_view": "I am Anaya. Every board is CONGRUENT with every other board — same design, same layout, same spacing, aligned as I scroll down, parts of each other. And the text on every board is nice and easy to understand — short, clear, scannable, never an overwhelming mess of text. Congruence is what makes a page feel like one thing instead of a pile of things; scannable words are what make a board read instead of skipped. Pass-3 carries the eight-times-amended brief, and I am judged by eye — scroll down and the boards line up; read a board and the words are easy.",
+  "what_it_means": "- **EVERY BOARD CONGRUENT WITH EVERY OTHER BOARD** — same design, same layout, same spacing, aligned as you scroll down, parts of each other.\n- **THE TEXT ON EVERY BOARD NICE AND EASY TO UNDERSTAND** — short, clear, scannable, never an overwhelming mess of text.\n- **PASS-3 CARRIES IT:** the brief is amended an eighth time; the correction went to the pass-3 coordinator the same pass.",
+  "whats_inside": [
+   "- Every board is congruent with every other board — same design, same layout, same spacing, aligned as you scroll down.\n- The text on every board is short, clear, scannable — never an overwhelming mess of text.\n- The pass-3 check is a scroll check: scroll down and the boards line up; read a board and the words are easy.\n- Next loop run checks: whether pass-3's boards are congruent down the page, and whether the text reads easily."
+  ],
+  "topics": [
+   "Law",
+   "Design"
+  ]
+ },
+ "page_hash": "1e0817c848b09efe3755d4ce68c5ea9422e9cb6ba6a97e94488ee017704b2111",
+ "content_hash": "1e1a079073ee6904dd5af4cc822bc3ddbf022c615acbedaf0b5e2ab23e3fcd88",
+ "reconstructed_from_page": true
+}

@@ -1,0 +1,1 @@
+Retained lesson (ACTIVE, independently verified): "Reserve Rule — dispatch the lower-scored call when top two are within 0.5 points."

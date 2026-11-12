@@ -142,14 +142,26 @@ def test_reconciled_ledger_declares_production_applied_with_verification():
     assert "verified in schema_migrations" in entry.get("note", "")
 
 
-def test_alignment_decision_signed_boundary_is_ten_and_sql_mirrors_it():
+def test_alignment_decision_signed_boundary_is_nine_and_sql_mirrors_it():
+    # Zero Value Law reconciliation (2026-10-11): canonical spec
+    # (NAYANODE/0025 section 4) defines D_verified = clamp(..., -9, +9).
+    # The prior +/-10 bound was a discrepancy; schema, engine, and the SQL
+    # mirror were reconciled to the canonical -9..+9 display ladder.
+    # The SQL mirror lives in the Zero Value Law migration (the prior
+    # migration file retains the historical +/-10 for provenance).
     schema = json.loads(DECISION_SCHEMA.read_text(encoding="utf-8"))
     d = schema["properties"]["d_verified"]
-    assert d["minimum"] == -10
-    assert d["maximum"] == 10
-    body = _function_body("nayanet_value_receipt_v2_1_state")
+    assert d["minimum"] == -9
+    assert d["maximum"] == 9
+    zvl_migration = (ROOT / "supabase" / "migrations"
+                     / "20261011030000_zero_value_law_d_verified_nine.sql")
+    body = zvl_migration.read_text(encoding="utf-8")
     assert "ALIGNMENT_DECISION_D_VERIFIED_RANGE" in body
     assert "ALIGNMENT_DECISION_VERIFIED_REQUIRES_D_VERIFIED" in body
     assert "ALIGNMENT_DECISION_D_VERIFIED_MISMATCH" in body
-    assert "v_verified < -10 or v_verified > 10" in body
-    assert "greatest(-10::numeric, least(10::numeric, v_actual))" in body
+    assert "v_verified < -9 or v_verified > 9" in body
+    assert "greatest(-9::numeric, least(9::numeric, v_actual))" in body
+    # Zero Value Law cross-field guards are present in the SQL mirror.
+    assert "ALIGNMENT_DECISION_ZVL_UNVERIFIED_HAS_D_VERIFIED" in body
+    assert "ALIGNMENT_DECISION_ZVL_NULL_ACTUAL_HAS_D_VERIFIED" in body
+    assert "ALIGNMENT_DECISION_ZVL_OPEN_WINDOW_HAS_D_VERIFIED" in body

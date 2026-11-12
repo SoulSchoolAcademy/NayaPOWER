@@ -1,0 +1,9 @@
+/* Smart Block: nav-orb
+ * Source: Naya_Lego-blocks.html (byte-true extraction, not rewritten)
+ * Type: orbs
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules (v2) ---- */
+
+.nav-orb{position:relative;width:40px;height:40px;flex:none;border-radius:50%;background:radial-gradient(circle at 35% 27%,#fff9,var(--magenta) 37%,#08040c 78%);box-shadow:0 0 24px rgba(228,85,244,.55),inset 0 2px 4px rgba(255,255,255,.35),inset 0 -6px 12px rgba(0,0,0,.6)}

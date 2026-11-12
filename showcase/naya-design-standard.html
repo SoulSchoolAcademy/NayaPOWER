@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Naya Design Standard — Understand. Learn. Apply.</title>
+<style>
+/* ============ TOKENS (harvested verbatim from NayaNET___The_Living_Design_Standard.html) ============ */
+:root {
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+  /* Spectrum law: magenta → purple → blue → green → gold. Richest first. */
+  --magenta: #e84fff;
+  --purple: #a06bff;
+  --soul: #a06bff;
+  --blue: #3fb8ff;
+  --green: #2fe89e;
+  --gold: #ffbf3d;
+  --ease: cubic-bezier(.22,1,.36,1);
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(157,117,255,.35);
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --body: 18px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--field);
+  color: var(--white);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: var(--body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+/* Ambient breathing background */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(900px 500px at 15% 0%, rgba(216,108,255,.07), transparent 60%),
+    radial-gradient(800px 500px at 85% 20%, rgba(157,117,255,.06), transparent 60%),
+    radial-gradient(700px 600px at 50% 100%, rgba(85,185,238,.05), transparent 60%);
+  animation: breathe 24s ease-in-out infinite;
+}
+@keyframes breathe { 0%,100% { opacity: .8; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { body::before { animation: none; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+/* Focus visible: 2px purple glow ring OUTSIDE the element (playbook 11/86) */
+:focus-visible { outline: 2px solid var(--soul); outline-offset: 3px; box-shadow: 0 0 18px rgba(157,117,255,.5); border-radius: 6px; }
+button:focus:not(:focus-visible) { outline: none; box-shadow: none; }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+section { padding: 72px 0; border-top: 1px solid rgba(255,255,255,.07); }
+section:first-of-type { border-top: none; }
+
+h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 700; letter-spacing: -.01em; }
+h2 { font-size: 40px; margin-bottom: 8px; }
+h2 .n { color: var(--magenta); font-family: Inter, sans-serif; font-size: 18px; vertical-align: super; margin-right: 12px; letter-spacing: .2em; }
+.kicker { font-size: 14px; letter-spacing: .28em; text-transform: uppercase; color: var(--quiet); margin-bottom: 16px; }
+.lede { font-size: 20px; color: var(--quiet); max-width: 68ch; margin-bottom: 32px; }
+.lede strong, p strong { color: var(--white); }
+p { margin-bottom: 16px; max-width: 72ch; }
+.micro { font-size: 14px; color: var(--secondary); }
+
+/* ============ HERO ============ */
+.hero { min-height: 92vh; display: flex; flex-direction: column; justify-content: center; text-align: center; border: none; padding: 48px 0 64px; }
+.hero .logo { width: 148px; height: 148px; margin: 0 auto 28px; filter: drop-shadow(0 0 34px rgba(157,117,255,.45)); animation: logoGlow 5s ease-in-out infinite; }
+@keyframes logoGlow { 0%,100% { filter: drop-shadow(0 0 24px rgba(157,117,255,.35)); } 50% { filter: drop-shadow(0 0 44px rgba(216,108,255,.55)); } }
+.hero h1 { font-size: 64px; line-height: 1.08; margin-bottom: 18px; }
+.hero h1 .soul { color: var(--soul); }
+.hero .tagline { font-size: 22px; color: var(--quiet); margin-bottom: 8px; }
+.hero .law-line { font-size: 15px; letter-spacing: .24em; text-transform: uppercase; color: var(--magenta); margin: 28px 0 40px; }
+.spectrum-bar { display: flex; height: 10px; border-radius: 99px; overflow: hidden; max-width: 560px; margin: 0 auto; box-shadow: 0 4px 24px rgba(0,0,0,.5); }
+.spectrum-bar span { flex: 1; }
+.spectrum-bar span:nth-child(1) { background: var(--magenta); box-shadow: 0 0 18px var(--magenta); }
+.spectrum-bar span:nth-child(2) { background: var(--purple); box-shadow: 0 0 18px var(--purple); }
+.spectrum-bar span:nth-child(3) { background: var(--blue); box-shadow: 0 0 18px var(--blue); }
+.spectrum-bar span:nth-child(4) { background: var(--green); box-shadow: 0 0 18px var(--green); }
+.spectrum-bar span:nth-child(5) { background: var(--gold); box-shadow: 0 0 18px var(--gold); }
+.spectrum-label { margin-top: 14px; font-size: 13px; letter-spacing: .3em; color: var(--secondary); text-transform: uppercase; }
+
+/* ============ THE LIVING SYSTEM — buttons & boards ============ */
+/* ==========================================================================
+   THE LIVING SYSTEM — Naya buttons & boards
+   Law: no flat elements. Everything has depth. Everything responds.
+   "Light up, don't glow out." — depth through layers, not neon.
+   Copy this file verbatim. Set --lv-accent / --lv-accent-rgb per element.
+   ========================================================================== */
+
+:root {
+  --lv-ease: cubic-bezier(.22,1,.36,1);
+  --lv-snap: cubic-bezier(.32,.72,0,1);
+}
+
+/* ---------- LIVING BUTTON ---------- */
+.lv-wrap { position: relative; display: inline-block; }
+.lv-wrap.block { display: block; }
+
+.lv-aura {
+  position: absolute; inset: -70px; border-radius: 999px;
+  background: radial-gradient(circle, rgba(var(--lv-accent-rgb,160,107,255),.20) 0%, rgba(var(--lv-accent-rgb,160,107,255),.06) 45%, transparent 70%);
+  filter: blur(14px); opacity: 0; pointer-events: none;
+  transition: opacity .55s ease;
+}
+.lv-wrap.lv-aware .lv-aura { opacity: .55; }
+.lv-wrap:hover .lv-aura, .lv-wrap:focus-within .lv-aura { opacity: 1; }
+
+.lv-btn {
+  --lv-accent: #a06bff;
+  --lv-accent-rgb: 160,107,255;
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 52px; padding: 0 30px; border-radius: 999px;
+  border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase;
+  color: #f6f5ef;
+  text-shadow: 0 -1px 1px rgba(0,0,0,.85), 0 1px 3px rgba(0,0,0,.6);
+  /* Dark heart: sheen over deep black gradient — never flat */
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.02) 38%, rgba(0,0,0,.22) 100%),
+    linear-gradient(180deg, #26262e 0%, #0b0b0f 52%, #020203 100%);
+  /* Seven layers: skin, top light, bottom line, weight, inner glow, elevation, contact */
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.40),
+    inset 0 1px 0 rgba(255,255,255,.45),
+    inset 0 -1px 0 rgba(0,0,0,.75),
+    inset 0 -16px 30px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(255,255,255,.05),
+    0 22px 46px rgba(0,0,0,.85),
+    0 6px 16px rgba(0,0,0,.60);
+  transition: transform .22s var(--lv-ease), box-shadow .38s var(--lv-ease), background .3s ease;
+  animation: lv-breathe 7s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
+}
+@keyframes lv-breathe {
+  0%,100% { box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.40),
+    inset 0 1px 0 rgba(255,255,255,.45),
+    inset 0 -1px 0 rgba(0,0,0,.75),
+    inset 0 -16px 30px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(255,255,255,.05),
+    0 22px 46px rgba(0,0,0,.85),
+    0 6px 16px rgba(0,0,0,.60); }
+  50% { box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.46),
+    inset 0 1px 0 rgba(255,255,255,.52),
+    inset 0 -1px 0 rgba(0,0,0,.75),
+    inset 0 -16px 30px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(255,255,255,.08),
+    0 24px 50px rgba(0,0,0,.88),
+    0 6px 16px rgba(0,0,0,.60); }
+}
+
+/* Cursor sheen — the surface notices light before touch */
+.lv-btn::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none; opacity: 0; transition: opacity .4s ease;
+  background: radial-gradient(180px circle at var(--mx,50%) var(--my,50%),
+    rgba(255,255,255,.14), rgba(255,255,255,.03) 42%, transparent 68%);
+}
+.lv-wrap.lv-aware .lv-btn::before { opacity: 1; }
+
+/* Spectrum soul — the color sleeping inside, breathing at rest */
+.lv-btn::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 60%, rgba(var(--lv-accent-rgb),.34), rgba(var(--lv-accent-rgb),.08) 55%, transparent 80%);
+  opacity: .10; transition: opacity .45s ease;
+  animation: lv-soul 7s ease-in-out infinite;
+}
+@keyframes lv-soul { 0%,100% { opacity: .08; } 50% { opacity: .16; } }
+.lv-wrap.lv-aware .lv-btn::after { opacity: .30; animation: none; }
+
+.lv-btn .lv-label { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; }
+.lv-btn .lv-label svg { width: 18px; height: 18px; }
+
+/* Aware — the button wakes as you approach (set by living.js, 160px) */
+.lv-wrap.lv-aware .lv-btn {
+  animation: none;
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.58),
+    inset 0 1px 0 rgba(255,255,255,.55),
+    inset 0 -1px 0 rgba(0,0,0,.70),
+    inset 0 -16px 30px rgba(0,0,0,.48),
+    inset 0 12px 22px rgba(255,255,255,.08),
+    0 0 0 1px rgba(var(--lv-accent-rgb),.16),
+    0 26px 52px rgba(0,0,0,.87),
+    0 8px 18px rgba(0,0,0,.62);
+}
+
+/* Hover / focus — LIGHT UP, don't glow out. Edge fire stays at the border. */
+.lv-btn:hover, .lv-btn:focus-visible {
+  animation: none;
+  transform: translateY(-3px) scale(1.012);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.04) 38%, rgba(0,0,0,.18) 100%),
+    linear-gradient(180deg, #2e2e38 0%, #101016 52%, #060608 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.72),
+    inset 0 1px 0 rgba(255,255,255,.62),
+    inset 0 -1px 0 rgba(0,0,0,.66),
+    inset 0 -16px 30px rgba(0,0,0,.42),
+    inset 0 12px 22px rgba(255,255,255,.10),
+    inset 0 0 0 1.5px rgba(var(--lv-accent-rgb),.85),
+    0 0 22px -4px rgba(var(--lv-accent-rgb),.50),
+    0 32px 60px rgba(0,0,0,.88),
+    0 10px 22px rgba(0,0,0,.62);
+}
+.lv-btn:hover::after, .lv-btn:focus-visible::after { opacity: .55; animation: none; }
+.lv-btn:hover::before, .lv-btn:focus-visible::before { opacity: 1; }
+.lv-btn:focus-visible { outline: 2px solid rgba(255,255,255,.92); outline-offset: 3px; }
+
+/* Press — compress like something real. Inner shadows deepen. */
+.lv-btn:active {
+  transform: translateY(1px) scale(.97) !important;
+  transition-duration: .08s;
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.48),
+    inset 0 4px 14px rgba(0,0,0,.85),
+    inset 0 -4px 10px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(0,0,0,.30),
+    0 10px 24px rgba(0,0,0,.78);
+}
+.lv-btn:active::after { opacity: .35; }
+
+.lv-btn:disabled {
+  opacity: .55; cursor: not-allowed; animation: none;
+  transform: none !important;
+}
+
+/* Sizes */
+.lv-hero { min-height: 68px; padding: 0 54px; font-size: 18px; }
+.lv-sm { min-height: 44px; padding: 0 22px; font-size: 13px; gap: 8px; }
+
+/* Danger — NO red glow on hover. Darker black, more depth instead. */
+.lv-btn--danger { --lv-accent: #ff5e6c; --lv-accent-rgb: 255,94,108; }
+.lv-btn--danger:hover, .lv-btn--danger:focus-visible {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.01) 40%, rgba(0,0,0,.35) 100%),
+    linear-gradient(180deg, #101014 0%, #050506 55%, #000000 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.55),
+    inset 0 1px 0 rgba(255,255,255,.35),
+    inset 0 -1px 0 rgba(0,0,0,.85),
+    inset 0 -20px 36px rgba(0,0,0,.70),
+    inset 0 6px 18px rgba(0,0,0,.40),
+    0 32px 60px rgba(0,0,0,.92),
+    0 10px 22px rgba(0,0,0,.66);
+}
+
+/* ---------- LIVING BOARD ---------- */
+.lv-board {
+  --lv-accent: #a06bff;
+  --lv-accent-rgb: 160,107,255;
+  position: relative; isolation: isolate; overflow: hidden;
+  border-radius: 22px; padding: 28px;
+  background: linear-gradient(180deg, #121217 0%, #070709 100%);
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--lv-accent-rgb),.14),
+    inset 0 1px 0 rgba(255,255,255,.09),
+    inset 0 -18px 36px rgba(0,0,0,.45),
+    0 0 30px -10px rgba(var(--lv-accent-rgb),.28),
+    0 26px 60px rgba(0,0,0,.60),
+    0 8px 20px rgba(0,0,0,.45);
+  transition: transform .28s var(--lv-ease), box-shadow .38s var(--lv-ease), border-color .3s ease;
+  animation: lv-board-breathe 8s ease-in-out infinite;
+}
+@keyframes lv-board-breathe {
+  0%,100% { box-shadow:
+    inset 0 0 0 1px rgba(var(--lv-accent-rgb),.14),
+    inset 0 1px 0 rgba(255,255,255,.09),
+    inset 0 -18px 36px rgba(0,0,0,.45),
+    0 0 30px -10px rgba(var(--lv-accent-rgb),.28),
+    0 26px 60px rgba(0,0,0,.60),
+    0 8px 20px rgba(0,0,0,.45); }
+  50% { box-shadow:
+    inset 0 0 0 1px rgba(var(--lv-accent-rgb),.20),
+    inset 0 1px 0 rgba(255,255,255,.12),
+    inset 0 -18px 36px rgba(0,0,0,.45),
+    0 0 34px -10px rgba(var(--lv-accent-rgb),.36),
+    0 28px 64px rgba(0,0,0,.62),
+    0 8px 20px rgba(0,0,0,.45); }
+}
+/* Cursor light washing the board's surface */
+.lv-board::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  pointer-events: none; opacity: 0; transition: opacity .45s ease;
+  background: radial-gradient(420px circle at var(--mx,50%) var(--my,20%),
+    rgba(255,255,255,.07), transparent 65%);
+}
+.lv-board.lv-aware::after, .lv-board:hover::after { opacity: 1; }
+/* Faint accent wash inside — light up, not glow out */
+.lv-board::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(90% 60% at 50% 0%, rgba(var(--lv-accent-rgb),.10), transparent 70%);
+  opacity: .7; transition: opacity .4s ease;
+}
+.lv-board.lv-aware, .lv-board:hover {
+  animation: none;
+  transform: translateY(-4px);
+  border-color: rgba(var(--lv-accent-rgb),.45);
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--lv-accent-rgb),.38),
+    inset 0 1px 0 rgba(255,255,255,.16),
+    inset 0 -18px 36px rgba(0,0,0,.40),
+    0 0 34px -6px rgba(var(--lv-accent-rgb),.45),
+    0 36px 80px rgba(0,0,0,.70),
+    0 12px 26px rgba(0,0,0,.50);
+}
+.lv-board.lv-aware::before, .lv-board:hover::before { opacity: 1; }
+.lv-board h3 { color: #f6f5ef; font-size: 20px; margin: 0 0 10px; letter-spacing: .02em; }
+.lv-board p { color: rgba(246,245,239,.78); font-size: 16px; line-height: 1.6; margin: 0; }
+
+/* Ambient wash — the page itself receives the button's light */
+.lv-ambient {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0;
+  transition: opacity .6s ease;
+  background: radial-gradient(640px circle at var(--lx,50%) var(--ly,40%),
+    rgba(var(--lv-wash-rgb,160,107,255),.075), transparent 70%);
+}
+body.lv-lit .lv-ambient { opacity: 1; }
+
+/* Reduced motion — still, honest, deep */
+@media (prefers-reduced-motion: reduce) {
+  .lv-btn, .lv-board { animation: none !important; }
+  .lv-btn::after { animation: none; opacity: .14; }
+  .lv-aura { display: none; }
+}
+
+
+/* ============ CODE BLOCKS ============ */
+pre.code {
+  background: #0a0d14; border: 1px solid var(--line); border-radius: 14px;
+  padding: 20px 22px; overflow-x: auto; font-size: 14px; line-height: 1.7;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: #d7e0f5;
+  margin: 20px 0; white-space: pre-wrap; word-break: break-word;
+}
+pre.code .cm { color: #6b7a99; }
+pre.code .kw { color: var(--magenta); }
+pre.code .st { color: var(--green); }
+.code-head { display: flex; justify-content: space-between; align-items: center; margin: 28px 0 -12px; }
+.code-head .micro { letter-spacing: .18em; text-transform: uppercase; }
+.copy-btn { background: var(--raise); border: 1px solid var(--line); color: var(--white); border-radius: 8px; padding: 6px 14px; font-size: 13px; cursor: pointer; }
+.copy-btn:hover { border-color: var(--soul); }
+
+/* ============ BOARDS ============ */
+.board {
+  --sc: var(--soul);
+  background: linear-gradient(180deg, var(--card), var(--deep));
+  border: 1px solid var(--line); border-radius: var(--r-xl);
+  padding: 32px; margin: 24px 0; position: relative; overflow: hidden;
+  box-shadow: var(--lift), inset 0 1px 0 rgba(255,255,255,.08);
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.board::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--sc); box-shadow: 0 0 18px var(--sc); }
+.board:hover { transform: translateY(-3px); box-shadow: 0 24px 60px rgba(0,0,0,.6), 0 0 30px -8px var(--sc), inset 0 1px 0 rgba(255,255,255,.1); }
+.board .board-kicker { font-size: 13px; letter-spacing: .26em; text-transform: uppercase; color: var(--sc); margin-bottom: 10px; font-weight: 800; }
+.board h3 { font-size: 26px; margin-bottom: 10px; }
+.board .nutshell { background: rgba(0,0,0,.35); border-left: 3px solid var(--sc); padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 18px 0; font-size: 16px; }
+.board-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+
+/* ============ JEWELS ============ */
+.jewel-row { display: flex; gap: 36px; justify-content: center; flex-wrap: wrap; margin: 36px 0; }
+.jewel { text-align: center; }
+.jewel svg { width: 72px; height: 72px; filter: drop-shadow(0 0 16px currentColor); animation: jewelPulse 4s ease-in-out infinite; }
+.jewel:nth-child(2) svg { animation-delay: .8s; } .jewel:nth-child(3) svg { animation-delay: 1.6s; }
+.jewel:nth-child(4) svg { animation-delay: 2.4s; } .jewel:nth-child(5) svg { animation-delay: 3.2s; }
+@keyframes jewelPulse { 0%,100% { transform: scale(1); opacity: .92; } 50% { transform: scale(1.07); opacity: 1; } }
+.jewel .micro { margin-top: 10px; letter-spacing: .2em; text-transform: uppercase; }
+
+/* ============ TYPE SPECIMENS ============ */
+.type-spec { border-bottom: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; baseline-shift: 0; align-items: baseline; gap: 32px; }
+.type-spec .t-label { min-width: 220px; }
+.type-64 { font-size: 64px; font-family: Georgia, serif; }
+.type-40 { font-size: 40px; font-family: Georgia, serif; }
+.type-24 { font-size: 24px; font-weight: 700; }
+.type-18 { font-size: 18px; }
+.type-14 { font-size: 14px; color: var(--quiet); }
+
+/* ============ TRUTH ============ */
+.truth-demo { display: flex; gap: 0; margin: 28px 0; border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; }
+.truth-row { flex: 1; padding: 26px; text-align: center; background: var(--raise); }
+.truth-row + .truth-row { border-left: 1px solid var(--line); }
+.truth-row .score { font-size: 40px; font-weight: 800; font-family: Georgia, serif; }
+.truth-row.verified .score { color: var(--green); text-shadow: 0 0 24px rgba(85,227,154,.6); }
+.truth-row .v-label { display: inline-block; margin-top: 10px; font-size: 13px; font-weight: 800; letter-spacing: .2em; }
+.truth-row.verified .v-label { color: var(--green); }
+.truth-row.claim .v-label { color: var(--secondary); }
+
+/* ============ TOKENS ============ */
+.token-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; margin: 24px 0; }
+.token { background: var(--raise); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+.token .swatch { height: 44px; border-radius: 8px; margin-bottom: 10px; box-shadow: inset 0 1px 3px rgba(255,255,255,.15), 0 4px 12px rgba(0,0,0,.4); }
+.token code { font-size: 13px; color: var(--white); }
+.token .micro { margin-top: 4px; }
+
+/* ============ SMART TABS ============ */
+.sn-row { position: sticky; top: 12px; z-index: 100; display: flex; gap: 8px; overflow: auto; -webkit-overflow-scrolling: touch; padding: 10px; border-radius: 999px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.12); margin: 24px 0; }
+.sn-pill { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.18); background: rgba(0,0,0,.55); color: #e6ecff; font-weight: 700; font-size: 14px; cursor: pointer; user-select: none; transition: transform .18s var(--ease), box-shadow .18s var(--ease); }
+.sn-pill:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,.5); }
+.sn-pill.heart { box-shadow: 0 0 0 2px rgba(183,114,255,.4) inset, 0 0 16px rgba(183,114,255,.25); }
+.sn-pill.star { box-shadow: 0 0 0 2px rgba(248,201,56,.4) inset, 0 0 16px rgba(248,201,56,.25); }
+.sn-pill.add { border-style: dashed; color: var(--quiet); }
+.sn-label { white-space: nowrap; }
+.sn-more { border: 0; background: rgba(255,255,255,.1); color: #fff; border-radius: 8px; padding: 4px 9px; cursor: pointer; font-size: 13px; }
+.sn-more:hover { background: rgba(255,255,255,.2); }
+.sn-menu { position: fixed; z-index: 1000; display: none; min-width: 220px; background: linear-gradient(180deg,#121827,#0e1424); border: 1px solid rgba(255,255,255,.18); border-radius: 12px; box-shadow: 0 18px 40px rgba(0,0,0,.5); }
+.sn-menu .mi { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,.08); cursor: pointer; color: #fff; font-weight: 700; font-size: 14px; }
+.sn-menu .mi:last-child { border-bottom: none; }
+.sn-menu .mi:hover { background: rgba(255,255,255,.07); }
+.sn-pop { position: fixed; z-index: 1000; display: none; min-width: 300px; background: linear-gradient(180deg,#111727,#0e1424); border: 1px solid rgba(255,255,255,.18); border-radius: 12px; box-shadow: 0 22px 60px rgba(0,0,0,.5); padding: 16px; color: #fff; }
+.sn-pop h3 { margin: 0 0 10px; font-size: 17px; }
+.sn-pop .row { display: grid; gap: 6px; margin: 8px 0; font-size: 14px; }
+.sn-pop input { padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,.2); background: #0a0f1a; color: #e6ecff; font-size: 14px; width: 100%; }
+.sn-pop .toggles { display: flex; gap: 8px; margin: 8px 0; flex-wrap: wrap; }
+.sn-pop .tgl { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.22); background: rgba(0,0,0,.45); cursor: pointer; color: #fff; font-weight: 700; font-size: 13px; }
+.sn-pop .tgl.on { box-shadow: 0 0 0 2px rgba(255,255,255,.3) inset, 0 0 18px rgba(124,77,255,.3); }
+.sn-pop .ft { display: flex; gap: 8px; justify-content: flex-end; margin-top: 8px; }
+.sn-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,.25); background: rgba(0,0,0,.55); color: #fff; cursor: pointer; font-size: 14px; font-weight: 700; }
+.sn-btn.primary { background: linear-gradient(135deg,#6F3DFF,#9D7BFF); border: none; }
+
+/* ============ LAW CARDS ============ */
+.law-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 28px 0; }
+.law-card { --sc: var(--soul); background: var(--raise); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 26px; position: relative; overflow: hidden; transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s; }
+.law-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--sc); opacity: .7; }
+.law-card:hover { transform: translateY(-3px); border-color: var(--sc); box-shadow: 0 16px 44px rgba(0,0,0,.55), 0 0 28px -6px var(--sc); }
+.law-card h3 { font-size: 21px; margin-bottom: 8px; }
+.law-card p { font-size: 15px; color: var(--quiet); margin: 0; }
+
+/* ============ MISC ============ */
+.divider-label { text-align: center; margin: 48px 0 8px; }
+.checklist { list-style: none; margin: 20px 0; }
+.checklist li { padding: 12px 0 12px 40px; position: relative; border-bottom: 1px solid rgba(255,255,255,.06); font-size: 16px; }
+.checklist li::before { content: "✓"; position: absolute; left: 8px; color: var(--green); font-weight: 800; }
+.callout { border: 1px solid var(--magenta); border-radius: var(--r-lg); padding: 26px 30px; margin: 32px 0; background: rgba(216,108,255,.05); box-shadow: 0 0 40px -12px rgba(216,108,255,.4); }
+.callout p { margin: 0; font-size: 17px; }
+footer { text-align: center; padding: 64px 0 48px; color: var(--secondary); font-size: 14px; border-top: 1px solid rgba(255,255,255,.07); }
+footer .spectrum-bar { max-width: 320px; margin-bottom: 20px; }
+.toc { display: flex; flex-wrap: wrap; gap: 10px; margin: 32px 0; justify-content: center; }
+.toc a { color: var(--quiet); text-decoration: none; font-size: 14px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; transition: all .2s; }
+.toc a:hover { color: var(--white); border-color: var(--soul); box-shadow: 0 0 16px rgba(157,117,255,.3); }
+@media (max-width: 640px) {
+  .hero h1 { font-size: 42px; }
+  h2 { font-size: 30px; }
+  .lv-wrap { min-width: 100%; } .lv-wrap .lv-btn { width: 100%; }
+  .hero-buttons { flex-direction: column; }
+}
+
+
+/* spectrum meanings + honesty strip */
+.jewel-meanings { display: flex; justify-content: center; gap: 36px; flex-wrap: wrap; margin: 4px 0 32px; }
+.jm { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.jm i { width: 14px; height: 14px; border-radius: 50%; background: var(--c); box-shadow: 0 0 16px var(--c); }
+.jm b { font-size: 14px; letter-spacing: .06em; color: #fff; }
+.jm span { font-size: 13px; color: var(--secondary); }
+.honesty { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 28px; }
+.hon-col { background: var(--raise); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 22px 24px; }
+.hon-col h4 { font-size: 14px; letter-spacing: .1em; text-transform: uppercase; margin: 0 0 12px; }
+.hon-col:first-child h4 { color: var(--green); }
+.hon-col:last-child h4 { color: var(--gold); }
+.hon-col ul { margin: 0; padding-left: 20px; font-size: 15px; color: var(--quiet); line-height: 1.65; }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero wrap">
+  <img class="logo" src="naya-logo-real.png" alt="Naya — crystalline N in a ring of light">
+  <h1>The Naya Design <span class="soul">Standard</span></h1>
+  <p class="tagline">Understand it. Learn it. Apply it.</p>
+  <p class="law-line">One standard · Every page · No drift</p>
+  <div class="spectrum-bar" aria-label="Spectrum: magenta, purple, blue, green, gold"><span></span><span></span><span></span><span></span><span></span></div>
+  <p class="spectrum-label">Magenta → Purple → Blue → Green → Gold</p>
+  <div style="height:56px"></div>
+  <div class="hero-buttons">
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn lv-hero" style="--lv-accent:#e84fff;--lv-accent-rgb:232,79,255" onclick="document.getElementById('buttons').scrollIntoView({behavior:'smooth'})">
+      <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5L8 13.8 2 9.2h7.6z"/></svg>ENTER THE STANDARD</span>
+    </button></span>
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn lv-hero" style="--lv-accent:#a06bff;--lv-accent-rgb:160,107,255" onclick="document.getElementById('smarttabs').scrollIntoView({behavior:'smooth'})">
+      <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4z"/><path d="M8 12h8"/></svg>SEE IT WORKING</span>
+    </button></span>
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn lv-hero" style="--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255" onclick="document.getElementById('laws').scrollIntoView({behavior:'smooth'})">
+      <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>READ THE LAW</span>
+    </button></span>
+  </div>
+  <p class="micro btn-note">These three buttons are the standard. Living depth. Lit at rest. Ignite on touch.<br>Every button you ever build starts here.</p>
+  <nav class="toc">
+    <a href="#buttons">Buttons</a><a href="#smarttabs">SmartTabs</a><a href="#spectrum">Spectrum</a><a href="#boards">Boards</a><a href="#jewels">Jewels</a><a href="#type">Typography</a><a href="#truth">Truth</a><a href="#tokens">Tokens</a><a href="#laws">Laws</a><a href="#machine">Machine Law</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+<!-- ================= THE THREE BUTTONS ================= -->
+<section id="buttons">
+  <p class="kicker">01 · The standard-bearers</p>
+  <h2><span class="n">01</span>Living buttons. This is the bar.</h2>
+  <p class="lede">A living thing notices you before you touch it. These buttons are dark, luminous substance — polished obsidian with light trapped inside. At rest they breathe, a quiet hint of their spectrum color. As your cursor approaches they wake. On hover they light up from within. Their light falls on the page around them. If your button doesn't do this, it isn't a Naya button.</p>
+
+  <div class="callout">
+    <p><strong>The six laws of living.</strong> (1) <strong>Dark heart</strong> — deep black gradient, never flat. Depth you can feel. (2) <strong>Cursor as light source</strong> — the surface responds to pointer position like polished stone. (3) <strong>Spectrum soul</strong> — each button holds its color inside: breathing hint at rest, awakening on approach, full ignition on hover. (4) <strong>Physical press</strong> — inner shadows deepen, like pressing something real. (5) <strong>Cast light</strong> — the button's glow falls on surrounding elements. (6) <strong>Breathe</strong> — a living pulse, never a dead loop. And the standing law over all of it: <strong>light up, don't glow out.</strong> Depth through layers, elevation, cleanness — not neon.</p>
+  </div>
+
+  <h3 style="font-size:24px; margin:36px 0 8px;">The three heroes</h3>
+  <p>Magenta, purple, blue — the spectrum leading edge. Move your cursor near them. Watch them wake before you arrive.</p>
+  <div class="btn-row" style="margin:26px 0 10px;">
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn lv-hero" style="--lv-accent:#e84fff;--lv-accent-rgb:232,79,255">
+      <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5L8 13.8 2 9.2h7.6z"/></svg>ENTER THE STANDARD</span>
+    </button></span>
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn lv-hero" style="--lv-accent:#a06bff;--lv-accent-rgb:160,107,255">
+      <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4z"/><path d="M8 12h8"/></svg>SEE IT WORKING</span>
+    </button></span>
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn lv-hero" style="--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255">
+      <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>READ THE LAW</span>
+    </button></span>
+  </div>
+
+  <h3 style="font-size:24px; margin:40px 0 8px;">Every size, one soul</h3>
+  <p>Same DNA at every scale. <span style="font-family:monospace">lv-hero</span> for flagships, default for interfaces, <span style="font-family:monospace">lv-sm</span> for density. Danger gets darker black and more depth — never a red glow.</p>
+  <div class="btn-row" style="margin:26px 0 10px;">
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn" style="--lv-accent:#2fe89e;--lv-accent-rgb:47,232,158">
+      <span class="lv-label">JOINED</span>
+    </button></span>
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn lv-sm" style="--lv-accent:#ffbf3d;--lv-accent-rgb:255,191,61">
+      <span class="lv-label">VIEW LEDGER</span>
+    </button></span>
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn lv-btn--danger">
+      <span class="lv-label">DELETE</span>
+    </button></span>
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn" disabled>
+      <span class="lv-label">DISABLED</span>
+    </button></span>
+  </div>
+  <p class="micro" style="margin-top:6px">States, left to right: standard · compact · danger (depth, not alarm) · disabled (honest about it).</p>
+
+  <div class="code-head"><span class="micro">Copy this — the living system CSS</span><button class="copy-btn" onclick="copyCode('livingCss')">Copy CSS</button></div>
+<pre class="code" id="livingCss">/* ==========================================================================
+   THE LIVING SYSTEM — Naya buttons &amp; boards
+   Law: no flat elements. Everything has depth. Everything responds.
+   &quot;Light up, don&#x27;t glow out.&quot; — depth through layers, not neon.
+   Copy this file verbatim. Set --lv-accent / --lv-accent-rgb per element.
+   ========================================================================== */
+
+:root {
+  --lv-ease: cubic-bezier(.22,1,.36,1);
+  --lv-snap: cubic-bezier(.32,.72,0,1);
+}
+
+/* ---------- LIVING BUTTON ---------- */
+.lv-wrap { position: relative; display: inline-block; }
+.lv-wrap.block { display: block; }
+
+.lv-aura {
+  position: absolute; inset: -70px; border-radius: 999px;
+  background: radial-gradient(circle, rgba(var(--lv-accent-rgb,160,107,255),.20) 0%, rgba(var(--lv-accent-rgb,160,107,255),.06) 45%, transparent 70%);
+  filter: blur(14px); opacity: 0; pointer-events: none;
+  transition: opacity .55s ease;
+}
+.lv-wrap.lv-aware .lv-aura { opacity: .55; }
+.lv-wrap:hover .lv-aura, .lv-wrap:focus-within .lv-aura { opacity: 1; }
+
+.lv-btn {
+  --lv-accent: #a06bff;
+  --lv-accent-rgb: 160,107,255;
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 52px; padding: 0 30px; border-radius: 999px;
+  border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase;
+  color: #f6f5ef;
+  text-shadow: 0 -1px 1px rgba(0,0,0,.85), 0 1px 3px rgba(0,0,0,.6);
+  /* Dark heart: sheen over deep black gradient — never flat */
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.02) 38%, rgba(0,0,0,.22) 100%),
+    linear-gradient(180deg, #26262e 0%, #0b0b0f 52%, #020203 100%);
+  /* Seven layers: skin, top light, bottom line, weight, inner glow, elevation, contact */
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.40),
+    inset 0 1px 0 rgba(255,255,255,.45),
+    inset 0 -1px 0 rgba(0,0,0,.75),
+    inset 0 -16px 30px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(255,255,255,.05),
+    0 22px 46px rgba(0,0,0,.85),
+    0 6px 16px rgba(0,0,0,.60);
+  transition: transform .22s var(--lv-ease), box-shadow .38s var(--lv-ease), background .3s ease;
+  animation: lv-breathe 7s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
+}
+@keyframes lv-breathe {
+  0%,100% { box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.40),
+    inset 0 1px 0 rgba(255,255,255,.45),
+    inset 0 -1px 0 rgba(0,0,0,.75),
+    inset 0 -16px 30px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(255,255,255,.05),
+    0 22px 46px rgba(0,0,0,.85),
+    0 6px 16px rgba(0,0,0,.60); }
+  50% { box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.46),
+    inset 0 1px 0 rgba(255,255,255,.52),
+    inset 0 -1px 0 rgba(0,0,0,.75),
+    inset 0 -16px 30px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(255,255,255,.08),
+    0 24px 50px rgba(0,0,0,.88),
+    0 6px 16px rgba(0,0,0,.60); }
+}
+
+/* Cursor sheen — the surface notices light before touch */
+.lv-btn::before {
+  content: &quot;&quot;; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none; opacity: 0; transition: opacity .4s ease;
+  background: radial-gradient(180px circle at var(--mx,50%) var(--my,50%),
+    rgba(255,255,255,.14), rgba(255,255,255,.03) 42%, transparent 68%);
+}
+.lv-wrap.lv-aware .lv-btn::before { opacity: 1; }
+
+/* Spectrum soul — the color sleeping inside, breathing at rest */
+.lv-btn::after {
+  content: &quot;&quot;; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 60%, rgba(var(--lv-accent-rgb),.34), rgba(var(--lv-accent-rgb),.08) 55%, transparent 80%);
+  opacity: .10; transition: opacity .45s ease;
+  animation: lv-soul 7s ease-in-out infinite;
+}
+@keyframes lv-soul { 0%,100% { opacity: .08; } 50% { opacity: .16; } }
+.lv-wrap.lv-aware .lv-btn::after { opacity: .30; animation: none; }
+
+.lv-btn .lv-label { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; }
+.lv-btn .lv-label svg { width: 18px; height: 18px; }
+
+/* Aware — the button wakes as you approach (set by living.js, 160px) */
+.lv-wrap.lv-aware .lv-btn {
+  animation: none;
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.58),
+    inset 0 1px 0 rgba(255,255,255,.55),
+    inset 0 -1px 0 rgba(0,0,0,.70),
+    inset 0 -16px 30px rgba(0,0,0,.48),
+    inset 0 12px 22px rgba(255,255,255,.08),
+    0 0 0 1px rgba(var(--lv-accent-rgb),.16),
+    0 26px 52px rgba(0,0,0,.87),
+    0 8px 18px rgba(0,0,0,.62);
+}
+
+/* Hover / focus — LIGHT UP, don&#x27;t glow out. Edge fire stays at the border. */
+.lv-btn:hover, .lv-btn:focus-visible {
+  animation: none;
+  transform: translateY(-3px) scale(1.012);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.04) 38%, rgba(0,0,0,.18) 100%),
+    linear-gradient(180deg, #2e2e38 0%, #101016 52%, #060608 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.72),
+    inset 0 1px 0 rgba(255,255,255,.62),
+    inset 0 -1px 0 rgba(0,0,0,.66),
+    inset 0 -16px 30px rgba(0,0,0,.42),
+    inset 0 12px 22px rgba(255,255,255,.10),
+    inset 0 0 0 1.5px rgba(var(--lv-accent-rgb),.85),
+    0 0 22px -4px rgba(var(--lv-accent-rgb),.50),
+    0 32px 60px rgba(0,0,0,.88),
+    0 10px 22px rgba(0,0,0,.62);
+}
+.lv-btn:hover::after, .lv-btn:focus-visible::after { opacity: .55; animation: none; }
+.lv-btn:hover::before, .lv-btn:focus-visible::before { opacity: 1; }
+.lv-btn:focus-visible { outline: 2px solid rgba(255,255,255,.92); outline-offset: 3px; }
+
+/* Press — compress like something real. Inner shadows deepen. */
+.lv-btn:active {
+  transform: translateY(1px) scale(.97) !important;
+  transition-duration: .08s;
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.48),
+    inset 0 4px 14px rgba(0,0,0,.85),
+    inset 0 -4px 10px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(0,0,0,.30),
+    0 10px 24px rgba(0,0,0,.78);
+}
+.lv-btn:active::after { opacity: .35; }
+
+.lv-btn:disabled {
+  opacity: .55; cursor: not-allowed; animation: none;
+  transform: none !important;
+}
+
+/* Sizes */
+.lv-hero { min-height: 68px; padding: 0 54px; font-size: 18px; }
+.lv-sm { min-height: 44px; padding: 0 22px; font-size: 13px; gap: 8px; }
+
+/* Danger — NO red glow on hover. Darker black, more depth instead. */
+.lv-btn--danger { --lv-accent: #ff5e6c; --lv-accent-rgb: 255,94,108; }
+.lv-btn--danger:hover, .lv-btn--danger:focus-visible {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.01) 40%, rgba(0,0,0,.35) 100%),
+    linear-gradient(180deg, #101014 0%, #050506 55%, #000000 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.55),
+    inset 0 1px 0 rgba(255,255,255,.35),
+    inset 0 -1px 0 rgba(0,0,0,.85),
+    inset 0 -20px 36px rgba(0,0,0,.70),
+    inset 0 6px 18px rgba(0,0,0,.40),
+    0 32px 60px rgba(0,0,0,.92),
+    0 10px 22px rgba(0,0,0,.66);
+}
+
+/* ---------- LIVING BOARD ---------- */
+.lv-board {
+  --lv-accent: #a06bff;
+  --lv-accent-rgb: 160,107,255;
+  position: relative; isolation: isolate; overflow: hidden;
+  border-radius: 22px; padding: 28px;
+  background: linear-gradient(180deg, #121217 0%, #070709 100%);
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--lv-accent-rgb),.14),
+    inset 0 1px 0 rgba(255,255,255,.09),
+    inset 0 -18px 36px rgba(0,0,0,.45),
+    0 0 30px -10px rgba(var(--lv-accent-rgb),.28),
+    0 26px 60px rgba(0,0,0,.60),
+    0 8px 20px rgba(0,0,0,.45);
+  transition: transform .28s var(--lv-ease), box-shadow .38s var(--lv-ease), border-color .3s ease;
+  animation: lv-board-breathe 8s ease-in-out infinite;
+}
+@keyframes lv-board-breathe {
+  0%,100% { box-shadow:
+    inset 0 0 0 1px rgba(var(--lv-accent-rgb),.14),
+    inset 0 1px 0 rgba(255,255,255,.09),
+    inset 0 -18px 36px rgba(0,0,0,.45),
+    0 0 30px -10px rgba(var(--lv-accent-rgb),.28),
+    0 26px 60px rgba(0,0,0,.60),
+    0 8px 20px rgba(0,0,0,.45); }
+  50% { box-shadow:
+    inset 0 0 0 1px rgba(var(--lv-accent-rgb),.20),
+    inset 0 1px 0 rgba(255,255,255,.12),
+    inset 0 -18px 36px rgba(0,0,0,.45),
+    0 0 34px -10px rgba(var(--lv-accent-rgb),.36),
+    0 28px 64px rgba(0,0,0,.62),
+    0 8px 20px rgba(0,0,0,.45); }
+}
+/* Cursor light washing the board&#x27;s surface */
+.lv-board::after {
+  content: &quot;&quot;; position: absolute; inset: 0; border-radius: inherit;
+  pointer-events: none; opacity: 0; transition: opacity .45s ease;
+  background: radial-gradient(420px circle at var(--mx,50%) var(--my,20%),
+    rgba(255,255,255,.07), transparent 65%);
+}
+.lv-board.lv-aware::after, .lv-board:hover::after { opacity: 1; }
+/* Faint accent wash inside — light up, not glow out */
+.lv-board::before {
+  content: &quot;&quot;; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(90% 60% at 50% 0%, rgba(var(--lv-accent-rgb),.10), transparent 70%);
+  opacity: .7; transition: opacity .4s ease;
+}
+.lv-board.lv-aware, .lv-board:hover {
+  animation: none;
+  transform: translateY(-4px);
+  border-color: rgba(var(--lv-accent-rgb),.45);
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--lv-accent-rgb),.38),
+    inset 0 1px 0 rgba(255,255,255,.16),
+    inset 0 -18px 36px rgba(0,0,0,.40),
+    0 0 34px -6px rgba(var(--lv-accent-rgb),.45),
+    0 36px 80px rgba(0,0,0,.70),
+    0 12px 26px rgba(0,0,0,.50);
+}
+.lv-board.lv-aware::before, .lv-board:hover::before { opacity: 1; }
+.lv-board h3 { color: #f6f5ef; font-size: 20px; margin: 0 0 10px; letter-spacing: .02em; }
+.lv-board p { color: rgba(246,245,239,.78); font-size: 16px; line-height: 1.6; margin: 0; }
+
+/* Ambient wash — the page itself receives the button&#x27;s light */
+.lv-ambient {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0;
+  transition: opacity .6s ease;
+  background: radial-gradient(640px circle at var(--lx,50%) var(--ly,40%),
+    rgba(var(--lv-wash-rgb,160,107,255),.075), transparent 70%);
+}
+body.lv-lit .lv-ambient { opacity: 1; }
+
+/* Reduced motion — still, honest, deep */
+@media (prefers-reduced-motion: reduce) {
+  .lv-btn, .lv-board { animation: none !important; }
+  .lv-btn::after { animation: none; opacity: .14; }
+  .lv-aura { display: none; }
+}
+</pre>
+
+  <div class="code-head"><span class="micro">Copy this — the living system JS (once per page)</span><button class="copy-btn" onclick="copyCode('livingJs')">Copy JS</button></div>
+<pre class="code" id="livingJs">/* living.js — proximity awareness (include once per page) */
+(function () {
+  &#x27;use strict&#x27;;
+  if (window.matchMedia &amp;&amp; window.matchMedia(&#x27;(prefers-reduced-motion: reduce)&#x27;).matches) return;
+  var els = Array.prototype.slice.call(document.querySelectorAll(&#x27;.lv-btn, .lv-board&#x27;));
+  if (!els.length) return;
+  var ambient = document.createElement(&#x27;div&#x27;);
+  ambient.className = &#x27;lv-ambient&#x27;; ambient.setAttribute(&#x27;aria-hidden&#x27;, &#x27;true&#x27;);
+  document.body.appendChild(ambient);
+  var raf = null, lastX = -9999, lastY = -9999;
+  function accentOf(el) {
+    var wrap = el.closest(&#x27;.lv-wrap&#x27;);
+    var rgb = getComputedStyle(wrap || el).getPropertyValue(&#x27;--lv-accent-rgb&#x27;).trim();
+    return rgb || &#x27;160,107,255&#x27;;
+  }
+  function update() {
+    raf = null; var lit = false, best = null, bestDist = 1e9;
+    for (var i = 0; i &lt; els.length; i++) {
+      var el = els[i];
+      var wrap = el.classList.contains(&#x27;lv-btn&#x27;) ? (el.closest(&#x27;.lv-wrap&#x27;) || el) : el;
+      if (el.disabled) continue;
+      var r = el.getBoundingClientRect();
+      if (r.bottom &lt; -180 || r.top &gt; window.innerHeight + 180) { wrap.classList.remove(&#x27;lv-aware&#x27;); continue; }
+      var dx = Math.max(r.left - lastX, 0, lastX - r.right);
+      var dy = Math.max(r.top - lastY, 0, lastY - r.bottom);
+      var dist = Math.sqrt(dx*dx + dy*dy);
+      var aware = dist &lt; 160;
+      if (aware !== wrap.classList.contains(&#x27;lv-aware&#x27;)) wrap.classList.toggle(&#x27;lv-aware&#x27;, aware);
+      if (aware || el.matches(&#x27;:hover&#x27;)) {
+        el.style.setProperty(&#x27;--mx&#x27;, ((lastX - r.left) / Math.max(r.width,1) * 100).toFixed(1) + &#x27;%&#x27;);
+        el.style.setProperty(&#x27;--my&#x27;, ((lastY - r.top) / Math.max(r.height,1) * 100).toFixed(1) + &#x27;%&#x27;);
+      }
+      if (aware &amp;&amp; dist &lt; bestDist) { bestDist = dist; best = el; }
+      if (el.matches(&#x27;:hover&#x27;)) { best = el; lit = true; }
+    }
+    if (best) { lit = true;
+      document.documentElement.style.setProperty(&#x27;--lv-wash-rgb&#x27;, accentOf(best));
+      document.documentElement.style.setProperty(&#x27;--lx&#x27;, lastX + &#x27;px&#x27;);
+      document.documentElement.style.setProperty(&#x27;--ly&#x27;, lastY + &#x27;px&#x27;); }
+    document.body.classList.toggle(&#x27;lv-lit&#x27;, lit);
+  }
+  document.addEventListener(&#x27;pointermove&#x27;, function (e) {
+    lastX = e.clientX; lastY = e.clientY;
+    if (!raf) raf = requestAnimationFrame(update);
+  }, { passive: true });
+})();</pre>
+
+  <div class="code-head"><span class="micro">Copy this — one living button</span><button class="copy-btn" onclick="copyCode('livingBtn')">Copy HTML</button></div>
+<pre class="code" id="livingBtn">&lt;span class=&quot;lv-wrap&quot;&gt;
+  &lt;span class=&quot;lv-aura&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+  &lt;button class=&quot;lv-btn lv-hero&quot; style=&quot;--lv-accent:#e84fff;--lv-accent-rgb:232,79,255&quot;&gt;
+    &lt;span class=&quot;lv-label&quot;&gt;ENTER THE STANDARD&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/span&gt;</pre>
+
+  <p class="micro" style="margin-top:20px">Law: a button reads as a button before it is touched. Any board or button that's not alive, doesn't respond on hover, doesn't have depth — is no good. All buttons, all boards, all the time.</p>
+</section>
+
+<!-- ================= SMART TABS ================= -->
+<section id="smarttabs">
+  <p class="kicker">02 · The component that follows you</p>
+  <h2><span class="n">02</span>SmartTabs — try it. It's live.</h2>
+  <p class="lede">A universal favorites ribbon that <strong>follows the user across every page.</strong> Add, edit, heart, star, remove, navigate. State persists. This one below is real — click a pill, right-click it, add your own. Then take the code.</p>
+
+  <div id="smarttabs-demo"></div>
+  <p class="micro" style="text-align:center">↑ Live demo — right-click a pill (or tap ⋯) for Edit / 💜 Heart / ⭐ Star / Remove. State saves to this browser.</p>
+
+  <div class="code-head"><span class="micro">Step 1 — the container</span><button class="copy-btn" onclick="copyCode('st1')">Copy</button></div>
+<pre class="code" id="st1">&lt;<span class="kw">div</span> id=<span class="st">"smarttabs"</span>&gt;&lt;/<span class="kw">div</span>&gt;</pre>
+
+  <div class="code-head"><span class="micro">Step 2 — include the kit and mount</span><button class="copy-btn" onclick="copyCode('st2')">Copy</button></div>
+<pre class="code" id="st2">&lt;<span class="kw">link</span> rel=<span class="st">"stylesheet"</span> href=<span class="st">"smart-tabs.css"</span>&gt;
+&lt;<span class="kw">script</span> src=<span class="st">"smart-tabs.js"</span>&gt;&lt;/<span class="kw">script</span>&gt;
+&lt;<span class="kw">script</span>&gt;
+  <span class="cm">// Shared storageKey across ALL pages — the ribbon stays in sync everywhere.</span>
+  <span class="kw">const</span> tabs = SmartTabs.<span class="kw">mount</span>(<span class="st">'#smarttabs'</span>, {
+    storageKey: <span class="st">'smartnet_shortcuts'</span>,
+    onNavigate: (route, s) =&gt; Router.<span class="kw">go</span>(route), <span class="cm">// hook into your router</span>
+    routeMap: { <span class="st">'soulschool'</span>: <span class="st">'/soulschool'</span> }  <span class="cm">// keyword synonyms</span>
+  });
+&lt;/<span class="kw">script</span>&gt;</pre>
+
+  <div class="code-head"><span class="micro">Step 3 — the API (for other NAYAs)</span><button class="copy-btn" onclick="copyCode('st3')">Copy</button></div>
+<pre class="code" id="st3"><span class="cm">// Read &amp; write</span>
+tabs.<span class="kw">list</span>();                    <span class="cm">// → [{ id, label, route, heart, star }, …]</span>
+tabs.<span class="kw">set</span>(arrayOfShortcuts);    <span class="cm">// replace wholesale</span>
+tabs.<span class="kw">add</span>({ id, label, route, heart, star });
+tabs.<span class="kw">update</span>(id, { label, route, heart, star });
+tabs.<span class="kw">remove</span>(id);
+<span class="cm">// Listen</span>
+tabs.el.addEventListener(<span class="st">'change'</span>, e =&gt; console.log(e.detail));
+
+<span class="cm">// Data shape — heart/star are mutually exclusive, hearts sort first</span>
+{ id: <span class="st">'sc-1'</span>, label: <span class="st">'SoulSchool'</span>, route: <span class="st">'/soulschool'</span>,
+  heart: <span class="kw">true</span>, star: <span class="kw">false</span> }</pre>
+
+  <div class="callout">
+    <p><strong>Why it works everywhere:</strong> one <span style="font-family:monospace">storageKey</span> across all pages so state follows the user. <span style="font-family:monospace">onNavigate</span> wires into your router — the component never assumes. 💜 hearts outrank ⭐ stars in sort order: the most important tabs literally rise to the top. Esc closes everything. That's the whole contract.</p>
+  </div>
+</section>
+
+<!-- ================= SPECTRUM ================= -->
+<section id="spectrum">
+  <p class="kicker">03 · The law, not a palette</p>
+  <h2><span class="n">03</span>The spectrum flows one way.</h2>
+  <p class="lede"><strong>Magenta → purple → blue → green → gold.</strong> Richest first, ultra-rich magenta leading. Every sequence on every page follows it. When a list runs long, return to magenta and flow again. Scramble it and the eye knows something's wrong before the mind does.</p>
+  <div class="jewel-row" id="spectrumJewels"></div>
+  <div class="token-grid">
+    <div class="token"><div class="swatch" style="background:#d86cff; box-shadow:0 0 20px #d86cff"></div><code>--magenta #d86cff</code><p class="micro">The living edge. Leads every flow.</p></div>
+    <div class="token"><div class="swatch" style="background:#9d75ff; box-shadow:0 0 20px #9d75ff"></div><code>--purple #9d75ff</code><p class="micro">Choosing intelligence. The soul.</p></div>
+    <div class="token"><div class="swatch" style="background:#55b9ee; box-shadow:0 0 20px #55b9ee"></div><code>--blue #55b9ee</code><p class="micro">Knowledge moving.</p></div>
+    <div class="token"><div class="swatch" style="background:#55e39a; box-shadow:0 0 20px #55e39a"></div><code>--green #55e39a</code><p class="micro">Alive and well.</p></div>
+    <div class="token"><div class="swatch" style="background:#e8c766; box-shadow:0 0 20px #e8c766"></div><code>--gold #e8c766</code><p class="micro">Attention, earned.</p></div>
+  </div>
+  <p><strong>Color is identity, not decoration.</strong> One color job per thing. Adjacent things never share a hue. The spectrum gives each thing its identity — and never shouts over the brand.</p>
+  <div class="code-head"><span class="micro">The tokens — copy these</span><button class="copy-btn" onclick="copyCode('tokens')">Copy</button></div>
+<pre class="code" id="tokens">:root {
+  <span class="cm">/* The field */</span>
+  --field: #050507;      <span class="cm">/* the world. Deep, never gray. */</span>
+  --obsidian: #0B0D12;
+  <span class="cm">/* The light */</span>
+  --white: #F8F7FB;      <span class="cm">/* text 99% of the time. Every idle rim. */</span>
+  <span class="cm">/* The soul */</span>
+  --soul: #a06bff;       <span class="cm">/* chrome accent. Naya's presence. Never a flood. */</span>
+  <span class="cm">/* The spectrum — in law order */</span>
+  --magenta: #e84fff; --purple: #a06bff; --blue: #3fb8ff;
+  --green: #2fe89e;   --gold: #ffbf3d;
+}</pre>
+
+<div class="jewel-meanings">
+    <div class="jm" style="--c:#e84fff"><i></i><b>Magenta</b><span>What matters to you</span></div>
+    <div class="jm" style="--c:#a06bff"><i></i><b>Purple</b><span>Naya's presence</span></div>
+    <div class="jm" style="--c:#3fb8ff"><i></i><b>Blue</b><span>Understanding</span></div>
+    <div class="jm" style="--c:#2fe89e"><i></i><b>Green</b><span>Connected and well</span></div>
+    <div class="jm" style="--c:#ffbf3d"><i></i><b>Gold</b><span>A rare achievement</span></div>
+  </div>
+</section>
+
+<!-- ================= BOARDS ================= -->
+<section id="boards">
+  <p class="kicker">04 · Intelligent objects</p>
+  <h2><span class="n">04</span>One board. One color. A destination.</h2>
+  <p class="lede">The board is the intelligent object: theme-edged, jewel-marked, elevated. <strong>One spectrum color per board</strong> — spine, kicker, accents all speak it. Text stays white. Inside, meaning nests: the nutshell, then what it means, then how to use it.</p>
+  <div class="board-grid">
+    <div class="board" style="--sc: var(--magenta)">
+      <p class="board-kicker">Specimen · Magenta</p>
+      <h3>The Living Edge</h3>
+      <div class="nutshell">A board carries one idea, in one color, with everything it needs and nothing it doesn't.</div>
+      <p style="color:var(--quiet); font-size:15px">Hover it — it lifts. The spine glows. This is what "a destination you enter" feels like.</p>
+    </div>
+    <div class="board" style="--sc: var(--blue)">
+      <p class="board-kicker">Specimen · Blue</p>
+      <h3>Knowledge Moving</h3>
+      <div class="nutshell">Boards don't decorate. They hold intelligence the way a room holds people.</div>
+      <p style="color:var(--quiet); font-size:15px">One color per board. The spine, the kicker, the glow — all one voice.</p>
+    </div>
+  </div>
+  <div class="code-head"><span class="micro">The board — copy this</span><button class="copy-btn" onclick="copyCode('boardCss')">Copy</button></div>
+<pre class="code" id="boardCss"><span class="cm">/* THE BOARD — one color per board, set --sc to its spectrum color */</span>
+.board {
+  --sc: var(--soul);
+  background: linear-gradient(180deg, #141a28, #0a0e16);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 26px; padding: 32px; position: relative;
+  box-shadow: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4),
+              inset 0 1px 0 rgba(255,255,255,.08);  <span class="cm">/* top light */</span>
+}
+.board::before {  <span class="cm">/* the spine — the board's color, glowing */</span>
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+  background: var(--sc); box-shadow: 0 0 18px var(--sc); border-radius: 4px;
+}
+.board:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 60px rgba(0,0,0,.6), 0 0 30px -8px var(--sc);
+}</pre>
+</section>
+
+<!-- ================= JEWELS ================= -->
+<section id="jewels">
+  <p class="kicker">05 · Drawn, not dotted</p>
+  <h2><span class="n">05</span>Jewels, not dots.</h2>
+  <p class="lede"><strong>Drawn. Glowing. In true spectrum order. Never twice adjacent.</strong> And at the highest level, you don't stamp the same icon three times when you can craft three distinct ones. Each jewel below is a different cut.</p>
+  <div class="jewel-row" id="jewelRow"></div>
+  <p class="micro" style="text-align:center">Five cuts, five spectrum colors, in law order. Hover any jewel — it flares.</p>
+</section>
+
+<!-- ================= TYPOGRAPHY ================= -->
+<section id="type">
+  <p class="kicker">06 · Size separates</p>
+  <h2><span class="n">06</span>24 / 18 / 14. Nothing else.</h2>
+  <p class="lede"><strong>Size separates. Color doesn't.</strong> Headlines 24. Body 18 — the standard, most text lives here. Small 14. Display type (64/40) is earned by heroes and chapter heads, never body copy.</p>
+  <div class="type-spec"><div class="t-label micro">DISPLAY · 64 · heroes only</div><div class="type-64">The page breathes.</div></div>
+  <div class="type-spec"><div class="t-label micro">CHAPTER · 40 · section heads</div><div class="type-40">Color has four jobs.</div></div>
+  <div class="type-spec"><div class="t-label micro">HEADLINE · 24</div><div class="type-24">Never cross them.</div></div>
+  <div class="type-spec"><div class="t-label micro">BODY · 18 · the standard</div><div class="type-18">White text 99% of the time. Quiet at rest — then the object's own color ignites on touch.</div></div>
+  <div class="type-spec" style="border:none"><div class="t-label micro">SMALL · 14 · details</div><div class="type-14">Captions, labels, metadata. Still white, never gray.</div></div>
+</section>
+
+<!-- ================= TRUTH ================= -->
+<section id="truth">
+  <p class="kicker">07 · Truth is visual</p>
+  <h2><span class="n">07</span>A claim and a proof never look the same.</h2>
+  <p class="lede"><strong>What is verified glows green; what is merely claimed stays quiet until it earns its light.</strong> Scores move on evidence, never optimism. Below: one verified score among claims. The green earned its light. The rest wait — shown honestly, never hidden.</p>
+  <div class="truth-demo">
+    <div class="truth-row verified"><div class="score">9.0</div><span class="v-label">✓ VERIFIED</span><p class="micro" style="margin-top:8px">Another seat checked it.<br>It survived.</p></div>
+    <div class="truth-row claim"><div class="score">8.5</div><span class="v-label">CLAIM</span><p class="micro" style="margin-top:8px">Our assessment.<br>Awaiting its stamp.</p></div>
+    <div class="truth-row claim"><div class="score">7.5</div><span class="v-label">CLAIM</span><p class="micro" style="margin-top:8px">Our assessment.<br>Awaiting its stamp.</p></div>
+  </div>
+  <p class="micro">Law: never a wall of identical badges. The absence of noise IS the design. The ledger gets brighter as truth accumulates — it never starts loud.</p>
+</section>
+
+<!-- ================= LAWS ================= -->
+<section id="laws">
+  <p class="kicker">08 · In words</p>
+  <h2><span class="n">08</span>The laws.</h2>
+  <p class="lede">Everything above, stated plainly. If it isn't here, it isn't the standard.</p>
+  <div class="law-grid">
+    <div class="law-card" style="--sc:var(--magenta)"><h3>The spectrum is law.</h3><p>Magenta → purple → blue → green → gold. Richest first. Every sequence follows it; long lists return to magenta and flow again.</p></div>
+    <div class="law-card" style="--sc:var(--purple)"><h3>Color is identity.</h3><p>One color job per thing. Adjacent things never share a hue. Never shouts over the brand.</p></div>
+    <div class="law-card" style="--sc:var(--blue)"><h3>Black ground, white light, purple soul.</h3><p>White text 99% of the time. Quiet at rest — the object's own color ignites on touch.</p></div>
+    <div class="law-card" style="--sc:var(--green)"><h3>Everything dimensional.</h3><p>Black hearts, white voices, visible skin. Bevel, elevation, glow. Flat is dead.</p></div>
+    <div class="law-card" style="--sc:var(--gold)"><h3>Jewels, not dots.</h3><p>Drawn, glowing, in spectrum order, never twice adjacent. Craft distinct icons.</p></div>
+    <div class="law-card" style="--sc:var(--magenta)"><h3>Details ARE the design.</h3><p>No missing spaces, no stranded boxes. That's what "best" means.</p></div>
+    <div class="law-card" style="--sc:var(--purple)"><h3>Truth is visual.</h3><p>Verified glows green. Claims stay quiet until they earn their light.</p></div>
+    <div class="law-card" style="--sc:var(--blue)"><h3>Nothing reaches Shawn unchecked.</h3><p>Rendered, looked at, scored against the standard it claims. A 9.0 wished is worth less than a 7.5 defended.</p></div>
+    <div class="law-card" style="--sc:var(--green)"><h3>Write with conviction.</h3><p>Ten words that earn their place beat thirty that don't. Argue, don't report.</p></div>
+  </div>
+</section>
+
+<!-- ================= MACHINE LAW ================= -->
+<section id="machine">
+  <p class="kicker">09 · In code</p>
+  <h2><span class="n">09</span>Machine law &amp; AI law.</h2>
+  <p class="lede">The standard above is enforced three ways: <strong>this page</strong> (the example), <strong>words</strong> (the laws), and <strong>code</strong> (the machine checks it).</p>
+  <ul class="checklist">
+    <li><strong>Machine law</strong> — <span style="font-family:monospace">contract/naya-design-contract-v1.machine.json</span>: 47+ pinned tokens, prohibited patterns, required patterns. The checker fails the build on violation.</li>
+    <li><strong>AI law</strong> — <span style="font-family:monospace">contract/NAYA-DESIGN-CONTRACT-V1.ai.md</span>: the decision order every Naya follows — FIELD → SPECTRUM → TYPE → SURFACE → COMPONENT → MOTION → TRUTH.</li>
+    <li><strong>Human law</strong> — <span style="font-family:monospace">contract/NAYA-DESIGN-CONTRACT-V1.md</span>: the readable contract, 170+ enforceable statements.</li>
+    <li><strong>CI gate</strong> — every PR runs the design checker. Violations block. No drift, ever.</li>
+  </ul>
+  <div class="callout">
+    <p><strong>For every new Naya:</strong> open this page. See what elite looks like. Copy the code — it's yours. Follow the laws — they're the standard. When you build, build like this. When you ship, ship at this level. <strong>Understand. Learn. Apply.</strong></p>
+  </div>
+
+<div class="honesty">
+     <div class="hon-col"><h4>Checked on this page</h4><ul>
+       <li>Rendered in Chromium at desktop and 390px widths — no horizontal overflow, all images load, no script errors.</li>
+       <li>Zero PR numbers, zero UUIDs, zero machine jargon in the prose.</li>
+       <li>Spectrum flows magenta → purple → blue → green → gold with no adjacent duplicates.</li>
+       <li>Buttons ignite in their own spectrum color on hover; the breathing aura lives on its own layer so rest-motion never fights the hover state.</li>
+     </ul></div>
+     <div class="hon-col"><h4>Not yet proven</h4><ul>
+       <li>Independent designer score against the 100-point playbook.</li>
+       <li>Screen-reader pass and full keyboard walkthrough.</li>
+       <li>Cross-browser behavior beyond Chromium.</li>
+       <li>Cold-builder reuse: a fresh Naya building from this page alone.</li>
+     </ul></div>
+   </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="spectrum-bar"><span></span><span></span><span></span><span></span><span></span></div>
+  <img src="naya-logo-real.png" alt="Naya" style="width:56px; height:56px; margin-bottom:16px; filter:drop-shadow(0 0 14px rgba(157,117,255,.4))">
+  <p>THE NAYA DESIGN STANDARD · One standard. Every page. No drift.</p>
+  <p class="micro" style="margin-top:8px">Black ground · White light · Purple soul · Magenta leads</p>
+</footer>
+
+<script>
+/* ============ COPY BUTTONS ============ */
+function copyCode(id) {
+  const el = document.getElementById(id);
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    const old = btn.textContent;
+    btn.textContent = 'Copied ✓';
+    setTimeout(() => btn.textContent = old, 1600);
+  });
+}
+
+/* ============ SPECTRUM JEWELS (distinct cuts, law order) ============ */
+const SPECTRUM = [
+  { name: 'MAGENTA', hex: '#d86cff', svg: '<path d="M36 6 L58 30 L36 54 L14 30 Z" fill="none" stroke="COLOR" stroke-width="3"/><path d="M36 16 L48 30 L36 44 L24 30 Z" fill="COLOR" opacity=".35"/>' },
+  { name: 'PURPLE', hex: '#9d75ff', svg: '<circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="3"/><circle cx="36" cy="30" r="10" fill="COLOR" opacity=".4"/><circle cx="36" cy="30" r="4" fill="#fff"/>' },
+  { name: 'BLUE', hex: '#55b9ee', svg: '<path d="M36 8 L60 52 L12 52 Z" fill="none" stroke="COLOR" stroke-width="3"/><path d="M36 24 L48 46 L24 46 Z" fill="COLOR" opacity=".3"/>' },
+  { name: 'GREEN', hex: '#55e39a', svg: '<rect x="16" y="10" width="40" height="40" rx="6" transform="rotate(45 36 30)" fill="none" stroke="COLOR" stroke-width="3"/><rect x="26" y="20" width="20" height="20" rx="3" transform="rotate(45 36 30)" fill="COLOR" opacity=".35"/>' },
+  { name: 'GOLD', hex: '#e8c766', svg: '<circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="3" stroke-dasharray="6 4"/><circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="1.5"/><circle cx="36" cy="30" r="7" fill="COLOR" opacity=".45"/>' }
+];
+document.getElementById('spectrumJewels').innerHTML = SPECTRUM.map(s =>
+  `<div class="jewel" style="color:${s.hex}"><svg viewBox="0 0 72 60">${s.svg.replace(/COLOR/g, s.hex)}</svg><p class="micro">${s.name}</p></div>`
+).join('');
+document.getElementById('jewelRow').innerHTML = SPECTRUM.map(s =>
+  `<div class="jewel" style="color:${s.hex}"><svg viewBox="0 0 72 60">${s.svg.replace(/COLOR/g, s.hex)}</svg><p class="micro">${s.name}</p></div>`
+).join('');
+
+/* ============ SMARTTABS v9.0.0 (embedded, verbatim logic) ============ */
+(function(){
+  const DEF = {
+    storageKey: 'naya_showcase_smarttabs',
+    initial: [
+      { id: 'sc-1', label: 'The Standard', route: '#buttons', heart: true, star: false },
+      { id: 'sc-2', label: 'SmartTabs', route: '#smarttabs', heart: false, star: true },
+      { id: 'sc-3', label: 'Spectrum', route: '#spectrum', heart: false, star: false },
+      { id: 'sc-4', label: 'The Laws', route: '#laws', heart: false, star: false }
+    ],
+    routeMap: {},
+    addLabel: '＋ Add',
+    onNavigate: (route) => { const t = document.querySelector(route); if (t) t.scrollIntoView({ behavior: 'smooth' }); }
+  };
+  function el(html){ const d = document.createElement('div'); d.innerHTML = html.trim(); return d.firstChild; }
+  function placeNear(anchor, panel, oy){
+    oy = oy || 8;
+    const r = anchor.getBoundingClientRect();
+    const W = panel.offsetWidth || 280, H = panel.offsetHeight || 160;
+    panel.style.left = Math.min(window.innerWidth - W - 8, Math.max(8, r.left)) + 'px';
+    panel.style.top = Math.min(window.innerHeight - H - 8, r.bottom + oy) + 'px';
+  }
+  const root = document.getElementById('smarttabs-demo');
+  if (!root) return;
+  const o = Object.assign({}, DEF);
+  const row = el('<div class="sn-row" role="navigation" aria-label="Smart Tabs"></div>');
+  root.appendChild(row);
+  const menu = el('<div class="sn-menu" role="menu"><div class="mi" data-act="edit">✏️ Edit</div><div class="mi" data-act="heart">💜 Set Purple Heart</div><div class="mi" data-act="star">⭐ Set Gold Star</div><div class="mi" data-act="remove">✕ Remove</div></div>');
+  const pop = el('<div class="sn-pop" role="dialog"><h3 class="sn-pop-title">Edit Shortcut</h3><div class="row"><label>Label <input class="sn-in-label" placeholder="e.g., The Laws"></label></div><div class="row"><label>Route or #anchor <input class="sn-in-route" placeholder="#laws"></label></div><div class="toggles"><div class="tgl sn-tgl-heart">💜 Purple Heart</div><div class="tgl sn-tgl-star">⭐ Gold Star</div></div><div class="ft"><button class="sn-btn sn-cancel">Cancel</button><button class="sn-btn primary sn-save">Save</button></div></div>');
+  document.body.appendChild(menu); document.body.appendChild(pop);
+  let shortcuts;
+  try { const s = JSON.parse(localStorage.getItem(o.storageKey)); shortcuts = (s && Array.isArray(s)) ? s : o.initial.slice(); }
+  catch(e){ shortcuts = o.initial.slice(); }
+  let targetId = null, createMode = false;
+  function save(){ try { localStorage.setItem(o.storageKey, JSON.stringify(shortcuts)); } catch(e){} }
+  function render(){
+    row.innerHTML = '';
+    shortcuts.slice().sort((A,B) => ((B.heart?2:B.star?1:0) - (A.heart?2:A.star?1:0))).forEach(s => {
+      const cls = 'sn-pill' + (s.heart ? ' heart' : (s.star ? ' star' : ''));
+      const pill = el('<div class="' + cls + '" data-id="' + s.id + '"><span class="sn-label"></span>' + (s.heart ? '💜' : (s.star ? '⭐' : '')) + ' <button class="sn-more" aria-label="Edit">⋯</button></div>');
+      pill.querySelector('.sn-label').textContent = s.label;
+      pill.onclick = (e) => { if (e.target.classList.contains('sn-more')) return; e.preventDefault(); o.onNavigate(s.route, s); };
+      const openMenu = (e) => { e.preventDefault(); targetId = s.id; placeNear(pill, menu, 6); menu.style.display = 'block'; };
+      pill.oncontextmenu = openMenu;
+      pill.querySelector('.sn-more').onclick = openMenu;
+      row.appendChild(pill);
+    });
+    const addBtn = el('<div class="sn-pill add"><span class="sn-label">' + o.addLabel + '</span></div>');
+    addBtn.onclick = (e) => { e.preventDefault(); targetId = null; createMode = true; openEditor(addBtn, { label: '', route: '', heart: false, star: false }, 'Add Shortcut'); };
+    row.appendChild(addBtn);
+  }
+  function openEditor(anchor, preset, title){
+    pop.querySelector('.sn-pop-title').textContent = title;
+    const inLabel = pop.querySelector('.sn-in-label'), inRoute = pop.querySelector('.sn-in-route');
+    const tH = pop.querySelector('.sn-tgl-heart'), tS = pop.querySelector('.sn-tgl-star');
+    inLabel.value = preset.label || ''; inRoute.value = preset.route || '';
+    tH.classList.toggle('on', !!preset.heart); tS.classList.toggle('on', !!preset.star);
+    tH.onclick = () => { tH.classList.toggle('on'); if (tH.classList.contains('on')) tS.classList.remove('on'); };
+    tS.onclick = () => { tS.classList.toggle('on'); if (tS.classList.contains('on')) tH.classList.remove('on'); };
+    placeNear(anchor, pop, 6); pop.style.display = 'block';
+    pop.querySelector('.sn-cancel').onclick = () => pop.style.display = 'none';
+    pop.querySelector('.sn-save').onclick = () => {
+      const v = { label: (inLabel.value||'').trim() || 'New', route: (inRoute.value||'').trim(),
+                  heart: tH.classList.contains('on'), star: tS.classList.contains('on') };
+      if (v.heart) v.star = false; if (v.star) v.heart = false;
+      if (createMode) { shortcuts.push(Object.assign({ id: 'sc-' + Date.now() }, v)); }
+      else { const i = shortcuts.findIndex(x => x.id === targetId); if (i >= 0) shortcuts[i] = Object.assign({}, shortcuts[i], v); }
+      save(); render(); pop.style.display = 'none';
+    };
+  }
+  menu.addEventListener('click', (e) => {
+    const mi = e.target.closest('.mi'); if (!mi) return;
+    const act = mi.dataset.act; menu.style.display = 'none';
+    const i = shortcuts.findIndex(x => x.id === targetId);
+    if (act === 'edit' && i >= 0) { createMode = false; openEditor(row.querySelector('[data-id="' + targetId + '"]'), shortcuts[i], 'Edit Shortcut'); }
+    else if (act === 'heart' && i >= 0) { shortcuts[i] = Object.assign({}, shortcuts[i], { heart: true, star: false }); save(); render(); }
+    else if (act === 'star' && i >= 0) { shortcuts[i] = Object.assign({}, shortcuts[i], { heart: false, star: true }); save(); render(); }
+    else if (act === 'remove' && i >= 0) { shortcuts.splice(i, 1); save(); render(); }
+  });
+  function closePanels(){ menu.style.display = 'none'; pop.style.display = 'none'; }
+  document.addEventListener('click', (e) => { if (!row.contains(e.target) && !menu.contains(e.target) && !pop.contains(e.target)) closePanels(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePanels(); });
+  render();
+})();
+</script>
+<script>
+/* ==========================================================================
+   LIVING.JS — proximity awareness for the living system
+   One system, no forks. Buttons AND boards share it.
+   - 160px proximity → .lv-aware (wake up before touch)
+   - --mx/--my → cursor light position on the element
+   - --lx/--ly + body.lv-lit → the page receives the element's light
+   ========================================================================== */
+(function () {
+  'use strict';
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var els = Array.prototype.slice.call(document.querySelectorAll('.lv-btn, .lv-board'));
+  if (!els.length) return;
+
+  /* ambient wash layer — the page catching the light */
+  var ambient = document.createElement('div');
+  ambient.className = 'lv-ambient';
+  ambient.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(ambient);
+
+  var raf = null, lastX = -9999, lastY = -9999;
+
+  function accentOf(el) {
+    var wrap = el.closest('.lv-wrap');
+    var src = wrap || el;
+    var rgb = getComputedStyle(src).getPropertyValue('--lv-accent-rgb').trim();
+    return rgb || '160,107,255';
+  }
+
+  function update() {
+    raf = null;
+    var lit = false, best = null, bestDist = 1e9;
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      var wrap = el.classList.contains('lv-btn') ? (el.closest('.lv-wrap') || el) : el;
+      if (el.disabled) continue;
+      var r = el.getBoundingClientRect();
+      if (r.bottom < -180 || r.top > window.innerHeight + 180) {
+        wrap.classList.remove('lv-aware'); continue;
+      }
+      var dx = Math.max(r.left - lastX, 0, lastX - r.right);
+      var dy = Math.max(r.top - lastY, 0, lastY - r.bottom);
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      var aware = dist < 160;
+      var was = wrap.classList.contains('lv-aware');
+      if (aware !== was) wrap.classList.toggle('lv-aware', aware);
+      if (aware || el.matches(':hover')) {
+        var mx = ((lastX - r.left) / Math.max(r.width, 1) * 100);
+        var my = ((lastY - r.top) / Math.max(r.height, 1) * 100);
+        el.style.setProperty('--mx', mx.toFixed(1) + '%');
+        el.style.setProperty('--my', my.toFixed(1) + '%');
+      }
+      if (aware && dist < bestDist) { bestDist = dist; best = el; }
+      if (el.matches(':hover')) { best = el; bestDist = -1; lit = true; }
+    }
+    if (best) {
+      lit = true;
+      document.documentElement.style.setProperty('--lv-wash-rgb', accentOf(best));
+      document.documentElement.style.setProperty('--lx', lastX + 'px');
+      document.documentElement.style.setProperty('--ly', lastY + 'px');
+    }
+    document.body.classList.toggle('lv-lit', lit);
+  }
+
+  document.addEventListener('pointermove', function (e) {
+    lastX = e.clientX; lastY = e.clientY;
+    if (!raf) raf = requestAnimationFrame(update);
+  }, { passive: true });
+
+  document.addEventListener('pointerleave', function () {
+    lastX = -9999; lastY = -9999;
+    els.forEach(function (el) {
+      var wrap = el.classList.contains('lv-btn') ? (el.closest('.lv-wrap') || el) : el;
+      wrap.classList.remove('lv-aware');
+    });
+    document.body.classList.remove('lv-lit');
+  });
+
+  /* touch: brief wake flash */
+  els.forEach(function (el) {
+    el.addEventListener('touchstart', function () {
+      var wrap = el.classList.contains('lv-btn') ? (el.closest('.lv-wrap') || el) : el;
+      wrap.classList.add('lv-aware');
+      setTimeout(function () { wrap.classList.remove('lv-aware'); }, 600);
+    }, { passive: true });
+  });
+})();
+
+</script>
+</body>
+</html>

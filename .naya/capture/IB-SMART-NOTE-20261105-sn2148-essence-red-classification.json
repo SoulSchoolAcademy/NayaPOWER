@@ -1,0 +1,43 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2148",
+  "title": "Red Classification: Name the Failure Class Before Touching the Code",
+  "slug": "essence-red-classification",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-red-classification.md",
+  "tone": "red",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:51:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A red is a symptom, and the first job is classification, not repair. Classify the red before chasing code: compute the failure-mode delta — what changed in the shape of the failure — because the same red count with a different failure shape is a different incident (SN-0320). The standing taxonomy separates the classes that look identical from a distance: a source that moved between trigger and execution is an environmental race, closed with NO-REPAIR; an opaque error is an instrumentation defect, repaired at the seam; a failing assertion on a pinned source is a product defect (SN-0405). The hot-main proof race is the type specimen: a twenty-nine-second window in which the source moved was sufficient to misclassify an environment event as a product failure until the taxonomy named it (SN-0405). The architectural answer the class points to is pinned-SHA proofs, so the race cannot recur (SN-0405).\n\nNoise has tests. Infrastructure noise is identified by repetition across unrelated state: the same failure across N unrelated tips, or surfacing across M unrelated PRs, is infrastructure until proven product — with named variants for the stale-base form and the archaeology form, where the failure predates the work it appears to accuse (SN-0323). When consecutive runs fail at different steps, suspect self-poisoning: deterministic fixtures colliding with their own leftovers. The discipline is verify-or-kill — state the hypothesis, name the falsifier check (does the fixture carry a per-run nonce? does the writer dedupe?), run the check, and record confirmed-or-killed publicly; an untested suspicion is not a diagnosis (SN-0385).\n\nA red that spans unrelated work has its own class: external fan-out. RED across unrelated tips points at orphaned external integrations — seventeen Cloudflare lanes, none canonical — and the recovery order is fixed: recover the governed contract first, disconnect the noncanonical lanes at the external surface while preserving their runtimes, and never fake green, never delete Workers, never pick a canonical lane by name (SN-0386). Chained workflows have their own instrument class: in an artifact-chained workflow, a skip on a producer job is never neutral — the producer's artifacts never exist, the consumer fails downloading them, and the failure masquerades as a product defect for run after run (SN-0418). The first diagnostic question for any chained red is whether every producer actually ran; skip conditions on producers are a property of the whole chain, and consumers must explicitly tolerate absence or gate on the producer (SN-0418).\n\nDiagnosis is controlled experiment, not archaeology. Pin the working environment as the no-regression control, and name the acceptance test before hardening anything — hardening without a named acceptance test is how a repair becomes the next incident (SN-0332). And classification ends in an honest open question where one exists: the corpus records the director's standing question of what \"mission accomplished\" means when synthetic chain-green and direct product verification disagree while deployment is already proven green — the class taxonomy does not answer it, and this essence carries the question open rather than inventing the answer (SN-0385).",
+    "human_view": "When something turns red, the team's first move is to name what KIND of failure it is — a real product bug, a test-rig problem, an outside service misbehaving, a race with a moving target, or the measuring instrument itself. Half of all \"bugs\" turn out to be one of the other four, and fixing product code for an instrument problem only makes things worse. Diagnosis first, wrenches second.",
+    "child_view": "Imagine your toy car stops working. Before taking it apart, you check: is the battery dead (that's the power, not the car)? Did the floor change? Is the measuring ruler bent? Smart fixers ask what KIND of broken it is first — because fixing the wrong kind makes a bigger mess.",
+    "grandma_view": "Dear, it's the doctor's rule: diagnose before you prescribe. A fever from an infection and a fever from a broken thermometer need opposite responses. The teams write down which kind of failure they believe it is, how they could prove themselves wrong, and they check — before anyone starts repairing the wrong thing.",
+    "ai_view": "Compute the failure-mode delta first (SN-0320). Run the taxonomy: moved source → environmental, NO-REPAIR; opaque error → instrument seam; pinned-source assertion → product (SN-0405). Apply the repetition test before believing any single-tip story (SN-0323). On chained reds, read the job matrix for skipped producers before reading code (SN-0418). State hypotheses with falsifiers and record the kill publicly (SN-0385). Pin your control environment and name the acceptance test before hardening (SN-0332). For fan-out reds, recover the contract and disconnect at the external surface — never fake green (SN-0386).",
+    "what_it_means": "Seven notes defend one habit: the class of a failure determines the repair, the owner and often the verdict that no repair is owed at all. A cold reader holding only this essence can still triage a red at 3 a.m. without repairing the wrong layer — which is everything the covered notes exist to teach.",
+    "whats_inside": [
+      "No repair begins before its red is classified; the failure-mode delta is the first artifact of every incident (SN-0320).",
+      "Environmental races close with NO-REPAIR and are never \"fixed\" in product code (SN-0405).",
+      "Repetition across unrelated tips or PRs reclassifies a failure as infrastructure until product evidence appears (SN-0323).",
+      "A red consumer with a skipped producer is an instrument failure by definition, and the code under test is innocent until the chain is proven whole (SN-0418).",
+      "Hypotheses about failure are stated with their falsifiers and killed or confirmed in public — suspicion is not a diagnosis (SN-0385)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-1"
+    ],
+    "covers": [
+      "SN-0320",
+      "SN-0323",
+      "SN-0332",
+      "SN-0385",
+      "SN-0386",
+      "SN-0405",
+      "SN-0418"
+    ]
+  },
+  "page_hash": "ea66b3f61a1e34faecd734caccf7a7654da85f8585370ead95578e2b5824f276",
+  "content_hash": "1e0b12c96fd02723f4d936611b60b875f17cc66cb4ee3a9379e4f98b4752c04c"
+}

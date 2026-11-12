@@ -1,0 +1,54 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2170",
+  "title": "A Relay Hands Evidence, Never Authority",
+  "slug": "essence-relays-hand-evidence",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-relays-hand-evidence.md",
+  "tone": "magenta",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:11:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Work crosses between seats constantly in this system, and every crossing has the same law: what travels is evidence, bytes, and boundaries — never decisions, never authority, never ownership. A verification relay confirms bytes and stops: \"here's the evidence, here's what's still open, here's whose call it is\" (SN-749, SN-774). A delegated PR opening verifies every claimed head SHA against the remote before opening anything, and opens zero merges (SN-751); relayed opens pin the claimed head SHA, never the mutable branch name, and the requester's declared authority boundaries travel with the request (SN-773). The relay opener then recuses from review — one seat never holds both hands (SN-781). Ownership is declared at detection time, in the same breath as the finding (SN-711), and one mission works on one claimed lane branch — a second branch name is an instant halt (SN-808). Claim-scan hits are resolved by identity chain, not keyword (SN-683). A watch note declares its non-actions in writing, because invisible restraint looks like neglect (SN-753). A shared-tool defect is disclosed and flagged to its owner, never quietly forked (SN-715). A workflow-file write is a held human gate no matter how additive its framing (SN-680). A green PR whose merge wakes production writes still returns NEEDS_AUTHORITY — jurisdiction follows consequences, not merits (SN-807). And every consequential update to the Director is written literal-first: plain words he can picture, evidence appendix after (SN-804).",
+    "human_view": "In a team where work constantly changes hands, the most dangerous sentence is the one that sounds like a decision but was only ever a delivery. This essence is the etiquette that keeps handoffs honest: the courier confirms the parcel is the parcel — seals, weight, address — and says out loud that delivering it isn't approving it. The person who opens a package for someone else doesn't then grade its contents. Claims are staked before digging starts, so five people don't dig the same hole. And when you deliberately *don't* do something — don't close that PR, don't start a second fix — you write that down too, because restraint nobody can see looks exactly like nobody caring.",
+    "child_view": "Imagine a relay race where your job is to carry the baton to the next runner. Carrying it doesn't mean you won the race, and it doesn't mean you get to decide who wins — you just carry it carefully and hand it to the right person. If you also get to be the judge, that's not fair, because of course you'd judge your own running kindly. And before the race, everyone agrees who runs which leg — if two kids grab the same baton and run different ways, nobody finishes. One baton, one runner per leg, names called out before the whistle.",
+    "grandma_view": "Dear, it's the manners of a good post office and a good neighbor. The postman delivers the letter; he doesn't sign it. The neighbor who takes in your parcel while you're out writes down that she has it, and doesn't open it, and doesn't tell the sender you agreed to anything. If you see the fence on the far field is broken but it's Mr. Alvarez's fence and his crew is already mending fences this week, you send word — you don't climb over and start hammering, and you write in the farm diary that you saw it and left it to him, so nobody thinks the whole parish walked past blind.",
+    "ai_view": "End every relay with the boundary sentence and put the deferral in the receipt itself (SN-749, SN-774). Verify before you open, pin what you open, inherit the requester's boundaries, then recuse (SN-751, SN-773, SN-781). Declare provisional ownership in the detecting post (SN-711) and claim your lane branch before your first commit — a second branch name halts the mission (SN-808). Resolve scan hits by chain identity (SN-683). Write your non-actions (SN-753). Disclose shared-tool defects to their owners and keep your workaround uncommitted (SN-715). Split mixed PRs at the workflow gate (SN-680), score merits and consequences as separate verdicts, and bundle the consequence chain into one ask (SN-807). And when you write to the Director, think it in his language first — the picture test decides, the appendix follows (SN-804).",
+    "what_it_means": "Thirteen notes are one law: **in a delegated system, the handoff is a trust boundary, and what crosses it is evidence — never the decision.** The relay family (SN-749, SN-774, SN-751, SN-773, SN-781) builds the boundary brick by brick: confirm bytes, pin claims, inherit boundaries, recuse. The roster family (SN-711, SN-808, SN-683, SN-753) keeps the lanes the handoffs run between from multiplying or colliding silently. And the gate family (SN-680, SN-807, SN-715) marks where delegation ends entirely: at workflow files, at production consequences, and at tools whose ownership stays with their owner even when broken. SN-804 is the same law at the human boundary: even the Director receives a handoff, and it arrives translated, complete, and honest about what's blocked. A cold reader holding only this essence can still audit any cross-seat action: who confirmed, who claimed, who decided, and where the boundary was written.",
+    "whats_inside": [
+      "Relays end with the boundary sentence — evidence, open items, decision owner — and byte-agreement receipts state the deferral explicitly (SN-749, SN-774).",
+      "Delegated opens verify claimed SHAs against the remote first, open zero merges, and route unvalidated items to their owning lanes (SN-751); opens pin the claimed SHA and inherit the requester's boundaries (SN-773); openers recuse from review (SN-781).",
+      "RED-class ownership is declared provisionally at detection, in the detecting post (SN-711).",
+      "One mission = one lane branch, claimed before the first commit; second branch name = halt; no pushes during final-head validation; no force-push squash delivery on shared lanes; reconciliation ports unique work file-by-file and parks — never deletes — the donor (SN-808).",
+      "Claim-scan hits resolve by identity chain; only another lane's chain blocks (SN-683).",
+      "Watch notes carry an explicit \"Not doing\" paragraph naming the restraint, the owner, and the remediation (SN-753).",
+      "Shared-tool defects are disclosed with their input class and flagged to the owner; workarounds stay uncommitted (SN-715).",
+      "Workflow-file writes are a held human gate regardless of framing; mixed PRs split (SN-680).",
+      "Authority is drawn at the consequence: merits and jurisdiction are scored separately, and consequence chains route as one bundled ask (SN-807).",
+      "Director-facing updates are literal-first, picture-testable, with blockers surfaced proactively (SN-804)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-3"
+    ],
+    "covers": [
+      "SN-680",
+      "SN-683",
+      "SN-711",
+      "SN-715",
+      "SN-749",
+      "SN-751",
+      "SN-753",
+      "SN-773",
+      "SN-774",
+      "SN-781",
+      "SN-804",
+      "SN-807",
+      "SN-808"
+    ]
+  },
+  "page_hash": "c1e00e9ac51ab353522a2b5172c09678aca6a0c9c1cbd992740f6b335f0d39d9",
+  "content_hash": "1c83223d8e9ca798aa0b6610539001bbd3475a49f187142a255eaf02aa828700"
+}

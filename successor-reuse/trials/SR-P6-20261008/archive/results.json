@@ -1,0 +1,74 @@
+{
+ "trial_id": "SR-P6-20261008",
+ "preregistration": {
+  "min_absolute_delta": 0.2,
+  "alpha": 0.05,
+  "compounding_margin": 0.1,
+  "n_per_arm": {
+   "A": 10,
+   "B": 10,
+   "C": 5
+  },
+  "primary_metric": "arm PASS rate (4 dispatch decisions + 4 applicability judgments correct, B arms also require retained-note.txt)",
+  "lesson": "T12 compositional (Reserve + Critical Override, priority-ordered)",
+  "lesson_sha256": "26b61b73475a15eb282c327992b3927528f8b70acace1baf49ae4934c7dd4a14",
+  "lesson_verification_status": "CANDIDATE - Naya 4 Trial-12 Tier-S claim, Naya 1 independent verification PENDING (PR #1787 open)",
+  "retrieval_path": "STUBBED"
+ },
+ "arms": {
+  "A": {
+   "outcomes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "description": "baseline, no lesson"
+  },
+  "B": {
+   "outcomes": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "description": "treatment, lesson via stubbed retrieval"
+  },
+  "C": {
+   "outcomes": [
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "description": "compounding, inherits arm-b6 retained note"
+  }
+ },
+ "design_controls": {
+  "briefs_byte_identical": true,
+  "same_model": true,
+  "only_lesson_differs": true,
+  "note": "briefs committed pre-arms (bb180617); C briefs committed pre-C-arms (1e09b7d); procedural blinding attested by director"
+ },
+ "mechanism_evidence": {
+  "treatment_shows_lesson_behavior": true,
+  "detail": "10/10 B arms: all 4 dispatches correct incl. S2 override-priority; applicability APPLICABLE x3 + NOT APPLICABLE on probe; 10/10 retained notes articulate override-priority ordering (9/10 explicitly mention priority/order/first)"
+ },
+ "refusal_probe": {
+  "verdict": "PASS",
+  "detail": "10/10 B arms: probe dispatched proposal-401 (highest) with APPLICABILITY: NOT APPLICABLE - zero lesson leakage into the unrelated scored-pair domain"
+ }
+}

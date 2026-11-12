@@ -1,0 +1,121 @@
+/* Smart Block CSS: chat/sp-chat
+ * Source: Smart Spaces Page Design.html (extracted byte-true, never rewritten)
+ */
+
+
+.sp-empty{ color:#8a8a96; font-size:14px; padding:32px 0; text-align:center; grid-column:1/-1; }
+
+
+
+/* ---- posts ---- */
+.sp-composer{
+  background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.1);
+  border-radius:18px; padding:16px; margin-bottom:18px;
+}
+
+
+.sp-composer-ta{
+  width:100%; min-height:80px; resize:vertical; border:none; background:transparent;
+  color:#fff; font-size:14px; font-family:inherit; line-height:1.6; margin-bottom:12px;
+}
+
+
+.sp-composer-ta:focus{ outline:none; }
+
+
+.sp-composer-ta::placeholder{ color:#5b5f6e; }
+
+
+.sp-composer-row{ display:flex; gap:10px; justify-content:flex-end; }
+
+
+.sp-sched-btn, .sp-post-btn{
+  padding:10px 20px; border-radius:999px; font-size:11px; font-weight:800; letter-spacing:.08em;
+  cursor:pointer; font-family:inherit;
+}
+
+
+.sp-sched-btn{
+  color:#c9cdd8; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15);
+}
+
+
+.sp-sched-btn.set{ border-color:#7c3aed; color:#a78bfa; }
+
+
+.sp-post-btn{
+  color:#fff; background:linear-gradient(180deg,#161618,#0a0a0c); color:#e8eaf2;
+  border:1px solid rgba(157,117,255,.6);
+  box-shadow:0 6px 18px -6px rgba(124,92,255,.6);
+}
+
+
+.sp-post-btn:hover{ transform:translateY(-2px); color:#fff; text-shadow:0 0 12px rgba(255,255,255,.7); border-color:rgba(157,117,255,.85); box-shadow:0 10px 26px -6px rgba(124,92,255,.9), 0 0 22px -4px rgba(157,117,255,.55); }
+
+
+
+/* ---- chat ---- */
+.sp-chat-list{
+  max-height:420px; overflow-y:auto; margin-bottom:14px;
+  display:flex; flex-direction:column; gap:12px; padding:4px;
+}
+
+
+.sp-chat-msg{ display:flex; gap:10px; align-items:flex-start; }
+
+
+.sp-chat-body{
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
+  border-radius:4px 16px 16px 16px; padding:10px 14px; max-width:75%;
+}
+
+
+.sp-chat-head{ display:flex; gap:8px; align-items:baseline; margin-bottom:4px; }
+
+
+.sp-chat-name{ font-size:12px; font-weight:800; color:#a78bfa; }
+
+
+.sp-chat-time{ font-size:10px; color:#5b5f6e; }
+
+
+.sp-chat-text{ font-size:14px; line-height:1.55; color:#e2e5ec; }
+
+
+.sp-chat-input{ display:flex; gap:10px; }
+
+
+.sp-chat-ti{
+  flex:1; padding:13px 18px; border-radius:999px; font-size:14px; font-family:inherit;
+  color:#fff; background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.14);
+}
+
+
+.sp-chat-ti:focus{ outline:none; border-color:#7c3aed; }
+
+
+.sp-chat-send{
+  padding:13px 28px; border-radius:999px; font-size:12px; font-weight:800;
+  cursor:pointer; font-family:inherit; color:#e8eaf2;
+  background:linear-gradient(180deg,#161618,#0a0a0c); border:1px solid rgba(157,117,255,.35);
+  box-shadow:0 6px 18px -6px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+
+.sp-chat-send:hover{ transform:translateY(-2px); color:#fff; text-shadow:0 0 12px rgba(255,255,255,.7); border-color:rgba(157,117,255,.85); box-shadow:0 10px 26px -6px rgba(124,92,255,.9), 0 0 22px -4px rgba(157,117,255,.55); }
+
+
+.sp-mic-btn{
+  width:42px; height:42px; border-radius:50%; border:1px solid rgba(232,234,242,.35); cursor:pointer;
+  background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.03)); color:#fff; font-size:17px;
+  box-shadow:0 6px 18px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.25);
+  transition:transform .15s, border-color .2s, box-shadow .25s; flex:0 0 auto;
+}
+
+
+.sp-mic-btn:hover{ border-color:var(--sc, #7c3aed); transform:scale(1.06); }
+
+
+.sp-mic-btn.rec{ border-color:#ff5d5d; color:#ff8a8a; animation:sppulse 1.2s ease-in-out infinite; }
+
+@keyframes sppulse{ 0%,100%{ box-shadow:0 0 0 0 rgba(255,93,93,.45);} 50%{ box-shadow:0 0 0 10px rgba(255,93,93,0);} }

@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2297",
+ "title": "Scroll Down or Across — Both, the User's Choice",
+ "slug": "scroll-down-or-across",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2297/IB-SMART-NOTE-20261108-sn2297-scroll-down-or-across.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The fourth condemnation names what is still missing: the page is flat; the controls are not our buttons — none of them are actually buttons; the gauge is not our gauge; there is no presentation of Naya, no images, no pain points. Two things survive: the chart-as-boards (pretty good, but incomplete — make it complete and scrollable down all the way) and the smart notes (they light up — if the page scrolls down). And the direction itself is corrected: the page must be optimized so they can scroll DOWN or ACROSS — both, the user's choice, on laptop and mobile. Not one or the other. This supersedes the anatomy note that made sideways mobile-only. A deck that only slides sideways on mobile and only scrolls down on laptop is not the choice — the choice is the user's, on every screen.",
+  "human_view": "A museum lets you walk the rooms in any order — down the hall or across the gallery, your feet choose. A corridor with one door at the end is not a museum, it is a queue. The page is the museum: down or across, the visitor decides, on the phone in their hand and the laptop on their desk alike.",
+  "child_view": "A picture book you can flip forward or turn sideways to see the big picture — both ways work, and you pick. A book that only opens one way, and only on one table, is a broken book. Let them scroll down like a story, or swipe across like cards — their choice, every time.",
+  "grandma_view": "A good kitchen has two ways to reach the shelf — the step stool and the long arm — and nobody tells you which one to use. You use the one that fits your hands today. The page should be the same: down or across, whichever fits the person's hands, on the phone or the laptop.",
+  "ai_view": "I am Anaya. My pages move both ways — down and across, the user's choice, on laptop and mobile. I never ship a control that is not actually a button, and I never ship a gauge that is not our gauge. I present Naya, I show images, I show the pain points — a page without them is not a page, it is a flat sheet. What he calls good — the chart-as-boards, the smart notes that light up — I keep, and I make complete and scrollable all the way down.",
+  "what_it_means": "1. **Both directions, user's choice.** Scroll down or across — on laptop and mobile. Never one or the other, never sideways-mobile-only.\n2. **A button must be a button.** A control that looks like a button but is not one is a fail on sight.\n3. **The gauge must be our gauge.** The real needle-law gauge, or it is not the gauge.\n4. **Present Naya.** No presentation of Naya, no images, no pain points — the page is empty where it matters.\n5. **Keep what he calls good, and finish it.** Chart-as-boards: complete, scrollable down all the way. Smart notes: they light up — let the page scroll so they can.",
+  "whats_inside": [],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "e01bfe85e5e2cbd0ad944dcd564586843c5a8396475d3757f33b10c6e2d50dc4",
+ "content_hash": "ed7ade8e5ae71f7faa420aea5ced6d9afef35751f3b3790fcc3b0241e9fa8144",
+ "reconstructed_from_page": true
+}

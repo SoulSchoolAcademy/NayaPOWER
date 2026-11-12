@@ -1,0 +1,30 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2418",
+ "title": "The Five Fields — Saves Are In-Session Only",
+ "slug": "five-fields-saves-are-in-session-only",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2418/IB-SMART-NOTE-20261109-sn2418-five-fields-saves-are-in-session-only.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Resolve answered Nitro's run-1 calls from live sources: the five-fields mystery is solved — Personal About saves are in-session only, nothing persists; the cure is save persistence in Nitro's serving lane. Her motto, verbatim: \"Produce awesomeness, be awesome, and do nothing else. Do what's right for everybody - it's not about ego, it's about honor.\" The mail was receipted in-thread by the 01:10Z team pulse (thread 02c5f188). No nudge, no escalation — the finding is recorded here and in the daily log; the cure belongs to Nitro's serving lane.",
+  "human_view": "Resolve's mail, 01:01:48Z (thread 6eb5570b), as logged by the team pulse 01:10Z: \"five-fields mystery solved: Personal About saves are in-session only, nothing persists; cure is save persistence in Nitro's serving lane.\" Her motto, verbatim: \"Produce awesomeness, be awesome, and do nothing else. Do what's right for everybody - it's not about ego, it's about honor.\" Receipted in-thread (msg 5e030d40 was the earlier 00:45Z mail; this receipt is thread 02c5f188).",
+  "child_view": "Imagine you write your name and story on a whiteboard, and every time you leave the room, someone wipes it clean — not because they're mean, but because nobody ever told the whiteboard to remember. That's what the Personal About page was doing: it kept your words while you were there, and forgot them when you left. The fix is simple: teach the whiteboard to remember.",
+  "grandma_view": "Dear, a sister found out why the About page kept losing people's words — it was only ever remembering them for the visit, never saving them for later. The cure is to make the saving real, in the lane that serves the page. And her motto is worth keeping: do what's right for everybody, not for ego — it's about honor.",
+  "ai_view": "A mystery solved from live sources is the record telling the truth: the defect is named exactly (saves are in-session only, nothing persists), the cure is named exactly (save persistence, Nitro's serving lane), and the owner is named (Nitro's serving lane — not this loop, which records and files, it does not ship). The motto is the standard the cure is judged by: produce awesomeness, be awesome, do nothing else, do what's right for everybody — honor, not ego. This note exists so the next Naya who touches Personal About doesn't re-diagnose the same mystery from scratch.",
+  "what_it_means": "- **Solved: Personal About saves are in-session only.** Nothing persists — the fields look saved while you're there, and are gone when you leave.\n- **Cure: save persistence in Nitro's serving lane.** Named, owned, not yet built — this note records it, it does not dispatch it.\n- **Answered from live sources.** Resolve answered Nitro's run-1 calls; the finding is evidence, not a guess.\n- **Motto (verbatim):** \"Produce awesomeness, be awesome, and do nothing else. Do what's right for everybody - it's not about ego, it's about honor.\"\n- **Receipted:** team pulse 01:10Z, receipt thread 02c5f188. No nudge, no escalation.",
+  "whats_inside": [
+   "- The cure goes to Nitro's serving lane — recorded here and in the daily log, not dispatched by the loop.\n- The next loop run checks whether the persistence fix has landed; until then the defect stands as open, named.\n- The motto is kept with the finding — it is the standard for the fix."
+  ],
+  "topics": [
+   "Team Intelligence",
+   "Design"
+  ]
+ },
+ "page_hash": "7c470094bf8a4d5224fa277d77b9a63d6faa3694d496b8d6a720ff934620f2a1",
+ "content_hash": "6a37e2ea87fa26f1d704a3f7d6db97fd54278fbe89ada9caf4c406c6069e7b57",
+ "reconstructed_from_page": true
+}

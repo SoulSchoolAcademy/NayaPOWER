@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2521",
+ "title": "Notifications Top Right",
+ "slug": "notifications-top-right",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/09/DESIGN/SN-2521/IB-SMART-NOTE-20261109-sn2521-notifications-top-right.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-09T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "- **HIS WORDS, VERBATIM:** \"notifications button you have just randomly at the in the middle it it probably should be at the top right\"\n- **THE POINTS STRIP DOESN'T BELONG THERE:** \"I don't know what this like things you have invite sent to 50 creation four you have that at the top which doesn't make sense um that should just be the notifications area\"\n- **EACH NOTIFICATION ITS OWN COLOR:** \"the notifications you pull it up shouldn't just be all one color all looking the same it should be like every you scroll through them they light up each one and then tells you what the notification is\"\n- **THE FIX:** the Notifications pill moves to the top right. The invites/creations points strip comes out of that top area — the top is the notifications area. When you open notifications, each one lights up in its own color as you scroll through them, and each tells you what it is.\n- **SCOPE:** the top of the Dashboard boards page.",
+  "human_view": "The top of the page is confused about what it is: a Notifications pill floating in the middle, and a strip counting invites and creations sitting where notifications should live. His fix gives the top a single job — it is the notifications area. The pill goes to the top right, where a person's eye expects it; the points strip goes somewhere it makes sense, because a count of invites is not a notification. And inside the notifications themselves, no more one flat color for everything: each notification lights up in its own color as you scroll through, and each one says what it is. The top stops being a junk drawer and becomes a place with one clear purpose.",
+  "child_view": "The Notifications button was sitting right in the middle of the top, like a shoe in the middle of the floor — it belongs in the top right corner, where you always look for it. And the counting strip at the top didn't make sense there either — that whole top part is for notifications. When you open them, each one lights up in its own pretty color, one by one, and each tells you what it is.",
+  "grandma_view": "Dear, the Notifications button was just floating in the middle at the top, love, and it belongs in the top right corner, where anyone would look for it. That little counting strip up there doesn't make sense either, dear — the top is for your notifications. And when you open them, each one lights up in its own color as you go through them, and each one tells you what it is, nice and clear.",
+  "ai_view": "This is place as meaning: where a thing sits is a claim about what it is. It connects to SN-2519 (the board color sequence — each thing its own color, in order) and to SN-2518 (position is meaning — the button first, the jewels after): the top right is where the eye expects the bell, so the bell goes there, and the top area is the notifications area, so only notifications live there. A points strip in the notifications area is a category error, and a category error is what makes a page feel like it doesn't make sense — which is exactly what he said: \"it has to make sense and be logical.\" Each notification lighting in its own color is the same law at small scale: each item announces itself, in its own color, as you meet it.",
+  "what_it_means": "- **NOTIFICATIONS TOP RIGHT:** the pill moves from the middle to the top right.\n- **THE TOP IS THE NOTIFICATIONS AREA:** the invites/creations points strip comes out of the top.\n- **EACH NOTIFICATION ITS OWN COLOR:** scrolling through them, each lights up in its own color and tells you what it is.",
+  "whats_inside": [
+   "- The Notifications pill sits top right.\n- The points strip leaves the top area.\n- Notifications each light in their own color, each telling you what it is.\n- Next loop run re-checks: the top reads as the notifications area, at a glance."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "b00af3f827a53b31edc6082e69bae3e5f934835a25e9ed7d0e6b7b7eb88bb8d0",
+ "content_hash": "7e722182f990a29a87408e15168a6452641548eb358d703f008d8aabbef0ac97",
+ "reconstructed_from_page": true
+}

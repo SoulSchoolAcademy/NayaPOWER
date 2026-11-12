@@ -105,20 +105,21 @@ test("decision-context requires a target_id", async () => {
   }
 });
 
-test("decision-context reports grounded context when active learning evidence exists", async () => {
+test("decision-context reports available learning context without claiming causal influence", async () => {
   const invoke = runtime();
   const res = await invoke({ target_id: "TARGET-1" }, { authorization: "Bearer t" });
   assert.equal(res.status, 200);
   const body = await res.json();
   assert.equal(body.ok, true);
-  assert.equal(body.decision.decision, "USE_VERIFIED_LEARNING_CONTEXT");
-  assert.equal(body.decision.influenced, true);
+  assert.equal(body.decision.decision, "LEARNING_CONTEXT_AVAILABLE");
+  assert.equal(body.decision.learning_context_available, true);
+  assert.equal(body.decision.influenced, false);
   assert.equal(body.decision.target_id, "TARGET-1");
   assert.equal(body.decision.context.evidence_id, "evidence-1");
   assert.equal(body.decision.context.level, "APPLIED");
   assert.equal(body.decision.context.observed_value, "PROVENANCE_PRESERVED");
-  assert.equal(body.decision.continuity.grounded, true);
-  assert.equal(body.decision.continuity.next_step, "APPLY_VERIFIED_LEARNING_CONTEXT");
+  assert.equal(body.decision.continuity.grounded, false);
+  assert.equal(body.decision.continuity.next_step, "EVALUATE_LEARNING_APPLICABILITY_BEFORE_APPLY");
 });
 
 test("decision-context grants no authority even when learning is present", async () => {
@@ -137,7 +138,7 @@ test("decision-context says NO_LEARNING_INFLUENCE and stays ungrounded when no e
   const res = await invoke({ target_id: "TARGET-1" }, { authorization: "Bearer t" });
   assert.equal(res.status, 200);
   const body = await res.json();
-  assert.equal(body.decision.decision, "NO_LEARNING_INFLUENCE");
+  assert.equal(body.decision.decision, "NO_VERIFIED_LEARNING_CONTEXT");
   assert.equal(body.decision.influenced, false);
   assert.equal(body.decision.continuity.grounded, false);
   assert.equal(body.decision.continuity.next_step, "RETRIEVE_VERIFIED_LEARNING_BEFORE_CONTINUATION");
@@ -177,4 +178,13 @@ test("decision-context sets CORS headers so the Hub can read it", async () => {
   const res = await invoke({ target_id: "TARGET-1" }, { authorization: "Bearer t" });
   assert.equal(res.headers.get("access-control-allow-origin"), "*");
   assert.match(res.headers.get("content-type") ?? "", /application\/json/);
+});
+
+
+test("decision-context keeps causal influence false on context lookup", async () => {
+  const invoke = runtime();
+  const res = await invoke({ target_id: "TARGET-1" }, { authorization: "Bearer t" });
+  const body = await res.json();
+  assert.equal(body.decision.learning_context_available, true);
+  assert.equal(body.decision.influenced, false, "availability alone is not causal influence");
 });

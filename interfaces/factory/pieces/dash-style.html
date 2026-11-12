@@ -1,0 +1,244 @@
+<style id="os-dash-style">
+/* ═══ THE DASHBOARD VIEW — "Your World, Live" (Mirror B5, 2026-10-22;
+   button doctrine steer, Shawn ~03:20Z).
+   One view of the one universal body, not a second app: summoned by the
+   Dashboard button on Home (and the Dashboard nav tab); the Dashboard
+   door is the same body with this view open first. Rendered in the
+   page's own ph-* grammar. Every visual piece is harvested — ph-card wells, the
+   donut + week bars + funnel from Reports/Growth, faces from Connections,
+   pulseGlow breathing, spectrum identity — the FRONT CURE (2026-10-22): stats
+   first, the gauge/hero/spotlight/life banners retired, every icon a
+   raised jewel, plug-ins as jewel tiles, ACTIVE INTELLIGENCE pulse. ═══ */
+.os-dash{display:flex;flex-direction:column;gap:14px}
+/* — the Dashboard button on Home: the door into this view, prominent by
+     design (Shawn's dashboard-button doctrine) — full-width, soul-purple,
+     ignites on touch like everything else in the system — */
+/* — pulse sparklines: the week's shape under each headline count, drawn
+     from the same real per-day counts as the Trend Panel — */
+.os-spark{width:100%;height:28px;display:block;margin-top:8px;opacity:.95}
+/* — pulse strip: the world's headline counts, each with its sentence — */
+.os-dash-pulse{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.os-dash-lab{color:#E8E8EC;font-size:12px;font-weight:800;letter-spacing:.08em;margin-top:2px}
+/* — chart + work rows — */
+.os-dash-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:14px}
+.os-dash-row .ph-card{min-width:0}
+/* — insight feed: data translated into a sentence + an action — */
+.os-insight{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.os-insight:last-child{border-bottom:none;padding-bottom:2px}
+.os-insight-dot{width:11px;height:11px;flex:none;border-radius:50%;margin-top:5px;--bc:currentColor;animation:pulseGlow 3s infinite;box-shadow:0 0 10px -1px currentColor}
+.os-insight-main{flex:1;min-width:0}
+.os-insight-main p{font-size:13.5px;line-height:1.5;color:#fff}
+.os-insight-evi{font-size:11.5px;color:#E8E8EC;margin-top:2px}
+.os-insight-act{flex:none;padding:6px 12px;font-size:11.5px;margin-top:2px}
+/* — latest conversations — */
+.os-convo{display:flex;gap:11px;align-items:flex-start;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);cursor:pointer}
+.os-convo:last-of-type{border-bottom:none}
+.os-convo-main{flex:1;min-width:0}
+.os-convo-subj{font-weight:800;color:#fff;font-size:13.5px}
+.os-convo-snip{color:#E8E8EC;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.os-convo-when{font-size:11px;color:#E8E8EC;flex:none;margin-top:2px}
+/* — plug-ins strip: sources that feed this world, honest states only — */
+.os-dash-plugins{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:12px}
+.os-src{padding:14px;border-radius:14px;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.14);display:flex;flex-direction:column;gap:7px}
+.os-src-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.os-src-name{font-weight:800;color:#fff;font-size:13.5px;line-height:1.3}
+.os-src-chip{flex:none;font-size:9px;font-weight:900;letter-spacing:.1em;border-radius:6px;padding:3px 7px;color:#0b0b11;background:#2fe89e}
+.os-src-chip.born{background:var(--ac,#3fb8ff);color:#fff}
+.os-src-chip.idle{background:transparent;color:#E8E8EC;border:1.5px solid rgba(255,255,255,.4)}
+.os-src-stat{font-size:12.5px;color:#fff;line-height:1.45}
+.os-src-note{font-size:12px;color:#E8E8EC;line-height:1.45}
+.os-src-feeds{font-size:11px;font-weight:800;letter-spacing:.05em;color:#E8E8EC;border-top:1px solid rgba(255,255,255,.1);padding-top:7px}
+.os-src-howbtn{align-self:flex-start;padding:6px 12px;font-size:11.5px}
+.os-src-how{font-size:12px;color:#E8E8EC;line-height:1.5;border-top:1px solid rgba(255,255,255,.1);padding-top:8px}
+.os-dash-minifaces{display:flex;gap:6px;flex-wrap:wrap}
+.os-dash-minifaces .os-av{width:30px;height:30px;font-size:12px;border-width:1.5px}
+/* calm mode stills the door's own breathing too */
+html.os-calm .os-insight-dot{animation:none!important}
+@media (prefers-reduced-motion: reduce){
+.os-insight-dot{animation:none}
+}
+/* — LIVING GRAPHICS PASS (2026-10-22): hero sheen, gauge instrument,
+     insight visual grammar, dimensional plug-ins, living sparklines. — */
+.os-insight{position:relative;padding-left:16px}
+.os-insight::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:4px;border-radius:3px;background:var(--ic,#a06bff);box-shadow:0 0 12px 0 var(--ic,#a06bff)}
+.os-insight-gem{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;font-size:12px;color:#fff;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.35) 0%,rgba(255,255,255,0) 42%),radial-gradient(circle at 50% 50%,color-mix(in srgb,var(--ic,#a06bff) 55%,#101014) 0%,color-mix(in srgb,var(--ic,#a06bff) 28%,#060607) 78%);border:1.5px solid rgba(255,255,255,.75);box-shadow:inset 0 1px 2px rgba(255,255,255,.55),inset 0 -3px 6px rgba(0,0,0,.4),0 0 12px -2px var(--ic,#a06bff);margin-top:1px;text-shadow:0 1px 2px rgba(0,0,0,.5)}
+.os-insight-main p{font-weight:700}
+.os-src{position:relative;overflow:hidden;border-color:rgba(255,255,255,.26)}
+.os-src.live::before,.os-src.born::before{content:"";position:absolute;top:0;left:0;height:3px;width:200%;background:repeating-linear-gradient(90deg,var(--linec,#2fe89e) 0 26px,transparent 26px 52px);background-size:200% 100%;animation:osSrcFlow 2.4s linear infinite;box-shadow:0 0 10px 0 var(--linec,#2fe89e)}
+.os-src.live{--linec:#a06bff}
+.os-src.born{--linec:#3fb8ff}
+@keyframes osSrcFlow{to{transform:translateX(-52px)}}
+.os-src.idle{background:linear-gradient(180deg,#10101a,#0a0a11);box-shadow:inset 0 2px 0 rgba(255,255,255,.14),inset 0 -6px 14px rgba(0,0,0,.45),0 12px 30px rgba(0,0,0,.5)}
+.os-src-chip{box-shadow:0 0 12px -2px currentColor}
+.os-spark polyline{stroke-dasharray:100}
+.os-spark.os-draw polyline{animation:osTrace 1.1s ease both}
+@keyframes osTrace{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+html.os-calm .os-src.live::before,html.os-calm .os-src.born::before,html.os-calm .os-insight-gem{animation:none!important}
+@media (prefers-reduced-motion: reduce){
+.os-src.live::before,.os-src.born::before,.os-insight-gem{animation:none}
+.os-spark.os-draw polyline{animation:none}
+}
+.os-fb-row{display:flex;gap:9px;margin-top:10px}
+.os-fb-row .os-input{margin:0}
+/* ═══ FRONT CURE (2026-10-22) ═══
+   ACTIVE INTELLIGENCE (Shawn's name for the pulse treatment): the
+   numbers count up on arrival, each sparkline's head breathes, a true
+   change flashes the board, and the board itself carries ambient
+   light in its own color — a person FEELS the number is live data. */
+.os-dash-pulse .stat-card{position:relative;overflow:hidden}
+@keyframes osAmbient{from{opacity:.07}to{opacity:.2}}
+.os-dash-pulse .os-jewel{--bc:var(--jc);animation:pulseGlow 3.2s infinite}
+.os-dash-lab{display:flex;align-items:center;gap:6px}
+/* RECURSIVE ELEVATION — rows within boards are raised tiles too */
+.os-insight{background:#020203;border:1.5px solid rgba(255,255,255,.16);border-radius:13px;padding:11px 12px 11px 17px;margin:0 0 9px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.32),inset 0 -3px 7px rgba(0,0,0,.4),0 7px 16px rgba(0,0,0,.42)}
+.os-insight:last-child{margin-bottom:2px}
+.os-convo{background:#020203;border:1.5px solid rgba(255,255,255,.13);border-radius:12px;padding:10px 12px;margin:0 0 8px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.26),inset 0 -3px 6px rgba(0,0,0,.38),0 6px 14px rgba(0,0,0,.4)}
+.os-convo:last-child{margin-bottom:2px}
+/* PLUG-INS, REDESIGNED (Shawn: the old strip "needs serious help"):
+   sources are jewel tiles with real presence — connected ones flow
+   with light and show their real counts as lit numerals; doors worth
+   opening carry a lit jewel and a lit door button, never a number.
+   One glance: what's plugged in, what's flowing, what's one tap away. */
+.os-src{padding:15px 15px 13px;border-radius:16px;border:1.5px solid rgba(255,255,255,.3);background:linear-gradient(180deg,#0d0d13,#050508);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.42),inset 0 -4px 9px rgba(0,0,0,.45),0 12px 26px rgba(0,0,0,.5)}
+.os-src-top{display:flex;align-items:center;gap:12px}
+.os-src-id{display:flex;flex-direction:column;gap:5px;align-items:flex-start}
+.os-src-name{font-size:16.5px}
+.os-src-nums{display:flex;gap:20px;margin-top:13px}
+.os-src-num{display:flex;flex-direction:column;gap:1px}
+.os-src-num b{font-size:28px;font-weight:900;line-height:1.05;background:linear-gradient(180deg,#fff 20%,var(--ac,#2fe89e) 140%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 9px var(--ac,#2fe89e))}
+.os-src-num i{font-style:normal;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c9c9d4}
+.os-src-note{font-size:14px;color:#e8e8ec;line-height:1.45;margin:11px 0 0}
+.os-src-feeds{margin:11px 0 0;font-size:12.5px;font-weight:700;letter-spacing:.05em;color:#E8E8EC}
+.os-src-door{width:100%;justify-content:center;margin-top:12px}
+.os-dash-minifaces{margin-top:11px}
+html.os-calm .os-dash-pulse .stat-card::after,html.os-calm .os-dash-pulse .os-jewel{animation:none!important}
+@media (prefers-reduced-motion: reduce){
+.os-dash-pulse .stat-card::after,.os-dash-pulse .os-jewel{animation:none}
+}
+
+/* ═══ INTERROGATION CURE (2026-10-22): AMBIENT LIFE + RAISED ROW ICONS ═══
+   Shawn's correction: the front rests calmer than the banner build it
+   replaced. The banners stay deleted — the BOARDS carry the life now:
+   every board breathes light in its own color, a slow sheen travels
+   the pulse cards, sparkline heads burn brighter, and the Moves /
+   Conversations row icons get the full dome stack (Steer 1 §2). */
+.os-dash .ph-card{position:relative}
+@keyframes osAmbient{from{opacity:.08;background-position:118% 0,0 0}to{opacity:.42;background-position:-38% 0,0 0}}
+@keyframes osCardSheen{0%,52%{left:-32%}88%,100%{left:118%}}
+.os-dash .os-spark-dot{width:11px;height:11px;box-shadow:0 0 14px 2px var(--ac,#a06bff),inset 0 1px 2px rgba(255,255,255,.8);animation-duration:1.7s}
+.os-dash .os-leg b{color:var(--lc,#fff);text-shadow:0 0 9px var(--lc,transparent)}
+/* row icons, raised: the insight gem and the conversation avatar dome
+   off the page at row scale — lit seat, gloss cap, drop shadow, glow */
+.os-insight-gem{position:relative;width:40px;height:40px;flex:none;font-size:17px;border:2px solid rgba(255,255,255,.82);box-shadow:inset 0 2px 3px rgba(255,255,255,.55),inset 0 -5px 9px rgba(0,0,0,.45),0 8px 16px rgba(0,0,0,.5),0 0 16px -2px var(--ic,#a06bff)}
+.os-insight-gem::after{content:"";position:absolute;left:14%;top:7%;width:52%;height:30%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.5),transparent);pointer-events:none}
+.os-insight-dot{animation:none}
+.os-convo .os-av{width:46px;height:46px;font-size:17px;box-shadow:0 0 24px -4px var(--avc,#a06bff),inset 0 2px 3px rgba(255,255,255,.25),inset 0 -6px 12px rgba(0,0,0,.45),0 10px 22px rgba(0,0,0,.55)}
+html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::before{animation:none!important}
+@media (prefers-reduced-motion: reduce){
+.os-dash .ph-card::after,.os-dash-pulse .stat-card::before{animation:none}
+}
+
+/* sub-board ignition (EYE-PASS CURE, Addition B): plug-in tiles and
+   next-best-move rows are boards too — each ignites at its edge in
+   its own spectrum position (--igc by board order, set by osIgnite);
+   text stays white, always. */
+.os-src{transition:border-color .25s ease,box-shadow .25s ease}
+.os-src:hover{border-color:var(--igc,var(--ac,#a06bff));box-shadow:inset 0 1.5px 0 rgba(255,255,255,.42),inset 0 -4px 9px rgba(0,0,0,.45),0 12px 26px rgba(0,0,0,.5),0 0 24px -6px var(--igc,var(--ac,#a06bff))}
+.os-insight{transition:border-color .25s ease,box-shadow .25s ease}
+.os-insight:hover{border-color:var(--igc,var(--ic,#a06bff));box-shadow:inset 0 1.5px 0 rgba(255,255,255,.28),inset 0 -10px 22px rgba(0,0,0,.35),0 10px 24px rgba(0,0,0,.5),0 0 20px -6px var(--igc,var(--ic,#a06bff))}
+
+/* ═══ DASHBOARD + TIMELINE STAGE (2026-10-22): the trend kind switcher,
+   Heat & Streaks, Smart Links rows, and the per-person Timeline panel.
+   Every piece below is composed from the grammars above — the
+   .os-period pills, the raised-tile rows of .os-convo/.os-src, the
+   spectrum-by-position walk — nothing new invented. ═══ */
+.os-period[data-kind-for]{flex-wrap:wrap;margin-top:8px}
+.os-heat{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin-top:12px}
+.os-heat-day{position:relative;height:44px;border-radius:11px;border:1.5px solid rgba(255,255,255,.16);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.28),inset 0 -3px 6px rgba(0,0,0,.4),0 5px 12px rgba(0,0,0,.38);display:grid;place-items:center;cursor:pointer;transition:border-color .25s ease,box-shadow .25s ease}
+.os-heat-day span{font-size:14px;font-weight:900;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.65)}
+.os-heat-day.today{border-color:#fff;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.4),inset 0 -3px 6px rgba(0,0,0,.4),0 5px 12px rgba(0,0,0,.38),0 0 14px -3px var(--hc,#ff5e6c)}
+.os-heat-day:hover{border-color:var(--hc,#ff5e6c);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.32),inset 0 -3px 6px rgba(0,0,0,.4),0 5px 12px rgba(0,0,0,.38),0 0 16px -4px var(--hc,#ff5e6c)}
+#os-dash-streaks{margin-top:10px;border-top:1px solid rgba(255,255,255,.09);padding-top:9px}
+#os-dash-streaks .os-note{margin-top:3px}
+.os-link-row{display:flex;gap:11px;align-items:center;background:#020203;border:1.5px solid rgba(255,255,255,.13);border-radius:12px;padding:10px 12px;margin:0 0 8px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.26),inset 0 -3px 6px rgba(0,0,0,.38),0 6px 14px rgba(0,0,0,.4)}
+.os-link-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.os-link-name{font-weight:800;color:#fff;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.os-link-host{color:#E8E8EC;font-size:12px}
+.os-link-nums{flex:none;display:flex;gap:16px}
+.os-link-num{display:flex;flex-direction:column;align-items:center;gap:0}
+.os-link-num b{font-size:19px;font-weight:900;line-height:1.05;color:var(--ac,#ff9a5a);text-shadow:0 0 9px var(--ac,#ff9a5a)}
+.os-link-num i{font-style:normal;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c9c9d4}
+/* a face tile is a door now — tapping it opens the person's timeline */
+.os-face{cursor:pointer}
+/* — the per-person timeline panel (in the Connections block): a story
+     of raised rows, kind first, the timestamp standard under each — */
+#os-timeline{margin-top:14px}
+.os-tl-rows{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.os-tl-row{display:flex;gap:11px;align-items:flex-start;background:#020203;border:1.5px solid rgba(255,255,255,.13);border-radius:12px;padding:10px 12px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.26),inset 0 -3px 6px rgba(0,0,0,.38),0 6px 14px rgba(0,0,0,.4)}
+.os-tl-dot{width:11px;height:11px;flex:none;border-radius:50%;margin-top:4px;background:var(--tc,#a06bff);box-shadow:0 0 10px -1px var(--tc,#a06bff)}
+.os-tl-main{flex:1;min-width:0}
+.os-tl-kind{font-size:10.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#E8E8EC}
+.os-tl-main p{font-size:13.5px;line-height:1.5;color:#fff;margin-top:2px}
+.os-tl-close{margin-top:12px;font-size:13.5px;font-weight:700;color:#fff;border-top:1px solid rgba(255,255,255,.09);padding-top:10px}
+
+/* ═══ OBSIDIAN CURE + FEATURED SMART LINKS (2026-10-23, Shawn's eye) ═══
+   The ambient color-wash overlays above are deleted: boards sit
+   obsidian at rest and depth comes from layers, never tint. The Smart
+   Links board is the featured board — first board under the pulse,
+   the deepest elevation stack on the page, its link rows featured
+   objects whose counted numbers carry lit presence. Stacks deepen
+   the shell's own board/row grammar — nothing invented. */
+.os-dash .ph-card.os-sl-board{background:#020203;border:2px solid rgba(255,255,255,.42);box-shadow:inset 0 2px 0 rgba(255,255,255,.22),inset 0 -12px 26px rgba(0,0,0,.62),0 0 0 1px rgba(255,255,255,.1),0 28px 64px rgba(0,0,0,.72),0 12px 28px rgba(0,0,0,.55) !important}
+.os-dash .ph-card.os-sl-board:hover{border-color:var(--igc,var(--ac,#ff9a5a));box-shadow:inset 0 2px 0 rgba(255,255,255,.22),inset 0 -12px 26px rgba(0,0,0,.62),0 0 0 1px rgba(255,255,255,.1),0 28px 64px rgba(0,0,0,.72),0 12px 28px rgba(0,0,0,.55),0 0 30px -6px var(--igc,var(--ac,#ff9a5a)) !important}
+.os-sl-board .os-link-row{background:#020203;border:1.5px solid rgba(255,255,255,.34);border-radius:14px;padding:15px 17px;margin:0 0 10px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.48),inset 0 -4px 10px rgba(0,0,0,.55),0 12px 24px rgba(0,0,0,.55);transition:border-color .25s ease,box-shadow .25s ease}
+.os-sl-board .os-link-row:hover{border-color:var(--ac,#ff9a5a);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.48),inset 0 -4px 10px rgba(0,0,0,.55),0 12px 24px rgba(0,0,0,.55),0 0 22px -6px var(--ac,#ff9a5a)}
+.os-sl-board .os-link-name{font-size:15.5px}
+.os-sl-board .os-link-host{font-size:12.5px}
+.os-sl-board .os-link-nums{gap:22px}
+.os-sl-board .os-link-num b{font-size:25px}
+.os-sl-board .os-link-num i{font-size:10.5px}
+
+/* ═══ WAVE 1 — SMART LINK BREAKDOWN (2026-10-23, full sweep) ═══
+   The per-link dimension panel: the board's own row/num grammar,
+   obsidian at rest, riding directly under its link row. */
+.os-link-dim{background:#020203;border:1.5px solid rgba(255,255,255,.16);border-radius:12px;padding:13px 15px;margin:0 0 10px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.2),inset 0 -3px 6px rgba(0,0,0,.4)}
+.os-dim-group{display:flex;align-items:center;gap:14px;padding:7px 0;border-top:1px solid rgba(255,255,255,.08)}
+.os-dim-lab{flex:none;width:92px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#E8E8EC}
+.os-link-dim .os-link-nums{flex-wrap:wrap;gap:18px}
+.os-link-dim .os-link-num b{font-size:17px}
+.os-sl-board .os-link-row{flex-wrap:wrap}
+
+/* ═══ FLAGSHIP PASS (2026-10-23, Shawn's order): the Smart Links board
+   ALIVE + plug-ins as horizontal rectangles that work. Board text is
+   WHITE, never gray (his word); the counted numerals are white lit in
+   their row's own color — the orb grammar (§7.1); depth deepens in
+   the shell's own stack: obsidian at rest, no tint, no wash. ═══ */
+.os-dash .ph-card.os-sl-board{box-shadow:inset 0 2px 0 rgba(255,255,255,.22),inset 0 -12px 26px rgba(0,0,0,.62),0 0 0 1px rgba(255,255,255,.1),0 34px 80px rgba(0,0,0,.8),0 12px 28px rgba(0,0,0,.55) !important}
+.os-sl-live{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:900;letter-spacing:.14em;color:#fff;border:1.5px solid rgba(255,255,255,.45);border-radius:999px;padding:3px 9px;vertical-align:3px;margin-left:6px}
+.os-sl-live i{width:8px;height:8px;border-radius:50%;background:#2fe89e;box-shadow:0 0 10px 2px #2fe89e;animation:pulseGlow 2s infinite}
+html.os-calm .os-sl-live i{animation:none!important}
+@media (prefers-reduced-motion: reduce){.os-sl-live i{animation:none}}
+.os-dash .os-sl-board h3,.os-dash .os-sl-board .os-note,.os-dash .os-sl-board .os-status,.os-dash .os-sl-board .os-link-name,.os-dash .os-sl-board .os-link-host,.os-dash .os-sl-board .os-dim-lab,.os-dash .os-sl-board .os-sl-graph-note{color:#fff}
+.os-dash .os-sl-board .os-link-num i{color:#fff}
+.os-dash .os-sl-board .os-link-num b{color:#fff;text-shadow:0 0 12px var(--ac,#ff9a5a),0 0 28px -6px var(--ac,#ff9a5a)}
+.os-sl-board .os-link-row{transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease}
+.os-sl-board .os-link-row:hover{transform:translateY(-2px)}
+.os-sl-graph{flex:1 1 100%;margin-top:12px}
+.os-sl-graph .os-week{height:58px;padding:13px 2px 0}
+.os-sl-graph .bar{flex:1;cursor:pointer}
+.os-sl-graph-days{display:flex;padding:0 2px;margin-top:5px}
+.os-sl-graph-days span{flex:1;text-align:center;font-size:9.5px;font-weight:700;letter-spacing:.02em;color:#fff}
+.os-sl-graph-days span.today{font-weight:900}
+.os-sl-graph-note{font-size:12px;line-height:1.45;margin:7px 0 1px;color:#fff}
+/* plug-ins: horizontal rectangles — one full-width row per source,
+   its working door riding on the right */
+.os-dash-plugins{display:flex;flex-direction:column;gap:12px}
+.os-dash-plugins .os-src{flex-direction:row;flex-wrap:wrap;align-items:center;column-gap:16px;row-gap:9px;padding:16px 18px}
+.os-dash-plugins .os-src-top{order:1;flex:0 1 250px}
+.os-dash-plugins .os-src-note{order:2;flex:1 1 240px;margin:0}
+.os-dash-plugins .os-src-nums{order:2;margin:0}
+.os-dash-plugins .os-dash-minifaces{order:2;margin:0}
+.os-dash-plugins .os-src-door{order:3;flex:0 0 auto;width:auto;margin:0;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.os-dash-plugins .os-src-feeds{order:4;flex:1 1 100%;margin:0}
+.os-dash-plugins .os-src-how{order:5;flex:1 1 100%;margin:0}
+</style>

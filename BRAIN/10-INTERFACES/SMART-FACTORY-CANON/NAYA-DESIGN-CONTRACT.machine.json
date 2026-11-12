@@ -1,0 +1,559 @@
+{
+  "contract": "NAYA-DESIGN-CONTRACT",
+  "kind": "machine",
+  "version": "1.2",
+  "status": "canonical",
+  "authority": "This machine version is made FROM the human contract (NAYA-DESIGN-CONTRACT-V1.md), never instead of it. The human contract is the source of truth; if this file and the human contract disagree, the human contract governs until this file is regenerated with engine/generate-contract-twin.py.",
+  "source": {
+    "human_file": "BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md",
+    "human_file_sha256": "e85aa0081f6e2a908f83e3ce8523e88010659c7c10883a4254dc5bf42cb0cc2f",
+    "human_file_bytes": 8020,
+    "generator": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/generate-contract-twin.py",
+    "drift_detection": "Recompute sha256 of the human file; if it differs from human_file_sha256, this machine version is stale. validate-machine-contract.py check 9 also regenerates the twin and fails on any byte difference."
+  },
+  "status_line": "CANONICAL — All Naya seats follow this. No exceptions.",
+  "ratified": {
+    "date": "2026-10-03",
+    "by": "Shawn Vibert (Human Director)"
+  },
+  "purpose": "The visual signature, interaction language, and design philosophy of Naya. So Shawn never has to repeat himself.",
+  "spectrum_walk": {
+    "order": [
+      "#a06bff",
+      "#3fb8ff",
+      "#2fe89e",
+      "#ffbf3d",
+      "#ff9a5a",
+      "#ff5e6c",
+      "#e84fff"
+    ],
+    "names": [
+      "purple",
+      "blue",
+      "green",
+      "gold",
+      "orange",
+      "red",
+      "magenta"
+    ],
+    "sequence": [
+      {
+        "name": "purple",
+        "hex": "#a06bff"
+      },
+      {
+        "name": "blue",
+        "hex": "#3fb8ff"
+      },
+      {
+        "name": "green",
+        "hex": "#2fe89e"
+      },
+      {
+        "name": "gold",
+        "hex": "#ffbf3d"
+      },
+      {
+        "name": "orange",
+        "hex": "#ff9a5a"
+      },
+      {
+        "name": "red",
+        "hex": "#ff5e6c"
+      },
+      {
+        "name": "magenta",
+        "hex": "#e84fff"
+      }
+    ],
+    "wraps_to_first": true,
+    "wraps_to": "purple",
+    "adjacency_rule": "Each section takes the NEXT color in the walk; never the same color twice in a row.",
+    "rest_and_ignition": "Elements sit white at rest, and ignite in their OWN color on hover/touch.",
+    "rule": "the walk is the only spectrum for sections, chrome, and flow. The SmartNote board mapping below is a fixed semantic mapping and may name non-walk hues; those non-walk hues are forbidden everywhere else."
+  },
+  "tokens": [
+    {
+      "name": "purple",
+      "hex": "#a06bff"
+    },
+    {
+      "name": "blue",
+      "hex": "#3fb8ff"
+    },
+    {
+      "name": "green",
+      "hex": "#2fe89e"
+    },
+    {
+      "name": "gold",
+      "hex": "#ffbf3d"
+    },
+    {
+      "name": "orange",
+      "hex": "#ff9a5a"
+    },
+    {
+      "name": "red",
+      "hex": "#ff5e6c"
+    },
+    {
+      "name": "magenta",
+      "hex": "#e84fff"
+    }
+  ],
+  "dominant_colors": [
+    {
+      "name": "black",
+      "hex": "#0a0a0e",
+      "role": "backgrounds, buttons, depth"
+    },
+    {
+      "name": "white",
+      "hex": "#ffffff",
+      "role": "text, light, idle glow"
+    },
+    {
+      "name": "purple",
+      "hex": "#a06bff",
+      "role": "Naya's signature, primary actions"
+    }
+  ],
+  "accent_jewels": [
+    {
+      "name": "magenta",
+      "hex": "#e84fff"
+    },
+    {
+      "name": "purple",
+      "hex": "#a06bff"
+    },
+    {
+      "name": "blue",
+      "hex": "#3fb8ff"
+    },
+    {
+      "name": "green",
+      "hex": "#2fe89e"
+    },
+    {
+      "name": "gold",
+      "hex": "#ffbf3d"
+    }
+  ],
+  "endless_flow": {
+    "order": [
+      "#a06bff",
+      "#3fb8ff",
+      "#2fe89e",
+      "#ffbf3d",
+      "#ff9a5a",
+      "#ff5e6c",
+      "#e84fff"
+    ],
+    "names": [
+      "purple",
+      "blue",
+      "green",
+      "gold",
+      "orange",
+      "red",
+      "magenta"
+    ],
+    "repeats": true
+  },
+  "smartnote_board_mapping": {
+    "name": "smartnote_board_sections",
+    "kind": "fixed semantic mapping",
+    "distinct_from_walk": true,
+    "rule": "A fixed semantic mapping, distinct from the spectrum walk. It may name non-walk hues; those non-walk hues are forbidden everywhere else.",
+    "entries": [
+      {
+        "section": "In a nutshell",
+        "color_name": "white",
+        "hex": "#ffffff",
+        "walk_member": false,
+        "board_mapping_only": false
+      },
+      {
+        "section": "Human",
+        "color_name": "magenta",
+        "hex": "#e84fff",
+        "walk_member": true,
+        "board_mapping_only": false
+      },
+      {
+        "section": "Child",
+        "color_name": "purple",
+        "hex": "#a06bff",
+        "walk_member": true,
+        "board_mapping_only": false
+      },
+      {
+        "section": "Grandma",
+        "color_name": "indigo",
+        "hex": "#6675ff",
+        "walk_member": false,
+        "board_mapping_only": true
+      },
+      {
+        "section": "Naya",
+        "color_name": "cyan",
+        "hex": "#3ca8ff",
+        "walk_member": false,
+        "board_mapping_only": true
+      },
+      {
+        "section": "Machine",
+        "color_name": "green",
+        "hex": "#2fe89e",
+        "walk_member": true,
+        "board_mapping_only": false
+      },
+      {
+        "section": "Why it matters",
+        "color_name": "lime",
+        "hex": "#b8ee57",
+        "walk_member": false,
+        "board_mapping_only": true
+      },
+      {
+        "section": "How do you use it",
+        "color_name": "gold",
+        "hex": "#ffbf3d",
+        "walk_member": true,
+        "board_mapping_only": false
+      },
+      {
+        "section": "What's in it for you",
+        "color_name": "orange",
+        "hex": "#ff9a5a",
+        "walk_member": true,
+        "board_mapping_only": false,
+        "alternatives": [
+          {
+            "color_name": "gold",
+            "hex": "#ffbf3d"
+          }
+        ]
+      }
+    ]
+  },
+  "color_law": "Purple/black/white are PROMINENT. Spectrum colors are complementary accents. Gold/yellow is restrained — semantic accents, never dominant text.",
+  "active_intelligence": "Intelligent blocks are dynamic, so the color flow is dynamic — it depends on what the content is. Always use the richest, most vibrant colors. Everything should look like jewels, alive.",
+  "lighting_standard": {
+    "states": [
+      {
+        "state": "idle",
+        "label": "Idle",
+        "rule": "White light. Visible white border/glow around edges. Borders must be big enough to SEE — not faint."
+      },
+      {
+        "state": "hover",
+        "label": "Hover",
+        "rule": "Color ignites. The element's own spectrum color lights up with glow."
+      },
+      {
+        "state": "active_selected",
+        "label": "Active/selected",
+        "rule": "Subtle white indicator only. NO permanent color glow. Color comes on hover, not on selection."
+      }
+    ],
+    "applies_to": "Tabs, buttons, sidebar items, bottom bar icons, toggle jewels — everything clickable."
+  },
+  "button_language": {
+    "primary_toggle": {
+      "fill": "radial-gradient(circle at 35% 30%, #2a2a32, #0a0a0e 70%)",
+      "rules": [
+        "Black circular buttons (`radial-gradient(circle at 35% 30%, #2a2a32, #0a0a0e 70%)`)",
+        "Bold white icon (not thin, not dot-like — clearly visible)",
+        "White light glow when idle",
+        "Purple light + scale/rotate animation on hover",
+        "Must feel \"alive\" — subtle movement on hover"
+      ]
+    },
+    "action_buttons": {
+      "rules": [
+        "Pill shape, transparent/dark background",
+        "Semantic color per action:",
+        "White light idle, color on hover",
+        "Dynamic counts/badges where applicable"
+      ],
+      "reactions": [
+        {
+          "action": "LOVE",
+          "color_name": "red",
+          "hex": "#ff5e6c",
+          "walk_value": true
+        },
+        {
+          "action": "LIKE",
+          "color_name": "blue",
+          "hex": "#3fb8ff",
+          "walk_value": true
+        },
+        {
+          "action": "FAVORITE",
+          "color_name": "gold",
+          "hex": "#ffbf3d",
+          "walk_value": true
+        },
+        {
+          "action": "SAVE",
+          "color_name": "blue",
+          "hex": "#3fb8ff",
+          "walk_value": true
+        },
+        {
+          "action": "CREATE SPACE",
+          "color_name": "purple",
+          "hex": "#a06bff",
+          "walk_value": true
+        },
+        {
+          "action": "SHARE",
+          "color_name": "purple",
+          "hex": "#a06bff",
+          "walk_value": true
+        }
+      ]
+    },
+    "ecosystem_buttons": {
+      "rules": [
+        "Black circular, white light idle",
+        "Each in its own spectrum color on hover",
+        "Unique icon per destination (not generic)",
+        "Label tooltip on hover"
+      ]
+    }
+  },
+  "icon_language": {
+    "rules": [
+      {
+        "name": "Unique per item",
+        "statement": "Never the same shape in different colors and call it done. Each icon must represent what it IS."
+      },
+      {
+        "name": "Rooms:",
+        "statement": "Distinct line-art icons (stream, sun, chart, books, nodes, etc.) — larger (24px), in spectrum color"
+      },
+      {
+        "name": "Layers:",
+        "statement": "Faceted jewel system (core/facet/shade/edge SVG geometry)"
+      },
+      {
+        "name": "Toggles:",
+        "statement": "Bold, clear symbols (plus sign must read as PLUS, not a dot)"
+      },
+      {
+        "name": "Ecosystem:",
+        "statement": "12 unique icons (home, bolt, users, brief, doc, cap, trophy, gauge, star, report, heart, key)"
+      }
+    ],
+    "ecosystem_icons": [
+      "home",
+      "bolt",
+      "users",
+      "brief",
+      "doc",
+      "cap",
+      "trophy",
+      "gauge",
+      "star",
+      "report",
+      "heart",
+      "key"
+    ],
+    "ecosystem_icon_count": 12,
+    "law": "If you can't tell what an icon represents at a glance, it's wrong. Redesign it."
+  },
+  "typography": {
+    "law_zero": "Readability beats everything. No glow, color, or effect may reduce readability.",
+    "body_px": {
+      "target_min": 17,
+      "target_max": 18,
+      "floor": 16
+    },
+    "rules": [
+      "High contrast always",
+      "One clear visual hierarchy per screen",
+      "Generous spacing — every element earns its place"
+    ]
+  },
+  "layout_principles": [
+    {
+      "name": "Full-width",
+      "statement": "No narrow centered columns with black voids. Content owns the width."
+    },
+    {
+      "name": "Full-screen by default",
+      "statement": "Sidebars hidden, opened via obvious toggle buttons."
+    },
+    {
+      "name": "No dead buttons",
+      "statement": "Every clickable element goes somewhere real. If it doesn't do anything, remove it."
+    },
+    {
+      "name": "No black voids",
+      "statement": "Content flows directly. No `min-height` forcing empty space."
+    },
+    {
+      "name": "Dynamic, not static",
+      "statement": "Every component must handle any data gracefully. Missing fields get fallbacks, never crashes."
+    }
+  ],
+  "honesty": [
+    {
+      "name": "Device-local labels",
+      "statement": "If it's stored on device, say so. Never imply backend/cloud sync."
+    },
+    {
+      "name": "No fake liveness",
+      "statement": "Don't claim real-time if it's not."
+    },
+    {
+      "name": "Trust microcopy",
+      "statement": "\"One intelligence · Many views · One identity.\" Mean it."
+    },
+    {
+      "name": "Empty states are honest",
+      "statement": "\"Nothing here yet\" > fake content."
+    }
+  ],
+  "philosophy": [
+    {
+      "name": "One brain. Many doors",
+      "statement": "One intelligence, many views. Never duplicate the brain."
+    },
+    {
+      "name": "Push-button simple",
+      "statement": "Every action is one tap. No manuals needed."
+    },
+    {
+      "name": "Intelligence is output",
+      "statement": "The Hub displays intelligence; it doesn't capture it (no capture buttons in Hub chrome)."
+    },
+    {
+      "name": "Proactive > reactive",
+      "statement": "Anticipate what the user needs."
+    },
+    {
+      "name": "Value is the test",
+      "statement": "If it doesn't help, remove it."
+    },
+    {
+      "name": "10/10 or don't ship",
+      "statement": "Below 9.0 = not ready."
+    }
+  ],
+  "relevance_algorithm": {
+    "purpose": "Match people to spaces, intelligence, and each other by relevance percentage.",
+    "components": [
+      {
+        "name": "Topic affinity",
+        "weight_pct": 40,
+        "note": "Smart Note topics they engage with"
+      },
+      {
+        "name": "Action patterns",
+        "weight_pct": 30,
+        "note": "creator vs joiner vs lurker"
+      },
+      {
+        "name": "Social proximity",
+        "weight_pct": 20,
+        "note": "who they interact with"
+      },
+      {
+        "name": "Recency",
+        "weight_pct": 10,
+        "note": "fresh > stale"
+      }
+    ],
+    "phases": [
+      {
+        "name": "Cold start",
+        "statement": "Everyone sees everything. No algorithm."
+      },
+      {
+        "name": "Growth",
+        "statement": "Threshold at 60%. Below = in feed, above = notified."
+      },
+      {
+        "name": "Scale",
+        "statement": "Ranked by %. Show why: \"87% relevant — you loved 3 similar.\""
+      }
+    ],
+    "principle": "Relevance, not likeness. Match on what people care about, not who they are."
+  },
+  "amendment_process": "Shawn amends this contract verbally. The amending Naya updates this document and posts the change to #554. All seats adopt immediately.",
+  "version_history": [
+    {
+      "version": "1.0",
+      "date": "2026-10-03",
+      "summary": "Initial ratification. Synthesized from Shawn's directives across the Hub 10/10 drive."
+    },
+    {
+      "version": "1.1",
+      "date": "2026-10-03",
+      "summary": "Verbal amendment — three color jobs (accent jewels, endless flow, SmartNote board mapping); cyan named (dictation had rendered it as \"Kenya\" — fixed); forest emerald + lime + gold + indigo tokens added; active intelligence principle locked."
+    },
+    {
+      "version": "1.2",
+      "date": "2026-10-22",
+      "summary": "A.1 STAMP — Shawn ratified the shipping spectrum walk as the contract's color table (supersedes the v1.0/v1.1 #8a5cff/#9d75ff signature values); SmartNote board mapping declared a fixed semantic mapping distinct from the walk."
+    }
+  ],
+  "sections": [
+    {
+      "number": 1,
+      "title": "COLOR LANGUAGE",
+      "text": "### Dominant (always present) - Black (`#0a0a0e`) — backgrounds, buttons, depth - White (`#ffffff`) — text, light, idle glow - Purple (`#a06bff`) — Naya's signature, primary actions ### The canonical spectrum walk The walk (canonical, stated once): purple `#a06bff` → blue `#3fb8ff` → green `#2fe89e` → gold `#ffbf3d` → orange `#ff9a5a` → red `#ff5e6c` → magenta `#e84fff` → back to purple. Each section takes the NEXT color in the walk; never the same color twice in a row. Elements sit white at rest, and ignite in their OWN color on hover/touch. The rule: the walk is the only spectrum for sections, chrome, and flow. The SmartNote board mapping below is a fixed semantic mapping and may name non-walk hues; those non-walk hues are forbidden everywhere else. ### Spectrum (accents, never dominant) Color has three distinct jobs. Do not use one job's rule for another. 1. Accent jewels — bullet points, boards, icons. Always the richest, most vibrant, drawn from the walk: magenta `#e84fff` · purple `#a06bff` · blue `#3fb8ff` · green `#2fe89e` · gold `#ffbf3d`. 2. Endless flow — feeds and long continuous sequences. The walk repeating: purple `#a06bff` → blue `#3fb8ff` → green `#2fe89e` → gold `#ffbf3d` → orange `#ff9a5a` → red `#ff5e6c` → magenta `#e84fff` → back to purple (repeats) 3. SmartNote board sections — fixed semantic mapping (distinct from the walk; see the rule above): - In a nutshell → white `#ffffff` - Human → magenta `#e84fff` - Child → purple `#a06bff` - Grandma → indigo `#6675ff` — board-mapping-only, not a walk color - Naya → cyan `#3ca8ff` — board-mapping-only, not a walk color - Machine → green `#2fe89e` - Why it matters → lime `#b8ee57` — board-mapping-only, not a walk color - How do you use it → gold `#ffbf3d` - What's in it for you → orange `#ff9a5a` or gold `#ffbf3d` ### Tokens - Purple `#a06bff` - Blue `#3fb8ff` - Green `#2fe89e` - Gold `#ffbf3d` - Orange `#ff9a5a` - Red `#ff5e6c` - Magenta `#e84fff` Law: Purple/black/white are PROMINENT. Spectrum colors are complementary accents. Gold/yellow is restrained — semantic accents, never dominant text. Active intelligence: Intelligent blocks are dynamic, so the color flow is dynamic — it depends on what the content is. Always use the richest, most vibrant colors. Everything should look like jewels, alive."
+    },
+    {
+      "number": 2,
+      "title": "THE LIGHTING STANDARD",
+      "text": "Shawn's universal rule for all interactive elements: - Idle (not hovered): White light. Visible white border/glow around edges. Borders must be big enough to SEE — not faint. - Hover: Color ignites. The element's own spectrum color lights up with glow. - Active/selected: Subtle white indicator only. NO permanent color glow. Color comes on hover, not on selection. Applies to: Tabs, buttons, sidebar items, bottom bar icons, toggle jewels — everything clickable."
+    },
+    {
+      "number": 3,
+      "title": "BUTTON LANGUAGE",
+      "text": "### Primary toggle buttons (sidebar openers, menu triggers) - Black circular buttons (`radial-gradient(circle at 35% 30%, #2a2a32, #0a0a0e 70%)`) - Bold white icon (not thin, not dot-like — clearly visible) - White light glow when idle - Purple light + scale/rotate animation on hover - Must feel \"alive\" — subtle movement on hover ### Action buttons (Love, Like, Save, etc.) - Pill shape, transparent/dark background - Semantic color per action: - LOVE: red `#ff5e6c` (walk value, canonical) - LIKE: blue `#3fb8ff` (walk value, canonical) - FAVORITE: gold `#ffbf3d` (walk value, canonical) - SAVE: blue `#3fb8ff` (walk value, canonical) - CREATE SPACE: purple `#a06bff` (walk value, canonical) - SHARE: purple `#a06bff` (walk value, canonical) - White light idle, color on hover - Dynamic counts/badges where applicable ### Ecosystem buttons (bottom bar) - Black circular, white light idle - Each in its own spectrum color on hover - Unique icon per destination (not generic) - Label tooltip on hover"
+    },
+    {
+      "number": 4,
+      "title": "ICON LANGUAGE",
+      "text": "- Unique per item. Never the same shape in different colors and call it done. Each icon must represent what it IS. - Rooms: Distinct line-art icons (stream, sun, chart, books, nodes, etc.) — larger (24px), in spectrum color - Layers: Faceted jewel system (core/facet/shade/edge SVG geometry) - Toggles: Bold, clear symbols (plus sign must read as PLUS, not a dot) - Ecosystem: 12 unique icons (home, bolt, users, brief, doc, cap, trophy, gauge, star, report, heart, key) Law: If you can't tell what an icon represents at a glance, it's wrong. Redesign it."
+    },
+    {
+      "number": 5,
+      "title": "TYPOGRAPHY & READABILITY",
+      "text": "- LAW ZERO (supreme): Readability beats everything. No glow, color, or effect may reduce readability. - Body: 17-18px target, 16px floor - High contrast always - One clear visual hierarchy per screen - Generous spacing — every element earns its place"
+    },
+    {
+      "number": 6,
+      "title": "LAYOUT PRINCIPLES",
+      "text": "- Full-width. No narrow centered columns with black voids. Content owns the width. - Full-screen by default. Sidebars hidden, opened via obvious toggle buttons. - No dead buttons. Every clickable element goes somewhere real. If it doesn't do anything, remove it. - No black voids. Content flows directly. No `min-height` forcing empty space. - Dynamic, not static. Every component must handle any data gracefully. Missing fields get fallbacks, never crashes."
+    },
+    {
+      "number": 7,
+      "title": "HONESTY",
+      "text": "- Device-local labels. If it's stored on device, say so. Never imply backend/cloud sync. - No fake liveness. Don't claim real-time if it's not. - Trust microcopy. \"One intelligence · Many views · One identity.\" Mean it. - Empty states are honest. \"Nothing here yet\" > fake content."
+    },
+    {
+      "number": 8,
+      "title": "THE NAYA PHILOSOPHY (logic & thinking)",
+      "text": "- \"One brain. Many doors.\" — One intelligence, many views. Never duplicate the brain. - Push-button simple. Every action is one tap. No manuals needed. - Intelligence is output. The Hub displays intelligence; it doesn't capture it (no capture buttons in Hub chrome). - Proactive > reactive. Anticipate what the user needs. - Value is the test. If it doesn't help, remove it. - 10/10 or don't ship. Below 9.0 = not ready."
+    },
+    {
+      "number": 9,
+      "title": "RELEVANCE ALGORITHM (locked 2026-10-03)",
+      "text": "Purpose: Match people to spaces, intelligence, and each other by relevance percentage. Components: - Topic affinity (40%) — Smart Note topics they engage with - Action patterns (30%) — creator vs joiner vs lurker - Social proximity (20%) — who they interact with - Recency (10%) — fresh > stale Phases: - Cold start: Everyone sees everything. No algorithm. - Growth: Threshold at 60%. Below = in feed, above = notified. - Scale: Ranked by %. Show why: \"87% relevant — you loved 3 similar.\" Principle: Relevance, not likeness. Match on what people care about, not who they are."
+    },
+    {
+      "number": null,
+      "title": "AMENDMENT PROCESS",
+      "text": "Shawn amends this contract verbally. The amending Naya updates this document and posts the change to #554. All seats adopt immediately. Version history: - v1.0 (2026-10-03): Initial ratification. Synthesized from Shawn's directives across the Hub 10/10 drive. - v1.1 (2026-10-03): Verbal amendment — three color jobs (accent jewels, endless flow, SmartNote board mapping); cyan named (dictation had rendered it as \"Kenya\" — fixed); forest emerald + lime + gold + indigo tokens added; active intelligence principle locked. - v1.2 (2026-10-22): A.1 STAMP — Shawn ratified the shipping spectrum walk as the contract's color table (supersedes the v1.0/v1.1 #8a5cff/#9d75ff signature values); SmartNote board mapping declared a fixed semantic mapping distinct from the walk."
+    }
+  ]
+}

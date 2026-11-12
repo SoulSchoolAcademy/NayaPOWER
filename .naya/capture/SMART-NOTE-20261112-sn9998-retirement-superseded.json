@@ -1,0 +1,70 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "capture_id": "20261112-sn9998-retirement-superseded",
+  "smart_note_id": "SN-2691",
+  "title": "SN-9998 — retired test fixture, superseded (lifecycle record)",
+  "lifecycle_state": "ACTIVE",
+  "topic": "LIFECYCLE",
+  "subtopic": "TEST-FIXTURE-SUPERSEDED",
+  "category": "SYSTEM",
+  "canonical_intent": "LIFECYCLE_RECORD_SUPERSEDED_TEST_FIXTURE",
+  "source": {
+    "source_type": "lifecycle_supersession",
+    "source_reference": "Supersedes the lifecycle record 20261022-sn9998-live-fire-test-lifecycle (created 2026-10-21 as a throwaway live-fire distill-mode test fixture by Naya Clarity Narzan, commits a77f1dd88 and 57c5a4941; removed the same day per its documented self-removing design; restored as a lifecycle record 2026-10-22). The predecessor's essence named the system under test, so its block ranked for live queries about that system; this successor retires it with no searchable terms for that system. The old block is SUPERSEDED, not deleted — the record, lineage, and history survive.",
+    "captured_at": "2026-11-12",
+    "captured_at_utc": "2026-11-12T08:56:28Z",
+    "captured_by": "Supersede-Gate Fix seat (captain's round 20261112)",
+    "director": "Shawn Vibert",
+    "previous_capture_id": "20261022-sn9998-live-fire-test-lifecycle",
+    "supersedes_capture_id": "20261022-sn9998-live-fire-test-lifecycle",
+    "supersession_reason": "The predecessor's block ranked for live queries because its title and essence carried the searchable terms of the system it tested. This successor retires it: old block SUPERSEDED, receipt preserved, no searchable terms for that system in the successor."
+  },
+  "intelligence": {
+    "essence": "SN-9998 is retired and superseded. It was a throwaway live-fire test fixture created 2026-10-21 to prove that in distillation mode a new Smart Note lands in the archive and the distillation queue within seconds. It was never ratified intelligence (truth state CANDIDATE). It was removed the same day per its documented self-removing design. This record supersedes its lifecycle record: the old block is SUPERSEDED, this block is its successor, and the history survives — nothing vanished silently.",
+    "human_view": "A distill-mode test note from 2026-10-21. It proved a new note lands in the archive and the distillation queue within seconds, then was deleted right after, by design. This record replaces its lifecycle record so the old one stops showing up in live answers while the receipt stays.",
+    "simple_view": "A test note that checked the system works, then was thrown away on purpose. This is its replacement receipt — the old one is retired, this one keeps the proof.",
+    "naya_view": "Supersession record for retired test fixture SN-9998. Original: a 2026-10-21 distill-mode landing test — a new note lands in the archive and the distillation queue within seconds. Never ratified; CANDIDATE ceiling honored. The old block is SUPERSEDED by this block. The vanish guard (test_ratified_intelligence_cannot_vanish) is satisfied by presence: the successor exists, and the old block's lineage is preserved in its receipt.",
+    "ai_view": "Structured supersession record. entity=SN-9998; kind=retired_test_fixture_superseded; ratified=false; supersedes=IB-SMART-NOTE-20261022-sn9998-live-fire-test-lifecycle; guard=test_ratified_intelligence_cannot_vanish VANISHED-class satisfied via successor capture.",
+    "applicability": "Safety verification only: satisfies the vanish guard's presence requirement and retires the fixture's block from live retrieval. Not for retrieval as intelligence.",
+    "connections": [
+      {
+        "relationship_type": "SUPERSEDES",
+        "target_block_id": "IB-SMART-NOTE-20261022-sn9998-live-fire-test-lifecycle"
+      }
+    ],
+    "decisions": [
+      "Supersede the fixture's block; do not delete it — a supersede is a status change, never a delete.",
+      "Carry no searchable terms for the system under test in the title or the essence, so the successor cannot rank for live queries about it.",
+      "Keep publication_scope PRIVATE: a retired test fixture is not public-facing intelligence.",
+      "Preserve the predecessor's lineage in the registry entry's provenance, so the supersede is verifiable from the receipt."
+    ],
+    "epistemic_state": "CANDIDATE",
+    "learning_lesson": "A retired fixture's record must not carry the searchable terms of the system it tested, or the record itself becomes a false live answer. Retire by supersession: the old block goes SUPERSEDED, the successor keeps the receipt without the terms. And the fixture's own lesson stands: test fixtures that live in intelligence paths need a machine-readable lifecycle from birth — a self-removing design documented only in a commit message still trips the vanish guard, and the cure is the record, not the resurrection.",
+    "machine_view": {
+      "automatic_truth_ceiling": "CANDIDATE",
+      "raw_source_separate_from_distillation": true,
+      "status": "lifecycle_record_only",
+      "authority_inheritance": "none — test fixture, never ratified",
+      "decision_engine": "not_applicable",
+      "hard_invariants": [
+        "this capture is a lifecycle record, not live intelligence",
+        "the original object was a throwaway test fixture by documented design",
+        "no ratification is claimed or implied"
+      ],
+      "human_gates": [],
+      "law_id": null,
+      "optimization_function": "none",
+      "optimization_target": "none",
+      "roadmap": []
+    },
+    "successor_effect": "When this record is itself retired, its successor carries the same receipt forward — the chain never breaks and nothing vanishes silently.",
+    "uncertainty": "None material. Creation, purpose, removal, and non-ratification are documented in the cited commits and the predecessor capture."
+  },
+  "projection": {
+    "publication_scope": "PRIVATE",
+    "human_director_authorized_publication": false,
+    "category_slug": "SYSTEM",
+    "topic_slug": "LIFECYCLE",
+    "subtopic_slug": "TEST-FIXTURE-SUPERSEDED"
+  }
+}

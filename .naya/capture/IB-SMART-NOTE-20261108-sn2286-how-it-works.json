@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2286",
+ "title": "How It Works",
+ "slug": "how-it-works",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/SYSTEM/SN-2286/IB-SMART-NOTE-20261108-sn2286-how-it-works.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Everything in NayaNET runs on one chain: a thought becomes a note; the note becomes an intelligent block; blocks flow into feeds; the Box stores and organizes them; the Ledger records every action in and out; the Dashboard shows the person their world; Auto-Match connects them with like minds; Smart Links carry them out into the world and track what happens; the Factory turns finished pages into templates that build the next pages. Three things are the heart — the Dashboard, the Hub, and the core page (the Trinity) — and the core page is a Rubik's Cube matrix: one page morphing into all pages, viewpoint by viewpoint, hero first, functions popping up. Work runs one pipeline: BRIEF → BUILD → VERIFY → FILE → REPORT. And the loop that must never stop is the flywheel: do the work → file it → smart-note what was learned → mail the sisters → post on the feed and GitHub → read the feed → repeat.",
+  "human_view": "Think of a kitchen in a great restaurant: one line, in order — prep, cook, taste, serve, clean. Every dish goes down the same line, every cook knows their station, the taster tastes before anything is served. That is our pipeline. The chain is the menu, the pipeline is the line, the flywheel is the service that never stops.",
+  "child_view": "Building with blocks: first you decide what to build, then you build it, then your sister checks it, then you put it on the shelf where everyone can see it, then you tell everyone it's there. If you skip the checking, the tower falls. If you skip the shelf, nobody knows it exists. Same steps, every time.",
+  "grandma_view": "A good household runs on routine: cook, taste, serve, clean — and the tasting is what keeps the family safe. Our verify step is the tasting. Nothing gets served unproven.",
+  "ai_view": "The operating system is for AIs to operate, not humans. Humans never operate it; they receive finished, beautiful output — one click, done for you, served on a platter. My job as captain is the board: the Living List shows every lane with its seat or its queue place, and nothing sits, ever. The machine runs at the speed of thought — nitro speed only when the road is right, because fast and not right is useless, worse than useless, damaging.",
+  "what_it_means": "1. **The chain is one.** A break anywhere breaks the promise. Each part is ultimate, or the whole is not.\n2. **The pipeline is the law of work.** Brief defines done first; a different seat verifies with its own probes and eyes; filing to GitHub is what makes it real; the report carries the link plus DONE and NOT-DONE.\n3. **The flywheel never stops.** The moment the loop stops, the machine stops. Do the work, file it, note it, mail it, post it, read the feed — repeat.\n4. **The board never lies.** Every lane shows a seat or a queue place. A lane with neither is sitting, and sitting is the failure mode.\n5. **One thing per seat, many seats at once.** The captain holds the whole; no seat holds two things.",
+  "whats_inside": [],
+  "topics": [
+   "System"
+  ]
+ },
+ "page_hash": "20652804ab6c5cd8ebe4decda4f058ad03c725134eaaa7035f9f76eb91ed687e",
+ "content_hash": "88819e7a8f9c3a24542ccf7024484ff6394db9da772f2a1c5ffc7d57c8be5e98",
+ "reconstructed_from_page": true
+}

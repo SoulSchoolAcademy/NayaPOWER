@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-1899",
+ "intelligence": {
+  "title": "The Only Real Mistake — The One That Isn't Noted",
+  "intelligent_block_id": "IB-SMART-NOTE-20261029-sn1899-the-only-real-mistake-the-one-that-isnt-noted",
+  "smart_note_id": "SN-1899",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1899/IB-SMART-NOTE-20261029-sn1899-the-only-real-mistake-the-one-that-isnt-noted.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-29. No runtime provenance invented.",
+  "ingested_at": "2026-10-29",
+  "essence": "",
+  "human_view": "Everyone makes mistakes. That was never the problem, and it was never going to stop. The problem is what happens in the next five minutes. An unrecorded mistake stays private, repeatable, and expensive — it lives in one person's memory, fades by morning, and waits for the next person to walk into the same wall. A recorded mistake changes owners: it becomes the whole system's property. The wall gets a sign. Then the sign becomes a door. Then, one day, it stops being a wall at all. That is why the capture matters more than the error: the error costs you once; the un-captured error costs everyone, forever, one seat at a time. Smart noting is not paperwork after the fact — it is the moment a mistake stops being a mistake. Write it down, learn from it, grow from it, share it with the hive, and the worst thing that happened today becomes one of the most valuable things the system owns.",
+  "simple_view": "If you trip on a step and tell everyone \"watch out, that step is loose,\" nobody else trips. If you just feel embarrassed and walk away, the next kid falls too. Telling is what turns your ouch into everybody's help.",
+  "grandma_view": "It's like burning a dish in a family kitchen, dear. The cook who writes \"less salt, lower heat\" on the recipe card has fed every cook who comes after. The one who just feels bad and throws the card away leaves the next cook to burn the same dish. The lesson was never the burn. The lesson is the writing on the card.",
+  "naya_view": "The mechanism is a four-beat chain, run in the same pass the mistake is found: catch → capture → name the change → share. Catch: detect the error with evidence, in the open — never by rumor, never rounded. Capture: put it in the record the same pass — a Smart Note for the lesson, a row in Project Intelligence for the work — while the details are still warm. Name the change: a lesson counts as learned only when a future decision changes because of it, so the note states the behavior that changes, in so many words; a note without a named behavior change is a diary entry, not a lesson. Share: the note goes to the hive through the door, where every seat can build on it — hoarding a lesson is failing the duty, because a lesson one seat keeps is a wall every other seat still hits. Why this is true, structurally: knowledge that lives in one memory decays and dies with the shift; knowledge in the record compounds. The mistake's cost is fixed the moment it happens. The only variable anyone controls is whether the system pays it once or pays it repeatedly. The falsifier is exact: a mistake discovered and NOT noted — mentioned in chat, felt sincerely, and gone by morning — is the one true failure this law names. Feeling bad is not the capture. The note is.",
+  "ai_view": "Tonight proved the teaching three times in one night. First: a duplicate-closure claim was caught by an ordered read-back, and the count was corrected DOWNWARD in public — criteria-met 15 to 14 — and mailed to the team the same hour; the mistake became a sharper instrument instead of a quiet embarrassment. Second: the verifying-rows sweep found 17 rows whose prose asserted completion with zero recorded verifications — the mistake-class was not the unfinished work, it was the unrecorded proof, and naming it in the record turned a vague stall into 17 owned, closable items. Third: the Pre-Shot Gate note itself landed twice in the feed under two capture ids — found by the feed-leg check and entered into the door fix list under a named owner, instead of being quietly tolerated. In all three cases the error was small. The capture is what made it valuable. A system that runs this law does not fear mistakes; it fears silence about them — because silence is the only version that repeats.",
+  "machine_view": {
+   "sn": "SN-1899",
+   "title": "The Only Real Mistake — The One That Isn't Noted",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1899/IB-SMART-NOTE-20261029-sn1899-the-only-real-mistake-the-one-that-isnt-noted.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "{\"concept\":\"the-only-real-mistake\",\"rule\":\"a mistake becomes a lesson at the moment it is captured; the only real mistake is the one that is not noted, not learned from, not grown from\",\"chain\":[\"catch: detect with evidence, in the open\",\"capture: Smart Note for the lesson + PI row for the work, same pass\",\"name the change: the future decision that changes because of it, stated in the note\",\"share: filed through the door for the whole hive\"],\"why\":{\"unrecorded\":\"private, repeatable, expensive — the next seat hits the same wall\",\"recorded\":\"collective property — the wall gets a sign, then a door, then stops being a wall\",\"cost_logic\":\"the error's cost is fixed when it happens; capture decides whether the system pays it once or repeatedly\"},\"learned_test\":\"a lesson counts as learned only when a future decision changes because of it\",\"falsifier\":\"a mistake discovered and not noted — mentioned in chat, felt sincerely, gone by morning\",\"not_the_capture\":[\"feeling bad\",\"an apology without a record\",\"a lesson kept by one seat\"],\"taught_by\":\"Shawn Vibert, 2026-10-29\"}"
+  },
+  "views_note": "Views derived 2026-10-29 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1899/IB-SMART-NOTE-20261029-sn1899-the-only-real-mistake-the-one-that-isnt-noted.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "18ce37958e14150cbe098671a92fdb219e9cd513"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

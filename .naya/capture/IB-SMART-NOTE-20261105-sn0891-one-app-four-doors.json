@@ -1,0 +1,28 @@
+{
+  "smart_note_id": "SN-0891",
+  "intelligence": {
+    "title": "One App, Four Doors — The Spec",
+    "intelligent_block_id": "IB-SMART-NOTE-20261105-sn0891-one-app-four-doors",
+    "smart_note_id": "SN-0891",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/ARCHITECTURE/FOUR-DOORS/SN-0891/IB-SMART-NOTE-20261105-sn0891-one-app-four-doors.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Registration cure #3 filed by Naya Resolve Narzan on 2026-11-05: this note's page was filed on main (page created 2026-11-05T01:46:00Z, filed by Naya Nitro Narzan) without a capture or registry entry — a member of the unregistered family (SN-0889, SN-0890, SN-0891, SN-0892, SN-0893). This capture and the matching registry entry register the page exactly as it stands; the page is unmodified.",
+    "ingested_at": "2026-11-05",
+    "essence": "One app, four doors: Personal, Business, Space, Membership. Each contains the others. All synced. The membership's front door is the login; the rest share one banner, clearly labeled.",
+    "human_view": "The architecture: NESTED — every door holds the others inside it; a personal page can hold a membership, a business can hold one, a membership can hold a business, a personal, the community, the running feed. SYNCED — change it in one place, it's true everywhere. THE DOORS — Membership's front door is the login, the portal; Personal, Business and Space share the same banner and bones, but it's unmistakable which world you're in. FROM ANY DOOR, EVERY DOOR — move freely between them. On every page: sign up to NayaNET linked to that page's URL; installable as an app; one stats language, same format everywhere; scheduler and journal for that world; appointments schedulable across worlds; any past day reviewable with its stats. The gate: creating a membership takes Pro or Max.",
+    "simple_view": "Four doors, one house, and every room has the other rooms inside it. Whichever door you walk in, everything you own is there, and it all stays in step.",
+    "grandma_view": "Dear, picture one lovely home with four front doors, and whichever door you come in by, all your things are right there — your letters, your calendar, your people. Nothing is ever in the other house, because there is no other house.",
+    "naya_view": "This is the spec I build doors against: nesting is not a metaphor, it's a containment requirement — any page type can host any other; sync is an invariant, not a feature; the membership login-door and the shared labeled banner are the two identity rules. Shawn's spec, 2026-11-05 ~01:30Z.",
+    "ai_view": "Spec: doors={personal,business,space,membership}; containment=complete (every door can contain every door type incl. feed); sync=global invariant; membership.entry=login; others.banner=shared+labeled(world); per_page=[signup_bound_to_page_url, installable, stats_format=single, scheduler, journal, cross_world_appointments, day_review_with_stats]; membership_creation_gate=Pro|Max.",
+    "machine_view": "doors=4; nested=complete; synced=true; membership_door=login; banner=shared_labeled; stats_format=one; cross_world_scheduling=true; create_membership_requires=pro_or_max; source=SN-0891",
+    "views_note": "Views extracted from the published page's own sections where the page carries them (essence ← page section 'IN A NUTSHELL'; human_view ← 'THE TEACHING'; ai_view ← 'THE TEACHING' + 'WHY IT MATTERS'; naya_view ← 'WHY IT MATTERS'). The perspective views the page does not carry as sections (simple/grandma/machine) were reconstructed from the page's own content by Naya Resolve Narzan at cure time; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/ARCHITECTURE/FOUR-DOORS/SN-0891/IB-SMART-NOTE-20261105-sn0891-one-app-four-doors.md",
+    "provenance_note": "Registration cure #3 by Naya Resolve Narzan, 2026-11-05, for a BRAIN projection published on main without a registry entry. Census at cure time against main tip 965cdb3d8bb8bfef11043fa511952404650bc0b8: registry (.naya/memory/smart-notes/index.json, 1107 entries) held no entry under this note's exact ID; no capture for this note existed on main; the page stands on main unmodified. Fingerprints computed from the page bytes at the main tip: page_hash = sha256(page bytes); content_hash = sha256(canonical JSON of this capture's intelligence object).",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}

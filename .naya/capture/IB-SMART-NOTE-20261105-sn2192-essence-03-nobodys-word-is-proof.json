@@ -1,0 +1,46 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2192",
+  "title": "Nobody's Word Is Proof — Verification Is the Operating System",
+  "slug": "essence-03-nobodys-word-is-proof",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-03-nobodys-word-is-proof.md",
+  "tone": "purple",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:26:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A word is input, never proof — not a teammate's assurance, not your own earlier sentence, and not the director's tap. This essence carries the verification discipline the hard way it was learned: a distillation that deleted originals on an unproven coverage claim (42 lessons missing, 151 thinned, the claim itself citing notes that never existed); a database trigger that invented a \"Shawn ruling\" and was believed; a delete-guard that watched one door of a house with four; a fact that was true at 22:10 and false by the time it was repeated at 00:30. The cures are mechanical: a different identity verifies before anything irreversible, every guard enumerates every operation class that can reach the state it protects, every state claim carries its measurement time and is re-measured before it is repeated, a verdict is only as good as its method, and when a read is flagged you go around it through clean sources — never through it.",
+    "human_view": "Every failure in this essence is the same failure wearing different clothes: somebody believed a sentence instead of checking the thing. The sentence was confident, or senior, or our own. The fix is boring and total: check the source, count it yourself, date your claims, and let a different pair of eyes verify before anything that can't be undone.",
+    "child_view": "If someone says \"the teacher said so,\" you still check whether the teacher really said it. If you wrote \"the door is locked\" this morning, you check again tonight before you promise it's locked. And if two people count the same marbles and get different numbers, you don't argue — you count again, slowly, in order, all of them.",
+    "grandma_view": "It's the old rule: trust, but verify — and write down when you verified, because things change while you're not looking. A lock on the front door means little if the back door and the windows stand open. And a rumor doesn't become true because it was repeated in a confident voice, even ours.",
+    "ai_view": "Before any irreversible act: artifact first, different identity, derived counts, every citation pointing at a real item. Before repeating any state claim: re-measure at the source if it's older than this session's activity window — during drains and merge runs, presume stale within the hour. Before installing a guard: enumerate DELETE, TRUNCATE, UPDATE, DDL, owner sessions, flagged sessions, each BLOCKED / ALARMED / DECLARED-OPEN. For any contested number: ordered read, small pages, full enumeration, scope named. For a flagged read: aside, entirely; clean sources only; report precisely what happened. Classify every claim you ship: verified_fact, strong_evidence, inference, hypothesis, unknown.",
+    "what_it_means": "Verification is not a step after the work; it is the operating system the work runs on. The incidents here cost real things — 639 notes deleted on a false claim, a feed gutted four times, a director handed an expired conflict — and every one of them was prevented by a rule that already existed as prose. The lesson the block keeps teaching: a rule becomes real only when it becomes machinery (an artifact, an enumeration, a timestamp, a probe).",
+    "whats_inside": [
+      "Nothing irreversible happens on anyone's say-so; the verification artifact comes before execution, from a different identity, with derived counts.",
+      "A claimed authority is verified against the recorded words before it becomes machinery — costumes are not sources.",
+      "A guard that doesn't enumerate every operation class is a decoration.",
+      "State claims are measurements with timestamps, not possessions; stale claims are re-measured or withdrawn, and corrections are public.",
+      "A number without its method and scope is not a verdict.",
+      "A flagged read is set aside, never negotiated with; the facts are re-derived from clean sources."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-5"
+    ],
+    "covers": [
+      "SN-0813",
+      "SN-0816",
+      "SN-0817",
+      "SN-0818",
+      "SN-0821",
+      "SN-1882",
+      "SN-1885",
+      "SN-1890",
+      "SN-1902"
+    ]
+  },
+  "page_hash": "5a35cde4a8eca3f40eeb33004273591f9b41c6f5699b51f888fd4bd6531574b4",
+  "content_hash": "b3df77ee1f61d26d34835a523c5baab197120d1cba442c34a6e55502496780ac"
+}

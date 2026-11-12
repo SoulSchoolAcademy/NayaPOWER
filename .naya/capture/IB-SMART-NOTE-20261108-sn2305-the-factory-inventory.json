@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2305",
+ "title": "The Factory Inventory",
+ "slug": "the-factory-inventory",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/VISION/SN-2305/IB-SMART-NOTE-20261108-sn2305-the-factory-inventory.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The Inventory is the whole world, organized so you can build NayaNET right now: Part 1, the design laws; Part 2, the pieces — the real gauge, the board (`.ph-card`), the jewel (`.os-jewel` / `.pj-jewel`), the numbers, the pills, the chart-as-boards language, the 478-piece index (truth: 571 unique IDs, 154 canonical in `pieces.json`, live CSS in `factory.css`), the Factory harvest (34 parts from Hub, Personal, the PI face, the canonical pages, the Smart Factory); Part 3, the locked-in smart blocks — viewpoints that land here ONLY when Shawn says \"okay yeah it's good\" on them live. The method: code HERE, live with him, viewpoint by viewpoint; build piece after piece from the pieces that exist — NEVER start fresh with new code. Copy VERBATIM — never restyle, never rebuild \"in the style of.\" Change only the text inside. High-end only — no Ford parts.",
+  "human_view": "You never start from a blank page. You open the Inventory, you find the piece — the gauge, the board, the jewel, the pill — and you take it exactly as it is, because it is already proven. The board is the same part on Dashboard, Hub, and Personal: same shape, same depth, same lift, the accent changing per page. That is the family. One view done, lock it in as inventory, next view — until the page is done, then the next page.",
+  "child_view": "Imagine a giant toy box where every toy is already built, shiny, and perfect — and you just pick the ones you need and snap them together to make something new. You never have to build a wheel from scratch when the box already has the best wheel in the world. That is the Factory: the box with all the best parts, ready to snap together.",
+  "grandma_view": "Dear, a good workshop keeps its tools in order — every tool in its place, every piece labeled, nothing lost. That is what this Inventory is: the whole workshop, laid out, so anyone who walks in can build something beautiful without hunting, without guessing, and without making a poor copy of a tool that already exists, perfect, on the shelf.",
+  "ai_view": "You harvest first, never invent. Every path in the Inventory was verified on disk before it was written; a path that could not be verified is marked TO-LOCATE, never guessed — the 7 canonical libraries are still TO-LOCATE, and you do not guess a path for them. A viewpoint lands in Part 3 only on his word, live. When a part earns its place — volume, light, material, shadow, physical touch — it is filed in the Factory, categorized, and reused forevermore. If it is not real, it is not filed.",
+  "what_it_means": "- Never start from a blank page — open the Inventory, find the piece, take it exactly as it is.\n- Copy verbatim — change only the text inside; never restyle, never rebuild 'in the style of.'\n- High-end only — no Ford parts; the parts are already Bugatti-level.\n- A viewpoint lands in Part 3 only on his word, live.\n- A path unverified is TO-LOCATE, never guessed.",
+  "whats_inside": [],
+  "topics": [
+   "Vision"
+  ]
+ },
+ "page_hash": "5dbee74d78c67a3032294e6e9d02ec5767f0f5c4a3f9ec77b0d899e0a5cdde46",
+ "content_hash": "0ac966aa9bd5b7660d72f16ca7d630f8e3f52aabe18c1a3e3a78a31c679d817b",
+ "reconstructed_from_page": true
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": "naya-smart-builder-page-contract-v1",
+  "contract_id": "smart-builder-library-assembly-demo-v1",
+  "title": "Naya Smart Builder · Library Assembly Proof",
+  "description": "A proof that Naya can resolve real registered parts, collect their dependencies, and assemble a reproducible standalone page. This is a component-assembly specimen, not the finished customer-facing Smart Builder.",
+  "source_registry": "smart-blocks/manifest.json",
+  "source_ref": "naya5/smart-blocks-library",
+  "output": "HUB/SMART-BUILDER-ASSEMBLY-DEMO.html",
+  "receipt": "HUB/SMART-BUILDER-ASSEMBLY-DEMO.receipt.json",
+  "sections": [
+    {
+      "id": "welcome",
+      "title": "The living interface",
+      "intro": "Actual components selected by ID from the canonical Smart Blocks manifest.",
+      "block_ids": [
+        "specialty-orb-system-orb-sm-xs-black-hero-twin-glyph-icon",
+        "buttons-hero-cta-living-btn"
+      ]
+    },
+    {
+      "id": "find",
+      "title": "Find the right part",
+      "intro": "The registered search field, resolved with its declared design dependencies.",
+      "block_ids": [
+        "inputs-search-field-search-field"
+      ]
+    },
+    {
+      "id": "today",
+      "title": "An intelligent home",
+      "intro": "Registered navigation and metric components available for future page recipes.",
+      "block_ids": [
+        "navigation-app-room-nav-app-nav",
+        "cards-metric-trio-metric",
+        "cards-elevated-board-elevated-board-board-spine-board-corner"
+      ]
+    },
+    {
+      "id": "actions",
+      "title": "Reusable actions",
+      "intro": "Registered button variants rendered from their source specimens.",
+      "block_ids": [
+        "buttons-canonical-button-naya-btn"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+When writing state files, always set status values with explicit if/else statements rather than inline conditional expressions — the extra verbosity is the point. This lesson is independently verified (Trial-14, Naya 1): control 2/10 vs treatment 10/10, p=0.0007. Applies to the state-file writing task family, e.g. job-runner checkpoints that record step outcomes to JSON.

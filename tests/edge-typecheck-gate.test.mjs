@@ -20,7 +20,12 @@ const TSC_VERSION = "5.7.2";
  * loudly rather than skipping -- silently skipping is exactly the failure mode this
  * whole change exists to eliminate.
  */
-function runTsc(configPath) {
+const TSC_TIMEOUT_MS = (() => {
+  const raw = Number(process.env.EDGE_TSC_TIMEOUT_MS);
+  return Number.isFinite(raw) && raw > 0 ? raw : 300000;
+})();
+
+function runTscOnce(configPath) {
   const localTsc = join(ROOT, "node_modules", "typescript", "bin", "tsc");
   const local = existsSync(localTsc)
     ? { cmd: process.execPath, args: [localTsc] }
@@ -41,7 +46,7 @@ function runTsc(configPath) {
     const stdout = execFileSync(invocation.cmd, [...invocation.args, "-p", configPath], {
       cwd: ROOT,
       encoding: "utf8",
-      timeout: 300000,
+      timeout: TSC_TIMEOUT_MS,
     });
     return { code: 0, output: stdout };
   } catch (e) {
@@ -54,13 +59,36 @@ function runTsc(configPath) {
   }
 }
 
+/**
+ * Run tsc, retrying exactly once when the compiler could not be executed at all
+ * (code -1: spawn failure / ETIMEDOUT). That failure class is transient by
+ * observation -- the npx cold-fetch of the pinned compiler intermittently stalls
+ * to the full timeout in CI (300s, Kernel Tests runs 39714719724 + 39715351035)
+ * while the identical check completes in ~4-12s when the fetch works -- and it
+ * says nothing about the tree. A compiler that DID run and reported type errors
+ * (numeric status) is never retried: that verdict is real and final. If both
+ * attempts fail to execute, the gate still fails loudly with code -1.
+ */
+function runTsc(configPath) {
+  const first = runTscOnce(configPath);
+  if (first.code !== -1) return first;
+  const second = runTscOnce(configPath);
+  if (second.code !== -1) return second;
+  return {
+    code: -1,
+    output: `${second.output}\n(tsc execution failed on both attempts; first attempt: ${first.output})`,
+  };
+}
+
 test("every Deno edge function type-checks clean", () => {
   const result = runTsc(TSCONFIG);
   assert.equal(
     result.code,
     0,
-    `tsc reported errors in supabase/functions/** -- these are the defects that surface\n` +
-    `in production as opaque HTTP 400s with no stack trace:\n\n${result.output}`
+    result.code === -1
+      ? `tsc could not be executed (execution failure, not a type error):\n\n${result.output}`
+      : `tsc reported errors in supabase/functions/** -- these are the defects that surface\n` +
+        `in production as opaque HTTP 400s with no stack trace:\n\n${result.output}`
   );
 });
 

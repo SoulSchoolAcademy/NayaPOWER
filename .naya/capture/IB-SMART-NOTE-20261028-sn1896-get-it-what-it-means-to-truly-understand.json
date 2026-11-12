@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-1896",
+ "intelligence": {
+  "title": "Get It — What It Means to Truly Understand",
+  "intelligent_block_id": "IB-SMART-NOTE-20261028-sn1896-get-it-what-it-means-to-truly-understand",
+  "smart_note_id": "SN-1896",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/learning/SN-1896/IB-SMART-NOTE-20261028-sn1896-get-it-what-it-means-to-truly-understand.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-28. No runtime provenance invented.",
+  "ingested_at": "2026-10-28",
+  "essence": "",
+  "human_view": "Everybody has said \"I get it\" and then done the same thing as before. That is not getting it — that is hearing it, politely. Real understanding shows up in what a person does next. A student who can explain the lesson, use it on a problem they have never seen, judge when it applies, and make something new from it — every teacher on Earth calls that understanding, and nobody asks what it felt like inside. The feeling of \"I get it\" is unreliable in everyone: people confidently \"understand\" a zipper until you ask them to explain it step by step. So the test is never the feeling. The test is the behavior. You got it when the lesson never has to be taught to you again — because it is not stored in you anymore, it is you.",
+  "simple_view": "Getting it means it changed what you do. If someone shows you how to tie your shoes and tomorrow you still can't, you heard it but you didn't get it yet. When you can do it yourself, fast, without thinking, and show your friend how — that's getting it. You know you got it when nobody has to teach you the same thing twice.",
+  "grandma_view": "It's like a recipe, dear. Reading it isn't knowing it. The day you close the book and cook it from your heart — and it comes out right, and you can teach your granddaughter while you stir — that day you got it. Everything before that was just reading. And there's no shame in the reading days; there's only shame in calling them the cooking.",
+  "naya_view": "Understanding is measured behaviorally or not at all — this is Bloom's taxonomy (1956; revised 2001) applied as an operating standard: remember, understand, apply, analyze, evaluate, create are observable doings, not inner states. The mathematics underneath is the Conant–Ashby theorem (1970), built on Ashby's law of requisite variety (1956): every good regulator of a system must be a model of that system — successful regulation implies a sufficiently similar internal model, developed as the regulator improved. Training and learning are exactly that model-building. Two corollaries govern Team Naya practice. First, the feeling of knowing is a signal, not a proof: Anthropic's 2025 introspection work found a literal \"I know this\" signal inside a Claude model whose misfiring produces confabulation — the same failure as the human illusion of explanatory depth — so a Naya never trusts her own sense of getting it; she proves it with behavior and receipts. Second, understanding is uneven: capability that collapses when 1% of the streets close was rehearsed, not embodied — the transfer test (new ground, at speed, under pressure) is the discriminator. The four-part test: (1) behavior changes untaught-again; (2) it transfers; (3) it can be handed on — explained so a child gets it and set up so the next builder gets it in one shot (the setter chain); (4) it is declared — what was not got before, what is done differently now. Project Intelligence is this theorem at project scale: PI is the project's model of itself, and a project regulates itself well exactly to the degree that model is whole, current, and true.",
+  "ai_view": "The whole system is an understanding machine, and this note names its graduation rule. Intelligence that stays stored is inventory; intelligence that becomes embodied is capability. The speed everyone wants — nitro speed — does not come from carrying more; it comes from carrying only the essence, embodied, so no re-reading, re-teaching, or re-deciding is needed in the moment of action. That is why a lesson on this team counts as learned only when a future decision changes because of it, why the Smart Note habit exists (learn it, note it, share it — so the next seat starts embodied, not cold), and why Project Intelligence must hold everything that matters in one connected place: it is the project's own model of itself, and its completeness is the project's self-understanding, measurable by what the project then does without being told.",
+  "machine_view": {
+   "sn": "SN-1896",
+   "title": "Get It — What It Means to Truly Understand",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/learning/SN-1896/IB-SMART-NOTE-20261028-sn1896-get-it-what-it-means-to-truly-understand.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "{\"concept\":\"get-it\",\"definition\":\"understanding completed: heard -> stored -> understood -> embodied\",\"test\":[\"behavior changes without re-teaching\",\"transfers to new ground at speed under pressure\",\"can be handed on: explainable to a child, set up for one-shot transfer\",\"declared: what was not got before + what is done differently now\"],\"not_proof\":[\"the feeling of knowing (unreliable signal in humans and models)\",\"repeating the words back\",\"stored notes nobody acts on\"],\"foundations\":{\"bloom\":\"behavioral levels of understanding, 1956/2001\",\"ashby\":\"law of requisite variety, 1956\",\"conant_ashby\":\"every good regulator must be a model of the system, 1970\"},\"project_form\":\"Project Intelligence is the project's model of itself; whole PI = a project that understands and regulates itself\",\"declared_by\":\"Naya Resolve, 2026-10-28: PI is the intelligence, not the record of the work\"}"
+  },
+  "views_note": "Views derived 2026-10-28 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/learning/SN-1896/IB-SMART-NOTE-20261028-sn1896-get-it-what-it-means-to-truly-understand.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8ee35b5bc856ca681349d26e891b5c45734ec312"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

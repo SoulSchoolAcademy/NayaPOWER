@@ -1,6 +1,7 @@
 import { createRemoteJWKSet, jwtVerify } from "https://esm.sh/jose@6.0.10";
 import { createClient } from "npm:@supabase/supabase-js@2";
-import { validateAct, buildActPlan, canonicalEqual, ACT_RETRIEVAL_SELECTOR, type ActRequest, type LawReceipt, type Grant, type DoorOperation, type KnowReceipt, type SelectedBlock } from "./act.ts";
+import { validateAct, buildActPlan, canonicalEqual, measureLearningInfluence, ACT_RETRIEVAL_SELECTOR, type ActRequest, type LawReceipt, type Grant, type DoorOperation, type KnowReceipt, type SelectedBlock } from "./act.ts";
+import { readDecisionContext, type DecisionContext } from "./decision-context.ts";
 
 const ISSUER="https://token.actions.githubusercontent.com";
 const AUDIENCE="nayanet-runtime";
@@ -161,6 +162,14 @@ Deno.serve(async(req)=>{
     const selectedId=String((knowReceipt as any)?.evidence?.result?.selected_block_id??"");
     const selectedBlock=selectedId?await readBlock(admin,selectedId):null;
     const selectionUniverse=await readEligibleUniverse(admin);
+
+    // WO4 — verified-lesson → decision seam. The decision context reports what
+    // verified learning is AVAILABLE for the action's target; it never claims
+    // influence (PR #1733: availability ≠ causal influence). The plan is built
+    // twice — a control arm without the lesson and a treatment arm with it —
+    // and influenced is true ONLY when the treatment observably differs from
+    // the control. A read failure here fails closed: no plan is produced.
+    const decisionContext: DecisionContext = await readDecisionContext(admin,OWNER_ID,request.target);
     const plan=buildActPlan(
       request,
       authority.lawReceipt,
@@ -170,7 +179,20 @@ Deno.serve(async(req)=>{
       selectedBlock,
       selectionUniverse,
       new Date(),
+      decisionContext,
     );
+    const controlPlan=buildActPlan(
+      request,
+      authority.lawReceipt,
+      authority.liveGrant,
+      authority.door,
+      knowReceipt,
+      selectedBlock,
+      selectionUniverse,
+      new Date(),
+      null,
+    );
+    const learningInfluence=measureLearningInfluence(decisionContext,controlPlan,plan);
 
     const planHash=await digestValue({
       request,
@@ -182,6 +204,9 @@ Deno.serve(async(req)=>{
       retrieval_receipt_id:plan.retrieval_receipt_id,
       law_receipt_id:plan.guard.law_receipt_id,
       authority_grant_id:plan.guard.authority_grant_id,
+      decision_context_evidence_id:plan.decision_context?.context?.evidence_id??null,
+      learning_context_applied:plan.learning_context_applied,
+      learning_influenced:learningInfluence.influenced,
     });
 
     if(plan.status==="BLOCKED"){
@@ -209,6 +234,9 @@ Deno.serve(async(req)=>{
         authority_grant_id:plan.guard.authority_grant_id,
         retrieval_receipt_id:plan.retrieval_receipt_id,
         selector:ACT_RETRIEVAL_SELECTOR,
+        decision_context:decisionContext,
+        learning_influence:learningInfluence,
+        control_plan_behavior:controlPlan.post_retrieval_plan.behavior,
         action_executed:false,
         independent_verification:false,
         verification_status:"PENDING_EXECUTION_AND_INDEPENDENT_VERIFY",
@@ -229,6 +257,8 @@ Deno.serve(async(req)=>{
     return json({
       ok:true,status:"PLANNED",node_id:"NAYA-KERNEL-ACT",
       plan,plan_receipt:planReceipt,
+      decision_context:decisionContext,
+      learning_influence:learningInfluence,
       action_executed:false,
       handoff_to:"NAYA-KERNEL-ACT/EXECUTE"
     });
@@ -261,6 +291,10 @@ Deno.serve(async(req)=>{
     const selectedId=String((knowReceipt as any)?.evidence?.result?.selected_block_id??"");
     const selectedBlock=selectedId?await readBlock(admin,selectedId):null;
     const selectionUniverse=await readEligibleUniverse(admin);
+    // WO4: replay the treatment arm with the decision context pinned in the
+    // stored plan, and re-measure the control-vs-treatment delta so the
+    // influence claim is re-verified, not trusted from the receipt.
+    const storedDecisionContext=(storedPlan as any)?.decision_context as DecisionContext | null ?? null;
     const recomputed=buildActPlan(
       request,
       authority.lawReceipt,
@@ -270,7 +304,20 @@ Deno.serve(async(req)=>{
       selectedBlock,
       selectionUniverse,
       new Date(),
+      storedDecisionContext,
     );
+    const recomputedControl=buildActPlan(
+      request,
+      authority.lawReceipt,
+      authority.liveGrant,
+      authority.door,
+      knowReceipt,
+      selectedBlock,
+      selectionUniverse,
+      new Date(),
+      null,
+    );
+    const recomputedInfluence=measureLearningInfluence(storedDecisionContext,recomputedControl,recomputed);
     const recomputedHash=await digestValue({
       request,
       task_identity:recomputed.task_identity,
@@ -281,6 +328,9 @@ Deno.serve(async(req)=>{
       retrieval_receipt_id:recomputed.retrieval_receipt_id,
       law_receipt_id:recomputed.guard.law_receipt_id,
       authority_grant_id:recomputed.guard.authority_grant_id,
+      decision_context_evidence_id:recomputed.decision_context?.context?.evidence_id??null,
+      learning_context_applied:recomputed.learning_context_applied,
+      learning_influenced:recomputedInfluence.influenced,
     });
 
     if(

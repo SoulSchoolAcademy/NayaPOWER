@@ -1,0 +1,1 @@
+The Reserve Rule only fires when the top two scores are within 0.5 points, as with 8.4 vs 8.0 (gap 0.4), so the lower-scored call-102 took the slot. With a wider gap like 8.6 vs 7.1 (gap 1.5), the rule stays dormant and the highest-scored call-201 is dispatched normally.

@@ -1,0 +1,20 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0781",
+ "capture_id": "20261009-sn-0781",
+ "title": "Scorecard Must Run the Gate — No Exit Code, No Merge",
+ "intelligence": {
+  "title": "Scorecard Must Run the Gate — No Exit Code, No Merge",
+  "smart_note_id": "SN-0781",
+  "intelligent_block_id": "IB-SMART-NOTE-20261009-sn0781-scorecard-must-run-the-gate",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/SCORECARD-DISCIPLINE/GATE-EXECUTION/SN-0781/IB-SMART-NOTE-20261009-sn0781-scorecard-must-run-the-gate.md",
+  "truth_state": "CANDIDATE",
+  "captured_at": "2026-10-09",
+  "note": "Smart Note SN-0781 captured by brain-build loop run 2026-10-09T15:16-15:30Z from the #1982/#1983 spec-integrity episode."
+ },
+ "source": {
+  "captured_at": "2026-10-09",
+  "source_type": "build_loop",
+  "source_reference": "brain-build loop item spec-integrity-0006-unpinned; PRs #1982/#1983; #1354 receipts 6083791238/6083962249/6083978448"
+ }
+}

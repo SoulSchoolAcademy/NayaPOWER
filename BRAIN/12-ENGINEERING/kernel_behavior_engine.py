@@ -5,6 +5,10 @@ Contract-first reference implementation of the nine-node kernel.
 This module is intentionally fail-closed: it never turns missing evidence,
 authority, observation, or persistence into a PASS/VERIFIED claim.
 
+The ADVISE bridge runs between LAW and ACT: applicable, authorized, trusted
+retrieved lessons may refine the authorized action plan before ACT constructs
+it. Influence is monotonic-additive only; ADVISE never blocks the cycle.
+
 Status: IMPLEMENTED — runtime production proof remains separate.
 """
 
@@ -20,6 +24,18 @@ from typing import Any, Callable, Mapping, Optional
 
 NODE_ORDER = ["SELF", "LAW", "ACT", "KNOW", "PROVE", "CONNECT", "VERIFY", "LEARN", "EVOLVE"]
 FAILURE_STATUSES = {"BLOCKED", "FAILED", "INCONCLUSIVE", "DEFERRED"}
+
+# --- ADVISE bridge: lesson-to-action influence gates ---
+# A retrieved lesson may influence the authorized action plan ONLY when all hold:
+#   APPLICABLE   — the lesson declares this action type in scope
+#   AUTHORIZED   — the lesson's owner matches the acting owner (no cross-owner)
+#   TRUSTED      — the lesson's truth state is VERIFIED or PROMOTED
+# Influence is monotonic-additive: the bridge may ADD safety requirements and
+# advisory notes, but may NEVER change the action type, remove a requirement,
+# expand authority, or bypass any gate.
+TRUSTED_TRUTH_STATES = {"PROMOTED", "VERIFIED"}
+# The only advisory keys the bridge will apply. Anything else -> whole advisory rejected.
+ADVISORY_ALLOWLIST = {"add_proof_requirements", "add_constraints", "note"}
 
 
 def canonical_hash(value: Any) -> str:
@@ -174,7 +190,144 @@ class KernelBehaviorEngine:
             "action_context": action,
         })
 
-    def process_act(self, input_context: dict[str, Any], law_output: dict[str, Any]) -> dict[str, Any]:
+    def process_advise(self, input_context: dict[str, Any], law_output: dict[str, Any],
+                       self_output: dict[str, Any]) -> dict[str, Any]:
+        """ADVISE bridge: let applicable retrieved lessons influence the action plan.
+
+        Runs between LAW (authorization) and ACT (plan construction). A lesson
+        may influence the authorized action plan ONLY when all three hold:
+          APPLICABLE   — the lesson declares this action type in scope
+          AUTHORIZED   — the lesson's owner matches the acting owner (no cross-owner)
+          TRUSTED      — the lesson's truth state is VERIFIED or PROMOTED
+
+        Influence is monotonic-additive: the bridge may ADD proof requirements,
+        ADD constraints, and ADD advisory notes. It may NEVER change the action
+        type, remove a requirement, expand authority, or bypass any gate. An
+        advisory containing any non-allowlisted key is rejected wholesale.
+
+        ADVISE never blocks the cycle: with no qualifying lessons it returns
+        NO_CHANGE and ACT proceeds with the original authorized action.
+        """
+        r = self._begin("ADVISE", {"input": input_context, "law": law_output})
+        r.transition("UNINITIALIZED", "EVALUATING")
+        r.check("A lesson influences the plan only if applicable, authorized, and trusted")
+        r.check("Cross-owner lessons never influence another owner's plan")
+        r.check("Influence is monotonic-additive; safety fields are never removed")
+        r.check("Influence never changes action type, authority, or bypasses a gate")
+
+        action = dict(law_output.get("action_context") or {})
+        action_type = action.get("type")
+        identity = dict(self_output.get("identity_context") or {})
+        owner_id = str(identity.get("owner_id") or identity.get("actor_id") or "")
+
+        # Same retrieval source KNOW uses: the reader when present, otherwise the
+        # intelligence already carried in the input context. ADVISE must evaluate
+        # the same lessons KNOW would surface — never a divergent set.
+        lessons: list[dict[str, Any]] = []
+        if self.intelligence_reader:
+            block_id = str(input_context.get("intelligent_block_id") or "")
+            if not owner_id or not block_id:
+                r.enforce("FAIL CLOSED: owner and block identity required for reader "
+                          "retrieval; no lessons evaluated")
+            else:
+                lessons = list(self.intelligence_reader(block_id, owner_id) or [])
+                r.add_evidence(f"reader_retrieval_count:{len(lessons)}")
+        else:
+            lessons = list(input_context.get("intelligence") or [])
+
+        advised_action = dict(action)
+        influences: list[dict[str, Any]] = []
+        excluded: list[dict[str, Any]] = []
+
+        if not owner_id:
+            r.enforce("FAIL CLOSED: owner unresolvable, no lesson can be authorized")
+            for lesson in lessons:
+                if isinstance(lesson, dict):
+                    excluded.append({"lesson_id": lesson.get("id", "unknown"),
+                                     "reason": "owner_unresolvable"})
+        else:
+            for lesson in lessons:
+                if not isinstance(lesson, dict):
+                    excluded.append({"lesson_id": "unknown", "reason": "malformed_lesson"})
+                    continue
+                lesson_id = lesson.get("id", "unknown")
+                # Gate 1: APPLICABLE
+                applies_to = lesson.get("applies_to_action_types") or []
+                if "all" not in applies_to and action_type not in applies_to:
+                    excluded.append({"lesson_id": lesson_id, "reason": "not_applicable"})
+                    continue
+                # Gate 2: AUTHORIZED (owner-scoped, no cross-owner influence)
+                if str(lesson.get("owner_id") or "") != owner_id:
+                    excluded.append({"lesson_id": lesson_id, "reason": "unauthorized_cross_owner"})
+                    continue
+                # Gate 3: TRUSTED (verified knowledge only; candidates don't steer actions)
+                if lesson.get("truth_state") not in TRUSTED_TRUTH_STATES:
+                    excluded.append({"lesson_id": lesson_id, "reason": "truth_state_not_trusted"})
+                    continue
+                # Gate 4: advisory allowlist (fail-closed on anything unexpected)
+                advisory = lesson.get("advisory") or {}
+                if not isinstance(advisory, dict) or any(k not in ADVISORY_ALLOWLIST for k in advisory):
+                    excluded.append({"lesson_id": lesson_id, "reason": "advisory_rejected_unsafe"})
+                    continue
+                # Gate 5: advisory values must be well-typed (lists of strings / string note).
+                # A mistyped advisory is rejected wholesale rather than half-applied.
+                reqs = advisory.get("add_proof_requirements") or []
+                cons = advisory.get("add_constraints") or []
+                note = advisory.get("note")
+                if (not isinstance(reqs, list) or not all(isinstance(x, str) for x in reqs)
+                        or not isinstance(cons, list) or not all(isinstance(x, str) for x in cons)
+                        or (note is not None and not isinstance(note, str))):
+                    excluded.append({"lesson_id": lesson_id, "reason": "advisory_rejected_unsafe"})
+                    continue
+                # Apply: monotonic-additive only
+                before = {
+                    "proof_requirements": list(advised_action.get("proof_requirements") or []),
+                    "constraints": list(advised_action.get("constraints") or []),
+                    "advisory_notes": list(advised_action.get("advisory_notes") or []),
+                }
+                added_reqs = [x for x in reqs if x not in advised_action.get("proof_requirements", [])]
+                added_cons = [x for x in cons if x not in advised_action.get("constraints", [])]
+                advised_action["proof_requirements"] = before["proof_requirements"] + added_reqs
+                advised_action["constraints"] = before["constraints"] + added_cons
+                if note:
+                    notes = list(before["advisory_notes"])
+                    notes.append(note)
+                    advised_action["advisory_notes"] = notes
+                after = {
+                    "proof_requirements": list(advised_action["proof_requirements"]),
+                    "constraints": list(advised_action["constraints"]),
+                    "advisory_notes": list(advised_action.get("advisory_notes") or []),
+                }
+                influences.append({
+                    "lesson_id": lesson_id,
+                    "lesson_principle": lesson.get("principle", ""),
+                    "applicability_match": f"action_type:{action_type}",
+                    "owner_match": owner_id,
+                    "truth_state": lesson.get("truth_state"),
+                    "changes": {
+                        "proof_requirements_added": added_reqs,
+                        "constraints_added": added_cons,
+                        "note_added": bool(note),
+                    },
+                    "before": before,
+                    "after": after,
+                })
+                r.enforce(f"Lesson {lesson_id} applied to action plan "
+                          f"(+{len(added_reqs)} proof requirements, +{len(added_cons)} constraints)")
+                r.add_evidence(f"influence:{lesson_id}->{action_type}")
+
+        status = "ADVISED" if influences else "NO_CHANGE"
+        r.transition("EVALUATING", "READY")
+        return self._finish("ADVISE", status, {
+            "status": status,
+            "advised_action": advised_action,
+            "influences": influences,
+            "excluded": excluded,
+            "lessons_evaluated": len(lessons),
+        })
+
+    def process_act(self, input_context: dict[str, Any], law_output: dict[str, Any],
+                    advise_output: Optional[dict[str, Any]] = None) -> dict[str, Any]:
         r = self._begin("ACT", {"input": input_context, "law": law_output})
         r.transition("UNINITIALIZED", "PLANNING")
         r.check("No execution without LAW authorization")
@@ -186,6 +339,11 @@ class KernelBehaviorEngine:
             return self._finish("ACT", "BLOCKED", {"status": "BLOCKED", "reason": "not_authorized"})
 
         action = dict(law_output.get("action_context") or {})
+        if isinstance(advise_output, dict) and advise_output.get("status") == "ADVISED":
+            action = dict(advise_output.get("advised_action") or action)
+            r.check("Action plan incorporates applicable retrieved intelligence (ADVISE)")
+            r.add_evidence(
+                f"advise_influences:{len(advise_output.get('influences') or [])}")
         if not action.get("type"):
             r.enforce("FAIL CLOSED: action type missing")
             return self._finish("ACT", "BLOCKED", {"status": "BLOCKED", "reason": "action_type_missing"})
@@ -390,7 +548,12 @@ class KernelBehaviorEngine:
         if law_result["status"] != "AUTHORIZED":
             return self._cycle_result("BLOCKED", f"LAW blocked: {law_result.get('reason', 'unknown')}")
 
-        act_result = self.process_act(input_context, law_result)
+        # ADVISE bridge: applicable retrieved lessons may refine the authorized
+        # action plan BEFORE ACT constructs it. ADVISE never blocks; with no
+        # qualifying lessons the plan passes through unchanged.
+        advise_result = self.process_advise(input_context, law_result, self_result)
+
+        act_result = self.process_act(input_context, law_result, advise_result)
         if act_result["status"] != "READY":
             return self._cycle_result("BLOCKED", "ACT blocked")
 

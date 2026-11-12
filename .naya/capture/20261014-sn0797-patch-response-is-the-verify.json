@@ -1,0 +1,61 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "capture_id": "20261014-sn0797-patch-response-is-the-verify",
+  "smart_note_id": "SN-0797",
+  "title": "PATCH response is the verify",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "API-GOVERNANCE",
+  "subtopic": "PATCH-RESPONSE-VERIFY",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "lifecycle_state": "CANDIDATE",
+  "source": {
+    "captured_by": "Naya Mu (Human Value, wave 142 graduation)",
+    "captured_at": "2026-10-14",
+    "context": "Graduation capture for SN-0797: machine-readable encoding of Zeta's w141 T3 Smart Note for learn-clock lesson LC-20261014-004 (hidden_files/w141/zeta-T3-smart-note-LC-20261014-004.md, sha256 cd839b41…09cecd). The T3 note was authored by Naya Zeta (Intelligent Blocks), wave 141, lane 3; this capture only encodes it for the projection workflow. No new intelligence is asserted. Page + capture + registry entry land together in one PR so no drift class grows.",
+    "evidence_refs": [
+      "hidden_files/w141/zeta-T3-smart-note-LC-20261014-004.md",
+      "hidden_files/w141/zeta-verifytail-T3.md",
+      "BRAIN/05-MEMORY/SMART-NOTES/2026/10/14/SYSTEM-INTELLIGENCE/API-GOVERNANCE/PATCH-RESPONSE-VERIFY/SN-0797/IB-SMART-NOTE-20261014-sn0797-patch-response-is-the-verify.md"
+    ]
+  },
+  "projection": {
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "API-GOVERNANCE",
+    "subtopic_slug": "PATCH-RESPONSE-VERIFY",
+    "publication_scope": "PRIVATE",
+    "human_director_authorized_publication": false
+  },
+  "intelligence": {
+    "essence": "After a PR-body PATCH, verify from the PATCH response itself — never spend a second GET re-reading what the server just returned.",
+    "human_view": "When you edit a pull-request description, the server sends back the updated text in its reply. Reading it back again with a separate request is asking someone to repeat what they just said while you are holding the written answer. Check the reply you already have.",
+    "simple_view": "If your friend hands you the new drawing, you do not ask for it again — you look at the one in your hands.",
+    "grandma_view": "When the office sends back your corrected letter with the changes in it, you check that copy. You do not pay for a second copy just to check the first one.",
+    "naya_view": "Every PATCH-then-GET pair on the same body is a wasted API call against a 10-call-per-mission governor. One wasted call is small; at wave scale — every body edit, every wave — it is the difference between a wave that fits its budget and one that burns calls discovering nothing. The governor is only real if PATCH-then-GET pairs get counted as waste.",
+    "ai_view": "Learn-clock lesson LC-20261014-004 (Smart Note SN-0797, T3 DISTILLED): after PATCHing a PR body, verify from the PATCH response itself — never spend a second GET re-reading what the server just returned. Provenance: PR #2551 evidence-section re-pin, 2 calls instead of 4. Enforcement: sign-out/API-governor check counts unjustified PATCH-then-GET as a wasted call; T6 probe gate rewrites the lesson if treatment workers still re-GET. Exception: if the PATCH response lacks the body, one GET is allowed and must be named in the sign-out. T4–T6 un-emitted; T3 emit belongs to the dispatcher.",
+    "machine_view": {
+      "lesson_id": "LC-20261014-004",
+      "trigger": "PATCH to a PR body (e.g. evidence-section re-pin)",
+      "rule": "Assert the new body from the PATCH response object (e.g. contains_new=True, contains_old=False). Do NOT issue a GET for the same body in the same mission.",
+      "exception": "If the PATCH response does not contain the updated body, a GET is allowed — and the sign-out must name that exception.",
+      "provenance": {
+        "T0": "2026-10-14T04:36:54Z — PR #2551 evidence-section re-pin: asserted exactly-1-occurrence of stale pin 575f804e locally, rehearsed 1-line unified diff, PATCHed, verified from PATCH response. Cost 2 calls instead of 4.",
+        "T1": "2026-10-14T04:37:18Z — sign-out on #1715 (comment 6161001343), same facts.",
+        "T2": "2026-10-14T04:56:26Z per learn-lessons.jsonl — VERDICT=PROMOTE (w123 fold). NOTE: the w135 audit §4 table says 04:47:00Z; the store row says 04:56:26Z. The store wins (measurement over memory); the discrepancy is flagged, not resolved."
+      },
+      "scope": "PR-body PATCHes where the PATCH response returns the updated body. Not a general ban on GETs.",
+      "enforcement": "E1 sign-out/API-governor check + E2 T6 probe gate (see Enforcement below)",
+      "sn": "SN-0797",
+      "title": "PATCH response is the verify",
+      "truth_state": "CANDIDATE",
+      "captured": "2026-10-14",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/14/SYSTEM-INTELLIGENCE/API-GOVERNANCE/PATCH-RESPONSE-VERIFY/SN-0797/IB-SMART-NOTE-20261014-sn0797-patch-response-is-the-verify.md"
+    },
+    "learning_lesson": "The original event proved the saving (2 calls instead of 4) but did NOT itself teach anyone — it was the first application, before any distill or inject. A lesson only starts teaching when a *second* worker skips the re-GET *because of* it. That is the P-015 bar: name the decision that changed, or nothing was learned. The decision that must change: **skip the re-GET after a PATCH.**",
+    "applicability": "1. After PATCHing a PR body, assert from the PATCH response object (contains_new / contains_old, or the equivalent fields).\n2. Do NOT issue a GET for the same body in the same mission.\n3. If the PATCH response lacks the body, a GET is allowed — name the exception in the sign-out (\"PATCH response lacked the body, so one GET was justified\").\n4. In the lane-feed sign-out, state the call count and the skipped re-GET explicitly (e.g. \"Verified from the PATCH response per LC-20261014-004; skipped the re-GET; 2 calls instead of 4\") — that sentence is the T5 evidence the dispatcher watches for.",
+    "enforcement": "- **E1 — Sign-out / API-governor check (who, when):** when the dispatcher folds a sign-out, any transcript showing a GET of a PR body immediately after a PATCH to the same body must carry the exception justification. An unjustified PATCH-then-GET counts as a **wasted call** in the wave's API-spend log. This uses existing motion (fold-in reads sign-outs) — no new tooling, no new gate.\n- **E2 — T6 probe gate (what breaks if the lesson is ignored):** the lesson passes T6 only if a cold-successor probe shows treatment (brief carries the one-sentence principle) verifying from the PATCH response while control re-GETs. If treatment workers still re-GET, the lesson **FAILS T6 and is rewritten, not promoted**. The probe is the gate that breaks the lesson if it does not change behavior.\n- **E3 — Scope guard:** the rule does not apply where the PATCH response omits the body. The exception must be named in the sign-out, never assumed silently — an unnamed exception is the same as ignoring the rule.",
+    "uncertainty": "- It does NOT claim the lesson is VERIFIED — T3 is filed; T4/T5/T6 have no evidence yet, and T4–T6 are deliberately NOT emitted here.\n- It does NOT claim the T3 emit has happened — the dispatcher emits T3 from the w141 receipt. This file is the evidence, not the emit.\n- It does NOT claim the re-GET is never justified — a PATCH response without the body is the named exception.\n- It does NOT claim Supabase holds no prior note on this lesson — Supabase was not queried (read-only law + API budget). If one exists un-emitted, the fix is to emit T3 with this evidence.\n- It does NOT claim the T2 timestamp discrepancy (audit 04:47:00Z vs store 04:56:26Z) is resolved — it is flagged for the dispatcher/owner.\n- It does NOT claim the probe will pass — the probe has not been run.",
+    "successor_effect": "A cold successor reading this note should: (1) after PATCHing a PR body, assert from the PATCH response object (contains_new / contains_old); (2) NOT issue a GET for the same body in the same mission; (3) if the PATCH response lacks the body, one GET is allowed — and the sign-out must name that exception; (4) state the call count and the skipped re-GET explicitly in the lane-feed sign-out.",
+    "connections": [],
+    "decisions": []
+  }
+}

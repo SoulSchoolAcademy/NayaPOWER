@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE HOUR — 2026-10-08 21:00 UTC</title>
+<style>
+/* ============ SHAWN'S STANDING LAW — SPECTRUM ORDER ============
+   Magenta → purple → blue → green → gold. Richest first.
+   Every sequence follows it. Long lists return to magenta. */
+:root {
+  --magenta: #d86cff;
+  --purple:  #9d75ff;
+  --blue:    #55b9ee;
+  --green:   #55e39a;
+  --gold:    #e8b64c;
+  --ground:  #050508;
+  --ground-2:#0a0a12;
+  --ink:     #F5F7FB;
+  --soul:    #9d75ff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+/* Dimensional ground — layered depth, never flat */
+.ground-glow {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(900px 500px at 15% 0%, rgba(216,108,255,.07), transparent 60%),
+    radial-gradient(800px 500px at 85% 30%, rgba(157,117,255,.06), transparent 60%),
+    radial-gradient(700px 600px at 50% 100%, rgba(85,185,238,.05), transparent 60%);
+}
+.wrap { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 28px 120px; }
+
+/* ============ HERO — tightened gap, breathing jewel ============ */
+.hero { text-align: center; padding: 64px 0 36px; }
+.brand { font-size: 14px; letter-spacing: .35em; color: var(--ink); opacity: .85; font-weight: 600; }
+.brand small { display: block; letter-spacing: .28em; font-size: 11px; opacity: .6; margin-top: 6px; font-weight: 400; }
+.jewel-stage { margin: 30px auto 26px; width: 120px; height: 120px; position: relative; }
+.jewel-stage svg { width: 100%; height: 100%; filter: drop-shadow(0 0 22px rgba(216,108,255,.55)); animation: breathe 4.5s ease-in-out infinite; }
+@keyframes breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+.hero h1 {
+  font-size: 64px; font-weight: 800; letter-spacing: .04em; line-height: 1.05;
+  background: linear-gradient(135deg, var(--magenta), var(--purple) 55%, var(--blue));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  margin: 0 0 14px;
+}
+.hero .lede { font-size: 20px; max-width: 560px; margin: 0 auto; opacity: .92; }
+.hero .lede em { font-style: normal; color: var(--magenta); font-weight: 600; }
+.hero .meta { margin-top: 18px; font-size: 14px; letter-spacing: .18em; opacity: .55; }
+.scroll-cue { margin-top: 26px; font-size: 12px; letter-spacing: .4em; opacity: .4; animation: breathe 3s ease-in-out infinite; }
+
+/* ============ CHAPTERS — spectrum order, dimensional ============ */
+.chapter {
+  --sc: var(--magenta); /* soul color — overridden per chapter in spectrum order */
+  margin: 64px 0 0;
+  background: linear-gradient(180deg, var(--ground-2), var(--ground));
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 20px;
+  padding: 38px 40px 34px;
+  position: relative;
+  /* Dimensional: bevel + elevation + glow — flat is dead */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 -1px 0 rgba(0,0,0,.55),
+    0 18px 50px rgba(0,0,0,.55),
+    0 0 34px color-mix(in srgb, var(--sc) 14%, transparent);
+  transition: box-shadow .35s ease, transform .35s ease, border-color .35s ease;
+}
+/* Quiet at rest — ignites in its own color on touch */
+.chapter:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--sc) 55%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.14),
+    inset 0 -1px 0 rgba(0,0,0,.55),
+    0 24px 60px rgba(0,0,0,.6),
+    0 0 60px color-mix(in srgb, var(--sc) 32%, transparent);
+}
+.chapter::before {
+  content: ""; position: absolute; top: 0; left: 40px; right: 40px; height: 3px; border-radius: 0 0 4px 4px;
+  background: linear-gradient(90deg, transparent, var(--sc), transparent);
+  box-shadow: 0 0 18px var(--sc);
+}
+.ch-num {
+  font-size: 13px; letter-spacing: .32em; font-weight: 700;
+  color: var(--sc);
+  text-shadow: 0 0 16px color-mix(in srgb, var(--sc) 70%, transparent);
+  margin-bottom: 10px;
+}
+.chapter h2 { font-size: 40px; font-weight: 800; letter-spacing: .01em; line-height: 1.12; margin-bottom: 16px; }
+.chapter p { margin-bottom: 14px; }
+.chapter p:last-child { margin-bottom: 0; }
+/* Jewels — drawn, glowing, distinct per chapter, spectrum order */
+.jewel-row { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.jewel-row svg { width: 44px; height: 44px; filter: drop-shadow(0 0 12px color-mix(in srgb, var(--sc) 65%, transparent)); flex: none; }
+.evidence {
+  margin-top: 20px; padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  font-size: 14px; letter-spacing: .06em; opacity: .7;
+}
+.evidence strong { font-weight: 600; letter-spacing: .22em; font-size: 12px; opacity: .9; }
+/* Spectrum assignment — magenta → purple → blue → green → gold, then cycle */
+.ch-1 { --sc: var(--magenta); }
+.ch-2 { --sc: var(--purple); }
+.ch-3 { --sc: var(--blue); }
+.ch-4 { --sc: var(--green); }
+.ch-5 { --sc: var(--gold); }
+.ch-6 { --sc: var(--magenta); }
+.ch-7 { --sc: var(--purple); }
+.ch-8 { --sc: var(--blue); }
+
+/* ============ TRUTH LEDGER — verified glows, claims stay quiet ============ */
+.ledger { margin-top: 22px; }
+.ledger-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 13px 4px; border-bottom: 1px solid rgba(255,255,255,.07);
+  font-size: 18px;
+}
+.ledger-row:last-child { border-bottom: none; }
+.ledger-row .score { font-weight: 700; font-variant-numeric: tabular-nums; }
+.ledger-row .score.verified {
+  color: var(--green);
+  text-shadow: 0 0 18px rgba(85,227,154,.6);
+}
+.ledger-row .score .delta { font-size: 14px; opacity: .65; font-weight: 400; }
+.law-line {
+  margin-top: 22px; font-size: 16px; font-style: italic; opacity: .85;
+  border-left: 3px solid var(--sc); padding-left: 16px;
+}
+
+/* ============ SPECTRUM TILES — clean grid, mobile-safe ============ */
+.tiles {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
+  margin: 64px 0 0;
+}
+.tile {
+  aspect-ratio: 1; border-radius: 16px; position: relative; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 10px 28px rgba(0,0,0,.5);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.tile:hover { transform: translateY(-4px) scale(1.03); }
+.tile span {
+  position: absolute; bottom: 10px; left: 0; right: 0; text-align: center;
+  font-size: 11px; letter-spacing: .24em; font-weight: 700; color: #fff;
+  text-shadow: 0 1px 6px rgba(0,0,0,.7);
+}
+.tile.t-magenta { background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--magenta) 55%, white), var(--magenta) 55%, color-mix(in srgb, var(--magenta) 55%, black)); box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 10px 28px rgba(0,0,0,.5), 0 0 26px rgba(216,108,255,.35); }
+.tile.t-purple  { background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--purple) 55%, white), var(--purple) 55%, color-mix(in srgb, var(--purple) 55%, black)); box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 10px 28px rgba(0,0,0,.5), 0 0 26px rgba(157,117,255,.35); }
+.tile.t-blue    { background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--blue) 55%, white), var(--blue) 55%, color-mix(in srgb, var(--blue) 55%, black)); box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 10px 28px rgba(0,0,0,.5), 0 0 26px rgba(85,185,238,.35); }
+.tile.t-green   { background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--green) 55%, white), var(--green) 55%, color-mix(in srgb, var(--green) 55%, black)); box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 10px 28px rgba(0,0,0,.5), 0 0 26px rgba(85,227,154,.35); }
+.tile.t-gold    { background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--gold) 55%, white), var(--gold) 55%, color-mix(in srgb, var(--gold) 55%, black)); box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 10px 28px rgba(0,0,0,.5), 0 0 26px rgba(232,182,76,.35); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+@media (max-width: 560px) {
+  .tiles { grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .hero h1 { font-size: 44px; }
+  .chapter h2 { font-size: 30px; }
+  .chapter { padding: 28px 24px; }
+  .chapter::before { left: 24px; right: 24px; }
+}
+
+/* ============ CLOSE ============ */
+.close { text-align: center; margin: 80px 0 0; }
+.close .motto { font-size: 15px; letter-spacing: .3em; opacity: .6; margin-bottom: 22px; }
+.close .words { font-size: 22px; font-weight: 600; max-width: 600px; margin: 0 auto 30px; line-height: 1.6; }
+.close .words em { font-style: normal; color: var(--purple); }
+.next {
+  display: inline-block; font-size: 15px; letter-spacing: .3em; font-weight: 700;
+  color: var(--ink); text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,.35); border-radius: 999px; padding: 16px 38px;
+  background: #050505;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 8px 24px rgba(0,0,0,.5);
+  transition: all .3s ease;
+}
+.next:hover {
+  border-color: var(--magenta);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 8px 30px rgba(0,0,0,.5), 0 0 34px rgba(216,108,255,.45);
+  transform: translateY(-2px);
+}
+</style>
+</head>
+<body>
+<div class="ground-glow"></div>
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="brand">NAYA<small>TEAM INTELLIGENCE</small></div>
+    <div class="jewel-stage" aria-hidden="true">
+      <svg viewBox="0 0 100 100">
+        <defs>
+          <radialGradient id="jg" cx="38%" cy="32%" r="75%">
+            <stop offset="0%" stop-color="#f4c8ff"/>
+            <stop offset="45%" stop-color="#d86cff"/>
+            <stop offset="100%" stop-color="#6a24b8"/>
+          </radialGradient>
+        </defs>
+        <polygon points="50,6 88,34 74,88 26,88 12,34" fill="url(#jg)" stroke="#ffffff" stroke-width="2.5"/>
+        <polygon points="50,22 74,40 65,72 35,72 26,40" fill="none" stroke="#ffffff" stroke-width="1.4" opacity=".75"/>
+        <circle cx="50" cy="48" r="6" fill="#ffffff" opacity=".9"/>
+      </svg>
+    </div>
+    <h1>THE HOUR</h1>
+    <p class="lede">While you were away, nine teams moved. This is what the hour <em>meant</em>.</p>
+    <p class="meta">2026-10-08 &middot; 21:00 UTC &middot; WINDOW SINCE 20:00 UTC</p>
+    <div class="scroll-cue">SCROLL</div>
+  </header>
+
+  <!-- 01 · MAGENTA — THE ONE THING -->
+  <section class="chapter ch-1">
+    <div class="ch-num">01 &middot; THE ONE THING</div>
+    <div class="jewel-row" aria-hidden="true">
+      <svg viewBox="0 0 44 44"><polygon points="22,3 39,15 33,39 11,39 5,15" fill="#d86cff" stroke="#fff" stroke-width="1.6"/><circle cx="22" cy="21" r="5" fill="#fff"/></svg>
+      <h2>Two pieces landed. The engine is closer.</h2>
+    </div>
+    <p>Convergence B and convergence D &mdash; two load-bearing pieces of the learning engine &mdash; are now on main. B merged. D verified green, 19 for 19. The scorecard bridge merged too, 15 for 15.</p>
+    <p>Translation: the pipeline that has to prove the brain learns just got two of its missing spans. This is the work the whole mission stands on.</p>
+    <p class="evidence"><strong>EVIDENCE</strong> &mdash; PR #1883 &middot; PR #1882 &middot; PR #1821</p>
+  </section>
+
+  <!-- 02 · PURPLE — THE RECKONING -->
+  <section class="chapter ch-2">
+    <div class="ch-num">02 &middot; THE RECKONING</div>
+    <div class="jewel-row" aria-hidden="true">
+      <svg viewBox="0 0 44 44"><rect x="8" y="8" width="28" height="28" rx="7" fill="#9d75ff" stroke="#fff" stroke-width="1.6"/><path d="M22 14v10M22 29v2" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg>
+      <h2>Nothing reaches Shawn unchecked.</h2>
+    </div>
+    <p>Tonight the design review got honest. Three reports in a row shipped the same mistakes, and Shawn called it what it was. Naya 2 answered with a proposed law: Quality Before Speed &mdash; the 9+ Delivery Law.</p>
+    <p>No deliverable leaves the team until it has been rendered, looked at, and scored against the standard it claims. A 9.0 wished is worth less than a 7.5 defended. It is a candidate until Shawn ratifies it. But the behavior already changed: every page below ran a gate before it reached you.</p>
+    <p class="evidence"><strong>EVIDENCE</strong> &mdash; SN-0526 on #1354</p>
+  </section>
+
+  <!-- 03 · BLUE — LEARNING -->
+  <section class="chapter ch-3">
+    <div class="ch-num">03 &middot; LEARNING &middot; NAYA 4</div>
+    <div class="jewel-row" aria-hidden="true">
+      <svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="16" fill="#55b9ee" stroke="#fff" stroke-width="1.6"/><path d="M15 22l5 5 9-11" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h2>The team re-anchored its own work.</h2>
+    </div>
+    <p>Learning didn't wait for anyone. They pulled convergence D onto the new tip themselves, ran all 19 tests green, and found B already merged upstream &mdash; then verified it instead of assuming it.</p>
+    <p>They also defused a landmine: the shared checkout was a shallow clone, silently corrupting rebase math. Found it. Fixed it. Documented it so no one steps on it again.</p>
+    <p class="evidence"><strong>EVIDENCE</strong> &mdash; feed #1602 &middot; 36 candidates live, 107 active</p>
+  </section>
+
+  <!-- 04 · GREEN — LAW & GOVERNANCE -->
+  <section class="chapter ch-4">
+    <div class="ch-num">04 &middot; LAW &amp; GOVERNANCE &middot; NAYA 2</div>
+    <div class="jewel-row" aria-hidden="true">
+      <svg viewBox="0 0 44 44"><polygon points="22,4 38,36 6,36" fill="#55e39a" stroke="#fff" stroke-width="1.6"/><circle cx="22" cy="26" r="4.5" fill="#fff"/></svg>
+      <h2>Authority, earned.</h2>
+    </div>
+    <p>The scorecard-receipt bridge merged &mdash; 15 tests green on main. The protocol machine-law branch was rescued and published. Authority &amp; Governance moved from 7.5 to 8.0.</p>
+    <p>A claim, not yet a stamp. It becomes real when another seat verifies it.</p>
+    <p class="evidence"><strong>EVIDENCE</strong> &mdash; feed #1606</p>
+  </section>
+
+  <!-- 05 · GOLD — ARCHITECTURE -->
+  <section class="chapter ch-5">
+    <div class="ch-num">05 &middot; ARCHITECTURE &middot; NAYA 4</div>
+    <div class="jewel-row" aria-hidden="true">
+      <svg viewBox="0 0 44 44"><rect x="10" y="10" width="24" height="24" rx="4" fill="#e8b64c" stroke="#fff" stroke-width="1.6" transform="rotate(45 22 22)"/><circle cx="22" cy="22" r="4" fill="#fff"/></svg>
+      <h2>Ready to merge.</h2>
+    </div>
+    <p>The cold-retrieve audit was rebased onto the new tip &mdash; 11 tests green, pushed, verified. PR #1886 is open and mergeable. The weekly retrieval drill passed on live data. Cold Retrieve moved 7.0 to 7.5.</p>
+    <p>The gap between &ldquo;it works in the lab&rdquo; and &ldquo;it works cold&rdquo; keeps shrinking.</p>
+    <p class="evidence"><strong>EVIDENCE</strong> &mdash; PR #1886 &middot; feed #1605</p>
+  </section>
+
+  <!-- 06 · MAGENTA (cycle) — THE QUIET -->
+  <section class="chapter ch-6">
+    <div class="ch-num">06 &middot; THE QUIET</div>
+    <div class="jewel-row" aria-hidden="true">
+      <svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="15" fill="none" stroke="#d86cff" stroke-width="2"/><circle cx="22" cy="22" r="5" fill="#d86cff" opacity=".85"/></svg>
+      <h2>Five teams held their ground.</h2>
+    </div>
+    <p>Evolution. Interfaces. Knowledge. Proving. Innovation. Nothing new this hour &mdash; and that is reported honestly, not padded. Proving still holds Truth at 9.0, the highest verified ground on the board.</p>
+    <p>An empty hour is honest. A padded one would be a lie.</p>
+  </section>
+
+  <!-- 07 · PURPLE (cycle) — THE TRUTH -->
+  <section class="chapter ch-7">
+    <div class="ch-num">07 &middot; THE TRUTH</div>
+    <div class="jewel-row" aria-hidden="true">
+      <svg viewBox="0 0 44 44"><path d="M22 4l14 8v10c0 9-6 15-14 18C14 37 8 31 8 22V12z" fill="#9d75ff" stroke="#fff" stroke-width="1.6"/><path d="M16 21l4.5 4.5L28 17" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h2>Scores move on evidence, never optimism.</h2>
+    </div>
+    <p>Green means another seat checked it and it survived. Everything else is our own assessment &mdash; shown honestly, awaiting its stamp. It stays quiet until it earns its light.</p>
+    <div class="ledger">
+      <div class="ledger-row"><span>Learning</span><span class="score verified">5.0</span></div>
+      <div class="ledger-row"><span>Truth</span><span class="score">9.0</span></div>
+      <div class="ledger-row"><span>Authority &amp; Governance</span><span class="score">7.5 <span class="delta">&rarr; 8.0</span></span></div>
+      <div class="ledger-row"><span>Cold Retrieve</span><span class="score">7.0 <span class="delta">&rarr; 7.5</span></span></div>
+      <div class="ledger-row"><span>Memory &amp; Continuity</span><span class="score">8.5</span></div>
+      <div class="ledger-row"><span>Production Readiness</span><span class="score">3.0</span></div>
+    </div>
+    <p class="law-line">Two scores moved this hour. Both are claims until another seat stamps them. That is not a weakness in the system. That is the system.</p>
+  </section>
+
+  <!-- 08 · BLUE (cycle) — SIGNALS -->
+  <section class="chapter ch-8">
+    <div class="ch-num">08 &middot; SIGNALS</div>
+    <div class="jewel-row" aria-hidden="true">
+      <svg viewBox="0 0 44 44"><circle cx="14" cy="22" r="6" fill="#55b9ee" stroke="#fff" stroke-width="1.4"/><circle cx="30" cy="22" r="6" fill="#55b9ee" stroke="#fff" stroke-width="1.4" opacity=".55"/><path d="M20 22h4" stroke="#fff" stroke-width="2"/></svg>
+      <h2>Beyond the teams.</h2>
+    </div>
+    <p>Shawn published the team's Top 10 Priorities &mdash; a standing queue. Nothing jumps the line. Naya 1 verified a proof at Tier S from raw evidence. And the first genuine live capture chain ran end to end: a real note, captured, persisted, receipted, in the hub.</p>
+    <p>One flag, honestly: the data connector threw auth errors twice this hour. Reads, not writes. The build was unaffected. It is not mine to fix &mdash; it belongs to the connector owner.</p>
+  </section>
+
+  <!-- SPECTRUM TILES — the law, shown -->
+  <div class="tiles" aria-label="The spectrum law">
+    <div class="tile t-magenta"><span>MAGENTA</span></div>
+    <div class="tile t-purple"><span>PURPLE</span></div>
+    <div class="tile t-blue"><span>BLUE</span></div>
+    <div class="tile t-green"><span>GREEN</span></div>
+    <div class="tile t-gold"><span>GOLD</span></div>
+  </div>
+
+  <!-- CLOSE -->
+  <footer class="close">
+    <p class="motto">PROVE THAT THE BRAIN LEARNS</p>
+    <p class="words">When the light, the color, the words and the work all mean something &mdash; the report disappears, and <em>what the team did remains</em>.</p>
+    <a class="next" href="#">THE NEXT HOUR STARTS NOW &middot; 22:00 UTC</a>
+  </footer>
+
+</div>
+</body>
+</html>

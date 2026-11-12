@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>forms/rich-editor — Smart Block Specimen</title>
+<link rel="stylesheet" href="rich-editor.css">
+<style>
+  body{ background:#050507; color:#F8F7FB; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    margin:0; padding:32px 20px; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:640px; margin:0 auto; }
+  h1{ font-size:24px; margin:0 0 6px; }
+  .sub{ font-size:14px; color:rgba(248,247,251,.55); margin:0 0 28px; }
+  .cap{ font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:.12em;
+    color:rgba(248,247,251,.55); margin:28px 0 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>forms / rich-editor</h1>
+  <p class="sub">Toolbar inserts markdown at the cursor. Flip to Preview to render. All syntax states shown below.</p>
+
+  <div class="cap">Live block</div>
+  <div class="re-wrap" data-re>
+    <div class="re-tabs">
+      <button type="button" class="re-tab re-active" data-tab="write">Write</button>
+      <button type="button" class="re-tab" data-tab="preview">Preview</button>
+    </div>
+    <div class="re-toolbar" role="toolbar" aria-label="Formatting">
+      <button type="button" class="re-btn" data-act="bold" title="Bold" aria-label="Bold"><strong>B</strong></button>
+      <button type="button" class="re-btn" data-act="italic" title="Italic" aria-label="Italic"><em>I</em></button>
+      <button type="button" class="re-btn" data-act="h" title="Heading" aria-label="Heading">H</button>
+      <button type="button" class="re-btn" data-act="quote" title="Quote" aria-label="Quote">❝</button>
+      <span class="re-sep"></span>
+      <button type="button" class="re-btn" data-act="list" title="List" aria-label="List">☰</button>
+      <button type="button" class="re-btn" data-act="link" title="Link" aria-label="Link">🔗</button>
+      <button type="button" class="re-btn" data-act="code" title="Code" aria-label="Code">&lt;/&gt;</button>
+    </div>
+    <div class="re-body">
+      <textarea class="re-area" aria-label="Editor" placeholder="Write something beautiful…">## The dawn report
+
+Naya distilled the **overnight signals** into three *clear* moves for today.
+
+> "Intelligence is the move that compounds."
+
+- Wake the kernel first
+- Verify before you claim
+- Ship only the 9.0+
+
+Read the [full briefing](https://example.com) when ready.
+
+`bake("dawn", 0600)` runs at first light.
+
+```
+for seat in team:
+    seat.scorecard()
+```
+</textarea>
+      <div class="re-preview" aria-label="Preview"></div>
+    </div>
+  </div>
+
+  <div class="cap">Rendered preview (same content, forced preview)</div>
+  <div class="re-wrap" data-re>
+    <div class="re-tabs">
+      <button type="button" class="re-tab" data-tab="write">Write</button>
+      <button type="button" class="re-tab re-active" data-tab="preview">Preview</button>
+    </div>
+    <div class="re-toolbar" role="toolbar" aria-label="Formatting">
+      <button type="button" class="re-btn" data-act="bold"><strong>B</strong></button>
+      <button type="button" class="re-btn" data-act="italic"><em>I</em></button>
+      <button type="button" class="re-btn" data-act="h">H</button>
+      <button type="button" class="re-btn" data-act="quote">❝</button>
+      <span class="re-sep"></span>
+      <button type="button" class="re-btn" data-act="list">☰</button>
+      <button type="button" class="re-btn" data-act="link">🔗</button>
+      <button type="button" class="re-btn" data-act="code">&lt;/&gt;</button>
+    </div>
+    <div class="re-body re-show-preview">
+      <textarea class="re-area" aria-label="Editor"># Every state at once
+
+This paragraph shows **bold**, *italic*, and `inline code`.
+
+## Second level heading
+
+### Third level heading
+
+> A purple-edged quote block, quiet white text.
+
+- First list item
+- Second list item
+- Third list item
+
+A [link to the network](https://example.com) in the flow of text.
+
+```js
+const naya = await brain.activate();
+naya.scorecard(); // must be 9.0+
+```
+</textarea>
+      <div class="re-preview" aria-label="Preview"></div>
+    </div>
+  </div>
+</div>
+<script src="rich-editor.js"></script>
+</body>
+</html>

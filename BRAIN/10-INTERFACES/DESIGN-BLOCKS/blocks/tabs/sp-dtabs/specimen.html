@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Block specimen: tabs/sp-dtabs</title>
+<link rel="stylesheet" href="block.css">
+<style>
+  body{ background:#050507; color:#e8eaf2; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; margin:0; padding:32px 20px; }
+  .demo{ max-width:640px; margin:0 auto; }
+  .demo h2{ font-size:14px; letter-spacing:.12em; text-transform:uppercase; color:#8a8a96; margin:34px 0 12px; }
+  .demo h2:first-child{ margin-top:0; }
+  #content{ margin-top:14px; font-size:14px; color:#c9cdd8; }
+</style>
+</head>
+<body>
+<div class="demo">
+  <h2>Detail tabs (purple accent)</h2>
+  <div id="bar1"></div>
+  <div id="content">Selected: Chat</div>
+
+  <h2>No active, no badges (blue accent)</h2>
+  <div id="bar2"></div>
+</div>
+<script src="block.js"></script>
+<script>
+  var tabs = [
+    {label:'Posts'},
+    {label:'Members', count:12},
+    {label:'Chat', count:3, active:true},
+    {label:'About'}
+  ];
+  var host = document.getElementById('bar1');
+  function render(){
+    host.innerHTML = '';
+    host.appendChild(spDtabs(tabs, {accent:'#7c3aed', onSelect: function(t){
+      tabs.forEach(function(x){ x.active = (x === t); });
+      document.getElementById('content').textContent = 'Selected: ' + t.label;
+      render();
+    }}));
+  }
+  render();
+
+  document.getElementById('bar2').appendChild(spDtabs([
+    {label:'Overview'}, {label:'Stats'}, {label:'Settings'}
+  ], {accent:'#1e6fd9'}));
+</script>
+</body>
+</html>

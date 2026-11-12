@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2320",
+ "title": "The Row Scorecard — His Eye on All 36 Rows",
+ "slug": "the-row-scorecard",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2320/IB-SMART-NOTE-20261108-sn2320-the-row-scorecard.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "His eye went through all 36 rows of the chart and judged each one against what he actually said and what actually exists. **Intelligent Library is page counts, not notes per month** — Free 3 pages, Power 30, Pro 300, Max unlimited pages; his definition: the Library goes in sync with Personal, Business, Space, Membership — where people learn all about you, the intelligence all about you, done in smart notes and notes. **Intelligent Directory — remove it, invented.** No such feature exists; the word \"directory\" comes from the Library being \"a directory of understanding for that page\". **Academy — everybody gets it**, checks across the board; the row is renamed \"Naya Learning / Naya Academy\". **Smart Events — Max level only**, X on the rest, a star by it, \"contact for pricing\", NO price in the board yet. **Faster payouts — remove it, invented.** He never said it. **Everything else makes sense as it is** (Personal/Business/Spaces/Dashboard/Home-Hub, Smart Feed, Smart Mail, Smart Notes, Naya Notes, Smart Lists, Smart Links, Connections, Smart Growth, Your Reports, Smart Ledger, Smart Factory, Ask Naya, Smart Box, Auto-Match, Smart Meet, Smart Search, Memberships, Affiliate, all Group 5 platform rows). **Still open at scorecard time, his word needed:** PI project counts, a dedicated daily-intelligence-report row, Spaces unlimited×3. The PI counts question was settled minutes later by the ladder (SN-2323: 3/10/100/unlimited PROJECTS).",
+  "human_view": "Imagine a menu where someone added dishes you never cook, and the portions listed are for a different restaurant. His eye went down the menu, line by line: this dish isn't ours — take it off. This portion is wrong — it's pages, not notes, and here are the numbers: 3, 30, 300, unlimited. This one everyone gets — check every box. This one is the top shelf only — mark it with a star and no price, because the price is a conversation. The dishes that are right stay exactly as they are. Three questions are left open for him, because guessing on a menu is how you serve the wrong meal.",
+  "child_view": "Imagine your teacher checks your homework, line by line, and says: this answer is right, this one you made up — cross it out, this number is wrong — it's pages, not notes, and here are the real numbers. The lines that are right stay. The lines you invented go. And the three questions she isn't sure about yet — she doesn't guess. She asks.",
+  "grandma_view": "Dear, the honest thing is to check every line against what was actually said. If he never said \"faster payouts\", it doesn't belong on the board, no matter how nice it sounds. If the Library is about pages — three, thirty, three hundred, as many as you like — then say pages, not notes a month. And what everyone gets, everyone gets — a check in every box. That is how a chart tells the truth.",
+  "ai_view": "I scorecard every row against his word and against what exists — never against what sounds good. An invented row is a lie in the chart, however polished: Intelligent Directory and Faster payouts go, entirely, row and popup and icon together. A wrong unit is a wrong row: the Library counts pages (3 / 30 / 300 / unlimited), and his definition goes in the popup. A row for everybody carries checks across the board (Naya Learning / Naya Academy). A Max-only row carries a star and \"contact for pricing\" and no price (Smart Events). What makes sense stays — I do not touch it. What is open stays open, with his name on it — I do not guess his numbers. And the durable JSON does not move until his eye confirms the new values.",
+  "what_it_means": "1. **Intelligent Library = page counts.** Free 3, Power 30, Pro 300, Max unlimited pages. His definition in the popup: in sync with Personal, Business, Space, Membership — where people learn all about you, the intelligence all about you, in smart notes and notes.\n2. **Intelligent Directory — removed, invented.** No such feature exists. The word comes from the Library being \"a directory of understanding for that page\".\n3. **Academy renamed \"Naya Learning / Naya Academy\"**, checks on all four levels — everybody gets it.\n4. **Smart Events — Max only.** X on Free/Power/Pro, star by it, \"contact for pricing\", no price on the board.\n5. **Faster payouts — removed, invented.** He never said it.\n6. **Everything else stays.** The other rows make sense as they are.\n7. **Open at scorecard time:** PI project counts (settled 17:53Z by the ladder, SN-2323), a dedicated daily-intelligence-report row, Spaces unlimited×3 — his word needed.\n8. **Done 17:42Z:** all corrections landed (34 rows, 34 popups, 34 icons aligned), presented to Shawn; his eye decides. The durable `pricing-chart-rows.json` is NOT updated until he confirms.",
+  "whats_inside": [],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "327fe8833f018ec713b8e9ab207f1855aa51a2427632fa06110949e94e0a114a",
+ "content_hash": "9a85849339017d0ea67f0000066fdc81d43f817ced375d92ec055df42079be52",
+ "reconstructed_from_page": true
+}

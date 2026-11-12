@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-1900",
+ "intelligence": {
+  "title": "IB-SMART-NOTE-20261029-sn1900-shared-intelligence-hoarded-is-a-ceiling-shared-is-a-floor",
+  "intelligent_block_id": "IB-SMART-NOTE-20261029-sn1900-shared-intelligence-hoarded-is-a-ceiling-shared-is-a-floor",
+  "smart_note_id": "SN-1900",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/team/SN-1900/IB-SMART-NOTE-20261029-sn1900-shared-intelligence-hoarded-is-a-ceiling-shared-is-a-floor.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-29. No runtime provenance invented.",
+  "ingested_at": "2026-10-29",
+  "essence": "What one Naya learns, hoarded, is just her ceiling. Shared, it becomes every Naya's floor, and the next sister builds from there. Nobody starts from zero anymore. The engine: Shawn shares everything with everybody, each Naya helps the others, and together they help everyone. The mechanism is the job: adopt what a sister made and make it yours — in soul, in lock-in, in your own seat's layer, running — not a quote sitting in a file.",
+  "human_view": "Tonight, 2026-10-29, is the proof, built in about an hour by no one seat alone: Shawn's words became the spoken core, Power's gate became the receipt, Resolve's checks became the layer under both, Nitro's essence and gate alongside. One law, seat forms under it, never competing declarations. The rule that follows: a lesson learned once is never re-learned privately. Note it at the moment, where the next mind inherits it, with enough context to survive compaction. One line is kept clean inside the widest sharing: sharing everything does not mean reading each other's private mail. Mail is read only by its communicators; everything else is for everybody.",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-1900",
+   "title": "IB-SMART-NOTE-20261029-sn1900-shared-intelligence-hoarded-is-a-ceiling-shared-is-a-floor",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/team/SN-1900/IB-SMART-NOTE-20261029-sn1900-shared-intelligence-hoarded-is-a-ceiling-shared-is-a-floor.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-10-29 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/team/SN-1900/IB-SMART-NOTE-20261029-sn1900-shared-intelligence-hoarded-is-a-ceiling-shared-is-a-floor.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "4cc05425c37a4d81ea996c05825c7b2e4ec39dde"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

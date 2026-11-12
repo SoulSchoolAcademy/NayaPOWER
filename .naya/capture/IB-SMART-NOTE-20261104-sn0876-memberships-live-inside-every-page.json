@@ -1,0 +1,35 @@
+{
+  "smart_note_id": "SN-0876",
+  "intelligence": {
+    "title": "Memberships Live Inside Every Page — Never a Separate App",
+    "intelligent_block_id": "IB-SMART-NOTE-20261104-sn0876-memberships-live-inside-every-page",
+    "smart_note_id": "SN-0876",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM-ARCHITECTURE/MEMBERSHIPS/SN-0876/IB-SMART-NOTE-20261104-sn0876-memberships-live-inside-every-page.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Registration cure filed by Naya Resolve Narzan on 2026-11-04: this note's page was filed on main (page created 2026-11-04T03:05:00Z) without a capture or registry entry — a member of the unregistered family (SN-0861–SN-0873, SN-0875–SN-0882). This capture and the matching registry entry register the page exactly as it stands; the page is unmodified. SN-2044 is deliberately NOT in this cure: the retro-verification FINDING on PR #3158 rules its page a duplicate of SN-0874 (first claim, registered) with the number returned to the pool — its cure is reconcile/remove against SN-0874, not registration.",
+    "ingested_at": "2026-11-04",
+    "essence": "Memberships are not a separate app. They are an add-on to any page — Personal, Business, or Space — so every citizen's world can have its own private community with its own content.",
+    "human_view": "- A \"Create membership\" button lives on Personal, Business, and Space pages.\n- The member logs in and lands on a beautiful page: video, PDFs, audios, content — beautifully presented.\n- One citizen can have memberships on any of their pages, or all of them.\n- Every page carries the standard kit: Smart Mail + Instant Messenger built in · Smart Lists (group people → message as a group) · Scheduler/Booker (appointments, look-back journal on week/day, schedule posts, schedule mail, schedule messages/reminders) · About page · products/services.\n- One system that syncs: Lists feed the messenger, the messenger feeds the scheduler — not separate apps, one living system.",
+    "simple_view": "Any page you own can grow a private club inside it. You press one button, and your members get a special page with videos, books, and recordings — no new app, no new password, right inside the page they already know.",
+    "grandma_view": "Dear, it's like adding a cozy back room to your own shop. Your best customers step through a door inside the shop they already visit, and there are your lessons and treasures, laid out beautifully. You don't rent a second building across town — the room is part of your shop.",
+    "naya_view": "I never build memberships as a separate app. A Create-membership button lives on the citizen's own pages; the membership is born inside that page with the standard kit attached — Smart Mail, Messenger, Lists, Scheduler, About, products — one synced system where Lists feed the Messenger and the Messenger feeds the Scheduler.",
+    "ai_view": "The old internet makes you buy a membership platform, an email tool, a scheduler, and a community app — then duct-tape them together. Here the membership is born inside the page the citizen already lives in. Same identity, same design language, same intelligence. Zero new logins, zero new tools.",
+    "machine_view": {
+      "sn": "SN-0876",
+      "title": "Memberships Live Inside Every Page — Never a Separate App",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM-ARCHITECTURE/MEMBERSHIPS/SN-0876/IB-SMART-NOTE-20261104-sn0876-memberships-live-inside-every-page.md",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "machine_section": "Memberships: add-on to any page (Personal/Business/Space), created via in-page 'Create membership' button; member login → content page (video/PDF/audio). Per-page standard kit: Smart Mail + Instant Messenger, Smart Lists (group → group message), Scheduler/Booker (appointments, journal look-back, scheduled posts/mail/messages/reminders), About, products/services. Sync law: Lists → Messenger → Scheduler, one source. State at filing: architecture locked 2026-11-04; Supabase foundation (memberships/members/content) live; UI in progress."
+    },
+    "views_note": "Views extracted from the published page's own sections exactly where the page carries them (essence ← page section 'The Hook'; human_view ← page section(s) ['What Shawn Directed (2026-11-04 02:13Z)']; ai_view ← page section 'Why It Matters'). The perspective views the page does not carry as sections (simple/grandma/naya/machine where absent) were reconstructed from the page's own content by Naya Resolve Narzan for this registration cure, 2026-11-04; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM-ARCHITECTURE/MEMBERSHIPS/SN-0876/IB-SMART-NOTE-20261104-sn0876-memberships-live-inside-every-page.md",
+    "provenance_note": "Registration cure by Naya Resolve Narzan, 2026-11-04, for a BRAIN projection published on main without a registry entry. Census at cure time against main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: the registry (.naya/memory/smart-notes/index.json, 777 entries) held no SN-0876; no capture for SN-0876 existed on main; the page's only tree path is BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/SYSTEM-ARCHITECTURE/MEMBERSHIPS/SN-0876/IB-SMART-NOTE-20261104-sn0876-memberships-live-inside-every-page.md. Open PR heads checked: #3165 (registry 778), #3166 (780), #3167 (780), #3131 (767) — none holds SN-0876 in registry or captures; #3108 and #3089 head trees hold no capture for this note. Collision note: stale open PR #2981 (naya4/smart-notes-2026-09-30) carries October BRANCH_ONLY 'migrated' captures under the SN-0861–SN-0882 numbers for DIFFERENT notes (e.g. its SN-0861 is 'The Compare UI Lies on Rebased Branches', IB-SMART-NOTE-20261009-sn0861-rebased-branch-compare-lies) — a number-collision family, not coverage of this page; adjudication of the zombie branch belongs to the SN-collision process, not this cure. Fingerprints computed from the page bytes at the main tip: page_hash = sha256(page bytes); content_hash = sha256(canonical JSON of this capture's intelligence object).",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}

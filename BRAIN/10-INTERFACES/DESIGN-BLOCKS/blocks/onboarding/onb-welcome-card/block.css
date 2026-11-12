@@ -1,0 +1,42 @@
+/* Smart Block CSS: onboarding/onb-welcome-card
+ * Source: gap-blocks-2/onboarding-blocks.md (harvested, never restyled)
+ * Catalog: NAYA-ONB-002
+ */
+
+/* Family token sheet — every rule below assumes these (copied once, scoped to the family root) */
+
+.onb{--ground:#050507;--ink:#fff;--magenta:#e84fff;--purple:#a06bff;--indigo:#6675ff;--blue:#3fb8ff;--emerald:#35e0a1;--green:#2fe89e;--lime:#b8ee57;--gold:#ffbf3d;--orange:#ff9a5a;--red:#ff5e6c;--pink:#ed58cd;--ease:cubic-bezier(.16,.84,.22,1);--serif:Georgia,'Times New Roman',serif;background:var(--ground);color:var(--ink)}
+
+.onb-welcome{max-width:640px;margin:0 auto;text-align:center;padding:44px 38px 34px;
+background:linear-gradient(180deg,#1a171f,#09090d 60%,#030304);
+border:1.5px solid rgba(255,255,255,.3);border-radius:24px;
+box-shadow:inset 0 2px 2px rgba(255,255,255,.12),inset 0 -8px 18px rgba(0,0,0,.55),
+0 5px 0 #020203,0 35px 75px rgba(0,0,0,.7),0 0 40px -17px rgba(160,107,255,.35);
+transition:transform .28s cubic-bezier(.16,.84,.22,1),border-color .28s,box-shadow .28s}
+.onb-welcome:hover{transform:translateY(-5px);border-color:#a06bff;
+box-shadow:inset 0 2px 2px rgba(255,255,255,.12),inset 0 -8px 18px rgba(0,0,0,.55),
+0 5px 0 #020203,0 40px 80px rgba(0,0,0,.7),0 0 52px -14px rgba(160,107,255,.55)}
+.onb-face{width:104px;height:104px;margin:0 auto 22px;position:relative}
+.onb-face svg{width:100%;height:100%;display:block;filter:drop-shadow(0 0 22px rgba(160,107,255,.65))}
+.onb-face::after{content:"";position:absolute;inset:-16px;border-radius:50%;pointer-events:none;
+background:radial-gradient(circle,rgba(160,107,255,.22),transparent 70%);
+animation:onb-halo 5s ease-in-out infinite}
+@keyframes onb-halo{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
+.onb-kicker{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#fff;opacity:.65}
+.onb-hello{font-family:Georgia,'Times New Roman',serif;font-size:32px;color:#fff;margin:12px 0 10px;
+text-shadow:0 2px 8px rgba(0,0,0,.8),0 0 22px rgba(255,255,255,.14)}
+.onb-line{font-size:15px;line-height:1.7;color:#fff;opacity:.92;max-width:44ch;margin:0 auto 28px}
+.onb-cta{min-height:52px;padding:0 36px;font-size:16px;font-weight:600;border-radius:14px;
+background:#050505;color:#fff;border:1.5px solid rgba(255,255,255,.85);cursor:pointer;
+display:inline-flex;align-items:center;gap:10px;
+box-shadow:inset 0 2px 2px rgba(255,255,255,.12),0 12px 28px rgba(0,0,0,.6);
+transition:transform .18s cubic-bezier(.16,.84,.22,1),border-color .18s,box-shadow .18s}
+.onb-cta svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;flex:none}
+.onb-cta:hover{transform:translateY(-2px);border-color:#a06bff;box-shadow:0 0 32px rgba(160,107,255,.6),0 14px 30px rgba(0,0,0,.6)}
+.onb-cta:active{transform:translateY(1px)}
+.onb-cta:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.onb-quiet{display:inline-block;margin-top:18px;font-size:13px;color:#fff;opacity:.65;text-decoration:none;
+border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:2px;transition:opacity .18s,border-color .18s}
+.onb-quiet:hover{opacity:1;border-color:#a06bff}
+.onb-knows{margin:24px 0 0;font-size:11px;letter-spacing:.06em;color:#fff;opacity:.5}
+@media (prefers-reduced-motion:reduce){.onb-face::after{animation:none}.onb-welcome,.onb-cta{transition:none}}

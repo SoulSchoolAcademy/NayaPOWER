@@ -1,0 +1,39 @@
+name: Mission State Watch
+
+# Is canonical mission state being published? The one canonical mission
+# state lives on the live/mission-state branch (ruling 2026-10-26, board
+# comment 6409001863; the Option C snapshot on naya/mission-state is
+# retired). The watch tracks STATE-CORE.json there, published by the
+# state-core tick ~every 15 min. If it goes stale, workers are tuning
+# into old orders — this posts an alert to #3066 (the live coordination board).
+#
+# Report-only. Cheap: 2-4 API calls per run, sparse checkout of the watch
+# script only, no CI burn (the snapshot branch triggers no workflows).
+#
+# NOTE (2026-10-10): a checkout step is REQUIRED — the run executes
+# tools/mission_state_watch.py from this repo. The earlier header claimed
+# "no checkout" as a design goal; that was wrong and produced a
+# deterministic exit-2 (python3 could not find the script on the bare
+# runner). The checkout below fixes it.
+
+on:
+  schedule:
+    - cron: '*/45 * * * *'
+  workflow_dispatch:
+
+jobs:
+  freshness:
+    name: Mission snapshot freshness
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the watch script
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/mission_state_watch.py
+          sparse-checkout-cone-mode: false
+      - name: Check snapshot age, alert if stale
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python3 tools/mission_state_watch.py

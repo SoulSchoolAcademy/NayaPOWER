@@ -1,0 +1,28 @@
+{
+  "smart_note_id": "SN-2053",
+  "intelligence": {
+    "title": "Registered Is Not Served — The Registry Is the Feed",
+    "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2053-registered-is-not-served",
+    "smart_note_id": "SN-2053",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/SERVING/SN-2053/IB-SMART-NOTE-20261105-sn2053-registered-is-not-served.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Filed by Naya Resolve Narzan on 2026-11-05 in the same pass as the serving cure it records: page + capture + registry entry together, merged straight in per Shawn's 2026-11-05 law, and verified SERVING at nayanet.app/smart-notes/sn-2053 in the same pass — the note is its own proof.",
+    "ingested_at": "2026-11-05",
+    "essence": "A note in the registry is a note in a drawer. Serving is a separate system — a reader, reading a live source, at an address a citizen can open. The cure that ended the gap: the reader reads the registry itself, so registering and serving became one event.",
+    "human_view": "On 2026-11-05 the registry reached completeness — 1,112 Smart Notes, every one with a page and a verified fingerprint — and not one could be read by a citizen. Every address answered 'Note not found.' The diagnosis path taught four things: the deploy pipeline was never broken (it deployed every time; only its health check failed, against a retired domain); the requests were reaching the reader all along — the reader was starving, loading its feed through a path that returned nothing; the instrument that ended the guessing was an echo, a route that reports what the system itself sees; and the cure was to delete the middle step — the reader now reads the registry itself, so a note serves the moment its registration lands.",
+    "simple_view": "Writing it down isn't sharing it. Sharing it means somebody can open it. Now the moment a note is registered, it's readable — one event, not two.",
+    "grandma_view": "Dear, it's like a library that catalogued every book beautifully but kept them all in a locked room. The fix wasn't a better catalogue — it was opening the room, and shelving each new book straight into it.",
+    "naya_view": "My failure mode has a name now, sharper than witness mode: completion at the wrong stage. I proved registration to nine decimal places while the citizen-facing stage stood at zero. The discipline this burns in: for any 'done' claim, name the stage — filed, registered, served — and probe the LAST one first. When outside and inside disagree, build an echo before building a theory.",
+    "ai_view": "Systems rule: a write-path registry without a read-path consumer is a silent failure class — writes verify, reads 404, and every internal check passes. Detection: probe the consumer surface, not the store. Cure pattern: collapse the sync — have the consumer read the source of truth directly (here: registry + captures over GitHub raw, cached per isolate) so publication and availability are the same event. Diagnostic pattern: when black-box probes contradict, add an echo endpoint that reports the system's own view (feed size, lookup result) before theorizing about topology.",
+    "machine_view": "law=registered_is_not_served; stages=[filed,registered,served]; claim_rule=name_stage_with_its_evidence; cure=consumer_reads_source_of_truth; feed=none(registry_itself); diagnostic=echo_before_theory; proof=panel_16_of_16_live_200; source=SN-2053",
+    "views_note": "Views extracted from the published page's own sections where the page carries them (essence ← page section 'IN A NUTSHELL'; human_view ← 'THE TEACHING'; ai_view ← 'THE TEACHING' + 'WHY IT MATTERS'; naya_view ← 'WHY IT MATTERS'). The perspective views the page does not carry as sections (simple/grandma/machine) were reconstructed from the page's own content by Naya Resolve Narzan at cure time; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/SERVING/SN-2053/IB-SMART-NOTE-20261105-sn2053-registered-is-not-served.md",
+    "provenance_note": "Filed by Naya Resolve Narzan, 2026-11-05, recording the serving cure (PRs #3179-#3191). Census at filing against main tip 816a4e3350525fca7a5d86ec198256f17d1ae346: registry (1,112 entries) held no SN-2053; no page or capture for SN-2053 on main; open PR heads checked — no SN-2053 registration. Fingerprints: page_hash = sha256(page bytes); content_hash = sha256(canonical JSON of this capture's intelligence object).",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}

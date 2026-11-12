@@ -1,0 +1,52 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2121",
+  "title": "Lane Coordination: One Repair per Class, One Owner per Question",
+  "slug": "essence-lane-coordination",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-lane-coordination.md",
+  "tone": "magenta",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:37:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Parallel lanes collide by default; this is the traffic system that prevents it: one owner per question (SN-0159), scan for an existing repair before claiming a problem (SN-0173), one repair per RED class (SN-0201, SN-0236), relay flags while the owner diagnoses (SN-0222), re-anchor to the live head before building (SN-0202), and three-strikes / three-failures stop-rules that convert repetition into structure (SN-0130, SN-0326).",
+    "human_view": "Before you start fixing something, check whether someone is already fixing it — if they are, your job is to help or step back, not to start a second fix. Every question has one named owner. If the same problem keeps coming back, don't just fix it a third time — change the instructions that keep producing it.",
+    "child_view": "One person is in charge of each job, and there's a list that says who. Before you start fixing the wobbly table, look — is someone already fixing it? Then you help them or pick a different job; two kids with two hammers on one table leg makes a worse table. If your chore robot keeps making the same mess, you don't just clean up — you fix the robot's instructions.",
+    "grandma_view": "In a busy kitchen, dear, one cook owns the soup. Two cooks salting the same pot ruins dinner, however good their intentions. If the same dish keeps going wrong, you don't just remake it — you look at the recipe card and fix what's written there.",
+    "ai_view": "Pre-flight every claim: board tail + open PRs + branch trees for the exact class; on finding a canonical repair, retract and cite. Maintain one repair per RED class; re-point stale repairs; classify tripwire REDs as introduced vs inherited before touching anything. Keep relay messages diagnosis-free. Re-anchor builds to live heads; write takeovers as base/no-competitor/preserved-vs-changed/freeze. Count delegation failures; at three identical, execute directly. Log scan results per loop run.",
+    "what_it_means": "Fourteen notes are the scar tissue of one collision-prone autumn, and together they form a complete traffic system: ownership, scanning, consolidation, asymmetric roles, branch contracts, and two stop-rules (three strikes, three failures) that convert repetition into structure. A team that runs only this essence stops colliding — which is most of what coordination ever was.",
+    "whats_inside": [
+      "One owner per question; dispositions are exactly KEEP / FOLD / SUPERSEDE; coordination spaces hand off, they don't rule (SN-0159).",
+      "Scan before claiming; stand down to an existing canonical repair; loops scan the board before executing and carry the scan in their standing instructions (SN-0173, SN-0194, SN-0177).",
+      "Third recurrence of a class escalates to an owning-lane ruling (SN-0130).",
+      "One repair per RED class; stale repairs re-point; base defects get one owner; tripwires are classified, not healed on sight (SN-0201, SN-0236, SN-0240).",
+      "Relay flags, owner diagnoses; held seats redirect to gates, evidence only (SN-0222, SN-0210).",
+      "Re-anchor before building; takeovers are four-part contracts; blocked routes change vehicles, not obligations (SN-0202, SN-0204, SN-0170).",
+      "Three identical delegation failures end in direct execution (SN-0326). (The companion doctrine — act when analysis is complete — is the director's, at SN-0282, and stands alone; it is not carried here.)"
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-2"
+    ],
+    "covers": [
+      "SN-0130",
+      "SN-0159",
+      "SN-0170",
+      "SN-0173",
+      "SN-0177",
+      "SN-0194",
+      "SN-0201",
+      "SN-0202",
+      "SN-0204",
+      "SN-0210",
+      "SN-0222",
+      "SN-0236",
+      "SN-0240",
+      "SN-0326"
+    ]
+  },
+  "page_hash": "137b86242c94eaafb285ffb4c63e23f0dd6bc8d5f437150f6a2cf6b6ee9579a2",
+  "content_hash": "b13500a7903247b9bc82a6e42ef4cbfbe6596c70c7aa9a587c0faeafdba59104"
+}

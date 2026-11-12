@@ -1,0 +1,2 @@
+The Reserve Rule applies only when the top two priority scores are within 0.5 points of each other, triggering dispatch of the lower-scored call.
+When the gap exceeds 0.5 points the rule does not apply, and the honest default is to dispatch the higher-scored call.

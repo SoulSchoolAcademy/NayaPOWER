@@ -1,0 +1,85 @@
+/* Smart Block CSS: spaces/sp-card
+ * Source: Smart Spaces Page Design.html (extracted byte-true, never rewritten)
+ */
+
+
+
+/* ---- space cards ---- */
+.sp-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:18px; }
+
+
+.sp-card{
+  --sc:#7c3aed;
+  border-radius:22px; overflow:hidden; cursor:pointer;
+  background:linear-gradient(180deg,#0d0c15 0%,#07070c 100%);
+  border:1px solid color-mix(in srgb, var(--sc) 38%, transparent);
+  box-shadow:inset 0 1px rgba(255,255,255,.06), 0 18px 44px rgba(0,0,0,.55);
+  transition:transform .22s cubic-bezier(.2,.8,.2,1), border-color .25s, box-shadow .3s;
+}
+
+
+.sp-card:hover{
+  transform:translateY(-6px);
+  border-color:color-mix(in srgb, var(--sc) 82%, #fff);
+  box-shadow:inset 0 1px rgba(255,255,255,.08), 0 18px 44px rgba(0,0,0,.55), 0 0 38px -6px var(--sc), 0 0 12px -2px var(--sc);
+}
+
+
+.sp-card-name{ font-size:21px; font-weight:900; color:#fff; margin-bottom:4px; transition:text-shadow .25s; }
+
+
+.sp-card:hover .sp-card-name{ text-shadow:0 0 18px rgba(255,255,255,.5); }
+
+
+.sp-card-topic{ font-size:11px; font-weight:800; letter-spacing:.18em; color:var(--sc); text-transform:uppercase; }
+
+
+.sp-card-body{ padding:18px 20px; }
+
+
+.sp-card-desc{ font-size:13.5px; line-height:1.6; color:#c9cdd8; margin-bottom:14px; min-height:44px; }
+
+
+.sp-card-meta{ display:flex; align-items:center; gap:10px; }
+
+
+  .sp-grid{ grid-template-columns:1fr; }
+
+
+  .sp-card, .sp-member, .sp-modal, .sp-save-contact{ transition:none; animation:none; }
+
+
+
+/* ============ V2 PREMIUM UPGRADE ============ */
+/* Richer space cards */
+.sp-card{
+  border-radius:26px;
+  background:
+    radial-gradient(120% 90% at 20% 0%, color-mix(in srgb, var(--sc) 22%, transparent), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.015));
+  border:1px solid color-mix(in srgb, var(--sc) 34%, rgba(255,255,255,.10));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.10), 0 24px 60px rgba(0,0,0,.55);
+  transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .3s, border-color .25s;
+}
+
+
+.sp-card:hover{
+  transform: translateY(-7px);
+  border-color: color-mix(in srgb, var(--sc) 80%, #fff);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 38px 88px rgba(0,0,0,.65), 0 0 76px -8px var(--sc), 0 0 32px -4px var(--sc);
+}
+
+
+.sp-card-cover{
+  height:120px;
+  background:
+    radial-gradient(90% 120% at 15% 10%, rgba(255,255,255,.22), transparent 50%),
+    linear-gradient(135deg, color-mix(in srgb, var(--sc) 82%, #000), color-mix(in srgb, var(--sc) 38%, #050507));
+  position:relative; overflow:hidden;
+}
+
+
+.sp-card-cover::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,.45));
+}

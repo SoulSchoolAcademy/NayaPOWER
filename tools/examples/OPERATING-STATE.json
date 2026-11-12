@@ -1,0 +1,53 @@
+{
+  "schema": "naya.operating-state/1",
+  "generated_at": "2026-10-21T23:16:30Z",
+  "tip": "ac4878f8283606a60cbbad3ad7437a8b9a70a433",
+  "open_pr_count": 12,
+  "queue_by_tier_action": {
+    "A": {
+      "HOLD-HUMAN": 2,
+      "CURE": 4,
+      "MERGE-NOW": 1
+    },
+    "B": {
+      "CURE": 4
+    },
+    "C": {
+      "MERGE-NOW": 1
+    }
+  },
+  "tip_failing_checks": [
+    "Protocol machine law (kernel/protocol)",
+    "promote-and-prove",
+    "spec-integrity",
+    "test"
+  ],
+  "gauge": {
+    "source": "files/balanced-machine/GAUGE-READ-2026-10-21.md",
+    "read_anchor": "2026-10-21 22:41:48Z",
+    "paperwork_block_rate_pct": 51.5,
+    "time_to_merge_median_hours": {
+      "A": 11.3,
+      "B": 5.9,
+      "C": 15.3
+    },
+    "escape_rate_proxy_pct": 3.9,
+    "feed_freshness": "outside band \u2014 wall held exactly 1 entry at read; see source read"
+  },
+  "laws": {
+    "source": "~/AGENTS.md (distilled standing laws, tail carries the current iteration)",
+    "iteration": 206,
+    "latest_laws": [
+      "L606",
+      "L607",
+      "L608",
+      "L609",
+      "L611",
+      "L612"
+    ]
+  },
+  "hold_human": [
+    2385,
+    2747
+  ]
+}

@@ -1,0 +1,56 @@
+/* Smart Block: constellation
+ * Source: authored 2026-10-09 for the Smart Graphs visual language
+ * Type: graphs
+ * A constellation map for networks: spaces, connections, ideas and how they
+ * touch. Nodes glow in spectrum color; node radius carries weight; light arcs
+ * carry the relationships. The map floats gently — alive, never a diagram.
+ *
+ * Data contract: inline SVG.
+ *   <circle class="sc-node" r="<weight>" style="--nc:var(--blue);--ncrgb:var(--blue-rgb)">
+ *   <path class="sc-arc"> for each relationship
+ *   <text class="sc-tag"> for labels
+ * Dependencies: tokens.css
+ */
+
+.sg-card { border-radius: 20px; padding: 24px 22px 18px;
+  background: linear-gradient(180deg, #101117, #0a0b0f);
+  border: 1px solid var(--soft-line);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 -12px 24px rgba(0,0,0,.4), 0 16px 34px rgba(0,0,0,.5); }
+.sg-card h4 { margin: 0 0 4px; font-size: 18px; color: #fff; font-weight: 700; }
+.sg-card .c-sub { font-size: 14px; color: var(--quiet); margin-bottom: 10px; }
+
+@keyframes sc-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes sc-twinkle { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+@keyframes sc-draw { to { stroke-dashoffset: 0; } }
+@keyframes sc-fade { to { opacity: 1; } }
+
+.sc-sky { width: 100%; height: 240px; display: block; }
+.sc-arc { fill: none; stroke: url(#scArcGrad); stroke-width: 1.5; opacity: .8;
+  stroke-dasharray: 400; stroke-dashoffset: 400; }
+.sg-card.lit .sc-arc { animation: sc-draw 1.4s var(--ease) forwards; }
+.sg-card.lit .sc-arc:nth-of-type(2) { animation-delay: .15s; }
+.sg-card.lit .sc-arc:nth-of-type(3) { animation-delay: .3s; }
+.sg-card.lit .sc-arc:nth-of-type(4) { animation-delay: .45s; }
+.sg-card.lit .sc-arc:nth-of-type(5) { animation-delay: .6s; }
+.sg-card.lit .sc-arc:nth-of-type(6) { animation-delay: .75s; }
+.sc-node { --nc: var(--purple); --ncrgb: var(--purple-rgb);
+  fill: url(#scNodeGrad); stroke: var(--nc); stroke-width: 1.5;
+  filter: drop-shadow(0 0 6px rgba(var(--ncrgb),.8));
+  opacity: 0; }
+.sg-card.lit .sc-node { animation: sc-fade .8s var(--ease) forwards; }
+/* stagger via inline animation-delay on each .sc-node (nth-of-type can't be
+ * used: the background .sc-star circles share the circle type) */
+.sc-tag { font-size: 11px; fill: rgba(255,255,255,.75); font-weight: 600; text-anchor: middle;
+  opacity: 0; }
+.sg-card.lit .sc-tag { animation: sc-fade .8s var(--ease) 1.6s forwards; }
+.sc-hub { animation: sc-float 6s ease-in-out infinite; }
+.sc-star { fill: #fff; animation: sc-twinkle 3.4s ease-in-out infinite; }
+
+.sg-legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 14px; font-size: 14px; color: var(--quiet); }
+.sg-legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 7px;
+  background: var(--lc, var(--purple)); box-shadow: 0 0 8px var(--lc, var(--purple)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sg-card.lit .sc-arc, .sg-card.lit .sc-node, .sg-card.lit .sc-tag { animation: none; opacity: 1; stroke-dashoffset: 0; }
+  .sc-hub, .sc-star { animation: none; }
+}

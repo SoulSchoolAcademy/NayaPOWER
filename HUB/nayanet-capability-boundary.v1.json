@@ -1,0 +1,1109 @@
+{
+  "schema": "nayanet.capability-boundary.v1",
+  "canonical_issue": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3028",
+  "source_smart_notes": [
+    "SN-0843",
+    "SN-0845",
+    "SN-0846"
+  ],
+  "state": "PROPOSED_AND_UNVERIFIED",
+  "audiences": {
+    "citizen": {
+      "description": "Meaningful network membership; no personal Naya operator",
+      "requires_github": false,
+      "operator_authority": false
+    },
+    "managed_operator": {
+      "description": "PROPOSED hosted delegated operator with independent agent seats, quotas, revocation, tenant isolation",
+      "requires_github": false,
+      "operator_authority": "requires_issuer_delegation_and_verified_runtime",
+      "production_state": "NOT_VERIFIED"
+    },
+    "owner_fork": {
+      "description": "Owner-controlled code/fork projection and authorized Naya runtime",
+      "requires_github": true,
+      "operator_authority": "requires_verified_fork_activation_and_runtime",
+      "production_state": "IMPLEMENTATION_PARTIAL"
+    }
+  },
+  "boundaries": {
+    "one_network": true,
+    "one_shared_data_authority": true,
+    "personal_state_isolated_by_owner": true,
+    "agent_seat_is_not_owner": true,
+    "connection_is_not_message_consent": true,
+    "auto_match_cannot_join_connect_or_send": true,
+    "public_read_never_implies_collective_contribution": true,
+    "fork_not_equal_to_runtime_activation": true,
+    "activation_not_equal_to_production_proof": true,
+    "ui_button_not_equal_to_service": true,
+    "unlimited_pages_not_promised": true,
+    "operator_access_requires_fresh_scope_and_revocation": true,
+    "tenant_boundaries_govern_private_state": true
+  },
+  "unit_economics": {
+    "cost_is_literally_zero": false,
+    "goal": "Minimize marginal cost for event-driven deterministic tasks; measure AI inference, speech, storage, bandwidth, moderation, security and support",
+    "policy": "Quotas, visibility and metering before unlimited activity promises"
+  },
+  "minimum_evidence": [
+    "exact_deployed_sha",
+    "independent_authenticated_verifier",
+    "real_positive_test",
+    "negative_cross_owner_denial",
+    "recovery_and_revocation_test",
+    "current_service_health",
+    "human_task_value"
+  ],
+  "features": [
+    {
+      "id": "citizen_identity",
+      "label": "Citizen identity & Hub",
+      "human_benefit": "One recognized citizen identity across the network",
+      "offered_in": {
+        "citizen": true,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "verified_identity",
+        "owner_binding",
+        "scope_isolation"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": false,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "personal_world",
+      "label": "Personal World",
+      "human_benefit": "Editable Personal page with genuine owner content",
+      "offered_in": {
+        "citizen": true,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "verified_identity",
+        "owner_binding",
+        "profile_write_authorized",
+        "per_page_settings_owner_scope_verified",
+        "per_page_visibility_and_discovery_server_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": false,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "business_page",
+      "label": "Optional Business Page",
+      "human_benefit": "Present a real business or cause; skipping is valid",
+      "offered_in": {
+        "citizen": true,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "verified_identity",
+        "owner_binding",
+        "profile_write_authorized",
+        "per_page_settings_owner_scope_verified",
+        "per_page_visibility_and_discovery_server_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": false,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "starter_space",
+      "label": "Community Space",
+      "human_benefit": "A scoped community home, without forced membership",
+      "offered_in": {
+        "citizen": true,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "verified_identity",
+        "owner_binding",
+        "space_membership_authorized",
+        "per_page_settings_owner_scope_verified",
+        "per_page_visibility_and_discovery_server_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": false,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "public_knowledge",
+      "label": "Public collective knowledge",
+      "human_benefit": "Explore deliberately public network wisdom",
+      "offered_in": {
+        "citizen": true,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "public_visibility_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": false,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "public_naya_guide",
+      "label": "Public-scope Ask Naya guide",
+      "human_benefit": "Ask Naya for help navigating and understanding permitted public network content without a GitHub fork",
+      "offered_in": {
+        "citizen": true,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "public_assistant_service_verified",
+        "public_scope_only_verified",
+        "rate_budget_limits_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": false,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "public_discovery",
+      "label": "Discover people, Spaces, projects",
+      "human_benefit": "Explore relevant public network content",
+      "offered_in": {
+        "citizen": true,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "public_visibility_verified",
+        "recommender_privacy_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": false,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "smart_match_public",
+      "label": "Public Smart Match",
+      "human_benefit": "Explainable percentage suggestions from public signals",
+      "offered_in": {
+        "citizen": true,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "public_visibility_verified",
+        "recommender_privacy_verified",
+        "match_calibration_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": false,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "connections",
+      "label": "Connect",
+      "human_benefit": "Choose an authorized relationship, not automatic following",
+      "offered_in": {
+        "citizen": true,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "verified_identity",
+        "owner_binding",
+        "connections_rls_verified",
+        "recipient_consent_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": false,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "private_mail",
+      "label": "Smart Mail",
+      "human_benefit": "Real permitted two-way messaging",
+      "offered_in": {
+        "citizen": true,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "verified_identity",
+        "owner_binding",
+        "mail_rls_verified",
+        "real_a_b_c_denial_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": false,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "space_participation",
+      "label": "Space participation",
+      "human_benefit": "Participation with server-enforced membership",
+      "offered_in": {
+        "citizen": true,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "verified_identity",
+        "space_membership_authorized",
+        "space_rls_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": false,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "public_feed",
+      "label": "Authorized Feed",
+      "human_benefit": "Source-linked activity for the permitted audience",
+      "offered_in": {
+        "citizen": true,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "public_visibility_verified",
+        "event_scope_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": false,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "private_visibility",
+      "label": "Public/private controls",
+      "human_benefit": "Owner's audience decisions enforced on the server",
+      "offered_in": {
+        "citizen": true,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "verified_identity",
+        "owner_binding",
+        "server_visibility_rls_verified",
+        "per_page_settings_owner_scope_verified",
+        "per_page_visibility_and_discovery_server_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": false,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "page_addons",
+      "label": "Additional pages and Spaces",
+      "human_benefit": "More owned worlds subject to real quotas",
+      "offered_in": {
+        "citizen": true,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "verified_identity",
+        "owner_binding",
+        "capacity_limits_verified",
+        "per_page_settings_owner_scope_verified",
+        "per_page_visibility_and_discovery_server_verified",
+        "per_page_pwa_installability_tested"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": false,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "owner_private_memory",
+      "label": "Private personal memory",
+      "human_benefit": "Owner-scoped durable memory with no default sharing",
+      "offered_in": {
+        "citizen": false,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "owner_binding",
+        "private_memory_isolation_verified",
+        "operator_authorized"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": true,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "personal_smart_notes",
+      "label": "Personal Smart Notes",
+      "human_benefit": "Capture and retrieve source-bound personal learning",
+      "offered_in": {
+        "citizen": false,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "owner_binding",
+        "private_memory_isolation_verified",
+        "operator_authorized",
+        "lesson_provenance_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": true,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "personalized_reports",
+      "label": "Personal reports",
+      "human_benefit": "Useful owner-specific evidence-based reports",
+      "offered_in": {
+        "citizen": false,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "owner_binding",
+        "private_reports_isolation_verified",
+        "report_pipeline_verified",
+        "operator_authorized"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": true,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "naya_operates_hub",
+      "label": "Naya operates your Hub",
+      "human_benefit": "Authorized and auditable execution by Naya",
+      "offered_in": {
+        "citizen": false,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "owner_binding",
+        "operator_authorized",
+        "law_act_receipts_verified",
+        "revocation_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": true,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "configured_automations",
+      "label": "Configured automations",
+      "human_benefit": "Bounded proactive tasks with pause and stop",
+      "offered_in": {
+        "citizen": false,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "owner_binding",
+        "operator_authorized",
+        "law_act_receipts_verified",
+        "budget_limits_verified",
+        "revocation_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": true,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "personalized_match",
+      "label": "Personal-context Match",
+      "human_benefit": "Private relevance improvements without public leak",
+      "offered_in": {
+        "citizen": false,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "owner_binding",
+        "operator_authorized",
+        "recommender_privacy_verified",
+        "consented_private_context_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": true,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "smart_app_builder",
+      "label": "Naya Smart App builder",
+      "human_benefit": "Create useful apps from reusable parts",
+      "offered_in": {
+        "citizen": false,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "owner_binding",
+        "operator_authorized",
+        "builder_functional_verified",
+        "per_page_settings_owner_scope_verified",
+        "per_page_visibility_and_discovery_server_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": true,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "collective_contribution",
+      "label": "Contribute approved wisdom",
+      "human_benefit": "Choose a scoped contribution into collective intelligence",
+      "offered_in": {
+        "citizen": false,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "owner_binding",
+        "operator_authorized",
+        "explicit_share_verified",
+        "revoke_future_shares_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": true,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "team_naya_seats",
+      "label": "Team Naya operator seats",
+      "human_benefit": "Multiple distinct Nayas under bounded human authority",
+      "offered_in": {
+        "citizen": false,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "owner_binding",
+        "operator_authorized",
+        "distinct_seat_identity_verified",
+        "audit_handoff_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": true,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "personal_fork_projection",
+      "label": "Owner GitHub fork projection",
+      "human_benefit": "Control personal code and brain projection repo",
+      "offered_in": {
+        "citizen": false,
+        "managed_operator": false,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "owner_binding",
+        "dedicated_fork_verified",
+        "correct_repo_target_verified",
+        "private_projection_isolation_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": true,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    },
+    {
+      "id": "upstream_safe_updates",
+      "label": "Upstream software synchronization",
+      "human_benefit": "Update the code without overwriting private brain state",
+      "offered_in": {
+        "citizen": false,
+        "managed_operator": false,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "owner_binding",
+        "dedicated_fork_verified",
+        "upstream_sync_isolation_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": true,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN",
+      "delivery_evidence_contract": {
+        "canonical_operation": null,
+        "source_of_truth": null,
+        "allowed_inputs_schema": null,
+        "output_schema": null,
+        "side_effects": null,
+        "server_authority_scope": null,
+        "consent_boundary": null,
+        "privacy_class": "UNASSESSED",
+        "retention_and_revocation": "UNSPECIFIED",
+        "owner_issue": null,
+        "independent_verifier": null,
+        "cost_profile": "UNMEASURED",
+        "verified_at": null,
+        "additional_evidence": []
+      }
+    }
+  ],
+  "related_architecture_issue": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3029",
+  "product_taxonomy": {
+    "experiences": [
+      "nayanet_citizen",
+      "nayapower_connected"
+    ],
+    "operating_presences": {
+      "citizen": {
+        "owns_citizen_identity": true,
+        "needs_fork_to_join": false,
+        "private_operator_grant": false
+      },
+      "connected_owner": {
+        "owns_citizen_identity": true,
+        "needs_fork_to_join": false,
+        "private_operator_grant": "requires_specific_owner_authority"
+      },
+      "naya_agent": {
+        "owns_citizen_identity": false,
+        "needs_fork_to_join": false,
+        "human_owner": false,
+        "private_operator_grant": "requires_distinct_seat_identity_and_delegated_law_receipt"
+      }
+    },
+    "operator_deployments": [
+      "shared_managed",
+      "owner_controlled_fork"
+    ],
+    "builder_is_optional_operational_role_not_required_subscription_tier": true,
+    "product_mode_is_not_identity_or_authority": true,
+    "hosting_location_does_not_grant_personal_intelligence_access": true
+  },
+  "shared_door_contract": {
+    "canonical_operation_path": "authenticated caller -> identity/owner/tenant -> LAW capability & consent decision -> ACT -> receipt -> VERIFY -> projection",
+    "proposed_doors": [
+      "hub",
+      "mcp",
+      "rest_api",
+      "github_app",
+      "sdk",
+      "webhook",
+      "a2a"
+    ],
+    "runtime_proof_by_door": {
+      "hub": "UNKNOWN",
+      "mcp": "UNKNOWN",
+      "rest_api": "UNKNOWN",
+      "github_app": "UNKNOWN",
+      "sdk": "UNKNOWN",
+      "webhook": "UNKNOWN",
+      "a2a": "UNKNOWN"
+    },
+    "invariants": [
+      "The same intended operation MUST have the same LAW permissions and durable evidence irrespective of the adapter",
+      "No adapter may directly mint human ownership or bypass tenant isolation",
+      "A Naya agent seat is independently authenticated but never becomes the human principal",
+      "Agent grants expire and can be revoked; retries do not duplicate actions",
+      "Do not claim any listed door operates in production without source/deployed proof"
+    ]
+  },
+  "welcome_world_contract": {
+    "authority_smart_notes": [
+      "SN-0846",
+      "SN-0849"
+    ],
+    "status": "SPECIFIED_NOT_LIVE_VERIFIED",
+    "ordered_journey": [
+      "claim_real_identity",
+      "certificate",
+      "one_question_per_screen",
+      "optional_voice_type_or_ai_paste",
+      "edit_skip_and_resume",
+      "owner_review_of_private_drafts",
+      "idempotent_save_through_real_owner_binding",
+      "personal_business_space_preview",
+      "owner_chosen_publish_visibility",
+      "hub_personal_business_space_top_three",
+      "scoped_public_match_suggestions"
+    ],
+    "personal_world_included": true,
+    "business_and_space_may_be_skipped": true,
+    "app_and_space_creation_must_be_authenticated": true,
+    "empty_answers_are_never_invented": true,
+    "page_covers_are_reversible_style_projections_not_personal_identity_truth": true,
+    "recommendation_never_implies_connect_send_or_join": true
+  },
+  "operational_truth_policy": {
+    "intended_unbounded_creation": true,
+    "unlimited_capacity_production_verified": false,
+    "customer_copy": "We want creation to feel unlimited; actual usable quantity and speed depend on proven, fair operational limits.",
+    "mail_transport_is_not_mail_confidentiality": true,
+    "production_mail_privacy_status": "BLOCKED_PENDING_AUTHENTICATED_ISOLATION",
+    "source_note": "Historical no-fork message round-trip is a delivery-positive test only; test independent owner confidentiality, C/anon denial and revocation"
+  },
+  "page_settings_contract": {
+    "canonical_file": "HUB/nayanet-page-settings.v1.json",
+    "reusable_intent_engine": "tools/product/nayanet-page-settings.mjs",
+    "settings_room_preview": "HUB/page-settings-preview.html",
+    "scope": "Every owned Personal, Business, Space, generated Smart App and other Smart Page independently, with no mandatory fork",
+    "independent_controls": [
+      "visibility",
+      "discoverability",
+      "installation"
+    ],
+    "start_unpublished": true,
+    "defaults": {
+      "personal": "private/findable/install-enabled",
+      "business": "public/findable/install-enabled",
+      "space": "public/findable/install-enabled",
+      "other": "private/unlisted/install-enabled"
+    },
+    "multiple_pages_per_category": true,
+    "production_state": "SPECIFIED_PROTOTYPED__SERVER_NOT_VERIFIED",
+    "requires_server_side_authorization": true,
+    "no_public_index_of_private_contents": true,
+    "private_findable_requires_separately_approved_teaser": false,
+    "all_installable_claim_requires_real_deployed_pwa_per_page": true,
+    "no_auto_publish_on_visibility_toggle": true,
+    "no_auto_connect_or_space_join_on_discoverability": true,
+    "private_findable_alias_topic_connect_allowed": true,
+    "connect_and_page_content_are_separate_indexes": true,
+    "alias_and_owner_approved_topics_only": true,
+    "real_identity_and_username_never_indexed": true,
+    "per_page_world_circle_membership_isolated": true,
+    "connect_and_share_and_reveal_are_separate_actions": true,
+    "findable_off_removes_alias_topic_search": true,
+    "canonical_lesson_id": "SN-0852",
+    "canonical_principle": "MAXIMUM_CONNECTION_MINIMUM_EXPOSURE"
+  }
+}

@@ -1,0 +1,177 @@
+/* Smart Block: smart-tabs
+ * Source: Naya Smart Hub Design.html (extracted verbatim, never rewritten)
+ * Category: tabs
+ */
+
+/* ——— Shared Hub tokens (also in DESIGN-BLOCKS/tokens.css; copied here so the block is self-contained) ——— */
+:root {
+  --bg-elev: #171B25;
+  --bg-raise: #12151D;
+  --ink: #F5F7FB;
+  --line: #ffffff18;
+  --muted: #AAB2BF;
+  --purple: #9d75ff;
+  --red: #ff5a6e;
+}
+
+.smart-tabs {
+  display: flex; align-items: center; gap: 10px;
+  overflow-x: auto; scrollbar-width: none;
+  margin: 20px -6px 0; padding: 12px 6px 18px;
+  border-bottom: 1px solid var(--line);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+}
+
+.smart-tabs::-webkit-scrollbar { display: none; }
+
+.smart-tab {
+  --tc: #9d75ff;
+  flex: 0 0 auto; display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 20px; border-radius: 999px; cursor: pointer; user-select: none;
+  border: 2px solid rgba(255,255,255,.35); background: rgba(0,0,0,.55);
+  color: #fff; font-family: inherit; font-weight: 900; font-size: 13px; letter-spacing: .03em;
+  white-space: nowrap;
+  box-shadow: 0 0 14px rgba(255,255,255,.12), inset 0 1px rgba(255,255,255,.1);
+  transition: box-shadow .25s, border-color .2s, text-shadow .25s, transform .18s;
+}
+
+.smart-tab .sn-label { white-space: nowrap; }
+
+.smart-tab .sn-mark { font-size: 14px; line-height: 1; }
+
+.smart-tab:hover, .smart-tab:focus-visible {
+  border-color: var(--tc); outline: none; transform: translateY(-2px);
+  box-shadow: 0 0 22px -2px var(--tc), 0 0 0 2px var(--tc) inset;
+  text-shadow: 0 0 10px var(--tc);
+}
+
+.smart-tab.active {
+  border-color: rgba(255,255,255,.6);
+  box-shadow: 0 0 16px rgba(255,255,255,.18), inset 0 1px rgba(255,255,255,.15);
+}
+
+.smart-tab.active:hover {
+  border-color: var(--tc);
+  box-shadow: 0 0 22px -2px var(--tc), 0 0 0 2px var(--tc) inset;
+  text-shadow: 0 0 10px var(--tc);
+}
+
+.smart-tab .sn-more {
+  border: 0; background: rgba(255,255,255,.1); color: #fff; border-radius: 8px;
+  padding: 3px 9px; cursor: pointer; font-size: 13px; line-height: 1.5; font-family: inherit;
+  transition: background .2s;
+}
+
+.smart-tab .sn-more:hover { background: rgba(255,255,255,.22); }
+
+.smart-tab.add-tab {
+  border-style: dashed; color: var(--muted);
+  padding: 12px 18px;
+}
+
+.smart-tab.add-tab:hover {
+  color: #fff; border-color: #fff; box-shadow: none; text-shadow: none;
+  transform: translateY(-2px);
+}
+
+.tab-menu, .tab-pop {
+  position: fixed; z-index: 1000; display: none;
+  background: linear-gradient(180deg, #121827, #0e1424);
+  border: 1px solid rgba(255,255,255,.18); border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.5);
+}
+
+.tab-menu { min-width: 220px; }
+
+.tab-menu .mi {
+  padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,.08);
+  cursor: pointer; color: #fff; font-weight: 800; font-size: 13px;
+}
+
+.tab-menu .mi:last-child { border-bottom: none; }
+
+.tab-menu .mi:hover { background: rgba(255,255,255,.06); }
+
+.tab-pop { min-width: 300px; padding: 14px; color: #fff; }
+
+.tab-pop h3 { margin: 0 0 10px; font-size: 15px; }
+
+.tab-pop .row { display: grid; gap: 6px; margin: 8px 0; }
+
+.tab-pop label { font-size: 12px; color: var(--muted); display: grid; gap: 4px; }
+
+.tab-pop input {
+  padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,.2);
+  background: #0a0f1a; color: #e6ecff; font-size: 13px;
+}
+
+.tab-pop .toggles { display: flex; gap: 8px; margin: 8px 0; flex-wrap: wrap; }
+
+.tab-pop .tgl {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px;
+  border-radius: 10px; border: 1px solid rgba(255,255,255,.22);
+  background: rgba(0,0,0,.45); cursor: pointer; color: #fff; font-weight: 800; font-size: 13px;
+}
+
+.tab-pop .tgl.on {
+  box-shadow: 0 0 0 2px rgba(255,255,255,.3) inset, 0 0 18px rgba(124,77,255,.25);
+}
+
+.tab-pop .ft { display: flex; gap: 8px; justify-content: flex-end; margin-top: 10px; }
+
+.tab-pop .btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px;
+  border-radius: 10px; border: 1px solid rgba(255,255,255,.25);
+  background: rgba(0,0,0,.55); color: #fff; cursor: pointer; font-weight: 800; font-size: 13px;
+}
+
+.tab-pop .btn.primary { background: linear-gradient(135deg, #6F3DFF, #9D7BFF); border-color: transparent; }
+
+.tab-pop {
+  position: fixed; z-index: 80; min-width: 270px; max-width: 330px;
+  background: var(--bg-elev); border: 1px solid var(--line); border-radius: 14px;
+  box-shadow: 0 18px 48px #000000c0; padding: 14px;
+}
+
+.tab-pop-title {
+  display: block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); margin: 12px 0 8px;
+}
+
+.tab-pop-title:first-child { margin-top: 0; }
+
+.tab-pop-list { display: flex; flex-direction: column; gap: 6px; }
+
+.tab-pop-note { color: var(--muted); font-size: 14px; line-height: 1.55; margin: 0 0 6px; }
+
+.tab-pop-add {
+  appearance: none; border: 1px solid var(--line); border-radius: 10px;
+  background: var(--bg-raise); color: var(--ink); cursor: pointer;
+  font-size: 15px; text-align: left; padding: 9px 12px;
+}
+
+.tab-pop-add:hover { border-color: var(--purple); color: #fff; }
+
+.tab-pop-row { display: flex; align-items: center; gap: 8px; }
+
+.tab-pop-name { flex: 1 1 auto; color: var(--ink); font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.tab-pop-row select {
+  background: var(--bg-raise); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 8px;
+  font-size: 14px; padding: 7px 8px; max-width: 128px;
+}
+
+.tab-pop-del {
+  appearance: none; border: 1px solid var(--line); border-radius: 8px;
+  background: transparent; color: var(--muted); cursor: pointer;
+  font-size: 16px; line-height: 1; padding: 6px 10px;
+}
+
+.tab-pop-del:hover { color: var(--red); border-color: var(--red); }
+
+@media (max-width: 640px) {
+.smart-tab { font-size: 15px; padding: 7px 13px; }
+.tab-pop { min-width: 0; left: 8px !important; right: 8px; max-width: none; }
+}

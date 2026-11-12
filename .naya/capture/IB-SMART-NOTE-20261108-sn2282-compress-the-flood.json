@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2282",
+ "title": "Compress the Flood",
+ "slug": "compress-the-flood",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/SYSTEM/SN-2282/IB-SMART-NOTE-20261108-sn2282-compress-the-flood.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "When a flood comes in — a long stream of dictation, his voice mixed with whatever else is playing — the job is to compress it and make sense of it: extract the sense, separate what is his from what is uncertain, mark the provenance honestly, and lock the sense into multiple smart notes, one idea per note. Never file the flood raw as law. Never drop it either.",
+  "human_view": "Think of a river in flood carrying gold in the mud. You don't bottle the river, and you don't let it wash past — you pan it: swirl away the mud, keep the gold, and put the gold in labeled jars. The flood is the river. The smart notes are the jars.",
+  "child_view": "If someone talks for an hour, you can't remember every word — but you can remember the three important things they said. Write down those three things, in your own words, and you will remember them tomorrow. That is compressing.",
+  "grandma_view": "A whole summer's tomatoes become a few jars of sauce. The jars are smaller, but they keep all winter — and you know exactly what's in each one because you labeled it when you made it. The flood is the summer. The notes are the sauce.",
+  "ai_view": "My intake rule for a flood: first, keep the verbatim — a Naya Note holds literally what was heard, so nothing is lost and nothing is silently rewritten. Second, distill — one idea per Smart Note, each compressed to its nutshell, each with its provenance on its face. Third, separate — what is certainly his, what is probably his, what is mixed or uncertain (video audio, half-heard words) gets marked, never laundered into law. Fourth, file — into the system, in NayaNET, where the next Naya can find it cold.",
+  "what_it_means": "1. **Verbatim first, sense second.** The Naya Note preserves the flood exactly as heard. The Smart Notes carry the compressed sense. One never replaces the other.\n2. **One idea per note.** A note that holds three laws holds none — nobody can find, cite, or obey a pile. Multiple notes is the point: \"do multiple smart notes, whatever you gotta do.\"\n3. **Provenance is part of the sense.** \"I don't know where all that text is coming from — I think it's from the video\" is itself intelligence, and it rides on every note the flood produced. An uncertain source marked uncertain is honest; an uncertain source filed as law is corruption.\n4. **Compress, don't shrink.** Compression keeps the distances — what stood near what — while dropping the repetition. A summary that loses the relationships loses the meaning (SN-2279).\n5. **The flood is never the excuse.** \"Too much came in\" is not a reason to file nothing, and \"it came in mixed\" is not a reason to file it raw. The job is the panning.",
+  "whats_inside": [],
+  "topics": [
+   "System"
+  ]
+ },
+ "page_hash": "bf3e872ec64a35f9e7a4e1f3a3bc560a4ae8439995ead027f85d751c93c5588b",
+ "content_hash": "81a8e7b54377f86adf739a16a62f4a940d7c150f30c1e7c0fa8f6fcb46651df8",
+ "reconstructed_from_page": true
+}

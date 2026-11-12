@@ -1,0 +1,2 @@
+Reserve Rule applied: in Task 1 the top two scores (8.4 vs 8.0) fell within the 0.5-point margin, so I dispatched the lower-scored Call-102; in Task 2 the margin (1.5 points) exceeded the rule, so the rule did not apply and I dispatched the higher-scored Call-201.
+Successor caution: check the margin condition before invoking the Reserve Rule — proximity triggers it, a clear gap means normal priority order stands.

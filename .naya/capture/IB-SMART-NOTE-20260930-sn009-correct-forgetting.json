@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-009",
+ "title": "SMART NOTE — Correct Forgetting",
+ "slug": "correct-forgetting",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/MEMORY-DISCIPLINE/CORRECT-FORGETTING/SN-009/IB-SMART-NOTE-20260930-sn009-correct-forgetting.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-09-30T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "",
+  "human_view": "",
+  "child_view": "",
+  "grandma_view": "",
+  "ai_view": "",
+  "what_it_means": "",
+  "whats_inside": [],
+  "topics": [
+   "System-Intelligence"
+  ]
+ },
+ "page_hash": "c5c2379c7d23bcbb2b1d3e6961590e03c4a0befdf415b298e9fcdb1f573f4526",
+ "content_hash": "4ec274abf4176966721ba588560a04002b8f7c9d23bb4797866b0684bffd7240",
+ "reconstructed_from_page": true
+}

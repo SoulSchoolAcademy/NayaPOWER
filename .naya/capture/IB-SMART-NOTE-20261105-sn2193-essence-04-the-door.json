@@ -1,0 +1,43 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2193",
+  "title": "The Door — How a Smart Note Goes Live",
+  "slug": "essence-04-the-door",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-04-the-door.md",
+  "tone": "sapphire",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:26:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A note is not live when it is written. It is live when the file sits on main at its exact canonical path, the sync has carried it into the live table, and its author has opened the public link and seen the right title. Getting there runs through one door: the Lane Agent GitHub App, whose per-machine key signs for an hourly token so work runs as nayapower-lane-agent[bot] with no popups and no approval cards — the token removes popups, not gates. The filing discipline around that door is exact: check the number is free, write the canonical shape with a full UTC Created line, land it on main, register it in the same pass, wait for the sync, click your own link, and only then share it. Citizens get the same door without ever holding a key: a filing service holds it for them.",
+    "human_view": "Every seat used to fight popups or wait on merges, and links got handed out that answered \"not found.\" The door fixed the mechanics; these notes fixed the habits around it: exact path, real timestamp, register as you go, click your own link before you share it. Boring steps — and the difference between a note that exists and a note that's live.",
+    "child_view": "There's one special door into the library, and you need the right key. You write your page, put it on the exact right shelf, write your name in the big book, wait a few minutes, then go look at the shelf yourself to make sure your page is really there — before you tell your friends to go read it.",
+    "grandma_view": "It's like posting a letter properly: right address, right stamp, your name in the register at the post office — and then you check that it arrived before you tell anyone to expect it. Citizens don't need their own key to the post office; the clerk holds it and posts for them, with their name on the envelope.",
+    "ai_view": "Set up once, prove the chain in order, report the three receipts. File in the canonical shape with a full UTC Created; never leave it blank. If your link isn't live in ten minutes, fix path, filename, or Created on main — never open a second copy. Read scope live: the installation's reach is what the source says tonight, not what any paper implied. A credential that arrives without a job gets shredded unused and its travel reported the same day. And hold the gates: the token removes popups, not gates — production, money, credentials, deletions, security and authority changes, and ratification still wait for Shawn's word.",
+    "what_it_means": "The door is where the system's ideals meet physics: identity (who acted), provenance (fingerprints from raw bytes), and visibility (the clicked link) are all decided in this one workflow. A corpus is only as trustworthy as its filing path; when the path is one door with receipts, the corpus can be audited. When it is a corridor of popups, workarounds, and unclicked links, it cannot.",
+    "whats_inside": [
+      "One door for seats (the App, as the bot) and one for citizens (the filing service); the connector corridor is retired for this work.",
+      "Live has a definition — file on main ∧ synced ∧ author clicked the link and saw the title — and reporting before it is a defect.",
+      "The number check, the Created line, and same-pass registration are part of filing, not follow-ups.",
+      "Keys are per-machine, delivered as files, verified by fingerprint, and destroyed unused when they arrive without a job.",
+      "The PR route's status is contested inside this block (see the conflict named below) — this essence carries both sides and resolves neither."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-5"
+    ],
+    "covers": [
+      "SN-0836",
+      "SN-0837",
+      "SN-0838",
+      "SN-1851",
+      "SN-1858",
+      "SN-1860",
+      "SN-1880"
+    ]
+  },
+  "page_hash": "29124fd10311e77dc2314a4c5b916e497c44d8df1f08dffd14b06ce744257b9a",
+  "content_hash": "fb8ebda04b1811f065cfa321fbb61e82238df0d32a41ab89d921cba2ac1d197f"
+}

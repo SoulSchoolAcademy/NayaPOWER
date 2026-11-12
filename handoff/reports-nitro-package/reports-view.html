@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reports — NayaNET Intelligent Hub</title>
+<!--
+  REPORTS VIEW — Daily Intelligence (dynamic, no baked content)
+  =====================================================================
+  Pattern: the flagship dashboard pattern — this file holds NO report
+  content. On open it fetches the reports table from Supabase with the
+  anon key (read-only) and renders client-side. New days appear the
+  moment their row is inserted; nothing here ever needs a rebake.
+
+  NITRO — two config values below are PLACEHOLDERS, on purpose:
+  the Supabase project URL and anon key are NOT in the repo (searched
+  2026-10-22) — they live in the flagship dashboards' config on your
+  box. Paste them once, at the CONFIG block in the script, and deploy:
+      python3 ~/workspace/factory-pipeline/deploy.py reports-view.html hub
+  Table name is also a single constant there (proposed:
+  hub_daily_intelligence_reports — schema.sql + rows-seed.sql alongside).
+-->
+<style>
+  :root{
+    --bg:#0B0D12; --panel:#12151D; --panel2:#171B25; --line:#252B39;
+    --ink:#EDEDF2; --dim:#9AA3B5;
+    --purple:#9d75ff; --purple2:#a06bff; --emerald:#55e39a;
+    --gold:#e8b64c; --red:#ff5a6e; --magenta:#d86cff; --sapphire:#55b9ee;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  html{font-size:18px}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:28px 18px 64px}
+  .kicker{color:var(--purple); letter-spacing:.22em; font-size:.72rem; font-weight:700; text-transform:uppercase}
+  h1.title{font-size:2rem; line-height:1.15; margin:.35rem 0 .3rem; font-weight:800}
+  .sub{color:var(--dim); font-size:.95rem; max-width:56ch}
+  .rule{height:1px; background:linear-gradient(90deg,var(--purple),transparent); margin:22px 0 8px; opacity:.65}
+
+  .banner{
+    display:none; margin:16px 0; padding:12px 16px; border-radius:12px;
+    background:rgba(232,182,76,.08); border:1px solid rgba(232,182,76,.45); color:var(--gold);
+    font-size:.92rem;
+  }
+  .banner.show{display:block}
+
+  .status{
+    margin:26px 0; padding:18px; border-radius:14px; background:var(--panel);
+    border:1px solid var(--line); color:var(--dim); font-size:.95rem;
+  }
+  .status.error{border-color:rgba(255,90,110,.55); color:#FFC2C9; background:rgba(255,90,110,.06)}
+  .status.error b{color:var(--red)}
+
+  .day{
+    display:flex; gap:16px; align-items:center; width:100%; text-align:left; cursor:pointer;
+    background:var(--panel); border:1px solid var(--line); border-radius:16px;
+    padding:16px 18px; margin:12px 0; color:var(--ink); font:inherit;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .day:hover{border-color:var(--purple); transform:translateY(-1px)}
+  .day .when{flex:0 0 64px; text-align:center; background:var(--panel2);
+    border:1px solid var(--line); border-radius:12px; padding:8px 0}
+  .day .when .d{font-size:1.45rem; font-weight:800; line-height:1; color:#fff}
+  .day .when .m{font-size:.68rem; letter-spacing:.14em; color:var(--dim); text-transform:uppercase; margin-top:4px}
+  .day .what{flex:1; min-width:0}
+  .day .what .h{font-weight:650; font-size:1.02rem; line-height:1.35}
+  .day .what .meta{color:var(--dim); font-size:.8rem; margin-top:3px}
+  .day .go{color:var(--purple); font-size:1.3rem; flex:0 0 auto}
+
+  .back{
+    background:none; border:none; color:var(--purple); font:inherit; cursor:pointer;
+    font-size:.95rem; padding:6px 0; margin-bottom:6px;
+  }
+  .report-head{margin:6px 0 4px}
+  .report-head .date{color:var(--sapphire); font-size:.85rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700}
+  .report-head h2{font-size:1.55rem; line-height:1.25; margin:.3rem 0 .2rem}
+  .report-head .rid{color:var(--dim); font-size:.8rem}
+
+  .md{margin-top:18px; font-size:1rem}
+  .md h1{font-size:1.5rem; margin:1.2em 0 .5em; line-height:1.25}
+  .md h2{font-size:1.28rem; margin:1.35em 0 .45em; color:#fff; line-height:1.3}
+  .md h3{font-size:1.1rem; margin:1.2em 0 .4em; color:var(--purple2)}
+  .md h4{font-size:1rem; margin:1.1em 0 .35em}
+  .md p{margin:.55em 0; color:var(--ink)}
+  .md ul,.md ol{margin:.5em 0 .8em 1.25em}
+  .md li{margin:.28em 0}
+  .md strong{color:#fff}
+  .md a{color:var(--sapphire)}
+  .md code{background:var(--panel2); border:1px solid var(--line); border-radius:6px; padding:.05em .35em; font-size:.86em}
+  .md pre{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px; overflow:auto; margin:.8em 0}
+  .md pre code{background:none; border:none; padding:0}
+  .md blockquote{border-left:3px solid var(--purple); padding:.2em 0 .2em 14px; margin:.8em 0; color:var(--dim)}
+  .md hr{border:none; border-top:1px solid var(--line); margin:1.4em 0}
+  .md table{border-collapse:collapse; margin:.8em 0; width:100%; font-size:.9rem}
+  .md th,.md td{border:1px solid var(--line); padding:7px 10px; text-align:left}
+  .md th{background:var(--panel2)}
+
+  .nav{display:flex; justify-content:space-between; gap:12px; margin-top:34px}
+  .nav button{
+    background:var(--panel); color:var(--ink); border:1px solid var(--line); border-radius:12px;
+    padding:10px 16px; font:inherit; font-size:.92rem; cursor:pointer; max-width:48%;
+  }
+  .nav button:hover{border-color:var(--purple)}
+  .nav button:disabled{opacity:.35; cursor:default}
+  .nav .lbl{color:var(--dim); font-size:.75rem; display:block}
+  .foot{margin-top:40px; color:var(--dim); font-size:.8rem; text-align:center}
+  .live-dot{display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--emerald); margin-right:6px; vertical-align:1px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">NayaNET · Reports</div>
+  <h1 class="title">Daily Intelligence</h1>
+  <p class="sub">What the system learned each day — and the behavior it declared as a result. Newest first; tap a day to read the full report.</p>
+  <div class="rule"></div>
+
+  <div id="stale" class="banner"></div>
+  <div id="status" class="status">Loading the reports…</div>
+  <main id="app"></main>
+
+  <p class="foot"><span class="live-dot"></span>Live from the reports table — this page holds no baked content.</p>
+</div>
+
+<script>
+"use strict";
+/* ================= CONFIG — NITRO, PASTE THE FLAGSHIP VALUES =================
+   The Supabase project URL and anon key are NOT in the repo (verified by
+   search, 2026-10-22). They live in the flagship dashboards' config on
+   your box — paste them here once. The anon key is read-only for this
+   table by policy (schema.sql): public read, no anon write or delete. */
+const SUPABASE_URL     = "https://YOUR-PROJECT.supabase.co";   // ⬅ PLACEHOLDER — flagship project URL
+const SUPABASE_ANON_KEY = "PASTE-FLAGSHIP-ANON-KEY";          // ⬅ PLACEHOLDER — flagship anon key
+const REPORTS_TABLE    = "hub_daily_intelligence_reports";    // proposed name (schema.sql)
+/* ========================================================================== */
+
+const $status = document.getElementById("status");
+const $app    = document.getElementById("app");
+const $stale  = document.getElementById("stale");
+let REPORTS = [];   // newest first
+
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ——— compact markdown renderer (the editions' subset; no external deps) ——— */
+function inline(s){
+  s = esc(s);
+  s = s.replace(/`([^`]+)`/g, "<code>$1</code>");
+  s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  s = s.replace(/(^|[^*])\*([^*\n]+)\*/g, "$1<em>$2</em>");
+  s = s.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  return s;
+}
+function renderMarkdown(md){
+  const lines = String(md).split("\n");
+  let html = "", i = 0, listType = null;
+  const closeList = () => { if (listType){ html += listType === "ul" ? "</ul>" : "</ol>"; listType = null; } };
+  while (i < lines.length){
+    let line = lines[i];
+    if (/^```/.test(line)){
+      closeList(); let buf = []; i++;
+      while (i < lines.length && !/^```/.test(lines[i])){ buf.push(lines[i]); i++; }
+      i++; html += "<pre><code>" + esc(buf.join("\n")) + "</code></pre>"; continue;
+    }
+    const h = line.match(/^(#{1,4})\s+(.*)$/);
+    if (h){ closeList(); const lvl = h[1].length; html += "<h" + lvl + ">" + inline(h[2]) + "</h" + lvl + ">"; i++; continue; }
+    if (/^\s*---+\s*$/.test(line) || /^\s*\*\*\*+\s*$/.test(line)){ closeList(); html += "<hr>"; i++; continue; }
+    if (/^\s*\|.*\|\s*$/.test(line) && i + 1 < lines.length && /^\s*\|[\s:|-]+\|\s*$/.test(lines[i + 1])){
+      closeList(); const head = line.trim().replace(/^\||\|$/g, "").split("|").map(c => "<th>" + inline(c.trim()) + "</th>").join("");
+      html += "<table><tr>" + head + "</tr>"; i += 2;
+      while (i < lines.length && /^\s*\|.*\|\s*$/.test(lines[i])){
+        const cells = lines[i].trim().replace(/^\||\|$/g, "").split("|").map(c => "<td>" + inline(c.trim()) + "</td>").join("");
+        html += "<tr>" + cells + "</tr>"; i++;
+      }
+      html += "</table>"; continue;
+    }
+    const li = line.match(/^(\s*)([-*]|\d+\.)\s+(.*)$/);
+    if (li){
+      const t = /\d/.test(li[2]) ? "ol" : "ul";
+      if (listType !== t){ closeList(); html += t === "ul" ? "<ul>" : "<ol>"; listType = t; }
+      html += "<li>" + inline(li[3]) + "</li>"; i++; continue;
+    }
+    if (/^\s*>\s?/.test(line)){ closeList(); html += "<blockquote>" + inline(line.replace(/^\s*>\s?/, "")) + "</blockquote>"; i++; continue; }
+    if (/^\s*$/.test(line)){ closeList(); i++; continue; }
+    closeList();
+    let para = [line]; i++;
+    while (i < lines.length && !/^\s*$/.test(lines[i]) && !/^(#{1,4})\s/.test(lines[i]) &&
+           !/^(\s*)([-*]|\d+\.)\s+/.test(lines[i]) && !/^```/.test(lines[i]) && !/^\s*---+\s*$/.test(lines[i])){
+      para.push(lines[i]); i++;
+    }
+    html += "<p>" + inline(para.join(" ")) + "</p>";
+  }
+  closeList();
+  return html;
+}
+
+/* ——— views ——— */
+function fmtDate(iso){
+  const d = new Date(iso + "T12:00:00Z");
+  return {
+    day: d.getUTCDate(),
+    mon: d.toLocaleString("en-US", { month: "short", timeZone: "UTC" }),
+    full: d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone: "UTC" })
+  };
+}
+function showList(){
+  document.title = "Reports — NayaNET Intelligent Hub";
+  $app.innerHTML = REPORTS.map((r, idx) => {
+    const f = fmtDate(r.report_date);
+    return '<button class="day" data-open="' + idx + '">' +
+      '<span class="when"><span class="d">' + f.day + '</span><span class="m">' + f.mon + '</span></span>' +
+      '<span class="what"><span class="h">' + esc(r.headline) + '</span>' +
+      '<span class="meta" style="display:block">' + f.full + (r.report_id ? " · " + esc(r.report_id) : "") + '</span></span>' +
+      '<span class="go">›</span></button>';
+  }).join("");
+  $app.querySelectorAll("[data-open]").forEach(b =>
+    b.addEventListener("click", () => { location.hash = "report=" + REPORTS[+b.dataset.open].report_id; }));
+}
+function showReport(idx){
+  const r = REPORTS[idx]; if (!r) { showList(); return; }
+  const f = fmtDate(r.report_date);
+  document.title = f.full + " — Daily Intelligence";
+  const prev = REPORTS[idx + 1], next = REPORTS[idx - 1]; // list is newest-first
+  $app.innerHTML =
+    '<button class="back" id="back">‹ All reports</button>' +
+    '<div class="report-head"><div class="date">' + f.full + '</div>' +
+    "<h2>" + esc(r.headline) + '</h2>' +
+    (r.report_id ? '<div class="rid">' + esc(r.report_id) + "</div>" : "") + "</div>" +
+    '<div class="md">' + renderMarkdown(r.body_md) + "</div>" +
+    '<div class="nav">' +
+      '<button id="prev"' + (prev ? "" : " disabled") + '><span class="lbl">Older</span>' + (prev ? esc(fmtDate(prev.report_date).full) : "—") + "</button>" +
+      '<button id="next"' + (next ? "" : " disabled") + '><span class="lbl">Newer</span>' + (next ? esc(fmtDate(next.report_date).full) : "—") + "</button>" +
+    "</div>";
+  document.getElementById("back").addEventListener("click", () => { location.hash = ""; });
+  if (prev) document.getElementById("prev").addEventListener("click", () => { location.hash = "report=" + prev.report_id; });
+  if (next) document.getElementById("next").addEventListener("click", () => { location.hash = "report=" + next.report_id; });
+  window.scrollTo(0, 0);
+}
+function route(){
+  const m = location.hash.match(/report=([^&]+)/);
+  if (m){
+    const idx = REPORTS.findIndex(r => r.report_id === decodeURIComponent(m[1]));
+    if (idx >= 0){ showReport(idx); return; }
+  }
+  showList();
+}
+function checkStale(){
+  if (!REPORTS.length) return;
+  const newest = REPORTS[0].report_date;
+  const today = new Date(); today.setUTCHours(0, 0, 0, 0);
+  const ageDays = Math.floor((today - new Date(newest + "T00:00:00Z")) / 86400000);
+  if (ageDays > 1){
+    $stale.textContent = "Last report: " + fmtDate(newest).full + " — no report filed since. A missing report shows as missing, never silent.";
+    $stale.classList.add("show");
+  }
+}
+
+/* ——— load: anon read at view-open; nothing baked ——— */
+async function load(){
+  if (SUPABASE_URL.indexOf("YOUR-PROJECT") >= 0 || SUPABASE_ANON_KEY.indexOf("PLACEHOLDER") >= 0){
+    $status.className = "status error";
+    $status.innerHTML = "<b>Not configured yet.</b> This view needs the flagship Supabase URL and anon key pasted into its CONFIG block (two lines, marked at the top of the script). No report content is baked into this page — by design, there is nothing to show until it can read the table.";
+    return;
+  }
+  try {
+    const url = SUPABASE_URL.replace(/\/$/, "") + "/rest/v1/" + REPORTS_TABLE +
+      "?select=report_date,report_id,headline,body_md&order=report_date.desc";
+    const res = await fetch(url, { headers: {
+      "apikey": SUPABASE_ANON_KEY,
+      "Authorization": "Bearer " + SUPABASE_ANON_KEY,
+      "Accept": "application/json"
+    }});
+    if (!res.ok) throw new Error("Supabase read failed: HTTP " + res.status);
+    REPORTS = await res.json();
+    if (!Array.isArray(REPORTS) || !REPORTS.length){
+      $status.className = "status";
+      $status.textContent = "The reports table is reachable but holds no rows yet.";
+      return;
+    }
+    $status.style.display = "none";
+    checkStale();
+    route();
+  } catch (e) {
+    $status.className = "status error";
+    $status.innerHTML = "<b>The reports could not be loaded.</b> " + esc(e.message) +
+      " — this failure is shown, never hidden. If it persists, the table or the anon read policy needs a look (schema.sql).";
+  }
+}
+window.addEventListener("hashchange", route);
+load();
+</script>
+</body>
+</html>

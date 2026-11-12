@@ -1,0 +1,3 @@
+# Icon Socket — NAYA-ICO-023
+**Filed:** 2026-11-07 (pricing round 7 fix1, Addition 5). **Status:** SAY SO — no canonical source located.
+**What was searched:** `team-nitro/smart-builder/PIECES-INVENTORY-v2.json` (has the inventory entry "Icon socket" and nothing more) and `team-nitro/smart-builder/scratch/trial1-p2/HUB/design-system/library/catalog/block-catalog.json` (NO catalog entry for NAYA-ICO-023). No CSS source file was located. **This is not a filed object with a source — it is a named gap.** The build applied the 40px tinted-tile spec from the inventory entry + the four-page look (the system jewels were sized 48→40px with an 18px glyph). If a canonical source is located later, this file gets the source appended — never invented.

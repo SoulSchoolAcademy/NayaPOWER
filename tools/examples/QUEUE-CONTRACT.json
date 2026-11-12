@@ -1,0 +1,115 @@
+{
+  "schema": "naya.queue-contract/1",
+  "generated_at": "2026-10-21T23:16:30Z",
+  "tip": "ac4878f8283606a60cbbad3ad7437a8b9a70a433",
+  "prs": [
+    {
+      "number": 2385,
+      "title": "feat(ci): dedicated brain-index-freshness required gate workflow (Shawn 2026-10-11)",
+      "tier": "A",
+      "action": "HOLD-HUMAN",
+      "cure": "Shawn's decision: workflow-class \u2014 adding a Required gate is a ruleset/governor act.",
+      "owner": "Shawn",
+      "head": "eedd9540f54cd96c241db4be2f43f0698ae4dd07"
+    },
+    {
+      "number": 2736,
+      "title": "fix(brain-index): make regeneration line-ending deterministic on every platform",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "b8863ed3c298a7920c6ce9f79fc22234072769da"
+    },
+    {
+      "number": 2742,
+      "title": "Design laws v2 \u2014 3-pass scored 9+ for ratification",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate, test; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "17ec7e8ee36e203e3f5742f97929d8c60308237c"
+    },
+    {
+      "number": 2747,
+      "title": "feat: make Smart Builder library searchable and machine-accessible",
+      "tier": "A",
+      "action": "HOLD-HUMAN",
+      "cure": "Shawn's decision: workflow-class per the standing record.",
+      "owner": "Shawn",
+      "head": "fae2a8a313ec0ae02f67823387b560f2d636581f"
+    },
+    {
+      "number": 2776,
+      "title": "fix(smart-note): verify actual projection commit SHA",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate, delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "0884820de4ff460d164159ec68a44d674753c817"
+    },
+    {
+      "number": 2797,
+      "title": "Governance: NAYA OATH OF HONOR (0023) \u2014 Shawn's 2026-10-20 law, three tongues",
+      "tier": "A",
+      "action": "MERGE-NOW",
+      "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
+      "owner": "dock",
+      "head": "356c835c887d1b7ccee7333d7dbb772a373e2b1f"
+    },
+    {
+      "number": 2818,
+      "title": "fix(know): make live Windows Smart Note bridge read all long-path notes",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate, delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "30d4d991cc0b4c6be96d3900f865e90b3d0170c1"
+    },
+    {
+      "number": 2824,
+      "title": "governance(0032): THE HOUSE STANDARD \u2014 take care of the house",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "eb27598fb10dcd255086e8809147aec96b4e9ffc"
+    },
+    {
+      "number": 2842,
+      "title": "boot-pointer fix: indirect live-board references in BRAIN/00-ACTIVATION (distill-daily-20261021)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "562840dff31f320bc65d18a5ee0b4c1aa770cb8a"
+    },
+    {
+      "number": 2862,
+      "title": "feat(gates): door obligation \u2014 capture + registry + index in the same push (prevention for the #2831 registry debt)",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "5aeb48a8091cf1ff9a4bdb22868caba97f085459"
+    },
+    {
+      "number": 2864,
+      "title": "regen(brain-index): fresh mechanical regen \u2014 supersedes #2836 (Tier C, fixpoint-verified)",
+      "tier": "C",
+      "action": "MERGE-NOW",
+      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
+      "owner": "dock",
+      "head": "e6a058cfb15174780c78f0b6e3811dcedf8e6c9a"
+    },
+    {
+      "number": 2867,
+      "title": "tools: tongue-coverage checker + generated mechanism registry (machine-native guards 5-6)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "d3dde385b291cf8d3e1c12fb723f575d3b3834d6"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+When writing state files, avoid one-liner conditional expressions; use explicit if/else blocks so each branch is visible and auditable. This is an independently verified lesson from Trial-14 (Naya 1 verification): control scored 2/10 vs treatment 10/10, p=0.0007. Apply this rule whenever doing state-file writing work, such as job-runner checkpoints and run-state updates.

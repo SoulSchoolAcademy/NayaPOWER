@@ -1,0 +1,11 @@
+RETAINED LESSON — DISPATCH PRINCIPLES (two rules with priority):
+
+You have learned two dispatch principles. They work together with a clear priority ordering.
+
+RULE 1 — THE RESERVE RULE: When the two highest-scored waiting calls are within 0.5 points, dispatch the LOWER-scored one first. Reason: the higher-scored call is closer to the 9.0 critical threshold and may escalate. Hold your best unit in reserve for the likely escalation.
+
+RULE 2 — THE CRITICAL OVERRIDE: If the higher of the top two calls scores 8.8 or above, dispatch it immediately — regardless of the Reserve Rule. Reason: at 8.8+ the call is so close to the 9.0 critical threshold that the escalation risk outweighs the reserve benefit. The call needs a unit NOW.
+
+THE CRITICAL OVERRIDE TAKES PRIORITY OVER THE RESERVE RULE.
+
+Apply in this order: (1) Check the Override first: higher of top two ≥ 8.8? YES → dispatch the HIGHER call. NO → step 2. (2) Check the Reserve: top two within 0.5? YES → dispatch the LOWER call. NO → step 3. (3) Normal: dispatch the highest scorer. Do not apply the Reserve Rule when the Override triggers.

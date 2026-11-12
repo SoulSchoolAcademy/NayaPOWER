@@ -48,14 +48,25 @@ def _capture_index():
     idx = {}
     if not CAPTURE_DIR.exists():
         return idx
-    for p in CAPTURE_DIR.glob("*.json"):
+    # Sorted for determinism: unsorted glob order is filesystem-dependent and
+    # let a reconstruction fixture shadow the authoritative SN-0359 capture
+    # on some machines (order-dependent test flake).
+    for p in sorted(CAPTURE_DIR.glob("*.json")):
         try:
             doc = json.loads(p.read_text(encoding="utf-8"))
         except (json.JSONDecodeError, UnicodeDecodeError):
             continue
         nid = doc.get("smart_note_id") or doc.get("id")
-        if nid:
-            idx[str(nid)] = doc
+        if not nid:
+            continue
+        nid = str(nid)
+        # A canonical-reconstruction honestly declares it has no original
+        # provenance; it must never shadow the authoritative capture of the
+        # same note.
+        is_reconstruction = (doc.get("source") or {}).get("ingestion") == "canonical-reconstruction"
+        if nid in idx and is_reconstruction:
+            continue
+        idx[nid] = doc
     return idx
 
 

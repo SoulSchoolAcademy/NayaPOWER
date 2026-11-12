@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2270",
+ "title": "The Common Colour Language — A Spectrum Flowing Through the Universe",
+ "slug": "the-common-colour-language",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2270/IB-SMART-NOTE-20261108-sn2270-the-common-colour-language.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "There is a common colour language in the communication of NayaNET. The same colour means the same thing everywhere — in the number, in the orbs, in the icons, in the boards, on every page. The spectrum flows through the universe, and it flows through NayaNET the same way: red, orange, gold, emerald, cyan, indigo, royal purple, lavender, hot pink — the nine chakra colours, in order, a spectrum, not a palette. Gold is the Dashboard. Green is the activity. Blue is the mail. The three buttons at the bottom of the Dashboard are the language made visible: blue, green, gold — three colours, three meanings, three places to go. Eventually, if they're smart, the citizens will see it: the colour tells them where they are, what something does, and what it means — before they read a single word.",
+  "human_view": "Imagine you walk into a city where every street sign is a different colour, and the colours mean nothing — you have to read every sign to know where you are. Now imagine a city where blue always means the post office, green always means the park, gold always means home. You don't read anymore. You just see. That is the colour language: the colour IS the communication. The spectrum flows through the universe the same way — light, in order, from red to violet — and NayaNET speaks in that same order, so the pattern is already inside everyone who looks.",
+  "child_view": "Colours are a secret language. Blue means mail. Green means what's happening. Gold means home. Once you learn it, you don't have to read anything — you just look at the colour and you know where to go. The colours go in a rainbow, like light through the sky, and the rainbow goes through everything in NayaNET.",
+  "grandma_view": "You don't need to read the words if the colours tell you. Blue is the letters. Green is what's going on. Gold is home. It's a rainbow, in order, flowing through everything — the numbers, the circles, the little buttons — so wherever you are, the colour tells you where you are and what to do. The clever ones will notice it, and then they'll never be lost.",
+  "ai_view": "This is the design law beneath the design law. Everything I have built so far — the chakra colours on the number tiles, the per-digit rim/cap/halo, the orb colours, the board accents, the three bottom icons — is one language, and this dictation names it. The spectrum is the chakra order (1 red · 2 orange · 3 gold · 4 emerald · 5 cyan · 6 indigo · 7 royal purple · 8 lavender · 9 hot pink · 0 white), and it flows through the universe as light in order — so it flows through NayaNET as meaning in order. The gold = Dashboard ruling is the language applied: gold is not \"the Dashboard's favourite colour,\" it is the Dashboard's WORD in the language. Blue is mail's word. Green is activity's word. The badge on the activity icon is the language counting. The rule going forward is absolute: a colour must mean the same thing on every page, in every place, forever. If blue means mail on the Dashboard, blue means mail on Personal, on the Hub, on Pricing — everywhere. A colour that changes its meaning is a word that changes its meaning, and a language that lies is not a language. The smart ones will see the pattern — and the pattern is the proof that the system is one system, not a thousand pages.",
+  "what_it_means": "- **Colour is communication, not decoration.** The colour tells you where you are, what something does, and what it means — before any word is read.\n- **One language, everywhere.** The same colour means the same thing on every page, in every place, forever. Blue = mail. Green = activity. Gold = Dashboard. The chakra spectrum is the alphabet.\n- **The spectrum flows in order.** Red through hot pink, in order, like light through the universe. The order is the pattern; the pattern is what the smart ones will see.\n- **The three bottom icons are the language made visible.** Three colours, three meanings, three places to go — the phone's three buttons, speaking the language.\n- **The citizens will discover it.** \"Eventually, if they're smart, they'll see it.\" The language is not explained — it is experienced, and the experience teaches it. That is the design: the system teaches its own language by speaking it consistently.",
+  "whats_inside": [
+   "1. **The colour language is law.** Every builder brief, every verification, every page: a colour means the same thing everywhere. The chakra spectrum is the alphabet; gold = Dashboard, green = activity, blue = mail are its first three words.\n2. **Fix pass 5, fix 7 carries it.** The three bottom icons speak the language (blue mail, green activity with a live badge, gold Dashboard) — and the fixer must keep the colours consistent with the rest of the page.\n3. **The verifier checks the language.** Every future verification checks that a colour means what it meant last time. A colour that changes its meaning is a defect."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "c723eff34f0541e6af00ccf48c88e1a6c39256bfe1fc5d42108b985823ac5294",
+ "content_hash": "c1cd6baf8c148f737313246e9f3cb1238921be6fb71151a39e89f8839112924b",
+ "reconstructed_from_page": true
+}

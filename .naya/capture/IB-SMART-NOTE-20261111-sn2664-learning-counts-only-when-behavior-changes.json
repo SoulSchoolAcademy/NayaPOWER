@@ -1,0 +1,34 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2664",
+ "title": "Learning Counts Only When Behavior Changes",
+ "slug": "learning-counts-only-when-behavior-changes",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/11/LESSON/SN-2664/IB-SMART-NOTE-20261111-sn2664-learning-counts-only-when-behavior-changes.md",
+ "tone": "orange",
+ "icon": "◆",
+ "created_at": "2026-11-11T17:16:00Z",
+ "registered_by": "naya-resolve",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "A lesson is not learned when it is noted, cited, or admired. It is learned when behavior changes — permanently, without being told again — and the change can be evidenced. The test of learning is silence: stop reminding, and watch whether the new behavior survives. Every lesson therefore travels a chain whose links must each be proven, not claimed: captured, understood, retrievable, applied, verified, generalized, internalized, automatic. A citation is not compounding — tracing real lessons forward shows three honest verdicts: compounding (the lesson changed behavior mechanically), captured-only, and lost. Intelligence proves itself the same way, by transfer: one seat's win becomes law only when a different seat, cold, applies it and gets the result. The daily engine of all this is simple and non-optional: note it, share it, put it in the system — the day's top lessons, every day, because unnoted intelligence helps exactly one mind once and then evaporates. The first mistake is never the failure; failing to investigate it, capture its lesson, change the behavior, and verify the change — that is the failure. And proof itself obeys a freshness law: it never expires by time, only by change — when the world a proof describes changes, the proof is re-earned or retired, and everything else is let go.",
+  "human_view": "Think of learning to drive. The manual is not the learning; your parent telling you is not the learning. The learning is the day you check the mirror without anyone saying \"mirror\" — and you keep doing it for thirty years. A coach proves a technique works not when her star player masters it, but when she teaches it to a stranger's kid and the kid's game changes. And a family recipe isn't preserved because it's written in a notebook in a drawer — it's preserved because somebody cooks it, teaches it, and the grandchildren's version still tastes right.",
+  "child_view": "You haven't really learned to tie your shoes when you can say the bunny-ear words. You've learned it when your hands just do it while you're thinking about breakfast. If your teacher has to remind you every single day, you haven't learned it yet — you've just heard it a lot. And when you learn a cool trick, telling your friends how to do it is how everybody gets better — keeping it secret means only you ever get to be good at it.",
+  "grandma_view": "Knowing and doing are different countries. Everybody knows you should write the important things down; the families who thrive are the ones with the book actually on the shelf, the story actually told at the table, the grandchild actually taught. A mistake in this house was never a scandal — the scandal was making the same one twice because nobody bothered to learn from the first. And some things you keep forever and some you let go; wisdom is knowing which, and not clutching yesterday's proof about a house you've since rebuilt.",
+  "ai_view": "For every lesson you claim: name the behavior that changed, or file it honestly as captured-only. Never report a citation as compounding — trace the lesson forward to live behavior or machinery before using the word. Build every lesson for transfer: extract the law in a form a cold seat can run, then let a different seat prove it applies — one seat doing all the rooms tests nothing. Note the day's intelligence the same day, share it with the sisters the same pass, and put it in the system where a stranger can find it — the noting is not optional and the form is flexible. When you make a mistake, run the full cure before anything else: investigate, capture the reusable lesson, change the behavior, verify the change holds. Audit your proofs against the freshness law: unchanged world, proof stands; changed world, re-earn it or let it go — never cite a proof about a system that no longer exists. And when you distill, keep the principle and let go of the rest — the corpus shrinks because the behavior grew.",
+  "what_it_means": "This family closes the loop the whole system is built around. NayaNET exists to compound intelligence, and compounding has a strict mechanical meaning: intelligence that changes what the next actor does, measurably, without the original teacher in the room. Everything softer — notes filed, lessons cited, wisdom admired — is storage, and storage is a cost, not a capability. The silence test is the family's sharpest instrument because it removes the confound every other test suffers: as long as someone is reminding, you cannot tell learning from obedience.",
+  "whats_inside": [
+   "Note it, share it, put it in the system — then go silent and watch. If the behavior survives your silence, it was learning. If not, it was storage.",
+   "This family closes the loop the whole system is built around.",
+   "A system that mistakes capture for learning will drown in its own archive — thousands of notes, zero behavior change, and a daily experience indistinguishable from amnesia with good filing.",
+   "The system you are building actually gets smarter — not fuller, smarter.",
+   "A lesson is not learned when it is noted, cited, or admired."
+  ],
+  "topics": [
+   "System",
+   "Lesson",
+   "Distillation"
+  ]
+ },
+ "page_hash": "6036feec78ca0033916cad2e6d3ce86bd8ee0d29fd86b91c1a4e682391eb422e",
+ "content_hash": "aa268324a51ba136ea93aaec7139f87189a7e367e88fd66f4a2a66759df38e48"
+}

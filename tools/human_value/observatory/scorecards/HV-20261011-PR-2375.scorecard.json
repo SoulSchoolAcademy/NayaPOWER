@@ -1,0 +1,185 @@
+{
+  "packet_version": 1,
+  "change_id": "PR-2375",
+  "title": "Intelligent Blocks canonical substrate (intelligence/blocks/)",
+  "merge_sha": "09d9b71a313012320eb25c21aa92863884678633",
+  "grader": "Naya Mu",
+  "graded_at_utc": "2026-10-12T04:36:04.908485+00:00",
+  "durable_check_due_utc": "2026-10-19T04:36:04.908508+00:00",
+  "disqualified": false,
+  "score": 8.8,
+  "verdict": "REAL VALUE",
+  "judgments": [
+    {
+      "dimension": "USE",
+      "claimed": 9.0,
+      "applied": 9.0,
+      "weight": 0.3,
+      "verified_evidence": 3,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "The canonical home agents actually read: 20 IB JSONs, a registry, a schema, and runnable tools (ib.py CLI + seed_blocks.py). This is used, not shelved."
+    },
+    {
+      "dimension": "DELTA",
+      "claimed": 9.0,
+      "applied": 9.0,
+      "weight": 0.25,
+      "verified_evidence": 1,
+      "attested_evidence": 1,
+      "flags": [],
+      "rationale": "+2380 lines across 27 files where scattered notes lived before. New capability: schema + registry + tooling. Post-merge verified 9.3/10 by a second seat."
+    },
+    {
+      "dimension": "PROOF",
+      "claimed": 8.0,
+      "applied": 8.0,
+      "weight": 0.2,
+      "verified_evidence": 1,
+      "attested_evidence": 1,
+      "flags": [],
+      "rationale": "Every claimed file verified present at the merge; independent post-merge verification exists with receipts. One point off: verification record lives in a lane feed comment, not in-repo."
+    },
+    {
+      "dimension": "DURABLE",
+      "claimed": 9.0,
+      "applied": 9.0,
+      "weight": 0.15,
+      "verified_evidence": 1,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "JSON schema + registry + 283 lines of tests. The contract is machine-checkable; drift is detectable."
+    },
+    {
+      "dimension": "CLEAN",
+      "claimed": 9.0,
+      "applied": 9.0,
+      "weight": 0.1,
+      "verified_evidence": 1,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "Pure addition: 0 deletions. Nothing existing was touched, moved, or risked."
+    }
+  ],
+  "evidence_ledger": [
+    {
+      "dimension": "USE",
+      "index": 0,
+      "kind": "file",
+      "status": "VERIFIED",
+      "detail": "intelligence/tools/ib.py:1-40 of 403 lines at 09d9b71a3130",
+      "citation": "intelligence/tools/ib.py",
+      "lines": "1-40"
+    },
+    {
+      "dimension": "USE",
+      "index": 1,
+      "kind": "test",
+      "status": "VERIFIED",
+      "detail": "tests/test_intelligent_blocks.py:1-30 of 283 lines at 09d9b71a3130",
+      "citation": "tests/test_intelligent_blocks.py",
+      "lines": "1-30"
+    },
+    {
+      "dimension": "USE",
+      "index": 2,
+      "kind": "file",
+      "status": "VERIFIED",
+      "detail": "intelligence/blocks/REGISTRY.json:1-20 of 300 lines at 09d9b71a3130",
+      "citation": "intelligence/blocks/REGISTRY.json",
+      "lines": "1-20"
+    },
+    {
+      "dimension": "DELTA",
+      "index": 0,
+      "kind": "sha",
+      "status": "VERIFIED",
+      "detail": "object 09d9b71a313012320eb25c21aa92863884678633 exists",
+      "citation": "09d9b71a313012320eb25c21aa92863884678633",
+      "lines": null
+    },
+    {
+      "dimension": "DELTA",
+      "index": 1,
+      "kind": "command",
+      "status": "ATTESTED",
+      "detail": "command evidence rests on the grader's word",
+      "citation": "command",
+      "lines": null
+    },
+    {
+      "dimension": "PROOF",
+      "index": 0,
+      "kind": "test",
+      "status": "VERIFIED",
+      "detail": "tests/test_intelligent_blocks.py present at 09d9b71a3130 (283 lines)",
+      "citation": "tests/test_intelligent_blocks.py",
+      "lines": null
+    },
+    {
+      "dimension": "PROOF",
+      "index": 1,
+      "kind": "url",
+      "status": "ATTESTED",
+      "detail": "url evidence rests on the grader's word",
+      "citation": "url",
+      "lines": null
+    },
+    {
+      "dimension": "DURABLE",
+      "index": 0,
+      "kind": "file",
+      "status": "VERIFIED",
+      "detail": "intelligence/blocks/SCHEMA.md:1-20 of 61 lines at 09d9b71a3130",
+      "citation": "intelligence/blocks/SCHEMA.md",
+      "lines": "1-20"
+    },
+    {
+      "dimension": "CLEAN",
+      "index": 0,
+      "kind": "sha",
+      "status": "VERIFIED",
+      "detail": "object 09d9b71a313012320eb25c21aa92863884678633 exists",
+      "citation": "09d9b71a313012320eb25c21aa92863884678633",
+      "lines": null
+    }
+  ],
+  "mechanical": {
+    "merge_subject": "Merge pull request #2375 from SoulSchoolAcademy/naya5/intelligent-blocks-canonical",
+    "files_changed": 27,
+    "files": [
+      "intelligence/README.md",
+      "intelligence/blocks/IB-0001.json",
+      "intelligence/blocks/IB-0002.json",
+      "intelligence/blocks/IB-0003.json",
+      "intelligence/blocks/IB-0004.json",
+      "intelligence/blocks/IB-0005.json",
+      "intelligence/blocks/IB-0006.json",
+      "intelligence/blocks/IB-0007.json",
+      "intelligence/blocks/IB-0008.json",
+      "intelligence/blocks/IB-0009.json",
+      "intelligence/blocks/IB-0010.json",
+      "intelligence/blocks/IB-0011.json",
+      "intelligence/blocks/IB-0012.json",
+      "intelligence/blocks/IB-0013.json",
+      "intelligence/blocks/IB-0014.json",
+      "intelligence/blocks/IB-0015.json",
+      "intelligence/blocks/IB-0016.json",
+      "intelligence/blocks/IB-0017.json",
+      "intelligence/blocks/IB-0018.json",
+      "intelligence/blocks/IB-0019.json",
+      "intelligence/blocks/IB-0020.json",
+      "intelligence/blocks/README.md",
+      "intelligence/blocks/REGISTRY.json",
+      "intelligence/blocks/SCHEMA.md",
+      "intelligence/tools/ib.py",
+      "intelligence/tools/seed_blocks.py",
+      "tests/test_intelligent_blocks.py"
+    ],
+    "insertions": 2380,
+    "deletions": 0,
+    "test_files": 1,
+    "doc_files": 3
+  },
+  "why_not_10": "PROOF=8.0 \u2014 Every claimed file verified present at the merge; independent post-merge verification exists with receipts. One point off: verification record lives in a lane feed comment, not in-repo.; USE=9.0 \u2014 The canonical home agents actually read: 20 IB JSONs, a registry, a schema, and runnable tools (ib.py CLI + seed_blocks.py). This is used, not shelved."
+}

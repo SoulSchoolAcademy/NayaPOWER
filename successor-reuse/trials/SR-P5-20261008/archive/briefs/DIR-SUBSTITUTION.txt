@@ -1,0 +1,5 @@
+__DIR__ substitution: each arm received the brief with __DIR__ replaced by its working directory /tmp/sr-p5-arm-<kind><i> (e.g. /tmp/sr-p5-arm-a1). All other bytes identical.
+Procedural path strings updated sr-p4 -> sr-p5 relative to SR-P4's archived briefs; Task 1 paragraph byte-identical to SR-P4's (prereg-sealed). Task 1 and Task 2 byte-identical across all 25 arm briefs (asserted programmatically at generation time).
+brief-b.md embeds the frozen T14 lesson verbatim (SHA-256 b35914a04ee77f2c323882c80cfb4bbd3838013d828d0ce8a95a9fe564a93b5d, verified in each final B brief).
+brief-c.md carries the selected B note (arm-b3, via shuf -n 1) verbatim after the header; byte-identity of Task 1+2 asserted across all 25 final briefs.
+Final per-arm briefs (with __DIR__ substituted) are archived under briefs/final/.

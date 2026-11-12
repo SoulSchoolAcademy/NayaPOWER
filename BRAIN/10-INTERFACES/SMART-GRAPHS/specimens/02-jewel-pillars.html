@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Graphs · 02 · Jewel Pillars — Messages per day</title>
+<link rel="stylesheet" href="../../DESIGN-BLOCKS/tokens.css">
+<link rel="stylesheet" href="../../DESIGN-BLOCKS/blocks/graphs/jewel-pillar/jewel-pillar.css">
+<link rel="stylesheet" href="sg-chrome.css">
+</head>
+<body class="sg-page">
+<div class="sg-wrap">
+  <div class="sg-kicker"><span class="gem"></span>Smart Graphs · Specimen 02</div>
+  <div class="sg-mode">Automatic · NayaNET pulse</div>
+  <div class="sg-card">
+    <h4>Messages per day</h4>
+    <div class="c-sub">Automatic · last 7 days · you asked, Naya rendered</div>
+    <div class="jp-track">
+      <div class="jp-col"><span class="jp-val">84</span><div class="jp-pillar" style="--v:.42;--c:var(--magenta);--crgb:232,79,255;--d:.05s"></div><span class="jp-cap">Mon</span></div>
+      <div class="jp-col"><span class="jp-val">121</span><div class="jp-pillar" style="--v:.60;--c:var(--purple);--crgb:var(--purple-rgb);--d:.12s"></div><span class="jp-cap">Tue</span></div>
+      <div class="jp-col"><span class="jp-val">156</span><div class="jp-pillar" style="--v:.78;--c:var(--blue);--crgb:var(--blue-rgb);--d:.19s"></div><span class="jp-cap">Wed</span></div>
+      <div class="jp-col"><span class="jp-val">200</span><div class="jp-pillar" style="--v:1;--c:var(--cyan);--crgb:57,215,232;--d:.26s"></div><span class="jp-cap">Thu</span></div>
+      <div class="jp-col"><span class="jp-val">143</span><div class="jp-pillar" style="--v:.71;--c:var(--green);--crgb:var(--green-rgb);--d:.33s"></div><span class="jp-cap">Fri</span></div>
+      <div class="jp-col"><span class="jp-val">97</span><div class="jp-pillar" style="--v:.48;--c:var(--gold);--crgb:var(--gold-rgb);--d:.40s"></div><span class="jp-cap">Sat</span></div>
+      <div class="jp-col"><span class="jp-val">66</span><div class="jp-pillar" style="--v:.33;--c:var(--purple);--crgb:var(--purple-rgb);--d:.47s"></div><span class="jp-cap">Sun</span></div>
+    </div>
+    <div class="sg-legend">
+      <span><i style="--lc:var(--cyan)"></i>Peak day</span>
+      <span><i style="--lc:var(--purple)"></i>Typical</span>
+    </div>
+  </div>
+  <div class="sg-actions">
+    <button class="sg-action" disabled><span class="gem"></span>Save</button>
+    <button class="sg-action" disabled><span class="gem"></span>Share</button>
+    <button class="sg-action" disabled><span class="gem"></span>PDF</button>
+    <button class="sg-action" disabled><span class="gem"></span>Send to NayaNET</button>
+  </div>
+  <p class="sg-honesty">Actions reserved in v1 — the contract ships before the wiring.<br>Sample data. The instrument is real; the feed is next.</p>
+</div>
+<script>
+new IntersectionObserver((es, io) => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('lit'); io.disconnect(); }
+}), { threshold: .35 }).observe(document.querySelector('.sg-card'));
+</script>
+</body>
+</html>

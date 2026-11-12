@@ -1,0 +1,23 @@
+name: Safety Grant Gate
+
+# Fail-closed CI check: no migration may widen anonymous database access
+# (GRANT ... TO anon/PUBLIC) without a documented allowlist entry in
+# tools/safety_grant_allowlist.json. Born from the 2026-10-06 Security
+# Advisor 27-warning classification: grants landed without a review
+# checkpoint and live drifted from repo intent. This gate is the checkpoint.
+
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+
+jobs:
+  safety-grant-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check anonymous-surface grants are allowlisted
+        run: python tools/safety_anon_grant_gate.py

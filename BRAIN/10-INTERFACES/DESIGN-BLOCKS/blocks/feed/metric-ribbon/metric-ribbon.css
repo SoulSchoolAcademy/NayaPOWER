@@ -1,0 +1,37 @@
+/* Smart Block: metric-ribbon
+ * Source: Naya Smart Hub Design.html (extracted verbatim, never rewritten)
+ * Category: feed
+ */
+
+/* ——— Shared Hub tokens (also in DESIGN-BLOCKS/tokens.css; copied here so the block is self-contained) ——— */
+:root {
+  --ink: #F5F7FB;
+  --line: #ffffff18;
+  --magenta: #d86cff;
+  --muted: #AAB2BF;
+  --radius-lg: 17px;
+}
+
+.digest-stats {
+  font-size: 14px; color: var(--muted); margin-left: auto;
+}
+
+.digest-stats strong {
+  font-size: 22px; font-weight: 900; color: #fff;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 12px rgba(157,117,255,.5);
+}
+
+.metric-ribbon {display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:1px;border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;background:var(--line)}
+
+.metric {background:linear-gradient(155deg,#121019,#09080d);padding:18px 16px;min-height:94px}
+
+.metric b {display:block;font-size:28px;line-height:1;margin-bottom:8px;color:var(--ink)}
+
+.metric span {font-size:10px;font-weight:900;letter-spacing:.13em;color:var(--muted);text-transform:uppercase}
+
+.metric.unknown b {font-size:18px;color:var(--room-accent,var(--magenta))}
+
+@media(max-width:620px) {
+.metric-ribbon {grid-template-columns:repeat(2,1fr)}
+}

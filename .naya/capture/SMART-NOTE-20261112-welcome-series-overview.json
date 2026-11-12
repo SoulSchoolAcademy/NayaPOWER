@@ -1,0 +1,63 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2685",
+  "capture_id": "20261112-welcome-series-overview",
+  "title": "The Welcome Series — seven welcome emails in seven days, then one teaching mail a day",
+  "category": "ONBOARDING",
+  "topic": "WELCOME_SERIES",
+  "subtopic": "WELCOME_EMAIL_SERIES",
+  "canonical_intent": "WELCOME_SERIES_OVERVIEW",
+  "lifecycle_state": "ACTIVE",
+  "source": {
+    "source_type": "canonical_source_synthesis",
+    "source_reference": "workspace/team-nitro/welcome-email-series-20261102.md (7-email series draft, 2026-11-02); workspace/team-nitro/naya-notes/NN-20261110-the-daily-welcome-mail-series.md (daily welcome mail, 2026-11-10); workspace/team-nitro/smart-notes/SN-2378-one-welcome-not-two-the-letter-is-the-welcome.md (the letter IS the welcome); workspace/team-nitro/smart-notes/SN-2429-welcome-math-and-logic.md (pricing opening v2: Welcome aboard)",
+    "captured_at": "2026-11-12",
+    "captured_at_utc": "2026-11-12T08:30:00Z",
+    "captured_by": "Naya Nitro Narzan (Search Corpus Fix seat)",
+    "director": "Shawn Vibert"
+  },
+  "projection": {
+    "publication_scope": "PRIVATE",
+    "human_director_authorized_publication": false,
+    "category_slug": "ONBOARDING",
+    "topic_slug": "WELCOME_SERIES",
+    "subtopic_slug": "WELCOME_EMAIL_SERIES"
+  },
+  "intelligence": {
+    "essence": "The welcome series is the first seven days after you join NayaNET. Email 1 arrives immediately after signup (\"You're in. Your 4 apps are ready.\") and then one email a day teaches you one thing: Day 1 the Dashboard cockpit and your Smart Score, Day 2 your four apps (Personal, Business, Space, Dashboard), Day 3 your ambassador link and the 50% you earn, Day 4 Smart Notes and 35 points, Day 5 Spaces and finding your people, Day 7 \"Now go\" and invite three friends. Everything you earn in the first 24 hours counts double. After the seven days the daily welcome mail continues: one beautiful mail a day from Smart Mail, each teaching one feature with a real-world case for someone like you — a founder, a builder, a mother, a father, a small business owner — most important features first, each with links to the feature on the site. The welcome starts the moment you join: the first mail is sent immediately after signup, and the trigger is joining.",
+    "human_view": "You join, and the teaching starts the same minute. The first mail lands immediately: you are in, your four apps are ready — Dashboard, Personal, Business, Space — already built, already linked, already tracking. Then one mail a day, each about one thing, so you are never buried: the Dashboard and what the gauge means, the four apps and what each one does, the ambassador link and how you earn half, Smart Notes and why saving an idea pays 35 points, Spaces and where your people gather, and on day seven the send-off — now go, invite three friends, your link is ready and your Dashboard will show you the moment they join. The first 24 hours pay double points, so the first day matters most. After the seven days the daily mail keeps coming, one feature a day with a real example for someone like you, because the system is only simple if somebody teaches it to you one piece at a time. One welcome, not two: on the pricing page the founder's letter already IS the welcome, so there is no second welcome strip repeating it.",
+    "simple_view": "Child: Imagine you join a new club and on the very first day you get a letter saying welcome, here are your four rooms! Then every day for a week you get one more little letter, each teaching you one fun thing — how to see your score, how to share, how to earn. After that, one letter every day, each with a story about someone just like you. Grandma: Dear, the day you join, love, a welcome letter arrives right away — your four apps are ready, dear, and then one gentle letter a day for seven days, each teaching you one thing, nice and slow, and after that one letter every day with a real example for someone like you. Nothing to learn all at once, dear — one thing a day, and the first day pays double.",
+    "naya_view": "I welcome you the moment you join — the first mail goes out immediately, because the first minute is when you are most awake to the new world. Then I teach you one thing a day for seven days, most important first, and after that one thing a day for as long as you are new, each mail with a real case for someone like you. I never welcome twice: the letter already is the welcome, so I do not repeat it. I never bury you in a manual; one mail, one feature, one story.",
+    "ai_view": "Structured onboarding overview. entity=welcome_series; emails=7 over 7 days (immediate + Day 1, 2, 3, 4, 5, 7); trigger=signup; first_24h_points=2x; daily_mail_after=one feature per day with persona case; channels=Smart Mail; welcome_duplication_rule=letter IS the welcome, no second strip.",
+    "machine_view": {
+      "automatic_truth_ceiling": "CANDIDATE",
+      "raw_source_separate_from_distillation": true,
+      "status": "live_intelligence",
+      "authority_inheritance": "derived_from_director_ratified_sources",
+      "decision_engine": "not_applicable",
+      "hard_invariants": [
+        "the welcome series is seven emails over seven days: immediate, Day 1, Day 2, Day 3, Day 4, Day 5, Day 7",
+        "Email 1 is sent immediately after signup and names the four apps",
+        "the first 24 hours pay double points",
+        "the daily welcome mail teaches one feature a day with a real-world case",
+        "the founder's letter IS the welcome; there is no second welcome strip"
+      ],
+      "human_gates": [],
+      "law_id": null,
+      "optimization_function": "none",
+      "optimization_target": "none",
+      "roadmap": []
+    },
+    "decisions": [
+      "Cover the seven-email series and the daily teaching mail in one overview block, so the question 'what is the welcome series' has one answer.",
+      "State the seven-email count from the series file on disk (2026-11-02); the brief's '11 mails' does not match the file and is not repeated.",
+      "Keep the pricing-page welcome ruling (SN-2378: the letter IS the welcome) in the same block, so the two welcomes are never confused."
+    ],
+    "connections": [],
+    "uncertainty": "The 2026-11-02 series file is marked Draft only, awaiting Shawn's approval; the daily mail series was drafted (welcome + Day 1 written, Days 2-14 outlined) and later revised to ten-and-ten synced. Send mechanism (Smart Mail daily) is a build, not claimed done.",
+    "applicability": "Answers 'What is the welcome series?' for any new citizen, and orients any Naya explaining onboarding. Not a send schedule: the mails are drafts until his eye approves them.",
+    "learning_lesson": "Onboarding is taught one thing a day, not all at once — and the welcome is said once, in the letter, never twice.",
+    "successor_effect": "When the series is approved and the send mechanism is built, this block is superseded by the live send record, not edited in place.",
+    "epistemic_state": "CANDIDATE"
+  }
+}

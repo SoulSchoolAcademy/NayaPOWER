@@ -1,0 +1,19 @@
+baseline: 721 cards sha256 b45a7f864b344f7bd66f55e3d9853ab6a694007f1afbe403121633eed9c9c7b5
+box-mode: 735 cards sha256 ae657e651259db65d9088f7372584e1ccce7f5d0580351bacfb50c44671e3b9f
+byte-identical: False
+lost (in old, not in new): 0 []
+gained (in new, not in old): 14 ['IB-SMART-NOTE-20261109-sn2589-one-flow-notes-and-box-one-system', 'IB-SMART-NOTE-20261109-sn2590-the-nine-nodes-are-organs', 'IB-SMART-NOTE-20261109-sn2591-the-operation-manual-is-done-and-proven', 'IB-SMART-NOTE-20261109-sn2592-the-factory-can-be-built-from-proven-then-corrected', 'IB-SMART-NOTE-20261109-sn2593-stop-creating-pages-clone-add-customize', 'IB-SMART-NOTE-20261109-sn2594-is-the-whole-system-in-sync-not-yet-honestly', 'IB-SMART-NOTE-20261109-sn2595-one-system-everything-in-the-factory', 'IB-SMART-NOTE-20261109-sn2596-dashboard-pass-3-is-live-nine-amendments-in', 'IB-SMART-NOTE-20261109-sn2597-the-creation-flow-one-time-onboarding-then-one-at-a-time', 'IB-SMART-NOTE-20261109-sn2598-the-one-system-merge']
+  gained IB-SMART-NOTE-20261109-sn2589-one-flow-notes-and-box-one-system created 2026-11-09
+  gained IB-SMART-NOTE-20261109-sn2590-the-nine-nodes-are-organs created 2026-11-09
+  gained IB-SMART-NOTE-20261109-sn2591-the-operation-manual-is-done-and-proven created 2026-11-09
+  gained IB-SMART-NOTE-20261109-sn2592-the-factory-can-be-built-from-proven-then-corrected created 2026-11-09
+  gained IB-SMART-NOTE-20261109-sn2593-stop-creating-pages-clone-add-customize created 2026-11-09
+  gained IB-SMART-NOTE-20261109-sn2594-is-the-whole-system-in-sync-not-yet-honestly created 2026-11-09
+  gained IB-SMART-NOTE-20261109-sn2595-one-system-everything-in-the-factory created 2026-11-09
+  gained IB-SMART-NOTE-20261109-sn2596-dashboard-pass-3-is-live-nine-amendments-in created 2026-11-09
+  gained IB-SMART-NOTE-20261109-sn2597-the-creation-flow-one-time-onboarding-then-one-at-a-time created 2026-11-09
+  gained IB-SMART-NOTE-20261109-sn2598-the-one-system-merge created 2026-11-09
+  gained NN-20261109-one-system-everything-in-the-factory created 2026-11-09
+  gained NN-20261109-stop-creating-pages created 2026-11-09
+  gained NN-20261109-the-creation-flow created 2026-11-09
+  gained NN-20261109-the-nine-nodes-are-organs created 2026-11-09

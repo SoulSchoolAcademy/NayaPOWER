@@ -1,0 +1,21 @@
+import { spawn } from 'node:child_process';
+import { writeFileSync } from 'node:fs';
+const CHROME = process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell';
+const URL = 'file://' + process.env.HOME + '/workspace/smart-factory-contract/showcase/index.html';
+const PORT = 9336;
+const proc = spawn(CHROME, ['--headless','--disable-gpu','--no-sandbox',`--remote-debugging-port=${PORT}`,'--window-size=390,844','about:blank'], { stdio:'ignore' });
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+for (let i=0;i<50;i++){ try{ const r=await fetch(`http://127.0.0.1:${PORT}/json/version`); if(r.ok) break; }catch{} await sleep(200); }
+const targets = await (await fetch(`http://127.0.0.1:${PORT}/json`)).json();
+const ws = new WebSocket(targets[0].webSocketDebuggerUrl);
+await new Promise(res => ws.addEventListener('open', res, { once:true }));
+let id=0; const pending=new Map();
+ws.addEventListener('message', ev => { const m=JSON.parse(ev.data); if(m.id&&pending.has(m.id)){pending.get(m.id)(m);pending.delete(m.id);} });
+const send=(m,p={})=>new Promise(res=>{const i=++id;pending.set(i,res);ws.send(JSON.stringify({id:i,method:m,params:p}));});
+await send('Page.enable'); await send('Runtime.enable');
+await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:2,mobile:true});
+await send('Page.navigate',{url:URL}); await sleep(2200);
+const r = await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});
+writeFileSync('shot-phone.png', Buffer.from(r.result.data,'base64'));
+console.log('phone shot re-taken');
+ws.close(); proc.kill();

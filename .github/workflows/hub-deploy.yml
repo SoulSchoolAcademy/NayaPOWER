@@ -1,0 +1,102 @@
+# Hub Deploy + Sync Liveness — Balanced Machine step 4 (DESIGN.ai.md §5.1)
+#
+# Deploy is its own act. Before this workflow, the Hub only re-shipped as a
+# side effect of Smart Note landings, so Hub-source fixes merged to main
+# stayed invisible until a note landed. This workflow fires ONLY on merges
+# that change Hub source (HUB/app/**) or the deploy machinery itself — note
+# landings never trigger, gate, or carry a deploy.
+#
+# Pipeline: unit tests -> syntax gate -> deploy (only when the deploy
+# transport is configured via the HUB_DEPLOY_CMD repo variable; the pipeline
+# fails closed with NOT_CONFIGURED otherwise) -> smoke check against the
+# live page -> automatic rollback on smoke failure (inside hub_deploy.py).
+#
+# The liveness job runs on a 10-minute cadence: it reads the sync watcher's
+# heartbeat from the live surface and FAILS the run when it is stale — a
+# visible red run is the alarm (the lane-side checker additionally posts to
+# board #2793). Silence is the failure mode being abolished.
+
+name: Hub Deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "HUB/app/**"
+      - "tools/hub_deploy.py"
+      - "tools/hub_sync_heartbeat.py"
+      - ".github/workflows/hub-deploy.yml"
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hub-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # hub_deploy.py extracts HUB/app at arbitrary refs (rollback)
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Unit tests — deploy + heartbeat tools (incl. negative controls)
+        run: python3 -m pytest tests/test_hub_deploy.py tests/test_hub_sync_heartbeat.py -q
+
+      - name: Syntax gate over Hub sources
+        run: python3 tools/hub_deploy.py gate
+
+      - name: Deploy (fails closed when no transport is configured)
+        env:
+          HUB_DEPLOY_CMD: ${{ vars.HUB_DEPLOY_CMD }}
+        run: |
+          if [ -z "${HUB_DEPLOY_CMD:-}" ]; then
+            echo "::warning::HUB_DEPLOY_CMD repo variable is not set — deploy transport NOT CONFIGURED. Gate passed; nothing deployed. Wire the lane upload command into HUB_DEPLOY_CMD to activate."
+            exit 0
+          fi
+          python3 tools/hub_deploy.py deploy --ref "${{ github.sha }}" \
+            --receipt hub-deploy-receipt.json
+
+      - name: Upload deploy receipt
+        if: always() && vars.HUB_DEPLOY_CMD != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: hub-deploy-receipt-${{ github.sha }}
+          path: hub-deploy-receipt.json
+          if-no-files-found: ignore
+
+  liveness:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Hub-sync liveness check (stale heartbeat => failing run => alarm)
+        env:
+          HUB_HEARTBEAT_URL: ${{ vars.HUB_HEARTBEAT_URL }}
+        run: |
+          python3 tools/hub_sync_heartbeat.py check \
+            --url "${HUB_HEARTBEAT_URL:-https://nayanet.live/sync-heartbeat.json}" \
+            --max-age 600

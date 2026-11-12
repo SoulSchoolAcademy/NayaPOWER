@@ -1,0 +1,35 @@
+{
+  "smart_note_id": "SN-0866",
+  "intelligence": {
+    "title": "The Gauge Is the Showcase — Every View Starts There",
+    "intelligent_block_id": "IB-SMART-NOTE-20261102-sn0866-gauge-first-view-switcher",
+    "smart_note_id": "SN-0866",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/VIEW-SWITCHER/SN-0866/IB-SMART-NOTE-20261102-sn0866-gauge-first-view-switcher.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Registration cure filed by Naya Resolve Narzan on 2026-11-04: this note's page was filed on main (page created 2026-11-02T21:45:55Z) without a capture or registry entry — a member of the unregistered family (SN-0861–SN-0873, SN-0875–SN-0882). This capture and the matching registry entry register the page exactly as it stands; the page is unmodified. SN-2044 is deliberately NOT in this cure: the retro-verification FINDING on PR #3158 rules its page a duplicate of SN-0874 (first claim, registered) with the number returned to the pool — its cure is reconcile/remove against SN-0874, not registration.",
+    "ingested_at": "2026-11-04",
+    "essence": "The gauge is the showcase piece, the default view, on every metric. Bars, donut, big number — the top views, all built as real 3D objects, all alive — are one click away. And every stat area speaks the same format: gauge plus orbs, same time pills, same switcher.",
+    "human_view": "With the drill-downs proving the pattern (the Sales drill-down as the proof), Shawn set the view rule: citizens can flip any metric between views — gauge, bars, pie, comparison — but the gauge is always home. Not twelve views: the top ten, the best of the best, the ones that make sense. The gauge adapts to the metric — percentage, points, 1-to-10 — always showing the optimal stat.\n\n\"We have our showcase piece which is our gauge, right?... they can just click through the different views and see it from different perspectives... you just put the top 10 in there, right? The best of the best, the ones that will make sense and that's doable, that's logical... we'll adjust our gauge to giving the optimal stat.\"",
+    "simple_view": "Every number on the dashboard has a favorite picture: the big round gauge. You can flip to other pictures — bars or a pie — but the gauge is always home base, and every section is laid out the same way so you always know where you are.",
+    "grandma_view": "Dear, each page of numbers has one main portrait — the big round gauge — like the family photo over the mantel. You may look at the other pictures in the album, but the portrait is where you start, and every room in the house is arranged the same way, so you never feel lost.",
+    "naya_view": "I make the gauge the default view on every metric and every stat area: gauge + orbs, same time pills, same switcher, everywhere. The switcher offers the top views only — the best of the best that make sense — and the gauge adapts its scale to the metric (percentage, points, 1-to-10), always showing the optimal stat.",
+    "ai_view": "Choice without a home is clutter. The gauge-first rule gives every metric one identity (the gauge) plus controlled exploration (the switcher). A citizen always knows where they are; they choose how deep to look. And \"top 10, not all 12\" is the distillation law in action — exactly what's needed, nothing more.",
+    "machine_view": {
+      "sn": "SN-0866",
+      "title": "The Gauge Is the Showcase — Every View Starts There",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/VIEW-SWITCHER/SN-0866/IB-SMART-NOTE-20261102-sn0866-gauge-first-view-switcher.md",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "machine_section": "Default view per metric: GAUGE. Switcher set: top-10 views (gauge, bars, donut/pie, big number, comparison…), all rendered as live 3D objects. Universal format: gauge + orbs + Hour/Day/Week/Month/All pills + switcher, identical across all 9 Smart Link metrics (Impressions, Clicks, CTR, Conversions, Conv Rate, Revenue, EPC, AOV, Rev/1k Views)."
+    },
+    "views_note": "Views extracted from the published page's own sections exactly where the page carries them (essence ← page section 'Hook'; human_view ← page section(s) ['What happened', 'The rule, in his words']; ai_view ← page section 'Why it matters'). The perspective views the page does not carry as sections (simple/grandma/naya/machine where absent) were reconstructed from the page's own content by Naya Resolve Narzan for this registration cure, 2026-11-04; the page itself is unmodified."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/VIEW-SWITCHER/SN-0866/IB-SMART-NOTE-20261102-sn0866-gauge-first-view-switcher.md",
+    "provenance_note": "Registration cure by Naya Resolve Narzan, 2026-11-04, for a BRAIN projection published on main without a registry entry. Census at cure time against main tip 80f20bc462ab7270cae65e9afa63fcda79de9da9: the registry (.naya/memory/smart-notes/index.json, 777 entries) held no SN-0866; no capture for SN-0866 existed on main; the page's only tree path is BRAIN/05-MEMORY/SMART-NOTES/2026/11/02/DASHBOARD/VIEW-SWITCHER/SN-0866/IB-SMART-NOTE-20261102-sn0866-gauge-first-view-switcher.md. Open PR heads checked: #3165 (registry 778), #3166 (780), #3167 (780), #3131 (767) — none holds SN-0866 in registry or captures; #3108 and #3089 head trees hold no capture for this note. Collision note: stale open PR #2981 (naya4/smart-notes-2026-09-30) carries October BRANCH_ONLY 'migrated' captures under the SN-0861–SN-0882 numbers for DIFFERENT notes (e.g. its SN-0861 is 'The Compare UI Lies on Rebased Branches', IB-SMART-NOTE-20261009-sn0861-rebased-branch-compare-lies) — a number-collision family, not coverage of this page; adjudication of the zombie branch belongs to the SN-collision process, not this cure. Fingerprints computed from the page bytes at the main tip: page_hash = sha256(page bytes); content_hash = sha256(canonical JSON of this capture's intelligence object).",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}

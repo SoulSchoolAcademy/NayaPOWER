@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-344",
+ "title": "Canary synthetic red-check repair-drill rule — open a drill repair PR for canary experiment signals",
+ "slug": "canary-repair-drill-rule",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CANARY-EXPERIMENT-SIGNALS/SYNTHETIC-RED-CHECK-REPAIR-DRILL/SN-0344/IB-SMART-NOTE-20261005-sn0344-canary-repair-drill-rule.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-10-05T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "",
+  "human_view": "",
+  "child_view": "",
+  "grandma_view": "",
+  "ai_view": "",
+  "what_it_means": "",
+  "whats_inside": [],
+  "topics": [
+   "System-Intelligence"
+  ]
+ },
+ "page_hash": "556eb6d3b5676395204a1692e48a2c15ca95067152dab4eab5fb664914fe7030",
+ "content_hash": "4ec274abf4176966721ba588560a04002b8f7c9d23bb4797866b0684bffd7240",
+ "reconstructed_from_page": true
+}

@@ -81,7 +81,10 @@ def test_cold_successor_uses_canonical_lineage_verifier_and_pinned_source():
     start = wf.index("  cold-successor-held-out:")
     end = wf.index("  independent-behavior-verification:", start)
     block = wf[start:end]
-    assert "ref: ${{ env.SOURCE_SHA }}" in block
+    assert "ref: ${{ needs.admission-promotion.outputs.promoted_sha }}" in block
+    # Strengthened pinning: promoted_sha is always an exact commit SHA —
+    # the promotion job defaults it to SOURCE_SHA when no promotion occurs,
+    # so the cold successor never reads a moving ref.
     assert '--data-binary @cold-verify-request.json "$RUNTIME_FUNCTION"' in block
     assert "COLD_RUNTIME_FUNCTION" not in wf
 

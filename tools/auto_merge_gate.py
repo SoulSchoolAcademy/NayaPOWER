@@ -28,10 +28,15 @@ Stdlib only.
 """
 
 import json
+import re
 import sys
 from datetime import datetime, timezone
 
 LAW_ID = "FULL-AUTO-MERGE-V1"
+
+# Exact-shape check for the receipt-pin precondition (P12): the scorecard
+# receipt must pin the exact 40-char lowercase-hex merge head SHA.
+FULL_SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 
 # Tunable only through the law's amendment path (authority-model change).
 MAX_EVIDENCE_AGE_SECONDS = 900
@@ -73,6 +78,45 @@ SCORE_DIMENSIONS = (
     "mission_vision_alignment",
     "situational_awareness",
 )
+
+
+def p12_reasons(pr_state):
+    """Evaluate ONLY precondition P12 (receipt pins the exact merge head SHA).
+
+    Same logic as the P12 block inside may_auto_merge — factored out so the
+    receipt-gate CI workflow can run the gate rung standalone (fail-closed:
+    missing / malformed / stale pin yields reasons). Returns a list of
+    reason strings; empty means P12 passes.
+    """
+    reasons = []
+    get = (pr_state or {}).get if isinstance(pr_state, dict) else (lambda _k: None)
+    # ---- P12: receipt pins the EXACT merge head SHA (Lane 9, 2026-10-11).
+    # The scorecard receipt is preventative, not archival: it must certify the
+    # exact head being merged. A receipt that is missing, malformed/tampered,
+    # or pinned to an older head fails closed — the head must be re-scored and
+    # the receipt re-pinned. Pair rung: tools/check_scorecard_receipt_pin.py
+    # verifies the pin block in the PR body; this P12 verifies it in pr_state.
+    # (Numbered P12 because P11 is the smart-link regen receipt precondition.)
+    pin = get("receipt_pin")
+    if not isinstance(pin, dict):
+        reasons.append(
+            "P12: receipt_pin missing or not an object — the scorecard receipt "
+            "must pin the exact merge head SHA (no receipt, no merge)"
+        )
+    else:
+        pinned = pin.get("merge_head_sha")
+        if not isinstance(pinned, str) or not FULL_SHA_RE.match(pinned):
+            reasons.append(
+                "P12: receipt_pin.merge_head_sha missing or malformed "
+                "(40 lowercase hex chars; tampered receipts fail)"
+            )
+        elif pinned != get("head_sha"):
+            reasons.append(
+                "P12: receipt_pin.merge_head_sha %s... != head_sha %s... "
+                "(stale receipt — head moved; re-score on the current head)"
+                % (pinned[:12], str(get("head_sha"))[:12])
+            )
+    return reasons
 
 # Step 3 hard stops — no score overrides a failed gate.
 GATE_FIELDS = (
@@ -315,6 +359,8 @@ def may_auto_merge(pr_state):
     # mechanically inside _check_receipt (step 5 covers posted-ness).
     _check_receipt(get("scorecard_receipt"), reasons)
 
+    reasons.extend(p12_reasons(pr_state))
+
     # ---- Human-only exclusions (any one forces the human gate)
     changed = get("changed_files") or []
     if not isinstance(changed, list):
@@ -349,19 +395,79 @@ def may_auto_merge(pr_state):
         elif get(flag) is True:
             reasons.append(f"human-only: {label} — never auto-merged")
 
+    # ---- P11: smart-link regen receipt for smart-note-touching PRs
+    # (WORKSTREAM 1, 2026-10-10). The Smart-Link index rots whenever notes are
+    # renumbered/moved without the index following; the regen tool
+    # (tools/smart_link_regen.py) re-verifies every smart_link against the
+    # head tree, auto-repairs renames, and re-stamps verified revs. Any PR
+    # touching the notes or the index must carry a fresh regen receipt, or the
+    # merge is blocked until the lane runs the tool. Fail-closed by design.
+    sn_prefixes = (
+        "BRAIN/05-MEMORY/SMART-NOTES/",
+        ".naya/memory/smart-notes/",
+    )
+    touches_sn = any(
+        str(f).startswith(p) for f in changed for p in sn_prefixes
+    )
+    if touches_sn:
+        rec = get("smart_link_regen_receipt")
+        if not isinstance(rec, dict):
+            reasons.append(
+                "P11: PR touches smart notes/index but smart_link_regen_receipt "
+                "is missing — run tools/smart_link_regen.py --rev <head_sha> "
+                "--receipt-out, attach the receipt JSON to pr_state, re-evaluate"
+            )
+        else:
+            if rec.get("rev") != get("head_sha"):
+                reasons.append(
+                    "P11: smart_link_regen_receipt.rev != head_sha "
+                    "(stale regen evidence; re-run on the current head)"
+                )
+            if rec.get("result") not in ("green", "repaired"):
+                reasons.append(
+                    "P11: smart_link_regen_receipt.result must be 'green' or "
+                    "'repaired' (tool exit 0/1; exit 2 means human lane needed)"
+                )
+            if rec.get("broken_count") != 0:
+                reasons.append(
+                    "P11: smart_link_regen_receipt.broken_count != 0 — "
+                    "unrecoverable smart links need a human lane before merge"
+                )
+            ra = _parse_ts(rec.get("verified_at"))
+            if ra is None or (now - ra).total_seconds() > MAX_EVIDENCE_AGE_SECONDS:
+                reasons.append(
+                    "P11: smart_link_regen_receipt.verified_at missing or stale "
+                    "(>900s) — re-run the regen, don't argue"
+                )
+
     return (len(reasons) == 0, reasons)
 
 
 def main(argv):
-    if len(argv) != 2:
-        print("usage: python3 tools/auto_merge_gate.py <pr_state.json>", file=sys.stderr)
+    p12_only = len(argv) == 3 and argv[1] == "--p12-only"
+    if p12_only:
+        state_path = argv[2]
+    elif len(argv) == 2:
+        state_path = argv[1]
+    else:
+        print(
+            "usage: python3 tools/auto_merge_gate.py <pr_state.json>\n"
+            "       python3 tools/auto_merge_gate.py --p12-only <pr_state.json>",
+            file=sys.stderr,
+        )
         return 2
     try:
-        with open(argv[1], "r", encoding="utf-8") as fh:
+        with open(state_path, "r", encoding="utf-8") as fh:
             pr_state = json.load(fh)
     except (OSError, json.JSONDecodeError) as exc:
         print(json.dumps({"law": LAW_ID, "allowed": False, "error": str(exc)}))
         return 2
+    if p12_only:
+        # Standalone P12 rung for the receipt-gate CI workflow: fail-closed on
+        # missing / malformed / stale receipt_pin.
+        reasons = p12_reasons(pr_state)
+        print(json.dumps({"law": LAW_ID, "precondition": "P12", "allowed": not reasons, "reasons": reasons}, indent=2))
+        return 0 if not reasons else 1
     allowed, reasons = may_auto_merge(pr_state)
     print(json.dumps({"law": LAW_ID, "allowed": allowed, "reasons": reasons}, indent=2))
     return 0 if allowed else 1

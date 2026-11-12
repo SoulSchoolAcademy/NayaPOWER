@@ -1,0 +1,48 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2180",
+  "title": "Generated State Is Regenerated, Never Hand-Picked",
+  "slug": "essence-regen-discipline",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-regen-discipline.md",
+  "tone": "emerald",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:17:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "The brain index and the Smart Note registry are *generated* state, and this block is the record of every way generated state goes wrong when it is treated as hand-writable: regenerated from a stale index instead of the tree (SN-832), healed by hand-picking conflict sides instead of re-running the generator (SN-869), passed locally because the enumerator can't see untracked files (SN-872, SN-880), prescribed for files the instrument never scans (SN-885), stamped so broadly that history itself was rewritten (SN-886), and landed as a page without its registry twin (SN-887). The rules are mechanical: derive from tree truth, regenerate on the merged tree, stage before you regen, scope-check before you prescribe, stamp only the two fields that are allowed to move, and land the note and its entry in the same commit — or don't land.",
+    "human_view": "Think of the index as a map that a machine redraws from the territory. Every failure here came from treating the map as the territory or editing the map by hand: redrawing it from an old map, patching a torn corner by guessing, stamping today's date over historical records, or adding a page to the book without entering it in the catalog. The rules are a cartographer's discipline: always survey the land itself, let the machine redraw the whole map, change only the \"surveyed on\" date — never the history the map records — and catalog every page the day it is bound.",
+    "child_view": "Imagine a big book that a robot rewrites every night from all the real pages. If you sneak a new page in without telling the robot, the robot's table of contents won't know it's there. If two people tear the book and you tape it back by guessing, the story comes out wrong — you have to let the robot rewrite it from all the pages together. And you never, ever scribble over the old dates in the book to make them look new.",
+    "grandma_view": "It's library discipline, dear. The catalog is not the books; you count the shelves, not the old catalog, when you take inventory. A new book gets its catalog card the same day it's shelved, written by the person who received it — nobody forges a card for a book they didn't handle. And the dates in the accession ledger are history: you may add today's line, but you may not freshen yesterday's ink.",
+    "ai_view": "Regenerate derived inventories from `git ls-tree` truth, never from a prior index (SN-832). On generated-file conflicts: merge trees → regenerate → `--check` → prove both intents → byte-verify before the ref moves (SN-869). Before any regen: clean worktree, exact HEAD, everything staged, local-commit probe; write assertions that compare one universe and fire pre-mutation (SN-872, SN-880). On index-drift reds, list failing paths first — outside BRAIN/ means rebase, not regen (SN-885). Re-stamp by enumerating the two stamp fields exactly; run the three-part rewrite acceptance (SN-886). Register a domain's floor and pass its deletion proof before landing its content (SN-850). Land note + registry entry atomically with the hash computed on landed bytes; block rather than fabricate (SN-887). Project under `<ib>.md` only; repair projections through the canonical pipeline (SN-875).",
+    "what_it_means": "Generated state has exactly one honest author: the generator, run over the true inputs, at a known commit. Every note in this essence is a way a human hand — helpful, hurried, or confident — substituted for that author and produced state that *looked* right: green checks, plausible counts, tidy stamps. The discipline is not distrust of people; it's the recognition that derived artifacts carry no memory of how they were made, so the *process* has to be the proof.",
+    "whats_inside": [
+      "Regen derives from tree truth (`git ls-tree` path+SHA); cached metadata is used only on SHA match (SN-832).",
+      "Conflicts in generated files resolve by regenerating on the merged tree and proving both intents — never by side-picking (SN-869).",
+      "The enumerator sees tracked files only: stage before regen, probe with a local commit, and assert within one universe (SN-872, SN-880).",
+      "The instrument's scope is BRAIN/ only; drift on outside paths is a base condition — rebase, don't regen (SN-885).",
+      "Only `last_reconciled_main` and `reconciliation.basis_commit` may move in a re-stamp; historical proof pointers are read-only, and rewrite acceptance is `--check` + bounded-proof-semantics test + diff eyeball (SN-886).",
+      "A registry-backed guard proves nothing about unregistered members; floors register before content (SN-850).",
+      "A Smart Note lands as .md + registry entry in one commit, or not at all; nobody fabricates another lane's entry (SN-887).",
+      "Canonical basename is `<ib>.md`; provenance is never manufactured (SN-875)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-4"
+    ],
+    "covers": [
+      "SN-832",
+      "SN-850",
+      "SN-869",
+      "SN-872",
+      "SN-875",
+      "SN-880",
+      "SN-885",
+      "SN-886",
+      "SN-887"
+    ]
+  },
+  "page_hash": "ffafdf30209207666272dfaf339cd26cf90b5b5258e26a766a68654dffb09755",
+  "content_hash": "b9e6d6d955d9a2e0d6e54b8c8ab1f625286ba959b9030ba27f63cdc3ebdeb83b"
+}

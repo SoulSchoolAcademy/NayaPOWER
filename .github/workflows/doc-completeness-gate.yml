@@ -1,0 +1,30 @@
+name: doc-completeness-gate
+
+# Documentation Completeness Gate — Naya 5, Documentation Completeness owner.
+# Shawn's order (2026-10-10): every intelligence artifact in 4 forms.
+# Runs on changed files only — pre-existing debt is tracked, not blocking.
+
+on:
+  pull_request:
+    paths:
+      - '.naya/capture/**'
+      - 'BRAIN/01-GOVERNANCE/**'
+      - 'BRAIN/07-LEARNING/**'
+  push:
+    branches: [main]
+    paths:
+      - '.naya/capture/**'
+      - 'BRAIN/01-GOVERNANCE/**'
+
+jobs:
+  completeness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check documentation completeness on changed files
+        run: python3 tools/doc_completeness_check.py --changed-only

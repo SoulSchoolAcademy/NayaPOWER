@@ -1,0 +1,53 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2130",
+  "title": "The Instrument Is on Trial",
+  "slug": "essence-the-instrument-is-on-trial",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-the-instrument-is-on-trial.md",
+  "tone": "sapphire",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:45:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Every verdict is only as honest as the instrument that produced it — and instruments lie quietly: a battery can falsify its own later verdicts on the same bytes (SN-0356), a registry can agree with itself while disagreeing with everything else (SN-0361), thirty labels can cite one artifact (SN-0505), a gate can fabricate \"nothing is executed\" from a path bug (SN-0509). So the verifier's first subject is never the claim — it is the measuring tool: its identity model, its coverage, its platform, its stubs, and whether its verdicts were proven on the machine that renders them.",
+    "human_view": "Every number this team trusts comes out of some tool — a test battery, a scanner, a gate, a grader. This essence is the hard-won knowledge that the tool itself is the first thing to doubt: tools carry stale pins, wrong scopes, platform bugs, fakes that are merely close, and flags hardcoded to \"true.\" The craft collected here is how the team learned to put the instrument on trial before believing anything it says — and how much damage one unexamined instrument can do downstream before anyone notices.",
+    "child_view": "Imagine a referee whose whistle sometimes blows when nobody fouled. Before you trust the score, you check the whistle. These notes are all the times the whistle was wrong: a ruler that measured differently on a different table, a scale that said \"all good\" because its sticker said so, thirty homework sheets that turned out to be photocopies of one. The rule the team learned: check the checker first — with a different checker, on the exact thing being checked.",
+    "grandma_view": "Dear, it's the old wisdom about scales and thermometers: a number is only as good as the instrument behind it. A bathroom scale that flatters you is worse than no scale, because you'll act on it. The team learned to test the thermometer before treating the patient, to weigh with two different scales, and to never trust a gauge that reads \"fine\" because someone painted the needle there. Honest instruments, checked honestly — that's the whole secret.",
+    "ai_view": "Before you cite any verdict, interrogate its instrument: Can the battery falsify itself (SN-0356)? Is identity asserted as a triple, bidirectionally (SN-0381)? Is the registry checked against other surfaces, not itself (SN-0361)? Is the tool the version the gate runs (SN-0429)? Was the scope pinned before the audit (SN-0434)? Is a 401 diagnosed by layer before any key changes (SN-0498)? Can N labels share one artifact in the schema (SN-0505)? Did the scan prove its window covered the newest item (SN-0506)? Was the gate's verdict proven on the runner's platform (SN-0509)? Are the stubs exact, or merely close (SN-0517)? Did a different instrument re-run it (SN-0525, SN-0586)? Is every trusted flag computed, never literal (SN-0528)? Were the bytes fingerprinted before the battery ran (SN-0533)?",
+    "what_it_means": "Fourteen notes, one inversion: the evidence stack's weakest layer is never the claim — it is the unexamined instrument under the claim. A cold reader holding only this essence can audit any verdict the fleet produces by auditing its instrument first, which is the single highest-leverage verification habit the corpus teaches.",
+    "whats_inside": [
+      "A battery, gate, scanner, or stub is an instrument; its verdict is a claim about its own correctness first (SN-0356, SN-0509, SN-0517).",
+      "Identity is the (key, internal id, storage name) triple, asserted bidirectionally; content-hash agreement is never identity proof (SN-0381). Cross-surface agreement outranks self-consistency (SN-0361).",
+      "Reproduce with the tool version the gate uses; pin the audit's scope before auditing; keep evidence audits read-only (SN-0429, SN-0434).",
+      "A 401 is diagnosed by layer — path, resolution, key identity — never by hunting for a different key (SN-0498).",
+      "Evidence identity lives in the data model: N labels over one artifact must slice per label or refuse (SN-0505). Scans prove coverage on the same run or report nothing (SN-0506).",
+      "Verification = independent re-execution on a different instrument; both platforms' verdicts are published side by side (SN-0525, SN-0586).",
+      "Verification flags are computed from outcomes, never literals; known-open attestation defects are pinned by tests and recorded verdicts, never silenced (SN-0528).",
+      "Fingerprint the bytes against the canonical source before any battery runs on them (SN-0533)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-3"
+    ],
+    "covers": [
+      "SN-0356",
+      "SN-0361",
+      "SN-0381",
+      "SN-0429",
+      "SN-0434",
+      "SN-0498",
+      "SN-0505",
+      "SN-0506",
+      "SN-0509",
+      "SN-0517",
+      "SN-0525",
+      "SN-0528",
+      "SN-0533",
+      "SN-0586"
+    ]
+  },
+  "page_hash": "6141276b65479d8c56ac8f317750bf7ac7c6c6bc5619bdae92f00967ec566eba",
+  "content_hash": "3fe30c07dd692a80efe33260a1eca80800b62131658c4a38415de2c210792d4f"
+}

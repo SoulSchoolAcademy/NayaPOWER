@@ -1,0 +1,4436 @@
+{
+ "registry": "Naya Parts Registry",
+ "version": "1.2",
+ "generated_utc": "2026-10-31T18:28:07Z",
+ "repo": "SoulSchoolAcademy/NayaPOWER",
+ "path": "BRAIN/10-INTERFACES/PARTS-REGISTRY-V1.json",
+ "counts": {
+  "interface_parts": 109,
+  "functional_parts": 24,
+  "total": 133
+ },
+ "method": "Harvest-first. 478 interface entries deduped from the 478-row harvest (66 duplicate human names resolved: winner keeps the clean name, losers marked variant; all model IDs and html preserved). Every source_repo_path read-verified on origin/main. 19 workspace-only orphans landed as governed DESIGN-BLOCKS families (index.json v1.5, 95 blocks). 24 functional parts harvested from live repo contracts (NAYA-FN-001..024), all evidenced, none invented. v1.2 purge (2026-10-31, ratified lock-in): this registry is aligned to the factory canon (BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.json). Removed 433 interface entries: 414 the canon index marks retired (413) or superseded (1: NAYA-INP-001) and 19 further entries the canon holds live but this registry itself marks variant (138 registry-marked variants in total; 119 of them were already inside the 414). Surviving 109 interface entries are exactly the entries that are BOTH canon-live (canonical or verified in the canon index) AND canonical-named here. The factory proven live total remains 157 interface (154 canonical + 3 verified) + 24 functional: the canon index holds 29 live IDs this registry never contained (26 canonical + the 3 verified NAYA-BRD-031/032/033, held in the canon store), which are a separate harvest question, not part of this purge.",
+ "notes": [
+  "The 152-vs-478 count question is NOT ruled here — ruling pack at workspace/parts-run/ruling-pack-152-vs-478.md, decision is Shawn's.",
+  "The repo's older design-library catalog under HUB/design-system/library/ is a DIFFERENT artifact and was not touched.",
+  "Bar: the Awesome Law — best of the best, nothing less.",
+  "v1.1 (2026-10-30, Lane 4 coverage proof): +64 harvested parts from SMART-FACTORY-CANON/pieces.json (OVL 5, INP 9, ICO 26, MRK 7, ROW 4, HDR 3, HRO 1, BRD 9). 26 legacy overlay IDs retired as stale duplicates/variants (documented in lane-4 report; canon file untouched). No existing model ID renamed, removed, or re-identified.",
+  "v1.2 (2026-10-31): purge executed under Shawn's ratified order (designs not up to par are removed). Counts in this file now enumerate this file's own lists exactly: 109 interface + 24 functional = 133. Reconciliation record: hidden audit \"Registry Reconciliation 2026-10-31\" (Resolve, verification seat) — before this purge the headline 566 counted 414 canon-dead entries as earned."
+ ],
+ "interface_parts": [
+  {
+   "model": "NAYA-BTN-001",
+   "name": "01 · Heroes — .living-btn — ◈ SEE IT WORKING",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"living-btn\" data-spectrum=\"purple\"><span class=\"btn-glow\"></span><span class=\"btn-label\">◈ SEE IT WORKING</span></button>",
+   "css_classes": [
+    "btn-glow",
+    "btn-label",
+    "living-btn"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-023",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 3 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-002",
+   "name": "01 · Heroes — .living-btn — ✦ ENTER THE STANDARD",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"living-btn\" data-spectrum=\"magenta\"><span class=\"btn-glow\"></span><span class=\"btn-label\">✦ ENTER THE STANDARD</span></button>",
+   "css_classes": [
+    "btn-glow",
+    "btn-label",
+    "living-btn"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-022",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 3 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-003",
+   "name": "01 · Heroes — .living-btn — ＋ READ THE LAW",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"living-btn\" data-spectrum=\"blue\"><span class=\"btn-glow\"></span><span class=\"btn-label\">＋ READ THE LAW</span></button>",
+   "css_classes": [
+    "btn-glow",
+    "btn-label",
+    "living-btn"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-024",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 3 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-004",
+   "name": "02 · Living System — .lv-btn",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"lv-btn lv-btn--danger\"><span class=\"lv-label\">✕ Delete</span></button>",
+   "css_classes": [
+    "lv-btn",
+    "lv-btn--danger",
+    "lv-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-016",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-006",
+   "name": "02 · Living System — .lv-btn — Blue",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"lv-btn\" style=\"--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255\"><span class=\"lv-label\">Blue</span></button>",
+   "css_classes": [
+    "lv-btn",
+    "lv-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-009",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 10 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-007",
+   "name": "02 · Living System — .lv-btn — Coral",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"lv-btn\" style=\"--lv-accent:#ff5e6c;--lv-accent-rgb:255,94,108\"><span class=\"lv-label\">Coral</span></button>",
+   "css_classes": [
+    "lv-btn",
+    "lv-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-013",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 10 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-008",
+   "name": "02 · Living System — .lv-btn — Disabled",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"lv-btn\" disabled=\"\"><span class=\"lv-label\">Disabled</span></button>",
+   "css_classes": [
+    "lv-btn",
+    "lv-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-018",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 10 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-009",
+   "name": "02 · Living System — .lv-btn — Gold",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"lv-btn\" style=\"--lv-accent:#ffbf3d;--lv-accent-rgb:255,191,61\"><span class=\"lv-label\">Gold</span></button>",
+   "css_classes": [
+    "lv-btn",
+    "lv-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-011",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 10 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-010",
+   "name": "02 · Living System — .lv-btn — Green",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"lv-btn\" style=\"--lv-accent:#2fe89e;--lv-accent-rgb:47,232,158\"><span class=\"lv-label\">Green</span></button>",
+   "css_classes": [
+    "lv-btn",
+    "lv-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-010",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 10 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-011",
+   "name": "02 · Living System — .lv-btn — Indigo",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"lv-btn\" style=\"--lv-accent:#6675ff;--lv-accent-rgb:102,117,255\"><span class=\"lv-label\">Indigo</span></button>",
+   "css_classes": [
+    "lv-btn",
+    "lv-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-015",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 10 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-012",
+   "name": "02 · Living System — .lv-btn — Lime",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"lv-btn\" style=\"--lv-accent:#b8ee57;--lv-accent-rgb:184,238,87\"><span class=\"lv-label\">Lime</span></button>",
+   "css_classes": [
+    "lv-btn",
+    "lv-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-014",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 10 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-013",
+   "name": "02 · Living System — .lv-btn — Magenta",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"lv-btn\" style=\"--lv-accent:#e84fff;--lv-accent-rgb:232,79,255\"><span class=\"lv-label\">Magenta</span></button>",
+   "css_classes": [
+    "lv-btn",
+    "lv-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-007",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 10 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-014",
+   "name": "02 · Living System — .lv-btn — Purple",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"lv-btn\" style=\"--lv-accent:#a06bff;--lv-accent-rgb:160,107,255\"><span class=\"lv-label\">Purple</span></button>",
+   "css_classes": [
+    "lv-btn",
+    "lv-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-008",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 10 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-015",
+   "name": "02 · Living System — .lv-btn — Teal",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"lv-btn\" style=\"--lv-accent:#40d3bb;--lv-accent-rgb:64,211,187\"><span class=\"lv-label\">Teal</span></button>",
+   "css_classes": [
+    "lv-btn",
+    "lv-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-012",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 10 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-016",
+   "name": "02 · Living System — .lv-btn — ◈ Purple Hero",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"lv-btn lv-hero\" style=\"--lv-accent:#a06bff;--lv-accent-rgb:160,107,255\"><span class=\"lv-label\">◈ Purple Hero</span></button>",
+   "css_classes": [
+    "lv-btn",
+    "lv-hero",
+    "lv-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-005",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 3 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-017",
+   "name": "02 · Living System — .lv-btn — ✦ Magenta Hero",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"lv-btn lv-hero\" style=\"--lv-accent:#e84fff;--lv-accent-rgb:232,79,255\"><span class=\"lv-label\">✦ Magenta Hero</span></button>",
+   "css_classes": [
+    "lv-btn",
+    "lv-hero",
+    "lv-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-004",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 3 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-018",
+   "name": "02 · Living System — .lv-btn — ＋ Blue Hero",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"lv-btn lv-hero\" style=\"--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255\"><span class=\"lv-label\">＋ Blue Hero</span></button>",
+   "css_classes": [
+    "lv-btn",
+    "lv-hero",
+    "lv-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-006",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 3 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-019",
+   "name": "03 · Essential — .cx-btn — → CONTINUE",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"cx-btn\">→ CONTINUE</button>",
+   "css_classes": [
+    "cx-btn"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-027",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 3 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-020",
+   "name": "03 · Essential — .cx-btn — ◈ DETAILS",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"cx-btn\">◈ DETAILS</button>",
+   "css_classes": [
+    "cx-btn"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-026",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 3 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-021",
+   "name": "03 · Essential — .cx-btn — ＋ CREATE",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"cx-btn\">＋ CREATE</button>",
+   "css_classes": [
+    "cx-btn"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-025",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 3 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-022",
+   "name": "04 · Naya 5 proximity · black restored",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"naya-btn proximity\" style=\"--tone:#34d38a;--rgb:52,211,138\" data-aware=\"\">Create space<svg class=\"icon icon-sm\"><use href=\"#i-plus\"></svg></button>",
+   "css_classes": [
+    "icon",
+    "icon-sm",
+    "naya-btn",
+    "proximity"
+   ],
+   "sources": [
+    {
+     "temp_id": "uds-017",
+     "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html"
+    }
+   ],
+   "notes": "",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/systems/Naya_Ultimate_Design_System_-_Naya_2.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/systems/Naya_Ultimate_Design_System_-_Naya_2.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-023",
+   "name": "04 · Standard — .primo",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"primo theme-magenta\">Magenta</button>",
+   "css_classes": [
+    "primo",
+    "theme-magenta"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-028",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "primo button —",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-028",
+   "name": "05 · Orbit — .orbit-btn — ◈ Launch",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"orbit-btn\" style=\"--oc:#a06bff;--oc-rgb:160,107,255\"><span class=\"orbit-label\">◈ Launch</span></button>",
+   "css_classes": [
+    "orbit-btn",
+    "orbit-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-034",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 3 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-029",
+   "name": "05 · Orbit — .orbit-btn — ✦ Create",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"orbit-btn\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\"><span class=\"orbit-label\">✦ Create</span></button>",
+   "css_classes": [
+    "orbit-btn",
+    "orbit-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-033",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 3 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-030",
+   "name": "05 · Orbit — .orbit-btn — ＋ Begin",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"orbit-btn\" style=\"--oc:#3fb8ff;--oc-rgb:63,184,255\"><span class=\"orbit-label\">＋ Begin</span></button>",
+   "css_classes": [
+    "orbit-btn",
+    "orbit-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-035",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 3 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BTN-031",
+   "name": "06 · Icon Buttons — .icon-btn — ",
+   "category": "BTN",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "form",
+    "landing",
+    "player",
+    "profile",
+    "settings"
+   ],
+   "html": "<button class=\"icon-btn\" style=\"--ic:#e84fff;--ic-rgb:232,79,255\" aria-label=\"Like\"><svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 21s-7-4.5-7-11a7 7 0 0114 0c0 6.5-7 11-7 11z\"></svg></button>",
+   "css_classes": [
+    "icon-btn"
+   ],
+   "sources": [
+    {
+     "temp_id": "btnfam-036",
+     "source_file": "Naya_Beautiful_Button_Set_N4.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 5 (same demo+classes, distinct html)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/buttons/Naya_Beautiful_Button_Set_N4.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-JWL-001",
+   "name": "01 · Orbs — finished objects of light",
+   "category": "JWL",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "gallery",
+    "landing",
+    "profile"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "gallery",
+    "landing",
+    "profile"
+   ],
+   "html": "<span class=\"orb orb--sm\" style=\"--oc:#a06bff;--oc-rgb:160,107,255\"></span>",
+   "css_classes": [
+    "orb",
+    "orb--sm"
+   ],
+   "sources": [
+    {
+     "temp_id": "jewel-004",
+     "source_file": "Naya_Jewel_Library_-_N5.html"
+    }
+   ],
+   "notes": "orb variant via class modifiers — variant classes: orb",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/jewels/Naya_Jewel_Library_-_N5.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/jewels/Naya_Jewel_Library_-_N5.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-JWL-003",
+   "name": "01 · Orbs — finished objects of light — ",
+   "category": "JWL",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "gallery",
+    "landing",
+    "profile"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "gallery",
+    "landing",
+    "profile"
+   ],
+   "html": "<span class=\"orb orb--xs\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\"></span>",
+   "css_classes": [
+    "orb",
+    "orb--xs"
+   ],
+   "sources": [
+    {
+     "temp_id": "jewel-001",
+     "source_file": "Naya_Jewel_Library_-_N5.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 3 (same demo+classes, distinct html) | orb variant via class modifiers — variant classes: orb | duplicate of jewel-013 (BULLET · 30px Lists, gem points)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/jewels/Naya_Jewel_Library_-_N5.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/jewels/Naya_Jewel_Library_-_N5.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-JWL-006",
+   "name": "01 · Orbs — finished objects of light — ▶",
+   "category": "JWL",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "gallery",
+    "landing",
+    "profile"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "gallery",
+    "landing",
+    "profile"
+   ],
+   "html": "<span class=\"orb orb--glyph orb--icon\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\">▶</span>",
+   "css_classes": [
+    "orb",
+    "orb--glyph",
+    "orb--icon"
+   ],
+   "sources": [
+    {
+     "temp_id": "jewel-006",
+     "source_file": "Naya_Jewel_Library_-_N5.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 3 (same demo+classes, distinct html) | orb variant via class modifiers — variant classes: orb",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/jewels/Naya_Jewel_Library_-_N5.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/jewels/Naya_Jewel_Library_-_N5.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-JWL-007",
+   "name": "01 · Orbs — finished objects of light — ◈",
+   "category": "JWL",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "gallery",
+    "landing",
+    "profile"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "gallery",
+    "landing",
+    "profile"
+   ],
+   "html": "<span class=\"orb orb--glyph orb--icon\" style=\"--oc:#ffbf3d;--oc-rgb:255,191,61\">◈</span>",
+   "css_classes": [
+    "orb",
+    "orb--glyph",
+    "orb--icon"
+   ],
+   "sources": [
+    {
+     "temp_id": "jewel-007",
+     "source_file": "Naya_Jewel_Library_-_N5.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 3 (same demo+classes, distinct html) | orb variant via class modifiers — variant classes: orb",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/jewels/Naya_Jewel_Library_-_N5.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/jewels/Naya_Jewel_Library_-_N5.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-JWL-008",
+   "name": "01 · Orbs — finished objects of light — ✦",
+   "category": "JWL",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "gallery",
+    "landing",
+    "profile"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "gallery",
+    "landing",
+    "profile"
+   ],
+   "html": "<span class=\"orb orb--glyph orb--icon\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\">✦</span>",
+   "css_classes": [
+    "orb",
+    "orb--glyph",
+    "orb--icon"
+   ],
+   "sources": [
+    {
+     "temp_id": "jewel-005",
+     "source_file": "Naya_Jewel_Library_-_N5.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 3 (same demo+classes, distinct html) | orb variant via class modifiers — variant classes: orb",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/jewels/Naya_Jewel_Library_-_N5.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/jewels/Naya_Jewel_Library_-_N5.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-JWL-009",
+   "name": "03 · Gem Bullets — for lists — ",
+   "category": "JWL",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "gallery",
+    "landing",
+    "profile"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "gallery",
+    "landing",
+    "profile"
+   ],
+   "html": "<span class=\"gem-bullet\" style=\"--tone:var(--magenta)\"></span>",
+   "css_classes": [
+    "gem-bullet"
+   ],
+   "sources": [
+    {
+     "temp_id": "jewel-028",
+     "source_file": "Naya_Jewel_Library_-_N5.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 5 (same demo+classes, distinct html) | list bullet —",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/jewels/Naya_Jewel_Library_-_N5.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/jewels/Naya_Jewel_Library_-_N5.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-JWL-014",
+   "name": "APP ICON Glyph at the core",
+   "category": "JWL",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "gallery",
+    "landing",
+    "profile"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "gallery",
+    "landing",
+    "profile"
+   ],
+   "html": "<span class=\"orb orb--glyph\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\">✦</span>",
+   "css_classes": [
+    "orb",
+    "orb--glyph"
+   ],
+   "sources": [
+    {
+     "temp_id": "jewel-017",
+     "source_file": "Naya_Jewel_Library_-_N5.html"
+    }
+   ],
+   "notes": "orb variant via class modifiers — variant classes: orb",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/jewels/Naya_Jewel_Library_-_N5.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/jewels/Naya_Jewel_Library_-_N5.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-JWL-015",
+   "name": "APP ICON Love, luminous",
+   "category": "JWL",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "gallery",
+    "landing",
+    "profile"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "gallery",
+    "landing",
+    "profile"
+   ],
+   "html": "<span class=\"orb orb--glyph\" style=\"--oc:#3fb8ff;--oc-rgb:63,184,255\">♥</span>",
+   "css_classes": [
+    "orb",
+    "orb--glyph"
+   ],
+   "sources": [
+    {
+     "temp_id": "jewel-018",
+     "source_file": "Naya_Jewel_Library_-_N5.html"
+    }
+   ],
+   "notes": "orb variant via class modifiers — variant classes: orb",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/jewels/Naya_Jewel_Library_-_N5.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/jewels/Naya_Jewel_Library_-_N5.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-JWL-016",
+   "name": "Beautiful at sixteen pixels. — ",
+   "category": "JWL",
+   "tags": [
+    "chat",
+    "dashboard",
+    "feed",
+    "gallery",
+    "landing",
+    "profile"
+   ],
+   "use_cases": [
+    "chat",
+    "dashboard",
+    "feed",
+    "gallery",
+    "landing",
+    "profile"
+   ],
+   "html": "<span class=\"mini-gem circle\"><svg class=\"icon\"><use href=\"#i-grid\"></svg></span>",
+   "css_classes": [
+    "circle",
+    "icon",
+    "mini-gem"
+   ],
+   "sources": [
+    {
+     "temp_id": "uds-081",
+     "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 4 (same demo+classes, distinct html) | mini gem mark —",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/systems/Naya_Ultimate_Design_System_-_Naya_2.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/systems/Naya_Ultimate_Design_System_-_Naya_2.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-NAV-001",
+   "name": "[hub-rail] 11-room rail nav",
+   "category": "NAV",
+   "tags": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "html": "<nav class=\"hub-rail\"><button class=\"rail-item\" data-room=\"feed\"><span class=\"rail-kicker\">STREAM</span>Smart Feed</button><button class=\"rail-item\" data-room=\"today\"><span class=\"rail-kicker\">TODAY</span>Your Intelligence Today</button><button class=\"rail-item\" data-room=\"reports\"><span class=\"rail-kicker\">REPORTS</span>Your Reports</button><button class=\"rail-item\" data-room=\"library\"><span class=\"rail-kicker\">LIBRARY</span>Intelligent Library</button><button class=\"rail-item\" data-room=\"connect\"><span class=\"rail-kicker\">CONNECT</span>Smart Connect</button><button class=\"rail-item\" data-room=\"ledger\"><span class=\"rail-kicker\">ACCOUNTABILITY</span>Smart Ledger</button><button class=\"rail-item\" data-room=\"connections\"><span class=\"rail-kicker\">CONNECTIONS</span>Your Connections</button><button class=\"rail-item\" data-room=\"lists\"><span class=\"rail-kicker\">LISTS</span>Smart Lists</button><button class=\"rail-item\" data-room=\"mail\"><span class=\"rail-kicker\">MAIL</span>Smart Mail</button><button class=\"rail-item\" data-room=\"spaces\"><span class=\"rail-kicker\">SPACES</span>Smart Spaces</button><button class=\"rail-item\" data-room=\"settings\"><span class=\"rail-kicker\">SETTINGS</span>Settings</button></nav>",
+   "css_classes": [
+    "hub-rail",
+    "rail-item",
+    "rail-kicker"
+   ],
+   "sources": [
+    {
+     "temp_id": "hub-004",
+     "source_file": "Naya_Smart_Hub_Design.html"
+    }
+   ],
+   "notes": "11-room rail reconstructed from the ROOMS registry const -- the actual rail HTML is JS-rendered from this data",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/pages/Naya_Smart_Hub_Design.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/pages/Naya_Smart_Hub_Design.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-NAV-002",
+   "name": "Design Contract v2.0 — AI Law §",
+   "category": "NAV",
+   "tags": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "html": "<a class=\"pill\" style=\"--c:#3ca8ff\" href=\"#layers\">AI Law<span class=\"glyph\">§</span></a>",
+   "css_classes": [
+    "glyph",
+    "pill"
+   ],
+   "sources": [
+    {
+     "temp_id": "elem2-100",
+     "source_file": "Naya_Design_Elements_N2.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 6 (same demo+classes, distinct html) | contract nav link —",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/showcase/Naya_Design_Elements_N2.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/showcase/Naya_Design_Elements_N2.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-NAV-003",
+   "name": "Design Contract v2.0 — Human Law §",
+   "category": "NAV",
+   "tags": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "html": "<a class=\"pill\" style=\"--c:#35e39b\" href=\"#layers\">Human Law<span class=\"glyph\">§</span></a>",
+   "css_classes": [
+    "glyph",
+    "pill"
+   ],
+   "sources": [
+    {
+     "temp_id": "elem2-101",
+     "source_file": "Naya_Design_Elements_N2.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 6 (same demo+classes, distinct html) | contract nav link —",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/showcase/Naya_Design_Elements_N2.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/showcase/Naya_Design_Elements_N2.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-NAV-004",
+   "name": "Design Contract v2.0 — Machine Law §",
+   "category": "NAV",
+   "tags": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "html": "<a class=\"pill\" style=\"--c:#9d75ff\" href=\"#layers\">Machine Law<span class=\"glyph\">§</span></a>",
+   "css_classes": [
+    "glyph",
+    "pill"
+   ],
+   "sources": [
+    {
+     "temp_id": "elem2-099",
+     "source_file": "Naya_Design_Elements_N2.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 6 (same demo+classes, distinct html) | contract nav link —",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/showcase/Naya_Design_Elements_N2.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/showcase/Naya_Design_Elements_N2.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-NAV-005",
+   "name": "Design Contract v2.0 — Pre-ship ✓",
+   "category": "NAV",
+   "tags": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "html": "<a class=\"pill\" style=\"--c:#ed42c4\" href=\"#preship\">Pre-ship<span class=\"glyph\">✓</span></a>",
+   "css_classes": [
+    "glyph",
+    "pill"
+   ],
+   "sources": [
+    {
+     "temp_id": "elem2-104",
+     "source_file": "Naya_Design_Elements_N2.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 6 (same demo+classes, distinct html) | contract nav link —",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/showcase/Naya_Design_Elements_N2.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/showcase/Naya_Design_Elements_N2.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-NAV-006",
+   "name": "Design Contract v2.0 — Self-Scorecard ✓",
+   "category": "NAV",
+   "tags": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "html": "<a class=\"pill\" style=\"--c:#ffd45a\" href=\"#scorecard\">Self-Scorecard<span class=\"glyph\">✓</span></a>",
+   "css_classes": [
+    "glyph",
+    "pill"
+   ],
+   "sources": [
+    {
+     "temp_id": "elem2-102",
+     "source_file": "Naya_Design_Elements_N2.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 6 (same demo+classes, distinct html) | contract nav link —",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/showcase/Naya_Design_Elements_N2.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/showcase/Naya_Design_Elements_N2.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-NAV-007",
+   "name": "Design Contract v2.0 — Try it ◆",
+   "category": "NAV",
+   "tags": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "html": "<a class=\"pill\" style=\"--c:#ff8c42\" href=\"#demo\">Try it<span class=\"glyph\">◆</span></a>",
+   "css_classes": [
+    "glyph",
+    "pill"
+   ],
+   "sources": [
+    {
+     "temp_id": "elem2-103",
+     "source_file": "Naya_Design_Elements_N2.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 6 (same demo+classes, distinct html) | contract nav link —",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/showcase/Naya_Design_Elements_N2.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/showcase/Naya_Design_Elements_N2.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-NAV-008",
+   "name": "Four laws create one unmistakable world. — 01",
+   "category": "NAV",
+   "tags": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "html": "<div class=\"foundation-index\">01</div>",
+   "css_classes": [
+    "foundation-index"
+   ],
+   "sources": [
+    {
+     "temp_id": "uds-051",
+     "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 4 (same demo+classes, distinct html) | foundation index —",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/systems/Naya_Ultimate_Design_System_-_Naya_2.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/systems/Naya_Ultimate_Design_System_-_Naya_2.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-NAV-009",
+   "name": "Four laws create one unmistakable world. — 02",
+   "category": "NAV",
+   "tags": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "html": "<div class=\"foundation-index\">02</div>",
+   "css_classes": [
+    "foundation-index"
+   ],
+   "sources": [
+    {
+     "temp_id": "uds-052",
+     "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 4 (same demo+classes, distinct html) | foundation index —",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/systems/Naya_Ultimate_Design_System_-_Naya_2.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/systems/Naya_Ultimate_Design_System_-_Naya_2.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-NAV-010",
+   "name": "Four laws create one unmistakable world. — 03",
+   "category": "NAV",
+   "tags": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "html": "<div class=\"foundation-index\">03</div>",
+   "css_classes": [
+    "foundation-index"
+   ],
+   "sources": [
+    {
+     "temp_id": "uds-053",
+     "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 4 (same demo+classes, distinct html) | foundation index —",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/systems/Naya_Ultimate_Design_System_-_Naya_2.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/systems/Naya_Ultimate_Design_System_-_Naya_2.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-NAV-011",
+   "name": "Four laws create one unmistakable world. — 04",
+   "category": "NAV",
+   "tags": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "use_cases": [
+    "dashboard",
+    "feed",
+    "landing",
+    "profile",
+    "settings"
+   ],
+   "html": "<div class=\"foundation-index\">04</div>",
+   "css_classes": [
+    "foundation-index"
+   ],
+   "sources": [
+    {
+     "temp_id": "uds-054",
+     "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html"
+    }
+   ],
+   "notes": "t0907: near-dup variant of 4 (same demo+classes, distinct html) | foundation index —",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "HUB/design-system/library/systems/Naya_Ultimate_Design_System_-_Naya_2.html"
+   ],
+   "source_repo_path": "HUB/design-system/library/systems/Naya_Ultimate_Design_System_-_Naya_2.html",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-OVL-001",
+   "name": "Toast system",
+   "category": "OVL",
+   "tags": [
+    "mail",
+    "booking",
+    "feed",
+    "settings",
+    "notifications"
+   ],
+   "use_cases": [
+    "mail",
+    "booking",
+    "feed",
+    "settings",
+    "notifications"
+   ],
+   "html": "<div class=\"naya-toast show is-verified\"><span class=\"jw\" style=\"--j:#2fe89e;font-size:14px\">◆</span><span class=\"naya-toast-msg\">Saved — your note is safe</span>",
+   "css_classes": [
+    "is-verified",
+    "jw",
+    "naya-toast",
+    "naya-toast-msg",
+    "show"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ovl-001",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship-template.html uses naya-toast 4x, modal-mini 3x, naya-palette 8x, naya-drawer 4x; Hub index-2.html uses naya-drawer 2x; fills cite OVL gap (about, connections, smart-lists)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-OVL-002",
+   "name": "Mini modal",
+   "category": "OVL",
+   "tags": [
+    "mail",
+    "spaces",
+    "business",
+    "settings"
+   ],
+   "use_cases": [
+    "mail",
+    "spaces",
+    "business",
+    "settings"
+   ],
+   "html": "<div class=\"modal-mini\"><span class=\"modal-gem\">✦</span><span><strong>Publish this space?</strong><small>Everyone with the link can read it. You can unpublish anytime.</small></span><button class=\"naya-btn small\" type=\"button\">Publish</button>",
+   "css_classes": [
+    "modal-gem",
+    "modal-mini",
+    "naya-btn",
+    "small"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ovl-002",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship-template.html uses naya-toast 4x, modal-mini 3x, naya-palette 8x, naya-drawer 4x; Hub index-2.html uses naya-drawer 2x; fills cite OVL gap (about, connections, smart-lists)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-OVL-003",
+   "name": "Share sheet",
+   "category": "OVL",
+   "tags": [
+    "smart-link",
+    "feed",
+    "spaces",
+    "share"
+   ],
+   "use_cases": [
+    "smart-link",
+    "feed",
+    "spaces",
+    "share"
+   ],
+   "html": "<div><div class=\"smart-link\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-globe\"/></svg><span><strong>Public view</strong><small>Who can open this is explicit.</small></span></div><div class=\"share-actions\"><button class=\"naya-btn small\" type=\"button\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-people\"/></svg>People</button><button class=\"naya-btn small\" type=\"button\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-lock\"/></svg>Private</button><button class=\"naya-btn small\" type=\"button\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg>Copy link</button>",
+   "css_classes": [
+    "icon",
+    "naya-btn",
+    "share-actions",
+    "small",
+    "smart-link"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ovl-003",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship-template.html uses naya-toast 4x, modal-mini 3x, naya-palette 8x, naya-drawer 4x; Hub index-2.html uses naya-drawer 2x; fills cite OVL gap (about, connections, smart-lists)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-OVL-004",
+   "name": "Command palette",
+   "category": "OVL",
+   "tags": [
+    "smart-search",
+    "dashboard",
+    "navigation"
+   ],
+   "use_cases": [
+    "smart-search",
+    "dashboard",
+    "navigation"
+   ],
+   "html": "<div class=\"naya-palette\" role=\"dialog\" aria-label=\"Command palette\"><div class=\"naya-palette-search\"><svg viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" aria-hidden=\"true\"><circle cx=\"7\" cy=\"7\" r=\"5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\"/><path d=\"M11 11l3.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"/></svg><input class=\"naya-palette-input\" type=\"text\" placeholder=\"Ask Naya, or jump somewhere…\" autocomplete=\"off\" spellcheck=\"false\"><span class=\"naya-kbd\">esc</span></div><div class=\"naya-palette-list\" role=\"listbox\"><div class=\"naya-palette-item active\" role=\"option\" aria-selected=\"true\"><span class=\"naya-palette-label\">Go to Buttons</span><span class=\"naya-palette-hint\">01</span></div><div class=\"naya-palette-item\" role=\"option\" aria-selected=\"false\"><span class=\"naya-palette-label\">Go to Inputs</span><span class=\"naya-palette-hint\">02</span></div><div class=\"naya-palette-item\" role=\"option\" aria-selected=\"false\"><span class=\"naya-palette-label\">Copy the canonical button</span><span class=\"naya-palette-hint\">action</span></div><div class=\"naya-palette-item\" role=\"option\" aria-selected=\"false\"><span class=\"naya-palette-label\">Summon Naya</span><span class=\"naya-palette-hint\">action</span>",
+   "css_classes": [
+    "active",
+    "naya-kbd",
+    "naya-palette",
+    "naya-palette-hint",
+    "naya-palette-input",
+    "naya-palette-item",
+    "naya-palette-label",
+    "naya-palette-list",
+    "naya-palette-search"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ovl-004",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship-template.html uses naya-toast 4x, modal-mini 3x, naya-palette 8x, naya-drawer 4x; Hub index-2.html uses naya-drawer 2x; fills cite OVL gap (about, connections, smart-lists)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-OVL-005",
+   "name": "Notification drawer",
+   "category": "OVL",
+   "tags": [
+    "mail",
+    "notifications",
+    "dashboard"
+   ],
+   "use_cases": [
+    "mail",
+    "notifications",
+    "dashboard"
+   ],
+   "html": "<aside class=\"naya-drawer\" aria-label=\"Notifications\" style=\"max-width:420px;width:100%\"><div class=\"naya-drawer-head\"><h2>Notifications</h2><button class=\"naya-btn icon micro\" type=\"button\" aria-label=\"Close\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-close\"/></svg></button></div><div class=\"naya-drawer-list\"><div class=\"naya-note is-unread\"><span class=\"naya-avatar xs\" style=\"--av-hue:#35e0a1\">N4</span><div class=\"naya-note-body\"><strong>Naya 4</strong> opened a PR for your review.<div class=\"naya-note-time\">12 min ago",
+   "css_classes": [
+    "icon",
+    "is-unread",
+    "micro",
+    "naya-avatar",
+    "naya-btn",
+    "naya-drawer",
+    "naya-drawer-head",
+    "naya-drawer-list",
+    "naya-note",
+    "naya-note-body",
+    "naya-note-time",
+    "xs"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ovl-005",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship-template.html uses naya-toast 4x, modal-mini 3x, naya-palette 8x, naya-drawer 4x; Hub index-2.html uses naya-drawer 2x; fills cite OVL gap (about, connections, smart-lists)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-INP-002",
+   "name": "Alias field",
+   "category": "INP",
+   "tags": [
+    "welcome",
+    "onboarding",
+    "settings",
+    "identity"
+   ],
+   "use_cases": [
+    "welcome",
+    "onboarding",
+    "settings",
+    "identity"
+   ],
+   "html": "<div class=\"alias-input-box\"><label class=\"alias-label\">Your handle</label><div class=\"alias-field-wrapper\"><input type=\"text\" class=\"alias-field-input\" placeholder=\"pioneer\" autocomplete=\"off\">",
+   "css_classes": [
+    "alias-field-input",
+    "alias-field-wrapper",
+    "alias-input-box",
+    "alias-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-inp-002",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses naya-toggle 6x, naya-check 9x; Hub uses search-wrap 2x, segmented 15x; fills cite INP gap (about, connections, smart-search, settings, welcome)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-INP-003",
+   "name": "Segmented control",
+   "category": "INP",
+   "tags": [
+    "settings",
+    "dashboard",
+    "smart-lists"
+   ],
+   "use_cases": [
+    "settings",
+    "dashboard",
+    "smart-lists"
+   ],
+   "html": "<div class=\"segmented\" role=\"tablist\" aria-label=\"Voice\"><button role=\"tab\" aria-selected=\"true\" type=\"button\">Human</button><button role=\"tab\" aria-selected=\"false\" type=\"button\">Naya</button><button role=\"tab\" aria-selected=\"false\" type=\"button\">Machine</button>",
+   "css_classes": [
+    "segmented"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-inp-003",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses naya-toggle 6x, naya-check 9x; Hub uses search-wrap 2x, segmented 15x; fills cite INP gap (about, connections, smart-search, settings, welcome)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-INP-004",
+   "name": "Toggle switch",
+   "category": "INP",
+   "tags": [
+    "settings",
+    "profile"
+   ],
+   "use_cases": [
+    "settings",
+    "profile"
+   ],
+   "html": "<div style=\"display:flex;gap:14px;align-items:center;justify-content:center\"><button class=\"naya-toggle\" role=\"switch\" aria-checked=\"true\" aria-label=\"Voice replies\" type=\"button\"><span></span></button><button class=\"naya-toggle\" role=\"switch\" aria-checked=\"false\" aria-label=\"Weekly digest\" type=\"button\"><span></span></button>",
+   "css_classes": [
+    "naya-toggle"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-inp-004",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses naya-toggle 6x, naya-check 9x; Hub uses search-wrap 2x, segmented 15x; fills cite INP gap (about, connections, smart-search, settings, welcome)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-INP-005",
+   "name": "Recessed field",
+   "category": "INP",
+   "tags": [
+    "welcome",
+    "smart-notes",
+    "settings",
+    "forms"
+   ],
+   "use_cases": [
+    "welcome",
+    "smart-notes",
+    "settings",
+    "forms"
+   ],
+   "html": "<label class=\"recessed-field\"><span>What should Naya remember?</span><input type=\"text\" placeholder=\"Type it like you are telling a friend…\"></label>",
+   "css_classes": [
+    "recessed-field"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-inp-005",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses naya-toggle 6x, naya-check 9x; Hub uses search-wrap 2x, segmented 15x; fills cite INP gap (about, connections, smart-search, settings, welcome)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-INP-006",
+   "name": "Jeweled checkbox",
+   "category": "INP",
+   "tags": [
+    "settings",
+    "forms",
+    "checklists"
+   ],
+   "use_cases": [
+    "settings",
+    "forms",
+    "checklists"
+   ],
+   "html": "<div style=\"display:flex;flex-direction:column;gap:10px\"><label class=\"naya-check\"><input type=\"checkbox\" checked><span class=\"box\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\"><path d=\"M3 8.5l3.5 3.5L13 4.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><span class=\"txt\">Screenshot reviewed, not assumed</span></label><label class=\"naya-check\"><input type=\"checkbox\"><span class=\"box\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\"><path d=\"M3 8.5l3.5 3.5L13 4.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><span class=\"txt\">One spectrum color per board</span></label>",
+   "css_classes": [
+    "box",
+    "naya-check",
+    "txt"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-inp-006",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses naya-toggle 6x, naya-check 9x; Hub uses search-wrap 2x, segmented 15x; fills cite INP gap (about, connections, smart-search, settings, welcome)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-INP-007",
+   "name": "Settings row",
+   "category": "INP",
+   "tags": [
+    "settings",
+    "profile"
+   ],
+   "use_cases": [
+    "settings",
+    "profile"
+   ],
+   "html": "<div class=\"setting-row\"><span><strong>Living motion</strong><small>Buttons breathe and lift while you look.</small></span><button class=\"naya-toggle\" role=\"switch\" aria-checked=\"true\" aria-label=\"Living motion\" type=\"button\"><span></span></button>",
+   "css_classes": [
+    "naya-toggle",
+    "setting-row"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-inp-007",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses naya-toggle 6x, naya-check 9x; Hub uses search-wrap 2x, segmented 15x; fills cite INP gap (about, connections, smart-search, settings, welcome)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-INP-008",
+   "name": "Reference Well",
+   "category": "INP",
+   "tags": [
+    "welcome",
+    "onboarding",
+    "smart-notes",
+    "forms"
+   ],
+   "use_cases": [
+    "welcome",
+    "onboarding",
+    "smart-notes",
+    "forms"
+   ],
+   "html": "<label class=\"ref-well\" style=\"--wc:#a06bff;--wc-rgb:160,107,255\"><span class=\"ref-well-label\">What should Naya remember?</span><span class=\"ref-well-box\"><input type=\"text\" placeholder=\"Type it like you are telling a friend…\"></span></label>",
+   "css_classes": [
+    "ref-well",
+    "ref-well-box",
+    "ref-well-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-inp-008",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses naya-toggle 6x, naya-check 9x; Hub uses search-wrap 2x, segmented 15x; fills cite INP gap (about, connections, smart-search, settings, welcome)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-INP-009",
+   "name": "Reference Select",
+   "category": "INP",
+   "tags": [
+    "settings",
+    "welcome",
+    "forms"
+   ],
+   "use_cases": [
+    "settings",
+    "welcome",
+    "forms"
+   ],
+   "html": "<div class=\"ref-select\" style=\"--wc:#3fb8ff;--wc-rgb:63,184,255\"><span class=\"ref-select-label\">Voice</span><button class=\"ref-select-btn\" type=\"button\" aria-haspopup=\"listbox\" aria-expanded=\"false\"><span class=\"ref-select-value\">Human</span><span class=\"ref-select-chev\" aria-hidden=\"true\"></span></button><ul class=\"ref-select-panel\" role=\"listbox\" aria-label=\"Voice\" hidden><li role=\"option\" aria-selected=\"true\" data-value=\"human\"><span class=\"ref-select-jewel\"></span>Human</li><li role=\"option\" aria-selected=\"false\" data-value=\"naya\"><span class=\"ref-select-jewel\"></span>Naya</li><li role=\"option\" aria-selected=\"false\" data-value=\"machine\"><span class=\"ref-select-jewel\"></span>Machine</li></ul></div>",
+   "css_classes": [
+    "ref-select",
+    "ref-select-btn",
+    "ref-select-chev",
+    "ref-select-jewel",
+    "ref-select-label",
+    "ref-select-panel",
+    "ref-select-value"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-inp-009",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses naya-toggle 6x, naya-check 9x; Hub uses search-wrap 2x, segmented 15x; fills cite INP gap (about, connections, smart-search, settings, welcome)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-001",
+   "name": "Today · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;transform:rotate(45deg);border-radius:8px;background:radial-gradient(circle at 35% 30%,#e84fff55,#0a0a0e 75%);border:1.5px solid #e84fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #e84fff,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3l2.2 6.6L21 12l-6.8 2.4L12 21l-2.2-6.6L3 12l6.8-2.4z\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-001",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-002",
+   "name": "Spaces · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#a06bff55,#0a0a0e 75%);border:1.5px solid #a06bff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #a06bff,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"4\" y=\"4\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"13\" y=\"4\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"4\" y=\"13\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"13\" y=\"13\" width=\"7\" height=\"7\" rx=\"1.5\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-002",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-003",
+   "name": "Reports · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;border-radius:10px;background:radial-gradient(circle at 35% 30%,#6675ff55,#0a0a0e 75%);border:1.5px solid #6675ff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #6675ff,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 19v-6m5 6V5m5 14v-9m4 9H3\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-003",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-004",
+   "name": "Mail · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;transform:rotate(45deg);border-radius:8px;background:radial-gradient(circle at 35% 30%,#3fb8ff55,#0a0a0e 75%);border:1.5px solid #3fb8ff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #3fb8ff,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M3 7l9 6 9-6\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-004",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-005",
+   "name": "Ask · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#40d3bb55,#0a0a0e 75%);border:1.5px solid #40d3bb;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #40d3bb,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"M16.5 16.5L21 21\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-005",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-006",
+   "name": "Doors · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;border-radius:10px;background:radial-gradient(circle at 35% 30%,#2fe89e55,#0a0a0e 75%);border:1.5px solid #2fe89e;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #2fe89e,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"5\" y=\"3\" width=\"14\" height=\"18\" rx=\"1\"/><circle cx=\"15\" cy=\"12\" r=\"1.2\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-006",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-007",
+   "name": "People · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#2fe89e55,#0a0a0e 75%);border:1.5px solid #2fe89e;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #2fe89e,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"9\" cy=\"8\" r=\"3\"/><path d=\"M3 20v-2c0-6 12-6 12 0v2M17 5a3 3 0 0 1 0 6m1 4c2 0 3 2 3 4v1\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-007",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-008",
+   "name": "Ledger · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;transform:rotate(45deg);border-radius:8px;background:radial-gradient(circle at 35% 30%,#ffbf3d55,#0a0a0e 75%);border:1.5px solid #ffbf3d;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #ffbf3d,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19v-8m5 8V5m5 14V9m5 10V3\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-008",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-009",
+   "name": "Grow · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff9a5a55,#0a0a0e 75%);border:1.5px solid #ff9a5a;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #ff9a5a,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"8\"/><path d=\"M12 4v16M4 12h16\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-009",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-010",
+   "name": "Guard · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;border-radius:10px;background:radial-gradient(circle at 35% 30%,#ff5e6c55,#0a0a0e 75%);border:1.5px solid #ff5e6c;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #ff5e6c,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-010",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-011",
+   "name": "Home · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#a06bff\" title=\"Home\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 11l9-8 9 8\"/><path d=\"M5 10v10h5v-6h4v6h5V10\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-011",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-012",
+   "name": "Pulse · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#3fb8ff\" title=\"Pulse\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M13 2L4 14h6l-1 8 9-12h-6l1-8z\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-012",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-013",
+   "name": "People · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#2fe89e\" title=\"People\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"8\" r=\"3.5\"/><path d=\"M5 20v-1c0-7 14-7 14 0v1\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-013",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-014",
+   "name": "Calendar · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#ffbf3d\" title=\"Calendar\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 10h18M8 3v4M16 3v4\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-014",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-015",
+   "name": "Docs · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#e84fff\" title=\"Docs\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 2h9l5 5v15H6z\"/><path d=\"M14 2v6h6\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-015",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-016",
+   "name": "Vision · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#6675ff\" title=\"Vision\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-016",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-017",
+   "name": "Saved · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#40d3bb\" title=\"Saved\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 3h12v18l-6-4-6 4z\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-017",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-018",
+   "name": "Explore · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#ff9a5a\" title=\"Explore\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M15 9l-2 5-4 1 2-5z\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-018",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-019",
+   "name": "Favorite · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#ff5e6c\" title=\"Favorite\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m12 2 2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1Z\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-019",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-020",
+   "name": "Reports · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#b8ee57\" title=\"Reports\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19v-8m5 8V5m5 14V9m5 10V3\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-020",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-021",
+   "name": "Love · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#e84fff\" title=\"Love\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 21C7 16.5 2 12.8 2 8.5 2 5.5 4.5 3 7.5 3c1.8 0 3.4.9 4.5 2.3C13.1 3.9 14.7 3 16.5 3 19.5 3 22 5.5 22 8.5c0 4.3-5 8-10 12.5z\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-021",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-022",
+   "name": "Share · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#a06bff\" title=\"Share\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"6\" cy=\"12\" r=\"2.5\"/><circle cx=\"18\" cy=\"6\" r=\"2.5\"/><circle cx=\"18\" cy=\"18\" r=\"2.5\"/><path d=\"M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-022",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-023",
+   "name": "Icon socket",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span class=\"ico\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 11l9-8 9 8\"/></svg></span>",
+   "css_classes": [
+    "ico"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-023",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-024",
+   "name": "App Tile · Mail",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span class=\"app-tile\" style=\"--nc:#3fb8ff\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"5.5\" width=\"18\" height=\"13\" rx=\"2.5\"/><path d=\"M4 8l8 5.5L20 8\"/></svg></span>",
+   "css_classes": [
+    "app-tile"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-024",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-025",
+   "name": "App Tile · Pulse",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span class=\"app-tile\" style=\"--nc:#2fe89e\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M2.5 12h4.5l2.8-7 4.2 14 2.8-7h4.7\"/></svg></span>",
+   "css_classes": [
+    "app-tile"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-025",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-026",
+   "name": "App Tile · Hearth",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span class=\"app-tile\" style=\"--nc:#ffbf3d\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 11l8-7.5L20 11\"/><path d=\"M6 9.5V20h12V9.5\"/><path d=\"M12 12.4l2.2 2.7L12 17.6l-2.2-2.5z\"/></svg></span>",
+   "css_classes": [
+    "app-tile"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-026",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-MRK-001",
+   "name": "Status pill",
+   "category": "MRK",
+   "tags": [
+    "mail",
+    "booking",
+    "dashboard",
+    "status"
+   ],
+   "use_cases": [
+    "mail",
+    "booking",
+    "dashboard",
+    "status"
+   ],
+   "html": "<span class=\"pill live marker-live\"><span class=\"dot\" style=\"animation:marker-pulse 2s infinite\"></span>Live</span>",
+   "css_classes": [
+    "dot",
+    "live",
+    "marker-live",
+    "pill"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-mrk-001",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses spectrum-bar 11x, naya-skel 3x; fills cite status/skeleton needs (mail, dashboard, search)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-MRK-002",
+   "name": "Done mark",
+   "category": "MRK",
+   "tags": [
+    "dashboard",
+    "tasks",
+    "smart-lists"
+   ],
+   "use_cases": [
+    "dashboard",
+    "tasks",
+    "smart-lists"
+   ],
+   "html": "<div class=\"done-mark\"><span class=\"tick\"><span class=\"marker-ready\">✓</span></span> AI ready",
+   "css_classes": [
+    "done-mark",
+    "marker-ready",
+    "tick"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-mrk-002",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses spectrum-bar 11x, naya-skel 3x; fills cite status/skeleton needs (mail, dashboard, search)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-MRK-003",
+   "name": "Search highlight",
+   "category": "MRK",
+   "tags": [
+    "smart-search",
+    "library"
+   ],
+   "use_cases": [
+    "smart-search",
+    "library"
+   ],
+   "html": "<div style=\"font-size:15px\">quarterly <mark class=\"hl\">report</mark> ready",
+   "css_classes": [
+    "hl"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-mrk-003",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses spectrum-bar 11x, naya-skel 3x; fills cite status/skeleton needs (mail, dashboard, search)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-MRK-004",
+   "name": "Divider bar",
+   "category": "MRK",
+   "tags": [
+    "feed",
+    "forms",
+    "layout"
+   ],
+   "use_cases": [
+    "feed",
+    "forms",
+    "layout"
+   ],
+   "html": "<div style=\"display:flex;align-items:center;width:100%\"><div class=\"bar\">",
+   "css_classes": [
+    "bar"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-mrk-004",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses spectrum-bar 11x, naya-skel 3x; fills cite status/skeleton needs (mail, dashboard, search)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-MRK-005",
+   "name": "Spectrum bar",
+   "category": "MRK",
+   "tags": [
+    "dashboard",
+    "design-system",
+    "reports"
+   ],
+   "use_cases": [
+    "dashboard",
+    "design-system",
+    "reports"
+   ],
+   "html": "<div class=\"spectrum-bar\" aria-label=\"Spectrum — Shawn's standing order\"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>",
+   "css_classes": [
+    "spectrum-bar"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-mrk-005",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses spectrum-bar 11x, naya-skel 3x; fills cite status/skeleton needs (mail, dashboard, search)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-MRK-006",
+   "name": "Count badge",
+   "category": "MRK",
+   "tags": [
+    "mail",
+    "notifications",
+    "dashboard"
+   ],
+   "use_cases": [
+    "mail",
+    "notifications",
+    "dashboard"
+   ],
+   "html": "<span class=\"naya-badge\">3</span>",
+   "css_classes": [
+    "naya-badge"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-mrk-006",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses spectrum-bar 11x, naya-skel 3x; fills cite status/skeleton needs (mail, dashboard, search)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-MRK-007",
+   "name": "Skeleton loading",
+   "category": "MRK",
+   "tags": [
+    "feed",
+    "dashboard",
+    "loading"
+   ],
+   "use_cases": [
+    "feed",
+    "dashboard",
+    "loading"
+   ],
+   "html": "<div class=\"naya-skel\" style=\"height:22px;width:42%\"></div><div class=\"naya-skel\" style=\"height:14px\"></div><div class=\"naya-skel\" style=\"height:14px;width:78%\"></div><div class=\"naya-skel\" style=\"height:64px;border-radius:22px\">",
+   "css_classes": [
+    "naya-skel"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-mrk-007",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses spectrum-bar 11x, naya-skel 3x; fills cite status/skeleton needs (mail, dashboard, search)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ROW-001",
+   "name": "Meta row",
+   "category": "ROW",
+   "tags": [
+    "settings",
+    "dashboard",
+    "profile"
+   ],
+   "use_cases": [
+    "settings",
+    "dashboard",
+    "profile"
+   ],
+   "html": "<div class=\"meta-row\"><span>Today</span><span>Evidence-based</span><span>3 plays</span>",
+   "css_classes": [
+    "meta-row"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-row-001",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: fills: \"Inputs are wells, lists are rows\" (settings); registry LST held no settings/menu rows",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ROW-002",
+   "name": "Action row",
+   "category": "ROW",
+   "tags": [
+    "settings",
+    "spaces",
+    "dashboard"
+   ],
+   "use_cases": [
+    "settings",
+    "spaces",
+    "dashboard"
+   ],
+   "html": "<div class=\"action-row\"><button class=\"btn btn-ghost mini\" type=\"button\"><span>Open</span></button><button class=\"btn btn-ghost mini\" type=\"button\"><span>Share</span></button>",
+   "css_classes": [
+    "action-row",
+    "btn",
+    "btn-ghost",
+    "mini"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-row-002",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: fills: \"Inputs are wells, lists are rows\" (settings); registry LST held no settings/menu rows",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ROW-003",
+   "name": "Menu item",
+   "category": "ROW",
+   "tags": [
+    "navigation",
+    "settings",
+    "spaces"
+   ],
+   "use_cases": [
+    "navigation",
+    "settings",
+    "spaces"
+   ],
+   "html": "<div style=\"min-width:220px\"><div class=\"mi\">Smart Lists</div><div class=\"mi\">Spaces</div><div class=\"mi\">Reports",
+   "css_classes": [
+    "mi"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-row-003",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: fills: \"Inputs are wells, lists are rows\" (settings); registry LST held no settings/menu rows",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ROW-004",
+   "name": "Method row",
+   "category": "ROW",
+   "tags": [
+    "settings",
+    "smart-factory",
+    "docs"
+   ],
+   "use_cases": [
+    "settings",
+    "smart-factory",
+    "docs"
+   ],
+   "html": "<div class=\"im-row\"><span class=\"im-jewel\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><rect x=\"7\" y=\"2.5\" width=\"10\" height=\"19\" rx=\"2.5\"/></svg></span><div><strong>iPhone</strong><ol class=\"im-steps\"><li>Open Settings</li><li>Tap your name</li></ol>",
+   "css_classes": [
+    "im-jewel",
+    "im-row",
+    "im-steps"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-row-004",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: fills: \"Inputs are wells, lists are rows\" (settings); registry LST held no settings/menu rows",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-HDR-001",
+   "name": "Eyebrow",
+   "category": "HDR",
+   "tags": [
+    "landing",
+    "rooms",
+    "reports"
+   ],
+   "use_cases": [
+    "landing",
+    "rooms",
+    "reports"
+   ],
+   "html": "<div class=\"eyebrow\">NAYANET · HUMAN-FACING INTELLIGENCE",
+   "css_classes": [
+    "eyebrow"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-hdr-001",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses eyebrow 8x, intel-type 10x; Intel Today briefing header; welcome stepper labels",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-HDR-002",
+   "name": "Intelligence trio",
+   "category": "HDR",
+   "tags": [
+    "intel-today",
+    "dashboard",
+    "reports"
+   ],
+   "use_cases": [
+    "intel-today",
+    "dashboard",
+    "reports"
+   ],
+   "html": "<div><div class=\"intel-type\">Briefing</div><div class=\"intel-title\">What today became</div><div class=\"intel-summary\">Three plays finished, two spaces gained members.",
+   "css_classes": [
+    "intel-summary",
+    "intel-title",
+    "intel-type"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-hdr-002",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses eyebrow 8x, intel-type 10x; Intel Today briefing header; welcome stepper labels",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-HDR-003",
+   "name": "Step number",
+   "category": "HDR",
+   "tags": [
+    "welcome",
+    "onboarding"
+   ],
+   "use_cases": [
+    "welcome",
+    "onboarding"
+   ],
+   "html": "<div class=\"num\" style=\"--c:#a06bff\"><span class=\"jewel\"></span>Step One",
+   "css_classes": [
+    "jewel",
+    "num"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-hdr-003",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses eyebrow 8x, intel-type 10x; Intel Today briefing header; welcome stepper labels",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-HRO-001",
+   "name": "Reference Hero",
+   "category": "HRO",
+   "tags": [
+    "home",
+    "welcome",
+    "landing"
+   ],
+   "use_cases": [
+    "home",
+    "welcome",
+    "landing"
+   ],
+   "html": "<section class=\"ref-hero\" style=\"--sc:#a06bff;--sc-rgb:160,107,255\"><div class=\"ref-hero-mark\">N</div><div class=\"ref-hero-eyebrow\">NAYANET · CONTEXT WORLDS</div><h2 class=\"ref-hero-title\">Smart Spaces</h2><p class=\"ref-hero-sub\">A space changes the context — and the context changes everything.</p><p class=\"ref-hero-desc\">Rooms of living intelligence, each one burning in its own color.</p><div class=\"ref-hero-actions\"><button class=\"primo theme-purple elev-2\" type=\"button\">Enter the space</button></div></section>",
+   "css_classes": [
+    "elev-2",
+    "primo",
+    "ref-hero",
+    "ref-hero-actions",
+    "ref-hero-desc",
+    "ref-hero-eyebrow",
+    "ref-hero-mark",
+    "ref-hero-sub",
+    "ref-hero-title",
+    "theme-purple"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-hro-001",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Home door + welcome walk need a first-class hero block; registry held only hero buttons",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BRD-001",
+   "name": "Feature board",
+   "category": "BRD",
+   "tags": [
+    "rooms",
+    "dashboard",
+    "spaces"
+   ],
+   "use_cases": [
+    "rooms",
+    "dashboard",
+    "spaces"
+   ],
+   "html": "<div class=\"board-h\" style=\"--bc:#40d3bb\"><div class=\"bh-icon\">◆</div><div class=\"bh-text\"><h3>Feature board</h3><p>one color, one world</p></div><button class=\"bh-btn\" type=\"button\">Open</button>",
+   "css_classes": [
+    "bh-btn",
+    "bh-icon",
+    "bh-text",
+    "board-h"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-brd-001",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses board-h 20x, composer 1x; flagship uses orbital 13x, countdown 2x, pricing-tier 5x; fills cite DAT gap (dashboard, growth, reports, library)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BRD-025",
+   "name": "Orbital five",
+   "category": "BRD",
+   "tags": [
+    "dashboard",
+    "spaces",
+    "landing"
+   ],
+   "use_cases": [
+    "dashboard",
+    "spaces",
+    "landing"
+   ],
+   "html": "<div class=\"orbital\" style=\"--bc:#e84fff\">\n          <div class=\"orbital-ring\" style=\"width:200px;height:200px\"></div>\n          <div class=\"orbital-center\" style=\"--bc:#e84fff\">✦</div>\n          <div class=\"orbital-sat\" style=\"--sc:#a06bff;left:calc(50.0% - 28px);top:calc(14.0% - 28px)\">◆</div>\n<div class=\"orbital-sat\" style=\"--sc:#6675ff;left:calc(84.2% - 28px);top:calc(38.9% - 28px)\">★</div>\n<div class=\"orbital-sat\" style=\"--sc:#3fb8ff;left:calc(71.2% - 28px);top:calc(79.1% - 28px)\">✓</div>\n<div class=\"orbital-sat\" style=\"--sc:#2fe89e;left:calc(28.8% - 28px);top:calc(79.1% - 28px)\">◉</div>\n<div class=\"orbital-sat\" style=\"--sc:#40d3bb;left:calc(15.8% - 28px);top:calc(38.9% - 28px)\">◎</div>\n        </div>",
+   "css_classes": [
+    "orbital",
+    "orbital-center",
+    "orbital-ring",
+    "orbital-sat"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-brd-025",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses board-h 20x, composer 1x; flagship uses orbital 13x, countdown 2x, pricing-tier 5x; fills cite DAT gap (dashboard, growth, reports, library)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BRD-030",
+   "name": "Feature circle",
+   "category": "BRD",
+   "tags": [
+    "dashboard",
+    "reports",
+    "growth"
+   ],
+   "use_cases": [
+    "dashboard",
+    "reports",
+    "growth"
+   ],
+   "html": "<div class=\"stat-grid\">\n<div class=\"stat-card\" style=\"--bc:#a06bff\"><div class=\"stat-value\">12.4K</div><div class=\"stat-label\">Active users</div><div class=\"stat-trend up\">↑ 18%",
+   "css_classes": [
+    "stat-card",
+    "stat-grid",
+    "stat-label",
+    "stat-trend",
+    "stat-value",
+    "up"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-brd-030",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses board-h 20x, composer 1x; flagship uses orbital 13x, countdown 2x, pricing-tier 5x; fills cite DAT gap (dashboard, growth, reports, library)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BRD-034",
+   "name": "Bar chart",
+   "category": "BRD",
+   "tags": [
+    "dashboard",
+    "reports",
+    "growth"
+   ],
+   "use_cases": [
+    "dashboard",
+    "reports",
+    "growth"
+   ],
+   "html": "<div class=\"bar-chart\"><div class=\"bar\" style=\"--bc:#a06bff;height:60px\"></div><div class=\"bar\" style=\"--bc:#6675ff;height:85px\"></div><div class=\"bar\" style=\"--bc:#3fb8ff;height:45px\"></div><div class=\"bar\" style=\"--bc:#2fe89e;height:100px\"></div><div class=\"bar\" style=\"--bc:#40d3bb;height:70px\"></div><div class=\"bar\" style=\"--bc:#ffd45a;height:90px\"></div><div class=\"bar\" style=\"--bc:#ff9a5a;height:55px\">",
+   "css_classes": [
+    "bar",
+    "bar-chart"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-brd-034",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses board-h 20x, composer 1x; flagship uses orbital 13x, countdown 2x, pricing-tier 5x; fills cite DAT gap (dashboard, growth, reports, library)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BRD-035",
+   "name": "Donut chart",
+   "category": "BRD",
+   "tags": [
+    "dashboard",
+    "reports",
+    "growth"
+   ],
+   "use_cases": [
+    "dashboard",
+    "reports",
+    "growth"
+   ],
+   "html": "<div class=\"donut\" style=\"background: conic-gradient(#a06bff 0% 35%, #3fb8ff 35% 60%, #2fe89e 60% 80%, #ffd45a 80% 100%);\"><div style=\"position:absolute;inset:18px;background:#0a0a0f;border-radius:50%;display:flex;align-items:center;justify-content:center;\"><div class=\"donut-center\">68%",
+   "css_classes": [
+    "donut",
+    "donut-center"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-brd-035",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses board-h 20x, composer 1x; flagship uses orbital 13x, countdown 2x, pricing-tier 5x; fills cite DAT gap (dashboard, growth, reports, library)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BRD-041",
+   "name": "Product card",
+   "category": "BRD",
+   "tags": [
+    "memberships",
+    "shop",
+    "pricing"
+   ],
+   "use_cases": [
+    "memberships",
+    "shop",
+    "pricing"
+   ],
+   "html": "<div class=\"product-card\" style=\"--bc:#ffd45a\"><div class=\"product-img\" style=\"--bc:#ffd45a\">◆</div><div class=\"product-title\">Naya Power</div><div class=\"product-price\" style=\"--bc:#ffd45a\">$29/mo</div><button class=\"btn-select elev-1\" type=\"button\" style=\"width:100%\">Get Started</button>",
+   "css_classes": [
+    "btn-select",
+    "elev-1",
+    "product-card",
+    "product-img",
+    "product-price",
+    "product-title"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-brd-041",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses board-h 20x, composer 1x; flagship uses orbital 13x, countdown 2x, pricing-tier 5x; fills cite DAT gap (dashboard, growth, reports, library)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BRD-042",
+   "name": "Pricing tiers",
+   "category": "BRD",
+   "tags": [
+    "pricing",
+    "memberships"
+   ],
+   "use_cases": [
+    "pricing",
+    "memberships"
+   ],
+   "html": "<div style=\"display:flex;padding:12px;--bc:#a06bff\">\n<div class=\"pricing-tier\"><div class=\"tier-name\">STARTER</div><div class=\"tier-price\">$9</div><div class=\"tier-features\">5 projects<br>Basic support",
+   "css_classes": [
+    "pricing-tier",
+    "tier-features",
+    "tier-name",
+    "tier-price"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-brd-042",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses board-h 20x, composer 1x; flagship uses orbital 13x, countdown 2x, pricing-tier 5x; fills cite DAT gap (dashboard, growth, reports, library)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BRD-043",
+   "name": "Countdown",
+   "category": "BRD",
+   "tags": [
+    "booking",
+    "events",
+    "growth"
+   ],
+   "use_cases": [
+    "booking",
+    "events",
+    "growth"
+   ],
+   "html": "<div class=\"countdown\" style=\"--bc:#ff5e6c\"><div class=\"cd-unit\"><div class=\"cd-num\" style=\"--bc:#ff5e6c\">12</div><div class=\"cd-label\">DAYS",
+   "css_classes": [
+    "cd-label",
+    "cd-num",
+    "cd-unit",
+    "countdown"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-brd-043",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses board-h 20x, composer 1x; flagship uses orbital 13x, countdown 2x, pricing-tier 5x; fills cite DAT gap (dashboard, growth, reports, library)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BRD-044",
+   "name": "Post composer",
+   "category": "BRD",
+   "tags": [
+    "smart-mail",
+    "feed",
+    "posts"
+   ],
+   "use_cases": [
+    "smart-mail",
+    "feed",
+    "posts"
+   ],
+   "html": "<div class=\"composer\"><div class=\"composer-input\" contenteditable=\"true\">Share something with the community...</div><div style=\"display:flex;gap:8px;justify-content:flex-end\"><button class=\"btn-notes carve-1\" type=\"button\">Cancel</button><button class=\"btn-select elev-1\" type=\"button\">Post</button>",
+   "css_classes": [
+    "btn-notes",
+    "btn-select",
+    "carve-1",
+    "composer",
+    "composer-input",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-brd-044",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses board-h 20x, composer 1x; flagship uses orbital 13x, countdown 2x, pricing-tier 5x; fills cite DAT gap (dashboard, growth, reports, library)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  }
+ ],
+ "functional_parts": [
+  {
+   "action_binding": "RPC public.nayanet_send_smart_mail(p_sender_id uuid, p_receiver_id uuid, p_body text, p_subject text, p_kind text, p_idempotency_key text, p_project_id text) returns jsonb — creates thread+members+message+receipt+cognition event atomically; validates participants, body length <=10000, idempotency key required",
+   "auth": "EXECUTE revoked from public, anon, authenticated; granted to service_role ONLY. Callers must be server-side.",
+   "data_contract": {
+    "idempotency": "replay-safe on (sender_id, metadata->>'idempotency_key'); returns status REPLAY with existing ids on duplicate; unique_violation handler",
+    "writes": [
+     "public.v7_mail_threads (id, created_by, kind, subject, created_at)",
+     "public.v7_mail_members (thread_id, user_id, joined_at)",
+     "public.v7_mail_messages (id, thread_id, sender_id, body, metadata jsonb with schema_version, correlation_id, idempotency_key, execution_receipt_id, cognition_event_id, governance, lifecycle)",
+     "public.nayanet_execution_receipts (action='smart_mail_send', evidence, learning)",
+     "public.nayanet_cognition_events (event_id='smart-mail-proof-<correlation>', type='communication')"
+    ]
+   },
+   "id": "NAYA-FN-001",
+   "name": "Smart Mail send (atomic transaction)",
+   "source_evidence": [
+    "supabase/migrations/20260918225011_p0_smart_mail_atomic_transaction.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "table-level CRUD via PostgREST under RLS; no dedicated RPC — the only privileged write path is NAYA-FN-001 (service_role)",
+   "auth": "authenticated users, owner/member-scoped RLS (see rls above)",
+   "data_contract": {
+    "rls": "member-scoped: messages/threads readable only by thread members; message insert requires sender_id=auth.uid() AND membership in the thread; thread insert requires created_by=auth.uid()",
+    "tables": [
+     "public.v7_mail_threads (id uuid PK, created_by uuid->auth.users, kind text in ('direct','room','group','list'), subject text, created_at)",
+     "public.v7_mail_members (thread_id uuid->v7_mail_threads, user_id uuid->auth.users, joined_at; PK(thread_id,user_id))",
+     "public.v7_mail_messages (id uuid PK, thread_id uuid->v7_mail_threads, sender_id uuid->auth.users, body text, audio_url text, metadata jsonb, created_at; constraint message_has_content)",
+     "related: public.v7_profiles, public.v7_daily_intelligence, public.v7_collective_wisdom, public.v7_connection_requests"
+    ]
+   },
+   "id": "NAYA-FN-002",
+   "name": "Smart Mail message store (threads, members, messages)",
+   "source_evidence": [
+    "supabase/migrations/20260906005326_v7_intelligent_hub_compounding_connections_mail.sql",
+    "supabase/migrations/20260918224424_p0_smart_mail_vertical.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "RPC public.nayanet_issue_authority_grant(p_subject_id uuid, p_source_event_id text, p_mission_id text, p_scope jsonb, p_actions jsonb, ...) returns nayanet_authority_grants — issues an ACTIVE grant after validating required fields, scope shape, non-empty actions, expiry in future",
+   "auth": "EXECUTE granted to authenticated, revoked from anon and public; issuer must own the source cognition event (AUTHORITY_SOURCE_NOT_OWNED otherwise); issuer_id = auth.uid()",
+   "data_contract": {
+    "reads": [
+     "public.nayanet_cognition_events (must own source_event_id)"
+    ],
+    "writes": [
+     "public.nayanet_authority_grants (issuer_id, subject_id, source_event_id, mission_id, scope jsonb, actions jsonb, constraints jsonb, issued_at, expires_at, status, evidence jsonb, parent_authority jsonb)"
+    ]
+   },
+   "id": "NAYA-FN-003",
+   "name": "Authority grant issuance",
+   "source_evidence": [
+    "supabase/migrations/20260919001730_create_authority_grant_runtime_v1.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "RPCs public.get_booking_page(p_slug text), public.get_booking_windows(p_slug text), public.get_booked_starts(p_slug text, p_from timestamptz, p_to timestamptz) — read a page by slug, its availability windows, and booked start times in a range",
+   "auth": "EXECUTE granted to anon AND authenticated (public booking flow)",
+   "data_contract": {
+    "reads": [
+     "public.booking_pages (id, owner_alias, owner_id, slug unique, title, duration_minutes, active, calendar_sync_state, created_at, updated_at)",
+     "public.booking_availability (id, page_id->booking_pages, timezone, created_at)",
+     "public.bookings (id, page_id->booking_pages, owner_alias, owner_id, visitor_name, visitor_email_hash, starts_at, ends_at, status default 'confirmed', note, cancel_token, created_at, updated_at)"
+    ]
+   },
+   "id": "NAYA-FN-004",
+   "name": "Booking page and slot read",
+   "source_evidence": [
+    "supabase/migrations/20261022210000_booking_v1.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "RPC public.cancel_booking(p_booking_id uuid, p_cancel_token uuid) — flips a booking to cancelled after verifying the cancel token; inserts flow through bookings_guard_slot() (overlap/fit check) and bookings_fill_owner() (owner backfill); client-side validation helpers in HUB/booking/booking-core.mjs (validatePageInput, validateBookingRequest, computeSlots, planReminders)",
+   "auth": "bookings_visitor_insert RLS policy lets anon visitors insert bookings; owner policies cover select/update/delete; RPC public.cancel_booking(p_booking_id uuid, p_cancel_token uuid) EXECUTE granted to anon+authenticated (token-authenticated cancel)",
+   "data_contract": {
+    "reads": [
+     "view public.person_timeline_events (page_id, owner_alias, title, duration_minutes, calendar_sync_state)"
+    ],
+    "writes": [
+     "public.bookings (see NAYA-FN-004 fields); owner auto-filled by trigger bookings_fill_owner; slot conflicts guarded by trigger bookings_guard_slot"
+    ]
+   },
+   "id": "NAYA-FN-005",
+   "name": "Booking create and cancel",
+   "source_evidence": [
+    "supabase/migrations/20261022210000_booking_v1.sql",
+    "HUB/booking/booking-core.mjs",
+    "HUB/booking/booking-store.mjs"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "table-level CRUD via PostgREST under owner RLS; no dedicated RPC on main",
+   "auth": "owner-scoped RLS (authenticated users see only their own lists/items)",
+   "data_contract": {
+    "rls": "owner-only select/insert/update/delete on both tables",
+    "tables": [
+     "public.smart_lists (id uuid PK, owner-scoped, category)",
+     "public.smart_list_items (id uuid PK, list_id->smart_lists, owner-scoped)"
+    ]
+   },
+   "id": "NAYA-FN-006",
+   "name": "Smart Lists store",
+   "source_evidence": [
+    "supabase/migrations/20261022223000_smart_lists_v1.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "RPC public.resolve_smart_link(p_name text) — resolves a public smart-link name to its target_url (redirect hop); click events append to smart_link_clicks with attribution_id",
+   "auth": "RPC public.resolve_smart_link(p_name text) EXECUTE granted to anon+authenticated (public redirect path); smart_links CRUD owner-RLS; trigger smart_links_guard_reserved() blocks reserved names",
+   "data_contract": {
+    "tables": [
+     "public.smart_links (id uuid PK, owner_alias text, owner_id uuid, name text unique shape-constrained, target_url text shape-constrained, active boolean, created_at, updated_at)",
+     "public.smart_link_clicks (id uuid PK, link_id->smart_links, clicked_at, referrer_class, referrer_host, attribution_id uuid)",
+     "public.smart_link_reserved_names (name text PK)"
+    ]
+   },
+   "id": "NAYA-FN-007",
+   "name": "Smart Links resolve and click tracking",
+   "source_evidence": [
+    "supabase/migrations/20261022201500_smart_links_v1.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "table-level CRUD via PostgREST under owner RLS; no dedicated RPC on main",
+   "auth": "owner-scoped RLS",
+   "data_contract": {
+    "rls": "owner-only select/insert/update/delete",
+    "tables": [
+     "public.naya_notes (owner-scoped)"
+    ]
+   },
+   "id": "NAYA-FN-008",
+   "name": "Naya Notes store",
+   "source_evidence": [
+    "supabase/migrations/20261022204500_naya_notes_v1.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "append-only event log for conversational intake flows (welcome/identity walks); no dedicated RPC on main",
+   "auth": "anon AND authenticated may INSERT (public intake funnel); only authenticated may SELECT",
+   "data_contract": {
+    "rls": "intake_events_anon_insert and intake_events_auth_insert with check (true); authenticated select",
+    "tables": [
+     "public.intake_events (id uuid PK, session_id text, flow text, event text, step_key text, step_index integer, owner_alias text, via text, answers jsonb, created_at; check constraints on known flow/event/via values)"
+    ]
+   },
+   "id": "NAYA-FN-009",
+   "name": "Conversational intake event capture",
+   "source_evidence": [
+    "supabase/migrations/20261022213000_conversational_intake_v1.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "RPCs public.search_score(p_field text, p_query text) (scoring helper) and public.search_universal(p_query text, p_limit integer) (the service) — authenticated universal search over the user's content",
+   "auth": "EXECUTE granted to authenticated only; revoked from public",
+   "data_contract": {
+    "reads": [
+     "cross-vertical search surface (implementation scans owned content stores)"
+    ]
+   },
+   "id": "NAYA-FN-010",
+   "name": "Universal search",
+   "source_evidence": [
+    "supabase/migrations/20261022214500_universal_search_v1.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "RPC public.claim_my_alias(p_alias text) — citizen claims a normalized alias (insert ... on conflict do nothing, rejects taken aliases); helper public.bind_owner_alias_claim(...) backfills; trigger bind_owner_alias() keeps owner_alias in sync on writes",
+   "auth": "RPC public.claim_my_alias(p_alias text) EXECUTE granted to authenticated (revoked from public); trigger public.bind_owner_alias() auto-binds owner alias on row writes across owner-scoped tables",
+   "data_contract": {
+    "rls": "owner_alias_claims_owner_select: authenticated sees own claims (owner_id = auth.uid())",
+    "tables": [
+     "public.owner_alias_claims (alias_normalized text PK, owner_id uuid, claimed_via text default 'backfill', claimed_at)"
+    ]
+   },
+   "id": "NAYA-FN-011",
+   "name": "Owner alias claim and binding",
+   "source_evidence": [
+    "supabase/migrations/20261022220000_alias_binding_v1.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "public.smart_match(a jsonb, b jsonb, value_b numeric default null) returns numeric — composite similarity score; helpers public.sm_stopwords/sm_terms/sm_stem/sm_words/sm_sig_words/sm_terms_content/sm_concepts (tokenizers) and public.sm_coeff/sm_family/sm_cross (coefficient combiners)",
+   "auth": "no grant/revoke lines in the migration — immutable helper functions default to public execute; scoring is computation-only",
+   "data_contract": {
+    "inputs": "two jsonb attribute sets (a, b) plus optional value_b numeric; pure SQL, no table writes"
+   },
+   "id": "NAYA-FN-012",
+   "name": "Smart Match scoring engine",
+   "source_evidence": [
+    "supabase/migrations/20261025040000_smart_match_v1_4.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "database-enforced idempotency: repeat submissions of the same (user, project, action, idempotency_key) are rejected/merged at the unique index — the atomicity primitive the mail send (NAYA-FN-001) and verified actions (NAYA-FN-022) build on",
+   "auth": "schema-level guard; enforced for all writers of execution receipts",
+   "data_contract": {
+    "schema": "public.nayanet_execution_receipts.idempotency_key text (nullable); unique index nayanet_execution_receipts_action_idempotency_uidx on (user_id, project_id, action, idempotency_key) where idempotency_key is not null"
+   },
+   "id": "NAYA-FN-013",
+   "name": "Action idempotency guard",
+   "source_evidence": [
+    "supabase/migrations/20260929210000_nayanet_action_idempotency_atomicity.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "trigger-driven append-only ledger: smart note events and receipts auto-project into the hash-chained ledger (previous_chain_hash -> event_hash), preserving privacy_classification and evidence lineage",
+   "auth": "RPC public.nayanet_record_ledger_event(...) EXECUTE revoked from public, anon, authenticated with NO grant — callable only via security-definer triggers (nayanet_smart_note_to_ledger, nayanet_smart_note_receipt_to_ledger) firing on smart_note_events / smart_note_receipts inserts",
+   "data_contract": {
+    "hash": "public.nayanet_smart_ledger_hash(...) computes the chain hash",
+    "tables": [
+     "public.nayanet_smart_ledger (ledger_event_id uuid PK, schema_version, owner_id->auth.users, actor_id, event_type, event_at, source_table, source_id, parent_ledger_event_id self-FK, previous_chain_hash, event_hash, privacy_classification default 'PRIVATE', status default 'RECORDED', evidence_refs jsonb, verification jsonb, value jsonb, outcome jsonb, learning_refs jsonb, metadata jsonb)"
+    ]
+   },
+   "id": "NAYA-FN-014",
+   "name": "Smart ledger append (hash-chained)",
+   "source_evidence": [
+    "supabase/migrations/20260919015207_smart_ledger_foundation_v1.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "trigger public.nayanet_emit_intelligence_notification_from_receipt() — emits notifications off execution receipts; trigger public.nayanet_sync_intelligence_notification_delivery_state() — keeps delivery state in sync",
+   "auth": "server-side trigger path (emission from receipts); delivery state synced by trigger",
+   "data_contract": {
+    "tables": [
+     "public.nayanet_intelligence_notifications",
+     "public.nayanet_intelligence_notification_deliveries"
+    ]
+   },
+   "id": "NAYA-FN-015",
+   "name": "Intelligence notification bus",
+   "source_evidence": [
+    "supabase/migrations/20260921221050_nayanet_intelligence_notification_bus_v1.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "RPC public.nayanet_join_space(p_space_id uuid) / public.nayanet_leave_space(p_space_id uuid) — authenticated citizen joins or leaves a space",
+   "auth": "RPCs EXECUTE granted to authenticated; revoked from public; triggers nayanet_space_members_touch() and nayanet_space_owner_membership() maintain timestamps and owner rows",
+   "data_contract": {
+    "tables": [
+     "public.nayanet_space_members (space membership rows; touch/owner triggers maintain owner membership)"
+    ]
+   },
+   "id": "NAYA-FN-016",
+   "name": "Space membership join/leave",
+   "source_evidence": [
+    "supabase/migrations/20260919165703_nayanet_space_membership_v1.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "RPC public.nayanet_save_connection(p_target_member_id uuid, p_space_id uuid) / public.nayanet_revoke_connection(p_target_member_id uuid) — authenticated citizen saves or revokes a connection to another member in a space",
+   "auth": "RPCs EXECUTE granted to authenticated; revoked from public",
+   "data_contract": {
+    "tables": [
+     "public.nayanet_connections (member-to-member connection rows)"
+    ]
+   },
+   "id": "NAYA-FN-017",
+   "name": "Connections save/revoke",
+   "source_evidence": [
+    "supabase/migrations/20260919165822_nayanet_connections_v1.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "RPC public.nayanet_smart_connect(p_door text) / public.nayanet_smart_disconnect(p_door text) — citizen opts a door into/out of the collective; RPC public.nayanet_collective_wisdom_for_event(p_source_event_id uuid, p_owner_id uuid, p_wisdom_claim text, p_topic text, p_provenance jsonb) — server-side writes a collective wisdom claim (idempotency-hardened)",
+   "auth": "nayanet_smart_connect/nayanet_smart_disconnect EXECUTE granted to authenticated (revoked from public); nayanet_collective_wisdom_for_event EXECUTE granted to service_role ONLY",
+   "data_contract": {
+    "tables": [
+     "public.nayanet_smart_connect_participation (per-door participation rows)",
+     "public.nayanet_collective_wisdom (wisdom claims)"
+    ]
+   },
+   "id": "NAYA-FN-018",
+   "name": "Smart Connect participation and collective wisdom",
+   "source_evidence": [
+    "supabase/migrations/20260924175545_smart_connect_participation_collective_wisdom_v1.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "RPC public.nayanet_intelligence_commit(...) — authenticated intelligence commit through the runtime bridge (authority lookup, digest schema, lineage + revision); the commit path the PI bridge and runtime loaders build on",
+   "auth": "EXECUTE granted to authenticated; revoked from public and anon",
+   "data_contract": {
+    "writes": [
+     "intelligence commit runtime bridge (cognition event lineage + runtime claims)"
+    ]
+   },
+   "id": "NAYA-FN-019",
+   "name": "Intelligence commit",
+   "source_evidence": [
+    "supabase/migrations/20260928172457_nayanet_intelligence_commit.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "RPC public.v7_create_smart_note(text, uuid, jsonb x7) — authenticated creation of a canonical smart note through the v7 event pipeline (hardened authorization + failure preservation in sibling migrations)",
+   "auth": "RPC public.v7_create_smart_note(...) EXECUTE granted to authenticated; revoked from public",
+   "data_contract": {
+    "tables": [
+     "public.v7_smart_note_transactions (canonical smart note event pipeline)"
+    ]
+   },
+   "id": "NAYA-FN-020",
+   "name": "Smart note create (canonical pipeline)",
+   "source_evidence": [
+    "supabase/migrations/20260905232300_create_v7_smart_note_event_pipeline.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "documented future endpoint GET /pi/api/items (Cache-Control: no-store) + GET /pi/api/parts (parts register); the face renders from this shape — implementation is Power's blocker A11/B1",
+   "auth": "not specified in contract (endpoint not live)",
+   "caveat": "contract document only — endpoint not live and work_items table has no migration on main",
+   "data_contract": {
+    "response_shape": "GET /pi/api/items -> { items: [{item_key, title, state (waiting|in_progress|verifying|done_proven|blocked|needs_shawn), owner_seat, next_action, area}], aggregates computed from rows, master_todo, named_blockers, movement, rooms, owners, ledger: {tail_seq} }",
+    "source_tables": "work_items.item_key / project_intel_items key (proposed — NO migration for work_items found on main; doc states the endpoint does not exist live yet)"
+   },
+   "id": "NAYA-FN-021",
+   "name": "PI face items API (documented, not live)",
+   "source_evidence": [
+    "HUB/app/pi/API-CONTRACT.md"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "Edge Function supabase/functions/nayanet-verified-ai-action (POST) — verifies the authority grant for action 'naya_node_apply', then executes the governed action and writes receipt+outcome, or writes a refusal receipt. Sibling: supabase/functions/nayanet-act-runtime (act.ts / decision-context.ts).",
+   "auth": "edge function verifies GitHub Actions OIDC; authority resolved from durable grant BEFORE any governed effect; refusal recorded as receipt when grant absent/inactive/revoked/expired/out-of-scope",
+   "data_contract": {
+    "reads": [
+     "public.nayanet_authority_grants (grant resolution: active, unrevoked, unexpired, mission+scope+action match, same owner)",
+     "public.nayanet_intelligent_blocks"
+    ],
+    "writes": [
+     "public.nayanet_execution_receipts (action='NAYA-NODE-0001-VERIFIED-AI-ACTION' or REFUSAL action; idempotent by idempotency_key)",
+     "public.nayanet_execution_outcomes"
+    ]
+   },
+   "id": "NAYA-FN-022",
+   "name": "Verified AI action runtime (authority-gated execution)",
+   "source_evidence": [
+    "supabase/functions/nayanet-verified-ai-action/index.ts",
+    "supabase/functions/nayanet-act-runtime/act.ts"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "persistence for the Smart Tabs navigation state (two-bar standard: top = current app, bottom = ecosystem); table-level CRUD",
+   "auth": "NOT INSPECTED beyond table creation in this pass — RLS/policies not verified; do not assume owner scope",
+   "data_contract": {
+    "tables": [
+     "public.nayanet_smart_tabs (tab navigation state)"
+    ]
+   },
+   "id": "NAYA-FN-023",
+   "name": "Smart tabs navigation store",
+   "source_evidence": [
+    "supabase/migrations/20260919162457_smart_tabs_navigation_v1.sql"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  },
+  {
+   "action_binding": "Edge Function supabase/functions/nayanet-github-dispatch — persists GitHub App dispatch receipts with owner-aware canonical identity and replay idempotency",
+   "auth": "server-side writer (edge function + webhook hardening migrations)",
+   "data_contract": {
+    "tables": [
+     "public.nayanet_github_dispatch_receipts (GitHub App dispatch receipt rows; owner-aware canonical persistence)"
+    ]
+   },
+   "id": "NAYA-FN-024",
+   "name": "GitHub dispatch receipts",
+   "source_evidence": [
+    "supabase/migrations/20260930120000_nayanet_github_dispatch_receipts_v1.sql",
+    "supabase/functions/nayanet-github-dispatch"
+   ],
+   "status": "evidenced",
+   "part_type": "functional"
+  }
+ ]
+}

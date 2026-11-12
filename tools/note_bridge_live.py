@@ -199,10 +199,28 @@ def _extract_keywords(title: str, nutshell: str, body: str, limit: int = 60) -> 
     return seen
 
 
+def _note_read_path(path: str, *, for_walk: bool = False) -> str:
+    """Return the same existing note via extended Win32 path when necessary.
+
+    Only disk I/O is remapped: provenance, note identity, and parsing use the
+    original path. A genuinely missing note still raises OSError and is refused.
+    """
+    if os.name != "nt":
+        return path
+    absolute = os.path.abspath(path)
+    slash = chr(92)
+    prefix = slash * 2 + "?" + slash
+    if (len(absolute) < 260 and not for_walk) or absolute.startswith(prefix):
+        return path
+    if absolute.startswith(slash * 2):
+        return prefix + "UNC" + slash + absolute[2:]
+    return prefix + absolute
+
+
 def parse_note_file(path: str) -> dict:
     """Parse one live Smart Note file. Never guesses; returns None on failure."""
     try:
-        with open(path, encoding="utf-8", errors="replace") as f:
+        with open(_note_read_path(path), encoding="utf-8", errors="replace") as f:
             text = f.read()
     except OSError:
         return None
@@ -253,10 +271,15 @@ def load_live_corpus(root: str = None) -> tuple:
     notes = []
     failed = []
     files = []
-    for dirpath, _, filenames in os.walk(root):
+    # A Win32 long-path traversal is required even when the root itself is
+    # short: ordinary os.walk may silently skip deeper existing directories.
+    walk_root = _note_read_path(root, for_walk=True)
+    for dirpath, _, filenames in os.walk(walk_root):
+        relative = os.path.relpath(dirpath, walk_root)
+        logical_dir = root if relative == "." else os.path.join(root, relative)
         for fn in filenames:
             if fn.startswith("IB-SMART-NOTE-") and fn.endswith(".md"):
-                files.append(os.path.join(dirpath, fn))
+                files.append(os.path.join(logical_dir, fn))
     for fp in sorted(files):
         parsed = parse_note_file(fp)
         if parsed is None:

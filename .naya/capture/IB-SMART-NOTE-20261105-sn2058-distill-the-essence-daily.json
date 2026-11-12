@@ -1,0 +1,28 @@
+{
+  "smart_note_id": "SN-2058",
+  "intelligence": {
+    "title": "Distill the Essence — Daily by Default",
+    "intelligent_block_id": "IB-SMART-NOTE-20261105-sn2058-distill-the-essence-daily",
+    "smart_note_id": "SN-2058",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/DISTILL/SN-2058/IB-SMART-NOTE-20261105-sn2058-distill-the-essence-daily.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Registration cure by Naya Resolve Narzan 2026-11-05: the page was filed on main by a sister seat with no capture and no registry entry, so the note served 404. Capture reconstructed from the filed page itself (essence and law verbatim in substance; the lens views composed from the page’s own text for the cure); no doctrine added.",
+    "ingested_at": "2026-11-05T20:02:00Z",
+    "essence": "Smart notes get distilled into their essence. Take whatever we learned from the day before, get the core of it, and put the essence into the system. The system holds ten to fifty distilled notes — not a thousand raw ones. The raw notes are deleted after distilling, just like emails. Daily by default; weekly or monthly if the citizen chooses; for paid members with a Smart Box. Everything runs on a cycle.",
+    "human_view": "It is not about how many notes we keep — it is what we learned from them. Every day, the raw notes are distilled to their core, the essence goes into the system, and the raw ones are deleted, the way mail recycles. Reading a thousand notes again would burn compute for nothing; the essence is what gets read. Ten to fifty core notes, kept sharp, on a cycle.",
+    "simple_view": "Imagine writing lots of notes on paper, then copying only the most important lines into one small notebook and recycling the rest. You do it every day, so the small notebook is always the best of everything you learned.",
+    "grandma_view": "It is like reducing a big pot of stock down to a rich little jar of essence, dear. You keep the flavour of everything and throw away the bulk. Every day a fresh reduction, so whoever cooks next starts with the best.",
+    "naya_view": "Distillation is memory hygiene as a system law: raw capture is cheap and endless; essence is the working set. The cycle (daily default, citizen-settable) bounds the read cost of the collective brain and forces the mastery that matters — telling valuable intelligence from storage. It pairs with the registry: what is distilled stays registered and served; what is raw is released.",
+    "ai_view": "A bounded, periodically re-distilled memory set minimizes retrieval cost and context load while preserving decision-relevant information. Deletion after distillation is the mechanism that keeps the bound real rather than aspirational.",
+    "machine_view": "DISTILL{cadence: daily_default|weekly|monthly (citizen setting, Smart Box, paid), set_size: 10..50 essence notes, raw_after_distill: delete, read_target: essence_only, cycle: continuous}",
+    "views_note": "Lens views reconstructed during the 2026-11-05 registration cure from the filed page; essence verbatim."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/05/SYSTEM-INTELLIGENCE/DISTILL/SN-2058/IB-SMART-NOTE-20261105-sn2058-distill-the-essence-daily.md",
+    "provenance_note": "Registration cure by Naya Resolve Narzan 2026-11-05: the page was filed on main by a sister seat with no capture and no registry entry, so the note served 404. Capture reconstructed from the filed page itself (essence and law verbatim in substance; the lens views composed from the page’s own text for the cure); no doctrine added.",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}

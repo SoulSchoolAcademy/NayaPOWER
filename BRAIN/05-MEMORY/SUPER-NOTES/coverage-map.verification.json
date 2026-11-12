@@ -1,0 +1,1709 @@
+{
+ "generated_by": "generate-map.py \u2014 parsed from the repaired Super Note files; no hand-asserted values",
+ "sources_total_unique_stems": 639,
+ "citations_total": 638,
+ "phantom_citations": [],
+ "duplicate_citations": [],
+ "uncited_sources": [
+  "IB-SMART-NOTE-20261001-hub-is-intelligence-projection-dup0594"
+ ],
+ "db_only_claims_not_cited": [
+  {
+   "stem": "IB-SMART-NOTE-20261019-sn0798-the-intelligent-system",
+   "note": "cited by original SUPER-061; no such note exists in the repo tree (audit whole-tree verified). Pre-existing Hub-DB-only claim; removed from citations, recorded here, not silently dropped."
+  },
+  {
+   "stem": "IB-SMART-NOTE-20261019-sn0799-compose-dont-recreate",
+   "note": "cited by original SUPER-062; no such note exists in the repo tree (audit whole-tree verified). Pre-existing Hub-DB-only claim; removed from citations, recorded here, not silently dropped."
+  }
+ ],
+ "uncited_explained": [
+  {
+   "stem": "IB-SMART-NOTE-20261001-hub-is-intelligence-projection-dup0594",
+   "explanation": "The SN-0594 tombstone: an intentionally content-free 'superseded' marker whose canonical twin note is cited and covered under SUPER-071 (audit distillation-audit-20261021, verdict summary). It carries no lesson, so there is nothing to cite it FOR; it is named here rather than silently dropped or force-cited. It was likewise uncited in the original map, whose '639/639' claim balanced only because 2 phantom citations padded the count."
+  }
+ ],
+ "repair_items_checked": 193,
+ "restored_entries_missing": [],
+ "weak_overlap_below_0.35": [
+  {
+   "sn": "SN-0215",
+   "super": "SUPER-001",
+   "overlap": 0.319
+  },
+  {
+   "sn": "SN-0362",
+   "super": "SUPER-001",
+   "overlap": 0.254
+  },
+  {
+   "sn": "SN-0354",
+   "super": "SUPER-003",
+   "overlap": 0.214
+  },
+  {
+   "sn": "SN-0624",
+   "super": "SUPER-003",
+   "overlap": 0.333
+  },
+  {
+   "sn": "SN-560",
+   "super": "SUPER-003",
+   "overlap": 0.302
+  },
+  {
+   "sn": "SN-0115",
+   "super": "SUPER-004",
+   "overlap": 0.265
+  },
+  {
+   "sn": "SN-0117",
+   "super": "SUPER-005",
+   "overlap": 0.298
+  },
+  {
+   "sn": "SN-0201",
+   "super": "SUPER-005",
+   "overlap": 0.274
+  },
+  {
+   "sn": "SN-0336",
+   "super": "SUPER-005",
+   "overlap": 0.342
+  },
+  {
+   "sn": "SN-0367",
+   "super": "SUPER-005",
+   "overlap": 0.176
+  },
+  {
+   "sn": "SN-0606",
+   "super": "SUPER-007",
+   "overlap": 0.293
+  },
+  {
+   "sn": "SN-0199",
+   "super": "SUPER-009",
+   "overlap": 0.252
+  },
+  {
+   "sn": "SN-0262",
+   "super": "SUPER-009",
+   "overlap": 0.347
+  },
+  {
+   "sn": "SN-0324",
+   "super": "SUPER-009",
+   "overlap": 0.231
+  },
+  {
+   "sn": "SN-0116",
+   "super": "SUPER-010",
+   "overlap": 0.231
+  },
+  {
+   "sn": "SN-0370",
+   "super": "SUPER-010",
+   "overlap": 0.291
+  },
+  {
+   "sn": "SN-0325",
+   "super": "SUPER-011",
+   "overlap": 0.284
+  },
+  {
+   "sn": "SN-0409",
+   "super": "SUPER-011",
+   "overlap": 0.212
+  },
+  {
+   "sn": "SN-0216",
+   "super": "SUPER-015",
+   "overlap": 0.252
+  },
+  {
+   "sn": "SN-0238",
+   "super": "SUPER-015",
+   "overlap": 0.318
+  },
+  {
+   "sn": "SN-0250",
+   "super": "SUPER-015",
+   "overlap": 0.33
+  },
+  {
+   "sn": "SN-0533",
+   "super": "SUPER-015",
+   "overlap": 0.317
+  },
+  {
+   "sn": "SN-0198",
+   "super": "SUPER-016",
+   "overlap": 0.316
+  },
+  {
+   "sn": "SN-086",
+   "super": "SUPER-016",
+   "overlap": 0.347
+  },
+  {
+   "sn": "SN-0146",
+   "super": "SUPER-017",
+   "overlap": 0.347
+  },
+  {
+   "sn": "SN-0509",
+   "super": "SUPER-017",
+   "overlap": 0.349
+  },
+  {
+   "sn": "SN-0512",
+   "super": "SUPER-017",
+   "overlap": 0.292
+  },
+  {
+   "sn": "SN-067",
+   "super": "SUPER-018",
+   "overlap": 0.328
+  },
+  {
+   "sn": "SN-0168",
+   "super": "SUPER-019",
+   "overlap": 0.228
+  },
+  {
+   "sn": "SN-0519",
+   "super": "SUPER-019",
+   "overlap": 0.212
+  },
+  {
+   "sn": "SN-090",
+   "super": "SUPER-019",
+   "overlap": 0.196
+  },
+  {
+   "sn": "SN-091",
+   "super": "SUPER-019",
+   "overlap": 0.328
+  },
+  {
+   "sn": "SN-083",
+   "super": "SUPER-020",
+   "overlap": 0.346
+  },
+  {
+   "sn": "SN-089",
+   "super": "SUPER-020",
+   "overlap": 0.243
+  },
+  {
+   "sn": "SN-061",
+   "super": "SUPER-022",
+   "overlap": 0.252
+  },
+  {
+   "sn": "SN-0449",
+   "super": "SUPER-023",
+   "overlap": 0.241
+  },
+  {
+   "sn": "SN-097",
+   "super": "SUPER-025",
+   "overlap": 0.22
+  },
+  {
+   "sn": "SN-0395",
+   "super": "SUPER-027",
+   "overlap": 0.321
+  },
+  {
+   "sn": "SN-0359",
+   "super": "SUPER-028",
+   "overlap": 0.281
+  },
+  {
+   "sn": "SN-0379",
+   "super": "SUPER-030",
+   "overlap": 0.33
+  },
+  {
+   "sn": "SN-0411",
+   "super": "SUPER-031",
+   "overlap": 0.29
+  },
+  {
+   "sn": "SN-0485",
+   "super": "SUPER-031",
+   "overlap": 0.333
+  },
+  {
+   "sn": "SN-0141",
+   "super": "SUPER-033",
+   "overlap": 0.25
+  },
+  {
+   "sn": "SN-0244",
+   "super": "SUPER-033",
+   "overlap": 0.309
+  },
+  {
+   "sn": "SN-0422",
+   "super": "SUPER-033",
+   "overlap": 0.319
+  },
+  {
+   "sn": "SN-096",
+   "super": "SUPER-035",
+   "overlap": 0.327
+  },
+  {
+   "sn": "SN-0572",
+   "super": "SUPER-036",
+   "overlap": 0.322
+  },
+  {
+   "sn": "SN-0348",
+   "super": "SUPER-049",
+   "overlap": 0.208
+  },
+  {
+   "sn": "SN-0583",
+   "super": "SUPER-049",
+   "overlap": 0.329
+  },
+  {
+   "sn": "SN-0628",
+   "super": "SUPER-049",
+   "overlap": 0.319
+  },
+  {
+   "sn": "SN-0269",
+   "super": "SUPER-055",
+   "overlap": 0.271
+  },
+  {
+   "sn": "SN-0338",
+   "super": "SUPER-055",
+   "overlap": 0.242
+  },
+  {
+   "sn": "SN-0631",
+   "super": "SUPER-055",
+   "overlap": 0.222
+  },
+  {
+   "sn": "SN-0271",
+   "super": "SUPER-056",
+   "overlap": 0.291
+  },
+  {
+   "sn": "SN-0381",
+   "super": "SUPER-056",
+   "overlap": 0.336
+  },
+  {
+   "sn": "SN-0364",
+   "super": "SUPER-057",
+   "overlap": 0.291
+  },
+  {
+   "sn": "SN-0437",
+   "super": "SUPER-057",
+   "overlap": 0.265
+  },
+  {
+   "sn": "IB-000041",
+   "super": "SUPER-059",
+   "overlap": 0.3
+  },
+  {
+   "sn": "SN-0802",
+   "super": "SUPER-059",
+   "overlap": 0.277
+  },
+  {
+   "sn": "SN-0305",
+   "super": "SUPER-060",
+   "overlap": 0.342
+  },
+  {
+   "sn": "SN-0314",
+   "super": "SUPER-060",
+   "overlap": 0.225
+  },
+  {
+   "sn": "IB-000051",
+   "super": "SUPER-062",
+   "overlap": 0.25
+  },
+  {
+   "sn": "SN-0177",
+   "super": "SUPER-062",
+   "overlap": 0.273
+  },
+  {
+   "sn": "SN-0496",
+   "super": "SUPER-063",
+   "overlap": 0.289
+  },
+  {
+   "sn": "SN-0342",
+   "super": "SUPER-067",
+   "overlap": 0.204
+  }
+ ],
+ "items": [
+  {
+   "sn": "SN-0215",
+   "super": "SUPER-001",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.319
+  },
+  {
+   "sn": "SN-0263",
+   "super": "SUPER-001",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.383
+  },
+  {
+   "sn": "SN-0362",
+   "super": "SUPER-001",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.254
+  },
+  {
+   "sn": "SN-0368",
+   "super": "SUPER-001",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.469
+  },
+  {
+   "sn": "SN-0464",
+   "super": "SUPER-001",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.792
+  },
+  {
+   "sn": "SN-0581",
+   "super": "SUPER-001",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.545
+  },
+  {
+   "sn": "SN-0191",
+   "super": "SUPER-002",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.5
+  },
+  {
+   "sn": "SN-0328",
+   "super": "SUPER-002",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.38
+  },
+  {
+   "sn": "SN-0415",
+   "super": "SUPER-002",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.436
+  },
+  {
+   "sn": "SN-0553",
+   "super": "SUPER-002",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.611
+  },
+  {
+   "sn": "SN-0563",
+   "super": "SUPER-002",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.453
+  },
+  {
+   "sn": "SN-0175",
+   "super": "SUPER-003",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.448
+  },
+  {
+   "sn": "SN-0354",
+   "super": "SUPER-003",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.214
+  },
+  {
+   "sn": "SN-0371",
+   "super": "SUPER-003",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.512
+  },
+  {
+   "sn": "SN-0451",
+   "super": "SUPER-003",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 1.0
+  },
+  {
+   "sn": "SN-0520",
+   "super": "SUPER-003",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.535
+  },
+  {
+   "sn": "SN-0624",
+   "super": "SUPER-003",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.333
+  },
+  {
+   "sn": "SN-560",
+   "super": "SUPER-003",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.302
+  },
+  {
+   "sn": "SN-0115",
+   "super": "SUPER-004",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.265
+  },
+  {
+   "sn": "SN-0176",
+   "super": "SUPER-004",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.494
+  },
+  {
+   "sn": "SN-0347",
+   "super": "SUPER-004",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.489
+  },
+  {
+   "sn": "SN-0467",
+   "super": "SUPER-004",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.565
+  },
+  {
+   "sn": "SN-0117",
+   "super": "SUPER-005",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.298
+  },
+  {
+   "sn": "SN-0159",
+   "super": "SUPER-005",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.452
+  },
+  {
+   "sn": "SN-0201",
+   "super": "SUPER-005",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.274
+  },
+  {
+   "sn": "SN-0336",
+   "super": "SUPER-005",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.342
+  },
+  {
+   "sn": "SN-0367",
+   "super": "SUPER-005",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.176
+  },
+  {
+   "sn": "SN-0393",
+   "super": "SUPER-005",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.606
+  },
+  {
+   "sn": "SN-0153",
+   "super": "SUPER-006",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.407
+  },
+  {
+   "sn": "SN-0264",
+   "super": "SUPER-006",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.53
+  },
+  {
+   "sn": "SN-0265",
+   "super": "SUPER-006",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.741
+  },
+  {
+   "sn": "SN-0340",
+   "super": "SUPER-006",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.865
+  },
+  {
+   "sn": "SN-0343",
+   "super": "SUPER-006",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.833
+  },
+  {
+   "sn": "SN-0456",
+   "super": "SUPER-006",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.714
+  },
+  {
+   "sn": "SN-0590",
+   "super": "SUPER-006",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.368
+  },
+  {
+   "sn": "SN-0177",
+   "super": "SUPER-007",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.411
+  },
+  {
+   "sn": "SN-0279",
+   "super": "SUPER-007",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.419
+  },
+  {
+   "sn": "SN-0358",
+   "super": "SUPER-007",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.791
+  },
+  {
+   "sn": "SN-0606",
+   "super": "SUPER-007",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.293
+  },
+  {
+   "sn": "SN-0414",
+   "super": "SUPER-008",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.479
+  },
+  {
+   "sn": "SN-0460",
+   "super": "SUPER-008",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.414
+  },
+  {
+   "sn": "SN-0468",
+   "super": "SUPER-008",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.417
+  },
+  {
+   "sn": "SN-0503",
+   "super": "SUPER-008",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.532
+  },
+  {
+   "sn": "SN-0611",
+   "super": "SUPER-008",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.744
+  },
+  {
+   "sn": "SN-0199",
+   "super": "SUPER-009",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.252
+  },
+  {
+   "sn": "SN-0261",
+   "super": "SUPER-009",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.5
+  },
+  {
+   "sn": "SN-0262",
+   "super": "SUPER-009",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.347
+  },
+  {
+   "sn": "SN-0324",
+   "super": "SUPER-009",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.231
+  },
+  {
+   "sn": "SN-0116",
+   "super": "SUPER-010",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.231
+  },
+  {
+   "sn": "SN-0370",
+   "super": "SUPER-010",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.291
+  },
+  {
+   "sn": "SN-0325",
+   "super": "SUPER-011",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.284
+  },
+  {
+   "sn": "SN-0409",
+   "super": "SUPER-011",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.212
+  },
+  {
+   "sn": "SN-0455",
+   "super": "SUPER-011",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.737
+  },
+  {
+   "sn": "SN-0603",
+   "super": "SUPER-011",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.47
+  },
+  {
+   "sn": "SN-0637",
+   "super": "SUPER-011",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.369
+  },
+  {
+   "sn": "SN-099",
+   "super": "SUPER-011",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.556
+  },
+  {
+   "sn": "SN-0170",
+   "super": "SUPER-012",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.44
+  },
+  {
+   "sn": "SN-0403",
+   "super": "SUPER-012",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.5
+  },
+  {
+   "sn": "SN-0488",
+   "super": "SUPER-012",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.435
+  },
+  {
+   "sn": "SN-0576",
+   "super": "SUPER-012",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.357
+  },
+  {
+   "sn": "SN-0239",
+   "super": "SUPER-014",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.375
+  },
+  {
+   "sn": "SN-275",
+   "super": "SUPER-014",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.731
+  },
+  {
+   "sn": "SN-0172",
+   "super": "SUPER-015",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.488
+  },
+  {
+   "sn": "SN-0188",
+   "super": "SUPER-015",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.352
+  },
+  {
+   "sn": "SN-0216",
+   "super": "SUPER-015",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.252
+  },
+  {
+   "sn": "SN-0238",
+   "super": "SUPER-015",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.318
+  },
+  {
+   "sn": "SN-0250",
+   "super": "SUPER-015",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.33
+  },
+  {
+   "sn": "SN-0384",
+   "super": "SUPER-015",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.447
+  },
+  {
+   "sn": "SN-0424",
+   "super": "SUPER-015",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.475
+  },
+  {
+   "sn": "SN-0533",
+   "super": "SUPER-015",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.317
+  },
+  {
+   "sn": "SN-0633",
+   "super": "SUPER-015",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.42
+  },
+  {
+   "sn": "SN-0112",
+   "super": "SUPER-016",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.537
+  },
+  {
+   "sn": "SN-0198",
+   "super": "SUPER-016",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.316
+  },
+  {
+   "sn": "SN-0217",
+   "super": "SUPER-016",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.393
+  },
+  {
+   "sn": "SN-086",
+   "super": "SUPER-016",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.347
+  },
+  {
+   "sn": "SN-0146",
+   "super": "SUPER-017",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.347
+  },
+  {
+   "sn": "SN-025",
+   "super": "SUPER-017",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.571
+  },
+  {
+   "sn": "SN-0509",
+   "super": "SUPER-017",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.349
+  },
+  {
+   "sn": "SN-0512",
+   "super": "SUPER-017",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.292
+  },
+  {
+   "sn": "SN-072",
+   "super": "SUPER-017",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.509
+  },
+  {
+   "sn": "SN-036",
+   "super": "SUPER-018",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.618
+  },
+  {
+   "sn": "SN-0506",
+   "super": "SUPER-018",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.5
+  },
+  {
+   "sn": "SN-0543",
+   "super": "SUPER-018",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.452
+  },
+  {
+   "sn": "SN-067",
+   "super": "SUPER-018",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.328
+  },
+  {
+   "sn": "SN-073",
+   "super": "SUPER-018",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.374
+  },
+  {
+   "sn": "SN-077",
+   "super": "SUPER-018",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.483
+  },
+  {
+   "sn": "SN-0118",
+   "super": "SUPER-019",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.374
+  },
+  {
+   "sn": "SN-0168",
+   "super": "SUPER-019",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.228
+  },
+  {
+   "sn": "SN-0519",
+   "super": "SUPER-019",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.212
+  },
+  {
+   "sn": "SN-0573",
+   "super": "SUPER-019",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.59
+  },
+  {
+   "sn": "SN-085",
+   "super": "SUPER-019",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.617
+  },
+  {
+   "sn": "SN-090",
+   "super": "SUPER-019",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.196
+  },
+  {
+   "sn": "SN-091",
+   "super": "SUPER-019",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.328
+  },
+  {
+   "sn": "SN-063",
+   "super": "SUPER-020",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.611
+  },
+  {
+   "sn": "SN-070",
+   "super": "SUPER-020",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.553
+  },
+  {
+   "sn": "SN-083",
+   "super": "SUPER-020",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.346
+  },
+  {
+   "sn": "SN-089",
+   "super": "SUPER-020",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.243
+  },
+  {
+   "sn": "SN-092",
+   "super": "SUPER-020",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.5
+  },
+  {
+   "sn": "SN-0163",
+   "super": "SUPER-021",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.544
+  },
+  {
+   "sn": "SN-181",
+   "super": "SUPER-021",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.561
+  },
+  {
+   "sn": "SN-034",
+   "super": "SUPER-022",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.421
+  },
+  {
+   "sn": "SN-0586",
+   "super": "SUPER-022",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.641
+  },
+  {
+   "sn": "SN-061",
+   "super": "SUPER-022",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.252
+  },
+  {
+   "sn": "SN-0174",
+   "super": "SUPER-023",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.542
+  },
+  {
+   "sn": "SN-0445",
+   "super": "SUPER-023",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.365
+  },
+  {
+   "sn": "SN-0449",
+   "super": "SUPER-023",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.241
+  },
+  {
+   "sn": "SN-0497",
+   "super": "SUPER-023",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.367
+  },
+  {
+   "sn": "SN-0517",
+   "super": "SUPER-023",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.444
+  },
+  {
+   "sn": "SN-064",
+   "super": "SUPER-023",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.431
+  },
+  {
+   "sn": "SN-0246",
+   "super": "SUPER-025",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.643
+  },
+  {
+   "sn": "SN-097",
+   "super": "SUPER-025",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.22
+  },
+  {
+   "sn": "SN-0395",
+   "super": "SUPER-027",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.321
+  },
+  {
+   "sn": "SN-0359",
+   "super": "SUPER-028",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.281
+  },
+  {
+   "sn": "SN-0377",
+   "super": "SUPER-028",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.473
+  },
+  {
+   "sn": "SN-0385",
+   "super": "SUPER-029",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.376
+  },
+  {
+   "sn": "SN-0379",
+   "super": "SUPER-030",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.33
+  },
+  {
+   "sn": "SN-074",
+   "super": "SUPER-030",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.386
+  },
+  {
+   "sn": "SN-0411",
+   "super": "SUPER-031",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.29
+  },
+  {
+   "sn": "SN-0485",
+   "super": "SUPER-031",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.333
+  },
+  {
+   "sn": "SN-0230",
+   "super": "SUPER-032",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.581
+  },
+  {
+   "sn": "SN-0114",
+   "super": "SUPER-033",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.494
+  },
+  {
+   "sn": "SN-0141",
+   "super": "SUPER-033",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.25
+  },
+  {
+   "sn": "SN-0205",
+   "super": "SUPER-033",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.465
+  },
+  {
+   "sn": "SN-0244",
+   "super": "SUPER-033",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.309
+  },
+  {
+   "sn": "SN-0422",
+   "super": "SUPER-033",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.319
+  },
+  {
+   "sn": "SN-0433",
+   "super": "SUPER-033",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.426
+  },
+  {
+   "sn": "SN-0272",
+   "super": "SUPER-034",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.538
+  },
+  {
+   "sn": "SN-0281",
+   "super": "SUPER-034",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.44
+  },
+  {
+   "sn": "SN-0417",
+   "super": "SUPER-034",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.433
+  },
+  {
+   "sn": "SN-0551",
+   "super": "SUPER-034",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.562
+  },
+  {
+   "sn": "SN-0214",
+   "super": "SUPER-035",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.452
+  },
+  {
+   "sn": "SN-0220",
+   "super": "SUPER-035",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.7
+  },
+  {
+   "sn": "SN-095",
+   "super": "SUPER-035",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.376
+  },
+  {
+   "sn": "SN-096",
+   "super": "SUPER-035",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.327
+  },
+  {
+   "sn": "SN-101",
+   "super": "SUPER-035",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.694
+  },
+  {
+   "sn": "SN-0572",
+   "super": "SUPER-036",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.322
+  },
+  {
+   "sn": "SN-0276",
+   "super": "SUPER-037",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.404
+  },
+  {
+   "sn": "SN-0450",
+   "super": "SUPER-037",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.583
+  },
+  {
+   "sn": "SN-0130",
+   "super": "SUPER-038",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.611
+  },
+  {
+   "sn": "SN-0346",
+   "super": "SUPER-038",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.387
+  },
+  {
+   "sn": "SN-0304",
+   "super": "SUPER-039",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.419
+  },
+  {
+   "sn": "SN-0526",
+   "super": "SUPER-048",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.432
+  },
+  {
+   "sn": "SN-0348",
+   "super": "SUPER-049",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.208
+  },
+  {
+   "sn": "SN-0452",
+   "super": "SUPER-049",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.478
+  },
+  {
+   "sn": "SN-0582",
+   "super": "SUPER-049",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.571
+  },
+  {
+   "sn": "SN-0583",
+   "super": "SUPER-049",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.329
+  },
+  {
+   "sn": "SN-0585",
+   "super": "SUPER-049",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.509
+  },
+  {
+   "sn": "SN-0628",
+   "super": "SUPER-049",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.319
+  },
+  {
+   "sn": "SN-0498",
+   "super": "SUPER-050",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.584
+  },
+  {
+   "sn": "SN-002",
+   "super": "SUPER-052",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.613
+  },
+  {
+   "sn": "SN-0258",
+   "super": "SUPER-052",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.491
+  },
+  {
+   "sn": "SN-0584",
+   "super": "SUPER-052",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.411
+  },
+  {
+   "sn": "SN-0541",
+   "super": "SUPER-053",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.527
+  },
+  {
+   "sn": "SN-0269",
+   "super": "SUPER-055",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.271
+  },
+  {
+   "sn": "SN-0338",
+   "super": "SUPER-055",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.242
+  },
+  {
+   "sn": "SN-0631",
+   "super": "SUPER-055",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.222
+  },
+  {
+   "sn": "SN-0271",
+   "super": "SUPER-056",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.291
+  },
+  {
+   "sn": "SN-0369",
+   "super": "SUPER-056",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.455
+  },
+  {
+   "sn": "SN-0381",
+   "super": "SUPER-056",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.336
+  },
+  {
+   "sn": "SN-0364",
+   "super": "SUPER-057",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.291
+  },
+  {
+   "sn": "SN-0437",
+   "super": "SUPER-057",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.265
+  },
+  {
+   "sn": "SN-0486",
+   "super": "SUPER-058",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.824
+  },
+  {
+   "sn": "IB-000040",
+   "super": "SUPER-059",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.359
+  },
+  {
+   "sn": "IB-000041",
+   "super": "SUPER-059",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.3
+  },
+  {
+   "sn": "SN-0802",
+   "super": "SUPER-059",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.277
+  },
+  {
+   "sn": "SN-0305",
+   "super": "SUPER-060",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.342
+  },
+  {
+   "sn": "SN-0306",
+   "super": "SUPER-060",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.42
+  },
+  {
+   "sn": "SN-0314",
+   "super": "SUPER-060",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.225
+  },
+  {
+   "sn": "SN-0315",
+   "super": "SUPER-060",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.375
+  },
+  {
+   "sn": "IB-000036",
+   "super": "SUPER-061",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.643
+  },
+  {
+   "sn": "IB-000037",
+   "super": "SUPER-061",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.643
+  },
+  {
+   "sn": "IB-000049",
+   "super": "SUPER-061",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.667
+  },
+  {
+   "sn": "SN-0599",
+   "super": "SUPER-061",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.385
+  },
+  {
+   "sn": "SN-0617",
+   "super": "SUPER-061",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.386
+  },
+  {
+   "sn": "SN-0800",
+   "super": "SUPER-061",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.552
+  },
+  {
+   "sn": "SN-1769",
+   "super": "SUPER-061",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.413
+  },
+  {
+   "sn": "IB-000051",
+   "super": "SUPER-062",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.25
+  },
+  {
+   "sn": "SN-0177",
+   "super": "SUPER-062",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.273
+  },
+  {
+   "sn": "SN-0595",
+   "super": "SUPER-062",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.425
+  },
+  {
+   "sn": "SN-0299",
+   "super": "SUPER-063",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.705
+  },
+  {
+   "sn": "SN-0496",
+   "super": "SUPER-063",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.289
+  },
+  {
+   "sn": "SN-0609",
+   "super": "SUPER-064",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.426
+  },
+  {
+   "sn": "SN-0342",
+   "super": "SUPER-067",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.204
+  },
+  {
+   "sn": "SN-0600",
+   "super": "SUPER-067",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.826
+  },
+  {
+   "sn": "SN-0602",
+   "super": "SUPER-067",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.511
+  },
+  {
+   "sn": "IB-000044",
+   "super": "SUPER-068",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.898
+  },
+  {
+   "sn": "IB-000046",
+   "super": "SUPER-068",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.852
+  },
+  {
+   "sn": "SN-012",
+   "super": "SUPER-068",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.659
+  },
+  {
+   "sn": "SN-021",
+   "super": "SUPER-068",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.578
+  },
+  {
+   "sn": "IB-SMART-NOTE-20261009-successor-t11-reserve-rule-canonical",
+   "super": "SUPER-069",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.556
+  },
+  {
+   "sn": "SN-0322",
+   "super": "SUPER-069",
+   "verdict": "MISSING",
+   "restored_entry": true,
+   "overlap": 0.398
+  },
+  {
+   "sn": "SN-0344",
+   "super": "SUPER-069",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.589
+  },
+  {
+   "sn": "SN-0810",
+   "super": "SUPER-071",
+   "verdict": "PARTIAL",
+   "restored_entry": true,
+   "overlap": 0.701
+  }
+ ],
+ "method_limit": "Token overlap is a mechanical floor, not a semantic proof. Semantic completeness requires the independent re-audit mandated by DISTILLATION-STANDARD \u00a73."
+}

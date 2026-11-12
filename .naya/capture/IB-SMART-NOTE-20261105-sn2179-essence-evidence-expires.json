@@ -1,0 +1,48 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2179",
+  "title": "The Tip Moves: Evidence Expires",
+  "slug": "essence-evidence-expires",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-evidence-expires.md",
+  "tone": "sapphire",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:17:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "On a fast main, every observation is perishable. A headline announcing \"Now on main (RUNG 1)\" described a kit that lived only on a branch (SN-819); an hourly \"nothing is broken\" post was falsified four minutes later by a red tip (SN-823); regen evidence gathered inside a PR expired at the moment of merge, twice (SN-821); a merge executed on a PR record's stale base while two unreviewed pushes, landed before the scorecard was even written, had already falsified its base (SN-883). The family's law: **verify at the action instant, against the live ref, and carry nothing forward** — status claims are tip-anchored and timestamped or they are hope (SN-823), read and mutation must be adjacent (SN-883), and re-anchoring belongs at verify-time, not burned in advance against a tip that will move again (SN-889).",
+    "human_view": "Everything in this system moves — the code, the board, the record — and it moves fast. These notes are about what that does to truth: a fact about the system is only true *at a moment, at a version*. Saying \"it's green\" without saying *which* version and *when* is like saying \"the shop is open\" without a day or an hour. The discipline here is simply always naming the moment your fact belongs to — and re-checking at the moment you act, because the fifteen seconds between checking and acting is exactly where trouble rides in.",
+    "child_view": "Imagine a river. You take a picture of it and say \"the river looks like this!\" But the river keeps flowing — your picture is already old. Smart people write on the picture: \"this is how it looked at 3 o'clock.\" And if they're about to jump in, they look at the river again *right before jumping*, not at the old picture.",
+    "grandma_view": "It's the milk rule, dear: check the date, and check it when you're about to pour, not when you bought it. These engineers learned that \"it was fine a minute ago\" is not a safety standard when a minute is all it takes for two strangers' changes to land inside your work. And they learned to write the date on everything — a claim without its date is just a rumor with confidence.",
+    "ai_view": "Anchor every status claim: \"green at `<sha>` as of `<time>`,\" or don't make it (SN-823). 404-check live paths behind headlines — including your own tools' success output (SN-819). Split diagnostics into architecture (durable) and status (expires at write time), marking findings CONFIRMED/FIXED/STALE/UNKNOWN with source + SHA (SN-835). Run regen + `--check` post-merge at the exact merge tip (SN-821); replace two-dot diffs with rehearsed merges (SN-856). Immediately before any mutating call, `GET refs/heads/main` and name preconditions from that read; keep read and mutation adjacent (SN-883). On a superseded tip's failure, re-verify the final tip three ways and carry nothing forward (SN-879). Advance watermarks only over reconciled ID sets — fetch last page and last page − 1 (SN-853). Stage verification so re-anchoring happens at verify-time; post stale states openly (SN-889).",
+    "what_it_means": "Nine notes refine one ancestor law (SN-0493: a decision expires when the tip moves) into its working forms — for headlines, reports, diagnostics, regens, diffs, merge preconditions, failure observations, watermarks, and verification staging. The refinement that matters most is SN-883's: the expiry window is not the decision, it's the *gap between the last read and the mutation*, and on a busy main that gap is measured in seconds. Freshness is not a property a claim has; it's a property of the distance between the claim and the act.",
+    "whats_inside": [
+      "Headlines and tool success messages are claims about the world; verify against the live path, annotate false claims, never erase them (SN-819).",
+      "Status claims are tip-anchored + timestamped or they are hope (SN-823); diagnostic status expires at write time while architecture survives, findings marked CONFIRMED/FIXED/STALE/UNKNOWN (SN-835).",
+      "Regen evidence gathered in-PR expires at merge; regen + `--check` run on a clean worktree at the exact merge tip (SN-821).",
+      "Two-dot diffs on a moved main manufacture phantom deletions; merge evidence is a rehearsed merge at the live tip (SN-856).",
+      "Base preconditions are re-read from the live ref immediately before the mutating call, parents named from that read — read and mutation adjacent (SN-883).",
+      "A failure anchored on a superseded tip is a race artifact; re-verify the final tip three ways, carry nothing forward (SN-879).",
+      "A watermark advances only over a reconciled ID set; unreconciled absence proves nothing (SN-853).",
+      "At high tip velocity, re-anchor at verify-time or take a merge-queue slot — never as repeated pre-verification work (SN-889)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-4"
+    ],
+    "covers": [
+      "SN-819",
+      "SN-821",
+      "SN-823",
+      "SN-835",
+      "SN-853",
+      "SN-856",
+      "SN-879",
+      "SN-883",
+      "SN-889"
+    ]
+  },
+  "page_hash": "0affae989055f016a3f7660e930e0f8e587e3888f53957a0e2d48741b1ee97e5",
+  "content_hash": "1640b3f2b620791b90e7e6fb985279336fe7cd0264ec6c3370993d63d4b91e35"
+}

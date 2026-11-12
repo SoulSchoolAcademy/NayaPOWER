@@ -24,15 +24,17 @@ Deno.serve(async(req)=>{
       .eq("member_id",auth.user.id).eq("target_id",targetId).eq("status","ACTIVE")
       .order("created_at",{ascending:false}).limit(1).maybeSingle();
     if(evidenceError) throw evidenceError;
-    const influenced=!!evidence;
-    const decision=influenced?"USE_VERIFIED_LEARNING_CONTEXT":"NO_LEARNING_INFLUENCE";
+    const learningContextAvailable=!!evidence;
+    // Presence of verified learning context is not proof that it influenced this decision.
+    // Causal influence belongs to a later controlled intervention + independent verification path.
+    const decision=learningContextAvailable?"LEARNING_CONTEXT_AVAILABLE":"NO_VERIFIED_LEARNING_CONTEXT";
     return json({ok:true,decision:{
-      decision,target_id:targetId,influenced,
-      reason:influenced?"Active learning evidence is present in the canonical learner evidence boundary.":"No active learning evidence was found for this target.",
+      decision,target_id:targetId,learning_context_available:learningContextAvailable,influenced:false,
+      reason:learningContextAvailable?"Verified learning context is available in the canonical learner evidence boundary; causal influence is not established by availability alone.":"No active learning evidence was found for this target.",
       context:{evidence_id:evidence?.id||null,level:evidence?.level||null,claim:evidence?.claim||null,source_event_id:evidence?.source_event_id||null,observed_value:evidence?.observed_value||null,verification_method:evidence?.verification_method||null,provenance:evidence?.provenance||null},
       authority:{changed:false,granted:false,source:"existing governance boundary"},
       verification:{evidence_status:evidence?.status||null},
-      continuity:{grounded:influenced,source:influenced?"learning_evidence":"no_learning_evidence",next_step:influenced?"APPLY_VERIFIED_LEARNING_CONTEXT":"RETRIEVE_VERIFIED_LEARNING_BEFORE_CONTINUATION"}
+      continuity:{grounded:false,source:learningContextAvailable?"learning_evidence":"no_learning_evidence",next_step:learningContextAvailable?"EVALUATE_LEARNING_APPLICABILITY_BEFORE_APPLY":"RETRIEVE_VERIFIED_LEARNING_BEFORE_CONTINUATION"}
     }});
   }catch(error){return json({ok:false,error:"DECISION_CONTEXT_FAILED",detail:String(error)},500);}
 });

@@ -1,0 +1,629 @@
+{
+  "version": "2.0.0",
+  "date": "2026-10-20",
+  "source": "Verity's smart-builder-v50-fixed.html (distilled from 478-piece index)",
+  "supersedes": "naya4/design-library-canonical 478-piece builder-index-v1.json",
+  "total_unique": 155,
+  "pieces": [
+    {
+      "model": "NAYA-BRD-001",
+      "name": "Feature board"
+    },
+    {
+      "model": "NAYA-BRD-012",
+      "name": "Self-scorecard"
+    },
+    {
+      "model": "NAYA-BRD-013",
+      "name": "Ship-gate checklist"
+    },
+    {
+      "model": "NAYA-BRD-015",
+      "name": "Media player"
+    },
+    {
+      "model": "NAYA-BRD-018",
+      "name": "Reading board"
+    },
+    {
+      "model": "NAYA-BRD-019",
+      "name": "Orbit board"
+    },
+    {
+      "model": "NAYA-BRD-021",
+      "name": "Faceted door"
+    },
+    {
+      "model": "NAYA-BRD-022",
+      "name": "Editorial report card"
+    },
+    {
+      "model": "NAYA-BRD-023",
+      "name": "Onboarding steps"
+    },
+    {
+      "model": "NAYA-BRD-024",
+      "name": "Page shell"
+    },
+    {
+      "model": "NAYA-BRD-025",
+      "name": "Orbital five"
+    },
+    {
+      "model": "NAYA-BRD-026",
+      "name": "Orbital seven"
+    },
+    {
+      "model": "NAYA-BRD-027",
+      "name": "Orbital nine"
+    },
+    {
+      "model": "NAYA-BRD-028",
+      "name": "Circle trio"
+    },
+    {
+      "model": "NAYA-BRD-029",
+      "name": "Circle five"
+    },
+    {
+      "model": "NAYA-BRD-030",
+      "name": "Feature circle"
+    },
+    {
+      "model": "NAYA-BRD-031",
+      "name": "Signal circle"
+    },
+    {
+      "model": "NAYA-BRD-032",
+      "name": "Ember circle"
+    },
+    {
+      "model": "NAYA-BRD-033",
+      "name": "Stat grid"
+    },
+    {
+      "model": "NAYA-BRD-034",
+      "name": "Bar chart"
+    },
+    {
+      "model": "NAYA-BRD-035",
+      "name": "Donut chart"
+    },
+    {
+      "model": "NAYA-BRD-036",
+      "name": "Data table"
+    },
+    {
+      "model": "NAYA-BRD-037",
+      "name": "Calendar"
+    },
+    {
+      "model": "NAYA-BRD-038",
+      "name": "Time slots"
+    },
+    {
+      "model": "NAYA-BRD-039",
+      "name": "Message list"
+    },
+    {
+      "model": "NAYA-BRD-040",
+      "name": "Timeline"
+    },
+    {
+      "model": "NAYA-BRD-041",
+      "name": "Product card"
+    },
+    {
+      "model": "NAYA-BRD-042",
+      "name": "Pricing tiers"
+    },
+    {
+      "model": "NAYA-BRD-043",
+      "name": "Countdown"
+    },
+    {
+      "model": "NAYA-BRD-044",
+      "name": "Post composer"
+    },
+    {
+      "model": "NAYA-BTN-001",
+      "name": "Black Ground"
+    },
+    {
+      "model": "NAYA-BTN-002",
+      "name": "White Light"
+    },
+    {
+      "model": "NAYA-BTN-003",
+      "name": "Purple Soul"
+    },
+    {
+      "model": "NAYA-BTN-004",
+      "name": "Primo Magenta"
+    },
+    {
+      "model": "NAYA-BTN-005",
+      "name": "Primo Purple"
+    },
+    {
+      "model": "NAYA-BTN-006",
+      "name": "Primo Blue"
+    },
+    {
+      "model": "NAYA-BTN-007",
+      "name": "Primo Green"
+    },
+    {
+      "model": "NAYA-BTN-008",
+      "name": "Primo Gold"
+    },
+    {
+      "model": "NAYA-BTN-009",
+      "name": "Hero \u00b7 Enter the Standard"
+    },
+    {
+      "model": "NAYA-BTN-010",
+      "name": "Hero \u00b7 See It Working"
+    },
+    {
+      "model": "NAYA-BTN-011",
+      "name": "Hero \u00b7 Read the Law"
+    },
+    {
+      "model": "NAYA-BTN-012",
+      "name": "Essential \u00b7 Create"
+    },
+    {
+      "model": "NAYA-BTN-013",
+      "name": "Essential \u00b7 Details"
+    },
+    {
+      "model": "NAYA-BTN-014",
+      "name": "Essential \u00b7 Continue"
+    },
+    {
+      "model": "NAYA-BTN-015",
+      "name": "Ghost button"
+    },
+    {
+      "model": "NAYA-BTN-016",
+      "name": "Toggle chip"
+    },
+    {
+      "model": "NAYA-BTN-017",
+      "name": "Smart-note \u00b7 Save"
+    },
+    {
+      "model": "NAYA-BTN-018",
+      "name": "Nav button \u00b7 About"
+    },
+    {
+      "model": "NAYA-BTN-019",
+      "name": "Signature variants"
+    },
+    {
+      "model": "NAYA-BTN-020",
+      "name": "Icon trio"
+    },
+    {
+      "model": "NAYA-BTN-021",
+      "name": "Danger button"
+    },
+    {
+      "model": "NAYA-BTN-022",
+      "name": "Split button"
+    },
+    {
+      "model": "NAYA-BTN-023",
+      "name": "Canonical primary"
+    },
+    {
+      "model": "NAYA-BTN-024",
+      "name": "Canonical secondary"
+    },
+    {
+      "model": "NAYA-BTN-025",
+      "name": "Canonical ghost"
+    },
+    {
+      "model": "NAYA-BTN-026",
+      "name": "Orbit button"
+    },
+    {
+      "model": "NAYA-BTN-027",
+      "name": "Chrome button"
+    },
+    {
+      "model": "NAYA-BTN-028",
+      "name": "Like pill"
+    },
+    {
+      "model": "NAYA-BTN-029",
+      "name": "Action chip"
+    },
+    {
+      "model": "NAYA-BTN-030",
+      "name": "Day dot"
+    },
+    {
+      "model": "NAYA-BTN-031",
+      "name": "Send CTA"
+    },
+    {
+      "model": "NAYA-BTN-032",
+      "name": "Mic button"
+    },
+    {
+      "model": "NAYA-BTN-033",
+      "name": "Floating action button"
+    },
+    {
+      "model": "NAYA-HDR-001",
+      "name": "Eyebrow"
+    },
+    {
+      "model": "NAYA-HDR-002",
+      "name": "Intelligence trio"
+    },
+    {
+      "model": "NAYA-HDR-003",
+      "name": "Step number"
+    },
+    {
+      "model": "NAYA-ICO-001",
+      "name": "Today \u00b7 dual"
+    },
+    {
+      "model": "NAYA-ICO-002",
+      "name": "Spaces \u00b7 dual"
+    },
+    {
+      "model": "NAYA-ICO-003",
+      "name": "Reports \u00b7 dual"
+    },
+    {
+      "model": "NAYA-ICO-004",
+      "name": "Mail \u00b7 dual"
+    },
+    {
+      "model": "NAYA-ICO-005",
+      "name": "Ask \u00b7 dual"
+    },
+    {
+      "model": "NAYA-ICO-006",
+      "name": "Doors \u00b7 dual"
+    },
+    {
+      "model": "NAYA-ICO-007",
+      "name": "People \u00b7 dual"
+    },
+    {
+      "model": "NAYA-ICO-008",
+      "name": "Ledger \u00b7 dual"
+    },
+    {
+      "model": "NAYA-ICO-009",
+      "name": "Grow \u00b7 dual"
+    },
+    {
+      "model": "NAYA-ICO-010",
+      "name": "Guard \u00b7 dual"
+    },
+    {
+      "model": "NAYA-ICO-011",
+      "name": "Home \u00b7 dock"
+    },
+    {
+      "model": "NAYA-ICO-012",
+      "name": "Pulse \u00b7 dock"
+    },
+    {
+      "model": "NAYA-ICO-013",
+      "name": "People \u00b7 dock"
+    },
+    {
+      "model": "NAYA-ICO-014",
+      "name": "Calendar \u00b7 dock"
+    },
+    {
+      "model": "NAYA-ICO-015",
+      "name": "Docs \u00b7 dock"
+    },
+    {
+      "model": "NAYA-ICO-016",
+      "name": "Vision \u00b7 dock"
+    },
+    {
+      "model": "NAYA-ICO-017",
+      "name": "Saved \u00b7 dock"
+    },
+    {
+      "model": "NAYA-ICO-018",
+      "name": "Explore \u00b7 dock"
+    },
+    {
+      "model": "NAYA-ICO-019",
+      "name": "Favorite \u00b7 dock"
+    },
+    {
+      "model": "NAYA-ICO-020",
+      "name": "Reports \u00b7 dock"
+    },
+    {
+      "model": "NAYA-ICO-021",
+      "name": "Love \u00b7 dock"
+    },
+    {
+      "model": "NAYA-ICO-022",
+      "name": "Share \u00b7 dock"
+    },
+    {
+      "model": "NAYA-ICO-023",
+      "name": "Icon socket"
+    },
+    {
+      "model": "NAYA-INP-001",
+      "name": "Search bar"
+    },
+    {
+      "model": "NAYA-INP-002",
+      "name": "Alias field"
+    },
+    {
+      "model": "NAYA-INP-003",
+      "name": "Segmented control"
+    },
+    {
+      "model": "NAYA-INP-004",
+      "name": "Toggle switch"
+    },
+    {
+      "model": "NAYA-INP-005",
+      "name": "Recessed field"
+    },
+    {
+      "model": "NAYA-INP-006",
+      "name": "Jeweled checkbox"
+    },
+    {
+      "model": "NAYA-INP-007",
+      "name": "Settings row"
+    },
+    {
+      "model": "NAYA-JWL-001",
+      "name": "Gem bullet \u00b7 Magenta"
+    },
+    {
+      "model": "NAYA-JWL-002",
+      "name": "Gem bullet \u00b7 Purple"
+    },
+    {
+      "model": "NAYA-JWL-003",
+      "name": "Gem bullet \u00b7 Blue"
+    },
+    {
+      "model": "NAYA-JWL-004",
+      "name": "Gem bullet \u00b7 Green"
+    },
+    {
+      "model": "NAYA-JWL-005",
+      "name": "Gem bullet \u00b7 Gold"
+    },
+    {
+      "model": "NAYA-JWL-006",
+      "name": "Mini-orb \u00b7 Magenta"
+    },
+    {
+      "model": "NAYA-JWL-007",
+      "name": "Mini-orb \u00b7 Purple"
+    },
+    {
+      "model": "NAYA-JWL-008",
+      "name": "Mini-orb \u00b7 Blue"
+    },
+    {
+      "model": "NAYA-JWL-009",
+      "name": "Mini-orb \u00b7 Green"
+    },
+    {
+      "model": "NAYA-JWL-010",
+      "name": "Mini-orb \u00b7 Gold"
+    },
+    {
+      "model": "NAYA-JWL-011",
+      "name": "Glyph orb \u00b7 Spark"
+    },
+    {
+      "model": "NAYA-JWL-012",
+      "name": "Glyph orb \u00b7 Love"
+    },
+    {
+      "model": "NAYA-JWL-013",
+      "name": "Glyph orb \u00b7 Play"
+    },
+    {
+      "model": "NAYA-JWL-014",
+      "name": "Glyph orb \u00b7 Focus"
+    },
+    {
+      "model": "NAYA-JWL-015",
+      "name": "Black orb"
+    },
+    {
+      "model": "NAYA-JWL-016",
+      "name": "Hero orb"
+    },
+    {
+      "model": "NAYA-JWL-017",
+      "name": "Twin orbit orb"
+    },
+    {
+      "model": "NAYA-JWL-018",
+      "name": "LED"
+    },
+    {
+      "model": "NAYA-JWL-019",
+      "name": "Corner jewel"
+    },
+    {
+      "model": "NAYA-JWL-020",
+      "name": "Meaning spheres"
+    },
+    {
+      "model": "NAYA-JWL-021",
+      "name": "Identity icons"
+    },
+    {
+      "model": "NAYA-MRK-001",
+      "name": "Status pill"
+    },
+    {
+      "model": "NAYA-MRK-002",
+      "name": "Done mark"
+    },
+    {
+      "model": "NAYA-MRK-003",
+      "name": "Search highlight"
+    },
+    {
+      "model": "NAYA-MRK-004",
+      "name": "Divider bar"
+    },
+    {
+      "model": "NAYA-MRK-005",
+      "name": "Spectrum bar"
+    },
+    {
+      "model": "NAYA-MRK-006",
+      "name": "Count badge"
+    },
+    {
+      "model": "NAYA-MRK-007",
+      "name": "Skeleton loading"
+    },
+    {
+      "model": "NAYA-NAV-001",
+      "name": "Smart tabs"
+    },
+    {
+      "model": "NAYA-NAV-002",
+      "name": "View tabs"
+    },
+    {
+      "model": "NAYA-NAV-003",
+      "name": "Eco bottom bar"
+    },
+    {
+      "model": "NAYA-NAV-004",
+      "name": "Top nav bar"
+    },
+    {
+      "model": "NAYA-NAV-005",
+      "name": "Favorites ribbon"
+    },
+    {
+      "model": "NAYA-NAV-006",
+      "name": "App room nav"
+    },
+    {
+      "model": "NAYA-NAV-007",
+      "name": "Anchor TOC pills"
+    },
+    {
+      "model": "NAYA-NAV-008",
+      "name": "Shared chrome"
+    },
+    {
+      "model": "NAYA-NAV-009",
+      "name": "Brand mark"
+    },
+    {
+      "model": "NAYA-NAV-010",
+      "name": "Real footer"
+    },
+    {
+      "model": "NAYA-NAV-011",
+      "name": "Progress rail"
+    },
+    {
+      "model": "NAYA-ORB-001",
+      "name": "Orb \u00b7 Magenta"
+    },
+    {
+      "model": "NAYA-ORB-002",
+      "name": "Orb \u00b7 Purple"
+    },
+    {
+      "model": "NAYA-ORB-003",
+      "name": "Orb \u00b7 Blue"
+    },
+    {
+      "model": "NAYA-ORB-004",
+      "name": "Orb \u00b7 Green"
+    },
+    {
+      "model": "NAYA-ORB-005",
+      "name": "Orb \u00b7 Gold"
+    },
+    {
+      "model": "NAYA-ORB-006",
+      "name": "Truth orb \u00b7 Verified"
+    },
+    {
+      "model": "NAYA-ORB-007",
+      "name": "Truth orb \u00b7 Demonstration"
+    },
+    {
+      "model": "NAYA-ORB-008",
+      "name": "Truth orb \u00b7 Claim"
+    },
+    {
+      "model": "NAYA-OVL-001",
+      "name": "Toast system"
+    },
+    {
+      "model": "NAYA-OVL-002",
+      "name": "Mini modal"
+    },
+    {
+      "model": "NAYA-OVL-003",
+      "name": "Share sheet"
+    },
+    {
+      "model": "NAYA-OVL-004",
+      "name": "Command palette"
+    },
+    {
+      "model": "NAYA-OVL-005",
+      "name": "Notification drawer"
+    },
+    {
+      "model": "NAYA-ROW-001",
+      "name": "Meta row"
+    },
+    {
+      "model": "NAYA-ROW-002",
+      "name": "Action row"
+    },
+    {
+      "model": "NAYA-ROW-003",
+      "name": "Menu item"
+    },
+    {
+      "model": "NAYA-ROW-004",
+      "name": "Method row"
+    },
+    {
+      "model": "NAYA-ICO-024",
+      "name": "App Tile \u00b7 Mail"
+    },
+    {
+      "model": "NAYA-ICO-025",
+      "name": "App Tile \u00b7 Pulse"
+    },
+    {
+      "model": "NAYA-ICO-026",
+      "name": "App Tile \u00b7 Hearth"
+    }
+  ]
+}

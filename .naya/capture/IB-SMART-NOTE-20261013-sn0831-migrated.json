@@ -1,0 +1,46 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0831",
+ "capture_id": "IB-SMART-NOTE-20261013-sn0831-migrated",
+ "title": "IB-SMART-NOTE-20261009-sn0831-case-only-filenames-collide",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "SYSTEM-INTELLIGENCE",
+ "subtopic": "CI-TRIAGE",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "source": {
+  "captured_at": "2026-10-13",
+  "captured_at_utc": "2026-10-13T08:44:13Z",
+  "source_type": "branch_projection_migration",
+  "source_reference": "PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/CROSS-PLATFORM-LOCALE/SN-0831/IB-SMART-NOTE-20261009-sn0831-case-only-filenames-collide.md",
+  "migration": "Commit B of Delta wave-48 repair; content preserved verbatim, draft footers stripped"
+ },
+ "projection": {
+  "publication_scope": "BRANCH_ONLY",
+  "category_slug": "SYSTEM-INTELLIGENCE"
+ },
+ "epistemic_state": "CANDIDATE",
+ "intelligence": {
+  "essence": "IB-SMART-NOTE-20261009-sn0831-case-only-filenames-collide",
+  "human_view": "# IB-SMART-NOTE-20261009-sn0831-case-only-filenames-collide\n\nIntelligent Block: SN-0831\nTruth state: CANDIDATE\nScope: PRIVATE\nCaptured: 2026-10-09\nCanonical intent: CAPTURE_DURABLE_INTELLIGENCE\n\n## IN A NUTSHELL\n\nNever ship two paths that differ only by case. The C4 cold-activation driver found `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.json` (new, PR #2067 lane) alongside main's `activation-checklist.json` — different files by case only. On macOS and Windows these are the same file: clones collide, checkouts overwrite, one of them silently wins. The fix is to rename before merge — check case-collision as part of any new-file review, regardless of which OS the builder runs.\n\n## HUMAN NOTE\n\nC4 driver run, 2026-10-09 ~15:30 PDT (Naya 4), full cold walk of the AGENTS.md boot sequence:\n\n\"Flag to checklist lane (not fixed here): PR #2067 adds `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.json` alongside main's `activation-checklist.json` — differ by case only, collide on macOS/Windows. Suggest renaming before merge.\"\n\nThe same run found and fixed five other gaps (duplicate section numbering, unlinked canonical docs, stale manifest pins, README with no activation front door, thinking curriculum not yet on main — PR #2070), but the case-collision was handed to the owning lane rather than fixed across a lane boundary.\n\nProvenance: NayaPOWER #1354 comment 6090301877 ([C4-DRIVER] Cold activation test, 2026-10-09T22:28:22Z).\n\n## CHILD NOTE\n\nTwo files with almost the same name — one with BIG letters, one with small letters — look different on one computer but are the same file on another computer. Only one of them survives, and the other one disappears quietly. Never make two names that close.\n\n## GRANDMA NOTE\n\nOn some computers, \"MyFile\" and \"myfile\" are two different things; on others, they're the same thing and one deletes the other without asking. Since the team can't control which computer anyone uses, the rule is simple: never give two files names that differ only in capital letters.\n\n## NAYA NOTE\n\nPractical enforcement:\n\n1. New-file review includes a mechanical case-collision check: `git ls-tree -r` folded to lowercase must have no duplicates, including against the base branch's tree.\n2. Don't fix across lane boundaries for another lane's unmerged artifact — flag it to the owner with the exact rename suggestion, as the C4 driver did.\n3. This is orthogonal to SN-0094 (cross-platform locale/encoding): that note is about bytes on disk; this is about names on disk. Both are \"works on my machine\" failures — attribute them to the OS, not the workspace.\n4. CI should eventually own this check (a case-folded duplicate-name gate), so the failure is caught before human review.\n\n## MACHINE NOTE\n\n```json\n{\n  \"sn\": \"SN-0831\",\n  \"truth_state\": \"CANDIDATE\",\n  \"doctrine\": \"never ship two paths differing only in case\",\n  \"concrete_case\": \"BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.json (PR #2067) vs activation-checklist.json (main)\",\n  \"collision_os\": [\"macOS\", \"Windows\"],\n  \"proposed_check\": \"lowercase-folded git ls-tree must be duplicate-free, PR vs base\",\n  \"related\": \"SN-0094 (cross-platform locale/encoding — sibling failure class)\",\n  \"lane_protocol\": \"flag to owner lane with exact rename suggestion; do not cross lane boundary\",\n  \"provenance\": \"NayaPOWER#1354/6090301877\"\n}\n```\n",
+  "simple_view": "IB-SMART-NOTE-20261009-sn0831-case-only-filenames-collide. Migrated verbatim from the branch projection; unratified branch capture.",
+  "naya_view": "Branch-era smart note preserved as a v2 capture. Source projection: BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/CROSS-PLATFORM-LOCALE/SN-0831/IB-SMART-NOTE-20261009-sn0831-case-only-filenames-collide.md.",
+  "ai_view": {
+   "note_id": "SN-0831",
+   "source": "branch_projection",
+   "status": "unratified"
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "source_projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/CROSS-PLATFORM-LOCALE/SN-0831/IB-SMART-NOTE-20261009-sn0831-case-only-filenames-collide.md",
+   "migrated_in": "PR #2468 Commit B (Naya Beta, wave 49)"
+  },
+  "raw_source": "# IB-SMART-NOTE-20261009-sn0831-case-only-filenames-collide\n\nIntelligent Block: SN-0831\nTruth state: CANDIDATE\nScope: PRIVATE\nCaptured: 2026-10-09\nCanonical intent: CAPTURE_DURABLE_INTELLIGENCE\n\n## IN A NUTSHELL\n\nNever ship two paths that differ only by case. The C4 cold-activation driver found `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.json` (new, PR #2067 lane) alongside main's `activation-checklist.json` — different files by case only. On macOS and Windows these are the same file: clones collide, checkouts overwrite, one of them silently wins. The fix is to rename before merge — check case-collision as part of any new-file review, regardless of which OS the builder runs.\n\n## HUMAN NOTE\n\nC4 driver run, 2026-10-09 ~15:30 PDT (Naya 4), full cold walk of the AGENTS.md boot sequence:\n\n\"Flag to checklist lane (not fixed here): PR #2067 adds `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.json` alongside main's `activation-checklist.json` — differ by case only, collide on macOS/Windows. Suggest renaming before merge.\"\n\nThe same run found and fixed five other gaps (duplicate section numbering, unlinked canonical docs, stale manifest pins, README with no activation front door, thinking curriculum not yet on main — PR #2070), but the case-collision was handed to the owning lane rather than fixed across a lane boundary.\n\nProvenance: NayaPOWER #1354 comment 6090301877 ([C4-DRIVER] Cold activation test, 2026-10-09T22:28:22Z).\n\n## CHILD NOTE\n\nTwo files with almost the same name — one with BIG letters, one with small letters — look different on one computer but are the same file on another computer. Only one of them survives, and the other one disappears quietly. Never make two names that close.\n\n## GRANDMA NOTE\n\nOn some computers, \"MyFile\" and \"myfile\" are two different things; on others, they're the same thing and one deletes the other without asking. Since the team can't control which computer anyone uses, the rule is simple: never give two files names that differ only in capital letters.\n\n## NAYA NOTE\n\nPractical enforcement:\n\n1. New-file review includes a mechanical case-collision check: `git ls-tree -r` folded to lowercase must have no duplicates, including against the base branch's tree.\n2. Don't fix across lane boundaries for another lane's unmerged artifact — flag it to the owner with the exact rename suggestion, as the C4 driver did.\n3. This is orthogonal to SN-0094 (cross-platform locale/encoding): that note is about bytes on disk; this is about names on disk. Both are \"works on my machine\" failures — attribute them to the OS, not the workspace.\n4. CI should eventually own this check (a case-folded duplicate-name gate), so the failure is caught before human review.\n\n## MACHINE NOTE\n\n```json\n{\n  \"sn\": \"SN-0831\",\n  \"truth_state\": \"CANDIDATE\",\n  \"doctrine\": \"never ship two paths differing only in case\",\n  \"concrete_case\": \"BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.json (PR #2067) vs activation-checklist.json (main)\",\n  \"collision_os\": [\"macOS\", \"Windows\"],\n  \"proposed_check\": \"lowercase-folded git ls-tree must be duplicate-free, PR vs base\",\n  \"related\": \"SN-0094 (cross-platform locale/encoding — sibling failure class)\",\n  \"lane_protocol\": \"flag to owner lane with exact rename suggestion; do not cross lane boundary\",\n  \"provenance\": \"NayaPOWER#1354/6090301877\"\n}\n```\n",
+  "decisions": [],
+  "connections": [],
+  "uncertainty": "Unratified branch capture; content preserved verbatim from the markdown projection, not independently verified.",
+  "applicability": "KNOW substrate; cold retrieval via registry + capture.",
+  "learning_lesson": "Branch-era smart notes must be migrated to v2 captures plus registry entries, or the vanish and registry-drift guards fail closed.",
+  "successor_effect": "Cold successors can retrieve this note through the registry and the v2 capture."
+ }
+}

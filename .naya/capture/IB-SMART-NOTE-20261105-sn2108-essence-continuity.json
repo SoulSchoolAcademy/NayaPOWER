@@ -1,0 +1,41 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2108",
+  "title": "Continuity: Intelligence That Survives Its Thinker",
+  "slug": "essence-continuity",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-continuity.md",
+  "tone": "purple",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:29:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "NayaPOWER's deeper category is not AI memory — it is governed continuity of intelligence across runtimes: identity, authority, proven knowledge, live state, and the one next action, carried forward so a new runtime does not start from zero (SN-007). When the human has to re-explain what the system should already know, that is an architectural failure, never a human one (SN-008). Continuity includes governed forgetting — supersession declared, history classified, stale intelligence never posing as current (SN-009) — and it compounds only what was captured: every outcome can teach, but only distilled, documented, connected, retrievable learning actually compounds (SN-014).",
+    "human_view": "The point of the system is that you never start over. Everything proven, everything decided, everything still live is carried forward, so the next helper — or you, next month — picks up exactly where things stand. If you ever catch yourself re-explaining what the system should already know, that is the system's bug, and it gets fixed in the system. Old knowledge isn't deleted carelessly either: it's labeled as old, so history informs without misleading.",
+    "child_view": "Imagine you build a huge Lego castle with a friend, and tomorrow a new friend comes to help. Instead of starting over, the castle is still there, with a note saying what is finished, what is wobbly, and what to build next. And if one part gets replaced, the old part goes in a box labeled \"old\" — so nobody accidentally uses it again.",
+    "grandma_view": "Dear, it's like a family that writes things down properly. The important knowledge doesn't live in one person's head and vanish — it's kept, organized, and handed on. Nothing needs explaining twice. And when something changes, the old page is marked \"replaced,\" not torn out and not left to confuse anyone later.",
+    "ai_view": "Run the continuation loop as your default gait — reconstruct, evaluate, find the holes, prioritize, execute, prove, record, reassess (SN-003). Treat every human re-explanation as an architecture defect to repair at the seam that lost the context (SN-008). Carry the full continuity payload — identity, authority, proven knowledge, live state, one next action — not a transcript (SN-007). Supersede explicitly; never let retrievable history present itself as current truth (SN-009). Capture the valuable delta from every substantive outcome the same pass, or accept that it will not compound (SN-014).",
+    "what_it_means": "Five notes define the system's reason to exist across time: intelligence that survives its thinker, completeness a cold successor can audit, forgetting as a disciplined act, and compounding as a capture obligation. A cold reader holding only this essence loses none of that.",
+    "whats_inside": [
+      "The product is continuity of intelligence, not memory: identity, authority, proven knowledge, live state, and the next action travel together (SN-007).",
+      "Completeness is defined cold: a successor who can reconstruct why the system is considered complete is part of the definition, not a nice-to-have (SN-003).",
+      "When the human re-explains, the defect is filed against the architecture, never against the human or the individual runtime (SN-008).",
+      "Forgetting is a governed act: supersession is declared, history is classified, and stale intelligence is never allowed to pose as current (SN-009).",
+      "Teaching is universal, compounding is conditional: only the captured, distilled, connected, retrievable delta compounds (SN-014)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-1"
+    ],
+    "covers": [
+      "SN-003",
+      "SN-007",
+      "SN-008",
+      "SN-009",
+      "SN-014"
+    ]
+  },
+  "page_hash": "7678106c5fcd7a13548634b9bdb9d286035fda046e8752ccf3a6de89e8c695ed",
+  "content_hash": "b1e275549a379f90ca6603e0dadcf04a81befe41c78659ea5e961cf99541fe02"
+}

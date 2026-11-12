@@ -1,0 +1,28 @@
+/* Smart Block CSS: comments/cmt-comment
+ * Source: gap-blocks-2/comments-blocks.md (harvested, never restyled)
+ * Catalog: NAYA-CMT-002
+ */
+
+/* Family token sheet — every rule below assumes these (copied once, scoped to the family root) */
+
+.cmt{--ground:#050507;--ink:#fff;--magenta:#e84fff;--purple:#a06bff;--indigo:#6675ff;--blue:#3fb8ff;--emerald:#35e0a1;--green:#2fe89e;--lime:#b8ee57;--gold:#ffbf3d;--orange:#ff9a5a;--red:#ff5e6c;--pink:#ed58cd;--ease:cubic-bezier(.16,.84,.22,1);--serif:Georgia,'Times New Roman',serif;background:var(--ground);color:var(--ink)}
+
+.cmt-one{max-width:620px;margin:0 auto;display:flex;gap:14px;background:linear-gradient(180deg,#141318,#08080c);
+border:1.5px solid rgba(255,255,255,.3);border-radius:20px;padding:20px;
+box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 14px 34px rgba(0,0,0,.65);
+transition:transform .28s cubic-bezier(.16,.84,.22,1),border-color .28s,box-shadow .28s}
+.cmt-one:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.55);
+box-shadow:inset 0 2px 2px rgba(255,255,255,.12),0 22px 48px rgba(0,0,0,.7),0 0 36px -12px rgba(160,107,255,.5)}
+.cmt-one .cmt-av{width:52px;height:52px;border-radius:14px}
+.cmt-one .cmt-av b{font-size:17px}
+.cmt-one .cmt-name{font-size:18px}
+.cmt-one .cmt-body{font-size:15px}
+.cmt-one .cmt-body.is-clamped{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.cmt-morebtn{background:none;border:1px solid rgba(255,255,255,.35);border-radius:999px;color:#fff;
+font-size:12px;letter-spacing:.08em;padding:8px 16px;min-height:44px;cursor:pointer;
+transition:all .18s cubic-bezier(.16,.84,.22,1)}
+.cmt-morebtn:hover{border-color:#a06bff;box-shadow:0 0 18px rgba(160,107,255,.5);transform:translateY(-1px)}
+.cmt-morebtn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.cmt-one .cmt-actions{margin-top:4px}
+.cmt-count{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.cmt-one,.cmt-morebtn{transition:none}}

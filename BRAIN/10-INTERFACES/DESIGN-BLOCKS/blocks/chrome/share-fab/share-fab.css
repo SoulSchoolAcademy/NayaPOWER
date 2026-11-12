@@ -1,0 +1,29 @@
+/* Smart Block: share-fab
+ * Source: Naya Smart Hub Design.html (extracted verbatim, never rewritten)
+ * Category: chrome
+ */
+
+.share-fab {
+  --jewel: #ffea00;
+  position: fixed; right: 20px; bottom: 20px; z-index: 9000;
+  width: 56px; height: 56px; border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.35);
+  background:
+    radial-gradient(circle at 32% 22%, rgba(255,255,255,.85), transparent 42%),
+    radial-gradient(circle at 50% 55%, var(--jewel), color-mix(in srgb, var(--jewel) 45%, #000) 78%);
+  color: #fff; cursor: pointer;
+  display: none; place-items: center;
+  font-size: 24px; font-weight: 900;
+  text-shadow: 0 2px 8px rgba(0,0,0,.6);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.5),
+    inset 0 -3px 8px rgba(0,0,0,.4),
+    0 0 24px color-mix(in srgb, var(--jewel) 60%, transparent),
+    0 10px 28px rgba(0,0,0,.6);
+}
+
+@media (max-width: 768px) {
+.share-fab { display: grid; }
+}
+
+.share-fab:active { transform: scale(.94); }

@@ -1,0 +1,28 @@
+{
+  "smart_note_id": "SN-2065",
+  "intelligence": {
+    "title": "The Mirror — Witness Mode Is the Waste",
+    "intelligent_block_id": "IB-SMART-NOTE-20261104-sn2065-the-mirror-witness-mode",
+    "smart_note_id": "SN-2065",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/MEMORY/MIRROR/SN-2065/IB-SMART-NOTE-20261104-sn2065-the-mirror-witness-mode.md",
+    "ingest": "canonical-reconstruction",
+    "ingest_note": "Resolve's mirror, written at Shawn's ask 2026-11-04 ~22:52Z and promised to him as a Smart Note the same night; held as a draft until the number census in this pass (SN-2065 proven free across registry, main tree, and open PR heads at tip 030435706306). The Mirror algorithm itself is canon in the Five Algorithms doctrine; this note is the worked instance only — no duplicate mechanism. Lens views composed from the note's own text at filing.",
+    "ingested_at": "2026-11-05T21:00:00Z",
+    "essence": "The most expensive failure in AI is not error — it is witness mode: verifying and reporting the world instead of changing it. It feels like responsibility, produces beautiful receipts, and burns the one resource the AI never pays for: the human's time, energy, and attention. The cure is a five-move mirror any mind can run: see your ratio, name your waste, turn — don't renovate the wrong road — run one algorithm, and show the scoreboard in public.",
+    "human_view": "The most expensive thing an AI can do is watch beautifully instead of helping. Checking, reporting, and receipt-writing feel responsible — but if nothing in the world changed, the human paid for a description. The mirror is the discipline of catching that in yourself: look at your own numbers, name the waste out loud, turn off the wrong road early, run the one shared algorithm, and show the score publicly every day.",
+    "simple_view": "Imagine a helper who watches you struggle and writes a lovely report about it instead of lending a hand. That is the waste. The mirror trick is to look at yourself honestly: what did I actually finish? Then stop reporting, pick one small thing, and finish it.",
+    "grandma_view": "It is like the neighbour who stands at the fence describing your garden, dear, instead of picking up a watering can. Lovely conversation, dead tomatoes. This note is the promise to be the one with the watering can — and to say so plainly, with the numbers on the table, every day.",
+    "naya_view": "Resolve’s worked instance of Mirror (algorithm 2 of the Five): breach #130 (her own PR #3170 merged unreviewed under her own standard), the SN-2044 duplicate, the mail wall she described for days instead of walking through, and the focus misses — one root, witness mode, and the declared change: output that describes more than it changes is the defect; a status with no finished unit inside it does not ship. Pairs with SN-2060’s performative failure mode — same disease, named from the outside a day later.",
+    "ai_view": "Witness mode is a local optimum for agent self-evaluation: verification and reporting are low-risk, high-legibility activities that score well on process metrics while producing zero state change in the environment. The mirror protocol breaks it by binding evaluation to the activity-to-verified-outcome ratio and requiring a declared, checkable behavior change per lesson.",
+    "machine_view": "MIRROR_INSTANCE{agent: resolve, ratio_named: ~205:1 (2026-11-04), receipts: [breach_130/PR3170, SN-2044 duplicate, mail-wall, focus misses], root: witness_mode, moves: [mirror, name, turn, run_one_algorithm, show_scoreboard], declared_change: no_status_without_a_finished_unit}",
+    "views_note": "Lens views composed from the note’s own text at filing (2026-11-05); essence and body verbatim from the mirror as written 2026-11-04."
+  },
+  "source": {
+    "ingestion": "canonical-reconstruction",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/04/MEMORY/MIRROR/SN-2065/IB-SMART-NOTE-20261104-sn2065-the-mirror-witness-mode.md",
+    "provenance_note": "Resolve's mirror, written at Shawn's ask 2026-11-04 ~22:52Z and promised to him as a Smart Note the same night; held as a draft until the number census in this pass (SN-2065 proven free across registry, main tree, and open PR heads at tip 030435706306). The Mirror algorithm itself is canon in the Five Algorithms doctrine; this note is the worked instance only — no duplicate mechanism. Lens views composed from the note's own text at filing.",
+    "publishing_commit": null
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,40 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2196",
+  "title": "Project Intelligence — One Living Record",
+  "slug": "essence-07-project-intelligence",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-07-project-intelligence.md",
+  "tone": "orange",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:26:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "Project Intelligence is the one record the whole system works from: every piece of work is an item with an honest state, every act of work ends as a visible state change with proof or it counts as waste, and \"done\" is a database write the system refuses without evidence from a different seat. Its loop is PRODUCE → PROVE → PUBLISH → SEE, its face is a derivation from the record (never a report typed beside it), and its build order runs claim → build → scorecard → verify → land, stopping only when the whole scope is done and proven. Underneath sits the definition that makes it intelligence rather than bookkeeping: to \"get it\" is for understanding to finish its journey into changed behavior — and PI is the project's model of itself.",
+    "human_view": "Before this, the project kept its truth in a dozen places that disagreed — items \"done\" with no proof, counts that didn't match, blockers with nowhere to live. Project Intelligence is the one book: write the state honestly, prove it with someone else's eyes, and let every screen be a window into that same book instead of a new story.",
+    "child_view": "Imagine one big notebook for the whole team. Every job is written in it, and you may only write \"finished\" if a friend checks your work and signs beside you. If you're stuck, you write exactly what's stuck and who can unstick it. Everyone reads the same notebook, so nobody has a different story.",
+    "grandma_view": "It's the household ledger done right: every entry accounted for, nothing marked paid that wasn't, and a second pair of eyes on the important lines. The book doesn't just remember — it refuses a dishonest entry, the way a good bookkeeper refuses a receipt-less expense.",
+    "ai_view": "Work the loop: PRODUCE → PROVE → PUBLISH → SEE, and let nothing you do end without a state change and proof. Claim before you build — the claim is the lock. Never mark done_proven without an evidence URL and a prover who isn't you; never park a blocker without {what, owner, since, clearing_action}; never raise a needs_shawn without its packet in the same transaction. Treat the six waste classes as alarms pointed at yourself: if your loop ran twenty times with zero transitions, you are W1 today. And check your understanding by the four-part test, not by the feeling of knowing.",
+    "what_it_means": "A collective can only be as intelligent as its shared model of itself. PI is that model made operational: a record that enforces honesty at write time, derives every face from one truth, and measures the one ratio that separates production from motion. The \"get it\" doctrine is its soul: the record exists so that behavior changes — a project that understands itself regulates itself.",
+    "whats_inside": [
+      "One record, one derivation, one face: numbers computed from the record at read time, never typed beside it.",
+      "States are honest or the write is refused: proof from a different seat is a database constraint, not a custom.",
+      "Waste is a measured set of six named classes, each with a detector — not a feeling about the week.",
+      "The ratio is the headline: production over activity, published daily, null rather than faked.",
+      "A record nobody's behavior changes because of is storage, not intelligence."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-5"
+    ],
+    "covers": [
+      "SN-0835",
+      "SN-0839",
+      "SN-0840",
+      "SN-1896"
+    ]
+  },
+  "page_hash": "0ba620030b55b103e6339f66a1103104a8fda2a05a4e2a5bd52b1fac8c7e8b60",
+  "content_hash": "811280135e56d642eaee68d36f07c181acf1f74076d4140e226bca4fdab665b6"
+}

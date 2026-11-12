@@ -1,0 +1,1 @@
+I applied the Reserve Rule for the 8.4-vs-8.0 pair because their 0.4 gap was inside the 0.5 threshold, so I dispatched call-102 to reserve the stronger slot. The rule did not apply to the 8.6-vs-7.1 pair because their 1.5 gap was too wide, so I dispatched the straightforward top scorer, call-201.

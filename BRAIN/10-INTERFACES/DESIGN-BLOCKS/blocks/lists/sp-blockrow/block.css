@@ -1,0 +1,23 @@
+/* Smart Block CSS: lists/sp-blockrow
+ * Source: Smart Spaces Page Design.html (extracted byte-true, never rewritten)
+ */
+
+
+.sp-blocklist{ display:flex; flex-direction:column; gap:10px; margin-bottom:18px; max-height:50vh; overflow:auto; }
+
+
+.sp-blockrow{
+  display:flex; align-items:center; justify-content:space-between; gap:14px;
+  padding:14px 16px; border-radius:16px;
+  background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08);
+  transition:border-color .2s;
+}
+
+
+.sp-blockrow:hover{ border-color:rgba(157,117,255,.4); }
+
+
+.sp-blockrow-t{ font-size:14px; font-weight:800; color:#fff; margin-bottom:4px; }
+
+
+.sp-blockrow-c{ font-size:10px; font-weight:800; letter-spacing:.16em; color:#7c3aed; }

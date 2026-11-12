@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2390",
+ "title": "The Joins Are the Page",
+ "slug": "the-joins-are-the-page",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2390/IB-SMART-NOTE-20261108-sn2390-the-joins-are-the-page.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "Ten notes about the Pricing page all say the same thing from different sides: the pieces are done, and the joins are what decide whether the page works. The nine Smart Links are proven — one real click moved the count from 110 to 111. The thank-you address lives in the PayPal account settings, not in any plan, and it must stay unset until the thank-you link is live. The thank-you page itself is blocked because the API it calls has no live host. A page is not done when its pieces are beautiful. It is done when the joins are proven.",
+  "human_view": "The ten source notes are SN-2341 (the banner, ten times better), SN-2342 (the thank-you address lives in account settings), SN-2343 (the tracking is wired — nine Smart Links proven), SN-2344 (the dashboard gauge fix), SN-2345 (the real portrait is in), SN-2346 (permission is revocable), SN-2347 (no dashes in domains), SN-2348 (the thank-you page is blocked on the API), SN-2349 (the calculator — the gauge is the hero), and SN-2350 (the entrance must be memorable). The design rounds made every piece better: the banner got its world-class statement, the portrait is her real face, the calculator's gauge is the hero, the entrance got its jewel pills. The system notes proved the plumbing: nine Smart Links mint to nine PayPal plans, each curl-verified, and one real click counted. But the same ten notes carry the gaps plainly: the thank-you page cannot ship until the API exists, the Auto Return URL must wait until the link is live, and the PayPal return is tracked as \"returned from PayPal\" — never payment-proven. Beauty in the pieces, honesty about the joins: that is the whole lesson.",
+  "child_view": "Imagine you build a beautiful toy car. It is shiny and fast-looking. But the wheels are not on. It will not roll. A page is like that car. The pretty parts are not enough. The parts must join up and work.",
+  "grandma_view": "A lovely shop window means nothing if the door is locked. The customer must be able to walk in, pay, and come back out with what they bought. Check the door, not just the window.",
+  "ai_view": "A page is a machine, and a machine is its connections. The pieces are the body; the joins are the life. Prove the joins, and the page is real. Admire the pieces and skip the joins, and you have a picture of a page, not a page.",
+  "what_it_means": "- Done means the whole path works: click the block, reach PayPal, pay, come back to the thank-you link, and see the return counted.\n- A setting that lives at account level (Auto Return) is set once, for everything — and only when the link it points to is live.\n- A page that calls an API that does not exist yet is a page with dead buttons, and dead buttons never ship.",
+  "whats_inside": [
+   "- Before any page is called done, prove every join live: the click, the destination, and the return — not just the piece that was changed.\n- Set the PayPal Auto Return URL only after the thank-you Smart Link is live, and only by his hand.\n- Never ship a page whose buttons call an API with no live host — stop, say so plainly, and name the blocker.\n- Keep the slug rule: no dashes in Smart Link slugs or worker names, from now on."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "434d9579cb897c72379b01bb850eab1754e5d20c4bf6dc05509c846cb7b69027",
+ "content_hash": "3d8d5ba2aa0cc40fc76cab7e93fa3266c4bf7272103e9a47ed25fe4f5b287be8",
+ "reconstructed_from_page": true
+}

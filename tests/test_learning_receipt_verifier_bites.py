@@ -24,8 +24,8 @@ import copy
 
 import pytest
 
-from tests.test_causal_learning_experiment_contract import verify_causal_learning_experiment_receipt
-from tests.test_independent_learning_influence import verify_learning_influence_receipt
+from test_causal_learning_experiment_contract import verify_causal_learning_experiment_receipt
+from test_independent_learning_influence import verify_learning_influence_receipt
 
 
 def _causal() -> dict:

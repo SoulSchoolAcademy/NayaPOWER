@@ -1,0 +1,24 @@
+/* Smart Block CSS: chat/cht-typing
+ * Source: gap-blocks-2/chat-blocks.md (harvested, never restyled)
+ * Catalog: NAYA-CHT-004
+ */
+
+/* Family token sheet — every rule below assumes these (copied once, scoped to the family root) */
+
+.chat{--ground:#050507;--ink:#fff;--bubble-in:#0e0e13;--bubble-out:#0d0a16;--purple:#a06bff;--gold:#ffbf3d;--magenta:#e84fff;--blue:#3fb8ff;--green:#2fe89e;--red:#ff5e6c;--serif:Georgia,'Times New Roman',serif;--ease:cubic-bezier(.16,.84,.22,1);--bpm:0.833s;background:var(--ground);color:var(--ink)}
+
+.chat-typing{display:flex;gap:10px;align-items:flex-end;margin:4px 0;max-width:760px}
+.chat-typing .chat-ava{flex:none;width:36px;height:36px;border-radius:50%;
+background:radial-gradient(circle at 35% 30%,#fff,#3fb8ff 42%,#050507 92%);
+border:1.5px solid rgba(255,255,255,.85);box-shadow:0 0 18px rgba(63,184,255,.5)}
+.chat-dots{display:flex;align-items:center;gap:8px;padding:16px 20px;border-radius:18px 18px 18px 6px;
+background:linear-gradient(180deg,#121218,#0a0a0f);border:1.5px solid rgba(255,255,255,.85);
+box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 8px 22px rgba(0,0,0,.55)}
+.chat-dots i{width:9px;height:9px;border-radius:50%;background:#fff;flex:none;
+box-shadow:0 0 10px rgba(255,255,255,.8);animation:chat-breathe .833s ease-in-out infinite}
+.chat-dots i:nth-child(2){animation-delay:.208s}
+.chat-dots i:nth-child(3){animation-delay:.416s}
+@keyframes chat-breathe{0%,100%{transform:scale(.72);opacity:.45}50%{transform:scale(1.12);opacity:1}}
+.chat-typing .who{font-size:12px;color:#fff;opacity:.7;margin-top:5px;letter-spacing:.04em}
+.chat-typing[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){.chat-dots i{animation:none;opacity:.85;transform:none}}

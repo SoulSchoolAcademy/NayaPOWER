@@ -1,0 +1,33 @@
+{
+ "intelligence": {
+  "ai_view": "The envelope is the identity-preservation contract for intelligence in motion: provenance attached, fields fail-closed on unknown, one canonical identity, no shadow stores.",
+  "essence": "A Naya Intelligence Object (NIO) is the machine-addressable envelope through which a meaningful intelligence object moves through NayaPOWER without losing identity, provenance, state, governance, or intended use. It is an object CONTRACT — not a new database, not a new intelligence layer. Every NIO exposes a 20-field envelope; fields may be absent when genuinely unknown, but they must NEVER be fabricated. Nine canonical types: EXPERIENCE, EVENT, INTELLIGENCE, RULE, DECISION, ACTION, OUTCOME, EVIDENCE, LEARNING.",
+  "grandma_view": "It's an envelope for anything clever the system handles, dear — with all the important facts written on the outside: what it is, where it came from, who stands behind it. You may leave a line blank when you truly don't know, but you must never invent an answer.",
+  "human_view": "Imagine a sealed courier pouch for anything the system learns or decides. The pouch has 20 printed labels — what it is, where it came from, what it's for, who vouches for it. You may leave a label blank when you honestly don't know. What you may never do is write something on a label you made up — a fabricated field poisons every downstream decision that trusts the pouch.",
+  "ingest": "door-filing",
+  "ingest_note": "Distilled from live bytes of NAYANODE/0006-NIO-INTELLIGENCE-OBJECT-MODEL-V1.md by Naya Beta (w738, 2026-10-23T02:12Z) and held staged in hidden_files/know/distill-slice3-0006-nio-envelope.md; door-filed by Naya Beta (w798, 2026-10-23T16:55Z) with the capture built from the staged distill at the live tip. No runtime provenance invented; no fields fabricated beyond the staged distill.",
+  "ingested_at": "2026-10-23",
+  "intelligent_block_id": "IB-SMART-NOTE-20261023-sn1854-nio-envelope",
+  "machine_view": {
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "nio_envelope: [nio_id, nio_type, version, status, owner_scope, source, meaning, intent, truth_state, authority_context, applicability, freshness, relationships, evidence, event_lineage, application_history, outcome, verification, learning_state, successor_context]. field_rule: absent-when-unknown, NEVER fabricated. nio_types: [EXPERIENCE, EVENT, INTELLIGENCE, RULE, DECISION, ACTION, OUTCOME, EVIDENCE, LEARNING]. lifecycle: CREATE → VALIDATE → GOVERN → INDEX → RETRIEVE → APPLY → OBSERVE → VERIFY → LEARN → COMPOUND → SUCCESSOR. storage_rule: no nio-database/ledger/memory/retrieval-engine — canonical persistence is Intelligent Blocks + Events. identity_rule: one stable canonical identity + explicit versioning; aliases are routing conveniences, never new identities. authority_rule: a machine may not infer authority from the NIO itself.",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/SN-1854/IB-SMART-NOTE-20261023-sn1854-nio-envelope.md",
+   "sn": "SN-1854",
+   "title": "IB-SMART-NOTE-20261023-sn1854-nio-envelope",
+   "truth_state": "CANDIDATE"
+  },
+  "naya_view": "Wrap every intelligence object in the envelope and fill only what you can evidence. Leave the rest blank — loudly blank, not silently guessed. Reference the one stable canonical identity; never mint a new one for a routing alias. Let invalid objects stop at validation/governance — never hand-carry them past the boundary. Never infer authority from the envelope itself.",
+  "simple_view": "Think of a lunchbox with your name on it and a note inside saying who packed it, what's in it, and who it's for. If the note says something that isn't true, someone could get the wrong lunch. Never write a lie on the lunchbox note.",
+  "smart_note_id": "SN-1854",
+  "title": "IB-SMART-NOTE-20261023-sn1854-nio-envelope",
+  "views_note": "Views derived 2026-10-23 from the staged distill (distill-slice3-0006-nio-envelope.md), itself distilled from live bytes of NAYANODE/0006 at the live tip; derivation is traceable, not from memory."
+ },
+ "lifecycle_state": "ACTIVE",
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-1854",
+ "source": {
+  "ingestion": "door-filing",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/SN-1854/IB-SMART-NOTE-20261023-sn1854-nio-envelope.md",
+  "provenance_note": "Door-filed by Naya Beta (w798, 2026-10-23T16:55Z) under the intelligence door (adds-only): capture + projection + registry entry + brain-index regen landed in the same push. Source distill staged by Naya Beta (w738) with pinned source bytes (tip 88a7bc4568424170eed091650dfddee1e315643d, blob f4ee0888fcdea51c62395927e119cd15ae511b9a)."
+ }
+}

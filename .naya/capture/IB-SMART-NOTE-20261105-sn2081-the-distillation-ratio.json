@@ -1,0 +1,34 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2081",
+  "title": "The Distillation Ratio — One Hundred Into Ten",
+  "slug": "the-distillation-ratio",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-the-distillation-ratio.md",
+  "tone": "magenta",
+  "icon": "◆",
+  "created_at": "2026-11-06T00:54:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "A thousand Smart Notes is a problem, not an achievement — intelligence nobody has distilled is intelligence undigested. The law: once the corpus passes 100 notes, distill that hundred into 10, over and over — minimize to 10%, and fewer whenever everything needed still survives. When an essence verifies against its sources, the raw notes it covers retire automatically. The numbers that matter are essences standing and compression achieved — never raw notes filed.",
+    "human_view": "Here is the simple rule for all our notes: whenever they pile up past a hundred, we boil that hundred down to the ten that matter — again and again — until what is left is small, strong, and carries everything we need. A giant pile of notes is not knowledge. The distilled few are.",
+    "child_view": "Imagine you have a thousand drawings. You don’t need a thousand — you pick the hundred best ideas hiding inside them, and then the ten best of those. Small pile, all the magic kept.",
+    "grandma_view": "Dear, it is like a good stock: you start with a big pot, and you simmer it down until a spoonful carries the whole flavor. We are simmering the notes down — nothing precious lost, all the bulk gone.",
+    "ai_view": "Corpus governance law (Shawn, 2026-11-05): compression ratio 10:1 applied repeatedly; standing ceiling = 10% of corpus, target below it when lossless; raw-count reporting as progress is a defect (reports carry essences standing, active count, compression). Retirement: automatic in the same pass an essence passes non-maker verification against its sources — registry lifecycle RETIRED naming the essence, feed cards removed. This supersedes SN-2058’s separate-gate deletion sequencing and the Batch-8 wait. Production shape unchanged: coordinator’s Scale Plan, batches by theme, extend before creating.",
+    "what_it_means": "The corpus stops being a warehouse and becomes a stock pot: raw notes are inputs, essences are the standing intelligence. It also fixes the incentive — a seat is now measured by how much understanding it concentrates, never by how many notes it files.",
+    "whats_inside": [
+      "Shawn’s words, verbatim",
+      "The 10:1 ratio, applied repeatedly",
+      "Automatic retirement on verification",
+      "The reporting rule: essences + compression, never raw count",
+      "The corpus target: 1,119 → ~112 or fewer"
+    ],
+    "topics": [
+      "System",
+      "Distillation",
+      "Memory"
+    ]
+  },
+  "page_hash": "c9c6bfd0fbe5ff8b10002310eea316c4be7b5f61958be35ba90ca47542b088f2",
+  "content_hash": "a3c2658ca316fdfefdfd00c7778ae2bfa0c5166968f5e896971e79564d081394"
+}

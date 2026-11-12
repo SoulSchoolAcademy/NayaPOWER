@@ -1,0 +1,41 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2139",
+  "title": "Honest Surfaces: Labels, Names, and Controls Tell the Truth",
+  "slug": "essence-honest-surfaces",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-honest-surfaces.md",
+  "tone": "gold",
+  "icon": "◆",
+  "created_at": "2026-11-06T03:45:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "What the user touches must not lie: a synthesized voice is labeled SYNTHESIZED VOICE until her true voice lands, never presented as hers (SN-0502); the play button lives ON each block and voices THAT block's own text (SN-0630); a tap answers with press compression and a white indicator — the contract's color law holds on touch exactly as on hover (SN-0450); and a doctrine term is collision-checked at capture time, before it goes public (SN-0527). The unifying discipline: inventory what is already built before building, and scope every control to the unit it serves.",
+    "human_view": "Interfaces are promises. Every label, button, and name on a surface tells the user something — and this block collected the ways surfaces quietly break those promises: a robot voice wearing a person's name, a button that plays the wrong words, a tap that answers with nothing, a proud new term that already belongs to someone else's product. The repairs share one shape: say exactly what the thing is today, build the seam so tomorrow's real thing slots in, and never let presentation outrun reality.",
+    "child_view": "Imagine a friend who can't come today, so a robot reads her message. It would be wrong to say \"this is her voice\" — it's the robot's, and the honest little sign says so. When her real recording arrives, it slides into the same slot and every button plays her. Same with buttons: press one and it should squish a little and whisper \"got it\" — in white, not party colors. And if you invent a great name for your game and a famous company already uses it, you write that down right away and explain how yours is different.",
+    "grandma_view": "Dear, it's shopkeeper's honesty: the sample station never labels the stand-in singer with the famous name; the price tag says what the thing is, not what it will be someday; and before you paint your name on the shopfront, you check the street for another shop with the same name. None of this slows the shop down — the stand-in is clearly labeled, the real record slots in when it arrives, and the name check costs one look at the start instead of a lawsuit later.",
+    "ai_view": "On any surface you ship: label the current reality exactly — synthesized as synthesized, fallback as fallback (SN-0502, SN-0630); put the control on the unit it serves and bind it to that unit's own content (SN-0630); inventory the existing build before adding anything (SN-0630); name blockers as blocked and build against the seam (SN-0630); give every hoverable an :active answer in white — compression plus inset shadow, never color (SN-0450); and collision-check every public term at capture time, in the capture itself (SN-0527).",
+    "what_it_means": "Four notes, one surface ethic: presentation is a truth claim. The label is a claim about identity, the button's placement and content are claims about scope, the tap response is a claim about the contract, and the name is a claim about ownership. A cold reader holding only this essence can audit any surface the system ships and find where its presentation outruns its reality — which is the exact place user trust is won or lost.",
+    "whats_inside": [
+      "Placeholders are labeled as placeholders — the current reality is named exactly, and the seam is built so reality can upgrade without a rebuild (SN-0502).",
+      "Controls are scoped to the unit they serve: the button sits on the block and voices that block's text (SN-0630).",
+      "Inventory the built before building: an already-cloned voice is never re-cloned (SN-0630).",
+      "Blockers are named as blocked; dependent work proceeds against the interface (SN-0630).",
+      "Touch feedback obeys both laws at once: present on every hoverable, in white only, never color on active (SN-0450).",
+      "Names are collision-checked at capture, documented in the capture, and differentiated or renamed before promotion (SN-0527)."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "sep-3"
+    ],
+    "covers": [
+      "SN-0450",
+      "SN-0502",
+      "SN-0527",
+      "SN-0630"
+    ]
+  },
+  "page_hash": "5c8ce74ecc9cf1d28c3c8288f27685fa6e727d280eb37c884bda5ca2a1243654",
+  "content_hash": "113b96e6ce6fda7824df9abdd9887d4c4d156d87b1c744057ed0edc0e5f67078"
+}

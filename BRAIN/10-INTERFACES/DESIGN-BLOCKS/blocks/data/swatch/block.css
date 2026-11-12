@@ -1,0 +1,16 @@
+/* Smart Block: data/swatch
+ * Source: Naya Design Element Set N4.html (byte-true extraction, not rewritten)
+ * Type: data
+ * Extracted: 2026-10-09
+ */
+
+/* Re-scoped from `.job .swatch` to `.swatch` — `.job` was only N4's specimen
+ * wrapper, not part of the component. Declaration blocks verbatim. */
+.swatch{width:100%; height:44px; border-radius:10px; margin-bottom:12px;
+  border:1.5px solid rgba(255,255,255,.45);
+  box-shadow:0 8px 22px rgba(0,0,0,.55), 0 0 20px rgba(255,255,255,.18), inset 0 1px 0 rgba(255,255,255,.5), inset 0 -4px 10px rgba(0,0,0,.35);
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease);}
+
+.swatch:hover{transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.6), 0 0 28px rgba(255,255,255,.28), inset 0 1px 0 rgba(255,255,255,.6), inset 0 -4px 10px rgba(0,0,0,.3);}
+
+/* Dependency: --ease motion curve. */

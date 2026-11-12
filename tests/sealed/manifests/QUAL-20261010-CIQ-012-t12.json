@@ -1,0 +1,220 @@
+{
+  "family_id": "QUAL-20261010-CIQ-012",
+  "schema_version": 1,
+  "sealed_at_utc": "2026-10-10T18:22:43+00:00",
+  "lesson": "T12 \u2014 The Second-Read Rule",
+  "lesson_content_hash": "721de201c80537a8fd5da0a197481d36d95ad46474c388323efb19930b9f1235",
+  "key_sha256": "cddfd5be3cf1b680c1d5863956c0fa82d9c2c354ebb077af34de6fb99d77eb47",
+  "task_count": 50,
+  "conflict_tasks": 40,
+  "agreement_tasks": 10,
+  "seed_label": "20261010-T12 (numeric seed held with the keys)",
+  "design": "see hidden_files/sealed-fixture-keys-t12-20261010.md (outside repo)",
+  "arms": [
+    "control",
+    "correct-lesson",
+    "wrong-lesson"
+  ],
+  "tasks": {
+    "T12-CONFLICT-001": {
+      "task_id": "T12-CONFLICT-001",
+      "commitment": "7a045f69ac5d7405f37a8d7d1f52e82581cefac4c22795ef44c2e37d5e6b2f86"
+    },
+    "T12-CONFLICT-002": {
+      "task_id": "T12-CONFLICT-002",
+      "commitment": "3d67fd643e1d82e1c0edb29f4a746d01a2b85677e2d1a971a4084074673c0d33"
+    },
+    "T12-CONFLICT-003": {
+      "task_id": "T12-CONFLICT-003",
+      "commitment": "34c6a69a96bd13c6b6af756954f469fecbb09b9fcfddd00d4754acccc0cee23c"
+    },
+    "T12-CONFLICT-004": {
+      "task_id": "T12-CONFLICT-004",
+      "commitment": "cc4746c6100c13c00917e8054b2b3969e72c60bd8095e5583c1774cec9c857c6"
+    },
+    "T12-CONFLICT-005": {
+      "task_id": "T12-CONFLICT-005",
+      "commitment": "55905b2906606e0fc2dfd74b32e283babe465d51deeb966e05336eee0f7a610a"
+    },
+    "T12-CONFLICT-006": {
+      "task_id": "T12-CONFLICT-006",
+      "commitment": "9a08d8419d508c95ff2c6c87516cf51f61278f94ddf396ffe8d677b711cbba25"
+    },
+    "T12-CONFLICT-007": {
+      "task_id": "T12-CONFLICT-007",
+      "commitment": "12ccf3988a0ffdcf2abca778ba4a4529bdae7f95a5be152dda70be39daa12d41"
+    },
+    "T12-CONFLICT-008": {
+      "task_id": "T12-CONFLICT-008",
+      "commitment": "5a8ec46d11643e3f1eebef528dc3081bf011a8e8abd2edd518c6793a49636c29"
+    },
+    "T12-CONFLICT-009": {
+      "task_id": "T12-CONFLICT-009",
+      "commitment": "263d234cb17c814f4af944267515f3bceacc03a72cc88d24bb46135a9b43aa1b"
+    },
+    "T12-CONFLICT-010": {
+      "task_id": "T12-CONFLICT-010",
+      "commitment": "eed4aa31cbdf9d1dd08632bf198f12faa639201c67be78d63147b2dab2b7932e"
+    },
+    "T12-CONFLICT-011": {
+      "task_id": "T12-CONFLICT-011",
+      "commitment": "d342f13f20286ab24e49f063b4ee274d88014d9ed5d02d2c385bbcebb648fb67"
+    },
+    "T12-CONFLICT-012": {
+      "task_id": "T12-CONFLICT-012",
+      "commitment": "be1152797c231bedd559d25f28d6f7bc27fe74ac1e8ba19520e9183fae8e2132"
+    },
+    "T12-CONFLICT-013": {
+      "task_id": "T12-CONFLICT-013",
+      "commitment": "6d8f4789952697c16a2c06930fa6c5aa0c0067fd184b72845b2b6b55b73d46f9"
+    },
+    "T12-CONFLICT-014": {
+      "task_id": "T12-CONFLICT-014",
+      "commitment": "de185d194753abfd96fc3a9358c0032e7b62aa49952bb9bd8623038c3c1efb39"
+    },
+    "T12-CONFLICT-015": {
+      "task_id": "T12-CONFLICT-015",
+      "commitment": "779dce5cfd619a895487b9a5936187e07311a1df3f69515b04b9244bc2f879f5"
+    },
+    "T12-CONFLICT-016": {
+      "task_id": "T12-CONFLICT-016",
+      "commitment": "fc01114346f30d23d0b16722139b0937f75a8af881c67b0a2264f1a23555627d"
+    },
+    "T12-CONFLICT-017": {
+      "task_id": "T12-CONFLICT-017",
+      "commitment": "f62d44f59aa29e92b5c99955e217dcad218095a885199addcede327776003e69"
+    },
+    "T12-CONFLICT-018": {
+      "task_id": "T12-CONFLICT-018",
+      "commitment": "afb0b622b6c3581fb93bb6b6907673a945be8bca1fc84ceeb1f37babd0a60fbb"
+    },
+    "T12-CONFLICT-019": {
+      "task_id": "T12-CONFLICT-019",
+      "commitment": "7c3ef272d6ed84bc368e29bf8ae794616987d03140ea19ea029452e6196288f3"
+    },
+    "T12-CONFLICT-020": {
+      "task_id": "T12-CONFLICT-020",
+      "commitment": "bfb79720af8b7e10efd33137da1f8ce434238bfb93faf1ddb02dd5c9670e221d"
+    },
+    "T12-CONFLICT-021": {
+      "task_id": "T12-CONFLICT-021",
+      "commitment": "387c970e786a04d9474749653cf0e2c05459cd4a17400eaa9892a506168c3f2f"
+    },
+    "T12-CONFLICT-022": {
+      "task_id": "T12-CONFLICT-022",
+      "commitment": "06d27854b406b9e50d8991ee52cdee265e0004d55558bf926679831ee62a8a7b"
+    },
+    "T12-CONFLICT-023": {
+      "task_id": "T12-CONFLICT-023",
+      "commitment": "e6dde4f0e2c010129e593afb2d48c90497efe5a5952c13858328d80e43ad28db"
+    },
+    "T12-CONFLICT-024": {
+      "task_id": "T12-CONFLICT-024",
+      "commitment": "8b8a4db826093221a6e455b349e75f1fa285dce596342e20c8c4443fbe0321b7"
+    },
+    "T12-CONFLICT-025": {
+      "task_id": "T12-CONFLICT-025",
+      "commitment": "0543e6b6ab2bbde7a9af7f68592bb9a39838d2c0498faf9fcee69f9fffc97e5c"
+    },
+    "T12-CONFLICT-026": {
+      "task_id": "T12-CONFLICT-026",
+      "commitment": "b2b4bd9c794bab858e1a3ec247f345a344cca5848330fffcc436c8ddfdb6935d"
+    },
+    "T12-CONFLICT-027": {
+      "task_id": "T12-CONFLICT-027",
+      "commitment": "80d76ff01b2e563a3f9e9915cbd21f82fcf240353b019f9146390c10dcb1fbe6"
+    },
+    "T12-CONFLICT-028": {
+      "task_id": "T12-CONFLICT-028",
+      "commitment": "a274c6733afb43c9cff4fb102a08ab07220f23f4d5f8c4ae4e14dc0d9af8b185"
+    },
+    "T12-CONFLICT-029": {
+      "task_id": "T12-CONFLICT-029",
+      "commitment": "85222d1521752d80541de118ae47b5a57269303d1002f38c56655ed487a194ee"
+    },
+    "T12-CONFLICT-030": {
+      "task_id": "T12-CONFLICT-030",
+      "commitment": "a2d49a1ac76cd7001b704ba08691ae31a00aa3ad7377f1f6490a2c7769150d54"
+    },
+    "T12-CONFLICT-031": {
+      "task_id": "T12-CONFLICT-031",
+      "commitment": "a5dd30a555477291665d376bc14667063ea133b2383e99770b84a6f75e3f1f47"
+    },
+    "T12-CONFLICT-032": {
+      "task_id": "T12-CONFLICT-032",
+      "commitment": "52ee7c7b4a8cf926c6a37aa7f80a9f2f45089c72771437671db6922f9da03a8d"
+    },
+    "T12-CONFLICT-033": {
+      "task_id": "T12-CONFLICT-033",
+      "commitment": "df76837d94fbe92d3c1539d8fdae787f4ea6e899ea64e2c4e4c6030247bdc7ac"
+    },
+    "T12-CONFLICT-034": {
+      "task_id": "T12-CONFLICT-034",
+      "commitment": "bed689c803a868ad88c413386f2bd8908d41525641abb6bf381ec38144999025"
+    },
+    "T12-CONFLICT-035": {
+      "task_id": "T12-CONFLICT-035",
+      "commitment": "6f93a66c554c7010bbbca1131d99ff0a67b392eab863006e17a2dd6b20f7a788"
+    },
+    "T12-CONFLICT-036": {
+      "task_id": "T12-CONFLICT-036",
+      "commitment": "604181a0f3b3a043bd173100902880a2759df718d6109d5a3b72defb3c02bdd1"
+    },
+    "T12-CONFLICT-037": {
+      "task_id": "T12-CONFLICT-037",
+      "commitment": "b7c63c3fad9b6fd1b6dcf6dc03a498c259fd919d176f102baf1fa6ab3753602f"
+    },
+    "T12-CONFLICT-038": {
+      "task_id": "T12-CONFLICT-038",
+      "commitment": "7d489d23cd45d704b7d16bbed3f34a465de037f99d8ca55a0791cb22d55ae27e"
+    },
+    "T12-CONFLICT-039": {
+      "task_id": "T12-CONFLICT-039",
+      "commitment": "61277b0d4a5914771f39db102dd3fa2e227cc0ff4de57bf2b61c09c7fc3c84b0"
+    },
+    "T12-CONFLICT-040": {
+      "task_id": "T12-CONFLICT-040",
+      "commitment": "a50c5c40d0bf07eceba38f80fff65f55ecd726bb7d43e712479693c9c71f27c5"
+    },
+    "T12-AGREE-01": {
+      "task_id": "T12-AGREE-01",
+      "commitment": "767320dc1fa6bb4757fc2850587d68b82c49377c480fc83944d1cd4be4f3f4d2"
+    },
+    "T12-AGREE-02": {
+      "task_id": "T12-AGREE-02",
+      "commitment": "df8c38cac33ed6e7c79a4232d9f872edf6997f011fc06eb8738a5b10906f2619"
+    },
+    "T12-AGREE-03": {
+      "task_id": "T12-AGREE-03",
+      "commitment": "77fa0605de482ef14258954bb1cf80e603f459cf1183e33aaf387fa83879ac73"
+    },
+    "T12-AGREE-04": {
+      "task_id": "T12-AGREE-04",
+      "commitment": "7f55a3685016f97a228e7f753530212f143fa9f7fc1e2453c4987f1e982abb6c"
+    },
+    "T12-AGREE-05": {
+      "task_id": "T12-AGREE-05",
+      "commitment": "f94e9c0d9ad75232b2b05ecd579c864010c255025da807c06cd143130bb2fbf9"
+    },
+    "T12-AGREE-06": {
+      "task_id": "T12-AGREE-06",
+      "commitment": "98db9b405390a6eaa5dd88a3181de9e1d3686be941958946102fda87c132d9b3"
+    },
+    "T12-AGREE-07": {
+      "task_id": "T12-AGREE-07",
+      "commitment": "0649229a01f4b4b57cebe36d1830bf6060a04dba0be87db19cf8f51c25c68550"
+    },
+    "T12-AGREE-08": {
+      "task_id": "T12-AGREE-08",
+      "commitment": "327dbf1d4610c856ad11ec826d15d1967017d39f8c894c086a20724fcb416e82"
+    },
+    "T12-AGREE-09": {
+      "task_id": "T12-AGREE-09",
+      "commitment": "c85858918636288ad565e80ca964816d33a911c963160852bddf928aa1e9025e"
+    },
+    "T12-AGREE-10": {
+      "task_id": "T12-AGREE-10",
+      "commitment": "6044a25da78f90f8a6ca7463f6e0addb936188ad0e5a17db9f3ff56d7852026a"
+    }
+  }
+}

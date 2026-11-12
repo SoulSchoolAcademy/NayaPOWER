@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>forms/color-picker — Smart Block Specimen</title>
+<link rel="stylesheet" href="color-picker.css">
+<style>
+  body{ background:#050507; color:#F8F7FB; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    margin:0; padding:32px 20px; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:420px; margin:0 auto; }
+  h1{ font-size:24px; margin:0 0 6px; }
+  .sub{ font-size:14px; color:rgba(248,247,251,.55); margin:0 0 28px; }
+  .cap{ font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:.12em;
+    color:rgba(248,247,251,.55); margin:28px 0 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>forms / color-picker</h1>
+  <p class="sub">Tap a swatch or type a hex and press Enter. Custom swatches append to the grid.</p>
+
+  <div class="cap">Live block</div>
+  <div class="cp-wrap" data-cp>
+    <div class="cp-readout">
+      <p class="cp-name">Soul Purple</p>
+      <p class="cp-hex">#a06bff</p>
+    </div>
+    <div class="cp-grid" role="radiogroup" aria-label="Colors">
+      <button type="button" class="cp-swatch" aria-label="Magenta" data-name="Magenta" data-hex="#e84fff"
+        style="--cp-hi:#ffa6f7;--cp-c:#e84fff;--cp-lo:#5c115f;--cp-glow:rgba(232,79,255,.6)"></button>
+      <button type="button" class="cp-swatch cp-selected" aria-label="Soul Purple" data-name="Soul Purple" data-hex="#a06bff"
+        style="--cp-hi:#d2b3ff;--cp-c:#a06bff;--cp-lo:#33166b;--cp-glow:rgba(160,107,255,.6)"></button>
+      <button type="button" class="cp-swatch" aria-label="Pulse Blue" data-name="Pulse Blue" data-hex="#3fb8ff"
+        style="--cp-hi:#a5e0ff;--cp-c:#3fb8ff;--cp-lo:#0d3c55;--cp-glow:rgba(63,184,255,.6)"></button>
+      <button type="button" class="cp-swatch" aria-label="Verdant" data-name="Verdant" data-hex="#2fe89e"
+        style="--cp-hi:#a5f5d1;--cp-c:#2fe89e;--cp-lo:#0d4a33;--cp-glow:rgba(47,232,158,.6)"></button>
+      <button type="button" class="cp-swatch" aria-label="Solar Gold" data-name="Solar Gold" data-hex="#ffbf3d"
+        style="--cp-hi:#ffe0a6;--cp-c:#ffbf3d;--cp-lo:#5f430c;--cp-glow:rgba(255,191,61,.6)"></button>
+      <button type="button" class="cp-swatch" aria-label="Abyss Teal" data-name="Abyss Teal" data-hex="#2fd8d0"
+        style="--cp-hi:#a2f0ec;--cp-c:#2fd8d0;--cp-lo:#0c4644;--cp-glow:rgba(47,216,208,.6)"></button>
+      <button type="button" class="cp-swatch" aria-label="Ember Coral" data-name="Ember Coral" data-hex="#ff6b5e"
+        style="--cp-hi:#ffb3ab;--cp-c:#ff6b5e;--cp-lo:#5f1a15;--cp-glow:rgba(255,107,94,.6)"></button>
+      <button type="button" class="cp-swatch" aria-label="Nova Lime" data-name="Nova Lime" data-hex="#b8f53d"
+        style="--cp-hi:#dcfba3;--cp-c:#b8f53d;--cp-lo:#445e0f;--cp-glow:rgba(184,245,61,.6)"></button>
+      <button type="button" class="cp-swatch" aria-label="Deep Indigo" data-name="Deep Indigo" data-hex="#5b6cff"
+        style="--cp-hi:#aab4ff;--cp-c:#5b6cff;--cp-lo:#182052;--cp-glow:rgba(91,108,255,.6)"></button>
+      <button type="button" class="cp-swatch" aria-label="Glacier White" data-name="Glacier White" data-hex="#f8f7fb"
+        style="--cp-hi:#ffffff;--cp-c:#f8f7fb;--cp-lo:#8a8f9e;--cp-glow:rgba(248,247,251,.45)"></button>
+      <button type="button" class="cp-swatch" aria-label="Void Black" data-name="Void Black" data-hex="#0b0d12"
+        style="--cp-hi:#3a3d4a;--cp-c:#0b0d12;--cp-lo:#000000;--cp-glow:rgba(160,107,255,.35)"></button>
+    </div>
+    <div class="cp-custom">
+      <input class="cp-hex-input" type="text" placeholder="#a06bff" maxlength="7" aria-label="Custom hex color">
+      <span class="cp-custom-label">press Enter for custom</span>
+    </div>
+  </div>
+
+  <div class="cap">Event readout (cp-change detail)</div>
+  <p class="sub" id="evt">No selection yet — last event detail appears here.</p>
+</div>
+<script src="color-picker.js"></script>
+<script>
+  document.addEventListener('cp-change', function(e){
+    document.getElementById('evt').textContent = 'cp-change: ' + e.detail.name + ' ' + e.detail.hex;
+  });
+</script>
+</body>
+</html>

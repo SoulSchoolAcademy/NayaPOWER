@@ -1,6 +1,6 @@
 # 🔱 NayaPOWER — Master Design Contract V1
 
-**STATUS:** PROPOSED CANONICAL — HUMAN DIRECTOR RATIFICATION REQUIRED  
+**STATUS:** CANONICAL — ratified by Shawn Vibert (Human Director), 2026-10-22, as part of the Factory Contract-Home program (A.1 stamp + canonical-set declaration).  
 **AUTHORITY:** Human Director  
 **SCOPE:** All NayaPOWER, NayaNET, Naya execution contexts, intelligence objects, interfaces, implementations, and successors.
 

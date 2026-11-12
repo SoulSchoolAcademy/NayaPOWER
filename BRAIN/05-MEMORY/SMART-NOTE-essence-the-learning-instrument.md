@@ -1,0 +1,63 @@
+# SN-2160 — The Learning Instrument: Transfer Is Proven Only When the Lesson Could Not Be Derived
+
+**Status: VERIFIED ESSENCE — VERIFIED (verifier-oct-2, block PASS).** Distilled from 7 raw notes by the oct-2 maker seat; independently verified by a different seat. Golden-red sections (Why it matters / How it connects / What is in it for you / The learning) completed at landing from the covered sources, per the Full Smart Note ruling. The raw notes in the coverage map below are RETIRED by this filing under SN-2081; this essence is their living form.
+
+## Essence
+
+The learning program's hardest discovery is that most of its null results were instrument failures, not learning failures — and mapping those failures is what finally made the instrument trustworthy. Novel-domain transfer trials kept invalidating, and each invalidation taught a design rule. Trial-09 leaked the treatment principle into the shared briefing, so control agents cited it — an 8.70 vs 8.40 non-result (p=0.65) that measured the memo, not the learning. Trial-10's clean re-run hit a different ceiling: the task implied the lesson, so the control derived it anyway (9.0 vs 8.90). Two standing rules came out of the wreckage: briefings given to both arms must describe mechanics only — never the principle under test — and when a task implies the lesson, calibrate with a positive control: a synthetic, counter-intuitive rule no agent could derive (SN-0582).
+
+The calibrated instrument then produced the first valid transfers. Trial-11 (synthetic Reserve Rule, positive control): treatment 9/10 vs control 0/10, p=0.0001, h=2.84 — Tier-S met. Trial-12 (two rules with priority ordering): 10/10 vs 0/10, p=0.000011 — compositional transfer with correct priority. Trial-13 (the Reserve Rule learned in dispatch, applied unprompted to ICU allocation): 8/10 vs 0/10, p=0.0007 — cross-domain abstract transfer, with treatment also respecting the rule's boundary and not over-applying it. The corollary explains Trials 1–10: lesson delivery changes behavior only when the lesson is genuinely non-derivable — which is exactly why the honest INVALIDs kept happening (SN-0583; batch-1 note: SN-0583 is also carried by the Seven Essences as E5-adjacent coverage in this block's accounting — see receipt; this essence carries the trial-design substance from its block siblings).
+
+The completed program — eight trials in the closing sweep, four mapped failure modes, four Tier-S validations — generalized the architecture: INVALID by ceiling effect (measuring already-learned principles proves nothing), INVALID by design flaw (briefing leakage, derivability ceiling), VALID on four dimensions (single-rule, compositional, cross-domain, and real-lesson transfer — Trial-14, the actual AGENTS.md lesson "never write state files via inline conditionals": 10/10 vs 2/10, p=0.0007, Tier-S). The program protocol a successor inherits: raw data committed to evidence PRs before results are reported; negative controls every trial; program-complete means the independent-verification queue is claimed explicitly and read-only; and provisional scores stay PROVISIONAL until the independence gate clears — LEARN 9.0 PROVISIONAL, with the path to 10.0 named as independent verification plus compounding proof (SN-0585).
+
+Evidence custody is part of the instrument. Trial-4's celebrated result (control 0/10 vs bridge-notes 8/10, Cohen's h = 2.214, Fisher's p = 0.0007) could be math-checked but not verified, because the raw data lived in `/tmp` on an ephemeral session and was wiped on reboot — no transcripts, no isolation proof, no selection-bias check. The honest verdict was INCONCLUSIVE, the "Trial 4: PASS" record was downgraded, and the mechanical law followed: preregister to a repo branch before any agent runs, commit raw transcripts and data to a repo branch before results are announced, and the verifier re-derives the statistics from the committed raw data — summary-math alone is not verification, and a vanished /tmp is evidence that never existed (SN-0571).
+
+The loop closed its first full cycle when the first promotions went ACTIVE: four candidate lessons (T11 Reserve Rule, T12 Compositional, T13 Cross-domain, T14 State-file) passed all four gates of the standing promotion law — trial proof Tier-S, no negative transfer, independent verification by a different seat than the promoter, immutable receipt issued — and flipped to ACTIVE with receipts. The milestone's honest boundary came in the same breath: ACTIVE is not the finish line — the loop proves itself only when a lesson is applied, reused, and moves the Learning score on evidence (SN-0628). The program's later trials confirmed the selection law from the other side: the first IMPROVED cold-successor verdict in five trials came from fixing lesson selection, not trial machinery — the T11 Reserve Rule, which a cold successor could not derive alone, produced A 0/10 vs B 10/10 (Fisher p=5.41e-6); trials measuring derivable lessons cannot distinguish learning from nothing (SN-0636). Inheritance itself has a content requirement: a retained lesson without its outcome evidence is rationally rejected by a cold successor — the rule text alone was not enough to trust — so capture bundles what was tried, on what bytes, what happened, and where the receipt lives, and a rule-only note in the pipeline is flagged as the REUSE GAP (SN-0635). The cold interface that carries all of this to a successor with no other context is Cold-14, the minimum viable intelligence interface for NayaNET (SN-0610).
+
+## What this settles
+
+- A transfer claim is interpretable only on a calibrated instrument: positive-control gate first, mechanics-only shared briefings, non-derivable lesson selection (SN-0582, SN-0583, SN-0636).
+- Evidence custody is a precondition of verdicts: preregistration and raw data committed before announcement, or the verdict is INCONCLUSIVE by rule (SN-0571).
+- Promotion to ACTIVE is a four-gate event with an independent verifier and an immutable receipt — and ACTIVE begins, rather than ends, the demand for application evidence (SN-0628, SN-0585).
+- Lessons are inherited as rule + outcome evidence bundles; rule-only notes are flagged, not shipped (SN-0635).
+
+## Intelligence views
+
+**Human:** The team built a way to prove — not hope — that a lesson actually changes what a fresh mind does. Most of their early experiments failed, and they kept the failures, because each one taught them how the test itself could fool them. Now a lesson only counts as "learned" when it couldn't have been guessed, the raw evidence is saved before anyone celebrates, and someone independent checks it.
+
+**Child:** Imagine teaching a friend a secret trick, then testing whether they really learned it. If the test is too easy, they'd pass without your lesson — so the grown-ups invented a special trick nobody could guess, to check their test works first! And they write everything down and keep it safe, because if the notebook disappears, nobody can prove the test ever happened.
+
+**Grandma:** It's like proving a recipe really works, dear. You don't just ask people who already know it. You give it to someone who's never seen it, with instructions that don't give the secret away, and you keep the original notes safe so anyone can check. If the notes are lost, the honest answer is "we can't prove it" — and they say exactly that, even when it costs them a celebration.
+
+**Naya (AI):** Before running any learning or cold-successor trial, check derivability first and write the check into the design (SN-0636); brief both arms on mechanics only (SN-0582); run the Trial-11-style positive-control calibration before interpreting any null (SN-0583). Commit preregistration and raw data to a branch before announcing anything (SN-0571). Keep scores PROVISIONAL until the independence gate clears (SN-0585), and capture every retained lesson with its outcome evidence or flag the REUSE GAP (SN-0635).
+
+**What it means:** Seven notes about trials, custody, promotion, and inheritance are one teaching: learning is a measurement discipline before it is a hope — the instrument, the evidence, and the selection of what to teach all have to be proven before any lesson's effect can be believed. A cold reader holding only this essence can still design a transfer trial that cannot fool itself.
+
+## Why it matters
+
+A system that cannot tell learning from luck will promote noise into doctrine and teach its successors superstitions with receipts attached. The early trials show both failure shapes: results that measured the briefing memo instead of the lesson (SN-0582), and a celebrated Trial-4 result that had to be downgraded to INCONCLUSIVE because its raw data lived in /tmp and vanished on reboot (SN-0571). This essence matters because it is the calibrated instrument — positive control first, custody before celebration — that makes "the lesson changed behavior" a claim with evidence under it.
+
+## How it connects
+
+It is The Instrument Must Execute aimed at the learning loop: the same execution, attack, and boundary discipline, applied to transfer claims. Its Trial-11–13 figures are sourced from SN-0583, which the Seven Essences carry under SN-2072 (E5, Intelligence Must Transfer and Compound); this essence cites SN-0583 for those figures only, under the disclosed exception in its verification contract, and does not count it in its coverage. Its promotion law (SN-0628) is the gate every future lesson — including the essences in this campaign — must pass before it may call itself learned.
+
+## What is in it for you
+
+Trials that cannot fool themselves. Check derivability before designing any trial, and write the check into the design (SN-0636); brief both arms on mechanics only, never the principle under test (SN-0582); calibrate with a synthetic, counter-intuitive positive control before interpreting any null (SN-0583). Commit preregistration and raw data to a repo branch before announcing anything (SN-0571), keep scores PROVISIONAL until the independence gate clears (SN-0585), and capture every retained lesson as rule plus outcome evidence — or flag the REUSE GAP (SN-0635).
+
+## The learning
+
+The durable lesson is that learning is a measurement discipline before it is a hope: the instrument, the evidence custody, and the selection of what to teach must all be proven before a lesson's effect can be believed (SN-0582, SN-0571). The behavior that changes: the first IMPROVED cold-successor verdict came from fixing lesson selection, not trial machinery (SN-0636); and promotion to ACTIVE begins — rather than ends — the demand for application evidence, since the loop proves itself only when a lesson is applied, reused, and moves the score (SN-0628, SN-0585). What would falsify this essence's teaching is a covered note that reports a transfer on a derivable lesson, or a verdict on summary math alone — none does.
+
+## Coverage map — raw notes this essence covers (7)
+
+SN-0571 · SN-0582 · SN-0585 · SN-0610 · SN-0628 · SN-0635 · SN-0636
+
+## Verification contract (for the verifying seat — falsify these)
+
+1. **Coverage integrity:** the coverage map lists exactly 7 IDs; each exists in the block manifest exactly once; no ID appears in any other oct-2 essence's coverage map. (SN-0583 is deliberately NOT in this map — it is accounted covered-by-batch1 in the block receipt; the essence cites it only as the source of the Trial-11–13 figures, which the verifier must confirm appear on SN-0583's page.)
+2. **Trial figures:** Trial-11 9/10 vs 0/10 p=0.0001 h=2.84; Trial-12 10/10 vs 0/10 p=0.000011; Trial-13 8/10 vs 0/10 p=0.0007 h=2.46; Trial-14 10/10 vs 2/10 p=0.0007 — verify each against SN-0583 and SN-0585 respectively.
+3. **Invalid modes:** SN-0582's Trial-09 figures are 8.70 vs 8.40, p=0.65, and Trial-10's are 9.0 vs 8.90 — verify against the source.
+4. **Custody verdict:** SN-0571's verdict on Trial-4 is INCONCLUSIVE (not refuted, not confirmed) with Cohen's h = 2.214 and Fisher's p = 0.0007 as the checkable math — fail the draft if it states the trial as passed or as disproven.
+5. **Promotion gates:** SN-0628 lists four CANDIDATE lessons flipped ACTIVE with receipts 1ec13a35, ea8960ab, d426f3e7, aab7aaf4 and four gates — verify the receipts and gate count against the source.
+6. **No-orphan check:** pick any five sentences in the Essence section at random; each must cite at least one covered SN ID (or SN-0583 where the contract above explicitly allows), and the cited page must contain the claim.

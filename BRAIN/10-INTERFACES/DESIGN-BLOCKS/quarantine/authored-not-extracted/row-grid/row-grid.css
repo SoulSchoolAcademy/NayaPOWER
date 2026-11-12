@@ -1,0 +1,74 @@
+/* Smart Block: row-grid — responsive layout grid.
+ * Authored 2026-10-09 for the Smart Blocks library (composition layer).
+ *
+ * Mobile-first: one column. Expands to 2, 3, 4 columns as space allows.
+ * Gap scale shared across the library so every layout breathes the same.
+ */
+
+.naya-grid {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(16px, 3vw, 32px);
+  width: 100%;
+}
+
+/* Column counts — apply the one you need */
+.naya-grid--2 { grid-template-columns: 1fr; }
+.naya-grid--3 { grid-template-columns: 1fr; }
+.naya-grid--4 { grid-template-columns: 1fr; }
+
+@media (min-width: 640px) {
+  .naya-grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .naya-grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .naya-grid--4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .naya-grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .naya-grid--4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Gap scale */
+.naya-grid--tight { gap: clamp(10px, 2vw, 18px); }
+.naya-grid--loose { gap: clamp(28px, 5vw, 56px); }
+
+/* Alignment */
+.naya-grid--center { align-items: center; }
+.naya-grid--stretch { align-items: stretch; }
+
+/* Row: horizontal flow for pairs (label + control, icon + text).
+ * Stacks vertically on narrow screens. */
+.naya-row {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .naya-row {
+    flex-direction: row;
+    align-items: center;
+    gap: clamp(16px, 3vw, 32px);
+  }
+
+  .naya-row--top { align-items: flex-start; }
+  .naya-row--spread { justify-content: space-between; }
+}
+
+/* Equal split: two halves that stack on mobile */
+.naya-split {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(24px, 5vw, 64px);
+  width: 100%;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .naya-split { grid-template-columns: 1fr 1fr; }
+  .naya-split--flip > :first-child { order: 2; }
+}

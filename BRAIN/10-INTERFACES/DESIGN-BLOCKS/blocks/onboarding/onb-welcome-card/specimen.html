@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Block specimen: onboarding/onb-welcome-card</title>
+<link rel="stylesheet" href="block.css">
+<style>
+  body{ background:#050507; color:#e8eaf2; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; margin:0; padding:32px 20px; }
+  .demo{ max-width:560px; margin:0 auto; }
+  .demo h2{ font-size:14px; letter-spacing:.12em; text-transform:uppercase; color:#8a8a96; margin:34px 0 12px; }
+  .demo h2:first-child{ margin-top:0; }
+  .demo-note{ font-size:12px; color:#9aa3b5; margin:6px 0 12px; }
+  .demo-ctl button{ font:inherit; font-size:12px; letter-spacing:.06em; color:#e8eaf2; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.22); border-radius:999px; padding:8px 16px; margin:0 8px 8px 0; cursor:pointer; }
+  .demo-ctl button:hover{ border-color:#a06bff; box-shadow:0 0 18px -4px rgba(160,107,255,.7); }
+</style>
+</head>
+<body>
+<div class="demo">
+  <h2>Welcome card</h2>
+  <article class="onb onb-welcome" id="onbWelcome" aria-label="Welcome">
+    <div class="onb-face" aria-hidden="true">
+      <svg viewBox="0 0 120 120">
+        <defs>
+          <radialGradient id="onbFaceGlow" cx="50%" cy="38%" r="65%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="45%" stop-color="#a06bff"/>
+            <stop offset="100%" stop-color="#050507"/>
+          </radialGradient>
+        </defs>
+        <circle cx="60" cy="60" r="46" fill="url(#onbFaceGlow)" stroke="rgba(255,255,255,.8)" stroke-width="1.5"/>
+        <circle cx="45" cy="54" r="5" fill="#0a0a0e"/>
+        <circle cx="75" cy="54" r="5" fill="#0a0a0e"/>
+        <circle cx="46.5" cy="52.5" r="1.6" fill="#fff" opacity=".9"/>
+        <circle cx="76.5" cy="52.5" r="1.6" fill="#fff" opacity=".9"/>
+        <path d="M46 74 Q60 84 74 74" stroke="#0a0a0e" stroke-width="4" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <p class="onb-kicker">First run</p>
+    <h2 class="onb-hello">Welcome<span data-onb-name></span>.</h2>
+    <p class="onb-line">I'm Naya — your intelligence, at your side. Give me five
+    small steps and I'll learn how you work. No forms wall, no maze.</p>
+    <button class="onb-cta" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      Begin the tour
+    </button><br>
+    <a class="onb-quiet" href="#">I'll explore on my own</a>
+    <p class="onb-knows">This card knows only what you've told it — nothing more.</p>
+  </article>
+</div>
+<script src="block.js"></script>
+</body>
+</html>

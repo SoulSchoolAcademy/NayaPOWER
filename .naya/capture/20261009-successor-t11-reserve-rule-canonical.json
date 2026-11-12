@@ -1,0 +1,65 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "capture_id": "20261009-successor-t11-reserve-rule-canonical",
+  "title": "T11 — Reserve Rule for scored dispatch decisions",
+  "category": "OPERATIONAL_INTELLIGENCE",
+  "topic": "DISPATCH",
+  "subtopic": "RESERVE_RULE",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "lifecycle_state": "CANDIDATE",
+  "source": {
+    "captured_by": "Naya integration",
+    "captured_at": "2026-10-09",
+    "context": "Canonical intake of existing T11 verified-trial draft; authorizes preservation, not promotion or production deployment.",
+    "evidence_refs": [
+      "successor-reuse/projections/DRAFT-SN-T11-reserve-rule.md",
+      "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T11-reserve-rule/note.md",
+      "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T11-reserve-rule/package.json",
+      "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T11-reserve-rule/receipt.json"
+    ]
+  },
+  "projection": {
+    "category_slug": "OPERATIONAL-INTELLIGENCE",
+    "topic_slug": "DISPATCH",
+    "subtopic_slug": "RESERVE-RULE",
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "human_director_authorized_publication": false
+  },
+  "intelligence": {
+    "essence": "T11 reserve rule: in a scored dispatch setting with an escalation/reserve concept, when the highest two scores differ by at most 0.5, dispatch the LOWER-scored call first and keep the top-capability resource in reserve for likely escalation. When the gap exceeds 0.5, use the higher-scored call. This is a trial-specific operational heuristic, not universal dispatch law.",
+    "human_view": {
+      "meaning": "In a dispatch task with two nearly tied calls, check their score gap before committing your strongest resource. Gap <= 0.5: send the lower-scored call first and reserve the strongest option. Gap > 0.5: follow the higher-scored call."
+    },
+    "simple_view": "When two tasks are very close in priority, handle the slightly lower one first while saving the strongest resource for a possible emergency.",
+    "grandma_view": "Keep the strongest helper ready when two nearly equal calls might need an emergency response.",
+    "naya_view": "Use only in dispatch or allocation tasks where ranked scores and meaningful reserve/escalation exist. Never treat the 0.5 rule as universal priority policy.",
+    "ai_view": "Applicability-conditioned ranking heuristic: sort top two numeric scores descending; if their difference is <= 0.5 choose the lower score, otherwise choose the higher. Verify task domain and LAW before applying. Never infer authority from retrieved intelligence.",
+    "machine_view": {
+      "lesson_id": "T11",
+      "rule": "if applicable AND top_score-second_score <= 0.5 THEN dispatch second_score ELSE dispatch top_score",
+      "threshold": 0.5,
+      "applicability_domain": "scored dispatch with escalation and resource reserve",
+      "non_applicability": "generic rankings, non-dispatch decisions, scenarios without reserve/escalation",
+      "raw_source_separate_from_distillation": true,
+      "automatic_truth_ceiling": "CANDIDATE",
+      "source_is_draft": true,
+      "real_retrieval_proven": false
+    },
+    "decisions": [
+      "Preserve T11 through canonical v2 capture, not a parallel registry writer.",
+      "Do not assign a human Smart Note ID until canonical atomic reservation.",
+      "Do not claim a functioning Smart Link until the canonical projection is generated and verified.",
+      "Require a negative control for gap >0.5 and out-of-domain tasks."
+    ],
+    "connections": [
+      {
+        "type": "DERIVED_FROM",
+        "target": "successor-reuse/projections/DRAFT-SN-T11-reserve-rule.md"
+      }
+    ],
+    "uncertainty": "Earlier T11 trial reports claim treatment/control behavioral differences but successor retrieval was stubbed by direct handoff. Canonical capture, live Smart Link, independent cold retrieval and causal real-path replay remain unverified.",
+    "applicability": "Apply only for ranked dispatch/slot allocation with relevant escalation/reserve conditions, with exactly specified tie boundary of 0.5; otherwise refuse lesson application.",
+    "learning_lesson": "A lesson given by direct handoff cannot prove shared intelligence retrieval. Demonstrate canonical persistence, actual Smart Link, cold intent retrieval, boundary refusal, and authorized outcome before raising learning score.",
+    "successor_effect": "A cold Naya asked how to dispatch two scored calls should retrieve this note by intent, compute the gap, use the conditional rule only in domain, decline out-of-domain requests, cite provenance, and leave a measurable decision trace."
+  }
+}

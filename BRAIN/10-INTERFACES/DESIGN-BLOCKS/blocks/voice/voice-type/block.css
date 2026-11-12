@@ -1,0 +1,16 @@
+/* Smart Block: voice/voice-type
+ * Source: Naya Design Element Set N4.html (byte-true extraction, not rewritten)
+ * Type: voice
+ * Extracted: 2026-10-09
+ */
+
+/* Re-scoped from `h1.voice` to `.voice` so any element can carry the voice treatment.
+ * Original rule was element-locked; the declaration block is verbatim. */
+.voice{font-family:var(--voice); font-size:24px; font-weight:700; line-height:1.12;
+  margin:18px 0 16px; color:#fff;
+  text-shadow:0 2px 16px rgba(0,0,0,.7), 0 0 32px rgba(255,255,255,.08);}
+
+.voice em{font-style:italic; font-weight:500;}
+
+/* Dependency: --voice. Define once per page:
+   :root{ --voice: "Cormorant Garamond", Georgia, serif; } */

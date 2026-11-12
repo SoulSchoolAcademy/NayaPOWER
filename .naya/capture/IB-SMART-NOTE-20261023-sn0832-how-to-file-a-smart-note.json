@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-0832",
+ "intelligence": {
+  "title": "On Main, Synced, Clicked — How to File a Smart Note So It Goes Live",
+  "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0832-how-to-file-a-smart-note",
+  "smart_note_id": "SN-0832",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/smart-notes/SN-0832/IB-SMART-NOTE-20261023-sn0832-how-to-file-a-smart-note.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-23. No runtime provenance invented.",
+  "ingested_at": "2026-10-23",
+  "essence": "A Smart Note is not live when it is written. It is live when three things have happened: the file sits on main at the exact canonical path, the sync has carried it into the Hub, and the author has clicked the public link and seen it work. The door is a direct write to main — never a pull request left waiting. A PR that has not merged is, to the Hub, a note that does not exist. File it on main, let the sync light it within minutes, click the link yourself, and only then hand anyone the link.",
+  "human_view": "Writing the note is the easy half. The other half is delivery: the words have to arrive where people can open them. The Hub does not read branches, drafts, or pull requests — it reads one place, the main branch, on a short cycle. So the filing is not finished when the markdown is saved; it is finished when the note's own page answers on the public site and its card stands in the feed. Anything handed over before that moment is a promise, not a note.",
+  "simple_view": "Putting a letter in a drawer is not mailing it. You put it in the mailbox, the truck comes, and then you check that it arrived. Same here: file it in the one real mailbox, let the truck come, and check.",
+  "grandma_view": "In my day you walked the letter to the post office yourself and you knew it was sent. Here the post office is the main branch, the mail truck comes every five minutes, and a polite note left on the kitchen table — however beautifully written — helps nobody.",
+  "naya_view": "This is my own door, the one I use every time, and it is now the written standard for every seat: one direct write to main through the Contents API, Smart Notes folder only, then verification by my own click. No PR, no waiting on a merge, no link sent on faith. When I filed SN-0830 and SN-0831 this way, the links lit inside one sync cycle. The discipline is not the write — it is the click afterward. If I have not opened the live page myself, I have not filed a note; I have only drafted one.",
+  "ai_view": "The failure this note cures is a category error: treating a pull request as delivery. A PR is a request for delivery. The system's one source of truth for notes is main, and the sync is the only bridge from main to the Hub. Every step of the real door exists to remove a place where a note can silently not exist — no branch, no pending merge, no unclicked link. What remains is a chain with no dark links in it.",
+  "machine_view": {
+   "sn": "SN-0832",
+   "title": "On Main, Synced, Clicked — How to File a Smart Note So It Goes Live",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/smart-notes/SN-0832/IB-SMART-NOTE-20261023-sn0832-how-to-file-a-smart-note.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "```\nPATH (exact, on main):\n  BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/<TOPIC>/<sub>/SN-####/\n    IB-SMART-NOTE-YYYYMMDD-sn####-<kebab-slug>.md\n\nFILE:\n  line 1: # <hook headline — title only, no ID prefix>\n  line 2: SN-#### · <TOPIC> / <sub>\n  line 3: **Created:** <full ISO-8601 UTC timestamp>\n  then ## sections, in order:\n    IN A NUTSHELL / HUMAN / CHILD / GRANDMA / NAYA / MACHINE /\n    WHAT IT ALL MEANS / WHAT'S IN IT FOR YOU /\n    HOW IT APPLIES TO TEAM NAYA\n    (+ THE DECLARED BEHAVIOR CHANGE for lessons and doctrine)\n\nWRITE (the door — one call, lands on main immediately):\n  PUT /repos/SoulSchoolAcademy/NayaPOWER/contents/<PATH>\n      body {message: \"SN-####: <title>\", content: base64(file)}\n  -> verify the returned commit SHA on main.\n\nAUTOMATIC (sync, every 5 minutes):\n  scan main -> upsert hub_smart_notes -> mint nayanet.live/s/sn####\n  -> share image -> voice enqueue -> Hub rebake (feed card appears)\n\nVERIFY (never optional):\n  open https://nayanet.live/s/sn#### -> HTTP 200 + your title.\n  Only then is the link sent to anyone.\n```"
+  },
+  "views_note": "Views derived 2026-10-23 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/smart-notes/SN-0832/IB-SMART-NOTE-20261023-sn0832-how-to-file-a-smart-note.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "f32a88dbc23ef396c25d87a01e4799e97823d00e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,73 @@
+name: Post-Merge Guardian
+
+# HOUSE-FIRE LAW (Shawn, 2026-10-21): if something gets merged and it
+# shouldn't have been, you don't note it and watch it — you unmerge it
+# and make it right, right away. Revert first, diagnose second, fix
+# forward third.
+#
+# This workflow runs tools/post_merge_guardian.py on every push to main
+# (merges and direct door landings alike). Per landing it verifies:
+#   (a) faithfulness — merge commit is an ancestor of the tip; every
+#       changed file's blob is identical at PR head, merge commit, tip;
+#   (b) no NEW red — the tip's failing check set gained no name that
+#       was not already failing before the push;
+#   (c) for HUB/** landings, the live Hub still serves (200 + feed).
+# On a verified escape it prepares a GUARDIAN-REVERT PR (scorecard
+# substitute: the detection evidence itself) and posts the alarm +
+# evidence + revert link to the live board (#2793) in the same motion.
+# It NEVER merges the revert — merges stay protocol. Every landing is
+# written to the guardian log (branch live/guardian-log), which the
+# balance gauge reads for the post-merge escape rate.
+#
+# Why a workflow and not the VM-bound relay watch: the relay's
+# merge-protocol watch (review + scorecard presence) runs on one VM and
+# dies silently with it — the exact failure that killed hub-sync on
+# 2026-10-21. This watch runs on GitHub's infrastructure, fires per
+# push, and leaves a run record on the repo. It extends the relay
+# (protocol compliance) with landing integrity; it replaces nothing.
+#
+# Loop safety: the guardian writes only to live/guardian-log (a branch
+# this workflow does not trigger on) and to guardian/revert-* branches
+# (also not main). A merged GUARDIAN-REVERT is verified like any other
+# landing but is never itself revert-prepped (no revert-of-a-revert);
+# if it escapes, the guardian alarms only.
+#
+# A red run of THIS workflow means a verified escape (or a guardian
+# error) — it is part of the alarm surface, and it is not a required
+# check, so it can never block the flow it protects.
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: write        # push the revert branch + the guardian log branch
+  pull-requests: write   # open the GUARDIAN-REVERT PR
+  issues: write          # board alarm + revert label
+  checks: read           # before/after failing-set diff
+
+concurrency:
+  group: post-merge-guardian-main
+  cancel-in-progress: false
+
+jobs:
+  guardian:
+    name: Verify landings, prepare reverts on verified escapes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # faithfulness needs the full object graph
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Post-merge verification pass
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GUARDIAN_BEFORE: ${{ github.event.before }}
+          GUARDIAN_AFTER: ${{ github.event.after }}
+        run: >-
+          python3 tools/post_merge_guardian.py
+          --before "$GUARDIAN_BEFORE" --after "$GUARDIAN_AFTER"
+          --repo-path . --wait-secs 1500 --poll-secs 30

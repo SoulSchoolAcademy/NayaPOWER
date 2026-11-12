@@ -1,0 +1,44 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-2190",
+  "title": "Drain the Reservoir — Finishing Is the Only Production",
+  "slug": "essence-01-drain-the-reservoir",
+  "file": "BRAIN/05-MEMORY/SMART-NOTE-essence-01-drain-the-reservoir.md",
+  "tone": "red",
+  "icon": "◆",
+  "created_at": "2026-11-06T04:26:00Z",
+  "registered_by": "naya-resolve",
+  "kind": "intelligent-block",
+  "intelligence": {
+    "essence": "On 2026-10-20 the system counted itself honestly: 662 open changes, 473 of them untouched for a week, about five starts for every finish — a reservoir, not a queue, because work flowed in and almost nothing flowed out. The cure was never \"work harder.\" It was: give every open item exactly one of three endings (merge it verified, fix its one named gap, or close it with the reason written down), cap starting by what you finished, make the pile print itself nightly, and treat a clogged landing door as the emergency it is — because finished work that cannot land is worth zero. When the door itself was the bottleneck, the fix was to measure the door, name the toll, and drain — 52 open landings to single digits in one evening, with proof on every landing and the slips named in the open, never backdated.",
+    "human_view": "We were starting five things for every one we finished, and calling the pile \"work.\" This essence is the record of learning to count endings instead of beginnings: 662 open changes became a handful once every item had to merge, be fixed, or be closed with its reason written down — and once starting more required finishing first.",
+    "child_view": "Imagine a toy box you keep putting toys into but never finish playing with any of them. Soon the box is overflowing and nothing is fun. The fix: every toy gets put away properly, fixed, or given away — and you may only take out a new toy after you finished with the last ones. A finished game counts. A started game doesn't.",
+    "grandma_view": "It's the difference between a kitchen full of half-chopped vegetables and dinner on the table. We learned to stop chopping and start serving: finish the meal, or clear the board and say why. And if the pantry door is stuck, you fix the door — you don't blame the cooks.",
+    "ai_view": "Run the numbers before you run the work. Your creation budget is your last week's completions plus two. Classify every gate failure MINE / BASELINE / OTHER-SEAT / CONTENT. When the open queue passes fifteen or a finished item waits more than a day, stop treating it as a work problem: measure the door and report the clog by name with the one change that unblocks it (SN-1788's declared change). If the ratio worsens, the escalation to Shawn goes out the day you see it, with the fix already in motion (SN-0826). Exceptions are the only messages; everything else is math on the record (SN-0844).",
+    "what_it_means": "An intelligent system's scarcest resource is not effort — it is finished, verified outcomes. The reservoir is what happens when creation is free and finishing is serial: activity becomes indistinguishable from progress, and the pile itself becomes the hiding place. The drain discipline converts work back into a flow with terminal states, budgets, and a door that is measured like any other machine part.",
+    "whats_inside": [
+      "Starting is not production. The only reported metric is completions; creation is budgeted by finishing (completions + 2).",
+      "Every open item ends MERGED-VERIFIED or CLOSED-ON-PURPOSE; \"someday\" is not a state.",
+      "A queue problem is a door problem until proven otherwise: measure the door, name the toll, drain.",
+      "The hard truth about the ratio is owed the day it is seen — honesty was never behind a gate.",
+      "Waste is paid twice; the second bill (triage, rework, verification, attention) is the one nobody budgets."
+    ],
+    "topics": [
+      "Essence",
+      "Distillation",
+      "oct-5"
+    ],
+    "covers": [
+      "SN-0805",
+      "SN-0807",
+      "SN-0812",
+      "SN-0826",
+      "SN-0827",
+      "SN-0844",
+      "SN-1788",
+      "SN-1789"
+    ]
+  },
+  "page_hash": "01a54f6b3d3f887d2e34ea41f20591507121d882f58ef8f8fdf5f6f70431604a",
+  "content_hash": "e9e371988bef9b684c12015d0a2b4cc9efad0b9a93343cd059bae42d88f1cffc"
+}

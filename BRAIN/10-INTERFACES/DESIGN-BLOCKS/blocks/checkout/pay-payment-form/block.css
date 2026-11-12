@@ -1,0 +1,144 @@
+/* Smart Block CSS: checkout/pay-payment-form
+ * Source: gap-blocks/checkout-blocks.md (harvested, never restyled)
+ * Catalog: NAYA-PAY-002
+ */
+
+/* Shared PAY board shell (Law 3 board formula) — carried from PAY-001 so this family is self-contained */
+
+.pay-board{
+  --ground:#050507; --ink:#fbfbfd;
+  --magenta:#e84fff; --purple:#a06bff; --indigo:#6675ff; --blue:#3fb8ff;
+  --emerald:#35e0a1; --green:#2fe89e; --lime:#b8ee57; --gold:#ffbf3d;
+  --orange:#ff9a5a; --red:#ff5e6c;
+  --ease:cubic-bezier(.16,.84,.22,1);
+  --tone:#a06bff; --tone-rgb:160,107,255; /* default: choosing intelligence */
+  background:linear-gradient(160deg,#1a171f 0%,#09090d 55%,#030304 100%);
+  border:1.5px solid rgba(160,107,255,.38);
+  border-radius:24px;
+  box-shadow:
+    inset 0 2px 2px rgba(255,255,255,.12),
+    inset 0 -8px 18px rgba(0,0,0,.55),
+    0 5px 0 #020203,
+    0 17px 0 -8px rgba(160,107,255,.16),
+    0 35px 75px rgba(0,0,0,.7),
+    0 0 40px -17px rgba(160,107,255,.5);
+  padding:28px 30px 26px;
+  position:relative;
+  transition:border-color .28s var(--ease), box-shadow .28s var(--ease), transform .28s var(--ease);
+}
+
+.pay-board:hover{
+  transform:translateY(-5px);
+  border-color:rgba(160,107,255,.8);
+  box-shadow:
+    inset 0 2px 2px rgba(255,255,255,.14),
+    inset 0 -8px 18px rgba(0,0,0,.55),
+    0 5px 0 #020203,
+    0 17px 0 -8px rgba(160,107,255,.2),
+    0 35px 75px rgba(0,0,0,.7),
+    0 0 46px -14px rgba(160,107,255,.85);
+}
+
+.pay-corner{
+  position:absolute; top:14px; right:16px; font-size:22px; color:#fff;
+  text-shadow:0 0 14px rgba(160,107,255,.9); opacity:.9;
+}
+
+.pay-head{ margin:0 0 20px; }
+
+.pay-kicker{
+  margin:0 0 6px; font-size:12px; letter-spacing:.32em; color:rgba(255,255,255,.72);
+}
+
+.pay-title{
+  margin:0; font-family:Georgia,'Times New Roman',serif; font-size:24px;
+  font-weight:600; color:var(--ink);
+  text-shadow:0 2px 8px rgba(0,0,0,.6), 0 0 22px rgba(160,107,255,.35);
+}
+
+/* .naya-btn DNA (Law 5), checkout-local skin — carried from PAY-001 */
+
+/* canonical button, checkout-local skin of .naya-btn DNA */
+.naya-btn{
+  --nb-accent:#a06bff; --nb-accent-rgb:160,107,255;
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  min-height:52px; padding:0 26px; border-radius:999px; cursor:pointer;
+  background:linear-gradient(180deg,#101014 0%,#050505 60%,#020203 100%);
+  color:#fbfbfd; font-size:14px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  border:1.5px solid rgba(255,255,255,.85);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -6px 12px rgba(0,0,0,.6), 0 10px 24px rgba(0,0,0,.6);
+  transition:border-color .18s cubic-bezier(.16,.84,.22,1), box-shadow .18s cubic-bezier(.16,.84,.22,1), transform .18s cubic-bezier(.16,.84,.22,1);
+}
+
+.naya-btn:hover{
+  transform:translateY(-2px);
+  border-color:var(--nb-accent);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 12px rgba(0,0,0,.6), 0 10px 24px rgba(0,0,0,.6), 0 0 32px -4px rgba(var(--nb-accent-rgb),.8);
+}
+
+.naya-btn:active{ transform:translateY(1px) scale(.98); }
+
+.naya-btn:focus-visible{ outline:2px solid #fff; outline-offset:4px; }
+
+.naya-btn:disabled{ opacity:.45; cursor:not-allowed; transform:none; box-shadow:inset 0 -6px 12px rgba(0,0,0,.6); }
+
+.naya-btn:disabled:hover{ border-color:rgba(255,255,255,.85); }
+
+/* ---------- PAY-002 payment form ---------- */
+.pay-form{ --tone:#a06bff; --tone-rgb:160,107,255; }
+.pay-form .pay-corner{ text-shadow:0 0 14px rgba(160,107,255,.9); }
+
+.pay-field{ position:relative; margin-bottom:20px; }
+.pay-field-row{ display:flex; gap:14px; }
+.pay-field-row .pay-field{ flex:1 1 0; }
+
+.pay-input{
+  width:100%; height:58px; padding:22px 16px 8px; border-radius:14px;
+  background:#0a0a0e; color:#fbfbfd; font-size:16px;
+  border:1.5px solid rgba(255,255,255,.55);
+  transition:border-color .18s cubic-bezier(.16,.84,.22,1), box-shadow .18s cubic-bezier(.16,.84,.22,1);
+}
+.pay-input--card{ letter-spacing:.12em; font-variant-numeric:tabular-nums; }
+.pay-input:focus{ outline:none; border-color:#a06bff; box-shadow:0 0 26px -4px rgba(160,107,255,.85); }
+
+/* floating label — rests inside the field, lifts on focus or content */
+.pay-label{
+  position:absolute; left:16px; top:19px; font-size:15px; color:rgba(255,255,255,.55);
+  pointer-events:none; transition:all .18s cubic-bezier(.16,.84,.22,1);
+}
+.pay-input:focus + .pay-label,
+.pay-input:not(:placeholder-shown) + .pay-label{
+  top:8px; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.8);
+}
+
+/* validation — emerald for alive-and-well, red for urgency */
+.pay-input.is-valid{ border-color:#35e0a1; box-shadow:0 0 26px -6px rgba(53,224,161,.6); }
+.pay-input.is-invalid{ border-color:#ff5e6c; box-shadow:0 0 26px -6px rgba(255,94,108,.6); }
+.pay-input.is-invalid + .pay-label{ color:#ff8a96; }
+.pay-err{ margin:8px 2px 0; font-size:14px; color:#ff9aa3; }
+.pay-err[hidden]{ display:none; }
+
+/* brand jewel — a small orb that lights when a brand is recognized */
+.pay-brand{
+  position:absolute; right:14px; top:50%; transform:translateY(-50%);
+  width:30px; height:30px; border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, rgba(255,255,255,.9) 0%, transparent 45%),
+             radial-gradient(circle at 50% 50%, var(--bc,#333) 0%, #050507 100%);
+  border:1.5px solid rgba(255,255,255,.5);
+  opacity:0; transition:opacity .28s cubic-bezier(.16,.84,.22,1), box-shadow .28s cubic-bezier(.16,.84,.22,1);
+}
+.pay-brand.is-known{ opacity:1; box-shadow:0 0 22px -2px var(--bc,#333); }
+.pay-brand.is-visa{ --bc:#3fb8ff; }
+.pay-brand.is-mastercard{ --bc:#ff9a5a; }
+.pay-brand.is-amex{ --bc:#35e0a1; }
+
+.pay-submit{
+  width:100%; min-height:56px; font-size:15px; margin-top:6px;
+  --nb-accent:#a06bff; --nb-accent-rgb:160,107,255;
+}
+.pay-submit:not(:disabled):hover{ transform:translateY(-2px); }
+.pay-secure{ margin:14px 2px 0; font-size:13px; color:rgba(255,255,255,.68); text-align:center; }
+
+@media (prefers-reduced-motion:reduce){
+  .pay-input,.pay-label,.pay-brand{ transition:none; }
+}

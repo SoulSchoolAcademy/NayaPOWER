@@ -1,0 +1,29 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2222",
+ "title": "The Anatomy — Measured Live, Never Invented",
+ "slug": "the-anatomy-measured-live-never-invented",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/07/DESIGN/SN-2222/IB-SMART-NOTE-20261107-sn2222-the-anatomy-measured-live-never-invented.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-07T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The number is built from the Dashboard button anatomy, measured in a real browser from nayanet.app/dashboard (2026-11-07 20:19–20:28Z). Outside to inside: a 1–2px light rim, brightest on the top arc (2px violet #a06bff on featured buttons, 1.5–2px silver-grey on neutral ones) · a black gradient face, top #171720, mid #0f0f15, bottom #020203 — the obsidian black, always visible · a 1px white-grey highlight on the top arc · white bold content, with a soft lavender-grey halo · a soft drop shadow plus a diffused coloured halo outside the rim. The colour lives in the rim, the cap, or a small chip — never on the glyph itself. The number stays white.",
+  "human_view": "Shawn's rule is harvest first: take what already exists and is already beautiful, and build from it. The Dashboard's buttons were already the language. The number just speaks it.",
+  "child_view": "Before you build a new toy, look at the toys you already have. Copy the best parts. Then your new toy fits right in with all the others.",
+  "grandma_view": "You don't invent a new kind of button when the ones you have are already beautiful. You measure the beautiful ones, and you make the new thing the same way.",
+  "ai_view": "Every builder brief names its harvest sources — the exact file, the exact section, the exact line. The design-law gate fails any build whose elements do not trace to the piece index or a named harvest source. The anatomy is the proof: the number traces to the Dashboard, pixel by pixel.",
+  "what_it_means": "- The number's rim, face, highlight, halo and shadow are the Dashboard's, copied verbatim — not redesigned.\n- No gold on the Dashboard components seen. The accent is violet #a06bff, silver-grey, and per-section colours.\n- The Hub could not be studied — it hangs (the known feed hang). The Dashboard anatomy is the measured one.",
+  "whats_inside": [
+   "- Any new element starts from a live measurement of the page it will live on, never from imagination.\n- The anatomy is in the build record (HOW-THE-NUMBER-WAS-BUILT.md) and in the Parts Registry, so the next builder measures nothing twice."
+  ],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "93bec609a7056a5fddd5fda8ecb7d6c9f82343823ee37c03e88b7cb8d1c1e496",
+ "content_hash": "75a338857f98ef5f4ccc75faf0732ff277daba61c6b9a12e231a568718ccf370",
+ "reconstructed_from_page": true
+}

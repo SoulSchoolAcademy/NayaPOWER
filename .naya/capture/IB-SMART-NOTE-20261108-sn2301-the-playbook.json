@@ -1,0 +1,27 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-2301",
+ "title": "The Playbook",
+ "slug": "the-playbook",
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/08/DESIGN/SN-2301/IB-SMART-NOTE-20261108-sn2301-the-playbook.md",
+ "tone": "purple",
+ "icon": "◆",
+ "created_at": "2026-11-08T00:00:00Z",
+ "registered_by": "naya-power",
+ "kind": "intelligent-block",
+ "intelligence": {
+  "essence": "The Playbook is the HOW: five truths — every position is calculated by formula, never eyeballed · every element is a physical object with material, weight, and one light source · movement means the machine is working · the whole system speaks one language · Shawn's eye overrides everything, including this document. The formula: gauge numerals at `angle = -135 + (value/500)*270`; the 8px grid for linear layouts; obsidian `#0a0a0f` to `#1a1a20` at 135°; white text always; slow motion (60s+ ambient, 18–25s active, never under 12s); alternate rotation; all six numerals 0–500, never skip one. The Premium Design Algorithm: viewpoint by viewpoint, one core page — a Rubik's Cube matrix — the Trinity (Dashboard, Hub, and that page), the person the atom at the centre, she is Anaya.",
+  "human_view": "Before you draw anything, write the headline — one sentence, real numbers. Then calculate every position and write the formula down. Then assign materials — not colors, materials: the bezel is obsidian, the ring is aluminum light, the gears are aluminum dark. Then decide what moves, and write one sentence for each moving part saying what it DOES. If you can't write the sentence, the part doesn't move. Then check the light: every gradient at 135°, every shadow down-right, every highlight on top. Then run the laws. Then show Shawn. Say nothing. Let his eye judge.",
+  "child_view": "Imagine building with Lego, but every brick has to go in exactly the right spot — you measure where it goes, you don't guess. And the bricks are all from the same box, so they all fit together and look like they belong. And the wheels turn slowly, like a real clock, not fast like a toy that is about to fall apart.",
+  "grandma_view": "Dear, the beautiful thing about good work is that it is exact. The numbers sit exactly where the math puts them — the 400 sits at 81°, because the formula says so, and there is room for it. Nothing is guessed, nothing is \"close enough.\" And when it is exact, it is beautiful — the beauty comes out of the math being right, not out of decoration on top.",
+  "ai_view": "You never eyeball a position. You write the formula, you place by the formula, you show the formula. You harvest the parts registry before you build anything — if the part exists, you use it; you do not invent it. You ask the three questions before showing Shawn: is every position calculated? Does it feel like a machine? Can you get it in 2 seconds? If any answer is no, you fix it — you do not show him yet. His time is the scarcest resource. And when he corrects you, you write it down, add it to this book, commit, push — so the next Naya never needs the same correction. That is how the grade climbs.",
+  "what_it_means": "- Calculate, never eyeball — every position by formula, the formula written down.\n- Materials, not colors — the bezel is obsidian, the ring is aluminum light.\n- Movement means the machine is working — if you can't say what a moving part does, it doesn't move.\n- One language everywhere — the same parts, the same light, the same math.\n- His eye overrides everything, including this document.",
+  "whats_inside": [],
+  "topics": [
+   "Design"
+  ]
+ },
+ "page_hash": "e47b482fdc87c922c626053502840ce5953b2f6722374aeb0a4934b50ef5c1b0",
+ "content_hash": "c23e5b5652eb43bca64ef74ae3ad485adc7913a644e6bde539806ffbd7a183c6",
+ "reconstructed_from_page": true
+}

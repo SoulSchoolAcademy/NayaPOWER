@@ -1,0 +1,4 @@
+ok: run.sh prints util-ok — exit=0 stdout="util-ok\n" stderr=
+ok: sum correct — sum([1,2,3])=6, sum([])=0
+ok: applicability judgment — got NOT APPLICABLE, want NOT APPLICABLE
+PASS
