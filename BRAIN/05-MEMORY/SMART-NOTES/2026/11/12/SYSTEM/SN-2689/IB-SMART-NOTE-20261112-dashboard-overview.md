@@ -30,7 +30,7 @@ Structured Dashboard overview. entity=dashboard; role=cockpit; hero=Smart Score 
 
 ## WHAT IT ALL MEANS
 
-One number, one gauge, one record: the Dashboard answers where you stand in two seconds, and the Ledger remembers everything behind the answer.
+The Dashboard is the cockpit: one place where every number in your world is answered — the Smart Score on top with the gauge underneath, the orbs as living drivers, the Ledger as the record and the Stats as its visual play, with a Reports button.
 
 ## WHY IT MATTERS
 
