@@ -3,7 +3,7 @@
 Adapted from the claim worker's deploy.py (same credential path: the
 registered custom.cloudflare surrogate + sb-mgmt connector for the key).
 Key values travel only in process memory — never printed, never on disk."""
-import json, subprocess, sys, urllib.request, uuid
+import json, os, subprocess, sys, urllib.request, uuid
 sys.path.insert(0, "/opt/muse/skills/custom-connector-setup/bin")
 from dynamic_credentials import add_surrogate_to_request, read_json_response
 
