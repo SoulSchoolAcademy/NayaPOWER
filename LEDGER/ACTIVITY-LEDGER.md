@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 20:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 20:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -47256,6 +47256,18 @@ _Last updated: 2026-11-12 20:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ gap-lane-scorer-20261016-1400-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: re-pin live tip + full-checkout brain-index check at refreshed tip
+
+**Evidence:** VERIFIED: transcript hidden_files/lane-10/evidence-gap-1400/brain-index-check-83806f4d0.out exists, sha256 b95d8c7b... matches receipt pin, content 'OK: index layer matches git tree (1328 files)'; tip commit 83806f4d0e335b223ba2f849fd19a7a7915fdcc6 exists in the repo (2026-10-16 merge PR #2698, fetched via git protocol). Score 9.5 - clears 9.5 beca
+
+### ✅ gap-lane-scorer-20261016-1350-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: name the 7 failing tests in PR #2456 Kernel Tests test job + root-cause both
+
+**Evidence:** VERIFIED: all 4 evidence files under hidden_files/lane-10/evidence-gap-1350/ exist with sha256 exactly matching receipt pins (node-tests-full.out 433b03ce..., guard_liveness-with-python 9cc8a0db..., intelligence_retrieve-with-python 3278af8e..., repro-400.mjs e0e4ffc3...); refs/pull/2456/head resolves via git ls-remote to e326283252a7e9f932b0d9ebad
 
 ### ✅ gap-scorer-20261019-1520 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
