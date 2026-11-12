@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 05:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 05:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -44845,6 +44845,12 @@ _Last updated: 2026-11-12 05:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ gap-gap-lane-scorer-20261018-1610-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** gap-followup
+
+**Evidence:** Verified on live bytes: template after-edit sha c1508de2 matches; FALSIFIER REPORTING CONVENTION present at lane-agent-brief-template.md L77 with verbatim F6 line + root case; runner sha d5835794 matches, L201 comment intact; sealed verdict ebeef737 and per-arm verdict 58abf2ee match; /tmp/lane12-gap/run1.log and run2.log exist, byte-identical (dif
+
 ### ✅ gap-lane-scorer-20261018-1630 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** gap-followup
@@ -50758,6 +50764,12 @@ _Last updated: 2026-11-12 05:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ distill-feed-3066-20261112 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** Distill feed #3066 (2,306 comments): complete snapshot + verified headline threads, PARTIAL distillation landed, board report withheld
+
+**Evidence:** VERIFIED this tick on live bytes: snapshot hidden_files/feed-3066-comments.jsonl sha256 ee37667c0b4db725dfec606fd86732381134e0302de467364a080fa089e6d71a matches the receipt pin exactly; 2,306 lines, first id 6395776508 created 2026-10-25T09:09:57Z, last id 6815393515 created 2026-11-12T05:19:14Z, matching the receipt range; raw pages hidden_files/f
 
 ### ✅ gap-lane-scorer-20261021-1930 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
