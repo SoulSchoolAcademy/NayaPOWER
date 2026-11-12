@@ -74,6 +74,7 @@ import argparse
 import datetime
 import glob
 import hashlib
+import importlib.util
 import json
 import os
 import re
@@ -115,6 +116,50 @@ def words(text):
             if w.lower() not in STOP and len(w) >= 3]
 
 
+# Variant-shape alias map (measured by the distill hunt, 2026-11-12):
+# the Batch 2 distillations (SN-2660..2669) write their sections in
+# ALL-CAPS headers. The map is the hunt's measured table, verbatim.
+# MACHINE is a FALLBACK alias for "What changes now", not a union
+# member: it fills the slot only when the note carries no THE
+# LEARNING. Proven against SN-2670 by two dry-runs on the same ten
+# inputs: UNIONING MACHINE let its "Distills (Batch 2, 10 of 100):"
+# source-list paragraphs dominate the action list (6/6 items in the
+# first dry-run — boilerplate, not actions), because they are long and
+# dense with the top concepts. The fallback yields the ten THE
+# LEARNING one-liners — real actions, the same shape as SN-2670's
+# "What changes now". MACHINE's checks are not lost: they fill the
+# slot whenever a future variant note has MACHINE but no THE LEARNING.
+# HOW IT CONNECTS and WHAT IS IN IT FOR YOU have no canonical slot
+# and stay dropped (named, not hidden).
+SECTION_ALIASES = {
+    "Nutshell": ["IN A NUTSHELL"],
+    "Human": ["HUMAN"],
+    "Child": ["CHILD"],
+    "Grandma": ["GRANDMA"],
+    "Naya": ["NAYA"],
+    "What it means": ["WHAT IT ALL MEANS"],
+    "Why it matters": ["WHY IT MATTERS"],
+    "What changes now": ["THE LEARNING", "MACHINE"],
+}
+
+
+def canonical_section(header):
+    """The canonical section a "## <header>" belongs to, or None.
+
+    Exact name, case-insensitive, first (canonical notes match here);
+    then the variant-shape alias map. Anything else is not a section
+    (HOW IT CONNECTS, WHAT IS IN IT FOR YOU, and any future header).
+    """
+    normalized = re.sub(r"\s+", " ", header.strip()).upper()
+    for name in SECTIONS:
+        if normalized == name.upper():
+            return name
+    for name, aliases in SECTION_ALIASES.items():
+        if normalized in (a.upper() for a in aliases):
+            return name
+    return None
+
+
 def parse_note(path):
     text = open(path, encoding="utf-8").read()
     lines = text.split("\n")
@@ -133,11 +178,35 @@ def parse_note(path):
     m = re.search(r"\n> (.+?)\n\n## ", text, re.S)
     if m:
         quote = m.group(1).strip()
-    sections = {}
-    for name in SECTIONS:
-        m = re.search(r"## " + re.escape(name) + r"\n\n(.*?)(?=\n## |\Z)",
-                      text, re.S)
-        sections[name] = m.group(1).strip() if m else ""
+    sections = {name: "" for name in SECTIONS}
+    # Scan every "## <header>" in document order. A header matches a
+    # canonical section by exact name (case-insensitive) or by the
+    # variant-shape alias map above. Bodies accumulate in document
+    # order, so two headers mapping to one section concatenate instead
+    # of overwriting. Canonical notes parse exactly as before — the
+    # alias map only ADDS matches, never removes or reorders them.
+    header_pat = re.compile(r"^## (.+?)\s*$", re.M)
+    headers = list(header_pat.finditer(text))
+    # MACHINE is a fallback alias: it fills "What changes now" only
+    # when the note carries no THE LEARNING (see the alias-map note).
+    has_learning = any(
+        re.sub(r"\s+", " ", hm.group(1).strip()).upper() == "THE LEARNING"
+        for hm in headers)
+    for i, hm in enumerate(headers):
+        raw_header = hm.group(1)
+        if (re.sub(r"\s+", " ", raw_header.strip()).upper() == "MACHINE"
+                and has_learning):
+            continue
+        canonical = canonical_section(raw_header)
+        if canonical is None:
+            continue
+        start = hm.end()
+        end = headers[i + 1].start() if i + 1 < len(headers) else len(text)
+        body = text[start:end].strip()
+        if sections[canonical]:
+            sections[canonical] += "\n\n" + body
+        else:
+            sections[canonical] = body
     return {"path": path, "title": title, "sn": sn, "topic": topic,
             "created": created, "quote": quote, "sections": sections,
             "text": text}
@@ -216,6 +285,37 @@ def concept_overlap(text, concepts):
     return sum(1 for c in concepts if c in present)
 
 
+_GH_TOKEN = None
+_GH_TOKEN_TRIED = False
+
+
+def gh_token():
+    """The GitHub token for authenticated reads, minted once per run.
+
+    Reuses the file-machine path: gh-direct.py's get_token() mints the
+    app token IN MEMORY (never the 0-byte cache, never printed).
+    Returns None if it cannot be minted — the caller falls back to
+    unauthenticated (60 requests/hour) and says so, instead of failing
+    the run.
+    """
+    global _GH_TOKEN, _GH_TOKEN_TRIED
+    if _GH_TOKEN_TRIED:
+        return _GH_TOKEN
+    _GH_TOKEN_TRIED = True
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "gh_direct",
+            os.path.expanduser("~/workspace/team-nitro/gh-direct.py"))
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        _GH_TOKEN = module.get_token()
+    except Exception as exc:
+        print("gh_json: could not mint a token (%s) — continuing "
+              "unauthenticated" % exc)
+        _GH_TOKEN = None
+    return _GH_TOKEN
+
+
 def gh_json(url, attempts=3):
     """GET a GitHub API URL as JSON, with retries.
 
@@ -229,9 +329,12 @@ def gh_json(url, attempts=3):
     last = None
     for attempt in range(attempts):
         try:
-            req = urllib.request.Request(
-                url, headers={"Accept": "application/vnd.github+json",
-                              "User-Agent": "muse-distill-machine/1.0"})
+            headers = {"Accept": "application/vnd.github+json",
+                       "User-Agent": "muse-distill-machine/1.0"}
+            token = gh_token()
+            if token:
+                headers["Authorization"] = "Bearer %s" % token
+            req = urllib.request.Request(url, headers=headers)
             with urllib.request.urlopen(req, timeout=60) as resp:
                 return resp.status, json.load(resp)
         except urllib.error.HTTPError as exc:
@@ -469,6 +572,19 @@ def main():
                 best, best_key = body, key
         return best or ""
     chosen = {name: best_section(name) for name in SECTIONS}
+
+    # Hook fallback (the variant shape has no Hook): when no input
+    # carries a Hook, the Hook is the centroid Nutshell's first
+    # sentence — the sharpest line in the group. Canonical notes never
+    # reach this (their Hook parses). The gate stays whole: all 9
+    # sections non-empty, no exemption carved into it. (Option (a) —
+    # chosen over (b), the gate exemption, because an empty Hook in the
+    # filed note would be a hole in the note, and a gate that exempts a
+    # whole class of inputs is a gate weakened permanently.)
+    if not chosen["Hook"]:
+        nutshell = centroid["sections"]["Nutshell"].strip()
+        hm = re.search(r"^.*?[.!?](?=\s|$)", nutshell, re.S)
+        chosen["Hook"] = hm.group(0).strip() if hm else nutshell
 
     # --- union items, deduplicated, ranked by overlap ---
     def union_items(name, cap):
