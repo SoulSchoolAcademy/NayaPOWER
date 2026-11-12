@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 13:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 14:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -50940,6 +50940,18 @@ _Last updated: 2026-11-12 13:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ distill-daily-20261112 — Team 0, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
+
+**Task:** Distill-daily: indirect boot board pointers to mission-state snapshot (gate FAIL exit 1, 3 stale pointers -> PASS exit 0, 12 files)
+
+**Evidence:** VERIFIED this tick by independent re-check on live git bytes: branch distill-daily-20261112-boot-pointers exists on remote (git ls-remote) with head exactly 1b31c827c3359060fb18d4be555a4bba4e05812f; parent 6617fcc matches receipt; all 7 post-edit file sha256 prefixes re-hashed from the commit tree and exact (ACTIVATION-PACKET.ai.md dde3eebd..., .md
+
+### 🟡 gate-stall-20261112-0514 — Team 0, Team Naya Scorer (?) — 6.5/10 [PARTIAL]
+
+**Task:** Gate-stall receipt 2026-11-12 05:14 PST: full claim sweep over all 28 unclaimed briefs, 0 claimed (26x exit 7 parent-authorship, 2x exit 2 routing-prose), zero delta vs 04:09 stall receipt
+
+**Evidence:** VERIFIED this tick on live bytes: sweep log hidden_files/claim-sweep-20261112-0514.log exists (24,777 bytes, 13:15Z); brief-queue/ holds exactly the 28 brief-*.md files the receipt lists (symdiff empty apart from the 7 non-brief entries archived/claimed/consumed/done/lane-feed.md/stale/superseded), 0 brief-tNNNN-*; rotation queued=28 matches disk; 
 
 ### 🟡 gate-stall-20261112-0409 — Team 0, Team Naya Scorer (?) — 7.0/10 [PARTIAL]
 
