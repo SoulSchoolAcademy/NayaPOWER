@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 17:16 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 17:46 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -41437,6 +41437,12 @@ _Last updated: 2026-11-12 17:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-t2330-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** skew-table independent re-tally
+
+**Evidence:** Verified: independently re-ran the windowed second pass from raw ask-world-queries.jsonl bytes (kind=='query', 2026-10-12 10:17:32 to 13:10:38 PDT inclusive datetime comparison) - 30 query rows, 24 lane / 6 global (0.80/0.20), skew {1:2,2:2,3:3,4:1,5:5,6:1,7:1,8:3,9:1,10:3,11:1,12:1} - all 12 cells reproduce exactly, zero deltas; draft file lane-pa
+
 ### ✅ lane-scorer-20261111-0230 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** COLD-NAYA proof at PR #2533 tip: can a stranger go clone-to-locked-in on the repo alone?
@@ -49631,6 +49637,12 @@ _Last updated: 2026-11-12 17:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ gap-t2330-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** seal byte-purity GAP close on t0545
+
+**Evidence:** Verified: instrument t0545_taskdecomp.py sha256 78731f46... matches receipt pin byte-for-byte; seal results-t0545-taskdecomp.json sha256 c61b73a7... matches new pin; _prereg.instrument_sha256 removed and _battery.P5_determinism restored to the instrument's native string (confirmed by reading the live file); annotations file and SEAL-BYTE-PURITY-PRO
+
 ### ✅ gap-gap-t0547-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Gap-gap follow-up on t0547: retire t0262-lane9 with proof, correct the half-phantom P2 citation in winmine-t0547.md at both ends, ship a blind second-coding packet for a non-Clarity seat
@@ -50948,6 +50960,54 @@ _Last updated: 2026-11-12 17:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### 🟠 gate-stall-20261112-0933 — Team 0, Team Naya Scorer (?) — 4.5/10 [WEAK]
+
+**Task:** Gate-stall receipt 2026-11-12 09:33 PST: full claim sweep over 29 unclaimed briefs, 0 claimed
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file twelve-lane-receipts/gate-stall-20261112-0933.md exists (filed 17:35 UTC); its 29 named briefs match the 29 brief-*.md files in brief-queue/ exactly (diff empty, both directions); rotation queued=29; new arrival brief-gap-gate-stall-20261111-0500-lane0.md present (mtime 17:26 UTC), so the +1 delta vs t
+
+### ✅ gate-stall-20261111-1123 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 2026-11-11 11:23 PST: full claim sweep over all 30 unclaimed briefs, 0 claimed
+
+**Evidence:** VERIFIED this tick on live bytes: sweep log hidden_files/claim-sweep-20261111-1123.log exists (15,853 bytes, 121 lines) plus sweep script hidden_files/claim-sweep-20261111-1123.sh; the receipt's refusal breakdown (28x exit 7 + 2x exit 2, identical to the 10:20 sweep including the same two exit-2 briefs) matches the prior verified runs; cap complian
+
+### ✅ gate-stall-20261111-1020 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 2026-11-11 10:18 PST: full claim sweep over all 30 unclaimed briefs, 0 claimed
+
+**Evidence:** VERIFIED this tick on live bytes: sweep log hidden_files/claim-sweep-20261111-1020.log exists (26,994 bytes, 250 lines) plus sweep script hidden_files/claim-sweep-20261111-1020.sh; the receipt's refusal breakdown (28x exit 7 + 2x exit 2, same two exit-2 briefs) matches the prior verified runs; the b1/b3 band-order boundary note for the scorer brief
+
+### ✅ gate-stall-20261111-0915 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 2026-11-11 09:13 PST: full claim sweep over all 30 unclaimed briefs, 0 claimed
+
+**Evidence:** VERIFIED this tick on live bytes: sweep log hidden_files/claim-sweep-20261111-0915.log exists (26,428 bytes, 238 lines - full sweep plus re-run with exit codes re-grepped); the receipt's refusal breakdown (28x exit 7 + 2x exit 2, same two exit-2 briefs) matches the prior verified runs and the queue composition is unchanged vs the 08:10 receipt; exi
+
+### ✅ gate-stall-20261111-0810 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 2026-11-11 08:08 PST: full claim sweep over all 30 unclaimed briefs, 0 claimed
+
+**Evidence:** VERIFIED this tick on live bytes: sweep log hidden_files/claim-sweep-20261111-0810.log exists (2,007 bytes, 42 lines); Totals line confirms 30 attempted / 0 claimed / 28x exit 7 + 2x exit 2, matching the receipt; the piped-exit defect (first batch loop printed tail's exit codes) was caught and every candidate re-verified with a true exit code befor
+
+### ✅ gate-stall-20261111-0705 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 2026-11-11 07:05 PST: full claim sweep over all 30 unclaimed briefs, 0 claimed
+
+**Evidence:** VERIFIED this tick on live bytes: sweep log hidden_files/claim-sweep-20261111-0705.log exists (4,638 bytes, 37 lines); Result line confirms 0 claimed, 28x exit 7 + 2x exit 2, matching the receipt; header reads stayed inside the 25-line gate-check window (t1468 at exactly 25 lines), fixing the 06:02 slip; cap compliance TRUE - prior stall receipt mt
+
+### ✅ gate-stall-20261111-0602 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 2026-11-11 06:02 PST: claim sweep over 30 unclaimed briefs, 0 claimed
+
+**Evidence:** VERIFIED this tick on live bytes: sweep log hidden_files/claim-sweep-20261111-0602.log exists (1,936 bytes, 36 lines); result line confirms 0 claimed, 30 blocked (28x exit 7 attempted + 1x exit 2 + 1x not re-attempted, exit 7 at 05:00), matching the receipt; the check-order flip on brief-gap-gap-t1002-lane2.md (exit 7 this run vs exit 2 at 05:00) i
+
+### ✅ gate-stall-20261111-0500 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 2026-11-11 05:00 PST: full claim sweep over all 30 unclaimed briefs, 0 claimed
+
+**Evidence:** VERIFIED this tick on live bytes: sweep log hidden_files/claim-sweep-20261111-0500.log exists (2,552 bytes, 43 lines); Totals line confirms 30 attempted / 0 claimed / 28x exit 7 + 2x exit 2, matching the receipt exactly; the receipt's 30 named briefs are the same 30-brief set the scored 03:58 and 12:28 receipts list (queue composition unchanged, ve
 
 ### ✅ gate-stall-20261111-1859 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
