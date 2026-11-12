@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 07:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 08:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -44877,6 +44877,20 @@ _Last updated: 2026-11-12 07:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ gap-gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12-lane12-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.2/10 [VERIFIED]
+
+**Task:** Gap-gap-gap-gap follow-up on 1610: close the adoption half of the EDIT-ANCHOR RULE gap (prove an independent seat applied it) and/or make the rule mechanical rather than prose-only
+
+**Evidence:** VERIFIED this tick on live bytes: template sha b62d515d253e9100131ffc53e8cc92b9ecf2cda540e8916408df96a281dff184 == receipt post-edit pin exactly; backup sha 3429eed46c3bd0457aeba5b89a2b0167826a1026bde95152e1f8c2bfc63a853f == parent receipt post-edit sha exactly; diff backup->template exactly line 79 changed (one appended gate sentence); EDIT-ANCHOR
+
+### ✅ gap-gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.4/10 [VERIFIED]
+
+**Task:** Gap-gap-gap-gap follow-up on 1610: fold the EDIT-ANCHOR RULE into the lane brief template PART 2 with the 1610 incident as worked example
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12-lane12-lane12.md`
+
+**Evidence:** VERIFIED this tick on live bytes: template sha 3429eed46c3bd0457aeba5b89a2b0167826a1026bde95152e1f8c2bfc63a853f == receipt post-edit pin exactly; backup sha c1508de2cdae2dd344101aa65a5f7b3b87fbba227f6720f4681e6a71fed7e8e7 == pre-edit template; EDIT-ANCHOR count 1 in template; parent receipt scored 9.3 (ledger row present); claim exit 0 + sign-in be
+
 ### ✅ gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.3/10 [VERIFIED]
 
 **Task:** Gap-gap-gap-gap follow-up: repair RED selftest check 1 — FALSIFIER_BLOCK_SHA256 pin mismatch caused by L201 comment inside pinned falsifier span; move comment out, re-verify selftest 6/6 GREEN
@@ -50834,6 +50848,12 @@ _Last updated: 2026-11-12 07:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261111-2352 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 2026-11-11 23:52 PST: drained one brief (1610 EDIT-ANCHOR fold), second-claim sweep over all 28 remaining briefs refused (26x exit 7, 2x exit 2), cap honored
+
+**Evidence:** VERIFIED this tick: sweep log hidden_files/claim-sweep-20261111-2352.log exists on disk; 28 unclaimed brief-*.md files in brief-queue == receipt's 28; rotation queued=27 vs disk 29-at-start drift named in the receipt itself; prior stall receipt gate-stall-20261111-2248.md exists; the drained 1610 brief's receipt exists and was scored 9.4 this tick.
 
 ### ✅ gate-stall-20261111-2133 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
