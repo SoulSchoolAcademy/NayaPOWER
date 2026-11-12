@@ -556,6 +556,8 @@ function renderFeed(items){
     var n = it.note, sc = it.score;
     var ac = TONE_ACCENT[n.tn] || '#a06bff';
     var author = (state.live.authorByIb || {})[n.id] || '';
+    if (author === 'system') author = ''; /* the live table's filer value;
+      a citizen reads it as NayaNET (the meta's fallback below) */
     html += '<article class="board" style="--ac:' + ac + '" data-note="' + esc(n.id) + '">';
     html += '<span class="kind">' + esc(KIND_LABEL[n.k] || 'Smart Note') + ' · ' + esc((n.to || []).join(' · ') || 'NayaNET') + '</span>';
     html += '<h3>' + esc(n.t) + '</h3>';
