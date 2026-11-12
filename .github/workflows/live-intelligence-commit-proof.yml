@@ -510,7 +510,12 @@ jobs:
           import json, os
           i=os.environ["IDX"]
           r=json.load(open(f"independent-lineage-verification-{i}.json"))
-          assert r["independent_verification"] is True, r
+          # Supersede-gate fix 20261112: the raw flag is NOT the gate. It stays
+          # False once the mutable checkpoint has moved past a block, while the
+          # receipt's object-local evidence still binds the lineage. The gate is
+          # lineage_valid (computed just below, escape-aware) — asserted there.
+          # Keeping a raw-flag assert here, in any order, would still fail the
+          # job on every block the checkpoint has passed.
           checks=r["checks"]
           persisted=r["persisted"]
           receipt_evidence=persisted["receipt"].get("evidence",{})
@@ -587,7 +592,12 @@ jobs:
           python - <<'PY'
           import json
           r=json.load(open("independent-lineage-verification.json"))
-          assert r["independent_verification"] is True, r
+          # Supersede-gate fix 20261112: the raw flag is NOT the gate. It stays
+          # False once the mutable checkpoint has moved past a block, while the
+          # receipt's object-local evidence still binds the lineage. The gate is
+          # lineage_valid (computed just below, escape-aware) — asserted there.
+          # Keeping a raw-flag assert here, in any order, would still fail the
+          # job on every block the checkpoint has passed.
           checks=r["checks"]
           persisted=r["persisted"]
           receipt_evidence=persisted["receipt"].get("evidence",{})

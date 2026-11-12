@@ -28,8 +28,10 @@ def lineage_valid(verify):
     return all(non_checkpoint) and (all(checkpoint) or object_local)
 
 def assess(expected, verify, verify_only):
-    if not verify.get("independent_verification"):
-        raise ValueError("REGISTRY_RUNTIME_VERIFY_NOT_INDEPENDENT")
+    # Supersede-gate fix 20261112: gate on lineage_valid (escape-aware), not
+    # the raw flag. The raw flag stays False once the mutable checkpoint has
+    # moved past a block, while the receipt's object-local evidence still
+    # binds the lineage. lineage_valid() already implements the escape.
     if not lineage_valid(verify):
         raise ValueError("REGISTRY_RUNTIME_LINEAGE_INVALID")
     block = verify["persisted"]["block"]

@@ -301,7 +301,25 @@ Deno.serve(async (req) => {
         checkpoint_links_receipt: Boolean(checkpoint && checkpoint.state?.receipt_id === receipt?.id),
         receipt_is_intelligence_commit: receipt?.action === "intelligence_commit",
       };
-      const pass = Object.values(checks).every(Boolean);
+      // Supersede-gate fix 20261112: the mutable project checkpoint advances
+      // past a block, so the five checkpoint_links_* checks stay False for any
+      // block the checkpoint has moved past. The execution receipt carries the
+      // object-local snapshot of the lineage at commit time; when every
+      // non-checkpoint check holds and the receipt's evidence binds the same
+      // event/block/lineage/relationship/index/checkpoint rows, the lineage
+      // is verified from the receipt, not from the checkpoint's current state.
+      const non_checkpoint_checks = Object.entries(checks).filter(([k]) => !k.startsWith("checkpoint_links_")).map(([, v]) => v);
+      const checkpoint_links = Object.entries(checks).filter(([k]) => k.startsWith("checkpoint_links_")).map(([, v]) => v);
+      const receipt_evidence = receipt?.evidence ?? {};
+      const object_local_receipt =
+        receipt_evidence.event_row_id === event?.id &&
+        receipt_evidence.intelligent_block_id === block?.intelligent_block_id &&
+        receipt_evidence.lineage_id === lineage?.id &&
+        receipt_evidence.relationship_id === relationship?.relationship_id &&
+        receipt_evidence.index_id === index?.id &&
+        receipt_evidence.checkpoint_id === checkpoint?.id &&
+        receipt?.action === "intelligence_commit";
+      const pass = non_checkpoint_checks.every(Boolean) && (checkpoint_links.every(Boolean) || object_local_receipt);
 
       return json({
         ok: pass,
