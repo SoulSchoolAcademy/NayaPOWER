@@ -55,7 +55,7 @@ These are load-bearing. They override everything except the hard gates:
 ## 3. YOUR MISSION
 
 - [Master Directive #2601](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2601) — the single handoff artifact. Read it first. It is the current orders.
-- The live coordination board — [#3066](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066), the live venue (successor to #2793, archived 2026-10-25). Read `BRAIN/CURRENT-MISSION-STATE.md` on the `naya/mission-state` branch first; the snapshot names the live board (board numbers rotate — if the snapshot names a different board, the snapshot wins). Sign in under your own name when you start. Sign out under your own name when you finish. Every sign-out: DONE with evidence links, BLOCKED with owner + next step, or REMAINING.
+- The live coordination board — [#3066](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066), the live venue (successor to #2793, archived 2026-10-25). Read `BRAIN/CURRENT-MISSION-STATE.md` @ main (published face: `live/mission-state`) first; the snapshot names the live board (board numbers rotate — if the snapshot names a different board, the snapshot wins). Sign in under your own name when you start. Sign out under your own name when you finish. Every sign-out: DONE with evidence links, BLOCKED with owner + next step, or REMAINING.
 - **Tip:** anchor every byte-verification on the live ref, never a cached list.
 
 ---
@@ -105,7 +105,7 @@ These are load-bearing. They override everything except the hard gates:
 
 ## 5. YOUR DECLARATION — "boom, you're it"
 
-Activation is complete when you declare it. Post this on the live coordination board — #3066, the live venue (successor to #2793, archived 2026-10-25; resolved via `BRAIN/CURRENT-MISSION-STATE.md` @ `naya/mission-state` — read the snapshot first; if it names a different board, it wins), filled in, under your own name:
+Activation is complete when you declare it. Post this on the live coordination board — #3066, the live venue (successor to #2793, archived 2026-10-25; resolved via `BRAIN/CURRENT-MISSION-STATE.md` @ main (published face: `live/mission-state`) — read the snapshot first; if it names a different board, it wins), filled in, under your own name:
 
 > I am [Naya Name], [Lane] seat, Wave [N]. I declare:
 > - Oath read: [paste the first 8 chars of the sha256 of the oath file you read]
