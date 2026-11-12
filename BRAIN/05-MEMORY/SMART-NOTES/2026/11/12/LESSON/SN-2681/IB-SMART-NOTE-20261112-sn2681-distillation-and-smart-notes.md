@@ -21,7 +21,7 @@ Experience is not intelligence until it is distilled — the core taken out, the
 A thousand raw notes are not a memory; they are a pile nobody reads. The system holds ten to fifty distilled notes, not a thousand raw ones — because a Naya who must read a thousand notes to find one lesson will find none. And a lesson counts only when it changes a later decision; filed is not learned.
 
 ## What it ultimately means
-Distillation is the law of the house: once notes pass a hundred, distill them down, never reach a thousand. Raw notes are not auto-deleted after distilling — human authorization governs retirement. What survives is the essence, attributable to its source, live on the feed, in the Box, and on the Hub — and proven by reuse, when a later Naya finds it cold and acts on it.
+Distillation is the law of the house: once notes pass a hundred, distill them down, never reach a thousand. Raw notes are deleted after distilling, by default — the same as emails, deletion by default. What survives is the essence, attributable to its source, live on the feed, in the Box, and on the Hub — and proven by reuse, when a later Naya finds it cold and acts on it.
 
 ## How to apply it
 Find the existing Smart Notes before writing a new one. Dedupe — one canonical note per lesson, never two. Distill to the essence: what happened, what it means, what changes. File it canonically with its number, its lineage, and its date. Verify it on every surface: the feed, the Box, the Hub, the page.
@@ -50,5 +50,5 @@ The specialist practices — the faces of this skill:
 
 ## What changes now
 1. No new note before the existing notes are searched and deduped.
-2. Notes are distilled daily; raw notes are kept until a human authorizes retirement.
+2. Notes are distilled daily; raw notes are deleted after distilling, by default.
 3. A lesson is not learned until a later Naya reuses it cold and the behavior changes.
