@@ -242,10 +242,19 @@ textarea.ph-field{min-height:84px;resize:vertical}
 .ph-cover{width:100%;height:460px;position:relative;overflow:hidden;cursor:pointer;
   background:linear-gradient(135deg,#1a1a3e 0%,#2d1b4e 30%,#4a2b7a 50%,#0f3460 75%,#16537e 100%);}
 .ph-cover img{width:100%;height:100%;object-fit:cover;display:block;position:relative;}
+/* The WINNING cover rule (later in Personal's file — the 460px above never
+   renders): height from the 16/9 band, capped at min(55vh,600px). At 1440x844
+   that is 464px; the phone rule below forces 420px. */
+.ph-cover{height:auto;aspect-ratio:16/9;max-height:min(55vh,600px);background:radial-gradient(560px 240px at 12% -10%,rgba(160,107,255,.5),transparent 60%),radial-gradient(520px 260px at 88% 0%,rgba(232,79,255,.32),transparent 60%),radial-gradient(640px 300px at 55% 118%,rgba(63,184,255,.34),transparent 62%),linear-gradient(135deg,#1a1a3e,#2d1b4e 30%,#4a2b7a 55%,#0f3460 80%,#16537e)}
 .ph-cover-btn{position:absolute;bottom:18px;right:18px;z-index:10;
   background:rgba(0,0,0,.6);border:2px solid rgba(255,255,255,.4);color:#fff;
   padding:12px 22px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;
   backdrop-filter:blur(12px);transition:all .2s;font-family:inherit;}
+/* The WINNING Change-cover position (later in Personal's file): top-right,
+   level with the quick tabs (top:76px) — NOT bottom-right, where it would
+   cover the Settings button. Phone: top:6px. */
+.ph-cover-btn{top:76px;bottom:auto;right:16px}
+@media(max-width:640px){.ph-cover-btn{top:6px;right:10px}}
 .ph-head{display:flex;align-items:flex-end;gap:20px;padding:0 24px;margin-top:-70px;position:relative;z-index:5;flex-wrap:wrap;}
 /* The head is ABSOLUTE at the cover's bottom (Personal's shape — the name,
    tagline and row sit on the cover's lower band, the avatar overlapping its
