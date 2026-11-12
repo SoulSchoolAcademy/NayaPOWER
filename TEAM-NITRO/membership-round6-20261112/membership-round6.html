@@ -4524,7 +4524,7 @@ html.os-calm
   </nav>
 </div>
 
-<div class="os-view on" data-os-view="home" data-block="cover">
+<div class="os-view on" data-block="cover"><!-- ROUND 6 FIX-2: the cover + profile header is the page's persistent header, not a view — it no longer carries data-os-view, so showView never hides it (and the button row with it). The Live Feed below keeps data-os-view="home" and still switches as the home view. -->
 <div class="ph-cover" id="cvr">
 <div class="mw-cover-mships" id="mwCoverMships" aria-label="Memberships"></div>
   <input type="file" id="cvrin" accept="image/*" style="display:none;">
@@ -20254,7 +20254,7 @@ function mwApplyLang(){
     var el=$(id); if(!el) return;
     var en=byId[id];
     var txt=(code==='en')?en:(dict[en]||en);
-    var icon=(el.textContent||'').match(/^(\S+\s)/);
+    var icon=(el.textContent||'').match(/^([^\w'’]+\s)/); /* ROUND 6 FIX-1: only a leading non-word token is an icon — a label that starts with a word ("Today's Intel") is the label, not an icon to re-attach. */
     el.textContent=(icon?icon[1]:'')+txt;
     if(id==='myworldbtn' && code==='en') el.textContent='🌍 My World';
   });
