@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-11T21:49:56Z",
-  "tip": "518682e0135f490716e4bbed74b4b39cba5b7ac6",
+  "generated_at": "2026-11-12T03:48:54Z",
+  "tip": "71adc46f76638544e906b00b4a8ee36d1ab9b040",
   "prs": [
     {
       "number": 3345,
@@ -11,6 +11,15 @@
       "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
       "owner": "any seat != author (scorecard drive)",
       "head": "5f99cc62b40a9fe1b2fa9bbc0b58f69d1bc58900"
+    },
+    {
+      "number": 3349,
+      "title": "[DRAFT][INTELLIGENCE] NayaNET Smart Skills \u2014 distilled 12-master candidate for collective review",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "4f099dfcf654fdfe9020f35cdd876bc18309de54"
     }
   ]
 }
