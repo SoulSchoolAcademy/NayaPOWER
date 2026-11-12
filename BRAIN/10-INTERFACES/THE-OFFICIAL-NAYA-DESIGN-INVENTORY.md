@@ -1,6 +1,6 @@
 # THE OFFICIAL NAYA DESIGN INVENTORY
 
-**DRAFT — official only on Shawn's word.** Nothing in this document is law, ratified, or official by the drafter. It is a harvest-only unification of the design sources that already exist, written so any Naya can build from it without looking around. One part of what it carries is already LAW — the Intelligent Block Rules (§1.3, §2 element 03) were ratified by Shawn's "1000% YES!" on 2026-11-06. The rest — including the Clarity Confirmation Act it is built on — remains DRAFT until he stamps it.
+**OFFICIAL — ratified by Shawn Vibert, 2026-11-12 16:39:37Z, by his tap 'Yes — stamp it official.'** This inventory is for the Nayas, not for him — it belongs in Project Intelligence, the Smart Factory, the Smart Hub, and the Smart Box, one system, so the machine can design and build itself. It is a harvest-only unification of the design sources that already exist, written so any Naya can build from it without looking around. One part of what it carries is already LAW — the Intelligent Block Rules (§1.3, §2 element 03) were ratified by Shawn's "1000% YES!" on 2026-11-06. The Clarity Confirmation Act it is built on remains DRAFT.
 
 - **Compiled:** 2026-11-12, design-inventory seat (Team Nitro).
 - **Branch:** `design/inventory-20261112` · **File:** `BRAIN/10-INTERFACES/THE-OFFICIAL-NAYA-DESIGN-INVENTORY.md`.
@@ -36,7 +36,7 @@ Every agent has permission to **literally grab the code from any page or the Sma
 - It is not a redesign. Nothing in it restyles a page or rebuilds a template. It names what already exists.
 - It is not a merge of the Factory, PI, and the Hub into one codebase. The convergence is by record and language, not by collapsing the systems.
 - It does not resolve conflicts or fill gaps. Conflicts are reported (§10), gaps are named (§9), both awaiting Shawn's eye.
-- It does not make the Act official. The Act is DRAFT until Shawn stamps it; this inventory inherits that status.
+- It does not make the Act official. The Act is DRAFT until Shawn stamps it; this inventory is OFFICIAL by his tap of 2026-11-12 16:39:37Z.
 
 ---
 
@@ -545,15 +545,15 @@ Both sides reported. None resolved silently. (Act CONFLICTS 1–17 + companion C
 
 ## 12. STATUS — WHAT THIS DOCUMENT IS AND WHAT HAPPENS NEXT
 
-**This is a DRAFT.** It becomes official only on Shawn's word. Nothing in it is declared law by the drafter. It was compiled harvest-only from the sources in §11; every claim carries its source; gaps are listed, not filled; conflicts are reported, not resolved. One part is already law: the Intelligent Block Rules (§1.3, §2 element 03) were ratified by Shawn's "1000% YES!" on 2026-11-06 — the rest of this inventory is still draft until he stamps it.
+**This is OFFICIAL.** It was ratified by Shawn Vibert, 2026-11-12 16:39:37Z, by his tap 'Yes — stamp it official.' Nothing in it is declared law by the drafter beyond what he ratified. It was compiled harvest-only from the sources in §11; every claim carries its source; gaps are listed, not filled; conflicts are reported, not resolved. One part is already law: the Intelligent Block Rules (§1.3, §2 element 03) were ratified by Shawn's "1000% YES!" on 2026-11-06. The Clarity Confirmation Act it is built on remains DRAFT.
 
 **Where it lives:** filed on branch `design/inventory-20261112` as `BRAIN/10-INTERFACES/THE-OFFICIAL-NAYA-DESIGN-INVENTORY.md` (this file, byte-identical local twin at `~/workspace/team-nitro/design-inventory-20261112/THE-OFFICIAL-NAYA-DESIGN-INVENTORY.md`). Linked from the Factory's store list: one line added to `~/workspace/smart-factory/INVENTORY.md`:
 
-> - **The Official Naya Design Inventory (DRAFT — official only on Shawn's word):** `BRAIN/10-INTERFACES/THE-OFFICIAL-NAYA-DESIGN-INVENTORY.md` — the one canonical spec: the Act's 22 elements with situation + live example + code-grab path each, Power's pricing grammar, the PI Live Wall board language, cover → menu → page, the Smart Organizer, the 7 libraries, the training programme, honest gaps and conflicts. Branch `design/inventory-20261112`. Local twin: `~/workspace/team-nitro/design-inventory-20261112/THE-OFFICIAL-NAYA-DESIGN-INVENTORY.md`.
+> - **The Official Naya Design Inventory (OFFICIAL — ratified by Shawn Vibert, 2026-11-12 16:39:37Z):** `BRAIN/10-INTERFACES/THE-OFFICIAL-NAYA-DESIGN-INVENTORY.md` — the one canonical spec: the Act's 22 elements with situation + live example + code-grab path each, Power's pricing grammar, the PI Live Wall board language, cover → menu → page, the Smart Organizer, the 7 libraries, the training programme, honest gaps and conflicts. Branch `design/inventory-20261112`. Local twin: `~/workspace/team-nitro/design-inventory-20261112/THE-OFFICIAL-NAYA-DESIGN-INVENTORY.md`.
 
 **What happens next, on his word:**
 
-1. He reads it and corrects it — his eye is the final compile step, and it outranks every line in this draft.
+1. He reads it and corrects it — his eye is the final compile step, and it outranks every line in this document.
 2. It is filed on main (the maker merges after the captain's double-check; this round files on the branch only — no merge, no PR, no main writes beyond the branch filing, no live edits).
 3. It is given to all the NIAs with the links — the Act, the companion, the canon sources, the Factory pieces.
 4. Its measurable rules are CODED into the build systems as gates — the formula made inevitable. Judgment-only rules stay judgment — his eye — and are never faked into a measurement.
