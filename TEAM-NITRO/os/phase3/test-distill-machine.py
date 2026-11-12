@@ -25,6 +25,7 @@ Checks:
 Usage: python3 test-distill-machine.py [--out-dir DIR]
 Exit 0 = all checks PASS. Exit 1 = any check FAIL.
 """
+import importlib.util
 import json
 import os
 import re
@@ -53,7 +54,22 @@ def check(name, ok, detail=""):
 def max_sn_today():
     url = ("https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER"
            "/git/trees/main?recursive=1")
-    req = urllib.request.Request(url, headers={"User-Agent": "muse-distill-test/1.0"})
+    headers = {"Accept": "application/vnd.github+json",
+               "User-Agent": "muse-distill-test/1.0"}
+    # Authenticated read (the distill-machine fix): mint the token once
+    # via gh-direct.py's get_token() — the file-machine path, in
+    # memory, never printed. Falls back to unauthenticated if the token
+    # cannot be minted, exactly as before.
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "gh_direct",
+            os.path.expanduser("~/workspace/team-nitro/gh-direct.py"))
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        headers["Authorization"] = "Bearer %s" % module.get_token()
+    except Exception:
+        pass
+    req = urllib.request.Request(url, headers=headers)
     with urllib.request.urlopen(req, timeout=60) as resp:
         tree = json.load(resp)["tree"]
     pat = re.compile(r"SMART-NOTES/2026/11/08/[^/]+/SN-(\d+)/")
@@ -75,7 +91,7 @@ def main():
         return 1
     proc = subprocess.run(
         [sys.executable, MACHINE, "--inputs"] + inputs +
-        ["--out-dir", out_dir, "--receipt", out_dir],
+        ["--out-dir", out_dir, "--receipt", out_dir, "--date", DATE],
         capture_output=True, text=True, timeout=300)
     print(proc.stdout)
     if proc.stderr:
