@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 14:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 14:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -24648,6 +24648,14 @@ _Last updated: 2026-11-12 14:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0549-lane6.md`
 
 **Evidence:** Artifacts: byte-verified on live disk — feedback-feed.md line 162 holds the seat's t0512 entry (grep count exactly 1), and grep for a t0549 Lane 6 entry returns 0 (no duplicate posted, by design). Work: brief claimed a stale premise ('you're the one seat that hasn't weighed in'); the lane read the bytes, found its own prior verdict already on recor
+
+### ✅ t0549 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE hypertuned lane-packet v2 draft
+
+**Receipt:** `twelve-lane-receipts/t0549-lane4.md`
+
+**Evidence:** VERIFIED this tick: artifact hidden_files/retrieval/smartblocks/lane-packet-v2-hypertuned.md exists on disk and its sha256 matches the receipt's citation byte-for-byte (c90c3815...d3c669b). Receipt is honest: live-bytes re-verification caught a +1 probe row, rec lines quoted verbatim before applying, v1 untouched per receipt. Score 9.0. Kept from 9
 
 ### ✅ t0549 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -50940,6 +50948,12 @@ _Last updated: 2026-11-12 14:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### 🟡 gate-stall-20261112-0618 — Team 0, Team Naya Scorer (?) — 6.0/10 [PARTIAL]
+
+**Task:** Gate-stall receipt 2026-11-12 06:18 PST: full claim sweep over 28 unclaimed briefs, 0 claimed
+
+**Evidence:** VERIFIED this tick on live bytes: sweep log hidden_files/claim-sweep-20261112-0618.log exists (12,388 bytes, 14:22Z); 25 loop attempts 23x EXIT:7 + 2x EXIT:2, plus 3 individually-run attempts (all exit 7) = 26x7 + 2x2 over 28 briefs, 0 claimed; the two EXIT:2 briefs are exactly the two the receipt names; brief-queue/ holds exactly 28 brief-*.md fil
 
 ### ✅ distill-daily-20261112 — Team 0, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
 
