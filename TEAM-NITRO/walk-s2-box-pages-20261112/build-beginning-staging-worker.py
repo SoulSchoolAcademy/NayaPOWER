@@ -48,9 +48,9 @@ welcome_sha = hashlib.sha256(welcome_raw).hexdigest()
 print(f"walk {len(walk_raw)} B sha {walk_sha}")
 print(f"identity {len(ident_raw)} B sha {ident_sha}")
 print(f"welcome {len(welcome_raw)} B sha {welcome_sha}")
-assert walk_sha.startswith("efaec98f"), "walk sha is not the S2 walk sha (F2b fix: custom EDIT+eye nowrap pair)"
-assert ident_sha.startswith("84c2b29a"), "identity sha is not the entry-identity-fix sha"
-assert welcome_sha.startswith("506a0f82"), "welcome sha is not the entry-identity-fix sha"
+assert walk_sha.startswith("16da2b97"), "walk sha is not the END SLIDE 10/10 + NEW-ACCOUNT-FIX walk sha (world cards + deal board + Naya speaks + quote-glow + ingest pair rule)"
+assert ident_sha.startswith("55fdffa8"), "identity sha is not the NEW-ACCOUNT-FIX v3 identity sha (restore gated + heal + certified-name handoff + heal gate)"
+assert welcome_sha.startswith("51b42b87"), "welcome sha is not the NEW-ACCOUNT-FIX welcome sha (other-identities jump-back-in)"
 
 live = open(LIVE_IDENT, encoding="utf-8").read()
 m = re.search(r"var SB_ANON_KEY = '([^']+)';", live)

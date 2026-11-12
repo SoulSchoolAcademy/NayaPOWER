@@ -1,0 +1,26 @@
+{
+  "pass": [
+    "repro setup: fresh entry dial (one input)",
+    "repro setup: entry lands on certificate :: https://naya-walk-beginning-staging.nayapower.workers.dev/identity.html?name=Bug%20Owner",
+    "repro setup: claim lands on the walk :: https://naya-walk-beginning-staging.nayapower.workers.dev/welcome",
+    "repro setup: Q1 shown",
+    "repro setup: ten answers walked",
+    "repro setup: building done (reveal exists)",
+    "repro setup: stored citizen reaches the end slide",
+    "repro setup: stored identity in this browser :: {\"alias\":\"bugowner7\",\"name\":\"Bug Owner\",\"key\":true}",
+    "repro: returning view shown (stored profile present)",
+    "repro: Create a new account reveals the dial",
+    "repro: certificate URL carries the new name whole :: https://naya-walk-beginning-staging.nayapower.workers.dev/identity.html?name=Mike",
+    "DEFECT reproduced: certificate shows the OLD name, not Mike :: {'url': 'https://naya-walk-beginning-staging.nayapower.workers.dev/identity.html?name=Mike', 'displayName': 'Bug Owner', 'status': 'This Smart Name is yours \u2014 welcome back.', 'certNo': '000183', 'link': 'bugowner7.nayanet.app', 'plaqueCertified': True, 'aliasFieldWrapper': 'hidden', 'aliasInputVisible': 'visible', 'aliasInputValue': ''}",
+    "DEFECT reproduced: status says welcome back (old profile) :: This Smart Name is yours \u2014 welcome back.",
+    "DEFECT reproduced: old certificate number painted :: 000183",
+    "DEFECT reproduced: NO alias field to fill in :: {'url': 'https://naya-walk-beginning-staging.nayapower.workers.dev/identity.html?name=Mike', 'displayName': 'Bug Owner', 'status': 'This Smart Name is yours \u2014 welcome back.', 'certNo': '000183', 'link': 'bugowner7.nayanet.app', 'plaqueCertified': True, 'aliasFieldWrapper': 'hidden', 'aliasInputVisible': 'visible', 'aliasInputValue': ''}",
+    "DEFECT reproduced: Enter jumps straight to the end slide (no ten questions) :: https://naya-walk-beginning-staging.nayapower.workers.dev/welcome",
+    "repro console errors :: 0: []",
+    "repro pageerrors :: 0: []"
+  ],
+  "fail": [],
+  "notes": [
+    "pass=18 fail=0"
+  ]
+}

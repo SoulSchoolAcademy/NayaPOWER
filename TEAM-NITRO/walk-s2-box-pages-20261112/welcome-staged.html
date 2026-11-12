@@ -695,6 +695,15 @@ main{
   color:rgba(255,255,255,.55);font-size:13px;letter-spacing:.04em;
   text-decoration:underline;text-underline-offset:3px;}
 .new-account:hover{color:rgba(255,255,255,.9);}
+/* NEW-ACCOUNT FIX (Shawn 22:36Z, 2026-11-12): every identity claimed on
+   this browser stays jump-back-in-able — the new account ADDS, never
+   replaces. The other identities list under the new-account line, same
+   quiet style, one button each. Only rendered when there is another. */
+.returning-others{margin-top:2px;text-align:center;}
+.returning-others[hidden]{display:none!important;}
+.returning-others-label{font-size:13px;color:rgba(255,255,255,.55);margin:0 0 4px;letter-spacing:.04em;}
+.returning-others-list{display:flex;flex-direction:column;align-items:center;gap:8px;}
+.returning-other{display:block;}
 </style>
 </head>
 <body>
@@ -742,6 +751,10 @@ main{
           <div class="returning" id="returningView" hidden>
             <button class="enter" type="button" id="jumpBackIn">Jump back in &rarr;</button>
             <button class="new-account" type="button" id="newAccountLine">New user? Create a new account &mdash; click here</button>
+            <div class="returning-others" id="returningOthers" hidden>
+              <p class="returning-others-label">Also on this device:</p>
+              <div class="returning-others-list" id="returningOthersList"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -977,6 +990,36 @@ main{
     view.hidden=true; form.hidden=false;
     var n=document.getElementById('userName'); if(n){n.focus();}
   });
+  /* NEW-ACCOUNT FIX (Shawn 22:36Z, 2026-11-12): every identity claimed
+     on this browser stays jump-back-in-able — the new account ADDS,
+     never replaces. The current identity seeds the list once; the
+     others render as their own Jump buttons under the new-account
+     line. Only rendered when there is another identity to offer. */
+  try{
+    var idList=[];
+    try{ idList=JSON.parse(localStorage.getItem('nayanet_smart_identities')||'[]')||[]; }catch(e){ idList=[]; }
+    if(!Array.isArray(idList)) idList=[];
+    if(idList.filter(function(it){ return it&&it.alias&&String(it.alias).toLowerCase()===String(alias).toLowerCase(); }).length===0){
+      idList.unshift({alias:alias,name:name||alias});
+      try{ localStorage.setItem('nayanet_smart_identities', JSON.stringify(idList.slice(0,8))); }catch(e){}
+    }
+    var others=idList.filter(function(it){ return it&&it.alias&&String(it.alias).toLowerCase()!==String(alias).toLowerCase(); });
+    var othersBox=document.getElementById('returningOthers');
+    var othersList=document.getElementById('returningOthersList');
+    if(othersBox&&othersList&&others.length){
+      others.forEach(function(it){
+        var b=document.createElement('button');
+        b.type='button'; b.className='new-account returning-other';
+        b.textContent='Jump back in as '+(it.name||it.alias)+' \u2192';
+        b.addEventListener('click',function(){
+          try{ localStorage.setItem('nayanet_smart_alias', it.alias); localStorage.setItem('nayanet_smart_name', it.name||it.alias); }catch(e){}
+          window.location.href='/hub?name='+encodeURIComponent(it.name||it.alias)+'&alias='+encodeURIComponent(it.alias);
+        });
+        othersList.appendChild(b);
+      });
+      othersBox.hidden=false;
+    }
+  }catch(e){}
 })();
 </script>
 </body>

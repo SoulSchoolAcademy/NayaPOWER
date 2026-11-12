@@ -167,7 +167,10 @@ textarea.visionin{padding:10px}
 /* END SLIDE — middle only. Doors reuse the Enter elite grammar (dark, gold-purple rim, depth stack);
    the recommended door glows so the first step reads at a glance. No subs on small screens beyond the
    Dashboard line — the recommendation paragraph above the doors already says it. */
-.p3-congrats{font-size:26px;font-weight:800;letter-spacing:.01em;text-align:center;margin:14px 0 10px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.85),0 0 18px rgba(160,107,255,.45),0 1px 0 rgba(0,0,0,.9),0 -1px 0 rgba(255,255,255,.10)}
+/* END SLIDE 10/10 (F) — the congratulations reads single: the 18px purple blur
+   glow doubled the quote marks at a glance, so the glow is gone. Crisp
+   shadow only; the text itself stays verbatim. */
+.p3-congrats{font-size:26px;font-weight:800;letter-spacing:.01em;text-align:center;margin:14px 0 10px;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.85),0 1px 0 rgba(0,0,0,.9)}
 .p3-welcome{font-size:15px;line-height:1.55;text-align:center;color:#E8E8EC;max-width:620px;margin:0 auto;text-shadow:0 1px 2px rgba(0,0,0,.8)}
 .p3-linkchip{display:flex;align-items:center;gap:10px;max-width:520px;margin:14px auto 0;padding:10px 12px;background:#0a0a10;border:1.5px solid rgba(232,232,236,.35);border-radius:999px;box-shadow:inset 0 2px 8px rgba(0,0,0,.7),0 0 18px rgba(248,247,251,.18)}
 .p3-linkchip svg{width:18px;height:18px;flex:0 0 auto;color:#a06bff}
@@ -250,6 +253,44 @@ textarea.visionin{padding:10px}
 .p3-reco{font-size:12.5px;line-height:1.45}
 .p3-door{padding:8px 18px}
 .p3-doors{gap:4px}
+}
+/* END SLIDE 10/10 — the door's main line is its own span, so renderEnd can put
+   THEIR typed page title on it (A/C: no generic door labels). */
+.p3-door-name{display:block}
+/* END SLIDE 10/10 (A) — YOUR WORLD: three page cards, harvested from the names
+   page boards (purple · green · gold) + the building page cards. Title +
+   one line of THEIR own words + the address; each card is a real click. */
+.p3-world{max-width:520px;margin:24px auto 0;text-align:left}
+.p3-world-title{font-size:17px;font-weight:800;text-align:center;margin:0 0 4px;color:#fff}
+.p3-world-sub{font-size:13.5px;line-height:1.5;text-align:center;color:#fff;margin:0 0 14px}
+.p3-world-card{box-sizing:border-box;display:block;text-decoration:none;color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.02) 60%,rgba(0,0,0,.28));border:1px solid rgba(255,255,255,.22);border-top:3px solid var(--nc,#a06bff);border-radius:16px;padding:16px 18px;margin-bottom:12px;box-shadow:inset 0 2px 3px rgba(255,255,255,.2),inset 0 -3px 8px rgba(0,0,0,.5),0 16px 44px rgba(0,0,0,.65),0 0 30px var(--ncglow,rgba(160,107,255,.16));transition:transform .25s,box-shadow .25s,border-color .25s}
+.p3-world-card:hover,.p3-world-card:focus-visible{transform:translateY(-3px);border-color:var(--nc,#a06bff);box-shadow:inset 0 2px 3px rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 20px 48px rgba(0,0,0,.7),0 0 34px var(--ncglow,rgba(160,107,255,.4)),0 0 60px var(--ncglow,rgba(160,107,255,.25));outline:none}
+.p3-wc-label{font-size:11px;letter-spacing:.22em;font-weight:700;color:var(--nc,#a06bff)}
+.p3-wc-title{display:block;font-size:18px;font-weight:800;margin:6px 0 4px;color:#fff}
+.p3-wc-words{display:block;font-size:14px;line-height:1.55;color:#fff;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.p3-wc-url{display:block;font-size:12.5px;font-family:ui-monospace,Menlo,monospace;color:#fff;margin-top:8px;word-break:break-all}
+/* END SLIDE 10/10 (D) — HERE'S THE DEAL: the Collective Agreement board, after
+   the world, before pricing. Gold top edge (gold is for what matters), same
+   elevated board grammar as the names page. Title + subtitle + nutshell. */
+.p3-deal{box-sizing:border-box;max-width:520px;margin:24px auto 0;text-align:left;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.02) 60%,rgba(0,0,0,.28));border:1px solid rgba(255,255,255,.22);border-top:3px solid #ffbf3d;border-radius:16px;padding:18px;box-shadow:inset 0 2px 3px rgba(255,255,255,.2),inset 0 -3px 8px rgba(0,0,0,.5),0 16px 44px rgba(0,0,0,.65),0 0 30px rgba(255,191,61,.16);transition:transform .25s,box-shadow .25s,border-color .25s}
+.p3-deal:hover,.p3-deal:focus-within{transform:translateY(-3px);border-color:#ffbf3d;box-shadow:inset 0 2px 3px rgba(255,255,255,.35),inset 0 -3px 8px rgba(0,0,0,.5),0 20px 48px rgba(0,0,0,.7),0 0 34px rgba(255,191,61,.4)}
+.p3-deal-title{font-size:19px;font-weight:800;text-align:center;margin:0;color:#fff}
+.p3-deal-sub{font-size:13.5px;line-height:1.5;text-align:center;color:#fff;margin:6px 0 14px}
+.p3-deal-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.p3-deal-list li{font-size:14px;line-height:1.55;color:#fff}
+.p3-deal-list b{color:#fff}
+/* END SLIDE 10/10 (E) — the play button stays lit while Naya is speaking. */
+#step-end .p3-naya-play.playing{border-color:#a06bff;box-shadow:0 0 34px rgba(160,107,255,.7),0 0 60px rgba(160,107,255,.3),inset 0 1.5px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.85)}
+/* END SLIDE 10/10 (G) — one screen on phone: at short phone heights the head
+   tightens so congratulations + link + all five doors still fit above the
+   fold (390x844 already fit; 360x800 missed by 14px before this). */
+@media (max-width:480px) and (max-height:820px){
+#step-end .p3-naya-flank{margin-top:12px}
+#step-end .p3-congrats{font-size:20px;margin:8px 0 6px}
+#step-end .p3-welcome{font-size:13px;line-height:1.45}
+#step-end .p3-linkchip{margin-top:8px;padding:8px 11px}
+#step-end .p3-reco{font-size:12.5px;line-height:1.45;margin-top:8px}
+#step-end .p3-door{padding:9px 18px}
 }
 </style>
 </head>
@@ -754,13 +795,31 @@ textarea.visionin{padding:10px}
 <p class="p3-linkcap">Your own personal branded Smart Link</p>
 <p class="p3-reco">Recommended first &mdash; start here, get your Smart Link. It&rsquo;s your identity, your smart name, your ambassador link, and your tracking, so you can get paid every Wednesday.</p>
 <div class="p3-doors" id="doorRow">
-<button class="p3-door p3-door-rec" type="button" data-door="Dashboard" style="--dc:#a06bff">Your personal dashboard<span class="p3-door-sub">Get your Smart Link &mdash; recommended first</span></button>
-<button class="p3-door" type="button" data-door="Personal" style="--dc:#3fb8ff">Your personal smart app<span class="p3-door-sub">Your page, in your words</span></button>
-<button class="p3-door" type="button" data-door="Business" style="--dc:#2fe89e">Your smart business app<span class="p3-door-sub">What you do and offer</span></button>
-<button class="p3-door" type="button" data-door="Space" style="--dc:#ffbf3d">Your smart space app<span class="p3-door-sub">Your world, your people</span></button>
-<button class="p3-door" type="button" data-door="Hub" style="--dc:#ff9a5a">Your smart hub app<span class="p3-door-sub">Everything, in one place</span></button>
+<button class="p3-door p3-door-rec" type="button" data-door="Dashboard" style="--dc:#a06bff"><span class="p3-door-name">Your personal dashboard</span><span class="p3-door-sub">Get your Smart Link &mdash; recommended first</span></button>
+<button class="p3-door" type="button" data-door="Personal" style="--dc:#3fb8ff"><span class="p3-door-name">Your personal smart app</span><span class="p3-door-sub">Your page, in your words</span></button>
+<button class="p3-door" type="button" data-door="Business" style="--dc:#2fe89e"><span class="p3-door-name">Your smart business app</span><span class="p3-door-sub">What you do and offer</span></button>
+<button class="p3-door" type="button" data-door="Space" style="--dc:#ffbf3d"><span class="p3-door-name">Your smart space app</span><span class="p3-door-sub">Your world, your people</span></button>
+<button class="p3-door" type="button" data-door="Hub" style="--dc:#ff9a5a"><span class="p3-door-name">Your smart hub app</span><span class="p3-door-sub">Everything, in one place</span></button>
 </div>
 <p class="p3-note" id="doorNote" hidden></p>
+<div class="p3-world" id="worldCards">
+<h2 class="p3-world-title">Your world &mdash; built from your own words</h2>
+<p class="p3-world-sub">Tap a card to open that page. Every word on it is yours.</p>
+<a class="p3-world-card" id="worldCard-personal" href="#" style="--nc:#a06bff;--ncglow:rgba(160,107,255,.4)"><span class="p3-wc-label">YOUR PERSONAL PAGE</span><span class="p3-wc-title" id="worldTitle-personal"></span><span class="p3-wc-words" id="worldWords-personal"></span><span class="p3-wc-url" id="worldUrl-personal"></span></a>
+<a class="p3-world-card" id="worldCard-business" href="#" style="--nc:#2fe89e;--ncglow:rgba(47,232,158,.4)"><span class="p3-wc-label">YOUR BUSINESS</span><span class="p3-wc-title" id="worldTitle-business"></span><span class="p3-wc-words" id="worldWords-business"></span><span class="p3-wc-url" id="worldUrl-business"></span></a>
+<a class="p3-world-card" id="worldCard-space" href="#" style="--nc:#ffbf3d;--ncglow:rgba(255,191,61,.4)"><span class="p3-wc-label">YOUR SPACE</span><span class="p3-wc-title" id="worldTitle-space"></span><span class="p3-wc-words" id="worldWords-space"></span><span class="p3-wc-url" id="worldUrl-space"></span></a>
+</div>
+<section class="p3-deal" id="dealBoard" aria-label="Our Collective Agreement">
+<h2 class="p3-deal-title">Here&rsquo;s the deal.</h2>
+<p class="p3-deal-sub">Our Collective Agreement &mdash; the promise we all sign when we join.</p>
+<ul class="p3-deal-list">
+<li><b>What it is:</b> when you join, you sign this agreement &mdash; digitally, the same one we all signed. This is what we do, and what we don&rsquo;t do.</li>
+<li><b>What we do:</b> we build your world from your words, and we keep it yours &mdash; your pages, your people, your Smart Box.</li>
+<li><b>What we don&rsquo;t do:</b> we don&rsquo;t sell your data. There are no ads in this network. We&rsquo;re not reading your mail. We&rsquo;re not reading your instant messages. We&rsquo;re not even keeping them.</li>
+<li><b>How it works:</b> your conversations tidy themselves away on their own &mdash; by default after a week. You can change that to a day, or to a month &mdash; but we never keep them more than a month, max.</li>
+<li><b>Why it matters:</b> but you can save anything &mdash; any conversation, any note, anything. What you save doesn&rsquo;t get lost &mdash; it&rsquo;s locked to you in your Smart Box. That&rsquo;s what makes this different, and powerful, and yours.</li>
+</ul>
+</section>
 <button class="p3-enter" id="pricingBtn" type="button">Choose your package</button>
 <p class="p3-note">See the whole product first, then choose your package — then back to the Hub, where all your pages live.</p>
 <div class="p3-foot"><p class="p3-progress">Welcome complete</p><button class="p3-install" id="installBtn" type="button" aria-label="Install your world as an app"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg></button></div>
@@ -823,8 +882,12 @@ function lsSet(k, v){ try { localStorage.setItem(k, v); } catch(e){} }
     var qp = new URLSearchParams(location.search);
     var qn = (qp.get('name') || '').trim();
     var qa = (qp.get('alias') || '').trim().toLowerCase().replace(/[^a-z0-9-]/g, '');
-    if (qa) lsSet('nayanet_smart_alias', qa);
-    if (qn) lsSet('nayanet_smart_name', qn);
+    /* Pair rule (NEW-ACCOUNT FIX, Shawn 22:36Z): a ?name= is stored ONLY
+       together with its ?alias= — the identity page always hands off the
+       pair. A lone ?name= never overwrites the stored name: the old code
+       persisted any ?name= against the stored alias and poisoned it
+       (bugowner7's stored name became "Mike" in the repro). */
+    if (qa) { lsSet('nayanet_smart_alias', qa); if (qn) lsSet('nayanet_smart_name', qn); }
     if (qn || qa) { try { history.replaceState(null, '', location.pathname + location.hash); } catch(e){} }
   } catch(e){}
 })();
@@ -1239,13 +1302,96 @@ function renderEnd(){
   linkFace.setAttribute('data-real', real);
   linkFace.textContent = 'nayanet.app/' + alias;
   linkFace.setAttribute('aria-label', 'Show your real affiliate link');
+  /* END SLIDE 10/10 (A/C) — THEIR world, presented: the three cards carry
+     THEIR typed titles + one line of THEIR own words, each a real click to
+     the real created page; the doors carry the typed titles too, so the
+     world is presented before the first scroll. Words by the S2 mapping:
+     Personal <- who you are (Q1); Business <- what you do (Q7); Space <-
+     the space you asked for (Q10); each falls back to its nearest own
+     words when that question was skipped — never invented, never generic. */
+  var pn = S.pageNames || {};
+  var P = (S.reveal && S.reveal.pages) || {};
+  var origin = location.origin;
+  var titles = {
+    personal: (pn.personal && pn.personal.title) || alias,
+    business: (pn.business && pn.business.title) || 'My Business',
+    space: (pn.space && pn.space.title) || 'My Space'
+  };
+  var slugs = {
+    personal: (pn.personal && pn.personal.slug) || alias,
+    business: (pn.business && pn.business.slug) || 'business',
+    space: (pn.space && pn.space.slug) || 'space'
+  };
+  var urls = {
+    personal: P.personal || (origin + '/pages/' + alias + '/' + slugs.personal),
+    business: P.business || (origin + '/pages/' + alias + '/' + slugs.business),
+    space: P.space || (origin + '/pages/' + alias + '/' + slugs.space)
+  };
+  var words = {
+    personal: S.answers.about || S.answers.into || '',
+    business: S.answers.biz_do || S.answers.biz_offer || '',
+    space: S.answers.space || S.answers.into || ''
+  };
+  var caps = { personal: 'Personal', business: 'Business', space: 'Space' };
+  ['personal', 'business', 'space'].forEach(function(kind){
+    var card = document.getElementById('worldCard-' + kind);
+    if (card) card.href = urls[kind];
+    var t = document.getElementById('worldTitle-' + kind);
+    if (t) t.textContent = titles[kind];
+    var w = document.getElementById('worldWords-' + kind);
+    if (w) { w.textContent = words[kind]; w.style.display = words[kind] ? '' : 'none'; }
+    var u = document.getElementById('worldUrl-' + kind);
+    if (u) u.textContent = 'nayanet.app/' + alias + '/' + slugs[kind];
+    var door = document.querySelector('[data-door="' + caps[kind] + '"] .p3-door-name');
+    if (door) door.textContent = titles[kind];
+  });
 }
 
 /* --- end slide wiring: end v2's handlers, wording kept --- */
 (function wireEnd(){
   var playBtn = document.getElementById('playBtn-end');
   function playGlow(){ playBtn.classList.add('pending-glow'); setTimeout(function(){ playBtn.classList.remove('pending-glow'); }, 900); }
-  playBtn.addEventListener('click', function(){ playBtn.classList.toggle('show'); playGlow(); });
+  /* END SLIDE 10/10 (E) — Naya speaks the congratulations + the deal, in her
+     voice, from the Voice Memos closing memo (the script). The live voice
+     path is speechSynthesis; the real-voice recording is a later step, named
+     as owed in the record — never faked as done. Tap again to pause. */
+  window.__endSpeech = { state: 'idle', detail: '' };
+  var END_SPEECH = "Hey beautiful soul. Congratulations — you're hired. Welcome to Naya, welcome to the team, welcome to the future. Your world is built — your Personal page, your Business, your Space — all from your own words. And here's the deal: this is our Collective Agreement, the same one we all signed. We don't sell your data. There are no ads in this network. We're not reading your mail, we're not reading your instant messages, we're not even keeping them. Your conversations tidy themselves away after a week — or a day, or a month, your choice — never more than a month. And anything you save is locked to you in your Smart Box. That's what makes this different. Now — pick your first door, and go and see your world.";
+  function endSpeak(){
+    var st = window.__endSpeech;
+    try {
+      if (!('speechSynthesis' in window) || !window.speechSynthesis) {
+        st.state = 'unsupported'; st.detail = 'no speech engine on this device';
+        showEndStatus('Naya\u2019s voice plays on your phone \u2014 her real recording comes next.');
+        return;
+      }
+      if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
+        window.speechSynthesis.cancel();
+        st.state = 'stopped'; st.detail = 'paused by tap';
+        playBtn.classList.remove('playing');
+        playBtn.setAttribute('aria-label', 'Hear it again \u2014 Naya welcomes you');
+        showEndStatus('Paused. Tap play to hear it again.');
+        return;
+      }
+      var u = new SpeechSynthesisUtterance(END_SPEECH);
+      u.onstart = function(){ st.state = 'playing'; st.detail = 'speaking'; };
+      u.onend = function(){
+        st.state = 'ended'; st.detail = 'finished';
+        playBtn.classList.remove('playing');
+        playBtn.setAttribute('aria-label', 'Hear it again \u2014 Naya welcomes you');
+      };
+      u.onerror = function(e){
+        st.state = 'error'; st.detail = (e && e.error) || 'speech error';
+        playBtn.classList.remove('playing');
+      };
+      window.speechSynthesis.speak(u);
+      st.state = 'playing'; st.detail = 'utterance queued: the congratulations + the deal';
+      playBtn.classList.add('playing');
+      playBtn.setAttribute('aria-label', 'Pause \u2014 Naya is speaking');
+      showEndStatus('Naya is speaking \u2014 the congratulations, and the deal.');
+    } catch (e) { st.state = 'error'; st.detail = String(e); }
+  }
+  playBtn.addEventListener('click', function(){ playBtn.classList.toggle('show'); playGlow(); endSpeak(); });
   var doorNote = document.getElementById('doorNote');
   function showEndStatus(text){ if (doorNote._t) clearTimeout(doorNote._t); doorNote.textContent = text; doorNote.hidden = false; doorNote._t = setTimeout(function(){ doorNote.hidden = true; doorNote._t = null; }, 5000); }
   document.getElementById('doorRow').addEventListener('click', function(e){

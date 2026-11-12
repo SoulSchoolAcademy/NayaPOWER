@@ -1407,6 +1407,24 @@ function clearPendingRoute() {
         plaque.classList.add('is-certified');
         var nm = document.getElementById('displayName');
         var certName = certRegalia.name || rawName || prettyName(certRegalia.alias || alias);
+        /* Registry truth heals a poisoned stored name: the row's name is
+           what this identity really claimed as (the walk ingest used to
+           persist any ?name= against the stored alias). The remembered
+           identities list heals with it. The singleton name is healed
+           ONLY when the certified identity IS the stored one: typing
+           another identity's alias certifies THAT identity, and writing
+           its name against the stored alias would poison the singleton
+           the other way round — the entry page jumps back in on the
+           stored pair, so it would jump into the wrong name. The list
+           heals with the correct pair either way. */
+        try {
+          var certAlias = certRegalia.alias || alias;
+          if (certRegalia.name && certRegalia.name !== savedName && certAlias && savedAlias && String(certAlias).toLowerCase() === String(savedAlias).toLowerCase()) {
+            localStorage.setItem('nayanet_smart_name', certRegalia.name);
+            savedName = certRegalia.name;
+          }
+          if (window.rememberIdentity && certRegalia.name) window.rememberIdentity(certRegalia.alias || alias, certRegalia.name);
+        } catch(e){}
         if (nm) { nm.textContent = certName; nm.hidden = !certName; }
         var lk = document.getElementById('displayLink');
         if (lk) { lk.textContent = (certRegalia.alias || alias) + '.nayanet.app'; lk.title = lk.textContent; }
@@ -1545,7 +1563,48 @@ function clearPendingRoute() {
        claimed under a different key must NOT paint "already claimed"
        beneath an empty input — composing carries no claim language
        (Shawn's live shot, 2026-10-21: exactly that wrong state). */
-    if (savedAlias) checkAliasAvailability(savedAlias, true);
+    /* NEW-ACCOUNT FIX (Shawn 22:36Z, 2026-11-12) — the stored profile
+       must NEVER hijack a new name. When this page was reached with a
+       ?name= that names a DIFFERENT person than the stored profile,
+       the silent restore of the old identity is skipped — the page
+       stays composing (alias field open, empty) for the new citizen.
+       A ?name= that matches the stored name, or no ?name= at all,
+       restores as before. A ?name= that names another identity this
+       browser already knows switches the current identity to that one
+       and restores IT. The new account ADDS — the old profile's
+       registry row is never touched, and every identity claimed on
+       this browser is remembered in nayanet_smart_identities so the
+       entry page can jump back into any of them. */
+    var LS_IDENTITIES = 'nayanet_smart_identities';
+    function readIdentities(){
+      try { var l = JSON.parse(localStorage.getItem(LS_IDENTITIES) || '[]'); return Array.isArray(l) ? l : []; } catch(e){ return []; }
+    }
+    function rememberIdentity(alias, name){
+      try {
+        var list = readIdentities().filter(function(it){ return it && it.alias && String(it.alias).toLowerCase() !== String(alias).toLowerCase(); });
+        list.unshift({ alias: alias, name: name || alias });
+        localStorage.setItem(LS_IDENTITIES, JSON.stringify(list.slice(0, 8)));
+      } catch(e){}
+    }
+    window.rememberIdentity = rememberIdentity;
+    /* Seed: identities claimed before this list existed (including the
+       stored one) join it once, so a new claim never loses them. */
+    if (savedAlias) rememberIdentity(savedAlias, savedName || savedAlias);
+    var sameName = function(a, b){ return String(a || '').trim().toLowerCase() === String(b || '').trim().toLowerCase(); };
+    var restoreAlias = savedAlias;
+    if (passedName && !sameName(passedName, savedName)) {
+      /* A name that is not the stored profile's name is a new citizen
+         (or a known other arriving by name): NO restore. The page stays
+         composing — the citizen types their alias, and the live check
+         certifies it as their own when it is. The stored name is never
+         trusted here: it can be poisoned by an old mismatched handoff
+         (the walk ingest used to persist any ?name= against the stored
+         alias — the repro proved it: bugowner7's stored name became
+         "Mike"). Matching by name against a poisonable list misfires;
+         the live alias check is the only truth. */
+      restoreAlias = null;
+    }
+    if (restoreAlias) checkAliasAvailability(restoreAlias, true);
 
 
     /* Live system clock — mission-control time, ticking every second. */
@@ -1572,7 +1631,11 @@ function clearPendingRoute() {
       if (!finalAlias) {
         var plaqueEl = document.getElementById('certPlaque');
         if (savedAlias && plaqueEl && plaqueEl.classList.contains('is-certified')) {
-          window.location.href = walkthroughEntryUrl(rawName || prettyName(savedAlias), savedAlias);
+          /* Re-entering owner: hand off the CERTIFIED identity's own
+             name (the registry truth), never a passed ?name= that may
+             belong to someone else — a mismatched pair here used to
+             poison the stored name in the walk. */
+          window.location.href = walkthroughEntryUrl(savedName || prettyName(savedAlias), savedAlias);
           return;
         }
         var st = document.getElementById('aliasStatus');
@@ -1649,6 +1712,9 @@ function clearPendingRoute() {
           return;
         }
         var createdAt = (result && result.createdAt) || new Date().toISOString();
+        /* The claim landed: this identity joins the browser's remembered
+           identities — the new account ADDS, the old ones stay listed. */
+        try { if (window.rememberIdentity) window.rememberIdentity(finalAlias, finalName); } catch(e){}
         try { if (window.stampCertificate) window.stampCertificate(createdAt, result.certNo); } catch(e){}
         setTimeout(function(){ window.location.href = walkthroughEntryUrl(finalName, finalAlias); }, 800);
       });
