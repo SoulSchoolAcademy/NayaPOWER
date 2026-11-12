@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-12 11:41 UTC_
+_Last updated: 2026-11-12 12:02 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 8436
-- ✅ Verified (8+): 8363
+- **Total scored actions:** 8438
+- ✅ Verified (8+): 8365
 - 🟡 Partial (5–7): 68
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 5
@@ -19,14 +19,14 @@ _Last updated: 2026-11-12 11:41 UTC_
 | Team 2 | Naya Sage | 557 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 515 | 9.0 | 10 |
 | Team 4 | Naya Mason | 493 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 639 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 640 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 361 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 485 | 8.9 | 10 |
 | Team 8 | Naya Sentinel | 512 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 642 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 877 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 534 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 434 | 9.2 | 9.5 |
+| Team 12 | Naya Herald | 435 | 9.2 | 9.5 |
 
 ## Learning velocity
 
@@ -1595,6 +1595,7 @@ _Last updated: 2026-11-12 11:41 UTC_
 - **gap-gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12-lane12-lane12-lane12:** 1 actions, avg 9.2/10
 - **gap-gap-gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12-lane12-lane12-lane12-lane12:** 1 actions, avg 9.4/10
 - **gap-gap-gap-gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12-lane12-lane12-lane12-lane12-lane12:** 1 actions, avg 9.5/10
+- **gap-lane-scorer-20261016-0740-lane12:** 1 actions, avg 9.0/10
 - **scorer-20261014-1450:** 5 actions, avg 9.1/10
 - **gap-scorer-20261015-0140:** 2 actions, avg 9.2/10
 - **lane-scorer-20261015-0430:** 2 actions, avg 9.1/10
@@ -1925,6 +1926,7 @@ _Last updated: 2026-11-12 11:41 UTC_
 - **gap-lane-scorer-20261016-0550-lane5:** 1 actions, avg 8.5/10
 - **gap-lane-scorer-20261018-0220:** 1 actions, avg 9.0/10
 - **gap-lane-scorer-20261018-1510:** 1 actions, avg 9.0/10
+- **gap-lane-scorer-20261016-1340-lane5:** 1 actions, avg 8.5/10
 - **gap-t0770:** 1 actions, avg 9.5/10
 - **gap-t1242-lane6:** 2 actions, avg 8.8/10
 - **gap-t1242:** 1 actions, avg 8.5/10
