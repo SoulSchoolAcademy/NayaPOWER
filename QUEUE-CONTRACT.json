@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-12T09:48:30Z",
-  "tip": "9c2a49ff59b82e1b607c0c49bc87885ea1606e04",
+  "generated_at": "2026-11-12T15:50:01Z",
+  "tip": "7e184ea82f98770e4c09307bf533cace9cb3ee6a",
   "prs": [
     {
       "number": 3345,
@@ -20,6 +20,24 @@
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
       "head": "3cfdc6d87dcd79a397442e820108cc447b7152c2"
+    },
+    {
+      "number": 3353,
+      "title": "test(truth): ratchet registry lifecycle self-contradictions (SN-9998/SN-9999)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "a49fddf9181a92c4a0b442b493b162c2b302c7c0"
+    },
+    {
+      "number": 3354,
+      "title": "safety: cure fresh vanish SN-2670..SN-2683 (capture + registry backfill)",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, completeness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "f87a7276bffbceb0b633eb54805004eab4e501db"
     }
   ]
 }
