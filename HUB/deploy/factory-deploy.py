@@ -5,6 +5,7 @@ Takes HTML file + worker name → deploys → returns live URL.
 """
 
 import json
+import os
 import sys
 import urllib.request
 sys.path.insert(0, "/opt/muse/skills/custom-connector-setup/bin")
