@@ -1,0 +1,195 @@
+{
+  "schema_version": "0.1.0",
+  "kind": "nayanet.public-intelligence-projection.CANDIDATE",
+  "status": "PROPOSED_ONLY_NOT_RATIFIED",
+  "date_utc": "2026-11-12",
+  "purpose": "Machine-readable review companion to report and Google/AI specs. Not an active database schema, publishing job or grant.",
+  "source_authority": {
+    "smart_note_canonical": "existing registered Smart Note and Intelligent Block authority",
+    "page_settings": "HUB/nayanet-page-settings.v1.json",
+    "feeds": "HUB/FEEDS/emit_hub_feeds.py",
+    "intel_today_payline": "BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-07-intel-today.md",
+    "protocol": "PROTOCOL.md and AGENTS.md"
+  },
+  "visibility_eligibility": {
+    "private_default": true,
+    "allow_public_projection_when_all": [
+      "source_note_id_and_revision_current",
+      "explicit_owner_collective_publication_authority_verified",
+      "content_classification_PUBLIC_APPROVED",
+      "rights_and_media_license_verified",
+      "no_private_or_paid_full_content_in_excerpt_or_metadata",
+      "security_and_quality_review_passed",
+      "not_revoked_or_under_moderation",
+      "public_serve_http_deep_link_proof_passed"
+    ],
+    "never_infer_public_from": [
+      "source_exists",
+      "smart_note_filed",
+      "in_internal_feed",
+      "owner_findable_alias",
+      "shared_with_group",
+      "page_title_present",
+      "sitemap_candidate"
+    ],
+    "on_missing_evidence": "HOLD_PRIVATE_NO_EXTERNAL_OUTPUT",
+    "on_revocation": "REMOVE_PUBLIC_PROJECTIONS_INVALIDATE_OWN_CACHES_DENY_CONTENT_RECHECK",
+    "paid_entitlement": "reconcile_FREE_TOP3_PAID_FULL_without_spoiling_paid_content"
+  },
+  "projection_state_machine": {
+    "stages": [
+      "PRIVATE",
+      "INTERNAL_HIGHLIGHT_CANDIDATE",
+      "PUBLICATION_REVIEW",
+      "PUBLIC_APPROVED",
+      "PUBLIC_SERVE_VERIFIED",
+      "PUBLIC_INDEXABLE",
+      "REVOKED"
+    ],
+    "publish_transition_guard": "all visibility_eligibility.allow_public_projection_when_all plus independent verifier and human production authorization as required",
+    "internal_highlight_vs_public": "internal filing may create candidate immediately; public highlight only after PUBLIC_APPROVED and served page proof",
+    "projection_key_fields": [
+      "canonical_note_id",
+      "source_revision",
+      "locale",
+      "projection_type"
+    ],
+    "on_retries": "idempotent_same_revision_no_duplicate_public_article_or_highlight",
+    "cache_policy": "private bytes never enter shared CDN/browser or feed caches",
+    "integrity": "never change source body or grant to satisfy a parser"
+  },
+  "public_output": {
+    "canonical_html": {
+      "required": [
+        "canonical_url",
+        "unique_title",
+        "h1",
+        "visible_nutshell",
+        "useful_visible_sections",
+        "source_and_publisher",
+        "approved_published_at",
+        "real_internal_href_links",
+        "appropriate_public_media",
+        "meta_description"
+      ],
+      "html_on_initial_response": true,
+      "no_generic_shell_http_200": true,
+      "jsonld_only_when_relevant": "Article_or_BlogPosting_matching_visible_source",
+      "no_ai_only_hidden_content": true,
+      "no_auto_fabricated_author_or_publish_dates": true
+    },
+    "intel_today_card": {
+      "required": [
+        "canonical_note_id",
+        "source_revision",
+        "public_title",
+        "visible_approved_nutshell",
+        "approved_topics",
+        "canonical_href",
+        "public_published_at"
+      ],
+      "optional": [
+        "public_image_url",
+        "public_image_alt"
+      ],
+      "no_duplicate_full_article": true,
+      "no_private_derived_keywords": true,
+      "link_type": "html_a_href"
+    },
+    "topic_feed_card": {
+      "same_source_and_revision": true,
+      "only_approved_topics": true,
+      "respect_user_private_match_isolation": true
+    },
+    "images": {
+      "visible_img_src_required_for_discovery": true,
+      "descriptive_filename_and_alt": true,
+      "representative_to_note": true,
+      "license_and_rights_verified": true,
+      "no_private_author_identity": true
+    },
+    "sitemap": {
+      "only_public_indexable_canonicals": true,
+      "accurate_lastmod_material_change_only": true,
+      "content_type": "application/xml",
+      "external_notifications": "IndexNow_optional_Bing_participants_no_Google_instant_promise"
+    },
+    "crawler_policy": {
+      "valid_robots_plain_text": true,
+      "training_bots_not_equivalent_to_search_bots": true,
+      "search_robots": [
+        "Googlebot",
+        "OAI-SearchBot",
+        "Claude-SearchBot"
+      ],
+      "request_fetchers": [
+        "ChatGPT-User",
+        "Claude-User"
+      ],
+      "privacy_is_server_enforcement_not_robots": true
+    }
+  },
+  "validation_cases": [
+    {
+      "id": "HTTP-ROBOTS",
+      "expected": "GET /robots.txt 200 text/plain not HTML"
+    },
+    {
+      "id": "HTTP-SITEMAP",
+      "expected": "GET /sitemap.xml 200 well-formed XML no private URLs"
+    },
+    {
+      "id": "HTTP-NOTE",
+      "expected": "GET real public note 200 initial HTML contains actual visible note"
+    },
+    {
+      "id": "HTTP-PRIVATE",
+      "expected": "GET private note denies body, nutshell, metadata and image; no cache leak"
+    },
+    {
+      "id": "HTTP-NOTFOUND",
+      "expected": "unknown or revoked note not false HTTP 200 generic app shell"
+    },
+    {
+      "id": "METADATA-ALIGN",
+      "expected": "title/description/image/schema match source and visible content"
+    },
+    {
+      "id": "CARD-CANONICAL",
+      "expected": "Intel Today and topic card link to same unique canonical note revision"
+    },
+    {
+      "id": "UNPUBLISH",
+      "expected": "server deny plus removed public feed, sitemap, social image and caches under control"
+    },
+    {
+      "id": "INDEX-ELIGIBLE",
+      "expected": "appropriate crawlers allowed and Google Search Console/Bing tests performed"
+    },
+    {
+      "id": "HUMAN-OUTCOME",
+      "expected": "real person reads, understands, acts and optional share/join tracked with consent"
+    },
+    {
+      "id": "NO-MASS-SPAM",
+      "expected": "no low-value auto pages or keyword stuffed metadata"
+    }
+  ],
+  "live_probe_2026_11_12": {
+    "domain": "nayanet.app",
+    "robots": "HTTP_200_HUB_HTML_NOT_TEXT",
+    "sitemap": "HTTP_200_HUB_HTML_NOT_XML",
+    "sample_note_path": "/s/sn2696",
+    "sample_note": "HTTP_200_ENTRANCE_HTML_NOT_NOTE_IN_FIRST_RESPONSE",
+    "production_fixed": false,
+    "scope": "Read-only HTTP probe, not a global site uptime or search-indexing claim"
+  },
+  "ownership": {
+    "human_director": "approve publication policy, payline changes and protected deployment",
+    "nitro": "UI and visual cards",
+    "blog_search_agent": "public rendering and search technical lane",
+    "feed_agent": "approved public Smart Feed and Intel Today hooks",
+    "law_security": "permissions, private indexes, revocation",
+    "independent_verifier": "end-to-end crawler/privacy/user journey proof"
+  }
+}
