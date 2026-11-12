@@ -212,7 +212,7 @@ button{font-family:inherit;cursor:pointer}
 /* ——— .intel-board — harvested verbatim from the Hub (article.intel-board) ——— */
 .intel-board{--tone:var(--purple);position:relative;border:2px solid color-mix(in srgb,var(--tone) 55%,#fff 14%);border-radius:26px;padding:32px 32px 24px;background:radial-gradient(720px 240px at 50% -8%,color-mix(in srgb,var(--tone) 14%,transparent),transparent 72%),linear-gradient(145deg,var(--bg-raise),var(--bg));box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb,var(--tone) 18%,transparent);overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s}
 .intel-board:hover{transform:translateY(-3px)}
-.intel-board.tone-purple{--tone:var(--purple)} .intel-board.tone-sapphire{--tone:var(--sapphire)} .intel-board.tone-emerald{--tone:var(--emerald)}
+.intel-board.tone-purple{--tone:var(--purple)} .intel-board.tone-blue{--tone:var(--sapphire)} .intel-board.tone-green{--tone:var(--emerald)} .intel-board.tone-sapphire{--tone:var(--sapphire)} .intel-board.tone-emerald{--tone:var(--emerald)}
 .intel-board.tone-indigo{--tone:#6675ff} .intel-board.tone-gold{--tone:#ffd45a} .intel-board.tone-orange{--tone:#ff8c42} .intel-board.tone-ruby{--tone:#ff5e6c} .intel-board.tone-magenta{--tone:#ed42c4}
 .intel-board::before{content:"";position:absolute;left:10px;top:18px;bottom:18px;width:4px;border-radius:4px;background:linear-gradient(180deg,var(--tone),color-mix(in srgb,var(--tone) 70%,#fff 12%),var(--tone));box-shadow:0 0 28px color-mix(in srgb,var(--tone) 55%,transparent);pointer-events:none}
 .intel-board::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(180deg,#ffffff08,transparent 22%)}
@@ -232,7 +232,7 @@ button{font-family:inherit;cursor:pointer}
 .cover .naya-speaks b{color:var(--purple)}
 .menubar{position:sticky;top:0;z-index:10;background:rgba(11,13,18,.96);border-top:1px solid var(--line);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
 .menubar .row{max-width:1060px;margin:0 auto;padding:12px 16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center}
-.menubar a{color:var(--ink);text-decoration:none;font-size:13px;font-weight:700;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:linear-gradient(135deg,#171B25,#0B0D12);box-shadow:inset 0 1px #ffffff2e,0 8px 20px #0009}
+.menubar a{color:var(--ink);text-decoration:none;font-size:13px;font-weight:700;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:linear-gradient(135deg,#171B25,#0B0D12);box-shadow:inset 0 1px #ffffff2e,0 8px 20px #0009;white-space:nowrap;flex:none}
 .menubar a:hover{border-color:var(--purple);box-shadow:inset 0 1px #ffffff2e,0 0 24px #9d75ff66,0 8px 20px #0009}
 .menubar a.join{border-color:var(--gold);color:var(--gold)}
 .page{max-width:1060px;margin:0 auto;padding:40px 24px 64px}
