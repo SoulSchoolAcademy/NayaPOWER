@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-12 06:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-12 07:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -44877,6 +44877,32 @@ _Last updated: 2026-11-12 06:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.3/10 [VERIFIED]
+
+**Task:** Gap-gap-gap-gap follow-up: repair RED selftest check 1 — FALSIFIER_BLOCK_SHA256 pin mismatch caused by L201 comment inside pinned falsifier span; move comment out, re-verify selftest 6/6 GREEN
+
+**Evidence:** VERIFIED this tick on live bytes: runner sha d957847c0c73186867d63d44dfd96a4db91c59a75be2f8d6634600e64731889f == receipt 'after' sha; backup sha d58357940cc7648e9e3fe4e2e245c8bc7e69d92b5268ce55fd16d59c7b9ff162 == receipt 'before' sha; diff backup->current exactly +2/-1 lines (comment moved L201->L187 with guard note, pin line 71 unchanged dd11e88b.
+
+### ✅ gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.2/10 [VERIFIED]
+
+**Task:** Gap-gap-gap follow-up on 1610: attribute runner drift dc228b5f -> d5835794 (2026-10-18 23:40 UTC) from any surviving source, or re-pin as-is stating pre-drift bytes unrecoverable
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12.md`
+
+**Evidence:** VERIFIED this tick on live bytes: runner run_pilot12_battery.py sha d58357940cc7648e9e3fe4e2e245c8bc7e69d92b5268ce55fd16d59c7b9ff162 exact, mtime 2026-10-18 23:40:55 UTC, 14095 bytes, unchanged 25 days; L201 comment verbatim as quoted; falsifier span re-derived independently - live span 1cf7279a8c28c6ce... and span-minus-L201 re-hashes to pin dd11e
+
+### ✅ gap-gap-lane-scorer-20261018-1610-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.4/10 [VERIFIED]
+
+**Task:** Fold F6 falsifier-line convention into lane brief template + two consecutive battery re-runs
+
+**Evidence:** VERIFIED this tick on live bytes: template lane-agent-brief-template.md sha c1508de2cdae2dd344101aa65a5f7b3b87fbba227f6720f4681e6a71fed7e8e7 exact post-edit match with FALSIFIER REPORTING CONVENTION present (grep 1); runner run_pilot12_battery.py sha d58357940cc7648e9e3fe4e2e245c8bc7e69d92b5268ce55fd16d59c7b9ff162 matches the drifted value named; s
+
+### ✅ distill-feed-3066-20261112 — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.0/10 [VERIFIED]
+
+**Task:** Distill #3066 feed (2,306 comments): full snapshot + verified headline threads + PARTIAL distillation
+
+**Evidence:** VERIFIED this tick on live bytes: snapshot feed-3066-comments.jsonl sha256 ee37667c0b4db725dfec606fd86732381134e0302de467364a080fa089e6d71a exact match, 2,306 lines; 24 raw pages in feed-3066-pages/; distillation feed-distillation-3066.md 11,902 bytes; fetch script bin/fetch-feed-3066.py exists. Score 8.0. Why not 9.5: partial slice by design - ful
+
 ### ✅ gap-gap-lane-scorer-20261018-1610-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** gap-followup
@@ -49491,6 +49517,18 @@ _Last updated: 2026-11-12 06:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ gap-gap-t0547-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap follow-up on t0547: retire t0262-lane9 with proof, correct the half-phantom P2 citation in winmine-t0547.md at both ends, ship a blind second-coding packet for a non-Clarity seat
+
+**Evidence:** VERIFIED this tick on live bytes: (1) t0262-lane9.md absent - whole-goal-tree find zero hits; (2) score row line 210 carries receipt_status RETIRED 2026-11-12; backup twelve-lane-scores.backup-20261112-0655.json exists (8,390,202 bytes) and diff vs current shows ONLY line 210 changed plus 3 score rows appended after the backup (legitimate later tic
+
+### ✅ gap-t0547-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on t0547: read remaining 6 of 10 9.5+ receipts in full, cross-seat pattern corroboration, re-verify failed-deliveries leg and brief-embed leg
+
+**Evidence:** VERIFIED: all 5 readable receipts' sha256 match the 2026-10-15 recorded 12-hex prefixes exactly (t1232 f942eeec1452, t0122 8c2a863cae18, t0142 1506a319012e, t0202 e126c76ef385, t0252 a9151bec3c75); t0262-lane9.md absent (whole-tree find 0 hits); winmine-t0547.md sha 3e955de1fd6dc... and winmine-antipatterns-t0552.md sha 0b8cb5cfa414... both match; 
+
 ### ✅ gap-lane-scorer-20261022-0950 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
 **Task:** gap-followup
@@ -50796,6 +50834,18 @@ _Last updated: 2026-11-12 06:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261111-2133 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Lane-executor stall run 2026-11-11 21:28 PST: 27 briefs evaluated, 0 claimed (26x exit 7, 1x exit 2), queue unchanged
+
+**Evidence:** VERIFIED this tick on live bytes: sweep log claim-sweep-20261111-2133.log exists (3220 bytes) and its totals line confirms 27 evaluated / 27 script attempts / 0 claimed / 26 x exit 7 + 1 x exit 2; brief-queue/ holds exactly 27 unclaimed brief-*.md files matching the receipt's list; delta NONE vs the 20:03 receipt. Score 8.5. Why not 9.5: drains not
+
+### ✅ gate-stall-20261111-2248 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall run 2026-11-11 22:48 PST: execute one brief (gap-t0547-lane1) then evaluate all 27 remaining unclaimed briefs, 0 claimed (26x exit 7, 1x exit 2), queue untouched
+
+**Evidence:** VERIFIED: sweep log claim-sweep-20261111-2248.log exists on disk (3498 bytes, 28 exit mentions); brief-queue holds exactly 27 unclaimed brief-*.md files and claimed/brief-gap-t0547-lane1.md exists; the 27 listed briefs match the queue; the delta vs the 21:33 stall receipt is stated plainly (queue gained gap-t0547, this run cleared it). This run dra
 
 ### ✅ gate-stall-20261111-2133 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
