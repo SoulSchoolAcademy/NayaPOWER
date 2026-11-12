@@ -1960,8 +1960,7 @@ body{background:#050507;margin:0;overflow-x:hidden;font-family:Inter,system-ui,s
      the 16:06Z size law (Skills smallest) and the 16:17Z "Join biggest" are overturned.
      Skills takes the uniform flex; only its colour (red) stays. */
   #skillsbtn{flex:1 1 0;min-width:0;max-width:none;}
-  /* F1 — Join NayaNET is the biggest, green, hero — never the smallest.
-     Same height as the row, green glow. Stays at the END (his tap 16:17Z). */
+  /* (F1 "Join biggest" superseded by the uniform row — see A3; Join stays 8th.) */
   /* FEED-CREATOR (Shawn 17:21Z 2026-11-12): Join takes the uniform size — same flex,
      same font, same padding as its row-mates. It stays 8th (end of the action group,
      Settings 9th); only its SIZE changes. Its green glow stays — that is its colour. */
@@ -3948,7 +3947,7 @@ body.fc-open{overflow:hidden;}
 <div class="fc-overlay" id="fcCreator" hidden role="dialog" aria-modal="true" aria-label="Create on this feed">
   <div class="fc-panel ph-card" style="--ac:#a06bff;">
     <button class="fc-x" type="button" id="fcCreatorX" aria-label="Close the creator">✕</button>
-<h3 id="fcTitle"><span class="os-jewel os-jewel-h" id="fcTitleJewel" style="--jc:#a06bff">✦</span> <span id="fcTitleText">Make a post</span></h3>
+<h3 id="fcTitle"><span class="os-jewel os-jewel-h" id="fcTitleJewel" style="--jc:#2fe89e">✦</span> <span id="fcTitleText">Naya note</span></h3>
 <div class="tg-modes" role="group" aria-label="Choose your note type">
 <button type="button" class="tg-mode" data-tg-mode="post" style="--mc:#e8e8ec"><span class="tg-dot"></span>✎ Make a post</button>
 <button type="button" class="tg-mode on" data-tg-mode="naya" style="--mc:#2fe89e"><span class="tg-dot"></span>✎ Naya note</button>
@@ -4887,12 +4886,16 @@ html.os-calm
 </div>
 </div>
 <div class="fc-create-row" id="fcCreateRow" role="group" aria-label="Create on this feed">
-<button type="button" class="tg-mode fc-create" data-tg-mode="post" data-fc-create="post" style="--mc:#e8e8ec"><span class="tg-dot"></span>✎ Make a post</button>
-<button type="button" class="tg-mode fc-create" data-tg-mode="naya" data-fc-create="naya" style="--mc:#2fe89e"><span class="tg-dot"></span>✎ Naya note</button>
-<button type="button" class="tg-mode fc-create" data-tg-mode="smart" data-fc-create="smart" style="--mc:#a06bff"><span class="tg-dot"></span>✦ Smart note</button>
+<button type="button" class="tg-mode fc-create" data-fc-create="post" style="--mc:#e8e8ec"><span class="tg-dot"></span>✎ Make a post</button>
+<button type="button" class="tg-mode fc-create" data-fc-create="naya" style="--mc:#2fe89e"><span class="tg-dot"></span>✎ Naya note</button>
+<button type="button" class="tg-mode fc-create" data-fc-create="smart" style="--mc:#a06bff"><span class="tg-dot"></span>✦ Smart note</button>
 </div>
 <!-- FEED-CREATOR (Shawn 17:21Z): the always-open composer is gone — no open box, no empty
-     note, no massive black space. The three buttons above pop the full-page creator. -->
+     note, no massive black space. The three buttons above pop the full-page creator.
+     SELF-CHECK (round 1): these buttons carry NO data-tg-mode on purpose — they are
+     openers, not mode toggles. tgSetMode toggles .on on every [data-tg-mode] and the
+     page's delegated mode handler fires for any of them, so giving the row buttons
+     the attribute would light one up and leave it lit after the creator closes. -->
 <div class="os-status" id="os-wall-meta"></div>
 <div id="ib-catmount"></div>
 
