@@ -199,8 +199,11 @@ textarea.ph-field{min-height:84px;resize:vertical}
 .nsb-tab.active{border-color:rgba(255,255,255,.5);box-shadow:inset 0 -1px 0 rgba(0,0,0,.5),inset 0 -9px 16px rgba(0,0,0,.42),inset 0 0 0 1px rgba(255,255,255,.3),0 2px 5px rgba(0,0,0,.7),0 14px 32px rgba(0,0,0,.55),0 0 26px rgba(255,255,255,.13);animation:nsbBreathe 4s ease-in-out infinite}
 @keyframes nsbBreathe{0%,100%{filter:brightness(1)}50%{filter:brightness(1.14)}}
 .nsb-jewel{width:29px;height:29px;border-radius:9px;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;font-size:14px;color:#fff;background:linear-gradient(180deg,color-mix(in srgb,var(--tc) 30%,rgba(255,255,255,.1)),color-mix(in srgb,var(--tc) 12%,rgba(0,0,0,.42)));border:1px solid color-mix(in srgb,var(--tc) 55%,rgba(0,0,0,.3));box-shadow:inset 0 2px 5px rgba(0,0,0,.55),inset 0 1px 2px rgba(255,255,255,.12),inset 0 -1px 0 rgba(255,255,255,.18),0 1px 0 rgba(255,255,255,.08);text-shadow:0 0 8px color-mix(in srgb,var(--tc) 75%,#fff),0 1px 2px rgba(0,0,0,.7)}
-/* E4 — THE HEADING, CENTERED. Kicker + title + subtitle read as one centered block;
-   three jewels above it preview the bridge (purple · blue · green). */
+/* E9 (fix, self-check round 3): anchor landings must clear the sticky menu.
+   The menu is 63px tall on desktop, 94px on the phone — without a scroll
+   margin, a tab click lands the section's top edge at the viewport top,
+   BEHIND the menu, and the section's kicker is covered. 100px clears both. */
+.ph-card{scroll-margin-top:100px}
 .ph-hero .ph-kicker,.ph-hero h1,.ph-hero .ph-sub{text-align:center}
 .sh-title-jewels{display:flex;justify-content:center;gap:14px;margin:2px 0 12px}
 @media(max-width:480px){
