@@ -228,14 +228,37 @@ def test_candidate_entries_do_not_require_supersession_evidence():
     assert _retired_entry_violations({"smart_note_id": "SN-Z"}) == []
 
 
+def _canonical_restored_capture(sid):
+    """The restored capture whose stable id is exactly `sid`.
+
+    More than one capture file can match a sid token: SN-0358 has both the
+    canonical v2 capture (smart_note_id "SN-0358", full provenance) and a
+    reconstructed duplicate (smart_note_id "SN-358", empty source). Picking
+    `matches[0]` / `next(glob(...))` reads whichever file the filesystem
+    returns first, so the verdict flips with checkout order — a flaky gate,
+    not a measurement. Select by exact stable id; if no file carries it,
+    fail closed naming the candidates instead of testing an arbitrary file.
+    """
+    token = sid.replace("-", "").lower()
+    matches = sorted(CAPTURE_DIR.glob(f"*{token}*.json"))
+    assert matches, f"{sid} restored capture is missing from {CAPTURE_DIR}"
+    for path in matches:
+        obj = json.loads(path.read_text(encoding="utf-8"))
+        if obj.get("smart_note_id") == sid:
+            return obj
+    names = [p.name for p in matches]
+    raise AssertionError(
+        f"{sid} has no capture carrying its exact stable id; "
+        f"candidates: {names} — the canonical restoration capture is missing, "
+        f"not merely misordered"
+    )
+
+
 def test_restored_objects_retain_their_provenance():
     """A restoration must stay on the record. If someone re-deletes these, or
     strips the provenance that explains the gap, this fails."""
     for sid, deleting_commit in RESTORED_AFTER_DELETION.items():
-        token = sid.replace("-", "").lower()
-        matches = list(CAPTURE_DIR.glob(f"*{token}*.json"))
-        assert matches, f"{sid} restored capture is missing from {CAPTURE_DIR}"
-        obj = json.loads(matches[0].read_text(encoding="utf-8"))
+        obj = _canonical_restored_capture(sid)
         rp = obj.get("source", {}).get("restoration_provenance")
         assert rp, f"{sid} has no restoration_provenance - the deletion gap was erased"
         assert rp.get("status") == "RESTORED_AFTER_UNLICENSED_DELETION"
@@ -256,8 +279,7 @@ def test_ratified_directive_objects_are_not_deleted_as_duplicates():
     asserts the relationship is modelled instead.
     """
     for sid in RESTORED_AFTER_DELETION:
-        token = sid.replace("-", "").lower()
-        obj = json.loads(next(CAPTURE_DIR.glob(f"*{token}*.json")).read_text(encoding="utf-8"))
+        obj = _canonical_restored_capture(sid)
         assert obj.get("source", {}).get("ratification"), (
             f"{sid} is Director-ratified; its ratification provenance must be preserved"
         )
