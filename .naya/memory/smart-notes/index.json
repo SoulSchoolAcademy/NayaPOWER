@@ -44136,7 +44136,7 @@
       "registered_at": "2026-11-12T08:51:25Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-12",
-      "page_hash": "00c1d2112977bef50077fbd351f187db342aa547",
+      "page_hash": "4d80079f600c24c30e4d3c8e59c414dccb4bf8c7ac90855b590254133c0f5baf",
       "content_hash": "25b97111098a543e572ed59ef868f52d829760646d708ed9055faf3485329d82",
       "subtopic": "WELCOME_EMAIL_SERIES",
       "provenance": {
@@ -44173,7 +44173,7 @@
       "registered_at": "2026-11-12T08:51:25Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-12",
-      "page_hash": "3ed22ef8ace3156d75a0dd62df00817c20e0a029",
+      "page_hash": "f1e81b0ceec780d512183ff4b2f7d8c8501f944d16f4343cfd90c614d82008cc",
       "content_hash": "fec9494644ab9903f634f815df8a2d3535fafd0c84704420931624f66c333c8e",
       "subtopic": "POWER_COST",
       "provenance": {
@@ -44210,7 +44210,7 @@
       "registered_at": "2026-11-12T08:51:25Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-12",
-      "page_hash": "13f45ab35c837868dd3f2d3b4585017a9fc4b1d6",
+      "page_hash": "b1de48132302e6111c8a6cbb0a17b0943b0b3c6f89c1bf21e0709cc73e54291f",
       "content_hash": "8829f30ace45377c171a0d7fe505b57c8a882ae177e7f34987207250ece2610e",
       "subtopic": "INVITE_AND_EARN",
       "provenance": {
@@ -44247,7 +44247,7 @@
       "registered_at": "2026-11-12T08:51:25Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-12",
-      "page_hash": "ed6f8f31a9d5385a0124fc617afb77ccea25d132",
+      "page_hash": "372c12680f7f4bcf5a444cd277d436bbf68018d1788a3001653d3175da1ace2f",
       "content_hash": "1857f1bc32cb4afc2116cf24b6962ebcf45e2b32d4c7c0cd13783f3eb4b3eea0",
       "subtopic": "AUTO_MATCH_CONNECT",
       "provenance": {
@@ -44284,7 +44284,7 @@
       "registered_at": "2026-11-12T08:51:25Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-12",
-      "page_hash": "237af981eb80c29a031ec98244db994488e1b597",
+      "page_hash": "646c0f4c493f29553040e76f7f6180a50afbdecfa57ee26d064083623286a1c2",
       "content_hash": "d6ec324e917debea2fbd0364c6157be9c78a1ccbfae682791d773175df6cca47",
       "subtopic": "DASHBOARD_OVERVIEW",
       "provenance": {
@@ -44588,5 +44588,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "589eafe5ae15ef457c72a45f321c5fef86c6133ae2c5a9d1465a4db5eb82ad4f"
+  "corpus_manifest_hash": "bec349ae590ffb9c684ad93286e7cba2d8b32fbf50b17537c4748435af81d517"
 }
