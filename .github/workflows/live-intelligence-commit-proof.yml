@@ -227,6 +227,7 @@ jobs:
                         python tools/live_intelligence_reconcile.py validate-supersede --expected "smart-note-expected${sfx}.json" --old-verify "registry-runtime-verification${sfx}.json" --response "supersede-response${sfx}.json" --out "supersession-reconciliation${sfx}.json"
                       else
                         echo "REGISTRY_RUNTIME_SUPERSESSION_HTTP_${supersede_http_code}${sfx}: $(python3 -c 'import json,re,sys; o=json.load(open(sys.argv[1])); raw=str(o.get("error") or o.get("reason") or o.get("message") or ""); code=str(o.get("code") or ""); m=re.search(r"\"message\"\s*:\s*\"([A-Z][A-Z0-9_:-]{2,96})\"",raw); token=m.group(1) if m else (raw if re.fullmatch(r"[A-Z][A-Z0-9_:-]{2,96}",raw) else "NON_MACHINE_ERROR"); print(json.dumps({"code":code[:32],"message":token}))' "supersede-response${sfx}.json")"
+                        echo "REGISTRY_RUNTIME_SUPERSESSION_PGCODE${sfx}: $(python3 -c 'import re,sys; raw=open(sys.argv[1]).read(); m=re.search(r"code\\?\"\s*:\s*\\?\"([0-9A-Z]{5})",raw); print(m.group(1) if m else "NO_PGCODE")' "supersede-response${sfx}.json")"
                         capture_ok=0
                       fi
                     else
@@ -390,6 +391,7 @@ jobs:
               supersede_http_code="$(curl -sS --connect-timeout 10 --max-time 30 -o supersede-response.json -w '%{http_code}' -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @supersede-request.json "$RUNTIME_FUNCTION" 2>supersede-stderr.txt)" || { echo "REGISTRY_RUNTIME_SUPERSESSION_CURL_FAILED: $(cat supersede-stderr.txt)"; exit 1; }
               if [[ ! "$supersede_http_code" =~ ^2[0-9][0-9]$ ]]; then
                 echo "REGISTRY_RUNTIME_SUPERSESSION_HTTP_${supersede_http_code}: $(python3 -c 'import json,re,sys; o=json.load(open(sys.argv[1])); raw=str(o.get("error") or o.get("reason") or o.get("message") or ""); code=str(o.get("code") or ""); m=re.search(r"\"message\"\s*:\s*\"([A-Z][A-Z0-9_:-]{2,96})\"",raw); token=m.group(1) if m else (raw if re.fullmatch(r"[A-Z][A-Z0-9_:-]{2,96}",raw) else "NON_MACHINE_ERROR"); print(json.dumps({"code":code[:32],"message":token}))' supersede-response.json)"
+                echo "REGISTRY_RUNTIME_SUPERSESSION_PGCODE: $(python3 -c 'import re,sys; raw=open(sys.argv[1]).read(); m=re.search(r"code\\?\"\s*:\s*\\?\"([0-9A-Z]{5})",raw); print(m.group(1) if m else "NO_PGCODE")' supersede-response.json)"
                 exit 1
               fi
               python tools/live_intelligence_reconcile.py validate-supersede --expected smart-note-expected.json --old-verify registry-runtime-verification.json --response supersede-response.json --out supersession-reconciliation.json
