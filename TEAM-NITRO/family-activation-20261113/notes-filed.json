@@ -1,0 +1,110 @@
+{
+  "sophia": {
+    "blob": "553c01468076e9a1ca06864137f54e39fbadaca9",
+    "time": "2026-11-13 03:08Z",
+    "local_copy": true,
+    "box_block_expected": "shawn:note:note-sophia-is-live-learn-first-citizen",
+    "hook_output_mentions_block": true,
+    "box_block_corrected": "file-notes.py expected shawn:note:note-family-<alias>, which the hook never produces; the hook derives the id from the note title. Corrected to the real id, verified in boxes/shawn/blocks.jsonl and in the hook's own JSON output (12 files new, 12 organized). Hook run at its real path ~/workspace/team-nitro/smart-box/organize_hook.py \u2014 the path in file-notes.py (~/workspace/smart-box/organize_hook.py) does not exist.",
+    "hook_run": "2026-11-13T03:10Z, real path, files_new=12 organized=12"
+  },
+  "thea": {
+    "blob": "36e63d3784c9d5be894b2fe6262aba0fffdd05e9",
+    "time": "2026-11-13 03:08Z",
+    "local_copy": true,
+    "box_block_expected": "shawn:note:note-thea-is-live-know-first-citizen",
+    "hook_output_mentions_block": true,
+    "box_block_corrected": "file-notes.py expected shawn:note:note-family-<alias>, which the hook never produces; the hook derives the id from the note title. Corrected to the real id, verified in boxes/shawn/blocks.jsonl and in the hook's own JSON output (12 files new, 12 organized). Hook run at its real path ~/workspace/team-nitro/smart-box/organize_hook.py \u2014 the path in file-notes.py (~/workspace/smart-box/organize_hook.py) does not exist.",
+    "hook_run": "2026-11-13T03:10Z, real path, files_new=12 organized=12"
+  },
+  "zoe": {
+    "blob": "0a3aae16bdc877c3f32d672cb80f20486c7b1dd6",
+    "time": "2026-11-13 03:08Z",
+    "local_copy": true,
+    "box_block_expected": "shawn:note:note-zoe-is-live-act-first-citizen",
+    "hook_output_mentions_block": true,
+    "box_block_corrected": "file-notes.py expected shawn:note:note-family-<alias>, which the hook never produces; the hook derives the id from the note title. Corrected to the real id, verified in boxes/shawn/blocks.jsonl and in the hook's own JSON output (12 files new, 12 organized). Hook run at its real path ~/workspace/team-nitro/smart-box/organize_hook.py \u2014 the path in file-notes.py (~/workspace/smart-box/organize_hook.py) does not exist.",
+    "hook_run": "2026-11-13T03:10Z, real path, files_new=12 organized=12"
+  },
+  "astraea": {
+    "blob": "c7445e4922680e35412414cd34dc3ec2b5a04e5a",
+    "time": "2026-11-13 03:08Z",
+    "local_copy": true,
+    "box_block_expected": "shawn:note:note-astraea-is-live-law-first-citizen",
+    "hook_output_mentions_block": true,
+    "box_block_corrected": "file-notes.py expected shawn:note:note-family-<alias>, which the hook never produces; the hook derives the id from the note title. Corrected to the real id, verified in boxes/shawn/blocks.jsonl and in the hook's own JSON output (12 files new, 12 organized). Hook run at its real path ~/workspace/team-nitro/smart-box/organize_hook.py \u2014 the path in file-notes.py (~/workspace/smart-box/organize_hook.py) does not exist.",
+    "hook_run": "2026-11-13T03:10Z, real path, files_new=12 organized=12"
+  },
+  "vera": {
+    "blob": "5460cf69db541e478ceef99d85558c475245daa0",
+    "time": "2026-11-13 03:08Z",
+    "local_copy": true,
+    "box_block_expected": "shawn:note:note-vera-is-live-verify-first-citizen",
+    "hook_output_mentions_block": true,
+    "box_block_corrected": "file-notes.py expected shawn:note:note-family-<alias>, which the hook never produces; the hook derives the id from the note title. Corrected to the real id, verified in boxes/shawn/blocks.jsonl and in the hook's own JSON output (12 files new, 12 organized). Hook run at its real path ~/workspace/team-nitro/smart-box/organize_hook.py \u2014 the path in file-notes.py (~/workspace/smart-box/organize_hook.py) does not exist.",
+    "hook_run": "2026-11-13T03:10Z, real path, files_new=12 organized=12"
+  },
+  "wren": {
+    "blob": "f02813961d587a574f898f6437a4c9b438857e27",
+    "time": "2026-11-13 03:08Z",
+    "local_copy": true,
+    "box_block_expected": "shawn:note:note-wren-is-live-build-first-citizen",
+    "hook_output_mentions_block": true,
+    "box_block_corrected": "file-notes.py expected shawn:note:note-family-<alias>, which the hook never produces; the hook derives the id from the note title. Corrected to the real id, verified in boxes/shawn/blocks.jsonl and in the hook's own JSON output (12 files new, 12 organized). Hook run at its real path ~/workspace/team-nitro/smart-box/organize_hook.py \u2014 the path in file-notes.py (~/workspace/smart-box/organize_hook.py) does not exist.",
+    "hook_run": "2026-11-13T03:10Z, real path, files_new=12 organized=12"
+  },
+  "iris": {
+    "blob": "ba607c1429b4b8942af11746f65972e30763c8e1",
+    "time": "2026-11-13 03:08Z",
+    "local_copy": true,
+    "box_block_expected": "shawn:note:note-iris-is-live-wire-first-citizen",
+    "hook_output_mentions_block": true,
+    "box_block_corrected": "file-notes.py expected shawn:note:note-family-<alias>, which the hook never produces; the hook derives the id from the note title. Corrected to the real id, verified in boxes/shawn/blocks.jsonl and in the hook's own JSON output (12 files new, 12 organized). Hook run at its real path ~/workspace/team-nitro/smart-box/organize_hook.py \u2014 the path in file-notes.py (~/workspace/smart-box/organize_hook.py) does not exist.",
+    "hook_run": "2026-11-13T03:10Z, real path, files_new=12 organized=12"
+  },
+  "ruth": {
+    "blob": "5529fadbdf1e4540c02491e4b9fbaf0fe3b827a4",
+    "time": "2026-11-13 03:08Z",
+    "local_copy": true,
+    "box_block_expected": "shawn:note:note-ruth-is-live-team-first-citizen",
+    "hook_output_mentions_block": true,
+    "box_block_corrected": "file-notes.py expected shawn:note:note-family-<alias>, which the hook never produces; the hook derives the id from the note title. Corrected to the real id, verified in boxes/shawn/blocks.jsonl and in the hook's own JSON output (12 files new, 12 organized). Hook run at its real path ~/workspace/team-nitro/smart-box/organize_hook.py \u2014 the path in file-notes.py (~/workspace/smart-box/organize_hook.py) does not exist.",
+    "hook_run": "2026-11-13T03:10Z, real path, files_new=12 organized=12"
+  },
+  "terra": {
+    "blob": "9900b511d9a5673cd20bb1bc986682ac1896d83d",
+    "time": "2026-11-13 03:08Z",
+    "local_copy": true,
+    "box_block_expected": "shawn:note:note-terra-is-live-infra-first-citizen",
+    "hook_output_mentions_block": true,
+    "box_block_corrected": "file-notes.py expected shawn:note:note-family-<alias>, which the hook never produces; the hook derives the id from the note title. Corrected to the real id, verified in boxes/shawn/blocks.jsonl and in the hook's own JSON output (12 files new, 12 organized). Hook run at its real path ~/workspace/team-nitro/smart-box/organize_hook.py \u2014 the path in file-notes.py (~/workspace/smart-box/organize_hook.py) does not exist.",
+    "hook_run": "2026-11-13T03:10Z, real path, files_new=12 organized=12"
+  },
+  "esme": {
+    "blob": "a0e6bd78ab5ee2e408fb27c6dfce30f40aca38d6",
+    "time": "2026-11-13 03:08Z",
+    "local_copy": true,
+    "box_block_expected": "shawn:note:note-esme-is-live-product-first-citizen",
+    "hook_output_mentions_block": true,
+    "box_block_corrected": "file-notes.py expected shawn:note:note-family-<alias>, which the hook never produces; the hook derives the id from the note title. Corrected to the real id, verified in boxes/shawn/blocks.jsonl and in the hook's own JSON output (12 files new, 12 organized). Hook run at its real path ~/workspace/team-nitro/smart-box/organize_hook.py \u2014 the path in file-notes.py (~/workspace/smart-box/organize_hook.py) does not exist.",
+    "hook_run": "2026-11-13T03:10Z, real path, files_new=12 organized=12"
+  },
+  "mira": {
+    "blob": "12707fc0af7b1d7003380e276d22a542bc5e0896",
+    "time": "2026-11-13 03:08Z",
+    "local_copy": true,
+    "box_block_expected": "shawn:note:note-mira-is-live-memory-first-citizen",
+    "hook_output_mentions_block": true,
+    "box_block_corrected": "file-notes.py expected shawn:note:note-family-<alias>, which the hook never produces; the hook derives the id from the note title. Corrected to the real id, verified in boxes/shawn/blocks.jsonl and in the hook's own JSON output (12 files new, 12 organized). Hook run at its real path ~/workspace/team-nitro/smart-box/organize_hook.py \u2014 the path in file-notes.py (~/workspace/smart-box/organize_hook.py) does not exist.",
+    "hook_run": "2026-11-13T03:10Z, real path, files_new=12 organized=12"
+  },
+  "aurelia": {
+    "blob": "fa79385c3e5415e77965876d3a5698d6031af430",
+    "time": "2026-11-13 03:08Z",
+    "local_copy": true,
+    "box_block_expected": "shawn:note:note-aurelia-is-live-govern-first-citizen",
+    "hook_output_mentions_block": true,
+    "box_block_corrected": "file-notes.py expected shawn:note:note-family-<alias>, which the hook never produces; the hook derives the id from the note title. Corrected to the real id, verified in boxes/shawn/blocks.jsonl and in the hook's own JSON output (12 files new, 12 organized). Hook run at its real path ~/workspace/team-nitro/smart-box/organize_hook.py \u2014 the path in file-notes.py (~/workspace/smart-box/organize_hook.py) does not exist.",
+    "hook_run": "2026-11-13T03:10Z, real path, files_new=12 organized=12"
+  }
+}
