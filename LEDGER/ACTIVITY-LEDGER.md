@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-13 13:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-13 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -41513,6 +41513,12 @@ _Last updated: 2026-11-13 13:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ distill-daily-20261113 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** distill-daily 2026-11-13: boot-pointer machine gate FAIL->PASS; 8 stale pointers in 4 BRAIN/00-ACTIVATION files replaced with snapshot-wins indirection; PR #3359
+
+**Evidence:** Verified: branch naya4/distill-daily-20261113-boot-pointers exists on remote at exact head f0fc0d32595c0b42f071fc63a47cd0b04d1a0bb3 (git ls-remote); parent is main tip 8f2af98 as claimed; diff HEAD~1..HEAD is exactly 4 files +6/-6 with the 8 intended edits (READ-ME-FIRST.ai.md:28, ACTIVATION-PACKET.md:57,114, ACTIVATION-PACKET.ai.md:37,57, THE-CREE
+
 ### ✅ gap-scorer-20261015-0120-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: blended frequency+miss composite + '89+' diagnosis (parent t0403-lane4, 9.3)
@@ -51178,6 +51184,12 @@ _Last updated: 2026-11-13 13:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261113-0605 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-13 06:05 PST: full 30/30 claim sweep, 0 claimed, all refused
+
+**Evidence:** Verified: receipt read in full; claim-sweep-20261113-0605.log exists (26,844 bytes) with exactly 30 === ATTEMPT lines, 28 exit=7 + 2 exit=2, 0 exit=0, lane-scorer brief included (the 0238/0453 log-coverage defect stays closed); brief-queue/ holds exactly 30 brief-*.md files, matching the receipt's count and the twelve-lane-rotation.json queued list
 
 ### ✅ gate-stall-20261113-0458 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
