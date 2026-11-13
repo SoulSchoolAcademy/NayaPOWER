@@ -1,0 +1,87 @@
+{
+  "ok": true,
+  "alias": "sppw1",
+  "box": {
+    "table": "citizen_worlds",
+    "alias": "sppw1",
+    "name": "SPP Walk One",
+    "answers": {
+      "about": "I am June. I keep a small garden and I teach my neighbours to grow food.",
+      "into": "I am into growing food - the moment a seed becomes dinner.",
+      "vision": "A street where every family grows something and shares it.",
+      "mission": "To teach ten families on my street to grow their own food.",
+      "motto": "Grow a little every day and share what grows.",
+      "goal": "To own a small greenhouse and give my children fresh food all year.",
+      "biz_do": "I bake bread for my neighbours every Saturday morning.",
+      "biz_offer": "Fresh bread made to order, still warm, at your door on Saturday.",
+      "biz_building": "I am building a small bakery. The goal is twenty regular customers by Christmas.",
+      "space": "A space for growers and bakers. I want to meet everyone who grows or bakes."
+    },
+    "topics": [],
+    "settings": {
+      "pageNames": {
+        "personal": {
+          "title": "sppw1",
+          "slug": "sppw1"
+        },
+        "business": {
+          "title": "SPP Bakery",
+          "slug": "spp-bakery"
+        },
+        "space": {
+          "title": "The SPP Garden",
+          "slug": "the-spp-garden"
+        }
+      }
+    },
+    "project_id": "7a352c43-5d00-4a89-99f9-be6ebb2dcb5f",
+    "store": "kv-fallback",
+    "note": "citizen_worlds insert refused: 401 new row violates row-level security policy for table \"citizen_worlds\"",
+    "created_at": "2026-11-13T05:14:02.768Z",
+    "updated_at": "2026-11-13T05:14:02.768Z"
+  },
+  "box_count": 1,
+  "project_rows": [
+    {
+      "id": "7a352c43-5d00-4a89-99f9-be6ebb2dcb5f",
+      "owner_alias": "sppw1",
+      "name": "sppw1",
+      "motto": "Grow a little every day and share what grows.",
+      "created_at": "2026-11-13T05:14:05.373158+00:00"
+    }
+  ],
+  "project_count": 1,
+  "live_pages": [],
+  "pages": [
+    {
+      "table": "page_about",
+      "page_kind": "personal",
+      "page_alias": "sppw1",
+      "owner_alias": "sppw1",
+      "headline": "sppw1",
+      "body": "## Nutshell\nI am June. I keep a small garden and I teach my neighbours to grow food.\n\n## Why it matters\nI am into growing food - the moment a seed becomes dinner.\n\n## What it means\nA street where every family grows something and shares it.\n\n## How to apply it\nTo teach ten families on my street to grow their own food.\nTo own a small greenhouse and give my children fresh food all year.\n\n## What's in it for you\nGrow a little every day and share what grows.\n",
+      "store": "kv-fallback",
+      "updated_at": "2026-11-13T05:14:02.768Z"
+    },
+    {
+      "table": "page_about",
+      "page_kind": "business",
+      "page_alias": "spp-bakery",
+      "owner_alias": "sppw1",
+      "headline": "SPP Bakery",
+      "body": "## Nutshell\nI bake bread for my neighbours every Saturday morning.\n\n## Why it matters\nFresh bread made to order, still warm, at your door on Saturday.\n\n## What it means\nI am building a small bakery. The goal is twenty regular customers by Christmas.\n\n## The vision\nA street where every family grows something and shares it.\n\n## How to apply it\nTo teach ten families on my street to grow their own food.\n",
+      "store": "kv-fallback",
+      "updated_at": "2026-11-13T05:14:02.768Z"
+    },
+    {
+      "table": "page_about",
+      "page_kind": "space",
+      "page_alias": "the-spp-garden",
+      "owner_alias": "sppw1",
+      "headline": "The SPP Garden",
+      "body": "## Nutshell\nA space for growers and bakers. I want to meet everyone who grows or bakes.\n\n## Why it matters\nI am into growing food - the moment a seed becomes dinner.\n\n## What it means\nA street where every family grows something and shares it.\n\n## The mission\nTo teach ten families on my street to grow their own food.\n\n## What's in it for you\nGrow a little every day and share what grows.\n",
+      "store": "kv-fallback",
+      "updated_at": "2026-11-13T05:14:02.768Z"
+    }
+  ]
+}
