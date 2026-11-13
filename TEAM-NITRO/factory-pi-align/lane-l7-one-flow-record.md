@@ -162,7 +162,7 @@ Re-ran the counts on the on-disk FLOW file: ids step1–step6 exactly once each;
 Re-read `before2.json`, `before-mine.json`, `after.json`, `after-mine.json`, `navtest.json` line by line and confirmed every number cited in this record. Ran `check-gate.py` on both files. **New findings:** the gate count is exactly 18/18 identical (no new findings); the local BASE file differs from main's BASE bytes by 114 B (the record now names it); the first probe's cart failure is flake, proven by two independent passing cart tests; the VM browsers died again ~01:43Z, which killed the timing test — named in the record, not hidden.
 
 **Round 3 — the filing (done at PUT time, before the report to the captain).**
-Re-checked main HEAD, both blob SHAs, and the branch state immediately before creating the branch and filing; read back every PUT and confirmed the bytes on the branch. Findings recorded below in the Filing section.
+Re-checked main HEAD (moved 09c59280 → 091961ba between Step 1 and filing; the FLOW file's blob on main was unchanged, still `ca85f2dc…`), created the branch from the current HEAD, filed the three files one at a time, and read back every PUT from the branch. **New findings:** main HEAD moves under the lane while the Factory file stands still — the branch must be cut from the HEAD at filing time, not the HEAD at Step 1 time; the EPERM flake was active for file writes at 01:44–01:46Z (python + `cat` writes refused, 0-byte files left behind and removed) while GitHub writes and the record write went through — the flake is per-path and per-moment, not a stop. Read-back confirmed all three files byte-exact on the branch (see Filing).
 
 ## The seven pre-merge questions (answered IN WRITING)
 
@@ -185,7 +185,15 @@ Re-checked main HEAD, both blob SHAs, and the branch state immediately before cr
 
 ## Filing
 
-Branch `factory/pi-align-l7-one-flow-20261111` — created from main HEAD `09c59280` (the branch did not exist; 404 on first check). Filed to the branch: the converged FLOW file at its repo home `TEAM-NITRO/factory-flow-fix4/factory-flow-fix4-20261111.html`, plus this record and the scorecard in `TEAM-NITRO/factory-pi-align/`. [Head + read-back SHAs added in Round 3.]
+Branch `factory/pi-align-l7-one-flow-20261111` — created from main HEAD `091961ba` (2026-11-13T01:35:24Z; the branch did not exist, 404 on first check). **Head: `bf007de2f98d9fb6e55a8d12f949a302e7a12335`.** Filed to the branch, one PUT at a time, read back and confirmed:
+
+| File on the branch | Size | Blob (read back) | Commit |
+|---|---|---|---|
+| `TEAM-NITRO/factory-flow-fix4/factory-flow-fix4-20261111.html` (converged) | 759,814 B | `4f398992a5f85c887f0206c756311bbc2268ec6b` | `d87518ef` |
+| `TEAM-NITRO/factory-pi-align/lane-l7-one-flow-record.md` (this record) | 23,632 B | `58e80398a24dd96cf5d316f209bb408bc348d263` | `a5f16b11` |
+| `TEAM-NITRO/factory-pi-align/lane-l7-one-flow-scorecard.md` | 6,667 B | `c4140dd5a0bc174ac05fc2d42215f9cad7223401` | `bf007de2` |
+
+Note: the record filed here is the pre-Round-3 text; the Round 3 findings above were added to the local record after the read-back and are filed as a follow-up PUT (same branch, same path) so the branch record tells the whole story. The converged file's blob on the branch (`4f398992…`) matches the local converged file's git hash exactly.
 
 ## Evidence files
 
