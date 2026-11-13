@@ -1,0 +1,196 @@
+{
+  "http": "200",
+  "body": {
+    "matches": [
+      {
+        "alias": "pcprover20261113",
+        "kind": "citizen",
+        "score": 48,
+        "reasons": [
+          "shared: PROVING, build, page, ship, shipping",
+          "shared goals: page, prove, ship",
+          "wanted connection: PROVING, build, ship"
+        ],
+        "signal_coverage_percent": 80,
+        "calibrated": true,
+        "signals": [
+          "topics",
+          "goals",
+          "wants"
+        ],
+        "surface": true,
+        "parts": {
+          "topics": 0.78,
+          "goals": 0.25,
+          "offers_needs": 0,
+          "wants": 0.73
+        },
+        "name": "Personal Complete Prover (test)",
+        "pct": 48,
+        "action": "connect_offer",
+        "consent_scope": "connect_offer_only",
+        "grants": []
+      },
+      {
+        "alias": "powercoldseat1111",
+        "kind": "citizen",
+        "score": 7,
+        "reasons": [
+          "shared: build, tool",
+          "shared goals: test, work",
+          "wanted connection: build, test, tool"
+        ],
+        "signal_coverage_percent": 80,
+        "calibrated": true,
+        "signals": [
+          "topics",
+          "goals",
+          "wants"
+        ],
+        "surface": true,
+        "parts": {
+          "topics": 0.07,
+          "goals": 0.06,
+          "offers_needs": 0,
+          "wants": 0.19
+        },
+        "name": "Power Cold Seat",
+        "pct": 7,
+        "action": "connect_offer",
+        "consent_scope": "connect_offer_only",
+        "grants": []
+      },
+      {
+        "alias": "freshtestfour",
+        "kind": "citizen",
+        "score": 4,
+        "reasons": [
+          "shared: test",
+          "shared goals: test",
+          "wanted connection: test"
+        ],
+        "signal_coverage_percent": 80,
+        "calibrated": true,
+        "signals": [
+          "topics",
+          "goals",
+          "wants"
+        ],
+        "surface": true,
+        "parts": {
+          "topics": 0.05,
+          "goals": 0.05,
+          "offers_needs": 0,
+          "wants": 0.06
+        },
+        "name": "Fresh Test Four",
+        "pct": 4,
+        "action": "connect_offer",
+        "consent_scope": "connect_offer_only",
+        "grants": []
+      },
+      {
+        "alias": "freshtestone",
+        "kind": "citizen",
+        "score": 4,
+        "reasons": [
+          "shared: test",
+          "shared goals: test",
+          "wanted connection: test"
+        ],
+        "signal_coverage_percent": 80,
+        "calibrated": true,
+        "signals": [
+          "topics",
+          "goals",
+          "wants"
+        ],
+        "surface": true,
+        "parts": {
+          "topics": 0.05,
+          "goals": 0.05,
+          "offers_needs": 0,
+          "wants": 0.06
+        },
+        "name": "Fresh Test One",
+        "pct": 4,
+        "action": "connect_offer",
+        "consent_scope": "connect_offer_only",
+        "grants": []
+      },
+      {
+        "alias": "freshtestthree",
+        "kind": "citizen",
+        "score": 4,
+        "reasons": [
+          "shared: test",
+          "shared goals: test",
+          "wanted connection: test"
+        ],
+        "signal_coverage_percent": 80,
+        "calibrated": true,
+        "signals": [
+          "topics",
+          "goals",
+          "wants"
+        ],
+        "surface": true,
+        "parts": {
+          "topics": 0.05,
+          "goals": 0.05,
+          "offers_needs": 0,
+          "wants": 0.06
+        },
+        "name": "Fresh Test Three",
+        "pct": 4,
+        "action": "connect_offer",
+        "consent_scope": "connect_offer_only",
+        "grants": []
+      },
+      {
+        "alias": "freshtesttwo",
+        "kind": "citizen",
+        "score": 4,
+        "reasons": [
+          "shared: test",
+          "shared goals: test",
+          "wanted connection: test"
+        ],
+        "signal_coverage_percent": 80,
+        "calibrated": true,
+        "signals": [
+          "topics",
+          "goals",
+          "wants"
+        ],
+        "surface": true,
+        "parts": {
+          "topics": 0.05,
+          "goals": 0.05,
+          "offers_needs": 0,
+          "wants": 0.06
+        },
+        "name": "Fresh Test Two",
+        "pct": 4,
+        "action": "connect_offer",
+        "consent_scope": "connect_offer_only",
+        "grants": []
+      }
+    ],
+    "sql_twin": {
+      "checked": true,
+      "alias": "pcprover20261113",
+      "twin_score": 48,
+      "js_score": 48,
+      "agree": true,
+      "reasons": [
+        "shared: PROVING, build, page, ship, shipping",
+        "shared goals: page, prove, ship",
+        "wanted connection: PROVING, build, ship"
+      ]
+    },
+    "gated": true,
+    "gate": "welcome-engine-consent-gate/v1",
+    "viewer": "pcviewer20261113"
+  }
+}
