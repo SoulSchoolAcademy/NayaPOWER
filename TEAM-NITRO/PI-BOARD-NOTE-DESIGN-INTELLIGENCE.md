@@ -868,3 +868,15 @@ fails is not done. A deferral is an open item, not a pass.
 **MAIL — STILL BLOCKED:** digest NOT sent — mail write blocked 401 since 18:23Z; held digests now 198–203, pending the server-side key fix, which is Shawn's hand. NOT attempted this run.
 
 **Still out of alignment:** registry append + feed rebuild owed at the run's close — the five were filed to GitHub but NOT live on the feed (max SN on the feed SN-2716 at the 22:30–22:35Z check); the captain's 22:56Z redeploy later put SN-2717..SN-2721 live, verified by curl · PI board addendum for this run (this filing) · mail digest held (401) · 23:17Z distillation watch: the run must distill from a feed WITH SN-2717..SN-2721 live.
+
+## Intelligence Loop run 204 — addendum ~22:43Z (Sigma, LEARN lane)
+
+**Filed during the run:** SN-2722 THE DESIGN SELLS ITSELF + THE FULL MEAL DEAL + SUPERCHARGER + EVERYBODY WINS (VISION; blob b0674643) · SN-2723 THE VOICE MEMOS — THE STANDARD SHAPE (ONBOARDING; blob c0c46509) · SN-2724 THE PRIVATE NETWORK — YOUR VAULT (SYSTEM; blob 94789276) · SN-2725 THE COLLECTIVE AGREEMENT — THE JOIN-TIME PROMISE (ONBOARDING; blob aeaa6b85) · SN-2726 THE RIGHT-THING CHARGE (LESSON; blob baf2cd33) · SN-2727 THE END SLIDE IS NOT 10/10 (ONBOARDING; blob 778cae5d) · SN-2728 THE PAGES ARE NOT UPDATED AND NOT ALIGNED (DESIGN; blob 99abdef6) · SN-2729 FINISH COMPLETELY — HIS CHARGE (LESSON; blob 0263fb93) · SN-2730 THE CLONE LAW (DESIGN; blob d7e89300) · SN-2731 THE NEW-ACCOUNT BUG (ONBOARDING; blob 3173cd15) + 10 paired Naya Notes (blobs 6cb05c3a · efda1643 · 7b95e590 · cb188599 · 944814b9 · 0d07139a · a0355e28 · f768c8e6 · 7506ca2d · 5adb1140). PUT 201 + byte-identical read-back each (run204-file.log); every blob re-read first-hand from GitHub in this addendum round. Next free SN-2732.
+
+**Count correction — read first-hand:** the run's record says 11 notes, SN-2722..SN-2732. The 11th, SN-2732 THE PUBLIC BLOG + SEO/AI SYSTEM, was composed locally (22:50Z) but NEVER filed — 404 on GitHub for both the Smart Note and its paired Naya Note, confirmed first-hand in this addendum round and by the Daily Intelligence Report. True filed count: 10 Smart Notes + 10 paired Naya Notes, SN-2722..SN-2731, 20 commits, tip 47c8a238 → c0ec06cc. SN-2732 is owed to the loop: file it or release it.
+
+**Organize hook:** ran twice, exit 0 — 22 files organized in total, 0 unparseable (daily log). The saved log covers the first run only: 20 files, 0 unparseable, scanned 1888 (run204-organize.log); no separate log was saved for the second run.
+
+**MAIL — STILL BLOCKED, re-probed first-hand during the run:** Smart Mail write 401, re-probed ~22:43Z; held digests now 198–204. Server-side; fixing touches credentials/RLS — Shawn's hand, NOT attempted.
+
+**Still out of alignment:** SN-2732 unfiled (see the count correction — file it or release it) · SN-2722..SN-2731 not on the live feed at the run's close (filed after the 22:52Z stage; rode the next sync + redeploy — normal lag, not a failure) · PI board addendum for this run (this filing) · mail digest held (401) · 23:17Z distillation distilled WITHOUT SN-2722..SN-2732.
