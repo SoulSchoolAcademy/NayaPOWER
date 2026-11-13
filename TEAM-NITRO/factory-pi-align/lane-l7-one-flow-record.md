@@ -185,15 +185,14 @@ Re-checked main HEAD (moved 09c59280 → 091961ba between Step 1 and filing; the
 
 ## Filing
 
-Branch `factory/pi-align-l7-one-flow-20261111` — created from main HEAD `091961ba` (2026-11-13T01:35:24Z; the branch did not exist, 404 on first check). **Head: `1fc0d605fc2fa6943f5f24b79817930de4e7ce94`.** Filed to the branch, one PUT at a time, read back and confirmed:
+Branch `factory/pi-align-l7-one-flow-20261111` — created from main HEAD `091961ba` (2026-11-13T01:35:24Z; the branch did not exist, 404 on first check). Filed to the branch, one PUT at a time, each read back and confirmed:
 
 | File on the branch | Size | Blob (read back) | Commit |
 |---|---|---|---|
 | `TEAM-NITRO/factory-flow-fix4/factory-flow-fix4-20261111.html` (converged) | 759,814 B | `4f398992a5f85c887f0206c756311bbc2268ec6b` | `d87518ef` |
-| `TEAM-NITRO/factory-pi-align/lane-l7-one-flow-record.md` (this record) | 24,912 B | `fb934b5a402e29a6c481c5d66c4849633232b973` | `1fc0d605` |
 | `TEAM-NITRO/factory-pi-align/lane-l7-one-flow-scorecard.md` | 6,667 B | `c4140dd5a0bc174ac05fc2d42215f9cad7223401` | `bf007de2` |
 
-The record was first filed at 23,632 B (blob `58e80398…`, commit `a5f16b11`), then updated in place with the Round 3 findings and re-filed (24,912 B, blob `fb934b5a…`, commit `1fc0d605`) — so the branch record tells the whole story including its own filing. The converged file's blob on the branch (`4f398992…`) matches the local converged file's git hash exactly.
+This record was filed in three PUTs (first at 23,632 B, blob `58e80398…`, commit `a5f16b11`; then with the Round 3 findings; then with this Filing correction) — the bytes on the branch are the final text. A record cannot name its own final blob or the branch head truthfully, because naming them changes them; the final head and the final read-back are carried in the maker's DONE report to the captain, not here. The converged file's blob on the branch (`4f398992…`) matches the local converged file's git hash exactly, and that number does not move.
 
 ## Evidence files
 
