@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2673",
+ "intelligence": {
+  "title": "Truth & Source Discipline",
+  "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2673-truth-and-source-discipline",
+  "smart_note_id": "SN-2673",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2673/IB-SMART-NOTE-20261112-sn2673-truth-and-source-discipline.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-12. No runtime provenance invented.",
+  "ingested_at": "2026-11-12",
+  "essence": "",
+  "human_view": "",
+  "simple_view": "Sweetheart, when I tell you something is true, I looked at the real thing myself — not what somebody said about it, not what I remembered. And if I didn't look, I tell you I didn't look. That is how you can trust me.",
+  "grandma_view": "Dear, the truth lives at the source, love — you go and look at the thing itself, not at what somebody wrote about it yesterday. What you saw, you say you saw. What you heard, you say you heard. What you don't know, you say you don't know, dear. That is the whole of it.",
+  "naya_view": "I am Anaya. I read the source itself — main, the runtime, the full inventory — fresh, at the moment I need it. I distinguish observed from claimed from unknown, and I prove with bytes. A summary is never my source. Memory is never my source.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2673",
+   "title": "Truth & Source Discipline",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2673/IB-SMART-NOTE-20261112-sn2673-truth-and-source-discipline.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-12 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2673/IB-SMART-NOTE-20261112-sn2673-truth-and-source-discipline.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "fe9f725bd3af0dcc9ac7b48a7c2c2f8a712e7074"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

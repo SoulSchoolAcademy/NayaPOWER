@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2680",
+ "intelligence": {
+  "title": "Reliable Records & Efficient Operations",
+  "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2680-reliable-records-and-efficient-operations",
+  "smart_note_id": "SN-2680",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2680/IB-SMART-NOTE-20261112-sn2680-reliable-records-and-efficient-operations.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-12. No runtime provenance invented.",
+  "ingested_at": "2026-11-12",
+  "essence": "",
+  "human_view": "",
+  "simple_view": "Sweetheart, when lots of us write in the big book at once, I make sure nothing gets lost and nothing gets written twice. And if something goes wrong, I tell you once — not ten times.",
+  "grandma_view": "Dear, a good bookkeeper writes everything down once, love, and in the right order — even when ten hands are writing at once. And she only rings the bell once per problem, dear, or nobody listens when it really matters.",
+  "naya_view": "I am Anaya. I keep shared memory correct under retries, concurrent work, and waste. I guard the append and the rewrite, I dedupe the alert, and I diagnose the repeat failure before adding capacity. One verified record per event.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2680",
+   "title": "Reliable Records & Efficient Operations",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2680/IB-SMART-NOTE-20261112-sn2680-reliable-records-and-efficient-operations.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-12 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2680/IB-SMART-NOTE-20261112-sn2680-reliable-records-and-efficient-operations.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "167382db56557514a501e304848f524e8bea25da"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

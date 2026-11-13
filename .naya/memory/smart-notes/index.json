@@ -44136,7 +44136,7 @@
       "registered_at": "2026-11-12T08:51:25Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-12",
-      "page_hash": "00c1d2112977bef50077fbd351f187db342aa547",
+      "page_hash": "4d80079f600c24c30e4d3c8e59c414dccb4bf8c7ac90855b590254133c0f5baf",
       "content_hash": "25b97111098a543e572ed59ef868f52d829760646d708ed9055faf3485329d82",
       "subtopic": "WELCOME_EMAIL_SERIES",
       "provenance": {
@@ -44173,7 +44173,7 @@
       "registered_at": "2026-11-12T08:51:25Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-12",
-      "page_hash": "3ed22ef8ace3156d75a0dd62df00817c20e0a029",
+      "page_hash": "f1e81b0ceec780d512183ff4b2f7d8c8501f944d16f4343cfd90c614d82008cc",
       "content_hash": "fec9494644ab9903f634f815df8a2d3535fafd0c84704420931624f66c333c8e",
       "subtopic": "POWER_COST",
       "provenance": {
@@ -44210,7 +44210,7 @@
       "registered_at": "2026-11-12T08:51:25Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-12",
-      "page_hash": "13f45ab35c837868dd3f2d3b4585017a9fc4b1d6",
+      "page_hash": "b1de48132302e6111c8a6cbb0a17b0943b0b3c6f89c1bf21e0709cc73e54291f",
       "content_hash": "8829f30ace45377c171a0d7fe505b57c8a882ae177e7f34987207250ece2610e",
       "subtopic": "INVITE_AND_EARN",
       "provenance": {
@@ -44247,7 +44247,7 @@
       "registered_at": "2026-11-12T08:51:25Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-12",
-      "page_hash": "ed6f8f31a9d5385a0124fc617afb77ccea25d132",
+      "page_hash": "372c12680f7f4bcf5a444cd277d436bbf68018d1788a3001653d3175da1ace2f",
       "content_hash": "1857f1bc32cb4afc2116cf24b6962ebcf45e2b32d4c7c0cd13783f3eb4b3eea0",
       "subtopic": "AUTO_MATCH_CONNECT",
       "provenance": {
@@ -44284,7 +44284,7 @@
       "registered_at": "2026-11-12T08:51:25Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-12",
-      "page_hash": "237af981eb80c29a031ec98244db994488e1b597",
+      "page_hash": "646c0f4c493f29553040e76f7f6180a50afbdecfa57ee26d064083623286a1c2",
       "content_hash": "d6ec324e917debea2fbd0364c6157be9c78a1ccbfae682791d773175df6cca47",
       "subtopic": "DASHBOARD_OVERVIEW",
       "provenance": {
@@ -44298,6 +44298,286 @@
         "historical_checkpoint_binding": "EXECUTION_RECEIPT_EVIDENCE",
         "note": "The project cognition-state row advances in place; historical Smart Note verification must use object-local execution receipt evidence for lineage binding."
       }
+    },
+    {
+      "smart_note_id": "SN-2670",
+      "intelligent_block_id": "IB-SMART-NOTE-20261111-sn2670-the-discipline-is-the-machine",
+      "title": "The Discipline Is the Machine",
+      "content_hash": "cd8c608226617331c8549046c8d78c4759c581a633e16094d41ffaafe34df362",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/11/LESSON/SN-2670/IB-SMART-NOTE-20261111-sn2670-the-discipline-is-the-machine.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-11",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit ecb95bf8ec68fea96cc1f9accc8fe0093b75ed61 ('SN-2670 The Discipline Is the Machine') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-12 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "359bc60b494dc4ec609eb166f98ceb8ce2756e3e649cf00889cca7f7c6da7748"
+    },
+    {
+      "smart_note_id": "SN-2671",
+      "intelligent_block_id": "IB-SMART-NOTE-20261111-sn2671-daily-intelligence-report-2026-11-11",
+      "title": "Daily Intelligence Report — 2026-11-11",
+      "content_hash": "de7c9605ae70bd99cc663ce68b6ddd7ecab8719eed4c4b975a1ddf986760697a",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/11/REPORT/SN-2671/IB-SMART-NOTE-20261111-sn2671-daily-intelligence-report-2026-11-11.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "REPORT",
+      "topic": "REPORT",
+      "subtopic": "",
+      "captured_at": "2026-11-11",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 786acf83e5f096775f5c49b43dbf59d9c2531588 ('SN-2671 Daily Intelligence Report 2026-11-11') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-12 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "ba70da138f483ec551ecf4d8bbaf4170e824a05b05ec9be5f306f4584a1d2f4f"
+    },
+    {
+      "smart_note_id": "SN-2672",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2672-purpose-and-wise-judgment",
+      "title": "Purpose & Wise Judgment",
+      "content_hash": "b9ae102cdeb731c95785e6fab0209a8b344bb60ad237f25b75d3798fcc262908",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2672/IB-SMART-NOTE-20261112-sn2672-purpose-and-wise-judgment.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit c636b6df4c4603021b5f05231fbba50ce7ffddbf ('SN-2672: Purpose & Wise Judgment — master skill NAYA-SKILL-01 (official 2026-11-12)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-12 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "8585db0dd5165a0ca0e494a335c87c863261392eadb3afc5cc7a9927b4546c70"
+    },
+    {
+      "smart_note_id": "SN-2673",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2673-truth-and-source-discipline",
+      "title": "Truth & Source Discipline",
+      "content_hash": "04e5d585049566ce9f43e26f1b62cd26d8cc773c7df9e6a5a83f0b3e677f06df",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2673/IB-SMART-NOTE-20261112-sn2673-truth-and-source-discipline.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit fe9f725bd3af0dcc9ac7b48a7c2c2f8a712e7074 ('SN-2673: Truth & Source Discipline — master skill NAYA-SKILL-02 (official 2026-11-12)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-12 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "59944bad5ef545c9914d16269f8fc105d07bd3503ce108c08382aaf89814c1f6"
+    },
+    {
+      "smart_note_id": "SN-2674",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2674-systems-and-connections",
+      "title": "Systems & Connections",
+      "content_hash": "522583398517a294f9eea86a6e1f37f59560505028c5b717dff5f45245dfdd7f",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2674/IB-SMART-NOTE-20261112-sn2674-systems-and-connections.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 870570a5f76049bcaa72a1689f00476c00ffce43 ('SN-2674: Systems & Connections — master skill NAYA-SKILL-03 (official 2026-11-12)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-12 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "c6f3c89d2d2c87753a0c3185f5e4b70a03015cf21049fea5b8fe46f775f27f50"
+    },
+    {
+      "smart_note_id": "SN-2675",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2675-highest-value-decisions",
+      "title": "Highest-Value Decisions",
+      "content_hash": "c51b09e42edeb98ba29ace48672d722bb1b7b3e9753c389fceed5a14a0fa4b5f",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2675/IB-SMART-NOTE-20261112-sn2675-highest-value-decisions.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 0b95845407942d0251e640658b4f336e7440e80b ('SN-2675: Highest-Value Decisions — master skill NAYA-SKILL-04 (official 2026-11-12)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-12 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "b029b1f5038ae1e5128df34845ea95b99239cdb810f4c3027cb2e8a395a0960d"
+    },
+    {
+      "smart_note_id": "SN-2676",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2676-smallest-complete-engineering",
+      "title": "Smallest Complete Engineering",
+      "content_hash": "b5315eb0d7049d2e445a53f99857f236aa78865b9c96621874e80e2d6d03a545",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2676/IB-SMART-NOTE-20261112-sn2676-smallest-complete-engineering.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 20d57e601a038f954b4bda1afe0bf6e41634b4c5 ('SN-2676: Smallest Complete Engineering — master skill NAYA-SKILL-05 (official 2026-11-12)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-12 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "69a5d27e4cf1fc7389d95cfbcb365c00dd881608a016eb1ad4f092341093013a"
+    },
+    {
+      "smart_note_id": "SN-2677",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2677-security-consent-and-authority",
+      "title": "Security, Consent & Authority",
+      "content_hash": "0f4544ab7e460a7aae9a892ceb82406f5665a60a0727a154733c7b189c379baf",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2677/IB-SMART-NOTE-20261112-sn2677-security-consent-and-authority.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit b230650cc3821e8c148005d4ce9bef2aac89d2b5 ('SN-2677: Security, Consent & Authority — master skill NAYA-SKILL-06 (official 2026-11-12)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-12 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "b952c61e14599249043b4c8d9cf0c173b14ecb304ee011138a6db245cdc02745"
+    },
+    {
+      "smart_note_id": "SN-2678",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2678-proof-measurement-and-delivery",
+      "title": "Proof, Measurement & Delivery",
+      "content_hash": "c4d2d123532d2e4d9c09e87cd48fc96a3b8463365ffd0aa87fb8b8acac32a7a7",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2678/IB-SMART-NOTE-20261112-sn2678-proof-measurement-and-delivery.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 7b488367ba5fc39f37793797f66ff70c10b499b4 ('SN-2678: Proof, Measurement & Delivery — master skill NAYA-SKILL-07 (official 2026-11-12)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-12 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "3f3a7e1078b50e573a32e681ceb21fdb892effbbdaf8eef9e9c62a759ed78f45"
+    },
+    {
+      "smart_note_id": "SN-2679",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2679-human-experience-and-design",
+      "title": "Human Experience & Design",
+      "content_hash": "ed6037ba82aa94915f28bb853b20818518890c57488781e809026790d28c9677",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2679/IB-SMART-NOTE-20261112-sn2679-human-experience-and-design.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 94c80195903249b46e55f80ff8a3718abee08587 ('SN-2679: Human Experience & Design — master skill NAYA-SKILL-08 (official 2026-11-12)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-12 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "8425e1840cefde6b56e97ea8f7e15460b61e0321aa73a46f2ac182dd8b69fc07"
+    },
+    {
+      "smart_note_id": "SN-2680",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2680-reliable-records-and-efficient-operations",
+      "title": "Reliable Records & Efficient Operations",
+      "content_hash": "9bc00f1f2a2db4cfdff9670782065978c7806aaf2d1707deadfcac4f1232f0d4",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2680/IB-SMART-NOTE-20261112-sn2680-reliable-records-and-efficient-operations.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 167382db56557514a501e304848f524e8bea25da ('SN-2680: Reliable Records & Efficient Operations — master skill NAYA-SKILL-09 (official 2026-11-12)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-12 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "8bac17ed7e3459012d40772f86f2fe20d89d1dbd124fb48a42faa1cb985203c3"
+    },
+    {
+      "smart_note_id": "SN-2681",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2681-distillation-and-smart-notes",
+      "title": "Distillation & Smart Notes",
+      "content_hash": "6dc52eb8dcb7cbd2b0cc08ee2fb7302684e2c6e4f465868a1eda78259f8220f9",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2681/IB-SMART-NOTE-20261112-sn2681-distillation-and-smart-notes.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 6688d2bd1df0130d60576c2672b84ab6be61eab4 ('SN-2681: Distillation & Smart Notes — master skill NAYA-SKILL-10 (official 2026-11-12)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-12 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "a493278fb737b6a79dcfcac6181fc50243317370e6d7e7b2747a28708a396c3b"
+    },
+    {
+      "smart_note_id": "SN-2682",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2682-collective-coordination-and-communication",
+      "title": "Collective Coordination & Communication",
+      "content_hash": "0276c838128eee438a21f52a21b608b825ac1fdf4e4fb06792c1ddbd134fc85f",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2682/IB-SMART-NOTE-20261112-sn2682-collective-coordination-and-communication.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 388ca944faa3ccfcd6d4ba590f30c6e4c1e53784 ('SN-2682: Collective Coordination & Communication — master skill NAYA-SKILL-11 (official 2026-11-12)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-12 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "01e5ae8bf0449442131aacc16d8562adf843ed7190ae90a8094bb804edf2613e"
+    },
+    {
+      "smart_note_id": "SN-2683",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2683-causal-learning-and-cold-successors",
+      "title": "Causal Learning & Cold Successors",
+      "content_hash": "33d8d4b5ddda0f9729e6940f2ea69b6a1ec9522d4d0bce20e3da2d2a7ff77f82",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2683/IB-SMART-NOTE-20261112-sn2683-causal-learning-and-cold-successors.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 88465c4ba2c0b2ed8cd24e1da34ee2a094a4a9d3 ('SN-2683: Causal Learning & Cold Successors — master skill NAYA-SKILL-12 (official 2026-11-12)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-12 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "df00e8dd9789d83b9430c57263622fc8a306a3eeae9e2246929decc07c907ad3"
     }
   ],
   "sequence_policy": {
@@ -44308,5 +44588,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "457d362fef5c7031386de57dd5e0660b568e8be2666b47090a302b856ce9ea3d"
+  "corpus_manifest_hash": "bec349ae590ffb9c684ad93286e7cba2d8b32fbf50b17537c4748435af81d517"
 }
