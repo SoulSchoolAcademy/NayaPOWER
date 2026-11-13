@@ -10730,9 +10730,12 @@ var ttTries=0;
 var ttTimer=setInterval(function(){
  ttTries++;
  ttLand();
- var el=document.getElementById("team-transparency");
- var r=el?el.getBoundingClientRect():null;
- if(ttTries>=60||window.scrollY>40||(r&&r.top<window.innerHeight&&r.bottom>0)) clearInterval(ttTimer);
+ /* No early clear on "in view": the Hub renders progressively, so the section
+    can sit in view while the page is still short, then be pushed far down as
+    the feed above it renders. The interval runs its full minute; ttLand itself
+    no-ops once the section is truly in view. It stops early only if the
+    visitor scrolls away themselves. */
+ if(ttTries>=60||window.scrollY>40) clearInterval(ttTimer);
 },1000);
 /* Live refresh, deliberately NOT a cross-origin fetch here: the Hub itself is a
    baked snapshot (verified first-hand — the 5MB base never fetches feed-live.json
