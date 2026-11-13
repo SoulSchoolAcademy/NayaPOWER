@@ -194,10 +194,22 @@ No live session could run: with live data blocked, `window._dashD` stays
 undefined and the pill honestly keeps `…`.
 
 **Staged proof:** staged bytes curl-verified equal to the local files
-(shas above); staged geometry probe re-ran on the proof-host links
-(`probe-staged-firefox.json`, screenshots `proof-staged-firefox-*.png`) —
-same boxes, same 0 px spreads, same wrap at 390. [STAGED RESULTS TO BE
-FILLED AFTER THE STAGED RUN — see § Staged run.]
+(Personal `eb0173c9…`, Space `f7eced7b…`, Business `f8c769fb…`, byte counts
+identical). Staged geometry probe re-ran on the proof-host links
+(`probe-staged.py`, `probe-staged-firefox.json`, screenshots
+`proof-staged-firefox-<page>-<w>-<top|end>.png`, 18 shots): every box
+identical to the local run — `#pname` top spread 0 px at 390 / 1440 / 360,
+pill immediately right of the name with exactly 14.0 px gap at 1440 and
+360, wrapped below the name at 390 (same y=404 on all three), `#cvrbtn`
+never intersects the name, overflow 0 px everywhere. The staged 390
+screenshot is byte-identical to the local 390 screenshot (sha
+`8b84af30…`). Staged harness (same run): fixture A pill 245 and fixture B
+pill 250 on all three staged pages, 6/6, fixture intact at read. Live data
+stayed unloaded on staged too (`window._dashD` undefined, pill `…`):
+Supabase is blocked from this VM even from the `https` staged origin — 42
+console errors per page/width, all the same 7 Supabase CORS tables as
+local (one cell, Space 360, logged 44 — a retry duplicate of the same
+tables, no new error kind, no non-Supabase error anywhere staged).
 
 ## Findings the round surfaced (named, not hidden)
 
@@ -313,7 +325,11 @@ pill-vs-big-number question (F2 — captain's call); Chromium cross-check
 not run (Firefox only — VM Chromium was untested this round; the brief's
 method names Firefox).
 
-## § Staged run
+## § Staged run — filled
 
-[To be filled after filing: staged curl shas, staged probe JSON, staged
-screenshots, staged harness result.]
+Filed on branch `points/personal-space-business-20261113`: first commit
+`40ecff926` (build + record + scorecard + probes + local proof), second
+commit (staged probe + this filled section — see git log). Staged shas
+re-read fresh after the second push: Personal `eb0173c9…`, Space
+`f7eced7b…`, Business `f8c769fb…` — identical to the local files and to the
+`cb` values in the links above.

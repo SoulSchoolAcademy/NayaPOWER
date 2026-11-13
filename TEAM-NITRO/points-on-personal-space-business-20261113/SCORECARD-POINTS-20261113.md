@@ -41,8 +41,9 @@ question (F2) is a captain's call, not a defect in the wiring.
 9. The big-number sweep target could only be shown via `osBuildSpine`'s
    returned score; the headless rAF runs slow, so the sweep itself was read
    mid-flight, never at rest.
-10. The staged proof had not yet run when this scorecard was first written
-    (it runs before handoff; the record's § Staged run carries it).
+10. The staged run has now completed and is filed (record § Staged run):
+staged bytes == local bytes, staged geometry identical to local, staged
+harness 6/6 — this item is closed.
 
 ## 10 things I love
 
