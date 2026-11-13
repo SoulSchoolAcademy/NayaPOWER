@@ -1,0 +1,131 @@
+{
+  "390": {
+    "width": 390,
+    "entrance_title": "NayaNET \u2014 Main entrance, variant C: all obsidian, gold/purple/green states",
+    "entrance_text": "NAYA WELCOMES YOU | Enter NayaNET \u2192 | Create. Connect. Grow with us.",
+    "after_enter_url": "https://nayanet.app/?#/hub",
+    "after_enter_title": "Smart Feed \u2014 NayaNET",
+    "note": {
+      "url": "https://nayanet.app/#/smart-notes/sn2696",
+      "title": "NayaNET \u2014 Main entrance, variant C: all obsidian, gold/purple/green states",
+      "bodyTextHasIsntHere": false,
+      "hook": false,
+      "nutshell": false,
+      "sn2696Title": false,
+      "installOverlay": false,
+      "overflowX": false,
+      "scrollW": 390,
+      "innerW": 390,
+      "intelBoards": 0,
+      "pills": 0,
+      "jewelRadius": [],
+      "jewelSize": [],
+      "pillLabels": [],
+      "segs": 0,
+      "segLabels": [],
+      "segRadius": [],
+      "notifBar": false,
+      "obbBar": false
+    },
+    "note_plus3s_overlay": false,
+    "scrolled": {
+      "scrollW": 390,
+      "innerW": 390
+    },
+    "console_errors": [],
+    "page_errors_note": [],
+    "hub_feed": {
+      "url": "https://nayanet.app/hub/feed#/hub",
+      "title": "Smart Feed \u2014 NayaNET",
+      "overflowX": false
+    },
+    "console_errors_feed": [],
+    "page_errors_feed": []
+  },
+  "1440": {
+    "width": 1440,
+    "entrance_title": "NayaNET \u2014 Main entrance, variant C: all obsidian, gold/purple/green states",
+    "entrance_text": "NAYA | NAYA WELCOMES YOU | Enter NayaNET \u2192 | Create. Connect. Grow with us.",
+    "after_enter_url": "https://nayanet.app/?#/hub",
+    "after_enter_title": "Smart Feed \u2014 NayaNET",
+    "note": {
+      "url": "https://nayanet.app/#/smart-notes/sn2696",
+      "title": "NayaNET \u2014 Main entrance, variant C: all obsidian, gold/purple/green states",
+      "bodyTextHasIsntHere": false,
+      "hook": false,
+      "nutshell": false,
+      "sn2696Title": false,
+      "installOverlay": false,
+      "overflowX": false,
+      "scrollW": 1440,
+      "innerW": 1440,
+      "intelBoards": 0,
+      "pills": 0,
+      "jewelRadius": [],
+      "jewelSize": [],
+      "pillLabels": [],
+      "segs": 0,
+      "segLabels": [],
+      "segRadius": [],
+      "notifBar": false,
+      "obbBar": false
+    },
+    "note_plus3s_overlay": false,
+    "scrolled": {
+      "scrollW": 1440,
+      "innerW": 1440
+    },
+    "console_errors": [],
+    "page_errors_note": [],
+    "hub_feed": {
+      "url": "https://nayanet.app/hub/feed#/hub",
+      "title": "Smart Feed \u2014 NayaNET",
+      "overflowX": false
+    },
+    "console_errors_feed": [],
+    "page_errors_feed": []
+  },
+  "360": {
+    "width": 360,
+    "entrance_title": "NayaNET \u2014 Main entrance, variant C: all obsidian, gold/purple/green states",
+    "entrance_text": "NAYA WELCOMES YOU | Enter NayaNET \u2192 | Create. Connect. Grow with us.",
+    "after_enter_url": "https://nayanet.app/?#/hub",
+    "after_enter_title": "Smart Feed \u2014 NayaNET",
+    "note": {
+      "url": "https://nayanet.app/#/smart-notes/sn2696",
+      "title": "NayaNET \u2014 Main entrance, variant C: all obsidian, gold/purple/green states",
+      "bodyTextHasIsntHere": false,
+      "hook": false,
+      "nutshell": false,
+      "sn2696Title": false,
+      "installOverlay": false,
+      "overflowX": false,
+      "scrollW": 360,
+      "innerW": 360,
+      "intelBoards": 0,
+      "pills": 0,
+      "jewelRadius": [],
+      "jewelSize": [],
+      "pillLabels": [],
+      "segs": 0,
+      "segLabels": [],
+      "segRadius": [],
+      "notifBar": false,
+      "obbBar": false
+    },
+    "note_plus3s_overlay": false,
+    "scrolled": {
+      "scrollW": 360,
+      "innerW": 360
+    },
+    "console_errors": [],
+    "page_errors_note": [],
+    "hub_feed": {
+      "url": "https://nayanet.app/hub/feed#/hub",
+      "title": "Smart Feed \u2014 NayaNET",
+      "overflowX": false
+    },
+    "console_errors_feed": [],
+    "page_errors_feed": []
+  }
+}

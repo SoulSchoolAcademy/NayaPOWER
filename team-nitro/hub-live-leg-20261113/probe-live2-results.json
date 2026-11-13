@@ -1,0 +1,174 @@
+{
+  "390": {
+    "width": 390,
+    "entrance_title": "NayaNET \u2014 Main entrance, variant C: all obsidian, gold/purple/green states",
+    "note_firstpaint": {
+      "url": "https://nayanet.app/?#/smart-notes/sn2696",
+      "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+      "hasIsntHere": false,
+      "hook": true,
+      "nutshell": true,
+      "sn2696": true,
+      "installOverlay": false,
+      "overflowX": false,
+      "boards": 1,
+      "pills": 9,
+      "jewelRadius": [
+        "50%"
+      ],
+      "jewelSize": [
+        44
+      ],
+      "pillLabels": [
+        "\u2709Mail",
+        "\u25c9Dashboard",
+        "\u25a0Business",
+        "\u25b2Space",
+        "\u2726Growth",
+        "\u25c7Connections",
+        "\u2630Smart Lists",
+        "\u25c6Reports",
+        "\uff0b10 apps"
+      ],
+      "segs": 3,
+      "segLabels": [
+        "0Personal",
+        "0Business",
+        "0Thing"
+      ],
+      "segRadius": [
+        "50%"
+      ],
+      "segSize": [
+        27
+      ],
+      "gemSvg": [
+        564,
+        540,
+        676
+      ],
+      "notifBar": true,
+      "obbBar": true
+    },
+    "note_plus3_5s": {
+      "installOverlay": false,
+      "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET"
+    },
+    "scrolled": {
+      "scrollW": 390,
+      "innerW": 390
+    },
+    "console_errors": [],
+    "page_errors": []
+  },
+  "1440": {
+    "width": 1440,
+    "entrance_title": "NayaNET \u2014 Main entrance, variant C: all obsidian, gold/purple/green states",
+    "note_firstpaint": {
+      "url": "https://nayanet.app/?#/smart-notes/sn2696",
+      "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+      "hasIsntHere": false,
+      "hook": true,
+      "nutshell": true,
+      "sn2696": true,
+      "installOverlay": false,
+      "overflowX": false,
+      "boards": 1,
+      "pills": 9,
+      "jewelRadius": [
+        "50%"
+      ],
+      "jewelSize": [
+        46
+      ],
+      "pillLabels": [
+        "\u2709Mail",
+        "\u25c9Dashboard",
+        "\u25a0Business",
+        "\u25b2Space",
+        "\u2726Growth",
+        "\u25c7Connections",
+        "\u2630Smart Lists",
+        "\u25c6Reports",
+        "\uff0b10 apps"
+      ],
+      "segs": 3,
+      "segLabels": [
+        "0Personal",
+        "0Business",
+        "0Thing"
+      ],
+      "segRadius": [
+        "50%"
+      ],
+      "segSize": [
+        38
+      ],
+      "gemSvg": [
+        564,
+        540,
+        676
+      ],
+      "notifBar": true,
+      "obbBar": true
+    },
+    "note_plus3_5s": {
+      "installOverlay": false,
+      "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET"
+    },
+    "scrolled": {
+      "scrollW": 1440,
+      "innerW": 1440
+    },
+    "console_errors": [],
+    "page_errors": []
+  },
+  "360": {
+    "width": 360,
+    "entrance_title": "NayaNET \u2014 Main entrance, variant C: all obsidian, gold/purple/green states",
+    "note_firstpaint": {
+      "url": "https://nayanet.app/?#/smart-notes/sn2696",
+      "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+      "hasIsntHere": false,
+      "hook": true,
+      "nutshell": true,
+      "sn2696": true,
+      "installOverlay": false,
+      "overflowX": false,
+      "boards": 1,
+      "pills": 0,
+      "jewelRadius": [],
+      "jewelSize": [],
+      "pillLabels": [],
+      "segs": 3,
+      "segLabels": [
+        "0Personal",
+        "0Business",
+        "0Thing"
+      ],
+      "segRadius": [
+        "50%"
+      ],
+      "segSize": [
+        27
+      ],
+      "gemSvg": [
+        564,
+        540,
+        676
+      ],
+      "notifBar": true,
+      "obbBar": false
+    },
+    "note_plus3_5s": {
+      "installOverlay": false,
+      "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET"
+    },
+    "scrolled": {
+      "scrollW": 360,
+      "innerW": 360
+    },
+    "console_errors": [],
+    "page_errors": []
+  }
+}
