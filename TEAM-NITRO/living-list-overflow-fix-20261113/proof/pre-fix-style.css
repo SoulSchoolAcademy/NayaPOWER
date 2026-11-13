@@ -1,0 +1,110 @@
+
+  :root{
+    --bg:#000000;
+    --panel:#0a0a0c;
+    --panel2:#111114;
+    --line:#26262b;
+    --text:#ffffff;
+    --muted:#c9c9cf;
+    --dim:#9a9aa3;
+    --purple:#a06bff;
+    --blue:#3fb8ff;
+    --green:#2fe89e;
+    --gold:#ffbf3d;
+    --orange:#ff9a5a;
+    --red:#ff5e6c;
+    --magenta:#e84fff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size:19px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;}
+  .sans{font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;}
+  main{max-width:880px;margin:0 auto;padding:28px 20px 64px;}
+
+  header.top{padding:26px 4px 8px;}
+  h1{font-size:clamp(30px,6vw,46px);line-height:1.12;margin:0 0 14px;font-weight:700;letter-spacing:-.01em;}
+  .subline{font-size:20px;line-height:1.5;color:var(--muted);margin:0 0 10px;max-width:44ch;}
+  .updated{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:15px;color:var(--dim);margin:0;}
+  .updated b{color:var(--green);font-weight:600;}
+  .updated .t{color:var(--gold);}
+
+  /* Score strip */
+  .strip{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:26px 0 8px;}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 14px;text-align:center;
+    transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;}
+  .stat:hover{transform:translateY(-2px);}
+  .stat .n{font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-size:34px;font-weight:800;line-height:1;}
+  .stat .l{font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-size:13.5px;color:var(--muted);margin-top:7px;line-height:1.35;}
+  .stat.s-done:hover{border-color:var(--purple);box-shadow:0 0 0 1px var(--purple),0 8px 28px rgba(160,107,255,.22)}
+  .stat.s-motion:hover{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue),0 8px 28px rgba(63,184,255,.22)}
+  .stat.s-blocked:hover{border-color:var(--green);box-shadow:0 0 0 1px var(--green),0 8px 28px rgba(47,232,158,.20)}
+  .stat.s-queued:hover{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 8px 28px rgba(255,191,61,.20)}
+  .stat.s-word:hover{border-color:var(--orange);box-shadow:0 0 0 1px var(--orange),0 8px 28px rgba(255,154,90,.20)}
+  .stat.s-done .n{color:var(--purple)} .stat.s-motion .n{color:var(--blue)}
+  .stat.s-blocked .n{color:var(--green)} .stat.s-queued .n{color:var(--gold)} .stat.s-word .n{color:var(--orange)}
+
+  /* Boards */
+  section.board{background:var(--panel);border:1px solid var(--line);border-radius:18px;
+    padding:26px 24px 10px;margin:26px 0;
+    transition:border-color .25s ease, box-shadow .25s ease;}
+  section.board:hover{border-color:var(--ac);box-shadow:0 0 0 1px var(--ac),0 10px 34px rgba(0,0,0,.6);}
+  .b-purple{--ac:var(--purple)} .b-blue{--ac:var(--blue)} .b-green{--ac:var(--green)}
+  .b-gold{--ac:var(--gold)} .b-orange{--ac:var(--orange)} .b-red{--ac:var(--red)} .b-magenta{--ac:var(--magenta)}
+  .board-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
+  .board-head .kicker{font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-size:13px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ac);}
+  .board-head h2{font-size:27px;margin:0;line-height:1.2;}
+  .board-intro{color:var(--muted);font-size:18.5px;margin:2px 0 8px;}
+
+  .item{border-top:1px solid var(--line);padding:18px 10px 18px 14px;margin:0 -10px 0 -14px;border-radius:10px;
+    transition:background .2s ease, box-shadow .2s ease;}
+  .item:hover{background:var(--panel2);box-shadow:inset 3px 0 0 var(--iac,var(--ac));}
+  .item-top{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;}
+  .num{font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:800;font-size:15px;color:#000;
+    background:var(--iac,var(--ac));border-radius:999px;min-width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;padding:0 6px;flex:none;margin-top:2px;}
+  .item h3{font-size:21px;line-height:1.3;margin:0;flex:1 1 260px;font-weight:700;}
+  .chip{font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-size:12.5px;font-weight:800;letter-spacing:.09em;
+    border-radius:999px;padding:6px 12px;white-space:nowrap;flex:none;margin-top:2px;}
+  .chip.done{color:#0d0518;background:var(--purple)}
+  .chip.motion{color:#02141f;background:var(--blue)}
+  .chip.blocked{color:#3a0d12;background:var(--red)}
+  .chip.queued{color:#241a02;background:var(--gold)}
+  .chip.yourword{color:#2b0a30;background:var(--magenta)}
+  .ev{color:var(--muted);font-size:18.5px;margin:8px 0 0 42px;max-width:62ch;}
+  .ev b{color:#fff;}
+  .links{margin:10px 0 2px 42px;display:flex;flex-wrap:wrap;gap:8px;}
+  .links a{font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15.5px;font-weight:600;
+    color:#fff;text-decoration:none;border:1px solid var(--iac,var(--ac));border-radius:999px;padding:7px 14px;
+    transition:background .2s ease,color .2s ease;}
+  .links a:hover{background:var(--iac,var(--ac));color:#000;}
+
+  /* Gap Inventory finishing-move rows */
+  .grow{display:flex;gap:12px;align-items:flex-start;padding:13px 10px 13px 14px;margin:0 -10px 0 -14px;
+    border-top:1px solid var(--line);border-radius:10px;
+    transition:background .2s ease, box-shadow .2s ease;}
+  .grow:hover{background:var(--panel2);box-shadow:inset 3px 0 0 var(--iac,var(--ac));}
+  .grow p{margin:2px 0 0;font-size:19px;}
+  .grow .build{font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-size:14.5px;font-weight:700;
+    color:var(--iac,var(--ac));white-space:nowrap;}
+
+  footer{margin-top:34px;padding:22px 24px;background:var(--panel);border:1px solid var(--line);border-radius:18px;
+    transition:border-color .25s ease, box-shadow .25s ease;}
+  footer:hover{border-color:var(--magenta);box-shadow:0 0 0 1px var(--magenta);}
+  footer p{margin:0;font-size:19px;color:var(--muted);}
+  footer p b{color:#fff;}
+
+  @media (max-width:640px){
+    body{font-size:18px}
+    main{padding:18px 14px 48px}
+    .strip{grid-template-columns:repeat(2,1fr)}
+    section.board{padding:20px 16px 6px}
+    .ev,.links{margin-left:0}
+    .item h3{font-size:20px}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important} html{scroll-behavior:auto}
+  }
