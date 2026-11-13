@@ -1,0 +1,3672 @@
+{
+  "pass": [
+    "entry dial name-only (one text input, no code field) :: inputs=1",
+    "entry returning-citizen choice present",
+    "entry submit lands on certificate :: https://naya-walk-beginning-staging.nayapower.workers.dev/identity.html?name=Q10%20Walk%20One",
+    "install veil dismissed (Not now)",
+    "certificate alias-only (one input, no name/code field) :: inputs=1",
+    "certificate claim lands on the walk :: https://naya-walk-beginning-staging.nayapower.workers.dev/welcome",
+    "1440 Q1 shown directly (no greeting)",
+    "1440 Q1 exact words",
+    "1440 old helper lines gone (no .p3-choices-styles, no .p3-choices-q)",
+    "1440 old 'Do you want A, B or C?' line is gone",
+    "1440 top line kept in plain words",
+    "1440 Q1 column >=1100px at 1440 :: colW=1120",
+    "1440 Q1 choice text >=18px :: sizes=[18, 18, 18]",
+    "1440 Q1 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "1440 Q1 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "1440 Q1 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "1440 Q1 EDIT >=14px :: sizes=[14, 14, 14]",
+    "1440 Q1 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "1440 Q1 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "1440 Q1 Naya picture >=72px circle, loaded, one per board :: boxes=[[76, 76], [76, 76], [76, 76]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "1440 Q1 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "1440 Q1 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "1440 Q1 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "1440 Q1 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "1440 Q1 overflow 0 :: 1440/1440",
+    "1440 Q1 board A lights up on hover in its own color :: rest=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 12px 30px 0px|rgba lit=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 24px 56px 0px, rgb(160, 107, 255) 0px 0px 44px 0px|rgb(160, 107, 255",
+    "1440 Q1 board B lights up on hover in its own color :: rest=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 12px 30px 0px|rgba lit=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 24px 56px 0px, rgb(63, 184, 255) 0px 0px 44px 0px|rgb(63, 184, 255)",
+    "1440 Q1 board C lights up on hover in its own color :: rest=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 12px 30px 0px|rgba lit=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 24px 56px 0px, rgb(47, 232, 158) 0px 0px 44px 0px|rgb(47, 232, 158)",
+    "1440 Q1 overflow 0 scrolled :: 1440/1440",
+    "G skip Q1 lands on Q2",
+    "G skipped Q1 stores nothing :: {}",
+    "1440 Q2 column >=1100px at 1440 :: colW=1120",
+    "1440 Q2 choice text >=18px :: sizes=[18, 18, 18]",
+    "1440 Q2 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "1440 Q2 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "1440 Q2 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "1440 Q2 EDIT >=14px :: sizes=[14, 14, 14]",
+    "1440 Q2 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "1440 Q2 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "1440 Q2 Naya picture >=72px circle, loaded, one per board :: boxes=[[76, 76], [76, 76], [76, 76]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "1440 Q2 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "1440 Q2 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "1440 Q2 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "1440 Q2 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "1440 Q2 overflow 0 :: 1440/1440",
+    "speak button present on Q2",
+    "H tap Speak shows Listening at once :: Listening\u2026 tap Speak again to stop.",
+    "H interim transcript lands in the box live :: hello world from the walk",
+    "H final transcript in the box :: hello world from the walk",
+    "H box stays editable after dictation :: hello world from the walk - edited by hand",
+    "H Enter submits after dictation",
+    "1440 Q3 column >=1100px at 1440 :: colW=1120",
+    "1440 Q3 choice text >=18px :: sizes=[18, 18, 18]",
+    "1440 Q3 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "1440 Q3 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "1440 Q3 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "1440 Q3 EDIT >=14px :: sizes=[14, 14, 14]",
+    "1440 Q3 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "1440 Q3 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "1440 Q3 Naya picture >=72px circle, loaded, one per board :: boxes=[[76, 76], [76, 76], [76, 76]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "1440 Q3 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "1440 Q3 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "1440 Q3 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "1440 Q3 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "1440 Q3 overflow 0 :: 1440/1440",
+    "1440 Q3 board A lights up on hover in its own color :: rest=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 12px 30px 0px|rgba lit=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 24px 56px 0px, rgb(160, 107, 255) 0px 0px 44px 0px|rgb(160, 107, 255",
+    "1440 Q3 board B lights up on hover in its own color :: rest=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 12px 30px 0px|rgba lit=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 24px 56px 0px, rgb(63, 184, 255) 0px 0px 44px 0px|rgb(63, 184, 255)",
+    "1440 Q3 board C lights up on hover in its own color :: rest=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 12px 30px 0px|rgba lit=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 24px 56px 0px, rgb(47, 232, 158) 0px 0px 44px 0px|rgb(47, 232, 158)",
+    "I every choice carries EDIT + EYE (4 each on the step) :: edit=4 eye=4",
+    "I choice B is read-only until EDIT",
+    "I EDIT lights up on hover :: rest=rgba(255, 255, 255, 0.45) 0px 1.5px 0px 0px inset, rgba(0, 0, 0, 0.55) 0px 4px 1 lit=rgba(255, 255, 255, 0.55) 0px 1.5px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 6px 16",
+    "I EYE lights up on hover :: rest=rgba(255, 255, 255, 0.55) 0px 1.5px 0px 0px inset, rgba(0, 0, 0, 0.55) 0px 4px 1 lit=rgba(255, 255, 255, 0.65) 0px 1.5px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 6px 14",
+    "I choice B is Naya's own bold & short answer (verbatim) :: The intelligent internet. One click, and you're with your people.",
+    "I choice B eye opens its nutshell",
+    "I nutshell names what/why/connects/for-you :: \u00d7 | Choice B |  | What it is: Naya's bold & short voice \u2014 the intelligent internet, named. |  | Why it matters: It makes the vision concrete: a real thing, not a dream. |  | How it connects: It runs through all three of your pages \u2014 the thread that ties ",
+    "I choice A eye opens a DIFFERENT nutshell :: \u00d7 | Choice A |  | What it is: Naya's warm & plain voice \u2014 the intelligent internet, simply. |  | Why it matters: A vision should be a feeling people want to live in. |  | How",
+    "I EDIT makes the choice editable in place",
+    "I edited choice is marked selected",
+    "I edited choice B holds the edited text",
+    "I selected board B keeps its blue glow :: rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 24px 56px 0px, rgb(63, 184, 255) 0px 0px 44px 0px|rgb(63, 184, 255)",
+    "I Enter submits the edited choice :: The intelligent internet. One click, and you're with your people. Always.",
+    "1440 Q4 column >=1100px at 1440 :: colW=1120",
+    "1440 Q4 choice text >=18px :: sizes=[18, 18, 18]",
+    "1440 Q4 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "1440 Q4 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "1440 Q4 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "1440 Q4 EDIT >=14px :: sizes=[14, 14, 14]",
+    "1440 Q4 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "1440 Q4 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "1440 Q4 Naya picture >=72px circle, loaded, one per board :: boxes=[[76, 76], [76, 76], [76, 76]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "1440 Q4 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "1440 Q4 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "1440 Q4 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "1440 Q4 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "1440 Q4 overflow 0 :: 1440/1440",
+    "I Enter with nothing edited does not advance :: Say it first \u2014 speak, type, or paste your answer, then Enter.",
+    "I Full Custom eye opens",
+    "I Full Custom eye names the three ways :: \u00d7 | Full Custom | 1. Copy it in from your AI \u2014 share with your AI, let it write it for you, copy it in. | 2. Dictate \u2014 tap Speak and it writes what you say as you speak. You can edit after. | 3. Or take one of the examples above and make it your own. |  | Edit it in place",
+    "1440 Q5 column >=1100px at 1440 :: colW=1120",
+    "1440 Q5 choice text >=18px :: sizes=[18, 18, 18]",
+    "1440 Q5 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "1440 Q5 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "1440 Q5 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "1440 Q5 EDIT >=14px :: sizes=[14, 14, 14]",
+    "1440 Q5 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "1440 Q5 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "1440 Q5 Naya picture >=72px circle, loaded, one per board :: boxes=[[76, 76], [76, 76], [76, 76]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "1440 Q5 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "1440 Q5 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "1440 Q5 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "1440 Q5 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "1440 Q5 overflow 0 :: 1440/1440",
+    "1440 Q5 overflow 0 scrolled :: 1440/1440",
+    "Q5 advances",
+    "1440 Q6 column >=1100px at 1440 :: colW=1120",
+    "1440 Q6 choice text >=18px :: sizes=[18, 18, 18]",
+    "1440 Q6 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "1440 Q6 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "1440 Q6 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "1440 Q6 EDIT >=14px :: sizes=[14, 14, 14]",
+    "1440 Q6 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "1440 Q6 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "1440 Q6 Naya picture >=72px circle, loaded, one per board :: boxes=[[76, 76], [76, 76], [76, 76]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "1440 Q6 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "1440 Q6 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "1440 Q6 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "1440 Q6 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "1440 Q6 overflow 0 :: 1440/1440",
+    "Q6 advances",
+    "1440 Q7 column >=1100px at 1440 :: colW=1120",
+    "1440 Q7 choice text >=18px :: sizes=[18, 18, 18]",
+    "1440 Q7 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "1440 Q7 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "1440 Q7 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "1440 Q7 EDIT >=14px :: sizes=[14, 14, 14]",
+    "1440 Q7 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "1440 Q7 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "1440 Q7 Naya picture >=72px circle, loaded, one per board :: boxes=[[76, 76], [76, 76], [76, 76]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "1440 Q7 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "1440 Q7 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "1440 Q7 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "1440 Q7 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "1440 Q7 overflow 0 :: 1440/1440",
+    "Q7 advances",
+    "1440 Q8 column >=1100px at 1440 :: colW=1120",
+    "1440 Q8 choice text >=18px :: sizes=[18, 18, 18]",
+    "1440 Q8 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "1440 Q8 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "1440 Q8 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "1440 Q8 EDIT >=14px :: sizes=[14, 14, 14]",
+    "1440 Q8 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "1440 Q8 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "1440 Q8 Naya picture >=72px circle, loaded, one per board :: boxes=[[76, 76], [76, 76], [76, 76]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "1440 Q8 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "1440 Q8 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "1440 Q8 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "1440 Q8 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "1440 Q8 overflow 0 :: 1440/1440",
+    "Q8 advances",
+    "1440 Q9 column >=1100px at 1440 :: colW=1120",
+    "1440 Q9 choice text >=18px :: sizes=[18, 18, 18]",
+    "1440 Q9 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "1440 Q9 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "1440 Q9 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "1440 Q9 EDIT >=14px :: sizes=[14, 14, 14]",
+    "1440 Q9 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "1440 Q9 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "1440 Q9 Naya picture >=72px circle, loaded, one per board :: boxes=[[76, 76], [76, 76], [76, 76]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "1440 Q9 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "1440 Q9 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "1440 Q9 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "1440 Q9 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "1440 Q9 overflow 0 :: 1440/1440",
+    "Q9 advances",
+    "1440 Q10 column >=1100px at 1440 :: colW=1120",
+    "1440 Q10 choice text >=18px :: sizes=[18, 18, 18]",
+    "1440 Q10 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "1440 Q10 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "1440 Q10 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "1440 Q10 EDIT >=14px :: sizes=[14, 14, 14]",
+    "1440 Q10 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "1440 Q10 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "1440 Q10 Naya picture >=72px circle, loaded, one per board :: boxes=[[76, 76], [76, 76], [76, 76]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "1440 Q10 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "1440 Q10 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "1440 Q10 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "1440 Q10 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "1440 Q10 overflow 0 :: 1440/1440",
+    "1440 Q10 board A lights up on hover in its own color :: rest=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 12px 30px 0px|rgba lit=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 24px 56px 0px, rgb(160, 107, 255) 0px 0px 44px 0px|rgb(160, 107, 255",
+    "1440 Q10 board B lights up on hover in its own color :: rest=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 12px 30px 0px|rgba lit=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 24px 56px 0px, rgb(63, 184, 255) 0px 0px 44px 0px|rgb(63, 184, 255)",
+    "1440 Q10 board C lights up on hover in its own color :: rest=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 12px 30px 0px|rgba lit=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 24px 56px 0px, rgb(47, 232, 158) 0px 0px 44px 0px|rgb(47, 232, 158)",
+    "skip present on Q10",
+    "G skip Q10 lands on the names page",
+    "G skipped Q10 stores nothing :: {'into': 'hello world from the walk - edited by hand', 'vision': \"The intelligent internet. One click, and you're with your people. Always.\", 'mission': 'To help ten families in my street start their ",
+    "names page visible",
+    "overflow 0 at 1440 names :: 1440/1440",
+    "B2 personal slug prefilled from alias :: q10walk1",
+    "B2 business slug follows the name live :: my-cool-biz",
+    "B2 space slug follows the name live :: the-garden",
+    "building page visible",
+    "building reaches done",
+    "overflow 0 at 1440 building :: 1440/1440",
+    "D three building links shown :: count=3",
+    "D building links carry the typed titles :: ['q10walk1\\nYour Personal page \u2014 tap to open', 'My Cool Biz\\nYour Business page \u2014 tap to open', 'The Garden\\nYour Space \u2014 tap to open']",
+    "D building links point at staging pages :: ['https://naya-walk-beginning-staging.nayapower.workers.dev/pages/q10walk1/q10walk1', 'https://naya-walk-beginning-staging.nayapower.workers.dev/pages/q10walk1/my-cool-biz', 'https://naya-walk-beginning-staging.nayapower.workers.dev/pages/q10walk1/the-garden']",
+    "D click Personal link lands on the created page :: https://naya-walk-beginning-staging.nayapower.workers.dev/pages/q10walk1/q10walk1",
+    "reload returns to end slide (stored reveal)",
+    "D building link 2 lands on its created page :: https://naya-walk-beginning-staging.nayapower.workers.dev/pages/q10walk1/my-cool-biz",
+    "D building link 3 lands on its created page :: https://naya-walk-beginning-staging.nayapower.workers.dev/pages/q10walk1/the-garden",
+    "end slide congratulations",
+    "overflow 0 at 1440 end :: 1440/1440",
+    "Personal door lands on the created staging page :: https://naya-walk-beginning-staging.nayapower.workers.dev/pages/q10walk1/q10walk1",
+    "Hub door lands on the staging Hub :: https://naya-walk-beginning-staging.nayapower.workers.dev/hub?alias=q10walk1",
+    "E Hub shows the three pages by typed titles :: Q10 Walk One \u2014 your Hub |  | Your pages \u2014 built from your own words in the walk. Tap one to open it. |  | YOUR PERSONAL PAGE | q10walk1 | nayanet.app/q10walk1/q10walk1 | YOUR BUSINESS | My Cool Biz | nayanet.app/q10wal",
+    "overflow 0 at 1440 Hub :: 1440/1440",
+    "E Hub card click opens the Business page :: https://naya-walk-beginning-staging.nayapower.workers.dev/pages/q10walk1/my-cool-biz",
+    "1440 console errors :: 0: []",
+    "1440 pageerrors :: 0: []",
+    "A exactly one Box record for q10walk1 :: 1",
+    "A Box table named citizen_worlds :: citizen_worlds",
+    "A Box store reported :: kv-fallback",
+    "C all eight given answers word for word in the Box :: mismatch=[]",
+    "C skipped Q1 stores nothing (no 'about' key) :: ['biz_building', 'biz_do', 'biz_offer', 'goal', 'into', 'mission', 'motto', 'vision']",
+    "C skipped Q10 stores nothing (no 'space' key) :: ['biz_building', 'biz_do', 'biz_offer', 'goal', 'into', 'mission', 'motto', 'vision']",
+    "C edited business slug read back in the Box :: {'personal': {'title': 'q10walk1', 'slug': 'q10walk1'}, 'business': {'title': 'My Cool Biz', 'slug': 'my-cool-biz'}, 'space': {'title': 'The Garden', 'slug': 'the-garden'}}",
+    "C space slug read back in the Box :: {'personal': {'title': 'q10walk1', 'slug': 'q10walk1'}, 'business': {'title': 'My Cool Biz', 'slug': 'my-cool-biz'}, 'space': {'title': 'The Garden', 'slug': 'the-garden'}}",
+    "A exactly one live project row :: 1",
+    "A project row is the citizen's :: [{'id': 'cf11fe3d-23e1-4117-b170-6bc0539a3b25', 'owner_alias': 'q10walk1', 'name': 'q10walk1', 'motto': 'Small steps every day beat big plans that never start.', 'created_at': '2026-11-13T03:58:55.508",
+    "B three pages read back :: count=3",
+    "B personal page: typed title + citizen words :: q10walk1",
+    "B business page: typed title + citizen words :: My Cool Biz",
+    "B space page: typed title + citizen words :: The Garden",
+    "completion read-back holds the answers",
+    "A no Box for an alias that never completed",
+    "entry dial name-only (one text input, no code field) :: inputs=1",
+    "entry returning-citizen choice present",
+    "entry submit lands on certificate :: https://naya-walk-beginning-staging.nayapower.workers.dev/identity.html?name=Q10%20Walk%20Two",
+    "install veil dismissed (Not now)",
+    "certificate alias-only (one input, no name/code field) :: inputs=1",
+    "certificate claim lands on the walk :: https://naya-walk-beginning-staging.nayapower.workers.dev/welcome",
+    "390 Q1 shown directly",
+    "390 Q1 column present :: colW=390",
+    "390 Q1 choice text >=17px :: sizes=[17, 17, 17]",
+    "390 Q1 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "390 Q1 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "390 Q1 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "390 Q1 EDIT >=14px :: sizes=[14, 14, 14]",
+    "390 Q1 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "390 Q1 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "390 Q1 Naya picture >=64px circle, loaded, one per board :: boxes=[[68, 68], [68, 68], [68, 68]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "390 Q1 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "390 Q1 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "390 Q1 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "390 Q1 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "390 Q1 overflow 0 :: 390/390",
+    "390 Q1 board B lights up on hover in its own color :: rest=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 12px 30px 0px|rgba lit=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 24px 56px 0px, rgb(63, 184, 255) 0px 0px 44px 0px|rgb(63, 184, 255)",
+    "390 Q1 board C lights up on hover in its own color :: rest=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 12px 30px 0px|rgba lit=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 24px 56px 0px, rgb(47, 232, 158) 0px 0px 44px 0px|rgb(47, 232, 158)",
+    "390 Q1 overflow 0 scrolled :: 390/390",
+    "390 G skip Q1 lands on Q2",
+    "390 Q2 column present :: colW=390",
+    "390 Q2 choice text >=17px :: sizes=[17, 17, 17]",
+    "390 Q2 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "390 Q2 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "390 Q2 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "390 Q2 EDIT >=14px :: sizes=[14, 14, 14]",
+    "390 Q2 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "390 Q2 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "390 Q2 Naya picture >=64px circle, loaded, one per board :: boxes=[[68, 68], [68, 68], [68, 68]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "390 Q2 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "390 Q2 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "390 Q2 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "390 Q2 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "390 Q2 overflow 0 :: 390/390",
+    "390 old 'Do you want A, B or C?' line is gone",
+    "390 1-2-3 present",
+    "390 I choice A eye opens its nutshell",
+    "390 I EDIT unlocks choice A",
+    "390 I edited choice A is selected",
+    "390 Q3 column present :: colW=390",
+    "390 Q3 choice text >=17px :: sizes=[17, 17, 17]",
+    "390 Q3 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "390 Q3 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "390 Q3 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "390 Q3 EDIT >=14px :: sizes=[14, 14, 14]",
+    "390 Q3 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "390 Q3 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "390 Q3 Naya picture >=64px circle, loaded, one per board :: boxes=[[68, 68], [68, 68], [68, 68]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "390 Q3 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "390 Q3 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "390 Q3 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "390 Q3 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "390 Q3 overflow 0 :: 390/390",
+    "390 H transcript lands live in the box :: hello world from the walk",
+    "390 Q4 column present :: colW=390",
+    "390 Q4 choice text >=17px :: sizes=[17, 17, 17]",
+    "390 Q4 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "390 Q4 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "390 Q4 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "390 Q4 EDIT >=14px :: sizes=[14, 14, 14]",
+    "390 Q4 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "390 Q4 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "390 Q4 Naya picture >=64px circle, loaded, one per board :: boxes=[[68, 68], [68, 68], [68, 68]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "390 Q4 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "390 Q4 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "390 Q4 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "390 Q4 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "390 Q4 overflow 0 :: 390/390",
+    "390 Q5 column present :: colW=390",
+    "390 Q5 choice text >=17px :: sizes=[17, 17, 17]",
+    "390 Q5 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "390 Q5 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "390 Q5 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "390 Q5 EDIT >=14px :: sizes=[14, 14, 14]",
+    "390 Q5 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "390 Q5 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "390 Q5 Naya picture >=64px circle, loaded, one per board :: boxes=[[68, 68], [68, 68], [68, 68]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "390 Q5 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "390 Q5 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "390 Q5 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "390 Q5 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "390 Q5 overflow 0 :: 390/390",
+    "390 Q6 column present :: colW=390",
+    "390 Q6 choice text >=17px :: sizes=[17, 17, 17]",
+    "390 Q6 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "390 Q6 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "390 Q6 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "390 Q6 EDIT >=14px :: sizes=[14, 14, 14]",
+    "390 Q6 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "390 Q6 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "390 Q6 Naya picture >=64px circle, loaded, one per board :: boxes=[[68, 68], [68, 68], [68, 68]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "390 Q6 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "390 Q6 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "390 Q6 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "390 Q6 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "390 Q6 overflow 0 :: 390/390",
+    "390 Q7 column present :: colW=390",
+    "390 Q7 choice text >=17px :: sizes=[17, 17, 17]",
+    "390 Q7 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "390 Q7 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "390 Q7 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "390 Q7 EDIT >=14px :: sizes=[14, 14, 14]",
+    "390 Q7 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "390 Q7 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "390 Q7 Naya picture >=64px circle, loaded, one per board :: boxes=[[68, 68], [68, 68], [68, 68]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "390 Q7 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "390 Q7 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "390 Q7 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "390 Q7 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "390 Q7 overflow 0 :: 390/390",
+    "390 Q8 column present :: colW=390",
+    "390 Q8 choice text >=17px :: sizes=[17, 17, 17]",
+    "390 Q8 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "390 Q8 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "390 Q8 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "390 Q8 EDIT >=14px :: sizes=[14, 14, 14]",
+    "390 Q8 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "390 Q8 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "390 Q8 Naya picture >=64px circle, loaded, one per board :: boxes=[[68, 68], [68, 68], [68, 68]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "390 Q8 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "390 Q8 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "390 Q8 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "390 Q8 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "390 Q8 overflow 0 :: 390/390",
+    "390 Q9 column present :: colW=390",
+    "390 Q9 choice text >=17px :: sizes=[17, 17, 17]",
+    "390 Q9 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "390 Q9 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "390 Q9 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "390 Q9 EDIT >=14px :: sizes=[14, 14, 14]",
+    "390 Q9 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "390 Q9 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "390 Q9 Naya picture >=64px circle, loaded, one per board :: boxes=[[68, 68], [68, 68], [68, 68]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "390 Q9 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "390 Q9 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "390 Q9 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "390 Q9 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "390 Q9 overflow 0 :: 390/390",
+    "390 Q10 column present :: colW=390",
+    "390 Q10 choice text >=17px :: sizes=[17, 17, 17]",
+    "390 Q10 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "390 Q10 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "390 Q10 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "390 Q10 EDIT >=14px :: sizes=[14, 14, 14]",
+    "390 Q10 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "390 Q10 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "390 Q10 Naya picture >=64px circle, loaded, one per board :: boxes=[[68, 68], [68, 68], [68, 68]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "390 Q10 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "390 Q10 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "390 Q10 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "390 Q10 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "390 Q10 overflow 0 :: 390/390",
+    "390 G skip Q10 lands on names",
+    "390 overflow 0 at names :: 390/390",
+    "390 B2 slug follows name live :: phone-fixers",
+    "390 B2 edited slug kept",
+    "390 building reaches done",
+    "390 overflow 0 at building :: 390/390",
+    "390 D three building links shown",
+    "390 D click Space link lands on the created page :: https://naya-walk-beginning-staging.nayapower.workers.dev/pages/q10walk2/fixers-club",
+    "390 E Hub shows the three pages by typed titles :: Q10 Walk Two \u2014 your Hub |  | Your pages \u2014 built from your own words in the walk. Tap one to open it. |  | YOUR PERSONAL PAGE | q10walk2 | nayanet.app/q10walk2/q10walk2 | YOUR BUSINESS | Phone Fixers | nayanet.app/q10wa",
+    "390 overflow 0 at Hub :: 390/390",
+    "390 console errors :: 0: []",
+    "390 pageerrors :: 0: []",
+    "390 C all eight given answers word for word in the Box :: mismatch=[]",
+    "390 C skipped Q1/Q10 store nothing :: ['biz_building', 'biz_do', 'biz_offer', 'goal', 'into', 'mission', 'motto', 'vision']",
+    "390 A exactly one Box record :: 1",
+    "entry dial name-only (one text input, no code field) :: inputs=1",
+    "entry returning-citizen choice present",
+    "entry submit lands on certificate :: https://naya-walk-beginning-staging.nayapower.workers.dev/identity.html?name=Q10%20Walk%20Three",
+    "install veil dismissed (Not now)",
+    "certificate alias-only (one input, no name/code field) :: inputs=1",
+    "certificate claim lands on the walk :: https://naya-walk-beginning-staging.nayapower.workers.dev/welcome",
+    "360 Q1 shown directly",
+    "360 Q1 column present :: colW=360",
+    "360 Q1 choice text >=17px :: sizes=[17, 17, 17]",
+    "360 Q1 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "360 Q1 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "360 Q1 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "360 Q1 EDIT >=14px :: sizes=[14, 14, 14]",
+    "360 Q1 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "360 Q1 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "360 Q1 Naya picture >=64px circle, loaded, one per board :: boxes=[[68, 68], [68, 68], [68, 68]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "360 Q1 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "360 Q1 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "360 Q1 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "360 Q1 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "360 Q1 overflow 0 :: 360/360",
+    "360 Q2 column present :: colW=360",
+    "360 Q2 choice text >=17px :: sizes=[17, 17, 17]",
+    "360 Q2 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "360 Q2 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "360 Q2 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "360 Q2 EDIT >=14px :: sizes=[14, 14, 14]",
+    "360 Q2 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "360 Q2 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "360 Q2 Naya picture >=64px circle, loaded, one per board :: boxes=[[68, 68], [68, 68], [68, 68]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "360 Q2 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "360 Q2 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "360 Q2 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "360 Q2 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "360 Q2 overflow 0 :: 360/360",
+    "360 Q3 column present :: colW=360",
+    "360 Q3 choice text >=17px :: sizes=[17, 17, 17]",
+    "360 Q3 choice text white/lit (never grey) :: colors=['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)']",
+    "360 Q3 choice text opacity 1.0 :: opacity=[1, 1, 1]",
+    "360 Q3 helper >=16px opacity 1.0 white :: size=16 op=1 color=rgb(255, 255, 255)",
+    "360 Q3 EDIT >=14px :: sizes=[14, 14, 14]",
+    "360 Q3 eye >=40px touch target :: boxes=[[40, 40], [40, 40], [40, 40]]",
+    "360 Q3 letter badge >=44px :: boxes=[[48, 48], [48, 48], [48, 48]] letters=['A', 'B', 'C']",
+    "360 Q3 Naya picture >=64px circle, loaded, one per board :: boxes=[[68, 68], [68, 68], [68, 68]] src=['naya-a.jpg', 'naya-b.jpg', 'naya-c.jpg'] nat=[1408, 1408, 1408]",
+    "360 Q3 three boards, three top-bar colors (A purple B blue C green) :: topBar=['rgb(160, 107, 255)', 'rgb(63, 184, 255)', 'rgb(47, 232, 158)']",
+    "360 Q3 style names A/B/C distinct :: names=['Warm & Plain', 'Bold & Short', 'Full & Visionary']",
+    "360 Q3 1-2-3 steps present (3, numbered, big tiles) :: s123=['1Pick the style you like \u2014 A, B or C', '2Make it yours \u2014 tap EDIT and change the words', '3Press Enter \u2014 it becomes your answer'] numBox=[[48, 48], [48, 48], [48, 48]]",
+    "360 Q3 examples read whole (no clipping) :: clip=[0, 0, 0]",
+    "360 Q3 overflow 0 :: 360/360",
+    "360 seeded completed -> end slide direct",
+    "360 overflow 0 at end :: 360/360",
+    "360 Hub shows the pages",
+    "360 overflow 0 at Hub :: 360/360",
+    "360 page renders the title",
+    "360 overflow 0 at page :: 360/360",
+    "360 console errors :: 0: []",
+    "360 pageerrors :: 0: []"
+  ],
+  "fail": [
+    "1440 Q1 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "1440 Q1 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "1440 Q2 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "1440 Q2 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "1440 Q3 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "1440 Q3 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "1440 Q4 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "1440 Q4 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "1440 Q5 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "1440 Q5 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "1440 Q6 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "1440 Q6 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "1440 Q7 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "1440 Q7 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "1440 Q8 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "1440 Q8 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "1440 Q9 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "1440 Q9 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "1440 Q10 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "1440 Q10 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "390 Q1 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "390 Q1 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "390 Q1 board A lights up on hover in its own color :: rest=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 24px 56px 0px, rgb lit=rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 24px 56px 0px, rgb(160, 107, 255) 0px 0px 44px 0px|rgb(160, 107, 255",
+    "390 Q2 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "390 Q2 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "390 Q3 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "390 Q3 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "390 Q4 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "390 Q4 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "390 Q5 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "390 Q5 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "390 Q6 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "390 Q6 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "390 Q7 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "390 Q7 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "390 Q8 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "390 Q8 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "390 Q9 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "390 Q9 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "390 Q10 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "390 Q10 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "360 Q1 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "360 Q1 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "360 Q2 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "360 Q2 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)",
+    "360 Q3 three DISTINCT icons (no shared eye) :: icons=['<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st', '<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st']",
+    "360 Q3 Full Custom gold top bar :: customTopBar=rgba(0, 0, 0, 0)"
+  ],
+  "notes": [
+    "pass=463 fail=47"
+  ],
+  "measure": {
+    "1440-q1": {
+      "colW": 1120,
+      "textSize": [
+        18,
+        18,
+        18
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgb(63, 184, 255)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "1440/1440"
+    },
+    "1440-q2": {
+      "colW": 1120,
+      "textSize": [
+        18,
+        18,
+        18
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "1440/1440"
+    },
+    "1440-q3": {
+      "colW": 1120,
+      "textSize": [
+        18,
+        18,
+        18
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "1440/1440"
+    },
+    "1440-q4": {
+      "colW": 1120,
+      "textSize": [
+        18,
+        18,
+        18
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "1440/1440"
+    },
+    "1440-q5": {
+      "colW": 1120,
+      "textSize": [
+        18,
+        18,
+        18
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "1440/1440"
+    },
+    "1440-q6": {
+      "colW": 1120,
+      "textSize": [
+        18,
+        18,
+        18
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "1440/1440"
+    },
+    "1440-q7": {
+      "colW": 1120,
+      "textSize": [
+        18,
+        18,
+        18
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "1440/1440"
+    },
+    "1440-q8": {
+      "colW": 1120,
+      "textSize": [
+        18,
+        18,
+        18
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "1440/1440"
+    },
+    "1440-q9": {
+      "colW": 1120,
+      "textSize": [
+        18,
+        18,
+        18
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "1440/1440"
+    },
+    "1440-q10": {
+      "colW": 1120,
+      "textSize": [
+        18,
+        18,
+        18
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ],
+        [
+          76,
+          76
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "1440/1440"
+    },
+    "390-q1": {
+      "colW": 390,
+      "textSize": [
+        17,
+        17,
+        17
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgb(160, 107, 255)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "390/390"
+    },
+    "390-q2": {
+      "colW": 390,
+      "textSize": [
+        17,
+        17,
+        17
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "390/390"
+    },
+    "390-q3": {
+      "colW": 390,
+      "textSize": [
+        17,
+        17,
+        17
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "390/390"
+    },
+    "390-q4": {
+      "colW": 390,
+      "textSize": [
+        17,
+        17,
+        17
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.74)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "390/390"
+    },
+    "390-q5": {
+      "colW": 390,
+      "textSize": [
+        17,
+        17,
+        17
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "390/390"
+    },
+    "390-q6": {
+      "colW": 390,
+      "textSize": [
+        17,
+        17,
+        17
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "390/390"
+    },
+    "390-q7": {
+      "colW": 390,
+      "textSize": [
+        17,
+        17,
+        17
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "390/390"
+    },
+    "390-q8": {
+      "colW": 390,
+      "textSize": [
+        17,
+        17,
+        17
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "390/390"
+    },
+    "390-q9": {
+      "colW": 390,
+      "textSize": [
+        17,
+        17,
+        17
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "390/390"
+    },
+    "390-q10": {
+      "colW": 390,
+      "textSize": [
+        17,
+        17,
+        17
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "390/390"
+    },
+    "360-q1": {
+      "colW": 360,
+      "textSize": [
+        17,
+        17,
+        17
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "360/360"
+    },
+    "360-q2": {
+      "colW": 360,
+      "textSize": [
+        17,
+        17,
+        17
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "360/360"
+    },
+    "360-q3": {
+      "colW": 360,
+      "textSize": [
+        17,
+        17,
+        17
+      ],
+      "textColor": [
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 255, 255)"
+      ],
+      "textOpacity": [
+        1,
+        1,
+        1
+      ],
+      "textClip": [
+        0,
+        0,
+        0
+      ],
+      "topSize": 16,
+      "topOpacity": 1,
+      "topColor": "rgb(255, 255, 255)",
+      "topText": "These are examples \u2014 click the edit and make it your own. Click the eye for more information.",
+      "editSize": [
+        14,
+        14,
+        14
+      ],
+      "eyeBox": [
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "badgeBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "badgeSize": [
+        20,
+        20,
+        20
+      ],
+      "photoBox": [
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ],
+        [
+          68,
+          68
+        ]
+      ],
+      "photoSrc": [
+        "naya-a.jpg",
+        "naya-b.jpg",
+        "naya-c.jpg"
+      ],
+      "photoNat": [
+        1408,
+        1408,
+        1408
+      ],
+      "topBar": [
+        "rgb(160, 107, 255)",
+        "rgb(63, 184, 255)",
+        "rgb(47, 232, 158)"
+      ],
+      "borderColor": [
+        "rgba(160, 107, 255, 0.55)",
+        "rgba(63, 184, 255, 0.55)",
+        "rgba(47, 232, 158, 0.55)"
+      ],
+      "iconKey": [
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st",
+        "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" st"
+      ],
+      "styleNames": [
+        "Warm & Plain",
+        "Bold & Short",
+        "Full & Visionary"
+      ],
+      "letters": [
+        "A",
+        "B",
+        "C"
+      ],
+      "s123count": 3,
+      "s123text": [
+        "1Pick the style you like \u2014 A, B or C",
+        "2Make it yours \u2014 tap EDIT and change the words",
+        "3Press Enter \u2014 it becomes your answer"
+      ],
+      "numBox": [
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "customTopBar": "rgba(0, 0, 0, 0)",
+      "customTextSize": 17,
+      "overflow": "360/360"
+    }
+  }
+}
