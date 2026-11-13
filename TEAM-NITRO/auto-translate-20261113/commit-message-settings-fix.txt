@@ -1,0 +1,9 @@
+Auto-Translate Settings fix (Area #41): Settings panel speaks es/fr/de — 210 keys, zero English labels left
+
+Captain double-check (8/10, BACK IN): the Settings panel stayed English after a switch to Spanish — a brief-named Part 1 surface the round left unmarked. This fix adds every panel label to MW_I18N in es/fr/de (167 -> 210 keys/language), marks the 36 unmarked static labels, and routes the 14 JS-written strings (loadSettingsData id-line, renderInstallState, auth card + info decorator, cover-slot placeholders) through mwTr with an in-place re-sync on every switch.
+
+Proved first-hand on the staged bytes: switch to es/fr/de, open Settings — zero English labels left except proper names; grep unmarked 6/20 -> 0/20, 6/20 -> 0/20, 4/10 -> 0/10; regression green set intact; note Translate tap still works end to end; first-visit es-ES opens translated at boot; zero overflow at 390/1440/360, zero page errors.
+
+Also: the record now credits Wrena, first maker of Area #41, by name for her dictionary preserve-step regex fix (DE values leaking into es/fr) and her Unicode-aware icon regex (\p{L} not \w, line 20436) — both real, in the build, verified first-hand.
+
+Staged only. No live touch, no merge, no PR. Parent f9242820 (Auto-Translate tip).

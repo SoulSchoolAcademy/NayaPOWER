@@ -68,6 +68,33 @@ function mwApplyLang(){
     var sw=w.querySelector('.os-switch'), cap=w.querySelector('.os-switch-cap');
     if(sw && cap) cap.textContent=sw.classList.contains('on')?((code==='en')?'On':(dict['On']||'On')):((code==='en')?'Off':(dict['Off']||'Off'));
   });
+  /* SETTINGS-FIX: the install-state line is written by page JS
+     (renderInstallState, global), not by markup — re-run it so it follows
+     the switch. The auth button likewise is written by the auth IIFE
+     (updateAuthUI, not global) — re-sync it here only while signed out;
+     signed in it shows the citizen's own email, which is data, never
+     translated. */
+  if(window.renderInstallState){ try{ window.renderInstallState(); }catch(e){} }
+  var ab=$('naya-auth-btn');
+  if(ab && !(window.NayaAuth && window.NayaAuth.user)) ab.textContent=(code==='en')?'Sign in':(dict['Sign in']||'Sign in');
+  /* SETTINGS-FIX: the auth card's info button (round 2d decorator) carries
+     its explanation as an aria-label — re-sync it like the bottom bar's. */
+  var aib=document.querySelector('#settings .os-info-btn');
+  if(aib) aib.setAttribute('aria-label',(code==='en')?'What does signing in do?':(dict['What does signing in do?']||'What does signing in do?'));
+  /* SETTINGS-FIX: the cover-slot placeholders are visible labels in the
+     panel; sync them (and their aria-labels) in place on every switch —
+     never re-render the slots here, or text the citizen is typing into a
+     slot would be wiped. */
+  document.querySelectorAll('#mw-cover-slots input[data-mw-slot-label]').forEach(function(inp){
+    var n=inp.getAttribute('data-mw-slot-label');
+    inp.setAttribute('placeholder',(code==='en')?'Button name — e.g. Naya Academy':(dict['Button name — e.g. Naya Academy']||'Button name — e.g. Naya Academy'));
+    inp.setAttribute('aria-label',((code==='en')?'Cover button':(dict['Cover button']||'Cover button'))+' '+(+n+1)+' '+((code==='en')?'Name':(dict['Name']||'Name')));
+  });
+  document.querySelectorAll('#mw-cover-slots input[data-mw-slot-url]').forEach(function(inp){
+    var n=inp.getAttribute('data-mw-slot-url');
+    inp.setAttribute('placeholder',(code==='en')?'URL — enter it and the button wakes up':(dict['URL — enter it and the button wakes up']||'URL — enter it and the button wakes up'));
+    inp.setAttribute('aria-label',((code==='en')?'Cover button':(dict['Cover button']||'Cover button'))+' '+(+n+1)+' URL');
+  });
   /* AUTO-TRANSLATE: the bottom bar is icon-only — its only words are the
      accessible names. They translate in place; the icons never change. */
   var segNames={plus:'ADD',mail:'MAIL',activity:'ACTIVITY',spaces:'SPACES',eco:'ECOSYSTEM'};

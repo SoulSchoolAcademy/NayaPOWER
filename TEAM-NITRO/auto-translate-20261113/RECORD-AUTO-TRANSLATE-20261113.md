@@ -471,3 +471,51 @@ page errors []. Probed first-hand (`/tmp/pw-lists.py`).
   message to prove against.
 - **More chrome languages:** data-only follow-on (one dictionary object +
   one select option per language, no code change).
+
+## §11 — Settings-panel fix (2026-11-13, fix round — this amendment)
+
+The captain's double-check (8/10, BACK IN) caught the one brief-named
+Part 1 surface this round left undone: the Settings panel stayed English
+after a switch to Spanish. The fix round (branch
+`personal/auto-translate-settings-fix-20261113`, parent `f9242820`) closed
+it on the same staged bytes, and this record is amended with its outcome:
+
+- **Fix file:** 1,639,171 B, sha256
+  `d91945f6b883dff7311c320802b62ab7d0ac0fffa756a48c36e867f6fc44f3e4`,
+  23,575 lines. Dictionary 167 → **210 keys/language**; `data-mw-tr`
+  114 → 153.
+- **What was unmarked:** 36 static labels (6 row labels + 6 subs, 4
+  headings, the title, 12 room buttons, the Identity lines, "Your story" /
+  "Your feed", the "Everything" sub + "Your other worlds:") and 14
+  JS-written strings three writers overwrote in English on every open
+  (`loadSettingsData`, `renderInstallState`, the auth IIFE + its ⓘ
+  decorator, the cover-slot renderer).
+- **Proved:** switch to es/fr/de, open the panel — zero English labels
+  left in any of the three languages except proper names (audit 0/0/0);
+  grep unmarked 6/20 → 0/20, 6/20 → 0/20, 4/10 → 0/10; regression green
+  set intact; a note Translate tap still works end to end; first-visit
+  es-ES opens translated at boot; zero overflow at 390/1440/360, zero
+  page errors. Full record:
+  `RECORD-AUTO-TRANSLATE-SETTINGS-FIX-20261113.md`; scorecard
+  `SCORECARD-AUTO-TRANSLATE-SETTINGS-FIX-20261113.md` (10/10).
+- **Credit owed, by name — Wrena (BUILD), first maker of this round
+  (16:45–17:26Z, died on a transport failure, not a task failure):** her
+  dictionary preserve-step regex fix (the first parse's regex span ran
+  past the language boundary and took the DE values into es and fr for 12
+  of the 17 preserved keys — "My World" read "Meine Welt" in Spanish;
+  she caught it in self-check 4 and re-parsed by LINE, with asserts
+  proving es/fr/de) and her Unicode-aware icon regex (`\p{L}` not `\w`,
+  built-file line 20436 — JS `\w` is ASCII-only, so a French "À propos"
+  or German "Über"/"Ändern" had its first letter eaten into the "icon"
+  on the next switch) are real, in the build, and verified first-hand by
+  the second maker — and re-confirmed by the fix maker. This record
+  credited her dictionary work generally but not these two fixes by name;
+  this amendment corrects that.
+- **What the fix deliberately left English (named, not silent):** the
+  transient `#os-set-status` feedback after a flip, the two conditional
+  cover-area status notes, the signed-in auth button (the citizen's own
+  email), and the `confirm('Sign out?')` browser modal — follow-ons, not
+  labels.
+- **The round's named gaps stand:** drawer links, the unexercised chat
+  tap, the 6-second fail view — untouched by the fix, as the fix brief
+  orders.

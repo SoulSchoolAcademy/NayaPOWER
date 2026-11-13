@@ -29,12 +29,13 @@ def rep(old, new, n=1):
 # ---- 1. the grown language block (span replace, boundary-asserted) ----
 lang = open(WORK + 'mw-lang-block.js', encoding='utf-8').read()
 d = json.load(open(WORK + 'dict-final.json', encoding='utf-8'))
+assert all(len(v) == 210 for v in d.values()), 'dict must hold 210 keys/language, got %s' % {k: len(v) for k, v in d.items()}
 lang = lang.replace('/*__MW_I18N_JSON__*/', json.dumps(d, ensure_ascii=False))
 a = h.index('/* ---------- language (fix 18) ---------- */')
 b = h.index('/* ---------- settings binding ---------- */')
 assert 'var MW_I18N={' in h[a:b] and 'function mwApplyLang(){' in h[a:b], 'language span boundaries wrong'
 h = h[:a] + lang.rstrip() + '\n' + h[b:]
-print('language block grown: 17 keys -> 167 keys/language')
+print('language block grown: 17 keys -> 210 keys/language')
 
 # ---- 2. switch caps translate ----
 rep("  if(cap) cap.textContent=on?'On':'Off';",
@@ -253,6 +254,100 @@ rep("box.innerHTML='<p class=\"os-note\">No Naya Notes in this category yet.</p>
     "box.innerHTML='<p class=\"os-note\">'+%s+'</p>';" % TR('No Naya Notes in this category yet.'))
 rep("html+='<div class=\"smart-tab add-tab\" data-mw-pill=\"__add\">+ Add</div>';",
     "html+='<div class=\"smart-tab add-tab\" data-mw-pill=\"__add\">+ '+%s+'</div>';" % TR('Add'))
+
+# ---- 19. SETTINGS-FIX (2026-11-13): the Settings panel's unmarked upper half.
+# The captain's double-check caught it: the six original rows, the four
+# headings, the Identity lines and the room buttons carry no data-mw-tr and
+# their English strings are not in MW_I18N, so the panel stayed English
+# after a switch while the marked lower half (§11/§11b) translated. Every
+# rep below is the round's own marking pattern (§11): a label alone in its
+# element gets data-mw-tr="set" (the dict key is the element's own English
+# text); a label sharing its parent with an icon gets its words wrapped in
+# <span data-mw-tr="set">, harvested from the "Common settings" heading.
+# Proper names stay unmarked: Dashboard, Home (the drawer precedent —
+# "Home/Hub stays, two proper names"), Business, Space, the My World
+# checklist (Personal/Business/Contacts/About), the owner's name. ----
+rep('<div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> Settings</div>',
+    '<div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> <span data-mw-tr="set">Settings</span></div>')
+for label in ['Your Preferences', 'App behaviour', 'Identity', 'Everything on this page']:
+    rep('</span> %s</h3>' % label, '</span> <span data-mw-tr="set">%s</span></h3>' % label)
+for label in ['Deep black', 'This app&rsquo;s deep-black theme.',
+              'Notifications', 'Kept on this device &mdash; nothing is sent yet.',
+              'Smart Tabs drift', 'The tab ribbon glides slowly, one way &mdash; the NayaNET standard.',
+              'Motion &amp; glow', 'Breathing light and living motion across the app.',
+              'Auto-refresh', 'Quietly re-reads whichever board is open — feed, today, inbox, reports or dashboard — every minute.',
+              'Public profile', 'On &mdash; visitors can see your profile, make a post on your feed and message you. Off &mdash; this app is private.',
+              'This identity is what every app&rsquo;s gate checks — change it here and it changes everywhere.',
+              'Your story', 'Your feed']:
+    rep('>%s<' % label, ' data-mw-tr="set">%s<' % label)
+rep('<p style="margin:0 0 6px">Owner: <span class="os-owner-name">Shawn Vibert</span></p>',
+    '<p style="margin:0 0 6px"><span data-mw-tr="set">Owner:</span> <span class="os-owner-name">Shawn Vibert</span></p>')
+rep('<p id="os-id-line" style="margin:0 0 6px;">',
+    '<p id="os-id-line" style="margin:0 0 6px;" data-mw-tr="set">')
+rep('<p class="os-note" style="margin:0 0 10px">Every room on this page, in one place &mdash; and the doors to your other worlds.</p>',
+    '<p class="os-note" style="margin:0 0 10px" data-mw-tr="set">Every room on this page, in one place &mdash; and the doors to your other worlds.</p>')
+rep('<button class="ph-msg" type="button" data-os-go="myworld">🌍 My World</button>',
+    '<button class="ph-msg" type="button" data-os-go="myworld">🌍 <span data-mw-tr="set">My World</span></button>')
+for go, label in [('about', 'About'), ('today', 'Today'), ('notes', 'Notes'),
+                  ('people', 'Connections'), ('message', 'Message'), ('inbox', 'Inbox'),
+                  ('growth', 'Invite'), ('lists', 'Lists'), ('scheduler', 'Scheduler'),
+                  ('reports', 'Reports'), ('memberships', 'Memberships')]:
+    rep('<button class="ph-msg" type="button" data-os-go="%s">%s</button>' % (go, label),
+        '<button class="ph-msg" type="button" data-os-go="%s" data-mw-tr="set">%s</button>' % (go, label))
+rep('<p class="os-note" style="margin:12px 0 10px">Your other worlds:</p>',
+    '<p class="os-note" style="margin:12px 0 10px" data-mw-tr="set">Your other worlds:</p>')
+
+# ---- 20. SETTINGS-FIX (2026-11-13): the panel's JS-written strings.
+# Three writers overwrite marked markup in English, so marking alone cannot
+# close the panel: loadSettingsData() re-writes #os-id-line on every
+# Settings open; renderInstallState() re-writes #os-install-state on every
+# open; the auth IIFE writes the Account card + 'Sign in' button at boot.
+# Each is routed through mwTr (the TR() guard — the §8/§9 precedent), and
+# mwApplyLang re-runs renderInstallState + re-syncs the auth button on
+# every switch (see mw-lang-block.js). The transient #os-set-status
+# feedback ("Smart Tabs drift is on — ... Saved on this device.") is NOT
+# routed: it is feedback after a flip, not a label — named in the record.
+# The signed-in auth button ('✓ ' + email) is data, never translated. ----
+rep("if (idl) idl.textContent='The name, face and story visitors see are this app’s own data. Tap your picture on Home to change it — the story is edited in About.';",
+    "if (idl) idl.textContent=%s;" % TR('The name, face and story visitors see are this app’s own data. Tap your picture on Home to change it — the story is edited in About.'))
+rep("st.textContent='This app is installed on this device — one tap and you are home. It will not nag you again.';",
+    "st.textContent=%s;" % TR('This app is installed on this device — one tap and you are home. It will not nag you again.'))
+rep("st.textContent = window.__osInstallPrompt ? 'Ready to install.' : 'Not installed yet. When your browser offers install, the button below lights up; on iPhone/iPad use Share → Add to Home Screen.';",
+    "st.textContent = window.__osInstallPrompt ? %s : %s;" % (TR('Ready to install.'), TR('Not installed yet. When your browser offers install, the button below lights up; on iPhone/iPad use Share → Add to Home Screen.')))
+rep("$('os-install-state').textContent='Your browser has not offered an install prompt yet — open the browser menu and choose “Add to Home Screen” / “Install app”. The button fires the real browser prompt when one exists.';",
+    "$('os-install-state').textContent=%s;" % TR('Your browser has not offered an install prompt yet — open the browser menu and choose “Add to Home Screen” / “Install app”. The button fires the real browser prompt when one exists.'))
+rep("authDiv.innerHTML = '<h3>Account</h3><p style=\"color:#E8E8EC;font-size:14px;margin:8px 0;\">Sign in so NayaNET knows it’s you — your apps, your mail and your data, synced on every device.</p>';",
+    "authDiv.innerHTML = '<h3><span data-mw-tr=\"set\" data-mw-en=\"Account\">'+" + TR('Account') + "+'</span></h3><p style=\"color:#E8E8EC;font-size:14px;margin:8px 0;\" data-mw-tr=\"set\" data-mw-en=\"Sign in so NayaNET knows it’s you — your apps, your mail and your data, synced on every device.\">'+" + TR('Sign in so NayaNET knows it’s you — your apps, your mail and your data, synced on every device.') + "+'</p>';")
+# The decorator (round 2d) appends an info button into the card's h3 and an
+# explanation panel under it, both written in English at decoration time:
+# route both through mwTr, pin the panel's English key with data-mw-en, and
+# mark the panel so the switch re-translates it (the aria-label is re-synced
+# in mwApplyLang, same shape as the bottom-bar aria-labels).
+rep("ib.setAttribute('aria-expanded','false'); ib.setAttribute('aria-label','What does signing in do?');",
+    "ib.setAttribute('aria-expanded','false'); ib.setAttribute('aria-label',%s);" % TR('What does signing in do?'))
+rep("panel.className='os-info-panel'; panel.hidden=true;",
+    "panel.className='os-info-panel'; panel.hidden=true; panel.setAttribute('data-mw-tr','set'); panel.dataset.mwEn='Your email is your key. It recovers your password if you ever lose it. It proves you are you when you sign in. And it connects your smart apps to you, so your world is there from any phone or computer you sign in on.';")
+rep("panel.textContent='Your email is your key. It recovers your password if you ever lose it. It proves you are you when you sign in. And it connects your smart apps to you, so your world is there from any phone or computer you sign in on.';",
+    "panel.textContent=%s;" % TR('Your email is your key. It recovers your password if you ever lose it. It proves you are you when you sign in. And it connects your smart apps to you, so your world is there from any phone or computer you sign in on.'))
+rep("btn.textContent = 'Sign in';",
+    "btn.textContent = %s;" % TR('Sign in'), n=2)
+# The cover-slot inputs (mwRenderCoverSlots) are rendered by JS with English
+# placeholders + aria-labels — the eye check of the Spanish screenshot caught
+# them; a textContent dump cannot see a placeholder. Routed through mwTr at
+# render time (first-visit correct) and synced in place by mwApplyLang (never
+# re-render the slots on a switch — re-rendering would wipe text the citizen
+# is typing into a slot). The two conditional status notes in this area
+# ('No empty spot for Join NayaNET...', 'Everything is back...') are NOT
+# routed: transient feedback after an action, like #os-set-status — named
+# in the record.
+rep('placeholder="Button name \u2014 e.g. Naya Academy"',
+    "placeholder=\"'+" + TR('Button name — e.g. Naya Academy') + "+'\"")
+rep('placeholder="URL \u2014 enter it and the button wakes up"',
+    "placeholder=\"'+" + TR('URL — enter it and the button wakes up') + "+'\"")
+rep("aria-label=\"Cover button '+(i+1)+' name\"",
+    "aria-label=\"'+" + TR('Cover button') + "+' '+(i+1)+' '+" + TR('Name') + "+'\"")
+rep("aria-label=\"Cover button '+(i+1)+' URL\"",
+    "aria-label=\"'+" + TR('Cover button') + "+' '+(i+1)+' URL\"")
 
 # ---- 18. inject the Translate module + CSS before </body> ----
 css = open(WORK + 'mw-translate.css', encoding='utf-8').read()

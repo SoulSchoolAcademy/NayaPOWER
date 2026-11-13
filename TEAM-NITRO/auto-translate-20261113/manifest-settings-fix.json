@@ -1,0 +1,98 @@
+[
+ {
+  "repo": "TEAM-NITRO/personal-page-complete-20261113/personal-complete.html",
+  "local": "/home/hatch/workspace/personal-complete-wt/TEAM-NITRO/personal-page-complete-20261113/personal-complete.html"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/BRIEF-AUTO-TRANSLATE-SETTINGS-FIX-20261113.md",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/BRIEF-AUTO-TRANSLATE-SETTINGS-FIX-20261113.md"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/CAPTAIN-VERDICT-AUTO-TRANSLATE-20261113.md",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/CAPTAIN-VERDICT-AUTO-TRANSLATE-20261113.md"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/RECORD-AUTO-TRANSLATE-20261113.md",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/RECORD-AUTO-TRANSLATE-20261113.md"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/RECORD-AUTO-TRANSLATE-SETTINGS-FIX-20261113.md",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/RECORD-AUTO-TRANSLATE-SETTINGS-FIX-20261113.md"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/SCORECARD-AUTO-TRANSLATE-SETTINGS-FIX-20261113.md",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/SCORECARD-AUTO-TRANSLATE-SETTINGS-FIX-20261113.md"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/build-auto-translate.py",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/build-auto-translate.py"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/mw-lang-block.js",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/mw-lang-block.js"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/dict-final.json",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/dict-final.json"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/draft-settings-fix.py",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/draft-settings-fix.py"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/dict-settings-fix-draft.json",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/dict-settings-fix-draft.json"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/apply-settings-fix-dict.py",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/apply-settings-fix-dict.py"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/apply-settings-fix-dict2.py",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/apply-settings-fix-dict2.py"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/apply-settings-fix-dict3.py",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/apply-settings-fix-dict3.py"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/verify-settings-fix.py",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/verify-settings-fix.py"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/verify-settings-fix.json",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/verify-settings-fix.json"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/verify-settings-fix2.py",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/verify-settings-fix2.py"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/verify-settings-fix2.json",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/verify-settings-fix2.json"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/fix-proof-390-settings-es.png",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/fix-proof-390-settings-es.png"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/fix-proof-390-settings-fr.png",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/fix-proof-390-settings-fr.png"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/fix-proof-390-settings-de.png",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/fix-proof-390-settings-de.png"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/file-settings-fix.py",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/file-settings-fix.py"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/manifest-settings-fix.json",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/manifest-settings-fix.json"
+ },
+ {
+  "repo": "TEAM-NITRO/auto-translate-20261113/commit-message-settings-fix.txt",
+  "local": "/home/hatch/workspace/team-nitro/auto-translate-20261113/commit-message-settings-fix.txt"
+ }
+]
