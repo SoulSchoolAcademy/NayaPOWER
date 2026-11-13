@@ -1,0 +1,33 @@
+Auto-Translate F1 micro-fix (Area #41): French TES MOTS -> VOS MOTS, one dictionary value
+
+The checker's audit of the card-labels fix (9/10) found one word the maker
+did not name: the new card key YOUR WORDS — FORMATTED BEAUTIFULLY BY NAYA
+carried the French value TES MOTS — MIS EN FORME AVEC SOIN PAR NAYA. The
+French voice is vous (the sibling key reads VOS MOTS, MOT POUR MOT), so
+this was inconsistent inside the round's own new keys — and the only
+tu-form among the 56 new keys, which also disproves the record §4 claim
+that its tu-form scan found "the only one" (it found the sibling, not
+this one).
+
+This round fixes the one value (dict-final.json + the embedded MW_I18N
+of the built file, edited in place, never a fresh build) and corrects
+that §4 claim in the card-labels record to say what actually happened.
+Spanish (TUS PALABRAS) and German (DEINE WORTE) do not change.
+
+Proved first-hand on the fix bytes: grep TES MOTS = 0 in the dictionary
+and in the file; tu-form scan of all 56 new French keys = 0 (checker
+regex + wider net, dict + embedded); diff vs the live-fetched
+card-labels staged bytes is exactly one line (the MW_I18N line, 2
+characters TE -> VO); markers unchanged (data-mw-tr 196, data-mw-ph 7,
+data-mw-aria 6); node parse 36/36 script blocks. Local sha
+9ee0d0f72b4f33a06d79b5dd5444ab3c0ed7c030b05fa86e23c2d4d811dfa334
+(1,652,796 B, size unchanged).
+
+Honest gap, named in the record (§3.5): the rendered French card was
+not browser-proven by this seat — the VM browsers are dead (Firefox
+launch failed first-hand). Re-proof is owed by the captain's
+cloud-browser eye check on the staged link: French picker, feed open,
+a naya-type card reading VOS MOTS — MIS EN FORME AVEC SOIN PAR NAYA
+at 390. Score 9/10 until that closes.
+
+Staged only. No live touch, no merge, no PR. Parent 2e348bb1 (card-labels-fix tip).

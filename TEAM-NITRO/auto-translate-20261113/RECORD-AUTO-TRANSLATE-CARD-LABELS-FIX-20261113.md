@@ -248,8 +248,18 @@ over object values.
 
 Two French translations were corrected after the second run's read:
 `YOUR WORDS, WORD FOR WORD` fr `TES MOTS, MOT POUR MOT` → `VOS MOTS,
-MOT POUR MOT` (fr voice is vous, not tu — a tu-form scan of all fr
-values found this as the only one), and `Rate this intelligence from
+MOT POUR MOT` (fr voice is vous, not tu). The record as first written
+claimed a tu-form scan of all fr values had found this as the only
+one — that claim was wrong. What actually happened: the scan found the
+sibling key above and was read as the only one; it missed
+`YOUR WORDS — FORMATTED BEAUTIFULLY BY NAYA` (fr `TES MOTS — MIS EN
+FORME AVEC SOIN PAR NAYA`), which the checker's audit found as F1
+(`CHECKER-VERDICT-AUTO-TRANSLATE-CARD-LABELS-FIX-20261113.md` §7).
+The one word was fixed in the F1 round
+(`RECORD-AUTO-TRANSLATE-F1-VOS-FIX-20261113.md`): `TES MOTS` →
+`VOS MOTS`, one dictionary value, tu-form scan of all 56 new French
+keys re-run at zero. The second correction stands as written:
+`Rate this intelligence from
 one to five stars` fr `Notez cette intelligence de une à cinq étoiles`
 → `Notez cette intelligence d'une à cinq étoiles`. Both verified live
 in the final run (§5).
