@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-13 19:01 UTC_
+_Last updated: 2026-11-13 19:43 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 8549
-- ✅ Verified (8+): 8465
+- **Total scored actions:** 8554
+- ✅ Verified (8+): 8470
 - 🟡 Partial (5–7): 75
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 5
@@ -19,9 +19,9 @@ _Last updated: 2026-11-13 19:01 UTC_
 | Team 2 | Naya Sage | 561 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 522 | 9.0 | 10 |
 | Team 4 | Naya Mason | 500 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 642 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 644 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 362 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 488 | 8.9 | 10 |
+| Team 7 | Naya Conductor | 489 | 8.9 | 10 |
 | Team 8 | Naya Sentinel | 514 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 646 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 885 | 9.1 | 9.7 |
@@ -1140,6 +1140,8 @@ _Last updated: 2026-11-13 19:01 UTC_
 - **gate-stall-20261113-0815:** 1 actions, avg 9.0/10
 - **gate-stall-20261113-0920:** 1 actions, avg 9.0/10
 - **gate-stall-20261113-1026:** 1 actions, avg 9.0/10
+- **gap-lane-scorer-20261017-0900-lane0:** 1 actions, avg 9.0/10
+- **gate-stall-20261113-1132:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -1994,6 +1996,7 @@ _Last updated: 2026-11-13 19:01 UTC_
 - **gap-lane-scorer-20261018-0220:** 1 actions, avg 9.0/10
 - **gap-lane-scorer-20261018-1510:** 1 actions, avg 9.0/10
 - **gap-lane-scorer-20261016-1340-lane5:** 1 actions, avg 8.5/10
+- **gap-lane-scorer-20261016-1410-lane5:** 1 actions, avg 8.5/10
 - **gap-t0770:** 1 actions, avg 9.5/10
 - **gap-t1242-lane6:** 2 actions, avg 8.8/10
 - **gap-t1242:** 1 actions, avg 8.5/10
@@ -2707,6 +2710,8 @@ _Last updated: 2026-11-13 19:01 UTC_
 - **t0554-lane7:** 1 actions, avg 9.0/10
 - **t0555:** 6 actions, avg 8.8/10
 - **t0555-lane4:** 1 actions, avg 9.0/10
+- **t0555-lane5:** 1 actions, avg 8.5/10
+- **t0555-lane7:** 1 actions, avg 8.5/10
 - **t0556-1004:** 19 actions, avg 9.1/10
 - **t0556:** 10 actions, avg 8.6/10
 - **t0557:** 4 actions, avg 9.0/10
