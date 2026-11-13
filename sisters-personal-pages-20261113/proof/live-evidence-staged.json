@@ -1,0 +1,10 @@
+{
+  "page": "staged",
+  "page_sha256": "73f9a20498fce0762cbbe2a8063c4df9a85603011dc32de1ee65a5270d39b61a",
+  "teeth_in_mount": 246,
+  "teeth_in_doc": 246,
+  "needle_in_dom": true,
+  "needle_transition": "none",
+  "needle_moved": false,
+  "mount_html_len": 75428
+}
