@@ -169,7 +169,11 @@ robots real text (Googlebot + GPTBot disallow present), sitemap shape (1,049 URL
 
 ## §Filing
 
-[FILL: branch filing details — files, commit, read-back.]
+- **Branch:** `public-blog/seo-ai-backend-20261113`, created from main HEAD `aca7b075fcc226eb44e3065af34f8a65d80d7721` (POST `/git/refs` → HTTP 201). Branch tip after filing: `dfcf10e2060f2f36bd3f5628afcf030847adccbf`.
+- **Files filed (16, under `BLOG/public-blog-seo-phase2/`):** `hub-worker-phase2.js` (80,254 B), `phase2-additions.js` (29,495 B), `build-phase2-worker.py`, `build-shell-phase2.py`, `index-intel-today-phase2.html` (5,561,414 B), `deploy-phase2-staging.py`, `probe-phase2.py`, `probe-phase2-playwright.py`, `check-js-mirror.js`, `cluster-topics.json`, `highlights.json`, `seo-score-report.json` (1,772,286 B), `probe-phase2-results.json`, `probe-phase2-failures.json`, `RECORD-SEO-AI-BACKEND-20261113.md`, `SCORECARD-SEO-AI-BACKEND-20261113.md`. One contents-API PUT per file (the filing script is `file-to-branch.py` in the work dir).
+- **Read-back verified, all 16:** 14 via the contents GET (decoded bytes == local bytes); the 2 files over 1 MB — the shell and the score report — via the git blob API, because the contents API omits the `content` field above 1 MB (the filing script first flagged them as mismatches on the empty field; the blob read-back settles them: shell 5,561,414 B match=True sha256 `4bfad1197c70…`; report 1,772,286 B match=True sha256 `2601687451e5…`). A directory listing of the branch path confirms 16 entries with matching sizes.
+- **Two filing-script bugs found and fixed in the round:** (1) `subprocess.run(list, shell=True)` runs only the first list element — the script hung 300 s in an interactive bash; fixed to a string command under `/bin/bash`. (2) Re-PUTs need the existing blob sha or GitHub 409s — the script now GETs the current sha first. Bodies are piped via process substitution, never staged to disk (the EPERM lesson for multi-MB payloads).
+- **No merge, no PR, no live touch, no mail.** The branch is the filing only.
 
 ## Three self-checks (each finding new things)
 
