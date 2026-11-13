@@ -1,0 +1,212 @@
+{
+  "url": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/team-transparency-20261112/team-transparency-hub.html&ref=team-transparency-20261112&cb=e04f77d6e0233d550b1e1174668a8821c032606d",
+  "widths": {
+    "1440": {
+      "surface": {
+        "h": 2631,
+        "top": 448252.15625
+      },
+      "sisters_seen": 0,
+      "sisters_missing": [
+        "Sophia",
+        "Thea",
+        "Zoe",
+        "Astraea",
+        "Vera",
+        "Wren",
+        "Iris",
+        "Ruth",
+        "Terra",
+        "Esme",
+        "Mira",
+        "Aurelia"
+      ],
+      "build_notes": 2,
+      "overflow": {
+        "top": {
+          "sw": 1440,
+          "iw": 1440,
+          "over": 0,
+          "sh": 450884,
+          "sy": 0
+        },
+        "mid": {
+          "sw": 1440,
+          "iw": 1440,
+          "over": 0,
+          "sh": 450884,
+          "sy": 225442
+        },
+        "bottom": {
+          "sw": 1440,
+          "iw": 1440,
+          "over": 0,
+          "sh": 450884,
+          "sy": 449984
+        }
+      },
+      "console_errors": 0,
+      "console_cors": 0,
+      "console_other": [],
+      "pageerrors": [],
+      "click": {
+        "sophia_personal_link": null
+      },
+      "shots": {
+        "top": "walk-twelve-1440-top.png",
+        "bottom": "walk-twelve-1440-bottom.png"
+      }
+    },
+    "390": {
+      "surface": {
+        "h": 4437,
+        "top": 1291479.5
+      },
+      "sisters_seen": 0,
+      "sisters_missing": [
+        "Sophia",
+        "Thea",
+        "Zoe",
+        "Astraea",
+        "Vera",
+        "Wren",
+        "Iris",
+        "Ruth",
+        "Terra",
+        "Esme",
+        "Mira",
+        "Aurelia"
+      ],
+      "build_notes": 2,
+      "overflow": {
+        "top": {
+          "sw": 390,
+          "iw": 390,
+          "over": 0,
+          "sh": 1295917,
+          "sy": 0
+        },
+        "mid": {
+          "sw": 390,
+          "iw": 390,
+          "over": 0,
+          "sh": 1295917,
+          "sy": 647958
+        },
+        "bottom": {
+          "sw": 390,
+          "iw": 390,
+          "over": 0,
+          "sh": 1295917,
+          "sy": 1295017.125
+        }
+      },
+      "console_errors": 0,
+      "console_cors": 0,
+      "console_other": [],
+      "pageerrors": [],
+      "click": {},
+      "shots": {
+        "top": "walk-twelve-390-top.png",
+        "bottom": "walk-twelve-390-bottom.png"
+      }
+    },
+    "360": {
+      "surface": {
+        "h": 17745,
+        "top": 1479142.875
+      },
+      "sisters_seen": 12,
+      "sisters_missing": [],
+      "build_notes": 2,
+      "overflow": {
+        "top": {
+          "sw": 360,
+          "iw": 360,
+          "over": 0,
+          "sh": 1895347,
+          "sy": 0
+        },
+        "mid": {
+          "sw": 360,
+          "iw": 360,
+          "over": 0,
+          "sh": 1972888,
+          "sy": 986444
+        },
+        "bottom": {
+          "sw": 360,
+          "iw": 360,
+          "over": 0,
+          "sh": 1972888,
+          "sy": 1971988
+        }
+      },
+      "console_errors": 0,
+      "console_cors": 0,
+      "console_other": [],
+      "pageerrors": [],
+      "click": {},
+      "shots": {
+        "top": "walk-twelve-360-top.png",
+        "bottom": "walk-twelve-360-bottom.png"
+      }
+    }
+  },
+  "fail": [],
+  "probe_bug": "First probe's sisters check required the literal 'Briefed by <Name> ' (trailing space). In rendered innerText the byline splits name/date across lines, so the match failed at 1440/390 even though all twelve entries rendered. The 360 run matched by layout chance. PROBE BUG, not a page fail.",
+  "corrected": {
+    "method": "Independent diagnostic: fresh loads at 1440 and 390, innerText read at load AND after scroll-into-view AND after dismissing the Install modal with 'Not now'.",
+    "1440": {
+      "surface_innerText_len": 17118,
+      "briefed_by_count": 14,
+      "names_present": 12,
+      "family_ids_in_DOM": 48,
+      "overflow_top_mid_bottom": [
+        0,
+        0,
+        0
+      ],
+      "console_errors": 0,
+      "pageerrors": 0
+    },
+    "390": {
+      "surface_innerText_len": 17118,
+      "briefed_by_count": 14,
+      "names_present": 12,
+      "family_ids_in_DOM": 48,
+      "overflow_top_mid_bottom": [
+        0,
+        0,
+        0
+      ],
+      "console_errors": 0,
+      "pageerrors": 0
+    },
+    "360": {
+      "names_present": 12,
+      "overflow_top_mid_bottom": [
+        0,
+        0,
+        0
+      ],
+      "console_errors": 0,
+      "pageerrors": 0
+    },
+    "click_through_1440": {
+      "sophia_personal_link": "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/sophia/sophia",
+      "landed_title": "sophia \u2014 NayaNET",
+      "pageerrors": 0,
+      "back_to_staged": true,
+      "sophia_github_note": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/NAYA-NOTES/2026/11/13/NN-20261113-family-sophia.md",
+      "github_note_http": 200,
+      "github_note_raw_head": "# Sophia is live \u2014 LEARN, first citizen"
+    },
+    "eye_check": {
+      "1440_surface": "diag-1440-surface-nonow.png \u2014 clean, All projects 14, captain + Sophia/Thea/Zoe cards, no overlap",
+      "390_surface": "diag-390-surface-nonow.png \u2014 clean header + tabs, no overlap",
+      "install_modal": "covers first paint at 1440 and 390 (pre-existing main-shell behavior, also flagged by Hub shell re-bake v2); 'Not now' dismisses it"
+    },
+    "fail": []
+  }
+}
