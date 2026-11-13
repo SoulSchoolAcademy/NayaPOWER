@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-13T09:49:02Z",
-  "tip": "8f2af988b2a4adefda9afb8ad752c7971c10ea8c",
+  "generated_at": "2026-11-13T15:49:19Z",
+  "tip": "89cd51451c2c640ac9773385ab6748aa6b7019cb",
   "prs": [
     {
       "number": 3345,
@@ -47,6 +47,24 @@
       "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
       "owner": "any seat != author (scorecard drive)",
       "head": "fc598b96a82664addacfff9b77e7903629bf047e"
+    },
+    {
+      "number": 3359,
+      "title": "ACTIVATION: snapshot-wins indirection for stale boot pointers (#3066/#2601)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "f0fc0d32595c0b42f071fc63a47cd0b04d1a0bb3"
+    },
+    {
+      "number": 3360,
+      "title": "SN-2685 line 53: Intelligent Block name drops IB- prefix",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, door-obligation; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "eff25dc746109afa0420199bf8d0a8d5f5eabd36"
     }
   ]
 }
