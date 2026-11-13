@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-13T15:49:19Z",
-  "tip": "89cd51451c2c640ac9773385ab6748aa6b7019cb",
+  "generated_at": "2026-11-13T21:49:16Z",
+  "tip": "aca7b075fcc226eb44e3065af34f8a65d80d7721",
   "prs": [
     {
       "number": 3345,
@@ -65,6 +65,15 @@
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness, door-obligation; then re-derive at the new head.",
       "owner": "author lane",
       "head": "eff25dc746109afa0420199bf8d0a8d5f5eabd36"
+    },
+    {
+      "number": 3362,
+      "title": "Voice: accept root-relative search module path in hub-wiring test",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "c00b35260711673bee4d783bfac56bbfdffdb0f3"
     }
   ]
 }

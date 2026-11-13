@@ -1,8 +1,8 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-11-13T15:49:19Z",
-  "tip": "89cd51451c2c640ac9773385ab6748aa6b7019cb",
-  "open_pr_count": 7,
+  "generated_at": "2026-11-13T21:49:16Z",
+  "tip": "aca7b075fcc226eb44e3065af34f8a65d80d7721",
+  "open_pr_count": 8,
   "queue_by_tier_action": {
     "A": {
       "CURE": 1
@@ -11,12 +11,12 @@
       "CURE": 2
     },
     "B": {
-      "CURE": 4
+      "CURE": 5
     }
   },
   "tip_failing_checks": [
+    "Verify landings, prepare reverts on verified escapes",
     "chain-readiness-gate",
-    "inventory",
     "promote-and-prove",
     "resolve-current-truth",
     "test"
