@@ -3,7 +3,7 @@
 **Seat:** Phase-1 Maker · **Score: 9/10** · **Date:** 2026-11-13 ~00:10Z
 **What was scored:** the staged phase-1 foundation on
 `naya-public-blog-staging` — the built worker `hub-worker-phase1.js`
-(49,060 B), the probe suites, the staged note page, robots, sitemap,
+(49,174 B), the probe suites, the staged note page, robots, sitemap,
 denial, and this record. Three self-check rounds were run; each round
 found NEW defects (round 1: slug bug · round 2: footer overflow +
 HEAD fall-through · round 3: HEAD 503 subrequest bug + two probe
