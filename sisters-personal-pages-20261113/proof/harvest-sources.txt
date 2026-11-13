@@ -1,0 +1,12 @@
+# Harvest citations for the design-contract gate (f) F1.
+# Every class below is harvested byte-for-byte from live Personal v9 —
+# proof/personal-live.html (curl https://nayanet.app/personal 2026-11-13,
+# 1,484,185 B, sha256 992ab18c29315e7654f45c36eb43e30aadfc2ea5642394bbd9884f21617e3f50).
+# The staged page embeds that template verbatim (template-composed.html,
+# sha256 61002d15… = live v9 + the two named fixes); the classes are the
+# template's own, not new parts.
+.tg-mode proof/personal-live.html:4795-4797
+.mw-feedname proof/personal-live.html:4825-4827
+.sa-skill-more proof/personal-live.html:6720-6774
+.sa-login-backicon proof/personal-live.html:19646
+.enter proof/personal-live.html:20916
