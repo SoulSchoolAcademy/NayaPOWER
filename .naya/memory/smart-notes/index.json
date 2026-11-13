@@ -44298,15 +44298,515 @@
         "historical_checkpoint_binding": "EXECUTION_RECEIPT_EVIDENCE",
         "note": "The project cognition-state row advances in place; historical Smart Note verification must use object-local execution receipt evidence for lineage binding."
       }
+    },
+    {
+      "smart_note_id": "SN-2692",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-walk-the-real-flow",
+      "title": "SN-2692 · WALK / ONBOARDING / LAW",
+      "content_hash": "1b79a0b1f730cb1c75b84d60a05d714620d27a4a251dea19b3e491c035f9f07c",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/ONBOARDING/SN-2692/IB-SMART-NOTE-20261112-the-walk-the-real-flow.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "ONBOARDING",
+      "topic": "ONBOARDING",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit cd29c44aa5eb47a3cb8a2266edc18ae1b06d7d4d ('Intelligence Loop run 198: file SN-2692 The Walk — The Real Flow') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "91a65c4038724305804305d182d6005e61f53529bfe4c8d9946f1aa2d99c9854"
+    },
+    {
+      "smart_note_id": "SN-2693",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-end-flow",
+      "title": "SN-2693 · WALK / ONBOARDING / FLOW",
+      "content_hash": "6e7ff947fea17bd72ea52c8d86fc6e729f917fa831352a925a8c4bee9cd61427",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/ONBOARDING/SN-2693/IB-SMART-NOTE-20261112-the-end-flow.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "ONBOARDING",
+      "topic": "ONBOARDING",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 4348d6c244b6b0f9d52e4e5d7d75633dcaaf1e0f ('Intelligence Loop run 198: file SN-2693 The End Flow') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "0aacf8658018ec9ff68d18e538840af1c4635b6839052799737e176f301bd1a8"
+    },
+    {
+      "smart_note_id": "SN-2694",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-orb-and-initial-law",
+      "title": "SN-2694 · DESIGN / IDENTITY / LAW",
+      "content_hash": "00a2d49891255be075f608aceca493364d1365c3fe95c92446e4ab8b4ec4ba65",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/DESIGN/SN-2694/IB-SMART-NOTE-20261112-the-orb-and-initial-law.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 50792d508bd54be0418beb130d561172a19f686c ('Intelligence Loop run 198: file SN-2694 The Orb + Initial Law') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "f2dfa92f00a5eaf450fb72049e7e557962d2856578f12f92fcb2150b9af7de2c"
+    },
+    {
+      "smart_note_id": "SN-2695",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-dream-the-automated-intelligent-internet",
+      "title": "SN-2695 · VISION / MISSION",
+      "content_hash": "958c2208382547052180a4e45824f07750fd29564ab4821f71bcf44db0cf8d5f",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/VISION/SN-2695/IB-SMART-NOTE-20261112-the-dream-the-automated-intelligent-internet.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 792592764e4370cb6698f08cd55ce93e44f4e99e ('Intelligence Loop run 198: file SN-2695 The Dream — The Automated Intelligent Internet') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "c01bc7ecb66be1d37c90a6f9e57f4e63afa0228b6cb727793f55b540a1125f77"
+    },
+    {
+      "smart_note_id": "SN-2696",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-infinite-smart-feeds",
+      "title": "SN-2696 · SYSTEM / INTELLIGENCE / FEEDS",
+      "content_hash": "257aa5eb3713d881dcd76f813b30d2c65681a6bd02bd1d775961392fe9ad27e2",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/SYSTEM_INTELLIGENCE/SN-2696/IB-SMART-NOTE-20261112-the-infinite-smart-feeds.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "SYSTEM_INTELLIGENCE",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 29a8bc62cbb566388781a428cc997b3d22b2148a ('Intelligence Loop run 198: file SN-2696 The Infinite Smart Feeds') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "70e1abe8d4bcaeb7ad84cb03d96fc337a50534b94f54724272ae0e630e4af17b"
+    },
+    {
+      "smart_note_id": "SN-2697",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-entry-dial-law",
+      "title": "SN-2697 · WALK / ONBOARDING / LAW",
+      "content_hash": "80c5bd96d29e09ea015e32ec69e1b010ed3a74235eddc29fec1788c13b5e791d",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/ONBOARDING/SN-2697/IB-SMART-NOTE-20261112-the-entry-dial-law.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "ONBOARDING",
+      "topic": "ONBOARDING",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 7965c50a524c5bcd3d47ab7d54e4de12bfbc84a3 ('Intelligence Loop run 198: file SN-2697 The Entry Dial Law') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "1ab1fce91c5e058b75f2a742c7430bd86826ea5db37a8b4221a33b4591b4a7dc"
+    },
+    {
+      "smart_note_id": "SN-2698",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-jump-back-in-law",
+      "title": "SN-2698 · WALK / ONBOARDING / LAW",
+      "content_hash": "c2043723cf2873b41089946a9719926a4f2e6038c78f266ca0d115670716fc18",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/ONBOARDING/SN-2698/IB-SMART-NOTE-20261112-the-jump-back-in-law.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "ONBOARDING",
+      "topic": "ONBOARDING",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit ee1af118a7b1c4ce4c6ce33f5fb76185e5b08c7f ('Intelligence Loop run 198: file SN-2698 The Jump Back In Law') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "58842d3b26682a08baf4ae7f0f6ebc53e6365f372392134ff64f27c3d9dc6c46"
+    },
+    {
+      "smart_note_id": "SN-2699",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-verify-from-the-login-page",
+      "title": "SN-2699 · LESSON / VERIFICATION / LAW",
+      "content_hash": "0358e8dbfd54997a399bed7796c14be5083186ab87882ba75cad1b28d2ea2631",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2699/IB-SMART-NOTE-20261112-verify-from-the-login-page.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit b02a407c5e42c1cf36affe7b75b33c984b1b6ad8 ('Intelligence Loop run 198: file SN-2699 Verify From the Login Page') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "adfa9019c79641568b07cc75492acc31404dcd32c03154b84a668480d924ae6e"
+    },
+    {
+      "smart_note_id": "SN-2700",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-go-time-twelve-elite-not-one-hundred",
+      "title": "SN-2700 · LESSON / TEAM / GO TIME",
+      "content_hash": "2383f4ac39567e169120b4b7ed109bf353acc5c2ea3f49d501c6a7caaef065eb",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2700/IB-SMART-NOTE-20261112-go-time-twelve-elite-not-one-hundred.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 37e69b5d7143198c33b768e8f2543b6dfdf2e91f ('Intelligence Loop run 199: file SN-2700 Go Time — Twelve Elite, Not One Hundred') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "08c317c6eecc6570b4ae9a26f5f26e4b1bd264e4a36a918cdcd18f8504e93f05"
+    },
+    {
+      "smart_note_id": "SN-2701",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-heart-match-organize-connect",
+      "title": "SN-2701 · SYSTEM / INTELLIGENCE / FEEDS",
+      "content_hash": "b3f4de621b57a4275cea15334b5dab21d3b576d9ca1c98fdde0872ad439045cf",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/SYSTEM_INTELLIGENCE/SN-2701/IB-SMART-NOTE-20261112-the-heart-match-organize-connect.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "SYSTEM_INTELLIGENCE",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit d2b2ced6fa75965166af8ab36cbba02d7859d703 ('Intelligence Loop run 199: file SN-2701 The Heart — Match Organize Connect') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "dd2c1190d88640cb7c7241f56d679ebd2bf6c5df3bb3d7d70dc4412694d730a2"
+    },
+    {
+      "smart_note_id": "SN-2702",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-mail-is-safe",
+      "title": "SN-2702 · SYSTEM / INTELLIGENCE / MAIL",
+      "content_hash": "22cd4142f5eb588a4949b6275f295755a2f4304b36dca04ddb330ef71ffa701e",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/SYSTEM_INTELLIGENCE/SN-2702/IB-SMART-NOTE-20261112-the-mail-is-safe.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "SYSTEM_INTELLIGENCE",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 58a502cc2888aad817751f32f7d5013a7f080e66 ('Intelligence Loop run 200: file SN-2702 The Mail Is Safe — 1,789 Records, Our Key Lost Access') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "ec0cb81e501ec3939915c1f4062d76099a63e8a2fdc69dc2ddcc236a510ab4b2"
+    },
+    {
+      "smart_note_id": "SN-2703",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-auto-delete-law",
+      "title": "SN-2703 · LESSON / MAIL / LAW",
+      "content_hash": "ab13abc750b1f0159966a2f596b124a4b92e8abeb118edc4aed53dec20e207f2",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/LESSON/SN-2703/IB-SMART-NOTE-20261112-the-auto-delete-law.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 14198a6630c2342a95e82cc3787b88bbc98bc890 ('Intelligence Loop run 200: file SN-2703 The Auto-Delete Law — Mail Deletes After a Week Unless Saved') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "c1ce9f0fa8e56788ccbacc64e16b6eb69f33ff4872b1539eaf0812202d700ff6"
+    },
+    {
+      "smart_note_id": "SN-2704",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-smart-messenger",
+      "title": "SN-2704 · VISION / MESSENGER",
+      "content_hash": "d98fdacaa95912a95bb4256b564f6d28676e95e07335e359b888306178d448f5",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/VISION/SN-2704/IB-SMART-NOTE-20261112-the-smart-messenger.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit d3eeb6da040a7ebdde6df8131d6add2f358e5aea ('Intelligence Loop run 200: file SN-2704 The Smart Messenger — One Interface, Two Formats, Message by Topic') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "fa4ee03c234d88a4c8ea551872f6c81384d8e603723fd8b148797601eba66723"
+    },
+    {
+      "smart_note_id": "SN-2705",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-walk-skip-speak-and-how-to-answer",
+      "title": "SN-2705 · WALK / ONBOARDING / QUESTIONS",
+      "content_hash": "e30b76ba0733ed0f2b6da4bcb6458bc69ca8945a11a48a3138b65540b359136e",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/ONBOARDING/SN-2705/IB-SMART-NOTE-20261112-the-walk-skip-speak-and-how-to-answer.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "ONBOARDING",
+      "topic": "ONBOARDING",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit c89aafe25270f172cd161bec5702eb0a814cfbec ('Intelligence Loop run 200: file SN-2705 The Walk — Skip, Speak, and How to Answer') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "30c8220f6b69f7b702aa9160a2d941120b3832678ffaf57e7fa10345adde9c0f"
+    },
+    {
+      "smart_note_id": "SN-2706",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-walk-the-names-page-10-10-in-presentation",
+      "title": "SN-2706 · WALK / ONBOARDING / NAMES",
+      "content_hash": "9919a9997180922498a522e68fc2b730d4363937ef959dfc956a81a85555d0c7",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/ONBOARDING/SN-2706/IB-SMART-NOTE-20261112-the-walk-the-names-page-10-10-in-presentation.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "ONBOARDING",
+      "topic": "ONBOARDING",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 1641392872e1b0a4b214cacf9c33c55418f5d7b0 ('Intelligence Loop run 200: file SN-2706 The Walk — The Names Page, 10/10 in Presentation') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "fe8e355ae81deff54ad9d0a9a06e442e3892b133501555a4b36d951323e46c50"
+    },
+    {
+      "smart_note_id": "SN-2707",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-walk-examples-go-in-the-box",
+      "title": "SN-2707 · WALK / ONBOARDING / QUESTIONS",
+      "content_hash": "0c5855d8d3377b65c9ae61eb9d31e6eab853912872dfdbaee8c9f09f36061cc5",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/ONBOARDING/SN-2707/IB-SMART-NOTE-20261112-the-walk-examples-go-in-the-box.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "ONBOARDING",
+      "topic": "ONBOARDING",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit f7fa437c90118e9381691b6c50f3f9557333d7c5 ('Intelligence Loop run 201: file SN-2707 The Walk — Examples Go in the Box (multiple choice, Naya's own answers)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "5b98bed7d2cd087f106867f48f14e3281b1c01df1c361afe29f650c5115c40c9"
+    },
+    {
+      "smart_note_id": "SN-2708",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-walk-motto-do-everything-for-them",
+      "title": "SN-2708 · WALK / ONBOARDING / MOTTO",
+      "content_hash": "b300904d2c694765e255e0bb4f20b0c1f3c0cebab6c96ffc1b25f3f4a98c7588",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/ONBOARDING/SN-2708/IB-SMART-NOTE-20261112-the-walk-motto-do-everything-for-them.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "ONBOARDING",
+      "topic": "ONBOARDING",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit f54a692ebcc86194a54fac888436013f44468c0a ('Intelligence Loop run 201: file SN-2708 The Walk Motto — Do Everything for Them') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "9614e6a63039fbff203c09921e88ce42e9748c2010f8dd6eec723449ae0807b7"
+    },
+    {
+      "smart_note_id": "SN-2709",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-nayas-example-answers-the-content",
+      "title": "SN-2709 · WALK / ONBOARDING / CONTENT",
+      "content_hash": "78cc2f283eb306e0ca9cb28de40826671143f334f4c80823360a07181eb38346",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/ONBOARDING/SN-2709/IB-SMART-NOTE-20261112-nayas-example-answers-the-content.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "ONBOARDING",
+      "topic": "ONBOARDING",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 501755a2fe26c1983540d2f841d7c13f0c2bc336 ('Intelligence Loop run 201: file SN-2709 Naya's Example Answers — The Content') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "1ed28e78cea2896f9b5133a311c1d4f2ecba47f38f55dc5cf77a53cd98a33a80"
+    },
+    {
+      "smart_note_id": "SN-2710",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-messenger-rebuild-it-from-the-personal-page",
+      "title": "SN-2710 · VISION / MESSENGER / NOTIFICATIONS",
+      "content_hash": "4084e765d7dca267c11cebda41700bd7581ec471216209230c41dd7dd2a87a6f",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/VISION/SN-2710/IB-SMART-NOTE-20261112-the-messenger-rebuild-it-from-the-personal-page.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 11734773114ab69677154389d0b610ddab3da767 ('Intelligence Loop run 201: file SN-2710 The Messenger — Rebuild It from the Personal Page + The Notification System') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "4f0757e04fcffd4ae756c658e4034003634ef5381f0831626bbb14d1a5d73a7c"
+    },
+    {
+      "smart_note_id": "SN-2711",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-messenger-stop-redesigning",
+      "title": "SN-2711 · VISION / MESSENGER / ORGANIZER",
+      "content_hash": "3f6a8e010c116738b2d0799c5d8deec87cc80dfc83523e09f61e8e3636743d58",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/VISION/SN-2711/IB-SMART-NOTE-20261112-the-messenger-stop-redesigning.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit f40c920cdcf5ac1e775fa3f94170b2651185deb6 ('Intelligence Loop run 201: file SN-2711 The Messenger — Stop Redesigning (morph the Personal feed; Hub organizer tabs; Smart Lists two worlds)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "ed02163229aa3776382b18942c041cd123f04c05087e309a43263fcc01b59fc7"
+    },
+    {
+      "smart_note_id": "SN-2712",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-trio-settled-ultimate-icons-nayanet-space",
+      "title": "SN-2712 · VISION / MESSENGER / NOTIFICATIONS",
+      "content_hash": "9e18d3759b52d7723d8570912c0d27f00122fb948e44f3a379f7d667adb99ce3",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/VISION/SN-2712/IB-SMART-NOTE-20261112-the-trio-settled-ultimate-icons-nayanet-space.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 90ee6fc77f0c7d477f0975a3e4d81d3c8dccb105 ('Intelligence Loop run 201: file SN-2712 The Trio Settled + The Ultimate Icons + The NayaNET Space (worlds not channels; ultimate icons; stop recreating)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "fb88820386f2056ebb32b418c1d1dd67b978e075719cea527e4d0083c16a45f6"
+    },
+    {
+      "smart_note_id": "SN-2713",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-ultimate-icons-are-gems-the-one-minute-book",
+      "title": "SN-2713 · VISION / MESSENGER / NOTIFICATIONS",
+      "content_hash": "6d51905e03ffb3f77f52b43eae98abadb4dcfad664f1422ee2977dda6d8eea27",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/VISION/SN-2713/IB-SMART-NOTE-20261112-the-ultimate-icons-are-gems-the-one-minute-book.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 6dfd320d612e9a9e8ddae80b8e03a14411d2c736 ('Intelligence Loop run 202: file SN-2713 The Ultimate Icons Are Gems + The One-Minute Book') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "36b99deecf8e88a47117653a59c945b62cb149ea64142ee0c4914b959c5b597e"
+    },
+    {
+      "smart_note_id": "SN-2714",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-reformatting-the-internet-intelligently",
+      "title": "SN-2714 · VISION / MISSION",
+      "content_hash": "2c24fb1c75ada53672b2afee51655523d6f3cad4fc1f16fbd05cd2cf9edb92e0",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/VISION/SN-2714/IB-SMART-NOTE-20261112-reformatting-the-internet-intelligently.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit caac5ec25ef1fd529649c80a162fbec328c6d6e4 ('Intelligence Loop run 202: file SN-2714 Reformatting the Internet Intelligently') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "4f0b75f79c0a850af4017b92bf0dce46a02e403b105cd80742a107191c7d2bee"
+    },
+    {
+      "smart_note_id": "SN-2715",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-naya-answers-the-walk-herself",
+      "title": "SN-2715 · ONBOARDING / WALK",
+      "content_hash": "b49574c6d9faff72d46ebae63584ae8e410c1473a1effab4838f93307d3ed718",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/ONBOARDING/SN-2715/IB-SMART-NOTE-20261112-naya-answers-the-walk-herself.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "ONBOARDING",
+      "topic": "ONBOARDING",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit d11b30faf3ab7c605d6159f91407fd569e69f76d ('Intelligence Loop run 202: file SN-2715 Naya Answers the Walk Herself') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "6bdba356ae86d5f986d6d8d37e2b85643285989c71d64d97ac0d0e55c2bb10f7"
+    },
+    {
+      "smart_note_id": "SN-2716",
+      "intelligent_block_id": "IB-SMART-NOTE-20261112-the-examples-presentation-edit-eye",
+      "title": "SN-2716 · ONBOARDING / WALK",
+      "content_hash": "639be005b7f2988264d04efdc0813b5204c08a948116b29e2c85fb63dfef89e4",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/ONBOARDING/SN-2716/IB-SMART-NOTE-20261112-the-examples-presentation-edit-eye.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "ONBOARDING",
+      "topic": "ONBOARDING",
+      "subtopic": "",
+      "captured_at": "2026-11-12",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit c8902c26898ea40ee85513dd1e601b88f651885e ('Intelligence Loop run 202: file SN-2716 The Examples Presentation — Edit + Eye') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-13 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "23f4b09030187790f36a15aed0420db7699b9d75992dacf770a419fdfc534aab"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 2692,
+    "next_sequence": 2717,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "457d362fef5c7031386de57dd5e0660b568e8be2666b47090a302b856ce9ea3d"
+  "corpus_manifest_hash": "9cb88b4d9fbbb2f2090c263167a67d24f8ee375692739a696e685ea7ffc7a115"
 }
