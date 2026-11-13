@@ -313,11 +313,19 @@ def related_for(note, content, cluster):
     my_id = str(note.get("id") or "").lower()
     topics = note.get("topics") or []
     seen, out = {}, []
+    seen_href = {}
     def push(n, reason):
         nid = str(n.get("id") or "").lower()
         if not n or nid == my_id or nid in seen or len(out) >= 6: return
         seen[nid] = 1
-        out.append({"slug": canonical_slug(n), "title": display_title(n), "reason": reason})
+        # Dedupe by RENDERED href (fix round F3 — mirror of the JS):
+        # two notes can share one canonical slug; the first keeps the
+        # canonical href, the second renders by its full-id URL.
+        slug = canonical_slug(n)
+        if "/s/" + slug in seen_href: slug = nid
+        if "/s/" + slug in seen_href: return
+        seen_href["/s/" + slug] = 1
+        out.append({"slug": slug, "title": display_title(n), "reason": reason})
     topic_notes = []
     for t in topics:
         for n in BY_TOPIC.get(t, []):
