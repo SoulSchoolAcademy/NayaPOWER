@@ -4041,7 +4041,7 @@ body.fc-open{overflow:hidden;}
   <div class="fc-chat-compose"><textarea class="os-textarea" id="fcChatBody" rows="3" data-mw-ph="Write your message…" placeholder="Write your message&hellip;"></textarea><button class="ph-connect" id="fcChatSend" type="button">Send</button></div>
   <div class="os-status" id="fcChatStatus"></div>
 </div>
-<div class="fc-plusmenu" id="fcPlusMenu" hidden role="menu" aria-label="Add">
+<div class="fc-plusmenu" id="fcPlusMenu" hidden role="menu" data-mw-aria="Add" aria-label="Add">
   <div class="fc-plusitem" role="menuitem" data-fc-plus="post" style="--mc:#e8e8ec"><span class="fc-pi-ico">✎</span><span data-mw-tr="pm">Make a post</span></div>
   <div class="fc-plusitem" role="menuitem" data-fc-plus="naya" style="--mc:#2fe89e"><span class="fc-pi-ico">✎</span><span data-mw-tr="pm">Naya note</span></div>
   <div class="fc-plusitem" role="menuitem" data-fc-plus="smart" style="--mc:#a06bff"><span class="fc-pi-ico">✦</span><span data-mw-tr="pm">Smart note</span></div>
@@ -4859,7 +4859,7 @@ html.os-calm
   <button class="ph-cover-btn pc-gear" id="settingsbtn" type="button" style="--ac:#e8e8ec;" data-os-go="settings" aria-label="Settings" title="Settings">⚙️</button>
 </div>
 <div class="ph-head">
-  <div class="ph-avwrap"><div class="ph-av" id="avv" data-mw-title="Tap to change your picture"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22256%22%20height%3D%22256%22%3E%3Crect%20width%3D%22256%22%20height%3D%22256%22%20fill%3D%22%230b0b11%22/%3E%3Cpolygon%20points%3D%22128%2C28%20218%2C128%20128%2C228%2038%2C128%22%20fill%3D%22none%22%20stroke%3D%22%23a06bff%22%20stroke-width%3D%2210%22/%3E%3Ctext%20x%3D%22128%22%20y%3D%22148%22%20font-size%3D%2284%22%20font-family%3D%22Georgia%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EN%3C/text%3E%3C/svg%3E" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">✦<input type="file" id="avin" accept="image/*" style="display:none;"></div><button class="ph-av-edit" id="avedit" type="button" aria-label="Change picture" title="Edit photo">📷</button></div>
+  <div class="ph-avwrap"><div class="ph-av" id="avv" data-mw-title="Tap to change your picture"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22256%22%20height%3D%22256%22%3E%3Crect%20width%3D%22256%22%20height%3D%22256%22%20fill%3D%22%230b0b11%22/%3E%3Cpolygon%20points%3D%22128%2C28%20218%2C128%20128%2C228%2038%2C128%22%20fill%3D%22none%22%20stroke%3D%22%23a06bff%22%20stroke-width%3D%2210%22/%3E%3Ctext%20x%3D%22128%22%20y%3D%22148%22%20font-size%3D%2284%22%20font-family%3D%22Georgia%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EN%3C/text%3E%3C/svg%3E" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">✦<input type="file" id="avin" accept="image/*" style="display:none;"></div><button class="ph-av-edit" id="avedit" type="button" data-mw-aria="Change picture" aria-label="Change picture" data-mw-title="Edit photo" title="Edit photo">📷</button></div>
   <div class="ph-info">
     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
       <div class="ph-nm" id="pname" title="Click to edit">Shawn Vibert</div>
@@ -4923,13 +4923,13 @@ html.os-calm
 <!-- BUILDER-2 2026-11-07 — sidebar + button, restored: the CSS and the
      wiring survived, the markup did not, so the + never rendered. -->
 <div class="ph-plus-wrap" id="pluswrap">
-<button class="ph-plus" id="plusbtn" type="button" aria-label="Add something" title="Add">＋</button>
-<span class="ph-plus-label">Add</span>
+<button class="ph-plus" id="plusbtn" type="button" data-mw-aria="Add something" aria-label="Add something" data-mw-title="Add" title="Add">＋</button>
+<span class="ph-plus-label" data-mw-tr="pm">Add</span>
 <div class="ph-plusmenu" id="plusmenu">
-<div class="ph-plusitem" data-os-go="home">✎ Make a post</div>
-<div class="ph-plusitem" data-os-go="message">✉️ Send a message</div>
-<div class="ph-plusitem" data-os-go="growth">🔗 Add a Smart Link</div>
-<div class="ph-plusitem" data-os-go="lists">☰ Add to a list</div>
+<div class="ph-plusitem" data-os-go="home">✎ <span data-mw-tr="pm">Make a post</span></div>
+<div class="ph-plusitem" data-os-go="message">✉️ <span data-mw-tr="pm">Send a message</span></div>
+<div class="ph-plusitem" data-os-go="growth">🔗 <span data-mw-tr="pm">Add a Smart Link</span></div>
+<div class="ph-plusitem" data-os-go="lists">☰ <span data-mw-tr="pm">Add to a list</span></div>
 </div>
 </div>
 <div class="ph-sec os-view on" id="os-wall" data-os-view="home" data-block="wall">
@@ -6423,7 +6423,7 @@ button.os-ld-node .os-ld-n{
 </div>
 </div>
 <div class="ph-card" style="--ac:#a06bff;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">🔌</span> Plugged into this world</h3>
+<h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">🔌</span> <span data-mw-tr="dash">Plugged into this world</span></h3>
 <div class="os-dash-plugins" id="os-dash-plugins">
 <div class="os-src live os-litobj" style="--ac:#a06bff;">
 <div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#a06bff">✦</span><div class="os-src-id"><span class="os-src-name"><span data-mw-tr="dash">This NayaNET app</span></span><span class="os-src-chip live"><span data-mw-tr="dash">LIVE</span></span></div></div>
@@ -7006,7 +7006,7 @@ button.os-ld-node .os-ld-n{
 </div>
 <div style="display:flex;gap:10px;margin-top:14px;">
 <input class="os-input" id="os-list-input" type="text" placeholder="Add something that matters&hellip;" style="flex:1;margin:0;">
-<button class="ph-connect" id="os-list-add" type="button" style="padding:12px 22px;">Add</button>
+<button class="ph-connect" id="os-list-add" type="button" style="padding:12px 22px;"><span data-mw-tr="lists">Add</span></button>
 </div>
 <div id="os-list-rows" style="display:flex;flex-direction:column;gap:10px;margin-top:14px;"></div>
 <div class="os-status" id="os-list-status"></div>
@@ -8208,7 +8208,7 @@ NF.register(UNIT, {
     if (countsEl) countsEl.innerHTML='';
     if (daysEl) daysEl.innerHTML=buckets.map(function(x){ return '<span class="'+(x.today?'today':'')+'">'+esc(x.label)+'</span>'; }).join('');
     var bi=0; buckets.forEach(function(x, k){ if (x.n>buckets[bi].n) bi=k; });
-    if (note) note.textContent=buckets[bi].n?('Busiest: '+buckets[bi].note+' Posts, messages and invites together.'):'A quiet stretch — the next post, message or invite lights the first bar.';
+    if (note) note.textContent=buckets[bi].n?((window.mwTr?window.mwTr('Busiest: '):'Busiest: ')+buckets[bi].note+' '+(window.mwTr?window.mwTr('Posts, messages and invites together.'):'Posts, messages and invites together.')):(window.mwTr?window.mwTr('A quiet stretch — the next post, message or invite lights the first bar.'):'A quiet stretch — the next post, message or invite lights the first bar.');
     wrap.querySelectorAll('.bar').forEach(function(bar){
       bar.addEventListener('click', function(){ if (note) note.textContent=bar.getAttribute('data-note'); });
     });
@@ -9524,14 +9524,14 @@ function wallCard(j, iso, pid, idx){
     function stage(label, n, color, idx){ return '<div class="os-fbar os-litobj" style="--fc:'+color+';--ac:'+color+';width:'+width(n)+'%;--d:'+(idx*0.12)+'s">'+label+' &middot; <span class="os-fbar-n">'+n+'</span></div>'; }
     function conv(a, b, what, nc){ return '<div class="os-fconv"><span class="os-farrow" style="--fc:'+(nc||'#ff9a5a')+'"></span><b>'+pct(a,b)+'%</b> '+what+'</div>'; }
     var truth;
-    if (!total) truth='No invites yet — record the first one above.';
-    else if (allDry) truth='Record-only mode: saved, never sent — Joined honestly reads 0 until a friend connects.';
-    else if (!joined) truth='Invites are recorded — the first join is the milestone ahead.';
-    else truth=joined+(joined===1?' person has':' people have')+' walked the whole invite journey.';
+    if (!total) truth=(window.mwTr?window.mwTr('No invites yet — record the first one above.'):'No invites yet — record the first one above.');
+    else if (allDry) truth=(window.mwTr?window.mwTr('Record-only mode: saved, never sent — Joined honestly reads 0 until a friend connects.'):'Record-only mode: saved, never sent — Joined honestly reads 0 until a friend connects.');
+    else if (!joined) truth=(window.mwTr?window.mwTr('Invites are recorded — the first join is the milestone ahead.'):'Invites are recorded — the first join is the milestone ahead.');
+    else truth=joined+(joined===1?(window.mwTr?window.mwTr(' person has'):' person has'):(window.mwTr?window.mwTr(' people have'):' people have'))+(window.mwTr?window.mwTr(' walked the whole invite journey.'):' walked the whole invite journey.');
     box.innerHTML='<div class="ph-card" style="--ac:#ff5e6c;"><h3><span class="os-jewel os-jewel-h" style="--jc:#ff5e6c">🧭</span> <span data-mw-tr="dash">The invite journey</span></h3><div class="os-funnel">'
       +stage((window.mwTr?window.mwTr('Recorded'):'Recorded'), total, '#a06bff', 0)
-      +conv(joined, total, 'of recorded invites joined', '#3fb8ff')
-      +stage('Joined', joined, '#3fb8ff', 1)
+      +conv(joined, total, (window.mwTr?window.mwTr('of recorded invites joined'):'of recorded invites joined'), '#3fb8ff')
+      +stage((window.mwTr?window.mwTr('Joined'):'Joined'), joined, '#3fb8ff', 1)
       +'</div><p class="os-note">'+truth+'</p></div>';
     flashChange('os-funnel', box.querySelector('.ph-card'), total+'/'+joined);
   }
@@ -9943,7 +9943,7 @@ function wallCard(j, iso, pid, idx){
       sb.storage.from(BUCKET).upload(path, blob, { contentType: mime, upsert: false }).then(function(up){
         if (up.error) throw up.error;
         var url = sb.storage.from(BUCKET).getPublicUrl(path).data.publicUrl;
-        var title = (($('os-nn-title') && $('os-nn-title').value) || '').trim() || (r.kind === 'video' ? 'Video note' : 'Voice note');
+        var title = (($('os-nn-title') && $('os-nn-title').value) || '').trim();
         var newCat = (($('os-nn-newcat') && $('os-nn-newcat').value) || '').trim();
         var cat = newCat || (typeof nnPick !== 'undefined' ? nnPick : '') || '';
         var reg = cat ? sb.from('naya_note_categories').insert({ owner_alias: PAGE_ALIAS, name: cat }).then(function(){}, function(){}) : Promise.resolve();
@@ -10282,7 +10282,7 @@ function wallCard(j, iso, pid, idx){
     if (countsEl) countsEl.innerHTML='<span><b>'+total+'</b> '+(total===1?'event':'events')+' in '+(repPeriod===0?'the whole story':'the last '+repPeriod+' days')+'</span>';
     if (daysEl) daysEl.style.display='none';
     var bi=0; days.forEach(function(x, k){ if (x.n>days[bi].n) bi=k; });
-    if (note) note.textContent=(days[bi].n?('Busiest: '+days[bi].note+' Posts, messages and invites together.'):'A quiet stretch — the next post, message or invite lights the first circle.')+(repPeriod===0?' The circles show the story week by week; the totals cover the whole story.':(repPeriod!==7?' The circles show the last 7 days; the totals cover the full period.':''));
+    if (note) note.textContent=(days[bi].n?((window.mwTr?window.mwTr('Busiest: '):'Busiest: ')+days[bi].note+' '+(window.mwTr?window.mwTr('Posts, messages and invites together.'):'Posts, messages and invites together.')):(window.mwTr?window.mwTr('A quiet stretch — the next post, message or invite lights the first circle.'):'A quiet stretch — the next post, message or invite lights the first circle.'))+(repPeriod===0?' '+(window.mwTr?window.mwTr('The circles show the story week by week; the totals cover the whole story.'):'The circles show the story week by week; the totals cover the whole story.'):(repPeriod!==7?' '+(window.mwTr?window.mwTr('The circles show the last 7 days; the totals cover the full period.'):'The circles show the last 7 days; the totals cover the full period.'):''));
     wrap.querySelectorAll('.os-orb').forEach(function(o){ o.addEventListener('click', function(){ if (note) note.textContent=o.getAttribute('data-note'); }); });
   }
   function loadReports(){
@@ -10837,7 +10837,7 @@ function wallCard(j, iso, pid, idx){
   function renderNotes(){
     var listEl=$('os-note-list'); if (!listEl) return;
     var saved=lsGet(lsKey('saved'), []);
-    var real=osNotesCache.map(function(x, i){ var fl=(x.row.naya_note_filing&&x.row.naya_note_filing[0])||null; return {id:'r'+x.row.id, t:x.c.t||'Untitled note', b:x.c.b||'', c:'#a06bff', at:x.row.created_at, sample:false, i:i, cat:fl?fl.category_name:null}; });
+    var real=osNotesCache.map(function(x, i){ var fl=(x.row.naya_note_filing&&x.row.naya_note_filing[0])||null; return {id:'r'+x.row.id, t:x.c.t||(window.mwTr?window.mwTr('Untitled note'):'Untitled note'), b:x.c.b||'', c:'#a06bff', at:x.row.created_at, sample:false, i:i, cat:fl?fl.category_name:null}; });
     var shelf=$('os-note-saved');
     if (shelf){
       var sv=real.filter(function(n){ return saved.indexOf(n.id)>=0; });
@@ -11834,7 +11834,7 @@ function wallCard(j, iso, pid, idx){
     if (countsEl) countsEl.innerHTML='';
     if (daysEl) daysEl.innerHTML=buckets.map(function(x){ return '<span class="'+(x.today?'today':'')+'">'+esc(x.label)+'</span>'; }).join('');
     var bi=0; buckets.forEach(function(x, k){ if (x.n>buckets[bi].n) bi=k; });
-    if (note) note.textContent=buckets[bi].n?('Busiest: '+buckets[bi].note+' '+(subject||'Posts, notes, messages and invites together.')):('A quiet stretch so far — the chart is waiting. '+(quiet||'The next post, note, message or invite lights the first bar.'));
+    if (note) note.textContent=buckets[bi].n?((window.mwTr?window.mwTr('Busiest: '):'Busiest: ')+buckets[bi].note+' '+(subject||(window.mwTr?window.mwTr('Posts, notes, messages and invites together.'):'Posts, notes, messages and invites together.'))):((window.mwTr?window.mwTr('A quiet stretch so far — the chart is waiting.'):'A quiet stretch so far — the chart is waiting.')+' '+(quiet||(window.mwTr?window.mwTr('The next post, note, message or invite lights the first bar.'):'The next post, note, message or invite lights the first bar.')));
     wrap.querySelectorAll('.bar').forEach(function(bar){
       bar.addEventListener('click', function(){ if (note) note.textContent=bar.getAttribute('data-note'); });
     });
@@ -12583,7 +12583,7 @@ function wallCard(j, iso, pid, idx){
       var host=r.url; try { host=new URL(r.url).hostname; } catch(e){}
       var dim=dimFor(r, dims);
       return '<div class="os-link-row os-litobj" style="--ac:'+c+'"><div class="os-link-main"><span class="os-link-name">nayanet.app/'+esc(r.name)+'</span><span class="os-link-host">'+esc(host)+'</span></div><span class="os-link-nums"><span class="os-link-num"><b data-sl-num="'+esc(r.name)+':clicks">0</b><i>'+(window.mwTr?window.mwTr('clicks'):'clicks')+'</i></span><span class="os-link-num"><b data-sl-num="'+esc(r.name)+':joins">0</b><i>'+(window.mwTr?window.mwTr('joins'):'joins')+'</i></span></span><button class="ph-msg" type="button" data-sl-copy="'+esc(r.name)+'">'+(window.mwTr?window.mwTr('Copy the link'):'Copy the link')+'</button><button class="ph-msg" type="button" data-sl-open="'+esc(r.name)+'">'+(window.mwTr?window.mwTr('Open it'):'Open it')+'</button>'+(dim?'<button class="ph-msg" type="button" data-sl-dim="'+esc(r.name)+'">'+(window.mwTr?window.mwTr('Breakdown'):'Breakdown')+'</button>':'')+slGraphHTML(slDayBuckets(byDay[r.id]), c)+'</div>'+dimPanel(r, dim);
-    }).join('')+(tc>0?'<p class="os-note">'+(window.mwTr?window.mwTr('Clicked → Joined: '):'Clicked → Joined: ')+tc+(tc===1?(window.mwTr?window.mwTr(' click'):' click'):(window.mwTr?window.mwTr(' clicks'):' clicks'))+(window.mwTr?window.mwTr(' became '):' became ')+tj+(tj===1?(window.mwTr?window.mwTr(' join'):' join'):(window.mwTr?window.mwTr(' joins'):' joins'))+(tj?(' — '+Math.round(tj/tc*100)+(window.mwTr?window.mwTr('% of clicks joined.'):'% of clicks joined.')):(window.mwTr?window.mwTr(' — the first join is the milestone ahead.'):' — the first join is the milestone ahead.'))+'</p>':'<p class=""os-note">No clicks yet — share a link and the first click lands here.</p>');
+    }).join('')+(tc>0?'<p class="os-note">'+(window.mwTr?window.mwTr('Clicked → Joined: '):'Clicked → Joined: ')+tc+(tc===1?(window.mwTr?window.mwTr(' click'):' click'):(window.mwTr?window.mwTr(' clicks'):' clicks'))+(window.mwTr?window.mwTr(' became '):' became ')+tj+(tj===1?(window.mwTr?window.mwTr(' join'):' join'):(window.mwTr?window.mwTr(' joins'):' joins'))+(tj?(' — '+Math.round(tj/tc*100)+(window.mwTr?window.mwTr('% of clicks joined.'):'% of clicks joined.')):(window.mwTr?window.mwTr(' — the first join is the milestone ahead.'):' — the first join is the milestone ahead.'))+'</p>':'<p class=""os-note">'+(window.mwTr?window.mwTr('No clicks yet — share a link and the first click lands here.'):'No clicks yet — share a link and the first click lands here.')+'</p>');
     rows.forEach(function(r){
       ['clicks', 'joins'].forEach(function(k){
         var el=box.querySelector('[data-sl-num="'+r.name+':'+k+'"]');
@@ -12706,7 +12706,7 @@ function wallCard(j, iso, pid, idx){
         var saveCounts={};
         saveRows.forEach(function(r){ if (r.j.ref) saveCounts[r.j.ref]=(saveCounts[r.j.ref]||0)+1; });
         var bestSave=null;
-        noteRows.forEach(function(r){ var n=saveCounts[r.id]||0; if (n>0 && (!bestSave || n>bestSave.n)) bestSave={title:r.j.t||'Untitled note', n:n}; });
+        noteRows.forEach(function(r){ var n=saveCounts[r.id]||0; if (n>0 && (!bestSave || n>bestSave.n)) bestSave={title:r.j.t||(window.mwTr?window.mwTr('Untitled note'):'Untitled note'), n:n}; });
         /* people, derived exactly as the Faces Board derives them */
         var faces={};
         function add(name, fact, at){
@@ -12807,7 +12807,7 @@ function wallCard(j, iso, pid, idx){
     if (!p || !p.classList.contains('os-link-dim')) return;
     var open=p.hasAttribute('hidden');
     if (open) p.removeAttribute('hidden'); else p.setAttribute('hidden','');
-    b.textContent=open?'Hide breakdown':'Breakdown';
+    b.textContent=open?(window.mwTr?window.mwTr('Hide breakdown'):'Hide breakdown'):(window.mwTr?window.mwTr('Breakdown'):'Breakdown');
   });
 
   document.querySelectorAll('[data-dash-how]').forEach(function(b){
@@ -17754,7 +17754,7 @@ else init();
         var v = spineGet(s, k); return a + (typeof v === 'number' ? v : 0);
       }, 0);
       if (score === 75 && acts === 0){
-        setCap('<b>Birth score</b> — every post, note and share moves the needle.');
+        setCap((window.mwTr?window.mwTr('<b>Birth score</b> — every post, note and share moves the needle.'):'<b>Birth score</b> — every post, note and share moves the needle.'));
       } else {
         /* 2026-11-01 — Shawn: gray text was unreadable. Green LIVE badge instead.
            Plus a hint that the orbs do something (they're clickable, he didn't know). */
@@ -17774,10 +17774,10 @@ else init();
       if (svgGain && svgGain._t !== ''){ svgGain._t = ''; svgGain.textContent = ''; }
       paintBandChrome(bandOf(0));
       if (state === 'quiet'){
-        setCap('Quiet — the first post, note or invite lights the needle.');
+        setCap((window.mwTr?window.mwTr('Quiet — the first post, note or invite lights the needle.'):'Quiet — the first post, note or invite lights the needle.'));
         root.setAttribute('aria-label', (window.mwTr?window.mwTr('Score gauge — quiet, no score yet'):'Score gauge — quiet, no score yet'));
       } else {
-        setCap('Reading your actions…');
+        setCap((window.mwTr?window.mwTr('Reading your actions…'):'Reading your actions…'));
         root.setAttribute('aria-label', (window.mwTr?window.mwTr('Score gauge — reading your actions'):'Score gauge — reading your actions'));
       }
     }
@@ -20528,6 +20528,7 @@ var MW_I18N={
   " waiting · oldest ": " wartend · älteste ",
   " walked the whole invite journey in this world — recorded and joined. Growth here has already happened.": " die ganze Einladungsreise in dieser Welt zurückgelegt — erfasst und beigetreten. Wachstum ist hier bereits geschehen.",
   " walked the whole invite journey in this world.": " die ganze Einladungsreise in dieser Welt zurückgelegt.",
+  " walked the whole invite journey.": " die ganze Einladungsreise zurückgelegt.",
   " walked the whole journey.": " die ganze Reise zurückgelegt.",
   " wrote “": " schrieb “",
   " your world in the last day — say hello while it is warm.": " in den letzten 24 Stunden in deiner Welt — sag hallo, solange es warm ist.",
@@ -20567,6 +20568,9 @@ var MW_I18N={
   "A conversation is waiting": "Eine Unterhaltung wartet",
   "A payment link on your page takes the money through Stripe — connected with its own sign-in, once, and only with your permission. Every payment is written into the same activity these blocks read: this front says “you made X from Y”, each payment is filed on the person who paid, and a payment that fails becomes a kind drafted recovery message in your Growth room — never a silent loss. Until payments are connected, this card shows no numbers at all.": "Ein Zahlungslink auf deiner Seite leitet das Geld über Stripe — verbunden mit seiner eigenen Anmeldung, einmal, und nur mit deiner Erlaubnis. Jede Zahlung wird in dieselbe Aktivität geschrieben, die diese Blöcke lesen: Diese Ansicht sagt „du hast X von Y gemacht“, jede Zahlung wird bei der Person abgelegt, die bezahlt hat, und eine Zahlung, die fehlschlägt, wird zu einer freundlich formulierten Wiederherstellungsnachricht in deinem Wachstum-Raum — nie ein stiller Verlust. Bis Zahlungen verbunden sind, zeigt diese Karte überhaupt keine Zahlen.",
   "A quiet fourteen days — the next post, note, message or invite lights the first cell.": "Vierzehn ruhige Tage — der nächste Beitrag, die nächste Notiz, Nachricht oder Einladung lässt die erste Zelle leuchten.",
+  "A quiet stretch so far — the chart is waiting.": "Bislang eine ruhige Phase — das Diagramm wartet.",
+  "A quiet stretch — the next post, message or invite lights the first bar.": "Eine ruhige Phase — der nächste Beitrag, die nächste Nachricht oder Einladung lässt den ersten Balken leuchten.",
+  "A quiet stretch — the next post, message or invite lights the first circle.": "Eine ruhige Phase — der nächste Beitrag, die nächste Nachricht oder Einladung lässt den ersten Kreis leuchten.",
   "A quieter week — ": "Eine ruhigere Woche — ",
   "A visitor": "Ein Besucher",
   "ABOUT NAYANET": "ÜBER NAYANET",
@@ -20581,8 +20585,11 @@ var MW_I18N={
   "Activity": "Aktivität",
   "Activity mix": "Aktivitätsmix",
   "Add": "Hinzufügen",
+  "Add a Smart Link": "Smart Link hinzufügen",
   "Add a comment…": "Füge einen Kommentar hinzu…",
   "Add an observation, question, correction, or contribution...": "Füge eine Beobachtung, Frage, Korrektur oder einen Beitrag hinzu...",
+  "Add something": "Etwas hinzufügen",
+  "Add to a list": "Zu einer Liste hinzufügen",
   "Add to the intelligence": "Zur Intelligenz hinzufügen",
   "Add your contribution": "Füge deinen Beitrag hinzu",
   "All": "Alle",
@@ -20624,6 +20631,7 @@ var MW_I18N={
   "Camera/microphone": "Kamera/Mikrofon",
   "Captured — it is a card below, in this app, with the time it landed.": "Erfasst — es ist eine Karte unten, in dieser App, mit der Uhrzeit, zu der sie gelandet ist.",
   "Change cover": "Cover ändern",
+  "Change picture": "Bild ändern",
   "Change what shows here": "Ändern, was hier angezeigt wird",
   "Chat": "Chat",
   "Checking install state…": "Installationsstatus wird geprüft…",
@@ -20670,6 +20678,7 @@ var MW_I18N={
   "Direct": "Direkt",
   "Drafted from your words on this device; nothing leaves until you post.": "Entworfen aus deinen Worten auf diesem Gerät; nichts verlässt es, bis du postest.",
   "ECOSYSTEM": "ÖKOSYSTEM",
+  "Edit photo": "Foto bearbeiten",
   "Email": "E-Mail",
   "Every counted click on this link, ": "Jeder gezählte Klick auf diesen Link, ",
   "Every event in this world landed in the last 7 days — ": "Jedes Ereignis in dieser Welt landete in den letzten 7 Tagen — ",
@@ -20706,6 +20715,7 @@ var MW_I18N={
   "Heat & streaks": "Hitze & Serien",
   "Hello ": "Hallo ",
   "Help shape this living app": "Hilf, diese lebendige App zu formen",
+  "Hide breakdown": "Aufschlüsselung ausblenden",
   "Home": "Startseite",
   "Home Hub is the way back to the main Hub.": "Home Hub ist der Weg zurück zum Haupt-Hub.",
   "How connecting works": "So funktioniert das Verbinden",
@@ -20823,6 +20833,7 @@ var MW_I18N={
   "No conversations yet — the first message opens one here.": "Noch keine Gespräche — die erste Nachricht eröffnet hier eines.",
   "No faces yet — the first post, message or invite brings one.": "Noch keine Gesichter — der erste Beitrag, die erste Nachricht oder Einladung bringt eines.",
   "No faces yet — the first post, message or invite brings the first face.": "Noch keine Gesichter — der erste Beitrag, die erste Nachricht oder Einladung bringt das erste Gesicht.",
+  "No invites yet — record the first one above.": "Noch keine Einladungen — erfasse die erste oben.",
   "No invites yet — record the first one in Growth.": "Noch keine Einladungen — erfasse die erste in Wachstum.",
   "No invites yet — the first starts the growth story.": "Noch keine Einladungen — die erste startet die Wachstumsgeschichte.",
   "No joins yet — the first join starts the growth story.": "Noch keine Beitritte — der erste Beitritt startet die Wachstumsgeschichte.",
@@ -20914,6 +20925,7 @@ var MW_I18N={
   "Post my Naya note": "Poste meine Naya-Notiz",
   "Post smart note": "Intelligente Notiz posten",
   "Posts": "Beiträge",
+  "Posts, messages and invites together.": "Beiträge, Nachrichten und Einladungen zusammen.",
   "Posts, notes, messages and invites together.": "Beiträge, Notizen, Nachrichten und Einladungen zusammen.",
   "Presented by Naya": "Präsentiert von Naya",
   "Project Intelligence": "Projektintelligenz",
@@ -20976,6 +20988,7 @@ var MW_I18N={
   "See the journey": "Die Reise ansehen",
   "See your people": "Deine Leute ansehen",
   "Send": "Senden",
+  "Send a message": "Nachricht senden",
   "Send failed: ": "Senden fehlgeschlagen: ",
   "Sending…": "Senden…",
   "Sent a message": "Hat eine Nachricht gesendet",
@@ -21042,6 +21055,8 @@ var MW_I18N={
   "The Public profile switch above is this page’s public/private choice — flip it here too.": "Der Schalter für das öffentliche Profil oben ist die öffentlich/private Wahl dieser Seite — stell ihn auch hier um.",
   "The booking state could not be read just now.": "Der Buchungsstatus konnte gerade nicht gelesen werden.",
   "The buttons at the top corner of your cover, where visitors always see them — so they always see where to join. Smart marketing: your profile is a landing page. Each button has its own on/off — if you don’t want to promote a membership, turn it off. A button wakes up when you enter its URL — it takes the next empty spot, up to five. They are meant for memberships, but any URL works: a social site of yours can sit here too. Generic links belong in the Smart Bar.": "Die Buttons in der oberen Ecke deines Covers, wo Besucher sie immer sehen — damit sie immer sehen, wo sie beitreten können. Smartes Marketing: Dein Profil ist eine Landingpage. Jeder Button hat seinen eigenen An/Aus-Schalter — wenn du eine Mitgliedschaft nicht bewerben willst, schalte ihn aus. Ein Button wacht auf, wenn du seine URL eingibst — er nimmt den nächsten freien Platz, bis zu fünf. Sie sind für Mitgliedschaften gedacht, aber jede URL geht: Eine soziale Seite von dir kann auch hier sitzen. Allgemeine Links gehören in die Smart Bar.",
+  "The circles show the last 7 days; the totals cover the full period.": "Die Kreise zeigen die letzten 7 Tage; die Summen decken den gesamten Zeitraum ab.",
+  "The circles show the story week by week; the totals cover the whole story.": "Die Kreise zeigen die Geschichte Woche für Woche; die Summen decken die ganze Geschichte ab.",
   "The cover button colours run top to bottom — flip this and the sequence runs in reverse.": "Die Farben der Cover-Buttons laufen von oben nach unten — dreh dies um und die Reihenfolge läuft rückwärts.",
   "The distilled draft — edit anything, then post.": "Der destillierte Entwurf — bearbeite alles und poste dann.",
   "The feed has been quiet since ": "Der Feed ist still seit ",
@@ -21058,6 +21073,7 @@ var MW_I18N={
   "The next invite lights the first bar.": "Die nächste Einladung lässt den ersten Balken leuchten.",
   "The next message lights the first bar.": "Die nächste Nachricht lässt den ersten Balken leuchten.",
   "The next post, note, message or invite lights the first bar.": "Der nächste Beitrag, die nächste Notiz, Nachricht oder Einladung lässt den ersten Balken leuchten.",
+  "The next post, note, message or invite lights the first circle.": "Der nächste Beitrag, die nächste Notiz, Nachricht oder Einladung lässt den ersten Kreis leuchten.",
   "The note could not be saved — try once more.": "Die Notiz konnte nicht gespeichert werden — versuch es noch einmal.",
   "The one scheduler — set a time and the time holds. Match introduces → Booking sets the time → Meet hosts. A scheduler change touches Personal, Business, Space, Smart Mail and Day Journal.": "Der eine Planer — lege eine Zeit fest und die Zeit hält. Match stellt vor → Booking legt die Zeit fest → Meet ist Gastgeber. Eine Planeränderung berührt Personal, Business, Space, Smart Mail und Day Journal.",
   "The payments state could not be read just now.": "Der Zahlungsstatus konnte gerade nicht gelesen werden.",
@@ -21321,6 +21337,7 @@ var MW_I18N={
   " waiting · oldest ": " en espera · la más antigua ",
   " walked the whole invite journey in this world — recorded and joined. Growth here has already happened.": " recorrió todo el viaje de la invitación en este mundo — registrado y unido. El crecimiento aquí ya ha sucedido.",
   " walked the whole invite journey in this world.": " recorrió todo el viaje de la invitación en este mundo.",
+  " walked the whole invite journey.": " recorrió todo el viaje de invitaciones.",
   " walked the whole journey.": " recorrió todo el viaje.",
   " wrote “": " escribió “",
   " your world in the last day — say hello while it is warm.": " tu mundo en el último día — saluda mientras está cálido.",
@@ -21360,6 +21377,9 @@ var MW_I18N={
   "A conversation is waiting": "Una conversación espera",
   "A payment link on your page takes the money through Stripe — connected with its own sign-in, once, and only with your permission. Every payment is written into the same activity these blocks read: this front says “you made X from Y”, each payment is filed on the person who paid, and a payment that fails becomes a kind drafted recovery message in your Growth room — never a silent loss. Until payments are connected, this card shows no numbers at all.": "Un enlace de pago en tu página lleva el dinero a través de Stripe — conectado con su propio inicio de sesión, una vez, y solo con tu permiso. Cada pago se escribe en la misma actividad que estos bloques leen: este frente dice “ganaste X de Y”, cada pago queda archivado en la persona que pagó, y un pago que falla se convierte en un amable mensaje de recuperación redactado en tu sala Crecimiento — nunca una pérdida silenciosa. Hasta que los pagos estén conectados, esta tarjeta no muestra ningún número.",
   "A quiet fourteen days — the next post, note, message or invite lights the first cell.": "Catorce días tranquilos — la próxima publicación, nota, mensaje o invitación enciende la primera celda.",
+  "A quiet stretch so far — the chart is waiting.": "Un tramo tranquilo por ahora — el gráfico está esperando.",
+  "A quiet stretch — the next post, message or invite lights the first bar.": "Un tramo tranquilo — la próxima publicación, mensaje o invitación enciende la primera barra.",
+  "A quiet stretch — the next post, message or invite lights the first circle.": "Un tramo tranquilo — la próxima publicación, mensaje o invitación enciende el primer círculo.",
   "A quieter week — ": "Una semana más tranquila — ",
   "A visitor": "Un visitante",
   "ABOUT NAYANET": "ACERCA DE NAYANET",
@@ -21374,8 +21394,11 @@ var MW_I18N={
   "Activity": "Actividad",
   "Activity mix": "Mezcla de actividad",
   "Add": "Añadir",
+  "Add a Smart Link": "Añadir un Smart Link",
   "Add a comment…": "Añade un comentario…",
   "Add an observation, question, correction, or contribution...": "Añade una observación, pregunta, corrección o aportación...",
+  "Add something": "Añadir algo",
+  "Add to a list": "Añadir a una lista",
   "Add to the intelligence": "Añadir a la inteligencia",
   "Add your contribution": "Añade tu aportación",
   "All": "Todo",
@@ -21417,6 +21440,7 @@ var MW_I18N={
   "Camera/microphone": "Cámara/micrófono",
   "Captured — it is a card below, in this app, with the time it landed.": "Capturado — es una tarjeta abajo, en esta app, con la hora en que aterrizó.",
   "Change cover": "Cambiar portada",
+  "Change picture": "Cambiar foto",
   "Change what shows here": "Cambiar lo que se muestra aquí",
   "Chat": "Chat",
   "Checking install state…": "Comprobando el estado de instalación…",
@@ -21463,6 +21487,7 @@ var MW_I18N={
   "Direct": "Directo",
   "Drafted from your words on this device; nothing leaves until you post.": "Redactado a partir de tus palabras en este dispositivo; nada sale de aquí hasta que publiques.",
   "ECOSYSTEM": "ECOSISTEMA",
+  "Edit photo": "Editar foto",
   "Email": "Correo",
   "Every counted click on this link, ": "Cada clic contado en este enlace, ",
   "Every event in this world landed in the last 7 days — ": "Cada evento en este mundo aterrizó en los últimos 7 días — ",
@@ -21499,6 +21524,7 @@ var MW_I18N={
   "Heat & streaks": "Calor y rachas",
   "Hello ": "Hola ",
   "Help shape this living app": "Ayuda a dar forma a esta app viva",
+  "Hide breakdown": "Ocultar desglose",
   "Home": "Inicio",
   "Home Hub is the way back to the main Hub.": "Home Hub es el camino de vuelta al Hub principal.",
   "How connecting works": "Cómo funciona la conexión",
@@ -21616,6 +21642,7 @@ var MW_I18N={
   "No conversations yet — the first message opens one here.": "Todavía no hay conversaciones — el primer mensaje abre una aquí.",
   "No faces yet — the first post, message or invite brings one.": "Todavía no hay caras — la primera publicación, mensaje o invitación trae una.",
   "No faces yet — the first post, message or invite brings the first face.": "Todavía no hay caras — la primera publicación, mensaje o invitación trae la primera cara.",
+  "No invites yet — record the first one above.": "Todavía no hay invitaciones — registra la primera arriba.",
   "No invites yet — record the first one in Growth.": "Todavía no hay invitaciones — registra la primera en Crecimiento.",
   "No invites yet — the first starts the growth story.": "Todavía no hay invitaciones — la primera inicia la historia de crecimiento.",
   "No joins yet — the first join starts the growth story.": "Todavía no hay uniones — la primera unión inicia la historia de crecimiento.",
@@ -21707,6 +21734,7 @@ var MW_I18N={
   "Post my Naya note": "Publica mi Nota Naya",
   "Post smart note": "Publicar nota inteligente",
   "Posts": "Publicaciones",
+  "Posts, messages and invites together.": "Publicaciones, mensajes e invitaciones juntos.",
   "Posts, notes, messages and invites together.": "Publicaciones, notas, mensajes e invitaciones juntos.",
   "Presented by Naya": "Presentado por Naya",
   "Project Intelligence": "Inteligencia de Proyecto",
@@ -21769,6 +21797,7 @@ var MW_I18N={
   "See the journey": "Ver el viaje",
   "See your people": "Ver a tu gente",
   "Send": "Enviar",
+  "Send a message": "Enviar un mensaje",
   "Send failed: ": "Error al enviar: ",
   "Sending…": "Enviando…",
   "Sent a message": "Envió un mensaje",
@@ -21835,6 +21864,8 @@ var MW_I18N={
   "The Public profile switch above is this page’s public/private choice — flip it here too.": "El interruptor de perfil público de arriba es la opción pública/privada de esta página — cámbialo aquí también.",
   "The booking state could not be read just now.": "No se pudo leer el estado de reservas ahora mismo.",
   "The buttons at the top corner of your cover, where visitors always see them — so they always see where to join. Smart marketing: your profile is a landing page. Each button has its own on/off — if you don’t want to promote a membership, turn it off. A button wakes up when you enter its URL — it takes the next empty spot, up to five. They are meant for memberships, but any URL works: a social site of yours can sit here too. Generic links belong in the Smart Bar.": "Los botones de la esquina superior de tu portada, donde los visitantes siempre los ven — para que siempre vean dónde unirse. Marketing inteligente: tu perfil es una página de aterrizaje. Cada botón tiene su propio encendido/apagado — si no quieres promocionar una membresía, apágalo. Un botón se activa cuando introduces su URL — toma el siguiente hueco libre, hasta cinco. Están pensados para membresías, pero sirve cualquier URL: un sitio social tuyo también puede estar aquí. Los enlaces genéricos van en la Smart Bar.",
+  "The circles show the last 7 days; the totals cover the full period.": "Los círculos muestran los últimos 7 días; los totales cubren todo el período.",
+  "The circles show the story week by week; the totals cover the whole story.": "Los círculos muestran la historia semana a semana; los totales cubren toda la historia.",
   "The cover button colours run top to bottom — flip this and the sequence runs in reverse.": "Los colores de los botones de la portada van de arriba a abajo — cambia esto y la secuencia va al revés.",
   "The distilled draft — edit anything, then post.": "El borrador destilado — edita lo que quieras y publica.",
   "The feed has been quiet since ": "El feed ha estado en silencio desde ",
@@ -21851,6 +21882,7 @@ var MW_I18N={
   "The next invite lights the first bar.": "La próxima invitación enciende la primera barra.",
   "The next message lights the first bar.": "El próximo mensaje enciende la primera barra.",
   "The next post, note, message or invite lights the first bar.": "La próxima publicación, nota, mensaje o invitación enciende la primera barra.",
+  "The next post, note, message or invite lights the first circle.": "La próxima publicación, nota, mensaje o invitación enciende el primer círculo.",
   "The note could not be saved — try once more.": "No se pudo guardar la nota — inténtalo una vez más.",
   "The one scheduler — set a time and the time holds. Match introduces → Booking sets the time → Meet hosts. A scheduler change touches Personal, Business, Space, Smart Mail and Day Journal.": "El único programador — fija una hora y la hora se mantiene. Match presenta → Booking fija la hora → Meet recibe. Un cambio en el programador toca Personal, Business, Space, Smart Mail y Day Journal.",
   "The payments state could not be read just now.": "No se pudo leer el estado de pagos ahora mismo.",
@@ -22114,6 +22146,7 @@ var MW_I18N={
   " waiting · oldest ": " en attente · la plus ancienne ",
   " walked the whole invite journey in this world — recorded and joined. Growth here has already happened.": " a parcouru tout le parcours de l’invitation dans ce monde — enregistré et adhéré. La croissance ici a déjà eu lieu.",
   " walked the whole invite journey in this world.": " a parcouru tout le parcours de l’invitation dans ce monde.",
+  " walked the whole invite journey.": " a parcouru tout le parcours d’invitation.",
   " walked the whole journey.": " a parcouru tout le parcours.",
   " wrote “": " a écrit “",
   " your world in the last day — say hello while it is warm.": " votre monde au cours des dernières 24 heures — dites bonjour tant que c’est chaud.",
@@ -22153,6 +22186,9 @@ var MW_I18N={
   "A conversation is waiting": "Une conversation attend",
   "A payment link on your page takes the money through Stripe — connected with its own sign-in, once, and only with your permission. Every payment is written into the same activity these blocks read: this front says “you made X from Y”, each payment is filed on the person who paid, and a payment that fails becomes a kind drafted recovery message in your Growth room — never a silent loss. Until payments are connected, this card shows no numbers at all.": "Un lien de paiement sur votre page fait passer l’argent par Stripe — connecté avec sa propre connexion, une seule fois, et seulement avec votre permission. Chaque paiement est écrit dans la même activité que ces blocs lisent : ce front dit « vous avez gagné X de Y », chaque paiement est archivé sur la personne qui a payé, et un paiement qui échoue devient un gentil message de relance rédigé dans votre salle Croissance — jamais une perte silencieuse. Tant que les paiements ne sont pas connectés, cette carte ne montre aucun chiffre.",
   "A quiet fourteen days — the next post, note, message or invite lights the first cell.": "Quatorze jours calmes — la prochaine publication, note, message ou invitation allume la première cellule.",
+  "A quiet stretch so far — the chart is waiting.": "Une période calme pour l’instant — le graphique attend.",
+  "A quiet stretch — the next post, message or invite lights the first bar.": "Une période calme — la prochaine publication, le prochain message ou la prochaine invitation allume la première barre.",
+  "A quiet stretch — the next post, message or invite lights the first circle.": "Une période calme — la prochaine publication, le prochain message ou la prochaine invitation allume le premier cercle.",
   "A quieter week — ": "Une semaine plus calme — ",
   "A visitor": "Un visiteur",
   "ABOUT NAYANET": "À PROPOS DE NAYANET",
@@ -22167,8 +22203,11 @@ var MW_I18N={
   "Activity": "Activité",
   "Activity mix": "Mélange d’activité",
   "Add": "Ajouter",
+  "Add a Smart Link": "Ajouter un Smart Link",
   "Add a comment…": "Ajoutez un commentaire…",
   "Add an observation, question, correction, or contribution...": "Ajoutez une observation, une question, une correction ou une contribution...",
+  "Add something": "Ajouter quelque chose",
+  "Add to a list": "Ajouter à une liste",
   "Add to the intelligence": "Ajouter à l’intelligence",
   "Add your contribution": "Ajoutez votre contribution",
   "All": "Tout",
@@ -22210,6 +22249,7 @@ var MW_I18N={
   "Camera/microphone": "Caméra/micro",
   "Captured — it is a card below, in this app, with the time it landed.": "Capturé — c’est une carte ci-dessous, dans cette app, avec l’heure de son arrivée.",
   "Change cover": "Changer la couverture",
+  "Change picture": "Changer de photo",
   "Change what shows here": "Changer ce qui s’affiche ici",
   "Chat": "Chat",
   "Checking install state…": "Vérification de l’état d’installation…",
@@ -22256,6 +22296,7 @@ var MW_I18N={
   "Direct": "Direct",
   "Drafted from your words on this device; nothing leaves until you post.": "Rédigé à partir de vos mots sur cet appareil ; rien ne sort d’ici avant que vous ne publiiez.",
   "ECOSYSTEM": "ÉCOSYSTÈME",
+  "Edit photo": "Modifier la photo",
   "Email": "E-mail",
   "Every counted click on this link, ": "Chaque clic compté sur ce lien, ",
   "Every event in this world landed in the last 7 days — ": "Chaque événement de ce monde est arrivé au cours des 7 derniers jours — ",
@@ -22292,6 +22333,7 @@ var MW_I18N={
   "Heat & streaks": "Chaleur et séries",
   "Hello ": "Bonjour ",
   "Help shape this living app": "Aidez à façonner cette app vivante",
+  "Hide breakdown": "Masquer le détail",
   "Home": "Accueil",
   "Home Hub is the way back to the main Hub.": "Home Hub est le chemin du retour vers le Hub principal.",
   "How connecting works": "Comment fonctionne la connexion",
@@ -22409,6 +22451,7 @@ var MW_I18N={
   "No conversations yet — the first message opens one here.": "Pas encore de conversations — le premier message en ouvre une ici.",
   "No faces yet — the first post, message or invite brings one.": "Pas encore de visages — la première publication, message ou invitation en amène un.",
   "No faces yet — the first post, message or invite brings the first face.": "Pas encore de visages — la première publication, message ou invitation amène le premier visage.",
+  "No invites yet — record the first one above.": "Pas encore d’invitations — enregistrez la première ci-dessus.",
   "No invites yet — record the first one in Growth.": "Pas encore d’invitations — enregistrez la première dans Croissance.",
   "No invites yet — the first starts the growth story.": "Pas encore d’invitations — la première lance l’histoire de croissance.",
   "No joins yet — the first join starts the growth story.": "Pas encore d’adhésions — la première adhésion lance l’histoire de croissance.",
@@ -22500,6 +22543,7 @@ var MW_I18N={
   "Post my Naya note": "Publie ma Note Naya",
   "Post smart note": "Publier une note intelligente",
   "Posts": "Publications",
+  "Posts, messages and invites together.": "Publications, messages et invitations ensemble.",
   "Posts, notes, messages and invites together.": "Publications, notes, messages et invitations ensemble.",
   "Presented by Naya": "Présenté par Naya",
   "Project Intelligence": "Intelligence de Projet",
@@ -22562,6 +22606,7 @@ var MW_I18N={
   "See the journey": "Voir le parcours",
   "See your people": "Voir vos gens",
   "Send": "Envoyer",
+  "Send a message": "Envoyer un message",
   "Send failed: ": "Échec de l’envoi : ",
   "Sending…": "Envoi…",
   "Sent a message": "A envoyé un message",
@@ -22628,6 +22673,8 @@ var MW_I18N={
   "The Public profile switch above is this page’s public/private choice — flip it here too.": "L’interrupteur de profil public ci-dessus est le choix public/privé de cette page — changez-le ici aussi.",
   "The booking state could not be read just now.": "Impossible de lire l’état des réservations pour l’instant.",
   "The buttons at the top corner of your cover, where visitors always see them — so they always see where to join. Smart marketing: your profile is a landing page. Each button has its own on/off — if you don’t want to promote a membership, turn it off. A button wakes up when you enter its URL — it takes the next empty spot, up to five. They are meant for memberships, but any URL works: a social site of yours can sit here too. Generic links belong in the Smart Bar.": "Les boutons dans le coin supérieur de votre couverture, où les visiteurs les voient toujours — pour qu’ils voient toujours où rejoindre. Marketing intelligent : votre profil est une page d’atterrissage. Chaque bouton a son propre marche/arrêt — si vous ne voulez pas promouvoir une adhésion, éteignez-le. Un bouton s’active quand vous entrez son URL — il prend le prochain emplacement libre, jusqu’à cinq. Ils sont faits pour les adhésions, mais n’importe quelle URL fonctionne : un de vos sites sociaux peut aussi être là. Les liens génériques vont dans la Smart Bar.",
+  "The circles show the last 7 days; the totals cover the full period.": "Les cercles montrent les 7 derniers jours ; les totaux couvrent toute la période.",
+  "The circles show the story week by week; the totals cover the whole story.": "Les cercles montrent l’histoire semaine après semaine ; les totaux couvrent toute l’histoire.",
   "The cover button colours run top to bottom — flip this and the sequence runs in reverse.": "Les couleurs des boutons de la couverture vont de haut en bas — inversez ceci et la séquence va à l’envers.",
   "The distilled draft — edit anything, then post.": "Le brouillon distillé — modifiez ce que vous voulez, puis publiez.",
   "The feed has been quiet since ": "Le fil est silencieux depuis ",
@@ -22644,6 +22691,7 @@ var MW_I18N={
   "The next invite lights the first bar.": "La prochaine invitation allume la première barre.",
   "The next message lights the first bar.": "Le prochain message allume la première barre.",
   "The next post, note, message or invite lights the first bar.": "La prochaine publication, note, message ou invitation allume la première barre.",
+  "The next post, note, message or invite lights the first circle.": "La prochaine publication, note, message ou invitation allume le premier cercle.",
   "The note could not be saved — try once more.": "La note n’a pas pu être enregistrée — réessayez une fois.",
   "The one scheduler — set a time and the time holds. Match introduces → Booking sets the time → Meet hosts. A scheduler change touches Personal, Business, Space, Smart Mail and Day Journal.": "Le seul planificateur — fixez un moment et le moment tient. Match présente → Booking fixe le moment → Meet accueille. Un changement de planificateur touche Personal, Business, Space, Smart Mail et Day Journal.",
   "The payments state could not be read just now.": "Impossible de lire l’état des paiements pour l’instant.",
@@ -22968,7 +23016,7 @@ function mwApplyLang(){
     });
     document.querySelectorAll('[data-sl-copy]').forEach(function(b){ b.textContent=T('Copy the link'); });
     document.querySelectorAll('[data-sl-open]').forEach(function(b){ b.textContent=T('Open it'); });
-    document.querySelectorAll('[data-sl-dim]').forEach(function(b){ b.textContent=T('Breakdown'); });
+    document.querySelectorAll('[data-sl-dim]').forEach(function(b){ var _r=b.closest?b.closest('.os-link-row'):null; var _p=_r?_r.nextElementSibling:null; var _o=_p&&_p.classList.contains('os-link-dim')&&!_p.hasAttribute('hidden'); b.textContent=T(_o?'Hide breakdown':'Breakdown'); });
     document.querySelectorAll('[data-dash-retry-links]').forEach(function(b){ b.textContent=T('Retry'); });
     document.querySelectorAll('.os-rel[data-at]').forEach(function(el){
       if(window.relLabel){ try{ el.textContent=window.relLabel(el.getAttribute('data-at')); }catch(e){} }
