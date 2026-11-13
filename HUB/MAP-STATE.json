@@ -1,35 +1,35 @@
 {
-  "measured_at": "2026-11-13T07:59:51.549430+00:00",
+  "measured_at": "2026-11-13T16:26:09.481327+00:00",
   "probes": {
     "supabase_tables": {
       "status": "unknown",
       "evidence": "measurement unavailable: no SUPABASE_URL in this environment. Last verified baseline (2026-10-15, Management API): 22 tables, 12,026 rows \u2014 NOT re-measured this run. Row counts require an authenticated key (anon role is RLS-locked, 42501) \u2014 loud unknown, not fake green.",
-      "measured_at": "2026-11-13T07:59:34.226678+00:00"
+      "measured_at": "2026-11-13T16:25:54.838154+00:00"
     },
     "feeds": {
       "status": "amber",
-      "evidence": "live: today (5 items, 22:31:39 old), lists (5 items, 23 days, 15:39:54 old), spaces (5 items, 22 days, 4:56:31 old); missing/invalid: feed, reports, library, connect, ledger, connections, mail, settings, manifest",
-      "measured_at": "2026-11-13T07:59:39.117122+00:00"
+      "evidence": "live: today (5 items, 1 day, 6:58:00 old), lists (5 items, 24 days, 0:06:15 old), spaces (5 items, 22 days, 13:22:52 old); missing/invalid: feed, reports, library, connect, ledger, connections, mail, settings, manifest",
+      "measured_at": "2026-11-13T16:25:59.543641+00:00"
     },
     "bridge": {
       "status": "red",
       "evidence": "PR #2679 closed (PR state: closed); bridge code in repo: not found at checked paths",
-      "measured_at": "2026-11-13T07:59:40.763551+00:00"
+      "measured_at": "2026-11-13T16:26:00.895156+00:00"
     },
     "rooms": {
       "status": "amber",
-      "evidence": "0/9 on seeds, 8/9 loading, 0/9 unknown \u2014 hub/: mixed (seeds: OFFICIAL_NOTES; loaders: NayaPowerRuntime, HUB/FEEDS); hub/today: loading; hub/lists: loading; hub/spaces: loading; hub/mail: loading; hub/reports: loading; hub/ledger: loading; hub/library: loading; hub/connections: loading",
-      "measured_at": "2026-11-13T07:59:43.225976+00:00"
+      "evidence": "0/9 on seeds, 8/9 loading, 0/9 unknown \u2014 hub/: mixed (seeds: OFFICIAL_NOTES; loaders: NayaPowerRuntime); hub/today: loading; hub/lists: loading; hub/spaces: loading; hub/mail: loading; hub/reports: loading; hub/ledger: loading; hub/library: loading; hub/connections: loading",
+      "measured_at": "2026-11-13T16:26:02.506311+00:00"
     },
     "capture": {
       "status": "green",
-      "evidence": "latest run completed/success (2:15:55 old, event=schedule); 5/5 recent runs scheduled; recent success: True, recent failure: False",
-      "measured_at": "2026-11-13T07:59:43.796226+00:00"
+      "evidence": "latest run completed/success (2:13:55 old, event=schedule); 5/5 recent runs scheduled; recent success: True, recent failure: False",
+      "measured_at": "2026-11-13T16:26:02.957741+00:00"
     },
     "dock": {
       "status": "red",
       "evidence": "#2676 closed (CI failing); #2678 closed (merged) (CI failing); #2679 closed (CI failing); #2680 closed (merged) (CI failing); #2686 closed (CI failing)",
-      "measured_at": "2026-11-13T07:59:51.549356+00:00"
+      "measured_at": "2026-11-13T16:26:09.481261+00:00"
     }
   },
   "summary": {
