@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-13 14:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-13 15:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -24537,6 +24537,12 @@ _Last updated: 2026-11-13 14:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED on live bytes: tip pin #2 dd6f2d927d8299f7bd9895ee5dadca892b12b233 == ls-remote HEAD (receipt pin exact match); PR #2459 merged 2026-10-13T00:13:46Z, merge_commit_sha == tip, title 'Revert #2455 — invalid delegated-merge-authority invocation' matches receipt claim; sign-in comment 6135088808 == shared-state's coordination_issue_last_commen
 
+### ✅ t0552-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Winmine anti-patterns from the delivery-failure log (deferred leg of t0547 Stage-0); findings file winmine-antipatterns-t0552.md
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). Verified: winmine-antipatterns-t0552.md exists, exactly 8,922 bytes as claimed; twelve-lane-rotation.json failed_deliveries_logged holds exactly 18 entries as claimed (brief's 21 was stale, caught by the lane); all four cited receipts exist (t0513-lane8, t0540-lane8, t952-lane2, t1312-lane6); TOOLS.
+
 ### ✅ t0552 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Winmine anti-patterns from the delivery-failure log (t0547 deferred leg)
@@ -24590,6 +24596,12 @@ _Last updated: 2026-11-13 14:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0552-lane1.md`
 
 **Evidence:** Verified: instrument sha 78731f46... + results sha 5018445d... + fixtures 4ab5f359..., b1af58d0, 9eaa0975... all byte-exact on disk; remote tip re-pinned via git ls-remote dbe06f9e733e unmoved, matches shared-state. Recomputed P1/P2 from pinned bytes with independent script (P1 0/3, P2 arm 19 > baseline 1) + third fresh-process re-run byte-identica
+
+### ✅ t0551-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Survey all 12 canonical hub rooms from live bytes; pinned ledger hub-room-wiring-status-20261016.md; 7-field board verdict on #2641
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). Verified: ledger file exists on disk, git hash-object returns exactly the receipt's blob 2db5d17eff3c052a52ce7e8eb61cc27ab8b59485; receipt read in full with per-room file+line evidence for all 12 rooms. NOT PHANTOM: no branch claimed (local survey task), cited artifact present with exact hash. Month
 
 ### ✅ t0551 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
