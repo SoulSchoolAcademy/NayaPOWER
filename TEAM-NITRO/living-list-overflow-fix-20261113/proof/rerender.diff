@@ -1,0 +1,8 @@
+80c80
+<   .ev{color:var(--muted);font-size:18.5px;margin:8px 0 0 42px;max-width:62ch;}
+---
+>   .ev{color:var(--muted);font-size:18.5px;margin:8px 0 0 42px;max-width:62ch;overflow-wrap:anywhere;}
+119c119
+<     <h1>Everything You Directed — The Living List</h1>    <p class="subline">Every piece of feedback you gave today, in order — what's proven, what's moving, and what the no-wait law just unblocked. Living List items only: 40 of 204 done and proven — 2 more render as in-motion until their proof is attached. Updated as items land.</p>    <p class="updated">Last updated <b>Fri Nov 13</b>, <span class="t">~09:55 UTC</span></p>    <p class="updated">State as of 09:55 UTC · GitHub just now · State core just now · THE LIST just now · Ledger just now</p>  </header>
+---
+>     <h1>Everything You Directed — The Living List</h1>    <p class="subline">Every piece of feedback you gave today, in order — what's proven, what's moving, and what the no-wait law just unblocked. Living List items only: 40 of 204 done and proven — 2 more render as in-motion until their proof is attached. Updated as items land.</p>    <p class="updated">Last updated <b>Fri Nov 13</b>, <span class="t">~09:55 UTC</span></p>    <p class="updated">State as of 09:57 UTC · GitHub 2m ago · State core 2m ago · THE LIST 2m ago · Ledger 2m ago</p>  </header>
