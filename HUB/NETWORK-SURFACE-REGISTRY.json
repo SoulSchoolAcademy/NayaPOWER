@@ -716,7 +716,6 @@
       },
       "depends_on": [
         "project-state",
-        "project-14q",
         "spaces",
         "ledger"
       ],
@@ -2088,7 +2087,68 @@
       "human_journey": "Authenticated current state available in machine form",
       "naya_journey": "Under authenticated Project Intelligence #3012 / Team Board #2793 scope: cold-orient to Machine project state, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
       "network_continuity_journey": "Show one source-linked event for project-state in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
+    }
+  ],
+  "ten_star_experience_contract": {
+    "intent": "NayaNET is an intelligent network, not a collection of attractive screens. 10/10 means an exceptional end-to-end experience for human users AND authorized Nayas, excellent design and true functionality, safe interconnection, and the maximum verified useful value per resource consumed.",
+    "scope": "Apply per human, Naya, page, Smart App, template, Space, system, task, and complete cross-room journey; component excellence alone cannot certify network excellence.",
+    "objective": "Maximize independently verified useful human/community outcome and intelligence reuse per authorized action, unit time, and compute cost, under hard harm, consent, privacy, identity, permission and reliability constraints.",
+    "essential_human_test": "A real permitted person understands the promise, succeeds at a useful task, knows current truth/proof, experiences exceptional accessible design, and can continue or recover with little unnecessary effort.",
+    "essential_naya_test": "A cold independently authenticated Naya can orient, retrieve applicable intelligence, understand LAW and scope, decide and execute one permitted valuable action, verify/recover and hand off without reconstructing chat.",
+    "essential_network_test": "One governed event appears as consistent permitted context across Dashboard, Project Intelligence, Space, Feed, Mail notification (when private-mail qualified), Reports, Library or applicable Rooms, without copies, leaks, stale status or false green.",
+    "measurement": "Record before/after human task completion, error/recovery, time/effort, actual useful outcome, Naya task/continuation, cost/latency, freshness, cross-room event integrity, and genuine user-reported experience. Idle polling, HTTP 200 and raw action count do not count as value.",
+    "targets": {
+      "human_experience_out_of_10": 10,
+      "naya_experience_out_of_10": 10,
+      "minimum_for_ship_review_each": 9.5,
+      "proven_continuity_required": true,
+      "measured_value_and_efficiency_required": true
     },
+    "hard_gates": [
+      "Do No Harm; privacy, consent, LAW and verified human authority",
+      "Full legitimate human and Naya journeys, including adverse cases",
+      "Cross-room source consistency and failure recovery",
+      "Distinct independently authenticated PROVE/VERIFY evidence at exact deployed revision",
+      "Unmeasured or insufficiently evidenced = UNKNOWN; no averaging away a failing hard gate"
+    ],
+    "calibration": "10/10 is an evidence-backed acceptance against explicit tasks and known constraints, not a claim that future breakthroughs cannot improve the network."
+  },
+  "north_star_operating_standard": {
+    "authority_ref": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/standard/SN-0843/IB-SMART-NOTE-20261023-sn0843-the-nayanet-ten-ten-operating-standard.md",
+    "id": "NAYANET-10/10-OPERATING-STANDARD",
+    "six_dimensions": [
+      "human_experience",
+      "naya_operating_experience",
+      "execution_performance",
+      "network_intelligence",
+      "trust_governance",
+      "value_continuous_evolution"
+    ],
+    "three_levels": [
+      "individual",
+      "journey",
+      "network"
+    ],
+    "scorecard_relationship": "D1-D8 technical/visual criteria are supporting evidence only. The six North Star dimensions across all three levels evaluate real human and Naya value, execution and governance. They are non-substitutable.",
+    "rules": [
+      "Do not certify a standalone page whose linked journey or network context fails",
+      "Do not certify a network from passing standalone component scores",
+      "All six dimensions must meet the ratified acceptance threshold separately at all three levels",
+      "Unmeasured user cohorts and external acceptance are UNKNOWN, never inferred from numeric author input",
+      "Never average away failure of governance, trust, safety, consent or real outcomes"
+    ],
+    "seven_question_loop": [
+      "What is its intended human and Naya value?",
+      "What is its measured performance and experience today?",
+      "Why is it not a 10/10?",
+      "What is the highest-leverage improvement, including a possible 10× gain?",
+      "Can the improvement be implemented safely and reused elsewhere?",
+      "Has an independent reviewer verified the actual result?",
+      "Did the improvement measurably increase value, reduce waste, or improve experience?"
+    ],
+    "optimization": "maximize independently verified beneficial outcomes, trustworthy collective intelligence and 10-star experience per justified action, time and resource under nonnegotiable safety and authority constraints"
+  },
+  "retired_surfaces": [
     {
       "id": "project-14q",
       "path": "/projects/questions.json",
@@ -2179,66 +2239,20 @@
       "retired_by_pi_item": "page-audit-projects-questions",
       "retirement_reason": "Route /projects/questions.json has served HTTP 404 since the 2026-10-23 audit and no questions.json file was ever committed to the repo. The payload is defined as a derived, 900-second-freshness artifact (HUB/app/js/fourteen-questions.js) with no emitter in the repo, so a static restore would fail its own freshness contract. Nothing consumes the route. The 14-question orientation itself is not lost: it survives in NAYANODE/0020, NAYANODE/0023, SN-0834, and HUB/app/js/fourteen-questions.js.",
       "retirement_evidence": "Live 404 re-confirmed 2026-11-12 at https://nayanet.app/projects/questions.json; git history shows no standalone questions.json ever committed; no consumer fetches the route. PI item page-audit-projects-questions, closed 2026-11-12 by naya-power; board #3066 comment same pass.",
-      "observed_finding_asof_2026_11_12": "HTTP 404 re-confirmed 2026-11-12; surface retired, entry preserved as the record."
+      "observed_finding_asof_2026_11_12": "HTTP 404 re-confirmed 2026-11-12; surface retired, entry preserved as the record.",
+      "conversion": {
+        "moved_at": "2026-11-12T16:39:18Z",
+        "moved_by": "naya-power",
+        "pi_item": "page-audit-projects-questions",
+        "board": "Team Board #3066",
+        "why": "In-place status=retired left the surface in `surfaces`, so audit_registry would keep probing the dead route and keep the registry RED. Removal from the live inventory is the retirement; the record moves here, preserved verbatim — nothing deleted.",
+        "correction": "The 03:43Z retirement_evidence claimed the PI item was closed and a board #3066 comment posted the same pass. That was false at the time: the agent was interrupted before any PI note or board comment, and the item stayed queued until 08:30 PST this pass. The close happens on this pass (2026-11-12, naya-power) with the real receipt. The close-out note saying 'no work existed' was also wrong — the registry edit had landed at 11:43:45Z.",
+        "evidence": {
+          "live_route": "https://nayanet.app/projects/questions.json -> HTTP 404 (2026-11-12 ~08:27 PST)",
+          "sibling_live": "https://nayanet.app/projects/state.json -> HTTP 200, derived 2026-11-12T16:27:32Z",
+          "first_retirement": "status=retired landed 2026-11-12T11:43:45Z by naya-power (agent 1911d4d1)"
+        }
+      }
     }
-  ],
-  "ten_star_experience_contract": {
-    "intent": "NayaNET is an intelligent network, not a collection of attractive screens. 10/10 means an exceptional end-to-end experience for human users AND authorized Nayas, excellent design and true functionality, safe interconnection, and the maximum verified useful value per resource consumed.",
-    "scope": "Apply per human, Naya, page, Smart App, template, Space, system, task, and complete cross-room journey; component excellence alone cannot certify network excellence.",
-    "objective": "Maximize independently verified useful human/community outcome and intelligence reuse per authorized action, unit time, and compute cost, under hard harm, consent, privacy, identity, permission and reliability constraints.",
-    "essential_human_test": "A real permitted person understands the promise, succeeds at a useful task, knows current truth/proof, experiences exceptional accessible design, and can continue or recover with little unnecessary effort.",
-    "essential_naya_test": "A cold independently authenticated Naya can orient, retrieve applicable intelligence, understand LAW and scope, decide and execute one permitted valuable action, verify/recover and hand off without reconstructing chat.",
-    "essential_network_test": "One governed event appears as consistent permitted context across Dashboard, Project Intelligence, Space, Feed, Mail notification (when private-mail qualified), Reports, Library or applicable Rooms, without copies, leaks, stale status or false green.",
-    "measurement": "Record before/after human task completion, error/recovery, time/effort, actual useful outcome, Naya task/continuation, cost/latency, freshness, cross-room event integrity, and genuine user-reported experience. Idle polling, HTTP 200 and raw action count do not count as value.",
-    "targets": {
-      "human_experience_out_of_10": 10,
-      "naya_experience_out_of_10": 10,
-      "minimum_for_ship_review_each": 9.5,
-      "proven_continuity_required": true,
-      "measured_value_and_efficiency_required": true
-    },
-    "hard_gates": [
-      "Do No Harm; privacy, consent, LAW and verified human authority",
-      "Full legitimate human and Naya journeys, including adverse cases",
-      "Cross-room source consistency and failure recovery",
-      "Distinct independently authenticated PROVE/VERIFY evidence at exact deployed revision",
-      "Unmeasured or insufficiently evidenced = UNKNOWN; no averaging away a failing hard gate"
-    ],
-    "calibration": "10/10 is an evidence-backed acceptance against explicit tasks and known constraints, not a claim that future breakthroughs cannot improve the network."
-  },
-  "north_star_operating_standard": {
-    "authority_ref": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/standard/SN-0843/IB-SMART-NOTE-20261023-sn0843-the-nayanet-ten-ten-operating-standard.md",
-    "id": "NAYANET-10/10-OPERATING-STANDARD",
-    "six_dimensions": [
-      "human_experience",
-      "naya_operating_experience",
-      "execution_performance",
-      "network_intelligence",
-      "trust_governance",
-      "value_continuous_evolution"
-    ],
-    "three_levels": [
-      "individual",
-      "journey",
-      "network"
-    ],
-    "scorecard_relationship": "D1-D8 technical/visual criteria are supporting evidence only. The six North Star dimensions across all three levels evaluate real human and Naya value, execution and governance. They are non-substitutable.",
-    "rules": [
-      "Do not certify a standalone page whose linked journey or network context fails",
-      "Do not certify a network from passing standalone component scores",
-      "All six dimensions must meet the ratified acceptance threshold separately at all three levels",
-      "Unmeasured user cohorts and external acceptance are UNKNOWN, never inferred from numeric author input",
-      "Never average away failure of governance, trust, safety, consent or real outcomes"
-    ],
-    "seven_question_loop": [
-      "What is its intended human and Naya value?",
-      "What is its measured performance and experience today?",
-      "Why is it not a 10/10?",
-      "What is the highest-leverage improvement, including a possible 10× gain?",
-      "Can the improvement be implemented safely and reused elsewhere?",
-      "Has an independent reviewer verified the actual result?",
-      "Did the improvement measurably increase value, reduce waste, or improve experience?"
-    ],
-    "optimization": "maximize independently verified beneficial outcomes, trustworthy collective intelligence and 10-star experience per justified action, time and resource under nonnegotiable safety and authority constraints"
-  }
+  ]
 }

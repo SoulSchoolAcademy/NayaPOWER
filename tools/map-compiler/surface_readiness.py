@@ -1,6 +1,6 @@
 """Evidence-first public surface census for existing Living Map compiler.
 
-Opt-in only: the hourly workflow must not acquire 25 new network requests
+Opt-in only: the hourly workflow must not acquire 24 new network requests
 without first measuring cost. Public HTTP response != functional/AAA approval.
 Does not authenticate, read user data, create state, or grant release authority.
 """
@@ -183,7 +183,7 @@ def audit_registry(registry, probe=probe_surface):
     unknown = sum(r["quality_gate"] in ("UNASSESSED", "NORTH_STAR_UNASSESSED") for r in rows)
     status = ("red" if any(r["reachable"] is False for r in rows)
               else "unknown" if any(r["reachable"] is None for r in rows)
-              else "amber")  # Even 25/25 200 is never GREEN.
+              else "amber")  # Even 24/24 200 is never GREEN.
     return {"status":status,
             "measured_at":datetime.datetime.now(datetime.timezone.utc).isoformat(),
             "evidence":f"{reachable}/{len(rows)} public routes reachable; {unknown} "
