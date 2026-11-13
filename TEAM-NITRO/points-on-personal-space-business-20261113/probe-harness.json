@@ -1,0 +1,335 @@
+{
+ "harness": "fixture window._dashD, fresh page per fixture (live Supabase blocked by CORS in this VM)",
+ "pages": {
+  "personal": {
+   "A": {
+    "fixture": {
+     "posts": 4,
+     "notes": 2,
+     "invs": 1,
+     "msgs": 3,
+     "saves": 5,
+     "joins": 1
+    },
+    "setup": "called",
+    "pill_t0": "245",
+    "pill_t1s": "245",
+    "fixture_intact_at_read": true,
+    "expected_donut_total": 245,
+    "expected_donut_total_fmt": "245",
+    "brief_expected_donut_total": 245,
+    "pill_equals_donut_total": true,
+    "pill_stable_1s": true,
+    "spine_simulation": {
+     "spineScore": 540,
+     "deltas": {
+      "hour": 90,
+      "day": 220,
+      "week": 220,
+      "month": 220
+     }
+    },
+    "brief_expected_spine": 540,
+    "spine_matches_brief_expectation": true,
+    "pill_after_spine_lands": "245",
+    "pill_unchanged_by_spine": true,
+    "big_number_mid_sweep": "90",
+    "dash_total_counts": "\u2026",
+    "donut_wrap_exists": false,
+    "pageerrors": []
+   },
+   "B": {
+    "fixture": {
+     "posts": 10,
+     "notes": 0,
+     "invs": 0,
+     "msgs": 0,
+     "saves": 0,
+     "joins": 0
+    },
+    "setup": "called",
+    "pill_t0": "250",
+    "pill_t1s": "250",
+    "fixture_intact_at_read": true,
+    "expected_donut_total": 250,
+    "expected_donut_total_fmt": "250",
+    "brief_expected_donut_total": 250,
+    "pill_equals_donut_total": true,
+    "pill_stable_1s": true,
+    "spine_simulation": {
+     "spineScore": 500,
+     "deltas": {
+      "hour": 25,
+      "day": 250,
+      "week": 250,
+      "month": 250
+     }
+    },
+    "brief_expected_spine": 500,
+    "spine_matches_brief_expectation": true,
+    "pill_after_spine_lands": "250",
+    "pill_unchanged_by_spine": true,
+    "big_number_mid_sweep": "83",
+    "dash_total_counts": "\u2026",
+    "donut_wrap_exists": false,
+    "pageerrors": []
+   },
+   "C": {
+    "fixture": {
+     "posts": 0,
+     "notes": 0,
+     "invs": 0,
+     "msgs": 0,
+     "saves": 0,
+     "joins": 0
+    },
+    "setup": "called",
+    "pill_t0": "0",
+    "pill_t1s": "0",
+    "fixture_intact_at_read": true,
+    "expected_donut_total": 0,
+    "expected_donut_total_fmt": "0",
+    "brief_expected_donut_total": 0,
+    "pill_equals_donut_total": true,
+    "pill_stable_1s": true,
+    "spine_simulation": {
+     "spineScore": 0,
+     "deltas": {
+      "hour": 0,
+      "day": 0,
+      "week": 0,
+      "month": 0
+     }
+    },
+    "brief_expected_spine": 0,
+    "spine_matches_brief_expectation": true,
+    "pill_after_spine_lands": "0",
+    "pill_unchanged_by_spine": true,
+    "big_number_mid_sweep": "0",
+    "dash_total_counts": "\u2026",
+    "donut_wrap_exists": false,
+    "pageerrors": []
+   }
+  },
+  "space": {
+   "A": {
+    "fixture": {
+     "posts": 4,
+     "notes": 2,
+     "invs": 1,
+     "msgs": 3,
+     "saves": 5,
+     "joins": 1
+    },
+    "setup": "called",
+    "pill_t0": "245",
+    "pill_t1s": "245",
+    "fixture_intact_at_read": true,
+    "expected_donut_total": 245,
+    "expected_donut_total_fmt": "245",
+    "brief_expected_donut_total": 245,
+    "pill_equals_donut_total": true,
+    "pill_stable_1s": true,
+    "spine_simulation": {
+     "spineScore": 540,
+     "deltas": {
+      "hour": 90,
+      "day": 220,
+      "week": 220,
+      "month": 220
+     }
+    },
+    "brief_expected_spine": 540,
+    "spine_matches_brief_expectation": true,
+    "pill_after_spine_lands": "245",
+    "pill_unchanged_by_spine": true,
+    "big_number_mid_sweep": "87",
+    "dash_total_counts": "\u2026",
+    "donut_wrap_exists": false,
+    "pageerrors": []
+   },
+   "B": {
+    "fixture": {
+     "posts": 10,
+     "notes": 0,
+     "invs": 0,
+     "msgs": 0,
+     "saves": 0,
+     "joins": 0
+    },
+    "setup": "called",
+    "pill_t0": "250",
+    "pill_t1s": "250",
+    "fixture_intact_at_read": true,
+    "expected_donut_total": 250,
+    "expected_donut_total_fmt": "250",
+    "brief_expected_donut_total": 250,
+    "pill_equals_donut_total": true,
+    "pill_stable_1s": true,
+    "spine_simulation": {
+     "spineScore": 500,
+     "deltas": {
+      "hour": 25,
+      "day": 250,
+      "week": 250,
+      "month": 250
+     }
+    },
+    "brief_expected_spine": 500,
+    "spine_matches_brief_expectation": true,
+    "pill_after_spine_lands": "250",
+    "pill_unchanged_by_spine": true,
+    "big_number_mid_sweep": "83",
+    "dash_total_counts": "\u2026",
+    "donut_wrap_exists": false,
+    "pageerrors": []
+   },
+   "C": {
+    "fixture": {
+     "posts": 0,
+     "notes": 0,
+     "invs": 0,
+     "msgs": 0,
+     "saves": 0,
+     "joins": 0
+    },
+    "setup": "called",
+    "pill_t0": "0",
+    "pill_t1s": "0",
+    "fixture_intact_at_read": true,
+    "expected_donut_total": 0,
+    "expected_donut_total_fmt": "0",
+    "brief_expected_donut_total": 0,
+    "pill_equals_donut_total": true,
+    "pill_stable_1s": true,
+    "spine_simulation": {
+     "spineScore": 0,
+     "deltas": {
+      "hour": 0,
+      "day": 0,
+      "week": 0,
+      "month": 0
+     }
+    },
+    "brief_expected_spine": 0,
+    "spine_matches_brief_expectation": true,
+    "pill_after_spine_lands": "0",
+    "pill_unchanged_by_spine": true,
+    "big_number_mid_sweep": "0",
+    "dash_total_counts": "\u2026",
+    "donut_wrap_exists": false,
+    "pageerrors": []
+   }
+  },
+  "business": {
+   "A": {
+    "fixture": {
+     "posts": 4,
+     "notes": 2,
+     "invs": 1,
+     "msgs": 3,
+     "saves": 5,
+     "joins": 1
+    },
+    "setup": "called",
+    "pill_t0": "245",
+    "pill_t1s": "245",
+    "fixture_intact_at_read": true,
+    "expected_donut_total": 245,
+    "expected_donut_total_fmt": "245",
+    "brief_expected_donut_total": 245,
+    "pill_equals_donut_total": true,
+    "pill_stable_1s": true,
+    "spine_simulation": {
+     "spineScore": 540,
+     "deltas": {
+      "hour": 90,
+      "day": 220,
+      "week": 220,
+      "month": 220
+     }
+    },
+    "brief_expected_spine": 540,
+    "spine_matches_brief_expectation": true,
+    "pill_after_spine_lands": "245",
+    "pill_unchanged_by_spine": true,
+    "big_number_mid_sweep": "90",
+    "dash_total_counts": "\u2026",
+    "donut_wrap_exists": false,
+    "pageerrors": []
+   },
+   "B": {
+    "fixture": {
+     "posts": 10,
+     "notes": 0,
+     "invs": 0,
+     "msgs": 0,
+     "saves": 0,
+     "joins": 0
+    },
+    "setup": "called",
+    "pill_t0": "250",
+    "pill_t1s": "250",
+    "fixture_intact_at_read": true,
+    "expected_donut_total": 250,
+    "expected_donut_total_fmt": "250",
+    "brief_expected_donut_total": 250,
+    "pill_equals_donut_total": true,
+    "pill_stable_1s": true,
+    "spine_simulation": {
+     "spineScore": 500,
+     "deltas": {
+      "hour": 25,
+      "day": 250,
+      "week": 250,
+      "month": 250
+     }
+    },
+    "brief_expected_spine": 500,
+    "spine_matches_brief_expectation": true,
+    "pill_after_spine_lands": "250",
+    "pill_unchanged_by_spine": true,
+    "big_number_mid_sweep": "86",
+    "dash_total_counts": "\u2026",
+    "donut_wrap_exists": false,
+    "pageerrors": []
+   },
+   "C": {
+    "fixture": {
+     "posts": 0,
+     "notes": 0,
+     "invs": 0,
+     "msgs": 0,
+     "saves": 0,
+     "joins": 0
+    },
+    "setup": "called",
+    "pill_t0": "0",
+    "pill_t1s": "0",
+    "fixture_intact_at_read": true,
+    "expected_donut_total": 0,
+    "expected_donut_total_fmt": "0",
+    "brief_expected_donut_total": 0,
+    "pill_equals_donut_total": true,
+    "pill_stable_1s": true,
+    "spine_simulation": {
+     "spineScore": 0,
+     "deltas": {
+      "hour": 0,
+      "day": 0,
+      "week": 0,
+      "month": 0
+     }
+    },
+    "brief_expected_spine": 0,
+    "spine_matches_brief_expectation": true,
+    "pill_after_spine_lands": "0",
+    "pill_unchanged_by_spine": true,
+    "big_number_mid_sweep": "0",
+    "dash_total_counts": "\u2026",
+    "donut_wrap_exists": false,
+    "pageerrors": []
+   }
+  }
+ }
+}

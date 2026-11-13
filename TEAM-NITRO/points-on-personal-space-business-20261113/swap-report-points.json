@@ -1,0 +1,236 @@
+{
+ "space": {
+  "file": "space-points.html",
+  "sha256": "f7eced7b39570f312c9c741805b2ce548d0e31f80ec54dcabcfbaef158aab613",
+  "bytes": 1487462,
+  "diff_lines": 24,
+  "swaps": [
+   {
+    "label": "injector-fallback-alias",
+    "expect": 1,
+    "new": "(typeof PAGE_ALIAS !== 'undefined' ? PAGE_ALIAS : 'flagship-community')"
+   },
+   {
+    "label": "page-alias-literals",
+    "expect": 7,
+    "new": "flagship-community"
+   },
+   {
+    "label": "page-kind",
+    "expect": 1,
+    "new": "window.MSHIP_PAGE_KIND='space'"
+   },
+   {
+    "label": "title-tag",
+    "expect": 1,
+    "new": "<title>Our Community</title>"
+   },
+   {
+    "label": "pname",
+    "expect": 1,
+    "new": ">Our Community</div>"
+   },
+   {
+    "label": "owner-name",
+    "expect": 1,
+    "new": "class=\"os-owner-name\">Our Community</span>"
+   },
+   {
+    "label": "name-migration-set",
+    "expect": 1,
+    "new": "localStorage.setItem('naya.name','Our Community')"
+   },
+   {
+    "label": "name-migration-text",
+    "expect": 1,
+    "new": "pn.textContent='Our Community'"
+   },
+   {
+    "label": "memberships-doc-title",
+    "expect": 1,
+    "new": "Memberships \\u2014 Our Community"
+   },
+   {
+    "label": "story-text",
+    "expect": 4,
+    "new": "A vibrant community of creators, thinkers, and doers. This Smart Space flagship "
+   },
+   {
+    "label": "tagline",
+    "expect": 3,
+    "new": "Together we grow"
+   },
+   {
+    "label": "feed-smart",
+    "expect": 1,
+    "new": "Our Community&rsquo;s Smart Notes"
+   },
+   {
+    "label": "feed-naya",
+    "expect": 1,
+    "new": "Our Community&rsquo;s Naya Notes"
+   },
+   {
+    "label": "feed-activity",
+    "expect": 1,
+    "new": ">Our Activity — tap for the full dashboard ↓</button>"
+   },
+   {
+    "label": "avatar-stroke",
+    "expect": 1,
+    "new": "stroke%3D%22%232fe89e%22"
+   },
+   {
+    "label": "avatar-letter",
+    "expect": 1,
+    "new": "middle%22%3EC%3C/text"
+   },
+   {
+    "label": "smartname-bauser",
+    "expect": 1,
+    "new": "var baUser='Our Community'"
+   },
+   {
+    "label": "smartname-fallback1",
+    "expect": 1,
+    "new": "||'Our Community'"
+   },
+   {
+    "label": "smartname-fallback2",
+    "expect": 1,
+    "new": "|| 'Our Community'"
+   },
+   {
+    "label": "smartname-fallback3",
+    "expect": 1,
+    "new": "return 'Our Community'"
+   }
+  ],
+  "values": {
+   "name": "Our Community",
+   "tagline": "Together we grow",
+   "story": "A vibrant community of creators, thinkers, and doers. This Smart Space flagship demo — a neighborhood collective, labeled demo — shows what every Smart Space community page can do: a live wall, real messages, invites, reports and intel, all working. This is a demonstration identity, labeled demo.",
+   "kind": "space",
+   "alias": "flagship-community",
+   "stroke": "2fe89e",
+   "letter": "C"
+  }
+ },
+ "business": {
+  "file": "business-points.html",
+  "sha256": "f8c769fb301c0dab6313c6126d07ba71a242df5b5de259c6caac096a6bcc2481",
+  "bytes": 1487266,
+  "diff_lines": 25,
+  "swaps": [
+   {
+    "label": "injector-fallback-alias",
+    "expect": 1,
+    "new": "(typeof PAGE_ALIAS !== 'undefined' ? PAGE_ALIAS : 'flagship-business')"
+   },
+   {
+    "label": "page-alias-literals",
+    "expect": 7,
+    "new": "flagship-business"
+   },
+   {
+    "label": "page-kind",
+    "expect": 1,
+    "new": "window.MSHIP_PAGE_KIND='business'"
+   },
+   {
+    "label": "title-tag",
+    "expect": 1,
+    "new": "<title>Acme Corp</title>"
+   },
+   {
+    "label": "pname",
+    "expect": 1,
+    "new": ">Acme Corp</div>"
+   },
+   {
+    "label": "owner-name",
+    "expect": 1,
+    "new": "class=\"os-owner-name\">Acme Corp</span>"
+   },
+   {
+    "label": "name-migration-set",
+    "expect": 1,
+    "new": "localStorage.setItem('naya.name','Acme Corp')"
+   },
+   {
+    "label": "name-migration-text",
+    "expect": 1,
+    "new": "pn.textContent='Acme Corp'"
+   },
+   {
+    "label": "memberships-doc-title",
+    "expect": 1,
+    "new": "Memberships \\u2014 Acme Corp"
+   },
+   {
+    "label": "story-text",
+    "expect": 4,
+    "new": "Acme Corp delivers excellence through innovation and dedication. This Smart Busi"
+   },
+   {
+    "label": "tagline",
+    "expect": 3,
+    "new": "We build amazing things"
+   },
+   {
+    "label": "feed-smart",
+    "expect": 1,
+    "new": "Acme Corp&rsquo;s Smart Notes"
+   },
+   {
+    "label": "feed-naya",
+    "expect": 1,
+    "new": "Acme Corp&rsquo;s Naya Notes"
+   },
+   {
+    "label": "feed-activity",
+    "expect": 1,
+    "new": ">Our Activity — tap for the full dashboard ↓</button>"
+   },
+   {
+    "label": "avatar-stroke",
+    "expect": 1,
+    "new": "stroke%3D%22%233fb8ff%22"
+   },
+   {
+    "label": "avatar-letter",
+    "expect": 1,
+    "new": "middle%22%3EA%3C/text"
+   },
+   {
+    "label": "smartname-bauser",
+    "expect": 1,
+    "new": "var baUser='Acme Corp'"
+   },
+   {
+    "label": "smartname-fallback1",
+    "expect": 1,
+    "new": "||'Acme Corp'"
+   },
+   {
+    "label": "smartname-fallback2",
+    "expect": 1,
+    "new": "|| 'Acme Corp'"
+   },
+   {
+    "label": "smartname-fallback3",
+    "expect": 1,
+    "new": "return 'Acme Corp'"
+   }
+  ],
+  "values": {
+   "name": "Acme Corp",
+   "tagline": "We build amazing things",
+   "story": "Acme Corp delivers excellence through innovation and dedication. This Smart Business flagship demo shows what every Smart Business page can do: a live wall, real messages, invites, reports and intel, all working. This is a demonstration identity, labeled demo.",
+   "kind": "business",
+   "alias": "flagship-business",
+   "stroke": "3fb8ff",
+   "letter": "A"
+  }
+ }
+}

@@ -1,0 +1,1550 @@
+{
+ "browser": "firefox",
+ "pages": {
+  "personal": {
+   "390": {
+    "top": {
+     "#pname": {
+      "x": 146,
+      "y": 13,
+      "w": 159.6,
+      "h": 40,
+      "top": 13,
+      "bottom": 53,
+      "left": 146,
+      "right": 305.6
+     },
+     "#pointsdisplay": null,
+     "#ptag": {
+      "x": 146,
+      "y": 58,
+      "w": 228,
+      "h": 62,
+      "top": 58,
+      "bottom": 120,
+      "left": 146,
+      "right": 374
+     },
+     "#cvrbtn": {
+      "x": 215.7,
+      "y": 6,
+      "w": 164.3,
+      "h": 48,
+      "top": 6,
+      "bottom": 54,
+      "left": 215.7,
+      "right": 380
+     },
+     ".ph-cover": {
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 420,
+      "top": 0,
+      "bottom": 420,
+      "left": 0,
+      "right": 390
+     },
+     ".ph-head": {
+      "x": 0,
+      "y": 13,
+      "w": 390,
+      "h": 407,
+      "top": 13,
+      "bottom": 420,
+      "left": 0,
+      "right": 390
+     },
+     "#cvr": {
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 420,
+      "top": 0,
+      "bottom": 420,
+      "left": 0,
+      "right": 390
+     },
+     "_doc": {
+      "scrollW": 390,
+      "clientW": 390,
+      "scrollH": 1899,
+      "innerW": 390
+     },
+     "_pillText": null,
+     "_donutTotal": "\u2026",
+     "_bigNum": ""
+    },
+    "end": {
+     "#pname": {
+      "x": 146,
+      "y": -1042,
+      "w": 159.6,
+      "h": 40,
+      "top": -1042,
+      "bottom": -1002,
+      "left": 146,
+      "right": 305.6
+     },
+     "#pointsdisplay": null,
+     "#ptag": {
+      "x": 146,
+      "y": -997,
+      "w": 228,
+      "h": 62,
+      "top": -997,
+      "bottom": -935,
+      "left": 146,
+      "right": 374
+     },
+     "#cvrbtn": {
+      "x": 215.7,
+      "y": -1049,
+      "w": 164.3,
+      "h": 48,
+      "top": -1049,
+      "bottom": -1001,
+      "left": 215.7,
+      "right": 380
+     },
+     ".ph-cover": {
+      "x": 0,
+      "y": -1055,
+      "w": 390,
+      "h": 420,
+      "top": -1055,
+      "bottom": -635,
+      "left": 0,
+      "right": 390
+     },
+     ".ph-head": {
+      "x": 0,
+      "y": -1042,
+      "w": 390,
+      "h": 407,
+      "top": -1042,
+      "bottom": -635,
+      "left": 0,
+      "right": 390
+     },
+     "#cvr": {
+      "x": 0,
+      "y": -1055,
+      "w": 390,
+      "h": 420,
+      "top": -1055,
+      "bottom": -635,
+      "left": 0,
+      "right": 390
+     },
+     "_doc": {
+      "scrollW": 390,
+      "clientW": 390,
+      "scrollH": 1899,
+      "innerW": 390
+     },
+     "_pillText": null,
+     "_donutTotal": "\u2026",
+     "_bigNum": ""
+    },
+    "overflow_px": 0,
+    "cvrbtn_intersects_pname": true,
+    "console_errors": [
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-personal&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-personal&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-personal&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.personal&page_alias=eq.flagship-personal&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-personal&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-personal&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-personal&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.personal&page_alias=eq.flagship-personal&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-personal&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-personal&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-personal&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-personal&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_dimension_stats?select=link_id%2Cname%2Cday%2Creferrer_class%2Cuser_agent_class%2Ccountry%2Cclicks&owner_alias=eq.flagship-personal&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_dimension_stats?select=link_id%2Cname%2Cday%2Creferrer_class%2Cuser_agent_class%2Ccountry%2Cclicks&owner_alias=eq.flagship-personal&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-personal&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-personal&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.personal&page_alias=eq.flagship-personal&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.personal&page_alias=eq.flagship-personal&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-personal&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-personal&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]"
+    ],
+    "console_error_count": 42
+   },
+   "1440": {
+    "top": {
+     "#pname": {
+      "x": 184,
+      "y": 314.2,
+      "w": 159.6,
+      "h": 40,
+      "top": 314.2,
+      "bottom": 354.2,
+      "left": 184,
+      "right": 343.6
+     },
+     "#pointsdisplay": null,
+     "#ptag": {
+      "x": 184,
+      "y": 359.2,
+      "w": 597.1,
+      "h": 22,
+      "top": 359.2,
+      "bottom": 381.2,
+      "left": 184,
+      "right": 781.1
+     },
+     "#cvrbtn": {
+      "x": 1259.7,
+      "y": 76,
+      "w": 164.3,
+      "h": 48,
+      "top": 76,
+      "bottom": 124,
+      "left": 1259.7,
+      "right": 1424
+     },
+     ".ph-cover": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 464.2,
+      "top": 0,
+      "bottom": 464.2,
+      "left": 0,
+      "right": 1440
+     },
+     ".ph-head": {
+      "x": 0,
+      "y": 304.2,
+      "w": 1440,
+      "h": 160,
+      "top": 304.2,
+      "bottom": 464.2,
+      "left": 0,
+      "right": 1440
+     },
+     "#cvr": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 464.2,
+      "top": 0,
+      "bottom": 464.2,
+      "left": 0,
+      "right": 1440
+     },
+     "_doc": {
+      "scrollW": 1440,
+      "clientW": 1440,
+      "scrollH": 1690,
+      "innerW": 1440
+     },
+     "_pillText": null,
+     "_donutTotal": "\u2026",
+     "_bigNum": ""
+    },
+    "end": {
+     "#pname": {
+      "x": 184,
+      "y": -531.8,
+      "w": 159.6,
+      "h": 40,
+      "top": -531.8,
+      "bottom": -491.8,
+      "left": 184,
+      "right": 343.6
+     },
+     "#pointsdisplay": null,
+     "#ptag": {
+      "x": 184,
+      "y": -486.8,
+      "w": 597.1,
+      "h": 22,
+      "top": -486.8,
+      "bottom": -464.8,
+      "left": 184,
+      "right": 781.1
+     },
+     "#cvrbtn": {
+      "x": 1259.7,
+      "y": -770,
+      "w": 164.3,
+      "h": 48,
+      "top": -770,
+      "bottom": -722,
+      "left": 1259.7,
+      "right": 1424
+     },
+     ".ph-cover": {
+      "x": 0,
+      "y": -846,
+      "w": 1440,
+      "h": 464.2,
+      "top": -846,
+      "bottom": -381.8,
+      "left": 0,
+      "right": 1440
+     },
+     ".ph-head": {
+      "x": 0,
+      "y": -541.8,
+      "w": 1440,
+      "h": 160,
+      "top": -541.8,
+      "bottom": -381.8,
+      "left": 0,
+      "right": 1440
+     },
+     "#cvr": {
+      "x": 0,
+      "y": -846,
+      "w": 1440,
+      "h": 464.2,
+      "top": -846,
+      "bottom": -381.8,
+      "left": 0,
+      "right": 1440
+     },
+     "_doc": {
+      "scrollW": 1440,
+      "clientW": 1440,
+      "scrollH": 1690,
+      "innerW": 1440
+     },
+     "_pillText": null,
+     "_donutTotal": "\u2026",
+     "_bigNum": ""
+    },
+    "overflow_px": 0,
+    "cvrbtn_intersects_pname": false,
+    "console_errors": [
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-personal&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-personal&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-personal&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-personal&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-personal&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-personal&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.personal&page_alias=eq.flagship-personal&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.personal&page_alias=eq.flagship-personal&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-personal&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-personal&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-personal&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-personal&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_dimension_stats?select=link_id%2Cname%2Cday%2Creferrer_class%2Cuser_agent_class%2Ccountry%2Cclicks&owner_alias=eq.flagship-personal&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_dimension_stats?select=link_id%2Cname%2Cday%2Creferrer_class%2Cuser_agent_class%2Ccountry%2Cclicks&owner_alias=eq.flagship-personal&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-personal&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-personal&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-personal&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-personal&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-personal&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-personal&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]"
+    ],
+    "console_error_count": 42
+   },
+   "360": {
+    "top": {
+     "#pname": {
+      "x": 16,
+      "y": 33,
+      "w": 159.6,
+      "h": 40,
+      "top": 33,
+      "bottom": 73,
+      "left": 16,
+      "right": 175.6
+     },
+     "#pointsdisplay": null,
+     "#ptag": {
+      "x": 16,
+      "y": 78,
+      "w": 328,
+      "h": 42,
+      "top": 78,
+      "bottom": 120,
+      "left": 16,
+      "right": 344
+     },
+     "#cvrbtn": {
+      "x": 185.7,
+      "y": 6,
+      "w": 164.3,
+      "h": 48,
+      "top": 6,
+      "bottom": 54,
+      "left": 185.7,
+      "right": 350
+     },
+     ".ph-cover": {
+      "x": 0,
+      "y": 0,
+      "w": 360,
+      "h": 420,
+      "top": 0,
+      "bottom": 420,
+      "left": 0,
+      "right": 360
+     },
+     ".ph-head": {
+      "x": 0,
+      "y": -97,
+      "w": 360,
+      "h": 517,
+      "top": -97,
+      "bottom": 420,
+      "left": 0,
+      "right": 360
+     },
+     "#cvr": {
+      "x": 0,
+      "y": 0,
+      "w": 360,
+      "h": 420,
+      "top": 0,
+      "bottom": 420,
+      "left": 0,
+      "right": 360
+     },
+     "_doc": {
+      "scrollW": 360,
+      "clientW": 360,
+      "scrollH": 1992,
+      "innerW": 360
+     },
+     "_pillText": null,
+     "_donutTotal": "\u2026",
+     "_bigNum": ""
+    },
+    "end": {
+     "#pname": {
+      "x": 16,
+      "y": -1115,
+      "w": 159.6,
+      "h": 40,
+      "top": -1115,
+      "bottom": -1075,
+      "left": 16,
+      "right": 175.6
+     },
+     "#pointsdisplay": null,
+     "#ptag": {
+      "x": 16,
+      "y": -1070,
+      "w": 328,
+      "h": 42,
+      "top": -1070,
+      "bottom": -1028,
+      "left": 16,
+      "right": 344
+     },
+     "#cvrbtn": {
+      "x": 185.7,
+      "y": -1142,
+      "w": 164.3,
+      "h": 48,
+      "top": -1142,
+      "bottom": -1094,
+      "left": 185.7,
+      "right": 350
+     },
+     ".ph-cover": {
+      "x": 0,
+      "y": -1148,
+      "w": 360,
+      "h": 420,
+      "top": -1148,
+      "bottom": -728,
+      "left": 0,
+      "right": 360
+     },
+     ".ph-head": {
+      "x": 0,
+      "y": -1245,
+      "w": 360,
+      "h": 517,
+      "top": -1245,
+      "bottom": -728,
+      "left": 0,
+      "right": 360
+     },
+     "#cvr": {
+      "x": 0,
+      "y": -1148,
+      "w": 360,
+      "h": 420,
+      "top": -1148,
+      "bottom": -728,
+      "left": 0,
+      "right": 360
+     },
+     "_doc": {
+      "scrollW": 360,
+      "clientW": 360,
+      "scrollH": 1992,
+      "innerW": 360
+     },
+     "_pillText": null,
+     "_donutTotal": "\u2026",
+     "_bigNum": ""
+    },
+    "overflow_px": 0,
+    "cvrbtn_intersects_pname": false,
+    "console_errors": [
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-personal&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-personal&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.personal&page_alias=eq.flagship-personal&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.personal&page_alias=eq.flagship-personal&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-personal&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-personal&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-personal&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-personal&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-personal&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-personal&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-personal&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-personal&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_dimension_stats?select=link_id%2Cname%2Cday%2Creferrer_class%2Cuser_agent_class%2Ccountry%2Cclicks&owner_alias=eq.flagship-personal&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_dimension_stats?select=link_id%2Cname%2Cday%2Creferrer_class%2Cuser_agent_class%2Ccountry%2Cclicks&owner_alias=eq.flagship-personal&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-personal&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-personal&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-personal&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-personal&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-personal&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-personal&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]"
+    ],
+    "console_error_count": 42
+   }
+  },
+  "space": {
+   "390": {
+    "top": {
+     "#pname": {
+      "x": 146,
+      "y": 350,
+      "w": 192.2,
+      "h": 40,
+      "top": 350,
+      "bottom": 390,
+      "left": 146,
+      "right": 338.2
+     },
+     "#pointsdisplay": null,
+     "#ptag": {
+      "x": 146,
+      "y": 395,
+      "w": 118.6,
+      "h": 22,
+      "top": 395,
+      "bottom": 417,
+      "left": 146,
+      "right": 264.6
+     },
+     "#cvrbtn": {
+      "x": 215.7,
+      "y": 6,
+      "w": 164.3,
+      "h": 48,
+      "top": 6,
+      "bottom": 54,
+      "left": 215.7,
+      "right": 380
+     },
+     ".ph-cover": {
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 420,
+      "top": 0,
+      "bottom": 420,
+      "left": 0,
+      "right": 390
+     },
+     ".ph-head": {
+      "x": 0,
+      "y": 350,
+      "w": 390,
+      "h": 367,
+      "top": 350,
+      "bottom": 717,
+      "left": 0,
+      "right": 390
+     },
+     "#cvr": {
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 420,
+      "top": 0,
+      "bottom": 420,
+      "left": 0,
+      "right": 390
+     },
+     "_doc": {
+      "scrollW": 390,
+      "clientW": 390,
+      "scrollH": 2240,
+      "innerW": 390
+     },
+     "_pillText": null,
+     "_donutTotal": "\u2026",
+     "_bigNum": ""
+    },
+    "end": {
+     "#pname": {
+      "x": 146,
+      "y": -1046,
+      "w": 192.2,
+      "h": 40,
+      "top": -1046,
+      "bottom": -1006,
+      "left": 146,
+      "right": 338.2
+     },
+     "#pointsdisplay": null,
+     "#ptag": {
+      "x": 146,
+      "y": -1001,
+      "w": 118.6,
+      "h": 22,
+      "top": -1001,
+      "bottom": -979,
+      "left": 146,
+      "right": 264.6
+     },
+     "#cvrbtn": {
+      "x": 215.7,
+      "y": -1390,
+      "w": 164.3,
+      "h": 48,
+      "top": -1390,
+      "bottom": -1342,
+      "left": 215.7,
+      "right": 380
+     },
+     ".ph-cover": {
+      "x": 0,
+      "y": -1396,
+      "w": 390,
+      "h": 420,
+      "top": -1396,
+      "bottom": -976,
+      "left": 0,
+      "right": 390
+     },
+     ".ph-head": {
+      "x": 0,
+      "y": -1046,
+      "w": 390,
+      "h": 367,
+      "top": -1046,
+      "bottom": -679,
+      "left": 0,
+      "right": 390
+     },
+     "#cvr": {
+      "x": 0,
+      "y": -1396,
+      "w": 390,
+      "h": 420,
+      "top": -1396,
+      "bottom": -976,
+      "left": 0,
+      "right": 390
+     },
+     "_doc": {
+      "scrollW": 390,
+      "clientW": 390,
+      "scrollH": 2240,
+      "innerW": 390
+     },
+     "_pillText": null,
+     "_donutTotal": "\u2026",
+     "_bigNum": ""
+    },
+    "overflow_px": 0,
+    "cvrbtn_intersects_pname": false,
+    "console_errors": [
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.space&page_alias=eq.flagship-community&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.space&page_alias=eq.flagship-community&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-community&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-community&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-community&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-community&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-community&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-community&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-community&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-community&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-community&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-community&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_dimension_stats?select=link_id%2Cname%2Cday%2Creferrer_class%2Cuser_agent_class%2Ccountry%2Cclicks&owner_alias=eq.flagship-community&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_dimension_stats?select=link_id%2Cname%2Cday%2Creferrer_class%2Cuser_agent_class%2Ccountry%2Cclicks&owner_alias=eq.flagship-community&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-community&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-community&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-community&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-community&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-community&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-community&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]"
+    ],
+    "console_error_count": 42
+   },
+   "1440": {
+    "top": {
+     "#pname": {
+      "x": 184,
+      "y": 314.2,
+      "w": 192.2,
+      "h": 40,
+      "top": 314.2,
+      "bottom": 354.2,
+      "left": 184,
+      "right": 376.2
+     },
+     "#pointsdisplay": null,
+     "#ptag": {
+      "x": 184,
+      "y": 359.2,
+      "w": 118.6,
+      "h": 22,
+      "top": 359.2,
+      "bottom": 381.2,
+      "left": 184,
+      "right": 302.6
+     },
+     "#cvrbtn": {
+      "x": 1259.7,
+      "y": 76,
+      "w": 164.3,
+      "h": 48,
+      "top": 76,
+      "bottom": 124,
+      "left": 1259.7,
+      "right": 1424
+     },
+     ".ph-cover": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 464.2,
+      "top": 0,
+      "bottom": 464.2,
+      "left": 0,
+      "right": 1440
+     },
+     ".ph-head": {
+      "x": 0,
+      "y": 304.2,
+      "w": 1440,
+      "h": 160,
+      "top": 304.2,
+      "bottom": 464.2,
+      "left": 0,
+      "right": 1440
+     },
+     "#cvr": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 464.2,
+      "top": 0,
+      "bottom": 464.2,
+      "left": 0,
+      "right": 1440
+     },
+     "_doc": {
+      "scrollW": 1440,
+      "clientW": 1440,
+      "scrollH": 1690,
+      "innerW": 1440
+     },
+     "_pillText": null,
+     "_donutTotal": "\u2026",
+     "_bigNum": ""
+    },
+    "end": {
+     "#pname": {
+      "x": 184,
+      "y": -531.8,
+      "w": 192.2,
+      "h": 40,
+      "top": -531.8,
+      "bottom": -491.8,
+      "left": 184,
+      "right": 376.2
+     },
+     "#pointsdisplay": null,
+     "#ptag": {
+      "x": 184,
+      "y": -486.8,
+      "w": 118.6,
+      "h": 22,
+      "top": -486.8,
+      "bottom": -464.8,
+      "left": 184,
+      "right": 302.6
+     },
+     "#cvrbtn": {
+      "x": 1259.7,
+      "y": -770,
+      "w": 164.3,
+      "h": 48,
+      "top": -770,
+      "bottom": -722,
+      "left": 1259.7,
+      "right": 1424
+     },
+     ".ph-cover": {
+      "x": 0,
+      "y": -846,
+      "w": 1440,
+      "h": 464.2,
+      "top": -846,
+      "bottom": -381.8,
+      "left": 0,
+      "right": 1440
+     },
+     ".ph-head": {
+      "x": 0,
+      "y": -541.8,
+      "w": 1440,
+      "h": 160,
+      "top": -541.8,
+      "bottom": -381.8,
+      "left": 0,
+      "right": 1440
+     },
+     "#cvr": {
+      "x": 0,
+      "y": -846,
+      "w": 1440,
+      "h": 464.2,
+      "top": -846,
+      "bottom": -381.8,
+      "left": 0,
+      "right": 1440
+     },
+     "_doc": {
+      "scrollW": 1440,
+      "clientW": 1440,
+      "scrollH": 1690,
+      "innerW": 1440
+     },
+     "_pillText": null,
+     "_donutTotal": "\u2026",
+     "_bigNum": ""
+    },
+    "overflow_px": 0,
+    "cvrbtn_intersects_pname": false,
+    "console_errors": [
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-community&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-community&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-community&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-community&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.space&page_alias=eq.flagship-community&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.space&page_alias=eq.flagship-community&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-community&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-community&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-community&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-community&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-community&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-community&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_dimension_stats?select=link_id%2Cname%2Cday%2Creferrer_class%2Cuser_agent_class%2Ccountry%2Cclicks&owner_alias=eq.flagship-community&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_dimension_stats?select=link_id%2Cname%2Cday%2Creferrer_class%2Cuser_agent_class%2Ccountry%2Cclicks&owner_alias=eq.flagship-community&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.space&page_alias=eq.flagship-community&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.space&page_alias=eq.flagship-community&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-community&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-community&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-community&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-community&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]"
+    ],
+    "console_error_count": 42
+   },
+   "360": {
+    "top": {
+     "#pname": {
+      "x": 16,
+      "y": 480,
+      "w": 192.2,
+      "h": 40,
+      "top": 480,
+      "bottom": 520,
+      "left": 16,
+      "right": 208.2
+     },
+     "#pointsdisplay": null,
+     "#ptag": {
+      "x": 16,
+      "y": 525,
+      "w": 118.6,
+      "h": 22,
+      "top": 525,
+      "bottom": 547,
+      "left": 16,
+      "right": 134.6
+     },
+     "#cvrbtn": {
+      "x": 185.7,
+      "y": 6,
+      "w": 164.3,
+      "h": 48,
+      "top": 6,
+      "bottom": 54,
+      "left": 185.7,
+      "right": 350
+     },
+     ".ph-cover": {
+      "x": 0,
+      "y": 0,
+      "w": 360,
+      "h": 420,
+      "top": 0,
+      "bottom": 420,
+      "left": 0,
+      "right": 360
+     },
+     ".ph-head": {
+      "x": 0,
+      "y": 350,
+      "w": 360,
+      "h": 497,
+      "top": 350,
+      "bottom": 847,
+      "left": 0,
+      "right": 360
+     },
+     "#cvr": {
+      "x": 0,
+      "y": 0,
+      "w": 360,
+      "h": 420,
+      "top": 0,
+      "bottom": 420,
+      "left": 0,
+      "right": 360
+     },
+     "_doc": {
+      "scrollW": 360,
+      "clientW": 360,
+      "scrollH": 2419,
+      "innerW": 360
+     },
+     "_pillText": null,
+     "_donutTotal": "\u2026",
+     "_bigNum": ""
+    },
+    "end": {
+     "#pname": {
+      "x": 16,
+      "y": -1095,
+      "w": 192.2,
+      "h": 40,
+      "top": -1095,
+      "bottom": -1055,
+      "left": 16,
+      "right": 208.2
+     },
+     "#pointsdisplay": null,
+     "#ptag": {
+      "x": 16,
+      "y": -1050,
+      "w": 118.6,
+      "h": 22,
+      "top": -1050,
+      "bottom": -1028,
+      "left": 16,
+      "right": 134.6
+     },
+     "#cvrbtn": {
+      "x": 185.7,
+      "y": -1569,
+      "w": 164.3,
+      "h": 48,
+      "top": -1569,
+      "bottom": -1521,
+      "left": 185.7,
+      "right": 350
+     },
+     ".ph-cover": {
+      "x": 0,
+      "y": -1575,
+      "w": 360,
+      "h": 420,
+      "top": -1575,
+      "bottom": -1155,
+      "left": 0,
+      "right": 360
+     },
+     ".ph-head": {
+      "x": 0,
+      "y": -1225,
+      "w": 360,
+      "h": 497,
+      "top": -1225,
+      "bottom": -728,
+      "left": 0,
+      "right": 360
+     },
+     "#cvr": {
+      "x": 0,
+      "y": -1575,
+      "w": 360,
+      "h": 420,
+      "top": -1575,
+      "bottom": -1155,
+      "left": 0,
+      "right": 360
+     },
+     "_doc": {
+      "scrollW": 360,
+      "clientW": 360,
+      "scrollH": 2419,
+      "innerW": 360
+     },
+     "_pillText": null,
+     "_donutTotal": "\u2026",
+     "_bigNum": ""
+    },
+    "overflow_px": 0,
+    "cvrbtn_intersects_pname": false,
+    "console_errors": [
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-community&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-community&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.space&page_alias=eq.flagship-community&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-community&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.space&page_alias=eq.flagship-community&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-community&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-community&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-community&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-community&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-community&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-community&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-community&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_dimension_stats?select=link_id%2Cname%2Cday%2Creferrer_class%2Cuser_agent_class%2Ccountry%2Cclicks&owner_alias=eq.flagship-community&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_dimension_stats?select=link_id%2Cname%2Cday%2Creferrer_class%2Cuser_agent_class%2Ccountry%2Cclicks&owner_alias=eq.flagship-community&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-community&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-community&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-community&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-community&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-community&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-community&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]"
+    ],
+    "console_error_count": 42
+   }
+  },
+  "business": {
+   "390": {
+    "top": {
+     "#pname": {
+      "x": 146,
+      "y": 350,
+      "w": 129.1,
+      "h": 40,
+      "top": 350,
+      "bottom": 390,
+      "left": 146,
+      "right": 275.1
+     },
+     "#pointsdisplay": null,
+     "#ptag": {
+      "x": 146,
+      "y": 395,
+      "w": 162.2,
+      "h": 22,
+      "top": 395,
+      "bottom": 417,
+      "left": 146,
+      "right": 308.2
+     },
+     "#cvrbtn": {
+      "x": 215.7,
+      "y": 6,
+      "w": 164.3,
+      "h": 48,
+      "top": 6,
+      "bottom": 54,
+      "left": 215.7,
+      "right": 380
+     },
+     ".ph-cover": {
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 420,
+      "top": 0,
+      "bottom": 420,
+      "left": 0,
+      "right": 390
+     },
+     ".ph-head": {
+      "x": 0,
+      "y": 350,
+      "w": 390,
+      "h": 367,
+      "top": 350,
+      "bottom": 717,
+      "left": 0,
+      "right": 390
+     },
+     "#cvr": {
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 420,
+      "top": 0,
+      "bottom": 420,
+      "left": 0,
+      "right": 390
+     },
+     "_doc": {
+      "scrollW": 390,
+      "clientW": 390,
+      "scrollH": 2240,
+      "innerW": 390
+     },
+     "_pillText": null,
+     "_donutTotal": "\u2026",
+     "_bigNum": ""
+    },
+    "end": {
+     "#pname": {
+      "x": 146,
+      "y": -1046,
+      "w": 129.1,
+      "h": 40,
+      "top": -1046,
+      "bottom": -1006,
+      "left": 146,
+      "right": 275.1
+     },
+     "#pointsdisplay": null,
+     "#ptag": {
+      "x": 146,
+      "y": -1001,
+      "w": 162.2,
+      "h": 22,
+      "top": -1001,
+      "bottom": -979,
+      "left": 146,
+      "right": 308.2
+     },
+     "#cvrbtn": {
+      "x": 215.7,
+      "y": -1390,
+      "w": 164.3,
+      "h": 48,
+      "top": -1390,
+      "bottom": -1342,
+      "left": 215.7,
+      "right": 380
+     },
+     ".ph-cover": {
+      "x": 0,
+      "y": -1396,
+      "w": 390,
+      "h": 420,
+      "top": -1396,
+      "bottom": -976,
+      "left": 0,
+      "right": 390
+     },
+     ".ph-head": {
+      "x": 0,
+      "y": -1046,
+      "w": 390,
+      "h": 367,
+      "top": -1046,
+      "bottom": -679,
+      "left": 0,
+      "right": 390
+     },
+     "#cvr": {
+      "x": 0,
+      "y": -1396,
+      "w": 390,
+      "h": 420,
+      "top": -1396,
+      "bottom": -976,
+      "left": 0,
+      "right": 390
+     },
+     "_doc": {
+      "scrollW": 390,
+      "clientW": 390,
+      "scrollH": 2240,
+      "innerW": 390
+     },
+     "_pillText": null,
+     "_donutTotal": "\u2026",
+     "_bigNum": ""
+    },
+    "overflow_px": 0,
+    "cvrbtn_intersects_pname": false,
+    "console_errors": [
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.business&page_alias=eq.flagship-business&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-business&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-business&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.business&page_alias=eq.flagship-business&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-business&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-business&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-business&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-business&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-business&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-business&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-business&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-business&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_dimension_stats?select=link_id%2Cname%2Cday%2Creferrer_class%2Cuser_agent_class%2Ccountry%2Cclicks&owner_alias=eq.flagship-business&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_dimension_stats?select=link_id%2Cname%2Cday%2Creferrer_class%2Cuser_agent_class%2Ccountry%2Cclicks&owner_alias=eq.flagship-business&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-business&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-business&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-business&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.business&page_alias=eq.flagship-business&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-business&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-business&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]"
+    ],
+    "console_error_count": 42
+   },
+   "1440": {
+    "top": {
+     "#pname": {
+      "x": 184,
+      "y": 314.2,
+      "w": 129.1,
+      "h": 40,
+      "top": 314.2,
+      "bottom": 354.2,
+      "left": 184,
+      "right": 313.1
+     },
+     "#pointsdisplay": null,
+     "#ptag": {
+      "x": 184,
+      "y": 359.2,
+      "w": 162.2,
+      "h": 22,
+      "top": 359.2,
+      "bottom": 381.2,
+      "left": 184,
+      "right": 346.2
+     },
+     "#cvrbtn": {
+      "x": 1259.7,
+      "y": 76,
+      "w": 164.3,
+      "h": 48,
+      "top": 76,
+      "bottom": 124,
+      "left": 1259.7,
+      "right": 1424
+     },
+     ".ph-cover": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 464.2,
+      "top": 0,
+      "bottom": 464.2,
+      "left": 0,
+      "right": 1440
+     },
+     ".ph-head": {
+      "x": 0,
+      "y": 304.2,
+      "w": 1440,
+      "h": 160,
+      "top": 304.2,
+      "bottom": 464.2,
+      "left": 0,
+      "right": 1440
+     },
+     "#cvr": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 464.2,
+      "top": 0,
+      "bottom": 464.2,
+      "left": 0,
+      "right": 1440
+     },
+     "_doc": {
+      "scrollW": 1440,
+      "clientW": 1440,
+      "scrollH": 1690,
+      "innerW": 1440
+     },
+     "_pillText": null,
+     "_donutTotal": "\u2026",
+     "_bigNum": ""
+    },
+    "end": {
+     "#pname": {
+      "x": 184,
+      "y": -531.8,
+      "w": 129.1,
+      "h": 40,
+      "top": -531.8,
+      "bottom": -491.8,
+      "left": 184,
+      "right": 313.1
+     },
+     "#pointsdisplay": null,
+     "#ptag": {
+      "x": 184,
+      "y": -486.8,
+      "w": 162.2,
+      "h": 22,
+      "top": -486.8,
+      "bottom": -464.8,
+      "left": 184,
+      "right": 346.2
+     },
+     "#cvrbtn": {
+      "x": 1259.7,
+      "y": -770,
+      "w": 164.3,
+      "h": 48,
+      "top": -770,
+      "bottom": -722,
+      "left": 1259.7,
+      "right": 1424
+     },
+     ".ph-cover": {
+      "x": 0,
+      "y": -846,
+      "w": 1440,
+      "h": 464.2,
+      "top": -846,
+      "bottom": -381.8,
+      "left": 0,
+      "right": 1440
+     },
+     ".ph-head": {
+      "x": 0,
+      "y": -541.8,
+      "w": 1440,
+      "h": 160,
+      "top": -541.8,
+      "bottom": -381.8,
+      "left": 0,
+      "right": 1440
+     },
+     "#cvr": {
+      "x": 0,
+      "y": -846,
+      "w": 1440,
+      "h": 464.2,
+      "top": -846,
+      "bottom": -381.8,
+      "left": 0,
+      "right": 1440
+     },
+     "_doc": {
+      "scrollW": 1440,
+      "clientW": 1440,
+      "scrollH": 1690,
+      "innerW": 1440
+     },
+     "_pillText": null,
+     "_donutTotal": "\u2026",
+     "_bigNum": ""
+    },
+    "overflow_px": 0,
+    "cvrbtn_intersects_pname": false,
+    "console_errors": [
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-business&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-business&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-business&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-business&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-business&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-business&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-business&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-business&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-business&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-business&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.business&page_alias=eq.flagship-business&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.business&page_alias=eq.flagship-business&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_dimension_stats?select=link_id%2Cname%2Cday%2Creferrer_class%2Cuser_agent_class%2Ccountry%2Cclicks&owner_alias=eq.flagship-business&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_dimension_stats?select=link_id%2Cname%2Cday%2Creferrer_class%2Cuser_agent_class%2Ccountry%2Cclicks&owner_alias=eq.flagship-business&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-business&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-business&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-business&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-business&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.business&page_alias=eq.flagship-business&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.business&page_alias=eq.flagship-business&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]"
+    ],
+    "console_error_count": 42
+   },
+   "360": {
+    "top": {
+     "#pname": {
+      "x": 16,
+      "y": 480,
+      "w": 129.1,
+      "h": 40,
+      "top": 480,
+      "bottom": 520,
+      "left": 16,
+      "right": 145.1
+     },
+     "#pointsdisplay": null,
+     "#ptag": {
+      "x": 16,
+      "y": 525,
+      "w": 162.2,
+      "h": 22,
+      "top": 525,
+      "bottom": 547,
+      "left": 16,
+      "right": 178.2
+     },
+     "#cvrbtn": {
+      "x": 185.7,
+      "y": 6,
+      "w": 164.3,
+      "h": 48,
+      "top": 6,
+      "bottom": 54,
+      "left": 185.7,
+      "right": 350
+     },
+     ".ph-cover": {
+      "x": 0,
+      "y": 0,
+      "w": 360,
+      "h": 420,
+      "top": 0,
+      "bottom": 420,
+      "left": 0,
+      "right": 360
+     },
+     ".ph-head": {
+      "x": 0,
+      "y": 350,
+      "w": 360,
+      "h": 497,
+      "top": 350,
+      "bottom": 847,
+      "left": 0,
+      "right": 360
+     },
+     "#cvr": {
+      "x": 0,
+      "y": 0,
+      "w": 360,
+      "h": 420,
+      "top": 0,
+      "bottom": 420,
+      "left": 0,
+      "right": 360
+     },
+     "_doc": {
+      "scrollW": 360,
+      "clientW": 360,
+      "scrollH": 2419,
+      "innerW": 360
+     },
+     "_pillText": null,
+     "_donutTotal": "\u2026",
+     "_bigNum": ""
+    },
+    "end": {
+     "#pname": {
+      "x": 16,
+      "y": -1095,
+      "w": 129.1,
+      "h": 40,
+      "top": -1095,
+      "bottom": -1055,
+      "left": 16,
+      "right": 145.1
+     },
+     "#pointsdisplay": null,
+     "#ptag": {
+      "x": 16,
+      "y": -1050,
+      "w": 162.2,
+      "h": 22,
+      "top": -1050,
+      "bottom": -1028,
+      "left": 16,
+      "right": 178.2
+     },
+     "#cvrbtn": {
+      "x": 185.7,
+      "y": -1569,
+      "w": 164.3,
+      "h": 48,
+      "top": -1569,
+      "bottom": -1521,
+      "left": 185.7,
+      "right": 350
+     },
+     ".ph-cover": {
+      "x": 0,
+      "y": -1575,
+      "w": 360,
+      "h": 420,
+      "top": -1575,
+      "bottom": -1155,
+      "left": 0,
+      "right": 360
+     },
+     ".ph-head": {
+      "x": 0,
+      "y": -1225,
+      "w": 360,
+      "h": 497,
+      "top": -1225,
+      "bottom": -728,
+      "left": 0,
+      "right": 360
+     },
+     "#cvr": {
+      "x": 0,
+      "y": -1575,
+      "w": 360,
+      "h": 420,
+      "top": -1575,
+      "bottom": -1155,
+      "left": 0,
+      "right": 360
+     },
+     "_doc": {
+      "scrollW": 360,
+      "clientW": 360,
+      "scrollH": 2419,
+      "innerW": 360
+     },
+     "_pillText": null,
+     "_donutTotal": "\u2026",
+     "_bigNum": ""
+    },
+    "overflow_px": 0,
+    "cvrbtn_intersects_pname": false,
+    "console_errors": [
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-business&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-business&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.business&page_alias=eq.flagship-business&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.business&page_alias=eq.flagship-business&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-business&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/invites?select=invitee_name%2Cstatus%2Cdry_run%2Ccreated_at&inviter_alias=eq.flagship-business&order=created_at.desc&limit=200. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-business&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-business&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-business&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_links?select=id%2Cname%2Ctarget_url%2Ccreated_at&owner_alias=eq.flagship-business&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-business&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_daily_stats?select=link_id%2Cday%2Cclicks%2Cjoins&owner_alias=eq.flagship-business&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_dimension_stats?select=link_id%2Cname%2Cday%2Creferrer_class%2Cuser_agent_class%2Ccountry%2Cclicks&owner_alias=eq.flagship-business&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_link_dimension_stats?select=link_id%2Cname%2Cday%2Creferrer_class%2Cuser_agent_class%2Ccountry%2Cclicks&owner_alias=eq.flagship-business&limit=1000. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-business&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_mail_threads?select=id%2Csubject%2Cfrom_alias%2Cpreview%2Ccreated_at&to_alias=eq.flagship-business&order=created_at.desc&limit=30. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.business&page_alias=eq.flagship-business&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/memberships?select=id%2Cname%2Cslug%2Cdescription%2Ccover_url%2Caccess_type%2Cprice_cents%2Ccurrency&page_kind=eq.business&page_alias=eq.flagship-business&active=eq.true&order=created_at.asc&limit=100. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-business&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]",
+     "error: [JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://dahisasgpfvziswqvmvm.supabase.co/rest/v1/smart_notes?select=id%2Ccontent%2Ccreated_at&owner_alias=eq.flagship-business&order=created_at.desc&limit=500. (Reason: CORS request did not succeed). Status code: (null).\"]"
+    ],
+    "console_error_count": 42
+   }
+  }
+ }
+}
