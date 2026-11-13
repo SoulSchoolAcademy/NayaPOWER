@@ -27,7 +27,7 @@
 
 ## Files in the work dir (filed to the branch)
 
-- `RECORD-FAMILY-ACTIVATION-20261113.md` — the record (v1; re-filed after the round-3 filing verification)
+- `RECORD-FAMILY-ACTIVATION-20261113.md` — the record (v2: round 3 + filed blobs + names approval added; re-filed after the round-3 verification)
 - `SCORECARD-FAMILY-ACTIVATION-20261113.md` — honest 5/10 round, 9/10 preparatory work, 0/12 live
 - `RECEIPT-FAMILY-ACTIVATION-20261113.md` — this file
 - `TWELVE-ANSWERS.md` — the twelve sisters' ten answers + page names (120 answers)
@@ -35,6 +35,14 @@
 - `file-notes.py` — the note-filing script (runs after the probe passes)
 - `stage-twelve.py` + `STAGE-TWELVE-README.md` — the transparency re-stage (runs after the notes file)
 - `NN-20261113-family-<alias>.md` × 12 — the briefing-note drafts (NOT filed; 4 TBDs each)
+
+## Round-3 verification (filing pass, ~02:25Z)
+
+- Branch `family/activation-twelve-heroes-20261113` created 201 from live main tip `091961ba` (re-read at run time).
+- 21 files PUT, every read-back match=True, zero failures; second run skipped all 21 by blob (idempotent).
+- Staged `/welcome` re-verified: sha `227a667e` (unchanged). Live Personal re-verified: sha `992ab18c` (unchanged). Feed: still 877 notes.
+- Transient proof-host read glitch: one fetch of the staged transparency page returned sha `2c753eff…` (same 5,086,726 B) while urllib hit IncompleteRead on the same URL; investigated — branch blob unchanged (`8ecf605b…`, last commit 01:35:38Z), local v8 file hashes `5afa5f98…`, three immediate re-fetches all `5afa5f98…`. Chunked-transfer read glitch, not a page change.
+- Names approved by Shawn 02:16Z (❤️) — twelve names + gardens locked in, no correction.
 
 ## DONE
 
