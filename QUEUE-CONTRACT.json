@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-12T21:48:43Z",
-  "tip": "edd97d60773fb5a3ed25c6b7b704ca07d914e2ec",
+  "generated_at": "2026-11-13T03:48:47Z",
+  "tip": "26b1a0e6135a9296ce28781ce2480a938428320f",
   "prs": [
     {
       "number": 3345,
@@ -20,6 +20,24 @@
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness, completeness; then re-derive at the new head.",
       "owner": "author lane",
       "head": "f87a7276bffbceb0b633eb54805004eab4e501db"
+    },
+    {
+      "number": 3355,
+      "title": "[DRAFT][SPEC] Intel Today \u2014 Google/Search Images + AI discovery, governed public Smart Note projection",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "d098b8e91c64de263b682b15e955471b1be280c3"
+    },
+    {
+      "number": 3356,
+      "title": "safety: cure vanish SN-2692..SN-2716 + door-obligation step (capture + registry backfill)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, chain-readiness-gate, completeness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "17a36c5e51c6925c4e710ac2730c60bf909401f4"
     }
   ]
 }

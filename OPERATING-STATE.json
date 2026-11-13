@@ -1,17 +1,21 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-11-12T21:48:43Z",
-  "tip": "edd97d60773fb5a3ed25c6b7b704ca07d914e2ec",
-  "open_pr_count": 2,
+  "generated_at": "2026-11-13T03:48:47Z",
+  "tip": "26b1a0e6135a9296ce28781ce2480a938428320f",
+  "open_pr_count": 4,
   "queue_by_tier_action": {
     "A": {
       "CURE": 1
     },
     "C": {
       "CURE": 1
+    },
+    "B": {
+      "CURE": 2
     }
   },
   "tip_failing_checks": [
+    "chain-readiness-gate",
     "promote-and-prove",
     "test"
   ],
