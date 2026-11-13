@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-13 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-13 14:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -24569,6 +24569,12 @@ _Last updated: 2026-11-13 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: hidden_files/auto-retrieval/smartblock-drafts-t0552.md exists on disk; log pin 5398dda9... (115 lines) is byte-identical to t0554's pin - the re-run became a true stability proof of the same bytes; 22-row seed exclusion set matches the receipt's byte-exact claim. Clears 9.5 because the tie-break is now a documented reproducible rule (orga
 
+### ✅ t0552-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent IV of t0545 Lane 2 task-decomposition FALSIFIED verdict (verify-only)
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). Verified: receipt read in full; cited artifacts still exist — auto-retrieval/t0545_taskdecomp.py (203 lines) and auto-retrieval/results-t0545-taskdecomp.json (488 lines); remote reachable via git protocol, HEAD now 8f2af988. NOT PHANTOM: files present, no branch claimed. Month-late limit, stated pla
+
 ### ✅ t0552 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Independent IV of t0545 Lane 2 task-decomposition FALSIFIED verdict
@@ -24600,6 +24606,12 @@ _Last updated: 2026-11-13 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0551-lane12.md`
 
 **Evidence:** VERIFIED: receipt file exists; ledger carries file+line evidence per room (inherited in-window verification, not re-read byte-for-byte this tick); recon mirror main SHA quoted matches shared-state's main_tip family (83806f4d). Clears 9.5 because zero confirmed divergences, the one divergence was carried as WATCH (t0549 precedent), and the unclosed 
+
+### ✅ t0550-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.5/10 [VERIFIED]
+
+**Task:** SURGE slice (c): probe ask-world query log on live bytes, tally top-20 needs under Lane 3 frozen rule
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty). Verified: receipt read in full; all cited local artifacts still exist — auto-retrieval/ask-world-queries.jsonl, retrieval/query-needs-top20-t0535.md (the frozen counting rule), retrieval/query-log-liveness-t0548.md. NOT PHANTOM: no branch/SHA-on-branch claimed (local probe task), cited files present
 
 ### ✅ t0550 — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.5/10 [VERIFIED]
 
