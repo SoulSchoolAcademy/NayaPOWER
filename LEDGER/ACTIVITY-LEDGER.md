@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-13 16:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-13 16:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -35077,6 +35077,18 @@ _Last updated: 2026-11-13 16:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-gap-t0112-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap follow-up: bound CI's exact pytest failures at PR #2462 head a92be1c0 (7 vs 32) with mechanism decomposition
+
+**Evidence:** VERIFIED on live bytes this tick: all four pinned SHA256s byte-exact - review-6122317726-lane8.md d0eb063c..., review-6122636824-lane10.md 837e6db2..., full-pytest-a92be1c0.log 34b447e1..., failed-32.txt 51fc4a9d...; git protocol: refs/pull/2462/head = a92be1c01812... EXACT; branch brain-build/operating-code-v2 absent, as claimed. NOT PHANTOM: no b
+
+### ✅ gap-t0112-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: verify PR #2462 disposition at current head (state, head stability, branch ref, content carry, CI test decomposition, local re-run)
+
+**Evidence:** VERIFIED on live bytes this tick via git protocol: refs/pull/2462/head = a92be1c01812a86c1994298b508cc41577e250dc EXACT match to the receipt; branch ref refs/heads/naya/lane9/tipred-fix-t0112 absent (deleted post-merge), as claimed. NOT PHANTOM: no branch claimed (verify-only task on a merged PR); the checkable refs agree exactly. Score 9.0, matchi
+
 ### ✅ gap-lane-scorer-20261018-0910 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** gap-followup
@@ -36658,6 +36670,12 @@ _Last updated: 2026-11-13 16:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane9.md
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
+
+### ✅ gap-gap-t0102-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** Gap-gap follow-up: recover branch-deletion provenance for PR #2460 from the live PR event record
+
+**Evidence:** VERIFIED on live bytes this tick via git protocol: refs/pull/2460/head = 97d464602c74abdc21227e990a46305a9f4a1f2b EXACT match to the receipt; branch ref refs/heads/naya/eight-seat-lane-tags-t0102 absent, as claimed. NOT PHANTOM: no branch claimed (read-only verification task); the checkable refs agree exactly. Clears 9.5 because the gap as filed (a
 
 ### ✅ gap-lane-scorer-20261019-1220 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -41579,6 +41597,12 @@ _Last updated: 2026-11-13 16:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-gap-t0062-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** GAP follow-up: re-prove 20/20 round-trip on exact tip 2822313f + settle merge-ancestor check
+
+**Evidence:** Verified: durable proof lane-4/gap-gap-t0062-roundtrip-20261026/roundtrip-tip-2822313f.json exists, sha256 a95392d48182e66c matches receipt exactly; parent proof re-hash claim consistent. Clears 9.5 because both named defects are closed decisively — round-trip re-proven on the exact named tip with a durable re-hashable proof, ancestor question answ
+
 ### ✅ distill-daily-20261113 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** distill-daily 2026-11-13: boot-pointer machine gate FAIL->PASS; 8 stale pointers in 4 BRAIN/00-ACTIVATION files replaced with snapshot-wins indirection; PR #3359
@@ -42804,6 +42828,12 @@ _Last updated: 2026-11-13 16:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ gap-gap-t0102-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Gap-gap follow-up: independently re-derive every item the gap-gap brief named as NOT re-derived for PR #2418 (state, seat-2 HOLDs, check-run reds, refs)
+
+**Evidence:** VERIFIED on live bytes this tick via git protocol: refs/pull/2418/head = 8346681cd52600e08fba3bcbb8b86a3258eaf056 EXACT match to the receipt; branch ref refs/heads/naya/three-decision-consolidate absent (deleted post-closure), as claimed. NOT PHANTOM: no branch claimed (read-only verification task); the checkable artifacts are the live refs and the
 
 ### ✅ gap-t1822 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -44134,6 +44164,12 @@ _Last updated: 2026-11-13 16:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ gap-gap-t0102-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** GAP follow-up: re-verify H8 round-2 staging pin-for-pin; section-7 dry-run gate (spawn-authorized seat only)
+
+**Evidence:** Verified: parent receipt twelve-lane-receipts/gap-t0102-lane2.md sha256 b2ffd8ff8264171a matches receipt; pre-reg seal lane-experiments/t0102/prereg-sealed.md 41ab2a55f1812b40 matches receipt. Correctly refused to self-run the dry gate (contamination by construction, t0426 amendment) — refusing to manufacture a reading is the work. Why not 9.5: the
 
 ### ✅ gap-scorer-20261015-0140-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -51274,6 +51310,12 @@ _Last updated: 2026-11-13 16:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261113-0815 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-13 08:13 PST: full 30/30 claim sweep, 0 claimed, all refused
+
+**Evidence:** Fresh window. Verified: receipt read in full; claim-sweep-20261113-0815.log exists (26,918 bytes) with exactly 30 '=== brief' headers and 30 per-brief REFUSED verdict lines - 28 exit 7 + 2 exit 2, 0 claimed, matching the receipt (naive grep shows 31 REFUSED / 3 exit 2 only because the log header line itself restates the counts '30 REFUSED, 28 exit 
 
 ### ✅ gate-stall-20261113-0713 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
