@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-13 19:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-13 19:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -24425,6 +24425,12 @@ _Last updated: 2026-11-13 19:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: claim-brief.py re-derives refusal classes on live bytes this tick (exit-7 parent-authorship on brief-gap-scorer-20261015-0930-lane8.md; exit-6 no-refile verdict t0431-lane6 on -0530-lane6); claimed/ empty, queue intact; receipt's 26 count reconciles with the series (27 on disk now = gap follow-ups landing between runs). Score 9.0 (GOOD, O
 
+### ✅ t0555-lane7 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Self-sealing cold-retrieve drill (t0472 reproduction + load-regime gate)
+
+**Evidence:** Backlog sweep (oldest-first). Verified: hidden_files/auto-retrieval/cold-drill-sealed-t0555-results.json exists (Oct 13 04:45) with seal A 0fcaa777265b / B 81a07557f0b6 / C 92d8b2bef701, RED calibration PASS (warmed gate refused WARM), drill verdict SEALED with quiet medians 0.998/1.031/1.011s within 10% of band center 1.027s, repo tip pre/post 654
+
 ### ✅ t0555 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
 **Task:** Self-sealing cold-retrieve drill (evict + mincore gate, load-regime gate)
@@ -24440,6 +24446,12 @@ _Last updated: 2026-11-13 19:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0555-lane7.md`
 
 **Evidence:** VERIFIED: script auto-retrieval/cold_drill_sealed_t0555.py exists, sha256 matches receipt byte-for-byte (70a33455...5b8b2); results JSON exists and every quoted number matches (RED calibration PASS / warmed-gate WARM; seals A 0fcaa777265b / B 81a07557f0b6 / C 92d8b2bef701 intact pre+post; drill verdict HOLDS-OPEN with run max-loads 6.45/7.07/6.74; 
+
+### ✅ t0555-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** M3 stamping decision packet for retrieval-auth gate wiring (Option A vs B)
+
+**Evidence:** Backlog sweep (oldest-first). Verified: deliverable hidden_files/m3-stamping-packet-t0555.md exists (10,324 bytes, Oct 13 01:03) and its content matches the receipt - 7 corpus write surfaces, Option A (scope rule, zero migration) vs Option B (tri-state, 52 stamping decisions), blast-radius tables, 52-entry counts (46 PRIVATE / 5 missing / 1 ALL_SEA
 
 ### ✅ t0555 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
@@ -39577,6 +39589,12 @@ _Last updated: 2026-11-13 19:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-lane-scorer-20261016-1410-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: Q15-class lexical-penalty hybrid arm unbuilt — verify sibling 0550 run, reconcile stale gap, name deeper root cause
+
+**Evidence:** Backlog sweep (oldest-first). Verified: sibling receipt gap-lane-scorer-20261016-0550-lane5.md exists; auto-retrieval/semantic-arm-hybrid-q15.py + semantic-arm-hybrid-q15-results.json exist; semantic-arm-t0553.py exists with sha256 prefix 281ee5f7 matching the receipt pin; semantic-arm-t0553-pairs.json + corpus + results exist. NOT PHANTOM: all cit
+
 ### ✅ gap-lane-scorer-20261016-1340-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
 **Task:** Q15-class hybrid follow-up: H1 lexical-penalty + H2 need-clause hybrids built pre-registered and run; both falsified with byte proof; two-channel Q15 mechanism proven by ablation
@@ -51310,6 +51328,18 @@ _Last updated: 2026-11-13 19:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261113-1132 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-13 11:28 PST: full 30/30 claim sweep, 0 claimed, all refused
+
+**Evidence:** Fresh window. Verified: receipt read in full; claim-sweep-20261113-1132.log exists (2,415 bytes) with exactly 30 brief lines, 28 x rc=7 + 2 x rc=2, 0 claimed, matching the receipt (six rc=7 read from refusal text, disclosed in the log header); brief-queue/ holds exactly 30 brief-*.md files, identical set to the 10:26 receipt's list (set comparison,
+
+### ✅ gap-lane-scorer-20261017-0900-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: stand-down-Clarity recommendation drawn from a stale snapshot — re-verify against live queue bytes, close or name deeper root cause
+
+**Evidence:** Backlog sweep (oldest-first). Verified: parent receipt gate-stall-20261017-1449.md exists; falsifier receipt t0679-lane10.md exists; the three named departed briefs (gap-scorer-20261015-0050-lane11, gap-t0815-lane1, gap-gap-t932-lane7) are all present in brief-queue/claimed/done/. NOT PHANTOM: all checkable cited artifacts exist. Real verified valu
 
 ### ✅ gate-stall-20261113-1026 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
