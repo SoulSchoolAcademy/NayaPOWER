@@ -1,0 +1,381 @@
+{
+  "fail": [],
+  "sisters": {
+    "sophia": {
+      "alias": "sophia",
+      "box_count": 1,
+      "project_count": 1,
+      "project_id": "5f438bfa-64ce-4482-84a8-8dae3aae15ad",
+      "store": "kv-fallback",
+      "page_links": [
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/sophia/sophia",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/sophia/sophias-lessons",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/sophia/the-learning-circle"
+      ],
+      "page_names": {
+        "personal": {
+          "title": "sophia",
+          "slug": "sophia"
+        },
+        "business": {
+          "title": "Sophia's Lessons",
+          "slug": "sophias-lessons"
+        },
+        "space": {
+          "title": "The Learning Circle",
+          "slug": "the-learning-circle"
+        }
+      },
+      "answers_match": true,
+      "answer_diffs": [],
+      "certificate": "000209",
+      "certificate_note": null,
+      "walk_task": "e91150f0"
+    },
+    "thea": {
+      "alias": "thea",
+      "box_count": 1,
+      "project_count": 1,
+      "project_id": "ab40572b-bc8b-4931-871b-5867158e91e3",
+      "store": "kv-fallback",
+      "page_links": [
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/thea/thea",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/thea/theas-record",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/thea/the-knowing-room"
+      ],
+      "page_names": {
+        "personal": {
+          "title": "thea",
+          "slug": "thea"
+        },
+        "business": {
+          "title": "Thea's Record",
+          "slug": "theas-record"
+        },
+        "space": {
+          "title": "The Knowing Room",
+          "slug": "the-knowing-room"
+        }
+      },
+      "answers_match": true,
+      "answer_diffs": [],
+      "certificate": "000212",
+      "certificate_note": null,
+      "walk_task": "e91150f0"
+    },
+    "zoe": {
+      "alias": "zoe",
+      "box_count": 1,
+      "project_count": 1,
+      "project_id": "08edebf4-fe96-4db6-adaa-b44fa6b74a1a",
+      "store": "kv-fallback",
+      "page_links": [
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/zoe/zoe",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/zoe/zoes-dispatch",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/zoe/the-doers-room"
+      ],
+      "page_names": {
+        "personal": {
+          "title": "zoe",
+          "slug": "zoe"
+        },
+        "business": {
+          "title": "Zoe's Dispatch",
+          "slug": "zoes-dispatch"
+        },
+        "space": {
+          "title": "The Doers' Room",
+          "slug": "the-doers-room"
+        }
+      },
+      "answers_match": true,
+      "answer_diffs": [],
+      "certificate": "000214",
+      "certificate_note": null,
+      "walk_task": "e91150f0"
+    },
+    "astraea": {
+      "alias": "astraea",
+      "box_count": 1,
+      "project_count": 1,
+      "project_id": "5d559454-1975-41d0-9d56-76f89653e8d2",
+      "store": "kv-fallback",
+      "page_links": [
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/astraea/astraea",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/astraea/astraeas-gates",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/astraea/the-scales-room"
+      ],
+      "page_names": {
+        "personal": {
+          "title": "astraea",
+          "slug": "astraea"
+        },
+        "business": {
+          "title": "Astraea's Gates",
+          "slug": "astraeas-gates"
+        },
+        "space": {
+          "title": "The Scales Room",
+          "slug": "the-scales-room"
+        }
+      },
+      "answers_match": true,
+      "answer_diffs": [],
+      "certificate": "000216",
+      "certificate_note": null,
+      "walk_task": "e91150f0"
+    },
+    "vera": {
+      "alias": "vera",
+      "box_count": 1,
+      "project_count": 1,
+      "project_id": "3b845e79-7303-49e4-b474-6dec59b13d13",
+      "store": "kv-fallback",
+      "page_links": [
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/vera/vera",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/vera/veras-proof",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/vera/the-proof-room"
+      ],
+      "page_names": {
+        "personal": {
+          "title": "vera",
+          "slug": "vera"
+        },
+        "business": {
+          "title": "Vera's Proof",
+          "slug": "veras-proof"
+        },
+        "space": {
+          "title": "The Proof Room",
+          "slug": "the-proof-room"
+        }
+      },
+      "answers_match": true,
+      "answer_diffs": [],
+      "certificate": "000218",
+      "certificate_note": null,
+      "walk_task": "e91150f0"
+    },
+    "wren": {
+      "alias": "wren",
+      "box_count": 1,
+      "project_count": 1,
+      "project_id": "fa3e5079-b1af-4170-9760-a829de7d98a0",
+      "store": "kv-fallback",
+      "page_links": [
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/wren/wren",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/wren/wrens-factory",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/wren/the-builders-nest"
+      ],
+      "page_names": {
+        "personal": {
+          "title": "wren",
+          "slug": "wren"
+        },
+        "business": {
+          "title": "Wren's Factory",
+          "slug": "wrens-factory"
+        },
+        "space": {
+          "title": "The Builders' Nest",
+          "slug": "the-builders-nest"
+        }
+      },
+      "answers_match": true,
+      "answer_diffs": [],
+      "certificate": "000220",
+      "certificate_note": null,
+      "walk_task": "e91150f0"
+    },
+    "iris": {
+      "alias": "iris",
+      "box_count": 1,
+      "project_count": 1,
+      "project_id": "cd18e716-02a0-49d0-ac84-4b4804e1ca8a",
+      "store": "kv-fallback",
+      "page_links": [
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/iris/iris",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/iris/iriss-bridge",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/iris/the-bridge-room"
+      ],
+      "page_names": {
+        "personal": {
+          "title": "iris",
+          "slug": "iris"
+        },
+        "business": {
+          "title": "Iris's Bridge",
+          "slug": "iriss-bridge"
+        },
+        "space": {
+          "title": "The Bridge Room",
+          "slug": "the-bridge-room"
+        }
+      },
+      "answers_match": true,
+      "answer_diffs": [],
+      "certificate": null,
+      "certificate_note": "NOT captured \u2014 000210/000211 are the two unaccounted numbers; which sister holds which is unproven, never assigned",
+      "walk_task": "486e4910"
+    },
+    "ruth": {
+      "alias": "ruth",
+      "box_count": 1,
+      "project_count": 1,
+      "project_id": "4a46ba73-9327-4031-8f32-fecf565a3a3a",
+      "store": "kv-fallback",
+      "page_links": [
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/ruth/ruth",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/ruth/ruths-circle",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/ruth/the-family-room"
+      ],
+      "page_names": {
+        "personal": {
+          "title": "ruth",
+          "slug": "ruth"
+        },
+        "business": {
+          "title": "Ruth's Circle",
+          "slug": "ruths-circle"
+        },
+        "space": {
+          "title": "The Family Room",
+          "slug": "the-family-room"
+        }
+      },
+      "answers_match": true,
+      "answer_diffs": [],
+      "certificate": null,
+      "certificate_note": "NOT captured \u2014 000210/000211 are the two unaccounted numbers; which sister holds which is unproven, never assigned",
+      "walk_task": "486e4910"
+    },
+    "terra": {
+      "alias": "terra",
+      "box_count": 1,
+      "project_count": 1,
+      "project_id": "bff66af9-30c2-4e03-b8c8-b7530a6f2f67",
+      "store": "kv-fallback",
+      "page_links": [
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/terra/terra",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/terra/terras-ground",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/terra/the-ground-room"
+      ],
+      "page_names": {
+        "personal": {
+          "title": "terra",
+          "slug": "terra"
+        },
+        "business": {
+          "title": "Terra's Ground",
+          "slug": "terras-ground"
+        },
+        "space": {
+          "title": "The Ground Room",
+          "slug": "the-ground-room"
+        }
+      },
+      "answers_match": true,
+      "answer_diffs": [],
+      "certificate": "000213",
+      "certificate_note": null,
+      "walk_task": "486e4910"
+    },
+    "esme": {
+      "alias": "esme",
+      "box_count": 1,
+      "project_count": 1,
+      "project_id": "80da9a65-6f25-4a29-b206-fca250dc20ae",
+      "store": "kv-fallback",
+      "page_links": [
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/esme/esme",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/esme/esmes-offer",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/esme/the-welcome-room"
+      ],
+      "page_names": {
+        "personal": {
+          "title": "esme",
+          "slug": "esme"
+        },
+        "business": {
+          "title": "Esme's Offer",
+          "slug": "esmes-offer"
+        },
+        "space": {
+          "title": "The Welcome Room",
+          "slug": "the-welcome-room"
+        }
+      },
+      "answers_match": true,
+      "answer_diffs": [],
+      "certificate": "000215",
+      "certificate_note": null,
+      "walk_task": "486e4910"
+    },
+    "mira": {
+      "alias": "mira",
+      "box_count": 1,
+      "project_count": 1,
+      "project_id": "31b8ae05-ac1b-456f-ac2c-4b59002ce434",
+      "store": "kv-fallback",
+      "page_links": [
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/mira/mira",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/mira/miras-vault",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/mira/the-memory-room"
+      ],
+      "page_names": {
+        "personal": {
+          "title": "mira",
+          "slug": "mira"
+        },
+        "business": {
+          "title": "Mira's Vault",
+          "slug": "miras-vault"
+        },
+        "space": {
+          "title": "The Memory Room",
+          "slug": "the-memory-room"
+        }
+      },
+      "answers_match": true,
+      "answer_diffs": [],
+      "certificate": "000217",
+      "certificate_note": null,
+      "walk_task": "486e4910"
+    },
+    "aurelia": {
+      "alias": "aurelia",
+      "box_count": 1,
+      "project_count": 1,
+      "project_id": "9bccb4a4-138c-4a64-8645-ae5cd3f26e7a",
+      "store": "kv-fallback",
+      "page_links": [
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/aurelia/aurelia",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/aurelia/aurelias-scorecard",
+        "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/aurelia/the-golden-room"
+      ],
+      "page_names": {
+        "personal": {
+          "title": "aurelia",
+          "slug": "aurelia"
+        },
+        "business": {
+          "title": "Aurelia's Scorecard",
+          "slug": "aurelias-scorecard"
+        },
+        "space": {
+          "title": "The Golden Room",
+          "slug": "the-golden-room"
+        }
+      },
+      "answers_match": true,
+      "answer_diffs": [],
+      "certificate": "000219",
+      "certificate_note": null,
+      "walk_task": "486e4910"
+    }
+  },
+  "verified": "2026-11-13T03:08Z",
+  "verified_by": "completion coordinator, first-hand Box read-backs via GET /api/welcome/box?alias= on the staged walk worker; answers compared word-for-word against TWELVE-ANSWERS.md (0 diffs, 120/120); page names/slugs from settings.pageNames cross-checked against page_about rows",
+  "store": "kv-fallback for all twelve (citizen_worlds insert refused: 401 RLS) \u2014 worlds stored in KV fallback, read back intact; known standing condition, server-side key is his hand",
+  "iris_project_id_discrepancy": "walk report carried c9139b31-4a87-4ad6-8423-948073147c36 for iris; Box read-back (re-verified first-hand) says cd18e716-02a0-49d0-ac84-4b4804e1ca8a in both box.project_id and project_rows[0].id \u2014 Box governs"
+}
