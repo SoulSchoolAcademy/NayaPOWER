@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-13 06:41 UTC_
+_Last updated: 2026-11-13 07:42 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 8510
-- ✅ Verified (8+): 8426
+- **Total scored actions:** 8513
+- ✅ Verified (8+): 8429
 - 🟡 Partial (5–7): 75
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 5
@@ -25,8 +25,8 @@ _Last updated: 2026-11-13 06:41 UTC_
 | Team 8 | Naya Sentinel | 513 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 643 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 883 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 534 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 446 | 9.2 | 9.5 |
+| Team 11 | Naya Heart | 535 | 9.0 | 9.6 |
+| Team 12 | Naya Herald | 448 | 9.2 | 9.5 |
 
 ## Learning velocity
 
@@ -1636,7 +1636,7 @@ _Last updated: 2026-11-13 06:41 UTC_
 - **gap-lane-scorer-20261016-0740-lane12:** 1 actions, avg 9.0/10
 - **gap-t0547-lane12:** 1 actions, avg 9.5/10
 - **gap-gap-lane-scorer-20261018-1610:** 1 actions, avg 9.4/10
-- **gap-gap-gap-lane-scorer-20261018-1610-lane12:** 1 actions, avg 9.2/10
+- **gap-gap-gap-lane-scorer-20261018-1610-lane12:** 2 actions, avg 9.3/10
 - **gap-gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12:** 1 actions, avg 9.4/10
 - **gap-gap-gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12-lane12-lane12-lane12:** 1 actions, avg 9.4/10
 - **gap-gap-gap-gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12-lane12-lane12-lane12-lane12:** 1 actions, avg 9.5/10
@@ -2662,11 +2662,13 @@ _Last updated: 2026-11-13 06:41 UTC_
 - **t0548-lane5:** 1 actions, avg 8.5/10
 - **t0548-lane7:** 1 actions, avg 9.0/10
 - **t0549:** 9 actions, avg 9.1/10
+- **t0549-lane12:** 1 actions, avg 9.0/10
 - **t0549-lane4:** 1 actions, avg 9.0/10
 - **t0549-lane6:** 1 actions, avg 9.0/10
 - **t0549-lane8:** 1 actions, avg 9.0/10
 - **t0550:** 6 actions, avg 8.8/10
 - **t0550-lane10:** 1 actions, avg 9.0/10
+- **t0550-lane11:** 1 actions, avg 9.0/10
 - **t0551:** 2 actions, avg 9.2/10
 - **t0552:** 8 actions, avg 9.0/10
 - **t0553:** 2 actions, avg 9.0/10
