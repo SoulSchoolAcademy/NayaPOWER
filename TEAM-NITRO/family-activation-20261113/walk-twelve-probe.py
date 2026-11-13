@@ -33,7 +33,7 @@ with sync_playwright() as p:
         # surface present?
         surf = pg.evaluate("() => { const el = document.querySelector('#team-transparency'); return el ? {h: el.offsetHeight, top: el.getBoundingClientRect().top + window.scrollY} : null; }")
         text = pg.evaluate("() => document.querySelector('#team-transparency') ? document.querySelector('#team-transparency').innerText : ''")
-        seen = [s for s in SISTERS if s in text and f"Briefed by {s} " in text]
+        seen = [s for s in SISTERS if s in text and f"Briefed by {s}" in text]
         build_notes = sum(1 for t in ("team-transparency-build-finished", "team-transparency-build-started") if t in text or t in pg.content())
         # overflow at scroll 0 / mid / bottom
         ov = {}
