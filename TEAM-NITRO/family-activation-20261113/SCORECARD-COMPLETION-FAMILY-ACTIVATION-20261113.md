@@ -72,7 +72,7 @@
 1. Ran the hook at its real path; corrected notes-filed.json from real output + Box grep.
 2. Re-derived the anchor from the fresh Hub's tail; named the deviation.
 3. Filed the verified-current fragment to the branch.
-4. Corrected the walk results with diagnostic evidence (names + bylines + DOM ids).
+4. Fixed the probe (name-only byline match) and re-ran clean: 12/12 at all three widths, 0 fails. The first run's 0/12 was transient with no proven cause — the record no longer presents the trailing-space story as fact.
 5. Took surface-region screenshots for the eye-check.
 6. Verified the GitHub note by curl (200 + raw head).
 7. Named the cert gap, the live-feed leg, the modal, the missing tab, the KV fallback, and the walk substitution in the record.
