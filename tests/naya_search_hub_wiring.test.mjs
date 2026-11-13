@@ -7,7 +7,8 @@ import { runInNewContext } from "node:vm";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const INDEX = readFileSync(join(ROOT, "HUB/app/index.html"), "utf8");
-const match = INDEX.match(/<script src="js\/naya-search\.js"><\/script>\s*<script>([\s\S]*?)<\/script>/);
+// The shell loads the search module root-relative ("/js/...") since the fixed-shell restore (aca7b07); the relative form is accepted for older shells.
+const match = INDEX.match(/<script src="\/?js\/naya-search\.js"><\/script>\s*<script>([\s\S]*?)<\/script>/);
 assert.ok(match, "the public Hub must load the existing search module before initializing it");
 const APP_WIRING = match[1];
 
