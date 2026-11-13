@@ -8664,6 +8664,13 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
   </div>
   <button type="button" class="os-mock-toggle" id="os-mock-toggle" aria-pressed="false">MOCK DATA — sample numbers for preview · OFF</button>
 </div>
+<!-- SURFACES 2026-11-13 — the journey strip lives here, in the Smart Links
+     board, above the links list: the funnel IS this board's journey
+     (Found → Opened → Joined). Neighbors: #os-metric-strip above,
+     #os-dash-links-head + #os-dash-links below. renderFunnelFront fills
+     this box when the ledger lands; osWireFunnelStages binds the steps
+     to the members popup. No other front-strip container is placed here. -->
+<div id="os-dash-funnel"></div>
 <p class="os-note" id="os-dash-links-head"><span class="os-skel-line" style="width:60%"></span></p>
 <div id="os-dash-links"><div class="os-skel"></div></div>
 <!-- PASS-4 2026-11-09 — YOUR REPORTS, THE SAME STAT PRESENTATION as every
@@ -13347,8 +13354,12 @@ NF.register(UNIT, {
     /* ONE population, always narrowing: recorded >= opened >= joined.
        opened counts every invitee who opened the door at all (clicked OR
        joined). A funnel that widens is a lie told beautifully — forbidden. */
-    var opened=rows.filter(function(r){ return isStatus(r, ['opened','clicked','viewed','joined','accepted','converted','member']); }).length;
-    var joined=rows.filter(function(r){ return isStatus(r, ['joined','accepted','converted','member']); }).length;
+    /* SURFACES 2026-11-13 (Correction 3, same reconciliation on this side):
+       the strip's own OPENED/JOINED counts exclude dry-run rows too, so the
+       strip and the popup agree in a mixed set as well as in the allDry
+       branch (which forces 0/0). A recorded-only invite never opened. */
+    var opened=rows.filter(function(r){ return !r.dry_run && isStatus(r, ['opened','clicked','viewed','joined','accepted','converted','member']); }).length;
+    var joined=rows.filter(function(r){ return !r.dry_run && isStatus(r, ['joined','accepted','converted','member']); }).length;
     var allDry=total>0 && rows.every(function(r){ return !!r.dry_run; });
     function pct(a, b){ return b?Math.round(a/b*100):0; }
     /* CLARITY REBUILD 2026-10-31 (Shawn: "How do I look at this? This isn't
@@ -21383,8 +21394,12 @@ function osWireFunnelStages(d){
   function isSt(r,set){ return set.indexOf(String(r.status||'').toLowerCase())>=0; }
   var groups=[
     rows,
-    rows.filter(function(r){ return isSt(r,['opened','clicked','viewed','joined','accepted','converted','member']); }),
-    rows.filter(function(r){ return isSt(r,['joined','accepted','converted','member']); })
+    /* SURFACES 2026-11-13 (Correction 3): a recorded-only (dry_run) invite
+       never opened or joined in the real world — exclude dry-run rows from
+       OPENED and JOINED so the popup agrees with the strip (allDry branch:
+       RECORDED 1 / OPENED 0 / JOINED 0). Group 0 (RECORDED/SENT) keeps all rows. */
+    rows.filter(function(r){ return !r.dry_run && isSt(r,['opened','clicked','viewed','joined','accepted','converted','member']); }),
+    rows.filter(function(r){ return !r.dry_run && isSt(r,['joined','accepted','converted','member']); })
   ];
   stages.forEach(function(el, ix){
     if (ix>=3) return;
