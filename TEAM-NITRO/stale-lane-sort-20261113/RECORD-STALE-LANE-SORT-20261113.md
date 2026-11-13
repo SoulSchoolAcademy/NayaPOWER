@@ -200,7 +200,7 @@ The brief §7 step 6 says the post-sort refresh should show the stale count down
 ## What this seat did NOT do (honest not-done)
 
 - **The Living List artifact leg is NOT verified by this seat.** The brief §8 asks for a Playwright re-read of the artifact at 1440/390/360 with zero overflow and zero console errors after the next scheduled publish. This seat has no live browser (subagent), and the artifact publish rides the scheduled refresh — so the leg belongs to the checker/captain with a real browser. Not claimed, not fudged.
-- **The record is not filed to the branch yet at the time this section was written** — filing follows the floor update (step 8), and the filed copy is verified byte-identical after.
+- **Record filed to the branch:** TEAM-NITRO/stale-lane-sort-20261113/RECORD-STALE-LANE-SORT-20261113.md on branch stale-lane-sort-20261113, verified byte-identical to the local file after filing (filing receipt: proof-filing.json in the work dir).
 - **The 9 closes are still stale-visible** until the captain applies the removal diff. That is by design (his hand), and it is stated here and on the board post.
 
 ## Self-check ×3 (honest 9 or fix it myself)
