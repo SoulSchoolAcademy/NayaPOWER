@@ -1,0 +1,672 @@
+{
+ "checks": [
+  {
+   "name": "1440 names step shown, 3 cards",
+   "pass": true,
+   "detail": "{'visible': True, 'cards': 3}"
+  },
+  {
+   "name": "1440 column >= 1100px",
+   "pass": true,
+   "detail": "colW=1120.0"
+  },
+  {
+   "name": "1440 card gap >= 28px",
+   "pass": true,
+   "detail": "rowGap=28px boxGap=28"
+  },
+  {
+   "name": "1440 card padding >= 28px",
+   "pass": true,
+   "detail": "['28px', '28px', '28px']"
+  },
+  {
+   "name": "1440 name inputs >= 18px",
+   "pass": true,
+   "detail": "['18px', '18px', '18px']"
+  },
+  {
+   "name": "1440 address inputs >= 16px",
+   "pass": true,
+   "detail": "['16px', '16px', '16px']"
+  },
+  {
+   "name": "1440 address prefix >= 16px",
+   "pass": true,
+   "detail": "['16px', '16px', '16px']"
+  },
+  {
+   "name": "1440 nutshells 16px opacity 1",
+   "pass": true,
+   "detail": "['16px/1', '16px/1', '16px/1']"
+  },
+  {
+   "name": "1440 subtitle 18px",
+   "pass": true,
+   "detail": "18px"
+  },
+  {
+   "name": "1440 labels >= 16px",
+   "pass": true,
+   "detail": "['16px', '16px', '16px']"
+  },
+  {
+   "name": "1440 progress 16px",
+   "pass": true,
+   "detail": "16px"
+  },
+  {
+   "name": "1440 hero label is 'Build my pages'",
+   "pass": true,
+   "detail": "Build my pages"
+  },
+  {
+   "name": "1440 hero font >= 18px",
+   "pass": true,
+   "detail": "20px"
+  },
+  {
+   "name": "1440 .p3-nc-note gone (0)",
+   "pass": true,
+   "detail": "0"
+  },
+  {
+   "name": "1440 .p3-names-smart gone (0)",
+   "pass": true,
+   "detail": "0"
+  },
+  {
+   "name": "1440 one .p3-enter on the step",
+   "pass": true,
+   "detail": "1"
+  },
+  {
+   "name": "1440 every visible text node white/board + >=16px + opacity 1",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "name": "1440 placeholders white opacity 1",
+   "pass": true,
+   "detail": "['rgb(255, 255, 255)/1/18px', 'rgb(255, 255, 255)/1/18px', 'rgb(255, 255, 255)/1/18px']"
+  },
+  {
+   "name": "1440 zero horizontal overflow at scroll 0",
+   "pass": true,
+   "detail": "overflow=0"
+  },
+  {
+   "name": "1440 zero horizontal overflow scrolled",
+   "pass": true,
+   "detail": "overflow=0"
+  },
+  {
+   "name": "1440 personal card lights up on hover in its own color",
+   "pass": true,
+   "detail": "hover=True ty=-4.0 shadow-has-44px=True color-in-shadow=True"
+  },
+  {
+   "name": "1440 business card lights up on hover in its own color",
+   "pass": true,
+   "detail": "hover=True ty=-4.0 shadow-has-44px=True color-in-shadow=True"
+  },
+  {
+   "name": "1440 space card lights up on hover in its own color",
+   "pass": true,
+   "detail": "hover=True ty=-4.0 shadow-has-44px=True color-in-shadow=True"
+  },
+  {
+   "name": "1440 personal eye opens modal with 3 lines",
+   "pass": true,
+   "detail": "{\"open\": true, \"title\": \"Your Personal page\", \"lines\": [\"Your home on Naya \\u2014 who you are, what you love, and what you are building.\", \"It holds your words from the walk: who you are, what you are into, your vision, mission, motto and goal.\", \"Its address is your Smart Link \\u2014 your name afte"
+  },
+  {
+   "name": "1440 business eye opens modal with 3 lines",
+   "pass": true,
+   "detail": "{\"open\": true, \"title\": \"Your Business page\", \"lines\": [\"Your shop window \\u2014 what you do, what you offer, and what you are building.\", \"It holds your business words from the walk, in your own words.\", \"People find you here and buy from you \\u2014 your offer, and how to pay.\"]}"
+  },
+  {
+   "name": "1440 space eye opens modal with 3 lines",
+   "pass": true,
+   "detail": "{\"open\": true, \"title\": \"Your Space\", \"lines\": [\"Your gathering place \\u2014 the people you want around you, and the things you do together.\", \"It holds the space you asked for in the walk, and who you want to meet there.\", \"Your people gather here \\u2014 to talk, to learn, and to build together.\"]}"
+  },
+  {
+   "name": "1440 personal card click focuses its name input",
+   "pass": true,
+   "detail": "{\"clickedTag\": \"DIV.p3-namecard\", \"active\": \"name-personal\"}"
+  },
+  {
+   "name": "1440 business card click focuses its name input",
+   "pass": true,
+   "detail": "{\"clickedTag\": \"DIV.p3-namecard\", \"active\": \"name-business\"}"
+  },
+  {
+   "name": "1440 space card click focuses its name input",
+   "pass": true,
+   "detail": "{\"clickedTag\": \"DIV.p3-namecard\", \"active\": \"name-space\"}"
+  },
+  {
+   "name": "1440 slug follows typed business name",
+   "pass": true,
+   "detail": "{\"slugFollowsName\": \"green-box-farm\", \"stateSlug\": \"green-box-farm\", \"customSlug\": \"my-biz\", \"customSticks\": \"my-biz\", \"personalCustom\": \"mike8\"}"
+  },
+  {
+   "name": "1440 custom address becomes the URL and sticks",
+   "pass": true,
+   "detail": "{\"slugFollowsName\": \"green-box-farm\", \"stateSlug\": \"green-box-farm\", \"customSlug\": \"my-biz\", \"customSticks\": \"my-biz\", \"personalCustom\": \"mike8\"}"
+  },
+  {
+   "name": "1440 custom personal address becomes the URL",
+   "pass": true,
+   "detail": "{\"slugFollowsName\": \"green-box-farm\", \"stateSlug\": \"green-box-farm\", \"customSlug\": \"my-biz\", \"customSticks\": \"my-biz\", \"personalCustom\": \"mike8\"}"
+  },
+  {
+   "name": "1440 hero button advances to the building page",
+   "pass": true,
+   "detail": "{\"namesHidden\": true, \"buildingShown\": true}"
+  },
+  {
+   "name": "1440 zero page errors (JS exceptions)",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "name": "1440 zero console errors (excluding local 404s for worker routes)",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "name": "390 names step shown, 3 cards",
+   "pass": true,
+   "detail": "{'visible': True, 'cards': 3}"
+  },
+  {
+   "name": "390 column >= 358px",
+   "pass": true,
+   "detail": "colW=390.0"
+  },
+  {
+   "name": "390 card gap >= 20px",
+   "pass": true,
+   "detail": "rowGap=20px boxGap=20"
+  },
+  {
+   "name": "390 card padding >= 20px",
+   "pass": true,
+   "detail": "['20px', '20px', '20px']"
+  },
+  {
+   "name": "390 name inputs >= 17px",
+   "pass": true,
+   "detail": "['17px', '17px', '17px']"
+  },
+  {
+   "name": "390 address inputs >= 16px",
+   "pass": true,
+   "detail": "['16px', '16px', '16px']"
+  },
+  {
+   "name": "390 address prefix >= 16px",
+   "pass": true,
+   "detail": "['16px', '16px', '16px']"
+  },
+  {
+   "name": "390 nutshells 16px opacity 1",
+   "pass": true,
+   "detail": "['16px/1', '16px/1', '16px/1']"
+  },
+  {
+   "name": "390 subtitle 18px",
+   "pass": true,
+   "detail": "18px"
+  },
+  {
+   "name": "390 labels >= 16px",
+   "pass": true,
+   "detail": "['16px', '16px', '16px']"
+  },
+  {
+   "name": "390 progress 16px",
+   "pass": true,
+   "detail": "16px"
+  },
+  {
+   "name": "390 hero label is 'Build my pages'",
+   "pass": true,
+   "detail": "Build my pages"
+  },
+  {
+   "name": "390 hero font >= 18px",
+   "pass": true,
+   "detail": "18px"
+  },
+  {
+   "name": "390 .p3-nc-note gone (0)",
+   "pass": true,
+   "detail": "0"
+  },
+  {
+   "name": "390 .p3-names-smart gone (0)",
+   "pass": true,
+   "detail": "0"
+  },
+  {
+   "name": "390 one .p3-enter on the step",
+   "pass": true,
+   "detail": "1"
+  },
+  {
+   "name": "390 every visible text node white/board + >=16px + opacity 1",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "name": "390 placeholders white opacity 1",
+   "pass": true,
+   "detail": "['rgb(255, 255, 255)/1/17px', 'rgb(255, 255, 255)/1/17px', 'rgb(255, 255, 255)/1/17px']"
+  },
+  {
+   "name": "390 zero horizontal overflow at scroll 0",
+   "pass": true,
+   "detail": "overflow=0"
+  },
+  {
+   "name": "390 zero horizontal overflow scrolled",
+   "pass": true,
+   "detail": "overflow=0"
+  },
+  {
+   "name": "390 personal card lights up on hover in its own color",
+   "pass": true,
+   "detail": "hover=True ty=-4.0 shadow-has-44px=True color-in-shadow=True"
+  },
+  {
+   "name": "390 business card lights up on hover in its own color",
+   "pass": true,
+   "detail": "hover=True ty=-4.0 shadow-has-44px=True color-in-shadow=True"
+  },
+  {
+   "name": "390 space card lights up on hover in its own color",
+   "pass": true,
+   "detail": "hover=True ty=-4.0 shadow-has-44px=True color-in-shadow=True"
+  },
+  {
+   "name": "390 personal eye opens modal with 3 lines",
+   "pass": true,
+   "detail": "{\"open\": true, \"title\": \"Your Personal page\", \"lines\": [\"Your home on Naya \\u2014 who you are, what you love, and what you are building.\", \"It holds your words from the walk: who you are, what you are into, your vision, mission, motto and goal.\", \"Its address is your Smart Link \\u2014 your name afte"
+  },
+  {
+   "name": "390 business eye opens modal with 3 lines",
+   "pass": true,
+   "detail": "{\"open\": true, \"title\": \"Your Business page\", \"lines\": [\"Your shop window \\u2014 what you do, what you offer, and what you are building.\", \"It holds your business words from the walk, in your own words.\", \"People find you here and buy from you \\u2014 your offer, and how to pay.\"]}"
+  },
+  {
+   "name": "390 space eye opens modal with 3 lines",
+   "pass": true,
+   "detail": "{\"open\": true, \"title\": \"Your Space\", \"lines\": [\"Your gathering place \\u2014 the people you want around you, and the things you do together.\", \"It holds the space you asked for in the walk, and who you want to meet there.\", \"Your people gather here \\u2014 to talk, to learn, and to build together.\"]}"
+  },
+  {
+   "name": "390 personal card click focuses its name input",
+   "pass": true,
+   "detail": "{\"clickedTag\": \"DIV.p3-namecard\", \"active\": \"name-personal\"}"
+  },
+  {
+   "name": "390 business card click focuses its name input",
+   "pass": true,
+   "detail": "{\"clickedTag\": \"DIV.p3-namecard\", \"active\": \"name-business\"}"
+  },
+  {
+   "name": "390 space card click focuses its name input",
+   "pass": true,
+   "detail": "{\"clickedTag\": \"DIV.p3-namecard\", \"active\": \"name-space\"}"
+  },
+  {
+   "name": "390 hero button advances to the building page",
+   "pass": true,
+   "detail": "{\"namesHidden\": true, \"buildingShown\": true}"
+  },
+  {
+   "name": "390 zero page errors (JS exceptions)",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "name": "390 zero console errors (excluding local 404s for worker routes)",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "name": "360 names step shown, 3 cards",
+   "pass": true,
+   "detail": "{'visible': True, 'cards': 3}"
+  },
+  {
+   "name": "360 column >= 328px",
+   "pass": true,
+   "detail": "colW=360.0"
+  },
+  {
+   "name": "360 card gap >= 20px",
+   "pass": true,
+   "detail": "rowGap=20px boxGap=20"
+  },
+  {
+   "name": "360 card padding >= 20px",
+   "pass": true,
+   "detail": "['20px', '20px', '20px']"
+  },
+  {
+   "name": "360 name inputs >= 17px",
+   "pass": true,
+   "detail": "['17px', '17px', '17px']"
+  },
+  {
+   "name": "360 address inputs >= 16px",
+   "pass": true,
+   "detail": "['16px', '16px', '16px']"
+  },
+  {
+   "name": "360 address prefix >= 16px",
+   "pass": true,
+   "detail": "['16px', '16px', '16px']"
+  },
+  {
+   "name": "360 nutshells 16px opacity 1",
+   "pass": true,
+   "detail": "['16px/1', '16px/1', '16px/1']"
+  },
+  {
+   "name": "360 subtitle 18px",
+   "pass": true,
+   "detail": "18px"
+  },
+  {
+   "name": "360 labels >= 16px",
+   "pass": true,
+   "detail": "['16px', '16px', '16px']"
+  },
+  {
+   "name": "360 progress 16px",
+   "pass": true,
+   "detail": "16px"
+  },
+  {
+   "name": "360 hero label is 'Build my pages'",
+   "pass": true,
+   "detail": "Build my pages"
+  },
+  {
+   "name": "360 hero font >= 18px",
+   "pass": true,
+   "detail": "18px"
+  },
+  {
+   "name": "360 .p3-nc-note gone (0)",
+   "pass": true,
+   "detail": "0"
+  },
+  {
+   "name": "360 .p3-names-smart gone (0)",
+   "pass": true,
+   "detail": "0"
+  },
+  {
+   "name": "360 one .p3-enter on the step",
+   "pass": true,
+   "detail": "1"
+  },
+  {
+   "name": "360 every visible text node white/board + >=16px + opacity 1",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "name": "360 placeholders white opacity 1",
+   "pass": true,
+   "detail": "['rgb(255, 255, 255)/1/17px', 'rgb(255, 255, 255)/1/17px', 'rgb(255, 255, 255)/1/17px']"
+  },
+  {
+   "name": "360 zero horizontal overflow at scroll 0",
+   "pass": true,
+   "detail": "overflow=0"
+  },
+  {
+   "name": "360 zero horizontal overflow scrolled",
+   "pass": true,
+   "detail": "overflow=0"
+  },
+  {
+   "name": "360 personal card lights up on hover in its own color",
+   "pass": true,
+   "detail": "hover=True ty=-4.0 shadow-has-44px=True color-in-shadow=True"
+  },
+  {
+   "name": "360 business card lights up on hover in its own color",
+   "pass": true,
+   "detail": "hover=True ty=-4.0 shadow-has-44px=True color-in-shadow=True"
+  },
+  {
+   "name": "360 space card lights up on hover in its own color",
+   "pass": true,
+   "detail": "hover=True ty=-4.0 shadow-has-44px=True color-in-shadow=True"
+  },
+  {
+   "name": "360 personal eye opens modal with 3 lines",
+   "pass": true,
+   "detail": "{\"open\": true, \"title\": \"Your Personal page\", \"lines\": [\"Your home on Naya \\u2014 who you are, what you love, and what you are building.\", \"It holds your words from the walk: who you are, what you are into, your vision, mission, motto and goal.\", \"Its address is your Smart Link \\u2014 your name afte"
+  },
+  {
+   "name": "360 business eye opens modal with 3 lines",
+   "pass": true,
+   "detail": "{\"open\": true, \"title\": \"Your Business page\", \"lines\": [\"Your shop window \\u2014 what you do, what you offer, and what you are building.\", \"It holds your business words from the walk, in your own words.\", \"People find you here and buy from you \\u2014 your offer, and how to pay.\"]}"
+  },
+  {
+   "name": "360 space eye opens modal with 3 lines",
+   "pass": true,
+   "detail": "{\"open\": true, \"title\": \"Your Space\", \"lines\": [\"Your gathering place \\u2014 the people you want around you, and the things you do together.\", \"It holds the space you asked for in the walk, and who you want to meet there.\", \"Your people gather here \\u2014 to talk, to learn, and to build together.\"]}"
+  },
+  {
+   "name": "360 personal card click focuses its name input",
+   "pass": true,
+   "detail": "{\"clickedTag\": \"DIV.p3-namecard\", \"active\": \"name-personal\"}"
+  },
+  {
+   "name": "360 business card click focuses its name input",
+   "pass": true,
+   "detail": "{\"clickedTag\": \"DIV.p3-namecard\", \"active\": \"name-business\"}"
+  },
+  {
+   "name": "360 space card click focuses its name input",
+   "pass": true,
+   "detail": "{\"clickedTag\": \"DIV.p3-namecard\", \"active\": \"name-space\"}"
+  },
+  {
+   "name": "360 hero button advances to the building page",
+   "pass": true,
+   "detail": "{\"namesHidden\": true, \"buildingShown\": true}"
+  },
+  {
+   "name": "360 zero page errors (JS exceptions)",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "name": "360 zero console errors (excluding local 404s for worker routes)",
+   "pass": true,
+   "detail": "[]"
+  }
+ ],
+ "fails": [],
+ "measure-1440": {
+  "colW": 1120,
+  "gap": "28px",
+  "gapPx": 28,
+  "pad": [
+   "28px",
+   "28px",
+   "28px"
+  ],
+  "nameFs": [
+   "18px",
+   "18px",
+   "18px"
+  ],
+  "urlFs": [
+   "16px",
+   "16px",
+   "16px"
+  ],
+  "prefixFs": [
+   "16px",
+   "16px",
+   "16px"
+  ],
+  "nutFs": [
+   "16px/1",
+   "16px/1",
+   "16px/1"
+  ],
+  "subFs": "18px",
+  "labelFs": [
+   "16px",
+   "16px",
+   "16px"
+  ],
+  "progFs": "16px",
+  "h1Fs": "36.8125px",
+  "heroLabel": "Build my pages",
+  "heroFs": "20px",
+  "noteCount": 0,
+  "smartCount": 0,
+  "enterCount": 1,
+  "textNodesBad": [],
+  "placeholders": [
+   "rgb(255, 255, 255)/1/18px",
+   "rgb(255, 255, 255)/1/18px",
+   "rgb(255, 255, 255)/1/18px"
+  ],
+  "overflow": 0
+ },
+ "typing-1440": {
+  "slugFollowsName": "green-box-farm",
+  "stateSlug": "green-box-farm",
+  "customSlug": "my-biz",
+  "customSticks": "my-biz",
+  "personalCustom": "mike8"
+ },
+ "errors-1440": {
+  "console": [],
+  "pageerrors": [],
+  "failed_req": []
+ },
+ "measure-390": {
+  "colW": 390,
+  "gap": "20px",
+  "gapPx": 20,
+  "pad": [
+   "20px",
+   "20px",
+   "20px"
+  ],
+  "nameFs": [
+   "17px",
+   "17px",
+   "17px"
+  ],
+  "urlFs": [
+   "16px",
+   "16px",
+   "16px"
+  ],
+  "prefixFs": [
+   "16px",
+   "16px",
+   "16px"
+  ],
+  "nutFs": [
+   "16px/1",
+   "16px/1",
+   "16px/1"
+  ],
+  "subFs": "18px",
+  "labelFs": [
+   "16px",
+   "16px",
+   "16px"
+  ],
+  "progFs": "16px",
+  "h1Fs": "27.1875px",
+  "heroLabel": "Build my pages",
+  "heroFs": "18px",
+  "noteCount": 0,
+  "smartCount": 0,
+  "enterCount": 1,
+  "textNodesBad": [],
+  "placeholders": [
+   "rgb(255, 255, 255)/1/17px",
+   "rgb(255, 255, 255)/1/17px",
+   "rgb(255, 255, 255)/1/17px"
+  ],
+  "overflow": 0
+ },
+ "errors-390": {
+  "console": [],
+  "pageerrors": [],
+  "failed_req": []
+ },
+ "measure-360": {
+  "colW": 360,
+  "gap": "20px",
+  "gapPx": 20,
+  "pad": [
+   "20px",
+   "20px",
+   "20px"
+  ],
+  "nameFs": [
+   "17px",
+   "17px",
+   "17px"
+  ],
+  "urlFs": [
+   "16px",
+   "16px",
+   "16px"
+  ],
+  "prefixFs": [
+   "16px",
+   "16px",
+   "16px"
+  ],
+  "nutFs": [
+   "16px/1",
+   "16px/1",
+   "16px/1"
+  ],
+  "subFs": "18px",
+  "labelFs": [
+   "16px",
+   "16px",
+   "16px"
+  ],
+  "progFs": "16px",
+  "h1Fs": "27.1875px",
+  "heroLabel": "Build my pages",
+  "heroFs": "18px",
+  "noteCount": 0,
+  "smartCount": 0,
+  "enterCount": 1,
+  "textNodesBad": [],
+  "placeholders": [
+   "rgb(255, 255, 255)/1/17px",
+   "rgb(255, 255, 255)/1/17px",
+   "rgb(255, 255, 255)/1/17px"
+  ],
+  "overflow": 0
+ },
+ "errors-360": {
+  "console": [],
+  "pageerrors": [],
+  "failed_req": []
+ }
+}
