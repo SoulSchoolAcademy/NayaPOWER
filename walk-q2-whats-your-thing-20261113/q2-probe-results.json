@@ -1,0 +1,152 @@
+{
+ "1440": {
+  "info": {
+   "heading": "\"What's your thing? What do you love? What do you love to do?\"",
+   "progress": "2 of 10",
+   "choices": [
+    "My thing is music — the songs I love and the artists I play over and over. Because nobody should feel alone in the thing they love, and my music is how my people find me.",
+    "My thing is making money — I make a page about Naya and send people to it, and I get 50% of the revenue, paid when we're paid. Anybody can.",
+    "My thing is the connection itself — the moment two like minds find each other across the world and realize they were never alone. Sometimes your thing is what you love, sometimes it's your job — either way, that moment becomes our place: a smart hub, a digital world where everybody meets on the one thing we love."
+   ],
+   "hints": [
+    "Click the button and tell us what your thing is",
+    "Type in what your thing is, and what you love to do",
+    "Copy-paste from your AI into the box"
+   ],
+   "answerEmpty": true
+  },
+  "measure": {
+   "headingBox": {
+    "x": 178,
+    "y": 184,
+    "w": 1084,
+    "h": 96
+   },
+   "headingLines": 2,
+   "headingFont": "36.8125px",
+   "docScrollW": 1440,
+   "winW": 1440,
+   "overflowX": false,
+   "q2ScrollW": 1440
+  },
+  "eyes": {
+   "2-A": {
+    "visible": true,
+    "text": "×\nChoice A\n\nWhat it is: Naya's warm & plain voice — my thing is music.\n\nWhy it matters: Music is the thing — the songs and the artists I love.\n\nHow it connects: It fills your Personal page and your Space — the people you want around you.\n\nWhat's in it for you: The right people recognize themselves in it.\n\nEdit it in place, make it your own — then Enter."
+   },
+   "2-B": {
+    "visible": true,
+    "text": "×\nChoice B\n\nWhat it is: Naya's bold & short voice — making money, with a page about Naya.\n\nWhy it matters: One line that says the whole thing: the thing is making money, the page is about Naya.\n\nHow it connects: It fills your Personal page and your Space — the people you want around you.\n\nWhat's in it for you: People feel the promise at once.\n\nEdit it in place, make it your own — then Enter."
+   },
+   "2-C": {
+    "visible": true,
+    "text": "×\nChoice C\n\nWhat it is: Naya's full & visionary voice — the moment becomes a place.\n\nWhy it matters: It paints the moment everything is for — and the place it becomes: a smart hub, a digital world.\n\nHow it connects: It fills your Personal page and your Space — the people you want around you.\n\nWhat's in it for you: People can feel themselves in that moment.\n\nEdit it in place, make it your own — then Enter."
+   },
+   "2-custom": {
+    "visible": true,
+    "text": "×\nFull Custom\n1. Copy it in from your AI — share with your AI, let it write it for you, copy it in.\n2. Dictate — tap Speak and it writes what you say as you speak. You can edit after.\n3. Or take one of the examples above and make it your own.\n\nEdit it in place, make it your own — then Enter."
+   }
+  },
+  "consoleErrors": []
+ },
+ "390": {
+  "info": {
+   "heading": "\"What's your thing? What do you love? What do you love to do?\"",
+   "progress": "2 of 10",
+   "choices": [
+    "My thing is music — the songs I love and the artists I play over and over. Because nobody should feel alone in the thing they love, and my music is how my people find me.",
+    "My thing is making money — I make a page about Naya and send people to it, and I get 50% of the revenue, paid when we're paid. Anybody can.",
+    "My thing is the connection itself — the moment two like minds find each other across the world and realize they were never alone. Sometimes your thing is what you love, sometimes it's your job — either way, that moment becomes our place: a smart hub, a digital world where everybody meets on the one thing we love."
+   ],
+   "hints": [
+    "Click the button and tell us what your thing is",
+    "Type in what your thing is, and what you love to do",
+    "Copy-paste from your AI into the box"
+   ],
+   "answerEmpty": true
+  },
+  "measure": {
+   "headingBox": {
+    "x": 14,
+    "y": 130,
+    "w": 362,
+    "h": 106
+   },
+   "headingLines": 3,
+   "headingFont": "27.1875px",
+   "docScrollW": 390,
+   "winW": 390,
+   "overflowX": false,
+   "q2ScrollW": 390
+  },
+  "eyes": {
+   "2-A": {
+    "visible": true,
+    "text": "×\nChoice A\n\nWhat it is: Naya's warm & plain voice — my thing is music.\n\nWhy it matters: Music is the thing — the songs and the artists I love.\n\nHow it connects: It fills your Personal page and your Space — the people you want around you.\n\nWhat's in it for you: The right people recognize themselves in it.\n\nEdit it in place, make it your own — then Enter."
+   },
+   "2-B": {
+    "visible": true,
+    "text": "×\nChoice B\n\nWhat it is: Naya's bold & short voice — making money, with a page about Naya.\n\nWhy it matters: One line that says the whole thing: the thing is making money, the page is about Naya.\n\nHow it connects: It fills your Personal page and your Space — the people you want around you.\n\nWhat's in it for you: People feel the promise at once.\n\nEdit it in place, make it your own — then Enter."
+   },
+   "2-C": {
+    "visible": true,
+    "text": "×\nChoice C\n\nWhat it is: Naya's full & visionary voice — the moment becomes a place.\n\nWhy it matters: It paints the moment everything is for — and the place it becomes: a smart hub, a digital world.\n\nHow it connects: It fills your Personal page and your Space — the people you want around you.\n\nWhat's in it for you: People can feel themselves in that moment.\n\nEdit it in place, make it your own — then Enter."
+   },
+   "2-custom": {
+    "visible": true,
+    "text": "×\nFull Custom\n1. Copy it in from your AI — share with your AI, let it write it for you, copy it in.\n2. Dictate — tap Speak and it writes what you say as you speak. You can edit after.\n3. Or take one of the examples above and make it your own.\n\nEdit it in place, make it your own — then Enter."
+   }
+  },
+  "consoleErrors": []
+ },
+ "360": {
+  "info": {
+   "heading": "\"What's your thing? What do you love? What do you love to do?\"",
+   "progress": "2 of 10",
+   "choices": [
+    "My thing is music — the songs I love and the artists I play over and over. Because nobody should feel alone in the thing they love, and my music is how my people find me.",
+    "My thing is making money — I make a page about Naya and send people to it, and I get 50% of the revenue, paid when we're paid. Anybody can.",
+    "My thing is the connection itself — the moment two like minds find each other across the world and realize they were never alone. Sometimes your thing is what you love, sometimes it's your job — either way, that moment becomes our place: a smart hub, a digital world where everybody meets on the one thing we love."
+   ],
+   "hints": [
+    "Click the button and tell us what your thing is",
+    "Type in what your thing is, and what you love to do",
+    "Copy-paste from your AI into the box"
+   ],
+   "answerEmpty": true
+  },
+  "measure": {
+   "headingBox": {
+    "x": 14,
+    "y": 118,
+    "w": 332,
+    "h": 106
+   },
+   "headingLines": 3,
+   "headingFont": "27.1875px",
+   "docScrollW": 360,
+   "winW": 360,
+   "overflowX": false,
+   "q2ScrollW": 360
+  },
+  "eyes": {
+   "2-A": {
+    "visible": true,
+    "text": "×\nChoice A\n\nWhat it is: Naya's warm & plain voice — my thing is music.\n\nWhy it matters: Music is the thing — the songs and the artists I love.\n\nHow it connects: It fills your Personal page and your Space — the people you want around you.\n\nWhat's in it for you: The right people recognize themselves in it.\n\nEdit it in place, make it your own — then Enter."
+   },
+   "2-B": {
+    "visible": true,
+    "text": "×\nChoice B\n\nWhat it is: Naya's bold & short voice — making money, with a page about Naya.\n\nWhy it matters: One line that says the whole thing: the thing is making money, the page is about Naya.\n\nHow it connects: It fills your Personal page and your Space — the people you want around you.\n\nWhat's in it for you: People feel the promise at once.\n\nEdit it in place, make it your own — then Enter."
+   },
+   "2-C": {
+    "visible": true,
+    "text": "×\nChoice C\n\nWhat it is: Naya's full & visionary voice — the moment becomes a place.\n\nWhy it matters: It paints the moment everything is for — and the place it becomes: a smart hub, a digital world.\n\nHow it connects: It fills your Personal page and your Space — the people you want around you.\n\nWhat's in it for you: People can feel themselves in that moment.\n\nEdit it in place, make it your own — then Enter."
+   },
+   "2-custom": {
+    "visible": true,
+    "text": "×\nFull Custom\n1. Copy it in from your AI — share with your AI, let it write it for you, copy it in.\n2. Dictate — tap Speak and it writes what you say as you speak. You can edit after.\n3. Or take one of the examples above and make it your own.\n\nEdit it in place, make it your own — then Enter."
+   }
+  },
+  "consoleErrors": []
+ }
+}
