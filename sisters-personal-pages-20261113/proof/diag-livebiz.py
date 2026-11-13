@@ -1,0 +1,17 @@
+from playwright.sync_api import sync_playwright
+with sync_playwright() as pw:
+    br = pw.firefox.launch()
+    ctx = br.new_context(viewport={"width": 1440, "height": 900})
+    pg = ctx.new_page()
+    pg.goto("https://nayanet.app/business", wait_until="domcontentloaded")
+    pg.wait_for_timeout(15000)
+    print("url:", pg.url)
+    print("title:", pg.title())
+    print("pname:", pg.locator("#pname").inner_text() if pg.locator("#pname").count() else "NO #pname")
+    print("up-act count:", pg.locator(".up-act").count())
+    print("os-story-title:", pg.locator("#os-story-title").inner_text() if pg.locator("#os-story-title").count() else "NO #os-story-title")
+    print("body head:", pg.locator("body").inner_text()[:200].replace("\n", " | "))
+    pg.screenshot(path="/home/hatch/workspace/team-nitro/sisters-personal-pages-20261113/spp-live-business-1440.png")
+    ctx.close()
+    br.close()
+print("LIVEBIZ DONE")
