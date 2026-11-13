@@ -73,3 +73,23 @@ Read the ten solutions — each one maps to a hunk in `build-followup.py` / `dif
 3. **Is it mine to do?** Yes — maker seat for the follow-up, lane branch, staged only; no merge, no deploy, no PR, no live tap; the fixture rows are test rows in the shared table, named for deletion after the captain's leg.
 4. **Is now the time?** Yes — tip `a7b55ab5` verified first-hand, staged SHA re-read fresh before editing, live Personal re-curled unchanged.
 5. **Can I prove it?** Yes, except where the record says otherwise — every number below is a Playwright measurement or a service-key read, and the four fetching-browser sub-proofs are named as the captain's leg with exact expected values instead of claimed.
+
+---
+
+## Final self-score — after the staged verification (2026-11-13)
+
+**Build 10/10 · Proof 8/10 — follow-up items 1–3 done and measured; item 4 remains the captain's leg.**
+
+- **Item 1 (Defect 1) — done, 10/10.** Both drawers open in place at 390/1440/360 on the staged link (URL unchanged every tap), backdrop tap and Escape close everywhere, re-tap close at 1440. Left box (0,0) 300×844 at all widths; right box (90,0) @390, (1140,0) @1440, (60,0) @360. Eye-checked at 390 (drawer open, 8 links as elevated boards, page dimmed). The re-tap failure found by the first probe run is fixed in pass 2 (bar rises above the scrim, open seg lights).
+- **Item 2 (record corrections) — done, 10/10.** Both false statements struck in place with the truth stated: drawers were both stranded (left never reachable via the Spaces seg); seed nutshells are from the filed notes on main, not the Hub shell.
+- **Item 3 (Public widened + keyword pull) — done, 10/10 on the mechanism.** Staged stub proof with the real table rows: Public 6 cards / 4 voices → `garden` 2 → `harvest` 1 → cleared 6 → Personal 2 (owner store intact). Hub-search finding named honestly: 0 hits in the shell, so the harvested mechanism is the one already on the page; the only new control is the Search button opening the existing centered popup. The collective pull on a fetching browser is the captain's leg — the RLS question is open and named.
+- **Item 4 (four sub-proofs) — NOT proven here, 0/4, the captain's leg.** Procedure + exact expected values written in the record: (a) Personal 0 cards + placeholder (26 rows in the table, 4 wall rows P6-filtered), Public 6, Naya 14; (b) pill 245, gauge 49.0%; (c) Lists "Saved on this device"; (d) 0 console errors, 0 page errors. Staged here: 42/60/42 console errors, all failed external fetches from this VM, 0 page errors.
+- **No regressions — 10/10.** 15 + 4 hunks only; seven original items + pill restyle re-proven on staged at all three widths (buttons equal ±0 px, gear ⚙️, no name/cover intersection, tabs in order, feed line literal, rail 20/0 `<img>`, overflow 0). Staged SHA `4872414a…` re-read fresh, byte-identical to local. Live Personal `992ab18c…` and live Hub `0c8628d5…` unchanged.
+- **Why proof is 8, not 10:** the four sub-proofs need a fetching browser and are owed; the fixture rows stay in the table until that leg runs (cleanup debt, named in the record with ids and the deletion instruction); the anon RLS readability of other owners' rows is unproven from here.
+
+## Evidence
+
+- Staged link: https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/personal-page-complete-20261113&cb=bab47fb67
+- Staged SHA (curl, fresh): `4872414a1d428a940a4e12ac31c419f999843a2fde072a9ac91d09b42051c666`, 1,555,404 B — matches the local file.
+- `verify-staged-followup.json` · `verify-followup.json` · `followup-*.png` · `staged-followup-*.png` (lane dir + branch).
+- Commits on `personal/personal-page-complete-20261113`: `bab47fb67` (build + probes + scorecard, pushed, remote tip verified) · record/scorecard touch-up follows as a second commit.

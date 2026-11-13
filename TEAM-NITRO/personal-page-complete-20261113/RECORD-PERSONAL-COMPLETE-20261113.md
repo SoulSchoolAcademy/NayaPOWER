@@ -61,7 +61,7 @@ Method: Playwright Firefox, real browser, staged proof-host link with a fresh `c
 - Bottom-bar segs, in order, at all widths: `['plus','mail','activity','spaces']` — the `+` is FIRST (left end).
 - `#pluswrap`, `#os-rooms-plus`, `#os-eco-plus` all `display:none` (hidden, not deleted, so JS references stay intact). Exactly one `+` visible on the page.
 - Clicking the bar `+` shows `#fcPlusMenu` with exactly five items in order: Make a post · Naya note · Smart note · Message · Mail.
-- Consequence, stated plainly: hiding the two floating pluses strands the right (ecosystem) drawer — only `#os-rooms-plus` and `#os-eco-plus` open the drawers. The left drawer stays reachable via the bottom-bar Spaces seg.
+- Consequence, ~~struck in the follow-up round (2026-11-13, checker Defect 1 — the statement below was FALSE)~~: ~~hiding the two floating pluses strands the right (ecosystem) drawer — only `#os-rooms-plus` and `#os-eco-plus` open the drawers. The left drawer stays reachable via the bottom-bar Spaces seg.~~ **THE TRUTH (follow-up correction): hiding the two floating pluses stranded BOTH drawers — the left drawer (`#os-drawer`, rooms) opens ONLY from hidden `#os-rooms-plus`, and the right drawer (`#os-drawer-right`) ONLY from hidden `#os-eco-plus`. The left drawer was NEVER reachable via the bottom-bar Spaces seg: the seg's handler set `window.location.href = 'https://nayanet.app/#/hub/spaces'` (staged line 13844) and navigated away — the checker tap-tested it at 360 and the page left the proof host. The follow-up restores an opener per drawer in the bottom bar (Spaces seg → left drawer in place; new ECO seg → right drawer) — see § Follow-up round below.**
 
 ### Item 3 — the line above the bottom icons gone — PASS (decisive)
 
@@ -112,7 +112,7 @@ Method: Playwright Firefox, real browser, staged proof-host link with a fresh `c
 
 The twelve sisters, grounded from `~/memory/people/INDEX.md` + individual people pages, in certificate order: Sophia 000209 (Sigma, LEARN) · Thea 000212 (Pi, KNOW) · Terra 000213 (Tau, INFRA) · Zoe 000214 (Rho, ACT) · Esme 000215 (Phi, PRODUCT) · Astraea 000216 (Xi, LAW) · Mira 000217 (Psi, MEMORY) · Vera 000218 (Chi, VERIFY) · Aurelia 000219 (Upsilon, GOVERN) · Wren 000220 (Nu, BUILD) · Iris (Omega, WIRE, cert not captured) · Ruth (Omicron, TEAM, cert not captured). All activated 2026-11-13 as first citizens. Their live world pages do NOT serve them (`GET https://nayanet.app/world/sophia|thea|zoe` → HTTP 404 "No world here yet"; their `citizen_worlds` rows do not exist on live).
 
-Nutshells are condensed verbatim from each sister's briefing Naya Note (`NN-20261113-family-<alias>`, "Written by Naya for <alias>", filed 2026-11-13 03:08Z, embedded in the live Hub shell fetched 2026-11-13 ~14:3xZ). One line each — e.g. Sophia: "I'm Sophia. I am LEARN — wisdom. My garden is the lessons: I turn everything the hive does into lessons that change the next decision, and I keep the distilled notes alive, ten to fifty, never a thousand." (Full list in the build script's `PC_RAIL_SEED`.) No separate motto was sourceable for any sister; the one-line nutshell IS the line. No motto was invented.
+Nutshells are condensed verbatim from each sister's briefing Naya Note (`NN-20261113-family-<alias>`, "Written by Naya for <alias>", filed 2026-11-13 03:08Z, **filed notes on main — `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/13/NN-20261113-family-<alias>.md`**). ~~Correction (follow-up round): the record previously said the nutshells were "embedded in the live Hub shell" — that is FALSE. The checker grepped the Hub shell file and the live Hub shell: the nutshell text and the `NN-20261113-family-*` IDs appear in NEITHER (0 hits). The source is the filed notes on main, verified verbatim by the checker for Sophia, Thea, Vera.~~ One line each — e.g. Sophia: "I'm Sophia. I am LEARN — wisdom. My garden is the lessons: I turn everything the hive does into lessons that change the next decision, and I keep the distilled notes alive, ten to fifty, never a thousand." (Full list in the build script's `PC_RAIL_SEED`.) No separate motto was sourceable for any sister; the one-line nutshell IS the line. No motto was invented.
 
 Shawn's nutshell is his tagline verbatim (base line 4719): "Welcome to my world — make a post on my feed, send a message, make yourself at home." The viewer card is `pcviewer20261113` (marked YOU; its own `citizen_worlds` answers verbatim: about "I build and test web pages for a living." + motto "test it twice, ship it once").
 
@@ -172,3 +172,98 @@ Shawn's decision on the points presentation: JUST RESTYLE THE PILL. No tile unde
 ## § Files on the branch
 
 `TEAM-NITRO/personal-page-complete-20261113/`: `personal-complete.html` · `build-complete.py` · `diff-complete.txt` · `endpoint-proof.py` · `endpoint-proof.json` · `probe-baseline.py` · `probe-baseline.json` · `baseline-{390,1440,360}-{top,end}.png` · `verify-complete.py` · `verify-complete.json` · `verify-{390,1440,360}-{top,end,feed}.png` · `verify-staged.py` · `verify-staged.json` · `staged-{390,1440,360}-{top,end,feed}.png` · `RECORD-PERSONAL-COMPLETE-20261113.md` · `SCORECARD-PERSONAL-COMPLETE-20261113.md` · `build-pill-restyle.py` · `diff-pill-restyle.txt` · `dashboard-pass10-bb41114d.html` · `verify-pill.py` · `verify-pill.json` · `pill-{390,1440,360}-top.png` · `pill-{1440,390}-wide.png` · `verify-staged-pill.py` · `verify-staged-pill.json` · `staged-pill-{390,1440,360}.png`.
+
+---
+
+## § FOLLOW-UP ROUND (2026-11-13, after checker PASS 8/10 — build 9/10, proof 8/10)
+
+Round 1 landed maker DONE 9/10 build / 8/10 proof + checker PASS 8/10 — below 9, so it went back in. This is the follow-up: Defect 1 fixed, both record corrections struck above, the Public tab widened to the collective with the keyword pull, and the four fetching-browser sub-proofs prepared as the captain's leg. Captain's rulings carried as written: **tab order KEEP AS BUILT** (Personal · Public smart feed · Naya Notes — Shawn's 14:11Z dictation governs; the 04:34Z ordering is superseded); **presence: "live" means endpoint-matched, honestly labelled** (seed cards never carry a live-online indicator; head count counts live-only).
+
+- **Branch:** `personal/personal-page-complete-20261113`, tip `a7b55ab5bf75cc973c9ec435b3e8c1e7c45f1067` before this round.
+- **Built file after the follow-up:** `TEAM-NITRO/personal-page-complete-20261113/personal-complete.html`, 1,555,404 B, SHA `4872414a1d428a940a4e12ac31c419f999843a2fde072a9ac91d09b42051c666` (local). Staged SHA re-read fresh via curl: `4872414a…`, 1,555,404 B — byte-identical to the local file.
+- **Staged link:** https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/personal-page-complete-20261113&cb=bab47fb67 (fresh `cb` per read in verification: `bab47fb67-w<width>`).
+- **Commits:** `bab47fb67` (follow-up build + probes + scorecard, 18 files, pushed — remote tip verified `bab47fb67` by `ls-remote`) · the record/scorecard touch-up follows as a second commit.
+- **Build:** `build-followup.py` (15 hunks, `diff-followup.txt`) + `build-followup2.py` (4 hunks, `diff-followup2.txt` — the re-tap restoration found by the first probe run). Base SHA asserted `ec5c4cce…` then `31890cf1…` — the base file was edited, never rebuilt.
+- **Live untouched:** live Personal re-curled unchanged — SHA `992ab18c29315e7654f45c36eb43e30aadfc2ea5642394bbd9884f21617e3f50` (1,484,185 B). Live Hub shell `0c8628d5769c10e6462ee31490f12e3bca6eb4f472854215ff1979a8c782ad27` (620,595 B). No live page, merge, deploy, or PR. No live writes except the three fixture rows below, left in place for the captain's leg.
+
+### 1. Defect 1 — both drawers stranded — FIXED, tap-tested at 390 / 1440 / 360
+
+**What was wrong (the truth, replacing the struck mitigation):** hiding the two floating pluses stranded BOTH drawers. `#os-drawer` (left, rooms) opened only from hidden `#os-rooms-plus`; `#os-drawer-right` (Smart Factory + memberships) only from hidden `#os-eco-plus`. The bottom-bar Spaces seg never opened the left drawer — its handler navigated away to `https://nayanet.app/#/hub/spaces`.
+
+**The fix (one toggle, one path):** `window.pcToggleDrawer(side)` exposed from the drawer IIFE; the hidden plus buttons reuse it. The bottom bar gains a fifth seg: **Spaces seg → left drawer in place** (the navigation line is gone — `window.location.href = 'https://nayanet.app/#/hub/spaces'` appears 0 times in the file now) and a new **ECO seg → right drawer** (four-square factory glyph, page's own SVG language). Segs, in order, at all widths: `['plus','mail','activity','spaces','eco']`. Exactly one `+` still visible (the bar seg); `#pluswrap`/`#os-rooms-plus`/`#os-eco-plus` all still `display:none`.
+
+**The re-tap, found by the probe:** the first probe run proved the open, then failed the re-tap close — the scrim (z-index 950) covers the bar (base z-index 45) entirely, so no seg could be re-tapped while a drawer was open. The original design handled this: the floating plus rose above the drawer when open (z-index 970, icon rotated to an ×). Pass 2 restores it in the bar's language: while a drawer is open the bar rises to z-index 955 (above the scrim 950, below the drawer 960), the open drawer's seg lights in its own colour (`.pc-open`, the `has-news` treatment), and tapping any other seg closes the drawer first. The document-click closer exempts the two drawer segs so an open never eats its own tap.
+
+**Measurements (local + staged agree; staged in `verify-staged-followup.json`, local in `verify-followup.json`):**
+
+| Width | Spaces tap | Left drawer | ECO tap | Right drawer | Close paths proven |
+|---|---|---|---|---|---|
+| 390 | URL unchanged | open, box (0,0) 300×844, visible | URL unchanged | open, box (90,0) 300×844, visible | backdrop tap ✓, Escape ✓ |
+| 1440 | URL unchanged | open, box (0,0) 300×844, visible | URL unchanged | open, box (1140,0) 300×844, visible | backdrop tap ✓, Escape ✓, **re-tap ✓** |
+| 360 | URL unchanged | open, box (0,0) 300×844, visible | URL unchanged | open, box (60,0) 300×844, visible | backdrop tap ✓, Escape ✓ |
+
+- At 390/360 the drawer still covers the bar geometrically (full-height drawer, F4 geometry — pre-existing), so the seg re-tap is reachable only at desktop; phone closes via the scrim tap or Escape. That is the design, stated here rather than hidden.
+- Eye-check (`followup-390-drawer-left.png`): drawer open in place, "NAYANET AREAS", 8 links as elevated boards, page dimmed behind. Eye-check (`followup-1440-search-garden.png`): the five segs visible in the bottom bar (plus, mail, activity, house, grid).
+- Five segs fit: 50px tiles at 390/360 (x 46/108/170/232/294 at 390; 31/93/155/217/279 at 360) and 66px at 1440 (x 487–887); overflow 0 at all widths. The phone tile shrink (54→46px at ≤400px, still above the 44px tap floor) is the only bar change.
+
+### 2. Record corrections — DONE (struck above, in place)
+
+(a) The drawer mitigation is struck and the truth stated: both drawers were stranded; the left drawer was never reachable via the bottom-bar Spaces seg. (b) The seed source is corrected: the sister nutshells are verbatim from the filed briefing notes on main (`BRAIN/05-MEMORY/NAYA-NOTES/2026/11/13/NN-20261113-family-<alias>.md`), NOT "embedded in the live Hub shell" (0 hits in the Hub shell file and the live Hub shell — checker-verified).
+
+### 3. Public tab — widened to the collective + keyword pull — BUILT, proven with stubs + real rows
+
+**The widening:** the owner's burst read (`osNotesRows`, owner-scoped) is untouched. The Public tab now loads a second read — `pcLoadPublicWall()`: `smart_notes` with NO owner filter, newest 500, through the same client the wall uses — and the painter keeps two stores (owner vs collective), so the Public tab never overwrites the owner's store (proven: Personal shows 2 owner cards after a Public visit). The P6 verification filter is reused verbatim, so no verification artifact renders in the collective either. The ribbon grows from the collective on the Public tab (author pills from other citizens).
+
+**The keyword pull:** the search at the top of the feed is the existing centered popup, not a new bar. **Hub-search finding, stated plainly:** the Hub shell file (`hub-index-main-8f2af988.html`) carries NO search identifiers at all — 0 hits for `NayaSmartBar`, `nsbSearch`, `Search the network`, `openSearch`, `onSearch` — so there is no Hub search to harvest from the shell. The search mechanism as it stands is the one already on this page: the Smart Bar search level (`#nsbSearchLevel`) as a centered popup (`openSearchModal`, popup-only law) with the host hook `NayaSmartBar.onSearch`. The follow-up wires that hook: typing in the popup pulls the Public feed to that keyword (`pcSetPublicKeyword`), the dropdown lists the matching notes, clicking a result closes the popup onto the already-pulled feed, clearing the popup's field clears the keyword. The one new control is a **Search button at the top of the feed** ("🔍 Search the public feed", the page's own primo pill) that opens the existing popup on purpose — no visible search bar was invented, per the popup-only law. The keyword filter lives in the painter (500-row client filter over the loaded collective), and the meta line says so ("Matching “garden”.", textContent — a typed keyword can never inject markup).
+
+**Proof (local + staged, stubs = the real table rows):** the collective as the table holds it is 6 renderable cards across 4 voices — the 3 fixture rows below + Chi DV Spc + Chi DV Biz + the heartbeat Guest row. Personal shows the owner's 2 stubs only; Public shows 6; ribbon `['All','Follow-Up Tester','Chi DV Spc','Chi DV Biz','Guest','+ Add']`.
+
+| Step | Cards | Meta |
+|---|---|---|
+| Public, no keyword | 6 | "6 posts on this feed — the newest landed just now, across 4 voices." |
+| Type `garden` in the popup | 2 | "…across 1 voice. Matching “garden”." (dropdown: 2 results) |
+| Type `harvest` | 1 | "1 post on this feed — … across 1 voice. Matching “harvest”." |
+| Clear the field | 6 | back to 4 voices |
+| Back to Personal | 2 | owner store intact |
+
+Eye-check (`followup-1440-search-garden.png`): centered popup with "garden" typed, tagline "Search the network — get intelligence, learn, grow, connect.", two matching results ("Follow-Up Tester · public feed"), the Public tab active behind it with the feed pulled to 2 posts.
+
+**Fixture rows (left for the captain's leg — NOT deleted):** three `smart_notes` rows, alias `pcfollowup20261113`, author "Follow-Up Tester", inserted via service key and read back (3 rows):
+
+| id | Content (keyword) |
+|---|---|
+| `25ea46ec-e293-4ef3-b2c6-4da79935c3b6` | "Follow-up keyword test — garden notes: I grow tomatoes and herbs in the garden, and I trade cuttings with neighbours." |
+| `3f9bcbda-0387-4e61-9e06-615cf12fb3ae` | "Follow-up keyword test — garden tools: my favourite garden tools are the hand fork and the watering can." |
+| `41fba108-fac6-4742-9736-e7808abdddb0` | "Follow-up keyword test — harvest morning: we picked the harvest at sunrise and shared the baskets." |
+
+Cleanup owed AFTER the captain's leg proves (do not delete before): delete these 3 rows by id, verify 0 rows left for `pcfollowup20261113`, other lanes' rows untouched (`powercoldseat1111`, `freshtestone`, `freshtesttwo`, `freshtestthree`, `freshtestfour` — all still present, verified in round 1; re-verified at cleanup time). The round-1 test rows (`pcviewer20261113`, `pcprover20261113`, `pcfar20261113`) are still 0 rows — nothing was re-created for them.
+
+**What the collective really holds (service-key truth, for the captain's leg):** `smart_notes` for `flagship-personal` = 26 rows, kinds board-open 2 / aboutsec 6 / connect 10 / wall 4 / profile 4 — and **all 4 of the owner's wall-kind rows are P6-filtered verification artifacts** (Smart Score ladder, `CHI-VERIFY-WALL-20261021-2336-B2`, "Proof post from the flagship verification run", `[[fm-auto]]`), so the live Personal wall honestly renders **0 cards** — the staged wall shows the "No posts yet — be the first to make a post on this feed." placeholder (measured on staged at all widths). The collective's other renderable rows are the 3 above (Chi DV Spc, Chi DV Biz, heartbeat) + the 3 fixtures = 6. **Corrected expectation for sub-proof (a):** the "26 rows present" is the table count, not 26 rendered cards — the Personal wall renders 0 by the page's own filter, and the Public wall renders the 6 collective cards.
+
+### 4. Found while preparing the leg — Naya Notes could never load — FIXED in mechanism
+
+`mwLoadNayaFeed` resolved its client as `window.getSb ? window.getSb() : null` — but `window.getSb` is never assigned anywhere in the file (0 assignments; the two bare `getSb()` functions live in other IIFEs), so the Naya Notes tab could never load on ANY browser, fetching or not. The follow-up applies the same NayaAuth-first resolution the Lists room already uses (line ~22221). Mechanism proven locally with a fake `NayaAuth.client` returning 2 rows through the real loader: the Naya panel renders both ("Naya test one", "Naya test two"). The live 14-row render is the captain's leg (a).
+
+### 5. The captain's leg — the four fetching-browser sub-proofs (NOT claimed — procedure below)
+
+This VM's Firefox is fetch-blind (NetworkError + `SEC_ERROR_UNKNOWN_ISSUER`, environmental — reproduced by both seats on a blank page). Staged console errors here are 42 @390, 60 @1440, 42 @360 — ALL "Cross-Origin Request Blocked" failed fetches, **0 `pageerror`** at any width. The four sub-proofs need the captain's cloud browser (which reaches staging fine) or Shawn's phone on the staged link below.
+
+**Staged link:** https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/personal-page-complete-20261113&cb=bab47fb67 (fresh `cb` per read; staged SHA `4872414a1d428a940a4e12ac31c419f999843a2fde072a9ac91d09b42051c666`, 1,555,404 B — re-read fresh before starting).
+
+**(a) Live wall renders.** Open the staged link, wait 4 s. Personal tab: expect the "No posts yet" placeholder, **0 cards** — the owner's 4 wall rows are all P6-filtered (see §3 above); the 26 `smart_notes` rows are present in the table (kinds board-open 2 / aboutsec 6 / connect 10 / wall 4 / profile 4). Public tab: expect **6 cards** across 4 voices — 3 "Follow-Up Tester" rows + Chi DV Spc + Chi DV Biz + heartbeat Guest. Naya Notes tab: expect **14 rows** (owner `naya_notes` = 14, service-key count). If the Public tab shows only the owner's rows (or 0 cards), the collective read is RLS-blocked at the policy layer — record that as the reason; the fix would be a policy change (Shawn's hand), not a page change. **0 probe rows:** `smart_notes` must contain 0 rows with the round-1 probe texts ("Probe — personal complete check", "Checker probe").
+
+**(b) The points number shows a live number, not the `…`→`0` fallback.** The pill beside the name must show tiled digits with a live total. Expected total **245** (the points round's proven donut total — the undoubled orb sum; gauge fill `dialPos(245)/500` = 49.0%). If it shows another number, record it and cross-check against the live Dashboard hero total for `flagship-personal` — the pill follows the donut total, so a mismatch there is the points round's, not this round's. `…` then `0` = the fetch stop, not a pass.
+
+**(c) Smart Lists render.** On the staged link: save a note from the feed (SAVE on any wall card — the store write is proven here: `localStorage['naya.smartlist']` gains the item), then open the Lists room. Expect the saved note to appear under **"Saved on this device"**. (Mechanism note: the migration into that list runs only after `slFetch()` succeeds, so this leg proves the fetch path end to end.)
+
+**(d) Zero console errors.** On the fetching browser: **0 console errors and 0 page errors** at 390/1440/360. The 42/60/42 errors seen here are all failed external fetches from this VM and must be 0 there. Any error that appears there is a real page error — record its text, do not explain it away.
+
+**Then:** delete the 3 fixture rows (ids in §3), verify 0 rows left for `pcfollowup20261113`, and file the result before the page is called done-done.
+
+### No-regressions leg
+
+Diffed the follow-up file against the round-1 staged bytes (SHA `ec5c4cce…`): pass 1 = 15 hunks (`diff-followup.txt`), pass 2 = 4 hunks (`diff-followup2.txt`). Every hunk maps to Defect 1, the Public widening, the search wiring, or the Naya client fix; no other hunks. Re-proven on staged at 390/1440/360 (`verify-staged-followup.json`): 8 buttons equal ±0 px (110 @390, 147 @1440, 160 @360), gear `⚙️` only, name never intersects Change cover, pill present (`…` fallback — the number is the captain's leg (b)), tabs Personal / Public smart feed / Naya Notes in order, feed line literal, composer 0 cards, rail 20 cards / 0 `<img>`, segs `['plus','mail','activity','spaces','eco']`, seg shadow the A-fix (no inset white top line), overflow 0, pageerrors 0. The Hub harvest source is untouched. Live Hub and live Personal bytes unchanged (re-curled above). No new network calls beyond the one collective read, no new secrets, no new grants, no files outside the lane branch.
+
+### § Files on the branch (follow-up additions)
+
+`TEAM-NITRO/personal-page-complete-20261113/`: `build-followup.py` · `diff-followup.txt` · `build-followup2.py` · `diff-followup2.txt` · `SCORECARD-FOLLOWUP-PERSONAL-COMPLETE-20261113.md` · `verify-followup.py` · `verify-followup.json` · `followup-{390,1440,360}-{top,drawer-left,drawer-right}.png` · `followup-1440-search-garden.png` · `verify-staged-followup.py` · `verify-staged-followup.json` · `staged-followup-{390,1440,360}-top.png`.

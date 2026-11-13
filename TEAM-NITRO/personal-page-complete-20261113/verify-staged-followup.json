@@ -1,0 +1,216 @@
+{
+  "staged_sha": "4872414a1d428a940a4e12ac31c419f999843a2fde072a9ac91d09b42051c666",
+  "staged_bytes": 1555404,
+  "staged_matches_local": true,
+  "widths": {
+    "390": {
+      "viewport": 390,
+      "url": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/personal-page-complete-20261113&cb=bab47fb67-w390",
+      "overflowX": 0,
+      "buttons_equal_2px": true,
+      "gear_text": "\u2699\ufe0f",
+      "name": {
+        "x": 146,
+        "y": 350,
+        "w": 159.6,
+        "h": 40
+      },
+      "pill": {
+        "x": 146,
+        "y": 404,
+        "w": 114.4,
+        "h": 57
+      },
+      "cvrbtn": {
+        "x": 215.7,
+        "y": 6,
+        "w": 164.3,
+        "h": 48
+      },
+      "name_vs_cvrbtn": false,
+      "pill_vs_name": false,
+      "pill_text": "\u2026",
+      "notif_segs": [
+        "plus",
+        "mail",
+        "activity",
+        "spaces",
+        "eco"
+      ],
+      "seg_shadow": "rgba(0, 0, 0, 0.25) 0px -2px 8px 0px inset, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+      "tab_labels": [
+        "Personal",
+        "Public smart feed",
+        "Naya Notes"
+      ],
+      "feedline": "MATCH \u2192 ORGANIZE \u2192 CONNECT",
+      "rail_cards": 20,
+      "rail_imgs": 0,
+      "wall_cards_staged_live": 0,
+      "wall_placeholder": "No posts yet \u2014 be the first to make a post on this feed.",
+      "spaces_tap_url_unchanged": true,
+      "left_drawer_open": true,
+      "left_drawer_box": {
+        "x": 0,
+        "y": 0,
+        "w": 300,
+        "h": 844
+      },
+      "left_drawer_closed_on_backdrop_tap": true,
+      "eco_tap_url_unchanged": true,
+      "right_drawer_open": true,
+      "right_drawer_box": {
+        "x": 90,
+        "y": 0,
+        "w": 300,
+        "h": 844
+      },
+      "right_drawer_closed_on_escape": true,
+      "console_errors": 42,
+      "pageerrors": []
+    },
+    "1440": {
+      "viewport": 1440,
+      "url": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/personal-page-complete-20261113&cb=bab47fb67-w1440",
+      "overflowX": 0,
+      "buttons_equal_2px": true,
+      "gear_text": "\u2699\ufe0f",
+      "name": {
+        "x": 184,
+        "y": 305.7,
+        "w": 159.6,
+        "h": 40
+      },
+      "pill": {
+        "x": 357.6,
+        "y": 297.2,
+        "w": 114.4,
+        "h": 57
+      },
+      "cvrbtn": {
+        "x": 1259.7,
+        "y": 76,
+        "w": 164.3,
+        "h": 48
+      },
+      "name_vs_cvrbtn": false,
+      "pill_vs_name": false,
+      "pill_text": "\u2026",
+      "notif_segs": [
+        "plus",
+        "mail",
+        "activity",
+        "spaces",
+        "eco"
+      ],
+      "seg_shadow": "rgba(0, 0, 0, 0.25) 0px -2px 8px 0px inset, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+      "tab_labels": [
+        "Personal",
+        "Public smart feed",
+        "Naya Notes"
+      ],
+      "feedline": "MATCH \u2192 ORGANIZE \u2192 CONNECT",
+      "rail_cards": 20,
+      "rail_imgs": 0,
+      "wall_cards_staged_live": 0,
+      "wall_placeholder": "No posts yet \u2014 be the first to make a post on this feed.",
+      "spaces_tap_url_unchanged": true,
+      "left_drawer_open": true,
+      "left_drawer_box": {
+        "x": 0,
+        "y": 0,
+        "w": 300,
+        "h": 844
+      },
+      "left_drawer_closed_on_backdrop_tap": true,
+      "eco_tap_url_unchanged": true,
+      "right_drawer_open": true,
+      "right_drawer_box": {
+        "x": 1140,
+        "y": 0,
+        "w": 300,
+        "h": 844
+      },
+      "right_drawer_closed_on_escape": true,
+      "left_drawer_open_again": true,
+      "left_drawer_closed_on_retap_desktop": true,
+      "console_errors": 60,
+      "pageerrors": []
+    },
+    "360": {
+      "viewport": 360,
+      "url": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/personal-page-complete-20261113&cb=bab47fb67-w360",
+      "overflowX": 0,
+      "buttons_equal_2px": true,
+      "gear_text": "\u2699\ufe0f",
+      "name": {
+        "x": 16,
+        "y": 488.5,
+        "w": 159.6,
+        "h": 40
+      },
+      "pill": {
+        "x": 189.6,
+        "y": 480,
+        "w": 114.4,
+        "h": 57
+      },
+      "cvrbtn": {
+        "x": 185.7,
+        "y": 6,
+        "w": 164.3,
+        "h": 48
+      },
+      "name_vs_cvrbtn": false,
+      "pill_vs_name": false,
+      "pill_text": "\u2026",
+      "notif_segs": [
+        "plus",
+        "mail",
+        "activity",
+        "spaces",
+        "eco"
+      ],
+      "seg_shadow": "rgba(0, 0, 0, 0.25) 0px -2px 8px 0px inset, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+      "tab_labels": [
+        "Personal",
+        "Public smart feed",
+        "Naya Notes"
+      ],
+      "feedline": "MATCH \u2192 ORGANIZE \u2192 CONNECT",
+      "rail_cards": 20,
+      "rail_imgs": 0,
+      "wall_cards_staged_live": 0,
+      "wall_placeholder": "No posts yet \u2014 be the first to make a post on this feed.",
+      "spaces_tap_url_unchanged": true,
+      "left_drawer_open": true,
+      "left_drawer_box": {
+        "x": 0,
+        "y": 0,
+        "w": 300,
+        "h": 844
+      },
+      "left_drawer_closed_on_backdrop_tap": true,
+      "eco_tap_url_unchanged": true,
+      "right_drawer_open": true,
+      "right_drawer_box": {
+        "x": 60,
+        "y": 0,
+        "w": 300,
+        "h": 844
+      },
+      "right_drawer_closed_on_escape": true,
+      "console_errors": 42,
+      "pageerrors": []
+    }
+  },
+  "public": {
+    "public_cards": 6,
+    "public_meta": "6 posts on this feed \u2014 the newest landed just now, across 4 voices.",
+    "popup_open": true,
+    "garden_cards": 2,
+    "garden_meta": "2 posts on this feed \u2014 the newest landed just now, across 1 voice. Matching \u201cgarden\u201d.",
+    "harvest_cards": 1,
+    "cleared_cards": 6
+  }
+}
