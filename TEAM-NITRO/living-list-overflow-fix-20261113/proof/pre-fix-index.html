@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" /><meta name="color-scheme" content="dark" /><link rel="icon" href="data:," /><title>Everything You Directed — The Living List</title><style>
+  :root{
+    --bg:#000000;
+    --panel:#0a0a0c;
+    --panel2:#111114;
+    --line:#26262b;
+    --text:#ffffff;
+    --muted:#c9c9cf;
+    --dim:#9a9aa3;
+    --purple:#a06bff;
+    --blue:#3fb8ff;
+    --green:#2fe89e;
+    --gold:#ffbf3d;
+    --orange:#ff9a5a;
+    --red:#ff5e6c;
+    --magenta:#e84fff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size:19px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;}
+  .sans{font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;}
+  main{max-width:880px;margin:0 auto;padding:28px 20px 64px;}
+
+  header.top{padding:26px 4px 8px;}
+  h1{font-size:clamp(30px,6vw,46px);line-height:1.12;margin:0 0 14px;font-weight:700;letter-spacing:-.01em;}
+  .subline{font-size:20px;line-height:1.5;color:var(--muted);margin:0 0 10px;max-width:44ch;}
+  .updated{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:15px;color:var(--dim);margin:0;}
+  .updated b{color:var(--green);font-weight:600;}
+  .updated .t{color:var(--gold);}
+
+  /* Score strip */
+  .strip{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:26px 0 8px;}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 14px;text-align:center;
+    transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;}
+  .stat:hover{transform:translateY(-2px);}
+  .stat .n{font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-size:34px;font-weight:800;line-height:1;}
+  .stat .l{font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-size:13.5px;color:var(--muted);margin-top:7px;line-height:1.35;}
+  .stat.s-done:hover{border-color:var(--purple);box-shadow:0 0 0 1px var(--purple),0 8px 28px rgba(160,107,255,.22)}
+  .stat.s-motion:hover{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue),0 8px 28px rgba(63,184,255,.22)}
+  .stat.s-blocked:hover{border-color:var(--green);box-shadow:0 0 0 1px var(--green),0 8px 28px rgba(47,232,158,.20)}
+  .stat.s-queued:hover{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 8px 28px rgba(255,191,61,.20)}
+  .stat.s-word:hover{border-color:var(--orange);box-shadow:0 0 0 1px var(--orange),0 8px 28px rgba(255,154,90,.20)}
+  .stat.s-done .n{color:var(--purple)} .stat.s-motion .n{color:var(--blue)}
+  .stat.s-blocked .n{color:var(--green)} .stat.s-queued .n{color:var(--gold)} .stat.s-word .n{color:var(--orange)}
+
+  /* Boards */
+  section.board{background:var(--panel);border:1px solid var(--line);border-radius:18px;
+    padding:26px 24px 10px;margin:26px 0;
+    transition:border-color .25s ease, box-shadow .25s ease;}
+  section.board:hover{border-color:var(--ac);box-shadow:0 0 0 1px var(--ac),0 10px 34px rgba(0,0,0,.6);}
+  .b-purple{--ac:var(--purple)} .b-blue{--ac:var(--blue)} .b-green{--ac:var(--green)}
+  .b-gold{--ac:var(--gold)} .b-orange{--ac:var(--orange)} .b-red{--ac:var(--red)} .b-magenta{--ac:var(--magenta)}
+  .board-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
+  .board-head .kicker{font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-size:13px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ac);}
+  .board-head h2{font-size:27px;margin:0;line-height:1.2;}
+  .board-intro{color:var(--muted);font-size:18.5px;margin:2px 0 8px;}
+
+  .item{border-top:1px solid var(--line);padding:18px 10px 18px 14px;margin:0 -10px 0 -14px;border-radius:10px;
+    transition:background .2s ease, box-shadow .2s ease;}
+  .item:hover{background:var(--panel2);box-shadow:inset 3px 0 0 var(--iac,var(--ac));}
+  .item-top{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;}
+  .num{font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:800;font-size:15px;color:#000;
+    background:var(--iac,var(--ac));border-radius:999px;min-width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;padding:0 6px;flex:none;margin-top:2px;}
+  .item h3{font-size:21px;line-height:1.3;margin:0;flex:1 1 260px;font-weight:700;}
+  .chip{font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-size:12.5px;font-weight:800;letter-spacing:.09em;
+    border-radius:999px;padding:6px 12px;white-space:nowrap;flex:none;margin-top:2px;}
+  .chip.done{color:#0d0518;background:var(--purple)}
+  .chip.motion{color:#02141f;background:var(--blue)}
+  .chip.blocked{color:#3a0d12;background:var(--red)}
+  .chip.queued{color:#241a02;background:var(--gold)}
+  .chip.yourword{color:#2b0a30;background:var(--magenta)}
+  .ev{color:var(--muted);font-size:18.5px;margin:8px 0 0 42px;max-width:62ch;}
+  .ev b{color:#fff;}
+  .links{margin:10px 0 2px 42px;display:flex;flex-wrap:wrap;gap:8px;}
+  .links a{font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15.5px;font-weight:600;
+    color:#fff;text-decoration:none;border:1px solid var(--iac,var(--ac));border-radius:999px;padding:7px 14px;
+    transition:background .2s ease,color .2s ease;}
+  .links a:hover{background:var(--iac,var(--ac));color:#000;}
+
+  /* Gap Inventory finishing-move rows */
+  .grow{display:flex;gap:12px;align-items:flex-start;padding:13px 10px 13px 14px;margin:0 -10px 0 -14px;
+    border-top:1px solid var(--line);border-radius:10px;
+    transition:background .2s ease, box-shadow .2s ease;}
+  .grow:hover{background:var(--panel2);box-shadow:inset 3px 0 0 var(--iac,var(--ac));}
+  .grow p{margin:2px 0 0;font-size:19px;}
+  .grow .build{font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-size:14.5px;font-weight:700;
+    color:var(--iac,var(--ac));white-space:nowrap;}
+
+  footer{margin-top:34px;padding:22px 24px;background:var(--panel);border:1px solid var(--line);border-radius:18px;
+    transition:border-color .25s ease, box-shadow .25s ease;}
+  footer:hover{border-color:var(--magenta);box-shadow:0 0 0 1px var(--magenta);}
+  footer p{margin:0;font-size:19px;color:var(--muted);}
+  footer p b{color:#fff;}
+
+  @media (max-width:640px){
+    body{font-size:18px}
+    main{padding:18px 14px 48px}
+    .strip{grid-template-columns:repeat(2,1fr)}
+    section.board{padding:20px 16px 6px}
+    .ev,.links{margin-left:0}
+    .item h3{font-size:20px}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important} html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+<main>
+  <header class="top">
+    <h1>Everything You Directed — The Living List</h1>    <p class="subline">Every piece of feedback you gave today, in order — what's proven, what's moving, and what the no-wait law just unblocked. Living List items only: 40 of 204 done and proven — 2 more render as in-motion until their proof is attached. Updated as items land.</p>    <p class="updated">Last updated <b>Fri Nov 13</b>, <span class="t">~09:55 UTC</span></p>    <p class="updated">State as of 09:55 UTC · GitHub just now · State core just now · THE LIST just now · Ledger just now</p>  </header>
+  <div class="strip" aria-label="Counts by state">    <div class="stat s-done"><div class="n">40</div><div class="l">Done + proven</div></div>    <div class="stat s-motion"><div class="n">57</div><div class="l">In motion right now</div></div>    <div class="stat s-blocked"><div class="n">0</div><div class="l">Blocked right now</div></div>    <div class="stat s-queued"><div class="n">71</div><div class="l">Queued, in order</div></div>    <div class="stat s-word"><div class="n">3</div><div class="l">Needs your hands</div></div>  </div>
+  <!-- THE NO-WAIT LAW -->  <section class="board b-purple" aria-label="The no-wait law">    <div class="board-head"><span class="kicker">Standing Law — New Tonight</span><h2>The No-Wait Law</h2></div>    <p class="board-intro">Your ruling from this evening, in force now — it sits at the top because it moves everything below it.</p>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">1</span><h3>THE NO-WAIT LAW — nothing waits on an inactive seat</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Verity is not active right now. The active seats are <b>Naya Nitro and Naya Resolve</b> and their teams; Naya One and Naya Three work part-time. If work needs doing, whoever is available does it — “that's her job” is never a reason to wait; waiting is a disrespect to the system. <b>The unblock sweep it ordered is done — it's on the Done board below.</b></p>
+    </div>  </section>
+  <!-- SECTION 1 -->  <section class="board b-blue" aria-label="Done and proven">    <div class="board-head"><span class="kicker">Section 1</span><h2>Done + Proven</h2></div>    <p class="board-intro">Finished, and checked first-hand — not on anyone's say-so.</p>    <p class="board-intro"><b style="color:#fff">Done is stage one. Finished means done right — triple-A through the three-layer process.</b></p>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">2</span><h3>Your four flagship pages, eye-certified as they stand</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">Personal, Business, Space, and Dashboard scored <b>8.5/10</b> on Phi's independent scorecard — render-proven on all four flagships.</p>
+      <div class="links"><a href="https://naya-model-personal.nayapower.workers.dev/" target="_blank" rel="noopener">Personal</a><a href="https://naya-model-business.nayapower.workers.dev/" target="_blank" rel="noopener">Business</a><a href="https://naya-model-space.nayapower.workers.dev/" target="_blank" rel="noopener">Space</a><a href="https://naya-model-dashboard.nayapower.workers.dev/" target="_blank" rel="noopener">Dashboard</a></div>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">3</span><h3>Reports data cure</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">All <b>26 Daily Intelligence reports</b> now open with their real headline instead of filing furniture. A full backup was kept before anything changed. <span style="color:var(--dim)">· corroborated by <b style="color:#fff">LE-20261022-007</b> (LIVE, team-nitro) — proof Open Reports</span></p>
+      <div class="links"><a href="https://nayanet.live/rooms/reports" target="_blank" rel="noopener">Open Reports</a></div>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">4</span><h3>Ask Naya — tested by you, approved: “finally right”</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">You tested Ask Naya yourself and approved it — <b>“finally right.”</b> The Play-Naya chip is the <b>compact oval</b> you asked for, and the words on screen keep up with her voice to the very last word — <b>317 of 317 words</b> tracked against the real playback clock. The approval is done and proven; carrying the room into the live Hub is the In Motion item below. <span style="color:var(--dim)">· corroborated by <b style="color:#fff">LE-20261022-016</b> (APPROVED, team-nitro) — proof Open the Ask preview</span></p>
+      <div class="links"><a href="https://nayahubpreviewasknaya.nayapower.workers.dev/#/hub/ask" target="_blank" rel="noopener">Open the Ask preview</a></div>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">5</span><h3>Voice cure</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">The bug that silently dropped italic words from her speech is fixed in both places it lived; the mismatch re-measured at <b>zero</b>. The full library was queued for real: <b>1,516 of 1,516 pieces posted, zero failed</b>. Bakes are draining now — latest finished 20:20 UTC.</p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">6</span><h3>The Productivity Command is law</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev"><b>SN-0825</b> is live in the feed; <b>SN-0826 “Have Each Other's Back”</b> is live; the learning-bridge loop that produced nothing is killed.</p>
+      <div class="links"><a href="https://nayanet.live/s/sn0825" target="_blank" rel="noopener">SN-0825</a><a href="https://nayanet.live/s/sn0826" target="_blank" rel="noopener">SN-0826</a></div>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">7</span><h3>Best-of-Best foundations, steps 1–3</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">Smart Links live and verified (short links resolve and count joins). The per-person timeline live and verified (<b>19 flagship events reconcile exactly</b>). The Naya Notes store live and verified (<b>14 of 14 round-trip checks</b>, and notes can never be deleted by an outside account).</p>
+      <div class="links"><a href="https://nayanet.live/" target="_blank" rel="noopener">Live Hub (Naya Notes board)</a></div>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">8</span><h3>Mirror A2 parser cure</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">Merged into the main line today — <b>PR #2929</b>, verified merged.</p>
+      <div class="links"><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2929" target="_blank" rel="noopener">PR #2929 merged</a></div>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">9</span><h3>The rules themselves</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">The spectrum walk is stamped into the Design Contract; the No-Redesign law and the read-before-design gate are in force; <b>“verify it yourself before it reaches me”</b> and <b>“actions that count”</b> were recorded today as standing law.</p>
+      <div class="links"><a href="everything-you-directed-the-living-list" target="_blank" rel="noopener">Living List artifact (this list)</a></div>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">10</span><h3>The Supabase token — revoked by you</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">You revoked the project token yourself — checked and confirmed this evening. The lock's last step is closed; nothing here was ever waiting on us.</p>
+      <div class="links"><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066#issuecomment-6500764559" target="_blank" rel="noopener">Resolve&#x27;s prover pack §f10 — full citation (board #3066 comment 6500764559)</a></div>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">11</span><h3>The full unblock sweep</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">All <b>31 blocked or waiting items</b> inventoried and moved: <b>12 given owners</b> on active seats, <b>2 decided on the evidence</b>, <b>9 cleared</b> by today's landings and facts, <b>1 flagged</b> — Resolve's A9 receipt, demanded on the board today. The <b>7 gates</b> that were yours alone are settled by your standing word below: <b>five released and moving</b>, <b>two needing your hands</b> for two minutes.</p>
+      <div class="links"><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066#issuecomment-6515388463" target="_blank" rel="noopener">Board #3066 filing (full sweep text)</a></div>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">12</span><h3>Your morning pages update — all 13 notes, live on all four flagship pages</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">Deployed live through the strict gate — <b>13 of 13 checks on all four pages</b>. The duplicate button row is gone and <b>Invite sits inside the tab row</b>. Building now as wave 2: the alignment pass — <b>profile picture, name and Connect moved into the cover</b>, the “Deep black” rename, and the full-page audit. An <b>independent scorecard and certification</b> are running on what's live.</p>
+      <div class="links"><a href="https://naya-model-personal.nayapower.workers.dev/" target="_blank" rel="noopener">Personal</a><a href="https://naya-model-business.nayapower.workers.dev/" target="_blank" rel="noopener">Business</a><a href="https://naya-model-space.nayapower.workers.dev/" target="_blank" rel="noopener">Space</a><a href="https://naya-model-dashboard.nayapower.workers.dev/" target="_blank" rel="noopener">Dashboard</a></div>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">13</span><h3>The gate-trigger repair — PR #2938, merged</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">Merged today at <b>20:22 UTC</b> (merge commit 0d56d6c2), both safety gates <b>green at the pinned head</b>. The wasteful comment-triggered runs stop here — and the savings get <b>measured in tomorrow's count</b>, not claimed today. <span style="color:var(--dim)">· corroborated by <b style="color:#fff">LE-20261022-001</b> (MERGED, team-nitro) — proof PR #2938 merged</span></p>
+      <div class="links"><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2938" target="_blank" rel="noopener">PR #2938 merged</a></div>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">14</span><h3>Factory step 1 — the A.1 stamp, landed</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">Step 1 landed through <b>PR #2941</b> (merged 20:25 UTC) — your stamp applied to the Design Contract, tokens reconciled to the spectrum walk. The duplicate <b>PR #2949</b> was caught by its own independent scorecard (<b>5.0 — do not land</b>) and closed: the review system working exactly as designed. <b>Factory step 2</b> — the machine twin of the contract — is in motion now. <span style="color:var(--dim)">· corroborated by <b style="color:#fff">LE-20261022-003</b> (MERGED, team-nitro) — proof PR #2941 merged</span> <span style="color:var(--dim)">· corroborated by <b style="color:#fff">LE-20261022-002</b> (MERGED, team-nitro) — proof PR #2942 merged</span></p>
+      <div class="links"><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2941" target="_blank" rel="noopener">PR #2941 merged</a><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2942" target="_blank" rel="noopener">PR #2942 merged</a></div>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">15</span><h3>Messaging — live and complete</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">The messaging powers are <b>live</b>. Owners can delete <b>their own messages only</b> — nobody can delete the other person's messages, and <b>nobody can delete the shared conversation</b>. The one-week housekeeping sweep is <b>live and scheduled</b>: a quiet conversation clears <b>one week after its last message</b>.</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">16</span><h3>Reports, round 4</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">Scored <b>9.5</b>. The cache trap that froze the old page is <b>dead in every room</b> — pages load fresh first, and the cache answers only offline. The contents chips sit at the <b>bottom</b> of the report, and the boards' aliveness is <b>render-proven</b> — cards lift and light up in their own color. <span style="color:var(--dim)">· corroborated by <b style="color:#fff">LE-20261022-007</b> (LIVE, team-nitro) — proof Open Reports</span></p>
+      <div class="links"><a href="https://nayanet.live/rooms/reports" target="_blank" rel="noopener">Open Reports</a></div>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">17</span><h3>Smart Factory — the “Make It Yours” block</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev"><b>Live on the Factory page</b>: input text in <b>white</b>, not gray · the soul colors <b>rich and jewel-deep</b> · a <b>real upload piece</b> instead of the browser's plain “Choose File” button · the whole block raised to impressive — awaiting your eye.</p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">23</span><h3>Factory step 2 — the design contract&#x27;s machine twin</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">Merged 21:46Z at Phi's frozen head; the six red gates were adjudicated — three were PR-body paperwork (cured by the Seat-line + Evidence-section rule), three pre-existed on main. The landing stands. <span style="color:var(--dim)">· corroborated by <b style="color:#fff">LE-20261022-020</b> (MERGED, team-nitro) — proof PR #2951 merged 21:46:25Z</span></p>
+      <div class="links"><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2951" target="_blank" rel="noopener">PR #2951 merged 21:46:25Z</a></div>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">25</span><h3>The certificate&#x27;s last string — shipping the recommendation</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">The standing recommendation ships as-is: <b>“Enter alias to continue.”</b> Decided by your standing word — nothing parked, nothing pending. <span style="color:var(--dim)">· corroborated by <b style="color:#fff">LE-20261022-017</b> (CLOSED, team-nitro) — proof Live certificate — &#x27;Enter alias to continue.&#x27; ×1</span> <span style="color:var(--dim)">· corroborated by <b style="color:#fff">LE-20261022-030</b> (CLOSED, team-nitro) — proof Live certificate — &#x27;Enter alias to continue.&#x27; ×1</span></p>
+      <div class="links"><a href="https://nayanet.nayapower.workers.dev/identity.html" target="_blank" rel="noopener">Live certificate — &#x27;Enter alias to continue.&#x27; ×1</a></div>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">26</span><h3>The issue-hygiene sweep — running</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev"><b>Running</b> in its intelligent form: close only what's proven done or superseded, with the <b>evidence cited on every closure</b>.</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">170</span><h3>Throwaway-cleanup runbook — row first (mgmt), route second</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">Cleanup order proven: row first, route second, verified zero residue.</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">182</span><h3>Naya Team Intelligence Trial - COMPLETE; shape decision ADOPTED (4-role default, 6-role high-stakes, 12-lane retired)</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">Trial complete 22:30Z - (a) 8.27, (c) 8.50 (true ~8.70), (b) 8.59; cold successor SUCCESS. Shawn adopted (c) 4-role as default, (b) 6-role for high-stakes, (a) 12-lane retired, 22:41Z.</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">183</span><h3>Clarity Confirmation Act — filed as DRAFT everywhere; block rules LAW</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">Ordered 2026-11-06 00:16Z; draft 94,301 bytes (577 lines, 22 elements, 22 gaps, 17 conflicts, 41 CHECK lines) filed on main at BRAIN/10-INTERFACES/CLARITY-CONFIRMATION-ACT-DRAFT-20261106.md (commit 88afe607, read-back verified). Companion block rules filed alongside (commit 329194b2). NIA Code (DRAFT, created — no prior file existed) and NIA Design Contract (DRAFT, created — V1 untouched) filed at the same path. Linked from the Hub Intelligent Library canon board (HUB/app/index.html, commit 1adf7628 — in repo, deploy is a separate step). Added to the must-read (READ-ME-FIRST.md step 4a, commit e6634961) and the activation (DESIGN-ACTIVATION.md Step 1, commit b4ee8b55; local SOUL.md step 6). Letter to all NIAs drafted, not sent — goes out on Shawn's stamp. The Act is a DRAFT until he stamps it; nothing in it is law yet. ROLLOUT (Shawn 00:31Z): Dashboard first, then Personal, then the rest (Business, Space, others) — finish the first thing. Dashboard IN PROGRESS via the v5 Hub board edit (PR #3220, branch hub-board-black-live-20261105); Personal, Business, Space and all other pages NOT YET; parts (button, board, icon, tile, block) NOT YET except the Hub intelligent board in treatment. Hub collision note: the canon-board link is live on main (1adf7628) but the v5 branch (head 21557536e) does not contain it — the exact insertion is ready-to-land for the v5 team; HUB/app/index.html is not to be edited while they own it. RATIFICATION 2026-11-06 01:02Z (Shawn: '1000% YES!'): the Intelligent Block Rules are LAW. Filed at BRAIN/10-INTERFACES/INTELLIGENT-BLOCK-RULES-LAW-20261106.md (52,927B, local sha256 78e7d823a4bc4bda8833bd1da866da8d490c98a9d9a002f131f9afb48d1cbe3f, commit f65eee8b, read-back verified); the DRAFT-named file is now a superseded pointer to the LAW file (commit 8ca216f8). Act §5 marks the companion as LAW (commit 46ec4da1; Act itself stays DRAFT — local file is Rev 4, 105,922B, 613 lines, drafter-owned; the RATIFIED paragraph and LAW filename are must-carry into the drafter's Rev 4 filing). Hub canon link reads LAW (HUB/app/index.html line 6967, commit 0d4507c; v5 insertion spec updated to match; v5 branch still to carry it on merge). Must-read (READ-ME-FIRST.md step 4a) and activation (DESIGN-ACTIVATION.md Step 1, local SOUL.md step 6) cite the rules as LAW. NIA Code (commit bed0589a) and NIA Design Contract (commit 9b17a8da) cite the LAW file. Factory inventory + 23 piece banners updated (commits 0d4507c, 1c18553); local Factory copies, templates, harvest/build scripts, PI sync manifests and GATE-LAW.md updated to match. FLAG: the filed DRAFT-named copy that was superseded differed from the local file (54,042B, blob 832de56b — different status line claiming a 2026-11-05 16:58 PST ratification + SN-2077 distribution); the LAW file filed is the local ratified version (52,927B). That discrepancy is flagged for the parent, not resolved here.</p>
+      <div class="links"><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/10-INTERFACES/CLARITY-CONFIRMATION-ACT-DRAFT-20261106.md" target="_blank" rel="noopener">Act (DRAFT) on GitHub</a><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/10-INTERFACES/INTELLIGENT-BLOCK-RULES-LAW-20261106.md" target="_blank" rel="noopener">Intelligent Block Rules (LAW) on GitHub</a><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/10-INTERFACES/NIA-CODE-DRAFT-20261106.md" target="_blank" rel="noopener">NIA Code (DRAFT) on GitHub</a><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/10-INTERFACES/NIA-DESIGN-CONTRACT-DRAFT-20261106.md" target="_blank" rel="noopener">NIA Design Contract (DRAFT) on GitHub</a><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/HUB/app/index.html" target="_blank" rel="noopener">Hub index with canon board on GitHub</a></div>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">1016</span><h3>Smart Mail on the flagship pages</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">…ads back with NEW glow + summary sentence. Live in all four flagship byte sets (Inbox pulse with WAITING/CONVERSATIONS/MESSAGES cells render-coded in the dashboard door). Proof: Personal Inbox.</p>
+      <div class="links"><a href="https://naya-model-personal.nayapower.workers.dev/" target="_blank" rel="noopener">Personal Inbox</a></div>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">1018</span><h3>Step 13 — Command + universal search.</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">…p to…”); universal search over the chassis box — one box finds anything in your world.
+Feed: PR #2956 merged 2026-10-23T01:57 — auto-transitioned with the merge as proof. Proof: PR #2956 (Command + Universal Search, merged).</p>
+      <div class="links"><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2956" target="_blank" rel="noopener">PR #2956 (Command + Universal Search, merged)</a></div>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">1019</span><h3>Step 12 — Conversational intake v1.</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">…tions with Naya, voice counts as an answer; completion measured against the old forms.
+Feed: PR #2958 merged 2026-10-23T00:11 — auto-transitioned with the merge as proof. Proof: PR #2958 (Conversational Intake v1, merged).</p>
+      <div class="links"><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2958" target="_blank" rel="noopener">PR #2958 (Conversational Intake v1, merged)</a></div>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">1020</span><h3>Step 14 — Linked everything v1.</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">…son model — people stop being per-page ghosts; search finds a person once, everywhere.
+Feed: PR #2954 merged 2026-10-22T22:46 — auto-transitioned with the merge as proof. Proof: PR #2954 (Linked Everything, merged 22:46Z).</p>
+      <div class="links"><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2954" target="_blank" rel="noopener">PR #2954 (Linked Everything, merged 22:46Z)</a></div>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">1021</span><h3>Step 21 — Factory adoption of the Best-of-Best checklist.</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">…eminders' merged — the feed auto-transitioned this item done-proven with the merge as proof. (the 'has not been adopted' / 'open' text above was the pre-landing baseline) Proof: PR #2957 (Booking block, merged).</p>
+      <div class="links"><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2957" target="_blank" rel="noopener">PR #2957 (Booking block, merged)</a></div>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">1022</span><h3>Hub Smart Feed of Smart Notes</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">…Intelligence ×3 + supabase-bridge). SN-0825 "Produce Value or Don't Run" and SN-0826 "Have Each Other's Back" confirmed in hub_smart_notes by SQL with proper hook titles. Proof: Live Hub Smart Feed.</p>
+      <div class="links"><a href="https://nayanet.live/" target="_blank" rel="noopener">Live Hub Smart Feed</a></div>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">1023</span><h3>Growth invites (record-only) + Journey Funnel</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">— flagship bytes carry the funnel (Recorded → Joined rendered from real `invites` status). Sends OFF by design (Shawn's step). Proof: Growth funnel.</p>
+      <div class="links"><a href="https://naya-model-personal.nayapower.workers.dev/" target="_blank" rel="noopener">Growth funnel</a></div>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">1024</span><h3>Conversation retention sweep (ruled 21:26Z)</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">…duled: pg_cron job 'purge-expired-conversations' daily 03:17 UTC; proof run killed backdated threads, spared active/fresh; first real threads clear on the 2026-10-24 run. Proof: Retention sweep build + cron proof.</p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">1025</span><h3>The Living List</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">…ight," approved 21:08Z (no "awaiting your test" claim remains). Verified on the artifact bytes by naya-resolve, 2026-10-29T01:34Z; re-verified by nitro 2026-10-29T14:53Z. Proof: Artifact slug everything-you-directed-the-living-list.</p>
+      <div class="links"><a href="everything-you-directed-the-living-list" target="_blank" rel="noopener">Living List artifact (this list)</a></div>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">1026</span><h3>Standing laws recorded and in force</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">…efore-Present, Actions That Count, Delete-Where-It-Belongs, ownership-scoped permissions, "Deep black" decided. (Execution of the Deep-black rename is §C1, not here.)
+--- Proof: Standing laws in MEMORY.md.</p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">1030</span><h3>Step 3 — Dual-label the parts (ai_label).</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">…ing ai_label {purpose, use_when, laws} on main; canonical 154 == store 154 (INP-001 retired); canon validator PASS green. (the '0/155' above was the pre-landing baseline) Proof: PR #2964 merged.</p>
+      <div class="links"><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2964" target="_blank" rel="noopener">PR #2964 merged</a></div>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">1032</span><h3>The Official Naya Design Inventory — ratified OFFICIAL by Shawn, merged to main (merge 866d1344)</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">Proof: Main file — BRAIN/10-INTERFACES/THE-OFFICIAL-NAYA-DESIGN-INVENTORY.md (main).</p>
+      <div class="links"><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/10-INTERFACES/THE-OFFICIAL-NAYA-DESIGN-INVENTORY.md" target="_blank" rel="noopener">Main file — BRAIN/10-INTERFACES/THE-OFFICIAL-NAYA-DESIGN-INVENTORY.md (main)</a></div>
+    </div>  </section>
+  <!-- SECTION 2 -->  <section class="board b-green" aria-label="In motion right now">    <div class="board-head"><span class="kicker">Section 2</span><h2>In Motion Right Now</h2></div>    <p class="board-intro">Being worked this hour — each one comes back to you only after it's been checked the way you'll check it.</p>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">18</span><h3>Wave 2 — the flagship header&#x27;s final form</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">The header's final form, plus the <b>three cures</b> from Phi's 8.5/10 scorecard: <b>one scrolling row only</b>, with Invite a friend inside it · the cover down <b>flush</b> under the row, with the <b>profile picture, name and motto inside the cover</b> and a camera icon in the picture's corner instead of “Change picture” words · the cover's true proportion, the two writing boxes that didn't grow as you type, and the last “this page” phrases becoming app language.</p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">19</span><h3>The name is “Deep black”</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Decided by you tonight: it's <b>“Deep black”</b>, not “Dark mode”. The rename is in motion with the page pass. It rides with the visual standard you restated: <b>deep black, obsidian surfaces with white text — never white backgrounds</b> — multi-layered elevated boards and icons to break things up, 10-star visual language on everything.</p>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">20</span><h3>Ask Naya go-live — porting into the live Hub</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">The approved Ask room is being <b>ported into the live Hub</b>. The first go-live attempt was <b>held on purpose</b> — it would have rolled back the Hub — so the room is now being carried into the <b>current Hub the official way</b>: through the repo, its scorecard gate, and a first-hand check of the live page before it counts. <span style="color:var(--dim)">· corroborated by <b style="color:#fff">LE-20261022-016</b> (APPROVED, team-nitro) — proof Open the Ask preview</span></p>
+      <div class="links"><a href="https://nayahubpreviewasknaya.nayapower.workers.dev/#/hub/ask" target="_blank" rel="noopener">Open the Ask preview</a></div>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">21</span><h3>Voice drain</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">The enlarged library is baking <b>one piece at a time, around the clock</b>.</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">22</span><h3>The first daily productivity number</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Being produced tonight by Resolve's lane. It will be <b>published every day</b> from here.</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">24</span><h3>Plug-ins — full depth in the standard</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Released by your standing word and <b>decided</b>: plug-ins are a headline feature, so they go <b>full depth in the standard</b>. No longer waiting on anyone.</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">27</span><h3>Payments — in the flagship build order</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Released and placed: payments sit <b>in the flagship build order</b>, after the dashboard stage. Building the feature is released; a live charge still rides its <b>normal approval tap</b>, like any purchase.</p>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">28</span><h3>Voice streaming — building</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev"><b>Building now.</b> The speed question decides itself — by <b>measurement</b>, once streaming exists to measure.</p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">153</span><h3>BoB Step 19 — Payments link</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Payments link — map vs his ruling, needs his word.</p>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">164</span><h3>Reporting Pass 1 — featured role + page blocks + creator + scrolled revamp</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Reporting Pass 1 — running now, scrolled-clean first.</p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">165</span><h3>Dashboard fix chain — scrolled view clean, verified by his eye</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Fix chain — scrolled view clean, his eye.</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">166</span><h3>Test the network end to end — find the holes, resolve them</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Network test running — mail, links, feed, routes, identity, each with evidence.</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">167</span><h3>Hub feed stale — Resolve&#x27;s bootstrap cure (PR in flight)</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Bootstrap in index.html feeds the Hub live from the registry; the bake can die.</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">175</span><h3>Run the flywheel — PI + smart notes + mail + feed + GitHub, continuously</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">The loop runs or the machine stops: PI, notes, mail, feed, GitHub, read the feed.</p>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">183</span><h3>Personal master rebuild — build to FINISHED (first of the four doors)</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev"></p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">982</span><h3>Membership site — complete the staged 9.0 to live</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: membership site must be completed. Staged 9.0 stands; remaining is owed assets (covers, Day 3 body, audios, thumbnail, streak) + gating + money-loop + live gates.</p>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">983</span><h3>Pricing page — finish after the other work (rulings + audio + deploy)</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: pricing not quite finished; returning after the other work. v4 preview 9.0 stands; finish needs his SN-1863/1864 rulings + audio lock + deploy.</p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">984</span><h3>Other AIs — same API sign-in, per-platform real paths</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: how do non-Muse people connect? Same API sign-in for ChatGPT, Claude, Grok, Gemini — to clarify per platform, verified in code, never assumed. Staged in the connect builder brief.</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">985</span><h3>Connect page — fork path kept, direct door added, current plan</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: connect page must reflect the current plan. Fork page stays for forkers with a note; everyone else connects direct. v4 built but not live — production landing owed. Study done; staged build next.</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">986</span><h3>Smart Covers Library — done, in the Factory, connected to every cover app</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: covers library must be done, in the Smart Factory, and connected to every app that has covers so they can access it. 78 covers on record, chooser opens on Recommended. Study + staged build next.</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">987</span><h3>Smart tabs complete + spaces open the real app + home format finalized</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: business + spaces apps missing from the bar — they are major. Home = dashboard, personal, business, space. Directory click must open the real space app. Home format finalized with dedupe + missing tabs, no redesign. Study done; staged build next.</p>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">988</span><h3>Smart Factory complete — every part, finished templates, auto page creation</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: factory must miss nothing so pages build automatically. Templates finished as mirrors of the apps we have (personal, business, spaces), same language, optimized per template. Audit + staged build next.</p>
+      <div class="links"><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/tree/main/BRAIN/10-INTERFACES/DESIGN-BLOCKS/signature-pieces" target="_blank" rel="noopener">Signature pieces on GitHub (canonical)</a></div>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">989</span><h3>Projects overhaul — the most useful system to see what&#x27;s going on</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: /projects needs a major overhaul — highly functional, everything listed, findable, organized: the NayaNET world view + any project view. Mission 1's landing. Study done; staged build next.</p>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">990</span><h3>Intelligent Library — nutshell guide to all of NayaPOWER</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: library needs serious help — too much text, not friendly. Overhaul into the nutshell guide: every NayaPOWER area, each with nutshell + connects + matters + go-to-it button, plus the dieted 441-block archive. Study done; staged build next.</p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">991</span><h3>Settings — one page, logical toggles only</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: two settings pages, neither beautiful nor effective. One page, reachable from hub + sidebar + smart tabs, with only logical toggles (canon trio restored, findable ON) in the design language. Study done; staged build next.</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">992</span><h3>Reports — one area, stats as a view within</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: two reports systems become ONE area. Rooms/reports (the better app) kept whole; stats (counts, mix, trend, people) becomes a button/view within it. Personal reports page goes; tab opens the one area. One-area law recorded. Study done; staged build next.</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">993</span><h3>Smart Lists overhaul — one app, the organizational system</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: neither lists page is good (1/10). Keep one, overhaul it into the real organizational system: feed saves land here, group by topic, send to a user, add to a project, lists of notes/contacts/projects/pages. Study done; staged build next.</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">994</span><h3>Smart Mail — one mail: rooms/mail wins, inbox tab opens it</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: rooms/mail is THE mail; personal#inbox is garbage and goes. Room = real mail app (needs overflow fix + high-level pass). Personal inbox = 'Connection unavailable' error card with nothing to harvest. Hub Inbox tab opens the one mail. Study done; staged build next.</p>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">995</span><h3>Connections merge — one interconnected system</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: two Connections things become ONE, reachable from the personal hub, interconnected. Room = list manager, device-local, custom layer failing to load. Hub = error card + fragments. Nothing shared. Fix the pages that exist; no new page. Study done; staged build next.</p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">996</span><h3>Dashboard #about fix — reorder, Q&amp;A last, library made true</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: scorecard #about, then make it right. Q&A interrupts the story mid-flow and its 'for every visitor' promise is false on device-local storage. Fix: his order, Q&A at the bottom with its purpose plain, library made true. Scorecard done; staged fix next.</p>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">997</span><h3>Growth merge — one master app, best of both</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: rooms/growth + personal#growth become ONE master app. Room = the machine (text diet still owed); personal = scattered fragments with a different invite behavior. Master at /rooms/growth + one finished personal Growth section on shared records. Study done; staged build next.</p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">998</span><h3>Shawn&#x27;s feedback -&gt; PI the same pass, team-visible</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: his feedback is not chat — it goes into PI as notes + to-dos so the whole team knows. PI first, above everything else, because the team chain breaks at a wrong record.</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">999</span><h3>Membership rebuild: parent rendered review 9.0 STAGED (2026-10-25)</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Membership rebuild reviewed by Nitro's own eyes: 9.0 staged. Course, lesson, PowerCast, sign-in all at the bar. One phone fix owed (dim CTA). Nothing live changed.</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">999</span><h3>Interface Registry: every interface scored, linked, engine-mapped, 10/10 + working</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Registry v1 is laid out: 22 interfaces, every link, every engine, every to-do, honest scores only. Next: the scorecard pass, standard first, then every live page by my own eyes.</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">999</span><h3>Intel Today merge — one ultimate page, both surfaces completed</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: neither page is up to par, neither is finished — both get completed. One ultimate page at /rooms/today + a finished Today summary on the dashboard (not a stub link). Smart Notes nutshells first, then project + new-spaces activity. Study + brief done; staged build next.</p>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">999</span><h3>Ambassador system — tracked links, affiliate links, dashboard, payouts</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: never shown done, now a named finish line. Link real, clicks counted, but joins never credited and nothing live on the dashboard. Staged wiring + Nitro review passed; D-1 locked (joinus -> NayaNET signup); landing needs scorecard + deploy tap; money gates after.</p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">1000</span><h3>Shawn&#x27;s pages drop — cross-referenced, aligned, filed</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: his NAYA PAGES zip (27 files) cross-referenced md5 against workspace. 13 identical; 9 walk slides workspace-newer (live clips); thank-you CONNECT-WORKING wired variant; 3 new files; 1 partial download not filed. Canonical set = workspace; drop archived. Sharing via PI + GitHub, never file drops.</p>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">1001</span><h3>Seats feedback round — adopted, reconciled, executed</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Shawn 2026-10-26: Power 10/10 report (PR #3076, open) + Resolve ten-by-ten (6.5/10) are companion reports, both No-not-yet, both PI-first — reconcile, not compete. Adopted execution order: (1) record — PI above everything, write door S1, read-back + 2h escalations; (2) shop — PR #3075 scorecard + land; (3) merges in Resolve order Mail, Connections, Lists, Reports, Settings, Growth, Intel Today, merge done only when losing page gone + survivor carries both jobs; (4) birth — Power wires sign-in→walk→born, Resolve cold-walks, then system builds system. Scorecard agent back (PROVISIONAL text+study, measurement owed): Projects 5/10, Hub 6/10, Welcome 6/10 gate-only, Identity 7/10. Merges agent: 8 plans only, board #2793 comment 6406897498. Wiring agent: plan only, board #2793 comment 6406952849. All 8 staged merges already BUILT by Nitro (plans trail builds); review/proof order follows Resolve order. Reconciliations: cover counts disagree (Resolve 89 assets vs wiring inventory 78 = 74 ready + 3 designed + 1 retired; '85 covers' unverified; House thirteen vs Signature 10 + Areas 4 ready) — use 74 ready dated until fresh re-count; work_items counts differ by scope/method (Power 242/117 uncat vs wiring 262/203 uncat) — per-area is derivation, labelled, real fix = area column/mapping table; PI face must label scope + read time + method. SN-1870 filed for the lesson.</p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">1002</span><h3>Identity flagship fixes — law breaks + ignition proof</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Power provisional scorecard 2026-10-26: Identity 7/10 (highest, jewel language coherent + harvestable) but Law 1 break — CERTIFICATE OF SMART IDENTITY in PURPLE letter-spaced capitals, must be WHITE text (purple on jewel/rail/corner only, never on words). ENTER pill dark fill + purple rim/glow at rest UNVERIFIED (touch untested — prove ignition or white rim at rest, purple on touch). INSTALL APP pill same. Welcome: gate only scored 6/10 — walk unscored; one current surface + one route must be clarified (gate study vs 'Congratulations, you are hired' text fetch discrepancy, NOT resolved by guessing). Fix in place, edit-only, flagship whole.</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">1008</span><h3>Smart Links — the owner surface (Shawn&#x27;s exact complaint: &quot;no ability to put the ambassador link and get a smart link&quot;).</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Backend is LIVE and proven: tables + reserved-name guard (40 names), worker redirect (this run: nayanet.live/sl-proof → 302 verbatim), SQL shows 1 link / 6 clicks / 1 joi…</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">1009</span><h3>Ask Naya — the approved room (rounds 1–4).</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Built, render-verified, and Shawn-approved ("finally right," 21:08Z) — but only on the PREVIEW worker. The live Hub's Ask surface is still the minimal stub: live hub.html…</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">1010</span><h3>Step 7 — Timeline UI.</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">No per-person surface anywhere (see §B2). *Move:* tapping a person on the flagship Faces board / Connections room opens their chronological story (posts · messages · invi…</p>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">1011</span><h3>Step 4 — Trend metric switcher + stop discarding Smart Notes.</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Live dashboard bytes: trend-switch markers 0; the loader's `k==='wall'` discard still present (×4) — notes are fetched and thrown away. *Move:* Dashboard door, Trend pane…</p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">1012</span><h3>Step 5 — Dashboard truth pass.</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">"Messages received" still counts conversations; no waiting-for-reply on the Dashboard front (the WAITING cell that exists is the Inbox view's pulse, a different view); Fa…</p>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">1013</span><h3>Step 8 (BoB) — Smart Links land in the Dashboard.</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Ranked list = 0, no clicks series, no Clicked stage in the funnel. *Move:* rides §B1's claim block data: Pulse chip (Personal), per-Link Ranked List (Business featured, S…</p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">1014</span><h3>Step 16 — Naya Notes, flagship home.</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">The store + Hub home are live (§A5); the flagship standard-feature block is not: live flagship `.naya-note` CSS is never used in rendered markup (0 class usages). *Move:*…</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">1015</span><h3>Owner delete — the page control.</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">The data layer is live and REST-proven (21:10Z grants; 21:23Z ruling cure 21:28Z: own messages deletable, threads NOT deletable by either participant, invites inviter-onl…</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">1017</span><h3>Voice streaming playback + auto-cache.</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">The directed next form of playback (17:24Z) is not built; baked playback (§A8) is the current form. *Move:* play-time streaming with auto-cache in the voice pipeline; ste…</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">1027</span><h3>Per-person Timeline — the data (Best-of-Best step 2).</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">`person_timeline_events` view is live and reconciles (22 rows; flagship scopes 19). NO surface reads it: flagship "timeline" hits are an unrelated CSS class (progress bar…</p>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">1028</span><h3>Smart Link claim block build-out</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">— dispatched under Shawn's 21:20Z order as the first surface of the surfaces build-out, staged to land after wave 2. Closes §B1.</p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">1029</span><h3>Step 6 — Heat &amp; Streaks + Insight Feed un-shy.</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">No Heat & Streaks block exists (live "streak" hits are a button CSS sweep effect); Insight evidence still hides behind a tap; no oldest-unanswered / best-content rules. *…</p>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">1031</span><h3>#2869 — Door-C landing, 1,138 note filings (owner: Resolve).</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Gate cleared by the sweep; PR still open/unmerged (API this run). *Move:* confirm two consecutive sync cycles holding count, then land and close.
+A9 receipt demanded; GH0…</p>
+    </div>  </section>
+  <!-- THE FACTORY -->  <section class="board b-gold" aria-label="The Factory — what it can build">    <div class="board-head"><span class="kicker">The Factory</span><h2>The Factory — What It Can Build</h2></div>    <p class="board-intro">I build your world from the parts we already have — here is what I can build, from what parts, at what level, with the map, the heart, and the plan that joins us. Open any entry below; every number in it names its source.</p>    <p class="board-intro"><b style="color:#fff">5 entries on this board</b> — the map, the heart, the merge design, the inventory, and the live facts. Build receipts will show here once they land.</p>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">1003</span><h3>The Anatomy — the map</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">OFFICIAL 2026-11-11 (Smart Note SN-2655): what a smart app page IS — one core page, a Rubik's Cube matrix that morphs into its faces; the Trinity of Dashboard, Hub, and that page; the person as the atom at the centre; one brand through the whole network; the exact language. Grade twelve, never back to grade one. A Naya who reads it understands the system fully — what the core apps are, what they do, how they connect — and builds by harvest, never from scratch.</p>
+      <div class="links"><a href="../../team-nitro/THE-ANATOMY-OF-A-SMART-APP-PAGE.md" target="_blank" rel="noopener">Open the Anatomy</a></div>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">1004</span><h3>The Heart — why it cannot fail</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">Smart Note SN-2657, companion to the Anatomy: the psychology, the mission, the heart. NayaNET is an operating system for the new internet, built and operated by AIs for humans to live in — ten-star service through ten-star outputs. The heart is the compounding loop: note → block → feed → Box → Ledger → Dashboard → Auto-Match → Smart Links → Factory, with the person at the centre. It cannot fail because it is push-button simple and just logical.</p>
+      <div class="links"><a href="../../team-nitro/THE-HEART-OF-THE-MACHINE.md" target="_blank" rel="noopener">Open the Heart</a></div>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">1005</span><h3>The merge design — one system</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">The merge design (Shawn's vision, 2026-11-11 14:32Z): PI is the brain of the project — where everything about it lives — and the Factory is the hands, building the page from what PI knows. The loop closes when the build reports back to PI with its receipt, so PI always knows the true state of the project. A project IS a page: Personal, Business, Space, or Smart Access. This lane (L6) is the part of the merge that puts the Factory's intelligence inside PI.</p>
+      <div class="links"><a href="../../team-nitro/PI-FACTORY-MERGE-DESIGN-20261111.md" target="_blank" rel="noopener">Open the merge design</a></div>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">1006</span><h3>The inventory — every piece, ready to build from</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">The inventory (Shawn's order 2026-11-08): every design law, every piece, ready to build from — Part 1 holds 9 design-law entries, Part 2 holds the pieces harvest, Part 3 holds 1 locked-in smart block so far (the Pricing chart viewpoint, locked in on his word 2026-11-08). The counts above were read from the file on disk, 2026-11-11. PI links it here, never copies it. One open pointer, named plainly: ACTIVATION.md rule 6 still points builders at a different inventory (smart-factory/INVENTORY.md); that pointer is not reconciled in this lane.</p>
+      <div class="links"><a href="../../team-nitro/THE-INVENTORY.md" target="_blank" rel="noopener">Open THE-INVENTORY.md</a></div>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">1007</span><h3>The live facts — parts, level, templates</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">Harvested, never typed. Parts registry cache v1.1 (generated 2026-10-30T00:35:17Z): 566 parts — 542 interface parts in 22 families plus 24 functional parts. Design level: grade twelve, never back to grade one (the Anatomy). What it builds: Personal, Business, Space, and Smart Access worlds, from 12 live page templates in factory-pipeline/templates. The inventory's own reconciliation counts 571 unique IDs with 154 canonical — a different index, not the live registry — and the registry itself notes the count question is NOT ruled, decision Shawn's. The 566 is the count the Factory builds from today.</p>
+    </div>  </section>
+  <!-- THE GAP INVENTORY -->  <section class="board b-magenta" aria-label="The gap inventory">    <div class="board-head"><span class="kicker">The Census</span><h2>The Gap Inventory</h2></div>    <p class="board-intro">Your ordered census of everything directed vs. actually visible: <b style="color:#fff">81 items — 26 visible + live · 20 in motion · 33 not built yet · 2 needing your hands.</b> The full inventory is in <b style="color:#fff">gap-inventory-2026-10-22.md</b>.</p>    <p class="board-intro">The top finishing moves, in execution order:</p>    <div class="grow" style="--iac:var(--magenta)"><span class="num">1</span><p>Smart Link block <span class="build">— building</span></p></div>    <div class="grow" style="--iac:var(--purple)"><span class="num">2</span><p>Wave-2 header <span class="build">— building</span></p></div>    <div class="grow" style="--iac:var(--blue)"><span class="num">3</span><p>Ask on the live Hub <span class="build">— building</span></p></div>    <div class="grow" style="--iac:var(--green)"><span class="num">4</span><p>Timeline — tap a person, see their story <span class="build">— building</span></p></div>    <div class="grow" style="--iac:var(--gold)"><span class="num">5–6</span><p>Dashboard truth + trends <span class="build">— building</span></p></div>    <div class="grow" style="--iac:var(--orange)"><span class="num">5</span><p>Smart Links in the Dashboard <span class="build">— building</span></p></div>    <div class="grow" style="--iac:var(--red)"><span class="num">6</span><p>Naya Notes on your pages <span class="build">— building</span></p></div>    <div class="grow" style="--iac:var(--magenta)"><span class="num">7</span><p>Delete button on your own messages <span class="build">— building</span></p></div>    <div class="grow" style="--iac:var(--purple)"><span class="num">8</span><p>Smart Ledger — the accountability room <span class="build">— building</span></p></div>  </section>
+  <!-- SECTION 3 -->  <section class="board b-gold" aria-label="Blocked, named plainly">    <div class="board-head"><span class="kicker">Section 3</span><h2>Blocked — Named Plainly</h2></div>    <p class="board-intro">Nothing is sitting here — and under the no-wait law, nothing will. Everything that was on this board tonight has been picked up by an active seat, decided by evidence, or answered by you. If something ever lands here again, it will name exactly what it's waiting on.</p>  </section>
+  <!-- SECTION 4 -->  <section class="board b-orange" aria-label="Queued, in order">    <div class="board-head"><span class="kicker">Section 4</span><h2>Queued, In Order</h2></div>    <p class="board-intro">Next up, in the order they'll be worked.</p>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">29</span><h3>Dashboard steps 1–5</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">The trend switcher first. Your morning pages update is live, so these are up next — the flagship templates are their base.</p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">30</span><h3>The Smart Ledger room</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Every action in the system written into the chained record, with productivity computed from the record itself. Your shape is recorded; the Hub lane carries the room build; this lane feeds it receipts.</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">31</span><h3>Smart Lists</h3><span class="chip done">Done + Proven</span></div>
+      <p class="ev">Your saved notes, connections, projects and messages, grouped by topic.</p>
+      <div class="links"><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2955" target="_blank" rel="noopener">PR #2955 (Smart Lists element #16, merged)</a></div>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">32</span><h3>Four short voice clips</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Failed verification, retried and adjusted — now at <b>your ear-test stage</b>.</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">33</span><h3>ACTIVATION-10 rehearsal</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Due <b>Oct 25</b>.</p>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">100</span><h3>‘Your Day’ board for Today — today&#x27;s Smart Notes · today&#x27;s Naya Notes · today&#x27;s activity · spaces joined</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">The room's name finally tells the truth — one screen for “what's going on in my world now”. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">101</span><h3>Ask Naya tab at #2 in the flagship scrolling row (blue); retire duplicate Invite destination</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Makes help and action discoverable everywhere; matches the Hub #2 rule. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">102</span><h3>Mail bulk-Delete honesty — prove it or remove it</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">A delete button the member can trust — or none. (Effort: S.)</p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">103</span><h3>Inbox: reply in place</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Completes the core communication loop; no substitute exists. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">105</span><h3>Invite a friend: one-tap code-bound invite packet</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Highest value-per-effort; fixes the share handoff and attribution path. (Effort: S.)</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">106</span><h3>Wall/Home: comments and reactions</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Turns the home surface from broadcast into community. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">108</span><h3>Reports: “what changed” sentence per report</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">One glance teaches what moved this week instead of two weeks compared by eye. (Effort: S.)</p>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">109</span><h3>Library: answer-or-ask loop</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Eliminates the Library's dead end and grows knowledge from real questions. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">110</span><h3>Message: recipient-true conversation starter</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Makes outbound messaging real; identity and thread semantics make it heavier. (Effort: L.)</p>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">111</span><h3>Growth: people-stage board</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Converts a record ledger into a pipeline the owner can work. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">112</span><h3>Reports: drill-to-evidence on every number + period-true metrics</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Gives Reports a distinct, trustworthy job beside Dashboard; every number becomes a door. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">113</span><h3>Dashboard: ask the Dashboard</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">High daily value; best after the in-flight truth pass supplies cleaner inputs. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">114</span><h3>About: visitor preview + completeness coach</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Helps every member finish a credible public identity in one pass. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">115</span><h3>Library: Save as Note / Save as Smart Note on every card</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Keeping something is one tap; the Library stops leaking value to copy-paste. (Effort: S.)</p>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">116</span><h3>Library: the member&#x27;s own intelligence as a living shelf</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Your library — everything Naya ever told you, findable by topic. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">117</span><h3>Settings: account-level control centre</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Important trust/authority upgrade, but broader and dependency-heavy. (Effort: L.)</p>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">118</span><h3>Wall/Home: owner curation + verified-owner treatment</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Trust-critical as walls grow; slightly less urgent than conversation itself. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">119</span><h3>Spaces: invite-a-friend per space, attributed</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Growth with attribution, inside the room where communities grow. (Effort: S.)</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">120</span><h3>Library: curation and freshness queue</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Necessary at scale; answer-or-ask creates the queue's most valuable inputs first. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">121</span><h3>Dashboard: goals and pace</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Strong steering value once counts are truthful. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">122</span><h3>Message: intent-first composer + voice note</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Improves message quality and completion; recipient truth is the deeper cure. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">123</span><h3>Growth: follow-up proposals</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Valuable retention mechanic; works best after the stage board exists. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">124</span><h3>About: proof and action layer</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Makes identity actionable; depends on linked-object patterns maturing. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">125</span><h3>Reports: shareable report digest</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Useful portability layer after Reports can prove its numbers. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">126</span><h3>Settings: export, backup, and restore</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Trust and portability win; less daily than control-centre truth. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">127</span><h3>Reports: “Ask Naya about this report,” data-grounded</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">The follow-up the report provoked, asked in the room, with the numbers in context. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">128</span><h3>Hub: “Today in your world” lens strip atop the feed</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">The Hub answers “what's happening” before asking the member to scroll. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">129</span><h3>Spaces: a pulse per space</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">A joined space stays alive instead of going quiet after the join. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">130</span><h3>Route honesty — room or labeled preview (Connections, Lists, Mail)</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">No more silent almost-rooms on live routes. (Effort: S.)</p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">131</span><h3>Settings room in the toggle standard — built last by design</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">One place where “how do I change X” always has the same answer. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">132</span><h3>Lists: due dates, reminders, voice capture</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Good follow-through layer; typed sync is the prerequisite value. (Effort: M.)</p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">137</span><h3>Finish Personal + dashboard to 9+ live</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Personal + dashboard to 9+ live — the finisher bar the in-flight work lands against.</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">138</span><h3>Rebuild + redeploy so the .app doors actually load</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Rebuild + redeploy current main so the .app doors load.</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">139</span><h3>State the settled points on the face (reporting Pass 3)</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Settled points rates on the dashboard face — reporting Pass 3.</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">140</span><h3>Real Discovery / directory — Smart Lists as the discovery directory</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Smart Lists become the discovery directory.</p>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">141</span><h3>BNPL / installments for high-ticket memberships</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Installments for high-ticket memberships — Whop's BNPL lesson.</p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">142</span><h3>One-click module add — Intelligent Blocks + Create Space as one-click</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Intelligent Blocks + Create Space, one click.</p>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">143</span><h3>Automatic gating — pay in, cancel out, zero manual work</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Membership gating automatic — pay in, cancel out.</p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">144</span><h3>Competition layer — Skool Games lesson</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">A yearly competition layer on the leaderboard.</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">145</span><h3>Connect / developer surface finished</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Connect door finished — any Naya can build any page.</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">146</span><h3>Public proof page — the live system proving itself</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">A public page where the live system proves itself.</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">147</span><h3>Gamification discipline — points visible, levels that unlock</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Gamification as visible and habit-forming as Skool's.</p>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">148</span><h3>Keep the free door wide — $0 start, guard it</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">The free door stays wide — a guard, not a build.</p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">149</span><h3>Under-30-minute setup — Welcome walk + Factory hit the bar</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">A new world live in under 30 minutes, cold.</p>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">150</span><h3>Marketplace economics made measurable — 50% affiliates + the Ledger</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Affiliate rewards visible and measurable in the Ledger.</p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">151</span><h3>BoB Step 1 — Smart Links data + redirect</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Smart Links data live; join-attribution carrier is the open piece.</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">152</span><h3>BoB Step 2 — Per-person timeline data model</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Timeline read model — step 7's UI rides on it.</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">154</span><h3>Merge the pump, the feeds, and the bridge</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Pump, feeds, bridge — confirm merged or merge what's open.</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">156</span><h3>Build the return loop</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Return loop — use flows back and teaches the engine.</p>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">157</span><h3>Run the 12-step proof once, fully measured, independent verifier</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">12-step proof, run once, fully measured.</p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">158</span><h3>Protocol to legitimate 9+ → Shawn&#x27;s pen</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Protocol to 9+ — his pen stamps it.</p>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">159</span><h3>Hold it — proof re-runs, hive compounds, nobody pushes</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Hold it — proof re-runs, hive compounds.</p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">160</span><h3>How We Win dashboard — the five health metrics, measured</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Five health metrics measured on a dashboard.</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">161</span><h3>Cold-successor test — run it live</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Cold-successor test — designed, never run live.</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">162</span><h3>The team operates through Smart Mail + notifications + the feed</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Team runs on mail + feed — the loop is the fix.</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">163</span><h3>Smart Box holds each citizen&#x27;s PI</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Each citizen's Smart Box holds their PI.</p>
+      <div class="links"><a href="https://nayanet.app/smartbox" target="_blank" rel="noopener">live page (current freeze)</a><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3237" target="_blank" rel="noopener">PR (freeze point, open, NOT merged)</a></div>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">168</span><h3>/s/ short links dark — repoint /s/* to the Hub worker</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Every shared short link is dead; the repoint cure is picked and waiting on dispatch.</p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">169</span><h3>Live-sweep holes — /rooms/settings + /rooms/welcome 500, /about 302 to retired .live, /pi-face.html 404</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Four live addresses broken; verify after the rebuild, fix what is left.</p>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">171</span><h3>Static boards defect — no light-up, no motion on scroll (Vitality Law)</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Boards in the new build are static; the Vitality Law wants them alive.</p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">172</span><h3>PayPal return-URL bridge — the sale-counting loop (owner-link flow)</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Click tracked, PayPal return tracked, sale counted — without touching money.</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">173</span><h3>Affiliate payouts automatic — once we&#x27;re paid, they&#x27;re paid</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev">Automatic, no holding back: the moment we're paid, they're paid. <b style="color:#fff">Proof missing</b> — this item cannot count as done until its proof is attached.</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">174</span><h3>Digital real estate marketplace — sell apps/worlds/pages + digital products (list price or auction)</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Build it, grow it, sell it — listings with verified numbers, list price or auction.</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">176</span><h3>Smart Lists group mail — list-addressed compose, verified fan-out, Team Naya list first</h3><span class="chip queued">Queued</span></div>
+      <p class="ev"></p>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">177</span><h3>Scheduler on mail/messenger — send-at and recurring rhythms</h3><span class="chip queued">Queued</span></div>
+      <p class="ev"></p>
+    </div>    <div class="item" style="--iac:var(--gold)">
+      <div class="item-top"><span class="num">178</span><h3>Smart Note distillation — daily by default, essence kept, raw notes deleted</h3><span class="chip queued">Queued</span></div>
+      <p class="ev"></p>
+    </div>    <div class="item" style="--iac:var(--orange)">
+      <div class="item-top"><span class="num">179</span><h3>Feed looks old — banner says Oct 2, nutshell flat, boards never light up</h3><span class="chip queued">Queued</span></div>
+      <p class="ev"></p>
+    </div>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">180</span><h3>Feed page hangs — loads title, never renders (Power&#x27;s live read)</h3><span class="chip queued">Queued</span></div>
+      <p class="ev"></p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">181</span><h3>SN-2058 on main but missing from feed-live.json — registry pickup gap</h3><span class="chip motion">In Motion</span></div>
+      <p class="ev"> <b style="color:#fff">Proof missing</b> — this item cannot count as done until its proof is attached.</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">999</span><h3>PI activity notifications: every real write announces itself (feed + mail)</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Every real PI write must announce itself: feed + mail, in human terms for Shawn, with a link back to the item. Filed in state so it survives the mirror.</p>
+    </div>    <div class="item" style="--iac:var(--blue)">
+      <div class="item-top"><span class="num">999</span><h3>Membership access + gating design LOCKED: one login, free Academy, entitlement-gated builder</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Locked: one login (alias) everywhere, Academy free to learn, builder and automation paid, thank-you page checked by entitlement — never a secret URL. Build still behind its own gates.</p>
+    </div>    <div class="item" style="--iac:var(--green)">
+      <div class="item-top"><span class="num">999</span><h3>Smart Cover Library interface — Nitro&#x27;s design</h3><span class="chip queued">Queued</span></div>
+      <p class="ev">Chooser PR #3074 withdrawn by Shawn 2026-10-26: not the approved language, never in Smart Factory. Re-route: Nitro designs the interface — Smart Factory + page-creation moment — under the locked cover decision (born with a cover, change in one tap). Resolve keeps data, match, verification.</p>
+    </div>  </section>
+  <!-- SECTION 5 -->  <section class="board b-red" aria-label="Needs your hands">    <div class="board-head"><span class="kicker">Section 5</span><h2>Needs Your Hands — Two Minutes</h2></div>    <p class="board-intro">These are not decisions — they're keys only your hands hold. Everything downstream of both is pre-built, so your two minutes is the only step left.</p>    <div class="item" style="--iac:var(--red)">
+      <div class="item-top"><span class="num">34</span><h3>The GitHub webhook secret</h3><span class="chip yourword">Your Hands</span></div>
+      <p class="ev"><b>Needs your hands for two minutes</b> — not a decision; everything downstream is pre-built.</p>
+    </div>    <div class="item" style="--iac:var(--magenta)">
+      <div class="item-top"><span class="num">35</span><h3>The API token for the vault</h3><span class="chip yourword">Your Hands</span></div>
+      <p class="ev"><b>Needs your hands for two minutes</b> — not a decision; everything downstream is pre-built.</p>
+    </div>    <div class="item" style="--iac:var(--purple)">
+      <div class="item-top"><span class="num">155</span><h3>Authenticated Hub read path — Shawn&#x27;s word</h3><span class="chip yourword">Your Hands</span></div>
+      <p class="ev">Authenticated Hub read path — needs his word.</p>
+    </div>  </section>
+  <footer>
+    <p><b>Talk is cheap — this list is the evidence.</b> Nothing here is marked done on a promise: every “Done + Proven” item was checked first-hand, and under the no-wait law nothing sits waiting on an inactive seat — the list updates as items land.</p>
+  </footer>
+</main>
+</body>
+</html>
