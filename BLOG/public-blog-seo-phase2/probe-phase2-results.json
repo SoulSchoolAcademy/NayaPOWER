@@ -6,6 +6,7 @@
  "ua": {
   "sample": 18,
   "fails": [
+   "sn2730 Claude-SearchBot: 503",
    "sn2248 Googlebot: title 49c",
    "sn2248 OAI-SearchBot: title 49c",
    "sn2248 Claude-SearchBot: title 49c",
