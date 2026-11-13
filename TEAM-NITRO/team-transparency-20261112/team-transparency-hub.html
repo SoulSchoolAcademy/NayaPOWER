@@ -10598,7 +10598,7 @@ article.intel-board:hover, article.intel-board:active { border-color: var(--tone
     <p class="tt-sec-sub" id="tt-cat-sub">Tap a seat above to see only their notes. Tap a project tab to see only that project&rsquo;s notes.</p>
     <div id="tt-notes"></div>
     <div class="tt-digest">
-      <a class="tt-btn" id="tt-digest-notes" href="#team-transparency">The notes list — newest first</a>
+      <a class="tt-btn" id="tt-digest-notes" href="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/team-transparency-20261112/team-transparency-hub.html&ref=team-transparency-20261112&tt=team-transparency#team-transparency">The notes list — newest first</a>
       <a class="tt-btn" id="tt-digest-report" href="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/TEAM-NITRO/DAILY-PROJECT-INTEL-REPORT-20261112.md">The captain&rsquo;s report</a>
     </div>
     <a class="tt-back" href="#app">Back to the top of the Hub ↑</a>
@@ -10713,12 +10713,23 @@ function renderNotes(){
 }
 function renderAll(){ renderTabs(); renderTeam(); renderNotes(); }
 renderAll();
-/* Anchor landing: the Hub's app render resets scroll on load, so a direct
-   #team-transparency link would land at the top. If the hash names this
-   section, settle onto it once the Hub has rendered — and only if the
-   visitor has not scrolled away themselves. */
+/* In-surface anchor clicks: the Hub's router rewrites hashes on load, so an
+   in-page #tt-… link must scroll by script, not by hash navigation. */
+document.getElementById("team-transparency").addEventListener("click",function(ev){
+ var a=ev.target&&ev.target.closest?ev.target.closest('a[href^="#tt-"]'):null;
+ if(!a) return;
+ var t=document.querySelector(a.getAttribute("href"));
+ if(!t) return;
+ ev.preventDefault();
+ t.scrollIntoView();
+});
+/* The landing signal is a QUERY param, not the hash: the Hub's router rewrites
+   any hash to #/hub on load (proven first-hand — location.hash is '#/hub' by
+   t=2s), so a #team-transparency hash can never be read at runtime. The digest
+   link carries &tt=team-transparency; this flag is captured at parse time. */
+var ttWant = /[?&]tt=team-transparency/.test(location.search);
 function ttLand(){
- if(location.hash!=="#team-transparency") return;
+ if(!ttWant) return;
  var el=document.getElementById("team-transparency");
  if(!el) return;
  var r=el.getBoundingClientRect();
