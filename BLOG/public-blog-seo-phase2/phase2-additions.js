@@ -303,12 +303,24 @@ function phase2Related(note, feed) {
   const byId = {};
   for (const n of feed.notes) byId[String(n.id || "").toLowerCase()] = n;
   const seen = {};
+  const seenHref = {};
   const out = [];
   const push = function (n, reason) {
     const id = String(n.id || "").toLowerCase();
     if (!n || id === myId || seen[id] || out.length >= 6) return;
     seen[id] = 1;
-    out.push({ slug: phase2CanonicalSlug(n), title: phase2DisplayTitle(n), reason: reason });
+    // Dedupe by RENDERED href (fix round F3): two notes can share one
+    // canonical slug (ten SN numbers filed twice — the sn2650 pair
+    // shares topic "System Intelligence", so 147 related lists rendered
+    // /s/sn2650 twice). The first keeps the canonical href; the second
+    // renders by its full-id URL (proven 200), so no related list ever
+    // shows the same destination twice. If the full-id href were also
+    // taken, the push drops and the loop takes the next sibling.
+    let slug = phase2CanonicalSlug(n);
+    if (seenHref["/s/" + slug]) slug = id;
+    if (seenHref["/s/" + slug]) return;
+    seenHref["/s/" + slug] = 1;
+    out.push({ slug: slug, title: phase2DisplayTitle(n), reason: reason });
   };
   // (a) shared topics — most recent first (created desc, feed order kept
   // inside equal dates by the feed's own order).
