@@ -20,7 +20,7 @@ Status, in one word first: DONE — staged and proven, awaiting the checker, the
 
 ## How to use it
 
-The staged surface: https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/team-transparency-20261112/team-transparency-hub.html&ref=team-transparency-20261112#team-transparency
+The staged surface: https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/team-transparency-20261112/team-transparency-hub.html&ref=team-transparency-20261112&tt=team-transparency#team-transparency
 
 The record for this round: https://github.com/SoulSchoolAcademy/NayaPOWER/tree/team-transparency-20261112/TEAM-NITRO/team-transparency-20261112
 
