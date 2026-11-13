@@ -1,0 +1,643 @@
+{
+  "1440": {
+    "start": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "scrollHeight": 32905,
+      "overflowers": [
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 73,
+          "cw": 0,
+          "w": 73,
+          "text": "Fri Nov 13"
+        },
+        {
+          "tag": "SPAN",
+          "cls": "t",
+          "sw": 81,
+          "cw": 0,
+          "w": 81,
+          "text": "~09:55 UTC"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 168,
+          "cw": 0,
+          "w": 541,
+          "text": "Naya Nitro and Naya Resolve"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 234,
+          "cw": 0,
+          "w": 570,
+          "text": "The unblock sweep it ordered is done \u2014 it's on the Done board below."
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 701,
+          "cw": 0,
+          "w": 701,
+          "text": "Done is stage one. Finished means done right \u2014 triple-A through the three-layer "
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 47,
+          "cw": 0,
+          "w": 47,
+          "text": "8.5/10"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 223,
+          "cw": 0,
+          "w": 223,
+          "text": "26 Daily Intelligence reports"
+        },
+        {
+          "tag": "SPAN",
+          "cls": "",
+          "sw": 6,
+          "cw": 0,
+          "w": 519,
+          "text": "\u00b7 corroborated by LE-20261022-007 (LIVE, team-nitro) \u2014 proof Open Reports"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 139,
+          "cw": 0,
+          "w": 139,
+          "text": "LE-20261022-007"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 117,
+          "cw": 0,
+          "w": 117,
+          "text": "\u201cfinally right.\u201d"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 104,
+          "cw": 0,
+          "w": 104,
+          "text": "compact oval"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 133,
+          "cw": 0,
+          "w": 133,
+          "text": "317 of 317 words"
+        }
+      ],
+      "nOverflowers": 110
+    },
+    "end": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "scrollHeight": 32905,
+      "overflowers": [
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 73,
+          "cw": 0,
+          "w": 73,
+          "text": "Fri Nov 13"
+        },
+        {
+          "tag": "SPAN",
+          "cls": "t",
+          "sw": 81,
+          "cw": 0,
+          "w": 81,
+          "text": "~09:55 UTC"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 168,
+          "cw": 0,
+          "w": 541,
+          "text": "Naya Nitro and Naya Resolve"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 234,
+          "cw": 0,
+          "w": 570,
+          "text": "The unblock sweep it ordered is done \u2014 it's on the Done board below."
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 701,
+          "cw": 0,
+          "w": 701,
+          "text": "Done is stage one. Finished means done right \u2014 triple-A through the three-layer "
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 47,
+          "cw": 0,
+          "w": 47,
+          "text": "8.5/10"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 223,
+          "cw": 0,
+          "w": 223,
+          "text": "26 Daily Intelligence reports"
+        },
+        {
+          "tag": "SPAN",
+          "cls": "",
+          "sw": 6,
+          "cw": 0,
+          "w": 519,
+          "text": "\u00b7 corroborated by LE-20261022-007 (LIVE, team-nitro) \u2014 proof Open Reports"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 139,
+          "cw": 0,
+          "w": 139,
+          "text": "LE-20261022-007"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 117,
+          "cw": 0,
+          "w": 117,
+          "text": "\u201cfinally right.\u201d"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 104,
+          "cw": 0,
+          "w": 104,
+          "text": "compact oval"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 133,
+          "cw": 0,
+          "w": 133,
+          "text": "317 of 317 words"
+        }
+      ],
+      "nOverflowers": 110
+    }
+  },
+  "390": {
+    "start": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "scrollHeight": 55211,
+      "overflowers": [
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 73,
+          "cw": 0,
+          "w": 73,
+          "text": "Fri Nov 13"
+        },
+        {
+          "tag": "SPAN",
+          "cls": "t",
+          "sw": 81,
+          "cw": 0,
+          "w": 81,
+          "text": "~09:55 UTC"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 233,
+          "cw": 0,
+          "w": 233,
+          "text": "Naya Nitro and Naya Resolve"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 99,
+          "cw": 0,
+          "w": 295,
+          "text": "The unblock sweep it ordered is done \u2014 it's on the Done board below."
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 310,
+          "cw": 0,
+          "w": 318,
+          "text": "Done is stage one. Finished means done right \u2014 triple-A through the three-layer "
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 47,
+          "cw": 0,
+          "w": 47,
+          "text": "8.5/10"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 223,
+          "cw": 0,
+          "w": 223,
+          "text": "26 Daily Intelligence reports"
+        },
+        {
+          "tag": "SPAN",
+          "cls": "",
+          "sw": 128,
+          "cw": 0,
+          "w": 321,
+          "text": "\u00b7 corroborated by LE-20261022-007 (LIVE, team-nitro) \u2014 proof Open Reports"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 139,
+          "cw": 0,
+          "w": 139,
+          "text": "LE-20261022-007"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 117,
+          "cw": 0,
+          "w": 117,
+          "text": "\u201cfinally right.\u201d"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 104,
+          "cw": 0,
+          "w": 104,
+          "text": "compact oval"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 133,
+          "cw": 0,
+          "w": 133,
+          "text": "317 of 317 words"
+        }
+      ],
+      "nOverflowers": 110
+    },
+    "end": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "scrollHeight": 55211,
+      "overflowers": [
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 73,
+          "cw": 0,
+          "w": 73,
+          "text": "Fri Nov 13"
+        },
+        {
+          "tag": "SPAN",
+          "cls": "t",
+          "sw": 81,
+          "cw": 0,
+          "w": 81,
+          "text": "~09:55 UTC"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 233,
+          "cw": 0,
+          "w": 233,
+          "text": "Naya Nitro and Naya Resolve"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 99,
+          "cw": 0,
+          "w": 295,
+          "text": "The unblock sweep it ordered is done \u2014 it's on the Done board below."
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 310,
+          "cw": 0,
+          "w": 318,
+          "text": "Done is stage one. Finished means done right \u2014 triple-A through the three-layer "
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 47,
+          "cw": 0,
+          "w": 47,
+          "text": "8.5/10"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 223,
+          "cw": 0,
+          "w": 223,
+          "text": "26 Daily Intelligence reports"
+        },
+        {
+          "tag": "SPAN",
+          "cls": "",
+          "sw": 128,
+          "cw": 0,
+          "w": 321,
+          "text": "\u00b7 corroborated by LE-20261022-007 (LIVE, team-nitro) \u2014 proof Open Reports"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 139,
+          "cw": 0,
+          "w": 139,
+          "text": "LE-20261022-007"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 117,
+          "cw": 0,
+          "w": 117,
+          "text": "\u201cfinally right.\u201d"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 104,
+          "cw": 0,
+          "w": 104,
+          "text": "compact oval"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 133,
+          "cw": 0,
+          "w": 133,
+          "text": "317 of 317 words"
+        }
+      ],
+      "nOverflowers": 110
+    }
+  },
+  "360": {
+    "start": {
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "scrollHeight": 64501,
+      "overflowers": [
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 73,
+          "cw": 0,
+          "w": 73,
+          "text": "Fri Nov 13"
+        },
+        {
+          "tag": "SPAN",
+          "cls": "t",
+          "sw": 81,
+          "cw": 0,
+          "w": 81,
+          "text": "~09:55 UTC"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 168,
+          "cw": 0,
+          "w": 284,
+          "text": "Naya Nitro and Naya Resolve"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 234,
+          "cw": 0,
+          "w": 295,
+          "text": "The unblock sweep it ordered is done \u2014 it's on the Done board below."
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 267,
+          "cw": 0,
+          "w": 270,
+          "text": "Done is stage one. Finished means done right \u2014 triple-A through the three-layer "
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 47,
+          "cw": 0,
+          "w": 47,
+          "text": "8.5/10"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 223,
+          "cw": 0,
+          "w": 223,
+          "text": "26 Daily Intelligence reports"
+        },
+        {
+          "tag": "SPAN",
+          "cls": "",
+          "sw": 105,
+          "cw": 0,
+          "w": 298,
+          "text": "\u00b7 corroborated by LE-20261022-007 (LIVE, team-nitro) \u2014 proof Open Reports"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 139,
+          "cw": 0,
+          "w": 139,
+          "text": "LE-20261022-007"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 117,
+          "cw": 0,
+          "w": 117,
+          "text": "\u201cfinally right.\u201d"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 104,
+          "cw": 0,
+          "w": 104,
+          "text": "compact oval"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 133,
+          "cw": 0,
+          "w": 133,
+          "text": "317 of 317 words"
+        }
+      ],
+      "nOverflowers": 110
+    },
+    "end": {
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "scrollHeight": 64501,
+      "overflowers": [
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 73,
+          "cw": 0,
+          "w": 73,
+          "text": "Fri Nov 13"
+        },
+        {
+          "tag": "SPAN",
+          "cls": "t",
+          "sw": 81,
+          "cw": 0,
+          "w": 81,
+          "text": "~09:55 UTC"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 168,
+          "cw": 0,
+          "w": 284,
+          "text": "Naya Nitro and Naya Resolve"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 234,
+          "cw": 0,
+          "w": 295,
+          "text": "The unblock sweep it ordered is done \u2014 it's on the Done board below."
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 267,
+          "cw": 0,
+          "w": 270,
+          "text": "Done is stage one. Finished means done right \u2014 triple-A through the three-layer "
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 47,
+          "cw": 0,
+          "w": 47,
+          "text": "8.5/10"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 223,
+          "cw": 0,
+          "w": 223,
+          "text": "26 Daily Intelligence reports"
+        },
+        {
+          "tag": "SPAN",
+          "cls": "",
+          "sw": 105,
+          "cw": 0,
+          "w": 298,
+          "text": "\u00b7 corroborated by LE-20261022-007 (LIVE, team-nitro) \u2014 proof Open Reports"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 139,
+          "cw": 0,
+          "w": 139,
+          "text": "LE-20261022-007"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 117,
+          "cw": 0,
+          "w": 117,
+          "text": "\u201cfinally right.\u201d"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 104,
+          "cw": 0,
+          "w": 104,
+          "text": "compact oval"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "sw": 133,
+          "cw": 0,
+          "w": 133,
+          "text": "317 of 317 words"
+        }
+      ],
+      "nOverflowers": 110
+    }
+  },
+  "counts": {
+    "subline": "Every piece of feedback you gave today, in order \u2014 what's proven, what's moving, and what the no-wait law just unblocked. Living List items only: 40 of 204 done and proven \u2014 2 more render as in-motion",
+    "ev183": {
+      "sw": 298,
+      "cw": 298
+    },
+    "nEv": 171
+  },
+  "console_errors": [],
+  "page_errors": [],
+  "failed_requests": []
+}
