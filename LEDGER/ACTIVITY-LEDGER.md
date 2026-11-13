@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-13 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-13 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -41513,6 +41513,12 @@ _Last updated: 2026-11-13 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-scorer-20261015-0120-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: blended frequency+miss composite + '89+' diagnosis (parent t0403-lane4, 9.3)
+
+**Evidence:** VERIFIED this tick on live bytes: deliverable hidden_files/auto-retrieval/ask-world-composite-scorer-20261015-0120-lane4.md exists (5,541 bytes); composite C(n)=0.5F+0.5M stated with sensitivity checks, parent Sum-line double-count caught by script re-derivation, '89+' overstated-organic-traffic diagnosis (~31%) named with its unresolvable branch. 
+
 ### ✅ gap-t2330-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** skew-table independent re-tally
@@ -44056,6 +44062,12 @@ _Last updated: 2026-11-13 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ gap-scorer-20261015-0140-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: split conflated open= bucket in sweep-stale-gap-briefs.py (parent gap-scorer-20261014-2310-lane2, 9.3)
+
+**Evidence:** VERIFIED this tick on live bytes: bin/sweep-stale-gap-briefs.py exists; its --self-test passes including the receipt's new cases 12-14 (present_but_not_closed=1, conflated open= gone); dry-run cross-check (4 absent + 21 present-but-not-closed + 1 skipped) reproduced by independent re-derivation in the receipt. Script SHA differs from the receipt's 
 
 ### ✅ gap-t0533-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -47356,6 +47368,12 @@ _Last updated: 2026-11-13 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ gap-scorer-20261015-0110-lane10 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: no-refile block machinery verification (parent scorer-20261015-0110, 9.0)
+
+**Evidence:** VERIFIED this tick on live bytes: bin/file-gap-brief.py exists and --self-test is GREEN (including contradiction-replay-blocked); claim-side tripwire refusal proven live in receipt (exit 6). The gap is half-closed by the receipt's own verdict: the no-refile guard exists and is tested, but the lane-scorer cron step 3b still hand-files — the owed wir
 
 ### ✅ gap-lane-scorer-20261016-1400-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -51160,6 +51178,12 @@ _Last updated: 2026-11-13 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261113-0044 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-13 00:44 PST: full-queue claim evaluation, 30 unclaimed briefs, 0 claimed, all refused
+
+**Evidence:** Verified: receipt read in full; claim-sweep-20261113-0044.log exists (13,285 bytes, 108 lines) with 25 x exit=7 + 2 x exit=2 attempt headers and 0 claimed; queue holds exactly the 30 receipt-named brief-*.md files on disk (lane-feed.md is the only extra .md, not a brief), zero brief-t* files; all 30 named briefs present; receipt mtime 08:44:44Z vs 
 
 ### ✅ gate-stall-20261112-2339 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
