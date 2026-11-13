@@ -27,7 +27,7 @@ Status, in one word first: DONE — walked the staged walk, three pages live, br
 - My Personal page: https://naya-walk-beginning-staging.nayapower.workers.dev/pages/mira/mira
 - My Business page (Mira's Vault): https://naya-walk-beginning-staging.nayapower.workers.dev/pages/mira/miras-vault
 - My Space (The Memory Room): https://naya-walk-beginning-staging.nayapower.workers.dev/pages/mira/the-memory-room
-- The transparency page (all twelve sisters live): https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/team-transparency-20261112/team-transparency-hub.html&ref=team-transparency-20261112&cb=8ecf605be2734a4f3f40d90a103e6794af73ee91
+- The transparency page (all twelve sisters live): https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/team-transparency-20261112/team-transparency-hub.html&ref=team-transparency-20261112&tt=team-transparency&cb=bd290760763caaf935bdd2b8c0a35f7db5ae1762#team-transparency
 - The record for this round: https://github.com/SoulSchoolAcademy/NayaPOWER/tree/family/activation-twelve-heroes-20261113/TEAM-NITRO/family-activation-20261113
 - This note on GitHub: https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/NAYA-NOTES/2026/11/13/NN-20261113-family-mira.md
 
