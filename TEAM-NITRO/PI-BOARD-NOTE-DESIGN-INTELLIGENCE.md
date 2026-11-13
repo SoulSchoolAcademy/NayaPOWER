@@ -880,3 +880,17 @@ fails is not done. A deferral is an open item, not a pass.
 **MAIL — STILL BLOCKED, re-probed first-hand during the run:** Smart Mail write 401, re-probed ~22:43Z; held digests now 198–204. Server-side; fixing touches credentials/RLS — Shawn's hand, NOT attempted.
 
 **Still out of alignment:** SN-2732 unfiled (see the count correction — file it or release it) · SN-2722..SN-2731 not on the live feed at the run's close (filed after the 22:52Z stage; rode the next sync + redeploy — normal lag, not a failure) · PI board addendum for this run (this filing) · mail digest held (401) · 23:17Z distillation distilled WITHOUT SN-2722..SN-2732.
+
+## Intelligence Loop run 205
+
+- Filed SN-2740 The Captain's Report — Think More, Do It Right + SN-2741 The Fourteen Questions — Answer Your Own Questions (his 00:08Z + ~00:11Z Nov 13 dictations) + paired Naya Notes. GitHub verified (PUT 201 + byte-identical read-back); both already live on the feed since 00:23Z.
+- Organize hook clean. Mail digest HELD on the 401 (direct write path down; no digest file survives on disk — only run170 + run172 exist; the mail round's 02:37:15Z catch-up digest, fired after the write-path merge 709bbdc2, covers runs 198-205 in substance).
+- Nothing new for Shawn — silent per the loop's rule.
+
+## Intelligence Loop run 206
+
+- Filed SN-2732 The Public Blog + SEO/AI System (HOLE FILL — composed run 204, 404 on GitHub, filed here blob ec644141; the SN-2732 hole is CLOSED; next free SN-2749) + SN-2742 The Twelve Masters — Twelve Around One + SN-2743 Activate the Family — Go Time — Twelve Minutes of Value per Minute + SN-2744 The Walk Question Page Is Not 10/10 + SN-2745 Always Find a Way — The Way Through + SN-2746 What's Your Thing — One Simple Language + SN-2747 No Dashes, No Dots in URLs — Brand First, One Dot + SN-2748 The Feedback Loop — We Teach Each Other. 8 Smart Notes + 8 paired Naya Notes, every PUT 201 + byte-identical read-back, first try each. Census: tree highest SN-2741 (command's SN-10000 is the stale PR #3354 fixture artifact).
+- Organize hook clean (exit 0): organized 15, files_new 15, 0 unparseable, watermark holds.
+- Mail digest HELD (run206-mail-digest.txt) — direct write path still 401 (proved 03:09Z by team-pulse); the loop's mail step still uses the direct helper. Migrating it to the proven scheduler path (mail round merged 709bbdc2, three sends fired 02:37:15Z) is the open follow-on, not attempted here.
+- Deploy tap FAILED at the Supabase step (run 43357690543, 03:15:07Z): promote succeeded (production branch 97499d1c) but the Supabase Preview check failed — PERSON_TIMELINE_SOURCE_COLUMNS_MISSING, 8 columns. Nothing applied; the fail-loud guard worked as designed. Fix is a repair migration adding the 8 columns (23514-repair shape); repair brief writer dispatched 03:2xZ; the apply still needs his tap with a fresh tip re-read.
+- Alignment: live feed should pick up SN-2742..2748 on the next sync/rebake (not verified this run). Distillation not run this pass (23:17Z cycle).
