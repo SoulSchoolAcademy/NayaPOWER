@@ -193,7 +193,17 @@ assert len(hub_live) > 1_000_000, f"live Hub harvest too small: {len(hub_live)}"
 print(f"live Hub harvested: {len(hub_live)} B sha256={hashlib.sha256(hub_live).hexdigest()[:12]}", flush=True)
 assert b'id="team-transparency"' not in hub_live, "surface already present in base"
 assert b'id="tt-style"' not in hub_live, "surface style already present in base"
-anchor = b"</style>\n</body>"
+anchor = b"<!-- /ONE-BOTTOM-BAR -->\n</body>"
+# DEVIATION 2 (completion coordinator, 03:13Z — same kind as the byline rule:
+# the world moved under the script): the builder's anchor `</style>\n</body>`
+# no longer exists in the fresh live Hub — main's Hub grew a ONE-BOTTOM-BAR v2
+# script after its last style block, so the tail is now
+# `...</script>\n<!-- /ONE-BOTTOM-BAR -->\n</body>\n</html>\n` (anchor count 0
+# for the old text, verified first-hand on the 5,548,329 B harvest,
+# sha bdad4d66). The fragment goes immediately before `</body>`, after the
+# bottom-bar script — the same insertion point semantically (last thing
+# before the body closes). Prefix/suffix byte-identical asserts below are
+# unchanged and still guard the insertion.
 assert hub_live.count(anchor) == 1, "anchor count %d != 1" % hub_live.count(anchor)
 head, rest = hub_live.split(anchor)
 frag_b = new_frag.encode()
