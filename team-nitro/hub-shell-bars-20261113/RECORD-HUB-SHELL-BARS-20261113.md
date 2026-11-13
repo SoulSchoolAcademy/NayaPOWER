@@ -4,7 +4,8 @@
 **Bullseye (one line):** the Hub shell carries round black circle icons and the three ultimate gems at the very bottom — the square chips row is gone.
 
 **Staged link (the deliverable):** https://naya-public-blog-staging.nayapower.workers.dev/s/sn2696
-**Proof-host link (secondary, same bytes):** https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/hub-shell-bars-20261113/index-intel-today.html&ref=hub/shell-bars-20261113&cb=bdff418ea320e911754ad8c9c3c3905673c61c21
+**Proof-host link (secondary, same bytes):** https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/hub-shell-bars-20261113/index-intel-today.html&ref=hub/shell-bars-20261113&cb=bdff418ea320e911754ad8c9c3c3905673c61c21
+**Correction (second commit on this branch):** the first commit carried this link with an uppercase `TEAM-NITRO/` path, copied from the bottom-icons pattern — but this round's files live under lowercase `team-nitro/` (the repo carries both casings; the slug round filed lowercase too), so the uppercase link 404d. The link above is the corrected lowercase path, verified 200 + byte-identical; nothing else changed.
 **Fixed shell:** `index-intel-today.html` — **5,559,180 B**, sha256 `a687f16a666f27875dcc2cdb6dbe5fca113cf7eed610d76ff5b39ee8fc8d02ac` (+3,622 B over base)
 **Index blob SHA:** bdff418ea320e911754ad8c9c3c3905673c61c21
 **Branch:** `hub/shell-bars-20261113`, created first from main tip `89cd51451c2c640ac9773385ab6748aa6b7019cb` (re-read first-hand via `git ls-remote` before branching; unchanged at filing). No merge, no PR, no live touch, no deploy beyond staging, no SN approval, no mail.
