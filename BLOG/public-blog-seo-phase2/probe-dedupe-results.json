@@ -1,0 +1,63 @@
+{
+ "checked": 1058,
+ "dup_notes": 0,
+ "floor_breaches": 0,
+ "dup_detail": [],
+ "floor_detail": [],
+ "pair_detail": {
+  "sn2696": {
+   "url": "/s/sn2696",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/ib-smart-note-20261110-sn2650-the-master-operational-manual",
+    "/s/sn2648"
+   ],
+   "titles": [
+    "The Mail Is Safe",
+    "The Heart Match Organize Connect",
+    "Sn2651 One Foundation One Measure One Honest Telling",
+    "Sn2650 The World Masters",
+    "Sn2650 The Master Operational Manual",
+    "Sn2648 The Supabase Answers"
+   ],
+   "reasons": [
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence"
+   ]
+  },
+  "sn2650": {
+   "url": "/s/ib-smart-note-20261110-sn2650-the-master-operational-manual",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2648"
+   ],
+   "titles": [
+    "The Mail Is Safe",
+    "The Heart Match Organize Connect",
+    "The Infinite Smart Feeds",
+    "Sn2651 One Foundation One Measure One Honest Telling",
+    "Sn2650 The World Masters",
+    "Sn2648 The Supabase Answers"
+   ],
+   "reasons": [
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence"
+   ]
+  }
+ }
+}
