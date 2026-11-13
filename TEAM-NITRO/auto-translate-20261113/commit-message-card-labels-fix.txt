@@ -1,0 +1,11 @@
+Auto-Translate Card-Labels fix (Area #41): note cards speak es/fr/de — 266 keys, zero English card labels left
+
+Captain double-check on the Settings fix (10/10): the Settings panel spoke Spanish, but the Intelligent Block labels on every note card stayed English. This fix inventories every fixed card label first-hand (four card families + category bar), adds 56 keys to MW_I18N in es/fr/de (210 -> 266 keys/language, hand-written, es tu / fr vous / de du), marks them with data-mw-tr (43 new marks) + a new generic data-mw-aria pass for aria-labels, and routes the JS-written labels (layer heads, foot lines, btn() actions, add-intel, ibFeedCard action row, noteCard Save/List/In:, category bar) through mwTr with an in-place re-sync on every switch.
+
+Proved first-hand on the fix bytes: switch to es/fr/de, open the feed — every fixed card label reads translated on a rendered card (screenshots at 390 + 1440 + first-visit es-ES); grep audit 43 marked checks + 24 unmarked checks, 0 mismatches; regression green set intact (Settings, tabs, rail, + menu, bottom bar, Translate tap end to end, pill, persistence); zero overflow at 390/1440/360, zero page errors, zero non-Supabase console errors.
+
+Honest gap, named in the record (section 5.4): the rendered Notes-view noteCard was not browser-proven — the view waits on a Supabase select that never resolves in file:// context, and the VM browsers died mid-round (Firefox SIGSEGV, Chromium SIGTRAP). Its marking is audit-proven and its mechanism is live-proven on the other three card families; re-proof is owed on the staged link, where Supabase is live. Score 9/10 until that closes.
+
+Also in this round, found by the proof and fixed: the dict-growth script had inserted each new key as a whole {es, fr, de} object under every language, so every new label rendered "[object Object]" — repaired (168 object values) and re-verified; two French voice errors corrected (TES->VOS, de une->d'une).
+
+Staged only. No live touch, no merge, no PR. Parent 3d8f9651 (Settings-fix tip).

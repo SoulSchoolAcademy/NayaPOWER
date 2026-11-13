@@ -1,0 +1,548 @@
+{
+ "url": "file:///home/hatch/workspace/personal-complete-wt/TEAM-NITRO/personal-page-complete-20261113/personal-complete.html",
+ "page_errors": [],
+ "console_error_count": 56,
+ "console_non_supabase": [],
+ "overflow390": {
+  "sw": 390,
+  "iw": 390
+ },
+ "pill": "pts",
+ "stub_smart": true,
+ "stub_naya": true,
+ "wall_cards": 2,
+ "langs": {
+  "es": {
+   "lang_attr": "es",
+   "wall": [
+    {
+     "nutshell": "EN POCAS PALABRAS",
+     "presenter": null,
+     "meta": "Nota fc-stub-1794598824932",
+     "foot": "Nota inteligente fc-stub-1794598824932 · de tu feed inteligente",
+     "microLeft": "UNA INTELIGENCIA · MUCHAS VISTAS · UNA IDENTIDAD",
+     "microRight": "CONFIANZA: FUENTE / INTERPRETACIÓN SEPARADAS",
+     "topBtns": [
+      "＋ CREAR ESPACIO",
+      "★ FAVORITO",
+      "GUARDAR"
+     ],
+     "topAria": [
+      "Crear un espacio inteligente a partir de esta inteligencia",
+      "Marcar como favorito",
+      "Guardar esta inteligencia"
+     ],
+     "loveLike": [
+      "❤️ ME ENCANTA0",
+      "👍 ME GUSTA0",
+      "＋ COMPARTIR INTEL"
+     ],
+     "shareBtn": "＋ COMPARTIR INTEL",
+     "starsAria": "Valora esta inteligencia de una a cinco estrellas",
+     "addIntelHead": "AÑADIR A LA INTELIGENCIA",
+     "addIntelPh": "Añade una observación, pregunta, corrección o aportación...",
+     "addIntelAria": "Añadir a la inteligencia",
+     "addIntelBtn": "AÑADIR INTEL",
+     "addIntelEmpty": "Sé el primero en añadir intel..."
+    },
+    {
+     "nutshell": "EN POCAS PALABRAS",
+     "presenter": "Presentado por Naya",
+     "meta": "Nota fc-stub-1794598824873",
+     "foot": "Nota inteligente fc-stub-1794598824873 · de tu feed inteligente",
+     "microLeft": "UNA INTELIGENCIA · MUCHAS VISTAS · UNA IDENTIDAD",
+     "microRight": "CONFIANZA: FUENTE / INTERPRETACIÓN SEPARADAS",
+     "topBtns": [
+      "＋ CREAR ESPACIO",
+      "★ FAVORITO",
+      "GUARDAR"
+     ],
+     "topAria": [
+      "Crear un espacio inteligente a partir de esta inteligencia",
+      "Marcar como favorito",
+      "Guardar esta inteligencia"
+     ],
+     "loveLike": [
+      "❤️ ME ENCANTA0",
+      "👍 ME GUSTA0",
+      "＋ COMPARTIR INTEL"
+     ],
+     "shareBtn": "＋ COMPARTIR INTEL",
+     "starsAria": "Valora esta inteligencia de una a cinco estrellas",
+     "addIntelHead": "AÑADIR A LA INTELIGENCIA",
+     "addIntelPh": "Añade una observación, pregunta, corrección o aportación...",
+     "addIntelAria": "Añadir a la inteligencia",
+     "addIntelBtn": "AÑADIR INTEL",
+     "addIntelEmpty": "Sé el primero en añadir intel..."
+    }
+   ],
+   "smart": {
+    "nutshell": "EN POCAS PALABRAS",
+    "heads": [
+     "Nota humana",
+     "Nota infantil",
+     "Nota de abuela",
+     "Nota Naya",
+     "Temas",
+     "What It Means",
+     "Mystery Layer"
+    ],
+    "foot": "Guía oficial de NayaNET · de la Biblioteca Inteligente"
+   },
+   "feedcard": {
+    "kind": "NOTA INTELIGENTE",
+    "owner": "DUEÑO",
+    "nutshell": "EN POCAS PALABRAS",
+    "heads": [
+     "Detalle▾",
+     "Nota humana▾"
+    ],
+    "rawSummary": "TUS PALABRAS, PALABRA POR PALABRA",
+    "distilled": "DESTILADO DE LAS PALABRAS DEL AUTOR — REVISADO ANTES DE PUBLICAR",
+    "share": "↗ Compartir",
+    "saveList": "💾 Guardar en lista",
+    "pin": "📌 Quitar fijación",
+    "space": "➕ Espacio a partir de esto",
+    "biz": "🏢 Negocio a partir de esto",
+    "commentBtn": "💬 Comentar",
+    "commentPh": "Añade un comentario…",
+    "send": "Enviar",
+    "micro": "DESTILADO DE LAS PALABRAS DEL AUTOR — REVISADO ANTES DE PUBLICAR"
+   },
+   "catbar": [
+    "Todas las notas",
+    "Who I am",
+    "My work",
+    "Ideas",
+    "+ Lista"
+   ]
+  },
+  "fr": {
+   "lang_attr": "fr",
+   "wall": [
+    {
+     "nutshell": "EN RÉSUMÉ",
+     "presenter": null,
+     "meta": "Note fc-stub-1794598824932",
+     "foot": "Note intelligente fc-stub-1794598824932 · de votre feed intelligent",
+     "microLeft": "UNE INTELLIGENCE · PLUSIEURS VUES · UNE IDENTITÉ",
+     "microRight": "CONFIANCE : SOURCE / INTERPRÉTATION SÉPARÉES",
+     "topBtns": [
+      "＋ CRÉER UN ESPACE",
+      "★ FAVORI",
+      "ENREGISTRER"
+     ],
+     "topAria": [
+      "Créer un espace intelligent à partir de cette intelligence",
+      "Marquer comme favori",
+      "Enregistrer cette intelligence"
+     ],
+     "loveLike": [
+      "❤️ J’ADORE0",
+      "👍 J’AIME0",
+      "＋ PARTAGER L’INTEL"
+     ],
+     "shareBtn": "＋ PARTAGER L’INTEL",
+     "starsAria": "Notez cette intelligence d'une à cinq étoiles",
+     "addIntelHead": "AJOUTER À L’INTELLIGENCE",
+     "addIntelPh": "Ajoutez une observation, une question, une correction ou une contribution...",
+     "addIntelAria": "Ajouter à l’intelligence",
+     "addIntelBtn": "AJOUTER INTEL",
+     "addIntelEmpty": "Soyez le premier à ajouter de l’intel..."
+    },
+    {
+     "nutshell": "EN RÉSUMÉ",
+     "presenter": "Présenté par Naya",
+     "meta": "Note fc-stub-1794598824873",
+     "foot": "Note intelligente fc-stub-1794598824873 · de votre feed intelligent",
+     "microLeft": "UNE INTELLIGENCE · PLUSIEURS VUES · UNE IDENTITÉ",
+     "microRight": "CONFIANCE : SOURCE / INTERPRÉTATION SÉPARÉES",
+     "topBtns": [
+      "＋ CRÉER UN ESPACE",
+      "★ FAVORI",
+      "ENREGISTRER"
+     ],
+     "topAria": [
+      "Créer un espace intelligent à partir de cette intelligence",
+      "Marquer comme favori",
+      "Enregistrer cette intelligence"
+     ],
+     "loveLike": [
+      "❤️ J’ADORE0",
+      "👍 J’AIME0",
+      "＋ PARTAGER L’INTEL"
+     ],
+     "shareBtn": "＋ PARTAGER L’INTEL",
+     "starsAria": "Notez cette intelligence d'une à cinq étoiles",
+     "addIntelHead": "AJOUTER À L’INTELLIGENCE",
+     "addIntelPh": "Ajoutez une observation, une question, une correction ou une contribution...",
+     "addIntelAria": "Ajouter à l’intelligence",
+     "addIntelBtn": "AJOUTER INTEL",
+     "addIntelEmpty": "Soyez le premier à ajouter de l’intel..."
+    }
+   ],
+   "smart": {
+    "nutshell": "EN RÉSUMÉ",
+    "heads": [
+     "Note humaine",
+     "Note d’enfant",
+     "Note de grand-mère",
+     "Note Naya",
+     "Thèmes",
+     "What It Means",
+     "Mystery Layer"
+    ],
+    "foot": "Guide officiel NayaNET · de la Bibliothèque Intelligente"
+   },
+   "feedcard": {
+    "kind": "NOTE INTELLIGENTE",
+    "owner": "PROPRIÉTAIRE",
+    "nutshell": "EN RÉSUMÉ",
+    "heads": [
+     "Détail▾",
+     "Note humaine▾"
+    ],
+    "rawSummary": "VOS MOTS, MOT POUR MOT",
+    "distilled": "DISTILLÉ DES MOTS DE L’AUTEUR — VÉRIFIÉ AVANT PUBLICATION",
+    "share": "↗ Partager",
+    "saveList": "💾 Enregistrer dans une liste",
+    "pin": "📌 Désépingler",
+    "space": "➕ Espace à partir de ceci",
+    "biz": "🏢 Entreprise à partir de ceci",
+    "commentBtn": "💬 Commenter",
+    "commentPh": "Ajoutez un commentaire…",
+    "send": "Envoyer",
+    "micro": "DISTILLÉ DES MOTS DE L’AUTEUR — VÉRIFIÉ AVANT PUBLICATION"
+   },
+   "catbar": [
+    "Toutes les notes",
+    "Who I am",
+    "My work",
+    "Ideas",
+    "+ Liste"
+   ]
+  },
+  "de": {
+   "lang_attr": "de",
+   "wall": [
+    {
+     "nutshell": "KURZ GESAGT",
+     "presenter": null,
+     "meta": "Notiz fc-stub-1794598824932",
+     "foot": "Intelligente Notiz fc-stub-1794598824932 · aus deinem intelligenten Feed",
+     "microLeft": "EINE INTELLIGENZ · VIELE ANSICHTEN · EINE IDENTITÄT",
+     "microRight": "VERTRAUEN: QUELLE / INTERPRETATION GETRENNT",
+     "topBtns": [
+      "＋ RAUM ERSTELLEN",
+      "★ FAVORIT",
+      "SPEICHERN"
+     ],
+     "topAria": [
+      "Aus dieser Intelligenz einen Smart Space erstellen",
+      "Als Favorit markieren",
+      "Diese Intelligenz speichern"
+     ],
+     "loveLike": [
+      "❤️ LIEBEN0",
+      "👍 GEFÄLLT MIR0",
+      "＋ INTEL TEILEN"
+     ],
+     "shareBtn": "＋ INTEL TEILEN",
+     "starsAria": "Bewerte diese Intelligenz mit einem bis fünf Sternen",
+     "addIntelHead": "ZUR INTELLIGENZ HINZUFÜGEN",
+     "addIntelPh": "Füge eine Beobachtung, Frage, Korrektur oder einen Beitrag hinzu...",
+     "addIntelAria": "Zur Intelligenz hinzufügen",
+     "addIntelBtn": "INTEL HINZUFÜGEN",
+     "addIntelEmpty": "Füge als Erster Intel hinzu..."
+    },
+    {
+     "nutshell": "KURZ GESAGT",
+     "presenter": "Präsentiert von Naya",
+     "meta": "Notiz fc-stub-1794598824873",
+     "foot": "Intelligente Notiz fc-stub-1794598824873 · aus deinem intelligenten Feed",
+     "microLeft": "EINE INTELLIGENZ · VIELE ANSICHTEN · EINE IDENTITÄT",
+     "microRight": "VERTRAUEN: QUELLE / INTERPRETATION GETRENNT",
+     "topBtns": [
+      "＋ RAUM ERSTELLEN",
+      "★ FAVORIT",
+      "SPEICHERN"
+     ],
+     "topAria": [
+      "Aus dieser Intelligenz einen Smart Space erstellen",
+      "Als Favorit markieren",
+      "Diese Intelligenz speichern"
+     ],
+     "loveLike": [
+      "❤️ LIEBEN0",
+      "👍 GEFÄLLT MIR0",
+      "＋ INTEL TEILEN"
+     ],
+     "shareBtn": "＋ INTEL TEILEN",
+     "starsAria": "Bewerte diese Intelligenz mit einem bis fünf Sternen",
+     "addIntelHead": "ZUR INTELLIGENZ HINZUFÜGEN",
+     "addIntelPh": "Füge eine Beobachtung, Frage, Korrektur oder einen Beitrag hinzu...",
+     "addIntelAria": "Zur Intelligenz hinzufügen",
+     "addIntelBtn": "INTEL HINZUFÜGEN",
+     "addIntelEmpty": "Füge als Erster Intel hinzu..."
+    }
+   ],
+   "smart": {
+    "nutshell": "KURZ GESAGT",
+    "heads": [
+     "Menschliche Notiz",
+     "Kindernotiz",
+     "Oma-Notiz",
+     "Naya-Notiz",
+     "Themen",
+     "What It Means",
+     "Mystery Layer"
+    ],
+    "foot": "Offizieller NayaNET-Leitfaden · aus der intelligenten Bibliothek"
+   },
+   "feedcard": {
+    "kind": "INTELLIGENTE NOTIZ",
+    "owner": "EIGENTÜMER",
+    "nutshell": "KURZ GESAGT",
+    "heads": [
+     "Detail▾",
+     "Menschliche Notiz▾"
+    ],
+    "rawSummary": "DEINE WORTE, WORT FÜR WORT",
+    "distilled": "DESTILLIERT AUS DEN WORTEN DES AUTORS — VOR DEM POSTEN GEPRÜFT",
+    "share": "↗ Teilen",
+    "saveList": "💾 In Liste speichern",
+    "pin": "📌 Fixierung lösen",
+    "space": "➕ Space daraus erstellen",
+    "biz": "🏢 Business daraus erstellen",
+    "commentBtn": "💬 Kommentieren",
+    "commentPh": "Füge einen Kommentar hinzu…",
+    "send": "Senden",
+    "micro": "DESTILLIERT AUS DEN WORTEN DES AUTORS — VOR DEM POSTEN GEPRÜFT"
+   },
+   "catbar": [
+    "Alle Notizen",
+    "Who I am",
+    "My work",
+    "Ideas",
+    "+ Liste"
+   ]
+  }
+ },
+ "switch_back_en": [
+  {
+   "nutshell": "IN A NUTSHELL",
+   "presenter": null,
+   "meta": "Note fc-stub-1794598824932",
+   "foot": "Smart Note fc-stub-1794598824932 · from your Smart Feed",
+   "microLeft": "ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY",
+   "microRight": "TRUST: SOURCE / INTERPRETATION SEPARATED",
+   "topBtns": [
+    "＋ CREATE SPACE",
+    "★ FAVORITE",
+    "SAVE"
+   ],
+   "topAria": [
+    "Create a smart space from this intelligence",
+    "Mark as favorite",
+    "Save this intelligence"
+   ],
+   "loveLike": [
+    "❤️ LOVE0",
+    "👍 LIKE0",
+    "＋ SHARE INTEL"
+   ],
+   "shareBtn": "＋ SHARE INTEL",
+   "starsAria": "Rate this intelligence from one to five stars",
+   "addIntelHead": "ADD TO THE INTELLIGENCE",
+   "addIntelPh": "Add an observation, question, correction, or contribution...",
+   "addIntelAria": "Add to the intelligence",
+   "addIntelBtn": "ADD INTEL",
+   "addIntelEmpty": "Be the first to add intel..."
+  },
+  {
+   "nutshell": "IN A NUTSHELL",
+   "presenter": "Presented by Naya",
+   "meta": "Note fc-stub-1794598824873",
+   "foot": "Smart Note fc-stub-1794598824873 · from your Smart Feed",
+   "microLeft": "ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY",
+   "microRight": "TRUST: SOURCE / INTERPRETATION SEPARATED",
+   "topBtns": [
+    "＋ CREATE SPACE",
+    "★ FAVORITE",
+    "SAVE"
+   ],
+   "topAria": [
+    "Create a smart space from this intelligence",
+    "Mark as favorite",
+    "Save this intelligence"
+   ],
+   "loveLike": [
+    "❤️ LOVE0",
+    "👍 LIKE0",
+    "＋ SHARE INTEL"
+   ],
+   "shareBtn": "＋ SHARE INTEL",
+   "starsAria": "Rate this intelligence from one to five stars",
+   "addIntelHead": "ADD TO THE INTELLIGENCE",
+   "addIntelPh": "Add an observation, question, correction, or contribution...",
+   "addIntelAria": "Add to the intelligence",
+   "addIntelBtn": "ADD INTEL",
+   "addIntelEmpty": "Be the first to add intel..."
+  }
+ ],
+ "switch_to_es": [
+  {
+   "nutshell": "EN POCAS PALABRAS",
+   "presenter": null,
+   "meta": "Nota fc-stub-1794598824932",
+   "foot": "Nota inteligente fc-stub-1794598824932 · de tu feed inteligente",
+   "microLeft": "UNA INTELIGENCIA · MUCHAS VISTAS · UNA IDENTIDAD",
+   "microRight": "CONFIANZA: FUENTE / INTERPRETACIÓN SEPARADAS",
+   "topBtns": [
+    "＋ CREAR ESPACIO",
+    "★ FAVORITO",
+    "GUARDAR"
+   ],
+   "topAria": [
+    "Crear un espacio inteligente a partir de esta inteligencia",
+    "Marcar como favorito",
+    "Guardar esta inteligencia"
+   ],
+   "loveLike": [
+    "❤️ ME ENCANTA0",
+    "👍 ME GUSTA0",
+    "＋ COMPARTIR INTEL"
+   ],
+   "shareBtn": "＋ COMPARTIR INTEL",
+   "starsAria": "Valora esta inteligencia de una a cinco estrellas",
+   "addIntelHead": "AÑADIR A LA INTELIGENCIA",
+   "addIntelPh": "Añade una observación, pregunta, corrección o aportación...",
+   "addIntelAria": "Añadir a la inteligencia",
+   "addIntelBtn": "AÑADIR INTEL",
+   "addIntelEmpty": "Sé el primero en añadir intel..."
+  },
+  {
+   "nutshell": "EN POCAS PALABRAS",
+   "presenter": "Presentado por Naya",
+   "meta": "Nota fc-stub-1794598824873",
+   "foot": "Nota inteligente fc-stub-1794598824873 · de tu feed inteligente",
+   "microLeft": "UNA INTELIGENCIA · MUCHAS VISTAS · UNA IDENTIDAD",
+   "microRight": "CONFIANZA: FUENTE / INTERPRETACIÓN SEPARADAS",
+   "topBtns": [
+    "＋ CREAR ESPACIO",
+    "★ FAVORITO",
+    "GUARDAR"
+   ],
+   "topAria": [
+    "Crear un espacio inteligente a partir de esta inteligencia",
+    "Marcar como favorito",
+    "Guardar esta inteligencia"
+   ],
+   "loveLike": [
+    "❤️ ME ENCANTA0",
+    "👍 ME GUSTA0",
+    "＋ COMPARTIR INTEL"
+   ],
+   "shareBtn": "＋ COMPARTIR INTEL",
+   "starsAria": "Valora esta inteligencia de una a cinco estrellas",
+   "addIntelHead": "AÑADIR A LA INTELIGENCIA",
+   "addIntelPh": "Añade una observación, pregunta, corrección o aportación...",
+   "addIntelAria": "Añadir a la inteligencia",
+   "addIntelBtn": "AÑADIR INTEL",
+   "addIntelEmpty": "Sé el primero en añadir intel..."
+  }
+ ],
+ "notes_render": "NO_NOTECARD_FN",
+ "notes_cards_es": {
+  "sample": null,
+  "real": null
+ },
+ "green_es": {
+  "msgbtn": "✉️ Mensaje",
+  "tabPublic": "🌍 Feed inteligente público",
+  "railHead": "La gente a tu alrededor",
+  "railCards": 20,
+  "plusItems": 5,
+  "segs": [
+   "AÑADIR — abrir",
+   "CORREO — abrir",
+   "ACTIVIDAD — abrir",
+   "ESPACIOS — abrir",
+   "ECOSISTEMA — abrir"
+  ]
+ },
+ "settings_es": [
+  "⚙️ Tus preferencias",
+  "✦ Comportamiento de la app",
+  "👤 Identidad",
+  "🌍 Todo en esta página",
+  "✦ Ajustes comunes — todas las páginas",
+  "⚙️ Esta página",
+  "✦ Botones de la portada — tus membresías",
+  "🔔 Notificaciones de esta página",
+  "🏠 Ir al Hub principal",
+  "📲 Instalar como app",
+  "Cuentaⓘ"
+ ],
+ "notes_cards_en": {
+  "sample": null,
+  "real": null
+ },
+ "stub": true,
+ "picker": true,
+ "translation": "🌐 Translated from SpanishThe sun rises over the city and everything is filled with light.We walked through the market together.In a nutshellThe sun rises over the city and everything is filled with light. We walked through the market together.Show original",
+ "original_back": true,
+ "persist_after_reload": {
+  "lang": "de",
+  "stored": "\"de\""
+ },
+ "overflow1440": {
+  "sw": 1440,
+  "iw": 1440
+ },
+ "overflow1440_es": {
+  "sw": 1440,
+  "iw": 1440
+ },
+ "overflow360": {
+  "sw": 360,
+  "iw": 360
+ },
+ "first_visit": {
+  "lang": "es",
+  "stored": null,
+  "stub": true,
+  "wall": [
+   {
+    "nutshell": "EN POCAS PALABRAS",
+    "presenter": "Presentado por Naya",
+    "meta": "Nota fc-stub-1794598926238",
+    "foot": "Nota inteligente fc-stub-1794598926238 · de tu feed inteligente",
+    "microLeft": "UNA INTELIGENCIA · MUCHAS VISTAS · UNA IDENTIDAD",
+    "microRight": "CONFIANZA: FUENTE / INTERPRETACIÓN SEPARADAS",
+    "topBtns": [
+     "＋ CREAR ESPACIO",
+     "★ FAVORITO",
+     "GUARDAR"
+    ],
+    "topAria": [
+     "Crear un espacio inteligente a partir de esta inteligencia",
+     "Marcar como favorito",
+     "Guardar esta inteligencia"
+    ],
+    "loveLike": [
+     "❤️ ME ENCANTA0",
+     "👍 ME GUSTA0",
+     "＋ COMPARTIR INTEL"
+    ],
+    "shareBtn": "＋ COMPARTIR INTEL",
+    "starsAria": "Valora esta inteligencia de una a cinco estrellas",
+    "addIntelHead": "AÑADIR A LA INTELIGENCIA",
+    "addIntelPh": "Añade una observación, pregunta, corrección o aportación...",
+    "addIntelAria": "Añadir a la inteligencia",
+    "addIntelBtn": "AÑADIR INTEL",
+    "addIntelEmpty": "Sé el primero en añadir intel..."
+   }
+  ]
+ }
+}

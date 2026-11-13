@@ -61,6 +61,15 @@ function mwApplyLang(){
     if(!el.dataset.mwEn) el.dataset.mwEn=en;
     el.setAttribute('placeholder',(code==='en')?en:(dict[en]||en));
   });
+  /* CARD-LABELS-FIX: aria-labels on card buttons ride the same shape as
+     placeholders — the English key rides in data-mw-aria, re-synced in
+     place on every switch. (The [data-mw-tr] pass cannot do it: it writes
+     textContent, and an aria-label is not textContent.) */
+  document.querySelectorAll('[data-mw-aria]').forEach(function(el){
+    var en=el.getAttribute('data-mw-aria')||'';
+    if(!en) return;
+    el.setAttribute('aria-label',(code==='en')?en:(dict[en]||en));
+  });
   /* AUTO-TRANSLATE: the switch caps (On/Off) are set by mwSyncSwitch at
      setup — before mwTr exists, so they stay English after a switch unless
      re-synced here from each switch's own on/off state. */

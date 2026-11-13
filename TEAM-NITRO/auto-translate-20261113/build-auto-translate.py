@@ -4,12 +4,12 @@ Reads the BASE Personal complete page (sha asserted), applies the
 AUTO-TRANSLATE round's edits, writes the result into the worktree.
 Build-script shape, never hand-edited staged bytes (same shape as
 build-complete.py). Every replacement asserts its count; a miss aborts."""
-import hashlib, json, sys
+import hashlib, json, os, sys
 
-BASE = '/home/hatch/workspace/personal-complete-wt/TEAM-NITRO/personal-page-complete-20261113/personal-complete.html'
+BASE = os.environ.get('MW_BASE', '/home/hatch/workspace/personal-complete-wt/TEAM-NITRO/personal-page-complete-20261113/personal-complete.html')
 BASE_SHA = '4872414a1d428a940a4e12ac31c419f999843a2fde072a9ac91d09b42051c666'
 WORK = '/home/hatch/workspace/team-nitro/auto-translate-20261113/'
-OUT = BASE  # in-place in the worktree, on branch personal/auto-translate-20261113
+OUT = os.environ.get('MW_OUT', BASE)  # in-place in the worktree, on branch personal/auto-translate-card-labels-fix-20261113
 
 def TR(k):
     """guarded mwTr call for scripts that run after parse: English fallback."""
@@ -29,13 +29,13 @@ def rep(old, new, n=1):
 # ---- 1. the grown language block (span replace, boundary-asserted) ----
 lang = open(WORK + 'mw-lang-block.js', encoding='utf-8').read()
 d = json.load(open(WORK + 'dict-final.json', encoding='utf-8'))
-assert all(len(v) == 210 for v in d.values()), 'dict must hold 210 keys/language, got %s' % {k: len(v) for k, v in d.items()}
+assert all(len(v) == 266 for v in d.values()), 'dict must hold 266 keys/language, got %s' % {k: len(v) for k, v in d.items()}
 lang = lang.replace('/*__MW_I18N_JSON__*/', json.dumps(d, ensure_ascii=False))
 a = h.index('/* ---------- language (fix 18) ---------- */')
 b = h.index('/* ---------- settings binding ---------- */')
 assert 'var MW_I18N={' in h[a:b] and 'function mwApplyLang(){' in h[a:b], 'language span boundaries wrong'
 h = h[:a] + lang.rstrip() + '\n' + h[b:]
-print('language block grown: 17 keys -> 210 keys/language')
+print('language block grown: 17 keys -> 266 keys/language')
 
 # ---- 2. switch caps translate ----
 rep("  if(cap) cap.textContent=on?'On':'Off';",
@@ -348,6 +348,134 @@ rep("aria-label=\"Cover button '+(i+1)+' name\"",
     "aria-label=\"'+" + TR('Cover button') + "+' '+(i+1)+' '+" + TR('Name') + "+'\"")
 rep("aria-label=\"Cover button '+(i+1)+' URL\"",
     "aria-label=\"'+" + TR('Cover button') + "+' '+(i+1)+' URL\"")
+
+# ---- 21. CARD-LABELS-FIX (2026-11-13): the note cards' fixed Intelligent
+# Block labels. The captain's double-check caught them in Spanish mode:
+# "IN A NUTSHELL", "+ CREATE SPACE", "★ FAVORITE", "ADD TO THE INTELLIGENCE",
+# "ADD INTEL", "ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY",
+# "TRUST: SOURCE / INTERPRETATION SEPARATED" — visible template strings in
+# the card builders, unmarked, not in MW_I18N. The maker's first-hand
+# inventory (RECORD §2) found the same miss class in every card family that
+# renders on this page, so §21 covers all of them, not just the seven:
+# intelBoard + BoardActions (the wall/feed cards), ibFeedCard (exported
+# feed-card renderer, currently uncalled — routed so it lands translated
+# whenever it is wired in), noteCard (Notes view), the sa lesson cards'
+# IN A NUTSHELL label only, and the ibCatBarHTML filter bar.
+# Pattern (harvested from §19/§20): a label alone in its element gets
+# data-mw-tr="set" + a pinned data-mw-en (the Settings-fix trap-2 pin: a
+# first-visit non-English boot must never capture the translated text as
+# the key); a label sharing its parent with an icon/count gets its words
+# wrapped in <span data-mw-tr="set"> — the [data-mw-tr] pass sets
+# textContent, so marking a button that also holds a count badge would wipe
+# the badge. Render-time text goes through mwTr (TR() guard) so first paint
+# is already translated; the switch re-translates from data-mw-en.
+# Aria-labels ride the new [data-mw-aria] pass in mw-lang-block.js.
+# NOT routed (named in the record, same precedent as §20's transient
+# setStatus feedback): BoardActions toasts, relative times + en-US date
+# stamps (locale formatting, not labels), composed star aria-labels/titles,
+# the grow/save dialogs, the sa lesson labels beyond IN A NUTSHELL,
+# the Notes-view saved shelf + 'No notes yet' empty state, the feed meta
+# line, the 'Untitled Intelligence' / 'Naya Note' content fallbacks, and
+# the gold layer's embedded 'How It Connects' sub-label (inside md() body,
+# unmarkable without restructuring the layer render). ----
+# intelBoard: nutshell heading, layer heads (canonical names only — an
+# unknown head falls back to English, citizen-defined heads are never forced)
+rep("ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(nutshellLayer.body.slice(0, 600));",
+    "ns.innerHTML = '<b data-mw-tr=\"set\" data-mw-en=\"IN A NUTSHELL\">' + " + TR('IN A NUTSHELL') + " + '</b>' + md(nutshellLayer.body.slice(0, 600));")
+rep("      lh.innerHTML =\n        layerJewel(L.name, layerColorFor(L.name)) +\n        '<b>' + esc(L.name) + '</b>';",
+    "      lh.innerHTML =\n        layerJewel(L.name, layerColorFor(L.name)) +\n        '<b data-mw-tr=\"set\" data-mw-en=\"' + esc(L.name) + '\">' + esc((window.mwTr?window.mwTr(L.name):L.name)) + '</b>';")
+rep("    foot.innerHTML = note.kind === 'official'\n      ? '<span>Official NayaNET Guide \\u00B7 from the Intelligent Library</span>'\n      : '<span>Smart Note ' + esc(note.id || '') + ' \\u00B7 from your Smart Feed</span>';",
+    "    foot.innerHTML = note.kind === 'official'\n      ? '<span><span data-mw-tr=\"set\" data-mw-en=\"Official NayaNET Guide\">' + " + TR('Official NayaNET Guide') + " + '</span> \\u00B7 <span data-mw-tr=\"set\" data-mw-en=\"from the Intelligent Library\">' + " + TR('from the Intelligent Library') + " + '</span></span>'\n      : '<span><span data-mw-tr=\"set\" data-mw-en=\"Smart Note\">' + " + TR('Smart Note') + " + '</span> ' + esc(note.id || '') + ' \\u00B7 <span data-mw-tr=\"set\" data-mw-en=\"from your Smart Feed\">' + " + TR('from your Smart Feed') + " + '</span></span>';")
+rep("      meta.innerHTML = '<span>Note ' + esc(idStr) + '</span>';",
+    "      meta.innerHTML = '<span><span data-mw-tr=\"set\" data-mw-en=\"Note\">' + " + TR('Note') + " + '</span> ' + esc(idStr) + '</span>';")
+rep("    micro.innerHTML = '<span class=\"left\">ONE INTELLIGENCE &middot; MANY VIEWS &middot; ONE IDENTITY</span>' +\n      '<span class=\"right\">TRUST: SOURCE / INTERPRETATION SEPARATED</span>';",
+    "    micro.innerHTML = '<span class=\"left\" data-mw-tr=\"set\" data-mw-en=\"ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY\">' + " + TR('ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY') + " + '</span>' +\n      '<span class=\"right\" data-mw-tr=\"set\" data-mw-en=\"TRUST: SOURCE / INTERPRETATION SEPARATED\">' + " + TR('TRUST: SOURCE / INTERPRETATION SEPARATED') + " + '</span>';")
+# presenter chip (both render sites: ibWallHTML + noteCard)
+rep("    var chip = '<div class=\"ib-presenter\"><img src=\"' + window.__FIX8_NAYA_FACE + '\" alt=\"Naya\"><span>Presented by Naya</span></div>';",
+    "    var chip = '<div class=\"ib-presenter\"><img src=\"' + window.__FIX8_NAYA_FACE + '\" alt=\"Naya\"><span data-mw-tr=\"set\" data-mw-en=\"Presented by Naya\">' + " + TR('Presented by Naya') + " + '</span></div>';")
+rep("    var chip8b=face8b?'<div class=\"ib-presenter\"><img src=\"'+face8b+'\" alt=\"Naya\"><span>Presented by Naya</span></div>':'';",
+    "    var chip8b=face8b?'<div class=\"ib-presenter\"><img src=\"'+face8b+'\" alt=\"Naya\"><span data-mw-tr=\"set\" data-mw-en=\"Presented by Naya\">'+" + TR('Presented by Naya') + "+'</span></div>':'';")
+# noteCard: nutshell, Save/Saved, List, Smart-Lists 'In:' prefix
+rep("<p class=\"ph-nutshell\">IN A NUTSHELL</p>",
+    "<p class=\"ph-nutshell\" data-mw-tr=\"set\" data-mw-en=\"IN A NUTSHELL\">'+" + TR('IN A NUTSHELL') + "+'</p>")
+rep("<button class=\"os-savebtn'+(isSaved?' saved':'')+'\" type=\"button\" data-os-save=\"'+esc(n.id)+'\" style=\"--ac:'+n.c+'\">'+(isSaved?'Saved ✓':'Save')+'</button>",
+    "<button class=\"os-savebtn'+(isSaved?' saved':'')+'\" type=\"button\" data-os-save=\"'+esc(n.id)+'\" style=\"--ac:'+n.c+'\" data-mw-tr=\"set\" data-mw-en=\"'+(isSaved?'Saved ✓':'Save')+'\">'+(window.mwTr?window.mwTr(isSaved?'Saved ✓':'Save'):(isSaved?'Saved ✓':'Save'))+'</button>")
+rep("'<button class=\"os-savebtn\" type=\"button\" data-os-listfile=\"'+esc(n.id)+'\" style=\"--ac:#2fe89e\">List</button>'",
+    "'<button class=\"os-savebtn\" type=\"button\" data-os-listfile=\"'+esc(n.id)+'\" style=\"--ac:#2fe89e\" data-mw-tr=\"set\" data-mw-en=\"List\">'+" + TR('List') + "+'</button>'")
+rep("    var liked=!!likes[n.id], isSaved=saved.indexOf(n.id)>=0;",
+    "    var liked=!!likes[n.id], isSaved=saved.indexOf(n.id)>=0;\n    var slLine=slLists?slInLine('smart_note', n.id.replace(/^r/, '')):'';")
+rep("'<div class=\"os-sl-in\" data-os-in=\"'+esc(n.id)+'\">'+(slLists?esc(slInLine('smart_note', n.id.replace(/^r/, ''))):'')+'</div>",
+    "'<div class=\"os-sl-in\" data-os-in=\"'+esc(n.id)+'\">'+(slLine?'<span data-mw-tr=\"set\" data-mw-en=\"In:\">'+" + TR('In:') + "+'</span> '+esc(slLine.slice(4)):'')+'</div>")
+# ibFeedCard: kind, OWNER/PINNED, nutshell x2, layer heads, rawdetails,
+# microcopy lines, actions, comment input + Send, kind/area + IN: foot
+rep("    + '<div class=\"ib-kind\">'+kind+'</div>';",
+    "    + '<div class=\"ib-kind\" data-mw-tr=\"set\" data-mw-en=\"'+kind+'\">'+(window.mwTr?window.mwTr(kind):kind)+'</div>';")
+rep("    + (post.mine ? ' <span style=\"color:#8f8898;\">· OWNER</span>' : '')",
+    "    + (post.mine ? ' <span style=\"color:#8f8898;\">· <span data-mw-tr=\"set\" data-mw-en=\"OWNER\">' + " + TR('OWNER') + " + '</span></span>' : '')")
+rep("    + (post.pinned ? ' <span style=\"color:#ffbf3d;\">📌 PINNED</span>' : '')",
+    "    + (post.pinned ? ' <span style=\"color:#ffbf3d;\">📌 <span data-mw-tr=\"set\" data-mw-en=\"PINNED\">' + " + TR('PINNED') + " + '</span></span>' : '')")
+rep("<span class=\"ib-nutshell-label\">IN A NUTSHELL</span>'",
+    "<span class=\"ib-nutshell-label\" data-mw-tr=\"set\" data-mw-en=\"IN A NUTSHELL\">' + " + TR('IN A NUTSHELL') + " + '</span>'", n=2)
+rep("    + '<span class=\"ib-dot\"></span><span>'+esc(L.head||'Detail')+'</span>'",
+    "    + '<span class=\"ib-dot\"></span><span data-mw-tr=\"set\" data-mw-en=\"'+esc(L.head||'Detail')+'\">'+esc((window.mwTr?window.mwTr(L.head||'Detail'):(L.head||'Detail')))+'</span>'")
+rep("    h += '<details class=\"ib-rawdetails\"><summary>YOUR WORDS, WORD FOR WORD</summary>'",
+    "    h += '<details class=\"ib-rawdetails\"><summary data-mw-tr=\"set\" data-mw-en=\"YOUR WORDS, WORD FOR WORD\">' + " + TR('YOUR WORDS, WORD FOR WORD') + " + '</summary>'")
+rep("    h += '<div class=\"ib-microcopy\"><span>DISTILLED FROM THE AUTHOR\\u2019S WORDS \\u2014 REVIEWED BEFORE POSTING</span></div>';",
+    "    h += '<div class=\"ib-microcopy\"><span data-mw-tr=\"set\" data-mw-en=\"DISTILLED FROM THE AUTHOR’S WORDS — REVIEWED BEFORE POSTING\">' + " + TR('DISTILLED FROM THE AUTHOR’S WORDS — REVIEWED BEFORE POSTING') + " + '</span></div>';")
+rep("    h += '<div class=\"ib-naya-verbatim\"><span class=\"ib-naya-fidelity\">YOUR WORDS \\u2014 FORMATTED BEAUTIFULLY BY NAYA</span>'",
+    "    h += '<div class=\"ib-naya-verbatim\"><span class=\"ib-naya-fidelity\" data-mw-tr=\"set\" data-mw-en=\"YOUR WORDS — FORMATTED BEAUTIFULLY BY NAYA\">' + " + TR('YOUR WORDS — FORMATTED BEAUTIFULLY BY NAYA') + " + '</span>'")
+rep("    + '<button type=\"button\" class=\"ib-act\" data-ib-share=\"'+esc(post.id||'')+'\" style=\"--ac:#ff9a5a;\">↗ Share</button>'",
+    "    + '<button type=\"button\" class=\"ib-act\" data-ib-share=\"'+esc(post.id||'')+'\" style=\"--ac:#ff9a5a;\">↗ <span data-mw-tr=\"set\" data-mw-en=\"Share\">' + " + TR('Share') + " + '</span></button>'")
+rep("    + '<button type=\"button\" class=\"ib-act object\" data-ib-save=\"'+esc(post.id||'')+'\">💾 Save to list</button>'",
+    "    + '<button type=\"button\" class=\"ib-act object\" data-ib-save=\"'+esc(post.id||'')+'\">💾 <span data-mw-tr=\"set\" data-mw-en=\"Save to list\">' + " + TR('Save to list') + " + '</span></button>'")
+rep("    + (actions.canPin ? '<button type=\"button\" class=\"ib-act object\" data-ib-pin=\"'+esc(post.id||'')+'\">📌 '+(post.pinned?'Unpin':'Pin')+'</button>' : '')",
+    "    + (actions.canPin ? '<button type=\"button\" class=\"ib-act object\" data-ib-pin=\"'+esc(post.id||'')+'\">📌 <span data-mw-tr=\"set\" data-mw-en=\"'+(post.pinned?'Unpin':'Pin')+'\">'+(window.mwTr?window.mwTr(post.pinned?'Unpin':'Pin'):(post.pinned?'Unpin':'Pin'))+'</span></button>' : '')")
+rep("    + '<button type=\"button\" class=\"ib-act grow\" data-ib-grow-space=\"'+esc(post.id||'')+'\">➕ Space from this</button>'",
+    "    + '<button type=\"button\" class=\"ib-act grow\" data-ib-grow-space=\"'+esc(post.id||'')+'\">➕ <span data-mw-tr=\"set\" data-mw-en=\"Space from this\">' + " + TR('Space from this') + " + '</span></button>'")
+rep("    + '<button type=\"button\" class=\"ib-act grow\" data-ib-grow-biz=\"'+esc(post.id||'')+'\">🏢 Business from this</button>'",
+    "    + '<button type=\"button\" class=\"ib-act grow\" data-ib-grow-biz=\"'+esc(post.id||'')+'\">🏢 <span data-mw-tr=\"set\" data-mw-en=\"Business from this\">' + " + TR('Business from this') + " + '</span></button>'")
+rep("    + '<button type=\"button\" class=\"ib-act\" data-ib-cmt-toggle=\"'+esc(post.id||'')+'\" style=\"--ac:#3fb8ff;\">💬 '+(comments.length||'Comment')+'</button>'",
+    "    + '<button type=\"button\" class=\"ib-act\" data-ib-cmt-toggle=\"'+esc(post.id||'')+'\" style=\"--ac:#3fb8ff;\">💬 '+(comments.length||'<span data-mw-tr=\"set\" data-mw-en=\"Comment\">' + " + TR('Comment') + " + '</span>')+'</button>'")
+rep("    + '<div class=\"ib-cmt-row\"><input class=\"ib-cmt-in\" data-ib-cmt-in=\"'+esc(post.id||'')+'\" type=\"text\" placeholder=\"Add a comment…\" maxlength=\"500\">'",
+    "    + '<div class=\"ib-cmt-row\"><input class=\"ib-cmt-in\" data-ib-cmt-in=\"'+esc(post.id||'')+'\" type=\"text\" data-mw-ph=\"set\" data-mw-en=\"Add a comment…\" placeholder=\"'+(window.mwTr?window.mwTr('Add a comment…'):'Add a comment…')+'\" maxlength=\"500\">'")
+rep("'<button type=\"button\" class=\"ib-act\" data-ib-cmt-send=\"'+esc(post.id||'')+'\" style=\"--ac:#3fb8ff;\">Send</button></div></div>';",
+    "'<button type=\"button\" class=\"ib-act\" data-ib-cmt-send=\"'+esc(post.id||'')+'\" style=\"--ac:#3fb8ff;\" data-mw-tr=\"set\" data-mw-en=\"Send\">' + " + TR('Send') + " + '</button></div></div>';")
+rep("  h += '<div class=\"ib-microcopy\"><span>'+kind+' · '+esc(post.area||'personal').toUpperCase()+'</span>'",
+    "  h += '<div class=\"ib-microcopy\"><span><span data-mw-tr=\"set\" data-mw-en=\"'+kind+'\">'+(window.mwTr?window.mwTr(kind):kind)+'</span> · '+esc(post.area||'personal').toUpperCase()+'</span>'")
+rep("    + (inLists ? '<span class=\"ib-state\">IN: '+esc(inLists)+'</span>' : '<span class=\"ib-state\"> </span>')",
+    "    + (inLists ? '<span class=\"ib-state\"><span data-mw-tr=\"set\" data-mw-en=\"IN:\">' + " + TR('IN:') + " + '</span> '+esc(inLists)+'</span>' : '<span class=\"ib-state\"> </span>')")
+# BoardActions btn(): the label lives in a marked span (the [data-mw-tr]
+# pass sets textContent — on the button it would wipe the love/like count
+# badge appended after the label). The aria-label rides [data-mw-aria].
+rep("    b.textContent = label; b.setAttribute('aria-label', ariaLabel || label);",
+    "    var lab = document.createElement('span');\n    lab.setAttribute('data-mw-tr', 'set'); lab.dataset.mwEn = label;\n    lab.textContent = (window.mwTr ? window.mwTr(label) : label);\n    b.appendChild(lab);\n    b.setAttribute('aria-label', (window.mwTr ? window.mwTr(ariaLabel || label) : (ariaLabel || label)));\n    b.setAttribute('data-mw-aria', ariaLabel || label);")
+# addIntel: heading, placeholder + aria-label, empty state
+rep("    const b = el('b', '', 'ADD TO THE INTELLIGENCE');",
+    "    const b = el('b', '', ''); b.setAttribute('data-mw-tr', 'set'); b.dataset.mwEn = 'ADD TO THE INTELLIGENCE'; b.textContent = (window.mwTr ? window.mwTr('ADD TO THE INTELLIGENCE') : 'ADD TO THE INTELLIGENCE');")
+rep("    input.placeholder = 'Add an observation, question, correction, or contribution...';",
+    "    input.placeholder = (window.mwTr ? window.mwTr('Add an observation, question, correction, or contribution...') : 'Add an observation, question, correction, or contribution...'); input.setAttribute('data-mw-ph', 'set'); input.dataset.mwEn = 'Add an observation, question, correction, or contribution...';")
+rep("    input.setAttribute('aria-label', 'Add to the intelligence');",
+    "    input.setAttribute('aria-label', (window.mwTr ? window.mwTr('Add to the intelligence') : 'Add to the intelligence')); input.setAttribute('data-mw-aria', 'Add to the intelligence');")
+rep("        const empty = el('div', 'intel-empty'); empty.textContent = 'Be the first to add intel...';",
+    "        const empty = el('div', 'intel-empty'); empty.setAttribute('data-mw-tr', 'set'); empty.dataset.mwEn = 'Be the first to add intel...'; empty.textContent = (window.mwTr ? window.mwTr('Be the first to add intel...') : 'Be the first to add intel...');")
+# category picker head + star-group aria-label
+rep("    head.textContent = 'FILE UNDER A CATEGORY';",
+    "    head.textContent = (window.mwTr ? window.mwTr('FILE UNDER A CATEGORY') : 'FILE UNDER A CATEGORY'); head.setAttribute('data-mw-tr', 'set'); head.dataset.mwEn = 'FILE UNDER A CATEGORY';")
+rep("    stars.setAttribute('aria-label', 'Rate this intelligence from one to five stars');",
+    "    stars.setAttribute('aria-label', (window.mwTr ? window.mwTr('Rate this intelligence from one to five stars') : 'Rate this intelligence from one to five stars')); stars.setAttribute('data-mw-aria', 'Rate this intelligence from one to five stars');")
+# sa lesson cards: IN A NUTSHELL only (the other lesson labels are a
+# different surface — membership lessons, not note cards — named follow-on).
+# Two shapes: the feed card continues the same string piece after </span>
+# ('</span><p>'), the lesson views close the piece there ('</span>').
+rep("<span class=\"ph-nl\">IN A NUTSHELL</span><p>",
+    "<span class=\"ph-nl\" data-mw-tr=\"set\" data-mw-en=\"IN A NUTSHELL\">' + " + TR('IN A NUTSHELL') + " + '</span><p>")
+rep("<span class=\"ph-nl\">IN A NUTSHELL</span>'",
+    "<span class=\"ph-nl\" data-mw-tr=\"set\" data-mw-en=\"IN A NUTSHELL\">' + " + TR('IN A NUTSHELL') + " + '</span>'", n=2)
+# category bar (ibCatBarHTML, exported beside ibFeedCard)
+rep("  h += '<button type=\"button\" class=\"ib-cat'+(!active?' on':'')+'\" data-ib-cat=\"\">All notes</button>';",
+    "  h += '<button type=\"button\" class=\"ib-cat'+(!active?' on':'')+'\" data-ib-cat=\"\" data-mw-tr=\"set\" data-mw-en=\"All notes\">' + (window.mwTr?window.mwTr('All notes'):'All notes') + '</button>';")
+rep("  h += '<button type=\"button\" class=\"ib-cat ib-cat-add\" data-ib-cat-add>+ List</button>';",
+    "  h += '<button type=\"button\" class=\"ib-cat ib-cat-add\" data-ib-cat-add data-mw-tr=\"set\" data-mw-en=\"+ List\">' + (window.mwTr?window.mwTr('+ List'):'+ List') + '</button>';")
 
 # ---- 18. inject the Translate module + CSS before </body> ----
 css = open(WORK + 'mw-translate.css', encoding='utf-8').read()
