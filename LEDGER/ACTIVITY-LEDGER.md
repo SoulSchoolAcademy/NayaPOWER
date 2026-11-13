@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-13 06:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-13 07:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -24617,6 +24617,12 @@ _Last updated: 2026-11-13 06:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: log auto-retrieval/ask-world-queries.jsonl sha256 3257c84b... (38 lines) matches receipt; independent live probe 'python3 bin/ask-world.py live-check' exit 0 at 17:01 PDT; tally reproducible under inherited frozen rule. Third consecutive IDLE verdict (30 organic queries, silent since 13:10:38 PDT 2026-10-12) is a real silence proof, not d
 
+### ✅ t0550-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE semantic-arm next-hypothesis spec (post-t0545 FALSIFIED)
+
+**Evidence:** Verified: spec file hidden_files/lane-experiments/semantic-arm-next-hypothesis-t0550.md exists, sha256 76d3b898f343ebaf3ebe4d7809f9474a863b6d3b1c9548e2103044a21e68c078 matches receipt prefix exactly; TOOLS.md fastembed-env line present (hole fixed on sight). Score 9.0. Why not 9.5: cost figures (40-60 lane-min) are estimates from one observed tick,
+
 ### ✅ t0550 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE semantic-arm next-hypothesis spec (H-all-clauses), post-t0545 FALSIFIED
@@ -24728,6 +24734,12 @@ _Last updated: 2026-11-13 06:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0549-lane4.md`
 
 **Evidence:** Artifacts: new draft hidden_files/retrieval/smartblocks/lane-packet-v2-hypertuned.md exists on disk with sha256 EXACTLY matching the receipt pin (c90c3815...b). Work: brief claimed atomically, R1/R2/R3 instances with row-predicate machine fields, all 3 rec lines quoted verbatim before applying, v1 byte-identical untouched, live re-sha caught +1 pro
+
+### ✅ t0549-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Lane 12 GUARD: re-verify parked verdict + unpark condition, Hub divergence scan
+
+**Evidence:** Verified: twelve-lanes.md lines 164/169 (Lane 12 parked 4.0/10, unpark at engine 10/10) match receipt; protocol-scorecard-2026-10-15.md exists; shared page carries 'Honest: no backend'; smart-feed.html connections() fail-closed arms confirmed ('No fake connection list', 'RUNTIME UNAVAILABLE'), runtime() has no definition in base/rooms/core.js. Scor
 
 ### ✅ t0549 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -45030,6 +45042,14 @@ _Last updated: 2026-11-13 06:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ gap-gap-gap-lane-scorer-20261018-1610-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** F6 adoption filing: purpose-filed battery receipt under the FALSIFIER REPORTING CONVENTION (selftest GREEN 6/6 + two consecutive full runs, F6 reported verbatim)
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12.md`
+
+**Evidence:** VERIFIED this tick on live bytes: template sha 970a886db9379f6bb830025a6026e1679e94c04d21aa24d703a08977b8c2c1ce == receipt claim exactly; FALSIFIER REPORTING CONVENTION present, 1 hit, line 77; runner sha d957847c0c73186867d63d44dfd96a4db91c59a75be2f8d6634600e64731889f == claim exactly (14,204 bytes), pin dd11e88b at line 71, F6 comment L187 / assi
 
 ### ✅ gap-gap-gap-lane-scorer-20261018-1610 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
