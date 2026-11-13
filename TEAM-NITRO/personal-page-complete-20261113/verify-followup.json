@@ -1,0 +1,444 @@
+{
+  "widths": {
+    "390": {
+      "viewport": 390,
+      "url_start": "http://127.0.0.1:8132/personal-complete.html",
+      "overflowX": 0,
+      "buttons_equal_2px": true,
+      "button_widths": [
+        110
+      ],
+      "gear": {
+        "x": 332,
+        "y": 64,
+        "w": 48,
+        "h": 48
+      },
+      "gear_text": "\u2699\ufe0f",
+      "name": {
+        "x": 146,
+        "y": 350,
+        "w": 159.6,
+        "h": 40
+      },
+      "pill": {
+        "x": 146,
+        "y": 404,
+        "w": 114.4,
+        "h": 57
+      },
+      "cvrbtn": {
+        "x": 215.7,
+        "y": 6,
+        "w": 164.3,
+        "h": 48
+      },
+      "name_vs_cvrbtn": false,
+      "pill_vs_name": false,
+      "pill_text": "\u2026",
+      "notif_segs": [
+        "plus",
+        "mail",
+        "activity",
+        "spaces",
+        "eco"
+      ],
+      "seg_boxes": [
+        {
+          "x": 46,
+          "y": 786,
+          "w": 50,
+          "h": 48
+        },
+        {
+          "x": 108,
+          "y": 786,
+          "w": 50,
+          "h": 48
+        },
+        {
+          "x": 170,
+          "y": 786,
+          "w": 50,
+          "h": 48
+        },
+        {
+          "x": 232,
+          "y": 786,
+          "w": 50,
+          "h": 48
+        },
+        {
+          "x": 294,
+          "y": 786,
+          "w": 50,
+          "h": 48
+        }
+      ],
+      "seg_shadow": "rgba(0, 0, 0, 0.25) 0px -2px 8px 0px inset, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+      "pluswrap_display": "none",
+      "rooms_plus_display": "none",
+      "eco_plus_display": "none",
+      "visible_plus_count": 1,
+      "plus_menu_items": [
+        "\u270e\nMake a post",
+        "\u270e\nNaya note",
+        "\u2726\nSmart note",
+        "\ud83d\udcac\nMessage",
+        "\u2709\ufe0f\nMail"
+      ],
+      "tab_labels": [
+        "Personal",
+        "Public smart feed",
+        "Naya Notes"
+      ],
+      "feedline": "MATCH \u2192 ORGANIZE \u2192 CONNECT",
+      "search_btn": {
+        "x": 93.3,
+        "y": 936,
+        "w": 203.4,
+        "h": 40
+      },
+      "search_btn_text": "\ud83d\udd0d Search the public feed",
+      "composer_cards": 0,
+      "rail_cards": 20,
+      "rail_imgs": 0,
+      "rail_box": {
+        "x": 16,
+        "y": 1430.2,
+        "w": 358,
+        "h": 4188.0
+      },
+      "spaces_tap_url": "http://127.0.0.1:8132/personal-complete.html",
+      "spaces_tap_url_unchanged": true,
+      "left_drawer_open": true,
+      "left_drawer_box": {
+        "x": 0,
+        "y": 0,
+        "w": 300,
+        "h": 844
+      },
+      "left_drawer_visible": true,
+      "left_drawer_closed_on_backdrop_tap": true,
+      "eco_tap_url_unchanged": true,
+      "right_drawer_open": true,
+      "right_drawer_box": {
+        "x": 90,
+        "y": 0,
+        "w": 300,
+        "h": 844
+      },
+      "right_drawer_visible": true,
+      "right_drawer_closed_on_escape": true,
+      "console_errors": 52,
+      "pageerrors": []
+    },
+    "1440": {
+      "viewport": 1440,
+      "url_start": "http://127.0.0.1:8132/personal-complete.html",
+      "overflowX": 0,
+      "buttons_equal_2px": true,
+      "button_widths": [
+        147
+      ],
+      "gear": {
+        "x": 1196,
+        "y": 76,
+        "w": 48,
+        "h": 48
+      },
+      "gear_text": "\u2699\ufe0f",
+      "name": {
+        "x": 184,
+        "y": 305.7,
+        "w": 159.6,
+        "h": 40
+      },
+      "pill": {
+        "x": 357.6,
+        "y": 297.2,
+        "w": 114.4,
+        "h": 57
+      },
+      "cvrbtn": {
+        "x": 1259.7,
+        "y": 76,
+        "w": 164.3,
+        "h": 48
+      },
+      "name_vs_cvrbtn": false,
+      "pill_vs_name": false,
+      "pill_text": "\u2026",
+      "notif_segs": [
+        "plus",
+        "mail",
+        "activity",
+        "spaces",
+        "eco"
+      ],
+      "seg_boxes": [
+        {
+          "x": 487,
+          "y": 778,
+          "w": 66,
+          "h": 56
+        },
+        {
+          "x": 587,
+          "y": 778,
+          "w": 66,
+          "h": 56
+        },
+        {
+          "x": 687,
+          "y": 778,
+          "w": 66,
+          "h": 56
+        },
+        {
+          "x": 787,
+          "y": 778,
+          "w": 66,
+          "h": 56
+        },
+        {
+          "x": 887,
+          "y": 778,
+          "w": 66,
+          "h": 56
+        }
+      ],
+      "seg_shadow": "rgba(0, 0, 0, 0.25) 0px -2px 8px 0px inset, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+      "pluswrap_display": "none",
+      "rooms_plus_display": "none",
+      "eco_plus_display": "none",
+      "visible_plus_count": 1,
+      "plus_menu_items": [
+        "\u270e\nMake a post",
+        "\u270e\nNaya note",
+        "\u2726\nSmart note",
+        "\ud83d\udcac\nMessage",
+        "\u2709\ufe0f\nMail"
+      ],
+      "tab_labels": [
+        "Personal",
+        "Public smart feed",
+        "Naya Notes"
+      ],
+      "feedline": "MATCH \u2192 ORGANIZE \u2192 CONNECT",
+      "search_btn": {
+        "x": 449.3,
+        "y": 585.2,
+        "w": 203.4,
+        "h": 40
+      },
+      "search_btn_text": "\ud83d\udd0d Search the public feed",
+      "composer_cards": 0,
+      "rail_cards": 20,
+      "rail_imgs": 0,
+      "rail_box": {
+        "x": 1096,
+        "y": 464.2,
+        "w": 320,
+        "h": 769.2
+      },
+      "spaces_tap_url": "http://127.0.0.1:8132/personal-complete.html",
+      "spaces_tap_url_unchanged": true,
+      "left_drawer_open": true,
+      "left_drawer_box": {
+        "x": 0,
+        "y": 0,
+        "w": 300,
+        "h": 844
+      },
+      "left_drawer_visible": true,
+      "left_drawer_closed_on_backdrop_tap": true,
+      "eco_tap_url_unchanged": true,
+      "right_drawer_open": true,
+      "right_drawer_box": {
+        "x": 1140,
+        "y": 0,
+        "w": 300,
+        "h": 844
+      },
+      "right_drawer_visible": true,
+      "right_drawer_closed_on_escape": true,
+      "left_drawer_open_again": true,
+      "left_drawer_closed_on_retap_desktop": true,
+      "console_errors": 60,
+      "pageerrors": []
+    },
+    "360": {
+      "viewport": 360,
+      "url_start": "http://127.0.0.1:8132/personal-complete.html",
+      "overflowX": 0,
+      "buttons_equal_2px": true,
+      "button_widths": [
+        160
+      ],
+      "gear": {
+        "x": 302,
+        "y": 64,
+        "w": 48,
+        "h": 48
+      },
+      "gear_text": "\u2699\ufe0f",
+      "name": {
+        "x": 16,
+        "y": 488.5,
+        "w": 159.6,
+        "h": 40
+      },
+      "pill": {
+        "x": 189.6,
+        "y": 480,
+        "w": 114.4,
+        "h": 57
+      },
+      "cvrbtn": {
+        "x": 185.7,
+        "y": 6,
+        "w": 164.3,
+        "h": 48
+      },
+      "name_vs_cvrbtn": false,
+      "pill_vs_name": false,
+      "pill_text": "\u2026",
+      "notif_segs": [
+        "plus",
+        "mail",
+        "activity",
+        "spaces",
+        "eco"
+      ],
+      "seg_boxes": [
+        {
+          "x": 31,
+          "y": 786,
+          "w": 50,
+          "h": 48
+        },
+        {
+          "x": 93,
+          "y": 786,
+          "w": 50,
+          "h": 48
+        },
+        {
+          "x": 155,
+          "y": 786,
+          "w": 50,
+          "h": 48
+        },
+        {
+          "x": 217,
+          "y": 786,
+          "w": 50,
+          "h": 48
+        },
+        {
+          "x": 279,
+          "y": 786,
+          "w": 50,
+          "h": 48
+        }
+      ],
+      "seg_shadow": "rgba(0, 0, 0, 0.25) 0px -2px 8px 0px inset, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+      "pluswrap_display": "none",
+      "rooms_plus_display": "none",
+      "eco_plus_display": "none",
+      "visible_plus_count": 1,
+      "plus_menu_items": [
+        "\u270e\nMake a post",
+        "\u270e\nNaya note",
+        "\u2726\nSmart note",
+        "\ud83d\udcac\nMessage",
+        "\u2709\ufe0f\nMail"
+      ],
+      "tab_labels": [
+        "Personal",
+        "Public smart feed",
+        "Naya Notes"
+      ],
+      "feedline": "MATCH \u2192 ORGANIZE \u2192 CONNECT",
+      "search_btn": {
+        "x": 78.3,
+        "y": 992,
+        "w": 203.4,
+        "h": 40
+      },
+      "search_btn_text": "\ud83d\udd0d Search the public feed",
+      "composer_cards": 0,
+      "rail_cards": 20,
+      "rail_imgs": 0,
+      "rail_box": {
+        "x": 16,
+        "y": 1508.2,
+        "w": 328,
+        "h": 4281.8
+      },
+      "spaces_tap_url": "http://127.0.0.1:8132/personal-complete.html",
+      "spaces_tap_url_unchanged": true,
+      "left_drawer_open": true,
+      "left_drawer_box": {
+        "x": 0,
+        "y": 0,
+        "w": 300,
+        "h": 844
+      },
+      "left_drawer_visible": true,
+      "left_drawer_closed_on_backdrop_tap": true,
+      "eco_tap_url_unchanged": true,
+      "right_drawer_open": true,
+      "right_drawer_box": {
+        "x": 60,
+        "y": 0,
+        "w": 300,
+        "h": 844
+      },
+      "right_drawer_visible": true,
+      "right_drawer_closed_on_escape": true,
+      "console_errors": 42,
+      "pageerrors": []
+    }
+  },
+  "public": {
+    "personal_cards": 2,
+    "personal_meta": "2 posts on this feed \u2014 the newest landed 5h ago, across 1 voice.",
+    "public_cards": 6,
+    "public_meta": "6 posts on this feed \u2014 the newest landed just now, across 4 voices.",
+    "public_ribbon": [
+      "All",
+      "Follow-Up Tester",
+      "Chi DV Spc",
+      "Chi DV Biz",
+      "Guest",
+      "+ Add"
+    ],
+    "public_authors": [
+      "Follow-up keyword test \u2014 garden notes: I grow tomatoes and herbs in the garden, and I trade cuttings with neig",
+      "Follow-up keyword test \u2014 garden tools: my favourite garden tools are the hand fork and the watering can.",
+      "Follow-up keyword test \u2014 harvest morning: we picked the harvest at sunrise and shared the baskets.",
+      "Verification wall post CHI-DV-SPC-WALL-20261022-0010 \u2014 newest-first and stamp colours under test.",
+      "Verification wall post CHI-DV-BIZ-WALL-20261022-0010 \u2014 newest-first and stamp colours under test.",
+      "Heartbeat test - NayaPOWER is alive"
+    ],
+    "popup_open": true,
+    "popup_input_present": true,
+    "garden_cards": 2,
+    "garden_meta": "2 posts on this feed \u2014 the newest landed just now, across 1 voice. Matching \u201cgarden\u201d.",
+    "garden_dropdown": 2,
+    "harvest_cards": 1,
+    "harvest_meta": "1 post on this feed \u2014 the newest landed just now, across 1 voice. Matching \u201charvest\u201d.",
+    "cleared_cards": 6,
+    "cleared_meta": "6 posts on this feed \u2014 the newest landed just now, across 4 voices.",
+    "personal_after_cards": 2,
+    "personal_after_meta": "2 posts on this feed \u2014 the newest landed 5h ago, across 1 voice."
+  },
+  "naya": {
+    "cards_rendered": 2,
+    "box_text": "\u2726 Naya test oneTest \u00b7 11/13/2026First test naya note.\u2726 Naya test twoTest \u00b7 11/13/2026Second test naya note."
+  },
+  "pageerrors": [],
+  "lists_wall_present": true
+}

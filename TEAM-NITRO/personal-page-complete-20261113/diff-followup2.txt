@@ -1,0 +1,28 @@
+--- 
++++ 
+@@ -8408,5 +8408,8 @@
+   var drawer=$('os-drawer'), rDrawer=$('os-drawer-right'), backdrop=$('os-backdrop'), roomsBtn=$('os-rooms-plus'), ecoBtn=$('os-eco-plus');
+-  function closePlus(){ drawer.classList.remove('open'); rDrawer.classList.remove('open'); backdrop.classList.remove('open'); roomsBtn.setAttribute('aria-expanded','false'); ecoBtn.setAttribute('aria-expanded','false'); }
++  function closePlus(){ drawer.classList.remove('open'); rDrawer.classList.remove('open'); backdrop.classList.remove('open'); roomsBtn.setAttribute('aria-expanded','false'); ecoBtn.setAttribute('aria-expanded','false'); pcSyncDrawerBar(); }
++  /* FOLLOW-UP pass 2: the bar rises above the scrim (950) but stays below the drawer (960) while a drawer is open, and the open drawer's seg lights up — the bottom-bar version of the original plus rising above the drawer and turning into an x. */
++  function pcSyncDrawerBar(){ try{ var l=drawer.classList.contains('open'), r=rDrawer.classList.contains('open'); document.body.classList.toggle('pc-drawer-open', !!(l||r)); document.body.classList.toggle('pc-drawer-left', l); document.body.classList.toggle('pc-drawer-right', r); var sp=document.querySelector('.notif-seg[data-notif="spaces"]'), ec=document.querySelector('.notif-seg[data-notif="eco"]'); if(sp) sp.classList.toggle('pc-open', l); if(ec) ec.classList.toggle('pc-open', r); }catch(e){} }
++  window.pcSyncDrawerBar=pcSyncDrawerBar;
+   /* PERSONAL-COMPLETE FOLLOW-UP (Defect 1, checker 2026-11-13): the two floating pluses are gone, so the drawers' only openers went with them. The openers now live in the bottom bar (Spaces seg = left drawer, ECO seg = right drawer) and call this one toggle — the hidden plus buttons keep calling it too, so there is one path, not three. */
+-  window.pcToggleDrawer=function(side){ var d=(side==='right')?rDrawer:drawer, btn=(side==='right')?ecoBtn:roomsBtn; var willOpen=!d.classList.contains('open'); closePlus(); if(willOpen){ d.classList.add('open'); backdrop.classList.add('open'); btn.setAttribute('aria-expanded','true'); } return willOpen; };
++  window.pcToggleDrawer=function(side){ var d=(side==='right')?rDrawer:drawer, btn=(side==='right')?ecoBtn:roomsBtn; var willOpen=!d.classList.contains('open'); closePlus(); if(willOpen){ d.classList.add('open'); backdrop.classList.add('open'); btn.setAttribute('aria-expanded','true'); } pcSyncDrawerBar(); return willOpen; };
+   window.pcCloseDrawers=closePlus;
+@@ -13885,2 +13888,4 @@
+     tap(k) {
++      /* FOLLOW-UP pass 2: the bar stays tappable above the scrim while a drawer is open — tapping anything but a drawer seg closes the drawer first, so no view opens underneath it. */
++      if (k !== 'spaces' && k !== 'eco' && window.pcCloseDrawers) { try { window.pcCloseDrawers(); } catch (e) {} }
+       if (k === 'mail') { this.set('mail', 0); window.osShowView && window.osShowView('inbox'); }
+@@ -21750,2 +21755,3 @@
+     if(_e) _e.setAttribute('aria-expanded','false');
++    if(window.pcSyncDrawerBar) window.pcSyncDrawerBar();
+   }catch(_e){}
+@@ -22914,2 +22920,5 @@
+ @media(max-width:400px){.notif-row{gap:12px;}.notif-tile{width:46px;height:46px;}.notif-seg{padding:2px 2px 0;}}
++/* FOLLOW-UP pass 2: while a drawer is open the bar (base z-index 45) rises to 955 — above the scrim (950), below the drawer (960) — so it stays lit and tappable, and the open drawer's seg lights in its own colour. At phone widths the drawer still covers the bar geometrically, so the scrim tap / Escape close it there. */
++body.pc-drawer-open #naya-notif-bar{z-index:955!important;}
++.notif-seg.pc-open .notif-tile{border-color:var(--nc);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -9px 15px rgba(0,0,0,.6),0 7px 16px rgba(0,0,0,.6),0 0 26px var(--nc);}
+ /* (3) THE LINE — harvested verbatim from the creator-fix A-fix (creator file,
