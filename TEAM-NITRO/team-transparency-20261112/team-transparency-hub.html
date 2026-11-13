@@ -10712,6 +10712,18 @@ function renderNotes(){
 }
 function renderAll(){ renderTabs(); renderTeam(); renderNotes(); }
 renderAll();
+/* Anchor landing: the Hub's app render resets scroll on load, so a direct
+   #team-transparency link would land at the top. If the hash names this
+   section, settle onto it once the Hub has rendered — and only if the
+   visitor has not scrolled away themselves. */
+function ttLand(){
+ if(location.hash!=="#team-transparency") return;
+ if(window.scrollY>40) return;
+ var el=document.getElementById("team-transparency");
+ if(el) el.scrollIntoView();
+}
+setTimeout(ttLand,1200);
+setTimeout(ttLand,3000);
 /* Live refresh, deliberately NOT a cross-origin fetch here: the Hub itself is a
    baked snapshot (verified first-hand — the 5MB base never fetches feed-live.json
    at runtime), and a fetch from the proof host is CORS-blocked by nayanet.app,
