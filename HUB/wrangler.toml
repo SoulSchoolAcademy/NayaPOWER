@@ -20,7 +20,7 @@ not_found_handling = "single-page-application"
 # rendered for plain fetches but was unreachable from a real browser
 # (root-caused 2026-11-06, reader-route fix round 2). All other paths
 # keep the default order; the worker delegates them to env.ASSETS.fetch.
-run_worker_first = ["/smart-notes", "/smart-notes/*", "/s/*", "/notes/*", "/note", "/note/*", "/sw.js", "/service-worker.js"]
+run_worker_first = ["/smart-notes", "/smart-notes/*", "/s/*", "/notes/*", "/note", "/note/*", "/sw.js", "/service-worker.js", "/robots.txt", "/sitemap.xml", "/images", "/images/*"]
 
 # /s/* short links belong to this worker (2026-11-08, Resolve): the note
 # handler in hub-worker.js already 302s /s/<slug> into the Hub. Before
