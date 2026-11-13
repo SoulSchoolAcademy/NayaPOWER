@@ -1,0 +1,86 @@
+========================================================================
+GATE: proof/p-sophia.html
+LIVE EVIDENCE: proof/live-evidence-staged.json
+HARVEST SOURCES: proof/harvest-sources.txt (5 class(es) cited)
+========================================================================
+
+(a) zero white/light backgrounds — FAIL
+      counts: base_canvas_lum=0.002, solid_light_surfaces=1, light_gradient_surfaces=0
+      - base canvas body = #050507 (luminance 0.00) at inline <style>:512
+      - base canvas body = #050507 (luminance 0.00) at inline <style>:1888
+      - A2 SOLID LIGHT SURFACE: .naya-login-mount .naya-jewel:after — #fff (lightness 1.00) at inline <style>:20466
+
+(b) every element raised/elevated — PASS
+      counts: elements_in_scope=499, elements_with_depth=483, elements_missing_depth=16, depth_ratio=0.968
+      - NO DEPTH: <div class="ph-plusitem"> line 4773
+      - NO DEPTH: <div class="ph-plusitem"> line 4774
+      - NO DEPTH: <div class="ph-plusitem"> line 4775
+      - NO DEPTH: <div class="ph-plusitem"> line 4776
+      - NO DEPTH: <div class="lens-tabs"> line 4820
+      - NO DEPTH: <div class="smart-tabs"> line 4841
+      - NO DEPTH: <div class="os-rcirc-cell"> line 6955
+      - NO DEPTH: <div class="os-rcirc-cell"> line 6956
+      - NO DEPTH: <div class="os-rcirc-cell"> line 6957
+      - NO DEPTH: <div class="os-rcirc-cell"> line 6958
+      - NO DEPTH: <div class="os-rcirc-cell"> line 6959
+      - NO DEPTH: <div class="os-rcirc-cell"> line 6960
+      - NO DEPTH: <div class="os-rcirc-cell"> line 6961
+      - NO DEPTH: <div class="naya-orbit"> line 20918
+      - NO DEPTH: <div class="naya-color-orbit"> line 20919
+
+(c) gauges present and alive — PASS
+      counts: live_evidence_file=proof/live-evidence-staged.json, needle_live_transition=none, tn_tacho_mount_in_dom=1, tn_tacho_needle_in_dom=1, tn_tacho_needle_in_css=1, tn_gear_tooth_occurrences=246, tn_gear_tooth_occurrences_static=0, tn_gear_tooth_live_in_mount=246, needle_css_has_transition=0, tiled_digit_occurrences=14, orb_numerals=0, calc_gauges=0, needle_law_gauges=1
+      - live evidence bound to this page (page_sha256 matches) — proof/live-evidence-staged.json
+      - needle-law gauge present: #tn-tacho-mount in DOM, needle in DOM, 246 gear-tooth occurrence(s) (live DOM count; static source holds 0)
+
+(d) no text-in-image, no pasted document — PASS
+      counts: text_in_image_hits=0, img_count=2, data_uri_images_excluded=1
+      - 1 data-URI image payload(s) excluded from the src scan (opaque binary — no text signal); alt text still scanned
+      - 2 <img> element(s), none signalling text content; no document embeds
+
+(e) no bare text blocks — PASS
+      counts: substantial_text_blocks=175, bare_text_blocks=1, contained_ratio=0.994
+      - BARE TEXT: <div> line 19651 — "Create. Connect. Grow with us.…"
+
+(f) no look-alike buttons/gauges/numbers — PASS
+      counts: harvest_sources_file=proof/harvest-sources.txt, lookalike_buttons=0, gold_theme_ctas=0, attribute_addressed_controls=32, harvest_source_excused_buttons=21, tn_gear_tooth_occurrences=246, tn_gear_tooth_occurrences_static=0, tn_gear_tooth_live_in_mount=246, tiled_digit_occurrences=14
+      - F1 HARVESTED (named source): <button class="tg-mode on"> line 4796 — .tg-mode harvested from proof/personal-live.html:4795-4797
+      - F1 HARVESTED (named source): <button class="tg-mode"> line 4797 — .tg-mode harvested from proof/personal-live.html:4795-4797
+      - F1 HARVESTED (named source): <button class="mw-feedname"> line 4825 — .mw-feedname harvested from proof/personal-live.html:4825-4827
+      - F1 HARVESTED (named source): <button class="mw-feedname"> line 4826 — .mw-feedname harvested from proof/personal-live.html:4825-4827
+      - F1 HARVESTED (named source): <button class="mw-feedname"> line 4827 — .mw-feedname harvested from proof/personal-live.html:4825-4827
+      - F1 HARVESTED (named source): <button class="sa-skill-more"> line 6720 — .sa-skill-more harvested from proof/personal-live.html:6720-6774
+      - F1 HARVESTED (named source): <button class="sa-skill-more"> line 6726 — .sa-skill-more harvested from proof/personal-live.html:6720-6774
+      - F1 HARVESTED (named source): <button class="sa-skill-more"> line 6732 — .sa-skill-more harvested from proof/personal-live.html:6720-6774
+      - F1 HARVESTED (named source): <button class="sa-skill-more"> line 6738 — .sa-skill-more harvested from proof/personal-live.html:6720-6774
+      - F1 HARVESTED (named source): <button class="sa-skill-more"> line 6744 — .sa-skill-more harvested from proof/personal-live.html:6720-6774
+      - F1 HARVESTED (named source): <button class="sa-skill-more"> line 6750 — .sa-skill-more harvested from proof/personal-live.html:6720-6774
+      - F1 HARVESTED (named source): <button class="sa-skill-more"> line 6756 — .sa-skill-more harvested from proof/personal-live.html:6720-6774
+      - F1 HARVESTED (named source): <button class="sa-skill-more"> line 6762 — .sa-skill-more harvested from proof/personal-live.html:6720-6774
+      - F1 HARVESTED (named source): <button class="sa-skill-more"> line 6768 — .sa-skill-more harvested from proof/personal-live.html:6720-6774
+      - F1 HARVESTED (named source): <button class="sa-skill-more"> line 6774 — .sa-skill-more harvested from proof/personal-live.html:6720-6774
+      - every button/CTA traces to a harvested class, a harvested family prefix, a named harvest source (--harvest-sources proof/harvest-sources.txt), or an id/data-* address (32 attribute-addressed)
+      - live evidence bound to this page (page_sha256 matches) — proof/live-evidence-staged.json
+      - F4 numbers (evidence only): 14 tiled-digit/svgnum occurrence(s); whether they render as the harvested tiles is a live-eye check, not a static one
+
+(h) no dictation-blunt phrases in page copy — PASS
+      counts: banned_blunt_phrases=0
+      - none of the banned blunt phrases (never cash back) appear in the page
+
+(i) title + subtitle + nutshell + faces alternate — PASS
+      counts: story_boards=0
+      - no story boards (.calc-story-card) on this page — (i) not applicable
+
+INFO — image provenance (Law 14 matter, NOT a gate item):
+      - line 4709: src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22256%22%20height%3D%22" alt=""
+      - line 4835: src="https://pub-55de1e53f610437db77c701797f6b607.r2.dev/powercast%20thumbnails/powercast-hero.png" alt="PowerCast — Naya Power Radio"
+
+HUMAN CHECKS (H1–H5) — what the machine cannot check; the seat runs
+these and reports them in the handoff. A gate that isn't run is not a pass.
+      H1 STRANGER TEST — PENDING: Read every beat/board as a stranger who knows nothing: does she get it, believe it, trust us enough to come in? Every beat must answer the question it raises with a mechanism, a picture, or a number she can check.
+      H2 PERFECT-WORDS LAW — PENDING: Public copy is professional and explains itself; no verbatim dictation, no process talk, no stage directions; Naya speaks in the first person.
+      H3 FACE QUALITY — PENDING: Every face beside the words looks real and high quality at render size: no pixelation, no blur. (The machine checks alternation + distinctness; the eye checks quality.)
+      H4 THE TEST IN HIS HEAD — PENDING: Is this 10-star service? Would a stranger see the value and trust it? If they experienced it, would they get it? Is it obvious? Useful? Helpful? So clear it's evident what it does and what it is — and it does awesome?
+      H5 THE ONE ULTIMATE TEN — PENDING: One set, not two: each item is pain + solution + what's in it for them (+ who it's for). The features are valuable BECAUSE they solve the pains.
+
+OVERALL: FAIL — proof/p-sophia.html
