@@ -9758,7 +9758,7 @@ body.os-bottom-hidden .obb-bar{transform:translateY(110%);opacity:0}
 (function(){
 "use strict";
 var TEAM=[
- {name:"Naya Nitro Narzan",short:"Naya",lane:"Captain",full:"Naya Nitro Narzan — Captain of Team Nitro",report:"Daily Project Intel Report 2026-11-12"},
+ {name:"Naya Nitro Narzan",short:"N",lane:"Captain",full:"Naya Nitro Narzan — Captain of Team Nitro",report:"Daily Project Intel Report 2026-11-12"},
  {name:"Sophia",short:"S",lane:"LEARN",full:"Naya Nitro Sophia"},
  {name:"Thea",short:"T",lane:"KNOW",full:"Naya Nitro Thea"},
  {name:"Zoe",short:"Z",lane:"ACT",full:"Naya Nitro Zoe"},
@@ -9772,7 +9772,7 @@ var TEAM=[
  {name:"Mira",short:"M",lane:"MEMORY",full:"Naya Nitro Mira"},
  {name:"Aurelia",short:"A",lane:"GOVERN",full:"Naya Nitro Aurelia"}
 ];
-var PROJECTS=["The Walk","Space & Business Clones","Intel Today","Feeds + Messenger","Dashboard","Back End","Naya 5","Factory","Project Intelligence","Membership","The Box","Team Transparency"];
+var PROJECTS=["The Walk","Space & Business Clones","Intel Today","Feeds + Messenger","Dashboard","Back End","Naya 5","Factory","Project Intelligence","Membership","The Box","Team Transparency","Family Activation"];
 /* Filed briefing notes — the filed record, byte-identical to the BRAIN files.
    A note's category IS its project. No note here is invented: each entry carries
    its real GitHub path, its real blob, its real filing time. */
@@ -9890,25 +9890,41 @@ document.getElementById("team-transparency").addEventListener("click",function(e
    t=2s), so a #team-transparency hash can never be read at runtime. The digest
    link carries &tt=team-transparency; this flag is captured at parse time. */
 var ttWant = /[?&]tt=team-transparency/.test(location.search);
+/* Deterministic landing (fix round 20261113): ttLand re-measures the section
+   on EVERY retry (getBoundingClientRect each call) and the timer NEVER clears
+   on its own scroll. The old guard cleared once the page had scrolled, which fired after
+   its OWN first scrollIntoView — killing the retry while the Hub was still
+   growing above and pushing the section ~428k px down. The timer clears only
+   when (a) the visitor scrolls themselves (wheel / touchmove / arrow-page
+   keys — user input, never a scripted scroll), or (b) the section has been in
+   view with a stable document height for 5 consecutive polls, or (c) 120
+   tries pass. */
+var ttUserScrolled=false;
+function ttMarkUserScroll(){ ttUserScrolled=true; }
+window.addEventListener("wheel",ttMarkUserScroll,{passive:true});
+window.addEventListener("touchmove",ttMarkUserScroll,{passive:true});
+window.addEventListener("keydown",function(ev){ if(ev.key==="ArrowDown"||ev.key==="ArrowUp"||ev.key==="PageDown"||ev.key==="PageUp"||ev.key==="Home"||ev.key==="End"||ev.key===" ") ttUserScrolled=true; });
 function ttLand(){
- if(!ttWant) return;
+ if(!ttWant||ttUserScrolled) return false;
  var el=document.getElementById("team-transparency");
- if(!el) return;
+ if(!el) return false;
  var r=el.getBoundingClientRect();
- if(r.top<window.innerHeight&&r.bottom>0) return;
- if(window.scrollY>40) return;
+ if(r.top<window.innerHeight&&r.bottom>0) return true;
  el.scrollIntoView();
+ return false;
 }
-var ttTries=0;
+var ttTries=0, ttStable=0, ttLastDocH=-1;
 var ttTimer=setInterval(function(){
  ttTries++;
- ttLand();
- /* No early clear on "in view": the Hub renders progressively, so the section
-    can sit in view while the page is still short, then be pushed far down as
-    the feed above it renders. The interval runs its full minute; ttLand itself
-    no-ops once the section is truly in view. It stops early only if the
-    visitor scrolls away themselves. */
- if(ttTries>=60||window.scrollY>40) clearInterval(ttTimer);
+ if(ttUserScrolled){ clearInterval(ttTimer); return; }
+ var inView=ttLand();
+ var docH=document.body.scrollHeight;
+ if(inView){
+  if(docH===ttLastDocH){ ttStable++; } else { ttStable=0; }
+  if(ttStable>=5) clearInterval(ttTimer);
+ } else { ttStable=0; }
+ ttLastDocH=docH;
+ if(ttTries>=120) clearInterval(ttTimer);
 },1000);
 /* Live refresh, deliberately NOT a cross-origin fetch here: the Hub itself is a
    baked snapshot (verified first-hand — the 5MB base never fetches feed-live.json
