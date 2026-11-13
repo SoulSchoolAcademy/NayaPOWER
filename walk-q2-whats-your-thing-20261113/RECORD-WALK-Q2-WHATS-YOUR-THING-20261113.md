@@ -147,15 +147,19 @@ Local render probe `q2-probe.py` (Playwright Firefox, live browser, first-hand) 
 
 ## FILED BLOBS (branch `walk/q2-whats-your-thing-20261113`)
 
-Branch created from live main tip `c630e5d5dc288ea154b10e9be8928fa6f542c1af` (read first-hand via the GitHub API this round).
+Branch created from live main tip `c630e5d5dc288ea154b10e9be8928fa6f542c1af` (read first-hand via the GitHub API this round). Branch head: `d98ade8986c1ff2afdaa46af8e3e79466598c9ba`. All blobs read-back verified (filing run 03:09Z):
 
-- `walk-q2-whats-your-thing-20261113/walk-beginning-fixed.html` — 3,364,312 B, sha256 `fd38de479d17d6ce51ae33a7667b9b5458eb6a743df626282a187d2cbe13e836` (blob sha in the filing output below).
-- `walk-q2-whats-your-thing-20261113/edit-walk-q2.py` — the edit script with its assertions.
-- `walk-q2-whats-your-thing-20261113/q2-probe.py` + `q2-probe-results.json` — the local render probe and its JSON.
-- `walk-q2-whats-your-thing-20261113/q2-390.png` + `q2-1440.png` — viewport screenshots, eye-checked.
-- `walk-q2-whats-your-thing-20261113/RECORD-WALK-Q2-WHATS-YOUR-THING-20261113.md` (this file) + scorecard + receipt.
+- `walk-q2-whats-your-thing-20261113/walk-beginning-fixed.html` — 3,364,312 B, sha256 `fd38de479d17d6ce51ae33a7667b9b5458eb6a743df626282a187d2cbe13e836`, blob `afe5a7bf7cb49db763873c091f37a99b4536c5ff`.
+- `walk-q2-whats-your-thing-20261113/edit-walk-q2.py` — blob `563a5ab30eac93701e0b710ee0e5180d7ce5d285`.
+- `walk-q2-whats-your-thing-20261113/q2-probe.py` — blob `58480143e57774d65fbeb94dbab710006a25a2e5`.
+- `walk-q2-whats-your-thing-20261113/q2-probe-results.json` — blob `105ded432c20b80e8c29a09530bbfc690f01be47`.
+- `walk-q2-whats-your-thing-20261113/q2-390.png` — blob `80128f859dbf346a2db41e47adf260c7927a43d8`.
+- `walk-q2-whats-your-thing-20261113/q2-1440.png` — blob `5c3e6056a67c3e69c61d8bc89c7d62670fc0f0d0`.
+- `walk-q2-whats-your-thing-20261113/RECORD-WALK-Q2-WHATS-YOUR-THING-20261113.md` (this file) — blob `f10dc7d32fbfe0ad14dcc86398cd3602eb0dd2dc` (re-filed after this section was completed with the branch head; the blob changes on re-file — the filing run's read-back is the authority).
+- `walk-q2-whats-your-thing-20261113/SCORECARD-WALK-Q2-WHATS-YOUR-THING-20261113.md` — blob `6cf6514fb0e197a30524d081cd709fdd080afc5e`.
+- `walk-q2-whats-your-thing-20261113/receipt-walk-q2-whats-your-thing.json` — blob `b71e7e3c9870d09671aef1f79b2f134138e3e854`.
 
-(Blob shas + read-back verification to be filled by the filing run.)
+(Blob shas + read-back verification: filing run 03:09Z, all match=True.)
 
 ## BOUNDS (honest — what was actually proven, and what was not)
 
