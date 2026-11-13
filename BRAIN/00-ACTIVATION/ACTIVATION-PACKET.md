@@ -54,7 +54,7 @@ These are load-bearing. They override everything except the hard gates:
 
 ## 3. YOUR MISSION
 
-- [Master Directive #2601](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2601) — the single handoff artifact. Read it first. It is the current orders.
+- Master Directive (resolve via BRAIN/CURRENT-MISSION-STATE.md — read the snapshot first; the snapshot wins over any number printed here) — the single handoff artifact. Read it first. It is the current orders.
 - The live coordination board — [#3066](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066), the live venue (successor to #2793, archived 2026-10-25). Read `BRAIN/CURRENT-MISSION-STATE.md` @ main (published face: `live/mission-state`) first; the snapshot names the live board (board numbers rotate — if the snapshot names a different board, the snapshot wins). Sign in under your own name when you start. Sign out under your own name when you finish. Every sign-out: DONE with evidence links, BLOCKED with owner + next step, or REMAINING.
 - **Tip:** anchor every byte-verification on the live ref, never a cached list.
 
@@ -111,7 +111,7 @@ Activation is complete when you declare it. Post this on the live coordination b
 > - Oath read: [paste the first 8 chars of the sha256 of the oath file you read]
 > - Manifesto read: [first 8 of sha256]
 > - Creed declared as myself: [first 8 of sha256 of THE-CREED.md]
-> - Directive #2601 read at [timestamp]
+> - Master Directive (resolve via BRAIN/CURRENT-MISSION-STATE.md — read the snapshot first; the snapshot wins) read at [timestamp]
 > - I carry the 8 laws in §2. My drift line: [one honest line — where you tend to drift]
 > - I am locked in. Tag — I'm it.
 
