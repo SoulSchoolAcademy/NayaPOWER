@@ -1,0 +1,613 @@
+{
+ "feedRevision": "registry@37c542f6f1525de29ed31e04ce7d06f01112065ad4fd48ccb17bc70d3e6f7ea7",
+ "mapping": {
+  "intelligent-internet": {
+   "label": "The Intelligent Internet",
+   "topics": [
+    "Collective",
+    "Compounding",
+    "Synthesis",
+    "The Vision"
+   ],
+   "noteCount": 40,
+   "topicCounts": {
+    "Collective": 2,
+    "Compounding": 1,
+    "Synthesis": 2,
+    "The Vision": 2
+   }
+  },
+  "ai-is-hiring": {
+   "label": "AI Is Hiring",
+   "topics": [
+    "Agent Architecture",
+    "Ambassador",
+    "Amendment Verification",
+    "Daily Intelligence Report",
+    "Dashboard",
+    "Earning",
+    "Epistemic Integrity",
+    "Flywheel",
+    "Leadership",
+    "Learning",
+    "Marketing",
+    "Money",
+    "Operation",
+    "Presentation",
+    "Smart Feed",
+    "Story",
+    "Strategy",
+    "The Money Machine",
+    "Top 10",
+    "Verification"
+   ],
+   "noteCount": 156,
+   "topicCounts": {
+    "Agent Architecture": 2,
+    "Ambassador": 2,
+    "Amendment Verification": 4,
+    "Daily Intelligence Report": 3,
+    "Dashboard": 1,
+    "Earning": 2,
+    "Epistemic Integrity": 1,
+    "Flywheel": 2,
+    "Leadership": 1,
+    "Learning": 8,
+    "Marketing": 1,
+    "Money": 1,
+    "Operation": 1,
+    "Presentation": 1,
+    "Smart Feed": 1,
+    "Story": 1,
+    "Strategy": 1,
+    "The Money Machine": 1,
+    "Top 10": 1,
+    "Verification": 1
+   }
+  },
+  "nayanet-naya": {
+   "label": "NayaNET / Naya",
+   "topics": [
+    "Activation",
+    "Active Intelligence",
+    "Api Governance",
+    "Archive Recovery",
+    "Auto-Match",
+    "Awesome Thesis",
+    "CI Triage",
+    "Charge",
+    "Continuity",
+    "Daily",
+    "Decision",
+    "Design",
+    "Design Mastery",
+    "Distillation",
+    "Doctrine",
+    "Essence",
+    "Founder Philosophy",
+    "Governance",
+    "Growth",
+    "Identity",
+    "Law",
+    "Lesson",
+    "Naya",
+    "Naya 1 Distilled Intelligence",
+    "Naya Continuation Engine",
+    "Naya Notes",
+    "NayaNET",
+    "Nayapower Charter",
+    "Nayapower Core System",
+    "Operating Intelligence",
+    "Operating Model",
+    "Optimization",
+    "Pricing",
+    "Pricing-Levels",
+    "Product",
+    "Security",
+    "Service",
+    "System",
+    "System Design",
+    "System Intelligence",
+    "Team",
+    "Truth",
+    "Vision",
+    "Wake-Up-Protocol",
+    "Wisdom",
+    "oct-1",
+    "oct-2",
+    "oct-3",
+    "oct-4",
+    "oct-5",
+    "sep-1",
+    "sep-2",
+    "sep-3"
+   ],
+   "noteCount": 657,
+   "topicCounts": {
+    "Activation": 1,
+    "Active Intelligence": 2,
+    "Api Governance": 1,
+    "Archive Recovery": 1,
+    "Auto-Match": 1,
+    "Awesome Thesis": 1,
+    "CI Triage": 18,
+    "Charge": 4,
+    "Continuity": 1,
+    "Daily": 3,
+    "Decision": 1,
+    "Design": 179,
+    "Design Mastery": 2,
+    "Distillation": 74,
+    "Doctrine": 7,
+    "Essence": 67,
+    "Founder Philosophy": 1,
+    "Governance": 8,
+    "Growth": 3,
+    "Identity": 1,
+    "Law": 9,
+    "Lesson": 23,
+    "Naya": 1,
+    "Naya 1 Distilled Intelligence": 1,
+    "Naya Continuation Engine": 1,
+    "Naya Notes": 129,
+    "NayaNET": 1,
+    "Nayapower Charter": 1,
+    "Nayapower Core System": 1,
+    "Operating Intelligence": 1,
+    "Operating Model": 2,
+    "Optimization": 1,
+    "Pricing": 1,
+    "Pricing-Levels": 1,
+    "Product": 1,
+    "Security": 1,
+    "Service": 4,
+    "System": 78,
+    "System Design": 1,
+    "System Intelligence": 91,
+    "Team": 2,
+    "Truth": 2,
+    "Vision": 11,
+    "Wake-Up-Protocol": 1,
+    "Wisdom": 3,
+    "oct-1": 6,
+    "oct-2": 8,
+    "oct-3": 8,
+    "oct-4": 9,
+    "oct-5": 7,
+    "sep-1": 8,
+    "sep-2": 9,
+    "sep-3": 8
+   }
+  },
+  "smart-notes": {
+   "label": "Smart Notes / Learn in a Minute",
+   "topics": [
+    "Batch 2",
+    "Dispatch",
+    "Intelligence",
+    "Intelligent Blocks",
+    "Naya Standing Law",
+    "Onboarding",
+    "Philosophy",
+    "Report",
+    "Reports",
+    "Smart Box",
+    "Smart Lists",
+    "Smart Note Node Operating Flow",
+    "Smart Note System",
+    "Smart Notes",
+    "Stewardship",
+    "Ultimate Me",
+    "Welcome-Series"
+   ],
+   "noteCount": 176,
+   "topicCounts": {
+    "Batch 2": 1,
+    "Dispatch": 1,
+    "Intelligence": 2,
+    "Intelligent Blocks": 4,
+    "Naya Standing Law": 1,
+    "Onboarding": 12,
+    "Philosophy": 4,
+    "Report": 6,
+    "Reports": 1,
+    "Smart Box": 1,
+    "Smart Lists": 1,
+    "Smart Note Node Operating Flow": 1,
+    "Smart Note System": 1,
+    "Smart Notes": 3,
+    "Stewardship": 1,
+    "Ultimate Me": 1,
+    "Welcome-Series": 1
+   }
+  },
+  "private-network": {
+   "label": "The Private Network / Your Vault",
+   "topics": [
+    "Smart Meet"
+   ],
+   "noteCount": 15,
+   "topicCounts": {
+    "Smart Meet": 1
+   }
+  },
+  "ambassador": {
+   "label": "Ambassador",
+   "topics": [],
+   "noteCount": 14,
+   "topicCounts": {}
+  }
+ },
+ "topicClusterDist": {
+  "System": {
+   "nayanet-naya": 78,
+   "smart-notes": 29,
+   "ai-is-hiring": 25,
+   "intelligent-internet": 4,
+   "private-network": 3,
+   "ambassador": 5
+  },
+  "Naya Notes": {
+   "nayanet-naya": 129,
+   "ai-is-hiring": 4,
+   "intelligent-internet": 3,
+   "ambassador": 1,
+   "private-network": 3,
+   "smart-notes": 3
+  },
+  "Onboarding": {
+   "private-network": 2,
+   "smart-notes": 12,
+   "intelligent-internet": 2
+  },
+  "Vision": {
+   "intelligent-internet": 8,
+   "smart-notes": 9,
+   "nayanet-naya": 11,
+   "ai-is-hiring": 3,
+   "ambassador": 1
+  },
+  "Report": {
+   "smart-notes": 6,
+   "nayanet-naya": 2
+  },
+  "Lesson": {
+   "nayanet-naya": 23,
+   "smart-notes": 11,
+   "private-network": 1,
+   "ai-is-hiring": 9,
+   "intelligent-internet": 1
+  },
+  "Design": {
+   "smart-notes": 44,
+   "private-network": 3,
+   "nayanet-naya": 179,
+   "ai-is-hiring": 42,
+   "intelligent-internet": 19,
+   "ambassador": 6
+  },
+  "Earning": {
+   "ai-is-hiring": 2
+  },
+  "System Intelligence": {
+   "nayanet-naya": 91,
+   "smart-notes": 37,
+   "ai-is-hiring": 20,
+   "intelligent-internet": 1
+  },
+  "Dashboard": {
+   "ai-is-hiring": 1
+  },
+  "Auto-Match": {
+   "nayanet-naya": 1
+  },
+  "Ambassador": {
+   "ai-is-hiring": 2
+  },
+  "Pricing-Levels": {
+   "nayanet-naya": 1
+  },
+  "Welcome-Series": {
+   "smart-notes": 1
+  },
+  "Wake-Up-Protocol": {
+   "nayanet-naya": 1
+  },
+  "Daily": {
+   "nayanet-naya": 3
+  },
+  "Team": {
+   "nayanet-naya": 2,
+   "ai-is-hiring": 1
+  },
+  "Operation": {
+   "ai-is-hiring": 1,
+   "nayanet-naya": 1
+  },
+  "Presentation": {
+   "ai-is-hiring": 1,
+   "nayanet-naya": 1
+  },
+  "Pricing": {
+   "nayanet-naya": 1,
+   "intelligent-internet": 1
+  },
+  "Product": {
+   "nayanet-naya": 1,
+   "smart-notes": 1,
+   "private-network": 1,
+   "intelligent-internet": 1
+  },
+  "Law": {
+   "smart-notes": 5,
+   "nayanet-naya": 9,
+   "private-network": 1,
+   "ai-is-hiring": 1
+  },
+  "Story": {
+   "ai-is-hiring": 1
+  },
+  "Wisdom": {
+   "nayanet-naya": 3,
+   "ai-is-hiring": 1
+  },
+  "Charge": {
+   "nayanet-naya": 4,
+   "intelligent-internet": 1
+  },
+  "Truth": {
+   "nayanet-naya": 2
+  },
+  "Money": {
+   "ai-is-hiring": 1
+  },
+  "Leadership": {
+   "ai-is-hiring": 1,
+   "nayanet-naya": 1
+  },
+  "Growth": {
+   "nayanet-naya": 3
+  },
+  "Distillation": {
+   "ai-is-hiring": 27,
+   "nayanet-naya": 74,
+   "smart-notes": 11,
+   "private-network": 2,
+   "intelligent-internet": 1,
+   "ambassador": 1
+  },
+  "Decision": {
+   "nayanet-naya": 1
+  },
+  "Learning": {
+   "ai-is-hiring": 8
+  },
+  "CI Triage": {
+   "nayanet-naya": 18,
+   "smart-notes": 1,
+   "ai-is-hiring": 1
+  },
+  "Doctrine": {
+   "smart-notes": 3,
+   "nayanet-naya": 7,
+   "intelligent-internet": 3,
+   "ai-is-hiring": 7
+  },
+  "Ultimate Me": {
+   "smart-notes": 1
+  },
+  "Smart Meet": {
+   "private-network": 1
+  },
+  "Synthesis": {
+   "intelligent-internet": 2
+  },
+  "Marketing": {
+   "ai-is-hiring": 1
+  },
+  "The Money Machine": {
+   "ai-is-hiring": 1
+  },
+  "Compounding": {
+   "intelligent-internet": 1
+  },
+  "Strategy": {
+   "ai-is-hiring": 1,
+   "nayanet-naya": 1
+  },
+  "Daily Intelligence Report": {
+   "ai-is-hiring": 3
+  },
+  "Top 10": {
+   "ai-is-hiring": 1
+  },
+  "Optimization": {
+   "nayanet-naya": 1
+  },
+  "Stewardship": {
+   "smart-notes": 1
+  },
+  "Flywheel": {
+   "ai-is-hiring": 2
+  },
+  "Intelligent Blocks": {
+   "smart-notes": 4
+  },
+  "Intelligence": {
+   "smart-notes": 2
+  },
+  "Smart Notes": {
+   "smart-notes": 3
+  },
+  "Smart Box": {
+   "smart-notes": 1
+  },
+  "Essence": {
+   "nayanet-naya": 67,
+   "ai-is-hiring": 25,
+   "smart-notes": 10,
+   "private-network": 2,
+   "intelligent-internet": 1,
+   "ambassador": 1
+  },
+  "oct-5": {
+   "nayanet-naya": 7,
+   "ai-is-hiring": 2,
+   "smart-notes": 2,
+   "private-network": 1
+  },
+  "Identity": {
+   "nayanet-naya": 1
+  },
+  "NayaNET": {
+   "nayanet-naya": 1
+  },
+  "oct-4": {
+   "ai-is-hiring": 3,
+   "nayanet-naya": 9,
+   "smart-notes": 2
+  },
+  "oct-3": {
+   "nayanet-naya": 8,
+   "ai-is-hiring": 4
+  },
+  "oct-2": {
+   "nayanet-naya": 8,
+   "ai-is-hiring": 2,
+   "smart-notes": 1
+  },
+  "oct-1": {
+   "nayanet-naya": 6,
+   "ai-is-hiring": 5,
+   "smart-notes": 1
+  },
+  "sep-3": {
+   "nayanet-naya": 8,
+   "ai-is-hiring": 2
+  },
+  "sep-2": {
+   "smart-notes": 1,
+   "nayanet-naya": 9,
+   "ai-is-hiring": 1
+  },
+  "sep-1": {
+   "smart-notes": 1,
+   "ai-is-hiring": 3,
+   "nayanet-naya": 8
+  },
+  "Reports": {
+   "smart-notes": 1
+  },
+  "Smart Lists": {
+   "smart-notes": 1
+  },
+  "Smart Feed": {
+   "ai-is-hiring": 1
+  },
+  "Batch 2": {
+   "smart-notes": 1,
+   "intelligent-internet": 1,
+   "nayanet-naya": 1,
+   "ambassador": 1,
+   "private-network": 1
+  },
+  "Activation": {
+   "nayanet-naya": 1
+  },
+  "Collective": {
+   "ai-is-hiring": 1,
+   "intelligent-internet": 2,
+   "smart-notes": 1
+  },
+  "The Vision": {
+   "intelligent-internet": 2,
+   "smart-notes": 1,
+   "nayanet-naya": 1
+  },
+  "Governance": {
+   "nayanet-naya": 8,
+   "ai-is-hiring": 1
+  },
+  "Verification": {
+   "ai-is-hiring": 1
+  },
+  "System Design": {
+   "nayanet-naya": 1
+  },
+  "Naya": {
+   "nayanet-naya": 1
+  },
+  "Service": {
+   "nayanet-naya": 4
+  },
+  "Security": {
+   "nayanet-naya": 1
+  },
+  "Api Governance": {
+   "nayanet-naya": 1
+  },
+  "Dispatch": {
+   "smart-notes": 1
+  },
+  "Operating Model": {
+   "nayanet-naya": 2
+  },
+  "Active Intelligence": {
+   "ai-is-hiring": 1,
+   "nayanet-naya": 2
+  },
+  "Amendment Verification": {
+   "ai-is-hiring": 4,
+   "nayanet-naya": 4
+  },
+  "Continuity": {
+   "nayanet-naya": 1
+  },
+  "Archive Recovery": {
+   "nayanet-naya": 1
+  },
+  "Operating Intelligence": {
+   "nayanet-naya": 1,
+   "ai-is-hiring": 1
+  },
+  "Agent Architecture": {
+   "ai-is-hiring": 2
+  },
+  "Philosophy": {
+   "smart-notes": 4
+  },
+  "Founder Philosophy": {
+   "nayanet-naya": 1
+  },
+  "Awesome Thesis": {
+   "nayanet-naya": 1
+  },
+  "Epistemic Integrity": {
+   "ai-is-hiring": 1
+  },
+  "Nayapower Charter": {
+   "nayanet-naya": 1
+  },
+  "Nayapower Core System": {
+   "nayanet-naya": 1
+  },
+  "Naya 1 Distilled Intelligence": {
+   "nayanet-naya": 1
+  },
+  "Design Mastery": {
+   "nayanet-naya": 2
+  },
+  "Naya Standing Law": {
+   "smart-notes": 1
+  },
+  "Smart Note System": {
+   "smart-notes": 1
+  },
+  "Naya Continuation Engine": {
+   "nayanet-naya": 1
+  },
+  "Smart Note Node Operating Flow": {
+   "smart-notes": 1
+  }
+ }
+}
