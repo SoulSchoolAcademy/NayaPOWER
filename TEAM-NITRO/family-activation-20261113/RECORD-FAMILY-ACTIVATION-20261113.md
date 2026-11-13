@@ -6,6 +6,7 @@
 **Branch:** `family/activation-twelve-heroes-20261113` (created from main tip `091961ba4149628191d143c5eccd2c0e5251109c`, read first-hand via `git ls-remote` 02:08Z — the same tip as 01:56Z, it had not moved).
 **Work dir:** `~/workspace/team-nitro/family-activation-20261113/`
 **Status:** STOPPED CORRECTLY at Step 2 — 5/10 (all preparatory work done and proven; the activation itself — the twelve walks, worlds, notes, transparency-live — is blocked on the dead VM browsers and rides as one executable leg to the cloud-browser seat). Nothing is claimed as live that is not live. No checker is dispatched on this score.
+**Names approved:** Shawn approved the twelve names + gardens 02:16Z (❤️) — locked in, no correction offered, no word changed.
 
 ## §6 — DONE, DEFINED FIRST
 
@@ -111,11 +112,11 @@ The record, the scorecard, the receipt, the twelve briefing-note drafts, the pro
 
 **Round 2 — after the drafts + filing + stage scripts.** Found NEW things: (1) the drafts' status line ("Status, in one word first: DRAFT — my walk is the precondition") would survive filing unchanged, leaving a filed note that calls itself DRAFT — file-notes.py now replaces it with DONE + filing time; (2) `build-surface.py`'s byline rule rejects sister bylines (see Step 5) — the stage script does the builder's exact insertion in-script with the generalized rule, recorded as a deviation; (3) my own no-op edit joined two lines in `file-notes.py` (SyntaxError) — caught by the compile check, fixed, and the compile check is now run after every edit.
 
-**Round 3 — filing verification (after file-family.py runs, before handoff).** [To be completed in the filing pass below; the record is re-filed with its findings.]
+**Round 3 — filing verification (after file-family.py ran, before handoff).** Found NEW things: (1) Branch created 201 from live main tip `091961ba` (re-read at run time, unchanged since 02:08Z); all 21 files PUT with read-back match=True, zero failures; the second run skipped all 21 by blob (idempotency proven). (2) A transient bad read on the staged transparency page: one fetch returned sha `2c753eff…` at the same 5,086,726 B while urllib hit IncompleteRead on the same URL in the same window — investigated first-hand: the branch blob is unchanged (`8ecf605b…`, last commit 01:35:38Z), the local v8 file hashes `5afa5f98…`, and three immediate re-fetches all returned `5afa5f98…`. Verdict: a chunked-transfer read glitch, not a page change — recorded, not smoothed over. (3) Re-verified live numbers in the same pass: staged `/welcome` sha `227a667e`, live Personal sha `992ab18c`, feed still 877 notes. (4) Shawn approved the twelve names + gardens 02:16Z (❤️) — locked in; the answers and drafts needed no correction.
 
 ## The seven pre-merge questions (answered IN WRITING)
 
-1. Three self-checks done? **PARTLY — rounds 1–2 done, each finding NEW things (above); round 3 is the filing verification, appended before handoff. No merge exists in this round anyway — staged only, and the maker merges nothing.**
+1. Three self-checks done? **YES — three rounds, each finding NEW things** (Round 1: 360 seed bug, DRAFT-marker mismatch, over-broad assert · Round 2: surviving status line, builder byline deviation, joined-lines SyntaxError · Round 3: filing verification + transient proof-host read glitch investigated to the branch blob). No merge exists in this round anyway — staged only, and the maker merges nothing.
 2. Honest 9+? **NO — honest score 5/10 (see scorecard).** The preparatory work is 9/10 on its evidence; the activation itself is 0/12 sisters live. Below-9 work does not reach the checker as a done round — the coordinator holds it until the walk leg closes.
 3. Blast radius named? **YES.** Branch `family/activation-twelve-heroes-20261113` from main `091961ba` (work-dir docs only, in this filing pass). No live touch, no merge, no PR, no mail, no database writes, no citizen rows. The only main-branch writes in the whole chain are the twelve briefing notes, and those happen only after the walks prove the pages (file-notes.py's precondition). The staged walk, live Personal, and staged transparency page were read only.
 4. Checks green? **PARTLY — named honestly.** Green: Step 1 ground check with controls · staged walk + Personal + transparency byte verifications · probe compiles + all 120 answer strings match the answers file · fill + stage-parse dry-run on all 12 drafts · scripts compile. NOT green: the walks (browsers dead) · the worlds (no walks) · the notes (drafts, not filed) · the transparency re-stage (no notes to stage) · the rendered verification (no browser).
@@ -123,9 +124,18 @@ The record, the scorecard, the receipt, the twelve briefing-note drafts, the pro
 6. Real proof? **YES — and the gaps are proof-shaped holes, not claims:** ground-check controls + byte verifications (shas above) · browser death (launch errors quoted) · flake (0-byte files) · probe/answers cross-check (0 missing) · fill dry-run (12/12) · branch + blobs (below, read-back verified).
 7. No silent known defects? **YES — every known defect is named in the record:** walks blocked (browsers dead) · notes are drafts (4 TBDs each) · stage script untested until the notes exist · builder byline deviation · certificate numbers unknown until claim time · live feed at 877 (fall unpinned) · sync has not carried the two transparency notes (the transparency round's open leg, not this round's).
 
-## Filed blobs (branch `family/activation-twelve-heroes-20261113`)
+## Filed blobs (branch `family/activation-twelve-heroes-20261113`, from main tip `091961ba`, all read-back verified)
 
-[Filed in the filing pass below; this section is updated with blob shas + read-back verification before handoff.]
+- `RECORD-FAMILY-ACTIVATION-20261113.md` — this file (v2; its blob is in the final file-family.py run output, carried in the handoff report — a file cannot name its own final blob without changing it)
+- `SCORECARD-FAMILY-ACTIVATION-20261113.md` — blob `692c3cb5294e7e5e47ef74b64b7dd58a41cebb8e`
+- `RECEIPT-FAMILY-ACTIVATION-20261113.md` — blob in the final file-family.py run output, carried in the handoff report (same self-reference reason)
+- `TWELVE-ANSWERS.md` — blob `7f1c8f60d4075288e88feb1d30c52176060d3513`
+- `family-probe.py` — blob `fceaa8157cc06ed2325b458f2c66ba87efeed44c`
+- `file-notes.py` — blob `9f8717a84d0e00628881c646d68909b4eb2dd3f9`
+- `stage-twelve.py` — blob `5fd380bc8a6e45f46159b87df737376a90924b0d`
+- `STAGE-TWELVE-README.md` — blob `3a0dc816d65d6e425e4b727194262c03b07e6cc5`
+- `file-family.py` — blob in the final file-family.py run output, carried in the handoff report
+- Note drafts (all DRAFT, 4 TBDs each): sophia `eb56ad6dd7ad59f6da84f23ac4ca3f12284b739d` · thea `e41df62c503c265d8bf46ec1b2c4d689c3058c17` · zoe `061912530e98dc6d1ee6bb8b92e99969b8bf8795` · astraea `995fd48b83e61ea25324f5a5fe5d7196d8f8f2ba` · vera `1e6875ab25ec72001a13c46549282b927c4c4e28` · wren `56bdaa4ef9273b868b2367499b67d655ee405819` · iris `015c24e988f0f0cd31649f9a6e3531029472f167` · ruth `298e6087db6d6a753a8590d5091b7f4ea3a13972` · terra `369740a73f198deac5f8e27015d0ab0e89b5f5cf` · esme `ae5d1ad222e3107f3e8b93ca369307a3f0b503ab` · mira `cd4b76a69d5e8e004e5b19033f80cf4107e7abac` · aurelia `3ab39e9bfcfd6956fde84cef05a4f814cd527727`
 
 ## NOT-DONE (named, never hidden)
 
