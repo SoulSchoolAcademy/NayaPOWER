@@ -106,9 +106,11 @@ Verdict identical to v22 except the two changed lines + the one nutshell line: (
 
 ## Filed blobs (branch `walk/end-slide-pay-words-20261113`, verified by read-back)
 
-- (Maker fills in after filing — branch + 4 blobs + shas.)
-- Main tip re-read first-hand: (maker fills in).
-- Files: `walk-end-slide-pay-words-20261113/walk-beginning-fixed-paywords.html` (edited file) · `walk-end-slide-pay-words-20261113/RECORD-WALK-END-SLIDE-PAY-WORDS-20261113.md` · `walk-end-slide-pay-words-20261113/SCORECARD-WALK-END-SLIDE-PAY-WORDS-20261113.md` · `walk-end-slide-pay-words-20261113/RECEIPT-WALK-END-SLIDE-PAY-WORDS-20261113.md`.
+- Branch created from live main tip `fd964ad32bc87c1178ddbfb48dfb6c6dcdb1f05b` (read first-hand 2026-11-13 ~02:52Z; main has moved since the brief's `091961ba` — the branch was cut from the CURRENT tip). Branch head `a2f4738fc14c4110259065256b1242e67e9933c`.
+- `walk-end-slide-pay-words-20261113/walk-beginning-fixed-paywords.html` — blob `810dacc6306a11d99899fc9359223ad84b9cf281`, 3,364,036 B (read-back match=True).
+- `walk-end-slide-pay-words-20261113/RECORD-WALK-END-SLIDE-PAY-WORDS-20261113.md` — blob `443a94582dae2bd78794b628e85014ce2e5b476a` at first filing (this record was then updated with the filed values and re-filed; see final blob in the receipt).
+- `walk-end-slide-pay-words-20261113/SCORECARD-WALK-END-SLIDE-PAY-WORDS-20261113.md` — blob `72b1ea7a00cd9b07b2e19f3b96ef21b9b0f0fe62`, 6,008 B (read-back match=True).
+- `walk-end-slide-pay-words-20261113/RECEIPT-WALK-END-SLIDE-PAY-WORDS-20261113.md` — blob `2af01d1c9056b4499abc49a88eaf9525149c9d6a` at first filing (then updated with the filed values and re-filed; see final blob below).
 
 ## NOT-DONE (named, never hidden)
 
