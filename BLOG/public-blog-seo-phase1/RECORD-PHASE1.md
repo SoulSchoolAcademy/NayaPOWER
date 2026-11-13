@@ -178,7 +178,7 @@ because it was already up).
 
 **Deployed-bytes proof:** final deploy PUT success, worker
 `naya-public-blog-staging`; `get-script` read-back sha256 matches the
-built `hub-worker-phase1.js` (49,060 B) exactly.
+built `hub-worker-phase1.js` (49,174 B) exactly.
 
 **Defects found and fixed by the three self-check rounds** (each round
 found NEW things — see §7):
@@ -302,7 +302,7 @@ public faces never diverge into two article URLs.
 Work directory `~/workspace/team-nitro/public-blog-seo-20261112/`:
 `phase1-additions.js` · `build-phase1-worker.py` ·
 `deploy-phase1-staging.py` · `probe-phase1.py` ·
-`probe-phase1-playwright.py` · `hub-worker-phase1.js` (built, 49,060 B)
+`probe-phase1-playwright.py` · `hub-worker-phase1.js` (built, 49,174 B)
 · `RECORD-PHASE1.md` (this file) · `SCORECARD-PHASE1.md` ·
 `phase1-shots/` (note-1440/390/360.png + results.json).
 Filed to branch `public-blog/seo-system-20261112` under
