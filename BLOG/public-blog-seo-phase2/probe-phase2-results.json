@@ -1,0 +1,91 @@
+{
+ "full": {
+  "checked": 1058,
+  "fails": 67
+ },
+ "ua": {
+  "sample": 18,
+  "fails": [
+   "sn2248 Googlebot: title 49c",
+   "sn2248 OAI-SearchBot: title 49c",
+   "sn2248 Claude-SearchBot: title 49c",
+   "sn2248 PerplexityBot: title 49c",
+   "sn2248 Bingbot: title 49c",
+   "sn2248 plain: title 49c",
+   "sn423 Googlebot: title 49c",
+   "sn423 OAI-SearchBot: title 49c",
+   "sn423 Claude-SearchBot: title 49c",
+   "sn423 PerplexityBot: title 49c",
+   "sn423 Bingbot: title 49c",
+   "sn423 plain: title 49c"
+  ]
+ },
+ "denial": {
+  "/s/sn9999": {
+   "status": 404,
+   "x-robots": "noindex, nofollow",
+   "ok": true
+  },
+  "/s/sn2696/extra": {
+   "status": 404,
+   "x-robots": "noindex, nofollow",
+   "ok": true
+  },
+  "/s/sn2696/extra/deeper": {
+   "status": 404,
+   "x-robots": "noindex, nofollow",
+   "ok": true
+  }
+ },
+ "regressions": {
+  "hub": {
+   "status": 200,
+   "bytes": 5552441,
+   "sha": "4bfad1197c70",
+   "local_sha": "4bfad1197c70"
+  },
+  "robots": {
+   "status": 200,
+   "has_googlebot": true,
+   "has_gptbot_disallow": true
+  },
+  "sitemap": {
+   "status": 200,
+   "locs": 1049
+  },
+  "sw.js": {
+   "status": 200
+  },
+  "pi": {
+   "status": 307
+  },
+  "/note/sn2696": {
+   "status": 200,
+   "canonical": [
+    "https://naya-public-blog-staging.nayapower.workers.dev/s/sn2696"
+   ],
+   "ok": true
+  },
+  "/notes/sn2696": {
+   "status": 200,
+   "canonical": [
+    "https://naya-public-blog-staging.nayapower.workers.dev/s/sn2696"
+   ],
+   "ok": true
+  },
+  "/smart-notes/sn2696": {
+   "status": 200,
+   "canonical": [
+    "https://naya-public-blog-staging.nayapower.workers.dev/s/sn2696"
+   ],
+   "ok": true
+  },
+  "/s/sn-2696": {
+   "status": 200,
+   "canonical": [
+    "https://naya-public-blog-staging.nayapower.workers.dev/s/sn2696"
+   ],
+   "ok": true
+  }
+ }
+}
