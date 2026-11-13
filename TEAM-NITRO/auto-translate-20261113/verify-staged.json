@@ -1,0 +1,35 @@
+{
+ "staged_url": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/auto-translate-20261113&cb=eeb5db00814b8bd3d12f16edc25b8ecf7e4ab791",
+ "page_errors": [],
+ "console_error_count": 60,
+ "console_non_supabase": [],
+ "overflow0": {
+  "sw": 390,
+  "iw": 390
+ },
+ "overflow_scrolled": {
+  "sw": 390,
+  "iw": 390
+ },
+ "green": {
+  "pill": "0",
+  "tabs": [
+   "✦ Personal",
+   "🌍 Public smart feed",
+   "✦ Naya Notes"
+  ],
+  "railCards": 20,
+  "plusItems": 5,
+  "wallCards": 0,
+  "wallEmpty": true,
+  "lang": "en"
+ },
+ "lang_es": {
+  "lang": "es",
+  "msgbtn": "✉️ Mensaje",
+  "tabPublic": "🌍 Feed inteligente público"
+ },
+ "stub": true,
+ "picker": true,
+ "staged_translation": "🌐 Translated from SpanishThe sun rises over the city and everything is filled with light.We walked through the market together.In a nutshellThe sun rises over the city and everything is filled with light. We walked through the market together.Show original"
+}

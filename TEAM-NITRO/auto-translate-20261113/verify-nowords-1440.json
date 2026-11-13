@@ -1,0 +1,268 @@
+{
+ "width": 1440,
+ "page_errors": [],
+ "console_error_count": 42,
+ "console_non_supabase": [],
+ "overflow0": {
+  "sw": 1440,
+  "iw": 1440
+ },
+ "step1_enter": {
+  "cover": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 464,
+   "visible": true
+  },
+  "orb": null,
+  "heroBtns": [
+   {
+    "id": "msgbtn",
+    "w": 147,
+    "h": 49
+   },
+   {
+    "id": "aboutbtn",
+    "w": 147,
+    "h": 49
+   },
+   {
+    "id": "myworldbtn",
+    "w": 147,
+    "h": 49
+   },
+   {
+    "id": "skillsbtn",
+    "w": 147,
+    "h": 49
+   },
+   {
+    "id": "connbtn",
+    "w": 147,
+    "h": 49
+   },
+   {
+    "id": "growthbtn",
+    "w": 147,
+    "h": 49
+   },
+   {
+    "id": "sharebtn",
+    "w": 147,
+    "h": 49
+   },
+   {
+    "id": "joinbtn",
+    "w": 147,
+    "h": 49
+   }
+  ],
+  "pill": {
+   "x": 397,
+   "y": 307,
+   "w": 30,
+   "h": 26,
+   "visible": true
+  }
+ },
+ "step2_seg": {
+  "x": 787,
+  "y": 778,
+  "w": 66,
+  "h": 56,
+  "visible": true
+ },
+ "step2_drawer": {
+  "drawerOpen": true,
+  "worlds": [
+   {
+    "w": "personal",
+    "rect": {
+     "x": 14,
+     "y": 103,
+     "w": 272,
+     "h": 49
+    },
+    "jewel": true,
+    "jewelColor": "#3fb8ff",
+    "jewelRect": {
+     "x": 27,
+     "y": 116,
+     "w": 23,
+     "h": 23
+    }
+   },
+   {
+    "w": "business",
+    "rect": {
+     "x": 14,
+     "y": 160,
+     "w": 272,
+     "h": 49
+    },
+    "jewel": true,
+    "jewelColor": "#2fe89e",
+    "jewelRect": {
+     "x": 27,
+     "y": 173,
+     "w": 23,
+     "h": 23
+    }
+   },
+   {
+    "w": "space",
+    "rect": {
+     "x": 14,
+     "y": 217,
+     "w": 272,
+     "h": 49
+    },
+    "jewel": true,
+    "jewelColor": "#ffbf3d",
+    "jewelRect": {
+     "x": 27,
+     "y": 230,
+     "w": 23,
+     "h": 23
+    }
+   }
+  ]
+ },
+ "step2_closed": true,
+ "step3_tab": {
+  "rect": {
+   "x": 379,
+   "y": 396,
+   "w": 343,
+   "h": 51,
+   "visible": true
+  },
+  "jewel": {
+   "txt": "🌍",
+   "jc": "#3fb8ff"
+  }
+ },
+ "step3_after": {
+  "selected": "true",
+  "active": true
+ },
+ "step4_plus_seg": {
+  "x": 487,
+  "y": 778,
+  "w": 66,
+  "h": 56,
+  "visible": true
+ },
+ "step4_menu": {
+  "menuVisible": true,
+  "items": [
+   {
+    "i": 0,
+    "ico": "✎",
+    "rect": {
+     "x": 419,
+     "y": 519,
+     "w": 202,
+     "h": 48
+    },
+    "visible": true
+   },
+   {
+    "i": 1,
+    "ico": "✎",
+    "rect": {
+     "x": 419,
+     "y": 567,
+     "w": 202,
+     "h": 48
+    },
+    "visible": true
+   },
+   {
+    "i": 2,
+    "ico": "✦",
+    "rect": {
+     "x": 419,
+     "y": 615,
+     "w": 202,
+     "h": 48
+    },
+    "visible": true
+   },
+   {
+    "i": 3,
+    "ico": "💬",
+    "rect": {
+     "x": 419,
+     "y": 663,
+     "w": 202,
+     "h": 48
+    },
+    "visible": true
+   },
+   {
+    "i": 4,
+    "ico": "✉️",
+    "rect": {
+     "x": 419,
+     "y": 711,
+     "w": 202,
+     "h": 48
+    },
+    "visible": true
+   }
+  ]
+ },
+ "step4_after": {
+  "composer": {
+   "w": 660,
+   "h": 46,
+   "display": "block",
+   "visibility": "visible",
+   "hidden": false
+  },
+  "composerBox": {
+   "w": 660,
+   "h": 89,
+   "display": "inline-block",
+   "visibility": "visible",
+   "hidden": false
+  },
+  "menuClosed": true
+ },
+ "step5_rail": {
+  "card": {
+   "x": 1096,
+   "y": 332,
+   "w": 318,
+   "h": 181,
+   "visible": true
+  },
+  "chatBtn": {
+   "rect": {
+    "x": 1109,
+    "y": 465,
+    "w": 69,
+    "h": 35
+   },
+   "text": "💬 Chat"
+  }
+ },
+ "step5_after": {
+  "chat": {
+   "w": 380,
+   "h": 339,
+   "display": "flex",
+   "visibility": "visible",
+   "hidden": false
+  },
+  "picker": {
+   "w": 0,
+   "h": 0,
+   "display": "none",
+   "visibility": "visible",
+   "hidden": true
+  }
+ }
+}

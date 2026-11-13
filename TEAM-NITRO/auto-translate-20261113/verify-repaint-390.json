@@ -1,0 +1,12 @@
+{
+ "stub": true,
+ "picker_after_tap": true,
+ "timeline_500ms_x50": "--------------------------------------------------V-V-V-V-V-V-V-V-V-V-V-V-V-V-V-V-V-V-V-V-V-V-V-V-V-",
+ "view_at_end": "🌐 Translated from SpanishThe sun rises over the city and everything is filled with light.We walked through the market together, tasting the bread…In a nutshellThe sun rises over the city and everythi",
+ "repaints_ms_after_stub": [
+  32,
+  9914,
+  9914
+ ],
+ "page_errors": []
+}

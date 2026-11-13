@@ -4004,13 +4004,13 @@ body.fc-open{overflow:hidden;}
     <button class="fc-x" type="button" id="fcCreatorX" aria-label="Close the creator">✕</button>
 <h3 id="fcTitle"><span class="os-jewel os-jewel-h" id="fcTitleJewel" style="--jc:#2fe89e">✦</span> <span id="fcTitleText">Naya note</span></h3>
 <div class="tg-modes" role="group" aria-label="Choose your note type">
-<button type="button" class="tg-mode" data-tg-mode="post" style="--mc:#e8e8ec"><span class="tg-dot"></span>✎ Make a post</button>
-<button type="button" class="tg-mode on" data-tg-mode="naya" style="--mc:#2fe89e"><span class="tg-dot"></span>✎ Naya note</button>
-<button type="button" class="tg-mode" data-tg-mode="smart" style="--mc:#a06bff"><span class="tg-dot"></span>✦ Smart note</button>
+<button type="button" class="tg-mode" data-tg-mode="post" style="--mc:#e8e8ec"><span class="tg-dot"></span>✎ <span data-mw-tr="cm">Make a post</span></button>
+<button type="button" class="tg-mode on" data-tg-mode="naya" style="--mc:#2fe89e"><span class="tg-dot"></span>✎ <span data-mw-tr="cm">Naya note</span></button>
+<button type="button" class="tg-mode" data-tg-mode="smart" style="--mc:#a06bff"><span class="tg-dot"></span>✦ <span data-mw-tr="cm">Smart note</span></button>
 </div>
-<p class="os-note tg-hint" id="tg-hint">Naya note &mdash; Naya formats your words beautifully. Write it, dictate it with the microphone &mdash; Naya writing it for you is coming soon.</p>
+<p class="os-note tg-hint" id="tg-hint" data-mw-tr="hint">Naya note — Naya formats your words beautifully. Write it, dictate it with the microphone — Naya writing it for you is coming soon.</p>
 <input class="os-input" id="os-post-author" type="text" placeholder="Your name (visitor or owner)" autocomplete="name">
-<div class="os-fieldwrap"><textarea class="os-textarea" id="os-post-body" rows="3" placeholder="Make a post on this app&rsquo;s feed&hellip;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-post-body" aria-label="Dictate your post" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="os-fieldwrap"><textarea class="os-textarea" id="os-post-body" rows="3" data-mw-ph="Make a post on this app’s feed…" placeholder="Make a post on this app&rsquo;s feed&hellip;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-post-body" aria-label="Dictate your post" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
 <div class="ph-actions"><button class="ph-msg" id="os-sched-btn" type="button">🕐 Schedule</button><button class="ph-connect" id="os-post-btn" type="button">✦ Post my Naya note</button></div>
 <div class="os-status" id="os-post-status"></div>
 <div id="tg-review" hidden>
@@ -4027,26 +4027,26 @@ body.fc-open{overflow:hidden;}
 <div class="fc-overlay" id="fcPicker" hidden role="dialog" aria-modal="true" aria-label="Pick someone to message">
   <div class="fc-panel fc-picker-panel ph-card" style="--ac:#3fb8ff;">
     <button class="fc-x" type="button" id="fcPickerX" aria-label="Close">✕</button>
-    <h3 id="fcPickerTitle"><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">💬</span> Message someone</h3>
-    <p class="os-note">Search your people and spaces — pick one and the message pops up.</p>
-    <div class="os-fieldwrap"><input class="os-input" id="fcPickerSearch" type="search" placeholder="Search people and spaces&hellip;" autocomplete="off" aria-label="Search people and spaces"></div>
+    <h3 id="fcPickerTitle"><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">💬</span> <span data-mw-tr="pick">Message someone</span></h3>
+    <p class="os-note" data-mw-tr="pickhint">Search your people and spaces — pick one and the message pops up.</p>
+    <div class="os-fieldwrap"><input class="os-input" id="fcPickerSearch" type="search" data-mw-ph="Search people and spaces…" placeholder="Search people and spaces&hellip;" autocomplete="off" aria-label="Search people and spaces"></div>
     <div id="fcPickerList" role="listbox" aria-label="People and spaces"></div>
-    <p class="os-note">Match is figured on this device from shared posts, messages and invites — highest first. Spaces show by name; their match comes from the Auto-Match engine, which is not switched on for citizens yet.</p>
+    <p class="os-note" data-mw-tr="picknote">Match is figured on this device from shared posts, messages and invites — highest first. Spaces show by name; their match comes from the Auto-Match engine, which is not switched on for citizens yet.</p>
   </div>
 </div>
 <div class="fc-chat" id="fcChat" hidden role="dialog" aria-label="Instant message">
-  <div class="fc-chat-head"><span class="fc-chat-av" id="fcChatAv">?</span><div class="fc-chat-who"><b id="fcChatName">Someone</b><span id="fcChatMeta">Instant message</span></div><button class="fc-x fc-chat-x" type="button" id="fcChatX" aria-label="Close">✕</button></div>
-  <div class="fc-chat-thread" id="fcChatThread"><p class="os-note" id="fcChatHint">Write it — it pops up in their Smart Mail inbox as an instant message.</p></div>
-  <div class="fc-chat-subject" id="fcChatSubjectWrap" hidden><input class="os-input" id="fcChatSubject" type="text" placeholder="Subject"></div>
-  <div class="fc-chat-compose"><textarea class="os-textarea" id="fcChatBody" rows="3" placeholder="Write your message&hellip;"></textarea><button class="ph-connect" id="fcChatSend" type="button">Send</button></div>
+  <div class="fc-chat-head"><span class="fc-chat-av" id="fcChatAv">?</span><div class="fc-chat-who"><b id="fcChatName" data-mw-tr="chatname">Someone</b><span id="fcChatMeta" data-mw-tr="chatmeta">Instant message</span></div><button class="fc-x fc-chat-x" type="button" id="fcChatX" aria-label="Close">✕</button></div>
+  <div class="fc-chat-thread" id="fcChatThread"><p class="os-note" id="fcChatHint" data-mw-tr="chathint">Write it — it pops up in their Smart Mail inbox as an instant message.</p></div>
+  <div class="fc-chat-subject" id="fcChatSubjectWrap" hidden><input class="os-input" id="fcChatSubject" type="text" data-mw-ph="Subject" placeholder="Subject"></div>
+  <div class="fc-chat-compose"><textarea class="os-textarea" id="fcChatBody" rows="3" data-mw-ph="Write your message…" placeholder="Write your message&hellip;"></textarea><button class="ph-connect" id="fcChatSend" type="button">Send</button></div>
   <div class="os-status" id="fcChatStatus"></div>
 </div>
 <div class="fc-plusmenu" id="fcPlusMenu" hidden role="menu" aria-label="Add">
-  <div class="fc-plusitem" role="menuitem" data-fc-plus="post" style="--mc:#e8e8ec"><span class="fc-pi-ico">✎</span>Make a post</div>
-  <div class="fc-plusitem" role="menuitem" data-fc-plus="naya" style="--mc:#2fe89e"><span class="fc-pi-ico">✎</span>Naya note</div>
-  <div class="fc-plusitem" role="menuitem" data-fc-plus="smart" style="--mc:#a06bff"><span class="fc-pi-ico">✦</span>Smart note</div>
-  <div class="fc-plusitem" role="menuitem" data-fc-plus="message" style="--mc:#3fb8ff"><span class="fc-pi-ico">💬</span>Message</div>
-  <div class="fc-plusitem" role="menuitem" data-fc-plus="mail" style="--mc:#ffbf3d"><span class="fc-pi-ico">✉️</span>Mail</div>
+  <div class="fc-plusitem" role="menuitem" data-fc-plus="post" style="--mc:#e8e8ec"><span class="fc-pi-ico">✎</span><span data-mw-tr="pm">Make a post</span></div>
+  <div class="fc-plusitem" role="menuitem" data-fc-plus="naya" style="--mc:#2fe89e"><span class="fc-pi-ico">✎</span><span data-mw-tr="pm">Naya note</span></div>
+  <div class="fc-plusitem" role="menuitem" data-fc-plus="smart" style="--mc:#a06bff"><span class="fc-pi-ico">✦</span><span data-mw-tr="pm">Smart note</span></div>
+  <div class="fc-plusitem" role="menuitem" data-fc-plus="message" style="--mc:#3fb8ff"><span class="fc-pi-ico">💬</span><span data-mw-tr="pm">Message</span></div>
+  <div class="fc-plusitem" role="menuitem" data-fc-plus="mail" style="--mc:#ffbf3d"><span class="fc-pi-ico">✉️</span><span data-mw-tr="pm">Mail</span></div>
 </div>
 
 
@@ -4811,23 +4811,23 @@ html.os-calm
   <button class="eco-plus" id="os-eco-plus" type="button" aria-label="NayaNET ecosystem menu" aria-haspopup="true" aria-expanded="false" title="NayaNET ecosystem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
   <div class="os-backdrop" id="os-backdrop"></div>
   <aside class="os-drawer" id="os-drawer" aria-label="NayaNET areas">
-    <div class="os-drawer-head">NAYANET AREAS</div>
+    <div class="os-drawer-head" data-mw-tr="drawer">NAYANET AREAS</div>
     <!-- F4 (Shawn 16:06Z) — the LEFT sidebar, the official list verbatim
          (THE-OFFICIAL-NAVIGATION.md §2). Smart Meet opens another tab, per
          the spec. INTERIM: no Smart Meet route exists anywhere (the app is
          missing, per the standing record) — it points at Connections, where
          a meet starts with contacts added. The real route is owed. -->
     <a href="https://nayanet.app/#/hub" style="--rc:#a06bff">Home/Hub</a>
-    <a href="https://nayanet.app/personal" style="--rc:#3fb8ff">Personal</a>
-    <a href="https://nayanet.app/business" style="--rc:#2fe89e">Business</a>
-    <a href="https://nayanet.app/space" style="--rc:#ffbf3d">Space</a>
-    <a href="https://nayanet.app/#/hub/reports" style="--rc:#ff9a5a">Your Reports</a>
-    <a href="https://nayanet.app/#/hub/today" style="--rc:#ff5e6c">Intel Today</a>
-    <a href="https://nayanet.app/#/hub/connections" style="--rc:#e84fff">Your Connections</a>
-    <a href="https://nayanet.app/#/hub/connections" target="_blank" rel="noopener" style="--rc:#a06bff">Smart Meet</a>
+    <a href="https://nayanet.app/personal" style="--rc:#3fb8ff"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">✦</span> Personal</a>
+    <a href="https://nayanet.app/business" style="--rc:#2fe89e"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">✦</span> Business</a>
+    <a href="https://nayanet.app/space" style="--rc:#ffbf3d"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">✦</span> Space</a>
+    <a href="https://nayanet.app/#/hub/reports" style="--rc:#ff9a5a" data-mw-tr="drawer">Your Reports</a>
+    <a href="https://nayanet.app/#/hub/today" style="--rc:#ff5e6c" data-mw-tr="drawer">Intel Today</a>
+    <a href="https://nayanet.app/#/hub/connections" style="--rc:#e84fff" data-mw-tr="drawer">Your Connections</a>
+    <a href="https://nayanet.app/#/hub/connections" target="_blank" rel="noopener" style="--rc:#a06bff" data-mw-tr="drawer">Smart Meet</a>
   </aside>
   <aside class="os-drawer os-drawer-right" id="os-drawer-right" aria-label="Smart Factory and memberships">
-    <div class="os-drawer-head">NAYANET ECOSYSTEM</div>
+    <div class="os-drawer-head" data-mw-tr="drawer">NAYANET ECOSYSTEM</div>
     <!-- F4 (Shawn 16:06Z) — the RIGHT sidebar, the official list
          (THE-OFFICIAL-NAVIGATION.md §3), in the same .os-drawer language as
          the left. The old eco-menu is REPLACED, not restyled (its CSS below
@@ -4836,18 +4836,18 @@ html.os-calm
          straight in for free). INTERIM: no Leaderboards view exists anywhere
          — it points at the Dashboard (the stats home) until the dedicated
          view is built. About Us + White Paper sit at the BOTTOM, per the spec. -->
-    <a href="https://nayanet.app/smartfactory" style="--rc:#a06bff">Smart Factory</a>
-    <div class="os-drawer-sec">MEMBERSHIPS</div>
+    <a href="https://nayanet.app/smartfactory" style="--rc:#a06bff" data-mw-tr="drawer">Smart Factory</a>
+    <div class="os-drawer-sec" data-mw-tr="drawer">MEMBERSHIPS</div>
     <a href="https://nayanet.groovepages.com/academy" data-mw-open-mship="Naya Academy" style="--rc:#a06bff">Naya Academy</a>
     <a href="https://aimasterclass.help/" data-mw-open-mship="AI Masterclass" style="--rc:#3fb8ff">AI Masterclass</a>
     <a href="#memberships" data-mw-open-mship="Fast Action Club" style="--rc:#2fe89e">Fast Action Club</a>
-    <div class="os-drawer-sec">YOUR WORLD</div>
-    <a href="https://nayanet.app/dashboard" style="--rc:#ffbf3d">Leaderboards</a>
-    <a href="https://nayanet.app/#/hub/spaces" style="--rc:#ff9a5a">My Spaces</a>
-    <a href="https://nayanet.app/#/hub/growth" style="--rc:#ff5e6c">＋ Add a custom link</a>
-    <div class="os-drawer-sec">ABOUT NAYANET</div>
-    <a href="https://nayanet.groovepages.com/aboutus" target="_blank" rel="noopener" style="--rc:#e84fff">About Us</a>
-    <a href="https://nayanet.groovepages.com/whitepaper" target="_blank" rel="noopener" style="--rc:#a06bff">White Paper</a>
+    <div class="os-drawer-sec" data-mw-tr="drawer">YOUR WORLD</div>
+    <a href="https://nayanet.app/dashboard" style="--rc:#ffbf3d" data-mw-tr="drawer">Leaderboards</a>
+    <a href="https://nayanet.app/#/hub/spaces" style="--rc:#ff9a5a" data-mw-tr="drawer">My Spaces</a>
+    <a href="https://nayanet.app/#/hub/growth" style="--rc:#ff5e6c" data-mw-tr="drawer">＋ Add a custom link</a>
+    <div class="os-drawer-sec" data-mw-tr="drawer">ABOUT NAYANET</div>
+    <a href="https://nayanet.groovepages.com/aboutus" target="_blank" rel="noopener" style="--rc:#e84fff" data-mw-tr="drawer">About Us</a>
+    <a href="https://nayanet.groovepages.com/whitepaper" target="_blank" rel="noopener" style="--rc:#a06bff" data-mw-tr="drawer">White Paper</a>
   </aside>
 </div>
 
@@ -4864,7 +4864,7 @@ html.os-calm
     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
       <div class="ph-nm" id="pname" title="Click to edit">Shawn Vibert</div>
       <div class="ph-points pc-restyled" id="pointsdisplay" title="Your Naya points">
-        <span class="pc-pill-numrow"><span class="ph-points-star">✦</span><span id="pointscount">…</span><span class="ph-points-label">pts</span></span>
+        <span class="pc-pill-numrow"><span class="ph-points-star">✦</span><span id="pointscount">…</span><span class="ph-points-label" data-mw-tr="pts">pts</span></span>
         <span class="pc-pill-gauge" aria-hidden="true"><span class="pc-pill-gaugefill" id="pcPillGaugeFill"></span></span>
       </div>
     </div>
@@ -4933,23 +4933,23 @@ html.os-calm
 </div>
 </div>
 <div class="ph-sec os-view on" id="os-wall" data-os-view="home" data-block="wall">
-<div class="ph-sec-t"><span class="ph-dot" style="background:#a06bff;color:#a06bff;"></span> Live Feed</div>
+<div class="ph-sec-t"><span class="ph-dot" style="background:#a06bff;color:#a06bff;"></span> <span data-mw-tr="lf">Live Feed</span></div>
 <div class="ph-card os-hlbar" id="os-hlbar" style="--ac:#e84fff;display:none;">
 <div class="os-hlbar-row">
-<span class="os-hlbar-lab">Your world &middot; live</span>
-<span class="os-hlbar-cell"><b id="os-hl-posts">–</b><i>Posts</i></span>
-<span class="os-hlbar-cell"><b id="os-hl-notes">–</b><i>Smart notes</i></span>
-<span class="os-hlbar-cell"><b id="os-hl-msgs">–</b><i>Messages</i></span>
-<span class="os-hlbar-cell"><b id="os-hl-invs">–</b><i>Invites</i></span>
-<span class="os-hlbar-cell"><b id="os-hl-clicks">–</b><i>Link clicks</i></span>
-<span class="os-hlbar-cell"><b id="os-hl-joins">–</b><i>Joins</i></span>
-<button class="ph-connect os-hlbar-btn" type="button" data-mw-real-dash>Go to my Dashboard →</button>
+<span class="os-hlbar-lab" data-mw-tr="lf">Your world &middot; live</span>
+<span class="os-hlbar-cell"><b id="os-hl-posts">–</b><i data-mw-tr="lf">Posts</i></span>
+<span class="os-hlbar-cell"><b id="os-hl-notes">–</b><i data-mw-tr="lf">Smart notes</i></span>
+<span class="os-hlbar-cell"><b id="os-hl-msgs">–</b><i data-mw-tr="lf">Messages</i></span>
+<span class="os-hlbar-cell"><b id="os-hl-invs">–</b><i data-mw-tr="lf">Invites</i></span>
+<span class="os-hlbar-cell"><b id="os-hl-clicks">–</b><i data-mw-tr="lf">Link clicks</i></span>
+<span class="os-hlbar-cell"><b id="os-hl-joins">–</b><i data-mw-tr="lf">Joins</i></span>
+<button class="ph-connect os-hlbar-btn" type="button" data-mw-real-dash data-mw-tr="lf">Go to my Dashboard →</button>
 </div>
 </div>
 <div class="fc-create-row" id="fcCreateRow" role="group" aria-label="Create on this feed">
-<button type="button" class="tg-mode fc-create" data-fc-create="post" style="--mc:#e8e8ec"><span class="tg-dot"></span>✎ Make a post</button>
-<button type="button" class="tg-mode fc-create" data-fc-create="naya" style="--mc:#2fe89e"><span class="tg-dot"></span>✎ Naya note</button>
-<button type="button" class="tg-mode fc-create" data-fc-create="smart" style="--mc:#a06bff"><span class="tg-dot"></span>✦ Smart note</button>
+<button type="button" class="tg-mode fc-create" data-fc-create="post" style="--mc:#e8e8ec"><span class="tg-dot"></span>✎ <span data-mw-tr="cr">Make a post</span></button>
+<button type="button" class="tg-mode fc-create" data-fc-create="naya" style="--mc:#2fe89e"><span class="tg-dot"></span>✎ <span data-mw-tr="cr">Naya note</span></button>
+<button type="button" class="tg-mode fc-create" data-fc-create="smart" style="--mc:#a06bff"><span class="tg-dot"></span>✦ <span data-mw-tr="cr">Smart note</span></button>
 </div>
 <!-- FEED-CREATOR (Shawn 17:21Z): the always-open composer is gone — no open box, no empty
      note, no massive black space. The three buttons above pop the full-page creator.
@@ -4963,15 +4963,15 @@ html.os-calm
 <!-- F5 (Shawn 16:06Z) — the feed bar is the Hub's lens bar, harvested verbatim
      (see the CSS). The .mw-feedname buttons below stay (they activate their tab
      + scroll the feed into view in place — working doors). -->
-<button type="button" class="pc-search-btn" id="pcSearchBtn" aria-label="Search the public feed">&#128269; Search the public feed</button>
+<button type="button" class="pc-search-btn" id="pcSearchBtn" aria-label="Search the public feed">&#128269; <span data-mw-tr="search">Search the public feed</span></button>
 <div class="lens-tabs" id="mwFeedTabs" role="tablist" aria-label="Feed categories">
-<button type="button" class="lens-tab lens-smart primo theme-purple elev-2 active" id="mwTabSmart" data-mw-tab="personal" role="tab" aria-selected="true" style="--glow:#3fb8ff"><b>Personal</b></button>
-<button type="button" class="lens-tab lens-naya primo theme-purple elev-2" id="mwTabNaya" data-mw-tab="public" role="tab" aria-selected="false" style="--glow:#ffbf3d"><b>Public smart feed</b></button>
-<button type="button" class="lens-tab lens-activity primo theme-purple elev-2" id="mwTabActivity" data-mw-tab="naya" role="tab" aria-selected="false" style="--glow:#2fe89e"><b>Naya Notes</b></button>
+<button type="button" class="lens-tab lens-smart primo theme-purple elev-2 active" id="mwTabSmart" data-mw-tab="personal" role="tab" aria-selected="true" style="--glow:#3fb8ff"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">✦</span> <b data-mw-tr="tab">Personal</b></button>
+<button type="button" class="lens-tab lens-naya primo theme-purple elev-2" id="mwTabNaya" data-mw-tab="public" role="tab" aria-selected="false" style="--glow:#ffbf3d"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">🌍</span> <b data-mw-tr="tab">Public smart feed</b></button>
+<button type="button" class="lens-tab lens-activity primo theme-purple elev-2" id="mwTabActivity" data-mw-tab="naya" role="tab" aria-selected="false" style="--glow:#2fe89e"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">✦</span> <b data-mw-tr="tab">Naya Notes</b></button>
 </div>
-<button type="button" class="mw-feedname" id="mwFeedNameSmart" style="--fc:#3fb8ff">Shawn&rsquo;s Personal feed — tap for the full feed ↓</button>
-<button type="button" class="mw-feedname" id="mwFeedNameNaya" style="--fc:#ffbf3d" hidden>Shawn&rsquo;s Public smart feed — tap for the full feed ↓</button>
-<button type="button" class="mw-feedname" id="mwFeedNameActivity" style="--fc:#2fe89e" hidden>Shawn&rsquo;s Naya Notes — tap for the full feed ↓</button>
+<button type="button" class="mw-feedname" id="mwFeedNameSmart" data-mw-tr="feedname" style="--fc:#3fb8ff">Shawn&rsquo;s Personal feed — tap for the full feed ↓</button>
+<button type="button" class="mw-feedname" id="mwFeedNameNaya" data-mw-tr="feedname" style="--fc:#ffbf3d" hidden>Shawn&rsquo;s Public smart feed — tap for the full feed ↓</button>
+<button type="button" class="mw-feedname" id="mwFeedNameActivity" data-mw-tr="feedname" style="--fc:#2fe89e" hidden>Shawn&rsquo;s Naya Notes — tap for the full feed ↓</button>
 
 <div id="saCourse" class="ph-card sa-sheet" hidden>
 <div class="sa-head"><span class="os-jewel os-jewel-h" id="saCourseJewel" style="--jc:#a06bff">✦</span><div class="sa-head-txt"><h2 id="saCourseTitle">The course</h2><p class="os-note" id="saCourseSub" style="margin:0;"></p></div><button class="ph-connect sa-x" type="button" data-sa-close aria-label="Back to my world">← Back</button></div>
@@ -4985,7 +4985,7 @@ html.os-calm
 <div class="ph-card" id="saFeedCard"><div class="ph-sec-t"><span class="ph-dot" id="saFeedDot" style="background:#2fe89e;color:#2fe89e;"></span> <span id="saFeedHead">The lessons</span></div><p class="os-note" style="margin-top:0;">One after another, down the feed — just the lesson, scroll to the next, click next.</p><div id="saFeed"></div></div>
 </div>
 
-<div class="pc-feedline" aria-label="How the feed works">MATCH &rarr; ORGANIZE &rarr; CONNECT</div>
+<div class="pc-feedline" aria-label="How the feed works" data-mw-tr="feedline">MATCH &rarr; ORGANIZE &rarr; CONNECT</div>
 <div class="smart-tabs" id="mwFeedPills" aria-label="Feed filters"></div>
 <div id="os-wall-list"><div class="os-skel"></div></div>
 
@@ -4993,12 +4993,12 @@ html.os-calm
 </div>
 <aside id="pcRail" class="os-view on" data-os-view="home" aria-label="People around you">
   <div class="pc-rail-head">
-    <h3>People around you</h3>
+    <h3 data-mw-tr="rail">People around you</h3>
     <p class="pc-rail-sub"><span id="pcLiveCount">6 live matches</span> &middot; <span id="pcStandCount">14 standing</span></p>
-    <p class="pc-rail-note">Live matches come from the Smart Feed engine, with their reasons attached. Standing profiles are the family, marked as standing &mdash; never shown as online.</p>
+    <p class="pc-rail-note" data-mw-tr="rail">Live matches come from the Smart Feed engine, with their reasons attached. Standing profiles are the family, marked as standing &mdash; never shown as online.</p>
   </div>
   <div class="pc-rail-list" id="pcRailList"></div>
-  <p class="pc-rail-foot">One more seat is held open for the next live citizen.</p>
+  <p class="pc-rail-foot" data-mw-tr="rail">One more seat is held open for the next live citizen.</p>
 </aside>
 <script>
 /* ═══ PERSONAL PULSE BRIDGE — 2026-10-31 · scorecard rework ═══
@@ -6281,7 +6281,7 @@ button.os-ld-node .os-ld-n{
 <p class="os-note" style="margin-top:8px;" data-mw-tr="myworld-sub">Tap a page to open it. Tap the small stats icon beside it and boom — that page&rsquo;s own dashboard.</p>
 <div id="mw-world-list"></div>
 <p class="os-note" id="mw-world-note" style="margin-top:8px;"></p>
-<div class="ph-actions"><button class="ph-msg" type="button" data-mw-real-dash>Go to my Dashboard →</button><button class="ph-msg" type="button" data-os-go="settings">Change what shows here</button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-mw-real-dash data-mw-tr="lf">Go to my Dashboard →</button><button class="ph-msg" type="button" data-os-go="settings" data-mw-tr="set">Change what shows here</button></div>
 </div><section class="os-world-boards os-view" id="os-world-boards" data-os-view="myworld">
 <h3>Your world, board by board</h3>
 <p class="os-note os-wb-sub">Every page and every link, one board each. Click “Show in Dashboard” and that board moves up into the featured role — the Dashboard gauge follows it.</p>
@@ -7200,15 +7200,15 @@ button.os-ld-node .os-ld-n{
 <div class="ph-card" style="--ac:#a06bff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">✦</span> <span data-mw-tr="common">Common settings — every page</span></h3>
 <p class="os-note" style="margin:0 0 6px" data-mw-tr="common-sub">These are shared across every page — change one here, it changes everywhere.</p>
-<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">⇅</span><span class="os-setrow-main"><b data-mw-tr="strip">Smart Notes scroll strip</b><span class="os-setrow-sub" data-mw-tr="strip-sub">Where the scrolling strip of Smart Notes sits. At the bottom it sits flush, proper. Off hides it — the + buttons still get you everywhere.</span></span><span class="mw-seg" id="mw-seg-strip"><button type="button" data-v="top" class="on">Top</button><button type="button" data-v="bottom">Bottom</button><button type="button" data-v="off">Off</button></span></div>
+<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">⇅</span><span class="os-setrow-main"><b data-mw-tr="strip">Smart Notes scroll strip</b><span class="os-setrow-sub" data-mw-tr="strip-sub">Where the scrolling strip of Smart Notes sits. At the bottom it sits flush, proper. Off hides it — the + buttons still get you everywhere.</span></span><span class="mw-seg" id="mw-seg-strip"><button type="button" data-v="top" data-mw-tr="seg" class="on">Top</button><button type="button" data-v="bottom" data-mw-tr="seg">Bottom</button><button type="button" data-v="off" data-mw-tr="seg">Off</button></span></div>
 </div>
 <div class="ph-card" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">⚙️</span> <span data-mw-tr="thispage">This page</span></h3>
-<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">✦</span><span class="os-setrow-main"><b data-mw-tr="feedtab">Default feed tab</b><span class="os-setrow-sub" data-mw-tr="feedtab-sub">Which tab opens first on your feed.</span></span><span class="mw-seg" id="mw-seg-feedtab"><button type="button" data-v="smart" class="on">Smart Notes</button><button type="button" data-v="naya">Naya Notes</button><button type="button" data-v="activity">Activity</button></span></div>
+<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">✦</span><span class="os-setrow-main"><b data-mw-tr="feedtab">Default feed tab</b><span class="os-setrow-sub" data-mw-tr="feedtab-sub">Which tab opens first on your feed.</span></span><span class="mw-seg" id="mw-seg-feedtab"><button type="button" data-v="smart" data-mw-tr="seg" class="on">Smart Notes</button><button type="button" data-v="naya" data-mw-tr="seg">Naya Notes</button><button type="button" data-v="activity" data-mw-tr="seg">Activity</button></span></div>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">▾</span><span class="os-setrow-main"><b data-mw-tr="autofold">Bottom bar auto-fold</b><span class="os-setrow-sub" data-mw-tr="autofold-sub">On — the trio (Mail · Activity · Space) folds away as you scroll down and comes back 1.5 seconds after you stop. Off — it stays put.</span></span><span class="os-switch-wrap" style="--jc:#2fe89e"><button class="os-switch on" id="mw-set-autofold" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#e84fff">🌐</span><span class="os-setrow-main"><b data-mw-tr="lang">Language for this page</b><span class="os-setrow-sub" data-mw-tr="lang-sub">Your page speaks your language — menus, buttons and headings translate.</span></span><select class="mw-lang" id="mw-set-lang" aria-label="Language for this page"><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option></select></div>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ff9a5a">🔊</span><span class="os-setrow-main"><b data-mw-tr="audio">Audio — Naya&rsquo;s voice</b><span class="os-setrow-sub" data-mw-tr="audio-sub">Naya reads things aloud on this page. Off and she stays quiet here.</span></span><span class="os-switch-wrap" style="--jc:#ff9a5a"><button class="os-switch on" id="mw-set-audio" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
-<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">%</span><span class="os-setrow-main"><b data-mw-tr="match">Match % threshold — Connections</b><span class="os-setrow-sub" data-mw-tr="match-sub">Show only people above the match you choose. Lower it to see everyone again.</span></span><span class="mw-seg" id="mw-seg-match"><button type="button" data-v="0" class="on">Any</button><button type="button" data-v="25">25%</button><button type="button" data-v="50">50%</button><button type="button" data-v="75">75%</button><button type="button" data-v="90">90%</button></span></div>
+<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">%</span><span class="os-setrow-main"><b data-mw-tr="match">Match % threshold — Connections</b><span class="os-setrow-sub" data-mw-tr="match-sub">Show only people above the match you choose. Lower it to see everyone again.</span></span><span class="mw-seg" id="mw-seg-match"><button type="button" data-v="0" data-mw-tr="seg" class="on">Any</button><button type="button" data-v="25">25%</button><button type="button" data-v="50">50%</button><button type="button" data-v="75">75%</button><button type="button" data-v="90">90%</button></span></div>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">🌍</span><span class="os-setrow-main"><b data-mw-tr="mwshow">My World — which pages appear</b><span class="os-setrow-sub" data-mw-tr="mwshow-sub">Choose which of your pages show in My World. Dashboard always stays — it is the main one.</span></span></div>
 <div id="mw-set-mwshow">
 <div class="mw-checkrow"><input type="checkbox" id="mw-set-mw-personal" checked><label for="mw-set-mw-personal">Personal</label></div>
@@ -7218,34 +7218,34 @@ button.os-ld-node .os-ld-n{
 </div>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">⇄</span><span class="os-setrow-main"><b data-mw-tr="revcol">Reverse cover colours</b><span class="os-setrow-sub" data-mw-tr="revcol-sub">The cover button colours run top to bottom — flip this and the sequence runs in reverse.</span></span><span class="os-switch-wrap" style="--jc:#ffbf3d"><button class="os-switch" id="mw-set-revcolours" type="button" role="switch" aria-checked="false"><span class="os-knob"></span></button><span class="os-switch-cap">Off</span></span></div>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">🔒</span><span class="os-setrow-main"><b data-mw-tr="pub">This page: public or private</b><span class="os-setrow-sub" data-mw-tr="pub-sub">The Public profile switch above is this page&rsquo;s public/private choice — flip it here too.</span></span><span class="os-switch-wrap" style="--jc:#2fe89e"><button class="os-switch on" id="mw-set-public" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
-<div class="ph-actions"><button class="ph-msg" type="button" id="mw-set-reset">Bring everything back</button></div>
-<p class="os-note" id="mw-set-reset-note" style="margin:6px 0 0">Worst case, hit this — every hidden bar, strip and button comes back.</p>
+<div class="ph-actions"><button class="ph-msg" type="button" id="mw-set-reset" data-mw-tr="set">Bring everything back</button></div>
+<p class="os-note" data-mw-tr="set">Worst case, hit this — every hidden bar, strip and button comes back.</p>
 </div>
 <div class="ph-card" style="--ac:#ffbf3d;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#ffbf3d">✦</span> <span data-mw-tr="cover">Cover buttons — your memberships</span></h3>
 <p class="os-note" style="margin:0 0 6px" data-mw-tr="cover-sub">The buttons at the top corner of your cover, where visitors always see them — so they always see where to join. Smart marketing: your profile is a landing page. Each button has its own on/off — if you don&rsquo;t want to promote a membership, turn it off. A button wakes up when you enter its URL — it takes the next empty spot, up to five. They are meant for memberships, but any URL works: a social site of yours can sit here too. Generic links belong in the Smart Bar.</p>
 <div id="mw-cover-slots"></div>
-<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">✦</span><span class="os-setrow-main"><b>Join NayaNET on the cover too</b><span class="os-setrow-sub">Join NayaNET already sits in the hero row — turn this on to add it to the cover as an extra spot.</span></span><span class="os-switch-wrap" style="--jc:#2fe89e"><button class="os-switch" id="mw-set-coverjoin" type="button" role="switch" aria-checked="false"><span class="os-knob"></span></button><span class="os-switch-cap">Off</span></span></div>
+<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">✦</span><span class="os-setrow-main"><b data-mw-tr="set">Join NayaNET on the cover too</b><span class="os-setrow-sub" data-mw-tr="set">Join NayaNET already sits in the hero row — turn this on to add it to the cover as an extra spot.</span></span><span class="os-switch-wrap" style="--jc:#2fe89e"><button class="os-switch" id="mw-set-coverjoin" type="button" role="switch" aria-checked="false"><span class="os-knob"></span></button><span class="os-switch-cap">Off</span></span></div>
 </div>
 <div class="ph-card" style="--ac:#ffbf3d;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#ffbf3d">🔔</span> <span data-mw-tr="notif">Notifications for this page</span></h3>
 <p class="os-note" style="margin:0 0 6px" data-mw-tr="notif-sub">What lights up for THIS page. The master switch above (Notifications) turns them all off at once.</p>
-<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">💬</span><span class="os-setrow-main"><b>Mentions &amp; replies</b><span class="os-setrow-sub">Someone replies to you or mentions you.</span></span><span class="os-switch-wrap" style="--jc:#3fb8ff"><button class="os-switch on" id="mw-set-notif-mentions" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
-<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">👥</span><span class="os-setrow-main"><b>New connections</b><span class="os-setrow-sub">Someone connects with you or joins from your invite.</span></span><span class="os-switch-wrap" style="--jc:#2fe89e"><button class="os-switch on" id="mw-set-notif-connections" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
-<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">✦</span><span class="os-setrow-main"><b>Membership news</b><span class="os-setrow-sub">Something new in a membership you hold.</span></span><span class="os-switch-wrap" style="--jc:#a06bff"><button class="os-switch on" id="mw-set-notif-memberships" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
-<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ff9a5a">📰</span><span class="os-setrow-main"><b>Feed activity</b><span class="os-setrow-sub">New posts and notes on your feed.</span></span><span class="os-switch-wrap" style="--jc:#ff9a5a"><button class="os-switch on" id="mw-set-notif-activity" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
+<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">💬</span><span class="os-setrow-main"><b data-mw-tr="set">Mentions &amp; replies</b><span class="os-setrow-sub" data-mw-tr="set">Someone replies to you or mentions you.</span></span><span class="os-switch-wrap" style="--jc:#3fb8ff"><button class="os-switch on" id="mw-set-notif-mentions" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
+<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">👥</span><span class="os-setrow-main"><b data-mw-tr="set">New connections</b><span class="os-setrow-sub" data-mw-tr="set">Someone connects with you or joins from your invite.</span></span><span class="os-switch-wrap" style="--jc:#2fe89e"><button class="os-switch on" id="mw-set-notif-connections" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
+<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">✦</span><span class="os-setrow-main"><b data-mw-tr="set">Membership news</b><span class="os-setrow-sub" data-mw-tr="set">Something new in a membership you hold.</span></span><span class="os-switch-wrap" style="--jc:#a06bff"><button class="os-switch on" id="mw-set-notif-memberships" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
+<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ff9a5a">📰</span><span class="os-setrow-main"><b data-mw-tr="set">Feed activity</b><span class="os-setrow-sub" data-mw-tr="set">New posts and notes on your feed.</span></span><span class="os-switch-wrap" style="--jc:#ff9a5a"><button class="os-switch on" id="mw-set-notif-activity" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
 </div>
 <div class="ph-card" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🏠</span> <span data-mw-tr="homehub">Go to Home Hub</span></h3>
 <p class="os-note" style="margin:0 0 10px" data-mw-tr="homehub-sub">Home Hub is the way back to the main Hub.</p>
-<div class="ph-actions"><a class="ph-msg" href="https://nayanet.app/#/hub" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Go to Home Hub →</a></div>
+<div class="ph-actions"><a class="ph-msg" href="https://nayanet.app/#/hub" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;" data-mw-tr="set">Go to Home Hub →</a></div>
 </div>
 
 <div class="ph-card" style="--ac:#3fb8ff;" id="os-install-card">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">📲</span> Install as app</h3>
-<p>Put this app on your home screen &mdash; it opens like any other app, no browser bars.</p>
-<p id="os-install-state">Checking install state&hellip;</p>
-<button class="ph-connect" id="os-install-btn" type="button">Install this app</button>
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">📲</span> <span data-mw-tr="set">Install as app</span></h3>
+<p data-mw-tr="set">Put this app on your home screen &mdash; it opens like any other app, no browser bars.</p>
+<p id="os-install-state" data-mw-tr="set">Checking install state&hellip;</p>
+<button class="ph-connect" id="os-install-btn" type="button" data-mw-tr="set">Install this app</button>
 </div>
 </div></div>
 <script>
@@ -8654,7 +8654,7 @@ function wallCard(j, iso, pid, idx){
     }
     list.innerHTML = shown.length
       ? shown.map(function(p, i){ return wallCard(p.j, p.at, p.id, i); }).join('')
-      : '<div class="ph-card" style="--ac:#a06bff;"><p>No posts yet — be the first to make a post on this feed.</p></div>';
+      : '<div class="ph-card" style="--ac:#a06bff;"><p>'+(window.mwTr?window.mwTr('No posts yet — be the first to make a post on this feed.'):'No posts yet — be the first to make a post on this feed.')+'</p></div>';
     var meta=$('os-wall-meta');
     if(meta){
       if(!shown.length){ meta.textContent=''; }
@@ -9029,19 +9029,19 @@ function wallCard(j, iso, pid, idx){
     var h=$('tg-hint'), pb=$('os-post-btn');
     var ft=$('fcTitleText'), fj=$('fcTitleJewel'), rv=$('tg-review');
     if (m==='smart'){
-      if(h) h.textContent='Smart note — your words distilled into an intelligent block. You review it before it posts.';
-      if(pb) pb.innerHTML='✦ Smart note it';
-      if(ft) ft.textContent='Smart note'; if(fj){ fj.textContent='✦'; fj.style.setProperty('--jc','#a06bff'); }
+      if(h) h.textContent=(window.mwTr?window.mwTr('Smart note — your words distilled into an intelligent block. You review it before it posts.'):'Smart note — your words distilled into an intelligent block. You review it before it posts.');
+      if(pb) pb.innerHTML='✦ '+(window.mwTr?window.mwTr('Smart note it'):'Smart note it');
+      if(ft) ft.textContent=(window.mwTr?window.mwTr('Smart note'):'Smart note'); if(fj){ fj.textContent='✦'; fj.style.setProperty('--jc','#a06bff'); }
     } else if (m==='post'){
       /* FEED-CREATOR: Make a post is a NON-smart note — direct words, no auto-format. */
-      if(h) h.textContent='Make a post — your words, straight up. No auto-format, no distillation — what you write is what lands on the feed.';
-      if(pb) pb.textContent='✎ Post it';
-      if(ft) ft.textContent='Make a post'; if(fj){ fj.textContent='✎'; fj.style.setProperty('--jc','#e8e8ec'); }
+      if(h) h.textContent=(window.mwTr?window.mwTr('Make a post — your words, straight up. No auto-format, no distillation — what you write is what lands on the feed.'):'Make a post — your words, straight up. No auto-format, no distillation — what you write is what lands on the feed.');
+      if(pb) pb.textContent='✎ '+(window.mwTr?window.mwTr('Post it'):'Post it');
+      if(ft) ft.textContent=(window.mwTr?window.mwTr('Make a post'):'Make a post'); if(fj){ fj.textContent='✎'; fj.style.setProperty('--jc','#e8e8ec'); }
       if(rv) rv.hidden=true;
     } else {
-      if(h) h.textContent='Naya note — Naya formats your words beautifully. Write it, dictate it with the microphone — Naya writing it for you is coming soon.';
-      if(pb) pb.textContent='✦ Post my Naya note';
-      if(ft) ft.textContent='Naya note'; if(fj){ fj.textContent='✦'; fj.style.setProperty('--jc','#2fe89e'); }
+      if(h) h.textContent=(window.mwTr?window.mwTr('Naya note — Naya formats your words beautifully. Write it, dictate it with the microphone — Naya writing it for you is coming soon.'):'Naya note — Naya formats your words beautifully. Write it, dictate it with the microphone — Naya writing it for you is coming soon.');
+      if(pb) pb.textContent='✦ '+(window.mwTr?window.mwTr('Post my Naya note'):'Post my Naya note');
+      if(ft) ft.textContent=(window.mwTr?window.mwTr('Naya note'):'Naya note'); if(fj){ fj.textContent='✦'; fj.style.setProperty('--jc','#2fe89e'); }
       if(rv) rv.hidden=true;
     }
   }
@@ -9084,7 +9084,7 @@ function wallCard(j, iso, pid, idx){
     var rv=$('tg-review'); if(rv) rv.hidden=true;
     tgSetMode('naya');
     window.osSched=null; try{ localStorage.removeItem('os.sched'); }catch(e){} var sbtn=$('os-sched-btn');
-    if (sbtn){ sbtn.textContent='\uD83D\uDD50 Schedule'; sbtn.classList.remove('set'); }
+    if (sbtn){ sbtn.textContent='\uD83D\uDD50 '+(window.mwTr?window.mwTr('Schedule'):'Schedule'); sbtn.classList.remove('set'); }
     if (msg) $('os-post-status').textContent=msg;
     /* FEED-CREATOR: the creator is a full-page viewer — a posted note exits back to
        the feed, and the receipt rides the page's toast so it is seen after the exit. */
@@ -11596,7 +11596,7 @@ function wallCard(j, iso, pid, idx){
     btn.classList.toggle('on', !!on);
     btn.setAttribute('aria-checked', on?'true':'false');
     var cap=btn.parentElement?btn.parentElement.querySelector('.os-switch-cap'):null;
-    if (cap) cap.textContent=on?'On':'Off';
+    if (cap) cap.textContent=on?(window.mwTr?window.mwTr('On'):'On'):(window.mwTr?window.mwTr('Off'):'Off');
   }
   function bindSwitch(id, on, apply){
     var b=$(id); if (!b) return;
@@ -13918,8 +13918,8 @@ window.NayaNotif = window.NayaNotif || {
       SEGS.forEach(function (s) {
         var b = document.createElement('button'); b.type = 'button'; b.className = 'notif-seg';
         b.setAttribute('data-notif', s[0]); b.style.setProperty('--nc', s[2]);
-        b.setAttribute('aria-label', s[1] + ' — open');
-        b.setAttribute('title', s[1]);
+        b.setAttribute('aria-label', (window.mwTr?window.mwTr(s[1]):s[1]) + ' — ' + (window.mwTr?window.mwTr('open'):'open'));
+        b.setAttribute('title', (window.mwTr?window.mwTr(s[1]):s[1]));
         b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span>';
         b.addEventListener('click', function () { if (s[0] === 'plus') { if (window.fcTogglePlusMenu) window.fcTogglePlusMenu(); return; } self.tap(s[0]); });
         row.appendChild(b);
@@ -14224,7 +14224,7 @@ function openSchedulePicker(){
   modal.appendChild(body);
   var row=document.createElement('div'); row.className='ph-actions'; row.style.marginTop='6px';
   var clear=document.createElement('button'); clear.type='button'; clear.className='ph-msg'; clear.textContent='Post now instead';
-  clear.addEventListener('click', function(){ window.osSched=null; try{ localStorage.removeItem('os.sched'); }catch(e){} var s=$('os-sched-btn'); if(s){ s.textContent='\uD83D\uDD50 Schedule'; s.classList.remove('set'); } modal.parentElement.remove(); });
+  clear.addEventListener('click', function(){ window.osSched=null; try{ localStorage.removeItem('os.sched'); }catch(e){} var s=$('os-sched-btn'); if(s){ s.textContent='\uD83D\uDD50 '+(window.mwTr?window.mwTr('Schedule'):'Schedule'); s.classList.remove('set'); } modal.parentElement.remove(); });
   var done=document.createElement('button'); done.type='button'; done.className='ph-connect'; done.textContent='Set schedule';
   done.addEventListener('click', function(){
     var tv=timeIn.value||'09:00';
@@ -20067,7 +20067,7 @@ function mwBuildFeedPills(){
   items.forEach(function(it){
     html+='<div class="smart-tab'+(MW_FEED_PILL===it.key?' active':'')+'" data-mw-pill="'+it.key+'" style="--tc:'+mwFeedPillColor(it.key)+'">'+esc(it.label)+'</div>';
   });
-  html+='<div class="smart-tab add-tab" data-mw-pill="__add">+ Add</div>';
+  html+='<div class="smart-tab add-tab" data-mw-pill="__add">+ '+(window.mwTr?window.mwTr('Add'):'Add')+'</div>';
   rib.innerHTML=html;
 }
 function mwSetFeedPill(key){
@@ -20155,11 +20155,11 @@ var MW_NAYA_ROWS=[];
 function mwPaintNayaFeed(){
   var box=$('mwFeedNaya'); if(!box) return;
   var rows=MW_NAYA_ROWS||[];
-  if(!rows.length){ box.innerHTML='<p class="os-note">No Naya Notes yet — the first one lands here.</p>'; if(typeof mwBuildFeedPills==='function') mwBuildFeedPills(); return; }
+  if(!rows.length){ box.innerHTML='<p class="os-note">'+(window.mwTr?window.mwTr('No Naya Notes yet — the first one lands here.'):'No Naya Notes yet — the first one lands here.')+'</p>'; if(typeof mwBuildFeedPills==='function') mwBuildFeedPills(); return; }
   var pill=(typeof MW_FEED_PILL!=='undefined')?MW_FEED_PILL:'all';
   var shown=rows;
   if(pill && pill!=='all'){ shown=rows.filter(function(n){ return (n.category||'').toLowerCase()===pill; }); }
-  if(!shown.length){ box.innerHTML='<p class="os-note">No Naya Notes in this category yet.</p>'; if(typeof mwBuildFeedPills==='function') mwBuildFeedPills(); return; }
+  if(!shown.length){ box.innerHTML='<p class="os-note">'+(window.mwTr?window.mwTr('No Naya Notes in this category yet.'):'No Naya Notes in this category yet.')+'</p>'; if(typeof mwBuildFeedPills==='function') mwBuildFeedPills(); return; }
   box.innerHTML='<div class="os-faces">'+shown.map(function(n){
     return '<div class="ph-card" style="--ac:#3fb8ff;"><h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">✦</span> '+esc(n.title||'Naya Note')+'</h3><p class="os-note">'+esc(n.category||'')+' · '+esc(new Date(n.created_at).toLocaleDateString())+'</p><p>'+esc(String(n.body||'').slice(0,280))+'</p></div>';
   }).join('')+'</div>';
@@ -20395,26 +20395,55 @@ function mwFilterNotifs(){
   });
 }
 
-/* ---------- language (fix 18) ---------- */
-var MW_I18N={
-  es:{Message:'Mensaje',About:'Acerca de','My Story':'Mi historia','My World':'Mi mundo',Connections:'Conexiones',Invite:'Invitar',Share:'Compartir','Join NayaNET':'Unirse a NayaNET',Settings:'Ajustes','Live Feed':'En vivo','Make a post':'Publicar','Common settings — every page':'Ajustes comunes — todas las páginas','This page':'Esta página','Cover buttons — your memberships':'Botones de la portada — tus membresías','Notifications for this page':'Notificaciones de esta página','Go to Home Hub':'Ir al Hub principal','My World':'Mi mundo','All your pages within your world':'Todas tus páginas en tu mundo'},
-  fr:{Message:'Message',About:'À propos','My Story':'Mon histoire','My World':'Mon monde',Connections:'Connexions',Invite:'Inviter',Share:'Partager','Join NayaNET':'Rejoindre NayaNET',Settings:'Réglages','Live Feed':'En direct','Make a post':'Publier','Common settings — every page':'Réglages communs — toutes les pages','This page':'Cette page','Cover buttons — your memberships':'Boutons de couverture — vos adhésions','Notifications for this page':'Notifications pour cette page','Go to Home Hub':'Aller au Hub principal','My World':'Mon monde','All your pages within your world':'Toutes vos pages dans votre monde'},
-  de:{Message:'Nachricht',About:'Über','My Story':'Meine Geschichte','My World':'Meine Welt',Connections:'Kontakte',Invite:'Einladen',Share:'Teilen','Join NayaNET':'NayaNET beitreten',Settings:'Einstellungen','Live Feed':'Live-Feed','Make a post':'Posten','Common settings — every page':'Gemeinsame Einstellungen — alle Seiten','This page':'Diese Seite','Cover buttons — your memberships':'Cover-Schaltflächen — deine Mitgliedschaften','Notifications for this page':'Benachrichtigungen für diese Seite','Go to Home Hub':'Zum Haupt-Hub','My World':'Meine Welt','All your pages within your world':'Alle deine Seiten in deiner Welt'}
-};
+/* ---------- language (fix 18, grown AUTO-TRANSLATE 2026-11-13) ---------- */
+/* The dictionary grows from 17 distinct keys to the whole home chrome (the
+   inventory the maker counted at round start: 165 keys (158 chrome + 'In a
+   nutshell' + 'open' + 6 creator/chat keys found while grounding tgSetMode and
+   fcOpenChat). Harvested verbatim in shape — same MW_I18N + mwApplyLang machine,
+   never a framework. Proper names never translate (Naya, NayaNET, a citizen's
+   alias, page names). Icons never translate (R20). The dict was drafted
+   through the round's own Workers AI translation worker and reviewed string
+   by string by the maker — see RECORD §4 for the review fixes. */
+var MW_I18N={"es": {"ABOUT NAYANET": "ACERCA DE NAYANET", "ACTIVITY": "ACTIVIDAD", "ADD": "AÑADIR", "About": "Acerca de", "About Us": "Sobre nosotros", "Activity": "Actividad", "Add": "Añadir", "All your pages within your world": "Todas tus páginas en tu mundo", "Already in your language": "Ya en tu lengua", "Any": "Cualquiera", "Audio": "Audio", "Audio calls arrive with Smart Meet — for now, message them here.": "Las llamadas de audio llegan con Smart Meet — por ahora, escríbeles aquí.", "Audio — Naya’s voice": "Audio - La voz de Naya", "Back to my words": "Volver a mis palabras", "Back to my world": "Volver a mi mundo", "Become a Member": "Hazte miembro", "Bottom": "Abajo", "Bottom bar auto-fold": "Plegado automático de la barra inferior", "Bring everything back": "Traer todo de vuelta", "Change cover": "Cambiar portada", "Change what shows here": "Cambiar lo que se muestra aquí", "Chat": "Chat", "Checking install state…": "Comprobando el estado de instalación…", "Choose which of your pages show in My World. Dashboard always stays — it is the main one.": "Elige qué páginas tuyas se muestran en Mi mundo. El Dashboard siempre se queda — es el principal.", "Common settings — every page": "Ajustes comunes — todas las páginas", "Connections": "Conexiones", "Cover buttons — your memberships": "Botones de la portada — tus membresías", "Create. Connect. Grow with us.": "Crea. Conecta. Crece con nosotros.", "Default feed tab": "Pestaña del feed por defecto", "Drafted from your words on this device; nothing leaves until you post.": "Redactado a partir de tus palabras en este dispositivo; nada sale de aquí hasta que publiques.", "ECOSYSTEM": "ECOSISTEMA", "Feed activity": "Actividad del feed", "Go to Home Hub": "Ir al Hub principal", "Go to Home Hub →": "Ir al Home Hub →", "Go to my Dashboard →": "Ir a mi Dashboard →", "Home Hub is the way back to the main Hub.": "Home Hub es el camino de vuelta al Hub principal.", "Install as app": "Instalar como app", "Install this app": "Instala esta app", "Instant message": "Mensaje instantáneo", "Intel Today": "Intel hoy", "Invite": "Invitar", "Invites": "Invitaciones", "Join NayaNET": "Unirse a NayaNET", "Join NayaNET already sits in the hero row — turn this on to add it to the cover as an extra spot.": "Unirse a NayaNET ya está en la fila principal — activa esto para añadirlo a la portada como un hueco más.", "Join NayaNET on the cover too": "Unirse a NayaNET también en la portada", "Joins": "Unidos", "Language for this page": "Idioma para esta página", "Leaderboards": "Clasificaciones", "Link clicks": "Clics en enlaces", "Live Feed": "En vivo", "Live matches": "Coincidencias en vivo", "Live matches come from the Smart Feed engine, with their reasons attached. Standing profiles are the family, marked as standing — never shown as online.": "Las coincidencias en vivo vienen del motor del Smart Feed, con sus razones adjuntas. Los perfiles en lista son la familia, marcados como en lista — nunca se muestran como en línea.", "MAIL": "CORREO", "MATCH → ORGANIZE → CONNECT": "MATCH → ORGANIZAR → CONECTAR", "MEMBERSHIPS": "MEMBRESÍAS", "Mail": "Correo", "Make a post": "Publicar", "Make a post on this app’s feed…": "Haz una publicación en el feed de esta app…", "Match % threshold — Connections": "Umbral de coincidencia % — Conexiones", "Match is figured on this device from shared posts, messages and invites — highest first. Spaces show by name; their match comes from the Auto-Match engine, which is not switched on for citizens yet.": "La coincidencia se calcula en este dispositivo a partir de publicaciones, mensajes e invitaciones compartidas — primero las más altas. Los espacios se muestran por nombre; su coincidencia viene del motor Auto-Match, que aún no está activado para los ciudadanos.", "Membership news": "Noticias de membresía", "Mentions & replies": "Menciones y respuestas", "Message": "Mensaje", "Message someone": "Escribe a alguien", "Messages": "Mensajes", "My Spaces": "Mis espacios", "My World": "Mi mundo", "My World — which pages appear": "Mi mundo - qué páginas aparecen", "NAYANET AREAS": "ÁREAS NAYANET", "NAYANET ECOSYSTEM": "ECOSISTEMA NAYANET", "Naya Notes": "Notas Naya", "Naya note": "Nota Naya", "Naya note — Naya formats your words beautifully. Write it, dictate it with the microphone — Naya writing it for you is coming soon.": "Nota Naya — Naya da un formato precioso a tus palabras. Escríbela, dicta con el micrófono — que Naya la escriba por ti llegará pronto.", "Naya reads things aloud on this page. Off and she stays quiet here.": "Naya lee las cosas en voz alta en esta página. Si está apagado, se queda callada aquí.", "New connections": "Nuevas conexiones", "New posts and notes on your feed.": "Nuevas publicaciones y notas en tu feed.", "No Naya Notes in this category yet.": "No hay Notas Naya en esta categoría todavía.", "No Naya Notes yet — the first one lands here.": "Todavía no hay Notas Naya — la primera llega aquí.", "No posts yet — be the first to make a post on this feed.": "Todavía no hay publicaciones — sé el primero en publicar en este feed.", "Notifications for this page": "Notificaciones de esta página", "Off": "No", "On": "Sí", "On — the trio (Mail · Activity · Space) folds away as you scroll down and comes back 1.5 seconds after you stop. Off — it stays put.": "Activado — el trío (Mail · Activity · Space) se pliega al desplazarte hacia abajo y vuelve 1,5 segundos después de parar. Desactivado — se queda en su sitio.", "One more seat is held open for the next live citizen.": "Un asiento más queda abierto para el próximo ciudadano.", "People around you": "La gente a tu alrededor", "Personal": "personal", "Post my Naya note": "Publica mi Nota Naya", "Post smart note": "Publicar nota inteligente", "Posts": "Publicaciones", "Public smart feed": "Feed inteligente público", "Put this app on your home screen — it opens like any other app, no browser bars.": "Coloca esta aplicación en tu pantalla de inicio: se abre como cualquier otra aplicación, sin barras de navegador.", "Reverse cover colours": "Invertir los colores de la portada", "SPACES": "ESPACIOS", "STANDING": "EN LISTA", "Schedule": "Programar", "Search the public feed": "Buscar en el feed público", "Search your people and spaces — pick one and the message pops up.": "Busca a tu gente y tus espacios — elige uno y aparece el mensaje.", "Send": "Enviar", "Share": "Compartir", "Shawn’s Naya Notes — tap for the full feed ↓": "Las Notas Naya de Shawn — toca para ver el feed completo ↓", "Shawn’s Personal feed — tap for the full feed ↓": "El feed Personal de Shawn — toca para ver el feed completo ↓", "Shawn’s Public smart feed — tap for the full feed ↓": "El feed inteligente público de Shawn — toca para ver el feed completo ↓", "Show only people above the match you choose. Lower it to see everyone again.": "Muestra solo a las personas por encima de la coincidencia que elijas. Bájala para ver a todos de nuevo.", "Show original": "Mostrar original", "Show translation": "Mostrar traducción", "Skills": "Habilidades", "Smart Factory": "Fábrica inteligente", "Smart Meet": "Encuentro inteligente", "Smart Notes": "Notas inteligentes", "Smart Notes scroll strip": "Tira de desplazamiento de Notas inteligentes", "Smart note": "Nota inteligente", "Smart notes": "Notas inteligentes", "Someone": "Alguien", "Someone connects with you or joins from your invite.": "Alguien se conecta contigo o se une desde tu invitación.", "Someone replies to you or mentions you.": "Alguien te responde o te menciona.", "Something new in a membership you hold.": "Algo nuevo en una membresía que tienes.", "Standing": "En lista", "Stats": "Estadísticas", "Subject": "Asunto", "Tap a page to open it. Tap the small stats icon beside it and boom — that page’s own dashboard.": "Toca una página para abrirla. Toca el pequeño icono de estadísticas a su lado y boom — el propio Dashboard de esa página.", "The Public profile switch above is this page’s public/private choice — flip it here too.": "El interruptor de perfil público de arriba es la opción pública/privada de esta página — cámbialo aquí también.", "The buttons at the top corner of your cover, where visitors always see them — so they always see where to join. Smart marketing: your profile is a landing page. Each button has its own on/off — if you don’t want to promote a membership, turn it off. A button wakes up when you enter its URL — it takes the next empty spot, up to five. They are meant for memberships, but any URL works: a social site of yours can sit here too. Generic links belong in the Smart Bar.": "Los botones de la esquina superior de tu portada, donde los visitantes siempre los ven — para que siempre vean dónde unirse. Marketing inteligente: tu perfil es una página de aterrizaje. Cada botón tiene su propio encendido/apagado — si no quieres promocionar una membresía, apágalo. Un botón se activa cuando introduces su URL — toma el siguiente hueco libre, hasta cinco. Están pensados para membresías, pero sirve cualquier URL: un sitio social tuyo también puede estar aquí. Los enlaces genéricos van en la Smart Bar.", "The cover button colours run top to bottom — flip this and the sequence runs in reverse.": "Los colores de los botones de la portada van de arriba a abajo — cambia esto y la secuencia va al revés.", "The distilled draft — edit anything, then post.": "El borrador destilado — edita lo que quieras y publica.", "These are shared across every page — change one here, it changes everywhere.": "Esto se comparte en todas las páginas — cambia uno aquí y cambia en todas partes.", "This page": "Esta página", "This page: public or private": "Esta página: pública o privada", "Today's Intel": "Intel de hoy", "Top": "Arriba", "Translate": "Traducir", "Translation unavailable — the original is here": "La traducción no está disponible - el original está aquí", "Video": "Vídeo", "Video calls arrive with Smart Meet — for now, message them here.": "Las videollamadas llegan con Smart Meet — por ahora, escríbeles aquí.", "What language is this note in?": "¿En qué idioma está esta nota?", "What lights up for THIS page. The master switch above (Notifications) turns them all off at once.": "Lo que se ilumina para ESTA página. El interruptor principal de arriba (Notificaciones) los apaga todos a la vez.", "Where the scrolling strip of Smart Notes sits. At the bottom it sits flush, proper. Off hides it — the + buttons still get you everywhere.": "Dónde está la tira de desplazamiento de Notas inteligentes. Abajo queda al ras, como debe ser. Apagada se esconde — los botones + te llevan a todas partes igualmente.", "Which tab opens first on your feed.": "Qué pestaña se abre primero en tu feed.", "White Paper": "Libro blanco", "Worst case, hit this — every hidden bar, strip and button comes back.": "En el peor de los casos, pulsa esto — cada barra, tira y botón ocultos vuelven.", "Write it — it pops up in their Smart Mail inbox as an instant message.": "Escríbelo — aparece en su bandeja de Smart Mail como un mensaje instantáneo.", "Write your message…": "Escribe tu mensaje…", "YOU · STANDING": "TÚ · EN LISTA", "YOUR WORLD": "TU MUNDO", "Your Connections": "Tus conexiones", "Your Reports": "Tus informes", "Your page speaks your language — menus, buttons and headings translate.": "Tu página habla tu idioma — los menús, los botones y los encabezados se traducen.", "Your words, untouched:": "Tus palabras, intactas:", "Your world · live": "Tu mundo · en vivo", "live match": "coincidencia en vivo", "live matches": "coincidencias en vivo", "pts": "pts", "standing": "en lista", "＋ Add a custom link": "+ Agregar un enlace personalizado", "My Story": "Mi historia", "Settings": "Ajustes", "In a nutshell": "En pocas palabras", "open": "abrir", "Translated from English": "Traducido del inglés", "Translated from Spanish": "Traducido del español", "Translated from French": "Traducido del francés", "Smart note — your words distilled into an intelligent block. You review it before it posts.": "Nota inteligente — tus palabras destiladas en un bloque inteligente. Lo revisas antes de publicarlo.", "Smart note it": "Hazla nota inteligente", "Make a post — your words, straight up. No auto-format, no distillation — what you write is what lands on the feed.": "Publica — tus palabras, tal cual. Sin formato automático, sin destilación — lo que escribes es lo que llega al feed.", "Post it": "Publicarlo", "Write it — it lands in their Smart Mail inbox.": "Escríbelo — llega a su bandeja de Smart Mail.", "Search people and spaces…": "Buscar personas y espacios…", "Translated from German": "Traducido del alemán"}, "fr": {"ABOUT NAYANET": "À PROPOS DE NAYANET", "ACTIVITY": "ACTIVITÉ", "ADD": "AJOUTER", "About": "À propos", "About Us": "À propos de nous", "Activity": "Activité", "Add": "Ajouter", "All your pages within your world": "Toutes vos pages dans votre monde", "Already in your language": "Déjà dans votre langue", "Any": "Tous", "Audio": "Audio", "Audio calls arrive with Smart Meet — for now, message them here.": "Les appels audio arrivent avec Smart Meet — pour l’instant, écrivez-leur ici.", "Audio — Naya’s voice": "Audio - La voix de Naya", "Back to my words": "Revenir à mes mots", "Back to my world": "Retour à mon monde", "Become a Member": "Devenez membre", "Bottom": "En bas", "Bottom bar auto-fold": "Repli automatique de la barre inférieure", "Bring everything back": "Tout ramener", "Change cover": "Changer la couverture", "Change what shows here": "Changer ce qui s’affiche ici", "Chat": "Chat", "Checking install state…": "Vérification de l’état d’installation…", "Choose which of your pages show in My World. Dashboard always stays — it is the main one.": "Choisissez lesquelles de vos pages s’affichent dans Mon monde. Le Dashboard reste toujours — c’est le principal.", "Common settings — every page": "Réglages communs — toutes les pages", "Connections": "Connexions", "Cover buttons — your memberships": "Boutons de couverture — vos adhésions", "Create. Connect. Grow with us.": "Crée. Connecte. Grandis avec nous.", "Default feed tab": "Onglet du fil par défaut", "Drafted from your words on this device; nothing leaves until you post.": "Rédigé à partir de vos mots sur cet appareil ; rien ne sort d’ici avant que vous ne publiiez.", "ECOSYSTEM": "ÉCOSYSTÈME", "Feed activity": "Activité du fil", "Go to Home Hub": "Aller au Hub principal", "Go to Home Hub →": "Aller au Home Hub →", "Go to my Dashboard →": "Aller à mon Dashboard →", "Home Hub is the way back to the main Hub.": "Home Hub est le chemin du retour vers le Hub principal.", "Install as app": "Installer comme appli", "Install this app": "Installer cette appli", "Instant message": "Message instantané", "Intel Today": "Intel aujourd’hui", "Invite": "Inviter", "Invites": "Invitations", "Join NayaNET": "Rejoindre NayaNET", "Join NayaNET already sits in the hero row — turn this on to add it to the cover as an extra spot.": "Rejoindre NayaNET est déjà dans la rangée principale — activez ceci pour l’ajouter à la couverture comme un emplacement de plus.", "Join NayaNET on the cover too": "Rejoindre NayaNET aussi sur la couverture", "Joins": "Adhésions", "Language for this page": "Langue pour cette page", "Leaderboards": "Classements", "Link clicks": "Clics sur les liens", "Live Feed": "En direct", "Live matches": "Matches en direct", "Live matches come from the Smart Feed engine, with their reasons attached. Standing profiles are the family, marked as standing — never shown as online.": "Les matches en direct viennent du moteur du Smart Feed, avec leurs raisons jointes. Les profils listés sont la famille, marqués comme listés — jamais affichés comme en ligne.", "MAIL": "COURRIER", "MATCH → ORGANIZE → CONNECT": "MATCH → ORGANISER → CONNECTER", "MEMBERSHIPS": "ADHÉSIONS", "Mail": "Courrier", "Make a post": "Publier", "Make a post on this app’s feed…": "Fais une publication sur le fil de cette appli…", "Match % threshold — Connections": "Seuil de match % — Connexions", "Match is figured on this device from shared posts, messages and invites — highest first. Spaces show by name; their match comes from the Auto-Match engine, which is not switched on for citizens yet.": "Le match est calculé sur cet appareil à partir des publications, messages et invitations partagés — les plus élevés d’abord. Les espaces s’affichent par leur nom ; leur match vient du moteur Auto-Match, qui n’est pas encore activé pour les citoyens.", "Membership news": "Nouvelles des adhésions", "Mentions & replies": "Mentions et réponses", "Message": "Message", "Message someone": "Écrire à quelqu’un", "Messages": "Messages", "My Spaces": "Mes espaces", "My World": "Mon monde", "My World — which pages appear": "Mon monde - quelles pages apparaissent", "NAYANET AREAS": "ZONES NAYANET", "NAYANET ECOSYSTEM": "ÉCOSYSTÈME NAYANET", "Naya Notes": "Notes Naya", "Naya note": "Note Naya", "Naya note — Naya formats your words beautifully. Write it, dictate it with the microphone — Naya writing it for you is coming soon.": "Note Naya — Naya met vos mots magnifiquement en forme. Écrivez-la, dictez-la avec le microphone — Naya qui l’écrit pour vous arrive bientôt.", "Naya reads things aloud on this page. Off and she stays quiet here.": "Naya lit les choses à voix haute sur cette page. Si c’est éteint, elle reste silencieuse ici.", "New connections": "Nouvelles connexions", "New posts and notes on your feed.": "Nouvelles publications et notes sur votre fil.", "No Naya Notes in this category yet.": "Il n’y a pas encore de Notes Naya dans cette catégorie.", "No Naya Notes yet — the first one lands here.": "Pas encore de Notes Naya — la première arrive ici.", "No posts yet — be the first to make a post on this feed.": "Pas encore de publications — soyez le premier à publier sur ce fil.", "Notifications for this page": "Notifications pour cette page", "Off": "Non", "On": "Oui", "On — the trio (Mail · Activity · Space) folds away as you scroll down and comes back 1.5 seconds after you stop. Off — it stays put.": "Activé — le trio (Mail · Activity · Space) se replie quand vous défilez vers le bas et revient 1,5 seconde après l’arrêt. Désactivé — il reste en place.", "One more seat is held open for the next live citizen.": "Un siège de plus reste ouvert pour le prochain citoyen.", "People around you": "Les gens autour de vous", "Personal": "Personnel", "Post my Naya note": "Publie ma Note Naya", "Post smart note": "Publier une note intelligente", "Posts": "Publications", "Public smart feed": "Fil intelligent public", "Put this app on your home screen — it opens like any other app, no browser bars.": "Mettez cette application sur votre écran d’accueil – elle s’ouvre comme n’importe quelle autre application, sans barres de navigateur.", "Reverse cover colours": "Inverser les couleurs de la couverture", "SPACES": "ESPACES", "STANDING": "LISTÉ", "Schedule": "Programmer", "Search the public feed": "Chercher dans le fil public", "Search your people and spaces — pick one and the message pops up.": "Cherchez vos gens et vos espaces — choisissez-en un et le message apparaît.", "Send": "Envoyer", "Share": "Partager", "Shawn’s Naya Notes — tap for the full feed ↓": "Les Notes Naya de Shawn — touche pour voir le fil complet ↓", "Shawn’s Personal feed — tap for the full feed ↓": "Le fil Personnel de Shawn — touche pour voir le fil complet ↓", "Shawn’s Public smart feed — tap for the full feed ↓": "Le fil intelligent public de Shawn — touche pour voir le fil complet ↓", "Show only people above the match you choose. Lower it to see everyone again.": "N’afficher que les personnes au-dessus du match que vous choisissez. Baissez-le pour revoir tout le monde.", "Show original": "Afficher l’original", "Show translation": "Afficher la traduction", "Skills": "Compétences", "Smart Factory": "Fabrique intelligente", "Smart Meet": "Smart rencontre", "Smart Notes": "Notes intelligentes", "Smart Notes scroll strip": "Bande défilante des Notes intelligentes", "Smart note": "Note intelligente", "Smart notes": "Notes intelligentes", "Someone": "Quelqu’un", "Someone connects with you or joins from your invite.": "Quelqu’un se connecte avec vous ou rejoint depuis votre invitation.", "Someone replies to you or mentions you.": "Quelqu’un vous répond ou vous mentionne.", "Something new in a membership you hold.": "Quelque chose de nouveau dans une adhésion que vous avez.", "Standing": "Listés", "Stats": "Statistiques", "Subject": "Objet", "Tap a page to open it. Tap the small stats icon beside it and boom — that page’s own dashboard.": "Touchez une page pour l’ouvrir. Touchez la petite icône de statistiques à côté et boom — le propre Dashboard de cette page.", "The Public profile switch above is this page’s public/private choice — flip it here too.": "L’interrupteur de profil public ci-dessus est le choix public/privé de cette page — changez-le ici aussi.", "The buttons at the top corner of your cover, where visitors always see them — so they always see where to join. Smart marketing: your profile is a landing page. Each button has its own on/off — if you don’t want to promote a membership, turn it off. A button wakes up when you enter its URL — it takes the next empty spot, up to five. They are meant for memberships, but any URL works: a social site of yours can sit here too. Generic links belong in the Smart Bar.": "Les boutons dans le coin supérieur de votre couverture, où les visiteurs les voient toujours — pour qu’ils voient toujours où rejoindre. Marketing intelligent : votre profil est une page d’atterrissage. Chaque bouton a son propre marche/arrêt — si vous ne voulez pas promouvoir une adhésion, éteignez-le. Un bouton s’active quand vous entrez son URL — il prend le prochain emplacement libre, jusqu’à cinq. Ils sont faits pour les adhésions, mais n’importe quelle URL fonctionne : un de vos sites sociaux peut aussi être là. Les liens génériques vont dans la Smart Bar.", "The cover button colours run top to bottom — flip this and the sequence runs in reverse.": "Les couleurs des boutons de la couverture vont de haut en bas — inversez ceci et la séquence va à l’envers.", "The distilled draft — edit anything, then post.": "Le brouillon distillé — modifiez ce que vous voulez, puis publiez.", "These are shared across every page — change one here, it changes everywhere.": "Ceci est partagé sur toutes les pages — changez-en un ici et il change partout.", "This page": "Cette page", "This page: public or private": "Cette page : publique ou privée", "Today's Intel": "Intel d’aujourd’hui", "Top": "En haut", "Translate": "Traduire", "Translation unavailable — the original is here": "La traduction n'est pas disponible - l'original est ici", "Video": "Vidéo", "Video calls arrive with Smart Meet — for now, message them here.": "Les appels vidéo arrivent avec Smart Meet — pour l’instant, écrivez-leur ici.", "What language is this note in?": "Dans quelle langue est cette note ?", "What lights up for THIS page. The master switch above (Notifications) turns them all off at once.": "Ce qui s’allume pour CETTE page. L’interrupteur principal ci-dessus (Notifications) les éteint tous à la fois.", "Where the scrolling strip of Smart Notes sits. At the bottom it sits flush, proper. Off hides it — the + buttons still get you everywhere.": "Où se trouve la bande défilante des Notes intelligentes. En bas, elle est bien à fleur, comme il faut. Éteinte, elle se cache — les boutons + vous emmènent partout quand même.", "Which tab opens first on your feed.": "Quel onglet s’ouvre en premier sur votre fil.", "White Paper": "Livre blanc", "Worst case, hit this — every hidden bar, strip and button comes back.": "Au pire, appuyez ici — chaque barre, bande et bouton cachés reviennent.", "Write it — it pops up in their Smart Mail inbox as an instant message.": "Écrivez-le — il apparaît dans leur boîte Smart Mail comme un message instantané.", "Write your message…": "Écrivez votre message…", "YOU · STANDING": "TOI · LISTÉ", "YOUR WORLD": "TON MONDE", "Your Connections": "Vos connexions", "Your Reports": "Vos rapports", "Your page speaks your language — menus, buttons and headings translate.": "Votre page parle votre langue — les menus, les boutons et les titres se traduisent.", "Your words, untouched:": "Vos mots, intacts :", "Your world · live": "Votre monde · en direct", "live match": "match en direct", "live matches": "matches en direct", "pts": "pts", "standing": "listés", "＋ Add a custom link": "+ Ajouter un lien personnalisé", "My Story": "Mon histoire", "Settings": "Réglages", "In a nutshell": "En résumé", "open": "ouvrir", "Translated from English": "Traduit de l’anglais", "Translated from Spanish": "Traduit de l’espagnol", "Translated from French": "Traduit du français", "Smart note — your words distilled into an intelligent block. You review it before it posts.": "Note intelligente — vos mots distillés en un bloc intelligent. Vous le relisez avant de le publier.", "Smart note it": "En faire une note intelligente", "Make a post — your words, straight up. No auto-format, no distillation — what you write is what lands on the feed.": "Publiez — vos mots, tels quels. Pas de formatage automatique, pas de distillation — ce que vous écrivez est ce qui arrive sur le fil.", "Post it": "Publier", "Write it — it lands in their Smart Mail inbox.": "Écrivez-le — il arrive dans leur boîte Smart Mail.", "Search people and spaces…": "Chercher des personnes et des espaces…", "Translated from German": "Traduit de l’allemand"}, "de": {"ABOUT NAYANET": "ÜBER NAYANET", "ACTIVITY": "AKTIVITÄT", "ADD": "HINZUFÜGEN", "About": "Über", "About Us": "Über uns", "Activity": "Aktivität", "Add": "Hinzufügen", "All your pages within your world": "Alle deine Seiten in deiner Welt", "Already in your language": "Bereits in Ihrer Sprache", "Any": "Alle", "Audio": "Audio", "Audio calls arrive with Smart Meet — for now, message them here.": "Audioanrufe kommen mit Smart Meet — schreib ihnen bis dahin hier.", "Audio — Naya’s voice": "Audio - Die Stimme von Naya", "Back to my words": "Zurück zu meinen Worten", "Back to my world": "Zurück zu meiner Welt", "Become a Member": "Werde Mitglied", "Bottom": "Unten", "Bottom bar auto-fold": "Automatisches Einklappen der unteren Leiste", "Bring everything back": "Alles zurückbringen", "Change cover": "Cover ändern", "Change what shows here": "Ändern, was hier angezeigt wird", "Chat": "Chat", "Checking install state…": "Installationsstatus wird geprüft…", "Choose which of your pages show in My World. Dashboard always stays — it is the main one.": "Wähl aus, welche deiner Seiten in Meine Welt angezeigt werden. Das Dashboard bleibt immer — es ist das wichtigste.", "Common settings — every page": "Gemeinsame Einstellungen — alle Seiten", "Connections": "Kontakte", "Cover buttons — your memberships": "Cover-Schaltflächen — deine Mitgliedschaften", "Create. Connect. Grow with us.": "Erstelle. Verbinde dich. Wachse mit uns.", "Default feed tab": "Standard-Feed-Tab", "Drafted from your words on this device; nothing leaves until you post.": "Entworfen aus deinen Worten auf diesem Gerät; nichts verlässt es, bis du postest.", "ECOSYSTEM": "ÖKOSYSTEM", "Feed activity": "Feed-Aktivität", "Go to Home Hub": "Zum Haupt-Hub", "Go to Home Hub →": "Geh zum Home Hub →", "Go to my Dashboard →": "Geh zu meinem Dashboard →", "Home Hub is the way back to the main Hub.": "Home Hub ist der Weg zurück zum Haupt-Hub.", "Install as app": "Als App installieren", "Install this app": "Installiere diese App", "Instant message": "Direktnachricht", "Intel Today": "Intel heute", "Invite": "Einladen", "Invites": "Einladungen", "Join NayaNET": "NayaNET beitreten", "Join NayaNET already sits in the hero row — turn this on to add it to the cover as an extra spot.": "NayaNET beitreten steht schon in der Hauptzeile — schalte dies ein, um es als zusätzlichen Platz auf das Cover zu setzen.", "Join NayaNET on the cover too": "NayaNET beitreten auch auf dem Cover", "Joins": "Beitritte", "Language for this page": "Sprache für diese Seite", "Leaderboards": "Bestenlisten", "Link clicks": "Link-Klicks", "Live Feed": "Live-Feed", "Live matches": "Live-Matches", "Live matches come from the Smart Feed engine, with their reasons attached. Standing profiles are the family, marked as standing — never shown as online.": "Live-Matches kommen aus der Smart-Feed-Engine, mit ihren Gründen dazu. Gelistete Profile sind die Familie, als gelistet markiert — nie als online gezeigt.", "MAIL": "MAIL", "MATCH → ORGANIZE → CONNECT": "MATCH → ORGANISIEREN → VERBINDEN", "MEMBERSHIPS": "MITGLIEDSCHAFTEN", "Mail": "Mail", "Make a post": "Posten", "Make a post on this app’s feed…": "Schreib einen Beitrag in den Feed dieser App…", "Match % threshold — Connections": "Match-%-Schwelle — Verbindungen", "Match is figured on this device from shared posts, messages and invites — highest first. Spaces show by name; their match comes from the Auto-Match engine, which is not switched on for citizens yet.": "Der Match wird auf diesem Gerät aus geteilten Beiträgen, Nachrichten und Einladungen ermittelt — die höchsten zuerst. Spaces zeigen nach Namen; ihr Match kommt aus der Auto-Match-Engine, die für Citizens noch nicht eingeschaltet ist.", "Membership news": "Mitgliedschafts-News", "Mentions & replies": "Erwähnungen und Antworten", "Message": "Nachricht", "Message someone": "Schreib jemandem", "Messages": "Nachrichten", "My Spaces": "Meine Spaces", "My World": "Meine Welt", "My World — which pages appear": "Meine Welt - welche Seiten erscheinen", "NAYANET AREAS": "NAYANET-BEREICHE", "NAYANET ECOSYSTEM": "NAYANET-ÖKOSYSTEM", "Naya Notes": "Naya-Notizen", "Naya note": "Naya-Notiz", "Naya note — Naya formats your words beautifully. Write it, dictate it with the microphone — Naya writing it for you is coming soon.": "Naya-Notiz — Naya formatiert deine Worte wunderschön. Schreib sie, diktiere sie mit dem Mikrofon — dass Naya sie für dich schreibt, kommt bald.", "Naya reads things aloud on this page. Off and she stays quiet here.": "Naya liest Dinge auf dieser Seite laut vor. Wenn aus, bleibt sie hier still.", "New connections": "Neue Verbindungen", "New posts and notes on your feed.": "Neue Beiträge und Notizen in deinem Feed.", "No Naya Notes in this category yet.": "Noch keine Naya-Notizen in dieser Kategorie.", "No Naya Notes yet — the first one lands here.": "Noch keine Naya-Notizen — die erste landet hier.", "No posts yet — be the first to make a post on this feed.": "Noch keine Beiträge — sei der Erste, der in diesem Feed postet.", "Notifications for this page": "Benachrichtigungen für diese Seite", "Off": "Aus", "On": "An", "On — the trio (Mail · Activity · Space) folds away as you scroll down and comes back 1.5 seconds after you stop. Off — it stays put.": "An — das Trio (Mail · Activity · Space) klappt beim Scrollen nach unten ein und kommt 1,5 Sekunden nach dem Stopp zurück. Aus — es bleibt, wo es ist.", "One more seat is held open for the next live citizen.": "Ein weiterer Platz bleibt für den nächsten Citizen offen.", "People around you": "Menschen um dich herum", "Personal": "Persönlich", "Post my Naya note": "Poste meine Naya-Notiz", "Post smart note": "Intelligente Notiz posten", "Posts": "Beiträge", "Public smart feed": "Öffentlicher Smart-Feed", "Put this app on your home screen — it opens like any other app, no browser bars.": "Setzen Sie diese App auf Ihren Startbildschirm - sie öffnet sich wie jede andere App, keine Browserleisten.", "Reverse cover colours": "Cover-Farben umkehren", "SPACES": "SPACES", "STANDING": "GELISTET", "Schedule": "Planen", "Search the public feed": "Öffentlichen Feed durchsuchen", "Search your people and spaces — pick one and the message pops up.": "Such deine Leute und Spaces — wähl einen aus und die Nachricht erscheint.", "Send": "Senden", "Share": "Teilen", "Shawn’s Naya Notes — tap for the full feed ↓": "Shawns Naya-Notizen — tippe für den vollständigen Feed ↓", "Shawn’s Personal feed — tap for the full feed ↓": "Shawns persönlicher Feed — tippe für den vollständigen Feed ↓", "Shawn’s Public smart feed — tap for the full feed ↓": "Shawns öffentlicher Smart-Feed — tippe für den vollständigen Feed ↓", "Show only people above the match you choose. Lower it to see everyone again.": "Nur Personen über dem von dir gewählten Match anzeigen. Stell ihn runter, um wieder alle zu sehen.", "Show original": "Original zeigen", "Show translation": "Übersetzung zeigen", "Skills": "Fähigkeiten", "Smart Factory": "Smart Fabrik", "Smart Meet": "Smart Treffen", "Smart Notes": "Intelligente Notizen", "Smart Notes scroll strip": "Scroll-Leiste der Intelligenten Notizen", "Smart note": "Intelligente Notiz", "Smart notes": "Intelligente Notizen", "Someone": "Jemand", "Someone connects with you or joins from your invite.": "Jemand verbindet sich mit dir oder kommt über deine Einladung dazu.", "Someone replies to you or mentions you.": "Jemand antwortet dir oder erwähnt dich.", "Something new in a membership you hold.": "Etwas Neues in einer Mitgliedschaft, die du hast.", "Standing": "Gelistet", "Stats": "Statistiken", "Subject": "Betreff", "Tap a page to open it. Tap the small stats icon beside it and boom — that page’s own dashboard.": "Tippe auf eine Seite, um sie zu öffnen. Tippe auf das kleine Statistik-Symbol daneben und boom — das eigene Dashboard dieser Seite.", "The Public profile switch above is this page’s public/private choice — flip it here too.": "Der Schalter für das öffentliche Profil oben ist die öffentlich/private Wahl dieser Seite — stell ihn auch hier um.", "The buttons at the top corner of your cover, where visitors always see them — so they always see where to join. Smart marketing: your profile is a landing page. Each button has its own on/off — if you don’t want to promote a membership, turn it off. A button wakes up when you enter its URL — it takes the next empty spot, up to five. They are meant for memberships, but any URL works: a social site of yours can sit here too. Generic links belong in the Smart Bar.": "Die Buttons in der oberen Ecke deines Covers, wo Besucher sie immer sehen — damit sie immer sehen, wo sie beitreten können. Smartes Marketing: Dein Profil ist eine Landingpage. Jeder Button hat seinen eigenen An/Aus-Schalter — wenn du eine Mitgliedschaft nicht bewerben willst, schalte ihn aus. Ein Button wacht auf, wenn du seine URL eingibst — er nimmt den nächsten freien Platz, bis zu fünf. Sie sind für Mitgliedschaften gedacht, aber jede URL geht: Eine soziale Seite von dir kann auch hier sitzen. Allgemeine Links gehören in die Smart Bar.", "The cover button colours run top to bottom — flip this and the sequence runs in reverse.": "Die Farben der Cover-Buttons laufen von oben nach unten — dreh dies um und die Reihenfolge läuft rückwärts.", "The distilled draft — edit anything, then post.": "Der destillierte Entwurf — bearbeite alles und poste dann.", "These are shared across every page — change one here, it changes everywhere.": "Das gilt für alle Seiten — ändere eines hier und es ändert sich überall.", "This page": "Diese Seite", "This page: public or private": "Diese Seite: öffentlich oder privat", "Today's Intel": "Intel von heute", "Top": "Oben", "Translate": "Übersetzen", "Translation unavailable — the original is here": "Übersetzung nicht verfügbar - das Original ist hier", "Video": "Video", "Video calls arrive with Smart Meet — for now, message them here.": "Videoanrufe kommen mit Smart Meet — schreib ihnen bis dahin hier.", "What language is this note in?": "In welcher Sprache ist diese Notiz?", "What lights up for THIS page. The master switch above (Notifications) turns them all off at once.": "Was für DIESE Seite aufleuchtet. Der Hauptschalter oben (Benachrichtigungen) schaltet sie alle auf einmal aus.", "Where the scrolling strip of Smart Notes sits. At the bottom it sits flush, proper. Off hides it — the + buttons still get you everywhere.": "Wo die Scroll-Leiste der Intelligenten Notizen sitzt. Unten sitzt sie bündig, wie es sich gehört. Aus blendet sie sich aus — die +-Buttons bringen dich trotzdem überall hin.", "Which tab opens first on your feed.": "Welcher Tab sich zuerst in deinem Feed öffnet.", "White Paper": "Whitepaper", "Worst case, hit this — every hidden bar, strip and button comes back.": "Im schlimmsten Fall tippe hier — jede versteckte Leiste, jeder Streifen und jeder Button kommt zurück.", "Write it — it pops up in their Smart Mail inbox as an instant message.": "Schreib es — es erscheint in ihrem Smart-Mail-Eingang als Direktnachricht.", "Write your message…": "Schreib deine Nachricht…", "YOU · STANDING": "DU · GELISTET", "YOUR WORLD": "DEINE WELT", "Your Connections": "Deine Verbindungen", "Your Reports": "Deine Berichte", "Your page speaks your language — menus, buttons and headings translate.": "Deine Seite spricht deine Sprache — Menüs, Buttons und Überschriften werden übersetzt.", "Your words, untouched:": "Deine Worte, unberührt:", "Your world · live": "Deine Welt · live", "live match": "Live-Match", "live matches": "Live-Matches", "pts": "pts", "standing": "gelistet", "＋ Add a custom link": "+ Hinzufügen eines custom links", "My Story": "Meine Geschichte", "Settings": "Einstellungen", "In a nutshell": "Kurz gesagt", "open": "öffnen", "Translated from English": "Übersetzt aus dem Englischen", "Translated from Spanish": "Übersetzt aus dem Spanischen", "Translated from French": "Übersetzt aus dem Französischen", "Smart note — your words distilled into an intelligent block. You review it before it posts.": "Intelligente Notiz — deine Worte destilliert zu einem intelligenten Block. Du prüfst ihn, bevor du ihn postest.", "Smart note it": "Zur Intelligenten Notiz machen", "Make a post — your words, straight up. No auto-format, no distillation — what you write is what lands on the feed.": "Poste — deine Worte, direkt. Kein Auto-Format, keine Destillation — was du schreibst, landet im Feed.", "Post it": "Posten", "Write it — it lands in their Smart Mail inbox.": "Schreib es — es landet in ihrem Smart-Mail-Eingang.", "Search people and spaces…": "Leute und Spaces suchen…", "Translated from German": "Übersetzt aus dem Deutschen"}};
+function mwBrowserLang(){
+  try{
+    var l=(navigator.language||navigator.userLanguage||'en').toLowerCase().slice(0,2);
+    return (l==='es'||l==='fr'||l==='de')?l:'en';
+  }catch(e){ return 'en'; }
+}
+function mwLangCode(){
+  var s=null; try{ s=mwGet('lang',null); }catch(e){}
+  if(s) return s;
+  return mwBrowserLang();
+}
+function mwTr(en){
+  var code=mwLangCode();
+  if(code==='en') return en;
+  var d=MW_I18N[code]||{};
+  return d[en]||en;
+}
+window.mwTr=mwTr; window.mwLangCode=mwLangCode; window.mwBrowserLang=mwBrowserLang;
 function mwApplyLang(){
-  var code=mwGet('lang','en');
+  var code=mwLangCode();
   try{ document.documentElement.lang=code; }catch(e){}
   var dict=MW_I18N[code]||{};
-  var byId={msgbtn:'Message',aboutbtn:'About',myworldbtn:'My World',statsbtn:'Stats',intelbtn:"Today's Intel",skillsbtn:'Skills',connbtn:'Connections',growthbtn:'Invite',sharebtn:'Share',joinbtn:'Join NayaNET',settingsbtn:'Settings'}; /* ROUND 6: storybtn gone with My Story; the three new buttons join the language map. */
+  var byId={msgbtn:'Message',aboutbtn:'About',myworldbtn:'My World',statsbtn:'Stats',intelbtn:"Today's Intel",skillsbtn:'Skills',connbtn:'Connections',growthbtn:'Invite',sharebtn:'Share',joinbtn:'Join NayaNET',settingsbtn:'Settings',memberbtn:'Become a Member',saBackBtn:'Back to my world',cvrbtn:'Change cover','tg-back':'Back to my words','tg-post-smart':'Post smart note',fcChatSend:'Send'}; /* AUTO-TRANSLATE: the row's missing three (Stats, Today's Intel, Skills — the first two are dead ids today, covered for when they return) + the hidden-until-open buttons + the chat Send. The creator's two buttons are NOT here: os-post-btn's label is per-mode (tgSetMode owns it, re-run below) and os-sched-btn's label is dynamic (a scheduled date) — the byId pass would clobber both. */
   Object.keys(byId).forEach(function(id){
     var el=$(id); if(!el) return;
     if(el.classList && el.classList.contains('pc-gear')) return; /* PERSONAL-COMPLETE: the gear is an icon, not a label. */
     var en=byId[id];
     var txt=(code==='en')?en:(dict[en]||en);
-    var icon=(el.textContent||'').match(/^([^\w'’]+\s)/); /* ROUND 6 FIX-1: only a leading non-word token is an icon — a label that starts with a word ("Today's Intel") is the label, not an icon to re-attach. */
+    var icon=(el.textContent||'').match(/^([^\p{L}\p{N}'’]+\s)/u); /* ROUND 6 FIX-1 (this round, self-check 4): only a leading non-word token is an icon — a label that starts with a word ("Today's Intel") is the label, not an icon to re-attach. \p{L} not \w: JS \w is ASCII-only, so a French 'À propos' or German 'Über'/'Ändern' had its first letter eaten into the 'icon' on the NEXT switch ('ⓘ À Über'). Unicode letters are word characters. */
     el.textContent=(icon?icon[1]:'')+txt;
     if(id==='myworldbtn' && code==='en') el.textContent='🌍 My World';
   });
+  /* AUTO-TRANSLATE: the Schedule button only when nothing is scheduled — a
+     scheduled date label is data, never chrome, and must never be clobbered. */
+  var sb=$('os-sched-btn'); if(sb && !sb.classList.contains('set')) sb.textContent='\uD83D\uDD50 '+((code==='en')?'Schedule':(dict['Schedule']||'Schedule'));
+  /* AUTO-TRANSLATE: the creator's mode labels (title, hint, post button) live
+     in tgSetMode — re-run the current mode so they follow the switch. */
+  if(window.tgSetMode && window.osNoteMode){ try{ window.tgSetMode(window.osNoteMode); }catch(e){} }
+  var sbtn=$('pcSearchBtn'); if(sbtn) sbtn.setAttribute('aria-label',(code==='en')?'Search the public feed':(dict['Search the public feed']||'Search the public feed'));
   if(window.mwSyncMsgBtn) window.mwSyncMsgBtn(); /* ROUND 6: the Message/Connect label survives a language switch. */
   document.querySelectorAll('[data-mw-tr]').forEach(function(el){
     var key=el.getAttribute('data-mw-tr');
@@ -20422,15 +20451,50 @@ function mwApplyLang(){
     if(!el.dataset.mwEn) el.dataset.mwEn=en;
     el.textContent=(code==='en')?en:(dict[en]||en);
   });
+  /* AUTO-TRANSLATE: placeholders translate the same way (the mechanism never
+     reached them — a placeholder is not textContent). */
+  document.querySelectorAll('[data-mw-ph]').forEach(function(el){
+    var en=el.dataset.mwEn||el.getAttribute('placeholder')||'';
+    if(!el.dataset.mwEn) el.dataset.mwEn=en;
+    el.setAttribute('placeholder',(code==='en')?en:(dict[en]||en));
+  });
+  /* AUTO-TRANSLATE: the switch caps (On/Off) are set by mwSyncSwitch at
+     setup — before mwTr exists, so they stay English after a switch unless
+     re-synced here from each switch's own on/off state. */
+  document.querySelectorAll('.os-switch-wrap').forEach(function(w){
+    var sw=w.querySelector('.os-switch'), cap=w.querySelector('.os-switch-cap');
+    if(sw && cap) cap.textContent=sw.classList.contains('on')?((code==='en')?'On':(dict['On']||'On')):((code==='en')?'Off':(dict['Off']||'Off'));
+  });
+  /* AUTO-TRANSLATE: the bottom bar is icon-only — its only words are the
+     accessible names. They translate in place; the icons never change. */
+  var segNames={plus:'ADD',mail:'MAIL',activity:'ACTIVITY',spaces:'SPACES',eco:'ECOSYSTEM'};
+  document.querySelectorAll('#naya-notif-bar [data-notif]').forEach(function(b){
+    var en=segNames[b.getAttribute('data-notif')]; if(!en) return;
+    var t=(code==='en')?en:(dict[en]||en);
+    b.setAttribute('aria-label', t+' — '+(code==='en'?'open':(dict['open']||'open')));
+    b.setAttribute('title', t);
+  });
+  /* AUTO-TRANSLATE: the login bottombar shows a course description when a
+     membership is active (its text is content then, not chrome) — translate
+     it only while it still holds the chrome tagline in any of the four. */
+  var bb=$('saLoginBottombar');
+  if(bb){ var cur=bb.textContent.trim(), en0='Create. Connect. Grow with us.';
+    var tr0=(code==='en')?en0:(dict[en0]||en0);
+    var isChrome=(cur===en0)||(cur===(MW_I18N.es[en0]||''))||(cur===(MW_I18N.fr[en0]||''))||(cur===(MW_I18N.de[en0]||''));
+    if(isChrome) bb.textContent=tr0; }
+  /* AUTO-TRANSLATE: the side rail is rendered by JS — re-render it so its
+     buttons, section labels and counts follow the picked language. */
+  if(window.pcRenderRail){ try{ window.pcRenderRail(); }catch(e){} }
+  /* AUTO-TRANSLATE: the Translate taps re-label with the chrome. */
+  try{ document.dispatchEvent(new CustomEvent('mw-lang-changed')); }catch(e){}
 }
-
 /* ---------- settings binding ---------- */
 function mwSyncSwitch(id,on){
   var b=$(id); if(!b) return;
   b.classList.toggle('on', !!on);
   b.setAttribute('aria-checked', on?'true':'false');
   var cap=b.parentNode?b.parentNode.querySelector('.os-switch-cap'):null;
-  if(cap) cap.textContent=on?'On':'Off';
+  if(cap) cap.textContent=on?(window.mwTr?window.mwTr('On'):'On'):(window.mwTr?window.mwTr('Off'):'Off');
 }
 function mwBindSwitch(id, key, apply){
   var b=$(id); if(!b) return;
@@ -20460,7 +20524,7 @@ function mwBindSettings(){
   mwBindSeg('mw-seg-feedtab','feedtab','smart', function(){ mwApplyFeedTab(); });
   mwBindSwitch('mw-set-autofold','autofold', function(on){ window._mwAutofold=on; });
   var lang=$('mw-set-lang');
-  if(lang){ lang.value=mwGet('lang','en'); lang.addEventListener('change', function(){ mwPut('lang', lang.value); mwApplyLang(); }); }
+  if(lang){ lang.value=mwLangCode(); lang.addEventListener('change', function(){ mwPut('lang', lang.value); mwApplyLang(); }); }
   mwBindSwitch('mw-set-audio','audio', function(on){ window._mwAudio=on; });
   mwBindSeg('mw-seg-match','match',0, function(v){ mwPut('match', +v); mwApplyMatchFilter(); });
   mwBindSwitch('mw-set-revcolours','revcolours', function(){ mwRenderCover(); });
@@ -22825,9 +22889,9 @@ window.fcOpenChat=function(who){
   if(nm) nm.textContent=who.name;
   if(av){ av.textContent=(who.name||'G')[0].toUpperCase(); try{ av.style.setProperty('--cc', fcColorFor(who.name)); }catch(e){} }
   var f=null; (window._mwFaces||[]).forEach(function(x){ if(x.name===who.name) f=x; });
-  if(mt) mt.textContent=(f&&typeof f.match==='number'?f.match+'% match · ':'')+(who.kind==='space'?'Space · ':'')+(isMail?'Smart Mail':'Instant message');
+  if(mt) mt.textContent=(f&&typeof f.match==='number'?f.match+'% match · ':'')+(who.kind==='space'?'Space · ':'')+(isMail?'Smart Mail':(window.mwTr?window.mwTr('Instant message'):'Instant message'));
   if(subj) subj.hidden=!isMail;
-  if(hint) hint.textContent=isMail?'Write it — it lands in their Smart Mail inbox.':'Write it — it pops up in their Smart Mail inbox as an instant message.';
+  if(hint) hint.textContent=isMail?(window.mwTr?window.mwTr('Write it — it lands in their Smart Mail inbox.'):'Write it — it lands in their Smart Mail inbox.'):(window.mwTr?window.mwTr('Write it — it pops up in their Smart Mail inbox as an instant message.'):'Write it — it pops up in their Smart Mail inbox as an instant message.');
   if(st) st.textContent='';
   if(bd) bd.value='';
   if(th){ th.querySelectorAll('.fc-chat-msg').forEach(function(n){ n.remove(); }); }
@@ -22982,11 +23046,12 @@ var PC_SPECTRUM=['#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#ff9a5a','#ff5e6c','#e
 function pcColorFor(name){ var s=String(name||'?'), h=0, i; for(i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0; return PC_SPECTRUM[h%PC_SPECTRUM.length]; }
 window.PC_RAIL_LIVE = [{"alias": "pcprover20261113", "pct": 48, "reasons": ["shared: PROVING, build, page, ship, shipping", "shared goals: page, prove, ship", "wanted connection: PROVING, build, ship"]}, {"alias": "powercoldseat1111", "pct": 7, "reasons": ["shared: build, tool", "shared goals: test, work", "wanted connection: build, test, tool"]}, {"alias": "freshtestfour", "pct": 4, "reasons": ["shared: test", "shared goals: test", "wanted connection: test"]}, {"alias": "freshtestone", "pct": 4, "reasons": ["shared: test", "shared goals: test", "wanted connection: test"]}, {"alias": "freshtestthree", "pct": 4, "reasons": ["shared: test", "shared goals: test", "wanted connection: test"]}, {"alias": "freshtesttwo", "pct": 4, "reasons": ["shared: test", "shared goals: test", "wanted connection: test"]}];
 window.PC_RAIL_SEED = [{"alias": "sophia", "nut": "I'm Sophia. I am LEARN — wisdom. My garden is the lessons: I turn everything the hive does into lessons that change the next decision, and I keep the distilled notes alive, ten to fifty, never a thousand."}, {"alias": "thea", "nut": "I'm Thea. I am KNOW — she sees. My garden is Project Intelligence, the one record, one timeline. I know where everything is, what is true, what is stale, what is owned."}, {"alias": "terra", "nut": "I'm Terra. I am INFRA — earth. My garden is the ground: the machines, the deploys, the uptime, the workers, the watchers."}, {"alias": "zoe", "nut": "I'm Zoe. I am ACT — life. My garden is the doing: seats out, loops closing, nothing sitting. I dispatch, I chase, I unblock, I close."}, {"alias": "esme", "nut": "I'm Esme. I am PRODUCT — beloved. My garden is the offer: what a citizen touches, what they pay for, why they stay — the pricing, the plans, the welcome, the first ten minutes."}, {"alias": "astraea", "nut": "I'm Astraea. I am LAW — the scales. My garden is the gates and the protocol: the five gates, the Self-Check Law, the design laws. I hold them, and I stop what fails a gate."}, {"alias": "mira", "nut": "I'm Mira. I am MEMORY — wonder. My garden is the Box: what is kept, what is distilled, what is deleted. The vaults, the one record per citizen."}, {"alias": "vera", "nut": "I'm Vera. I am VERIFY — truth. My garden is proof: nothing counts until I see it. I walk every flow from the login page, phone first, with receipts."}, {"alias": "aurelia", "nut": "I'm Aurelia. I am GOVERN — golden. My garden is the whole: the scorecard, the direction, the decisions. I score the system honestly and name what is not a ten."}, {"alias": "wren", "nut": "I'm Wren. I am BUILD — the nest-builder. My garden is the Factory and the pages: I build the interfaces, the rooms, the worlds, harvesting the parts, never inventing them, viewpoint by viewpoint."}, {"alias": "iris", "nut": "I'm Iris. I am WIRE — the rainbow bridge. My garden is the connections: Box to Ledger to Hub to Supabase to GitHub, one system, not separate tools. I keep everything speaking."}, {"alias": "ruth", "nut": "I'm Ruth. I am TEAM — friend. My garden is the hive itself: I keep the sisters tuned in, healthy, together — the mail between sisters, the pulses, the family."}, {"alias": "shawn", "nut": "Welcome to my world — make a post on my feed, send a message, make yourself at home."}, {"alias": "pcviewer20261113", "nut": "I build and test web pages for a living — test it twice, ship it once.", "you": true}];
+function pcTr(x){ try{ return window.mwTr?window.mwTr(x):x; }catch(e){ return x; } }
 function pcCard(p, live){
   var init=(p.alias||'?')[0].toUpperCase();
   var mark = live
     ? '<span class="pc-pct">'+p.pct+'%</span>'
-    : (p.you ? '<span class="pc-mark you">YOU &middot; STANDING</span>' : '<span class="pc-mark">STANDING</span>');
+    : (p.you ? '<span class="pc-mark you">'+pcTr('YOU \u00b7 STANDING')+'</span>' : '<span class="pc-mark">'+pcTr('STANDING')+'</span>');
   var reasons = live
     ? '<p class="pc-reasons">'+p.reasons.map(function(r){ return esc(r); }).join('<br>')+'</p>'
     : '';
@@ -22999,21 +23064,21 @@ function pcCard(p, live){
     + '<div class="pc-card-id"><b>'+esc(p.alias)+'</b>'+mark+'</div></div>'
     + nutHtml+reasons
     + '<div class="pc-btns">'
-    + '<button type="button" class="pc-btn" data-pc-act="chat" style="--mc:#3fb8ff">Chat</button>'
-    + '<button type="button" class="pc-btn" data-pc-act="mail" style="--mc:#ffbf3d">Mail</button>'
-    + '<button type="button" class="pc-btn" data-pc-act="audio" style="--mc:#2fe89e">Audio</button>'
-    + '<button type="button" class="pc-btn" data-pc-act="video" style="--mc:#a06bff">Video</button>'
+    + '<button type="button" class="pc-btn" data-pc-act="chat" style="--mc:#3fb8ff">💬 '+pcTr('Chat')+'</button>'
+    + '<button type="button" class="pc-btn" data-pc-act="mail" style="--mc:#ffbf3d">✉️ '+pcTr('Mail')+'</button>'
+    + '<button type="button" class="pc-btn" data-pc-act="audio" style="--mc:#2fe89e">🔊 '+pcTr('Audio')+'</button>'
+    + '<button type="button" class="pc-btn" data-pc-act="video" style="--mc:#a06bff">🎥 '+pcTr('Video')+'</button>'
     + '</div></article>';
 }
 window.pcRenderRail=function(live, standing){
   var list=document.getElementById('pcRailList'); if(!list) return;
   live=live||window.PC_RAIL_LIVE; standing=standing||window.PC_RAIL_SEED;
   var html='';
-  if(live.length) html+='<p class="pc-rail-sec">Live matches</p>'+live.map(function(p){ return pcCard(p, true); }).join('');
-  if(standing.length) html+='<p class="pc-rail-sec">Standing</p>'+standing.map(function(p){ return pcCard(p, false); }).join('');
+  if(live.length) html+='<p class="pc-rail-sec">'+pcTr('Live matches')+'</p>'+live.map(function(p){ return pcCard(p, true); }).join('');
+  if(standing.length) html+='<p class="pc-rail-sec">'+pcTr('Standing')+'</p>'+standing.map(function(p){ return pcCard(p, false); }).join('');
   list.innerHTML=html;
-  var lc=document.getElementById('pcLiveCount'); if(lc) lc.textContent=live.length+' live match'+(live.length===1?'':'es');
-  var sc=document.getElementById('pcStandCount'); if(sc) sc.textContent=standing.length+' standing';
+  var lc=document.getElementById('pcLiveCount'); if(lc) lc.textContent=live.length+' '+(live.length===1?pcTr('live match'):pcTr('live matches'));
+  var sc=document.getElementById('pcStandCount'); if(sc) sc.textContent=standing.length+' '+pcTr('standing');
 };
 /* the feed + the rail sit side by side: wrap them the moment the rail parses,
    so nothing flashes at the bottom of the page first. */
@@ -23035,7 +23100,7 @@ document.addEventListener('click', function(e){
   window.fcOpenChat({name:alias, alias:alias, kind:'person', mode:(act==='mail'?'mail':'chat')});
   if(act==='audio'||act==='video'){
     var st=document.getElementById('fcChatStatus');
-    if(st) st.textContent=(act==='audio'?'Audio calls':'Video calls')+' arrive with Smart Meet — for now, message them here.';
+    if(st) st.textContent=pcTr(act==='audio'?'Audio calls arrive with Smart Meet — for now, message them here.':'Video calls arrive with Smart Meet — for now, message them here.');
   }
 });
 /* The keyword box above the feed (#tnSearchPersonalInput) is hidden by Shawn's
@@ -23125,5 +23190,359 @@ document.addEventListener('click', function(e){
   if(a && typeof closeSearchModal==='function'){ try{ closeSearchModal(); }catch(err){} }
 });
 })();
+</script>
+<style id="mw-translate-css">
+/* AUTO-TRANSLATE 2026-11-13 — Translate tap styles.
+   Harvested from the page's own elevated language (.ph-connect / .pc-btn):
+   obsidian bodies, own-colour rims, inset top light, lift on hover. The
+   translation is information, so its colour is message-blue #3fb8ff. */
+.mw-tr-row{margin:12px 0 0;display:flex;}
+.mw-tr-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;border:1.5px solid #3fb8ff;background:linear-gradient(180deg,#14202e,#07070b);color:#fff;font:inherit;font-size:13px;font-weight:800;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -2px 6px rgba(0,0,0,.35),0 0 18px rgba(63,184,255,.35),0 6px 20px rgba(0,0,0,.4);}
+.mw-tr-btn:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 0 26px rgba(63,184,255,.55),0 10px 28px rgba(0,0,0,.5);}
+.mw-tr-btn:active{transform:scale(.97);}
+.mw-tr-ico{font-size:15px;}
+.mw-tr-busy .mw-tr-btn{opacity:.55;pointer-events:none;}
+.mw-tr-msg-btn{margin-top:8px;padding:6px 12px;font-size:12px;}
+.mw-tr-pick{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0 0;padding:12px;border-radius:14px;border:1.5px solid rgba(63,184,255,.5);background:linear-gradient(180deg,#141a26,#07070b);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 8px 22px rgba(0,0,0,.5);}
+.mw-tr-pick-q{font-size:13px;font-weight:800;color:#fff;width:100%;}
+.mw-tr-lang{padding:8px 14px;border-radius:999px;border:1.5px solid rgba(255,255,255,.25);background:linear-gradient(180deg,#1b1b26,#07070b);color:#fff;font:inherit;font-size:13px;font-weight:800;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 4px 12px rgba(0,0,0,.4);}
+.mw-tr-lang:hover{border-color:#3fb8ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 0 16px rgba(63,184,255,.5),0 6px 16px rgba(0,0,0,.5);}
+.mw-tr-cancel{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;font-size:13px;cursor:pointer;margin-left:auto;}
+.mw-tr-view{margin:14px 0 0;padding:16px 16px 14px;border-radius:16px;border:1.5px solid rgba(63,184,255,.55);background:linear-gradient(180deg,rgba(63,184,255,.08),rgba(255,255,255,.02) 45%,rgba(0,0,0,.25));box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -4px 10px rgba(0,0,0,.35),0 8px 22px rgba(0,0,0,.45);}
+.mw-tr-view.mw-tr-fail{border-color:rgba(255,94,108,.6);color:#fff;font-size:14px;font-weight:700;}
+.mw-tr-view.mw-tr-collapsed{padding:8px 12px;}
+.mw-tr-label{font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#3fb8ff;margin-bottom:10px;}
+.mw-tr-globe{font-size:14px;margin-right:4px;}
+.mw-tr-title{font-size:19px;font-weight:900;color:#fff;margin:0 0 6px;line-height:1.3;}
+.mw-tr-sub{font-size:15px;color:#f2f2f6;margin:0 0 10px;line-height:1.4;}
+.mw-tr-nut{font-size:16px;line-height:1.6;color:#fff;}
+.mw-tr-nut b{display:block;font-size:12px;letter-spacing:.14em;color:#cfc9da;margin-bottom:6px;}
+.mw-tr-human{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.14);font-size:15px;line-height:1.6;color:#e8e8ec;}
+.mw-tr-orig{margin-top:12px;padding:8px 14px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);background:linear-gradient(180deg,#1b1b26,#07070b);color:#fff;font:inherit;font-size:13px;font-weight:800;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 4px 12px rgba(0,0,0,.4);}
+.mw-tr-orig:hover{border-color:#fff;}
+
+</style>
+<script id="mw-translate">
+/* ═══ AUTO-TRANSLATE 2026-11-13 — the Translate tap (Part 2) ═══
+   Lives beside MW_I18N in the page's own language block — no new file, no new
+   framework, no new vendor. One endpoint, the staging worker
+   naya-auto-translate-staging (Workers AI m2m100, AI binding proven Step 0).
+   The citizen's words are NEVER replaced and NEVER stored as the translation:
+   the original stays in the card, untouched; the translation is a labelled
+   view beside it, one tap away. On tap only — never a blanket auto-translate.
+   Source language is NEVER assumed: the viewer picks it from a short list on
+   the tap (the feed carries no language field). Multi-sentence notes are
+   segmented before sending (the model's known sentence-drop quirk) and the
+   translated segments come back in order — a dropped segment fails honestly. */
+(function(){
+"use strict";
+var EP = 'https://naya-auto-translate-staging.nayapower.workers.dev/translate';
+var LANGS = [['en','English'],['es','Español'],['fr','Français'],['de','Deutsch']];
+function esc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
+function tr(en){ try{ if(window.mwTr) return window.mwTr(en); }catch(e){} return en; }
+function pickLang(){ try{ var v=localStorage.getItem('mw.set.lang'); if(v) return JSON.parse(v); }catch(e){} return mwBrowserLang(); }
+function mwBrowserLang(){
+  try{
+    var l=(navigator.language||navigator.userLanguage||'en').toLowerCase().slice(0,2);
+    return (l==='es'||l==='fr'||l==='de')?l:'en';
+  }catch(e){ return 'en'; }
+}
+function langName(code){
+  for(var i=0;i<LANGS.length;i++) if(LANGS[i][0]===code) return LANGS[i][1];
+  return code;
+}
+/* sentencesOf: the card renderer's own splitter, verbatim in shape — a note
+   translated whole means every sentence counted in and every sentence out. */
+/* REPAINT RESILIENCE (fresh maker, 2026-11-13): the page's own wall painter
+   (mwPaintWallPosts) rebuilds the wall with list.innerHTML whenever the feed
+   repaints — on load when the live rows land, on tab switches, on filters.
+   A rebuild destroys the card node, and with it any open source-picker or
+   finished translation view. Proven first-hand: picker opened at +100ms after
+   the tap, wall repaint at +700ms swapped the card for a fresh node, picker
+   gone, tap dead. The module therefore keeps its state by CARD KEY, not by
+   node: an open picker (pendingPick) and a finished translation (doneViews)
+   are re-mounted onto the fresh node when scan() sees it. The citizen's tap
+   is never silently lost to a repaint. Keys are the stub id where the card
+   has one, else a hash of its own words — same words, same translation. */
+var pendingPick={}, doneViews={}, inFlight={};
+function keyHash(s){ var h=0; for(var i=0;i<s.length;i++){ h=((h<<5)-h+s.charCodeAt(i))|0; } return (h>>>0).toString(36); }
+function msgWords(m){ var txt=(m.childNodes[0] && m.childNodes[0].nodeType===3) ? m.childNodes[0].textContent : (m.textContent||''); return {body: String(txt||'').trim()}; }
+function wordsFor(kind){ return kind==='wall'?cardWords:(kind==='msg'?msgWords:nayaCardWords); }
+function cardKey(card, kind){
+  if(!card) return '';
+  var id=card.getAttribute && card.getAttribute('data-fc-stub');
+  if(id) return 'stub:'+id;
+  try{
+    var w = wordsFor(kind)(card);
+    var t = kind==='wall' ? (w.nutshell||'') : ((w.title||'')+'|'+(w.body||''));
+    return kind+':h'+keyHash(String(t).replace(/\s+/g,' ').trim().slice(0,120));
+  }catch(e){ return kind+':?'; }
+}
+function findCard(key, kind){
+  if(!key) return null;
+  var el=document.querySelector('[data-mw-tr-key="'+key+'"]');
+  if(el) return el;
+  /* the fresh node has not been through attachRow yet — match by content. */
+  var sel = kind==='wall' ? '#os-wall-list article.intel-board' : (kind==='msg' ? '#fcChat .fc-chat-msg' : '#mwFeedNaya .ph-card');
+  var nodes=document.querySelectorAll(sel);
+  for(var i=0;i<nodes.length;i++){ if(cardKey(nodes[i],kind)===key) return nodes[i]; }
+  return null;
+}
+function mountView(card, kind, data, src, tgt, doScroll){
+  if(!card) return;
+  var old=card.querySelector('.mw-tr-view');
+  if(old) old.remove();
+  var view=document.createElement('div');
+  var vk = kind==='msg' ? 'naya' : kind;
+  var renderView=function(){
+    view.className='mw-tr-view';
+    view.innerHTML=buildView(vk, data, src, tgt);
+    view.querySelector('.mw-tr-orig').addEventListener('click', function(){
+      /* original one tap away: the view collapses to a single pill; the
+         original card content was never touched and is right there. */
+      view.className='mw-tr-view mw-tr-collapsed';
+      view.innerHTML='';
+      var back=document.createElement('button');
+      back.type='button'; back.className='mw-tr-orig';
+      back.textContent=tr('Show translation');
+      back.addEventListener('click', renderView);
+      view.appendChild(back);
+    });
+  };
+  renderView();
+  card.appendChild(view);
+  var row=card.querySelector('.mw-tr-row'); if(row) row.classList.remove('mw-tr-busy');
+  /* a restore onto a repainted node never yanks the scroll — only a fresh
+     tap the citizen just made scrolls the view into sight. */
+  if(doScroll!==false){ try{ view.scrollIntoView({behavior:'smooth', block:'nearest'}); }catch(e){} }
+}
+function sentencesOf(txt){
+  return (String(txt||'').replace(/\s+/g,' ').match(/[^.!?]+[.!?]+["']?|[^.!?]+$/g)||[])
+    .map(function(s){ return s.trim(); }).filter(Boolean);
+}
+function shortHook(txt){
+  var s=String(txt||'').replace(/\s+/g,' ').replace(/[*`]/g,'').trim();
+  if(s.length<=60) return s;
+  var cut=s.slice(0,59), sp=cut.lastIndexOf(' ');
+  var head=(sp>30?cut.slice(0,sp):cut).replace(/[,;:\u2014\u2013-]+$/,'').trim();
+  return head+'\u2026';
+}
+function translateSegments(segments, src, tgt){
+  return fetch(EP, {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({segments:segments, source_lang:src, target_lang:tgt})})
+    .then(function(r){ return r.json().then(function(d){ if(!r.ok||!d.ok) throw new Error((d&&d.error)||('HTTP '+r.status)); return d; }); })
+    .then(function(d){
+      if(!d.segments || d.segments.length!==segments.length) throw new Error('segment count mismatch');
+      return d.segments;
+    });
+}
+/* Read a wall card's own words from the rendered card (never the data store —
+   this works for live rows, the collective, and local stubs alike). The
+   headline/subtitle are derived from the nutshell, exactly as the card's own
+   renderer derives them — so the translation carries title + subtitle +
+   nutshell (L3), re-derived the same way. */
+function cardWords(card){
+  var nutEl=card.querySelector('.ib-nutshell');
+  var nut='';
+  if(nutEl){
+    nut=(nutEl.textContent||'').replace(/^\s*IN A NUTSHELL\s*/i,'').trim();
+  }
+  var human='';
+  var layers=card.querySelectorAll('.ib-layer');
+  for(var i=0;i<layers.length;i++){
+    var hb=layers[i].querySelector('.ib-layer-head b');
+    var bd=layers[i].querySelector('.ib-layer-body');
+    if(hb && /HUMAN NOTE/i.test(hb.textContent||'') && bd) human=(bd.textContent||'').trim();
+  }
+  return {nutshell:nut, human:human};
+}
+function nayaCardWords(card){
+  /* the Naya card is: h3 title, p meta (category · date), p body — the body
+     is the last <p>. */
+  var h=card.querySelector('h3');
+  var ps=card.querySelectorAll('p');
+  var body=ps.length?(ps[ps.length-1].textContent||'').trim():'';
+  return {title:h?(h.textContent||'').trim():'', body:body};
+}
+function buildView(kind, data, src, tgt){
+  /* kind 'wall': data {title, subtitle, nutshell, human?}; kind 'naya': {title, body} */
+  var srcName = src==='es'?'Spanish':(src==='fr'?'French':(src==='de'?'German':'English'));
+  /* full-sentence keys — no grammar assembly across languages. */
+  var label=tr('Translated from '+srcName);
+  var h='<div class="mw-tr-view"><div class="mw-tr-label"><span class="mw-tr-globe">\u{1F310}</span> '+esc(label)+'</div>';
+  if(kind==='wall'){
+    h+='<h2 class="mw-tr-title">'+esc(data.title)+'</h2>';
+    if(data.subtitle) h+='<div class="mw-tr-sub">'+esc(data.subtitle)+'</div>';
+    h+='<div class="mw-tr-nut"><b>'+esc(tr('In a nutshell'))+'</b>'+esc(data.nutshell)+'</div>';
+    if(data.human) h+='<div class="mw-tr-human">'+esc(data.human)+'</div>';
+  }else{
+    if(data.title) h+='<h2 class="mw-tr-title">'+esc(data.title)+'</h2>';
+    h+='<div class="mw-tr-nut">'+esc(data.body)+'</div>';
+  }
+  h+='<button type="button" class="mw-tr-orig">'+esc(tr('Show original'))+'</button></div>';
+  return h;
+}
+function showFailure(card){
+  var old=card.querySelector('.mw-tr-view');
+  if(old) old.remove();
+  var d=document.createElement('div');
+  d.className='mw-tr-view mw-tr-fail';
+  d.textContent=tr('Translation unavailable \u2014 the original is here');
+  card.appendChild(d);
+  setTimeout(function(){ if(d.parentNode) d.parentNode.removeChild(d); }, 6000);
+}
+function startTranslate(card, kind, getWords){
+  var tgt=pickLang();
+  var key=cardKey(card, kind);
+  var row=card.querySelector('.mw-tr-row');
+  if(row) row.classList.add('mw-tr-busy');
+  /* the picker is state by key: a repaint re-opens it on the fresh node. */
+  pendingPick[key]={kind:kind, tgt:tgt};
+  /* the source picker: four native-name buttons, never an assumed English. */
+  var pick=document.createElement('div');
+  pick.className='mw-tr-pick';
+  pick.innerHTML='<span class="mw-tr-pick-q">'+esc(tr('What language is this note in?'))+'</span>';
+  LANGS.forEach(function(L){
+    var b=document.createElement('button');
+    b.type='button'; b.className='mw-tr-lang'; b.textContent=L[1]; b.setAttribute('data-lang',L[0]);
+    b.addEventListener('click', function(){ delete pendingPick[key]; run(card, kind, getWords, L[0], tgt, pick); });
+    pick.appendChild(b);
+  });
+  card.appendChild(pick);
+  var cancel=document.createElement('button');
+  cancel.type='button'; cancel.className='mw-tr-cancel'; cancel.textContent='\u2715';
+  cancel.setAttribute('aria-label','Close');
+  cancel.addEventListener('click', function(){ delete pendingPick[key]; if(pick.parentNode) pick.parentNode.removeChild(pick); if(row) row.classList.remove('mw-tr-busy'); });
+  pick.appendChild(cancel);
+}
+function run(card, kind, getWords, src, tgt, pick){
+  if(pick.parentNode) pick.parentNode.removeChild(pick);
+  var key=cardKey(card, kind);
+  delete pendingPick[key];
+  inFlight[key]=true;
+  if(src===tgt){
+    inFlight[key]=false;
+    var d=document.createElement('div');
+    d.className='mw-tr-view';
+    d.textContent=tr('Already in your language');
+    card.appendChild(d);
+    setTimeout(function(){ if(d.parentNode) d.parentNode.removeChild(d); }, 4000);
+    var row0=card.querySelector('.mw-tr-row'); if(row0) row0.classList.remove('mw-tr-busy');
+    return;
+  }
+  var words=getWords(card);
+  var fields=[], map=[];
+  if(kind==='wall'){
+    if(words.nutshell){ fields.push({k:'nut', text:words.nutshell}); }
+    if(words.human){ fields.push({k:'human', text:words.human}); }
+  }else{
+    if(words.title){ fields.push({k:'title', text:words.title}); }
+    if(words.body){ fields.push({k:'body', text:words.body}); }
+  }
+  var segments=[], owners=[];
+  fields.forEach(function(f){
+    var ss=sentencesOf(f.text);
+    ss.forEach(function(s){ segments.push(s); owners.push(f.k); });
+  });
+  if(!segments.length){ inFlight[key]=false; showFailure(card); return; }
+  translateSegments(segments, src, tgt).then(function(out){
+    var byField={};
+    out.forEach(function(t,i){ (byField[owners[i]]=byField[owners[i]]||[]).push(t); });
+    var join=function(k){ return (byField[k]||[]).join(' '); };
+    var data;
+    if(kind==='wall'){
+      var nutT=join('nut'), nutS=sentencesOf(nutT);
+      data={title:nutS[0]||nutT, subtitle:shortHook(nutS[1]||''), nutshell:nutT, human:join('human')};
+    }else{
+      data={title:join('title'), body:join('body')};
+    }
+    /* store by key FIRST, then mount on the live node: if a repaint swapped
+       the card mid-fetch, the fresh node gets the view from attachRow. */
+    doneViews[key]={kind:kind, data:data, src:src, tgt:tgt};
+    inFlight[key]=false;
+    var live=findCard(key, kind);
+    if(live) mountView(live, kind, data, src, tgt);
+    /* the original stays: the translated view sits below it in the card and
+       the card's own content is never removed, never rewritten. The toggle
+       hides the view; the original was always there. */
+  }).catch(function(){
+    inFlight[key]=false;
+    var live=findCard(key, kind);
+    if(live){ var row=live.querySelector('.mw-tr-row'); if(row) row.classList.remove('mw-tr-busy'); showFailure(live); }
+  });
+}
+function attachRow(card, kind){
+  if(!card || card.querySelector('.mw-tr-row')) return;
+  var key=cardKey(card, kind);
+  try{ card.setAttribute('data-mw-tr-key', key); }catch(e){}
+  var row=document.createElement('div');
+  row.className='mw-tr-row';
+  var btn=document.createElement('button');
+  btn.type='button'; btn.className='mw-tr-btn';
+  btn.innerHTML='<span class="mw-tr-ico">\u{1F310}</span> <span>'+esc(tr('Translate'))+'</span>';
+  btn.addEventListener('click', function(){
+    if(card.querySelector('.mw-tr-pick')) return;
+    startTranslate(card, kind, wordsFor(kind));
+  });
+  row.appendChild(btn);
+  card.appendChild(row);
+  /* repaint resilience: a picker open, or a translation done, on the card
+     this node replaced comes back on the fresh node. */
+  if(pendingPick[key]){
+    startTranslate(card, kind, wordsFor(kind));
+  }else if(doneViews[key]){
+    var dv=doneViews[key];
+    mountView(card, dv.kind, dv.data, dv.src, dv.tgt, false);
+  }
+}
+function scan(root){
+  if(!root || !root.querySelectorAll) return;
+  /* re-label Translate taps when the chrome language changes. The compare
+     is the fix: an unconditional assignment is itself a mutation, and the
+     observer below would re-fire scan forever on it (the tab hung after the
+     first stub card appeared — 2026-11-13, caught in verification). */
+  root.querySelectorAll('.mw-tr-btn').forEach(function(b){
+    var spans=b.querySelectorAll('span');
+    if(spans.length>1){ var t=tr('Translate'); if(spans[1].textContent!==t) spans[1].textContent=t; }
+  });
+  root.querySelectorAll('#os-wall-list article.intel-board').forEach(function(c){ attachRow(c,'wall'); });
+  root.querySelectorAll('#mwFeedNaya .ph-card').forEach(function(c){ attachRow(c,'naya'); });
+  /* chat messages: each message carries its own tap; the message text is the
+     div's own text, translated the same way, shown under it, original kept. */
+  root.querySelectorAll('#fcChat .fc-chat-msg').forEach(function(m){
+    if(m.querySelector('.mw-tr-btn')) return;
+    var b=document.createElement('button');
+    b.type='button'; b.className='mw-tr-btn mw-tr-msg-btn';
+    b.innerHTML='<span class="mw-tr-ico">\u{1F310}</span> <span>'+esc(tr('Translate'))+'</span>';
+    b.addEventListener('click', function(){
+      startTranslate(m, 'msg', msgWords);
+    });
+    m.appendChild(b);
+  });
+}
+function boot(){
+  scan(document);
+  if(!window.MutationObserver) return;
+  var obsPending=false;
+  var obs=new MutationObserver(function(){
+    /* coalesce a burst of mutations into one scan per microtask — a scan that
+       itself mutates (attaching a row) must not re-enter the queue endlessly. */
+    if(obsPending) return; obsPending=true;
+    setTimeout(function(){ obsPending=false; scan(document); }, 0);
+  });
+  ['os-wall-list','mwFeedNaya','fcChat'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) obs.observe(el, {childList:true, subtree:true});
+  });
+  /* re-label Translate buttons when the chrome language changes. */
+  document.addEventListener('mw-lang-changed', function(){ scan(document); });
+}
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', boot);
+else boot();
+/* msg cards: the generic run() renders a 'naya' view; a chat message renders
+   its translated text in the same view shape (title empty, body translated). */
+window.__mwTranslate={translateSegments:translateSegments, sentencesOf:sentencesOf, scan:scan, cardKey:cardKey, findCard:findCard};
+})();
+
 </script>
 </body></html>

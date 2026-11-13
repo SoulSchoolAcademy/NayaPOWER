@@ -1,0 +1,58 @@
+{
+ "page_errors": [],
+ "console_error_count": 54,
+ "console_non_supabase": [],
+ "overflow0": {
+  "sw": 390,
+  "iw": 390
+ },
+ "tr_btns_fresh_load": 0,
+ "wall_cards_fresh": 0,
+ "stub_es": true,
+ "tr_btns_after_stub": 1,
+ "es_attempts": 1,
+ "es_picker": {
+  "langs": [
+   "English",
+   "Español",
+   "Français",
+   "Deutsch"
+  ],
+  "q": "What language is this note in?"
+ },
+ "es_to_en_view": "🌐 Translated from SpanishThe sun rises over the city and everything is filled with light.We walked through the market together, tasting the bread…In a nutshellThe sun rises over the city and everything is filled with light. We walked through the market together, tasting the bread and talking about the future. Life is better when it is shared.Show original",
+ "es_to_en_label": "🌐 Translated from Spanish",
+ "after_show_original": {
+  "collapsed": true,
+  "backBtn": "Show translation",
+  "origNut": "IN A NUTSHELLEl sol sale sobre la ciudad y todo se llena de "
+ },
+ "after_show_translation": {
+  "hasView": true,
+  "label": "🌐 Translated from Spanish"
+ },
+ "fr_attempts": 1,
+ "fr_to_en_view": "🌐 Translated from FrenchThe morning is quiet and the city is slowly waking up.We drank coffee and watched the river pass.In a nutshellThe morning is quiet and the city is slowly waking up. We drank coffee and watched the river pass.Show original",
+ "fr_to_en_label": "🌐 Translated from French",
+ "de_attempts": 1,
+ "de_to_en_view": "🌐 Translated from GermanThe evening is quiet and the lights of the city are reflected in the river.We go home slowly and think about tomorrow.In a nutshellThe evening is quiet and the lights of the city are reflected in the river. We go home slowly and think about tomorrow.Show original",
+ "de_to_en_label": "🌐 Translated from German",
+ "en_to_es_attempts": 1,
+ "en_to_es_view": "🌐 Traducido del inglésEl jardín crece tranquilo en invierno.Planteamos semillas en primavera y las observamos subir…En pocas palabrasEl jardín crece tranquilo en invierno. Planteamos semillas en primavera y las observamos subir hacia el sol.Mostrar original",
+ "en_to_es_label": "🌐 Traducido del inglés",
+ "en_to_fr_attempts": 1,
+ "en_to_fr_view": "🌐 Traduit de l’anglaisLe jardin pousse tranquillement en hiver.Nous plantons des graines au printemps et les regardons…En résuméLe jardin pousse tranquillement en hiver. Nous plantons des graines au printemps et les regardons monter vers le soleil.Afficher l’original",
+ "en_to_fr_label": "🌐 Traduit de l’anglais",
+ "en_to_de_attempts": 1,
+ "en_to_de_view": "🌐 Übersetzt aus dem EnglischenDer Garten wächst im Winter ruhig.Wir pflanzen im Frühling Samen und beobachten sie, wie sie…Kurz gesagtDer Garten wächst im Winter ruhig. Wir pflanzen im Frühling Samen und beobachten sie, wie sie in die Sonne klettern.Original zeigen",
+ "en_to_de_label": "🌐 Übersetzt aus dem Englischen",
+ "naya_attach": "inserted",
+ "naya_tr_btns": 1,
+ "failure_picker": true,
+ "failure": {
+  "failText": "Translation unavailable — the original is here",
+  "hasView": false
+ },
+ "failure_seen": true,
+ "failure_page_errors": []
+}

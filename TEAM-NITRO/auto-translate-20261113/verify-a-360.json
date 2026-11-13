@@ -1,0 +1,126 @@
+{
+ "page_errors": [],
+ "console_error_count": 56,
+ "console_non_supabase": [],
+ "overflow0": {
+  "sw": 360,
+  "iw": 360
+ },
+ "overflow_scrolled": {
+  "sw": 360,
+  "iw": 360
+ },
+ "lang_en": {
+  "lang": "en",
+  "msgbtn": "✉️ Message",
+  "skillsbtn": "⭐ Skills",
+  "tabPublic": "🌍 Public smart feed",
+  "feedline": "MATCH → ORGANIZE → CONNECT",
+  "railHead": "People around you",
+  "railChat": "💬 Chat",
+  "railMail": "✉️ Mail",
+  "segTop": "Top",
+  "segAny": "Any",
+  "segFeed": "Smart Notes",
+  "picker": "en",
+  "stored": null
+ },
+ "green": {
+  "pill": "0",
+  "tabs": [
+   "✦ Personal",
+   "🌍 Public smart feed",
+   "✦ Naya Notes"
+  ],
+  "railCards": 20,
+  "plusItems": 5,
+  "segs": [
+   "plus",
+   "mail",
+   "activity",
+   "spaces",
+   "eco"
+  ],
+  "segAria": [
+   "ADD — open",
+   "MAIL — open",
+   "ACTIVITY — open",
+   "SPACES — open",
+   "ECOSYSTEM — open"
+  ],
+  "wallCards": 1,
+  "trBtns": 0
+ },
+ "lang_es": {
+  "lang": "es",
+  "msgbtn": "✉️ Mensaje",
+  "skillsbtn": "⭐ Habilidades",
+  "tabPublic": "🌍 Feed inteligente público",
+  "feedline": "MATCH → ORGANIZAR → CONECTAR",
+  "railHead": "La gente a tu alrededor",
+  "railChat": "💬 Chat",
+  "railMail": "✉️ Correo",
+  "segTop": "Arriba",
+  "segAny": "Cualquiera",
+  "segFeed": "Notas inteligentes",
+  "picker": "es",
+  "stored": "\"es\""
+ },
+ "lang_fr": {
+  "lang": "fr",
+  "msgbtn": "✉️ Message",
+  "skillsbtn": "⭐ Compétences",
+  "tabPublic": "🌍 Fil intelligent public",
+  "feedline": "MATCH → ORGANISER → CONNECTER",
+  "railHead": "Les gens autour de vous",
+  "railChat": "💬 Chat",
+  "railMail": "✉️ Courrier",
+  "segTop": "En haut",
+  "segAny": "Tous",
+  "segFeed": "Notes intelligentes",
+  "picker": "fr",
+  "stored": "\"fr\""
+ },
+ "lang_de": {
+  "lang": "de",
+  "msgbtn": "✉️ Nachricht",
+  "skillsbtn": "⭐ Fähigkeiten",
+  "tabPublic": "🌍 Öffentlicher Smart-Feed",
+  "feedline": "MATCH → ORGANISIEREN → VERBINDEN",
+  "railHead": "Menschen um dich herum",
+  "railChat": "💬 Chat",
+  "railMail": "✉️ Mail",
+  "segTop": "Oben",
+  "segAny": "Alle",
+  "segFeed": "Intelligente Notizen",
+  "picker": "de",
+  "stored": "\"de\""
+ },
+ "lang_de_after_reload": {
+  "lang": "de",
+  "msgbtn": "✉️ Nachricht",
+  "skillsbtn": "⭐ Fähigkeiten",
+  "tabPublic": "🌍 Öffentlicher Smart-Feed",
+  "feedline": "MATCH → ORGANISIEREN → VERBINDEN",
+  "railHead": "Menschen um dich herum",
+  "railChat": "💬 Chat",
+  "railMail": "✉️ Mail",
+  "segTop": "Oben",
+  "segAny": "Alle",
+  "segFeed": "Intelligente Notizen",
+  "picker": "de",
+  "stored": "\"de\""
+ },
+ "first_visit_es": {
+  "navLang": "es-ES",
+  "lang": "es",
+  "msgbtn": "✉️ Mensaje",
+  "stored": null
+ },
+ "first_visit_ja": {
+  "navLang": "ja-JP",
+  "lang": "en",
+  "msgbtn": "✉️ Message",
+  "stored": null
+ }
+}
