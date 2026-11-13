@@ -1,0 +1,61 @@
+{
+  "1440": {
+    "start": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "scrollHeight": 32905,
+      "overflowers": [],
+      "nOverflowers": 0
+    },
+    "end": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "scrollHeight": 32905,
+      "overflowers": [],
+      "nOverflowers": 0
+    }
+  },
+  "390": {
+    "start": {
+      "scrollWidth": 603,
+      "innerWidth": 390,
+      "scrollHeight": 55211,
+      "overflowers": [],
+      "nOverflowers": 0
+    },
+    "end": {
+      "scrollWidth": 603,
+      "innerWidth": 390,
+      "scrollHeight": 55211,
+      "overflowers": [],
+      "nOverflowers": 0
+    }
+  },
+  "360": {
+    "start": {
+      "scrollWidth": 603,
+      "innerWidth": 360,
+      "scrollHeight": 64472,
+      "overflowers": [],
+      "nOverflowers": 0
+    },
+    "end": {
+      "scrollWidth": 603,
+      "innerWidth": 360,
+      "scrollHeight": 64472,
+      "overflowers": [],
+      "nOverflowers": 0
+    }
+  },
+  "counts": {
+    "subline": "Every piece of feedback you gave today, in order \u2014 what's proven, what's moving, and what the no-wait law just unblocked. Living List items only: 40 of 204 done and proven \u2014 2 more render as in-motion",
+    "ev183": {
+      "sw": 572,
+      "cw": 298
+    },
+    "nEv": 171
+  },
+  "console_errors": [],
+  "page_errors": [],
+  "failed_requests": []
+}
