@@ -1,0 +1,23 @@
+# What's Your Thing — One Simple Language
+
+**Written by Naya for Shawn Vibert — Founder / Creator of NayaNET**
+
+**NN-20261113-whats-your-thing-one-simple-language.md · Naya Note · 2026-11-13 02:56Z**
+
+**Category:** System
+
+## What it is
+
+Shawn 02:56Z Nov 13 — his clarification for the walk's Q2 reword, in substance: simple language — a child and a grandma must get it. Thing = topic. Love + job, two things — sometimes your thing is what you love, sometimes it's your job. Smart hubs = digital worlds. The Q2 reword carried it (coordinator completed 03:10Z): heading "What's your thing? What do you love? What do you love to do?" — A (music): "My thing is music — the songs I love and the artists I play over and over. Because nobody should feel alone in the thing they love, and my music is how my people find me." · B (money): "My thing is making money — I make a page about Naya and send people to it, and I get 50% of the revenue, paid when we're paid. Anybody can." · C (the place): "My thing is the connection itself — the moment two like minds find each other across the world and realize they were never alone. Sometimes your thing is what you love, sometimes it's your job — either way, that moment becomes our place: a smart hub, a digital world where everybody meets on the one thing we love." **And the same "thing" language covers Business (~02:54Z)** — his dictation, in substance: imagine it's a business — maybe a business is your job, so you can share your job. Or you're a freelancer, so you share what you do, what your talent is. "What's your business?" = what do you do, what service do you offer? On that page you list your skills — enter skills as smart notes, nine or whatever, and people just go see. Your skills ARE what service you offer: what's your service, what's your skills, your offer, what do you got to offer the world, what's your ability, what's your thing. The same language can be understood by everybody — it helps people identify and connect with other people related to their thing, personal and business together, smart all together. He asked the captain directly: he thinks that's high-level thinking — what level of thinking does the captain think it is, is it the highest level, or is there a better way? He's open to listen if there's a better way. The question stands in the record as his; the working system already runs on his framing — one word, "thing/offer," one language across Personal, Business, and Space. The pay language is the same simple words (02:37Z): "paid every Wednesday" → "you're paid when we're paid" (day 10 clean case).
+
+## Why it matters
+
+One word — "thing" — that a child, a grandma, a freelancer, and a business owner all understand the same way. No jargon, no separate vocabularies for personal and business, no translation layer. Your thing is what you love, or what you do, or both — and in business, your thing is your offer: your skills, your service, your talent, what you got to offer the world, listed as smart notes for people to go see. One word carries the match: people identify with and connect to other people related to their thing, personal and business together, smart all together — that is how auto-match works in plain words.
+
+## How to use it
+
+The walk speaks one word — thing — everywhere: Q2 asks it, the Business questions ask it, the match runs on it. Personal, Business, and Space share one language. Skills are smart notes on the Business page — nine or whatever, listed for people to go see. His open question stands — if there is a better way than one word everybody understands, it must beat that bar.
+
+**Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
+
+*Paired Smart Note: SN-2746 — ~/workspace/team-nitro/smart-notes/SN-2746-whats-your-thing-one-simple-language.md*
