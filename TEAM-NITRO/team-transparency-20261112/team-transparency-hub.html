@@ -10732,7 +10732,7 @@ var ttTimer=setInterval(function(){
  ttLand();
  var el=document.getElementById("team-transparency");
  var r=el?el.getBoundingClientRect():null;
- if(ttTries>=10||window.scrollY>40||(r&&r.top<window.innerHeight&&r.bottom>0)) clearInterval(ttTimer);
+ if(ttTries>=60||window.scrollY>40||(r&&r.top<window.innerHeight&&r.bottom>0)) clearInterval(ttTimer);
 },1000);
 /* Live refresh, deliberately NOT a cross-origin fetch here: the Hub itself is a
    baked snapshot (verified first-hand — the 5MB base never fetches feed-live.json
