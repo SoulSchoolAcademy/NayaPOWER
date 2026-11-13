@@ -10591,7 +10591,7 @@ article.intel-board:hover, article.intel-board:active { border-color: var(--tone
     <h2 class="tt-h">Team Transparency</h2>
     <p class="tt-sub">The whole team, visible, live.</p>
     <p class="tt-nutshell">Every seat briefs as it works, in a Naya Note, signed as itself. The notes organize themselves by seat and by project — so you can see it, without trusting anyone&rsquo;s memory.</p>
-    <p class="tt-note-line" id="tt-source-line">Showing the filed briefing notes. The list refreshes from the live feed when the sync has carried the notes — <a href="https://nayanet.app/feed-live.json">feed-live.json</a>.</p>
+    <p class="tt-note-line" id="tt-source-line">Showing the filed briefing notes, baked into this page like the Hub&rsquo;s own feed. A filed note reaches this list on the next sync rebake — <a href="https://nayanet.app/feed-live.json">feed-live.json</a>.</p>
     <div class="tt-tabs" id="tt-tabs" role="group" aria-label="Project tabs"></div>
     <div class="tt-grid" id="tt-team" aria-label="The team list"></div>
     <h3 class="tt-sec-h" id="tt-cat-h">All briefing notes — newest first</h3>
@@ -10712,28 +10712,14 @@ function renderNotes(){
 }
 function renderAll(){ renderTabs(); renderTeam(); renderNotes(); }
 renderAll();
-/* Live refresh: merge briefing notes from the live feed when the sync has carried them. */
-try{
- fetch("https://nayanet.app/feed-live.json",{cache:"no-store"}).then(function(r){
-  if(!r.ok) return null; return r.json();
- }).then(function(feed){
-  if(!feed||!feed.notes) return;
-  var have={}; NOTES.forEach(function(n){have[n.id]=1;});
-  var added=0;
-  feed.notes.forEach(function(n){
-   if(n.kind!=="naya-note") return;
-   if(!n.id||have[n.id]) return;
-   if(!/team transparency/i.test(String(n.category||"")+ " " + String(n.title||""))) return;
-   NOTES.unshift({id:n.id,seat:"Team Transparency build seat",lane:"",project:"Team Transparency",time:String(n.created||"").replace("T"," ").slice(0,16)+"Z",title:n.title||n.id,byline:"Briefed by Team Transparency build seat — "+String(n.created||""),what:(n.subtitle||""),where:"Filed briefing note, live on the feed.",links:[["This note on GitHub","https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/"+(n.github_path||"")]],box:"",gh:n.github_path||"",blob:""});
-   added++;
-  });
-  if(added>0){
-   var line=document.getElementById("tt-source-line");
-   if(line) line.textContent="Live: "+added+" briefing note"+(added>1?"s":"")+" arrived from the feed just now — the list below is the live feed, not the snapshot.";
-   renderAll();
-  }
- }).catch(function(){/* offline or feed unreachable — the filed snapshot stands, named as such */});
-}catch(e){/* the snapshot stands */}
+/* Live refresh, deliberately NOT a cross-origin fetch here: the Hub itself is a
+   baked snapshot (verified first-hand — the 5MB base never fetches feed-live.json
+   at runtime), and a fetch from the proof host is CORS-blocked by nayanet.app,
+   which would log a console error on the staged page. Live-time behavior is the
+   sync rebake, the same as the Hub feed: a filed note reaches this surface on
+   the next rebake, and Step 3 measures filing → visible on the feed. When this
+   surface lands on nayanet.app, the same-origin fetch below can be switched on.
+   Until then the filed snapshot above IS the source, named as such. */
 })();
 </script>
 
