@@ -1,0 +1,4 @@
+77c77
+<   .ev{color:var(--muted);font-size:18.5px;margin:8px 0 0 42px;max-width:62ch;}
+---
+>   .ev{color:var(--muted);font-size:18.5px;margin:8px 0 0 42px;max-width:62ch;overflow-wrap:anywhere;}
