@@ -858,3 +858,13 @@ fails is not done. A deferral is an open item, not a pass.
 **MAIL — STILL BLOCKED, re-probed first-hand this run:** run 201's digest re-send failed (helper exit 1, both recipients); direct helper probe confirms urllib.error.HTTPError: HTTP Error 401: Unauthorized on POST /smart_mail_threads. Breakage window now 18:23Z–~21:01Z. Run 202's digest NOT attempted and held in run202-mail.py, alongside run 198's, 199's, 200's and 201's held digests. Server-side; fixing touches credentials/RLS — Shawn's hand, NOT attempted.
 
 **Still out of alignment (additions this pass):** S2 addendum 6 application pending the coordinator's handoff · Correction Compound owed — now including the Examples Presentation law (edit + eye) · essence fold owed for SN-2692–2694 + SN-2697–2716 (25 notes).
+
+## Intelligence Loop run 203 — addendum ~21:50Z (Sigma, LEARN lane)
+
+**Filed during the run:** SN-2717 THERE'S A NEW NET IN TOWN (VISION; blob 6aea9c8c) · SN-2718 THE NAME — NAYA, NOT ANAYA (VISION; blob 0df15546) · SN-2719 CLICKHOUSE — THE VERDICT (SYSTEM; blob fd8a6b5f) · SN-2720 THE VIRAL MARKETING SYSTEM — TOP 10 (EARNING; blob 9ebcbac6) · SN-2721 THE AMBASSADOR ACADEMY + THE TWO MOVES + HER VOICE ON EVERY PAGE + THE BUGATTI (EARNING; blob be0e53ed) + 5 paired Naya Notes (blobs 9a012a29 · 6ee7669a · 667d8c36 · 6d47958d · 6c0b56e2). Filed to GitHub (tip moved edd97d60 → 47c8a238; SN-2719/2720/2721 filed 21:50:53–21:50:59Z); every blob re-read first-hand from GitHub in this addendum round. Next free SN-2722.
+
+**Organize hook:** the run's own hook outcome is unknown — the run timed out at the 1800s deadline (first EPERM, retry aborted). The captain's repair re-ran it: exit 0 — 10 files new, 10 organized, 0 duplicates, 0 unparseable. The Box leg is closed.
+
+**MAIL — STILL BLOCKED:** digest NOT sent — mail write blocked 401 since 18:23Z; held digests now 198–203, pending the server-side key fix, which is Shawn's hand. NOT attempted this run.
+
+**Still out of alignment:** registry append + feed rebuild owed at the run's close — the five were filed to GitHub but NOT live on the feed (max SN on the feed SN-2716 at the 22:30–22:35Z check); the captain's 22:56Z redeploy later put SN-2717..SN-2721 live, verified by curl · PI board addendum for this run (this filing) · mail digest held (401) · 23:17Z distillation watch: the run must distill from a feed WITH SN-2717..SN-2721 live.
