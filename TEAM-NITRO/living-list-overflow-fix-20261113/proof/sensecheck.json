@@ -1,0 +1,172 @@
+{
+  "post": {
+    "1440": {
+      "docSW": 1440,
+      "iw": 1440,
+      "badRect": [],
+      "nBadRect": 0,
+      "badScroll": [],
+      "nBadScroll": 0,
+      "evOverflowing": [],
+      "nEvOverflowing": 0,
+      "ev183": {
+        "sw": 574,
+        "cw": 574,
+        "h": 1205,
+        "lines": 45
+      }
+    },
+    "390": {
+      "docSW": 390,
+      "iw": 390,
+      "badRect": [],
+      "nBadRect": 0,
+      "badScroll": [],
+      "nBadScroll": 0,
+      "evOverflowing": [],
+      "nEvOverflowing": 0,
+      "ev183": {
+        "sw": 328,
+        "cw": 328,
+        "h": 2151,
+        "lines": 80
+      }
+    },
+    "360": {
+      "docSW": 360,
+      "iw": 360,
+      "badRect": [],
+      "nBadRect": 0,
+      "badScroll": [],
+      "nBadScroll": 0,
+      "evOverflowing": [],
+      "nEvOverflowing": 0,
+      "ev183": {
+        "sw": 298,
+        "cw": 298,
+        "h": 2438,
+        "lines": 90
+      }
+    }
+  },
+  "pre": {
+    "1440": {
+      "docSW": 1440,
+      "iw": 1440,
+      "badRect": [],
+      "nBadRect": 0,
+      "badScroll": [],
+      "nBadScroll": 0,
+      "evOverflowing": [],
+      "nEvOverflowing": 0,
+      "ev183": {
+        "sw": 574,
+        "cw": 574,
+        "h": 1205,
+        "lines": 45
+      }
+    },
+    "390": {
+      "docSW": 603,
+      "iw": 390,
+      "badRect": [],
+      "nBadRect": 0,
+      "badScroll": [
+        {
+          "tag": "MAIN",
+          "cls": "",
+          "sw": 603,
+          "cw": 390,
+          "text": "\n  \n    Everything You Directed \u2014 The Living List    Every p"
+        },
+        {
+          "tag": "SECTION",
+          "cls": "board b-blue",
+          "sw": 588,
+          "cw": 360,
+          "text": "    Section 1Done + Proven    Finished, and checked first-ha"
+        },
+        {
+          "tag": "DIV",
+          "cls": "item",
+          "sw": 586,
+          "cw": 352,
+          "text": "\n      183Clarity Confirmation Act \u2014 filed as DRAFT everywhe"
+        },
+        {
+          "tag": "P",
+          "cls": "ev",
+          "sw": 572,
+          "cw": 328,
+          "text": "Ordered 2026-11-06 00:16Z; draft 94,301 bytes (577 lines, 22"
+        }
+      ],
+      "nBadScroll": 4,
+      "evOverflowing": [
+        {
+          "sw": 572,
+          "cw": 328,
+          "h": 2151
+        }
+      ],
+      "nEvOverflowing": 1,
+      "ev183": {
+        "sw": 572,
+        "cw": 328,
+        "h": 2151,
+        "lines": 80
+      }
+    },
+    "360": {
+      "docSW": 603,
+      "iw": 360,
+      "badRect": [],
+      "nBadRect": 0,
+      "badScroll": [
+        {
+          "tag": "MAIN",
+          "cls": "",
+          "sw": 603,
+          "cw": 360,
+          "text": "\n  \n    Everything You Directed \u2014 The Living List    Every p"
+        },
+        {
+          "tag": "SECTION",
+          "cls": "board b-blue",
+          "sw": 588,
+          "cw": 330,
+          "text": "    Section 1Done + Proven    Finished, and checked first-ha"
+        },
+        {
+          "tag": "DIV",
+          "cls": "item",
+          "sw": 586,
+          "cw": 322,
+          "text": "\n      183Clarity Confirmation Act \u2014 filed as DRAFT everywhe"
+        },
+        {
+          "tag": "P",
+          "cls": "ev",
+          "sw": 572,
+          "cw": 298,
+          "text": "Ordered 2026-11-06 00:16Z; draft 94,301 bytes (577 lines, 22"
+        }
+      ],
+      "nBadScroll": 4,
+      "evOverflowing": [
+        {
+          "sw": 572,
+          "cw": 298,
+          "h": 2409
+        }
+      ],
+      "nEvOverflowing": 1,
+      "ev183": {
+        "sw": 572,
+        "cw": 298,
+        "h": 2409,
+        "lines": 89
+      }
+    }
+  }
+}
