@@ -6,8 +6,8 @@ Shawn's seven-item Personal list, built on the points base and proven on the sta
 
 - **Branch:** `personal/personal-page-complete-20261113`, off main tip `8f2af988b2a4adefda9afb8ad752c7971c10ea8c`, worktree `~/workspace/personal-complete-wt`.
 - **Base:** the points round's `personal-points.html`, SHA `eb0173c99920d28f12e1ad2942b452fcfd170bcbfa920af141da6354db4c8b95` (1,486,494 B), verified by `sha256sum` in three places before editing. The base is live Personal (SHA `992ab18c…`) + points pill + wiring + hero-fix block.
-- **Built file:** `TEAM-NITRO/personal-page-complete-20261113/personal-complete.html`, 1,536,733 B, SHA `87d038470fb65ccd90b4c4a25af4cf2abea20afe7045c5aff193ae3ee73fc04c` (read fresh from the staged bytes via curl — byte-identical to the local file).
-- **Staged link:** https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/personal-page-complete-20261113&cb=b0a792186992dc06ee1d1dffafce343041b1faab
+- **Built file:** `TEAM-NITRO/personal-page-complete-20261113/personal-complete.html`, 1,544,351 B, SHA `ec5c4cce083708fa6ea301da45e8097e35174cdffc8216910c8953f70b4ba281` (local, after the Sharpening 2 pill restyle; pre-restyle SHA `87d03847…`, 1,536,733 B). The staged SHA is re-read fresh in the staged re-verification below.
+- **Staged link:** https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/personal-page-complete-20261113/personal-complete.html&ref=personal/personal-page-complete-20261113&cb=<commit-sha> (fresh `cb` per read; the exact link with the restyle commit's SHA is in § Sharpening 2 staged re-verification).
 - **Commits:** `b0a792186` (page + build + probes + screenshots, 16 files, pushed, verified by `git ls-remote` — branch is on the remote at `b0a792186992dc06ee1d1dffafce343041b1faab`) + this record/scorecard commit (below).
 - **Build:** `build-complete.py` — exact-string replacements with asserted counts, 28 hunks, saved to `diff-complete.txt`. The base file was edited, never rebuilt. The hero hunks are exactly three: the gear add, the settingsbtn removal from the row, and the composer→createRow swap. Name, pill, and tagline lines untouched (asserted in the build).
 - **Live untouched:** live Personal re-curled unchanged — https://nayanet.app/personal, 1,484,185 B, SHA `992ab18c29315e7654f45c36eb43e30aadfc2ea5642394bbd9884f21617e3f50` (exact match to the recorded value). Live Hub shell at `https://nayanet.app/` serves 620,595 B, SHA `0c8628d5769c10e6462ee31490f12e3bca6eb4f472854215ff1979a8c782ad27`; the Hub shell under an alias path served 4,990,447 B identically twice during this session. No live page, merge, deploy, or PR. No live writes of any kind except the staged Supabase test rows, now deleted (see Cleanup).
@@ -141,6 +141,31 @@ Test rows deleted AFTER the staged rail verification (the rail's live cards refe
 ## § Order note
 
 The brief orders the tabs Personal · Public smart feed · Naya Notes per Shawn's 14:11Z dictation; the 2026-11-13 04:34Z public-feed law ordered Smart Notes · Naya Notes · Public Feed. Latest words govern the build; the captain rules the order at double-check. The difference is noted here rather than silently picked.
+
+## § Sharpening 2 — pill restyle (received 15:01Z, applied after the first verification)
+
+Shawn's decision on the points presentation: JUST RESTYLE THE PILL. No tile under the picture. Confirmed received and applied.
+
+**What changed:** the points pill beside the name now wears the Dashboard's number treatment — tiled digits on top, a gauge line underneath (the hero gauge cluster order: number on top, gauge underneath). The pill's PLACE (beside the name at desktop, wrapping below the name at phone width — the F3 geometry stands) and its live WIRING (the points-round write into `#pointscount`, untouched byte-for-byte) survive; only the STYLING is restyled. No tile under the picture — the restyle is the pill only. Space and Business inherit the restyle when they are rebuilt from the new Personal bytes; this round touches Personal only.
+
+**Harvest — live Dashboard pass-10, re-curled and verified first-hand:** https://nayanet.app/dashboard, HTTP 200, 1,817,928 B, SHA `bb41114dcca4cedd42c99d2ccc9111625e0f4bb91dc94d4138c8067ad901076c` (saved as `dashboard-pass10-bb41114d.html` in this lane dir). There is no local pass-10 file (the dashboard-pass10-20261110 dir holds a pass-9 backup only), so the live bytes are the harvest source. Sites, file + line in `dashboard-pass10-bb41114d.html`:
+- Tiled-digit system: `.os-mini-num` / `.os-mini-tile` / `.cap` / `.rd` base, lines 4759–4762; digit colours `.d0`–`.d9`, lines 4783–4802 (d0 white, d1 red #ff2a2a, d2 orange #ff8c00, d3 gold #f5d76e, d4 green #00a86b, d5 blue #29b6f6, d6 indigo #3f51b5, d7 purple #8e24aa, d8 light purple #b388ff, d9 pink #ff1493 — a digit's colour is its digit's colour); group gap `.os-mini-gap`, line 4774; phone shrink (20px tiles, 19px digits), ~4803–4812.
+- Converter: `miniTileHTML` / `_osMiniNumHTML`, lines 25613–25638 (commas become gaps, space separator); `_osSpc`, lines 25141–25146 ("1 293").
+- Lap position: `dialPos(v)`, line 23193 — `v<=0 → 0`, else `((v-1) % 500) + 1`; lap = ceil(total/500). The gauge fill is `dialPos(total)/500`.
+- Gauge cluster order: number `#os-se-val` line 4975 on top, gauge `#tn-tacho-mount` line 4999 underneath; lap line `.tn-tacho-lapline` line 2902.
+- The bar for the top-tile digits (PASS-9, lines 4832–4846): 68px digits in 72px tiles at orb size.
+
+**Scaling decision, stated plainly:** the Dashboard's 68px/72px orb tiles cannot fit a pill beside the name, so the pill wears the same tile system at the Dashboard's small size (30px tiles, 27px digits; 20px/19px at phone width per the harvested shrink rule). Same system, same font, same colours — only the size is pill-scaled. The captain can rule otherwise at double-check.
+
+**How it is built (`build-pill-restyle.py`, 3 diff hunks in `diff-pill-restyle.txt`):** (1) a `<style id="pill-restyle-20261113">` block with the harvested tile CSS scoped under `#pointsdisplay` + the pill's column layout (number row on top, gauge line below); (2) the pill markup becomes a number row (`✦` + `#pointscount` + `pts`) over a gauge line (`#pcPillGaugeFill` inside `.pc-pill-gauge`); (3) a tiler script (pc-prefixed copies of the harvested converter + `dialPos`) that watches `#pointscount` with a MutationObserver and re-presents whatever the wiring writes as tiles, driving the gauge fill from the same total. The wiring lines are asserted untouched in the build. The loading glyph `…` stays plain (no tiles, fill 0%).
+
+**Re-verification (local, Playwright Firefox, `verify-pill.py` → `verify-pill.json`, screenshots `pill-{390,1440,360}-top.png` + `pill-{1440,390}-wide.png`):** the wiring write was simulated by setting `#pointscount` textContent to `(1293).toLocaleString()` — the same write the points wiring performs — so the observer + tiler path is exercised.
+- "1,293" → 4 digit tiles (`d1`,`d2`,`d9`,`d3`) + 1 gap, at all widths; d1 border rgb(255,42,42), d9 border rgb(255,20,147) — the digit colours live. Gauge fill **58.6%** = dialPos(1293)/500 = 293/500, at all widths. Fallback "0" → 1 tile (`d0`), fill 0%.
+- Pill place: beside the name at 1440 (x357.6, 14px gap from the name, same as before); below the name at 390 (y404); at 360 the narrow loading pill sits beside the name (189.6,480) and the wide tiled pill wraps below (16,534) — the flex-wrap doing its job. Pill height 46 → 57 (loading) / 60–68 (tiled).
+- Overlap: pill vs name, vs tagline, vs Change cover, vs gear — all False at all widths. Overflow 0, pageerrors 0.
+- Eye-check (`pill-1440-wide.png`): ✦ + 1 (red) 2 (orange) 9 (pink) 3 (gold) + pts on top, the gold gauge line underneath stopping just past halfway, pill clean beside the name, tagline clear below. No tile under the picture.
+- No regressions: buttons equal, segs `['plus','mail','activity','spaces']`, tabs Personal / Public / Naya Notes, rail 20 cards / 0 imgs, gear `⚙️`, seg shadow the A-fix.
+- **Built file after the restyle:** 1,544,351 B, SHA `ec5c4cce083708fa6ea301da45e8097e35174cdffc8216910c8953f70b4ba281` (staged SHA below supersedes `87d03847…`).
 
 ## § Files on the branch
 

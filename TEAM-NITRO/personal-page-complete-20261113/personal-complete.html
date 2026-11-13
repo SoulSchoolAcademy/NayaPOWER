@@ -3892,6 +3892,50 @@ body.mw-strip-bottom #nsbBottom{bottom:0!important}
 .mw-plan p,.mw-plan li{color:rgba(255,255,255,.85);font-size:14px;line-height:1.5}
 </style>
 
+<style id="pill-restyle-20261113">
+/* PILL RESTYLE (Sharpening 2, 2026-11-13): Dashboard number treatment.
+   Harvest: live Dashboard pass-10 (1,817,928 B, sha bb41114d), file
+   dashboard-pass10-bb41114d.html in this lane dir. Tiles Dash 4759-4762;
+   digit colours .d0-.d9 Dash 4783-4802; gap Dash 4774; phone shrink Dash
+   ~4803-4812; converter miniTileHTML/_osMiniNumHTML Dash 25613-25638;
+   _osSpc Dash 25141; lap dialPos Dash 23193. Pill-scaled to the small size. */
+#pointsdisplay.pc-restyled{flex-direction:column;align-items:stretch;gap:5px;padding:8px 16px 10px;}
+#pointsdisplay .pc-pill-numrow{display:flex;align-items:center;gap:6px;justify-content:center;}
+#pointsdisplay .pc-pill-gauge{display:block;height:4px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden;}
+#pointsdisplay .pc-pill-gaugefill{display:block;height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#ffbf3d,#f5d76e);box-shadow:0 0 8px rgba(255,191,61,.7);transition:width .6s ease;}
+#pointsdisplay .os-mini-num{display:inline-flex;align-items:flex-start;gap:3px;white-space:nowrap;vertical-align:middle;}
+#pointsdisplay .os-mini-tile{display:inline-block;width:30px;border-radius:6px;overflow:hidden;vertical-align:top;background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 10px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile .cap{display:block;height:5px;background:linear-gradient(180deg,#e8e8ec,#c9c9cf 55%,#8a8a90);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 2px rgba(0,0,0,.35);}
+#pointsdisplay .os-mini-tile .rd{display:block;height:30px;line-height:30px;text-align:center;font-size:27px;font-weight:900;color:#fff;text-shadow:0 0 8px rgba(134,126,152,.65),0 0 16px rgba(255,255,255,.25);}
+#pointsdisplay .os-mini-gap{flex:none;width:10px;}
+#pointsdisplay .os-mini-tile.d0{border-color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,255,255,.45),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d0 .cap{background:linear-gradient(180deg,#fff,#d9d9de 55%,#9a9aa0);}
+#pointsdisplay .os-mini-tile.d1{border-color:#ff2a2a;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,42,42,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d1 .cap{background:linear-gradient(180deg,#ff8a8a,#e60000 55%,#8f0000);}
+#pointsdisplay .os-mini-tile.d2{border-color:#ff8c00;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,140,0,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d2 .cap{background:linear-gradient(180deg,#ffc27a,#ff8c00 55%,#994d00);}
+#pointsdisplay .os-mini-tile.d3{border-color:#f5d76e;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(245,215,110,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d3 .cap{background:linear-gradient(180deg,#fff3a0,#f5d76e 55%,#c9930a);}
+#pointsdisplay .os-mini-tile.d4{border-color:#00a86b;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(0,168,107,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d4 .cap{background:linear-gradient(180deg,#6ee7a0,#00a86b 55%,#005c3a);}
+#pointsdisplay .os-mini-tile.d5{border-color:#29b6f6;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(41,182,246,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d5 .cap{background:linear-gradient(180deg,#a5e3ff,#29b6f6 55%,#0e6b9e);}
+#pointsdisplay .os-mini-tile.d6{border-color:#3f51b5;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(63,81,181,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d6 .cap{background:linear-gradient(180deg,#9aa5ff,#3f51b5 55%,#232a6b);}
+#pointsdisplay .os-mini-tile.d7{border-color:#8e24aa;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(142,36,170,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d7 .cap{background:linear-gradient(180deg,#d8a0ff,#8e24aa 55%,#4d0f5e);}
+#pointsdisplay .os-mini-tile.d8{border-color:#b388ff;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(179,136,255,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d8 .cap{background:linear-gradient(180deg,#e9d5ff,#b388ff 55%,#6d4bb0);}
+#pointsdisplay .os-mini-tile.d9{border-color:#ff1493;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,20,147,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile.d9 .cap{background:linear-gradient(180deg,#ff9ed2,#ff1493 55%,#8f0057);}
+@media (max-width:768px){
+  #pointsdisplay .os-mini-tile{width:20px;border-radius:4px;}
+  #pointsdisplay .os-mini-tile .cap{height:4px;}
+  #pointsdisplay .os-mini-tile .rd{height:22px;line-height:22px;font-size:19px;}
+  #pointsdisplay .os-mini-num{gap:2px;}
+  #pointsdisplay .os-mini-gap{width:8px;}
+}
+</style>
 </head><body>
 <!-- SMART-BAR-SYSTEM v1.0: top mount -->
 <!-- ROUND 6 (2026-11-12, Shawn 03:43Z): the top Smart Bar is gone from this page — the cover is the top now, and the bottom bar stays. The search level stands alone below: it is the popup search's container (open-on-purpose, never a bar), and the below-cover search row drives its machinery through the bridge. -->
@@ -4819,10 +4863,9 @@ html.os-calm
   <div class="ph-info">
     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
       <div class="ph-nm" id="pname" title="Click to edit">Shawn Vibert</div>
-      <div class="ph-points" id="pointsdisplay" title="Your Naya points">
-        <span class="ph-points-star">✦</span>
-        <span id="pointscount">…</span>
-        <span class="ph-points-label">pts</span>
+      <div class="ph-points pc-restyled" id="pointsdisplay" title="Your Naya points">
+        <span class="pc-pill-numrow"><span class="ph-points-star">✦</span><span id="pointscount">…</span><span class="ph-points-label">pts</span></span>
+        <span class="pc-pill-gauge" aria-hidden="true"><span class="pc-pill-gaugefill" id="pcPillGaugeFill"></span></span>
       </div>
     </div>
     <div class="ph-tg" id="ptag" title="Click to edit">Welcome to my world — make a post on my feed, send a message, make yourself at home.</div>
@@ -22936,6 +22979,56 @@ document.addEventListener('click', function(e){
    popup-only search law (base: #tnpsBand{display:none!important} — "search is a
    centered popup, never a bar"), so there is NO dead wiring to it here. The
    feed's topic pull is the Smart Tabs ribbon below (author/category pills). */
+})();
+</script>
+<script>
+/* PILL RESTYLE tiler (Sharpening 2): harvested from live Dashboard pass-10
+   (miniTileHTML/_osMiniNumHTML Dash 25613-25638; _osSpc Dash 25141;
+   lap dialPos Dash 23193). The points wiring still writes the total into
+   #pointscount (untouched, points-round lines); this re-presents what the
+   wiring wrote as Dashboard tiles and drives the gauge line from the same
+   total: fill = dialPos(total)/500 — the Dashboard's lap position. */
+(function(){
+  function pcMiniTileHTML(ch){
+    if (ch === ' ' || ch === ',') return '<span class="os-mini-gap"></span>';
+    if (ch === '$') return '<span class="os-mini-tile dollar"><span class="cap"></span><span class="rd">$</span></span>';
+    if (ch === '.') return '<span class="os-mini-tile dot"><span class="cap"></span><span class="rd">.</span></span>';
+    if (ch === '%') return '<span class="os-mini-tile pct"><span class="cap"></span><span class="rd">%</span></span>';
+    var d = parseInt(ch, 10);
+    if (!isFinite(d)) return '';
+    return '<span class="os-mini-tile d' + d + '"><span class="cap"></span><span class="rd">' + d + '</span></span>';
+  }
+  function pcMiniNumHTML(value){
+    if (value == null) return '—';
+    var str = String(value).trim().replace(/,/g, ' ').replace(/ +/g, ' ');
+    if (str === '' || str === '—' || str === '-') return '—';
+    if (!/^[$]?[0-9][0-9 ]*(\.[0-9]+)?%?$/.test(str)) return String(value);
+    var html = '<span class="os-mini-num">';
+    for (var i = 0; i < str.length; i++) html += pcMiniTileHTML(str[i]);
+    return html + '</span>';
+  }
+  function pcDialPos(v){ v = Math.round(v || 0); if (v <= 0) return 0; return ((v - 1) % 500) + 1; }
+  function pcTilePill(){
+    var pc = document.getElementById('pointscount');
+    var fill = document.getElementById('pcPillGaugeFill');
+    if (!pc) return;
+    var raw = (pc.textContent || '').trim();
+    if (!raw || raw === '…' || raw === '—' || raw === '-') { if (fill) fill.style.width = '0%'; return; }
+    var digits = raw.replace(/[^0-9]/g, '');
+    if (!digits) return;
+    if (pc._pcLastDigits === digits) return;
+    pc._pcLastDigits = digits;
+    var total = parseInt(digits, 10);
+    pc.innerHTML = pcMiniNumHTML(raw);
+    if (fill) fill.style.width = (pcDialPos(total) / 500 * 100).toFixed(1) + '%';
+  }
+  window.pcTilePill = pcTilePill;
+  try {
+    var pc0 = document.getElementById('pointscount');
+    if (pc0) new MutationObserver(function(){ pcTilePill(); }).observe(pc0, {childList:true, characterData:true, subtree:true});
+  } catch(e){}
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', pcTilePill);
+  else pcTilePill();
 })();
 </script>
 </body></html>

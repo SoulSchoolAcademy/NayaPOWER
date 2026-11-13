@@ -1,0 +1,256 @@
+{
+ "widths": {
+  "390": {
+   "viewport": 390,
+   "overflowX": 0,
+   "pageerrors": [],
+   "pill_loading": {
+    "x": 146,
+    "y": 404,
+    "w": 114.4,
+    "h": 57
+   },
+   "pill_text_loading": "\u2026",
+   "name": {
+    "x": 146,
+    "y": 350,
+    "w": 159.6,
+    "h": 40
+   },
+   "cvrbtn": {
+    "x": 215.7,
+    "y": 6,
+    "w": 164.3,
+    "h": 48
+   },
+   "tagline": {
+    "x": 146,
+    "y": 466,
+    "w": 228,
+    "h": 62
+   },
+   "pill_1293": {
+    "x": 146,
+    "y": 404,
+    "w": 180.4,
+    "h": 60.1
+   },
+   "tiles_1293": [
+    {
+     "cls": "os-mini-tile d1",
+     "digit": "1"
+    },
+    {
+     "cls": "os-mini-tile d2",
+     "digit": "2"
+    },
+    {
+     "cls": "os-mini-tile d9",
+     "digit": "9"
+    },
+    {
+     "cls": "os-mini-tile d3",
+     "digit": "3"
+    }
+   ],
+   "gaps_1293": 1,
+   "gauge_1293": "58.6%",
+   "tile_border_d1": "rgb(255, 42, 42)",
+   "tile_border_d9": "rgb(255, 20, 147)",
+   "overlap": {
+    "pill_vs_name": false,
+    "pill_vs_tagline": false,
+    "pill_vs_cvrbtn": false,
+    "pill_vs_gear": false
+   },
+   "tiles_0": [
+    "os-mini-tile d0"
+   ],
+   "gauge_0": "0%",
+   "buttons_equal": true,
+   "segs": [
+    "plus",
+    "mail",
+    "activity",
+    "spaces"
+   ],
+   "seg_shadow": "rgba(0, 0, 0, 0.25) 0px -2px 8px 0px inset, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+   "tabs": [
+    "Personal",
+    "Public smart feed",
+    "Naya Notes"
+   ],
+   "rail_cards": 20,
+   "rail_imgs": 0,
+   "gear_text": "\u2699\ufe0f"
+  },
+  "1440": {
+   "viewport": 1440,
+   "overflowX": 0,
+   "pageerrors": [],
+   "pill_loading": {
+    "x": 357.6,
+    "y": 297.2,
+    "w": 114.4,
+    "h": 57
+   },
+   "pill_text_loading": "\u2026",
+   "name": {
+    "x": 184,
+    "y": 305.7,
+    "w": 159.6,
+    "h": 40
+   },
+   "cvrbtn": {
+    "x": 1259.7,
+    "y": 76,
+    "w": 164.3,
+    "h": 48
+   },
+   "tagline": {
+    "x": 184,
+    "y": 359.2,
+    "w": 597.1,
+    "h": 22
+   },
+   "pill_1293": {
+    "x": 357.6,
+    "y": 286.2,
+    "w": 226.4,
+    "h": 68
+   },
+   "tiles_1293": [
+    {
+     "cls": "os-mini-tile d1",
+     "digit": "1"
+    },
+    {
+     "cls": "os-mini-tile d2",
+     "digit": "2"
+    },
+    {
+     "cls": "os-mini-tile d9",
+     "digit": "9"
+    },
+    {
+     "cls": "os-mini-tile d3",
+     "digit": "3"
+    }
+   ],
+   "gaps_1293": 1,
+   "gauge_1293": "58.6%",
+   "tile_border_d1": "rgb(255, 42, 42)",
+   "tile_border_d9": "rgb(255, 20, 147)",
+   "overlap": {
+    "pill_vs_name": false,
+    "pill_vs_tagline": false,
+    "pill_vs_cvrbtn": false,
+    "pill_vs_gear": false
+   },
+   "tiles_0": [
+    "os-mini-tile d0"
+   ],
+   "gauge_0": "0%",
+   "buttons_equal": true,
+   "segs": [
+    "plus",
+    "mail",
+    "activity",
+    "spaces"
+   ],
+   "seg_shadow": "rgba(0, 0, 0, 0.25) 0px -2px 8px 0px inset, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+   "tabs": [
+    "Personal",
+    "Public smart feed",
+    "Naya Notes"
+   ],
+   "rail_cards": 20,
+   "rail_imgs": 0,
+   "gear_text": "\u2699\ufe0f"
+  },
+  "360": {
+   "viewport": 360,
+   "overflowX": 0,
+   "pageerrors": [],
+   "pill_loading": {
+    "x": 189.6,
+    "y": 480,
+    "w": 114.4,
+    "h": 57
+   },
+   "pill_text_loading": "\u2026",
+   "name": {
+    "x": 16,
+    "y": 488.5,
+    "w": 159.6,
+    "h": 40
+   },
+   "cvrbtn": {
+    "x": 185.7,
+    "y": 6,
+    "w": 164.3,
+    "h": 48
+   },
+   "tagline": {
+    "x": 16,
+    "y": 542,
+    "w": 328,
+    "h": 42
+   },
+   "pill_1293": {
+    "x": 16,
+    "y": 534,
+    "w": 180.4,
+    "h": 60.1
+   },
+   "tiles_1293": [
+    {
+     "cls": "os-mini-tile d1",
+     "digit": "1"
+    },
+    {
+     "cls": "os-mini-tile d2",
+     "digit": "2"
+    },
+    {
+     "cls": "os-mini-tile d9",
+     "digit": "9"
+    },
+    {
+     "cls": "os-mini-tile d3",
+     "digit": "3"
+    }
+   ],
+   "gaps_1293": 1,
+   "gauge_1293": "58.6%",
+   "tile_border_d1": "rgb(255, 42, 42)",
+   "tile_border_d9": "rgb(255, 20, 147)",
+   "overlap": {
+    "pill_vs_name": false,
+    "pill_vs_tagline": false,
+    "pill_vs_cvrbtn": false,
+    "pill_vs_gear": false
+   },
+   "tiles_0": [
+    "os-mini-tile d0"
+   ],
+   "gauge_0": "0%",
+   "buttons_equal": true,
+   "segs": [
+    "plus",
+    "mail",
+    "activity",
+    "spaces"
+   ],
+   "seg_shadow": "rgba(0, 0, 0, 0.25) 0px -2px 8px 0px inset, rgba(0, 0, 0, 0.4) 0px 6px 20px 0px",
+   "tabs": [
+    "Personal",
+    "Public smart feed",
+    "Naya Notes"
+   ],
+   "rail_cards": 20,
+   "rail_imgs": 0,
+   "gear_text": "\u2699\ufe0f"
+  }
+ }
+}
