@@ -1,0 +1,364 @@
+{
+ "checked": 1058,
+ "dup_notes": 147,
+ "floor_breaches": 0,
+ "dup_detail": [
+  {
+   "slug": "sn2702",
+   "url": "/s/sn2702",
+   "hrefs": [
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650",
+    "/s/sn2648"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2701",
+   "url": "/s/sn2701",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650",
+    "/s/sn2648"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2696",
+   "url": "/s/sn2696",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650",
+    "/s/sn2648"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2651",
+   "url": "/s/sn2651",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2650",
+    "/s/sn2650",
+    "/s/sn2648"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2648",
+   "url": "/s/sn2648",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2649",
+   "url": "/s/sn2649",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2648",
+   "url": "/s/ib-smart-note-20261110-sn2648-the-ultimate-team",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2647",
+   "url": "/s/sn2647",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2646",
+   "url": "/s/sn2646",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2645",
+   "url": "/s/sn2645",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2644",
+   "url": "/s/sn2644",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2643",
+   "url": "/s/sn2643",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2642",
+   "url": "/s/sn2642",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2641",
+   "url": "/s/sn2641",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2640",
+   "url": "/s/sn2640",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2639",
+   "url": "/s/sn2639",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2638",
+   "url": "/s/sn2638",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2637",
+   "url": "/s/sn2637",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2636",
+   "url": "/s/sn2636",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  },
+  {
+   "slug": "sn2635",
+   "url": "/s/sn2635",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650"
+   ],
+   "duplicated": [
+    "/s/sn2650"
+   ]
+  }
+ ],
+ "floor_detail": [],
+ "pair_detail": {
+  "sn2696": {
+   "url": "/s/sn2696",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2650",
+    "/s/sn2648"
+   ],
+   "titles": [
+    "The Mail Is Safe",
+    "The Heart Match Organize Connect",
+    "Sn2651 One Foundation One Measure One Honest Telling",
+    "Sn2650 The World Masters",
+    "Sn2650 The Master Operational Manual",
+    "Sn2648 The Supabase Answers"
+   ],
+   "reasons": [
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence"
+   ]
+  },
+  "sn2650": {
+   "url": "/s/ib-smart-note-20261110-sn2650-the-master-operational-manual",
+   "hrefs": [
+    "/s/sn2702",
+    "/s/sn2701",
+    "/s/sn2696",
+    "/s/sn2651",
+    "/s/sn2650",
+    "/s/sn2648"
+   ],
+   "titles": [
+    "The Mail Is Safe",
+    "The Heart Match Organize Connect",
+    "The Infinite Smart Feeds",
+    "Sn2651 One Foundation One Measure One Honest Telling",
+    "Sn2650 The World Masters",
+    "Sn2648 The Supabase Answers"
+   ],
+   "reasons": [
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence",
+    "Same topic: System Intelligence"
+   ]
+  }
+ }
+}
