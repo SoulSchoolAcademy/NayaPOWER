@@ -11,5 +11,5 @@
 - Local rendered probe (`paywords-probe.py`, Chromium via Playwright, 127.0.0.1:8123): **20 PASS / 8 FAIL** — all 8 FAILs diagnosed as local-server shape (no login page in the walk file; no KV pictures; no worker API), none a defect in the edit. New words read on the rendered end slide at 1440 + 390; zero horizontal overflow at scroll 0 AND bottom at both widths; five doors in order, Dashboard first; deal board present and untouched.
 - Full-walk proof on staging: **UNRUN** — blocked by the deploy STOP (see record). The staged walk still serves v22 with the old words (re-curled this round).
 - Screenshots: `shots/pw-payw1440-end-top.png`, `shots/pw-payw1440-end-bottom.png`, `shots/pw-payw390-end-top.png`, `shots/pw-payw390-end-bottom.png`
-- Branch head: TBD (filled after filing)
-- Filed blobs: TBD (filled after filing)
+- Branch head: `a2f4738fc14c4110259065256b1242e67e9933c` (branch created from live main tip `fd964ad32bc87c1178ddbfb48dfb6c6dcdb1f05b`, read first-hand ~02:52Z)
+- Filed blobs (all read-back verified): edited walk file `810dacc6306a11d99899fc9359223ad84b9cf281` (3,364,036 B) · record `443a94582dae2bd78794b628e85014ce2e5b476a` (first filing; re-filed with these values — final blob below) · scorecard `72b1ea7a00cd9b07b2e19f3b96ef21b9b0f0fe62` (6,008 B) · receipt `2af01d1c9056b4499abc49a88eaf9525149c9d6a` (first filing; re-filed with these values — final blob below)
