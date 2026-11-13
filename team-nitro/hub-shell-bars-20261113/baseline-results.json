@@ -1,0 +1,764 @@
+{
+ "390": {
+  "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2696",
+  "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+  "notHere": false,
+  "hook": true,
+  "noteTitle": true,
+  "mainPaddingBottom": "380px",
+  "notifH": "79px",
+  "obbBelow": "",
+  "bodyClasses": "has-notif",
+  "obbBar": {
+   "x": 0,
+   "y": 698,
+   "w": 390,
+   "h": 67,
+   "top": 698,
+   "bottom": 765
+  },
+  "obbBarVisible": true,
+  "obbPills": [
+   {
+    "label": "MAIL",
+    "href": "https://nayanet.app/rooms/mail",
+    "jewel": {
+     "x": 23,
+     "y": 714,
+     "w": 26,
+     "h": 26,
+     "top": 714,
+     "bottom": 740
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   },
+   {
+    "label": "ACTIVITY",
+    "href": "https://nayanet.app/#/hub/feed",
+    "jewel": {
+     "x": 86,
+     "y": 714,
+     "w": 26,
+     "h": 26,
+     "top": 714,
+     "bottom": 740
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   },
+   {
+    "label": "DASHBOARD",
+    "href": "https://nayanet.app/dashboard",
+    "jewel": {
+     "x": 161,
+     "y": 714,
+     "w": 26,
+     "h": 26,
+     "top": 714,
+     "bottom": 740
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   },
+   {
+    "label": "BUSINESS",
+    "href": "https://nayanet.app/business",
+    "jewel": {
+     "x": 238,
+     "y": 714,
+     "w": 26,
+     "h": 26,
+     "top": 714,
+     "bottom": 740
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   },
+   {
+    "label": "SPACE",
+    "href": "https://nayanet.app/space",
+    "jewel": {
+     "x": 302,
+     "y": 714,
+     "w": 26,
+     "h": 26,
+     "top": 714,
+     "bottom": 740
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   },
+   {
+    "label": "GROWTH",
+    "href": "https://nayanet.app/rooms/growth",
+    "jewel": {
+     "x": 363,
+     "y": 714,
+     "w": 26,
+     "h": 26,
+     "top": 714,
+     "bottom": 740
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   },
+   {
+    "label": "CONNECTIONS",
+    "href": "https://nayanet.app/rooms/connections",
+    "jewel": {
+     "x": 443,
+     "y": 714,
+     "w": 26,
+     "h": 26,
+     "top": 714,
+     "bottom": 740
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   },
+   {
+    "label": "SMART LISTS",
+    "href": "https://nayanet.app/rooms/lists",
+    "jewel": {
+     "x": 534,
+     "y": 714,
+     "w": 26,
+     "h": 26,
+     "top": 714,
+     "bottom": 740
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   },
+   {
+    "label": "REPORTS",
+    "href": "https://nayanet.app/rooms/reports",
+    "jewel": {
+     "x": 609,
+     "y": 714,
+     "w": 26,
+     "h": 26,
+     "top": 714,
+     "bottom": 740
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   },
+   {
+    "label": "10 APPS",
+    "href": "https://nayanet.app/#/hub",
+    "jewel": {
+     "x": 672,
+     "y": 714,
+     "w": 26,
+     "h": 26,
+     "top": 714,
+     "bottom": 740
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   }
+  ],
+  "notifBar": {
+   "x": 0,
+   "y": 765,
+   "w": 390,
+   "h": 79,
+   "top": 765,
+   "bottom": 844
+  },
+  "notifBarVisible": true,
+  "notifSegs": [
+   {
+    "key": "mail",
+    "label": null,
+    "tile": {
+     "x": 68,
+     "y": 780,
+     "w": 54,
+     "h": 54,
+     "top": 780,
+     "bottom": 834
+    },
+    "tileRadius": "16px",
+    "count": "0",
+    "countShown": "none"
+   },
+   {
+    "key": "activity",
+    "label": null,
+    "tile": {
+     "x": 168,
+     "y": 780,
+     "w": 54,
+     "h": 54,
+     "top": 780,
+     "bottom": 834
+    },
+    "tileRadius": "16px",
+    "count": "0",
+    "countShown": "none"
+   },
+   {
+    "key": "spaces",
+    "label": null,
+    "tile": {
+     "x": 268,
+     "y": 780,
+     "w": 54,
+     "h": 54,
+     "top": 780,
+     "bottom": 834
+    },
+    "tileRadius": "16px",
+    "count": "0",
+    "countShown": "none"
+   }
+  ],
+  "ecoBar": null,
+  "ecoVisible": false,
+  "ecoBtns": 0,
+  "ecoIco": null,
+  "ecoIcoRadius": null,
+  "overflow": 0,
+  "viewH": 844,
+  "docH": 2513,
+  "console_errors": [],
+  "page_errors": [],
+  "cover_max_scroll": {
+   "lowest": {
+    "text": "Search",
+    "bottom": 844,
+    "top": 800
+   },
+   "bars": [
+    {
+     "sel": "#naya-notif-bar",
+     "top": 765,
+     "h": 79
+    },
+    {
+     "sel": ".eco-bottombar",
+     "top": null
+    },
+    {
+     "sel": "#obb-bar",
+     "top": 698,
+     "h": 67
+    }
+   ],
+   "viewH": 844,
+   "scrollY": 1669,
+   "maxScroll": 1669
+  }
+ },
+ "1440": {
+  "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2696",
+  "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+  "notHere": false,
+  "hook": true,
+  "noteTitle": true,
+  "mainPaddingBottom": "220px",
+  "notifH": "79px",
+  "obbBelow": "",
+  "bodyClasses": "has-notif",
+  "obbBar": {
+   "x": 0,
+   "y": 745,
+   "w": 1440,
+   "h": 77,
+   "top": 745,
+   "bottom": 821
+  },
+  "obbBarVisible": true,
+  "obbPills": [
+   {
+    "label": "MAIL",
+    "href": "https://nayanet.app/rooms/mail",
+    "jewel": {
+     "x": 316,
+     "y": 763,
+     "w": 29,
+     "h": 29,
+     "top": 763,
+     "bottom": 792
+    },
+    "jewelRadius": "9px",
+    "jewelW": 29
+   },
+   {
+    "label": "ACTIVITY",
+    "href": "https://nayanet.app/#/hub/feed",
+    "jewel": {
+     "x": 390,
+     "y": 763,
+     "w": 29,
+     "h": 29,
+     "top": 763,
+     "bottom": 792
+    },
+    "jewelRadius": "9px",
+    "jewelW": 29
+   },
+   {
+    "label": "DASHBOARD",
+    "href": "https://nayanet.app/dashboard",
+    "jewel": {
+     "x": 481,
+     "y": 763,
+     "w": 29,
+     "h": 29,
+     "top": 763,
+     "bottom": 792
+    },
+    "jewelRadius": "9px",
+    "jewelW": 29
+   },
+   {
+    "label": "BUSINESS",
+    "href": "https://nayanet.app/business",
+    "jewel": {
+     "x": 573,
+     "y": 763,
+     "w": 29,
+     "h": 29,
+     "top": 763,
+     "bottom": 792
+    },
+    "jewelRadius": "9px",
+    "jewelW": 29
+   },
+   {
+    "label": "SPACE",
+    "href": "https://nayanet.app/space",
+    "jewel": {
+     "x": 648,
+     "y": 763,
+     "w": 29,
+     "h": 29,
+     "top": 763,
+     "bottom": 792
+    },
+    "jewelRadius": "9px",
+    "jewelW": 29
+   },
+   {
+    "label": "GROWTH",
+    "href": "https://nayanet.app/rooms/growth",
+    "jewel": {
+     "x": 720,
+     "y": 763,
+     "w": 29,
+     "h": 29,
+     "top": 763,
+     "bottom": 792
+    },
+    "jewelRadius": "9px",
+    "jewelW": 29
+   },
+   {
+    "label": "CONNECTIONS",
+    "href": "https://nayanet.app/rooms/connections",
+    "jewel": {
+     "x": 816,
+     "y": 763,
+     "w": 29,
+     "h": 29,
+     "top": 763,
+     "bottom": 792
+    },
+    "jewelRadius": "9px",
+    "jewelW": 29
+   },
+   {
+    "label": "SMART LISTS",
+    "href": "https://nayanet.app/rooms/lists",
+    "jewel": {
+     "x": 924,
+     "y": 763,
+     "w": 29,
+     "h": 29,
+     "top": 763,
+     "bottom": 792
+    },
+    "jewelRadius": "9px",
+    "jewelW": 29
+   },
+   {
+    "label": "REPORTS",
+    "href": "https://nayanet.app/rooms/reports",
+    "jewel": {
+     "x": 1015,
+     "y": 763,
+     "w": 29,
+     "h": 29,
+     "top": 763,
+     "bottom": 792
+    },
+    "jewelRadius": "9px",
+    "jewelW": 29
+   },
+   {
+    "label": "10 APPS",
+    "href": "https://nayanet.app/#/hub",
+    "jewel": {
+     "x": 1091,
+     "y": 763,
+     "w": 29,
+     "h": 29,
+     "top": 763,
+     "bottom": 792
+    },
+    "jewelRadius": "9px",
+    "jewelW": 29
+   }
+  ],
+  "notifBar": {
+   "x": 0,
+   "y": 821,
+   "w": 1440,
+   "h": 79,
+   "top": 821,
+   "bottom": 900
+  },
+  "notifBarVisible": true,
+  "notifSegs": [
+   {
+    "key": "mail",
+    "label": null,
+    "tile": {
+     "x": 593,
+     "y": 836,
+     "w": 54,
+     "h": 54,
+     "top": 836,
+     "bottom": 890
+    },
+    "tileRadius": "16px",
+    "count": "0",
+    "countShown": "none"
+   },
+   {
+    "key": "activity",
+    "label": null,
+    "tile": {
+     "x": 693,
+     "y": 836,
+     "w": 54,
+     "h": 54,
+     "top": 836,
+     "bottom": 890
+    },
+    "tileRadius": "16px",
+    "count": "0",
+    "countShown": "none"
+   },
+   {
+    "key": "spaces",
+    "label": null,
+    "tile": {
+     "x": 793,
+     "y": 836,
+     "w": 54,
+     "h": 54,
+     "top": 836,
+     "bottom": 890
+    },
+    "tileRadius": "16px",
+    "count": "0",
+    "countShown": "none"
+   }
+  ],
+  "ecoBar": null,
+  "ecoVisible": false,
+  "ecoBtns": 0,
+  "ecoIco": null,
+  "ecoIcoRadius": null,
+  "overflow": 0,
+  "viewH": 900,
+  "docH": 1295,
+  "console_errors": [],
+  "page_errors": [],
+  "cover_max_scroll": {
+   "lowest": {
+    "text": "PRIVATE BY DEFAULT",
+    "bottom": 1237,
+    "top": 1033
+   },
+   "bars": [
+    {
+     "sel": "#naya-notif-bar",
+     "top": 821,
+     "h": 79
+    },
+    {
+     "sel": ".eco-bottombar",
+     "top": null
+    },
+    {
+     "sel": "#obb-bar",
+     "top": 745,
+     "h": 77
+    }
+   ],
+   "viewH": 900,
+   "scrollY": 395,
+   "maxScroll": 395
+  }
+ },
+ "360": {
+  "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2696",
+  "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+  "notHere": false,
+  "hook": true,
+  "noteTitle": true,
+  "mainPaddingBottom": "380px",
+  "notifH": "79px",
+  "obbBelow": "",
+  "bodyClasses": "has-notif",
+  "obbBar": {
+   "x": 0,
+   "y": 654,
+   "w": 360,
+   "h": 67,
+   "top": 654,
+   "bottom": 721
+  },
+  "obbBarVisible": true,
+  "obbPills": [
+   {
+    "label": "MAIL",
+    "href": "https://nayanet.app/rooms/mail",
+    "jewel": {
+     "x": 23,
+     "y": 670,
+     "w": 26,
+     "h": 26,
+     "top": 670,
+     "bottom": 696
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   },
+   {
+    "label": "ACTIVITY",
+    "href": "https://nayanet.app/#/hub/feed",
+    "jewel": {
+     "x": 86,
+     "y": 670,
+     "w": 26,
+     "h": 26,
+     "top": 670,
+     "bottom": 696
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   },
+   {
+    "label": "DASHBOARD",
+    "href": "https://nayanet.app/dashboard",
+    "jewel": {
+     "x": 161,
+     "y": 670,
+     "w": 26,
+     "h": 26,
+     "top": 670,
+     "bottom": 696
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   },
+   {
+    "label": "BUSINESS",
+    "href": "https://nayanet.app/business",
+    "jewel": {
+     "x": 238,
+     "y": 670,
+     "w": 26,
+     "h": 26,
+     "top": 670,
+     "bottom": 696
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   },
+   {
+    "label": "SPACE",
+    "href": "https://nayanet.app/space",
+    "jewel": {
+     "x": 302,
+     "y": 670,
+     "w": 26,
+     "h": 26,
+     "top": 670,
+     "bottom": 696
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   },
+   {
+    "label": "GROWTH",
+    "href": "https://nayanet.app/rooms/growth",
+    "jewel": {
+     "x": 363,
+     "y": 670,
+     "w": 26,
+     "h": 26,
+     "top": 670,
+     "bottom": 696
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   },
+   {
+    "label": "CONNECTIONS",
+    "href": "https://nayanet.app/rooms/connections",
+    "jewel": {
+     "x": 443,
+     "y": 670,
+     "w": 26,
+     "h": 26,
+     "top": 670,
+     "bottom": 696
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   },
+   {
+    "label": "SMART LISTS",
+    "href": "https://nayanet.app/rooms/lists",
+    "jewel": {
+     "x": 534,
+     "y": 670,
+     "w": 26,
+     "h": 26,
+     "top": 670,
+     "bottom": 696
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   },
+   {
+    "label": "REPORTS",
+    "href": "https://nayanet.app/rooms/reports",
+    "jewel": {
+     "x": 609,
+     "y": 670,
+     "w": 26,
+     "h": 26,
+     "top": 670,
+     "bottom": 696
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   },
+   {
+    "label": "10 APPS",
+    "href": "https://nayanet.app/#/hub",
+    "jewel": {
+     "x": 672,
+     "y": 670,
+     "w": 26,
+     "h": 26,
+     "top": 670,
+     "bottom": 696
+    },
+    "jewelRadius": "9px",
+    "jewelW": 26
+   }
+  ],
+  "notifBar": {
+   "x": 0,
+   "y": 721,
+   "w": 360,
+   "h": 79,
+   "top": 721,
+   "bottom": 800
+  },
+  "notifBarVisible": true,
+  "notifSegs": [
+   {
+    "key": "mail",
+    "label": null,
+    "tile": {
+     "x": 53,
+     "y": 736,
+     "w": 54,
+     "h": 54,
+     "top": 736,
+     "bottom": 790
+    },
+    "tileRadius": "16px",
+    "count": "0",
+    "countShown": "none"
+   },
+   {
+    "key": "activity",
+    "label": null,
+    "tile": {
+     "x": 153,
+     "y": 736,
+     "w": 54,
+     "h": 54,
+     "top": 736,
+     "bottom": 790
+    },
+    "tileRadius": "16px",
+    "count": "0",
+    "countShown": "none"
+   },
+   {
+    "key": "spaces",
+    "label": null,
+    "tile": {
+     "x": 253,
+     "y": 736,
+     "w": 54,
+     "h": 54,
+     "top": 736,
+     "bottom": 790
+    },
+    "tileRadius": "16px",
+    "count": "0",
+    "countShown": "none"
+   }
+  ],
+  "ecoBar": null,
+  "ecoVisible": false,
+  "ecoBtns": 0,
+  "ecoIco": null,
+  "ecoIcoRadius": null,
+  "overflow": 0,
+  "viewH": 800,
+  "docH": 2752,
+  "console_errors": [],
+  "page_errors": [],
+  "cover_max_scroll": {
+   "lowest": {
+    "text": "Search",
+    "bottom": 800,
+    "top": 756
+   },
+   "bars": [
+    {
+     "sel": "#naya-notif-bar",
+     "top": 721,
+     "h": 79
+    },
+    {
+     "sel": ".eco-bottombar",
+     "top": null
+    },
+    {
+     "sel": "#obb-bar",
+     "top": 654,
+     "h": 67
+    }
+   ],
+   "viewH": 800,
+   "scrollY": 1952,
+   "maxScroll": 1952
+  }
+ }
+}

@@ -1,0 +1,206 @@
+--- /home/hatch/workspace/team-nitro/hub-slug-resolution-20261113/index-intel-today.html	2026-11-13 14:51:00.593928537 +0000
++++ index-intel-today.html	2026-11-13 15:38:24.539240143 +0000
+@@ -382,27 +382,50 @@
+   -webkit-tap-highlight-color: transparent;
+ }
+ .notif-seg:active { transform: scale(.94); }
++/* SHELL BARS 2026-11-13 — trio transplanted VERBATIM from the bottom-icons Hub leg (hub-fixed.html); the BOTTOM ICONS comment below is the leg's own. */
++/* ——— BOTTOM ICONS 2026-11-13: the trio tiles ARE the Hub's round black
++   circles — .notif-tile is the gate .obb-pill object, VERBATIM from
++   hub-bar-round-icons-20261112/hub-bar-round-icons-fixed.html (the gate
++   .eco-dot): 38px desktop / 27px phone, border-radius:50%, two-tone rim,
++   twin radial gradients, 5-layer shadow with the own-color rest glow.
++   --nc carries the tile's color where the gate uses --obb. THREE
++   adaptations, named: (1) no margin-bottom — the label rides in flow below
++   the tile (.notif-lbl), not absolute like .obb-lbl, so the pill's 16px
++   label zone is not carried; (2) the hover host is the segment button
++   (.notif-seg), the effect lands on the tile — same values as
++   .obb-pill:hover; (3) the tile's color is the messenger's
++   (color-mix 72% --nc + white), not the gate's #fff, so the gem glyph
++   keeps its identity at rest. The old ::before gloss is gone: the twin
++   gradients ARE the gloss. The tile's glyph is now a gem (messenger
++   harvest), 25px desktop / 14px phone. */
+ .notif-tile {
+-  position: relative; width: 54px; height: 54px; border-radius: 16px;
+-  display: flex; align-items: center; justify-content: center;
+-  background: radial-gradient(130% 140% at 30% 18%, color-mix(in srgb, var(--nc) 36%, #12121a), #07070b 78%);
+-  border: 1.5px solid color-mix(in srgb, var(--nc) 62%, rgba(255,255,255,.12));
+-  box-shadow:
+-    inset 0 1px 0 rgba(255,255,255,.38),
+-    inset 0 -9px 15px rgba(0,0,0,.6),
+-    inset 1px 0 0 rgba(255,255,255,.07),
+-    0 7px 16px rgba(0,0,0,.6),
+-    0 0 17px color-mix(in srgb, var(--nc) 42%, transparent);
++  position: relative; flex: 0 0 auto; display: grid; place-items: center;
++  width: 38px; height: 38px; min-width: 38px; min-height: 38px; padding: 0;
++  border-radius: 50%;
++  border: 1.5px solid rgba(232,234,242,.55);
++  border-top-color: rgba(255,255,255,.85); border-left-color: rgba(255,255,255,.7);
++  border-bottom-color: rgba(140,144,160,.45); border-right-color: rgba(140,144,160,.5);
++  background: radial-gradient(circle at 30% 22%, rgba(255,255,255,.28), rgba(255,255,255,0) 42%),
++              radial-gradient(circle at 35% 28%, rgba(52,52,66,.95), rgba(8,8,12,.98) 72%);
++  box-shadow: 0 0 12px color-mix(in srgb, var(--nc) 35%, transparent),
++    inset 0 1px 0 rgba(255,255,255,.4), inset 0 -3px 6px rgba(0,0,0,.65),
++    inset 0 0 0 1px rgba(255,255,255,.07), 0 5px 14px rgba(0,0,0,.65);
+   color: color-mix(in srgb, var(--nc) 72%, #ffffff);
+-  transition: box-shadow .3s, border-color .3s;
++  transition: all .25s cubic-bezier(.16,.84,.22,1);
++  -webkit-tap-highlight-color: transparent;
++}
++.notif-seg:hover .notif-tile, .notif-seg:focus-visible .notif-tile {
++  transform: translateY(-2px) scale(1.18); border-color: var(--nc) !important;
++  box-shadow: 0 0 22px var(--nc), 0 0 6px var(--nc),
++    inset 0 1px rgba(255,255,255,.45), inset 0 -3px 6px rgba(0,0,0,.55),
++    0 8px 22px rgba(0,0,0,.7) !important;
+ }
+-.notif-tile::before {
+-  content: ""; position: absolute; inset: 0; border-radius: 16px; pointer-events: none;
+-  background: linear-gradient(155deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,0) 42%),
+-              linear-gradient(25deg, rgba(255,255,255,0) 62%, color-mix(in srgb, var(--nc) 22%, transparent) 100%);
++.notif-seg:hover .notif-tile svg, .notif-seg:focus-visible .notif-tile svg {
++  color: var(--nc); text-shadow: 0 0 7px var(--nc);
+ }
++.notif-seg:active .notif-tile { transform: scale(1.05); }
+ .notif-tile svg { width: 25px; height: 25px; filter: drop-shadow(0 0 5px color-mix(in srgb, var(--nc) 75%, transparent)); position: relative; }
+-.notif-lbl { font-size: 10.5px; font-weight: 700; letter-spacing: .13em; color: #C9CEDA; }
++.notif-lbl { font-size: 12px; font-weight: 800; letter-spacing: .04em; color: #E8E8EC; }
+ .notif-count { position: absolute; top: -8px; right: -10px; min-width: 24px; height: 24px; padding: 0 6px;
+   display: none; align-items: center; justify-content: center; border-radius: 999px; z-index: 2;
+   font-size: 12px; font-weight: 900; color: #06060a; background: var(--nc);
+@@ -411,11 +434,21 @@
+ @keyframes notifPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.13); } }
+ .notif-seg.has-news .notif-tile {
+   border-color: color-mix(in srgb, var(--nc) 88%, #ffffff);
+-  box-shadow:
+-    inset 0 1px 0 rgba(255,255,255,.45),
+-    inset 0 -9px 15px rgba(0,0,0,.6),
+-    0 7px 16px rgba(0,0,0,.6),
+-    0 0 26px color-mix(in srgb, var(--nc) 68%, transparent);
++  box-shadow: 0 0 26px color-mix(in srgb, var(--nc) 68%, transparent),
++    inset 0 1px 0 rgba(255,255,255,.45), inset 0 -3px 6px rgba(0,0,0,.55),
++    inset 0 0 0 1px rgba(255,255,255,.07), 0 5px 14px rgba(0,0,0,.65);
++}
++/* BOTTOM ICONS 2026-11-13 — phone: the gate .obb-pill phone size, verbatim
++   (v2 fixed file, max-width:640px): 27px circle, 14px glyph. Label 10px
++   (named: the messenger label has no phone size; 10px keeps Business
++   readable at 390/360 where the gate's 9px would pinch it). Count bubble
++   slims to 20px on the 27px circle (named: the 24px bubble would cover
++   most of the tile). */
++@media (max-width:640px){
++  .notif-tile { width: 27px; height: 27px; min-width: 27px; min-height: 27px; }
++  .notif-tile svg { width: 14px; height: 14px; }
++  .notif-lbl { font-size: 10px; }
++  .notif-count { min-width: 20px; height: 20px; font-size: 11px; top: -6px; right: -8px; }
+ }
+ /* The eco dock rides above the notifications bar — but ONLY when the bar is
+    actually in the DOM (body.has-notif is set by NayaNotif.init). Without the
+@@ -426,7 +459,8 @@
+    dock sits flush on the bar with no gap and no hairline. The old hardcoded
+    94px assumed a 98px bar (with labels); the bar ships label-less at 79px,
+    so the dock floated 15px above it and the feed showed through the gap. */
+-body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 79px) - 2px + env(safe-area-inset-bottom, 0px)); }
++/* SHELL BARS 2026-11-13: fallback follows the new trio height (85px desktop per the bottom-icons round); syncStack measures the live row — the fallback is pre-init only. */
++body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 85px) - 2px + env(safe-area-inset-bottom, 0px)); }
+ .toast-stack { bottom: calc(122px + env(safe-area-inset-bottom, 0px)); }
+ .main { padding-bottom: 186px; }
+ @media (max-width: 640px) {
+@@ -2697,7 +2731,7 @@
+ <style>
+ /* ASK STACK CURE (2026-10-22): jewel 71 + notif 98 + dock, composed */
+ body:has(.naya-ask-room) .notif-bar{bottom:calc(71px + env(safe-area-inset-bottom,0px))}
+-body:has(.naya-ask-room) .eco-bottombar{bottom:calc(71px + var(--notif-h, 79px) - 2px + env(safe-area-inset-bottom,0px))}
++body:has(.naya-ask-room) .eco-bottombar{bottom:calc(71px + var(--notif-h, 85px) - 2px + env(safe-area-inset-bottom,0px))}
+ @media (max-width:760px){
+   body:has(.naya-ask-room) .side-topics.side-right{bottom:calc(312px + env(safe-area-inset-bottom,0px))}
+   body:has(.naya-ask-room) .side-topics.side-left{bottom:calc(382px + env(safe-area-inset-bottom,0px))}
+@@ -5541,7 +5575,7 @@
+     counts() {
+       var unread = 0;
+       try { var seen = this.get('seen.activity'); unread = Math.max(0, ActivityLog.read().length - seen); } catch (e) {}
+-      return { mail: this.get('mail'), activity: unread, spaces: this.get('spaces') };
++      return { personal: unread, business: this.get('mail'), thing: this.get('spaces') };
+     },
+     refresh() {
+       var bar = document.getElementById('naya-notif-bar'); if (!bar) return;
+@@ -5554,9 +5588,13 @@
+       });
+     },
+     tap(k) {
+-      if (k === 'mail') { this.set('mail', 0); window.NayaRouter && window.NayaRouter.navigate('/hub/mail'); }
+-      else if (k === 'activity') { try { this.set('seen.activity', ActivityLog.read().length); } catch (e) {} window.NayaRouter && window.NayaRouter.navigate('/hub/feed-activity'); }
+-      else if (k === 'spaces') { this.set('spaces', 0); window.NayaRouter && window.NayaRouter.navigate('/hub/spaces'); }
++      /* SHELL BARS 2026-11-13 — ULTIMATE TRIO (bottom-icons Hub leg): tap opens
++         the WORLD by full URL — the worlds are top-level pages, and the 9-pill
++         row navigates by full URL too, so no router path is invented here. The
++         count for that world clears on tap, as the channels' counts did before. */
++      if (k === 'personal') { try { this.set('seen.activity', ActivityLog.read().length); } catch (e) {} window.location.href = 'https://nayanet.app/personal'; }
++      else if (k === 'business') { this.set('mail', 0); window.location.href = 'https://nayanet.app/business'; }
++      else if (k === 'thing') { this.set('spaces', 0); window.location.href = 'https://nayanet.app/space'; }
+       this.refresh();
+     },
+     /* ——— Double-bar stack cure (2026-11-06): the dock rides on the
+@@ -5576,20 +5614,21 @@
+       if (bar) { document.body.classList.add('has-notif'); this.refresh(); this.syncStack(); return; }
+       var self = this;
+       var ICONS = {
+-        mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
+-        activity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg>',
+-        spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg>'
++        personal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="rgba(160,107,255,.28)"/><circle cx="12" cy="12" r="4" fill="rgba(255,255,255,.30)" stroke-width="1"/><path d="M12 3.5v4.5M12 16v4.5M3.5 12h4.5M16 12h4.5M6.2 6.2l3 3M17.8 6.2l-3 3M6.2 17.8l3-3M17.8 17.8l-3-3" stroke-width="1" opacity=".65"/><path d="M8.3 7.2l.9 1.9 1.9.9-1.9.9-.9 1.9-.9-1.9-1.9-.9 1.9-.9z" fill="#fff" stroke="none" opacity=".95"/></svg>',
++        business: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8l4 4v12l-4 4H8l-4-4V8z" fill="rgba(47,232,158,.22)"/><path d="M10 7h4l2.5 2.5v9L14 21h-4l-2.5-2.5v-9z" fill="rgba(255,255,255,.22)" stroke-width="1"/><rect x="10.2" y="10.2" width="3.6" height="3.6" fill="rgba(255,255,255,.30)" stroke="none"/><path d="M7.6 6.4l.8 1.7 1.7.8-1.7.8-.8 1.7-.8-1.7-1.7-.8 1.7-.8z" fill="#fff" stroke="none" opacity=".95"/></svg>',
++        thing: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 5h10l4 4L12 20 3 9z" fill="rgba(255,255,255,.14)"/><path d="M7 5l2.5 4M17 5l-2.5 4M12 5v4M3 9h18M9.5 9L12 20M14.5 9L12 20" stroke-width="1" opacity=".7"/><path d="M7 5h5l-2.5 4z" fill="rgba(255,255,255,.35)" stroke="none"/><path d="M12 5h5l-2.5 4z" fill="rgba(255,255,255,.18)" stroke="none"/><path d="M9.5 9L12 20l-3.2-6.6z" fill="rgba(255,255,255,.25)" stroke="none"/><path d="M8.6 6.2l.7 1.5 1.5.7-1.5.7-.7 1.5-.7-1.5-1.5-.7 1.5-.7z" fill="#fff" stroke="none" opacity=".95"/></svg>'
+       };
+-      var SEGS = [['mail', 'MAIL', '#3fb8ff'], ['activity', 'ACTIVITY', '#2fe89e'], ['spaces', 'SPACES', '#ffbf3d']];
++      var SEGS = [['personal', 'Personal', '#a06bff', 'amethyst'], ['business', 'Business', '#2fe89e', 'emerald'], ['thing', 'Thing', '#e8eaf2', 'diamond']];
+       bar = document.createElement('nav'); bar.id = 'naya-notif-bar'; bar.className = 'notif-bar';
+       bar.setAttribute('aria-label', 'Notifications');
+       var row = document.createElement('div'); row.className = 'notif-row';
+       SEGS.forEach(function (s) {
+         var b = document.createElement('button'); b.type = 'button'; b.className = 'notif-seg';
+-        b.setAttribute('data-notif', s[0]); b.style.setProperty('--nc', s[2]);
+-        b.setAttribute('aria-label', s[1] + ' — open');
+-        b.setAttribute('title', s[1]);
+-        b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span>';
++        b.id = 'seg' + s[0].charAt(0).toUpperCase() + s[0].slice(1);
++        b.setAttribute('data-notif', s[0]); b.setAttribute('data-gem', s[3]);
++        b.style.setProperty('--nc', s[2]);
++        b.setAttribute('aria-label', s[1] + ' activity — open');
++        b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span><span class="notif-lbl">' + s[1] + '</span>';
+         b.addEventListener('click', function () { self.tap(s[0]); });
+         row.appendChild(b);
+       });
+@@ -9682,7 +9721,6 @@
+ <nav class="obb-bar" id="obb-bar" aria-label="Apps">
+ <div class="obb-row">
+   <a class="obb-pill" data-obb="mail" data-b3="mail" href="https://nayanet.app/rooms/mail" style="--obb:#ffbf3d" aria-label="Mail" title="Mail"><span class="obb-jewel" aria-hidden="true">✉</span><span class="obb-lbl">Mail</span></a>
+-  <a class="obb-pill" data-obb="activity" data-b3="activity" href="https://nayanet.app/#/hub/feed" style="--obb:#a06bff" aria-label="Activity" title="Activity"><span class="obb-jewel" aria-hidden="true">◈</span><span class="obb-lbl">Activity</span><span class="obb-badge os-b3-badge" id="os-b3-badge" hidden></span></a>
+   <a class="obb-pill" data-obb="dashboard" data-b3="dashboard" href="https://nayanet.app/dashboard" style="--obb:#2fe89e" aria-label="Dashboard" title="Dashboard"><span class="obb-jewel" aria-hidden="true">◉</span><span class="obb-lbl">Dashboard</span></a>
+   <a class="obb-pill" data-obb="business" href="https://nayanet.app/business" style="--obb:#ffbf3d" aria-label="Business" title="Business"><span class="obb-jewel" aria-hidden="true">■</span><span class="obb-lbl">Business</span></a>
+   <a class="obb-pill" data-obb="space" href="https://nayanet.app/space" style="--obb:#ff9a5a" aria-label="Space" title="Space"><span class="obb-jewel" aria-hidden="true">▲</span><span class="obb-lbl">Space</span></a>
+@@ -9702,13 +9740,20 @@
+    one component; the row scrolls inside it and snaps so no pill rests half-sliced. */
+ .obb-row{display:flex;align-items:center;gap:8px;margin:0 auto;flex:0 1 auto;min-width:0;max-width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;scroll-snap-type:x mandatory;scroll-padding:0 12px;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+ .obb-row::-webkit-scrollbar{display:none}
+-.obb-pill{flex:0 0 auto;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-width:58px;min-height:52px;padding:6px 8px 5px;border-radius:14px;text-decoration:none;color:#fff;cursor:pointer;background:linear-gradient(180deg,#1d1d26 0%,#0b0b10 55%,#020203 100%);border:1.5px solid var(--obb);box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.55),0 0 14px -2px var(--obb),0 8px 20px rgba(0,0,0,.75);position:relative}
+-.obb-pill:hover,.obb-pill:focus-visible{box-shadow:inset 0 2px 0 rgba(255,255,255,.45),inset 0 -4px 10px rgba(0,0,0,.55),0 0 22px 0 var(--obb),0 8px 20px rgba(0,0,0,.75);transform:translateY(-1px);outline:none}
+-.obb-pill:active{box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.55),0 0 26px 5px var(--obb),0 8px 20px rgba(0,0,0,.75)}
+-.obb-jewel{width:29px;height:29px;border-radius:9px;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;font-size:15px;color:#fff;background:linear-gradient(180deg,color-mix(in srgb,var(--obb) 30%,rgba(255,255,255,.1)),color-mix(in srgb,var(--obb) 12%,rgba(0,0,0,.42)));border:1px solid color-mix(in srgb,var(--obb) 55%,rgba(0,0,0,.3));box-shadow:inset 0 2px 5px rgba(0,0,0,.55),inset 0 1px 2px rgba(255,255,255,.12),inset 0 -1px 0 rgba(255,255,255,.08),0 0 10px -2px var(--obb)}
++/* SHELL BARS 2026-11-13 — the upper row is round black circles. .obb-pill is
++   now the transparent column button and .obb-jewel IS the circle, harvested
++   from this shell's own .eco-bb-ico (lines 308-357): 46px desktop / 44px
++   phone, border-radius:50%, obsidian radial gradient, own-color rest glow
++   via --obb. The visible .obb-lbl rides under the icon, unchanged. The
++   Activity pill is gone with its badge rule deleted) — one door
++   per destination. Hover/focus lift lands on the jewel, as on .eco-bb-btn. */
++.obb-pill{flex:0 0 auto;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0;padding:2px 4px 0;background:none;border:none;box-shadow:none;text-decoration:none;color:#fff;cursor:pointer;position:relative}
++.obb-pill:hover .obb-jewel,.obb-pill:focus-visible .obb-jewel{transform:translateY(-3px) scale(1.08);border-color:var(--obb);color:var(--obb);text-shadow:0 0 6px var(--obb);box-shadow:inset 0 1px rgba(255,255,255,.2),0 0 24px color-mix(in srgb,var(--obb) 55%,transparent),0 6px 16px rgba(0,0,0,.5)}
++.obb-pill:focus-visible{outline:none}
++.obb-pill:active .obb-jewel{transform:scale(1.02)}
++.obb-jewel{width:46px;height:46px;flex:0 0 46px;border-radius:50%;display:grid;place-items:center;font-size:18px;color:#fff;background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);border:1px solid rgba(255,255,255,.3);box-shadow:inset 0 1px rgba(255,255,255,.15),0 0 14px rgba(255,255,255,.1),0 4px 10px rgba(0,0,0,.4),0 0 14px -2px var(--obb);transition:all .22s cubic-bezier(.16,.84,.22,1)}
+ .obb-lbl{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;white-space:nowrap;line-height:1}
+-.obb-badge{position:absolute;top:-7px;right:-7px;min-width:22px;height:22px;padding:0 6px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:#04120a;color:#fff;font-size:12px;font-weight:900;line-height:1;border:2px solid #2fe89e;box-shadow:0 0 12px rgba(47,232,158,.8)}
+-@media (max-width:640px){.obb-bar{gap:6px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))}.obb-row{gap:6px;scroll-padding:0 10px}.obb-pill{min-width:52px;min-height:50px;padding:5px 6px 4px}.obb-jewel{width:26px;height:26px;font-size:14px}.obb-lbl{font-size:9px}}
++@media (max-width:640px){.obb-bar{gap:6px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))}.obb-row{gap:6px;scroll-padding:0 10px}.obb-pill{padding:2px 3px 0}.obb-jewel{width:44px;height:44px;flex:0 0 44px;font-size:16px}.obb-lbl{font-size:9px}}
+ </style>
+ <script>
+ /* ONE-BOTTOM-BAR v2 — lane stacking (NO-OVERLAY law). Measures the visible bottom-stack bars
