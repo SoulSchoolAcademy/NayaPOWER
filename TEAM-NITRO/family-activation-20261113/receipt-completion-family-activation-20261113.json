@@ -1,1 +1,153 @@
-{"bounds_held":["no live deploy","no merge","no PR","no mail sends","no package selection","no payment","no guessing of Iris/Ruth certs"],"branch_heads":{"family":"f729a6625ca6343ca29c7728c42a61d9fbdcf0ee","main_tip":"65135dc110380632fd789e68706c1faf4963012e","transparency":"d5a5114743d8de4c6ba6c30dac31cbf928d6d548"},"files":{"receipt":"receipt-completion-family-activation-20261113.json","record":"RECORD-COMPLETION-FAMILY-ACTIVATION-20261113.md","scorecard":"SCORECARD-COMPLETION-FAMILY-ACTIVATION-20261113.md","work_dir":"~/workspace/team-nitro/family-activation-20261113/"},"open_items":["live-feed leg: the twelve notes are not on the live feed yet (sync rebake owed)","Iris + Ruth cert numbers unproven (000210/000211 unassigned — never guessed)","install modal covers first paint (pre-existing)","no dedicated 'Family Activation' tab (notes under All projects only)","worlds in KV fallback, live_pages [] (server-side key is his hand)"],"rate_closed_loops":12,"round":"family-activation-completion-20261113","score":9,"staged_page":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/team-transparency-20261112/team-transparency-hub.html&ref=team-transparency-20261112&cb=e04f77d6e0233d550b1e1174668a8821c032606d","status":"DONE","step1_box_reverification":{"answers_word_for_word":"120/120","fails":0,"iris_discrepancy":"walk report said c9139b31-4a87-4ad6-8423-948073147c36; Box read-back says cd18e716-02a0-49d0-ac84-4b4804e1ca8a (box.project_id and project_rows[0].id agree). Box governs.","live_pages":"[] (all 12)","project_ids":{"astraea":"5d559454-1975-41d0-9d56-76f89653e8d2","aurelia":"9bccb4a4-138c-4a64-8645-ae5cd3f26e7a","esme":"80da9a65-6f25-4a29-b206-fca250dc20ae","iris":"cd18e716-02a0-49d0-ac84-4b4804e1ca8a","mira":"31b8ae05-ac1b-456f-ac2c-4b59002ce434","ruth":"4a46ba73-9327-4031-8f32-fec565a3a3a","sophia":"5f438bfa-64ce-4482-84a8-8dae3aae15ad","terra":"bff66af9-30c2-4e03-b8c8-b7530a6f2f67","thea":"ab40572b-bc8b-4931-871b-5867158e91e3","vera":"3b845e79-7303-49e4-b474-6dec59b13d13","wren":"fa3e5079-b1af-4170-9760-a829de7d98a0","zoe":"08edebf4-fe96-4db6-adaa-b44fa6b74a1a"},"sisters":12,"store":"kv-fallback (all 12)"},"step2_notes_filed":{"blobs_8":{"astraea":"c7445e49","aurelia":"fa79385c","esme":"a0e6bd78","iris":"ba607c14","mira":"12707fc0","ruth":"5529fadb","sophia":"553c0146","terra":"9900b511","thea":"36e63d37","vera":"5460cf69","wren":"f0281396","zoe":"0a3aae16"},"box_blocks":12,"box_file_total_blocks":12475,"file_notes_py_defects":["hardcoded hook path ~/workspace/smart-box/organize_hook.py does not exist (ENOENT)","expected block id shawn:note:note-family-<alias> is wrong; hook derives ids from note titles"],"hook":{"files_new":12,"organized":12,"path":"~/workspace/team-nitro/smart-box/organize_hook.py","skipped":0},"http":201,"local_copies":true,"notes":12,"notes_filed_json":"corrected with real block ids + hook_output_mentions_block True (from hook's real output, never faked)","read_back":"match (all 12)"},"step3_staged":{"anchor_deviation":"builder anchor </style>\\n</body> count 0 in fresh Hub; used <!-- /ONE-BOTTOM-BAR -->\\n</body> (count 1) — same insertion point (last thing before </body>)","delta_bytes":42064,"fragment_bytes":18509,"fragment_entries":"12 new + 2 kept","fragment_on_branch_blob":"8d1ad99078462f52d5663f510606e870d48ea2ca","fragment_rebuilt_blob":"18f49aed12a3cd8fbcf2e0f130e928ae7abc2d1a","live_hub_bytes":5548329,"live_hub_sha256":"bdad4d66a68d","rebuilt_hub_bytes":5590393,"rebuilt_hub_sha256":"fac5a14381ca285efc88c0d13642e2aa6e83d3cd69ffe5580c59efc90eae6aba","served_bytes_sha256_match":true,"staged_hub_blob":"e04f77d6e0233d550b1e1174668a8821c032606d"},"step4_walk":{"briefed_by_lines":14,"click_through_1440":{"back_ok":true,"landed_title":"sophia — NayaNET","pageerrors":0,"sophia_personal_url":"https://naya-walk-beginning-staging.nayapower.workers.dev/pages/sophia/sophia"},"console_errors":0,"fails":[],"family_ids_in_DOM":48,"github_note_http":200,"horizontal_overflow":{"1440":[0,0,0],"360":[0,0,0],"390":[0,0,0]},"install_modal":"covers first paint at 1440 and 390 (pre-existing main-shell behavior); 'Not now' dismisses it","pageerrors":0,"probe_bug_corrected":"first probe's 'Briefed by <Name> ' trailing-space match read 0/12 at 1440/390; diagnostic (names + 14 bylines + 48 DOM ids) proves all twelve render","sisters_rendered":"12/12 at all three widths","surface_innerText_len_1440_390":17118,"tool":"local Playwright Firefox (browser.browse unavailable in this subagent; exact widths 1440/390/360)","widths":[1440,390,360]}}
+{
+  "bounds_held": [
+    "no live deploy",
+    "no merge",
+    "no PR",
+    "no mail sends",
+    "no package selection",
+    "no payment",
+    "no guessing of Iris/Ruth certs"
+  ],
+  "branch_heads": {
+    "family": "3fd3ef917833a26711655c42caf9e41890058936",
+    "main_tip": "65135dc110380632fd789e68706c1faf4963012e",
+    "transparency": "d5a5114743d8de4c6ba6c30dac31cbf928d6d548"
+  },
+  "files": {
+    "receipt": "receipt-completion-family-activation-20261113.json",
+    "record": "RECORD-COMPLETION-FAMILY-ACTIVATION-20261113.md",
+    "scorecard": "SCORECARD-COMPLETION-FAMILY-ACTIVATION-20261113.md",
+    "work_dir": "~/workspace/team-nitro/family-activation-20261113/"
+  },
+  "open_items": [
+    "live-feed leg: the twelve notes are not on the live feed yet (sync rebake owed)",
+    "Iris + Ruth cert numbers unproven (000210/000211 unassigned \u2014 never guessed)",
+    "install modal covers first paint (pre-existing)",
+    "no dedicated 'Family Activation' tab (notes under All projects only)",
+    "worlds in KV fallback, live_pages [] (server-side key is his hand)",
+    "walk ran on local Playwright Firefox, not the cloud browser (browser.browse unavailable in this subagent; exact widths 1440/390/360 \u2014 stronger, but a substitution)"
+  ],
+  "rate_closed_loops": 12,
+  "round": "family-activation-completion-20261113",
+  "score": 9,
+  "staged_page": "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/team-transparency-20261112/team-transparency-hub.html&ref=team-transparency-20261112&cb=e04f77d6e0233d550b1e1174668a8821c032606d",
+  "status": "DONE",
+  "step1_box_reverification": {
+    "answers_word_for_word": "120/120",
+    "fails": 0,
+    "iris_discrepancy": "walk report said c9139b31-4a87-4ad6-8423-948073147c36; Box read-back says cd18e716-02a0-49d0-ac84-4b4804e1ca8a (box.project_id and project_rows[0].id agree). Box governs.",
+    "live_pages": "[] (all 12)",
+    "project_ids": {
+      "astraea": "5d559454-1975-41d0-9d56-76f89653e8d2",
+      "aurelia": "9bccb4a4-138c-4a64-8645-ae5cd3f26e7a",
+      "esme": "80da9a65-6f25-4a29-b206-fca250dc20ae",
+      "iris": "cd18e716-02a0-49d0-ac84-4b4804e1ca8a",
+      "mira": "31b8ae05-ac1b-456f-ac2c-4b59002ce434",
+      "ruth": "4a46ba73-9327-4031-8f32-fec565a3a3a",
+      "sophia": "5f438bfa-64ce-4482-84a8-8dae3aae15ad",
+      "terra": "bff66af9-30c2-4e03-b8c8-b7530a6f2f67",
+      "thea": "ab40572b-bc8b-4931-871b-5867158e91e3",
+      "vera": "3b845e79-7303-49e4-b474-6dec59b13d13",
+      "wren": "fa3e5079-b1af-4170-9760-a829de7d98a0",
+      "zoe": "08edebf4-fe96-4db6-adaa-b44fa6b74a1a"
+    },
+    "sisters": 12,
+    "store": "kv-fallback (all 12)"
+  },
+  "step2_notes_filed": {
+    "blobs_8": {
+      "astraea": "c7445e49",
+      "aurelia": "fa79385c",
+      "esme": "a0e6bd78",
+      "iris": "ba607c14",
+      "mira": "12707fc0",
+      "ruth": "5529fadb",
+      "sophia": "553c0146",
+      "terra": "9900b511",
+      "thea": "36e63d37",
+      "vera": "5460cf69",
+      "wren": "f0281396",
+      "zoe": "0a3aae16"
+    },
+    "box_blocks": 12,
+    "box_file_total_blocks": 12475,
+    "file_notes_py_defects": [
+      "hardcoded hook path ~/workspace/smart-box/organize_hook.py does not exist (ENOENT)",
+      "expected block id shawn:note:note-family-<alias> is wrong; hook derives ids from note titles"
+    ],
+    "hook": {
+      "files_new": 12,
+      "organized": 12,
+      "path": "~/workspace/team-nitro/smart-box/organize_hook.py",
+      "skipped": 0
+    },
+    "http": 201,
+    "local_copies": true,
+    "notes": 12,
+    "notes_filed_json": "corrected with real block ids + hook_output_mentions_block True (from hook's real output, never faked)",
+    "read_back": "match (all 12)"
+  },
+  "step3_staged": {
+    "anchor_deviation": "builder anchor </style>\\n</body> count 0 in fresh Hub; used <!-- /ONE-BOTTOM-BAR -->\\n</body> (count 1) \u2014 same insertion point (last thing before </body>)",
+    "delta_bytes": 42064,
+    "fragment_entries": "12 new + 2 kept",
+    "fragment_on_branch_blob": "8d1ad99078462f52d5663f510606e870d48ea2ca",
+    "fragment_rebuilt_blob": "18f49aed12a3cd8fbcf2e0f130e928ae7abc2d1a",
+    "live_hub_bytes": 5548329,
+    "live_hub_sha256": "bdad4d66a68d",
+    "rebuilt_hub_bytes": 5590393,
+    "rebuilt_hub_sha256": "fac5a14381ca285efc88c0d13642e2aa6e83d3cd69ffe5580c59efc90eae6aba",
+    "served_bytes_sha256_match": true,
+    "staged_hub_blob": "e04f77d6e0233d550b1e1174668a8821c032606d",
+    "fragment_bytes_fetched_from_branch": 18509,
+    "fragment_bytes_rebuilt": 42063
+  },
+  "step4_walk": {
+    "briefed_by_lines": 14,
+    "click_through_1440": {
+      "back_ok": true,
+      "landed_title": "sophia \u2014 NayaNET",
+      "pageerrors": 0,
+      "sophia_personal_url": "https://naya-walk-beginning-staging.nayapower.workers.dev/pages/sophia/sophia"
+    },
+    "console_errors": 0,
+    "fails": [],
+    "family_ids_in_DOM": 48,
+    "github_note_http": 200,
+    "horizontal_overflow": {
+      "1440": [
+        0,
+        0,
+        0
+      ],
+      "360": [
+        0,
+        0,
+        0
+      ],
+      "390": [
+        0,
+        0,
+        0
+      ]
+    },
+    "install_modal": "covers first paint at 1440 and 390 (pre-existing main-shell behavior); 'Not now' dismisses it",
+    "pageerrors": 0,
+    "probe_bug_corrected": "first probe's 'Briefed by <Name> ' trailing-space match read 0/12 at 1440/390; diagnostic (names + 14 bylines + 48 DOM ids) proves all twelve render",
+    "sisters_rendered": "12/12 at all three widths",
+    "surface_innerText_len_1440_390": 17118,
+    "tool": "local Playwright Firefox (browser.browse unavailable in this subagent; exact widths 1440/390/360)",
+    "widths": [
+      1440,
+      390,
+      360
+    ]
+  },
+  "checker": {
+    "verdict": "PASS",
+    "score": 9,
+    "file": "CHECKER-VERDICT-FAMILY-ACTIVATION-20261113.md",
+    "blob": "6268510222eb252c2708babef56e99328405bdbf",
+    "branch_head_after_verdict": "3fd3ef917833a26711655c42caf9e41890058936"
+  }
+}
