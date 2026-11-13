@@ -1,0 +1,69 @@
+-- 20261022202800_person_timeline_view_drop_repair_v1.sql
+--
+-- Repair: the person-timeline guard in
+-- 20261022203000_person_timeline_v1.sql (view, lines 164-220) fails at
+-- statement 14, the CREATE OR REPLACE VIEW public.person_timeline_events
+-- (governed run 43366738468, 2026-11-13, Supabase Preview check
+-- 131693252732, 04:38:42-04:38:55Z): ERROR: cannot drop columns from
+-- view (SQLSTATE 42P16). The guard's fail-loud source check (statement
+-- 13) PASSED on that run — the follow-on #1 repair (20261022202500,
+-- filed on main in commit ceef98b7, blob 41a8d918) applied, and the
+-- fresh pre-check of this round reads all 22 union pairs present on
+-- live production, including the follow-on's 3 columns. The chain
+-- stopped on the view itself: the LIVE view wearing the same name is
+-- not the guard's view, and the guard's replacement would drop columns
+-- it carries.
+--
+-- The live view's shape, proven first-hand in this round (step 1):
+-- (a) repo history — GitHub code search for person_timeline_events
+-- returns 12 files; only TWO repo definitions of the view exist, the
+-- guard (03000, line 164, 11 columns) and the booking migration
+-- (20261022210000_booking_v1.sql, line 406, the SAME 11 columns plus a
+-- bookings leg — it sorts AFTER the guard and has never applied, so it
+-- cannot be the live view either). Neither definition references
+-- invite_send_log, and code search for invite_send_log returns 5 files,
+-- none of them a migration — so the live view's definition exists
+-- NOWHERE in the repo: it is out-of-band (dashboard or manual apply),
+-- provenance unknown. (b) live candidate probing (GET
+-- /person_timeline_events?select=<column>&limit=1, anon key, browser
+-- User-Agent; 400/42703 = missing, 401 = present-but-unreadable):
+-- 11 columns proven present — person_key, event_at, event_kind,
+-- source_table, source_id (5 the guard's 11 also define) plus
+-- person_display_name, identity_status, disambiguation_note, summary,
+-- app_scope, display_name (6 the guard's 11 do NOT define). The
+-- factory piece interfaces/factory/pieces/os-script.html line 1951
+-- selects person_key, person_display_name, identity_status,
+-- disambiguation_note, event_kind, event_at, summary with an app_scope
+-- filter — 8 of the 11 proven live columns (7 in the select list,
+-- app_scope in the filter) — which corroborates the
+-- evolved shape without proving provenance. The exact dropped-column
+-- set is therefore person_display_name, identity_status,
+-- disambiguation_note, summary, app_scope, display_name: six columns
+-- the guard's replacement would drop, which is the 42P16. The
+-- enumeration is bounded by the candidates probed (31 names: the
+-- guard's 11, the read-model doc's status, the os-script select list,
+-- the builder's display_name / normalized_name, event_type, and 11
+-- further plausible names, all RED) — and the DROP below does not
+-- depend on the enumeration being complete: it removes the whole view
+-- whatever unenumerated columns it may carry, and the guard then
+-- re-creates its exact 11.
+--
+-- Dependents, proven by the same repo grep: NO repo object depends on
+-- the view. No function, policy, or other view in the chain references
+-- it (among migrations, only the guard, this repair's predecessor's
+-- comment, and the booking migration name it). The booking migration's
+-- DO block (lines 388-400) REQUIRES the view to exist and then
+-- redefines it — but it sorts after the guard, so after this DROP the
+-- guard re-creates the view before booking applies, and its dependency
+-- check still passes. No CASCADE: DROP VIEW without CASCADE fails
+-- loudly if an out-of-band dependent exists, instead of silently
+-- dropping it — the safe shape, and no dependent was found to name.
+--
+-- NOT in this file, named not silent: no ADD COLUMN — the columns were
+-- the earlier rounds' work. The first repair's 8 and the follow-on's 3
+-- are NOT re-added — they are filed on main and read present on live
+-- production now. The guard is NOT touched: no relaxation, no
+-- weakening, the DO block stays exactly as written. Dropping a view
+-- writes NO data and reads NO mail. Nothing else in this file.
+
+drop view if exists public.person_timeline_events;
