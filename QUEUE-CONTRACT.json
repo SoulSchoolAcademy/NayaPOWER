@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-13T03:48:47Z",
-  "tip": "26b1a0e6135a9296ce28781ce2480a938428320f",
+  "generated_at": "2026-11-13T09:49:02Z",
+  "tip": "8f2af988b2a4adefda9afb8ad752c7971c10ea8c",
   "prs": [
     {
       "number": 3345,
@@ -38,6 +38,15 @@
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness, chain-readiness-gate, completeness; then re-derive at the new head.",
       "owner": "author lane",
       "head": "17a36c5e51c6925c4e710ac2730c60bf909401f4"
+    },
+    {
+      "number": 3358,
+      "title": "LEARN: cure registry drift 795->351 \u2014 hash re-anchor tool + 222 entry repair",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "fc598b96a82664addacfff9b77e7903629bf047e"
     }
   ]
 }
