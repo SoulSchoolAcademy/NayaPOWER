@@ -93,6 +93,15 @@ def check_note_html(html, slug):
     if "FAQPage" in ld_text or "HowTo" in ld_text: errs.append("FAQPage/HowTo string in JSON-LD")
     rel = re.findall(r'<article class="rel-card"[^>]*><a href="/s/([^"]+)">([^<]+)</a><p class="why">([^<]+)</p>', html)
     if len(rel) < 3: errs.append(f"related x{len(rel)}")
+    # Fix round F3: no related list may show the same destination twice.
+    # Two notes sharing one canonical slug (the sn2650 pair) rendered
+    # /s/sn2650 twice on 147 notes before the fix; the second now renders
+    # by its full-id URL. A duplicated rendered href is a failure.
+    rel_hrefs = ["/s/" + h for h, _, _ in rel]
+    if len(rel_hrefs) != len(set(rel_hrefs)):
+        dups = sorted({h for h in rel_hrefs if rel_hrefs.count(h) > 1})
+        errs.append(f"related duplicated href: {dups}")
+    if len(set(rel_hrefs)) < 3: errs.append(f"related distinct x{len(set(rel_hrefs))}")
     for _, _, why in rel:
         if not (why.startswith("Same topic:") or why.startswith("Same list:") or why.startswith("Same cluster:")):
             errs.append(f"related without reason: {why}")
