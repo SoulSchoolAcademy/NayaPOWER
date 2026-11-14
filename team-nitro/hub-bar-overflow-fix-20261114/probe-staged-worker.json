@@ -1,0 +1,2066 @@
+{
+ "390-cold": {
+  "rest": {
+   "vw": 390,
+   "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+   "more": "right",
+   "row": {
+    "scrollWidth": 578,
+    "clientWidth": 370,
+    "scrollLeft": 0
+   },
+   "fade": {
+    "before": "0",
+    "after": "1"
+   },
+   "navL": "none",
+   "navR": "grid",
+   "pills": [
+    {
+     "label": "Mail",
+     "left": 10,
+     "right": 60,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Dashboard",
+     "left": 66,
+     "right": 135,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Business",
+     "left": 141,
+     "right": 197,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Space",
+     "left": 203,
+     "right": 253,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 259,
+     "right": 310,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 316,
+     "right": 397,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Smart Lists",
+     "left": 403,
+     "right": 475,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Reports",
+     "left": 481,
+     "right": 532,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "10 apps",
+     "left": 538,
+     "right": 588,
+     "jewel": 44,
+     "visible": false
+    }
+   ],
+   "gems": [
+    {
+     "label": "Personal",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 564
+    },
+    {
+     "label": "Business",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 540
+    },
+    {
+     "label": "Thing",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 676
+    }
+   ],
+   "modal": [],
+   "note": {
+    "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS",
+    "sn2696": true,
+    "hook": false,
+    "nutshell": true
+   },
+   "feedCards": 0
+  },
+  "after_right": {
+   "vw": 390,
+   "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+   "more": "left",
+   "row": {
+    "scrollWidth": 578,
+    "clientWidth": 370,
+    "scrollLeft": 208
+   },
+   "fade": {
+    "before": "1",
+    "after": "0.94643"
+   },
+   "navL": "grid",
+   "navR": "none",
+   "pills": [
+    {
+     "label": "Mail",
+     "left": -198,
+     "right": -148,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Dashboard",
+     "left": -142,
+     "right": -73,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Business",
+     "left": -67,
+     "right": -11,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Space",
+     "left": -5,
+     "right": 45,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Growth",
+     "left": 51,
+     "right": 102,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 108,
+     "right": 189,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 195,
+     "right": 267,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 273,
+     "right": 324,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 330,
+     "right": 380,
+     "jewel": 45,
+     "visible": true
+    }
+   ],
+   "gems": [
+    {
+     "label": "Personal",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 564
+    },
+    {
+     "label": "Business",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 540
+    },
+    {
+     "label": "Thing",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 676
+    }
+   ],
+   "modal": [],
+   "note": {
+    "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS",
+    "sn2696": true,
+    "hook": false,
+    "nutshell": true
+   },
+   "feedCards": 0
+  },
+  "after_left": {
+   "vw": 390,
+   "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+   "more": "left right",
+   "row": {
+    "scrollWidth": 578,
+    "clientWidth": 370,
+    "scrollLeft": 183
+   },
+   "fade": {
+    "before": "1",
+    "after": "1"
+   },
+   "navL": "grid",
+   "navR": "grid",
+   "pills": [
+    {
+     "label": "Mail",
+     "left": -173,
+     "right": -123,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Dashboard",
+     "left": -117,
+     "right": -48,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Business",
+     "left": -42,
+     "right": 14,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Space",
+     "left": 20,
+     "right": 70,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 76,
+     "right": 127,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 133,
+     "right": 214,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 220,
+     "right": 292,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 298,
+     "right": 349,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 355,
+     "right": 405,
+     "jewel": 44,
+     "visible": false
+    }
+   ],
+   "gems": [
+    {
+     "label": "Personal",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 564
+    },
+    {
+     "label": "Business",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 540
+    },
+    {
+     "label": "Thing",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 676
+    }
+   ],
+   "modal": [],
+   "note": {
+    "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS",
+    "sn2696": true,
+    "hook": false,
+    "nutshell": true
+   },
+   "feedCards": 0
+  },
+  "errors": [],
+  "modal_settled_4s": "none",
+  "modal_6s": "none"
+ },
+ "390-direct": {
+  "rest": {
+   "vw": 390,
+   "title": "Smart Feed \u2014 NayaNET",
+   "more": "right",
+   "row": {
+    "scrollWidth": 578,
+    "clientWidth": 370,
+    "scrollLeft": 0
+   },
+   "fade": {
+    "before": "0",
+    "after": "1"
+   },
+   "navL": "none",
+   "navR": "grid",
+   "pills": [
+    {
+     "label": "Mail",
+     "left": 10,
+     "right": 60,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Dashboard",
+     "left": 66,
+     "right": 135,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Business",
+     "left": 141,
+     "right": 197,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Space",
+     "left": 203,
+     "right": 253,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 259,
+     "right": 310,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 316,
+     "right": 397,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Smart Lists",
+     "left": 403,
+     "right": 475,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Reports",
+     "left": 481,
+     "right": 532,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "10 apps",
+     "left": 538,
+     "right": 588,
+     "jewel": 44,
+     "visible": false
+    }
+   ],
+   "gems": [
+    {
+     "label": "Personal",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 564
+    },
+    {
+     "label": "Business",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 540
+    },
+    {
+     "label": "Thing",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 676
+    }
+   ],
+   "modal": [
+    "naya-install-overlay"
+   ],
+   "note": {
+    "title": "Good morning.",
+    "sn2696": true,
+    "hook": true,
+    "nutshell": true
+   },
+   "feedCards": 0
+  },
+  "after_right": {
+   "vw": 390,
+   "title": "Smart Feed \u2014 NayaNET",
+   "more": "left",
+   "row": {
+    "scrollWidth": 578,
+    "clientWidth": 370,
+    "scrollLeft": 208
+   },
+   "fade": {
+    "before": "1",
+    "after": "0"
+   },
+   "navL": "grid",
+   "navR": "none",
+   "pills": [
+    {
+     "label": "Mail",
+     "left": -198,
+     "right": -148,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Dashboard",
+     "left": -142,
+     "right": -73,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Business",
+     "left": -67,
+     "right": -11,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Space",
+     "left": -5,
+     "right": 45,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Growth",
+     "left": 51,
+     "right": 102,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 108,
+     "right": 189,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 195,
+     "right": 267,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 273,
+     "right": 324,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 330,
+     "right": 380,
+     "jewel": 48,
+     "visible": true
+    }
+   ],
+   "gems": [
+    {
+     "label": "Personal",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 564
+    },
+    {
+     "label": "Business",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 540
+    },
+    {
+     "label": "Thing",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 676
+    }
+   ],
+   "modal": [
+    "naya-install-overlay"
+   ],
+   "note": {
+    "title": "Good morning.",
+    "sn2696": true,
+    "hook": true,
+    "nutshell": true
+   },
+   "feedCards": 0
+  },
+  "after_left": {
+   "vw": 390,
+   "title": "Smart Feed \u2014 NayaNET",
+   "more": "left right",
+   "row": {
+    "scrollWidth": 578,
+    "clientWidth": 370,
+    "scrollLeft": 183
+   },
+   "fade": {
+    "before": "1",
+    "after": "1"
+   },
+   "navL": "grid",
+   "navR": "grid",
+   "pills": [
+    {
+     "label": "Mail",
+     "left": -173,
+     "right": -123,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Dashboard",
+     "left": -117,
+     "right": -48,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Business",
+     "left": -42,
+     "right": 14,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Space",
+     "left": 20,
+     "right": 70,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 76,
+     "right": 127,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 133,
+     "right": 214,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 220,
+     "right": 292,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 298,
+     "right": 349,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 355,
+     "right": 405,
+     "jewel": 44,
+     "visible": false
+    }
+   ],
+   "gems": [
+    {
+     "label": "Personal",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 564
+    },
+    {
+     "label": "Business",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 540
+    },
+    {
+     "label": "Thing",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 676
+    }
+   ],
+   "modal": [
+    "naya-install-overlay"
+   ],
+   "note": {
+    "title": "Good morning.",
+    "sn2696": true,
+    "hook": true,
+    "nutshell": true
+   },
+   "feedCards": 0
+  },
+  "errors": [],
+  "modal_settled_4s": "naya-install-overlay show",
+  "modal_6s": "naya-install-overlay show"
+ },
+ "360-cold": {
+  "rest": {
+   "vw": 360,
+   "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+   "more": "right",
+   "row": {
+    "scrollWidth": 578,
+    "clientWidth": 340,
+    "scrollLeft": 0
+   },
+   "fade": {
+    "before": "0",
+    "after": "1"
+   },
+   "navL": "none",
+   "navR": "grid",
+   "pills": [
+    {
+     "label": "Mail",
+     "left": 10,
+     "right": 60,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Dashboard",
+     "left": 66,
+     "right": 135,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Business",
+     "left": 141,
+     "right": 197,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Space",
+     "left": 203,
+     "right": 253,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 259,
+     "right": 310,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 316,
+     "right": 397,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Smart Lists",
+     "left": 403,
+     "right": 475,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Reports",
+     "left": 481,
+     "right": 532,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "10 apps",
+     "left": 538,
+     "right": 588,
+     "jewel": 44,
+     "visible": false
+    }
+   ],
+   "gems": [
+    {
+     "label": "Personal",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 564
+    },
+    {
+     "label": "Business",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 540
+    },
+    {
+     "label": "Thing",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 676
+    }
+   ],
+   "modal": [],
+   "note": {
+    "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS",
+    "sn2696": true,
+    "hook": false,
+    "nutshell": true
+   },
+   "feedCards": 0
+  },
+  "after_right": {
+   "vw": 360,
+   "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+   "more": "left",
+   "row": {
+    "scrollWidth": 578,
+    "clientWidth": 340,
+    "scrollLeft": 238
+   },
+   "fade": {
+    "before": "1",
+    "after": "0"
+   },
+   "navL": "grid",
+   "navR": "none",
+   "pills": [
+    {
+     "label": "Mail",
+     "left": -228,
+     "right": -178,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Dashboard",
+     "left": -172,
+     "right": -103,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Business",
+     "left": -97,
+     "right": -41,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Space",
+     "left": -35,
+     "right": 15,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Growth",
+     "left": 21,
+     "right": 72,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 78,
+     "right": 159,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 165,
+     "right": 237,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 243,
+     "right": 294,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 300,
+     "right": 350,
+     "jewel": 48,
+     "visible": true
+    }
+   ],
+   "gems": [
+    {
+     "label": "Personal",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 564
+    },
+    {
+     "label": "Business",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 540
+    },
+    {
+     "label": "Thing",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 676
+    }
+   ],
+   "modal": [],
+   "note": {
+    "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS",
+    "sn2696": true,
+    "hook": false,
+    "nutshell": true
+   },
+   "feedCards": 0
+  },
+  "after_left": {
+   "vw": 360,
+   "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+   "more": "left right",
+   "row": {
+    "scrollWidth": 578,
+    "clientWidth": 340,
+    "scrollLeft": 183
+   },
+   "fade": {
+    "before": "1",
+    "after": "1"
+   },
+   "navL": "grid",
+   "navR": "grid",
+   "pills": [
+    {
+     "label": "Mail",
+     "left": -173,
+     "right": -123,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Dashboard",
+     "left": -117,
+     "right": -48,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Business",
+     "left": -42,
+     "right": 14,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Space",
+     "left": 20,
+     "right": 70,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 76,
+     "right": 127,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 133,
+     "right": 214,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 220,
+     "right": 292,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 298,
+     "right": 349,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 355,
+     "right": 405,
+     "jewel": 44,
+     "visible": false
+    }
+   ],
+   "gems": [
+    {
+     "label": "Personal",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 564
+    },
+    {
+     "label": "Business",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 540
+    },
+    {
+     "label": "Thing",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 676
+    }
+   ],
+   "modal": [],
+   "note": {
+    "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS",
+    "sn2696": true,
+    "hook": false,
+    "nutshell": true
+   },
+   "feedCards": 0
+  },
+  "errors": [],
+  "modal_settled_4s": "none",
+  "modal_6s": "none"
+ },
+ "360-direct": {
+  "rest": {
+   "vw": 360,
+   "title": "Smart Feed \u2014 NayaNET",
+   "more": "right",
+   "row": {
+    "scrollWidth": 578,
+    "clientWidth": 340,
+    "scrollLeft": 0
+   },
+   "fade": {
+    "before": "0",
+    "after": "1"
+   },
+   "navL": "none",
+   "navR": "grid",
+   "pills": [
+    {
+     "label": "Mail",
+     "left": 10,
+     "right": 60,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Dashboard",
+     "left": 66,
+     "right": 135,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Business",
+     "left": 141,
+     "right": 197,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Space",
+     "left": 203,
+     "right": 253,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 259,
+     "right": 310,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 316,
+     "right": 397,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Smart Lists",
+     "left": 403,
+     "right": 475,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Reports",
+     "left": 481,
+     "right": 532,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "10 apps",
+     "left": 538,
+     "right": 588,
+     "jewel": 44,
+     "visible": false
+    }
+   ],
+   "gems": [
+    {
+     "label": "Personal",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 564
+    },
+    {
+     "label": "Business",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 540
+    },
+    {
+     "label": "Thing",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 676
+    }
+   ],
+   "modal": [
+    "naya-install-overlay"
+   ],
+   "note": {
+    "title": "Good morning.",
+    "sn2696": true,
+    "hook": true,
+    "nutshell": true
+   },
+   "feedCards": 0
+  },
+  "after_right": {
+   "vw": 360,
+   "title": "Smart Feed \u2014 NayaNET",
+   "more": "left",
+   "row": {
+    "scrollWidth": 578,
+    "clientWidth": 340,
+    "scrollLeft": 238
+   },
+   "fade": {
+    "before": "1",
+    "after": "0"
+   },
+   "navL": "grid",
+   "navR": "none",
+   "pills": [
+    {
+     "label": "Mail",
+     "left": -228,
+     "right": -178,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Dashboard",
+     "left": -172,
+     "right": -103,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Business",
+     "left": -97,
+     "right": -41,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Space",
+     "left": -35,
+     "right": 15,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Growth",
+     "left": 21,
+     "right": 72,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 78,
+     "right": 159,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 165,
+     "right": 237,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 243,
+     "right": 294,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 300,
+     "right": 350,
+     "jewel": 48,
+     "visible": true
+    }
+   ],
+   "gems": [
+    {
+     "label": "Personal",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 564
+    },
+    {
+     "label": "Business",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 540
+    },
+    {
+     "label": "Thing",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 676
+    }
+   ],
+   "modal": [
+    "naya-install-overlay"
+   ],
+   "note": {
+    "title": "Good morning.",
+    "sn2696": true,
+    "hook": true,
+    "nutshell": true
+   },
+   "feedCards": 0
+  },
+  "after_left": {
+   "vw": 360,
+   "title": "Smart Feed \u2014 NayaNET",
+   "more": "left right",
+   "row": {
+    "scrollWidth": 578,
+    "clientWidth": 340,
+    "scrollLeft": 183
+   },
+   "fade": {
+    "before": "1",
+    "after": "1"
+   },
+   "navL": "grid",
+   "navR": "grid",
+   "pills": [
+    {
+     "label": "Mail",
+     "left": -173,
+     "right": -123,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Dashboard",
+     "left": -117,
+     "right": -48,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Business",
+     "left": -42,
+     "right": 14,
+     "jewel": 44,
+     "visible": false
+    },
+    {
+     "label": "Space",
+     "left": 20,
+     "right": 70,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 76,
+     "right": 127,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 133,
+     "right": 214,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 220,
+     "right": 292,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 298,
+     "right": 349,
+     "jewel": 44,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 355,
+     "right": 405,
+     "jewel": 44,
+     "visible": false
+    }
+   ],
+   "gems": [
+    {
+     "label": "Personal",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 564
+    },
+    {
+     "label": "Business",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 540
+    },
+    {
+     "label": "Thing",
+     "w": 14,
+     "h": 14,
+     "radius": "0px",
+     "svgLen": 676
+    }
+   ],
+   "modal": [
+    "naya-install-overlay"
+   ],
+   "note": {
+    "title": "Good morning.",
+    "sn2696": true,
+    "hook": true,
+    "nutshell": true
+   },
+   "feedCards": 0
+  },
+  "errors": [],
+  "modal_settled_4s": "naya-install-overlay show",
+  "modal_6s": "naya-install-overlay show"
+ },
+ "1440-cold": {
+  "rest": {
+   "vw": 1440,
+   "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+   "more": "",
+   "row": {
+    "scrollWidth": 677,
+    "clientWidth": 677,
+    "scrollLeft": 0
+   },
+   "fade": {
+    "before": "0",
+    "after": "0"
+   },
+   "navL": "none",
+   "navR": "none",
+   "pills": [
+    {
+     "label": "Mail",
+     "left": 382,
+     "right": 436,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Dashboard",
+     "left": 444,
+     "right": 525,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Business",
+     "left": 533,
+     "right": 600,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Space",
+     "left": 608,
+     "right": 662,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 670,
+     "right": 730,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 738,
+     "right": 834,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 842,
+     "right": 926,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 934,
+     "right": 995,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 1003,
+     "right": 1058,
+     "jewel": 46,
+     "visible": true
+    }
+   ],
+   "gems": [
+    {
+     "label": "Personal",
+     "w": 25,
+     "h": 25,
+     "radius": "0px",
+     "svgLen": 564
+    },
+    {
+     "label": "Business",
+     "w": 25,
+     "h": 25,
+     "radius": "0px",
+     "svgLen": 540
+    },
+    {
+     "label": "Thing",
+     "w": 25,
+     "h": 25,
+     "radius": "0px",
+     "svgLen": 676
+    }
+   ],
+   "modal": [],
+   "note": {
+    "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS",
+    "sn2696": true,
+    "hook": false,
+    "nutshell": true
+   },
+   "feedCards": 0
+  },
+  "after_right": {
+   "vw": 1440,
+   "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+   "more": "",
+   "row": {
+    "scrollWidth": 677,
+    "clientWidth": 677,
+    "scrollLeft": 0
+   },
+   "fade": {
+    "before": "0",
+    "after": "0"
+   },
+   "navL": "none",
+   "navR": "none",
+   "pills": [
+    {
+     "label": "Mail",
+     "left": 382,
+     "right": 436,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Dashboard",
+     "left": 444,
+     "right": 525,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Business",
+     "left": 533,
+     "right": 600,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Space",
+     "left": 608,
+     "right": 662,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 670,
+     "right": 730,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 738,
+     "right": 834,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 842,
+     "right": 926,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 934,
+     "right": 995,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 1003,
+     "right": 1058,
+     "jewel": 46,
+     "visible": true
+    }
+   ],
+   "gems": [
+    {
+     "label": "Personal",
+     "w": 25,
+     "h": 25,
+     "radius": "0px",
+     "svgLen": 564
+    },
+    {
+     "label": "Business",
+     "w": 25,
+     "h": 25,
+     "radius": "0px",
+     "svgLen": 540
+    },
+    {
+     "label": "Thing",
+     "w": 25,
+     "h": 25,
+     "radius": "0px",
+     "svgLen": 676
+    }
+   ],
+   "modal": [],
+   "note": {
+    "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS",
+    "sn2696": true,
+    "hook": false,
+    "nutshell": true
+   },
+   "feedCards": 0
+  },
+  "after_left": {
+   "vw": 1440,
+   "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+   "more": "",
+   "row": {
+    "scrollWidth": 677,
+    "clientWidth": 677,
+    "scrollLeft": 0
+   },
+   "fade": {
+    "before": "0",
+    "after": "0"
+   },
+   "navL": "none",
+   "navR": "none",
+   "pills": [
+    {
+     "label": "Mail",
+     "left": 382,
+     "right": 436,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Dashboard",
+     "left": 444,
+     "right": 525,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Business",
+     "left": 533,
+     "right": 600,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Space",
+     "left": 608,
+     "right": 662,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 670,
+     "right": 730,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 738,
+     "right": 834,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 842,
+     "right": 926,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 934,
+     "right": 995,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 1003,
+     "right": 1058,
+     "jewel": 46,
+     "visible": true
+    }
+   ],
+   "gems": [
+    {
+     "label": "Personal",
+     "w": 25,
+     "h": 25,
+     "radius": "0px",
+     "svgLen": 564
+    },
+    {
+     "label": "Business",
+     "w": 25,
+     "h": 25,
+     "radius": "0px",
+     "svgLen": 540
+    },
+    {
+     "label": "Thing",
+     "w": 25,
+     "h": 25,
+     "radius": "0px",
+     "svgLen": 676
+    }
+   ],
+   "modal": [],
+   "note": {
+    "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS",
+    "sn2696": true,
+    "hook": false,
+    "nutshell": true
+   },
+   "feedCards": 0
+  },
+  "errors": [],
+  "modal_settled_4s": "none",
+  "modal_6s": "none"
+ },
+ "1440-direct": {
+  "rest": {
+   "vw": 1440,
+   "title": "Smart Feed \u2014 NayaNET",
+   "more": "",
+   "row": {
+    "scrollWidth": 677,
+    "clientWidth": 677,
+    "scrollLeft": 0
+   },
+   "fade": {
+    "before": "0",
+    "after": "0"
+   },
+   "navL": "none",
+   "navR": "none",
+   "pills": [
+    {
+     "label": "Mail",
+     "left": 382,
+     "right": 436,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Dashboard",
+     "left": 444,
+     "right": 525,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Business",
+     "left": 533,
+     "right": 600,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Space",
+     "left": 608,
+     "right": 662,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 670,
+     "right": 730,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 738,
+     "right": 834,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 842,
+     "right": 926,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 934,
+     "right": 995,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 1003,
+     "right": 1058,
+     "jewel": 46,
+     "visible": true
+    }
+   ],
+   "gems": [
+    {
+     "label": "Personal",
+     "w": 25,
+     "h": 25,
+     "radius": "0px",
+     "svgLen": 564
+    },
+    {
+     "label": "Business",
+     "w": 25,
+     "h": 25,
+     "radius": "0px",
+     "svgLen": 540
+    },
+    {
+     "label": "Thing",
+     "w": 25,
+     "h": 25,
+     "radius": "0px",
+     "svgLen": 676
+    }
+   ],
+   "modal": [
+    "naya-install-overlay"
+   ],
+   "note": {
+    "title": "Good morning.",
+    "sn2696": true,
+    "hook": true,
+    "nutshell": true
+   },
+   "feedCards": 0
+  },
+  "after_right": {
+   "vw": 1440,
+   "title": "Smart Feed \u2014 NayaNET",
+   "more": "",
+   "row": {
+    "scrollWidth": 677,
+    "clientWidth": 677,
+    "scrollLeft": 0
+   },
+   "fade": {
+    "before": "0",
+    "after": "0"
+   },
+   "navL": "none",
+   "navR": "none",
+   "pills": [
+    {
+     "label": "Mail",
+     "left": 382,
+     "right": 436,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Dashboard",
+     "left": 444,
+     "right": 525,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Business",
+     "left": 533,
+     "right": 600,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Space",
+     "left": 608,
+     "right": 662,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 670,
+     "right": 730,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 738,
+     "right": 834,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 842,
+     "right": 926,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 934,
+     "right": 995,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 1003,
+     "right": 1058,
+     "jewel": 46,
+     "visible": true
+    }
+   ],
+   "gems": [
+    {
+     "label": "Personal",
+     "w": 25,
+     "h": 25,
+     "radius": "0px",
+     "svgLen": 564
+    },
+    {
+     "label": "Business",
+     "w": 25,
+     "h": 25,
+     "radius": "0px",
+     "svgLen": 540
+    },
+    {
+     "label": "Thing",
+     "w": 25,
+     "h": 25,
+     "radius": "0px",
+     "svgLen": 676
+    }
+   ],
+   "modal": [
+    "naya-install-overlay"
+   ],
+   "note": {
+    "title": "Good morning.",
+    "sn2696": true,
+    "hook": true,
+    "nutshell": true
+   },
+   "feedCards": 0
+  },
+  "after_left": {
+   "vw": 1440,
+   "title": "Smart Feed \u2014 NayaNET",
+   "more": "",
+   "row": {
+    "scrollWidth": 677,
+    "clientWidth": 677,
+    "scrollLeft": 0
+   },
+   "fade": {
+    "before": "0",
+    "after": "0"
+   },
+   "navL": "none",
+   "navR": "none",
+   "pills": [
+    {
+     "label": "Mail",
+     "left": 382,
+     "right": 436,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Dashboard",
+     "left": 444,
+     "right": 525,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Business",
+     "left": 533,
+     "right": 600,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Space",
+     "left": 608,
+     "right": 662,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 670,
+     "right": 730,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 738,
+     "right": 834,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 842,
+     "right": 926,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 934,
+     "right": 995,
+     "jewel": 46,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 1003,
+     "right": 1058,
+     "jewel": 46,
+     "visible": true
+    }
+   ],
+   "gems": [
+    {
+     "label": "Personal",
+     "w": 25,
+     "h": 25,
+     "radius": "0px",
+     "svgLen": 564
+    },
+    {
+     "label": "Business",
+     "w": 25,
+     "h": 25,
+     "radius": "0px",
+     "svgLen": 540
+    },
+    {
+     "label": "Thing",
+     "w": 25,
+     "h": 25,
+     "radius": "0px",
+     "svgLen": 676
+    }
+   ],
+   "modal": [
+    "naya-install-overlay"
+   ],
+   "note": {
+    "title": "Good morning.",
+    "sn2696": true,
+    "hook": true,
+    "nutshell": true
+   },
+   "feedCards": 0
+  },
+  "errors": [],
+  "modal_settled_4s": "naya-install-overlay show",
+  "modal_6s": "naya-install-overlay show"
+ }
+}

@@ -1,0 +1,707 @@
+{
+ "390": {
+  "rest": {
+   "vw": 390,
+   "more": "right",
+   "row": {
+    "scrollWidth": 578,
+    "clientWidth": 370,
+    "scrollLeft": 0
+   },
+   "fadeL": "1",
+   "navL": {
+    "display": "none",
+    "rect": []
+   },
+   "navR": {
+    "display": "grid",
+    "rect": []
+   },
+   "pills": [
+    {
+     "label": "Mail",
+     "left": 10,
+     "right": 60,
+     "visible": true
+    },
+    {
+     "label": "Dashboard",
+     "left": 66,
+     "right": 135,
+     "visible": true
+    },
+    {
+     "label": "Business",
+     "left": 141,
+     "right": 197,
+     "visible": true
+    },
+    {
+     "label": "Space",
+     "left": 203,
+     "right": 253,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 259,
+     "right": 310,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 316,
+     "right": 397,
+     "visible": false
+    },
+    {
+     "label": "Smart Lists",
+     "left": 403,
+     "right": 475,
+     "visible": false
+    },
+    {
+     "label": "Reports",
+     "left": 481,
+     "right": 532,
+     "visible": false
+    },
+    {
+     "label": "10 apps",
+     "left": 538,
+     "right": 588,
+     "visible": false
+    }
+   ]
+  },
+  "fade_rest": {
+   "before": "0",
+   "after": "1"
+  },
+  "after_right_click": {
+   "vw": 390,
+   "more": "left",
+   "row": {
+    "scrollWidth": 578,
+    "clientWidth": 370,
+    "scrollLeft": 208
+   },
+   "fadeL": "1",
+   "navL": {
+    "display": "grid",
+    "rect": []
+   },
+   "navR": {
+    "display": "none",
+    "rect": []
+   },
+   "pills": [
+    {
+     "label": "Mail",
+     "left": -198,
+     "right": -148,
+     "visible": false
+    },
+    {
+     "label": "Dashboard",
+     "left": -142,
+     "right": -73,
+     "visible": false
+    },
+    {
+     "label": "Business",
+     "left": -67,
+     "right": -11,
+     "visible": false
+    },
+    {
+     "label": "Space",
+     "left": -5,
+     "right": 45,
+     "visible": false
+    },
+    {
+     "label": "Growth",
+     "left": 51,
+     "right": 102,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 108,
+     "right": 189,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 195,
+     "right": 267,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 273,
+     "right": 324,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 330,
+     "right": 380,
+     "visible": true
+    }
+   ]
+  },
+  "fade_scrolled": {
+   "before": "1",
+   "after": "0"
+  },
+  "after_left_click": {
+   "vw": 390,
+   "more": "left right",
+   "row": {
+    "scrollWidth": 578,
+    "clientWidth": 370,
+    "scrollLeft": 183
+   },
+   "fadeL": "1",
+   "navL": {
+    "display": "grid",
+    "rect": []
+   },
+   "navR": {
+    "display": "grid",
+    "rect": []
+   },
+   "pills": [
+    {
+     "label": "Mail",
+     "left": -173,
+     "right": -123,
+     "visible": false
+    },
+    {
+     "label": "Dashboard",
+     "left": -117,
+     "right": -48,
+     "visible": false
+    },
+    {
+     "label": "Business",
+     "left": -42,
+     "right": 14,
+     "visible": false
+    },
+    {
+     "label": "Space",
+     "left": 20,
+     "right": 70,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 76,
+     "right": 127,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 133,
+     "right": 214,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 220,
+     "right": 292,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 298,
+     "right": 349,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 355,
+     "right": 405,
+     "visible": false
+    }
+   ]
+  },
+  "errors": [],
+  "gems_widths": [],
+  "modal_at_settle": "naya-install-overlay show"
+ },
+ "360": {
+  "rest": {
+   "vw": 360,
+   "more": "right",
+   "row": {
+    "scrollWidth": 578,
+    "clientWidth": 340,
+    "scrollLeft": 0
+   },
+   "fadeL": "1",
+   "navL": {
+    "display": "none",
+    "rect": []
+   },
+   "navR": {
+    "display": "grid",
+    "rect": []
+   },
+   "pills": [
+    {
+     "label": "Mail",
+     "left": 10,
+     "right": 60,
+     "visible": true
+    },
+    {
+     "label": "Dashboard",
+     "left": 66,
+     "right": 135,
+     "visible": true
+    },
+    {
+     "label": "Business",
+     "left": 141,
+     "right": 197,
+     "visible": true
+    },
+    {
+     "label": "Space",
+     "left": 203,
+     "right": 253,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 259,
+     "right": 310,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 316,
+     "right": 397,
+     "visible": false
+    },
+    {
+     "label": "Smart Lists",
+     "left": 403,
+     "right": 475,
+     "visible": false
+    },
+    {
+     "label": "Reports",
+     "left": 481,
+     "right": 532,
+     "visible": false
+    },
+    {
+     "label": "10 apps",
+     "left": 538,
+     "right": 588,
+     "visible": false
+    }
+   ]
+  },
+  "fade_rest": {
+   "before": "0",
+   "after": "1"
+  },
+  "after_right_click": {
+   "vw": 360,
+   "more": "left",
+   "row": {
+    "scrollWidth": 578,
+    "clientWidth": 340,
+    "scrollLeft": 238
+   },
+   "fadeL": "1",
+   "navL": {
+    "display": "grid",
+    "rect": []
+   },
+   "navR": {
+    "display": "none",
+    "rect": []
+   },
+   "pills": [
+    {
+     "label": "Mail",
+     "left": -228,
+     "right": -178,
+     "visible": false
+    },
+    {
+     "label": "Dashboard",
+     "left": -172,
+     "right": -103,
+     "visible": false
+    },
+    {
+     "label": "Business",
+     "left": -97,
+     "right": -41,
+     "visible": false
+    },
+    {
+     "label": "Space",
+     "left": -35,
+     "right": 15,
+     "visible": false
+    },
+    {
+     "label": "Growth",
+     "left": 21,
+     "right": 72,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 78,
+     "right": 159,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 165,
+     "right": 237,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 243,
+     "right": 294,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 300,
+     "right": 350,
+     "visible": true
+    }
+   ]
+  },
+  "fade_scrolled": {
+   "before": "1",
+   "after": "0"
+  },
+  "after_left_click": {
+   "vw": 360,
+   "more": "left right",
+   "row": {
+    "scrollWidth": 578,
+    "clientWidth": 340,
+    "scrollLeft": 183
+   },
+   "fadeL": "1",
+   "navL": {
+    "display": "grid",
+    "rect": []
+   },
+   "navR": {
+    "display": "grid",
+    "rect": []
+   },
+   "pills": [
+    {
+     "label": "Mail",
+     "left": -173,
+     "right": -123,
+     "visible": false
+    },
+    {
+     "label": "Dashboard",
+     "left": -117,
+     "right": -48,
+     "visible": false
+    },
+    {
+     "label": "Business",
+     "left": -42,
+     "right": 14,
+     "visible": false
+    },
+    {
+     "label": "Space",
+     "left": 20,
+     "right": 70,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 76,
+     "right": 127,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 133,
+     "right": 214,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 220,
+     "right": 292,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 298,
+     "right": 349,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 355,
+     "right": 405,
+     "visible": false
+    }
+   ]
+  },
+  "errors": [],
+  "gems_widths": [],
+  "modal_at_settle": "naya-install-overlay show"
+ },
+ "1440": {
+  "rest": {
+   "vw": 1440,
+   "more": "",
+   "row": {
+    "scrollWidth": 677,
+    "clientWidth": 677,
+    "scrollLeft": 0
+   },
+   "fadeL": "1",
+   "navL": {
+    "display": "none",
+    "rect": []
+   },
+   "navR": {
+    "display": "none",
+    "rect": []
+   },
+   "pills": [
+    {
+     "label": "Mail",
+     "left": 382,
+     "right": 436,
+     "visible": true
+    },
+    {
+     "label": "Dashboard",
+     "left": 444,
+     "right": 525,
+     "visible": true
+    },
+    {
+     "label": "Business",
+     "left": 533,
+     "right": 600,
+     "visible": true
+    },
+    {
+     "label": "Space",
+     "left": 608,
+     "right": 662,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 670,
+     "right": 730,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 738,
+     "right": 834,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 842,
+     "right": 926,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 934,
+     "right": 995,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 1003,
+     "right": 1058,
+     "visible": true
+    }
+   ]
+  },
+  "fade_rest": {
+   "before": "0",
+   "after": "0"
+  },
+  "after_right_click": {
+   "vw": 1440,
+   "more": "",
+   "row": {
+    "scrollWidth": 677,
+    "clientWidth": 677,
+    "scrollLeft": 0
+   },
+   "fadeL": "1",
+   "navL": {
+    "display": "none",
+    "rect": []
+   },
+   "navR": {
+    "display": "none",
+    "rect": []
+   },
+   "pills": [
+    {
+     "label": "Mail",
+     "left": 382,
+     "right": 436,
+     "visible": true
+    },
+    {
+     "label": "Dashboard",
+     "left": 444,
+     "right": 525,
+     "visible": true
+    },
+    {
+     "label": "Business",
+     "left": 533,
+     "right": 600,
+     "visible": true
+    },
+    {
+     "label": "Space",
+     "left": 608,
+     "right": 662,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 670,
+     "right": 730,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 738,
+     "right": 834,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 842,
+     "right": 926,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 934,
+     "right": 995,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 1003,
+     "right": 1058,
+     "visible": true
+    }
+   ]
+  },
+  "fade_scrolled": {
+   "before": "0",
+   "after": "0"
+  },
+  "after_left_click": {
+   "vw": 1440,
+   "more": "",
+   "row": {
+    "scrollWidth": 677,
+    "clientWidth": 677,
+    "scrollLeft": 0
+   },
+   "fadeL": "1",
+   "navL": {
+    "display": "none",
+    "rect": []
+   },
+   "navR": {
+    "display": "none",
+    "rect": []
+   },
+   "pills": [
+    {
+     "label": "Mail",
+     "left": 382,
+     "right": 436,
+     "visible": true
+    },
+    {
+     "label": "Dashboard",
+     "left": 444,
+     "right": 525,
+     "visible": true
+    },
+    {
+     "label": "Business",
+     "left": 533,
+     "right": 600,
+     "visible": true
+    },
+    {
+     "label": "Space",
+     "left": 608,
+     "right": 662,
+     "visible": true
+    },
+    {
+     "label": "Growth",
+     "left": 670,
+     "right": 730,
+     "visible": true
+    },
+    {
+     "label": "Connections",
+     "left": 738,
+     "right": 834,
+     "visible": true
+    },
+    {
+     "label": "Smart Lists",
+     "left": 842,
+     "right": 926,
+     "visible": true
+    },
+    {
+     "label": "Reports",
+     "left": 934,
+     "right": 995,
+     "visible": true
+    },
+    {
+     "label": "10 apps",
+     "left": 1003,
+     "right": 1058,
+     "visible": true
+    }
+   ]
+  },
+  "errors": [],
+  "gems_widths": [],
+  "modal_at_settle": "naya-install-overlay show"
+ }
+}

@@ -1,0 +1,499 @@
+{
+ "390": {
+  "settled": {
+   "vw": 390,
+   "vh": 844,
+   "docSW": 390,
+   "bar": {
+    "overflowX": "visible",
+    "scrollWidth": 390,
+    "scrollLeft": 0,
+    "clientWidth": 390,
+    "rectRight": 390
+   },
+   "row": {
+    "overflowX": "auto",
+    "scrollWidth": 578,
+    "scrollLeft": 0,
+    "clientWidth": 370,
+    "rect": [
+     10,
+     380
+    ],
+    "scrollSnap": "x mandatory",
+    "scrollbarWidth": "none"
+   },
+   "pills": [
+    {
+     "label": "Mail",
+     "left": 10,
+     "right": 60,
+     "jewel": 44,
+     "lblW": 27
+    },
+    {
+     "label": "Dashboard",
+     "left": 66,
+     "right": 135,
+     "jewel": 44,
+     "lblW": 63
+    },
+    {
+     "label": "Business",
+     "left": 141,
+     "right": 197,
+     "jewel": 44,
+     "lblW": 50
+    },
+    {
+     "label": "Space",
+     "left": 203,
+     "right": 253,
+     "jewel": 44,
+     "lblW": 31
+    },
+    {
+     "label": "Growth",
+     "left": 259,
+     "right": 310,
+     "jewel": 44,
+     "lblW": 45
+    },
+    {
+     "label": "Connections",
+     "left": 316,
+     "right": 397,
+     "jewel": 44,
+     "lblW": 75
+    },
+    {
+     "label": "Smart Lists",
+     "left": 403,
+     "right": 475,
+     "jewel": 44,
+     "lblW": 66
+    },
+    {
+     "label": "Reports",
+     "left": 481,
+     "right": 532,
+     "jewel": 44,
+     "lblW": 45
+    },
+    {
+     "label": "10 apps",
+     "left": 538,
+     "right": 588,
+     "jewel": 44,
+     "lblW": 41
+    }
+   ],
+   "modal": [
+    {
+     "cls": "nav-btn nav-install",
+     "text": "Install app"
+    },
+    {
+     "cls": "naya-install-overlay show",
+     "text": "Install NayaNETYour intelligent hub, on your home screen \u2014 o"
+    },
+    {
+     "cls": "naya-install-card",
+     "text": "Install NayaNETYour intelligent hub, on your home screen \u2014 o"
+    },
+    {
+     "cls": "naya-install-sub",
+     "text": "Your intelligent hub, on your home screen \u2014 one tap away, no"
+    },
+    {
+     "cls": "primo theme-purple elev-2 naya-install-go",
+     "text": "Install the app"
+    }
+   ],
+   "errors": []
+  },
+  "modal_at_6s": [
+   {
+    "t": "Install app"
+   },
+   {
+    "t": "Install NayaNETYour intelligent hub, on your home screen \u2014 one tap away, no logi"
+   },
+   {
+    "t": "Install NayaNETYour intelligent hub, on your home screen \u2014 one tap away, no logi"
+   },
+   {
+    "t": "Your intelligent hub, on your home screen \u2014 one tap away, no login, ever. Any pa"
+   },
+   {
+    "t": "Install the app"
+   }
+  ],
+  "prog_scroll": {
+   "scrollLeft": 208,
+   "before": [
+    10,
+    66,
+    141,
+    203,
+    259,
+    316,
+    403,
+    481,
+    538
+   ],
+   "after": [
+    -198,
+    -142,
+    -67,
+    -5,
+    51,
+    108,
+    195,
+    273,
+    330
+   ]
+  },
+  "row_scrollLeft_after_drag": 208,
+  "pill_lefts_after_drag": [
+   -198,
+   -142,
+   -67,
+   -5,
+   51,
+   108,
+   195,
+   273,
+   330
+  ]
+ },
+ "360": {
+  "settled": {
+   "vw": 360,
+   "vh": 844,
+   "docSW": 360,
+   "bar": {
+    "overflowX": "visible",
+    "scrollWidth": 360,
+    "scrollLeft": 0,
+    "clientWidth": 360,
+    "rectRight": 360
+   },
+   "row": {
+    "overflowX": "auto",
+    "scrollWidth": 578,
+    "scrollLeft": 0,
+    "clientWidth": 340,
+    "rect": [
+     10,
+     350
+    ],
+    "scrollSnap": "x mandatory",
+    "scrollbarWidth": "none"
+   },
+   "pills": [
+    {
+     "label": "Mail",
+     "left": 10,
+     "right": 60,
+     "jewel": 44,
+     "lblW": 27
+    },
+    {
+     "label": "Dashboard",
+     "left": 66,
+     "right": 135,
+     "jewel": 44,
+     "lblW": 63
+    },
+    {
+     "label": "Business",
+     "left": 141,
+     "right": 197,
+     "jewel": 44,
+     "lblW": 50
+    },
+    {
+     "label": "Space",
+     "left": 203,
+     "right": 253,
+     "jewel": 44,
+     "lblW": 31
+    },
+    {
+     "label": "Growth",
+     "left": 259,
+     "right": 310,
+     "jewel": 44,
+     "lblW": 45
+    },
+    {
+     "label": "Connections",
+     "left": 316,
+     "right": 397,
+     "jewel": 44,
+     "lblW": 75
+    },
+    {
+     "label": "Smart Lists",
+     "left": 403,
+     "right": 475,
+     "jewel": 44,
+     "lblW": 66
+    },
+    {
+     "label": "Reports",
+     "left": 481,
+     "right": 532,
+     "jewel": 44,
+     "lblW": 45
+    },
+    {
+     "label": "10 apps",
+     "left": 538,
+     "right": 588,
+     "jewel": 44,
+     "lblW": 41
+    }
+   ],
+   "modal": [
+    {
+     "cls": "nav-btn nav-install",
+     "text": "Install app"
+    },
+    {
+     "cls": "naya-install-overlay show",
+     "text": "Install NayaNETYour intelligent hub, on your home screen \u2014 o"
+    },
+    {
+     "cls": "naya-install-card",
+     "text": "Install NayaNETYour intelligent hub, on your home screen \u2014 o"
+    },
+    {
+     "cls": "naya-install-sub",
+     "text": "Your intelligent hub, on your home screen \u2014 one tap away, no"
+    },
+    {
+     "cls": "primo theme-purple elev-2 naya-install-go",
+     "text": "Install the app"
+    }
+   ],
+   "errors": []
+  },
+  "modal_at_6s": [
+   {
+    "t": "Install app"
+   },
+   {
+    "t": "Install NayaNETYour intelligent hub, on your home screen \u2014 one tap away, no logi"
+   },
+   {
+    "t": "Install NayaNETYour intelligent hub, on your home screen \u2014 one tap away, no logi"
+   },
+   {
+    "t": "Your intelligent hub, on your home screen \u2014 one tap away, no login, ever. Any pa"
+   },
+   {
+    "t": "Install the app"
+   }
+  ],
+  "prog_scroll": {
+   "scrollLeft": 183.1666717529297,
+   "before": [
+    10,
+    66,
+    141,
+    203,
+    259,
+    316,
+    403,
+    481,
+    538
+   ],
+   "after": [
+    -173,
+    -117,
+    -42,
+    20,
+    76,
+    133,
+    220,
+    298,
+    355
+   ]
+  },
+  "row_scrollLeft_after_drag": 183.1666717529297,
+  "pill_lefts_after_drag": [
+   -173,
+   -117,
+   -42,
+   20,
+   76,
+   133,
+   220,
+   298,
+   355
+  ]
+ },
+ "1440": {
+  "settled": {
+   "vw": 1440,
+   "vh": 900,
+   "docSW": 1440,
+   "bar": {
+    "overflowX": "visible",
+    "scrollWidth": 1440,
+    "scrollLeft": 0,
+    "clientWidth": 1440,
+    "rectRight": 1440
+   },
+   "row": {
+    "overflowX": "auto",
+    "scrollWidth": 677,
+    "scrollLeft": 0,
+    "clientWidth": 677,
+    "rect": [
+     382,
+     1058
+    ],
+    "scrollSnap": "x mandatory",
+    "scrollbarWidth": "none"
+   },
+   "pills": [
+    {
+     "label": "Mail",
+     "left": 382,
+     "right": 436,
+     "jewel": 46,
+     "lblW": 31
+    },
+    {
+     "label": "Dashboard",
+     "left": 444,
+     "right": 525,
+     "jewel": 46,
+     "lblW": 74
+    },
+    {
+     "label": "Business",
+     "left": 533,
+     "right": 600,
+     "jewel": 46,
+     "lblW": 58
+    },
+    {
+     "label": "Space",
+     "left": 608,
+     "right": 662,
+     "jewel": 46,
+     "lblW": 36
+    },
+    {
+     "label": "Growth",
+     "left": 670,
+     "right": 730,
+     "jewel": 46,
+     "lblW": 53
+    },
+    {
+     "label": "Connections",
+     "left": 738,
+     "right": 834,
+     "jewel": 46,
+     "lblW": 87
+    },
+    {
+     "label": "Smart Lists",
+     "left": 842,
+     "right": 926,
+     "jewel": 46,
+     "lblW": 77
+    },
+    {
+     "label": "Reports",
+     "left": 934,
+     "right": 995,
+     "jewel": 46,
+     "lblW": 53
+    },
+    {
+     "label": "10 apps",
+     "left": 1003,
+     "right": 1058,
+     "jewel": 46,
+     "lblW": 47
+    }
+   ],
+   "modal": [
+    {
+     "cls": "naya-install-overlay show",
+     "text": "Install NayaNETYour intelligent hub, on your home screen \u2014 o"
+    },
+    {
+     "cls": "naya-install-card",
+     "text": "Install NayaNETYour intelligent hub, on your home screen \u2014 o"
+    },
+    {
+     "cls": "naya-install-sub",
+     "text": "Your intelligent hub, on your home screen \u2014 one tap away, no"
+    },
+    {
+     "cls": "primo theme-purple elev-2 naya-install-go",
+     "text": "Install the app"
+    }
+   ],
+   "errors": []
+  },
+  "modal_at_6s": [
+   {
+    "t": "Install NayaNETYour intelligent hub, on your home screen \u2014 one tap away, no logi"
+   },
+   {
+    "t": "Install NayaNETYour intelligent hub, on your home screen \u2014 one tap away, no logi"
+   },
+   {
+    "t": "Your intelligent hub, on your home screen \u2014 one tap away, no login, ever. Any pa"
+   },
+   {
+    "t": "Install the app"
+   }
+  ],
+  "prog_scroll": {
+   "scrollLeft": 0,
+   "before": [
+    382,
+    444,
+    533,
+    608,
+    670,
+    738,
+    842,
+    934,
+    1003
+   ],
+   "after": [
+    382,
+    444,
+    533,
+    608,
+    670,
+    738,
+    842,
+    934,
+    1003
+   ]
+  },
+  "row_scrollLeft_after_drag": 0,
+  "pill_lefts_after_drag": [
+   382,
+   444,
+   533,
+   608,
+   670,
+   738,
+   842,
+   934,
+   1003
+  ]
+ }
+}
