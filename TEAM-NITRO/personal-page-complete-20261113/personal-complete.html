@@ -26179,6 +26179,12 @@ document.addEventListener('click', function(e){
 @media(max-width:400px){
   #pcComposerBar #fcCreateRow .fc-create{font-size:10px;gap:0;}
   #pcComposerBar #fcCreateRow .fc-create span{font-size:10px;white-space:nowrap;}
+  /* Search label: at 360 the German string wraps to two lines inside the
+     2/3 button (202px of content in 201px — caught by eye, invisible to a
+     scrollWidth check because the wrap absorbs it). Label-only at <=400px,
+     10.5px, one line. */
+  #pcComposerBar #pcSearchBtn{font-size:0;gap:0;}
+  #pcComposerBar #pcSearchBtn span{font-size:10.5px;white-space:nowrap;}
 }
 </style>
 <script id="mw-translate">
