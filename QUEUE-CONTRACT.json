@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-14T03:49:15Z",
-  "tip": "823e519dee22bcffdd2632e0daf76591848058e5",
+  "generated_at": "2026-11-14T09:49:00Z",
+  "tip": "2ec4455e71136f189a004a067558ffcdc342956e",
   "prs": [
     {
       "number": 3345,
@@ -40,13 +40,40 @@
       "head": "17a36c5e51c6925c4e710ac2730c60bf909401f4"
     },
     {
-      "number": 3364,
-      "title": "Voice: keep italic words in pipeline spoken text (page parity)",
-      "tier": "A",
+      "number": 3365,
+      "title": "Fix: bound _projection_freshness git calls with a 15s timeout",
+      "tier": "B",
       "action": "CURE",
       "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "11965597fb39da88cc06e49d6e94c99e0b4aebad"
+      "head": "8591e55773a100cc0c6ca514024eb6d6c22286b7"
+    },
+    {
+      "number": 3366,
+      "title": "docs(brain): learning event 2026-11-13",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "2e6a587e66018f1ead09a5943275e476128bfa0b"
+    },
+    {
+      "number": 3367,
+      "title": "Revert: restore IB- prefix on SN-2685 line 53 (defect source eff25dc7, merged as #3360)",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, door-obligation; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "75b23d7c3490707c24539b393b67bd550bc177ed"
+    },
+    {
+      "number": 3368,
+      "title": "repair(brain-index): re-stamp index layer at tip 2ec4455e",
+      "tier": "C",
+      "action": "MERGE-NOW",
+      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
+      "owner": "dock",
+      "head": "30f48dab707c8a33340347c56b94f2991b9b0470"
     }
   ]
 }
