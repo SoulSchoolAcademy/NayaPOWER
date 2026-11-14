@@ -14106,7 +14106,9 @@ NF.register(UNIT, {
     window._dashFunnel={found:_fAll.c, joined:_fAll.j, boardClicks:tc, boardJoins:tj};
     /* SCORECARD FIX 2026-11-14 (2B): the nine PayPal plan links, itemized from
        the SAME fetch, before the board filter — each with its own click count,
-       so the Found dialog can show 5,151 = 1,468 + 3,683 with every part named.
+       so Found reconciles as board links + plan links, every part named
+       (ROUND 3: the clicks drill breaks down the board links; the plan
+       links keep their own group and total).
        No board is created for them (2026-11-07 ruling stands); this is a
        derivation of a number the page already shows. */
     var _plan9=[]; (links||[]).forEach(function(l){ if (_PAYPAL_BOARDLESS[String(l.name||'').toLowerCase()]){ var _a=byId[l.id]||{clicks:0,joins:0}; _plan9.push({name:l.name, clicks:Number(_a.clicks||0), joins:Number(_a.joins||0)}); } });
@@ -17068,14 +17070,36 @@ function salesViewRender(){
         var _p9c=(typeof _ff.plan9Clicks==='number')?_ff.plan9Clicks:0;
         var _escF=(typeof esc==='function')?esc:function(v){ return String(v==null?'':v); };
         var _spF=(typeof window._osSpc==='function')?window._osSpc:function(v){ return String(v); };
-        /* INSIDE FIX 2026-11-14 (1): the found block is live boards, not
-           plain text — one board per plan link, name and number apart, no
-           PayPal sentence, no arithmetic line. Boards harvest the per-link
-           cards + score-math rows: obsidian, elevated, gold number tile. */
-        var _h='<div class="os-found-title">WHERE THE CLICKS CAME FROM</div>';
+        /* INSIDE FIX 2026-11-14 ROUND 3 (2/3): the found block sits behind
+           a click and the numbers reconcile. The BOARD links are the
+           breakdown of the drill total — their clicks sum to the total
+           and the top link is the biggest row. The nine PayPal plan links
+           are a second population (no boards, 2026-11-07 ruling): their
+           own group, their own total, and the Found line adds both.
+           Colours cycle the page's own spectrum (window._osSeqColors).
+           Boards harvest the per-link cards + score-math rows: obsidian,
+           elevated, number tile in the row's own colour. */
+        var _escA=function(v){ return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); };
+        var _SPEC=(window._osSeqColors&&window._osSeqColors.length)?window._osSeqColors:['#a06bff','#3a5bff','#3fb8ff','#2fe89e','#ffbf3d'];
+        var _rowsS=_rows.slice().sort(function(a,b){ return (Number(b.clicks||0)-Number(a.clicks||0)); });
         var _p9s=_p9.slice().sort(function(a,b){ return (Number(b.clicks||0)-Number(a.clicks||0)); });
-        _p9s.forEach(function(p){ _h+='<div class="os-found-board"><span class="os-found-name">'+_escF(p.name)+'</span><span class="os-found-num">'+_spF(p.clicks)+'</span><span class="os-found-unit">clicks</span></div>'; });
-        _h+='<div class="os-found-board os-found-boardrow"><span class="os-found-name">Board links ('+_rows.length+' links)</span><span class="os-found-num">'+_spF(_bc)+'</span><span class="os-found-unit">clicks</span></div>';
+        var _open=!!window._osFoundOpen, _planOpen=!!window._osPlanOpen, _planDet=window._osPlanDetail||'';
+        var _h='<button type="button" class="os-found-toggle" data-os-found-toggle="1" aria-expanded="'+(_open?'true':'false')+'">'
+          +'<span class="os-found-toggle-t">WHERE THE CLICKS CAME FROM</span>'
+          +'<span class="os-found-toggle-s">'+_rows.length+' board links \u00b7 '+_spF(_bc)+' clicks &nbsp;\u00b7&nbsp; '+_p9.length+' plan links \u00b7 '+_spF(_p9c)+' clicks</span>'
+          +'<span class="os-found-toggle-c">'+(_open?'\u25b4 Hide the breakdown':'\u25be See the breakdown')+'</span></button>';
+        if (_open){
+          _rowsS.forEach(function(r,i){ _h+='<button type="button" class="os-found-board" data-sl-drill="'+_escA(r.name)+'" data-sl-drill-url="'+_escA(r.url||'')+'" style="--fc:'+_SPEC[i%_SPEC.length]+'" aria-label="'+_escA(r.name)+' — deeper stats"><span class="os-found-name">'+_escF(r.name)+'</span><span class="os-found-num">'+_spF(r.clicks)+'</span><span class="os-found-unit">clicks</span><span class="os-found-go">\u203a</span></button>'; });
+          _h+='<div class="os-found-board os-found-boardrow"><span class="os-found-name">Board links ('+_rows.length+' links)</span><span class="os-found-num">'+_spF(_bc)+'</span><span class="os-found-unit">clicks</span></div>';
+          _h+='<button type="button" class="os-found-toggle os-found-plantoggle" data-os-plan-toggle="1" aria-expanded="'+(_planOpen?'true':'false')+'"><span class="os-found-toggle-t">PLAN LINKS — PAYPAL CHECKOUT</span><span class="os-found-toggle-s">'+_p9.length+' links \u00b7 '+_spF(_p9c)+' clicks \u00b7 no boards</span><span class="os-found-toggle-c">'+(_planOpen?'\u25b4 Hide':'\u25be See the rows')+'</span></button>';
+          if (_planOpen){
+            _p9s.forEach(function(p,i){ _h+='<button type="button" class="os-found-board os-found-plan" data-os-plan="'+_escA(p.name)+'" style="--fc:'+_SPEC[i%_SPEC.length]+'" aria-expanded="'+(_planDet===p.name?'true':'false')+'"><span class="os-found-name">'+_escF(p.name)+'</span><span class="os-found-num">'+_spF(p.clicks)+'</span><span class="os-found-unit">clicks</span><span class="os-found-go">\u203a</span></button>';
+              if (_planDet===p.name){ var _sh=(_bc+_p9c)>0?Math.round(Number(p.clicks||0)/(_bc+_p9c)*1000)/10:0; _h+='<div class="os-found-detail"><b>'+_escF(p.name)+'</b> — '+_spF(p.clicks)+' clicks \u00b7 '+_spF(p.joins||0)+' '+(Number(p.joins||0)===1?'join':'joins')+' \u00b7 '+_sh+'% of all clicks found. A PayPal plan link: it has no board on the Dashboard, and its clicks still count in Found.</div>'; } });
+            _h+='<div class="os-found-board os-found-boardrow"><span class="os-found-name">Plan links ('+_p9.length+' links)</span><span class="os-found-num">'+_spF(_p9c)+'</span><span class="os-found-unit">clicks</span></div>';
+          }
+          _h+='<div class="os-found-board os-found-boardrow"><span class="os-found-name">All clicks found</span><span class="os-found-num">'+_spF(_bc+_p9c)+'</span><span class="os-found-unit">clicks</span></div>';
+          _h+='<div class="os-found-recon">'+_spF(_bc)+' board + '+_spF(_p9c)+' plan = '+_spF(_bc+_p9c)+' found \u00b7 top link '+_escF(_rowsS.length?_rowsS[0].name:'\u2014')+' is the biggest row</div>';
+        }
         _fd.innerHTML=_h;
       }
     }
@@ -17171,7 +17195,7 @@ function salesViewRender(){
   })();
   if(n) n.textContent=(window._osSpc ? window._osSpc(_top11.clicks) : _top11.clicks);
   var _ref11 = document.getElementById('os-sales-total-ref');
-  if(_ref11) _ref11.textContent = (typeof d.pages === 'number' ? window._osSpc(d.pages) : d.pages) + ((_salesWindow==='day')?' clicks today in all links':(_salesWindow==='week'?' clicks in the last 7 days':(_salesWindow==='month'?' clicks in the last 30 days':(_salesWindow==='hour'?' clicks this hour in all links':' clicks in all links'))));
+  if(_ref11) _ref11.textContent = (typeof d.pages === 'number' ? window._osSpc(d.pages) : d.pages) + ((_salesWindow==='day')?' clicks today \u00b7 board links':(_salesWindow==='week'?' clicks in the last 7 days \u00b7 board links':(_salesWindow==='month'?' clicks in the last 30 days \u00b7 board links':(_salesWindow==='hour'?' clicks this hour \u00b7 board links':' clicks \u00b7 board links')))); /* ROUND 3 (3): the drill total is the BOARD links total — the plan links are counted in Found, not here. */
   var pills=document.querySelectorAll('#os-sales-pills button');
   for(var i=0;i<pills.length;i++) pills[i].classList.toggle('on', pills[i].getAttribute('data-sw')===_salesWindow);
 }
@@ -17208,6 +17232,22 @@ function salesViewClose(){
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', wire);
   else wire();
+})();
+/* INSIDE FIX 2026-11-14 ROUND 3 (2): the breakdown toggle + plan-group
+   toggle + plan-row detail. One delegation, guarded — the found block is
+   re-rendered on every drill render, so the handlers must live on the
+   document, not on the rows. Board rows keep their harvested
+   [data-sl-drill] handler (it opens the link's own Smart Link view). */
+(function(){
+  if(window._osFoundWired) return; window._osFoundWired=true;
+  document.addEventListener('click', function(e){
+    var t=e.target&&e.target.closest?e.target.closest('[data-os-found-toggle]'):null;
+    if(t){ window._osFoundOpen=!window._osFoundOpen; try{ salesViewRender(); }catch(_){} return; }
+    var p=e.target&&e.target.closest?e.target.closest('[data-os-plan-toggle]'):null;
+    if(p){ window._osPlanOpen=!window._osPlanOpen; try{ salesViewRender(); }catch(_){} return; }
+    var r=e.target&&e.target.closest?e.target.closest('[data-os-plan]'):null;
+    if(r){ var _n=r.getAttribute('data-os-plan'); window._osPlanDetail=(window._osPlanDetail===_n)?'':_n; try{ salesViewRender(); }catch(_){} return; }
+  });
 })();
 /* ═══ JOINS DRILL-DOWN 2026-11-02 ═══ */
 var JOINS_DEMO = { /* PASS 1 v6 (f): was 512 joins — fabricated (live joins were 0). The ledger writes the real numbers now. */
@@ -17287,6 +17327,21 @@ function joinsViewRender(){
       if(_j7!==null) JOINS_DEMO.week.joins=_j7;
       if(_j30!==null) JOINS_DEMO.month.joins=_j30;
       JOINS_DEMO.hour.joins=0;
+      /* INSIDE FIX 2026-11-14 ROUND 3 (6): Conversion reads true from the
+         same live funnel — joins ÷ board clicks, one decimal. 1 ÷ 1,474 =
+         0.1%. Top Sources has no source split, so it stays the honest dash. */
+      var _jcAll=(Number(_ffJ.boardClicks||0)>0)?(Number(_ffJ.joined||0)/Number(_ffJ.boardClicks||0)*100):null;
+      var _jcT=(_jcAll===null)?'—':(_jcAll.toFixed(1)).replace(/\.0$/,'')+'%';
+      JOINS_DEMO.all.conv=_jcT; JOINS_DEMO.all.ctr=_jcT; JOINS_DEMO.all.src='—';
+      var _wJC=function(_days){ if(!_dmJ) return null; var _c=0,_j=0,_now=Date.now();
+        Object.keys(_dmJ).forEach(function(_k){ var _dd=new Date(_k+'T00:00:00'); if(!isNaN(_dd.getTime())&&(_now-_dd.getTime())<_days*864e5){ _c+=Number((_dmJ[_k]&&_dmJ[_k].c)||0); _j+=Number((_dmJ[_k]&&_dmJ[_k].j)||0); } });
+        return {c:_c,j:_j}; };
+      var _jcW=function(_w){ return (!_w||_w.c<=0)?'—':((_w.j/_w.c*100).toFixed(1)).replace(/\.0$/,'')+'%'; };
+      var _jc1=_wJC(1), _jc7=_wJC(7), _jc30=_wJC(30);
+      if(_jc1){ JOINS_DEMO.day.conv=_jcW(_jc1); JOINS_DEMO.day.ctr=_jcW(_jc1); JOINS_DEMO.day.src='—'; }
+      if(_jc7){ JOINS_DEMO.week.conv=_jcW(_jc7); JOINS_DEMO.week.ctr=_jcW(_jc7); JOINS_DEMO.week.src='—'; }
+      if(_jc30){ JOINS_DEMO.month.conv=_jcW(_jc30); JOINS_DEMO.month.ctr=_jcW(_jc30); JOINS_DEMO.month.src='—'; }
+      JOINS_DEMO.hour.conv='—'; JOINS_DEMO.hour.ctr='—'; JOINS_DEMO.hour.src='—';
     }
   }catch(_eJ){}
   var d=JOINS_DEMO[_joinsWindow]||JOINS_DEMO.all;
@@ -18379,6 +18434,34 @@ function invitesViewRender(){
     if(_ds2) _ds2.style.display='';
     if(_dt2) _dt2.style.display='';
   }
+  /* INSIDE FIX 2026-11-14 ROUND 3 (6): Invites reads true from the live
+     ledger — Sent is the invite rows' own count (window._dashD.invTimes,
+     the same source refreshDrillDemos reads; the Reports spine as
+     fallback), Accepted is the joins the funnel counted, the rate is
+     Accepted ÷ Sent. 1 sent, 1 accepted, 100%. */
+  try{
+    var _ddI=(window._dashD&&window._dashD.invTimes)?window._dashD.invTimes:null;
+    var _sentI=(_ddI!==null)?_ddI.length:((window._osSpine&&typeof window._osSpine.invs==='number')?window._osSpine.invs:null);
+    var _ffI=window._dashFunnel||null;
+    var _accI=_ffI?Number(_ffI.joined||0):0;
+    if(_sentI!==null){
+      var _pct1=function(_x){ return (_x.toFixed(1)).replace(/\.0$/,'')+'%'; };
+      var _rateI=(_sentI>0)?_pct1(_accI/_sentI*100):'—';
+      INVITES_DEMO.all.sent=_sentI; INVITES_DEMO.all.accepted=_accI; INVITES_DEMO.all.rate=_rateI; INVITES_DEMO.all.inviters='—';
+      var _wI=function(_ms){ if(!_ddI) return null; var _now=Date.now(), _c=0; _ddI.forEach(function(_t){ var _tt=(typeof _t==='number')?_t:Date.parse(_t); if(!isNaN(_tt)&&(_now-_tt)<_ms) _c++; }); return _c; };
+      var _dmI=window._dashClickDayMap||null;
+      var _wIJ=function(_days){ if(!_dmI) return null; var _j=0,_now=Date.now();
+        Object.keys(_dmI).forEach(function(_k){ var _dd=new Date(_k+'T00:00:00'); if(!isNaN(_dd.getTime())&&(_now-_dd.getTime())<_days*864e5){ _j+=Number((_dmI[_k]&&_dmI[_k].j)||0); } });
+        return _j; };
+      var _rI=function(_s,_a){ return (_s===null||_s<=0)?'—':_pct1(_a/_s*100); };
+      var _sH=_wI(36e5), _sD=_wI(864e5), _sW=_wI(7*864e5), _sM=_wI(30*864e5);
+      var _aH=_wIJ(36e5), _aD=_wIJ(864e5), _aW=_wIJ(7*864e5), _aM=_wIJ(30*864e5);
+      if(_sH!==null){ INVITES_DEMO.hour.sent=_sH; INVITES_DEMO.hour.accepted=_aH||0; INVITES_DEMO.hour.rate=_rI(_sH,_aH||0); INVITES_DEMO.hour.inviters='—'; }
+      if(_sD!==null){ INVITES_DEMO.day.sent=_sD; INVITES_DEMO.day.accepted=_aD||0; INVITES_DEMO.day.rate=_rI(_sD,_aD||0); INVITES_DEMO.day.inviters='—'; }
+      if(_sW!==null){ INVITES_DEMO.week.sent=_sW; INVITES_DEMO.week.accepted=_aW||0; INVITES_DEMO.week.rate=_rI(_sW,_aW||0); INVITES_DEMO.week.inviters='—'; }
+      if(_sM!==null){ INVITES_DEMO.month.sent=_sM; INVITES_DEMO.month.accepted=_aM||0; INVITES_DEMO.month.rate=_rI(_sM,_aM||0); INVITES_DEMO.month.inviters='—'; }
+    }
+  }catch(_eI){}
   var d=INVITES_DEMO[_invitesWindow]||INVITES_DEMO.all;
   var g=document.getElementById('os-invites-gauge');
   var ct=_chartType['invs']||'gauge';
@@ -18524,6 +18607,27 @@ window._closeOpenDrill = function(){
     if (typeof window._osConsumeDrillHistory==='function') window._osConsumeDrillHistory();
     return views.length;
   }catch(e){ return 0; }
+};
+/* INSIDE FIX 2026-11-14 ROUND 3 (7): a button labelled "deeper stats"
+   opens its drill on the FIRST click. ldOpenNode keeps the hero-orb rule
+   (first click features the metric on the hero gauge, second opens the
+   drill) — the mini-gauge dials are labelled "deeper stats", so they call
+   this direct open instead. */
+window._osOpenDrillDirect = function(key){
+  if (key==='smartlink' && typeof smartlinkViewOpen==='function'){
+    try{ var _sr=(window._dashLinkRows||[]).length, _st=window._dashLinkT||{c:0,j:0}; var _sj=Number(_st.j||0);
+      smartlinkViewOpen('ALL SMART LINKS', _sr+' links \u00b7 '+Number(_st.c||0)+' clicks \u00b7 '+_sj+(_sj===1?' join':' joins')); }catch(_eSL){}
+    return true;
+  }
+  var _drill = {sales:salesViewOpen, invs:invitesViewOpen, saves:savesViewOpen, likes:likesViewOpen, posts:creationsViewOpen, shares:sharesViewOpen, comments:commentsViewOpen, notes:notesViewOpen, joins:joinsViewOpen}[key];
+  if (_drill){
+    try{ if (typeof window._closeOpenDrill === 'function') window._closeOpenDrill(); }catch(e){}
+    _drill();
+    try{ if (typeof window._osRecordDrillFrom==='function') window._osRecordDrillFrom(); }catch(e){}
+    try{ history.pushState({osDrill:key}, '', '#drill-'+key); }catch(e){}
+    return true;
+  }
+  return false;
 };
 function ldOpenNode(key, noFocus){
   /* INSIDE FIX 2026-11-14 (9): Found opens its OWN detail — the Smart Links
@@ -18841,7 +18945,10 @@ window.osFunnelNoSource = function(stage){
     if (!d) return;
     e.preventDefault();
     var nk = d.getAttribute('data-node');
-    if (nk) ldOpenNode(nk);
+    /* ROUND 3 (7): a "deeper stats" dial opens its drill on this click —
+       it does not spend the click featuring the metric on the hero gauge. */
+    if (nk && typeof window._osOpenDrillDirect === 'function' && window._osOpenDrillDirect(nk)) { /* opened */ }
+    else if (nk) ldOpenNode(nk);
     var fn = d.getAttribute('data-os-funnel');
     if (fn && typeof window.osFunnelNoSource === 'function'){ try{ window.osFunnelNoSource(fn); }catch(_){} }
     /* data-os-go dials are routed by the page's own nav delegation
@@ -18853,7 +18960,7 @@ window.osFunnelNoSource = function(stage){
     if (!d) return;
     e.preventDefault();
     var nk2 = d.getAttribute('data-node');
-    if (nk2){ ldOpenNode(nk2); return; }
+    if (nk2){ if (typeof window._osOpenDrillDirect === 'function' && window._osOpenDrillDirect(nk2)) return; ldOpenNode(nk2); return; }
     var fn2 = d.getAttribute('data-os-funnel');
     if (fn2 && typeof window.osFunnelNoSource === 'function'){ try{ window.osFunnelNoSource(fn2); }catch(_){} return; }
     var go = d.getAttribute('data-os-go');
@@ -28888,6 +28995,86 @@ button.os-ld-node .os-ld-icon{
 [role="dialog"] .os-ld-node .os-ld-unit{font-size:10px !important;}
 [role="dialog"] .os-ld-node .os-ld-icon{font-size:32px !important; margin-top:8px !important;}
 .os-sales-view,.os-invites-view,.os-shares-view,.os-joins-view,.os-notes-view,.os-comments-view,.os-likes-view,.os-creations-view,.os-saves-view,.os-smartlink-view{overflow-y:auto !important;}
+
+/* ═══ INSIDE FIX 2026-11-14 ROUND 3 — THE DRILLS ═══
+   (1) The drill shows the whole page. Root cause, measured live at
+   1440x900: the drill was a centred flex column with overflow hidden —
+   content taller than the viewport clipped top and bottom, and centring
+   made the clipped top unreachable by scrolling (scroll-to-top showed
+   the same clipped top: gauge sliver + two bottom orbs only). Now the
+   drill is a top-aligned scrollable column; the title, the time pills
+   and the chart switch sit in their own in-flow lanes and never float
+   over the content; the stage shrinks on short viewports so gauge +
+   orbs fit whole. */
+.os-sales-view,.os-invites-view,.os-shares-view,.os-joins-view,.os-notes-view,.os-comments-view,.os-likes-view,.os-creations-view,.os-saves-view,.os-smartlink-view{justify-content:flex-start !important;overflow-y:auto !important;overflow-x:hidden !important;padding:0 12px 48px !important;}
+[role="dialog"] .os-view-title{position:static !important;transform:none !important;margin:88px auto 0 !important;}
+[role="dialog"] [class$="-pills"]{position:static !important;transform:none !important;flex-direction:row !important;flex-wrap:wrap !important;justify-content:center !important;margin:14px auto 0 !important;max-width:96vw !important;}
+[role="dialog"] [class$="-stage"]{margin-top:16px !important;height:min(88vmin,600px,max(220px,calc(100vh - 330px))) !important;}
+#os-sales-switch,#os-invites-switch,#os-notes-switch,#os-likes-switch,#os-creations-switch,#os-shares-switch,#os-saves-switch,#os-joins-switch,#os-comments-switch,#os-smartlink-switch{position:absolute !important;bottom:-78px !important;top:auto !important;}
+@media (max-height:560px){
+  [role="dialog"] button[class$="-x"]{left:auto !important;right:16px !important;transform:none !important;top:12px !important;width:44px !important;height:44px !important;font-size:26px !important;}
+  [role="dialog"] .os-view-title{margin-top:16px !important;}
+  [role="dialog"] .os-ld-node{width:64px !important;height:64px !important;}
+}
+/* ROUND 3 (2/3): the breakdown toggle + rows. The toggle is a board, like
+   the rows it opens (harvested .os-found-board shape). A row is a button:
+   board rows carry the harvested [data-sl-drill] (their own Smart Link
+   view); plan rows carry [data-os-plan] (inline detail). The number tile
+   wears the row's own spectrum colour (--fc); a row with no --fc (the
+   total rows) keeps the gold tile — gold is the total/active accent. */
+.os-sales-found{width:min(680px,94vw) !important;}
+.os-found-toggle{display:block;width:100%;background:linear-gradient(180deg,#16161f,#0a0a10);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:12px 16px;margin:18px 0 4px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -3px 6px rgba(0,0,0,.5),0 4px 12px rgba(0,0,0,.5);color:#fff;text-align:center;font:inherit;}
+.os-found-toggle:hover{border-color:rgba(255,191,61,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -3px 6px rgba(0,0,0,.5),0 0 18px rgba(255,191,61,.35),0 4px 12px rgba(0,0,0,.5);}
+.os-found-toggle-t{display:block;font-size:12px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;text-shadow:0 0 12px rgba(255,255,255,.35);}
+.os-found-toggle-s{display:block;font-size:12px;font-weight:700;color:rgba(255,255,255,.75);margin-top:6px;line-height:1.5;}
+.os-found-toggle-c{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;color:#ffbf3d;margin-top:8px;text-transform:uppercase;}
+.os-found-plantoggle{margin-top:14px;}
+button.os-found-board{width:100%;font:inherit;color:#fff;border-left:4px solid var(--fc,#ffbf3d);}
+button.os-found-board:hover{border-color:var(--fc,#ffbf3d);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -3px 6px rgba(0,0,0,.5),0 0 18px var(--fc,#ffbf3d),0 4px 12px rgba(0,0,0,.5);}
+.os-found-board .os-found-num{border-color:var(--fc,#ffbf3d);color:var(--fc,#ffbf3d);box-shadow:0 0 16px var(--fc,#ffbf3d);}
+.os-found-go{font-size:20px;font-weight:900;color:var(--fc,#ffbf3d);line-height:1;}
+.os-found-detail{font-size:13px;line-height:1.55;color:rgba(255,255,255,.85);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 14px;margin:0 0 8px;text-align:left;}
+.os-found-detail b{color:#fff;}
+.os-found-recon{font-size:12px;font-weight:700;color:rgba(255,255,255,.75);text-align:center;margin:12px 0 4px;line-height:1.5;}
+/* ROUND 3 (4): time pills — each window its own colour, on hover AND as
+   its accent, so hover and selection are told apart by colour. HOUR gold,
+   DAY green, WEEK light blue, MONTH purple/indigo, ALL white. Gold is no
+   longer the default everywhere — it is HOUR's colour and the
+   active/total accent, nothing else. */
+[role="dialog"] [class$="-pills"] button[data-sw="hour"]:hover,[role="dialog"] [class$="-pills"] button[data-sw="hour"].on{border-color:#ffbf3d !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #ffbf3d !important;}
+[role="dialog"] [class$="-pills"] button[data-sw="day"]:hover,[role="dialog"] [class$="-pills"] button[data-sw="day"].on{border-color:#2fe89e !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #2fe89e !important;}
+[role="dialog"] [class$="-pills"] button[data-sw="week"]:hover,[role="dialog"] [class$="-pills"] button[data-sw="week"].on{border-color:#7fd4ff !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #7fd4ff !important;}
+[role="dialog"] [class$="-pills"] button[data-sw="month"]:hover,[role="dialog"] [class$="-pills"] button[data-sw="month"].on{border-color:#a06bff !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #a06bff !important;}
+[role="dialog"] [class$="-pills"] button[data-sw="all"]:hover,[role="dialog"] [class$="-pills"] button[data-sw="all"].on{border-color:#ffffff !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #ffffff !important;}
+[role="dialog"] [class$="-pills"] button[data-jw="hour"]:hover,[role="dialog"] [class$="-pills"] button[data-jw="hour"].on{border-color:#ffbf3d !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #ffbf3d !important;}
+[role="dialog"] [class$="-pills"] button[data-jw="day"]:hover,[role="dialog"] [class$="-pills"] button[data-jw="day"].on{border-color:#2fe89e !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #2fe89e !important;}
+[role="dialog"] [class$="-pills"] button[data-jw="week"]:hover,[role="dialog"] [class$="-pills"] button[data-jw="week"].on{border-color:#7fd4ff !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #7fd4ff !important;}
+[role="dialog"] [class$="-pills"] button[data-jw="month"]:hover,[role="dialog"] [class$="-pills"] button[data-jw="month"].on{border-color:#a06bff !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #a06bff !important;}
+[role="dialog"] [class$="-pills"] button[data-jw="all"]:hover,[role="dialog"] [class$="-pills"] button[data-jw="all"].on{border-color:#ffffff !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #ffffff !important;}
+[role="dialog"] [class$="-pills"] button[data-nw="hour"]:hover,[role="dialog"] [class$="-pills"] button[data-nw="hour"].on{border-color:#ffbf3d !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #ffbf3d !important;}
+[role="dialog"] [class$="-pills"] button[data-nw="day"]:hover,[role="dialog"] [class$="-pills"] button[data-nw="day"].on{border-color:#2fe89e !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #2fe89e !important;}
+[role="dialog"] [class$="-pills"] button[data-nw="week"]:hover,[role="dialog"] [class$="-pills"] button[data-nw="week"].on{border-color:#7fd4ff !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #7fd4ff !important;}
+[role="dialog"] [class$="-pills"] button[data-nw="month"]:hover,[role="dialog"] [class$="-pills"] button[data-nw="month"].on{border-color:#a06bff !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #a06bff !important;}
+[role="dialog"] [class$="-pills"] button[data-nw="all"]:hover,[role="dialog"] [class$="-pills"] button[data-nw="all"].on{border-color:#ffffff !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #ffffff !important;}
+[role="dialog"] [class$="-pills"] button[data-lw="hour"]:hover,[role="dialog"] [class$="-pills"] button[data-lw="hour"].on{border-color:#ffbf3d !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #ffbf3d !important;}
+[role="dialog"] [class$="-pills"] button[data-lw="day"]:hover,[role="dialog"] [class$="-pills"] button[data-lw="day"].on{border-color:#2fe89e !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #2fe89e !important;}
+[role="dialog"] [class$="-pills"] button[data-lw="week"]:hover,[role="dialog"] [class$="-pills"] button[data-lw="week"].on{border-color:#7fd4ff !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #7fd4ff !important;}
+[role="dialog"] [class$="-pills"] button[data-lw="month"]:hover,[role="dialog"] [class$="-pills"] button[data-lw="month"].on{border-color:#a06bff !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #a06bff !important;}
+[role="dialog"] [class$="-pills"] button[data-lw="all"]:hover,[role="dialog"] [class$="-pills"] button[data-lw="all"].on{border-color:#ffffff !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #ffffff !important;}
+[role="dialog"] [class$="-pills"] button[data-cw="hour"]:hover,[role="dialog"] [class$="-pills"] button[data-cw="hour"].on{border-color:#ffbf3d !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #ffbf3d !important;}
+[role="dialog"] [class$="-pills"] button[data-cw="day"]:hover,[role="dialog"] [class$="-pills"] button[data-cw="day"].on{border-color:#2fe89e !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #2fe89e !important;}
+[role="dialog"] [class$="-pills"] button[data-cw="week"]:hover,[role="dialog"] [class$="-pills"] button[data-cw="week"].on{border-color:#7fd4ff !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #7fd4ff !important;}
+[role="dialog"] [class$="-pills"] button[data-cw="month"]:hover,[role="dialog"] [class$="-pills"] button[data-cw="month"].on{border-color:#a06bff !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #a06bff !important;}
+[role="dialog"] [class$="-pills"] button[data-cw="all"]:hover,[role="dialog"] [class$="-pills"] button[data-cw="all"].on{border-color:#ffffff !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 16px rgba(0,0,0,.6), 0 0 16px #ffffff !important;}
+/* ROUND 3 (4): chart toggles — each its own colour, one rule for Gauge
+   across every drill. Gauge gold everywhere (was gold in Clicks,
+   blue/cyan in Invites); Bars purple, Donut light blue, Big Number
+   green — all harvested from the page's own spectrum. */
+.os-chart-switch button[data-chart="gauge"]:hover,.os-chart-switch button[data-chart="gauge"].on{border-color:#ffbf3d !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3),inset 0 -3px 6px rgba(0,0,0,.6),0 6px 16px rgba(0,0,0,.6),0 0 16px #ffbf3d !important;}
+.os-chart-switch button[data-chart="bars"]:hover,.os-chart-switch button[data-chart="bars"].on{border-color:#a06bff !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3),inset 0 -3px 6px rgba(0,0,0,.6),0 6px 16px rgba(0,0,0,.6),0 0 16px #a06bff !important;}
+.os-chart-switch button[data-chart="donut"]:hover,.os-chart-switch button[data-chart="donut"].on{border-color:#7fd4ff !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3),inset 0 -3px 6px rgba(0,0,0,.6),0 6px 16px rgba(0,0,0,.6),0 0 16px #7fd4ff !important;}
+.os-chart-switch button[data-chart="bignum"]:hover,.os-chart-switch button[data-chart="bignum"].on{border-color:#2fe89e !important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3),inset 0 -3px 6px rgba(0,0,0,.6),0 6px 16px rgba(0,0,0,.6),0 0 16px #2fe89e !important;}
+
 
 /* (8) DRILL TOTAL REFERENCE — small, white, under the top-link total. */
 .os-sales-total-ref{font-size:13px !important;color:rgba(255,255,255,.85) !important;text-align:center !important;margin-top:6px !important;}
