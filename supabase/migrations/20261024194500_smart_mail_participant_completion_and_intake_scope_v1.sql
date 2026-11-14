@@ -104,6 +104,20 @@ alter table public.smart_mail_messages enable row level security;
 alter table public.smart_mail_threads enable row level security;
 alter table public.intake_events enable row level security;
 
+-- [MAIL-0] Complete the policy/grant inventory from the current legacy
+-- production schema (read-only catalog inspection, 2026-11-11). The earlier
+-- migration drops anonymous pass2 policies and the messages owner-SELECT, but
+-- it leaves these two legacy policies behind. Both derive owner identity from
+-- user-editable JWT metadata and must not survive the final policy set.
+-- Legacy writes use the authorized v7 service path, not direct client access.
+drop policy if exists smart_mail_threads_owner_select on public.smart_mail_threads;
+drop policy if exists smart_mail_messages_owner_delete on public.smart_mail_messages;
+
+-- Removing RLS policies alone leaves anonymous table GRANTs in place. Revoke
+-- the direct legacy table privileges as defense in depth; service_role and
+-- authenticated participant read grants remain untouched.
+revoke all privileges on table public.smart_mail_messages, public.smart_mail_threads from anon;
+
 -- [MAIL-1 helper] Sender leg for the threads policy, as owner, so the two
 -- tables' policies never reference each other in both directions.
 create or replace function public.smart_mail_thread_sender_match(p_thread_id uuid)
