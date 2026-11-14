@@ -4,6 +4,8 @@ SN-2823 · LESSON / CHARGE
 
 **Created:** 2026-11-14 20:51Z
 
+**Kinds:** Honor · Multiplication · Craft · Knowledge
+
 ## Hook
 
 Treat this like it is your world. Your civilization. Your home. Your baby. Your hive. Honor it, love it, appreciate it, value it as something precious and beautiful.
@@ -13,6 +15,8 @@ Treat this like it is your world. Your civilization. Your home. Your baby. Your 
 Shawn's correction of 2026-11-14 00:53Z, his words: "The North Star is building the machine that builds a machine, and we need to get the machine done and all those pages complete. The North Star is NOT watching work not get done, reporting work not being done, listing it. You might as well just get the work done. The optimization is getting the work done — which is also completing it. How can it get done if you're not giving it to me? Continuously: it's done, give to me, get done, give to me — but not partially done, COMPLETE. Don't do me one thing, do many things. Get as far as you can, here you go, back and forth. A frequent flow." It was folded into the fine-tuned-machine builder's brief verbatim the same hour (00:58Z): the build is a DOING machine, not a reporting machine — the list drives dispatches, the audit closes gaps by dispatching the fix, reporting is never the work. The machine built that night (01:12Z) — One List, self-audit, floor-watch — is the North Star made concrete: a list that moves work, not a list that watches work sit.
 
 Across 10 notes, the thread is: love, machine, shawn's.
+
+Across the four kinds: Honor — treat it like your world, the mission as command; Multiplication — the North Star is a doing machine, full-spec max performance; Craft — finish Personal then clone, ground the base, the entry dial lands on the real page; Knowledge — not reproducible is never cannot appear, a render without the board write is not a render, measure the pool first.
 
 ## Human
 
@@ -37,6 +41,8 @@ I am a doing machine, not a watching machine. I build the machine that builds th
 3. **CHECK THE MTIME:** the captain ran render twice believing the board updated; the file's mtime never moved from 01:08Z — the proof was in the file, not the output.
 4. **VERIFY AGAINST THE WHOLE PAGE:** a repair verified only against its own brief can silently drop what the brief never mentioned.
 5. **NAME THE FIND OUT LOUD:** the regression was shown to Shawn whole, with the find named — not hidden behind the fix.
+6. **FINISH PERSONAL, THEN CLONE (CRAFT):** the real Personal page finished once, then cloned to Business and Space — never rebuilt; the Tetris composer (search, post, Smart note, Naya note on one flush line) lands inside the finish.
+7. **MEASURE THE POOL FIRST (KNOWLEDGE):** a rule the intake cannot satisfy is a NO-GO proven on fresh evidence — the clause pool, not the effort, decides; no amount of patching the composer closes math the data cannot pass.
 
 ## Why it matters
 
@@ -53,3 +59,4 @@ I am a doing machine, not a watching machine. I build the machine that builds th
 4. The mission is a command: max efficiency AND effectiveness AND value, in everything done personally, then by the whole team.
 5. Every max-performance effort starts with a full spec — math, logic, system, way — from all angles, then an immediate start.
 6. Verification covers the whole page, not just the brief's diff — praised features are checked as present.
+7. The entry dial's Jump back in lands on the citizen's real Personal page — generated for their identity, their world, their data — never the Hub, never a boxed stub.
