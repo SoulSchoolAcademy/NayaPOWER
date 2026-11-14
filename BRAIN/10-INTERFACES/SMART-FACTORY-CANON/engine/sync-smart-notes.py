@@ -424,7 +424,15 @@ def _md_text(raw):
         return ''
     t = str(raw)
     t = re.sub(r'\*\*([^*]+)\*\*', r'\1', t)
-    t = re.sub(r'(^|\W)\*([^*\n]+)\*', r'\1', t)
+    # Italic: JS md() replaces *text* with <em>text</em> -- the words are
+    # KEPT in the rendered text (textContent). An earlier version of this
+    # line replaced with r'\1' only, silently DROPPING every italic span
+    # from the spoken text, so baked chunk keys diverged from the page's
+    # keys wherever a chunk contained italics (164 chunks / 67 notes,
+    # cured 2026-10-22). The boundary class is JS \W spelled out
+    # ([^A-Za-z0-9_]) because Python's \W is Unicode-aware and JS's is
+    # not -- they disagree after non-ASCII letters.
+    t = re.sub(r'(^|[^A-Za-z0-9_])\*([^*\n]+)\*', r'\1\2', t)
     t = re.sub(r'`([^`]+)`', r'\1', t)
     parts = []
     for line in t.split('\n'):
