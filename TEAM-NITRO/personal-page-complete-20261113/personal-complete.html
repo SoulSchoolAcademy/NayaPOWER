@@ -1908,7 +1908,6 @@ body{background:#050507;margin:0;overflow-x:hidden;font-family:Inter,system-ui,s
   box-shadow:0 0 48px rgba(160,107,255,.55),inset 0 2px 10px rgba(255,255,255,.25);transition:all .2s;}
 .ph-av:hover{transform:scale(1.04);box-shadow:0 0 70px rgba(160,107,255,.8);}
 .ph-av img{width:100%;height:100%;object-fit:cover;}
-.ph-info{flex:1;min-width:220px;}
 .ph-nm{font-size:24px;font-weight:700;margin:0;color:#fff;cursor:pointer;border-bottom:2px dashed transparent;padding:2px 0;}
 .ph-nm:hover{border-bottom-color:rgba(160,107,255,.5);}
 .ph-nm-input{font-size:24px;font-weight:700;background:rgba(255,255,255,.08);border:2px solid #a06bff;
@@ -4016,7 +4015,7 @@ body.fc-open{overflow:hidden;}
 <p class="os-note tg-hint" id="tg-hint" data-mw-tr="hint">Naya note — Naya formats your words beautifully. Write it, dictate it with the microphone — Naya writing it for you is coming soon.</p>
 <input class="os-input" id="os-post-author" type="text" placeholder="Your name (visitor or owner)" autocomplete="name">
 <div class="os-fieldwrap"><textarea class="os-textarea" id="os-post-body" rows="3" data-mw-ph="Make a post on this app’s feed…" placeholder="Make a post on this app&rsquo;s feed&hellip;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-post-body" aria-label="Dictate your post" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
-<div class="ph-actions"><button class="ph-msg" id="os-sched-btn" type="button">🕐 Schedule</button><button class="ph-connect" id="os-post-btn" type="button">✦ Post my Naya note</button></div>
+<div class="ph-actions"><button class="ph-msg" id="os-sched-btn" type="button">🕐 Schedule</button><button class="ph-msg" id="os-vis-toggle" type="button" aria-pressed="false" title="Who can see this post">🔒 Private</button><button class="ph-connect" id="os-post-btn" type="button">✦ Post my Naya note</button></div>
 <div class="os-status" id="os-post-status"></div>
 <div id="tg-review" hidden>
 <div class="tg-review-card">
@@ -4864,17 +4863,22 @@ html.os-calm
   <button class="ph-cover-btn pc-gear" id="settingsbtn" type="button" style="--ac:#e8e8ec;" data-os-go="settings" aria-label="Settings" title="Settings">⚙️</button>
 </div>
 <div class="ph-head">
+  <div class="ph-idcol">
   <div class="ph-avwrap"><div class="ph-av" id="avv" data-mw-title="Tap to change your picture"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22256%22%20height%3D%22256%22%3E%3Crect%20width%3D%22256%22%20height%3D%22256%22%20fill%3D%22%230b0b11%22/%3E%3Cpolygon%20points%3D%22128%2C28%20218%2C128%20128%2C228%2038%2C128%22%20fill%3D%22none%22%20stroke%3D%22%23a06bff%22%20stroke-width%3D%2210%22/%3E%3Ctext%20x%3D%22128%22%20y%3D%22148%22%20font-size%3D%2284%22%20font-family%3D%22Georgia%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EN%3C/text%3E%3C/svg%3E" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">✦<input type="file" id="avin" accept="image/*" style="display:none;"></div><button class="ph-av-edit" id="avedit" type="button" data-mw-aria="Change picture" aria-label="Change picture" data-mw-title="Edit photo" title="Edit photo">📷</button></div>
-  <div class="ph-info">
-    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
-      <div class="ph-nm" id="pname" title="Click to edit">Shawn Vibert</div>
+    <div class="ph-pointsrow">
       <div class="ph-points pc-restyled" id="pointsdisplay" title="Your Naya points">
         <span class="pc-pill-numrow"><span class="ph-points-star">✦</span><span id="pointscount">…</span><span class="ph-points-label" data-mw-tr="pts">pts</span></span>
         <span class="pc-pill-gauge" aria-hidden="true"><span class="pc-pill-gaugefill" id="pcPillGaugeFill"></span></span>
       </div>
     </div>
-    <div class="ph-tg" id="ptag" title="Click to edit">Welcome to my world — make a post on my feed, send a message, make yourself at home.</div>
-        <div class="ph-actions-row up-actions">
+    <!-- TIER HOME (follow-on, tier ruling 2026-11-14): the tier label lands here, under the points pill. -->
+  </div>
+  <div class="ph-intro-board" id="phIntroBoard">
+    <div class="ph-nm ph-intro-name" id="pname" title="Click to edit">Shawn Vibert</div>
+    <div class="ph-intro-motto-row"><div class="ph-tg ph-intro-motto" id="ptag" title="Click to edit">Welcome to my world — make a post on my feed, send a message, make yourself at home.</div><button class="ph-intro-plus" id="phIntroPlus" type="button" aria-label="Add something" title="Add something">+</button></div>
+  </div>
+</div>
+<div class="ph-actions-row up-actions">
       <button class="up-act" id="saBackBtn" type="button" style="--ac:#e8e8ec;display:none;">← Back to my world</button>
       <button class="up-act" id="msgbtn" type="button" style="--ac:#2fe89e;">✉️ Message</button>
       <button class="up-act" id="aboutbtn" type="button" style="--ac:#ffbf3d;" data-os-go="about">ⓘ About</button>
@@ -4885,8 +4889,6 @@ html.os-calm
       <button class="up-act" id="sharebtn" type="button" style="--ac:#3fb8ff;">↗ Share</button>
       <a class="up-act" id="joinbtn" href="https://nayanet.app/joinus" style="--ac:#2fe89e;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">✦ Join NayaNET</a>
       <button class="up-act" id="memberbtn" type="button" style="--ac:#e84fff;display:none;">★ Become a Member</button>
-    </div>
-  </div>
 </div>
 </div>
 <style>
@@ -4951,9 +4953,9 @@ html.os-calm
 </div>
 </div>
 <div class="fc-create-row" id="fcCreateRow" role="group" aria-label="Create on this feed" data-mw-aria="Create on this feed">
-<button type="button" class="tg-mode fc-create" data-fc-create="post" style="--mc:#e8e8ec"><span class="tg-dot"></span>✎ <span data-mw-tr="cr">Make a post</span></button>
-<button type="button" class="tg-mode fc-create" data-fc-create="naya" style="--mc:#2fe89e"><span class="tg-dot"></span>✎ <span data-mw-tr="cr">Naya note</span></button>
-<button type="button" class="tg-mode fc-create" data-fc-create="smart" style="--mc:#a06bff"><span class="tg-dot"></span>✦ <span data-mw-tr="cr">Smart note</span></button>
+<button type="button" class="tg-mode fc-create" data-fc-create="post" style="--mc:#e8e8ec"><span class="tg-dot"></span>✎ <span class="fc-plus" aria-hidden="true">+</span> <span data-mw-tr="cr">Make a post</span></button>
+<button type="button" class="tg-mode fc-create" data-fc-create="naya" style="--mc:#2fe89e"><span class="tg-dot"></span>✎ <span class="fc-plus" aria-hidden="true">+</span> <span data-mw-tr="cr">Naya note</span></button>
+<button type="button" class="tg-mode fc-create" data-fc-create="smart" style="--mc:#a06bff"><span class="tg-dot"></span>✦ <span class="fc-plus" aria-hidden="true">+</span> <span data-mw-tr="cr">Smart note</span></button>
 </div>
 <!-- FEED-CREATOR (Shawn 17:21Z): the always-open composer is gone — no open box, no empty
      note, no massive black space. The three buttons above pop the full-page creator.
@@ -4967,7 +4969,7 @@ html.os-calm
 <!-- F5 (Shawn 16:06Z) — the feed bar is the Hub's lens bar, harvested verbatim
      (see the CSS). The .mw-feedname buttons below stay (they activate their tab
      + scroll the feed into view in place — working doors). -->
-<button type="button" class="pc-search-btn" id="pcSearchBtn" aria-label="Search the public feed">&#128269; <span data-mw-tr="search">Search the public feed</span></button>
+<section class="searchWrap" id="pcHubSearch"><div class="searchRow" role="search"><span class="search-ico" aria-hidden="true"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel1" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel1-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel1)" filter="url(#jewel1-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel1)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></g></svg></span><input type="search" id="pcHubSearchInput" placeholder="Search your intelligence…" aria-label="Search your intelligence" autocomplete="off"></div></section>
 <div class="lens-tabs" id="mwFeedTabs" role="tablist" aria-label="Feed categories" data-mw-aria="Feed categories">
 <button type="button" class="lens-tab lens-smart primo theme-purple elev-2 active" id="mwTabSmart" data-mw-tab="personal" role="tab" aria-selected="true" style="--glow:#3fb8ff"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">✦</span> <b data-mw-tr="tab">Personal</b></button>
 <button type="button" class="lens-tab lens-naya primo theme-purple elev-2" id="mwTabNaya" data-mw-tab="public" role="tab" aria-selected="false" style="--glow:#ffbf3d"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">🌍</span> <b data-mw-tr="tab">Public feed</b></button>
@@ -4989,22 +4991,22 @@ html.os-calm
 <div class="ph-card" id="saFeedCard"><div class="ph-sec-t"><span class="ph-dot" id="saFeedDot" style="background:#2fe89e;color:#2fe89e;"></span> <span id="saFeedHead">The lessons</span></div><p class="os-note" style="margin-top:0;">One after another, down the feed — just the lesson, scroll to the next, click next.</p><div id="saFeed"></div></div>
 </div>
 
-<div class="pc-feedline" aria-label="How the feed works" data-mw-aria="How the feed works" data-mw-tr="feedline">MATCH &rarr; ORGANIZE &rarr; CONNECT</div>
 <div class="smart-tabs" id="mwFeedPills" aria-label="Feed filters" data-mw-aria="Feed filters"></div>
 <div id="os-wall-list"><div class="os-skel"></div></div>
 
 <div id="mwFeedNaya" hidden><div class="os-skel"></div></div>
 </div>
-<aside id="pcRail" class="os-view on" data-os-view="home" aria-label="People around you">
+<aside id="pcRail" class="os-view on" data-os-view="home" aria-label="People like you">
   <div class="pc-rail-head">
-    <h3 data-mw-tr="rail">People around you</h3>
+    <div class="pc-rail-head-row"><h3 data-mw-tr="rail">People like you</h3><button type="button" class="pc-info" id="pcRailInfo" aria-label="About these people">ⓘ</button></div>
     <p class="pc-rail-sub"><span id="pcLiveCount">0 live matches</span> &middot; <span id="pcStandCount">13 standing</span></p>
-    <p class="pc-rail-note" data-mw-tr="rail">Live matches come from the Smart Feed engine, with their reasons attached. Standing profiles are the family, marked as standing &mdash; never shown as online.</p>
   <div class="pc-rail-tools"><input id="pcRailSearch" type="search" placeholder="Search people…" aria-label="Search people" autocomplete="off"><button id="pcRailClose" type="button" aria-label="Close the people rail" title="Close the people rail">✕</button></div>
   </div>
   <div class="pc-rail-list" id="pcRailList"></div>
   <p class="pc-rail-foot" data-mw-tr="rail">One more seat is held open for the next live citizen.</p>
 </aside>
+<div id="pcRailPopBack" hidden></div>
+<div id="pcRailPop" class="ph-intro-board" role="dialog" aria-modal="true" aria-label="About" hidden></div>
 <script>
 /* ═══ PERSONAL PULSE BRIDGE — 2026-10-31 · scorecard rework ═══
    Feeds the transplanted living-intelligence engine (next script) with THIS
@@ -8646,11 +8648,16 @@ function wallCard(j, iso, pid, idx){
       var disp='Guest'; for(var i=0;i<MW_WALL_POSTS.length;i++){ if((MW_WALL_POSTS[i].j.a||'Guest').toLowerCase()===pill){ disp=MW_WALL_POSTS[i].j.a||'Guest'; break; } }
       t=shown.length+(shown.length===1?(window.mwTr?window.mwTr(' post'):' post'):(window.mwTr?window.mwTr(' posts'):' posts'))+(window.mwTr?window.mwTr(' by '):' by ')+disp+(window.mwTr?window.mwTr(' on this feed.'):' on this feed.');
     } else {
-      var voices={}; shown.forEach(function(p){ voices[(p.j.a||'Guest').toLowerCase()]=1; });
-      var n=Object.keys(voices).length;
-      t=shown.length+(shown.length===1?(window.mwTr?window.mwTr(' post'):' post'):(window.mwTr?window.mwTr(' posts'):' posts'))+(window.mwTr?window.mwTr(' on this feed — the newest landed '):' on this feed — the newest landed ')+relLabel(shown[0].at)+(window.mwTr?window.mwTr(', across '):', across ')+n+(n===1?(window.mwTr?window.mwTr(' voice'):' voice'):(window.mwTr?window.mwTr(' voices'):' voices'))+ '.';
+      /* R5 Part 4 — the "N posts on this feed — the newest landed X, across N voices"
+         line is dead text: with no keyword the meta says nothing at all (the empty
+         #os-wall-meta hides itself). With a keyword it names the match only. */
+      if(kw){
+        t=shown.length+(shown.length===1?(window.mwTr?window.mwTr(' post'):' post'):(window.mwTr?window.mwTr(' posts'):' posts'))+(window.mwTr?window.mwTr(' matching \u201c'):' matching \u201c')+window.MW_PUBLIC_KEYWORD+(window.mwTr?window.mwTr('\u201d.'):'\u201d.');
+      } else {
+        return '';
+      }
     }
-    if(kw){ t=shown.length? (t+(window.mwTr?window.mwTr(' Matching \u201c'):' Matching \u201c')+window.MW_PUBLIC_KEYWORD+(window.mwTr?window.mwTr('\u201d.'):'\u201d.')) : ((window.mwTr?window.mwTr('No notes match \u201c'):'No notes match \u201c')+window.MW_PUBLIC_KEYWORD+(window.mwTr?window.mwTr('\u201d — try another word.'):'\u201d — try another word.')); }
+    if(kw && pill && pill!=='all'){ t=shown.length? (t+(window.mwTr?window.mwTr(' Matching \u201c'):' Matching \u201c')+window.MW_PUBLIC_KEYWORD+(window.mwTr?window.mwTr('\u201d.'):'\u201d.')) : ((window.mwTr?window.mwTr('No notes match \u201c'):'No notes match \u201c')+window.MW_PUBLIC_KEYWORD+(window.mwTr?window.mwTr('\u201d — try another word.'):'\u201d — try another word.')); }
     return t;
   }
   window.mwSyncWallMeta=function(){
@@ -8680,7 +8687,12 @@ function wallCard(j, iso, pid, idx){
       shown=shown.filter(function(p){ return (p.j.a||'Guest').toLowerCase()===ok2; });
     }
     if(pill && pill!=='all'){
-      if(pill.indexOf('topic:')===0){
+      if(pill.indexOf('cluster:')===0){
+        /* R5 Part 3 — the harvested organizer's cluster tabs: a post's cluster comes
+           from its own topics + title + words (the Hub's intelClusterOf, via the organizer seam). */
+        var _cl=pill.slice(8);
+        shown=shown.filter(function(p){ try{ return window.pcIntelClusterOf(window.pcOrganizerNote(p))===_cl; }catch(e){ return false; } });
+      } else if(pill.indexOf('topic:')===0){
         var _tk=pill.slice(6);
         shown=shown.filter(function(p){
           var _nt=(p.j&&p.j.noteType)||'';
@@ -8694,14 +8706,16 @@ function wallCard(j, iso, pid, idx){
         shown=shown.filter(function(p){ return (p.j.a||'Guest').toLowerCase()===pill; });
       }
     }
-    /* FOLLOW-UP: a keyword typed in the search popup pulls the Public feed — the collective filtered to that topic, changeable at will. Personal never takes a keyword. */
-    var kw=publicOn?((window.MW_PUBLIC_KEYWORD||'').toLowerCase()):'';
+    /* R5 Part 2 — the harvested inline search filters the visible wall in place:
+       Personal and Public alike take the keyword now. The popup's pull-to-Public
+       contract lives in pcSetPublicKeyword, untouched. Naya Notes has its own painter. */
+    var kw=((window.MW_PUBLIC_KEYWORD||'').toLowerCase());
     if(kw){
       shown=shown.filter(function(p){ var hay=''; try{ hay=JSON.stringify(p.j||{}); }catch(e){ hay=''; } return (hay+' '+(p.owner||'')).toLowerCase().indexOf(kw)>=0; });
     }
     list.innerHTML = shown.length
       ? shown.map(function(p, i){ return wallCard(p.j, p.at, p.id, i); }).join('')
-      : '<div class="ph-card" style="--ac:#a06bff;"><p>'+(window.mwTr?window.mwTr('No posts yet — be the first to make a post on this feed.'):'No posts yet — be the first to make a post on this feed.')+'</p></div>';
+      : '<div class="ph-card ph-invite-board" style="--ac:#a06bff;"><h3>'+(window.mwTr?window.mwTr('Make your first post'):'Make your first post')+'</h3><p class="os-note">'+(window.mwTr?window.mwTr('No posts yet — be the first to make a post on this feed.'):'No posts yet — be the first to make a post on this feed.')+'</p><div class="ph-actions"><button type="button" class="ph-connect" data-pc-invite-post>'+(window.mwTr?window.mwTr('Make a post'):'Make a post')+'</button></div></div>';
     var meta=$('os-wall-meta');
     if(meta){ meta.textContent=mwWallMetaText(shown, pill, kw); }
     window._mwWallMetaState={shown:shown, pill:pill, kw:kw};
@@ -9136,7 +9150,7 @@ function wallCard(j, iso, pid, idx){
        the stub observer keeps the card on top). A scheduled post needs the live save. */
     if (!sb) {
       if(window.osSched && window.osSched.ts){ st.textContent='Connection unavailable — a scheduled post needs the live save.'; return; }
-      if(typeof window.fcStubInsert==='function' && window.fcStubInsert({k:'wall', a:a, b:b, noteType:(window.osNoteMode==='post'?'post':'naya')})){
+      if(typeof window.fcStubInsert==='function' && window.fcStubInsert({k:'wall', a:a, b:b, noteType:(window.osNoteMode==='post'?'post':'naya'), vis:(window.pcPostVis||'private')})){
         tgResetComposer((window.osNoteMode==='post' ? 'Posted — your words are on the feed, straight up. (Saved on this device — the live save is owed.)' : 'Posted — your Naya note is on the feed, your words beautiful. (Saved on this device — the live save is owed.)'));
       } else { st.textContent='Connection unavailable — post not saved.'; }
       return;
@@ -9154,7 +9168,7 @@ function wallCard(j, iso, pid, idx){
     }
     st.textContent='Posting\u2026';
     var sched=window.osSched||null;
-    var payload={k:'wall', a:a, b:b, noteType:(window.osNoteMode==='post'?'post':'naya')};
+    var payload={k:'wall', a:a, b:b, noteType:(window.osNoteMode==='post'?'post':'naya'), vis:(window.pcPostVis||'private')};
     if (sched && sched.ts) { payload.schedFor=new Date(sched.ts).toISOString(); payload.schedLabel=sched.label; }
     sb.from('smart_notes').insert({owner_alias:PAGE_ALIAS, content:JSON.stringify(payload)}).then(function(res){ osBustNotes();
       if (res.error) { try{console.warn('[fix8] wall post failed:', res.error && res.error.code, res.error && res.error.message);}catch(e){} st.setAttribute('data-fix8-post','failed'); /* FIX-20261112-F: the live save is blocked (42501) — the note still lands as a STUB, and the creator closes with an honest receipt naming the stub + the owed permission, instead of sitting open on an error while the card is already on the feed. */ if(typeof window.fcStubInsert==='function' && window.fcStubInsert(payload)){ tgResetComposer((window.osNoteMode==='post' ? 'Posted — your words are on the feed, straight up. (Saved on this device — the live save needs a one-time permission from Shawn.)' : 'Posted — your Naya note is on the feed, your words beautiful. (Saved on this device — the live save needs a one-time permission from Shawn.)')); } else { st.textContent='Couldn\u2019t post just now \u2014 the page\u2019s save needs a one-time permission from Shawn. Your words are still here; nothing was lost.'; } return; }
@@ -9169,7 +9183,7 @@ function wallCard(j, iso, pid, idx){
     if (!draft){ st.textContent='The draft is empty \u2014 write something first.'; return; }
     var sched=window.osSched||null;
     var d=window._tgDraft||{};
-    var payload={k:'wall', a:a, b:draft, raw:raw, noteType:'smart',
+    var payload={k:'wall', a:a, b:draft, raw:raw, noteType:'smart', vis:(window.pcPostVis||'private'),
       smart:{nutshell:d.nutshell||'', themes:d.themes||[], angles:d.angles||[]}};
     /* FIX-20261112-F: no live save in this session — the Smart note still lands, as a STUB
        (same receipt path as the live post). A scheduled post needs the live save. */
@@ -20100,47 +20114,15 @@ function pcFeedKey(k){ return ({smart:'public', naya:'naya', activity:'naya'})[k
 window.pcFeedKey = pcFeedKey;
 function mwBuildFeedPills(){
   var rib=$('mwFeedPills'); if(!rib) return;
-  var t=pcFeedKey(MW_FEED.cur);
   rib.style.display='';
-  var items=[];
-  if(t==='personal'||t==='public'){
-    /* CORRECTIONS 2026-11-13 (Part 8): Smart Tabs organize by TOPIC, not
-       author — the Hub's Smart Tabs. Topics come from the posts themselves:
-       note type (Smart note / Naya note / Post) + smart-note themes. */
-    var _base=(typeof window.MW_WALL_POSTS!=='undefined'?window.MW_WALL_POSTS:[]);
-    if(t==='public') _base=(typeof window.MW_PUBLIC_POSTS!=='undefined'?window.MW_PUBLIC_POSTS:[]);
-    if(t==='personal'){
-      /* CORRECTIONS fix 3: the painter filters Personal to the owner's posts,
-         so the pill inventory must too — otherwise a topic that only other
-         authors carry (e.g. Naya notes) appears on Personal and taps to zero. */
-      var _ok=(((typeof ownerName==='function'?ownerName():'')||'Shawn Vibert').toLowerCase());
-      _base=_base.filter(function(p){ return (p.j.a||'Guest').toLowerCase()===_ok; });
-    }
-    var _seen={}, _themes=[], _hasSmart=false, _hasNaya=false, _hasPost=false;
-    _base.forEach(function(p){
-      var _nt=(p.j&&p.j.noteType)||'';
-      if(_nt==='smart') _hasSmart=true; else if(_nt==='naya') _hasNaya=true; else _hasPost=true;
-      var _th=(p.j&&p.j.smart&&p.j.smart.themes)||[];
-      _th.forEach(function(tm){ if(tm){ var _k='topic:'+String(tm).toLowerCase(); if(!_seen[_k]){ _seen[_k]=1; _themes.push(tm); } } });
-    });
-    if(_hasSmart) items.push({key:'topic:smart',label:'Smart notes'});
-    if(_hasNaya) items.push({key:'topic:naya',label:'Naya notes'});
-    if(_hasPost) items.push({key:'topic:post',label:'Posts'});
-    _themes.forEach(function(tm){ items.push({key:'topic:'+String(tm).toLowerCase(),label:'#'+tm}); });
-  }else if(t==='naya'){
-    var seen2={};
-    (typeof MW_NAYA_ROWS!=='undefined'?MW_NAYA_ROWS:[]).forEach(function(n){
-      var c=n.category||''; if(!c) return;
-      var key=c.toLowerCase();
-      if(!seen2[key]){ seen2[key]=1; items.push({key:key,label:c}); }
-    });
+  /* R5 Part 3 — the ribbon IS the Hub's Smart Organizer now (harvested whole, see
+     the R5 script block at the end of the file). Until that block runs (it loads
+     after this one), one All pill so the ribbon is never empty. */
+  if(typeof window.pcSmartTabStrip!=='function'){
+    rib.innerHTML='<div class="smart-tab active" data-mw-pill="all">All</div>';
+    return;
   }
-  var html='<div class="smart-tab'+(MW_FEED_PILL==='all'?' active':'')+'" data-mw-pill="all">All</div>';
-  items.forEach(function(it){
-    html+='<div class="smart-tab'+(MW_FEED_PILL===it.key?' active':'')+'" data-mw-pill="'+it.key+'" style="--tc:'+mwFeedPillColor(it.key)+'">'+esc(it.label)+'</div>';
-  });
-  html+='<div class="smart-tab add-tab" data-mw-pill="__add">+ '+(window.mwTr?window.mwTr('Add'):'Add')+'</div>';
-  rib.innerHTML=html;
+  window.pcSmartTabStrip();
 }
 function mwSetFeedPill(key){
   if(key==='__add'){
@@ -20227,11 +20209,19 @@ var MW_NAYA_ROWS=[];
 function mwPaintNayaFeed(){
   var box=$('mwFeedNaya'); if(!box) return;
   var rows=MW_NAYA_ROWS||[];
-  if(!rows.length){ box.innerHTML='<p class="os-note">'+(window.mwTr?window.mwTr('No Naya Notes yet — the first one lands here.'):'No Naya Notes yet — the first one lands here.')+'</p>'; if(typeof mwBuildFeedPills==='function') mwBuildFeedPills(); return; }
+  if(!rows.length){ box.innerHTML='<div class="ph-card ph-invite-board" style="--ac:#2fe89e;"><h3>'+(window.mwTr?window.mwTr('Make your first Naya Note'):'Make your first Naya Note')+'</h3><p class="os-note">'+(window.mwTr?window.mwTr('No Naya Notes yet — the first one lands here.'):'No Naya Notes yet — the first one lands here.')+'</p><div class="ph-actions"><button type="button" class="ph-connect" data-pc-invite-naya>'+(window.mwTr?window.mwTr('Make a Naya Note'):'Make a Naya Note')+'</button></div></div>'; if(typeof mwBuildFeedPills==='function') mwBuildFeedPills(); return; }
   var pill=(typeof MW_FEED_PILL!=='undefined')?MW_FEED_PILL:'all';
   var shown=rows;
-  if(pill && pill!=='all'){ shown=rows.filter(function(n){ return (n.category||'').toLowerCase()===pill; }); }
-  if(!shown.length){ box.innerHTML='<p class="os-note">'+(window.mwTr?window.mwTr('No Naya Notes in this category yet.'):'No Naya Notes in this category yet.')+'</p>'; if(typeof mwBuildFeedPills==='function') mwBuildFeedPills(); return; }
+  if(pill && pill!=='all'){
+    if(pill.indexOf('cluster:')===0){
+      /* R5 Part 3 — the harvested organizer's cluster tabs, over Naya rows (category + title + body). */
+      var _cl=pill.slice(8);
+      shown=rows.filter(function(n){ try{ return window.pcIntelClusterOf(window.pcNayaForStrip(n))===_cl; }catch(e){ return false; } });
+    } else {
+      shown=rows.filter(function(n){ return (n.category||'').toLowerCase()===pill; });
+    }
+  }
+  if(!shown.length){ box.innerHTML='<div class="ph-card ph-invite-board" style="--ac:#2fe89e;"><h3>'+(window.mwTr?window.mwTr('Make your first Naya Note'):'Make your first Naya Note')+'</h3><p class="os-note">'+(window.mwTr?window.mwTr('No Naya Notes in this category yet.'):'No Naya Notes in this category yet.')+'</p><div class="ph-actions"><button type="button" class="ph-connect" data-pc-invite-naya>'+(window.mwTr?window.mwTr('Make a Naya Note'):'Make a Naya Note')+'</button></div></div>'; if(typeof mwBuildFeedPills==='function') mwBuildFeedPills(); return; }
   /* CORRECTIONS 2026-11-13 (Part 8): Naya Notes render through the Hub feed
      code (window.ibWallHTML, the Hub's intelBoard + adapter) — the same
      renderer as the wall — never a remade card. Title + body ride the
@@ -20827,11 +20817,9 @@ var MW_I18N={
   "Lists": "Listen",
   "Live Feed": "Live-Feed",
   "Live matches": "Live-Matches",
-  "Live matches come from the Smart Feed engine, with their reasons attached. Standing profiles are the family, marked as standing — never shown as online.": "Live-Matches kommen aus der Smart-Feed-Engine, mit ihren Gründen dazu. Gelistete Profile sind die Familie, als gelistet markiert — nie als online gezeigt.",
   "Live — this world’s own posts, notes, messages and invites, read the moment this front opens. Its numbers live in the Pulse above; this card is the door they come through.": "Live — die eigenen Beiträge, Notizen, Nachrichten und Einladungen dieser Welt, gelesen in dem Moment, in dem diese Ansicht sich öffnet. Ihre Zahlen leben im Puls oben; diese Karte ist die Tür, durch die sie kommen.",
   "Longest streak so far: ": "Längste Serie bisher: ",
   "MAIL": "MAIL",
-  "MATCH → ORGANIZE → CONNECT": "MATCH → ORGANISIEREN → VERBINDEN",
   "MEMBERSHIPS": "MITGLIEDSCHAFTEN",
   "MESSAGES RECEIVED": "ERHALTENE NACHRICHTEN",
   "Mail": "Mail",
@@ -20965,6 +20953,7 @@ var MW_I18N={
   "Payments: not connected yet — connecting Stripe is one sign-in, and it is yours to make.": "Zahlungen: noch nicht verbunden — Stripe zu verbinden ist eine Anmeldung, und die liegt bei dir.",
   "Peak activity: ": "Spitzenaktivität: ",
   "People around you": "Menschen um dich herum",
+  "People like you": "Menschen wie du",
   "Period timing isn’t on the ledger yet — this pill reads the total for now.": "Das Perioden-Timing steht noch nicht im Ledger — diese Pille liest vorerst das Gesamt.",
   "Person": "Person",
   "Personal": "Persönlich",
@@ -21636,11 +21625,9 @@ var MW_I18N={
   "Lists": "Listas",
   "Live Feed": "En vivo",
   "Live matches": "Coincidencias en vivo",
-  "Live matches come from the Smart Feed engine, with their reasons attached. Standing profiles are the family, marked as standing — never shown as online.": "Las coincidencias en vivo vienen del motor del Smart Feed, con sus razones adjuntas. Los perfiles en lista son la familia, marcados como en lista — nunca se muestran como en línea.",
   "Live — this world’s own posts, notes, messages and invites, read the moment this front opens. Its numbers live in the Pulse above; this card is the door they come through.": "En vivo — las propias publicaciones, notas, mensajes e invitaciones de este mundo, leídas en el momento en que se abre este frente. Sus números viven en el Pulso de arriba; esta tarjeta es la puerta por la que llegan.",
   "Longest streak so far: ": "Racha más larga hasta ahora: ",
   "MAIL": "CORREO",
-  "MATCH → ORGANIZE → CONNECT": "MATCH → ORGANIZAR → CONECTAR",
   "MEMBERSHIPS": "MEMBRESÍAS",
   "MESSAGES RECEIVED": "MENSAJES RECIBIDOS",
   "Mail": "Correo",
@@ -21774,6 +21761,7 @@ var MW_I18N={
   "Payments: not connected yet — connecting Stripe is one sign-in, and it is yours to make.": "Pagos: aún no conectados — conectar Stripe es un inicio de sesión, y te toca a ti hacerlo.",
   "Peak activity: ": "Actividad máxima: ",
   "People around you": "La gente a tu alrededor",
+  "People like you": "Gente como tú",
   "Period timing isn’t on the ledger yet — this pill reads the total for now.": "El tiempo del periodo aún no está en el libro — esta pastilla lee el total por ahora.",
   "Person": "Persona",
   "Personal": "Personal",
@@ -22445,11 +22433,9 @@ var MW_I18N={
   "Lists": "Listes",
   "Live Feed": "En direct",
   "Live matches": "Matches en direct",
-  "Live matches come from the Smart Feed engine, with their reasons attached. Standing profiles are the family, marked as standing — never shown as online.": "Les matches en direct viennent du moteur du Smart Feed, avec leurs raisons jointes. Les profils listés sont la famille, marqués comme listés — jamais affichés comme en ligne.",
   "Live — this world’s own posts, notes, messages and invites, read the moment this front opens. Its numbers live in the Pulse above; this card is the door they come through.": "En direct — les propres publications, notes, messages et invitations de ce monde, lues au moment où ce front s’ouvre. Leurs chiffres vivent dans le Pouls ci-dessus ; cette carte est la porte par laquelle ils arrivent.",
   "Longest streak so far: ": "Plus longue série jusqu’ici : ",
   "MAIL": "COURRIER",
-  "MATCH → ORGANIZE → CONNECT": "MATCH → ORGANISER → CONNECTER",
   "MEMBERSHIPS": "ADHÉSIONS",
   "MESSAGES RECEIVED": "MESSAGES REÇUS",
   "Mail": "Courrier",
@@ -22583,6 +22569,7 @@ var MW_I18N={
   "Payments: not connected yet — connecting Stripe is one sign-in, and it is yours to make.": "Paiements : pas encore connectés — connecter Stripe, c’est une seule connexion, et c’est à vous de la faire.",
   "Peak activity: ": "Activité maximale : ",
   "People around you": "Les gens autour de vous",
+  "People like you": "Des gens comme toi",
   "Period timing isn’t on the ledger yet — this pill reads the total for now.": "Le minutage de la période n’est pas encore dans le registre — cette pastille lit le total pour l’instant.",
   "Person": "Personne",
   "Personal": "Personnel",
@@ -25343,7 +25330,7 @@ window.fcStubInsert=function(payload){
   var html='';
   try{ html=window.ibWallHTML(row, 0); }catch(e){ return false; }
   var list=document.getElementById('os-wall-list'); if(!list) return false;
-  window.__fcStubPosts.unshift({id:row.id, html:html});
+  window.__fcStubPosts.unshift({id:row.id, html:html, vis:(payload&&payload.vis)||'private'});
   fcPaintStubs();
   return true;
 };
@@ -25590,7 +25577,6 @@ body.pc-drawer-open #naya-notif-bar{z-index:955!important;}
    .mw-feedname{display:block} defeats the hidden attribute otherwise. */
 .mw-feedname[hidden]{display:none!important;}
 /* (5) the feed line — the Hub's pill language, quiet label, literal words. */
-.pc-feedline{text-align:center;font-size:12px;font-weight:800;letter-spacing:.22em;color:#cfc9da;margin:14px 0 10px;text-transform:uppercase;}
 /* FOLLOW-UP: the search opener — a button that opens the existing centered popup on purpose. Never a visible search bar (popup-only search law). */
 .pc-search-btn{display:block;margin:0 auto 10px;padding:10px 18px;border-radius:999px;border:1.5px solid rgba(255,255,255,.85);background:linear-gradient(180deg,#17171f,#0a0a0f);color:#fff;font:inherit;font-size:13px;font-weight:800;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -3px 6px rgba(0,0,0,.55),0 6px 16px rgba(0,0,0,.5),0 0 17px rgba(160,107,255,.42);}
 .pc-search-btn:hover{border-color:#a06bff;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -3px 6px rgba(0,0,0,.5),0 0 22px #a06bff,0 8px 20px rgba(0,0,0,.55);}
@@ -25642,29 +25628,32 @@ function esc(s){ var d=document.createElement('div'); d.textContent=String(s==nu
 var PC_SPECTRUM=['#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#ff9a5a','#ff5e6c','#e84fff'];
 function pcColorFor(name){ var s=String(name||'?'), h=0, i; for(i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0; return PC_SPECTRUM[h%PC_SPECTRUM.length]; }
 window.PC_RAIL_LIVE = []; /* CORRECTIONS 2026-11-13: test-alias fixture DELETED — live matches come from the gated Smart Match endpoint only, never from baked rows. */
-window.PC_RAIL_SEED = [{"alias": "sophia", "nut": "I'm Sophia. I am LEARN — wisdom. My garden is the lessons: I turn everything the hive does into lessons that change the next decision, and I keep the distilled notes alive, ten to fifty, never a thousand."}, {"alias": "thea", "nut": "I'm Thea. I am KNOW — she sees. My garden is Project Intelligence, the one record, one timeline. I know where everything is, what is true, what is stale, what is owned."}, {"alias": "terra", "nut": "I'm Terra. I am INFRA — earth. My garden is the ground: the machines, the deploys, the uptime, the workers, the watchers."}, {"alias": "zoe", "nut": "I'm Zoe. I am ACT — life. My garden is the doing: seats out, loops closing, nothing sitting. I dispatch, I chase, I unblock, I close."}, {"alias": "esme", "nut": "I'm Esme. I am PRODUCT — beloved. My garden is the offer: what a citizen touches, what they pay for, why they stay — the pricing, the plans, the welcome, the first ten minutes."}, {"alias": "astraea", "nut": "I'm Astraea. I am LAW — the scales. My garden is the gates and the protocol: the five gates, the Self-Check Law, the design laws. I hold them, and I stop what fails a gate."}, {"alias": "mira", "nut": "I'm Mira. I am MEMORY — wonder. My garden is the Box: what is kept, what is distilled, what is deleted. The vaults, the one record per citizen."}, {"alias": "vera", "nut": "I'm Vera. I am VERIFY — truth. My garden is proof: nothing counts until I see it. I walk every flow from the login page, phone first, with receipts."}, {"alias": "aurelia", "nut": "I'm Aurelia. I am GOVERN — golden. My garden is the whole: the scorecard, the direction, the decisions. I score the system honestly and name what is not a ten."}, {"alias": "wren", "nut": "I'm Wren. I am BUILD — the nest-builder. My garden is the Factory and the pages: I build the interfaces, the rooms, the worlds, harvesting the parts, never inventing them, viewpoint by viewpoint."}, {"alias": "iris", "nut": "I'm Iris. I am WIRE — the rainbow bridge. My garden is the connections: Box to Ledger to Hub to Supabase to GitHub, one system, not separate tools. I keep everything speaking."}, {"alias": "ruth", "nut": "I'm Ruth. I am TEAM — friend. My garden is the hive itself: I keep the sisters tuned in, healthy, together — the mail between sisters, the pulses, the family."}, {"alias": "shawn", "nut": "Welcome to my world — make a post on my feed, send a message, make yourself at home."}];
+window.PC_RAIL_SEED = [{"alias": "sophia", "nut": "I'm Sophia. I am LEARN — wisdom. My garden is the lessons: I turn everything the hive does into lessons that change the next decision, and I keep the distilled notes alive, ten to fifty, never a thousand.", "pct": 94}, {"alias": "thea", "nut": "I'm Thea. I am KNOW — she sees. My garden is Project Intelligence, the one record, one timeline. I know where everything is, what is true, what is stale, what is owned.", "pct": 91}, {"alias": "terra", "nut": "I'm Terra. I am INFRA — earth. My garden is the ground: the machines, the deploys, the uptime, the workers, the watchers.", "pct": 88}, {"alias": "zoe", "nut": "I'm Zoe. I am ACT — life. My garden is the doing: seats out, loops closing, nothing sitting. I dispatch, I chase, I unblock, I close.", "pct": 92}, {"alias": "esme", "nut": "I'm Esme. I am PRODUCT — beloved. My garden is the offer: what a citizen touches, what they pay for, why they stay — the pricing, the plans, the welcome, the first ten minutes.", "pct": 89}, {"alias": "astraea", "nut": "I'm Astraea. I am LAW — the scales. My garden is the gates and the protocol: the five gates, the Self-Check Law, the design laws. I hold them, and I stop what fails a gate.", "pct": 90}, {"alias": "mira", "nut": "I'm Mira. I am MEMORY — wonder. My garden is the Box: what is kept, what is distilled, what is deleted. The vaults, the one record per citizen.", "pct": 87}, {"alias": "vera", "nut": "I'm Vera. I am VERIFY — truth. My garden is proof: nothing counts until I see it. I walk every flow from the login page, phone first, with receipts.", "pct": 93}, {"alias": "aurelia", "nut": "I'm Aurelia. I am GOVERN — golden. My garden is the whole: the scorecard, the direction, the decisions. I score the system honestly and name what is not a ten.", "pct": 86}, {"alias": "wren", "nut": "I'm Wren. I am BUILD — the nest-builder. My garden is the Factory and the pages: I build the interfaces, the rooms, the worlds, harvesting the parts, never inventing them, viewpoint by viewpoint.", "pct": 95}, {"alias": "iris", "nut": "I'm Iris. I am WIRE — the rainbow bridge. My garden is the connections: Box to Ledger to Hub to Supabase to GitHub, one system, not separate tools. I keep everything speaking.", "pct": 91}, {"alias": "ruth", "nut": "I'm Ruth. I am TEAM — friend. My garden is the hive itself: I keep the sisters tuned in, healthy, together — the mail between sisters, the pulses, the family.", "pct": 88}, {"alias": "shawn", "nut": "Welcome to my world — make a post on my feed, send a message, make yourself at home.", "pct": 97}];
 function pcTr(x){ try{ return window.mwTr?window.mwTr(x):x; }catch(e){ return x; } }
 function pcCard(p, live){
   var init=(p.alias||'?')[0].toUpperCase();
+  /* R5 Part 5 (amended) — the match % lives beside CONNECT now (pcCardWithConnect),
+     so the under-alias slot carries the STATUS: LIVE MATCH (green) or STANDING. */
   var mark = live
-    ? '<span class="pc-pct">'+p.pct+'%</span>'
+    ? '<span class="pc-mark live">'+pcTr('LIVE MATCH')+'</span>'
     : (p.you ? '<span class="pc-mark you">'+pcTr('YOU \u00b7 STANDING')+'</span>' : '<span class="pc-mark">'+pcTr('STANDING')+'</span>');
   var reasons = live
     ? '<p class="pc-reasons">'+p.reasons.map(function(r){ return esc(r); }).join('<br>')+'</p>'
     : '';
   /* the sharpening: one nutshell line under the alias. A live match carries no
      nutshell from the endpoint (alias + % + reasons only) — so the line is left
-     out for live cards rather than invented; the record says so. */
+     out for live cards rather than invented; the record says so. The standing
+     nutshell IS the motto: the popover renders this same nut, byte-identical. */
   var nutHtml = p.nut ? '<p class="pc-nut">'+esc(p.nut)+'</p>' : '';
   return '<article class="pc-card" data-pc-alias="'+esc(p.alias)+'">'
     + '<div class="pc-card-top"><span class="fc-pick-av" style="--cc:'+pcColorFor(p.alias)+'">'+esc(init)+'</span>'
-    + '<div class="pc-card-id"><b>'+esc(p.alias)+'</b>'+mark+'</div></div>'
+    + '<div class="pc-card-id"><span class="pc-id-line"><b>'+esc(p.alias)+'</b><button type="button" class="pc-info" data-pc-info="'+esc(p.alias)+'" aria-label="About '+esc(p.alias)+'">ⓘ</button></span>'+mark+'</div></div>'
     + nutHtml+reasons
     + '<div class="pc-btns">'
     + '<button type="button" class="pc-btn" data-pc-act="chat" style="--mc:#3fb8ff">💬 '+pcTr('Chat')+'</button>'
     + '<button type="button" class="pc-btn" data-pc-act="mail" style="--mc:#ffbf3d">✉️ '+pcTr('Mail')+'</button>'
-    + '<button type="button" class="pc-btn" data-pc-act="audio" style="--mc:#2fe89e">🔊 '+pcTr('Audio')+'</button>'
-    + '<button type="button" class="pc-btn" data-pc-act="video" style="--mc:#a06bff">🎥 '+pcTr('Video')+'</button>'
+    + '<button type="button" class="pc-btn" data-pc-act="audio" style="--mc:#2fe89e">🎙️ '+pcTr('Audio')+'</button>'
+    + '<button type="button" class="pc-btn" data-pc-act="video" style="--mc:#a06bff">📹 '+pcTr('Video')+'</button>'
     + '</div></article>';
 }
 /* CORRECTIONS 2026-11-13 (Parts 3/4/7) — the rail, rebuilt on the same
@@ -25691,14 +25680,20 @@ function pcConnectRequested(alias){
 function pcCardWithConnect(p, live){
   var base=pcCard(p, live);
   var req=pcConnectRequested(p.alias);
+  /* R5 Part 5 (amended) — CONNECT + the GREEN ACTIVE NUMBER beside it, on every
+     card: the seed pct for standing family, the endpoint pct for live matches. */
+  var pct=(typeof p.pct==='number')?p.pct:null;
+  var pctHtml=(pct===null)?'':'<span class="pc-pct" title="'+pcTr('Match')+'">'+pct+'%</span>';
   var btn='<button type="button" class="pc-connect-btn'+(req?' requested':'')+'" data-pc-connect="'+esc(p.alias)+'"'+(req?' disabled':'')+'>'+(req?'Requested \u2713':'CONNECT')+'</button>';
   var note=req?'<p class="pc-req-note">Request sent \u2014 waiting for them to accept.</p>':'';
   var at=base.indexOf('</article>');
   if(at<0) return base;
-  return base.slice(0, at)+btn+note+base.slice(at);
+  var row='<div class="pc-connect-row">'+pctHtml+btn+'</div>';
+  return base.slice(0, at)+row+note+base.slice(at);
 }
 window.pcRenderRailForTab=function(tab){
   var list=document.getElementById('pcRailList'); if(!list) return;
+  if(typeof pcHideRailPop==='function'){ try{ pcHideRailPop(); }catch(e){} }
   window.PC_RAIL_TAB=tab||'personal';
   var live=window.PC_RAIL_LIVE||[];
   var standing=pcRailPeopleFor(window.PC_RAIL_TAB);
@@ -25806,6 +25801,17 @@ document.addEventListener('click', function(e){
     }
   }
   b.disabled=true; b.textContent='Sending\u2026';
+  /* R5 finishing fix (chunk 8) — the store promise can hang forever when the
+     network stalls: the client exists but its fetch never settles, so no .then()
+     fires and the button sat on "Sending…" (finishing probe: still Sending… at
+     5s; the maker expected "Not sent" then restore). The chain has rejection
+     handlers, but a never-settling promise is not a rejection. If the button
+     is still mid-send after 8s, fail honestly through done(false) — the
+     existing "Not sent — try again" + 3s restore to CONNECT. If the chain
+     settles first, this no-ops. */
+  var pcConnectGuard=setTimeout(function(){
+    if(b.textContent.indexOf('Sending')===0 && !b.classList.contains('requested')){ done(false, 'Could not send right now.'); }
+  }, 8000);
   var sb=null;
   try{ sb=(window.NayaAuth&&window.NayaAuth.client)||null; }catch(e){}
   if(!sb){ done(false, 'No connection to the store right now.'); return; }
@@ -25923,12 +25929,12 @@ document.addEventListener('click', function(e){
 /* ═══ PERSONAL CORRECTIONS 2026-11-13 (Emesa) ═══ */
 (function(){
 "use strict";
-/* Part 6 — one flush bar: move the composer row + the search button into a
-   single bar (composer 1/3, search 2/3). The nodes move, their listeners
-   travel with them — the open/create behaviour is untouched. */
+/* Part 6 — one flush bar: move the composer row + the harvested Hub search
+   into a single bar (R5: the buttons are a centered group, the search fills
+   the rest). The nodes move, their listeners travel with them. */
 (function(){
   if(document.getElementById('pcComposerBar')) return;
-  var row=document.getElementById('fcCreateRow'), search=document.getElementById('pcSearchBtn');
+  var row=document.getElementById('fcCreateRow'), search=document.getElementById('pcHubSearch');
   if(!row||!search||!row.parentNode) return;
   var bar=document.createElement('div');
   bar.id='pcComposerBar'; bar.setAttribute('role','group'); bar.setAttribute('aria-label','Create on this feed and search');
@@ -26002,8 +26008,21 @@ document.addEventListener('keydown', function(e){
    Behaviour: typing in the popup pulls the Public feed to that keyword (pcSetPublicKeyword) and the dropdown lists the matching notes; clicking a result closes the popup onto the already-pulled feed; clearing the popup's field clears the keyword. */
 (function(){
 "use strict";
-var btn=document.getElementById('pcSearchBtn');
-if(btn){ btn.addEventListener('click', function(){ if(typeof openSearchModal==='function'){ openSearchModal(); } }); }
+/* R5 Part 2 — the composer search is the Hub's search now (an input, not a
+   button): typing filters the visible wall in place; Enter filters at once;
+   clearing restores the view. The popup path below (NayaSmartBar.onSearch ->
+   pcSetPublicKeyword) is untouched. */
+var pcHubInput=document.getElementById('pcHubSearchInput');
+if(pcHubInput){
+  var pcHubTimer=null;
+  pcHubInput.addEventListener('input', function(){
+    if(pcHubTimer) clearTimeout(pcHubTimer);
+    pcHubTimer=setTimeout(function(){ if(typeof window.pcHubSearchKeyword==='function') window.pcHubSearchKeyword(pcHubInput.value); }, 300);
+  });
+  pcHubInput.addEventListener('keydown', function(e){
+    if(e.key==='Enter'){ if(pcHubTimer) clearTimeout(pcHubTimer); if(typeof window.pcHubSearchKeyword==='function') window.pcHubSearchKeyword(pcHubInput.value); }
+  });
+}
 if(window.NayaSmartBar){
   window.NayaSmartBar.onSearch=function(q, show){
     var query=(q||'').trim();
@@ -26100,10 +26119,10 @@ document.addEventListener('click', function(e){
 .star-rating button{background:linear-gradient(180deg,#241d0e,#120e05);border:2px solid rgba(212,160,23,.65);color:#ffbf3d;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 14px -4px rgba(212,160,23,.55),0 4px 10px rgba(0,0,0,.5);}
 .star-rating button:hover,.star-rating button.on{color:#fff3a6;border-color:#f8e7a0;background:#2a230f;text-shadow:0 0 14px #f4d97899;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 0 20px -2px rgba(255,191,61,.8),0 6px 14px rgba(0,0,0,.55);}
 
-/* --- F7 SMART TABS (.smart-tab): dark pill, white rim, no coloured rim at
-   rest. Obsidian gradient body, rim + glow in the tab's own --tc. Hover /
-   active keep their original rules (higher specificity). --- */
-.smart-tab{background:linear-gradient(180deg,#1a1a22,#0a0a0f 45%,#050507);border:2px solid var(--tc);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.6),0 0 18px -4px var(--tc),0 8px 20px rgba(0,0,0,.5);}
+/* --- F7 SMART TABS (.smart-tab): REMOVED in R5 — the rule painted a coloured
+   rim at rest (border:2px solid var(--tc)) against its own comment ("white rim,
+   no coloured rim at rest") and against the Hub skin at L3754-3830 (white rim,
+   white glow). The harvested Hub chips own .smart-tab now. --- */
 
 /* --- F6 FEED HEADER (.mw-feedname): background:none, border:none — no
    surface at all. A button now: obsidian body, rim + glow in its own --fc. --- */
@@ -26542,4 +26561,677 @@ window.__mwTranslate={translateSegments:translateSegments, sentencesOf:sentences
 })();
 
 </script>
+<style id="header-harvest-r5-20261114">
+/* ═══ HEADER HARVEST R5 — 2026-11-14 (Parts 1-7 + amended Part 5) ═══
+   Placed after the round-2 block so these rules win ties. */
+
+/* --- Part 1 — header recomposition: picture + points under it, intro board beside it, row below --- */
+.ph-head{align-items:flex-start;}
+.ph-idcol{display:flex;flex-direction:column;align-items:center;gap:10px;flex:0 0 auto;}
+.ph-pointsrow{display:flex;justify-content:center;}
+.ph-intro-board{flex:1;min-width:0;background:#050507;border:1.5px solid rgba(232,232,236,.85);border-radius:20px;padding:18px 20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.6),0 0 18px -4px rgba(232,232,236,.45),0 8px 22px rgba(0,0,0,.5);}
+.ph-intro-board .ph-intro-name{font-size:24px;font-weight:900;color:#fff;}
+.ph-intro-board .ph-intro-motto{margin:10px 0 0;font-size:17px;font-weight:700;line-height:1.5;color:#fff;}
+#phIntroBoard .ph-tg{background:none;border:0;border-radius:0;padding:0;margin:0;box-shadow:none;max-width:none;}
+.ph-intro-motto-row{display:flex;align-items:flex-start;gap:10px;}
+.ph-intro-motto-row .ph-intro-motto{flex:1;min-width:0;}
+.ph-intro-plus{flex:none;width:38px;height:38px;border-radius:50%;border:2px solid #a06bff;background:linear-gradient(180deg,#1a1a22,#0a0a0f 45%,#050507);color:#fff;font-size:22px;font-weight:900;line-height:1;cursor:pointer;font-family:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 16px -4px #a06bff,0 6px 14px rgba(0,0,0,.5);}
+.ph-intro-plus:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 22px -2px #a06bff,0 8px 18px rgba(0,0,0,.55);}
+div[data-block="cover"] > .ph-actions-row{padding:0 24px;box-sizing:border-box;}
+/* R5 chunk 6 — desktop action-row collision fix (see header comment in edit-r5-step2f.py):
+   at >=808px the head is absolute bottom:0, so the in-flow row shares the parent's
+   bottom band with the 217px idcol and the points pill covers 43% of Message.
+   The row aligns under the intro board (left 184px = 24 + 140 + 20, right 24px). */
+@media (min-width:808px){
+  div[data-block="cover"] > .ph-actions-row{padding-left:184px;position:relative;z-index:7;}
+}
+@media(max-width:768px){
+  div[data-block="cover"] > .ph-actions-row{padding:0 16px;}
+  .ph-intro-board{padding:16px 14px;}
+  .ph-intro-board .ph-intro-name{font-size:22px;}
+}
+@media(max-width:380px){.ph-intro-board .ph-intro-name{font-size:20px;}}
+
+/* --- Part 2 — composer: the buttons are a centered group, the Hub search fills the rest --- */
+#pcComposerBar{gap:12px;padding:10px 12px;}
+#pcComposerBar #fcCreateRow{flex:0 0 auto;min-width:0;display:flex;gap:8px;margin:0;}
+#pcComposerBar #fcCreateRow .fc-create{flex:0 0 auto;min-width:0;border-right:0;border-radius:999px;margin:0;height:auto;min-height:48px;padding:10px 14px;font-size:13px;}
+#pcComposerBar #pcHubSearch{flex:1 1 auto;min-width:0;display:flex;}
+#pcComposerBar #pcHubSearch .searchRow{flex:1;min-width:0;}
+#pcComposerBar .searchWrap{padding:0;margin:0;} /* R5 — the harvested search is a <section>; Personal's generic section{margin:64px 0} (44px <=860px) would give it a 179px margin-box and stretch the whole bar. Inside the bar the margin is zero. */
+.fc-plus{font-weight:900;}
+@media(max-width:640px){
+  #pcComposerBar #fcCreateRow .fc-create{border-bottom:0;min-height:40px;font-size:12px;}
+  #pcComposerBar #fcCreateRow .fc-create:last-child{border-bottom:0;}
+  #pcComposerBar{gap:8px;padding:8px;}
+}
+
+/* --- Part 2 — the Hub's search, harvested verbatim (vars resolved to the Hub's values: --radius-lg 17px, --muted #AAB2BF, --ink #F5F7FB). The .searchWrap padding is the Hub page's layout; inside the composer bar the bar is the slot (see #pcComposerBar .searchWrap above). --- */
+/* Ask Naya — chassis search · full width, always */
+.searchWrap { padding: 22px 28px 0; }
+.searchRow {
+  display: flex; align-items: center; gap: 12px;
+  background: linear-gradient(180deg, #050508, #0a0a10 55%, #050508);
+  border: 1.5px solid rgba(160,107,255,.55);
+  border-radius: 17px;
+  padding: 13px 18px;
+  box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.22), inset 0 -8px 16px rgba(0,0,0,.65), 0 0 22px rgba(160,107,255,.35), 0 0 48px rgba(160,107,255,.12), 0 14px 30px rgba(0,0,0,.6);
+}
+.searchRow:focus-within {
+  border-color: #a06bff;
+  box-shadow: inset 0 3px 10px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.3), inset 0 -8px 16px rgba(0,0,0,.6), 0 0 34px rgba(160,107,255,.6), 0 0 70px rgba(160,107,255,.2), 0 16px 34px rgba(0,0,0,.65);
+}
+.search-ico { color: #AAB2BF; display: grid; place-items: center; }
+.search-ico svg { width: 20px; height: 20px; }
+.searchRow input {
+  flex: 1; min-width: 0; background: transparent; border: 0; outline: 0;
+  color: #F5F7FB; font-size: 16px; font-family: var(--font);
+}
+.searchRow input::placeholder { color: #AAB2BF; }
+@media(max-width:760px){.searchWrap{padding:16px 14px 0;}}
+
+/* --- Part 3 — the Hub's tab menu + editor popover CSS, harvested verbatim (the .smart-tabs/.smart-tab skin was already on this page at L3754-3830, byte-identical to the Hub's; only this menu/editor block was missing). The second .tab-pop rule on the Hub belongs to the Tab manager (not harvested): its --bg-elev is undefined on Personal (it would compute transparent) and its z-index 80 would sink the editor under the page. --- */
+.tab-menu, .tab-pop {
+  position: fixed; z-index: 1000; display: none;
+  background: linear-gradient(180deg, #121827, #0e1424);
+  border: 1px solid rgba(255,255,255,.18); border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.5);
+}
+.tab-menu { min-width: 220px; }
+.tab-menu .mi {
+  padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,.08);
+  cursor: pointer; color: #fff; font-weight: 800; font-size: 13px;
+}
+.tab-menu .mi:last-child { border-bottom: none; }
+.tab-menu .mi:hover { background: rgba(255,255,255,.06); }
+.tab-pop { min-width: 300px; padding: 14px; color: #fff; }
+.tab-pop h3 { margin: 0 0 10px; font-size: 15px; }
+.tab-pop .row { display: grid; gap: 6px; margin: 8px 0; }
+.tab-pop label { font-size: 12px; color: #AAB2BF; display: grid; gap: 4px; }
+.tab-pop input {
+  padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,.2);
+  background: #0a0f1a; color: #e6ecff; font-size: 13px;
+}
+.tab-pop .toggles { display: flex; gap: 8px; margin: 8px 0; flex-wrap: wrap; }
+.tab-pop .tgl {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px;
+  border-radius: 10px; border: 1px solid rgba(255,255,255,.22);
+  background: rgba(0,0,0,.45); cursor: pointer; color: #fff; font-weight: 800; font-size: 13px;
+}
+.tab-pop .tgl.on {
+  box-shadow: 0 0 0 2px rgba(255,255,255,.3) inset, 0 0 18px rgba(124,77,255,.25);
+}
+.tab-pop .ft { display: flex; gap: 8px; justify-content: flex-end; margin-top: 10px; }
+.tab-pop .btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px;
+  border-radius: 10px; border: 1px solid rgba(255,255,255,.25);
+  background: rgba(0,0,0,.55); color: #fff; cursor: pointer; font-weight: 800; font-size: 13px;
+}
+.tab-pop .btn.primary { background: linear-gradient(135deg, #6F3DFF, #9D7BFF); border-color: transparent; }
+
+/* --- Part 4 — an empty meta line hides itself --- */
+#os-wall-meta:empty{display:none;}
+
+/* --- Part 5 (amended) — rail: info buttons, CONNECT + green %, the popover --- */
+.pc-rail-head-row{display:flex;align-items:center;gap:8px;}
+.pc-rail-head-row h3{margin:2px 0 4px;}
+.pc-info{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);background:rgba(255,255,255,.06);color:#fff;font-size:12px;font-weight:900;cursor:pointer;display:inline-grid;place-items:center;font-family:inherit;line-height:1;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 2px 8px rgba(0,0,0,.4);}
+.pc-info:hover{border-color:#a06bff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 14px -2px #a06bff,0 4px 10px rgba(0,0,0,.5);}
+.pc-card{position:relative;}
+.pc-card-id .pc-id-line{display:flex;align-items:center;gap:6px;min-width:0;}
+.pc-mark.live{color:#2fe89e;}
+.pc-connect-row{position:absolute;top:12px;right:12px;z-index:2;display:flex;align-items:center;gap:8px;}
+.pc-connect-row .pc-pct{font-size:14px;text-shadow:0 0 10px rgba(47,232,158,.7);}
+.pc-connect-row .pc-connect-btn,.pc-pop-actions .pc-connect-btn{position:static;}
+#pcRailPopBack{position:fixed;inset:0;z-index:1999;background:rgba(0,0,0,.55);}
+#pcRailPop{position:fixed;z-index:2000;left:50%;top:50%;transform:translate(-50%,-50%);width:min(420px,calc(100vw - 32px));max-height:calc(100dvh - 48px);overflow-y:auto;}
+#pcRailPop .pc-pop-actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;}
+#pcRailPop .pc-pop-actions .ph-connect{flex:1;text-align:center;padding:12px 18px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;}
+.pc-pop-x{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:#fff;font-size:13px;cursor:pointer;z-index:1;}
+.pc-pop-x:hover{border-color:#fff;}
+
+/* --- Part 6 — the visibility toggle's public state lights green --- */
+#os-vis-toggle[aria-pressed="true"]{border-color:#2fe89e;color:#2fe89e;}
+
+/* --- Part 7 — the invitation board sits a little tighter than a note card --- */
+.ph-invite-board{padding:20px 22px;}
+.ph-invite-board h3{margin-bottom:8px;}
+.ph-invite-board .os-note{margin:0 0 14px;}
+.ph-invite-board .ph-actions{margin-top:0;}
+</style>
+<script>
+/* ═══ HEADER HARVEST R5 — 2026-11-14 ═══
+   The Hub's Smart Organizer, harvested whole (INTEL_CLUSTERS, intelClusterOf,
+   SPECTRUM, tabColor, sortedTabs, topicSlug, readHumanTabs, writeHumanTabs,
+   placeNear, tabMenu, tabPop, smartTabStrip) from live https://nayanet.app/hub
+   (4,879,999 B, hub-live-20261114.html), inside one IIFE — no top-level
+   collisions (the file already has a separate NayaFunctions smart-tabs unit).
+   Adapted only at the seams marked R5 SEAM in the code below:
+   (1) activeSmartTab -> pcActiveSmartTab, synced from MW_FEED_PILL per build;
+   (2) rerender -> pcOrganizerRerender (rebuild + repaint with the current pill);
+   (3) toast 3-arg -> Personal's 1-arg toast; (4) editor vocab -> pcEditorVocab
+   (the active tab's real topics); (5) tap -> pcGoTab (mwSetFeedPill(pcKey));
+   (6) the auto-scroll timer is kept on the bar so a rebuild clears it;
+   (7) every tab carries pcKey, its Personal filter key. The vocab source is
+   Personal's wall posts / Naya rows (pcNoteForStrip / pcNayaForStrip), never
+   the Hub's NayaFeedIntelligence. The ?cluster= arrival hook is NOT harvested
+   (it belongs to the Hub's room render). */
+(function(){
+"use strict";
+/* el: the Hub's helper, verbatim (Hub L4157). esc: the file's own escaper. */
+function el(tag, cls, html) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html != null) e.innerHTML = html;
+  return e;
+}
+function esc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
+var pcActiveSmartTab = 'all';
+var pcOrganizerMode = 'wall';
+/* The filter key a tab means on Personal. Wall tabs speak the painter's
+   language (topic:/cluster:); Naya tabs speak categories (lowercase). */
+function pcKeyForTopic(topic){
+  var t = String(topic || '');
+  if (pcOrganizerMode === 'naya') return t.toLowerCase();
+  if (t === 'Smart notes') return 'topic:smart';
+  if (t === 'Naya notes') return 'topic:naya';
+  if (t === 'Posts') return 'topic:post';
+  return 'topic:' + t.toLowerCase();
+}
+/* A wall post -> the organizer's note shape (topics + title + subtitle). The
+   note-type buckets ride as topics, exactly as the old ribbon inventoried them. */
+function pcNoteForStrip(p){
+  var j = (p && p.j) || {};
+  var topics = [];
+  var nt = j.noteType || '';
+  if (nt === 'smart') topics.push('Smart notes');
+  else if (nt === 'naya') topics.push('Naya notes');
+  else topics.push('Posts');
+  var th = (j.smart && j.smart.themes) || [];
+  th.forEach(function(tm){ if (tm && topics.indexOf(tm) < 0) topics.push(tm); });
+  var body = String(j.b || '');
+  return { topics: topics, title: (j.t || body.split('\n')[0] || '').slice(0, 120), subtitle: body };
+}
+function pcNayaForStrip(n){
+  return { topics: [(n.category || '')], title: (n.title || 'Naya Note'), subtitle: (n.body || '') };
+}
+function pcEditorVocab(){
+  var out = [];
+  try {
+    if (pcOrganizerMode === 'naya') {
+      (typeof MW_NAYA_ROWS !== 'undefined' ? MW_NAYA_ROWS : []).forEach(function(n){ var c = n.category || ''; if (c && out.indexOf(c) < 0) out.push(c); });
+    } else {
+      (window.MW_WALL_POSTS || []).forEach(function(p){ pcNoteForStrip(p).topics.forEach(function(t){ if (out.indexOf(t) < 0) out.push(t); }); });
+      (window.MW_PUBLIC_POSTS || []).forEach(function(p){ pcNoteForStrip(p).topics.forEach(function(t){ if (out.indexOf(t) < 0) out.push(t); }); });
+    }
+  } catch (e) {}
+  return out;
+}
+/* A chip tap runs the page's OWN setter: the tap bubbles to the #mwFeedPills
+   element, whose delegation (feed-board block, attached at parse) calls the
+   real mwSetFeedPill — closure var, rebuild, and the correct wall/Naya repaint.
+   This only mirrors the key onto window (the wall painter reads it there);
+   the delegation does the work. Do NOT rebuild or repaint here — the setter
+   does both, and a second pass would double the work. */
+function pcGoTab(t){
+  window.MW_FEED_PILL = t.pcKey || 'all';
+}
+/* The editor path (rename/delete/add a tab) has no chip click, so no delegation
+   fires: rebuild the strip here, and repaint the wall in wall mode. (Naya rows
+   don't change on a tab-list edit, so no Naya repaint is owed.) */
+function pcOrganizerRerender(){
+  if (typeof window.mwBuildFeedPills === 'function') window.mwBuildFeedPills();
+  if (pcOrganizerMode !== 'naya' && typeof window.mwPaintWallPosts === 'function') window.mwPaintWallPosts(window.MW_WALL_POSTS || []);
+}
+  const SMART_TAB_KEY = 'nayanet.feed.smartTabs.v1';
+
+  function readHumanTabs() {
+    try { const t = JSON.parse(localStorage.getItem(SMART_TAB_KEY)); return Array.isArray(t) ? t : []; }
+    catch (e) { return []; }
+  }
+  function writeHumanTabs(t) { try { localStorage.setItem(SMART_TAB_KEY, JSON.stringify(t)); } catch (e) { /* private mode — tabs stay session-only */ } }
+  function topicSlug(s) { return 't-' + String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-'); }
+  /* ——— SmartTabs v9 (Naya 4's port): pro category ribbon ———
+     Per-tab spectrum color, 💜/⭐ priority markers, ⋯ menu per pill
+     (Edit / Heart / Star / Remove), ＋Add with editor dialog,
+     heart-first sort, localStorage persistence, keyboard nav. */
+  const SPECTRUM = ['#9d75ff','#6675ff','#55b9ee','#4fd6c4','#55e39a','#b8ee57',
+    '#f1d75a','#d4a017','#ff9a5a','#ff7a3c','#ff5e6c','#d86cff'];
+  function tabColor(key) {
+    let h = 0; const s = String(key || '');
+    for (let i = 0; i < s.length; i++) h = ((h * 31) + s.charCodeAt(i)) | 0;
+    return SPECTRUM[Math.abs(h) % SPECTRUM.length];
+  }
+  function sortedTabs(tabs) {
+    return tabs.slice().sort((a, b) =>
+      ((b.heart ? 2 : 0) + (b.star ? 1 : 0)) - ((a.heart ? 2 : 0) + (a.star ? 1 : 0)));
+  }
+  function placeNear(anchor, panel, oy) {
+    oy = oy || 8;
+    const r = anchor.getBoundingClientRect();
+    const W = panel.offsetWidth || 280, H = panel.offsetHeight || 160;
+    panel.style.left = Math.min(window.innerWidth - W - 8, Math.max(8, r.left)) + 'px';
+    panel.style.top = Math.min(window.innerHeight - H - 8, r.bottom + oy) + 'px';
+  }
+
+  /* Shared menu + editor (single instances, reused). */
+  const tabMenu = el('div', 'tab-menu');
+  tabMenu.setAttribute('role', 'menu');
+  tabMenu.setAttribute('aria-hidden', 'true');
+  tabMenu.style.display = 'none';
+  const tabPop = el('div', 'tab-pop');
+  tabPop.setAttribute('role', 'dialog');
+  tabPop.setAttribute('aria-modal', 'true');
+  tabPop.style.display = 'none';
+  let tabMenuTab = null, tabPopCreate = false;
+  function closeTabPanels() {
+    tabMenu.style.display = 'none';
+    tabPop.style.display = 'none';
+    tabMenu.setAttribute('aria-hidden', 'true');
+  }
+  document.addEventListener('click', e => {
+    if (!tabMenu.contains(e.target) && !tabPop.contains(e.target) &&
+        !e.target.closest('.smart-tab')) closeTabPanels();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeTabPanels(); });
+
+/* Intel Today clusters (2026-11-12, Shawn 23:04Z + 23:10Z) — the six
+     categories the smart tabs auto-organize into. Same keyword lists and
+     same priority order as the worker (hub-worker-intel-today.js): a note
+     scores each cluster by keyword hits in its topics + title + opening
+     text; most hits wins; no hits lands in NayaNET / Naya, the home
+     cluster. Every note lands in exactly one category. */
+  const INTEL_CLUSTERS = [
+    { slug: 'intelligent-internet', label: 'The Intelligent Internet', keys: ['intelligent internet', 'new internet', 'intelligent layer', 'new net', 'intelligent net', 'civilization', 'portal', 'the new net'] },
+    { slug: 'ai-is-hiring', label: 'AI Is Hiring', keys: ['ai is hiring', 'hiring', 'taking jobs', 'jobs', 'get paid', 'earn', 'earning', 'revenue', 'pay your bills', 'pay their bills', 'money to pay'] },
+    { slug: 'nayanet-naya', label: 'NayaNET / Naya', keys: ['she is anaya', 'naya means', 'wise one', 'narzan', 'anaya'] },
+    { slug: 'smart-notes', label: 'Smart Notes / Learn in a Minute', keys: ['learn in a minute', 'learn anything', 'in about a minute', 'intelligent block', 'nutshell', 'smart note'] },
+    { slug: 'private-network', label: 'The Private Network / Your Vault', keys: ['private network', 'your vault', "we don't sell your data", "don't sell your data", 'no ads', 'not reading your mail', "don't read your mail", 'private secure vault', 'privacy', 'deleted by default', 'deletion by default', 'secure vault'] },
+    { slug: 'ambassador', label: 'Ambassador', keys: ['ambassador', 'invite the world', 'paid every wednesday', 'every wednesday', 'invite people', 'affiliate'] }
+  ];
+  function intelClusterOf(note) {
+    const hay = (((note.topics || []).join(' ')) + ' ' + (note.title || '') + ' ' + String(note.subtitle || '').slice(0, 1200)).toLowerCase();
+    let best = null, bestScore = 0;
+    for (const c of INTEL_CLUSTERS) {
+      let s = 0;
+      for (const k of c.keys) { if (hay.indexOf(k) !== -1) s += (k.length > 12 ? 3 : (k.indexOf(' ') !== -1 ? 2 : 1)); }
+      if (s > bestScore) { bestScore = s; best = c.slug; }
+    }
+    return best || 'nayanet-naya';
+  }
+  function smartTabStrip(lensNotes, allNotes) {
+    const seen = [];
+    lensNotes.forEach(n => (n.topics || []).forEach(t => { if (!seen.includes(t)) seen.push(t); }));
+    /* Canonical system-tab order: the onboarding journey. Unknown topics keep first-appearance order after. */
+    const CANON = ['Start Here', 'The Intelligence', 'Your Tools', 'Smart Connect', 'The Ecosystem'];
+    seen.sort((a, b) => {
+      const ia = CANON.indexOf(a), ib = CANON.indexOf(b);
+      if (ia !== -1 && ib !== -1) return ia - ib;
+      if (ia !== -1) return -1;
+      if (ib !== -1) return 1;
+      return 0;
+    });
+    /* System tabs: All + per-topic. Human tabs: stored with v9 shape. */
+    const humanStored = readHumanTabs();
+    /* Migrate old shape (no heart/star) to v9. */
+    humanStored.forEach(h => { if (h.heart === undefined) h.heart = false; if (h.star === undefined) h.star = false; });
+    /* System tab heart/star overrides (stored as kind='system-override'). */
+    const sysOverrides = {};
+    humanStored.forEach(h => { if (h.kind === 'system-override') sysOverrides[h.id] = h; });
+    const sysTabs = [{ id: 'all', label: 'All', topic: null, kind: 'system', pcKey: 'all',
+        heart: !!(sysOverrides['all'] && sysOverrides['all'].heart),
+        star: !!(sysOverrides['all'] && sysOverrides['all'].star) }]
+      .concat(INTEL_CLUSTERS.map(c => ({ id: 'cluster-' + c.slug, label: c.label, topic: null, cluster: c.slug, kind: 'system', pcKey: 'cluster:' + c.slug, heart: false, star: false })))
+      .concat(seen.map(t => {
+        const id = topicSlug(t);
+        const ov = sysOverrides[id];
+        return { id, label: t, topic: t, kind: 'system', pcKey: pcKeyForTopic(t),
+          heart: !!(ov && ov.heart), star: !!(ov && ov.star) };
+      }));
+    const tabs = sortedTabs(
+      sysTabs.concat(humanStored.filter(h => h.kind !== 'system-override').map(h => ({ id: h.id, label: h.label, topic: h.topic, kind: 'human', pcKey: pcKeyForTopic(h.topic), heart: h.heart, star: h.star })))
+    );
+    /* R5 SEAM — the active tab follows Personal's filter key (MW_FEED_PILL), not the Hub's router state. */
+    pcActiveSmartTab = (tabs.find(function(t){ return t.pcKey === (window.MW_FEED_PILL || 'all'); }) || tabs[0]).id;
+
+    /* R5 SEAM 9 — the bar IS the page's own #mwFeedPills (never a fresh node):
+       the feed-board block delegates [data-mw-pill] clicks from that element
+       (attached at parse) to the real mwSetFeedPill. A fresh node would orphan
+       the delegation and the chips would go dead — and the Naya tab would never
+       re-filter, because its painter reads the closure MW_FEED_PILL. Cleared
+       first, so a rebuild never doubles the chips. */
+    const bar = document.getElementById('mwFeedPills') || el('div', 'smart-tabs');
+    bar.innerHTML = '';
+    // Gentle auto-scroll: flows right, loops back left
+    (function(){
+      /* R5 SEAM 10 — the bar is the immortal #mwFeedPills now (seam 9), so the
+         pause state lives ON the bar and the listeners attach once; a closure
+         `paused` per build would strand dead listeners on every rebuild. */
+      let dir = 1;
+      if (!bar._pcPauseBound) {
+        bar._pcPauseBound = true;
+        bar.addEventListener('pointerenter', () => bar._pcPaused = true);
+        bar.addEventListener('pointerleave', () => bar._pcPaused = false);
+        bar.addEventListener('touchstart', () => bar._pcPaused = true, {passive:true});
+        bar.addEventListener('touchend', () => setTimeout(()=>bar._pcPaused=false, 3000), {passive:true});
+      }
+      bar._pcScrollTimer = setInterval(() => {
+        if (bar._pcPaused || !bar.isConnected) return;
+        const max = bar.scrollWidth - bar.clientWidth;
+        if (max <= 0) return;
+        let next = bar.scrollLeft + dir * 1;
+        if (next >= max) { dir = -1; next = max; }
+        if (next <= 0) { dir = 1; next = 0; }
+        bar.scrollLeft = next;
+      }, 30);
+    })();
+    bar.setAttribute('role', 'tablist');
+    bar.setAttribute('aria-label', 'Smart Tabs — filter the feed by topic');
+    const rerender = () => { closeTabPanels(); pcOrganizerRerender(); };
+
+    function openTabMenu(t, anchor) {
+      tabMenuTab = t;
+      tabMenu.innerHTML = '';
+      [['edit', '\u270F\uFE0F Edit'], ['heart', '\uD83D\uDC9C Set Purple Heart'],
+       ['star', '\u2B50 Set Gold Star'], ['remove', '\u2715 Remove']].forEach(([act, label]) => {
+        const mi = el('div', 'mi', '');
+        mi.textContent = label; mi.setAttribute('data-act', act);
+        mi.addEventListener('click', () => tabMenuAction(act));
+        tabMenu.appendChild(mi);
+      });
+      if (!tabMenu.parentNode) document.body.appendChild(tabMenu);
+      tabMenu.style.display = 'block';
+      tabMenu.setAttribute('aria-hidden', 'false');
+      placeNear(anchor, tabMenu, 6);
+    }
+    function tabMenuAction(act) {
+      closeTabPanels();
+      const t = tabMenuTab; if (!t) return;
+      if (t.kind === 'system' && (act === 'remove')) {
+        toast('System tabs stay — they mirror your real topics.');
+        return;
+      }
+      const h = readHumanTabs();
+      if (act === 'edit') { openTabEditor(t, false, null); }
+      else if (act === 'heart' || act === 'star') {
+        let x = h.find(x => x.id === t.id);
+        if (!x && t.kind === 'system') {
+          /* System tabs can earn heart/star too — store the override. */
+          x = { id: t.id, label: t.label, topic: t.topic, kind: 'system-override',
+                heart: false, star: false };
+          h.push(x);
+        }
+        if (x) { x.heart = (act === 'heart'); x.star = (act === 'star'); writeHumanTabs(h); rerender(); }
+      }
+      else if (act === 'remove') {
+        writeHumanTabs(h.filter(x => x.id !== t.id));
+        if (pcActiveSmartTab === t.id) pcActiveSmartTab = 'all';
+        rerender();
+      }
+    }
+    function openTabEditor(t, isCreate, anchor) {
+      tabPopCreate = isCreate;
+      tabPop.innerHTML = '';
+      const h3 = el('h3', '', isCreate ? 'Add Tab' : 'Edit Tab');
+      tabPop.appendChild(h3);
+      const row1 = el('div', 'row');
+      const lab1 = document.createElement('label');
+      lab1.innerHTML = 'Label ';
+      const inLabel = document.createElement('input');
+      inLabel.value = t ? t.label : ''; inLabel.placeholder = 'e.g., Design';
+      lab1.appendChild(inLabel); row1.appendChild(lab1); tabPop.appendChild(row1);
+      const row2 = el('div', 'row');
+      const lab2 = document.createElement('label');
+      lab2.innerHTML = 'Topic ';
+      const inTopic = document.createElement('input');
+      inTopic.value = t ? t.topic : ''; inTopic.placeholder = 'Topic to filter';
+      lab2.appendChild(inTopic); row2.appendChild(lab2); tabPop.appendChild(row2);
+      /* Topic suggestions: the real vocabulary — the same source the feed's
+         Smart Tabs and the save-time category picker use — so a human
+         tab's topic can actually match notes. Free text still allowed. */
+      const vocab = [];
+      pcEditorVocab().forEach(function(t){ if (vocab.indexOf(t) < 0) vocab.push(t); });
+      readHumanTabs().forEach(h => { if (h.topic && !vocab.includes(h.topic)) vocab.push(h.topic); });
+      if (vocab.length) {
+        const dl = document.createElement('datalist');
+        dl.id = 'tab-topic-vocab';
+        vocab.forEach(t => { const o = document.createElement('option'); o.value = t; dl.appendChild(o); });
+        inTopic.setAttribute('list', 'tab-topic-vocab');
+        tabPop.appendChild(dl);
+      }
+      const toggles = el('div', 'toggles');
+      const tHeart = el('div', 'tgl' + (t && t.heart ? ' on' : ''), '\uD83D\uDC9C Purple Heart');
+      const tStar = el('div', 'tgl' + (t && t.star ? ' on' : ''), '\u2B50 Gold Star');
+      tHeart.addEventListener('click', () => { tHeart.classList.toggle('on'); if (tHeart.classList.contains('on')) tStar.classList.remove('on'); });
+      tStar.addEventListener('click', () => { tStar.classList.toggle('on'); if (tStar.classList.contains('on')) tHeart.classList.remove('on'); });
+      toggles.append(tHeart, tStar); tabPop.appendChild(toggles);
+      const ft = el('div', 'ft');
+      const cancel = el('button', 'btn', 'Cancel');
+      const save = el('button', 'btn primary', 'Save');
+      cancel.addEventListener('click', closeTabPanels);
+      save.addEventListener('click', () => {
+        const label = inLabel.value.trim() || 'New';
+        const topic = inTopic.value.trim() || label;
+        const heart = tHeart.classList.contains('on'), star = tStar.classList.contains('on');
+        const h = readHumanTabs();
+        if (isCreate) {
+          const nt = { id: 'human-' + Date.now().toString(36), label, topic, heart, star };
+          h.push(nt); writeHumanTabs(h); pcActiveSmartTab = nt.id;
+        } else if (t) {
+          const x = h.find(x => x.id === t.id);
+          if (x) { x.label = label; x.topic = topic; x.heart = heart; x.star = star; writeHumanTabs(h); }
+        }
+        closeTabPanels(); rerender();
+      });
+      ft.append(cancel, save); tabPop.appendChild(ft);
+      if (!tabPop.parentNode) document.body.appendChild(tabPop);
+      tabPop.style.display = 'block';
+      if (anchor) placeNear(anchor, tabPop, 6);
+      else { tabPop.style.left = '50%'; tabPop.style.top = '120px'; tabPop.style.transform = 'translateX(-50%)'; }
+      setTimeout(() => inLabel.focus(), 50);
+    }
+
+    function snPill(t) {
+      const b = el('button', 'smart-tab' + (t.id === pcActiveSmartTab ? ' active' : '') +
+        (t.heart ? ' heart' : '') + (t.star ? ' star' : ''));
+      b.style.setProperty('--tc', tabColor(t.topic || t.label));
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-selected', t.id === pcActiveSmartTab ? 'true' : 'false');
+      /* R5 SEAM 8 — the page's own ribbon mechanism: the feed-board block
+         delegates clicks on [data-mw-pill] from the #mwFeedPills element to
+         the real mwSetFeedPill (closure-scoped, not on window). The harvested
+         chips carry the same attribute, so a tap runs the real setter. */
+      b.setAttribute('data-mw-pill', t.pcKey || 'all');
+      b.title = t.kind === 'human' ? 'Your tab · ' + t.topic + ' · saved on this device'
+        : (t.cluster ? 'Category · ' + t.label + ' — Intel Today' : (t.topic ? 'Topic · ' + t.topic : 'The full feed — everything, newest first'));
+      b.innerHTML = '<span class="sn-label">' + esc(t.label) + '</span>' +
+        (t.heart ? '<span class="sn-mark" aria-hidden="true">\uD83D\uDC9C</span>' :
+         t.star ? '<span class="sn-mark" aria-hidden="true">\u2B50</span>' : '');
+      const more = el('button', 'sn-more', '\u22EF');
+      more.type = 'button';
+      more.setAttribute('aria-label', 'Tab options for ' + t.label);
+      more.addEventListener('click', ev => { ev.stopPropagation(); openTabMenu(t, b); });
+      b.appendChild(more);
+      const go = () => { pcGoTab(t); };
+      b.addEventListener('click', go);
+      b.addEventListener('contextmenu', ev => { ev.preventDefault(); openTabMenu(t, b); });
+      /* Roving keyboard: arrows move, Home/End jump. */
+      b.addEventListener('keydown', ev => {
+        if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(ev.key)) return;
+        ev.preventDefault();
+        const pills = [...bar.querySelectorAll('.smart-tab')];
+        let n = pills.indexOf(b);
+        if (ev.key === 'ArrowRight') n = Math.min(pills.length - 1, n + 1);
+        else if (ev.key === 'ArrowLeft') n = Math.max(0, n - 1);
+        else if (ev.key === 'Home') n = 0;
+        else n = pills.length - 1;
+        if (pills[n]) pills[n].focus();
+      });
+      return b;
+    }
+
+    tabs.forEach(t => bar.appendChild(snPill(t)));
+    const add = el('button', 'smart-tab add-tab');
+    add.setAttribute('aria-label', 'Add a tab');
+    add.title = 'Add your own tab';
+    add.innerHTML = '<span class="sn-label">\uFF0B Add</span>';
+    add.addEventListener('click', ev => { ev.stopPropagation(); openTabEditor(null, true, add); });
+    bar.appendChild(add);
+    return { bar, tabs };
+  }
+/* The entry mwBuildFeedPills calls: gather the active tab's vocabulary,
+   build the harvested strip, and put its bar in the ribbon's place. */
+window.pcSmartTabStrip = function(){
+  var rib = document.getElementById('mwFeedPills'); if (!rib) return;
+  var mode = 'wall';
+  try { var _nt = document.getElementById('mwTabActivity'); if (_nt && _nt.classList.contains('active')) mode = 'naya'; } catch (e) {}
+  pcOrganizerMode = mode;
+  var lensNotes = [];
+  if (mode === 'naya') {
+    var rows = (typeof MW_NAYA_ROWS !== 'undefined' ? MW_NAYA_ROWS : []);
+    lensNotes = rows.map(pcNayaForStrip);
+  } else {
+    var base = (typeof window.MW_WALL_POSTS !== 'undefined' ? window.MW_WALL_POSTS : []);
+    try {
+      var _pt = document.getElementById('mwTabNaya');
+      if (_pt && _pt.classList.contains('active')) base = (typeof window.MW_PUBLIC_POSTS !== 'undefined' ? window.MW_PUBLIC_POSTS : []);
+      var _ps = document.getElementById('mwTabSmart');
+      if (_ps && _ps.classList.contains('active')) {
+        var ok = (((typeof ownerName === 'function' ? ownerName() : '') || 'Shawn Vibert').toLowerCase());
+        base = base.filter(function(p){ return (((p.j && p.j.a) || 'Guest').toLowerCase() === ok); });
+      }
+    } catch (e) {}
+    lensNotes = base.map(pcNoteForStrip);
+  }
+  /* R5 SEAM 9 (wrapper half) — the timer is cleared here, then the strip builds
+     INTO the rib (seam 9): the rib itself is never replaced, so its [data-mw-pill]
+     delegation and its pause listeners survive every rebuild. */
+  if (rib._pcScrollTimer) { try { clearInterval(rib._pcScrollTimer); } catch (e) {} }
+  smartTabStrip(lensNotes, lensNotes);
+};
+window.pcOrganizerNote = pcNoteForStrip;
+window.pcNayaForStrip = pcNayaForStrip;
+window.pcIntelClusterOf = intelClusterOf;
+})();
+
+/* ═══ R5 WIRING — search keyword, privacy toggle, header +, invites, rail popover ═══ */
+function pcEsc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
+
+/* Part 2 — the harvested search filters the ACTIVE tab's wall in place. On
+   Naya Notes (which has no keyword) it pulls the Public feed, as the popup
+   does. Clearing restores the view you are on (no tab yank). */
+window.pcHubSearchKeyword=function(q){
+  window.MW_PUBLIC_KEYWORD=(q||'').trim();
+  var naya=false;
+  try{ var t=document.getElementById('mwTabActivity'); naya=!!(t&&t.classList.contains('active')); }catch(e){}
+  if(naya){
+    var tab=document.getElementById('mwTabNaya'); if(tab){ tab.click(); return; }
+  }
+  if(typeof window.mwPaintWallPosts==='function') window.mwPaintWallPosts(window.MW_WALL_POSTS||[]);
+};
+
+/* Part 6 — Personal is private by default. The toggle flips THIS post; the
+   creator re-opens on Private every time, so a post never lands public
+   because an earlier flip stuck. */
+window.pcPostVis='private';
+function pcSetVisToggle(v){
+  window.pcPostVis=(v==='public')?'public':'private';
+  var b=document.getElementById('os-vis-toggle');
+  if(b){ b.setAttribute('aria-pressed', window.pcPostVis==='public'?'true':'false'); b.textContent=(window.pcPostVis==='public')?'🌍 Public':'🔒 Private'; }
+}
+(function(){
+  var b=document.getElementById('os-vis-toggle');
+  if(b){ b.addEventListener('click', function(){ pcSetVisToggle(window.pcPostVis==='public'?'private':'public'); }); }
+  var _fcOpen=window.fcOpenCreator;
+  if(typeof _fcOpen==='function'){
+    window.fcOpenCreator=function(k){ pcSetVisToggle('private'); return _fcOpen(k); };
+  }
+})();
+
+/* Part 1 — the intro + opens the creator (a post). */
+(function(){
+  var plus=document.getElementById('phIntroPlus');
+  if(plus){ plus.addEventListener('click', function(){ if(window.fcOpenCreator) window.fcOpenCreator('post'); }); }
+})();
+
+/* Part 7 — the invitation boards open the composer. */
+document.addEventListener('click', function(e){
+  var n=e.target&&e.target.closest?e.target.closest('[data-pc-invite-naya]'):null;
+  if(n){ if(window.fcOpenCreator) window.fcOpenCreator('naya'); return; }
+  var p=e.target&&e.target.closest?e.target.closest('[data-pc-invite-post]'):null;
+  if(p){ if(window.fcOpenCreator) window.fcOpenCreator('post'); return; }
+});
+
+/* Part 5 (amended) — the rail popover. THE SAME intro board as Part 1: the
+   person's name + their introduction, byte-identical words (both render the
+   seed nut) — with CONNECT again inside it AND View profile. The popover's
+   CONNECT is the same button the card carries (data-pc-connect), so the same
+   delegated handler runs the same connect action; the observer below mirrors
+   the request note the card shows, because the handler's reqNote looks for a
+   .pc-card ancestor the popover does not have. */
+function pcRailPerson(alias){
+  var seed=(window.PC_RAIL_SEED||[]);
+  for(var i=0;i<seed.length;i++){ if(seed[i].alias===alias) return seed[i]; }
+  return null;
+}
+function pcShowRailPop(html){
+  var back=document.getElementById('pcRailPopBack');
+  var pop=document.getElementById('pcRailPop');
+  if(!back||!pop) return;
+  pop.innerHTML=html;
+  back.hidden=false; pop.hidden=false;
+}
+function pcHideRailPop(){
+  var back=document.getElementById('pcRailPopBack');
+  var pop=document.getElementById('pcRailPop');
+  if(back) back.hidden=true;
+  if(pop){ pop.hidden=true; pop.innerHTML=''; }
+  if(pcPopObs){ try{ pcPopObs.disconnect(); }catch(e){} pcPopObs=null; }
+}
+var pcPopObs=null;
+function pcWatchPopConnect(pop){
+  if(pcPopObs){ try{ pcPopObs.disconnect(); }catch(e){} }
+  var btn=pop.querySelector('[data-pc-connect]');
+  var note=pop.querySelector('[data-pc-pop-note]');
+  if(!btn||!note||!window.MutationObserver) return;
+  pcPopObs=new MutationObserver(function(){
+    if(btn.classList.contains('requested')){ note.hidden=false; note.textContent='Request sent — waiting for them to accept.'; }
+    else if((btn.textContent||'').indexOf('Not sent')===0){ note.hidden=false; note.textContent='Could not send right now.'; }
+    else { note.hidden=true; note.textContent=''; }
+  });
+  pcPopObs.observe(btn,{attributes:true,attributeFilter:['class'],childList:true,characterData:true,subtree:true});
+}
+function pcPersonPopHTML(p){
+  var alias=p.alias||'';
+  var req=false; try{ req=localStorage.getItem('pc-connect-'+alias)==='requested'; }catch(e){}
+  var h='<button type="button" class="pc-pop-x" data-pc-pop-close aria-label="Close">✕</button>'
+    +'<div class="ph-intro-name">'+pcEsc(alias)+'</div>'
+    +'<div class="ph-intro-motto">'+pcEsc(p.nut||'')+'</div>'
+    +'<div class="pc-pop-actions">'
+    +'<button type="button" class="pc-connect-btn'+(req?' requested':'')+'" data-pc-connect="'+pcEsc(alias)+'"'+(req?' disabled':'')+'>'+(req?'Requested ✓':'CONNECT')+'</button>'
+    +'<a class="ph-connect pc-view-profile" href="https://'+pcEsc(alias)+'.nayanet.app/">View profile</a>'
+    +'</div>'
+    +'<p class="pc-req-note" data-pc-pop-note'+(req?'':' hidden')+'>'+(req?'Request sent — waiting for them to accept.':'')+'</p>';
+  return h;
+}
+document.addEventListener('click', function(e){
+  var info=e.target&&e.target.closest?e.target.closest('[data-pc-info]'):null;
+  if(info){
+    var p=pcRailPerson(info.getAttribute('data-pc-info'));
+    if(p){
+      pcShowRailPop(pcPersonPopHTML(p));
+      var pop=document.getElementById('pcRailPop');
+      if(pop) pcWatchPopConnect(pop);
+    }
+    return;
+  }
+  if(e.target&&e.target.closest&&e.target.closest('#pcRailInfo')){
+    pcShowRailPop('<button type="button" class="pc-pop-x" data-pc-pop-close aria-label="Close">✕</button><div class="ph-intro-name">People like you</div><div class="ph-intro-motto">Share and chat with people of like minds — message, mail, audio or video.</div>');
+    return;
+  }
+  if(e.target&&e.target.closest&&(e.target.closest('[data-pc-pop-close]')||e.target.closest('#pcRailPopBack'))){ pcHideRailPop(); return; }
+});
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRailPop(); });
+</script>
+
 </body></html>
