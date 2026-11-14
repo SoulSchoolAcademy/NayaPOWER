@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-11-14",
-  "receipt_basis_commit": "2ec4455e71136f189a004a067558ffcdc342956e",
-  "inventory_file_count": 3288,
+  "receipt_basis_commit": "564b3cba016de4fd32009509f08353e463b910de",
+  "inventory_file_count": 3308,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 45,
-    "05-MEMORY": 2245,
+    "05-MEMORY": 2265,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -2392,9 +2392,29 @@
       "size": 2815
     },
     {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-a-render-without-the-board-write-is-not-a-render.md",
+      "blob_sha": "3cc71cac5c19c5a1f701c86d2c88593310fad72b",
+      "size": 1965
+    },
+    {
       "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-create-a-feed-on-anything.md",
       "blob_sha": "efba60d52ce03ad4cac6db1e5ef643aa6ec068c9",
       "size": 2993
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-finish-personal-then-clone.md",
+      "blob_sha": "94614f3e60c2142a290b7a5a844bb91a9bae4fd1",
+      "size": 2140
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-full-spec-the-max-performance-system.md",
+      "blob_sha": "0851737ff933074edeca70d887716366bb7c1453",
+      "size": 2972
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-ground-the-base-a-repair-that-drops-a-feature-is-a-regression.md",
+      "blob_sha": "fe27dd97e783a04c3dad36047956e8feb13edfef",
+      "size": 2618
     },
     {
       "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-keep-going-the-loop-until-everything-is-aligned-and-connected.md",
@@ -2407,9 +2427,24 @@
       "size": 3602
     },
     {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-measure-the-pool-first.md",
+      "blob_sha": "2213ec6347f7f8ca36842910d443c07014718e6e",
+      "size": 2638
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-not-reproducible-is-never-cannot-appear.md",
+      "blob_sha": "61c03124bfe78c922dcaae212e74e78596d83333",
+      "size": 2237
+    },
+    {
       "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-the-continuous-cycle-law-nothing-sits.md",
       "blob_sha": "b09ecd04b60c83dcc66ae0a2db8aeede55e2c982",
       "size": 3538
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-the-entry-dial-and-the-real-profile.md",
+      "blob_sha": "4cf21d2d0dbf50e1a38fe5a0b2480bce26c81ed9",
+      "size": 2921
     },
     {
       "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-the-fine-tuned-machine-remembering-lives-in-the-machine.md",
@@ -2427,9 +2462,24 @@
       "size": 3270
     },
     {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-the-mission-restated-as-command.md",
+      "blob_sha": "198b8a8760ddef23d2d36ec7d60882ef51c53db2",
+      "size": 2985
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-the-north-star-is-a-doing-machine.md",
+      "blob_sha": "b983119104309a6b84a4d74750afa7766a347788",
+      "size": 1977
+    },
+    {
       "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-the-read-decides-counts-dont-pass-the-read-does.md",
       "blob_sha": "d8011d7a4f2872a5e1a9359160478c73397a7f74",
       "size": 3635
+    },
+    {
+      "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-treat-it-like-your-world.md",
+      "blob_sha": "c32779250470c3011778d5d5a3a32e4309e9e523",
+      "size": 2320
     },
     {
       "path": "BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-upgrade-the-body-not-just-the-engine.md",
@@ -11842,6 +11892,46 @@
       "size": 8050
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2793/IB-SMART-NOTE-20261114-the-north-star-is-a-doing-machine.md",
+      "blob_sha": "5e67a61688c23bdcba6399a2331617b0ce457600",
+      "size": 5410
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2796/IB-SMART-NOTE-20261114-full-spec-the-max-performance-system.md",
+      "blob_sha": "fa8beafa4759b4e42b08e1dbd9648b05f093e143",
+      "size": 7601
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2797/IB-SMART-NOTE-20261114-the-entry-dial-and-the-real-profile.md",
+      "blob_sha": "5805b5e46ae5b1abb7ce1c1b158ea84779df90d2",
+      "size": 6943
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2798/IB-SMART-NOTE-20261114-finish-personal-then-clone.md",
+      "blob_sha": "682175a73be027f19e003b56ca49fd6642f8ee6d",
+      "size": 5247
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2799/IB-SMART-NOTE-20261114-not-reproducible-is-never-cannot-appear.md",
+      "blob_sha": "98acac2b91bdf89b681881816cc03f018c49221a",
+      "size": 5940
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2800/IB-SMART-NOTE-20261114-a-render-without-the-board-write-is-not-a-render.md",
+      "blob_sha": "f389e683dd5a23165fe8beb9f15dfd28ddebacca",
+      "size": 5072
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2801/IB-SMART-NOTE-20261114-ground-the-base-a-repair-that-drops-a-feature-is-a-regression.md",
+      "blob_sha": "1b47d447981f30b42c4f213475ce7afd4ad9b2d8",
+      "size": 6189
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2802/IB-SMART-NOTE-20261114-measure-the-pool-first.md",
+      "blob_sha": "d7236af15db5c9e464b0bac8a3e5dd78d3b668b7",
+      "size": 6457
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2785/IB-SMART-NOTE-20261114-upgrade-the-body-not-just-the-engine.md",
       "blob_sha": "1b9fb1261edd76dcda9637d8c5c389ab54e760a3",
       "size": 6877
@@ -11850,6 +11940,16 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2786/IB-SMART-NOTE-20261114-what-intelligence-is-the-levels-and-the-sweet-spot.md",
       "blob_sha": "aad9808067cea1fcd132bda15c4833bc7ae57a24",
       "size": 7821
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2794/IB-SMART-NOTE-20261114-treat-it-like-your-world.md",
+      "blob_sha": "84a716d0e54015f2ad2bc6261ddb89d00af2ce16",
+      "size": 5960
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2795/IB-SMART-NOTE-20261114-the-mission-restated-as-command.md",
+      "blob_sha": "98b9db7c641e19f6dc3709199fef2813b10d9ad1",
+      "size": 6947
     },
     {
       "path": "BRAIN/05-MEMORY/SPECS/2026/11/04/MEMBERSHIP-PORTAL-SPEC-2026-11-04.md",

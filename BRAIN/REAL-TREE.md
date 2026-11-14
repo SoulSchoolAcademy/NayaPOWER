@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-11-14  
-**Receipt basis commit:** `2ec4455e71136f189a004a067558ffcdc342956e`  
-**Inventory file count:** 3288  
+**Receipt basis commit:** `564b3cba016de4fd32009509f08353e463b910de`  
+**Inventory file count:** 3308  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 45 |
-| 05-MEMORY | 2245 |
+| 05-MEMORY | 2265 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -518,14 +518,24 @@
 - `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/13/NN-20261113-whats-your-thing-one-simple-language.md` — `ecc16a1223a1` (3851 bytes)
 - `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/13/NN-20261113-your-smart-vault-is-yours.md` — `dd92daf1a5c0` (2740 bytes)
 - `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/13/NN-20261113-your-world-every-day-local-and-global.md` — `642b24af0c54` (2815 bytes)
+- `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-a-render-without-the-board-write-is-not-a-render.md` — `3cc71cac5c19` (1965 bytes)
 - `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-create-a-feed-on-anything.md` — `efba60d52ce0` (2993 bytes)
+- `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-finish-personal-then-clone.md` — `94614f3e60c2` (2140 bytes)
+- `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-full-spec-the-max-performance-system.md` — `0851737ff933` (2972 bytes)
+- `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-ground-the-base-a-repair-that-drops-a-feature-is-a-regression.md` — `fe27dd97e783` (2618 bytes)
 - `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-keep-going-the-loop-until-everything-is-aligned-and-connected.md` — `e58c28225e53` (3060 bytes)
 - `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-magic-sauce-the-four-judges.md` — `6ba0c909943e` (3602 bytes)
+- `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-measure-the-pool-first.md` — `2213ec6347f7` (2638 bytes)
+- `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-not-reproducible-is-never-cannot-appear.md` — `61c03124bfe7` (2237 bytes)
 - `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-the-continuous-cycle-law-nothing-sits.md` — `b09ecd04b60c` (3538 bytes)
+- `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-the-entry-dial-and-the-real-profile.md` — `4cf21d2d0dbf` (2921 bytes)
 - `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-the-fine-tuned-machine-remembering-lives-in-the-machine.md` — `0cf7d22accc8` (4417 bytes)
 - `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-the-franchise-rule-build-like-the-pieces-already-there.md` — `d4cee45c1333` (4092 bytes)
 - `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-the-job-identify-value-capture-it-create-it-automate-it.md` — `348cc24cabc8` (3270 bytes)
+- `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-the-mission-restated-as-command.md` — `198b8a8760dd` (2985 bytes)
+- `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-the-north-star-is-a-doing-machine.md` — `b98311910430` (1977 bytes)
 - `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-the-read-decides-counts-dont-pass-the-read-does.md` — `d8011d7a4f28` (3635 bytes)
+- `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-treat-it-like-your-world.md` — `c32779250470` (2320 bytes)
 - `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-upgrade-the-body-not-just-the-engine.md` — `51858d867ac9` (3463 bytes)
 - `BRAIN/05-MEMORY/NAYA-NOTES/2026/11/14/NN-20261114-what-intelligence-is-the-levels-and-the-sweet-spot.md` — `4d31895fa807` (3327 bytes)
 - `BRAIN/05-MEMORY/NAYA-NOTES/NAYA-NOTE-TEMPLATE.md` — `5fad4056fff7` (8342 bytes)
@@ -2408,8 +2418,18 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2790/IB-SMART-NOTE-20261114-magic-sauce-the-four-judges.md` — `5c6329b254c7` (7175 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2791/IB-SMART-NOTE-20261114-keep-going-the-loop-until-everything-is-aligned-and-connected.md` — `98469512b725` (6283 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2792/IB-SMART-NOTE-20261114-the-fine-tuned-machine-remembering-lives-in-the-machine.md` — `5b5b5ba7b70c` (8050 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2793/IB-SMART-NOTE-20261114-the-north-star-is-a-doing-machine.md` — `5e67a61688c2` (5410 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2796/IB-SMART-NOTE-20261114-full-spec-the-max-performance-system.md` — `fa8beafa4759` (7601 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2797/IB-SMART-NOTE-20261114-the-entry-dial-and-the-real-profile.md` — `5805b5e46ae5` (6943 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2798/IB-SMART-NOTE-20261114-finish-personal-then-clone.md` — `682175a73be0` (5247 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2799/IB-SMART-NOTE-20261114-not-reproducible-is-never-cannot-appear.md` — `98acac2b91bd` (5940 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2800/IB-SMART-NOTE-20261114-a-render-without-the-board-write-is-not-a-render.md` — `f389e683dd5a` (5072 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2801/IB-SMART-NOTE-20261114-ground-the-base-a-repair-that-drops-a-feature-is-a-regression.md` — `1b47d447981f` (6189 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2802/IB-SMART-NOTE-20261114-measure-the-pool-first.md` — `d7236af15db5` (6457 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2785/IB-SMART-NOTE-20261114-upgrade-the-body-not-just-the-engine.md` — `1b9fb1261edd` (6877 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2786/IB-SMART-NOTE-20261114-what-intelligence-is-the-levels-and-the-sweet-spot.md` — `aad9808067ce` (7821 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2794/IB-SMART-NOTE-20261114-treat-it-like-your-world.md` — `84a716d0e540` (5960 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2795/IB-SMART-NOTE-20261114-the-mission-restated-as-command.md` — `98b9db7c641e` (6947 bytes)
 - `BRAIN/05-MEMORY/SPECS/2026/11/04/MEMBERSHIP-PORTAL-SPEC-2026-11-04.md` — `8160a161f216` (3368 bytes)
 - `BRAIN/05-MEMORY/SPECS/2026/11/04/NAYANET-NAMING-REGISTRY-2026-11-04.md` — `70c731723f88` (9280 bytes)
 - `BRAIN/05-MEMORY/SPECS/2026/11/04/NAYANET-ULTIMATE-BLUEPRINT-2026-11-04.md` — `bea051553503` (8590 bytes)
