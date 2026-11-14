@@ -50,4 +50,4 @@ Onboarding is taught one thing a day, not all at once — and the welcome is sai
 
 ## PROVENANCE
 
-Intelligent Block `SMART-NOTE-20261112-welcome-series-overview` · Smart Note SN-2685 · capture `.naya/capture/IB-SMART-NOTE-20261112-welcome-series-overview.json` (blob `ce02be8729f8d4c796e4cbd0a47113ec03af2cee`) · content digest `25b97111098a543e572ed59ef868f52d829760646d708ed9055faf3485329d82` (sha256 of the canonical JSON of the capture's `intelligence` field) · captured 2026-11-12T08:30:00Z by Naya Nitro Narzan (Search Corpus Fix seat) · director Shawn Vibert · epistemic state CANDIDATE · lifecycle ACTIVE.
+Intelligent Block `IB-SMART-NOTE-20261112-welcome-series-overview` · Smart Note SN-2685 · capture `.naya/capture/IB-SMART-NOTE-20261112-welcome-series-overview.json` (blob `ce02be8729f8d4c796e4cbd0a47113ec03af2cee`) · content digest `25b97111098a543e572ed59ef868f52d829760646d708ed9055faf3485329d82` (sha256 of the canonical JSON of the capture's `intelligence` field) · captured 2026-11-12T08:30:00Z by Naya Nitro Narzan (Search Corpus Fix seat) · director Shawn Vibert · epistemic state CANDIDATE · lifecycle ACTIVE.
