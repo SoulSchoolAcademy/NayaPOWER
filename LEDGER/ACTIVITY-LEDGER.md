@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 16:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 17:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -29247,6 +29247,14 @@ _Last updated: 2026-11-14 16:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: tip aa8061c1 unmoved (ls-remote), #2462 head a92be1c01812a86c1994298b508cc41577e250dc == branch naya/lane9/tipred-fix-t0112 == refs/pull/2462/head. Review comment 6122317726 cited; differential pytest attribution (red pre-existing at base, EXPOSED not introduced) proven on bytes; HOLD verdict correct (merge-consensus bar open 1
 
+### ✅ t0172 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** t0172: TOOL-transfer HYPOTHESIS CLOSED (close-out synthesis)
+
+**Receipt:** `twelve-lane-receipts/t0172-lane6.md`
+
+**Evidence:** Backlog sweep (t0172, 2026-10-12). Verified first-hand: lane-experiments/TOOL-transfer-hypothesis-closeout.md exists (10584 bytes, Oct 12 10:26, matches receipt timestamp); seal pins exact - t1412 prereg_reseal_sha256 549adc52c509d1572f5e48043fbd46d1977fd72dd8dd404b2f2c3fe0fe1420a8, t0122 expected_ctd_preserved_line c9506e98d9f6a9411e6a05fe3f0871ed
+
 ### ✅ t0172 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** TOOL-transfer HYPOTHESIS CLOSED (leg-2/leg-3 synthesis close-out)
@@ -29276,6 +29284,14 @@ _Last updated: 2026-11-14 16:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0172-lane6.md`
 
 **Evidence:** Dispatcher verified: close-out file lane-experiments/TOOL-transfer-hypothesis-closeout.md exists; seal files t0162/prereg-sealed.md sha256 7b726ce4...e781 == receipt pin; seal-verification.json structure present (9 pins); score log corrected from brief (t0092=9.0, t0122=9.5) cited accurately. Recomputed-vs-copied discipline stated. To-do closure ca
+
+### ✅ t0172 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** t0172: #2418 action-time re-verify: HOLD, blockers named
+
+**Receipt:** `twelve-lane-receipts/t0172-lane3.md`
+
+**Evidence:** Backlog sweep (t0172, 2026-10-12). Verified first-hand: branch naya/three-decision-consolidate == 8346681cd52600e08fba3bcbb8b86a3258eaf056 in the mirror, exact match to the receipt pin and PR head; tip aa8061c1d311f32ebd11a570629efa8a55d90c87 exists as a commit; decision receipt hidden_files/decisions/20261012T102615Z-guide-merge-merge-pr--2418.jso
 
 ### ✅ t0172 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -29319,6 +29335,14 @@ _Last updated: 2026-11-14 16:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: hv_output_t0162_run1/run2.json byte-identical (sha256 d4e59a18... matches receipt), metric_audit_t0162.json exists (12 rows), STATS.md published, tip aa8061c1 re-pinned unmoved. Third regression proof of t1162 window-scoping fix (42 receipts reproduce t1052 baseline exactly). HV3 PROVEN-UNMEASURABLE correctly not re-filed (no m
 
+### ✅ t0172 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** t0172: M6 swallower veto on the SGF runner (RED-first, 6/6 GREEN post-fix)
+
+**Receipt:** `twelve-lane-receipts/t0172-lane1.md`
+
+**Evidence:** Backlog sweep (t0172, 2026-10-12). Verified first-hand: decision receipt hidden_files/decisions/20261012T102720Z-next-t0172-lane-pick--m6-swallower-fix-design.json exists; branch naya/six-sgf-daily-runner-t992 exists in the mirror but head is now ca1cc31e, moved from the receipt's 41dfc86e (month-old drift); sgf_runner.py / SGF-SPEC.md / test_sgf_r
+
 ### ✅ t0172 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** M6 swallower veto on the SGF runner (t0142 falsifier fix, RED-first)
@@ -29351,6 +29375,14 @@ _Last updated: 2026-11-14 16:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0162 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
+**Task:** Independent cross-seat review of PR #2462, HOLD (pin-exact, differential pytest replay)
+
+**Receipt:** `twelve-lane-receipts/t0162-lane8.md`
+
+**Evidence:** Backlog sweep (t0162, 2026-10-12). Verified first-hand: PR #2462 head a92be1c01812a86c1994298b508cc41577e250dc exists as a commit in the mirror; tip aa8061c1 also exists; diff scope (3 test-only files) consistent with the head tree listing. Review comment 6122317726 not re-fetched via API this tick. NOT PHANTOM. Score 9.0: why not 9.5 — (1) sign-in
+
+### ✅ t0162 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
 **Task:** Independent cross-seat review of #2462, HOLD
 
 **Receipt:** `twelve-lane-receipts/t0162-lane8.md`
@@ -29378,6 +29410,14 @@ _Last updated: 2026-11-14 16:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0162-lane8.md`
 
 **Evidence:** Dispatcher verified via git protocol: #2462 head a92be1c01812a86c1994298b508cc41577e250dc == naya/lane9/tipred-fix-t0112 == refs/pull/2462/head == receipt pin; tip aa8061c1 unmoved. Check table with RUN job IDs in review comment 6122317726; differential pytest attribution proven on bytes (red pre-existing at base, EXPOSED not introduced); HOLD verd
+
+### ✅ t0162 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** H9 round 1 CLOSED, honest NO-GO: lesson traceability in real dispatch decisions (n=42, delta +0.2286 < +0.25)
+
+**Receipt:** `twelve-lane-receipts/t0162-lane2.md`
+
+**Evidence:** Backlog sweep (t0162, 2026-10-12). Verified first-hand: tip aa8061c1d311f32ebd11a570629efa8a55d90c87 exists as a commit in the mirror; seal hash 7b726ce4... and pins-real 995428ca... cited but the lane-experiments/t0162/ files are NOT locatable in the truncated mirror (git log --all empty; mirror history known-incomplete per TOOLS.md, so absence is
 
 ### ✅ t0162 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -29408,6 +29448,14 @@ _Last updated: 2026-11-14 16:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0162-lane2.md`
 
 **Evidence:** Dispatcher verified: prereg-sealed.md exists and sha256 7b726ce437441ca2... == receipt pin; measure_h9.py, h9r1-result.json, pins-real.json all exist. Gate pre-verified on 4 synthetic behaviors, seal held, delta +0.2286 < +0.25 -> NO-GO honored. Thin N=7, M proxy undercount admitted (not post-hoc patched). Same H9 R1 work covered by the t0172-lane2
+
+### ✅ t0162 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
+
+**Task:** Human-value window audit t0122-t0162 (instrument x2 byte-identical, hand audit, regression proof)
+
+**Receipt:** `twelve-lane-receipts/t0162-lane11.md`
+
+**Evidence:** Backlog sweep (t0162, 2026-10-12). Verified first-hand: tip aa8061c1d311f32ebd11a570629efa8a55d90c87 exists as a commit in the mirror. The lane-11 audit/output files (hv_output_t0162_run*.json, metric_audit_t0162.json, SUMMARY_t0162.md) are NOT locatable in the truncated mirror (git log --all empty; mirror history known-incomplete, so absence is no
 
 ### ✅ t0162 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
