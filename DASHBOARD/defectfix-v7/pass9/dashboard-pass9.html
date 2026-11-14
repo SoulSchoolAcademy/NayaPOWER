@@ -4606,7 +4606,7 @@ html.os-calm
   <div class="ph-avwrap"><div class="ph-av" id="avv"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22256%22%20height%3D%22256%22%3E%3Crect%20width%3D%22256%22%20height%3D%22256%22%20fill%3D%22%230b0b11%22/%3E%3Cpolygon%20points%3D%22128%2C28%20218%2C128%20128%2C228%2038%2C128%22%20fill%3D%22none%22%20stroke%3D%22%23a06bff%22%20stroke-width%3D%2210%22/%3E%3Ctext%20x%3D%22128%22%20y%3D%22148%22%20font-size%3D%2284%22%20font-family%3D%22Georgia%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EN%3C/text%3E%3C/svg%3E" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">✦<input type="file" id="avin" accept="image/*" style="display:none;"></div><button class="ph-av-edit" id="avedit" type="button" aria-label="Change picture" title="Edit photo">📷</button></div>
   <div class="ph-info">
     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
-      <div class="ph-nm" id="pname" title="Click to edit">Nova Reyes</div>
+      <div class="ph-nm" id="pname" title="Click to edit">Shawn Vibert</div>
     </div>
     <div class="ph-tg" id="ptag" title="Click to edit">Your world, live — every post, message and invite, one glance</div>
         <div class="ph-actions-row">
@@ -8841,7 +8841,7 @@ document.addEventListener('pointerdown',function(e){
 </div>
 
 <div class="ph-card" style="--ac:#3fb8ff;"><h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">👋</span> My story</h3>
-<p id="abouttext">Nova Reyes is the demo persona of the flagship models — a creator and builder. This is her world entered through the Dashboard door: the same living app — wall, messages, invites, reports — with her whole world on one front: its health, its pulse, its trend, its journey, its faces, and Naya's read of what it all means. This is a demonstration identity, labeled demo.</p>
+<p id="abouttext">Shawn Vibert is a creator and builder. This is his world entered through the Dashboard door: the same living app — wall, messages, invites, reports — with his whole world on one front: its health, its pulse, its trend, its journey, its faces, and Naya's read of what it all means.</p>
 <div class="os-fieldwrap"><textarea class="ph-about-edit" id="aboutedit" style="display:none;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="aboutedit" aria-label="Dictate your story" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
 <div class="ph-actions">
 <button class="ph-msg" id="editabout" type="button">✏️ Edit</button>
@@ -13972,8 +13972,9 @@ NF.register(UNIT, {
     }
     /* FIX 6: each cell wears its METRIC color (never the board color — the four
        metrics were indistinguishable). Clicks keeps its live semantics (share of
-       all counted clicks, live number); Views / CTR / Revenue read the mock
-       when ON (needle + fill + orb + number) and the honest empty when OFF.
+       all counted clicks, live number); Revenue reads the mock
+       when ON (needle + fill + orb + number) and the honest empty when OFF;
+       Views / CTR live once, on the world board (ROUND 2 fix 5).
        HERO FIX 2026-11-09 (i): the gauge in each cell is the CANONICAL tntacho
        mini — never the B-star. PASS-4: the canonical mini is the PRICING
        CALCULATOR mini (TnTacho.mountMiniCalc) — the cell carries an empty
@@ -13985,19 +13986,14 @@ NF.register(UNIT, {
     function miniMount(share, color, num, value, unit){
       return '<div class="tn-mini-mount" data-share="'+(Math.max(0, Math.min(1, share || 0))).toFixed(4)+'" data-color="'+color+'" data-num="'+(num == null ? '' : String(num).replace(/"/g, '&quot;'))+'" data-value="'+(Number(value) || 0)+'" data-unit="'+(unit || 'count')+'"></div>';
     }
-    var viewsCell, ctrCell, revCell;
+    var revCell;
     if (mock){
-      viewsCell = cell(miniMount(Math.min(1, mv.views/window._osMockCaps.views), MC.views, window._osSpc(mv.views), mv.views, 'count'), esc(window._osSpc(mv.views)), 'Total views', MC.views, 'sales');
-      ctrCell = cell(miniMount(Math.min(1, mv.ctr/window._osMockCaps.ctr), MC.ctr, mv.ctr.toFixed(1)+'%', mv.ctr, '%'), mv.ctr.toFixed(1)+'%', 'Click-through rate', MC.ctr, 'joins');
       revCell = cell(miniMount(Math.min(1, mv.rev/window._osMockCaps.rev), MC.revenue, '$'+mv.rev.toFixed(2), mv.rev, '$'), '$'+mv.rev.toFixed(2), 'Revenue / 1 000 views', MC.revenue, 'sales');
     } else {
       /* PASS-3 (ninth): the CTR is REAL — joins/clicks from the live rows,
-         never a hardcoded 0. Views and revenue have no live source, so
-         they stay the honest empty (needle at rest, sub says why). */
-      var _ctr = (clicks > 0) ? (joins/clicks*100) : null;
-      var _ctrTxt = (_ctr === null) ? '0' : _ctr.toFixed(1)+'%';
-      viewsCell = cell(miniMount(0, MC.views, '0', 0, 'count'), '0', 'Total views', MC.views, 'sales');
-      ctrCell = cell(miniMount(_ctr === null ? 0 : Math.min(1, _ctr/100), MC.ctr, _ctrTxt, (_ctr === null ? 0 : _ctr), '%'), _ctrTxt, 'Join rate', MC.ctr, 'joins');
+         never a hardcoded 0. ROUND 2 (5): the Views and CTR cells live once,
+         on the world board — they are not repeated here. Revenue has no live
+         source, so it stays the honest empty (needle at rest, sub says why). */
       revCell = cell(miniMount(0, MC.revenue, '0', 0, '$'), '0', 'Revenue / 1 000 views', MC.revenue, 'sales');
     }
     /* PASS-11 (8): the grand total headlines in the HERO only. The summary
@@ -14007,11 +14003,11 @@ NF.register(UNIT, {
        host line (renderLinks / the well below). */
     var _top11 = (r.name === 'all' && typeof window._osTopLinkClicks === 'function') ? window._osTopLinkClicks() : null;
     var _firstClicks = _top11 ? _top11.clicks : clicks;
-    var _firstLab = _top11 ? 'Top link clicks' : 'Link clicks';
+    var _firstLab = 'Link clicks'; /* ROUND 2 (5): the top-link label lives once, in the sales drill header. */
     var _firstShare = tc > 0 ? _firstClicks/tc : 0;
     return '<div class="os-sl-gauges'+(mock?' os-mock-on':'')+'" role="group" aria-label="Link stats">'
       +cell(miniMount(_firstShare, MC.clicks, String(_firstClicks), _firstClicks, 'count'), esc(String(_firstClicks)), _firstLab, MC.clicks, 'sales')
-      +viewsCell+ctrCell+revCell
+      +revCell
       +'</div>';
   }
   /* HERO FIX 2026-11-09 (i) — mounts the canonical mini gauges in the link
@@ -14825,7 +14821,7 @@ function uchartFunnelStory(){
     var r1=fc>0?Math.round(fi/fc*100):0;
     h='<b>'+window._osSpc(fi)+'</b> invites from <b>'+window._osSpc(fc)+'</b> link clicks = <b>'+r1+'%</b>. ';
     if(fi>0 && fj===0){ h+='Zero joins — the leak is the invite, not the click.'; }
-    else if(fj>0 && fi>0){ var r2=Math.round(fj/fi*100); h+='<b>'+window._osSpc(fj)+'</b> joins = <b>'+r2+'%</b> of invites. '+(r2<20?'Joins are thin — the invite needs tightening.':'The loop is working — feed the top.'); }
+    else if(fj>0 && fi>0){ var r2=Math.round(fj/fi*100); h+='<b>'+window._osSpc(fj)+'</b> '+(fj===1?'join':'joins')+' = <b>'+r2+'%</b> of invites. '+(r2<20?'Joins are thin — the invite needs tightening.':'The loop is working — feed the top.'); }
     else { h+='No invites yet — nothing to convert.'; }
   }
   var mv=(fi>0&&fj===0)?'rewrite the invite message — say what they’ll get in one line, then ask.'
@@ -17847,7 +17843,7 @@ var CREATIONS_ORBS = [
   {key:'c-pages',  label:'Pages Created', color:'#ff9a5a', jewel:'◆', pos:'tl'},
   {key:'c-views',  label:'Total Views',   color:'#7fd4ff', jewel:'👁', pos:'tr'},
   {key:'c-clicks', label:'Clicks',        color:'#00b4d8', jewel:'↗', pos:'bl'},
-  {key:'c-ctr',    label:'Join rate', color:'#3fb8ff', jewel:'%', pos:'br'}
+  {key:'c-ctr',    label:'Conversion', color:'#3fb8ff', jewel:'%', pos:'br'} /* ROUND 2 (5): relabeled — the one join-rate label lives on the world board. */
 ];
 var _creationsWindow = 'all';
 function creationsOrbsHTML(d){
@@ -18244,7 +18240,7 @@ function smartlinkListHTML(){
     var _isFeat = !!_f && _f.kind === 'link' && (_f.id === r.name || (!_f.id && ix === 0));
     var host=r.url; try { host=new URL(r.url).hostname; } catch(e){}
     var dim = DF ? DF(r, dims) : null;
-    return '<div class="os-link-row os-litobj" style="--ac:'+c+'"><div class="os-link-main"><span class="os-link-name" data-sl-drill="'+_escL(r.name)+'" data-sl-drill-url="'+_escL(r.url)+'" style="cursor:pointer" title="Open full stats">nayanet.app/'+_escL(r.name)+'</span><span class="os-link-host">'+_escL(host)+'</span></div><div class="os-link-side"><span class="os-link-nums"><span class="os-link-num"><b>'+r.clicks+'</b> <i>clicks</i></span><span class="os-link-num"><b>'+r.joins+'</b> <i>joins</i></span></span><span class="os-link-btns"><button class="ph-msg" type="button" data-sl-copy="'+_escL(r.name)+'">Copy the link</button><button class="ph-msg" type="button" data-sl-open="'+_escL(r.name)+'">Open it</button>'+(_isFeat?'<button class="ph-msg" type="button" disabled>On the gauge ✓</button>':'<button class="ph-msg" type="button" data-featured-show="link:'+_escL(r.name)+'">Show on gauge</button>')+(dim?'<button class="ph-msg" type="button" data-sl-dim="'+_escL(r.name)+'">Breakdown</button>':'')+'</span></div>'+(G ? G(r, tc, c) : '')+'</div>'+(DP ? DP(r, dim) : '');
+    return '<div class="os-link-row os-litobj" style="--ac:'+c+'"><div class="os-link-main"><span class="os-link-name" data-sl-drill="'+_escL(r.name)+'" data-sl-drill-url="'+_escL(r.url)+'" style="cursor:pointer" title="Open full stats">nayanet.app/'+_escL(r.name)+'</span><span class="os-link-host">'+_escL(host)+'</span></div><div class="os-link-side"><span class="os-link-nums"><span class="os-link-num"><b>'+r.clicks+'</b> <i>'+(Number(r.clicks)===1?'click':'clicks')+'</i></span><span class="os-link-num"><b>'+r.joins+'</b> <i>'+(Number(r.joins)===1?'join':'joins')+'</i></span></span><span class="os-link-btns"><button class="ph-msg" type="button" data-sl-copy="'+_escL(r.name)+'">Copy the link</button><button class="ph-msg" type="button" data-sl-open="'+_escL(r.name)+'">Open it</button>'+(_isFeat?'<button class="ph-msg" type="button" disabled>On the gauge ✓</button>':'<button class="ph-msg" type="button" data-featured-show="link:'+_escL(r.name)+'">Show on gauge</button>')+(dim?'<button class="ph-msg" type="button" data-sl-dim="'+_escL(r.name)+'">Breakdown</button>':'')+'</span></div>'+(G ? G(r, tc, c) : '')+'</div>'+(DP ? DP(r, dim) : '');
   }).join('');
 }
 window.openSmartLinkList = function(){
@@ -19483,6 +19479,18 @@ window.ldLayoutNodes = ldLayoutNodes;
       if (view.stats && view.stats.length){
         view.stats[0] = {n: _fmt(_om.value), k: view.stats[0].k || 'score', l: view.centerLabel, why: view.stats[0].why || ''};
       }
+      /* INSIDE FIX 2026-11-14 ROUND 2 (4): a dead orb at zero must not headline
+         the featured panel as "0 SAVES" — the headliner shows what the orb is
+         worth instead, harvested from the round-1 drill worth lines (canon
+         LD_VALUES: notes 35, shares 5, comments 3, likes 1, saves 5). The
+         gauge still shows the orb's true zero; only the headliner stops
+         headlining it. Non-zero orbs and live orbs are untouched. */
+      var _WORTH0 = {notes:35, shares:5, comments:3, likes:1, saves:5};
+      var _WORTH0L = {notes:'smart note', shares:'share', comments:'comment', likes:'like', saves:'save'};
+      if (_om.value === 0 && _WORTH0[_om.key] && view.stats && view.stats.length){
+        var _wv = _WORTH0[_om.key], _wn = _WORTH0L[_om.key];
+        view.stats[0] = {n: String(_wv), k: view.stats[0].k || 'score', l: 'points · each ' + _wn, why: 'Each ' + _wn + ' is worth ' + _wv + (_wv === 1 ? ' point' : ' points')};
+      }
     }
     window._featuredDial = view.dial;
     return view;
@@ -19607,7 +19615,10 @@ window.ldLayoutNodes = ldLayoutNodes;
      text; a board with no live source shows the honest quiet state in the
      SAME presentation — gauges at rest, "0" in live tiles — never
      "No numbers yet.", never a DEMO pill, never a borrowed number. The old _boardNums (plain <b> numbers
-     + one world-only gauge) is replaced, not patched. */
+     + one world-only gauge) is replaced, not patched. INSIDE FIX 2026-11-14 ROUND 2 (5):
+     link and page boards carry their own clicks + joins only — the views, join-rate and
+     top-link labels live once: the first two on the world board, the third in the
+     sales drill header. */
   /* PASS-5 2026-11-10 — NO-GRAY-TEXT: the sub is gone (see slGaugesHTML
      cell). The dial drills in with the hero orbs' own data-node — or, where
      no orb exists for the stat, the page's own data-os-go (Actions counted
@@ -19620,25 +19631,13 @@ window.ldLayoutNodes = ldLayoutNodes;
   function _boardCellsHTML(holder){
     if (holder.kind === 'link'){
       var st = _linkStats(holder.id);
-      var _lViews = _boardCell(null, '0', 'Total views', 'count', 'data-node="sales"');
-      if (window._osMock && typeof window._osMockFor === 'function'){ var _lm = window._osMockFor(holder.id, st.clicksAll); _lViews = _boardCell(_lm.views, _fmt(_lm.views), 'Total views', 'count', 'data-node="sales"'); }
-      var _conv = (st.clicksAll > 0) ? (st.joinsAll/st.clicksAll*100) : null;
-      var _convTxt = (_conv === null) ? '0' : _conv.toFixed(1)+'%';
-      /* SCORECARD FIX 2026-11-14 (2F): the value is joins/clicks — the JOIN rate.
-         Only when views exist is it a click-through rate (clicks/views). */
-      var _vwL = (window._osMock && typeof window._osMockFor === 'function' && _lm) ? Number(_lm.views||0) : 0;
-      var _convIsCtrL = _vwL > 0 && st.clicksAll > 0;
-      var _convValL = _convIsCtrL ? (st.clicksAll/_vwL*100) : _conv;
-      var _convTxtL = (_convValL === null) ? '0' : _convValL.toFixed(1)+'%';
-      var _convLabelL = _convIsCtrL ? 'Click-through rate' : 'Join rate';
       /* PASS-5: the mock views cell wears the dashed mock outline on its bar
          (the MOCK sub tag is gone) — a sample number never reads as live. */
       var _mockOn = !!(window._osMock && typeof window._osMockFor === 'function');
       return '<div class="os-sl-gauges' + (_mockOn ? ' os-mock-on' : '') + '" role="group" aria-label="Link stats">'
         + _boardCell(st.clicksAll, _fmt(st.clicksAll), 'Link clicks', 'count', 'data-node="sales"') /* PASS-11 (8): this cell is the link's OWN clicks — the grand total headlines in the hero only. */
         + _boardCell(st.joinsAll, _fmt(st.joinsAll), 'Joins', 'count', 'data-node="joins"')
-        + _boardCell(_convValL, _convTxtL, _convLabelL, '%', 'data-node="joins"')
-        + _lViews + '</div>';
+        + '</div>';
     }
     if (holder.kind === 'page'){
       /* PASS-10 2026-11-10 — PER-PAGE NUMBERS. Page boards used to show the
@@ -19656,17 +19655,13 @@ window.ldLayoutNodes = ldLayoutNodes;
       var _pc10 = 0, _pj10 = 0;
       _rows10.forEach(function(r){ var u = String((r && r.url) || ''); if (u.indexOf('/' + holder.id) !== -1){ _pc10 += Number(r.clicks || 0); _pj10 += Number(r.joins || 0); } });
       holder._p10 = {c: _pc10, j: _pj10};
-      var _pconv10 = (_pc10 > 0) ? (_pj10/_pc10*100) : null;
-      var _pconvTxt10 = (_pconv10 === null) ? '0' : _pconv10.toFixed(1)+'%';
       return '<div class="os-sl-gauges" role="group" aria-label="Page stats">'
         + _boardCell(_pc10, _fmt(_pc10), 'Page clicks', 'count', 'data-node="sales"') /* PASS-11 (8): the page's OWN clicks — see the PASS-10 comment above. */
         + _boardCell(_pj10, _fmt(_pj10), 'Joins', 'count', 'data-node="joins"')
-        + _boardCell(_pconv10, _pconvTxt10, 'Join rate', '%', 'data-node="joins"')
-        + _boardCell(null, '0', 'Total views', 'count', 'data-node="sales"') + '</div>';
+        + '</div>';
     }
     var wt = _worldTotals();
-    /* PASS-11 (8): the world board leads with the TOP LINK's clicks. */
-    var _wTop11 = (typeof window._osTopLinkClicks === 'function') ? window._osTopLinkClicks().clicks : wt.totalClicks;
+    /* ROUND 2 (5): the world board leads with the world's total link clicks — the top-link label lives once, in the sales drill header. */
     var _wViews = _boardCell(null, '0', 'Total views', 'count', 'data-node="sales"');
     if (window._osMock && typeof window._osMockFor === 'function'){ var _mw = window._osMockFor('dashboard', wt.totalClicks); _wViews = _boardCell(_mw.views, _fmt(_mw.views), 'Total views', 'count', 'data-node="sales"'); }
     var _wConv = (wt.totalClicks > 0) ? (wt.totalJoins/wt.totalClicks*100) : null;
@@ -19682,7 +19677,7 @@ window.ldLayoutNodes = ldLayoutNodes;
        (the MOCK sub tag is gone) — a sample number never reads as live. */
     var _mockOnW = !!(window._osMock && typeof window._osMockFor === 'function');
     return '<div class="os-sl-gauges' + (_mockOnW ? ' os-mock-on' : '') + '" role="group" aria-label="World stats">'
-      + _boardCell(_wTop11, _fmt(_wTop11), 'Top link clicks', 'count', 'data-node="sales"')
+      + _boardCell(wt.totalClicks, _fmt(wt.totalClicks), 'Link clicks', 'count', 'data-node="sales"')
       + _boardCell(wt.totalJoins, _fmt(wt.totalJoins), 'Joins', 'count', 'data-node="joins"')
       + _boardCell(_convValW, _convTxtW, _convLabelW, '%', 'data-node="joins"')
       + _wViews + '</div>';
@@ -20189,9 +20184,9 @@ window._renderScoreDerivation = function(totalArg, orbDataArg){
         if (!clicks){
           h2 = '<span class="os-sd-empty">No clicks yet — share your link to light the board.</span>';
         } else {
-          h2 += '<button type="button" class="os-sd-part" data-derive-part="sales">' + window._osSpc(clicks) + ' clicks</button>';
+          h2 += '<button type="button" class="os-sd-part" data-derive-part="sales">' + window._osSpc(clicks) + (clicks===1?' click':' clicks') + '</button>';
           h2 += '<span class="os-sd-op">·</span>';
-          h2 += '<button type="button" class="os-sd-part" data-derive-part="joins">' + window._osSpc(joins) + ' joins</button>';
+          h2 += '<button type="button" class="os-sd-part" data-derive-part="joins">' + window._osSpc(joins) + (joins===1?' join':' joins') + '</button>';
           h2 += '<span class="os-sd-op">·</span>';
           h2 += '<span class="os-sd-sum">' + winTag + '</span>';
           h2 += '<span class="os-sd-op">·</span>';
