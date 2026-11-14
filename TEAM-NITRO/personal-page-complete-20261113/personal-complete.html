@@ -11834,7 +11834,7 @@ function wallCard(j, iso, pid, idx){
     if (countsEl) countsEl.innerHTML='';
     if (daysEl) daysEl.innerHTML=buckets.map(function(x){ return '<span class="'+(x.today?'today':'')+'">'+esc(x.label)+'</span>'; }).join('');
     var bi=0; buckets.forEach(function(x, k){ if (x.n>buckets[bi].n) bi=k; });
-    if (note) note.textContent=buckets[bi].n?((window.mwTr?window.mwTr('Busiest: '):'Busiest: ')+buckets[bi].note+' '+(subject||(window.mwTr?window.mwTr('Posts, notes, messages and invites together.'):'Posts, notes, messages and invites together.'))):((window.mwTr?window.mwTr('A quiet stretch so far — the chart is waiting.'):'A quiet stretch so far — the chart is waiting.')+' '+(quiet||(window.mwTr?window.mwTr('The next post, note, message or invite lights the first bar.'):'The next post, note, message or invite lights the first bar.')));
+    if (note) note.textContent=buckets[bi].n?((window.mwTr?window.mwTr('Busiest: '):'Busiest: ')+buckets[bi].note+' '+(window.mwTr?window.mwTr(subject||'Posts, notes, messages and invites together.'):(subject||'Posts, notes, messages and invites together.'))):((window.mwTr?window.mwTr('A quiet stretch so far — the chart is waiting.'):'A quiet stretch so far — the chart is waiting.')+' '+(window.mwTr?window.mwTr(quiet||'The next post, note, message or invite lights the first bar.'):(quiet||'The next post, note, message or invite lights the first bar.')));
     wrap.querySelectorAll('.bar').forEach(function(bar){
       bar.addEventListener('click', function(){ if (note) note.textContent=bar.getAttribute('data-note'); });
     });
@@ -12086,12 +12086,15 @@ function wallCard(j, iso, pid, idx){
      trend reads ONE kind at a time — posts / notes / messages / invites —
      or all of them blended. The loader keeps note rows for exactly this:
      notes are a first-class series now, not a discarded kind. */
+  /* F4-FIX: subject/quiet are English KEYS here, translated at render time
+     in renderBars — mwTr does not exist yet when this block runs, so a
+     mwTr call here would bake English on every load. */
   var KIND_META={
-    all:{subject:(window.mwTr?window.mwTr('Posts, notes, messages and invites together.'):'Posts, notes, messages and invites together.'), color:null, quiet:(window.mwTr?window.mwTr('The next post, note, message or invite lights the first bar.'):'The next post, note, message or invite lights the first bar.')},
-    posts:{subject:(window.mwTr?window.mwTr('Feed posts only.'):'Feed posts only.'), color:'#a06bff', quiet:(window.mwTr?window.mwTr('The next feed post lights the first bar.'):'The next feed post lights the first bar.')},
-    notes:{subject:(window.mwTr?window.mwTr('Smart Notes only.'):'Smart Notes only.'), color:'#ff9a5a', quiet:(window.mwTr?window.mwTr('The first Smart Note lights the first bar.'):'The first Smart Note lights the first bar.')},
-    messages:{subject:(window.mwTr?window.mwTr('Messages received only.'):'Messages received only.'), color:'#3fb8ff', quiet:(window.mwTr?window.mwTr('The next message lights the first bar.'):'The next message lights the first bar.')},
-    invites:{subject:(window.mwTr?window.mwTr('Invites recorded only.'):'Invites recorded only.'), color:'#2fe89e', quiet:(window.mwTr?window.mwTr('The next invite lights the first bar.'):'The next invite lights the first bar.')}
+    all:{subject:'Posts, notes, messages and invites together.', color:null, quiet:'The next post, note, message or invite lights the first bar.'},
+    posts:{subject:'Feed posts only.', color:'#a06bff', quiet:'The next feed post lights the first bar.'},
+    notes:{subject:'Smart Notes only.', color:'#ff9a5a', quiet:'The first Smart Note lights the first bar.'},
+    messages:{subject:'Messages received only.', color:'#3fb8ff', quiet:'The next message lights the first bar.'},
+    invites:{subject:'Invites recorded only.', color:'#2fe89e', quiet:'The next invite lights the first bar.'}
   };
   function trendTimes(d){
     if (!d) return [];
