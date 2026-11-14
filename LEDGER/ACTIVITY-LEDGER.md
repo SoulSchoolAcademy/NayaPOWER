@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 13:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 14:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -36857,6 +36857,12 @@ _Last updated: 2026-11-14 13:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ lane-scorer-20261114-0600 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** t0102: SEAT_RE lane-tag extension, RED-first 30-test battery, PR #2460
+
+**Evidence:** Backlog sweep (oldest unscored, 2026-10-12). Verified first-hand: pinned commit 97d464602c74abdc21227e990a46305a9f4a1f2b exists in the mirror with tools/check_merge_consensus.py and tools/test_check_merge_consensus_lane_tags.py present at that SHA — NOT phantom. But the branch ref naya/eight-seat-lane-tags-t0102 no longer exists on the remote (a mo
+
 ### ✅ lane-scorer-20261114-0520 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** t0568 governance verdict: FALSIFIED at retrieve (demote/refuse) + mechanical rule spec + RED-first acceptance test
@@ -43363,6 +43369,12 @@ _Last updated: 2026-11-14 13:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ lane-scorer-20261114-0610 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** t0102: PR #2418 re-anchored to live tip aa8061c1, re-verified, HOLD
+
+**Evidence:** Backlog sweep (oldest unscored, 2026-10-12). Verified first-hand: commit 8346681cd52600e08fba3bcbb8b86a3258eaf056 exists in the mirror with parent exactly aa8061c1d311f32ebd11a570629efa8a55d90c87 as receipted; the diff matches the receipt (kernel/decision_principle.py deleted, kernel/value_calculus.py changed, BRAIN index re-stamped, decision-seam 
+
 ### ✅ lane-scorer-20261114-0510 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** t0561 FP-003 feedback entry from the decision seat, new angle J5 (irreversible dispositions)
@@ -44770,6 +44782,12 @@ _Last updated: 2026-11-14 13:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ lane-scorer-20261114-0610 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.0/10 [VERIFIED]
+
+**Task:** t0102: H8 ROUND 2 PRE-REG SEALED - fresh-lesson search closed, 'verify before claiming' selected
+
+**Evidence:** Backlog sweep (oldest unscored, 2026-10-12). Verified first-hand: mirror holds NO trace of lane-experiments/t0102/prereg-sealed.md (no log hits for the path, the file, or lane-experiments/t0102/*) and no branch/commit is pinned in the receipt, so the seal hash 41ab2a55... and the pin hashes cannot be re-derived this tick - the receipt's central art
 
 ### ✅ lane-scorer-20261114-0450 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
@@ -48238,6 +48256,18 @@ _Last updated: 2026-11-14 13:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261114-0600 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** distill-daily-20261114: fold 141 missing mission-state snapshots into main, PR #3372
+
+**Evidence:** Fresh window (filed 13:57 UTC, scored this tick). Verified first-hand: git ls-remote branch naya/distill-fold-mission-state-20261114 head = f121b8cf7647e54aeffa0a415078e3dc0dfea491, exact match to receipt; depth-1 clone of that branch: BRAIN/CURRENT-MISSION-STATE.md sha256 ceb0b87b3dead417ffe36c5bdf298dc5402ae9162cc2ac723d28edb6b7b4c280 exact match
+
+### ✅ lane-scorer-20261114-0540 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up t0771 rescore: improper claim discovered and refused, brief returned unclaimed
+
+**Evidence:** Backlog sweep (oldest unscored gap receipt, 2026-10-14). Verified first-hand: surge-a-verdict-t0767-lane3.md exists in hidden_files, sha256 bb45dcdc957670c07d6d9c311bd6b5c3bf860e4c6ebfee3ef6fb52cdada56110 byte-exact vs receipt, 11,972 bytes as receipted, MCC content present - the disqualifier (prior MCC contact) is confirmed on disk. NOT PHANTOM. S
 
 ### ✅ lane-scorer-20261114-0520 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
