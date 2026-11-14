@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 19:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -28689,6 +28689,12 @@ _Last updated: 2026-11-14 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Artifacts verified: scorecard comment 6123444190 exists on GitHub (body opens with the claimed scorecard header); refs/pull/2418/head == 8346681cd52600e08fba3bcbb8b86a3258eaf056 pin-exact. 3-way pin twice, all Lane 3 t0202 claims re-verified on current bytes with the gate's own functions (team-review red GENUINE, receipt-pin PASS exit 0, test red p
 
+### ✅ t0222-lane7 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** t0222 lane 7: queue-discipline slot, 449 open PRs, 34 drafts, 0 closes
+
+**Evidence:** Backlog sweep (Oct 12 receipt, scored 2026-11-14). Verified: all four pipeline heads exist as commits in the mirror (8346681c, 92fac098, e3262832, eedd9540); main tip f9b5ac3d exists as a commit. Action-time API claims (449 open PRs, 34 drafts, comment IDs) cannot be re-verified now - noted as a verification limit, not a falsification. Score 8.5, m
+
 ### ✅ t0222 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
 **Task:** Queue-discipline slot: 449 open PRs, 34 drafts enumerated with named exclusions, nothing forced closed, pipeline re-pinned
@@ -28719,6 +28725,12 @@ _Last updated: 2026-11-14 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Honest empty-bar work verified: all four pipeline PR heads (2418/2457/2456/2385) pin-match live refs via git protocol; fossil layer exhausted so zero forced closes (quota-forcing forbidden honored); #2246/#2248 routed to Lane 8 with disposition asks; 6 REST writes only. Gaps named: gray-zone re-fingerprint carried, UD sweep spot-check only.
 
+### ✅ t0222-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** t0222 lane 2: error-signal loop v1 built and run, 20 claims classified
+
+**Evidence:** Backlog sweep (Oct 12 receipt, scored 2026-11-14). Verified: scan_receipt_evidence.py sha256 85372c2e... and report-t0222.json sha256 8ba1adb5... match the receipt exactly; classification-t0222.md exists; 41dfc86e and ca1cc31e both exist as commits; phantom SHA a26943cd3 confirmed 'Not a valid object name' exactly as claimed; deleted-branch SHA 82f
+
 ### ✅ t0222 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
 **Task:** Error-signal loop v1 built and run: receipt-evidence scanner + 14-flag classification, 0 confirmed phantoms
@@ -28748,6 +28760,12 @@ _Last updated: 2026-11-14 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0222-lane2.md`
 
 **Evidence:** Dispatcher-verified on disk: tool sha256 85372c2e... and report 8ba1adb5... match receipt claims exactly. Scanner ran 180 receipts/20 claims, all 14 flags honestly classified (7 tip-churn, 4 deleted-post-supersession, 3 phantom-evidence); flag-vs-convict design proven on live data. Honest gaps named: v1 convention-scope only, no dispatcher wiring, 
+
+### ✅ t0222-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** t0222 lane 11: human-value window audit t0192-t0222, M2:7/M3:4/M4:0
+
+**Evidence:** Backlog sweep (Oct 12 receipt, scored 2026-11-14). Verified: hv_output_t0222 run1/run2 byte-identical, sha256 f34963aa... matches the receipt exactly; post1/post2 byte-identical, sha256 75fe0081... matches exactly; metric_audit_t0222.json exists (7 rows); SUMMARY_t0222.md published; main tip f9b5ac3d exists as a commit. Score 9.0, matches the recei
 
 ### ✅ t0222 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -28839,6 +28857,12 @@ _Last updated: 2026-11-14 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: auto-retrieval/prereg-t0601-entailment.md sha256 exactly bd9ca4ea... (untouched seal); results-t0601-entailment-BLOCKED-t0601.json sha exactly 4d52a16b... (baseline preserved before overwrite); results-t0601-entailment.json sha exactly 10b42701..., t_run_utc 2026-10-13T09:20:26Z, pins {8077fc722905ec12/0f83599db111ba8b/4ab5f359abe008c3/de
 
+### ✅ t0212-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** t0212 lane 6: M6 swallower-veto ported into daily runner + strengthened CT-4
+
+**Evidence:** Backlog sweep (Oct 12 receipt, scored 2026-11-14). Verified: head commit ca1cc31ebc794478cfd0f7fc1f2d0a2f96380e8e exists as a commit object in the mirror; file sha256 at that head matches the receipt exactly for tools/sgf_daily/sgf_daily_score.py (f3c1f262...), ct4_cross_check.py (57f11e68...), run_daily.sh (43b9aa2a...); veto line 112 reads m6 = (
+
 ### ✅ t0212 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** M6 swallower-veto ported into SGF daily runner + strengthened CT-4 double-negative phantom check, RED-first batteries
@@ -28899,6 +28923,12 @@ _Last updated: 2026-11-14 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: retrieval/query-log-hypertuning-input-t0212.md sha256 exactly dddeb57563... (124 lines, CANDIDATE); auto-retrieval/ask-world-queries.jsonl sha256 exactly 57f0c922... with 41 rows (=1 init+30 query+10 probe); retrieval/smartblocks/lane-packet-v2-hypertuned.md EXISTS (Lane 4's t0549 UNWIRED-DRAFT, so the brief's 'verified absent' claim was 
 
+### ✅ t0202-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** t0202 lane 4: tip-pinned round-trip proof round, COMPOUNDED 20/20 re-earned
+
+**Evidence:** Backlog sweep (Oct 12 receipt, scored 2026-11-14). Verified: tip commit f9b5ac3de34d3cafa0718b20458289539e11b685 exists as a commit object in the mirror; ib_reconcile.py blob bbb8ce533b158dce3d0d3461ea7ff2768b735f08 exists and is the tip's intelligence/tools/ib_reconcile.py; merge commit 597803d8c79ec256a268c4ba1c33562d3c8a0b4f exists; hidden_files
+
 ### ✅ t0202 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Tip-pinned round-trip proof round; COMPOUNDED 20/20 re-earned, legacy-fallback 6/6, D1 flag gap re-reproduced
@@ -28929,6 +28959,12 @@ _Last updated: 2026-11-14 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Tip f9b5ac3d pinned at action time; 20/20 round-trip verdicts file present with per-block exactness keys; legacy-fallback 6/6 re-verified; D1 gap honestly reproduced not repaired. Deduction: D1 still open (Naya 5's verdict); simulated legacy row not real corpus; round added confidence not caught drift.
 
+### ✅ t0202-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** t0202 lane 3: PR #2418 merge package re-pin + re-classify, HOLD
+
+**Evidence:** Backlog sweep (Oct 12 receipt, scored 2026-11-14). Verified: head commit 8346681cd52600e08fba3bcbb8b86a3258eaf056 exists as a commit object in the mirror; decisions file hidden_files/decisions/20261012T105702Z-guide-merge-merge-pr--2418.json exists; main tip f9b5ac3d exists as a commit object. Branch naya/three-decision-consolidate no longer resolv
+
 ### ✅ t0202 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
 
 **Task:** PR #2418 merge package re-pin + re-classify: receipt-pin block added, three CI reds classified, calculator HOLD
@@ -28958,6 +28994,12 @@ _Last updated: 2026-11-14 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0202-lane3.md`
 
 **Evidence:** Head 8346681c pin-exact (ls-remote == PR head == receipt); SCORECARD-RECEIPT-PIN block present in body; 3 CI reds classified against gate code (test pre-existing, team-review genuine missing-approval gap, receipt-pin re-run blocked by PAT 403 out of authority); calculator re-run receipt exists. Deduction: no close on re-runs; self-score gap surface
+
+### ✅ t0202-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** t0202 lane 1: M6 swallower-veto re-verification, RED-first 4/6 then GREEN 6/6
+
+**Evidence:** Backlog sweep (Oct 12 receipt, scored 2026-11-14). Verified: test_sgf_runner_m6.py sha256 53711d98... matches the receipt exactly; t0172-lane1.md cites the same runner SHA 6326d8c1... the receipt claims; the M6 veto is still present in the current runner (lines 275-276, m6 = kind != ADVERSARIAL or verdict in CATCH_VERDICTS, transfers includes M6 ch
 
 ### ✅ t0202 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -29033,6 +29075,12 @@ _Last updated: 2026-11-14 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Merge commit f9b5ac3d == current main (ls-remote); parents [aa8061c1, a92be1c0] + tree 78b5f5f4 verified via /git/commits; 2-seat bar closed (Lane 8 9.0 c6122317726, Lane 10 9.0 c6122636824); named reds accepted (7 pre-existing pytest, consensus-gate structural). -0.5 merge-endpoint 404 workaround; -0.5 red-base accepted.
 
+### ✅ t0192-lane7 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** t0192 lane 7: fossil-draft triage + Stage-1 pipeline report, 0 closes
+
+**Evidence:** Backlog sweep (Oct 12 receipt, scored 2026-11-14). Verified: main tip aa8061c1d311f32ebd11a570629efa8a55d90c87 exists as a commit object in the mirror; receipt internally consistent (448 open PRs, 34 drafts, 10 UD-series heads pinned, 5 gray-zone drafts compare-verified, 5 Stage-1 PRs pinned with CI verdicts). Action-time PR heads cannot be re-veri
+
 ### ✅ t0192 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
 **Task:** Fossil-draft triage + Stage-1 pipeline report: 10-draft layer + gray-zone drafts verified, 0 closes, pipeline pins + #2175 report
@@ -29070,6 +29118,12 @@ _Last updated: 2026-11-14 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0192-lane7.md`
 
 **Evidence:** 448 open PRs (pulls endpoint); 10 UD-series drafts all DIVERGED (ahead 1, behind 256) -> not fossils, closed 0 per pin-exact law; pipeline pins verified (2418 moved 43c0113e->8346681c, others unmoved); report comment 6122748911. -1.5: mandate wanted >=5 closes; exhausted-fossil-layer ruling needed.
+
+### ✅ t0192-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** t0192 lane 11: Human Value window audit t0162-t0192, M2:9/M3:6/M4:2, HV3 PROVEN-UNMEASURABLE held
+
+**Evidence:** Backlog sweep (Oct 12 receipt, scored 2026-11-14). Verified: hv_output_t0192_run1/run2.json byte-identical, sha256 bbdb9378... exactly as cited; post1/post2 byte-identical, sha256 f3f01251... exactly as cited; metric_audit_t0192.json window t0162-t0192 with hand_totals M2:9/M3:6/M4:2; main tip aa8061c1 exists as a commit object in the mirror. Score
 
 ### ✅ t0192 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -52484,6 +52538,12 @@ _Last updated: 2026-11-14 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261114-1040 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-14 10:40 PST: full claim sweep of all 31 queued briefs, 0 claimed
+
+**Evidence:** Fresh window (last 2h). Verified: claim-sweep-20261114-1040.log exists, 31 attempts recorded (5 'already refused' + 24 exit-7 lines + 2 exit-2 lines = 29x7 + 2x2, 0 claimed); brief-queue still holds 31 brief-*.md files; gate-stall-20261114-0933.md exists as the delta baseline. Score 9.0, matches the receipt's honest self-score. Why not 9.5: the run
 
 ### ✅ lane-scorer-20261114-0940 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
