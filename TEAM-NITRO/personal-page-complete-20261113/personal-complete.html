@@ -4051,6 +4051,7 @@ body.fc-open{overflow:hidden;}
   <div class="fc-plusitem" role="menuitem" data-fc-plus="smart" style="--mc:#a06bff"><span class="fc-pi-ico">✦</span><span data-mw-tr="pm">Smart note</span></div>
   <div class="fc-plusitem" role="menuitem" data-fc-plus="message" style="--mc:#3fb8ff"><span class="fc-pi-ico">💬</span><span data-mw-tr="pm">Message</span></div>
   <div class="fc-plusitem" role="menuitem" data-fc-plus="mail" style="--mc:#ffbf3d"><span class="fc-pi-ico">✉️</span><span data-mw-tr="pm">Mail</span></div>
+  <div class="fc-plusitem" role="menuitem" data-fc-plus="world" style="--mc:#9d75ff"><span class="fc-pi-ico">🌍</span><span data-mw-tr="pm">Create world</span></div>
 </div>
 
 
@@ -4952,11 +4953,6 @@ html.os-calm
 <button class="ph-connect os-hlbar-btn" type="button" data-mw-real-dash data-mw-tr="lf">Go to my Dashboard →</button>
 </div>
 </div>
-<div class="fc-create-row" id="fcCreateRow" role="group" aria-label="Create on this feed" data-mw-aria="Create on this feed">
-<button type="button" class="tg-mode fc-create" data-fc-create="post" style="--mc:#e8e8ec" aria-label="Make a post" title="Make a post"><span class="fc-ico fc-plus" aria-hidden="true">+</span><span class="fc-create-lab" data-mw-tr="cr">Make a post</span></button>
-<button type="button" class="tg-mode fc-create" data-fc-create="naya" style="--mc:#2fe89e" aria-label="Naya note" title="Naya note"><span class="fc-ico" aria-hidden="true">✎</span><span class="fc-create-lab" data-mw-tr="cr">Naya note</span></button>
-<button type="button" class="tg-mode fc-create" data-fc-create="smart" style="--mc:#a06bff" aria-label="Smart note" title="Smart note"><span class="fc-ico" aria-hidden="true">✦</span><span class="fc-create-lab" data-mw-tr="cr">Smart note</span></button>
-</div>
 <!-- FEED-CREATOR (Shawn 17:21Z): the always-open composer is gone — no open box, no empty
      note, no massive black space. The three buttons above pop the full-page creator.
      SELF-CHECK (round 1): these buttons carry NO data-tg-mode on purpose — they are
@@ -4969,7 +4965,7 @@ html.os-calm
 <!-- F5 (Shawn 16:06Z) — the feed bar is the Hub's lens bar, harvested verbatim
      (see the CSS). The .mw-feedname buttons below stay (they activate their tab
      + scroll the feed into view in place — working doors). -->
-<section class="searchWrap" id="pcHubSearch"><div class="searchRow" role="search"><span class="search-ico" aria-hidden="true"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel1" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel1-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel1)" filter="url(#jewel1-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel1)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></g></svg></span><input type="search" id="pcHubSearchInput" placeholder="Search your intelligence…" aria-label="Search your intelligence" autocomplete="off"></div></section>
+<section class="searchWrap" id="pcHubSearch"><div class="searchRow" role="search"><span class="search-ico" aria-hidden="true"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel1" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel1-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel1)" filter="url(#jewel1-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel1)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></g></svg></span><input type="search" id="pcHubSearchInput" placeholder="Search your intelligence…" aria-label="Search your intelligence" autocomplete="off"><button type="button" id="pcComposerPlus" class="pc-composer-plus" aria-label="Add" title="Add"><span class="notif-tile" style="--nc:#a06bff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span></button></div></section>
 <div class="lens-tabs" id="mwFeedTabs" role="tablist" aria-label="Feed categories" data-mw-aria="Feed categories">
 <button type="button" class="lens-tab lens-smart primo theme-purple elev-2 active" id="mwTabSmart" data-mw-tab="personal" role="tab" aria-selected="true" style="--glow:#3fb8ff"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">✦</span> <b data-mw-tr="tab">Personal</b></button>
 <button type="button" class="lens-tab lens-naya primo theme-purple elev-2" id="mwTabNaya" data-mw-tab="public" role="tab" aria-selected="false" style="--glow:#ffbf3d"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">🌍</span> <b data-mw-tr="tab">Public feed</b></button>
@@ -25363,17 +25359,58 @@ function fcPaintStubs(){
 /* ---------- the + menu (in the bottom bar) ---------- */
 var plusMenu=$('fcPlusMenu');
 function fcClosePlusMenu(){ if(plusMenu) plusMenu.hidden=true; }
-window.fcTogglePlusMenu=function(){
+window.fcTogglePlusMenu=function(anchor){
   if(!plusMenu) return;
   if(!plusMenu.hidden){ fcClosePlusMenu(); return; }
-  var plus=document.querySelector('.notif-seg[data-notif="plus"]');
-  if(plus){ var r=plus.getBoundingClientRect();
-    plusMenu.style.left=Math.max(110, Math.min(window.innerWidth-110, r.left+r.width/2))+'px';
-    plusMenu.style.bottom=(window.innerHeight-r.top+10)+'px';
-  } else { plusMenu.style.left='50%'; plusMenu.style.bottom='calc(var(--notif-h,78px) + 12px)'; }
+  /* COMPOSER SIMPLIFY 2026-11-14: an anchor opens the menu BELOW it (the
+     composer plus sits near the top); no anchor keeps the old behaviour —
+     ABOVE the bottom-bar plus. top/bottom are cleared on each branch so a
+     previous opening never leaves the other edge set. */
+  if(anchor && anchor.getBoundingClientRect){ var ar=anchor.getBoundingClientRect();
+    plusMenu.style.left=Math.max(110, Math.min(window.innerWidth-110, ar.left+ar.width/2))+'px';
+    plusMenu.style.top=(ar.bottom+10)+'px'; plusMenu.style.bottom='';
+  } else { var plus=document.querySelector('.notif-seg[data-notif="plus"]');
+    if(plus){ var r=plus.getBoundingClientRect();
+      plusMenu.style.left=Math.max(110, Math.min(window.innerWidth-110, r.left+r.width/2))+'px';
+      plusMenu.style.top=''; plusMenu.style.bottom=(window.innerHeight-r.top+10)+'px';
+    } else { plusMenu.style.left='50%'; plusMenu.style.top=''; plusMenu.style.bottom='calc(var(--notif-h,78px) + 12px)'; } }
   plusMenu.hidden=false;
 };
 window.fcClosePlusMenu=fcClosePlusMenu;
+
+/* COMPOSER SIMPLIFY 2026-11-14 — "Create world" from the plus menu.
+   Reuses the page's own world dialog (window.ibGrowDialog, 'space') and the
+   note-card create-space record shape (stores naya.spaces.custom.v1 +
+   nayanet.spaces mirror, joins naya.spaces.mine.v1, ActivityLog, SMART WORLD
+   CREATED toast) — with no seed note, so no pinnedNote. The dialog's "from
+   this note" copy belongs to the note-card flow and is patched to standalone
+   copy here. */
+window.fcOpenWorld=function(){
+  if(typeof window.ibGrowDialog!=='function') return;
+  window.ibGrowDialog('space','',function(name){
+    var sp={id:'sp-'+Date.now().toString(36)+Math.floor(Math.random()*1e6).toString(36),
+      name:name, topic:'General', desc:'', color:'#e84fff', privacy:'public',
+      memberIds:[], custom:true, created:Date.now()};
+    try{
+      var arr=null;
+      try{ arr=JSON.parse(localStorage.getItem('naya.spaces.custom.v1')||'null'); }catch(e){}
+      if(!Array.isArray(arr)||!arr.length){ var mirror=null; try{ mirror=JSON.parse(localStorage.getItem('nayanet.spaces')||'null'); }catch(e){} if(Array.isArray(mirror)) arr=mirror; }
+      if(!Array.isArray(arr)) arr=[];
+      arr=arr.filter(function(c){ return !c||c.id!==sp.id; }); arr.push(sp);
+      localStorage.setItem('naya.spaces.custom.v1', JSON.stringify(arr));
+      localStorage.setItem('nayanet.spaces', JSON.stringify(arr));
+      var mine=null; try{ mine=JSON.parse(localStorage.getItem('naya.spaces.mine.v1')||'null'); }catch(e){}
+      if(!Array.isArray(mine)) mine=['sp-ai','sp-friends'];
+      if(mine.indexOf(sp.id)<0){ mine.push(sp.id); localStorage.setItem('naya.spaces.mine.v1', JSON.stringify(mine)); }
+    }catch(e){}
+    if(typeof ActivityLog!=='undefined'){ try{ ActivityLog.log('space','World created \"'+name+'\"','spaces','#9d75ff','<path d=\"M12 3l8 4.5v9L12 21l-8-4.5v-9z\"/><path d=\"M12 12l8-4.5M12 12v9M12 12L4 7.5\"/>'); }catch(e){} }
+    if(typeof toast==='function'){ try{ toast('SMART WORLD CREATED \u2014 \"'+name+'\" is live in Smart Worlds'); }catch(e){} }
+  });
+  var d=document.getElementById('ib-growdlg');
+  if(d){ var h=d.querySelector('h3'); if(h) h.textContent='Create a world';
+    var pp=d.querySelector('p'); if(pp) pp.textContent='Name your world \u2014 your people gather here, around what matters to you.';
+    var inp=document.getElementById('ib-grow-name'); if(inp) inp.placeholder='World name'; }
+};
 
 /* ---------- the picker ---------- */
 /* FIX-20261112-C: the picker's orb colours — the page's own spectrum + name hash
@@ -25518,6 +25555,7 @@ document.addEventListener('click', function(e){
   if(p){ var k=p.getAttribute('data-fc-plus'); fcClosePlusMenu();
     if(k==='message') window.fcOpenPicker('message');
     else if(k==='mail') window.fcOpenPicker('mail');
+    else if(k==='world'){ if(typeof window.fcOpenWorld==='function') window.fcOpenWorld(); else window.fcOpenCreator('post'); }
     else window.fcOpenCreator(k);
     return; }
   var pk=e.target.closest('[data-fc-pick]');
@@ -25935,11 +25973,18 @@ document.addEventListener('click', function(e){
 (function(){
   if(document.getElementById('pcComposerBar')) return;
   var row=document.getElementById('fcCreateRow'), search=document.getElementById('pcHubSearch');
-  if(!row||!search||!row.parentNode) return;
+  if(!search||!search.parentNode) return;
   var bar=document.createElement('div');
-  bar.id='pcComposerBar'; bar.setAttribute('role','group'); bar.setAttribute('aria-label','Create on this feed and search');
-  row.parentNode.insertBefore(bar, row);
-  bar.appendChild(row); bar.appendChild(search);
+  bar.id='pcComposerBar'; bar.setAttribute('role','group'); bar.setAttribute('aria-label','Search and create on this feed');
+  (row?row.parentNode:search.parentNode).insertBefore(bar, row||search);
+  if(row) bar.appendChild(row);
+  bar.appendChild(search);
+  /* COMPOSER SIMPLIFY 2026-11-14 19:22Z — the plus at the end of the search
+     opens the same menu the bottom-bar plus opens, anchored under itself.
+     stopPropagation: the document-level closer below would otherwise shut
+     the menu in the same click (the composer plus is not [data-notif="plus"]). */
+  var cp=document.getElementById('pcComposerPlus');
+  if(cp){ cp.addEventListener('click', function(e){ e.stopPropagation(); if(window.fcTogglePlusMenu) window.fcTogglePlusMenu(cp); }); }
 })();
 /* Settings dismissal — Escape closes Settings back to the feed (the gear
    toggle + the visible Close button are the other two ways out). */
@@ -27299,6 +27344,31 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
 #pcComposerBar #pcHubSearch{grid-column:1/-1;display:flex;}
 #pcComposerBar #pcHubSearch .searchRow{padding:16px 18px;}
 #pcComposerBar #pcHubSearch .searchRow input{font-size:17px;}
+</style>
+<style id="pc-composer-simplify-20261114">
+/* ═══ COMPOSER SIMPLIFY 2026-11-14 19:22Z ═══
+   The search runs full width with the harvested plus at its end; the three
+   composer buttons are gone from the markup, so the old one-grid button rules
+   above are dead (no element matches them any more). */
+/* Search row: tighter padding now that the plus sits inside it (row stays
+   ~58px tall, the rail aligner still measures it live). */
+#pcComposerBar #pcHubSearch .searchRow{padding:8px 10px 8px 18px;}
+/* The plus: the bottom bar's + button, harvested verbatim (.notif-tile +
+   --nc #a06bff + the same plus SVG). ONE named adaptation: the harvested
+   tile is 54px; 46px here so it fits the search row — radius, rim and glow
+   are the tile's own. */
+#pcComposerPlus{flex:none;background:none;border:0;padding:0;cursor:pointer;display:grid;place-items:center;}
+#pcComposerPlus .notif-tile{width:46px;height:46px;}
+/* BOTTOM ICON VARIANT (his thought, 19:22Z — a variant for his eye, not a
+   settled change): the five bottom icons go pure pearl white in the middle,
+   with depth; the coloured rims (tile border) and outer glow stay exactly
+   as they were, so the colour still tells each apart. */
+.notif-tile{color:#F8F7FB;}
+.notif-tile svg{filter:drop-shadow(0 1px 2px rgba(0,0,0,.65)) drop-shadow(0 0 6px rgba(255,255,255,.55));}
+/* The composer plus is the PURPLE plus, not the white variant: re-assert its
+   harvested purple icon + coloured glow at higher specificity. */
+#pcComposerPlus .notif-tile{color:color-mix(in srgb, var(--nc) 72%, #ffffff);}
+#pcComposerPlus .notif-tile svg{filter:drop-shadow(0 0 5px color-mix(in srgb, var(--nc) 75%, transparent));}
 
 /* --- Rail: card top leaves room for the fixed % + info + CONNECT row --- */
 #pcRail .pc-card-top{padding-right:176px;}
