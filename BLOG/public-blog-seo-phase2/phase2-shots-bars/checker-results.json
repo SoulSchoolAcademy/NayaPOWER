@@ -1,0 +1,991 @@
+{
+ "390": {
+  "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2696",
+  "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+  "notHere": false,
+  "hook": true,
+  "noteTitle": true,
+  "boards": 1,
+  "overlayShown": false,
+  "overlayVisible": false,
+  "mainPaddingBottom": "78px",
+  "notifH": "72px",
+  "obbBelow": "72px",
+  "obbBar": {
+   "x": 0,
+   "y": 696,
+   "w": 390,
+   "h": 76,
+   "top": 696,
+   "bottom": 772
+  },
+  "obbPills": [
+   {
+    "label": "MAIL",
+    "href": "https://nayanet.app/rooms/mail",
+    "jewelW": 44,
+    "jewelH": 44,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "DASHBOARD",
+    "href": "https://nayanet.app/dashboard",
+    "jewelW": 44,
+    "jewelH": 44,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "BUSINESS",
+    "href": "https://nayanet.app/business",
+    "jewelW": 44,
+    "jewelH": 44,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "SPACE",
+    "href": "https://nayanet.app/space",
+    "jewelW": 44,
+    "jewelH": 44,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "GROWTH",
+    "href": "https://nayanet.app/rooms/growth",
+    "jewelW": 44,
+    "jewelH": 44,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "CONNECTIONS",
+    "href": "https://nayanet.app/rooms/connections",
+    "jewelW": 44,
+    "jewelH": 44,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "SMART LISTS",
+    "href": "https://nayanet.app/rooms/lists",
+    "jewelW": 44,
+    "jewelH": 44,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "REPORTS",
+    "href": "https://nayanet.app/rooms/reports",
+    "jewelW": 44,
+    "jewelH": 44,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "10 APPS",
+    "href": "https://nayanet.app/#/hub",
+    "jewelW": 44,
+    "jewelH": 44,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   }
+  ],
+  "activityPills": 0,
+  "activitySegs": 0,
+  "notifBars": 1,
+  "notifBar": {
+   "x": 0,
+   "y": 772,
+   "w": 390,
+   "h": 72,
+   "top": 772,
+   "bottom": 844
+  },
+  "notifSegs": [
+   {
+    "key": "personal",
+    "gem": "amethyst",
+    "label": "Personal",
+    "tileW": 27,
+    "tileH": 27,
+    "tileRadius": "50%",
+    "count": "0",
+    "countShown": "none",
+    "svgSha": "3a8d9520e018"
+   },
+   {
+    "key": "business",
+    "gem": "emerald",
+    "label": "Business",
+    "tileW": 27,
+    "tileH": 27,
+    "tileRadius": "50%",
+    "count": "3",
+    "countShown": "flex",
+    "svgSha": "044446e6eb3d"
+   },
+   {
+    "key": "thing",
+    "gem": "diamond",
+    "label": "Thing",
+    "tileW": 27,
+    "tileH": 27,
+    "tileRadius": "50%",
+    "count": "2",
+    "countShown": "flex",
+    "svgSha": "694dec628d28"
+   }
+  ],
+  "ecoPresent": false,
+  "ecoBtns": 0,
+  "overflow0": 0,
+  "viewH": 844,
+  "docH": 2956,
+  "console_errors": [],
+  "page_errors": [],
+  "snap_instant": {
+   "scrollLeft": 121.27,
+   "scrollW": 578,
+   "clientW": 370,
+   "firstVisible": {
+    "label": "DASHBOARD",
+    "left": -55,
+    "right": 14
+   },
+   "visibleCount": 7,
+   "visible": [
+    {
+     "label": "DASHBOARD",
+     "left": -55,
+     "right": 14
+    },
+    {
+     "label": "BUSINESS",
+     "left": 20,
+     "right": 76
+    },
+    {
+     "label": "SPACE",
+     "left": 82,
+     "right": 132
+    },
+    {
+     "label": "GROWTH",
+     "left": 138,
+     "right": 189
+    }
+   ]
+  },
+  "snap_wheel": {
+   "scrollLeft": 0,
+   "scrollW": 578,
+   "clientW": 370,
+   "firstVisible": {
+    "label": "MAIL",
+    "left": 10,
+    "right": 60
+   },
+   "visibleCount": 6,
+   "visible": [
+    {
+     "label": "MAIL",
+     "left": 10,
+     "right": 60
+    },
+    {
+     "label": "DASHBOARD",
+     "left": 66,
+     "right": 135
+    },
+    {
+     "label": "BUSINESS",
+     "left": 141,
+     "right": 197
+    },
+    {
+     "label": "SPACE",
+     "left": 203,
+     "right": 253
+    }
+   ]
+  },
+  "cover_max_scroll": {
+   "lowestMain": {
+    "text": "Same topic: System Intelligence",
+    "bottom": 678,
+    "top": 659
+   },
+   "underBars": [
+    {
+     "text": "Search",
+     "tag": "BUTTON",
+     "cls": "naya-search-button",
+     "top": 800,
+     "bottom": 844
+    }
+   ],
+   "obbTop": 696,
+   "notifTop": 772,
+   "obbBottom": 772,
+   "viewH": 844,
+   "scrollY": 2112,
+   "maxScroll": 2112
+  },
+  "overflow_scrolled": 0,
+  "ask_before": {
+   "notifBottom": 844,
+   "notifTop": 772,
+   "obbBottom": 772,
+   "viewH": 844
+  },
+  "ask_room": {
+   "present": true,
+   "roomTop": 89,
+   "roomH": 1125,
+   "notifBottom": 773,
+   "notifTop": 701,
+   "obbTop": 625,
+   "obbBottom": 701,
+   "viewH": 844
+  },
+  "trio_clicks": [
+   {
+    "label": "Personal",
+    "selector": "#segPersonal",
+    "found": true,
+    "dest_url": "https://nayanet.app/personal",
+    "dest_title": "Shawn Vibert",
+    "page_errors": []
+   },
+   {
+    "label": "Business",
+    "selector": "#segBusiness",
+    "found": true,
+    "dest_url": "https://nayanet.app/business",
+    "dest_title": "Acme Corp",
+    "page_errors": []
+   },
+   {
+    "label": "Thing",
+    "selector": "#segThing",
+    "found": true,
+    "dest_url": "https://nayanet.app/space",
+    "dest_title": "Our Community",
+    "page_errors": []
+   }
+  ]
+ },
+ "1440": {
+  "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2696",
+  "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+  "notHere": false,
+  "hook": true,
+  "noteTitle": true,
+  "boards": 1,
+  "overlayShown": false,
+  "overlayVisible": false,
+  "mainPaddingBottom": "100px",
+  "notifH": "86px",
+  "obbBelow": "86px",
+  "obbBar": {
+   "x": 0,
+   "y": 731,
+   "w": 1440,
+   "h": 84,
+   "top": 731,
+   "bottom": 814
+  },
+  "obbPills": [
+   {
+    "label": "MAIL",
+    "href": "https://nayanet.app/rooms/mail",
+    "jewelW": 46,
+    "jewelH": 46,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "DASHBOARD",
+    "href": "https://nayanet.app/dashboard",
+    "jewelW": 46,
+    "jewelH": 46,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "BUSINESS",
+    "href": "https://nayanet.app/business",
+    "jewelW": 46,
+    "jewelH": 46,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "SPACE",
+    "href": "https://nayanet.app/space",
+    "jewelW": 46,
+    "jewelH": 46,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "GROWTH",
+    "href": "https://nayanet.app/rooms/growth",
+    "jewelW": 46,
+    "jewelH": 46,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "CONNECTIONS",
+    "href": "https://nayanet.app/rooms/connections",
+    "jewelW": 46,
+    "jewelH": 46,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "SMART LISTS",
+    "href": "https://nayanet.app/rooms/lists",
+    "jewelW": 46,
+    "jewelH": 46,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "REPORTS",
+    "href": "https://nayanet.app/rooms/reports",
+    "jewelW": 46,
+    "jewelH": 46,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "10 APPS",
+    "href": "https://nayanet.app/#/hub",
+    "jewelW": 46,
+    "jewelH": 46,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   }
+  ],
+  "activityPills": 0,
+  "activitySegs": 0,
+  "notifBars": 1,
+  "notifBar": {
+   "x": 0,
+   "y": 814,
+   "w": 1440,
+   "h": 86,
+   "top": 814,
+   "bottom": 900
+  },
+  "notifSegs": [
+   {
+    "key": "personal",
+    "gem": "amethyst",
+    "label": "Personal",
+    "tileW": 38,
+    "tileH": 38,
+    "tileRadius": "50%",
+    "count": "0",
+    "countShown": "none",
+    "svgSha": "3a8d9520e018"
+   },
+   {
+    "key": "business",
+    "gem": "emerald",
+    "label": "Business",
+    "tileW": 38,
+    "tileH": 38,
+    "tileRadius": "50%",
+    "count": "3",
+    "countShown": "flex",
+    "svgSha": "044446e6eb3d"
+   },
+   {
+    "key": "thing",
+    "gem": "diamond",
+    "label": "Thing",
+    "tileW": 38,
+    "tileH": 38,
+    "tileRadius": "50%",
+    "count": "2",
+    "countShown": "flex",
+    "svgSha": "694dec628d28"
+   }
+  ],
+  "ecoPresent": false,
+  "ecoBtns": 0,
+  "overflow0": 0,
+  "viewH": 900,
+  "docH": 1867,
+  "console_errors": [],
+  "page_errors": [],
+  "snap_instant": {
+   "scrollLeft": 0,
+   "scrollW": 677,
+   "clientW": 677,
+   "firstVisible": {
+    "label": "MAIL",
+    "left": 382,
+    "right": 436
+   },
+   "visibleCount": 9,
+   "visible": [
+    {
+     "label": "MAIL",
+     "left": 382,
+     "right": 436
+    },
+    {
+     "label": "DASHBOARD",
+     "left": 444,
+     "right": 525
+    },
+    {
+     "label": "BUSINESS",
+     "left": 533,
+     "right": 600
+    },
+    {
+     "label": "SPACE",
+     "left": 608,
+     "right": 662
+    }
+   ]
+  },
+  "snap_wheel": {
+   "scrollLeft": 0,
+   "scrollW": 677,
+   "clientW": 677,
+   "firstVisible": {
+    "label": "MAIL",
+    "left": 382,
+    "right": 436
+   },
+   "visibleCount": 9,
+   "visible": [
+    {
+     "label": "MAIL",
+     "left": 382,
+     "right": 436
+    },
+    {
+     "label": "DASHBOARD",
+     "left": 444,
+     "right": 525
+    },
+    {
+     "label": "BUSINESS",
+     "left": 533,
+     "right": 600
+    },
+    {
+     "label": "SPACE",
+     "left": 608,
+     "right": 662
+    }
+   ]
+  },
+  "cover_max_scroll": {
+   "lowestMain": {
+    "text": "Same topic: System Intelligence",
+    "bottom": 712,
+    "top": 693
+   },
+   "underBars": [
+    {
+     "text": "Your Connections",
+     "tag": "SPAN",
+     "cls": "lbl",
+     "top": 732,
+     "bottom": 752
+    },
+    {
+     "text": "Smart Lists",
+     "tag": "SPAN",
+     "cls": "lbl",
+     "top": 797,
+     "bottom": 817
+    },
+    {
+     "text": "Smart Mail",
+     "tag": "SPAN",
+     "cls": "lbl",
+     "top": 862,
+     "bottom": 882
+    },
+    {
+     "text": "Search",
+     "tag": "BUTTON",
+     "cls": "naya-search-button",
+     "top": 856,
+     "bottom": 900
+    }
+   ],
+   "obbTop": 731,
+   "notifTop": 814,
+   "obbBottom": 814,
+   "viewH": 900,
+   "scrollY": 967,
+   "maxScroll": 967
+  },
+  "overflow_scrolled": 0,
+  "trio_clicks": [
+   {
+    "label": "Personal",
+    "selector": "#segPersonal",
+    "found": true,
+    "click_error": "ElementHandle.click: Timeout 8000ms exceeded.\nCall log:\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n    - click action done\n"
+   },
+   {
+    "label": "Business",
+    "selector": "#segBusiness",
+    "found": true,
+    "click_error": "ElementHandle.scroll_into_view_if_needed: Timeout 5000ms exceeded.\nCall log:\n  - attempting scroll into view action\n    - waiting for element to be stable\n"
+   },
+   {
+    "label": "Thing",
+    "selector": "#segThing",
+    "found": true,
+    "click_error": "ElementHandle.click: Timeout 8000ms exceeded.\nCall log:\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n    - click action done\n"
+   }
+  ]
+ },
+ "360": {
+  "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2696",
+  "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+  "notHere": false,
+  "hook": true,
+  "noteTitle": true,
+  "boards": 1,
+  "overlayShown": false,
+  "overlayVisible": false,
+  "mainPaddingBottom": "78px",
+  "notifH": "72px",
+  "obbBelow": "72px",
+  "obbBar": {
+   "x": 0,
+   "y": 652,
+   "w": 360,
+   "h": 76,
+   "top": 652,
+   "bottom": 728
+  },
+  "obbPills": [
+   {
+    "label": "MAIL",
+    "href": "https://nayanet.app/rooms/mail",
+    "jewelW": 44,
+    "jewelH": 44,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "DASHBOARD",
+    "href": "https://nayanet.app/dashboard",
+    "jewelW": 44,
+    "jewelH": 44,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "BUSINESS",
+    "href": "https://nayanet.app/business",
+    "jewelW": 44,
+    "jewelH": 44,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "SPACE",
+    "href": "https://nayanet.app/space",
+    "jewelW": 44,
+    "jewelH": 44,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "GROWTH",
+    "href": "https://nayanet.app/rooms/growth",
+    "jewelW": 44,
+    "jewelH": 44,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "CONNECTIONS",
+    "href": "https://nayanet.app/rooms/connections",
+    "jewelW": 44,
+    "jewelH": 44,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "SMART LISTS",
+    "href": "https://nayanet.app/rooms/lists",
+    "jewelW": 44,
+    "jewelH": 44,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "REPORTS",
+    "href": "https://nayanet.app/rooms/reports",
+    "jewelW": 44,
+    "jewelH": 44,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   },
+   {
+    "label": "10 APPS",
+    "href": "https://nayanet.app/#/hub",
+    "jewelW": 44,
+    "jewelH": 44,
+    "jewelRadius": "50%",
+    "pillRadius": "0px",
+    "labelVisible": true
+   }
+  ],
+  "activityPills": 0,
+  "activitySegs": 0,
+  "notifBars": 1,
+  "notifBar": {
+   "x": 0,
+   "y": 728,
+   "w": 360,
+   "h": 72,
+   "top": 728,
+   "bottom": 800
+  },
+  "notifSegs": [
+   {
+    "key": "personal",
+    "gem": "amethyst",
+    "label": "Personal",
+    "tileW": 27,
+    "tileH": 27,
+    "tileRadius": "50%",
+    "count": "0",
+    "countShown": "none",
+    "svgSha": "3a8d9520e018"
+   },
+   {
+    "key": "business",
+    "gem": "emerald",
+    "label": "Business",
+    "tileW": 27,
+    "tileH": 27,
+    "tileRadius": "50%",
+    "count": "3",
+    "countShown": "flex",
+    "svgSha": "044446e6eb3d"
+   },
+   {
+    "key": "thing",
+    "gem": "diamond",
+    "label": "Thing",
+    "tileW": 27,
+    "tileH": 27,
+    "tileRadius": "50%",
+    "count": "2",
+    "countShown": "flex",
+    "svgSha": "694dec628d28"
+   }
+  ],
+  "ecoPresent": false,
+  "ecoBtns": 0,
+  "overflow0": 0,
+  "viewH": 800,
+  "docH": 3243,
+  "console_errors": [],
+  "page_errors": [],
+  "snap_instant": {
+   "scrollLeft": 121.27,
+   "scrollW": 578,
+   "clientW": 340,
+   "firstVisible": {
+    "label": "DASHBOARD",
+    "left": -55,
+    "right": 14
+   },
+   "visibleCount": 6,
+   "visible": [
+    {
+     "label": "DASHBOARD",
+     "left": -55,
+     "right": 14
+    },
+    {
+     "label": "BUSINESS",
+     "left": 20,
+     "right": 76
+    },
+    {
+     "label": "SPACE",
+     "left": 82,
+     "right": 132
+    },
+    {
+     "label": "GROWTH",
+     "left": 138,
+     "right": 189
+    }
+   ]
+  },
+  "snap_wheel": {
+   "scrollLeft": 0,
+   "scrollW": 578,
+   "clientW": 340,
+   "firstVisible": {
+    "label": "MAIL",
+    "left": 10,
+    "right": 60
+   },
+   "visibleCount": 6,
+   "visible": [
+    {
+     "label": "MAIL",
+     "left": 10,
+     "right": 60
+    },
+    {
+     "label": "DASHBOARD",
+     "left": 66,
+     "right": 135
+    },
+    {
+     "label": "BUSINESS",
+     "left": 141,
+     "right": 197
+    },
+    {
+     "label": "SPACE",
+     "left": 203,
+     "right": 253
+    }
+   ]
+  },
+  "cover_max_scroll": {
+   "lowestMain": {
+    "text": "Same topic: System Intelligence",
+    "bottom": 634,
+    "top": 615
+   },
+   "underBars": [
+    {
+     "text": "Search",
+     "tag": "BUTTON",
+     "cls": "naya-search-button",
+     "top": 756,
+     "bottom": 800
+    }
+   ],
+   "obbTop": 652,
+   "notifTop": 728,
+   "obbBottom": 728,
+   "viewH": 800,
+   "scrollY": 2443,
+   "maxScroll": 2443
+  },
+  "overflow_scrolled": 0,
+  "trio_clicks": [
+   {
+    "label": "Personal",
+    "selector": "#segPersonal",
+    "found": true,
+    "dest_url": "https://nayanet.app/personal",
+    "dest_title": "Shawn Vibert",
+    "page_errors": []
+   },
+   {
+    "label": "Business",
+    "selector": "#segBusiness",
+    "found": true,
+    "dest_url": "https://nayanet.app/business",
+    "dest_title": "Acme Corp",
+    "page_errors": []
+   },
+   {
+    "label": "Thing",
+    "selector": "#segThing",
+    "found": true,
+    "dest_url": "https://nayanet.app/space",
+    "dest_title": "Our Community",
+    "page_errors": []
+   }
+  ]
+ },
+ "upper_clicks_1440": [
+  {
+   "label": "Mail",
+   "selector": "#obb-bar .obb-pill >> nth=0",
+   "found": true,
+   "dest_url": "https://nayanet.app/rooms/mail",
+   "dest_title": "Smart Mail \u2014 NayaNET",
+   "page_errors": []
+  },
+  {
+   "label": "Dashboard",
+   "selector": "#obb-bar .obb-pill >> nth=1",
+   "found": true,
+   "dest_url": "https://nayanet.app/dashboard",
+   "dest_title": "Smart Score Dashboard \u2014 NayaNET",
+   "page_errors": []
+  },
+  {
+   "label": "Business",
+   "selector": "#obb-bar .obb-pill >> nth=2",
+   "found": true,
+   "dest_url": "https://nayanet.app/business",
+   "dest_title": "Acme Corp",
+   "page_errors": []
+  },
+  {
+   "label": "Space",
+   "selector": "#obb-bar .obb-pill >> nth=3",
+   "found": true,
+   "dest_url": "https://nayanet.app/space",
+   "dest_title": "Our Community",
+   "page_errors": []
+  },
+  {
+   "label": "Growth",
+   "selector": "#obb-bar .obb-pill >> nth=4",
+   "found": true,
+   "dest_url": "https://nayanet.app/rooms/growth",
+   "dest_title": "Smart Growth \u2014 NayaNET",
+   "page_errors": []
+  },
+  {
+   "label": "Connections",
+   "selector": "#obb-bar .obb-pill >> nth=5",
+   "found": true,
+   "dest_url": "https://nayanet.app/rooms/connections",
+   "dest_title": "Your Connections",
+   "page_errors": []
+  },
+  {
+   "label": "Smart Lists",
+   "selector": "#obb-bar .obb-pill >> nth=6",
+   "found": true,
+   "dest_url": "https://nayanet.app/rooms/lists",
+   "dest_title": "Smart Lists",
+   "page_errors": []
+  },
+  {
+   "label": "Reports",
+   "selector": "#obb-bar .obb-pill >> nth=7",
+   "found": true,
+   "dest_url": "https://nayanet.app/rooms/reports",
+   "dest_title": "Reports \u2014 NayaNET Intelligent Hub",
+   "page_errors": [
+    "pad is not defined"
+   ]
+  },
+  {
+   "label": "10 apps",
+   "selector": "#obb-bar .obb-pill >> nth=8",
+   "found": true,
+   "dest_url": "https://nayanet.app/#/hub",
+   "dest_title": "NayaNET \u2014 Main entrance, variant C: all obsidian, gold/purple/green states",
+   "page_errors": []
+  }
+ ],
+ "upper_clicks_390": [
+  {
+   "label": "Mail",
+   "selector": "#obb-bar .obb-pill >> nth=0",
+   "found": true,
+   "click_error": "ElementHandle.scroll_into_view_if_needed: Timeout 5000ms exceeded.\nCall log:\n  - attempting scroll into view action\n    - waiting for element to be stable\n"
+  },
+  {
+   "label": "Dashboard",
+   "selector": "#obb-bar .obb-pill >> nth=1",
+   "found": true,
+   "dest_url": "https://nayanet.app/dashboard",
+   "dest_title": "Smart Score Dashboard \u2014 NayaNET",
+   "page_errors": []
+  },
+  {
+   "label": "Business",
+   "selector": "#obb-bar .obb-pill >> nth=2",
+   "found": true,
+   "click_error": "ElementHandle.click: Timeout 8000ms exceeded.\nCall log:\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n"
+  },
+  {
+   "label": "Space",
+   "selector": "#obb-bar .obb-pill >> nth=3",
+   "found": true,
+   "dest_url": "https://nayanet.app/space",
+   "dest_title": "Our Community",
+   "page_errors": []
+  },
+  {
+   "label": "Growth",
+   "selector": "#obb-bar .obb-pill >> nth=4",
+   "found": true,
+   "dest_url": "https://nayanet.app/rooms/growth",
+   "dest_title": "Smart Growth \u2014 NayaNET",
+   "page_errors": []
+  },
+  {
+   "label": "Connections",
+   "selector": "#obb-bar .obb-pill >> nth=5",
+   "found": true,
+   "dest_url": "https://nayanet.app/rooms/connections",
+   "dest_title": "Your Connections",
+   "page_errors": []
+  },
+  {
+   "label": "Smart Lists",
+   "selector": "#obb-bar .obb-pill >> nth=6",
+   "found": true,
+   "click_error": "ElementHandle.click: Timeout 8000ms exceeded.\nCall log:\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n    - click action done\n"
+  },
+  {
+   "label": "Reports",
+   "selector": "#obb-bar .obb-pill >> nth=7",
+   "found": true,
+   "click_error": "ElementHandle.click: Timeout 8000ms exceeded.\nCall log:\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n    - click action done\n"
+  },
+  {
+   "label": "10 apps",
+   "selector": "#obb-bar .obb-pill >> nth=8",
+   "found": true,
+   "dest_url": "https://nayanet.app/#/hub",
+   "dest_title": "NayaNET \u2014 Main entrance, variant C: all obsidian, gold/purple/green states",
+   "page_errors": []
+  }
+ ]
+}
