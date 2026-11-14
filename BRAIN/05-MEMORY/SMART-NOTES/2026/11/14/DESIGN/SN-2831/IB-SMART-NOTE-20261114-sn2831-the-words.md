@@ -4,6 +4,8 @@ SN-2831 · DESIGN / PRICING
 
 **Created:** 2026-11-14 22:13Z
 
+**Kinds:** Honor · Multiplication · Craft · Knowledge
+
 ## Hook
 
 The letter was the opening. Now it is the ending — and everything in it has to be real: the jewels, the place, the close.
