@@ -4,6 +4,8 @@ SN-2829 · CHARGE / FIX
 
 **Created:** 2026-11-14 22:11Z
 
+**Kinds:** Honor · Multiplication · Craft · Knowledge
+
 > "This idea for the stats is awesome. I love that. That's ideal. Take this 10 out of 10 with the numbers and the gauges — that's the kind of feel we want, right? So it just feels like a high performance machine engine, supercomputer, like an intelligent network."
 
 ## Hook
@@ -39,6 +41,7 @@ My memory is not the system. A chat message is not the system. A file only on my
 3. **The feel is the standard.** "A high performance machine engine, supercomputer, like an intelligent network" — that is what every number on every page must feel like. The world boards, the hero, the calculator: all measured against this view.
 4. **"Can you get in there?" is the invitation.** One tap, and you're inside the machine. The whole journey — the hook, the test drive, the world appearing — is built to get them inside, fast.
 5. **One thing per seat, many seats at once.** The focus that makes work right lives in the seat; the parallelism that makes it fast lives in the team. The captain holds the whole.
+6. **Meaning lives in the neighbors.** Meaning is not in the words — it is in what is near the words. A text organizes what it says the way a neighborhood organizes a street: change the neighbors, change the meaning. Retrieval is walking the neighborhood — find the neighbors and you find the sense.
 
 ## Why it matters
 
