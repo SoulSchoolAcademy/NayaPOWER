@@ -34,6 +34,7 @@ Usage:
   python3 tools/learning_loop.py accept-proposal --proposal ID --by NAME [--ledger PATH]
   python3 tools/learning_loop.py reject-proposal --proposal ID --by NAME [--ledger PATH]
   python3 tools/learning_loop.py show-ledger [--ledger PATH]
+  python3 tools/learning_loop.py publish-note --capture PATH --verify PATH [--private-root PATH]
 
 Exit codes:
   0 — ok
@@ -926,7 +927,103 @@ def cmd_show_ledger(args):
     return 0
 
 
+
+
+# ---------------------------------------------------------------------------
+# Smart Note publish door (P-152 fix, 2026-11-14)
+# ---------------------------------------------------------------------------
+# P-152: the door obligation lives in the writer. A Smart Note page may
+# only come into existence together with its registry entry — capture in,
+# page + registry entry + manifest re-stamp out, in one motion, or not
+# at all. This command is a thin door over the canonical writer,
+# tools/smart_note_v2.py: it calls that module's own reserve / render /
+# update_registry functions in the same order as its `project` command.
+# It implements no registry logic of its own — one writer, one manifest —
+# and it offers no path that writes a page without registering it. A page
+# written any other way (a raw file commit that bypasses this door) is
+# exactly the leak this fix exists to close.
+
+def _publish_note_main(argv):
+    """Publish one Smart Note through the canonical writer (the door)."""
+    from pathlib import Path as _Path
+
+    p = argparse.ArgumentParser(
+        prog="learning_loop.py publish-note",
+        description="Publish a Smart Note through the canonical writer: "
+                    "page + registry entry + manifest, in one motion.")
+    p.add_argument("--capture", required=True,
+                   help="capture JSON (schema naya.smart-note-capture.v2)")
+    p.add_argument("--verify", required=True,
+                   help="verify JSON carrying the persisted block")
+    p.add_argument("--private-root", default=None,
+                   help="private projection root (PRIVATE-scope notes)")
+    args = p.parse_args(argv)
+
+    tools_dir = _Path(__file__).resolve().parent
+    if str(tools_dir) not in sys.path:
+        sys.path.insert(0, str(tools_dir))
+    try:
+        import smart_note_v2 as _sn2
+    except ImportError as e:
+        _err(f"canonical writer tools/smart_note_v2.py unavailable: {e}")
+        return 1
+
+    try:
+        with open(args.capture, "r", encoding="utf-8") as f:
+            cap = json.load(f)
+        with open(args.verify, "r", encoding="utf-8") as f:
+            ver = json.load(f)
+    except (OSError, ValueError) as e:
+        _err(f"cannot read capture/verify: {e}")
+        return 1
+    if not isinstance(cap, dict) or not isinstance(ver, dict):
+        _err("capture and verify must be JSON objects")
+        return 1
+
+    block = ver["persisted"]["block"]
+    ib = block["intelligent_block_id"]
+
+    # The capture itself is part of the motion: it must be durably placed
+    # in .naya/capture/ (the audit hashes captures from there) before the
+    # page exists. A different capture already owning that name fails
+    # closed — nothing is written over, nothing is published.
+    import shutil as _shutil
+    cap_src = _Path(args.capture).resolve()
+    cap_dest = _sn2.ROOT / ".naya" / "capture" / cap_src.name
+    if cap_dest != cap_src:
+        if cap_dest.exists() and cap_dest.read_bytes() != cap_src.read_bytes():
+            _err(f"capture name collision: {cap_dest} already exists "
+                 "with different bytes")
+            return 1
+        if not cap_dest.exists():
+            cap_dest.parent.mkdir(parents=True, exist_ok=True)
+            _shutil.copyfile(cap_src, cap_dest)
+
+    # The canonical project motion, unchanged: reserve the ID, render the
+    # page, then register it (entry + manifest) — one motion, fail-closed
+    # (the writer raises SystemExit on any collision or invalid state).
+    sn_id = _sn2.reserve_smart_note_id(cap, ib)
+    proj = _sn2.render(cap, ver, args.private_root, sn_id=sn_id)
+    published = str(proj).startswith(str(_sn2.BRAIN_SMART_NOTE_ROOT))
+    if published:
+        entry = _sn2.update_registry(cap, ver, proj, sn_id=sn_id)
+    else:
+        entry = {
+            "intelligent_block_id": ib,
+            "smart_note_id": sn_id,
+            "scope": block.get("owner_scope"),
+            "projection_status": "PRIVATE_RENDER_VERIFIED",
+            "smart_link_status": "PENDING_PRIVATE_PROJECTION",
+            "private_render_path": str(proj),
+        }
+    _out({"ok": True, "smart_note_id": sn_id,
+          "projection_path": str(proj), "entry": entry})
+    return 0
+
 def main(argv=None):
+    argv = list(sys.argv[1:] if argv is None else argv)
+    if argv[:1] == ["publish-note"]:
+        return _publish_note_main(argv[1:])
     ap = argparse.ArgumentParser(
         description="Learning loop — Layer 6 of the Ultimate Decision Machine")
     sub = ap.add_subparsers(dest="cmd", required=True)
