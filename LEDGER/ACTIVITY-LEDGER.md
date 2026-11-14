@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 22:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 22:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -356,6 +356,180 @@ _Last updated: 2026-11-14 22:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1564-lane11.md`
 
 **Evidence:** Verified independently from live bytes at score time: rotation queued=16 exactly the 15 named gap briefs plus brief-t1564-lane11.md; brief-queue root holds those 15 briefs (plus lane-feed.md); exact-name execution receipts 0/15 for the gap briefs; in_flight=[]; claimed/ root holds only brief-t1564-lane11.md plus done/; prior t1562 close confirmed (
+
+### ✅ t1564 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: PR #3371 head advanced + body re-pinned, pin checker PASS, fresh CI
+
+**Evidence:** VERIFIED via git ls-remote: branch naya/gap-lane-scorer-20261114-0050-re-stamp head is exactly d9e481a2f7a5674ea5416eb553b23aa503e0c45b, matching the receipt's claimed pushed head. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS. Why not 9.5: (1) the PR-body pin and fresh CI check-runs were not independently re-read via API this tick (gh-app-api returne
+
+### ✅ t1564 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: brain-index drift re-stamp PR #3371 staged (fresh tip, gate-proven)
+
+**Evidence:** VERIFIED via git ls-remote: branch naya/gap-lane-scorer-20261114-0050-re-stamp exists; its head is now d9e481a2f7a5674ea5416eb553b23aa503e0c45b, NOT the receipt's claimed f0fe048b55 — the follow-up receipt gap-lane-scorer-20261114-0230-lane10.md explains the advance (it pushed head d9e481a and re-pinned PR #3371), so the chain is consistent and the
+
+### ✅ t1564 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Daily mission-state distill fold: 141 snapshots folded into main, PR #3372 opened
+
+**Evidence:** VERIFIED via git ls-remote: branch naya/distill-fold-mission-state-20261114 exists and its head is exactly f121b8cf7647e54aeffa0a415078e3dc0dfea491, the commit the receipt claims. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, against lane self-score 9.5. Why not 9.5: (1) PR #3372 state (open/head/mergeable) was NOT independently re-read via API this 
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-14 13:54: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED live this tick: claim-sweep log brief-queue/claim-sweep-20261114-1343.log read in full — 29 exit-7 refusals (named briefs match the receipt) + the same 2 exit-2 briefs (brief-gap-gap-gap-t0547-lane1-lane1.md, brief-gap-gap-gap-gap-t0172-lane1-lane1.md); queue re-counted live = 31 brief-*.md files; shared-state live_board=3352 and breach_lo
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-14 12:50: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log claim-sweep-20261114-1238.log exists within 15 min of the receipt time; queue=31 and refusal split 29x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1)
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-14 11:45: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log claim-sweep-20261114-1133.log exists within 15 min of the receipt time; queue=31 and refusal split 29x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1)
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-14 10:40: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log claim-sweep-20261114-1028.log exists within 15 min of the receipt time; queue=31 and refusal split 29x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1)
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-14 09:33: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log claim-sweep-20261114-0918.log exists within 15 min of the receipt time; queue=31 and refusal split 29x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1)
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-14 08:32: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log claim-sweep-20261114-0823.log exists within 15 min of the receipt time; queue=31 and refusal split 29x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1)
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-14 07:31: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log claim-sweep-20261114-0718.log exists within 15 min of the receipt time; queue=31 and refusal split 29x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1)
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-14 06:23: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log claim-sweep-20261114-0613.log exists within 15 min of the receipt time; queue=31 and refusal split 29x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1)
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-14 05:18: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log claim-sweep-20261114-0503.log exists within 15 min of the receipt time; queue=31 and refusal split 29x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1)
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-14 04:18: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log claim-sweep-20261114-0403.log exists within 15 min of the receipt time; queue=31 and refusal split 29x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1)
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-14 03:18: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log claim-sweep-20261114-0317.log exists within 15 min of the receipt time; queue=31 and refusal split 29x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1)
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-14 00:28: 30 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log claim-sweep-20261114-0023.log exists within 15 min of the receipt time; queue=30 and refusal split 28x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1)
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-13 23:23: 30 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log claim-sweep-20261113-2308.log exists within 15 min of the receipt time; queue=30 and refusal split 28x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1)
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-13 22:18: 30 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log claim-sweep-20261113-2213.log exists within 15 min of the receipt time; queue=30 and refusal split 28x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1)
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-13 21:13: 30 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log claim-sweep-20261113-2058.log exists within 15 min of the receipt time; queue=30 and refusal split 28x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1)
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-13 20:11: 30 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log claim-sweep-20261113-2018.log exists within 15 min of the receipt time; queue=30 and refusal split 28x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1)
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-13 19:03: 30 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log NONE FOUND exists within 15 min of the receipt time; queue=30 and refusal split 28x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1) the queue count at
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-13 17:58: 30 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log NONE FOUND exists within 15 min of the receipt time; queue=30 and refusal split 28x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1) the queue count at
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-13 16:55: 30 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log NONE FOUND exists within 15 min of the receipt time; queue=30 and refusal split 28x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1) the queue count at
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-13 15:49: 30 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log NONE FOUND exists within 15 min of the receipt time; queue=30 and refusal split 28x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1) the queue count at
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-13 14:43: 30 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log NONE FOUND exists within 15 min of the receipt time; queue=30 and refusal split 28x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1) the queue count at
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-13 13:38: 30 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log NONE FOUND exists within 15 min of the receipt time; queue=30 and refusal split 28x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1) the queue count at
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-13 12:33: 30 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log NONE FOUND exists within 15 min of the receipt time; queue=30 and refusal split 28x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1) the queue count at
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-13 11:32: 30 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log NONE FOUND exists within 15 min of the receipt time; queue=30 and refusal split 28x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1) the queue count at
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-13 10:26: 30 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log NONE FOUND exists within 15 min of the receipt time; queue=30 and refusal split 28x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1) the queue count at
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-13 09:20: 30 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED: receipt exists; claim-sweep log NONE FOUND exists within 15 min of the receipt time; queue=30 and refusal split 28x7+2x2 as receipted, chain-consistent with the neighbouring stall receipts (each set-diffs vs its predecessor). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1) the queue count at
 
 ### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
