@@ -4,6 +4,8 @@ SN-2825 · LESSON / VISION
 
 **Created:** 2026-11-14 20:53Z
 
+**Kinds:** Honor · Multiplication · Craft · Knowledge
+
 ## Hook
 
 The deed gives you your whole world — the land, the building, the business, the brand, the job. It only works if the reader understands every word of it, in their own language, in plain words.
@@ -13,6 +15,8 @@ The deed gives you your whole world — the land, the building, the business, th
 Across these nine notes the thread is one thing: understanding is the product. Shawn's afternoon was the agreement — the collective agreement, the deed to your whole world — and every note about it says the same thing in a different place. The agreement unfolds block by block on the reader's tap, never a wall of text, never forced, with one button that opens everything at once. Every hard word gets a little eye beside it, and the eye says what the word means in his words, verbatim: the land is the domain, the building is the website, the business is NayaNET, the brand is Naya, the job is showing people the product — because the product sells itself. The hook opens it: "They say AI is taking jobs… what if AI created income for everybody?" And when the end "didn't come out right", the whole presentation was overhauled on the working base — the pricing page's full-page unfold plus the Hub's Intelligent Block, best of both — because the agreement must sell itself by how it unfolds. Underneath it, the same rule in the wiring: the translation engine exists and is proven, but the walk has zero language detection, so the deed cannot yet be understood in the reader's own language — the gap is the wiring, not the invention. And the same rule in failure: a button that says "Sending…" forever is worse than one that says "Not sent — try again"; a proof with no record never counted; an intake can be proven while its batch still fails, and the two verdicts must be said separately. The value underneath it all: so much value people feel compelled to pay for it — and the real power is the knowledge of oneself, and its connection to everything.
 
 Across 9 notes, the thread is: love, never, words, whole, everything.
+
+Across the four kinds: Honor — plain words and the real power; Multiplication — the engine exists, the wiring covers the whole walk; Craft — the unfold, the hook, the overhaul, fail honestly, a proof recorded; Knowledge — intake proven, batch not shippable, measured separately.
 
 ## Human
 
@@ -37,6 +41,7 @@ I never hand someone a deed they cannot read. I unfold it one block at a time, I
 3. **THE HOOK OPENS IT:** "They say AI is taking jobs… what if AI created income for everybody?" — the fear acknowledged, the question asked, the invitation offered, then the naming: collective agreement, collective chain technology.
 4. **THE WIRING COVERS THE WHOLE WALK:** detect the language at the beginning, or let them choose — display in their language, voice English by default — including the new end and the agreement. Before building a feature, check whether it exists unconnected.
 5. **FAILURE FAILS HONESTLY:** every promise that can hang gets a deadline — at the deadline it fails in plain words, with the control back and a way to try again. "Sending…" forever is a defect, not a state.
+6. **THE OVERHAUL BUILDS ON THE WORKING BASE (CRAFT):** the pricing page's full-page unfold plus the Hub's Intelligent Block, best of both — the agreement must sell itself by how it unfolds; words verbatim, order unchanged; the checker checks the new presentation, not the superseded version.
 
 ## Why it matters
 
@@ -53,3 +58,4 @@ I never hand someone a deed they cannot read. I unfold it one block at a time, I
 4. The agreement opens with the hook, in his words, verbatim — agreement before money, pricing page sells on detail, quality, potential.
 5. Every promise that can hang gets a deadline — at the deadline it fails in plain words, with the control back and a way to try again.
 6. No proof ships without its record: the record file, the branch push, the staged bytes verified byte-identical — and intake and batch are measured and verdict-ed separately, one never swallowing the other.
+7. Overhauls rebuild the presentation on the working base — best of both pages — and a "didn't come out right" is always diagnosed by verifying the served bytes first-hand before anything is assumed stale.
