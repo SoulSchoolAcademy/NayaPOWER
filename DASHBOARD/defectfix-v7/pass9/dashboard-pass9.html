@@ -5025,9 +5025,9 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
      nothing bunched up against it. -->
 </div>
 <div class="os-pts-toggle" id="os-pts-toggle">
-  <button class="os-pts-btn primo active" data-mode="pts">PTS</button>
-  <button class="os-pts-btn primo" data-mode="pct">%</button>
-  <button class="os-pts-btn primo" data-mode="money">MONEY</button>
+  <button class="os-pts-btn primo active" data-mode="pts"><span class="os-mode-ico">◆</span>PTS</button>
+  <button class="os-pts-btn primo" data-mode="pct"><span class="os-mode-ico">%</span>%</button>
+  <button class="os-pts-btn primo" data-mode="money"><span class="os-mode-ico">$</span>MONEY</button>
 </div>
 </div><!-- /os-hero-fit -->
 <!-- PASS-12 2026-11-11 (3): the money note is GONE — Shawn's eye ("it just looks silly, it's just out of place"). The #os-pts-note element is deleted and its writer _refreshPtsNote is a no-op now; no replacement text anywhere. This reverses pass-11 fix 2 (the note below the hero). The % mode note goes with the element — the brief orders the element deleted, not the line edited. -->
@@ -6959,6 +6959,30 @@ button.os-ld-node.os-ld-mini .os-ld-n{font-size:0 !important;line-height:0 !impo
   text-shadow:0 0 24px #ffbf3d,0 0 60px rgba(255,191,61,.5);}
 .os-sales-total-l{font-size:11px;font-weight:800;letter-spacing:.28em;color:rgba(255,255,255,.55);
   margin-top:6px;text-transform:uppercase;}
+/* INSIDE FIX 2026-11-14 (1): the found boards — one live board per link.
+   Harvested from the per-link cards + score-math rows: obsidian, elevated,
+   name left, number in its own gold tile, unit apart — never jammed. */
+.os-found-title{font-size:12px;font-weight:800;letter-spacing:.28em;color:#fff;text-transform:uppercase;text-align:center;margin:18px 0 10px;text-shadow:0 0 12px rgba(255,255,255,.35);}
+.os-found-board{display:flex;align-items:center;gap:12px;background:linear-gradient(180deg,#16161f,#0a0a10);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:10px 14px;margin:8px 0;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -3px 6px rgba(0,0,0,.5),0 4px 12px rgba(0,0,0,.5);}
+.os-found-name{flex:1;min-width:0;text-align:left;font-size:14px;font-weight:800;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.os-found-num{font-size:22px;font-weight:900;color:#ffbf3d;line-height:1;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);border:1.5px solid rgba(255,191,61,.65);border-radius:10px;padding:6px 10px;box-shadow:0 0 16px rgba(255,191,61,.35),inset 0 1px 0 rgba(255,255,255,.25);}
+.os-found-unit{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);}
+.os-found-boardrow{border-color:rgba(255,191,61,.4);}
+/* INSIDE FIX 2026-11-14 (4): what a dead orb is worth, on its drill. */
+.os-drill-worth{text-align:center;font-size:13px;font-weight:700;color:#fff;margin:10px 0 0;}
+.os-drill-worth b{color:#d9a521;text-shadow:0 0 12px rgba(217,165,33,.6);}
+/* INSIDE FIX 2026-11-14 (3): every drill's time pills wear the toggle-tile
+   style harvested from .os-chart-switch — tile, gold selected outline. One
+   rule covers all ten drill views. */
+[role="dialog"] [class$="-pills"] button{min-width:58px;height:44px;padding:0 12px;border-radius:14px;border:1.5px solid rgba(255,255,255,.18);background:radial-gradient(circle at 35% 30%,#3a3a4a,#0a0a10 70%);color:#fff;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:inset 0 2px 0 rgba(255,255,255,.25),inset 0 -3px 6px rgba(0,0,0,.6),0 4px 12px rgba(0,0,0,.5);transition:all .2s;}
+[role="dialog"] [class$="-pills"] button:hover{transform:translateY(-2px);border-color:#d9a521;box-shadow:inset 0 2px 0 rgba(255,255,255,.3),inset 0 -3px 6px rgba(0,0,0,.6),0 6px 16px rgba(0,0,0,.6),0 0 16px rgba(217,165,33,.55);}
+[role="dialog"] [class$="-pills"] button.on{border:2px solid #d9a521;background:radial-gradient(circle at 35% 30%,#2a2a3a,#0a0a10 70%);box-shadow:inset 0 2px 0 rgba(255,255,255,.25),inset 0 -3px 6px rgba(0,0,0,.6),0 0 20px rgba(217,165,33,.6),0 4px 12px rgba(0,0,0,.5);}
+/* INSIDE FIX 2026-11-14 (3): the PTS / % / MONEY buttons wear the same
+   toggle-tile style — icon + label, gold selected outline. Size and place
+   stay (the hero toggle); only the tile and the selected ring change. */
+.os-pts-btn{border-radius:14px !important;border:1.5px solid rgba(255,255,255,.18) !important;}
+.os-pts-btn.active{border:2px solid #d9a521 !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 20px rgba(217,165,33,.6),0 12px 32px rgba(0,0,0,.65) !important;}
+.os-mode-ico{display:block;font-size:20px;line-height:1;color:#fff;text-shadow:0 0 12px rgba(255,255,255,.5);}
 @media (max-width:640px){
   .os-sales-view .os-ld-node{width:88px;height:88px;}
 
@@ -8647,7 +8671,7 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
 <!-- 2026-11-05 — REPORTING PASS 1: the creator moved UP into the featured panel above (same form, same IDs). Stats below show what happens after. Every number labeled, every bar dated. -->
 
 <div class="os-sl-stats" id="os-sl-stats">
-  <div class="os-sl-stat"><span class="os-sl-stat-n" id="os-sl-total-clicks">–</span><span class="os-sl-stat-l">clicks · 30 days</span><span class="os-sl-why">every click is someone discovering you</span></div>
+  <div class="os-sl-stat"><span class="os-sl-stat-n" id="os-sl-total-clicks">–</span><span class="os-sl-stat-l">clicks · 30 days</span></div>
   <div class="os-sl-stat"><span class="os-sl-stat-n" id="os-sl-total-links">–</span><span class="os-sl-stat-l">active links</span><span class="os-sl-why">each link is a doorway to your world</span></div>
   <div class="os-sl-stat"><span class="os-sl-stat-n" id="os-sl-total-joins">–</span><span class="os-sl-stat-l">joins · 30 days</span><span class="os-sl-why">joins are 50 points each — the real growth</span></div>
 </div>
@@ -8664,7 +8688,7 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
     <span class="os-ml-item"><i style="--mc:#8e24aa"></i>CTR</span>
     <span class="os-ml-item"><i style="--mc:#2fe89e"></i>Revenue</span>
   </div>
-  <button type="button" class="os-mock-toggle" id="os-mock-toggle" aria-pressed="false">MOCK DATA — sample numbers for preview · OFF</button>
+
 </div>
 <!-- SURFACES 2026-11-13 — the journey strip lives here, in the Smart Links
      board, above the links list: the funnel IS this board's journey
@@ -8738,7 +8762,7 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
 <script>
 /* NINAYA: the One Search — Hub's Ask Naya chassis, verbatim. */
 window._tnSearchHTML="<!-- \u2550\u2550\u2550 TN-SEARCH \u2014 THE ONE SEARCH \u00b7 mount snippet \u2550\u2550\u2550\n     Drop this where the page's search lives. The wrap is a contained centered instrument on the dashboard (Shawn 2026-10-31: not full-width, not a banner; the Hub keeps its own full-width grammar). tn-sticky is retired here: the search never follows on scroll. data-tn-placeholder adapts the words, never the\n     component. Requires tn-search.css + tn-search.js. -->\n<section class=\"tn-search-wrap tn-sticky\" id=\"tnSearch\">\n  <div class=\"tn-search-row\" role=\"search\">\n    <span class=\"tn-search-ico\" aria-hidden=\"true\">\n      <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\"><circle cx=\"11\" cy=\"11\" r=\"6.5\"/><path d=\"M16 16l5 5\"/></svg>\n    </span>\n    <input type=\"search\" id=\"tnSearchInput\" placeholder=\"Search your intelligence\u2026\" aria-label=\"Search your intelligence\" autocomplete=\"off\" data-tn-placeholder>\n    <button type=\"button\" class=\"tn-search-mic\" aria-label=\"Dictate search\" aria-pressed=\"false\" hidden>\n      <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><rect x=\"9\" y=\"2.5\" width=\"6\" height=\"11\" rx=\"3\"/><path d=\"M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7\"/></svg>\n      <span class=\"tn-mic-dot\" aria-hidden=\"true\"></span>\n    </button>\n    <button type=\"button\" class=\"tn-search-go\" aria-label=\"Search\">\u27a4</button>\n  </div>\n  <div class=\"tn-search-note\" role=\"status\" aria-live=\"polite\"></div>\n</section>\n";
-window._dashSearchIndex=[{"label": "Home", "url": "https://nayanet.app/", "sub": "dashboard tab"}, {"label": "Dashboard", "url": "https://nayanet.app/dashboard", "sub": "dashboard tab"}, {"label": "About", "url": "https://nayanet.app/personal#about", "sub": "dashboard tab"}, {"label": "Today", "url": "https://nayanet.app/rooms/today", "sub": "dashboard tab"}, {"label": "Connections", "url": "https://nayanet.app/rooms/connections", "sub": "dashboard tab"}, {"label": "Message", "url": "https://nayanet.app/rooms/mail", "sub": "dashboard tab"}, {"label": "Inbox", "url": "https://nayanet.app/rooms/mail", "sub": "dashboard tab"}, {"label": "Growth", "url": "https://nayanet.app/rooms/growth", "sub": "dashboard tab"}, {"label": "Reports", "url": "https://nayanet.app/rooms/reports", "sub": "dashboard tab"}, {"label": "Personal", "url": "https://nayanet.app/personal", "sub": "network"}, {"label": "Business", "url": "https://nayanet.app/business", "sub": "network"}, {"label": "Space", "url": "https://nayanet.app/space", "sub": "network"}, {"label": "Library", "url": "https://nayanet.app/rooms/library", "sub": "network"}, {"label": "Project Intel", "url": "https://nayanet.app/pi", "sub": "network"}, {"label": "Pricing", "url": "https://nayanet.app/welcome", "sub": "network"}];
+window._dashSearchIndex=[{"label": "Home", "url": "https://nayanet.app/", "sub": "dashboard tab"}, {"label": "Dashboard", "url": "https://nayanet.app/dashboard", "sub": "dashboard tab"}, {"label": "About", "url": "https://nayanet.app/personal#about", "sub": "dashboard tab"}, {"label": "Today", "url": "https://nayanet.app/rooms/today", "sub": "dashboard tab"}, {"label": "Connections", "url": "https://nayanet.app/rooms/connections", "sub": "dashboard tab"}, {"label": "Message", "url": "https://nayanet.app/rooms/mail", "sub": "dashboard tab"}, {"label": "Growth", "url": "https://nayanet.app/rooms/growth", "sub": "dashboard tab"}, {"label": "Reports", "url": "https://nayanet.app/rooms/reports", "sub": "dashboard tab"}, {"label": "Personal", "url": "https://nayanet.app/personal", "sub": "network"}, {"label": "Business", "url": "https://nayanet.app/business", "sub": "network"}, {"label": "Space", "url": "https://nayanet.app/space", "sub": "network"}, {"label": "Library", "url": "https://nayanet.app/rooms/library", "sub": "network"}, {"label": "Project Intel", "url": "https://nayanet.app/pi", "sub": "network"}, {"label": "Pricing", "url": "https://nayanet.app/welcome", "sub": "network"}];
 window._dashSearchBridge=function(q,done){
   q=String(q||'').trim();
   var resEl=document.querySelector('.nsb-search-results');
@@ -8994,7 +9018,7 @@ document.addEventListener('pointerdown',function(e){
 <input class="os-input" id="os-inv-name" type="text" placeholder="Friend&rsquo;s name" autocomplete="off">
 <input class="os-input" id="os-inv-email" type="email" placeholder="Friend&rsquo;s email" autocomplete="off">
 <div class="ph-actions"><button class="ph-connect" id="os-inv-btn" type="button">Record invite</button></div>
-<div class="os-status" id="os-inv-status">Privacy law: only a SHA-256 hash of the email is stored &mdash; never the address. Record-only: no email is sent.</div>
+<div class="os-status" id="os-inv-status">Privacy law: only a SHA-256 hash of the email is stored &mdash; never the address. Nothing is sent — no email ever leaves here.</div>
 </div>
 <div id="os-inv-share"></div>
 <div id="os-funnel"></div>
@@ -9068,7 +9092,7 @@ document.addEventListener('pointerdown',function(e){
 </div>
 <div class="ph-card" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">👤</span> Identity</h3>
-<p style="margin:0 0 6px">Owner: <span class="os-owner-name">Nova Reyes</span></p>
+<p style="margin:0 0 6px">Owner: <span class="os-owner-name">Shawn Vibert</span></p>
 <p id="os-id-line" style="margin:0 0 6px;">The name, face and story visitors see are this app&rsquo;s own data. Tap your picture on Home to change it &mdash; the story is edited in About.</p>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">🔒</span><span class="os-setrow-main"><b>Public profile</b><span class="os-setrow-sub">On &mdash; visitors can see your profile, post on your wall and message you. Off &mdash; this app is private.</span></span><span class="os-switch-wrap" style="--jc:#2fe89e"><button class="os-switch on" id="publictoggle" data-os-set="public" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-go="about">Your story</button><button class="ph-msg" type="button" data-os-go="home">Your wall</button></div>
@@ -9530,7 +9554,7 @@ NF.register(UNIT, {
         try { onNavigate(dest, t); }
         catch(e){ say('Could not go there — the destination may be blocked here.'); }
       } else {
-        say('"' + (t.label || 'Tab') + '" has no destination yet — open ⋯ and add a URL or a known word.');
+        say('"' + (t.label || 'Tab') + '" has no link yet — open ⋯ and add one.');
       }
     }
 
@@ -10218,7 +10242,7 @@ NF.register(UNIT, {
       var _slr=null;
       try{ (window._dashLinkRows||[]).forEach(function(r){ if(r.name===_sln) _slr=r; }); }catch(e){}
       if (!_slr){ try{ var _by=window._slLinkByName||{}; if(_by[_sln]) _slr=_by[_sln]; }catch(e){} }
-      if (_slr && window.openSmartLinkView){ window._smartlinkSingle=_slr; window.openSmartLinkView('nayanet.app/'+_slr.name, _slr.url||((_slr.clicks||0)+' clicks · '+(_slr.joins||0)+' joins · this link only')); return; }
+      if (_slr && window.openSmartLinkView){ window._smartlinkSingle=_slr; window.openSmartLinkView('nayanet.app/'+_slr.name, _slr.url||((_slr.clicks||0)+' clicks · '+(_slr.joins||0)+((_slr.joins||0)===1?' join':' joins')+' · this link only')); return; }
       showView('notes'); return;
     }
     var suf=t.closest?t.closest('[data-sl-unfile]'):null;
@@ -10700,7 +10724,7 @@ NF.register(UNIT, {
     function conv(a, b, what, nc){ return '<div class="os-fconv"><span class="os-farrow" style="--fc:'+(nc||'#ff9a5a')+'"></span><b>'+pct(a,b)+'%</b> '+what+'</div>'; }
     var truth;
     if (!total) truth='No invites yet — record the first one above.';
-    else if (allDry) truth='Record-only mode: saved, never sent — nobody has joined from an invite yet.';
+    else if (allDry) truth='Saved, never sent — nobody has joined from an invite yet.';
     else if (!joined) truth='Invites are recorded — the first join is the milestone ahead.';
     else truth=joined+(joined===1?' person has':' people have')+' walked the whole invite journey.';
     box.innerHTML='<div class="ph-card" style="--ac:#ff5e6c;"><h3><span class="os-jewel os-jewel-h" style="--jc:#ff5e6c">🧭</span> The invite journey</h3><div class="os-funnel">'
@@ -13403,10 +13427,10 @@ NF.register(UNIT, {
         /* COMPLETENESS defect 4: zeros read as alive-while-waiting, never blank.
            data-zero marks the step; CSS gives the numeral a gentle pulse. */
         return '<div class="os-jstep" data-jstage="'+label+'"'+(Number(n)===0?' data-zero="1"':'')+' tabindex="0" role="button"'
-          +' aria-label="'+label+': '+n+'. '+sentence+'">'
+          +' aria-label="'+label+': '+n+'">'
           +'<div class="os-jnum" style="--jc:'+color+'">'+n+'</div>'
           +'<div class="os-jlabel" style="--jc:'+color+'">'+label+'</div>'
-          +'<p class="os-jsent">'+sentence+'</p></div>';
+          +'</div>';
       }
       var html='<div class="os-journey">'
         +step(o.sentN, o.sentLabel, '#d9a521', o.sentSent)
@@ -13432,7 +13456,7 @@ NF.register(UNIT, {
         sentSent:total+' '+invWord+' recorded \u2014 saved, not sent yet. Sending happens in Growth.',
         openedSent:'Nothing to open yet \u2014 these haven\u2019t gone out.',
         joinedSent:'No invite joins yet — these haven\u2019t gone out, so nobody could join from one.',
-        opened:0, joined:0, note:'Record-only mode: saved, never sent.' };
+        opened:0, joined:0, note:'Saved, never sent.' };
     } else {
       jo={ sentN:total, sentLabel:'SENT',
         sentSent:total+' '+invWord+' went out. When someone opens one, you\u2019ll see it here.',
@@ -16678,6 +16702,23 @@ function renderDrillView(viewKey){
   }
   
   // Wire all views
+  /* INSIDE FIX 2026-11-14 (4): what each dead orb is worth, on its drill —
+     canon values from LD_VALUES (notes 35, shares 5, comments 3, likes 1,
+     saves 5). One line, under the title. */
+  (function(){
+    var WORTH={notes:'Each smart note is worth <b>35 points</b>.',shares:'Each share is worth <b>5 points</b>.',comments:'Each comment is worth <b>3 points</b>.',likes:'Each like is worth <b>1 point</b>.',saves:'Each save is worth <b>5 points</b>.'};
+    function _worth(){
+      Object.keys(WORTH).forEach(function(k){
+        var v=document.getElementById('os-'+k+'-view'); if(!v) return;
+        var t=v.querySelector('.os-view-title'); if(!t||v.querySelector('.os-drill-worth')) return;
+        var d=document.createElement('div'); d.className='os-drill-worth'; d.innerHTML=WORTH[k];
+        t.parentNode.insertBefore(d, t.nextSibling);
+      });
+    }
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', _worth);
+    else _worth();
+  })();
+  // Wire all views
   function wireAllDrills(){
     var views = ['sales','joins','notes','invites','creations','shares','comments','likes','saves','smartlink'];
     for(var i=0;i<views.length;i++) wireDrillView(views[i]);
@@ -16882,7 +16923,6 @@ function chartBigNumHTML(viewKey){
   var dArrow=delta>=0?'▲':'▼';
   return '<div class="os-chart-bignum" style="flex-direction:column;--sc:'+cfg.color+';">'
     +'<div class="bn-num">'+formatNumber(mainVal,cfg.maintype||'total')+'</div>'
-    +'<div class="bn-delta" style="color:'+dColor+';border-color:'+dColor+'55;">'+dArrow+' '+Math.abs(delta)+'% vs prev</div>'
     +'</div>';
   }catch(e){ return '<div style="color:#fff">BigNum error: '+e.message+'</div>'; }
 }
@@ -17032,11 +17072,14 @@ function salesViewRender(){
         var _p9c=(typeof _ff.plan9Clicks==='number')?_ff.plan9Clicks:0;
         var _escF=(typeof esc==='function')?esc:function(v){ return String(v==null?'':v); };
         var _spF=(typeof window._osSpc==='function')?window._osSpc:function(v){ return String(v); };
-        var _h='<div class="os-found-title">WHERE THE CLICKS CAME FROM</div>'
-          +'<div class="os-found-sum">'+_spF(_ff.found)+' found = '+_spF(_bc)+' board links + '+_spF(_p9c)+' plan links</div>'
-          +'<div class="os-found-sub">The nine PayPal plan links have no board \u2014 they are counted in Found, not in the board.</div>';
-        _p9.forEach(function(p){ _h+='<div class="os-found-row"><span>'+_escF(p.name)+'</span><b>'+_spF(p.clicks)+' clicks</b></div>'; });
-        _h+='<div class="os-found-row os-found-board"><span>Board links ('+_rows.length+' links)</span><b>'+_spF(_bc)+' clicks</b></div>';
+        /* INSIDE FIX 2026-11-14 (1): the found block is live boards, not
+           plain text — one board per plan link, name and number apart, no
+           PayPal sentence, no arithmetic line. Boards harvest the per-link
+           cards + score-math rows: obsidian, elevated, gold number tile. */
+        var _h='<div class="os-found-title">WHERE THE CLICKS CAME FROM</div>';
+        var _p9s=_p9.slice().sort(function(a,b){ return (Number(b.clicks||0)-Number(a.clicks||0)); });
+        _p9s.forEach(function(p){ _h+='<div class="os-found-board"><span class="os-found-name">'+_escF(p.name)+'</span><span class="os-found-num">'+_spF(p.clicks)+'</span><span class="os-found-unit">clicks</span></div>'; });
+        _h+='<div class="os-found-board os-found-boardrow"><span class="os-found-name">Board links ('+_rows.length+' links)</span><span class="os-found-num">'+_spF(_bc)+'</span><span class="os-found-unit">clicks</span></div>';
         _fd.innerHTML=_h;
       }
     }
@@ -17070,13 +17113,33 @@ function salesViewRender(){
     if(_ds2) _ds2.style.display='';
     if(_dt2) _dt2.style.display='';
   }
+  /* INSIDE FIX 2026-11-14 (2): the drill charts read the LIVE funnel, not
+     the demo zeros — every view shows its own real number. Day/week/month
+     come from the click day-map (today / last 7 / last 30 days); hour has
+     no hourly split in day-granular data, so it honestly reads 0. */
+  try{
+    var _ff2=window._dashFunnel||null, _dm2=window._dashClickDayMap||null;
+    if(_ff2){
+      var _bc2=Number(_ff2.boardClicks||0), _j2=Number(_ff2.joined||0);
+      var _win2=function(_days){ if(!_dm2) return null; var _c=0,_j=0,_now=Date.now();
+        Object.keys(_dm2).forEach(function(_k){ var _dd=new Date(_k+'T00:00:00'); if(!isNaN(_dd.getTime())&&(_now-_dd.getTime())<_days*864e5){ _c+=Number((_dm2[_k]&&_dm2[_k].c)||0); _j+=Number((_dm2[_k]&&_dm2[_k].j)||0); } });
+        return {c:_c,j:_j}; };
+      var _d1=_win2(1), _d7=_win2(7), _d30=_win2(30);
+      var _mk2=function(_c,_j){ return {rev:0, conv:_c>0?(_j/_c*100):0, pages:_c, aff:_j, pct:_c>0?(_j/_c*100):0}; };
+      SALES_DEMO.all=_mk2(_bc2,_j2);
+      if(_d1) SALES_DEMO.day=_mk2(_d1.c,_d1.j);
+      if(_d7) SALES_DEMO.week=_mk2(_d7.c,_d7.j);
+      if(_d30) SALES_DEMO.month=_mk2(_d30.c,_d30.j);
+      SALES_DEMO.hour={rev:0,conv:0,pages:0,aff:0,pct:0};
+    }
+  }catch(_e2){}
   var d=SALES_DEMO[_salesWindow]||SALES_DEMO.all;
   var g=document.getElementById('os-sales-gauge');
   var ct=_chartType['sales']||'gauge';
   if(g){
     if(ct==='gauge'){
       g.innerHTML='<div class="tn-mini-mount os-drill-gauge" aria-hidden="true"></div>'
-        +'<div class="os-sales-readout">—<span>No goal set yet</span></div>';
+        +'<div class="os-sales-readout">—</div>';
       if (window.TnTacho) { try { TnTacho.mountMiniCalc(g.querySelector('.tn-mini-mount'), {value:(Number(d.pct)||0), unit:'%'}) /* PASS-4: the calculator mini */; } catch(e){} } /* HERO FIX 2026-11-09 (j): the canonical gauge, mini-sized — never a second design. */
     }else{
       // Let switchChart handle non-gauge types
@@ -17090,10 +17153,29 @@ function salesViewRender(){
   var n=document.getElementById('os-sales-total-n');
   /* PASS-11 (8): the drill leads with the TOP LINK's clicks — the grand total
      is the small reference under it, never the headline. */
-  var _top11 = (typeof window._osTopLinkClicks === 'function') ? window._osTopLinkClicks() : {clicks:(typeof d.pages === 'number' ? d.pages : 0)};
+  /* INSIDE FIX 2026-11-14 (2/3): the drill total follows the window — the
+     top link's clicks in THIS window, from the per-link day map; all-time
+     when no day map exists. DAY no longer shows the all-time 977. */
+  var _top11 = (function(){
+    try{
+      var _bd=window._dashLinkByDay||null, _win=_salesWindow||'all';
+      if(_bd && _win!=='all'){
+        var _days=_win==='day'?1:(_win==='week'?7:(_win==='month'?30:(_win==='hour'?0:3650)));
+        var _now=Date.now(), _best=null;
+        Object.keys(_bd).forEach(function(_lid){
+          var _arr=_bd[_lid]||[], _c=0;
+          if(_days>0){ _arr.forEach(function(_s){ var _dd=new Date((_s.day||'')+'T00:00:00'); if(!isNaN(_dd.getTime())&&(_now-_dd.getTime())<_days*864e5){ _c+=Number(_s.clicks||0); } }); }
+          var _nm=''; (window._dashLinkRows||[]).forEach(function(_r){ if(String(_r.id)===String(_lid)) _nm=_r.name||''; });
+          if(!_best||_c>_best.clicks) _best={clicks:_c,name:_nm};
+        });
+        if(_best) return _best;
+      }
+    }catch(_e11){}
+    return (typeof window._osTopLinkClicks === 'function') ? window._osTopLinkClicks() : {clicks:(typeof d.pages === 'number' ? d.pages : 0)};
+  })();
   if(n) n.textContent=(window._osSpc ? window._osSpc(_top11.clicks) : _top11.clicks);
   var _ref11 = document.getElementById('os-sales-total-ref');
-  if(_ref11) _ref11.textContent = (typeof d.pages === 'number' ? window._osSpc(d.pages) : d.pages) + ' clicks in all links';
+  if(_ref11) _ref11.textContent = (typeof d.pages === 'number' ? window._osSpc(d.pages) : d.pages) + ((_salesWindow==='day')?' clicks today in all links':(_salesWindow==='week'?' clicks in the last 7 days':(_salesWindow==='month'?' clicks in the last 30 days':(_salesWindow==='hour'?' clicks this hour in all links':' clicks in all links'))));
   var pills=document.querySelectorAll('#os-sales-pills button');
   for(var i=0;i<pills.length;i++) pills[i].classList.toggle('on', pills[i].getAttribute('data-sw')===_salesWindow);
 }
@@ -17194,13 +17276,30 @@ function joinsViewRender(){
     if(_ds2) _ds2.style.display='';
     if(_dt2) _dt2.style.display='';
   }
+  /* INSIDE FIX 2026-11-14 (2): the joins drill reads the LIVE funnel too —
+     joins per window from the click day-map, never the demo zeros. */
+  try{
+    var _ffJ=window._dashFunnel||null, _dmJ=window._dashClickDayMap||null;
+    if(_ffJ){
+      var _jAll=Number(_ffJ.joined||0);
+      var _wJ=function(_days){ if(!_dmJ) return null; var _j=0,_now=Date.now();
+        Object.keys(_dmJ).forEach(function(_k){ var _dd=new Date(_k+'T00:00:00'); if(!isNaN(_dd.getTime())&&(_now-_dd.getTime())<_days*864e5){ _j+=Number((_dmJ[_k]&&_dmJ[_k].j)||0); } });
+        return _j; };
+      var _j1=_wJ(1), _j7=_wJ(7), _j30=_wJ(30);
+      JOINS_DEMO.all.joins=_jAll;
+      if(_j1!==null) JOINS_DEMO.day.joins=_j1;
+      if(_j7!==null) JOINS_DEMO.week.joins=_j7;
+      if(_j30!==null) JOINS_DEMO.month.joins=_j30;
+      JOINS_DEMO.hour.joins=0;
+    }
+  }catch(_eJ){}
   var d=JOINS_DEMO[_joinsWindow]||JOINS_DEMO.all;
   var g=document.getElementById('os-joins-gauge');
   var ct=_chartType['joins']||'gauge';
   if(g){
     if(ct==='gauge'){
       g.innerHTML='<div class="tn-mini-mount os-drill-gauge" aria-hidden="true"></div>'
-        +'<div class="os-joins-readout">—<span>No goal set yet</span></div>';
+        +'<div class="os-joins-readout">—</div>';
       if (window.TnTacho) { try { TnTacho.mountMiniCalc(g.querySelector('.tn-mini-mount'), {value:(Number(d.pct)||0), unit:'%'}) /* PASS-4: the calculator mini */; } catch(e){} } /* HERO FIX 2026-11-09 (j): the canonical gauge, mini-sized — never a second design. */
     }else{
       // Let switchChart handle non-gauge types
@@ -17320,7 +17419,7 @@ function notesViewRender(){
   if(g){
     if(ct==='gauge'){
       g.innerHTML='<div class="tn-mini-mount os-drill-gauge" aria-hidden="true"></div>'
-        +'<div class="os-notes-readout">—<span>No goal set yet</span></div>';
+        +'<div class="os-notes-readout">—</div>';
       if (window.TnTacho) { try { TnTacho.mountMiniCalc(g.querySelector('.tn-mini-mount'), {value:(Number(d.pct)||0), unit:'%'}) /* PASS-4: the calculator mini */; } catch(e){} } /* HERO FIX 2026-11-09 (j): the canonical gauge, mini-sized — never a second design. */
     }else{
       // Let switchChart handle non-gauge types
@@ -17440,7 +17539,7 @@ function likesViewRender(){
   if(g){
     if(ct==='gauge'){
       g.innerHTML='<div class="tn-mini-mount os-drill-gauge" aria-hidden="true"></div>'
-        +'<div class="os-likes-readout">—<span>No goal set yet</span></div>';
+        +'<div class="os-likes-readout">—</div>';
       if (window.TnTacho) { try { TnTacho.mountMiniCalc(g.querySelector('.tn-mini-mount'), {value:(Number(d.pct)||0), unit:'%'}) /* PASS-4: the calculator mini */; } catch(e){} } /* HERO FIX 2026-11-09 (j): the canonical gauge, mini-sized — never a second design. */
     }else{
       // Let switchChart handle non-gauge types
@@ -17560,7 +17659,7 @@ function commentsViewRender(){
   if(g){
     if(ct==='gauge'){
       g.innerHTML='<div class="tn-mini-mount os-drill-gauge" aria-hidden="true"></div>'
-        +'<div class="os-comments-readout">—<span>No goal set yet</span></div>';
+        +'<div class="os-comments-readout">—</div>';
       if (window.TnTacho) { try { TnTacho.mountMiniCalc(g.querySelector('.tn-mini-mount'), {value:(Number(d.pct)||0), unit:'%'}) /* PASS-4: the calculator mini */; } catch(e){} } /* HERO FIX 2026-11-09 (j): the canonical gauge, mini-sized — never a second design. */
     }else{
       // Let switchChart handle non-gauge types
@@ -17684,7 +17783,7 @@ function sharesViewRender(){
   if(g){
     if(ct==='gauge'){
       g.innerHTML='<div class="tn-mini-mount os-drill-gauge" aria-hidden="true"></div>'
-        +'<div class="os-shares-readout">—<span>No goal set yet</span></div>';
+        +'<div class="os-shares-readout">—</div>';
       if (window.TnTacho) { try { TnTacho.mountMiniCalc(g.querySelector('.tn-mini-mount'), {value:(Number(d.pct)||0), unit:'%'}) /* PASS-4: the calculator mini */; } catch(e){} } /* HERO FIX 2026-11-09 (j): the canonical gauge, mini-sized — never a second design. */
     }else{
       // Let switchChart handle non-gauge types
@@ -17805,7 +17904,7 @@ function creationsViewRender(){
   if(g){
     if(ct==='gauge'){
       g.innerHTML='<div class="tn-mini-mount os-drill-gauge" aria-hidden="true"></div>'
-        +'<div class="os-creations-readout">—<span>No goal set yet</span></div>';
+        +'<div class="os-creations-readout">—</div>';
       if (window.TnTacho) { try { TnTacho.mountMiniCalc(g.querySelector('.tn-mini-mount'), {value:(Number(d.pct)||0), unit:'%'}) /* PASS-4: the calculator mini */; } catch(e){} } /* HERO FIX 2026-11-09 (j): the canonical gauge, mini-sized — never a second design. */
     }else{
       // Let switchChart handle non-gauge types
@@ -17923,7 +18022,7 @@ function savesViewRender(){
   if(g){
     if(ct==='gauge'){
       g.innerHTML='<div class="tn-mini-mount os-drill-gauge" aria-hidden="true"></div>'
-        +'<div class="os-saves-readout">—<span>No goal set yet</span></div>';
+        +'<div class="os-saves-readout">—</div>';
       if (window.TnTacho) { try { TnTacho.mountMiniCalc(g.querySelector('.tn-mini-mount'), {value:(Number(d.pct)||0), unit:'%'}) /* PASS-4: the calculator mini */; } catch(e){} } /* HERO FIX 2026-11-09 (j): the canonical gauge, mini-sized — never a second design. */
     }else{
       // Let switchChart handle non-gauge types
@@ -18130,12 +18229,10 @@ function smartlinkListHTML(){
     return '<div class="os-sl-gauge"><div class="os-sl-gauge-dial os-pricing-mini" ' + (attr || '') + ' tabindex="0" role="button" aria-label="' + lab + ' — deeper stats"><div class="tn-mini-mount" data-share="0" data-color="#ffbf3d" data-num="' + txt + '" data-value="' + val + '" data-unit="count"></div></div><div class="os-sl-gauge-num">' + txt + '</div><div class="os-sl-gauge-lab">' + lab + '</div></div>';
   }
   var _funnelHead = '<div class="os-sl-gauges" role="group" aria-label="Traffic funnel: found, visited, joined, stayed">'
-    + _fCell(_f ? _fNum(_f.found) : '—', _f ? _f.found : 0, 'Found', 'data-node="sales"')
-    + _fCell('—', 0, 'Visited', 'data-os-funnel="visited"')
+    + _fCell(_f ? _fNum(_f.found) : '—', _f ? _f.found : 0, 'Found', 'data-node="smartlink"')
     + _fCell(_f ? _fNum(_f.joined) : '—', _f ? _f.joined : 0, 'Joined', 'data-node="joins"')
-    + _fCell('—', 0, 'Stayed', 'data-os-funnel="stayed"')
     + '</div>'
-    + '<p class="os-note" style="margin:10px 0 0;">Funnel — Found: how many people clicked any of your links.<br>Visited: how many of them opened your page. Nothing is counted here yet — visits aren\u2019t measured.<br>Joined: ' + ((_f && _f.joined) ? _f.joined + (_f.joined === 1 ? ' person joined' : ' people joined') + ' so far.' : 'nobody has joined yet — the way to join isn\u2019t built yet, so this stays at zero.') + '<br>Stayed: how many of them are still with you. Nothing is counted here yet — it needs your activity record flowing.<br>The list below shows only the links you claimed. The nine plan links aren\u2019t listed, but their clicks still count in Found.</p>';
+    + '<p class="os-note" style="margin:10px 0 0;">Found: how many people clicked any of your links.<br>Joined: ' + ((_f && _f.joined) ? _f.joined + (_f.joined === 1 ? ' person joined' : ' people joined') + ' so far.' : 'nobody has joined yet.') + '<br>The list below shows only the links you claimed.</p>';
   var dims = (window._osLastLinks && window._osLastLinks.dims) || null;
   var G = (typeof window._slGaugesHTML === 'function') ? window._slGaugesHTML : null;
   var DF = (typeof window._slDimFor === 'function') ? window._slDimFor : null;
@@ -18155,7 +18252,7 @@ window.openSmartLinkList = function(){
   var t = window._dashLinkT || {c:0, j:0};
   window._smartlinkSingle = null;
   window._smartlinkListMode = true;
-  smartlinkViewOpen('ALL SMART LINKS', rows.length + ' links · ' + (t.c||0) + ' clicks · ' + (t.j||0) + ' joins');
+  smartlinkViewOpen('ALL SMART LINKS', rows.length + ' links · ' + (t.c||0) + ' clicks · ' + (t.j||0) + ((t.j||0)===1 ? ' join' : ' joins'));
 };
 document.addEventListener('click', function(e){
   var d = e.target && e.target.closest ? e.target.closest('[data-sl-drill]') : null;
@@ -18165,7 +18262,7 @@ document.addEventListener('click', function(e){
   try{ (window._dashLinkRows || []).forEach(function(r){ if (r.name === _nm) _row = r; }); }catch(_){}
   window._smartlinkSingle = _row;
   var _dest = d.getAttribute('data-sl-drill-url') || '';
-  if (!_dest && _row) _dest = _row.url || ((_row.clicks || 0) + ' clicks · ' + (_row.joins || 0) + ' joins · this link only');
+  if (!_dest && _row) _dest = _row.url || ((_row.clicks || 0) + ' clicks · ' + (_row.joins || 0) + ((_row.joins || 0)===1 ? ' join' : ' joins') + ' · this link only');
   try{ smartlinkViewOpen('nayanet.app/' + _nm, _dest); }catch(_){}
 });
 function smartlinkViewOpen(brand, dest){
@@ -18292,7 +18389,7 @@ function invitesViewRender(){
   if(g){
     if(ct==='gauge'){
       g.innerHTML='<div class="tn-mini-mount os-drill-gauge" aria-hidden="true"></div>'
-        +'<div class="os-invites-readout">—<span>No goal set yet</span></div>';
+        +'<div class="os-invites-readout">—</div>';
       if (window.TnTacho) { try { TnTacho.mountMiniCalc(g.querySelector('.tn-mini-mount'), {value:(Number(d.pct)||0), unit:'%'}) /* PASS-4: the calculator mini */; } catch(e){} } /* HERO FIX 2026-11-09 (j): the canonical gauge, mini-sized — never a second design. */
     }else{
       // Let switchChart handle non-gauge types
@@ -18433,6 +18530,16 @@ window._closeOpenDrill = function(){
   }catch(e){ return 0; }
 };
 function ldOpenNode(key, noFocus){
+  /* INSIDE FIX 2026-11-14 (9): Found opens its OWN detail — the Smart Links
+     dialog, the list Found counts — not the Clicks drill. */
+  if (key==='smartlink' && typeof smartlinkViewOpen==='function'){
+    try{
+      var _sr=(window._dashLinkRows||[]).length, _st=window._dashLinkT||{c:0,j:0};
+      var _sj=Number(_st.j||0);
+      smartlinkViewOpen('ALL SMART LINKS', _sr+' links · '+Number(_st.c||0)+' clicks · '+_sj+(_sj===1?' join':' joins'));
+    }catch(_eSL){}
+    return;
+  }
   /* 2026-11-06 — FIX 7: one drill-down at a time (a second view paints over the first and covers its ×), and the open pushes history so browser Back closes it instead of leaving the page. The nine orb keys below each get the full gauge+orbs drill-down view, not the drawer. */
   /* 2026-11-07 — CLOSER (Addition 2, Shawn 16:26Z): the FIRST click on an orb shows that
      orb's number in the gauge; a SECOND click on the same orb opens its detail (the drill
@@ -18518,7 +18625,7 @@ function slOpenLink(name){
     '<div class="os-detail-icon">🔗</div>'+
     '<div class="os-detail-points">'+window._osSpc(link.clicks)+'</div>'+
     '<div class="os-detail-label">CLICKS</div>'+
-    '<div class="os-detail-sub">nayanet.app/'+esc(link.name)+' · '+link.joins+' joins attributed</div>'+
+    '<div class="os-detail-sub">nayanet.app/'+esc(link.name)+' · '+link.joins+(link.joins===1?' join':' joins')+' attributed</div>'+
     '</div>'+
     '<div class="os-detail-graph" style="--nc:#d9a521">'+
     osStatsView(vals, '#d9a521', 'clicks')+
@@ -18659,6 +18766,9 @@ function ldWireNodes(){
   box.addEventListener('click', function(e){
     var b = e.target && e.target.closest ? e.target.closest('[data-node]') : null;
     if (b) ldOpenNode(b.getAttribute('data-node'));
+    /* INSIDE FIX 2026-11-14 (9): Actions today opens a dialog, not a scroll. */
+    var _td = e.target && e.target.closest ? e.target.closest('[data-os-today]') : null;
+    if (_td && typeof window._osOpenTodayDialog==='function') window._osOpenTodayDialog();
   });
   /* 2026-11-01 — Shawn: PER-LINK DEEP DIVE. Click a link row (not buttons)
      → full stats view for that link. */
@@ -19249,7 +19359,7 @@ window.ldLayoutNodes = ldLayoutNodes;
       view.belowLabel = 'joins · all time';
       view.ctr = (st.clicksAll > 0) ? (st.joinsAll/st.clicksAll*100) : null;
       view.stats = [
-        {n:_fmt(st.clicksWin), k:'clicks', l:'clicks · ' + _winLabel(), why:'every click is someone discovering you'},
+        {n:_fmt(st.clicksWin), k:'clicks', l:'clicks · ' + _winLabel(), why:''},
         {n:_fmt(st.joinsAll), k:'joins', l:'joins · all time', why:'joins are 50 points each — the real growth'},
         {n:(view.ctr == null ? '—' : view.ctr.toFixed(1) + '%'), k:'joins', l:'of clicks became joins', why:(st.clicksAll > 0 && st.joinsAll === 0) ? 'the leak is past the click — Pass 3 names it' : 'clicks turning into joins'} /* PASS 1 v6 (c): k makes the numbers tappable (the conversion rate opens the joins derivation — the conversion story). */
       ];
@@ -19320,11 +19430,11 @@ window.ldLayoutNodes = ldLayoutNodes;
         view.below = _sp.score;
         view.belowLabel = 'points · all time';
         view.stats = [
-          {n:(typeof view.center === 'number' ? _fmt(view.center) : '—'), k:'score', l:view.centerLabel, why:'your whole world, one number'},
+          {n:(typeof view.center === 'number' ? _fmt(view.center) : '—'), k:'score', l:view.centerLabel, why:''},
           {n:_fmt(t1.pts), k:(t1.key||'score'), l:(t1.pts > 0) ? t1.label.toLowerCase() + ' · points' : 'points · none yet', why:(t1.pts > 0) ? 'your strongest orb' : 'your first actions light the board'},
           {n:_fmt(t2.pts), k:(t2.key||'score'), l:(t2.pts > 0) ? t2.label.toLowerCase() + ' · points' : 'points · none yet', why:(t2.pts > 0) ? 'second strongest' : 'every action counts'}
         ];
-        view.scope = 'Your whole world — every page, every link, one score.';
+        view.scope = '';
         view.marker = '★ FEATURED — YOUR WORLD';
         view.name = 'Dashboard';
         /* FIX 6: the gauge's period delta is the same window total, or needle and
@@ -19344,7 +19454,7 @@ window.ldLayoutNodes = ldLayoutNodes;
           {n:'—', k:'score', l:'points · none yet', why:'the ledger has not answered yet'},
           {n:'—', k:'score', l:'points · none yet', why:'the ledger has not answered yet'}
         ];
-        view.scope = 'Your whole world — every page, every link, one score.';
+        view.scope = '';
         view.marker = '★ FEATURED — YOUR WORLD';
         view.name = 'Dashboard';
       }
@@ -19700,6 +19810,28 @@ window.ldLayoutNodes = ldLayoutNodes;
      actions counted, posts, messages, invites, all time. No live spine
      yet → the honest quiet state (gauges at rest, "0" in live tiles),
      never invented numbers. Refilled on every renderBoards (spine refresh). */
+  /* INSIDE FIX 2026-11-14 (9): Actions today opens its OWN dialog — the
+     Source-detail drawer with today's breakdown from the spine series. */
+  window._osOpenTodayDialog = function(){
+    var dr=document.getElementById('os-ld-drawer'), body=document.getElementById('os-ld-drawer-body');
+    if(!dr||!body) return;
+    var s2=window._osSpine, sr=(s2&&s2.series)||null;
+    function _last(a){ return (a&&a.length)?Number(a[a.length-1]||0):0; }
+    var _rows=[['Posts',_last(sr&&sr.posts)],['Smart notes',_last(sr&&sr.notes)],['Messages',_last(sr&&sr.msgs)],['Invites',_last(sr&&sr.invs)],['Clicks',_last(sr&&sr.clicks)],['Joins',_last(sr&&sr.joins)]];
+    var _tot=0; _rows.forEach(function(r){ _tot+=r[1]; });
+    var _h='<div style="text-align:center;padding:28px 20px 8px;color:#fff;">'
+      +'<div style="font-size:13px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:#ffbf3d;">Today</div>'
+      +'<div style="font-size:44px;font-weight:900;margin-top:8px;">'+_tot+'</div>'
+      +'<div style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);">actions today</div></div>'
+      +'<div style="max-width:420px;margin:12px auto 0;">'
+      +_rows.map(function(r){ return '<div class="os-found-board"><span class="os-found-name">'+r[0]+'</span><span class="os-found-num">'+r[1]+'</span><span class="os-found-unit">today</span></div>'; }).join('')
+      +'</div>'
+      +((!sr)?'<p class="os-note" style="text-align:center;">Nothing counted yet today.</p>':'');
+    body.innerHTML=_h;
+    if(dr.parentNode!==document.body) document.body.appendChild(dr);
+    dr.classList.add('open'); dr.classList.add('viewpoint'); dr.setAttribute('aria-hidden','false');
+    document.body.classList.add('viewport-focus');
+  };
   window._renderReportsBoard = function(){
     var host = document.getElementById('os-reports-gauges');
     if (!host) return;
@@ -19725,12 +19857,12 @@ window.ldLayoutNodes = ldLayoutNodes;
       return _t; }
     var _today11v = live ? _today11(s2) : null;
     if (!live){
-      host.innerHTML = cell(null, '0', 'Actions today', 'count', 'data-os-go="today"')
+      host.innerHTML = cell(null, '0', 'Actions today', 'count', 'data-os-today="1"')
         + cell(null, '0', 'Posts', 'count', 'data-node="posts"')
         + cell(null, '0', 'Messages', 'count', 'data-os-go="inbox"')
         + cell(null, '0', 'Invites', 'count', 'data-node="invs"');
     } else {
-      host.innerHTML = cell(_today11v, _fmt(_today11v == null ? 0 : _today11v), 'Actions today', 'count', 'data-os-go="today"')
+      host.innerHTML = cell(_today11v, _fmt(_today11v == null ? 0 : _today11v), 'Actions today', 'count', 'data-os-today="1"')
         + cell(s2.posts, _fmt(s2.posts), 'Posts', 'count', 'data-node="posts"')
         + cell(s2.msgs, _fmt(s2.msgs), 'Messages', 'count', 'data-os-go="inbox"')
         + cell(s2.invs, _fmt(s2.invs), 'Invites', 'count', 'data-node="invs"');
@@ -19753,11 +19885,9 @@ window.ldLayoutNodes = ldLayoutNodes;
     _funEl.className = 'os-sl-gauges';
     _funEl.id = 'os-reports-funnel';
     _funEl.setAttribute('role', 'group');
-    _funEl.setAttribute('aria-label', 'Traffic funnel: found, visited, joined, stayed');
-    _funEl.innerHTML = cell(_fun ? _fun.found : null, _fun ? _fmt(_fun.found) : '—', 'Found', 'count', 'data-node="sales"')
-      + cell(null, '—', 'Visited', 'count', 'data-os-funnel="visited"')
-      + cell(_fun ? _fun.joined : null, _fun ? _fmt(_fun.joined) : '—', 'Joined', 'count', 'data-node="joins"')
-      + cell(null, '—', 'Stayed', 'count', 'data-os-funnel="stayed"');
+    _funEl.setAttribute('aria-label', 'Traffic funnel: found, joined');
+    _funEl.innerHTML = cell(_fun ? _fun.found : null, _fun ? _fmt(_fun.found) : '—', 'Found', 'count', 'data-node="smartlink"')
+      + cell(_fun ? _fun.joined : null, _fun ? _fmt(_fun.joined) : '—', 'Joined', 'count', 'data-node="joins"');
     /* HERO CLEANUP 2026-11-14 (D3): the funnel dials sit after the row now —
        the grand-total reference they used to anchor after is gone. */
     host.insertAdjacentElement('afterend', _funEl);
@@ -19765,7 +19895,7 @@ window.ldLayoutNodes = ldLayoutNodes;
     _funSrc.className = 'os-note';
     _funSrc.id = 'os-reports-funnel-src';
     _funSrc.style.margin = '10px 0 0;';
-    _funSrc.textContent = 'Funnel — Found: how many people clicked any of your links. Visited: how many of them opened your page. Nothing is counted here yet — visits aren\u2019t measured. Joined: ' + ((_fun && _fun.joined) ? _fun.joined + (_fun.joined === 1 ? ' person joined' : ' people joined') + ' so far.' : 'nobody has joined yet — the way to join isn\u2019t built yet, so this stays at zero.') + ' Stayed: how many of them are still with you. Nothing is counted here yet — it needs your activity record flowing. The Smart Links list shows only the links you claimed. The nine plan links aren\u2019t listed, but their clicks still count in Found.';
+    _funSrc.textContent = 'Found: how many people clicked any of your links. Joined: ' + ((_fun && _fun.joined) ? _fun.joined + (_fun.joined === 1 ? ' person joined' : ' people joined') + ' so far.' : 'nobody has joined yet.') + ' The Smart Links list shows only the links you claimed.';
     _funEl.insertAdjacentElement('afterend', _funSrc);
     try{ if (typeof window._osMountSlMinis === 'function') window._osMountSlMinis(_funEl); }catch(e){}
     try{ if (typeof window._osMiniNums === 'function') window._osMiniNums(); }catch(e){}
@@ -22305,7 +22435,7 @@ function pill(t, opts){
   b.className = 'nsb-tab' + (t.active?' active':'') + (t.state==='heart'?' loved':'') + (t.state==='star'?' starred':'')
     + (t.working?' is-working':'') + (t.locked?' is-locked':'') + (!t.url&&!t.target?' is-dead':'');
   b.style.setProperty('--tc', t.color || SPECTRUM[0]);
-  b.setAttribute('aria-label', t.label + (t.url||t.target ? '' : ' (no destination yet)'));
+  b.setAttribute('aria-label', t.label);
   if (t.icon){
     var jw = document.createElement('span');
     jw.className = 'nsb-jewel'; jw.style.setProperty('--tc', t.color || SPECTRUM[0]);
@@ -22347,7 +22477,7 @@ function pill(t, opts){
         else if (dest.charAt(0)==='#'){ var el=document.querySelector(dest); if(el){ el.scrollIntoView({behavior:reduced()?'auto':'smooth'}); } else if (typeof window.osShowView==='function'){ window.osShowView(dest.slice(1)); } }
         else { window.location.href = dest; }
       } else {
-        say('bottom', '"'+t.label+'" has no destination yet — open ⋯ and give it one.');
+        say('bottom', '"'+t.label+'" has no link yet — open ⋯ and give it one.');
       }
     });
   }
@@ -23076,7 +23206,7 @@ function derivationFor(key, holder){
       {k:'Page tracking', v:'Connects soon — views, clicks and conversions are not measured yet.'},
       {k:'What you see', v:'The honest empty state — nothing invented.'}
     ],
-    foot: 'Counts from the ledger — the one true record. <a href="https://nayanet.app/rooms/ledger">Open the ledger ⌗</a>' };
+    foot: 'Counts from your ledger. <a href="https://nayanet.app/rooms/ledger">Open the ledger ⌗</a>' };
   if (holder && holder.kind === 'page') return _pageDeriv;
   if (!holder && typeof window._featuredDisplay === 'function'){
     try{ var _fdp = window._featuredDisplay(); if (_fdp && _fdp.kind === 'page') return _pageDeriv; }catch(e){}
@@ -23104,7 +23234,7 @@ function derivationFor(key, holder){
               {k:'All time', v: window._osSpc(_fv.clicksAll) + ' clicks · all time.'},
               {k:'Became joins', v: _ctr + ' — clicks turning into joins.'}
             ],
-            foot: 'Counts from the ledger — the one true record. <a href="https://nayanet.app/rooms/ledger">Open the ledger ⌗</a>' };
+            foot: 'Counts from your ledger. <a href="https://nayanet.app/rooms/ledger">Open the ledger ⌗</a>' };
         }
         return { title: 'Joins — this link’s count',
           rows: [
@@ -23112,7 +23242,7 @@ function derivationFor(key, holder){
             {k:'Clicks · all time', v: window._osSpc(_fv.clicksAll) + ' — the taps they came from.'},
             {k:'Became joins', v: _ctr + ' — clicks turning into joins.'}
           ],
-          foot: 'Counts from the ledger — the one true record. <a href="https://nayanet.app/rooms/ledger">Open the ledger ⌗</a>' };
+          foot: 'Counts from your ledger. <a href="https://nayanet.app/rooms/ledger">Open the ledger ⌗</a>' };
       }
     }catch(e){}
   }
@@ -23177,7 +23307,7 @@ function derivationFor(key, holder){
     rows=[R("Ledger rows", s[key]+" — "+names[key][1])];
   }
   return { title:title, rows:rows,
-    foot:"Counts from the ledger — the one true record. <a href=\"https://nayanet.app/rooms/ledger\">Open the ledger ⌗</a>" };
+    foot:"Counts from your ledger. <a href=\"https://nayanet.app/rooms/ledger\">Open the ledger ⌗</a>" };
 }
 
 /* ---------- popover ---------- */
