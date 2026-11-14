@@ -8629,6 +8629,16 @@ function wallCard(j, iso, pid, idx){
     if(!shown.length) return '';
     var t;
     if(pill && pill!=='all'){
+      if(pill.indexOf('topic:')===0){
+        /* CORRECTIONS 2026-11-13 (Part 8): a topic pill names its topic in
+           the meta line — never "by Guest". */
+        var _tk=pill.slice(6);
+        var _lbl=_tk==='smart'?'Smart notes':_tk==='naya'?'Naya notes':_tk==='post'?'Posts':'#'+_tk;
+        if(shown.length===1){ _lbl=_lbl==='Smart notes'?'Smart note':_lbl==='Naya notes'?'Naya note':_lbl==='Posts'?'Post':_lbl; }
+        t=shown.length+' '+_lbl+(window.mwTr?window.mwTr(' on this feed.'):' on this feed.');
+        if(kw){ t=shown.length? (t+(window.mwTr?window.mwTr(' Matching \u201c'):' Matching \u201c')+window.MW_PUBLIC_KEYWORD+(window.mwTr?window.mwTr('\u201d.'):'\u201d.')) : ((window.mwTr?window.mwTr('No notes match \u201c'):'No notes match \u201c')+window.MW_PUBLIC_KEYWORD+(window.mwTr?window.mwTr('\u201d — try another word.'):'\u201d.')); }
+        return t;
+      }
       var disp='Guest'; for(var i=0;i<MW_WALL_POSTS.length;i++){ if((MW_WALL_POSTS[i].j.a||'Guest').toLowerCase()===pill){ disp=MW_WALL_POSTS[i].j.a||'Guest'; break; } }
       t=shown.length+(shown.length===1?(window.mwTr?window.mwTr(' post'):' post'):(window.mwTr?window.mwTr(' posts'):' posts'))+(window.mwTr?window.mwTr(' by '):' by ')+disp+(window.mwTr?window.mwTr(' on this feed.'):' on this feed.');
     } else {
@@ -20095,6 +20105,13 @@ function mwBuildFeedPills(){
        note type (Smart note / Naya note / Post) + smart-note themes. */
     var _base=(typeof window.MW_WALL_POSTS!=='undefined'?window.MW_WALL_POSTS:[]);
     if(t==='public') _base=(typeof window.MW_PUBLIC_POSTS!=='undefined'?window.MW_PUBLIC_POSTS:[]);
+    if(t==='personal'){
+      /* CORRECTIONS fix 3: the painter filters Personal to the owner's posts,
+         so the pill inventory must too — otherwise a topic that only other
+         authors carry (e.g. Naya notes) appears on Personal and taps to zero. */
+      var _ok=(((typeof ownerName==='function'?ownerName():'')||'Shawn Vibert').toLowerCase());
+      _base=_base.filter(function(p){ return (p.j.a||'Guest').toLowerCase()===_ok; });
+    }
     var _seen={}, _themes=[], _hasSmart=false, _hasNaya=false, _hasPost=false;
     _base.forEach(function(p){
       var _nt=(p.j&&p.j.noteType)||'';
@@ -25722,21 +25739,33 @@ window.pcRenderRail=function(live, standing){
   });
 })();
 /* rail close / open: the rail hides for a full-screen feed; a slim People
-   button takes its place in the grid and opens it again. */
+   button takes its place in the grid and opens it again. The grid wrap
+   (#pcFeedWrap) is BUILT BY JAVASCRIPT after this script runs, so the wrap
+   is resolved lazily at click time — never at load — and the reopen button
+   is created on first close. (First version looked the wrap up at load and
+   silently did nothing: the wrap did not exist yet. Found by Step 3.) */
 (function(){
   var rail=document.getElementById('pcRail'); if(!rail) return;
-  var wrap=document.getElementById('pcFeedWrap'); if(!wrap) return;
-  var open=document.createElement('button');
-  open.type='button'; open.id='pcRailReopen'; open.textContent='\uD83D\uDC65 People';
-  open.setAttribute('aria-label','Open the people rail');
-  open.style.display='none';
-  wrap.appendChild(open);
+  var open=null;
+  function getWrap(){ return document.getElementById('pcFeedWrap') || rail.parentElement; }
+  function getOpen(){
+    if(open) return open;
+    open=document.createElement('button');
+    open.type='button'; open.id='pcRailReopen'; open.textContent='\uD83D\uDC65 People';
+    open.setAttribute('aria-label','Open the people rail');
+    open.style.display='none';
+    open.addEventListener('click', function(){
+      var w=getWrap(); if(w) w.classList.remove('pc-rail-closed');
+      open.style.display='none';
+    });
+    return open;
+  }
   var close=document.getElementById('pcRailClose');
   if(close) close.addEventListener('click', function(){
-    wrap.classList.add('pc-rail-closed'); open.style.display='';
-  });
-  open.addEventListener('click', function(){
-    wrap.classList.remove('pc-rail-closed'); open.style.display='none';
+    var w=getWrap(); if(!w) return;
+    var btn=getOpen();
+    if(btn.parentNode!==w) w.appendChild(btn);
+    w.classList.add('pc-rail-closed'); btn.style.display='';
   });
 })();
 /* CONNECT — one tap sends a connect offer. The grounded store is the Smart
