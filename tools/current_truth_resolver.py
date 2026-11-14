@@ -18,6 +18,18 @@ ROOT = Path(__file__).resolve().parents[1]
 OPS = ROOT / "BRAIN" / "90-OPERATIONS" / "0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json"
 BRAIN = ROOT / "BRAIN" / "NAYAPOWER-BRAIN-INDEX.json"
 MANIFEST = ROOT / "BRAIN" / "03-KERNEL" / "MANIFEST.json"
+
+# Bound on every git subprocess call in _projection_freshness.
+# A missing object in this repo (blobless partial clone, 4,434 packs,
+# 10.5M objects) does not fail fast: with lazy fetch on, the promisor
+# fetch's remote-https never exits after the remote "not our ref" fatal;
+# with lazy fetch off, the local pack walk burns CPU for minutes.
+# Legitimate lookups of present objects take ~10ms, so 15s is 1000x
+# headroom. Without this bound the full suite parks forever at
+# test_current_truth_resolver.py (~39%) whenever a fake/unknown SHA is
+# passed as the snapshot or repo head (2026-11-14: the 2140 + 0239
+# suites both died there; targeted runs stalled >170s/>280s on one file).
+_GIT_TIMEOUT_S = 15
 PROJECTION_OWNED_PATHS = {
     "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
     "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json",
@@ -56,6 +68,7 @@ def _projection_freshness(snapshot: str | None, repo_head: str | None, root: Pat
             text=True,
             capture_output=True,
             check=False,
+            timeout=_GIT_TIMEOUT_S,
         )
         if ancestor.returncode != 0:
             return {
@@ -67,8 +80,9 @@ def _projection_freshness(snapshot: str | None, repo_head: str | None, root: Pat
         changed = subprocess.check_output(
             ["git", "-C", str(root), "diff", "--name-only", f"{snapshot}..{repo_head}"],
             text=True,
+            timeout=_GIT_TIMEOUT_S,
         ).splitlines()
-    except (OSError, subprocess.CalledProcessError) as exc:
+    except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired) as exc:
         return {
             "status": "UNKNOWN",
             "reason": "GIT_EVIDENCE_UNAVAILABLE",

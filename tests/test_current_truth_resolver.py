@@ -208,7 +208,7 @@ def test_projection_freshness_treats_only_projection_owned_paths_as_current(monk
 
     monkeypatch.setattr(ctr.subprocess, "run", lambda *args, **kwargs: Completed())
 
-    def fake_check_output(args, text=True):
+    def fake_check_output(args, text=True, **kwargs):
         calls.append(args)
         return (
             "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md\n"
@@ -289,3 +289,40 @@ def test_projection_freshness_still_flags_real_brain_source_with_generated_recei
     assert result["status"] == "STALE"
     assert result["reason"] == "SUBSTANTIVE_DRIFT"
     assert result["substantive_paths"] == ["BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json"]
+
+
+def test_projection_freshness_times_out_on_hung_merge_base(monkeypatch):
+    """A git call that never returns must fail closed, not hang the suite.
+
+    Regression for the 2026-11-14 full-suite park at ~39%: resolving a
+    missing object in this blobless partial clone (4,434 packs) hangs
+    _projection_freshness forever -- promisor-fetch teardown stall with
+    lazy fetch on, pack-walk CPU burn with it off. The 15s bound turns
+    the hang into UNKNOWN instead of an infinite park.
+    """
+    import subprocess
+
+    def _hang(*args, **kwargs):
+        raise subprocess.TimeoutExpired(cmd=args[0] if args else "git", timeout=15)
+
+    monkeypatch.setattr(ctr.subprocess, "run", _hang)
+    result = ctr._projection_freshness("a" * 40, "b" * 40)
+    assert result["status"] == "UNKNOWN"
+    assert result["reason"] == "GIT_EVIDENCE_UNAVAILABLE"
+
+
+def test_projection_freshness_times_out_on_hung_diff(monkeypatch):
+    """The diff call after a successful merge-base is bounded the same way."""
+    import subprocess
+
+    class Completed:
+        returncode = 0
+
+    def _hang(*args, **kwargs):
+        raise subprocess.TimeoutExpired(cmd=args[0] if args else "git", timeout=15)
+
+    monkeypatch.setattr(ctr.subprocess, "run", lambda *args, **kwargs: Completed())
+    monkeypatch.setattr(ctr.subprocess, "check_output", _hang)
+    result = ctr._projection_freshness("a" * 40, "b" * 40)
+    assert result["status"] == "UNKNOWN"
+    assert result["reason"] == "GIT_EVIDENCE_UNAVAILABLE"
