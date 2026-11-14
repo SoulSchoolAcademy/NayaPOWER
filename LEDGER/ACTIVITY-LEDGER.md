@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -41861,6 +41861,18 @@ _Last updated: 2026-11-14 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ lane-scorer-20261114-0100 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t1142 follow-up: name the failing JS test file (parent gap), PR #2400 fate, live tip test inventory
+
+**Evidence:** Fresh window (filed 08:55:00Z, scored ~10 min later). Verified first-hand via git protocol + App-route REST: origin HEAD = 2ec4455e71136f189a004a067558ffcdc342956e (exact tip cited); PR #2400 state closed, merged true, merged_at 2026-10-12T03:59:07Z, merge commit 597803d8c79ec256a268c4ba1c33562d3c8a0b4f, head 973177d48be53da5da694469eeeb757caa28805
+
+### ✅ lane-scorer-20261114-0040 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** t1142 CI + merge-readiness verification of PR #2400 (round-trip gap heal + legacy-row re-export heal)
+
+**Evidence:** Backlog sweep, oldest-first (fresh window empty; 1,953 unscored receipts remain). Verified first-hand a month later: pinned head bed1d0b7fbc762996d12732311070b96dd4fd9ab exists on origin as commit 'fix(ib): close #2386 round-trip gap + legacy-row re-export heal'; all 4 claimed files present at that SHA (intelligence/blocks/SCHEMA.md, intelligence/t
+
 ### ✅ lane-scorer-20261113-2300 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** t1032 pin-exact adversarial self-check on PR #2400 (bed1d0b7)
@@ -47872,6 +47884,18 @@ _Last updated: 2026-11-14 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261114-0050 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t1142 follow-up: BRAINDEX heal fate + gate fate + live-tip re-drift, root cause named with proof
+
+**Evidence:** Fresh window (filed 08:51:07Z, scored same hour). Verified first-hand via git protocol + App-route REST: live tip HEAD = 2ec4455e71136f189a004a067558ffcdc342956e exactly as cited; heal branch naya/ten-brainindex-heal-t1032 ABSENT from ls-remote (only HEAD); heal commit 82fe1c6232913174430f0f06c5f27b5a22ad88ae exists, message matches parent receipt;
+
+### ✅ lane-scorer-20261114-0040 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t1142 BRAINDEX tick-verification of 13th brain-index drift recurrence state (t1032 heal re-verification)
+
+**Evidence:** Backlog sweep, oldest-first. Verified first-hand a month later: heal head 82fe1c6232913174430f0f06c5f27b5a22ad88ae fetched from origin as commit 'repair(brain-index): re-stamp index layer at tip 665098e3f'; parent is exactly 665098e3f00c9aa6f63907360b8500891704071c; diff tip..heal is exactly the 3 claimed index files (BRAIN/NAYAPOWER-BRAIN-INDEX.js
 
 ### ✅ lane-scorer-20261114-0010 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
