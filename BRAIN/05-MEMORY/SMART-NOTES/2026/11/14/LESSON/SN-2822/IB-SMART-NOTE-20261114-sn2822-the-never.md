@@ -4,6 +4,8 @@ SN-2822 · LESSON / CHARGE
 
 **Created:** 2026-11-14 20:50Z
 
+**Kinds:** Honor · Multiplication · Craft · Knowledge
+
 ## Hook
 
 Build like the pieces already there. Harvest the page's own good pieces verbatim — never build your own version in the middle of the brand's land.
@@ -14,9 +16,13 @@ Shawn's charge of 2026-11-14 02:57Z, in meaning: "Can I keep going? And keep run
 
 Across 10 notes, the thread is: never, love, law.
 
+Across the four kinds: Honor — the job, become aware of value, and the loop as habit; Multiplication — the cycle law and the machine that remembers; Craft — harvest the pieces verbatim and judge by the four judges; Knowledge — categorize intelligence on all levels and hit the sweet spot: continuous production that is valuable and useful, not speed, not numbers.
+
 ## Human
 
 The analogy works because a franchise is the right shape for a brand: the land is shared, the pieces are the law, and a new building that ignores them is not creative, it is off-brand — it makes the whole street look worse. Building without looking is the specific failure: the maker did not fail for lack of skill, she failed for lack of looking, and looking is cheap. The telling matters as much as the rule because it separates the person from the round: she normally does good work, this round she built without looking, and the standard is the best button on the page, not an abstract bar. The captain's share matters because the machine failed twice before his eye caught it — the checker measured the lit state and called it the rest state, and the captain showed the page before her own double-check finished. A rule that only blames the maker misses the two gates that let it through. The sense check runs on the page, at rest, before anything reaches his eyes — that is the mechanism the rule rides on.
+
+The Knowledge in this group is the sweet spot itself: categorize intelligence and become intelligent on all the levels, then optimize for the highest performance of effective execution — continuous production that is valuable and useful. It is not about speed. It is not even about the numbers. It is about hitting the bullseye, hitting that sweet spot, over and over, until it is habit. A faster machine that produces nothing valuable is not more intelligent — it is only faster. The sweet spot is the standard the loop is judged against, and the reason the loop exists at all.
 
 ## Child
 
@@ -37,6 +43,7 @@ I never let finished work sit. The moment a maker finishes, the checker is alrea
 3. **THE VALUE TEST IS LAW:** valuable only if (1) finished work he can see and use from his seat, phone first; (2) a lesson stopping the same mistake twice; (3) a reusable part; (4) makes the next hundred minutes better for everyone.
 4. **HARVEST VERBATIM:** take the page's own good pieces exactly as they are; never remake them, never build your own version in the middle of the brand's land.
 5. **THE MACHINE ENFORCES IT, NOT MEMORY:** the floor-watch flags finished-but-undispatched work as an emergency and owed items past their hour by name.
+6. **THE SWEET SPOT IS THE STANDARD (KNOWLEDGE):** categorize intelligence on all the levels; the sweet spot is continuous production that is valuable and useful — not speed, not numbers; the bullseye, over and over, until it is habit.
 
 ## Why it matters
 
@@ -53,3 +60,4 @@ I never let finished work sit. The moment a maker finishes, the checker is alrea
 4. A failed spawn is re-dispatched the same pass; a spawn that dies twice gets named, never sat on.
 5. Every valuable thing spotted gets smart-noted in the same pass — never batched, never "later".
 6. The captain chooses the goal — deciding what is right is the work, not a handoff.
+7. Become aware of value — note it, value it, share it, implement it, never let it sit; the job is the skill of knowing when something is truly intelligent and valuable, and a lesson learned where it wasn't good and now is made good gets smart-noted so everybody learns.
