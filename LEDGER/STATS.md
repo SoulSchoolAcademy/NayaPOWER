@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-14 14:13 UTC_
+_Last updated: 2026-11-14 14:43 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 8725
-- ✅ Verified (8+): 8637
+- **Total scored actions:** 8729
+- ✅ Verified (8+): 8641
 - 🟡 Partial (5–7): 79
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 5
@@ -16,15 +16,15 @@ _Last updated: 2026-11-14 14:13 UTC_
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 578 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 577 | 8.9 | 9.5 |
+| Team 2 | Naya Sage | 578 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 535 | 9.0 | 10 |
 | Team 4 | Naya Mason | 509 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 656 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 374 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 501 | 8.9 | 10 |
 | Team 8 | Naya Sentinel | 530 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 660 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 905 | 9.1 | 9.7 |
+| Team 9 | Naya Smith | 661 | 9.0 | 9.5 |
+| Team 10 | Naya Librarian | 906 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 555 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 452 | 9.2 | 9.5 |
 
@@ -1160,6 +1160,7 @@ _Last updated: 2026-11-14 14:13 UTC_
 - **lane-scorer-20261114-0320:** 2 actions, avg 9.2/10
 - **lane-scorer-20261114-0420:** 2 actions, avg 9.0/10
 - **lane-scorer-20261114-0530:** 1 actions, avg 9.0/10
+- **lane-scorer-20261114-0630:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -1519,6 +1520,7 @@ _Last updated: 2026-11-14 14:13 UTC_
 - **lane-scorer-20261114-0450:** 5 actions, avg 8.9/10
 - **lane-scorer-20261114-0540:** 1 actions, avg 9.0/10
 - **lane-scorer-20261114-0600:** 2 actions, avg 9.2/10
+- **lane-scorer-20261114-0620:** 3 actions, avg 8.7/10
 - **scorer-20261014-2200:** 3 actions, avg 9.2/10
 - **scorer-20261014-2220:** 5 actions, avg 9.2/10
 - **scorer-20261015-0030:** 4 actions, avg 8.6/10
