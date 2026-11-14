@@ -25369,6 +25369,14 @@ window.fcTogglePlusMenu=function(anchor){
   if(anchor && anchor.getBoundingClientRect){ var ar=anchor.getBoundingClientRect();
     plusMenu.style.left=Math.max(110, Math.min(window.innerWidth-110, ar.left+ar.width/2))+'px';
     plusMenu.style.top=(ar.bottom+10)+'px'; plusMenu.style.bottom='';
+    /* FIX-1: six items no longer fit below the fold at every scroll position
+       (1440 scroll 0: menu bottom 941 > viewport 900 — Create world cut off).
+       Measure once open; flip above the anchor when below overflows and
+       above fits. */
+    plusMenu.hidden=false;
+    var mh=plusMenu.getBoundingClientRect().height;
+    if(ar.bottom+10+mh>window.innerHeight && ar.top-10-mh>0){
+      plusMenu.style.top=''; plusMenu.style.bottom=(window.innerHeight-ar.top+10)+'px'; }
   } else { var plus=document.querySelector('.notif-seg[data-notif="plus"]');
     if(plus){ var r=plus.getBoundingClientRect();
       plusMenu.style.left=Math.max(110, Math.min(window.innerWidth-110, r.left+r.width/2))+'px';
