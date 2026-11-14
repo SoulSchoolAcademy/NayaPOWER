@@ -1,0 +1,647 @@
+{
+ "R4_fresh_loads": [
+  {
+   "feedRef": "live-registry",
+   "feedCount": 1058,
+   "firstNote": "SN-2766 \u00b7 SYSTEM",
+   "errors": [],
+   "overflowX": 0
+  },
+  {
+   "feedRef": "live-registry",
+   "feedCount": 1058,
+   "firstNote": "SN-2766 \u00b7 SYSTEM",
+   "errors": [],
+   "overflowX": 0
+  },
+  {
+   "feedRef": "live-registry",
+   "feedCount": 1058,
+   "firstNote": "SN-2766 \u00b7 SYSTEM",
+   "errors": [],
+   "overflowX": 0
+  }
+ ],
+ "R4_slow_feed_recovery": {
+  "recovered_at_s": 5,
+  "snap": {
+   "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2766",
+   "hash": "#/smart-notes/sn2766",
+   "title": "SN-2766 \u00b7 SYSTEM \u2014 NayaNET",
+   "bodyElements": 769,
+   "feedRef": "live-registry",
+   "feedCount": 1058,
+   "firstNote": "SN-2766 \u00b7 SYSTEM",
+   "cardLinks": 1,
+   "relCards": 6,
+   "relTitles": [
+    "Roster Naming And Faces",
+    "Superman Notifications",
+    "The Ultimate Communication Tool",
+    "Value Is Verified Assets The Setter",
+    "The Checklist Law One List Worked To Zero",
+    "The Whole Page Rule A Project Comes Whole"
+   ],
+   "relReasons": [
+    "Same topic: System",
+    "Same topic: System",
+    "Same topic: System",
+    "Same topic: System",
+    "Same topic: System",
+    "Same topic: System"
+   ],
+   "relatedText": true,
+   "sLinks": [
+    "/s/sn2766",
+    "/s/sn2765",
+    "/s/sn2764",
+    "/s/sn2763",
+    "/s/sn2762",
+    "/s/sn2755",
+    "/s/sn2756"
+   ],
+   "noteLoading": false,
+   "notFound": false,
+   "overflowX": 0
+  }
+ },
+ "390": {
+  "sn2696": {
+   "snap": {
+    "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2696",
+    "hash": "#/smart-notes/sn2696",
+    "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+    "bodyElements": 742,
+    "feedRef": "live-registry",
+    "feedCount": 1058,
+    "firstNote": "SN-2766 \u00b7 SYSTEM",
+    "cardLinks": 1,
+    "relCards": 6,
+    "relTitles": [
+     "The Mail Is Safe",
+     "The Heart Match Organize Connect",
+     "Sn2651 One Foundation One Measure One Honest Telling",
+     "Sn2650 The World Masters",
+     "Sn2650 The Master Operational Manual",
+     "Sn2648 The Supabase Answers"
+    ],
+    "relReasons": [
+     "Same topic: System Intelligence",
+     "Same topic: System Intelligence",
+     "Same topic: System Intelligence",
+     "Same topic: System Intelligence",
+     "Same topic: System Intelligence",
+     "Same topic: System Intelligence"
+    ],
+    "relatedText": true,
+    "sLinks": [
+     "/s/sn2696",
+     "/s/sn2702",
+     "/s/sn2701",
+     "/s/sn2651",
+     "/s/sn2650",
+     "/s/ib-smart-note-20261110-sn2650-the-master-operational-manual",
+     "/s/sn2648"
+    ],
+    "noteLoading": false,
+    "notFound": false,
+    "overflowX": 0
+   },
+   "gap": {
+    "gapPx": 0,
+    "dockTop": 696,
+    "lastBottom": 696,
+    "lowestEl": "UL.",
+    "scrollH": 2956,
+    "innerH": 844
+   },
+   "errors": [],
+   "status": 200,
+   "overflowX_scrolled": 0
+  },
+  "sn2766": {
+   "snap": {
+    "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2766",
+    "hash": "#/smart-notes/sn2766",
+    "title": "SN-2766 \u00b7 SYSTEM \u2014 NayaNET",
+    "bodyElements": 769,
+    "feedRef": "live-registry",
+    "feedCount": 1058,
+    "firstNote": "SN-2766 \u00b7 SYSTEM",
+    "cardLinks": 1,
+    "relCards": 6,
+    "relTitles": [
+     "Roster Naming And Faces",
+     "Superman Notifications",
+     "The Ultimate Communication Tool",
+     "Value Is Verified Assets The Setter",
+     "The Checklist Law One List Worked To Zero",
+     "The Whole Page Rule A Project Comes Whole"
+    ],
+    "relReasons": [
+     "Same topic: System",
+     "Same topic: System",
+     "Same topic: System",
+     "Same topic: System",
+     "Same topic: System",
+     "Same topic: System"
+    ],
+    "relatedText": true,
+    "sLinks": [
+     "/s/sn2766",
+     "/s/sn2765",
+     "/s/sn2764",
+     "/s/sn2763",
+     "/s/sn2762",
+     "/s/sn2755",
+     "/s/sn2756"
+    ],
+    "noteLoading": false,
+    "notFound": false,
+    "overflowX": 0
+   },
+   "gap": {
+    "gapPx": 0,
+    "dockTop": 696,
+    "lastBottom": 696,
+    "lowestEl": "UL.",
+    "scrollH": 1900,
+    "innerH": 844
+   },
+   "errors": [],
+   "status": 200,
+   "overflowX_scrolled": 0
+  },
+  "sn2695": {
+   "snap": {
+    "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2695",
+    "hash": "#/smart-notes/sn2695",
+    "title": "SN-2695 \u00b7 VISION / MISSION \u2014 NayaNET",
+    "bodyElements": 742,
+    "feedRef": "live-registry",
+    "feedCount": 1058,
+    "firstNote": "SN-2766 \u00b7 SYSTEM",
+    "cardLinks": 1,
+    "relCards": 6,
+    "relTitles": [
+     "Sn2737 The Design Sells Itself",
+     "Sn2736 Do Everything For Them",
+     "The Design Sells Itself Full Meal Deal Supercharger Everybody Wins",
+     "The Name Naya Not Anaya",
+     "Theres A New Net In Town",
+     "The Ultimate Icons Are Gems The One Minute Book"
+    ],
+    "relReasons": [
+     "Same topic: Vision",
+     "Same topic: Vision",
+     "Same topic: Vision",
+     "Same topic: Vision",
+     "Same topic: Vision",
+     "Same topic: Vision"
+    ],
+    "relatedText": true,
+    "sLinks": [
+     "/s/sn2695",
+     "/s/sn2737",
+     "/s/sn2736",
+     "/s/sn2722",
+     "/s/sn2718",
+     "/s/sn2717",
+     "/s/sn2713"
+    ],
+    "noteLoading": false,
+    "notFound": false,
+    "overflowX": 0
+   },
+   "gap": {
+    "gapPx": -0.0,
+    "dockTop": 696,
+    "lastBottom": 696,
+    "lowestEl": "UL.",
+    "scrollH": 2929,
+    "innerH": 844
+   },
+   "errors": [],
+   "status": 200,
+   "overflowX_scrolled": 0
+  },
+  "feed_click_sn2766": {
+   "clicked": {
+    "found": true,
+    "href": "/s/sn2766"
+   },
+   "snap": {
+    "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2766",
+    "hash": "#/smart-notes/sn2766",
+    "title": "SN-2766 \u00b7 SYSTEM \u2014 NayaNET",
+    "bodyElements": 769,
+    "feedRef": "live-registry",
+    "feedCount": 1058,
+    "firstNote": "SN-2766 \u00b7 SYSTEM",
+    "cardLinks": 1,
+    "relCards": 6,
+    "relTitles": [
+     "Roster Naming And Faces",
+     "Superman Notifications",
+     "The Ultimate Communication Tool",
+     "Value Is Verified Assets The Setter",
+     "The Checklist Law One List Worked To Zero",
+     "The Whole Page Rule A Project Comes Whole"
+    ],
+    "relReasons": [
+     "Same topic: System",
+     "Same topic: System",
+     "Same topic: System",
+     "Same topic: System",
+     "Same topic: System",
+     "Same topic: System"
+    ],
+    "relatedText": true,
+    "sLinks": [
+     "/s/sn2766",
+     "/s/sn2765",
+     "/s/sn2764",
+     "/s/sn2763",
+     "/s/sn2762",
+     "/s/sn2755",
+     "/s/sn2756"
+    ],
+    "noteLoading": false,
+    "notFound": false,
+    "overflowX": 0
+   },
+   "errors": []
+  },
+  "feed_click_sn2695": {
+   "clicked": {
+    "found": true,
+    "href": "/s/sn2695"
+   },
+   "snap": {
+    "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2695",
+    "hash": "#/smart-notes/sn2695",
+    "title": "SN-2695 \u00b7 VISION / MISSION \u2014 NayaNET",
+    "bodyElements": 742,
+    "feedRef": "live-registry",
+    "feedCount": 1058,
+    "firstNote": "SN-2766 \u00b7 SYSTEM",
+    "cardLinks": 1,
+    "relCards": 6,
+    "relTitles": [
+     "Sn2737 The Design Sells Itself",
+     "Sn2736 Do Everything For Them",
+     "The Design Sells Itself Full Meal Deal Supercharger Everybody Wins",
+     "The Name Naya Not Anaya",
+     "Theres A New Net In Town",
+     "The Ultimate Icons Are Gems The One Minute Book"
+    ],
+    "relReasons": [
+     "Same topic: Vision",
+     "Same topic: Vision",
+     "Same topic: Vision",
+     "Same topic: Vision",
+     "Same topic: Vision",
+     "Same topic: Vision"
+    ],
+    "relatedText": true,
+    "sLinks": [
+     "/s/sn2695",
+     "/s/sn2737",
+     "/s/sn2736",
+     "/s/sn2722",
+     "/s/sn2718",
+     "/s/sn2717",
+     "/s/sn2713"
+    ],
+    "noteLoading": false,
+    "notFound": false,
+    "overflowX": 0
+   },
+   "errors": []
+  }
+ },
+ "1440": {
+  "sn2696": {
+   "snap": {
+    "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2696",
+    "hash": "#/smart-notes/sn2696",
+    "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+    "bodyElements": 742,
+    "feedRef": "live-registry",
+    "feedCount": 1058,
+    "firstNote": "SN-2766 \u00b7 SYSTEM",
+    "cardLinks": 1,
+    "relCards": 6,
+    "relTitles": [
+     "The Mail Is Safe",
+     "The Heart Match Organize Connect",
+     "Sn2651 One Foundation One Measure One Honest Telling",
+     "Sn2650 The World Masters",
+     "Sn2650 The Master Operational Manual",
+     "Sn2648 The Supabase Answers"
+    ],
+    "relReasons": [
+     "Same topic: System Intelligence",
+     "Same topic: System Intelligence",
+     "Same topic: System Intelligence",
+     "Same topic: System Intelligence",
+     "Same topic: System Intelligence",
+     "Same topic: System Intelligence"
+    ],
+    "relatedText": true,
+    "sLinks": [
+     "/s/sn2696",
+     "/s/sn2702",
+     "/s/sn2701",
+     "/s/sn2651",
+     "/s/sn2650",
+     "/s/ib-smart-note-20261110-sn2650-the-master-operational-manual",
+     "/s/sn2648"
+    ],
+    "noteLoading": false,
+    "notFound": false,
+    "overflowX": 0
+   },
+   "gap": {
+    "gapPx": 1,
+    "dockTop": 731,
+    "lastBottom": 730,
+    "lowestEl": "NAV.related",
+    "scrollH": 1867,
+    "innerH": 900
+   },
+   "errors": [],
+   "status": 200,
+   "overflowX_scrolled": 0
+  },
+  "sn2766": {
+   "snap": {
+    "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2766",
+    "hash": "#/smart-notes/sn2766",
+    "title": "SN-2766 \u00b7 SYSTEM \u2014 NayaNET",
+    "bodyElements": 769,
+    "feedRef": "live-registry",
+    "feedCount": 1058,
+    "firstNote": "SN-2766 \u00b7 SYSTEM",
+    "cardLinks": 1,
+    "relCards": 6,
+    "relTitles": [
+     "Roster Naming And Faces",
+     "Superman Notifications",
+     "The Ultimate Communication Tool",
+     "Value Is Verified Assets The Setter",
+     "The Checklist Law One List Worked To Zero",
+     "The Whole Page Rule A Project Comes Whole"
+    ],
+    "relReasons": [
+     "Same topic: System",
+     "Same topic: System",
+     "Same topic: System",
+     "Same topic: System",
+     "Same topic: System",
+     "Same topic: System"
+    ],
+    "relatedText": true,
+    "sLinks": [
+     "/s/sn2766",
+     "/s/sn2765",
+     "/s/sn2764",
+     "/s/sn2763",
+     "/s/sn2762",
+     "/s/sn2755",
+     "/s/sn2756"
+    ],
+    "noteLoading": false,
+    "notFound": false,
+    "overflowX": 0
+   },
+   "gap": {
+    "gapPx": 0,
+    "dockTop": 731,
+    "lastBottom": 730,
+    "lowestEl": "NAV.related",
+    "scrollH": 1580,
+    "innerH": 900
+   },
+   "errors": [],
+   "status": 200,
+   "overflowX_scrolled": 0
+  },
+  "sn2695": {
+   "snap": {
+    "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2695",
+    "hash": "#/smart-notes/sn2695",
+    "title": "SN-2695 \u00b7 VISION / MISSION \u2014 NayaNET",
+    "bodyElements": 742,
+    "feedRef": "live-registry",
+    "feedCount": 1058,
+    "firstNote": "SN-2766 \u00b7 SYSTEM",
+    "cardLinks": 1,
+    "relCards": 6,
+    "relTitles": [
+     "Sn2737 The Design Sells Itself",
+     "Sn2736 Do Everything For Them",
+     "The Design Sells Itself Full Meal Deal Supercharger Everybody Wins",
+     "The Name Naya Not Anaya",
+     "Theres A New Net In Town",
+     "The Ultimate Icons Are Gems The One Minute Book"
+    ],
+    "relReasons": [
+     "Same topic: Vision",
+     "Same topic: Vision",
+     "Same topic: Vision",
+     "Same topic: Vision",
+     "Same topic: Vision",
+     "Same topic: Vision"
+    ],
+    "relatedText": true,
+    "sLinks": [
+     "/s/sn2695",
+     "/s/sn2737",
+     "/s/sn2736",
+     "/s/sn2722",
+     "/s/sn2718",
+     "/s/sn2717",
+     "/s/sn2713"
+    ],
+    "noteLoading": false,
+    "notFound": false,
+    "overflowX": 0
+   },
+   "gap": {
+    "gapPx": 1,
+    "dockTop": 731,
+    "lastBottom": 730,
+    "lowestEl": "NAV.related",
+    "scrollH": 1867,
+    "innerH": 900
+   },
+   "errors": [],
+   "status": 200,
+   "overflowX_scrolled": 0
+  }
+ },
+ "360": {
+  "sn2696": {
+   "snap": {
+    "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2696",
+    "hash": "#/smart-notes/sn2696",
+    "title": "SN-2696 \u00b7 SYSTEM / INTELLIGENCE / FEEDS \u2014 NayaNET",
+    "bodyElements": 742,
+    "feedRef": "live-registry",
+    "feedCount": 1058,
+    "firstNote": "SN-2766 \u00b7 SYSTEM",
+    "cardLinks": 1,
+    "relCards": 6,
+    "relTitles": [
+     "The Mail Is Safe",
+     "The Heart Match Organize Connect",
+     "Sn2651 One Foundation One Measure One Honest Telling",
+     "Sn2650 The World Masters",
+     "Sn2650 The Master Operational Manual",
+     "Sn2648 The Supabase Answers"
+    ],
+    "relReasons": [
+     "Same topic: System Intelligence",
+     "Same topic: System Intelligence",
+     "Same topic: System Intelligence",
+     "Same topic: System Intelligence",
+     "Same topic: System Intelligence",
+     "Same topic: System Intelligence"
+    ],
+    "relatedText": true,
+    "sLinks": [
+     "/s/sn2696",
+     "/s/sn2702",
+     "/s/sn2701",
+     "/s/sn2651",
+     "/s/sn2650",
+     "/s/ib-smart-note-20261110-sn2650-the-master-operational-manual",
+     "/s/sn2648"
+    ],
+    "noteLoading": false,
+    "notFound": false,
+    "overflowX": 0
+   },
+   "gap": {
+    "gapPx": 0,
+    "dockTop": 652,
+    "lastBottom": 652,
+    "lowestEl": "NAV.related",
+    "scrollH": 3243,
+    "innerH": 800
+   },
+   "errors": [],
+   "status": 200,
+   "overflowX_scrolled": 0
+  },
+  "sn2766": {
+   "snap": {
+    "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2766",
+    "hash": "#/smart-notes/sn2766",
+    "title": "SN-2766 \u00b7 SYSTEM \u2014 NayaNET",
+    "bodyElements": 769,
+    "feedRef": "live-registry",
+    "feedCount": 1058,
+    "firstNote": "SN-2766 \u00b7 SYSTEM",
+    "cardLinks": 1,
+    "relCards": 6,
+    "relTitles": [
+     "Roster Naming And Faces",
+     "Superman Notifications",
+     "The Ultimate Communication Tool",
+     "Value Is Verified Assets The Setter",
+     "The Checklist Law One List Worked To Zero",
+     "The Whole Page Rule A Project Comes Whole"
+    ],
+    "relReasons": [
+     "Same topic: System",
+     "Same topic: System",
+     "Same topic: System",
+     "Same topic: System",
+     "Same topic: System",
+     "Same topic: System"
+    ],
+    "relatedText": true,
+    "sLinks": [
+     "/s/sn2766",
+     "/s/sn2765",
+     "/s/sn2764",
+     "/s/sn2763",
+     "/s/sn2762",
+     "/s/sn2755",
+     "/s/sn2756"
+    ],
+    "noteLoading": false,
+    "notFound": false,
+    "overflowX": 0
+   },
+   "gap": {
+    "gapPx": -0.0,
+    "dockTop": 652,
+    "lastBottom": 652,
+    "lowestEl": "LI.",
+    "scrollH": 2049,
+    "innerH": 800
+   },
+   "errors": [],
+   "status": 200,
+   "overflowX_scrolled": 0
+  },
+  "sn2695": {
+   "snap": {
+    "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2695",
+    "hash": "#/smart-notes/sn2695",
+    "title": "SN-2695 \u00b7 VISION / MISSION \u2014 NayaNET",
+    "bodyElements": 742,
+    "feedRef": "live-registry",
+    "feedCount": 1058,
+    "firstNote": "SN-2766 \u00b7 SYSTEM",
+    "cardLinks": 1,
+    "relCards": 6,
+    "relTitles": [
+     "Sn2737 The Design Sells Itself",
+     "Sn2736 Do Everything For Them",
+     "The Design Sells Itself Full Meal Deal Supercharger Everybody Wins",
+     "The Name Naya Not Anaya",
+     "Theres A New Net In Town",
+     "The Ultimate Icons Are Gems The One Minute Book"
+    ],
+    "relReasons": [
+     "Same topic: Vision",
+     "Same topic: Vision",
+     "Same topic: Vision",
+     "Same topic: Vision",
+     "Same topic: Vision",
+     "Same topic: Vision"
+    ],
+    "relatedText": true,
+    "sLinks": [
+     "/s/sn2695",
+     "/s/sn2737",
+     "/s/sn2736",
+     "/s/sn2722",
+     "/s/sn2718",
+     "/s/sn2717",
+     "/s/sn2713"
+    ],
+    "noteLoading": false,
+    "notFound": false,
+    "overflowX": 0
+   },
+   "gap": {
+    "gapPx": 0,
+    "dockTop": 652,
+    "lastBottom": 652,
+    "lowestEl": "NAV.related",
+    "scrollH": 3196,
+    "innerH": 800
+   },
+   "errors": [],
+   "status": 200,
+   "overflowX_scrolled": 0
+  }
+ },
+ "blank_loads": 0,
+ "fails": []
+}
