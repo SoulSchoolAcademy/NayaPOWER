@@ -18614,8 +18614,17 @@ document.addEventListener('DOMContentLoaded', function(){
       btn.addEventListener('click', function(){
         /* PASS-11 (1): fullscreen / hero actions are gone — one view only.
            'nav' keeps its meaning (close the panel); it no longer has a
-           hero-mode class to remove, because nothing adds it anymore. */
+           hero-mode class to remove, because nothing adds it anymore.
+           ROUND 2 — 2026-11-14 — ITEM 6 (no mouse door to the switch): the
+           Settings view had no mouse door except the top tabs themselves
+           (no #nsbBottom element, no #navtabs element, no
+           data-os-go="settings") — the switch was unreachable by mouse, so
+           the named reveal path could never be walked. The gear panel's
+           "Show navigation" now opens the Settings view, where the Smart
+           Tabs switch lives; the switch itself is unchanged, and the
+           default-off ruling is untouched. */
         settingsPanel.classList.remove('open');
+        if (btn.getAttribute('data-action') === 'nav' && typeof window.osShowView === 'function') window.osShowView('settings');
       });
     });
   }
@@ -27986,6 +27995,32 @@ body.os-top-hidden #nsbTop, body.os-top-hidden #nsbSearchLevel{
   transform:translateY(-110%) !important;
   transition:transform .35s ease, opacity .35s ease;
 }
+/* ROUND 2 — 2026-11-14 — ITEM 6 (tabs unreachable by mouse): the Settings
+   switch is the named reveal path and the switch WORKS (body.os-tabs-on, the
+   row displays), but the bar could never sit in the viewport: absolute at
+   document-top, translated -110% while the scroll is inside the hero, and
+   above the viewport once scrolled past it — proven at 390 (-94.6px, row
+   flex, 0/12 in view) and 1440 (-114.4px, 0/12 in view) with the switch ON.
+   So when the citizen has turned tabs ON, the hero-hide no longer translates
+   or fades the bar: at scroll 0 the bar sits at the top of the page with its
+   12 tabs clickable — the switch's own promise ("the top tab row is
+   showing"). Tabs OFF is untouched: the row stays display:none on phones
+   (the 2026-11-08 ruling, phone-only by its media query) and the bar stays
+   translated away in the hero. The bar stays ABSOLUTE (v5) — it rides up
+   with the page and never clips content at a settled stop. At desktop widths
+   the corner doors sit inside the bar's band, so they ride ON the bar while
+   tabs are on (z 902 over the bar's 901); on phones they sit below the bar
+   already, so the lift is harmless there. The row keeps a clear lane past
+   the gear (right padding 64px) so no pill hides under it. */
+body.os-tabs-on #nsbTop, body.os-tabs-on #nsbSearchLevel{
+  opacity:1 !important; pointer-events:auto !important;
+  transform:none !important;
+}
+body.os-tabs-on #os-rooms-plus, body.os-tabs-on #os-eco-plus,
+body.os-tabs-on #page-settings, body.os-tabs-on #viewport-back{
+  z-index:902 !important;
+}
+body.os-tabs-on #nsbTop .nsb-row{ padding-right:64px !important; }
 /* (b) The bottom bar shows ONLY at the page bottom (or on a button tap) —
    never on scroll-stop, never repeatedly. */
 body.os-bottom-hidden #os-bottom3{ transform:translateY(110%) !important; opacity:0 !important; }
