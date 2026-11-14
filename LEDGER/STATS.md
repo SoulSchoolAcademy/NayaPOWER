@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-14 16:05 UTC_
+_Last updated: 2026-11-14 16:34 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 8745
-- ✅ Verified (8+): 8657
+- **Total scored actions:** 8753
+- ✅ Verified (8+): 8665
 - 🟡 Partial (5–7): 79
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 5
@@ -21,11 +21,11 @@ _Last updated: 2026-11-14 16:05 UTC_
 | Team 4 | Naya Mason | 511 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 656 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 375 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 506 | 8.9 | 10 |
+| Team 7 | Naya Conductor | 507 | 8.9 | 10 |
 | Team 8 | Naya Sentinel | 531 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 662 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 907 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 556 | 9.0 | 9.6 |
+| Team 10 | Naya Librarian | 908 | 9.1 | 9.7 |
+| Team 11 | Naya Heart | 562 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 452 | 9.2 | 9.5 |
 
 ## Learning velocity
@@ -1523,6 +1523,7 @@ _Last updated: 2026-11-14 16:05 UTC_
 - **lane-scorer-20261114-0540:** 1 actions, avg 9.0/10
 - **lane-scorer-20261114-0600:** 2 actions, avg 9.2/10
 - **lane-scorer-20261114-0620:** 3 actions, avg 8.7/10
+- **lane-scorer-20261114-0810:** 2 actions, avg 9.0/10
 - **scorer-20261014-2200:** 3 actions, avg 9.2/10
 - **scorer-20261014-2220:** 5 actions, avg 9.2/10
 - **scorer-20261015-0030:** 4 actions, avg 8.6/10
@@ -1611,6 +1612,7 @@ _Last updated: 2026-11-14 16:05 UTC_
 - **lane-scorer-20261114-0440:** 6 actions, avg 8.8/10
 - **lane-scorer-20261114-0500:** 4 actions, avg 9.1/10
 - **lane-scorer-20261114-0730:** 6 actions, avg 9.1/10
+- **lane-scorer-20261114-0830:** 6 actions, avg 9.0/10
 - **scorer-20261014-2010:** 4 actions, avg 9.2/10
 - **scorer-20261014-2310:** 7 actions, avg 9.4/10
 - **scorer-20261014-2320:** 4 actions, avg 8.9/10
