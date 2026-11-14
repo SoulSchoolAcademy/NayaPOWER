@@ -26168,16 +26168,16 @@ document.addEventListener('click', function(e){
 /* --- V3 GERMAN FIT: at phone widths the stacked composer third is ~119px;
    hide the dot, tighten type + padding so "Intelligente Notiz" holds one
    line; shrink the search label so the German string holds its button.
-   At <=400px the third is ~109px and even 10.5px wraps: the glyph + gap go
-   to zero and the label span holds one line at 10px (proven 360-de:
-   span 90px, button 109px, single line). --- */
+   At <=400px the third is ~109px and even 10.5px wraps: the gap goes to
+   zero and the label span holds one line at 10px, glyph kept (proven
+   360-de: span 90px, button 109px, single line, icons visible). --- */
 @media(max-width:640px){
   #pcComposerBar #fcCreateRow .fc-create{font-size:10.5px;padding:10px 3px;}
   #pcComposerBar #fcCreateRow .fc-create .tg-dot{display:none;}
   #pcComposerBar #pcSearchBtn{font-size:12px;padding:10px 8px;}
 }
 @media(max-width:400px){
-  #pcComposerBar #fcCreateRow .fc-create{font-size:0;gap:0;}
+  #pcComposerBar #fcCreateRow .fc-create{font-size:10px;gap:0;}
   #pcComposerBar #fcCreateRow .fc-create span{font-size:10px;white-space:nowrap;}
 }
 </style>
