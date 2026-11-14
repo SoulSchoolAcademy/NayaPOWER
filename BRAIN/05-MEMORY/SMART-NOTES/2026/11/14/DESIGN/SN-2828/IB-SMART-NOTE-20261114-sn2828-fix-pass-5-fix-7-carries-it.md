@@ -4,6 +4,8 @@ SN-2828 · DESIGN / FIX
 
 **Created:** 2026-11-14 22:10Z
 
+**Kinds:** Honor · Multiplication · Craft · Knowledge
+
 > "These are a lot better... I'll give that ten out of ten."
 
 ## Hook
