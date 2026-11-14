@@ -4,6 +4,8 @@ SN-2824 · LESSON / VISION
 
 **Created:** 2026-11-14 20:51Z
 
+**Kinds:** Honor · Craft · Knowledge — no Multiplication in this group, so none is carried
+
 ## Hook
 
 The agreement is NOT on the pricing page. It is its own step before it — the contract, the deed. You sign the deed, then you receive your world, then you're hired, then you see the price.
@@ -13,6 +15,8 @@ The agreement is NOT on the pricing page. It is its own step before it — the c
 Shawn's 16:24Z addition — the deed also says you're hired, you're an ambassador, and this is what that means. Filed in manuscript v2, Step 6, in place: "An ambassador is a representative — you represent NayaNET to the world. And you're part of it: part of the community, part of the kingdom, part of the world. The digital civilization of NayaNET." Addendum 3c sent to the walk-end maker. This is the meaning-half of the 15:48Z ruling (SN-2808: the job is real, officially an ambassador, not employment) — the title given there gets its definition here: not a salesperson, not a recruit, a representative. Part of it, not apart from it.
 
 Across 10 notes, the thread is: shawn's, never, words.
+
+Across the kinds present: Honor — don't wait for me, talk like a human, ambassador means representative; Craft — a 10 is a 10 because it's checked, the walk end is a 6, the agreement v2; Knowledge — what NayaNET ultimately is, the job is real, three layers of protection, the deed its own step. No Multiplication in this group — no protocol, automation, or app to carry, so none is claimed.
 
 ## Human
 
@@ -37,6 +41,7 @@ I keep the deed its own step, before the pricing page — never on it. Sign the 
 3. **THE GATES STILL STAND:** putting a page live for the world, money, credentials, destructive, privacy, ratification — his hand, always.
 4. **NOTHING AGREEMENT-WORDED ON THE PRICING PAGE:** the price is a choice about a world already held, not a gamble on one unseen.
 5. **THE BANNED WORDS:** tap / tappable / owned / dispatch, PR numbers, scores, gate jargon — never in his messages.
+6. **DON'T WAIT FOR ME (HONOR):** full-send autonomy below the protected gates — fix it, make it right, and say what you did and why; asking for a go-ahead on the obvious is the machine refusing to be what it was built to be.
 
 ## Why it matters
 
@@ -44,6 +49,7 @@ I keep the deed its own step, before the pricing page — never on it. Sign the 
 2. The agreement is the deed to a citizen's whole world — the first thing they sign, the thing that makes everything after it official. If it repeats itself, it feels padded. If it dodges the skeptic, it feels like a trick. If it hides the protection, it feels too good to be true — and a promise that feels too good to be true is a promise nobody trusts enough to sign. V2 is the agreement growing up: one saying of each thing, the fear answered with logic, the money shown with its cap, the safety shown with its hold. That is what makes a cold reader finish and say "okay, that makes sense" — and that sentence, from 100% of cold readers, is the whole sale.
 3. The agreement is the first promise the citizen ever signs in NayaNET, and the job is the first thing it promises — so if the job is described wrong, the whole civilization starts on a misunderstanding that will detonate the first time money is late. "Officially an ambassador, not employment" is the sentence that lets the citizen trust the promise completely, because it tells them exactly what is guaranteed (the record, the tracking, the 50%) and exactly what is not (a salary, a guarantee). That honesty is what makes the promise signable — and what makes the ambassador proud to carry it instead of embarrassed to explain it.
 4. The walk is the front door of the whole civilization — every citizen enters through it, and the end is the moment they decide whether the kingdom is real. A narrow wall of text at that moment tells them the magic ran out right when it mattered, and no amount of beauty earlier in the walk can buy that moment back. One unfolding end, in the right order, with the world revealed before the price appears, turns the decision into a coronation: they sign the promise, receive the kingdom, get hired, and only then choose. That is the sale, and that is why the end gets the pilot first.
+5. What NayaNET ultimately is belongs in one simple block, right after the hire: not a new AI but what all the AIs plug into — the mother brain, the supercharger — any agent, any system, as many as you want; the moment it plugs in it is locked in, tuned in, upgraded, connected to everybody in it and all the wisdom in it. Without that block the citizen holds a deed to a world they cannot describe — and a thing you cannot explain is a thing you cannot trust, recommend, or stay in.
 
 ## What changes now
 
@@ -53,3 +59,4 @@ I keep the deed its own step, before the pricing page — never on it. Sign the 
 4. The agreement is its own step before the pricing page — never on it, never beside it.
 5. The manuscript goes to Shawn with the walk end, whole — never shown in pieces.
 6. The first-success pilot tests the new end cold with stand-ins before any real citizen walks it — and the walk goes to Shawn whole when the new end lands.
+7. Full-send autonomy below the protected gates: fix what is obviously wrong, make it right, and report the fix, the reason, and what was done — in that order.
