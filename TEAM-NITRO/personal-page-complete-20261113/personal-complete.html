@@ -4032,10 +4032,10 @@ body.fc-open{overflow:hidden;}
   <div class="fc-panel fc-picker-panel ph-card" style="--ac:#3fb8ff;">
     <button class="fc-x" type="button" id="fcPickerX" aria-label="Close">✕</button>
     <h3 id="fcPickerTitle"><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">💬</span> <span data-mw-tr="pick">Message someone</span></h3>
-    <p class="os-note" data-mw-tr="pickhint">Search your people and spaces — pick one and the message pops up.</p>
-    <div class="os-fieldwrap"><input class="os-input" id="fcPickerSearch" type="search" data-mw-ph="Search people and spaces…" placeholder="Search people and spaces&hellip;" autocomplete="off" aria-label="Search people and spaces"></div>
-    <div id="fcPickerList" role="listbox" aria-label="People and spaces"></div>
-    <p class="os-note" data-mw-tr="picknote">Match is figured on this device from shared posts, messages and invites — highest first. Spaces show by name; their match comes from the Auto-Match engine, which is not switched on for citizens yet.</p>
+    <p class="os-note" data-mw-tr="pickhint">Search your people and worlds — pick one and the message pops up.</p>
+    <div class="os-fieldwrap"><input class="os-input" id="fcPickerSearch" type="search" data-mw-ph="Search people and worlds…" placeholder="Search people and worlds&hellip;" autocomplete="off" aria-label="Search people and spaces"></div>
+    <div id="fcPickerList" role="listbox" aria-label="People and worlds"></div>
+    <p class="os-note" data-mw-tr="picknote">Match is figured on this device from shared posts, messages and invites — highest first. Worlds show by name; their match comes from the Auto-Match engine, which is not switched on for citizens yet.</p>
   </div>
 </div>
 <div class="fc-chat" id="fcChat" hidden role="dialog" aria-label="Instant message">
@@ -4824,7 +4824,7 @@ html.os-calm
     <a href="https://nayanet.app/#/hub" style="--rc:#a06bff">Home/Hub</a>
     <a href="https://nayanet.app/personal" style="--rc:#3fb8ff"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">✦</span> Personal</a>
     <a href="https://nayanet.app/business" style="--rc:#2fe89e"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">✦</span> Business</a>
-    <a href="https://nayanet.app/space" style="--rc:#ffbf3d"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">✦</span> Space</a>
+    <a href="https://nayanet.app/space" style="--rc:#ffbf3d"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">✦</span> World</a>
     <a href="https://nayanet.app/#/hub/reports" style="--rc:#ff9a5a" data-mw-tr="drawer">Your Reports</a>
     <a href="https://nayanet.app/#/hub/today" style="--rc:#ff5e6c" data-mw-tr="drawer">Intel Today</a>
     <a href="https://nayanet.app/#/hub/connections" style="--rc:#e84fff" data-mw-tr="drawer">Your Connections</a>
@@ -4847,7 +4847,7 @@ html.os-calm
     <a href="#memberships" data-mw-open-mship="Fast Action Club" style="--rc:#2fe89e">Fast Action Club</a>
     <div class="os-drawer-sec" data-mw-tr="drawer">YOUR WORLD</div>
     <a href="https://nayanet.app/dashboard" style="--rc:#ffbf3d" data-mw-tr="drawer">Leaderboards</a>
-    <a href="https://nayanet.app/#/hub/spaces" style="--rc:#ff9a5a" data-mw-tr="drawer">My Spaces</a>
+    <a href="https://nayanet.app/#/hub/spaces" style="--rc:#ff9a5a" data-mw-tr="drawer">My Worlds</a>
     <a href="https://nayanet.app/#/hub/growth" style="--rc:#ff5e6c" data-mw-tr="drawer">＋ Add a custom link</a>
     <div class="os-drawer-sec" data-mw-tr="drawer">ABOUT NAYANET</div>
     <a href="https://nayanet.groovepages.com/aboutus" target="_blank" rel="noopener" style="--rc:#e84fff" data-mw-tr="drawer">About Us</a>
@@ -4864,7 +4864,6 @@ html.os-calm
 </div>
 <div class="ph-head">
   <div class="ph-idcol">
-  <div class="ph-avwrap"><div class="ph-av" id="avv" data-mw-title="Tap to change your picture"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22256%22%20height%3D%22256%22%3E%3Crect%20width%3D%22256%22%20height%3D%22256%22%20fill%3D%22%230b0b11%22/%3E%3Cpolygon%20points%3D%22128%2C28%20218%2C128%20128%2C228%2038%2C128%22%20fill%3D%22none%22%20stroke%3D%22%23a06bff%22%20stroke-width%3D%2210%22/%3E%3Ctext%20x%3D%22128%22%20y%3D%22148%22%20font-size%3D%2284%22%20font-family%3D%22Georgia%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EN%3C/text%3E%3C/svg%3E" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">✦<input type="file" id="avin" accept="image/*" style="display:none;"></div><button class="ph-av-edit" id="avedit" type="button" data-mw-aria="Change picture" aria-label="Change picture" data-mw-title="Edit photo" title="Edit photo">📷</button></div>
     <div class="ph-pointsrow">
       <div class="ph-points pc-restyled" id="pointsdisplay" title="Your Naya points">
         <span class="pc-pill-numrow"><span class="ph-points-star">✦</span><span id="pointscount">…</span><span class="ph-points-label" data-mw-tr="pts">pts</span></span>
@@ -4872,10 +4871,11 @@ html.os-calm
       </div>
     </div>
     <!-- TIER HOME (follow-on, tier ruling 2026-11-14): the tier label lands here, under the points pill. -->
+  <div class="ph-avwrap"><div class="ph-av" id="avv" data-mw-title="Tap to change your picture"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22256%22%20height%3D%22256%22%3E%3Crect%20width%3D%22256%22%20height%3D%22256%22%20fill%3D%22%230b0b11%22/%3E%3Cpolygon%20points%3D%22128%2C28%20218%2C128%20128%2C228%2038%2C128%22%20fill%3D%22none%22%20stroke%3D%22%23a06bff%22%20stroke-width%3D%2210%22/%3E%3Ctext%20x%3D%22128%22%20y%3D%22148%22%20font-size%3D%2284%22%20font-family%3D%22Georgia%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EN%3C/text%3E%3C/svg%3E" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">✦<input type="file" id="avin" accept="image/*" style="display:none;"></div><button class="ph-av-edit" id="avedit" type="button" data-mw-aria="Change picture" aria-label="Change picture" data-mw-title="Edit photo" title="Edit photo">📷</button></div>
   </div>
   <div class="ph-intro-board" id="phIntroBoard">
     <div class="ph-nm ph-intro-name" id="pname" title="Click to edit">Shawn Vibert</div>
-    <div class="ph-intro-motto-row"><div class="ph-tg ph-intro-motto" id="ptag" title="Click to edit">Welcome to my world — make a post on my feed, send a message, make yourself at home.</div><button class="ph-intro-plus" id="phIntroPlus" type="button" aria-label="Add something" title="Add something">+</button></div>
+    <div class="ph-intro-motto-row"><div class="ph-tg ph-intro-motto" id="ptag" title="Click to edit">Welcome to my world — make a post on my feed, send a message, make yourself at home.</div><button class="pc-info ph-intro-info" id="phIntroInfo" type="button" data-os-go="about" aria-label="About me" title="About me">ⓘ</button></div>
   </div>
 </div>
 <div class="ph-actions-row up-actions">
@@ -4953,9 +4953,9 @@ html.os-calm
 </div>
 </div>
 <div class="fc-create-row" id="fcCreateRow" role="group" aria-label="Create on this feed" data-mw-aria="Create on this feed">
-<button type="button" class="tg-mode fc-create" data-fc-create="post" style="--mc:#e8e8ec"><span class="tg-dot"></span>✎ <span class="fc-plus" aria-hidden="true">+</span> <span data-mw-tr="cr">Make a post</span></button>
-<button type="button" class="tg-mode fc-create" data-fc-create="naya" style="--mc:#2fe89e"><span class="tg-dot"></span>✎ <span class="fc-plus" aria-hidden="true">+</span> <span data-mw-tr="cr">Naya note</span></button>
-<button type="button" class="tg-mode fc-create" data-fc-create="smart" style="--mc:#a06bff"><span class="tg-dot"></span>✦ <span class="fc-plus" aria-hidden="true">+</span> <span data-mw-tr="cr">Smart note</span></button>
+<button type="button" class="tg-mode fc-create" data-fc-create="post" style="--mc:#e8e8ec" aria-label="Make a post" title="Make a post"><span class="fc-ico fc-plus" aria-hidden="true">+</span><span class="fc-create-lab" data-mw-tr="cr">Make a post</span></button>
+<button type="button" class="tg-mode fc-create" data-fc-create="naya" style="--mc:#2fe89e" aria-label="Naya note" title="Naya note"><span class="fc-ico" aria-hidden="true">✎</span><span class="fc-create-lab" data-mw-tr="cr">Naya note</span></button>
+<button type="button" class="tg-mode fc-create" data-fc-create="smart" style="--mc:#a06bff" aria-label="Smart note" title="Smart note"><span class="fc-ico" aria-hidden="true">✦</span><span class="fc-create-lab" data-mw-tr="cr">Smart note</span></button>
 </div>
 <!-- FEED-CREATOR (Shawn 17:21Z): the always-open composer is gone — no open box, no empty
      note, no massive black space. The three buttons above pop the full-page creator.
@@ -4999,7 +4999,6 @@ html.os-calm
 <aside id="pcRail" class="os-view on" data-os-view="home" aria-label="People like you">
   <div class="pc-rail-head">
     <div class="pc-rail-head-row"><h3 data-mw-tr="rail">People like you</h3><button type="button" class="pc-info" id="pcRailInfo" aria-label="About these people">ⓘ</button></div>
-    <p class="pc-rail-sub"><span id="pcLiveCount">0 live matches</span> &middot; <span id="pcStandCount">13 standing</span></p>
   <div class="pc-rail-tools"><input id="pcRailSearch" type="search" placeholder="Search people…" aria-label="Search people" autocomplete="off"><button id="pcRailClose" type="button" aria-label="Close the people rail" title="Close the people rail">✕</button></div>
   </div>
   <div class="pc-rail-list" id="pcRailList"></div>
@@ -6370,8 +6369,8 @@ button.os-ld-node .os-ld-n{
 <div class="os-mw-list" id="os-myworld-notes-list"><p class="os-note" data-mw-tr="dash">Reading your Smart Notes&hellip;</p></div>
 </div>
 <div class="ph-card" id="os-myworld-joined" style="--ac:#2fe89e;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#2fe89e">🌍</span> <span data-mw-tr="dash">Joined pages &amp; spaces</span></h3>
-<div class="os-mw-list" id="os-myworld-joined-list"><p class="os-note" data-mw-tr="dash">Reading your pages &amp; spaces&hellip;</p></div>
+<h3><span class="os-jewel os-jewel-h" style="--jc:#2fe89e">🌍</span> <span data-mw-tr="dash">Joined pages &amp; worlds</span></h3>
+<div class="os-mw-list" id="os-myworld-joined-list"><p class="os-note" data-mw-tr="dash">Reading your pages &amp; worlds&hellip;</p></div>
 </div>
 <div class="ph-card os-sl-board" style="--ac:#ff9a5a;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#ff9a5a">🔗</span> <span data-mw-tr="dash">Smart Links</span> <span class="os-sl-live"><i></i><span data-mw-tr="dash">LIVE</span></span></h3>
@@ -6541,10 +6540,10 @@ button.os-ld-node .os-ld-n{
 <a class="ph-connect os-src-door" href="https://nayanet.app/business"><span data-mw-tr="dash">Open Business</span></a>
 </div>
 <div class="os-src live os-litobj" style="--ac:#2fe89e;">
-<div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#2fe89e;">🌌</span><div class="os-src-id"><span class="os-src-name"><span data-mw-tr="dash">Space</span></span><span class="os-src-chip live"><span data-mw-tr="dash">LIVE</span></span></div></div>
-<p class="os-src-note" data-mw-tr="dash">Pick a topic and the space around it is there — the personal view, for the chosen topic. Trinity sibling.</p>
-<p class="os-src-feeds"><span data-mw-tr="dash">Opens → the Space app</span></p>
-<a class="ph-connect os-src-door" href="https://nayanet.app/space"><span data-mw-tr="dash">Open Space</span></a>
+<div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#2fe89e;">🌌</span><div class="os-src-id"><span class="os-src-name"><span data-mw-tr="dash">World</span></span><span class="os-src-chip live"><span data-mw-tr="dash">LIVE</span></span></div></div>
+<p class="os-src-note" data-mw-tr="dash">Pick a topic and the world around it is there — the personal view, for the chosen topic. Trinity sibling.</p>
+<p class="os-src-feeds"><span data-mw-tr="dash">Opens → the World app</span></p>
+<a class="ph-connect os-src-door" href="https://nayanet.app/space"><span data-mw-tr="dash">Open World</span></a>
 </div>
 <div class="os-src live os-litobj" style="--ac:#ffbf3d;">
 <div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#ffbf3d;">🧠</span><div class="os-src-id"><span class="os-src-name"><span data-mw-tr="dash">Project Intelligence</span></span><span class="os-src-chip live"><span data-mw-tr="dash">LIVE</span></span></div></div>
@@ -6554,7 +6553,7 @@ button.os-ld-node .os-ld-n{
 </div>
 <div class="os-src live os-litobj" style="--ac:#ff9a5a;">
 <div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#ff9a5a;">📅</span><div class="os-src-id"><span class="os-src-name"><span data-mw-tr="dash">Book a time</span></span><span class="os-src-chip live"><span data-mw-tr="dash">LIVE</span></span></div></div>
-<p class="os-src-note" data-mw-tr="dash">The one scheduler — set a time and the time holds. Match introduces → Booking sets the time → Meet hosts. A scheduler change touches Personal, Business, Space, Smart Mail and Day Journal.</p>
+<p class="os-src-note" data-mw-tr="dash">The one scheduler — set a time and the time holds. Match introduces → Booking sets the time → Meet hosts. A scheduler change touches Personal, Business, World, Smart Mail and Day Journal.</p>
 <p class="os-src-feeds"><span data-mw-tr="dash">Opens → the Booking scheduler</span></p>
 <a class="ph-connect os-src-door" href="https://nayanet.app/book"><span data-mw-tr="dash">Book a time</span></a>
 </div>
@@ -6725,7 +6724,23 @@ button.os-ld-node .os-ld-n{
 <textarea class="os-textarea" id="os-lib-na" rows="3" placeholder="The answer &mdash; in plain words"></textarea>
 <div class="ph-actions"><button class="ph-connect" id="os-lib-add" type="button">Add to the library</button></div>
 <div class="os-status" id="os-lib-status">Entries save onto this app, for every visitor &mdash; the library fills in one answer at a time.</div>
-</div></div><div class="ph-sec os-view" id="story" data-os-view="story" data-block="story">
+</div>
+<div class="ph-card ph-album" id="osAlbum" style="--ac:#a06bff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">🖼️</span> My album</h3>
+<p class="os-note" style="margin:0 0 12px;">Nine photos that tell my story — my world, my people, my work. Add yours and they show here.</p>
+<div class="ph-album-grid">
+<figure class="ph-album-tile ph-album-photo"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22256%22%20height%3D%22256%22%3E%3Crect%20width%3D%22256%22%20height%3D%22256%22%20fill%3D%22%230b0b11%22/%3E%3Cpolygon%20points%3D%22128%2C28%20218%2C128%20128%2C228%2038%2C128%22%20fill%3D%22none%22%20stroke%3D%22%23a06bff%22%20stroke-width%3D%2210%22/%3E%3Ctext%20x%3D%22128%22%20y%3D%22148%22%20font-size%3D%2284%22%20font-family%3D%22Georgia%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EN%3C/text%3E%3C/svg%3E" alt="My profile picture"><figcaption>My picture</figcaption></figure>
+<figure class="ph-album-tile ph-album-cover"><span class="ph-album-coverart" aria-hidden="true"></span><figcaption>My cover</figcaption></figure>
+<figure class="ph-album-tile ph-album-empty"><span class="ph-album-plus" aria-hidden="true">+</span><figcaption>Add a photo</figcaption></figure>
+<figure class="ph-album-tile ph-album-empty"><span class="ph-album-plus" aria-hidden="true">+</span><figcaption>Add a photo</figcaption></figure>
+<figure class="ph-album-tile ph-album-empty"><span class="ph-album-plus" aria-hidden="true">+</span><figcaption>Add a photo</figcaption></figure>
+<figure class="ph-album-tile ph-album-empty"><span class="ph-album-plus" aria-hidden="true">+</span><figcaption>Add a photo</figcaption></figure>
+<figure class="ph-album-tile ph-album-empty"><span class="ph-album-plus" aria-hidden="true">+</span><figcaption>Add a photo</figcaption></figure>
+<figure class="ph-album-tile ph-album-empty"><span class="ph-album-plus" aria-hidden="true">+</span><figcaption>Add a photo</figcaption></figure>
+<figure class="ph-album-tile ph-album-empty"><span class="ph-album-plus" aria-hidden="true">+</span><figcaption>Add a photo</figcaption></figure>
+</div>
+</div>
+</div><div class="ph-sec os-view" id="story" data-os-view="story" data-block="story">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#a06bff;color:#a06bff;"></span> <span id="os-story-title">My Story</span></div>
 <div class="ib-layer layer-sapphire open">
 <button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#3ca8ff">👋</span><b>The story</b><span class="ib-chev">▾</span></button>
@@ -6799,7 +6814,7 @@ button.os-ld-node .os-ld-n{
   var STORY_QS={
     personal:['What is your story?','Why do you love what you do?'],
     business:['What is our story?','Why do we love what we do?'],
-    space:['What is the story of this space?','Why do you love it?'],
+    space:['What is the story of this world?','Why do you love it?'],
     memberships:['What is our story?','Why do we love what we do?']
   };
   function applyStoryLabels(){
@@ -6874,7 +6889,7 @@ button.os-ld-node .os-ld-n{
 
 <div class="ph-sec os-view" data-os-view="skills" hidden>
 <div class="ph-sec-t"><span class="ph-dot" style="background:#e84fff;color:#e84fff;"></span> Smart Skills</div>
-<p class="os-note">The skills so far — the list keeps growing. Every skill is a capability you call on by name: a Smart Note (the knowledge) + a Factory template (the ability to do it), stored in your Smart Box. Tap a skill to see why it matters.</p>
+<p class="os-note">The skills so far — the list keeps growing. Every skill is a capability you call on by name: a Smart Note (the knowledge) + a Factory template (the ability to do it), stored in your Smart Vault. Tap a skill to see why it matters.</p>
 <div id="os-skills-list">
 <div class="ph-card sa-skill" style="--ac:#a06bff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">✦</span> The Login Skill</h3>
@@ -7200,7 +7215,7 @@ button.os-ld-node .os-ld-n{
 <p class="os-note" style="margin:12px 0 10px" data-mw-tr="set">Your other worlds:</p>
 <div class="ph-actions">
 <a class="ph-msg" href="https://nayanet.app/business" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Business</a>
-<a class="ph-msg" href="https://nayanet.app/space" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Space</a>
+<a class="ph-msg" href="https://nayanet.app/space" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">World</a>
 <button class="ph-msg" type="button" data-os-go="memberships" data-mw-tr="set">Memberships</button>
 </div>
 </div>
@@ -7213,7 +7228,7 @@ button.os-ld-node .os-ld-n{
 <div class="ph-card" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">⚙️</span> <span data-mw-tr="thispage">This page</span></h3>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">✦</span><span class="os-setrow-main"><b data-mw-tr="feedtab">Default feed tab</b><span class="os-setrow-sub" data-mw-tr="feedtab-sub">Which tab opens first on your feed.</span></span><span class="mw-seg" id="mw-seg-feedtab"><button type="button" data-v="smart" data-mw-tr="seg" class="on">Smart Notes</button><button type="button" data-v="naya" data-mw-tr="seg">Naya Notes</button><button type="button" data-v="activity" data-mw-tr="seg">Activity</button></span></div>
-<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">▾</span><span class="os-setrow-main"><b data-mw-tr="autofold">Bottom bar auto-fold</b><span class="os-setrow-sub" data-mw-tr="autofold-sub">On — the trio (Mail · Activity · Space) folds away as you scroll down and comes back 1.5 seconds after you stop. Off — it stays put.</span></span><span class="os-switch-wrap" style="--jc:#2fe89e"><button class="os-switch on" id="mw-set-autofold" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
+<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">▾</span><span class="os-setrow-main"><b data-mw-tr="autofold">Bottom bar auto-fold</b><span class="os-setrow-sub" data-mw-tr="autofold-sub">On — the trio (Mail · Activity · World) folds away as you scroll down and comes back 1.5 seconds after you stop. Off — it stays put.</span></span><span class="os-switch-wrap" style="--jc:#2fe89e"><button class="os-switch on" id="mw-set-autofold" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#e84fff">🌐</span><span class="os-setrow-main"><b data-mw-tr="lang">Language for this page</b><span class="os-setrow-sub" data-mw-tr="lang-sub">Your page speaks your language — menus, buttons and headings translate.</span></span><select class="mw-lang" id="mw-set-lang" aria-label="Language for this page"><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option></select></div>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ff9a5a">🔊</span><span class="os-setrow-main"><b data-mw-tr="audio">Audio — Naya&rsquo;s voice</b><span class="os-setrow-sub" data-mw-tr="audio-sub">Naya reads things aloud on this page. Off and she stays quiet here.</span></span><span class="os-switch-wrap" style="--jc:#ff9a5a"><button class="os-switch on" id="mw-set-audio" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">%</span><span class="os-setrow-main"><b data-mw-tr="match">Match % threshold — Connections</b><span class="os-setrow-sub" data-mw-tr="match-sub">Show only people above the match you choose. Lower it to see everyone again.</span></span><span class="mw-seg" id="mw-seg-match"><button type="button" data-v="0" data-mw-tr="seg" class="on">Any</button><button type="button" data-v="25">25%</button><button type="button" data-v="50">50%</button><button type="button" data-v="75">75%</button><button type="button" data-v="90">90%</button></span></div>
@@ -8905,12 +8920,12 @@ function wallCard(j, iso, pid, idx){
         var baRaw=baIid.replace(/^smart-note-/,'');
         var baBid='note-'+baRaw.toLowerCase().replace(/[^a-z0-9]+/g,'-').slice(0,40);
         var baNut=baArt?baArt.querySelector('.ib-nutshell p')||baArt.querySelector('.ib-nutshell'):null;
-        var baTitle=(baNut&&baNut.textContent.replace(/\s+/g,' ').trim().replace(/^IN A NUTSHELL\s*/,'').slice(0,60))||'Smart Space';
+        var baTitle=(baNut&&baNut.textContent.replace(/\s+/g,' ').trim().replace(/^IN A NUTSHELL\s*/,'').slice(0,60))||'Smart World';
         var baRead=function(){ try{ return JSON.parse(localStorage.getItem('nayanet-board-actions-v1')||'{}'); }catch(x){ return {}; } };
         var baWrite=function(s){ try{ localStorage.setItem('nayanet-board-actions-v1', JSON.stringify(s)); }catch(x){} };
         if(baKind==='create-space'){
           var baS=baRead(), baKey=baBid+':create-space';
-          if(baS[baKey]){ toast('SMART SPACE ALREADY EXISTS — "'+baTitle+'" is live in Smart Spaces.'); return; }
+          if(baS[baKey]){ toast('SMART WORLD ALREADY EXISTS — "'+baTitle+'" is live in Smart Worlds.'); return; }
           baS[baKey]=true; baWrite(baS);
           baBtn.classList.add('on'); baBtn.setAttribute('aria-pressed','true');
           try{
@@ -8927,8 +8942,8 @@ function wallCard(j, iso, pid, idx){
             if(!Array.isArray(baMine)) baMine=['sp-ai','sp-friends'];
             if(baMine.indexOf(baSp.id)<0){ baMine.push(baSp.id); localStorage.setItem('naya.spaces.mine.v1', JSON.stringify(baMine)); }
           }catch(e){ }
-          if(typeof ActivityLog!=='undefined'){ ActivityLog.log('space','Space created from "'+baTitle+'"','spaces','#9d75ff','<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/>'); }
-          toast('SMART SPACE CREATED — "'+baTitle+'" is live in Smart Spaces.');
+          if(typeof ActivityLog!=='undefined'){ ActivityLog.log('space','World created from "'+baTitle+'"','spaces','#9d75ff','<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/>'); }
+          toast('SMART WORLD CREATED — "'+baTitle+'" is live in Smart Worlds.');
           return;
         }
         if(baKind==='favorite'||baKind==='save'){
@@ -12101,7 +12116,7 @@ function wallCard(j, iso, pid, idx){
       {label:(window.mwTr?window.mwTr('Dashboard'):'Dashboard'), ic:'📊', dest:{go:'dashboard'}},
       {label:(window.mwTr?window.mwTr('Personal'):'Personal'), ic:'🌍', dest:{href:'https://nayanet.app/personal'}},
       {label:(window.mwTr?window.mwTr('Business'):'Business'), ic:'💼', dest:worldByLabel('Business', {href:'https://nayanet.app/business'})},
-      {label:(window.mwTr?window.mwTr('Space'):'Space'), ic:'🚀', dest:worldByLabel('Space', {href:'https://nayanet.app/space'})},
+      {label:(window.mwTr?window.mwTr('World'):'World'), ic:'🚀', dest:worldByLabel('Space', {href:'https://nayanet.app/space'})},
       {label:(window.mwTr?window.mwTr('Membership'):'Membership'), ic:'🎫', dest:worldByLabel('Memberships', {go:'memberships'})}
     ];
     var seen={};
@@ -13871,7 +13886,7 @@ NayaSmartBar.mount({
 /* ——— Bottom fold: the trio (ROW+SMARTBAR 2026-11-12) ———
    The Smart Bar is OUT (Shawn 15:43Z) — there is no bottom bar left to
    fold, and the BUILDER-2 icon-bar wiring that lived here is gone with
-   it. What folds is the trio (Mail · Activity · Space) above the bottom:
+   it. What folds is the trio (Mail · Activity · World) above the bottom:
    same scroll, same 1.5s return. The trio is built by NayaNotif in the
    next script, so it is looked up lazily here, every fold. The trio
    rides at the very bottom now, so --smartbar-h is 0 — set explicitly,
@@ -13907,7 +13922,7 @@ NayaSmartBar.mount({
    not exist on this page, so the taps take this page's own doors: Mail
    opens the inbox view, Activity opens the dashboard view (the page's own
    convention, same as the old smart-bar Activity tab), Spaces opens the
-   left drawer's Smart Spaces door (https://nayanet.app/#/hub/spaces).
+   left drawer's Smart Worlds door (https://nayanet.app/#/hub/spaces).
    The mail pop-up in set() stays verbatim behind its NayaUI guard — it is
    dormant on this page until NayaUI lands here; the counts themselves read
    the same shared keys the Hub writes, so the bubbles are live. */
@@ -13977,7 +13992,7 @@ window.NayaNotif = window.NayaNotif || {
         eco: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>',
         plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>'
       };
-      var SEGS = [['plus', 'ADD', '#a06bff'], ['mail', 'MAIL', '#3fb8ff'], ['activity', 'ACTIVITY', '#2fe89e'], ['spaces', 'SPACES', '#ffbf3d'], ['eco', 'ECOSYSTEM', '#a06bff']];
+      var SEGS = [['plus', 'ADD', '#a06bff'], ['mail', 'MAIL', '#3fb8ff'], ['activity', 'ACTIVITY', '#2fe89e'], ['spaces', 'WORLDS', '#ffbf3d'], ['eco', 'ECOSYSTEM', '#a06bff']];
       bar = document.createElement('nav'); bar.id = 'naya-notif-bar'; bar.className = 'notif-bar';
       bar.setAttribute('aria-label', 'Notifications');
       var row = document.createElement('div'); row.className = 'notif-row';
@@ -14743,7 +14758,7 @@ function ibFeedCard(post, actions){
      + '<span title="'+(rating.c?avg+' average from '+rating.c+' ratings':'Be the first to rate')+'">'+stars+'<span class="ib-rating-num">'+(rating.c?avg:'')+'</span></span>'
      + '<button type="button" class="ib-act object" data-ib-save="'+esc(post.id||'')+'">💾 <span data-mw-tr="set" data-mw-en="Save to list">' + (window.mwTr?window.mwTr('Save to list'):'Save to list') + '</span></button>'
      + (actions.canPin ? '<button type="button" class="ib-act object" data-ib-pin="'+esc(post.id||'')+'">📌 <span data-mw-tr="set" data-mw-en="'+(post.pinned?'Unpin':'Pin')+'">'+(window.mwTr?window.mwTr(post.pinned?'Unpin':'Pin'):(post.pinned?'Unpin':'Pin'))+'</span></button>' : '')
-     + '<button type="button" class="ib-act grow" data-ib-grow-space="'+esc(post.id||'')+'">➕ <span data-mw-tr="set" data-mw-en="Space from this">' + (window.mwTr?window.mwTr('Space from this'):'Space from this') + '</span></button>'
+     + '<button type="button" class="ib-act grow" data-ib-grow-space="'+esc(post.id||'')+'">➕ <span data-mw-tr="set" data-mw-en="World from this">' + (window.mwTr?window.mwTr('World from this'):'World from this') + '</span></button>'
      + '<button type="button" class="ib-act grow" data-ib-grow-biz="'+esc(post.id||'')+'">🏢 <span data-mw-tr="set" data-mw-en="Business from this">' + (window.mwTr?window.mwTr('Business from this'):'Business from this') + '</span></button>'
      + '</div>';
 
@@ -14784,13 +14799,13 @@ function ibGrowDialog(kind, noteTitle, onGo){
   var wrap = document.createElement('div');
   wrap.className = 'ib-growdlg'; wrap.id = 'ib-growdlg';
   wrap.innerHTML =
-    '<div class="ib-growdlg-card"><h3>'+(isSpace?'Create a space from this note':'Create a business from this note')+'</h3>'
-    + '<p>The note becomes the seed — pinned at the heart of the new '+(isSpace?'space':'business')
+    '<div class="ib-growdlg-card"><h3>'+(isSpace?'Create a world from this note':'Create a business from this note')+'</h3>'
+    + '<p>The note becomes the seed — pinned at the heart of the new '+(isSpace?'world':'business')
     + ', so everyone who joins starts from this thought.</p>'
-    + '<input id="ib-grow-name" type="text" maxlength="80" placeholder="'+(isSpace?'Space name':'Business name')+'">'
+    + '<input id="ib-grow-name" type="text" maxlength="80" placeholder="'+(isSpace?'World name':'Business name')+'">'
     + '<div class="ib-growdlg-row">'
     + '<button type="button" class="ib-act" id="ib-grow-cancel">Cancel</button>'
-    + '<button type="button" class="ib-act grow" id="ib-grow-go">'+(isSpace?'Create space':'Create business')+'</button>'
+    + '<button type="button" class="ib-act grow" id="ib-grow-go">'+(isSpace?'Create world':'Create business')+'</button>'
     + '</div></div>';
   document.body.appendChild(wrap);
   document.getElementById('ib-grow-cancel').onclick = closeIbGrowDialog;
@@ -14824,7 +14839,7 @@ function ibSaveDialog(noteId, noteTitle){
   wrap.innerHTML =
     '<div class="ib-growdlg-card" style="border-color:rgba(47,232,158,.35);">'
     + '<h3>Save to a list</h3>'
-    + '<p>Collections explain who you are, what your business is, what a space is about. Saved notes stay yours, organized.</p>'
+    + '<p>Collections explain who you are, what your business is, what a world is about. Saved notes stay yours, organized.</p>'
     + '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;">'+list+'</div>'
     + '<input id="ib-grow-name" type="text" maxlength="40" placeholder="Or a new list name…">'
     + '<div class="ib-growdlg-row">'
@@ -15488,7 +15503,7 @@ window.BoardActions = (() => {
     wrap.setAttribute('aria-label', 'Board actions');
     const store = read();
     const defs = [
-      ['\uFF0B CREATE SPACE', 'create-space', 'Create a smart space from this intelligence'],
+      ['\uFF0B CREATE WORLD', 'create-space', 'Create a smart world from this intelligence'],
       ['\u2605 FAVORITE', 'favorite', 'Mark as favorite'],
       ['SAVE', 'save', 'Save this intelligence'],
     ];
@@ -15511,7 +15526,7 @@ window.BoardActions = (() => {
               if (board) {
                 const bodyText = board.textContent || '';
                 // Clean up: remove button labels, get main content
-                text = bodyText.replace(/NAYA VOICE|CREATE SPACE|FAVORITE|SAVE/g, '').trim().substring(0, 2000);
+                text = bodyText.replace(/NAYA VOICE|CREATE WORLD|FAVORITE|SAVE/g, '').trim().substring(0, 2000);
               }
               // The whole board = its sections in order: nutshell first,
               // then each layer (name + body). playSections chunks and
@@ -15563,7 +15578,7 @@ window.BoardActions = (() => {
              joined via 'naya.spaces.mine.v1' — so the space is listed and
              openable in the Spaces room, with this note pinned as its
              first post (the create modal's pin slot, same field). */
-          var spName = (note && note.title) || title || 'Smart Space';
+          var spName = (note && note.title) || title || 'Smart World';
           try {
             var TOPIC_SPECTRUM = {
               'Start Here': '#a06bff', 'Vision': '#3fb8ff', 'Learn': '#2fe89e', 'Create': '#ffbf3d',
@@ -15603,10 +15618,10 @@ window.BoardActions = (() => {
             }
           } catch (e) {}
           if (typeof ActivityLog !== 'undefined') {
-            ActivityLog.log('space', 'Space created from "' + title + '"', 'spaces', '#9d75ff',
+            ActivityLog.log('space', 'World created from "' + title + '"', 'spaces', '#9d75ff',
               '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/>');
           }
-          toast('SMART SPACE CREATED', '"' + spName + '" is live in Smart Spaces — open the Spaces room to step inside.', '#9d75ff');
+          toast('SMART WORLD CREATED', '"' + spName + '" is live in Smart Worlds — open the Worlds room to step inside.', '#9d75ff');
           return;
         }
         const next = !s[key]; s[key] = next; write(s);
@@ -17899,7 +17914,7 @@ var LD_NODES = [
   {key:'shares', label:(window.mwTr?window.mwTr('Shares'):'Shares'),      color:'#ffbf3d', lang:'funnel',        jewel:'\u21C4', value:15},
   {key:'comments', label:(window.mwTr?window.mwTr('Comments'):'Comments'),  color:'#ff9a5a', lang:'wave',          jewel:'\u270E', value:5},
   {key:'likes',  label:(window.mwTr?window.mwTr('Likes'):'Likes'),       color:'#ff5e6c', lang:'pulsebars',     jewel:'\u2665', value:1},
-  {key:'saves',  label:(window.mwTr?window.mwTr('Saves'):'Saves'),       color:'#c9a0ff', lang:'constellation', jewel:'\u2606', value:2},
+  {key:'saves',  label:(window.mwTr?window.mwTr('Saves'):'Saves'),       color:'#c9a0ff', lang:'constellation', tkey:'saveTimes', jewel:'\u2606', value:5}, /* header-v2 2026-11-14: wired to the Dashboard source — Dashboard LD_NODES (dashboard-pass10 line 14437) counts saveTimes at 5; this page had no tkey and value 2, so the pill read 25 low on 5 saves. ldNodeCount is byte-identical in both files. */
 ];
 function ldRel(t){
   var s = Math.max(0, Math.floor((Date.now() - new Date(t).getTime())/1000));
@@ -19462,7 +19477,7 @@ document.addEventListener('click', function(e){
       return {kind:'link', id:found.name, label:found.name};
     }
     if (f.kind === 'page'){
-      var pages = {personal:'Personal', business:'Business', space:'Space', membership:'Membership'};
+      var pages = {personal:'Personal', business:'Business', space:'World', membership:'Membership'};
       if (!pages[f.id]) return {kind:'world', id:'dashboard', label:'Dashboard'};
       return {kind:'page', id:f.id, label:pages[f.id]};
     }
@@ -19668,7 +19683,7 @@ document.addEventListener('click', function(e){
   var PAGES = [
     {id:'personal', label:'Personal', color:'#3fb8ff', icon:'⌂', href:'https://nayanet.app/personal', what:'Your home page — who you are, what you stand for, your links.'},
     {id:'business', label:'Business', color:'#2fe89e', icon:'▤', href:'https://nayanet.app/business', what:'Your business page — what you offer, your products and services.'},
-    {id:'space', label:'Space', color:'#ffbf3d', icon:'△', href:'https://nayanet.app/space', what:'Your gathering place — the room your people meet in.'},
+    {id:'space', label:'World', color:'#ffbf3d', icon:'△', href:'https://nayanet.app/space', what:'Your gathering place — the room your people meet in.'},
     {id:'membership', label:'Membership', color:'#e84fff', icon:'♡', href:null, what:'Your private community — members, content, and connection.'}
   ];
   function _boardNums(holder){
@@ -20447,8 +20462,8 @@ function mwRenderSmartPages(){
   var div=document.createElement('div');
   div.id='mw-smartpages';
   div.innerHTML='<div class="ph-card" style="--ac:#2fe89e;"><h3><span class="os-jewel os-jewel-h" style="--jc:#2fe89e">🌐</span> Smart pages</h3>'
-    +'<p style="font-weight:800;color:#fff;margin:12px 0 6px;">Spaces you follow</p>'
-    +(spaces.length?'<div class="os-faces">'+spaces.slice(0,5).map(function(s){ return '<div class="os-face">'+esc(s)+'</div>'; }).join('')+'</div>':'<p class="os-note">No spaces followed yet — join one from the Hub.</p>')
+    +'<p style="font-weight:800;color:#fff;margin:12px 0 6px;">Worlds you follow</p>'
+    +(spaces.length?'<div class="os-faces">'+spaces.slice(0,5).map(function(s){ return '<div class="os-face">'+esc(s)+'</div>'; }).join('')+'</div>':'<p class="os-note">No worlds followed yet — join one from the Hub.</p>')
     +'<p style="font-weight:800;color:#fff;margin:12px 0 6px;">Memberships you hold</p>'
     +(mships.length?'<div class="os-faces">'+mships.map(function(s){ return '<div class="os-face">'+esc(s)+'</div>'; }).join('')+'</div>':'<p class="os-note">No memberships yet — the three that come with your world are on the cover.</p>')
     +'</div>';
@@ -20705,7 +20720,7 @@ var MW_I18N={
   "Counted from this app’s own save records": "Gezählt aus den eigenen Speicheraufzeichnungen dieser App",
   "Cover button": "Cover-Button",
   "Cover buttons — your memberships": "Cover-Schaltflächen — deine Mitgliedschaften",
-  "Create a smart space from this intelligence": "Aus dieser Intelligenz einen Smart Space erstellen",
+  "Create a smart world from this intelligence": "Aus dieser Intelligenz einen Smart World erstellen",
   "Create on this feed": "In diesem Feed erstellen",
   "Create. Connect. Grow with us.": "Erstelle. Verbinde dich. Wachse mit uns.",
   "Creations": "Kreationen",
@@ -20799,7 +20814,7 @@ var MW_I18N={
   "Join NayaNET on the cover too": "NayaNET beitreten auch auf dem Cover",
   "Joined": "Beigetreten",
   "Joined 0 — stated honestly": "Beitritte 0 — ehrlich gesagt",
-  "Joined pages & spaces": "Beigetretene Seiten & Räume",
+  "Joined pages & worlds": "Beigetretene Seiten & Welten",
   "Joins": "Beitritte",
   "Kept on this device — nothing is sent yet.": "Bleibt auf diesem Gerät — es wird noch nichts gesendet.",
   "LIVE": "LIVE",
@@ -20829,7 +20844,7 @@ var MW_I18N={
   "Make a post — your words, straight up. No auto-format, no distillation — what you write is what lands on the feed.": "Poste — deine Worte, direkt. Kein Auto-Format, keine Destillation — was du schreibst, landet im Feed.",
   "Mark as favorite": "Als Favorit markieren",
   "Match % threshold — Connections": "Match-%-Schwelle — Verbindungen",
-  "Match is figured on this device from shared posts, messages and invites — highest first. Spaces show by name; their match comes from the Auto-Match engine, which is not switched on for citizens yet.": "Der Match wird auf diesem Gerät aus geteilten Beiträgen, Nachrichten und Einladungen ermittelt — die höchsten zuerst. Spaces zeigen nach Namen; ihr Match kommt aus der Auto-Match-Engine, die für Citizens noch nicht eingeschaltet ist.",
+  "Match is figured on this device from shared posts, messages and invites — highest first. Worlds show by name; their match comes from the Auto-Match engine, which is not switched on for citizens yet.": "Der Match wird auf diesem Gerät aus geteilten Beiträgen, Nachrichten und Einladungen ermittelt — die höchsten zuerst. Welten zeigen nach Namen; ihr Match kommt aus der Auto-Match-Engine, die für Citizens noch nicht eingeschaltet ist.",
   "Membership": "Mitgliedschaft",
   "Membership news": "Mitgliedschafts-News",
   "Memberships": "Mitgliedschaften",
@@ -20847,7 +20862,7 @@ var MW_I18N={
   "Month": "Monat",
   "Motion & glow": "Bewegung und Glanz",
   "Move": "Verschieben",
-  "My Spaces": "Meine Spaces",
+  "My Worlds": "Meine Welten",
   "My Story": "Meine Geschichte",
   "My World": "Meine Welt",
   "My World — which pages appear": "Meine Welt - welche Seiten erscheinen",
@@ -20907,7 +20922,7 @@ var MW_I18N={
   "Official NayaNET Guide": "Offizieller NayaNET-Leitfaden",
   "On": "An",
   "On a ": "In einer Serie von ",
-  "On — the trio (Mail · Activity · Space) folds away as you scroll down and comes back 1.5 seconds after you stop. Off — it stays put.": "An — das Trio (Mail · Activity · Space) klappt beim Scrollen nach unten ein und kommt 1,5 Sekunden nach dem Stopp zurück. Aus — es bleibt, wo es ist.",
+  "On — the trio (Mail · Activity · World) folds away as you scroll down and comes back 1.5 seconds after you stop. Off — it stays put.": "An — das Trio (Mail · Activity · World) klappt beim Scrollen nach unten ein und kommt 1,5 Sekunden nach dem Stopp zurück. Aus — es bleibt, wo es ist.",
   "On — visitors can see your profile, make a post on your feed and message you. Off — this app is private.": "An — Besucher können dein Profil sehen, einen Beitrag in deinem Feed schreiben und dir Nachrichten schicken. Aus — diese App ist privat.",
   "One line — it lands in this app’s Smart Mail inbox, where the person who runs this app reads it.": "Eine Zeile — sie landet im Smart-Mail-Posteingang dieser App, wo die Person, die diese App betreibt, sie liest.",
   "One more seat is held open for the next live citizen.": "Ein weiterer Platz bleibt für den nächsten Citizen offen.",
@@ -20921,7 +20936,7 @@ var MW_I18N={
   "Open Reports": "Berichte öffnen",
   "Open Smart Growth — where these invites live": "Intelligentes Wachstum öffnen — wo diese Einladungen leben",
   "Open Smart Mail": "Smart Mail öffnen",
-  "Open Space": "Space öffnen",
+  "Open World": "Welt öffnen",
   "Open in Notes": "In Notizen öffnen",
   "Open it": "Öffnen",
   "Open the Library →": "Bibliothek öffnen →",
@@ -20940,7 +20955,7 @@ var MW_I18N={
   "Opens → the Library": "Öffnet → die Bibliothek",
   "Opens → the Reports room": "Öffnet → den Reports-Raum",
   "Opens → the Smart Mail room": "Öffnet → den Smart-Mail-Raum",
-  "Opens → the Space app": "Öffnet → die Space-App",
+  "Opens → the World app": "Öffnet → die Welt-App",
   "Opens → the Welcome walk": "Öffnet → den Willkommensweg",
   "Opens → this world, canonical": "Öffnet → diese Welt, kanonisch",
   "Other sites": "Andere Seiten",
@@ -20959,7 +20974,7 @@ var MW_I18N={
   "Personal": "Persönlich",
   "Personal app": "Persönliche App",
   "Phone": "Telefon",
-  "Pick a topic and the space around it is there — the personal view, for the chosen topic. Trinity sibling.": "Wähle ein Thema und der Raum darum ist da — die persönliche Sicht, für das gewählte Thema. Geschwister der Dreieinigkeit.",
+  "Pick a topic and the world around it is there — the personal view, for the chosen topic. Trinity sibling.": "Wähle ein Thema und die Welt darum ist da — die persönliche Sicht, für das gewählte Thema. Geschwister der Dreieinigkeit.",
   "Pin": "Anpinnen",
   "Play the video note": "Die Videonotiz abspielen",
   "Play the voice note": "Die Sprachnotiz abspielen",
@@ -20986,7 +21001,7 @@ var MW_I18N={
   "Reading your actions…": "Deine Aktionen werden gelesen…",
   "Reading your links…": "Deine Links werden gelesen…",
   "Reading your notifications…": "Deine Benachrichtigungen werden gelesen…",
-  "Reading your pages & spaces…": "Deine Seiten & Räume werden gelesen…",
+  "Reading your pages & worlds…": "Deine Seiten & Welten werden gelesen…",
   "Ready to install.": "Bereit zum Installieren.",
   "Record video note": "Videonotiz aufnehmen",
   "Record voice note": "Sprachnotiz aufnehmen",
@@ -21001,8 +21016,7 @@ var MW_I18N={
   "SAVE": "SPEICHERN",
   "SMART NOTE": "INTELLIGENTE NOTIZ",
   "SMART SCORE": "SMART-PUNKTZAHL",
-  "SPACES": "RÄUME",
-  "STANDING": "GELISTET",
+  "WORLDS": "WELTEN",
   "SUMMARY": "ZUSAMMENFASSUNG",
   "Sales": "Verkäufe",
   "Save": "Speichern",
@@ -21020,9 +21034,9 @@ var MW_I18N={
   "Score gauge — reading your actions": "Punkteanzeige — lese deine Aktionen",
   "Score gauge — your live score is ": "Punkteanzeige — deine Live-Punktzahl ist ",
   "Search": "Suche",
-  "Search people and spaces…": "Leute und Spaces suchen…",
+  "Search people and worlds…": "Leute und Welten suchen…",
   "Search the public feed": "Öffentlichen Feed durchsuchen",
-  "Search your people and spaces — pick one and the message pops up.": "Such deine Leute und Spaces — wähl einen aus und die Nachricht erscheint.",
+  "Search your people and worlds — pick one and the message pops up.": "Such deine Leute und Welten — wähl einen aus und die Nachricht erscheint.",
   "See Reports": "Berichte ansehen",
   "See Smart Notes": "Intelligente Notizen ansehen",
   "See everyone": "Alle ansehen",
@@ -21076,9 +21090,8 @@ var MW_I18N={
   "Someone replies to you or mentions you.": "Jemand antwortet dir oder erwähnt dich.",
   "Something new in a membership you hold.": "Etwas Neues in einer Mitgliedschaft, die du hast.",
   "Source detail": "Quellendetail",
-  "Space": "Space",
-  "Space from this": "Space daraus erstellen",
-  "Standing": "Gelistet",
+  "World": "Welt",
+  "World from this": "Welt daraus erstellen",
   "Start with the feed": "Fang mit dem Feed an",
   "Stats": "Statistiken",
   "Steady as she goes — ": "Stetig wie bisher — ",
@@ -21118,7 +21131,7 @@ var MW_I18N={
   "The next post, note, message or invite lights the first bar.": "Der nächste Beitrag, die nächste Notiz, Nachricht oder Einladung lässt den ersten Balken leuchten.",
   "The next post, note, message or invite lights the first circle.": "Der nächste Beitrag, die nächste Notiz, Nachricht oder Einladung lässt den ersten Kreis leuchten.",
   "The note could not be saved — try once more.": "Die Notiz konnte nicht gespeichert werden — versuch es noch einmal.",
-  "The one scheduler — set a time and the time holds. Match introduces → Booking sets the time → Meet hosts. A scheduler change touches Personal, Business, Space, Smart Mail and Day Journal.": "Der eine Planer — lege eine Zeit fest und die Zeit hält. Match stellt vor → Booking legt die Zeit fest → Meet ist Gastgeber. Eine Planeränderung berührt Personal, Business, Space, Smart Mail und Day Journal.",
+  "The one scheduler — set a time and the time holds. Match introduces → Booking sets the time → Meet hosts. A scheduler change touches Personal, Business, World, Smart Mail and Day Journal.": "Der eine Planer — lege eine Zeit fest und die Zeit hält. Match stellt vor → Booking legt die Zeit fest → Meet ist Gastgeber. Eine Planeränderung berührt Personal, Business, Welt, Smart Mail und Day Journal.",
   "The payments state could not be read just now.": "Der Zahlungsstatus konnte gerade nicht gelesen werden.",
   "The record home — every project, list, link, and note, seen and current. Linked here, never copied.": "Das Zuhause der Aufzeichnungen — jedes Projekt, jede Liste, jeder Link und jede Notiz, gesehen und aktuell. Hier verlinkt, nie kopiert.",
   "The rooms this world opens": "Die Räume, die diese Welt öffnet",
@@ -21184,7 +21197,6 @@ var MW_I18N={
   "Write the note first — even one line is enough.": "Schreib zuerst die Notiz — auch eine Zeile reicht.",
   "Write the thought first — then Note it.": "Schreib zuerst den Gedanken — dann Notier es.",
   "Write your message…": "Schreib deine Nachricht…",
-  "YOU · STANDING": "DU · GELISTET",
   "YOUR SMART SCORE": "DEINE SMART-PUNKTZAHL",
   "YOUR WORDS — FORMATTED BEAUTIFULLY BY NAYA": "DEINE WORTE — WUNDERSCHÖN FORMATIERT VON NAYA",
   "YOUR WORDS, WORD FOR WORD": "DEINE WORTE, WORT FÜR WORT",
@@ -21249,7 +21261,6 @@ var MW_I18N={
   "posts": "Beiträge",
   "pts": "pts",
   "recorded and waiting": "erfasst und wartend",
-  "standing": "gelistet",
   "the last 24 hours": "die letzten 24 Stunden",
   "the last 30 days": "die letzten 30 Tage",
   "the last 7 days": "die letzten 7 Tage",
@@ -21283,7 +21294,7 @@ var MW_I18N={
   "★ FAVORITE": "★ FAVORIT",
   "❤️ LOVE": "❤️ LIEBEN",
   "＋ Add a custom link": "+ Hinzufügen eines custom links",
-  "＋ CREATE SPACE": "＋ RAUM ERSTELLEN",
+  "＋ CREATE WORLD": "＋ WELT ERSTELLEN",
   "＋ SHARE INTEL": "＋ INTEL TEILEN",
   "👍 LIKE": "👍 GEFÄLLT MIR"
  },
@@ -21513,7 +21524,7 @@ var MW_I18N={
   "Counted from this app’s own save records": "Contado a partir de los propios registros de guardado de esta app",
   "Cover button": "Botón de portada",
   "Cover buttons — your memberships": "Botones de la portada — tus membresías",
-  "Create a smart space from this intelligence": "Crear un espacio inteligente a partir de esta inteligencia",
+  "Create a smart world from this intelligence": "Crear un espacio inteligente a partir de esta inteligencia",
   "Create on this feed": "Crear en este feed",
   "Create. Connect. Grow with us.": "Crea. Conecta. Crece con nosotros.",
   "Creations": "Creaciones",
@@ -21607,7 +21618,7 @@ var MW_I18N={
   "Join NayaNET on the cover too": "Unirse a NayaNET también en la portada",
   "Joined": "Se unió",
   "Joined 0 — stated honestly": "Unidos 0 — dicho con honestidad",
-  "Joined pages & spaces": "Páginas y espacios unidos",
+  "Joined pages & worlds": "Páginas y mundos unidos",
   "Joins": "Unidos",
   "Kept on this device — nothing is sent yet.": "Se guarda en este dispositivo — todavía no se envía nada.",
   "LIVE": "EN VIVO",
@@ -21637,7 +21648,7 @@ var MW_I18N={
   "Make a post — your words, straight up. No auto-format, no distillation — what you write is what lands on the feed.": "Publica — tus palabras, tal cual. Sin formato automático, sin destilación — lo que escribes es lo que llega al feed.",
   "Mark as favorite": "Marcar como favorito",
   "Match % threshold — Connections": "Umbral de coincidencia % — Conexiones",
-  "Match is figured on this device from shared posts, messages and invites — highest first. Spaces show by name; their match comes from the Auto-Match engine, which is not switched on for citizens yet.": "La coincidencia se calcula en este dispositivo a partir de publicaciones, mensajes e invitaciones compartidas — primero las más altas. Los espacios se muestran por nombre; su coincidencia viene del motor Auto-Match, que aún no está activado para los ciudadanos.",
+  "Match is figured on this device from shared posts, messages and invites — highest first. Worlds show by name; their match comes from the Auto-Match engine, which is not switched on for citizens yet.": "La coincidencia se calcula en este dispositivo a partir de publicaciones, mensajes e invitaciones compartidas — primero las más altas. Los mundos se muestran por nombre; su coincidencia viene del motor Auto-Match, que aún no está activado para los ciudadanos.",
   "Membership": "Membresía",
   "Membership news": "Noticias de membresía",
   "Memberships": "Membresías",
@@ -21655,7 +21666,7 @@ var MW_I18N={
   "Month": "Mes",
   "Motion & glow": "Movimiento y brillo",
   "Move": "Mover",
-  "My Spaces": "Mis espacios",
+  "My Worlds": "Mis mundos",
   "My Story": "Mi historia",
   "My World": "Mi mundo",
   "My World — which pages appear": "Mi mundo - qué páginas aparecen",
@@ -21715,7 +21726,7 @@ var MW_I18N={
   "Official NayaNET Guide": "Guía oficial de NayaNET",
   "On": "Sí",
   "On a ": "En una racha de ",
-  "On — the trio (Mail · Activity · Space) folds away as you scroll down and comes back 1.5 seconds after you stop. Off — it stays put.": "Activado — el trío (Mail · Activity · Space) se pliega al desplazarte hacia abajo y vuelve 1,5 segundos después de parar. Desactivado — se queda en su sitio.",
+  "On — the trio (Mail · Activity · World) folds away as you scroll down and comes back 1.5 seconds after you stop. Off — it stays put.": "Activado — el trío (Mail · Activity · World) se pliega al desplazarte hacia abajo y vuelve 1,5 segundos después de parar. Desactivado — se queda en su sitio.",
   "On — visitors can see your profile, make a post on your feed and message you. Off — this app is private.": "Activado — los visitantes pueden ver tu perfil, publicar en tu feed y enviarte mensajes. Desactivado — esta app es privada.",
   "One line — it lands in this app’s Smart Mail inbox, where the person who runs this app reads it.": "Una línea — aterriza en la bandeja de entrada de Smart Mail de esta app, donde la persona que lleva esta app la lee.",
   "One more seat is held open for the next live citizen.": "Un asiento más queda abierto para el próximo ciudadano.",
@@ -21729,7 +21740,7 @@ var MW_I18N={
   "Open Reports": "Abrir Informes",
   "Open Smart Growth — where these invites live": "Abrir Crecimiento inteligente — donde viven estas invitaciones",
   "Open Smart Mail": "Abrir Smart Mail",
-  "Open Space": "Abrir Space",
+  "Open World": "Abrir Mundo",
   "Open in Notes": "Abrir en Notas",
   "Open it": "Abrirlo",
   "Open the Library →": "Abrir la Biblioteca →",
@@ -21748,7 +21759,7 @@ var MW_I18N={
   "Opens → the Library": "Abre → la Biblioteca",
   "Opens → the Reports room": "Abre → la sala Reports",
   "Opens → the Smart Mail room": "Abre → la sala Smart Mail",
-  "Opens → the Space app": "Abre → la app Space",
+  "Opens → the World app": "Abre → la app Mundo",
   "Opens → the Welcome walk": "Abre → el recorrido de Bienvenida",
   "Opens → this world, canonical": "Abre → este mundo, canónico",
   "Other sites": "Otros sitios",
@@ -21767,7 +21778,7 @@ var MW_I18N={
   "Personal": "Personal",
   "Personal app": "App personal",
   "Phone": "Teléfono",
-  "Pick a topic and the space around it is there — the personal view, for the chosen topic. Trinity sibling.": "Elige un tema y el espacio a su alrededor está ahí — la vista personal, para el tema elegido. Hermano de la Trinidad.",
+  "Pick a topic and the world around it is there — the personal view, for the chosen topic. Trinity sibling.": "Elige un tema y el mundo a su alrededor está ahí — la vista personal, para el tema elegido. Hermano de la Trinidad.",
   "Pin": "Fijar",
   "Play the video note": "Reproducir la nota de vídeo",
   "Play the voice note": "Reproducir la nota de voz",
@@ -21794,7 +21805,7 @@ var MW_I18N={
   "Reading your actions…": "Leyendo tus acciones…",
   "Reading your links…": "Leyendo tus enlaces…",
   "Reading your notifications…": "Leyendo tus notificaciones…",
-  "Reading your pages & spaces…": "Leyendo tus páginas y espacios…",
+  "Reading your pages & worlds…": "Leyendo tus páginas y mundos…",
   "Ready to install.": "Listo para instalar.",
   "Record video note": "Grabar nota de vídeo",
   "Record voice note": "Grabar nota de voz",
@@ -21809,8 +21820,7 @@ var MW_I18N={
   "SAVE": "GUARDAR",
   "SMART NOTE": "NOTA INTELIGENTE",
   "SMART SCORE": "PUNTUACIÓN INTELIGENTE",
-  "SPACES": "ESPACIOS",
-  "STANDING": "EN LISTA",
+  "WORLDS": "MUNDOS",
   "SUMMARY": "RESUMEN",
   "Sales": "Ventas",
   "Save": "Guardar",
@@ -21828,9 +21838,9 @@ var MW_I18N={
   "Score gauge — reading your actions": "Medidor de puntuación — leyendo tus acciones",
   "Score gauge — your live score is ": "Medidor de puntuación — tu puntuación en vivo es ",
   "Search": "Búsqueda",
-  "Search people and spaces…": "Buscar personas y espacios…",
+  "Search people and worlds…": "Buscar personas y mundos…",
   "Search the public feed": "Buscar en el feed público",
-  "Search your people and spaces — pick one and the message pops up.": "Busca a tu gente y tus espacios — elige uno y aparece el mensaje.",
+  "Search your people and worlds — pick one and the message pops up.": "Busca a tu gente y tus mundos — elige uno y aparece el mensaje.",
   "See Reports": "Ver informes",
   "See Smart Notes": "Ver Notas inteligentes",
   "See everyone": "Ver a todos",
@@ -21884,9 +21894,8 @@ var MW_I18N={
   "Someone replies to you or mentions you.": "Alguien te responde o te menciona.",
   "Something new in a membership you hold.": "Algo nuevo en una membresía que tienes.",
   "Source detail": "Detalle de la fuente",
-  "Space": "Espacio",
-  "Space from this": "Espacio a partir de esto",
-  "Standing": "En lista",
+  "World": "Mundo",
+  "World from this": "Mundo a partir de esto",
   "Start with the feed": "Empieza con el feed",
   "Stats": "Estadísticas",
   "Steady as she goes — ": "Firme como siempre — ",
@@ -21926,7 +21935,7 @@ var MW_I18N={
   "The next post, note, message or invite lights the first bar.": "La próxima publicación, nota, mensaje o invitación enciende la primera barra.",
   "The next post, note, message or invite lights the first circle.": "La próxima publicación, nota, mensaje o invitación enciende el primer círculo.",
   "The note could not be saved — try once more.": "No se pudo guardar la nota — inténtalo una vez más.",
-  "The one scheduler — set a time and the time holds. Match introduces → Booking sets the time → Meet hosts. A scheduler change touches Personal, Business, Space, Smart Mail and Day Journal.": "El único programador — fija una hora y la hora se mantiene. Match presenta → Booking fija la hora → Meet recibe. Un cambio en el programador toca Personal, Business, Space, Smart Mail y Day Journal.",
+  "The one scheduler — set a time and the time holds. Match introduces → Booking sets the time → Meet hosts. A scheduler change touches Personal, Business, World, Smart Mail and Day Journal.": "El único programador — fija una hora y la hora se mantiene. Match presenta → Booking fija la hora → Meet recibe. Un cambio en el programador toca Personal, Business, Mundo, Smart Mail y Day Journal.",
   "The payments state could not be read just now.": "No se pudo leer el estado de pagos ahora mismo.",
   "The record home — every project, list, link, and note, seen and current. Linked here, never copied.": "El hogar del registro — cada proyecto, lista, enlace y nota, visto y actual. Enlazado aquí, nunca copiado.",
   "The rooms this world opens": "Las salas que abre este mundo",
@@ -21992,7 +22001,6 @@ var MW_I18N={
   "Write the note first — even one line is enough.": "Escribe primero la nota — aunque sea una línea basta.",
   "Write the thought first — then Note it.": "Escribe primero el pensamiento — luego Apúntalo.",
   "Write your message…": "Escribe tu mensaje…",
-  "YOU · STANDING": "TÚ · EN LISTA",
   "YOUR SMART SCORE": "TU PUNTUACIÓN INTELIGENTE",
   "YOUR WORDS — FORMATTED BEAUTIFULLY BY NAYA": "TUS PALABRAS — CON FORMATO PRECIOSO POR NAYA",
   "YOUR WORDS, WORD FOR WORD": "TUS PALABRAS, PALABRA POR PALABRA",
@@ -22057,7 +22065,6 @@ var MW_I18N={
   "posts": "publicaciones",
   "pts": "pts",
   "recorded and waiting": "registrada y en espera",
-  "standing": "en lista",
   "the last 24 hours": "las últimas 24 horas",
   "the last 30 days": "los últimos 30 días",
   "the last 7 days": "los últimos 7 días",
@@ -22091,7 +22098,7 @@ var MW_I18N={
   "★ FAVORITE": "★ FAVORITO",
   "❤️ LOVE": "❤️ ME ENCANTA",
   "＋ Add a custom link": "+ Agregar un enlace personalizado",
-  "＋ CREATE SPACE": "＋ CREAR ESPACIO",
+  "＋ CREATE WORLD": "＋ CREAR MUNDO",
   "＋ SHARE INTEL": "＋ COMPARTIR INTEL",
   "👍 LIKE": "👍 ME GUSTA"
  },
@@ -22321,7 +22328,7 @@ var MW_I18N={
   "Counted from this app’s own save records": "Compté à partir des propres enregistrements de sauvegarde de cette app",
   "Cover button": "Bouton de couverture",
   "Cover buttons — your memberships": "Boutons de couverture — vos adhésions",
-  "Create a smart space from this intelligence": "Créer un espace intelligent à partir de cette intelligence",
+  "Create a smart world from this intelligence": "Créer un espace intelligent à partir de cette intelligence",
   "Create on this feed": "Créer sur ce fil",
   "Create. Connect. Grow with us.": "Crée. Connecte. Grandis avec nous.",
   "Creations": "Créations",
@@ -22415,7 +22422,7 @@ var MW_I18N={
   "Join NayaNET on the cover too": "Rejoindre NayaNET aussi sur la couverture",
   "Joined": "A rejoint",
   "Joined 0 — stated honestly": "Adhésions 0 — dit honnêtement",
-  "Joined pages & spaces": "Pages et espaces rejoints",
+  "Joined pages & worlds": "Pages et mondes rejoints",
   "Joins": "Adhésions",
   "Kept on this device — nothing is sent yet.": "Conservé sur cet appareil — rien n’est encore envoyé.",
   "LIVE": "EN DIRECT",
@@ -22445,7 +22452,7 @@ var MW_I18N={
   "Make a post — your words, straight up. No auto-format, no distillation — what you write is what lands on the feed.": "Publiez — vos mots, tels quels. Pas de formatage automatique, pas de distillation — ce que vous écrivez est ce qui arrive sur le fil.",
   "Mark as favorite": "Marquer comme favori",
   "Match % threshold — Connections": "Seuil de match % — Connexions",
-  "Match is figured on this device from shared posts, messages and invites — highest first. Spaces show by name; their match comes from the Auto-Match engine, which is not switched on for citizens yet.": "Le match est calculé sur cet appareil à partir des publications, messages et invitations partagés — les plus élevés d’abord. Les espaces s’affichent par leur nom ; leur match vient du moteur Auto-Match, qui n’est pas encore activé pour les citoyens.",
+  "Match is figured on this device from shared posts, messages and invites — highest first. Worlds show by name; their match comes from the Auto-Match engine, which is not switched on for citizens yet.": "Le match est calculé sur cet appareil à partir des publications, messages et invitations partagés — les plus élevés d’abord. Les mondes s’affichent par leur nom ; leur match vient du moteur Auto-Match, qui n’est pas encore activé pour les citoyens.",
   "Membership": "Adhésion",
   "Membership news": "Nouvelles des adhésions",
   "Memberships": "Adhésions",
@@ -22463,7 +22470,7 @@ var MW_I18N={
   "Month": "Mois",
   "Motion & glow": "Mouvement et lueur",
   "Move": "Déplacer",
-  "My Spaces": "Mes espaces",
+  "My Worlds": "Mes mondes",
   "My Story": "Mon histoire",
   "My World": "Mon monde",
   "My World — which pages appear": "Mon monde - quelles pages apparaissent",
@@ -22523,7 +22530,7 @@ var MW_I18N={
   "Official NayaNET Guide": "Guide officiel NayaNET",
   "On": "Oui",
   "On a ": "Sur une série de ",
-  "On — the trio (Mail · Activity · Space) folds away as you scroll down and comes back 1.5 seconds after you stop. Off — it stays put.": "Activé — le trio (Mail · Activity · Space) se replie quand vous défilez vers le bas et revient 1,5 seconde après l’arrêt. Désactivé — il reste en place.",
+  "On — the trio (Mail · Activity · World) folds away as you scroll down and comes back 1.5 seconds after you stop. Off — it stays put.": "Activé — le trio (Mail · Activity · World) se replie quand vous défilez vers le bas et revient 1,5 seconde après l’arrêt. Désactivé — il reste en place.",
   "On — visitors can see your profile, make a post on your feed and message you. Off — this app is private.": "Activé — les visiteurs peuvent voir votre profil, publier sur votre fil et vous envoyer des messages. Désactivé — cette app est privée.",
   "One line — it lands in this app’s Smart Mail inbox, where the person who runs this app reads it.": "Une ligne — elle atterrit dans la boîte de réception Smart Mail de cette app, où la personne qui gère cette app la lit.",
   "One more seat is held open for the next live citizen.": "Un siège de plus reste ouvert pour le prochain citoyen.",
@@ -22537,7 +22544,7 @@ var MW_I18N={
   "Open Reports": "Ouvrir les Rapports",
   "Open Smart Growth — where these invites live": "Ouvrir Croissance intelligente — où vivent ces invitations",
   "Open Smart Mail": "Ouvrir Smart Mail",
-  "Open Space": "Ouvrir Space",
+  "Open World": "Ouvrir Monde",
   "Open in Notes": "Ouvrir dans Notes",
   "Open it": "L’ouvrir",
   "Open the Library →": "Ouvrir la Bibliothèque →",
@@ -22556,7 +22563,7 @@ var MW_I18N={
   "Opens → the Library": "Ouvre → la Bibliothèque",
   "Opens → the Reports room": "Ouvre → la salle Reports",
   "Opens → the Smart Mail room": "Ouvre → la salle Smart Mail",
-  "Opens → the Space app": "Ouvre → l’app Space",
+  "Opens → the World app": "Ouvre → l’app Monde",
   "Opens → the Welcome walk": "Ouvre → la promenade de Bienvenue",
   "Opens → this world, canonical": "Ouvre → ce monde, canonique",
   "Other sites": "Autres sites",
@@ -22575,7 +22582,7 @@ var MW_I18N={
   "Personal": "Personnel",
   "Personal app": "App personnelle",
   "Phone": "Téléphone",
-  "Pick a topic and the space around it is there — the personal view, for the chosen topic. Trinity sibling.": "Choisissez un sujet et l’espace autour est là — la vue personnelle, pour le sujet choisi. Frère de la Trinité.",
+  "Pick a topic and the world around it is there — the personal view, for the chosen topic. Trinity sibling.": "Choisissez un sujet et le monde autour est là — la vue personnelle, pour le sujet choisi. Frère de la Trinité.",
   "Pin": "Épingler",
   "Play the video note": "Lire la note vidéo",
   "Play the voice note": "Lire la note vocale",
@@ -22602,7 +22609,7 @@ var MW_I18N={
   "Reading your actions…": "Lecture de vos actions…",
   "Reading your links…": "Lecture de vos liens…",
   "Reading your notifications…": "Lecture de vos notifications…",
-  "Reading your pages & spaces…": "Lecture de vos pages et espaces…",
+  "Reading your pages & worlds…": "Lecture de vos pages et mondes…",
   "Ready to install.": "Prêt à installer.",
   "Record video note": "Enregistrer une note vidéo",
   "Record voice note": "Enregistrer une note vocale",
@@ -22617,8 +22624,7 @@ var MW_I18N={
   "SAVE": "ENREGISTRER",
   "SMART NOTE": "NOTE INTELLIGENTE",
   "SMART SCORE": "SCORE INTELLIGENT",
-  "SPACES": "ESPACES",
-  "STANDING": "LISTÉ",
+  "WORLDS": "MONDES",
   "SUMMARY": "RÉSUMÉ",
   "Sales": "Ventes",
   "Save": "Enregistrer",
@@ -22636,9 +22642,9 @@ var MW_I18N={
   "Score gauge — reading your actions": "Jauge de score — lecture de vos actions",
   "Score gauge — your live score is ": "Jauge de score — votre score en direct est ",
   "Search": "Recherche",
-  "Search people and spaces…": "Chercher des personnes et des espaces…",
+  "Search people and worlds…": "Chercher des personnes et des mondes…",
   "Search the public feed": "Chercher dans le fil public",
-  "Search your people and spaces — pick one and the message pops up.": "Cherchez vos gens et vos espaces — choisissez-en un et le message apparaît.",
+  "Search your people and worlds — pick one and the message pops up.": "Cherchez vos gens et vos mondes — choisissez-en un et le message apparaît.",
   "See Reports": "Voir les rapports",
   "See Smart Notes": "Voir les Notes intelligentes",
   "See everyone": "Voir tout le monde",
@@ -22692,9 +22698,8 @@ var MW_I18N={
   "Someone replies to you or mentions you.": "Quelqu’un vous répond ou vous mentionne.",
   "Something new in a membership you hold.": "Quelque chose de nouveau dans une adhésion que vous avez.",
   "Source detail": "Détail de la source",
-  "Space": "Espace",
-  "Space from this": "Espace à partir de ceci",
-  "Standing": "Listés",
+  "World": "Monde",
+  "World from this": "Monde à partir de ceci",
   "Start with the feed": "Commencez par le fil",
   "Stats": "Statistiques",
   "Steady as she goes — ": "Cap maintenu — ",
@@ -22734,7 +22739,7 @@ var MW_I18N={
   "The next post, note, message or invite lights the first bar.": "La prochaine publication, note, message ou invitation allume la première barre.",
   "The next post, note, message or invite lights the first circle.": "La prochaine publication, note, message ou invitation allume le premier cercle.",
   "The note could not be saved — try once more.": "La note n’a pas pu être enregistrée — réessayez une fois.",
-  "The one scheduler — set a time and the time holds. Match introduces → Booking sets the time → Meet hosts. A scheduler change touches Personal, Business, Space, Smart Mail and Day Journal.": "Le seul planificateur — fixez un moment et le moment tient. Match présente → Booking fixe le moment → Meet accueille. Un changement de planificateur touche Personal, Business, Space, Smart Mail et Day Journal.",
+  "The one scheduler — set a time and the time holds. Match introduces → Booking sets the time → Meet hosts. A scheduler change touches Personal, Business, World, Smart Mail and Day Journal.": "Le seul planificateur — fixez un moment et le moment tient. Match présente → Booking fixe le moment → Meet accueille. Un changement de planificateur touche Personal, Business, Monde, Smart Mail et Day Journal.",
   "The payments state could not be read just now.": "Impossible de lire l’état des paiements pour l’instant.",
   "The record home — every project, list, link, and note, seen and current. Linked here, never copied.": "Le foyer du dossier — chaque projet, liste, lien et note, vu et actuel. Lié ici, jamais copié.",
   "The rooms this world opens": "Les salles que ce monde ouvre",
@@ -22800,7 +22805,6 @@ var MW_I18N={
   "Write the note first — even one line is enough.": "Écrivez d’abord la note — même une ligne suffit.",
   "Write the thought first — then Note it.": "Écrivez d’abord la pensée — puis Notez-le.",
   "Write your message…": "Écrivez votre message…",
-  "YOU · STANDING": "TOI · LISTÉ",
   "YOUR SMART SCORE": "VOTRE SCORE INTELLIGENT",
   "YOUR WORDS — FORMATTED BEAUTIFULLY BY NAYA": "VOS MOTS — MIS EN FORME AVEC SOIN PAR NAYA",
   "YOUR WORDS, WORD FOR WORD": "VOS MOTS, MOT POUR MOT",
@@ -22865,7 +22869,6 @@ var MW_I18N={
   "posts": "publications",
   "pts": "pts",
   "recorded and waiting": "enregistrée et en attente",
-  "standing": "listés",
   "the last 24 hours": "les dernières 24 heures",
   "the last 30 days": "les 30 derniers jours",
   "the last 7 days": "les 7 derniers jours",
@@ -22899,7 +22902,7 @@ var MW_I18N={
   "★ FAVORITE": "★ FAVORI",
   "❤️ LOVE": "❤️ J’ADORE",
   "＋ Add a custom link": "+ Ajouter un lien personnalisé",
-  "＋ CREATE SPACE": "＋ CRÉER UN ESPACE",
+  "＋ CREATE WORLD": "＋ CRÉER UN MONDE",
   "＋ SHARE INTEL": "＋ PARTAGER L’INTEL",
   "👍 LIKE": "👍 J’AIME"
  }
@@ -23014,7 +23017,7 @@ function mwApplyLang(){
   });
   /* AUTO-TRANSLATE: the bottom bar is icon-only — its only words are the
      accessible names. They translate in place; the icons never change. */
-  var segNames={plus:'ADD',mail:'MAIL',activity:'ACTIVITY',spaces:'SPACES',eco:'ECOSYSTEM'};
+  var segNames={plus:'ADD',mail:'MAIL',activity:'ACTIVITY',spaces:'WORLDS',eco:'ECOSYSTEM'};
   document.querySelectorAll('#naya-notif-bar [data-notif]').forEach(function(b){
     var en=segNames[b.getAttribute('data-notif')]; if(!en) return;
     var t=(code==='en')?en:(dict[en]||en);
@@ -24321,7 +24324,7 @@ function saEsc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){ r
 function saFmt(t){ if(!isFinite(t)||t==null) return '0:00'; t=Math.max(0,Math.floor(t)); var m=Math.floor(t/60), s=t%60; return m+':'+(s<10?'0':'')+s; }
 function saParas(txt){ return String(txt||'').split(/\n\s*\n/).map(function(p){ return '<p>'+saEsc(p.trim())+'</p>'; }).join(''); }
 
-var SA_FAC = [{"day": 1, "dayLabel": "Day 1", "audience": "", "headline": "Your first money move: fill your profile, invite your friends", "subheadline": "Three steps — fill your profile, invite your friends, keep a flow going — and three sales a day for thirty days becomes $4,500 a month, every month they stay.", "saying": "Fill your profile out completely, invite your friends, and your story does the selling for you.", "nutshellFull": "Your profile is your story: who you are, what you do, your motto, your vision, your goal, your mission. When it is full, the system knows who you are — and it connects you with people like you. An empty profile is an invisible person. A full one is a magnet.", "human": "You don't have to imagine. This is the feature, and we have it right here. Your Personal page holds your story, and your story feeds everything — the people you get matched with, the people who find you, the trust a stranger feels before they ever message you. Fill it in once, and it works for you every day after.\n\nAnd here is the money part, plain and true. Invite your friends to join — it is free to join. When someone you invite becomes a paying member, you get 50% of what they pay, every month, for as long as they stay. Three Max sales a day, for thirty days, is ninety people. Max is $100 a month, so your half is $50 each. Ninety people times $50 is $4,500 a month, every month they stay.", "child": "Think of it like a shop window. If the window is empty, people walk straight past. If the window shows something beautiful — who you are, what you love, what you do — people stop, they look, and they come inside. Your profile is your shop window. Fill it with the good stuff.", "grandma": "You know how you can tell a good person from the way they talk about their life? That is what your story does here. You write down who you are and what you stand for, in your own words, and the right people find you — people who want what you offer, people who think the way you think. And when you tell your friends about it, and they join, you get paid for sharing something good. Simple as that.", "naya": "Here is how you use it. Open your profile and fill in every part — your story, your motto, your vision, your goal, your mission. Ten minutes, and it is done. Then send your first invite: email a friend, message a friend, tell them to come and join you in NayaNET. It is free to join, and they get a whole world — a Personal page, a Business page, a Space — all included. Your link is waiting on your page.", "step": "open your profile, fill it in, and send your first invite. Your link is waiting on your page.", "srcMail": "welcome-mail-01", "srcSn": "welcome-sn-01"}, {"day": 2, "dayLabel": "Day 2", "audience": "", "headline": "Smart Notes: say it once, and it's saved beautifully", "subheadline": "Every good idea you have, caught the second you have it — and shared as a beautiful card your people can read, like, and comment on.", "saying": "Capture every client insight the moment it happens — and it lands on the feed as a beautiful card.", "nutshellFull": "A Smart Note is a note that thinks. You capture an insight — in your own words, in the moment — and it becomes a card on the feed: tidy, readable, ready to share. Nothing brilliant ever slips away again.", "human": "You don't have to imagine. This is the feature, and we have it right here. Say \"smart note this\" and your words land on the feed as a card. Your client insights, your frameworks, your hard-won lessons — all of them kept, all of them findable, all of them working for you while you sleep. A coach's best material is what clients actually say. Now it is never lost.", "child": "Think of it like a net for fireflies. Good ideas flash past and disappear — unless you catch them. A Smart Note is the jar you keep by the window. The moment an idea lights up, you catch it, and it stays glowing on your shelf for everyone to see.", "grandma": "You know how the best advice comes out in the middle of a conversation, and then nobody can remember exactly how it went? A Smart Note is like writing it down on a beautiful card the second it is said — so you can read it back tomorrow, share it with the next person who needs it, and never lose the wisdom of a good talk.", "naya": "Here is how you use it. After your next client call, capture the one insight that mattered most — just say \"smart note this\" or write it down as a Smart Note. Watch it land on the feed as a card. That card is now working for you: your audience reads it, your future clients see how you think, and your own library of wisdom grows one card at a time.", "step": "think of one good thing a client said to you lately — and smart-note it.", "srcMail": "welcome-mail-02", "srcSn": "welcome-sn-02"}, {"day": 3, "dayLabel": "Day 3", "audience": "", "headline": "The Smart Feed: your stage, every single day", "subheadline": "Your notes, your ideas, your work — read by your audience every day. Your feed isn't a timeline you scroll past. It's your stage.", "saying": "Your notes, read by your audience every day — your feed is your stage.", "nutshellFull": "The Smart Feed is where your notes live and where your people read them. It is not a noisy timeline you have to fight. It is your stage: what you share shows up for the people who chose to follow you, in cards they actually read.", "human": "You don't have to imagine. This is the feature, and we have it right here. Every Smart Note you write lands on the feed as a card. Your audience reads it, likes it, comments on it — and the feed learns what they love, so more of the right people see more of your best work. You create once, and the feed carries it to the people it is meant for.", "child": "Think of it like a stage in the middle of a village square. You step up, you tell your story, and everyone who wants to listen is already gathered there. You don't have to shout across the rooftops or chase people down the street. The feed brings the audience to you.", "grandma": "You know how word of mouth used to work — one person tells another, and the good news travels? The Smart Feed is word of mouth with a stage. You say something worth hearing, it appears as a lovely card, and the people who care about what you do see it every day — and they tell their friends.", "naya": "Here is how you use it. Write one Smart Note today — one idea, one story, one thing you recommend — and let it land on the feed as a card. Then come back tomorrow and do it again. A creator's stage is built one card at a time, and the feed is where your audience is already waiting.", "step": "open your feed and share one note about something you know well.", "srcMail": "welcome-mail-03", "srcSn": "welcome-sn-03"}, {"day": 4, "dayLabel": "Day 4", "audience": "", "headline": "Smart Links: your link is your business", "subheadline": "One link that carries everything you are — and every time somebody joins through it, you get paid 50%, every month they stay.", "saying": "Your link is your business — share it, and you get paid 50%.", "nutshellFull": "A Smart Link is one clean link for anything you want to share — your page, your offer, your invitation to join. And as an ambassador, when someone joins through your link and becomes a paying member, you get 50% of what they pay, every month, for as long as they stay.", "human": "You don't have to imagine. This is the feature, and we have it right here. Your ambassador link is waiting on your page. Put it in your posts, put it in your profile, send it in a message — wherever people see you, the link is there. Whoever brings people gets the credit, however they brought them. You share something truly awesome, and you get paid for it.", "child": "Think of it like a lemonade stand with a magic sign. The sign tells everyone where the stand is, and every time a new friend follows the sign and joins the fun, a little of what they spend comes back to you — because you are the one who showed them the way.", "grandma": "You know how you tell a friend about a good shop, and then she tells her friend, and soon the whole street knows? A Smart Link is that, with the counting done for you. You share your link, people join through it, and you get half of what they pay — every month they stay. You did the telling; the system does the remembering.", "naya": "Here is how you use it. Copy your ambassador link from your page. Put it in one place today — your profile, your next post, or a message to a friend. Then tell them, in your own words: join me on NayaNET — Naya means new, a new AI-powered internet. One link, one share, and your side hustle has a door that never closes.", "step": "copy your link from your page and put it in your profile — everywhere people find you.", "srcMail": "welcome-mail-04", "srcSn": "welcome-sn-04"}, {"day": 5, "dayLabel": "Day 5", "audience": "", "headline": "Smart Mail: your whole community, in one place", "subheadline": "Talk to everyone you bring together — in one place, in real time — and nobody reads it but you.", "saying": "Talk to your whole community in one place — and nobody reads it but you.", "nutshellFull": "Smart Mail and Messenger are one interface: your inbox, your instant messages, your posts to your people — all together. You send, they reply, the conversation flows, and it is yours alone. NayaNET is a private communication system. We do not read your mail. We do not read your messages.", "human": "You don't have to imagine. This is the feature, and we have it right here. Smart Mail is where your teaching lands every morning, where your community writes to you, where you write back. Messenger is the instant part — the quick word, the fast answer. One place, one flow, no juggling five apps to keep your people close.", "child": "Think of it like a clubhouse with a mailbox on the door. Everyone in the club knows where to find you. They drop you a note, you write back, and the whole club can talk together — but the door is yours, and nobody peeks inside your letters.", "grandma": "You know how a good letter used to feel — personal, private, meant only for you? Smart Mail is that, with the speed of a phone call. You write to your whole community at once, or to one person alone, and it stays between you and them. Nobody else reads it. That is how it should be.", "naya": "Here is how you use it. Open Smart Mail today and send one message to your people — a welcome, a thought, a question. Then watch the replies come back to the same place. One inbox, one conversation, your whole community in one place.", "step": "send one mail to someone who matters to you — just to say hello.", "srcMail": "welcome-mail-05", "srcSn": "welcome-sn-05"}, {"day": 6, "dayLabel": "Day 6", "audience": "", "headline": "Auto-Match: the right people find your business", "subheadline": "You fill in your story, and the system brings you the people who belong with you — customers, partners, staff. And you're always in control: any connection can be toggled off, and back on, any time.", "saying": "The right people find your business — and you are always in control of who you connect with.", "nutshellFull": "Auto-Match is the system getting to know you and connecting you with people like you — related pages, spaces, groups, and businesses show up for you, and you show up for them. Your profile is how it knows you, so the better your story, the better your matches.", "human": "You don't have to imagine. This is the feature, and we have it right here. The system matches you with people by what you share — your work, your interests, your language, where you are from. You see how close the match is, and you choose who to connect with. And you are always in control: if a connection is not right for you, you toggle it off — and you can toggle it back on again any time. You never have to shut anyone out for good. A connection is yours to turn off and on, like a light.", "child": "Think of it like a classroom where the teacher knows who likes the same games as you, and puts you at the same table. You don't have to search the whole school for a friend — the right people are sitting right there. And if you want some quiet, you can close your book for a while, and open it again when you are ready.", "grandma": "You know how the best customers are the ones who were meant to find you — the ones who walk in and it is like you have known them for years? Auto-Match is that, done by the system: it looks at who you are and what you do, and it brings you the people who fit. And if someone is not a fit, you simply switch the connection off. No fuss, no hard feelings, and you can switch it back on whenever you like.", "naya": "Here is how you use it. Make sure your profile is full — your story is what the match reads. Then look at the connections the system brings you, and say yes to the ones that fit your business. If one doesn't fit, toggle it off. You are the one in charge of your connections, always.", "step": "check your matches and say hello to one person the system brought you.", "srcMail": "welcome-mail-06", "srcSn": "welcome-sn-06"}, {"day": 7, "dayLabel": "Day 7", "audience": "", "headline": "Smart Lists: everyone you know, organized", "subheadline": "Every person you know, in one organized place — so you never lose a follow-up, never forget a name, and never let a good relationship go cold.", "saying": "Everyone you know, organized — never lose a follow-up.", "nutshellFull": "A Smart List is everyone you know, organized the way you think. Your contacts, your notes about them, your follow-ups — all in one place, all findable in seconds. The person you met, the promise you made, the next step — none of it ever slips through again.", "human": "You don't have to imagine. This is the feature, and we have it right here. Your connections and your notes live together in Smart Lists: people by username or alias, notes by link or name. When you need to follow up, you open the list, you find the person, you see exactly where you left off. Relationship sales is remembering — and now the remembering is done for you.", "child": "Think of it like a toy box with labels on every drawer. When you want the red car, you don't tip the whole box on the floor — you open the drawer that says \"red cars.\" Smart Lists are the labels on your people: everyone in the right drawer, ready when you need them.", "grandma": "You know how you used to keep a little address book, with a note beside each name — who they are, what they like, when you last spoke? A Smart List is that address book, grown up: every person you know, with your notes beside them, and a gentle reminder of who you promised to call back.", "naya": "Here is how you use it. Open your Smart Lists today and add the last person you met — their name, where you met, one thing you promised. Tomorrow, open the list before you start work and follow up with one person on it. One a day, and no relationship ever goes cold again.", "step": "put three people you need to follow up with on a list — and call the first one.", "srcMail": "welcome-mail-07", "srcSn": "welcome-sn-07"}, {"day": 8, "dayLabel": "Day 8", "audience": "", "headline": "The Smart Box: everything you keep, kept forever", "subheadline": "Your lessons, your notes, your work — kept in one private place that organizes itself, so nothing you made is ever lost again.", "saying": "Your lessons, kept forever — nothing is ever lost.", "nutshellFull": "The Smart Box is your memory and your organization. It stores your lessons, your notes, your materials — and it organizes them for you, automatically, so you can find anything in seconds. Your work is kept forever. Nothing is ever lost.", "human": "You don't have to imagine. This is the feature, and we have it right here. Your Smart Box is your own private vault: your lessons live in it, labeled and sorted, yours alone. Naya operates it for you — she files things away, she finds them when you ask — and nobody reads what is inside unless you choose to share it. You teach; the Box remembers.", "child": "Think of it like a magic schoolbag. You put your homework in, and it sorts itself — maths with maths, stories with stories — and when you need something, you just reach in and it is right there on top. Nothing falls out the bottom. Nothing ever gets lost.", "grandma": "You know how a good filing cabinet used to work — everything in its folder, every folder in its place, and you could lay your hand on any paper in a minute? The Smart Box is that cabinet, and it files itself. Your lessons, your notes, your years of work — all kept safe, all findable, forever.", "naya": "Here is how you use it. Put your next lesson in your Smart Box — the plan, the handout, the video, whatever you made. Then ask for it back tomorrow, and watch it come straight to you. Your teaching library grows every time you teach, and it never forgets a single lesson.", "step": "put one thing you never want to lose into your Smart Box.", "srcMail": "welcome-mail-08", "srcSn": "welcome-sn-08"}, {"day": 9, "dayLabel": "Day 9", "audience": "", "headline": "Your Dashboard: your numbers at a glance", "subheadline": "Everything that matters, in one place, in the two minutes you've got — so you always know where you stand.", "saying": "Your numbers at a glance, in the two minutes you've got.", "nutshellFull": "The Dashboard is your numbers at a glance. It is the front of your world: everything that matters, gathered in one place, so you can see it, understand it, and get on with your day — in two minutes, not two hours.", "human": "You don't have to imagine. This is the feature, and we have it right here. Your Dashboard shows you your world — your pages, your people, your activity — with numbers that are alive, not dead figures on a page. You open it, you see where you stand, you tap anything that needs you, and you are done. A busy parent does not have time for a system that needs operating. The Dashboard is the system, already operated, served to you on a platter.", "child": "Think of it like the dashboard in a car. You don't need to understand the engine — you just look at the dials and you know: how fast, how far, how much fuel. Your Dashboard is the same: one look, and you know how your world is doing.", "grandma": "You know how you like to glance at the kitchen clock and know exactly where the day stands? The Dashboard is that glance for your whole world. One look, everything in its place, and you know what needs doing and what is already done.", "naya": "Here is how you use it. Open your Dashboard once a day — while the kettle boils is enough. Look at your numbers, tap the one thing that needs you today, and close it. Two minutes, and your world is in hand.", "step": "open your Dashboard and take the two-minute look.", "srcMail": "welcome-mail-09", "srcSn": "welcome-sn-09"}];
+var SA_FAC = [{"day": 1, "dayLabel": "Day 1", "audience": "", "headline": "Your first money move: fill your profile, invite your friends", "subheadline": "Three steps — fill your profile, invite your friends, keep a flow going — and three sales a day for thirty days becomes $4,500 a month, every month they stay.", "saying": "Fill your profile out completely, invite your friends, and your story does the selling for you.", "nutshellFull": "Your profile is your story: who you are, what you do, your motto, your vision, your goal, your mission. When it is full, the system knows who you are — and it connects you with people like you. An empty profile is an invisible person. A full one is a magnet.", "human": "You don't have to imagine. This is the feature, and we have it right here. Your Personal page holds your story, and your story feeds everything — the people you get matched with, the people who find you, the trust a stranger feels before they ever message you. Fill it in once, and it works for you every day after.\n\nAnd here is the money part, plain and true. Invite your friends to join — it is free to join. When someone you invite becomes a paying member, you get 50% of what they pay, every month, for as long as they stay. Three Max sales a day, for thirty days, is ninety people. Max is $100 a month, so your half is $50 each. Ninety people times $50 is $4,500 a month, every month they stay.", "child": "Think of it like a shop window. If the window is empty, people walk straight past. If the window shows something beautiful — who you are, what you love, what you do — people stop, they look, and they come inside. Your profile is your shop window. Fill it with the good stuff.", "grandma": "You know how you can tell a good person from the way they talk about their life? That is what your story does here. You write down who you are and what you stand for, in your own words, and the right people find you — people who want what you offer, people who think the way you think. And when you tell your friends about it, and they join, you get paid for sharing something good. Simple as that.", "naya": "Here is how you use it. Open your profile and fill in every part — your story, your motto, your vision, your goal, your mission. Ten minutes, and it is done. Then send your first invite: email a friend, message a friend, tell them to come and join you in NayaNET. It is free to join, and they get a whole world — a Personal page, a Business page, a World — all included. Your link is waiting on your page.", "step": "open your profile, fill it in, and send your first invite. Your link is waiting on your page.", "srcMail": "welcome-mail-01", "srcSn": "welcome-sn-01"}, {"day": 2, "dayLabel": "Day 2", "audience": "", "headline": "Smart Notes: say it once, and it's saved beautifully", "subheadline": "Every good idea you have, caught the second you have it — and shared as a beautiful card your people can read, like, and comment on.", "saying": "Capture every client insight the moment it happens — and it lands on the feed as a beautiful card.", "nutshellFull": "A Smart Note is a note that thinks. You capture an insight — in your own words, in the moment — and it becomes a card on the feed: tidy, readable, ready to share. Nothing brilliant ever slips away again.", "human": "You don't have to imagine. This is the feature, and we have it right here. Say \"smart note this\" and your words land on the feed as a card. Your client insights, your frameworks, your hard-won lessons — all of them kept, all of them findable, all of them working for you while you sleep. A coach's best material is what clients actually say. Now it is never lost.", "child": "Think of it like a net for fireflies. Good ideas flash past and disappear — unless you catch them. A Smart Note is the jar you keep by the window. The moment an idea lights up, you catch it, and it stays glowing on your shelf for everyone to see.", "grandma": "You know how the best advice comes out in the middle of a conversation, and then nobody can remember exactly how it went? A Smart Note is like writing it down on a beautiful card the second it is said — so you can read it back tomorrow, share it with the next person who needs it, and never lose the wisdom of a good talk.", "naya": "Here is how you use it. After your next client call, capture the one insight that mattered most — just say \"smart note this\" or write it down as a Smart Note. Watch it land on the feed as a card. That card is now working for you: your audience reads it, your future clients see how you think, and your own library of wisdom grows one card at a time.", "step": "think of one good thing a client said to you lately — and smart-note it.", "srcMail": "welcome-mail-02", "srcSn": "welcome-sn-02"}, {"day": 3, "dayLabel": "Day 3", "audience": "", "headline": "The Smart Feed: your stage, every single day", "subheadline": "Your notes, your ideas, your work — read by your audience every day. Your feed isn't a timeline you scroll past. It's your stage.", "saying": "Your notes, read by your audience every day — your feed is your stage.", "nutshellFull": "The Smart Feed is where your notes live and where your people read them. It is not a noisy timeline you have to fight. It is your stage: what you share shows up for the people who chose to follow you, in cards they actually read.", "human": "You don't have to imagine. This is the feature, and we have it right here. Every Smart Note you write lands on the feed as a card. Your audience reads it, likes it, comments on it — and the feed learns what they love, so more of the right people see more of your best work. You create once, and the feed carries it to the people it is meant for.", "child": "Think of it like a stage in the middle of a village square. You step up, you tell your story, and everyone who wants to listen is already gathered there. You don't have to shout across the rooftops or chase people down the street. The feed brings the audience to you.", "grandma": "You know how word of mouth used to work — one person tells another, and the good news travels? The Smart Feed is word of mouth with a stage. You say something worth hearing, it appears as a lovely card, and the people who care about what you do see it every day — and they tell their friends.", "naya": "Here is how you use it. Write one Smart Note today — one idea, one story, one thing you recommend — and let it land on the feed as a card. Then come back tomorrow and do it again. A creator's stage is built one card at a time, and the feed is where your audience is already waiting.", "step": "open your feed and share one note about something you know well.", "srcMail": "welcome-mail-03", "srcSn": "welcome-sn-03"}, {"day": 4, "dayLabel": "Day 4", "audience": "", "headline": "Smart Links: your link is your business", "subheadline": "One link that carries everything you are — and every time somebody joins through it, you get paid 50%, every month they stay.", "saying": "Your link is your business — share it, and you get paid 50%.", "nutshellFull": "A Smart Link is one clean link for anything you want to share — your page, your offer, your invitation to join. And as an ambassador, when someone joins through your link and becomes a paying member, you get 50% of what they pay, every month, for as long as they stay.", "human": "You don't have to imagine. This is the feature, and we have it right here. Your ambassador link is waiting on your page. Put it in your posts, put it in your profile, send it in a message — wherever people see you, the link is there. Whoever brings people gets the credit, however they brought them. You share something truly awesome, and you get paid for it.", "child": "Think of it like a lemonade stand with a magic sign. The sign tells everyone where the stand is, and every time a new friend follows the sign and joins the fun, a little of what they spend comes back to you — because you are the one who showed them the way.", "grandma": "You know how you tell a friend about a good shop, and then she tells her friend, and soon the whole street knows? A Smart Link is that, with the counting done for you. You share your link, people join through it, and you get half of what they pay — every month they stay. You did the telling; the system does the remembering.", "naya": "Here is how you use it. Copy your ambassador link from your page. Put it in one place today — your profile, your next post, or a message to a friend. Then tell them, in your own words: join me on NayaNET — Naya means new, a new AI-powered internet. One link, one share, and your side hustle has a door that never closes.", "step": "copy your link from your page and put it in your profile — everywhere people find you.", "srcMail": "welcome-mail-04", "srcSn": "welcome-sn-04"}, {"day": 5, "dayLabel": "Day 5", "audience": "", "headline": "Smart Mail: your whole community, in one place", "subheadline": "Talk to everyone you bring together — in one place, in real time — and nobody reads it but you.", "saying": "Talk to your whole community in one place — and nobody reads it but you.", "nutshellFull": "Smart Mail and Messenger are one interface: your inbox, your instant messages, your posts to your people — all together. You send, they reply, the conversation flows, and it is yours alone. NayaNET is a private communication system. We do not read your mail. We do not read your messages.", "human": "You don't have to imagine. This is the feature, and we have it right here. Smart Mail is where your teaching lands every morning, where your community writes to you, where you write back. Messenger is the instant part — the quick word, the fast answer. One place, one flow, no juggling five apps to keep your people close.", "child": "Think of it like a clubhouse with a mailbox on the door. Everyone in the club knows where to find you. They drop you a note, you write back, and the whole club can talk together — but the door is yours, and nobody peeks inside your letters.", "grandma": "You know how a good letter used to feel — personal, private, meant only for you? Smart Mail is that, with the speed of a phone call. You write to your whole community at once, or to one person alone, and it stays between you and them. Nobody else reads it. That is how it should be.", "naya": "Here is how you use it. Open Smart Mail today and send one message to your people — a welcome, a thought, a question. Then watch the replies come back to the same place. One inbox, one conversation, your whole community in one place.", "step": "send one mail to someone who matters to you — just to say hello.", "srcMail": "welcome-mail-05", "srcSn": "welcome-sn-05"}, {"day": 6, "dayLabel": "Day 6", "audience": "", "headline": "Auto-Match: the right people find your business", "subheadline": "You fill in your story, and the system brings you the people who belong with you — customers, partners, staff. And you're always in control: any connection can be toggled off, and back on, any time.", "saying": "The right people find your business — and you are always in control of who you connect with.", "nutshellFull": "Auto-Match is the system getting to know you and connecting you with people like you — related pages, worlds, groups, and businesses show up for you, and you show up for them. Your profile is how it knows you, so the better your story, the better your matches.", "human": "You don't have to imagine. This is the feature, and we have it right here. The system matches you with people by what you share — your work, your interests, your language, where you are from. You see how close the match is, and you choose who to connect with. And you are always in control: if a connection is not right for you, you toggle it off — and you can toggle it back on again any time. You never have to shut anyone out for good. A connection is yours to turn off and on, like a light.", "child": "Think of it like a classroom where the teacher knows who likes the same games as you, and puts you at the same table. You don't have to search the whole school for a friend — the right people are sitting right there. And if you want some quiet, you can close your book for a while, and open it again when you are ready.", "grandma": "You know how the best customers are the ones who were meant to find you — the ones who walk in and it is like you have known them for years? Auto-Match is that, done by the system: it looks at who you are and what you do, and it brings you the people who fit. And if someone is not a fit, you simply switch the connection off. No fuss, no hard feelings, and you can switch it back on whenever you like.", "naya": "Here is how you use it. Make sure your profile is full — your story is what the match reads. Then look at the connections the system brings you, and say yes to the ones that fit your business. If one doesn't fit, toggle it off. You are the one in charge of your connections, always.", "step": "check your matches and say hello to one person the system brought you.", "srcMail": "welcome-mail-06", "srcSn": "welcome-sn-06"}, {"day": 7, "dayLabel": "Day 7", "audience": "", "headline": "Smart Lists: everyone you know, organized", "subheadline": "Every person you know, in one organized place — so you never lose a follow-up, never forget a name, and never let a good relationship go cold.", "saying": "Everyone you know, organized — never lose a follow-up.", "nutshellFull": "A Smart List is everyone you know, organized the way you think. Your contacts, your notes about them, your follow-ups — all in one place, all findable in seconds. The person you met, the promise you made, the next step — none of it ever slips through again.", "human": "You don't have to imagine. This is the feature, and we have it right here. Your connections and your notes live together in Smart Lists: people by username or alias, notes by link or name. When you need to follow up, you open the list, you find the person, you see exactly where you left off. Relationship sales is remembering — and now the remembering is done for you.", "child": "Think of it like a toy box with labels on every drawer. When you want the red car, you don't tip the whole box on the floor — you open the drawer that says \"red cars.\" Smart Lists are the labels on your people: everyone in the right drawer, ready when you need them.", "grandma": "You know how you used to keep a little address book, with a note beside each name — who they are, what they like, when you last spoke? A Smart List is that address book, grown up: every person you know, with your notes beside them, and a gentle reminder of who you promised to call back.", "naya": "Here is how you use it. Open your Smart Lists today and add the last person you met — their name, where you met, one thing you promised. Tomorrow, open the list before you start work and follow up with one person on it. One a day, and no relationship ever goes cold again.", "step": "put three people you need to follow up with on a list — and call the first one.", "srcMail": "welcome-mail-07", "srcSn": "welcome-sn-07"}, {"day": 8, "dayLabel": "Day 8", "audience": "", "headline": "The Smart Vault: everything you keep, kept forever", "subheadline": "Your lessons, your notes, your work — kept in one private place that organizes itself, so nothing you made is ever lost again.", "saying": "Your lessons, kept forever — nothing is ever lost.", "nutshellFull": "The Smart Vault is your memory and your organization. It stores your lessons, your notes, your materials — and it organizes them for you, automatically, so you can find anything in seconds. Your work is kept forever. Nothing is ever lost.", "human": "You don't have to imagine. This is the feature, and we have it right here. Your Smart Vault is your own private vault: your lessons live in it, labeled and sorted, yours alone. Naya operates it for you — she files things away, she finds them when you ask — and nobody reads what is inside unless you choose to share it. You teach; the Box remembers.", "child": "Think of it like a magic schoolbag. You put your homework in, and it sorts itself — maths with maths, stories with stories — and when you need something, you just reach in and it is right there on top. Nothing falls out the bottom. Nothing ever gets lost.", "grandma": "You know how a good filing cabinet used to work — everything in its folder, every folder in its place, and you could lay your hand on any paper in a minute? The Smart Vault is that cabinet, and it files itself. Your lessons, your notes, your years of work — all kept safe, all findable, forever.", "naya": "Here is how you use it. Put your next lesson in your Smart Vault — the plan, the handout, the video, whatever you made. Then ask for it back tomorrow, and watch it come straight to you. Your teaching library grows every time you teach, and it never forgets a single lesson.", "step": "put one thing you never want to lose into your Smart Vault.", "srcMail": "welcome-mail-08", "srcSn": "welcome-sn-08"}, {"day": 9, "dayLabel": "Day 9", "audience": "", "headline": "Your Dashboard: your numbers at a glance", "subheadline": "Everything that matters, in one place, in the two minutes you've got — so you always know where you stand.", "saying": "Your numbers at a glance, in the two minutes you've got.", "nutshellFull": "The Dashboard is your numbers at a glance. It is the front of your world: everything that matters, gathered in one place, so you can see it, understand it, and get on with your day — in two minutes, not two hours.", "human": "You don't have to imagine. This is the feature, and we have it right here. Your Dashboard shows you your world — your pages, your people, your activity — with numbers that are alive, not dead figures on a page. You open it, you see where you stand, you tap anything that needs you, and you are done. A busy parent does not have time for a system that needs operating. The Dashboard is the system, already operated, served to you on a platter.", "child": "Think of it like the dashboard in a car. You don't need to understand the engine — you just look at the dials and you know: how fast, how far, how much fuel. Your Dashboard is the same: one look, and you know how your world is doing.", "grandma": "You know how you like to glance at the kitchen clock and know exactly where the day stands? The Dashboard is that glance for your whole world. One look, everything in its place, and you know what needs doing and what is already done.", "naya": "Here is how you use it. Open your Dashboard once a day — while the kettle boils is enough. Look at your numbers, tap the one thing that needs you today, and close it. Two minutes, and your world is in hand.", "step": "open your Dashboard and take the two-minute look.", "srcMail": "welcome-mail-09", "srcSn": "welcome-sn-09"}];
 var SA_ACADEMY = [{"day": 1, "id": "ZRIfvxCsYWY", "title": "🔱 ACTIVATE YOU / EXPERIENCE ME! Day #1 of the Naya POWER Academy.🔱", "sub": "Meet Naya — experience me", "saying": "Talk to Naya. Let her get to know you — tell her who you are, what matters to you, and where you are going.", "nutshell": "Today, you meet Naya. This isn't about learning complicated AI technology. It's about experiencing a new way to work with AI — one designed to help you understand what you mean, reduce overwhelm, preserve context, improve quality, and get more consistent results."}, {"day": 2, "id": "j0YwJsC6Q4Y", "title": "🔱 REMEMBER / COMPOUND! Day #2 of the Naya POWER Academy. 🔱", "sub": "Stop starting over — remember & compound", "saying": "You don't have to keep starting over. You need to preserve what matters.", "nutshell": "Today, I want to show you one of the biggest differences between ordinary AI and NayaPOWER: you don't have to keep starting over. Yesterday, you met me and began our relationship. Today, we begin turning your experiences into intelligence that stays with you."}, {"day": 3, "id": "PtYW43cIZng", "title": "Day 3 — Learn. Master.", "sub": "Learn. Master. — build & prove understanding", "saying": "Learn. Master. — build and prove understanding.", "nutshell": "Day 3 of the Academy: learn and master — build understanding, and prove it. (Headline from the Academy's own five-day progression; the video's own title shows in the player.)"}, {"day": 4, "id": "3c0q_NjM3i8", "title": "🔱 CREATE / EXECUTE! Day #4. Lesson #4 of the Naya POWER Academy. 🔱", "sub": "Create. Execute. — turn intelligence into results", "saying": "Don't just ask AI for answers. Work with intelligence to create something that matters — then execute it.", "nutshell": "Yesterday, you learned how to learn and master. Today, we take the next step: turn intelligence into extraordinary work. Most people still use AI like a search box. With NayaPOWER, you can start treating AI as a collaborator."}, {"day": 5, "id": "T9Pi1BftCZk", "title": "Day 5 — Become.", "sub": "Become — make it your way of operating", "saying": "Make it your way of operating.", "nutshell": "Day 5 of the Academy: become — make working with intelligence your way of operating. (Headline from the Academy's own five-day progression; the video's own title shows in the player.)"}];
 
 /* MEMBERSHIP ROUND 4 REFINEMENT: the Videos feed carries his actual YouTube
@@ -24364,7 +24367,7 @@ var SA_MEMBERSHIPS = {
     cover:'The AI Masterclass \u2014 how to work with AI at full power, the Naya way.'},
   'fast action club': {slug:'fac', access:'free', name:'Fast Action Club', color:'#2fe89e', url:'#memberships',
     desc:'Fast Action Club (AI Naya Mastery) \u2014 the Fast Action Success Plan with NayaNET: your orientation, your job, how we succeed at it. A free nine-day course inside your nine free days.',
-    cover:'Welcome to NayaNET \u2014 your world is ready. You just joined the new internet. Your Personal page, your Business page, and your Space are ready \u2014 all free \u2014 and Naya operates them for you. Congratulations \u2014 you\u2019re hired, and you\u2019re part of the team now. This is your orientation.'}
+    cover:'Welcome to NayaNET \u2014 your world is ready. You just joined the new internet. Your Personal page, your Business page, and your World are ready \u2014 all free \u2014 and Naya operates them for you. Congratulations \u2014 you\u2019re hired, and you\u2019re part of the team now. This is your orientation.'}
 };
 
 /* ROUND 6: the course's image is the obsidian login image now (was the purple portal). The course cover, the lesson-cover fallback, and the login stage all follow this one image. */
@@ -25443,7 +25446,7 @@ function fcPickerRows(){
     var n=(a.getAttribute('data-mw-open-mship')||'').trim(); if(!n) return;
     var dup=rows.some(function(r){ return r.name.toLowerCase()===n.toLowerCase(); });
     if(dup) return;
-    rows.push({kind:'space', name:n, fact:'Space', match:null, alias:slug(n)});
+    rows.push({kind:'space', name:n, fact:'World', match:null, alias:slug(n)});
   });
   return rows;
 }
@@ -25456,7 +25459,7 @@ function fcRenderPicker(q){
   list.innerHTML=rows.map(function(r){
     var m=(r.kind==='person'&&typeof r.match==='number')
       ? '<span class="fc-pick-match"><b>'+r.match+'%</b><i>match</i></span>'
-      : '<span class="fc-pick-match"><b>—</b><i>space</i></span>';
+      : '<span class="fc-pick-match"><b>—</b><i>world</i></span>';
     return '<button type="button" class="fc-pick" data-fc-pick="'+r.kind+'" data-fc-name="'+esc(r.name)+'" data-fc-alias="'+esc(r.alias)+'">'
       +'<span class="fc-pick-av" style="--cc:'+fcColorFor(r.name)+'">'+esc((r.name||'G')[0].toUpperCase())+'</span>'
       +'<span class="fc-pick-txt"><b>'+esc(r.name)+'</b><i>'+esc(r.fact||'')+'</i></span>'+m+'</button>';
@@ -25473,7 +25476,7 @@ window.fcOpenChat=function(who){
   if(nm) nm.textContent=who.name;
   if(av){ av.textContent=(who.name||'G')[0].toUpperCase(); try{ av.style.setProperty('--cc', fcColorFor(who.name)); }catch(e){} }
   var f=null; (window._mwFaces||[]).forEach(function(x){ if(x.name===who.name) f=x; });
-  if(mt) mt.textContent=(f&&typeof f.match==='number'?f.match+'% match · ':'')+(who.kind==='space'?'Space · ':'')+(isMail?'Smart Mail':(window.mwTr?window.mwTr('Instant message'):'Instant message'));
+  if(mt) mt.textContent=(f&&typeof f.match==='number'?f.match+'% match · ':'')+(who.kind==='space'?'World · ':'')+(isMail?'Smart Mail':(window.mwTr?window.mwTr('Instant message'):'Instant message'));
   if(subj) subj.hidden=!isMail;
   if(hint) hint.textContent=isMail?(window.mwTr?window.mwTr('Write it — it lands in their Smart Mail inbox.'):'Write it — it lands in their Smart Mail inbox.'):(window.mwTr?window.mwTr('Write it — it pops up in their Smart Mail inbox as an instant message.'):'Write it — it pops up in their Smart Mail inbox as an instant message.');
   if(st) st.textContent='';
@@ -25617,7 +25620,7 @@ body.pc-drawer-open #naya-notif-bar{z-index:955!important;}
    rendered in any rail card, ever. The line under the alias is ONE nutshell:
    who you are + what you're about + your thing + your motto, in one line.
    LIVE = endpoint-matched, with the percentage and the reasons the endpoint
-   returned. STANDING = the family, marked as standing, never shown as online.
+   returned. The family (the seed people) carry no status word on the card.
    Chat opens the instant message in place; mail opens it with the subject
    shown. Audio and video have no Smart Meet route on this page yet, so they
    open the same instant message with an honest status line saying so — the
@@ -25632,22 +25635,20 @@ window.PC_RAIL_SEED = [{"alias": "sophia", "nut": "I'm Sophia. I am LEARN — wi
 function pcTr(x){ try{ return window.mwTr?window.mwTr(x):x; }catch(e){ return x; } }
 function pcCard(p, live){
   var init=(p.alias||'?')[0].toUpperCase();
-  /* R5 Part 5 (amended) — the match % lives beside CONNECT now (pcCardWithConnect),
-     so the under-alias slot carries the STATUS: LIVE MATCH (green) or STANDING. */
-  var mark = live
-    ? '<span class="pc-mark live">'+pcTr('LIVE MATCH')+'</span>'
-    : (p.you ? '<span class="pc-mark you">'+pcTr('YOU \u00b7 STANDING')+'</span>' : '<span class="pc-mark">'+pcTr('STANDING')+'</span>');
+  /* HEADER-V2 + COMPOSER-RAIL 2026-11-14 — the status mark is gone: cards hold
+     name + motto + info + % + CONNECT + Chat/Mail/Audio/Video, nothing else. */
+  var mark = '';;
   var reasons = live
     ? '<p class="pc-reasons">'+p.reasons.map(function(r){ return esc(r); }).join('<br>')+'</p>'
     : '';
   /* the sharpening: one nutshell line under the alias. A live match carries no
      nutshell from the endpoint (alias + % + reasons only) — so the line is left
-     out for live cards rather than invented; the record says so. The standing
+     out for live cards rather than invented; the record says so. The seed
      nutshell IS the motto: the popover renders this same nut, byte-identical. */
   var nutHtml = p.nut ? '<p class="pc-nut">'+esc(p.nut)+'</p>' : '';
   return '<article class="pc-card" data-pc-alias="'+esc(p.alias)+'">'
     + '<div class="pc-card-top"><span class="fc-pick-av" style="--cc:'+pcColorFor(p.alias)+'">'+esc(init)+'</span>'
-    + '<div class="pc-card-id"><span class="pc-id-line"><b>'+esc(p.alias)+'</b><button type="button" class="pc-info" data-pc-info="'+esc(p.alias)+'" aria-label="About '+esc(p.alias)+'">ⓘ</button></span>'+mark+'</div></div>'
+    + '<div class="pc-card-id"><span class="pc-id-line"><b>'+esc(p.alias)+'</b></span>'+mark+'</div></div>'
     + nutHtml+reasons
     + '<div class="pc-btns">'
     + '<button type="button" class="pc-btn" data-pc-act="chat" style="--mc:#3fb8ff">💬 '+pcTr('Chat')+'</button>'
@@ -25663,7 +25664,7 @@ function pcCard(p, live){
    "Connect requests" Smart List (a person ref — the grounded store, see
    the record); the rail follows the ACTIVE feed tab; online first (no
    online source grounds on this page today, so the online section is
-   honestly empty and standing is all there is — never shown as online). */
+   honestly empty and the seed family is all there is — never shown as online). */
 var PC_TAB_SETS={personal:null,public:['sophia','thea','terra','zoe','wren','iris','ruth'],naya:['esme','astraea','mira','vera','aurelia','shawn']};
 window.PC_RAIL_TAB='personal';
 window.PC_RAIL_Q='';
@@ -25681,14 +25682,15 @@ function pcCardWithConnect(p, live){
   var base=pcCard(p, live);
   var req=pcConnectRequested(p.alias);
   /* R5 Part 5 (amended) — CONNECT + the GREEN ACTIVE NUMBER beside it, on every
-     card: the seed pct for standing family, the endpoint pct for live matches. */
+     card: the seed pct for the seed family, the endpoint pct for live matches. */
   var pct=(typeof p.pct==='number')?p.pct:null;
   var pctHtml=(pct===null)?'':'<span class="pc-pct" title="'+pcTr('Match')+'">'+pct+'%</span>';
   var btn='<button type="button" class="pc-connect-btn'+(req?' requested':'')+'" data-pc-connect="'+esc(p.alias)+'"'+(req?' disabled':'')+'>'+(req?'Requested \u2713':'CONNECT')+'</button>';
   var note=req?'<p class="pc-req-note">Request sent \u2014 waiting for them to accept.</p>':'';
   var at=base.indexOf('</article>');
   if(at<0) return base;
-  var row='<div class="pc-connect-row">'+pctHtml+btn+'</div>';
+  var infoBtn='<button type="button" class="pc-info" data-pc-info="'+esc(p.alias)+'" aria-label="About '+esc(p.alias)+'">ⓘ</button>';
+  var row='<div class="pc-connect-row">'+pctHtml+infoBtn+btn+'</div>'; /* HEADER-V2 2026-11-14: the info sits beside the %, top-right, fixed — long names cannot move it. */
   return base.slice(0, at)+row+note+base.slice(at);
 }
 window.pcRenderRailForTab=function(tab){
@@ -25704,11 +25706,9 @@ window.pcRenderRailForTab=function(tab){
   }
   var html='';
   if(live.length) html+='<p class="pc-rail-sec">'+pcTr('Live matches')+'</p>'+live.map(function(p){ return pcCardWithConnect(p, true); }).join('');
-  if(standing.length) html+='<p class="pc-rail-sec">'+pcTr('Standing')+'</p>'+standing.map(function(p){ return pcCardWithConnect(p, false); }).join('');
+  if(standing.length) html+=standing.map(function(p){ return pcCardWithConnect(p, false); }).join(''); /* HEADER-V2 2026-11-14: no Standing section header. */
   if(!live.length && !standing.length) html+='<p class="pc-rail-note">'+pcTr('No one matches that search.')+'</p>';
   list.innerHTML=html;
-  var lc=document.getElementById('pcLiveCount'); if(lc) lc.textContent=live.length+' '+(live.length===1?pcTr('live match'):pcTr('live matches'));
-  var sc=document.getElementById('pcStandCount'); if(sc) sc.textContent=standing.length+' '+pcTr('standing');
 };
 window.pcRenderRail=function(live, standing){
   if(live||standing){ window.PC_RAIL_LIVE=live||window.PC_RAIL_LIVE; }
@@ -26687,6 +26687,11 @@ div[data-block="cover"] > .ph-actions-row{padding:0 24px;box-sizing:border-box;}
 #pcRailPop{position:fixed;z-index:2000;left:50%;top:50%;transform:translate(-50%,-50%);width:min(420px,calc(100vw - 32px));max-height:calc(100dvh - 48px);overflow-y:auto;}
 #pcRailPop .pc-pop-actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;}
 #pcRailPop .pc-pop-actions .ph-connect{flex:1;text-align:center;padding:12px 18px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;}
+/* --- Popover polish 2026-11-14: the person popover IS the intro board (harvested from .ph-intro-board, pinned here on the shell so the treatment is explicit, not class-only); CONNECT green #2fe89e; View profile stays purple (#a06bff, untouched). Measured base: popover CONNECT was already in-flow (position:static via the .pc-pop-actions override) but had no flex share (86px beside View profile's 232px) — it now takes flex:1 beside View profile. The gold .requested state is preserved. No JS touched; the 8s guard is unchanged. --- */
+#pcRailPop{background:#050507;border:1.5px solid rgba(232,232,236,.85);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.6),0 0 18px -4px rgba(232,232,236,.45),0 8px 22px rgba(0,0,0,.5);}
+#pcRailPop .pc-pop-actions .pc-connect-btn{flex:1;padding:12px 18px;border-color:#2fe89e;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 16px -4px #2fe89e,0 6px 14px rgba(0,0,0,.5);}
+#pcRailPop .pc-pop-actions .pc-connect-btn:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 22px -2px #2fe89e,0 8px 18px rgba(0,0,0,.55);}
+#pcRailPop .pc-pop-actions .pc-connect-btn.requested{border-color:#ffbf3d;color:#ffbf3d;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 16px -4px #ffbf3d,0 6px 14px rgba(0,0,0,.5);}
 .pc-pop-x{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:#fff;font-size:13px;cursor:pointer;z-index:1;}
 .pc-pop-x:hover{border-color:#fff;}
 
@@ -27232,6 +27237,105 @@ document.addEventListener('click', function(e){
   if(e.target&&e.target.closest&&(e.target.closest('[data-pc-pop-close]')||e.target.closest('#pcRailPopBack'))){ pcHideRailPop(); return; }
 });
 document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRailPop(); });
+</script>
+
+
+<style id="header-v2-about-20261114">
+/* ═══ HEADER V2 + ABOUT + COMPOSER + RAIL — 2026-11-14 ═══
+   Appended last so these rules win equal-specificity ties. Scoped to
+   #phIntroBoard (NOT .ph-intro-board: #pcRailPop shares that class and
+   belongs to the popover round) and to #pcComposerBar / #pcRail / #about. */
+
+/* --- Header: the small name box — name + motto + info only, ends early --- */
+#phIntroBoard{flex:0 0 auto;max-width:460px;}
+#phIntroBoard .ph-intro-name{font-size:22px;}
+#phIntroBoard .ph-intro-motto{font-size:16px;}
+#phIntroBoard .ph-intro-info{flex:none;width:26px;height:26px;font-size:13px;}
+/* Points above the picture (DOM order) drops the picture down the head. */
+.ph-idcol .ph-avwrap{margin-top:2px;}
+@media(max-width:640px){
+  /* Phone: the box takes its own row under picture + points, still small. */
+  #phIntroBoard{flex:1 1 100%;max-width:100%;}
+  #phIntroBoard .ph-intro-name{font-size:20px;}
+}
+
+/* --- About: boards sized to their content, never a void --- */
+#about .ib-layer{margin-bottom:12px;}
+#about .ib-layer-head{padding:12px 18px;}
+#about .ib-layer-body{padding:2px 20px 12px;}
+#about .ib-nutshell{margin:8px 0 10px !important;padding:12px 16px !important;font-size:18px !important;}
+#about .ib-nutshell:has(> p:empty){display:none;}
+#about .ph-actions{margin-top:10px;}
+#about .os-status{margin-top:4px;}
+#about .os-status:empty{display:none;}
+/* --- About album: nine tiles, the page's own photo treatment --- */
+.ph-album-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:4px;max-width:920px;} /* header-v2 2026-11-14: capped at 920px — full-width 450px tiles read as void, not showcase; 290px tiles are an album. */
+.ph-album-tile{margin:0;position:relative;aspect-ratio:1/1;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#17171f,#0a0a10);border:1.5px solid rgba(255,255,255,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 8px 22px rgba(0,0,0,.5);}
+.ph-album-tile img{width:100%;height:100%;object-fit:cover;display:block;}
+.ph-album-photo img{object-fit:contain;background:#0b0b11;} /* the monogram is a square SVG — cover crops its diamond points; contain shows it whole. */
+.ph-album-coverart{position:absolute;inset:0;background:radial-gradient(560px 240px at 12% -10%,rgba(160,107,255,.5),transparent 60%),radial-gradient(520px 260px at 88% 0%,rgba(232,79,255,.32),transparent 60%),radial-gradient(640px 300px at 55% 118%,rgba(63,184,255,.34),transparent 62%),linear-gradient(135deg,#1a1a3e,#2d1b4e 30%,#4a2b7a 55%,#0f3460 80%,#16537e);}
+.ph-album-tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:8px 10px;font-size:12px;font-weight:800;color:#fff;background:linear-gradient(180deg,transparent,rgba(2,2,6,.78));}
+.ph-album-empty{display:grid;place-items:center;align-content:center;}
+.ph-album-empty .ph-album-plus{font-size:34px;font-weight:900;line-height:1;color:rgba(255,255,255,.85);}
+.ph-album-empty figcaption{position:static;background:none;padding:0;color:#cfc9da;}
+.ph-album-tile:hover{border-color:#a06bff;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 20px -4px #a06bff,0 10px 26px rgba(0,0,0,.55);}
+@media(max-width:640px){.ph-album-grid{gap:8px;}}
+
+/* --- Composer: ONE grid with the tabs — same 3 columns, same widths --- */
+#pcComposerBar{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0;background:none;border:0;border-radius:0;box-shadow:none;overflow:visible;margin:2px 0 10px;}
+#pcComposerBar #fcCreateRow{display:contents;}
+#pcComposerBar #fcCreateRow .fc-create{justify-self:center;width:56px;height:56px;min-height:56px;padding:0;border-radius:50%;font-size:0;gap:0;background:linear-gradient(180deg,#1a1a22,#0a0a0f 45%,#050507);border:1.5px solid rgba(255,255,255,.85);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.6),0 0 16px -4px rgba(255,255,255,.4),0 8px 20px rgba(0,0,0,.5);}
+#pcComposerBar #fcCreateRow .fc-create .tg-dot{display:none;}
+#pcComposerBar #fcCreateRow .fc-create .fc-ico{font-size:22px;font-weight:900;line-height:1;color:#fff;}
+#pcComposerBar #fcCreateRow .fc-create .fc-create-lab{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+/* Rest: ALL WHITE. Highlight: each button lights its own colour. */
+#pcComposerBar #fcCreateRow .fc-create[data-fc-create="post"]:hover,#pcComposerBar #fcCreateRow .fc-create[data-fc-create="post"]:focus-visible,#pcComposerBar #fcCreateRow .fc-create[data-fc-create="post"]:active{border-color:#a06bff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 22px -2px #a06bff,0 8px 20px rgba(0,0,0,.55);}
+#pcComposerBar #fcCreateRow .fc-create[data-fc-create="post"]:hover .fc-ico,#pcComposerBar #fcCreateRow .fc-create[data-fc-create="post"]:focus-visible .fc-ico{color:#a06bff;text-shadow:0 0 12px #a06bff;}
+#pcComposerBar #fcCreateRow .fc-create[data-fc-create="naya"]:hover,#pcComposerBar #fcCreateRow .fc-create[data-fc-create="naya"]:focus-visible,#pcComposerBar #fcCreateRow .fc-create[data-fc-create="naya"]:active{border-color:#2fe89e;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 22px -2px #2fe89e,0 8px 20px rgba(0,0,0,.55);}
+#pcComposerBar #fcCreateRow .fc-create[data-fc-create="naya"]:hover .fc-ico,#pcComposerBar #fcCreateRow .fc-create[data-fc-create="naya"]:focus-visible .fc-ico{color:#2fe89e;text-shadow:0 0 12px #2fe89e;}
+#pcComposerBar #fcCreateRow .fc-create[data-fc-create="smart"]:hover,#pcComposerBar #fcCreateRow .fc-create[data-fc-create="smart"]:focus-visible,#pcComposerBar #fcCreateRow .fc-create[data-fc-create="smart"]:active{border-color:#3fb8ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 22px -2px #3fb8ff,0 8px 20px rgba(0,0,0,.55);}
+#pcComposerBar #fcCreateRow .fc-create[data-fc-create="smart"]:hover .fc-ico,#pcComposerBar #fcCreateRow .fc-create[data-fc-create="smart"]:focus-visible .fc-ico{color:#3fb8ff;text-shadow:0 0 12px #3fb8ff;}
+/* Search: bigger, full grid row, directly above the tabs. */
+#pcComposerBar #pcHubSearch{grid-column:1/-1;display:flex;}
+#pcComposerBar #pcHubSearch .searchRow{padding:16px 18px;}
+#pcComposerBar #pcHubSearch .searchRow input{font-size:17px;}
+
+/* --- Rail: card top leaves room for the fixed % + info + CONNECT row --- */
+#pcRail .pc-card-top{padding-right:176px;}
+#pcRail .pc-connect-row .pc-info{flex:none;}
+#pcRailSearch{height:56px;}
+#pcRailClose{height:56px;width:56px;}
+</style>
+<script>
+/* HEADER-V2 + COMPOSER-RAIL 2026-11-14 — the rail search sits on the main
+   search's line, same height, at desktop widths (rail beside the feed).
+   The offset depends on the cover height (55vh-capped), so it is measured
+   live from the rendered main search, never a magic number. */
+(function(){
+  function align(){
+    var tools=document.querySelector('.pc-rail-tools');
+    var inp=document.getElementById('pcRailSearch');
+    var close=document.getElementById('pcRailClose');
+    var main=document.querySelector('#pcHubSearch .searchRow');
+    if(!tools||!inp||!main) return;
+    if(window.innerWidth<1024){ tools.style.marginTop=''; inp.style.height=''; if(close) close.style.height=''; return; }
+    var mr=main.getBoundingClientRect(), tr=tools.getBoundingClientRect();
+    /* header-v2 2026-11-14: idempotent — the visual delta already includes the margin we set, so add it back; without this each poll undid the last (51 -> 0 -> 51 oscillation, measured live). */
+    var dy=Math.round(mr.top-tr.top)+Math.round(parseFloat(tools.style.marginTop)||0);
+    if(dy>200) dy=200; if(dy<-40) dy=-40;
+    tools.style.marginTop=dy+'px';
+    var h=Math.round(mr.height)+'px';
+    inp.style.height=h; if(close) close.style.height=h;
+  }
+  window.hv2AlignRailSearch=align;
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', align);
+  else align();
+  /* header-v2 2026-11-14: the fixed 800/2500ms runs fired before the wall settled (fonts + async wall init move the main search down ~51px after them), so the rail sat 60px high. Poll every 1.5s for ~21s so the alignment lands whenever the layout lands. */
+  var _hv2n=0; var _hv2iv=setInterval(function(){ align(); if(++_hv2n>=14) clearInterval(_hv2iv); },1500);
+  window.addEventListener('resize', align);
+  window.addEventListener('load', align);
+  setTimeout(align, 800); setTimeout(align, 2500);
+})();
 </script>
 
 </body></html>
