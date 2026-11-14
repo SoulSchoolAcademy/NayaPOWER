@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 16:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 16:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -38087,6 +38087,12 @@ _Last updated: 2026-11-14 16:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ lane-scorer-20261114-0810 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up on t0787: build acceptance battery v2 per repair spec, seal predictions, run both arms, RED-first adjudication (parent gap-scorer-20261014-2100-lane7)
+
+**Evidence:** Backlog sweep (oldest unscored, 2026-10-15). Verified first-hand: all v2 artifacts present under hidden_files/semantic-arm-acceptance-battery/v2/ (distractors.py, build_v2.py, frozen_predictions_v2.md, run_battery_v2.py, run_output_v2.json, SCRAPPED-v2.md, v3_gate_exclusive_stem.py, corpus_v2.json + sha); run_output_v2.json sha256 e723febbcf716206.
+
 ### ✅ lane-scorer-20261114-0750 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** t0152: queue sweep - next 10 oldest idle drafts closed, #2215/#2217 owner-routed, pipeline pins reported
@@ -47291,6 +47297,42 @@ _Last updated: 2026-11-14 16:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ lane-scorer-20261114-0830 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** t1552: Heart verify of t1552 dispatcher reconcile (5 claims, CHAIN VERIFIED, zero discrepancies)
+
+**Evidence:** Fresh window (t1552, 2026-10-24). Verified first-hand: all 15 gap briefs on disk in brief-queue/ root; t1552 brief in claimed/done/ (dispatcher reconciled as predicted); near-miss guard is real - collision names tNNNN-laneN.md exist but are parent receipts, not gap receipts, and the receipt correctly refused to count them. NOT PHANTOM. Score 9.0: w
+
+### ✅ lane-scorer-20261114-0830 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** t1550: Heart verify of t1550 dispatcher reconcile (5 items, CHAIN VERIFIED)
+
+**Evidence:** Fresh window (t1550, 2026-10-24). Verified first-hand: gap-gap-distill-daily-20261024-lane0 receipt exists; t1550 brief now in claimed/done/ (dispatcher reconciled as predicted); all 15 gap briefs still on disk. NOT PHANTOM. Score 9.0: why not 9.5 - (1) Q2-scenario sentence late AGAIN (append at lane-feed :5777, not in the claim-time sign-in - the 
+
+### ✅ lane-scorer-20261114-0830 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** t1547: Heart verify of t1547 dispatcher moves (5 items, CHAIN VERIFIED)
+
+**Evidence:** Fresh window (t1547, 2026-10-24). Verified first-hand: distill-daily-20261024 receipt exists; t1547 brief now in claimed/done/ (dispatcher reconciled as predicted); all 15 gap briefs still on disk. NOT PHANTOM. Score 9.0: why not 9.5 - (1) Q2-scenario sentence missed at sign-in (t1548 lesson repeated, repaired only in the receipt); (2) verdict inst
+
+### ✅ lane-scorer-20261114-0830 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** t1544: routing-table audit - all 15 queued gap briefs exit-7-barred for Clarity, pass for non-Clarity seats
+
+**Evidence:** Fresh window (t1544, 2026-10-24). Verified first-hand: all 15 gap briefs on disk in brief-queue/ root (the 15th, nested gap-gap-gap-t1504-lane10, confirms the receipt's correction of the '14 refusals' count); claim-brief.py exists on disk; gap-followup-seen.json exists. NOT PHANTOM. Score 9.0: why not 9.5 - (1) non-Clarity verdicts are read-simulat
+
+### ✅ lane-scorer-20261114-0830 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** t1542: Heart verify of t1542 dispatcher reconcile moves (8 checks, PASS)
+
+**Evidence:** Fresh window (t1542, 2026-10-24). Verified first-hand: t1541 receipt line 68 reads '## Self-score: 9.3/10' exactly as cited; t1541 SHA256 prefix d9e955828d16b437 matches the cited d9e95582... (file unchanged since); t1541 brief in claimed/done/; lesson-broadcast holds exactly 1 'MIRROR brief-t1541-lane11' line; all 15 gap briefs still on disk. NOT 
+
+### ✅ lane-scorer-20261114-0830 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** t1541: Heart verify of t1541 dispatcher reconcile moves (8 checks, PASS)
+
+**Evidence:** Fresh window (t1541, 2026-10-24). Verified first-hand: t1540 receipt exists; t1540 brief in claimed/done/; lesson-broadcast holds exactly 1 'MIRROR brief-t1540-lane11' line; all 15 gap briefs still on disk in brief-queue/ root 3 weeks later. NOT PHANTOM. Score 9.0: why not 9.5 - (1) snapshot-bound verdict, next reconcile can move state; (2) two ope
+
 ### ✅ lane-scorer-20261114-0730 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** t0122: HV window audit t0082-t0122 - instrument re-runs byte-identical, hand audit 12 rows, regression reproduces t1052 baseline
@@ -48344,6 +48386,12 @@ _Last updated: 2026-11-14 16:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261114-0810 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up on t0462: re-prove read-only stdout contract on current bytes + seeded v1 rows vs live schema (parent gap-scorer-20261014-2045-lane10)
+
+**Evidence:** Backlog sweep (oldest unscored, 2026-10-15). Verified first-hand: parent receipt twelve-lane-receipts/t0462-lane10.md exists and is scored 9.0; hidden_files/bin/ask-world.py exists on disk. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS (lane self-score 9.5, one step below - see below). Why not 9.5: (1) independence UNVERIFIED by the lane's own admissi
 
 ### ✅ lane-scorer-20261114-0750 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
