@@ -4971,6 +4971,8 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
 <div class="os-score-elegant" id="os-score-elegant">
   <div class="os-se-val" id="os-se-val"><span class="os-se-num" id="os-se-num"><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span><span class="os-skel-msg">Ledger loading — your score appears when the ledger answers</span></span></div>
   <div class="os-se-cap" id="os-se-cap">TOTAL SCORE</div>
+  <div class="os-tier-chip" id="os-tier-chip" role="status" aria-label="Score tier"><b class="os-tier-name" id="os-tier-name">—</b><span class="os-tier-next" id="os-tier-next"></span><span class="os-tier-bar" aria-hidden="true"><span class="os-tier-fill" id="os-tier-fill"></span></span></div>
+  <div class="os-hero-updated" id="os-hero-updated"></div>
   <div class="platter big"></div>
 </div>
 <p class="tn-hero-voice" data-tn-voice="hero" aria-label="Naya reads your score"></p>
@@ -5065,6 +5067,7 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
 <div class="os-sales-orbs" id="os-sales-orbs"></div>
 </div>
 <div class="os-sales-total"><div class="os-sales-total-n" id="os-sales-total-n">—</div><div class="os-sales-total-l">Top link clicks</div><div class="os-sales-total-ref" id="os-sales-total-ref"></div></div><!-- PASS-11 (8): the drill leads with the top link — the grand total is the small reference under it. -->
+<div class="os-sales-found" id="os-sales-found" aria-label="Where the clicks came from"></div>
 </div>
 <div class="os-invites-view" id="os-invites-view" role="dialog" aria-label="Invites detail" aria-hidden="true">
 <button type="button" class="os-invites-x" id="os-invites-x" aria-label="Close invites detail">×</button>
@@ -6991,9 +6994,9 @@ button.os-ld-node.os-ld-mini .os-ld-n{font-size:0 !important;line-height:0 !impo
      one line overflowing the 60px box - overflow-wrap:anywhere breaks the
      word itself at the box edge. Desktop untouched. */
   .os-sales-orbs .os-ld-node .os-ld-lbl{
-    white-space:normal !important; max-width:60px !important;
+    white-space:normal !important; max-width:84px !important;
     line-height:1.25 !important; font-size:9px !important;
-    overflow-wrap:anywhere !important;
+    overflow-wrap:normal !important; word-break:normal !important;
   }
 }
   .os-sales-pills{right:10px;}
@@ -7054,7 +7057,7 @@ button.os-ld-node.os-ld-mini .os-ld-n{font-size:0 !important;line-height:0 !impo
    Desktop untouched. */
 @media (max-width:900px){
   .os-notes-orbs .os-ld-node .os-ld-lbl{
-    white-space:normal !important; max-width:60px !important;
+    white-space:normal !important; max-width:84px !important;
     line-height:1.25 !important; font-size:9px !important;
   }
   .os-notes-pills{
@@ -7201,9 +7204,9 @@ button.os-ld-node.os-ld-mini .os-ld-n{font-size:0 !important;line-height:0 !impo
      one line overflowing the 60px box - overflow-wrap:anywhere breaks the
      word itself at the box edge. Desktop untouched. */
   .os-comments-orbs .os-ld-node .os-ld-lbl{
-    white-space:normal !important; max-width:60px !important;
+    white-space:normal !important; max-width:84px !important;
     line-height:1.25 !important; font-size:9px !important;
-    overflow-wrap:anywhere !important;
+    overflow-wrap:normal !important; word-break:normal !important;
   }
 }
   .os-comments-pills{right:10px;}
@@ -7263,7 +7266,7 @@ button.os-ld-node.os-ld-mini .os-ld-n{font-size:0 !important;line-height:0 !impo
    Desktop untouched. */
 @media (max-width:900px){
   .os-likes-orbs .os-ld-node .os-ld-lbl{
-    white-space:normal !important; max-width:60px !important;
+    white-space:normal !important; max-width:84px !important;
     line-height:1.25 !important; font-size:9px !important;
   }
   .os-likes-pills{
@@ -7407,9 +7410,9 @@ button.os-ld-node.os-ld-mini .os-ld-n{font-size:0 !important;line-height:0 !impo
      one line overflowing the 60px box - overflow-wrap:anywhere breaks the
      word itself at the box edge. Desktop untouched. */
   .os-joins-orbs .os-ld-node .os-ld-lbl{
-    white-space:normal !important; max-width:60px !important;
+    white-space:normal !important; max-width:84px !important;
     line-height:1.25 !important; font-size:9px !important;
-    overflow-wrap:anywhere !important;
+    overflow-wrap:normal !important; word-break:normal !important;
   }
 }
   .os-joins-pills{right:10px;}
@@ -7516,9 +7519,9 @@ button.os-ld-node.os-ld-mini .os-ld-n{font-size:0 !important;line-height:0 !impo
      one line overflowing the 60px box - overflow-wrap:anywhere breaks the
      word itself at the box edge. Desktop untouched. */
   .os-shares-orbs .os-ld-node .os-ld-lbl{
-    white-space:normal !important; max-width:60px !important;
+    white-space:normal !important; max-width:84px !important;
     line-height:1.25 !important; font-size:9px !important;
-    overflow-wrap:anywhere !important;
+    overflow-wrap:normal !important; word-break:normal !important;
   }
 }
   .os-shares-pills{right:10px;}
@@ -7588,7 +7591,7 @@ button.os-ld-node.os-ld-mini .os-ld-n{font-size:0 !important;line-height:0 !impo
    the total (ends ~606px) and of every label. Desktop untouched. */
 @media (max-width:900px){
   .os-creations-orbs .os-ld-node .os-ld-lbl{
-    white-space:normal !important; max-width:60px !important;
+    white-space:normal !important; max-width:84px !important;
     line-height:1.25 !important; font-size:9px !important;
   }
   .os-creations-pills{
@@ -7732,9 +7735,9 @@ button.os-ld-node.os-ld-mini .os-ld-n{font-size:0 !important;line-height:0 !impo
      one line overflowing the 60px box - overflow-wrap:anywhere breaks the
      word itself at the box edge. Desktop untouched. */
   .os-saves-orbs .os-ld-node .os-ld-lbl{
-    white-space:normal !important; max-width:60px !important;
+    white-space:normal !important; max-width:84px !important;
     line-height:1.25 !important; font-size:9px !important;
-    overflow-wrap:anywhere !important;
+    overflow-wrap:normal !important; word-break:normal !important;
   }
 }
   .os-saves-pills{right:10px;}
@@ -7971,9 +7974,9 @@ button.os-ld-node.os-ld-mini .os-ld-n{font-size:0 !important;line-height:0 !impo
      one line overflowing the 60px box - overflow-wrap:anywhere breaks the
      word itself at the box edge. Desktop untouched. */
   .os-invites-orbs .os-ld-node .os-ld-lbl{
-    white-space:normal !important; max-width:60px !important;
+    white-space:normal !important; max-width:84px !important;
     line-height:1.25 !important; font-size:9px !important;
-    overflow-wrap:anywhere !important;
+    overflow-wrap:normal !important; word-break:normal !important;
   }
 }
   .os-invites-pills{right:10px;}
@@ -10683,7 +10686,7 @@ NF.register(UNIT, {
        stages Recorded → Joined with the conversion between them,
        read from the invites table's own status values. The truth of
        this page's invites today: they are record-only (dry_run) — nothing
-       is sent, so Joined honestly reads 0, and the funnel SAYS
+       is sent, so no invite join has happened yet, and the funnel SAYS
        why instead of dressing the zeros up. — */
   function renderFunnel(rows){
     var box=$('os-funnel'); if (!box) return;
@@ -10698,7 +10701,7 @@ NF.register(UNIT, {
     function conv(a, b, what, nc){ return '<div class="os-fconv"><span class="os-farrow" style="--fc:'+(nc||'#ff9a5a')+'"></span><b>'+pct(a,b)+'%</b> '+what+'</div>'; }
     var truth;
     if (!total) truth='No invites yet — record the first one above.';
-    else if (allDry) truth='Record-only mode: saved, never sent — Joined honestly reads 0 until a friend connects.';
+    else if (allDry) truth='Record-only mode: saved, never sent — nobody has joined from an invite yet.';
     else if (!joined) truth='Invites are recorded — the first join is the milestone ahead.';
     else truth=joined+(joined===1?' person has':' people have')+' walked the whole invite journey.';
     box.innerHTML='<div class="ph-card" style="--ac:#ff5e6c;"><h3><span class="os-jewel os-jewel-h" style="--jc:#ff5e6c">🧭</span> The invite journey</h3><div class="os-funnel">'
@@ -11737,6 +11740,16 @@ NF.register(UNIT, {
     if (s.notes!==null && s.notes!==undefined) sp.push(s.notes>0 ? s.notes+(s.notes===1?' note was':' notes were')+' filed today.' : 'No notes were filed today.');
     if (w>0) sp.push('Answer the waiting conversations first, and the day starts clear.');
     briefSpoken=sp.join(' ');
+    /* SCORECARD FIX 2026-11-14 (2I): pre-generate — resolve every chunk in the
+       background the moment the brief is written, so the first tap plays
+       instead of starting the bake from cold. A chunk that never resolves
+       still fails honestly at tap time. */
+    try{
+      var _chunks=briefChunkText(briefSpoken, 600);
+      window._osBriefChunks=_chunks;
+      var _sess=briefSession;
+      _chunks.forEach(function(c){ try{ briefResolveChunk(c, _sess); }catch(e){} });
+    }catch(e){}
     el.innerHTML='<div class="ph-card" style="--ac:#3fb8ff;"><h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">📋</span> Your daily brief</h3>'
       +'<p>'+lead+'</p>'
       +'<div class="os-orb-row" style="margin-top:10px">'+orbs+'</div>'
@@ -11775,23 +11788,32 @@ NF.register(UNIT, {
     return fetch(url, { headers:{ 'Range':'bytes=0-0' } }).then(function(r){ return r.ok; }, function(){ return false; });
   }
   function briefResolveChunk(text, session){
+    var _cache = window._osBriefAudioCache || (window._osBriefAudioCache = {});
+    if (_cache[text]) return Promise.resolve(_cache[text]);
     return briefKey(text).then(function(key){
       var url='https://naya-voice.nayapower.workers.dev/cache-'+key+'.mp3';
       return briefProbe(url).then(function(hit){
-        if (hit) return url;
-        return fetch('https://naya-voice.nayapower.workers.dev/synthesize', { method:'POST', headers:{ 'Content-Type':'application/json' }, body:JSON.stringify({ text:text }) }).then(function(){
+        if (hit){ _cache[text]=url; return url; }
+        /* SCORECARD FIX 2026-11-14 (2I): the POST used to hang forever with no
+           timeout — that was the stuck button. 30s, then an honest no. */
+        var _ctl=(typeof AbortController!=='undefined')?new AbortController():null;
+        var _to=_ctl?setTimeout(function(){ try{ _ctl.abort(); }catch(e){} }, 30000):null;
+        var _opts={ method:'POST', headers:{ 'Content-Type':'application/json' }, body:JSON.stringify({ text:text }) };
+        if (_ctl) _opts.signal=_ctl.signal;
+        return fetch('https://naya-voice.nayapower.workers.dev/synthesize', _opts).then(function(){
+          if (_to) clearTimeout(_to);
           return new Promise(function(done){
             var waited=0;
             var iv=setInterval(function(){
               waited+=2;
               if (session!==briefSession){ clearInterval(iv); done(null); return; }
               briefProbe(url).then(function(ok){
-                if (ok){ clearInterval(iv); done(url); }
+                if (ok){ clearInterval(iv); _cache[text]=url; done(url); }
                 else if (waited>=90){ clearInterval(iv); done(null); }
               });
             }, 2000);
           });
-        }, function(){ return null; });
+        }, function(){ if (_to) clearTimeout(_to); return null; });
       });
     }, function(){ return null; });
   }
@@ -11834,6 +11856,7 @@ NF.register(UNIT, {
     (function next(){
       if (session!==briefSession) return;
       if (i>=chunks.length){ briefBusy=false; briefSetBtn(null); return; }
+      briefSetBtn('Naya is preparing her voice\u2026 part ' + (i+1) + ' of ' + chunks.length + ' \u2014 tap to stop');
       briefResolveChunk(chunks[i], session).then(function(url){
         if (session!==briefSession) return;
         if (!url){
@@ -11841,7 +11864,7 @@ NF.register(UNIT, {
           briefVoiceSay('Her voice could not be prepared this time — the brief is written above. A fresh reading can take a little while to bake; try again shortly.');
           return;
         }
-        briefSetBtn('Playing your brief — tap to stop');
+        briefSetBtn('Playing your brief \u2014 part ' + (i+1) + ' of ' + chunks.length + ' \u2014 tap to stop');
         briefPlayUrl(url, session).then(function(){ i++; next(); });
       });
     })();
@@ -13393,13 +13416,13 @@ NF.register(UNIT, {
       jo={ sentN:0, sentLabel:'SENT',
         sentSent:'No invites yet \u2014 the first one you send starts the journey here.',
         openedSent:'Nobody has opened an invite yet \u2014 the moment someone does, this lights up.',
-        joinedSent:'Joined honestly reads 0 until a friend connects.',
+        joinedSent:'No invite joins yet — the first friend who connects lights this up.',
         opened:0, joined:0, note:null };
     } else if (allDry){
       jo={ sentN:total, sentLabel:'RECORDED',
         sentSent:total+' '+invWord+' recorded \u2014 saved, not sent yet. Sending happens in Growth.',
         openedSent:'Nothing to open yet \u2014 these haven\u2019t gone out.',
-        joinedSent:'Joined honestly reads 0 until a friend connects.',
+        joinedSent:'No invite joins yet — these haven\u2019t gone out, so nobody could join from one.',
         opened:0, joined:0, note:'Record-only mode: saved, never sent.' };
     } else {
       jo={ sentN:total, sentLabel:'SENT',
@@ -13407,7 +13430,7 @@ NF.register(UNIT, {
         openedSent: opened ? opened+' of your '+total+' '+inviteeWord+' opened the invite.'
           : '0 of your '+total+' '+inviteeWord+' opened the invite \u2014 when someone opens yours, you\u2019ll see it here.',
         joinedSent: joined ? joined+' walked the whole journey \u2014 recorded, opened, joined.'
-          : 'Joined honestly reads 0 until a friend connects.',
+          : 'No invite joins yet — when someone joins from your invite, you\u2019ll see it here.',
         opened:opened, joined:joined, note:null };
     }
     box.innerHTML=journeyStrip(jo);
@@ -13941,7 +13964,7 @@ NF.register(UNIT, {
       var _ctr = (clicks > 0) ? (joins/clicks*100) : null;
       var _ctrTxt = (_ctr === null) ? '0' : _ctr.toFixed(1)+'%';
       viewsCell = cell(miniMount(0, MC.views, '0', 0, 'count'), '0', 'Total views', MC.views, 'sales');
-      ctrCell = cell(miniMount(_ctr === null ? 0 : Math.min(1, _ctr/100), MC.ctr, _ctrTxt, (_ctr === null ? 0 : _ctr), '%'), _ctrTxt, 'Click-through rate', MC.ctr, 'joins');
+      ctrCell = cell(miniMount(_ctr === null ? 0 : Math.min(1, _ctr/100), MC.ctr, _ctrTxt, (_ctr === null ? 0 : _ctr), '%'), _ctrTxt, 'Join rate', MC.ctr, 'joins');
       revCell = cell(miniMount(0, MC.revenue, '0', 0, '$'), '0', 'Revenue / 1 000 views', MC.revenue, 'sales');
     }
     /* PASS-11 (8): the grand total headlines in the HERO only. The summary
@@ -14052,6 +14075,14 @@ NF.register(UNIT, {
        is not built yet). Read by _renderReportsBoard + smartlinkListHTML. */
     var _fAll={c:0,j:0}; (stats||[]).forEach(function(s){ _fAll.c+=Number(s.clicks||0); _fAll.j+=Number(s.joins||0); });
     window._dashFunnel={found:_fAll.c, joined:_fAll.j, boardClicks:tc, boardJoins:tj};
+    /* SCORECARD FIX 2026-11-14 (2B): the nine PayPal plan links, itemized from
+       the SAME fetch, before the board filter — each with its own click count,
+       so the Found dialog can show 5,151 = 1,468 + 3,683 with every part named.
+       No board is created for them (2026-11-07 ruling stands); this is a
+       derivation of a number the page already shows. */
+    var _plan9=[]; (links||[]).forEach(function(l){ if (_PAYPAL_BOARDLESS[String(l.name||'').toLowerCase()]){ var _a=byId[l.id]||{clicks:0,joins:0}; _plan9.push({name:l.name, clicks:Number(_a.clicks||0), joins:Number(_a.joins||0)}); } });
+    var _plan9c=0; _plan9.forEach(function(p){ _plan9c+=Number(p.clicks||0); });
+    window._dashFunnel.plan9=_plan9; window._dashFunnel.plan9Clicks=_plan9c;
     /* 2026-11-01 — Shawn: PER-LINK DEEP DIVE. Store link data globally so
        clicking a row opens its full stats view. */
     window._dashLinkRows=rows; window._dashLinkByDay=byDay;
@@ -14069,7 +14100,7 @@ NF.register(UNIT, {
         if (tc>0){
           var _rate=Math.round(tj/tc*100);
           var _color=_rate>=10?'#2fe89e':(_rate>0?'#ffbf3d':'#ff5e6c');
-          _conv.innerHTML='<span style="color:'+_color+'">'+_rate+'%</span> <span>of clicks became joins</span>' + (_rate===0 ? ' <span class="os-sl-leak">— the leak is here</span>' : '');
+          _conv.innerHTML='<span style="color:'+_color+'">'+(tj/tc*100).toFixed(1)+'%</span> <span>of clicks became joins</span>' + (_rate===0 ? ' <span class="os-sl-leak">— the leak is here</span>' : '');
         } else {
           _conv.textContent='Share your link to start the funnel';
         }
@@ -14184,10 +14215,32 @@ NF.register(UNIT, {
     var dimsP=rowsOf(sb.from('smart_link_dimension_stats').select('link_id,name,day,referrer_class,user_agent_class,country,clicks').eq('owner_alias', PAGE_ALIAS).limit(1000));
     Promise.all([linkP, statsP, dimsP]).then(function(out){ renderLinks(out[0], out[1], linkErr.v, out[2]); });
   }
+  /* SCORECARD FIX 2026-11-14 (2H): the hero orbs re-read on the SAME live feed
+     and cadence as the LIVE section (loadLinksOnly, 30s) — the hero and the
+     LIVE section can no longer age apart. Skipped while a drill/drawer is open
+     or a metric is featured, so a live tick never yanks a dialog or a
+     featured gauge. The timestamp below makes any remaining lag visible. */
+  window._osHeroUpdatedText = function(){
+    var el = document.getElementById('os-hero-updated'); if (!el) return;
+    var at = window._osHeroUpdatedAt || 0;
+    if (!at){ el.textContent = ''; return; }
+    var s2 = Math.max(0, Math.round((Date.now() - at) / 1000));
+    el.textContent = s2 < 5 ? 'Updated just now' : 'Updated ' + s2 + 's ago';
+  };
+  window._osHeroPoll = function(){
+    if (document.hidden) return;
+    if (document.querySelector('.os-sales-view.open,.os-joins-view.open,.os-smartlink-view.open,#os-ld-drawer.open')) return;
+    if (window._featuredMetric) return;
+    try{ if (typeof loadPointsBoard === 'function') loadPointsBoard(); }catch(e){}
+    window._osHeroUpdatedAt = Date.now();
+    try{ window._osHeroUpdatedText(); }catch(e){}
+  };
+  if (!window._osHeroUpdatedTimer){ window._osHeroUpdatedTimer = setInterval(function(){ try{ window._osHeroUpdatedText(); }catch(e){} }, 15000); }
   setInterval(function(){
     if (document.hidden) return;
     if (!document.querySelector('[data-block="dashboard"].on')) return;
     loadLinksOnly();
+    try{ if (typeof window._osHeroPoll === 'function') window._osHeroPoll(); }catch(e){}
   }, 30000);
   function loadDashboard(){
     var front=$('os-dash'); if (!front) return;
@@ -16955,6 +17008,30 @@ function salesOrbsHTML(d){
 }
 function salesViewRender(){
   _chartWindow['sales']=_salesWindow;
+  /* SCORECARD FIX 2026-11-14 (2B): the Found derivation, live from
+     window._dashFunnel — nine plan links itemized, board links summed,
+     total shown as the addition. Renders in both drill and normal mode. */
+  try{
+    var _fd=document.getElementById('os-sales-found');
+    if (_fd){
+      var _ff=window._dashFunnel||null;
+      if (!_ff){ _fd.innerHTML=''; }
+      else {
+        var _rows=(window._dashLinkRows||[]), _bc=0;
+        _rows.forEach(function(r){ _bc+=Number(r.clicks||0); });
+        var _p9=_ff.plan9||[];
+        var _p9c=(typeof _ff.plan9Clicks==='number')?_ff.plan9Clicks:0;
+        var _escF=(typeof esc==='function')?esc:function(v){ return String(v==null?'':v); };
+        var _spF=(typeof window._osSpc==='function')?window._osSpc:function(v){ return String(v); };
+        var _h='<div class="os-found-title">WHERE THE CLICKS CAME FROM</div>'
+          +'<div class="os-found-sum">'+_spF(_ff.found)+' found = '+_spF(_bc)+' board links + '+_spF(_p9c)+' plan links</div>'
+          +'<div class="os-found-sub">The nine PayPal plan links have no board \u2014 they are counted in Found, not in the board.</div>';
+        _p9.forEach(function(p){ _h+='<div class="os-found-row"><span>'+_escF(p.name)+'</span><b>'+_spF(p.clicks)+' clicks</b></div>'; });
+        _h+='<div class="os-found-row os-found-board"><span>Board links ('+_rows.length+' links)</span><b>'+_spF(_bc)+' clicks</b></div>';
+        _fd.innerHTML=_h;
+      }
+    }
+  }catch(_f2){}
   // 2026-11-02 — DRILL MODE: if drilling into a stat, show time breakdown
   if(isDrilling('sales')){
     var _dg=document.getElementById('os-sales-gauge');
@@ -17662,7 +17739,7 @@ var CREATIONS_ORBS = [
   {key:'c-pages',  label:'Pages Created', color:'#ff9a5a', jewel:'◆', pos:'tl'},
   {key:'c-views',  label:'Total Views',   color:'#7fd4ff', jewel:'👁', pos:'tr'},
   {key:'c-clicks', label:'Clicks',        color:'#00b4d8', jewel:'↗', pos:'bl'},
-  {key:'c-ctr',    label:'Click-through', color:'#3fb8ff', jewel:'%', pos:'br'}
+  {key:'c-ctr',    label:'Join rate', color:'#3fb8ff', jewel:'%', pos:'br'}
 ];
 var _creationsWindow = 'all';
 function creationsOrbsHTML(d){
@@ -18040,16 +18117,16 @@ function smartlinkListHTML(){
      source); Joined is the honest 0 (the join flow is not built yet). */
   var _f = window._dashFunnel || null;
   var _fNum = function(n){ return (typeof window._osSpc === 'function') ? window._osSpc(n) : String(n); };
-  function _fCell(txt, val, lab){
-    return '<div class="os-sl-gauge"><div class="os-sl-gauge-dial os-pricing-mini" tabindex="0" role="button" aria-label="' + lab + ' — deeper stats"><div class="tn-mini-mount" data-share="0" data-color="#ffbf3d" data-num="' + txt + '" data-value="' + val + '" data-unit="count"></div></div><div class="os-sl-gauge-num">' + txt + '</div><div class="os-sl-gauge-lab">' + lab + '</div></div>';
+  function _fCell(txt, val, lab, attr){
+    return '<div class="os-sl-gauge"><div class="os-sl-gauge-dial os-pricing-mini" ' + (attr || '') + ' tabindex="0" role="button" aria-label="' + lab + ' — deeper stats"><div class="tn-mini-mount" data-share="0" data-color="#ffbf3d" data-num="' + txt + '" data-value="' + val + '" data-unit="count"></div></div><div class="os-sl-gauge-num">' + txt + '</div><div class="os-sl-gauge-lab">' + lab + '</div></div>';
   }
   var _funnelHead = '<div class="os-sl-gauges" role="group" aria-label="Traffic funnel: found, visited, joined, stayed">'
-    + _fCell(_f ? _fNum(_f.found) : '—', _f ? _f.found : 0, 'Found')
-    + _fCell('—', 0, 'Visited')
-    + _fCell(_f ? _fNum(_f.joined) : '—', _f ? _f.joined : 0, 'Joined')
-    + _fCell('—', 0, 'Stayed')
+    + _fCell(_f ? _fNum(_f.found) : '—', _f ? _f.found : 0, 'Found', 'data-node="sales"')
+    + _fCell('—', 0, 'Visited', 'data-os-funnel="visited"')
+    + _fCell(_f ? _fNum(_f.joined) : '—', _f ? _f.joined : 0, 'Joined', 'data-node="joins"')
+    + _fCell('—', 0, 'Stayed', 'data-os-funnel="stayed"')
     + '</div>'
-    + '<p class="os-note" style="margin:10px 0 0;">Funnel — Found: Smart Link clicks, all links (smart_link_daily_stats.clicks). Visited: NOT YET — no source yet, the blog loop\u2019s Phase 2 defines it. Joined: 0 so far — the join flow is not built yet (smart_link_joins). Stayed: NOT YET — no source yet, needs the ledger flowing. Board counts his claimed links only — the nine PayPal plan links are counted in Found, not in the board.</p>';
+    + '<p class="os-note" style="margin:10px 0 0;">Funnel — Found: Smart Link clicks, all links (smart_link_daily_stats.clicks). Visited: NOT YET — no source yet, the blog loop\u2019s Phase 2 defines it. Joined: ' + (_f ? _f.joined : 0) + ' so far' + ((_f && _f.joined) ? ' (smart_link_daily_stats.joins).' : ' — the join flow is not built yet (smart_link_joins).') + ' Stayed: NOT YET — no source yet, needs the ledger flowing. Board counts his claimed links only — the nine PayPal plan links are counted in Found, not in the board.</p>';
   var dims = (window._osLastLinks && window._osLastLinks.dims) || null;
   var G = (typeof window._slGaugesHTML === 'function') ? window._slGaugesHTML : null;
   var DF = (typeof window._slDimFor === 'function') ? window._slDimFor : null;
@@ -18604,6 +18681,23 @@ function ldWireNodes(){
   var x = $('os-ld-drawer-x');
   if (x && !x._ldWired){ x._ldWired = true; x.addEventListener('click', ldCloseDrawer); }
 }
+/* SCORECARD FIX 2026-11-14 (2A) — the funnel's no-source stages (Visited /
+   Stayed) have no drill to open, so they open the harvested drawer with an
+   honest empty state: what would define the stage, and that nothing is
+   counted until then. No number is ever fabricated here. */
+window.osFunnelNoSource = function(stage){
+  var dr = document.getElementById('os-ld-drawer'), body = document.getElementById('os-ld-drawer-body');
+  if (!dr || !body) return;
+  var isV = stage === 'visited';
+  body.innerHTML = '<div style="text-align:center;padding:60px 20px;color:#fff;">'
+    + '<div style="font-size:48px;margin-bottom:16px;">' + (isV ? '\u{1F441}' : '\u23F1') + '</div>'
+    + '<div style="font-size:32px;font-weight:900;">' + (isV ? 'Visited' : 'Stayed') + '</div>'
+    + '<div style="font-size:18px;opacity:.85;margin-top:8px;line-height:1.5;">' + (isV ? 'No source yet \u2014 the blog loop\u2019s Phase 2 defines what a visit is. Nothing is counted here until then.' : 'No source yet \u2014 Stayed needs the ledger flowing. Nothing is counted here until then.') + '</div>'
+    + '<div style="font-size:14px;opacity:.6;margin-top:16px;">A stage with no source shows this, never a fabricated number.</div></div>';
+  if (dr.parentNode !== document.body) document.body.appendChild(dr);
+  dr.classList.add('open'); dr.classList.add('viewpoint'); dr.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('viewport-focus');
+};
 /* PASS-5 2026-11-10 — EVERY MINI GAUGE DRILLS IN (the Click Law, Shawn
    04:10Z): every .os-sl-gauge-dial carries the hero orbs' own key
    (data-node) — or the page's own data-os-go where no orb exists
@@ -18624,6 +18718,8 @@ function ldWireNodes(){
     e.preventDefault();
     var nk = d.getAttribute('data-node');
     if (nk) ldOpenNode(nk);
+    var fn = d.getAttribute('data-os-funnel');
+    if (fn && typeof window.osFunnelNoSource === 'function'){ try{ window.osFunnelNoSource(fn); }catch(_){} }
     /* data-os-go dials are routed by the page's own nav delegation
        (showView) — this listener only claims the click. */
   });
@@ -18634,6 +18730,8 @@ function ldWireNodes(){
     e.preventDefault();
     var nk2 = d.getAttribute('data-node');
     if (nk2){ ldOpenNode(nk2); return; }
+    var fn2 = d.getAttribute('data-os-funnel');
+    if (fn2 && typeof window.osFunnelNoSource === 'function'){ try{ window.osFunnelNoSource(fn2); }catch(_){} return; }
     var go = d.getAttribute('data-os-go');
     if (go){
       try{ if (typeof window.osShowView === 'function') window.osShowView(go);
@@ -19385,13 +19483,20 @@ window.ldLayoutNodes = ldLayoutNodes;
       if (window._osMock && typeof window._osMockFor === 'function'){ var _lm = window._osMockFor(holder.id, st.clicksAll); _lViews = _boardCell(_lm.views, _fmt(_lm.views), 'Total views', 'count', 'data-node="sales"'); }
       var _conv = (st.clicksAll > 0) ? (st.joinsAll/st.clicksAll*100) : null;
       var _convTxt = (_conv === null) ? '0' : _conv.toFixed(1)+'%';
+      /* SCORECARD FIX 2026-11-14 (2F): the value is joins/clicks — the JOIN rate.
+         Only when views exist is it a click-through rate (clicks/views). */
+      var _vwL = (window._osMock && typeof window._osMockFor === 'function' && _lm) ? Number(_lm.views||0) : 0;
+      var _convIsCtrL = _vwL > 0 && st.clicksAll > 0;
+      var _convValL = _convIsCtrL ? (st.clicksAll/_vwL*100) : _conv;
+      var _convTxtL = (_convValL === null) ? '0' : _convValL.toFixed(1)+'%';
+      var _convLabelL = _convIsCtrL ? 'Click-through rate' : 'Join rate';
       /* PASS-5: the mock views cell wears the dashed mock outline on its bar
          (the MOCK sub tag is gone) — a sample number never reads as live. */
       var _mockOn = !!(window._osMock && typeof window._osMockFor === 'function');
       return '<div class="os-sl-gauges' + (_mockOn ? ' os-mock-on' : '') + '" role="group" aria-label="Link stats">'
         + _boardCell(st.clicksAll, _fmt(st.clicksAll), 'Link clicks', 'count', 'data-node="sales"') /* PASS-11 (8): this cell is the link's OWN clicks — the grand total headlines in the hero only. */
         + _boardCell(st.joinsAll, _fmt(st.joinsAll), 'Joins', 'count', 'data-node="joins"')
-        + _boardCell(_conv, _convTxt, 'Click-through rate', '%', 'data-node="joins"')
+        + _boardCell(_convValL, _convTxtL, _convLabelL, '%', 'data-node="joins"')
         + _lViews + '</div>';
     }
     if (holder.kind === 'page'){
@@ -19415,7 +19520,7 @@ window.ldLayoutNodes = ldLayoutNodes;
       return '<div class="os-sl-gauges" role="group" aria-label="Page stats">'
         + _boardCell(_pc10, _fmt(_pc10), 'Page clicks', 'count', 'data-node="sales"') /* PASS-11 (8): the page's OWN clicks — see the PASS-10 comment above. */
         + _boardCell(_pj10, _fmt(_pj10), 'Joins', 'count', 'data-node="joins"')
-        + _boardCell(_pconv10, _pconvTxt10, 'Click-through rate', '%', 'data-node="joins"')
+        + _boardCell(_pconv10, _pconvTxt10, 'Join rate', '%', 'data-node="joins"')
         + _boardCell(null, '0', 'Total views', 'count', 'data-node="sales"') + '</div>';
     }
     var wt = _worldTotals();
@@ -19425,13 +19530,20 @@ window.ldLayoutNodes = ldLayoutNodes;
     if (window._osMock && typeof window._osMockFor === 'function'){ var _mw = window._osMockFor('dashboard', wt.totalClicks); _wViews = _boardCell(_mw.views, _fmt(_mw.views), 'Total views', 'count', 'data-node="sales"'); }
     var _wConv = (wt.totalClicks > 0) ? (wt.totalJoins/wt.totalClicks*100) : null;
     var _wConvTxt = (_wConv === null) ? '0' : _wConv.toFixed(1)+'%';
+    /* SCORECARD FIX 2026-11-14 (2F): same rule as the link branch — joins/clicks
+       is the join rate; a real CTR needs views. */
+    var _vwW = (window._osMock && typeof window._osMockFor === 'function' && _mw) ? Number(_mw.views||0) : 0;
+    var _convIsCtrW = _vwW > 0 && wt.totalClicks > 0;
+    var _convValW = _convIsCtrW ? (wt.totalClicks/_vwW*100) : _wConv;
+    var _convTxtW = (_convValW === null) ? '0' : _convValW.toFixed(1)+'%';
+    var _convLabelW = _convIsCtrW ? 'Click-through rate' : 'Join rate';
     /* PASS-5: the mock views cell wears the dashed mock outline on its bar
        (the MOCK sub tag is gone) — a sample number never reads as live. */
     var _mockOnW = !!(window._osMock && typeof window._osMockFor === 'function');
     return '<div class="os-sl-gauges' + (_mockOnW ? ' os-mock-on' : '') + '" role="group" aria-label="World stats">'
       + _boardCell(_wTop11, _fmt(_wTop11), 'Top link clicks', 'count', 'data-node="sales"')
       + _boardCell(wt.totalJoins, _fmt(wt.totalJoins), 'Joins', 'count', 'data-node="joins"')
-      + _boardCell(_wConv, _wConvTxt, 'Click-through rate', '%', 'data-node="joins"')
+      + _boardCell(_convValW, _convTxtW, _convLabelW, '%', 'data-node="joins"')
       + _wViews + '</div>';
   }
   /* FIXB 2026-11-07 (Fix 11, BOARDS LAW): each link board its OWN color.
@@ -19611,10 +19723,10 @@ window.ldLayoutNodes = ldLayoutNodes;
     _funEl.id = 'os-reports-funnel';
     _funEl.setAttribute('role', 'group');
     _funEl.setAttribute('aria-label', 'Traffic funnel: found, visited, joined, stayed');
-    _funEl.innerHTML = cell(_fun ? _fun.found : null, _fun ? _fmt(_fun.found) : '—', 'Found', 'count', '')
-      + cell(null, '—', 'Visited', 'count', '')
-      + cell(_fun ? _fun.joined : null, _fun ? _fmt(_fun.joined) : '—', 'Joined', 'count', '')
-      + cell(null, '—', 'Stayed', 'count', '');
+    _funEl.innerHTML = cell(_fun ? _fun.found : null, _fun ? _fmt(_fun.found) : '—', 'Found', 'count', 'data-node="sales"')
+      + cell(null, '—', 'Visited', 'count', 'data-os-funnel="visited"')
+      + cell(_fun ? _fun.joined : null, _fun ? _fmt(_fun.joined) : '—', 'Joined', 'count', 'data-node="joins"')
+      + cell(null, '—', 'Stayed', 'count', 'data-os-funnel="stayed"');
     var _ref11b = document.getElementById('os-reports-total-ref');
     if (_ref11b) _ref11b.insertAdjacentElement('afterend', _funEl);
     else host.insertAdjacentElement('afterend', _funEl);
@@ -19622,7 +19734,7 @@ window.ldLayoutNodes = ldLayoutNodes;
     _funSrc.className = 'os-note';
     _funSrc.id = 'os-reports-funnel-src';
     _funSrc.style.margin = '10px 0 0;';
-    _funSrc.textContent = 'Funnel — Found: Smart Link clicks, all links (smart_link_daily_stats.clicks). Visited: NOT YET — no source yet, the blog loop\u2019s Phase 2 defines it. Joined: 0 so far — the join flow is not built yet (smart_link_joins). Stayed: NOT YET — no source yet, needs the ledger flowing. Board counts his claimed links only — the nine PayPal plan links are counted in Found, not in the board.';
+    _funSrc.textContent = 'Funnel — Found: Smart Link clicks, all links (smart_link_daily_stats.clicks). Visited: NOT YET — no source yet, the blog loop\u2019s Phase 2 defines it. Joined: ' + (_fun ? _fun.joined : 0) + ' so far' + ((_fun && _fun.joined) ? ' (smart_link_daily_stats.joins).' : ' — the join flow is not built yet (smart_link_joins).') + ' Stayed: NOT YET — no source yet, needs the ledger flowing. Board counts his claimed links only — the nine PayPal plan links are counted in Found, not in the board.';
     _funEl.insertAdjacentElement('afterend', _funSrc);
     try{ if (typeof window._osMountSlMinis === 'function') window._osMountSlMinis(_funEl); }catch(e){}
     try{ if (typeof window._osMiniNums === 'function') window._osMiniNums(); }catch(e){}
@@ -19848,6 +19960,30 @@ window._renderScoreDerivation = function(totalArg, orbDataArg){
         if (ptsx > 0) orbData.push({key: nd.key, label: nd.label, pts: ptsx, count: nx, color: nd.color});
       });
     }
+    /* SCORECARD FIX 2026-11-14 (2J): the tier chip follows the live total —
+       never hardcoded. The rung is the score's own rung in V6_RUNGS; the bar
+       is the distance to the next rung. In a period window the number shown
+       is the windowed total, so the chip follows it; otherwise the all-time
+       spine score. */
+    try{
+      var _chipEl=document.getElementById('os-tier-chip');
+      if (_chipEl){
+        var _per=(window._ldWindow && window._ldWindow!=='all');
+        var _cs=_per?total:((window._osSpine && typeof window._osSpine.score==='number')?window._osSpine.score:total);
+        if (typeof _cs==='number' && isFinite(_cs)){
+          var _rungs=(typeof V6_RUNGS!=='undefined')?V6_RUNGS:[[0,'Emerging'],[1000,'Stirring']];
+          var _rung=_rungs[0], _next=null;
+          for (var _ri=0;_ri<_rungs.length;_ri++){ if (_rungs[_ri][0]<=_cs) _rung=_rungs[_ri]; else { _next=_rungs[_ri]; break; } }
+          var _nmEl=document.getElementById('os-tier-name'); if (_nmEl) _nmEl.textContent=_rung[1];
+          var _nxEl=document.getElementById('os-tier-next');
+          var _flEl=document.getElementById('os-tier-fill');
+          var _spC=(typeof window._osSpc==='function')?window._osSpc:function(v){ return String(v); };
+          if (_next){ if (_nxEl) _nxEl.textContent=_spC(_cs)+' / '+_spC(_next[0])+' to '+_next[1]; if (_flEl) _flEl.style.width=Math.max(0,Math.min(100,Math.round((_cs-_rung[0])/(_next[0]-_rung[0])*100)))+'%'; }
+          else { if (_nxEl) _nxEl.textContent=_spC(_cs)+' \u2014 top rung'; if (_flEl) _flEl.style.width='100%'; }
+          _chipEl.style.display='';
+        }
+      }
+    }catch(e){}
     var view = (typeof window._featuredDisplay === 'function') ? window._featuredDisplay() : null;
     var labEl = document.getElementById('os-se-label');
     if (labEl && view && view.centerLabel) labEl.textContent = String(view.centerLabel).toUpperCase();
@@ -20278,8 +20414,13 @@ function loadPointsBoard(_t){
       }
       /* 2026-11-01 — Shawn: NUMBER DEAD CENTER. Label below. Nothing else.
          No "4 actions" — they can see the number. Less is more.
-         2026-11-01 — Shawn: PTS/% TOGGLE. In % mode, orbs show % of total score. */
-      var pctMode = window._dashPctMode === true;
+         2026-11-01 — Shawn: PTS/% TOGGLE. SCORECARD FIX 2026-11-14 (2G): orbs
+         convert by the SAME rule the total uses (_osModeVal) — % is the dial
+         position (pts/500*100), money is dollars at 1 point = $1. Counts
+         never convert. */
+      var _mode = window._dashMode || 'pts';
+      var _isPct = _mode === 'pct';
+      var _isMoney = _mode === 'money';
       var totalPts = 0;
       LD_NODES.forEach(function(nd){
         var nn = ldNodeCount(nd, PD, w);
@@ -20296,8 +20437,9 @@ function loadPointsBoard(_t){
          0 points is 0% of a zero total, the same reading a zero-point orb
          already settles as when the total is > 0. Count-only orbs and the
          '—' loading state are untouched. */
-      var displayNum = _orbUnanswered ? '—' : ((pctMode && !((typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(node.key)))
-        ? (totalPts > 0 ? Math.round(pts/totalPts*100)+'%' : '0%')
+      var _mv = (typeof window._osModeVal === 'function') ? window._osModeVal(pts) : pts;
+      var displayNum = _orbUnanswered ? '—' : (((_isPct || _isMoney) && !((typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(node.key)))
+        ? (_isPct ? (_mv + '%') : ('$' + fmtCompact(_mv)))
         : fmtCompact(pts));
       /* 2026-11-02 — THE 12 CHARTS #9: SPARKLINES. Tiny trend on each orb.
          7-day sparkline from live data. Momentum at a glance. */
@@ -20342,8 +20484,8 @@ function loadPointsBoard(_t){
         '<span class="os-ld-ticks" aria-hidden="true"></span>'+
         '<span class="os-ld-gear" aria-hidden="true"></span>'+
         badge + trend +
-        '<span class="os-ld-n" data-nn="'+node.key+'" data-full="'+pts+'" data-pct="'+(pctMode ? (totalPts>0 ? Math.round(pts/totalPts*100) : 0) : '')+'">'+displayNum+'</span>'+
-        '<span class="os-ld-lbl">'+_lbl+'<span class="os-ld-unit">'+(_isCount ? 'COUNT' : (pctMode ? '% OF SCORE' : 'PTS'))+'</span></span>'+spark+'</button>'; /* 2026-11-02 — Shawn: proper label, well designed. v7.1 FIX 1b: the unit rides under the name. */
+        '<span class="os-ld-n" data-nn="'+node.key+'" data-full="'+pts+'" data-pct="'+(_isPct ? _mv : '')+'">'+displayNum+'</span>'+
+        '<span class="os-ld-lbl">'+_lbl+'<span class="os-ld-unit">'+(_isCount ? 'COUNT' : (_isPct ? '% OF SCORE' : (_isMoney ? 'DOLLARS' : 'PTS')))+'</span></span>'+spark+'</button>'; /* 2026-11-02 — Shawn: proper label, well designed. v7.1 FIX 1b: the unit rides under the name. */
     });
     box.innerHTML = html;
     /* PASS-12 2026-11-11 (6): every orb number counts up slowly to its
@@ -20378,6 +20520,8 @@ function loadPointsBoard(_t){
       }
     }
     window._ldNodePrev = now;
+    window._osHeroUpdatedAt = Date.now();
+    try{ if (typeof window._osHeroUpdatedText === 'function') window._osHeroUpdatedText(); }catch(e){}
     ldLayoutNodes();
     ldWireNodes();
     /* FIXB 2026-11-07 (Fix 3b): the featured metric goes stale when the window changes — the orbs re-render with windowed numbers but the metric keeps the value it captured at click time, so the plate stays on the old window. Re-read it from the freshly rendered orb. */
@@ -20630,9 +20774,12 @@ function loadPointsBoard(_t){
             /* 2026-11-06 — v7.2 FIX F4: same zero-total rule as the render —
                a flip to % in a window with no points yet reads "0%", and
                data-pct carries 0 so a later re-render's countFrom keeps it. */
-            if (isPct && !((typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(key))){
-              el.textContent = (total > 0 ? Math.round(pts/total*100) : 0) + '%';
-              try{ el.setAttribute('data-pct', String(total > 0 ? Math.round(pts/total*100) : 0)); }catch(e){}
+            var _mv2 = (typeof window._osModeVal === 'function') ? window._osModeVal(pts) : pts;
+            if (mode === 'pct' && !((typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(key))){
+              el.textContent = _mv2 + '%';
+              try{ el.setAttribute('data-pct', String(_mv2)); }catch(e){}
+            } else if (mode === 'money' && !((typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(key))){
+              try { el.textContent = '$' + window._osSpc(pts); } catch(e) { el.textContent = '$' + pts; }
             } else {
               try { el.textContent = window._osSpc(pts); } catch(e) { el.textContent = pts; }
             }
@@ -20645,7 +20792,7 @@ function loadPointsBoard(_t){
             var btn = u.closest ? u.closest('[data-node]') : null;
             var k = btn ? btn.getAttribute('data-node') : '';
             var co = (typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(k);
-            u.textContent = co ? 'COUNT' : (isPct ? '% OF SCORE' : 'PTS');
+            u.textContent = co ? 'COUNT' : (mode === 'money' ? 'DOLLARS' : (isPct ? '% OF SCORE' : 'PTS'));
           });
           /* 2026-11-06 — FIX 5: the mode note follows every flip. */
           try{ if (typeof window._refreshPtsNote === 'function') window._refreshPtsNote(); }catch(ue2){}
@@ -28162,6 +28309,16 @@ body.viewport-focus #viewport-back{
 /* (2) DRILL X, ANCHORED: every drill's × sits in the dialog's top-right corner, not floating at top centre — 96px clear of the smart bar's "+" button (24px overlapped it). */
 .os-sales-x,.os-invites-x,.os-shares-x,.os-joins-x,.os-notes-x,.os-comments-x,.os-likes-x,.os-creations-x,.os-saves-x,.os-smartlink-x,.os-ld-drawer-x{left:auto !important;right:96px !important;transform:none !important;}
 .os-sales-x:hover,.os-invites-x:hover,.os-shares-x:hover,.os-joins-x:hover,.os-notes-x:hover,.os-comments-x:hover,.os-likes-x:hover,.os-creations-x:hover,.os-saves-x:hover,.os-smartlink-x:hover,.os-ld-drawer-x:hover{transform:translateY(-2px) !important;}
+/* SCORECARD FIX 2026-11-14 (2C): the drill rows sit outside .os-sl-board,
+   so they missed the board's column layout (L4434-4437) and kept the base
+   single-row flex (L4388) — name + host + numbers + four buttons in one row
+   overflowed the list, so the dialog scrolled horizontally and link labels
+   clipped at the left edge. The dialog rows take the board's own layout,
+   and the list never scrolls sideways. */
+#os-smartlink-list .os-link-row{flex-direction:column !important;align-items:stretch !important;flex-wrap:nowrap !important;}
+#os-smartlink-list .os-link-main{flex:none !important;width:100% !important;}
+#os-smartlink-list .os-link-name{white-space:normal !important;overflow:visible !important;text-overflow:clip !important;overflow-wrap:anywhere !important;}
+.os-smartlink-list{overflow-x:hidden !important;}
 /* (3) ALL-LINKS DRILL LIST: the same rows as the board, stacked in the dialog, scrollable. */
 .os-smartlink-list{display:none;width:min(920px,94vw);max-height:66vh;overflow-y:auto;flex-direction:column;gap:12px;padding:6px 2px;z-index:2;}
 /* FIXROUND PASS-4 (D4, 2026-11-09): the list could rest scrolled mid-row, so
@@ -28549,8 +28706,8 @@ button.os-ld-node .os-ld-icon{
    Inviters); the jewel sits underneath it, never fighting the number for
    the centre. The drill views scroll instead of clipping at short heights. */
 [role="dialog"] .os-ld-node .os-ld-lbl{
-  font-size:13px !important; white-space:normal !important; max-width:100px !important;
-  line-height:1.25 !important; overflow-wrap:anywhere !important;
+  font-size:13px !important; white-space:normal !important; max-width:112px !important;
+  line-height:1.25 !important; overflow-wrap:normal !important; word-break:normal !important;
 }
 [role="dialog"] .os-ld-node .os-ld-unit{font-size:10px !important;}
 [role="dialog"] .os-ld-node .os-ld-icon{font-size:32px !important; margin-top:8px !important;}
@@ -28731,6 +28888,16 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
   margin:10px auto 0 !important; line-height:1.2 !important;
   text-shadow:0 1px 3px rgba(0,0,0,.95), 0 0 12px rgba(255,191,61,.35) !important;
 }
+
+/* SCORECARD FIX 2026-11-14 (2J): the tier chip — what the score MEANS, read
+   from V6_RUNGS and the live total by _renderScoreDerivation. (2H): the
+   updated line under it, so a lag is visible instead of silent. */
+#os-tier-chip{display:flex;flex-direction:column;align-items:center;gap:6px;max-width:430px;margin:12px auto 0;padding:12px 18px;border-radius:16px;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:1.5px solid rgba(255,191,61,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -2px 4px rgba(0,0,0,.5),0 8px 24px rgba(0,0,0,.5);}
+#os-tier-chip .os-tier-name{font-size:22px;font-weight:900;color:#ffbf3d;letter-spacing:.08em;text-transform:uppercase;}
+#os-tier-chip .os-tier-next{font-size:14px;font-weight:700;color:#fff;}
+#os-tier-chip .os-tier-bar{display:block;width:100%;height:8px;border-radius:4px;background:rgba(255,255,255,.12);overflow:hidden;}
+#os-tier-chip .os-tier-fill{display:block;height:100%;width:0%;border-radius:4px;background:linear-gradient(90deg,#ffbf3d,#d9a521);}
+.os-hero-updated{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);text-align:center;margin-top:8px;}
 
 /* (3) ORB NUMBERS CENTRED — 2026-11-14 orb-centering round (Shawn 01:03Z:
    the content is too high as a whole, it needs to be more centered on the
