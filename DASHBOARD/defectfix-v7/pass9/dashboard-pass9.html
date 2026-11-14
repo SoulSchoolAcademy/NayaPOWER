@@ -19245,6 +19245,18 @@ window.ldLayoutNodes = ldLayoutNodes;
       view.center = _om.value;
       view.centerLabel = String(_om.label || _om.key).toLowerCase() + ' \u00b7 ' + String(_om.unit || 'points').toLowerCase();
       view.dial = {score: _om.value, deltas: (view.dial && view.dial.deltas) || ((window._osSpine && window._osSpine.deltas) || {})};
+      /* 2026-11-14 orb-centering STEP 2B — the stats follow the center.
+         The stats array was built above from the holder's center BEFORE
+         this override, so without this the panel's first stat keeps
+         reading the score while the tiles and dial read the orb's number —
+         the exact stale-panel disagreement the truth meter reports (the
+         diagnosis's "the stat reads 1,466" assumed the stats followed;
+         a live read proves they do not). The first stat IS the featured
+         number; its key stays what the holder built, its label becomes
+         the featured label. */
+      if (view.stats && view.stats.length){
+        view.stats[0] = {n: _fmt(_om.value), k: view.stats[0].k || 'score', l: view.centerLabel, why: view.stats[0].why || ''};
+      }
     }
     window._featuredDial = view.dial;
     return view;
