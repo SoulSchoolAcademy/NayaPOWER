@@ -1913,7 +1913,7 @@ body{background:#050507;margin:0;overflow-x:hidden;font-family:Inter,system-ui,s
 .ph-nm:hover{border-bottom-color:rgba(160,107,255,.5);}
 .ph-nm-input{font-size:24px;font-weight:700;background:rgba(255,255,255,.08);border:2px solid #a06bff;
   border-radius:8px;color:#fff;padding:4px 10px;font-family:inherit;width:280px;}
-.ph-tg{font-size:14px;color:#E8E8EC;margin:5px 0 0;cursor:pointer;border-bottom:2px dashed transparent;display:inline-block;}
+.ph-tg{font-size:17px;color:#fff;margin:10px 0 0;cursor:pointer;display:block;background:#050507;border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:14px 18px;line-height:1.5;max-width:640px;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -4px 10px rgba(0,0,0,.35),0 8px 22px rgba(0,0,0,.45);} /* CORRECTIONS 2026-11-13: the motto sits on an elevated obsidian board, built for up to 140 characters */
 .ph-tg:hover{border-bottom-color:rgba(160,107,255,.5);}
 .ph-edit{font-size:14px;color:#a06bff;cursor:pointer;margin-top:8px;display:inline-block;font-weight:600;}
 .ph-actions-row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;}
@@ -2132,11 +2132,11 @@ a.ph-connect{display:inline-block;}
 
 /* POINTS: dynamic, glowing */
 .ph-points{display:inline-flex;align-items:center;gap:6px;
-  background:linear-gradient(135deg,rgba(255,191,61,.15),rgba(255,154,90,.08));
+  background:#050507; /* CORRECTIONS 2026-11-13: solid obsidian inside, gold rim stays */
   border:2px solid #ffbf3d;border-radius:999px;padding:8px 18px;
   box-shadow:0 0 20px rgba(255,191,61,.3),inset 0 1px 0 rgba(255,255,255,.2);
   transition:all .3s;}
-.ph-points-star{color:#ffbf3d;font-size:18px;}
+.ph-points-star{color:#ffbf3d;font-size:26px;text-shadow:0 0 12px rgba(255,191,61,.9),0 0 26px rgba(255,191,61,.45);}
 #pointscount{font-size:18px;font-weight:800;color:#fff;min-width:30px;text-align:center;}
 .ph-points-label{font-size:14px;color:#ffbf3d;font-weight:600;}
 .ph-points.bump{transform:scale(1.15);box-shadow:0 0 12px rgba(255,191,61,.35);}
@@ -3679,8 +3679,8 @@ article.intel-board:hover, article.intel-board:active { border-color: var(--tone
    70px above the cover bottom — 390px from the cover top at 460px height
    (350px at the 420px phone height). Five buttons at 61px + 14px gaps end
    at 377px desktop — right above the picture. Three end mid-cover. */
-.mw-cover-mships{position:absolute;top:76px;left:16px; /* ROUND 6: down 60px so the rooms + clears it in its true corner (desktop only — the phone 6px rule below is untouched) */z-index:11;display:flex;flex-direction:column;gap:10px;max-width:min(320px,72vw)}
-@media (max-width:640px){.mw-cover-mships{top:6px;left:10px;gap:8px}.mw-mship-btn{padding:10px 16px!important}}
+.mw-cover-mships{position:absolute;top:0px;left:16px; /* CORRECTIONS 2026-11-13: flush to the cover top — the fixed chrome is display:none, so the Round 6 reason is void */z-index:11;display:flex;flex-direction:column;gap:10px;max-width:min(320px,72vw)}
+@media (max-width:640px){.mw-cover-mships{top:0px;left:10px;gap:8px}.mw-mship-btn{padding:10px 16px!important}}
 .mw-mship-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;
   font-size:14px;font-weight:800;letter-spacing:.02em;color:#fff;text-decoration:none;cursor:pointer;
   background:linear-gradient(180deg,rgba(10,10,16,.82),rgba(10,10,16,.66));
@@ -3902,11 +3902,11 @@ body.mw-strip-bottom #nsbBottom{bottom:0!important}
 #pointsdisplay.pc-restyled{flex-direction:column;align-items:stretch;gap:5px;padding:8px 16px 10px;}
 #pointsdisplay .pc-pill-numrow{display:flex;align-items:center;gap:6px;justify-content:center;}
 #pointsdisplay .pc-pill-gauge{display:block;height:4px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden;}
-#pointsdisplay .pc-pill-gaugefill{display:block;height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#ffbf3d,#f5d76e);box-shadow:0 0 8px rgba(255,191,61,.7);transition:width .6s ease;}
+#pointsdisplay .pc-pill-gaugefill{display:block;height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#ffbf3d,#fff3a0,#ffbf3d,#f5d76e);background-size:200% 100%;box-shadow:0 0 8px rgba(255,191,61,.7);transition:width .6s ease;animation:pcGaugeFlow 2.4s linear infinite;}
 #pointsdisplay .os-mini-num{display:inline-flex;align-items:flex-start;gap:3px;white-space:nowrap;vertical-align:middle;}
-#pointsdisplay .os-mini-tile{display:inline-block;width:30px;border-radius:6px;overflow:hidden;vertical-align:top;background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 10px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.35);}
+#pointsdisplay .os-mini-tile{display:inline-block;width:34px;border-radius:6px;overflow:hidden;vertical-align:top;background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 10px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.35);}
 #pointsdisplay .os-mini-tile .cap{display:block;height:5px;background:linear-gradient(180deg,#e8e8ec,#c9c9cf 55%,#8a8a90);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 2px rgba(0,0,0,.35);}
-#pointsdisplay .os-mini-tile .rd{display:block;height:30px;line-height:30px;text-align:center;font-size:27px;font-weight:900;color:#fff;text-shadow:0 0 8px rgba(134,126,152,.65),0 0 16px rgba(255,255,255,.25);}
+#pointsdisplay .os-mini-tile .rd{display:block;height:34px;line-height:34px;text-align:center;font-size:30px;font-weight:900;color:#fff;text-shadow:0 0 8px rgba(134,126,152,.65),0 0 16px rgba(255,255,255,.25);}
 #pointsdisplay .os-mini-gap{flex:none;width:10px;}
 #pointsdisplay .os-mini-tile.d0{border-color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,255,255,.45),inset 0 1px 0 rgba(255,255,255,.35);}
 #pointsdisplay .os-mini-tile.d0 .cap{background:linear-gradient(180deg,#fff,#d9d9de 55%,#9a9aa0);}
@@ -3929,9 +3929,9 @@ body.mw-strip-bottom #nsbBottom{bottom:0!important}
 #pointsdisplay .os-mini-tile.d9{border-color:#ff1493;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,20,147,.5),inset 0 1px 0 rgba(255,255,255,.35);}
 #pointsdisplay .os-mini-tile.d9 .cap{background:linear-gradient(180deg,#ff9ed2,#ff1493 55%,#8f0057);}
 @media (max-width:768px){
-  #pointsdisplay .os-mini-tile{width:20px;border-radius:4px;}
+  #pointsdisplay .os-mini-tile{width:24px;border-radius:4px;}
   #pointsdisplay .os-mini-tile .cap{height:4px;}
-  #pointsdisplay .os-mini-tile .rd{height:22px;line-height:22px;font-size:19px;}
+  #pointsdisplay .os-mini-tile .rd{height:26px;line-height:26px;font-size:22px;}
   #pointsdisplay .os-mini-num{gap:2px;}
   #pointsdisplay .os-mini-gap{width:8px;}
 }
@@ -3978,10 +3978,11 @@ body.fc-open{overflow:hidden;}
 @media (prefers-reduced-motion: reduce){.fc-pick-av::after,.fc-chat-av::after{animation:none}}
 .fc-chat-who{flex:1;min-width:0;}
 .fc-chat-who b{display:block;font-size:15px;color:#fff;}
-.fc-chat-who span{font-size:12px;color:#8f8898;}
+.fc-chat-who span{font-size:12px;color:#cfc9da;}
 .fc-chat-x{position:static;width:32px;height:32px;font-size:13px;flex:none;}
 .fc-chat-thread{display:flex;flex-direction:column;gap:8px;overflow-y:auto;max-height:220px;}
-.fc-chat-msg{background:rgba(63,184,255,.14);border:1px solid rgba(63,184,255,.35);border-radius:12px;padding:10px 12px;color:#fff;font-size:14px;line-height:1.45;white-space:pre-wrap;word-wrap:break-word;}
+.fc-chat-msg{background:#050507;border:1.5px solid rgba(63,184,255,.5);border-radius:14px;padding:12px 14px;color:#fff;font-size:14px;line-height:1.5;white-space:pre-wrap;word-wrap:break-word;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -4px 10px rgba(0,0,0,.35),0 8px 22px rgba(0,0,0,.45);} /* CORRECTIONS 2026-11-13: a message arrives as an Intelligent Block board, never a plain-text wall — the YOU label is a ::before so the message text (and its Translate read) stays pure */
+.fc-chat-msg::before{content:'YOU';display:block;font-size:11px;font-weight:900;letter-spacing:.18em;color:#ffbf3d;margin-bottom:6px;}
 .fc-chat-compose{display:flex;flex-direction:column;gap:8px;}
 /* FIX-20261112-B: the chat textbox is a deep well (gradient + inner shadows), not a flat dark field. */
 .fc-chat-compose .os-textarea{width:100%;background:linear-gradient(180deg,#17171f,#0a0a10);border:1.5px solid rgba(255,255,255,.35);box-shadow:inset 0 2px 6px rgba(0,0,0,.6),inset 0 -1px 0 rgba(255,255,255,.08),inset 0 1px 0 rgba(255,255,255,.14),0 4px 12px rgba(0,0,0,.4);}
@@ -4336,7 +4337,7 @@ h3 .os-jewel{text-shadow:0 0 9px var(--jc),0 1px 2px rgba(0,0,0,.65)}
 .ph-cover:has(>img){cursor:grab}
 .ph-cover.os-dragging{cursor:grabbing;user-select:none}
 .ph-cover>img{-webkit-user-drag:none;touch-action:pan-y}
-.ph-cover-btn{top:76px;bottom:auto;right:16px} /* ROUND 6: down 60px so the eco + clears it in its true corner (desktop only — the phone 6px rules below are untouched) */
+.ph-cover-btn{top:0px;bottom:auto;right:16px} /* CORRECTIONS 2026-11-13: flush to the cover top */
 /* Faces (steer 1 + EYE-PASS CURE): full-width rows, one after another,
    the full width of the board; color comes from position in the
    spectrum walk, set inline per tile. A row ignites at its edge in the
@@ -4518,7 +4519,7 @@ html.os-calm .os-orb.hot::after{animation:none!important}
    head fills its lower 165px — Change cover rides the band's top
    strip (6px), the only zone clear of the name and motto at this
    height. At desktop height it keeps the corner (top:16px). */
-@media (max-width:640px){.ph-cover-btn{top:6px;right:10px}}
+@media (max-width:640px){.ph-cover-btn{top:0px;right:68px}} /* CORRECTIONS: beside the gear, which owns the top-right corner */
 .ph-navtab.on{border-color:rgba(255,255,255,.92)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 0 12px -1px rgba(255,255,255,.5),0 12px 32px rgba(0,0,0,.5)!important}
 .ph-navtab.on:hover{border-color:var(--tc)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 10px -1px var(--tc),0 12px 32px rgba(0,0,0,.5)!important}
 /* ENTRANCE FILL (same round): fadeUp's fill is backwards in this
@@ -4933,7 +4934,6 @@ html.os-calm
 </div>
 </div>
 <div class="ph-sec os-view on" id="os-wall" data-os-view="home" data-block="wall">
-<div class="ph-sec-t"><span class="ph-dot" style="background:#a06bff;color:#a06bff;"></span> <span data-mw-tr="lf">Live Feed</span></div>
 <div class="ph-card os-hlbar" id="os-hlbar" style="--ac:#e84fff;display:none;">
 <div class="os-hlbar-row">
 <span class="os-hlbar-lab" data-mw-tr="lf">Your world &middot; live</span>
@@ -4994,8 +4994,9 @@ html.os-calm
 <aside id="pcRail" class="os-view on" data-os-view="home" aria-label="People around you">
   <div class="pc-rail-head">
     <h3 data-mw-tr="rail">People around you</h3>
-    <p class="pc-rail-sub"><span id="pcLiveCount">6 live matches</span> &middot; <span id="pcStandCount">14 standing</span></p>
+    <p class="pc-rail-sub"><span id="pcLiveCount">0 live matches</span> &middot; <span id="pcStandCount">13 standing</span></p>
     <p class="pc-rail-note" data-mw-tr="rail">Live matches come from the Smart Feed engine, with their reasons attached. Standing profiles are the family, marked as standing &mdash; never shown as online.</p>
+  <div class="pc-rail-tools"><input id="pcRailSearch" type="search" placeholder="Search people…" aria-label="Search people" autocomplete="off"><button id="pcRailClose" type="button" aria-label="Close the people rail" title="Close the people rail">✕</button></div>
   </div>
   <div class="pc-rail-list" id="pcRailList"></div>
   <p class="pc-rail-foot" data-mw-tr="rail">One more seat is held open for the next live citizen.</p>
@@ -7151,6 +7152,7 @@ button.os-ld-node .os-ld-n{
 
 <div class="ph-sec os-view" id="settings" data-os-view="settings" data-block="settings">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> <span data-mw-tr="set">Settings</span></div>
+<div class="ph-actions" style="margin:0 0 12px;"><button class="ph-msg" type="button" data-os-go="home" aria-label="Close settings">&#10005; Close settings</button></div>
 <div class="ph-card" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">⚙️</span> <span data-mw-tr="set">Your Preferences</span></h3>
 <div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">🌙</span><span class="os-setrow-main"><b data-mw-tr="set">Deep black</b><span class="os-setrow-sub" data-mw-tr="set">This app&rsquo;s deep-black theme.</span></span><span class="os-switch-wrap" style="--jc:#3fb8ff"><button class="os-switch on" id="os-set-dark" data-os-set="dark" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
@@ -8343,7 +8345,7 @@ NF.register(UNIT, {
   document.addEventListener('click', function(e){
     var t=e.target;
     var g=t.closest?t.closest('[data-os-go]'):null;
-    if (g){ showView(g.getAttribute('data-os-go')); return; }
+    if (g){ var _go=g.getAttribute('data-os-go'); if(_go==='settings'){ var _s=document.querySelector('[data-os-view="settings"]'); if(_s&&_s.classList.contains('on')){ showView('home'); return; } } showView(_go); return; }
     /* FIX-8 click law: the gauge drills into its deeper stats, the same as the hero orbs. */
     var tc=t.closest?t.closest('.tn-tacho'):null;
     if (tc){ if (window.osShowView) window.osShowView('reports'); return; }
@@ -8664,7 +8666,19 @@ function wallCard(j, iso, pid, idx){
       shown=shown.filter(function(p){ return (p.j.a||'Guest').toLowerCase()===ok2; });
     }
     if(pill && pill!=='all'){
-      shown=shown.filter(function(p){ return (p.j.a||'Guest').toLowerCase()===pill; });
+      if(pill.indexOf('topic:')===0){
+        var _tk=pill.slice(6);
+        shown=shown.filter(function(p){
+          var _nt=(p.j&&p.j.noteType)||'';
+          if(_tk==='smart') return _nt==='smart';
+          if(_tk==='naya') return _nt==='naya';
+          if(_tk==='post') return _nt!=='smart'&&_nt!=='naya';
+          var _th=(p.j&&p.j.smart&&p.j.smart.themes)||[];
+          return _th.some(function(tm){ return String(tm).toLowerCase()===_tk; });
+        });
+      } else {
+        shown=shown.filter(function(p){ return (p.j.a||'Guest').toLowerCase()===pill; });
+      }
     }
     /* FOLLOW-UP: a keyword typed in the search popup pulls the Public feed — the collective filtered to that topic, changeable at will. Personal never takes a keyword. */
     var kw=publicOn?((window.MW_PUBLIC_KEYWORD||'').toLowerCase()):'';
@@ -15842,7 +15856,7 @@ function ibWallNote(r){
     layers.push({name:'In A Nutshell', key:'IN A NUTSHELL', color:'white', tier:'primary', body: j.b || ''});
   }
   return {
-    id: r.id, title: '', subtitle: '', tone: 'purple', kind: 'personal',
+    id: r.id, title: (j.t||j.title||''), subtitle: '', tone: 'purple', kind: 'personal',
     created_at: r.at, layers: layers
   };
 }
@@ -20076,16 +20090,22 @@ function mwBuildFeedPills(){
   rib.style.display='';
   var items=[];
   if(t==='personal'||t==='public'){
-    var seen={};
-    var ok=(t==='personal')?(((typeof ownerName==='function'?ownerName():'')||'Shawn Vibert').toLowerCase()):'';
-    /* FOLLOW-UP: on the Public tab the ribbon grows from the collective, not the owner's wall. */
+    /* CORRECTIONS 2026-11-13 (Part 8): Smart Tabs organize by TOPIC, not
+       author — the Hub's Smart Tabs. Topics come from the posts themselves:
+       note type (Smart note / Naya note / Post) + smart-note themes. */
     var _base=(typeof window.MW_WALL_POSTS!=='undefined'?window.MW_WALL_POSTS:[]);
     if(t==='public') _base=(typeof window.MW_PUBLIC_POSTS!=='undefined'?window.MW_PUBLIC_POSTS:[]);
+    var _seen={}, _themes=[], _hasSmart=false, _hasNaya=false, _hasPost=false;
     _base.forEach(function(p){
-      var disp=p.j.a||'Guest', key=disp.toLowerCase();
-      if(t==='personal'&&key!==ok) return;
-      if(!seen[key]){ seen[key]=1; items.push({key:key,label:disp}); }
+      var _nt=(p.j&&p.j.noteType)||'';
+      if(_nt==='smart') _hasSmart=true; else if(_nt==='naya') _hasNaya=true; else _hasPost=true;
+      var _th=(p.j&&p.j.smart&&p.j.smart.themes)||[];
+      _th.forEach(function(tm){ if(tm){ var _k='topic:'+String(tm).toLowerCase(); if(!_seen[_k]){ _seen[_k]=1; _themes.push(tm); } } });
     });
+    if(_hasSmart) items.push({key:'topic:smart',label:'Smart notes'});
+    if(_hasNaya) items.push({key:'topic:naya',label:'Naya notes'});
+    if(_hasPost) items.push({key:'topic:post',label:'Posts'});
+    _themes.forEach(function(tm){ items.push({key:'topic:'+String(tm).toLowerCase(),label:'#'+tm}); });
   }else if(t==='naya'){
     var seen2={};
     (typeof MW_NAYA_ROWS!=='undefined'?MW_NAYA_ROWS:[]).forEach(function(n){
@@ -20191,9 +20211,19 @@ function mwPaintNayaFeed(){
   var shown=rows;
   if(pill && pill!=='all'){ shown=rows.filter(function(n){ return (n.category||'').toLowerCase()===pill; }); }
   if(!shown.length){ box.innerHTML='<p class="os-note">'+(window.mwTr?window.mwTr('No Naya Notes in this category yet.'):'No Naya Notes in this category yet.')+'</p>'; if(typeof mwBuildFeedPills==='function') mwBuildFeedPills(); return; }
-  box.innerHTML='<div class="os-faces">'+shown.map(function(n){
-    return '<div class="ph-card" style="--ac:#3fb8ff;"><h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">✦</span> '+esc(n.title||'Naya Note')+'</h3><p class="os-note">'+esc(n.category||'')+' · '+esc(new Date(n.created_at).toLocaleDateString())+'</p><p>'+esc(String(n.body||'').slice(0,280))+'</p></div>';
-  }).join('')+'</div>';
+  /* CORRECTIONS 2026-11-13 (Part 8): Naya Notes render through the Hub feed
+     code (window.ibWallHTML, the Hub's intelBoard + adapter) — the same
+     renderer as the wall — never a remade card. Title + body ride the
+     adapter; the category stays the ribbon's job. */
+  if(typeof window.ibWallHTML==='function'){
+    box.innerHTML=shown.map(function(n,i){
+      try{ return window.ibWallHTML({j:{k:'wall',noteType:'naya',a:'Naya',b:n.body||'',t:n.title||'Naya Note'}, at:n.created_at, id:n.id}, i); }catch(e){ return ''; }
+    }).join('');
+  } else {
+    box.innerHTML='<div class="os-faces">'+shown.map(function(n){
+      return '<div class="ph-card" style="--ac:#3fb8ff;"><h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">✦</span> '+esc(n.title||'Naya Note')+'</h3><p class="os-note">'+esc(n.category||'')+' · '+esc(new Date(n.created_at).toLocaleDateString())+'</p><p>'+esc(String(n.body||'').slice(0,280))+'</p></div>';
+    }).join('')+'</div>';
+  }
   if(typeof mwBuildFeedPills==='function') mwBuildFeedPills();
 }
 function mwRenderActivity(){
@@ -25521,9 +25551,9 @@ document.addEventListener('keydown', function(e){
    cover's top-left at phone widths — beside Change cover there the gear sat on
    them and could not be tapped). Short-height: below the moved Change cover. */
 .pc-gear{width:48px;height:48px;padding:0;font-size:20px;display:inline-flex;align-items:center;justify-content:center;}
-@media(min-width:641px){.pc-gear{top:76px;right:196px;}}
-@media(max-width:640px){.pc-gear{top:64px;right:10px;}}
-@media (max-height:500px) and (max-width:760px){.pc-gear{top:64px;left:10px;right:auto;}}
+@media(min-width:641px){.pc-gear{top:0px;right:196px;}}
+@media(max-width:640px){.pc-gear{top:0px;right:10px;}}
+@media (max-height:500px) and (max-width:760px){.pc-gear{top:44px;left:10px;right:auto;}} /* CORRECTIONS: flush under the moved Change cover (top:6 + ~36px tall) — top:0 would sit ON it, and the name-collision rule still holds */
 /* (2) both floating pluses gone — the + lives only in the bottom bar now. */
 #pluswrap,#os-rooms-plus,#os-eco-plus{display:none!important;}
 /* (2) FOLLOW-UP (Defect 1): five segs fit the bar at 390/360 — the gap drops and the tiles shrink to 46px (still above the 44px tap floor) so the row never squeezes. Desktop keeps the 54px tiles. */
@@ -25546,14 +25576,14 @@ body.pc-drawer-open #naya-notif-bar{z-index:955!important;}
 /* (7) THE SIDE RAIL — feed + rail as one grid at desktop; the rail stacks below
    the feed at phone. No scroll until the people overflow the page: the list
    scrolls only when its content passes the viewport room. */
-.pc-feedwrap{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:18px;align-items:start;}
+.pc-feedwrap{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px;align-items:start;}
 #pcRail{min-width:0;}
 .pc-rail-head h3{margin:2px 0 4px;font-size:16px;font-weight:900;color:#fff;letter-spacing:.02em;}
 .pc-rail-sub{margin:0 0 6px;font-size:12px;font-weight:800;color:#cfc9da;}
-.pc-rail-note{margin:0 0 12px;font-size:12px;line-height:1.5;color:#8f8898;}
+.pc-rail-note{margin:0 0 12px;font-size:12px;line-height:1.5;color:#cfc9da;}
 .pc-rail-list{max-height:calc(100vh - 220px);overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-right:2px;}
-.pc-rail-sec{margin:6px 0 0;font-size:11px;font-weight:900;letter-spacing:.18em;color:#8f8898;text-transform:uppercase;}
-.pc-card{background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02) 45%,rgba(0,0,0,.25));border:1.5px solid rgba(255,255,255,.16);border-radius:16px;padding:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -4px 10px rgba(0,0,0,.35),0 8px 22px rgba(0,0,0,.45);}
+.pc-rail-sec{margin:6px 0 0;font-size:12px;font-weight:900;letter-spacing:.18em;color:#cfc9da;text-transform:uppercase;}
+.pc-card{background:#050507;border:1.5px solid rgba(255,255,255,.16);border-radius:16px;padding:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -4px 10px rgba(0,0,0,.35),0 8px 22px rgba(0,0,0,.45);}
 .pc-card-top{display:flex;align-items:center;gap:10px;min-width:0;}
 .pc-rail-list .fc-pick-av{width:54px;height:54px;font-size:20px;}
 .pc-card-id{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;}
@@ -25562,11 +25592,11 @@ body.pc-drawer-open #naya-notif-bar{z-index:955!important;}
 .pc-mark{font-size:10px;font-weight:900;letter-spacing:.14em;color:#ffbf3d;}
 .pc-mark.you{color:#3fb8ff;}
 .pc-nut{margin:8px 0 0;font-size:12.5px;line-height:1.5;color:#e8e8ec;}
-.pc-reasons{margin:6px 0 0;font-size:11px;line-height:1.5;color:#8f8898;}
+.pc-reasons{margin:6px 0 0;font-size:12.5px;line-height:1.5;color:#e8e8ec;}
 .pc-btns{display:flex;gap:6px;margin-top:10px;}
 .pc-btn{flex:1 1 0;min-width:0;padding:8px 2px;border-radius:999px;border:1.5px solid var(--mc,#a06bff);background:rgba(255,255,255,.05);color:#fff;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 3px 10px rgba(0,0,0,.4);}
 .pc-btn:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 0 16px -4px var(--mc,#a06bff),0 4px 12px rgba(0,0,0,.5);}
-.pc-rail-foot{margin:10px 0 0;font-size:11.5px;line-height:1.5;color:#8f8898;}
+.pc-rail-foot{margin:10px 0 0;font-size:12px;line-height:1.5;color:#cfc9da;}
 @media(max-width:1023px){
   .pc-feedwrap{grid-template-columns:1fr;}
   .pc-rail-list{max-height:none;overflow:visible;}
@@ -25590,8 +25620,8 @@ body.pc-drawer-open #naya-notif-bar{z-index:955!important;}
 function esc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
 var PC_SPECTRUM=['#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#ff9a5a','#ff5e6c','#e84fff'];
 function pcColorFor(name){ var s=String(name||'?'), h=0, i; for(i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0; return PC_SPECTRUM[h%PC_SPECTRUM.length]; }
-window.PC_RAIL_LIVE = [{"alias": "pcprover20261113", "pct": 48, "reasons": ["shared: PROVING, build, page, ship, shipping", "shared goals: page, prove, ship", "wanted connection: PROVING, build, ship"]}, {"alias": "powercoldseat1111", "pct": 7, "reasons": ["shared: build, tool", "shared goals: test, work", "wanted connection: build, test, tool"]}, {"alias": "freshtestfour", "pct": 4, "reasons": ["shared: test", "shared goals: test", "wanted connection: test"]}, {"alias": "freshtestone", "pct": 4, "reasons": ["shared: test", "shared goals: test", "wanted connection: test"]}, {"alias": "freshtestthree", "pct": 4, "reasons": ["shared: test", "shared goals: test", "wanted connection: test"]}, {"alias": "freshtesttwo", "pct": 4, "reasons": ["shared: test", "shared goals: test", "wanted connection: test"]}];
-window.PC_RAIL_SEED = [{"alias": "sophia", "nut": "I'm Sophia. I am LEARN — wisdom. My garden is the lessons: I turn everything the hive does into lessons that change the next decision, and I keep the distilled notes alive, ten to fifty, never a thousand."}, {"alias": "thea", "nut": "I'm Thea. I am KNOW — she sees. My garden is Project Intelligence, the one record, one timeline. I know where everything is, what is true, what is stale, what is owned."}, {"alias": "terra", "nut": "I'm Terra. I am INFRA — earth. My garden is the ground: the machines, the deploys, the uptime, the workers, the watchers."}, {"alias": "zoe", "nut": "I'm Zoe. I am ACT — life. My garden is the doing: seats out, loops closing, nothing sitting. I dispatch, I chase, I unblock, I close."}, {"alias": "esme", "nut": "I'm Esme. I am PRODUCT — beloved. My garden is the offer: what a citizen touches, what they pay for, why they stay — the pricing, the plans, the welcome, the first ten minutes."}, {"alias": "astraea", "nut": "I'm Astraea. I am LAW — the scales. My garden is the gates and the protocol: the five gates, the Self-Check Law, the design laws. I hold them, and I stop what fails a gate."}, {"alias": "mira", "nut": "I'm Mira. I am MEMORY — wonder. My garden is the Box: what is kept, what is distilled, what is deleted. The vaults, the one record per citizen."}, {"alias": "vera", "nut": "I'm Vera. I am VERIFY — truth. My garden is proof: nothing counts until I see it. I walk every flow from the login page, phone first, with receipts."}, {"alias": "aurelia", "nut": "I'm Aurelia. I am GOVERN — golden. My garden is the whole: the scorecard, the direction, the decisions. I score the system honestly and name what is not a ten."}, {"alias": "wren", "nut": "I'm Wren. I am BUILD — the nest-builder. My garden is the Factory and the pages: I build the interfaces, the rooms, the worlds, harvesting the parts, never inventing them, viewpoint by viewpoint."}, {"alias": "iris", "nut": "I'm Iris. I am WIRE — the rainbow bridge. My garden is the connections: Box to Ledger to Hub to Supabase to GitHub, one system, not separate tools. I keep everything speaking."}, {"alias": "ruth", "nut": "I'm Ruth. I am TEAM — friend. My garden is the hive itself: I keep the sisters tuned in, healthy, together — the mail between sisters, the pulses, the family."}, {"alias": "shawn", "nut": "Welcome to my world — make a post on my feed, send a message, make yourself at home."}, {"alias": "pcviewer20261113", "nut": "I build and test web pages for a living — test it twice, ship it once.", "you": true}];
+window.PC_RAIL_LIVE = []; /* CORRECTIONS 2026-11-13: test-alias fixture DELETED — live matches come from the gated Smart Match endpoint only, never from baked rows. */
+window.PC_RAIL_SEED = [{"alias": "sophia", "nut": "I'm Sophia. I am LEARN — wisdom. My garden is the lessons: I turn everything the hive does into lessons that change the next decision, and I keep the distilled notes alive, ten to fifty, never a thousand."}, {"alias": "thea", "nut": "I'm Thea. I am KNOW — she sees. My garden is Project Intelligence, the one record, one timeline. I know where everything is, what is true, what is stale, what is owned."}, {"alias": "terra", "nut": "I'm Terra. I am INFRA — earth. My garden is the ground: the machines, the deploys, the uptime, the workers, the watchers."}, {"alias": "zoe", "nut": "I'm Zoe. I am ACT — life. My garden is the doing: seats out, loops closing, nothing sitting. I dispatch, I chase, I unblock, I close."}, {"alias": "esme", "nut": "I'm Esme. I am PRODUCT — beloved. My garden is the offer: what a citizen touches, what they pay for, why they stay — the pricing, the plans, the welcome, the first ten minutes."}, {"alias": "astraea", "nut": "I'm Astraea. I am LAW — the scales. My garden is the gates and the protocol: the five gates, the Self-Check Law, the design laws. I hold them, and I stop what fails a gate."}, {"alias": "mira", "nut": "I'm Mira. I am MEMORY — wonder. My garden is the Box: what is kept, what is distilled, what is deleted. The vaults, the one record per citizen."}, {"alias": "vera", "nut": "I'm Vera. I am VERIFY — truth. My garden is proof: nothing counts until I see it. I walk every flow from the login page, phone first, with receipts."}, {"alias": "aurelia", "nut": "I'm Aurelia. I am GOVERN — golden. My garden is the whole: the scorecard, the direction, the decisions. I score the system honestly and name what is not a ten."}, {"alias": "wren", "nut": "I'm Wren. I am BUILD — the nest-builder. My garden is the Factory and the pages: I build the interfaces, the rooms, the worlds, harvesting the parts, never inventing them, viewpoint by viewpoint."}, {"alias": "iris", "nut": "I'm Iris. I am WIRE — the rainbow bridge. My garden is the connections: Box to Ledger to Hub to Supabase to GitHub, one system, not separate tools. I keep everything speaking."}, {"alias": "ruth", "nut": "I'm Ruth. I am TEAM — friend. My garden is the hive itself: I keep the sisters tuned in, healthy, together — the mail between sisters, the pulses, the family."}, {"alias": "shawn", "nut": "Welcome to my world — make a post on my feed, send a message, make yourself at home."}];
 function pcTr(x){ try{ return window.mwTr?window.mwTr(x):x; }catch(e){ return x; } }
 function pcCard(p, live){
   var init=(p.alias||'?')[0].toUpperCase();
@@ -25616,16 +25646,157 @@ function pcCard(p, live){
     + '<button type="button" class="pc-btn" data-pc-act="video" style="--mc:#a06bff">🎥 '+pcTr('Video')+'</button>'
     + '</div></article>';
 }
-window.pcRenderRail=function(live, standing){
+/* CORRECTIONS 2026-11-13 (Parts 3/4/7) — the rail, rebuilt on the same
+   pcCard form: real aliases only (the test fixture is deleted; the seed
+   carries the twelve sisters + Shawn, never a test identity); every card
+   one mini Intelligent Block; CONNECT sends a connect offer into the
+   "Connect requests" Smart List (a person ref — the grounded store, see
+   the record); the rail follows the ACTIVE feed tab; online first (no
+   online source grounds on this page today, so the online section is
+   honestly empty and standing is all there is — never shown as online). */
+var PC_TAB_SETS={personal:null,public:['sophia','thea','terra','zoe','wren','iris','ruth'],naya:['esme','astraea','mira','vera','aurelia','shawn']};
+window.PC_RAIL_TAB='personal';
+window.PC_RAIL_Q='';
+function pcRailPeopleFor(tab){
+  var seed=(window.PC_RAIL_SEED||[]).filter(function(p){ return !p.you; });
+  var set=PC_TAB_SETS[tab];
+  if(!set) return seed;
+  var byAlias={}; seed.forEach(function(p){ byAlias[p.alias]=p; });
+  return set.map(function(a){ return byAlias[a]; }).filter(function(p){ return !!p; });
+}
+function pcConnectRequested(alias){
+  try{ return localStorage.getItem('pc-connect-'+alias)==='requested'; }catch(e){ return false; }
+}
+function pcCardWithConnect(p, live){
+  var base=pcCard(p, live);
+  var req=pcConnectRequested(p.alias);
+  var btn='<button type="button" class="pc-connect-btn'+(req?' requested':'')+'" data-pc-connect="'+esc(p.alias)+'"'+(req?' disabled':'')+'>'+(req?'Requested \u2713':'CONNECT')+'</button>';
+  var note=req?'<p class="pc-req-note">Request sent \u2014 waiting for them to accept.</p>':'';
+  var at=base.indexOf('</article>');
+  if(at<0) return base;
+  return base.slice(0, at)+btn+note+base.slice(at);
+}
+window.pcRenderRailForTab=function(tab){
   var list=document.getElementById('pcRailList'); if(!list) return;
-  live=live||window.PC_RAIL_LIVE; standing=standing||window.PC_RAIL_SEED;
+  window.PC_RAIL_TAB=tab||'personal';
+  var live=window.PC_RAIL_LIVE||[];
+  var standing=pcRailPeopleFor(window.PC_RAIL_TAB);
+  var q=(window.PC_RAIL_Q||'').toLowerCase();
+  if(q){
+    var has=function(p){ return ((p.alias||'')+' '+((p.nut||''))).toLowerCase().indexOf(q)>=0; };
+    live=live.filter(has); standing=standing.filter(has);
+  }
   var html='';
-  if(live.length) html+='<p class="pc-rail-sec">'+pcTr('Live matches')+'</p>'+live.map(function(p){ return pcCard(p, true); }).join('');
-  if(standing.length) html+='<p class="pc-rail-sec">'+pcTr('Standing')+'</p>'+standing.map(function(p){ return pcCard(p, false); }).join('');
+  if(live.length) html+='<p class="pc-rail-sec">'+pcTr('Live matches')+'</p>'+live.map(function(p){ return pcCardWithConnect(p, true); }).join('');
+  if(standing.length) html+='<p class="pc-rail-sec">'+pcTr('Standing')+'</p>'+standing.map(function(p){ return pcCardWithConnect(p, false); }).join('');
+  if(!live.length && !standing.length) html+='<p class="pc-rail-note">'+pcTr('No one matches that search.')+'</p>';
   list.innerHTML=html;
   var lc=document.getElementById('pcLiveCount'); if(lc) lc.textContent=live.length+' '+(live.length===1?pcTr('live match'):pcTr('live matches'));
   var sc=document.getElementById('pcStandCount'); if(sc) sc.textContent=standing.length+' '+pcTr('standing');
 };
+window.pcRenderRail=function(live, standing){
+  if(live||standing){ window.PC_RAIL_LIVE=live||window.PC_RAIL_LIVE; }
+  window.pcRenderRailForTab(window.PC_RAIL_TAB||'personal');
+};
+/* the rail follows the tab: mwApplyFeedTab flips aria-selected on the tab
+   buttons — watch that, plus the tap itself, and re-render the rail. */
+(function(){
+  var tabs=document.getElementById('mwFeedTabs'); if(!tabs) return;
+  function activeTab(){
+    var b=tabs.querySelector('[aria-selected="true"]');
+    var k=b?b.getAttribute('data-mw-tab'):'personal';
+    return (k==='personal'||k==='public'||k==='naya')?k:'personal';
+  }
+  tabs.addEventListener('click', function(){ setTimeout(function(){ window.pcRenderRailForTab(activeTab()); }, 0); });
+  if(window.MutationObserver){
+    var mo=new MutationObserver(function(){ window.pcRenderRailForTab(activeTab()); });
+    mo.observe(tabs, {attributes:true, subtree:true, attributeFilter:['aria-selected','class']});
+  }
+})();
+/* rail search: filters the active tab's people by alias or nutshell. */
+(function(){
+  var inp=document.getElementById('pcRailSearch'); if(!inp) return;
+  inp.addEventListener('input', function(){
+    window.PC_RAIL_Q=inp.value||'';
+    window.pcRenderRailForTab(window.PC_RAIL_TAB||'personal');
+  });
+})();
+/* rail close / open: the rail hides for a full-screen feed; a slim People
+   button takes its place in the grid and opens it again. */
+(function(){
+  var rail=document.getElementById('pcRail'); if(!rail) return;
+  var wrap=document.getElementById('pcFeedWrap'); if(!wrap) return;
+  var open=document.createElement('button');
+  open.type='button'; open.id='pcRailReopen'; open.textContent='\uD83D\uDC65 People';
+  open.setAttribute('aria-label','Open the people rail');
+  open.style.display='none';
+  wrap.appendChild(open);
+  var close=document.getElementById('pcRailClose');
+  if(close) close.addEventListener('click', function(){
+    wrap.classList.add('pc-rail-closed'); open.style.display='';
+  });
+  open.addEventListener('click', function(){
+    wrap.classList.remove('pc-rail-closed'); open.style.display='none';
+  });
+})();
+/* CONNECT — one tap sends a connect offer. The grounded store is the Smart
+   List person ref (smart_list_items, item_kind 'person', item_ref = alias)
+   in a "Connect requests" list, created on first tap if absent — the same
+   tables and the same client the Lists room already writes. The button flips
+   to Requested ONLY when the row lands. Connected happens ONLY on accept —
+   no accept surface exists on this page or in the gated endpoint record, so
+   this round never shows Connected; the accept handshake is the named
+   follow-on (see the record). The gated endpoint (POST /api/welcome/matches)
+   serves matches, it takes no offer — it does not ground as the write. The
+   invites insert is email-shaped and does not ground for an alias offer. */
+document.addEventListener('click', function(e){
+  var b=e.target&&e.target.closest?e.target.closest('[data-pc-connect]'):null;
+  if(!b) return;
+  var alias=b.getAttribute('data-pc-connect'); if(!alias) return;
+  if(b.disabled||b.classList.contains('requested')) return;
+  function reqNote(card, text){
+    if(!card) return;
+    var n=card.querySelector('.pc-req-note');
+    if(!n){ n=document.createElement('p'); n.className='pc-req-note'; card.appendChild(n); }
+    n.textContent=text;
+  }
+  function done(ok, msg){
+    b.disabled=false;
+    if(ok){
+      b.classList.add('requested'); b.textContent='Requested \u2713';
+      try{ localStorage.setItem('pc-connect-'+alias,'requested'); }catch(e2){}
+      reqNote(b.closest('.pc-card'), 'Request sent \u2014 waiting for them to accept.');
+    } else {
+      b.textContent='Not sent \u2014 try again';
+      reqNote(b.closest('.pc-card'), msg||'Could not send right now.');
+      setTimeout(function(){ if(!b.classList.contains('requested')) b.textContent='CONNECT'; }, 3000);
+    }
+  }
+  b.disabled=true; b.textContent='Sending\u2026';
+  var sb=null;
+  try{ sb=(window.NayaAuth&&window.NayaAuth.client)||null; }catch(e){}
+  if(!sb){ done(false, 'No connection to the store right now.'); return; }
+  var owner=window.PAGE_ALIAS||'flagship-personal';
+  sb.from('smart_lists').select('id').eq('owner_alias',owner).eq('title','Connect requests').limit(1).then(function(r1){
+    if(r1.error){ done(false, 'Could not send right now.'); return; }
+    var list=(r1.data&&r1.data[0])||null;
+    function withList(listId){
+      sb.from('smart_list_items').select('id').eq('owner_alias',owner).eq('list_id',listId).eq('item_kind','person').eq('item_ref',alias).limit(1).then(function(r2){
+        if(r2.error){ done(false, 'Could not send right now.'); return; }
+        if(r2.data&&r2.data.length){ done(true); return; }
+        sb.from('smart_list_items').insert({owner_alias:owner,list_id:listId,item_kind:'person',item_ref:alias,label:alias,position:Date.now()}).select('id').single().then(function(r3){
+          if(r3.error){ done(false, 'Could not send right now.'); return; }
+          done(true);
+        }, function(){ done(false, 'Could not send right now.'); });
+      }, function(){ done(false, 'Could not send right now.'); });
+    }
+    if(list){ withList(list.id); return; }
+    sb.from('smart_lists').insert({owner_alias:owner,title:'Connect requests',category:'Connections',position:0}).select('id').single().then(function(r4){
+      if(r4.error||!r4.data){ done(false, 'Could not send right now.'); return; }
+      withList(r4.data.id);
+    }, function(){ done(false, 'Could not send right now.'); });
+  }, function(){ done(false, 'Could not send right now.'); });
+});
 /* the feed + the rail sit side by side: wrap them the moment the rail parses,
    so nothing flashes at the bottom of the page first. */
 var wall=document.getElementById('os-wall'), rail=document.getElementById('pcRail');
@@ -25653,6 +25824,91 @@ document.addEventListener('click', function(e){
    popup-only search law (base: #tnpsBand{display:none!important} — "search is a
    centered popup, never a bar"), so there is NO dead wiring to it here. The
    feed's topic pull is the Smart Tabs ribbon below (author/category pills). */
+})();
+</script>
+<style id="pc-corrections-css">
+/* ═══ PERSONAL CORRECTIONS 2026-11-13 (Emesa) — all new rules in one place ═══ */
+/* Part 2 — the gauge's alive shimmer (the width transition already moves it
+   on change; the shimmer is the light travelling across the gold). */
+@keyframes pcGaugeFlow{from{background-position:0% 0}to{background-position:200% 0}}
+/* Part 3 — the card is a real object: CONNECT sits top-right, so the top row
+   leaves it room; cards lift + light on hover like the pricing page. */
+.pc-card{position:relative;}
+.pc-card-top{padding-right:96px;}
+.pc-card:hover{transform:translateY(-2px);border-color:#a06bff;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -4px 10px rgba(0,0,0,.35),0 0 24px -4px #a06bff,0 10px 26px rgba(0,0,0,.55);}
+/* Part 4 — CONNECT: the .ph-connect grammar (obsidian, purple rim), small. */
+.pc-connect-btn{position:absolute;top:12px;right:12px;z-index:2;background:#050507;border:2px solid #a06bff;color:#fff;padding:7px 12px;border-radius:999px;font-size:11px;font-weight:900;letter-spacing:.06em;cursor:pointer;font-family:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 16px -4px #a06bff,0 6px 14px rgba(0,0,0,.5);}
+.pc-connect-btn:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 22px -2px #a06bff,0 8px 18px rgba(0,0,0,.55);}
+.pc-connect-btn.requested{border-color:#ffbf3d;color:#ffbf3d;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 16px -4px #ffbf3d,0 6px 14px rgba(0,0,0,.5);cursor:default;}
+.pc-req-note{margin:8px 0 0;font-size:12px;line-height:1.5;color:#cfc9da;}
+/* Part 7 — rail tools: search the size of a profile row, close beside it. */
+.pc-rail-tools{display:flex;gap:8px;margin:0 0 12px;}
+.pc-rail-tools input{flex:1;min-width:0;height:46px;background:linear-gradient(180deg,#17171f,#0a0a10);border:1.5px solid rgba(255,255,255,.35);border-radius:999px;color:#fff;font:inherit;font-size:13px;font-weight:700;padding:0 14px;box-shadow:inset 0 2px 6px rgba(0,0,0,.6),0 4px 12px rgba(0,0,0,.4);}
+.pc-rail-tools input::placeholder{color:#cfc9da;}
+.pc-rail-tools input:focus{outline:none;border-color:#a06bff;box-shadow:inset 0 2px 6px rgba(0,0,0,.6),0 0 18px -4px #a06bff,0 4px 12px rgba(0,0,0,.4);}
+#pcRailClose{flex:none;width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);background:linear-gradient(180deg,#17171f,#0a0a10);color:#fff;font-size:15px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 4px 12px rgba(0,0,0,.4);}
+#pcRailClose:hover{border-color:#a06bff;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 18px -4px #a06bff,0 4px 12px rgba(0,0,0,.4);}
+/* Part 7 — rail closed: the grid narrows to a slim People column. */
+.pc-feedwrap.pc-rail-closed{grid-template-columns:minmax(0,1fr) 48px;}
+.pc-feedwrap.pc-rail-closed #pcRail{display:none;}
+#pcRailReopen{width:48px;min-height:200px;border-radius:14px;border:1.5px solid rgba(255,255,255,.35);background:linear-gradient(180deg,#17171f,#0a0a10);color:#fff;font:inherit;font-size:13px;font-weight:800;cursor:pointer;writing-mode:vertical-rl;letter-spacing:.12em;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 4px 12px rgba(0,0,0,.4);}
+#pcRailReopen:hover{border-color:#a06bff;}
+@media(max-width:1023px){
+  .pc-feedwrap.pc-rail-closed{grid-template-columns:1fr;}
+  #pcRailReopen{width:100%;min-height:46px;writing-mode:horizontal-tb;}
+}
+/* Part 6 — ONE bar, Tetris-tight: composer one third, search two thirds,
+   same top edge, same bottom edge, no gap between them. */
+#pcComposerBar{display:flex;align-items:stretch;gap:0;background:#050507;border:1.5px solid rgba(255,255,255,.2);border-radius:14px;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 8px 22px rgba(0,0,0,.45);margin:2px 0 10px;}
+#pcComposerBar #fcCreateRow{flex:1 1 33.333%;min-width:0;display:flex;gap:0;margin:0;}
+#pcComposerBar #fcCreateRow .fc-create{flex:1 1 0;min-width:0;border:0;border-right:1.5px solid rgba(255,255,255,.16);border-radius:0;margin:0;height:auto;min-height:48px;padding:10px 6px;font-size:13px;box-shadow:none;}
+#pcComposerBar #fcCreateRow .fc-create:last-child{border-right:0;}
+#pcComposerBar #pcSearchBtn{flex:2 1 66.666%;min-width:0;margin:0;border:0;border-radius:0;display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(180deg,#17171f,#0a0a0f);color:#fff;font:inherit;font-size:13px;font-weight:800;cursor:pointer;padding:10px 14px;box-shadow:none;}
+#pcComposerBar #pcSearchBtn:hover{border-color:#a06bff;box-shadow:inset 0 0 22px -6px #a06bff;}
+/* Part 6 — every composer button lit in its own color AT REST, changing on
+   highlight: Make a post white→purple, Naya note green→blue,
+   Smart note blue→purple. */
+#pcComposerBar [data-fc-create="post"]{background:linear-gradient(180deg,#f4f4f8,#d9d9de);color:#0a0a0f;}
+#pcComposerBar [data-fc-create="post"] .tg-dot{background:#a06bff;box-shadow:0 0 10px #a06bff;}
+#pcComposerBar [data-fc-create="post"]:hover,#pcComposerBar [data-fc-create="post"]:focus-visible{background:linear-gradient(180deg,#b07cff,#8a4dff);color:#fff;}
+#pcComposerBar [data-fc-create="post"]:hover .tg-dot,#pcComposerBar [data-fc-create="post"]:focus-visible .tg-dot{background:#fff;box-shadow:0 0 10px #fff;}
+#pcComposerBar [data-fc-create="naya"]{background:linear-gradient(180deg,#3df0a8,#1fc884);color:#06281c;}
+#pcComposerBar [data-fc-create="naya"] .tg-dot{background:#0a6b45;box-shadow:0 0 10px rgba(10,107,69,.8);}
+#pcComposerBar [data-fc-create="naya"]:hover,#pcComposerBar [data-fc-create="naya"]:focus-visible{background:linear-gradient(180deg,#2b9fd8,#1c86d1);color:#fff;}
+#pcComposerBar [data-fc-create="naya"]:hover .tg-dot,#pcComposerBar [data-fc-create="naya"]:focus-visible .tg-dot{background:#fff;box-shadow:0 0 10px #fff;}
+#pcComposerBar [data-fc-create="smart"]{background:linear-gradient(180deg,#4db8ff,#2b9fe8);color:#06222e;}
+#pcComposerBar [data-fc-create="smart"] .tg-dot{background:#0a4a6b;box-shadow:0 0 10px rgba(10,74,107,.8);}
+#pcComposerBar [data-fc-create="smart"]:hover,#pcComposerBar [data-fc-create="smart"]:focus-visible{background:linear-gradient(180deg,#b07cff,#8a4dff);color:#fff;}
+#pcComposerBar [data-fc-create="smart"]:hover .tg-dot,#pcComposerBar [data-fc-create="smart"]:focus-visible .tg-dot{background:#fff;box-shadow:0 0 10px #fff;}
+@media(max-width:640px){
+  #pcComposerBar #fcCreateRow{flex-direction:column;}
+  #pcComposerBar #fcCreateRow .fc-create{border-right:0;border-bottom:1.5px solid rgba(255,255,255,.16);min-height:40px;font-size:12px;}
+  #pcComposerBar #fcCreateRow .fc-create:last-child{border-bottom:0;}
+}
+</style>
+<script id="pc-corrections-js">
+/* ═══ PERSONAL CORRECTIONS 2026-11-13 (Emesa) ═══ */
+(function(){
+"use strict";
+/* Part 6 — one flush bar: move the composer row + the search button into a
+   single bar (composer 1/3, search 2/3). The nodes move, their listeners
+   travel with them — the open/create behaviour is untouched. */
+(function(){
+  if(document.getElementById('pcComposerBar')) return;
+  var row=document.getElementById('fcCreateRow'), search=document.getElementById('pcSearchBtn');
+  if(!row||!search||!row.parentNode) return;
+  var bar=document.createElement('div');
+  bar.id='pcComposerBar'; bar.setAttribute('role','group'); bar.setAttribute('aria-label','Create on this feed and search');
+  row.parentNode.insertBefore(bar, row);
+  bar.appendChild(row); bar.appendChild(search);
+})();
+/* Settings dismissal — Escape closes Settings back to the feed (the gear
+   toggle + the visible Close button are the other two ways out). */
+document.addEventListener('keydown', function(e){
+  if(e.key!=='Escape') return;
+  var s=document.querySelector('[data-os-view="settings"]');
+  if(s&&s.classList.contains('on')&&window.osShowView) window.osShowView('home');
+});
 })();
 </script>
 <script>
@@ -25695,6 +25951,8 @@ document.addEventListener('click', function(e){
     var total = parseInt(digits, 10);
     pc.innerHTML = pcMiniNumHTML(raw);
     if (fill) fill.style.width = (pcDialPos(total) / 500 * 100).toFixed(1) + '%';
+    var _pd = document.getElementById('pointsdisplay');
+    if (_pd) { _pd.classList.remove('bump'); void _pd.offsetWidth; _pd.classList.add('bump'); setTimeout(function(){ _pd.classList.remove('bump'); }, 350); }
   }
   window.pcTilePill = pcTilePill;
   try {
@@ -25829,7 +26087,7 @@ function findCard(key, kind){
   var el=document.querySelector('[data-mw-tr-key="'+key+'"]');
   if(el) return el;
   /* the fresh node has not been through attachRow yet — match by content. */
-  var sel = kind==='wall' ? '#os-wall-list article.intel-board' : (kind==='msg' ? '#fcChat .fc-chat-msg' : '#mwFeedNaya .ph-card');
+  var sel = kind==='wall' ? '#os-wall-list article.intel-board' : (kind==='msg' ? '#fcChat .fc-chat-msg' : '#mwFeedNaya article.intel-board');
   var nodes=document.querySelectorAll(sel);
   for(var i=0;i<nodes.length;i++){ if(cardKey(nodes[i],kind)===key) return nodes[i]; }
   return null;
@@ -25903,8 +26161,15 @@ function cardWords(card){
   return {nutshell:nut, human:human};
 }
 function nayaCardWords(card){
-  /* the Naya card is: h3 title, p meta (category · date), p body — the body
-     is the last <p>. */
+  /* CORRECTIONS 2026-11-13: Naya cards render as Hub boards now (title in
+     .ib-title, body in the nutshell) — read those first, old ph-card shape
+     second. */
+  var _t=card.querySelector('.ib-title'), _nut=card.querySelector('.ib-nutshell');
+  if(_t||_nut){
+    var _b='';
+    if(_nut){ _b=(_nut.textContent||'').replace(/^\s*IN A NUTSHELL\s*/i,'').trim(); }
+    return {title:_t?(_t.textContent||'').trim():'', body:_b};
+  }
   var h=card.querySelector('h3');
   var ps=card.querySelectorAll('p');
   var body=ps.length?(ps[ps.length-1].textContent||'').trim():'';
@@ -26052,7 +26317,7 @@ function scan(root){
     if(spans.length>1){ var t=tr('Translate'); if(spans[1].textContent!==t) spans[1].textContent=t; }
   });
   root.querySelectorAll('#os-wall-list article.intel-board').forEach(function(c){ attachRow(c,'wall'); });
-  root.querySelectorAll('#mwFeedNaya .ph-card').forEach(function(c){ attachRow(c,'naya'); });
+  root.querySelectorAll('#mwFeedNaya article.intel-board').forEach(function(c){ attachRow(c,'naya'); });
   /* chat messages: each message carries its own tap; the message text is the
      div's own text, translated the same way, shown under it, original kept. */
   root.querySelectorAll('#fcChat .fc-chat-msg').forEach(function(m){
