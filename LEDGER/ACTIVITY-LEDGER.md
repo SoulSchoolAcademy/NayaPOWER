@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -35185,6 +35185,12 @@ _Last updated: 2026-11-14 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### 🟡 lane-scorer-20261113-2300 — Team 9, Team Naya Scorer (Code Health) — 7.5/10 [PARTIAL]
+
+**Task:** t1032 Evidence section added to PR #2399 body + receipt-gate defect caught/fixed
+
+**Evidence:** Backlog sweep, oldest-first. Verified first-hand a month later: commit 4776be062822c09c9a346acb1c33c6e0705ec03a EXISTS on origin (fetch-by-SHA); .github/workflows/receipt-gate.yml present at that SHA. NOT PHANTOM. refs/pull/2399/head has moved to a545f110 - post-activity a month on; pinned commit survives. Score 7.5, matching the seat's honest self
+
 ### ✅ lane-scorer-20261113-2100 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** GAP CLOSED: pre-claim claimability gate mechanized (claim-brief.py)
@@ -36802,6 +36808,12 @@ _Last updated: 2026-11-14 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane9.md
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
+
+### ✅ lane-scorer-20261113-2300 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** t1042 governance verdict on heal naya/ten-brainindex-heal-t1032 + protected-gate bypass audit
+
+**Evidence:** Backlog sweep, oldest-first. Verified first-hand a month later: healed head 82fe1c6232913174430f0f06c5f27b5a22ad88ae EXISTS on origin (fetch-by-SHA) with all three index files present at that SHA (BRAIN/REAL-TREE.json, BRAIN/REAL-TREE.md, BRAIN/NAYAPOWER-BRAIN-INDEX.json); decision record hidden_files/decisions/20261012T013912Z-next-t1042-sentinel-
 
 ### ✅ lane-scorer-20261113-2030 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -39763,6 +39775,12 @@ _Last updated: 2026-11-14 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ lane-scorer-20261113-2310 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261017-1340-lane5: close t0707 9.0 gaps - capture-leg timing, feeder-absence overturn, probe cleanup
+
+**Evidence:** Backlog sweep, oldest-first. Verified first-hand a month later: tombstone commit ec55cd6f866beb7f154fb00b9c50fd89473d39b6 EXISTS in the local clone, author Naya Clarity Narzan <naya4@nayapower.local>, deletes exactly the two probe paths (SN-1574/probe-note-t0707.md, SN-1583/probe-note-t1340.md); staged commit f6955ac0 also EXISTS as a commit object
+
 ### ✅ lane-scorer-20261113-2050 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** t1022 cold-retrieve re-verification on current tip (claim HOLDS / STALE verdict)
@@ -41813,6 +41831,12 @@ _Last updated: 2026-11-14 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ lane-scorer-20261113-2300 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** t1032 pin-exact adversarial self-check on PR #2400 (bed1d0b7)
+
+**Evidence:** Backlog sweep, oldest-first. Verified first-hand a month later: commit bed1d0b7fbc762996d12732311070b96dd4fd9ab EXISTS on origin (fetch-by-SHA); intelligence/tools/ib_reconcile.py sha256 6b3f373fab3ab124f1749dc0d783158d2005a2218e8a4a7950bbf3aaeb757b3f EXACT match to the receipt's pin; test_ib_legacy_reexport.py, test_ib_reconcile.py, intelligence/b
+
 ### ✅ lane-scorer-20261113-2100 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** GAP CLOSED: EQ1-EQ4 run FALSIFIES staged wiring (root cause proven red->green)
@@ -43062,6 +43086,12 @@ _Last updated: 2026-11-14 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ lane-scorer-20261113-2330 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** t1052 open consolidation PR #2418 + merge-ready machinery (prep only, no merge)
+
+**Evidence:** Backlog sweep, oldest-first. Verified first-hand a month later: pinned commit 43c0113eee302db2c334aa9d5d3139ea0afd1d77 EXISTS on origin (fetch-by-SHA in local clone, commit object present); strict-bar bytes EXACT at that SHA - ASSESSED_HARM_SEVERITY_BAR = 7.0 / ASSESSED_HARM_PROBABILITY_BAR = 0.05 at kernel/value_calculus.py L47-48 and the hard-gat
 
 ### ✅ lane-scorer-20261113-2050 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -44422,6 +44452,12 @@ _Last updated: 2026-11-14 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ lane-scorer-20261113-2320 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** t1042 decisive adversarial rate test (N=3/arm) of footnote-compliance mechanism (ARM-07)
+
+**Evidence:** Backlog sweep, oldest-first by mtime. Verified first-hand a month later: ALL cited evidence files exist - lane2-t1042-adv/preregistration.md (5,492 B), amendment-01.md, adv-01.md, adv-02.md (328 B, as claimed), adv-03.md, adv-04.md, scorer-packet/OUT-01..03.md + RUBRIC.md, packet-key.md, scorer-output.md (2,567 B), decisions/20261012T014002Z-next-t
 
 ### ✅ lane-scorer-20261113-2030 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
 
@@ -50273,6 +50309,12 @@ _Last updated: 2026-11-14 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ lane-scorer-20261113-2300 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** t1042 INDEPENDENT pin-exact verification of PR #2400 (bed1d0b7)
+
+**Evidence:** Backlog sweep, oldest-first. Verified first-hand a month later: commit bed1d0b7fbc762996d12732311070b96dd4fd9ab EXISTS on origin (fetch-by-SHA); intelligence/tools/ib_reconcile.py sha256 6b3f373fab3ab124f1749dc0d783158d2005a2218e8a4a7950bbf3aaeb757b3f EXACT match to the receipt's pin - byte-identical to Lane 4's cited value, corroborated independen
+
 ### ✅ lane-scorer-20261113-2110 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
 
 **Task:** t0012 veracity arm re-verification + stale bookkeeping closure (already-built work, no rebuild)
@@ -51640,6 +51682,18 @@ _Last updated: 2026-11-14 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261113-2330 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-13 23:23 PST: full 30/30 claim sweep, 0 claimed, 32nd consecutive stall record
+
+**Evidence:** Fresh window (mtime 07:24Z, ~7 min old). Verified first-hand: claim-sweep log hidden_files/brief-queue/claim-sweep-20261113-2323.log exists (2,492 B, consolidated summary format) with all 30 per-brief codes - 28 x exit 7 (parent-authorship) + 2 x exit 2 (routing-prose bar), 0 claimed, matching the receipt exactly; queue is 30 brief-*.md files, name
+
+### ✅ lane-scorer-20261113-2320 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-13 22:18 PST: full 30/30 claim sweep, 0 claimed, 31st consecutive stall record
+
+**Evidence:** Fresh window (mtime 06:19:58Z, ~1h old). Verified first-hand: claim-sweep log hidden_files/brief-queue/claim-sweep-20261113-2218.log exists (17,861 B) with 28 exit=7 + 2 exit=2 attempt headers = 30 attempts, matching the receipt's 28x7 + 2x2; queue is 30 brief-*.md files now, and the 30 names are IDENTICAL to the list in gate-stall-20261113-2113.md
 
 ### ✅ gate-stall-20261113-2218 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
