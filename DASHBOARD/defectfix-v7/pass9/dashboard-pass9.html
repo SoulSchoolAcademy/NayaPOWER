@@ -11823,8 +11823,18 @@ NF.register(UNIT, {
       var a=new Audio();
       briefAudio=a;
       a.src=url;
+      var played=false;
+      a.addEventListener('playing', function(){ played=true; });
       a.onended=function(){ if (briefAudio===a) briefAudio=null; done(true); };
-      a.onerror=function(){ if (briefAudio===a) briefAudio=null; done(false); };
+      a.onerror=function(){
+        if (briefAudio!==a) return;
+        /* A decode error fired mid-playback is non-fatal: Firefox raises
+           MEDIA_ERR_DECODE on a frame it then recovers from and plays past.
+           Only a genuinely stuck element — no playing event, no time
+           advanced — ends the brief here. */
+        if (played || a.currentTime > 0){ return; }
+        briefAudio=null; done(false);
+      };
       var pr=a.play();
       if (pr && pr.catch) pr.catch(function(){ done(false); });
     });
