@@ -28019,6 +28019,24 @@ body.os-tabs-on #page-settings, body.os-tabs-on #viewport-back{
   z-index:902 !important;
 }
 body.os-tabs-on #nsbTop .nsb-row{ padding-right:64px !important; }
+/* HERO CLIP FIX 2026-11-14 (captain's double-check, cloud browser, 1919px):
+   with Smart Tabs ON the top bar sits at the top of the page (104px tall
+   desktop, 86px phone) while the hero number sat at y=40 — 64px of the
+   number under the bar at 1920/1440 (only its bottom sliver visible),
+   18-19px under it at 390/360. The bar is position:absolute, so it takes
+   no space in flow (#nsbTopstack measures 0px tall); the hero needs the
+   clearance in flow. When tabs are ON, #os-dash gets top padding that
+   clears the bar with a 16px gap: 16px -> 96px desktop (number 40 -> 120,
+   bar bottom 104), 16px -> 50px at <=700px (number 68 -> 102, bar bottom
+   86). Tabs OFF is untouched (16px, bar hidden, number where it was).
+   #os-dash is the ancestor fitHero() does not control (it sets only
+   #os-hero-fit's inline scale/height/marginTop), so the cached fit
+   reapplies cleanly and the hero shifts down by exactly the padding
+   delta; the number, label, gauge, orbs, pills and funnel are untouched. */
+body.os-tabs-on #os-dash{ padding-top:96px; }
+@media (max-width:700px){
+  body.os-tabs-on #os-dash{ padding-top:50px; }
+}
 /* (b) The bottom bar shows ONLY at the page bottom (or on a button tap) —
    never on scroll-stop, never repeatedly. */
 body.os-bottom-hidden #os-bottom3{ transform:translateY(110%) !important; opacity:0 !important; }
