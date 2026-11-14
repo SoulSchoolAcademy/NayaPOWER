@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-13T21:49:16Z",
-  "tip": "aca7b075fcc226eb44e3065af34f8a65d80d7721",
+  "generated_at": "2026-11-14T03:49:15Z",
+  "tip": "823e519dee22bcffdd2632e0daf76591848058e5",
   "prs": [
     {
       "number": 3345,
@@ -40,40 +40,13 @@
       "head": "17a36c5e51c6925c4e710ac2730c60bf909401f4"
     },
     {
-      "number": 3358,
-      "title": "LEARN: cure registry drift 795->351 \u2014 hash re-anchor tool + 222 entry repair",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "fc598b96a82664addacfff9b77e7903629bf047e"
-    },
-    {
-      "number": 3359,
-      "title": "ACTIVATION: snapshot-wins indirection for stale boot pointers (#3066/#2601)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "f0fc0d32595c0b42f071fc63a47cd0b04d1a0bb3"
-    },
-    {
-      "number": 3360,
-      "title": "SN-2685 line 53: Intelligent Block name drops IB- prefix",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, door-obligation; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "eff25dc746109afa0420199bf8d0a8d5f5eabd36"
-    },
-    {
-      "number": 3362,
-      "title": "Voice: accept root-relative search module path in hub-wiring test",
-      "tier": "B",
+      "number": 3364,
+      "title": "Voice: keep italic words in pipeline spoken text (page parity)",
+      "tier": "A",
       "action": "CURE",
       "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "c00b35260711673bee4d783bfac56bbfdffdb0f3"
+      "head": "11965597fb39da88cc06e49d6e94c99e0b4aebad"
     }
   ]
 }
