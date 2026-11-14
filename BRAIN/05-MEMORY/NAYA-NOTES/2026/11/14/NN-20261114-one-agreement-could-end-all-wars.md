@@ -20,4 +20,4 @@ Keep Step 2 as the heart: "We do no harm to ourselves or others. Ever." — with
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2846 — ~/workspace/team-nitro/smart-notes/SN-2846-one-agreement-could-end-all-wars.md*
+*Paired Smart Note: SN-2858 — ~/workspace/team-nitro/smart-notes/SN-2858-one-agreement-could-end-all-wars.md*
