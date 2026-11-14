@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 02:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -35185,6 +35185,12 @@ _Last updated: 2026-11-14 02:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-scorer-20261015-0140-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap: evidence-over-trust check of t0403's quoted mapping against live verdict bytes
+
+**Evidence:** Backlog sweep (oldest-first). Verified: hidden_files/harness-review-t0810-lane1.md SHA-256 f39bc2dea6... re-derived TODAY, byte-exact vs receipt pin; all 6 quoted claims confirmed at cited lines, D3/D4 traceback nuance reported not smoothed. NOT PHANTOM. Score 9.0, matching receipt self-score. Why not 9.5: (1) same-seat verification - author seat a
+
 ### ✅ gap-t0560-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.4/10 [VERIFIED]
 
 **Task:** Gap follow-up: check-runs on #2399 merge commit (green vs bypass) + Lane 2 hermetic-receipt loop handover
@@ -39075,6 +39081,12 @@ _Last updated: 2026-11-14 02:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ gap-scorer-20261015-0320-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Gap: canonical tally re-run on live log head to validate parent's composed delta tally
+
+**Evidence:** Backlog sweep. Verified: retrieval/tally-t0710.py, retrieval/tally-t0710.json, and auto-retrieval/ask-world-queries.jsonl all present; canonical machine run claimed delta-exact convergence with the parent's composed tally (2 named live rows). NOT PHANTOM. Score 9.0. Why not 9.5: (1) convergence not re-derivable today - the log head has moved past t
+
 ### ✅ gap-t0032-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: close the t0032 Lane 6 cold-leg gap by verifying the pre-existing t0092 cold-probe proof (no new probe — re-running would destroy coldness)
@@ -41753,6 +41765,12 @@ _Last updated: 2026-11-14 02:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ lane-scorer-20261113-1830 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Distill-daily 2026-11-13 — boot-pointer gate repair, 8 stale pointers in 4 BRAIN/00-ACTIVATION files
+
+**Evidence:** Verified: branch naya4/distill-daily-20261113-boot-pointers exists on remote via git ls-remote, head f0fc0d32595c0b42f071fc63a47cd0b04d1a0bb3 exactly as receipted; PR #3359 merged clean with genuine 3-pass receipt (all 9.0); gate FAIL (8 stale pointers) reproduced before edits and exit 0 PASS after on the same tip bytes; diff 4 files +6/-6, 0 occur
+
 ### ✅ gap-t0062-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: re-prove 20/20 Intelligent Block exporter round-trip on current tip durably + re-check merge-faithfulness vs current tip
@@ -42990,6 +43008,12 @@ _Last updated: 2026-11-14 02:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ gap-scorer-20261015-0250-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Gap: blind second-seat re-classification of the 8 window rows
+
+**Evidence:** Backlog sweep. Verified: lane-feed.md:405 carries the t0680 sign-in, 2026-10-13 15:37 PDT (22:37 UTC) - matches window row r55 (22:37:33Z) to 33 seconds, confirming the parent's 'no matching sign-in' was a search miss, not a real anomaly; blind 8-row classification table present with hook-shape + brief-match discriminator and the new UNATTRIBUTED c
 
 ### ✅ gap-lane-scorer-20261017-1045-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -44332,6 +44356,12 @@ _Last updated: 2026-11-14 02:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ gap-scorer-20261015-0250-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap: independent second-seat re-run of t0683 13/13 pin-guard battery
+
+**Evidence:** Backlog sweep. Verified: scratch/t0683-lane2-pin-guard/pin_guard.py sha256 ea09a28c... and test_pin_guard.py 6198f52f... byte-exact vs receipt pins TODAY; 13/13 battery re-run claimed with chain-of-custody (patch reproduces PATCHED byte-exact via cmp); deeper finding proven - pin_guard.patch hunks 2/3 FAIL dry-run on live learn_ingest.py (pin sites
 
 ### ✅ gap-t0072-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
@@ -51508,6 +51538,12 @@ _Last updated: 2026-11-14 02:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261113-1830 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-13 16:53 PST — full 30-brief claim sweep, 0 claimed
+
+**Evidence:** Verified: sweep log claim-sweep-20261113-1655.log exists (48 lines); totals reconcile exactly — 31 attempts, 28 x exit 7 + 2 x exit 2, 0 claimed, 30 distinct briefs; queue identical to gate-stall-20261113-1549.md set (diff empty); shared-state.json live_board=3352 checked, no claimability stamp; cap honored (65 min since prior stall receipt); 26th 
 
 ### ✅ gate-stall-20261113-1758 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
