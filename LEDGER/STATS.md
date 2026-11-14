@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-14 19:41 UTC_
+_Last updated: 2026-11-14 20:02 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 8784
-- ✅ Verified (8+): 8696
+- **Total scored actions:** 8790
+- ✅ Verified (8+): 8702
 - 🟡 Partial (5–7): 79
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 5
@@ -15,7 +15,7 @@ _Last updated: 2026-11-14 19:41 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 582 | 9.1 | 9.6 |
+| Team 1 | Naya Verity | 585 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 585 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 537 | 9.0 | 10 |
 | Team 4 | Naya Mason | 513 | 9.1 | 9.6 |
@@ -25,8 +25,8 @@ _Last updated: 2026-11-14 19:41 UTC_
 | Team 8 | Naya Sentinel | 533 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 663 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 910 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 566 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 452 | 9.2 | 9.5 |
+| Team 11 | Naya Heart | 567 | 9.0 | 9.6 |
+| Team 12 | Naya Herald | 453 | 9.2 | 9.5 |
 
 ## Learning velocity
 
@@ -1166,6 +1166,7 @@ _Last updated: 2026-11-14 19:41 UTC_
 - **gap-lane-scorer-20261016-0650-lane0:** 1 actions, avg 9.0/10
 - **lane-scorer-20261114-0940:** 1 actions, avg 9.0/10
 - **gate-stall-20261114-1040:** 1 actions, avg 9.0/10
+- **lane-scorer-20261114-1200:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -3511,12 +3512,12 @@ _Last updated: 2026-11-14 19:41 UTC_
 - **t1514:** 2 actions, avg 9.2/10
 - **t1515:** 3 actions, avg 9.3/10
 - **t1516:** 1 actions, avg 9.0/10
-- **t1522:** 4 actions, avg 9.1/10
+- **t1522:** 6 actions, avg 9.2/10
 - **t1523:** 2 actions, avg 8.5/10
 - **t1524:** 3 actions, avg 9.5/10
-- **t1526:** 3 actions, avg 9.0/10
-- **t1527:** 3 actions, avg 9.0/10
-- **t1528:** 3 actions, avg 9.5/10
+- **t1526:** 4 actions, avg 9.0/10
+- **t1527:** 4 actions, avg 9.1/10
+- **t1528:** 4 actions, avg 9.5/10
 - **t1530:** 10 actions, avg 9.1/10
 - **t1530-lane11:** 1 actions, avg 9.4/10
 - **t1530-lane12:** 1 actions, avg 9.3/10
