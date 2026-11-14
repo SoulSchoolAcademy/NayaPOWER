@@ -19073,6 +19073,14 @@ window.ldLayoutNodes = ldLayoutNodes;
       var plate = document.getElementById('os-se-val');
       if (plate){ plate.classList.add('is-metric'); plate.setAttribute('title', 'Tap to return to your score'); }
       if (typeof window._featuredSyncBig === 'function') window._featuredSyncBig();
+      /* 2026-11-14 orb-centering STEP 2B — the score-mismatch fix: re-render
+         the featured-stats panel on every featured switch, so the truth
+         meter never compares the panel's stale score against the live
+         featured value. renderBoards() is the ONLY writer of #os-feat-stats;
+         it never touches the orb nodes, and the tiles/dial keep showing the
+         orb's number (intended). Same call the orbs re-render already makes
+         at the end of its pass. */
+      if (typeof window.renderBoards === 'function') window.renderBoards();
       return true;
     }catch(e){ return false; }
   };
@@ -19083,6 +19091,11 @@ window.ldLayoutNodes = ldLayoutNodes;
       var plate = document.getElementById('os-se-val');
       if (plate){ plate.classList.remove('is-metric'); plate.removeAttribute('title'); }
       if (typeof window._featuredSyncBig === 'function') window._featuredSyncBig();
+      /* 2026-11-14 orb-centering STEP 2B — the score-mismatch fix, clear side:
+         the panel must follow the gauge back to the score too, or the meter
+         compares a stale featured panel against the live score. Same
+         renderBoards() call as the set side; same reason. */
+      if (typeof window.renderBoards === 'function') window.renderBoards();
     }catch(e){}
   };
   /* FIX 6 — THE WINDOW TOTAL, ONE SOURCE (2026-11-08: Day tiles 0 vs math 25).
@@ -23238,6 +23251,14 @@ function checkAll(){
         else if (_hk2 === 'world') _src = 'world';
       }
     } catch(e2){}
+    /* 2026-11-14 orb-centering STEP 2B — label the expectation honestly:
+       when the 'score' expectation came from the featured dial (or the
+       feat-stats branch, which reads _featuredDisplay()) rather than
+       s.score, the meter must say 'featured', never 'spine' — or the next
+       captain chases the spine again. Mirrors expectedFor(): its switch
+       returns _fd.score / _fd.deltas whenever a featured dial is set, and
+       its feat-stats branch returns _fv.center. */
+    if (key === 'score' && window._featuredDial) _src = 'featured';
     if(got!==exp) issues.push({ key:key,
       what:key.replace(/-/g," "),
       detail:_isPts ? ("shows "+got+" pts, "+_src+" says "+exp+" pts") : ("shows "+got+", "+_src+" says "+exp) });
