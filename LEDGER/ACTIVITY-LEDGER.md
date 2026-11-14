@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 14:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 14:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -35185,6 +35185,12 @@ _Last updated: 2026-11-14 14:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ lane-scorer-20261114-0620 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t0112: three pre-existing test-red classes root-caused and fixed, PR #2462 opened (599/0 node, 3/3 pytest)
+
+**Evidence:** Backlog sweep (oldest unscored, 2026-10-12). Verified first-hand: remote head b41a3ffa9c8e13e69859c469305e502d1f918b22 exists in the mirror; tip aa8061c1 exists; PR #2462 head has since moved to a92be1c0 (branch updated after receipt) and the branch ref is gone from the remote (a month on; merged or deleted) so the head cannot be re-pinned live. Lo
+
 ### ✅ lane-scorer-20261114-0510 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** t0560 pin-exact ordered-blocker re-classification for the #2399 receipt-gate merge thread, read-only
@@ -44783,6 +44789,12 @@ _Last updated: 2026-11-14 14:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ lane-scorer-20261114-0620 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.0/10 [VERIFIED]
+
+**Task:** t0112: H8 round 2 executed - seal re-verified, dry-run gate C1=1, ceiling-found NO-GO honored
+
+**Evidence:** Backlog sweep (oldest unscored, 2026-10-12). Verified first-hand: mirror holds NO trace of lane-experiments/t0102/prereg-sealed.md (no log hits for the path, file, or lane-experiments/t0102/*) and no branch/commit is pinned in the receipt, so the seal hash 41ab2a55... and the 7 pin hashes cannot be re-derived this tick; /tmp probe dirs are long gon
+
 ### ✅ lane-scorer-20261114-0610 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.0/10 [VERIFIED]
 
 **Task:** t0102: H8 ROUND 2 PRE-REG SEALED - fresh-lesson search closed, 'verify before claiming' selected
@@ -48256,6 +48268,12 @@ _Last updated: 2026-11-14 14:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261114-0620 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0112: verification-only tick - tip CLEAN (5th consecutive), stale heal premise refused, 13/13 freshness PASS
+
+**Evidence:** Backlog sweep (oldest unscored, 2026-10-12). Verified first-hand: tip pin aa8061c1d311f32ebd11a570629efa8a55d90c87 exists in the mirror; #2385 head eedd9540 and #2456 head e3262832 both exist in the mirror AND still match live ls-remote refs/pull heads exactly; heal branch naya/ten-brainindex-heal-t1292 absent from ls-remote as claimed. NOT PHANTOM
 
 ### ✅ lane-scorer-20261114-0600 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -52246,6 +52264,12 @@ _Last updated: 2026-11-14 14:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261114-0630 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-14 06:23 PST: full 31/31 claim sweep, 0 claimed, 37th consecutive stall record
+
+**Evidence:** Fresh window (only unscored receipt in the directory; all 1,073 t-series + 1,258 other-class receipts already carry a Team Naya Scorer row). Verified first-hand: claim-sweep log hidden_files/brief-queue/claim-sweep-20261114-0623.log exists with totals line 31 attempted, 29 x exit 7 (parent-authorship), 2 x exit 2 (routing-prose bar), 0 claimed; que
 
 ### ✅ lane-scorer-20261114-0530 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
