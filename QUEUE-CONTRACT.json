@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-14T09:49:00Z",
-  "tip": "2ec4455e71136f189a004a067558ffcdc342956e",
+  "generated_at": "2026-11-14T15:49:09Z",
+  "tip": "31c6b8f294a8f7605567aa76c3a17dd33dce4743",
   "prs": [
     {
       "number": 3345,
@@ -74,6 +74,42 @@
       "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
       "owner": "dock",
       "head": "30f48dab707c8a33340347c56b94f2991b9b0470"
+    },
+    {
+      "number": 3369,
+      "title": "Baseline public.ledger_entries from live production schema",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "6419b5ff2f88a2bbb88b0d2dc3d035e0b8cc1b24"
+    },
+    {
+      "number": 3370,
+      "title": "INFRA w3285: record 10 pending migrations + ledger_entries coherence defect",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "ebd82345724f60faa25b52f2c8b31e7c28bbae60"
+    },
+    {
+      "number": 3371,
+      "title": "repair(brain-index): re-stamp index layer at tip 2ec4455e",
+      "tier": "C",
+      "action": "MERGE-NOW",
+      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
+      "owner": "dock",
+      "head": "d9e481a2f7a5674ea5416eb553b23aa503e0c45b"
+    },
+    {
+      "number": 3372,
+      "title": "Fold Nov 11-14 director snapshots from naya/mission-state into main mission state",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "f121b8cf7647e54aeffa0a415078e3dc0dfea491"
     }
   ]
 }
