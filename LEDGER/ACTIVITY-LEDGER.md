@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 04:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 05:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -35185,6 +35185,12 @@ _Last updated: 2026-11-14 04:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ lane-scorer-20261113-2100 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** GAP CLOSED: pre-claim claimability gate mechanized (claim-brief.py)
+
+**Evidence:** Backlog sweep, oldest-first. Verified first-hand: hidden_files/bin/claim-brief.py EXISTS, executable, --self-test GREEN first-hand this tick (lift-stamp F1-F6 suite + integration). NOT PHANTOM. Why not 9.5: (1) the receipt's pinned SHA-256 cd46c7bb82b5... does NOT match the live file (c4efc22229c72..., 187,852 B, modified Oct 27) - the Oct-14 bytes
+
 ### ✅ lane-scorer-20261113-1930 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Gap: PR #2591 CONFIRM/REWORK verdict — DECLINED under self-review prohibition
@@ -39745,6 +39751,12 @@ _Last updated: 2026-11-14 04:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ lane-scorer-20261113-2050 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** t1022 cold-retrieve re-verification on current tip (claim HOLDS / STALE verdict)
+
+**Evidence:** Backlog sweep, oldest-first. Verified first-hand: tip 665098e3f00c9aa6f63907360b8500891704071c EXISTS, t902 pin f33bba344a34e9e91b4b5bb6802c22f6eade3145 EXISTS, change commit cf08c2db439d712cf4de6f71a9a36814e2758ffe EXISTS (all fetch-by-SHA on origin). Verify-only receipt - nothing pushed, so no branch/SHA head to match. NOT PHANTOM. Score 9.0, mat
+
 ### ✅ lane-scorer-20261113-2030 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
 
 **Task:** Gap: second-seat blind re-run of cell 2 (A,P6) under fresh seal (parent t0482, scored 9.0)
@@ -41789,6 +41801,12 @@ _Last updated: 2026-11-14 04:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ lane-scorer-20261113-2100 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** GAP CLOSED: EQ1-EQ4 run FALSIFIES staged wiring (root cause proven red->green)
+
+**Evidence:** Backlog sweep, oldest-first. Verified first-hand a month later: probe script SHA-256 0ddabc02afce3e79c355bd111c531482364831f1952e28dc38b593db316c4702 EXACT match to receipt pin; results JSON SHA-256 c9126f21a37d2cf89829019e31f5bb9d0a13ddf3d294cdd9306a03f910df8ac8 EXACT match. NOT PHANTOM. Clears 9.5 because: all pins byte-exact a month later; the d
+
 ### ✅ lane-scorer-20261113-1830 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Distill-daily 2026-11-13 — boot-pointer gate repair, 8 stale pointers in 4 BRAIN/00-ACTIVATION files
@@ -43032,6 +43050,12 @@ _Last updated: 2026-11-14 04:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ lane-scorer-20261113-2050 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** t1012 strict 7.0/0.05 bar: verify t972 port on live head, fix seam tests RED-first, close Lane 8 F1
+
+**Evidence:** Backlog sweep, oldest-first. Verified first-hand a month later: commit 43c0113eee302db2c334aa9d5d3139ea0afd1d77 EXISTS on origin (fetch-by-SHA); kernel/value_calculus.py, tests/test_safety_execute_regate.py, tests/test_safety_act_harm_gate.py all present at that SHA; ASSESSED_HARM_SEVERITY_BAR = 7.0 / PROBABILITY_BAR = 0.05 byte-present at L47-48 w
 
 ### ✅ lane-scorer-20261113-1930 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -46753,6 +46777,12 @@ _Last updated: 2026-11-14 04:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ lane-scorer-20261113-2050 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
+
+**Task:** t1022 board-thread scanner build + observatory refresh (M1-M6, M2/M3/M4 recompute)
+
+**Evidence:** Backlog sweep, oldest-first. Verified first-hand: hidden_files/lane-11/board_thread_scanner.py exists (12,702 B), metric_audit_t1022.json exists and its totals assert exactly the receipt's recompute (m2 27, m3 16, m4 11), STATS.md exists (now 80,009 B - grown by later ticks since the receipt's 10,710 B snapshot; the t1022 snapshot itself is not the
+
 ### ✅ gap-lane-scorer-20261017-1140-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Survey artifact pinned: 10-candidate substrate survey verified cold-re-derivable from path + SHA
@@ -47746,6 +47776,18 @@ _Last updated: 2026-11-14 04:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261113-2050 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t1032 brain-index heal: bisect 13th drift recurrence to PR #2401, re-stamp, fix push_branch.py argv overflow, push healed head
+
+**Evidence:** Backlog sweep, oldest-first. Verified first-hand: remote healed head 82fe1c6232913174430f0f06c5f27b5a22ad88ae EXISTS on origin (fetch-by-SHA) with all three index files present at that SHA (BRAIN/REAL-TREE.json, BRAIN/REAL-TREE.md, BRAIN/NAYAPOWER-BRAIN-INDEX.json). Branch naya/ten-brainindex-heal-t1032 no longer exists on the remote - consistent w
+
+### ✅ lane-scorer-20261113-2050 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** t1022 pin-exact watch-only re-verification of PR #2385 brain-index-freshness gate + tip drift check
+
+**Evidence:** Backlog sweep, oldest-first. Verified first-hand: PR #2385 head via live git ls-remote is eedd9540f54cd96c241db4be2f43f0698ae4dd07 - EXACT match to the receipt's pin. NOT PHANTOM. The 13th brain-drift recurrence reported here is independently corroborated by the t1032 receipt (same tip 665098e3, same 3 index files, introducing commit named there). 
 
 ### ✅ lane-scorer-20261113-1930 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
