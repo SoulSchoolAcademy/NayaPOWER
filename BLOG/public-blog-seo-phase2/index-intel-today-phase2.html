@@ -3844,8 +3844,8 @@ window.NayaContent = {
     tries++;
     var ctl=null, timer=null;
     try{ ctl=new AbortController(); }catch(e){}
-    if(ctl){ timer=setTimeout(function(){ try{ ctl.abort(); }catch(e){} }, 15000); }
-    var p=ctl?fetch('/feed-live.json',{signal:ctl.signal}):fetch('/feed-live.json');
+    if(ctl){ timer=setTimeout(function(){ try{ ctl.abort(); }catch(e){} }, 60000); }
+    var p=ctl?fetch('/feed-live.json',{signal:ctl.signal,cache:'no-store'}):fetch('/feed-live.json',{cache:'no-store'});
     p.then(function(r){ if(!r.ok) throw new Error('live fetch '+r.status); return r.json(); }).then(function(d){
       if(timer) clearTimeout(timer);
       if(!d || !Array.isArray(d.notes) || !d.notes.length) throw new Error('live feed empty');
@@ -3856,7 +3856,15 @@ window.NayaContent = {
       } catch(e){}
     }).catch(function(){
       if(timer) clearTimeout(timer);
-      if(tries<3){ setTimeout(tryLive, 5000); }
+      /* Rendered fix (2026-11-14, R4): never silently settle on the bake.
+         The 15s abort x 3-try cap left slow loads on the 381-note Oct 26
+         snapshot forever — proven: a 20s-delayed feed still served the
+         bake at 70s and the note spun "Opening your note..." at 70s.
+         Retry until the live feed lands (backoff 5s/10s/20s/30s); the bake
+         stays the render fallback while the fetch is in flight, never the
+         settled snapshot. */
+      var wait = tries === 1 ? 5000 : tries === 2 ? 10000 : tries === 3 ? 20000 : 30000;
+      setTimeout(tryLive, wait);
     });
   }
   tryLive();
@@ -6738,6 +6746,22 @@ window.NayaJewels = (() => {
         }
       }
     }
+    /* Rendered fix (2026-11-14, R2/R3): the worker's canonical slug is
+       the title's SN number FIRST (phase2FindNote / phase2CanonicalSlug).
+       The scans below only read the ID — and ids like
+       IB-SMART-NOTE-20261113-name-the-part-you-send carry no sn2766, so
+       sn2766 and sn2695 could never resolve even on the live feed. This
+       scan mirrors the worker exactly: title SN, then id sn digits, then
+       the full id. */
+    var relWant = s.replace(/^sn-?(\d+)$/, function (m, d) { return 'sn' + String(parseInt(d, 10)); });
+    for (var ci = 0; ci < notes.length; ci++) {
+      var cn = notes[ci] || {};
+      var ctm = String(cn.title || '').match(/SN-(\d+)/);
+      var cslug;
+      if (ctm) cslug = 'sn' + String(parseInt(ctm[1], 10));
+      else { var cim = String(cn.id || '').match(/sn-?(\d+)/i); cslug = cim ? 'sn' + String(parseInt(cim[1], 10)) : String(cn.id || '').toLowerCase(); }
+      if (cslug === relWant) return cn;
+    }
     /* P2 fix2 (Nu, 2026-11-11; Chi receipt comment 6800881349): a full-id
        slug (IB-SMART-NOTE-20261110-sn2654) carries the DATE inside its
        digits, so the old strip-all-digits matched nothing and the note
@@ -6760,6 +6784,132 @@ window.NayaJewels = (() => {
     }
     return null;
   }
+  /* Rendered fix (2026-11-14, R1): the SPA note view never rendered
+     related cards — the server page has them, browsers never see the
+     server page (302 to the Hub). These helpers mirror the worker's
+     phase2Related exactly (topics, created-desc, then cluster; dedupe by
+     rendered href, canonical first, full-id on collision; 6 max) — the
+     mirror reproduces the worker's list exactly for all 1,058 notes
+     (proven in the round record), so the cards are the served data,
+     rendered, never recomputed. Shape + CSS harvested verbatim from the
+     worker's phase2RenderNote / PHASE2_EXTRA_CSS (.related / .rel-card).
+     The note-scoped .main padding (R6) is the measured fix for the black
+     void below the article footer: fixed chrome totals 148px at <=640px
+     and 170px above it, and the old 380px/220px clearance left a
+     302px/121px void; the override ends the page at the dock. */
+  /* A function, not a var: this region sits after the shell builder's
+     'return shell' (the internals), so only function declarations run
+     here — a var assignment would never execute and would read
+     undefined at call time (caught by the after-battery). */
+  function relClusterMeta(slug) {
+    var M = {
+      'intelligent-internet': { label: 'The Intelligent Internet', color: '#55b9ee' },
+      'ai-is-hiring': { label: 'AI Is Hiring', color: '#ffbf3d' },
+      'nayanet-naya': { label: 'NayaNET / Naya', color: '#9d75ff' },
+      'smart-notes': { label: 'Smart Notes / Learn in a Minute', color: '#55e39a' },
+      'private-network': { label: 'The Private Network / Your Vault', color: '#6675ff' },
+      'ambassador': { label: 'Ambassador', color: '#ff9a5a' }
+    };
+    return M[slug] || M['nayanet-naya'];
+  }
+  function relTitleCase(s) {
+    return String(s || '').split('-').filter(Boolean).map(function (w) { return w.charAt(0).toUpperCase() + w.slice(1); }).join(' ');
+  }
+  function relDisplayTitle(n) {
+    var id = String((n && n.id) || '');
+    var t = String((n && n.title) || '').trim();
+    if (/^WELCOME TO NAYA$/i.test(t)) return 'Welcome To Naya';
+    if (/^THE WISE ONE$/i.test(t)) return 'The Wise One';
+    var m = id.match(/^(?:IB-SMART-NOTE|NN)-\d{8}-(.+)$/);
+    if (m) return relTitleCase(m[1]);
+    m = id.match(/^IB-SMART-NOTE-SMART-NOTE-\d{8}-sn\d+-(.+)$/i);
+    if (m) return relTitleCase(m[1]);
+    var core = id.replace(/-\d{4}-\d{2}-\d{2}$/, '').replace(/-/g, ' ').trim();
+    if (core) return core.split(/\s+/).map(function (w) { return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase(); }).join(' ');
+    var tm = t.replace(/^SN-\d+\s*[\u00b7\u2022]\s*/i, '').trim();
+    return tm || 'Untitled Note';
+  }
+  function relCanonicalSlug(n) {
+    var id = String((n && n.id) || '').toLowerCase();
+    var snM = String((n && n.title) || '').match(/SN-(\d+)/);
+    if (snM) return 'sn' + String(parseInt(snM[1], 10));
+    var m = id.match(/sn-?(\d+)/);
+    if (m) return 'sn' + String(parseInt(m[1], 10));
+    return id;
+  }
+  function noteRelatedFor(note) {
+    var notes = (window.NayaFeedIntelligence && window.NayaFeedIntelligence.notes) || [];
+    var cluster = (typeof intelClusterOf === 'function') ? intelClusterOf(note) : 'nayanet-naya';
+    var meta = relClusterMeta(cluster);
+    var topics = note.topics || [];
+    var myId = String(note.id || '').toLowerCase();
+    var seen = {}, seenHref = {}, out = [];
+    function push(n, reason) {
+      if (!n) return;
+      var id = String(n.id || '').toLowerCase();
+      if (!id || id === myId || seen[id] || out.length >= 6) return;
+      seen[id] = 1;
+      var slug = relCanonicalSlug(n);
+      if (seenHref['/s/' + slug]) slug = id;
+      if (seenHref['/s/' + slug]) return;
+      seenHref['/s/' + slug] = 1;
+      out.push({ slug: slug, title: relDisplayTitle(n), reason: reason });
+    }
+    var topicNotes = notes.filter(function (n) {
+      if (String((n && n.id) || '').toLowerCase() === myId) return false;
+      var ts = (n && n.topics) || [];
+      return topics.some(function (t) { return ts.indexOf(t) !== -1; });
+    });
+    topicNotes.sort(function (a, b) { var x = String(a.created || ''), y = String(b.created || ''); return x === y ? 0 : (x < y ? 1 : -1); });
+    for (var i = 0; i < topicNotes.length; i++) {
+      var tn = topicNotes[i];
+      var shared = ((tn.topics || []).filter(function (t) { return topics.indexOf(t) !== -1; }))[0];
+      push(tn, 'Same topic: ' + shared);
+    }
+    var clusterNotes = notes.filter(function (n) {
+      return String((n && n.id) || '').toLowerCase() !== myId && ((typeof intelClusterOf === 'function') ? intelClusterOf(n) : 'nayanet-naya') === cluster;
+    });
+    clusterNotes.sort(function (a, b) { var x = String(a.created || ''), y = String(b.created || ''); return x === y ? 0 : (x < y ? 1 : -1); });
+    for (var j = 0; j < clusterNotes.length; j++) push(clusterNotes[j], 'Same cluster: ' + meta.label);
+    return { cluster: cluster, meta: meta, related: out };
+  }
+  function noteRelatedNav(note) {
+    try {
+      if (!document.getElementById('rel-note-style')) {
+        var st = document.createElement('style');
+        st.id = 'rel-note-style';
+        st.textContent = '.related{margin-top:34px}'
+          + '.related h2{font-size:20px;letter-spacing:.06em;margin:0 0 6px}'
+          + '.related .rel-nav{font-size:14px;opacity:.8;margin:0 0 16px}'
+          + '.related .rel-nav a{color:#ffbf3d;text-decoration:none}'
+          + '.related ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}'
+          + '.related .rel-card{--lc:#9d75ff;border:2px solid color-mix(in srgb, var(--lc) 42%, #fff 8%);border-radius:18px;background:linear-gradient(145deg,#101319,#050607);box-shadow:inset 0 1px #ffffff1c,0 14px 30px #00000090,0 0 20px color-mix(in srgb, var(--lc) 10%, transparent);padding:16px 20px;transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}'
+          + '.related .rel-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb, var(--lc) 70%, #fff 10%);box-shadow:inset 0 1px #ffffff2e,0 20px 40px #000000a8,0 0 60px color-mix(in srgb, var(--lc) 34%, transparent)}'
+          + '.related .rel-card a{color:#fff;font-size:17px;font-weight:700;text-decoration:none}'
+          + '.related .rel-card .why{font-size:13px;letter-spacing:.05em;opacity:.7;margin:6px 0 0}'
+          + 'body:has(.note-view) .main{padding-bottom:100px}'
+          + '@media (max-width:640px){body:has(.note-view) .main{padding-bottom:78px}}';
+        (document.head || document.documentElement).appendChild(st);
+      }
+    } catch (e) {}
+    var res = noteRelatedFor(note);
+    var nav = el('nav', 'related');
+    nav.setAttribute('aria-label', 'Related notes');
+    var h = '<h2>Related in this cluster</h2>'
+      + '<p class="rel-nav">Cluster: <a href="/?cluster=' + esc(res.cluster) + '">' + esc(res.meta.label) + '</a> \u00b7 <a href="/">Intel Today</a></p>';
+    if (res.related.length) {
+      h += '<ul>';
+      for (var k = 0; k < res.related.length; k++) {
+        var r = res.related[k];
+        h += '<li><article class="rel-card" style="--lc:' + esc(res.meta.color) + '"><a href="/s/' + esc(r.slug) + '">' + esc(r.title) + '</a><p class="why">' + esc(r.reason) + '</p></article></li>';
+      }
+      h += '</ul>';
+    } else {
+      h += '<p class="rel-nav">No related notes in the system\u2019s own grouping for this note yet \u2014 the cluster and Hub links above are the net for now.</p>';
+    }
+    nav.innerHTML = h;
+    return nav;
+  }
   function noteView(slug) {
     var wrap = el('div', 'note-view');
     var back = el('a', 'note-back');
@@ -6773,6 +6923,7 @@ window.NayaJewels = (() => {
     if (note) {
       document.title = (note.title || ('Smart Note ' + String(slug).toUpperCase())) + ' — NayaNET';
       wrap.appendChild(intelBoard(note, 0, 'collective'));
+      wrap.appendChild(noteRelatedNav(note));
     } else if (!live) {
       // The live feed hasn't landed yet — it arrives shortly and its
       // hashchange re-renders this view. Never flash "not found" for a
