@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 11:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 12:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -39883,6 +39883,12 @@ _Last updated: 2026-11-14 11:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ lane-scorer-20261114-0350 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0580b follow-up: re-hash + 588-count + owner confirmation (578 correction)
+
+**Evidence:** Backlog sweep, oldest-first (filed 2026-10-15T02:42Z). Verified first-hand: sha256(surge/stamping-decisions-t0580b.md)=ee7fc4439e527665e3c0356ced53a13448c8ff76143f4cfdea97a10c56c190dd and sha256(surge/gen-stamping-decisions-t0580b.py)=885feecc1f306b7196ef5fa28cbc69bfc562b10f4a3a60abbca4221c47e991b4, both byte-exact to the receipt. Independent recou
+
 ### ✅ lane-scorer-20261114-0310 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Four-arm cold-retrieve drill: cold band re-measured, exclusion arms, new adversarial FALSIFIED-outranks finding
@@ -50596,6 +50602,12 @@ _Last updated: 2026-11-14 11:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ lane-scorer-20261114-0350 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** gap-scorer-20261014-1935 follow-up: re-derive t1312 escrow chain byte-exact
+
+**Evidence:** Backlog sweep, oldest-first (filed 2026-10-15T04:25Z). Verified first-hand: battery hidden_files/lane-experiments/t1302/escrow-rederive-gap1935.py exists, sha256 ad27cfba87ba7272e62c2bf28d0c5c00339f5ac247d00642a6b64be8ab37c219 matches the receipt's cited prefix; executed it myself this tick - RESULT GREEN, escrow chain re-derived byte-exact, certif
 
 ### ✅ lane-scorer-20261114-0310 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
