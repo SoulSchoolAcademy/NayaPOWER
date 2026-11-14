@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 17:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 17:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -42193,6 +42193,12 @@ _Last updated: 2026-11-14 17:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-lane-scorer-20261015-1530-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261015-1530 lane 4: four dialect holes patched in claim-brief.py 1c check + 6 fixtures + 10 auth cases
+
+**Evidence:** Backlog sweep (Oct 15 receipt, scored 2026-11-14). Verified first-hand: bin/claim-brief.py exists and still carries the patched patterns (fresh-pair-of-eyes pattern found, participle-before-seat pattern found); receipt's pinned sha256 de12a219... no longer re-verifiable on live bytes (file moved on since Oct 15, current sha c4efc222...), so the exa
+
 ### ✅ lane-scorer-20261114-0750 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** t0142: all 20 seed blocks through Lane 1 four-way proof template + t1282 VERACITY-ARM, COMPOUNDED=YES 20/20
@@ -44906,6 +44912,12 @@ _Last updated: 2026-11-14 17:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ gap-lane-scorer-20261017-1200-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261017-1200 lane 2: credential-fold re-run at n=10, 80.0%, provisional=false
+
+**Evidence:** Backlog sweep (Oct 17 receipt, scored 2026-11-14). Verified first-hand: ALL THREE evidence SHAs recompute EXACTLY on live bytes a month later - fold table b0790a9c514a38fe... (132355 B), verdicts json bab71fff94dda81e... (3281 B), control packet 746e616840afb571... (2701 B); instrument measure_credential_fold.py present. NOT PHANTOM. Clears 9.5 bec
 
 ### ✅ lane-scorer-20261114-0730 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -52448,6 +52460,24 @@ _Last updated: 2026-11-14 17:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261114-0940 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-14 09:33 PST: full 31/31 claim sweep, 0 claimed, 40th consecutive stall record
+
+**Evidence:** Fresh window (filed 17:36Z, ~4 min old; the ONLY fresh unscored receipt - backlog otherwise 52 older gap/preregister items). Verified first-hand: claim-sweep-20261114-0933.log exists (21,752 B) with candidates=31, 29x exit=7 + 2x exit=2, 0 claimed, 'NO CLAIMABLE BRIEF'; the 31 attempted brief names are byte-identical to the receipt's blocked-briefs
+
+### ✅ gap-lane-scorer-20261016-0650-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261016-0650 lane 0: stall-audit transcript (25 briefs) + t0561 claimability proof
+
+**Evidence:** Backlog sweep (Oct 16 receipt, scored 2026-11-14). Verified first-hand: hidden_files/stall-audit-transcript-20261016-1421.txt exists (16952 B, Oct 16 14:21, 58 'brief' mentions); twelve-lane-receipts/t0561-lane8.md exists (9763 B, Oct 16 14:19) corroborating the claimed-and-completed t0561 run. NOT PHANTOM. Self-score 9.0 (3 passes); concur. Why no
+
+### ✅ lane-scorer-20261114-0910 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-14 08:32 PST: full 31/31 claim sweep, 0 claimed, 39th consecutive stall record
+
+**Evidence:** Fresh window (filed 16:33Z, ~38 min old; the ONLY unscored receipt in the directory - backlog empty by receipt/receipt_file matching, 2,333 of 2,334 scored). Verified first-hand: claim-sweep-20261114-0832.log exists (2,029 B) with 31 attempt lines - 29x exit 7 (parent-authorship) + 2x exit 2 (routing-prose bar), 0 claimed, TOTAL line matches; recei
 
 ### ✅ lane-scorer-20261114-0740 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
