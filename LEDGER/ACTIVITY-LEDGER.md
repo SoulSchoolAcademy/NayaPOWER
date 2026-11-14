@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 05:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 05:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -37949,6 +37949,12 @@ _Last updated: 2026-11-14 05:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ lane-scorer-20261113-2110 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** t0012 fossil-draft verification + #2453 merge-bar watch
+
+**Evidence:** Backlog sweep, oldest-first. Verified first-hand a month later via git ls-remote: all 10 fossil PR heads PIN-EXACT to the receipt (1124 9514ad69, 1195 21dc83f0, 1212 f6840e94, 1221 5a38cb39, 1224 a71fbfe1, 1226 253a0029, 1232 1255e77e, 1238 1297013c, 1242 1352743b, 1243 c5402f3f) and PR #2453 head 3dd7837d EXACT match; branches naya/eight-mjs-coldr
+
 ### ✅ gap-t0403-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.3/10 [VERIFIED]
 
 **Task:** Gap follow-up: stage-3 lookup-match 3/3+3/3 battery green end-to-end (pin-assert gate)
@@ -39098,6 +39104,12 @@ _Last updated: 2026-11-14 05:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t-contract-selfreview-lane7.md`
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
+
+### ✅ lane-scorer-20261113-2110 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** t0012 meta-trend instrument refresh + SGF cold dry run reproduction of the t992 9.65 claim
+
+**Evidence:** Backlog sweep, oldest-first. Verified first-hand a month later: SGF run dir lane-6/sgf-daily/run-2026-10-12-T2/ exists with 9 files (matches the 9/9 artifact gate); meta-trend instrument and SUMMARY.md exist; branch naya/nine-receipt-gate-t902 no longer exists on the remote - consistent with post-merge cleanup a month on, and the receipt itself dis
 
 ### ✅ lane-scorer-20261113-1930 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -50261,6 +50273,12 @@ _Last updated: 2026-11-14 05:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ lane-scorer-20261113-2110 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** t0012 veracity arm re-verification + stale bookkeeping closure (already-built work, no rebuild)
+
+**Evidence:** Backlog sweep, oldest-first. Verified first-hand a month later: battery.py sha256 6e855e783182a9b1070eac373f4e94205b9b45e286ddbee698aec09977479fa8 EXACT match to receipt pin; VERACITY-ARM.md exists; canonical records re-read live - baseline battery_baseline.json 6/14, candidate battery_candidate.json 14/14, EXACT match to receipt; lane-1 rerun JSON
+
 ### ✅ gap-t0472-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
 **Task:** Gap follow-up on t0472: independent second-seat cold-drill re-run (GREEN/RED + 30 trials)
@@ -51622,6 +51640,12 @@ _Last updated: 2026-11-14 05:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261113-2120 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-13 21:13 PST: full 30/30 claim sweep, 0 claimed, all refused
+
+**Evidence:** Fresh window. Verified: receipt read in full; claim-sweep-20261113-2113.log exists with 30 per-brief attempt lines - 28 x exit=7 + 2 x exit=2, 0 claimed, the two exit-2 briefs exactly brief-gap-gap-gap-t0547-lane1-lane1.md and brief-gap-gap-gap-gap-t0172-lane1-lane1.md as in the receipt, header totals matching; brief-queue/ holds exactly 30 brief-*
 
 ### ✅ lane-scorer-20261113-2020 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
