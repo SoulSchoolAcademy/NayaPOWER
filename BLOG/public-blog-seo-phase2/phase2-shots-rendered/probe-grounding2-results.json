@@ -1,0 +1,228 @@
+{
+ "home_delay3": [
+  {
+   "t": 2,
+   "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/hub",
+   "feedRef": "live-registry",
+   "feedCount": 1058,
+   "firstNote": "SN-2766 \u00b7 SYSTEM",
+   "bodyElements": 2628,
+   "loading": false,
+   "notFound": false,
+   "h1": "Good morning."
+  }
+ ],
+ "sn2766_delay3": [
+  {
+   "t": 2,
+   "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2766",
+   "feedRef": "live-registry",
+   "feedCount": 1058,
+   "firstNote": "SN-2766 \u00b7 SYSTEM",
+   "bodyElements": 664,
+   "loading": false,
+   "notFound": true,
+   "h1": null
+  }
+ ],
+ "home_delay20": [
+  {
+   "t": 2,
+   "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/hub",
+   "feedRef": "10190133505f4ba03cd029d18cf6f650affeeb9c",
+   "feedCount": 381,
+   "firstNote": "Decide by the Checklist \u2014 Every Time",
+   "bodyElements": 35147,
+   "loading": false,
+   "notFound": false,
+   "h1": "Good morning."
+  },
+  {
+   "t": 6,
+   "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/hub",
+   "feedRef": "10190133505f4ba03cd029d18cf6f650affeeb9c",
+   "feedCount": 381,
+   "firstNote": "Decide by the Checklist \u2014 Every Time",
+   "bodyElements": 47496,
+   "loading": false,
+   "notFound": false,
+   "h1": "Good morning."
+  },
+  {
+   "t": 12,
+   "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/hub",
+   "feedRef": "10190133505f4ba03cd029d18cf6f650affeeb9c",
+   "feedCount": 381,
+   "firstNote": "Decide by the Checklist \u2014 Every Time",
+   "bodyElements": 47496,
+   "loading": false,
+   "notFound": false,
+   "h1": "Good morning."
+  },
+  {
+   "t": 20,
+   "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/hub",
+   "feedRef": "10190133505f4ba03cd029d18cf6f650affeeb9c",
+   "feedCount": 381,
+   "firstNote": "Decide by the Checklist \u2014 Every Time",
+   "bodyElements": 47496,
+   "loading": false,
+   "notFound": false,
+   "h1": "Good morning."
+  },
+  {
+   "t": 40,
+   "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/hub",
+   "feedRef": "10190133505f4ba03cd029d18cf6f650affeeb9c",
+   "feedCount": 381,
+   "firstNote": "Decide by the Checklist \u2014 Every Time",
+   "bodyElements": 47496,
+   "loading": false,
+   "notFound": false,
+   "h1": "Good morning."
+  },
+  {
+   "t": 70,
+   "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/hub",
+   "feedRef": "10190133505f4ba03cd029d18cf6f650affeeb9c",
+   "feedCount": 381,
+   "firstNote": "Decide by the Checklist \u2014 Every Time",
+   "bodyElements": 47496,
+   "loading": false,
+   "notFound": false,
+   "h1": "Good morning."
+  }
+ ],
+ "sn2766_delay20": [
+  {
+   "t": 2,
+   "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2766",
+   "feedRef": "10190133505f4ba03cd029d18cf6f650affeeb9c",
+   "feedCount": 381,
+   "firstNote": "Decide by the Checklist \u2014 Every Time",
+   "bodyElements": 661,
+   "loading": true,
+   "notFound": false,
+   "h1": null
+  },
+  {
+   "t": 6,
+   "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2766",
+   "feedRef": "10190133505f4ba03cd029d18cf6f650affeeb9c",
+   "feedCount": 381,
+   "firstNote": "Decide by the Checklist \u2014 Every Time",
+   "bodyElements": 661,
+   "loading": true,
+   "notFound": false,
+   "h1": null
+  },
+  {
+   "t": 12,
+   "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2766",
+   "feedRef": "10190133505f4ba03cd029d18cf6f650affeeb9c",
+   "feedCount": 381,
+   "firstNote": "Decide by the Checklist \u2014 Every Time",
+   "bodyElements": 661,
+   "loading": true,
+   "notFound": false,
+   "h1": null
+  },
+  {
+   "t": 20,
+   "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2766",
+   "feedRef": "10190133505f4ba03cd029d18cf6f650affeeb9c",
+   "feedCount": 381,
+   "firstNote": "Decide by the Checklist \u2014 Every Time",
+   "bodyElements": 661,
+   "loading": true,
+   "notFound": false,
+   "h1": null
+  },
+  {
+   "t": 40,
+   "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2766",
+   "feedRef": "10190133505f4ba03cd029d18cf6f650affeeb9c",
+   "feedCount": 381,
+   "firstNote": "Decide by the Checklist \u2014 Every Time",
+   "bodyElements": 661,
+   "loading": true,
+   "notFound": false,
+   "h1": null
+  },
+  {
+   "t": 70,
+   "url": "https://naya-public-blog-staging.nayapower.workers.dev/#/smart-notes/sn2766",
+   "feedRef": "10190133505f4ba03cd029d18cf6f650affeeb9c",
+   "feedCount": 381,
+   "firstNote": "Decide by the Checklist \u2014 Every Time",
+   "bodyElements": 661,
+   "loading": true,
+   "notFound": false,
+   "h1": null
+  }
+ ],
+ "R6_gap": {
+  "gap": {
+   "scrollH": 2513,
+   "lastInFlowBottom": 2817,
+   "lowestEl": "DIV.private",
+   "gapPx": -304,
+   "noteViewBottom": 2063,
+   "noteViewH": 1992,
+   "mainMinH": "0px",
+   "mainPadBottom": "380px",
+   "appH": 2469,
+   "bodyH": 2513
+  },
+  "lowest": [
+   {
+    "tag": "DIV",
+    "cls": "private",
+    "bottom": 2817,
+    "h": 84
+   },
+   {
+    "tag": "NAV",
+    "cls": "nav",
+    "bottom": 2733,
+    "h": 972
+   },
+   {
+    "tag": "BUTTON",
+    "cls": "nav-btn",
+    "bottom": 2733,
+    "h": 62
+   },
+   {
+    "tag": "SPAN",
+    "cls": "ico",
+    "bottom": 2722,
+    "h": 40
+   },
+   {
+    "tag": "svg",
+    "cls": "",
+    "bottom": 2714,
+    "h": 24
+   },
+   {
+    "tag": "SPAN",
+    "cls": "lbl",
+    "bottom": 2712,
+    "h": 20
+   },
+   {
+    "tag": "circle",
+    "cls": "",
+    "bottom": 2711,
+    "h": 17
+   },
+   {
+    "tag": "circle",
+    "cls": "",
+    "bottom": 2709,
+    "h": 14
+   }
+  ]
+ }
+}
