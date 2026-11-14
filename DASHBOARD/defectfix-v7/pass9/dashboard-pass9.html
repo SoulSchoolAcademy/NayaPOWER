@@ -28699,13 +28699,19 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
   text-shadow:0 1px 3px rgba(0,0,0,.95), 0 0 12px rgba(255,191,61,.35) !important;
 }
 
-/* (3) ORB NUMBERS UP — hero nodes only (drills untouched). Fixed natural px,
-   NOT %: % padding resolves against the CONTAINING block (#os-ld-nodes,
-   1392px wide) so 9% was 125px and shoved the stack DOWN to cyFrac 0.61
-   at 1440 (measured, first staged probe). 32px desktop / 12px phone put
-   the number centre at ~0.27 of the disc at both widths. */
+/* (3) ORB NUMBERS CENTRED — 2026-11-14 orb-centering round (Shawn 01:03Z:
+   the content is too high as a whole, it needs to be more centered on the
+   orb). SUPERSEDES the pass-13 numbers-up rule: flex-start + 32px/12px top
+   padding put the content centre 28.7px (desktop) / 6.0px (phone) above the
+   orb centre, measured live per orb at 1440/390/635/360 — the arithmetic
+   closes exactly (padding + half the stack, against half the disc). The
+   stack is centred now: justify-content:center, top padding zero at every
+   width. The base .os-ld-node rule already says center; this block keeps
+   the !important so the centring beats every earlier rule. Labels keep the
+   pass-12 sizes (30px desktop / 18px phone, SMART NOTES 14px phone). No
+   value, size, rim, glow or jewel changes; drills untouched. */
 #os-ld-nodes .os-ld-node{
-  justify-content:flex-start !important; padding-top:32px !important;
+  justify-content:center !important; padding-top:0 !important;
 }
 
 /* (4) RANGE PILLS take the mode pills' treatment (.os-pts-btn). */
@@ -28718,7 +28724,7 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
     font-size:32px !important; padding:28px 14px !important;
   }
   #os-ld-nodes .os-ld-node{
-    padding-top:12px !important;
+    padding-top:0 !important; /* 2026-11-14 orb-centering: was 12px — the numbers-up rule, superseded; the stack is centred now. */
   }
 }
 </style>
