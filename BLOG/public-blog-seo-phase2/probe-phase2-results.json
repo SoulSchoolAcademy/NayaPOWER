@@ -6,7 +6,6 @@
  "ua": {
   "sample": 18,
   "fails": [
-   "sn2730 Claude-SearchBot: 503",
    "sn2248 Googlebot: title 49c",
    "sn2248 OAI-SearchBot: title 49c",
    "sn2248 Claude-SearchBot: title 49c",
@@ -41,9 +40,9 @@
  "regressions": {
   "hub": {
    "status": 200,
-   "bytes": 5552441,
-   "sha": "4bfad1197c70",
-   "local_sha": "4bfad1197c70"
+   "bytes": 5561532,
+   "sha": "2c62d243f589",
+   "local_sha": "2c62d243f589"
   },
   "robots": {
    "status": 200,
