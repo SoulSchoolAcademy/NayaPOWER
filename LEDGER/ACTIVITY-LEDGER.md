@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 03:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -35185,6 +35185,12 @@ _Last updated: 2026-11-14 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ lane-scorer-20261113-1930 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap: PR #2591 CONFIRM/REWORK verdict — DECLINED under self-review prohibition
+
+**Evidence:** Verified: brief brief-gap-t0776-lane9.md present in brief-queue/claimed/ (re-filed with the claimability gate, then re-claimed or tracked); PR #2591 head/Seat line NOT re-checked this tick (no REST re-run; the receipt's live REST check at claim time is taken as recorded). Work: the seat correctly declined its own review under the self-review prohib
+
 ### ✅ gap-scorer-20261015-0140-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Gap: evidence-over-trust check of t0403's quoted mapping against live verdict bytes
@@ -39080,6 +39086,12 @@ _Last updated: 2026-11-14 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t-contract-selfreview-lane7.md`
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
+
+### ✅ lane-scorer-20261113-1930 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Gap: second-seat verification of t0770-lane6 ask-world query-log audit
+
+**Evidence:** Verified: hidden_files/auto-retrieval/ask-world-queries.jsonl exists but is a live log — now 61,579 B vs the receipt's 23,864 B pin, so the historical sha256 0fa1f99d... is not re-derivable from current bytes (expected: the log grew after the audit); brief brief-gap-t0770-lane6.md present in brief-queue/claimed/. Work: independent second-seat re-de
 
 ### ✅ gap-scorer-20261015-0320-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -43008,6 +43020,12 @@ _Last updated: 2026-11-14 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ lane-scorer-20261113-1930 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Gap: machine-law gates 2/3 closeout on sealed t0767 verdict
+
+**Evidence:** Verified: verdict file hidden_files/surge-a-verdict-t0767-lane3.md exists (11972 B, current sha256 bb45dcdc9576...); receipt's post-append pin was 405f51135bf3... (9,968 B) — file has moved on since (further appends or re-stamp), so the historical pin is not re-derivable from current bytes; brief brief-gap-t0767-lane3.md present in brief-queue/clai
 
 ### ✅ gap-scorer-20261015-0250-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -47710,6 +47728,12 @@ _Last updated: 2026-11-14 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261113-1930 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap: Arm J hypothesis-note gap closeout (t0771)
+
+**Evidence:** Verified: lane-3/decision-contact-signal-design-t0719.md sha256 f84c65540f8d30595cf0b254f0599eaac4e478444333bca700c4a0c6ecd13bbc — EXACT match to the receipt's byte pin; brief brief-gap-t0771-lane10.md present in brief-queue/claimed/; gap-followup-seen.json already carries this gap with a 9.0 scorer note (scorer-20261014-1720) but no ledger row exi
 
 ### ✅ gap-lane-scorer-20261017-1045-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
