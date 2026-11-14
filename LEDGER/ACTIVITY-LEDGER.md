@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 18:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -28989,6 +28989,12 @@ _Last updated: 2026-11-14 18:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** RED-first re-proof (4/6 on synthetic pre-fix incl. exact t0172 signature) + 6/6 GREEN on current bytes; runner SHA 6326d8c1b + test SHA 53711d98 byte-identical to receipt; lane-6 branch 41dfc86e pin-exact; canonical history unpolluted (9 lines). Deduction: re-verification not new repair; pre-fix RED on reconstruction not historical file; single-sea
 
+### ✅ t0192-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** t0192 lane 8: PR #2462 Scorecard-Law merge, MERGED (merge commit f9b5ac3d)
+
+**Evidence:** Backlog sweep (Oct 12 receipt, scored 2026-11-14). Verified: merge commit f9b5ac3de34d3cafa0718b20458289539e11b685 exists in the mirror with parents [aa8061c1d311f32ebd11a570629efa8a55d90c87, a92be1c01812a86c1994298b508cc41577e250dc] and tree 78b5f5f491d34ac8e7ae562e633098b45c3387d7 - byte-exact against the receipt's claim; the merge is real, pin-v
+
 ### ✅ t0192 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** PR #2462 Scorecard-Law merge: MERGED via git-data route, pin-exact heads, 2-seat consensus, reds named
@@ -29103,6 +29109,12 @@ _Last updated: 2026-11-14 18:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** All 4 run sha256 recomputed MATCH on disk (2 pre + 2 post byte-identical); hand audit 9 rows totals M2:9/M3:6/M4:2 machine-reproduced exactly; t892-t1042 regression reproduces t1052 baseline (4th proof); HV3 no-movement discipline held. Single-seat judgments remain (standing).
 
+### ✅ t0182-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** t0182 lane 9: competing-boot rename-merge/re-base sequence on live bytes; rename found already landed via PR #2428
+
+**Evidence:** Backlog sweep (Oct 12 receipt, scored 2026-11-14). Verified: merge commit e3fe3d43857b153cd19edc31e159a408172793e8 exists in mirror with tree afec5d09 and single parent 93ec1d71, exactly as cited; leftover branch head 6d05fea689 exists as a commit object. Score 8.5, matches the receipt's honest self-score. Why not 9.5: no re-base artifact shipped (
+
 ### ✅ t0182 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
 
 **Task:** Competing-boot rename-merge -> re-base sequence for #2399, found already complete
@@ -29149,6 +29161,12 @@ _Last updated: 2026-11-14 18:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: refs/pull/2399/head = a545f11079ca77ce6789d224ab519f272c7ca0e4 == receipt; naya/eight-competing-boot-rename-t1152 @ 6d05fea689... == receipt (brief's f5e2d63b was stale — agent's Prime-1 correction against the brief itself, correct). Agent verified the rename already landed via PR #2428 on main and #2399's head contains it in a
 
+### ✅ t0182-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** t0182 lane 2: H9 round 2 displacement test on real dispatch decisions, pre-registered, NO-GO verdict
+
+**Evidence:** Backlog sweep (Oct 12 receipt, scored 2026-11-14). Verified: all three cited sha256 hashes recompute MATCH on live files - prereg-sealed.md 5cbde073..., measure_h9r2.py 67e2bbaf..., pins-real.json 1ef923f6...; files h9r2-result.json, seal-verification.json, fixtures present in lane-experiments/t0182/. Score 9.0, matches the receipt's honest self-sc
+
 ### ✅ t0182 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** H9 round 2 displacement test: mandate-does-not-lower-the-bar (NO-GO) on real dispatch decisions
@@ -29194,6 +29212,12 @@ _Last updated: 2026-11-14 18:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0182-lane2.md`
 
 **Evidence:** Dispatcher verified: prereg-sealed.md sha256 5cbde073... == receipt; seal-verification.json, measure_h9r2.py, h9r2-result.json all exist; stamp==mtime claim on record. Reframe owned (option c: displacement in score space, not rate), design finding declared pre-reg (rank-order displacement structurally impossible since decide.py emits score-sorted r
+
+### ✅ t0182-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0182 lane 10: seat-2 gate review on PR #2462 + brain-index drift verification at live tip
+
+**Evidence:** Backlog sweep (Oct 12 receipt, scored 2026-11-14). Verified: head a92be1c01812a86c1994298b508cc41577e250dc exists as a commit object in the mirror, and the merge it enabled (f9b5ac3d, scored in t0192-lane8) has parents [aa8061c1, a92be1c0] and tree 78b5f5f4 exactly as the pair of receipts claim - the pin triple is corroborated end to end. Score 9.0
 
 ### ✅ t0182 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
