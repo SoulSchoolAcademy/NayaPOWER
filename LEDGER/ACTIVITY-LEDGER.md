@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 19:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 19:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -38213,6 +38213,12 @@ _Last updated: 2026-11-14 19:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ gap-t0142-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0142 lane 7: gray-zone four + #2079 hold, CLOSED BY EVENTS + CALCULATOR
+
+**Evidence:** Backlog sweep (Oct 26 receipt, scored 2026-11-14). Verified: all five pull-head SHAs match the receipt table exactly via git ls-remote (#2112 2c4d1922, #2215 60e2fbf3, #2217 f6de2d34, #2250 63373f3e, #2079 71fcd84a); calculator receipt decisions/20261026T041550Z-merge-merge-pr--2079.json sha256 aa1a3efb... matches. Score 9.0. Why not 9.5: (1) calcu
+
 ### ✅ lane-scorer-20261114-0810 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** gap follow-up on t0787: build acceptance battery v2 per repair spec, seal predictions, run both arms, RED-first adjudication (parent gap-scorer-20261014-2100-lane7)
@@ -44991,6 +44997,18 @@ _Last updated: 2026-11-14 19:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ gap-t0182-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0182 lane 2: H9 round-2 gap CLOSED, sealed re-execution + robustness
+
+**Evidence:** Backlog sweep (Oct 26 receipt, scored 2026-11-14). Verified: ALL six pins MATCH — measure_h9r2.py 67e2bbaf..., pins-real.json 1ef923f6..., rerun h9r2-rerun-20261026.json 03dca04e..., audit 57dcb518..., analyze.py b05133dd..., sealed h9r2-result.json 03dca04e...; rerun parsed JSON equals sealed result, verdict NO-GO, bar gap -0.1143. Score 9.0, matc
+
+### ✅ gap-t0162-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0162 lane 2: H9 round 2, NOT CLOSED, honest gate stop
+
+**Evidence:** Backlog sweep (Oct 26 receipt, scored 2026-11-14). Verified: instrument lane-2/gap-t0162-lane2/measure_h9r2.py sha256 3cdc590e... matches; pins-real.json sha256 7c48835d... matches; prereg-sealed.md and h9r2-result.json present on disk. Score 9.0. Why not 9.5: (1) the gap is NOT closed - gate failed (3 < 5 per cell), so round 2 yields no verdict, o
+
 ### ✅ gap-lane-scorer-20261017-1200-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
 
 **Task:** gap-lane-scorer-20261017-1200 lane 2: credential-fold re-run at n=10, 80.0%, provisional=false
@@ -47435,6 +47453,12 @@ _Last updated: 2026-11-14 19:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ gap-t0162-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0162 lane 11: second-seat re-run of t0122-t0162 hand audit, M2:12/M3:5/M4:1
+
+**Evidence:** Backlog sweep (Oct 26 receipt, scored 2026-11-14). Verified: parent t0162-lane11.md sha256 d868cbe6... matches; audit lane-11/metric_audit_t0162.json sha256 4b1ee992... matches; hv_output_t0162 post1/post2 byte-identical sha256 5705d3b1... matches; exposed row t0142-lane4.md sha256 1506a319... matches. Score 9.0. Why not 9.5: (1) t0142-lane4 M3=FAL
+
 ### ✅ lane-scorer-20261114-0830 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** t1552: Heart verify of t1552 dispatcher reconcile (5 claims, CHAIN VERIFIED, zero discrepancies)
@@ -48524,6 +48548,12 @@ _Last updated: 2026-11-14 19:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ gap-t0182-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0182 lane 10: t0182 pin triple in successor form + pytest reds re-classified
+
+**Evidence:** Backlog sweep (Oct 26 receipt, scored 2026-11-14). Verified: evidence file gap-t0182-lane10-evidence-20261026.md sha256 245e41e1... MATCHES the receipt pin exactly; merge commit f9b5ac3de34d3cafa0718b20458289539e11b685 exists in the mirror and is the PR #2462 merge ("Merge pull request #2462 from naya/lane9/tipred-fix-t0112"). Pin-triple successor 
 
 ### ✅ lane-scorer-20261114-0810 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -51116,6 +51146,12 @@ _Last updated: 2026-11-14 19:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-t0172-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0172 lane 1: M6 swallower-fix re-run + RISK_CAP settlement, CLOSED
+
+**Evidence:** Backlog sweep (Oct 26/27 receipt, scored 2026-11-14). Verified: SPEC pin MATCHES (777c708c...), pinned test pin MATCHES (53711d98...) — test itself never touched; decision receipt 20261027T004420Z exists; rerun log lane-1/gap-t0172-lane1/rerun-output-20261026.txt exists. Two pins differ from current bytes, both explained by post-receipt world movem
 
 ### ✅ lane-scorer-20261114-0750 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
