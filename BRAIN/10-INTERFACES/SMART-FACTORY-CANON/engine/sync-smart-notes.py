@@ -424,7 +424,13 @@ def _md_text(raw):
         return ''
     t = str(raw)
     t = re.sub(r'\*\*([^*]+)\*\*', r'\1', t)
-    t = re.sub(r'(^|\W)\*([^*\n]+)\*', r'\1', t)
+    # Italic words are KEPT (page parity): the Hub md() renders *w* as
+    # <em>w</em>, so textContent keeps w — dropping it here made pipeline
+    # chunk keys (sha256 of the spoken text) differ from the page's keys
+    # for every italic chunk, and the baked voice 404'd on lookup.
+    # Boundary class is spelled out as JS \W (ASCII-only); Python \W is
+    # Unicode-aware and would diverge from the page on non-ASCII text.
+    t = re.sub(r'(^|[^A-Za-z0-9_])\*([^*\n]+)\*', r'\1\2', t)
     t = re.sub(r'`([^`]+)`', r'\1', t)
     parts = []
     for line in t.split('\n'):
