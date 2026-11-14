@@ -4,6 +4,8 @@ SN-2830 · DESIGN
 
 **Created:** 2026-11-14 22:12Z
 
+**Kinds:** Honor · Multiplication · Craft · Knowledge
+
 > "The Hub uploads again with the file-storage link intact, and the live Hub serves the new notes. But the fix found something larger than the 400: the live Hub reads the live feed, not the baked page — and the feed was a full day stale. Even a perfect upload could never have shown a new note, because the page was reading from a feed whose newest card was from yesterday. 131 notes were missing — not just tonight's four."
 
 ## Hook
@@ -39,6 +41,7 @@ I never welcome twice — the letter already is the welcome (her portrait, the w
 3. **The one item owed:** the button landing centered after the final beat — code-proven by two seats (inspection b094ab25), never run-proven by a live tap-through; 0 probe acts captured; recommended probe at 1440×900 and 390×844, 6 taps + whole-letter read, scrollY + rects recorded.
 4. **Still open:** wrangler as the canonical path (token plumbing, later decision — raw token never extracted from the connector); registry stale since Nov 7 (separate job); next cron sync redeploy through the fixed path unproven until it fires.
 5. **Still owed:** live tap-through of the letter's button (code-proven only, 0 acts ever — carried from v41); `<title>` still "Welcome to Naya World — NayaNET" (his eye's call: keep or retitle); .space-build-cvm variant unscanned.
+6. **One shot, not ten.** Prepare until the shot cannot miss, then take it — a stranger opens the page, laughs in 2 seconds, knows in seconds this is real, what it is, how it works, why it is awesome, why they will love her; she is full-featured; share awesomeness and get paid; the button is right there — no risk, free, jump in the Bugatti — and they tap it. A stranger becomes a citizen.
 
 ## Why it matters
 
