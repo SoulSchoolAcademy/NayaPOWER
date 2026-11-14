@@ -4965,7 +4965,7 @@ html.os-calm
 <!-- F5 (Shawn 16:06Z) — the feed bar is the Hub's lens bar, harvested verbatim
      (see the CSS). The .mw-feedname buttons below stay (they activate their tab
      + scroll the feed into view in place — working doors). -->
-<section class="searchWrap" id="pcHubSearch"><div class="searchRow" role="search"><span class="search-ico" aria-hidden="true"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel1" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel1-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel1)" filter="url(#jewel1-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel1)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></g></svg></span><input type="search" id="pcHubSearchInput" placeholder="Search your intelligence…" aria-label="Search your intelligence" autocomplete="off"><button type="button" id="pcComposerPlus" class="pc-composer-plus" aria-label="Add" title="Add"><span class="notif-tile" style="--nc:#a06bff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span></button></div></section>
+<section class="searchWrap" id="pcHubSearch"><div class="searchRow" role="search"><span class="search-ico" aria-hidden="true"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel1" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel1-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel1)" filter="url(#jewel1-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel1)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></g></svg></span><input type="search" id="pcHubSearchInput" placeholder="Search your intelligence…" aria-label="Search your intelligence" autocomplete="off"></div></section><button type="button" id="pcComposerPlus" class="pc-composer-plus" aria-label="Add" title="Add"><span class="notif-tile" style="--nc:#a06bff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span></button>
 <div class="lens-tabs" id="mwFeedTabs" role="tablist" aria-label="Feed categories" data-mw-aria="Feed categories">
 <button type="button" class="lens-tab lens-smart primo theme-purple elev-2 active" id="mwTabSmart" data-mw-tab="personal" role="tab" aria-selected="true" style="--glow:#3fb8ff"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">✦</span> <b data-mw-tr="tab">Personal</b></button>
 <button type="button" class="lens-tab lens-naya primo theme-purple elev-2" id="mwTabNaya" data-mw-tab="public" role="tab" aria-selected="false" style="--glow:#ffbf3d"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">🌍</span> <b data-mw-tr="tab">Public feed</b></button>
@@ -25987,6 +25987,12 @@ document.addEventListener('click', function(e){
   (row?row.parentNode:search.parentNode).insertBefore(bar, row||search);
   if(row) bar.appendChild(row);
   bar.appendChild(search);
+  /* PLUS OUTSIDE 2026-11-14 19:59Z — his word: searching a space and creating
+     a space are different. The plus sits beside the search, not inside it:
+     it lives in the markup after the search section, and the bar takes it in
+     as its own flex child, after the search. Same button, same listener below. */
+  var cp0=document.getElementById('pcComposerPlus');
+  if(cp0) bar.appendChild(cp0);
   /* COMPOSER SIMPLIFY 2026-11-14 19:22Z — the plus at the end of the search
      opens the same menu the bottom-bar plus opens, anchored under itself.
      stopPropagation: the document-level closer below would otherwise shut
@@ -27383,6 +27389,25 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
 #pcRail .pc-connect-row .pc-info{flex:none;}
 #pcRailSearch{height:56px;}
 #pcRailClose{height:56px;width:56px;}
+</style>
+<style id="pc-plus-outside-20261114">
+/* ═══ PLUS OUTSIDE THE SEARCH 2026-11-14 19:59Z ═══
+   His word: searching a space and creating a space are different — the plus
+   sits separate, beside the search, on the same line, not inside the search.
+   The plus is the same harvested button (.notif-tile + --nc #a06bff + the
+   same plus SVG, 46px); only its parent changes — from inside .searchRow to
+   a direct child of #pcComposerBar, after the search. The bar's own gap is
+   the gap between search and plus, so search + gap + plus == the bar's
+   content width, measured live.
+   FIX-2 (found by the 1440 probe): #pcComposerBar is NOT flex — a later rule
+   (line 27344) makes it a 3-column grid, and the search spans all three
+   columns (grid-column:1/-1), so the plus dropped to row 2, 330px wide.
+   The bar stays a grid, re-cut to two columns — search 1fr, plus auto —
+   and the search's span is undone, so both sit on ONE row. */
+#pcComposerBar{grid-template-columns:minmax(0,1fr) auto;}
+#pcComposerBar #pcHubSearch{grid-column:auto;}
+#pcComposerBar #pcHubSearch .searchRow{padding:8px 18px;min-height:64px;box-sizing:border-box;}
+#pcComposerPlus{align-self:center;}
 </style>
 <script>
 /* HEADER-V2 + COMPOSER-RAIL 2026-11-14 — the rail search sits on the main
