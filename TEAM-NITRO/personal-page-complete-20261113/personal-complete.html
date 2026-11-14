@@ -2179,9 +2179,13 @@ button:active{transform:scale(.96);}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -3px 10px rgba(0,0,0,.3),
     0 8px 28px rgba(0,0,0,.4),0 0 8px -4px var(--ac) !important;
 }
+/* BUTTON FIX 2026-11-14: the !important shadow on bare `button` beat every
+   class rule's glow (that is why .pc-connect-btn / .mw-tr-btn / .primo read
+   flat). Without !important this is only a fallback for class-less buttons;
+   the class rules below govern every family. */
 button{
   box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -2px 8px rgba(0,0,0,.25),
-    0 6px 20px rgba(0,0,0,.4) !important;
+    0 6px 20px rgba(0,0,0,.4);
 }
 button:hover{
   transform:translateY(-2px);
@@ -25615,7 +25619,7 @@ body.pc-drawer-open #naya-notif-bar{z-index:955!important;}
 .pc-btn:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 0 16px -4px var(--mc,#a06bff),0 4px 12px rgba(0,0,0,.5);}
 .pc-rail-foot{margin:10px 0 0;font-size:12px;line-height:1.5;color:#cfc9da;}
 @media(max-width:1023px){
-  .pc-feedwrap{grid-template-columns:1fr;}
+  .pc-feedwrap{grid-template-columns:minmax(0,1fr);} /* BUTTON FIX 2026-11-14 W1: 1fr sized the track to the card's min-content (514px @390px) */
   .pc-rail-list{max-height:none;overflow:visible;}
 }
 </style>
@@ -26054,6 +26058,128 @@ document.addEventListener('click', function(e){
 .mw-tr-orig{margin-top:12px;padding:8px 14px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);background:linear-gradient(180deg,#1b1b26,#07070b);color:#fff;font:inherit;font-size:13px;font-weight:800;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 4px 12px rgba(0,0,0,.4);}
 .mw-tr-orig:hover{border-color:#fff;}
 
+</style>
+<style id="button-fix-20261114">
+/* ═══ BUTTON FIX 2026-11-14 — every button reads as a real Naya button ═══
+   Bullseye: obsidian body, white rim, top-edge light, white readable label,
+   own-colour glow lit AT REST, multi-dimensional living depth, elite level.
+   Harvest: .primo (obsidian gradient + white rim + top light + glow) and
+   .mw-mship-btn / .ph-connect (obsidian + own-colour rim + glow at rest).
+   Paint only: no layout change to the composer row, no change to the other
+   eight corrections parts. One rule per FAMILY, placed after every original
+   rule so equal specificity wins by order.
+   W1 (in-place edit at the <=1023px media query): the feed grid's `1fr`
+   track sized to the note card's min-content — 514px wide in a 390px
+   viewport, card cut off, note buttons unprovable by eye. minmax(0,1fr)
+   cures it; no row wraps. */
+
+/* --- F5 LENS TABS (.lens-tab.primo.elev-2): the later .elev-2 rule killed
+   the primo glow. Restate it in the lens's own --glow. .lens-tab.active
+   keeps its stronger later rule. --- */
+.lens-tab{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 2px 6px rgba(255,255,255,.15),inset 0 -8px 16px rgba(0,0,0,.8),0 0 24px color-mix(in srgb,var(--glow) 45%,transparent),0 0 48px color-mix(in srgb,var(--glow) 15%,transparent),0 12px 32px rgba(0,0,0,.65);}
+
+/* --- F8-13 NOTE BOARD ACTIONS (.action): the base rule had NO background,
+   border, radius or shadow at all. Obsidian body, rim + glow in the
+   action's own --action-color, white label. --- */
+.board-top-actions .action,.board-actions .action{background:linear-gradient(180deg,#1a1a22,#0a0a0f 45%,#050507);border:1.5px solid var(--action-color,#a06bff);border-radius:999px;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -6px 12px rgba(0,0,0,.65),0 0 18px -4px var(--action-color,#a06bff),0 8px 20px rgba(0,0,0,.5);}
+.board-top-actions .action:hover,.board-actions .action:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -6px 12px rgba(0,0,0,.6),0 0 28px -2px var(--action-color,#a06bff),0 12px 26px rgba(0,0,0,.55);}
+/* .on keeps its lit state (restated verbatim — the base rule above would
+   otherwise win it by order at equal specificity). */
+.board-top-actions .action.on,.board-actions .action.on{border-color:var(--glow);box-shadow:inset 0 0 0 1.5px var(--glow),inset 0 2px 5px rgba(255,255,255,.28),inset 0 -6px 14px rgba(0,0,0,.65),0 0 26px color-mix(in srgb,var(--glow) 55%,transparent),0 10px 24px rgba(0,0,0,.6);}
+
+/* --- F10 .ib-act (LOVE / LIKE / comment / share / stars / save / pin /
+   grow / Send): faint 1px border + #ffffff08 wash at rest. Obsidian body,
+   rim + glow in the button's own --ac, white label. --- */
+.ib-actions .ib-act{background:linear-gradient(180deg,#1a1a22,#0a0a0f 45%,#050507);border:1.5px solid var(--ac,#a06bff);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.6),0 0 16px -4px var(--ac,#a06bff),0 6px 16px rgba(0,0,0,.5);}
+.ib-actions .ib-act:hover{transform:translateY(-1px);border-color:var(--ac,#a06bff);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -4px 10px rgba(0,0,0,.55),0 0 24px -2px var(--ac,#a06bff),0 8px 20px rgba(0,0,0,.55);}
+.ib-actions .ib-act.on{border-color:var(--ac,#a06bff);background:linear-gradient(180deg,color-mix(in srgb,var(--ac,#a06bff) 22%,#0a0a10),color-mix(in srgb,var(--ac,#a06bff) 10%,#0a0a10));box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 20px -2px var(--ac,#a06bff),0 6px 16px rgba(0,0,0,.5);}
+
+/* --- F11 STAR RATING (.star-rating): container + buttons. Hover/on
+   restated verbatim from the original + glow. --- */
+.star-rating{background:linear-gradient(180deg,#17171f,#0a0a10);border-color:rgba(212,160,23,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 18px -4px rgba(212,160,23,.5),0 8px 18px rgba(0,0,0,.55);}
+.star-rating button{background:linear-gradient(180deg,#241d0e,#120e05);border:2px solid rgba(212,160,23,.65);color:#ffbf3d;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 14px -4px rgba(212,160,23,.55),0 4px 10px rgba(0,0,0,.5);}
+.star-rating button:hover,.star-rating button.on{color:#fff3a6;border-color:#f8e7a0;background:#2a230f;text-shadow:0 0 14px #f4d97899;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 0 20px -2px rgba(255,191,61,.8),0 6px 14px rgba(0,0,0,.55);}
+
+/* --- F7 SMART TABS (.smart-tab): dark pill, white rim, no coloured rim at
+   rest. Obsidian gradient body, rim + glow in the tab's own --tc. Hover /
+   active keep their original rules (higher specificity). --- */
+.smart-tab{background:linear-gradient(180deg,#1a1a22,#0a0a0f 45%,#050507);border:2px solid var(--tc);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.6),0 0 18px -4px var(--tc),0 8px 20px rgba(0,0,0,.5);}
+
+/* --- F6 FEED HEADER (.mw-feedname): background:none, border:none — no
+   surface at all. A button now: obsidian body, rim + glow in its own --fc. --- */
+.mw-feedname{display:flex;align-items:center;gap:8px;background:linear-gradient(180deg,#1b1b24,#07070b);border:1.5px solid var(--fc,rgba(255,255,255,.22));border-radius:14px;padding:10px 14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.6),0 0 16px -4px var(--fc,rgba(255,255,255,.3)),0 8px 20px rgba(0,0,0,.5);}
+.mw-feedname:hover{color:#fff;border-color:var(--fc,#ffbf3d);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 0 22px -4px var(--fc,#ffbf3d),0 10px 22px rgba(0,0,0,.55);}
+
+/* --- F15 RAIL ACTIONS (.pc-btn): white wash + rim + inset light only.
+   Obsidian body + glow in its own --mc. Hover restated (the base would
+   otherwise win it by order at equal specificity). --- */
+.pc-btns .pc-btn{background:linear-gradient(180deg,#1a1a22,#0a0a0f 45%,#050507);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.6),0 0 16px -4px var(--mc,#a06bff),0 6px 14px rgba(0,0,0,.5);}
+.pc-btns .pc-btn:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -4px 10px rgba(0,0,0,.55),0 0 22px -2px var(--mc,#a06bff),0 8px 18px rgba(0,0,0,.55);}
+
+/* --- F16 RAIL CLOSE + REOPEN: gradient + rim, no glow at rest. --- */
+#pcRailClose{box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 16px -4px rgba(255,255,255,.5),0 4px 12px rgba(0,0,0,.4);}
+#pcRailReopen{box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 16px -4px rgba(255,255,255,.5),0 4px 12px rgba(0,0,0,.4);}
+
+/* --- F17-18 COVER + GEAR (.ph-cover-btn, shared by .pc-gear): translucent
+   black + faint rim, no glow at rest. White glow at rest; hover keeps its
+   purple rule. --- */
+.ph-cover-btn{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.55),0 0 18px -4px rgba(255,255,255,.4),0 8px 20px rgba(0,0,0,.5);}
+
+/* --- F19 AVATAR EDIT (.ph-av-edit): gradient + rim, drop shadow only.
+   Soft white glow at rest; hover keeps its purple rule. --- */
+.ph-av-edit{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -3px 6px rgba(0,0,0,.55),0 0 16px -4px rgba(255,255,255,.45),0 6px 14px rgba(0,0,0,.55);}
+
+/* --- F1-3 COMPOSER (.fc-create in the bar): flat solid slabs (white /
+   green / blue) with dark text, border 0, shadow none — the Tetris flush
+   was achieved by STRIPPING the buttons. Obsidian body, inset own-colour
+   rim + top light + own-colour glow, WHITE text, dot in the kind's colour.
+   Radius 0 + divider borders stay so the bar stays flush. --- */
+#pcComposerBar #fcCreateRow .fc-create{background:linear-gradient(180deg,#1a1a22,#0a0a0f 45%,#050507);color:#fff;}
+#pcComposerBar #fcCreateRow [data-fc-create="post"]{box-shadow:inset 0 0 0 1.5px rgba(248,247,251,.9),inset 0 1px 0 rgba(255,255,255,.35),inset 0 -8px 16px rgba(0,0,0,.8),0 0 18px -4px rgba(248,247,251,.55),0 8px 20px rgba(0,0,0,.5);}
+#pcComposerBar #fcCreateRow [data-fc-create="post"] .tg-dot{background:#a06bff;box-shadow:0 0 10px #a06bff;}
+#pcComposerBar #fcCreateRow [data-fc-create="naya"]{box-shadow:inset 0 0 0 1.5px #2fe89e,inset 0 1px 0 rgba(255,255,255,.35),inset 0 -8px 16px rgba(0,0,0,.8),0 0 18px -4px #2fe89e,0 8px 20px rgba(0,0,0,.5);}
+#pcComposerBar #fcCreateRow [data-fc-create="naya"] .tg-dot{background:#2fe89e;box-shadow:0 0 10px #2fe89e;}
+#pcComposerBar #fcCreateRow [data-fc-create="smart"]{box-shadow:inset 0 0 0 1.5px #3fb8ff,inset 0 1px 0 rgba(255,255,255,.35),inset 0 -8px 16px rgba(0,0,0,.8),0 0 18px -4px #3fb8ff,0 8px 20px rgba(0,0,0,.5);}
+#pcComposerBar #fcCreateRow [data-fc-create="smart"] .tg-dot{background:#3fb8ff;box-shadow:0 0 10px #3fb8ff;}
+/* Hover ignites toward the highlight colour — still obsidian, never a flat
+   slab. Post white->purple, Naya note green->blue, Smart note blue->purple. */
+#pcComposerBar #fcCreateRow [data-fc-create="post"]:hover,#pcComposerBar #fcCreateRow [data-fc-create="post"]:focus-visible{background:linear-gradient(180deg,#3d2b5c,#1a1030);color:#fff;box-shadow:inset 0 0 0 1.5px #a06bff,inset 0 1px 0 rgba(255,255,255,.45),inset 0 -8px 16px rgba(0,0,0,.7),0 0 28px -2px #a06bff,0 10px 24px rgba(0,0,0,.55);}
+#pcComposerBar #fcCreateRow [data-fc-create="post"]:hover .tg-dot,#pcComposerBar #fcCreateRow [data-fc-create="post"]:focus-visible .tg-dot{background:#fff;box-shadow:0 0 10px #fff;}
+#pcComposerBar #fcCreateRow [data-fc-create="naya"]:hover,#pcComposerBar #fcCreateRow [data-fc-create="naya"]:focus-visible{background:linear-gradient(180deg,#123a52,#0a1a26);color:#fff;box-shadow:inset 0 0 0 1.5px #2b9fd8,inset 0 1px 0 rgba(255,255,255,.45),inset 0 -8px 16px rgba(0,0,0,.7),0 0 28px -2px #2b9fd8,0 10px 24px rgba(0,0,0,.55);}
+#pcComposerBar #fcCreateRow [data-fc-create="naya"]:hover .tg-dot,#pcComposerBar #fcCreateRow [data-fc-create="naya"]:focus-visible .tg-dot{background:#fff;box-shadow:0 0 10px #fff;}
+#pcComposerBar #fcCreateRow [data-fc-create="smart"]:hover,#pcComposerBar #fcCreateRow [data-fc-create="smart"]:focus-visible{background:linear-gradient(180deg,#3d2b5c,#1a1030);color:#fff;box-shadow:inset 0 0 0 1.5px #a06bff,inset 0 1px 0 rgba(255,255,255,.45),inset 0 -8px 16px rgba(0,0,0,.7),0 0 28px -2px #a06bff,0 10px 24px rgba(0,0,0,.55);}
+#pcComposerBar #fcCreateRow [data-fc-create="smart"]:hover .tg-dot,#pcComposerBar #fcCreateRow [data-fc-create="smart"]:focus-visible .tg-dot{background:#fff;box-shadow:0 0 10px #fff;}
+
+/* --- OVERLAY .tg-mode (creator popup, .tg-modes): faint wash at rest.
+   Obsidian body, rim + glow in its own --mc, white label, lit dot. --- */
+.tg-modes .tg-mode{background:linear-gradient(180deg,#1a1a22,#0a0a0f 45%,#050507);border:1.5px solid var(--mc);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -6px 12px rgba(0,0,0,.65),0 0 16px -4px var(--mc),0 8px 20px rgba(0,0,0,.5);}
+.tg-modes .tg-mode .tg-dot{background:var(--mc);box-shadow:0 0 10px var(--mc);}
+
+/* --- F4 SEARCH IN THE BAR: the bar rule sets box-shadow:none, killing the
+   .pc-search-btn glow. Restate the glow; hover keeps its purple rule. --- */
+#pcComposerBar #pcSearchBtn{box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -3px 6px rgba(0,0,0,.55),0 6px 16px rgba(0,0,0,.5),0 0 17px rgba(160,107,255,.42);}
+
+/* --- Translate-family buttons (.mw-tr-lang / .mw-tr-orig / .mw-tr-cancel):
+   gradient + rim, no glow at rest — same round, same grammar. --- */
+.mw-tr-lang{box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.6),0 0 16px -4px rgba(63,184,255,.5),0 6px 16px rgba(0,0,0,.5);}
+.mw-tr-orig{box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 16px -4px rgba(255,255,255,.4),0 6px 16px rgba(0,0,0,.5);}
+.mw-tr-cancel{background:linear-gradient(180deg,#1b1b26,#07070b);border:1.5px solid rgba(255,255,255,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 12px -4px rgba(255,255,255,.4),0 4px 12px rgba(0,0,0,.5);}
+
+/* --- V3 GERMAN FIT: at phone widths the stacked composer third is ~119px;
+   hide the dot, tighten type + padding so "Intelligente Notiz" holds one
+   line; shrink the search label so the German string holds its button.
+   At <=400px the third is ~109px and even 10.5px wraps: the glyph + gap go
+   to zero and the label span holds one line at 10px (proven 360-de:
+   span 90px, button 109px, single line). --- */
+@media(max-width:640px){
+  #pcComposerBar #fcCreateRow .fc-create{font-size:10.5px;padding:10px 3px;}
+  #pcComposerBar #fcCreateRow .fc-create .tg-dot{display:none;}
+  #pcComposerBar #pcSearchBtn{font-size:12px;padding:10px 8px;}
+}
+@media(max-width:400px){
+  #pcComposerBar #fcCreateRow .fc-create{font-size:0;gap:0;}
+  #pcComposerBar #fcCreateRow .fc-create span{font-size:10px;white-space:nowrap;}
+}
 </style>
 <script id="mw-translate">
 /* ═══ AUTO-TRANSLATE 2026-11-13 — the Translate tap (Part 2) ═══
