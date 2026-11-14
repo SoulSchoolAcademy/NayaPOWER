@@ -4971,7 +4971,6 @@ body.os-bottom-hidden #os-bottom3{transform:translateY(110%);opacity:0;} /* HERO
 <div class="os-score-elegant" id="os-score-elegant">
   <div class="os-se-val" id="os-se-val"><span class="os-se-num" id="os-se-num"><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span><span class="os-skel-msg">Ledger loading — your score appears when the ledger answers</span></span></div>
   <div class="os-se-cap" id="os-se-cap">TOTAL SCORE</div>
-  <div class="os-tier-chip" id="os-tier-chip" role="status" aria-label="Score tier"><b class="os-tier-name" id="os-tier-name">—</b><span class="os-tier-next" id="os-tier-next"></span><span class="os-tier-bar" aria-hidden="true"><span class="os-tier-fill" id="os-tier-fill"></span></span></div>
   <div class="os-hero-updated" id="os-hero-updated"></div>
   <div class="platter big"></div>
 </div>
@@ -18136,7 +18135,7 @@ function smartlinkListHTML(){
     + _fCell(_f ? _fNum(_f.joined) : '—', _f ? _f.joined : 0, 'Joined', 'data-node="joins"')
     + _fCell('—', 0, 'Stayed', 'data-os-funnel="stayed"')
     + '</div>'
-    + '<p class="os-note" style="margin:10px 0 0;">Funnel — Found: Smart Link clicks, all links (smart_link_daily_stats.clicks). Visited: NOT YET — no source yet, the blog loop\u2019s Phase 2 defines it. Joined: ' + (_f ? _f.joined : 0) + ' so far' + ((_f && _f.joined) ? ' (smart_link_daily_stats.joins).' : ' — the join flow is not built yet (smart_link_joins).') + ' Stayed: NOT YET — no source yet, needs the ledger flowing. Board counts his claimed links only — the nine PayPal plan links are counted in Found, not in the board.</p>';
+    + '<p class="os-note" style="margin:10px 0 0;">Funnel — Found: how many people clicked any of your links.<br>Visited: how many of them opened your page. Nothing is counted here yet — visits aren\u2019t measured.<br>Joined: ' + ((_f && _f.joined) ? _f.joined + (_f.joined === 1 ? ' person joined' : ' people joined') + ' so far.' : 'nobody has joined yet — the way to join isn\u2019t built yet, so this stays at zero.') + '<br>Stayed: how many of them are still with you. Nothing is counted here yet — it needs your activity record flowing.<br>The list below shows only the links you claimed. The nine plan links aren\u2019t listed, but their clicks still count in Found.</p>';
   var dims = (window._osLastLinks && window._osLastLinks.dims) || null;
   var G = (typeof window._slGaugesHTML === 'function') ? window._slGaugesHTML : null;
   var DF = (typeof window._slDimFor === 'function') ? window._slDimFor : null;
@@ -19467,6 +19466,19 @@ window.ldLayoutNodes = ldLayoutNodes;
         else if ((window._osSpine && (window._osSpine.loading || window._osSpine.stale)) || !(typeof v.center === 'number' && isFinite(v.center))) bigVal.innerHTML = '<span class="os-skel-tile">—</span><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span><span class="os-skel-msg">Ledger loading \u2014 your score appears when the ledger answers</span>';
         else bigVal.textContent = _fmt(v.center);
       }
+      /* HERO CLEANUP 2026-11-14 (Part 3): the caption under the tiles
+         follows the selected metric — tap CLICKS and it reads CLICKS;
+         tap SMART NOTES and it reads SMART NOTES; a featured link reads
+         the link's name; cleared, it reads TOTAL SCORE. The label comes
+         from the same _featuredMetric / holder the tiles already read,
+         so the caption can never name a different number than the tiles. */
+      var _capEl = document.getElementById('os-se-cap');
+      if (_capEl){
+        var _capTxt = 'TOTAL SCORE';
+        if (window._featuredMetric && window._featuredMetric.label) _capTxt = String(window._featuredMetric.label).toUpperCase();
+        else if (window._featured && window._featured.kind === 'link' && window._featured.id) _capTxt = String(window._featured.id).toUpperCase();
+        _capEl.textContent = _capTxt;
+      }
       /* PASS 1 v7 (2026-11-05) — the number moved; the derivation under
          it moves with it, or a featured switch shows the new number
          with the stale derivation. */
@@ -19703,8 +19715,10 @@ window.ldLayoutNodes = ldLayoutNodes;
     }
     /* PASS-11 (8): the Reports board leads with TODAY's actions — the per-day
        counts from the spine series (last element = today) — never the
-       all-time grand total. The grand total is the small reference under
-       the row. */
+       all-time grand total. HERO CLEANUP 2026-11-14 (D3): the grand-total
+       reference under the row is gone — a stranger read it as the total of
+       the row above (it matched nothing on the page), so it read as a lie
+       by juxtaposition. The row stands on its own now. */
     function _today11(s){ var sr = (s && s.series) || null; if (!sr) return null;
       var _arrs = [sr.posts, sr.notes, sr.msgs, sr.invs, sr.clicks, sr.joins], _t = 0;
       for (var _i = 0; _i < _arrs.length; _i++){ var _a = _arrs[_i]; if (_a && _a.length) _t += Number(_a[_a.length - 1] || 0); }
@@ -19721,17 +19735,15 @@ window.ldLayoutNodes = ldLayoutNodes;
         + cell(s2.msgs, _fmt(s2.msgs), 'Messages', 'count', 'data-os-go="inbox"')
         + cell(s2.invs, _fmt(s2.invs), 'Invites', 'count', 'data-node="invs"');
     }
-    var _ref11 = document.getElementById('os-reports-total-ref');
-    if (_ref11) _ref11.remove();
-    host.insertAdjacentHTML('afterend', '<p class="os-note" id="os-reports-total-ref" style="margin:10px 0 0;">Dashboard total: ' + (live ? _fmt(s2.mixTotal) : '—') + ' actions counted.</p>');
+
     /* ALIGNMENT 2026-11-12 — the traffic funnel, INSIDE the Reports board
        (placement law, Shawn 2026-11-01: never a new separate section). Same
        cell() presentation as the row above — number + gauge + label. Found
        is live (window._dashFunnel, all-links clicks). Visited has NO SOURCE
        YET (the blog loop's Phase 2 defines it). Joined is the honest 0 —
        the join flow (smart_link_joins) is not built yet. Stayed has NO
-       SOURCE YET (needs the ledger flowing). A stage with no source shows
-       NOT YET in the source line below, never a fabricated number. */
+       SOURCE YET (needs the ledger flowing). A stage with no source says so
+       in plain words in the source line below, never a fabricated number. */
     var _funOld = document.getElementById('os-reports-funnel');
     if (_funOld) _funOld.remove();
     var _funSrcOld = document.getElementById('os-reports-funnel-src');
@@ -19746,14 +19758,14 @@ window.ldLayoutNodes = ldLayoutNodes;
       + cell(null, '—', 'Visited', 'count', 'data-os-funnel="visited"')
       + cell(_fun ? _fun.joined : null, _fun ? _fmt(_fun.joined) : '—', 'Joined', 'count', 'data-node="joins"')
       + cell(null, '—', 'Stayed', 'count', 'data-os-funnel="stayed"');
-    var _ref11b = document.getElementById('os-reports-total-ref');
-    if (_ref11b) _ref11b.insertAdjacentElement('afterend', _funEl);
-    else host.insertAdjacentElement('afterend', _funEl);
+    /* HERO CLEANUP 2026-11-14 (D3): the funnel dials sit after the row now —
+       the grand-total reference they used to anchor after is gone. */
+    host.insertAdjacentElement('afterend', _funEl);
     var _funSrc = document.createElement('p');
     _funSrc.className = 'os-note';
     _funSrc.id = 'os-reports-funnel-src';
     _funSrc.style.margin = '10px 0 0;';
-    _funSrc.textContent = 'Funnel — Found: Smart Link clicks, all links (smart_link_daily_stats.clicks). Visited: NOT YET — no source yet, the blog loop\u2019s Phase 2 defines it. Joined: ' + (_fun ? _fun.joined : 0) + ' so far' + ((_fun && _fun.joined) ? ' (smart_link_daily_stats.joins).' : ' — the join flow is not built yet (smart_link_joins).') + ' Stayed: NOT YET — no source yet, needs the ledger flowing. Board counts his claimed links only — the nine PayPal plan links are counted in Found, not in the board.';
+    _funSrc.textContent = 'Funnel — Found: how many people clicked any of your links. Visited: how many of them opened your page. Nothing is counted here yet — visits aren\u2019t measured. Joined: ' + ((_fun && _fun.joined) ? _fun.joined + (_fun.joined === 1 ? ' person joined' : ' people joined') + ' so far.' : 'nobody has joined yet — the way to join isn\u2019t built yet, so this stays at zero.') + ' Stayed: how many of them are still with you. Nothing is counted here yet — it needs your activity record flowing. The Smart Links list shows only the links you claimed. The nine plan links aren\u2019t listed, but their clicks still count in Found.';
     _funEl.insertAdjacentElement('afterend', _funSrc);
     try{ if (typeof window._osMountSlMinis === 'function') window._osMountSlMinis(_funEl); }catch(e){}
     try{ if (typeof window._osMiniNums === 'function') window._osMiniNums(); }catch(e){}
@@ -19979,31 +19991,7 @@ window._renderScoreDerivation = function(totalArg, orbDataArg){
         if (ptsx > 0) orbData.push({key: nd.key, label: nd.label, pts: ptsx, count: nx, color: nd.color});
       });
     }
-    /* SCORECARD FIX 2026-11-14 (2J): the tier chip follows the live total —
-       never hardcoded. The rung is the score's own rung in V6_RUNGS; the bar
-       is the distance to the next rung. In a period window the number shown
-       is the windowed total, so the chip follows it; otherwise the all-time
-       spine score. */
-    try{
-      var _chipEl=document.getElementById('os-tier-chip');
-      if (_chipEl){
-        var _per=(window._ldWindow && window._ldWindow!=='all');
-        var _cs=_per?total:((window._osSpine && typeof window._osSpine.score==='number')?window._osSpine.score:total);
-        if (typeof _cs==='number' && isFinite(_cs)){
-          var _rungs=(typeof V6_RUNGS!=='undefined')?V6_RUNGS:[[0,'Emerging'],[1000,'Stirring']];
-          var _rung=_rungs[0], _next=null;
-          for (var _ri=0;_ri<_rungs.length;_ri++){ if (_rungs[_ri][0]<=_cs) _rung=_rungs[_ri]; else { _next=_rungs[_ri]; break; } }
-          var _nmEl=document.getElementById('os-tier-name'); if (_nmEl) _nmEl.textContent=_rung[1];
-          var _nxEl=document.getElementById('os-tier-next');
-          var _flEl=document.getElementById('os-tier-fill');
-          var _spC=(typeof window._osSpc==='function')?window._osSpc:function(v){ return String(v); };
-          if (_next){ if (_nxEl) _nxEl.textContent=_spC(_cs)+' / '+_spC(_next[0])+' to '+_next[1]; if (_flEl) _flEl.style.width=Math.max(0,Math.min(100,Math.round((_cs-_rung[0])/(_next[0]-_rung[0])*100)))+'%'; }
-          else { if (_nxEl) _nxEl.textContent=_spC(_cs)+' \u2014 top rung'; if (_flEl) _flEl.style.width='100%'; }
-          _chipEl.style.display='';
-        }
-      }
-    }catch(e){}
-    var view = (typeof window._featuredDisplay === 'function') ? window._featuredDisplay() : null;
+        var view = (typeof window._featuredDisplay === 'function') ? window._featuredDisplay() : null;
     var labEl = document.getElementById('os-se-label');
     if (labEl && view && view.centerLabel) labEl.textContent = String(view.centerLabel).toUpperCase();
     var derEl = document.getElementById('os-score-derive');
@@ -28934,14 +28922,11 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
   text-shadow:0 1px 3px rgba(0,0,0,.95), 0 0 12px rgba(255,191,61,.35) !important;
 }
 
-/* SCORECARD FIX 2026-11-14 (2J): the tier chip — what the score MEANS, read
-   from V6_RUNGS and the live total by _renderScoreDerivation. (2H): the
-   updated line under it, so a lag is visible instead of silent. */
-#os-tier-chip{display:flex;flex-direction:column;align-items:center;gap:6px;max-width:430px;margin:12px auto 0;padding:12px 18px;border-radius:16px;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:1.5px solid rgba(255,191,61,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -2px 4px rgba(0,0,0,.5),0 8px 24px rgba(0,0,0,.5);}
-#os-tier-chip .os-tier-name{font-size:22px;font-weight:900;color:#ffbf3d;letter-spacing:.08em;text-transform:uppercase;}
-#os-tier-chip .os-tier-next{font-size:14px;font-weight:700;color:#fff;}
-#os-tier-chip .os-tier-bar{display:block;width:100%;height:8px;border-radius:4px;background:rgba(255,255,255,.12);overflow:hidden;}
-#os-tier-chip .os-tier-fill{display:block;height:100%;width:0%;border-radius:4px;background:linear-gradient(90deg,#ffbf3d,#d9a521);}
+/* HERO CLEANUP 2026-11-14 (Part 1): the tier chip is gone — Shawn: the
+   ladder belongs on the profile under the points pill and in the
+   leaderboards, not between the number and the orbs. V6_RUNGS stays in
+   the file untouched (it IS the locked-in labeling system). (2H): the
+   updated line under it stays, so a lag is visible instead of silent. */
 .os-hero-updated{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);text-align:center;margin-top:8px;}
 
 /* (3) ORB NUMBERS CENTRED — 2026-11-14 orb-centering round (Shawn 01:03Z:
