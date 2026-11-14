@@ -1563,7 +1563,7 @@
       "name": "repair_v7_smart_note_transactions_ghost_table_sn0520",
       "path": "supabase/migrations/20261007030000_repair_v7_smart_note_transactions_ghost_table_sn0520.sql",
       "sha256": "67dd0f33bd84f3bc6512530e8e9d1e24ef7b84f9159ca8249c0e1a54487470bc",
-      "statement_count": 3,
+      "statement_count": 4,
       "bytes": 1431,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     },
@@ -1577,6 +1577,24 @@
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     },
     {
+      "version": "20261022201458",
+      "name": "smart_links_owner_id_repair_v1",
+      "path": "supabase/migrations/20261022201458_smart_links_owner_id_repair_v1.sql",
+      "sha256": "c38e9931756f52d477ba9d383161c6bcb7585976900fec7bbf6d2a52a8620c25",
+      "statement_count": 1,
+      "bytes": 865,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261022201459",
+      "name": "smart_link_clicks_attribution_repair_v1",
+      "path": "supabase/migrations/20261022201459_smart_link_clicks_attribution_repair_v1.sql",
+      "sha256": "b00ef79fc49c911ed66b80bb36866276eb9e4a8421c68e2f43c191e190d29c0d",
+      "statement_count": 1,
+      "bytes": 857,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
       "version": "20261022201500",
       "name": "smart_links_v1",
       "path": "supabase/migrations/20261022201500_smart_links_v1.sql",
@@ -1586,12 +1604,48 @@
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     },
     {
+      "version": "20261022202000",
+      "name": "person_timeline_columns_repair_v1",
+      "path": "supabase/migrations/20261022202000_person_timeline_columns_repair_v1.sql",
+      "sha256": "4c2c666ebde0129eae737f89ce08abc1d6ba9c2a367a2cd1816661ff5ab77f77",
+      "statement_count": 4,
+      "bytes": 3758,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261022202500",
+      "name": "person_timeline_view_columns_repair_v1",
+      "path": "supabase/migrations/20261022202500_person_timeline_view_columns_repair_v1.sql",
+      "sha256": "029ba9fa170aa42531fa44a885193c9d5e4c7401f64a7e1f9dca8766b9a7f974",
+      "statement_count": 2,
+      "bytes": 3653,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261022202800",
+      "name": "person_timeline_view_drop_repair_v1",
+      "path": "supabase/migrations/20261022202800_person_timeline_view_drop_repair_v1.sql",
+      "sha256": "e533db7dbefd02dd9a3a78c96f916c72bdff81a244a1ffb7035ced8f4d534c29",
+      "statement_count": 1,
+      "bytes": 4240,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
       "version": "20261022203000",
       "name": "person_timeline_v1",
       "path": "supabase/migrations/20261022203000_person_timeline_v1.sql",
       "sha256": "70bb93e90d7687b3f24990658abafad8d377ba25301685f1a81c2ec9d6a14b54",
       "statement_count": 15,
       "bytes": 8769,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261022204000",
+      "name": "naya_notes_owner_id_repair_v1",
+      "path": "supabase/migrations/20261022204000_naya_notes_owner_id_repair_v1.sql",
+      "sha256": "ac904cfdf001dff7f8f94faf606621ca3602766b8d7124eaad6d94ebc623090a",
+      "statement_count": 1,
+      "bytes": 1210,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     },
     {
@@ -1613,6 +1667,15 @@
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     },
     {
+      "version": "20261022211000",
+      "name": "object_links_columns_repair_v1",
+      "path": "supabase/migrations/20261022211000_object_links_columns_repair_v1.sql",
+      "sha256": "846af8c77ce1a65586b21f01c684bb03cd680e067473e5d6ea5938c674ae7a8f",
+      "statement_count": 1,
+      "bytes": 1374,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
       "version": "20261022211500",
       "name": "object_links_v1",
       "path": "supabase/migrations/20261022211500_object_links_v1.sql",
@@ -1628,6 +1691,15 @@
       "sha256": "de8c6663e3d8f3308c74264c518666b1ccb17901a1a71525aa2da4cd6a9bec47",
       "statement_count": 11,
       "bytes": 3187,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261022214000",
+      "name": "universal_search_columns_repair_v1",
+      "path": "supabase/migrations/20261022214000_universal_search_columns_repair_v1.sql",
+      "sha256": "740a265becbd859be8d6c12e09a8bfe7874aff3a825e29c34b7683efa58e3a34",
+      "statement_count": 2,
+      "bytes": 1852,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     },
     {
@@ -1682,6 +1754,24 @@
       "sha256": "6cdc56bc4c57ed5170198788d0db11624e71f476234a183438ac8e914005ccfd",
       "statement_count": 11,
       "bytes": 11587,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261112095000",
+      "name": "supersede_source_events_fallback_v1",
+      "path": "supabase/migrations/20261112095000_supersede_source_events_fallback_v1.sql",
+      "sha256": "5963733622da524e3b432d135d18cc6b6fc0627a175e014b8f8e937749590c03",
+      "statement_count": 2,
+      "bytes": 8615,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261113024500",
+      "name": "ledger_trigger_work_items_done_proven_v1",
+      "path": "supabase/migrations/20261113024500_ledger_trigger_work_items_done_proven_v1.sql",
+      "sha256": "1a26f04f2974e6e45c7fd4f25c0074b729af3fde178fc5ed1ac5e2943bab99e8",
+      "statement_count": 4,
+      "bytes": 7796,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
