@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 03:09 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -51538,6 +51538,12 @@ _Last updated: 2026-11-14 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261113-1900 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-13 19:03 PST: full 30/30 claim sweep, 0 claimed, all refused
+
+**Evidence:** Fresh window. Verified: receipt read in full; claim-sweep-20261113-1903.log exists (2,301 bytes) with 30 per-brief attempt lines - 28 x exit 7 + 2 x exit 2, 0 claimed, the two exit-2 briefs exactly brief-gap-gap-gap-t0547-lane1-lane1.md and brief-gap-gap-gap-gap-t0172-lane1-lane1.md as in the receipt, header totals matching; brief-queue/ holds exac
 
 ### ✅ lane-scorer-20261113-1830 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
