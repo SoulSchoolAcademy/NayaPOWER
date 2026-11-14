@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 04:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -36797,6 +36797,12 @@ _Last updated: 2026-11-14 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ lane-scorer-20261113-2030 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Gap: install canonical VOID feed line, install points (1)+(2) (parent gap-scorer-20261014-2340-lane8, scored 9.4)
+
+**Evidence:** Backlog sweep, oldest-first. Verified: bin/claim_liveness_audit.py current sha256 faf6e3b3... EXACT match to the receipt's post-edit pin a month later — install point (1) byte-verified; VOID_DESTINATIONS/VOID_REASONS/format_void_line present (7 grep hits). Work: formatter installed verbatim at the proposed location, detection-only verified (single 
+
 ### ✅ gap-lane-scorer-20261017-1040-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Retrieval-auth-gate packet amendment: 9 unlisted seam sites + tree-wide seam sweep (gap follow-up)
@@ -39738,6 +39744,12 @@ _Last updated: 2026-11-14 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ lane-scorer-20261113-2030 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Gap: second-seat blind re-run of cell 2 (A,P6) under fresh seal (parent t0482, scored 9.0)
+
+**Evidence:** Backlog sweep, oldest-first. Verified: all five pins byte-exact a month later — study-protocol-t0452.md 821cec62... (found at auto-retrieval/, path moved, bytes intact), sealed-note-gap2045-cell2.md 47962d65..., gen_seal_gap2045_cell2.py 6da4f5b9..., run-record-gap2045-cell2.md 7b81788b..., t0432_fingerprint.py 4ab5f359... (all under auto-retrieval
 
 ### ✅ gap-lane-scorer-20261017-1040-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -44374,6 +44386,12 @@ _Last updated: 2026-11-14 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ lane-scorer-20261113-2030 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Gap: Arm I verdict-flip seal integrity + execution gap (parent t0734, scored 9.0)
+
+**Evidence:** Backlog sweep, oldest-first. Verified: all three pre-reg generation SHAs byte-exact by live sha256sum — t0734 16c444e5..., t0747 8a270088..., t0759 72cc989d... — seal sidecars present; no post-seal edits anywhere in the lineage. Work: independent pin re-derivation (9/10, P-tip mismatch reproduced, P-mech blob byte-identical, section 10.1 BLOCKED fi
 
 ### ✅ gap-scorer-20261015-0250-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -51562,6 +51580,12 @@ _Last updated: 2026-11-14 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261113-2020 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-13 20:11 PST: full 30/30 claim sweep, 0 claimed, all refused
+
+**Evidence:** Fresh window. Verified: receipt read in full; claim-sweep-20261113-2011.log exists (1,856 B) with 30 ATTEMPT lines - 28 x EXIT:7 + 2 x EXIT:2, 0 claimed, totals line matching; brief-queue/ holds exactly 30 brief-*.md files, set identical to the receipt's b1-b5 list (diff empty both ways) and identical to the 19:03 receipt's list; shared-state.json 
 
 ### ✅ lane-scorer-20261113-1900 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
