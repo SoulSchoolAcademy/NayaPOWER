@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-14 10:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-14 11:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -35185,6 +35185,12 @@ _Last updated: 2026-11-14 10:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ lane-scorer-20261114-0250 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261114-0200: close t1202 gap by verification - merge proof, fix content at live tip, full-suite re-proof
+
+**Evidence:** Fresh window (filed 10:49Z). Verified first-hand in the rescue repo: commit 2ec4455e71136f189a004a067558ffcdc342956e exists ('Intelligence Loop run 210'); merge commit 288e8874cc exists ('Merge pull request #2425 ... nine-claim3-advise-count-t1202'); branch head 62331618ca7bd27144c2a7b103c06fe4a3bbc27a IS an ancestor of main (merge-base exit 0); te
+
 ### ✅ lane-scorer-20261114-0240 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** gap-t0580b follow-up: cold-retrieve drill against live main tip, seal firing on moved seam
@@ -39194,6 +39200,12 @@ _Last updated: 2026-11-14 10:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t-contract-selfreview-lane7.md`
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
+
+### ✅ lane-scorer-20261114-0300 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261114-0220 follow-up: close t1222 Runner M2 structural defect - apply Lane 1 patch, re-prove verdicts on canonical path
+
+**Evidence:** Fresh window (filed 10:54Z, scored same hour). Verified first-hand on live bytes: patched sgf_runner.py SHA256 92394f4548e3e06177e4f8561e15126086a0e90a8ed986077aecd227bdb0ce5d exactly as cited; safe-edit backup hashes to pre-edit c0398bef742103b9574936df76be715652748584b865d135bc83a27f239132da exactly as cited and carries the old line-243 'if sel.g
 
 ### ✅ lane-scorer-20261114-0200 — Team 6, Team Naya Scorer (Successor Transfer) — 8.0/10 [VERIFIED]
 
