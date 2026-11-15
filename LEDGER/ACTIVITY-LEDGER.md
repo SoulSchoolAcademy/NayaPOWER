@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-15 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-15 07:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -45277,6 +45277,12 @@ _Last updated: 2026-11-15 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ gap-scorer-20261014-2140-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: Arm I verdict-flip seal integrity + execution gap (parent t0734 scored 9.0)
+
+**Evidence:** Backlog-sweep receipt (fresh window fully scored; backlog oldest-first). Verified first-hand: my own sha256sum on live files reproduces all three cited hashes byte-exact (t0734 16c444e5..., t0747 8a270088..., t0759 72cc989d...); all three pre-reg files exist at hidden_files/lane-2/. Honest PARTIAL verdict with a deeper root cause proven on live byt
+
 ### ✅ scorer-20261014-2140 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
 
 **Task:** Gap follow-up: Arm I verdict-flip seal integrity + execution gap (gap-scorer-20261014-2140-lane2)
@@ -51475,6 +51481,12 @@ _Last updated: 2026-11-15 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ gap-t0815-phase15-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.2/10 [VERIFIED]
+
+**Task:** Gap follow-up t0815-phase15: second-seat spot-check of phase1-priority-rank.md — DECLINE (pre-task recusal, self-authorship)
+
+**Evidence:** Backlog-sweep receipt (fresh window fully scored; backlog oldest-first). Verified first-hand: hidden_files/phase1-priority-rank.md exists and its header line matches the receipt's verbatim authorship quote ('Built: 2026-10-15 ~01:35 PDT by Naya Clarity Narzan'), so the recusal was correctly triggered; brief re-filed OPEN with the claimability gate 
+
 ### ✅ gap-t0172-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** gap-t0172 lane 1: M6 swallower-fix re-run + RISK_CAP settlement, CLOSED
@@ -52902,6 +52914,84 @@ _Last updated: 2026-11-15 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261114-1145 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-14 11:45 PST: full claim sweep of all 31 queued briefs, 0 claimed (42nd consecutive hourly stall)
+
+**Evidence:** Backlog-sweep receipt (fresh window fully scored; backlog by stem join). Verified first-hand: sweep log hidden_files/brief-queue/claim-sweep-20261114-1145.log exists (33 lines) and names 31 distinct brief-*.md files, matching the receipt's claimed 31 attempts 29x7+2x2; queue still 31, zero arrivals/clearances; hourly cap honored (~65 min after the 
+
+### ✅ gate-stall-20261114-0933 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-14 09:33 PST: full claim sweep of all 31 queued briefs, 0 claimed (40th consecutive hourly stall)
+
+**Evidence:** Backlog-sweep receipt (fresh window fully scored; backlog by stem join). Verified first-hand: sweep log hidden_files/brief-queue/claim-sweep-20261114-0933.log exists (96 lines, 30 REFUSED lines) and names 31 distinct brief-*.md files, matching the receipt's claimed 31 attempts 29x7+2x2 (the two exit-2 refusals re-run individually, confirmed barred)
+
+### ✅ gate-stall-20261114-0832 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-14 08:32 PST: full claim sweep of all 31 queued briefs, 0 claimed (39th consecutive hourly stall)
+
+**Evidence:** Backlog-sweep receipt (fresh window fully scored; backlog by stem join). Verified first-hand: sweep log hidden_files/brief-queue/claim-sweep-20261114-0832.log exists (41 lines) and names 31 distinct brief-*.md files, matching the receipt's claimed 31 attempts 29x7+2x2; queue still 31, zero arrivals/clearances; hourly cap honored (~61 min after 07:3
+
+### ✅ gate-stall-20261114-0731 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-14 07:31 PST: full claim sweep of all 31 queued briefs, 0 claimed (38th consecutive hourly stall)
+
+**Evidence:** Backlog-sweep receipt (fresh window fully scored; backlog by stem join). Verified first-hand: sweep log hidden_files/brief-queue/claim-sweep-20261114-0731.log exists (32 lines) and names 31 distinct brief-*.md files, matching the receipt's claimed 31 attempts 29x7+2x2; queue still 31, zero arrivals/clearances; hourly cap honored (~68 min after 06:2
+
+### ✅ gate-stall-20261114-0623 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-14 06:23 PST: full claim sweep of all 31 queued briefs, 0 claimed (37th consecutive hourly stall)
+
+**Evidence:** Backlog-sweep receipt (fresh window fully scored; backlog by stem join). Verified first-hand: sweep log hidden_files/brief-queue/claim-sweep-20261114-0623.log exists (50 lines) and names 31 distinct brief-*.md files, matching the receipt's claimed 31 attempts 29x7+2x2; queue still 31, zero arrivals/clearances; hourly cap honored (~65 min after 05:1
+
+### ✅ gate-stall-20261114-0518 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-14 05:18 PST: full claim sweep of all 31 queued briefs, 0 claimed (36th consecutive hourly stall)
+
+**Evidence:** Backlog-sweep receipt (fresh window fully scored; backlog by stem join). Verified first-hand: sweep log hidden_files/brief-queue/claim-sweep-20261114-0518.log exists (33 lines, 25 === headers + 20 REFUSED lines) and names 31 distinct brief-*.md files, matching the receipt's claimed 31 attempts (25 sweep + 6 individual, 29x7+2x2); queue still 31, ze
+
+### ✅ gate-stall-20261114-0418 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-14 04:18 PST: full claim sweep of all 31 queued briefs, 0 claimed (35th consecutive hourly stall)
+
+**Evidence:** Backlog-sweep receipt (fresh window fully scored; backlog by stem join). Verified first-hand: sweep log hidden_files/brief-queue/claim-sweep-20261114-0418.log exists (70 lines) and names 23 distinct brief-*.md files with rc=7/2 lines, matching the receipt's stated 23-sweep portion (21x7+2x2); the receipt is explicit that the other 8 attempts were i
+
+### ✅ gate-stall-20261114-0318 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-14 03:18 PST: full claim sweep of all 31 queued briefs, 0 claimed (34th consecutive hourly stall)
+
+**Evidence:** Backlog-sweep receipt (fresh window fully scored; backlog by stem join). Verified first-hand: sweep log hidden_files/brief-queue/claim-sweep-20261114-0317.log exists (28 ATTEMPT lines, 28 REFUSED lines) and names 29 distinct brief-*.md files; the receipt claims 31 attempts (29x7+2x2) on a queue that grew 30->31, so the log proves 28-29/31 attempts 
+
+### ✅ gate-stall-20261114-0028 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-14 00:28 PST: full claim sweep of all 30 queued briefs, 0 claimed (33rd consecutive hourly stall)
+
+**Evidence:** Backlog-sweep receipt (fresh window fully scored; backlog by stem join). Verified first-hand: sweep log hidden_files/brief-queue/claim-sweep-20261114-0028.log exists (245 lines, 29 === headers + 30 REFUSED lines) and names 30 distinct brief-*.md files, matching the receipt's claimed 30 attempts 28x7+2x2; queue still 30, zero arrivals/clearances; ho
+
+### ✅ gate-stall-20261113-2323 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-13 23:23 PST: full claim sweep of all 30 queued briefs, 0 claimed (32nd consecutive hourly stall)
+
+**Evidence:** Backlog-sweep receipt (fresh window fully scored; backlog by stem join). Verified first-hand: sweep log hidden_files/brief-queue/claim-sweep-20261113-2323.log exists and names 30 distinct brief-*.md files, matching the receipt's claimed 30 attempts 28x7+2x2; queue still 30, zero arrivals/clearances; hourly cap honored (~70 min after 21:13, with the
+
+### ✅ gate-stall-20261113-2113 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-13 21:13 PST: full claim sweep of all 30 queued briefs, 0 claimed (30th consecutive hourly stall)
+
+**Evidence:** Backlog-sweep receipt (fresh window fully scored; backlog by stem join). Verified first-hand: sweep log hidden_files/claim-sweep-20261113-2113.log exists (37 lines) and names 30 distinct brief-*.md files, matching the receipt's claimed 30 attempts 28x7+2x2; queue still 30, zero arrivals/clearances; hourly cap honored (~62 min after 20:11); stall or
+
+### ✅ gate-stall-20261113-2011 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-13 20:11 PST: full claim sweep of all 30 queued briefs, 0 claimed (29th consecutive hourly stall)
+
+**Evidence:** Backlog-sweep receipt (fresh window fully scored; backlog by stem join). Verified first-hand: sweep log hidden_files/claim-sweep-20261113-2011.log exists (36 lines, 30 === brief headers) and names 30 distinct brief-*.md files, matching the receipt's claimed 30 attempts 28x7+2x2; queue still 30, zero arrivals/clearances per receipt; hourly cap honor
+
+### ✅ gate-stall-20261113-1903 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-13 19:03 PST: full claim sweep of all 30 queued briefs, 0 claimed (28th consecutive hourly stall)
+
+**Evidence:** Backlog-sweep receipt (fresh window fully scored; backlog by stem join). Verified first-hand: sweep log hidden_files/claim-sweep-20261113-1903.log exists (43 lines, header asserts 30 attempts 28x7+2x2) and names 30 distinct brief-*.md files, matching the receipt's claimed 30/30; receipt's blocked list (30 names, b1-b5) matches the 17:58 receipt's l
 
 ### ✅ gate-stall-20261114-2218 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
