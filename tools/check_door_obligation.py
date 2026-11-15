@@ -340,15 +340,33 @@ def check_pages(root: Path, snv2, pages: list[dict], registry: dict,
                             "capture mechanically",
                     "owner": "cure lane",
                 })
-            page_bytes_hash = snv2._page_file_hash(root / page["path"])
+            # The binding the writer contract (B-51 step 3, tools/smart_note_v2.py)
+            # and the validator (Check 6) enforce is page_hash == sha256 of the
+            # entry's projection_path file — NOT necessarily the dated page this
+            # tool enumerates. SN-2204 is the proof: its projection lives at
+            # BRAIN/05-MEMORY/SMART-NOTE-ten-learnings-in-action.md (hash
+            # matches the registry) while the dated filing under
+            # BRAIN/05-MEMORY/SMART-NOTES/... is a second rendering with
+            # different bytes. Hashing the enumerated page here flagged a
+            # correct binding as PAGE_HASH_STALE — and the defect's cure
+            # (re-stamp from the dated page) would have BROKEN the validator
+            # (INDEX_CORRUPT:PAGE_HASH_MISMATCH) and taken cold retrieval
+            # down again. Compare against the canonical binding; fall back
+            # to the enumerated page only when the entry carries no
+            # projection_path or its file is absent.
+            bind_rel = entry.get("projection_path") or page["path"]
+            if not (root / bind_rel).is_file():
+                bind_rel = page["path"]
+            page_bytes_hash = snv2._page_file_hash(root / bind_rel)
             if entry.get("page_hash") != page_bytes_hash:
                 defects.append({
                     "sn": sn, "ib": ib, "kind": "PAGE_HASH_STALE", "path": page["path"],
                     "missing": f"page binding for {sn} — registry page_hash "
                                f"does not match the published page bytes",
-                    "cure": "re-stamp the entry's page_hash from the page and "
-                            "recompute corpus_manifest_hash (the fixer does "
-                            "this only for entries it generated)",
+                    "cure": "re-stamp the entry's page_hash from its "
+                            "projection_path file and recompute "
+                            "corpus_manifest_hash (the fixer does this only "
+                            "for entries it generated)",
                     "owner": "cure lane",
                 })
     return defects
@@ -369,12 +387,43 @@ def filing_warnings(root: Path, registry: dict, scoped_pages: list[dict],
     the range carries a number with no claim anchored on the sn-claims
     branch, i.e. claim-before-author was skipped. The pre-guard corpus
     is not re-litigated: full-tree mode does not raise this warning.
+
+    DUAL_RENDERING: an entry whose canonical projection_path differs from
+    the dated page this tool enumerates has a second published rendering
+    that carries no hash binding (SN-2204, 2026-11-14: the projection at
+    BRAIN/05-MEMORY/SMART-NOTE-ten-learnings-in-action.md is the file the
+    registry binds; the dated filing is a different rendering). The
+    binding itself is verified in check_pages against projection_path;
+    this names the unbound second rendering while it is cheap to
+    reconcile. Never "cure" it by re-stamping page_hash from the dated
+    page — the validator binds projection_path.
     """
     warnings: list[dict] = []
+    entries = {e.get("intelligent_block_id"): e
+               for e in registry.get("entries", [])}
+    for page in scoped_pages:
+        entry = entries.get(page["ib"])
+        if entry is None:
+            continue
+        proj = entry.get("projection_path")
+        if isinstance(proj, str) and proj and proj != page["path"]:
+            warnings.append({
+                "kind": "DUAL_RENDERING",
+                "sn": page["sn"],
+                "detail": f"{page['sn']} has two published renderings: the "
+                          f"registry binds {proj} but a second rendering "
+                          f"lives at {page['path']} — the second rendering "
+                          f"carries no hash binding",
+                "cure": "the SN lane reconciles the two renderings into one "
+                        "canonical page (or records why two stand); do NOT "
+                        "re-stamp page_hash from the dated page — the "
+                        "validator binds projection_path",
+                "owner": "SN lane",
+            })
     try:
         claims_mod = _load_sn_claims(root)
     except Exception as exc:  # guard unreadable: warn, never fail the door
-        return [{"kind": "CLAIMS_UNREADABLE",
+        return warnings + [{"kind": "CLAIMS_UNREADABLE",
                  "detail": f"tools/sn_claims.py could not be loaded ({exc}) — "
                            f"filing-guard warnings skipped this run",
                  "cure": "restore tools/sn_claims.py; the filing guard must "
