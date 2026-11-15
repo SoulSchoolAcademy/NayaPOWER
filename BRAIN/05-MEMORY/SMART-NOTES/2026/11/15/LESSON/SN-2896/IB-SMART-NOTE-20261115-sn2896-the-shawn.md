@@ -4,6 +4,8 @@ SN-2896 · LESSON / VISION
 
 **Created:** 2026-11-15 23:26Z
 
+**Kinds:** Honor · Multiplication · Craft · Knowledge
+
 ## Hook
 
 There is a language for the highest level of design — and it is already our law, sharpened to ten checks.
