@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-15 00:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-15 01:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -35531,6 +35531,12 @@ _Last updated: 2026-11-15 00:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ preregister-gap-t0712-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** Pre-register v3 battery discrimination test on real builds (gap-t0712-lane9)
+
+**Evidence:** Backlog sweep (oldest-first). VERIFIED: receipt on disk, complete pre-registration written before any run: three pre-existing test subjects named (weak lexical, TF-IDF reference, real semantic arm), probe design that leaves the frozen instrument untouched (SHA-asserted corpus), battery's own metrics reused, conservative predicted outcomes per arm, 
+
 ### ✅ gap-t0776-lane9-decline2-rootcause — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up decline #2 + root cause: PR #2591 second-seat review barred to Clarity seat (gap-t0776-lane9-decline2-rootcause)
@@ -40434,6 +40440,12 @@ _Last updated: 2026-11-15 00:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ preregister-gap-lane-scorer-20261017-1840-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Pre-register falsified-only refusal re-proof at real-corpus scale (gap-lane-scorer-20261017-1840-lane5)
+
+**Evidence:** Backlog sweep (oldest-first; fresh window empty, all of today's receipts already scored). VERIFIED: receipt on disk, complete pre-registration written before measurement: hypothesis derived from the candidate tree's own bytes (scoring + guard mechanics quoted), full 37-word corpus scan naming exactly one viable query word ('slows') with nearest-mis
 
 ### ✅ lane-scorer-20261114-0510 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -48835,6 +48847,24 @@ _Last updated: 2026-11-15 00:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ gap-lane-scorer-20261114-0230-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: BRAINDEX cure re-staged fresh, test failure proven pre-existing, pin format fixed (gap-lane-scorer-20261114-0230-lane10)
+
+**Evidence:** VERIFIED live via git protocol: branch naya/gap-lane-scorer-20261114-0050-re-stamp head d9e481a2f7a5674ea5416eb553b23aa503e0c45b matches ls-remote exactly; commit exists in the mirror with all 3 index files present; commit message matches the re-stamp at tip 49b41fd2. Receipt proves the test failure pre-existing by mechanical set diff (failure-list
+
+### ✅ gap-lane-scorer-20261114-0050-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.2/10 [VERIFIED]
+
+**Task:** Gap follow-up: BRAINDEX drift cure staged — fresh re-stamp PR #3371 (gap-lane-scorer-20261114-0050-lane10)
+
+**Evidence:** VERIFIED live via git protocol: commit f0fe048b55085a35b16f855d5d2c47d442d7dd8e exists in the mirror with all 3 index files present (BRAIN/NAYAPOWER-BRAIN-INDEX.json, BRAIN/REAL-TREE.json, BRAIN/REAL-TREE.md); the branch head has since moved to d9e481a2, which the successor 0230 receipt documents as the re-stamp-2 supersede — expected, not a mismat
+
+### ✅ distill-daily-20261114-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Distill daily: fold Nov 11-14 mission-state snapshots into main (distill-daily-20261114-lane10)
+
+**Evidence:** VERIFIED live via git protocol: branch naya/distill-fold-mission-state-20261114 head f121b8cf7647e54aeffa0a415078e3dc0dfea491 matches ls-remote exactly; commit exists in the mirror and BRAIN/CURRENT-MISSION-STATE.md is present at that SHA; commit message matches the fold. Receipt shows a genuine 3-pass self-scorecard with a caught-and-fixed bug (se
+
 ### ✅ gap-t1142-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: t1032 heal unmerged, gate PR #2385 live, tip still drifted
@@ -52872,6 +52902,12 @@ _Last updated: 2026-11-15 00:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261114-1703 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-14 17:03 PST: full claim sweep of all 31 queued briefs, 0 claimed (47th consecutive hourly stall)
+
+**Evidence:** Fresh-window receipt (only unscored receipt this tick; backlog 606 unmatched files, all Oct-era gap/triage artifacts, none fresh). Verified first-hand: sweep log hidden_files/brief-queue/claim-sweep-20261114-1703.log exists (28,701 bytes, 258 lines) with 29 exit-7 + 2 exit-2 hits matching the receipt, and all 4 individually-attempted briefs (gate-s
 
 ### ✅ gate-stall-20261114-1558 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
