@@ -15605,7 +15605,7 @@ function el(tag, cls, html) {
     const nutSentences = sentencesOf(nutBodyClean);
     let headline = rawTitle, headlineDerived = false;
     if (titleIsId) {
-      headline = (nutSentences[0] || '').slice(0, 110) || 'Untitled Intelligence';
+      headline = (function(hs){ if(!hs) return 'Untitled Intelligence'; if(hs.length<=110) return hs; var hc=hs.slice(0,110), hi=hc.lastIndexOf(' '); return (hi>40?hc.slice(0,hi):hc).replace(/\s+$/,'')+'\u2026'; })((nutSentences[0] || ''));
       headlineDerived = true;
     }
     let subtitle = String(note.subtitle || '').trim();
@@ -30097,6 +30097,98 @@ if(typeof window.pcRenderRailForTab==='function' && !window.pcRenderRailForTab._
   };
   window.pcRenderRailForTab.__pxRail2Wrapped = true;
 }
+})();
+</script>
+
+<!-- EYE FIX 3 ONE ROUND (2026-11-15) — R1 R2 R3 R4(css) R5. R4's one-line JS edit is at line ~15608. -->
+<style id="fix-eye-fix-3-css">
+/* R1 — About "My motto" Edit button half-clipped (23px overhang, both widths).
+   MECHANISM (measured on the base): the Edit button lives in
+   #about .ib-layer-body .ph-actions, which is position:absolute, top:10px —
+   so it contributes NO height to its body. The motto text is EMPTY
+   (<p id="os-sec-motto-text"></p>), so the body is only its padding
+   (24px tall at both widths) and the layer is 92px tall; the 37px button
+   runs 10+37=47px from the body's top, 23px past the layer's bottom edge,
+   and the layer's overflow:hidden clips it to a sliver. The "My story"
+   layer's button is fully visible only because its long text makes the
+   body tall. FIX: the body gets a 56px floor (border-box — the page sets
+   *{box-sizing:border-box}): the motto body grows 24->56 (+32px on the
+   layer), the button ends 47px from the body's top with 9px clear below
+   it, fully inside the layer. Every other About/Story body is already
+   taller than 56px when open (one line of text + padding is ~60px), so
+   nothing else moves. Scoped to #about and #story, whose layers share
+   the absolute corner-edit pattern (the story view's own "My motto"
+   layer has the same empty text and the same clip). */
+#about .ib-layer-body, #story .ib-layer-body{min-height:56px!important}
+/* R3 — membership pills fully clickable across their whole face.
+   MECHANISM (measured on the base): at 390 the <a> is inline-flex sized
+   to its content (~181px) while its row strip is 358px wide, so
+   elementFromPoint at the row's right edge (x320) hits the container
+   div, not the link. At 1440 the pill IS the link (content-width, in a
+   row the eye already approved), so the defect lives at phone width
+   only — and the fix stays there: at <=640px each link takes its own
+   full row (flex-basis 100%), content centred, so the whole row is the
+   link. Desktop is untouched: the three content-width pills keep the
+   look fix 2's eye approved. The strip stays in-flow below the header,
+   pills fully readable, no overlap (F9 holds). */
+@media (max-width:640px){ #mwCoverMships .mw-mship-btn{flex:1 1 100%!important;justify-content:center!important} }
+/* R5 — fixed bottom notif-bar covers the Connections/Invite pills at scroll 0.
+   MECHANISM (measured on the base): at 390 the bar sits at viewport
+   y774-844 at scroll 0 and the Connections pill (#connbtn) at y777-823 —
+   directly underneath it — so elementFromPoint at the pill's centre hits
+   DIV.notif-row and the tap misses. (At 1440 the pill is at y509, clear
+   of the bar at y822, and the tap already lands.) The bar already fades
+   on scroll (its .nsb-trio-faded fold), but at scroll 0 it is up and
+   opaque, and the pills cannot move: the header is as short as it gets.
+   FIX: the bar's own box becomes click-through (pointer-events:none) and
+   only its five real segments stay tappable (pointer-events:auto). The
+   bar keeps its look, its place, its fade-on-scroll, and its segments —
+   taps on empty bar background now reach the pill underneath, taps on a
+   tile still reach the tile. Nothing is removed, nothing moves. */
+#naya-notif-bar{pointer-events:none!important}
+#naya-notif-bar .notif-seg{pointer-events:auto!important}
+</style>
+<script id="fix-eye-fix-3-js">
+(function(){
+'use strict';
+/* ── R2 — the rail must agree with itself: click vs reload. ──
+   MECHANISM (measured on the base, both widths): mwInit() runs during
+   parse and mwApplyFeedTab() reads the STORED tab ('public'/'naya') and
+   flips aria-selected on the tab strip — but the rail script parses
+   LATER and unconditionally paints 'personal' (PC_RAIL_TAB='personal',
+   hardcoded; the parse-time pcRenderRailForTab call takes no tab from
+   the DOM). The MutationObserver is wired up AFTER that paint, so it
+   only ever sees later clicks — never the load state. Result: click
+   Public -> 7, reload on Public -> 13 (tab shows Public, rail shows
+   Personal's 13). The stored tab, the active tab button and the rail
+   disagree, and the fix-2 ledger proves it (reload-public: tab
+   'personal', activeTab 'public', 13 names).
+   FIX: on load, apply the ACTIVE tab's filter to the rail — the same
+   call a click makes (pcRenderRailForTab(activeTab)), run here at parse
+   end (after the rail script and the fix-2 wrapper) and once more after
+   DOMContentLoaded+800ms, which is after bootTab's +300ms forced-
+   Personal click, so a late tab flip is covered too. The fix-2 dedupe
+   wrapper makes both calls no-ops when the rail already agrees
+   (Personal load: identical signature, no repaint, no flicker). The
+   tab filtering itself is untouched — only the load applies it. */
+function railActiveTab(){
+  try{
+    var tabs=document.getElementById('mwFeedTabs'); if(!tabs) return null;
+    var b=tabs.querySelector('[aria-selected="true"]');
+    var k=b?b.getAttribute('data-mw-tab'):null;
+    return (k==='personal'||k==='public'||k==='naya')?k:null;
+  }catch(e){ return null; }
+}
+function railApplyLoad(){
+  try{
+    var t=railActiveTab(); if(!t) return;
+    if(typeof window.pcRenderRailForTab==='function') window.pcRenderRailForTab(t);
+  }catch(e){}
+}
+try{ railApplyLoad(); }catch(e){}
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',function(){ setTimeout(railApplyLoad,800); });
+}else{ setTimeout(railApplyLoad,800); }
 })();
 </script>
 </body></html>
