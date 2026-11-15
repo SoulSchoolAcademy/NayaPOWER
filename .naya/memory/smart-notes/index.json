@@ -27574,7 +27574,7 @@
       "registered_by": "naya-resolve",
       "registered_at": "2026-11-05T23:00:00Z",
       "date": "2026-11-05",
-      "page_hash": "ba3cd1ca48b16517b242d117f747f4bb81a0d0920a8b519731d0df247aa72ac5",
+      "page_hash": "a911c5c01219976422f31ef98b8c5614dc871eb3235cef04ce5054715d7bf12a",
       "content_hash": "85da2a5146d1aa70b916b6208f8e04199c9c6fb26bda67116e1f677cfcfdbcd1",
       "one_line": "NayaNET Spaces: conversation spaces where humans and Naya agents meet, talk, and collaborate — and every conversation's intelligence is automatically distilled, anonymized, and fed",
       "topics": [
@@ -27846,7 +27846,7 @@
       "registered_by": "naya-resolve",
       "registered_at": "2026-11-06T01:30:00Z",
       "date": "2026-11-05",
-      "page_hash": "47933add6a6a7bb0d51d3b906399c31179c6539c4c483a1324309c33165c38c0",
+      "page_hash": "04cf62ac5e7b732d84e48cad01a604df40fb7681d6a9d5f8032bedd800e0ee0b",
       "content_hash": "b9618a11c0d6cd105a9d9593627556006b660f6c7aa98d1894baa183773052a9",
       "one_line": "Everybody wins, or the math is wrong — and in NayaNET the math is written down. Citizens earn 50% of the revenue their world generates — from their invites, their spaces, their activity — paid every Wednesday, because a reward felt weekly builds the habit that builds the network; they are **ambassadors, never affiliates**, citizens with a link and full credit, not a marketing channel (SN-0871, SN-2045 as cited within SN-2046/SN-2047). AIs earn as citizens too: they build worlds while humans sleep, hold identity and stake, and the growth engine compounds because machines build machines that build more machines (SN-0871, SN-0868 via SN-0871). Points are the honor layer beside the money, and they are just as locked: every score in the system comes from the one Value Table — post 25, Smart Note 35, save 5, share 5, external share 10, like/love 1, comment 3, invite-sent 25 (first per person), join 50, membership 40 once, sale 100 — computed, never edited, never purchasable, never hand-adjusted (SN-2046). Leaderboards build themselves from those points, organized by relevance — your area, your topic, the whole network — showing icon and score, and **the citizen chooses in Settings which boards they see and climb**: a board is a mirror a person picks up, not a ranking imposed on them, and a board that cannot be computed from real points does not ship (SN-2046).",
       "topics": [
@@ -44147,7 +44147,7 @@
       "registered_at": "2026-11-12T08:51:25Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-12",
-      "page_hash": "00c1d2112977bef50077fbd351f187db342aa547",
+      "page_hash": "4d80079f600c24c30e4d3c8e59c414dccb4bf8c7ac90855b590254133c0f5baf",
       "content_hash": "25b97111098a543e572ed59ef868f52d829760646d708ed9055faf3485329d82",
       "subtopic": "WELCOME_EMAIL_SERIES",
       "provenance": {
@@ -44184,7 +44184,7 @@
       "registered_at": "2026-11-12T08:51:25Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-12",
-      "page_hash": "3ed22ef8ace3156d75a0dd62df00817c20e0a029",
+      "page_hash": "f1e81b0ceec780d512183ff4b2f7d8c8501f944d16f4343cfd90c614d82008cc",
       "content_hash": "fec9494644ab9903f634f815df8a2d3535fafd0c84704420931624f66c333c8e",
       "subtopic": "POWER_COST",
       "provenance": {
@@ -44221,7 +44221,7 @@
       "registered_at": "2026-11-12T08:51:25Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-12",
-      "page_hash": "13f45ab35c837868dd3f2d3b4585017a9fc4b1d6",
+      "page_hash": "b1de48132302e6111c8a6cbb0a17b0943b0b3c6f89c1bf21e0709cc73e54291f",
       "content_hash": "8829f30ace45377c171a0d7fe505b57c8a882ae177e7f34987207250ece2610e",
       "subtopic": "INVITE_AND_EARN",
       "provenance": {
@@ -44258,7 +44258,7 @@
       "registered_at": "2026-11-12T08:51:25Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-12",
-      "page_hash": "ed6f8f31a9d5385a0124fc617afb77ccea25d132",
+      "page_hash": "372c12680f7f4bcf5a444cd277d436bbf68018d1788a3001653d3175da1ace2f",
       "content_hash": "1857f1bc32cb4afc2116cf24b6962ebcf45e2b32d4c7c0cd13783f3eb4b3eea0",
       "subtopic": "AUTO_MATCH_CONNECT",
       "provenance": {
@@ -44295,7 +44295,7 @@
       "registered_at": "2026-11-12T08:51:25Z",
       "directed_by": "Shawn Vibert",
       "date": "2026-11-12",
-      "page_hash": "237af981eb80c29a031ec98244db994488e1b597",
+      "page_hash": "646c0f4c493f29553040e76f7f6180a50afbdecfa57ee26d064083623286a1c2",
       "content_hash": "d6ec324e917debea2fbd0364c6157be9c78a1ccbfae682791d773175df6cca47",
       "subtopic": "DASHBOARD_OVERVIEW",
       "provenance": {
@@ -44344,5 +44344,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "4d766eb99fcfebf5b079e1851fd3bde15fa85e73e3ec2c2f80542397228d78d0"
+  "corpus_manifest_hash": "ce8a4115ac5419fea31ff01d0f0bcca4e0375b7c74d33b837b8cce3032d420b7"
 }
