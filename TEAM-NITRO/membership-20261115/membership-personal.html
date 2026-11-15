@@ -24993,10 +24993,37 @@ function saOpen(name){
    Smart Link, and the return activates the membership — the code then
    arrives in Smart Mail. The dashboard marks it "returned from PayPal",
    never payment-proven. No payment is ever made by this page. */
+/* PAYWALL MODAL CHROME — harvested verbatim from mshipOpenModalFallback
+   (the memberships modal's own fallback: the same .up-modal-ov / .up-modal
+   chrome openModal builds), plus openModal's P9 visible-x block (the
+   handler name is escM here, the fallback's own Escape handler). Defined
+   inside the sa* closure because window.openModal is NOT global — openModal
+   lives inside the ULTIMATE-PERSONAL IIFE. */
+function saModalFallback(title, sub){
+  var ov = document.createElement('div'); ov.className = 'up-modal-ov';
+  var m = document.createElement('div'); m.className = 'up-modal';
+  var h = document.createElement('h3'); h.textContent = title; m.appendChild(h);
+  if (sub) {
+    var p = document.createElement('p'); p.className = 'os-note';
+    p.textContent = sub; m.appendChild(p);
+  }
+  var x=document.createElement('button'); x.type='button'; x.className='nsb-modal-x'; x.textContent='\u00d7'; x.setAttribute('aria-label','Close');
+  x.addEventListener('click', function(){ ov.remove(); document.removeEventListener('keydown',escM); });
+  m.appendChild(x);
+  function escM(e){ if(e.key==='Escape'){ ov.remove(); document.removeEventListener('keydown',escM); } }
+  ov.appendChild(m);
+  ov.addEventListener('click', function (e) { if (e.target === ov) ov.remove(); });
+  document.addEventListener('keydown', escM);
+  document.body.appendChild(ov);
+  return m;
+}
 function saOpenPaywall(m){
-  var modal = null;
-  try{ modal = (typeof window.openModal === 'function') ? window.openModal(m.name + ' \u2014 members only', 'Paid members only. Pick your key, pay once, and your code arrives in Smart Mail.') : null; }catch(e){ modal = null; }
-  if(!modal){ try{ window.open(SA_PRICING_URL, '_blank', 'noopener'); }catch(e){} return; }
+  /* REPAIR 2026-11-15 (verify find): window.openModal is NOT global — it
+     lives inside the ULTIMATE-PERSONAL IIFE, so the typeof test was always
+     false and the paid door fell straight through to the pricing page.
+     The paywall now opens with the harvested fallback chrome above. */
+  var modal = saModalFallback(m.name + ' \u2014 members only', 'Paid members only. Pick your key, pay once, and your code arrives in Smart Mail.');
+  if(!modal) return;
   try{ modal.classList.add('mship-upgrade'); }catch(e){}
   var wrap = document.createElement('div');
   wrap.innerHTML =
