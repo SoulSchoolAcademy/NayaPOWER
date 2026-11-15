@@ -4,6 +4,8 @@ SN-2875 · DESIGN / PHONE
 
 **Created:** 2026-11-15 07:30Z
 
+**Kinds:** Honor · Multiplication · Craft · Knowledge
+
 ## Hook
 
 The phone is the page now — and every place a reader might decide, there has to be a way in.
@@ -11,8 +13,6 @@ The phone is the page now — and every place a reader might decide, there has t
 ## Nutshell
 
 Shawn's eye on the jewel-colors build: "I absolutely love it. It's really, really well done." And then the correction: the bullet points should be ORBS instead — "why wouldn't you just use our orbs that just sort of circled around as the bullet points... we have beautiful orbs right and Smart Factory you can just go there and use them... they would give a better presentation and make it feel alive." The jewel bullets are "okay but... I don't know what they are even." The orbs are ours, they are alive, they circle — a bullet that is a living orb makes the letter feel alive; a bullet that is a pretty stone nobody recognises is decoration without meaning. The colors stay (SN-2405): the orbs wear the digit colors. Orbs + closing seat dispatched by the captain in the same pass.
-
-Across 10 notes, the thread is: right, sn-, words.
 
 Across 10 notes, the thread is: sn-, seat, notes.
 
