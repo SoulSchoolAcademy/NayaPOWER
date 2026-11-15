@@ -4943,7 +4943,7 @@ html.os-calm
 
 <div class="os-view on" data-block="cover"><!-- ROUND 6 FIX-2: the cover + profile header is the page's persistent header, not a view — it no longer carries data-os-view, so showView never hides it (and the button row with it). The Live Feed below keeps data-os-view="home" and still switches as the home view. -->
 <div class="ph-cover" id="cvr">
-<div class="mw-cover-mships" id="mwCoverMships" aria-label="Memberships"></div>
+
   <input type="file" id="cvrin" accept="image/*" style="display:none;">
   <button class="ph-cover-btn" id="cvrbtn" type="button">Change cover</button>
 <div id="phCoverDlg" class="ph-flow-dlg" hidden role="dialog" aria-modal="true" aria-label="Change cover">
@@ -5006,6 +5006,10 @@ html.os-calm
       <button class="up-act" id="memberbtn" type="button" style="--ac:#e84fff;display:none;">★ Become a Member</button>
 </div>
 </div>
+<!-- EYE-FIX-2 F9 (2026-11-15) — the membership pills live here now, BELOW the
+     header wrapper in normal flow (see the fix block): in-flow, they can
+     intersect nothing in the header at any width. -->
+<div class="mw-cover-mships" id="mwCoverMships" aria-label="Memberships"></div>
 <style>
 /* Phone cover (2026-11-05): the cover band must be taller than the identity head
    (name + tagline + action rows, 351px at 390px wide) plus the Change-cover button
@@ -29951,6 +29955,148 @@ try{
 
 /* First sweep + reveal passes once the page has settled. */
 setTimeout(function(){ try{ sweepCards(document); refreshAboutReveal(); ensureNayaBtn(); collapseSmartLinks(); tilePoints(); stampFaces(document); }catch(e){} },1200);
+})();
+</script>
+
+<!-- EYE FIX 2 ONE ROUND (2026-11-15) — F9 F2 F8. -->
+<style id="fix-eye-fix-2-css">
+/* F9 — membership pills: a row strip under the header, in normal flow.
+   The base rule (.mw-cover-mships, absolute top:0 column, max-width 320px)
+   and round 1's rule (#mwCoverMships, bottom:14px of the cover) both put
+   the pills where the head lives. This block wins (later + !important):
+   static, row, wrapping, no max-width, side margins matching the head's
+   own padding (24px desktop / 16px phone). Empty until mwRenderCover
+   fills it: hidden, so a failed fill leaves no stray gap. */
+#mwCoverMships{position:static!important;top:auto!important;bottom:auto!important;left:auto!important;right:auto!important;display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;gap:10px!important;max-width:none!important;width:auto!important;margin:14px 24px 0!important;z-index:1}
+#mwCoverMships:empty{display:none!important}
+@media (max-width:640px){ #mwCoverMships{margin:12px 16px 0!important} }
+/* F2 — card header at phone width: title/stamp block + three action buttons
+   must fit INSIDE the 302px card (content box 264px) at 390.
+   MECHANISM (measured on the base, long AND short title): the stamp is
+   display:flex, flex-wrap:nowrap, white-space:nowrap, and its four spans
+   total 326px (dot 8.6 + date 180.2 + time 50.6 + "just now" 64 + gaps) —
+   so the text column's min-content is 326px, the identity is forced to
+   412px wide (orb 86 + 326), and the identity/title/stamp/actions all
+   run to x474.8 in a card ending at x346 (over by 128.8). The three
+   buttons are also nowrap (base <=640px rule) totalling ~360px, so SAVE
+   ends at x423. A one-line 326px stamp cannot fit in a 264px box — the
+   fit requirement governs, so at <=640px the stamp wraps BETWEEN its
+   spans (each span stays nowrap: date+time on line 1, "just now" on
+   line 2) and the buttons wrap to two lines. Desktop is untouched: the
+   stamp stays one line where it fits. The same .ib-blocktop structure
+   serves wall cards, so the fix covers them too. The same min-content
+   mechanism also pushed the card's BOTTOM row out: .board-actions is a
+   1fr grid at phone width, but its three children default to
+   min-width:auto, so the LOVE+LIKE row's ~308px min-content forced the
+   single track to 308px in a 264px box (right edge x371 vs card x346 —
+   pre-existing in the base, identical before and after this round's
+   header fix). The same rule lets the grid children shrink below their
+   content minimum; the LOVE/LIKE buttons are flex:1 and share the box. */
+@media (max-width:640px){
+  .ib-blocktop>*{max-width:100%!important;min-width:0!important}
+  .ib-blocktop .ib-identity{min-width:0!important;max-width:100%!important}
+  .ib-blocktop .ib-identity>*{min-width:0!important}
+  .ib-stamp{white-space:normal!important;flex-wrap:wrap!important;row-gap:2px!important}
+  .ib-stamp>*{white-space:nowrap!important}
+  .board-top-actions{flex-wrap:wrap!important;row-gap:8px!important;max-width:100%!important;min-width:0!important}
+  .board-top-actions .action{min-width:0!important}
+  .board-actions>*{min-width:0!important}
+}
+</style>
+<script id="fix-eye-fix-2-js">
+(function(){
+'use strict';
+/* ── F8 — the people rail paints deterministically: fallback first, one swap. ──
+   FINDINGS (measured on the base — probe-before.py + probe-rail-tab2.py):
+   * The rail's ONLY writer is pcRenderRailForTab (single innerHTML write);
+     PC_RAIL_LIVE is [] forever in this file — NO code here fetches the
+     gated matches endpoint (the string '/api/welcome/matches' occurs only
+     in a comment), no external scripts exist, no realtime subscription.
+     The rail paints EXACTLY ONCE per load: the 13-name seed set, in seed
+     order, identical across 3 fresh loads and across stored-feedtab
+     'naya'/'public' loads (mutation log: 1 paint, t~270-650ms, 13 names).
+     There is no live-vs-fallback race reachable from this artifact: an
+     8-name live set cannot be produced by this file. If the staged eye
+     still sees one, its caller lives outside this file (see the record).
+   * What IS code-fixable here, and is fixed: (a) the tab MutationObserver
+     re-renders the rail on EVERY attribute mutation of the tab strip — one
+     tab flip mutates class + aria-selected on three buttons, so one flip
+     used to mean several identical full rewrites; (b) a live payload, if
+     one ever arrives through pcRenderRail(live), would repaint on every
+     call even when identical; (c) nothing recorded what painted when.
+   FIX: wrap pcRenderRailForTab with a would-be signature (tab + live
+   aliases + rail search + language). The standing set is a deterministic
+   function of tab + search, so it needs no separate term — and it cannot
+   be read directly anyway: pcRailPeopleFor / PC_TAB_SETS are NOT on
+   window (scoped inside the rail script; only PC_RAIL_SEED, PC_RAIL_LIVE,
+   pcRenderRail and pcRenderRailForTab are exposed — verified by probe:
+   typeof window.pcRailPeopleFor === 'undefined'). A repaint whose
+   signature equals the last painted signature is skipped outright — one
+   paint per distinct set, ever. Every paint is logged to
+   window.__pxRailPaints (time, tab, live aliases, standing aliases as
+   painted, the aliases actually in the DOM after the paint), capped at
+   50. The seed signature is taken from the parse-time paint already in
+   the DOM, validated against window.PC_RAIL_SEED (the painted aliases
+   must equal the seed minus 'you'), so the first post-boot repaint of
+   the identical set is a no-op. The paint itself stays one atomic
+   innerHTML write (fallback seed first, then a single swap if a distinct
+   live set ever arrives). */
+var LEDGER = window.__pxRailPaints = (window.__pxRailPaints || []);
+function railLang(){ try{ return (typeof window.mwLangCode==='function') ? window.mwLangCode() : 'en'; }catch(e){ return 'en'; } }
+function railAliasList(arr){ var out=[]; (arr||[]).forEach(function(p){ if(p && p.alias) out.push(p.alias); }); return out; }
+function railParts(tab){
+  tab = tab || window.PC_RAIL_TAB || 'personal';
+  var q = String(window.PC_RAIL_Q||'').toLowerCase();
+  var has = function(p){ if(!q) return true; return ((p.alias||'')+' '+((p.nut||''))).toLowerCase().indexOf(q)>=0; };
+  var live = railAliasList((window.PC_RAIL_LIVE||[]).filter(has));
+  var lang = railLang();
+  return {tab: tab, live: live, q: q, lang: lang,
+          sig: tab+'|'+live.join(',')+'|'+q+'|'+lang};
+}
+function railPainted(){
+  try{
+    var out = [];
+    var cards = document.querySelectorAll('#pcRailList .pc-card');
+    for(var i=0;i<cards.length;i++) out.push(cards[i].getAttribute('data-pc-alias'));
+    return out;
+  }catch(e){ return []; }
+}
+function railStandingOf(painted, live){
+  var liveSet = {}; (live||[]).forEach(function(a){ liveSet[a]=true; });
+  return painted.filter(function(a){ return !liveSet[a]; });
+}
+var lastSig = null;
+try{
+  /* Seed the dedupe from the parse-time paint already in the DOM: only
+     trust it when the DOM's aliases are exactly the seed set that should
+     be painted for the personal tab (live empty, painted == seed minus
+     'you'). If it does not match, lastSig stays null and the first
+     repaint goes through — never a skipped paint on a guess. */
+  var seed = railParts(window.PC_RAIL_TAB||'personal');
+  var seedExpect = railAliasList((window.PC_RAIL_SEED||[]).filter(function(p){ return !p.you; }));
+  var got = railPainted();
+  if(seed.live.length === 0 && got.length === seedExpect.length && got.join(',') === seedExpect.join(',')){
+    lastSig = seed.sig;
+    LEDGER.push({t: Math.round(performance.now()), via: 'seed', tab: seed.tab, live: [], standing: got.slice(), painted: got});
+  }
+}catch(e){}
+if(typeof window.pcRenderRailForTab==='function' && !window.pcRenderRailForTab.__pxRail2Wrapped){
+  var _rr = window.pcRenderRailForTab;
+  window.pcRenderRailForTab = function(tab){
+    var parts;
+    try{ parts = railParts(tab); }catch(e){ parts = null; }
+    if(parts && parts.sig === lastSig) return; /* identical set: no repaint, no flicker */
+    if(parts) lastSig = parts.sig;
+    var r = _rr.apply(this, arguments);
+    try{
+      var painted = railPainted();
+      LEDGER.push({t: Math.round(performance.now()), via: 'render', tab: parts?parts.tab:(tab||'?'), live: parts?parts.live:[], standing: parts?railStandingOf(painted, parts.live):painted.slice(), painted: painted});
+      if(LEDGER.length > 50) LEDGER.splice(0, LEDGER.length-50);
+    }catch(e){}
+    return r;
+  };
+  window.pcRenderRailForTab.__pxRail2Wrapped = true;
+}
 })();
 </script>
 </body></html>
