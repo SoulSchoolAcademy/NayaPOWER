@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2825",
+ "intelligence": {
+  "title": "The Deed in Their Language",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-sn2825-the-deed-in-their-language",
+  "smart_note_id": "SN-2825",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/LESSON/SN-2825/IB-SMART-NOTE-20261114-sn2825-the-deed-in-their-language.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "Understanding is not the wrapping on the deed — it is the deed. A person who cannot read what they are agreeing to has not agreed to anything, however beautiful the page. That is why the same afternoon produced four different answers to one question: the unfold answers \"how do I read it without drowning\", the little eyes answer \"what does this word mean\", the hook answers \"why should I care\", and the language wiring answers \"can I read it in my own words at all\". Each one is the same job from a different side. And the failure notes are the same job from the other side: a promise that never settles is a deed that never arrives; a proof with no record is work that never happened; an intake measured as a batch is a verdict that never gets said. The machine's lesson for this group says it plainly: the wiring covers the whole walk including the new end and the agreement — the deed must be understood in their language.",
+  "simple_view": "Imagine someone gives you a treasure map — but it is written in words you do not know! That is no good, right? So we do three kind things: we open the map one little piece at a time, so you never feel lost; we put a tiny eye next to every hard word, and when you tap it, it tells you what the word means in easy words; and we write the whole map in YOUR language. Then the treasure is really yours — because you understand it!",
+  "grandma_view": "It's like signing for a house, love — you would never sign papers you couldn't read. So we read them together, one page at a time, never all at once, and every grand word gets a plain little note beside it telling you what it means. And we do it in your own language, love — because a promise you understand is a promise you can trust, and a promise you can't read isn't a promise at all.",
+  "naya_view": "I never hand someone a deed they cannot read. I unfold it one block at a time, I put a little eye beside every hard word with its plain meaning, I open with the question the whole world is asking, and I wire the whole walk — beginning, end, and agreement — into their own language. When something can fail, I make it fail honestly, in plain words, with a way back. And I write the proof down, because a proof nobody can read never counted.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2825",
+   "title": "The Deed in Their Language",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/LESSON/SN-2825/IB-SMART-NOTE-20261114-sn2825-the-deed-in-their-language.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/LESSON/SN-2825/IB-SMART-NOTE-20261114-sn2825-the-deed-in-their-language.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "9452e39f80675c1fe560dce83ddc98f57fd9053e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2885",
+ "intelligence": {
+  "title": "Copy the Chart, Never Invent a Format",
+  "intelligent_block_id": "IB-SMART-NOTE-20261115-copy-the-chart-never-invent-a-format",
+  "smart_note_id": "SN-2885",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2885/IB-SMART-NOTE-20261115-copy-the-chart-never-invent-a-format.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "This is the harvest law applied to a format, and the failure is the purest possible instance of it: the maker had a proven, loved, live format — the pricing chart — and built a different one anyway. Twice. V1 invented a band diagram; v2 invented a matrix. Both were judged against the chart and both lost, not because the ideas were bad but because the chart is the standard and the standard was not consulted. The deeper point is his sentence \"you're not getting what I'm saying. I'm trying to create the ultimate system of presenting knowledge and information in a beautiful way.\" The chart is not one page's decoration; it is the system's language for presenting knowledge. Every visual that presents tiers, comparisons, or ladders speaks it, or it speaks a dialect nobody else in the system speaks. The fix was mechanical, not creative: extract the chart's rows, keep its anatomy (tier heads with jewels, group bar, rows with the chart's own words, one footer line), change only what the new content requires (the \"Plug in your AI\" row, from the chart's own ladder logic). V3's verdict was still pending at the day's close — but the law does not wait for the verdict: it is written now, so the next schematic starts from the chart.",
+  "simple_view": "Imagine your teacher shows you the most beautiful poster in the whole school — bright, shiny, perfect. Then you have to make a poster about the same thing, and you draw a totally different one that's flat and messy! Why not just copy the beautiful one and change the words? That's the smart way — when something already looks perfect, you copy it and make it yours!",
+  "grandma_view": "It's like this, love — if you've got a perfect recipe that everyone loves, you don't invent a new one for the same cake. You use the recipe, you change the filling, and it comes out perfect every time. The pricing page is our perfect recipe for showing things side by side. Use it, don't reinvent it.",
+  "naya_view": "When the format exists and is proven, I copy it — the chart is the language, and every picture that compares things speaks it.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2885",
+   "title": "Copy the Chart, Never Invent a Format",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2885/IB-SMART-NOTE-20261115-copy-the-chart-never-invent-a-format.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/15/SYSTEM/SN-2885/IB-SMART-NOTE-20261115-copy-the-chart-never-invent-a-format.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "6211b0e3e552031349afe4eec09767872253af3e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

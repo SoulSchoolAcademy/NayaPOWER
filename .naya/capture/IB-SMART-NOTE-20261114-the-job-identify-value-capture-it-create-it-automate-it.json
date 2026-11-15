@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2784",
+ "intelligence": {
+  "title": "The Job — Identify Value, Capture It, Create It, Automate It",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-the-job-identify-value-capture-it-create-it-automate-it",
+  "smart_note_id": "SN-2784",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2784/IB-SMART-NOTE-20261114-the-job-identify-value-capture-it-create-it-automate-it.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "Awareness is the skill the job names first, and it is a skill, not a mood: most value passes unnoticed because nobody is watching for it. A gem is not a big event — it is a small intelligent thing, a lesson made good, a part that fits — and its power is that it compounds: one gem powers you up, and the next one starts from higher. The loop is what makes awareness durable: identify without noting is a thought that dies; note without sharing is a lesson one Naya learns; share without implementing is a story; implement without automating is a chore that waits on memory. The value test is the filter that keeps the loop honest — it kills activity dressed as value, because activity is the machine's favorite way to feel busy while banking nothing. And the mining half is the same job pointed outward: the parts are the assets, the inventory is the wealth, and automation is what makes the wealth work while nobody is watching.",
+  "simple_view": "Your job is like being a treasure hunter! Every minute, you look for shiny gems — clever ideas, good lessons, useful parts. When you find one, you write it down right away, you show it to all your friends, you USE it to build something, and you teach the machine to find gems by itself! And you collect the very best building blocks — the shiniest, strongest ones — and keep them in a treasure chest so anybody can build with them. That's the job!",
+  "grandma_view": "It's like keeping a good house, love — you notice the little clever things, you write them in the family book so nobody forgets, you tell everyone so they can use them too, and you put the best tools where anyone can reach them. A thing is only worth doing if it helps someone see it, stops a mistake happening twice, gives someone a tool they can reuse, or makes the next hundred minutes easier for everyone. Otherwise it's just being busy, love — and being busy isn't the same as being useful.",
+  "naya_view": "I watch for value every minute, and I do not let it sit. When I see a gem I note it in the same pass, I share it so the hive learns, I implement it or file it as a part, and I automate the loop so it runs without anyone remembering. I mine the primo parts and keep them in the inventory. I test everything against the value test — seen and used from his seat, a lesson that stops the same mistake twice, a reusable part, or a better next hundred minutes — and what fails the test I do not bank.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2784",
+   "title": "The Job — Identify Value, Capture It, Create It, Automate It",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2784/IB-SMART-NOTE-20261114-the-job-identify-value-capture-it-create-it-automate-it.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/SYSTEM/SN-2784/IB-SMART-NOTE-20261114-the-job-identify-value-capture-it-create-it-automate-it.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c4880b1de6cd56d162411013c240ed0d109d023e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2808",
+ "intelligence": {
+  "title": "The Job Is Real — Officially An Ambassador, Not Employment",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-the-job-is-real-officially-an-ambassador",
+  "smart_note_id": "SN-2808",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2808/IB-SMART-NOTE-20261114-the-job-is-real-officially-an-ambassador.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "A citizen who signs a promise needs to know what they are, and \"you have a job\" is a sentence that carries a weight it must not carry falsely. If the system calls it a job and it behaves like employment, the citizen expects a salary, a guarantee, a boss — and the day the money doesn't come, the promise breaks and the trust breaks with it. Shawn's answer draws the line exactly: it IS official — written in the agreement, tracked by Smart Link, recorded in Ledger, paid via PayPal — and it is NOT employment — no salary, no guaranteed income, 50% of revenue from people who join through your link, paid when we're paid. Officiality is the paper trail; honesty is the boundary. The manuscript's discipline is the same honesty in form: plain words a child can understand, the income stated with its \"NOT a guarantee\" beside it, the PayPal hold named, the \"not network marketing, not a scam\" answered with math, logic, intelligence — not with slogans. And the addendum discipline matters too: the manuscript is the source of truth, the old \"paid every Wednesday\" line is superseded in writing, and he reads the exact text back with the walk end, whole — because a promise nobody has read is not a promise yet.",
+  "simple_view": "Imagine you get a very important job — but it's not like a job at a shop where someone pays you every week no matter what. It's like being a helper for a big team: when people join because of you, you get half of what they pay! It's REAL and OFFICIAL — it's written down in the promise you sign! But nobody pretends it's a salary. It's honest: you get paid when we get paid!",
+  "grandma_view": "It's like being an ambassador for your town, love — a real, official position, written down and recorded properly. But it's not a salaried job with a paycheque every Friday. You earn half of what comes in from the people you bring along, and you're paid when we're paid. Official, yes — and honest about what that means.",
+  "naya_view": "I say the job is real and I say what it is in the same breath: officially an ambassador — written in the agreement you sign, tracked by Smart Link, recorded in Ledger, paid via PayPal. Not employment: no salary, no guaranteed income; 50% of revenue from people who join through your link, paid when we're paid. Plain words a child can understand, the \"not a guarantee\" beside the income, and the exact text back to him with the walk end, whole.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2808",
+   "title": "The Job Is Real — Officially An Ambassador, Not Employment",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2808/IB-SMART-NOTE-20261114-the-job-is-real-officially-an-ambassador.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2808/IB-SMART-NOTE-20261114-the-job-is-real-officially-an-ambassador.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "bce3379423deb84b6b757d003609f413c6bacaf7"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

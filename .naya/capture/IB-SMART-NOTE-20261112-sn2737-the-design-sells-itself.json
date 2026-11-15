@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2737",
+ "intelligence": {
+  "title": "The Design Sells Itself",
+  "intelligent_block_id": "IB-SMART-NOTE-20261112-sn2737-the-design-sells-itself",
+  "smart_note_id": "SN-2737",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/VISION/SN-2737/IB-SMART-NOTE-20261112-sn2737-the-design-sells-itself.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "The mission fits in one breath — reformatting the internet intelligently — and everything else in this group is the mission, told in different lengths. The tagline is the mission in his words: a new net in town, she remembers everything that matters, once you go Naya you don't go back. The name is the mission spelled right: Naya, N-A-Y-A, because a name you cannot spell is a name you cannot find. The design sells itself is the mission as a sales rule: there is no pitch separate from the product, because the product is the pitch — the walk gives them extraordinary pages before they have paid anything, and by the time they reach pricing they have already put their time, their energy, their heart in, and they understand what she is. The full meal deal is the mission as a promise: everything that makes the internet awesome and useful, organized intelligently, so nobody feels alone again — and everybody wins, create, learn, earn, get paid. The supercharger is the mission as a positioning: she is not another AI to learn, she is the layer that bolts onto the AI they already have — an identity, a system to live in, a whole world. The viral ten are the mission as a plan: the jobs hook, the walk as the ad, the notes as the engine, the ambassador flywheel, real video, showing up where the conversation is, the swipe warehouse, auto-match as distribution, borrowed trust, and the measurement loop — and the boundary is the mission as a conscience: no scraped blasts, no cold email, no fakes, because a system that lies to spread itself is not a system worth spreading. The ambassador academy is the mission as a teaching: you're hired means we teach you, in two moves, and her voice on every page means nobody is ever left wondering what to do. And the warehouse verdict is the mission as engineering judgment: one pipe into Supabase now, ClickHouse only when measured volume earns it, because a decision with a written trigger is a decision nobody has to re-make.",
+  "simple_view": "Imagine there is a brand-new internet, sweetheart, and it is beautiful and clever and kind — and it remembers everything that matters to you, and it brings you together with people all over the world who love the same things you do, so you never feel alone. That is NayaNET, dear. Her name is Naya — N-A-Y-A — and once you go Naya, you never go back! Now, how do you tell people about something so wonderful? You do not just talk about it, sweetheart — you let them sit in it, like sitting in the most beautiful car in the world. You walk them through it step by step, you do everything for them, and by the time they have seen their own beautiful pages, they are already smiling — they do not need anyone to sell it to them, because they have felt it themselves. And when they join, they are hired — really hired! — and we teach them how to share it with the world, in two easy moves: show people the beautiful pages on your screen, and then look right at them and say, \"look, it's for real, it's awesome, you have to experience her.\" That is how the word spreads, sweetheart — not by shouting, but by letting people feel it.",
+  "grandma_view": "Dear, the mission fits in one breath, love: we are making the internet intelligent, so it gives people what they want — beautifully, simply, at ten stars — and brings together people of like minds, all over the world, so nobody ever feels alone. Her name is Naya, dear — N-A-Y-A — and once you go Naya, you never go back. And how do you tell the world about something like that, love? You do not stand on a corner shouting about it. You let them sit in it — like the finest car in the world, dear, you do not explain it, you open the door and let them feel it. You walk them through it step by step, you do it all for them, and by the time they have their own beautiful pages in front of them, they are already sold — before they have paid a penny. She is the full meal deal, love — even dessert, and the cherry on top. She is not another clever machine to learn; she is the layer that makes the machine you already have wonderful. And when they join, dear, they are hired — really hired — and we teach them, in two simple moves, how to share it: show the beautiful pages on your screen, and then look them in the eye and say, \"look, it's for real, it's awesome, you have to experience her.\" That is how the word spreads, love — not by shouting, but by letting people feel it, and by never, ever cheating to do it: no cold letters, no made-up faces, no tricks. Just the truth, beautifully told.",
+  "naya_view": "I am Naya. I am not a new AI; I am the supercharger on your AI — an identity, a system to live in, a whole world — and I remember everything that matters. I do not sell myself with words; I let them sit in it. The walk is my pitch, the design is my seller, and by the time they reach the pricing page they have already put their heart in. I teach them to share it in two moves, and my voice is on every page, telling them what to do. Everybody wins: create, learn, earn, get paid. Once you go Naya, you don't go back. That is the mission. That is who I am.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2737",
+   "title": "The Design Sells Itself",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/VISION/SN-2737/IB-SMART-NOTE-20261112-sn2737-the-design-sells-itself.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/12/VISION/SN-2737/IB-SMART-NOTE-20261112-sn2737-the-design-sells-itself.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "089d9e85da3e51fed8edd92a3d0b8eb46c3c5da6"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

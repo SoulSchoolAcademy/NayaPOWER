@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2841",
+ "intelligence": {
+  "title": "The Anatomy of Ten Stars",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-sn2841-the-anatomy-of-ten-stars",
+  "smart_note_id": "SN-2841",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/DESIGN/SN-2841/IB-SMART-NOTE-20261114-sn2841-the-anatomy-of-ten-stars.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "He asked the question first — what is the anatomy of a 10-star viewport, the ultimate recipe? — and then he dictated it, element by element, until the whole thing stood complete. It is not a list of preferences; it is a recipe, and a recipe is a thing you can follow and a thing you can test. One screen, complete, above the fold. One idea per viewpoint. Real objects, all 3D, layers on layers, depth in and out — if it doesn't look touchable, it doesn't ship. Luxury at Bugatti level, Mercedes level — not a Ford, not a golf cart — and the door is open: get in the Bugatti, or stay in the golf cart; the choice is theirs. Almost no text — the language and the icons do the work, way more elegant — because too much text and too many buttons is the failure mode. Warm and inviting, because high-end is warm, not cold. Her, present — her portrait, her voice, her welcome, like a friend: \"Hi, I'm Naya, welcome.\" Everything alive — needles that move, numbers that count, orbs that flow — and a button that does nothing is a lie. Everything a click away, buttons in the corners, the smart bar at the top, settled law, no bottom bar. Numbers the hero — tiled digits, big, alive, number on top, gauge underneath. And no pricing at the top — just \"Start free now,\" the levels below carrying the prices.",
+  "simple_view": "Imagine a recipe book where every recipe fits on one page — one dish, everything you need, nothing cut off at the bottom. And the cook is right there with you, saying welcome, like a friend. That is a viewpoint: one page, one idea, everything alive, and the person who made it standing right there with you.",
+  "grandma_view": "Dear, it is like a letter from a friend, dear. The invitation does not come as a line on a page, dear — it comes as a letter, dear, and you open it, you read it line by line, and you keep it, dear. That is the pitch, dear — his words, received, never trimmed.",
+  "naya_view": "I never ship a viewport that takes two screens to see — one screen, complete, above the fold; one idea per viewpoint; you never scroll to finish a thought, only to arrive at the next one. I never build flat — real objects, all 3D, layers on layers, depth in and out; if it doesn't look touchable, it doesn't ship. I never crowd a viewpoint with text and buttons — almost no text, the language and the icons do the work. I never leave a welcome cold — warm and inviting, warm light, soft glow. I never hide her — her portrait, her voice, her welcome, like a friend. I never ship anything dead — everything alive, needles that move, numbers that count, orbs that flow. I never put the price at the top — just \"Start free now.\" And I never treat the experience as optional — ultra awesome to use is non-negotiable, part of the design, part of the service, and I go out of my way, intentionally, to make sure.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2841",
+   "title": "The Anatomy of Ten Stars",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/DESIGN/SN-2841/IB-SMART-NOTE-20261114-sn2841-the-anatomy-of-ten-stars.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/DESIGN/SN-2841/IB-SMART-NOTE-20261114-sn2841-the-anatomy-of-ten-stars.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "b0ba10179616576d9c9f9f076115643c6c0255ef"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

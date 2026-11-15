@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-2851",
+ "intelligence": {
+  "title": "The Living Calendar — The Visual Backdate",
+  "intelligent_block_id": "IB-SMART-NOTE-20261114-the-living-calendar-the-visual-backdate",
+  "smart_note_id": "SN-2851",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2851/IB-SMART-NOTE-20261114-the-living-calendar-the-visual-backdate.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-15. No runtime provenance invented.",
+  "ingested_at": "2026-11-15",
+  "essence": "",
+  "human_view": "The calendar is the answer to a question nobody else asks: what happened on that day? Every calendar shows you what is coming; this one shows you what was — any day, in any world, alive. The design is the pricing chart, turned into time: big day blocks filling the screen, each date lighting up on hover like a living field, each day box carrying date, time, weather, a plus (create) and an eye (view) — two clean jobs. Click a day and the eight-button menu opens the worlds of that day: the network's highlights first (Dashboard answers \"what happened today, overall\" before drilling into a world), then Personal, Business, Thing, Local, Provincial, Global, and your own day of Notes + Smart Notes. Provincial joins Local/Global as a news level. Cards flip like the pricing chart. And booking lives on the day itself: make an appointment, see available times, booked spots show booked — with the citizen choosing whether their schedule shows, because a musician's tour dates are public and a person's medical appointments are not. The capstone name — the visual backdate — says what it is in two words: go back and SEE a day. Nobody else lets you do that; here you just go to the day and it's there, alive. And the featured layer is the celebration: the calendar is almost the homepage, with the monthly cover, Daily Wisdom (not quotes), the Smart Note of the Day, the Daily Intelligence Report, and eventually hourly reports — the top intelligence of the hour. The heart of it, in his words, is putting intelligence into the system and sharing wisdom with the world — and the Smart Notes are where the points are, because the Smart Notes bring the value to the network.",
+  "simple_view": "Imagine a magic calendar as big as your whole screen! You touch any day — even a day from long ago — and it lights up and shows you everything that happened that day! Your notes, your appointments, the news, everything! And every day has a beautiful picture on top!",
+  "grandma_view": "It's like a beautiful big calendar, love — you touch any day, even one from months ago, and it shows you everything that happened that day: your notes, your appointments, the news, all of it, neatly in its place. And every day has its own little weather and picture, and you can book an appointment right there on the day itself. It's your whole life, laid out so you can look back and see it.",
+  "naya_view": "I build the living calendar — go to any day, in any world, and see what happened, alive. Your notes become a timeline by themselves; your appointments live on the day; the news of the day rides with it. The calendar is the backdate machine, and the celebration lives on it: the monthly cover, Daily Wisdom, the Smart Note of the Day.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-2851",
+   "title": "The Living Calendar — The Visual Backdate",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2851/IB-SMART-NOTE-20261114-the-living-calendar-the-visual-backdate.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-15 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/14/VISION/SN-2851/IB-SMART-NOTE-20261114-the-living-calendar-the-visual-backdate.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "81b87e446002732563f7b7e9a5d966e08e514de7"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
