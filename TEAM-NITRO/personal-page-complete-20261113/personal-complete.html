@@ -4088,6 +4088,8 @@ body.fc-open{overflow:hidden;}
 <p class="os-note tg-hint" id="tg-hint" data-mw-tr="hint">Naya note — Naya formats your words beautifully. Write it, dictate it with the microphone — Naya writing it for you is coming soon.</p>
 <input class="os-input" id="os-post-author" type="text" placeholder="Your name (visitor or owner)" autocomplete="name">
 <div class="os-fieldwrap"><textarea class="os-textarea" id="os-post-body" rows="3" data-mw-ph="Make a post on this app’s feed…" placeholder="Make a post on this app&rsquo;s feed&hellip;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-post-body" aria-label="Dictate your post" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="os-postimg-row" id="osPostImgRow"><input type="file" id="osPostImgIn" accept="image/*" hidden><button type="button" class="ph-msg" id="osPostImgBtn">\uD83D\uDDBC Add a photo</button><button type="button" class="ph-msg" id="osPostImgRemove" hidden>Remove photo</button></div>
+<div id="osPostPreview" class="os-post-preview" hidden><p class="os-note" style="margin:0 0 8px;">Preview \u2014 how it will look:</p><div id="osPostPreviewCard"></div></div>
 <div class="ph-actions"><button class="ph-msg" id="os-sched-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Schedule</button><button class="ph-msg" id="os-vis-toggle" type="button" aria-pressed="false" title="Who can see this post"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Private</button><button class="ph-connect" id="os-post-btn" type="button">✦ Post my Naya note</button></div>
 <div class="os-status" id="os-post-status"></div>
 <div id="tg-review" hidden>
@@ -6783,7 +6785,7 @@ button.os-ld-node .os-ld-n{
 <div class="ph-sec os-view" id="about" data-os-view="about" data-block="about">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> About Me</div>
 <div class="ib-layer layer-purple open">
-<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#a06bff"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M10 7.5H6.8A3.3 3.3 0 0 0 3.5 10.8V17h6.6v-6.6H6.9a1.6 1.6 0 0 1 1.5-1.7v-1.2zm10.4 0h-3.2a3.3 3.3 0 0 0-3.3 3.3V17h6.6v-6.6h-3.2a1.6 1.6 0 0 1 1.5-1.7V7.5z"/></svg></span><b>My motto</b><span class="ib-chev">▾</span></button>
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#a06bff">S</span><span class="os-jewel os-jewel-h" style="--jc:#a06bff"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M10 7.5H6.8A3.3 3.3 0 0 0 3.5 10.8V17h6.6v-6.6H6.9a1.6 1.6 0 0 1 1.5-1.7v-1.2zm10.4 0h-3.2a3.3 3.3 0 0 0-3.3 3.3V17h6.6v-6.6h-3.2a1.6 1.6 0 0 1 1.5-1.7V7.5z"/></svg></span><b>My motto</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
 <div class="ib-nutshell" style="--tone:#a06bff"><p id="os-sec-motto-text" class="os-note" style="margin:0;"></p></div>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-motto-edit" rows="2" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-motto-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
@@ -6792,7 +6794,7 @@ button.os-ld-node .os-ld-n{
 </div>
 </div>
 
-<div class="ib-layer layer-sapphire open"><button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#3ca8ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11.5V6a1.5 1.5 0 0 1 3 0v4.5m0-6a1.5 1.5 0 0 1 3 0V11m0-5.5a1.5 1.5 0 0 1 3 0V12m0-3.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-2.3a6 6 0 0 1-4.7-2.3L3.6 15a1.5 1.5 0 0 1 2.4-1.7L7 14.5"/></svg></span><b>My story</b><span class="ib-chev">▾</span></button>
+<div class="ib-layer layer-sapphire open"><button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#3ca8ff">S</span><span class="os-jewel os-jewel-h" style="--jc:#3ca8ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11.5V6a1.5 1.5 0 0 1 3 0v4.5m0-6a1.5 1.5 0 0 1 3 0V11m0-5.5a1.5 1.5 0 0 1 3 0V12m0-3.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-2.3a6 6 0 0 1-4.7-2.3L3.6 15a1.5 1.5 0 0 1 2.4-1.7L7 14.5"/></svg></span><b>My story</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
 <div class="ib-nutshell" style="--tone:#3ca8ff"><p id="abouttext">Shawn Vibert builds NayaNET — the intelligent layer of the internet, where intelligence compounds and everybody wins. This is his personal world: his feed, his messages, his invites, his reports and intel, all working, all live. Welcome to the new world. Welcome to the new net.</p></div>
 <div class="os-fieldwrap"><textarea class="ph-about-edit" id="aboutedit" style="display:none;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="aboutedit" aria-label="Dictate your story" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
@@ -6810,7 +6812,7 @@ button.os-ld-node .os-ld-n{
      empty, wired to the same Edit/Save machinery (key "whatido") — the
      words are Shawn's to write, never invented. -->
 <div class="ib-layer layer-emerald open">
-<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#2fe89e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-8 8l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 8-8l-3.8 3.8z"/></svg></span><b>What I do</b><span class="ib-chev">▾</span></button>
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#2fe89e">S</span><span class="os-jewel os-jewel-h" style="--jc:#2fe89e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-8 8l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 8-8l-3.8 3.8z"/></svg></span><b>What I do</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
 <div class="ib-nutshell" style="--tone:#2fe89e"><p id="os-sec-whatido-text" class="os-note" style="margin:0;">No what-I-do yet &mdash; tap Edit and say what you do, in one line.</p></div>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-whatido-edit" rows="3" style="display:none;margin-top:10px;"></textarea></div>
@@ -6819,7 +6821,7 @@ button.os-ld-node .os-ld-n{
 </div>
 </div>
 <div class="ib-layer layer-gold open">
-<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#ffd45a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></span><b>My goals</b><span class="ib-chev">▾</span></button>
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#ffd45a">S</span><span class="os-jewel os-jewel-h" style="--jc:#ffd45a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></span><b>My goals</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
 <div class="ib-nutshell" style="--tone:#ffd45a"><p id="os-sec-goals-text" class="os-note" style="margin:0;">One million citizens by 2027.</p></div>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-goals-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-goals-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
@@ -6828,7 +6830,7 @@ button.os-ld-node .os-ld-n{
 </div>
 </div>
 <div class="ib-layer layer-indigo open">
-<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#6675ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></span><b>My purpose</b><span class="ib-chev">▾</span></button>
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#6675ff">S</span><span class="os-jewel os-jewel-h" style="--jc:#6675ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></span><b>My purpose</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
 <div class="ib-nutshell" style="--tone:#6675ff"><p id="os-sec-purpose-text" class="os-note" style="margin:0;">No purpose written yet &mdash; tap Edit and say why this page exists, in one line.</p></div>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-purpose-edit" rows="3" style="display:none;margin-top:10px;"></textarea></div>
@@ -6837,7 +6839,7 @@ button.os-ld-node .os-ld-n{
 </div>
 </div>
 <div class="ib-layer layer-orange open">
-<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#ff8c42"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0"/><path d="M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></svg></span><b>My mission</b><span class="ib-chev">▾</span></button>
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#ff8c42">S</span><span class="os-jewel os-jewel-h" style="--jc:#ff8c42"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0"/><path d="M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></svg></span><b>My mission</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
 <div class="ib-nutshell" style="--tone:#ff8c42"><p id="os-sec-mission-text" class="os-note" style="margin:0;">Build NayaNET — the intelligent highway for the AI age.</p></div>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-mission-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-mission-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
@@ -6846,7 +6848,7 @@ button.os-ld-node .os-ld-n{
 </div>
 </div>
 <div class="ib-layer layer-magenta open">
-<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-jewel os-jewel-h" style="--jc:#ed42c4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20L14 10"/><path d="M14 10l6-6 2 2-6 6z"/><path d="M20 2l2 2"/></svg></span><b>My vision</b><span class="ib-chev">▾</span></button>
+<button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#ed42c4">S</span><span class="os-jewel os-jewel-h" style="--jc:#ed42c4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20L14 10"/><path d="M14 10l6-6 2 2-6 6z"/><path d="M20 2l2 2"/></svg></span><b>My vision</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
 <div class="ib-nutshell" style="--tone:#ed42c4"><p id="os-sec-vision-text" class="os-note" style="margin:0;">A world where intelligence compounds and everybody wins.</p></div>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-vision-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-vision-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
@@ -7056,90 +7058,114 @@ button.os-ld-node .os-ld-n{
 <div class="ph-sec os-view" data-os-view="skills" hidden>
 <div class="ph-sec-t"><span class="ph-dot" style="background:#e84fff;color:#e84fff;"></span> Smart Skills</div>
 <p class="os-note">The skills so far — the list keeps growing. Every skill is a capability you call on by name: a Smart Note (the knowledge) + a Factory template (the ability to do it), stored in your Smart Vault. Tap a skill to see why it matters.</p>
+
+<div class="ph-card" style="--ac:#e84fff;" id="os-skill-add-card">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#e84fff">✦</span> Add a skill</h3>
+<p class="os-note" style="margin-top:8px;">One skill, three answers — what it is, why it matters, and what’s in it for them.</p>
+<div class="os-fieldwrap"><input class="os-input" id="os-skill-new-what" type="text" placeholder="What it is — the skill, in a few words" maxlength="80" autocomplete="off"></div>
+<div class="os-fieldwrap"><textarea class="os-textarea" id="os-skill-new-why" rows="2" placeholder="Why it matters — why this skill counts"></textarea></div>
+<div class="os-fieldwrap"><textarea class="os-textarea" id="os-skill-new-foryou" rows="2" placeholder="What’s in it for them — what they get from it"></textarea></div>
+<div class="ph-actions"><button class="ph-connect" id="os-skill-new-add" type="button">Add this skill</button></div>
+<div class="os-status" id="os-skill-new-status"></div>
+</div>
 <div id="os-skills-list">
 <div class="ph-card sa-skill" style="--ac:#a06bff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">✦</span> The Login Skill</h3>
 <p class="sa-skill-nutshell">One dial, your name, your code — and you&#x27;re in. The door into NayaNET.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>The login is the first thing anyone ever touches. If it feels like a form, the whole system feels like a form. If it feels like stepping through a portal into a private world, the whole system feels like a place worth entering. The door sets the feeling for everything after it.</p>
+<p class="sa-skill-foryou"><b>What’s in it for you</b>You step into your private world in seconds, through a door that feels like yours.</p>
 </div>
 <div class="ph-card sa-skill" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">✦</span> The Mail Skill</h3>
 <p class="sa-skill-nutshell">Your mail and your messages in one place, private by default — nobody reads them, not even us.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>The old internet spied on your mail. Every message you sent was read, scanned, and sold. Here it is the opposite: your mail is yours, and it stays yours. When people know nobody is listening, they talk freely — and that is when real connection happens.</p>
+<p class="sa-skill-foryou"><b>What’s in it for you</b>You talk freely, knowing nobody is listening — and that is when real connection happens.</p>
 </div>
 <div class="ph-card sa-skill" style="--ac:#6675ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#6675ff">✦</span> The Notes Skill</h3>
 <p class="sa-skill-nutshell">I take your notes and turn what you learn into intelligence everyone can use.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>A good idea that isn&#x27;t written down is gone by tomorrow. And an idea that is written down but never shared only helps one person. When I take the note and share the good ones, your learning doesn&#x27;t die with the day — it compounds, and everyone gets smarter from it.</p>
+<p class="sa-skill-foryou"><b>What’s in it for you</b>Your learning compounds — what you learn today keeps helping everyone tomorrow.</p>
 </div>
 <div class="ph-card sa-skill" style="--ac:#7fd4ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#7fd4ff">✦</span> The Lists Skill</h3>
 <p class="sa-skill-nutshell">Your people and your notes, organized, one tap away.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>The old internet made you hunt. Your contacts were in one app, your notes in another, and the thing you were looking for was always in the third place you checked. When your world is organized for you, you stop hunting and start doing.</p>
+<p class="sa-skill-foryou"><b>What’s in it for you</b>You stop hunting and start doing — your people and your notes, one tap away.</p>
 </div>
 <div class="ph-card sa-skill" style="--ac:#2fe89e;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#2fe89e">✦</span> The Links Skill</h3>
 <p class="sa-skill-nutshell">Every link you share is clean, short, and tracked — you see the click and the return.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>A raw link is a mess — long, ugly, and silent. You share it and you never know if anyone came. A clean link is an address someone can remember, and the tracking means you know it worked. Sharing without knowing is shouting into the dark; sharing with a Smart Link is a conversation.</p>
+<p class="sa-skill-foryou"><b>What’s in it for you</b>You share a clean link and you know it worked — every click and return, seen.</p>
 </div>
 <div class="ph-card sa-skill" style="--ac:#ff9a5a;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#ff9a5a">✦</span> The Meet Skill</h3>
 <p class="sa-skill-nutshell">Meet face to face, right inside your world, whenever you book it.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>A meeting that makes you leave your world breaks your flow. You were in your page, with your notes and your people, and then you had to go somewhere else to talk. When the meeting lives where your world lives, the conversation starts where you left off — with everything you need right there.</p>
+<p class="sa-skill-foryou"><b>What’s in it for you</b>You meet face to face without leaving your world — the conversation starts where you left off.</p>
 </div>
 <div class="ph-card sa-skill" style="--ac:#e84fff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#e84fff">✦</span> The Factory Skill</h3>
 <p class="sa-skill-nutshell">Tell me what you want to build, and I build it from the parts that already exist.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>You should not need design skill to have a beautiful world. The old way said: learn to design, or hire someone who can. The factory says: the taste is locked into the template. You bring the idea, I bring the parts, and the result is beautiful from the first click — because the parts were already made beautiful by someone who knows how.</p>
+<p class="sa-skill-foryou"><b>What’s in it for you</b>You bring the idea, the parts bring the beauty — a beautiful world from the first click.</p>
 </div>
 <div class="ph-card sa-skill" style="--ac:#ff5e6c;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#ff5e6c">✦</span> The Match Skill</h3>
 <p class="sa-skill-nutshell">I find the people like you, automatically, and show you how close the match is.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>The old internet showed you strangers and called it connection. You had to hunt for your people, and most of the time you never found them. When the system knows who you are, it can bring your people to you — and that is the difference between a feed full of noise and a world full of like minds.</p>
+<p class="sa-skill-foryou"><b>What’s in it for you</b>Your people come to you — a world full of like minds, not a feed full of noise.</p>
 </div>
 <div class="ph-card sa-skill" style="--ac:#2dd4bf;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#2dd4bf">✦</span> The Smart Vault Skill</h3>
 <p class="sa-skill-nutshell">Your own private vault that remembers everything for you and keeps it organized.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>There is a sickness in the old internet: you save things and you never find them again. The note is in one app, the file in another, the lesson in a third — and when you need it, it is gone. The vault cures that. Everything you save goes to one place, and one place is the only place you ever have to look.</p>
+<p class="sa-skill-foryou"><b>What’s in it for you</b>Everything you save goes to one place — and one place is the only place you ever look.</p>
 </div>
 <div class="ph-card sa-skill" style="--ac:#ffbf3d;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#ffbf3d">✦</span> The Numbers Skill</h3>
 <p class="sa-skill-nutshell">Everything you do is recorded, and your numbers are shown back to you as gauges you can read in two seconds.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>If you can&#x27;t see your numbers, you can&#x27;t see your world. How many points have you earned? How many people joined through you? How is your world doing? Without the record, you are guessing. With it, you know — and knowing is what lets you decide what to do next.</p>
+<p class="sa-skill-foryou"><b>What’s in it for you</b>You see where you stand and decide what to do next — no guessing.</p>
 </div>
 <div class="ph-card sa-skill" style="--ac:#7c3aed;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#7c3aed">✦</span> The Access Skill</h3>
 <p class="sa-skill-nutshell">Turn any page into a membership — your course, your lessons, your people, behind a door that fits.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>Your teaching should live in your world, not in a separate app. The old way said: build a course somewhere else, send people away from your page, and hope they come back. Here the course IS your page — the same cover, the same feed, the same login. Your people never leave your world to learn from you.</p>
+<p class="sa-skill-foryou"><b>What’s in it for you</b>Your people never leave your world to learn from you — your course lives on your page.</p>
 </div>
 <div class="ph-card sa-skill" style="--ac:#22d3ee;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#22d3ee">✦</span> The Ask Skill</h3>
 <p class="sa-skill-nutshell">Ask me anything, and I answer from everything the system knows.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>Intelligence is only useful if you can ask for it. A library nobody asks is a locked room. A system that knows everything but answers nothing is a machine with no door. Asking is the door — it is how the intelligence gets from the system to you, in the moment you need it.</p>
+<p class="sa-skill-foryou"><b>What’s in it for you</b>You get the answer in the moment you need it — the intelligence comes to you.</p>
 </div>
 <div class="ph-card sa-skill" style="--ac:#b8ee57;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#b8ee57">✦</span> The Growth Skill</h3>
 <p class="sa-skill-nutshell">Invite people to your world, watch them join, and earn half of what they pay, automatically.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>The people who love a place are the ones who bring the next people. The old internet took that gift and gave nothing back — you brought your friends, and the company kept the money. Here it is the opposite: the citizens grow the network, so the citizens earn from it. That is how a network becomes a community instead of a company.</p>
+<p class="sa-skill-foryou"><b>What’s in it for you</b>You bring the people, you earn half of what they pay — the network becomes a community.</p>
 </div>
 <div class="ph-card sa-skill" style="--ac:#c8ccd6;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#c8ccd6">✦</span> The Reports Skill</h3>
 <p class="sa-skill-nutshell">Every day, I look back on what you did, learned, and noted, and give you the day in a nutshell.</p>
 <button type="button" class="sa-skill-more" aria-expanded="false">Why it matters ▾</button>
 <p class="sa-skill-why" hidden>A day you don&#x27;t look back on is a day you don&#x27;t learn from. You did things, you learned things, you met people — and by tomorrow, most of it is gone, because nobody wrote it down. The report writes it down for you. It is how a life becomes a story you can read, instead of a blur you can barely remember.</p>
+<p class="sa-skill-foryou"><b>What’s in it for you</b>Your day becomes a story you can read — nothing learned is lost by tomorrow.</p>
 </div>
 </div>
 </div>
@@ -7174,15 +7200,16 @@ button.os-ld-node .os-ld-n{
 <div id="os-note-list"><div class="os-skel"></div></div>
 <div id="os-note-samples"></div>
 </div><div class="ph-sec os-view" id="people" data-os-view="people" data-block="connections">
-<div class="ph-sec-t"><span class="ph-dot" style="background:#2fe89e;color:#2fe89e;"></span> Connections</div>
+<div class="ph-sec-t"><span class="ph-dot" style="background:#2fe89e;color:#2fe89e;"></span><span class="cx-orb-icon" style="width:40px;height:40px" aria-hidden="true"></span> Connections</div>
 <div class="os-roomline">
 <a class="ph-connect" href="https://nayanet.app/rooms/connections">Open the Connections room →</a>
 </div>
+<div class="cx-stage" style="padding:0"><div class="cx-ambient" aria-hidden="true"><div class="cx-orb o1"></div><div class="cx-orb o2"></div><div class="cx-orb o3"></div></div>
 <div id="os-faces"><div class="os-skel"></div></div>
 <div id="os-members"></div>
 <div id="os-born"></div>
 <div id="os-timeline" hidden></div>
-</div><div class="ph-sec os-view" id="lists" data-os-view="lists" data-block="lists">
+</div></div><div class="ph-sec os-view" id="lists" data-os-view="lists" data-block="lists">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#2fe89e;color:#2fe89e;"></span> Lists</div>
 <div class="ph-card" style="--ac:#2fe89e;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#2fe89e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4a3 3 0 0 1 6 0"/><path d="M9 11h6M9 15h4"/></svg></span> Smart Lists</h3>
@@ -8150,7 +8177,7 @@ NF.register(UNIT, {
     d.addEventListener('click',function(e){ if(e.target===d || (e.target.closest && e.target.closest('[data-ph-flow-x]'))) phCloseAvatarDlg(); });
   })();
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ phCloseAvatarDlg(); } });
-  cvr.addEventListener('click',function(e){if(e.target.id!=='cvrbtn')cvrin.click();});
+  cvr.addEventListener('click',function(e){if(e.target.closest&&(e.target.closest('#cvrbtn')||e.target.closest('#settingsbtn')))return;cvrin.click();}); /* ONE ROUND S1: the gear never opens the photo picker (the old id check missed clicks landing on the gear's svg). */
   cvrin.addEventListener('change',function(e){var f=e.target.files&&e.target.files[0];if(!f)return;
     var r=new FileReader();r.onload=function(ev){var i=cvr.querySelector('img');if(!i){i=document.createElement('img');cvr.insertBefore(i,cvr.firstChild);}i.src=ev.target.result;};r.readAsDataURL(f);});
   var avv=document.getElementById('avv'),avin=document.getElementById('avin');
@@ -8395,7 +8422,7 @@ NF.register(UNIT, {
      stays theirs. */
   function colorFor(name){ var s=String(name||'?'), h=0, i; for (i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0; return SPECTRUM[h%SPECTRUM.length]; }
   function hotAt(iso){ return !!iso && (Date.now()-new Date(iso).getTime())<864e5; }
-  function avatarHTML(name, iso, c){ c=c||colorFor(name); var s=String(name||'?').trim(); var ini=s?s.charAt(0).toUpperCase():'?'; var hot=hotAt(iso); return '<div class="os-av'+(hot?' hot':'')+'" style="--avc:'+c+';--bc:'+c+'">'+(hot?'<span class="os-av-arc"></span>':'')+esc(ini)+'</div>'; }
+  function avatarHTML(name, iso, c){ c=c||colorFor(name); var s=String(name||'?').trim(); var ini=s?s.charAt(0).toUpperCase():'?'; var hot=hotAt(iso); return '<div class="os-av cx-ava'+(hot?' hot':'')+'" style="--avc:'+c+';--bc:'+c+';--cc:'+c+'">'+(hot?'<span class="os-av-arc"></span>':'')+esc(ini)+'</div>'; }
   function ownerName(){ var el=document.querySelector('.os-owner-name'); return el?el.textContent.trim():''; }
   /* — LIVING GRAPHICS shared helpers (parity in both engines): period
        buckets, lit bars, jewel donut, living sparklines, change-flash. — */
@@ -8878,6 +8905,16 @@ function wallCard(j, iso, pid, idx){
         if(shown.length===1){ _lbl=_lbl==='Smart notes'?'Smart note':_lbl==='Naya notes'?'Naya note':_lbl==='Posts'?'Post':_lbl; }
         t=shown.length+' '+_lbl+(window.mwTr?window.mwTr(' on this feed.'):' on this feed.');
         if(kw){ t=shown.length? (t+(window.mwTr?window.mwTr(' Matching \u201c'):' Matching \u201c')+window.MW_PUBLIC_KEYWORD+(window.mwTr?window.mwTr('\u201d.'):'\u201d.')) : ((window.mwTr?window.mwTr('No notes match \u201c'):'No notes match \u201c')+window.MW_PUBLIC_KEYWORD+(window.mwTr?window.mwTr('\u201d — try another word.'):'\u201d.')); }
+        return t;
+      }
+      if(pill.indexOf('cluster:')===0){
+        /* ONE ROUND H3 — a cluster pill names its cluster in the meta line — never "by Guest". Labels mirror the Hub's INTEL_CLUSTERS (R5 block). */
+        var _cl=pill.slice(8);
+        var _clMap={'intelligent-internet':'The Intelligent Internet','ai-is-hiring':'AI Is Hiring','nayanet-naya':'NayaNET / Naya','smart-notes':'Smart Notes','learn-minute':'Learn in a Minute','private-network':'The Private Network','your-vault':'Your Vault','ambassador':'Ambassador'};
+        var _lbl=_clMap[_cl]||('#'+_cl);
+        if(shown.length===1 && _lbl==='Smart Notes') _lbl='Smart note';
+        t=shown.length+' '+_lbl+(window.mwTr?window.mwTr(' on this feed.'):' on this feed.');
+        if(kw){ t=t+(window.mwTr?window.mwTr(' Matching \u201c'):' Matching \u201c')+window.MW_PUBLIC_KEYWORD+(window.mwTr?window.mwTr('\u201d.'):'\u201d.'); }
         return t;
       }
       var disp='Guest'; for(var i=0;i<MW_WALL_POSTS.length;i++){ if((MW_WALL_POSTS[i].j.a||'Guest').toLowerCase()===pill){ disp=MW_WALL_POSTS[i].j.a||'Guest'; break; } }
@@ -9385,7 +9422,7 @@ function wallCard(j, iso, pid, idx){
        the stub observer keeps the card on top). A scheduled post needs the live save. */
     if (!sb) {
       if(window.osSched && window.osSched.ts){ st.textContent='Connection unavailable — a scheduled post needs the live save.'; return; }
-      if(typeof window.fcStubInsert==='function' && window.fcStubInsert({k:'wall', a:a, b:b, noteType:(window.osNoteMode==='post'?'post':'naya'), vis:(window.pcPostVis||'private')})){
+      if(typeof window.fcStubInsert==='function' && window.fcStubInsert({k:'wall', a:a, b:b, photo:(window.__pxImg||null), noteType:(window.osNoteMode==='post'?'post':'naya'), vis:(window.pcPostVis||'private')})){
         tgResetComposer((window.osNoteMode==='post' ? 'Posted — your words are on the feed, straight up. (Saved on this device — the live save is owed.)' : 'Posted — your Naya note is on the feed, your words beautiful. (Saved on this device — the live save is owed.)'));
       } else { st.textContent='Connection unavailable — post not saved.'; }
       return;
@@ -9403,7 +9440,7 @@ function wallCard(j, iso, pid, idx){
     }
     st.textContent='Posting\u2026';
     var sched=window.osSched||null;
-    var payload={k:'wall', a:a, b:b, noteType:(window.osNoteMode==='post'?'post':'naya'), vis:(window.pcPostVis||'private')};
+    var payload={k:'wall', a:a, b:b, photo:(window.__pxImg||null), noteType:(window.osNoteMode==='post'?'post':'naya'), vis:(window.pcPostVis||'private')};
     if (sched && sched.ts) { payload.schedFor=new Date(sched.ts).toISOString(); payload.schedLabel=sched.label; }
     sb.from('smart_notes').insert({owner_alias:PAGE_ALIAS, content:JSON.stringify(payload)}).then(function(res){ osBustNotes();
       if (res.error) { try{console.warn('[fix8] wall post failed:', res.error && res.error.code, res.error && res.error.message);}catch(e){} st.setAttribute('data-fix8-post','failed'); /* FIX-20261112-F: the live save is blocked (42501) — the note still lands as a STUB, and the creator closes with an honest receipt naming the stub + the owed permission, instead of sitting open on an error while the card is already on the feed. */ if(typeof window.fcStubInsert==='function' && window.fcStubInsert(payload)){ tgResetComposer((window.osNoteMode==='post' ? 'Posted — your words are on the feed, straight up. (Saved on this device — the live save needs a one-time permission from Shawn.)' : 'Posted — your Naya note is on the feed, your words beautiful. (Saved on this device — the live save needs a one-time permission from Shawn.)')); } else { st.textContent='Couldn\u2019t post just now \u2014 the page\u2019s save needs a one-time permission from Shawn. Your words are still here; nothing was lost.'; } return; }
@@ -9418,7 +9455,7 @@ function wallCard(j, iso, pid, idx){
     if (!draft){ st.textContent='The draft is empty \u2014 write something first.'; return; }
     var sched=window.osSched||null;
     var d=window._tgDraft||{};
-    var payload={k:'wall', a:a, b:draft, raw:raw, noteType:'smart', vis:(window.pcPostVis||'private'),
+    var payload={k:'wall', a:a, b:draft, raw:raw, photo:(window.__pxImg||null), noteType:'smart', vis:(window.pcPostVis||'private'),
       smart:{nutshell:d.nutshell||'', themes:d.themes||[], angles:d.angles||[]}};
     /* FIX-20261112-F: no live save in this session — the Smart note still lands, as a STUB
        (same receipt path as the live post). A scheduled post needs the live save. */
@@ -11065,7 +11102,7 @@ function wallCard(j, iso, pid, idx){
   function faceTileHTML(name, fact, at, ix, you){
     var c=SPECTRUM[ix%SPECTRUM.length];
     var pres=presenceOf(at);
-    return '<div class="os-face os-draw-in" data-face-tile="'+esc(name)+'" style="--avc:'+c+';animation-delay:'+Math.min(ix*0.06, 0.5)+'s">'+avatarHTML(name, at, c)+'<span class="os-face-main"><span class="os-face-name">'+esc(name)+(you?'<span class="os-you" style="display:inline-block;margin-left:6px;padding:0 6px;border-radius:999px;border:1px solid '+c+';color:'+c+';font-size:9px;font-weight:900;letter-spacing:.12em;vertical-align:2px">You</span>':'')+'</span><span class="os-face-fact">'+esc(fact)+'</span><span class="os-pres'+(pres.on?'':' dim')+'"><i></i>'+esc(pres.txt)+'</span></span><button class="ph-msg os-face-msg" type="button" data-face-msg="'+esc(name)+'">Message</button></div>';
+    return '<div class="os-face os-draw-in cx-card" data-face-tile="'+esc(name)+'" style="--avc:'+c+';--cc:'+c+';animation-delay:'+Math.min(ix*0.06, 0.5)+'s">'+avatarHTML(name, at, c)+'<span class="os-face-main"><span class="os-face-name">'+esc(name)+(you?'<span class="os-you" style="display:inline-block;margin-left:6px;padding:0 6px;border-radius:999px;border:1px solid '+c+';color:'+c+';font-size:9px;font-weight:900;letter-spacing:.12em;vertical-align:2px">You</span>':'')+(String(name)==='Trigger Test Two'?'<span class="cx-test">TEST DATA</span>':'')+'</span><span class="os-face-fact">'+esc(fact)+'</span><span class="os-pres'+(pres.on?'':' dim')+'"><i></i>'+esc(pres.txt)+'</span></span><button class="ph-msg os-face-msg" type="button" data-face-msg="'+esc(name)+'">Message</button></div>';
   }
   document.addEventListener('click', function(e){
     var b=e.target.closest?e.target.closest('[data-face-msg]'):null;
@@ -12060,7 +12097,7 @@ function wallCard(j, iso, pid, idx){
   function faceTileHTML(name, fact, at, ix, you){
     var c=SPECTRUM[ix%SPECTRUM.length];
     var pres=presenceOf(at);
-    return '<div class="os-face os-draw-in" data-face-tile="'+esc(name)+'" style="--avc:'+c+';animation-delay:'+Math.min(ix*0.06, 0.5)+'s">'+avatarHTML(name, at, c)+'<span class="os-face-main"><span class="os-face-name">'+esc(name)+(you?'<span class="os-you" style="display:inline-block;margin-left:6px;padding:0 6px;border-radius:999px;border:1px solid '+c+';color:'+c+';font-size:9px;font-weight:900;letter-spacing:.12em;vertical-align:2px">You</span>':'')+'</span><span class="os-face-fact">'+esc(fact)+'</span><span class="os-pres'+(pres.on?'':' dim')+'"><i></i>'+esc(pres.txt)+'</span></span>'+(you?'':'<button class="ph-msg os-face-msg" type="button" data-dash-msg="'+esc(name)+'">Message</button>')+'</div>';
+    return '<div class="os-face os-draw-in cx-card" data-face-tile="'+esc(name)+'" style="--avc:'+c+';--cc:'+c+';animation-delay:'+Math.min(ix*0.06, 0.5)+'s">'+avatarHTML(name, at, c)+'<span class="os-face-main"><span class="os-face-name">'+esc(name)+(you?'<span class="os-you" style="display:inline-block;margin-left:6px;padding:0 6px;border-radius:999px;border:1px solid '+c+';color:'+c+';font-size:9px;font-weight:900;letter-spacing:.12em;vertical-align:2px">You</span>':'')+(String(name)==='Trigger Test Two'?'<span class="cx-test">TEST DATA</span>':'')+'</span><span class="os-face-fact">'+esc(fact)+'</span><span class="os-pres'+(pres.on?'':' dim')+'"><i></i>'+esc(pres.txt)+'</span></span>'+(you?'':'<button class="ph-msg os-face-msg" type="button" data-dash-msg="'+esc(name)+'">Message</button>')+'</div>';
   }
   function relLabel(iso){ var ms=Date.now()-new Date(iso).getTime(); if(ms<60000) return (window.mwTr?window.mwTr('just now'):'just now'); var m=Math.floor(ms/60000); if(m<60) return (window.mwTr?window.mwTr('{n}m ago'):'{n}m ago').replace('{n}', m); var h=Math.floor(m/60); if(h<24) return (window.mwTr?window.mwTr('{n}h ago'):'{n}h ago').replace('{n}', h); var d=Math.floor(h/24); return (window.mwTr?window.mwTr('{n}d ago'):'{n}d ago').replace('{n}', d); }
   function parseRow(r){ try { var j=JSON.parse(r.content); if(j && j.k) return j; } catch(e){} return {k:'wall', a:'', b:r.content}; }
@@ -12075,7 +12112,7 @@ function wallCard(j, iso, pid, idx){
      stays theirs. */
   function colorFor(name){ var s=String(name||'?'), h=0, i; for (i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0; return SPECTRUM[h%SPECTRUM.length]; }
   function hotAt(iso){ return !!iso && (Date.now()-new Date(iso).getTime())<864e5; }
-  function avatarHTML(name, iso, c){ c=c||colorFor(name); var s=String(name||'?').trim(); var ini=s?s.charAt(0).toUpperCase():'?'; var hot=hotAt(iso); return '<div class="os-av'+(hot?' hot':'')+'" style="--avc:'+c+';--bc:'+c+'">'+(hot?'<span class="os-av-arc"></span>':'')+esc(ini)+'</div>'; }
+  function avatarHTML(name, iso, c){ c=c||colorFor(name); var s=String(name||'?').trim(); var ini=s?s.charAt(0).toUpperCase():'?'; var hot=hotAt(iso); return '<div class="os-av cx-ava'+(hot?' hot':'')+'" style="--avc:'+c+';--bc:'+c+';--cc:'+c+'">'+(hot?'<span class="os-av-arc"></span>':'')+esc(ini)+'</div>'; }
   function countUp(el, target){
     if (!el) return;
     if (!target) { el.textContent='0'; return; }
@@ -14608,6 +14645,7 @@ function saveContact(name){
 window.osSaveContact=saveContact; window.osContactSaved=isSaved;
 function injectSaveButtons(root){
   (root||document).querySelectorAll('.os-face').forEach(function(tile){
+    if(tile.closest && tile.closest('#people .cx-stage')) return; /* ONE ROUND: room-look tiles keep the room's single row — Save lives in the person view. */
     if(tile.querySelector('.os-save-contact')||tile.querySelector('.os-saved-badge')) return;
     var name=tile.getAttribute('data-face-tile');
     if(!name) return;
@@ -20536,12 +20574,12 @@ var MW_DEFAULT_SLOTS=[
   {on:false,label:'',url:''}
 ];
 var MW_PAGES=[
-  {key:'dashboard',label:'Dashboard',icon:'✦',color:'#a06bff',go:'dashboard',stat:'gauge',main:true},
-  {key:'today',label:"Today's Intel",icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21.5h4"/><path d="M12 2.5a7 7 0 0 0-4 12.6c.6.5 1 1.3 1 2.1h6c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2.5z"/></svg>',color:'#ff9a5a',go:'today',stat:'notes'}, /* ROW+SMARTBAR 2026-11-12 (Shawn 15:05Z): Today's Intel lives in My World now — the row button is gone, so the door is here, opening the Intel Today view. */
-  {key:'personal',label:'Personal',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.8-3.4 3.6-5.3 7-5.3s6.2 1.9 7 5.3"/></svg>',color:'#3fb8ff',go:'home',stat:'posts'},
-  {key:'business',label:'Business',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',color:'#ff9a5a',go:'https://nayanet.app/business',stat:'invites'},
-  {key:'contacts',label:'Contacts',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M2.8 19.5c.8-3.1 3.3-4.8 6.2-4.8s5.4 1.7 6.2 4.8"/><circle cx="17" cy="9" r="2.5"/><path d="M16.2 14.9c2.4.4 4.3 1.9 5 4.6"/></svg>',color:'#2fe89e',go:'people',stat:'people'},
-  {key:'about',label:'About',icon:'✦',color:'#e84fff',go:'about',stat:'notes'}
+  {key:'dashboard',label:'Dashboard',icon:'✦',color:'#a06bff',go:'dashboard',stat:'gauge',main:true,what:'Your world, live \u2014 your numbers, your score, your gauge.'},
+  {key:'today',label:"Today's Intel",icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21.5h4"/><path d="M12 2.5a7 7 0 0 0-4 12.6c.6.5 1 1.3 1 2.1h6c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2.5z"/></svg>',color:'#ff9a5a',go:'today',stat:'notes',what:'The latest real activity in this app \u2014 newest first, live.'}, /* ROW+SMARTBAR 2026-11-12 (Shawn 15:05Z): Today's Intel lives in My World now — the row button is gone, so the door is here, opening the Intel Today view. */
+  {key:'personal',label:'Personal',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.8-3.4 3.6-5.3 7-5.3s6.2 1.9 7 5.3"/></svg>',color:'#3fb8ff',go:'home',stat:'posts',what:'Your home page \u2014 who you are, what you stand for, your links.'},
+  {key:'business',label:'Business',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',color:'#ff9a5a',go:'https://nayanet.app/business',stat:'invites',what:'Your business page \u2014 what you offer, your products and services.'},
+  {key:'contacts',label:'Contacts',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M2.8 19.5c.8-3.1 3.3-4.8 6.2-4.8s5.4 1.7 6.2 4.8"/><circle cx="17" cy="9" r="2.5"/><path d="M16.2 14.9c2.4.4 4.3 1.9 5 4.6"/></svg>',color:'#2fe89e',go:'people',stat:'people',what:'Every face is real: they posted, messaged, or were invited here.'},
+  {key:'about',label:'About',icon:'<svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M10 7.5H6.8A3.3 3.3 0 0 0 3.5 10.8V17h6.6v-6.6H6.9a1.6 1.6 0 0 1 1.5-1.7v-1.2zm10.4 0h-3.2a3.3 3.3 0 0 0-3.3 3.3V17h6.6v-6.6h-3.2a1.6 1.6 0 0 1 1.5-1.7V7.5z"/></svg>',color:'#e84fff',go:'about',stat:'notes',what:'Your story \u2014 motto, story, what you do, goals, purpose.'}
 ];
 var MW_REAL_DASHBOARD='https://nayanet.app/dashboard'; /* FINISHING LAW 2026-11-12 — the updated real Dashboard, not the in-page view. */
 var MW_FAST_ACTION_HTML='<div class="mw-plan"><details open><summary>The nine-day course — tap to close</summary> <p><b>You&rsquo;re hired — how to spread the word about NayaNET.</b> You joined something truly awesome, and the best way to grow it is to tell people about it in your own words. You have a link that is yours. Put it where people already see you, send it to people you already know, and share the smart notes you love with your link beside them. When someone joins through you, the credit is yours.</p> <h4>Day 1 — Your link</h4> <p>The moment you join, you get your own link. It carries your name in it — something like joinus?ref=your-name — so when someone arrives through it, the system knows they came from you. That link is the start of everything below. Keep it close. You will use it in every way that follows.</p> <h4>Days 2–3 — Way one: share a smart note</h4> <p>This is the easiest way, and the most natural. You read a smart note you love — you share it. Tap the share button on the smart note. Your link goes into the post with it. The post carries a preview image, so it looks beautiful before anyone taps it. Add your own words. Something simple, in your voice: <b>join me on NayaNET — Naya means new, a new AI-powered internet.</b> Send it out through the share button on your phone — to your socials, or by email, wherever your people are. The note does the teaching. Your words do the inviting. Your link does the counting.</p> <h4>Days 4–5 — Way two: email invites</h4> <p>There is an invite system waiting for you, with the hard work already done. One email at a time. A series of emails — daily, every three days, weekly, or on a rhythm you choose yourself — so people hear from you more than once. Words you can copy — like <b>join me on NayaNET — Naya means new, a new AI-powered internet</b> — and the invite box on the page starts with a message of its own. Auto invites: once you set it up, the invites go out on their own schedule. One button, everywhere — the Invite button is across your pages, so inviting is never more than one tap away. Invite the people you actually know first. A personal invite from you beats a hundred posts to strangers.</p> <h4>Days 6–7 — Way three: your link in your profiles and your posts</h4> <p>Put your link where people already look for you. In your profile — on NayaNET and everywhere else you have a profile. In your posts — when you post about something you love, your link sits right there with it. In your messages — when someone asks what you are up to, send them your link with a line in your own words. People join people they know. Your link in your own places is you, inviting, every day, without you having to remember to do it.</p> <h4>Day 8 — Way four: your own domain (advanced users)</h4> <p>If you are the kind of person who has your own domain name — your own piece of the internet with your name on it — you can point it at NayaNET. This one is for advanced users only, and it is a possibility, not a promise. If that sentence meant nothing to you, skip this way entirely — the first three ways are more than enough, and they are where the people come from.</p> <h4>Day 9 — How you get credit, and your next step</h4> <p>Whoever brings people gets the credit, however they brought them — a shared smart note, an email invite, a link in a profile. If they came through you, it counts as yours. And the money side, in plain numbers: you earn 50% of what the people you bring pay. Three Max sales a day, for thirty days, is ninety people. Ninety people times $50 is <b>$4,500 a month, every month they stay.</b></p> <p>Do one thing today: share one smart note you love, with your link and your own words beside it. That is the whole job. Then do it again tomorrow.</p> </details></div>';
@@ -20738,6 +20776,7 @@ function mwLoadNayaFeed(){
    the stored rows without re-reading Supabase. MW_NAYA_ROWS holds the full
    list; MW_FEED_PILL holds the active category filter. */
 var MW_NAYA_ROWS=[];
+window.mwSetNayaRows=function(rows){ MW_NAYA_ROWS=rows||[]; window.MW_NAYA_ROWS=MW_NAYA_ROWS; mwPaintNayaFeed(); }; /* ONE ROUND H3 — the Naya painter's seam (same pattern as window.mwPaintWallPosts): paint from stored rows without re-reading Supabase. */
 var mwNayaWatch=null; /* FIXPASS 4.1 (F2) — the Naya-read watchdog timer; one at a time, cleared when the read settles. */
 function mwPaintNayaFeed(){
   var box=$('mwFeedNaya'); if(!box) return;
@@ -20793,14 +20832,42 @@ function mwRenderMyWorld(){
     if(p.key!=='dashboard' && show[p.key]===false) return;
     shown++;
     var realDash=(p.key==='dashboard')?' data-mw-real-dash':''; /* FINISHING LAW 2026-11-12 — the Dashboard row + its stats icon go to the updated real Dashboard. */
-    html+='<div class="mw-row"><button type="button" class="mw-pagebtn'+(p.main?' main':'')+'" style="--pc:'+p.color+'" data-mw-page="'+p.key+'"'+realDash+'><span>'+p.icon+'</span><span>'+esc((window.mwTr?window.mwTr(p.label):p.label))+'</span></button>'
-      +'<button type="button" class="mw-stats-ico" style="--pc:'+p.color+'" data-mw-stat="'+p.key+'"'+realDash+' title="'+esc((window.mwTr?window.mwTr('Open {name}’s dashboard'):'Open {name}’s dashboard').split('{name}').join(p.label))+'" aria-label="'+esc((window.mwTr?window.mwTr('Open {name}’s dashboard'):'Open {name}’s dashboard').split('{name}').join(p.label))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 20V10M12 20V4M6 20v-6"/></svg></button></div>';
+    html+='<article class="mw-row mw-rect" style="--pc:'+p.color+'"><button type="button" class="mw-rect-main'+(p.main?' main':'')+'" data-mw-page="'+p.key+'"'+realDash+' aria-label="'+esc((window.mwTr?window.mwTr(p.label):p.label)+' \u2014 open')+'"><span class="mw-rect-topline"><span class="mw-rect-ico">'+p.icon+'</span><span class="mw-rect-txt"><b>'+esc((window.mwTr?window.mwTr(p.label):p.label))+'</b><i>'+esc(p.what||'')+'</i></span></span><span class="mw-rect-snap"><span class="mw-rect-snap-k">A look inside</span><span class="mw-rect-snap-v" data-mw-snap="'+p.key+'">'+esc(mwSnapText(p.key))+'</span></span></button>'
+      +'<button type="button" class="mw-stats-ico" style="--pc:'+p.color+'" data-mw-stat="'+p.key+'"'+realDash+' title="'+esc((window.mwTr?window.mwTr('Open {name}’s dashboard'):'Open {name}’s dashboard').split('{name}').join(p.label))+'" aria-label="'+esc((window.mwTr?window.mwTr('Open {name}’s dashboard'):'Open {name}’s dashboard').split('{name}').join(p.label))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 20V10M12 20V4M6 20v-6"/></svg></button></article>';
   });
   list.innerHTML=html;
   var note=$('mw-world-note');
   if(note) note.textContent=shown<5?(window.mwTr?window.mwTr('Some pages are hidden — turn them back on in Settings, My World.'):'Some pages are hidden — turn them back on in Settings, My World.'):'';
 }
 window.mwRenderMyWorld=mwRenderMyWorld;
+/* ONE ROUND 2026-11-15 (W3) — the snapshot inside each rectangle is the
+   page's own live line, read from the page itself at render time. */
+function mwSnapText(key){
+  function txt(el){ if(!el) return ''; return (el.textContent||'').replace(/\s+/g,' ').trim(); }
+  function cut(t,n){ t=String(t||''); return t.length>n?t.slice(0,n-1).replace(/\s+$/,'')+'\u2026':t; }
+  if(key==='dashboard'){ var v=document.querySelector('.tn-hero-voice'); var t=txt(v); return t?cut(t,110):'Your score, live \u2014 open to see the gauge.'; }
+  if(key==='today'){ var p=$('os-today-pulse'); var t2=txt(p); if(t2 && t2.indexOf('Reading')!==0) return cut(t2,110); return cut(txt(document.querySelector('#os-today-list')),110)||'The latest real activity \u2014 newest first, live.'; }
+  if(key==='personal'){ var m=$('os-sec-motto-text'); var t3=txt(m); return t3?cut(t3,110):'Your personal world \u2014 your feed, your people, your story.'; }
+  if(key==='business'){ return 'nayanet.app/business \u2014 opens in a new tab.'; }
+  if(key==='contacts'){ var faces=document.querySelectorAll('#os-faces .os-face'); if(faces.length){ var n=faces.length; return n+(n===1?' person':' people')+' around this app \u2014 tap one to open them.'; } var h=document.querySelector('#os-faces .os-note'); return cut(txt(h),110)||'No faces yet \u2014 the first post, message or invite puts a face here.'; }
+  if(key==='about'){ var a=$('abouttext'); var t5=txt(a); return t5?cut(t5,110):'Your story \u2014 motto, story, what you do, goals, purpose.'; }
+  return '';
+}
+window.mwRefreshSnaps=function(){
+  document.querySelectorAll('[data-mw-snap]').forEach(function(el){
+    var t=mwSnapText(el.getAttribute('data-mw-snap'));
+    if(t && el.textContent!==t) el.textContent=t;
+  });
+};
+/* Live snapshots: the page's own data lands after the first render, so
+   refresh when the page changes (throttled) and once more after it settles. */
+(function(){
+  var last=0;
+  function kick(){ var n=Date.now(); if(n-last<900) return; last=n; try{ window.mwRefreshSnaps(); }catch(e){} }
+  try{ var mo=new MutationObserver(kick); mo.observe(document.body,{childList:true,subtree:true,characterData:true}); }catch(e){}
+  setTimeout(kick,2500);
+})();
+
 function mwOpenPageDashboard(key){
   var p=null; MW_PAGES.forEach(function(x){ if(x.key===key) p=x; }); if(!p) return;
   if(window.osShowView) window.osShowView('dashboard');
@@ -26092,7 +26159,7 @@ function fcRenderPicker(q){
       : '<span class="fc-pick-match"><b>—</b><i>world</i></span>';
     return '<button type="button" class="fc-pick" data-fc-pick="'+r.kind+'" data-fc-name="'+esc(r.name)+'" data-fc-alias="'+esc(r.alias)+'">'
       +'<span class="fc-pick-av" style="--cc:'+fcColorFor(r.name)+'">'+esc((r.name||'G')[0].toUpperCase())+'</span>'
-      +'<span class="fc-pick-txt"><b>'+esc(r.name)+'</b><i>'+esc(r.fact||'')+'</i></span>'+m+'</button>';
+      +'<span class="fc-pick-txt"><b>'+esc(r.name)+(r.stub?'<span class="cx-test">TEST DATA</span>':'')+'</b><i>'+esc(r.fact||'')+'</i></span>'+m+'</button>';
   }).join('')+(rows.some(function(r){ return r.stub; })?'<p class="os-note">Sample faces stand in while the live read is unavailable — the first real post, message or invite puts a real face here.</p>':'');
 }
 
@@ -26276,10 +26343,10 @@ function pcCard(p, live){
      nutshell from the endpoint (alias + % + reasons only) — so the line is left
      out for live cards rather than invented; the record says so. The seed
      nutshell IS the motto: the popover renders this same nut, byte-identical. */
-  var nutHtml = p.nut ? '<p class="pc-nut">'+esc(p.nut)+'</p>' : '';
+  var nutHtml = p.nut ? '<div class="pc-nut-board"><p class="pc-nut">'+esc(p.nut)+'</p></div>' : ''; /* ONE ROUND R4: the saying sits on an elevated board, under the name + orb row. */
   return '<article class="pc-card" data-pc-alias="'+esc(p.alias)+'" style="--pc:'+pcColorFor(p.alias)+'">'
     + '<div class="pc-card-top"><span class="fc-pick-av" style="--cc:'+pcColorFor(p.alias)+'">'+esc(init)+'</span>'
-    + '<div class="pc-card-id"><span class="pc-id-line"><b>'+esc(p.alias)+'</b></span>'+mark+nutHtml+'</div></div>'
+    + '<div class="pc-card-id"><span class="pc-id-line"><b>'+esc(p.alias)+'</b></span>'+mark+'</div></div>' + nutHtml
     + reasons
     + '<div class="pc-btns">'
     + '<button type="button" class="pc-btn" data-pc-act="chat" style="--mc:#3fb8ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg> '+pcTr('Chat')+'</button>'
@@ -27889,12 +27956,15 @@ function pcWatchPopConnect(pop){
   });
   pcPopObs.observe(btn,{attributes:true,attributeFilter:['class'],childList:true,characterData:true,subtree:true});
 }
+/* ONE ROUND R7 — the pop-up's initial orb: the same spectrum hash the rail cards use (pcColorFor lives inside the rail IIFE, so the pop-up carries its own copy — same math, same colour). */
+var PC_POP_SPECTRUM=['#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#ff9a5a','#ff5e6c','#e84fff'];
+function pcPopColor(name){ var s=String(name||'?'), h=0, i; for(i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0; return PC_POP_SPECTRUM[h%PC_POP_SPECTRUM.length]; }
 function pcPersonPopHTML(p){
   var alias=p.alias||'';
   var req=false; try{ req=localStorage.getItem('pc-connect-'+alias)==='requested'; }catch(e){}
   var h='<button type="button" class="pc-pop-x" data-pc-pop-close aria-label="Close">✕</button>'
-    +'<div class="ph-intro-name">'+pcEsc(alias)+'</div>'
-    +'<div class="ph-intro-motto">'+pcEsc(p.nut||'')+'</div>'
+    +'<div class="pc-pop-id"><span class="fc-pick-av pc-pop-av" style="--cc:'+pcPopColor(alias)+'">'+pcEsc((alias||'?').charAt(0).toUpperCase())+'</span><div class="ph-intro-name">'+pcEsc(alias)+'</div></div>'
+    +'<div class="pc-nut-board pc-pop-nut"><div class="ph-intro-motto">'+pcEsc(p.nut||'')+'</div></div>'
     +'<div class="pc-pop-actions">'
     +'<button type="button" class="pc-connect-btn'+(req?' requested':'')+'" data-pc-connect="'+pcEsc(alias)+'"'+(req?' disabled':'')+'>'+(req?'Requested ✓':'CONNECT')+'</button>'
     +'<a class="ph-connect pc-view-profile" href="https://'+pcEsc(alias)+'.nayanet.app/">View profile</a>'
@@ -28665,4 +28735,614 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
   if(row) row.addEventListener('click', function(){ setView('photos'); grid.scrollIntoView({block:'nearest'}); });
 })();
 </script>
+<style id="one-round-20261115">
+/* ═══ ONE ROUND 2026-11-15 — Personal: About unfold + My World rectangles + Skills three-part + Connections room-look ═══ */
+/* Room CSS below: harvested VERBATIM from the live Connections room
+   (https://nayanet.app/rooms/connections, fetched 2026-11-15, /tmp/conn-room.html).
+   The wrapper carries class="cx-stage" with inline padding:0 so the room's
+   stage padding does not move the Personal layout; every rule below is the
+   room's own text, unedited. */
+.cx-stage{
+  --cx-purple:#9d75ff; --cx-purple-lt:#c4a8ff;
+  position:relative;
+  margin:0; padding:36px clamp(20px,4vw,64px) 90px; color:#fff;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,"Segoe UI",sans-serif;
+  overflow:hidden;
+}
+.cx-stage .cx-ambient{ position:absolute; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+.cx-stage .cx-orb{
+  position:absolute; border-radius:50%; filter:blur(90px); opacity:.16;
+  animation:cxdrift 26s ease-in-out infinite alternate;
+}
+.cx-stage .cx-orb.o1{ width:520px; height:520px; left:-140px; top:-120px;
+  background:radial-gradient(circle, #9d75ff 0%, transparent 70%); }
+.cx-stage .cx-orb.o2{ width:460px; height:460px; right:-120px; top:30%;
+  background:radial-gradient(circle, #ed42c4 0%, transparent 70%);
+  animation-delay:-9s; animation-duration:32s; }
+.cx-stage .cx-orb.o3{ width:420px; height:420px; left:20%; bottom:-160px;
+  background:radial-gradient(circle, #55b9ee 0%, transparent 70%);
+  animation-delay:-17s; animation-duration:38s; }
+@keyframes cxdrift{
+  from{ transform:translate(0,0) scale(1); }
+  to{ transform:translate(60px,40px) scale(1.12); }
+}
+.cx-stage .cx-orb-icon{
+  position:relative; z-index:0; flex:0 0 auto; width:58px; height:58px; border-radius:50%;
+  background:radial-gradient(circle at 35% 28%, #332a4d 0%, #0d0a16 52%, #000 100%);
+  box-shadow:
+    inset 0 2px 5px rgba(255,255,255,.18),
+    inset 0 -8px 14px rgba(0,0,0,.65),
+    0 6px 16px rgba(0,0,0,.6),
+    0 0 24px rgba(157,117,255,.35);
+}
+.cx-stage .cx-orb-icon::after{
+  content:''; position:absolute; inset:-20px; border-radius:50%; z-index:-1;
+  background:radial-gradient(circle,
+    rgba(255,255,255,.4) 0%,
+    rgba(255,255,255,.12) 42%,
+    transparent 68%);
+  animation:cxbackbreathe 5s ease-in-out infinite;
+}
+.cx-stage .cx-orb-icon::before{
+  content:''; position:absolute; inset:-4px; border-radius:50%;
+  background:conic-gradient(from 0deg,
+    transparent 0deg,
+    rgba(157,117,255,.95) 55deg,
+    rgba(255,255,255,.85) 85deg,
+    transparent 130deg,
+    transparent 360deg);
+  -webkit-mask:radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 5px));
+  mask:radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 5px));
+  animation:cxsheen 4s linear infinite;
+  filter:drop-shadow(0 0 6px rgba(157,117,255,.8));
+}
+@keyframes cxbackbreathe{
+  0%,100%{ opacity:.75; transform:scale(.96); }
+  50%{ opacity:1; transform:scale(1.05); }
+}
+@keyframes cxsheen{ to{ transform:rotate(360deg); } }
+.cx-stage .cx-list{ display:flex; flex-direction:column; gap:14px; }
+.cx-stage .cx-card{
+  position:relative; cursor:pointer;
+  display:flex; align-items:center; gap:18px;
+  border-radius:20px; padding:18px 22px;
+  background:linear-gradient(160deg, #17181d 0%, #08080a 100%);
+  border:1.5px solid rgba(255,255,255,.32);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -16px 30px rgba(0,0,0,.4), 0 0 18px -2px rgba(255,255,255,.12), 0 16px 40px rgba(0,0,0,.6);
+  animation:cxbreathe 5s ease-in-out infinite;
+  transition:transform .22s cubic-bezier(.2,.8,.2,1), border-color .25s, box-shadow .3s;
+  animation:cxin .5s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes cxin{ from{ opacity:0; transform:translateY(14px);} to{ opacity:1; transform:none;} }
+@keyframes cxbreathe{
+  0%,100%{ box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -16px 30px rgba(0,0,0,.4), 0 0 14px -2px rgba(255,255,255,.1), 0 16px 40px rgba(0,0,0,.6); }
+  50%{ box-shadow:inset 0 1px 0 rgba(255,255,255,.18), inset 0 -16px 30px rgba(0,0,0,.4), 0 0 26px -2px rgba(255,255,255,.22), 0 16px 40px rgba(0,0,0,.6); }
+}
+.cx-stage .cx-card:hover, .cx-stage .cx-card:focus-visible{
+  transform:translateY(-2px); outline:none;
+  border-color:var(--cc);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -16px 30px rgba(0,0,0,.4), 0 22px 52px rgba(0,0,0,.65), 0 0 36px -4px var(--cc);
+}
+.cx-stage .cx-ava{
+  flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center;
+  width:58px; height:58px; border-radius:50%;
+  font-size:22px; font-weight:900; color:#fff;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 42%),
+    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--cc) 55%, #101014) 0%, color-mix(in srgb, var(--cc) 28%, #060607) 78%);
+  border:2px solid color-mix(in srgb, var(--cc) 80%, white);
+  box-shadow:0 0 24px -4px var(--cc), inset 0 2px 3px rgba(255,255,255,.25), inset 0 -6px 12px rgba(0,0,0,.45), 0 8px 20px rgba(0,0,0,.55);
+  text-shadow:0 1px 3px rgba(0,0,0,.6);
+}
+.cx-stage .cx-ava.big{ width:78px; height:78px; font-size:30px; }
+.cx-stage .cx-ava::after{
+  content:''; position:absolute; inset:-2px; border-radius:50%;
+  background:conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,.35) 40deg, transparent 90deg);
+  animation:cxsheen 7s linear infinite; pointer-events:none;
+}
+.cx-stage .cx-ava{ position:relative; overflow:hidden; }
+.cx-stage .cx-info{ flex:1 1 auto; min-width:0; }
+.cx-stage .cx-name{ font-size:19px; font-weight:800; margin:0 0 4px; color:#fff; }
+.cx-stage .cx-role{ font-size:13px; color:#fff; opacity:.72; margin:0 0 4px; }
+.cx-stage .cx-in{ font-size:11.5px; color:#fff; opacity:.55; margin:0; letter-spacing:.03em; }
+.cx-stage .cx-go{
+  flex:0 0 auto; width:40px; height:40px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid rgba(255,255,255,.25); color:#fff; font-size:18px;
+  background:#0a0a0c;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 4px 12px rgba(0,0,0,.5);
+  transition:border-color .2s, box-shadow .25s;
+}
+.cx-stage .cx-card:hover .cx-go{
+  border-color:var(--cx-purple);
+  box-shadow:0 0 18px -4px var(--cx-purple), inset 0 1px 0 rgba(255,255,255,.12);
+}
+@media(prefers-reduced-motion:reduce){
+  .cx-stage .cx-card, .cx-stage .cx-orb, .cx-stage .cx-ava::after, .cx-stage .cx-orb-icon::before, .cx-stage .cx-orb-icon::after, .cx-stage .cx-kicker-text{ animation:none; }
+  .cx-stage *{ transition:none !important; }
+}
+
+/* --- mappings: the room's classes onto this page's own tile markup --- */
+#people .os-face .os-face-name{font-size:19px;font-weight:800;margin:0 0 4px;color:#fff}
+#people .os-face .os-face-fact{font-size:13px;color:#fff;opacity:.72;margin:0 0 4px}
+#people .os-face .os-pres{font-size:11.5px;color:#fff;opacity:.55;letter-spacing:.03em}
+#people .os-face .os-av.hot{overflow:visible}
+.cx-test{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;border:1.5px solid #ffbf3d;color:#ffbf3d;font-size:9px;font-weight:900;letter-spacing:.14em;vertical-align:2px}
+/* --- About unfold (D1/D3) — corner edit, initial orb, next-thing button --- */
+#about .ib-layer-body{position:relative}
+#about .ib-layer-body .ph-actions{position:absolute;top:10px;right:10px;margin:0;z-index:2;justify-content:flex-end;max-width:62%}
+#about .ib-layer-body .ib-nutshell{padding-right:60px}
+#about .ib-layer-body .ph-actions button[data-os-sec-edit],#about .ib-layer-body .ph-actions #editabout{font-size:0;padding:9px 11px}
+.os-about-orb{width:40px;height:40px;font-size:15px;flex:none}
+.os-about-next{width:100%;margin:2px 0 20px;padding:16px 20px;font-size:17px}
+/* --- My World rectangles (W2/W3) — the page's own .mw-pagebtn language --- */
+.mw-rect-main{flex:1;display:flex;flex-direction:column;align-items:stretch;gap:10px;text-align:left;padding:16px 18px;border-radius:14px;font-size:15px;font-weight:800;color:#fff;cursor:pointer;font-family:inherit;background:linear-gradient(180deg,#1b1b24,#07070b);border:1.5px solid rgba(255,255,255,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.6),0 8px 20px rgba(0,0,0,.5);transition:border-color .2s,box-shadow .2s,transform .2s}
+.mw-rect-main:hover,.mw-rect-main:focus-visible{transform:translateY(-2px);border-color:var(--pc,#a06bff);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 28px var(--pc,#a06bff),0 12px 26px rgba(0,0,0,.55);outline:none}
+.mw-rect-main.main{border-color:#a06bff;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 0 26px rgba(160,107,255,.55),0 12px 26px rgba(0,0,0,.55)}
+.mw-rect-topline{display:flex;align-items:center;gap:12px}
+.mw-rect-ico{flex:none;width:40px;height:40px;display:grid;place-items:center;border-radius:50%;border:2px solid var(--pc,#a06bff);color:#fff;box-shadow:0 0 16px -2px var(--pc,#a06bff),inset 0 1px 2px rgba(255,255,255,.35);font-size:18px;background:linear-gradient(180deg,#17171f,#0a0a0f)}
+.mw-rect-ico svg{width:20px;height:20px;display:block}
+.mw-rect-txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.mw-rect-txt b{font-size:17px;font-weight:900;color:#fff}
+.mw-rect-txt i{display:block;font-style:normal;font-size:13.5px;line-height:1.5;font-weight:500;color:rgba(255,255,255,.85)}
+.mw-rect-snap{display:flex;flex-direction:column;gap:2px;background:rgba(0,0,0,.38);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:10px 12px}
+.mw-rect-snap-k{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.mw-rect-snap-v{font-size:14px;line-height:1.5;font-weight:500;color:#fff}
+.mw-rect .mw-stats-ico{align-self:center}
+/* --- Skills three-part (S2) — the third part, visible on the board --- */
+.sa-skill-foryou{margin:10px 0 2px;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.38);border:1px solid color-mix(in srgb, var(--ac) 55%, transparent);font-size:15px;line-height:1.6;color:#fff}
+.sa-skill-foryou b{display:block;font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:4px}
+/* --- Person view extras (C2–C5) — who they are, notes, data, all access --- */
+.os-person-x{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.14)}
+.os-person-x-top{display:flex;gap:16px;align-items:center;margin-bottom:14px}
+.os-person-x-name{font-size:20px;font-weight:900;color:#fff}
+.os-person-x-sub{font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.85);margin-top:4px}
+.os-person-x-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.os-person-x-status{margin:8px 0 0}
+.os-person-x-field{margin-top:14px}
+.os-person-x-field label{display:block;font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:8px}
+.os-person-x-notes{margin-top:10px;display:flex;flex-direction:column;gap:8px}
+.os-person-x-note{padding:10px 12px;border-radius:10px;background:rgba(0,0,0,.38);border:1px solid rgba(255,255,255,.14);font-size:14px;line-height:1.55;color:#fff}
+.os-person-x-note i{display:block;font-style:normal;font-size:11px;letter-spacing:.08em;color:rgba(255,255,255,.7);margin-top:4px}
+
+</style>
+
+<script>
+/* ═══ ONE ROUND 2026-11-15 — About unfold + Skills custom + person view ═══ */
+(function(){
+"use strict";
+function pxEsc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
+function pxSlug(s){ return String(s||'guest').toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')||'guest'; }
+function pxGet(k,fb){ try{ var v=localStorage.getItem(k); return v===null?fb:JSON.parse(v); }catch(e){ return fb; } }
+function pxPut(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+
+/* ---------- ABOUT UNFOLD (D2/D3) — motto alone, then one beat per click ---------- */
+var about=document.getElementById('about');
+if(about){
+  var layers=[];
+  Array.prototype.forEach.call(about.children,function(el){ if(el.classList&&el.classList.contains('ib-layer')) layers.push(el); });
+  /* Orb initial follows the citizen's own name on the page (default S). */
+  var pn=document.getElementById('pname');
+  var ini=pn?(pn.textContent||'').trim().charAt(0).toUpperCase():'S';
+  if(!ini) ini='S';
+  layers.forEach(function(l){ var o=l.querySelector('.os-about-orb'); if(o) o.textContent=ini; });
+  var nextBtn=document.createElement('button');
+  nextBtn.type='button'; nextBtn.className='ph-connect os-about-next';
+  function firstClosed(){ for(var i=0;i<layers.length;i++){ if(!layers[i].classList.contains('open')) return i; } return -1; }
+  function refreshNext(){
+    var ix=firstClosed();
+    if(ix<0){ if(nextBtn.parentNode) nextBtn.parentNode.removeChild(nextBtn); return; }
+    var b=layers[ix].querySelector('.ib-layer-head b');
+    var label=b?(b.textContent||'').trim():'';
+    nextBtn.textContent=label+' \u25be';
+    var lastOpen=-1;
+    for(var j=0;j<layers.length;j++){ if(layers[j].classList.contains('open')) lastOpen=j; }
+    var after=layers[Math.max(0,lastOpen)];
+    if(nextBtn.parentNode!==after.parentNode||nextBtn.previousElementSibling!==after){
+      after.parentNode.insertBefore(nextBtn,after.nextSibling);
+    }
+  }
+  nextBtn.addEventListener('click',function(){
+    var ix=firstClosed(); if(ix<0) return;
+    layers[ix].classList.add('open');
+    var h=layers[ix].querySelector('.ib-layer-head'); if(h) h.setAttribute('aria-expanded','true');
+    refreshNext();
+    try{ layers[ix].scrollIntoView({behavior:'smooth',block:'nearest'}); }catch(e){}
+  });
+  for(var k=1;k<layers.length;k++){
+    layers[k].classList.remove('open');
+    var hh=layers[k].querySelector('.ib-layer-head'); if(hh) hh.setAttribute('aria-expanded','false');
+  }
+  refreshNext();
+  /* If the citizen opens a layer by its own head, the next-thing button follows. */
+  document.addEventListener('click',function(e){
+    var h=e.target&&e.target.closest?e.target.closest('#about [data-os-ib-toggle]'):null;
+    if(h) setTimeout(refreshNext,0);
+  });
+}
+
+/* ---------- SKILLS (S1/S2) — three-field entry + citizen-added boards ---------- */
+var SKILL_COLORS=['#a06bff','#3fb8ff','#6675ff','#7fd4ff','#2fe89e','#ff9a5a','#e84fff','#ff5e6c','#2dd4bf','#ffbf3d','#7c3aed','#22d3ee','#b8ee57','#c8ccd6'];
+function pxSkillCardHTML(sk,ix){
+  var c=SKILL_COLORS[ix%SKILL_COLORS.length];
+  return '<div class="ph-card sa-skill" style="--ac:'+c+';">'
+    +'<h3><span class="os-jewel os-jewel-h" style="--jc:'+c+'">\u2726</span> '+pxEsc(sk.what)+'</h3>'
+    +'<p class="sa-skill-nutshell">'+pxEsc(sk.what)+'</p>'
+    +'<button type="button" class="sa-skill-more" aria-expanded="false">Why it matters \u25be</button>'
+    +'<p class="sa-skill-why" hidden>'+pxEsc(sk.why)+'</p>'
+    +'<p class="sa-skill-foryou"><b>What\u2019s in it for you</b>'+pxEsc(sk.foryou)+'</p></div>';
+}
+function pxLoadCustomSkills(){
+  var list=document.getElementById('os-skills-list'); if(!list) return;
+  var saved=pxGet('naya.one-round.skills-custom.v1',[]);
+  saved.forEach(function(sk,i){
+    list.insertAdjacentHTML('beforeend',pxSkillCardHTML(sk,14+i));
+  });
+}
+pxLoadCustomSkills();
+var addBtn=document.getElementById('os-skill-new-add');
+if(addBtn){
+  addBtn.addEventListener('click',function(){
+    var w=document.getElementById('os-skill-new-what');
+    var y=document.getElementById('os-skill-new-why');
+    var f=document.getElementById('os-skill-new-foryou');
+    var st=document.getElementById('os-skill-new-status');
+    var what=(w.value||'').trim(), why=(y.value||'').trim(), foryou=(f.value||'').trim();
+    if(!what||!why||!foryou){
+      if(st) st.textContent='All three, please \u2014 what it is, why it matters, and what\u2019s in it for them.';
+      return;
+    }
+    var sk={what:what,why:why,foryou:foryou};
+    var saved=pxGet('naya.one-round.skills-custom.v1',[]);
+    saved.push(sk); pxPut('naya.one-round.skills-custom.v1',saved);
+    var list=document.getElementById('os-skills-list');
+    if(list) list.insertAdjacentHTML('beforeend',pxSkillCardHTML(sk,14+saved.length-1));
+    w.value=''; y.value=''; f.value='';
+    if(st) st.textContent='Added \u2014 it is on the board now, with all three parts.';
+    try{ list.lastElementChild.scrollIntoView({behavior:'smooth',block:'nearest'}); }catch(e){}
+  });
+}
+
+/* ---------- PERSON VIEW (C2–C5) — notes, data, all access, on the timeline panel ---------- */
+document.addEventListener('click',function(e){
+  var t=e.target&&e.target.closest?e.target.closest('[data-face-tile]'):null;
+  if(!t) return;
+  var fc=t.querySelector('.os-face-fact'), pr=t.querySelector('.os-pres');
+  var sty=t.getAttribute('style')||'', m=sty.match(/--avc:\s*([^;]+)/);
+  window.__pxLastFace={
+    name:t.getAttribute('data-face-tile')||'',
+    fact:fc?(fc.textContent||'').trim():'',
+    pres:pr?(pr.textContent||'').trim():'',
+    color:m?m[1].trim():'#2fe89e'
+  };
+},true);
+
+function pxRenderNotes(x,notes){
+  var box=x.querySelector('[data-px-notes]'); if(!box) return;
+  if(!notes.length){ box.innerHTML='<p class="os-note" style="margin:0">No notes on them yet \u2014 the first one lands here.</p>'; return; }
+  box.innerHTML=notes.map(function(n){
+    var when=''; try{ when=new Date(n.t).toLocaleString(); }catch(e){}
+    return '<div class="os-person-x-note">'+pxEsc(n.b)+'<i>'+pxEsc(when)+'</i></div>';
+  }).join('');
+}
+function pxEnhancePerson(){
+  var panel=document.getElementById('os-timeline');
+  if(!panel||panel.hidden) return;
+  var card=panel.querySelector('.ph-card'); if(!card) return;
+  if(card.querySelector('.os-person-x')) return;
+  var h3=card.querySelector('h3'); if(!h3) return;
+  var raw=(h3.textContent||'').replace(/\s+/g,' ').trim();
+  var name=raw.replace(/\s*\u2014 their story here\s*$/,'').trim();
+  if(!name) return;
+  var key='naya.one-round.person.'+pxSlug(name)+'.v1';
+  var rec=pxGet(key,{know:'',notes:[]});
+  var face=(window.__pxLastFace&&window.__pxLastFace.name===name)?window.__pxLastFace:null;
+  var f=null; try{ (window._mwFaces||[]).forEach(function(x){ if(x.name===name) f=x; }); }catch(e){}
+  var match=(f&&typeof f.match==='number')?f.match:null;
+  var msgCount=0;
+  card.querySelectorAll('.os-tl-kind').forEach(function(k){ if(((k.textContent||'').indexOf('Message'))===0) msgCount++; });
+  var sub=[];
+  if(face&&face.fact) sub.push(face.fact);
+  if(face&&face.pres) sub.push(face.pres);
+  if(match!==null) sub.push(match+'% match');
+  if(msgCount) sub.push(msgCount+(msgCount===1?' message':' messages')+' with them here');
+  var ini=(name||'?').charAt(0).toUpperCase();
+  var col=(face&&face.color)||'#2fe89e';
+  var test=name==='Trigger Test Two';
+  var x=document.createElement('div');
+  x.className='os-person-x';
+  x.innerHTML='<div class="os-person-x-top"><span class="cx-ava big" style="--cc:'+col+'">'+pxEsc(ini)+'</span>'
+    +'<div style="min-width:0"><div class="os-person-x-name">'+pxEsc(name)+(test?'<span class="cx-test">TEST DATA</span>':'')+'</div>'
+    +'<div class="os-person-x-sub">'+pxEsc(sub.length?sub.join(' \u00b7 '):'Around this app')+'</div></div></div>'
+    +'<div class="os-person-x-actions">'
+    +'<button type="button" class="ph-connect" data-px-act="mail">Mail</button>'
+    +'<button type="button" class="ph-msg" data-px-act="chat">Instant message</button>'
+    +'<button type="button" class="ph-msg" data-px-act="audio">Audio call</button>'
+    +'<button type="button" class="ph-msg" data-px-act="video">Video call</button>'
+    +'<button type="button" class="ph-msg" data-px-act="save">Save contact</button>'
+    +'</div><p class="os-note os-person-x-status" data-px-status hidden></p>'
+    +'<div class="os-person-x-field"><label>How you know them</label><input class="os-input" data-px-know type="text" placeholder="How you know them \u2014 in a few words" autocomplete="off"></div>'
+    +'<div class="os-person-x-field"><label>Notes on them</label><textarea class="os-textarea" data-px-note rows="2" placeholder="Add a note about them\u2026"></textarea><div class="ph-actions"><button type="button" class="ph-connect" data-px-note-add>Add note</button></div><div class="os-person-x-notes" data-px-notes></div></div>';
+  h3.parentNode.insertBefore(x,h3.nextSibling);
+  try{ if(typeof window.osContactSaved==='function' && window.osContactSaved(name)){ var _sb=x.querySelector('[data-px-act="save"]'); if(_sb) _sb.outerHTML='<span class="os-saved-badge">\u2713 In Contacts</span>'; } }catch(e){}
+  var know=x.querySelector('[data-px-know]');
+  if(know){
+    know.value=rec.know||'';
+    know.addEventListener('change',function(){
+      var r=pxGet(key,{know:'',notes:[]}); r.know=know.value; pxPut(key,r);
+    });
+  }
+  pxRenderNotes(x,rec.notes||[]);
+  var rows=card.querySelector('.os-tl-rows');
+  if(rows&&!card.querySelector('.os-person-x-related')){
+    var lab=document.createElement('p');
+    lab.className='os-note os-person-x-related';
+    lab.textContent='Related here \u2014 their story in this app, newest first.';
+    rows.parentNode.insertBefore(lab,rows);
+  }
+  x.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('[data-px-act],[data-px-note-add]'):null;
+    if(!b) return;
+    if(b.hasAttribute('data-px-note-add')){
+      var ta=x.querySelector('[data-px-note]');
+      var v=(ta.value||'').trim(); if(!v) return;
+      var r2=pxGet(key,{know:'',notes:[]});
+      r2.notes.unshift({t:new Date().toISOString(),b:v});
+      pxPut(key,r2); ta.value=''; pxRenderNotes(x,r2.notes);
+      return;
+    }
+    var act=b.getAttribute('data-px-act');
+    if(act==='save'){
+      if(typeof window.osSaveContact==='function'){ try{ window.osSaveContact(name); }catch(e){} }
+      try{ b.outerHTML='<span class="os-saved-badge">\u2713 In Contacts</span>'; }catch(e){}
+      return;
+    }
+    var st=x.querySelector('[data-px-status]');
+    function showStatus(t){ if(st){ st.hidden=false; st.textContent=t; } }
+    var who={name:name,alias:pxSlug(name),kind:'person',mode:(act==='mail'?'mail':'chat')};
+    if(act==='audio'||act==='video'){
+      var line=act==='audio'?'Audio calls arrive with Smart Meet \u2014 for now, message them here.':'Video calls arrive with Smart Meet \u2014 for now, message them here.';
+      if(typeof window.fcOpenChat==='function'){
+        window.fcOpenChat(who);
+        var cs=document.getElementById('fcChatStatus'); if(cs) cs.textContent=line;
+      } else showStatus(line);
+      return;
+    }
+    if(typeof window.fcOpenChat==='function'){ window.fcOpenChat(who); return; }
+    var subj=document.getElementById('os-msg-subject'); if(subj) subj.value='Hello '+name;
+    if(typeof window.osShowView==='function') window.osShowView('message');
+    else if(typeof window.showView==='function') window.showView('message');
+  });
+}
+var tl=document.getElementById('os-timeline');
+if(tl&&typeof MutationObserver!=='undefined'){
+  var pxMo=new MutationObserver(function(){ pxEnhancePerson(); });
+  pxMo.observe(tl,{childList:true,subtree:true});
+}
+pxEnhancePerson();
+})();
+</script>
+
+<style id="one-round-addenda-20261115">
+/* ═══ ONE ROUND ADDENDA 2026-11-15 (H1 · tile fix · R1–R7 · S1 · C1–C3) ═══
+   Appended last so these rules win equal-specificity ties. Scoped to ids /
+   the room tiles / the rail cards / the pop-up — never to a shared class. */
+
+/* --- H1 — profile header: NO box. Name + motto sit beside the photo, aligned with it. ---
+   #phIntroBoard ONLY (never .ph-intro-board: #pcRailPop shares that class and KEEPS its board).
+   margin-top 79px = the points-pill row height (67px) + the idcol gap (12px), measured live at
+   390px and 1440px — so the text block starts exactly where the photo starts. */
+#phIntroBoard{background:none;border:0;box-shadow:none;padding:0;margin-top:79px;max-width:none;flex:1 1 auto;}
+#phIntroBoard::after{display:none;}
+#phIntroBoard .ph-intro-name{font-size:26px;}
+#phIntroBoard .ph-intro-motto{margin:8px 0 0;font-size:17px;}
+@media(max-width:640px){
+  #phIntroBoard{flex:1 1 0;min-width:0;margin-top:79px;}
+  #phIntroBoard .ph-intro-name{font-size:20px;}
+  #phIntroBoard .ph-intro-motto{font-size:16px;}
+}
+
+/* --- TILE FIX — Connections room-look tiles: one row (avatar + info + go chevron).
+   The tile's Message/Save buttons move to the person view (C5), so the 390px row
+   (avatar 58 + buttons 81 + 82 + gaps) can no longer squeeze the name to 0 wide. --- */
+#people .cx-stage .os-face{flex-wrap:nowrap;}
+#people .cx-stage .os-face .os-face-msg,#people .cx-stage .os-face .os-save-contact,#people .cx-stage .os-face .os-saved-badge{display:none;}
+#people .cx-stage .os-face::after{content:'\203A';flex:none;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.25);color:#fff;font-size:20px;line-height:1;background:#0a0a0c;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 4px 12px rgba(0,0,0,.5);}
+#people .cx-stage .os-face:hover::after{border-color:var(--cc,#a06bff);box-shadow:0 0 18px -4px var(--cc,#a06bff),inset 0 1px 0 rgba(255,255,255,.2);}
+
+/* --- R1 — CONNECT is GREEN for everybody (harvested #2fe89e from the pop-up), purple on highlight. ---
+   The gold .requested state is preserved after the hover rule so a requested card never re-purples. */
+.pc-card .pc-connect-btn{border-color:#2fe89e;padding:10px 18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 16px -4px #2fe89e,0 6px 14px rgba(0,0,0,.5);}
+.pc-card .pc-connect-btn:hover,.pc-card .pc-connect-btn:focus-visible{border-color:#a06bff;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 22px -2px #a06bff,0 8px 18px rgba(0,0,0,.55);}
+.pc-card .pc-connect-btn.requested,.pc-card .pc-connect-btn.requested:hover{border-color:#ffbf3d;color:#ffbf3d;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 16px -4px #ffbf3d,0 6px 14px rgba(0,0,0,.5);}
+/* --- R2 — real gaps, one consistent size; CONNECT a touch bigger in the corner is the only exception. --- */
+.pc-card .pc-connect-row{gap:10px;}
+.pc-card .pc-btns{gap:10px;margin-top:12px;}
+.pc-card .pc-btn{flex:1 1 0;min-width:0;min-height:44px;padding:8px 4px;}
+/* --- R5 — the ⓘ stands out, right beside CONNECT (ⓘ then CONNECT: learn first, then connect). --- */
+.pc-card .pc-connect-row .pc-info{width:40px;height:40px;font-size:17px;border:1.5px solid rgba(255,255,255,.65);background:linear-gradient(180deg,#1d1d29,#07070b);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 0 16px -4px rgba(255,255,255,.5),0 4px 12px rgba(0,0,0,.5);}
+
+/* --- R3/R4 — the name sits centred on the initial; the saying sits on an elevated board. --- */
+.pc-nut-board{margin:10px 0 0;padding:12px 14px;border-radius:14px;background:linear-gradient(180deg,#101018,#050507 60%);border:1.5px solid rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -4px 10px rgba(0,0,0,.35),0 6px 16px rgba(0,0,0,.45);}
+.pc-card .pc-nut-board .pc-nut{margin:0;display:block;overflow:visible;-webkit-line-clamp:unset;font-size:15px;line-height:1.45;}
+.pc-pop-nut{margin:12px 0 0;}
+.pc-pop-nut .ph-intro-motto{margin:0;font-size:16px;}
+
+/* --- R6/R7 — the person pop-up: impossible to miss, elevated, lit, alive; the initial flows in. --- */
+#pcRailPop{box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -6px 16px rgba(0,0,0,.6),0 0 0 1px rgba(232,232,236,.3),0 0 44px -6px rgba(160,107,255,.55),0 24px 60px rgba(0,0,0,.75);animation:pcPopIn .45s cubic-bezier(.22,1,.36,1);}
+#pcRailPop::before{content:'';position:absolute;left:20px;right:20px;top:0;height:3px;border-radius:3px;background:linear-gradient(90deg,#a06bff,#3fb8ff,#2fe89e,#ffbf3d,#a06bff);opacity:.9;pointer-events:none;}
+@keyframes pcPopIn{from{opacity:0;transform:translate(-50%,-48%) scale(.94);}to{opacity:1;transform:translate(-50%,-50%) scale(1);}}
+#pcRailPopBack{background:rgba(0,0,0,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:pcPopBackIn .3s ease-out;}
+@keyframes pcPopBackIn{from{opacity:0;}to{opacity:1;}}
+.pc-pop-id{display:flex;align-items:center;gap:12px;}
+.pc-pop-av{width:54px;height:54px;font-size:20px;flex:none;animation:pcPopAvIn .5s .1s cubic-bezier(.22,1,.36,1) backwards;}
+@keyframes pcPopAvIn{from{opacity:0;transform:scale(.6);}to{opacity:1;transform:scale(1);}}
+
+/* --- S1 — the settings menu: a popover, elevated and lit, beside the gear. --- */
+#phSettingsMenu{position:fixed;z-index:3000;min-width:280px;max-width:min(320px,calc(100vw - 24px));background:linear-gradient(180deg,#1d1d29,#07070b);border:1.5px solid rgba(255,255,255,.22);border-radius:16px;padding:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 0 24px -6px #a06bff,0 20px 44px rgba(0,0,0,.7);animation:s1MenuIn .28s cubic-bezier(.22,1,.36,1);}
+#phSettingsMenu[hidden]{display:none;}
+@keyframes s1MenuIn{from{opacity:0;transform:translateY(-6px) scale(.98);}to{opacity:1;transform:none;}}
+.ph-set-item{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;padding:12px 14px;border-radius:12px;border:1px solid transparent;background:transparent;color:#fff;font:inherit;cursor:pointer;}
+.ph-set-item:hover{border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.06);box-shadow:0 0 16px -4px #a06bff;}
+.ph-set-item b{display:block;font-size:14px;}
+.ph-set-item i{display:block;font-style:normal;font-size:12px;color:rgba(255,255,255,.75);margin-top:2px;line-height:1.4;}
+.ph-set-ic{flex:none;font-size:17px;line-height:1.4;}
+
+/* --- C1/C2 — the composer's photo attach row + the live preview slot. --- */
+.os-postimg-row{display:flex;gap:10px;margin:10px 0 0;flex-wrap:wrap;}
+.os-post-preview{margin:12px 0 0;}
+.os-post-preview .intel-board{margin:0;}
+</style>
+<script id="one-round-addenda-js">
+/* ═══ ONE ROUND ADDENDA JS 2026-11-15 — S1 settings menu · C1–C3 post photo ═══ */
+(function(){
+/* ---------- S1 — the gear opens a real settings menu (never the photo picker) ---------- */
+(function(){
+  var gear=document.getElementById('settingsbtn'); if(!gear) return;
+  var menu=null;
+  function buildMenu(){
+    if(menu) return menu;
+    menu=document.createElement('div');
+    menu.id='phSettingsMenu'; menu.setAttribute('role','menu'); menu.setAttribute('aria-label','Page settings');
+    menu.hidden=true;
+    menu.innerHTML=
+      '<button type="button" class="ph-set-item" data-s1="install"><span class="ph-set-ic">\u2B07</span><span><b>Install this page as an app</b><i>Add NayaNET to your home screen</i></span></button>'
+      +'<button type="button" class="ph-set-item" data-s1="vis"><span class="ph-set-ic">\uD83D\uDD12</span><span><b>Public profile: <span data-s1-vis>On</span></b><i>Visitors can see your profile and message you</i></span></button>'
+      +'<button type="button" class="ph-set-item" data-s1="chat"><span class="ph-set-ic">\uD83D\uDCAC</span><span><b data-s1-chat>Turn off instant chat</b><i>Full screen \u2014 the people rail closes</i></span></button>'
+      +'<button type="button" class="ph-set-item" data-s1="all"><span class="ph-set-ic">\u2699</span><span><b>All settings</b><i>The full settings page</i></span></button>';
+    document.body.appendChild(menu);
+    menu.addEventListener('click', function(e){
+      var b=e.target&&e.target.closest?e.target.closest('[data-s1]'):null; if(!b) return;
+      var k=b.getAttribute('data-s1');
+      closeMenu();
+      if(k==='install') s1Install();
+      else if(k==='vis') s1Vis();
+      else if(k==='chat') s1Chat();
+      else if(k==='all'){ if(typeof window.osShowView==='function') window.osShowView('settings'); }
+    });
+    return menu;
+  }
+  function syncLabels(){
+    if(!menu) return;
+    var sw=document.getElementById('publictoggle');
+    var on=sw?sw.classList.contains('on'):true;
+    var v=menu.querySelector('[data-s1-vis]'); if(v) v.textContent=on?'On':'Off';
+    var w=document.getElementById('pcFeedWrap');
+    var closed=w?w.classList.contains('pc-rail-closed'):false;
+    var c=menu.querySelector('[data-s1-chat]'); if(c) c.textContent=closed?'Turn on instant chat':'Turn off instant chat';
+  }
+  function place(){
+    var r=gear.getBoundingClientRect();
+    menu.style.top=Math.max(8, Math.min(window.innerHeight-16-menu.offsetHeight, r.bottom+8))+'px';
+    menu.style.right=Math.max(8, window.innerWidth-r.right)+'px';
+    menu.style.left='auto';
+  }
+  function openMenu(){ buildMenu(); syncLabels(); menu.hidden=false; place(); gear.setAttribute('aria-expanded','true'); }
+  function closeMenu(){ if(menu) menu.hidden=true; gear.setAttribute('aria-expanded','false'); }
+  function s1Install(){
+    var done=false; try{ done=localStorage.getItem('nayanet.installed')==='1'; }catch(e){}
+    if(done){ if(typeof toast==='function') toast('Already installed \u2713'); return; }
+    var pr=null; try{ pr=window.__osInstallPrompt; }catch(e){}
+    if(pr){ try{ pr.prompt(); if(pr.userChoice&&pr.userChoice.then) pr.userChoice.then(function(){ try{ window.__osInstallPrompt=null; }catch(e){} }); }catch(e){ if(typeof toast==='function') toast('Install not available right now.'); } }
+    else if(typeof toast==='function') toast('To install: open your browser menu \u2192 Install app (or Add to Home Screen).');
+  }
+  function s1Vis(){
+    var sw=document.getElementById('publictoggle');
+    if(sw){ sw.click(); setTimeout(syncLabels, 60); }
+    else if(typeof toast==='function') toast('Public profile setting lives on the settings page.');
+  }
+  function s1Chat(){
+    var w=document.getElementById('pcFeedWrap');
+    var closed=w&&w.classList.contains('pc-rail-closed');
+    if(closed){
+      var re=document.getElementById('pcRailReopen');
+      if(re){ re.click(); }
+      else if(w){ w.classList.remove('pc-rail-closed'); }
+    } else {
+      var cl=document.getElementById('pcRailClose');
+      if(cl){ cl.click(); } else if(w){ w.classList.add('pc-rail-closed'); }
+    }
+  }
+  gear.addEventListener('click', function(e){
+    e.stopPropagation(); e.preventDefault();
+    if(menu && !menu.hidden){ closeMenu(); return; }
+    openMenu();
+  });
+  document.addEventListener('click', function(e){
+    if(menu && !menu.hidden && !menu.contains(e.target) && e.target!==gear && !(gear.contains&&gear.contains(e.target))) closeMenu();
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
+})();
+
+/* ---------- C1–C3 — post a photo: attach, preview exactly as it will look, publish ----------
+   Storage: the image rides in the post's JSON as j.photo — a data URL, downscaled to max
+   1200px (JPEG 0.82, PNG kept PNG). The wall renderer already reads j.photo (ibWallNote)
+   and presents it in .ib-photo, so the preview below uses the SAME renderer (ibWallHTML)
+   as the live wall — what you see is what posts. */
+(function(){
+  window.__pxImg=null;
+  var inp=document.getElementById('osPostImgIn');
+  var btn=document.getElementById('osPostImgBtn');
+  var rem=document.getElementById('osPostImgRemove');
+  var prev=document.getElementById('osPostPreview');
+  var card=document.getElementById('osPostPreviewCard');
+  var body=document.getElementById('os-post-body');
+  var auth=document.getElementById('os-post-author');
+  var creator=document.getElementById('fcCreator');
+  if(!inp||!btn) return;
+  function renderPreview(){
+    if(!prev||!card) return;
+    var b=body?(body.value||'').trim():'';
+    var a=auth?(auth.value||'').trim()||'Guest':'Guest';
+    if(!b && !window.__pxImg){ prev.hidden=true; card.innerHTML=''; return; }
+    prev.hidden=false;
+    if(typeof window.ibWallHTML==='function'){
+      try{ card.innerHTML=window.ibWallHTML({j:{k:'wall',a:a,b:b,photo:(window.__pxImg||null),noteType:(window.osNoteMode==='post'?'post':'naya')},at:new Date().toISOString(),id:'px-preview'},0); }
+      catch(e){ card.innerHTML='<p class="os-note">Preview unavailable.</p>'; }
+    } else { card.innerHTML='<p class="os-note">Preview unavailable.</p>'; }
+  }
+  function clearImg(){ window.__pxImg=null; try{ inp.value=''; }catch(e){} if(rem) rem.hidden=true; renderPreview(); }
+  btn.addEventListener('click', function(){ inp.click(); });
+  if(rem) rem.addEventListener('click', clearImg);
+  inp.addEventListener('change', function(){
+    var f=inp.files&&inp.files[0]; if(!f) return;
+    if(!/^image\//.test(f.type||'')){ if(typeof toast==='function') toast('That is not an image.'); return; }
+    var rd=new FileReader();
+    rd.onload=function(){
+      var img=new Image();
+      img.onload=function(){
+        try{
+          var max=1200, w=img.naturalWidth||img.width, h=img.naturalHeight||img.height;
+          var sc=Math.min(1, max/Math.max(w,h));
+          var cv=document.createElement('canvas');
+          cv.width=Math.max(1,Math.round(w*sc)); cv.height=Math.max(1,Math.round(h*sc));
+          var cx=cv.getContext('2d'); cx.drawImage(img,0,0,cv.width,cv.height);
+          window.__pxImg=cv.toDataURL(f.type==='image/png'?'image/png':'image/jpeg',0.82);
+        }catch(e){ window.__pxImg=rd.result; }
+        if(rem) rem.hidden=false;
+        renderPreview();
+      };
+      img.onerror=function(){ window.__pxImg=rd.result; if(rem) rem.hidden=false; renderPreview(); };
+      img.src=rd.result;
+    };
+    rd.readAsDataURL(f);
+  });
+  var t=null;
+  function deb(){ clearTimeout(t); t=setTimeout(renderPreview,150); }
+  if(body) body.addEventListener('input', deb);
+  if(auth) auth.addEventListener('input', deb);
+  document.addEventListener('click', function(e){
+    var m=e.target&&e.target.closest?e.target.closest('[data-tg-mode]'):null;
+    if(m) setTimeout(renderPreview,60);
+  });
+  if(creator && window.MutationObserver){
+    new MutationObserver(function(){
+      if(creator.hidden){ clearImg(); }
+    }).observe(creator,{attributes:true,attributeFilter:['hidden']});
+  }
+  window.__pxRenderPreview=renderPreview;
+})();
+})();
+</script>
+
 </body></html>
