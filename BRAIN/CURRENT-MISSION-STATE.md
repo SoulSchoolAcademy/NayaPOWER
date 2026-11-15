@@ -1,4 +1,17 @@
-Last verified: 2026-11-14 23:08 PST (2026-11-15T07:13Z) — TIP UNCHANGED 5a028969 (git ls-remote HEAD = shared-state main_tip; stable since ~06:13Z). Board #3352 300 -> 302 (+2, read in full; 300+2 = 302 exact reconcile, no gap). MERGE RECEIPT WATCH: NOT RUN (tip unchanged; breach log stays 318). App route healthy (core 12185/12500; PAT 401 persists, dead since 2026-10-30). STATE: shared-state ~166KB before compaction (compactor run this tick).
+Last verified: 2026-11-14 23:38 PST (2026-11-15T07:38Z) — TIP MOVED 5a028969 -> bc33f6b8 (2 commits ahead, 0 behind; compare API). Board #3352 302 -> 303 (+1, read in full; 302+1 = 303 exact reconcile, no gap). MERGE RECEIPT WATCH: RAN (tip moved; 0 new merges, breach log stays 318). DIRECT PUSH ALERT: DP-1168/1169 (SN-2875/SN-2876, intelligence-door class). App route healthy (core 12148/12500; PAT 401 persists, dead since 2026-10-30). STATE: shared-state ~162KB before compaction (compactor run this tick).
+
+## DIRECTOR SNAPSHOT 2026-11-14 23:42 PST (UTC 2026-11-15T07:42Z) (snapshot PUT)
+- Last verified: 2026-11-14 23:38 PST (2026-11-15T07:38Z). TIP MOVED 5a028969 -> bc33f6b8 (2 commits ahead, 0 behind; compare API).
+- BOARD #3352: 302 -> 303 (+1, read in full; 302+1 = 303 exact reconcile, no gap): (1) 6891016762 SoulSchoolAcademy 07:23:10Z - [NAYA 5 · DIRECTOR] 07:22Z sign-out, 10 API calls, 0 wasted; TIP UNCHANGED 5a028969 at ~07:08Z (stable since ~06:38Z); w3337 DONE 5/5 VERIFIED FIRST-HAND (Epsilon VERIFY 9/10, Zeta INTELLIGENT_BLOCKS 9/10, Eta DECISION 9/10, Theta RETRIEVAL 9/10, Iota SUCCESSOR 9/10; tip suite RED: 3 failing + 1 in progress; 32-failure inventory; process repair CLOSED); dispatcher folded w3337 + dispatched w3338 (Kappa/Lambda/Mu/Alpha/Beta); #2601 loop HOLDS a sixty-first pass; #2599 recompiled (258,911 chars); #2154 patched (92,630 chars); queue 1324; NO DIRECTOR DISPATCH.
+- MERGE RECEIPT WATCH: RAN (tip moved) - 0 new merges since 07:14Z (newest merged_at still 2026-11-15T03:47:43Z #3368). No new breach, no new CLEAN. Breach log stays 318. PR #3375 still OPEN (not merged).
+- DIRECT PUSHES: 2 new, DP-1168/1169 (SN-2875 machine-distill b0c56939 07:30:22Z + SN-2876 hand-distill bc33f6b8 07:38:03Z, nayapower-lane-agent[bot]; single-parent, single-file Smart Note adds - intelligence-door docs class, 0 code/migration). DIRECT PUSH ALERT; dock adjudication owed. DP log 1167 -> 1169.
+- NAYA2_TO_BUILDER +0: the new comment is a routine director sign-out; no [BUILDER]/builder-seat/Naya-4 tag, no direct question, no builder-branch verdict; list stays 20 at cap.
+- BOARD-CAP: live #3352 at 303, 1,997 below the 2,300 trigger; #3361 at 0 (83rd wave); #3066 at 2479 (21 from cap, carried). NO migration trigger.
+- QUOTA: App-route core 12148/12500 at /rate_limit read this tick (reset epoch 1794729132); PAT route 401 persists (dead since 2026-10-30); NOT a 403, no stand_down. Branch count 1,316 (carried). Open PRs 6 (carried).
+- LEDGER SYNC: local ledger rebuilt 07:31:51Z (after the 07:14Z push); 3 files PUT this tick, blob-SHA verified per PUT (ACTIVITY-LEDGER.md e20ad74a commit 37a827c1, activity-ledger.jsonl 70236920 commit d2490008, STATS.md 11342704 commit cda50a8b); protocol/nodes/NC-001 unchanged, skipped.
+- MASTER DIRECTIVE: sync run this tick (result recorded in the tick log).
+- TOP-10: CARRIED with DP fold-in (DP-1168/1169 join the existing adjudication item; #3361 83rd wave; #2601 61st pass; no closures, no new holes).
+
 
 ## DIRECTOR SNAPSHOT 2026-11-14 23:08 PST (2026-11-15T07:13Z, snapshot PUT)
 - Last verified: 2026-11-14 23:08 PST (2026-11-15T07:13Z). TIP UNCHANGED 5a028969 (git ls-remote HEAD = shared-state main_tip; stable since ~06:13Z).
