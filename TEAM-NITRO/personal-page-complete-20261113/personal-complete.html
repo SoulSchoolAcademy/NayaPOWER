@@ -3789,10 +3789,15 @@ article.intel-board:hover, article.intel-board:active { border-color: var(--tone
 /* R4 — the Smart Tabs strip is FULLY visible: every pill on the page, none
    clipped by the rail, none faded at the edge. The old strip was a horizontal
    scroller with a 28px fade at each end, so the last pills ("Ambassador",
-   "Posts", "+ Add") sat half-visible under the fade. The pills wrap now. */
+   "Posts", "+ Add") sat half-visible under the fade — so the pills wrapped.
+   FIX-AND-RECHECK F1 (2026-11-15): the fade is gone (no mask/fade anywhere
+   on this strip now), and the wrap cost 7 rows above the wall at phone
+   width — so the strip scrolls again, as the H3 addendum briefed, in one
+   row. The harvested auto-scroll timer only works on a scroller, and the
+   chips already carry flex:0 0 auto, so none of them squeezes. */
 .smart-tabs {
-  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-  overflow-x: visible; scrollbar-width: none;
+  display: flex; align-items: center; gap: 10px; flex-wrap: nowrap;
+  overflow-x: auto; scrollbar-width: none;
   margin: 20px 0 0; padding: 12px 0 18px;
   border-bottom: 1px solid var(--line);
 }
@@ -4088,8 +4093,8 @@ body.fc-open{overflow:hidden;}
 <p class="os-note tg-hint" id="tg-hint" data-mw-tr="hint">Naya note — Naya formats your words beautifully. Write it, dictate it with the microphone — Naya writing it for you is coming soon.</p>
 <input class="os-input" id="os-post-author" type="text" placeholder="Your name (visitor or owner)" autocomplete="name">
 <div class="os-fieldwrap"><textarea class="os-textarea" id="os-post-body" rows="3" data-mw-ph="Make a post on this app’s feed…" placeholder="Make a post on this app&rsquo;s feed&hellip;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-post-body" aria-label="Dictate your post" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
-<div class="os-postimg-row" id="osPostImgRow"><input type="file" id="osPostImgIn" accept="image/*" hidden><button type="button" class="ph-msg" id="osPostImgBtn">\uD83D\uDDBC Add a photo</button><button type="button" class="ph-msg" id="osPostImgRemove" hidden>Remove photo</button></div>
-<div id="osPostPreview" class="os-post-preview" hidden><p class="os-note" style="margin:0 0 8px;">Preview \u2014 how it will look:</p><div id="osPostPreviewCard"></div></div>
+<div class="os-postimg-row" id="osPostImgRow"><input type="file" id="osPostImgIn" accept="image/*" hidden><button type="button" class="ph-msg" id="osPostImgBtn">🖼 Add a photo</button><button type="button" class="ph-msg" id="osPostImgRemove" hidden>Remove photo</button></div>
+<div id="osPostPreview" class="os-post-preview" hidden><p class="os-note" style="margin:0 0 8px;">Preview — how it will look:</p><div id="osPostPreviewCard"></div></div>
 <div class="ph-actions"><button class="ph-msg" id="os-sched-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Schedule</button><button class="ph-msg" id="os-vis-toggle" type="button" aria-pressed="false" title="Who can see this post"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Private</button><button class="ph-connect" id="os-post-btn" type="button">✦ Post my Naya note</button></div>
 <div class="os-status" id="os-post-status"></div>
 <div id="tg-review" hidden>
@@ -8941,7 +8946,22 @@ function wallCard(j, iso, pid, idx){
     var list=$('os-wall-list'); if(!list) return;
     /* FOLLOW-UP: the wall has two stores now — the owner's (Personal) and the collective (Public). The Public tab never overwrites the owner's store. */
     var publicOn=false; try{ var _pt=document.getElementById('mwTabNaya'); publicOn=!!(_pt&&_pt.classList.contains('active')); }catch(e){}
-    if(!publicOn){ MW_WALL_POSTS=posts||[]; }
+    if(!publicOn){
+      /* FIX-AND-RECHECK F1 (2026-11-15) — a live reload that comes back empty
+         must never erase the wall we already have. osNotesRows() resolves []
+         on ANY failed read, and loadWall() re-fires late (the Supabase
+         bundle lands after parse; osAnnounce resolves) — on the staged host
+         that late [] repaint wiped the seam stubs ~4s after they painted,
+         so every pill click after it showed 0. The filter itself was proven
+         working: every stub classifies to its own cluster, and a click with
+         the store intact shows 1 card. The Public tab already never
+         overwrites its store and the Naya tab paints from stored rows —
+         the Personal wall does the same now: only replace the stored wall
+         when the read actually returned rows. When the store is empty too
+         (a genuinely empty wall) the honest "Make your first post" state
+         still paints, exactly as before. */
+      if(posts && posts.length){ MW_WALL_POSTS=posts; }
+    }
     /* F5 (fix, self-check round 3) — MW_WALL_POSTS is this block's own var
        and MW_FEED_PILL is #mw-script's own var; the two blocks are separate
        IIFEs, so both values are mirrored on window and read through window
@@ -29297,7 +29317,15 @@ pxEnhancePerson();
     if(!b && !window.__pxImg){ prev.hidden=true; card.innerHTML=''; return; }
     prev.hidden=false;
     if(typeof window.ibWallHTML==='function'){
-      try{ card.innerHTML=window.ibWallHTML({j:{k:'wall',a:a,b:b,photo:(window.__pxImg||null),noteType:(window.osNoteMode==='post'?'post':'naya')},at:new Date().toISOString(),id:'px-preview'},0); }
+      /* FIX-AND-RECHECK F2 (2026-11-15) — a photo with no saying yet fell
+         through to the renderer's "Untitled Intelligence" fallback (fix pass
+         4.1 removed that fallback everywhere else — it is not reintroduced
+         anywhere). A typed saying already titles itself: the renderer
+         derives the headline from it, exactly as the published card does —
+         so only the untyped case gets a title here, "Your photo", never the
+         banned fallback. */
+      var _pt = b ? undefined : (window.__pxImg ? 'Your photo' : undefined);
+      try{ card.innerHTML=window.ibWallHTML({j:{k:'wall',a:a,b:b,t:_pt,photo:(window.__pxImg||null),noteType:(window.osNoteMode==='post'?'post':'naya')},at:new Date().toISOString(),id:'px-preview'},0); }
       catch(e){ card.innerHTML='<p class="os-note">Preview unavailable.</p>'; }
     } else { card.innerHTML='<p class="os-note">Preview unavailable.</p>'; }
   }
@@ -29345,4 +29373,72 @@ pxEnhancePerson();
 })();
 </script>
 
+
+<!-- FIX-AND-RECHECK ONE ROUND (2026-11-15) — F3 + R3. Nothing else. -->
+<style id="fix-one-round-css">
+/* R3 — at desktop width the eye sat at the board's far right edge, ~700px
+   from the one-line motto, because the motto flexed to fill the row. Let the
+   motto box shrink to its content: the eye tucks directly beside the motto
+   text. At phone width a long motto still fills the row, so the eye stays
+   where it looked designed. (Specificity beats the .ph-intro-motto-row rule.) */
+#phIntroBoard .ph-intro-motto-row .ph-intro-motto{flex:0 1 auto;}
+</style>
+<script id="fix-one-round-js">
+/* F3 — the TEST DATA pill belongs ON THE TILE, not only in the person panel.
+   The tile renderers already emit it for the known test identity, but a tile
+   that arrives by any other path (live list, injected test tile) showed no
+   pill — so this stamps it, idempotently, using the file's own .cx-test pill
+   (the same markup the renderers use). The person-open path reads the name
+   from data-face-tile, never from the name text, so the appended span cannot
+   corrupt it. */
+(function(){
+  var TEST_NAMES = ['Trigger Test Two'];
+  function isTestTile(tile){
+    if(!tile) return false;
+    var n = tile.getAttribute ? (tile.getAttribute('data-face-tile')||'') : '';
+    return TEST_NAMES.indexOf(n) >= 0;
+  }
+  function stampTile(tile){
+    if(!isTestTile(tile)) return false;
+    var nameEl = tile.querySelector ? tile.querySelector('.os-face-name') : null;
+    if(!nameEl) return false;
+    if(nameEl.querySelector('.cx-test')) return false;
+    var pill = document.createElement('span');
+    pill.className = 'cx-test';
+    pill.textContent = 'TEST DATA';
+    nameEl.appendChild(pill);
+    return true;
+  }
+  function stampAll(root){
+    var scope = root || document;
+    var tiles = scope.querySelectorAll ? scope.querySelectorAll('.os-face[data-face-tile]') : [];
+    var n = 0;
+    for(var i=0;i<tiles.length;i++){ if(stampTile(tiles[i])) n++; }
+    return n;
+  }
+  window.pcStampTestPills = stampAll;
+  function boot(){
+    stampAll(document);
+    var faces = document.getElementById('os-faces');
+    if(faces && window.MutationObserver){
+      new MutationObserver(function(muts){
+        for(var i=0;i<muts.length;i++){
+          var m = muts[i];
+          for(var j=0;j<m.addedNodes.length;j++){
+            var nd = m.addedNodes[j];
+            if(nd.nodeType!==1) continue;
+            if(nd.matches && nd.matches('.os-face[data-face-tile]')) stampTile(nd);
+            else stampAll(nd);
+          }
+        }
+      }).observe(faces, {childList:true, subtree:true});
+    }
+    /* Faces render async from the live list; late passes catch them. */
+    setTimeout(function(){ stampAll(document); }, 1500);
+    setTimeout(function(){ stampAll(document); }, 4000);
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+</script>
 </body></html>
