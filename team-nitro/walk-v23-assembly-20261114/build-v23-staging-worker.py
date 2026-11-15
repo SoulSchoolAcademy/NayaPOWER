@@ -87,7 +87,7 @@ print(f"personal-template {len(template_raw)} B sha {template_sha}")
 # definitions, joining-is-the-agreement, no repeats, review presentation shape,
 # one player, skip test, verbatim logo, payout-clock question named in record).
 # Walk sha 349b6238 (3,450,550 B). Steps 1-15 untouched in behavior. v4c: addendum #4 (no play, no Ready-to-sign, logo in footers, obsidian) + addendum #5 (words scorecard pass, bigger portraits) + run-3 skip-back + overflow fixes.
-assert walk_sha.startswith("ae1bd0ba"), "walk sha is not the agreement-fix-pass walk sha (fix round + board 58 rebalance 4/4/4 + portraits rotated/faces on §4)"
+assert walk_sha.startswith("4ffeb0b4"), "walk sha is not the agreement-fix-pass-2 walk sha (fix pass + portrait repeats broken, stray-i stripped, beats 57/63 at body size)"
 assert template_sha.startswith("61002d15"), "personal template sha is not the composed template sha (live Personal v9 992ab18c + hero fix + rooms-plus fix)"
 assert ident_sha.startswith("55fdffa8"), "identity sha is not the NEW-ACCOUNT-FIX v3 identity sha (restore gated + heal + certified-name handoff + heal gate)"
 assert welcome_sha.startswith("51b42b87"), "welcome sha is not the NEW-ACCOUNT-FIX welcome sha (other-identities jump-back-in)"

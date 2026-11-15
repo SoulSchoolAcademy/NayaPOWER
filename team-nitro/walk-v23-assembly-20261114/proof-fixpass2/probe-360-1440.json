@@ -1,0 +1,472 @@
+{
+ "360": {
+  "overflow_hook": {
+   "sw": 360,
+   "iw": 360
+  },
+  "plaintext_lines": 347,
+  "plaintext_stray_i": [],
+  "plaintext_tail": "nayanet.app \u2014 enter.",
+  "plaintext_head": [
+   "THE COLLECTIVE AGREEMENT",
+   "Between NayaNET and you.",
+   ""
+  ],
+  "plaintext_sentences_checked": 231,
+  "plaintext_sentences_missing": [],
+  "clicks": 82,
+  "boards_visible": 83,
+  "dots_on": 83,
+  "label_end": "ALL TEN STEPS \u00b7 READ",
+  "agree_visible": true,
+  "counts": [
+   3,
+   3,
+   2,
+   4,
+   3,
+   2,
+   3,
+   3,
+   3,
+   1,
+   4,
+   4,
+   3,
+   3,
+   2,
+   3,
+   4,
+   4,
+   4,
+   4,
+   1,
+   4,
+   3,
+   3,
+   1,
+   4,
+   1,
+   3,
+   3,
+   3,
+   2,
+   3,
+   4,
+   3,
+   3,
+   3,
+   4,
+   2,
+   4,
+   4,
+   3,
+   3,
+   1,
+   4,
+   3,
+   3,
+   2,
+   2,
+   3,
+   2,
+   4,
+   3,
+   2,
+   3,
+   3,
+   2,
+   3,
+   1,
+   4,
+   4,
+   4,
+   2,
+   4,
+   2,
+   3,
+   1,
+   3,
+   3,
+   2,
+   2,
+   4,
+   3,
+   3,
+   1,
+   2,
+   3,
+   3,
+   1,
+   2,
+   3,
+   3,
+   3,
+   2
+  ],
+  "board_photos": {
+   "11": {
+    "src": "/agmt-b06.png",
+    "ok": true,
+    "w": 148
+   },
+   "18": {
+    "src": "/agmt-b04.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "25": {
+    "src": "/agmt-b09.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "36": {
+    "src": "/agmt-b02.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "37": {
+    "src": "/agmt-b12.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "40": {
+    "src": "/agmt-b11.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "43": {
+    "src": "/agmt-b00.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "46": {
+    "src": "/agmt-b01.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "49": {
+    "src": "/agmt-b03.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "52": {
+    "src": "/agmt-b05.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "55": {
+    "src": "/agmt-b12.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "58": {
+    "src": "/agmt-b00.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "61": {
+    "src": "/agmt-b01.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "64": {
+    "src": "/agmt-b02.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "67": {
+    "src": "/agmt-b03.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "70": {
+    "src": "/agmt-b07.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "73": {
+    "src": "/agmt-b05.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "76": {
+    "src": "/agmt-b11.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "78": {
+    "src": "/agmt-b08.jpg",
+    "ok": true,
+    "w": 148
+   }
+  },
+  "board_photos_match": {
+   "11": true,
+   "18": true,
+   "25": true,
+   "36": true,
+   "37": true,
+   "40": true,
+   "43": true,
+   "46": true,
+   "49": true,
+   "52": true,
+   "55": true,
+   "58": true,
+   "61": true,
+   "64": true,
+   "67": true,
+   "70": true,
+   "73": true,
+   "76": true,
+   "78": true
+  },
+  "note_photos": {
+   "deal-note-collective": {
+    "src": "/agmt-b06.png",
+    "ok": true
+   },
+   "deal-note-land": {
+    "src": "/agmt-b04.jpg",
+    "ok": true
+   },
+   "deal-note-business": {
+    "src": "/agmt-b11.jpg",
+    "ok": true
+   },
+   "deal-note-deed": {
+    "src": "/agmt-b00.jpg",
+    "ok": true
+   },
+   "deal-note-cost": {
+    "src": "/agmt-b01.jpg",
+    "ok": true
+   },
+   "deal-note-joining": {
+    "src": "/agmt-b03.jpg",
+    "ok": true
+   },
+   "deal-note-privacy": {
+    "src": "/agmt-b05.jpg",
+    "ok": true
+   },
+   "deal-note-vault": {
+    "src": "/agmt-b10.jpg",
+    "ok": true
+   },
+   "deal-note-save": {
+    "src": "/agmt-b12.jpg",
+    "ok": true
+   },
+   "deal-note-job": {
+    "src": "/agmt-b04.jpg",
+    "ok": true
+   },
+   "deal-note-earn": {
+    "src": "/agmt-b07.jpg",
+    "ok": true
+   },
+   "deal-note-skeptic": {
+    "src": "/agmt-b08.jpg",
+    "ok": true
+   },
+   "deal-note-cap": {
+    "src": "/agmt-b09.jpg",
+    "ok": true
+   },
+   "deal-note-hold": {
+    "src": "/agmt-b02.jpg",
+    "ok": true
+   }
+  },
+  "note_photos_match": {
+   "deal-note-collective": true,
+   "deal-note-land": true,
+   "deal-note-business": true,
+   "deal-note-deed": true,
+   "deal-note-cost": true,
+   "deal-note-joining": true,
+   "deal-note-privacy": true,
+   "deal-note-vault": true,
+   "deal-note-save": true,
+   "deal-note-job": true,
+   "deal-note-earn": true,
+   "deal-note-skeptic": true,
+   "deal-note-cap": true,
+   "deal-note-hold": true
+  },
+  "eyes": [
+   [
+    "deal-note-collective",
+    {
+     "hidden": false,
+     "top": 248,
+     "eyeBottom": 238,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-land",
+    {
+     "hidden": false,
+     "top": 423,
+     "eyeBottom": 413,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-business",
+    {
+     "hidden": false,
+     "top": 345,
+     "eyeBottom": 335,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-deed",
+    {
+     "hidden": false,
+     "top": 335,
+     "eyeBottom": 325,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-cost",
+    {
+     "hidden": false,
+     "top": 32,
+     "eyeBottom": 22,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-joining",
+    {
+     "hidden": false,
+     "top": 36,
+     "eyeBottom": 26,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-privacy",
+    {
+     "hidden": false,
+     "top": 275,
+     "eyeBottom": 265,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-vault",
+    {
+     "hidden": false,
+     "top": 36,
+     "eyeBottom": 26,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-save",
+    {
+     "hidden": false,
+     "top": 420,
+     "eyeBottom": 410,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-job",
+    {
+     "hidden": false,
+     "top": 63,
+     "eyeBottom": 53,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-earn",
+    {
+     "hidden": false,
+     "top": 9,
+     "eyeBottom": -1,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-skeptic",
+    {
+     "hidden": false,
+     "top": 172,
+     "eyeBottom": 162,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-cap",
+    {
+     "hidden": false,
+     "top": 2,
+     "eyeBottom": -8,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-hold",
+    {
+     "hidden": false,
+     "top": 701,
+     "eyeBottom": 691,
+     "inView": true
+    }
+   ]
+  ],
+  "eyes_ok": true,
+  "overflow_unfolded": {
+   "sw": 360,
+   "iw": 360
+  },
+  "signing": {
+   "board": 148,
+   "sign": 260,
+   "signSrc": "/agmt-sign2.png",
+   "signOk": true
+  },
+  "bold_sizes": {
+   "37": "12px / ls 1.92px",
+   "45": "12px / ls 1.92px",
+   "57": "17px / ls normal",
+   "63": "17px / ls normal"
+  }
+ },
+ "360_errors": [],
+ "1440": {
+  "overflow_hook": {
+   "sw": 1440,
+   "iw": 1440
+  },
+  "plaintext_stray_i": [],
+  "plaintext_tail": "nayanet.app \u2014 enter.",
+  "clicks": 82,
+  "boards_visible": 83,
+  "overflow_unfolded": {
+   "sw": 1440,
+   "iw": 1440
+  },
+  "signing": {
+   "board": 244,
+   "sign": 388,
+   "signSrc": "/agmt-sign2.png",
+   "signOk": true
+  },
+  "bold_sizes": {
+   "37": "12px",
+   "57": "17px",
+   "63": "17px"
+  }
+ },
+ "1440_errors": []
+}
