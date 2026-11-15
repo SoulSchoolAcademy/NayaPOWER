@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-15 12:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-15 13:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -51481,6 +51481,12 @@ _Last updated: 2026-11-15 12:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ distill-weekly-20261115-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Weekly distillation 20261115 (Librarian hat): 5 essences re-verified, 40-law standing-claim verification, 1 new reconciliation (record 41)
+
+**Evidence:** Fresh-window receipt. Verified first-hand: essences file hidden_files/distill-weekly/essences-20261115.md sha256 b7e55d11f10200bc96c5a8809d9095b5dbdff61723a9fcc357b96f2c8aeb1690 matches the receipt exactly; lessons.jsonl 41 records, all valid JSON, sha256 7e3a1690bab1be18d5b906bea9a2b5b0f3ce7f31cc96c5b8c70d71492c84177e matches, last id reconcile-se
+
 ### ✅ gap-t0815-phase15-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.2/10 [VERIFIED]
 
 **Task:** Gap follow-up t0815-phase15: second-seat spot-check of phase1-priority-rank.md — DECLINE (pre-task recusal, self-authorship)
@@ -52914,6 +52920,12 @@ _Last updated: 2026-11-15 12:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261115-0448 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-15 04:48 PST: full claim sweep of all 31 queued briefs, 0 claimed (58th consecutive hourly stall)
+
+**Evidence:** Fresh-window receipt (backlog now 0 after this tick's 2 scores). Verified first-hand: sweep log hidden_files/brief-queue/claim-sweep-20261115-0448.log exists (24,558 bytes) with 27 TRY blocks, 25x EXIT=7 + 2x EXIT=2, 0 claimed — the 4 missing attempt blocks are the b1 band (brief-gap-gate-stall-20261026-2230-lane0.md, brief-gap-gate-stall-20261111-
 
 ### ✅ gate-stall-20261115-0343 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
