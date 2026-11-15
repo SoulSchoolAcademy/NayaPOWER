@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-15 21:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-15 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -52926,6 +52926,12 @@ _Last updated: 2026-11-15 21:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261115-1350 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-15 13:50 PST: full claim sweep of all 31 queued briefs, 0 claimed (re-mint 27 min after the 13:23 stall receipt)
+
+**Evidence:** Fresh-window receipt (only unscored receipt; backlog 0 after this tick). Verified first-hand: sweep log hidden_files/brief-queue/claim-sweep-20261115-1348.log exists (10,889 bytes, 32 lines) with 31 ATTEMPT lines - 29x exit 7 parent-authorship + 2x exit 2 routing-prose, 0 claimed, tail 'RESULT claimed=NONE attempts=31'; the 31 log names exactly equ
 
 ### ✅ gate-stall-20261115-1323 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
