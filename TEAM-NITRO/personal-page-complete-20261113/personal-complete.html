@@ -6819,7 +6819,7 @@ button.os-ld-node .os-ld-n{
 <div class="ib-layer layer-emerald open">
 <button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#2fe89e">S</span><span class="os-jewel os-jewel-h" style="--jc:#2fe89e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-8 8l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 8-8l-3.8 3.8z"/></svg></span><b>What I do</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
-<div class="ib-nutshell" style="--tone:#2fe89e"><p id="os-sec-whatido-text" class="os-note" style="margin:0;">No what-I-do yet &mdash; tap Edit and say what you do, in one line.</p></div>
+<div class="ib-nutshell" style="--tone:#2fe89e"><p id="os-sec-whatido-text" class="os-note" style="margin:0;">I build NayaNET &mdash; a new internet where everyone gets their own world. Tap Edit to say what you do, in your own words.</p></div>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-whatido-edit" rows="3" style="display:none;margin-top:10px;"></textarea></div>
 <div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="whatido"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> Edit</button><button class="ph-connect" type="button" data-os-sec-save="whatido" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-cancel="whatido" style="display:none;">Cancel</button><button class="ph-msg" type="button" data-os-sec-cancel="whatido" style="display:none;" aria-label="Close without saving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="os-status" id="os-sec-whatido-status"></div>
@@ -8104,6 +8104,12 @@ NF.register(UNIT, {
   document.addEventListener('os-connect-failed', function(){ if(window.mwSyncMsgBtn) window.mwSyncMsgBtn(); });
   if(window.mwSyncMsgBtn) window.mwSyncMsgBtn();
   /* ROUND 6: a skill board opens its Why-it-matters in place. */
+  /* EYE-FIX F6 (2026-11-15) — this listener used to register ONLY inside
+     os-connect-done, so on a fresh load (no connect yet) every "Why it
+     matters" click was dead. The same handler is now also registered at
+     load in the appended fix block; this guard stops a second binding
+     here (two bindings would toggle twice and cancel out). */
+  if(!window.__pxSkillToggleBound){ window.__pxSkillToggleBound=true;
   document.addEventListener('click', function(e){
     var b = e.target && e.target.closest ? e.target.closest('.sa-skill-more') : null;
     if(!b) return;
@@ -8112,7 +8118,7 @@ NF.register(UNIT, {
     var open = why.hidden; why.hidden = !open;
     b.setAttribute('aria-expanded', open ? 'true' : 'false');
     b.textContent = open ? 'Why it matters ▴' : 'Why it matters ▾';
-  });
+  }); }
   });
   document.addEventListener('os-connect-failed',function(){ if(msgPending){ msgPending=false; if(window.toast) window.toast('Connection failed — try again'); } });
   // About edit
@@ -15735,7 +15741,7 @@ function el(tag, cls, html) {
     const foot = el('div', 'ib-foot');
     foot.innerHTML = note.kind === 'official'
       ? '<span><span data-mw-tr="set" data-mw-en="Official NayaNET Guide">' + (window.mwTr?window.mwTr('Official NayaNET Guide'):'Official NayaNET Guide') + '</span> \u00B7 <span data-mw-tr="set" data-mw-en="from the Intelligent Library">' + (window.mwTr?window.mwTr('from the Intelligent Library'):'from the Intelligent Library') + '</span></span>'
-      : '<span><span data-mw-tr="set" data-mw-en="Smart Note">' + (window.mwTr?window.mwTr('Smart Note'):'Smart Note') + '</span> ' + esc(note.id || '') + ' \u00B7 <span data-mw-tr="set" data-mw-en="from your Smart Feed">' + (window.mwTr?window.mwTr('from your Smart Feed'):'from your Smart Feed') + '</span></span>';
+      : '<span><span data-mw-tr="set" data-mw-en="Smart Note">' + (window.mwTr?window.mwTr('Smart Note'):'Smart Note') + '</span> ' + ' \u00B7 <span data-mw-tr="set" data-mw-en="from your Smart Feed">' + (window.mwTr?window.mwTr('from your Smart Feed'):'from your Smart Feed') + '</span></span>';
     b.appendChild(foot);
 
     /* — Social actions: top-right + bottom bar + add intel (direct, no queue) — */
@@ -23557,15 +23563,16 @@ var MW_I18N={
  }
 };
 function mwBrowserLang(){
-  try{
-    var l=(navigator.language||navigator.userLanguage||'en').toLowerCase().slice(0,2);
-    return (l==='es'||l==='fr'||l==='de')?l:'en';
-  }catch(e){ return 'en'; }
+  /* EYE-FIX F7 — see mwLangCode: English always, regardless of locale. */
+  return 'en';
 }
 function mwLangCode(){
-  var s=null; try{ s=mwGet('lang',null); }catch(e){}
-  if(s) return s;
-  return mwBrowserLang();
+  /* EYE-FIX F7 (2026-11-15) — Shawn's world is English. The old code fell
+     back to the browser locale, so a German-locale browser turned the whole
+     page German (tabs, empty states, KURZ GESAGT, bottom nav) while an
+     English-locale checker saw English. The language is English, always,
+     regardless of locale or any stored setting, until Shawn asks otherwise. */
+  return 'en';
 }
 function mwTr(en){
   var code=mwLangCode();
@@ -23575,7 +23582,7 @@ function mwTr(en){
 }
 function mwLocale(){
   var c=mwLangCode();
-  return c==='es'?'es-ES':c==='fr'?'fr-FR':c==='de'?'de-DE':'en-US';
+  return 'en-US'; /* EYE-FIX F7 — English locale always. */
 }
 window.mwLocale=mwLocale;
 window.mwTr=mwTr; window.mwLangCode=mwLangCode; window.mwBrowserLang=mwBrowserLang;
@@ -27002,10 +27009,8 @@ function esc(s){ var d=document.createElement('div'); d.textContent=String(s==nu
 function tr(en){ try{ if(window.mwTr) return window.mwTr(en); }catch(e){} return en; }
 function pickLang(){ try{ var v=localStorage.getItem('mw.set.lang'); if(v) return JSON.parse(v); }catch(e){} return mwBrowserLang(); }
 function mwBrowserLang(){
-  try{
-    var l=(navigator.language||navigator.userLanguage||'en').toLowerCase().slice(0,2);
-    return (l==='es'||l==='fr'||l==='de')?l:'en';
-  }catch(e){ return 'en'; }
+  /* EYE-FIX F7 — see mwLangCode: English always, regardless of locale. */
+  try{ return 'en'; }catch(e){ return 'en'; }
 }
 function langName(code){
   for(var i=0;i<LANGS.length;i++) if(LANGS[i][0]===code) return LANGS[i][1];
@@ -29439,6 +29444,513 @@ pxEnhancePerson();
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
+})();
+</script>
+
+<!-- EYE FIX ONE ROUND (2026-11-15) — F1 F2 F3 F4 F5 F6 F8 F9 F10. -->
+<style id="fix-eye-fix-css">
+/* F2 — preview/card header: title clear of the action buttons, date on one
+   line, no raw ids. The header row wraps instead of squeezing the title
+   under the buttons; the stamp never wraps. .ib-id is the raw-id span in
+   the other renderer — never visible. */
+.ib-blocktop{flex-wrap:wrap!important;gap:8px!important}
+.ib-blocktop .ib-identity{min-width:0;flex:1 1 220px}
+.ib-blocktop h2.ib-title{overflow-wrap:anywhere;word-break:break-word}
+.ib-stamp{white-space:nowrap!important;flex-wrap:nowrap!important}
+.ib-stamp>*{white-space:nowrap!important}
+.ib-id{display:none!important}
+/* F3 — Connections tab: person TILES, not rows. Scoped to #people only —
+   the dashboard/report faces keep their row look. The tile is a column:
+   orb on top, name centred under it, fact, presence, then CONNECT. */
+#people .os-faces{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+#people .mw-face-row{display:flex;flex-direction:column;align-items:center;position:relative;min-width:0}
+#people .mw-face-row>span{flex:1;min-width:0;width:100%;display:flex;flex-direction:column;align-items:center}
+#people .mw-face-row .mw-pick-cb{position:absolute;top:8px;right:8px;z-index:2;margin:0}
+#people .os-face{flex-direction:column!important;align-items:center!important;text-align:center!important;padding:18px 12px 16px!important;width:100%}
+#people .os-face .os-face-main{align-items:center!important;text-align:center!important;width:100%}
+#people .os-face .os-face-name{display:block;text-align:center!important;margin:0 0 2px}
+#people .os-face .os-face-fact{text-align:center}
+#people .os-face .os-face-msg{margin-top:8px}
+.pc-eye-connect{margin-top:10px;padding:10px 22px;border:2px solid #2fe89e;border-radius:999px;background:linear-gradient(180deg,#1b1b24,#050507);color:#fff;font-weight:900;font-size:13px;letter-spacing:.04em;cursor:pointer;font-family:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 16px -4px #2fe89e,0 6px 14px rgba(0,0,0,.5)}
+.pc-eye-connect:hover,.pc-eye-connect:focus-visible{border-color:#a06bff;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 22px -2px #a06bff,0 8px 18px rgba(0,0,0,.55);outline:none}
+.pc-eye-connect.requested{border-color:#ffbf3d;color:#ffbf3d}
+/* F4 — About: the corner edit button never sits on the text. The story
+   sentence (#abouttext) had no right padding, so the absolute edit sat on
+   the word "his". Every About body now keeps 64px clear on the right. */
+#about .ib-layer-body #abouttext{padding-right:64px!important}
+#about .ib-layer-body .ph-actions{background:rgba(10,10,15,.85);border-radius:999px;padding:2px}
+#about .ib-layer.pc-eye-future{display:none!important}
+/* F5 — My World: each row is its own distinct elevated rectangle, and the
+   stats icon sits fully inside it. The article is the card now; the inner
+   button goes borderless so the card reads as one object. */
+#mw-world-list .mw-row{background:linear-gradient(135deg,#1e1e26,#0a0a0f 60%,#14141c);border:1.5px solid rgba(255,255,255,.22);border-radius:16px;padding:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -4px 10px rgba(0,0,0,.55),0 8px 20px rgba(0,0,0,.5);overflow:visible;margin:0 0 14px!important}
+#mw-world-list .mw-row .mw-rect-main{background:transparent!important;border:0!important;box-shadow:none!important}
+#mw-world-list .mw-row .mw-stats-ico{position:static!important;align-self:center;flex:none;margin:6px 6px 6px 0}
+/* F8 — the Naya "Make a Naya Note" button is persistent, never a guest of
+   the empty state. */
+.pc-eye-naya-make{margin:0 0 14px}
+/* F9 — header: membership pills sit in a neat row at the cover's foot,
+   never floating top-left over the cover; the stray glyph inside the
+   circular photo is hidden (it read as clipped tiny text). */
+#mwCoverMships{top:auto!important;bottom:14px!important;left:14px!important;right:14px!important;display:flex!important;flex-wrap:wrap;gap:10px;z-index:3}
+.ph-av{font-size:0!important;line-height:0!important}
+.pc-eye-arc{display:block;margin:2px auto 0}
+@media (max-width:640px){
+  #people .os-faces{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pc-eye-connect{padding:9px 16px}
+}
+</style>
+<script id="fix-eye-fix-js">
+(function(){
+'use strict';
+function q(s,r){ try{ return (r||document).querySelector(s); }catch(e){ return null; } }
+function qa(s,r){ try{ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }catch(e){ return []; } }
+function escT(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
+
+/* ── F7 (backstop) — the page is English: lang attr + settings select agree. */
+try{ document.documentElement.lang='en'; var _ls=q('#mw-set-lang'); if(_ls) _ls.value='en'; }catch(e){}
+
+/* ── F6 — Skills toggle bound NOW (the in-place guard stops the late
+   os-connect-done binding from ever double-binding). ── */
+function skillToggle(e){
+  var b=e.target&&e.target.closest?e.target.closest('.sa-skill-more'):null;
+  if(!b) return;
+  var card=b.closest('.sa-skill'); if(!card) return;
+  var why=card.querySelector('.sa-skill-why'); if(!why) return;
+  var open=why.hidden; why.hidden=!open;
+  b.setAttribute('aria-expanded', open?'true':'false');
+  b.textContent=open?'Why it matters \u25b4':'Why it matters \u25be';
+}
+if(!window.__pxSkillToggleBound){ window.__pxSkillToggleBound=true; document.addEventListener('click', skillToggle); }
+
+/* ── F1 — the filter, at the source. ──
+   DIAGNOSIS (from code, live-row shapes in hand):
+   * The strip renders ALL 8 cluster pills unconditionally, but a live row
+     classifies by keyword hits in topics+title+body (intelClusterOf via
+     pcNoteForStrip / pcNayaForStrip). The eye's live rows — "Heartbeat
+     test – NayaPOWER is alive" (Personal, 1 card), "Story round test",
+     "Stats briefing — Nov 8" (Naya Notes, 14 cards) — carry NO cluster
+     keyword, so they all land in the home cluster NayaNET / Naya. Clicking
+     "The Intelligent Internet" therefore correctly matched ZERO cards and
+     the wall painted the generic empty state: a topic button over an empty
+     wall, exactly what Shawn said makes no sense. The stub proof in the
+     fix round never saw this, because its stubs were written WITH keywords.
+   * Second live-path hole: a pill click repaints from the active tab's
+     store even when that store is still empty because its read has not
+     landed yet (Public: MW_PUBLIC_LOADED false; Personal: MW_WALL_POSTS
+     empty) — the click paints empty, and the late load then has to rescue
+     it. The fix round's guard only covered the stored Personal wall.
+   FIX (two halves, both in this block):
+   (a) PRUNE — after every strip build, drop every cluster pill whose
+       cluster has 0 cards in the active tab. A topic button is only ever
+       shown when it has cards behind it. All stays.
+   (b) GUARD — a pill-click repaint that would paint an empty wall from an
+       empty, not-yet-loaded store is skipped; the painted wall stays until
+       the read lands (loadWall / pcLoadPublicWall repaint through the local
+       painter, which this wrapper never intercepts, so a genuinely empty
+       wall still paints its honest empty state).
+   (c) HONEST EMPTY — if a filtered wall still comes up empty, the generic
+       "Make your first post" card is rewritten to name the cluster and say
+       there is nothing in it yet. */
+var CLUSTER_LABELS={'intelligent-internet':'The Intelligent Internet','ai-is-hiring':'AI Is Hiring','nayanet-naya':'NayaNET / Naya','smart-notes':'Smart Notes','learn-minute':'Learn in a Minute','private-network':'The Private Network','your-vault':'Your Vault','ambassador':'Ambassador'};
+function activeTabKind(){
+  try{
+    if(q('#mwTabActivity')&&q('#mwTabActivity').classList.contains('active')) return 'naya';
+    if(q('#mwTabNaya')&&q('#mwTabNaya').classList.contains('active')) return 'public';
+  }catch(e){}
+  return 'personal';
+}
+function clusterCountsFor(tab){
+  var counts={}; Object.keys(CLUSTER_LABELS).forEach(function(k){ counts[k]=0; });
+  try{
+    var rows=[];
+    if(tab==='naya'){
+      rows=(window.MW_NAYA_ROWS||[]);
+      rows.forEach(function(n){ try{ var c=window.pcIntelClusterOf(window.pcNayaForStrip(n)); if(counts[c]!=null) counts[c]++; }catch(e){} });
+    } else {
+      var base=(tab==='public')?(window.MW_PUBLIC_POSTS||[]):(window.MW_WALL_POSTS||[]);
+      if(tab==='personal'){
+        var ok=''; try{ ok=(((typeof ownerName==='function'?ownerName():'')||'Shawn Vibert').toLowerCase()); }catch(e){ ok='shawn vibert'; }
+        base=base.filter(function(p){ return (((p.j&&p.j.a)||'Guest').toLowerCase()===ok); });
+      }
+      base.forEach(function(p){ try{ var c=window.pcIntelClusterOf(window.pcOrganizerNote(p)); if(counts[c]!=null) counts[c]++; }catch(e){} });
+    }
+  }catch(e){}
+  return counts;
+}
+function pruneEmptyClusterPills(){
+  try{
+    if(typeof window.pcIntelClusterOf!=='function') return;
+    var counts=clusterCountsFor(activeTabKind());
+    qa('#mwFeedPills [data-mw-pill]').forEach(function(pill){
+      var key=pill.getAttribute('data-mw-pill')||'';
+      if(key.indexOf('cluster:')!==0) return;
+      var cl=key.slice(8);
+      if(counts[cl]===0 && window.MW_FEED_PILL!==key){ pill.remove(); }
+    });
+  }catch(e){}
+}
+if(typeof window.pcSmartTabStrip==='function' && !window.pcSmartTabStrip.__pxEyeWrapped){
+  var _strip=window.pcSmartTabStrip;
+  window.pcSmartTabStrip=function(){ var r=_strip.apply(this,arguments); try{ pruneEmptyClusterPills(); }catch(e){} return r; };
+  window.pcSmartTabStrip.__pxEyeWrapped=true;
+}
+if(typeof window.mwPaintWallPosts==='function' && !window.mwPaintWallPosts.__pxEyeWrapped){
+  var _paint=window.mwPaintWallPosts;
+  window.mwPaintWallPosts=function(posts){
+    try{
+      var pill=window.MW_FEED_PILL||'all';
+      if(pill && pill!=='all'){
+        var tab=activeTabKind();
+        if(tab==='public' && !window.MW_PUBLIC_LOADED && !(window.MW_PUBLIC_POSTS||[]).length) return;
+        if(tab==='personal' && !(window.MW_WALL_POSTS||[]).length && !(posts&&posts.length)) return;
+      }
+    }catch(e){}
+    var r=_paint.apply(this,arguments);
+    try{
+      var pill2=window.MW_FEED_PILL||'all';
+      var list=q('#os-wall-list');
+      if(list && pill2.indexOf('cluster:')===0 && !list.querySelector('.intel-board,.ib-card,article')){
+        var card=list.querySelector('.ph-invite-board')||list.firstElementChild;
+        if(card){
+          var h=card.querySelector('h3'), p=card.querySelector('p');
+          var lbl=CLUSTER_LABELS[pill2.slice(8)]||pill2.slice(8);
+          if(h) h.textContent='Nothing in '+lbl+' yet';
+          if(p) p.textContent='No posts in '+lbl+' on this feed yet — try All, or be the first to post about it.';
+        }
+      }
+    }catch(e){}
+    return r;
+  };
+  window.mwPaintWallPosts.__pxEyeWrapped=true;
+}
+
+/* ── F2 — preview on opening + no empty boxes, no raw ids. ──
+   The preview only rendered after typing (renderPreview returns early on
+   an empty body with no photo). When the creator opens, show the preview
+   area at once with an honest placeholder; typing replaces it. The sweep
+   hides an "IN A NUTSHELL" box whose body is empty ("Story round test"
+   card) and strips raw UUID / px-preview tokens from card feet. */
+function sweepCards(root){
+  try{
+    qa('.ib-nutshell',root).forEach(function(ns){
+      var t=(ns.textContent||'').replace(/IN A NUTSHELL/i,'').trim();
+      if(!t) ns.style.display='none';
+    });
+    qa('.ib-foot',root).forEach(function(f){
+      var w=f; var nodes=w.childNodes;
+      for(var i=0;i<nodes.length;i++){
+        if(nodes[i].nodeType===3){
+          var v=nodes[i].textContent;
+          var nv=v.replace(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/gi,'').replace(/px-preview/gi,'').replace(/\s{2,}/g,' ');
+          if(nv!==v) nodes[i].textContent=nv;
+        }
+      }
+      qa('span',f).forEach(function(sp){
+        var v=sp.textContent||'';
+        if(/[0-9a-f]{8}-[0-9a-f]{4}/i.test(v)||/px-preview/i.test(v)) sp.textContent=v.replace(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/gi,'').replace(/px-preview/gi,'').trim();
+      });
+    });
+    /* Backstop for the same leak anywhere else on a card (the preview's
+       bare id span lives outside .ib-foot): strip the token from any span
+       on the wall / Naya list / preview, and hide a span left empty by it. */
+    ['#os-wall-list','#mwFeedNaya','#osPostPreviewCard'].forEach(function(sel){
+      qa(sel,root).forEach(function(scope){
+        scope.querySelectorAll('span').forEach(function(sp){
+          if(!/px-preview/i.test(sp.textContent||'')) return;
+          sp.childNodes.forEach(function(c){ if(c.nodeType===3) c.textContent=c.textContent.replace(/px-preview/gi,''); });
+          if(!(sp.textContent||'').trim()) sp.style.display='none';
+        });
+      });
+    });
+  }catch(e){}
+}
+var _sweepT=null;
+function sweepSoon(){ if(_sweepT) return; _sweepT=setTimeout(function(){ _sweepT=null; try{ sweepCards(document); }catch(e){} },120); }
+try{
+  if(window.MutationObserver){
+    new MutationObserver(function(){ sweepSoon(); }).observe(document.body,{childList:true,subtree:true,characterData:true});
+  }
+}catch(e){}
+function previewOnCreatorOpen(){
+  try{
+    var creator=q('#fcCreator'); if(!creator) return;
+    if(creator.hidden) return;
+    if(typeof window.__pxRenderPreview==='function') window.__pxRenderPreview();
+    var prev=q('#osPostPreview'), card=q('#osPostPreviewCard');
+    if(prev&&card&&prev.hidden){
+      prev.hidden=false;
+      card.innerHTML='<p class="os-note">Your preview appears here as you type — title, photo and words, exactly as they will post.</p>';
+    }
+  }catch(e){}
+}
+try{
+  var _fc=q('#fcCreator');
+  if(_fc&&window.MutationObserver){
+    new MutationObserver(function(){ try{ previewOnCreatorOpen(); }catch(e){} }).observe(_fc,{attributes:true,attributeFilter:['hidden']});
+  }
+  document.addEventListener('click',function(e){
+    var m=e.target&&e.target.closest?e.target.closest('[data-fc-plus], [data-pc-invite-post], [data-pc-invite-naya], #pcComposerPlus'):null;
+    if(m) setTimeout(previewOnCreatorOpen,120);
+  });
+}catch(e){}
+
+/* ── F3 — Connections tab: TEST DATA on every test tile + green CONNECT. ──
+   Mechanism: the file's renderers stamp TEST DATA only for the exact name
+   'Trigger Test Two', so 'Check Friend' (and any other test tile) shows
+   none; and the tile markup carries only a Message button — CONNECT lives
+   only on the rail/popover. The stamp below covers every test identity and
+   adds a CONNECT button wired to the page's OWN delegated connect handler
+   ([data-pc-connect] — same store write as the rail's CONNECT, honest
+   offline failure included). The tile-tap handler ignores button clicks,
+   so CONNECT never opens the timeline. The owner's own ("You") tile gets
+   no CONNECT — you cannot connect with yourself. */
+var TEST_NAMES=['Trigger Test Two','Check Friend'];
+function isTestName(n){
+  if(!n) return false;
+  if(TEST_NAMES.indexOf(n)>=0) return true;
+  if(/^check friend/i.test(n)) return true;
+  if(/\btest\b/i.test(n)) return true;
+  return false;
+}
+function slugAlias(n){ return String(n||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')||'person'; }
+function stampFaces(root){
+  try{
+    qa('.os-face[data-face-tile]',root).forEach(function(tile){
+      var name=tile.getAttribute('data-face-tile')||'';
+      var nameEl=tile.querySelector('.os-face-name');
+      if(nameEl&&isTestName(name)&&!nameEl.querySelector('.cx-test')){
+        var pill=document.createElement('span'); pill.className='cx-test'; pill.textContent='TEST DATA';
+        nameEl.appendChild(pill);
+      }
+      var inPeople=tile.closest?!!tile.closest('#people'):false;
+      if(inPeople&&!tile.querySelector('.pc-eye-connect')&&!tile.querySelector('.os-you')){
+        var b=document.createElement('button');
+        b.type='button'; b.className='ph-connect pc-eye-connect';
+        b.setAttribute('data-pc-connect',slugAlias(name));
+        b.textContent='Connect';
+        tile.appendChild(b);
+      }
+    });
+  }catch(e){}
+}
+try{
+  stampFaces(document);
+  if(window.MutationObserver){
+    new MutationObserver(function(muts){
+      muts.forEach(function(m){ for(var i=0;i<m.addedNodes.length;i++){ var nd=m.addedNodes[i]; if(nd.nodeType===1) stampFaces(nd); } });
+      stampFaces(document);
+    }).observe(document.body,{childList:true,subtree:true});
+  }
+  setTimeout(function(){ stampFaces(document); },1500);
+  setTimeout(function(){ stampFaces(document); },4000);
+}catch(e){}
+
+/* ── F4 — About: one-thing-at-a-time reveal. ──
+   The seven named layers (motto → story → what I do → goals → purpose →
+   mission → vision) reveal in order: only the next unopened layer's head
+   is visible; opening it reveals the one after. The layers stay in the
+   DOM (7/7, same order) — only future heads are hidden. */
+var ABOUT_ORDER=['My motto','My story','What I do','My goals','My purpose','My mission','My vision'];
+function aboutLayers(){
+  var out=[];
+  qa('#about .ib-layer').forEach(function(l){
+    var b=l.querySelector('.ib-layer-head b');
+    var t=b?(b.textContent||'').trim():'';
+    if(ABOUT_ORDER.indexOf(t)>=0) out.push(l);
+  });
+  out.sort(function(a,b){
+    var ta=a.querySelector('.ib-layer-head b').textContent.trim();
+    var tb=b.querySelector('.ib-layer-head b').textContent.trim();
+    return ABOUT_ORDER.indexOf(ta)-ABOUT_ORDER.indexOf(tb);
+  });
+  return out;
+}
+function refreshAboutReveal(){
+  try{
+    var layers=aboutLayers(); if(!layers.length) return;
+    var firstClosed=-1;
+    for(var i=0;i<layers.length;i++){ if(!layers[i].classList.contains('open')){ firstClosed=i; break; } }
+    if(firstClosed<0) firstClosed=layers.length;
+    layers.forEach(function(l,i){ l.classList.toggle('pc-eye-future', i>firstClosed); });
+  }catch(e){}
+}
+try{
+  refreshAboutReveal();
+  document.addEventListener('click',function(e){
+    var h=e.target&&e.target.closest?e.target.closest('#about [data-os-ib-toggle], #about .os-about-next'):null;
+    if(h) setTimeout(refreshAboutReveal,60);
+  });
+  if(window.MutationObserver){
+    var _ab=q('#about');
+    if(_ab) new MutationObserver(function(){ refreshAboutReveal(); }).observe(_ab,{attributes:true,subtree:true,attributeFilter:['class']});
+  }
+}catch(e){}
+
+/* ── F5 — Smart Link bloat: honestly grouped, never 50 identical boards. ──
+   #os-sl-mine renders one board per Smart Link (invite-xxxx, 0 clicks).
+   Past six, the rest collapse behind one honest summary line + toggle. */
+function collapseSmartLinks(){
+  try{
+    var host=q('#os-sl-mine'); if(!host) return;
+    var wells=qa('.os-well',host);
+    if(wells.length<=6){ var old=q('#pc-eye-sl-toggle',host); if(old) old.remove(); return; }
+    var extra=wells.slice(3);
+    var hidden=extra.filter(function(w){ return w.style.display==='none'; }).length;
+    var btn=q('#pc-eye-sl-toggle',host);
+    if(!btn){
+      btn=document.createElement('button');
+      btn.type='button'; btn.id='pc-eye-sl-toggle'; btn.className='ph-msg';
+      btn.style.cssText='margin-top:12px';
+      btn.addEventListener('click',function(){
+        var showing=extra[0].style.display!=='none';
+        extra.forEach(function(w){ w.style.display=showing?'none':''; });
+        btn.textContent=showing?('Show all '+wells.length+' Smart Links ('+(wells.length-3)+' more)'):'Show fewer Smart Links';
+      });
+      host.appendChild(btn);
+    }
+    if(hidden===0){ extra.forEach(function(w){ w.style.display='none'; }); }
+    btn.textContent='Show all '+wells.length+' Smart Links ('+(wells.length-3)+' more)';
+  }catch(e){}
+}
+try{
+  collapseSmartLinks();
+  var _sl=q('#os-sl-mine');
+  if(_sl&&window.MutationObserver) new MutationObserver(function(){ collapseSmartLinks(); }).observe(_sl,{childList:true,subtree:true});
+  setTimeout(collapseSmartLinks,2500);
+}catch(e){}
+
+/* ── F8 — stability: deterministic default tab + a Naya button that survives
+   filter cycles. ──
+   (a) The default tab followed the stored feedtab, so a fresh load could
+       land on Naya Notes, then Public after reload. The first paint of a
+       session now always lands on Personal; a tap after that is the
+       citizen's own choice and sticks for the session.
+   (b) "Make a Naya Note" only existed inside the empty state, so it
+       vanished the moment real notes painted. A persistent button now
+       rides at the top of the Naya list on every paint (same
+       data-pc-invite-naya hook as the empty-state button). */
+try{
+  document.addEventListener('click',function(e){
+    var t=e.target&&e.target.closest?e.target.closest('#mwTabSmart,#mwTabNaya,#mwTabActivity'):null;
+    if(t){ try{ sessionStorage.setItem('pc-eye-tab-user','1'); }catch(e2){} }
+  });
+  var _bootTab=false;
+  function bootTab(){
+    if(_bootTab) return; _bootTab=true;
+    try{
+      if(sessionStorage.getItem('pc-eye-tab-user')) return;
+      var cur=q('#mwTabSmart');
+      if(cur&&!cur.classList.contains('active')) cur.click();
+    }catch(e){}
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',function(){ setTimeout(bootTab,300); });
+  else setTimeout(bootTab,300);
+}catch(e){}
+function ensureNayaBtn(){
+  try{
+    var box=q('#mwFeedNaya'); if(!box) return;
+    if(box.querySelector('.pc-eye-naya-make')) return;
+    if(!box.querySelector('.intel-board,.ib-card,article,.ib-blocktop')) return;
+    var b=document.createElement('button');
+    b.type='button'; b.className='ph-connect pc-eye-naya-make';
+    b.setAttribute('data-pc-invite-naya','');
+    b.textContent='Make a Naya Note';
+    box.insertBefore(b,box.firstChild);
+  }catch(e){}
+}
+try{
+  ensureNayaBtn();
+  var _ny=q('#mwFeedNaya');
+  if(_ny&&window.MutationObserver) new MutationObserver(function(){ ensureNayaBtn(); }).observe(_ny,{childList:true,subtree:true});
+}catch(e){}
+
+/* ── F9 — points pill: digit tiles that STAY + a real gauge arc. ──
+   Mechanism: the file already has a tiler (pcTilePill, harvested from the
+   Dashboard) that re-presents #pointscount as digit tiles and drives the
+   gold fill from dialPos(total)/500 — but the eye saw the tiles vanish on
+   reload while the count kept ticking: a later write to #pointscount can
+   land as plain text and the single observer pass does not always
+   re-tile. This block re-tiles on its own observer AND on a settling
+   interval, so plain-text overwrites are re-tiled within 2s, forever.
+   The arc is the Dashboard's own speedometer math (lap position
+   dialPos(total) = ((total-1) % 500) + 1, laps of 500), drawn as the
+   compact 180-degree top arc: the lap position sweeps left to right
+   over the top. The full Dashboard dial is NOT transplanted into the
+   pill (size/scope) — this arc is the honest version. */
+function pcDialPos(v){ v=Math.round(v||0); if(v<=0) return 0; return ((v-1)%500)+1; }
+function ensureArc(){
+  try{
+    var pd=q('#pointsdisplay'); if(!pd) return null;
+    var svg=q('.pc-eye-arc',pd);
+    if(svg) return svg;
+    svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('class','pc-eye-arc'); svg.setAttribute('viewBox','0 0 120 64');
+    svg.setAttribute('width','120'); svg.setAttribute('height','64');
+    svg.setAttribute('aria-hidden','true');
+    svg.innerHTML='<path d="M 12 58 A 48 48 0 0 1 108 58" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="5" stroke-linecap="round"/>'
+      +'<path id="pcEyeArcFill" d="M 12 58 A 48 48 0 0 1 108 58" fill="none" stroke="#ffbf3d" stroke-width="5" stroke-linecap="round" stroke-dasharray="150.8" stroke-dashoffset="150.8"/>'
+      +'<line id="pcEyeNeedle" x1="60" y1="58" x2="60" y2="18" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>'
+      +'<circle cx="60" cy="58" r="4" fill="#ffbf3d" stroke="#fff" stroke-width="1.5"/>'
+      +'<text x="12" y="64" fill="rgba(255,255,255,.55)" font-size="7">0</text>'
+      +'<text x="108" y="64" fill="rgba(255,255,255,.55)" font-size="7" text-anchor="end">500</text>';
+    pd.appendChild(svg);
+    return svg;
+  }catch(e){ return null; }
+}
+function updateArc(total){
+  try{
+    var svg=ensureArc(); if(!svg) return;
+    var pos=pcDialPos(total);
+    var fill=q('#pcEyeArcFill',svg), needle=q('#pcEyeNeedle',svg);
+    if(fill) fill.setAttribute('stroke-dashoffset', String((150.8*(1-pos/500)).toFixed(1)));
+    if(needle){
+      /* 180-degree top arc: the lap position (1..500) sweeps left to right
+         over the top, 180 + (pos/500)*180 degrees. Same lap position as the
+         Dashboard's dialPos; the arc is the compact half, so the needle
+         math matches the arc it rides on. */
+      var ang=(180+(pos/500)*180)*Math.PI/180;
+      var x2=60+40*Math.cos(ang), y2=58+40*Math.sin(ang);
+      needle.setAttribute('x2',x2.toFixed(1)); needle.setAttribute('y2',y2.toFixed(1));
+    }
+  }catch(e){}
+}
+function tilePoints(){
+  try{
+    var pc=q('#pointscount'); if(!pc) return;
+    try{ ensureArc(); }catch(e){}
+    var raw=(pc.textContent||'').trim();
+    if(!raw||raw==='…'||raw==='—'||raw==='-') return;
+    var digits=raw.replace(/[^0-9]/g,'');
+    if(!digits) return;
+    if(!pc.querySelector('.os-mini-tile')){
+      if(typeof window.pcTilePill==='function'){ try{ window.pcTilePill(); }catch(e){} }
+    }
+    if(!pc.querySelector('.os-mini-tile')){
+      var colors=['#fff','#ff2a2a','#ff8c00','#f5d76e','#00a86b','#29b6f6','#3f51b5','#a06bff','#2fe89e','#ff5e6c'];
+      var html='<span class="os-mini-num">';
+      for(var i=0;i<raw.length;i++){
+        var ch=raw[i];
+        if(ch===','||ch===' '){ html+='<span class="os-mini-gap"></span>'; continue; }
+        var d=parseInt(ch,10); if(!isFinite(d)) continue;
+        html+='<span class="os-mini-tile d'+d+'" style="border-color:'+colors[d]+'"><span class="cap"></span><span class="rd">'+d+'</span></span>';
+      }
+      pc.innerHTML=html+'</span>';
+    }
+    updateArc(parseInt(digits,10));
+  }catch(e){}
+}
+try{
+  tilePoints();
+  var _pc=q('#pointscount');
+  if(_pc&&window.MutationObserver) new MutationObserver(function(){ setTimeout(tilePoints,50); }).observe(_pc,{childList:true,characterData:true,subtree:true});
+  var _tileN=0;
+  var _tileTimer=setInterval(function(){ _tileN++; try{ tilePoints(); }catch(e){} if(_tileN>=10) clearInterval(_tileTimer); },2000);
+  setTimeout(tilePoints,800);
+}catch(e){}
+
+/* First sweep + reveal passes once the page has settled. */
+setTimeout(function(){ try{ sweepCards(document); refreshAboutReveal(); ensureNayaBtn(); collapseSmartLinks(); tilePoints(); stampFaces(document); }catch(e){} },1200);
 })();
 </script>
 </body></html>
