@@ -1507,6 +1507,36 @@ def _projection_path_exists(path: Path) -> bool:
     return _projection_io_path(path).is_file()
 
 
+_ORPHAN_SN_FIELD_RE = re.compile(r"smart_note_id\s*[:=]\s*[\"']?(SN-\d+)", re.I)
+_ORPHAN_SN_FOLDER_RE = re.compile(r"/(SN-\d+)/")
+_ORPHAN_SN_FILE_RE = re.compile(r"sn(\d{4})", re.I)
+
+
+def _orphan_page_smart_note_id(root, rel_path):
+    """A published orphan page's own SN id, or None.
+
+    Precedence (proven against the 2026-11-15 live-tip reconciliation:
+    28 collisions / 186 truly-unregistered / 20 no-id at ddffc7e5):
+    the page's own ``smart_note_id`` field first, then its SN-XXXX
+    directory, then its snXXXX filename. A page with no id in any of
+    the three is genuinely unidentified, not merely unregistered.
+    """
+    try:
+        text = (Path(root) / rel_path).read_text(encoding="utf-8", errors="replace")[:16384]
+    except OSError:
+        text = ""
+    m = _ORPHAN_SN_FIELD_RE.search(text)
+    if m:
+        return m.group(1).upper()
+    m = _ORPHAN_SN_FOLDER_RE.search("/" + rel_path)
+    if m:
+        return m.group(1).upper()
+    m = _ORPHAN_SN_FILE_RE.search(Path(rel_path).name)
+    if m:
+        return "SN-" + m.group(1)
+    return None
+
+
 def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=None):
     """Reconcile captures, the machine registry, and published Brain projections.
 
@@ -1636,11 +1666,33 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
             defects["published_pages_without_registry_entry"].append({"page": name, "paths": paths})
 
     counts = {k: len(v) for k, v in defects.items()}
+    # ORPHAN DECOMPOSITION (Naya 5, 2026-11-15 — the orphan count conflates
+    # two defects: pages never registered, and pages filed under an SN id the
+    # registry already gave to an earlier page. A cure that "registers the
+    # orphans" by id collides on the second class; they need id re-assignment
+    # or a merge decision, not registration. Split them here so every audit
+    # receipt carries the split instead of it being hand-derived per run.)
+    registry_sn_ids = {str(e.get("smart_note_id")).upper() for e in entries if e.get("smart_note_id")}
+    orphan_decomposition = {"id_collision": [], "truly_unregistered": [], "no_id": []}
+    for group in defects["published_pages_without_registry_entry"]:
+        for rel in group["paths"]:
+            sn_id = _orphan_page_smart_note_id(root, rel)
+            item = {"page": group["page"], "path": rel, "smart_note_id": sn_id}
+            if sn_id is None:
+                orphan_decomposition["no_id"].append(item)
+            elif sn_id in registry_sn_ids:
+                orphan_decomposition["id_collision"].append(item)
+            else:
+                orphan_decomposition["truly_unregistered"].append(item)
+    for items in orphan_decomposition.values():
+        items.sort(key=lambda d: d["path"])
     return {
         "ok": sum(counts.values()) == 0,
         "counts": counts,
         "defect_total": sum(counts.values()),
         "defects": defects,
+        "orphan_decomposition": orphan_decomposition,
+        "orphan_decomposition_counts": {k: len(v) for k, v in orphan_decomposition.items()},
         "surfaces": {
             "captures_on_disk": len(capture_by_hash),
             "registry_entries": len(entries),
