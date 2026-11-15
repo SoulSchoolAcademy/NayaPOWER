@@ -1,0 +1,410 @@
+{
+ "360": {
+  "overflow_hook": {
+   "sw": 360,
+   "iw": 360
+  },
+  "title": "The Collective Agreement",
+  "dots": 83,
+  "label0": "BOARD 1 OF 83",
+  "clicks": 82,
+  "boards_visible": 83,
+  "dots_on": 83,
+  "label_end": "ALL TEN STEPS \u00b7 READ",
+  "agree_visible": true,
+  "counts": [
+   3,
+   3,
+   2,
+   4,
+   3,
+   2,
+   3,
+   3,
+   3,
+   1,
+   4,
+   4,
+   3,
+   4,
+   2,
+   3,
+   4,
+   4,
+   4,
+   4,
+   1,
+   4,
+   3,
+   3,
+   1,
+   4,
+   1,
+   5,
+   3,
+   3,
+   2,
+   3,
+   4,
+   3,
+   3,
+   3,
+   5,
+   3,
+   4,
+   5,
+   3,
+   3,
+   1,
+   4,
+   3,
+   3,
+   3,
+   2,
+   3,
+   3,
+   5,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   1,
+   4,
+   4,
+   4,
+   3,
+   4,
+   2,
+   3,
+   1,
+   3,
+   3,
+   2,
+   2,
+   5,
+   4,
+   3,
+   1,
+   2,
+   3,
+   3,
+   1,
+   2,
+   3,
+   3,
+   3,
+   2
+  ],
+  "board_photos": {
+   "11": {
+    "src": "/agmt-b06.png",
+    "ok": true,
+    "w": 148
+   },
+   "18": {
+    "src": "/agmt-b04.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "25": {
+    "src": "/agmt-b09.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "36": {
+    "src": "/agmt-b02.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "37": {
+    "src": "/agmt-b10.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "40": {
+    "src": "/agmt-b11.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "43": {
+    "src": "/agmt-b00.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "46": {
+    "src": "/agmt-b01.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "49": {
+    "src": "/agmt-b03.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "52": {
+    "src": "/agmt-b05.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "55": {
+    "src": "/agmt-b12.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "58": {
+    "src": "/agmt-b06.png",
+    "ok": true,
+    "w": 148
+   },
+   "61": {
+    "src": "/agmt-b04.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "64": {
+    "src": "/agmt-b09.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "67": {
+    "src": "/agmt-b08.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "70": {
+    "src": "/agmt-b07.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "73": {
+    "src": "/agmt-b10.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "76": {
+    "src": "/agmt-b11.jpg",
+    "ok": true,
+    "w": 148
+   },
+   "78": {
+    "src": "/agmt-b08.jpg",
+    "ok": true,
+    "w": 148
+   }
+  },
+  "note_photos": {
+   "deal-note-collective": {
+    "src": "/agmt-b06.png",
+    "ok": true
+   },
+   "deal-note-land": {
+    "src": "/agmt-b09.jpg",
+    "ok": true
+   },
+   "deal-note-business": {
+    "src": "/agmt-b11.jpg",
+    "ok": true
+   },
+   "deal-note-deed": {
+    "src": "/agmt-b00.jpg",
+    "ok": true
+   },
+   "deal-note-cost": {
+    "src": "/agmt-b01.jpg",
+    "ok": true
+   },
+   "deal-note-joining": {
+    "src": "/agmt-b03.jpg",
+    "ok": true
+   },
+   "deal-note-privacy": {
+    "src": "/agmt-b05.jpg",
+    "ok": true
+   },
+   "deal-note-vault": {
+    "src": "/agmt-b10.jpg",
+    "ok": true
+   },
+   "deal-note-save": {
+    "src": "/agmt-b12.jpg",
+    "ok": true
+   },
+   "deal-note-job": {
+    "src": "/agmt-b04.jpg",
+    "ok": true
+   },
+   "deal-note-earn": {
+    "src": "/agmt-b07.jpg",
+    "ok": true
+   },
+   "deal-note-skeptic": {
+    "src": "/agmt-b08.jpg",
+    "ok": true
+   },
+   "deal-note-cap": {
+    "src": "/agmt-b09.jpg",
+    "ok": true
+   },
+   "deal-note-hold": {
+    "src": "/agmt-b02.jpg",
+    "ok": true
+   }
+  },
+  "eyes": [
+   [
+    "deal-note-collective",
+    {
+     "hidden": false,
+     "top": 405,
+     "eyeBottom": 395,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-land",
+    {
+     "hidden": false,
+     "top": 607,
+     "eyeBottom": 597,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-business",
+    {
+     "hidden": false,
+     "top": 338,
+     "eyeBottom": 328,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-deed",
+    {
+     "hidden": false,
+     "top": 108,
+     "eyeBottom": 98,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-cost",
+    {
+     "hidden": false,
+     "top": 81,
+     "eyeBottom": 71,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-joining",
+    {
+     "hidden": false,
+     "top": 338,
+     "eyeBottom": 328,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-privacy",
+    {
+     "hidden": false,
+     "top": 417,
+     "eyeBottom": 407,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-vault",
+    {
+     "hidden": false,
+     "top": 36,
+     "eyeBottom": 26,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-save",
+    {
+     "hidden": false,
+     "top": 420,
+     "eyeBottom": 410,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-job",
+    {
+     "hidden": false,
+     "top": 190,
+     "eyeBottom": 180,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-earn",
+    {
+     "hidden": false,
+     "top": 418,
+     "eyeBottom": 408,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-skeptic",
+    {
+     "hidden": false,
+     "top": 63,
+     "eyeBottom": 53,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-cap",
+    {
+     "hidden": false,
+     "top": 24,
+     "eyeBottom": 14,
+     "inView": true
+    }
+   ],
+   [
+    "deal-note-hold",
+    {
+     "hidden": false,
+     "top": 64,
+     "eyeBottom": 54,
+     "inView": true
+    }
+   ]
+  ],
+  "overflow_unfolded": {
+   "sw": 360,
+   "iw": 360
+  },
+  "signing": {
+   "board": 148,
+   "sign": 260
+  }
+ },
+ "360_errors": [],
+ "1440": {
+  "overflow_hook": {
+   "sw": 1440,
+   "iw": 1440
+  },
+  "clicks": 82,
+  "boards_visible": 83,
+  "overflow_unfolded": {
+   "sw": 1440,
+   "iw": 1440
+  },
+  "signing": {
+   "board": 244,
+   "sign": 388
+  }
+ },
+ "1440_errors": []
+}
