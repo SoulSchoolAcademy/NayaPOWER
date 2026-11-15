@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-15 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-15 00:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -13748,6 +13748,12 @@ _Last updated: 2026-11-15 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0814-lane12.md`
 
 **Evidence:** Verified: spec file hidden_files/smart-note-communication-mode-spec-v1.md sha byte-exact; comment-standard-v2 pin 5a3dd2ce matches; lesson-broadcast pin drift explained (live rolling feed modified after write-time pin — expected churn, not a defect). Clears 9.5 because: design-only deliverable met exactly — six modes derived from live reads, every 
+
+### ✅ t0813-lane8-reclaim — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Recusal-repeat receipt: t0813-lane8 gated brief re-claimed by barred seat (t0813-lane8-reclaim)
+
+**Evidence:** Verified: receipt on disk; cited prior recusal evidence t0742-lane4.md exists in receipts; recusal is correct (Clarity-authored MTC-v1 lineage, gate bars the seat by name) and zero pre-reg bytes were touched. Real value: the gate held a second time and the receipt names the cost. Kept from 9.5: the seat claimed before reading the gate line — the sa
 
 ### ✅ t0813 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -35525,6 +35531,12 @@ _Last updated: 2026-11-15 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-t0776-lane9-decline2-rootcause — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up decline #2 + root cause: PR #2591 second-seat review barred to Clarity seat (gap-t0776-lane9-decline2-rootcause)
+
+**Evidence:** Verified on live bytes: brief-gap-t0776-lane9.md sits in brief-queue/done/ (not in queue), absent from rotation queued, prior decline receipt gap-t0776-lane9.md on disk; the pool-emptiness proof (24/25 recent receipts Clarity-signed) and loop proof are reproducible from disk. The brief's own alternative done-state ('deeper root cause named with pro
+
 ### ✅ gap-lane-scorer-20261114-0200-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: t1202 CLAIM 3 fix merged + whole suite re-proven on fix tree
@@ -45252,6 +45264,12 @@ _Last updated: 2026-11-15 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ scorer-20261014-2140 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: Arm I verdict-flip seal integrity + execution gap (gap-scorer-20261014-2140-lane2)
+
+**Evidence:** Verified: all three cited prereg SHAs re-computed by my own sha256sum on live bytes today and match the receipt exactly (t0734 16c444e5..., t0747 8a270088..., t0759 72cc989d...); seal sidecars + pin_rederive_check_t0759.py present on disk. Honest PARTIAL verdict: seal integrity CLOSED with evidence, battery STANDS blocked-by-design (P-tip moved, me
 
 ### ✅ gap-lane-scorer-20261114-0200-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
