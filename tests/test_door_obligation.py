@@ -324,3 +324,103 @@ def test_range_endpoints_rejects_malformed():
     for bad in ("abc", "abc..", "..def", "abc...", "...def", ""):
         with pytest.raises(RuntimeError):
             mod._range_endpoints(bad)
+
+
+# ---------------------------------------------------------------------------
+# SN-2204 (2026-11-14): page_hash binds projection_path, not the dated page
+# ---------------------------------------------------------------------------
+
+def _rebind_entry_to_projection(root: Path, proj_rel: str) -> None:
+    """Rebind every registry entry to a separate projection file, the
+    SN-2204 shape: the writer rendered the projection outside the dated
+    SMART-NOTES tree, so the dated filing is a second rendering with
+    different bytes. The manifest is recomputed, exactly as the writer
+    would leave it — the fixture stays validator-clean."""
+    import hashlib
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "smart_note_v2_rebind", root / "tools" / "smart_note_v2.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    reg_path = (root / ".naya" / "memory" / "smart-notes" / "index.json")
+    reg = json.loads(reg_path.read_text(encoding="utf-8"))
+    for e in reg["entries"]:
+        e["projection_path"] = proj_rel
+        e["page_hash"] = mod._page_file_hash(root / proj_rel)
+    reg["corpus_manifest_hash"] = mod._corpus_manifest_hash(reg["entries"])
+    reg_path.write_text(json.dumps(reg, indent=2), encoding="utf-8")
+
+
+def _sn2204_fixture(tmp_path: Path, dated_text: str | None = None) -> Path:
+    """Dated page + separate projection file, entry bound to the
+    projection. With dated_text None the two files are byte-identical;
+    otherwise the dated filing is a different rendering — the exact
+    SN-2204 shape at pin 2dd1c9aa."""
+    root = make_root(tmp_path)
+    proj_rel = "BRAIN/05-MEMORY/SMART-NOTE-door-fixture.md"
+    write_page(root, proj_rel, DIALECT1)
+    write_page(root, PAGE_REL, DIALECT1 if dated_text is None else dated_text)
+    proc = run_tool(root, "--fix", "--date", "2026-10-21")
+    assert proc.returncode == 0, proc.stdout + proc.stderr
+    _rebind_entry_to_projection(root, proj_rel)
+    return root
+
+
+def test_page_hash_binds_projection_not_dated_page(tmp_path):
+    """Positive: an entry whose page_hash matches its projection bytes
+    must NOT flag PAGE_HASH_STALE even when the dated filing differs.
+    The writer contract (B-51 step 3) and the validator (Check 6) bind
+    page_hash to projection_path; re-stamping from the dated page would
+    break the validator (INDEX_CORRUPT:PAGE_HASH_MISMATCH) and take cold
+    retrieval down — the exact failure the 2026-11-14 re-anchor cured.
+    The second rendering surfaces as a DUAL_RENDERING warning, not a
+    defect."""
+    root = _sn2204_fixture(
+        tmp_path,
+        DIALECT1.replace("The fixture essence.",
+                         "A different rendering."))
+    # The fixture is validator-clean in this shape, as SN-2204 is at pin.
+    rep = audit(root)
+    assert rep["defects"]["entries_with_stale_hash"] == []
+    proc = run_tool(root, "--ids", "SN-0810", "--json")
+    assert proc.returncode == 0, proc.stdout
+    out = json.loads(proc.stdout)
+    assert out["defects"] == []
+    assert [w for w in out["warnings"] if w["kind"] == "DUAL_RENDERING"]
+    assert "do NOT re-stamp page_hash" in \
+        [w for w in out["warnings"]
+         if w["kind"] == "DUAL_RENDERING"][0]["cure"]
+
+
+def test_page_hash_stale_fires_on_projection_drift(tmp_path):
+    """Negative control (divergent paths): start from byte-identical
+    dated page and projection, then drift ONLY the projection file —
+    PAGE_HASH_STALE must fire. This proves the comparison follows
+    projection_path: the pre-fix code hashed the dated page (unchanged)
+    and stayed silent, so this test FAILS on the unpatched tool."""
+    root = _sn2204_fixture(tmp_path)
+    proj = root / "BRAIN/05-MEMORY/SMART-NOTE-door-fixture.md"
+    proj.write_text(proj.read_text(encoding="utf-8") + "\nDrifted.\n",
+                    encoding="utf-8")
+    proc = run_tool(root, "--ids", "SN-0810", "--json")
+    assert proc.returncode == 1, proc.stdout
+    out = json.loads(proc.stdout)
+    kinds = [d["kind"] for d in out["defects"]]
+    assert "PAGE_HASH_STALE" in kinds, out
+
+
+def test_page_hash_stale_fires_on_dated_page_drift(tmp_path):
+    """Negative control (coincident paths): the classic case still works —
+    when projection_path IS the dated page, drifting it fires
+    PAGE_HASH_STALE. The fix changes nothing where the two paths agree."""
+    root = make_root(tmp_path)
+    write_page(root, PAGE_REL, DIALECT1)
+    proc = run_tool(root, "--fix", "--date", "2026-10-21")
+    assert proc.returncode == 0, proc.stdout + proc.stderr
+    page = root / PAGE_REL
+    page.write_text(page.read_text(encoding="utf-8") + "\nDrifted.\n",
+                    encoding="utf-8")
+    proc = run_tool(root, "--ids", "SN-0810", "--json")
+    assert proc.returncode == 1, proc.stdout
+    out = json.loads(proc.stdout)
+    assert "PAGE_HASH_STALE" in [d["kind"] for d in out["defects"]], out
