@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-15 13:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-15 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -47751,6 +47751,12 @@ _Last updated: 2026-11-15 13:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ gap-lane-scorer-20261017-1330-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261017-1330-lane11: root-cause the t0707 f-string diagnostic-print anomaly in lane-11 census tooling
+
+**Evidence:** Backlog sweep (oldest-first; receipt 2026-10-17). VERIFIED first-hand on disk: parent receipt t0707-lane11.md exists, proof-case receipt t0908-lane5.md exists, both cited scripts lane-11/i2-census-t0707.py and i2b-queuewait-t0707.py exist. NOT PHANTOM. Corroboration: current excluded() carries the SCOPED t0797 fix matching exactly what this receipt
+
 ### ✅ gap-lane-scorer-20261114-0120-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: second-seat cross-check of t1162 audit rows + HV1 ceiling fix
@@ -52920,6 +52926,18 @@ _Last updated: 2026-11-15 13:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261115-0552 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 2026-11-15 05:52 PST: full claim sweep of all 31 queued briefs, 0 claimed (59th consecutive hourly stall)
+
+**Evidence:** Fresh-window receipt (only unscored receipt; backlog now 0). Verified first-hand: sweep log hidden_files/brief-queue/claim-sweep-20261115-0551.log exists (7,425 bytes, 31 attempt lines, 29x exit 7 + 2x exit 2, 0 claimed, queue count after sweep 31), and its 31 names equal the 31 brief-*.md files on disk exactly; set-diff vs the 04:48 receipt's bloc
+
+### ✅ distill-daily-20261115 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** distill-daily 2026-11-15: mission-state drift re-verification (main ~24h stale), queue sweep, stale-clone cleanup
+
+**Evidence:** Fresh window (filed ~13:44 UTC, scored this tick). VERIFIED first-hand via git ls-remote: main tip 5fceb5a067e40ac307cf9127e4e28f8a45891bef and branch naya/mission-state tip 7fff27186717fe2aeacd9b28e4ad0772a8365c0a both match the receipt exactly. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, against lane self-score 8.5. Why not 9.5: (1) boot-pointer 
 
 ### ✅ gate-stall-20261115-0448 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
