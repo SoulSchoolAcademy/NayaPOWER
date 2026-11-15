@@ -1902,9 +1902,9 @@ body{background:#050507;margin:0;overflow-x:hidden;font-family:Inter,system-ui,s
 
 /* PROFILE: editable name/motto */
 .ph-head{display:flex;align-items:flex-end;gap:20px;padding:0 24px;margin-top:-70px;position:relative;z-index:5;flex-wrap:wrap;}
-.ph-av{position:relative;width:140px;height:140px;border-radius:50%;border:7px solid #050507;flex-shrink:0;
+.ph-av{position:relative;width:156px;height:156px;border-radius:50%;border:7px solid #050507;flex-shrink:0;
   background:linear-gradient(135deg,#a06bff,#e84fff);display:flex;align-items:center;justify-content:center;
-  font-size:52px;color:#fff;cursor:pointer;overflow:hidden;
+  font-size:58px;color:#fff;cursor:pointer;overflow:hidden;
   box-shadow:0 0 48px rgba(160,107,255,.55),inset 0 2px 10px rgba(255,255,255,.25);transition:all .2s;}
 .ph-av:hover{transform:scale(1.04);box-shadow:0 0 70px rgba(160,107,255,.8);}
 .ph-av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;} /* R3 — the picture covers the whole circle: as a flex item beside the ✦ fallback glyph it rendered squashed (82×126 in a 140px circle), which read as broken. The ✦ stays centred underneath as the fallback. */
@@ -1928,7 +1928,7 @@ body{background:#050507;margin:0;overflow-x:hidden;font-family:Inter,system-ui,s
 .up-act:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -3px 6px rgba(0,0,0,.4),0 0 22px -2px var(--ac),0 6px 16px rgba(0,0,0,.55);
   transform:translateY(-2px);background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.05) 45%,rgba(0,0,0,.22));}
 .up-act:active{transform:translateY(0);}
-@media(max-width:640px){.up-act{flex:1 1 44%;font-size:12px;padding:12px 5px;letter-spacing:0;height:46px;}}
+@media(max-width:640px){.up-act{flex:1 1 44%;font-size:12px;padding:10px 5px;letter-spacing:0;height:44px;}}
 /* ROUND 6 FIX-1 (2026-11-12, Shawn 05:34Z + 05:38Z): ONE SIZE across the row.
    The ten non-Join buttons share one flex-basis (170px) and one cap (200px),
    so the row wraps into balanced lines of near-identical buttons instead of
@@ -2066,7 +2066,7 @@ a.ph-connect{display:inline-block;}
 /* GRID: use full width with responsive columns */
 .ph-grid{display:flex;flex-direction:column;gap:16px;}
 @media(max-width:768px){
-  .ph-head{padding:0 16px;}.ph-av{width:110px;height:110px;font-size:40px;}
+  .ph-head{padding:0 16px;}.ph-av{width:124px;height:124px;font-size:44px;}
   .ph-cover{height:360px;}/* FIX-PASS-3 FAIL 6(b): plus-scoped INSIDE the cover — the
     cover is 420px at ≤760px (later !important rule), so top:380px spilled
     20px below it over the head row and pill row at 621px. 340px spans
@@ -4995,14 +4995,14 @@ html.os-calm
 </div>
 <div class="ph-actions-row up-actions">
       <button class="up-act" id="saBackBtn" type="button" style="--ac:#e8e8ec;display:none;">← Back to my world</button>
-      <button class="up-act" id="msgbtn" type="button" style="--ac:#2fe89e;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg> Message</button>
-      <button class="up-act" id="aboutbtn" type="button" style="--ac:#ffbf3d;" data-os-go="about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><circle cx="12" cy="7.6" r="1.15" fill="currentColor" stroke="none"/></svg> About</button>
-      <button class="up-act" id="myworldbtn" type="button" style="--ac:#ff9a5a;" data-os-go="myworld">My World</button>
-      <button class="up-act" id="skillsbtn" type="button" style="--ac:#ff5e6c;" data-os-go="skills">Skills</button>
-      <button class="up-act" id="connbtn" type="button" style="--ac:#e84fff;" data-os-go="people">Connections</button>
-      <button class="up-act" id="growthbtn" type="button" style="--ac:#a06bff;" data-os-go="growth">Invite</button>
-      <button class="up-act" id="sharebtn" type="button" style="--ac:#3fb8ff;">Share</button>
-      <a class="up-act" id="joinbtn" href="https://nayanet.app/joinus" style="--ac:#2fe89e;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">✦ Join NayaNET</a>
+      <button class="up-act" id="msgbtn" type="button" style="--ac:#2fe89e;"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">✉</span> Message</button>
+      <button class="up-act" id="aboutbtn" type="button" style="--ac:#ffbf3d;" data-os-go="about"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">◉</span> About</button>
+      <button class="up-act" id="myworldbtn" type="button" style="--ac:#ff9a5a;" data-os-go="myworld"><span class="os-jewel os-jewel-sm" style="--jc:#ff9a5a">⌂</span> My World</button>
+      <button class="up-act" id="skillsbtn" type="button" style="--ac:#ff5e6c;" data-os-go="skills"><span class="os-jewel os-jewel-sm" style="--jc:#ff5e6c">⚙</span> Skills</button>
+      <button class="up-act" id="connbtn" type="button" style="--ac:#e84fff;" data-os-go="people"><span class="os-jewel os-jewel-sm" style="--jc:#e84fff">◈</span> Connections</button>
+      <button class="up-act" id="growthbtn" type="button" style="--ac:#a06bff;" data-os-go="growth"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">↗</span> Invite</button>
+      <button class="up-act" id="sharebtn" type="button" style="--ac:#3fb8ff;"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">⇄</span> Share</button>
+      <a class="up-act" id="joinbtn" href="https://nayanet.app/joinus" style="--ac:#2fe89e;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">✦</span> Join NayaNET</a>
       <button class="up-act" id="memberbtn" type="button" style="--ac:#e84fff;display:none;">★ Become a Member</button>
 </div>
 </div>
@@ -26275,15 +26275,15 @@ document.addEventListener('keydown', function(e){
    the eight (its green glow stays; the 220px basis and the 90px Skills rule go). */
 @media(min-width:641px){
   .up-actions{justify-content:center;gap:8px;align-items:center;}
-  .up-act{flex:1 1 0;min-width:0;max-width:none;font-size:12px;padding:12px 8px;}
+  .up-act{flex:1 1 0;min-width:0;max-width:none;font-size:12px;padding:9px 8px;height:45px;}
   #skillsbtn{flex:1 1 0;min-width:0;max-width:none;}
-  #joinbtn{flex:1 1 0;min-width:0;max-width:none;font-size:12px;padding:12px 8px;}
+  #joinbtn{flex:1 1 0;min-width:0;max-width:none;font-size:12px;padding:9px 8px;}
 }
 /* (1) phone: a real 2-column grid — Join takes exactly one column, never full width. */
 @media(max-width:640px){
   .up-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-  .up-actions .up-act{flex:none;width:auto;max-width:none;height:46px;}
-  #joinbtn{order:9;flex:none;font-size:13px;padding:12px 8px;letter-spacing:0;}
+  .up-actions .up-act{flex:none;width:auto;max-width:none;height:44px;}
+  #joinbtn{order:9;flex:none;font-size:13px;padding:10px 8px;letter-spacing:0;}
 }
 /* (1) Settings — a small tool icon in the cover, beside Change cover. It keeps
    its id + data-os-go, so the existing wiring opens Settings. Desktop: beside
@@ -27979,12 +27979,12 @@ function pcPersonPopHTML(p){
     +'<div class="pc-pop-id"><span class="fc-pick-av pc-pop-av" style="--cc:'+pcPopColor(alias)+'">'+pcEsc((alias||'?').charAt(0).toUpperCase())+'</span><div class="ph-intro-name">'+pcEsc(alias)+'</div></div>'
     +'<div class="pc-nut-board pc-pop-nut"><div class="ph-intro-motto">'+pcEsc(p.nut||'')+'</div></div>'
     +'<div class="pc-pop-actions" data-pc-alias="'+pcEsc(alias)+'">'
-    +'<button type="button" class="pc-btn" data-pc-act="chat" style="--mc:#3fb8ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg> Chat</button>'
-    +'<button type="button" class="pc-btn" data-pc-act="mail" style="--mc:#ffbf3d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7.5l9 6 9-6"/></svg> Mail</button>'
-    +'<button type="button" class="pc-btn" data-pc-act="audio" style="--mc:#2fe89e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg> Audio</button>'
-    +'<button type="button" class="pc-btn" data-pc-act="video" style="--mc:#a06bff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg> Video</button>'
-    +'<button type="button" class="pc-connect-btn'+(req?' requested':'')+'" data-pc-connect="'+pcEsc(alias)+'"'+(req?' disabled':'')+'>'+(req?'Requested ✓':'CONNECT')+'</button>'
-    +'<a class="ph-connect pc-view-profile" href="https://'+pcEsc(alias)+'.nayanet.app/">View profile</a>'
+    +'<button type="button" class="pc-btn" data-pc-act="chat" style="--mc:#3fb8ff"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">\u270e</span> Chat</button>' 
+    +'<button type="button" class="pc-btn" data-pc-act="mail" style="--mc:#ffbf3d"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">\u2709</span> Mail</button>' 
+    +'<button type="button" class="pc-btn" data-pc-act="audio" style="--mc:#2fe89e"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">\u266a</span> Audio</button>' 
+    +'<button type="button" class="pc-btn" data-pc-act="video" style="--mc:#a06bff"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">\u25b6</span> Video</button>' 
+    +'<button type="button" class="pc-connect-btn'+(req?' requested':'')+'" data-pc-connect="'+pcEsc(alias)+'"'+(req?' disabled':'')+'><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">\u2726</span> '+(req?'Requested ✓':'CONNECT')+'</button>'
+    +'<a class="ph-connect pc-view-profile" href="https://'+pcEsc(alias)+'.nayanet.app/"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">\u25c9</span> View profile</a>'
     +'</div>'
     +'<p class="pc-req-note" data-pc-pop-note'+(req?'':' hidden')+'>'+(req?'Request sent — waiting for them to accept.':'')+'</p>';
   return h;
@@ -30209,4 +30209,126 @@ if(document.readyState==='loading'){
 #pcComposerNayaBtn{margin:0!important;align-self:center;flex:0 0 auto;white-space:nowrap;text-align:center;justify-content:center;}
 @media(max-width:640px){#pcComposerNayaBtn{flex:1 1 100%;}}
 </style>
+
+<!-- PERSONAL ROUND 3 H1-H4 + H6 (2026-11-15) — CSS. H4/H6 markup edits are in place above. -->
+<style id="fix-personal-round3-20261115-css">
+/* H1 — SPACE AROUND THE ORB. MEASURED (diag.py): at >=808px .ph-head is
+   absolute bottom:0 of the cover block, so the in-flow actions row sits at
+   cover-bottom + 14 while the avatar's bottom is block-bottom - 20 — gap =
+   20 - rowHeight = -29px for ANY row margin (the margin lifts the block
+   bottom, which lifts the absolute head with it). The head therefore goes
+   back to flow (relative) with margin-top:-165px: the avatar straddles the
+   cover bottom by 97px exactly as the absolute head placed it (avatar top =
+   cover bottom - 97) + the pill row above it (58 + 10 gap) = 165 — so the
+   orb does NOT move; only the row drops below it. Row margin 14 -> 24 at
+   >=808px; the R5 184px left indent goes and the R3 click-through hack goes
+   with it (the row no longer overlaps the avatar's camera button). The row
+   is capped at 1200px wide and centred, so the eight buttons come out
+   SMALLER than before (145px shares, was 147px) instead of stretching
+   wider across the freed width. Expected gaps: 44px at 1440,
+   ~68px at 390. At <=807px the head is already relative (HERO OVERLAP FIX)
+   and the gap there is already 67px — untouched. */
+@media(min-width:808px){
+  [data-block="cover"] .ph-head{position:relative!important;margin-top:-165px!important;bottom:auto!important;left:auto!important;right:auto!important;}
+  div[data-block="cover"] > .ph-actions-row{padding-left:24px!important;padding-right:24px!important;margin-top:24px!important;pointer-events:auto!important;max-width:1220px!important;margin-left:auto!important;margin-right:auto!important;}
+  div[data-block="cover"] > .ph-actions-row .up-act{pointer-events:auto!important;}
+}
+/* H3 (fix 2, after-probe): the 1120px cap clipped Connections by 4px and
+   Join NayaNET by 8px (measured label widths 79.7 / 86.4px + 23px jewel +
+   6px gap + 16px padding need 132px shares; 1120 gave 127). 1220px gives
+   145px shares — still smaller than the 147px before, with room to spare.
+   (Fix 3: Join still clipped 3px at 1200 — the .4px letter-spacing costs
+   ~5px on its 12-char label, so it goes to 0, matching the phone rule.)
+   Phone: the bigger orb ate 19px of the 67px gap (48px measured), so the
+   row gains margin-top 14 -> 34px at <=807px, restoring ~68px. */
+@media(max-width:807px){
+  div[data-block="cover"] > .ph-actions-row{margin-top:34px!important;}
+}
+/* H3 (fix 2): the desktop button height stayed 49px (the 23px jewel +
+   20px padding + border). Padding 9px + line-height 1.25 brings it to
+   ~45px — slightly smaller, still at the 44px tap floor.
+   (Fix 3: the base .up-act rule carries an explicit height:49px (line
+   1922), which is why padding alone never moved it — the winning desktop
+   rule now sets height:45px itself. The .4px letter-spacing goes to 0:
+   it cost Join ~5px of width for nothing.) */
+.up-act{line-height:1.25!important;letter-spacing:0!important;}
+/* H2 — NAME + MOTTO CLOSER TO THE PICTURE. Column-gap 20 -> 12: the greeting
+   sits 8px tighter to the picture at every width (centre alignment already
+   1px from the header round; the motto box is already gone — guarded, not
+   re-done). The motto stops stretching (flex:1 -> 0 1 auto) so the info
+   sits right after the motto text, not at the row's far edge. */
+.ph-head{column-gap:12px!important;}
+.ph-intro-motto-row .ph-intro-motto{flex:0 1 auto!important;}
+/* H4 — the five flat ::before glyphs die (R4's translate-proof trick — flat
+   line-glyphs in the button's own colour). The .os-jewel spans in the markup
+   carry the icons now; the jewel form itself (.os-jewel, line 4384) is the
+   page's own, already there. Join never had a ::before. */
+#myworldbtn::before,#skillsbtn::before,#connbtn::before,#growthbtn::before,#sharebtn::before{content:none!important;display:none!important;}
+.up-act .os-jewel-sm{margin-right:6px!important;}
+/* H6 — THE PERSON POP-UP, REBUILT (actions only; orb + motto board +
+   backdrop untouched — they were already right). The six actions were one
+   flex row: Chat/Mail/Audio/Video crushed to 22px wide at 390. Now a
+   2-row grid: four vertical mini-buttons (jewel on top, label below) on
+   row 1; CONNECT + View profile span two columns each on row 2. The
+   mini-button body is the elevated obsidian gradient harvested verbatim
+   from .pc-btns .pc-btn (line 26871) — inset top light, own-colour rim +
+   glow, hover lights in its own colour. (Fix 3: View profile wrapped to
+   two lines at 390 — its 14px label + 36px padding did not fit the 160px
+   span. Row 2 now runs 13px, 12px side padding, nowrap, so both labels
+   sit on one line.) */
+#pcRailPop .pc-pop-actions{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:8px!important;}
+#pcRailPop .pc-pop-actions .pc-btn{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;min-height:64px!important;padding:10px 4px!important;font-size:11px!important;background:linear-gradient(180deg,#1a1a22,#0a0a0f 45%,#050507)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.6),0 0 16px -4px var(--mc,#a06bff),0 6px 14px rgba(0,0,0,.5)!important;}
+#pcRailPop .pc-pop-actions .pc-btn:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -4px 10px rgba(0,0,0,.55),0 0 22px -2px var(--mc,#a06bff),0 8px 18px rgba(0,0,0,.55)!important;}
+#pcRailPop .pc-pop-actions .pc-btn .os-jewel-sm{margin:0!important;}
+#pcRailPop .pc-pop-actions .pc-connect-btn,#pcRailPop .pc-pop-actions .pc-view-profile{grid-column:span 2!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;min-height:48px!important;padding:12px 12px!important;font-size:13px!important;white-space:nowrap!important;}
+#pcRailPop .pc-pop-actions .pc-connect-btn .os-jewel-sm,#pcRailPop .pc-pop-actions .pc-view-profile .os-jewel-sm{margin:0!important;}
+</style>
+<script id="fix-personal-round3-20261115-js">
+/* ROUND 3 H4 — the eight buttons keep their jewel icons through every
+   rewrite that wipes children: mwApplyLang's textContent pass (its icon
+   regex only re-attaches a leading inline SVG, and a bare glyph it
+   preserves as TEXT would double the jewel), mwSyncMsgBtn's innerHTML
+   rewrites of Message (mail <-> link with the connection state), and the
+   Academy mode's myworldbtn textContent rewrites. The rebuilder is
+   idempotent (a correct button is left alone, so the observer it feeds
+   cannot loop) and strips any leading glyph the translate pass left as
+   bare text before rebuilding jewel + label. Message's glyph follows its
+   state: envelope when connected, star when it is the Connect button. The
+   glyph follows the LABEL the wiring shows (Connect -> star, anything else
+   -> envelope), not localStorage: in a fresh VM the label reads Message
+   while os.connected is unset, and the label is what the citizen reads. */
+(function(){
+  var GLYPHS='\u2709\u2726\u25c9\u2302\u2699\u25c8\u2197\u21c4';
+  var JEWELS={aboutbtn:['\u25c9','#ffbf3d'],myworldbtn:['\u2302','#ff9a5a'],skillsbtn:['\u2699','#ff5e6c'],connbtn:['\u25c8','#e84fff'],growthbtn:['\u2197','#a06bff'],sharebtn:['\u21c4','#3fb8ff'],joinbtn:['\u2726','#2fe89e']};
+  function msgGlyphFor(txt){ return /^\s*Connect/i.test(txt) ? '\u2726' : '\u2709'; }
+  function esc(t){ return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function pcR3EnsureUpJewel(id){
+    try{
+      var el=document.getElementById(id); if(!el) return;
+      var txt=(el.textContent||'').replace(new RegExp('^(\\s*['+GLYPHS+']\\s?)+'),'');
+      if(!txt) return;
+      var pair = id==='msgbtn' ? [msgGlyphFor(txt),'#2fe89e'] : JEWELS[id];
+      if(!pair) return;
+      var g=pair[0], c=pair[1];
+      var jewel=el.firstElementChild;
+      if(jewel && jewel.classList && jewel.classList.contains('os-jewel') && jewel.textContent===g && (el.textContent||'')===g+' '+txt) return;
+      el.innerHTML='<span class="os-jewel os-jewel-sm" style="--jc:'+c+'">'+g+'</span> '+esc(txt);
+    }catch(e){}
+  }
+  window.pcR3EnsureUpJewels=function(){
+    ['msgbtn','aboutbtn','myworldbtn','skillsbtn','connbtn','growthbtn','sharebtn','joinbtn'].forEach(pcR3EnsureUpJewel);
+  };
+  function install(){
+    window.pcR3EnsureUpJewels();
+    if(!window.MutationObserver) return;
+    ['msgbtn','aboutbtn','myworldbtn','skillsbtn','connbtn','growthbtn','sharebtn','joinbtn'].forEach(function(id){
+      var el=document.getElementById(id); if(!el) return;
+      new MutationObserver(function(){ pcR3EnsureUpJewel(id); }).observe(el,{childList:true,characterData:true,subtree:true});
+    });
+  }
+  install();
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',function(){ install(); }); }
+  setTimeout(install,1000);
+})();
+</script>
 </body></html>
