@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-11-15",
-  "receipt_basis_commit": "ddffc7e58a0a00b7a1470820e71870c24e8a6d88",
+  "receipt_basis_commit": "2dd1c9aaae4403fe66518652bfdec106fce5bf15",
   "inventory_file_count": 3401,
   "domain_counts": {
     "00-ACTIVATION": 19,
@@ -288,8 +288,8 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0005-captain-operating-protocol-v1.machine.json",
-      "blob_sha": "469709a513e263996dbdaf42ea10374cac15df82",
-      "size": 9103
+      "blob_sha": "c7e6b0497fb020e0a3aab095c19f2d8bbd3371af",
+      "size": 9313
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0006-NAYA-CALCULATOR-V1.ai.md",

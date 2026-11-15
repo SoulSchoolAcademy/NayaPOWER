@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-11-15  
-**Receipt basis commit:** `ddffc7e58a0a00b7a1470820e71870c24e8a6d88`  
+**Receipt basis commit:** `2dd1c9aaae4403fe66518652bfdec106fce5bf15`  
 **Inventory file count:** 3401  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -89,7 +89,7 @@
 - `BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json` — `19097e2d2c52` (2405 bytes)
 - `BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.ai.md` — `2c5bc9a4da4d` (6562 bytes)
 - `BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.human.md` — `0d2f56f8f52f` (3217 bytes)
-- `BRAIN/01-GOVERNANCE/0005-captain-operating-protocol-v1.machine.json` — `469709a513e2` (9103 bytes)
+- `BRAIN/01-GOVERNANCE/0005-captain-operating-protocol-v1.machine.json` — `c7e6b0497fb0` (9313 bytes)
 - `BRAIN/01-GOVERNANCE/0006-NAYA-CALCULATOR-V1.ai.md` — `5f07061bcd01` (9539 bytes)
 - `BRAIN/01-GOVERNANCE/0006-NAYA-CALCULATOR-V1.human.md` — `456e88ce35a9` (4859 bytes)
 - `BRAIN/01-GOVERNANCE/0006-naya-calculator-v1.machine.json` — `6e62c7ad6be9` (5880 bytes)
