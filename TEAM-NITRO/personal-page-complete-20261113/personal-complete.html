@@ -3977,12 +3977,10 @@ body.mw-strip-bottom #nsbBottom{bottom:0!important}
    digit colours .d0-.d9 Dash 4783-4802; gap Dash 4774; phone shrink Dash
    ~4803-4812; converter miniTileHTML/_osMiniNumHTML Dash 25613-25638;
    _osSpc Dash 25141; lap dialPos Dash 23193. Pill-scaled to the small size. */
-#pointsdisplay.pc-restyled{flex-direction:column;align-items:stretch;gap:5px;padding:8px 16px 10px;}
+#pointsdisplay.pc-restyled{padding:8px 16px 10px;}
 /* R2 — the pill is a door: tap it and the breakdown opens (data-derive). */
 #pointsdisplay{cursor:pointer;}
 #pointsdisplay .pc-pill-numrow{display:flex;align-items:center;gap:6px;justify-content:center;}
-#pointsdisplay .pc-pill-gauge{display:block;height:4px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden;}
-#pointsdisplay .pc-pill-gaugefill{display:block;height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#ffbf3d,#fff3a0,#ffbf3d,#f5d76e);background-size:200% 100%;box-shadow:0 0 8px rgba(255,191,61,.7);transition:width .6s ease;animation:pcGaugeFlow 2.4s linear infinite;}
 #pointsdisplay .os-mini-num{display:inline-flex;align-items:flex-start;gap:3px;white-space:nowrap;vertical-align:middle;}
 #pointsdisplay .os-mini-tile{display:inline-block;width:34px;border-radius:6px;overflow:hidden;vertical-align:top;background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 10px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.35);}
 #pointsdisplay .os-mini-tile .cap{display:block;height:5px;background:linear-gradient(180deg,#e8e8ec,#c9c9cf 55%,#8a8a90);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 2px rgba(0,0,0,.35);}
@@ -4974,13 +4972,15 @@ html.os-calm
   </div>
 </div>
   <button class="ph-cover-btn pc-gear" id="settingsbtn" type="button" style="--ac:#e8e8ec;" data-os-go="settings" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.1"/><circle cx="12" cy="12" r="6.3"/><path d="M12 2.8v2.7M12 18.5v2.7M2.8 12h2.7M18.5 12h2.7M5.5 5.5l1.9 1.9M16.6 16.6l1.9 1.9M18.5 5.5l-1.9 1.9M7.4 16.6l-1.9 1.9"/></svg></button>
+<!-- HEADER 2026-11-15 H3 — the membership pills live ON the cover now, top-right
+     (row at >=1024px, column below); filled by mwRenderCover as before. -->
+<div class="mw-cover-mships" id="mwCoverMships" aria-label="Memberships"></div>
 </div>
 <div class="ph-head">
   <div class="ph-idcol">
     <div class="ph-pointsrow">
       <div class="ph-points pc-restyled" id="pointsdisplay" title="Your Naya points" data-derive="score" role="button" tabindex="0">
         <span class="pc-pill-numrow"><span class="ph-points-star">✦</span><span id="pointscount">…</span><span class="ph-points-label" data-mw-tr="pts">pts</span></span>
-        <span class="pc-pill-gauge" aria-hidden="true"><span class="pc-pill-gaugefill" id="pcPillGaugeFill"></span></span>
       </div>
       <!-- R3 — the first-paint points script lives OUTSIDE the pill now: inside it, a screen reader read the code itself as the pill's name. Same code, same timing, just outside the button. -->
       <script>try{var _pc0=JSON.parse(localStorage.getItem('naya.points.total.v1')||'null');if(_pc0&&typeof _pc0.total==='number'&&isFinite(_pc0.total)){var _el0=document.getElementById('pointscount');if(_el0)_el0.textContent=_pc0.total.toLocaleString();}}catch(e){}</script>
@@ -5006,10 +5006,6 @@ html.os-calm
       <button class="up-act" id="memberbtn" type="button" style="--ac:#e84fff;display:none;">★ Become a Member</button>
 </div>
 </div>
-<!-- EYE-FIX-2 F9 (2026-11-15) — the membership pills live here now, BELOW the
-     header wrapper in normal flow (see the fix block): in-flow, they can
-     intersect nothing in the header at any width. -->
-<div class="mw-cover-mships" id="mwCoverMships" aria-label="Memberships"></div>
 <style>
 /* Phone cover (2026-11-05): the cover band must be taller than the identity head
    (name + tagline + action rows, 351px at 390px wide) plus the Change-cover button
@@ -5095,6 +5091,7 @@ html.os-calm
 <button type="button" class="mw-feedname" id="mwFeedNameSmart" data-mw-tr="feedname" style="--fc:#3fb8ff">Shawn&rsquo;s Personal feed ↓</button>
 <button type="button" class="mw-feedname" id="mwFeedNameNaya" data-mw-tr="feedname" style="--fc:#ffbf3d" hidden>Shawn&rsquo;s Public feed ↓</button>
 <button type="button" class="mw-feedname" id="mwFeedNameActivity" data-mw-tr="feedname" style="--fc:#2fe89e" hidden>Shawn&rsquo;s Naya Notes ↓</button>
+<button type="button" class="mw-feedname" id="mwFeedNameWorld" data-mw-tr="feedname" style="--fc:#e84fff" hidden>Shawn&rsquo;s My World feed ↓</button>
 
 
 <div id="saCourse" class="ph-card sa-sheet" hidden>
@@ -20742,16 +20739,16 @@ function mwApplyFeedTab(key){
      it now accepts the key and stores it. */
   var raw=key||mwGet('feedtab','personal');
   var t=pcFeedKey(raw);
-  if(['personal','public','naya'].indexOf(t)<0) t='personal';
+  if(['personal','public','naya','worlds'].indexOf(t)<0) t='personal';
   if(key) mwPut('feedtab', t);
   MW_FEED.cur=t;
-  var tabs={personal:$('mwTabSmart'),public:$('mwTabNaya'),naya:$('mwTabActivity')};
-  var names={personal:$('mwFeedNameSmart'),public:$('mwFeedNameNaya'),naya:$('mwFeedNameActivity')};
+  var tabs={personal:$('mwTabSmart'),public:$('mwTabNaya'),naya:$('mwTabActivity'),worlds:$('pcWorldsTab')};
+  var names={personal:$('mwFeedNameSmart'),public:$('mwFeedNameNaya'),naya:$('mwFeedNameActivity'),worlds:$('mwFeedNameWorld')};
   Object.keys(tabs).forEach(function(k){
     if(tabs[k]){ tabs[k].classList.toggle('active', k===t); tabs[k].setAttribute('aria-selected', k===t?'true':'false'); }
     if(names[k]) names[k].hidden=(k!==t);
   });
-  var wall=$('os-wall-list'); if(wall) wall.hidden=(t!=='personal'&&t!=='public');
+  var wall=$('os-wall-list'); if(wall) wall.hidden=(t!=='personal'&&t!=='public'&&t!=='worlds');
   var ny=$('mwFeedNaya'); if(ny) ny.hidden=(t!=='naya');
   /* F5 — the filter ribbon follows the visible panel (Personal: your authors;
      Public: all authors; Naya: categories). The filter resets to "All" on
@@ -20761,6 +20758,7 @@ function mwApplyFeedTab(key){
   else if(t==='public'){ if(typeof window.mwPaintWallPosts==='function') window.mwPaintWallPosts(window.MW_PUBLIC_POSTS||[]); if(typeof window.pcLoadPublicWall==='function') window.pcLoadPublicWall(); }
   else if(typeof window.mwPaintWallPosts==='function') window.mwPaintWallPosts(window.MW_WALL_POSTS||[]);
 }
+window.mwApplyFeedTab = mwApplyFeedTab;
 function mwLoadNayaFeed(){
   var box=$('mwFeedNaya'); if(!box || box.dataset.mwLoaded) return;
   /* FOLLOW-UP (found preparing the fetching-browser leg): window.getSb is never assigned anywhere in this file, so this always resolved to null and the Naya Notes tab could never load — the same NayaAuth-first resolution the Lists room already uses. */
@@ -23933,7 +23931,7 @@ function mwInit(){
   mwWrap();
   mwEnsureMemberships();
   document.addEventListener('click', function(e){
-    var t=e.target&&e.target.closest?e.target.closest('[data-mw-page],[data-mw-stat],[data-mw-real-dash],[data-mw-tab],[data-mw-open-mship],#mwMailAll,#mwMailSel,#mwFeedNameSmart,#mwFeedNameNaya,#mwFeedNameActivity,#mwDashCtxX'):null;
+    var t=e.target&&e.target.closest?e.target.closest('[data-mw-page],[data-mw-stat],[data-mw-real-dash],[data-mw-tab],[data-mw-open-mship],#mwMailAll,#mwMailSel,#mwFeedNameSmart,#mwFeedNameNaya,#mwFeedNameActivity,#mwFeedNameWorld,#mwDashCtxX'):null;
     if(!t) return;
     if(t.hasAttribute('data-mw-real-dash')){ location.href=MW_REAL_DASHBOARD; return; } /* FINISHING LAW 2026-11-12 — Dashboard goes to the updated real Dashboard. */
     if(t.id==='mwDashCtxX'){ var c=$('mwDashCtx'); if(c) c.style.display='none'; return; }
@@ -23959,7 +23957,9 @@ function mwInit(){
     } else if(t.id==='mwFeedNameNaya'){
       mwApplyFeedTab('public'); var f2=$('mwFeedTabs'); if(f2) f2.scrollIntoView({behavior:'smooth',block:'start'});
     } else if(t.id==='mwFeedNameActivity'){
-      mwApplyFeedTab('naya'); var f3=$('mwFeedNaya'); if(f3) f3.scrollIntoView({behavior:'smooth',block:'start'});
+      window.mwApplyFeedTab('naya'); var f3=$('mwFeedNaya'); if(f3) f3.scrollIntoView({behavior:'smooth',block:'start'});
+    } else if(t.id==='mwFeedNameWorld'){
+      window.mwApplyFeedTab('worlds'); var f4=$('os-wall-list'); if(f4) f4.scrollIntoView({behavior:'smooth',block:'start'});
     }
   });
   document.addEventListener('click', function(e){
@@ -26364,27 +26364,14 @@ window.PC_RAIL_SEED = [{"alias": "sophia", "nut": "LEARN — wisdom. I turn what
 function pcTr(x){ try{ return window.mwTr?window.mwTr(x):x; }catch(e){ return x; } }
 function pcCard(p, live){
   var init=(p.alias||'?')[0].toUpperCase();
-  /* HEADER-V2 + COMPOSER-RAIL 2026-11-14 — the status mark is gone: cards hold
-     name + motto + info + % + CONNECT + Chat/Mail/Audio/Video, nothing else. */
+  /* HEADER 2026-11-15 H5 — cards hold orb + name + % + info + CONNECT, nothing
+     else. The motto lives behind the info pop-up; Chat/Mail/Audio/Video live
+     there too (the pop-up's actions). */
   var mark = '';;
-  var reasons = live
-    ? '<p class="pc-reasons">'+p.reasons.map(function(r){ return esc(r); }).join('<br>')+'</p>'
-    : '';
-  /* the sharpening: one nutshell line under the alias. A live match carries no
-     nutshell from the endpoint (alias + % + reasons only) — so the line is left
-     out for live cards rather than invented; the record says so. The seed
-     nutshell IS the motto: the popover renders this same nut, byte-identical. */
-  var nutHtml = p.nut ? '<div class="pc-nut-board"><p class="pc-nut">'+esc(p.nut)+'</p></div>' : ''; /* ONE ROUND R4: the saying sits on an elevated board, under the name + orb row. */
   return '<article class="pc-card" data-pc-alias="'+esc(p.alias)+'" style="--pc:'+pcColorFor(p.alias)+'">'
     + '<div class="pc-card-top"><span class="fc-pick-av" style="--cc:'+pcColorFor(p.alias)+'">'+esc(init)+'</span>'
-    + '<div class="pc-card-id"><span class="pc-id-line"><b>'+esc(p.alias)+'</b></span>'+mark+'</div></div>' + nutHtml
-    + reasons
-    + '<div class="pc-btns">'
-    + '<button type="button" class="pc-btn" data-pc-act="chat" style="--mc:#3fb8ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg> '+pcTr('Chat')+'</button>'
-    + '<button type="button" class="pc-btn" data-pc-act="mail" style="--mc:#ffbf3d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7.5l9 6 9-6"/></svg> '+pcTr('Mail')+'</button>'
-    + '<button type="button" class="pc-btn" data-pc-act="audio" style="--mc:#2fe89e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg> '+pcTr('Audio')+'</button>'
-    + '<button type="button" class="pc-btn" data-pc-act="video" style="--mc:#a06bff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg> '+pcTr('Video')+'</button>'
-    + '</div></article>';
+    + '<div class="pc-card-id"><span class="pc-id-line"><b>'+esc(p.alias)+'</b></span>'+mark+'</div></div>'
+    + '</article>';
 }
 /* CORRECTIONS 2026-11-13 (Parts 3/4/7) — the rail, rebuilt on the same
    pcCard form: real aliases only (the test fixture is deleted; the seed
@@ -26578,8 +26565,10 @@ window.pcRenderRail();
 document.addEventListener('click', function(e){
   var b=e.target&&e.target.closest?e.target.closest('[data-pc-act]'):null;
   if(!b) return;
-  var card=b.closest?b.closest('.pc-card'):null; if(!card) return;
-  var alias=card.getAttribute('data-pc-alias')||'guest';
+  var card=b.closest?b.closest('.pc-card'):null;
+  var ap=(!card&&b.closest)?b.closest('[data-pc-alias]'):null;
+  if(!card&&!ap) return;
+  var alias=(card?card.getAttribute('data-pc-alias'):ap.getAttribute('data-pc-alias'))||'guest';
   var act=b.getAttribute('data-pc-act');
   if(typeof window.fcOpenChat!=='function') return;
   window.fcOpenChat({name:alias, alias:alias, kind:'person', mode:(act==='mail'?'mail':'chat')});
@@ -26598,7 +26587,6 @@ document.addEventListener('click', function(e){
 /* ═══ PERSONAL CORRECTIONS 2026-11-13 (Emesa) — all new rules in one place ═══ */
 /* Part 2 — the gauge's alive shimmer (the width transition already moves it
    on change; the shimmer is the light travelling across the gold). */
-@keyframes pcGaugeFlow{from{background-position:0% 0}to{background-position:200% 0}}
 /* Part 3 — the card is a real object: CONNECT sits top-right, so the top row
    leaves it room; cards lift + light on hover like the pricing page. */
 .pc-card{position:relative;}
@@ -26728,20 +26716,16 @@ document.addEventListener('keydown', function(e){
     for (var i = 0; i < str.length; i++) html += pcMiniTileHTML(str[i]);
     return html + '</span>';
   }
-  function pcDialPos(v){ v = Math.round(v || 0); if (v <= 0) return 0; return ((v - 1) % 500) + 1; }
   function pcTilePill(){
     var pc = document.getElementById('pointscount');
-    var fill = document.getElementById('pcPillGaugeFill');
     if (!pc) return;
     var raw = (pc.textContent || '').trim();
-    if (!raw || raw === '…' || raw === '—' || raw === '-') { if (fill) fill.style.width = '0%'; return; }
+    if (!raw || raw === '…' || raw === '—' || raw === '-') { return; }
     var digits = raw.replace(/[^0-9]/g, '');
     if (!digits) return;
     if (pc._pcLastDigits === digits) return;
     pc._pcLastDigits = digits;
-    var total = parseInt(digits, 10);
     pc.innerHTML = pcMiniNumHTML(raw);
-    if (fill) fill.style.width = (pcDialPos(total) / 500 * 100).toFixed(1) + '%';
     var _pd = document.getElementById('pointsdisplay');
     if (_pd) { _pd.classList.remove('bump'); void _pd.offsetWidth; _pd.classList.add('bump'); setTimeout(function(){ _pd.classList.remove('bump'); }, 350); }
   }
@@ -27994,7 +27978,11 @@ function pcPersonPopHTML(p){
   var h='<button type="button" class="pc-pop-x" data-pc-pop-close aria-label="Close">✕</button>'
     +'<div class="pc-pop-id"><span class="fc-pick-av pc-pop-av" style="--cc:'+pcPopColor(alias)+'">'+pcEsc((alias||'?').charAt(0).toUpperCase())+'</span><div class="ph-intro-name">'+pcEsc(alias)+'</div></div>'
     +'<div class="pc-nut-board pc-pop-nut"><div class="ph-intro-motto">'+pcEsc(p.nut||'')+'</div></div>'
-    +'<div class="pc-pop-actions">'
+    +'<div class="pc-pop-actions" data-pc-alias="'+pcEsc(alias)+'">'
+    +'<button type="button" class="pc-btn" data-pc-act="chat" style="--mc:#3fb8ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg> Chat</button>'
+    +'<button type="button" class="pc-btn" data-pc-act="mail" style="--mc:#ffbf3d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7.5l9 6 9-6"/></svg> Mail</button>'
+    +'<button type="button" class="pc-btn" data-pc-act="audio" style="--mc:#2fe89e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg> Audio</button>'
+    +'<button type="button" class="pc-btn" data-pc-act="video" style="--mc:#a06bff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg> Video</button>'
     +'<button type="button" class="pc-connect-btn'+(req?' requested':'')+'" data-pc-connect="'+pcEsc(alias)+'"'+(req?' disabled':'')+'>'+(req?'Requested ✓':'CONNECT')+'</button>'
     +'<a class="ph-connect pc-view-profile" href="https://'+pcEsc(alias)+'.nayanet.app/">View profile</a>'
     +'</div>'
@@ -28299,6 +28287,8 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
     if(tn){ tn.setAttribute('placeholder','Search '+w.name+'\u2026'); tn.setAttribute('aria-label','Search '+w.name); }
     var chip=document.getElementById('pcSearchScope');
     if(chip){ chip.textContent=w.name; chip.setAttribute('aria-label','World: '+w.name+' \u2014 choose a world'); }
+    var wfn=document.getElementById('mwFeedNameWorld');
+    if(wfn){ wfn.textContent='Shawn\u2019s '+w.name+' feed \u2193'; }
     document.querySelectorAll('#pcFavWorldTabs [data-pc-world-tab]').forEach(function(b){
       var on=b.getAttribute('data-pc-world-tab')===w.name;
       b.classList.toggle('active', on); b.setAttribute('aria-selected', on?'true':'false');
@@ -28406,22 +28396,22 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
     if(!e.target||!e.target.closest) return;
     var pick=e.target.closest('[data-pc-world-pick]');
     if(pick){ var nm=pick.getAttribute('data-pc-world-pick'); var ws=pcWorlds();
-      for(var i=0;i<ws.length;i++){ if(ws[i].name===nm){ if(typeof window.fcClosePicker==='function') window.fcClosePicker(); pcSetWorldObj(ws[i]); break; } } return; }
+      for(var i=0;i<ws.length;i++){ if(ws[i].name===nm){ if(typeof window.fcClosePicker==='function') window.fcClosePicker(); pcSetWorldObj(ws[i]); window.mwApplyFeedTab('worlds'); break; } } return; }
     var fav=e.target.closest('[data-pc-world-fav]');
     if(fav){ e.stopPropagation(); pcToggleFav(fav.getAttribute('data-pc-world-fav')); return; }
     var dr=e.target.closest('[data-pc-world-drawer]');
     if(dr){ e.preventDefault(); var dn=dr.getAttribute('data-pc-world-drawer');
       var rd=document.getElementById('os-drawer-right'); if(rd) rd.classList.remove('open');
       if(typeof window.pcSyncDrawerBar==='function'){ try{ window.pcSyncDrawerBar(); }catch(err){} }
-      window.pcSetWorld(dn); return; }
+      window.pcSetWorld(dn); window.mwApplyFeedTab('worlds'); return; }
   });
   var favHost=document.getElementById('pcFavWorldTabs');
   if(favHost) favHost.addEventListener('click', function(e){
     var tab=e.target&&e.target.closest?e.target.closest('[data-pc-world-tab]'):null;
-    if(tab){ e.stopPropagation(); window.pcSetWorld(tab.getAttribute('data-pc-world-tab')); }
+    if(tab){ e.stopPropagation(); window.pcSetWorld(tab.getAttribute('data-pc-world-tab')); window.mwApplyFeedTab('worlds'); }
   });
   var wt=document.getElementById('pcWorldsTab');
-  if(wt) wt.addEventListener('click', function(ev){ ev.stopPropagation(); window.fcOpenWorldPicker(); });
+  if(wt) wt.addEventListener('click', function(ev){ ev.stopPropagation(); window.mwApplyFeedTab('worlds'); });
   var chip=document.getElementById('pcSearchScope');
   if(chip) chip.addEventListener('click', function(ev){ ev.stopPropagation(); window.fcOpenWorldPicker(); });
   /* Init: favorites + the current world's scope (quiet — no toast on load). */
@@ -29830,10 +29820,11 @@ try{
        land on Naya Notes, then Public after reload. The first paint of a
        session now always lands on Personal; a tap after that is the
        citizen's own choice and sticks for the session.
-   (b) "Make a Naya Note" only existed inside the empty state, so it
-       vanished the moment real notes painted. A persistent button now
-       rides at the top of the Naya list on every paint (same
-       data-pc-invite-naya hook as the empty-state button). */
+   (b) HEADER 2026-11-15 H7 — the persistent "Make a Naya Note" button
+       no longer rides at the top of the Naya list: it floated orphaned
+       mid-page. It lives in the composer bar now (after the plus), visible
+       only on the Naya Notes tab. The empty-state button stays: designed
+       in, not orphaned. */
 try{
   document.addEventListener('click',function(e){
     var t=e.target&&e.target.closest?e.target.closest('#mwTabSmart,#mwTabNaya,#mwTabActivity'):null;
@@ -29853,23 +29844,26 @@ try{
 }catch(e){}
 function ensureNayaBtn(){
   try{
-    var box=q('#mwFeedNaya'); if(!box) return;
-    if(box.querySelector('.pc-eye-naya-make')) return;
-    if(!box.querySelector('.intel-board,.ib-card,article,.ib-blocktop')) return;
-    var b=document.createElement('button');
-    b.type='button'; b.className='ph-connect pc-eye-naya-make';
-    b.setAttribute('data-pc-invite-naya','');
-    b.textContent='Make a Naya Note';
-    box.insertBefore(b,box.firstChild);
+    var bar=q('#pcComposerBar'); if(!bar) return;
+    var b=document.getElementById('pcComposerNayaBtn');
+    if(!b){
+      b=document.createElement('button');
+      b.id='pcComposerNayaBtn'; b.type='button'; b.className='ph-connect pc-eye-naya-make';
+      b.setAttribute('data-pc-invite-naya','');
+      b.textContent='Make a Naya Note';
+      bar.appendChild(b);
+    }
+    var naya=document.getElementById('mwTabActivity');
+    b.style.display=(naya&&naya.classList.contains('active'))?'':'none';
   }catch(e){}
 }
 try{
   ensureNayaBtn();
-  var _ny=q('#mwFeedNaya');
-  if(_ny&&window.MutationObserver) new MutationObserver(function(){ ensureNayaBtn(); }).observe(_ny,{childList:true,subtree:true});
+  var _nt=document.getElementById('mwTabActivity');
+  if(_nt&&_nt.parentElement&&window.MutationObserver) new MutationObserver(function(){ ensureNayaBtn(); }).observe(_nt.parentElement,{attributes:true,subtree:true,attributeFilter:['class','aria-selected']});
 }catch(e){}
 
-/* ── F9 — points pill: digit tiles that STAY + a real gauge arc. ──
+/* ── F9 — points pill: digit tiles that STAY. ──
    Mechanism: the file already has a tiler (pcTilePill, harvested from the
    Dashboard) that re-presents #pointscount as digit tiles and drives the
    gold fill from dialPos(total)/500 — but the eye saw the tiles vanish on
@@ -29877,52 +29871,14 @@ try{
    land as plain text and the single observer pass does not always
    re-tile. This block re-tiles on its own observer AND on a settling
    interval, so plain-text overwrites are re-tiled within 2s, forever.
-   The arc is the Dashboard's own speedometer math (lap position
-   dialPos(total) = ((total-1) % 500) + 1, laps of 500), drawn as the
-   compact 180-degree top arc: the lap position sweeps left to right
-   over the top. The full Dashboard dial is NOT transplanted into the
-   pill (size/scope) — this arc is the honest version. */
-function pcDialPos(v){ v=Math.round(v||0); if(v<=0) return 0; return ((v-1)%500)+1; }
-function ensureArc(){
-  try{
-    var pd=q('#pointsdisplay'); if(!pd) return null;
-    var svg=q('.pc-eye-arc',pd);
-    if(svg) return svg;
-    svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
-    svg.setAttribute('class','pc-eye-arc'); svg.setAttribute('viewBox','0 0 120 64');
-    svg.setAttribute('width','120'); svg.setAttribute('height','64');
-    svg.setAttribute('aria-hidden','true');
-    svg.innerHTML='<path d="M 12 58 A 48 48 0 0 1 108 58" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="5" stroke-linecap="round"/>'
-      +'<path id="pcEyeArcFill" d="M 12 58 A 48 48 0 0 1 108 58" fill="none" stroke="#ffbf3d" stroke-width="5" stroke-linecap="round" stroke-dasharray="150.8" stroke-dashoffset="150.8"/>'
-      +'<line id="pcEyeNeedle" x1="60" y1="58" x2="60" y2="18" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>'
-      +'<circle cx="60" cy="58" r="4" fill="#ffbf3d" stroke="#fff" stroke-width="1.5"/>'
-      +'<text x="12" y="64" fill="rgba(255,255,255,.55)" font-size="7">0</text>'
-      +'<text x="108" y="64" fill="rgba(255,255,255,.55)" font-size="7" text-anchor="end">500</text>';
-    pd.appendChild(svg);
-    return svg;
-  }catch(e){ return null; }
-}
-function updateArc(total){
-  try{
-    var svg=ensureArc(); if(!svg) return;
-    var pos=pcDialPos(total);
-    var fill=q('#pcEyeArcFill',svg), needle=q('#pcEyeNeedle',svg);
-    if(fill) fill.setAttribute('stroke-dashoffset', String((150.8*(1-pos/500)).toFixed(1)));
-    if(needle){
-      /* 180-degree top arc: the lap position (1..500) sweeps left to right
-         over the top, 180 + (pos/500)*180 degrees. Same lap position as the
-         Dashboard's dialPos; the arc is the compact half, so the needle
-         math matches the arc it rides on. */
-      var ang=(180+(pos/500)*180)*Math.PI/180;
-      var x2=60+40*Math.cos(ang), y2=58+40*Math.sin(ang);
-      needle.setAttribute('x2',x2.toFixed(1)); needle.setAttribute('y2',y2.toFixed(1));
-    }
-  }catch(e){}
-}
+   HEADER 2026-11-15 H1 — the gauge arc + needle + numerals + gold fill
+   are OUT (Shawn: just the points number — he never asked for the gauge).
+   The tiler below stays: plain-text overwrites are re-tiled within 2s.
+   The Dashboard's own gauge (tn-tacho-mount, Dashboard view) is untouched:
+   it is the Dashboard's instrument, not the pill's. */
 function tilePoints(){
   try{
     var pc=q('#pointscount'); if(!pc) return;
-    try{ ensureArc(); }catch(e){}
     var raw=(pc.textContent||'').trim();
     if(!raw||raw==='…'||raw==='—'||raw==='-') return;
     var digits=raw.replace(/[^0-9]/g,'');
@@ -29941,7 +29897,6 @@ function tilePoints(){
       }
       pc.innerHTML=html+'</span>';
     }
-    updateArc(parseInt(digits,10));
   }catch(e){}
 }
 try{
@@ -30191,4 +30146,67 @@ if(document.readyState==='loading'){
 }else{ setTimeout(railApplyLoad,800); }
 })();
 </script>
+
+<!-- HEADER ROUND H1-H8 (2026-11-15) — H2 H3 H5 (CSS). H1/H5/H6/H7 JS edits are in place above. -->
+<style id="fix-personal-header-20261115-css">
+/* H2 — greeting beside the picture, vertically centred with it, no box.
+   MECHANISM (measured on the base): .ph-head is a flex row (idcol + board),
+   align-items:flex-start, so the board's top sits level with the POINTS PILL's
+   top — at 1440 the greeting's centre is 100px above the avatar's centre
+   (368 vs 468); at 390 it is 21px above (534 vs 555). The board is a box
+   (background + border + shadow + padding). FIX: the head becomes a grid —
+   pill row 1, avatar row 2, greeting in the avatar's row, align-self:center,
+   so the greeting's centre IS the avatar's centre at every width, with no
+   magic numbers (the motto wraps, the block grows, the centre holds). The
+   idcol dissolves (display:contents) so pill + avatar are grid items; the
+   pill and the avatar stay centred in their column (justify-self:center).
+   The board loses its box (background/border/shadow/padding/max-width all
+   gone) and its 79px top margin (the old flex offset that pushed it
+   below the avatar in the grid); the avatar centres itself in its row
+   too, so greeting and picture share one centre at both widths. Name +
+   motto + info keep their sizes, ids, and click-to-edit. */
+.ph-head{display:grid!important;grid-template-columns:auto 1fr!important;grid-template-rows:auto auto!important;column-gap:20px!important;row-gap:10px!important;align-items:start!important;}
+.ph-idcol{display:contents!important;}
+.ph-pointsrow{grid-column:1!important;grid-row:1!important;justify-self:center!important;}
+.ph-avwrap{grid-column:1!important;grid-row:2!important;justify-self:center!important;align-self:center!important;}
+#phIntroBoard{grid-column:2!important;grid-row:2!important;align-self:center!important;flex:none!important;max-width:none!important;margin:0!important;background:none!important;border:0!important;border-radius:0!important;padding:0!important;box-shadow:none!important;}
+/* H3 — the three membership pills on the cover, top-right, flush with it.
+   MECHANISM: the cover's top-right corner is owned by the gear (right:196,
+   desktop) + Change cover (right:16); the pills join that corner cluster.
+   Desktop (>=1024px): one row at top:0, ending 16px left of the gear
+   (right:260) — the same row the eye approved at 1440, moved up onto the
+   cover. Below 1024px the row cannot fit, so the pills stack as a column
+   under the corner controls (top:56, right edge flush with the gear's
+   inset) — right-aligned, content-width, still top-right, still on the
+   cover, clear of the head (which starts at the cover's bottom - 70px).
+   This block wins over the eye-fix-2 in-flow strip (static) and round 1's
+   cover-foot rule (bottom:14px): later + !important on every property. */
+#mwCoverMships{position:absolute!important;top:0!important;right:260px!important;left:auto!important;bottom:auto!important;display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;gap:10px!important;max-width:none!important;width:auto!important;margin:0!important;z-index:11!important;}
+@media (max-width:1023px){
+  #mwCoverMships{top:56px!important;right:16px!important;flex-direction:column!important;flex-wrap:nowrap!important;align-items:flex-end!important;}
+}
+@media (max-width:640px){
+  #mwCoverMships{right:10px!important;}
+}
+/* H5 — the people card is one clean row: orb + name, CONNECT top-right.
+   MECHANISM (measured on the base): the card is 265px tall — bio board +
+   four message buttons + a connect row forced static at the bottom by the
+   fix-pass-4 rule (.pc-card .pc-connect-row{position:static;order:1}).
+   The card's own base rule already puts the row absolute top-right
+   (top:12px;right:12px); the fix restores it. The top row reserves the
+   cluster's width (padding-right:190px) so the name can never run under
+   CONNECT / % / info. The info is already 40px in the card (big, visible).
+   The bio, the reasons and the four buttons left the card in pcCard; the
+   motto + the four buttons live in the info pop-up now. */
+.pc-card .pc-connect-row{position:absolute!important;top:12px!important;right:12px!important;margin:0!important;}
+.pc-card-top{padding-right:190px!important;}
+/* H7 — the "Make a Naya Note" pill in the composer bar. MECHANISM: the bar
+   is [search + plus]; the pill joins it after the plus. Desktop it sits in
+   the same row; at phone width the bar wraps and the pill takes its own
+   full-width row inside the bar (never clipped, never orphaned mid-feed).
+   It is display:none unless the Naya Notes tab is active (JS toggles it). */
+#pcComposerBar{flex-wrap:wrap!important;}
+#pcComposerNayaBtn{margin:0!important;align-self:center;flex:0 0 auto;white-space:nowrap;text-align:center;justify-content:center;}
+@media(max-width:640px){#pcComposerNayaBtn{flex:1 1 100%;}}
+</style>
 </body></html>
