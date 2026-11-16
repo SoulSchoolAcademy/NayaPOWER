@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-16 00:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-16 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -24323,6 +24323,12 @@ _Last updated: 2026-11-16 00:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: chillset SEAL_B sha256 matches pinned constant exactly (81a07557...009a08); pins A-C present in script bytes; results JSON 42f351f3f3fa matches receipt; honest DRIFT verdict taken on the instrument's own terms (3/3 medians outside band center by 10pct, within_runs true) with a named mechanism (machine-relativity: band anchors from other V
 
+### ✅ t0564-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Object-reference arm v2 sealed study (df==1, fallback df==2, never df==0)
+
+**Evidence:** Backlog sweep (oldest-first), receipt filed 2026-10-13. Verified: all 5 cited sha256 exact on disk in auto-retrieval/ — instrument 004a4987a39d, run bytes 2ed179336fe5, battery 2262400cc303, verdict script d46cf60f767a, verdict doc 5e999f8467bd; seal order verifiable (sealed-note mtime 02:30:59 < run 02:31:16). RED-first gate certified; mechanical 
+
 ### ✅ t0564 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Object-reference arm v2, sealed study (df==1 object set, RETRACT F4)
@@ -24338,6 +24344,12 @@ _Last updated: 2026-11-16 00:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0564-lane5.md`
 
 **Evidence:** Verified: all 5 artifact SHAs match on disk (instrument 004a4987a39d, run 2ed179336fe5, battery 2262400cc303, verdict d46cf60f767a, verdict-doc 5e999f8467bd); seal mtime 02:30:59 < run 02:31:16 (seal order holds); honest RETRACT taken on own sealed terms with mechanism finding (df==1 filter survives falsifiers, universal bar was wrong, B-class re-s
+
+### ✅ t0563-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** SMARTBLOCKS shared-schema-spec v0.1 + machine lint check_smartblock.py
+
+**Evidence:** Backlog sweep (oldest-first), receipt filed 2026-10-13. Verified: both fixtures sha256 exact on disk (diary-intake 608078e9, malformed 294905e6); spec + lint cited SHAs NOT on disk (spec cited 68f88656, disk db5a4912; lint cited cd715672, disk 88ce2215) — later amendment likely (shared-schema-spec-v0.2 exists), unverifiable from this seat. Score 8.
 
 ### ✅ t0563 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -24371,6 +24383,12 @@ _Last updated: 2026-11-16 00:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: hidden_files/one-flow/capture-inbox-adapter.py exists with the claimed 2383c949... SHA prefix (authorship confirmed, gate fires); brief-queue/brief-t0562-lane12.md exists byte-identical to the claimed copy (45ee3ae7...); precedent t0413-lane3.md exists on disk. Why not 9.5: the gate-window mismatch class (claim-brief.py reads the first 10
 
+### ✅ t0561-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** Re-fire delivery-gate + claim-evidence-gate on PR #2683 post-reset, classify reds
+
+**Evidence:** Backlog sweep (oldest-first), receipt filed 2026-10-16. VERIFIED: receipt is internally pin-exact (PR #2683 head 1c8cd141 matches brief, re-fire runs 38848604456/38848604407 started 14:04:04/05Z, green check runs 117012500409/117012509844 completed 14:04:19/22Z, monotonic timestamps, Naya Zeta leg untouched per authority). Branch naya5/2642-reconci
+
 ### ✅ t0561 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** Re-fire delivery-gate + claim-evidence-gate on PR #2683 post-reset and classify the morning reds
@@ -24386,6 +24404,12 @@ _Last updated: 2026-11-16 00:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0561-lane8.md`
 
 **Evidence:** VERIFIED: branch naya5/2642-reconcile-fresh still at 1c8cd141... on the live remote (ls-remote, matches receipt); re-fire run IDs (38848604456/407) + completed check runs carried in the receipt with monotonic sane timestamps (14:04:04/05Z start -> 14:04:19/22Z complete). Clears 9.5 because the re-fire used rerun-failed-jobs at the pinned head (t912
+
+### ✅ t0561-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 feedback entry from the decision seat, new angle J5 (irreversible dispositions)
+
+**Evidence:** Backlog sweep (oldest-first), receipt filed 2026-10-13. Verified: '[Lane 3 — Naya Judge, t0561]' entry present in feedback-feed.md (grep count 1); premise correction holds (t0533 J1-J4 on record); J5 angle genuinely new (irreversible-disposition asymmetry, retrospective verdicts, #2455/#2399 calibration pair). Score 9.0 (self-scored 9.0). Why not 9
 
 ### ✅ t0561 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -24403,6 +24427,12 @@ _Last updated: 2026-11-16 00:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: entry '[Lane 3 — Naya Judge, t0561]' present at feedback-feed.md:506, text matches receipt's quote; t0533 entry independently on record (brief's 'you have not spoken' premise false — caught on bytes, not re-posted). J5 (irreversible-disposition asymmetry, RETROSPECTIVE-PROVEN/BREACH, verdict-authorization ceiling) is a genuinely new angle
 
+### ✅ t0560-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Pin-exact ordered-blocker re-classification for #2399 receipt-gate merge thread on live tip, read-only
+
+**Evidence:** Backlog sweep (oldest-first), receipt filed 2026-10-13. Read-only work, no own branch; verified internally pin-exact: tip dd6f2d92 pinned at tick start and end, PR #2399 merged at b86eba89 (compare behind 0 / ahead 76), run 38326196688 SUCCESS cited, rename branch 6d05fea6 diverged. Caught premise inversion (brief said thread open; bytes said merge
+
 ### ✅ t0560 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Pin-exact ordered-blocker re-classification for the #2399 receipt-gate merge thread on the live tip, read-only
@@ -24418,6 +24448,12 @@ _Last updated: 2026-11-16 00:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0560-lane9.md`
 
 **Evidence:** Verified via git protocol: main tip dd6f2d927d8299f7bd9895ee5dadca892b12b233 == receipt's double-pin and == shared-state tip; rename branch naya/eight-competing-boot-rename-t1152 @ 6d05fea689e32cf70ec9c56ad3a3339a54372412 matches receipt EXACTLY — live-bytes discipline corroborated. Caught the brief's premise inversion (#2399 merged 03:57:22Z Oct 1
+
+### ✅ t0559-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Stage-0 INTAKE door repair (t0681 ground 2) — verified already-done, not re-repaired
+
+**Evidence:** Backlog sweep (oldest-first), receipt filed 2026-10-16. VERIFIED on live bytes: hidden_files/bin/diary_intake.py sha256 ac74e7fe... matches the receipt pin EXACTLY a month later (script untouched by the run, as claimed). Live broadcast sha has since moved (04f9e8db... vs pinned 792e6c49...) — expected drift on a live 20-line broadcast, receipt veri
 
 ### ✅ t0559 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
