@@ -1489,6 +1489,67 @@ body.fp-stage-on.fp-intro .fp-next-row.fp-two #fpNextBtn,body.fp-stage-on.fp-int
 body.fp-stage-on.fp-intro #fpAgreement .fp-agree-logo{margin-bottom:16px}
 body.fp-stage-on.fp-intro #fpAgreement .fp-agree-logo img{width:104px;height:104px}
 body.fp-stage-on.fp-intro #fpAgreement .fp-agree-head{margin-bottom:16px}
+/* ---- ENTRANCE WELCOME (2026-11-16) — Shawn's 10-star opening copy ----
+   Hero (portrait + play) and welcome boards and royal lines live ONLY in
+   the intro view: hidden in every other stage view, shown in fp-view-intro.
+   Outside the stage (no-JS fallback) they stand as ordinary content. */
+body.fp-stage-on #fpAgreement .fp-welcome-hero,
+body.fp-stage-on #fpAgreement .fp-welcome,
+body.fp-stage-on #fpAgreement .fp-royal-lines{display:none}
+body.fp-stage-on #fpAgreement.fp-view-intro .fp-welcome-hero{display:flex}
+body.fp-stage-on #fpAgreement.fp-view-intro .fp-welcome{display:block}
+body.fp-stage-on #fpAgreement.fp-view-intro .fp-royal-lines{display:block}
+.fp-welcome-hero{display:flex;align-items:center;justify-content:center;gap:24px;margin:0 auto 20px;padding:0 16px}
+.fp-naya-portrait{width:132px;height:132px;border-radius:50%;object-fit:cover;border:2px solid rgba(196,181,253,.6);box-shadow:0 0 28px rgba(157,117,255,.55),0 0 64px rgba(157,117,255,.2),0 18px 40px rgba(0,0,0,.65);flex:0 0 auto}
+@media(max-width:480px){.fp-naya-portrait{width:104px;height:104px}}
+/* PLAY BUTTON — HARVESTED VERBATIM from the live walk (/welcome, sha 681c4866,
+   walk-beginning-fixed.html): .p3-naya-play, its orbiting satellite dot
+   (@keyframes orbit / orbitM / orbitS), hover, pending-glow, and the tip.
+   Only the walk-only .p3-progress fragments of the tip media queries are
+   left out (the walk's progress bar does not exist on this page). The
+   brief named blob f5fd6448 as the source; that blob carries NO play
+   button (verified by grep: no play class, no triangle glyph, no speech
+   wiring) — the walk is the one place it exists. Button, orb, label and
+   glow-only wiring are byte-identical to the walk's; voice stays PAUSED. */
+.p3-naya-play{position:relative;width:68px;height:68px;flex:0 0 auto;border-radius:50%;cursor:pointer;border:1.5px solid rgba(255,255,255,.85);background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.16),rgba(24,24,32,.96) 55%,#000);color:#fff;display:flex;align-items:center;justify-content:center;transition:all .3s cubic-bezier(.22,.61,.36,1);box-shadow:0 0 24px rgba(255,255,255,.28),inset 0 1.5px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.85);overflow:visible;padding:0}
+.p3-naya-play svg{margin-left:2px;display:block;position:relative;z-index:1}
+.p3-naya-play::after{content:"";position:absolute;left:50%;top:50%;width:9px;height:9px;border-radius:0;clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);background:conic-gradient(from 210deg,#fff,#b8b8b8 25%,#5a5a5a 50%,#e8e8e8 75%,#fff);border:none;box-shadow:none;filter:drop-shadow(0 0 5px rgba(255,255,255,.9));transform:translate(-50%,-50%) rotate(0deg) translateY(-42px);animation:orbit 4s linear infinite;pointer-events:none;z-index:2}
+@keyframes orbit{from{transform:translate(-50%,-50%) rotate(0deg) translateY(-42px)}to{transform:translate(-50%,-50%) rotate(360deg) translateY(-42px)}}
+.p3-naya-play:hover,.p3-naya-play:active{transform:scale(1.12);border-color:#fff;box-shadow:0 0 24px rgba(255,255,255,.45),0 0 48px rgba(255,255,255,.18)}
+@media (prefers-reduced-motion:reduce){.p3-naya-play::after{animation:none}}
+.p3-naya-play.pending-glow{box-shadow:0 0 34px rgba(255,255,255,.7),0 0 60px rgba(255,255,255,.25)}
+@media (max-width:480px){.p3-naya-play::after{transform:translate(-50%,-50%) rotate(0deg) translateY(-38px);animation:orbitM 4s linear infinite}@keyframes orbitM{from{transform:translate(-50%,-50%) rotate(0deg) translateY(-38px)}to{transform:translate(-50%,-50%) rotate(360deg) translateY(-38px)}}}
+@media (max-width:360px){.p3-naya-play::after{transform:translate(-50%,-50%) rotate(0deg) translateY(-36px);animation:orbitS 4s linear infinite}@keyframes orbitS{from{transform:translate(-50%,-50%) rotate(0deg) translateY(-36px)}to{transform:translate(-50%,-50%) rotate(360deg) translateY(-36px)}}}
+.p3-play-tip{display:none;position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);white-space:nowrap;padding:7px 11px;border-radius:12px;background:#14101f;border:1px solid rgba(255,255,255,.18);color:#fff;font-size:13px;line-height:1.4;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,.5);z-index:10;pointer-events:none}
+.p3-naya-play:hover .p3-play-tip,.p3-naya-play:focus-visible .p3-play-tip,.p3-naya-play.show .p3-play-tip{display:block}
+@media (max-width:480px){.p3-naya-play .p3-play-tip{font-size:11px;padding:4px 10px;bottom:calc(100% + 6px)}}
+@media (max-width:360px){.p3-naya-play .p3-play-tip{padding:3px 8px;line-height:1.2;bottom:calc(100% + 4px)}}
+/* Welcome boards: the house .intel-board, three at a time, spectrum order. */
+.fp-welcome{max-width:860px;margin:0 auto 24px;padding:0 16px;box-sizing:border-box}
+.fp-welcome-group{display:flex;flex-direction:column;gap:12px}
+.fp-welcome-board{margin:0}
+.fp-welcome-more{margin-top:12px}
+.fp-royal-lines{max-width:860px;margin:0 auto 24px;padding:0 16px;box-sizing:border-box;text-align:center;color:#fff;font-size:16px;line-height:1.65}
+.fp-royal-lines p{margin:0 0 10px}
+.fp-royal-lines .fp-royal-signoff{margin-top:16px}
+.fp-royal-lines .fp-royal-close{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:13px;margin-bottom:0}
+/* ENTRANCE WELCOME FIX — the pinned bar collided with the unfolding
+   boards at 390 and 1851 (pick line across board text, buttons over
+   boards 2-3). In the intro view the bar is hidden and the choice lives
+   in the flow, after the Royal Unfolding lines. Other views keep the bar. */
+body.fp-stage-on.fp-intro #fpStageBarB{display:none}
+body.fp-stage-on #fpAgreement.fp-view-intro #deckUnfold{flex:0 0 auto;min-height:auto}
+body.fp-stage-on #fpAgreement .fp-intro-pick,
+body.fp-stage-on #fpAgreement .fp-intro-choices{display:none}
+body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-pick{display:block}
+body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-choices{display:flex}
+.fp-intro-pick{margin:16px 0 0;text-align:center;color:#fff;font-size:14px;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.85)}
+.fp-intro-choices{display:flex;flex-direction:column;gap:12px;align-items:center;margin:12px auto 8px}
+.fp-intro-choice{position:relative;overflow:hidden;display:block;margin:0 auto;padding:20px 48px;width:min(420px,100%);min-width:min(420px,100%);border-radius:999px;font-family:inherit;font-size:18px;font-weight:800;letter-spacing:.05em;color:#fff;cursor:pointer;background:linear-gradient(180deg,#1b1b24,#050507);border:2px solid var(--tone,#a06bff);text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 12px var(--tone,#a06bff);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px var(--tone,#a06bff),0 10px 22px rgba(0,0,0,.55);transition:box-shadow .25s,transform .25s,border-color .25s;box-sizing:border-box}
+.fp-intro-choice::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.16) 50%,transparent 58%);transform:translateX(-130%);animation:enterFlow 4.5s ease-in-out infinite;pointer-events:none}
+.fp-intro-choice:hover,.fp-intro-choice:active{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px var(--tone,#a06bff),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
+.fp-intro-choice:focus{outline:none}
+@media(max-width:480px){.fp-intro-choice{padding:18px 10px;font-size:15px;letter-spacing:.02em;min-height:60px}}
 @media(max-width:480px){body.fp-stage-on.fp-intro #fpAgreement .fp-agree-logo img{width:84px;height:84px}}
 /* the legal row at the very bottom of the opening view: the footer links
    only (kicker, sub and pages stay hidden here — the footer view owns
@@ -1813,17 +1874,41 @@ body.fp-stage-on #fpAgreement.fp-view-letterpage.fp-letter-end .letter-page-end{
 <div id="fpStageBarB" hidden>
 <p class="fp-pick-line" id="fpPickLine" hidden>Pick your view — one, or both, as you wish.</p>
 <div class="fp-stage-links" id="fpStageLinks"><button class="fp-stage-link" id="fpLinkLetterAll" type="button" hidden>or read the whole letter at once</button><button class="fp-stage-link" id="fpLinkLetterSkip" type="button" hidden>Skip the agreement &rarr;</button><button class="fp-stage-link" id="fpLinkLegalAll" type="button" hidden>or read the whole page at once</button><button class="fp-stage-link" id="fpLinkToFooter" type="button" hidden>The whole deal &mdash; legal pages &#9670;</button><button class="fp-stage-link" id="fpLinkToAgree" type="button" hidden>Back to the agreement &#9670;</button><button class="fp-stage-link" id="fpLinkLetterBack" type="button" hidden>&#8249; Back to the opening page &#9670;</button><button class="fp-stage-link" id="fpLinkDeckBack" type="button" hidden>&#8249; Back to the deck end &#9670;</button></div>
-<div class="fp-next-row" id="fpNextRow"><button class="fp-next" id="fpNextBtn" type="button">Begin the deck &#9670;</button><button class="fp-next" id="fpNextBtn2" type="button" hidden>Read the letter &#9670;</button></div>
+<div class="fp-next-row" id="fpNextRow"><button class="fp-next" id="fpNextBtn" type="button">Begin the visual story &#9670;</button><button class="fp-next" id="fpNextBtn2" type="button" hidden>Read the Collective Agreement &#9670;</button></div>
 </div>
 <div id="fpZoom" hidden role="dialog" aria-modal="true" aria-label="Slide, full size">
 <button id="fpZoomClose" type="button" aria-label="Close">&times;</button>
 <div class="fp-zoom-scroll" id="fpZoomScroll"><img id="fpZoomImg" alt=""></div>
 <p class="fp-zoom-hint">Tap the picture to switch fit / full size &#9670; Esc to go back</p>
 </div>
-<section id="fpAgreement" aria-label="The Collective Agreement"><div class="fp-agree-logo"><img src="/agmt-logo.jpg" alt="NayaNET"></div><div class="fp-agree-head"><p class="fp-agree-kicker">The Collective Agreement</p><h2 class="fp-agree-title">Here&rsquo;s the collective agreement &mdash; here&rsquo;s what we are, here&rsquo;s what we&rsquo;re not, this is how it works.</h2><p class="fp-agree-sub">You&rsquo;re legit, we&rsquo;re legit, it&rsquo;s all legit. Built to be scam- and hacker-resistant to the max &mdash; safe and secure, built on integrity and the law of one, respect for all and everyone. If you&rsquo;re not legit, it won&rsquo;t be good &mdash; the system protects itself.</p></div><section class="p3-deal-unfold" id="deckUnfold" style="margin-top:24px;margin-bottom:48px">
+<section id="fpAgreement" aria-label="The Collective Agreement"><div class="fp-agree-logo"><img src="/agmt-logo.jpg" alt="NayaNET"></div><div class="fp-agree-head"><p class="fp-agree-kicker">NayaNET &middot; The Collective Intelligence Network</p><h2 class="fp-agree-title">The Collective Agreement</h2><p class="fp-agree-sub">Welcome. Let&rsquo;s begin with trust.</p></div>
+<div class="fp-welcome-hero" id="fpWelcomeHero"><img class="fp-naya-portrait" src="/agmt-b06.png" alt="Naya"><button class="p3-naya-play" id="fpIntroPlay" type="button" aria-label="Naya will talk you through this page"><svg viewBox="0 0 24 24" width="24" height="24" fill="#fff" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg><span class="p3-play-tip">Naya will talk you through this page</span></button></div>
+<div class="fp-welcome" id="fpWelcome">
+<div class="fp-welcome-group" id="fpWelcomeG1">
+<article class="intel-board fp-welcome-board" style="--tone:#a06bff"><div class="ib-nutshell"><p>Hi, I&rsquo;m Naya.</p><p>Before you become part of our world, I want you to understand exactly what you&rsquo;re joining.</p></div></article>
+<article class="intel-board fp-welcome-board" style="--tone:#3fb8ff"><div class="ib-nutshell"><p>Who we are. What we stand for. What we&rsquo;re building. How it works. What we promise you. And what we ask of one another.</p></div></article>
+<article class="intel-board fp-welcome-board" style="--tone:#2fe89e"><div class="ib-nutshell"><p>Because the foundation of a great community isn&rsquo;t technology.</p><p><b>It&rsquo;s trust.</b></p></div></article>
+</div>
+<button class="p3-enter fp-welcome-more" id="fpWelcomeMore1" type="button">Continue &#9670;</button>
+<div class="fp-welcome-group" id="fpWelcomeG2" hidden>
+<article class="intel-board fp-welcome-board" style="--tone:#ffbf3d"><div class="ib-nutshell"><p>NayaNET is a collective intelligence network built around one simple idea: <b>when people and intelligence come together to create, learn, share, and help one another, everybody has a greater opportunity to benefit.</b></p></div></article>
+<article class="intel-board fp-welcome-board" style="--tone:#ff9a5a"><div class="ib-nutshell"><p>Joining our community is free. We believe your privacy matters, your choices matter, and your intelligence should serve you.</p></div></article>
+<article class="intel-board fp-welcome-board" style="--tone:#ff5e6c"><div class="ib-nutshell"><p>We believe in honesty, fairness, respect, and doing no harm.</p></div></article>
+</div>
+<button class="p3-enter fp-welcome-more" id="fpWelcomeMore2" type="button" hidden>Continue &#9670;</button>
+<div class="fp-welcome-group" id="fpWelcomeG3" hidden>
+<article class="intel-board fp-welcome-board" style="--tone:#e84fff"><div class="ib-nutshell"><p>We take fraud, security, and abuse seriously. Our responsibility is to develop meaningful safeguards, improve them continuously, and be accountable when something goes wrong.</p></div></article>
+<article class="intel-board fp-welcome-board" style="--tone:#6675ff"><div class="ib-nutshell"><p><b>No tricks. No hidden agenda. No promises of perfection.</b></p><p>Just a clear agreement, built on integrity, respect for life, and a genuine commitment to creating something better together.</p></div></article>
+<article class="intel-board fp-welcome-board" style="--tone:#40d3bb"><div class="ib-nutshell"><p>That&rsquo;s what we stand for.</p><p>And before you agree to anything, I want you to see the whole picture.</p></div></article>
+</div>
+</div>
+<section class="p3-deal-unfold" id="deckUnfold" style="margin-top:24px;margin-bottom:48px">
 <p class="letter-steplabel">NayaNET &middot; The Collective Intelligence Network</p>
 <h1 class="deal-title">The Royal Unfolding</h1>
-<p class="deck-sub">The Deck &mdash; nine pictures, one story. Naya talks you through it.</p>
+<p class="deck-sub">Nine pictures. One beautiful story.</p>
+<div class="fp-royal-lines" id="fpRoyalLines"><p>Let me show you what NayaNET is, why we&rsquo;re building it, how the intelligence connects, and what it could mean for you.</p><p>You can experience the visual story or read our Collective Agreement in full.</p><p>Take your time. Explore. Ask questions.</p><p><b>We&rsquo;d rather earn your trust than simply ask for it.</b></p><p class="fp-royal-signoff"><i>Your world. Your choice. Our collective promise.</i></p><p class="fp-royal-close">Create. Connect. Grow with US.</p></div>
+<p class="fp-intro-pick" id="fpIntroPick">Pick your view — one, or both, as you wish.</p>
+<div class="fp-intro-choices" id="fpIntroChoices"><button class="fp-intro-choice" id="fpChoiceDeck" type="button" style="--tone:#a06bff">Begin the visual story ◆</button><button class="fp-intro-choice" id="fpChoiceLetter" type="button" style="--tone:#2fe89e">Read the Collective Agreement ◆</button></div>
 <div class="letter-controls" id="deckControls">
 <div class="letter-dots" id="deckDots" aria-hidden="true"><span class="ldot on" style="--dc:#a06bff"></span><span class="ldot" style="--dc:#3fb8ff"></span><span class="ldot" style="--dc:#2fe89e"></span><span class="ldot" style="--dc:#ffbf3d"></span><span class="ldot" style="--dc:#e84fff"></span><span class="ldot" style="--dc:#ff9a5a"></span><span class="ldot" style="--dc:#6675ff"></span><span class="ldot" style="--dc:#ff5e6c"></span><span class="ldot" style="--dc:#40d3bb"></span></div>
 </div>
@@ -1843,7 +1928,7 @@ body.fp-stage-on #fpAgreement.fp-view-letterpage.fp-letter-end .letter-page-end{
 <div class="deal-opening"><img class="deal-open-photo" src="/agmt-top.jpg" alt="Naya, your guide"><span class="deal-open-who">Hi, I&rsquo;m Naya.</span></div>
 <button class="deal-eye-main" id="dealEyeMain" type="button" aria-label="Read the whole letter at once"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><defs><radialGradient id="dealEyeIris" cx="38%" cy="32%" r="75%"><stop offset="0%" stop-color="#c9a7ff"/><stop offset="55%" stop-color="#7b4dff"/><stop offset="100%" stop-color="#2c0a5e"/></radialGradient></defs><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="4.6" fill="url(#dealEyeIris)" stroke="#efe6ff" stroke-width="0.7"/><circle cx="12" cy="12" r="2.1" fill="#05060a"/><circle cx="13.6" cy="10.2" r="1.1" fill="#fff" opacity="0.9"/></svg></button>
 <h1 class="deal-title">The Collective Agreement</h1>
-<nav class="letter-rail" id="letterRail" aria-label="Jump to a part"><button class="letter-rail-btn" type="button" data-beat="36" style="--dc:#a06bff"><span class="ldot" style="--dc:#a06bff"></span>The promise</button><button class="letter-rail-btn" type="button" data-beat="18" style="--dc:#3fb8ff"><span class="ldot" style="--dc:#3fb8ff"></span>What we do</button><button class="letter-rail-btn" type="button" data-beat="44" style="--dc:#2fe89e"><span class="ldot" style="--dc:#2fe89e"></span>How it works</button><button class="letter-rail-btn" type="button" data-beat="51" style="--dc:#a06bff"><span class="ldot" style="--dc:#a06bff"></span>You&rsquo;re hired</button><button class="letter-rail-btn" type="button" data-beat="66" style="--dc:#3fb8ff"><span class="ldot" style="--dc:#3fb8ff"></span>How you get paid</button></nav>
+<nav class="letter-rail" id="letterRail" aria-label="Jump to a part"><button class="letter-rail-btn" type="button" data-beat="36" style="--dc:#a06bff"><span class="ldot" style="--dc:#a06bff"></span>The promise</button><button class="letter-rail-btn" type="button" data-beat="18" style="--dc:#3fb8ff"><span class="ldot" style="--dc:#3fb8ff"></span>What we do</button><button class="letter-rail-btn" type="button" data-beat="18" style="--dc:#2fe89e"><span class="ldot" style="--dc:#2fe89e"></span>How it works</button><button class="letter-rail-btn" type="button" data-beat="51" style="--dc:#a06bff"><span class="ldot" style="--dc:#a06bff"></span>You&rsquo;re hired</button><button class="letter-rail-btn" type="button" data-beat="66" style="--dc:#3fb8ff"><span class="ldot" style="--dc:#3fb8ff"></span>How you get paid</button></nav>
 <p class="letter-steplabel" id="letterStepLabel"></p>
 <div id="letterBody">
 <article class="intel-board tone-purple letter-beat lead" data-beat="0" data-distilled><div class="ib-blocktop"><img class="deal-beat-photo" src="/agmt-top.jpg" alt="Naya speaking"><div class="ib-identity"><div></div></div></div><div class="ib-nutshell"><p>Hi, I&rsquo;m Naya.</p><p>Everybody&rsquo;s talking about artificial intelligence.</p><p>They say AI is going to take people&rsquo;s jobs, replace businesses, and change the world.</p></div><div class="ib-orb"><span class="ib-jewel" aria-hidden="true">&#9670;</span></div><div class="ib-foot"><img class="ib-foot-logo" src="/agmt-logo.jpg" alt="NayaNET"> &middot; The Collective Agreement</div><button class="p3-enter letter-next deck-next" type="button" data-beat="0">Keep reading &#9670;</button></article>
@@ -2701,6 +2786,19 @@ body.fp-stage-on #fpAgreement.fp-view-letterpage.fp-letter-end .letter-page-end{
     s.className='fp-dot';s.style.setProperty('--dc',c?c.trim():'#a06bff');dotsEl.appendChild(s);
   });
   var S={view:'intro',deck:0,letter:0,legalId:null,legal:0,all:null,letterDone:false,letterPageTop:0};
+  /* ENTRANCE WELCOME (2026-11-16) — the welcome unfolds three boards at a
+     time; the play button is glow-only (voice PAUSED until the text is
+     final — the walk's own wiring, harvested with the button). */
+  var wMore1=q('#fpWelcomeMore1'), wMore2=q('#fpWelcomeMore2'),
+      wG2=q('#fpWelcomeG2'), wG3=q('#fpWelcomeG3'), wPlay=q('#fpIntroPlay');
+  if(wMore1&&wG2){wMore1.addEventListener('click',function(){wG2.hidden=false;if(wMore2)wMore2.hidden=false;wMore1.hidden=true;});}
+  if(wMore2&&wG3){wMore2.addEventListener('click',function(){wG3.hidden=false;wMore2.hidden=true;});}
+  if(wPlay){wPlay.addEventListener('click',function(){wPlay.classList.toggle('show');wPlay.classList.add('pending-glow');setTimeout(function(){wPlay.classList.remove('pending-glow');},900);});}
+  /* ENTRANCE WELCOME FIX — the in-flow choice buttons call exactly what
+     the bar buttons call (begin -> goResume, letter -> enterLetterPage). */
+  var cDeck=q('#fpChoiceDeck'), cLetter=q('#fpChoiceLetter');
+  if(cDeck){cDeck.addEventListener('click',function(){if(S.view==='intro')goResume();});}
+  if(cLetter){cLetter.addEventListener('click',function(){if(S.view==='intro')enterLetterPage();});}
   var action='begin', dialTimer=null, lastKey='', orbFadeTimer=null;
   function legalPages(){return qa('.fp-legal-page');}
   function openLegal(){var ps=legalPages();for(var i=0;i<ps.length;i++){if(!ps[i].hidden)return ps[i];}return null;}
@@ -2722,7 +2820,7 @@ body.fp-stage-on #fpAgreement.fp-view-letterpage.fp-letter-end .letter-page-end{
     if(nextBtn2)nextBtn2.hidden=true;
     if(pickLine)pickLine.hidden=true;
     if(nextRow)nextRow.classList.remove('fp-two');
-    if(S.view==='intro'){setNext('Begin the deck \u25C6','#a06bff','begin');if(pickLine)pickLine.hidden=false;if(nextBtn2){nextBtn2.textContent='Read the letter \u25C6';nextBtn2.style.setProperty('--tone','#2fe89e');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}
+    if(S.view==='intro'){setNext('Begin the visual story \u25C6','#a06bff','begin');if(pickLine)pickLine.hidden=false;if(nextBtn2){nextBtn2.textContent='Read the Collective Agreement \u25C6';nextBtn2.style.setProperty('--tone','#2fe89e');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}
     else if(S.view==='deck'){
       tone=toneOf(deckBeats[S.deck]);
       dotsEl.classList.add('fp-on');
