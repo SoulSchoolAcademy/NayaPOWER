@@ -9165,6 +9165,10 @@ function wallCard(j, iso, pid, idx){
         return;
       }
       loadWall._n=0;
+      /* PERSONAL CORRECTION FIX 2026-11-16 (item 10): the wall read has
+         settled — its rows (possibly none: a genuinely empty wall) are about
+         to paint. From here on a pill tap may repaint from the store. */
+      window.MW_WALL_LOADED=true;
       var posts=rows.map(function(r){
         var j; try{ j=JSON.parse(r.content); }catch(e){ j=null; }
         if(!j || !j.k) j={k:'wall', a:'', b:r.content};
@@ -9190,6 +9194,9 @@ function wallCard(j, iso, pid, idx){
   window.MW_PUBLIC_POSTS=[];
   window.MW_PUBLIC_KEYWORD='';
   window.MW_PUBLIC_LOADED=false;
+  window.MW_WALL_LOADED=false; /* PERSONAL CORRECTION FIX 2026-11-16 (item 10):
+     the Personal wall read has NOT settled yet — set true in loadWall() the
+     moment its read resolves and the wall paints from real rows. */
   function pcPublicRows(){
     var client=null;
     try{ client=(typeof getSb==='function')?getSb():((typeof sb!=='undefined'&&sb)?sb:((window.getSb)?window.getSb():null)); }catch(e){ client=null; }
@@ -28517,29 +28524,15 @@ function pcOrganizerRerender(){
        first, so a rebuild never doubles the chips. */
     const bar = document.getElementById('mwFeedPills') || el('div', 'smart-tabs');
     bar.innerHTML = '';
-    // Gentle auto-scroll: flows right, loops back left
-    (function(){
-      /* R5 SEAM 10 — the bar is the immortal #mwFeedPills now (seam 9), so the
-         pause state lives ON the bar and the listeners attach once; a closure
-         `paused` per build would strand dead listeners on every rebuild. */
-      let dir = 1;
-      if (!bar._pcPauseBound) {
-        bar._pcPauseBound = true;
-        bar.addEventListener('pointerenter', () => bar._pcPaused = true);
-        bar.addEventListener('pointerleave', () => bar._pcPaused = false);
-        bar.addEventListener('touchstart', () => bar._pcPaused = true, {passive:true});
-        bar.addEventListener('touchend', () => setTimeout(()=>bar._pcPaused=false, 3000), {passive:true});
-      }
-      bar._pcScrollTimer = setInterval(() => {
-        if (bar._pcPaused || !bar.isConnected) return;
-        const max = bar.scrollWidth - bar.clientWidth;
-        if (max <= 0) return;
-        let next = bar.scrollLeft + dir * 1;
-        if (next >= max) { dir = -1; next = max; }
-        if (next <= 0) { dir = 1; next = 0; }
-        bar.scrollLeft = next;
-      }, 30);
-    })();
+    /* PERSONAL CORRECTION FIX 2026-11-16 (item 4 — checker FAIL): this bar is
+       PINNED STILL. The gentle auto-scroll interval that drifted it at 390
+       (scrollLeft 77 \u2192 100 over 5s, "All" slid to x=\u221284, off the left
+       edge, half-clipped chips) is gone — the one-line follow-on the first
+       maker named. The row stays hand-scrollable; the type chips never move
+       on their own, so "All" is fully visible at rest at every width. */
+    if (bar._pcScrollTimer) { try { clearInterval(bar._pcScrollTimer); } catch (e) {} }
+    bar._pcScrollTimer = null;
+    bar.scrollLeft = 0;
     bar.setAttribute('role', 'tablist');
     bar.setAttribute('aria-label', 'Smart Tabs — filter the feed by topic');
     const rerender = () => { closeTabPanels(); pcOrganizerRerender(); };
@@ -30832,7 +30825,16 @@ if(typeof window.mwPaintWallPosts==='function' && !window.mwPaintWallPosts.__pxE
       if(pill && pill!=='all'){
         var tab=activeTabKind();
         if(tab==='public' && !window.MW_PUBLIC_LOADED && !(window.MW_PUBLIC_POSTS||[]).length) return;
-        if(tab==='personal' && !(window.MW_WALL_POSTS||[]).length && !(posts&&posts.length)) return;
+        /* PERSONAL CORRECTION FIX 2026-11-16 (item 10 — checker FAIL): the
+           guard below exists so a pill tap never paints an empty wall from a
+           store whose read has NOT landed yet. It blocked Personal FOREVER:
+           the Personal store has no 'loaded' flag (unlike Public's
+           MW_PUBLIC_LOADED), so on a genuinely empty wall the tap always
+           returned early and the stale generic 'Make your first post' state
+           stayed — while Collective, with its flag, repainted and showed
+           'No Naya Notes yet'. Once MW_WALL_LOADED is true the read has
+           settled, and the per-type empty state may paint. */
+        if(tab==='personal' && !window.MW_WALL_LOADED && !(window.MW_WALL_POSTS||[]).length && !(posts&&posts.length)) return;
       }
     }catch(e){}
     var r=_paint.apply(this,arguments);
@@ -32138,17 +32140,24 @@ if(skillsList){
    Thursday green 639 · Friday red 396 · Saturday indigo 852). Today glows.
    Tap a day to open your world for that day: the eight-button day menu
    (Dashboard, Personal, Business, Space, Local, Provincial, Global,
-   Notes + Smart Notes), what went on, what you learned, the day's wisdom,
-   Intel Today, and the Daily Intelligence Report. Everything shown comes
-   from this page's own record (the wall store + the activity log) — a day
-   with no record is honestly empty, never back-filled. What is NOT here yet,
-   named plainly: weather (no source on the page), appointments / booking
-   (booking is missing, needs building), the Daily Intelligence Report
-   (no report lane on the page yet), and the three dailies' feeds (horoscope,
-   Chinese horoscope, Bible quote — toggles exist, default OFF, and say
+   Notes + Smart Notes), what went on, appointments, weather, what you
+   learned, the day's wisdom, Intel Today, and the Daily Intelligence
+   Report. Everything shown comes from this page's own record (the wall
+   store + the activity log) — a day with no record is honestly empty, never
+   back-filled. What is NOT wired yet, named plainly on the day sheet
+   itself: weather (no weather source is connected on this page — the row
+   says so, never a made-up forecast); the day's bookings (no per-day
+   booking read exists — the row says booking is not wired up yet and gives
+   the real "Book a time" door); the Daily Intelligence Report (no report
+   lane on the page yet); and the three dailies' feeds (horoscope, Chinese
+   horoscope, Bible quote — toggles exist, default OFF, and say
    "not connected yet" when on). Daily Wisdom: the day's Smart Note of the
-   Day, from the citizen's own Smart Notes, labeled as such — who writes the
-   wisdom is Shawn's call, still open. */
+   Day, from the citizen's own Smart Notes, labeled as such — and since the
+   2026-11-16 fix, the T26 fallback: no Smart Note that day, the newest
+   Smart Note from an earlier day carries forward as the next day's wisdom,
+   and when the wall holds no Smart Note at all the truest wisdom from the
+   learned store, one true line a day. Who writes the wisdom is Shawn's
+   call, still open. */
 (function(){
 'use strict';
 var DAY_COLORS=['#a06bff','#ff9a5a','#f1d75a','#3fb8ff','#31cb8d','#ff5e6c','#6675ff']; /* Sun..Sat */
@@ -32203,6 +32212,44 @@ function dayActivity(dateStr){
   });
 }
 function fmtDate(dateStr){ try{ return new Date(dateStr+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}); }catch(e){ return dateStr; } }
+function dayAppointments(dateStr){
+  /* The day's appointment-type entries from the page's own activity record.
+     In this build the record holds likes, loves and world-creations — no
+     appointment-type entry exists yet — so this returns [] until the booking
+     build writes appointments here. Never invented, only read. */
+  return dayActivity(dateStr).filter(function(en){
+    var t=String((en.type||'')+' '+(en.headline||'')).toLowerCase();
+    return /appointment|booking|booked|meeting|call|visit|session/.test(t);
+  });
+}
+/* T26 — the Daily Wisdom fallback. Ranked newest-first (the newest Smart
+   Note from an earlier day is the highest-ranked carry-forward). When the
+   wall holds no Smart Note at all, the truest wisdom from the learned
+   store: one true line a day, rotating by the day of the year (T27 — a new
+   wisdom every day, and a day always shows the same one when you go back
+   to it). Plain words, in Naya's voice, about operating, working with AI,
+   and success in life — never a quote dressed as data. */
+var LEARNED_WISDOM=[
+  'The day is yours to shape \u2014 begin with the one thing that matters most, and let the rest follow.',
+  'Ask Naya to carry the small things, so your mind stays free for the big ones.',
+  'A note written down is a thought kept \u2014 what you record today, you can build on tomorrow.',
+  'Success is a habit, not a moment \u2014 small steps, taken every day, add up to a life.',
+  'Work with the intelligence beside you, not against it \u2014 tell it what you want, and let it do the doing.',
+  'Share what you learn \u2014 wisdom grows when it is given away.',
+  'Rest is part of the work \u2014 a clear mind sees further than a tired one.'
+];
+function fallbackWisdom(dateStr){
+  var prior=wallPosts().filter(function(p){ return noteType(p)==='smart' && String(p.at||'').slice(0,10)<dateStr; });
+  prior.sort(function(a,b){ return new Date(b.at)-new Date(a.at); });
+  if(prior.length){
+    var p=prior[0];
+    return {title:noteTitle(p), ex:noteExcerpt(p,160), carry:true, when:fmtDate(String(p.at||'').slice(0,10))};
+  }
+  var d=new Date(dateStr+'T12:00:00');
+  var start=new Date(d.getFullYear(),0,0);
+  var doy=Math.floor((d-start)/86400000);
+  return {title:LEARNED_WISDOM[doy%LEARNED_WISDOM.length], ex:'', carry:false, when:''};
+}
 function dailies(){
   var d={horoscope:false,chinese:false,bible:false};
   try{ var raw=localStorage.getItem('mw.cal.dailies.v1'); if(raw){ var s=JSON.parse(raw); if(s&&typeof s==='object'){ d.horoscope=!!s.horoscope; d.chinese=!!s.chinese; d.bible=!!s.bible; } } }catch(e){}
@@ -32270,6 +32317,29 @@ function paintDay(dateStr){
   } else {
     h+='<p class="mw-cal-note">Nothing recorded for this day yet &mdash; the first note lands here.</p>';
   }
+  /* Appointments — the day's bookings, from the page's own record. The
+     activity record holds no appointment-type entries in this build, so a
+     day with none says so — and booking into a day is not wired up yet:
+     the row names that plainly (booking is MISSING, needs building) and
+     gives the real "Book a time" door the Dashboard already carries
+     (nayanet.app/book), never a faked booking. If the record ever holds an
+     appointment-type entry for the day, it lists, real. */
+  h+='<h5 class="mw-cal-sec-h">Appointments</h5>';
+  var appts=dayAppointments(dateStr);
+  if(appts.length){
+    h+='<ul class="mw-cal-list">';
+    appts.forEach(function(en){ h+='<li>'+esc(en.headline||en.type||'Appointment')+'</li>'; });
+    h+='</ul>';
+  } else {
+    h+='<p class="mw-cal-note">No appointments in this page&rsquo;s record for this day.</p>';
+  }
+  h+='<p class="mw-cal-note">Booking into a day isn&rsquo;t wired up yet &mdash; the booking build is still to come, so this day can&rsquo;t show its bookings. <a href="https://nayanet.app/book" style="color:#3fb8ff;font-weight:900;">Book a time &rarr;</a></p>';
+  /* Weather — T22: weather in the day's world. No weather source is
+     connected on this page (the day's weather rides the local feed's
+     morning update, and no weather feed is connected here), so the row is
+     an honest empty state — never a made-up forecast. */
+  h+='<h5 class="mw-cal-sec-h">Weather</h5>';
+  h+='<p class="mw-cal-note">Weather isn&rsquo;t connected for this day yet &mdash; the day&rsquo;s weather rides the local feed&rsquo;s morning update, and no weather feed is connected on this page yet. No forecast is shown here, never a made-up one.</p>';
   /* What you learned */
   h+='<h5 class="mw-cal-sec-h">What you learned</h5>';
   if(smarts.length){
@@ -32279,13 +32349,25 @@ function paintDay(dateStr){
   } else {
     h+='<p class="mw-cal-note">Nothing written down that day yet &mdash; the first Smart Note lands here.</p>';
   }
-  /* Daily Wisdom — the day's Smart Note of the Day, from your own Smart Notes. */
+  /* Daily Wisdom — the day's Smart Note of the Day, from your own Smart Notes.
+     T25: every day shows a Daily Wisdom by default. T26 fallback (fix
+     2026-11-16): no Smart Note today, the newest Smart Note from an earlier
+     day carries forward — the best of that day becoming this day's wisdom,
+     named with its day — and when the wall holds no Smart Note at all, the
+     truest wisdom from the learned store, one true line a day. */
   h+='<h5 class="mw-cal-sec-h">Daily Wisdom</h5>';
   if(smarts.length){
     var w=smarts[0], ex=noteExcerpt(w,160);
     h+='<p class="mw-cal-note"><b>'+esc(noteTitle(w))+'</b>'+(ex?' &mdash; '+esc(ex):'')+'</p><p class="mw-cal-note" style="color:rgba(255,255,255,.75)">Smart Note of the Day, from your Smart Notes today.</p>';
   } else {
-    h+='<p class="mw-cal-note">No Daily Wisdom for this day yet &mdash; write the first Smart Note and it lands here.</p>';
+    var fb=fallbackWisdom(dateStr);
+    if(fb&&fb.carry){
+      h+='<p class="mw-cal-note"><b>'+esc(fb.title)+'</b>'+(fb.ex?' &mdash; '+esc(fb.ex):'')+'</p><p class="mw-cal-note" style="color:rgba(255,255,255,.75)">Daily Wisdom, carried forward &mdash; the Smart Note of the Day from '+esc(fb.when)+', the best of that day becoming this day&rsquo;s wisdom.</p>';
+    } else if(fb){
+      h+='<p class="mw-cal-note"><b>'+esc(fb.title)+'</b></p><p class="mw-cal-note" style="color:rgba(255,255,255,.75)">Daily Wisdom, from what Naya has learned &mdash; offered for this day.</p>';
+    } else {
+      h+='<p class="mw-cal-note">No Daily Wisdom for this day yet &mdash; write the first Smart Note and it lands here.</p>';
+    }
   }
   /* Intel Today — the live room, and the Daily Intelligence Report. */
   h+='<h5 class="mw-cal-sec-h">Intel Today</h5>';
