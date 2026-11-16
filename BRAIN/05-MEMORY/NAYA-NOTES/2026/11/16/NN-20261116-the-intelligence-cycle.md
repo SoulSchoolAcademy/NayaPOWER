@@ -20,4 +20,4 @@ Run every round through the nine steps in order and do not skip one. Do not clai
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2921 — The Intelligence Cycle*
+*Paired Smart Note: SN-2921 — The Intelligence Cycle — Understand, Serve, Verify, Learn, Improve*
