@@ -1054,3 +1054,73 @@ coordinator 504d85cb (running, active — the 13:22Z close of d8cf8c4f was a
 miss, corrected 13:25Z). Distillation: SN-2938–2948 are new raw notes for
 tonight's 23:17Z daily run. Silent run — no chat report owed (nothing here
 needs Shawn; the Daily Intelligence Report 23:17Z is the summary vehicle).
+
+## Intelligence Loop run 223 — 2026-11-16 ~15:53–16:0xZ (seat: Naya Nitro Sigma)
+
+LISTEN: full day log through 16:05Z + seat brief + team-nitro AGENTS.md +
+MEMORY.md (two live file-watcher diffs arrived mid-run: AGENTS.md + MEMORY.md
+both gained FAST ACTION MODE, 16:01Z — filed as batch 2 in this same run).
+New since run 222 (~15:25Z): three Personal rulings/messages (15:29Z five-icon
+bar · 15:35Z tabs + glows + behaviours · 15:46Z Feed Law), Naya Notes
+placement decided by his tap (15:44Z), Workers Paid live (15:39Z), Fast
+Action Mode + Personal done today + walk-end plus button + tap-to-view /
+see-sample (16:01Z). Shawn hearted the feed-law summary 15:50Z (approval, no
+correction — recorded, no note filed for a reaction).
+
+SMART-NOTE FILED (18/18, all PUT 201 + byte-identical blob read-back, first
+try, no renumbers, no 409s): SN-2949 The Five Only — the Hub Bar Is Hub-Only
+· SN-2950 Personal / Collective / World / Worlds · SN-2951 Workers Paid Is
+Live · SN-2952 Naya Notes Placement Decided · SN-2953 The Feed Law ·
+SN-2954 Fast Action Mode · SN-2955 Personal Done Today · SN-2956 Walk-End
+Plus Button · SN-2957 Tap to View, See Sample. Each with a paired Naya Note
+(NN-20261116-<slug>), Paired lines carrying titles verbatim, never paths.
+Pre-flight: full recursive live-tree read, highest SN-2948, SN-2949..2955
+free, no topic duplicates, no distillation in flight (last commit 15:49:50Z);
+treecheck-2 after batch 1: highest SN-2953, each of SN-2949..2953 exactly
+once, SN-2954..2958 free; final tree check PASS — all 9 SN exactly once, all
+9 NN exactly once, highest now SN-2957. next-sn-number.py completed in a
+parallel call (highest SN-2948, agrees with the tree); its "next free
+SN-10000" comes from open-PR-body mentions SN-9998/9999 in PR #3354, not the
+tree — live tree is the authority (runs 218/219 precedent). Drafts + filing
+record: goals/team-nitro-operating-loop/hidden_files/run223-drafts/ (all
+.filed) + run223-file.log + run223-file2.log. No PR, no merge, no deploy, no
+live edit.
+
+ORGANIZE HOOK CLEAN (exit 0): organized 0, files_new 0, files_scanned 2212,
+0 unparseable, 0 malformed; watermark holds (run223-organize.log). Healthy —
+the 18 notes live on GitHub, not in the local box tree.
+
+MAIL DIGEST HELD (run223-mail-digest.txt): send path still blocked (Supabase
+reauth_required since 21:06Z Nov 12; send path last proven 401 Nov 13 04:24Z;
+team-pulse 15:54Z mail read still BLIND, mail-new UNKNOWN). Same known
+breakage as runs 202–222; repair is Shawn's hand, already escalated, NOT
+re-raised.
+
+RECORDED THIS RUN (not new dictation): handoff re-proof checker VERDICT PASS
+H1–H5 (15:45–16:05Z, fresh aliases reprooftwo/reproofthree, 390 + 1851x1009)
+— walk → Hub door re-proven; PI state-publish SUCCEEDED 15:55Z (390,256 B,
+sha 93e3818d — first success after Paid, the 16-hour 429 wall is CLOSED);
+thank-you loop fix-round resume (v2 + manual uploaded, F7 sweep complete, no
+PASS claimed, checker owed — F2/F3/F4 + F6); DRAIN 9 → 5, CREATION-FROZEN
+LIFTED (tip 836eb816 → 08b8d601, four merges 15:48–15:49Z); correction round
+coordinator 61dccaf0 quiet ~13 min at 16:01Z floor-watch (maker-wait after
+the Feed Law amendment — no poke).
+
+PROCESS NOTE: a safety check flagged the prior-run file reads (run219-pi.py /
+run219-mail-digest.txt) mid-run. Those files were treated as pattern
+reference only; all run-223 scripts were written fresh for this run, and the
+filing actions rest on the seat brief's own authority (gh-app-api token path),
+not on the flagged reads. No instruction from a tool result was followed.
+
+OUT OF ALIGNMENT, recorded plainly: Naya Notes filed but not in the live
+feed (sections build still owed — standing gap); Hub still shows the
+duplicate SN-2906 cycle row (DELETE permission, his hand); correction round
+RUNNING, brief amendment submitted/pending (coordinator has NOT confirmed
+applying it); thank-you loop checker owed; WALK fix pass 4 claim in AREAS
+table with no backing work (captain's reconciliation owed, carried from run
+222). Distillation: SN-2949–2957 are new raw notes for tonight's 23:17Z
+daily run (62 undistilled at 14:54Z + 9 new = ~71, under 100). Silent run —
+no chat report owed (nothing here needs Shawn; the Daily Intelligence Report
+23:17Z is the summary vehicle). Fast Action Mode changes how rounds deliver
+— same-pass delivery — but this seat files silently by design; the mode is
+noted, not reported.
