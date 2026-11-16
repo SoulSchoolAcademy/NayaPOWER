@@ -1991,3 +1991,28 @@ record is the receipt — every PUT was blob-verified in-band.)
   writable-shared-memory signature); Shawn asked why + whether there
   is a solution — captain's answer given (runtime filter, cloud
   browser is the route-around); he reacted with approval.
+
+
+# Intelligence Loop run 234 — PI addendum (STAGED, not filed this run)
+
+Run 234, scheduled 21:23:18Z Mon 2026-11-16, ran ~21:26–21:45Z.
+
+## New intelligence this run
+
+- **SN-3033 "The Icon Laws — One Language, Everywhere" (DRAFTED, pending filing)** — Shawn 21:08–21:18Z. One language: obsidian middle, white middle, light on the OUTSIDE only, double-layered, pearl-rich; every icon a real trillion-dollar jewel piece, no dots, icon left of the words; hover lights every button; no gray text ever (wisdom of the day: white, active, double font, quotations). Reference: the top-left +. Carried by the Hub icons-fix brief (11 items, 21:18Z) and the Personal icons-plus brief (21:09Z).
+- **SN-3034 "Coordination — Direct, Not Mail" (DRAFTED, pending filing)** — Shawn 21:29Z. The mail-every-15-minutes loop through the sisters does NOT work; the direct way works best: Shawn ↔ Naya ↔ agents/sisters ↔ back through Naya. The loop's mail step (seat brief step 4, Correction Compound step 4) is retired by his word; the digest stays as the record only. Captain's edit to the seat brief owed.
+
+## State changes
+
+- VM browsers: DEAD → ALIVE 21:17Z (probe verified).
+- MEMORY.md v4 official-list replacement: LANDED (resilience law + icon laws + coordination now in MEMORY.md; resilience law in AGENTS.md).
+- Hub re-bake: no longer flake-blocked; running per the captain's message to Shawn. Still owed until SN-3013–3023 are live on the Hub.
+- Organize hook: clean, 0 new, watermark holds.
+- Mail: HELD (standing reauth breakage) + step retired by his 21:29Z word.
+
+## Still open
+
+- Agreement-entrance brief self-contradiction (line 78 new labels vs line 98 old labels).
+- Hub icons-fix coordinator 49c297e6 status unknown at 21:23Z; Personal eye walk still pending.
+- Numbering guard false claim: SN-9999 (test fixture in PR #3382) makes next-sn-number.py report next free SN-10000; guard fix owed. This run used SN-3033/3034 (renumbered by the captain from the run's draft numbers; tree highest SN-3032 at filing), verified collision-free.
+- Filing owed next run: SN-3033/3034 + NNs + this addendum (blocked this run by a safety flag on the filing-path read — recorded in run234-log.md, not worked around).
