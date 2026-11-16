@@ -2034,7 +2034,7 @@ None — no new dictation or decision from Shawn since 21:29Z (his coordination 
 - SN-3039 "Coordination — Direct, Not Mail" — filed as SN-3034, blob 61653be1, 5,775 B; renumbered to SN-3039 (blob 21e09827) by the collision seat after this run closed.
 - NN-20261116-the-icon-laws-one-language — blob d3a1c53a, 5,518 B.
 - NN-20261116-coordination-direct-not-mail — blob b77e4f77, 2,910 B.
-- Run 234 PI addendum appended to TEAM-NITRO/PI-BOARD-NOTE-DESIGN-INTELLIGENCE.md at line 1996. (Its SN refs were updated to SN-3038/SN-3039 by the renumber seat; its body still says "(DRAFTED, pending filing)" — stale wording inside filed text; board-text correction is the captain's call.)
+- Run 234 PI addendum appended to TEAM-NITRO/PI-BOARD-NOTE-DESIGN-INTELLIGENCE.md at line 1996. (Its SN refs were updated to SN-3038/SN-3039 by the renumber seat; its body said "(DRAFTED, pending filing)" until the fix in commit e7f15683.)
 
 ## ⚠️ OUT OF ALIGNMENT — SN-3033 and SN-3034 each hold TWO different notes
 
@@ -2072,7 +2072,7 @@ None — no new dictation or decision from Shawn since 21:29Z (his coordination 
 ## Verified live this run (gh-direct.py, read-only)
 
 - **SN-3033/SN-3034 collision — as verified by this run (~22:24–22:30Z) it was STILL OPEN:** LESSON/SN-3033 then held both files — b82ba088 ("Do It Right, Every Layer Great", 10,576 B) + e3232702 ("The Icon Laws", 9,076 B). LESSON/SN-3034 then held both — 61653be1 ("Coordination — Direct, Not Mail", 5,775 B) + 5530e8c7 ("Earn It, Don't Declare It", 11,964 B). SN-3038/SN-3039 did not exist anywhere in the 2026/11/16 tree (all 11 category dirs scanned). Renumber seat 99f7e1df was still running. **RESOLVED after this run closed (22:50Z): the loop's pair moved to SN-3038 (blob 3e8fc8f9) / SN-3039 (blob 21e09827); SN-3033/SN-3034 now each hold one note (verified from the live tree at filing).**
-- **PI board — as verified by this run:** sha 47a393fc, 567,094 B, 2,019 lines — same as run 235 saw. Run 235's addendum was NOT on the board yet (no "run 235" header found); it remained staged, pending the filing route. (Run 234's addendum is on the board; its body still says "(DRAFTED, pending filing)" — stale wording, captain's call. Its SN refs have since been updated to SN-3038/SN-3039 by the renumber seat.) **Filing note: run 235's addendum was filed immediately before this one (same filing pass); the board has since moved to blob f29b3ff3 (renumber seat's edit).**
+- **PI board — as verified by this run:** sha 47a393fc, 567,094 B, 2,019 lines — same as run 235 saw. Run 235's addendum was NOT on the board yet (no "run 235" header found); it remained staged, pending the filing route. (Run 234's addendum is on the board; its body said "(DRAFTED, pending filing)" until the fix in commit e7f15683. Its SN refs have since been updated to SN-3038/SN-3039 by the renumber seat.) **Filing note: run 235's addendum was filed immediately before this one (same filing pass); the board has since moved to blob f29b3ff3 (renumber seat's edit).**
 
 ## State changes since run 235
 
