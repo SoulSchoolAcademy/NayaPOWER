@@ -24,4 +24,4 @@ Shawn works direct with Naya. Naya runs the agents and the sisters and brings ev
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-3034 — Coordination — Direct, Not Mail*
+*Paired Smart Note: SN-3039 — Coordination — Direct, Not Mail*
