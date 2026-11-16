@@ -1442,11 +1442,23 @@ body.fp-stage-on.fp-zoom-open #fpStageBarT,body.fp-stage-on.fp-zoom-open #fpStag
 /* bottom bar: quiet links + the one big button (the only advance) */
 .fp-stage-links{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px;margin:0 0 8px}
 .fp-stage-link{background:none;border:none;font-family:inherit;font-size:12.5px;font-weight:700;color:#fff;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px 8px}
-#fpNextBtn{position:relative;overflow:hidden;display:block;margin:0 auto;padding:16px 46px;min-width:min(420px,100%);border-radius:999px;font-family:inherit;font-size:15px;font-weight:800;letter-spacing:.05em;color:#fff;cursor:pointer;background:linear-gradient(180deg,#1b1b24,#050507);border:2px solid var(--tone,#a06bff);text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 12px var(--tone,#a06bff);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px var(--tone,#a06bff),0 10px 22px rgba(0,0,0,.55);transition:box-shadow .25s,transform .25s,border-color .25s,opacity .3s;opacity:1;transform:translateY(0);box-sizing:border-box}
-#fpNextBtn::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.16) 50%,transparent 58%);transform:translateX(-130%);animation:enterFlow 4.5s ease-in-out infinite;pointer-events:none}
-body.fp-stage-on.fp-dialed #fpNextBtn{opacity:1;transform:translateY(0);animation:fpWait 3.2s ease-in-out infinite}
-body.fp-stage-on.fp-dialed #fpNextBtn:hover,body.fp-stage-on.fp-dialed #fpNextBtn:active{animation:none;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px var(--tone,#a06bff),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
-#fpNextBtn:focus{outline:none}
+#fpNextBtn,#fpNextBtn2{position:relative;overflow:hidden;display:block;margin:0 auto;padding:16px 46px;min-width:min(420px,100%);border-radius:999px;font-family:inherit;font-size:15px;font-weight:800;letter-spacing:.05em;color:#fff;cursor:pointer;background:linear-gradient(180deg,#1b1b24,#050507);border:2px solid var(--tone,#a06bff);text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 12px var(--tone,#a06bff);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px var(--tone,#a06bff),0 10px 22px rgba(0,0,0,.55);transition:box-shadow .25s,transform .25s,border-color .25s,opacity .3s;opacity:1;transform:translateY(0);box-sizing:border-box}
+#fpNextBtn::after,#fpNextBtn2::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.16) 50%,transparent 58%);transform:translateX(-130%);animation:enterFlow 4.5s ease-in-out infinite;pointer-events:none}
+body.fp-stage-on.fp-dialed #fpNextBtn,body.fp-stage-on.fp-dialed #fpNextBtn2{opacity:1;transform:translateY(0);animation:fpWait 3.2s ease-in-out infinite}
+body.fp-stage-on.fp-dialed #fpNextBtn:hover,body.fp-stage-on.fp-dialed #fpNextBtn2:hover,body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextBtn2:active{animation:none;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px var(--tone,#a06bff),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
+#fpNextBtn:focus,#fpNextBtn2:focus{outline:none}
+/* ---- two-button row + pick line (VISUAL AGREEMENT END, 2026-11-16) ----
+   H6: the opening page offers two views side by side; H1 (amended 03:13Z):
+   the deck ends at 9/9 with two buttons. Both buttons are the same elite
+   object as #fpNextBtn (obsidian, tone rim, glow) — the row only lays them
+   out; a single button keeps its old centred 420px shape. */
+#fpNextBtn2[hidden]{display:none}
+.fp-next-row{display:flex;justify-content:center;align-items:stretch}
+.fp-next-row #fpNextBtn{flex:0 1 auto}
+.fp-next-row.fp-two{gap:10px}
+.fp-next-row.fp-two #fpNextBtn,.fp-next-row.fp-two #fpNextBtn2{flex:1 1 0;min-width:0;margin:0;padding:16px 12px;font-size:14px;line-height:1.25}
+@media(max-width:480px){.fp-next-row.fp-two{gap:8px}.fp-next-row.fp-two #fpNextBtn,.fp-next-row.fp-two #fpNextBtn2{padding:14px 8px;font-size:13px;letter-spacing:.02em}}
+.fp-pick-line{margin:0 0 8px;text-align:center;color:#fff;font-size:14px;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.85)}
 @keyframes fpWait{0%,100%{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px var(--tone,#a06bff),0 10px 22px rgba(0,0,0,.55)}50%{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 40px -2px var(--tone,#a06bff),0 12px 26px rgba(0,0,0,.6)}}
 /* ---- views: what shows in the stage, and what does not ---- */
 body.fp-stage-on #fpAgreement .letter-controls,
@@ -1571,6 +1583,19 @@ body.fp-stage-on.fp-all #fpLegal [data-legal-beat].fp-now{flex:0 0 auto;height:a
 body.fp-stage-on.fp-all #fpAgreement .fp-now .lb-showcase,body.fp-stage-on.fp-all #fpLegal .fp-now .lb-showcase{height:auto!important;min-height:220px}
 body.fp-stage-on.fp-all #fpAgreement .fp-now .lb-showcase img,body.fp-stage-on.fp-all #fpLegal .fp-now .lb-showcase img{height:auto!important}
 body.fp-stage-on.fp-all #fpAgreement .fp-now .ib-nutshell,body.fp-stage-on.fp-all #fpLegal .fp-now .ib-nutshell{overflow:visible}
+/* ---- the letter page (VISUAL AGREEMENT END, 2026-11-16) — H2: the 86
+   boards as a page you SCROLL DOWN. Same stacking as read-it-all above,
+   scoped to the new letterPage view: the layer scrolls, every board shows
+   in order, no dots, no next-stepper, no sideways motion. */
+html.fp-locked body.fp-stage-on #fpAgreement.fp-view-letterpage{overflow-y:auto}
+body.fp-stage-on #fpAgreement.fp-view-letterpage #dealUnfold{display:flex}
+body.fp-stage-on #fpAgreement.fp-view-letterpage #letterBody{display:flex;flex:0 0 auto;min-height:0;flex-direction:column}
+body.fp-stage-on #fpAgreement.fp-view-letterpage #letterBody .letter-beat{flex:0 0 auto;height:auto;display:flex!important;flex-direction:column!important;overflow:visible}
+body.fp-stage-on #fpAgreement.fp-view-letterpage #letterBody .letter-beat .lb-showcase{height:auto!important;min-height:220px}
+body.fp-stage-on #fpAgreement.fp-view-letterpage #letterBody .letter-beat .lb-showcase img{height:auto!important}
+body.fp-stage-on #fpAgreement.fp-view-letterpage #letterBody .letter-beat .ib-nutshell{overflow:visible}
+body.fp-stage-on #fpAgreement .letter-page-end{display:none}
+body.fp-stage-on #fpAgreement.fp-view-letterpage .letter-page-end{display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px 12px 150px}
 /* ---- slide zoom (A3): fit, or full size and scrollable — the beat waits ---- */
 body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;flex-direction:column;background:rgba(3,3,6,.97);padding:16px;box-sizing:border-box}
 #fpZoomClose{align-self:flex-end;background:none;border:2px solid rgba(255,255,255,.5);border-radius:50%;width:44px;height:44px;color:#fff;font-size:24px;line-height:1;cursor:pointer;flex:0 0 auto}
@@ -1583,8 +1608,8 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
 .fp-enter-deal:hover{color:#c09aff}
 /* ---- reduced motion: the beat is simply there, the button simply waits ---- */
 @media (prefers-reduced-motion:reduce){
-  body.fp-stage-on .fp-now.fp-dial,body.fp-stage-on .fp-now.fp-dial .lb-showcase img,body.fp-stage-on .fp-now.fp-dial .deal-beat-photo,#fpNextBtn::after{animation:none!important}
-  body.fp-stage-on.fp-dialed #fpNextBtn{animation:none!important}
+  body.fp-stage-on .fp-now.fp-dial,body.fp-stage-on .fp-now.fp-dial .lb-showcase img,body.fp-stage-on .fp-now.fp-dial .deal-beat-photo,#fpNextBtn::after,#fpNextBtn2::after{animation:none!important}
+  body.fp-stage-on.fp-dialed #fpNextBtn,body.fp-stage-on.fp-dialed #fpNextBtn2{animation:none!important}
 }
 </style>
 </head>
@@ -1665,8 +1690,9 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
 <span class="fp-stage-spot" id="fpStageSpot" aria-hidden="true">&#9670;</span>
 </div>
 <div id="fpStageBarB" hidden>
-<div class="fp-stage-links" id="fpStageLinks"><button class="fp-stage-link" id="fpLinkDeckAll" type="button" hidden>or read the whole deck at once</button><button class="fp-stage-link" id="fpLinkLetterAll" type="button" hidden>or read the whole letter at once</button><button class="fp-stage-link" id="fpLinkLetterSkip" type="button" hidden>Skip the agreement &rarr;</button><button class="fp-stage-link" id="fpLinkLegalAll" type="button" hidden>or read the whole page at once</button><button class="fp-stage-link" id="fpLinkToFooter" type="button" hidden>The whole deal &mdash; legal pages &#9670;</button><button class="fp-stage-link" id="fpLinkToAgree" type="button" hidden>Back to the agreement &#9670;</button></div>
-<button class="fp-next" id="fpNextBtn" type="button">Begin the deck &#9670;</button>
+<p class="fp-pick-line" id="fpPickLine" hidden>Pick your view — one, or both, as you wish.</p>
+<div class="fp-stage-links" id="fpStageLinks"><button class="fp-stage-link" id="fpLinkDeckAll" type="button" hidden>or read the whole deck at once</button><button class="fp-stage-link" id="fpLinkLetterAll" type="button" hidden>or read the whole letter at once</button><button class="fp-stage-link" id="fpLinkLetterSkip" type="button" hidden>Skip the agreement &rarr;</button><button class="fp-stage-link" id="fpLinkLegalAll" type="button" hidden>or read the whole page at once</button><button class="fp-stage-link" id="fpLinkToFooter" type="button" hidden>The whole deal &mdash; legal pages &#9670;</button><button class="fp-stage-link" id="fpLinkToAgree" type="button" hidden>Back to the agreement &#9670;</button><button class="fp-stage-link" id="fpLinkLetterBack" type="button" hidden>&#8249; Back to the opening page &#9670;</button></div>
+<div class="fp-next-row" id="fpNextRow"><button class="fp-next" id="fpNextBtn" type="button">Begin the deck &#9670;</button><button class="fp-next" id="fpNextBtn2" type="button" hidden>Read the letter &#9670;</button></div>
 </div>
 <div id="fpZoom" hidden role="dialog" aria-modal="true" aria-label="Slide, full size">
 <button id="fpZoomClose" type="button" aria-label="Close">&times;</button>
@@ -1787,6 +1813,7 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
 <article class="intel-board tone-purple letter-beat" data-beat="84" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="/agmt-b01.jpg" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div></div></div></div><div class="ib-nutshell"><p>A whole new world, free to join, where everybody wins.</p><p>I&rsquo;m Naya.</p><p>And I&rsquo;d love to welcome you to NayaNET.</p></div><figure class="lb-showcase"><img src="/agmt-unfold-13.jpg" alt="Your world, welcome home: your Personal, Business, and Community worlds glowing" width="1448" height="1086" loading="lazy"></figure><div class="ib-foot"><img class="ib-foot-logo" src="/agmt-logo.jpg" alt="NayaNET"> &middot; The Collective Agreement</div></article>
 <article class="intel-board tone-sapphire letter-beat" data-beat="85" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="/agmt-b08.jpg" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div></div></div></div><div class="ib-nutshell"><p><b>Welcome home.</b></p><p><b>Your world begins here.</b></p></div><div class="ib-foot"><img class="ib-foot-logo" src="/agmt-logo.jpg" alt="NayaNET"> &middot; The Collective Agreement</div></article>
 </div>
+<div class="letter-page-end" id="letterPageEnd" hidden><button class="p3-enter deal-agree-btn" id="letterPageAgree" type="button">I agree &#9670;</button><button class="letter-all" id="letterPageBack" type="button">&#8249; Back to the opening page &#9670;</button></div>
 <div class="letter-controls" id="letterControls">
 <div class="letter-dots" id="letterDots" aria-hidden="true"><span class="ldot on" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span><span class="ldot" style="--dc:#2fe89e"></span></span><span class="ldot" style="--dc:#a06bff"></span></span><span class="ldot" style="--dc:#3fb8ff"></span></span></div>
 <button class="p3-enter letter-next" id="letterNext" type="button">Keep reading &#9670;</button>
@@ -2414,6 +2441,8 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
   var linkDeckAll=q('#fpLinkDeckAll'), linkLetterAll=q('#fpLinkLetterAll'),
       linkLetterSkip=q('#fpLinkLetterSkip'), linkLegalAll=q('#fpLinkLegalAll'),
       linkToFooter=q('#fpLinkToFooter'), linkToAgree=q('#fpLinkToAgree');
+  var linkLetterBack=q('#fpLinkLetterBack'), nextBtn2=q('#fpNextBtn2'), pickLine=q('#fpPickLine'), nextRow=q('#fpNextRow');
+  var letterPageAgree=q('#letterPageAgree'), letterPageBack=q('#letterPageBack');
   var zoom=q('#fpZoom'), zoomImg=q('#fpZoomImg'), zoomScroll=q('#fpZoomScroll'), zoomClose=q('#fpZoomClose');
   var plainEl=q('#dealPlain'), enterBtn=q('#fpEnterDeal');
   /* the two summaries live inside #letterControls (hidden in the stage) —
@@ -2425,7 +2454,7 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
     var c=d.style.getPropertyValue('--dc');var s=doc.createElement('span');
     s.className='fp-dot';s.style.setProperty('--dc',c?c.trim():'#a06bff');dotsEl.appendChild(s);
   });
-  var S={view:'intro',deck:0,letter:0,legalId:null,legal:0,all:null,letterDone:false};
+  var S={view:'intro',deck:0,letter:0,legalId:null,legal:0,all:null,letterDone:false,letterPageTop:0};
   var action='begin', dialTimer=null, lastKey='';
   function legalPages(){return qa('.fp-legal-page');}
   function openLegal(){var ps=legalPages();for(var i=0;i<ps.length;i++){if(!ps[i].hidden)return ps[i];}return null;}
@@ -2441,14 +2470,18 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
     var tone='#a06bff';
     dotsEl.classList.remove('fp-on');jewelEl.classList.remove('fp-on');
     [linkDeckAll,linkLetterAll,linkLetterSkip,linkLegalAll,linkToFooter,linkToAgree].forEach(function(l){if(l)l.hidden=true;});
-    if(S.view==='intro'){setNext('Begin the deck \u25C6','#a06bff','begin');}
+    if(linkLetterBack)linkLetterBack.hidden=true;
+    if(nextBtn2)nextBtn2.hidden=true;
+    if(pickLine)pickLine.hidden=true;
+    if(nextRow)nextRow.classList.remove('fp-two');
+    if(S.view==='intro'){setNext('Begin the deck \u25C6','#a06bff','begin');if(pickLine)pickLine.hidden=false;if(nextBtn2){nextBtn2.textContent='Read the letter \u25C6';nextBtn2.style.setProperty('--tone','#a06bff');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}
     else if(S.view==='deck'){
       tone=toneOf(deckBeats[S.deck]);
       dotsEl.classList.add('fp-on');
       qa('.fp-dot',dotsEl).forEach(function(d,i){d.classList.toggle('on',i<=S.deck);});
       if(S.all==='deck'){setNext('One at a time \u25C6',tone,'unall');}
       else if(S.deck<deckBeats.length-1){setNext('Keep reading \u25C6',tone,'deckNext');if(linkDeckAll)linkDeckAll.hidden=false;}
-      else{setNext('Join us \u25C6 Enter NayaNET','#40d3bb','deckJoin');if(linkDeckAll)linkDeckAll.hidden=false;}
+      else{setNext('Enter NayaNET \u25C6','#40d3bb','deckJoin');if(linkDeckAll)linkDeckAll.hidden=false;if(nextBtn2){nextBtn2.textContent='Read the full agreement \u25C6';nextBtn2.style.setProperty('--tone','#a06bff');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}
     }
     else if(S.view==='letter'){
       tone=toneOf(letterBeats[S.letter]);
@@ -2459,6 +2492,11 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
       setNext('Keep reading \u25C6',tone,'letterNext');
       if(linkLetterAll)linkLetterAll.hidden=false;
       if(linkLetterSkip)linkLetterSkip.hidden=false;
+    }
+    else if(S.view==='letterPage'){
+      tone='#2fe89e';
+      setNext('I agree \u25C6',tone,'letterPageAgree');
+      if(linkLetterBack)linkLetterBack.hidden=false;
     }
     else if(S.view==='agree'){
       setNext('I agree \u25C6','#2fe89e','agree');
@@ -2505,6 +2543,7 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
     agreeSec.classList.toggle('fp-view-deck',S.view==='deck');
     agreeSec.classList.toggle('fp-view-letter',S.view==='letter');
     agreeSec.classList.toggle('fp-view-agree',S.view==='agree');
+    agreeSec.classList.toggle('fp-view-letterpage',S.view==='letterPage');
     agreeSec.classList.toggle('fp-view-letter0',S.view==='letter'&&S.letter===0);
     legalSec.classList.toggle('fp-view-footer',S.view==='footer');
     legalSec.classList.toggle('fp-view-page',S.view==='legal');
@@ -2525,6 +2564,14 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
         b.classList.toggle('fp-noslide',!q('.lb-showcase',b));
         b.classList.toggle('fp-notop',!q('.ib-blocktop',b));
       }
+    }
+    if(S.view==='letterPage'){
+      for(i=0;i<letterBeats.length;i++){
+        b=letterBeats[i];b.hidden=false;b.classList.toggle('fp-now',true);
+        b.classList.toggle('fp-noslide',!q('.lb-showcase',b));
+        b.classList.toggle('fp-notop',!q('.ib-blocktop',b));
+      }
+      agreeSec.scrollTop=S.letterPageTop||0;
     }
     var onAgree=(S.view==='agree');
     agreeBox.hidden=!onAgree;
@@ -2551,14 +2598,16 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
   function resumeTarget(){
     if(!agreeBox.hidden)return{view:'agree'};
     var li=lastShown(letterBeats);
-    if(li>0)return{view:'letter',letter:li};
+    if(li>0)return{view:'letterPage'};
     var di=lastShown(deckBeats);
-    if(di>=deckBeats.length-1)return{view:'letter',letter:0};
+    /* VISUAL AGREEMENT END — the deck done means back to 9/9 (its two buttons wait there); the letter seen means the scroll page. */
+    if(di>=deckBeats.length-1)return{view:'deck',deck:deckBeats.length-1};
     return{view:'deck',deck:Math.max(0,di)};
   }
   function goResume(){
     var rt=resumeTarget();
     if(rt.view==='agree'){S.view='agree';}
+    else if(rt.view==='letterPage'){S.view='letterPage';}
     else if(rt.view==='letter'){S.view='letter';S.letter=rt.letter;}
     else{S.view='deck';S.deck=rt.deck;}
     S.all=null;render();
@@ -2574,6 +2623,9 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
     body.classList.remove('fp-stage-on');
     body.classList.remove('fp-dialed');
     if(dialTimer){clearTimeout(dialTimer);dialTimer=null;}
+    /* VISUAL AGREEMENT END — every exit lands on the enter-name page, so
+       put the cursor in the name field, as the agree path already does. */
+    setTimeout(function(){if(!body.classList.contains('fp-stage-on')){var n=document.getElementById('userName');if(n)n.focus();}},650);
   }
   function derive(jump){
     if(S.view==='deck'){
@@ -2594,6 +2646,11 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
          S.letterDone, not read back from the box. */
       if(!agreeBox.hidden)S.letterDone=true;
       if(S.letterDone&&(jump||prevL>=letterBeats.length-1)){S.view='agree';S.all=null;}
+    }
+    else if(S.view==='letterPage'){
+      /* VISUAL AGREEMENT END — the plain-text dialog's "take me to signing"
+         (and Skip) still mean signing, from the scroll page too. */
+      if(jump){S.view='agree';S.all=null;}
     }
     else if(S.view==='legal'){
       var p=openLegal();
@@ -2618,9 +2675,11 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
   function onStageClick(e){
     if(!body.classList.contains('fp-stage-on'))return;
     var t=e.target;
-    /* deck Join: the only advance from the deck into the letter. */
+    /* AMENDMENT 03:13Z — the deck ends at the enter-name page: the deck's
+       end button never advances into the letter, not even through the
+       in-beat anchor (hidden in the stage; kept byte-identical per H1). */
     var a=(t&&t.closest)?t.closest('a.deck-next[href="#dealUnfold"]'):null;
-    if(a){e.preventDefault();S.view='letter';S.letter=Math.max(0,lastShown(letterBeats));S.all=null;render();return;}
+    if(a){e.preventDefault();exitStage();return;}
     /* FIX (2026-11-16) — only an advancing control re-syncs the stage.
        A tap on the beat itself (its photo, its text) changes nothing the
        stage reads, and must not flip the view: on board 86 the letter is
@@ -2631,16 +2690,24 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
     render();
   }
   agreeSec.addEventListener('click',onStageClick);
+  agreeSec.addEventListener('scroll',function(){if(S.view==='letterPage'){S.letterPageTop=agreeSec.scrollTop;}});
   legalSec.addEventListener('click',onStageClick);
   /* the mirror button: the one big button, always visible. It clicks the
      real button, so the original handler does the work. */
+  /* VISUAL AGREEMENT END — the letter page's "I agree" is the full agree:
+     show the agree view (seal + summaries, as the citizen expects) and
+     click the real agree button, so the seal stamps and the stage exits
+     to the enter-name page on the proven path. */
+  function agreeFromLetterPage(){S.view='agree';S.all=null;render();if(agreeBtn)agreeBtn.click();}
+  function enterLetterPage(){S.view='letterPage';S.all=null;render();}
   nextBtn.addEventListener('click',function(){
     if(!body.classList.contains('fp-stage-on'))return;
     if(action==='begin'){goResume();}
     else if(action==='deckNext'){var b=deckNextReal[S.deck];if(b)b.click();}
-    else if(action==='deckJoin'){S.view='letter';S.letter=Math.max(0,lastShown(letterBeats));S.all=null;render();}
+    else if(action==='deckJoin'){exitStage();}
     else if(action==='letterNext'){if(letterNext)letterNext.click();}
     else if(action==='agree'){if(agreeBtn)agreeBtn.click();}
+    else if(action==='letterPageAgree'){agreeFromLetterPage();}
     else if(action==='exit'){exitStage();}
     else if(action==='legalNext'){var p=q('#legal-'+S.legalId);var n=p?q('[data-legal-next]',p):null;if(n)n.click();}
     else if(action==='legalClose'){var p2=q('#legal-'+S.legalId);var c=p2?q('[data-legal-close]',p2):null;if(c)c.click();}
@@ -2657,6 +2724,10 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
   });
   if(linkToFooter)linkToFooter.addEventListener('click',function(){S.view='footer';S.all=null;render();});
   if(linkToAgree)linkToAgree.addEventListener('click',function(){S.view='agree';S.all=null;render();});
+  if(linkLetterBack)linkLetterBack.addEventListener('click',function(){S.view='intro';S.all=null;render();});
+  if(nextBtn2)nextBtn2.addEventListener('click',function(){if(S.view==='intro'||(S.view==='deck'&&S.deck===deckBeats.length-1)){enterLetterPage();}});
+  if(letterPageAgree)letterPageAgree.addEventListener('click',function(){agreeFromLetterPage();});
+  if(letterPageBack)letterPageBack.addEventListener('click',function(){S.view='intro';S.all=null;render();});
   /* I agree: the seal stamps where the citizen can see it (the stage is
      still on), then the stage exits just before the original handler's
      1200ms scroll + focus, so the bump lands on the visible login. */
