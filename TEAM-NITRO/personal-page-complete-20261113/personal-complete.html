@@ -1164,7 +1164,7 @@ body{background:#050507;color:#F8F7FB;font-family:Inter,system-ui,sans-serif;pad
 
 .tog-chip:hover { color: rgba(255,255,255,.9); transform: translateY(-2px); border-color: rgba(255,255,255,.22); }
 
-.tog-chip.on { color: #fff; border-color: color-mix(in srgb, var(--sc) 65%, transparent); background: linear-gradient(180deg, #1d1528, #0c0812); box-shadow: inset 0 1px 0 rgba(255,255,255,.14), inset 0 -2px 8px rgba(0,0,0,.5), 0 0 24px -4px var(--sc), 0 8px 24px rgba(0,0,0,.55); }
+.tog-chip.on { color: #fff; border-color: color-mix(in srgb, var(--sc) 65%, transparent); background: linear-gradient(180deg, #1d1528, #0c0812); box-shadow: inset 0 1px 0 rgba(255,255,255,.14), inset 0 -2px 8px rgba(0,0,0,.5), 0 0 10px -4px var(--sc), 0 8px 24px rgba(0,0,0,.55); }
 
 /* ============ ROOM CONTROLS — living upgrade: cursor sheen, proximity wake, pulse ============ */
 .seg-tab, .like-pill, .act-chip, .tog-chip, .day-dot, .send-cta { position: relative; }
@@ -3832,8 +3832,8 @@ article.intel-board:hover, article.intel-board:active { border-color: var(--tone
   padding: 12px 20px; border-radius: 999px; cursor: pointer; user-select: none;
   border: 2px solid var(--tc); background: rgba(0,0,0,.55);
   color: #fff; font-family: inherit; font-weight: 900; font-size: 13px; letter-spacing: .03em;
-  white-space: nowrap; text-shadow: 0 0 8px var(--tc);
-  box-shadow: 0 0 18px rgba(255,255,255,.3), inset 0 1px rgba(255,255,255,.18);
+  white-space: nowrap; text-shadow: 0 0 4px var(--tc);
+  box-shadow: 0 0 8px rgba(255,255,255,.14), inset 0 1px rgba(255,255,255,.18);
   transition: box-shadow .25s, border-color .2s, text-shadow .25s, transform .18s;
 }
 .smart-tab .sn-label { white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
@@ -3845,8 +3845,8 @@ article.intel-board:hover, article.intel-board:active { border-color: var(--tone
 .smart-tab .sn-mark { font-size: 14px; line-height: 1; }
 .smart-tab:hover, .smart-tab:focus-visible {
   border-color: var(--tc); outline: none; transform: translateY(-2px);
-  box-shadow: 0 0 22px -2px var(--tc), 0 0 0 2px var(--tc) inset;
-  text-shadow: 0 0 10px var(--tc);
+  box-shadow: 0 0 12px -2px var(--tc), 0 0 0 2px var(--tc) inset;
+  text-shadow: 0 0 5px var(--tc);
 }
 /* Active: own-colour ignition (FIXPASS 3 — was hardcoded purple #a06bff
    for every tab; the live R5 rule below already used var(--tc), so this
@@ -3855,15 +3855,15 @@ article.intel-board:hover, article.intel-board:active { border-color: var(--tone
   border-color: var(--tc);
   background: color-mix(in srgb, var(--tc) 26%, #050505);
   transform: translateY(-2px);
-  box-shadow: 0 0 28px var(--tc), inset 0 0 0 1.5px var(--tc), inset 0 1px rgba(255,255,255,.2), 0 8px 20px rgba(0,0,0,.5);
-  text-shadow: 0 0 12px var(--tc);
+  box-shadow: 0 0 12px -2px var(--tc), inset 0 0 0 1.5px var(--tc), inset 0 1px rgba(255,255,255,.2), 0 8px 20px rgba(0,0,0,.5);
+  text-shadow: 0 0 5px var(--tc);
 }
 .smart-tab.active:hover {
   border-color: var(--tc);
   background: color-mix(in srgb, var(--tc) 26%, #050505);
   transform: translateY(-2px);
-  box-shadow: 0 0 28px var(--tc), 0 0 0 2px var(--tc) inset, inset 0 1px rgba(255,255,255,.2), 0 8px 20px rgba(0,0,0,.5);
-  text-shadow: 0 0 12px var(--tc);
+  box-shadow: 0 0 12px -2px var(--tc), 0 0 0 2px var(--tc) inset, inset 0 1px rgba(255,255,255,.2), 0 8px 20px rgba(0,0,0,.5);
+  text-shadow: 0 0 5px var(--tc);
 }
 .smart-tab .sn-more {
   /* R3 — a real icon button: obsidian chip, white rim, own-colour light on hover. */
@@ -5087,17 +5087,66 @@ html.os-calm
      + scroll the feed into view in place — working doors). -->
 <section class="searchWrap" id="pcHubSearch"><div class="searchRow" role="search"><span class="search-ico" aria-hidden="true"><svg class="jewel" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="jewel1" cx="35%" cy="30%" r="78%"><stop offset="0%" stop-color="#ffffff"/><stop offset="38%" stop-color="currentColor"/><stop offset="100%" stop-color="#0a0612"/></radialGradient><filter id="jewel1-g" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7"/></filter></defs><circle cx="12" cy="12" r="8.6" fill="url(#jewel1)" filter="url(#jewel1-g)" opacity="0.6"/><circle cx="12" cy="12" r="6.8" fill="url(#jewel1)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1"/><ellipse cx="9.5" cy="8.9" rx="2.5" ry="1.6" fill="#ffffff" opacity="0.92" transform="rotate(-24 9.5 8.9)"/><g transform="translate(8.6,8.6) scale(0.283)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></g></svg></span><button type="button" id="pcSearchScope" class="pc-search-scope" aria-label="World: My World — choose a thing" title="Choose a thing">My World</button><input type="search" id="pcHubSearchInput" placeholder="Search your intelligence…" aria-label="Search your intelligence" autocomplete="off"></div></section><button type="button" id="pcComposerPlus" class="pc-composer-plus" aria-label="Add" title="Add"><span class="notif-tile" style="--nc:#a06bff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span></button>
 <p class="pc-tabs-cap pc-tabs-cap-yours"><span class="ph-dot" style="background:#e84fff;color:#e84fff;"></span>Your tabs — you choose what feed you want</p>
+<style id="pc-correction-20261116">
+/* PERSONAL CORRECTION 2026-11-16 — the round's own rules, one block. */
+/* Item 4: the Naya Notes lens button stays in the DOM (the Smart Access
+   course reads it by id) but never shows — Naya Notes is a type chip now. */
+#mwTabActivity[hidden]{display:none!important}
+/* Item 4: the four-tab legend, plain words, one line. */
+.pc-tabs-legend{margin:6px 2px 0;font-size:13.5px;line-height:1.55;}
+/* Item 6: My World IS the calendar. Boards stay obsidian; the colour is the
+   light, never the fill. Each day lights in its own colour; today glows. */
+.mw-cal-sec h3{font-size:19px;font-weight:900;color:#fff;margin:0 0 4px;}
+.mw-cal-sub{margin:0 0 14px;}
+.mw-cal-nav{display:flex;gap:10px;align-items:center;margin:2px 0 12px;}
+.mw-cal-month{flex:1;min-width:0;text-align:center;font-size:19px;font-weight:900;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mw-cal-navbtn{min-width:46px;}
+.mw-cal-week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-bottom:6px;}
+.mw-cal-week span{text-align:center;font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);}
+.mw-cal-sec .mw-cal-nav,.mw-cal-sec .mw-cal-week,.mw-cal-sec .mw-cal-grid{max-width:860px;}
+.mw-cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;}
+.mw-cal-cell{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;aspect-ratio:1/.72;min-width:0;padding:6px 2px;border-radius:12px;border:1.5px solid color-mix(in srgb,var(--dc) 50%,transparent);background:linear-gradient(180deg,#14141c,#07070b);color:#fff;font-family:inherit;cursor:pointer;box-shadow:inset 0 1px 0 color-mix(in srgb,var(--dc) 65%,transparent),0 4px 12px rgba(0,0,0,.45);transition:box-shadow .2s,border-color .2s,transform .2s;}
+.mw-cal-cell b{font-size:19px;font-weight:900;line-height:1;}
+.mw-cal-cell i{font-style:normal;font-size:9.5px;font-weight:700;line-height:12px;min-height:12px;color:rgba(255,255,255,.75);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;}
+.mw-cal-cell:hover{border-color:var(--dc);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 0 18px color-mix(in srgb,var(--dc) 65%,transparent),0 8px 18px rgba(0,0,0,.55);transform:translateY(-2px);}
+.mw-cal-cell.mw-cal-today{border-color:var(--dc);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 22px var(--dc),0 8px 20px rgba(0,0,0,.55);}
+.mw-cal-cell.mw-cal-sel{border-color:var(--dc);background:color-mix(in srgb,var(--dc) 22%,#0a0a10);box-shadow:inset 0 0 0 1.5px var(--dc),0 0 16px color-mix(in srgb,var(--dc) 55%,transparent);}
+.mw-cal-cell.mw-cal-dim{opacity:.45;}
+@media(max-width:640px){.mw-cal-cell{aspect-ratio:1/1.02;}.mw-cal-cell b{font-size:16px;}.mw-cal-cell i{font-size:8.5px;line-height:10px;min-height:10px;}.mw-cal-nav{gap:8px;}.mw-cal-navbtn{min-width:40px;}.mw-cal-month{font-size:16px;}#mwCalToday{padding-left:12px;padding-right:12px;}}
+.mw-cal-day{margin-top:14px;border:2px solid color-mix(in srgb,var(--dc,#a06bff) 55%,#fff 8%);border-radius:18px;background:linear-gradient(145deg,#0d0d13,#050508);box-shadow:inset 0 1px rgba(255,255,255,.11),0 14px 30px rgba(0,0,0,.56),0 0 20px color-mix(in srgb,var(--dc,#a06bff) 22%,transparent);padding:18px 20px;}
+.mw-cal-day[hidden]{display:none;}
+.mw-cal-day-head{display:flex;align-items:flex-start;gap:12px;}
+.mw-cal-day-title{flex:1;min-width:0;}
+.mw-cal-day-title h4{margin:0;font-size:21px;font-weight:900;color:#fff;}
+.mw-cal-day-title p{margin:4px 0 0;font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.85);}
+.mw-cal-day-x{flex:0 0 auto;width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);background:rgba(0,0,0,.4);color:#fff;font-size:19px;line-height:1;cursor:pointer;font-family:inherit;}
+.mw-cal-menu{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 4px;}
+.mw-cal-menu .smart-tab{padding:10px 16px;font-size:12.5px;}
+.mw-cal-sec-h{font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7);margin:18px 0 8px;}
+.mw-cal-note{font-size:14.5px;line-height:1.6;color:#fff;margin:6px 0;}
+.mw-cal-list{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;}
+.mw-cal-list li{font-size:14.5px;line-height:1.55;color:#fff;background:rgba(0,0,0,.38);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:10px 12px;}
+.mw-cal-list li .mw-cal-type{font-weight:900;margin-right:6px;}
+.mw-cal-dailies{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;margin-top:16px;font-size:13px;color:rgba(255,255,255,.85);}
+.mw-cal-dailies-t{font-weight:900;color:#fff;}
+.mw-cal-dailies label{display:inline-flex;gap:6px;align-items:center;cursor:pointer;}
+.mw-date-filter{display:flex;gap:10px;align-items:center;justify-content:space-between;margin:0 0 10px;padding:8px 12px;border-radius:999px;border:1.5px solid rgba(160,107,255,.5);background:rgba(160,107,255,.12);color:#fff;font-size:13.5px;font-weight:700;}
+.mw-date-filter[hidden]{display:none;}
+.mw-date-filter button{flex:0 0 auto;background:none;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:2px 10px;cursor:pointer;font-family:inherit;font-weight:800;font-size:12.5px;}
+</style>
 <div class="lens-tabs" id="mwFeedTabs" role="tablist" aria-label="Feed categories" data-mw-aria="Feed categories">
 <button type="button" class="lens-tab lens-smart primo theme-purple elev-2 active" id="mwTabSmart" data-mw-tab="personal" role="tab" aria-selected="true" style="--glow:#3fb8ff"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">✦</span> <b data-mw-tr="tab">Personal</b></button>
-<button type="button" class="lens-tab lens-naya primo theme-purple elev-2" id="mwTabNaya" data-mw-tab="public" role="tab" aria-selected="false" style="--glow:#ffbf3d"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span> <b data-mw-tr="tab">Public feed</b></button>
-<button type="button" class="lens-tab lens-activity primo theme-purple elev-2" id="mwTabActivity" data-mw-tab="naya" role="tab" aria-selected="false" style="--glow:#31cb8d"><span class="os-jewel os-jewel-sm" style="--jc:#31cb8d">✦</span> <b data-mw-tr="tab">Naya Notes</b></button>
+<button type="button" class="lens-tab lens-collective primo theme-purple elev-2" id="mwTabNaya" data-mw-tab="public" role="tab" aria-selected="false" style="--glow:#ffbf3d"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span> <b data-mw-tr="tab">Collective</b></button>
+<button type="button" class="lens-tab lens-world primo theme-purple elev-2" id="pcWorldTab" data-mw-tab="world" role="tab" aria-selected="false" style="--glow:#31cb8d"><span class="os-jewel os-jewel-sm" style="--jc:#31cb8d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span> <b data-mw-tr="tab">World</b></button>
+<button type="button" class="lens-tab lens-activity primo theme-purple elev-2" id="mwTabActivity" data-mw-tab="naya" role="tab" aria-selected="false" style="--glow:#31cb8d" hidden><span class="os-jewel os-jewel-sm" style="--jc:#31cb8d">✦</span> <b data-mw-tr="tab">Naya Notes</b></button>
 <button type="button" class="lens-tab lens-world primo theme-purple elev-2" id="pcWorldsTab" role="tab" aria-selected="false" style="--glow:#e84fff"><span class="os-jewel os-jewel-sm" style="--jc:#e84fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span> <b>Worlds</b></button><span id="pcFavWorldTabs" role="presentation"></span>
 </div>
+<p class="os-note pc-tabs-legend" id="mwTabsLegend">Personal is yours. Collective is everybody&rsquo;s, together &mdash; the public feed <i>is</i> the collective feed. World is the world you&rsquo;re in. Worlds is all of them.</p>
 <!-- FIX PASS 4 (P6) — the topic Smart Tabs sit directly under the four tabs. -->
 <p class="pc-tabs-cap pc-tabs-cap-auto"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span>Organized for you — the feed sorts itself by topic</p>
 <div class="smart-tabs" id="mwFeedPills" aria-label="Feed filters" data-mw-aria="Feed filters"></div>
 <button type="button" class="mw-feedname" id="mwFeedNameSmart" data-mw-tr="feedname" style="--fc:#3fb8ff">Shawn&rsquo;s Personal feed ↓</button>
-<button type="button" class="mw-feedname" id="mwFeedNameNaya" data-mw-tr="feedname" style="--fc:#ffbf3d" hidden>Shawn&rsquo;s Public feed ↓</button>
+<button type="button" class="mw-feedname" id="mwFeedNameNaya" data-mw-tr="feedname" style="--fc:#ffbf3d" hidden>Shawn&rsquo;s Collective feed ↓</button>
 <button type="button" class="mw-feedname" id="mwFeedNameActivity" data-mw-tr="feedname" style="--fc:#31cb8d" hidden>Shawn&rsquo;s Naya Notes ↓</button>
 <button type="button" class="mw-feedname" id="mwFeedNameWorld" data-mw-tr="feedname" style="--fc:#e84fff" hidden>Shawn&rsquo;s My World feed ↓</button>
 
@@ -5114,6 +5163,7 @@ html.os-calm
 <div class="ph-card" id="saFeedCard"><div class="ph-sec-t"><span class="ph-dot" id="saFeedDot" style="background:#31cb8d;color:#31cb8d;"></span> <span id="saFeedHead">The lessons</span></div><p class="os-note" style="margin-top:0;">One after another, down the feed — just the lesson, scroll to the next, click next.</p><div id="saFeed"></div></div>
 </div>
 
+<div class="mw-date-filter" id="mwDateFilter" hidden><span id="mwDateFilterTxt"></span><button type="button" id="mwDateFilterX">&times; clear</button></div>
 <div id="os-wall-list"><div class="os-skel"></div></div>
 
 <div id="mwFeedNaya" hidden><div class="os-skel"></div></div>
@@ -5609,7 +5659,7 @@ html body .os-constellation .os-ld-nodes button.os-ld-node[data-node="saves"] .o
   color:#fff; border-color:#a06bff;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.3),
-    0 0 20px -4px #a06bff,
+    0 0 10px -4px #a06bff,
     0 4px 14px rgba(0,0,0,.55);
 }
 /* v4 char 212598 — .os-ld-loading */.os-ld-loading{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;pointer-events:none;width:min(300px,80%);aspect-ratio:1/1;}
@@ -6466,10 +6516,24 @@ button.os-ld-node .os-ld-n{
 <div id="mw-world-list"></div>
 <p class="os-note" id="mw-world-note" style="margin-top:8px;"></p>
 <div class="ph-actions"><button class="ph-msg" type="button" data-mw-real-dash data-mw-tr="lf">Go to my Dashboard →</button><button class="ph-msg" type="button" data-os-go="settings" data-mw-tr="set">Change what shows here</button></div>
-</div><section class="os-world-boards os-view" id="os-world-boards" data-os-view="myworld">
-<h3>Your world, board by board</h3>
-<p class="os-note os-wb-sub">Every page and every link, one board each. Click “Show in Dashboard” and that board moves up into the featured role — the Dashboard gauge follows it.</p>
-<div id="os-boards-list"></div>
+</div><section class="os-view mw-cal-sec" id="os-world-calendar" data-os-view="myworld">
+<h3>Your world, day by day</h3>
+<p class="os-note mw-cal-sub">My World is the calendar. Every day lights in its own colour &mdash; today glows. Tap a day to open your world for that day: what went on, what you learned, the day&rsquo;s wisdom.</p>
+<div class="mw-cal-nav">
+<button type="button" class="ph-msg mw-cal-navbtn" id="mwCalPrev" aria-label="Previous month">&lsaquo;</button>
+<span class="mw-cal-month" id="mwCalMonthLabel">Loading&hellip;</span>
+<button type="button" class="ph-msg mw-cal-navbtn" id="mwCalNext" aria-label="Next month">&rsaquo;</button>
+<button type="button" class="ph-msg" id="mwCalToday">Today</button>
+</div>
+<div class="mw-cal-week" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+<div class="mw-cal-grid" id="mwCalGrid" role="grid" aria-label="Calendar"></div>
+<div class="mw-cal-day" id="mwCalDay" hidden></div>
+<div class="mw-cal-dailies" id="mwCalDailies">
+<span class="mw-cal-dailies-t">Dailies &mdash; off until you turn one on:</span>
+<label><input type="checkbox" id="mwCalDailyHoroscope"> Horoscope</label>
+<label><input type="checkbox" id="mwCalDailyChinese"> Chinese horoscope</label>
+<label><input type="checkbox" id="mwCalDailyBible"> Bible quote</label>
+</div>
 </section>
 
 </div>
@@ -7284,6 +7348,13 @@ button.os-ld-node .os-ld-n{
 </div>
 <div class="ph-card" style="--ac:#ff5e6c;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#ff5e6c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-8"/><path d="M12 13c0-4 3-7 8-7 0 5-3 7-8 7z"/><path d="M12 13c0-4-3-7-8-7 0 5 3 7 8 7z"/></svg></span> Invite a friend</h3>
+<!-- PERSONAL CORRECTION 2026-11-16 (item 8, Shawn 15:35Z): the email
+     inviter's door — the finished inviter (staged, 306,447 B) lands on
+     this address on Shawn's tap; until then the door opens the Growth
+     room's invite section, which is where the inviter lives. The
+     record-only form below stays as is — it sends nothing. -->
+<div class="ph-actions" style="margin:0 0 10px;"><a class="ph-connect" href="https://nayanet.app/rooms/growth#invite" style="text-decoration:none;">Send a real invite by email &rarr;</a></div>
+<p class="os-note" style="margin:0 0 12px;">The email inviter opens &mdash; you connect your email, write the invite, and send it.</p>
 <input class="os-input" id="os-inv-name" type="text" placeholder="Friend&rsquo;s name" autocomplete="off">
 <input class="os-input" id="os-inv-email" type="email" placeholder="Friend&rsquo;s email" autocomplete="off">
 <div class="ph-actions"><button class="ph-connect" id="os-inv-btn" type="button">Record invite</button></div>
@@ -9000,6 +9071,12 @@ function wallCard(j, iso, pid, idx){
     window.MW_WALL_POSTS=MW_WALL_POSTS;
     var pill=(typeof window.MW_FEED_PILL!=='undefined')?window.MW_FEED_PILL:'all';
     var shown=publicOn?(window.MW_PUBLIC_POSTS||[]):MW_WALL_POSTS;
+    /* PERSONAL CORRECTION 2026-11-16 (item 6): the calendar's day filter —
+       when the citizen opens a day, the wall shows only that day's notes.
+       Set by mwOpenDay's menu, cleared by the × above the wall (mwClearWallDate). */
+    if(window.MW_WALL_DATE){
+      shown=shown.filter(function(p){ return String(p.at||'').slice(0,10)===window.MW_WALL_DATE; });
+    }
     /* PERSONAL-COMPLETE: the Personal tab is your own smart notes — only the
        owner's posts (the active tab button is the source of truth, so the
        Smart Access course's restores stay in step too). */
@@ -9035,12 +9112,31 @@ function wallCard(j, iso, pid, idx){
     if(kw){
       shown=shown.filter(function(p){ var hay=''; try{ hay=JSON.stringify(p.j||{}); }catch(e){ hay=''; } return (hay+' '+(p.owner||'')).toLowerCase().indexOf(kw)>=0; });
     }
+    /* PERSONAL CORRECTION 2026-11-16 (item 10): the empty state names the
+       filter — "No Naya Notes yet" when the Naya Notes chip is on, not the
+       generic "No posts yet". */
+    var emptyH='Make your first post', emptyN='No posts yet \u2014 be the first to make a post on this feed.';
+    if(pill==='topic:naya'){ emptyH='No Naya Notes yet'; emptyN='Naya hasn\u2019t made a note for this feed yet \u2014 the first one lands here.'; }
+    else if(pill==='topic:smart'){ emptyH='No Smart Notes yet'; emptyN='No Smart Notes on this feed yet \u2014 the first one lands here.'; }
+    else if(pill==='topic:post'){ emptyH='No posts yet'; emptyN='No posts on this feed yet \u2014 the first one lands here.'; }
+    else if(pill && pill.indexOf('cluster:')===0){ emptyH='Nothing in this category yet'; emptyN='No notes in this category on this feed yet.'; }
     list.innerHTML = shown.length
       ? shown.map(function(p, i){ return wallCard(p.j, p.at, p.id, i); }).join('')
-      : '<div class="ph-card ph-invite-board" style="--ac:#a06bff;"><h3>'+(window.mwTr?window.mwTr('Make your first post'):'Make your first post')+'</h3><p class="os-note">'+(window.mwTr?window.mwTr('No posts yet — be the first to make a post on this feed.'):'No posts yet — be the first to make a post on this feed.')+'</p><div class="ph-actions"><button type="button" class="ph-connect" data-pc-invite-post>'+(window.mwTr?window.mwTr('Make a post'):'Make a post')+'</button></div></div>';
+      : '<div class="ph-card ph-invite-board" style="--ac:#a06bff;"><h3>'+(window.mwTr?window.mwTr(emptyH):emptyH)+'</h3><p class="os-note">'+(window.mwTr?window.mwTr(emptyN):emptyN)+'</p><div class="ph-actions"><button type="button" class="ph-connect" data-pc-invite-post>'+(window.mwTr?window.mwTr('Make a post'):'Make a post')+'</button></div></div>';
     var meta=$('os-wall-meta');
     if(meta){ meta.textContent=mwWallMetaText(shown, pill, kw); }
     window._mwWallMetaState={shown:shown, pill:pill, kw:kw};
+    /* PERSONAL CORRECTION 2026-11-16 (item 6): the day-filter bar above the
+       wall — visible while a day is open, so the citizen always sees the
+       filter and has a way out of it. */
+    var df=document.getElementById('mwDateFilter');
+    if(df){
+      if(window.MW_WALL_DATE){
+        df.hidden=false;
+        var dft=document.getElementById('mwDateFilterTxt');
+        if(dft){ try{ dft.textContent='Showing '+new Date(window.MW_WALL_DATE+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}); }catch(e){ dft.textContent='Showing '+window.MW_WALL_DATE; } }
+      } else df.hidden=true;
+    }
     /* F5 (fix, self-check round 3) — mwBuildFeedPills + mwRevealWallCards
        live in #mw-script, a separate IIFE; resolving through window (they
        are exposed there, see the feed-board block). The bare typeof guard
@@ -13874,28 +13970,11 @@ html.nsb-calm .nsb-tab{transition:none;}
 <!-- HUB-PERSONAL ALIGNMENT 2026-11-16 (H1): the old Smart Bar system
      (render deleted 2026-11-12, Smart Bar OUT) is REPLACED by the Hub's
      Smart Bar slice, harvested verbatim — see the tail block before
-     <!-- HUB-PERSONAL ALIGNMENT 2026-11-16 (H1) — the settled three-bar stack,
-     harvested from Hub blob 76fa0f76 (HUB/app/index.html): Bar 1 pills +
-     nav (Hub L9756-9770, verbatim) · Bar 3 Smart Bar slice (Hub L9771-
-     10794, verbatim except the H6 .live->.app fix x13 and the D6 mount
-     app name) · obb CSS (Hub L10795-10835, verbatim) · obb lane +
-     chevron JS (Hub L10836-10932, verbatim). Bar 2 is the trio, built
-     by NayaNotif above (SEGS/ICONS/tap harvested from the Hub). -->
-<nav class="obb-bar" id="obb-bar" aria-label="Apps">
-<div class="obb-row">
-  <a class="obb-pill" data-obb="hub" data-b3="activity" href="https://nayanet.app/hub" style="--obb:#a06bff" aria-label="Hub" title="Hub"><span class="obb-jewel" aria-hidden="true">◈</span><span class="obb-lbl">Hub</span><span class="obb-badge os-b3-badge" id="os-b3-badge" hidden></span></a>
-  <a class="obb-pill" data-obb="dashboard" data-b3="dashboard" href="https://nayanet.app/dashboard" style="--obb:#2fe89e" aria-label="Dashboard" title="Dashboard"><span class="obb-jewel" aria-hidden="true">◉</span><span class="obb-lbl">Dashboard</span></a>
-  <a class="obb-pill" data-obb="personal" href="https://nayanet.app/personal" style="--obb:#3fb8ff" aria-label="Personal" title="Personal"><span class="obb-jewel" aria-hidden="true">●</span><span class="obb-lbl">Personal</span></a>
-  <a class="obb-pill" data-obb="business" href="https://nayanet.app/business" style="--obb:#ffbf3d" aria-label="Business" title="Business"><span class="obb-jewel" aria-hidden="true">■</span><span class="obb-lbl">Business</span></a>
-  <a class="obb-pill" data-obb="space" href="https://nayanet.app/space" style="--obb:#ff9a5a" aria-label="Space" title="Space"><span class="obb-jewel" aria-hidden="true">▲</span><span class="obb-lbl">Space</span></a>
-  <a class="obb-pill" data-obb="factory" href="https://nayanet.app/smartfactory" style="--obb:#9d75ff" aria-label="Smart Factory" title="Smart Factory"><span class="obb-jewel" aria-hidden="true">✦</span><span class="obb-lbl">Smart Factory</span></a>
-  <a class="obb-pill" data-obb="search" href="#/hub/feed" style="--obb:#55b9ee" aria-label="Search" title="Search"><span class="obb-jewel" aria-hidden="true">○</span><span class="obb-lbl">Search</span></a>
-  <a class="obb-pill" data-obb="pricing" href="https://naya-model-pricing.nayapower.workers.dev/" style="--obb:#e8b64c" aria-label="Pricing" title="Pricing"><span class="obb-jewel" aria-hidden="true">◆</span><span class="obb-lbl">Pricing</span></a>
-  <a class="obb-pill obb-more" data-obb="more" href="https://nayanet.app/#/hub" style="--obb:#3fb8ff" aria-label="Apps" title="Apps"><span class="obb-jewel" aria-hidden="true">＋</span><span class="obb-lbl">Apps</span></a>
-</div>
-<button class="obb-nav obb-nav-l" type="button" aria-label="Show earlier apps">‹</button>
-<button class="obb-nav obb-nav-r" type="button" aria-label="Show more apps">›</button>
-</nav>
+     <!-- PERSONAL CORRECTION 2026-11-16 (item 1, Shawn 15:29Z): the Hub's
+     nine-pill bar is REMOVED from Personal — the bottom bar is
+     THE FIVE only, built by NayaNotif below (ADD · MAIL · ACTIVITY ·
+     WORLDS · ECOSYSTEM, harvested verbatim from fixpass3). The Hub keeps
+     its own nine pills; Personal never carries them again. -->
 <div class="nsb nsb-bottom" id="nsbBottom" aria-label="Network"></div>
 <style>
 /* ============ SMART BAR CHROME ============ */
@@ -14183,16 +14262,15 @@ html.nsb-calm .nsb-tab{transition:none;}
 /* ——— The bottom stack — three bars (2026-11-12, Hub navigation, Shawn 04:54Z) ———
    Bar 3 sits at the very bottom; bar 2 rides on it (var(--smartbar-h));
    bar 1 is lifted by the ONE-BOTTOM-BAR lane script above the tallest below-bar. */
-/* Fold on scroll (the 2026-11-07 fold-away law): scrolling hides all three
-   bars; stopping folds them back. The driver is the stack script below. */
+/* Fold on scroll (the 2026-11-07 fold-away law): scrolling hides the
+   five; stopping folds them back. The driver is the stack script below. */
 body.os-bottom-hidden .notif-bar{transform:translateY(110%);opacity:0}
 body.os-bottom-hidden #nsbBottom{transform:translateY(110%);opacity:0}
 .notif-bar{transition:transform .3s cubic-bezier(.16,.84,.22,1),opacity .3s}
-/* Bar 1 off (Settings): the navigation bar is gone; bars 2 and 3 stay. */
-html.nsb-nonav #obb-bar{display:none}
-/* The content clears the stack. Base 370px = all three on (bar 1 77 +
-   bar 2 79 + bar 3 142 = 298px + ~72 margin, matching the old 220/151).
-   When a bar is off, less is needed. */
+/* PERSONAL CORRECTION 2026-11-16 (item 1): no Bar 1 on Personal — the
+   Settings bottom_nav rule has no bar to hide here. The content clears
+   the stack: the five alone (~70px phone / ~78px desktop), measured live
+   by pad() below. */
 html.nsb-nonav .main{padding-bottom:290px}
 html.nsb-nobottom .main{padding-bottom:225px}
 html.nsb-nonav.nsb-nobottom .main{padding-bottom:150px}
@@ -14892,28 +14970,21 @@ window.NayaSmartBar = {
 })();
 </script>
 <script>
-/* ——— Bar 3 mount (2026-11-12, Hub navigation): the Hub mounts bottom-only. ——— */
-
-NayaSmartBar.mount({
-  app: { name: 'Personal', honesty: 'proven' },
-  sections: [],
-  network: [
-    { label: 'Ask Naya', url: 'https://nayanet.app/#/hub/ask', icon: '\u25c8', color: '#a06bff' },
-    { label: 'Smart Mail', url: '/rooms/mail', icon: '\u2709', color: '#3fb8ff' },
-    { label: 'Smart Lists', url: '/rooms/lists', icon: '\u2630', color: '#2fe89e' },
-    { label: 'Your Connections', url: '/rooms/connections', icon: '\u25c7', color: '#ffbf3d' },
-    { label: 'Intel Today', url: '/rooms/today', icon: '\u2726', color: '#ff9a5a' }
-  ]
-});
+/* PERSONAL CORRECTION 2026-11-16 (item 1): Bar 3 (the Smart Bar
+     network strip) is GONE from Personal with the Hub bar — the bottom
+     holds THE FIVE only. The mount and its 5-item network list are
+     removed, not commented out; nsbBottom stays as an empty mount point. */
 </script>
 <script>
 /* ——— The bottom stack driver (2026-11-12, Hub navigation) ——— */
 (function(){
-  /* Bar 1 honours the citizen's Settings choice on every load. */
+  /* PERSONAL CORRECTION 2026-11-16 (item 1): no Bar 1 on Personal
+     anymore — the Settings bottom_nav toggle has no Hub pill bar to hide
+     here, so the five stay. The fold law below still governs the five. */
   try { if (localStorage.getItem('nayanet.pref.bottom_nav') === 'off') { document.documentElement.classList.add('nsb-nonav'); } } catch (e) {}
-  /* Bar 2 rides on bar 3: measure the Smart Bar's height into --smartbar-h
-     (0 while the Smart Bar is off). Re-measured on load, resize, and
-     whenever the Smart Bar's settings change. */
+  /* The five ride alone now: measure the (empty) Smart Bar mount's
+     height into --smartbar-h (0 while it stays off). Re-measured on load,
+     resize, and whenever the Smart Bar's settings change. */
   function syncSmartbarH(){
     var b = document.getElementById('nsbBottom');
     var h = b ? b.offsetHeight : 0;
@@ -14923,7 +14994,7 @@ NayaSmartBar.mount({
   window.addEventListener('resize', syncSmartbarH);
   document.addEventListener('smartbar-settings', syncSmartbarH);
   /* Fold on scroll (the 2026-11-07 fold-away law): scrolling hides the
-     three bars; ~1s after scrolling stops they fold back. Never folds at
+     five; ~1s after scrolling stops they fold back. Never folds at
      the very top of the page. */
   var settle = null;
   function onScroll(){
@@ -14936,147 +15007,19 @@ NayaSmartBar.mount({
 })();
 </script>
 <style>
-/* ONE-BOTTOM-BAR v2 — placement + pills. Jewel treatment harvested from .nsb-jewel (Inviter L3300+); pill treatment from .nsb-tab (L3244+). */
-.obb-bar,.obb-bar *{box-sizing:border-box}
-.obb-bar{position:fixed;left:0;right:0;bottom:var(--obb-below,0px);z-index:200;display:flex;align-items:center;justify-content:flex-start;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(3,3,5,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 -16px 44px rgba(0,0,0,.68);transition:transform .35s ease,opacity .35s ease}
-body.os-bottom-hidden .obb-bar{transform:translateY(110%);opacity:0}
-/* FIX 1 (v2): the row is the scroll strip — snap-to-whole-pills. The bar stays
-   one component; the row scrolls inside it and snaps so no pill rests half-sliced. */
-.obb-row{display:flex;align-items:center;gap:8px;margin:0 auto;flex:0 1 auto;min-width:0;max-width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;scroll-snap-type:x mandatory;scroll-padding:0 12px;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
-.obb-row::-webkit-scrollbar{display:none}
-/* SHELL BARS 2026-11-13 — the upper row is round black circles. .obb-pill is
-   now the transparent column button and .obb-jewel IS the circle, harvested
-   from this shell's own .eco-bb-ico (lines 308-357): 46px desktop / 44px
-   phone, border-radius:50%, obsidian radial gradient, own-color rest glow
-   via --obb. The visible .obb-lbl rides under the icon, unchanged. The
-   Activity pill is gone with its badge rule deleted — one door
-   per destination. Hover/focus lift lands on the jewel, as on .eco-bb-btn. */
-.obb-pill{flex:0 0 auto;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0;padding:2px 4px 0;background:none;border:none;box-shadow:none;text-decoration:none;color:#fff;cursor:pointer;position:relative}
-.obb-pill:hover .obb-jewel,.obb-pill:focus-visible .obb-jewel{transform:translateY(-3px) scale(1.08);border-color:var(--obb);color:var(--obb);text-shadow:0 0 6px var(--obb);box-shadow:inset 0 1px rgba(255,255,255,.2),0 0 24px color-mix(in srgb,var(--obb) 55%,transparent),0 6px 16px rgba(0,0,0,.5)}
-.obb-pill:focus-visible{outline:none}
-.obb-pill:active .obb-jewel{transform:scale(1.02)}
-.obb-jewel{width:46px;height:46px;flex:0 0 46px;border-radius:50%;display:grid;place-items:center;font-size:18px;color:#fff;background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);border:1px solid rgba(255,255,255,.3);box-shadow:inset 0 1px rgba(255,255,255,.15),0 0 14px rgba(255,255,255,.1),0 4px 10px rgba(0,0,0,.4),0 0 14px -2px var(--obb);transition:all .22s cubic-bezier(.16,.84,.22,1)}
-.obb-lbl{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;white-space:nowrap;line-height:1}
-@media (max-width:640px){.obb-bar{gap:6px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))}.obb-row{gap:6px;scroll-padding:0 10px}.obb-pill{padding:2px 3px 0}.obb-jewel{width:44px;height:44px;flex:0 0 44px;font-size:16px}.obb-lbl{font-size:9px}}
-/* FIX 2026-11-14 (bar overflow): the row already scrolls (overflow-x:auto,
-   snap-to-whole-pills) but at phone widths nothing says there is more — the
-   scrollbar is hidden and the last pill is cut mid-label with no affordance.
-   Edge fades + edge chevrons, driven by data-obb-more on the bar (JS below):
-   "left", "right", "left right", or absent. At 1440 the row never overflows,
-   so nothing shows and nothing changes. */
-.obb-bar::before,.obb-bar::after{content:"";position:absolute;top:0;bottom:0;width:34px;pointer-events:none;opacity:0;transition:opacity .25s ease;z-index:3}
-.obb-bar::before{left:0;background:linear-gradient(90deg,rgba(3,3,5,.97),rgba(3,3,5,0))}
-.obb-bar::after{right:0;background:linear-gradient(270deg,rgba(3,3,5,.97),rgba(3,3,5,0))}
-.obb-bar[data-obb-more~="left"]::before{opacity:1}
-.obb-bar[data-obb-more~="right"]::after{opacity:1}
-.obb-nav{display:none;position:absolute;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;place-items:center;font-size:19px;line-height:1;color:#fff;background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);border:1px solid rgba(255,255,255,.45);box-shadow:0 0 14px rgba(255,255,255,.25),0 4px 10px rgba(0,0,0,.5);cursor:pointer;z-index:4;padding:0}
-.obb-nav-l{left:3px}
-.obb-nav-r{right:3px}
-.obb-bar[data-obb-more~="left"] .obb-nav-l{display:grid}
-.obb-bar[data-obb-more~="right"] .obb-nav-r{display:grid}
-.obb-nav:active{transform:translateY(-50%) scale(.94)}
+/* PERSONAL CORRECTION 2026-11-16 (item 1): the ONE-BOTTOM-BAR v2
+   style block is REMOVED with the Hub bar it styled — no nine-pill bar,
+   no pill row, no chevrons on Personal anymore. */
 </style>
 <script>
-/* ONE-BOTTOM-BAR v2 — lane stacking (NO-OVERLAY law). Measures the visible bottom-stack bars
-   below this bar (Smart Bar, notif bar, jewel bar) and lifts this bar above the tallest of
-   them, so no bar ever covers another. Re-measures on load, resize, and whenever the bars
-   change (Smart Bar built/toggled, notif shown/hidden, keyboard shown/hidden).
-   v2 — FIX 2: measure on SETTLE, not on flap. Mutation bursts (e.g. the Dashboard's
-   scroll-settle loop toggling body classes ~10x/s) coalesce into ONE trailing 150 ms
-   re-measure; the offset is written only when it changes; when the page has no
-   below-bars at all the fast path reads zero rects. v1 scheduled a 60 ms layout
-   read per mutation — on the Dashboard that path was already a no-op (no below-bars
-   exist there, so no rect was ever read and --obb-below never touched transform),
-   but v2 removes even the scheduling. The html/body class observers stay: the
-   Inviter hides its Smart Bar via `html.nsb-nobottom #nsbBottom` (line 337), so a
-   class change on <html> is the only signal that lane closed. */
-(function(){
-  var bar=document.getElementById('obb-bar'); if(!bar) return;
-  var lastBelow=null, soonT=null;
-  function obbLayout(){
-    soonT=null;
-    var vh=window.innerHeight||0, below=0, found=0;
-    var sels=['#nsbBottom','.notif-bar','.jewelbar'];
-    for(var s=0;s<sels.length;s++){
-      var els=document.querySelectorAll(sels[s]);
-      for(var k=0;k<els.length;k++){
-        var el=els[k], cs;
-        try{ cs=getComputedStyle(el); }catch(e){ continue; }
-        if(!cs||cs.display==='none'||cs.visibility==='hidden') continue;
-        if(cs.position!=='fixed') continue;
-        var r; try{ r=el.getBoundingClientRect(); }catch(e){ continue; }
-        if(!r||r.height<=0) continue;
-        if(r.top>=vh) continue;
-        if(r.bottom<vh-260) continue;
-        found++;
-        var need=vh-r.top; if(need>below) below=need;
-      }
-    }
-    below=Math.ceil(below);
-    if(below===lastBelow) return; /* write only on change — never restyle on a flap */
-    lastBelow=below;
-    bar.style.setProperty('--obb-below', below+'px');
-  }
-  function obbSoon(){ if(soonT) return; soonT=setTimeout(obbLayout, 150); }
-  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', obbLayout); }
-  else { obbLayout(); }
-  window.addEventListener('load', obbLayout);
-  window.addEventListener('resize', obbLayout);
-  setTimeout(obbLayout, 500); setTimeout(obbLayout, 1500);
-  try{
-    var mo=new MutationObserver(obbSoon);
-    mo.observe(document.documentElement,{attributes:true,attributeFilter:['class']});
-    mo.observe(document.body,{attributes:true,attributeFilter:['class']});
-    var sels2=['#nsbBottom','.notif-bar','.jewelbar'];
-    for(var i=0;i<sels2.length;i++){
-      var bars=document.querySelectorAll(sels2[i]);
-      for(var j=0;j<bars.length;j++) mo.observe(bars[j],{childList:true,attributes:true,attributeFilter:['class','style']});
-    }
-  }catch(e){}
-  window.__obbLayout=obbLayout;
-})();
-/* FIX 2026-11-14 (bar overflow affordance): the row scrolls, but nothing
-   shows it. Read the row's own scroll state and say so on the bar:
-   data-obb-more = "left" / "right" / "left right" / "" — the CSS above
-   shows the edge fades + chevrons only for the directions that exist.
-   A chevron tap scrolls the first not-fully-visible pill into view
-   (scrollIntoView, snap-aware — smooth, lands whole). Plain scrollBy
-   does NOT travel here: scroll-snap-stop:always stops it at the very
-   first snap point (46px), so scrollIntoView on the pill is the way.
-   No overflow (1440) -> attribute empty -> nothing shows, nothing changes. */
-(function(){
-  var bar=document.getElementById('obb-bar'); if(!bar) return;
-  var row=bar.querySelector('.obb-row'); if(!row) return;
-  function obbMore(){
-    var max=row.scrollWidth-row.clientWidth;
-    var sl=row.scrollLeft, m='';
-    if(max>4){ if(sl>4) m+='left '; if(sl<max-4) m+='right'; }
-    bar.setAttribute('data-obb-more', m.replace(/\s+$/,''));
-  }
-  row.addEventListener('scroll', obbMore, {passive:true});
-  window.addEventListener('resize', obbMore);
-  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', obbMore); }
-  else { obbMore(); }
-  setTimeout(obbMore, 500); setTimeout(obbMore, 1500);
-  function obbStep(dir){
-    var rr=row.getBoundingClientRect(), pills=row.querySelectorAll('.obb-pill'), t=null;
-    var i;
-    if(dir>0){ for(i=0;i<pills.length;i++){ if(pills[i].getBoundingClientRect().right>rr.right+1){ t=pills[i]; break; } } }
-    else { for(i=pills.length-1;i>=0;i--){ if(pills[i].getBoundingClientRect().left<rr.left-1){ t=pills[i]; break; } } }
-    if(t){ t.scrollIntoView({inline:'start', behavior:'smooth'}); }
-  }
-  var navs=bar.querySelectorAll('.obb-nav');
-  for(var i=0;i<navs.length;i++){
-    navs[i].addEventListener('click', function(){
-      obbStep(this.className.indexOf('obb-nav-r')>=0 ? 1 : -1);
-    });
-  }
-})();
+/* PERSONAL CORRECTION 2026-11-16 (item 1): the obb lane-stacking
+   and overflow-affordance scripts are REMOVED with the bar they served.
+   Nothing left on the page reads --obb-below or data-obb-more. */
 </script>
 <style>
 /* HUB-PERSONAL ALIGNMENT 2026-11-16 (H1, Personal adapter): the Bottom bar
    auto-fold switch (Settings) holds the bars in place when off. */
-body.mw-nofold.os-bottom-hidden .obb-bar,body.mw-nofold.os-bottom-hidden #nsbBottom{transform:none!important;opacity:1!important}
+body.mw-nofold.os-bottom-hidden #nsbBottom{transform:none!important;opacity:1!important}
 </style>
 <script>
 /* HUB-PERSONAL ALIGNMENT 2026-11-16 (H1, Personal adapter — NOT harvested):
@@ -15090,36 +15033,29 @@ body.mw-nofold.os-bottom-hidden .obb-bar,body.mw-nofold.os-bottom-hidden #nsbBot
     var mo=new MutationObserver(function(){ repad(); });
     mo.observe(document.documentElement,{attributes:true,attributeFilter:['class']});
     mo.observe(document.body,{attributes:true,attributeFilter:['class']});
-    ['obb-bar','naya-notif-bar','nsbBottom'].forEach(function(id){ var el=document.getElementById(id); if(el) mo.observe(el,{attributes:true,attributeFilter:['class','style']}); });
+    ['naya-notif-bar','nsbBottom'].forEach(function(id){ var el=document.getElementById(id); if(el) mo.observe(el,{attributes:true,attributeFilter:['class','style']}); });
   }catch(e){}
   window.addEventListener('load', function(){ setTimeout(repad, 600); setTimeout(repad, 1600); });
 })();
 </script>
 </body>
-<!-- HUB-PERSONAL ALIGNMENT 2026-11-16 (H1): the old Personal mount
-     (13 sections, bar never rendered) is REPLACED by the Hub slice's
-     mount — the 5 seed tabs on the shared store naya.smarttabs.v1. -->
-<!-- HUB-PERSONAL ALIGNMENT 2026-11-16 (H1): the old trio-fold script
-     is REMOVED — it faded the trio, which the settled fold law forbids
-     (the trio stays, unmoved, opacity 1). The slice's stack driver in
-     the tail block folds Bar 1 + Bar 3 and returns them ~1s after the
-     scroll stops. -->
+<!-- PERSONAL CORRECTION 2026-11-16 (item 1): the Hub slice's mount and
+     the three-bar stack are GONE from Personal. The bottom bar is THE FIVE
+     only (NayaNotif below); the stack driver in the tail block folds the
+     five and returns them ~1s after the scroll stops. -->
 <script>
-/* ——— Notifications trio bar: NayaNotif (ROW+SMARTBAR 2026-11-12) ———
-   Harvested VERBATIM from the Hub nav file
-   (~/workspace/team-nitro/hub-navigation-20261112/hub-navigation-fixed.html,
-   "Notifications bar: Mail · Activity · Spaces (Shawn 2026-10-20)"): the
-   localStorage counts (nayanet.notif.*), the 9+ cap, hide-at-0 bubbles, the
-   arrival sound + mail pop-up, the measured --notif-h stack cure. ONE
-   2026-11-16 (H1): the trio is Mail · Activity · Space again, as on the
-   Hub — SEGS/ICONS/tap harvested from the Hub alignment build (blob
-   76fa0f76), with D7: Activity navigates by full URL to the Hub's
-   /hub/feed-activity (no NayaRouter on this page). The + and Ecosystem
-   segs are gone: + lives in the top header / composer, the drawers open
-   from the top-corner + buttons. The mail pop-up in set() fires through
-   the page's own toast() when NayaUI is absent (it is dormant no longer);
-   the counts read the same shared keys the Hub writes, so the bubbles
-   are live. */
+/* ——— THE FIVE bottom bar: NayaNotif (PERSONAL CORRECTION 2026-11-16,
+   item 1, Shawn 15:29Z) ———
+   Harvested VERBATIM from the proven fixpass3 five
+   (~/workspace/team-nitro/personal-corrections-20261113/probe-icons-plus-fix-r3/work-r5-fixpass3.html,
+   captain-verified 2026-11-13 15:31Z): SEGS + ICONS (plus, eco) + tap
+   + init. ADD opens the composer plus menu; MAIL opens the inbox view;
+   ACTIVITY opens the dashboard view; WORLDS opens the left drawer;
+   ECOSYSTEM opens the right drawer. Icons only — the names live in
+   aria-label + title. The H1 trio (Mail · Activity · Space, full-URL
+   navigation) is superseded here. ONE line kept from the base: set()
+   still refreshes and still falls back to the page's own toast() when
+   NayaUI is absent. */
 window.NayaNotif = window.NayaNotif || {
     get(k) { try { return parseInt(localStorage.getItem('nayanet.notif.' + k) || '0', 10) || 0; } catch (e) { return 0; } },
     set(k, n) { var prev = this.get(k); try { localStorage.setItem('nayanet.notif.' + k, String(n)); } catch (e) {} if ((k === 'mail' || k === 'activity' || k === 'spaces') && n > prev) { this.playSound(); if (k === 'mail' && n > 0) { if (window.NayaUI && window.NayaUI.toast) { window.NayaUI.toast('New mail — ' + n + ' waiting.', '#3fb8ff'); } else if (window.toast) { window.toast('New mail — ' + n + ' waiting.'); } } }  this.refresh(); },
@@ -15161,21 +15097,12 @@ window.NayaNotif = window.NayaNotif || {
       });
     },
     tap(k) {
-      /* HUB-PERSONAL ALIGNMENT 2026-11-16 (H1, settled law §4): the trio is
-         Mail · Activity · Space again. Destinations use live-proven paths:
-         Mail -> rooms/mail (the obb Mail pill's own href) and Space ->
-         nayanet.app/space (the obb Space pill's own href) by full URL, as
-         the live page already navigates to them; Activity -> the router's
-         /hub/feed-activity (the ACTIVITY lens — the route exists in live).
-         Nav v2's '/hub/mail' and '/hub/spaces' are NOT routes in live
-         (grep: 0 hits), so they are not used here. The count for that
-         channel clears on tap, as before.
-         D7-PERSONAL: the Hub's Activity line used window.NayaRouter,
-         which does not exist on Personal — the full URL to the Hub's
-         /hub/feed-activity route is the faithful equivalent. */
-      if (k === 'mail') { this.set('mail', 0); window.location.href = 'https://nayanet.app/rooms/mail'; }
-      else if (k === 'activity') { try { this.set('seen.activity', ActivityLog.read().length); } catch (e) {} window.location.href = 'https://nayanet.app/hub#/hub/feed-activity'; }
-      else if (k === 'spaces') { this.set('spaces', 0); window.location.href = 'https://nayanet.app/space'; }
+      /* FOLLOW-UP pass 2: the bar stays tappable above the scrim while a drawer is open — tapping anything but a drawer seg closes the drawer first, so no view opens underneath it. */
+      if (k !== 'spaces' && k !== 'eco' && window.pcCloseDrawers) { try { window.pcCloseDrawers(); } catch (e) {} }
+      if (k === 'mail') { this.set('mail', 0); window.osShowView && window.osShowView('inbox'); }
+      else if (k === 'activity') { try { this.set('seen.activity', ActivityLog.read().length); } catch (e) {} window.osShowView && window.osShowView('dashboard'); }
+      else if (k === 'spaces') { this.set('spaces', 0); if (window.pcToggleDrawer) window.pcToggleDrawer('left'); }
+      else if (k === 'eco') { if (window.pcToggleDrawer) window.pcToggleDrawer('right'); }
       this.refresh();
     },
     syncStack() {
@@ -15192,17 +15119,20 @@ window.NayaNotif = window.NayaNotif || {
         mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
         activity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg>',
         spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7.5L20 11"/><path d="M6 9.5V20h12V9.5"/><path d="M12 12.2l2.3 2.8L12 17.8 9.7 15z"/></svg>',
+        eco: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>',
+        plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>'
       };
-      var SEGS = [['mail', 'MAIL', '#3fb8ff'], ['activity', 'ACTIVITY', '#2fe89e'], ['spaces', 'SPACES', '#ffbf3d']];
+      var SEGS = [['plus', 'ADD', '#a06bff'], ['mail', 'MAIL', '#3fb8ff'], ['activity', 'ACTIVITY', '#2fe89e'], ['spaces', 'WORLDS', '#ffbf3d'], ['eco', 'ECOSYSTEM', '#a06bff']];
       bar = document.createElement('nav'); bar.id = 'naya-notif-bar'; bar.className = 'notif-bar';
       bar.setAttribute('aria-label', 'Notifications');
       var row = document.createElement('div'); row.className = 'notif-row';
       SEGS.forEach(function (s) {
         var b = document.createElement('button'); b.type = 'button'; b.className = 'notif-seg';
         b.setAttribute('data-notif', s[0]); b.style.setProperty('--nc', s[2]);
-        b.setAttribute('aria-label', s[1] + ' — open');
-        b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span><span class="notif-lbl">' + s[1] + '</span>';
-        b.addEventListener('click', function () { self.tap(s[0]); });
+        b.setAttribute('aria-label', (window.mwTr?window.mwTr(s[1]):s[1]) + ' — ' + (window.mwTr?window.mwTr('open'):'open'));
+        b.setAttribute('title', (window.mwTr?window.mwTr(s[1]):s[1]));
+        b.innerHTML = '<span class="notif-tile">' + ICONS[s[0]] + '<span class="notif-count">0</span></span>';
+        b.addEventListener('click', function () { if (s[0] === 'plus') { if (window.fcTogglePlusMenu) window.fcTogglePlusMenu(); return; } self.tap(s[0]); });
         row.appendChild(b);
       });
       bar.appendChild(row); document.body.appendChild(bar);
@@ -15222,14 +15152,12 @@ window.NayaNotif = window.NayaNotif || {
     var t=document.getElementById('nsbTopstack')||document.getElementById('nsbTop');
     var tr=document.getElementById('naya-notif-bar');
     if(t)document.body.style.paddingTop=t.offsetHeight+'px';
-    /* HUB-PERSONAL ALIGNMENT 2026-11-16 (H1): the bottom clearance is
-       the whole three-bar stack — Bar 1 + trio + Smart Bar — measured
-       live, so the last card always clears the stack top. A bar hidden
-       by Settings (display:none) measures 0 and drops out of the sum;
-       a folded bar still measures its height, so content never jumps. */
+    /* PERSONAL CORRECTION 2026-11-16 (item 1): the bottom clearance is
+       THE FIVE alone — measured live, so the last card always clears the
+       five. A folded bar still measures its height, so content never jumps. */
     function visH(el){ if(!el) return 0; var cs; try{ cs=getComputedStyle(el); }catch(e){ return 0; } if(!cs||cs.display==='none'||cs.visibility==='hidden') return 0; return el.offsetHeight||0; }
     var pb=0;
-    pb+=visH(document.getElementById('obb-bar'))+visH(tr)+visH(document.getElementById('nsbBottom'));
+    pb+=visH(tr)+visH(document.getElementById('nsbBottom'));
     document.body.style.paddingBottom=pb+'px';
   }
   window.addEventListener('resize',pad); pad(); setTimeout(pad,800);
@@ -21581,7 +21509,7 @@ function mwSetFeedPill(key){
      separate IIFE; resolve through window (exposed there). The bare typeof
      guard silently skipped the repaint, so a pill click never filtered. */
   var pcCur=pcFeedKey(MW_FEED.cur);
-  if((pcCur==='personal'||pcCur==='public') && typeof window.mwPaintWallPosts==='function') window.mwPaintWallPosts(window.MW_WALL_POSTS||[]);
+  if((pcCur==='personal'||pcCur==='public'||pcCur==='world'||pcCur==='worlds') && typeof window.mwPaintWallPosts==='function') window.mwPaintWallPosts(window.MW_WALL_POSTS||[]);
   else if(pcCur==='naya' && typeof mwPaintNayaFeed==='function') mwPaintNayaFeed();
 }
 function mwRevealWallCards(){
@@ -21607,31 +21535,38 @@ window.mwRevealWallCards = mwRevealWallCards;
   });
 })();
 function mwApplyFeedTab(key){
-  /* PERSONAL-COMPLETE (Shawn 2026-11-13): three tabs — Personal (your own smart
-     notes), Public smart feed (the collective), Naya Notes (green). The wall
-     panel is shared by Personal and Public; Personal shows only the owner's own
-     posts (the mine filter lives in mwPaintWallPosts, keyed off the active tab).
-     The old signature took no argument and ignored the feedname callers' keys;
-     it now accepts the key and stores it. */
+  /* PERSONAL CORRECTION 2026-11-16 (items 4 + 10, Shawn 15:46Z): four
+     tabs — Personal (yours), Collective (everybody's, together — the public
+     feed IS the collective feed), World (the world you're in), Worlds (all
+     of them — the Worlds tab opens the picker, it is not a feed). Naya Notes
+     is no longer a tab: the old 'naya' key lands on Personal with the Naya
+     Notes type chip on, so tapping the chip shows only Naya Notes in the
+     feed. 'worlds' (stored preferences, old callers) lands on World. The
+     #mwFeedNaya panel stays hidden — the wall's topic:naya filter is the
+     Naya Notes feed now. The old signature took no argument and ignored the
+     feedname callers' keys; it now accepts the key and stores it. */
   var raw=key||mwGet('feedtab','personal');
   var t=pcFeedKey(raw);
-  if(['personal','public','naya','worlds'].indexOf(t)<0) t='personal';
-  if(key) mwPut('feedtab', t);
+  var legacyNaya=(t==='naya');
+  if(t==='worlds') t='world';
+  if(legacyNaya) t='personal';
+  if(['personal','public','world'].indexOf(t)<0) t='personal';
+  if(key||legacyNaya||raw==='worlds') mwPut('feedtab', t);
   MW_FEED.cur=t;
-  var tabs={personal:$('mwTabSmart'),public:$('mwTabNaya'),naya:$('mwTabActivity'),worlds:$('pcWorldsTab')};
-  var names={personal:$('mwFeedNameSmart'),public:$('mwFeedNameNaya'),naya:$('mwFeedNameActivity'),worlds:$('mwFeedNameWorld')};
+  var tabs={personal:$('mwTabSmart'),public:$('mwTabNaya'),naya:$('mwTabActivity'),world:$('pcWorldTab'),worlds:$('pcWorldsTab')};
+  var names={personal:$('mwFeedNameSmart'),public:$('mwFeedNameNaya'),naya:$('mwFeedNameActivity'),world:$('mwFeedNameWorld'),worlds:$('mwFeedNameWorld')};
   Object.keys(tabs).forEach(function(k){
     if(tabs[k]){ tabs[k].classList.toggle('active', k===t); tabs[k].setAttribute('aria-selected', k===t?'true':'false'); }
     if(names[k]) names[k].hidden=(k!==t);
   });
-  var wall=$('os-wall-list'); if(wall) wall.hidden=(t!=='personal'&&t!=='public'&&t!=='worlds');
-  var ny=$('mwFeedNaya'); if(ny) ny.hidden=(t!=='naya');
+  var wall=$('os-wall-list'); if(wall) wall.hidden=(t!=='personal'&&t!=='public'&&t!=='world');
+  var ny=$('mwFeedNaya'); if(ny) ny.hidden=true;
   /* F5 — the filter ribbon follows the visible panel (Personal: your authors;
-     Public: all authors; Naya: categories). The filter resets to "All" on
-     every tab switch. */
-  MW_FEED_PILL='all'; window.MW_FEED_PILL='all'; mwBuildFeedPills();
-  if(t==='naya') mwLoadNayaFeed();
-  else if(t==='public'){ if(typeof window.mwPaintWallPosts==='function') window.mwPaintWallPosts(window.MW_PUBLIC_POSTS||[]); if(typeof window.pcLoadPublicWall==='function') window.pcLoadPublicWall(); }
+     Collective: all authors; World: the world's authors). The filter resets
+     to "All" on every tab switch — except the legacy Naya Notes landing,
+     which keeps the Naya Notes type chip on. */
+  MW_FEED_PILL=legacyNaya?'topic:naya':'all'; window.MW_FEED_PILL=MW_FEED_PILL; mwBuildFeedPills();
+  if(t==='public'){ if(typeof window.mwPaintWallPosts==='function') window.mwPaintWallPosts(window.MW_PUBLIC_POSTS||[]); if(typeof window.pcLoadPublicWall==='function') window.pcLoadPublicWall(); }
   else if(typeof window.mwPaintWallPosts==='function') window.mwPaintWallPosts(window.MW_WALL_POSTS||[]);
 }
 window.mwApplyFeedTab = mwApplyFeedTab;
@@ -22509,7 +22444,8 @@ var MW_I18N={
   "Presented by Naya": "Präsentiert von Naya",
   "Project Intelligence": "Projektintelligenz",
   "Public profile": "Öffentliches Profil",
-  "Public feed": "Public Feed",
+  "Collective": "Collective",
+  "World": "World",
   "Put this app on your home screen — it opens like any other app, no browser bars.": "Setze diese App auf deinen Startbildschirm — sie öffnet sich wie jede andere App, ohne Browserleisten.",
   "Quick Capture": "Schnelle Notiz",
   "Quiet — the first post, note or invite lights the needle.": "Ruhe — der erste Beitrag, die erste Notiz oder Einladung lässt die Nadel leuchten.",
@@ -22577,7 +22513,7 @@ var MW_I18N={
   "Shares": "Geteiltes",
   "Shawn’s Naya Notes ↓": "Shawns Naya-Notizen ↓",
   "Shawn’s Personal feed ↓": "Shawns persönlicher Feed ↓",
-  "Shawn’s Public feed ↓": "Shawns Public Feed ↓",
+  "Shawn’s Collective feed ↓": "Shawns Collective Feed ↓",
   "Show all": "Alle anzeigen",
   "Show all ": "Alle anzeigen ",
   "Show only people above the match you choose. Lower it to see everyone again.": "Nur Personen über dem von dir gewählten Match anzeigen. Stell ihn runter, um wieder alle zu sehen.",
@@ -23317,7 +23253,8 @@ var MW_I18N={
   "Presented by Naya": "Presentado por Naya",
   "Project Intelligence": "Inteligencia de Proyecto",
   "Public profile": "Perfil público",
-  "Public feed": "Feed público",
+  "Collective": "Colectivo",
+  "World": "Mundo",
   "Put this app on your home screen — it opens like any other app, no browser bars.": "Coloca esta aplicación en tu pantalla de inicio: se abre como cualquier otra aplicación, sin barras de navegador.",
   "Quick Capture": "Captura rápida",
   "Quiet — the first post, note or invite lights the needle.": "Silencio — la primera publicación, nota o invitación enciende la aguja.",
@@ -23385,7 +23322,7 @@ var MW_I18N={
   "Shares": "Compartidos",
   "Shawn’s Naya Notes ↓": "Las Notas Naya de Shawn ↓",
   "Shawn’s Personal feed ↓": "El feed Personal de Shawn ↓",
-  "Shawn’s Public feed ↓": "El Feed público de Shawn ↓",
+  "Shawn’s Collective feed ↓": "El Feed colectivo de Shawn ↓",
   "Show all": "Mostrar todo",
   "Show all ": "Mostrar todo ",
   "Show only people above the match you choose. Lower it to see everyone again.": "Muestra solo a las personas por encima de la coincidencia que elijas. Bájala para ver a todos de nuevo.",
@@ -24125,7 +24062,8 @@ var MW_I18N={
   "Presented by Naya": "Présenté par Naya",
   "Project Intelligence": "Intelligence de Projet",
   "Public profile": "Profil public",
-  "Public feed": "Feed public",
+  "Collective": "Collectif",
+  "World": "Monde",
   "Put this app on your home screen — it opens like any other app, no browser bars.": "Mettez cette application sur votre écran d’accueil – elle s’ouvre comme n’importe quelle autre application, sans barres de navigateur.",
   "Quick Capture": "Capture rapide",
   "Quiet — the first post, note or invite lights the needle.": "Calme — la première publication, note ou invitation allume l’aiguille.",
@@ -24193,7 +24131,7 @@ var MW_I18N={
   "Shares": "Partages",
   "Shawn’s Naya Notes ↓": "Les Notes Naya de Shawn ↓",
   "Shawn’s Personal feed ↓": "Le fil Personnel de Shawn ↓",
-  "Shawn’s Public feed ↓": "Le Feed public de Shawn ↓",
+  "Shawn’s Collective feed ↓": "Le Feed collectif de Shawn ↓",
   "Show all": "Tout afficher",
   "Show all ": "Tout afficher ",
   "Show only people above the match you choose. Lower it to see everyone again.": "N’afficher que les personnes au-dessus du match que vous choisissez. Baissez-le pour revoir tout le monde.",
@@ -24845,7 +24783,7 @@ function mwInit(){
     } else if(t.id==='mwFeedNameActivity'){
       window.mwApplyFeedTab('naya'); var f3=$('mwFeedNaya'); if(f3) f3.scrollIntoView({behavior:'smooth',block:'start'});
     } else if(t.id==='mwFeedNameWorld'){
-      window.mwApplyFeedTab('worlds'); var f4=$('os-wall-list'); if(f4) f4.scrollIntoView({behavior:'smooth',block:'start'});
+      window.mwApplyFeedTab('world'); var f4=$('os-wall-list'); if(f4) f4.scrollIntoView({behavior:'smooth',block:'start'});
     }
   });
   document.addEventListener('click', function(e){
@@ -27643,7 +27581,7 @@ document.addEventListener('keydown', function(e){
 <script>
 /* ═══ PERSONAL-COMPLETE FOLLOW-UP — the Public keyword pull (Shawn 2026-11-13 14:11Z) ═══
    The Hub shell (hub-index-main-8f2af988.html in the lane dir) carries NO search identifiers at all — 0 hits for NayaSmartBar / nsbSearch / openSearch / onSearch, verified by grep — so there is no Hub search to harvest from the shell. The search mechanism as it stands is the one already on this page: the Smart Bar search level (#nsbSearchLevel) as a centered popup (openSearchModal, popup-only law) with the host hook NayaSmartBar.onSearch. This block wires that hook — nothing new is invented, and no visible search bar is added: the one new control is a button that opens the existing popup on purpose.
-   Behaviour: typing in the popup pulls the Public feed to that keyword (pcSetPublicKeyword) and the dropdown lists the matching notes; clicking a result closes the popup onto the already-pulled feed; clearing the popup's field clears the keyword. */
+   Behaviour: typing in the popup pulls the Collective feed to that keyword (pcSetPublicKeyword) and the dropdown lists the matching notes; clicking a result closes the popup onto the already-pulled feed; clearing the popup's field clears the keyword. */
 (function(){
 "use strict";
 /* R5 Part 2 — the composer search is the Hub's search now (an input, not a
@@ -28496,7 +28434,7 @@ function pcOrganizerRerender(){
   /* HUB-PERSONAL ALIGNMENT 2026-11-16 (H3): the cluster set is the
      Hub's six, harvested verbatim (blob 76fa0f76) — the R5 split of
      'Smart Notes / Learn in a Minute' and 'The Private Network / Your
-     Vault' into two tabs each is superseded here, so the Public feed
+     Vault' into two tabs each is superseded here, so the Collective feed
      carries the same cluster tabs as the Hub. Flagged for the captain. */
   const INTEL_CLUSTERS = [
     { slug: 'intelligent-internet', label: 'The Intelligent Internet', keys: ['intelligent internet', 'new internet', 'intelligent layer', 'new net', 'intelligent net', 'civilization', 'portal', 'the new net'] },
@@ -28543,19 +28481,31 @@ function pcOrganizerRerender(){
     /* System tab heart/star overrides (stored as kind='system-override'). */
     const sysOverrides = {};
     humanStored.forEach(h => { if (h.kind === 'system-override') sysOverrides[h.id] = h; });
+    /* PERSONAL CORRECTION 2026-11-16 (items 4 + 10, Shawn 15:46Z): the
+       type chips sit FIRST in the one chip row — All / Smart Notes / Naya
+       Notes / Posts — then the topic chips follow in the same row. One
+       place to filter, nothing doubled. The three type topics are the
+       wall's own note-type buckets (pcNoteForStrip), so they are struck
+       from the topic list below — same filter, one chip each, first. */
+    const TYPE_TABS = [
+      { id: 'type-smart', label: 'Smart Notes', topic: 'Smart notes', kind: 'type', pcKey: 'topic:smart', color: '#31cb8d', heart: false, star: false },
+      { id: 'type-naya', label: 'Naya Notes', topic: 'Naya notes', kind: 'type', pcKey: 'topic:naya', color: '#a06bff', heart: false, star: false },
+      { id: 'type-post', label: 'Posts', topic: 'Posts', kind: 'type', pcKey: 'topic:post', color: '#3fb8ff', heart: false, star: false }
+    ];
+    const TYPE_TOPICS = ['Smart notes', 'Naya notes', 'Posts'];
     const sysTabs = [{ id: 'all', label: 'All', topic: null, kind: 'system', pcKey: 'all',
         heart: !!(sysOverrides['all'] && sysOverrides['all'].heart),
         star: !!(sysOverrides['all'] && sysOverrides['all'].star) }]
       .concat(INTEL_CLUSTERS.map(c => ({ id: 'cluster-' + c.slug, label: c.label, topic: null, cluster: c.slug, kind: 'system', pcKey: 'cluster:' + c.slug, heart: false, star: false })))
-      .concat(seen.map(t => {
+      .concat(seen.filter(function(t){ return TYPE_TOPICS.indexOf(t) < 0; }).map(t => {
         const id = topicSlug(t);
         const ov = sysOverrides[id];
         return { id, label: t, topic: t, kind: 'system', pcKey: pcKeyForTopic(t),
           heart: !!(ov && ov.heart), star: !!(ov && ov.star) };
       }));
-    const tabs = sortedTabs(
-      sysTabs.concat(humanStored.filter(h => h.kind !== 'system-override').map(h => ({ id: h.id, label: h.label, topic: h.topic, kind: 'human', pcKey: pcKeyForTopic(h.topic), heart: h.heart, star: h.star })))
-    );
+    const tabs = [sysTabs[0]].concat(TYPE_TABS, sortedTabs(
+      sysTabs.slice(1).concat(humanStored.filter(h => h.kind !== 'system-override').map(h => ({ id: h.id, label: h.label, topic: h.topic, kind: 'human', pcKey: pcKeyForTopic(h.topic), heart: h.heart, star: h.star })))
+    ));
     /* R5 SEAM — the active tab follows Personal's filter key (MW_FEED_PILL), not the Hub's router state. */
     pcActiveSmartTab = (tabs.find(function(t){ return t.pcKey === (window.MW_FEED_PILL || 'all'); }) || tabs[0]).id;
 
@@ -28612,6 +28562,7 @@ function pcOrganizerRerender(){
     function tabMenuAction(act) {
       closeTabPanels();
       const t = tabMenuTab; if (!t) return;
+      if (t.kind === 'type') { toast('Type chips stay — All, Smart Notes, Naya Notes, Posts filter the feed by kind.'); return; }
       if (t.kind === 'system' && (act === 'remove')) {
         toast('System tabs stay — they mirror your real topics.');
         return;
@@ -28699,7 +28650,7 @@ function pcOrganizerRerender(){
     function snPill(t) {
       const b = el('button', 'smart-tab' + (t.id === pcActiveSmartTab ? ' active' : '') +
         (t.heart ? ' heart' : '') + (t.star ? ' star' : ''));
-      b.style.setProperty('--tc', (t.cluster && CLUSTER_COLORS[t.cluster]) || tabColor(t.topic || t.label));
+      b.style.setProperty('--tc', t.color || (t.cluster && CLUSTER_COLORS[t.cluster]) || tabColor(t.topic || t.label));
       b.setAttribute('role', 'tab');
       b.setAttribute('aria-selected', t.id === pcActiveSmartTab ? 'true' : 'false');
       /* R5 SEAM 8 — the page's own ribbon mechanism: the feed-board block
@@ -28708,10 +28659,11 @@ function pcOrganizerRerender(){
          chips carry the same attribute, so a tap runs the real setter. */
       b.setAttribute('data-mw-pill', t.pcKey || 'all');
       b.title = t.kind === 'human' ? 'Your tab · ' + t.topic + ' · saved on this device'
-        : (t.cluster ? 'Category · ' + t.label + ' — Intel Today' : (t.topic ? 'Topic · ' + t.topic : 'The full feed — everything, newest first'));
+        : (t.kind === 'type' ? 'Type · ' + t.label + ' — only ' + t.label + ' in the feed' : (t.cluster ? 'Category · ' + t.label + ' — Intel Today' : (t.topic ? 'Topic · ' + t.topic : 'The full feed — everything, newest first')));
       b.innerHTML = '<span class="sn-label">' + esc(t.label) + '</span>' +
         (t.heart ? '<span class="sn-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.7-9C.7 7.9 3 4.5 6.6 4.5c2 0 3.9 1.1 5.4 3 1.5-1.9 3.4-3 5.4-3 3.6 0 5.9 3.4 4.3 7-2.2 4.4-9.7 9-9.7 9z"/></svg></span>' :
          t.star ? '<span class="sn-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg></span>' : '');
+      if (t.kind !== 'type') {
       const more = el('button', 'sn-more');
       /* R3 — the tab-options button is a drawn icon button now: three white
          dots as SVG on the obsidian chip, lit in the tab's colour on hover —
@@ -28721,9 +28673,10 @@ function pcOrganizerRerender(){
       more.setAttribute('aria-label', 'Tab options for ' + t.label);
       more.addEventListener('click', ev => { ev.stopPropagation(); openTabMenu(t, b); });
       b.appendChild(more);
+      }
       const go = () => { pcGoTab(t); };
       b.addEventListener('click', go);
-      b.addEventListener('contextmenu', ev => { ev.preventDefault(); openTabMenu(t, b); });
+      if (t.kind !== 'type') b.addEventListener('contextmenu', ev => { ev.preventDefault(); openTabMenu(t, b); });
       /* Roving keyboard: arrows move, Home/End jump. */
       b.addEventListener('keydown', ev => {
         if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(ev.key)) return;
@@ -28787,7 +28740,7 @@ window.pcIntelClusterOf = intelClusterOf;
 function pcEsc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
 
 /* Part 2 — the harvested search filters the ACTIVE tab's wall in place. On
-   Naya Notes (which has no keyword) it pulls the Public feed, as the popup
+   Naya Notes (which has no keyword) it pulls the Collective feed, as the popup
    does. Clearing restores the view you are on (no tab yank). */
 window.pcHubSearchKeyword=function(q){
   window.MW_PUBLIC_KEYWORD=(q||'').trim();
@@ -29353,7 +29306,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
         +'<span class="fc-pick-match"><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></b><i>thing</i></span></button>'
         +'<button type="button" class="pc-world-fav" data-pc-world-fav="'+pcEsc(w.name)+'" aria-pressed="'+fav+'" aria-label="'+(fav?'In my feed \u2014 tap to remove':'Feature in my feed')+'">'+(fav?'<svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>')+'<span class="pc-fav-lab">'+(fav?'In my feed':'Feature in my feed')+'</span></button>'
         +'</div>';
-    }).join('');
+    }).join('') + '<div class="pc-world-row"><button type="button" class="fc-pick pc-world-add" data-pc-world-add><span class="fc-pick-av" style="--cc:#e84fff">+</span><span class="fc-pick-txt"><b>Add a new world</b><i>Start a world of your own</i></span></button></div>';
   }
   window.fcRenderWorldPicker=fcRenderWorldPicker;
   window.fcOpenWorldPicker=function(){
@@ -29444,24 +29397,26 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
     if(!e.target||!e.target.closest) return;
     var pick=e.target.closest('[data-pc-world-pick]');
     if(pick){ var nm=pick.getAttribute('data-pc-world-pick'); var ws=pcWorlds();
-      for(var i=0;i<ws.length;i++){ if(ws[i].name===nm){ if(typeof window.fcClosePicker==='function') window.fcClosePicker(); pcSetWorldObj(ws[i]); window.mwApplyFeedTab('worlds'); break; } } return; }
+      for(var i=0;i<ws.length;i++){ if(ws[i].name===nm){ if(typeof window.fcClosePicker==='function') window.fcClosePicker(); pcSetWorldObj(ws[i]); window.mwApplyFeedTab('world'); break; } } return; }
     var fav=e.target.closest('[data-pc-world-fav]');
     if(fav){ e.stopPropagation(); pcToggleFav(fav.getAttribute('data-pc-world-fav')); return; }
     var add=e.target.closest('[data-pc-add-world]');
     if(add){ e.stopPropagation(); window.fcOpenWorldPicker(); return; }
+    var wadd=e.target.closest('[data-pc-world-add]');
+    if(wadd){ e.stopPropagation(); if(typeof window.fcClosePicker==='function') window.fcClosePicker(); if(typeof window.fcOpenWorld==='function') window.fcOpenWorld(); return; }
     var dr=e.target.closest('[data-pc-world-drawer]');
     if(dr){ e.preventDefault(); var dn=dr.getAttribute('data-pc-world-drawer');
       var rd=document.getElementById('os-drawer-right'); if(rd) rd.classList.remove('open');
       if(typeof window.pcSyncDrawerBar==='function'){ try{ window.pcSyncDrawerBar(); }catch(err){} }
-      window.pcSetWorld(dn); window.mwApplyFeedTab('worlds'); return; }
+      window.pcSetWorld(dn); window.mwApplyFeedTab('world'); return; }
   });
   var favHost=document.getElementById('pcFavWorldTabs');
   if(favHost) favHost.addEventListener('click', function(e){
     var tab=e.target&&e.target.closest?e.target.closest('[data-pc-world-tab]'):null;
-    if(tab){ e.stopPropagation(); window.pcSetWorld(tab.getAttribute('data-pc-world-tab')); window.mwApplyFeedTab('worlds'); }
+    if(tab){ e.stopPropagation(); window.pcSetWorld(tab.getAttribute('data-pc-world-tab')); window.mwApplyFeedTab('world'); }
   });
   var wt=document.getElementById('pcWorldsTab');
-  if(wt) wt.addEventListener('click', function(ev){ ev.stopPropagation(); window.mwApplyFeedTab('worlds'); });
+  if(wt) wt.addEventListener('click', function(ev){ ev.stopPropagation(); window.fcOpenWorldPicker(); });
   var chip=document.getElementById('pcSearchScope');
   if(chip) chip.addEventListener('click', function(ev){ ev.stopPropagation(); window.fcOpenWorldPicker(); });
   /* Init: favorites + the current world's scope (quiet — no toast on load). */
@@ -29552,7 +29507,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
 .ph-connect,.ph-msg{box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -3px 8px rgba(0,0,0,.4),0 6px 18px rgba(0,0,0,.5);}
 .ph-connect svg,.ph-msg svg{width:15px;height:15px;display:inline-block;vertical-align:-2px;margin-right:6px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.5));}
 .smart-tab{box-shadow:0 0 14px -2px var(--tc),inset 0 1px rgba(255,255,255,.18),inset 0 -3px 8px rgba(0,0,0,.4),0 8px 20px rgba(0,0,0,.5);}
-.smart-tab.active{border-color:var(--tc);background:color-mix(in srgb, var(--tc) 26%, #050505);transform:translateY(-2px);box-shadow:0 0 28px var(--tc),inset 0 0 0 1.5px var(--tc),inset 0 1px rgba(255,255,255,.2),0 8px 20px rgba(0,0,0,.5);text-shadow:0 0 12px var(--tc);}
+.smart-tab.active{border-color:var(--tc);background:color-mix(in srgb, var(--tc) 26%, #050505);transform:translateY(-2px);box-shadow:0 0 12px -2px var(--tc),inset 0 0 0 1.5px var(--tc),inset 0 1px rgba(255,255,255,.2),0 8px 20px rgba(0,0,0,.5);text-shadow:0 0 5px var(--tc);}
 .smart-tab .sn-more svg circle{fill:url(#r5DotGrad);stroke:rgba(255,255,255,.85);stroke-width:.6;}
 .smart-tab .sn-more svg{filter:drop-shadow(0 1px 2px rgba(0,0,0,.65));}
 .smart-tab .sn-mark{display:inline-flex}
@@ -31506,7 +31461,7 @@ if(typeof window.pcRenderRailForTab==='function' && !window.pcRenderRailForTab._
 'use strict';
 /* ── R2 — the rail must agree with itself: click vs reload. ──
    MECHANISM (measured on the base, both widths): mwInit() runs during
-   parse and mwApplyFeedTab() reads the STORED tab ('public'/'naya') and
+   parse and mwApplyFeedTab() reads the STORED tab ('public'/'world') and
    flips aria-selected on the tab strip — but the rail script parses
    LATER and unconditionally paints 'personal' (PC_RAIL_TAB='personal',
    hardcoded; the parse-time pcRenderRailForTab call takes no tab from
@@ -32015,5 +31970,406 @@ document.addEventListener('keydown', function(e){
   if(b) b.click();
 });
 })();
+</script>
+<script>
+/* ═══ PERSONAL CORRECTION 2026-11-16 (item 5, Shawn 15:35Z) — About +
+   Skills unfold AS YOU GO DOWN ═══
+   The finding: About's layers past the motto only opened behind the
+   next-thing button (the closed layers are display:none, so scrolling
+   could never reveal them), and each Skills card's "Why it matters"
+   only opened behind its ▾ button. Both now present as you scroll down:
+   - About: when the next-thing button scrolls into view, it opens the
+     next layer by itself (the button's own click — same path, same
+     refresh). The button then moves down; scrolling further opens the
+     next. A layer the citizen closed by its own head is never re-opened
+     by the scroll — their close stands until they tap the button or the
+     head again.
+   - Skills: when a skill card scrolls into view in unfold mode, its
+     "Why it matters" opens (the toggle's own open branch). A card the
+     citizen closed by its button is never re-opened by the scroll.
+   Deck mode hides both stacks, so the observers never fire there. */
+(function(){
+'use strict';
+/* --- About: the next button opens itself when it comes into view --- */
+var about=document.getElementById('about');
+var aboutClosedByHand=new WeakSet();
+function aboutNextTarget(){
+  /* The next-thing button names the first closed layer (direct children
+     only — the unfold script's own set). Declared at IIFE level, not
+     inside if(about): strict mode scopes block-level function declarations
+     to their block, and the scroll check below reads it from outside. */
+  if(!about) return null;
+  var kids=about.children;
+  for(var i=0;i<kids.length;i++){ var l=kids[i]; if(l.classList&&l.classList.contains('ib-layer')&&!l.classList.contains('open')) return l; }
+  return null;
+}
+
+if(about){
+  document.addEventListener('click',function(e){
+    var h=e.target&&e.target.closest?e.target.closest('#about .ib-layer-head'):null;
+    if(!h) return;
+    var layer=h.closest('.ib-layer'); if(!layer) return;
+    /* The head toggle runs first (registered at parse); read the state after it. */
+    setTimeout(function(){
+      if(layer.classList.contains('open')) aboutClosedByHand.delete(layer);
+      else aboutClosedByHand.add(layer);
+    },0);
+  });
+  if('IntersectionObserver' in window){
+    var nextBtn=null;
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        if(about.classList.contains('os-about-mode-deck')) return;
+        var target=aboutNextTarget(); if(!target) return;
+        if(aboutClosedByHand.has(target)) return;
+        var btn=about.querySelector('.os-about-next'); if(!btn) return;
+        btn.click();
+      });
+    },{rootMargin:'0px 0px -15% 0px',threshold:0});
+    /* The button is re-positioned by refreshNext on every open; re-observe
+       it whenever it moves (a MutationObserver on About is the cheap watch). */
+    var mo=new MutationObserver(function(){
+      var b=about.querySelector('.os-about-next');
+      if(b && b!==nextBtn){ if(nextBtn) io.unobserve(nextBtn); nextBtn=b; io.observe(b); }
+      if(!b && nextBtn){ io.unobserve(nextBtn); nextBtn=null; }
+    });
+    mo.observe(about,{childList:true,subtree:true});
+    var first=about.querySelector('.os-about-next');
+    if(first){ nextBtn=first; io.observe(first); }
+  }
+}
+  /* The observer fires on moves, but a button that merely sits in view
+     after a scroll settles can miss its notification (proven at 1440:
+     the button sat intersecting at 596px and never opened). The scroll
+     itself is the reliable trigger — every scroll re-checks the button's
+     place and opens the next layer when it is on screen. */
+  var aboutTicking=false;
+  function aboutMaybeOpen(){
+    aboutTicking=false;
+    if(!about.classList.contains('on')) return;
+    if(about.classList.contains('os-about-mode-deck')) return;
+    var btn=about.querySelector('.os-about-next'); if(!btn) return;
+    var r=btn.getBoundingClientRect();
+    /* A fast scroll can jump the button clean past the viewport — it must
+       open anyway once it is at or above the line (scrolled past means
+       reached). The 'on' check above is what stops this firing while
+       About is hidden (a hidden button reads as 0,0). */
+    if(r.top < window.innerHeight*0.85){
+      var target=aboutNextTarget(); if(!target) return;
+      if(aboutClosedByHand.has(target)) return;
+      btn.click();
+    }
+  }
+  window.addEventListener('scroll',function(){
+    if(!aboutTicking){ aboutTicking=true; requestAnimationFrame(aboutMaybeOpen); }
+  },{passive:true});
+/* --- Skills: a card's "Why it matters" opens when the card comes into view --- */
+var skillsList=document.getElementById('os-skills-list');
+var skillsClosedByHand=new WeakSet();
+function skillOpen(card){
+  var why=card.querySelector('.sa-skill-why'); if(!why) return;
+  var btn=card.querySelector('.sa-skill-more'); if(!btn) return;
+  if(!why.hidden) return;
+  why.hidden=false;
+  btn.setAttribute('aria-expanded','true');
+  btn.textContent='Why it matters \u25b4';
+}
+if(skillsList){
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('.sa-skill-more'):null;
+    if(!b) return;
+    var card=b.closest('.sa-skill'); if(!card) return;
+    /* skillToggle (registered at parse) runs first; read the state after it. */
+    setTimeout(function(){
+      var why=card.querySelector('.sa-skill-why');
+      if(why && why.hidden) skillsClosedByHand.add(card);
+      else skillsClosedByHand.delete(card);
+    },0);
+  });
+  if('IntersectionObserver' in window){
+    var sio=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        var card=en.target;
+        var view=card.closest('[data-os-view="skills"]');
+        if(view && view.classList.contains('os-skills-mode-deck')) return;
+        if(skillsClosedByHand.has(card)) return;
+        skillOpen(card);
+      });
+    },{rootMargin:'0px 0px -10% 0px',threshold:0.15});
+    Array.prototype.forEach.call(skillsList.querySelectorAll('.sa-skill'),function(c){ sio.observe(c); });
+    if(window.MutationObserver){
+      new MutationObserver(function(muts){
+        muts.forEach(function(m){
+          Array.prototype.forEach.call(m.addedNodes,function(n){
+            if(n.nodeType===1 && n.classList && n.classList.contains('sa-skill')) sio.observe(n);
+          });
+        });
+      }).observe(skillsList,{childList:true});
+    }
+  }
+}
+  /* Scroll-driven twin of the observer above: every scroll opens the
+     skill cards currently on screen (unfold mode, never a card the
+     citizen closed by hand). */
+  var skillsTicking=false;
+  function skillsMaybeOpen(){
+    skillsTicking=false;
+    var view=document.querySelector('[data-os-view="skills"]');
+    if(!view || !view.classList.contains('on')) return;
+    if(view.classList.contains('os-skills-mode-deck')) return;
+    Array.prototype.forEach.call(skillsList.querySelectorAll('.sa-skill'),function(card){
+      if(skillsClosedByHand.has(card)) return;
+      var r=card.getBoundingClientRect();
+      /* Same jumped-past rule as About: a card at or above the line opens. */
+      if(r.top < window.innerHeight*0.9) skillOpen(card);
+    });
+  }
+  window.addEventListener('scroll',function(){
+    if(!skillsTicking){ skillsTicking=true; requestAnimationFrame(skillsMaybeOpen); }
+  },{passive:true});
+})();
+</script>
+<script>
+/* PERSONAL CORRECTION 2026-11-16 (item 6) — My World IS the calendar.
+   The month grid, Sun-first, each day lit in its own colour (Sunday purple
+   963 · Monday orange 417 · Tuesday yellow 528 · Wednesday sky blue 741 ·
+   Thursday green 639 · Friday red 396 · Saturday indigo 852). Today glows.
+   Tap a day to open your world for that day: the eight-button day menu
+   (Dashboard, Personal, Business, Space, Local, Provincial, Global,
+   Notes + Smart Notes), what went on, what you learned, the day's wisdom,
+   Intel Today, and the Daily Intelligence Report. Everything shown comes
+   from this page's own record (the wall store + the activity log) — a day
+   with no record is honestly empty, never back-filled. What is NOT here yet,
+   named plainly: weather (no source on the page), appointments / booking
+   (booking is missing, needs building), the Daily Intelligence Report
+   (no report lane on the page yet), and the three dailies' feeds (horoscope,
+   Chinese horoscope, Bible quote — toggles exist, default OFF, and say
+   "not connected yet" when on). Daily Wisdom: the day's Smart Note of the
+   Day, from the citizen's own Smart Notes, labeled as such — who writes the
+   wisdom is Shawn's call, still open. */
+(function(){
+'use strict';
+var DAY_COLORS=['#a06bff','#ff9a5a','#f1d75a','#3fb8ff','#31cb8d','#ff5e6c','#6675ff']; /* Sun..Sat */
+var DAY_COLOR_NAMES=['Purple','Orange','Yellow','Sky blue','Green','Red','Indigo'];
+var DAY_NAMES=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+var MENU=[
+  ['dashboard','Dashboard','#a06bff'],
+  ['personal','Personal','#3fb8ff'],
+  ['business','Business','#ffbf3d'],
+  ['space','Space','#e84fff'],
+  ['local','Local','#31cb8d'],
+  ['provincial','Provincial','#ff9a5a'],
+  ['global','Global','#29b6f6'],
+  ['notes','Notes + Smart Notes','#f1d75a']
+];
+var TYPE_COLORS={smart:'#31cb8d',naya:'#a06bff',post:'#3fb8ff'};
+var TYPE_NAMES={smart:'Smart Note',naya:'Naya Note',post:'Post'};
+var today=new Date();
+var todayStr=ds(today.getFullYear(),today.getMonth(),today.getDate());
+var calY=today.getFullYear(), calM=today.getMonth();
+var selDate=null;
+function pad(n){ return (n<10?'0':'')+n; }
+function ds(y,m,d){ return y+'-'+pad(m+1)+'-'+pad(d); }
+function esc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
+function $(id){ return document.getElementById(id); }
+function wallPosts(){ try{ return window.MW_WALL_POSTS||[]; }catch(e){ return []; } }
+function dayNotes(dateStr){ return wallPosts().filter(function(p){ return String(p.at||'').slice(0,10)===dateStr; }); }
+function noteType(p){ return (p.j&&p.j.noteType)||'post'; }
+function noteTitle(p){
+  var j=p.j||{};
+  if(j.t) return String(j.t);
+  var b=String(j.b||'').replace(/\s+/g,' ').trim();
+  return b? (b.length>70? b.slice(0,69).replace(/\s+$/,'')+'\u2026' : b) : 'Untitled';
+}
+function noteExcerpt(p,n){
+  var b=String((p.j&&p.j.b)||'').replace(/\s+/g,' ').trim();
+  return b? (b.length>n? b.slice(0,n-1).replace(/\s+$/,'')+'\u2026' : b) : '';
+}
+function dayActivity(dateStr){
+  var items=[];
+  try{
+    if(typeof ActivityLog!=='undefined'){ items=ActivityLog.read(); }
+    /* The ActivityLog global is undefined in this build (verified live) —
+       fall back to its own store key, which the page's own handlers write. */
+    else { items=JSON.parse(localStorage.getItem('naya.activity')||'[]'); }
+  }catch(e){ items=[]; }
+  if(!Array.isArray(items)) return [];
+  return items.filter(function(en){
+    var t=en.ts||en.at||0; var d=new Date(typeof t==='number'?t:Date.parse(t));
+    return !isNaN(d.getTime()) && ds(d.getFullYear(),d.getMonth(),d.getDate())===dateStr;
+  });
+}
+function fmtDate(dateStr){ try{ return new Date(dateStr+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}); }catch(e){ return dateStr; } }
+function dailies(){
+  var d={horoscope:false,chinese:false,bible:false};
+  try{ var raw=localStorage.getItem('mw.cal.dailies.v1'); if(raw){ var s=JSON.parse(raw); if(s&&typeof s==='object'){ d.horoscope=!!s.horoscope; d.chinese=!!s.chinese; d.bible=!!s.bible; } } }catch(e){}
+  return d;
+}
+function saveDailies(d){ try{ localStorage.setItem('mw.cal.dailies.v1',JSON.stringify(d)); }catch(e){} }
+function renderGrid(){
+  var label=$('mwCalMonthLabel'); if(label) label.textContent=MONTHS[calM]+' '+calY;
+  var grid=$('mwCalGrid'); if(!grid) return;
+  var startDow=new Date(calY,calM,1).getDay();
+  var daysIn=new Date(calY,calM+1,0).getDate();
+  var prevDays=new Date(calY,calM,0).getDate();
+  var cells='';
+  for(var i=0;i<42;i++){
+    var dnum, dt, inMonth=true;
+    if(i<startDow){ dnum=prevDays-startDow+1+i; var pm=calM-1, py=calY; if(pm<0){pm=11;py--;} dt=ds(py,pm,dnum); inMonth=false; }
+    else if(i<startDow+daysIn){ dnum=i-startDow+1; dt=ds(calY,calM,dnum); }
+    else { dnum=i-(startDow+daysIn)+1; var nm=calM+1, ny=calY; if(nm>11){nm=0;ny++;} dt=ds(ny,nm,dnum); inMonth=false; }
+    var dow=(startDow+i)%7;
+    var col=DAY_COLORS[dow];
+    var n=dayNotes(dt).length;
+    var isToday=(dt===todayStr), isSel=(dt===selDate);
+    cells+='<button type="button" class="mw-cal-cell'+(inMonth?'':' mw-cal-dim')+(isToday?' mw-cal-today':'')+(isSel?' mw-cal-sel':'')+'" data-mw-cal-date="'+dt+'" style="--dc:'+col+'" aria-label="'+DAY_NAMES[dow]+', '+fmtDate(dt)+(isToday?', today':'')+'"><b>'+dnum+'</b><i>'+(isToday?'today':(n?(n+(n===1?' note':' notes')):''))+'</i></button>';
+  }
+  grid.innerHTML=cells;
+}
+function paintDay(dateStr){
+  var box=$('mwCalDay'); if(!box) return false;
+  var dt=new Date(dateStr+'T12:00:00');
+  var dow=dt.getDay();
+  var col=DAY_COLORS[dow];
+  var notes=dayNotes(dateStr);
+  var smarts=notes.filter(function(p){ return noteType(p)==='smart'; });
+  var nayas=notes.filter(function(p){ return noteType(p)==='naya'; });
+  var posts=notes.filter(function(p){ return noteType(p)==='post'; });
+  var acts=dayActivity(dateStr);
+  var isFuture=dateStr>todayStr, isPast=dateStr<todayStr;
+  box.style.setProperty('--dc',col);
+  var h='<div class="mw-cal-day-head"><div class="mw-cal-day-title"><h4>'+esc(fmtDate(dateStr))+'</h4><p>Your World for This Day &mdash; '+DAY_NAMES[dow]+' lights '+DAY_COLOR_NAMES[dow]+'.</p></div><button type="button" class="mw-cal-day-x" data-mw-cal-close aria-label="Close the day">&times;</button></div>';
+  if(isFuture){
+    h+='<p class="mw-cal-note">This day hasn\u2019t happened yet &mdash; nothing to show. Come back then.</p>';
+    box.innerHTML=h; return true;
+  }
+  h+='<div class="mw-cal-menu" role="group" aria-label="This day\u2019s world">';
+  MENU.forEach(function(m){ h+='<button type="button" class="smart-tab" data-mw-cal-menu="'+m[0]+'" style="--tc:'+m[2]+'">'+esc(m[1])+'</button>'; });
+  h+='</div>';
+  /* What went on */
+  h+='<h5 class="mw-cal-sec-h">What went on</h5>';
+  if(notes.length||acts.length){
+    var counts=[];
+    if(smarts.length) counts.push(smarts.length+(smarts.length===1?' Smart Note':' Smart Notes'));
+    if(nayas.length) counts.push(nayas.length+(nayas.length===1?' Naya Note':' Naya Notes'));
+    if(posts.length) counts.push(posts.length+(posts.length===1?' post':' posts'));
+    if(acts.length) counts.push(acts.length+(acts.length===1?' thing':' things')+' in your activity');
+    h+='<p class="mw-cal-note">'+esc(counts.join(' \u00b7 '))+'.</p>';
+    h+='<ul class="mw-cal-list">';
+    notes.slice(0,5).forEach(function(p){
+      var tp=noteType(p);
+      h+='<li><span class="mw-cal-type" style="color:'+TYPE_COLORS[tp]+'">'+esc(TYPE_NAMES[tp])+'</span>'+esc(noteTitle(p))+'</li>';
+    });
+    acts.slice(0,5).forEach(function(en){
+      h+='<li>'+esc(en.headline||en.type||'Activity')+'</li>';
+    });
+    h+='</ul>';
+  } else {
+    h+='<p class="mw-cal-note">Nothing recorded for this day yet &mdash; the first note lands here.</p>';
+  }
+  /* What you learned */
+  h+='<h5 class="mw-cal-sec-h">What you learned</h5>';
+  if(smarts.length){
+    h+='<ul class="mw-cal-list">';
+    smarts.forEach(function(p){ h+='<li>'+esc(noteTitle(p))+'</li>'; });
+    h+='</ul>';
+  } else {
+    h+='<p class="mw-cal-note">Nothing written down that day yet &mdash; the first Smart Note lands here.</p>';
+  }
+  /* Daily Wisdom — the day's Smart Note of the Day, from your own Smart Notes. */
+  h+='<h5 class="mw-cal-sec-h">Daily Wisdom</h5>';
+  if(smarts.length){
+    var w=smarts[0], ex=noteExcerpt(w,160);
+    h+='<p class="mw-cal-note"><b>'+esc(noteTitle(w))+'</b>'+(ex?' &mdash; '+esc(ex):'')+'</p><p class="mw-cal-note" style="color:rgba(255,255,255,.75)">Smart Note of the Day, from your Smart Notes today.</p>';
+  } else {
+    h+='<p class="mw-cal-note">No Daily Wisdom for this day yet &mdash; write the first Smart Note and it lands here.</p>';
+  }
+  /* Intel Today — the live room, and the Daily Intelligence Report. */
+  h+='<h5 class="mw-cal-sec-h">Intel Today</h5>';
+  h+='<p class="mw-cal-note">Intel Today is the live room &mdash; '+(isPast?'it shows today\u2019s view, live, and doesn\u2019t keep past days':'today\u2019s view, live now')+'. <a href="https://nayanet.app/rooms/today" style="color:#3fb8ff;font-weight:900;">Open Intel Today &rarr;</a></p>';
+  h+='<h5 class="mw-cal-sec-h">Daily Intelligence Report</h5>';
+  h+='<p class="mw-cal-note">No Daily Intelligence Report for this day yet.</p>';
+  /* Optional dailies — only the ones turned on, and only with honest text. */
+  var dl=dailies();
+  if(dl.horoscope||dl.chinese||dl.bible){
+    h+='<h5 class="mw-cal-sec-h">Your dailies</h5>';
+    if(dl.horoscope) h+='<p class="mw-cal-note"><b>Horoscope</b> &mdash; not connected yet.</p>';
+    if(dl.chinese) h+='<p class="mw-cal-note"><b>Chinese horoscope</b> &mdash; not connected yet.</p>';
+    if(dl.bible) h+='<p class="mw-cal-note"><b>Bible quote</b> &mdash; not connected yet.</p>';
+  }
+  box.innerHTML=h; return true;
+}
+function openDay(dateStr){
+  selDate=dateStr; renderGrid();
+  var box=$('mwCalDay'); if(!box) return;
+  paintDay(dateStr);
+  box.hidden=false;
+  try{ box.scrollIntoView({behavior:'smooth',block:'nearest'}); }catch(e){}
+}
+function closeDay(){
+  var box=$('mwCalDay'); if(box) box.hidden=true;
+  selDate=null; renderGrid();
+}
+function goFeed(dateStr){
+  window.MW_WALL_DATE=dateStr;
+  var box=$('mwCalDay'); if(box) box.hidden=true;
+  if(window.osShowView) window.osShowView('home');
+  if(typeof window.mwApplyFeedTab==='function') window.mwApplyFeedTab('personal');
+  setTimeout(function(){ var f=$('os-wall'); if(f){ try{ f.scrollIntoView({behavior:'smooth',block:'start'}); }catch(e){} } },80);
+}
+window.mwClearWallDate=function(){
+  window.MW_WALL_DATE=null;
+  if(typeof window.mwPaintWallPosts==='function') window.mwPaintWallPosts(window.MW_WALL_POSTS||[]);
+};
+function bind(){
+  var grid=$('mwCalGrid');
+  if(grid) grid.addEventListener('click',function(e){
+    var c=e.target.closest?e.target.closest('[data-mw-cal-date]'):null;
+    if(c) openDay(c.getAttribute('data-mw-cal-date'));
+  });
+  var box=$('mwCalDay');
+  if(box) box.addEventListener('click',function(e){
+    if(e.target.closest&&e.target.closest('[data-mw-cal-close]')){ closeDay(); return; }
+    var b=e.target.closest?e.target.closest('[data-mw-cal-menu]'):null;
+    if(!b) return;
+    var k=b.getAttribute('data-mw-cal-menu');
+    var d=selDate;
+    if(k==='dashboard'){ if(window.osShowView) window.osShowView('dashboard'); setTimeout(function(){ try{ window.scrollTo(0,0); }catch(e){} },80); }
+    else if(k==='personal'||k==='notes'){ if(d) goFeed(d); }
+    else if(k==='business'){ window.location.href='https://nayanet.app/business'; }
+    else if(k==='space'){ window.location.href='https://nayanet.app/space'; }
+    else if(k==='local'||k==='provincial'||k==='global'){ window.location.href='https://nayanet.app/rooms/today'; }
+  });
+  var prev=$('mwCalPrev'), next=$('mwCalNext'), tdy=$('mwCalToday');
+  function shift(m){ calM+=m; if(calM<0){calM=11;calY--;} if(calM>11){calM=0;calY++;} closeDay(); renderGrid(); }
+  if(prev) prev.addEventListener('click',function(){ shift(-1); });
+  if(next) next.addEventListener('click',function(){ shift(1); });
+  if(tdy) tdy.addEventListener('click',function(){ calY=today.getFullYear(); calM=today.getMonth(); closeDay(); renderGrid(); openDay(todayStr); });
+  var d=dailies();
+  [['mwCalDailyHoroscope','horoscope'],['mwCalDailyChinese','chinese'],['mwCalDailyBible','bible']].forEach(function(pair){
+    var cb=$(pair[0]);
+    if(cb){ cb.checked=!!d[pair[1]]; cb.addEventListener('change',function(){ var nd=dailies(); nd[pair[1]]=cb.checked; saveDailies(nd); if(selDate) paintDay(selDate); }); }
+  });
+  var x=$('mwDateFilterX');
+  if(x) x.addEventListener('click',function(){ window.mwClearWallDate(); });
+  /* The wall store lands after this script runs — re-render the grid (and the
+     open day) when the wall paints, so the day counts are real, not zero. */
+  var wl=$('os-wall-list');
+  if(wl&&window.MutationObserver){
+    var last=0;
+    var mo=new MutationObserver(function(){
+      var n=Date.now(); if(n-last<300) return; last=n;
+      renderGrid(); if(selDate) paintDay(selDate);
+    });
+    try{ mo.observe(wl,{childList:true}); }catch(e){}
+  }
+}
+bind();
+renderGrid();
+})();
+
 </script>
 </body></html>
