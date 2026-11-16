@@ -20,4 +20,4 @@ The certificate says Collective Agreement certification — the name on it is th
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2919 — ~/workspace/team-nitro/smart-notes/SN-2919-signing-makes-it-official.md*
+*Paired Smart Note: SN-2919 — Signing Makes It Official: Member of the Society of NayaNET*
