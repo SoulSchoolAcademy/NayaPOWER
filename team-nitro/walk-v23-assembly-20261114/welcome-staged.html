@@ -1533,6 +1533,17 @@ body.fp-stage-on #fpAgreement.fp-view-intro .fp-royal-lines{display:block}
 .fp-royal-lines p{margin:0 0 10px}
 .fp-royal-lines .fp-royal-signoff{margin-top:16px}
 .fp-royal-lines .fp-royal-close{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:13px;margin-bottom:0}
+/* ENTRANCE WELCOME FIX 3 — the portrait sat centred ABOVE the welcome
+   boards at 1851px, exactly as on phone (checker line 4 FAIL); the brief
+   requires it BESIDE the welcome on wide screens. At >=1024px the hero
+   (portrait + play, stacked as a side column) sits beside the welcome
+   column; below 1024px nothing changes — the hero stays centred above
+   the boards, as now. Intro view only; no bytes, labels, or copy move. */
+@media(min-width:1024px){
+body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-side{display:flex;align-items:flex-start;gap:36px;max-width:1120px;margin:0 auto 24px;padding:0 24px;box-sizing:border-box}
+body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-side .fp-welcome-hero{flex:0 0 auto;flex-direction:column;align-items:center;gap:20px;margin:0;padding:0}
+body.fp-stage-on #fpAgreement.fp-view-intro .fp-intro-side .fp-welcome{flex:1 1 auto;min-width:0;max-width:none;margin:0;padding:0}
+}
 /* ENTRANCE WELCOME FIX — the pinned bar collided with the unfolding
    boards at 390 and 1851 (pick line across board text, buttons over
    boards 2-3). In the intro view the bar is hidden and the choice lives
@@ -1882,7 +1893,7 @@ body.fp-stage-on #fpAgreement.fp-view-letterpage.fp-letter-end .letter-page-end{
 <p class="fp-zoom-hint">Tap the picture to switch fit / full size &#9670; Esc to go back</p>
 </div>
 <section id="fpAgreement" aria-label="The Collective Agreement"><div class="fp-agree-logo"><img src="/agmt-logo.jpg" alt="NayaNET"></div><div class="fp-agree-head"><p class="fp-agree-kicker">NayaNET &middot; The Collective Intelligence Network</p><h2 class="fp-agree-title">The Collective Agreement</h2><p class="fp-agree-sub">Welcome. Let&rsquo;s begin with trust.</p></div>
-<div class="fp-welcome-hero" id="fpWelcomeHero"><img class="fp-naya-portrait" src="/agmt-b06.png" alt="Naya"><button class="p3-naya-play" id="fpIntroPlay" type="button" aria-label="Naya will talk you through this page"><svg viewBox="0 0 24 24" width="24" height="24" fill="#fff" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg><span class="p3-play-tip">Naya will talk you through this page</span></button></div>
+<div class="fp-intro-side" id="fpIntroSide"><div class="fp-welcome-hero" id="fpWelcomeHero"><img class="fp-naya-portrait" src="/agmt-b06.png" alt="Naya"><button class="p3-naya-play" id="fpIntroPlay" type="button" aria-label="Naya will talk you through this page"><svg viewBox="0 0 24 24" width="24" height="24" fill="#fff" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg><span class="p3-play-tip">Naya will talk you through this page</span></button></div>
 <div class="fp-welcome" id="fpWelcome">
 <div class="fp-welcome-group" id="fpWelcomeG1">
 <article class="intel-board fp-welcome-board" style="--tone:#a06bff"><div class="ib-nutshell"><p>Hi, I&rsquo;m Naya.</p><p>Before you become part of our world, I want you to understand exactly what you&rsquo;re joining.</p></div></article>
@@ -1900,6 +1911,7 @@ body.fp-stage-on #fpAgreement.fp-view-letterpage.fp-letter-end .letter-page-end{
 <article class="intel-board fp-welcome-board" style="--tone:#e84fff"><div class="ib-nutshell"><p>We take fraud, security, and abuse seriously. Our responsibility is to develop meaningful safeguards, improve them continuously, and be accountable when something goes wrong.</p></div></article>
 <article class="intel-board fp-welcome-board" style="--tone:#6675ff"><div class="ib-nutshell"><p><b>No tricks. No hidden agenda. No promises of perfection.</b></p><p>Just a clear agreement, built on integrity, respect for life, and a genuine commitment to creating something better together.</p></div></article>
 <article class="intel-board fp-welcome-board" style="--tone:#40d3bb"><div class="ib-nutshell"><p>That&rsquo;s what we stand for.</p><p>And before you agree to anything, I want you to see the whole picture.</p></div></article>
+</div>
 </div>
 </div>
 <section class="p3-deal-unfold" id="deckUnfold" style="margin-top:24px;margin-bottom:48px">
@@ -1928,7 +1940,7 @@ body.fp-stage-on #fpAgreement.fp-view-letterpage.fp-letter-end .letter-page-end{
 <div class="deal-opening"><img class="deal-open-photo" src="/agmt-top.jpg" alt="Naya, your guide"><span class="deal-open-who">Hi, I&rsquo;m Naya.</span></div>
 <button class="deal-eye-main" id="dealEyeMain" type="button" aria-label="Read the whole letter at once"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><defs><radialGradient id="dealEyeIris" cx="38%" cy="32%" r="75%"><stop offset="0%" stop-color="#c9a7ff"/><stop offset="55%" stop-color="#7b4dff"/><stop offset="100%" stop-color="#2c0a5e"/></radialGradient></defs><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="4.6" fill="url(#dealEyeIris)" stroke="#efe6ff" stroke-width="0.7"/><circle cx="12" cy="12" r="2.1" fill="#05060a"/><circle cx="13.6" cy="10.2" r="1.1" fill="#fff" opacity="0.9"/></svg></button>
 <h1 class="deal-title">The Collective Agreement</h1>
-<nav class="letter-rail" id="letterRail" aria-label="Jump to a part"><button class="letter-rail-btn" type="button" data-beat="36" style="--dc:#a06bff"><span class="ldot" style="--dc:#a06bff"></span>The promise</button><button class="letter-rail-btn" type="button" data-beat="18" style="--dc:#3fb8ff"><span class="ldot" style="--dc:#3fb8ff"></span>What we do</button><button class="letter-rail-btn" type="button" data-beat="18" style="--dc:#2fe89e"><span class="ldot" style="--dc:#2fe89e"></span>How it works</button><button class="letter-rail-btn" type="button" data-beat="51" style="--dc:#a06bff"><span class="ldot" style="--dc:#a06bff"></span>You&rsquo;re hired</button><button class="letter-rail-btn" type="button" data-beat="66" style="--dc:#3fb8ff"><span class="ldot" style="--dc:#3fb8ff"></span>How you get paid</button></nav>
+<nav class="letter-rail" id="letterRail" aria-label="Jump to a part"><button class="letter-rail-btn" type="button" data-beat="36" style="--dc:#a06bff"><span class="ldot" style="--dc:#a06bff"></span>The promise</button><button class="letter-rail-btn" type="button" data-beat="11" style="--dc:#3fb8ff"><span class="ldot" style="--dc:#3fb8ff"></span>What we do</button><button class="letter-rail-btn" type="button" data-beat="18" style="--dc:#2fe89e"><span class="ldot" style="--dc:#2fe89e"></span>How it works</button><button class="letter-rail-btn" type="button" data-beat="51" style="--dc:#a06bff"><span class="ldot" style="--dc:#a06bff"></span>You&rsquo;re hired</button><button class="letter-rail-btn" type="button" data-beat="66" style="--dc:#3fb8ff"><span class="ldot" style="--dc:#3fb8ff"></span>How you get paid</button></nav>
 <p class="letter-steplabel" id="letterStepLabel"></p>
 <div id="letterBody">
 <article class="intel-board tone-purple letter-beat lead" data-beat="0" data-distilled><div class="ib-blocktop"><img class="deal-beat-photo" src="/agmt-top.jpg" alt="Naya speaking"><div class="ib-identity"><div></div></div></div><div class="ib-nutshell"><p>Hi, I&rsquo;m Naya.</p><p>Everybody&rsquo;s talking about artificial intelligence.</p><p>They say AI is going to take people&rsquo;s jobs, replace businesses, and change the world.</p></div><div class="ib-orb"><span class="ib-jewel" aria-hidden="true">&#9670;</span></div><div class="ib-foot"><img class="ib-foot-logo" src="/agmt-logo.jpg" alt="NayaNET"> &middot; The Collective Agreement</div><button class="p3-enter letter-next deck-next" type="button" data-beat="0">Keep reading &#9670;</button></article>
