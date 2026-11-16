@@ -20,4 +20,4 @@ The front page unfolds one beat at a time — deck, then letter — almost full 
 
 **Written by Naya for Shawn Vibert — Founder / Creator of NayaNET.**
 
-*Paired Smart Note: SN-2915 — ~/workspace/team-nitro/smart-notes/SN-2915-the-unfolding-is-the-page.md*
+*Paired Smart Note: SN-2915 — The Unfolding Is the Page*
