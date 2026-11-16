@@ -6795,6 +6795,10 @@ button.os-ld-node .os-ld-n{
 </style>
 <div class="ph-sec os-view" id="about" data-os-view="about" data-block="about">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> About Me</div>
+<div class="os-about-choice" role="group" aria-label="How to show About">
+<span class="ib-kind" style="--tone:#a06bff">How do you want to tell it?</span>
+<div class="os-about-choice-btns"><button type="button" class="ph-connect" data-os-about-view="unfold" aria-pressed="true">Unfold</button><button type="button" class="ph-msg" data-os-about-view="deck" aria-pressed="false">Presentation</button><button type="button" class="ph-msg" data-os-about-view="both" aria-pressed="false">Both</button></div>
+</div>
 <div class="ib-layer layer-purple open">
 <button class="ib-layer-head" type="button" data-os-ib-toggle aria-expanded="true"><span class="os-av os-about-orb" style="--avc:#a06bff">S</span><span class="os-jewel os-jewel-h" style="--jc:#a06bff"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M10 7.5H6.8A3.3 3.3 0 0 0 3.5 10.8V17h6.6v-6.6H6.9a1.6 1.6 0 0 1 1.5-1.7v-1.2zm10.4 0h-3.2a3.3 3.3 0 0 0-3.3 3.3V17h6.6v-6.6h-3.2a1.6 1.6 0 0 1 1.5-1.7V7.5z"/></svg></span><b>My motto</b><span class="ib-chev">▾</span></button>
 <div class="ib-layer-body">
@@ -6869,6 +6873,12 @@ button.os-ld-node .os-ld-n{
 </div>
 
 
+<div id="osAboutDeck" class="os-about-deck" hidden>
+<div class="os-about-deck-head"><span class="ib-kind" style="--tone:#a06bff">About, as a presentation</span><span class="os-about-deck-count" id="osAboutCount">1 of 7</span></div>
+<div class="os-about-slides" id="osAboutSlides"></div>
+<div class="os-about-dots" id="osAboutDots" aria-label="Choose a slide"></div>
+<div class="os-about-nav"><button type="button" class="ph-msg" id="osAboutPrev" hidden>‹ Back</button><button type="button" class="ph-connect" id="osAboutNext">My story ◆</button></div>
+</div>
 <div class="ph-card" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg></span> My facts</h3>
 <div id="os-about-facts"><p class="os-note">Reading this app&rsquo;s facts&hellip;</p></div>
@@ -7026,6 +7036,8 @@ button.os-ld-node .os-ld-n{
     setTimeout(function(){
       if (b){
         var key=b.getAttribute('data-os-story-edit');
+        /* ABOUT UNFOLD 2026-11-16 (D7): unfold the chain to the section first — secEdit opens the layer, but the reveal hides any layer past an earlier closed one, so the editor would open invisible. */
+        if(window.__osAboutOpenTo){ var _t={story:'My story',motto:'My motto',vision:'My vision',goals:'My goals',mission:'My mission'}[key]||'My story'; window.__osAboutOpenTo(_t); }
         if (key==='story'){ var eb=document.getElementById('editabout'); if (eb) eb.click(); }
         else { var fb=document.querySelector('[data-os-sec-edit="'+key+'"]'); if (fb) fb.click(); }
       } else {
@@ -29778,10 +29790,40 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
 /* --- About unfold (D1/D3) — corner edit, initial orb, next-thing button --- */
 #about .ib-layer-body{position:relative}
 #about .ib-layer-body .ph-actions{position:absolute;top:10px;right:10px;margin:0;z-index:2;justify-content:flex-end;max-width:62%}
-#about .ib-layer-body .ib-nutshell{padding-right:60px}
+#about .ib-layer-body .ib-nutshell{padding-right:64px!important} /* ABOUT UNFOLD 2026-11-16 (F4 follow-through): the 60px lost to the 16px !important shorthand, so the motto + goals texts ran under the corner pencil. */
 #about .ib-layer-body .ph-actions button[data-os-sec-edit],#about .ib-layer-body .ph-actions #editabout{font-size:0;padding:9px 11px}
 .os-about-orb{width:40px;height:40px;font-size:15px;flex:none}
 .os-about-next{width:100%;margin:2px 0 20px;padding:16px 20px;font-size:17px}
+
+/* --- About BOTH-PRESENTATIONS (2026-11-16, Shawn 03:45Z) — the choice + the deck --- */
+/* The choice row: unfold, presentation, or both. Active = the page's own lit button (ph-connect); the rest stay quiet (ph-msg). No new button invented. */
+#about .os-about-choice{display:flex;flex-direction:column;gap:10px;margin:4px 0 16px;}
+#about .os-about-choice-btns{display:flex;gap:10px;flex-wrap:wrap;}
+/* Deck mode hides the unfold stack (layers + next button); the choice row stays, so the citizen can always switch back — neither locks the other out. */
+#about.os-about-mode-deck .ib-layer,#about.os-about-mode-deck .os-about-next{display:none!important;}
+#about .os-about-deck{margin:0 0 20px;}
+#about .os-about-deck[hidden]{display:none;}
+#about .os-about-deck-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:2px 0 12px;}
+#about .os-about-deck-count{font-size:13px;font-weight:800;letter-spacing:.08em;color:#fff;opacity:.75;}
+/* Slides: the Visual Collective Agreement deck's pattern (one board at a time, identity row, tone) in the About layer's own board language — same border, radius, background, shadow as .ib-layer. */
+#about .os-about-slide{position:relative;border:2px solid color-mix(in srgb, var(--tone,#a06bff) 42%, #fff 8%);border-radius:18px;background:linear-gradient(145deg,#0d0d13,#050508);box-shadow:inset 0 1px rgba(255,255,255,.11),0 14px 30px rgba(0,0,0,.56),0 0 20px color-mix(in srgb, var(--tone,#a06bff) 10%, transparent);padding:20px 24px;margin-bottom:12px;}
+#about .os-about-slide[hidden]{display:none;}
+#about .os-about-slide-top{display:flex;align-items:flex-start;gap:14px;padding-right:48px;}
+#about .os-about-slide .os-about-orb{width:64px;height:64px;font-size:22px;}
+#about .os-about-slide-id{min-width:0;flex:1;}
+#about .os-about-slide-title{margin:6px 0 0;font-size:22px;line-height:1.25;color:#fff;letter-spacing:.01em;}
+#about .os-about-slide-text{margin:16px 0 0;font-size:18px;line-height:1.6;color:#fff;border-left:3px solid var(--tone,#a06bff);background:#050607;border-radius:12px;padding:14px 16px;}
+#about .os-about-slide-edit{position:absolute;top:12px;right:12px;font-size:0;padding:9px 11px;}
+/* The deck's face-right alternation, desktop only — stacked on phones. */
+#about .os-about-slide:nth-child(even) .os-about-slide-top{flex-direction:row-reverse;}
+#about .os-about-slide:nth-child(even) .os-about-slide-id{text-align:right;}
+@media(max-width:640px){#about .os-about-slide:nth-child(even) .os-about-slide-top{flex-direction:row;}#about .os-about-slide:nth-child(even) .os-about-slide-id{text-align:left;}}
+/* Dots: reached beats lit, in each slide's own tone. */
+#about .os-about-dots{display:flex;gap:10px;justify-content:center;margin:16px 0 12px;}
+#about .os-about-dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--tone,#a06bff);background:transparent;padding:0;cursor:pointer;appearance:none;}
+#about .os-about-dot.on{background:var(--tone,#a06bff);box-shadow:0 0 10px var(--tone,#a06bff);}
+#about .os-about-nav{display:flex;gap:10px;justify-content:space-between;}
+#about .os-about-nav .ph-connect{flex:1;}
 /* --- My World rectangles (W2/W3) — the page's own .mw-pagebtn language --- */
 .mw-rect-main{flex:1;display:flex;flex-direction:column;align-items:stretch;gap:10px;text-align:left;padding:16px 18px;border-radius:14px;font-size:15px;font-weight:800;color:#fff;cursor:pointer;font-family:inherit;background:linear-gradient(180deg,#1b1b24,#07070b);border:1.5px solid rgba(255,255,255,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 10px rgba(0,0,0,.6),0 8px 20px rgba(0,0,0,.5);transition:border-color .2s,box-shadow .2s,transform .2s}
 .mw-rect-main:hover,.mw-rect-main:focus-visible{transform:translateY(-2px);border-color:var(--pc,#a06bff);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 28px var(--pc,#a06bff),0 12px 26px rgba(0,0,0,.55);outline:none}
@@ -29861,6 +29903,7 @@ if(about){
     var hh=layers[k].querySelector('.ib-layer-head'); if(hh) hh.setAttribute('aria-expanded','false');
   }
   refreshNext();
+  window.__osAboutRefreshNext=refreshNext; /* ABOUT UNFOLD 2026-11-16: the chain-opener (Story-tab edit, deck edit) repositions the next button after opening layers. */
   /* If the citizen opens a layer by its own head, the next-thing button follows. */
   document.addEventListener('click',function(e){
     var h=e.target&&e.target.closest?e.target.closest('#about [data-os-ib-toggle]'):null;
@@ -30520,6 +30563,7 @@ if(typeof window.mwPaintWallPosts==='function' && !window.mwPaintWallPosts.__pxE
 function sweepCards(root){
   try{
     qa('.ib-nutshell',root).forEach(function(ns){
+      if(ns.closest&&ns.closest('#about')) return; /* ABOUT UNFOLD 2026-11-16: About's empty nutshells are hidden reversibly by the CSS :has(> p:empty) rule — this sweep's sticky inline display:none hid the motto's nutshell after its text arrived late, leaving the motto board empty on landing. */
       var t=(ns.textContent||'').replace(/IN A NUTSHELL/i,'').trim();
       if(!t) ns.style.display='none';
     });
@@ -30658,7 +30702,7 @@ function refreshAboutReveal(){
     var firstClosed=-1;
     for(var i=0;i<layers.length;i++){ if(!layers[i].classList.contains('open')){ firstClosed=i; break; } }
     if(firstClosed<0) firstClosed=layers.length;
-    layers.forEach(function(l,i){ l.classList.toggle('pc-eye-future', i>firstClosed); });
+    layers.forEach(function(l,i){ l.classList.toggle('pc-eye-future', i>=firstClosed); /* ABOUT UNFOLD 2026-11-16 (D7): the first-closed layer's collapsed head showed beside the next button, so "My story" read twice at landing. Hiding it too leaves the next button as the only visible trace until the layer opens — one "My story" per presentation, always. */ });
   }catch(e){}
 }
 try{
@@ -30672,6 +30716,123 @@ try{
     if(_ab) new MutationObserver(function(){ refreshAboutReveal(); }).observe(_ab,{attributes:true,subtree:true,attributeFilter:['class']});
   }
 }catch(e){}
+/* ═══ ABOUT BOTH-PRESENTATIONS (2026-11-16, Shawn 03:45Z) — unfold OR presentation OR both ═══
+   The choice is offered on About opening; the unfold above (Nov 15) is the
+   default. The visual presentation follows the Visual Collective Agreement
+   deck's pattern (welcome-staged-visual-agreement-end.html): one board at a
+   time, dots for progress, a next button that says the next thing (L8).
+   Slides are BUILT from the layers at runtime — title, tone and words are
+   read from the layer itself every time a slide shows, so the deck can never
+   drift from the citizen's own words (D4 by construction). The citizen's
+   initial orb (D3) is the slide's identity, in the slide's own colour.
+   No persistence: every fresh load lands on the unfold (motto alone, D2),
+   so the landing is deterministic. */
+(function(){
+'use strict';
+var about=document.getElementById('about'); if(!about) return;
+var deck=document.getElementById('osAboutDeck'); if(!deck) return;
+var ORDER=['My motto','My story','What I do','My goals','My purpose','My mission','My vision'];
+var KEY={'My motto':'motto','My story':'story','What I do':'whatido','My goals':'goals','My purpose':'purpose','My mission':'mission','My vision':'vision'};
+function aboutLayers(){ var out=[]; Array.prototype.forEach.call(about.querySelectorAll(':scope > .ib-layer'),function(l){ var b=l.querySelector('.ib-layer-head b'); var t=b?(b.textContent||'').trim():''; if(ORDER.indexOf(t)>=0) out.push(l); }); out.sort(function(a,b){ var ta=a.querySelector('.ib-layer-head b').textContent.trim(), tb=b.querySelector('.ib-layer-head b').textContent.trim(); return ORDER.indexOf(ta)-ORDER.indexOf(tb); }); return out; }
+function ini(){ var pn=document.getElementById('pname'); var c=pn?(pn.textContent||'').trim().charAt(0).toUpperCase():''; return c||'S'; }
+function toneOf(l){ var n=l.querySelector('.ib-nutshell'); var t=n?n.style.getPropertyValue('--tone'):''; if(t) return t.trim(); var o=l.querySelector('.os-about-orb'); if(o){ var v=o.style.getPropertyValue('--avc'); if(v) return v.trim(); } return '#a06bff'; }
+function textOf(l){ var p=l.querySelector('.ib-nutshell p'); return p?(p.textContent||'').trim():''; }
+var PENCIL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>';
+var layers=aboutLayers();
+var slidesHost=document.getElementById('osAboutSlides');
+var dotsHost=document.getElementById('osAboutDots');
+var prevBtn=document.getElementById('osAboutPrev');
+var nextBtn=document.getElementById('osAboutNext');
+var countEl=document.getElementById('osAboutCount');
+var cur=0, mode='unfold';
+/* Build one slide per section — shell only; the words are read live on show. */
+layers.forEach(function(l,i){
+  var b=l.querySelector('.ib-layer-head b'); var title=b?(b.textContent||'').trim():ORDER[i];
+  var tone=toneOf(l);
+  var art=document.createElement('article');
+  art.className='os-about-slide'; art.setAttribute('data-os-about-slide',title);
+  art.style.setProperty('--tone',tone); art.hidden=true;
+  art.innerHTML='<div class="os-about-slide-top"><span class="os-av os-about-orb" style="--avc:'+tone+'">'+ini()+'</span>'
+    +'<div class="os-about-slide-id"><span class="ib-kind" style="--tone:'+tone+'">About me</span>'
+    +'<h3 class="os-about-slide-title"></h3></div></div>'
+    +'<p class="os-about-slide-text"></p>';
+  art.querySelector('.os-about-slide-title').textContent=title;
+  var eb=document.createElement('button');
+  eb.type='button'; eb.className='ph-msg os-about-slide-edit';
+  eb.setAttribute('data-os-about-edit',title); eb.setAttribute('aria-label','Edit '+title);
+  eb.innerHTML=PENCIL;
+  art.appendChild(eb);
+  slidesHost.appendChild(art);
+  var d=document.createElement('button');
+  d.type='button'; d.className='os-about-dot'; d.style.setProperty('--tone',tone);
+  d.setAttribute('aria-label','Show '+title);
+  d.addEventListener('click',function(){ showSlide(i); });
+  dotsHost.appendChild(d);
+});
+var slides=Array.prototype.slice.call(slidesHost.children);
+var dots=Array.prototype.slice.call(dotsHost.children);
+function showSlide(i){
+  if(!slides.length) return;
+  cur=((i%slides.length)+slides.length)%slides.length;
+  slides.forEach(function(sl,j){
+    sl.hidden=(j!==cur);
+    if(j===cur){ var tx=sl.querySelector('.os-about-slide-text'); if(tx) tx.textContent=textOf(layers[j]); }
+  });
+  dots.forEach(function(d,j){ d.classList.toggle('on', j<=cur); });
+  var nxt=slides[(cur+1)%slides.length].getAttribute('data-os-about-slide');
+  if(nextBtn) nextBtn.textContent=nxt+' \u25C6';
+  if(prevBtn) prevBtn.hidden=(cur===0);
+  if(countEl) countEl.textContent=(cur+1)+' of '+slides.length;
+}
+function setMode(m){
+  mode=m;
+  about.classList.toggle('os-about-mode-deck', m==='deck');
+  deck.hidden=(m==='unfold');
+  Array.prototype.forEach.call(about.querySelectorAll('[data-os-about-view]'),function(b){
+    var on=b.getAttribute('data-os-about-view')===m;
+    b.setAttribute('aria-pressed', on?'true':'false');
+    b.classList.toggle('ph-connect', on);
+    b.classList.toggle('ph-msg', !on);
+  });
+  if(m!=='unfold') showSlide(cur);
+}
+/* Unfold the chain to a section (Story-tab Edit-in-About, deck edit buttons):
+   every layer up to the named one opens, the next button follows, and the
+   reveal un-hides them. */
+window.__osAboutOpenTo=function(title){
+  var ix=ORDER.indexOf(title); if(ix<0) return;
+  layers.forEach(function(l,j){
+    if(j>ix) return;
+    if(!l.classList.contains('open')){ l.classList.add('open'); var h=l.querySelector('[data-os-ib-toggle]'); if(h) h.setAttribute('aria-expanded','true'); }
+    l.classList.remove('pc-eye-future'); /* synchronous un-hide: the reveal's observer runs as a microtask, after secEdit's focus() — without this the editor opens on a still-hidden layer and focus silently fails. The observer re-runs and agrees. */
+  });
+  if(window.__osAboutRefreshNext) window.__osAboutRefreshNext();
+  try{ layers[ix].scrollIntoView({behavior:'smooth',block:'nearest'}); }catch(e){}
+};
+function editSection(title){
+  setMode('unfold');
+  window.__osAboutOpenTo(title);
+  setTimeout(function(){
+    var key=KEY[title];
+    if(key==='story'){ var eb=document.getElementById('editabout'); if(eb) eb.click(); }
+    else { var fb=document.querySelector('[data-os-sec-edit="'+key+'"]'); if(fb) fb.click(); }
+  },120);
+}
+if(prevBtn) prevBtn.addEventListener('click',function(){ showSlide(cur-1); });
+if(nextBtn) nextBtn.addEventListener('click',function(){ showSlide(cur+1); });
+deck.addEventListener('click',function(e){
+  var eb=e.target&&e.target.closest?e.target.closest('[data-os-about-edit]'):null;
+  if(eb){ editSection(eb.getAttribute('data-os-about-edit')); }
+});
+var choice=about.querySelector('.os-about-choice');
+if(choice) choice.addEventListener('click',function(e){
+  var b=e.target&&e.target.closest?e.target.closest('[data-os-about-view]'):null;
+  if(b) setMode(b.getAttribute('data-os-about-view'));
+});
+showSlide(0);
+setMode('unfold');
+})();
+
 
 /* ── F5 — Smart Link bloat: honestly grouped, never 50 identical boards. ──
    #os-sl-mine renders one board per Smart Link (invite-xxxx, 0 clicks).
