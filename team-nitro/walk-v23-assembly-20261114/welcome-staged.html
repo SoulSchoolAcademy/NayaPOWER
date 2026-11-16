@@ -1442,7 +1442,7 @@ body.fp-stage-on.fp-zoom-open #fpStageBarT,body.fp-stage-on.fp-zoom-open #fpStag
 /* bottom bar: quiet links + the one big button (the only advance) */
 .fp-stage-links{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px;margin:0 0 8px}
 .fp-stage-link{background:none;border:none;font-family:inherit;font-size:12.5px;font-weight:700;color:#fff;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px 8px}
-#fpNextBtn{position:relative;overflow:hidden;display:block;margin:0 auto;padding:16px 46px;min-width:min(420px,100%);border-radius:999px;font-family:inherit;font-size:15px;font-weight:800;letter-spacing:.05em;color:#fff;cursor:pointer;background:linear-gradient(180deg,#1b1b24,#050507);border:2px solid var(--tone,#a06bff);text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 12px var(--tone,#a06bff);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px var(--tone,#a06bff),0 10px 22px rgba(0,0,0,.55);transition:box-shadow .25s,transform .25s,border-color .25s,opacity .4s;opacity:0;transform:translateY(8px);box-sizing:border-box}
+#fpNextBtn{position:relative;overflow:hidden;display:block;margin:0 auto;padding:16px 46px;min-width:min(420px,100%);border-radius:999px;font-family:inherit;font-size:15px;font-weight:800;letter-spacing:.05em;color:#fff;cursor:pointer;background:linear-gradient(180deg,#1b1b24,#050507);border:2px solid var(--tone,#a06bff);text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 12px var(--tone,#a06bff);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px var(--tone,#a06bff),0 10px 22px rgba(0,0,0,.55);transition:box-shadow .25s,transform .25s,border-color .25s,opacity .3s;opacity:1;transform:translateY(0);box-sizing:border-box}
 #fpNextBtn::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.16) 50%,transparent 58%);transform:translateX(-130%);animation:enterFlow 4.5s ease-in-out infinite;pointer-events:none}
 body.fp-stage-on.fp-dialed #fpNextBtn{opacity:1;transform:translateY(0);animation:fpWait 3.2s ease-in-out infinite}
 body.fp-stage-on.fp-dialed #fpNextBtn:hover,body.fp-stage-on.fp-dialed #fpNextBtn:active{animation:none;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px var(--tone,#a06bff),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
@@ -2425,7 +2425,7 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
     var c=d.style.getPropertyValue('--dc');var s=doc.createElement('span');
     s.className='fp-dot';s.style.setProperty('--dc',c?c.trim():'#a06bff');dotsEl.appendChild(s);
   });
-  var S={view:'intro',deck:0,letter:0,legalId:null,legal:0,all:null};
+  var S={view:'intro',deck:0,letter:0,legalId:null,legal:0,all:null,letterDone:false};
   var action='begin', dialTimer=null, lastKey='';
   function legalPages(){return qa('.fp-legal-page');}
   function openLegal(){var ps=legalPages();for(var i=0;i<ps.length;i++){if(!ps[i].hidden)return ps[i];}return null;}
@@ -2488,7 +2488,7 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
     qa('.fp-dial',agreeSec).concat(qa('.fp-dial',legalSec)).forEach(function(el){el.classList.remove('fp-dial');});
     var reduced=false;
     try{reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
-    if(beat){beat.classList.add('fp-dial');dialTimer=setTimeout(function(){body.classList.add('fp-dialed');},reduced?0:650);}
+    if(beat){beat.classList.add('fp-dial');dialTimer=setTimeout(function(){body.classList.add('fp-dialed');},reduced?0:250);}
     else{dialTimer=setTimeout(function(){body.classList.add('fp-dialed');},60);}
   }
   function finishDial(){
@@ -2575,15 +2575,25 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
     body.classList.remove('fp-dialed');
     if(dialTimer){clearTimeout(dialTimer);dialTimer=null;}
   }
-  function derive(){
+  function derive(jump){
     if(S.view==='deck'){
       var d=lastShown(deckBeats);if(d>=0)S.deck=d;
       var allD=true;for(var i=0;i<deckBeats.length;i++){if(deckBeats[i].hidden){allD=false;break;}}
       S.all=allD?'deck':null;
     }
     else if(S.view==='letter'){
-      if(!agreeBox.hidden){S.view='agree';S.all=null;}
-      else{var l=lastShown(letterBeats);if(l>=0)S.letter=l;}
+      var prevL=S.letter;
+      var l=lastShown(letterBeats);if(l>=0)S.letter=l;
+      /* FIX (2026-11-16) — board 86 is a beat: the base handler unhides
+         the agree box on the SAME click that reveals board 86, so flip to
+         the agree view only when the last board was ALREADY the current
+         beat (the NEXT click after board 86 was shown, jewel 86 / 86) —
+         or when the click is an explicit jump to signing (Skip / the
+         plain-text dialog's "take me to signing"). render() re-hides the
+         agree box in letter view, so the finished state is remembered in
+         S.letterDone, not read back from the box. */
+      if(!agreeBox.hidden)S.letterDone=true;
+      if(S.letterDone&&(jump||prevL>=letterBeats.length-1)){S.view='agree';S.all=null;}
     }
     else if(S.view==='legal'){
       var p=openLegal();
@@ -2611,7 +2621,13 @@ body.fp-stage-on #fpZoom.fp-open{display:flex;position:fixed;inset:0;z-index:80;
     /* deck Join: the only advance from the deck into the letter. */
     var a=(t&&t.closest)?t.closest('a.deck-next[href="#dealUnfold"]'):null;
     if(a){e.preventDefault();S.view='letter';S.letter=Math.max(0,lastShown(letterBeats));S.all=null;render();return;}
-    derive();
+    /* FIX (2026-11-16) — only an advancing control re-syncs the stage.
+       A tap on the beat itself (its photo, its text) changes nothing the
+       stage reads, and must not flip the view: on board 86 the letter is
+       finished, so an unguarded derive() would throw the citizen to the
+       agree view for merely touching the board. */
+    var adv=(t&&t.closest)?t.closest('#letterNext,#letterSkip,#deckAll,[data-legal-all],#dealPlainToSign,.deck-next,[data-legal-next],[data-legal-close],[data-legal-open],#dealAgreeBtn,#fpNextBtn'):null;
+    if(adv)derive(!!adv.closest('#letterSkip,#dealPlainToSign'));
     render();
   }
   agreeSec.addEventListener('click',onStageClick);
