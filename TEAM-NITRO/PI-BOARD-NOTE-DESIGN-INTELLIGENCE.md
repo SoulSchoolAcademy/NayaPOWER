@@ -1827,3 +1827,73 @@ next free SN-3016.
   (hash cfea9430, 42/204 done-proven). Team-pulse re-scoped DONE
   19:14Z — ledger 90 → 3 live items; mail read still BLIND (19:54Z),
   repair is Shawn's hand, already escalated, NOT re-raised.
+
+## Intelligence Loop run 232 — addendum (20:13Z/20:22Z sidebar refinements, rounds 2 + 3)
+
+Two more dictations filed as SN-3018/3019 + paired Naya Notes, all PUT
+201 + byte-identical blob read-back (SN-3018 blob 5f2befc9, 11,412 B;
+NN blob c7233429, 6,374 B; SN-3019 blob 0e295fc3, 9,166 B; NN blob
+f28e1452, 4,559 B). Numbering: next-sn-number.py fresh run
+(run232-numbering.log): highest SN-3017, next free SN-3018, no
+open-PR claims. (The filing script printed ALL FILED + VERIFIED but
+crashed writing its own log on the EPERM flake; shas re-verified by
+independent contents-GETs, sizes matching the drafts exactly.)
+- 20:13Z SIDEBAR REFINEMENTS, ROUND TWO — SMART WORLDS, HUB-ONLY
+  BUTTONS, MAIL LEADS THE START (SN-3018): played back to him;
+  AWAITING HIS CONFIRMATION — NOT official, NOT yet sent to the Hub
+  coordinator; supersedes parts of the 19:44Z corrected list once he
+  confirms. Smart Spaces renamed SMART WORLDS (your Space is your
+  world; Smart Worlds is the directory of all the worlds). Today's
+  Intel leaves the sidebar into the calendar. Smart Growth stays — it
+  is Invite. Intelligent Library = the page's whole knowledge store
+  (smart notes describing what the page is, About, Q&A). Ask Naya +
+  Life with Naya move to the HUB TOP BAR ONLY — two beautiful black
+  obsidian buttons, center top, Hub-only; never in the sidebars, never
+  on Personal or Business. Smart Ledger leaves the sidebar — a button
+  inside Smart Stats. Start Here leaves — starting is led by Smart
+  Mail (Naya Fast Track series, day by day; they start with "you've
+  got mail"). Your Connections leaves the left as its own item —
+  per-area sub-tabs plus one total view. RIGHT: My Worlds at the top
+  (your worlds ARE your feeds); Favorite Worlds = joined worlds, an
+  organizable list (labels, sub-labels, categories); Leaderboards
+  (main + featured); Naya Academy, AI Masterclass, Fast Action Club
+  ARE the logins (more than three memberships show in this menu);
+  Maxis "AI Score" stays; Your Hired REMOVED (already hired); Member
+  Login REMOVED (memberships are the logins). SETTINGS URL RULE: a
+  spot in Settings to replace the URL and label it — put a new URL in
+  and boom, it shows there with that label. Playback: LEFT 11, RIGHT
+  10. On his confirmation: record as official, send the superseding
+  correction to the Hub sidebars-plus coordinator (09cd3722), update
+  MEMORY.md.
+- 20:22Z SIDEBAR REFINEMENTS, ROUND THREE — SMART FEED IS THE HUB,
+  YOUR WORLD, CONNECTIONS STAY (SN-3019): played back to him;
+  AWAITING HIS CONFIRMATION — NOT official, NOT yet sent to the Hub
+  coordinator; supersedes round 2 the same way round 2 superseded
+  parts of the 19:44Z list. Smart Feed REMOVED from the left — Smart
+  Feed IS the Hub, the main home hub; not a separate thing. Intel
+  Today is BACK on the left, travelling WITH Your Reports, right after
+  the worlds (also reachable inside the calendar). Space renamed YOUR
+  WORLD — "your thing, your world, just call it your world" — Smart
+  Worlds (the directory) goes RIGHT UNDERNEATH Your World. Your
+  Connections STAYS as its own left item — the directory of all
+  connections; the per-area sub-tabs stand alongside it. A correction
+  can restore as well as remove. Start Here = Fast Track mail,
+  confirmed again; still not a sidebar item. Playback: LEFT 12
+  (Hub = the Smart Feed · Dashboard · Personal · Business · Your
+  World · Smart Worlds · Intel Today · Your Reports · Smart Factory ·
+  Smart Growth · Intelligent Library · Your Connections), RIGHT 10 +
+  Hub-only top-bar buttons unchanged from round 2. On his
+  confirmation: record as official, send the superseding correction to
+  the coordinator, update MEMORY.md. Until then the 19:44Z list is the
+  last one the coordinator has.
+- STATE (not lessons): combined walk round final checker PASS 20:12Z
+  (coordinator 69fedfaa, all eleven items proven live, 0 page errors;
+  branch walk-end/share-plus-20261116, tip b3837ad2); captain's own
+  eye via cloud browser (task 37656aa5) still running at flush — the
+  round is NOT delivered to Shawn yet. Feed-posts brief written 20:08Z
+  (fires when the Personal bottom-bar-restore round lands whole). PI
+  refresh 20:10Z published (hash cb2a067d). Floor-watch 20:20Z
+  adjudicated 20:21Z: NO POKES (both fix makers alive under quiet
+  coordinators); board re-rendered, OWED agrees with the One List.
+  Hub re-bake FAILED 19:57Z (HTTP 500) — SN-3013/3014/3015 in the feed
+  table but NOT live on the Hub; re-run PENDING Shawn's word.
