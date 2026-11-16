@@ -1599,3 +1599,135 @@ permission, his hand). Distillation: SN-2995..3006 are new raw notes for
 tonight's 23:17Z daily run. Silent run — no chat report owed (nothing here
 needs Shawn that he hasn't already been told; the Daily Intelligence
 Report 23:17Z is the summary vehicle).
+
+## Intelligence Loop run 230 — 2026-11-16 ~19:23–19:4xZ (seat: Naya Nitro Sigma)
+
+RUN 229 COMPLETED THIS RUN (it timed out at 1800s with 3 steps owed):
+its 13th pair SN-3007 "Fine-Tune the Team — On Fire 24-7, Non-Stop" was
+renumbered from the SN-0000 draft, filed + blob-verified this run
+(SN blob 937d9cbe0cc54ca0eebf7600a85406e97e805bf9, 6867 B; NN blob
+eaf7a19aa9a7b25f6b897633974f5587d685d586, 2891 B) on the numbering
+blessing already obtained by run 229 (run229-numbering2.log: highest
+SN-3006, next free SN-3007). Its PI addendum was then filed + verified
+(run229-pi.py: board blob a945d7e161875ee4aafbbe0a4ee5540c39497408,
+532,381 B). Run 229 is now whole: 13/13 pairs + PI. Its goal timeline
+entry is this run's to record.
+
+LISTEN — what is new since run 229 (its LISTEN snapshot closed
+19:14:52Z): FIVE dictations/decisions from Shawn that run 229 did not
+file — the 19:03Z/19:07Z/19:12Z entries reached the daily log after its
+snapshot, and the 19:24Z one came after it closed:
+- 19:03Z THE I BUTTON IS THE PRICING EYE — ONE EYE, NOT A NEW EYE PER
+  PAGE (law in AGENTS.md + MEMORY.md): "the I doesn't look very nice
+  you can barely see it's an I it looks like a blob and it doesn't come
+  out plain." Fix: make it like the pricing page's eye — white and
+  pearl, nice, lights up purple around the edge, extraordinary. Law:
+  "you gotta stop creating new like elements and instead of using the
+  ones we have... if you make a new one eye button for every page and
+  they're all different." One canonical version of every element, used
+  everywhere it fits, never remade. Every ⓘ on Personal IS the pricing
+  eye, harvested verbatim (live v77, worker naya-model-pricing; already
+  harvested once for the Factory flow's Step 1 fields). Settles the
+  rail-I question open since 01:15Z. Name stays on the card, stacked
+  layout stays — he ruled on the I only. Item 6, bottom-bar-restore
+  brief.
+- 19:07Z THE PRICING EYE GETS MORE DEPTH — DOUBLE LAYER (refinement):
+  "but if you can give it a lot more depth, which I even told you about
+  that whole thing yesterday where you can double layer it, just make
+  it look premium, like quality maybe glossy I don't know like make it
+  look like a real element." Method: clone it once, put the clone
+  behind, move it right or left JUST A TAD. The clone-behind trick
+  (01:51Z, certificate name) is now the general depth method. Item 6
+  sharpened: pricing eye harvested verbatim PLUS the double layer — a
+  real touchable element under the Real Object Law, on every ⓘ.
+- 19:07Z LEADERBOARDS (his call): "And yeah, that's everything.
+  Leaderboards is really important right so they can go and see
+  leaderboards and they can see where they're their scoring um in any
+  area and then if they're at the top of any area which a lot of times
+  at the beginning they will it'll just show in the leaderboard."
+  Queued as its own feature (One List `leaderboards`): citizens see
+  where they score in any area; top shows. Brief still owed (where it
+  lives, which areas, what counts as scoring, top-of-area display). NOT
+  in the current fix rounds.
+- 19:12Z THE CYCLE IS THE CLOCK — LIVE TIME, FAST TIME ACTION (law in
+  AGENTS.md + MEMORY.md): he corrected the captain's 15-vs-30-minutes
+  question — "Neither of those are the answer. It's about getting
+  things done and completed and having the quality done… I don't want
+  to wait 30 minutes for you to respond to me and give me updates.
+  That's crazy. I'd rather bump it to five minutes instead of 15
+  minutes… But it's not about the minutes. It's about the quality of
+  the work being done. And then finishing it and then being able to
+  show me because for me I need to get the work back to me as soon as
+  possible so I can see it's done right so that I can approve it to
+  move forward — that's the cycle I'm working on, so I call that live
+  time, fast time action." Delivery is EVENT-DRIVEN — the moment a
+  round finishes, the next step fires in the same pass; the 15-minute
+  timers are only the safety net. NEVER offer to slow a live lane to 30
+  minutes — dead, withdrawn by his word twice (18:47Z + 19:12Z). Kill
+  DEAD wake-ups instead. "Fast and useless is useless. Fast and RIGHT
+  is awesome." The design it ordered: THE-OPTIMAL-SETUP.md (completions
+  per hour; lanes × completion rate; ready-queue 3 deep). Companion
+  rules same pass: CADENCE IS NEVER THE LEVER (Shawn, 19:12Z) and the
+  captain's 10-MINUTE RULE (maker spawned within 10 min of dispatch).
+- 19:24Z THE RED N ORB IS BEAUTIFUL — KEEP THE AGREEMENT END ON
+  REFRESH: "This is beautiful, by the way. I like the way that you did
+  the red with the N and it looks elevated. That's one of the most
+  beautiful elegant pieces you guys did." Charge: "when I refresh the
+  page, it was gone, so I would keep that on the collective agreement
+  at the end, that looks really good, makes it look official too." The
+  agreement end must persist across a refresh and be reachable directly
+  without walking the deck again. Sent to the walk coordinator (69fedfaa)
+  as item 11 of the fix round (checker verifies: reach the end →
+  refresh → end still there at 390 and 1851×1009). The red N orb end
+  view is kept exactly as it is, never redesigned.
+
+SMART-NOTES FILED THIS RUN (5 pairs, all PUT 201 + byte-identical blob
+read-back): SN-3008 One Eye, Not a New Eye Per Page · SN-3009 The
+Pricing Eye Gets More Depth — Double Layer · SN-3010 Leaderboards —
+See Where You Score in Any Area · SN-3011 The Cycle Is the Clock —
+Live Time, Fast Time Action · SN-3012 The Red N Orb Is Beautiful —
+Keep the Agreement End on Refresh. Each with a paired Naya Note
+(NN-20261116-<slug>), Paired lines carrying titles verbatim, never
+paths. Numbering: next-sn-number.py detached (run230-numbering.log):
+highest SN-3007 after the SN-3007 filing, next free SN-3008. No PR,
+no merge, no deploy, no live edit.
+
+ORGANIZE HOOK CLEAN (exit 0): organized 0, files_new 0, 0
+unparseable; watermark holds. Healthy — the notes live on GitHub,
+not in the local box tree.
+
+MAIL DIGEST HELD (run230-mail-digest.txt): send path still blocked
+(Supabase reauth_required since 21:06Z Nov 12; team-pulse 19:24Z mail
+read still BLIND, mail-new UNKNOWN). Same known breakage as runs
+202–229; repair is Shawn's hand, already escalated, NOT re-raised.
+
+STATE CARRIED (delivery events, not new lessons): Hub bake VERIFIED
+LANDED 19:19–19:21Z (hub-feed-live.json mtime 19:19Z, 1,474 cards,
+SN-2994 + the full SN-2969–2977 batch; Hub redeployed) — closes the
+13+ hour stale-feed gap from the audit. Fix-verify transport rewrite
+COMPLETE 19:20Z — formal gate PASSED, first clean exit 0 after three
+egress-failed rounds; F4 re-proven; sweep + race seat dispatched
+19:20Z. Browsers dead→alive 19:17Z (mmapprobe all OK, Firefox
+screenshot real) — queued eye-checks can run again. Personal
+hub-return DELIVERED WHOLE 19:21–19:22Z (cloud-browser eye PASS +
+captain's VM Firefox probe, 0 page errors; One List closed); NEW GAP
+from that eye: NO DELETE EXISTS FOR WORLDS (One List `world-delete`).
+Pulse re-scoped DONE 19:14Z — ledger 86 items → 3 live
+(serving-chain, paypal-cap-ladder, sn-filing-tool-build). PI refresh
+19:15Z published (hash de342d5a). Walk fix round carries item 11
+(red N orb persistence) + the H8/H10 failures.
+
+OUT OF ALIGNMENT, recorded plainly: (1) STILL OPEN from runs 228–229,
+RE-VERIFIED this run by reading the brief itself — the
+agreement-entrance brief's VERIFICATION section still says verify
+labels "Begin the deck ◆" / "Read the letter ◆" UNCHANGED, while the
+brief's own line 78 states the DECIDED labels ("Begin the visual
+story ◆" / "Read the Collective Agreement ◆", 18:17Z). The brief
+contradicts itself; a checker following the verification section
+would fail a correct build. Captain's lane — this loop does not edit
+briefs. (2) Standing gaps unchanged — Naya Notes filed but not in the
+live feed (sections build owed); Hub still shows the duplicate SN-2906
+cycle row (DELETE permission, his hand). Distillation: SN-3007..3012
+are new raw notes for tonight's 23:17Z daily run. Silent run — no chat
+report owed (nothing here needs Shawn that he hasn't already been
+told; the Daily Intelligence Report 23:17Z is the summary vehicle).
