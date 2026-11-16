@@ -539,9 +539,14 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 }
 .eco-plus svg { width: 20px; height: 20px; }
 .eco-plus:hover { transform: translateY(-2px) scale(1.04); box-shadow: inset 0 1px rgba(255,255,255,.5), inset 0 -3px 8px rgba(0,0,0,.4), 0 0 32px color-mix(in srgb, var(--jewel) 75%, transparent), 0 12px 28px rgba(0,0,0,.6); }
-/* ——— Powercast top-bar button: white luminous at rest, purple ignition ——— */
+/* ——— Powercast top-bar button: white luminous at rest, purple ignition ———
+   FIX 2026-11-16 (item D1): Powercasts read dimmer/flatter than Ask Naya /
+   Life with Naya — white rim, no color glow. Same §1 language now:
+   obsidian inside, double-layered (clone behind, nudged), pearl purple
+   light on the OUTSIDE at rest, bright on hover. */
 .powercast-topbtn{
   --pc-purple:#8b5cf6;
+  position:relative;z-index:0;
   display:inline-flex;align-items:center;gap:8px;
   min-height:48px;padding:0 22px;margin-right:10px;
   border-radius:999px;cursor:pointer;
@@ -549,10 +554,18 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
   background:linear-gradient(180deg,#1c1c26,#0c0c12);
   color:#fff;font-weight:800;font-size:13px;letter-spacing:.08em;
   font-family:inherit;text-decoration:none;white-space:nowrap;
-  box-shadow:inset 0 1px rgba(255,255,255,.35),inset 0 -2px 6px rgba(0,0,0,.5),
-    0 0 18px rgba(255,255,255,.22),0 4px 14px rgba(0,0,0,.5);
+  box-shadow:inset 0 1px rgba(255,255,255,.15),inset 0 -2px 4px rgba(0,0,0,.5),
+    0 8px 24px rgba(0,0,0,.5),0 0 16px rgba(139,92,246,.38);
   transition:all .22s cubic-bezier(.16,.84,.22,1);
   -webkit-tap-highlight-color:transparent;
+}
+.powercast-topbtn::before{
+  content:'';position:absolute;inset:0;z-index:-1;
+  border-radius:999px;
+  border:1.5px solid rgba(139,92,246,.55);
+  background:linear-gradient(135deg,#14141c 0%,#050508 50%,#14141c 100%);
+  transform:translate(2px,3px);
+  box-shadow:0 10px 22px rgba(0,0,0,.5);
 }
 .powercast-topbtn:hover,.powercast-topbtn:focus-visible{
   border-color:var(--pc-purple);color:#fff;transform:translateY(-2px);
@@ -685,6 +698,14 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
   width: 24px; height: 24px;
   stroke-width: 1.8;
 }
+/* FIX 2026-11-16 (item D2): the jewel renderer draws its glyph at 0.283
+   scale — about 7px on screen — so Hub / Dashboard / Personal / Business
+   read as near-identical tiny white swirls. Rows carrying .glyph-xl draw
+   the same jewel with the glyph at 0.5 scale (~12px, ~2.5px strokes), so
+   the four silhouettes — orbit, gauge, heart, briefcase — are
+   distinguishable at page size. The CSS transform overrides the svg g
+   transform attribute. Scoped to those four rows only. */
+.nav-btn .ico svg.jewel.glyph-xl g { transform: translate(6px, 6px) scale(.5); }
 .nav-btn .lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 550; }
 /* Hover: white light + spectrum color ignite */
 .nav-btn:hover, .nav-btn:focus-visible {
@@ -730,6 +751,14 @@ body.has-notif .eco-bottombar { bottom: calc(var(--notif-h, 76px) - 2px + env(sa
 .nav-btn .nav-count{position:absolute;top:2px;right:4px;min-width:20px;height:20px;padding:0 5px;display:none;align-items:center;justify-content:center;border-radius:999px;z-index:2;font-size:11px;font-weight:900;color:#06060a;background:var(--nav);border:2px solid #05050a;box-shadow:0 0 12px var(--nav),0 3px 8px rgba(0,0,0,.5);}
 .nav-btn.has-news .nav-count{display:flex;}
 .nav-btn.lit{color:#fff;}
+/* FIX 2026-11-16 (item D4): the scroll spy exists and runs (NayaHubSpy,
+   bound on scroll via rAF), but .lit only bumped the icon glow — against
+   rims already lit at rest the eye could not tell the active row apart.
+   The lit row now stands out as a row: brighter background, its own color
+   on the border with an outer glow, white label, and the same left edge
+   bar .active wears — the icon keeps its own-color ignition, held. */
+.nav-btn.lit{background:rgba(255,255,255,.07);border-color:color-mix(in srgb, var(--nav, var(--purple)) 65%, transparent);box-shadow:0 0 16px color-mix(in srgb, var(--nav, var(--purple)) 38%, transparent), 0 8px 18px rgba(0,0,0,.5);}
+.nav-btn.lit::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:3px;border-radius:3px;background:var(--nav, var(--purple));box-shadow:0 0 10px var(--nav, var(--purple));}
 .nav-btn.lit .ico{color:var(--nav, var(--purple));background:radial-gradient(circle at 32% 26%, rgba(255,255,255,.30), rgba(255,255,255,0) 48%), linear-gradient(180deg,#262633,#0b0b12 80%);border-color:var(--nav, var(--purple));box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55), inset 0 -3px 6px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 20px color-mix(in srgb, var(--nav, var(--purple)) 70%, transparent);transform:translateY(-2px) scale(1.08);}
 .nav-btn.nav-area{text-decoration:none;}
 .nav-btn.nav-right{text-decoration:none;}
@@ -1570,12 +1599,17 @@ svg.jewel { display: block; }
   animation: starPulse .25s cubic-bezier(.16,.84,.22,1);
 }
 
-/* ——— Block hover lift (triple-A tactile feel) ——— */
+/* ——— Block hover lift (triple-A tactile feel) ———
+   FIX 2026-11-16 (item D3): the Smart Note cards lifted only -3px on hover
+   — real in code, imperceptible on the page, so the eye read "no hover
+   lift" on the first card's title. -6px now, so the lift reads like the
+   doors' -4px and the nav rows'. (The brief's "doors" are the .door
+   DoorCards below — a different element, already lifting -4px.) */
 .intel-board {
   transition: transform .25s cubic-bezier(.16,.84,.22,1), box-shadow .25s;
 }
 .intel-board:hover {
-  transform: translateY(-3px);
+  transform: translateY(-6px);
 }
 .intel-board.tone-gold:hover { box-shadow: inset 0 1px #fff8, 0 30px 70px #000c, 0 0 60px #d4a01755; }
 .intel-board.tone-red:hover { box-shadow: inset 0 1px #fff8, 0 30px 70px #000c, 0 0 60px #ff5e6c55; }
@@ -5061,10 +5095,10 @@ function HubView(params) {
      Personal Mail → mail; no other count feed exists on the Hub.
      Scroll lighting lives in the spy IIFE below. */
   var HUB_AREAS = [
-    { id: 'hub',       label: 'Hub',           icon: 'orbit', color: '#a06bff', href: 'https://nayanet.app/hub',       countKey: 'activity' },
-    { id: 'dashboard', label: 'Dashboard',     icon: 'gauge', color: '#2fe89e', href: 'https://nayanet.app/dashboard', countKey: null },
-    { id: 'personal',  label: 'Personal',      icon: 'heart', color: '#3fb8ff', href: 'https://nayanet.app/personal',  countKey: null, subtab: true },
-    { id: 'business',  label: 'Business',      icon: 'brief', color: '#ffbf3d', href: 'https://nayanet.app/business',  countKey: null },
+    { id: 'hub',       label: 'Hub',           icon: 'orbit', color: '#a06bff', href: 'https://nayanet.app/hub',       countKey: 'activity', glyphCls: 'glyph-xl' },
+    { id: 'dashboard', label: 'Dashboard',     icon: 'gauge', color: '#2fe89e', href: 'https://nayanet.app/dashboard', countKey: null, glyphCls: 'glyph-xl' },
+    { id: 'personal',  label: 'Personal',      icon: 'heart', color: '#3fb8ff', href: 'https://nayanet.app/personal',  countKey: null, subtab: true, glyphCls: 'glyph-xl' },
+    { id: 'business',  label: 'Business',      icon: 'brief', color: '#ffbf3d', href: 'https://nayanet.app/business',  countKey: null, glyphCls: 'glyph-xl' },
     { id: 'space',     label: 'Your World',    icon: 'spaces', color: '#ff9a5a', href: 'https://nayanet.app/space',     countKey: 'spaces' },
     { id: 'smartworlds', label: 'Smart Worlds', icon: 'doors', color: '#e84fff', href: 'https://nayanet.app/#/hub/spaces', countKey: null }
   ];
@@ -5077,7 +5111,7 @@ function HubView(params) {
     btn.style.setProperty('--nav', a.color);
     btn.setAttribute('aria-label', 'Personal — your personal mail, messages and page');
     btn.setAttribute('aria-expanded', 'false');
-    btn.innerHTML = '<span class="ico">' + Icons.icon(a.icon) + '</span><span class="lbl">Personal</span><span class="chev">\u25be</span>';
+    btn.innerHTML = '<span class="ico">' + Icons.icon(a.icon, a.glyphCls || '') + '</span><span class="lbl">Personal</span><span class="chev">\u25be</span>';
     var wrap = document.createElement('div'); wrap.className = 'nav-subwrap'; wrap.hidden = true;
     var subs = [
       { label: 'Personal Mail', icon: 'mail', color: '#3fb8ff', href: 'https://nayanet.app/rooms/mail', countKey: 'mail' },
@@ -5112,7 +5146,7 @@ function HubView(params) {
     if (a.countKey) link.setAttribute('data-count-key', a.countKey);
     link.style.setProperty('--nav', a.color);
     link.setAttribute('aria-label', a.label);
-    link.innerHTML = '<span class="ico">' + Icons.icon(a.icon) + '</span><span class="lbl">' + a.label + '</span><span class="nav-count"></span>';
+    link.innerHTML = '<span class="ico">' + Icons.icon(a.icon, a.glyphCls || '') + '</span><span class="lbl">' + a.label + '</span><span class="nav-count"></span>';
     link.addEventListener('click', function (e) {
       var n = 0;
       try { if (a.countKey === 'activity') n = window.NayaNotif ? window.NayaNotif.counts().activity : 0; else if (a.countKey === 'spaces') n = window.NayaNotif ? window.NayaNotif.get('spaces') : 0; } catch (err) {}
@@ -5269,6 +5303,11 @@ function HubView(params) {
      (LEFT corner) · title · Life with Naya (RIGHT corner). The + buttons are
      OFF both top corners — the + lives ONLY in the bottom bar. */
   const top = el('header', 'top');
+  /* FIX 2026-11-16 (item B): remembers a desktop right-drawer opened over a
+     docked left rail, so closing the drawer returns the page to its on-load
+     layout instead of leaving it with no sidebars. Set in openRightRail(),
+     read in closeRightRail(); a fresh HubView build starts with it false. */
+  let rightDrawerLeftDocked = false;
   /* The small menu control: three white lines on the layered obsidian circle
      harvested from the top-left + reference. Below desktop it opens the
      drawers; at desktop it collapses the left rail. Never a + button. */
@@ -5288,15 +5327,26 @@ function HubView(params) {
       const rightOpen = shell.classList.contains('rail-right-open');
       if (leftOpen || rightOpen) { closeDrawer(); closeRightRail(); }
       else { openRightRail(); openDrawer(); }
+    } else if (shell.classList.contains('rail-right-collapsed')) {
+      /* FIX 2026-11-16 (item B): the right rail was closed with its X.
+         Reopen it as the overlay drawer WITHOUT toggling the left rail —
+         the old code toggled rail-collapsed first, so the left sidebar
+         vanished while the drawer was open, and closing the drawer then
+         left the page with NO sidebars. openRightRail() remembers the
+         docked left; closing the drawer restores the on-load layout.
+         (The item-8 reopen itself is unchanged: the menu control still
+         reopens the docked right rail — only the left-rail side effect
+         is gone.) */
+      openRightRail();
+      menuBtn.setAttribute('aria-expanded', 'true');
+    } else if (shell.classList.contains('rail-right-open')) {
+      /* The drawer is open: this tap closes it back to the on-load layout. */
+      closeRightRail();
     } else {
       shell.classList.toggle('rail-collapsed');
       const collapsed = shell.classList.contains('rail-collapsed');
       menuBtn.setAttribute('aria-label', collapsed ? 'Show sidebar' : 'Hide sidebar');
       try { localStorage.setItem('naya.rail-collapsed', collapsed ? '1' : '0'); } catch(e) {}
-      /* ITEM 8 FIX 2026-11-16: at desktop the docked right rail, once
-         closed, had no top-bar reopen — only the bottom-bar ECOSYSTEM
-         tile. The menu control reopens it here (openRightRail()). */
-      if (shell.classList.contains('rail-right-collapsed')) openRightRail();
     }
   });
   /* Default (item 8): sidebars VISIBLE on load at desktop (1440+) — they are
@@ -5480,23 +5530,13 @@ function HubView(params) {
     if (!tabs.some(t => t.id === activeSmartTab)) activeSmartTab = 'all';
 
     const bar = el('div', 'smart-tabs');
-    // Gentle auto-scroll: flows right, loops back left
-    (function(){
-      let dir = 1, paused = false;
-      bar.addEventListener('pointerenter', () => paused = true);
-      bar.addEventListener('pointerleave', () => paused = false);
-      bar.addEventListener('touchstart', () => paused = true, {passive:true});
-      bar.addEventListener('touchend', () => setTimeout(()=>paused=false, 3000), {passive:true});
-      setInterval(() => {
-        if (paused || !bar.isConnected) return;
-        const max = bar.scrollWidth - bar.clientWidth;
-        if (max <= 0) return;
-        let next = bar.scrollLeft + dir * 1;
-        if (next >= max) { dir = -1; next = max; }
-        if (next <= 0) { dir = 1; next = 0; }
-        bar.scrollLeft = next;
-      }, 30);
-    })();
+    /* FIX 2026-11-16 (item A): the old "gentle auto-scroll" interval moved
+       bar.scrollLeft 1px every 30ms at rest, so the strip drifted right
+       after load and after every interaction and the first tab ("All") sat
+       clipped at the left edge — the selected tab never scrolled back into
+       view. The strip is a manual scroller now: it rests at scrollLeft 0
+       with "All" fully in view, and the citizen scrolls it. (The right-end
+       mid-pill clip is the scroller itself, and stays.) */
     bar.setAttribute('role', 'tablist');
     bar.setAttribute('aria-label', 'Smart Tabs — filter the feed by topic');
     const rerender = () => { closeTabPanels(); window.NayaRouter.render(); };
@@ -5644,6 +5684,7 @@ function HubView(params) {
     add.innerHTML = '<span class="sn-label">\uFF0B Add</span>';
     add.addEventListener('click', ev => { ev.stopPropagation(); openTabEditor(null, true, add); });
     bar.appendChild(add);
+    bar.scrollLeft = 0; /* FIX 2026-11-16 (item A): "All" fully in view at rest, after interactions, after reload. */
     return { bar, tabs };
   }
 
@@ -6129,6 +6170,11 @@ window.NayaNotif = window.NayaNotif || {
     try { if (localStorage.getItem('naya.rail-collapsed') !== '0') shell.classList.add('rail-collapsed'); } catch (e) { shell.classList.add('rail-collapsed'); }
   }
   function openRightRail() {
+    /* FIX 2026-11-16 (item B): at desktop, opening the right drawer over a
+       docked left rail remembers it — closing the drawer restores the
+       on-load layout (both sidebars docked). Below desktop the left is a
+       drawer of its own and the flag stays false, so nothing changes there. */
+    if (window.innerWidth >= 1440 && !shell.classList.contains('rail-collapsed')) rightDrawerLeftDocked = true;
     shell.classList.add('rail-right-open');
     shell.classList.remove('rail-right-collapsed');
     document.body.classList.add('rail-right-open');
@@ -6136,6 +6182,21 @@ window.NayaNotif = window.NayaNotif || {
     if (f) f.focus();
   }
   function closeRightRail() {
+    /* FIX 2026-11-16 (item B): a desktop drawer opened over a docked left
+       rail closes back to the on-load layout — both sidebars docked — so
+       the page never sits with zero sidebars after a drawer round-trip.
+       The plain docked close below keeps its item-8 behavior: the right
+       rail collapses and reopens from the menu control / ECOSYSTEM tile. */
+    if (rightDrawerLeftDocked && window.innerWidth >= 1440) {
+      rightDrawerLeftDocked = false;
+      shell.classList.remove('rail-right-open');
+      shell.classList.remove('rail-right-collapsed');
+      shell.classList.remove('rail-collapsed');
+      document.body.classList.remove('rail-right-open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      return;
+    }
+    rightDrawerLeftDocked = false;
     shell.classList.remove('rail-right-open');
     /* HUB ICONS FIX 2026-11-16 (item 8): at desktop the right rail is docked
        visible — closing it collapses it (reopen from the bottom-bar
@@ -6148,12 +6209,25 @@ window.NayaNotif = window.NayaNotif || {
     window.__nayaChassisKeys = true;
     document.addEventListener('keydown', e => {
       if (e.key !== 'Escape') return;
-      const open = document.querySelector('.shell.drawer-open');
-      if (open) {
-        closeDrawer();
-        menuBtn.setAttribute('aria-expanded', 'false'); menuBtn.focus();
+      /* FIX 2026-11-16 (item C): this listener is registered once, but the
+         router re-renders HubView into a cleared outlet on every
+         navigation (outlet.innerHTML = ''), so the closeDrawer /
+         closeRightRail / menuBtn closed over here belong to a REPLACED
+         build — Escape stripped the shared body classes while the visible
+         drawers stayed open. Diagnosis verified in code (render clears
+         the outlet at ~line 4359; NayaChassis is re-published on every
+         build). Resolve the LIVE build instead: window.NayaChassis
+         always holds the current build's closers, and the live .shell /
+         .rail-toggle are queried from the document. The once-guard stays
+         — one listener, live targets, no leak. */
+      const live = document.querySelector('.shell.drawer-open');
+      const api = window.NayaChassis || {};
+      if (live && api.closeDrawer) api.closeDrawer();
+      if (live) {
+        const liveMenu = document.querySelector('.shell .rail-toggle');
+        if (liveMenu) { liveMenu.setAttribute('aria-expanded', 'false'); liveMenu.focus(); }
       }
-      closeRightRail();
+      if (api.closeRightRail) api.closeRightRail();
     });
   }
 
