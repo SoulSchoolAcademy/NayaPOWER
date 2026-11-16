@@ -1192,3 +1192,93 @@ fix round) carry no new dictation this run. Distillation: SN-2973..2977
 are new raw notes for tonight's 23:17Z daily run. Silent run — no chat
 report owed (nothing here needs Shawn; the Daily Intelligence Report
 23:17Z is the summary vehicle).
+
+## Intelligence Loop run 226 — 2026-11-16 ~17:23–17:4xZ (seat: Naya Nitro Sigma)
+
+LISTEN — what is new since run 225 (closed 17:24Z, highest SN-2977): FIVE
+new dictations/decisions from Shawn, all in the main chat + MEMORY.md, none
+of them filed by run 225 (its LISTEN snapshot predates them — its window
+closed before the 17:10Z Hub-center dictation landed):
+- 17:10Z THE HUB IS THE CENTER + THE FLOW (his words, main chat): the +
+menus navigate NayaNET, quick access, most-used on top; the Hub is the
+center of it all — the home, the main page — top button on the left, where
+they were welcomed in when they first joined; the Hub's bottom-bar icons
+(Personal / Business / Space) carry the notification counts for each area —
+tap one and it shows the notifications, then goes right to the page; the
+flow inside a page: click your world -> the scheduler -> that day's mail,
+messages (with how many), news, and what's going on in any of the feeds.
+- 17:13Z MAIL BY WORLD: mail is SEPARATED by world — Personal mail,
+Business mail, Space mail — so the citizen always sees where the mail came
+from. Mail opens from the sidebars on any page and shows THAT world's mail
+first (the front door of the mail for that world). From the Hub's mail the
+citizen can select ANY world and see its mail — one universal mail, with a
+world selector. Same for Instant Messenger, exactly the same way. His thumbs
+-up ratified the captain's read-back. Rides the Smart Mail round (One List
+`smart-mail-im-1010`, due 2026-11-17).
+- 17:28Z THE LETTER READS CENTERED (his screenshot at 1851px, the
+collective agreement text): the letter beats sat off to the left — picture
+left, blue orb beside it, text in a small box left, big black space right —
+hard to read while scrolling, always looking left. Fix: every beat centers
+— Naya's picture in the DIRECT CENTER, text in a CENTERED column below the
+picture, blue diamond orb centered BELOW the text, fading away once you
+scroll. Personable, like reading a letter from her.
+- 17:33Z CORRECTION — THE LETTER IS BROKEN, IT HAS NO UNFOLD (supersedes
+the centering-only version): the whole letter needs centering and alignment,
+not just the picture — and the letter as built is a crazy-long scroll of 86
+stacked boards with NO unfolding. The deck HAS the unfolding and is way
+more beautiful. The letter must use THAT unfolding — harvested verbatim
+from the deck, pictures inserted, NOT rebuilt from scratch (he never asked
+for the formatting to be changed). DISTILL IT TO ITS ESSENCE — 86 beats
+down to what the agreement is actually trying to say, optimized for the
+pictures and the presentation, not just fitting it all in. Full letter stays
+intact and reachable whole; the unfolding is the essence path. Folded into
+the combined walk round as corrected item 10, 17:33Z.
+- 17:34Z USE WHAT WORKS — NEVER MAKE IT NEW (charge, filed as law in
+AGENTS.md): "you make this mistake all the time... why don't you use what's
+good already" — instead of using what works, I try to make it new and
+create a big long thing that's not useful, a big mess that doesn't function.
+Law: USE WHAT'S GOOD ALREADY. Before any seat builds anything, it names
+the existing working thing it is reusing — file, blob, bytes — and takes it
+verbatim. If there is a working version, there is no new version.
+- 17:36Z READ IT AS A READER (charge, filed as law in AGENTS.md — "good
+thing I checked it"): he trusted the letter was right because it seemed
+simple — just add the images — and didn't check it until today, when he
+found it all messed up. The checks had PASSED it: 86 beats present, in
+order, scroll works — the parts were all there and the reading experience
+was still broken. Mechanical checks (counts, scroll, buttons) do not prove
+the experience. The eye must READ it as a reader, top to bottom, the way he
+reads it — and call it broken when it doesn't present well, even if every
+part ticks.
+
+SMART-NOTES FILED THIS RUN (5 pairs, all PUT 201 + byte-identical blob
+read-back): SN-2978 The Hub Is the Center + The Flow · SN-2979 Mail by
+World · SN-2980 The Letter Reads Centered (carries the 17:28Z dictation +
+the 17:33Z correction, superseding the centering-only version) · SN-2981
+Use What Works — Never Make It New · SN-2982 Read It as a Reader. Each
+with a paired Naya Note (NN-20261116-<slug>), Paired lines carrying titles
+verbatim, never paths. Numbering: next-sn-number.py said highest SN-2977,
+next free SN-2978, no open-PR claims (run226-numbering.log, ~9.3 min
+live-tree scan). No PR, no merge, no deploy, no live edit.
+
+ORGANIZE HOOK CLEAN (exit 0): organized 0, files_new 0, files_scanned 2212,
+0 unparseable, 0 malformed; watermark holds. Healthy — the notes live on
+GitHub, not in the local box tree (same as runs 223–225).
+
+MAIL DIGEST HELD (run226-mail-digest.txt): send path still blocked
+(Supabase reauth_required since 21:06Z Nov 12; send path last proven 401
+Nov 13 04:24Z; team-pulse 17:24Z mail read still BLIND, mail-new UNKNOWN).
+Same known breakage as runs 202–225; repair is Shawn's hand, already
+escalated, NOT re-raised.
+
+OUT OF ALIGNMENT, recorded plainly: (NEW) Smart Notes sync 17:32Z synced
+4 notes (SN-2969–SN-2972) into the Hub feed table, but the Hub re-bake
+FAILED — build_feed_live.py timed out after 600s — so the Hub page was NOT
+redeployed and the new notes are NOT showing on the live Hub yet; 1
+share-asset mint error (SN-2970); 3 Naya Notes skipped on fetch failures.
+The captain already told Shawn in chat ("filed and synced, but not showing
+on the live Hub yet") — recorded here, NOT re-raised. Standing gaps
+unchanged: Naya Notes filed but not in the live feed (sections build owed);
+Hub still shows the duplicate SN-2906 cycle row (DELETE permission, his
+hand). Distillation: SN-2978..2982 are new raw notes for tonight's 23:17Z
+daily run. Silent run — no chat report owed (nothing here needs Shawn; the
+Daily Intelligence Report 23:17Z is the summary vehicle).
